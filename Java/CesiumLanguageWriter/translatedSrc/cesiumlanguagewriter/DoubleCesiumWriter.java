@@ -7,6 +7,7 @@ import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.Reference;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -41,9 +42,11 @@ public class DoubleCesiumWriter extends CesiumInterpolatablePropertyWriter<Doubl
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public DoubleCesiumWriter(String propertyName) {
+    public DoubleCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
         m_asNumber = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Double>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Double>>(this, "createNumberAdaptor") {
@@ -67,7 +70,7 @@ public class DoubleCesiumWriter extends CesiumInterpolatablePropertyWriter<Doubl
 
     * @param existingInstance The existing instance to copy.
     */
-    protected DoubleCesiumWriter(DoubleCesiumWriter existingInstance) {
+    protected DoubleCesiumWriter(@Nonnull DoubleCesiumWriter existingInstance) {
         super(existingInstance);
         m_asNumber = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Double>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Double>>(this, "createNumberAdaptor") {

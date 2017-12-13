@@ -5,6 +5,7 @@
 
 using CesiumLanguageWriter.Advanced;
 using System;
+using JetBrains.Annotations;
 using System.Collections.Generic;
 using System.Drawing;
 
@@ -91,7 +92,8 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public WallCesiumWriter(string propertyName)
+        /// <param name="propertyName">The name of the property.</param>
+        public WallCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
         }
@@ -100,7 +102,7 @@ namespace CesiumLanguageWriter
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
         /// <param name="existingInstance">The existing instance to copy.</param>
-        protected WallCesiumWriter(WallCesiumWriter existingInstance)
+        protected WallCesiumWriter([NotNull] WallCesiumWriter existingInstance)
             : base(existingInstance)
         {
         }
@@ -114,6 +116,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>show</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>show</c> property defines whether or not the wall is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter ShowWriter
         {
             get { return m_show.Value; }
@@ -122,6 +125,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>show</c> property.  The <c>show</c> property defines whether or not the wall is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OpenShowProperty()
         {
             OpenIntervalIfNecessary();
@@ -193,6 +197,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>positions</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>positions</c> property defines the array of positions defining the centerline of the wall.
         /// </summary>
+        [NotNull]
         public PositionListCesiumWriter PositionsWriter
         {
             get { return m_positions.Value; }
@@ -201,6 +206,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>positions</c> property.  The <c>positions</c> property defines the array of positions defining the centerline of the wall.
         /// </summary>
+        [NotNull]
         public PositionListCesiumWriter OpenPositionsProperty()
         {
             OpenIntervalIfNecessary();
@@ -258,6 +264,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>minimumHeights</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>minimumHeights</c> property defines the list of heights to be used for the bottom of the wall, instead of the surface.
         /// </summary>
+        [NotNull]
         public DoubleListCesiumWriter MinimumHeightsWriter
         {
             get { return m_minimumHeights.Value; }
@@ -266,6 +273,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>minimumHeights</c> property.  The <c>minimumHeights</c> property defines the list of heights to be used for the bottom of the wall, instead of the surface.
         /// </summary>
+        [NotNull]
         public DoubleListCesiumWriter OpenMinimumHeightsProperty()
         {
             OpenIntervalIfNecessary();
@@ -299,6 +307,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>maximumHeights</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>maximumHeights</c> property defines the list of heights to be used for the top of the wall, instead of the height of each position.
         /// </summary>
+        [NotNull]
         public DoubleListCesiumWriter MaximumHeightsWriter
         {
             get { return m_maximumHeights.Value; }
@@ -307,6 +316,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>maximumHeights</c> property.  The <c>maximumHeights</c> property defines the list of heights to be used for the top of the wall, instead of the height of each position.
         /// </summary>
+        [NotNull]
         public DoubleListCesiumWriter OpenMaximumHeightsProperty()
         {
             OpenIntervalIfNecessary();
@@ -340,6 +350,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>granularity</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>granularity</c> property defines the sampling distance, in radians.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter GranularityWriter
         {
             get { return m_granularity.Value; }
@@ -348,6 +359,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>granularity</c> property.  The <c>granularity</c> property defines the sampling distance, in radians.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenGranularityProperty()
         {
             OpenIntervalIfNecessary();
@@ -447,6 +459,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>fill</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>fill</c> property defines whether or not the wall is filled.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter FillWriter
         {
             get { return m_fill.Value; }
@@ -455,6 +468,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>fill</c> property.  The <c>fill</c> property defines whether or not the wall is filled.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OpenFillProperty()
         {
             OpenIntervalIfNecessary();
@@ -526,6 +540,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>material</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>material</c> property defines the material to display on the surface of the wall.
         /// </summary>
+        [NotNull]
         public MaterialCesiumWriter MaterialWriter
         {
             get { return m_material.Value; }
@@ -534,6 +549,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>material</c> property.  The <c>material</c> property defines the material to display on the surface of the wall.
         /// </summary>
+        [NotNull]
         public MaterialCesiumWriter OpenMaterialProperty()
         {
             OpenIntervalIfNecessary();
@@ -543,6 +559,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>outline</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outline</c> property defines whether or not the wall is outlined.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OutlineWriter
         {
             get { return m_outline.Value; }
@@ -551,6 +568,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>outline</c> property.  The <c>outline</c> property defines whether or not the wall is outlined.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OpenOutlineProperty()
         {
             OpenIntervalIfNecessary();
@@ -622,6 +640,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>outlineColor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outlineColor</c> property defines the color of the wall outline.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter OutlineColorWriter
         {
             get { return m_outlineColor.Value; }
@@ -630,6 +649,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>outlineColor</c> property.  The <c>outlineColor</c> property defines the color of the wall outline.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter OpenOutlineColorProperty()
         {
             OpenIntervalIfNecessary();
@@ -799,6 +819,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>outlineWidth</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outlineWidth</c> property defines the width of the wall outline.  If not specified, the default value is 1.0.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OutlineWidthWriter
         {
             get { return m_outlineWidth.Value; }
@@ -807,6 +828,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>outlineWidth</c> property.  The <c>outlineWidth</c> property defines the width of the wall outline.  If not specified, the default value is 1.0.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenOutlineWidthProperty()
         {
             OpenIntervalIfNecessary();
@@ -906,6 +928,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>shadows</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>shadows</c> property defines whether or not the wall casts or receives shadows.  If not specified, the default value is DISABLED.
         /// </summary>
+        [NotNull]
         public ShadowModeCesiumWriter ShadowsWriter
         {
             get { return m_shadows.Value; }
@@ -914,6 +937,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>shadows</c> property.  The <c>shadows</c> property defines whether or not the wall casts or receives shadows.  If not specified, the default value is DISABLED.
         /// </summary>
+        [NotNull]
         public ShadowModeCesiumWriter OpenShadowsProperty()
         {
             OpenIntervalIfNecessary();
@@ -985,6 +1009,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>distanceDisplayCondition</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>distanceDisplayCondition</c> property defines the display condition specifying at what distance from the camera this wall will be displayed.
         /// </summary>
+        [NotNull]
         public DistanceDisplayConditionCesiumWriter DistanceDisplayConditionWriter
         {
             get { return m_distanceDisplayCondition.Value; }
@@ -993,6 +1018,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>distanceDisplayCondition</c> property.  The <c>distanceDisplayCondition</c> property defines the display condition specifying at what distance from the camera this wall will be displayed.
         /// </summary>
+        [NotNull]
         public DistanceDisplayConditionCesiumWriter OpenDistanceDisplayConditionProperty()
         {
             OpenIntervalIfNecessary();

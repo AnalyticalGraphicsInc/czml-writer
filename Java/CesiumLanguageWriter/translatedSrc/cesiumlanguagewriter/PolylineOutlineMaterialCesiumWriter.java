@@ -65,9 +65,11 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public PolylineOutlineMaterialCesiumWriter(String propertyName) {
+    public PolylineOutlineMaterialCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
     }
 
@@ -79,7 +81,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
 
     * @param existingInstance The existing instance to copy.
     */
-    protected PolylineOutlineMaterialCesiumWriter(PolylineOutlineMaterialCesiumWriter existingInstance) {
+    protected PolylineOutlineMaterialCesiumWriter(@Nonnull PolylineOutlineMaterialCesiumWriter existingInstance) {
         super(existingInstance);
     }
 
@@ -102,6 +104,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter getColorWriter() {
         return m_color.getValue();
     }
@@ -112,6 +115,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter openColorProperty() {
         openIntervalIfNecessary();
         return this.<ColorCesiumWriter> openAndReturn(getColorWriter());
@@ -382,6 +386,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter getOutlineColorWriter() {
         return m_outlineColor.getValue();
     }
@@ -392,6 +397,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter openOutlineColorProperty() {
         openIntervalIfNecessary();
         return this.<ColorCesiumWriter> openAndReturn(getOutlineColorWriter());
@@ -662,6 +668,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getOutlineWidthWriter() {
         return m_outlineWidth.getValue();
     }
@@ -672,6 +679,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openOutlineWidthProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getOutlineWidthWriter());

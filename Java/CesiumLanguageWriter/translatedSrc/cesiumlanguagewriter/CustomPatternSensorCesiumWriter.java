@@ -286,9 +286,11 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public CustomPatternSensorCesiumWriter(String propertyName) {
+    public CustomPatternSensorCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
     }
 
@@ -300,7 +302,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
     * @param existingInstance The existing instance to copy.
     */
-    protected CustomPatternSensorCesiumWriter(CustomPatternSensorCesiumWriter existingInstance) {
+    protected CustomPatternSensorCesiumWriter(@Nonnull CustomPatternSensorCesiumWriter existingInstance) {
         super(existingInstance);
     }
 
@@ -323,6 +325,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getShowWriter() {
         return m_show.getValue();
     }
@@ -333,6 +336,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openShowProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getShowWriter());
@@ -442,6 +446,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final DirectionListCesiumWriter getDirectionsWriter() {
         return m_directions.getValue();
     }
@@ -452,6 +457,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final DirectionListCesiumWriter openDirectionsProperty() {
         openIntervalIfNecessary();
         return this.<DirectionListCesiumWriter> openAndReturn(getDirectionsWriter());
@@ -538,6 +544,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getRadiusWriter() {
         return m_radius.getValue();
     }
@@ -548,6 +555,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openRadiusProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getRadiusWriter());
@@ -703,6 +711,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getShowIntersectionWriter() {
         return m_showIntersection.getValue();
     }
@@ -713,6 +722,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openShowIntersectionProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getShowIntersectionWriter());
@@ -822,6 +832,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter getIntersectionColorWriter() {
         return m_intersectionColor.getValue();
     }
@@ -832,6 +843,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter openIntersectionColorProperty() {
         openIntervalIfNecessary();
         return this.<ColorCesiumWriter> openAndReturn(getIntersectionColorWriter());
@@ -1102,6 +1114,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getIntersectionWidthWriter() {
         return m_intersectionWidth.getValue();
     }
@@ -1112,6 +1125,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openIntersectionWidthProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getIntersectionWidthWriter());
@@ -1267,6 +1281,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getShowLateralSurfacesWriter() {
         return m_showLateralSurfaces.getValue();
     }
@@ -1277,6 +1292,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openShowLateralSurfacesProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getShowLateralSurfacesWriter());
@@ -1386,6 +1402,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final MaterialCesiumWriter getLateralSurfaceMaterialWriter() {
         return m_lateralSurfaceMaterial.getValue();
     }
@@ -1396,6 +1413,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final MaterialCesiumWriter openLateralSurfaceMaterialProperty() {
         openIntervalIfNecessary();
         return this.<MaterialCesiumWriter> openAndReturn(getLateralSurfaceMaterialWriter());
@@ -1406,6 +1424,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getShowEllipsoidSurfacesWriter() {
         return m_showEllipsoidSurfaces.getValue();
     }
@@ -1416,6 +1435,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openShowEllipsoidSurfacesProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getShowEllipsoidSurfacesWriter());
@@ -1525,6 +1545,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final MaterialCesiumWriter getEllipsoidSurfaceMaterialWriter() {
         return m_ellipsoidSurfaceMaterial.getValue();
     }
@@ -1535,6 +1556,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final MaterialCesiumWriter openEllipsoidSurfaceMaterialProperty() {
         openIntervalIfNecessary();
         return this.<MaterialCesiumWriter> openAndReturn(getEllipsoidSurfaceMaterialWriter());
@@ -1545,6 +1567,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getShowEllipsoidHorizonSurfacesWriter() {
         return m_showEllipsoidHorizonSurfaces.getValue();
     }
@@ -1555,6 +1578,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openShowEllipsoidHorizonSurfacesProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getShowEllipsoidHorizonSurfacesWriter());
@@ -1664,6 +1688,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final MaterialCesiumWriter getEllipsoidHorizonSurfaceMaterialWriter() {
         return m_ellipsoidHorizonSurfaceMaterial.getValue();
     }
@@ -1674,6 +1699,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final MaterialCesiumWriter openEllipsoidHorizonSurfaceMaterialProperty() {
         openIntervalIfNecessary();
         return this.<MaterialCesiumWriter> openAndReturn(getEllipsoidHorizonSurfaceMaterialWriter());
@@ -1684,6 +1710,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getShowDomeSurfacesWriter() {
         return m_showDomeSurfaces.getValue();
     }
@@ -1694,6 +1721,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openShowDomeSurfacesProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getShowDomeSurfacesWriter());
@@ -1803,6 +1831,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final MaterialCesiumWriter getDomeSurfaceMaterialWriter() {
         return m_domeSurfaceMaterial.getValue();
     }
@@ -1813,6 +1842,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final MaterialCesiumWriter openDomeSurfaceMaterialProperty() {
         openIntervalIfNecessary();
         return this.<MaterialCesiumWriter> openAndReturn(getDomeSurfaceMaterialWriter());
@@ -1823,6 +1853,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final SensorVolumePortionToDisplayCesiumWriter getPortionToDisplayWriter() {
         return m_portionToDisplay.getValue();
     }
@@ -1833,6 +1864,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final SensorVolumePortionToDisplayCesiumWriter openPortionToDisplayProperty() {
         openIntervalIfNecessary();
         return this.<SensorVolumePortionToDisplayCesiumWriter> openAndReturn(getPortionToDisplayWriter());
@@ -1942,6 +1974,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getEnvironmentConstraintWriter() {
         return m_environmentConstraint.getValue();
     }
@@ -1952,6 +1985,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openEnvironmentConstraintProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getEnvironmentConstraintWriter());
@@ -2061,6 +2095,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getShowEnvironmentOcclusionWriter() {
         return m_showEnvironmentOcclusion.getValue();
     }
@@ -2071,6 +2106,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openShowEnvironmentOcclusionProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getShowEnvironmentOcclusionWriter());
@@ -2180,6 +2216,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final MaterialCesiumWriter getEnvironmentOcclusionMaterialWriter() {
         return m_environmentOcclusionMaterial.getValue();
     }
@@ -2190,6 +2227,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final MaterialCesiumWriter openEnvironmentOcclusionMaterialProperty() {
         openIntervalIfNecessary();
         return this.<MaterialCesiumWriter> openAndReturn(getEnvironmentOcclusionMaterialWriter());
@@ -2200,6 +2238,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getShowEnvironmentIntersectionWriter() {
         return m_showEnvironmentIntersection.getValue();
     }
@@ -2210,6 +2249,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openShowEnvironmentIntersectionProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getShowEnvironmentIntersectionWriter());
@@ -2319,6 +2359,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter getEnvironmentIntersectionColorWriter() {
         return m_environmentIntersectionColor.getValue();
     }
@@ -2329,6 +2370,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter openEnvironmentIntersectionColorProperty() {
         openIntervalIfNecessary();
         return this.<ColorCesiumWriter> openAndReturn(getEnvironmentIntersectionColorWriter());
@@ -2599,6 +2641,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getEnvironmentIntersectionWidthWriter() {
         return m_environmentIntersectionWidth.getValue();
     }
@@ -2609,6 +2652,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openEnvironmentIntersectionWidthProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getEnvironmentIntersectionWidthWriter());

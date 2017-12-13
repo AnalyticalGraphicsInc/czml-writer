@@ -42,9 +42,11 @@ public class ShadowModeCesiumWriter extends CesiumPropertyWriter<ShadowModeCesiu
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public ShadowModeCesiumWriter(String propertyName) {
+    public ShadowModeCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
         m_asShadowMode = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumShadowMode>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumShadowMode>>(
                 this, "createShadowModeAdaptor") {
@@ -68,7 +70,7 @@ public class ShadowModeCesiumWriter extends CesiumPropertyWriter<ShadowModeCesiu
 
     * @param existingInstance The existing instance to copy.
     */
-    protected ShadowModeCesiumWriter(ShadowModeCesiumWriter existingInstance) {
+    protected ShadowModeCesiumWriter(@Nonnull ShadowModeCesiumWriter existingInstance) {
         super(existingInstance);
         m_asShadowMode = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumShadowMode>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumShadowMode>>(
                 this, "createShadowModeAdaptor") {

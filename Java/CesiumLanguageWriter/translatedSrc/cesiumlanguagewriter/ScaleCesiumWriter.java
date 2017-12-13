@@ -43,9 +43,11 @@ public class ScaleCesiumWriter extends CesiumInterpolatablePropertyWriter<ScaleC
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public ScaleCesiumWriter(String propertyName) {
+    public ScaleCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
         m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(this, "createCartesianAdaptor") {
@@ -69,7 +71,7 @@ public class ScaleCesiumWriter extends CesiumInterpolatablePropertyWriter<ScaleC
 
     * @param existingInstance The existing instance to copy.
     */
-    protected ScaleCesiumWriter(ScaleCesiumWriter existingInstance) {
+    protected ScaleCesiumWriter(@Nonnull ScaleCesiumWriter existingInstance) {
         super(existingInstance);
         m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(this, "createCartesianAdaptor") {

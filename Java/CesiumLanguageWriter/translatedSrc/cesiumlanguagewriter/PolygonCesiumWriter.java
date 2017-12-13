@@ -227,9 +227,11 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public PolygonCesiumWriter(String propertyName) {
+    public PolygonCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
     }
 
@@ -241,7 +243,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     * @param existingInstance The existing instance to copy.
     */
-    protected PolygonCesiumWriter(PolygonCesiumWriter existingInstance) {
+    protected PolygonCesiumWriter(@Nonnull PolygonCesiumWriter existingInstance) {
         super(existingInstance);
     }
 
@@ -264,6 +266,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getShowWriter() {
         return m_show.getValue();
     }
@@ -274,6 +277,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openShowProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getShowWriter());
@@ -383,6 +387,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
 
     */
+    @Nonnull
     public final PositionListCesiumWriter getPositionsWriter() {
         return m_positions.getValue();
     }
@@ -393,6 +398,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
 
     */
+    @Nonnull
     public final PositionListCesiumWriter openPositionsProperty() {
         openIntervalIfNecessary();
         return this.<PositionListCesiumWriter> openAndReturn(getPositionsWriter());
@@ -479,6 +485,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getHeightWriter() {
         return m_height.getValue();
     }
@@ -489,6 +496,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openHeightProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getHeightWriter());
@@ -644,6 +652,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getExtrudedHeightWriter() {
         return m_extrudedHeight.getValue();
     }
@@ -654,6 +663,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openExtrudedHeightProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getExtrudedHeightWriter());
@@ -809,6 +819,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getStRotationWriter() {
         return m_stRotation.getValue();
     }
@@ -819,6 +830,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openStRotationProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getStRotationWriter());
@@ -974,6 +986,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getGranularityWriter() {
         return m_granularity.getValue();
     }
@@ -984,6 +997,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openGranularityProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getGranularityWriter());
@@ -1139,6 +1153,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getFillWriter() {
         return m_fill.getValue();
     }
@@ -1149,6 +1164,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openFillProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getFillWriter());
@@ -1258,6 +1274,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
 
     */
+    @Nonnull
     public final MaterialCesiumWriter getMaterialWriter() {
         return m_material.getValue();
     }
@@ -1268,6 +1285,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
 
     */
+    @Nonnull
     public final MaterialCesiumWriter openMaterialProperty() {
         openIntervalIfNecessary();
         return this.<MaterialCesiumWriter> openAndReturn(getMaterialWriter());
@@ -1278,6 +1296,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getOutlineWriter() {
         return m_outline.getValue();
     }
@@ -1288,6 +1307,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openOutlineProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getOutlineWriter());
@@ -1397,6 +1417,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter getOutlineColorWriter() {
         return m_outlineColor.getValue();
     }
@@ -1407,6 +1428,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter openOutlineColorProperty() {
         openIntervalIfNecessary();
         return this.<ColorCesiumWriter> openAndReturn(getOutlineColorWriter());
@@ -1677,6 +1699,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getOutlineWidthWriter() {
         return m_outlineWidth.getValue();
     }
@@ -1687,6 +1710,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openOutlineWidthProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getOutlineWidthWriter());
@@ -1842,6 +1866,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getPerPositionHeightWriter() {
         return m_perPositionHeight.getValue();
     }
@@ -1852,6 +1877,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openPerPositionHeightProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getPerPositionHeightWriter());
@@ -1961,6 +1987,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getCloseTopWriter() {
         return m_closeTop.getValue();
     }
@@ -1971,6 +1998,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openCloseTopProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getCloseTopWriter());
@@ -2080,6 +2108,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getCloseBottomWriter() {
         return m_closeBottom.getValue();
     }
@@ -2090,6 +2119,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openCloseBottomProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getCloseBottomWriter());
@@ -2199,6 +2229,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
 
     */
+    @Nonnull
     public final ShadowModeCesiumWriter getShadowsWriter() {
         return m_shadows.getValue();
     }
@@ -2209,6 +2240,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
 
     */
+    @Nonnull
     public final ShadowModeCesiumWriter openShadowsProperty() {
         openIntervalIfNecessary();
         return this.<ShadowModeCesiumWriter> openAndReturn(getShadowsWriter());
@@ -2318,6 +2350,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
 
     */
+    @Nonnull
     public final DistanceDisplayConditionCesiumWriter getDistanceDisplayConditionWriter() {
         return m_distanceDisplayCondition.getValue();
     }
@@ -2328,6 +2361,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
 
     */
+    @Nonnull
     public final DistanceDisplayConditionCesiumWriter openDistanceDisplayConditionProperty() {
         openIntervalIfNecessary();
         return this.<DistanceDisplayConditionCesiumWriter> openAndReturn(getDistanceDisplayConditionWriter());

@@ -154,9 +154,11 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public PointCesiumWriter(String propertyName) {
+    public PointCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
     }
 
@@ -168,7 +170,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
 
     * @param existingInstance The existing instance to copy.
     */
-    protected PointCesiumWriter(PointCesiumWriter existingInstance) {
+    protected PointCesiumWriter(@Nonnull PointCesiumWriter existingInstance) {
         super(existingInstance);
     }
 
@@ -191,6 +193,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getShowWriter() {
         return m_show.getValue();
     }
@@ -201,6 +204,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openShowProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getShowWriter());
@@ -310,6 +314,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getPixelSizeWriter() {
         return m_pixelSize.getValue();
     }
@@ -320,6 +325,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openPixelSizeProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getPixelSizeWriter());
@@ -475,6 +481,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     
 
     */
+    @Nonnull
     public final HeightReferenceCesiumWriter getHeightReferenceWriter() {
         return m_heightReference.getValue();
     }
@@ -485,6 +492,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     
 
     */
+    @Nonnull
     public final HeightReferenceCesiumWriter openHeightReferenceProperty() {
         openIntervalIfNecessary();
         return this.<HeightReferenceCesiumWriter> openAndReturn(getHeightReferenceWriter());
@@ -594,6 +602,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter getColorWriter() {
         return m_color.getValue();
     }
@@ -604,6 +613,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter openColorProperty() {
         openIntervalIfNecessary();
         return this.<ColorCesiumWriter> openAndReturn(getColorWriter());
@@ -874,6 +884,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter getOutlineColorWriter() {
         return m_outlineColor.getValue();
     }
@@ -884,6 +895,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter openOutlineColorProperty() {
         openIntervalIfNecessary();
         return this.<ColorCesiumWriter> openAndReturn(getOutlineColorWriter());
@@ -1154,6 +1166,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getOutlineWidthWriter() {
         return m_outlineWidth.getValue();
     }
@@ -1164,6 +1177,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openOutlineWidthProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getOutlineWidthWriter());
@@ -1319,6 +1333,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     
 
     */
+    @Nonnull
     public final NearFarScalarCesiumWriter getScaleByDistanceWriter() {
         return m_scaleByDistance.getValue();
     }
@@ -1329,6 +1344,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     
 
     */
+    @Nonnull
     public final NearFarScalarCesiumWriter openScaleByDistanceProperty() {
         openIntervalIfNecessary();
         return this.<NearFarScalarCesiumWriter> openAndReturn(getScaleByDistanceWriter());
@@ -1509,6 +1525,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     
 
     */
+    @Nonnull
     public final NearFarScalarCesiumWriter getTranslucencyByDistanceWriter() {
         return m_translucencyByDistance.getValue();
     }
@@ -1519,6 +1536,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     
 
     */
+    @Nonnull
     public final NearFarScalarCesiumWriter openTranslucencyByDistanceProperty() {
         openIntervalIfNecessary();
         return this.<NearFarScalarCesiumWriter> openAndReturn(getTranslucencyByDistanceWriter());
@@ -1699,6 +1717,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DistanceDisplayConditionCesiumWriter getDistanceDisplayConditionWriter() {
         return m_distanceDisplayCondition.getValue();
     }
@@ -1709,6 +1728,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DistanceDisplayConditionCesiumWriter openDistanceDisplayConditionProperty() {
         openIntervalIfNecessary();
         return this.<DistanceDisplayConditionCesiumWriter> openAndReturn(getDistanceDisplayConditionWriter());
@@ -1885,6 +1905,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getDisableDepthTestDistanceWriter() {
         return m_disableDepthTestDistance.getValue();
     }
@@ -1895,6 +1916,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openDisableDepthTestDistanceProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getDisableDepthTestDistanceWriter());

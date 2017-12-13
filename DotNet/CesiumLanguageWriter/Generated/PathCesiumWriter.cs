@@ -5,6 +5,7 @@
 
 using CesiumLanguageWriter.Advanced;
 using System;
+using JetBrains.Annotations;
 using System.Collections.Generic;
 
 namespace CesiumLanguageWriter
@@ -60,7 +61,8 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public PathCesiumWriter(string propertyName)
+        /// <param name="propertyName">The name of the property.</param>
+        public PathCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
         }
@@ -69,7 +71,7 @@ namespace CesiumLanguageWriter
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
         /// <param name="existingInstance">The existing instance to copy.</param>
-        protected PathCesiumWriter(PathCesiumWriter existingInstance)
+        protected PathCesiumWriter([NotNull] PathCesiumWriter existingInstance)
             : base(existingInstance)
         {
         }
@@ -83,6 +85,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>show</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>show</c> property defines whether or not the path is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter ShowWriter
         {
             get { return m_show.Value; }
@@ -91,6 +94,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>show</c> property.  The <c>show</c> property defines whether or not the path is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OpenShowProperty()
         {
             OpenIntervalIfNecessary();
@@ -162,6 +166,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>width</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>width</c> property defines the width of the path line.  If not specified, the default value is 1.0.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter WidthWriter
         {
             get { return m_width.Value; }
@@ -170,6 +175,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>width</c> property.  The <c>width</c> property defines the width of the path line.  If not specified, the default value is 1.0.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenWidthProperty()
         {
             OpenIntervalIfNecessary();
@@ -269,6 +275,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>resolution</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>resolution</c> property defines the maximum step-size, in seconds, used to sample the path. If the <c>position</c> property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path.  If not specified, the default value is 60.0.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter ResolutionWriter
         {
             get { return m_resolution.Value; }
@@ -277,6 +284,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>resolution</c> property.  The <c>resolution</c> property defines the maximum step-size, in seconds, used to sample the path. If the <c>position</c> property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path.  If not specified, the default value is 60.0.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenResolutionProperty()
         {
             OpenIntervalIfNecessary();
@@ -376,6 +384,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>leadTime</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>leadTime</c> property defines the time ahead of the animation time, in seconds, to show the path. The time will be limited to not exceed the object's availability. By default, the value is unlimited, which effectively results in drawing the entire available path of the object.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter LeadTimeWriter
         {
             get { return m_leadTime.Value; }
@@ -384,6 +393,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>leadTime</c> property.  The <c>leadTime</c> property defines the time ahead of the animation time, in seconds, to show the path. The time will be limited to not exceed the object's availability. By default, the value is unlimited, which effectively results in drawing the entire available path of the object.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenLeadTimeProperty()
         {
             OpenIntervalIfNecessary();
@@ -483,6 +493,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>trailTime</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>trailTime</c> property defines the time behind the animation time, in seconds, to show the path. The time will be limited to not exceed the object's availability. By default, the value is unlimited, which effectively results in drawing the entire available path of the object.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter TrailTimeWriter
         {
             get { return m_trailTime.Value; }
@@ -491,6 +502,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>trailTime</c> property.  The <c>trailTime</c> property defines the time behind the animation time, in seconds, to show the path. The time will be limited to not exceed the object's availability. By default, the value is unlimited, which effectively results in drawing the entire available path of the object.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenTrailTimeProperty()
         {
             OpenIntervalIfNecessary();
@@ -590,6 +602,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>material</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>material</c> property defines the material to use to draw the path.
         /// </summary>
+        [NotNull]
         public PolylineMaterialCesiumWriter MaterialWriter
         {
             get { return m_material.Value; }
@@ -598,6 +611,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>material</c> property.  The <c>material</c> property defines the material to use to draw the path.
         /// </summary>
+        [NotNull]
         public PolylineMaterialCesiumWriter OpenMaterialProperty()
         {
             OpenIntervalIfNecessary();
@@ -607,6 +621,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>distanceDisplayCondition</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>distanceDisplayCondition</c> property defines the display condition specifying at what distance from the camera this path will be displayed.
         /// </summary>
+        [NotNull]
         public DistanceDisplayConditionCesiumWriter DistanceDisplayConditionWriter
         {
             get { return m_distanceDisplayCondition.Value; }
@@ -615,6 +630,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>distanceDisplayCondition</c> property.  The <c>distanceDisplayCondition</c> property defines the display condition specifying at what distance from the camera this path will be displayed.
         /// </summary>
+        [NotNull]
         public DistanceDisplayConditionCesiumWriter OpenDistanceDisplayConditionProperty()
         {
             OpenIntervalIfNecessary();

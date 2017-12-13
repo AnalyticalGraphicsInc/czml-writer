@@ -43,9 +43,11 @@ public class EyeOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<Ey
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public EyeOffsetCesiumWriter(String propertyName) {
+    public EyeOffsetCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
         m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(this, "createCartesianAdaptor") {
@@ -69,7 +71,7 @@ public class EyeOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<Ey
 
     * @param existingInstance The existing instance to copy.
     */
-    protected EyeOffsetCesiumWriter(EyeOffsetCesiumWriter existingInstance) {
+    protected EyeOffsetCesiumWriter(@Nonnull EyeOffsetCesiumWriter existingInstance) {
         super(existingInstance);
         m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(this, "createCartesianAdaptor") {

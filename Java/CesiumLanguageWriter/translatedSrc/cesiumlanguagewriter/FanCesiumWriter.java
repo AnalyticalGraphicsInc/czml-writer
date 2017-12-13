@@ -153,9 +153,11 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public FanCesiumWriter(String propertyName) {
+    public FanCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
     }
 
@@ -167,7 +169,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     * @param existingInstance The existing instance to copy.
     */
-    protected FanCesiumWriter(FanCesiumWriter existingInstance) {
+    protected FanCesiumWriter(@Nonnull FanCesiumWriter existingInstance) {
         super(existingInstance);
     }
 
@@ -190,6 +192,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getShowWriter() {
         return m_show.getValue();
     }
@@ -200,6 +203,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openShowProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getShowWriter());
@@ -309,6 +313,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DirectionListCesiumWriter getDirectionsWriter() {
         return m_directions.getValue();
     }
@@ -319,6 +324,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DirectionListCesiumWriter openDirectionsProperty() {
         openIntervalIfNecessary();
         return this.<DirectionListCesiumWriter> openAndReturn(getDirectionsWriter());
@@ -405,6 +411,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getRadiusWriter() {
         return m_radius.getValue();
     }
@@ -415,6 +422,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openRadiusProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getRadiusWriter());
@@ -570,6 +578,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getPerDirectionRadiusWriter() {
         return m_perDirectionRadius.getValue();
     }
@@ -580,6 +589,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openPerDirectionRadiusProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getPerDirectionRadiusWriter());
@@ -689,6 +699,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     
 
     */
+    @Nonnull
     public final MaterialCesiumWriter getMaterialWriter() {
         return m_material.getValue();
     }
@@ -699,6 +710,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     
 
     */
+    @Nonnull
     public final MaterialCesiumWriter openMaterialProperty() {
         openIntervalIfNecessary();
         return this.<MaterialCesiumWriter> openAndReturn(getMaterialWriter());
@@ -709,6 +721,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getFillWriter() {
         return m_fill.getValue();
     }
@@ -719,6 +732,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openFillProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getFillWriter());
@@ -828,6 +842,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getOutlineWriter() {
         return m_outline.getValue();
     }
@@ -838,6 +853,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openOutlineProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getOutlineWriter());
@@ -947,6 +963,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter getOutlineColorWriter() {
         return m_outlineColor.getValue();
     }
@@ -957,6 +974,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter openOutlineColorProperty() {
         openIntervalIfNecessary();
         return this.<ColorCesiumWriter> openAndReturn(getOutlineColorWriter());
@@ -1227,6 +1245,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getOutlineWidthWriter() {
         return m_outlineWidth.getValue();
     }
@@ -1237,6 +1256,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openOutlineWidthProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getOutlineWidthWriter());
@@ -1392,6 +1412,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     
 
     */
+    @Nonnull
     public final IntegerCesiumWriter getNumberOfRingsWriter() {
         return m_numberOfRings.getValue();
     }
@@ -1402,6 +1423,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     
 
     */
+    @Nonnull
     public final IntegerCesiumWriter openNumberOfRingsProperty() {
         openIntervalIfNecessary();
         return this.<IntegerCesiumWriter> openAndReturn(getNumberOfRingsWriter());

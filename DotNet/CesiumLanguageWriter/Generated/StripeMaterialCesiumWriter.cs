@@ -5,6 +5,7 @@
 
 using CesiumLanguageWriter.Advanced;
 using System;
+using JetBrains.Annotations;
 using System.Drawing;
 using System.Collections.Generic;
 
@@ -49,7 +50,8 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public StripeMaterialCesiumWriter(string propertyName)
+        /// <param name="propertyName">The name of the property.</param>
+        public StripeMaterialCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
         }
@@ -58,7 +60,7 @@ namespace CesiumLanguageWriter
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
         /// <param name="existingInstance">The existing instance to copy.</param>
-        protected StripeMaterialCesiumWriter(StripeMaterialCesiumWriter existingInstance)
+        protected StripeMaterialCesiumWriter([NotNull] StripeMaterialCesiumWriter existingInstance)
             : base(existingInstance)
         {
         }
@@ -72,6 +74,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>orientation</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>orientation</c> property defines the value indicating if the stripes are horizontal or vertical.
         /// </summary>
+        [NotNull]
         public StripeOrientationCesiumWriter OrientationWriter
         {
             get { return m_orientation.Value; }
@@ -80,6 +83,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>orientation</c> property.  The <c>orientation</c> property defines the value indicating if the stripes are horizontal or vertical.
         /// </summary>
+        [NotNull]
         public StripeOrientationCesiumWriter OpenOrientationProperty()
         {
             OpenIntervalIfNecessary();
@@ -151,6 +155,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>evenColor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>evenColor</c> property defines the even color.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter EvenColorWriter
         {
             get { return m_evenColor.Value; }
@@ -159,6 +164,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>evenColor</c> property.  The <c>evenColor</c> property defines the even color.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter OpenEvenColorProperty()
         {
             OpenIntervalIfNecessary();
@@ -328,6 +334,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>oddColor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>oddColor</c> property defines the odd color.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter OddColorWriter
         {
             get { return m_oddColor.Value; }
@@ -336,6 +343,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>oddColor</c> property.  The <c>oddColor</c> property defines the odd color.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter OpenOddColorProperty()
         {
             OpenIntervalIfNecessary();
@@ -505,6 +513,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>offset</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>offset</c> property defines the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OffsetWriter
         {
             get { return m_offset.Value; }
@@ -513,6 +522,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>offset</c> property.  The <c>offset</c> property defines the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenOffsetProperty()
         {
             OpenIntervalIfNecessary();
@@ -612,6 +622,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>repeat</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>repeat</c> property defines the number of times the stripes repeat.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter RepeatWriter
         {
             get { return m_repeat.Value; }
@@ -620,6 +631,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>repeat</c> property.  The <c>repeat</c> property defines the number of times the stripes repeat.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenRepeatProperty()
         {
             OpenIntervalIfNecessary();

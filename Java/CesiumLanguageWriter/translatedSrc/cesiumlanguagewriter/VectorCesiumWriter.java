@@ -91,9 +91,11 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public VectorCesiumWriter(String propertyName) {
+    public VectorCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
     }
 
@@ -105,7 +107,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     * @param existingInstance The existing instance to copy.
     */
-    protected VectorCesiumWriter(VectorCesiumWriter existingInstance) {
+    protected VectorCesiumWriter(@Nonnull VectorCesiumWriter existingInstance) {
         super(existingInstance);
     }
 
@@ -128,6 +130,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getShowWriter() {
         return m_show.getValue();
     }
@@ -138,6 +141,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openShowProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getShowWriter());
@@ -247,6 +251,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter getColorWriter() {
         return m_color.getValue();
     }
@@ -257,6 +262,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter openColorProperty() {
         openIntervalIfNecessary();
         return this.<ColorCesiumWriter> openAndReturn(getColorWriter());
@@ -527,6 +533,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     
 
     */
+    @Nonnull
     public final DirectionCesiumWriter getDirectionWriter() {
         return m_direction.getValue();
     }
@@ -537,6 +544,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     
 
     */
+    @Nonnull
     public final DirectionCesiumWriter openDirectionProperty() {
         openIntervalIfNecessary();
         return this.<DirectionCesiumWriter> openAndReturn(getDirectionWriter());
@@ -887,6 +895,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getLengthWriter() {
         return m_length.getValue();
     }
@@ -897,6 +906,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openLengthProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getLengthWriter());
@@ -1052,6 +1062,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getMinimumLengthInPixelsWriter() {
         return m_minimumLengthInPixels.getValue();
     }
@@ -1062,6 +1073,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openMinimumLengthInPixelsProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getMinimumLengthInPixelsWriter());

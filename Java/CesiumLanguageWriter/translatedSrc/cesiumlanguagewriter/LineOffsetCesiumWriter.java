@@ -43,9 +43,11 @@ public class LineOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<L
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public LineOffsetCesiumWriter(String propertyName) {
+    public LineOffsetCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
         m_asCartesian2 = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Rectangular>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Rectangular>>(this, "createCartesian2Adaptor") {
@@ -69,7 +71,7 @@ public class LineOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<L
 
     * @param existingInstance The existing instance to copy.
     */
-    protected LineOffsetCesiumWriter(LineOffsetCesiumWriter existingInstance) {
+    protected LineOffsetCesiumWriter(@Nonnull LineOffsetCesiumWriter existingInstance) {
         super(existingInstance);
         m_asCartesian2 = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Rectangular>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Rectangular>>(this, "createCartesian2Adaptor") {

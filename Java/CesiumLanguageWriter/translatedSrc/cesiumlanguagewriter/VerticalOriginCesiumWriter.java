@@ -42,9 +42,11 @@ public class VerticalOriginCesiumWriter extends CesiumPropertyWriter<VerticalOri
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public VerticalOriginCesiumWriter(String propertyName) {
+    public VerticalOriginCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
         m_asVerticalOrigin = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumVerticalOrigin>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumVerticalOrigin>>(this, "createVerticalOriginAdaptor") {
@@ -68,7 +70,7 @@ public class VerticalOriginCesiumWriter extends CesiumPropertyWriter<VerticalOri
 
     * @param existingInstance The existing instance to copy.
     */
-    protected VerticalOriginCesiumWriter(VerticalOriginCesiumWriter existingInstance) {
+    protected VerticalOriginCesiumWriter(@Nonnull VerticalOriginCesiumWriter existingInstance) {
         super(existingInstance);
         m_asVerticalOrigin = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumVerticalOrigin>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumVerticalOrigin>>(this, "createVerticalOriginAdaptor") {

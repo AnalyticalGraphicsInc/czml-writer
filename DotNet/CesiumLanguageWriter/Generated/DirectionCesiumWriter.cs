@@ -5,6 +5,7 @@
 
 using CesiumLanguageWriter.Advanced;
 using System;
+using JetBrains.Annotations;
 using System.Collections.Generic;
 
 namespace CesiumLanguageWriter
@@ -48,7 +49,8 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public DirectionCesiumWriter(string propertyName)
+        /// <param name="propertyName">The name of the property.</param>
+        public DirectionCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
             m_asSpherical = new Lazy<ICesiumInterpolatableValuePropertyWriter<Spherical>>(CreateSphericalAdaptor, false);
@@ -62,7 +64,7 @@ namespace CesiumLanguageWriter
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
         /// <param name="existingInstance">The existing instance to copy.</param>
-        protected DirectionCesiumWriter(DirectionCesiumWriter existingInstance)
+        protected DirectionCesiumWriter([NotNull] DirectionCesiumWriter existingInstance)
             : base(existingInstance)
         {
             m_asSpherical = new Lazy<ICesiumInterpolatableValuePropertyWriter<Spherical>>(CreateSphericalAdaptor, false);

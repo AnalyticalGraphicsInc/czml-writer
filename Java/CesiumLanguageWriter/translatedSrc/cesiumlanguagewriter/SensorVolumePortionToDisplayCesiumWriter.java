@@ -42,9 +42,11 @@ public class SensorVolumePortionToDisplayCesiumWriter extends CesiumPropertyWrit
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public SensorVolumePortionToDisplayCesiumWriter(String propertyName) {
+    public SensorVolumePortionToDisplayCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
         m_asPortionToDisplay = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumSensorVolumePortionToDisplay>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumSensorVolumePortionToDisplay>>(this, "createPortionToDisplayAdaptor") {
@@ -68,7 +70,7 @@ public class SensorVolumePortionToDisplayCesiumWriter extends CesiumPropertyWrit
 
     * @param existingInstance The existing instance to copy.
     */
-    protected SensorVolumePortionToDisplayCesiumWriter(SensorVolumePortionToDisplayCesiumWriter existingInstance) {
+    protected SensorVolumePortionToDisplayCesiumWriter(@Nonnull SensorVolumePortionToDisplayCesiumWriter existingInstance) {
         super(existingInstance);
         m_asPortionToDisplay = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumSensorVolumePortionToDisplay>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumSensorVolumePortionToDisplay>>(this, "createPortionToDisplayAdaptor") {

@@ -5,6 +5,7 @@
 
 using CesiumLanguageWriter.Advanced;
 using System;
+using JetBrains.Annotations;
 using System.Collections.Generic;
 
 namespace CesiumLanguageWriter
@@ -36,7 +37,8 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public NodeTransformationCesiumWriter(string propertyName)
+        /// <param name="propertyName">The name of the property.</param>
+        public NodeTransformationCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
         }
@@ -45,7 +47,7 @@ namespace CesiumLanguageWriter
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
         /// <param name="existingInstance">The existing instance to copy.</param>
-        protected NodeTransformationCesiumWriter(NodeTransformationCesiumWriter existingInstance)
+        protected NodeTransformationCesiumWriter([NotNull] NodeTransformationCesiumWriter existingInstance)
             : base(existingInstance)
         {
         }
@@ -59,6 +61,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>translation</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>translation</c> property defines the translation to apply to the model node.
         /// </summary>
+        [NotNull]
         public TranslationCesiumWriter TranslationWriter
         {
             get { return m_translation.Value; }
@@ -67,6 +70,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>translation</c> property.  The <c>translation</c> property defines the translation to apply to the model node.
         /// </summary>
+        [NotNull]
         public TranslationCesiumWriter OpenTranslationProperty()
         {
             OpenIntervalIfNecessary();
@@ -166,6 +170,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>rotation</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>rotation</c> property defines the rotation to apply to the model node.
         /// </summary>
+        [NotNull]
         public RotationCesiumWriter RotationWriter
         {
             get { return m_rotation.Value; }
@@ -174,6 +179,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>rotation</c> property.  The <c>rotation</c> property defines the rotation to apply to the model node.
         /// </summary>
+        [NotNull]
         public RotationCesiumWriter OpenRotationProperty()
         {
             OpenIntervalIfNecessary();
@@ -273,6 +279,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>scale</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>scale</c> property defines the scaling to apply to the model node.
         /// </summary>
+        [NotNull]
         public ScaleCesiumWriter ScaleWriter
         {
             get { return m_scale.Value; }
@@ -281,6 +288,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>scale</c> property.  The <c>scale</c> property defines the scaling to apply to the model node.
         /// </summary>
+        [NotNull]
         public ScaleCesiumWriter OpenScaleProperty()
         {
             OpenIntervalIfNecessary();

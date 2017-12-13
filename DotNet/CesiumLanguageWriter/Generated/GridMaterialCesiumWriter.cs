@@ -5,6 +5,7 @@
 
 using CesiumLanguageWriter.Advanced;
 using System;
+using JetBrains.Annotations;
 using System.Drawing;
 using System.Collections.Generic;
 
@@ -49,7 +50,8 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public GridMaterialCesiumWriter(string propertyName)
+        /// <param name="propertyName">The name of the property.</param>
+        public GridMaterialCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
         }
@@ -58,7 +60,7 @@ namespace CesiumLanguageWriter
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
         /// <param name="existingInstance">The existing instance to copy.</param>
-        protected GridMaterialCesiumWriter(GridMaterialCesiumWriter existingInstance)
+        protected GridMaterialCesiumWriter([NotNull] GridMaterialCesiumWriter existingInstance)
             : base(existingInstance)
         {
         }
@@ -72,6 +74,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>color</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>color</c> property defines the color of the surface.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter ColorWriter
         {
             get { return m_color.Value; }
@@ -80,6 +83,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>color</c> property.  The <c>color</c> property defines the color of the surface.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter OpenColorProperty()
         {
             OpenIntervalIfNecessary();
@@ -249,6 +253,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>cellAlpha</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>cellAlpha</c> property defines the alpha value for the space between grid lines.  This will be combined with the color alpha.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter CellAlphaWriter
         {
             get { return m_cellAlpha.Value; }
@@ -257,6 +262,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>cellAlpha</c> property.  The <c>cellAlpha</c> property defines the alpha value for the space between grid lines.  This will be combined with the color alpha.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenCellAlphaProperty()
         {
             OpenIntervalIfNecessary();
@@ -356,6 +362,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>lineCount</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>lineCount</c> property defines the number of grid lines along each axis.
         /// </summary>
+        [NotNull]
         public LineCountCesiumWriter LineCountWriter
         {
             get { return m_lineCount.Value; }
@@ -364,6 +371,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>lineCount</c> property.  The <c>lineCount</c> property defines the number of grid lines along each axis.
         /// </summary>
+        [NotNull]
         public LineCountCesiumWriter OpenLineCountProperty()
         {
             OpenIntervalIfNecessary();
@@ -476,6 +484,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>lineThickness</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>lineThickness</c> property defines the thickness of grid lines along each axis, in pixels.
         /// </summary>
+        [NotNull]
         public LineThicknessCesiumWriter LineThicknessWriter
         {
             get { return m_lineThickness.Value; }
@@ -484,6 +493,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>lineThickness</c> property.  The <c>lineThickness</c> property defines the thickness of grid lines along each axis, in pixels.
         /// </summary>
+        [NotNull]
         public LineThicknessCesiumWriter OpenLineThicknessProperty()
         {
             OpenIntervalIfNecessary();
@@ -596,6 +606,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>lineOffset</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>lineOffset</c> property defines the offset of grid lines along each axis, as a percentage from 0 to 1.
         /// </summary>
+        [NotNull]
         public LineOffsetCesiumWriter LineOffsetWriter
         {
             get { return m_lineOffset.Value; }
@@ -604,6 +615,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>lineOffset</c> property.  The <c>lineOffset</c> property defines the offset of grid lines along each axis, as a percentage from 0 to 1.
         /// </summary>
+        [NotNull]
         public LineOffsetCesiumWriter OpenLineOffsetProperty()
         {
             OpenIntervalIfNecessary();

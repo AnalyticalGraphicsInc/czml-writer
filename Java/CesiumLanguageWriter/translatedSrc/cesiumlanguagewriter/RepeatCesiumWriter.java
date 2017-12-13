@@ -43,9 +43,11 @@ public class RepeatCesiumWriter extends CesiumInterpolatablePropertyWriter<Repea
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public RepeatCesiumWriter(String propertyName) {
+    public RepeatCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
         m_asCartesian2 = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Rectangular>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Rectangular>>(this, "createCartesian2Adaptor") {
@@ -69,7 +71,7 @@ public class RepeatCesiumWriter extends CesiumInterpolatablePropertyWriter<Repea
 
     * @param existingInstance The existing instance to copy.
     */
-    protected RepeatCesiumWriter(RepeatCesiumWriter existingInstance) {
+    protected RepeatCesiumWriter(@Nonnull RepeatCesiumWriter existingInstance) {
         super(existingInstance);
         m_asCartesian2 = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Rectangular>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Rectangular>>(this, "createCartesian2Adaptor") {

@@ -4,6 +4,7 @@ package cesiumlanguagewriter;
 import agi.foundation.compatibility.*;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.CustomPropertyCesiumWriter;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -21,9 +22,11 @@ public class CustomPropertiesCesiumWriter extends CesiumPropertyWriter<CustomPro
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public CustomPropertiesCesiumWriter(String propertyName) {
+    public CustomPropertiesCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
     }
 
@@ -35,7 +38,7 @@ public class CustomPropertiesCesiumWriter extends CesiumPropertyWriter<CustomPro
 
     * @param existingInstance The existing instance to copy.
     */
-    protected CustomPropertiesCesiumWriter(CustomPropertiesCesiumWriter existingInstance) {
+    protected CustomPropertiesCesiumWriter(@Nonnull CustomPropertiesCesiumWriter existingInstance) {
         super(existingInstance);
     }
 

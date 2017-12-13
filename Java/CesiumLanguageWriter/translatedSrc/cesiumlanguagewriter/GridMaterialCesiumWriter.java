@@ -92,9 +92,11 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public GridMaterialCesiumWriter(String propertyName) {
+    public GridMaterialCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
     }
 
@@ -106,7 +108,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     * @param existingInstance The existing instance to copy.
     */
-    protected GridMaterialCesiumWriter(GridMaterialCesiumWriter existingInstance) {
+    protected GridMaterialCesiumWriter(@Nonnull GridMaterialCesiumWriter existingInstance) {
         super(existingInstance);
     }
 
@@ -129,6 +131,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter getColorWriter() {
         return m_color.getValue();
     }
@@ -139,6 +142,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter openColorProperty() {
         openIntervalIfNecessary();
         return this.<ColorCesiumWriter> openAndReturn(getColorWriter());
@@ -409,6 +413,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getCellAlphaWriter() {
         return m_cellAlpha.getValue();
     }
@@ -419,6 +424,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openCellAlphaProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getCellAlphaWriter());
@@ -574,6 +580,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     
 
     */
+    @Nonnull
     public final LineCountCesiumWriter getLineCountWriter() {
         return m_lineCount.getValue();
     }
@@ -584,6 +591,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     
 
     */
+    @Nonnull
     public final LineCountCesiumWriter openLineCountProperty() {
         openIntervalIfNecessary();
         return this.<LineCountCesiumWriter> openAndReturn(getLineCountWriter());
@@ -760,6 +768,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     
 
     */
+    @Nonnull
     public final LineThicknessCesiumWriter getLineThicknessWriter() {
         return m_lineThickness.getValue();
     }
@@ -770,6 +779,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     
 
     */
+    @Nonnull
     public final LineThicknessCesiumWriter openLineThicknessProperty() {
         openIntervalIfNecessary();
         return this.<LineThicknessCesiumWriter> openAndReturn(getLineThicknessWriter());
@@ -946,6 +956,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     
 
     */
+    @Nonnull
     public final LineOffsetCesiumWriter getLineOffsetWriter() {
         return m_lineOffset.getValue();
     }
@@ -956,6 +967,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     
 
     */
+    @Nonnull
     public final LineOffsetCesiumWriter openLineOffsetProperty() {
         openIntervalIfNecessary();
         return this.<LineOffsetCesiumWriter> openAndReturn(getLineOffsetWriter());

@@ -51,9 +51,11 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public OrientationCesiumWriter(String propertyName) {
+    public OrientationCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
         m_asUnitQuaternion = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitQuaternion>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitQuaternion>>(this, "createUnitQuaternionAdaptor") {
@@ -83,7 +85,7 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
     * @param existingInstance The existing instance to copy.
     */
-    protected OrientationCesiumWriter(OrientationCesiumWriter existingInstance) {
+    protected OrientationCesiumWriter(@Nonnull OrientationCesiumWriter existingInstance) {
         super(existingInstance);
         m_asUnitQuaternion = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitQuaternion>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitQuaternion>>(this, "createUnitQuaternionAdaptor") {

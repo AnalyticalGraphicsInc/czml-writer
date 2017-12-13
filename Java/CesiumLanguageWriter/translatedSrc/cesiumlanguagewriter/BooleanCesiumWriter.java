@@ -6,6 +6,7 @@ import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.Reference;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -40,9 +41,11 @@ public class BooleanCesiumWriter extends CesiumPropertyWriter<BooleanCesiumWrite
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public BooleanCesiumWriter(String propertyName) {
+    public BooleanCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
         m_asBoolean = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Boolean>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Boolean>>(this,
                 "createBooleanAdaptor") {
@@ -66,7 +69,7 @@ public class BooleanCesiumWriter extends CesiumPropertyWriter<BooleanCesiumWrite
 
     * @param existingInstance The existing instance to copy.
     */
-    protected BooleanCesiumWriter(BooleanCesiumWriter existingInstance) {
+    protected BooleanCesiumWriter(@Nonnull BooleanCesiumWriter existingInstance) {
         super(existingInstance);
         m_asBoolean = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Boolean>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Boolean>>(this,
                 "createBooleanAdaptor") {

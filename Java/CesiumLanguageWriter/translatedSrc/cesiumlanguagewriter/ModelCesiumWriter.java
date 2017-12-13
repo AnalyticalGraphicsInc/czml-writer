@@ -232,9 +232,11 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public ModelCesiumWriter(String propertyName) {
+    public ModelCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
     }
 
@@ -246,7 +248,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
     * @param existingInstance The existing instance to copy.
     */
-    protected ModelCesiumWriter(ModelCesiumWriter existingInstance) {
+    protected ModelCesiumWriter(@Nonnull ModelCesiumWriter existingInstance) {
         super(existingInstance);
     }
 
@@ -269,6 +271,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getShowWriter() {
         return m_show.getValue();
     }
@@ -279,6 +282,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openShowProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getShowWriter());
@@ -388,6 +392,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
 
     */
+    @Nonnull
     public final UriCesiumWriter getGltfWriter() {
         return m_gltf.getValue();
     }
@@ -398,6 +403,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
 
     */
+    @Nonnull
     public final UriCesiumWriter openGltfProperty() {
         openIntervalIfNecessary();
         return this.<UriCesiumWriter> openAndReturn(getGltfWriter());
@@ -631,6 +637,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getScaleWriter() {
         return m_scale.getValue();
     }
@@ -641,6 +648,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openScaleProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getScaleWriter());
@@ -796,6 +804,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getMinimumPixelSizeWriter() {
         return m_minimumPixelSize.getValue();
     }
@@ -806,6 +815,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openMinimumPixelSizeProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getMinimumPixelSizeWriter());
@@ -961,6 +971,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getMaximumScaleWriter() {
         return m_maximumScale.getValue();
     }
@@ -971,6 +982,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openMaximumScaleProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getMaximumScaleWriter());
@@ -1126,6 +1138,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getIncrementallyLoadTexturesWriter() {
         return m_incrementallyLoadTextures.getValue();
     }
@@ -1136,6 +1149,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openIncrementallyLoadTexturesProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getIncrementallyLoadTexturesWriter());
@@ -1245,6 +1259,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getRunAnimationsWriter() {
         return m_runAnimations.getValue();
     }
@@ -1255,6 +1270,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openRunAnimationsProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getRunAnimationsWriter());
@@ -1364,6 +1380,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
 
     */
+    @Nonnull
     public final ShadowModeCesiumWriter getShadowsWriter() {
         return m_shadows.getValue();
     }
@@ -1374,6 +1391,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
 
     */
+    @Nonnull
     public final ShadowModeCesiumWriter openShadowsProperty() {
         openIntervalIfNecessary();
         return this.<ShadowModeCesiumWriter> openAndReturn(getShadowsWriter());
@@ -1483,6 +1501,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
 
     */
+    @Nonnull
     public final HeightReferenceCesiumWriter getHeightReferenceWriter() {
         return m_heightReference.getValue();
     }
@@ -1493,6 +1512,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
 
     */
+    @Nonnull
     public final HeightReferenceCesiumWriter openHeightReferenceProperty() {
         openIntervalIfNecessary();
         return this.<HeightReferenceCesiumWriter> openAndReturn(getHeightReferenceWriter());
@@ -1602,6 +1622,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter getSilhouetteColorWriter() {
         return m_silhouetteColor.getValue();
     }
@@ -1612,6 +1633,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter openSilhouetteColorProperty() {
         openIntervalIfNecessary();
         return this.<ColorCesiumWriter> openAndReturn(getSilhouetteColorWriter());
@@ -1882,6 +1904,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getSilhouetteSizeWriter() {
         return m_silhouetteSize.getValue();
     }
@@ -1892,6 +1915,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openSilhouetteSizeProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getSilhouetteSizeWriter());
@@ -2047,6 +2071,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter getColorWriter() {
         return m_color.getValue();
     }
@@ -2057,6 +2082,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter openColorProperty() {
         openIntervalIfNecessary();
         return this.<ColorCesiumWriter> openAndReturn(getColorWriter());
@@ -2327,6 +2353,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
 
     */
+    @Nonnull
     public final ColorBlendModeCesiumWriter getColorBlendModeWriter() {
         return m_colorBlendMode.getValue();
     }
@@ -2337,6 +2364,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
 
     */
+    @Nonnull
     public final ColorBlendModeCesiumWriter openColorBlendModeProperty() {
         openIntervalIfNecessary();
         return this.<ColorBlendModeCesiumWriter> openAndReturn(getColorBlendModeWriter());
@@ -2446,6 +2474,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getColorBlendAmountWriter() {
         return m_colorBlendAmount.getValue();
     }
@@ -2456,6 +2485,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openColorBlendAmountProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getColorBlendAmountWriter());
@@ -2611,6 +2641,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DistanceDisplayConditionCesiumWriter getDistanceDisplayConditionWriter() {
         return m_distanceDisplayCondition.getValue();
     }
@@ -2621,6 +2652,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DistanceDisplayConditionCesiumWriter openDistanceDisplayConditionProperty() {
         openIntervalIfNecessary();
         return this.<DistanceDisplayConditionCesiumWriter> openAndReturn(getDistanceDisplayConditionWriter());
@@ -2797,6 +2829,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
 
     */
+    @Nonnull
     public final NodeTransformationsCesiumWriter getNodeTransformationsWriter() {
         return m_nodeTransformations.getValue();
     }
@@ -2807,6 +2840,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
 
     */
+    @Nonnull
     public final NodeTransformationsCesiumWriter openNodeTransformationsProperty() {
         openIntervalIfNecessary();
         return this.<NodeTransformationsCesiumWriter> openAndReturn(getNodeTransformationsWriter());

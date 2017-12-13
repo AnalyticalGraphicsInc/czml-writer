@@ -115,9 +115,11 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public PathCesiumWriter(String propertyName) {
+    public PathCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
     }
 
@@ -129,7 +131,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     * @param existingInstance The existing instance to copy.
     */
-    protected PathCesiumWriter(PathCesiumWriter existingInstance) {
+    protected PathCesiumWriter(@Nonnull PathCesiumWriter existingInstance) {
         super(existingInstance);
     }
 
@@ -152,6 +154,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getShowWriter() {
         return m_show.getValue();
     }
@@ -162,6 +165,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openShowProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getShowWriter());
@@ -271,6 +275,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getWidthWriter() {
         return m_width.getValue();
     }
@@ -281,6 +286,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openWidthProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getWidthWriter());
@@ -436,6 +442,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getResolutionWriter() {
         return m_resolution.getValue();
     }
@@ -446,6 +453,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openResolutionProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getResolutionWriter());
@@ -601,6 +609,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getLeadTimeWriter() {
         return m_leadTime.getValue();
     }
@@ -611,6 +620,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openLeadTimeProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getLeadTimeWriter());
@@ -766,6 +776,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getTrailTimeWriter() {
         return m_trailTime.getValue();
     }
@@ -776,6 +787,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openTrailTimeProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getTrailTimeWriter());
@@ -931,6 +943,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     
 
     */
+    @Nonnull
     public final PolylineMaterialCesiumWriter getMaterialWriter() {
         return m_material.getValue();
     }
@@ -941,6 +954,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     
 
     */
+    @Nonnull
     public final PolylineMaterialCesiumWriter openMaterialProperty() {
         openIntervalIfNecessary();
         return this.<PolylineMaterialCesiumWriter> openAndReturn(getMaterialWriter());
@@ -951,6 +965,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DistanceDisplayConditionCesiumWriter getDistanceDisplayConditionWriter() {
         return m_distanceDisplayCondition.getValue();
     }
@@ -961,6 +976,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DistanceDisplayConditionCesiumWriter openDistanceDisplayConditionProperty() {
         openIntervalIfNecessary();
         return this.<DistanceDisplayConditionCesiumWriter> openAndReturn(getDistanceDisplayConditionWriter());

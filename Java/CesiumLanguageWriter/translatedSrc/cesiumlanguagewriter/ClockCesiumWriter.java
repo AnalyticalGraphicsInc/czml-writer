@@ -50,9 +50,11 @@ public class ClockCesiumWriter extends CesiumPropertyWriter<ClockCesiumWriter> {
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public ClockCesiumWriter(String propertyName) {
+    public ClockCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
     }
 
@@ -64,7 +66,7 @@ public class ClockCesiumWriter extends CesiumPropertyWriter<ClockCesiumWriter> {
 
     * @param existingInstance The existing instance to copy.
     */
-    protected ClockCesiumWriter(ClockCesiumWriter existingInstance) {
+    protected ClockCesiumWriter(@Nonnull ClockCesiumWriter existingInstance) {
         super(existingInstance);
     }
 

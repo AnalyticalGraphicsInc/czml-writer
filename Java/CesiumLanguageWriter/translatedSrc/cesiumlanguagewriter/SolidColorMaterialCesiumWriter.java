@@ -40,9 +40,11 @@ public class SolidColorMaterialCesiumWriter extends CesiumPropertyWriter<SolidCo
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public SolidColorMaterialCesiumWriter(String propertyName) {
+    public SolidColorMaterialCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
     }
 
@@ -54,7 +56,7 @@ public class SolidColorMaterialCesiumWriter extends CesiumPropertyWriter<SolidCo
 
     * @param existingInstance The existing instance to copy.
     */
-    protected SolidColorMaterialCesiumWriter(SolidColorMaterialCesiumWriter existingInstance) {
+    protected SolidColorMaterialCesiumWriter(@Nonnull SolidColorMaterialCesiumWriter existingInstance) {
         super(existingInstance);
     }
 
@@ -77,6 +79,7 @@ public class SolidColorMaterialCesiumWriter extends CesiumPropertyWriter<SolidCo
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter getColorWriter() {
         return m_color.getValue();
     }
@@ -87,6 +90,7 @@ public class SolidColorMaterialCesiumWriter extends CesiumPropertyWriter<SolidCo
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter openColorProperty() {
         openIntervalIfNecessary();
         return this.<ColorCesiumWriter> openAndReturn(getColorWriter());

@@ -5,6 +5,7 @@
 
 using CesiumLanguageWriter.Advanced;
 using System;
+using JetBrains.Annotations;
 using System.Collections.Generic;
 using System.Drawing;
 
@@ -79,7 +80,8 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public FanCesiumWriter(string propertyName)
+        /// <param name="propertyName">The name of the property.</param>
+        public FanCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
         }
@@ -88,7 +90,7 @@ namespace CesiumLanguageWriter
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
         /// <param name="existingInstance">The existing instance to copy.</param>
-        protected FanCesiumWriter(FanCesiumWriter existingInstance)
+        protected FanCesiumWriter([NotNull] FanCesiumWriter existingInstance)
             : base(existingInstance)
         {
         }
@@ -102,6 +104,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>show</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>show</c> property defines whether or not the fan is shown.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter ShowWriter
         {
             get { return m_show.Value; }
@@ -110,6 +113,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>show</c> property.  The <c>show</c> property defines whether or not the fan is shown.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OpenShowProperty()
         {
             OpenIntervalIfNecessary();
@@ -181,6 +185,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>directions</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>directions</c> property defines the list of directions defining the fan.
         /// </summary>
+        [NotNull]
         public DirectionListCesiumWriter DirectionsWriter
         {
             get { return m_directions.Value; }
@@ -189,6 +194,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>directions</c> property.  The <c>directions</c> property defines the list of directions defining the fan.
         /// </summary>
+        [NotNull]
         public DirectionListCesiumWriter OpenDirectionsProperty()
         {
             OpenIntervalIfNecessary();
@@ -246,6 +252,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>radius</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>radius</c> property defines the radial limit of the fan.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter RadiusWriter
         {
             get { return m_radius.Value; }
@@ -254,6 +261,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>radius</c> property.  The <c>radius</c> property defines the radial limit of the fan.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenRadiusProperty()
         {
             OpenIntervalIfNecessary();
@@ -353,6 +361,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>perDirectionRadius</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>perDirectionRadius</c> property defines whether the magnitude of each direction is used instead of a constant radius.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter PerDirectionRadiusWriter
         {
             get { return m_perDirectionRadius.Value; }
@@ -361,6 +370,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>perDirectionRadius</c> property.  The <c>perDirectionRadius</c> property defines whether the magnitude of each direction is used instead of a constant radius.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OpenPerDirectionRadiusProperty()
         {
             OpenIntervalIfNecessary();
@@ -432,6 +442,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>material</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>material</c> property defines the material to display on the surface of the fan.
         /// </summary>
+        [NotNull]
         public MaterialCesiumWriter MaterialWriter
         {
             get { return m_material.Value; }
@@ -440,6 +451,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>material</c> property.  The <c>material</c> property defines the material to display on the surface of the fan.
         /// </summary>
+        [NotNull]
         public MaterialCesiumWriter OpenMaterialProperty()
         {
             OpenIntervalIfNecessary();
@@ -449,6 +461,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>fill</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>fill</c> property defines whether or not the fan is filled.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter FillWriter
         {
             get { return m_fill.Value; }
@@ -457,6 +470,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>fill</c> property.  The <c>fill</c> property defines whether or not the fan is filled.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OpenFillProperty()
         {
             OpenIntervalIfNecessary();
@@ -528,6 +542,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>outline</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outline</c> property defines whether or not the fan is outlined.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OutlineWriter
         {
             get { return m_outline.Value; }
@@ -536,6 +551,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>outline</c> property.  The <c>outline</c> property defines whether or not the fan is outlined.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OpenOutlineProperty()
         {
             OpenIntervalIfNecessary();
@@ -607,6 +623,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>outlineColor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outlineColor</c> property defines the color of the fan outline.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter OutlineColorWriter
         {
             get { return m_outlineColor.Value; }
@@ -615,6 +632,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>outlineColor</c> property.  The <c>outlineColor</c> property defines the color of the fan outline.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter OpenOutlineColorProperty()
         {
             OpenIntervalIfNecessary();
@@ -784,6 +802,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>outlineWidth</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outlineWidth</c> property defines the width of the fan outline.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OutlineWidthWriter
         {
             get { return m_outlineWidth.Value; }
@@ -792,6 +811,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>outlineWidth</c> property.  The <c>outlineWidth</c> property defines the width of the fan outline.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenOutlineWidthProperty()
         {
             OpenIntervalIfNecessary();
@@ -891,6 +911,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>numberOfRings</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>numberOfRings</c> property defines the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
         /// </summary>
+        [NotNull]
         public IntegerCesiumWriter NumberOfRingsWriter
         {
             get { return m_numberOfRings.Value; }
@@ -899,6 +920,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>numberOfRings</c> property.  The <c>numberOfRings</c> property defines the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
         /// </summary>
+        [NotNull]
         public IntegerCesiumWriter OpenNumberOfRingsProperty()
         {
             OpenIntervalIfNecessary();

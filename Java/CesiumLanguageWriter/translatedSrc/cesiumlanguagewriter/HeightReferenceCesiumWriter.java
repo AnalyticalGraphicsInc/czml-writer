@@ -42,9 +42,11 @@ public class HeightReferenceCesiumWriter extends CesiumPropertyWriter<HeightRefe
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public HeightReferenceCesiumWriter(String propertyName) {
+    public HeightReferenceCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
         m_asHeightReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumHeightReference>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumHeightReference>>(this, "createHeightReferenceAdaptor") {
@@ -68,7 +70,7 @@ public class HeightReferenceCesiumWriter extends CesiumPropertyWriter<HeightRefe
 
     * @param existingInstance The existing instance to copy.
     */
-    protected HeightReferenceCesiumWriter(HeightReferenceCesiumWriter existingInstance) {
+    protected HeightReferenceCesiumWriter(@Nonnull HeightReferenceCesiumWriter existingInstance) {
         super(existingInstance);
         m_asHeightReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumHeightReference>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumHeightReference>>(this, "createHeightReferenceAdaptor") {

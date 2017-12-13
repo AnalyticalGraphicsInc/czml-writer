@@ -5,6 +5,7 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -62,9 +63,11 @@ public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListC
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public PositionListCesiumWriter(String propertyName) {
+    public PositionListCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
         m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartesian>>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartesian>>>(this, "createCartesianAdaptor") {
@@ -100,7 +103,7 @@ public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListC
 
     * @param existingInstance The existing instance to copy.
     */
-    protected PositionListCesiumWriter(PositionListCesiumWriter existingInstance) {
+    protected PositionListCesiumWriter(@Nonnull PositionListCesiumWriter existingInstance) {
         super(existingInstance);
         m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartesian>>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartesian>>>(this, "createCartesianAdaptor") {

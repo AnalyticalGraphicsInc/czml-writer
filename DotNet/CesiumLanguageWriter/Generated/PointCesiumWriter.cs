@@ -5,6 +5,7 @@
 
 using CesiumLanguageWriter.Advanced;
 using System;
+using JetBrains.Annotations;
 using System.Collections.Generic;
 using System.Drawing;
 
@@ -79,7 +80,8 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public PointCesiumWriter(string propertyName)
+        /// <param name="propertyName">The name of the property.</param>
+        public PointCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
         }
@@ -88,7 +90,7 @@ namespace CesiumLanguageWriter
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
         /// <param name="existingInstance">The existing instance to copy.</param>
-        protected PointCesiumWriter(PointCesiumWriter existingInstance)
+        protected PointCesiumWriter([NotNull] PointCesiumWriter existingInstance)
             : base(existingInstance)
         {
         }
@@ -102,6 +104,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>show</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>show</c> property defines whether or not the point is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter ShowWriter
         {
             get { return m_show.Value; }
@@ -110,6 +113,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>show</c> property.  The <c>show</c> property defines whether or not the point is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OpenShowProperty()
         {
             OpenIntervalIfNecessary();
@@ -181,6 +185,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>pixelSize</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>pixelSize</c> property defines the size of the point, in pixels.  If not specified, the default value is 1.0.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter PixelSizeWriter
         {
             get { return m_pixelSize.Value; }
@@ -189,6 +194,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>pixelSize</c> property.  The <c>pixelSize</c> property defines the size of the point, in pixels.  If not specified, the default value is 1.0.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenPixelSizeProperty()
         {
             OpenIntervalIfNecessary();
@@ -288,6 +294,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>heightReference</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>heightReference</c> property defines the height reference of the point, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
         /// </summary>
+        [NotNull]
         public HeightReferenceCesiumWriter HeightReferenceWriter
         {
             get { return m_heightReference.Value; }
@@ -296,6 +303,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>heightReference</c> property.  The <c>heightReference</c> property defines the height reference of the point, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
         /// </summary>
+        [NotNull]
         public HeightReferenceCesiumWriter OpenHeightReferenceProperty()
         {
             OpenIntervalIfNecessary();
@@ -367,6 +375,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>color</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>color</c> property defines the color of the point.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter ColorWriter
         {
             get { return m_color.Value; }
@@ -375,6 +384,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>color</c> property.  The <c>color</c> property defines the color of the point.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter OpenColorProperty()
         {
             OpenIntervalIfNecessary();
@@ -544,6 +554,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>outlineColor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outlineColor</c> property defines the color of the outline of the point.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter OutlineColorWriter
         {
             get { return m_outlineColor.Value; }
@@ -552,6 +563,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>outlineColor</c> property.  The <c>outlineColor</c> property defines the color of the outline of the point.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter OpenOutlineColorProperty()
         {
             OpenIntervalIfNecessary();
@@ -721,6 +733,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>outlineWidth</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outlineWidth</c> property defines the width of the outline of the point.  If not specified, the default value is 0.0.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OutlineWidthWriter
         {
             get { return m_outlineWidth.Value; }
@@ -729,6 +742,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>outlineWidth</c> property.  The <c>outlineWidth</c> property defines the width of the outline of the point.  If not specified, the default value is 0.0.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenOutlineWidthProperty()
         {
             OpenIntervalIfNecessary();
@@ -828,6 +842,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>scaleByDistance</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>scaleByDistance</c> property defines how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by <c>pixelSize</c>.
         /// </summary>
+        [NotNull]
         public NearFarScalarCesiumWriter ScaleByDistanceWriter
         {
             get { return m_scaleByDistance.Value; }
@@ -836,6 +851,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>scaleByDistance</c> property.  The <c>scaleByDistance</c> property defines how the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by <c>pixelSize</c>.
         /// </summary>
+        [NotNull]
         public NearFarScalarCesiumWriter OpenScaleByDistanceProperty()
         {
             OpenIntervalIfNecessary();
@@ -950,6 +966,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>translucencyByDistance</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>translucencyByDistance</c> property defines how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
         /// </summary>
+        [NotNull]
         public NearFarScalarCesiumWriter TranslucencyByDistanceWriter
         {
             get { return m_translucencyByDistance.Value; }
@@ -958,6 +975,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>translucencyByDistance</c> property.  The <c>translucencyByDistance</c> property defines how the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1.
         /// </summary>
+        [NotNull]
         public NearFarScalarCesiumWriter OpenTranslucencyByDistanceProperty()
         {
             OpenIntervalIfNecessary();
@@ -1072,6 +1090,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>distanceDisplayCondition</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>distanceDisplayCondition</c> property defines the display condition specifying the distance from the camera at which this point will be displayed.
         /// </summary>
+        [NotNull]
         public DistanceDisplayConditionCesiumWriter DistanceDisplayConditionWriter
         {
             get { return m_distanceDisplayCondition.Value; }
@@ -1080,6 +1099,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>distanceDisplayCondition</c> property.  The <c>distanceDisplayCondition</c> property defines the display condition specifying the distance from the camera at which this point will be displayed.
         /// </summary>
+        [NotNull]
         public DistanceDisplayConditionCesiumWriter OpenDistanceDisplayConditionProperty()
         {
             OpenIntervalIfNecessary();
@@ -1192,6 +1212,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>disableDepthTestDistance</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>disableDepthTestDistance</c> property defines the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter DisableDepthTestDistanceWriter
         {
             get { return m_disableDepthTestDistance.Value; }
@@ -1200,6 +1221,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>disableDepthTestDistance</c> property.  The <c>disableDepthTestDistance</c> property defines the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenDisableDepthTestDistanceProperty()
         {
             OpenIntervalIfNecessary();

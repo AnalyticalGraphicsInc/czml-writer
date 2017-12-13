@@ -5,6 +5,7 @@
 
 using CesiumLanguageWriter.Advanced;
 using System;
+using JetBrains.Annotations;
 using System.Drawing;
 using System.Collections.Generic;
 
@@ -43,7 +44,8 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public ImageMaterialCesiumWriter(string propertyName)
+        /// <param name="propertyName">The name of the property.</param>
+        public ImageMaterialCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
         }
@@ -52,7 +54,7 @@ namespace CesiumLanguageWriter
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
         /// <param name="existingInstance">The existing instance to copy.</param>
-        protected ImageMaterialCesiumWriter(ImageMaterialCesiumWriter existingInstance)
+        protected ImageMaterialCesiumWriter([NotNull] ImageMaterialCesiumWriter existingInstance)
             : base(existingInstance)
         {
         }
@@ -66,6 +68,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>image</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>image</c> property defines the image to display on the surface.
         /// </summary>
+        [NotNull]
         public UriCesiumWriter ImageWriter
         {
             get { return m_image.Value; }
@@ -74,6 +77,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>image</c> property.  The <c>image</c> property defines the image to display on the surface.
         /// </summary>
+        [NotNull]
         public UriCesiumWriter OpenImageProperty()
         {
             OpenIntervalIfNecessary();
@@ -222,6 +226,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>repeat</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>repeat</c> property defines the number of times the image repeats along each axis.
         /// </summary>
+        [NotNull]
         public RepeatCesiumWriter RepeatWriter
         {
             get { return m_repeat.Value; }
@@ -230,6 +235,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>repeat</c> property.  The <c>repeat</c> property defines the number of times the image repeats along each axis.
         /// </summary>
+        [NotNull]
         public RepeatCesiumWriter OpenRepeatProperty()
         {
             OpenIntervalIfNecessary();
@@ -342,6 +348,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>color</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>color</c> property defines the color of the image. This color value is multiplied with the image to produce the final color.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter ColorWriter
         {
             get { return m_color.Value; }
@@ -350,6 +357,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>color</c> property.  The <c>color</c> property defines the color of the image. This color value is multiplied with the image to produce the final color.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter OpenColorProperty()
         {
             OpenIntervalIfNecessary();
@@ -519,6 +527,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>transparent</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>transparent</c> property defines whether or not the image has transparency.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter TransparentWriter
         {
             get { return m_transparent.Value; }
@@ -527,6 +536,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>transparent</c> property.  The <c>transparent</c> property defines whether or not the image has transparency.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OpenTransparentProperty()
         {
             OpenIntervalIfNecessary();

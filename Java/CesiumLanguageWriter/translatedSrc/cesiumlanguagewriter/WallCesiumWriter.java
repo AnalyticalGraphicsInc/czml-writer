@@ -180,9 +180,11 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public WallCesiumWriter(String propertyName) {
+    public WallCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
     }
 
@@ -194,7 +196,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     * @param existingInstance The existing instance to copy.
     */
-    protected WallCesiumWriter(WallCesiumWriter existingInstance) {
+    protected WallCesiumWriter(@Nonnull WallCesiumWriter existingInstance) {
         super(existingInstance);
     }
 
@@ -217,6 +219,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getShowWriter() {
         return m_show.getValue();
     }
@@ -227,6 +230,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openShowProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getShowWriter());
@@ -336,6 +340,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     
 
     */
+    @Nonnull
     public final PositionListCesiumWriter getPositionsWriter() {
         return m_positions.getValue();
     }
@@ -346,6 +351,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     
 
     */
+    @Nonnull
     public final PositionListCesiumWriter openPositionsProperty() {
         openIntervalIfNecessary();
         return this.<PositionListCesiumWriter> openAndReturn(getPositionsWriter());
@@ -432,6 +438,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DoubleListCesiumWriter getMinimumHeightsWriter() {
         return m_minimumHeights.getValue();
     }
@@ -442,6 +449,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DoubleListCesiumWriter openMinimumHeightsProperty() {
         openIntervalIfNecessary();
         return this.<DoubleListCesiumWriter> openAndReturn(getMinimumHeightsWriter());
@@ -490,6 +498,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DoubleListCesiumWriter getMaximumHeightsWriter() {
         return m_maximumHeights.getValue();
     }
@@ -500,6 +509,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DoubleListCesiumWriter openMaximumHeightsProperty() {
         openIntervalIfNecessary();
         return this.<DoubleListCesiumWriter> openAndReturn(getMaximumHeightsWriter());
@@ -548,6 +558,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getGranularityWriter() {
         return m_granularity.getValue();
     }
@@ -558,6 +569,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openGranularityProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getGranularityWriter());
@@ -713,6 +725,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getFillWriter() {
         return m_fill.getValue();
     }
@@ -723,6 +736,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openFillProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getFillWriter());
@@ -832,6 +846,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     
 
     */
+    @Nonnull
     public final MaterialCesiumWriter getMaterialWriter() {
         return m_material.getValue();
     }
@@ -842,6 +857,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     
 
     */
+    @Nonnull
     public final MaterialCesiumWriter openMaterialProperty() {
         openIntervalIfNecessary();
         return this.<MaterialCesiumWriter> openAndReturn(getMaterialWriter());
@@ -852,6 +868,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getOutlineWriter() {
         return m_outline.getValue();
     }
@@ -862,6 +879,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openOutlineProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getOutlineWriter());
@@ -971,6 +989,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter getOutlineColorWriter() {
         return m_outlineColor.getValue();
     }
@@ -981,6 +1000,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter openOutlineColorProperty() {
         openIntervalIfNecessary();
         return this.<ColorCesiumWriter> openAndReturn(getOutlineColorWriter());
@@ -1251,6 +1271,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getOutlineWidthWriter() {
         return m_outlineWidth.getValue();
     }
@@ -1261,6 +1282,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openOutlineWidthProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getOutlineWidthWriter());
@@ -1416,6 +1438,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     
 
     */
+    @Nonnull
     public final ShadowModeCesiumWriter getShadowsWriter() {
         return m_shadows.getValue();
     }
@@ -1426,6 +1449,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     
 
     */
+    @Nonnull
     public final ShadowModeCesiumWriter openShadowsProperty() {
         openIntervalIfNecessary();
         return this.<ShadowModeCesiumWriter> openAndReturn(getShadowsWriter());
@@ -1535,6 +1559,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DistanceDisplayConditionCesiumWriter getDistanceDisplayConditionWriter() {
         return m_distanceDisplayCondition.getValue();
     }
@@ -1545,6 +1570,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     
 
     */
+    @Nonnull
     public final DistanceDisplayConditionCesiumWriter openDistanceDisplayConditionProperty() {
         openIntervalIfNecessary();
         return this.<DistanceDisplayConditionCesiumWriter> openAndReturn(getDistanceDisplayConditionWriter());

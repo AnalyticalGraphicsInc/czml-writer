@@ -53,9 +53,11 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public PolylineGlowMaterialCesiumWriter(String propertyName) {
+    public PolylineGlowMaterialCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
     }
 
@@ -67,7 +69,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     * @param existingInstance The existing instance to copy.
     */
-    protected PolylineGlowMaterialCesiumWriter(PolylineGlowMaterialCesiumWriter existingInstance) {
+    protected PolylineGlowMaterialCesiumWriter(@Nonnull PolylineGlowMaterialCesiumWriter existingInstance) {
         super(existingInstance);
     }
 
@@ -90,6 +92,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter getColorWriter() {
         return m_color.getValue();
     }
@@ -100,6 +103,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter openColorProperty() {
         openIntervalIfNecessary();
         return this.<ColorCesiumWriter> openAndReturn(getColorWriter());
@@ -370,6 +374,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getGlowPowerWriter() {
         return m_glowPower.getValue();
     }
@@ -380,6 +385,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openGlowPowerProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getGlowPowerWriter());

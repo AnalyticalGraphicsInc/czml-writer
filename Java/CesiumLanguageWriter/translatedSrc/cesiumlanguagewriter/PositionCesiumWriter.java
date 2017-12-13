@@ -76,9 +76,11 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public PositionCesiumWriter(String propertyName) {
+    public PositionCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
         m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(this, "createCartesianAdaptor") {
@@ -120,7 +122,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
 
     * @param existingInstance The existing instance to copy.
     */
-    protected PositionCesiumWriter(PositionCesiumWriter existingInstance) {
+    protected PositionCesiumWriter(@Nonnull PositionCesiumWriter existingInstance) {
         super(existingInstance);
         m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(this, "createCartesianAdaptor") {

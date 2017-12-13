@@ -90,9 +90,11 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public StripeMaterialCesiumWriter(String propertyName) {
+    public StripeMaterialCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
     }
 
@@ -104,7 +106,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     * @param existingInstance The existing instance to copy.
     */
-    protected StripeMaterialCesiumWriter(StripeMaterialCesiumWriter existingInstance) {
+    protected StripeMaterialCesiumWriter(@Nonnull StripeMaterialCesiumWriter existingInstance) {
         super(existingInstance);
     }
 
@@ -127,6 +129,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     
 
     */
+    @Nonnull
     public final StripeOrientationCesiumWriter getOrientationWriter() {
         return m_orientation.getValue();
     }
@@ -137,6 +140,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     
 
     */
+    @Nonnull
     public final StripeOrientationCesiumWriter openOrientationProperty() {
         openIntervalIfNecessary();
         return this.<StripeOrientationCesiumWriter> openAndReturn(getOrientationWriter());
@@ -246,6 +250,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter getEvenColorWriter() {
         return m_evenColor.getValue();
     }
@@ -256,6 +261,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter openEvenColorProperty() {
         openIntervalIfNecessary();
         return this.<ColorCesiumWriter> openAndReturn(getEvenColorWriter());
@@ -526,6 +532,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter getOddColorWriter() {
         return m_oddColor.getValue();
     }
@@ -536,6 +543,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter openOddColorProperty() {
         openIntervalIfNecessary();
         return this.<ColorCesiumWriter> openAndReturn(getOddColorWriter());
@@ -806,6 +814,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getOffsetWriter() {
         return m_offset.getValue();
     }
@@ -816,6 +825,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openOffsetProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getOffsetWriter());
@@ -971,6 +981,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getRepeatWriter() {
         return m_repeat.getValue();
     }
@@ -981,6 +992,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openRepeatProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getRepeatWriter());

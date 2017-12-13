@@ -180,9 +180,11 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public EllipsoidCesiumWriter(String propertyName) {
+    public EllipsoidCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
     }
 
@@ -194,7 +196,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
     * @param existingInstance The existing instance to copy.
     */
-    protected EllipsoidCesiumWriter(EllipsoidCesiumWriter existingInstance) {
+    protected EllipsoidCesiumWriter(@Nonnull EllipsoidCesiumWriter existingInstance) {
         super(existingInstance);
     }
 
@@ -217,6 +219,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getShowWriter() {
         return m_show.getValue();
     }
@@ -227,6 +230,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openShowProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getShowWriter());
@@ -336,6 +340,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     
 
     */
+    @Nonnull
     public final EllipsoidRadiiCesiumWriter getRadiiWriter() {
         return m_radii.getValue();
     }
@@ -346,6 +351,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     
 
     */
+    @Nonnull
     public final EllipsoidRadiiCesiumWriter openRadiiProperty() {
         openIntervalIfNecessary();
         return this.<EllipsoidRadiiCesiumWriter> openAndReturn(getRadiiWriter());
@@ -501,6 +507,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getFillWriter() {
         return m_fill.getValue();
     }
@@ -511,6 +518,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openFillProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getFillWriter());
@@ -620,6 +628,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     
 
     */
+    @Nonnull
     public final MaterialCesiumWriter getMaterialWriter() {
         return m_material.getValue();
     }
@@ -630,6 +639,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     
 
     */
+    @Nonnull
     public final MaterialCesiumWriter openMaterialProperty() {
         openIntervalIfNecessary();
         return this.<MaterialCesiumWriter> openAndReturn(getMaterialWriter());
@@ -640,6 +650,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getOutlineWriter() {
         return m_outline.getValue();
     }
@@ -650,6 +661,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openOutlineProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getOutlineWriter());
@@ -759,6 +771,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter getOutlineColorWriter() {
         return m_outlineColor.getValue();
     }
@@ -769,6 +782,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter openOutlineColorProperty() {
         openIntervalIfNecessary();
         return this.<ColorCesiumWriter> openAndReturn(getOutlineColorWriter());
@@ -1039,6 +1053,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getOutlineWidthWriter() {
         return m_outlineWidth.getValue();
     }
@@ -1049,6 +1064,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openOutlineWidthProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getOutlineWidthWriter());
@@ -1204,6 +1220,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     
 
     */
+    @Nonnull
     public final IntegerCesiumWriter getStackPartitionsWriter() {
         return m_stackPartitions.getValue();
     }
@@ -1214,6 +1231,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     
 
     */
+    @Nonnull
     public final IntegerCesiumWriter openStackPartitionsProperty() {
         openIntervalIfNecessary();
         return this.<IntegerCesiumWriter> openAndReturn(getStackPartitionsWriter());
@@ -1369,6 +1387,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     
 
     */
+    @Nonnull
     public final IntegerCesiumWriter getSlicePartitionsWriter() {
         return m_slicePartitions.getValue();
     }
@@ -1379,6 +1398,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     
 
     */
+    @Nonnull
     public final IntegerCesiumWriter openSlicePartitionsProperty() {
         openIntervalIfNecessary();
         return this.<IntegerCesiumWriter> openAndReturn(getSlicePartitionsWriter());
@@ -1534,6 +1554,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getSubdivisionsWriter() {
         return m_subdivisions.getValue();
     }
@@ -1544,6 +1565,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openSubdivisionsProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getSubdivisionsWriter());
@@ -1699,6 +1721,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     
 
     */
+    @Nonnull
     public final ShadowModeCesiumWriter getShadowsWriter() {
         return m_shadows.getValue();
     }
@@ -1709,6 +1732,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     
 
     */
+    @Nonnull
     public final ShadowModeCesiumWriter openShadowsProperty() {
         openIntervalIfNecessary();
         return this.<ShadowModeCesiumWriter> openAndReturn(getShadowsWriter());
@@ -1818,6 +1842,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     
 
     */
+    @Nonnull
     public final DistanceDisplayConditionCesiumWriter getDistanceDisplayConditionWriter() {
         return m_distanceDisplayCondition.getValue();
     }
@@ -1828,6 +1853,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     
 
     */
+    @Nonnull
     public final DistanceDisplayConditionCesiumWriter openDistanceDisplayConditionProperty() {
         openIntervalIfNecessary();
         return this.<DistanceDisplayConditionCesiumWriter> openAndReturn(getDistanceDisplayConditionWriter());

@@ -6,6 +6,7 @@ import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.Reference;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -40,9 +41,11 @@ public class FontCesiumWriter extends CesiumPropertyWriter<FontCesiumWriter> {
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public FontCesiumWriter(String propertyName) {
+    public FontCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
         m_asFont = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String>>(this, "createFontAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String> invoke() {
@@ -65,7 +68,7 @@ public class FontCesiumWriter extends CesiumPropertyWriter<FontCesiumWriter> {
 
     * @param existingInstance The existing instance to copy.
     */
-    protected FontCesiumWriter(FontCesiumWriter existingInstance) {
+    protected FontCesiumWriter(@Nonnull FontCesiumWriter existingInstance) {
         super(existingInstance);
         m_asFont = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String>>(this, "createFontAdaptor") {
             public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<String> invoke() {

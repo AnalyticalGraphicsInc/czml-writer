@@ -5,6 +5,7 @@
 
 using CesiumLanguageWriter.Advanced;
 using System;
+using JetBrains.Annotations;
 using System.Drawing;
 using System.Collections.Generic;
 
@@ -37,7 +38,8 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public PolylineOutlineMaterialCesiumWriter(string propertyName)
+        /// <param name="propertyName">The name of the property.</param>
+        public PolylineOutlineMaterialCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
         }
@@ -46,7 +48,7 @@ namespace CesiumLanguageWriter
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
         /// <param name="existingInstance">The existing instance to copy.</param>
-        protected PolylineOutlineMaterialCesiumWriter(PolylineOutlineMaterialCesiumWriter existingInstance)
+        protected PolylineOutlineMaterialCesiumWriter([NotNull] PolylineOutlineMaterialCesiumWriter existingInstance)
             : base(existingInstance)
         {
         }
@@ -60,6 +62,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>color</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>color</c> property defines the color of the surface.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter ColorWriter
         {
             get { return m_color.Value; }
@@ -68,6 +71,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>color</c> property.  The <c>color</c> property defines the color of the surface.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter OpenColorProperty()
         {
             OpenIntervalIfNecessary();
@@ -237,6 +241,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>outlineColor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outlineColor</c> property defines the color of the surface outline.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter OutlineColorWriter
         {
             get { return m_outlineColor.Value; }
@@ -245,6 +250,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>outlineColor</c> property.  The <c>outlineColor</c> property defines the color of the surface outline.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter OpenOutlineColorProperty()
         {
             OpenIntervalIfNecessary();
@@ -414,6 +420,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>outlineWidth</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outlineWidth</c> property defines the width of the outline.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OutlineWidthWriter
         {
             get { return m_outlineWidth.Value; }
@@ -422,6 +429,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>outlineWidth</c> property.  The <c>outlineWidth</c> property defines the width of the outline.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenOutlineWidthProperty()
         {
             OpenIntervalIfNecessary();

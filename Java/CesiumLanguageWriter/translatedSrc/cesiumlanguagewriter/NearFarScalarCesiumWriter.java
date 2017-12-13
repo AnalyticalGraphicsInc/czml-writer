@@ -43,9 +43,11 @@ public class NearFarScalarCesiumWriter extends CesiumInterpolatablePropertyWrite
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public NearFarScalarCesiumWriter(String propertyName) {
+    public NearFarScalarCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
         m_asNearFarScalar = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<NearFarScalar>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<NearFarScalar>>(this, "createNearFarScalarAdaptor") {
@@ -69,7 +71,7 @@ public class NearFarScalarCesiumWriter extends CesiumInterpolatablePropertyWrite
 
     * @param existingInstance The existing instance to copy.
     */
-    protected NearFarScalarCesiumWriter(NearFarScalarCesiumWriter existingInstance) {
+    protected NearFarScalarCesiumWriter(@Nonnull NearFarScalarCesiumWriter existingInstance) {
         super(existingInstance);
         m_asNearFarScalar = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<NearFarScalar>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<NearFarScalar>>(this, "createNearFarScalarAdaptor") {

@@ -78,9 +78,11 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public PolylineDashMaterialCesiumWriter(String propertyName) {
+    public PolylineDashMaterialCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
     }
 
@@ -92,7 +94,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     * @param existingInstance The existing instance to copy.
     */
-    protected PolylineDashMaterialCesiumWriter(PolylineDashMaterialCesiumWriter existingInstance) {
+    protected PolylineDashMaterialCesiumWriter(@Nonnull PolylineDashMaterialCesiumWriter existingInstance) {
         super(existingInstance);
     }
 
@@ -115,6 +117,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter getColorWriter() {
         return m_color.getValue();
     }
@@ -125,6 +128,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter openColorProperty() {
         openIntervalIfNecessary();
         return this.<ColorCesiumWriter> openAndReturn(getColorWriter());
@@ -395,6 +399,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter getGapColorWriter() {
         return m_gapColor.getValue();
     }
@@ -405,6 +410,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter openGapColorProperty() {
         openIntervalIfNecessary();
         return this.<ColorCesiumWriter> openAndReturn(getGapColorWriter());
@@ -675,6 +681,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getDashLengthWriter() {
         return m_dashLength.getValue();
     }
@@ -685,6 +692,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openDashLengthProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getDashLengthWriter());
@@ -840,6 +848,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     
 
     */
+    @Nonnull
     public final IntegerCesiumWriter getDashPatternWriter() {
         return m_dashPattern.getValue();
     }
@@ -850,6 +859,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     
 
     */
+    @Nonnull
     public final IntegerCesiumWriter openDashPatternProperty() {
         openIntervalIfNecessary();
         return this.<IntegerCesiumWriter> openAndReturn(getDashPatternWriter());

@@ -8,6 +8,7 @@ import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.CartographicExtent;
 import cesiumlanguagewriter.Reference;
 import java.util.List;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -50,9 +51,11 @@ public class RectangleCoordinatesCesiumWriter extends CesiumInterpolatableProper
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public RectangleCoordinatesCesiumWriter(String propertyName) {
+    public RectangleCoordinatesCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
         m_asWsen = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<CartographicExtent>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<CartographicExtent>>(this, "createWsenAdaptor") {
@@ -82,7 +85,7 @@ public class RectangleCoordinatesCesiumWriter extends CesiumInterpolatableProper
 
     * @param existingInstance The existing instance to copy.
     */
-    protected RectangleCoordinatesCesiumWriter(RectangleCoordinatesCesiumWriter existingInstance) {
+    protected RectangleCoordinatesCesiumWriter(@Nonnull RectangleCoordinatesCesiumWriter existingInstance) {
         super(existingInstance);
         m_asWsen = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<CartographicExtent>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<CartographicExtent>>(this, "createWsenAdaptor") {

@@ -5,6 +5,7 @@
 
 using CesiumLanguageWriter.Advanced;
 using System;
+using JetBrains.Annotations;
 using System.Drawing;
 using System.Collections.Generic;
 
@@ -139,7 +140,8 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public BillboardCesiumWriter(string propertyName)
+        /// <param name="propertyName">The name of the property.</param>
+        public BillboardCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
         }
@@ -148,7 +150,7 @@ namespace CesiumLanguageWriter
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
         /// <param name="existingInstance">The existing instance to copy.</param>
-        protected BillboardCesiumWriter(BillboardCesiumWriter existingInstance)
+        protected BillboardCesiumWriter([NotNull] BillboardCesiumWriter existingInstance)
             : base(existingInstance)
         {
         }
@@ -162,6 +164,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>show</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>show</c> property defines whether or not the billboard is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter ShowWriter
         {
             get { return m_show.Value; }
@@ -170,6 +173,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>show</c> property.  The <c>show</c> property defines whether or not the billboard is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OpenShowProperty()
         {
             OpenIntervalIfNecessary();
@@ -241,6 +245,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>image</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>image</c> property defines the URI of the image displayed on the billboard.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
         /// </summary>
+        [NotNull]
         public UriCesiumWriter ImageWriter
         {
             get { return m_image.Value; }
@@ -249,6 +254,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>image</c> property.  The <c>image</c> property defines the URI of the image displayed on the billboard.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
         /// </summary>
+        [NotNull]
         public UriCesiumWriter OpenImageProperty()
         {
             OpenIntervalIfNecessary();
@@ -397,6 +403,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>scale</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>scale</c> property defines the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's <c>image</c>.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the <c>image</c>.  If not specified, the default value is 1.0.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter ScaleWriter
         {
             get { return m_scale.Value; }
@@ -405,6 +412,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>scale</c> property.  The <c>scale</c> property defines the scale of the billboard.  The scale is multiplied with the pixel size of the billboard's <c>image</c>.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the <c>image</c>.  If not specified, the default value is 1.0.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenScaleProperty()
         {
             OpenIntervalIfNecessary();
@@ -504,6 +512,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>pixelOffset</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>pixelOffset</c> property defines the offset, in viewport pixels, of the billboard origin from the <c>position</c>.  A pixel offset is the number of pixels up and to the right to place the billboard, relative to the <c>position</c>.
         /// </summary>
+        [NotNull]
         public PixelOffsetCesiumWriter PixelOffsetWriter
         {
             get { return m_pixelOffset.Value; }
@@ -512,6 +521,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>pixelOffset</c> property.  The <c>pixelOffset</c> property defines the offset, in viewport pixels, of the billboard origin from the <c>position</c>.  A pixel offset is the number of pixels up and to the right to place the billboard, relative to the <c>position</c>.
         /// </summary>
+        [NotNull]
         public PixelOffsetCesiumWriter OpenPixelOffsetProperty()
         {
             OpenIntervalIfNecessary();
@@ -624,6 +634,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>eyeOffset</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>eyeOffset</c> property defines the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the <c>position</c> property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
         /// </summary>
+        [NotNull]
         public EyeOffsetCesiumWriter EyeOffsetWriter
         {
             get { return m_eyeOffset.Value; }
@@ -632,6 +643,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>eyeOffset</c> property.  The <c>eyeOffset</c> property defines the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the <c>position</c> property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
         /// </summary>
+        [NotNull]
         public EyeOffsetCesiumWriter OpenEyeOffsetProperty()
         {
             OpenIntervalIfNecessary();
@@ -731,6 +743,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>horizontalOrigin</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>horizontalOrigin</c> property defines the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the <c>position</c>.  If not specified, the default value is CENTER.
         /// </summary>
+        [NotNull]
         public HorizontalOriginCesiumWriter HorizontalOriginWriter
         {
             get { return m_horizontalOrigin.Value; }
@@ -739,6 +752,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>horizontalOrigin</c> property.  The <c>horizontalOrigin</c> property defines the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the <c>position</c>.  If not specified, the default value is CENTER.
         /// </summary>
+        [NotNull]
         public HorizontalOriginCesiumWriter OpenHorizontalOriginProperty()
         {
             OpenIntervalIfNecessary();
@@ -810,6 +824,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>verticalOrigin</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>verticalOrigin</c> property defines the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the <c>position</c>.  If not specified, the default value is CENTER.
         /// </summary>
+        [NotNull]
         public VerticalOriginCesiumWriter VerticalOriginWriter
         {
             get { return m_verticalOrigin.Value; }
@@ -818,6 +833,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>verticalOrigin</c> property.  The <c>verticalOrigin</c> property defines the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the <c>position</c>.  If not specified, the default value is CENTER.
         /// </summary>
+        [NotNull]
         public VerticalOriginCesiumWriter OpenVerticalOriginProperty()
         {
             OpenIntervalIfNecessary();
@@ -889,6 +905,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>heightReference</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>heightReference</c> property defines the height reference of the billboard, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
         /// </summary>
+        [NotNull]
         public HeightReferenceCesiumWriter HeightReferenceWriter
         {
             get { return m_heightReference.Value; }
@@ -897,6 +914,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>heightReference</c> property.  The <c>heightReference</c> property defines the height reference of the billboard, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
         /// </summary>
+        [NotNull]
         public HeightReferenceCesiumWriter OpenHeightReferenceProperty()
         {
             OpenIntervalIfNecessary();
@@ -968,6 +986,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>color</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>color</c> property defines the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter ColorWriter
         {
             get { return m_color.Value; }
@@ -976,6 +995,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>color</c> property.  The <c>color</c> property defines the color of the billboard.  This color value is multiplied with the values of the billboard's "image" to produce the final color.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter OpenColorProperty()
         {
             OpenIntervalIfNecessary();
@@ -1145,6 +1165,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>rotation</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>rotation</c> property defines the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.  If not specified, the default value is 0.0.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter RotationWriter
         {
             get { return m_rotation.Value; }
@@ -1153,6 +1174,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>rotation</c> property.  The <c>rotation</c> property defines the rotation of the billboard, in radians, counter-clockwise from the alignedAxis.  If not specified, the default value is 0.0.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenRotationProperty()
         {
             OpenIntervalIfNecessary();
@@ -1252,6 +1274,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>alignedAxis</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>alignedAxis</c> property defines the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
         /// </summary>
+        [NotNull]
         public AlignedAxisCesiumWriter AlignedAxisWriter
         {
             get { return m_alignedAxis.Value; }
@@ -1260,6 +1283,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>alignedAxis</c> property.  The <c>alignedAxis</c> property defines the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector.
         /// </summary>
+        [NotNull]
         public AlignedAxisCesiumWriter OpenAlignedAxisProperty()
         {
             OpenIntervalIfNecessary();
@@ -1449,6 +1473,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>sizeInMeters</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>sizeInMeters</c> property defines whether this billboard's size (<c>width</c> and <c>height</c>) should be measured in meters, otherwise size is measured in pixels.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter SizeInMetersWriter
         {
             get { return m_sizeInMeters.Value; }
@@ -1457,6 +1482,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>sizeInMeters</c> property.  The <c>sizeInMeters</c> property defines whether this billboard's size (<c>width</c> and <c>height</c>) should be measured in meters, otherwise size is measured in pixels.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OpenSizeInMetersProperty()
         {
             OpenIntervalIfNecessary();
@@ -1528,6 +1554,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>width</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>width</c> property defines the width of the billboard, in pixels (or meters, if <c>sizeInMeters</c> is true). By default, the native width of the image is used.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter WidthWriter
         {
             get { return m_width.Value; }
@@ -1536,6 +1563,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>width</c> property.  The <c>width</c> property defines the width of the billboard, in pixels (or meters, if <c>sizeInMeters</c> is true). By default, the native width of the image is used.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenWidthProperty()
         {
             OpenIntervalIfNecessary();
@@ -1635,6 +1663,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>height</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>height</c> property defines the height of the billboard, in pixels (or meters, if <c>sizeInMeters</c> is true). By default, the native height of the image is used.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter HeightWriter
         {
             get { return m_height.Value; }
@@ -1643,6 +1672,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>height</c> property.  The <c>height</c> property defines the height of the billboard, in pixels (or meters, if <c>sizeInMeters</c> is true). By default, the native height of the image is used.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenHeightProperty()
         {
             OpenIntervalIfNecessary();
@@ -1742,6 +1772,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>scaleByDistance</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>scaleByDistance</c> property defines how the billboard's scale should change based on the billboard's distance from the camera.  This scalar value will be multiplied by <c>scale</c>.
         /// </summary>
+        [NotNull]
         public NearFarScalarCesiumWriter ScaleByDistanceWriter
         {
             get { return m_scaleByDistance.Value; }
@@ -1750,6 +1781,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>scaleByDistance</c> property.  The <c>scaleByDistance</c> property defines how the billboard's scale should change based on the billboard's distance from the camera.  This scalar value will be multiplied by <c>scale</c>.
         /// </summary>
+        [NotNull]
         public NearFarScalarCesiumWriter OpenScaleByDistanceProperty()
         {
             OpenIntervalIfNecessary();
@@ -1864,6 +1896,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>translucencyByDistance</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>translucencyByDistance</c> property defines how the billboard's translucency should change based on the billboard's distance from the camera.  This scalar value should range from 0 to 1.
         /// </summary>
+        [NotNull]
         public NearFarScalarCesiumWriter TranslucencyByDistanceWriter
         {
             get { return m_translucencyByDistance.Value; }
@@ -1872,6 +1905,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>translucencyByDistance</c> property.  The <c>translucencyByDistance</c> property defines how the billboard's translucency should change based on the billboard's distance from the camera.  This scalar value should range from 0 to 1.
         /// </summary>
+        [NotNull]
         public NearFarScalarCesiumWriter OpenTranslucencyByDistanceProperty()
         {
             OpenIntervalIfNecessary();
@@ -1986,6 +2020,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>pixelOffsetScaleByDistance</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>pixelOffsetScaleByDistance</c> property defines how the billboard's pixel offset should change based on the billboard's distance from the camera.  This scalar value will be multiplied by <c>pixelOffset</c>.
         /// </summary>
+        [NotNull]
         public NearFarScalarCesiumWriter PixelOffsetScaleByDistanceWriter
         {
             get { return m_pixelOffsetScaleByDistance.Value; }
@@ -1994,6 +2029,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>pixelOffsetScaleByDistance</c> property.  The <c>pixelOffsetScaleByDistance</c> property defines how the billboard's pixel offset should change based on the billboard's distance from the camera.  This scalar value will be multiplied by <c>pixelOffset</c>.
         /// </summary>
+        [NotNull]
         public NearFarScalarCesiumWriter OpenPixelOffsetScaleByDistanceProperty()
         {
             OpenIntervalIfNecessary();
@@ -2108,6 +2144,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>imageSubRegion</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>imageSubRegion</c> property defines a sub-region of the image which will be used for the billboard, rather than the entire image, measured in pixels from the bottom-left.
         /// </summary>
+        [NotNull]
         public BoundingRectangleCesiumWriter ImageSubRegionWriter
         {
             get { return m_imageSubRegion.Value; }
@@ -2116,6 +2153,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>imageSubRegion</c> property.  The <c>imageSubRegion</c> property defines a sub-region of the image which will be used for the billboard, rather than the entire image, measured in pixels from the bottom-left.
         /// </summary>
+        [NotNull]
         public BoundingRectangleCesiumWriter OpenImageSubRegionProperty()
         {
             OpenIntervalIfNecessary();
@@ -2215,6 +2253,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>distanceDisplayCondition</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>distanceDisplayCondition</c> property defines the display condition specifying the distance from the camera at which this billboard will be displayed.
         /// </summary>
+        [NotNull]
         public DistanceDisplayConditionCesiumWriter DistanceDisplayConditionWriter
         {
             get { return m_distanceDisplayCondition.Value; }
@@ -2223,6 +2262,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>distanceDisplayCondition</c> property.  The <c>distanceDisplayCondition</c> property defines the display condition specifying the distance from the camera at which this billboard will be displayed.
         /// </summary>
+        [NotNull]
         public DistanceDisplayConditionCesiumWriter OpenDistanceDisplayConditionProperty()
         {
             OpenIntervalIfNecessary();
@@ -2335,6 +2375,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>disableDepthTestDistance</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>disableDepthTestDistance</c> property defines the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter DisableDepthTestDistanceWriter
         {
             get { return m_disableDepthTestDistance.Value; }
@@ -2343,6 +2384,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>disableDepthTestDistance</c> property.  The <c>disableDepthTestDistance</c> property defines the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenDisableDepthTestDistanceProperty()
         {
             OpenIntervalIfNecessary();

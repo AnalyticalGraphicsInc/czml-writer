@@ -43,9 +43,11 @@ public class EllipsoidRadiiCesiumWriter extends CesiumInterpolatablePropertyWrit
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public EllipsoidRadiiCesiumWriter(String propertyName) {
+    public EllipsoidRadiiCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
         m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(this, "createCartesianAdaptor") {
@@ -69,7 +71,7 @@ public class EllipsoidRadiiCesiumWriter extends CesiumInterpolatablePropertyWrit
 
     * @param existingInstance The existing instance to copy.
     */
-    protected EllipsoidRadiiCesiumWriter(EllipsoidRadiiCesiumWriter existingInstance) {
+    protected EllipsoidRadiiCesiumWriter(@Nonnull EllipsoidRadiiCesiumWriter existingInstance) {
         super(existingInstance);
         m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(this, "createCartesianAdaptor") {

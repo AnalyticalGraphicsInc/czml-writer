@@ -5,6 +5,7 @@
 
 using CesiumLanguageWriter.Advanced;
 using System;
+using JetBrains.Annotations;
 using System.Drawing;
 
 namespace CesiumLanguageWriter
@@ -30,7 +31,8 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public UriCesiumWriter(string propertyName)
+        /// <param name="propertyName">The name of the property.</param>
+        public UriCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
             m_asUri = new Lazy<ICesiumValuePropertyWriter<CesiumResource>>(CreateUriAdaptor, false);
@@ -41,7 +43,7 @@ namespace CesiumLanguageWriter
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
         /// <param name="existingInstance">The existing instance to copy.</param>
-        protected UriCesiumWriter(UriCesiumWriter existingInstance)
+        protected UriCesiumWriter([NotNull] UriCesiumWriter existingInstance)
             : base(existingInstance)
         {
             m_asUri = new Lazy<ICesiumValuePropertyWriter<CesiumResource>>(CreateUriAdaptor, false);

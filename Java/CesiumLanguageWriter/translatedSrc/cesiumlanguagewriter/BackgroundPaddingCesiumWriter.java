@@ -43,9 +43,11 @@ public class BackgroundPaddingCesiumWriter extends CesiumInterpolatablePropertyW
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public BackgroundPaddingCesiumWriter(String propertyName) {
+    public BackgroundPaddingCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
         m_asCartesian2 = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Rectangular>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Rectangular>>(this, "createCartesian2Adaptor") {
@@ -69,7 +71,7 @@ public class BackgroundPaddingCesiumWriter extends CesiumInterpolatablePropertyW
 
     * @param existingInstance The existing instance to copy.
     */
-    protected BackgroundPaddingCesiumWriter(BackgroundPaddingCesiumWriter existingInstance) {
+    protected BackgroundPaddingCesiumWriter(@Nonnull BackgroundPaddingCesiumWriter existingInstance) {
         super(existingInstance);
         m_asCartesian2 = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Rectangular>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Rectangular>>(this, "createCartesian2Adaptor") {

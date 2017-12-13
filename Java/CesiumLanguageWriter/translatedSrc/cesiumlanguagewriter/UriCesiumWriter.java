@@ -44,9 +44,11 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public UriCesiumWriter(String propertyName) {
+    public UriCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
         m_asUri = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumResource>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumResource>>(this,
                 "createUriAdaptor") {
@@ -70,7 +72,7 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
 
     * @param existingInstance The existing instance to copy.
     */
-    protected UriCesiumWriter(UriCesiumWriter existingInstance) {
+    protected UriCesiumWriter(@Nonnull UriCesiumWriter existingInstance) {
         super(existingInstance);
         m_asUri = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumResource>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumResource>>(this,
                 "createUriAdaptor") {

@@ -5,6 +5,7 @@
 
 using CesiumLanguageWriter.Advanced;
 using System;
+using JetBrains.Annotations;
 
 namespace CesiumLanguageWriter
 {
@@ -29,7 +30,8 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public HorizontalOriginCesiumWriter(string propertyName)
+        /// <param name="propertyName">The name of the property.</param>
+        public HorizontalOriginCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
             m_asHorizontalOrigin = new Lazy<ICesiumValuePropertyWriter<CesiumHorizontalOrigin>>(CreateHorizontalOriginAdaptor, false);
@@ -40,7 +42,7 @@ namespace CesiumLanguageWriter
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
         /// <param name="existingInstance">The existing instance to copy.</param>
-        protected HorizontalOriginCesiumWriter(HorizontalOriginCesiumWriter existingInstance)
+        protected HorizontalOriginCesiumWriter([NotNull] HorizontalOriginCesiumWriter existingInstance)
             : base(existingInstance)
         {
             m_asHorizontalOrigin = new Lazy<ICesiumValuePropertyWriter<CesiumHorizontalOrigin>>(CreateHorizontalOriginAdaptor, false);

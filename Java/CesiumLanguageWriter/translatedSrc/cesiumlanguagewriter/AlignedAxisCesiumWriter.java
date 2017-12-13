@@ -60,9 +60,11 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public AlignedAxisCesiumWriter(String propertyName) {
+    public AlignedAxisCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
         m_asUnitCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(this, "createUnitCartesianAdaptor") {
@@ -98,7 +100,7 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
     * @param existingInstance The existing instance to copy.
     */
-    protected AlignedAxisCesiumWriter(AlignedAxisCesiumWriter existingInstance) {
+    protected AlignedAxisCesiumWriter(@Nonnull AlignedAxisCesiumWriter existingInstance) {
         super(existingInstance);
         m_asUnitCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(this, "createUnitCartesianAdaptor") {

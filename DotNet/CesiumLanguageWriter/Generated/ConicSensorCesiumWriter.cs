@@ -5,6 +5,7 @@
 
 using CesiumLanguageWriter.Advanced;
 using System;
+using JetBrains.Annotations;
 using System.Collections.Generic;
 using System.Drawing;
 
@@ -163,7 +164,8 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public ConicSensorCesiumWriter(string propertyName)
+        /// <param name="propertyName">The name of the property.</param>
+        public ConicSensorCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
         }
@@ -172,7 +174,7 @@ namespace CesiumLanguageWriter
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
         /// <param name="existingInstance">The existing instance to copy.</param>
-        protected ConicSensorCesiumWriter(ConicSensorCesiumWriter existingInstance)
+        protected ConicSensorCesiumWriter([NotNull] ConicSensorCesiumWriter existingInstance)
             : base(existingInstance)
         {
         }
@@ -186,6 +188,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>show</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>show</c> property defines whether or not the entire conical sensor is shown.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter ShowWriter
         {
             get { return m_show.Value; }
@@ -194,6 +197,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>show</c> property.  The <c>show</c> property defines whether or not the entire conical sensor is shown.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OpenShowProperty()
         {
             OpenIntervalIfNecessary();
@@ -265,6 +269,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>innerHalfAngle</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>innerHalfAngle</c> property defines the inner half angle of the cone.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter InnerHalfAngleWriter
         {
             get { return m_innerHalfAngle.Value; }
@@ -273,6 +278,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>innerHalfAngle</c> property.  The <c>innerHalfAngle</c> property defines the inner half angle of the cone.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenInnerHalfAngleProperty()
         {
             OpenIntervalIfNecessary();
@@ -372,6 +378,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>outerHalfAngle</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outerHalfAngle</c> property defines the outer half angle of the cone.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OuterHalfAngleWriter
         {
             get { return m_outerHalfAngle.Value; }
@@ -380,6 +387,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>outerHalfAngle</c> property.  The <c>outerHalfAngle</c> property defines the outer half angle of the cone.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenOuterHalfAngleProperty()
         {
             OpenIntervalIfNecessary();
@@ -479,6 +487,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>minimumClockAngle</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>minimumClockAngle</c> property defines the minimum clock angle limit of the cone.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter MinimumClockAngleWriter
         {
             get { return m_minimumClockAngle.Value; }
@@ -487,6 +496,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>minimumClockAngle</c> property.  The <c>minimumClockAngle</c> property defines the minimum clock angle limit of the cone.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenMinimumClockAngleProperty()
         {
             OpenIntervalIfNecessary();
@@ -586,6 +596,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>maximumClockAngle</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>maximumClockAngle</c> property defines the maximum clock angle limit of the cone.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter MaximumClockAngleWriter
         {
             get { return m_maximumClockAngle.Value; }
@@ -594,6 +605,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>maximumClockAngle</c> property.  The <c>maximumClockAngle</c> property defines the maximum clock angle limit of the cone.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenMaximumClockAngleProperty()
         {
             OpenIntervalIfNecessary();
@@ -693,6 +705,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>radius</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>radius</c> property defines the radial limit of the cone.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter RadiusWriter
         {
             get { return m_radius.Value; }
@@ -701,6 +714,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>radius</c> property.  The <c>radius</c> property defines the radial limit of the cone.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenRadiusProperty()
         {
             OpenIntervalIfNecessary();
@@ -800,6 +814,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>showIntersection</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>showIntersection</c> property defines whether or not the intersection of the cone with the Earth is shown.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter ShowIntersectionWriter
         {
             get { return m_showIntersection.Value; }
@@ -808,6 +823,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>showIntersection</c> property.  The <c>showIntersection</c> property defines whether or not the intersection of the cone with the Earth is shown.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OpenShowIntersectionProperty()
         {
             OpenIntervalIfNecessary();
@@ -879,6 +895,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>intersectionColor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>intersectionColor</c> property defines the color of the intersection of the cone with the Earth.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter IntersectionColorWriter
         {
             get { return m_intersectionColor.Value; }
@@ -887,6 +904,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>intersectionColor</c> property.  The <c>intersectionColor</c> property defines the color of the intersection of the cone with the Earth.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter OpenIntersectionColorProperty()
         {
             OpenIntervalIfNecessary();
@@ -1056,6 +1074,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>intersectionWidth</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>intersectionWidth</c> property defines the width of the intersection in pixels.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter IntersectionWidthWriter
         {
             get { return m_intersectionWidth.Value; }
@@ -1064,6 +1083,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>intersectionWidth</c> property.  The <c>intersectionWidth</c> property defines the width of the intersection in pixels.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenIntersectionWidthProperty()
         {
             OpenIntervalIfNecessary();
@@ -1163,6 +1183,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>showLateralSurfaces</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>showLateralSurfaces</c> property defines whether or not the lateral surfaces of the cone are shown.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter ShowLateralSurfacesWriter
         {
             get { return m_showLateralSurfaces.Value; }
@@ -1171,6 +1192,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>showLateralSurfaces</c> property.  The <c>showLateralSurfaces</c> property defines whether or not the lateral surfaces of the cone are shown.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OpenShowLateralSurfacesProperty()
         {
             OpenIntervalIfNecessary();
@@ -1242,6 +1264,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>lateralSurfaceMaterial</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>lateralSurfaceMaterial</c> property defines the material to use for the cone's lateral surfaces.
         /// </summary>
+        [NotNull]
         public MaterialCesiumWriter LateralSurfaceMaterialWriter
         {
             get { return m_lateralSurfaceMaterial.Value; }
@@ -1250,6 +1273,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>lateralSurfaceMaterial</c> property.  The <c>lateralSurfaceMaterial</c> property defines the material to use for the cone's lateral surfaces.
         /// </summary>
+        [NotNull]
         public MaterialCesiumWriter OpenLateralSurfaceMaterialProperty()
         {
             OpenIntervalIfNecessary();
@@ -1259,6 +1283,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>showEllipsoidSurfaces</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>showEllipsoidSurfaces</c> property defines whether or not ellipsoid surfaces are shown.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter ShowEllipsoidSurfacesWriter
         {
             get { return m_showEllipsoidSurfaces.Value; }
@@ -1267,6 +1292,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>showEllipsoidSurfaces</c> property.  The <c>showEllipsoidSurfaces</c> property defines whether or not ellipsoid surfaces are shown.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OpenShowEllipsoidSurfacesProperty()
         {
             OpenIntervalIfNecessary();
@@ -1338,6 +1364,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>ellipsoidSurfaceMaterial</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>ellipsoidSurfaceMaterial</c> property defines the material to use for the cone's ellipsoid surfaces.
         /// </summary>
+        [NotNull]
         public MaterialCesiumWriter EllipsoidSurfaceMaterialWriter
         {
             get { return m_ellipsoidSurfaceMaterial.Value; }
@@ -1346,6 +1373,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>ellipsoidSurfaceMaterial</c> property.  The <c>ellipsoidSurfaceMaterial</c> property defines the material to use for the cone's ellipsoid surfaces.
         /// </summary>
+        [NotNull]
         public MaterialCesiumWriter OpenEllipsoidSurfaceMaterialProperty()
         {
             OpenIntervalIfNecessary();
@@ -1355,6 +1383,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>showEllipsoidHorizonSurfaces</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>showEllipsoidHorizonSurfaces</c> property defines whether or not ellipsoid horizon surfaces are shown.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter ShowEllipsoidHorizonSurfacesWriter
         {
             get { return m_showEllipsoidHorizonSurfaces.Value; }
@@ -1363,6 +1392,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>showEllipsoidHorizonSurfaces</c> property.  The <c>showEllipsoidHorizonSurfaces</c> property defines whether or not ellipsoid horizon surfaces are shown.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OpenShowEllipsoidHorizonSurfacesProperty()
         {
             OpenIntervalIfNecessary();
@@ -1434,6 +1464,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>ellipsoidHorizonSurfaceMaterial</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>ellipsoidHorizonSurfaceMaterial</c> property defines the material to use for the cone's ellipsoid horizon surfaces.
         /// </summary>
+        [NotNull]
         public MaterialCesiumWriter EllipsoidHorizonSurfaceMaterialWriter
         {
             get { return m_ellipsoidHorizonSurfaceMaterial.Value; }
@@ -1442,6 +1473,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>ellipsoidHorizonSurfaceMaterial</c> property.  The <c>ellipsoidHorizonSurfaceMaterial</c> property defines the material to use for the cone's ellipsoid horizon surfaces.
         /// </summary>
+        [NotNull]
         public MaterialCesiumWriter OpenEllipsoidHorizonSurfaceMaterialProperty()
         {
             OpenIntervalIfNecessary();
@@ -1451,6 +1483,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>showDomeSurfaces</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>showDomeSurfaces</c> property defines whether or not dome surfaces are shown.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter ShowDomeSurfacesWriter
         {
             get { return m_showDomeSurfaces.Value; }
@@ -1459,6 +1492,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>showDomeSurfaces</c> property.  The <c>showDomeSurfaces</c> property defines whether or not dome surfaces are shown.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OpenShowDomeSurfacesProperty()
         {
             OpenIntervalIfNecessary();
@@ -1530,6 +1564,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>domeSurfaceMaterial</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>domeSurfaceMaterial</c> property defines the material to use for the cone's dome surfaces.
         /// </summary>
+        [NotNull]
         public MaterialCesiumWriter DomeSurfaceMaterialWriter
         {
             get { return m_domeSurfaceMaterial.Value; }
@@ -1538,6 +1573,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>domeSurfaceMaterial</c> property.  The <c>domeSurfaceMaterial</c> property defines the material to use for the cone's dome surfaces.
         /// </summary>
+        [NotNull]
         public MaterialCesiumWriter OpenDomeSurfaceMaterialProperty()
         {
             OpenIntervalIfNecessary();
@@ -1547,6 +1583,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>portionToDisplay</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>portionToDisplay</c> property defines what part of the sensor should be displayed.
         /// </summary>
+        [NotNull]
         public SensorVolumePortionToDisplayCesiumWriter PortionToDisplayWriter
         {
             get { return m_portionToDisplay.Value; }
@@ -1555,6 +1592,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>portionToDisplay</c> property.  The <c>portionToDisplay</c> property defines what part of the sensor should be displayed.
         /// </summary>
+        [NotNull]
         public SensorVolumePortionToDisplayCesiumWriter OpenPortionToDisplayProperty()
         {
             OpenIntervalIfNecessary();
@@ -1626,6 +1664,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>environmentConstraint</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>environmentConstraint</c> property defines whether or not the sensor will intersect the environment, e.g. terrain or models.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter EnvironmentConstraintWriter
         {
             get { return m_environmentConstraint.Value; }
@@ -1634,6 +1673,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>environmentConstraint</c> property.  The <c>environmentConstraint</c> property defines whether or not the sensor will intersect the environment, e.g. terrain or models.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OpenEnvironmentConstraintProperty()
         {
             OpenIntervalIfNecessary();
@@ -1705,6 +1745,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>showEnvironmentOcclusion</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>showEnvironmentOcclusion</c> property defines whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter ShowEnvironmentOcclusionWriter
         {
             get { return m_showEnvironmentOcclusion.Value; }
@@ -1713,6 +1754,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>showEnvironmentOcclusion</c> property.  The <c>showEnvironmentOcclusion</c> property defines whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OpenShowEnvironmentOcclusionProperty()
         {
             OpenIntervalIfNecessary();
@@ -1784,6 +1826,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>environmentOcclusionMaterial</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>environmentOcclusionMaterial</c> property defines the material to use for the portion of the sensor occluded by the environment.
         /// </summary>
+        [NotNull]
         public MaterialCesiumWriter EnvironmentOcclusionMaterialWriter
         {
             get { return m_environmentOcclusionMaterial.Value; }
@@ -1792,6 +1835,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>environmentOcclusionMaterial</c> property.  The <c>environmentOcclusionMaterial</c> property defines the material to use for the portion of the sensor occluded by the environment.
         /// </summary>
+        [NotNull]
         public MaterialCesiumWriter OpenEnvironmentOcclusionMaterialProperty()
         {
             OpenIntervalIfNecessary();
@@ -1801,6 +1845,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>showEnvironmentIntersection</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>showEnvironmentIntersection</c> property defines whether or not a line showing where the sensor intersects the environment will be drawn.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter ShowEnvironmentIntersectionWriter
         {
             get { return m_showEnvironmentIntersection.Value; }
@@ -1809,6 +1854,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>showEnvironmentIntersection</c> property.  The <c>showEnvironmentIntersection</c> property defines whether or not a line showing where the sensor intersects the environment will be drawn.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OpenShowEnvironmentIntersectionProperty()
         {
             OpenIntervalIfNecessary();
@@ -1880,6 +1926,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>environmentIntersectionColor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>environmentIntersectionColor</c> property defines the color of the intersection line between the sensor and the environment.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter EnvironmentIntersectionColorWriter
         {
             get { return m_environmentIntersectionColor.Value; }
@@ -1888,6 +1935,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>environmentIntersectionColor</c> property.  The <c>environmentIntersectionColor</c> property defines the color of the intersection line between the sensor and the environment.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter OpenEnvironmentIntersectionColorProperty()
         {
             OpenIntervalIfNecessary();
@@ -2057,6 +2105,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>environmentIntersectionWidth</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>environmentIntersectionWidth</c> property defines the width in meters of the intersection line between the sensor and the environment.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter EnvironmentIntersectionWidthWriter
         {
             get { return m_environmentIntersectionWidth.Value; }
@@ -2065,6 +2114,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>environmentIntersectionWidth</c> property.  The <c>environmentIntersectionWidth</c> property defines the width in meters of the intersection line between the sensor and the environment.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenEnvironmentIntersectionWidthProperty()
         {
             OpenIntervalIfNecessary();

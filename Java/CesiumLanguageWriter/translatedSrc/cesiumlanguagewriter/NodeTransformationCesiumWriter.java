@@ -65,9 +65,11 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public NodeTransformationCesiumWriter(String propertyName) {
+    public NodeTransformationCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
     }
 
@@ -79,7 +81,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
 
     * @param existingInstance The existing instance to copy.
     */
-    protected NodeTransformationCesiumWriter(NodeTransformationCesiumWriter existingInstance) {
+    protected NodeTransformationCesiumWriter(@Nonnull NodeTransformationCesiumWriter existingInstance) {
         super(existingInstance);
     }
 
@@ -102,6 +104,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     
 
     */
+    @Nonnull
     public final TranslationCesiumWriter getTranslationWriter() {
         return m_translation.getValue();
     }
@@ -112,6 +115,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     
 
     */
+    @Nonnull
     public final TranslationCesiumWriter openTranslationProperty() {
         openIntervalIfNecessary();
         return this.<TranslationCesiumWriter> openAndReturn(getTranslationWriter());
@@ -267,6 +271,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     
 
     */
+    @Nonnull
     public final RotationCesiumWriter getRotationWriter() {
         return m_rotation.getValue();
     }
@@ -277,6 +282,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     
 
     */
+    @Nonnull
     public final RotationCesiumWriter openRotationProperty() {
         openIntervalIfNecessary();
         return this.<RotationCesiumWriter> openAndReturn(getRotationWriter());
@@ -432,6 +438,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     
 
     */
+    @Nonnull
     public final ScaleCesiumWriter getScaleWriter() {
         return m_scale.getValue();
     }
@@ -442,6 +449,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     
 
     */
+    @Nonnull
     public final ScaleCesiumWriter openScaleProperty() {
         openIntervalIfNecessary();
         return this.<ScaleCesiumWriter> openAndReturn(getScaleWriter());

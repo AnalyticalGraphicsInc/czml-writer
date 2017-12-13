@@ -5,6 +5,7 @@
 
 using CesiumLanguageWriter.Advanced;
 using System;
+using JetBrains.Annotations;
 
 namespace CesiumLanguageWriter
 {
@@ -29,7 +30,8 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public HeightReferenceCesiumWriter(string propertyName)
+        /// <param name="propertyName">The name of the property.</param>
+        public HeightReferenceCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
             m_asHeightReference = new Lazy<ICesiumValuePropertyWriter<CesiumHeightReference>>(CreateHeightReferenceAdaptor, false);
@@ -40,7 +42,7 @@ namespace CesiumLanguageWriter
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
         /// <param name="existingInstance">The existing instance to copy.</param>
-        protected HeightReferenceCesiumWriter(HeightReferenceCesiumWriter existingInstance)
+        protected HeightReferenceCesiumWriter([NotNull] HeightReferenceCesiumWriter existingInstance)
             : base(existingInstance)
         {
             m_asHeightReference = new Lazy<ICesiumValuePropertyWriter<CesiumHeightReference>>(CreateHeightReferenceAdaptor, false);

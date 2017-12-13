@@ -5,6 +5,7 @@
 
 using CesiumLanguageWriter.Advanced;
 using System;
+using JetBrains.Annotations;
 
 namespace CesiumLanguageWriter
 {
@@ -29,7 +30,8 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public VerticalOriginCesiumWriter(string propertyName)
+        /// <param name="propertyName">The name of the property.</param>
+        public VerticalOriginCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
             m_asVerticalOrigin = new Lazy<ICesiumValuePropertyWriter<CesiumVerticalOrigin>>(CreateVerticalOriginAdaptor, false);
@@ -40,7 +42,7 @@ namespace CesiumLanguageWriter
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
         /// <param name="existingInstance">The existing instance to copy.</param>
-        protected VerticalOriginCesiumWriter(VerticalOriginCesiumWriter existingInstance)
+        protected VerticalOriginCesiumWriter([NotNull] VerticalOriginCesiumWriter existingInstance)
             : base(existingInstance)
         {
             m_asVerticalOrigin = new Lazy<ICesiumValuePropertyWriter<CesiumVerticalOrigin>>(CreateVerticalOriginAdaptor, false);

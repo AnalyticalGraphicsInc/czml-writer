@@ -42,9 +42,11 @@ public class LabelStyleCesiumWriter extends CesiumPropertyWriter<LabelStyleCesiu
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public LabelStyleCesiumWriter(String propertyName) {
+    public LabelStyleCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
         m_asLabelStyle = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumLabelStyle>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumLabelStyle>>(
                 this, "createLabelStyleAdaptor") {
@@ -68,7 +70,7 @@ public class LabelStyleCesiumWriter extends CesiumPropertyWriter<LabelStyleCesiu
 
     * @param existingInstance The existing instance to copy.
     */
-    protected LabelStyleCesiumWriter(LabelStyleCesiumWriter existingInstance) {
+    protected LabelStyleCesiumWriter(@Nonnull LabelStyleCesiumWriter existingInstance) {
         super(existingInstance);
         m_asLabelStyle = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumLabelStyle>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumLabelStyle>>(
                 this, "createLabelStyleAdaptor") {

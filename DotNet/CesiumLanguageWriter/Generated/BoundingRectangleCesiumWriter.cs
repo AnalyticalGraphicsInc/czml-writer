@@ -5,6 +5,7 @@
 
 using CesiumLanguageWriter.Advanced;
 using System;
+using JetBrains.Annotations;
 using System.Collections.Generic;
 
 namespace CesiumLanguageWriter
@@ -30,7 +31,8 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public BoundingRectangleCesiumWriter(string propertyName)
+        /// <param name="propertyName">The name of the property.</param>
+        public BoundingRectangleCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
             m_asBoundingRectangle = new Lazy<ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>>(CreateBoundingRectangleAdaptor, false);
@@ -41,7 +43,7 @@ namespace CesiumLanguageWriter
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
         /// <param name="existingInstance">The existing instance to copy.</param>
-        protected BoundingRectangleCesiumWriter(BoundingRectangleCesiumWriter existingInstance)
+        protected BoundingRectangleCesiumWriter([NotNull] BoundingRectangleCesiumWriter existingInstance)
             : base(existingInstance)
         {
             m_asBoundingRectangle = new Lazy<ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>>(CreateBoundingRectangleAdaptor, false);

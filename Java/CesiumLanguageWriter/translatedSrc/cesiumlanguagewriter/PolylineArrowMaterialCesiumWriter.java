@@ -40,9 +40,11 @@ public class PolylineArrowMaterialCesiumWriter extends CesiumPropertyWriter<Poly
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public PolylineArrowMaterialCesiumWriter(String propertyName) {
+    public PolylineArrowMaterialCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
     }
 
@@ -54,7 +56,7 @@ public class PolylineArrowMaterialCesiumWriter extends CesiumPropertyWriter<Poly
 
     * @param existingInstance The existing instance to copy.
     */
-    protected PolylineArrowMaterialCesiumWriter(PolylineArrowMaterialCesiumWriter existingInstance) {
+    protected PolylineArrowMaterialCesiumWriter(@Nonnull PolylineArrowMaterialCesiumWriter existingInstance) {
         super(existingInstance);
     }
 
@@ -77,6 +79,7 @@ public class PolylineArrowMaterialCesiumWriter extends CesiumPropertyWriter<Poly
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter getColorWriter() {
         return m_color.getValue();
     }
@@ -87,6 +90,7 @@ public class PolylineArrowMaterialCesiumWriter extends CesiumPropertyWriter<Poly
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter openColorProperty() {
         openIntervalIfNecessary();
         return this.<ColorCesiumWriter> openAndReturn(getColorWriter());

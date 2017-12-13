@@ -5,6 +5,7 @@
 
 using CesiumLanguageWriter.Advanced;
 using System;
+using JetBrains.Annotations;
 using System.Drawing;
 using System.Collections.Generic;
 
@@ -31,7 +32,8 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public PolylineGlowMaterialCesiumWriter(string propertyName)
+        /// <param name="propertyName">The name of the property.</param>
+        public PolylineGlowMaterialCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
         }
@@ -40,7 +42,7 @@ namespace CesiumLanguageWriter
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
         /// <param name="existingInstance">The existing instance to copy.</param>
-        protected PolylineGlowMaterialCesiumWriter(PolylineGlowMaterialCesiumWriter existingInstance)
+        protected PolylineGlowMaterialCesiumWriter([NotNull] PolylineGlowMaterialCesiumWriter existingInstance)
             : base(existingInstance)
         {
         }
@@ -54,6 +56,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>color</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>color</c> property defines the color of the surface.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter ColorWriter
         {
             get { return m_color.Value; }
@@ -62,6 +65,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>color</c> property.  The <c>color</c> property defines the color of the surface.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter OpenColorProperty()
         {
             OpenIntervalIfNecessary();
@@ -231,6 +235,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>glowPower</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>glowPower</c> property defines the strength of the glow.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter GlowPowerWriter
         {
             get { return m_glowPower.Value; }
@@ -239,6 +244,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>glowPower</c> property.  The <c>glowPower</c> property defines the strength of the glow.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenGlowPowerProperty()
         {
             OpenIntervalIfNecessary();

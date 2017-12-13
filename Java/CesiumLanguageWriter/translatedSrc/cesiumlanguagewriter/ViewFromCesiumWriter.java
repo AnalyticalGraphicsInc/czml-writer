@@ -43,9 +43,11 @@ public class ViewFromCesiumWriter extends CesiumInterpolatablePropertyWriter<Vie
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public ViewFromCesiumWriter(String propertyName) {
+    public ViewFromCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
         m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(this, "createCartesianAdaptor") {
@@ -69,7 +71,7 @@ public class ViewFromCesiumWriter extends CesiumInterpolatablePropertyWriter<Vie
 
     * @param existingInstance The existing instance to copy.
     */
-    protected ViewFromCesiumWriter(ViewFromCesiumWriter existingInstance) {
+    protected ViewFromCesiumWriter(@Nonnull ViewFromCesiumWriter existingInstance) {
         super(existingInstance);
         m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(this, "createCartesianAdaptor") {

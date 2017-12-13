@@ -5,6 +5,7 @@
 
 using CesiumLanguageWriter.Advanced;
 using System;
+using JetBrains.Annotations;
 using System.Collections.Generic;
 
 namespace CesiumLanguageWriter
@@ -36,7 +37,8 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public RectangleCoordinatesCesiumWriter(string propertyName)
+        /// <param name="propertyName">The name of the property.</param>
+        public RectangleCoordinatesCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
             m_asWsen = new Lazy<ICesiumInterpolatableValuePropertyWriter<CartographicExtent>>(CreateWsenAdaptor, false);
@@ -48,7 +50,7 @@ namespace CesiumLanguageWriter
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
         /// <param name="existingInstance">The existing instance to copy.</param>
-        protected RectangleCoordinatesCesiumWriter(RectangleCoordinatesCesiumWriter existingInstance)
+        protected RectangleCoordinatesCesiumWriter([NotNull] RectangleCoordinatesCesiumWriter existingInstance)
             : base(existingInstance)
         {
             m_asWsen = new Lazy<ICesiumInterpolatableValuePropertyWriter<CartographicExtent>>(CreateWsenAdaptor, false);

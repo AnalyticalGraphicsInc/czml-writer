@@ -81,9 +81,11 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public ImageMaterialCesiumWriter(String propertyName) {
+    public ImageMaterialCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
     }
 
@@ -95,7 +97,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
 
     * @param existingInstance The existing instance to copy.
     */
-    protected ImageMaterialCesiumWriter(ImageMaterialCesiumWriter existingInstance) {
+    protected ImageMaterialCesiumWriter(@Nonnull ImageMaterialCesiumWriter existingInstance) {
         super(existingInstance);
     }
 
@@ -118,6 +120,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     
 
     */
+    @Nonnull
     public final UriCesiumWriter getImageWriter() {
         return m_image.getValue();
     }
@@ -128,6 +131,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     
 
     */
+    @Nonnull
     public final UriCesiumWriter openImageProperty() {
         openIntervalIfNecessary();
         return this.<UriCesiumWriter> openAndReturn(getImageWriter());
@@ -361,6 +365,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     
 
     */
+    @Nonnull
     public final RepeatCesiumWriter getRepeatWriter() {
         return m_repeat.getValue();
     }
@@ -371,6 +376,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     
 
     */
+    @Nonnull
     public final RepeatCesiumWriter openRepeatProperty() {
         openIntervalIfNecessary();
         return this.<RepeatCesiumWriter> openAndReturn(getRepeatWriter());
@@ -547,6 +553,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter getColorWriter() {
         return m_color.getValue();
     }
@@ -557,6 +564,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter openColorProperty() {
         openIntervalIfNecessary();
         return this.<ColorCesiumWriter> openAndReturn(getColorWriter());
@@ -827,6 +835,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getTransparentWriter() {
         return m_transparent.getValue();
     }
@@ -837,6 +846,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openTransparentProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getTransparentWriter());

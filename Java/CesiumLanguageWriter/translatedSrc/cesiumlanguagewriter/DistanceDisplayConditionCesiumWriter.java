@@ -43,9 +43,11 @@ public class DistanceDisplayConditionCesiumWriter extends CesiumInterpolatablePr
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public DistanceDisplayConditionCesiumWriter(String propertyName) {
+    public DistanceDisplayConditionCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
         m_asDistanceDisplayCondition = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Bounds>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Bounds>>(this, "createDistanceDisplayConditionAdaptor") {
@@ -69,7 +71,7 @@ public class DistanceDisplayConditionCesiumWriter extends CesiumInterpolatablePr
 
     * @param existingInstance The existing instance to copy.
     */
-    protected DistanceDisplayConditionCesiumWriter(DistanceDisplayConditionCesiumWriter existingInstance) {
+    protected DistanceDisplayConditionCesiumWriter(@Nonnull DistanceDisplayConditionCesiumWriter existingInstance) {
         super(existingInstance);
         m_asDistanceDisplayCondition = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Bounds>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Bounds>>(this, "createDistanceDisplayConditionAdaptor") {

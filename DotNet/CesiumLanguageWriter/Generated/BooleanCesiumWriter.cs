@@ -5,6 +5,7 @@
 
 using CesiumLanguageWriter.Advanced;
 using System;
+using JetBrains.Annotations;
 
 namespace CesiumLanguageWriter
 {
@@ -29,7 +30,8 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public BooleanCesiumWriter(string propertyName)
+        /// <param name="propertyName">The name of the property.</param>
+        public BooleanCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
             m_asBoolean = new Lazy<ICesiumValuePropertyWriter<bool>>(CreateBooleanAdaptor, false);
@@ -40,7 +42,7 @@ namespace CesiumLanguageWriter
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
         /// <param name="existingInstance">The existing instance to copy.</param>
-        protected BooleanCesiumWriter(BooleanCesiumWriter existingInstance)
+        protected BooleanCesiumWriter([NotNull] BooleanCesiumWriter existingInstance)
             : base(existingInstance)
         {
             m_asBoolean = new Lazy<ICesiumValuePropertyWriter<bool>>(CreateBooleanAdaptor, false);

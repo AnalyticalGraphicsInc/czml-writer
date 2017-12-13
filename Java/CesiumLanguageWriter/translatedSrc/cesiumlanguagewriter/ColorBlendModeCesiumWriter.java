@@ -42,9 +42,11 @@ public class ColorBlendModeCesiumWriter extends CesiumPropertyWriter<ColorBlendM
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public ColorBlendModeCesiumWriter(String propertyName) {
+    public ColorBlendModeCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
         m_asColorBlendMode = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumColorBlendMode>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumColorBlendMode>>(this, "createColorBlendModeAdaptor") {
@@ -68,7 +70,7 @@ public class ColorBlendModeCesiumWriter extends CesiumPropertyWriter<ColorBlendM
 
     * @param existingInstance The existing instance to copy.
     */
-    protected ColorBlendModeCesiumWriter(ColorBlendModeCesiumWriter existingInstance) {
+    protected ColorBlendModeCesiumWriter(@Nonnull ColorBlendModeCesiumWriter existingInstance) {
         super(existingInstance);
         m_asColorBlendMode = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumColorBlendMode>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumColorBlendMode>>(this, "createColorBlendModeAdaptor") {

@@ -5,6 +5,7 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -55,9 +56,11 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public DirectionListCesiumWriter(String propertyName) {
+    public DirectionListCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
         m_asSpherical = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Spherical>>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Spherical>>>(this, "createSphericalAdaptor") {
@@ -93,7 +96,7 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
 
     * @param existingInstance The existing instance to copy.
     */
-    protected DirectionListCesiumWriter(DirectionListCesiumWriter existingInstance) {
+    protected DirectionListCesiumWriter(@Nonnull DirectionListCesiumWriter existingInstance) {
         super(existingInstance);
         m_asSpherical = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Spherical>>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Spherical>>>(this, "createSphericalAdaptor") {

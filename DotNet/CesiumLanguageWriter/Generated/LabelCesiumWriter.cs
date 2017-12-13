@@ -5,6 +5,7 @@
 
 using CesiumLanguageWriter.Advanced;
 using System;
+using JetBrains.Annotations;
 using System.Collections.Generic;
 using System.Drawing;
 
@@ -145,7 +146,8 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public LabelCesiumWriter(string propertyName)
+        /// <param name="propertyName">The name of the property.</param>
+        public LabelCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
         }
@@ -154,7 +156,7 @@ namespace CesiumLanguageWriter
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
         /// <param name="existingInstance">The existing instance to copy.</param>
-        protected LabelCesiumWriter(LabelCesiumWriter existingInstance)
+        protected LabelCesiumWriter([NotNull] LabelCesiumWriter existingInstance)
             : base(existingInstance)
         {
         }
@@ -168,6 +170,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>show</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>show</c> property defines whether or not the label is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter ShowWriter
         {
             get { return m_show.Value; }
@@ -176,6 +179,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>show</c> property.  The <c>show</c> property defines whether or not the label is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OpenShowProperty()
         {
             OpenIntervalIfNecessary();
@@ -247,6 +251,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>text</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>text</c> property defines the text displayed by the label.  The newline character (\n) indicates line breaks.
         /// </summary>
+        [NotNull]
         public StringCesiumWriter TextWriter
         {
             get { return m_text.Value; }
@@ -255,6 +260,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>text</c> property.  The <c>text</c> property defines the text displayed by the label.  The newline character (\n) indicates line breaks.
         /// </summary>
+        [NotNull]
         public StringCesiumWriter OpenTextProperty()
         {
             OpenIntervalIfNecessary();
@@ -326,6 +332,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>font</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>font</c> property defines the font to use for the label.
         /// </summary>
+        [NotNull]
         public FontCesiumWriter FontWriter
         {
             get { return m_font.Value; }
@@ -334,6 +341,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>font</c> property.  The <c>font</c> property defines the font to use for the label.
         /// </summary>
+        [NotNull]
         public FontCesiumWriter OpenFontProperty()
         {
             OpenIntervalIfNecessary();
@@ -405,6 +413,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>style</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>style</c> property defines the style of the label.
         /// </summary>
+        [NotNull]
         public LabelStyleCesiumWriter StyleWriter
         {
             get { return m_style.Value; }
@@ -413,6 +422,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>style</c> property.  The <c>style</c> property defines the style of the label.
         /// </summary>
+        [NotNull]
         public LabelStyleCesiumWriter OpenStyleProperty()
         {
             OpenIntervalIfNecessary();
@@ -484,6 +494,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>scale</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>scale</c> property defines the scale of the label.  The scale is multiplied with the pixel size of the label's text.  For example, if the scale is 2.0, the label will be rendered with twice the number of pixels, in each direction, of the text.  If not specified, the default value is 1.0.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter ScaleWriter
         {
             get { return m_scale.Value; }
@@ -492,6 +503,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>scale</c> property.  The <c>scale</c> property defines the scale of the label.  The scale is multiplied with the pixel size of the label's text.  For example, if the scale is 2.0, the label will be rendered with twice the number of pixels, in each direction, of the text.  If not specified, the default value is 1.0.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenScaleProperty()
         {
             OpenIntervalIfNecessary();
@@ -591,6 +603,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>showBackground</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>showBackground</c> property defines whether or not a background behind the label is shown.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter ShowBackgroundWriter
         {
             get { return m_showBackground.Value; }
@@ -599,6 +612,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>showBackground</c> property.  The <c>showBackground</c> property defines whether or not a background behind the label is shown.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OpenShowBackgroundProperty()
         {
             OpenIntervalIfNecessary();
@@ -670,6 +684,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>backgroundColor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>backgroundColor</c> property defines the color of the background behind the label.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter BackgroundColorWriter
         {
             get { return m_backgroundColor.Value; }
@@ -678,6 +693,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>backgroundColor</c> property.  The <c>backgroundColor</c> property defines the color of the background behind the label.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter OpenBackgroundColorProperty()
         {
             OpenIntervalIfNecessary();
@@ -847,6 +863,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>backgroundPadding</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>backgroundPadding</c> property defines the amount of padding between the text and the label's background.
         /// </summary>
+        [NotNull]
         public BackgroundPaddingCesiumWriter BackgroundPaddingWriter
         {
             get { return m_backgroundPadding.Value; }
@@ -855,6 +872,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>backgroundPadding</c> property.  The <c>backgroundPadding</c> property defines the amount of padding between the text and the label's background.
         /// </summary>
+        [NotNull]
         public BackgroundPaddingCesiumWriter OpenBackgroundPaddingProperty()
         {
             OpenIntervalIfNecessary();
@@ -967,6 +985,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>pixelOffset</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>pixelOffset</c> property defines the offset, in viewport pixels, of the label origin from the <c>position</c>.  A pixel offset is the number of pixels up and to the right to place the label, relative to the <c>position</c>.
         /// </summary>
+        [NotNull]
         public PixelOffsetCesiumWriter PixelOffsetWriter
         {
             get { return m_pixelOffset.Value; }
@@ -975,6 +994,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>pixelOffset</c> property.  The <c>pixelOffset</c> property defines the offset, in viewport pixels, of the label origin from the <c>position</c>.  A pixel offset is the number of pixels up and to the right to place the label, relative to the <c>position</c>.
         /// </summary>
+        [NotNull]
         public PixelOffsetCesiumWriter OpenPixelOffsetProperty()
         {
             OpenIntervalIfNecessary();
@@ -1087,6 +1107,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>eyeOffset</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>eyeOffset</c> property defines the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the <c>position</c> property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
         /// </summary>
+        [NotNull]
         public EyeOffsetCesiumWriter EyeOffsetWriter
         {
             get { return m_eyeOffset.Value; }
@@ -1095,6 +1116,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>eyeOffset</c> property.  The <c>eyeOffset</c> property defines the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the <c>position</c> property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.
         /// </summary>
+        [NotNull]
         public EyeOffsetCesiumWriter OpenEyeOffsetProperty()
         {
             OpenIntervalIfNecessary();
@@ -1194,6 +1216,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>horizontalOrigin</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>horizontalOrigin</c> property defines the horizontal origin of the label.  It controls whether the label is left-, center-, or right-aligned with the <c>position</c>.  If not specified, the default value is CENTER.
         /// </summary>
+        [NotNull]
         public HorizontalOriginCesiumWriter HorizontalOriginWriter
         {
             get { return m_horizontalOrigin.Value; }
@@ -1202,6 +1225,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>horizontalOrigin</c> property.  The <c>horizontalOrigin</c> property defines the horizontal origin of the label.  It controls whether the label is left-, center-, or right-aligned with the <c>position</c>.  If not specified, the default value is CENTER.
         /// </summary>
+        [NotNull]
         public HorizontalOriginCesiumWriter OpenHorizontalOriginProperty()
         {
             OpenIntervalIfNecessary();
@@ -1273,6 +1297,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>verticalOrigin</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>verticalOrigin</c> property defines the vertical origin of the label.  It controls whether the label image is bottom-, center-, or top-aligned with the <c>position</c>.  If not specified, the default value is CENTER.
         /// </summary>
+        [NotNull]
         public VerticalOriginCesiumWriter VerticalOriginWriter
         {
             get { return m_verticalOrigin.Value; }
@@ -1281,6 +1306,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>verticalOrigin</c> property.  The <c>verticalOrigin</c> property defines the vertical origin of the label.  It controls whether the label image is bottom-, center-, or top-aligned with the <c>position</c>.  If not specified, the default value is CENTER.
         /// </summary>
+        [NotNull]
         public VerticalOriginCesiumWriter OpenVerticalOriginProperty()
         {
             OpenIntervalIfNecessary();
@@ -1352,6 +1378,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>heightReference</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>heightReference</c> property defines the height reference of the label, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
         /// </summary>
+        [NotNull]
         public HeightReferenceCesiumWriter HeightReferenceWriter
         {
             get { return m_heightReference.Value; }
@@ -1360,6 +1387,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>heightReference</c> property.  The <c>heightReference</c> property defines the height reference of the label, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
         /// </summary>
+        [NotNull]
         public HeightReferenceCesiumWriter OpenHeightReferenceProperty()
         {
             OpenIntervalIfNecessary();
@@ -1431,6 +1459,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>fillColor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>fillColor</c> property defines the fill color of the label.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter FillColorWriter
         {
             get { return m_fillColor.Value; }
@@ -1439,6 +1468,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>fillColor</c> property.  The <c>fillColor</c> property defines the fill color of the label.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter OpenFillColorProperty()
         {
             OpenIntervalIfNecessary();
@@ -1608,6 +1638,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>outlineColor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outlineColor</c> property defines the outline color of the label.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter OutlineColorWriter
         {
             get { return m_outlineColor.Value; }
@@ -1616,6 +1647,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>outlineColor</c> property.  The <c>outlineColor</c> property defines the outline color of the label.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter OpenOutlineColorProperty()
         {
             OpenIntervalIfNecessary();
@@ -1785,6 +1817,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>outlineWidth</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outlineWidth</c> property defines the outline width of the label.  If not specified, the default value is 1.0.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OutlineWidthWriter
         {
             get { return m_outlineWidth.Value; }
@@ -1793,6 +1826,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>outlineWidth</c> property.  The <c>outlineWidth</c> property defines the outline width of the label.  If not specified, the default value is 1.0.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenOutlineWidthProperty()
         {
             OpenIntervalIfNecessary();
@@ -1892,6 +1926,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>translucencyByDistance</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>translucencyByDistance</c> property defines how the label's translucency should change based on the label's distance from the camera.  This scalar value should range from 0 to 1.
         /// </summary>
+        [NotNull]
         public NearFarScalarCesiumWriter TranslucencyByDistanceWriter
         {
             get { return m_translucencyByDistance.Value; }
@@ -1900,6 +1935,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>translucencyByDistance</c> property.  The <c>translucencyByDistance</c> property defines how the label's translucency should change based on the label's distance from the camera.  This scalar value should range from 0 to 1.
         /// </summary>
+        [NotNull]
         public NearFarScalarCesiumWriter OpenTranslucencyByDistanceProperty()
         {
             OpenIntervalIfNecessary();
@@ -2014,6 +2050,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>pixelOffsetScaleByDistance</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>pixelOffsetScaleByDistance</c> property defines how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by <c>pixelOffset</c>.
         /// </summary>
+        [NotNull]
         public NearFarScalarCesiumWriter PixelOffsetScaleByDistanceWriter
         {
             get { return m_pixelOffsetScaleByDistance.Value; }
@@ -2022,6 +2059,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>pixelOffsetScaleByDistance</c> property.  The <c>pixelOffsetScaleByDistance</c> property defines how the label's pixel offset should change based on the label's distance from the camera.  This scalar value will be multiplied by <c>pixelOffset</c>.
         /// </summary>
+        [NotNull]
         public NearFarScalarCesiumWriter OpenPixelOffsetScaleByDistanceProperty()
         {
             OpenIntervalIfNecessary();
@@ -2136,6 +2174,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>scaleByDistance</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>scaleByDistance</c> property defines how the label's scale should change based on the label's distance from the camera.  This scalar value will be multiplied by <c>scale</c>.
         /// </summary>
+        [NotNull]
         public NearFarScalarCesiumWriter ScaleByDistanceWriter
         {
             get { return m_scaleByDistance.Value; }
@@ -2144,6 +2183,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>scaleByDistance</c> property.  The <c>scaleByDistance</c> property defines how the label's scale should change based on the label's distance from the camera.  This scalar value will be multiplied by <c>scale</c>.
         /// </summary>
+        [NotNull]
         public NearFarScalarCesiumWriter OpenScaleByDistanceProperty()
         {
             OpenIntervalIfNecessary();
@@ -2258,6 +2298,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>distanceDisplayCondition</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>distanceDisplayCondition</c> property defines the display condition specifying the distance from the camera at which this label will be displayed.
         /// </summary>
+        [NotNull]
         public DistanceDisplayConditionCesiumWriter DistanceDisplayConditionWriter
         {
             get { return m_distanceDisplayCondition.Value; }
@@ -2266,6 +2307,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>distanceDisplayCondition</c> property.  The <c>distanceDisplayCondition</c> property defines the display condition specifying the distance from the camera at which this label will be displayed.
         /// </summary>
+        [NotNull]
         public DistanceDisplayConditionCesiumWriter OpenDistanceDisplayConditionProperty()
         {
             OpenIntervalIfNecessary();
@@ -2378,6 +2420,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>disableDepthTestDistance</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>disableDepthTestDistance</c> property defines the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter DisableDepthTestDistanceWriter
         {
             get { return m_disableDepthTestDistance.Value; }
@@ -2386,6 +2429,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>disableDepthTestDistance</c> property.  The <c>disableDepthTestDistance</c> property defines the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenDisableDepthTestDistanceProperty()
         {
             OpenIntervalIfNecessary();

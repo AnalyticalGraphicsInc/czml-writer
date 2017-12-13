@@ -43,9 +43,11 @@ public class RotationCesiumWriter extends CesiumInterpolatablePropertyWriter<Rot
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public RotationCesiumWriter(String propertyName) {
+    public RotationCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
         m_asUnitQuaternion = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitQuaternion>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitQuaternion>>(this, "createUnitQuaternionAdaptor") {
@@ -69,7 +71,7 @@ public class RotationCesiumWriter extends CesiumInterpolatablePropertyWriter<Rot
 
     * @param existingInstance The existing instance to copy.
     */
-    protected RotationCesiumWriter(RotationCesiumWriter existingInstance) {
+    protected RotationCesiumWriter(@Nonnull RotationCesiumWriter existingInstance) {
         super(existingInstance);
         m_asUnitQuaternion = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitQuaternion>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<UnitQuaternion>>(this, "createUnitQuaternionAdaptor") {

@@ -9,6 +9,7 @@ import cesiumlanguagewriter.GridMaterialCesiumWriter;
 import cesiumlanguagewriter.ImageMaterialCesiumWriter;
 import cesiumlanguagewriter.SolidColorMaterialCesiumWriter;
 import cesiumlanguagewriter.StripeMaterialCesiumWriter;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -75,9 +76,11 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public MaterialCesiumWriter(String propertyName) {
+    public MaterialCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
     }
 
@@ -89,7 +92,7 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
 
     * @param existingInstance The existing instance to copy.
     */
-    protected MaterialCesiumWriter(MaterialCesiumWriter existingInstance) {
+    protected MaterialCesiumWriter(@Nonnull MaterialCesiumWriter existingInstance) {
         super(existingInstance);
     }
 
@@ -112,6 +115,7 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
     
 
     */
+    @Nonnull
     public final SolidColorMaterialCesiumWriter getSolidColorWriter() {
         return m_solidColor.getValue();
     }
@@ -122,6 +126,7 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
     
 
     */
+    @Nonnull
     public final SolidColorMaterialCesiumWriter openSolidColorProperty() {
         openIntervalIfNecessary();
         return this.<SolidColorMaterialCesiumWriter> openAndReturn(getSolidColorWriter());
@@ -132,6 +137,7 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
     
 
     */
+    @Nonnull
     public final ImageMaterialCesiumWriter getImageWriter() {
         return m_image.getValue();
     }
@@ -142,6 +148,7 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
     
 
     */
+    @Nonnull
     public final ImageMaterialCesiumWriter openImageProperty() {
         openIntervalIfNecessary();
         return this.<ImageMaterialCesiumWriter> openAndReturn(getImageWriter());
@@ -152,6 +159,7 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
     
 
     */
+    @Nonnull
     public final GridMaterialCesiumWriter getGridWriter() {
         return m_grid.getValue();
     }
@@ -162,6 +170,7 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
     
 
     */
+    @Nonnull
     public final GridMaterialCesiumWriter openGridProperty() {
         openIntervalIfNecessary();
         return this.<GridMaterialCesiumWriter> openAndReturn(getGridWriter());
@@ -172,6 +181,7 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
     
 
     */
+    @Nonnull
     public final StripeMaterialCesiumWriter getStripeWriter() {
         return m_stripe.getValue();
     }
@@ -182,6 +192,7 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
     
 
     */
+    @Nonnull
     public final StripeMaterialCesiumWriter openStripeProperty() {
         openIntervalIfNecessary();
         return this.<StripeMaterialCesiumWriter> openAndReturn(getStripeWriter());

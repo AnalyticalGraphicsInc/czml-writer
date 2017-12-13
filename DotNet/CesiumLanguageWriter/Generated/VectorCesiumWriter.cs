@@ -5,6 +5,7 @@
 
 using CesiumLanguageWriter.Advanced;
 using System;
+using JetBrains.Annotations;
 using System.Drawing;
 using System.Collections.Generic;
 
@@ -49,7 +50,8 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public VectorCesiumWriter(string propertyName)
+        /// <param name="propertyName">The name of the property.</param>
+        public VectorCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
         }
@@ -58,7 +60,7 @@ namespace CesiumLanguageWriter
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
         /// <param name="existingInstance">The existing instance to copy.</param>
-        protected VectorCesiumWriter(VectorCesiumWriter existingInstance)
+        protected VectorCesiumWriter([NotNull] VectorCesiumWriter existingInstance)
             : base(existingInstance)
         {
         }
@@ -72,6 +74,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>show</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>show</c> property defines whether or not the vector is shown.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter ShowWriter
         {
             get { return m_show.Value; }
@@ -80,6 +83,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>show</c> property.  The <c>show</c> property defines whether or not the vector is shown.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OpenShowProperty()
         {
             OpenIntervalIfNecessary();
@@ -151,6 +155,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>color</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>color</c> property defines the color of the vector.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter ColorWriter
         {
             get { return m_color.Value; }
@@ -159,6 +164,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>color</c> property.  The <c>color</c> property defines the color of the vector.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter OpenColorProperty()
         {
             OpenIntervalIfNecessary();
@@ -328,6 +334,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>direction</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>direction</c> property defines the direction of the vector.
         /// </summary>
+        [NotNull]
         public DirectionCesiumWriter DirectionWriter
         {
             get { return m_direction.Value; }
@@ -336,6 +343,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>direction</c> property.  The <c>direction</c> property defines the direction of the vector.
         /// </summary>
+        [NotNull]
         public DirectionCesiumWriter OpenDirectionProperty()
         {
             OpenIntervalIfNecessary();
@@ -555,6 +563,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>length</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>length</c> property defines the graphical length of the vector.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter LengthWriter
         {
             get { return m_length.Value; }
@@ -563,6 +572,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>length</c> property.  The <c>length</c> property defines the graphical length of the vector.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenLengthProperty()
         {
             OpenIntervalIfNecessary();
@@ -662,6 +672,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>minimumLengthInPixels</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>minimumLengthInPixels</c> property defines the minimum graphical length of the vector in pixels.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter MinimumLengthInPixelsWriter
         {
             get { return m_minimumLengthInPixels.Value; }
@@ -670,6 +681,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>minimumLengthInPixels</c> property.  The <c>minimumLengthInPixels</c> property defines the minimum graphical length of the vector in pixels.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenMinimumLengthInPixelsProperty()
         {
             OpenIntervalIfNecessary();

@@ -43,9 +43,11 @@ public class BoundingRectangleCesiumWriter extends CesiumInterpolatablePropertyW
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public BoundingRectangleCesiumWriter(String propertyName) {
+    public BoundingRectangleCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
         m_asBoundingRectangle = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>>(this, "createBoundingRectangleAdaptor") {
@@ -69,7 +71,7 @@ public class BoundingRectangleCesiumWriter extends CesiumInterpolatablePropertyW
 
     * @param existingInstance The existing instance to copy.
     */
-    protected BoundingRectangleCesiumWriter(BoundingRectangleCesiumWriter existingInstance) {
+    protected BoundingRectangleCesiumWriter(@Nonnull BoundingRectangleCesiumWriter existingInstance) {
         super(existingInstance);
         m_asBoundingRectangle = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>>(this, "createBoundingRectangleAdaptor") {

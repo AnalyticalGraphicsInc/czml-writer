@@ -42,9 +42,11 @@ public class HorizontalOriginCesiumWriter extends CesiumPropertyWriter<Horizonta
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public HorizontalOriginCesiumWriter(String propertyName) {
+    public HorizontalOriginCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
         m_asHorizontalOrigin = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumHorizontalOrigin>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumHorizontalOrigin>>(this, "createHorizontalOriginAdaptor") {
@@ -68,7 +70,7 @@ public class HorizontalOriginCesiumWriter extends CesiumPropertyWriter<Horizonta
 
     * @param existingInstance The existing instance to copy.
     */
-    protected HorizontalOriginCesiumWriter(HorizontalOriginCesiumWriter existingInstance) {
+    protected HorizontalOriginCesiumWriter(@Nonnull HorizontalOriginCesiumWriter existingInstance) {
         super(existingInstance);
         m_asHorizontalOrigin = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumHorizontalOrigin>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumHorizontalOrigin>>(this, "createHorizontalOriginAdaptor") {

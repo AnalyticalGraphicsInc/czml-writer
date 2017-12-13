@@ -5,6 +5,7 @@
 
 using CesiumLanguageWriter.Advanced;
 using System;
+using JetBrains.Annotations;
 using System.Collections.Generic;
 using System.Drawing;
 
@@ -115,7 +116,8 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public RectangleCesiumWriter(string propertyName)
+        /// <param name="propertyName">The name of the property.</param>
+        public RectangleCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
         }
@@ -124,7 +126,7 @@ namespace CesiumLanguageWriter
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
         /// <param name="existingInstance">The existing instance to copy.</param>
-        protected RectangleCesiumWriter(RectangleCesiumWriter existingInstance)
+        protected RectangleCesiumWriter([NotNull] RectangleCesiumWriter existingInstance)
             : base(existingInstance)
         {
         }
@@ -138,6 +140,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>show</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>show</c> property defines whether or not the rectangle is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter ShowWriter
         {
             get { return m_show.Value; }
@@ -146,6 +149,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>show</c> property.  The <c>show</c> property defines whether or not the rectangle is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OpenShowProperty()
         {
             OpenIntervalIfNecessary();
@@ -217,6 +221,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>coordinates</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>coordinates</c> property defines the coordinates of the rectangle.
         /// </summary>
+        [NotNull]
         public RectangleCoordinatesCesiumWriter CoordinatesWriter
         {
             get { return m_coordinates.Value; }
@@ -225,6 +230,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>coordinates</c> property.  The <c>coordinates</c> property defines the coordinates of the rectangle.
         /// </summary>
+        [NotNull]
         public RectangleCoordinatesCesiumWriter OpenCoordinatesProperty()
         {
             OpenIntervalIfNecessary();
@@ -394,6 +400,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>height</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>height</c> property defines the height of the rectangle.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter HeightWriter
         {
             get { return m_height.Value; }
@@ -402,6 +409,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>height</c> property.  The <c>height</c> property defines the height of the rectangle.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenHeightProperty()
         {
             OpenIntervalIfNecessary();
@@ -501,6 +509,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>extrudedHeight</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>extrudedHeight</c> property defines the extruded height of the rectangle.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter ExtrudedHeightWriter
         {
             get { return m_extrudedHeight.Value; }
@@ -509,6 +518,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>extrudedHeight</c> property.  The <c>extrudedHeight</c> property defines the extruded height of the rectangle.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenExtrudedHeightProperty()
         {
             OpenIntervalIfNecessary();
@@ -608,6 +618,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>rotation</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>rotation</c> property defines the rotation of the rectangle clockwise from north.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter RotationWriter
         {
             get { return m_rotation.Value; }
@@ -616,6 +627,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>rotation</c> property.  The <c>rotation</c> property defines the rotation of the rectangle clockwise from north.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenRotationProperty()
         {
             OpenIntervalIfNecessary();
@@ -715,6 +727,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>stRotation</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>stRotation</c> property defines the rotation of any applied texture. A positive rotation is counter-clockwise.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter StRotationWriter
         {
             get { return m_stRotation.Value; }
@@ -723,6 +736,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>stRotation</c> property.  The <c>stRotation</c> property defines the rotation of any applied texture. A positive rotation is counter-clockwise.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenStRotationProperty()
         {
             OpenIntervalIfNecessary();
@@ -822,6 +836,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>granularity</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>granularity</c> property defines the sampling distance, in radians.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter GranularityWriter
         {
             get { return m_granularity.Value; }
@@ -830,6 +845,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>granularity</c> property.  The <c>granularity</c> property defines the sampling distance, in radians.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenGranularityProperty()
         {
             OpenIntervalIfNecessary();
@@ -929,6 +945,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>fill</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>fill</c> property defines whether or not the rectangle is filled.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter FillWriter
         {
             get { return m_fill.Value; }
@@ -937,6 +954,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>fill</c> property.  The <c>fill</c> property defines whether or not the rectangle is filled.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OpenFillProperty()
         {
             OpenIntervalIfNecessary();
@@ -1008,6 +1026,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>material</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>material</c> property defines the material to display on the surface of the rectangle.
         /// </summary>
+        [NotNull]
         public MaterialCesiumWriter MaterialWriter
         {
             get { return m_material.Value; }
@@ -1016,6 +1035,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>material</c> property.  The <c>material</c> property defines the material to display on the surface of the rectangle.
         /// </summary>
+        [NotNull]
         public MaterialCesiumWriter OpenMaterialProperty()
         {
             OpenIntervalIfNecessary();
@@ -1025,6 +1045,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>outline</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outline</c> property defines whether or not the rectangle is outlined.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OutlineWriter
         {
             get { return m_outline.Value; }
@@ -1033,6 +1054,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>outline</c> property.  The <c>outline</c> property defines whether or not the rectangle is outlined.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OpenOutlineProperty()
         {
             OpenIntervalIfNecessary();
@@ -1104,6 +1126,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>outlineColor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outlineColor</c> property defines the color of the rectangle outline.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter OutlineColorWriter
         {
             get { return m_outlineColor.Value; }
@@ -1112,6 +1135,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>outlineColor</c> property.  The <c>outlineColor</c> property defines the color of the rectangle outline.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter OpenOutlineColorProperty()
         {
             OpenIntervalIfNecessary();
@@ -1281,6 +1305,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>outlineWidth</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outlineWidth</c> property defines the width of the rectangle outline.  If not specified, the default value is 1.0.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OutlineWidthWriter
         {
             get { return m_outlineWidth.Value; }
@@ -1289,6 +1314,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>outlineWidth</c> property.  The <c>outlineWidth</c> property defines the width of the rectangle outline.  If not specified, the default value is 1.0.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenOutlineWidthProperty()
         {
             OpenIntervalIfNecessary();
@@ -1388,6 +1414,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>closeTop</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>closeTop</c> property defines whether to close the top of the rectangle.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter CloseTopWriter
         {
             get { return m_closeTop.Value; }
@@ -1396,6 +1423,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>closeTop</c> property.  The <c>closeTop</c> property defines whether to close the top of the rectangle.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OpenCloseTopProperty()
         {
             OpenIntervalIfNecessary();
@@ -1467,6 +1495,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>closeBottom</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>closeBottom</c> property defines whether to close the bottom of the rectangle.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter CloseBottomWriter
         {
             get { return m_closeBottom.Value; }
@@ -1475,6 +1504,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>closeBottom</c> property.  The <c>closeBottom</c> property defines whether to close the bottom of the rectangle.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OpenCloseBottomProperty()
         {
             OpenIntervalIfNecessary();
@@ -1546,6 +1576,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>shadows</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>shadows</c> property defines whether or not the rectangle casts or receives shadows.  If not specified, the default value is DISABLED.
         /// </summary>
+        [NotNull]
         public ShadowModeCesiumWriter ShadowsWriter
         {
             get { return m_shadows.Value; }
@@ -1554,6 +1585,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>shadows</c> property.  The <c>shadows</c> property defines whether or not the rectangle casts or receives shadows.  If not specified, the default value is DISABLED.
         /// </summary>
+        [NotNull]
         public ShadowModeCesiumWriter OpenShadowsProperty()
         {
             OpenIntervalIfNecessary();
@@ -1625,6 +1657,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>distanceDisplayCondition</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>distanceDisplayCondition</c> property defines the display condition specifying at what distance from the camera this rectangle will be displayed.
         /// </summary>
+        [NotNull]
         public DistanceDisplayConditionCesiumWriter DistanceDisplayConditionWriter
         {
             get { return m_distanceDisplayCondition.Value; }
@@ -1633,6 +1666,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>distanceDisplayCondition</c> property.  The <c>distanceDisplayCondition</c> property defines the display condition specifying at what distance from the camera this rectangle will be displayed.
         /// </summary>
+        [NotNull]
         public DistanceDisplayConditionCesiumWriter OpenDistanceDisplayConditionProperty()
         {
             OpenIntervalIfNecessary();

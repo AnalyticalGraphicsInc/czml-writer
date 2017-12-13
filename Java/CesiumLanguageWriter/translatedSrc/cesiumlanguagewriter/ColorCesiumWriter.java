@@ -51,9 +51,11 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public ColorCesiumWriter(String propertyName) {
+    public ColorCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
         m_asRgba = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Color>>(new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Color>>(
                 this, "createRgbaAdaptor") {
@@ -83,7 +85,7 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
 
     * @param existingInstance The existing instance to copy.
     */
-    protected ColorCesiumWriter(ColorCesiumWriter existingInstance) {
+    protected ColorCesiumWriter(@Nonnull ColorCesiumWriter existingInstance) {
         super(existingInstance);
         m_asRgba = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Color>>(new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Color>>(
                 this, "createRgbaAdaptor") {

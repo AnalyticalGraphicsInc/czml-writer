@@ -5,6 +5,7 @@
 
 using CesiumLanguageWriter.Advanced;
 using System;
+using JetBrains.Annotations;
 using System.Drawing;
 using System.Collections.Generic;
 
@@ -37,7 +38,8 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public ColorCesiumWriter(string propertyName)
+        /// <param name="propertyName">The name of the property.</param>
+        public ColorCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
             m_asRgba = new Lazy<ICesiumInterpolatableValuePropertyWriter<Color>>(CreateRgbaAdaptor, false);
@@ -49,7 +51,7 @@ namespace CesiumLanguageWriter
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
         /// <param name="existingInstance">The existing instance to copy.</param>
-        protected ColorCesiumWriter(ColorCesiumWriter existingInstance)
+        protected ColorCesiumWriter([NotNull] ColorCesiumWriter existingInstance)
             : base(existingInstance)
         {
             m_asRgba = new Lazy<ICesiumInterpolatableValuePropertyWriter<Color>>(CreateRgbaAdaptor, false);

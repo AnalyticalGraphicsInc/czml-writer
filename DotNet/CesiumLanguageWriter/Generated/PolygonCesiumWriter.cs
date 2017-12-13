@@ -5,6 +5,7 @@
 
 using CesiumLanguageWriter.Advanced;
 using System;
+using JetBrains.Annotations;
 using System.Collections.Generic;
 using System.Drawing;
 
@@ -115,7 +116,8 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public PolygonCesiumWriter(string propertyName)
+        /// <param name="propertyName">The name of the property.</param>
+        public PolygonCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
         }
@@ -124,7 +126,7 @@ namespace CesiumLanguageWriter
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
         /// <param name="existingInstance">The existing instance to copy.</param>
-        protected PolygonCesiumWriter(PolygonCesiumWriter existingInstance)
+        protected PolygonCesiumWriter([NotNull] PolygonCesiumWriter existingInstance)
             : base(existingInstance)
         {
         }
@@ -138,6 +140,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>show</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>show</c> property defines whether or not the polygon is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter ShowWriter
         {
             get { return m_show.Value; }
@@ -146,6 +149,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>show</c> property.  The <c>show</c> property defines whether or not the polygon is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OpenShowProperty()
         {
             OpenIntervalIfNecessary();
@@ -217,6 +221,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>positions</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>positions</c> property defines the array of positions defining a simple polygon.
         /// </summary>
+        [NotNull]
         public PositionListCesiumWriter PositionsWriter
         {
             get { return m_positions.Value; }
@@ -225,6 +230,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>positions</c> property.  The <c>positions</c> property defines the array of positions defining a simple polygon.
         /// </summary>
+        [NotNull]
         public PositionListCesiumWriter OpenPositionsProperty()
         {
             OpenIntervalIfNecessary();
@@ -282,6 +288,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>height</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>height</c> property defines the height of the polygon when <c>perPositionHeight</c> is false.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter HeightWriter
         {
             get { return m_height.Value; }
@@ -290,6 +297,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>height</c> property.  The <c>height</c> property defines the height of the polygon when <c>perPositionHeight</c> is false.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenHeightProperty()
         {
             OpenIntervalIfNecessary();
@@ -389,6 +397,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>extrudedHeight</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>extrudedHeight</c> property defines the extruded height of the polygon.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter ExtrudedHeightWriter
         {
             get { return m_extrudedHeight.Value; }
@@ -397,6 +406,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>extrudedHeight</c> property.  The <c>extrudedHeight</c> property defines the extruded height of the polygon.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenExtrudedHeightProperty()
         {
             OpenIntervalIfNecessary();
@@ -496,6 +506,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>stRotation</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>stRotation</c> property defines the rotation of any applied texture. A positive rotation is counter-clockwise.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter StRotationWriter
         {
             get { return m_stRotation.Value; }
@@ -504,6 +515,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>stRotation</c> property.  The <c>stRotation</c> property defines the rotation of any applied texture. A positive rotation is counter-clockwise.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenStRotationProperty()
         {
             OpenIntervalIfNecessary();
@@ -603,6 +615,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>granularity</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>granularity</c> property defines the sampling distance, in radians.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter GranularityWriter
         {
             get { return m_granularity.Value; }
@@ -611,6 +624,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>granularity</c> property.  The <c>granularity</c> property defines the sampling distance, in radians.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenGranularityProperty()
         {
             OpenIntervalIfNecessary();
@@ -710,6 +724,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>fill</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>fill</c> property defines whether or not the polygon is filled.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter FillWriter
         {
             get { return m_fill.Value; }
@@ -718,6 +733,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>fill</c> property.  The <c>fill</c> property defines whether or not the polygon is filled.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OpenFillProperty()
         {
             OpenIntervalIfNecessary();
@@ -789,6 +805,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>material</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>material</c> property defines the material to use to fill the polygon.
         /// </summary>
+        [NotNull]
         public MaterialCesiumWriter MaterialWriter
         {
             get { return m_material.Value; }
@@ -797,6 +814,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>material</c> property.  The <c>material</c> property defines the material to use to fill the polygon.
         /// </summary>
+        [NotNull]
         public MaterialCesiumWriter OpenMaterialProperty()
         {
             OpenIntervalIfNecessary();
@@ -806,6 +824,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>outline</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outline</c> property defines whether or not the polygon is outlined.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OutlineWriter
         {
             get { return m_outline.Value; }
@@ -814,6 +833,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>outline</c> property.  The <c>outline</c> property defines whether or not the polygon is outlined.  If not specified, the default value is <see langword="false"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OpenOutlineProperty()
         {
             OpenIntervalIfNecessary();
@@ -885,6 +905,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>outlineColor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outlineColor</c> property defines the color of the polygon outline.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter OutlineColorWriter
         {
             get { return m_outlineColor.Value; }
@@ -893,6 +914,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>outlineColor</c> property.  The <c>outlineColor</c> property defines the color of the polygon outline.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter OpenOutlineColorProperty()
         {
             OpenIntervalIfNecessary();
@@ -1062,6 +1084,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>outlineWidth</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outlineWidth</c> property defines the width of the polygon outline.  If not specified, the default value is 1.0.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OutlineWidthWriter
         {
             get { return m_outlineWidth.Value; }
@@ -1070,6 +1093,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>outlineWidth</c> property.  The <c>outlineWidth</c> property defines the width of the polygon outline.  If not specified, the default value is 1.0.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenOutlineWidthProperty()
         {
             OpenIntervalIfNecessary();
@@ -1169,6 +1193,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>perPositionHeight</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>perPositionHeight</c> property defines whether to use the height of each position to define the polygon or to use <c>height</c> as a constant height above the surface.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter PerPositionHeightWriter
         {
             get { return m_perPositionHeight.Value; }
@@ -1177,6 +1202,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>perPositionHeight</c> property.  The <c>perPositionHeight</c> property defines whether to use the height of each position to define the polygon or to use <c>height</c> as a constant height above the surface.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OpenPerPositionHeightProperty()
         {
             OpenIntervalIfNecessary();
@@ -1248,6 +1274,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>closeTop</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>closeTop</c> property defines whether to close the top of the polygon.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter CloseTopWriter
         {
             get { return m_closeTop.Value; }
@@ -1256,6 +1283,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>closeTop</c> property.  The <c>closeTop</c> property defines whether to close the top of the polygon.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OpenCloseTopProperty()
         {
             OpenIntervalIfNecessary();
@@ -1327,6 +1355,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>closeBottom</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>closeBottom</c> property defines whether to close the bottom of the polygon.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter CloseBottomWriter
         {
             get { return m_closeBottom.Value; }
@@ -1335,6 +1364,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>closeBottom</c> property.  The <c>closeBottom</c> property defines whether to close the bottom of the polygon.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OpenCloseBottomProperty()
         {
             OpenIntervalIfNecessary();
@@ -1406,6 +1436,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>shadows</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>shadows</c> property defines whether or not the polygon casts or receives shadows.  If not specified, the default value is DISABLED.
         /// </summary>
+        [NotNull]
         public ShadowModeCesiumWriter ShadowsWriter
         {
             get { return m_shadows.Value; }
@@ -1414,6 +1445,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>shadows</c> property.  The <c>shadows</c> property defines whether or not the polygon casts or receives shadows.  If not specified, the default value is DISABLED.
         /// </summary>
+        [NotNull]
         public ShadowModeCesiumWriter OpenShadowsProperty()
         {
             OpenIntervalIfNecessary();
@@ -1485,6 +1517,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>distanceDisplayCondition</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>distanceDisplayCondition</c> property defines the display condition specifying the distance from the camera at which this polygon will be displayed.
         /// </summary>
+        [NotNull]
         public DistanceDisplayConditionCesiumWriter DistanceDisplayConditionWriter
         {
             get { return m_distanceDisplayCondition.Value; }
@@ -1493,6 +1526,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>distanceDisplayCondition</c> property.  The <c>distanceDisplayCondition</c> property defines the display condition specifying the distance from the camera at which this polygon will be displayed.
         /// </summary>
+        [NotNull]
         public DistanceDisplayConditionCesiumWriter OpenDistanceDisplayConditionProperty()
         {
             OpenIntervalIfNecessary();

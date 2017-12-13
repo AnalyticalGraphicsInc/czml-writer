@@ -141,9 +141,11 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public PolylineCesiumWriter(String propertyName) {
+    public PolylineCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
     }
 
@@ -155,7 +157,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     * @param existingInstance The existing instance to copy.
     */
-    protected PolylineCesiumWriter(PolylineCesiumWriter existingInstance) {
+    protected PolylineCesiumWriter(@Nonnull PolylineCesiumWriter existingInstance) {
         super(existingInstance);
     }
 
@@ -178,6 +180,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getShowWriter() {
         return m_show.getValue();
     }
@@ -188,6 +191,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openShowProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getShowWriter());
@@ -297,6 +301,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     
 
     */
+    @Nonnull
     public final PositionListCesiumWriter getPositionsWriter() {
         return m_positions.getValue();
     }
@@ -307,6 +312,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     
 
     */
+    @Nonnull
     public final PositionListCesiumWriter openPositionsProperty() {
         openIntervalIfNecessary();
         return this.<PositionListCesiumWriter> openAndReturn(getPositionsWriter());
@@ -393,6 +399,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getWidthWriter() {
         return m_width.getValue();
     }
@@ -403,6 +410,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openWidthProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getWidthWriter());
@@ -558,6 +566,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getGranularityWriter() {
         return m_granularity.getValue();
     }
@@ -568,6 +577,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openGranularityProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getGranularityWriter());
@@ -723,6 +733,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     
 
     */
+    @Nonnull
     public final PolylineMaterialCesiumWriter getMaterialWriter() {
         return m_material.getValue();
     }
@@ -733,6 +744,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     
 
     */
+    @Nonnull
     public final PolylineMaterialCesiumWriter openMaterialProperty() {
         openIntervalIfNecessary();
         return this.<PolylineMaterialCesiumWriter> openAndReturn(getMaterialWriter());
@@ -743,6 +755,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getFollowSurfaceWriter() {
         return m_followSurface.getValue();
     }
@@ -753,6 +766,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openFollowSurfaceProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getFollowSurfaceWriter());
@@ -862,6 +876,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     
 
     */
+    @Nonnull
     public final ShadowModeCesiumWriter getShadowsWriter() {
         return m_shadows.getValue();
     }
@@ -872,6 +887,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     
 
     */
+    @Nonnull
     public final ShadowModeCesiumWriter openShadowsProperty() {
         openIntervalIfNecessary();
         return this.<ShadowModeCesiumWriter> openAndReturn(getShadowsWriter());
@@ -981,6 +997,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     
 
     */
+    @Nonnull
     public final PolylineMaterialCesiumWriter getDepthFailMaterialWriter() {
         return m_depthFailMaterial.getValue();
     }
@@ -991,6 +1008,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     
 
     */
+    @Nonnull
     public final PolylineMaterialCesiumWriter openDepthFailMaterialProperty() {
         openIntervalIfNecessary();
         return this.<PolylineMaterialCesiumWriter> openAndReturn(getDepthFailMaterialWriter());
@@ -1001,6 +1019,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     
 
     */
+    @Nonnull
     public final DistanceDisplayConditionCesiumWriter getDistanceDisplayConditionWriter() {
         return m_distanceDisplayCondition.getValue();
     }
@@ -1011,6 +1030,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     
 
     */
+    @Nonnull
     public final DistanceDisplayConditionCesiumWriter openDistanceDisplayConditionProperty() {
         openIntervalIfNecessary();
         return this.<DistanceDisplayConditionCesiumWriter> openAndReturn(getDistanceDisplayConditionWriter());

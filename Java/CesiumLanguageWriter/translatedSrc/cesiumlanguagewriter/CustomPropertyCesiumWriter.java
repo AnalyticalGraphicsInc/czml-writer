@@ -255,9 +255,11 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public CustomPropertyCesiumWriter(String propertyName) {
+    public CustomPropertyCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
         m_asBoolean = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Boolean>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Boolean>>(this,
                 "createBooleanAdaptor") {
@@ -425,7 +427,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
 
     * @param existingInstance The existing instance to copy.
     */
-    protected CustomPropertyCesiumWriter(CustomPropertyCesiumWriter existingInstance) {
+    protected CustomPropertyCesiumWriter(@Nonnull CustomPropertyCesiumWriter existingInstance) {
         super(existingInstance);
         m_asBoolean = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Boolean>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Boolean>>(this,
                 "createBooleanAdaptor") {

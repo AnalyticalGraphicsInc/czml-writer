@@ -43,9 +43,11 @@ public class BoxDimensionsCesiumWriter extends CesiumInterpolatablePropertyWrite
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public BoxDimensionsCesiumWriter(String propertyName) {
+    public BoxDimensionsCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
         m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(this, "createCartesianAdaptor") {
@@ -69,7 +71,7 @@ public class BoxDimensionsCesiumWriter extends CesiumInterpolatablePropertyWrite
 
     * @param existingInstance The existing instance to copy.
     */
-    protected BoxDimensionsCesiumWriter(BoxDimensionsCesiumWriter existingInstance) {
+    protected BoxDimensionsCesiumWriter(@Nonnull BoxDimensionsCesiumWriter existingInstance) {
         super(existingInstance);
         m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(this, "createCartesianAdaptor") {

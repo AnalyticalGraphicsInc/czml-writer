@@ -5,6 +5,7 @@
 
 using CesiumLanguageWriter.Advanced;
 using System;
+using JetBrains.Annotations;
 using System.Drawing;
 using System.Collections.Generic;
 
@@ -43,7 +44,8 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public PolylineDashMaterialCesiumWriter(string propertyName)
+        /// <param name="propertyName">The name of the property.</param>
+        public PolylineDashMaterialCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
         }
@@ -52,7 +54,7 @@ namespace CesiumLanguageWriter
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
         /// <param name="existingInstance">The existing instance to copy.</param>
-        protected PolylineDashMaterialCesiumWriter(PolylineDashMaterialCesiumWriter existingInstance)
+        protected PolylineDashMaterialCesiumWriter([NotNull] PolylineDashMaterialCesiumWriter existingInstance)
             : base(existingInstance)
         {
         }
@@ -66,6 +68,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>color</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>color</c> property defines the color of the dashes on the line.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter ColorWriter
         {
             get { return m_color.Value; }
@@ -74,6 +77,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>color</c> property.  The <c>color</c> property defines the color of the dashes on the line.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter OpenColorProperty()
         {
             OpenIntervalIfNecessary();
@@ -243,6 +247,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>gapColor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>gapColor</c> property defines the color of the gaps between dashes on the line.  The default is transparent.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter GapColorWriter
         {
             get { return m_gapColor.Value; }
@@ -251,6 +256,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>gapColor</c> property.  The <c>gapColor</c> property defines the color of the gaps between dashes on the line.  The default is transparent.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter OpenGapColorProperty()
         {
             OpenIntervalIfNecessary();
@@ -420,6 +426,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>dashLength</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>dashLength</c> property defines the length in screen-space pixels of a single dash and gap pattern.  If not specified, the default value is 16.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter DashLengthWriter
         {
             get { return m_dashLength.Value; }
@@ -428,6 +435,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>dashLength</c> property.  The <c>dashLength</c> property defines the length in screen-space pixels of a single dash and gap pattern.  If not specified, the default value is 16.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenDashLengthProperty()
         {
             OpenIntervalIfNecessary();
@@ -527,6 +535,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>dashPattern</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>dashPattern</c> property defines a 16-bit bitfield representing which portions along a single dashLength are the dash (1) and which are the gap (0).  The default value, 255 (0000000011111111), indicates 50% gap followed by 50% dash.  If not specified, the default value is 255.
         /// </summary>
+        [NotNull]
         public IntegerCesiumWriter DashPatternWriter
         {
             get { return m_dashPattern.Value; }
@@ -535,6 +544,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>dashPattern</c> property.  The <c>dashPattern</c> property defines a 16-bit bitfield representing which portions along a single dashLength are the dash (1) and which are the gap (0).  The default value, 255 (0000000011111111), indicates 50% gap followed by 50% dash.  If not specified, the default value is 255.
         /// </summary>
+        [NotNull]
         public IntegerCesiumWriter OpenDashPatternProperty()
         {
             OpenIntervalIfNecessary();

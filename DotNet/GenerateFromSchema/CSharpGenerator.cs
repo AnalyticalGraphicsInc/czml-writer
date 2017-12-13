@@ -112,10 +112,11 @@ namespace GenerateFromSchema
 
         private void WriteNamespaces(CodeWriter writer, Schema schema)
         {
-            HashSet<string> namespaces = new HashSet<string>
+            var namespaces = new HashSet<string>
             {
                 m_configuration.Namespace + ".Advanced",
-                m_configuration.LazyNamespace
+                m_configuration.LazyNamespace,
+                "JetBrains.Annotations",
             };
             foreach (Property property in schema.Properties)
             {
@@ -306,6 +307,7 @@ namespace GenerateFromSchema
             GenerateWriterClass(property.ValueType);
 
             WriteSummaryText(writer, string.Format("Gets the writer for the <c>{0}</c> property.  The returned instance must be opened by calling the <see cref=\"CesiumElementWriter.Open\"/> method before it can be used for writing.  The <c>{0}</c> property defines {1}", property.Name, GetDescription(property)));
+            writer.WriteLine("[NotNull]");
             writer.WriteLine("public {0}CesiumWriter {1}Writer", property.ValueType.NameWithPascalCase, property.NameWithPascalCase);
             using (writer.OpenScope())
             {
@@ -314,6 +316,7 @@ namespace GenerateFromSchema
             writer.WriteLine();
 
             WriteSummaryText(writer, string.Format("Opens and returns the writer for the <c>{0}</c> property.  The <c>{0}</c> property defines {1}", property.Name, GetDescription(property)));
+            writer.WriteLine("[NotNull]");
             writer.WriteLine("public {0}CesiumWriter Open{1}Property()", property.ValueType.NameWithPascalCase, property.NameWithPascalCase);
             using (writer.OpenScope())
             {
@@ -429,7 +432,8 @@ namespace GenerateFromSchema
         private void WriteConstructorsAndCloneMethod(CodeWriter writer, Schema schema)
         {
             WriteSummaryText(writer, "Initializes a new instance.");
-            writer.WriteLine("public {0}CesiumWriter(string propertyName)", schema.NameWithPascalCase);
+            WriteParameterText(writer, "propertyName", "The name of the property.");
+            writer.WriteLine("public {0}CesiumWriter([NotNull] string propertyName)", schema.NameWithPascalCase);
             writer.WriteLine("    : base(propertyName)");
             using (writer.OpenScope())
             {
@@ -439,7 +443,7 @@ namespace GenerateFromSchema
 
             WriteSummaryText(writer, "Initializes a new instance as a copy of an existing instance.");
             WriteParameterText(writer, "existingInstance", "The existing instance to copy.");
-            writer.WriteLine("protected {0}CesiumWriter({0}CesiumWriter existingInstance)", schema.NameWithPascalCase);
+            writer.WriteLine("protected {0}CesiumWriter([NotNull] {0}CesiumWriter existingInstance)", schema.NameWithPascalCase);
             writer.WriteLine("    : base(existingInstance)");
             using (writer.OpenScope())
             {

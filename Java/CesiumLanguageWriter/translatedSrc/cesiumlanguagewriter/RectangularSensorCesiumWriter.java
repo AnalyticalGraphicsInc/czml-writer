@@ -297,9 +297,11 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public RectangularSensorCesiumWriter(String propertyName) {
+    public RectangularSensorCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
     }
 
@@ -311,7 +313,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
     * @param existingInstance The existing instance to copy.
     */
-    protected RectangularSensorCesiumWriter(RectangularSensorCesiumWriter existingInstance) {
+    protected RectangularSensorCesiumWriter(@Nonnull RectangularSensorCesiumWriter existingInstance) {
         super(existingInstance);
     }
 
@@ -334,6 +336,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getShowWriter() {
         return m_show.getValue();
     }
@@ -344,6 +347,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openShowProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getShowWriter());
@@ -453,6 +457,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getXHalfAngleWriter() {
         return m_xHalfAngle.getValue();
     }
@@ -463,6 +468,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openXHalfAngleProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getXHalfAngleWriter());
@@ -618,6 +624,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getYHalfAngleWriter() {
         return m_yHalfAngle.getValue();
     }
@@ -628,6 +635,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openYHalfAngleProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getYHalfAngleWriter());
@@ -783,6 +791,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getRadiusWriter() {
         return m_radius.getValue();
     }
@@ -793,6 +802,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openRadiusProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getRadiusWriter());
@@ -948,6 +958,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getShowIntersectionWriter() {
         return m_showIntersection.getValue();
     }
@@ -958,6 +969,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openShowIntersectionProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getShowIntersectionWriter());
@@ -1067,6 +1079,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter getIntersectionColorWriter() {
         return m_intersectionColor.getValue();
     }
@@ -1077,6 +1090,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter openIntersectionColorProperty() {
         openIntervalIfNecessary();
         return this.<ColorCesiumWriter> openAndReturn(getIntersectionColorWriter());
@@ -1347,6 +1361,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getIntersectionWidthWriter() {
         return m_intersectionWidth.getValue();
     }
@@ -1357,6 +1372,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openIntersectionWidthProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getIntersectionWidthWriter());
@@ -1512,6 +1528,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getShowLateralSurfacesWriter() {
         return m_showLateralSurfaces.getValue();
     }
@@ -1522,6 +1539,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openShowLateralSurfacesProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getShowLateralSurfacesWriter());
@@ -1631,6 +1649,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final MaterialCesiumWriter getLateralSurfaceMaterialWriter() {
         return m_lateralSurfaceMaterial.getValue();
     }
@@ -1641,6 +1660,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final MaterialCesiumWriter openLateralSurfaceMaterialProperty() {
         openIntervalIfNecessary();
         return this.<MaterialCesiumWriter> openAndReturn(getLateralSurfaceMaterialWriter());
@@ -1651,6 +1671,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getShowEllipsoidSurfacesWriter() {
         return m_showEllipsoidSurfaces.getValue();
     }
@@ -1661,6 +1682,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openShowEllipsoidSurfacesProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getShowEllipsoidSurfacesWriter());
@@ -1770,6 +1792,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final MaterialCesiumWriter getEllipsoidSurfaceMaterialWriter() {
         return m_ellipsoidSurfaceMaterial.getValue();
     }
@@ -1780,6 +1803,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final MaterialCesiumWriter openEllipsoidSurfaceMaterialProperty() {
         openIntervalIfNecessary();
         return this.<MaterialCesiumWriter> openAndReturn(getEllipsoidSurfaceMaterialWriter());
@@ -1790,6 +1814,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getShowEllipsoidHorizonSurfacesWriter() {
         return m_showEllipsoidHorizonSurfaces.getValue();
     }
@@ -1800,6 +1825,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openShowEllipsoidHorizonSurfacesProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getShowEllipsoidHorizonSurfacesWriter());
@@ -1909,6 +1935,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final MaterialCesiumWriter getEllipsoidHorizonSurfaceMaterialWriter() {
         return m_ellipsoidHorizonSurfaceMaterial.getValue();
     }
@@ -1919,6 +1946,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final MaterialCesiumWriter openEllipsoidHorizonSurfaceMaterialProperty() {
         openIntervalIfNecessary();
         return this.<MaterialCesiumWriter> openAndReturn(getEllipsoidHorizonSurfaceMaterialWriter());
@@ -1929,6 +1957,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getShowDomeSurfacesWriter() {
         return m_showDomeSurfaces.getValue();
     }
@@ -1939,6 +1968,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openShowDomeSurfacesProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getShowDomeSurfacesWriter());
@@ -2048,6 +2078,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final MaterialCesiumWriter getDomeSurfaceMaterialWriter() {
         return m_domeSurfaceMaterial.getValue();
     }
@@ -2058,6 +2089,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final MaterialCesiumWriter openDomeSurfaceMaterialProperty() {
         openIntervalIfNecessary();
         return this.<MaterialCesiumWriter> openAndReturn(getDomeSurfaceMaterialWriter());
@@ -2068,6 +2100,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final SensorVolumePortionToDisplayCesiumWriter getPortionToDisplayWriter() {
         return m_portionToDisplay.getValue();
     }
@@ -2078,6 +2111,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final SensorVolumePortionToDisplayCesiumWriter openPortionToDisplayProperty() {
         openIntervalIfNecessary();
         return this.<SensorVolumePortionToDisplayCesiumWriter> openAndReturn(getPortionToDisplayWriter());
@@ -2187,6 +2221,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getEnvironmentConstraintWriter() {
         return m_environmentConstraint.getValue();
     }
@@ -2197,6 +2232,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openEnvironmentConstraintProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getEnvironmentConstraintWriter());
@@ -2306,6 +2342,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getShowEnvironmentOcclusionWriter() {
         return m_showEnvironmentOcclusion.getValue();
     }
@@ -2316,6 +2353,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openShowEnvironmentOcclusionProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getShowEnvironmentOcclusionWriter());
@@ -2425,6 +2463,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final MaterialCesiumWriter getEnvironmentOcclusionMaterialWriter() {
         return m_environmentOcclusionMaterial.getValue();
     }
@@ -2435,6 +2474,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final MaterialCesiumWriter openEnvironmentOcclusionMaterialProperty() {
         openIntervalIfNecessary();
         return this.<MaterialCesiumWriter> openAndReturn(getEnvironmentOcclusionMaterialWriter());
@@ -2445,6 +2485,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter getShowEnvironmentIntersectionWriter() {
         return m_showEnvironmentIntersection.getValue();
     }
@@ -2455,6 +2496,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final BooleanCesiumWriter openShowEnvironmentIntersectionProperty() {
         openIntervalIfNecessary();
         return this.<BooleanCesiumWriter> openAndReturn(getShowEnvironmentIntersectionWriter());
@@ -2564,6 +2606,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter getEnvironmentIntersectionColorWriter() {
         return m_environmentIntersectionColor.getValue();
     }
@@ -2574,6 +2617,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final ColorCesiumWriter openEnvironmentIntersectionColorProperty() {
         openIntervalIfNecessary();
         return this.<ColorCesiumWriter> openAndReturn(getEnvironmentIntersectionColorWriter());
@@ -2844,6 +2888,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter getEnvironmentIntersectionWidthWriter() {
         return m_environmentIntersectionWidth.getValue();
     }
@@ -2854,6 +2899,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
 
     */
+    @Nonnull
     public final DoubleCesiumWriter openEnvironmentIntersectionWidthProperty() {
         openIntervalIfNecessary();
         return this.<DoubleCesiumWriter> openAndReturn(getEnvironmentIntersectionWidthWriter());

@@ -42,9 +42,11 @@ public class StripeOrientationCesiumWriter extends CesiumPropertyWriter<StripeOr
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public StripeOrientationCesiumWriter(String propertyName) {
+    public StripeOrientationCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
         m_asStripeOrientation = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumStripeOrientation>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumStripeOrientation>>(this, "createStripeOrientationAdaptor") {
@@ -68,7 +70,7 @@ public class StripeOrientationCesiumWriter extends CesiumPropertyWriter<StripeOr
 
     * @param existingInstance The existing instance to copy.
     */
-    protected StripeOrientationCesiumWriter(StripeOrientationCesiumWriter existingInstance) {
+    protected StripeOrientationCesiumWriter(@Nonnull StripeOrientationCesiumWriter existingInstance) {
         super(existingInstance);
         m_asStripeOrientation = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumStripeOrientation>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumStripeOrientation>>(this, "createStripeOrientationAdaptor") {

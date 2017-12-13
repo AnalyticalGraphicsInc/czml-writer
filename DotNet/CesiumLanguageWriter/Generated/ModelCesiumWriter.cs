@@ -5,6 +5,7 @@
 
 using CesiumLanguageWriter.Advanced;
 using System;
+using JetBrains.Annotations;
 using System.Drawing;
 using System.Collections.Generic;
 
@@ -115,7 +116,8 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public ModelCesiumWriter(string propertyName)
+        /// <param name="propertyName">The name of the property.</param>
+        public ModelCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
         }
@@ -124,7 +126,7 @@ namespace CesiumLanguageWriter
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
         /// <param name="existingInstance">The existing instance to copy.</param>
-        protected ModelCesiumWriter(ModelCesiumWriter existingInstance)
+        protected ModelCesiumWriter([NotNull] ModelCesiumWriter existingInstance)
             : base(existingInstance)
         {
         }
@@ -138,6 +140,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>show</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>show</c> property defines whether or not the model is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter ShowWriter
         {
             get { return m_show.Value; }
@@ -146,6 +149,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>show</c> property.  The <c>show</c> property defines whether or not the model is shown.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OpenShowProperty()
         {
             OpenIntervalIfNecessary();
@@ -217,6 +221,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>gltf</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>gltf</c> property defines the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
         /// </summary>
+        [NotNull]
         public UriCesiumWriter GltfWriter
         {
             get { return m_gltf.Value; }
@@ -225,6 +230,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>gltf</c> property.  The <c>gltf</c> property defines the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>.
         /// </summary>
+        [NotNull]
         public UriCesiumWriter OpenGltfProperty()
         {
             OpenIntervalIfNecessary();
@@ -373,6 +379,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>scale</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>scale</c> property defines the scale of the model.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter ScaleWriter
         {
             get { return m_scale.Value; }
@@ -381,6 +388,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>scale</c> property.  The <c>scale</c> property defines the scale of the model.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenScaleProperty()
         {
             OpenIntervalIfNecessary();
@@ -480,6 +488,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>minimumPixelSize</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>minimumPixelSize</c> property defines the approximate minimum pixel size of the model regardless of zoom.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter MinimumPixelSizeWriter
         {
             get { return m_minimumPixelSize.Value; }
@@ -488,6 +497,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>minimumPixelSize</c> property.  The <c>minimumPixelSize</c> property defines the approximate minimum pixel size of the model regardless of zoom.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenMinimumPixelSizeProperty()
         {
             OpenIntervalIfNecessary();
@@ -587,6 +597,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>maximumScale</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>maximumScale</c> property defines the maximum scale size of the model. This is used as an upper limit for <c>minimumPixelSize</c>.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter MaximumScaleWriter
         {
             get { return m_maximumScale.Value; }
@@ -595,6 +606,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>maximumScale</c> property.  The <c>maximumScale</c> property defines the maximum scale size of the model. This is used as an upper limit for <c>minimumPixelSize</c>.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenMaximumScaleProperty()
         {
             OpenIntervalIfNecessary();
@@ -694,6 +706,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>incrementallyLoadTextures</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>incrementallyLoadTextures</c> property defines whether or not the model can be rendered before all textures have loaded.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter IncrementallyLoadTexturesWriter
         {
             get { return m_incrementallyLoadTextures.Value; }
@@ -702,6 +715,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>incrementallyLoadTextures</c> property.  The <c>incrementallyLoadTextures</c> property defines whether or not the model can be rendered before all textures have loaded.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OpenIncrementallyLoadTexturesProperty()
         {
             OpenIntervalIfNecessary();
@@ -773,6 +787,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>runAnimations</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>runAnimations</c> property defines whether or not to run all animations defined in the glTF model.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter RunAnimationsWriter
         {
             get { return m_runAnimations.Value; }
@@ -781,6 +796,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>runAnimations</c> property.  The <c>runAnimations</c> property defines whether or not to run all animations defined in the glTF model.  If not specified, the default value is <see langword="true"/>.
         /// </summary>
+        [NotNull]
         public BooleanCesiumWriter OpenRunAnimationsProperty()
         {
             OpenIntervalIfNecessary();
@@ -852,6 +868,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>shadows</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>shadows</c> property defines whether or not the model casts or receives shadows.  If not specified, the default value is ENABLED.
         /// </summary>
+        [NotNull]
         public ShadowModeCesiumWriter ShadowsWriter
         {
             get { return m_shadows.Value; }
@@ -860,6 +877,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>shadows</c> property.  The <c>shadows</c> property defines whether or not the model casts or receives shadows.  If not specified, the default value is ENABLED.
         /// </summary>
+        [NotNull]
         public ShadowModeCesiumWriter OpenShadowsProperty()
         {
             OpenIntervalIfNecessary();
@@ -931,6 +949,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>heightReference</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>heightReference</c> property defines the height reference of the model, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
         /// </summary>
+        [NotNull]
         public HeightReferenceCesiumWriter HeightReferenceWriter
         {
             get { return m_heightReference.Value; }
@@ -939,6 +958,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>heightReference</c> property.  The <c>heightReference</c> property defines the height reference of the model, which indicates if the position is relative to terrain or not.  If not specified, the default value is NONE.
         /// </summary>
+        [NotNull]
         public HeightReferenceCesiumWriter OpenHeightReferenceProperty()
         {
             OpenIntervalIfNecessary();
@@ -1010,6 +1030,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>silhouetteColor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>silhouetteColor</c> property defines the color of the silhouette drawn around the model.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter SilhouetteColorWriter
         {
             get { return m_silhouetteColor.Value; }
@@ -1018,6 +1039,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>silhouetteColor</c> property.  The <c>silhouetteColor</c> property defines the color of the silhouette drawn around the model.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter OpenSilhouetteColorProperty()
         {
             OpenIntervalIfNecessary();
@@ -1187,6 +1209,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>silhouetteSize</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>silhouetteSize</c> property defines the size, in pixels, of the silhouette drawn around the model.  If not specified, the default value is 0.0.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter SilhouetteSizeWriter
         {
             get { return m_silhouetteSize.Value; }
@@ -1195,6 +1218,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>silhouetteSize</c> property.  The <c>silhouetteSize</c> property defines the size, in pixels, of the silhouette drawn around the model.  If not specified, the default value is 0.0.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenSilhouetteSizeProperty()
         {
             OpenIntervalIfNecessary();
@@ -1294,6 +1318,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>color</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>color</c> property defines the color to blend with the model's rendered color.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter ColorWriter
         {
             get { return m_color.Value; }
@@ -1302,6 +1327,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>color</c> property.  The <c>color</c> property defines the color to blend with the model's rendered color.
         /// </summary>
+        [NotNull]
         public ColorCesiumWriter OpenColorProperty()
         {
             OpenIntervalIfNecessary();
@@ -1471,6 +1497,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>colorBlendMode</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>colorBlendMode</c> property defines the mode to use for blending between <c>color</c> and the model's color.  If not specified, the default value is HIGHLIGHT.
         /// </summary>
+        [NotNull]
         public ColorBlendModeCesiumWriter ColorBlendModeWriter
         {
             get { return m_colorBlendMode.Value; }
@@ -1479,6 +1506,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>colorBlendMode</c> property.  The <c>colorBlendMode</c> property defines the mode to use for blending between <c>color</c> and the model's color.  If not specified, the default value is HIGHLIGHT.
         /// </summary>
+        [NotNull]
         public ColorBlendModeCesiumWriter OpenColorBlendModeProperty()
         {
             OpenIntervalIfNecessary();
@@ -1550,6 +1578,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>colorBlendAmount</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>colorBlendAmount</c> property defines the color strength when <c>colorBlendMode</c> is <c>MIX</c>. A value of 0.0 results in the model's rendered color while a value of 1.0 results in a solid color, with any value in-between resulting in a mix of the two.  If not specified, the default value is 0.5.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter ColorBlendAmountWriter
         {
             get { return m_colorBlendAmount.Value; }
@@ -1558,6 +1587,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>colorBlendAmount</c> property.  The <c>colorBlendAmount</c> property defines the color strength when <c>colorBlendMode</c> is <c>MIX</c>. A value of 0.0 results in the model's rendered color while a value of 1.0 results in a solid color, with any value in-between resulting in a mix of the two.  If not specified, the default value is 0.5.
         /// </summary>
+        [NotNull]
         public DoubleCesiumWriter OpenColorBlendAmountProperty()
         {
             OpenIntervalIfNecessary();
@@ -1657,6 +1687,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>distanceDisplayCondition</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>distanceDisplayCondition</c> property defines the display condition specifying at what distance from the camera this model will be displayed.
         /// </summary>
+        [NotNull]
         public DistanceDisplayConditionCesiumWriter DistanceDisplayConditionWriter
         {
             get { return m_distanceDisplayCondition.Value; }
@@ -1665,6 +1696,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>distanceDisplayCondition</c> property.  The <c>distanceDisplayCondition</c> property defines the display condition specifying at what distance from the camera this model will be displayed.
         /// </summary>
+        [NotNull]
         public DistanceDisplayConditionCesiumWriter OpenDistanceDisplayConditionProperty()
         {
             OpenIntervalIfNecessary();
@@ -1777,6 +1809,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the writer for the <c>nodeTransformations</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>nodeTransformations</c> property defines a mapping of node names to node transformations.
         /// </summary>
+        [NotNull]
         public NodeTransformationsCesiumWriter NodeTransformationsWriter
         {
             get { return m_nodeTransformations.Value; }
@@ -1785,6 +1818,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Opens and returns the writer for the <c>nodeTransformations</c> property.  The <c>nodeTransformations</c> property defines a mapping of node names to node transformations.
         /// </summary>
+        [NotNull]
         public NodeTransformationsCesiumWriter OpenNodeTransformationsProperty()
         {
             OpenIntervalIfNecessary();

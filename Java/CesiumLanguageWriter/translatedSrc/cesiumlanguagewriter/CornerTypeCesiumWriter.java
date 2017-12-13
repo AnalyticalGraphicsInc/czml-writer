@@ -42,9 +42,11 @@ public class CornerTypeCesiumWriter extends CesiumPropertyWriter<CornerTypeCesiu
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public CornerTypeCesiumWriter(String propertyName) {
+    public CornerTypeCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
         m_asCornerType = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumCornerType>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumCornerType>>(
                 this, "createCornerTypeAdaptor") {
@@ -68,7 +70,7 @@ public class CornerTypeCesiumWriter extends CesiumPropertyWriter<CornerTypeCesiu
 
     * @param existingInstance The existing instance to copy.
     */
-    protected CornerTypeCesiumWriter(CornerTypeCesiumWriter existingInstance) {
+    protected CornerTypeCesiumWriter(@Nonnull CornerTypeCesiumWriter existingInstance) {
         super(existingInstance);
         m_asCornerType = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumCornerType>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumCornerType>>(
                 this, "createCornerTypeAdaptor") {

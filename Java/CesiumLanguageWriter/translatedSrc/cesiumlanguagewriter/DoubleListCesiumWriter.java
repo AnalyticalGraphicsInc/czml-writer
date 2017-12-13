@@ -5,6 +5,7 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -39,9 +40,11 @@ public class DoubleListCesiumWriter extends CesiumPropertyWriter<DoubleListCesiu
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public DoubleListCesiumWriter(String propertyName) {
+    public DoubleListCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
         m_asArray = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Double>>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Double>>>(this,
                 "createArrayAdaptor") {
@@ -65,7 +68,7 @@ public class DoubleListCesiumWriter extends CesiumPropertyWriter<DoubleListCesiu
 
     * @param existingInstance The existing instance to copy.
     */
-    protected DoubleListCesiumWriter(DoubleListCesiumWriter existingInstance) {
+    protected DoubleListCesiumWriter(@Nonnull DoubleListCesiumWriter existingInstance) {
         super(existingInstance);
         m_asArray = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Double>>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Double>>>(this,
                 "createArrayAdaptor") {

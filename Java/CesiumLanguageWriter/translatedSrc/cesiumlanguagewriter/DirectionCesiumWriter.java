@@ -70,9 +70,11 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public DirectionCesiumWriter(String propertyName) {
+    public DirectionCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
         m_asSpherical = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Spherical>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Spherical>>(this, "createSphericalAdaptor") {
@@ -114,7 +116,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
     * @param existingInstance The existing instance to copy.
     */
-    protected DirectionCesiumWriter(DirectionCesiumWriter existingInstance) {
+    protected DirectionCesiumWriter(@Nonnull DirectionCesiumWriter existingInstance) {
         super(existingInstance);
         m_asSpherical = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Spherical>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Spherical>>(this, "createSphericalAdaptor") {

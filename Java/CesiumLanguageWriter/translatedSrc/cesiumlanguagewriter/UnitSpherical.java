@@ -43,17 +43,6 @@ public final class UnitSpherical implements IEquatable<UnitSpherical>, Immutable
 
     /**
     *  
-    Initializes a set of {@link UnitSpherical} coordinates from a {@link Spherical} instance.
-    <param name="spherical">An existing Spherical instance.</param>
-    
-
-    */
-    public UnitSpherical(@Nonnull Spherical spherical) {
-        this(spherical.getClock(), spherical.getCone());
-    }
-
-    /**
-    *  
     Initializes a set of {@link UnitSpherical} coordinates from the provided set of {@link UnitCartesian} coordinates.
     
     
@@ -67,6 +56,20 @@ public final class UnitSpherical implements IEquatable<UnitSpherical>, Immutable
         double radialSquared = x * x + y * y;
         m_clock = Math.atan2(y, x);
         m_cone = Math.atan2(Math.sqrt(radialSquared), z);
+    }
+
+    /**
+    *  
+    Initializes a set of {@link UnitSpherical} coordinates from the provided set of
+    {@link Spherical} coordinates.
+    
+    
+
+    * @param coordinates The set of Spherical coordinates.
+    */
+    public UnitSpherical(@Nonnull Spherical coordinates) {
+        m_clock = coordinates.getClock();
+        m_cone = coordinates.getCone();
     }
 
     /**

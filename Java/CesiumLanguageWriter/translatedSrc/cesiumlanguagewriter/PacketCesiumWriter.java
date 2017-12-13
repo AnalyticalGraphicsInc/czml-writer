@@ -473,6 +473,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final StringCesiumWriter getDescriptionWriter() {
         return m_description.getValue();
     }
@@ -483,6 +484,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final StringCesiumWriter openDescriptionProperty() {
         return this.<StringCesiumWriter> openAndReturn(getDescriptionWriter());
     }
@@ -591,6 +593,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final ClockCesiumWriter getClockWriter() {
         return m_clock.getValue();
     }
@@ -601,6 +604,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final ClockCesiumWriter openClockProperty() {
         return this.<ClockCesiumWriter> openAndReturn(getClockWriter());
     }
@@ -666,6 +670,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final CustomPropertiesCesiumWriter getPropertiesWriter() {
         return m_properties.getValue();
     }
@@ -676,6 +681,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final CustomPropertiesCesiumWriter openPropertiesProperty() {
         return this.<CustomPropertiesCesiumWriter> openAndReturn(getPropertiesWriter());
     }
@@ -685,6 +691,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final PositionCesiumWriter getPositionWriter() {
         return m_position.getValue();
     }
@@ -695,6 +702,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final PositionCesiumWriter openPositionProperty() {
         return this.<PositionCesiumWriter> openAndReturn(getPositionWriter());
     }
@@ -1044,6 +1052,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final OrientationCesiumWriter getOrientationWriter() {
         return m_orientation.getValue();
     }
@@ -1054,6 +1063,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final OrientationCesiumWriter openOrientationProperty() {
         return this.<OrientationCesiumWriter> openAndReturn(getOrientationWriter());
     }
@@ -1288,6 +1298,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final ViewFromCesiumWriter getViewFromWriter() {
         return m_viewFrom.getValue();
     }
@@ -1298,6 +1309,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final ViewFromCesiumWriter openViewFromProperty() {
         return this.<ViewFromCesiumWriter> openAndReturn(getViewFromWriter());
     }
@@ -1452,6 +1464,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final BillboardCesiumWriter getBillboardWriter() {
         return m_billboard.getValue();
     }
@@ -1462,6 +1475,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final BillboardCesiumWriter openBillboardProperty() {
         return this.<BillboardCesiumWriter> openAndReturn(getBillboardWriter());
     }
@@ -1471,6 +1485,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final BoxCesiumWriter getBoxWriter() {
         return m_box.getValue();
     }
@@ -1481,6 +1496,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final BoxCesiumWriter openBoxProperty() {
         return this.<BoxCesiumWriter> openAndReturn(getBoxWriter());
     }
@@ -1490,6 +1506,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final CorridorCesiumWriter getCorridorWriter() {
         return m_corridor.getValue();
     }
@@ -1500,6 +1517,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final CorridorCesiumWriter openCorridorProperty() {
         return this.<CorridorCesiumWriter> openAndReturn(getCorridorWriter());
     }
@@ -1509,6 +1527,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final CylinderCesiumWriter getCylinderWriter() {
         return m_cylinder.getValue();
     }
@@ -1519,6 +1538,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final CylinderCesiumWriter openCylinderProperty() {
         return this.<CylinderCesiumWriter> openAndReturn(getCylinderWriter());
     }
@@ -1528,6 +1548,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final EllipseCesiumWriter getEllipseWriter() {
         return m_ellipse.getValue();
     }
@@ -1538,6 +1559,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final EllipseCesiumWriter openEllipseProperty() {
         return this.<EllipseCesiumWriter> openAndReturn(getEllipseWriter());
     }
@@ -1547,6 +1569,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final EllipsoidCesiumWriter getEllipsoidWriter() {
         return m_ellipsoid.getValue();
     }
@@ -1557,6 +1580,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final EllipsoidCesiumWriter openEllipsoidProperty() {
         return this.<EllipsoidCesiumWriter> openAndReturn(getEllipsoidWriter());
     }
@@ -1566,6 +1590,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final LabelCesiumWriter getLabelWriter() {
         return m_label.getValue();
     }
@@ -1576,6 +1601,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final LabelCesiumWriter openLabelProperty() {
         return this.<LabelCesiumWriter> openAndReturn(getLabelWriter());
     }
@@ -1585,6 +1611,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final ModelCesiumWriter getModelWriter() {
         return m_model.getValue();
     }
@@ -1595,6 +1622,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final ModelCesiumWriter openModelProperty() {
         return this.<ModelCesiumWriter> openAndReturn(getModelWriter());
     }
@@ -1604,6 +1632,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final PathCesiumWriter getPathWriter() {
         return m_path.getValue();
     }
@@ -1614,6 +1643,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final PathCesiumWriter openPathProperty() {
         return this.<PathCesiumWriter> openAndReturn(getPathWriter());
     }
@@ -1623,6 +1653,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final PointCesiumWriter getPointWriter() {
         return m_point.getValue();
     }
@@ -1633,6 +1664,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final PointCesiumWriter openPointProperty() {
         return this.<PointCesiumWriter> openAndReturn(getPointWriter());
     }
@@ -1642,6 +1674,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final PolygonCesiumWriter getPolygonWriter() {
         return m_polygon.getValue();
     }
@@ -1652,6 +1685,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final PolygonCesiumWriter openPolygonProperty() {
         return this.<PolygonCesiumWriter> openAndReturn(getPolygonWriter());
     }
@@ -1661,6 +1695,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final PolylineCesiumWriter getPolylineWriter() {
         return m_polyline.getValue();
     }
@@ -1671,6 +1706,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final PolylineCesiumWriter openPolylineProperty() {
         return this.<PolylineCesiumWriter> openAndReturn(getPolylineWriter());
     }
@@ -1680,6 +1716,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final RectangleCesiumWriter getRectangleWriter() {
         return m_rectangle.getValue();
     }
@@ -1690,6 +1727,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final RectangleCesiumWriter openRectangleProperty() {
         return this.<RectangleCesiumWriter> openAndReturn(getRectangleWriter());
     }
@@ -1699,6 +1737,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final WallCesiumWriter getWallWriter() {
         return m_wall.getValue();
     }
@@ -1709,6 +1748,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final WallCesiumWriter openWallProperty() {
         return this.<WallCesiumWriter> openAndReturn(getWallWriter());
     }
@@ -1718,6 +1758,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final ConicSensorCesiumWriter getConicSensorWriter() {
         return m_agi_conicSensor.getValue();
     }
@@ -1728,6 +1769,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final ConicSensorCesiumWriter openConicSensorProperty() {
         return this.<ConicSensorCesiumWriter> openAndReturn(getConicSensorWriter());
     }
@@ -1737,6 +1779,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final CustomPatternSensorCesiumWriter getCustomPatternSensorWriter() {
         return m_agi_customPatternSensor.getValue();
     }
@@ -1747,6 +1790,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final CustomPatternSensorCesiumWriter openCustomPatternSensorProperty() {
         return this.<CustomPatternSensorCesiumWriter> openAndReturn(getCustomPatternSensorWriter());
     }
@@ -1756,6 +1800,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final RectangularSensorCesiumWriter getRectangularSensorWriter() {
         return m_agi_rectangularSensor.getValue();
     }
@@ -1766,6 +1811,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final RectangularSensorCesiumWriter openRectangularSensorProperty() {
         return this.<RectangularSensorCesiumWriter> openAndReturn(getRectangularSensorWriter());
     }
@@ -1775,6 +1821,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final FanCesiumWriter getFanWriter() {
         return m_agi_fan.getValue();
     }
@@ -1785,6 +1832,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final FanCesiumWriter openFanProperty() {
         return this.<FanCesiumWriter> openAndReturn(getFanWriter());
     }
@@ -1794,6 +1842,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final VectorCesiumWriter getVectorWriter() {
         return m_agi_vector.getValue();
     }
@@ -1804,6 +1853,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     
 
     */
+    @Nonnull
     public final VectorCesiumWriter openVectorProperty() {
         return this.<VectorCesiumWriter> openAndReturn(getVectorWriter());
     }

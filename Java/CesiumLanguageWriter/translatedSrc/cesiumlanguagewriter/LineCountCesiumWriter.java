@@ -43,9 +43,11 @@ public class LineCountCesiumWriter extends CesiumInterpolatablePropertyWriter<Li
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public LineCountCesiumWriter(String propertyName) {
+    public LineCountCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
         m_asCartesian2 = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Rectangular>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Rectangular>>(this, "createCartesian2Adaptor") {
@@ -69,7 +71,7 @@ public class LineCountCesiumWriter extends CesiumInterpolatablePropertyWriter<Li
 
     * @param existingInstance The existing instance to copy.
     */
-    protected LineCountCesiumWriter(LineCountCesiumWriter existingInstance) {
+    protected LineCountCesiumWriter(@Nonnull LineCountCesiumWriter existingInstance) {
         super(existingInstance);
         m_asCartesian2 = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Rectangular>>(
                 new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Rectangular>>(this, "createCartesian2Adaptor") {

@@ -4,6 +4,7 @@ package cesiumlanguagewriter;
 import agi.foundation.compatibility.*;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.NodeTransformationCesiumWriter;
+import javax.annotation.Nonnull;
 
 /**
  *  
@@ -21,9 +22,11 @@ public class NodeTransformationsCesiumWriter extends CesiumPropertyWriter<NodeTr
     *  
     Initializes a new instance.
     
+    
 
+    * @param propertyName The name of the property.
     */
-    public NodeTransformationsCesiumWriter(String propertyName) {
+    public NodeTransformationsCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
     }
 
@@ -35,7 +38,7 @@ public class NodeTransformationsCesiumWriter extends CesiumPropertyWriter<NodeTr
 
     * @param existingInstance The existing instance to copy.
     */
-    protected NodeTransformationsCesiumWriter(NodeTransformationsCesiumWriter existingInstance) {
+    protected NodeTransformationsCesiumWriter(@Nonnull NodeTransformationsCesiumWriter existingInstance) {
         super(existingInstance);
     }
 

@@ -5,6 +5,7 @@
 
 using CesiumLanguageWriter.Advanced;
 using System;
+using JetBrains.Annotations;
 using System.Collections.Generic;
 
 namespace CesiumLanguageWriter
@@ -30,7 +31,8 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public BackgroundPaddingCesiumWriter(string propertyName)
+        /// <param name="propertyName">The name of the property.</param>
+        public BackgroundPaddingCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
             m_asCartesian2 = new Lazy<ICesiumInterpolatableValuePropertyWriter<Rectangular>>(CreateCartesian2Adaptor, false);
@@ -41,7 +43,7 @@ namespace CesiumLanguageWriter
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
         /// <param name="existingInstance">The existing instance to copy.</param>
-        protected BackgroundPaddingCesiumWriter(BackgroundPaddingCesiumWriter existingInstance)
+        protected BackgroundPaddingCesiumWriter([NotNull] BackgroundPaddingCesiumWriter existingInstance)
             : base(existingInstance)
         {
             m_asCartesian2 = new Lazy<ICesiumInterpolatableValuePropertyWriter<Rectangular>>(CreateCartesian2Adaptor, false);
