@@ -276,13 +276,30 @@ public final class Duration implements Comparable<Duration>, IEquatable<Duration
     * @param other An object to compare with this instance.
     * @return 
     A value indicating the relative order of the objects being compared.  The return value has these meanings:
-    <table border="1"><tr></tr><tr><th></th><th>Value</th><th></th><th>Meaning</th><th></th></tr><tr></tr><tr><td></td><td>Less than zero</td><td></td><td>
+    <table border="1">
+    <tr>
+    <th>Value</th>
+    <th>Meaning</th>
+    </tr>
+    <tr>
+    <td>Less than zero</td>
+    <td>
     This instance is less than {@code other}.
-    </td><td></td></tr><tr></tr><tr><td></td><td>Zero</td><td></td><td>
+    </td>
+    </tr>
+    <tr>
+    <td>Zero</td>
+    <td>
     This instance is equal to {@code other}.
-    </td><td></td></tr><tr></tr><tr><td></td><td>Greater than zero</td><td></td><td>
+    </td>
+    </tr>
+    <tr>
+    <td>Greater than zero</td>
+    <td>
     This instance is greater than {@code other}.
-    </td><td></td></tr><tr></tr></table>
+    </td>
+    </tr>
+    </table>
     
     */
     public final int compareTo(@Nonnull Duration other) {

@@ -8,7 +8,7 @@ import org.junit.runners.model.Statement;
 
 import agi.foundation.compatibility.TestContext.TestAdapter;
 
-public class TestContextRule implements MethodRule {
+public final class TestContextRule implements MethodRule {
     @Override
     public Statement apply(final Statement base, final FrameworkMethod method, Object target) {
         return new Statement() {
@@ -17,9 +17,7 @@ public class TestContextRule implements MethodRule {
                 Method testMethod = method.getMethod();
                 Class<?> testClass = testMethod.getDeclaringClass();
 
-                TestContext testContext = TestContext.getCurrentContext();
-                TestAdapter testAdapter = testContext.getTest();
-
+                TestAdapter testAdapter = TestContext.getCurrentContext().getTest();
                 testAdapter.setName(testMethod.getName());
                 testAdapter.setFullName(testClass.getName() + "." + testMethod.getName());
 
