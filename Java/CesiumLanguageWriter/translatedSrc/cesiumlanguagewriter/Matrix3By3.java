@@ -7,7 +7,6 @@ import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.ArgumentOutOfRangeException;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
-import agi.foundation.compatibility.PrimitiveHelper;
 import javax.annotation.Nonnull;
 
 /**
@@ -621,8 +620,8 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     */
     @Override
     public int hashCode() {
-        return HashCode.combine(PrimitiveHelper.hashCode(m_m11), PrimitiveHelper.hashCode(m_m12), PrimitiveHelper.hashCode(m_m13), PrimitiveHelper.hashCode(m_m21), PrimitiveHelper.hashCode(m_m22),
-                PrimitiveHelper.hashCode(m_m23), PrimitiveHelper.hashCode(m_m31), PrimitiveHelper.hashCode(m_m32), PrimitiveHelper.hashCode(m_m33));
+        return HashCode.combine(Double.hashCode(m_m11), Double.hashCode(m_m12), Double.hashCode(m_m13), Double.hashCode(m_m21), Double.hashCode(m_m22), Double.hashCode(m_m23), Double.hashCode(m_m31),
+                Double.hashCode(m_m32), Double.hashCode(m_m33));
     }
 
     /**

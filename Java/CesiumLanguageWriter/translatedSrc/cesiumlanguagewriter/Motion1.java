@@ -7,7 +7,6 @@ import agi.foundation.compatibility.ArgumentNullException;
 import agi.foundation.compatibility.ArgumentOutOfRangeException;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
-import agi.foundation.compatibility.PrimitiveHelper;
 import javax.annotation.Nonnull;
 
 /**
@@ -121,7 +120,7 @@ public final class Motion1<T> implements IEquatable<Motion1<T>>, ImmutableValueT
     */
     @Override
     public int hashCode() {
-        return HashCode.combine(PrimitiveHelper.hashCode(getOrder()), HashCode.getHashCode(m_motion));
+        return HashCode.combine(Integer.hashCode(getOrder()), HashCode.getHashCode(m_motion));
     }
 
     /**

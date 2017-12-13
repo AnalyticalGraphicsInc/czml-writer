@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UncheckedIOException;
 
+import javax.annotation.Nonnull;
 import javax.imageio.ImageIO;
 
 /**
@@ -20,11 +21,21 @@ public final class BitmapHelper {
      *            The data stream used to load the image.
      * @return the new instance
      */
-    public static BufferedImage create(InputStream stream) {
+    @Nonnull
+    public static BufferedImage create(@Nonnull InputStream stream) {
+        ArgumentNullException.assertNonNull(stream, "stream");
+
+        BufferedImage image;
         try {
-            return ImageIO.read(stream);
+            image = ImageIO.read(stream);
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
+
+        if (image == null) {
+            throw new ArgumentException("Unable to create image from stream.");
+        }
+
+        return image;
     }
 }

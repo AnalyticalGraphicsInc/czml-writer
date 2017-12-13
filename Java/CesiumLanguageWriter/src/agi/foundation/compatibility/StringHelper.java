@@ -25,6 +25,12 @@ public final class StringHelper {
     @Nonnull
     private static final char[] trimWhitespaceChars;
 
+    /**
+     * Represents the empty string. This field is read-only.
+     */
+    @Nonnull
+    public static final String empty = "";
+
     static {
         // this set of characters is taken from the .NET documentation for
         // String.Split.
@@ -189,13 +195,13 @@ public final class StringHelper {
         String regex = null;
         if (separator != null && separator.length > 0) {
             StringBuilder builder = new StringBuilder("[");
-            for (int i = 0; i < separator.length; i++) {
+            for (char separatorChar : separator) {
                 // Encode the characters with \\uhhhh where hhhh is the hex
                 // representation of the value of the character. Alternatively,
                 // we could just escape the characters that have special meaning
                 // in a regular expression, but that approach is more error prone.
                 builder.append("\\u");
-                builder.append(StringHelper.padLeft(Integer.toHexString(separator[i]), 4, '0'));
+                builder.append(StringHelper.padLeft(Integer.toHexString(separatorChar), 4, '0'));
             }
             builder.append("]");
             regex = builder.toString();
@@ -232,7 +238,7 @@ public final class StringHelper {
                 // then we've already skipped past one delimiter, and so we
                 // should add an empty result to represent the zero-length
                 // "match" before the first delimiter.
-                result.add("");
+                result.add(empty);
             }
 
             firstToken = false;
@@ -266,7 +272,7 @@ public final class StringHelper {
             // there is a delimiter at the end of the string, and so we should
             // add an empty result to represent the zero-length "match" after
             // the last delimiter.
-            result.add("");
+            result.add(empty);
         }
 
         return result.toArray(new String[result.size()]);
@@ -490,12 +496,6 @@ public final class StringHelper {
     }
 
     /**
-     * Represents the empty string. This field is read-only.
-     */
-    @Nonnull
-    public static final String empty = "";
-
-    /**
      * Replaces the format item in a specified string with the string representation of a
      * corresponding object in a specified array.
      *
@@ -549,7 +549,7 @@ public final class StringHelper {
 
         public String format() {
             if (length == 0)
-                return "";
+                return empty;
 
             // walk the format string start to finish, substituting formatted items
             // for specifiers as we go.
@@ -683,7 +683,7 @@ public final class StringHelper {
                 }
                 formattedItem = FormatHelper.buildFormat(locale, format).format(arg);
             } else {
-                formattedItem = arg == null ? "" : arg.toString();
+                formattedItem = arg == null ? empty : arg.toString();
             }
 
             int numPaddingChars = alignment - formattedItem.length();
@@ -742,6 +742,7 @@ public final class StringHelper {
      * string.
      *
      * @param s
+     *            The String to search.
      * @param value
      *            The String object to seek.
      * @param comparisonType
@@ -781,24 +782,24 @@ public final class StringHelper {
      * Determines whether the beginning of this string instance matches the specified
      * string.
      *
-     * @param str
+     * @param s
      *            The string.
      * @param value
      *            The string to compare.
      * @return true if value matches the beginning of this string; otherwise, false.
      */
-    public static boolean startsWith(String str, String value) {
-        if (value == null)
-            throw new ArgumentNullException("value");
+    public static boolean startsWith(@Nonnull String s, @Nonnull String value) {
+        ArgumentNullException.assertNonNull(s, "s");
+        ArgumentNullException.assertNonNull(value, "value");
 
-        return str.startsWith(value);
+        return s.startsWith(value);
     }
 
     /**
      * Retrieves a substring from this instance. The substring starts at a specified
      * character position.
      *
-     * @param str
+     * @param s
      *            The string.
      * @param startIndex
      *            The zero-based starting character position of a substring in this
@@ -807,8 +808,8 @@ public final class StringHelper {
      *         this instance, or Empty if startIndex is equal to the length of this
      *         instance.
      */
-    public static String substring(String str, int startIndex) {
-        return substring(str, startIndex, str.length() - startIndex);
+    public static String substring(@Nonnull String s, int startIndex) {
+        return substring(s, startIndex, s.length() - startIndex);
     }
 
     /**
@@ -840,12 +841,11 @@ public final class StringHelper {
             throw new ArgumentOutOfRangeException("length", "Length cannot be less than zero.");
 
         int endIndex = startIndex + length;
-        if (endIndex > strLen) {
+        if (endIndex > strLen)
             throw new ArgumentOutOfRangeException("length", "Index and length must refer to a location within the string.");
-        }
 
         if (length == 0)
-            return "";
+            return empty;
 
         return s.substring(startIndex, endIndex);
     }
@@ -854,7 +854,7 @@ public final class StringHelper {
      * Returns a new string in which all occurrences of a specified string in the current
      * instance are replaced with another specified string.
      *
-     * @param str
+     * @param s
      *            The string.
      * @param oldValue
      *            The string to be replaced.
@@ -863,13 +863,18 @@ public final class StringHelper {
      * @return A string that is equivalent to the current string except that all instances
      *         of oldValue are replaced with newValue.
      */
-    public static String replace(String str, String oldValue, String newValue) {
-        if (oldValue == null)
-            throw new ArgumentNullException("oldValue");
-        if ("".equals(oldValue))
+    @Nonnull
+    public static String replace(@Nonnull String s, @Nonnull String oldValue, @Nullable String newValue) {
+        ArgumentNullException.assertNonNull(s, "s");
+        ArgumentNullException.assertNonNull(oldValue, "oldValue");
+
+        if (empty.equals(oldValue))
             throw new ArgumentException("String cannot be of zero length.", "oldValue");
 
-        return str.replace(oldValue, newValue);
+        if (newValue == null)
+            newValue = empty;
+
+        return s.replace(oldValue, newValue);
     }
 
     /**

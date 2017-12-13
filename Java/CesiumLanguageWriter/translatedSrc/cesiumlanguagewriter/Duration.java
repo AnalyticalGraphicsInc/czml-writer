@@ -7,7 +7,6 @@ import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.CultureInfoHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
-import agi.foundation.compatibility.PrimitiveHelper;
 import agi.foundation.compatibility.StringHelper;
 import javax.annotation.Nonnull;
 
@@ -209,7 +208,7 @@ public final class Duration implements Comparable<Duration>, IEquatable<Duration
     */
     @Override
     public int hashCode() {
-        return HashCode.combine(PrimitiveHelper.hashCode(m_days), PrimitiveHelper.hashCode(m_seconds));
+        return HashCode.combine(Integer.hashCode(m_days), Double.hashCode(m_seconds));
     }
 
     /**

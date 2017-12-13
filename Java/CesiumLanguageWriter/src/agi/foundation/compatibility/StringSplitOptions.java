@@ -1,5 +1,6 @@
 package agi.foundation.compatibility;
 
+import java.util.Collections;
 import java.util.EnumSet;
 
 import javax.annotation.Nonnull;
@@ -68,9 +69,7 @@ public class StringSplitOptions implements Enumeration {
 
     private StringSplitOptions(@Nonnull Values... values) {
         this();
-        for (Values v : values) {
-            value.add(v);
-        }
+        Collections.addAll(value, values);
     }
 
     /**

@@ -7,10 +7,13 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.annotation.Nonnull;
+
 /**
  * Defines how DateTime values are formatted and displayed, depending on the culture.
  */
 public final class DateTimeFormatInfo {
+    @Nonnull
     private static final Map<Locale, DateFormats> s_dateFormatsByLocale;
     private final DateFormats m_dateFormats;
     private final String[] m_amPmStrings;

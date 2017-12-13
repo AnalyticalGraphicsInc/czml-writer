@@ -6,7 +6,6 @@ import agi.foundation.compatibility.annotations.CS2JInfo;
 import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
-import agi.foundation.compatibility.PrimitiveHelper;
 import agi.foundation.compatibility.StringHelper;
 import javax.annotation.Nonnull;
 
@@ -129,7 +128,7 @@ public final class NearFarScalar implements IEquatable<NearFarScalar>, Immutable
     */
     @Override
     public int hashCode() {
-        return HashCode.combine(PrimitiveHelper.hashCode(m_nearDistance), PrimitiveHelper.hashCode(m_nearValue), PrimitiveHelper.hashCode(m_farDistance), PrimitiveHelper.hashCode(m_farValue));
+        return HashCode.combine(Double.hashCode(m_nearDistance), Double.hashCode(m_nearValue), Double.hashCode(m_farDistance), Double.hashCode(m_farValue));
     }
 
     /**

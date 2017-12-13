@@ -16,7 +16,6 @@ import agi.foundation.compatibility.IntHelper;
 import agi.foundation.compatibility.MathHelper;
 import agi.foundation.compatibility.NumberFormatInfo;
 import agi.foundation.compatibility.ObjectHelper;
-import agi.foundation.compatibility.PrimitiveHelper;
 import agi.foundation.compatibility.StringComparison;
 import agi.foundation.compatibility.StringHelper;
 import java.time.DayOfWeek;
@@ -2153,7 +2152,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     */
     @Override
     public int hashCode() {
-        return HashCode.combine(m_yearMonthDay.hashCode(), PrimitiveHelper.hashCode(m_hour), PrimitiveHelper.hashCode(m_minute), PrimitiveHelper.hashCode(m_second));
+        return HashCode.combine(m_yearMonthDay.hashCode(), Integer.hashCode(m_hour), Integer.hashCode(m_minute), Double.hashCode(m_second));
     }
 
     /**

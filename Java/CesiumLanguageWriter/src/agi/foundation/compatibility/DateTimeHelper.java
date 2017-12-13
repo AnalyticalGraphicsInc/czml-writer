@@ -23,7 +23,7 @@ public final class DateTimeHelper {
      * represents the number of 100 nanosecond ticks between the .NET epoch of 00:00:00,
      * January 1, 0001 and the Java time epoch of 1970-01-01T00:00:00Z
      */
-    private static final long ticksBetweenNETandJavaEpochs = 621355968000000000L;
+    private static final long ticksBetweenDotNetAndJavaEpochs = 621355968000000000L;
 
     static final int nanosecondsPerMillisecond = 1_000_000;
     static final int millisecondsPerSecond = 1_000;
@@ -65,7 +65,7 @@ public final class DateTimeHelper {
      */
     @Nonnull
     public static ZonedDateTime create(long ticks, ZoneId kind) {
-        long ticksSinceJavaEpoch = ticks - ticksBetweenNETandJavaEpochs;
+        long ticksSinceJavaEpoch = ticks - ticksBetweenDotNetAndJavaEpochs;
         long seconds = ticksSinceJavaEpoch / ticksPerSecond;
         long nanosecondRemainder = (ticksSinceJavaEpoch % ticksPerSecond) * nanosecondsPerTick;
         return ZonedDateTime.ofInstant(Instant.ofEpochSecond(seconds, nanosecondRemainder), kind);
@@ -146,7 +146,7 @@ public final class DateTimeHelper {
      * @param second
      *            The second (0 through 59)
      * @param millisecond
-     *            The millsecond (0 through 999)
+     *            The millisecond (0 through 999)
      */
     @Nonnull
     public static ZonedDateTime create(int year, int month, int day, int hour, int minute, int second, int millisecond) {
@@ -169,7 +169,7 @@ public final class DateTimeHelper {
      * @param second
      *            The second (0 through 59)
      * @param millisecond
-     *            The millsecond (0 through 999)
+     *            The millisecond (0 through 999)
      * @param kind
      *            Whether the parameters specify a local time or UTC.
      */
@@ -219,7 +219,7 @@ public final class DateTimeHelper {
      */
     public static long getTicks(@Nonnull ZonedDateTime dateTime) {
         Instant instant = dateTime.toInstant();
-        return instant.getEpochSecond() * ticksPerSecond + instant.getNano() / nanosecondsPerTick + ticksBetweenNETandJavaEpochs;
+        return instant.getEpochSecond() * ticksPerSecond + instant.getNano() / nanosecondsPerTick + ticksBetweenDotNetAndJavaEpochs;
     }
 
     /**

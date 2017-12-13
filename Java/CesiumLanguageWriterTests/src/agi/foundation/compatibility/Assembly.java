@@ -1,21 +1,10 @@
 package agi.foundation.compatibility;
 
-import java.io.File;
-import java.io.FileFilter;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.UncheckedIOException;
-import java.security.CodeSource;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.List;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
 
 /**
- * Represents the binaries containing Java executables. It can represent both Jar file and
- * directory containing loose directory. Depending on the location from where resource is
- * executing, instance of this class will be created.
+ * Represents an assembly, which is a reusable, versionable, and self-describing building
+ * block of a common language runtime application.
  */
 public class Assembly {
     /**

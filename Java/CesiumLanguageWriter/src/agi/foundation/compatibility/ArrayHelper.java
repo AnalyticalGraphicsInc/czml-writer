@@ -2,46 +2,53 @@ package agi.foundation.compatibility;
 
 import java.lang.reflect.Array;
 import java.util.AbstractList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 import java.util.RandomAccess;
+import java.util.Spliterator;
+import java.util.Spliterators;
+import java.util.function.Consumer;
+import java.util.function.UnaryOperator;
+
+import javax.annotation.Nonnull;
 
 /**
  * Helper methods for Arrays.
  */
 public final class ArrayHelper {
+    /**
+     * This class differs from the one used by Arrays.asList in that it preserves value
+     * type semantics when creating arrays by making deep clones.
+     */
     private static class ArrayList<E> extends AbstractList<E> implements RandomAccess {
-        private final E[] array;
+        @Nonnull
+        private final E[] a;
 
-        public ArrayList(E[] array) {
-            if (array == null)
-                throw new NullPointerException();
-
-            this.array = array;
+        public ArrayList(@Nonnull E[] array) {
+            a = Objects.requireNonNull(array);
         }
 
         @Override
         public int size() {
-            return array.length;
+            return a.length;
         }
 
         @Override
         public Object[] toArray() {
-            Object[] result = new Object[array.length];
-            for (int i = 0; i < array.length; ++i) {
-                result[i] = array[i];
-            }
-            return result;
+            return toArray(new Object[a.length]);
         }
 
         @Override
         @SuppressWarnings("unchecked")
         public <T> T[] toArray(T[] a) {
-            int size = array.length;
+            int size = this.a.length;
             if (a.length < size) {
                 a = (T[]) Array.newInstance(a.getClass().getComponentType(), size);
             }
 
-            copy(array, 0, a, 0, size);
+            copy(this.a, 0, a, 0, size);
 
             if (a.length > size) {
                 a[size] = null;
@@ -52,23 +59,21 @@ public final class ArrayHelper {
 
         @Override
         public E get(int index) {
-            return array[index];
+            return a[index];
         }
 
         @Override
         public E set(int index, E element) {
-            E oldValue = array[index];
-            array[index] = element;
+            E oldValue = a[index];
+            a[index] = element;
             return oldValue;
         }
 
         @Override
         public int indexOf(Object o) {
-            if (o == null)
-                return -1;
-
-            for (int i = 0; i < array.length; ++i) {
-                if (o.equals(array[i])) {
+            E[] a = this.a;
+            for (int i = 0; i < a.length; ++i) {
+                if (ObjectHelper.equals(o, a[i])) {
                     return i;
                 }
             }
@@ -79,6 +84,33 @@ public final class ArrayHelper {
         @Override
         public boolean contains(Object o) {
             return indexOf(o) != -1;
+        }
+
+        @Override
+        public Spliterator<E> spliterator() {
+            return Spliterators.spliterator(a, Spliterator.ORDERED);
+        }
+
+        @Override
+        public void forEach(Consumer<? super E> action) {
+            Objects.requireNonNull(action);
+            for (E e : a) {
+                action.accept(e);
+            }
+        }
+
+        @Override
+        public void replaceAll(UnaryOperator<E> operator) {
+            Objects.requireNonNull(operator);
+            E[] a = this.a;
+            for (int i = 0; i < a.length; ++i) {
+                a[i] = operator.apply(a[i]);
+            }
+        }
+
+        @Override
+        public void sort(Comparator<? super E> c) {
+            Arrays.sort(a, c);
         }
     }
 
@@ -118,9 +150,7 @@ public final class ArrayHelper {
         if (ValueType.class.isAssignableFrom(sourceArrayComponentType) && !ImmutableValueType.class.isAssignableFrom(sourceArrayComponentType)) {
             // if it's a non-immutable value type, we can't rely on System.arrayCopy, and
             // must do a deep copy to preserve value type semantics.
-
-            int endSourceIndex = sourceIndex + length;
-            for (; sourceIndex < endSourceIndex; sourceIndex++, destinationIndex++) {
+            for (int endSourceIndex = sourceIndex + length; sourceIndex < endSourceIndex; ++sourceIndex, ++destinationIndex) {
                 ICloneable sourceItem = (ICloneable) Array.get(sourceArray, sourceIndex);
                 Array.set(destinationArray, destinationIndex, sourceItem.clone());
             }

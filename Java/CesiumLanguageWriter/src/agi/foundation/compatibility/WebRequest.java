@@ -13,7 +13,7 @@ import javax.annotation.Nonnull;
 
 public abstract class WebRequest {
     @Nonnull
-    protected URL url;
+    protected final URL url;
     protected Proxy proxy;
     protected int timeout;
 
@@ -38,15 +38,15 @@ public abstract class WebRequest {
     }
 
     private static WebRequest create(@Nonnull URL url) {
-        String protocol = url.getProtocol();
-
-        if ("http".equals(protocol) || "https".equals(protocol)) {
+        switch (url.getProtocol()) {
+        case "http":
+        case "https":
             return new HttpWebRequest(url);
-        } else if ("ftp".equals(protocol)) {
+        case "ftp":
             return new FtpWebRequest(url);
-        } else if ("file".equals(protocol)) {
+        case "file":
             return new FileWebRequest(url);
-        } else {
+        default:
             return new UnknownWebRequest(url);
         }
     }

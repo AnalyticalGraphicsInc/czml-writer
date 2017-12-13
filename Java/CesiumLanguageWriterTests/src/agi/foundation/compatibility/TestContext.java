@@ -1,7 +1,7 @@
 package agi.foundation.compatibility;
 
 public class TestContext {
-    private static TestContext s_currentContext = new TestContext();
+    private static final TestContext s_currentContext = new TestContext();
     private final TestAdapter test = new TestAdapter();
 
     public static TestContext getCurrentContext() {

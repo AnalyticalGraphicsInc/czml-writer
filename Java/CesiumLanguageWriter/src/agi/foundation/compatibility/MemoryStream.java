@@ -1,8 +1,8 @@
 package agi.foundation.compatibility;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Arrays;
 
 /**
  * Creates a stream whose backing store is memory.
@@ -11,11 +11,11 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
     private byte[] buffer;
     private int capacity;
     private int length;
-    private int origin;
+    private final int origin;
     private int position;
-    private boolean writable;
-    private boolean expandable;
-    private boolean bufferVisible;
+    private final boolean writable;
+    private final boolean expandable;
+    private final boolean bufferVisible;
     private int mark;
 
     /**
@@ -248,6 +248,7 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
      *
      * @return The length of the stream in bytes.
      */
+    @Override
     public long getLength() {
         return length - origin;
     }
@@ -258,6 +259,7 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
      * @param value
      *            The new length of the stream.
      */
+    @Override
     public void setLength(long value) {
         if (value < 0)
             throw new ArgumentOutOfRangeException("value", "MemoryStream length must be non-negative.");
@@ -375,8 +377,7 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
     }
 
     private void clearBuffer(int from, int to) {
-        for (int i = from; i < to; i++)
-            buffer[i] = 0;
+        Arrays.fill(buffer, from, to, TypeHelper.DEFAULT_BYTE);
     }
 
     private boolean expand(int newLength) {
@@ -400,19 +401,19 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
     }
 
     private static class OutputStreamWrapper extends OutputStream {
-        private MemoryStream memoryStream;
+        private final MemoryStream memoryStream;
 
         public OutputStreamWrapper(MemoryStream memoryStream) {
             this.memoryStream = memoryStream;
         }
 
         @Override
-        public void write(byte[] b, int off, int len) throws IOException {
+        public void write(byte[] b, int off, int len) {
             memoryStream.write(b, off, len);
         }
 
         @Override
-        public void write(int b) throws IOException {
+        public void write(int b) {
             memoryStream.writeByte((byte) b);
         }
     }

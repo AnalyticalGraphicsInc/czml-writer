@@ -6,7 +6,6 @@ import agi.foundation.compatibility.annotations.CS2JInfo;
 import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
-import agi.foundation.compatibility.PrimitiveHelper;
 import agi.foundation.compatibility.StringHelper;
 import javax.annotation.Nonnull;
 
@@ -373,7 +372,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     */
     @Override
     public int hashCode() {
-        return HashCode.combine(PrimitiveHelper.hashCode(m_x), PrimitiveHelper.hashCode(m_y));
+        return HashCode.combine(Double.hashCode(m_x), Double.hashCode(m_y));
     }
 
     /**

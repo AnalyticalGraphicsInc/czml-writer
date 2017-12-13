@@ -68,7 +68,7 @@ public class LinkedList<T> implements Collection<T> {
         }
     }
 
-    private final void verifyReferencedNode(LinkedListNode<T> node) {
+    private void verifyReferencedNode(LinkedListNode<T> node) {
         if (node == null) {
             throw new ArgumentNullException("node");
         }
@@ -273,11 +273,11 @@ public class LinkedList<T> implements Collection<T> {
             index = -1;
         }
 
-        private final T getCurrent() {
+        private T getCurrent() {
             return current.getValue();
         }
 
-        private final boolean moveNext() {
+        private boolean moveNext() {
             if (current == null) {
                 current = list.head;
             } else {
@@ -369,9 +369,8 @@ public class LinkedList<T> implements Collection<T> {
 
     @Override
     public final boolean containsAll(Collection<?> c) {
-        Iterator<?> e = c.iterator();
-        while (e.hasNext()) {
-            if (!contains(e.next())) {
+        for (Object e : c) {
+            if (!contains(e)) {
                 return false;
             }
         }

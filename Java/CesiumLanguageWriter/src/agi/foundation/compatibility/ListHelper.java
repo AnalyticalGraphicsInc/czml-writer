@@ -3,6 +3,8 @@ package agi.foundation.compatibility;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.annotation.Nonnull;
+
 /**
  * Helper class for List methods.
  */
@@ -17,7 +19,10 @@ public final class ListHelper {
      *            The sequence whose elements are copied to the new list.
      * @return The new list.
      */
-    public static <T> ArrayList<T> create(Iterable<? extends T> iterable) {
+    @Nonnull
+    public static <T> ArrayList<T> create(@Nonnull Iterable<? extends T> iterable) {
+        ArgumentNullException.assertNonNull(iterable, "iterable");
+
         if (iterable instanceof Collection<?>) {
             return new ArrayList<>((Collection<? extends T>) iterable);
         }

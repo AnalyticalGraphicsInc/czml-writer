@@ -232,7 +232,7 @@ class CachingMethodFinder {
         // Action a = () => {};
         // Action b = () => {};
         // a.Equals(b)  // => false
-        
+
         // private Action CreateActionDelegate(bool b)
         // {
         //    return () => { if (b) { Foo(); } };
@@ -241,7 +241,7 @@ class CachingMethodFinder {
         // Action a = CreateActionDelegate(true);
         // Action b = CreateActionDelegate(true);
         // a.Equals(b)  // => false
-        
+
         // @formatter:on
 
         return false;

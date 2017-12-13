@@ -1,5 +1,6 @@
 package agi.foundation.compatibility;
 
+import java.util.Collections;
 import java.util.EnumSet;
 
 import javax.annotation.Nonnull;
@@ -17,16 +18,13 @@ public class NumberStyles implements Enumeration {
 
     /**
      * Indicates that the numeric string is parsed as currency if it contains a currency
-     * symbol; otherwise, it is parsed as a number. Valid currency symbols are determined
-     * by the {@link NumberFormatInfo.CurrencySymbol} property of .
+     * symbol; otherwise, it is parsed as a number.
      */
     @Nonnull
     public static final NumberStyles ALLOW_CURRENCY_SYMBOL = new NumberStyles(Values.ALLOW_CURRENCY_SYMBOL);
 
     /**
-     * Indicates that the numeric string can have a decimal point. Valid decimal point
-     * characters are determined by the {@link NumberFormatInfo.NumberDecimalSeparator}
-     * and properties of .
+     * Indicates that the numeric string can have a decimal point.
      */
     @Nonnull
     public static final NumberStyles ALLOW_DECIMAL_POINT = new NumberStyles(Values.ALLOW_DECIMAL_POINT);
@@ -47,9 +45,7 @@ public class NumberStyles implements Enumeration {
     public static final NumberStyles ALLOW_HEX_SPECIFIER = new NumberStyles(Values.ALLOW_HEX_SPECIFIER);
 
     /**
-     * Indicates that the numeric string can have a leading sign. Valid leading sign
-     * characters are determined by the {@link NumberFormatInfo.PositiveSign} and
-     * properties of .
+     * Indicates that the numeric string can have a leading sign.
      */
     @Nonnull
     public static final NumberStyles ALLOW_LEADING_SIGN = new NumberStyles(Values.ALLOW_LEADING_SIGN);
@@ -71,17 +67,13 @@ public class NumberStyles implements Enumeration {
 
     /**
      * Indicates that the numeric string can have group separators; for example,
-     * separating the hundreds from the thousands. Valid group separator characters are
-     * determined by the {@link NumberFormatInfo.NumberGroupSeparator} and properties of
-     * and the number of digits in each group is determined by the and properties of .
+     * separating the hundreds from the thousands.
      */
     @Nonnull
     public static final NumberStyles ALLOW_THOUSANDS = new NumberStyles(Values.ALLOW_THOUSANDS);
 
     /**
-     * Indicates that the numeric string can have a trailing sign. Valid trailing sign
-     * characters are determined by the {@link NumberFormatInfo.PositiveSign} and
-     * properties of .
+     * Indicates that the numeric string can have a trailing sign.
      */
     @Nonnull
     public static final NumberStyles ALLOW_TRAILING_SIGN = new NumberStyles(Values.ALLOW_TRAILING_SIGN);
@@ -99,9 +91,8 @@ public class NumberStyles implements Enumeration {
      * number style.
      */
     @Nonnull
-    public static final NumberStyles ANY = new NumberStyles(Values.ALLOW_LEADING_WHITE, Values.ALLOW_TRAILING_WHITE, Values.ALLOW_LEADING_SIGN,
-            Values.ALLOW_TRAILING_SIGN, Values.ALLOW_PARENTHESES, Values.ALLOW_DECIMAL_POINT, Values.ALLOW_THOUSANDS, Values.ALLOW_EXPONENT,
-            Values.ALLOW_CURRENCY_SYMBOL);
+    public static final NumberStyles ANY = new NumberStyles(Values.ALLOW_LEADING_WHITE, Values.ALLOW_TRAILING_WHITE, Values.ALLOW_LEADING_SIGN, Values.ALLOW_TRAILING_SIGN,
+            Values.ALLOW_PARENTHESES, Values.ALLOW_DECIMAL_POINT, Values.ALLOW_THOUSANDS, Values.ALLOW_EXPONENT, Values.ALLOW_CURRENCY_SYMBOL);
 
     /**
      * Indicates that all styles, except AllowExponent and AllowHexSpecifier, are used.
@@ -117,16 +108,15 @@ public class NumberStyles implements Enumeration {
      * style.
      */
     @Nonnull
-    public static final NumberStyles FLOAT = new NumberStyles(Values.ALLOW_LEADING_WHITE, Values.ALLOW_TRAILING_WHITE, Values.ALLOW_LEADING_SIGN,
-            Values.ALLOW_DECIMAL_POINT, Values.ALLOW_EXPONENT);
+    public static final NumberStyles FLOAT = new NumberStyles(Values.ALLOW_LEADING_WHITE, Values.ALLOW_TRAILING_WHITE, Values.ALLOW_LEADING_SIGN, Values.ALLOW_DECIMAL_POINT,
+            Values.ALLOW_EXPONENT);
 
     /**
      * Indicates that the AllowLeadingWhite, AllowTrailingWhite, and AllowHexSpecifier
      * styles are used. This is a composite number style.
      */
     @Nonnull
-    public static final NumberStyles HEX_NUMBER = new NumberStyles(Values.ALLOW_LEADING_WHITE, Values.ALLOW_TRAILING_WHITE,
-            Values.ALLOW_HEX_SPECIFIER);
+    public static final NumberStyles HEX_NUMBER = new NumberStyles(Values.ALLOW_LEADING_WHITE, Values.ALLOW_TRAILING_WHITE, Values.ALLOW_HEX_SPECIFIER);
 
     /**
      * Indicates that the AllowLeadingWhite, AllowTrailingWhite, and AllowLeadingSign
@@ -141,8 +131,8 @@ public class NumberStyles implements Enumeration {
      * composite number style.
      */
     @Nonnull
-    public static final NumberStyles NUMBER = new NumberStyles(Values.ALLOW_LEADING_WHITE, Values.ALLOW_TRAILING_WHITE, Values.ALLOW_LEADING_SIGN,
-            Values.ALLOW_TRAILING_SIGN, Values.ALLOW_DECIMAL_POINT, Values.ALLOW_THOUSANDS);
+    public static final NumberStyles NUMBER = new NumberStyles(Values.ALLOW_LEADING_WHITE, Values.ALLOW_TRAILING_WHITE, Values.ALLOW_LEADING_SIGN, Values.ALLOW_TRAILING_SIGN,
+            Values.ALLOW_DECIMAL_POINT, Values.ALLOW_THOUSANDS);
 
     private enum Values {
         ALLOW_CURRENCY_SYMBOL(256),
@@ -225,9 +215,7 @@ public class NumberStyles implements Enumeration {
 
     private NumberStyles(@Nonnull Values... values) {
         this();
-        for (Values v : values) {
-            value.add(v);
-        }
+        Collections.addAll(value, values);
     }
 
     /**

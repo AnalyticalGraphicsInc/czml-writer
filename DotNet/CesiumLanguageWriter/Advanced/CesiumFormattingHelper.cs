@@ -181,12 +181,14 @@ namespace CesiumLanguageWriter.Advanced
             builder.Append(mimeType);
             builder.Append(";base64,");
 
-            using (MemoryStream memoryStream = new MemoryStream())
+            using (var memoryStream = new MemoryStream())
             {
                 byte[] buffer = new byte[8192];
                 int bytesRead;
                 while ((bytesRead = stream.Read(buffer, 0, buffer.Length)) > 0)
+                {
                     memoryStream.Write(buffer, 0, bytesRead);
+                }
 
                 builder.Append(Convert.ToBase64String(memoryStream.GetBuffer(), 0, (int)memoryStream.Length));
             }

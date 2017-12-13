@@ -9,10 +9,15 @@ import java.text.ParsePosition;
 import java.util.Locale;
 import java.util.concurrent.ConcurrentHashMap;
 
+import javax.annotation.Nonnull;
+
 /**
  * Helper methods related to Formats.
  */
 public final class FormatHelper {
+    @Nonnull
+    private static final ConcurrentHashMap<FormatCacheKey, Format> cache = new ConcurrentHashMap<>();
+
     private FormatHelper() {}
 
     /**
@@ -209,7 +214,7 @@ public final class FormatHelper {
             int extraPadding = width - result.length();
             if (extraPadding > 0) {
                 StringBuilder padding = new StringBuilder(extraPadding);
-                for (int i = 0; i < extraPadding; i++) {
+                for (int i = 0; i < extraPadding; ++i) {
                     padding.append(" ");
                 }
                 result.insert(0, padding);
@@ -308,8 +313,6 @@ public final class FormatHelper {
         }
     }
 
-    private static ConcurrentHashMap<FormatCacheKey, Format> cache = new ConcurrentHashMap<>();
-
     private static Format createFormat(Locale locale, String pattern, int width) {
         if (pattern == null || pattern.length() == 0) {
             return createCustomFormat(locale, pattern, width);
@@ -345,7 +348,7 @@ public final class FormatHelper {
                     precision = 6;
                 }
                 StringBuilder sb = new StringBuilder("0.");
-                for (int i = 0; i < precision; i++) {
+                for (int i = 0; i < precision; ++i) {
                     sb.append("#");
                 }
                 sb.append(firstChar);

@@ -10,7 +10,6 @@ import agi.foundation.compatibility.CultureInfoHelper;
 import agi.foundation.compatibility.DateTimeHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
-import agi.foundation.compatibility.PrimitiveHelper;
 import agi.foundation.compatibility.StringHelper;
 import java.time.DayOfWeek;
 import java.time.ZonedDateTime;
@@ -323,7 +322,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     */
     @Override
     public int hashCode() {
-        return HashCode.combine(PrimitiveHelper.hashCode(m_year), PrimitiveHelper.hashCode(m_month), PrimitiveHelper.hashCode(m_day));
+        return HashCode.combine(Integer.hashCode(m_year), Integer.hashCode(m_month), Integer.hashCode(m_day));
     }
 
     /**

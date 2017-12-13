@@ -6,7 +6,6 @@ import agi.foundation.compatibility.annotations.CS2JInfo;
 import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ObjectHelper;
-import agi.foundation.compatibility.PrimitiveHelper;
 import agi.foundation.compatibility.StringHelper;
 
 /**
@@ -180,7 +179,7 @@ public class CartographicExtent implements IEquatable<CartographicExtent> {
     */
     @Override
     public int hashCode() {
-        return HashCode.combine(PrimitiveHelper.hashCode(m_north), PrimitiveHelper.hashCode(m_south), PrimitiveHelper.hashCode(m_east), PrimitiveHelper.hashCode(m_west));
+        return HashCode.combine(Double.hashCode(m_north), Double.hashCode(m_south), Double.hashCode(m_east), Double.hashCode(m_west));
     }
 
     /**

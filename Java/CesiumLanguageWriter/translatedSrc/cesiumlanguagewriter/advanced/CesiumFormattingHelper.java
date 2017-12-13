@@ -254,8 +254,9 @@ public final class CesiumFormattingHelper {
             try {
                 byte[] buffer = new byte[8192];
                 int bytesRead;
-                while ((bytesRead = StreamHelper.read(stream, buffer, 0, buffer.length)) > 0)
+                while ((bytesRead = StreamHelper.read(stream, buffer, 0, buffer.length)) > 0) {
                     memoryStream.write(buffer, 0, bytesRead);
+                }
                 builder.append(ConvertHelper.toBase64String(memoryStream.getBuffer(), 0, (int) memoryStream.getLength()));
             } finally {
                 DisposeHelper.dispose(memoryStream);

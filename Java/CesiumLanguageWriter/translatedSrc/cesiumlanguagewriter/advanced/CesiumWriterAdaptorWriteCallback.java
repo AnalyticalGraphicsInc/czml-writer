@@ -93,6 +93,7 @@ public abstract class CesiumWriterAdaptorWriteCallback<TWrappedWriter, TValue> e
     * @param <TWrappedWriter> The type of the wrapped writer.
     * @param <TValue> The type of the value to write.
     */
+    @FunctionalInterface
     public interface Function<TWrappedWriter, TValue> {
         /**
         *  

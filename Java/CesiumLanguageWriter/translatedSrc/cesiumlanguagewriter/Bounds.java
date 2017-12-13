@@ -9,7 +9,6 @@ import agi.foundation.compatibility.ArgumentNullException;
 import agi.foundation.compatibility.DoubleHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
-import agi.foundation.compatibility.PrimitiveHelper;
 import agi.foundation.compatibility.StringHelper;
 import javax.annotation.Nonnull;
 
@@ -144,7 +143,7 @@ public final class Bounds implements IEquatable<Bounds>, ImmutableValueType {
     */
     @Override
     public int hashCode() {
-        return HashCode.combine(PrimitiveHelper.hashCode(m_lowerBound), PrimitiveHelper.hashCode(m_upperBound));
+        return HashCode.combine(Double.hashCode(m_lowerBound), Double.hashCode(m_upperBound));
     }
 
     /**

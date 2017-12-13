@@ -7,7 +7,6 @@ import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.ArgumentException;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
-import agi.foundation.compatibility.PrimitiveHelper;
 import agi.foundation.compatibility.StringHelper;
 import javax.annotation.Nonnull;
 
@@ -133,7 +132,7 @@ public final class LeapSecond implements IEquatable<LeapSecond>, ImmutableValueT
     */
     @Override
     public int hashCode() {
-        return HashCode.combine(m_date.hashCode(), PrimitiveHelper.hashCode(m_totalTaiOffsetFromUtc));
+        return HashCode.combine(m_date.hashCode(), Double.hashCode(m_totalTaiOffsetFromUtc));
     }
 
     /**

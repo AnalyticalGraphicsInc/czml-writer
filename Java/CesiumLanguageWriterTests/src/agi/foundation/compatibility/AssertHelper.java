@@ -3,7 +3,6 @@ package agi.foundation.compatibility;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.isEmptyString;
 import static org.hamcrest.Matchers.lessThan;
 import static org.hamcrest.Matchers.not;
@@ -21,10 +20,6 @@ import org.junit.internal.ArrayComparisonFailure;
  */
 public final class AssertHelper {
     private AssertHelper() {}
-
-    public static <T> void assertContains(T expected, Iterable<T> actual) {
-        assertThat(actual, hasItem(expected));
-    }
 
     public static void assertNotEqual(Object expected, Object actual) {
         assertNotEqual("", expected, actual);
@@ -50,16 +45,8 @@ public final class AssertHelper {
         assertThat(actual, containsString(expected));
     }
 
-    public static void assertStringContains(String message, String expected, String actual) {
-        assertThat(message, actual, containsString(expected));
-    }
-
     public static void assertStringStartsWith(String expected, String actual) {
         assertThat(actual, startsWith(expected));
-    }
-
-    public static void assertStringStartsWith(String message, String expected, String actual) {
-        assertThat(message, actual, startsWith(expected));
     }
 
     // NUnit allows comparing two boxed numbers of different type.
@@ -103,7 +90,7 @@ public final class AssertHelper {
             fail(header + "array lengths differed, expected.length=" + expectedsLength + " actual.length=" + actualsLength);
         }
 
-        for (int i = 0; i < expectedsLength; i++) {
+        for (int i = 0; i < expectedsLength; ++i) {
             Object expected = Array.get(expecteds, i);
             Object actual = Array.get(actuals, i);
 

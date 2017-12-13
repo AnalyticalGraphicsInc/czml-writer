@@ -4,11 +4,10 @@ package agi.foundation.compatibility;
  * Specifies the file format of the image.
  */
 public final class ImageFormat {
-    private static ImageFormat s_bmp = new ImageFormat("bmp");
-    private static ImageFormat s_gif = new ImageFormat("gif");
-    private static ImageFormat s_jpeg = new ImageFormat("jpeg");
-    private static ImageFormat s_png = new ImageFormat("png");
-
+    private static final ImageFormat s_bmp = new ImageFormat("bmp");
+    private static final ImageFormat s_gif = new ImageFormat("gif");
+    private static final ImageFormat s_jpeg = new ImageFormat("jpeg");
+    private static final ImageFormat s_png = new ImageFormat("png");
     private final String formatName;
 
     private ImageFormat(String formatName) {

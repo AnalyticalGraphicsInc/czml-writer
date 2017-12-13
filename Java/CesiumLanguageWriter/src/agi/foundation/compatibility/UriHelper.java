@@ -121,8 +121,11 @@ public final class UriHelper {
      * URI, or is indeterminate.
      *
      * @param uriString
+     *            A string that identifies the resource to be represented by the URI
+     *            instance.
      * @param uriKind
-     * @return
+     *            Specifies whether the URI string is a relative URI, absolute URI, or is
+     *            indeterminate.
      */
     @Nonnull
     public static URI create(@Nonnull String uriString, @Nonnull UriKind uriKind) {

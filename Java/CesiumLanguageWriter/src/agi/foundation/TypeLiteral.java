@@ -61,70 +61,70 @@ import java.lang.reflect.WildcardType;
  * // Standard creation...
  *
  * // T = Integer, type = class, raw type = Integer class
- * TypeLiteral&lt;Integer> literal1 = new TypeLiteral&lt;Integer>(){};
+ * TypeLiteral&lt;Integer&gt; literal1 = new TypeLiteral&lt;Integer&gt;(){};
  *
  * // T = Object[], type = generic array type, raw type = Object class
- * TypeLiteral&lt;Object[]> literal2 = new TypeLiteral&lt;Object[]>(){};
+ * TypeLiteral&lt;Object[]&gt; literal2 = new TypeLiteral&lt;Object[]&gt;(){};
  *
- * // T = Class&lt;String>[], type = generic array type, raw type = Class class
- * TypeLiteral&lt;Class&lt;String>[]> literal3 = new TypeLiteral&lt;Class&lt;String>[]>(){};
+ * // T = Class&lt;String&gt;[], type = generic array type, raw type = Class class
+ * TypeLiteral&lt;Class&lt;String&gt;[]&gt; literal3 = new TypeLiteral&lt;Class&lt;String&gt;[]&gt;(){};
  *
- * // T = List&lt;?>, type = class, raw type = List interface
- * TypeLiteral&lt;List&lt;?>> literal4 = new TypeLiteral&lt;List&lt;?>>(){};
+ * // T = List&lt;?&gt;, type = class, raw type = List interface
+ * TypeLiteral&lt;List&lt;?&gt;&gt; literal4 = new TypeLiteral&lt;List&lt;?&gt;&gt;(){};
  *
  * // Factory creation...
  *
  * // Generic factory methods...
- * public static &lt;S> TypeLiteral&lt;S> create1(S value) {
- *   return new TypeLiteral&lt;S>(){};
+ * public static &lt;S&gt; TypeLiteral&lt;S&gt; create1(S value) {
+ *   return new TypeLiteral&lt;S&gt;(){};
  * }
- * public static &lt;R> TypeLiteral&lt;Comparable&lt;R>> create2(R value) {
- *     return new TypeLiteral&lt;Comparable&lt;R>(){};
+ * public static &lt;R&gt; TypeLiteral&lt;Comparable&lt;R&gt;&gt; create2(R value) {
+ *     return new TypeLiteral&lt;Comparable&lt;R&gt;(){};
  * }
  *
  * // Potential trouble: T = Integer, type = type variable (S), raw type = null
- * TypeLiteral&lt;Integer> literal5 = create1(new Integer(1));
+ * TypeLiteral&lt;Integer&gt; literal5 = create1(new Integer(1));
  *
- * // Potential trouble: T = Class&lt;Integer>, type = type variable (S), raw type = null
- * TypeLiteral&lt;Class&lt;Integer>> literal6 = create1(Integer.class);
+ * // Potential trouble: T = Class&lt;Integer&gt;, type = type variable (S), raw type = null
+ * TypeLiteral&lt;Class&lt;Integer&gt;&gt; literal6 = create1(Integer.class);
  *
- * // Potential trouble: T = Class&lt;Integer>, type = type variable (S), raw type = null
- * TypeLiteral&lt;Class&lt;Integer>> literal7 = create1(null);
+ * // Potential trouble: T = Class&lt;Integer&gt;, type = type variable (S), raw type = null
+ * TypeLiteral&lt;Class&lt;Integer&gt;&gt; literal7 = create1(null);
  *
- * // Potential trouble: T = Comparable&lt;Long>,
+ * // Potential trouble: T = Comparable&lt;Long&gt;,
  * //                        type = parameterised type (with type parameter R), raw type = Comparable interface
- * TypeLiteral&lt;Comparable&lt;Long>> literal8 = create2(Long.class);
+ * TypeLiteral&lt;Comparable&lt;Long&gt;&gt; literal8 = create2(Long.class);
  *
- * // Potential trouble: T = Comparable&lt;Object>,
+ * // Potential trouble: T = Comparable&lt;Object&gt;,
  * //                        type = parameterised type (with type parameter R), raw type = Comparable interface
- * TypeLiteral&lt;Comparable&lt;Object>> literal9 = create2(null);
+ * TypeLiteral&lt;Comparable&lt;Object&gt;&gt; literal9 = create2(null);
  *
  * // Inheritance...
  *
- * class Foo extends TypeLiteral&lt;ArrayList&lt;?>>{};
- * class FooFoo extends TypeLiteral&lt;CharSequence>{};
+ * class Foo extends TypeLiteral&lt;ArrayList&lt;?&gt;&gt;{};
+ * class FooFoo extends TypeLiteral&lt;CharSequence&gt;{};
  * class Bar extends Foo {};
- * class Goo&lt;K,V> extends TypeLiteral&lt;Map&lt;K,V>>{};
- * class FooGoo&lt;K,V> extends TypeLiteral&lt;Map&lt;Long,Void>>{};
- * class FooBar extends Goo&lt;String,Void> {};
+ * class Goo&lt;K,V&gt; extends TypeLiteral&lt;Map&lt;K,V&gt;&gt;{};
+ * class FooGoo&lt;K,V&gt; extends TypeLiteral&lt;Map&lt;Long,Void&gt;&gt;{};
+ * class FooBar extends Goo&lt;String,Void&gt; {};
  *
- * // T = ArrayList&lt;?>, type = parameterised type, raw type = ArrayList class
+ * // T = ArrayList&lt;?&gt;, type = parameterised type, raw type = ArrayList class
  * Foo literal10 = new Foo();
  *
  * // T = CharSequence, type = class, raw type = CharSequence interface
  * FooFoo literal11 = new FooFoo();
  *
- * // Potential trouble: T = Map&lt;K,V>, type = parameterised type, raw type = Map interface
- * Goo literal12 = new Goo&lt;String,Integer>();
+ * // Potential trouble: T = Map&lt;K,V&gt;, type = parameterised type, raw type = Map interface
+ * Goo literal12 = new Goo&lt;String,Integer&gt;();
  *
- * // T = Map&lt;Long,Void>, type = parameterised type, raw type = Map interface
- * FooGoo literal13 = new FooGoo&lt;String,Integer>();
+ * // T = Map&lt;Long,Void&gt;, type = parameterised type, raw type = Map interface
+ * FooGoo literal13 = new FooGoo&lt;String,Integer&gt;();
  *
  * // Throws illegal argument exception: Bar has no immediate generic super type
  * Bar literal14 = new Bar();
  *
  * // Potential trouble: FooBar's immediate generic super type has two type parameters:
- * // &lt;String,Void>, and so the first, e.g. {@code String}, is used.
+ * // &lt;String,Void&gt;, and so the first, e.g. {@code String}, is used.
  * FooBar literal15 = new FooBar();
  * </pre>
  *
@@ -392,7 +392,7 @@ public abstract class TypeLiteral<T> {
      * @return True if {@code a} is recursively assignable from {@code b}, false if not.
      * @see #getComponentType(Type)
      */
-    private static final boolean isAssignableFrom(Type a, Type b, boolean equal) {
+    private static boolean isAssignableFrom(Type a, Type b, boolean equal) {
         if (a instanceof TypeVariable<?>) {
             return false;
         } else if (a instanceof Class<?>) {

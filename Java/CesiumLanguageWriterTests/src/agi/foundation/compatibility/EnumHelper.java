@@ -24,7 +24,7 @@ public final class EnumHelper {
         } else {
             Method method;
             try {
-                method = enumType.getMethod("values", new Class<?>[0]);
+                method = enumType.getMethod("values");
                 method.setAccessible(true);
             } catch (NoSuchMethodException e) {
                 throw new RuntimeNoSuchMethodException(e);

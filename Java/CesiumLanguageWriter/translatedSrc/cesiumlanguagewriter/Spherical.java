@@ -6,7 +6,6 @@ import agi.foundation.compatibility.annotations.CS2JInfo;
 import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
-import agi.foundation.compatibility.PrimitiveHelper;
 import agi.foundation.compatibility.StringHelper;
 import javax.annotation.Nonnull;
 
@@ -179,7 +178,7 @@ public final class Spherical implements IEquatable<Spherical>, ImmutableValueTyp
     */
     @Override
     public int hashCode() {
-        return HashCode.combine(PrimitiveHelper.hashCode(m_clock), PrimitiveHelper.hashCode(m_cone), PrimitiveHelper.hashCode(m_magnitude));
+        return HashCode.combine(Double.hashCode(m_clock), Double.hashCode(m_cone), Double.hashCode(m_magnitude));
     }
 
     /**

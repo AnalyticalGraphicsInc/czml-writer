@@ -7,7 +7,6 @@ import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.ArgumentException;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
-import agi.foundation.compatibility.PrimitiveHelper;
 import agi.foundation.compatibility.StringHelper;
 import javax.annotation.Nonnull;
 
@@ -204,7 +203,7 @@ public final class BoundingRectangle implements IEquatable<BoundingRectangle>, I
     */
     @Override
     public int hashCode() {
-        return HashCode.combine(PrimitiveHelper.hashCode(m_left), PrimitiveHelper.hashCode(m_bottom), PrimitiveHelper.hashCode(m_right), PrimitiveHelper.hashCode(m_top));
+        return HashCode.combine(Double.hashCode(m_left), Double.hashCode(m_bottom), Double.hashCode(m_right), Double.hashCode(m_top));
     }
 
     /**

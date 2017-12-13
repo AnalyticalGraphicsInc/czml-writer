@@ -17,75 +17,6 @@ import agi.foundation.compatibility.annotations.Internal;
  * static method, passing parameters through and returning the result.
  */
 public abstract class Delegate {
-    @Internal
-    protected interface MulticastDelegate<T extends Delegate> {
-        MulticastList<T> list();
-    }
-
-    @Internal
-    protected static final class MulticastList<T extends Delegate> {
-        private ArrayList<T> list;
-
-        @SuppressWarnings("unchecked")
-        public MulticastList(T a, T b) {
-            list = new ArrayList<>();
-
-            if (a instanceof MulticastDelegate<?>) {
-                list.addAll(((MulticastDelegate<T>) a).list().list);
-            } else {
-                list.add(a);
-            }
-
-            if (b instanceof MulticastDelegate<?>) {
-                list.addAll(((MulticastDelegate<T>) b).list().list);
-            } else {
-                list.add(b);
-            }
-        }
-
-        public MulticastList(ArrayList<T> list) {
-            this.list = list;
-        }
-
-        public MulticastList<T> removeLast(T t) {
-            ArrayList<T> resultList = new ArrayList<>(list);
-            for (int i = resultList.size() - 1; i >= 0; i--) {
-                if (resultList.get(i).equals(t)) {
-                    resultList.remove(i);
-                    break;
-                }
-            }
-            return new MulticastList<>(resultList);
-        }
-
-        public ArrayList<T> list() {
-            return list;
-        }
-
-        public T last() {
-            return list.get(list.size() - 1);
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (obj == this)
-                return true;
-
-            if (!(obj instanceof MulticastList<?>))
-                return false;
-
-            MulticastList<?> that = (MulticastList<?>) obj;
-            return list.equals(that.list);
-        }
-
-        @Override
-        public int hashCode() {
-            int result = 17;
-            result = 31 * result + list.hashCode();
-            return result;
-        }
-    }
-
     /**
      * Finder to locate the method we are a delegate to.
      */
@@ -213,5 +144,74 @@ public abstract class Delegate {
         int result = 17;
         result = 31 * result + methodFinder.hashCode();
         return result;
+    }
+
+    @Internal
+    protected interface MulticastDelegate<T extends Delegate> {
+        MulticastList<T> list();
+    }
+
+    @Internal
+    protected static final class MulticastList<T extends Delegate> {
+        private final ArrayList<T> list;
+
+        @SuppressWarnings("unchecked")
+        public MulticastList(T a, T b) {
+            list = new ArrayList<>();
+
+            if (a instanceof MulticastDelegate<?>) {
+                list.addAll(((MulticastDelegate<T>) a).list().list);
+            } else {
+                list.add(a);
+            }
+
+            if (b instanceof MulticastDelegate<?>) {
+                list.addAll(((MulticastDelegate<T>) b).list().list);
+            } else {
+                list.add(b);
+            }
+        }
+
+        public MulticastList(ArrayList<T> list) {
+            this.list = list;
+        }
+
+        public MulticastList<T> removeLast(T t) {
+            ArrayList<T> resultList = new ArrayList<>(list);
+            for (int i = resultList.size() - 1; i >= 0; i--) {
+                if (resultList.get(i).equals(t)) {
+                    resultList.remove(i);
+                    break;
+                }
+            }
+            return new MulticastList<>(resultList);
+        }
+
+        public ArrayList<T> list() {
+            return list;
+        }
+
+        public T last() {
+            return list.get(list.size() - 1);
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (obj == this)
+                return true;
+
+            if (!(obj instanceof MulticastList<?>))
+                return false;
+
+            MulticastList<?> that = (MulticastList<?>) obj;
+            return list.equals(that.list);
+        }
+
+        @Override
+        public int hashCode() {
+            int result = 17;
+            result = 31 * result + list.hashCode();
+            return result;
+        }
     }
 }

@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
  * Helper methods related to Ints.
  */
 public final class IntHelper {
-    private IntHelper() {}
-
     @Nonnull
-    private static NumberStyles defaultNumberStyle = NumberStyles.INTEGER;
+    private static final NumberStyles defaultNumberStyle = NumberStyles.INTEGER;
+
+    private IntHelper() {}
 
     /**
      * Converts the numeric value of an integer to its equivalent string representation

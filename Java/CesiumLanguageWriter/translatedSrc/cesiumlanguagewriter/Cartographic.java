@@ -6,7 +6,6 @@ import agi.foundation.compatibility.annotations.CS2JInfo;
 import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
-import agi.foundation.compatibility.PrimitiveHelper;
 import agi.foundation.compatibility.StringHelper;
 import javax.annotation.Nonnull;
 
@@ -142,7 +141,7 @@ public final class Cartographic implements IEquatable<Cartographic>, ImmutableVa
     */
     @Override
     public int hashCode() {
-        return HashCode.combine(PrimitiveHelper.hashCode(m_longitude), PrimitiveHelper.hashCode(m_latitude), PrimitiveHelper.hashCode(m_height));
+        return HashCode.combine(Double.hashCode(m_longitude), Double.hashCode(m_latitude), Double.hashCode(m_height));
     }
 
     /**

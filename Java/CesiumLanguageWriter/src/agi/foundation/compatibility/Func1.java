@@ -1,5 +1,7 @@
 package agi.foundation.compatibility;
 
+import java.util.function.Supplier;
+
 import javax.annotation.Nonnull;
 
 /**
@@ -9,7 +11,7 @@ import javax.annotation.Nonnull;
  * @param <TResult>
  *            The type of the return value of the method.
  */
-public abstract class Func1<TResult> extends Delegate {
+public abstract class Func1<TResult> extends Delegate implements Supplier<TResult> {
     /**
      * Creates a new instance of this delegate.
      */
@@ -54,6 +56,11 @@ public abstract class Func1<TResult> extends Delegate {
     public abstract TResult invoke();
 
     @Override
+    public final TResult get() {
+        return invoke();
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (obj == this) {
             return true;
@@ -80,6 +87,7 @@ public abstract class Func1<TResult> extends Delegate {
     /**
      * A functional interface for the containing delegate type.
      */
+    @FunctionalInterface
     public interface Function<TResult> {
         /**
          * Represents a method that has no parameters and returns a value of the type

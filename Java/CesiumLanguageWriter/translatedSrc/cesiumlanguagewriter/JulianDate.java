@@ -9,7 +9,6 @@ import agi.foundation.compatibility.CultureInfoHelper;
 import agi.foundation.compatibility.DateTimeHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
-import agi.foundation.compatibility.PrimitiveHelper;
 import agi.foundation.compatibility.StringHelper;
 import java.time.ZonedDateTime;
 import javax.annotation.Nonnull;
@@ -846,7 +845,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     */
     @Override
     public int hashCode() {
-        return HashCode.combine(PrimitiveHelper.hashCode(m_day), PrimitiveHelper.hashCode(m_secondsOfDay), getStandard().hashCode());
+        return HashCode.combine(Integer.hashCode(m_day), Double.hashCode(m_secondsOfDay), getStandard().hashCode());
     }
 
     /**
