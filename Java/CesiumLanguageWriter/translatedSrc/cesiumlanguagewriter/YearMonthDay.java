@@ -50,14 +50,13 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     {@code day} is outside of its acceptable range.
     */
     public YearMonthDay(int year, int month, int day) {
-        if (isValidDate(year, month, day)) {
-            //fields are stored zero-indexed
-            m_year = year - 1;
-            m_month = month - 1;
-            m_day = day - 1;
-        } else {
+        if (!isValidDate(year, month, day)) {
             throw new ArgumentException(CesiumLocalization.getYearMonthDayInvalidArgument());
         }
+        // fields are stored zero-indexed
+        m_year = year - 1;
+        m_month = month - 1;
+        m_day = day - 1;
     }
 
     /**
@@ -72,22 +71,21 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     (in the range 1 through the number of days in the year).
     */
     public YearMonthDay(int year, int dayOfYear) {
-        if (dayOfYear <= daysInYear(year)) {
-            //year is stored zero-indexed
-            m_year = year - 1;
-            int[] cumulativeDays = isLeapYear(year) ? s_leapYearCumulativeMonthTable : s_commonYearCumulativeMonthTable;
-            //month is stored zero-indexed
-            for (m_month = 11; m_month > 0; --m_month) {
-                if (cumulativeDays[m_month] < dayOfYear) {
-                    break;
-                }
+        if (dayOfYear > daysInYear(year)) {
+            throw new ArgumentException(CesiumLocalization.getYearMonthDayInvalidArgument(), "dayOfYear");
+        }
+        // year is stored zero-indexed
+        m_year = year - 1;
+        int[] cumulativeMonthTable = getCumulativeMonthTable(year);
+        // month is stored zero-indexed
+        for (m_month = 11; m_month > 0; --m_month) {
+            if (cumulativeMonthTable[m_month] < dayOfYear) {
+                break;
             }
-            //day is stored zero-indexed
-            m_day = dayOfYear - cumulativeDays[m_month] - 1;
-            if (!isValidDate(m_year + 1, m_month + 1, m_day + 1)) {
-                throw new ArgumentException(CesiumLocalization.getYearMonthDayInvalidArgument());
-            }
-        } else {
+        }
+        // day is stored zero-indexed
+        m_day = dayOfYear - cumulativeMonthTable[m_month] - 1;
+        if (!isValidDate(m_year + 1, m_month + 1, m_day + 1)) {
             throw new ArgumentException(CesiumLocalization.getYearMonthDayInvalidArgument());
         }
     }
@@ -178,7 +176,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
 
     */
     public final int getMonth() {
-        //month is stored zero-indexed
+        // month is stored zero-indexed
         return m_month + 1;
     }
 
@@ -189,21 +187,18 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
 
     */
     public final int getDay() {
-        //day is stored zero-indexed
+        // day is stored zero-indexed
         return m_day + 1;
     }
 
     /**
-    *  Gets the day of the year (in the range 1 through the number of days in the
-    year).
+    *  Gets the day of the year (in the range 1 through the number of days in the year).
     
 
     */
     public final int getDayOfYear() {
-        if (isLeapYear(getYear())) {
-            return getDay() + s_leapYearCumulativeMonthTable[m_month];
-        }
-        return getDay() + s_commonYearCumulativeMonthTable[m_month];
+        int[] cumulativeMonthTable = getCumulativeMonthTable(getYear());
+        return getDay() + cumulativeMonthTable[m_month];
     }
 
     /**
@@ -277,10 +272,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     leap year).
     */
     public static int daysInYear(int year) {
-        if (isLeapYear(year)) {
-            return 366;
-        }
-        return 365;
+        return isLeapYear(year) ? 366 : 365;
     }
 
     /**
@@ -300,16 +292,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     {@code false} if it is not.
     */
     public static boolean isValidDate(int year, int month, int day) {
-        if (year < 1 || year > 9999) {
-            return false;
-        }
-        if (month < 1 || month > 12) {
-            return false;
-        }
-        if (day < 1 || day > daysInMonth(year, month)) {
-            return false;
-        }
-        return true;
+        return year >= 1 && year <= 9999 && month >= 1 && month <= 12 && day >= 1 && day <= daysInMonth(year, month);
     }
 
     /**
@@ -510,10 +493,21 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
         return left.compareTo(right) >= 0;
     }
 
-    //fields are stored zero-indexed so that default-constructed instances are valid
+    /**
+    *  
+    Gets the appropriate table of cumulative days per month for the given year.
+    
+
+    */
+    private static int[] getCumulativeMonthTable(int year) {
+        return isLeapYear(year) ? s_leapYearCumulativeMonthTable : s_commonYearCumulativeMonthTable;
+    }
+
+    // fields are stored zero-indexed so that default-constructed instances are valid
     private int m_year;
     private int m_month;
     private int m_day;
+    // these tables contain the cumulative days of year at the start of each of the zero-indexed months of the year.
     private static int[] s_commonYearCumulativeMonthTable = {
             0,
             31,

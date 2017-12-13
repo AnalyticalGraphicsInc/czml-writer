@@ -22,15 +22,6 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Initializes a set of <see cref="UnitSpherical"/> coordinates from a <see cref="Spherical"/> instance.
-        /// <param name="spherical">An existing Spherical instance.</param>
-        /// </summary>
-        public UnitSpherical(Spherical spherical) :
-            this(spherical.Clock, spherical.Cone)
-        {
-        }
-
-        /// <summary>
         /// Initializes a set of <see cref="UnitSpherical"/> coordinates from the provided set of <see cref="UnitCartesian"/> coordinates.
         /// </summary>
         /// <param name="coordinates">The set of <see cref="UnitCartesian"/> coordinates.</param>
@@ -42,6 +33,17 @@ namespace CesiumLanguageWriter
             double radialSquared = x * x + y * y;
             m_clock = Math.Atan2(y, x);
             m_cone = Math.Atan2(Math.Sqrt(radialSquared), z);
+        }
+
+        /// <summary>
+        /// Initializes a set of <see cref="UnitSpherical"/> coordinates from the provided set of
+        /// <see cref="Spherical"/> coordinates.
+        /// </summary>
+        /// <param name="coordinates">The set of Spherical coordinates.</param>
+        public UnitSpherical(Spherical coordinates)
+        {
+            m_clock = coordinates.Clock;
+            m_cone = coordinates.Cone;
         }
 
         /// <summary>

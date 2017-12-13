@@ -9,10 +9,7 @@ namespace CesiumLanguageWriter
     /// </summary>
     [CSToJavaExcludeBase("IComparable")]
     [CSToJavaImmutableValueType]
-    public struct YearMonthDay :
-        IComparable<YearMonthDay>,
-        IComparable,
-        IEquatable<YearMonthDay>
+    public struct YearMonthDay : IComparable<YearMonthDay>, IComparable, IEquatable<YearMonthDay>
     {
         /// <summary>
         /// Initializes a <see cref="YearMonthDay"/> from the provided values.
@@ -26,17 +23,13 @@ namespace CesiumLanguageWriter
         /// <paramref name="day"/> is outside of its acceptable range.</exception>
         public YearMonthDay(int year, int month, int day)
         {
-            if (IsValidDate(year, month, day))
-            {
-                //fields are stored zero-indexed
-                m_year = year - 1;
-                m_month = month - 1;
-                m_day = day - 1;
-            }
-            else
-            {
+            if (!IsValidDate(year, month, day))
                 throw new ArgumentException(CesiumLocalization.YearMonthDayInvalidArgument);
-            }
+
+            // fields are stored zero-indexed
+            m_year = year - 1;
+            m_month = month - 1;
+            m_day = day - 1;
         }
 
         /// <summary>
@@ -47,32 +40,26 @@ namespace CesiumLanguageWriter
         /// (in the range 1 through the number of days in the year).</param>
         public YearMonthDay(int year, int dayOfYear)
         {
-            if (dayOfYear <= DaysInYear(year))
+            if (dayOfYear > DaysInYear(year))
+                throw new ArgumentException(CesiumLocalization.YearMonthDayInvalidArgument, "dayOfYear");
+
+            // year is stored zero-indexed
+            m_year = year - 1;
+
+            int[] cumulativeMonthTable = GetCumulativeMonthTable(year);
+
+            // month is stored zero-indexed
+            for (m_month = 11; m_month > 0; --m_month)
             {
-                //year is stored zero-indexed
-                m_year = year - 1;
-
-                int[] cumulativeDays = IsLeapYear(year) ? s_leapYearCumulativeMonthTable : s_commonYearCumulativeMonthTable;
-
-                //month is stored zero-indexed
-                for (m_month = 11; m_month > 0; --m_month)
-                {
-                    if (cumulativeDays[m_month] < dayOfYear)
-                        break;
-                }
-
-                //day is stored zero-indexed
-                m_day = dayOfYear - cumulativeDays[m_month] - 1;
-
-                if (!IsValidDate(m_year + 1, m_month + 1, m_day + 1))
-                {
-                    throw new ArgumentException(CesiumLocalization.YearMonthDayInvalidArgument);
-                }
+                if (cumulativeMonthTable[m_month] < dayOfYear)
+                    break;
             }
-            else
-            {
+
+            // day is stored zero-indexed
+            m_day = dayOfYear - cumulativeMonthTable[m_month] - 1;
+
+            if (!IsValidDate(m_year + 1, m_month + 1, m_day + 1))
                 throw new ArgumentException(CesiumLocalization.YearMonthDayInvalidArgument);
-            }
         }
 
         /// <summary>
@@ -82,11 +69,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="astronomicalJulianDayNumber">The astronomical Julian day number.
         /// </param>
-        [SuppressMessage("Microsoft.Usage", "CA2233:OperationsShouldNotOverflow",
-             MessageId = "astronomicalJulianDayNumber+68569",
-             Justification =
-                 "In order for this to overflow you would need to pass in a Julian day number above 2 billion, which is safely 54 million years away or so."
-         )]
+        [SuppressMessage("Microsoft.Usage", "CA2233:OperationsShouldNotOverflow", MessageId = "astronomicalJulianDayNumber+68569", Justification = "In order for this to overflow you would need to pass in a Julian day number above 2 billion, which is safely 54 million years away or so.")]
         public YearMonthDay(int astronomicalJulianDayNumber)
         {
             // Algorithm from page 604 of the Explanatory Supplement to the
@@ -102,15 +85,13 @@ namespace CesiumLanguageWriter
             m_month = J + 2 - 12 * L;
             m_year = 100 * (N - 49) + I + L;
 
-            //fields are stored zero-indexed
+            // fields are stored zero-indexed
             m_year--;
             m_month--;
             m_day--;
 
             if (!IsValidDate(m_year + 1, m_month + 1, m_day + 1))
-            {
                 throw new ArgumentOutOfRangeException(CesiumLocalization.YearMonthDayInvalidArgument);
-            }
         }
 
         /// <summary>
@@ -160,7 +141,7 @@ namespace CesiumLanguageWriter
         {
             get
             {
-                //month is stored zero-indexed
+                // month is stored zero-indexed
                 return m_month + 1;
             }
         }
@@ -173,25 +154,20 @@ namespace CesiumLanguageWriter
         {
             get
             {
-                //day is stored zero-indexed
+                // day is stored zero-indexed
                 return m_day + 1;
             }
         }
 
         /// <summary>
-        /// Gets the day of the year (in the range 1 through the number of days in the
-        /// year).
+        /// Gets the day of the year (in the range 1 through the number of days in the year).
         /// </summary>
         public int DayOfYear
         {
             get
             {
-                if (IsLeapYear(Year))
-                {
-                    return Day + s_leapYearCumulativeMonthTable[m_month];
-                }
-
-                return Day + s_commonYearCumulativeMonthTable[m_month];
+                int[] cumulativeMonthTable = GetCumulativeMonthTable(Year);
+                return Day + cumulativeMonthTable[m_month];
             }
         }
 
@@ -255,12 +231,7 @@ namespace CesiumLanguageWriter
         /// leap year).</returns>
         public static int DaysInYear(int year)
         {
-            if (IsLeapYear(year))
-            {
-                return 366;
-            }
-
-            return 365;
+            return IsLeapYear(year) ? 366 : 365;
         }
 
         /// <summary>
@@ -274,22 +245,9 @@ namespace CesiumLanguageWriter
         /// <see langword="false"/> if it is not.</returns>
         public static bool IsValidDate(int year, int month, int day)
         {
-            if (year < 1 || year > 9999)
-            {
-                return false;
-            }
-
-            if (month < 1 || month > 12)
-            {
-                return false;
-            }
-
-            if (day < 1 || day > DaysInMonth(year, month))
-            {
-                return false;
-            }
-
-            return true;
+            return year >= 1 && year <= 9999 &&
+                   month >= 1 && month <= 12 &&
+                   day >= 1 && day <= DaysInMonth(year, month);
         }
 
         /// <summary>
@@ -501,11 +459,20 @@ namespace CesiumLanguageWriter
             return left.CompareTo(right) >= 0;
         }
 
-        //fields are stored zero-indexed so that default-constructed instances are valid
+        /// <summary>
+        /// Gets the appropriate table of cumulative days per month for the given year.
+        /// </summary>
+        private static int[] GetCumulativeMonthTable(int year)
+        {
+            return IsLeapYear(year) ? s_leapYearCumulativeMonthTable : s_commonYearCumulativeMonthTable;
+        }
+
+        // fields are stored zero-indexed so that default-constructed instances are valid
         private readonly int m_year;
         private readonly int m_month;
         private readonly int m_day;
 
+        // these tables contain the cumulative days of year at the start of each of the zero-indexed months of the year.
         private static readonly int[] s_commonYearCumulativeMonthTable = { 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334 };
         private static readonly int[] s_leapYearCumulativeMonthTable = { 0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335 };
     }
