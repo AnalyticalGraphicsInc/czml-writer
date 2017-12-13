@@ -16,7 +16,7 @@ public class Lazy<T> {
      * @param valueFactory
      *            The callback to use to create the instance.
      * @param isThreadSafe
-     *            Must be <see langword="false" />.
+     *            Must be {@code false}.
      */
     public Lazy(Func1<T> valueFactory, boolean isThreadSafe) {
         if (isThreadSafe) {
