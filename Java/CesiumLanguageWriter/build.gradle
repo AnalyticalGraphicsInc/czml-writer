@@ -28,3 +28,7 @@ jar {
 test {
     enabled = false
 }
+
+tasks.withType(Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+}
