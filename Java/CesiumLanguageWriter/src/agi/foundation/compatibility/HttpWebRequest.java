@@ -1,11 +1,18 @@
 package agi.foundation.compatibility;
 
+import agi.foundation.compatibility.annotations.Internal;
+
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 
 import javax.annotation.Nonnull;
 
+/**
+ * @deprecated Internal use only.
+ */
+@Internal
+@Deprecated
 public class HttpWebRequest extends WebRequest {
     private String userAgent;
 

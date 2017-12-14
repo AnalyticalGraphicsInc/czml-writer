@@ -1,12 +1,18 @@
 package agi.foundation.compatibility;
 
+import agi.foundation.compatibility.annotations.Internal;
+
 import java.util.Map;
 
 import javax.annotation.Nonnull;
 
 /**
  * Helper class for Map methods.
+ *
+ * @deprecated Internal use only.
  */
+@Internal
+@Deprecated
 public final class MapHelper {
     private MapHelper() {}
 

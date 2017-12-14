@@ -1,8 +1,14 @@
 package agi.foundation.compatibility;
 
+import agi.foundation.compatibility.annotations.Internal;
+
 /**
  * Specifies the file format of the image.
+ *
+ * @deprecated Internal use only.
  */
+@Internal
+@Deprecated
 public final class ImageFormat {
     private static final ImageFormat s_bmp = new ImageFormat("bmp");
     private static final ImageFormat s_gif = new ImageFormat("gif");

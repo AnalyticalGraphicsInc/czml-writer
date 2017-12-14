@@ -1,5 +1,7 @@
 package agi.foundation.compatibility;
 
+import agi.foundation.compatibility.annotations.Internal;
+
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -15,7 +17,11 @@ import javax.annotation.Nonnull;
 
 /**
  * Helper methods related to DateTime.
+ *
+ * @deprecated Internal use only.
  */
+@Internal
+@Deprecated
 public final class DateTimeHelper {
     private DateTimeHelper() {}
 

@@ -1,5 +1,7 @@
 package agi.foundation.compatibility;
 
+import agi.foundation.compatibility.annotations.Internal;
+
 import java.text.DateFormatSymbols;
 import java.time.DayOfWeek;
 import java.util.Calendar;
@@ -11,7 +13,11 @@ import javax.annotation.Nonnull;
 
 /**
  * Defines how DateTime values are formatted and displayed, depending on the culture.
+ *
+ * @deprecated Internal use only.
  */
+@Internal
+@Deprecated
 public final class DateTimeFormatInfo {
     @Nonnull
     private static final Map<Locale, DateFormats> s_dateFormatsByLocale;

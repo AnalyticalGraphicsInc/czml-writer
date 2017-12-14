@@ -1,7 +1,14 @@
 package agi.foundation.compatibility;
 
+import agi.foundation.compatibility.annotations.Internal;
+
 import java.util.ResourceBundle;
 
+/**
+ * @deprecated Internal use only.
+ */
+@Internal
+@Deprecated
 public final class ResourceBundleHelper {
     private ResourceBundleHelper() {}
 

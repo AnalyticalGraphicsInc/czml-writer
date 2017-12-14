@@ -1,5 +1,7 @@
 package agi.foundation.compatibility;
 
+import agi.foundation.compatibility.annotations.Internal;
+
 import java.io.File;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -8,6 +10,11 @@ import java.util.regex.Pattern;
 
 import javax.annotation.Nonnull;
 
+/**
+ * @deprecated Internal use only.
+ */
+@Internal
+@Deprecated
 public final class UriHelper {
     // from rfc2396, appendix B
     @Nonnull

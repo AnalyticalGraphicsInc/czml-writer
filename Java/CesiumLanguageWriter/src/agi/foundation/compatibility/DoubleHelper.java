@@ -1,10 +1,16 @@
 package agi.foundation.compatibility;
 
+import agi.foundation.compatibility.annotations.Internal;
+
 import java.util.Locale;
 
 /**
  * Helper methods related to Doubles.
+ *
+ * @deprecated Internal use only.
  */
+@Internal
+@Deprecated
 public final class DoubleHelper {
     private DoubleHelper() {}
 

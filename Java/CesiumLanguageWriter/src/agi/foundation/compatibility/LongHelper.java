@@ -1,10 +1,16 @@
 package agi.foundation.compatibility;
 
+import agi.foundation.compatibility.annotations.Internal;
+
 import java.util.Locale;
 
 /**
  * Helper methods related to Longs.
+ *
+ * @deprecated Internal use only.
  */
+@Internal
+@Deprecated
 public final class LongHelper {
     private LongHelper() {}
 

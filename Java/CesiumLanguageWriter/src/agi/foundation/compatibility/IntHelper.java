@@ -1,5 +1,7 @@
 package agi.foundation.compatibility;
 
+import agi.foundation.compatibility.annotations.Internal;
+
 import java.text.NumberFormat;
 import java.text.ParsePosition;
 import java.util.Locale;
@@ -8,7 +10,11 @@ import javax.annotation.Nonnull;
 
 /**
  * Helper methods related to Ints.
+ *
+ * @deprecated Internal use only.
  */
+@Internal
+@Deprecated
 public final class IntHelper {
     @Nonnull
     private static final NumberStyles defaultNumberStyle = NumberStyles.INTEGER;

@@ -1,8 +1,14 @@
 package agi.foundation.compatibility;
 
+import agi.foundation.compatibility.annotations.Internal;
+
 /**
  * Helper methods related to the environment.
+ *
+ * @deprecated Internal use only.
  */
+@Internal
+@Deprecated
 public final class EnvironmentHelper {
     private EnvironmentHelper() {}
 

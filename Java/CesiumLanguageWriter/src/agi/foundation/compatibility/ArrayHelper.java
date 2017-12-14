@@ -1,5 +1,7 @@
 package agi.foundation.compatibility;
 
+import agi.foundation.compatibility.annotations.Internal;
+
 import java.lang.reflect.Array;
 import java.util.AbstractList;
 import java.util.Arrays;
@@ -16,7 +18,11 @@ import javax.annotation.Nonnull;
 
 /**
  * Helper methods for Arrays.
+ *
+ * @deprecated Internal use only.
  */
+@Internal
+@Deprecated
 public final class ArrayHelper {
     /**
      * This class differs from the one used by Arrays.asList in that it preserves value

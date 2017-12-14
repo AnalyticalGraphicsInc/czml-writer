@@ -1,5 +1,7 @@
 package agi.foundation.compatibility;
 
+import agi.foundation.compatibility.annotations.Internal;
+
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -8,7 +10,11 @@ import javax.annotation.Nonnull;
 
 /**
  * Helper methods related to CultureInfo.
+ *
+ * @deprecated Internal use only.
  */
+@Internal
+@Deprecated
 public final class CultureInfoHelper {
     @Nonnull
     private static final Pattern nameSplitter = Pattern.compile("(\\p{Alpha}{2})-(\\p{Alpha}{2})");

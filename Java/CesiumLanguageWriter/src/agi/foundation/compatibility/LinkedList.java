@@ -33,6 +33,8 @@ package agi.foundation.compatibility;
 //WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
+import agi.foundation.compatibility.annotations.Internal;
+
 import java.lang.reflect.Array;
 import java.util.Collection;
 import java.util.Iterator;
@@ -43,7 +45,11 @@ import java.util.Iterator;
  *
  * @param <T>
  *            Specifies the element type of the linked list.
+ *
+ * @deprecated Internal use only.
  */
+@Internal
+@Deprecated
 public class LinkedList<T> implements Collection<T> {
     private int count;
 

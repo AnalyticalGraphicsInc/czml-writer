@@ -33,12 +33,18 @@ package agi.foundation.compatibility;
 //WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
+import agi.foundation.compatibility.annotations.Internal;
+
 /**
  * Represents a node in a LinkedList.
  *
  * @param <T>
  *            Specifies the element type of the linked list.
+ *
+ * @deprecated Internal use only.
  */
+@Internal
+@Deprecated
 public final class LinkedListNode<T> {
     private T value;
     private LinkedList<T> list;

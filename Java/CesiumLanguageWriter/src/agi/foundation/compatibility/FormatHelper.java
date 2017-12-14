@@ -1,5 +1,7 @@
 package agi.foundation.compatibility;
 
+import agi.foundation.compatibility.annotations.Internal;
+
 import java.text.DecimalFormat;
 import java.text.FieldPosition;
 import java.text.Format;
@@ -13,7 +15,11 @@ import javax.annotation.Nonnull;
 
 /**
  * Helper methods related to Formats.
+ *
+ * @deprecated Internal use only.
  */
+@Internal
+@Deprecated
 public final class FormatHelper {
     @Nonnull
     private static final ConcurrentHashMap<FormatCacheKey, Format> cache = new ConcurrentHashMap<>();

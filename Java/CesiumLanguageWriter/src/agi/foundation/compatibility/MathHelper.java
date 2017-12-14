@@ -1,11 +1,17 @@
 package agi.foundation.compatibility;
 
+import agi.foundation.compatibility.annotations.Internal;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 /**
  * Helper methods related to Math.
+ *
+ * @deprecated Internal use only.
  */
+@Internal
+@Deprecated
 public final class MathHelper {
     private MathHelper() {}
 

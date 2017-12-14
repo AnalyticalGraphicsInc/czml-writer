@@ -1,5 +1,7 @@
 package agi.foundation.compatibility;
 
+import agi.foundation.compatibility.annotations.Internal;
+
 import java.text.Collator;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,7 +15,11 @@ import javax.annotation.Nullable;
 
 /**
  * Helper methods related to Strings.
+ *
+ * @deprecated Internal use only.
  */
+@Internal
+@Deprecated
 public final class StringHelper {
     private enum PaddingType {
         LEFT,

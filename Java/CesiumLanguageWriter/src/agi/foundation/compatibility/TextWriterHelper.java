@@ -1,5 +1,7 @@
 package agi.foundation.compatibility;
 
+import agi.foundation.compatibility.annotations.Internal;
+
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.io.Writer;
@@ -9,7 +11,11 @@ import javax.annotation.Nullable;
 
 /**
  * Helper methods related to TextWriter.
+ *
+ * @deprecated Internal use only.
  */
+@Internal
+@Deprecated
 public final class TextWriterHelper {
     private TextWriterHelper() {}
 

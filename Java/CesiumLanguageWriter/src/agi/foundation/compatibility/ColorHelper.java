@@ -1,12 +1,18 @@
 package agi.foundation.compatibility;
 
+import agi.foundation.compatibility.annotations.Internal;
+
 import java.awt.Color;
 
 import javax.annotation.Nonnull;
 
 /**
  * Helper methods related to Color.
+ *
+ * @deprecated Internal use only.
  */
+@Internal
+@Deprecated
 public final class ColorHelper {
     private ColorHelper() {}
 

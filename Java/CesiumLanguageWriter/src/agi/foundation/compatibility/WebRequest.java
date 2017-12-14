@@ -1,5 +1,7 @@
 package agi.foundation.compatibility;
 
+import agi.foundation.compatibility.annotations.Internal;
+
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.net.MalformedURLException;
@@ -11,6 +13,11 @@ import java.net.URLConnection;
 
 import javax.annotation.Nonnull;
 
+/**
+ * @deprecated Internal use only.
+ */
+@Internal
+@Deprecated
 public abstract class WebRequest {
     @Nonnull
     protected final URL url;

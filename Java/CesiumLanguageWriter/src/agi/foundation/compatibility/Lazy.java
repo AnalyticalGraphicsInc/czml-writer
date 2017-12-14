@@ -1,11 +1,17 @@
 package agi.foundation.compatibility;
 
+import agi.foundation.compatibility.annotations.Internal;
+
 /**
  * Provides support for lazy initialization.
  *
  * @param <T>
  *            Specifies the type of object that is being lazily initialized.
+ *
+ * @deprecated Internal use only.
  */
+@Internal
+@Deprecated
 public class Lazy<T> {
     private T m_instance;
     private Func1<T> m_createCallback;

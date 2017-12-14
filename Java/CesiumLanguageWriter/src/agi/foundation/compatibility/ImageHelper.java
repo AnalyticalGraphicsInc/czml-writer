@@ -1,11 +1,18 @@
 package agi.foundation.compatibility;
 
+import agi.foundation.compatibility.annotations.Internal;
+
 import java.awt.image.RenderedImage;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 
 import javax.imageio.ImageIO;
 
+/**
+ * @deprecated Internal use only.
+ */
+@Internal
+@Deprecated
 public final class ImageHelper {
     private ImageHelper() {}
 

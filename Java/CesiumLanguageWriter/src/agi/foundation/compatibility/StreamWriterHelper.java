@@ -1,5 +1,7 @@
 package agi.foundation.compatibility;
 
+import agi.foundation.compatibility.annotations.Internal;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -8,7 +10,11 @@ import java.nio.charset.StandardCharsets;
 
 /**
  * Helper methods related to StreamWriter.
+ *
+ * @deprecated Internal use only.
  */
+@Internal
+@Deprecated
 public final class StreamWriterHelper {
     private StreamWriterHelper() {}
 

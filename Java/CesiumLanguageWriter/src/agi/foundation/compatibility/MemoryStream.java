@@ -1,12 +1,18 @@
 package agi.foundation.compatibility;
 
+import agi.foundation.compatibility.annotations.Internal;
+
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Arrays;
 
 /**
  * Creates a stream whose backing store is memory.
+ *
+ * @deprecated Internal use only.
  */
+@Internal
+@Deprecated
 public class MemoryStream extends InputStream implements IDisposable, ISeekableStream {
     private byte[] buffer;
     private int capacity;

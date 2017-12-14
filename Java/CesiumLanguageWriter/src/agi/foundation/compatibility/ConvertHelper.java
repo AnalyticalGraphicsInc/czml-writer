@@ -1,11 +1,18 @@
 package agi.foundation.compatibility;
 
+import agi.foundation.compatibility.annotations.Internal;
+
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
 import javax.annotation.Nonnull;
 
+/**
+ * @deprecated Internal use only.
+ */
+@Internal
+@Deprecated
 public final class ConvertHelper {
     private ConvertHelper() {}
 

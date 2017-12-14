@@ -1,12 +1,15 @@
 package agi.foundation.compatibility;
 
+import agi.foundation.compatibility.annotations.Internal;
+
 /**
  * Helper methods related to Objects.
+ *
+ * @deprecated Internal use only.
  */
+@Internal
+@Deprecated
 public final class ObjectHelper {
-    /**
-     * made default constructor private to avoid Object Creation.
-     */
     private ObjectHelper() {}
 
     /**

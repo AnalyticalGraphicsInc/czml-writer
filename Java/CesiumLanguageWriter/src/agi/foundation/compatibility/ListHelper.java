@@ -1,5 +1,7 @@
 package agi.foundation.compatibility;
 
+import agi.foundation.compatibility.annotations.Internal;
+
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -7,7 +9,11 @@ import javax.annotation.Nonnull;
 
 /**
  * Helper class for List methods.
+ *
+ * @deprecated Internal use only.
  */
+@Internal
+@Deprecated
 public final class ListHelper {
     private ListHelper() {}
 

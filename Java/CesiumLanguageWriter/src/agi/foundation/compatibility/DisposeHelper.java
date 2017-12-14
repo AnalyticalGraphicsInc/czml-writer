@@ -1,12 +1,18 @@
 package agi.foundation.compatibility;
 
+import agi.foundation.compatibility.annotations.Internal;
+
 import java.io.Closeable;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 
 /**
  * Helper methods to safely dispose various types.
+ *
+ * @deprecated Internal use only.
  */
+@Internal
+@Deprecated
 public final class DisposeHelper {
     private DisposeHelper() {}
 

@@ -3,8 +3,7 @@ package agi.foundation.compatibility;
 import javax.annotation.Nonnull;
 
 /**
- * Specifies the culture, case, and sort rules to be used by certain overloads of the
- * {@link StringHelper#compare(String,String)} and {@link String#equals(Object)} methods.
+ * Specifies the culture, case, and sort rules to be used by string comparison methods.
  */
 public enum StringComparison implements Enumeration {
     CURRENT_CULTURE(0),

@@ -1,11 +1,17 @@
 package agi.foundation.compatibility;
 
+import agi.foundation.compatibility.annotations.Internal;
+
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
 /**
  * Defines how numeric values are formatted and displayed, depending on the culture.
+ *
+ * @deprecated Internal use only.
  */
+@Internal
+@Deprecated
 public final class NumberFormatInfo {
     private final DecimalFormatSymbols decimalFormatSymbols;
 
