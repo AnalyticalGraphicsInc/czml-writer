@@ -38,7 +38,7 @@ public abstract class CesiumWriterAdaptorWriteCallback<TWrappedWriter, TValue> e
     * @param methodName The name of the instance method.
     * @param methodParameterClasses The type of the parameters of the instance method.
     */
-    public CesiumWriterAdaptorWriteCallback(@javax.annotation.Nonnull Object targetObject, @javax.annotation.Nonnull String methodName, @javax.annotation.Nonnull Class<?>... methodParameterClasses) {
+    public CesiumWriterAdaptorWriteCallback(@Nonnull Object targetObject, @Nonnull String methodName, @Nonnull Class<?>... methodParameterClasses) {
         super(targetObject, methodName, methodParameterClasses);
     }
 
@@ -48,7 +48,7 @@ public abstract class CesiumWriterAdaptorWriteCallback<TWrappedWriter, TValue> e
     * @param methodName The name of the static method.
     * @param methodParameterClasses The type of the parameters of the static method.
     */
-    public CesiumWriterAdaptorWriteCallback(@javax.annotation.Nonnull Class<?> targetClass, @javax.annotation.Nonnull String methodName, @javax.annotation.Nonnull Class<?>... methodParameterClasses) {
+    public CesiumWriterAdaptorWriteCallback(@Nonnull Class<?> targetClass, @Nonnull String methodName, @Nonnull Class<?>... methodParameterClasses) {
         super(targetClass, methodName, methodParameterClasses);
     }
 
@@ -79,12 +79,12 @@ public abstract class CesiumWriterAdaptorWriteCallback<TWrappedWriter, TValue> e
     }
 
     /**
-    * Create a delegate for the given interface.  This can be used to create a delegate from a lambda expression.
+    * Create a delegate for the given interface. This can be used to create a delegate from a lambda expression.
     * @param f The function which will be invoked.
     * @return A new delegate that will invoke the given function.
     */
     @Nonnull
-    public static <TWrappedWriter, TValue> CesiumWriterAdaptorWriteCallback<TWrappedWriter, TValue> of(@javax.annotation.Nonnull Function<TWrappedWriter, TValue> f) {
+    public static <TWrappedWriter, TValue> CesiumWriterAdaptorWriteCallback<TWrappedWriter, TValue> of(@Nonnull Function<TWrappedWriter, TValue> f) {
         return new FunctionImpl<TWrappedWriter, TValue>(f);
     }
 
@@ -112,10 +112,10 @@ public abstract class CesiumWriterAdaptorWriteCallback<TWrappedWriter, TValue> e
     }
 
     private static final class FunctionImpl<TWrappedWriter, TValue> extends CesiumWriterAdaptorWriteCallback<TWrappedWriter, TValue> {
-        @javax.annotation.Nonnull
+        @Nonnull
         private final Function<TWrappedWriter, TValue> f;
 
-        public FunctionImpl(@javax.annotation.Nonnull Function<TWrappedWriter, TValue> f) {
+        public FunctionImpl(@Nonnull Function<TWrappedWriter, TValue> f) {
             this.f = f;
         }
 

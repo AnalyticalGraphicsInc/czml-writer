@@ -5,6 +5,9 @@ import agi.foundation.compatibility.annotations.Internal;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 /**
  * Defines how numeric values are formatted and displayed, depending on the culture.
  *
@@ -18,7 +21,8 @@ public final class NumberFormatInfo {
     /**
      * Returns the NumberFormatInfo associated with the specified Locale.
      */
-    public static NumberFormatInfo getInstance(Locale locale) {
+    @Nonnull
+    public static NumberFormatInfo getInstance(@Nullable Locale locale) {
         if (locale == null)
             locale = CultureInfoHelper.getCurrentCulture();
         return new NumberFormatInfo(locale, DecimalFormatSymbols.getInstance(locale));
@@ -28,6 +32,7 @@ public final class NumberFormatInfo {
      * Gets the default read-only NumberFormatInfo that is culture-independent
      * (invariant).
      */
+    @Nonnull
     public static NumberFormatInfo getInvariantInfo() {
         return getInstance(CultureInfoHelper.getInvariantCulture());
     }

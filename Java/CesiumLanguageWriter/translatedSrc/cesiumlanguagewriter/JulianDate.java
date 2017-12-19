@@ -607,7 +607,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Duration -(JulianDate,JulianDate)'")
     @Nonnull
-    public static Duration subtract(@javax.annotation.Nonnull JulianDate left, @javax.annotation.Nonnull JulianDate right) {
+    public static Duration subtract(@Nonnull JulianDate left, @Nonnull JulianDate right) {
         return left.subtract(right);
     }
 
@@ -629,7 +629,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'JulianDate -(JulianDate,Duration)'")
     @Nonnull
-    public static JulianDate subtract(@javax.annotation.Nonnull JulianDate left, @javax.annotation.Nonnull Duration right) {
+    public static JulianDate subtract(@Nonnull JulianDate left, @Nonnull Duration right) {
         return left.subtract(right);
     }
 
@@ -648,7 +648,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'JulianDate +(JulianDate,Duration)'")
     @Nonnull
-    public static JulianDate add(@javax.annotation.Nonnull JulianDate left, @javax.annotation.Nonnull Duration right) {
+    public static JulianDate add(@Nonnull JulianDate left, @Nonnull Duration right) {
         return left.add(right);
     }
 
@@ -668,7 +668,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     * @return {@code true} if the dates are equal, otherwise {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(JulianDate,JulianDate)'")
-    public static boolean equals(@javax.annotation.Nonnull JulianDate left, @javax.annotation.Nonnull JulianDate right) {
+    public static boolean equals(@Nonnull JulianDate left, @Nonnull JulianDate right) {
         return left.equalsType(right);
     }
 
@@ -688,7 +688,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     * @return {@code true} if the dates are not equal, otherwise {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(JulianDate,JulianDate)'")
-    public static boolean notEquals(@javax.annotation.Nonnull JulianDate left, @javax.annotation.Nonnull JulianDate right) {
+    public static boolean notEquals(@Nonnull JulianDate left, @Nonnull JulianDate right) {
         return !left.equalsType(right);
     }
 
@@ -705,7 +705,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     * @return {@code true} if the {@code left} is less than {@code right}, otherwise {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean <(JulianDate,JulianDate)'")
-    public static boolean lessThan(@javax.annotation.Nonnull JulianDate left, @javax.annotation.Nonnull JulianDate right) {
+    public static boolean lessThan(@Nonnull JulianDate left, @Nonnull JulianDate right) {
         return left.compareTo(right) < 0;
     }
 
@@ -722,7 +722,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     * @return {@code true} if the {@code left} is greater than {@code right}, otherwise {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean >(JulianDate,JulianDate)'")
-    public static boolean greaterThan(@javax.annotation.Nonnull JulianDate left, @javax.annotation.Nonnull JulianDate right) {
+    public static boolean greaterThan(@Nonnull JulianDate left, @Nonnull JulianDate right) {
         return left.compareTo(right) > 0;
     }
 
@@ -739,7 +739,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     * @return {@code true} if the {@code left} is less than or equal to {@code right}, otherwise {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean <=(JulianDate,JulianDate)'")
-    public static boolean lessThanOrEqual(@javax.annotation.Nonnull JulianDate left, @javax.annotation.Nonnull JulianDate right) {
+    public static boolean lessThanOrEqual(@Nonnull JulianDate left, @Nonnull JulianDate right) {
         return left.compareTo(right) <= 0;
     }
 
@@ -756,7 +756,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     * @return {@code true} if the {@code left} is greater than or equal to {@code right}, otherwise {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean >=(JulianDate,JulianDate)'")
-    public static boolean greaterThanOrEqual(@javax.annotation.Nonnull JulianDate left, @javax.annotation.Nonnull JulianDate right) {
+    public static boolean greaterThanOrEqual(@Nonnull JulianDate left, @Nonnull JulianDate right) {
         return left.compareTo(right) >= 0;
     }
 

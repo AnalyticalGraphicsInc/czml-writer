@@ -11,6 +11,7 @@ import cesiumlanguagewriter.advanced.*;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collection;
+import javax.annotation.Nonnull;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -347,15 +348,17 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
     }
 
     @CS2JInfo("Initialization of C# struct variable 'm_startDate' added by translator.")
-    @javax.annotation.Nonnull
+    @Nonnull
     private JulianDate m_startDate = new JulianDate();
     private String m_isoStartString;
     @CS2JInfo("Initialization of C# struct variable 'm_stopDate' added by translator.")
-    @javax.annotation.Nonnull
+    @Nonnull
     private JulianDate m_stopDate = new JulianDate();
     private String m_isoIntervalString;
+    @Nonnull
     private final TestContextRule rule$testContext = new TestContextRule();
 
+    @Nonnull
     @Rule
     public TestContextRule getRule$testContext() {
         return rule$testContext;

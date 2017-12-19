@@ -7,6 +7,7 @@ import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.io.StringWriter;
+import javax.annotation.Nonnull;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
@@ -110,8 +111,10 @@ public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends Ce
         Assert.assertEquals("{\"foo\":{\"backwardExtrapolationDuration\":12}", getStringWriter().toString());
     }
 
+    @Nonnull
     private final TestContextRule rule$testContext = new TestContextRule();
 
+    @Nonnull
     @Rule
     public TestContextRule getRule$testContext() {
         return rule$testContext;

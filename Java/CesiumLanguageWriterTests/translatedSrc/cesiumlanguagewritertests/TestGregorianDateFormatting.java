@@ -10,6 +10,7 @@ import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import java.util.Locale;
 import java.util.regex.Pattern;
+import javax.annotation.Nonnull;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -277,15 +278,19 @@ public class TestGregorianDateFormatting {
     }
 
     private Locale m_cultureInfo;
+    @Nonnull
     private final TestContextRule rule$testContext = new TestContextRule();
 
+    @Nonnull
     @Rule
     public TestContextRule getRule$testContext() {
         return rule$testContext;
     }
 
+    @Nonnull
     private final ExpectedException rule$expectedException = ExpectedException.none();
 
+    @Nonnull
     @Rule
     public ExpectedException getRule$expectedException() {
         return rule$expectedException;

@@ -6,6 +6,7 @@ import agi.foundation.compatibility.ExpectedExceptionHelper;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import java.io.StringWriter;
+import javax.annotation.Nonnull;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -56,15 +57,19 @@ public class TestCesiumStreamWriter {
     private StringWriter m_stringWriter;
     private CesiumOutputStream m_outputStream;
     private CesiumStreamWriter m_writer;
+    @Nonnull
     private final TestContextRule rule$testContext = new TestContextRule();
 
+    @Nonnull
     @Rule
     public TestContextRule getRule$testContext() {
         return rule$testContext;
     }
 
+    @Nonnull
     private final ExpectedException rule$expectedException = ExpectedException.none();
 
+    @Nonnull
     @Rule
     public ExpectedException getRule$expectedException() {
         return rule$expectedException;

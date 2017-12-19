@@ -9,6 +9,7 @@ import cesiumlanguagewritertests.*;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collection;
+import javax.annotation.Nonnull;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -46,8 +47,10 @@ public class TestCesiumWritingHelper {
 
     private StringWriter m_stringWriter;
     private CesiumOutputStream m_outputStream;
+    @Nonnull
     private final TestContextRule rule$testContext = new TestContextRule();
 
+    @Nonnull
     @Rule
     public TestContextRule getRule$testContext() {
         return rule$testContext;

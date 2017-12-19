@@ -15,9 +15,10 @@ import java.util.function.Consumer;
 import java.util.function.UnaryOperator;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
- * Helper methods for Arrays.
+ * Helper methods for arrays.
  *
  * @deprecated Internal use only.
  */
@@ -79,7 +80,7 @@ public final class ArrayHelper {
         public int indexOf(Object o) {
             E[] a = this.a;
             for (int i = 0; i < a.length; ++i) {
-                if (ObjectHelper.equals(o, a[i])) {
+                if (Objects.equals(o, a[i])) {
                     return i;
                 }
             }
@@ -129,7 +130,8 @@ public final class ArrayHelper {
      * @return a list view of the specified array
      */
     @SafeVarargs
-    public static <T> List<T> arrayAsList(T... a) {
+    @Nullable
+    public static <T> List<T> arrayAsList(@Nullable T... a) {
         return a == null ? null : new ArrayList<>(a);
     }
 

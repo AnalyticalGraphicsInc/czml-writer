@@ -411,7 +411,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(YearMonthDay,YearMonthDay)'")
-    public static boolean equals(@javax.annotation.Nonnull YearMonthDay left, @javax.annotation.Nonnull YearMonthDay right) {
+    public static boolean equals(@Nonnull YearMonthDay left, @Nonnull YearMonthDay right) {
         return left.equalsType(right);
     }
 
@@ -430,7 +430,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(YearMonthDay,YearMonthDay)'")
-    public static boolean notEquals(@javax.annotation.Nonnull YearMonthDay left, @javax.annotation.Nonnull YearMonthDay right) {
+    public static boolean notEquals(@Nonnull YearMonthDay left, @Nonnull YearMonthDay right) {
         return !left.equalsType(right);
     }
 
@@ -449,7 +449,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean <(YearMonthDay,YearMonthDay)'")
-    public static boolean lessThan(@javax.annotation.Nonnull YearMonthDay left, @javax.annotation.Nonnull YearMonthDay right) {
+    public static boolean lessThan(@Nonnull YearMonthDay left, @Nonnull YearMonthDay right) {
         return left.compareTo(right) < 0;
     }
 
@@ -468,7 +468,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean >(YearMonthDay,YearMonthDay)'")
-    public static boolean greaterThan(@javax.annotation.Nonnull YearMonthDay left, @javax.annotation.Nonnull YearMonthDay right) {
+    public static boolean greaterThan(@Nonnull YearMonthDay left, @Nonnull YearMonthDay right) {
         return left.compareTo(right) > 0;
     }
 
@@ -487,7 +487,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean <=(YearMonthDay,YearMonthDay)'")
-    public static boolean lessThanOrEqual(@javax.annotation.Nonnull YearMonthDay left, @javax.annotation.Nonnull YearMonthDay right) {
+    public static boolean lessThanOrEqual(@Nonnull YearMonthDay left, @Nonnull YearMonthDay right) {
         return left.compareTo(right) <= 0;
     }
 
@@ -506,7 +506,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean >=(YearMonthDay,YearMonthDay)'")
-    public static boolean greaterThanOrEqual(@javax.annotation.Nonnull YearMonthDay left, @javax.annotation.Nonnull YearMonthDay right) {
+    public static boolean greaterThanOrEqual(@Nonnull YearMonthDay left, @Nonnull YearMonthDay right) {
         return left.compareTo(right) >= 0;
     }
 

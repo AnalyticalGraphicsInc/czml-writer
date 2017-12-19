@@ -8,6 +8,7 @@ import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.io.StringWriter;
+import javax.annotation.Nonnull;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -148,15 +149,19 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
     private CesiumOutputStream backingField$OutputStream;
     private CesiumStreamWriter backingField$Writer;
     private PacketCesiumWriter backingField$Packet;
+    @Nonnull
     private final TestContextRule rule$testContext = new TestContextRule();
 
+    @Nonnull
     @Rule
     public TestContextRule getRule$testContext() {
         return rule$testContext;
     }
 
+    @Nonnull
     private final ExpectedException rule$expectedException = ExpectedException.none();
 
+    @Nonnull
     @Rule
     public ExpectedException getRule$expectedException() {
         return rule$expectedException;

@@ -198,7 +198,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Rectangular *(Rectangular,System.Double)'")
     @Nonnull
-    public static Rectangular multiply(@javax.annotation.Nonnull Rectangular left, double right) {
+    public static Rectangular multiply(@Nonnull Rectangular left, double right) {
         return left.multiply(right);
     }
 
@@ -216,7 +216,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Rectangular *(System.Double,Rectangular)'")
     @Nonnull
-    public static Rectangular multiply(double left, @javax.annotation.Nonnull Rectangular right) {
+    public static Rectangular multiply(double left, @Nonnull Rectangular right) {
         return right.multiply(left);
     }
 
@@ -234,7 +234,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Rectangular /(Rectangular,System.Double)'")
     @Nonnull
-    public static Rectangular divide(@javax.annotation.Nonnull Rectangular left, double right) {
+    public static Rectangular divide(@Nonnull Rectangular left, double right) {
         return left.divide(right);
     }
 
@@ -252,7 +252,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Rectangular +(Rectangular,Rectangular)'")
     @Nonnull
-    public static Rectangular add(@javax.annotation.Nonnull Rectangular left, @javax.annotation.Nonnull Rectangular right) {
+    public static Rectangular add(@Nonnull Rectangular left, @Nonnull Rectangular right) {
         return left.add(right);
     }
 
@@ -270,7 +270,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Rectangular -(Rectangular,Rectangular)'")
     @Nonnull
-    public static Rectangular subtract(@javax.annotation.Nonnull Rectangular left, @javax.annotation.Nonnull Rectangular right) {
+    public static Rectangular subtract(@Nonnull Rectangular left, @Nonnull Rectangular right) {
         return left.subtract(right);
     }
 
@@ -286,7 +286,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Rectangular -(Rectangular)'")
     @Nonnull
-    public static Rectangular negate(@javax.annotation.Nonnull Rectangular coordinates) {
+    public static Rectangular negate(@Nonnull Rectangular coordinates) {
         return new Rectangular(-coordinates.m_x, -coordinates.m_y);
     }
 
@@ -406,7 +406,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(Rectangular,Rectangular)'")
-    public static boolean equals(@javax.annotation.Nonnull Rectangular left, @javax.annotation.Nonnull Rectangular right) {
+    public static boolean equals(@Nonnull Rectangular left, @Nonnull Rectangular right) {
         return left.equalsType(right);
     }
 
@@ -425,7 +425,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(Rectangular,Rectangular)'")
-    public static boolean notEquals(@javax.annotation.Nonnull Rectangular left, @javax.annotation.Nonnull Rectangular right) {
+    public static boolean notEquals(@Nonnull Rectangular left, @Nonnull Rectangular right) {
         return !left.equalsType(right);
     }
 

@@ -6,6 +6,8 @@ import java.io.Closeable;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 
+import javax.annotation.Nullable;
+
 /**
  * Helper methods to safely dispose various types.
  *
@@ -22,7 +24,7 @@ public final class DisposeHelper {
      * @param closeable
      *            the object to dispose.
      */
-    public static void dispose(Closeable closeable) {
+    public static void dispose(@Nullable Closeable closeable) {
         try {
             if (closeable != null)
                 closeable.close();
@@ -37,7 +39,7 @@ public final class DisposeHelper {
      * @param disposable
      *            the object to dispose.
      */
-    public static void dispose(IDisposable disposable) {
+    public static void dispose(@Nullable IDisposable disposable) {
         if (disposable != null)
             disposable.dispose();
     }
@@ -48,7 +50,7 @@ public final class DisposeHelper {
      * @param memoryStream
      *            the object to dispose.
      */
-    public static void dispose(MemoryStream memoryStream) {
+    public static void dispose(@Nullable MemoryStream memoryStream) {
         if (memoryStream != null)
             memoryStream.dispose();
     }

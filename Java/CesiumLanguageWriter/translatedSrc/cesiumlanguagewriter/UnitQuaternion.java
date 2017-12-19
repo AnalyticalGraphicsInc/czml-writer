@@ -303,7 +303,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'UnitQuaternion *(UnitQuaternion,UnitQuaternion)'")
     @Nonnull
-    public static UnitQuaternion multiply(@javax.annotation.Nonnull UnitQuaternion left, @javax.annotation.Nonnull UnitQuaternion right) {
+    public static UnitQuaternion multiply(@Nonnull UnitQuaternion left, @Nonnull UnitQuaternion right) {
         return left.multiply(right);
     }
 
@@ -319,7 +319,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'UnitQuaternion -(UnitQuaternion)'")
     @Nonnull
-    public static UnitQuaternion negate(@javax.annotation.Nonnull UnitQuaternion coordinates) {
+    public static UnitQuaternion negate(@Nonnull UnitQuaternion coordinates) {
         return new UnitQuaternion(-coordinates.m_w, -coordinates.m_x, -coordinates.m_y, -coordinates.m_z, Normalization.NORMALIZED);
     }
 
@@ -417,7 +417,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(UnitQuaternion,UnitQuaternion)'")
-    public static boolean equals(@javax.annotation.Nonnull UnitQuaternion left, @javax.annotation.Nonnull UnitQuaternion right) {
+    public static boolean equals(@Nonnull UnitQuaternion left, @Nonnull UnitQuaternion right) {
         return left.equalsType(right);
     }
 
@@ -436,7 +436,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(UnitQuaternion,UnitQuaternion)'")
-    public static boolean notEquals(@javax.annotation.Nonnull UnitQuaternion left, @javax.annotation.Nonnull UnitQuaternion right) {
+    public static boolean notEquals(@Nonnull UnitQuaternion left, @Nonnull UnitQuaternion right) {
         return !left.equalsType(right);
     }
 

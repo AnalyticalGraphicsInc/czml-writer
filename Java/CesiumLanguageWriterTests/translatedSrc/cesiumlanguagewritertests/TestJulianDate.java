@@ -8,6 +8,7 @@ import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.TestContextRule;
 import agi.foundation.compatibility.ThreadHelper;
 import cesiumlanguagewriter.*;
+import javax.annotation.Nonnull;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
@@ -479,8 +480,10 @@ public class TestJulianDate {
         Assert.assertEquals(2, secondAfterLeapSecondUTC.subtract(secondBeforeLeapSecondUTC).getSeconds(), 0d);
     }
 
+    @Nonnull
     private final TestContextRule rule$testContext = new TestContextRule();
 
+    @Nonnull
     @Rule
     public TestContextRule getRule$testContext() {
         return rule$testContext;

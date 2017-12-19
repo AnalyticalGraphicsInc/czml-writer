@@ -7,6 +7,7 @@ import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
 import java.util.Arrays;
 import java.util.EnumSet;
+import java.util.Objects;
 
 import javax.annotation.Nonnull;
 
@@ -249,17 +250,7 @@ class CachingMethodFinder {
 
     @Override
     public int hashCode() {
-        int result = 17;
-
-        if (methodName == null)
-            result = 31 * result + getClass().hashCode();
-        else
-            result = 31 * result + methodName.hashCode();
-
-        result = 31 * result + (targetClass == null ? 0 : targetClass.hashCode());
-        result = 31 * result + (targetObject == null ? 0 : targetObject.hashCode());
-        result = 31 * result + Arrays.hashCode(methodParameterClasses);
-
-        return result;
+        return HashCodeHelper.combine(methodName == null ? getClass().hashCode() : methodName.hashCode(), Objects.hashCode(targetClass), Objects.hashCode(targetObject),
+                Arrays.hashCode(methodParameterClasses));
     }
 }

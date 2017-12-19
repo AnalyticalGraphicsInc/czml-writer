@@ -9,9 +9,11 @@ import java.text.MessageFormat;
 import java.text.NumberFormat;
 import java.text.ParsePosition;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Helper methods related to Formats.
@@ -30,13 +32,16 @@ public final class FormatHelper {
      * Custom Format subclass that splits a format string into separate parts for
      * positive, negative, and zero pattern strings
      */
-    private static class MultiDecimalFormat extends Format {
+    private static final class MultiDecimalFormat extends Format {
         private static final long serialVersionUID = 7691469299119613557L;
+        @Nonnull
         private final PaddingDecimalFormat positiveFormat;
+        @Nonnull
         private final PaddingDecimalFormat negativeFormat;
+        @Nullable
         private final PaddingDecimalFormat zeroFormat;
 
-        public MultiDecimalFormat(Locale locale, String pattern, int width) {
+        public MultiDecimalFormat(@Nonnull Locale locale, @Nonnull String pattern, int width) {
             String[] patterns = pattern.split(";");
             positiveFormat = new PaddingDecimalFormat(locale, patterns[0], width);
 
@@ -75,7 +80,7 @@ public final class FormatHelper {
         }
     }
 
-    private static class HexNumberFormat extends NumberFormat {
+    private static final class HexNumberFormat extends NumberFormat {
         private static final long serialVersionUID = 3699466498715722514L;
         private final boolean uppercase;
 
@@ -112,15 +117,18 @@ public final class FormatHelper {
     /**
      * Custom Format subclass to handle differences in format strings between C# and Java.
      */
-    private static class PaddingDecimalFormat extends Format {
+    private static final class PaddingDecimalFormat extends Format {
         private static final long serialVersionUID = 7323738994538516253L;
         private final int width;
+        @Nonnull
         private final NumberFormat subFormat;
+        @Nullable
         private transient FieldPosition exponentSymbolFieldPosition;
         private final boolean forceExponentSign;
+        @Nullable
         private final String forceExponentSymbol;
 
-        public PaddingDecimalFormat(Locale locale, String pattern, int width) {
+        public PaddingDecimalFormat(@Nonnull Locale locale, @Nullable String pattern, int width) {
             DecimalFormat decimalFormat;
             NumberFormat nf = NumberFormat.getNumberInstance(locale);
             if (nf instanceof DecimalFormat) {
@@ -165,7 +173,7 @@ public final class FormatHelper {
             this.forceExponentSymbol = forceExponentSymbol;
         }
 
-        public PaddingDecimalFormat(NumberFormat subFormat, int width) {
+        public PaddingDecimalFormat(@Nonnull NumberFormat subFormat, int width) {
             this.width = width;
             this.subFormat = subFormat;
             this.exponentSymbolFieldPosition = null;
@@ -185,7 +193,7 @@ public final class FormatHelper {
             subFormat.setMinimumIntegerDigits(newValue);
         }
 
-        private static void replace(StringBuffer buffer, String from, String to) {
+        private static void replace(@Nonnull StringBuffer buffer, @Nonnull String from, @Nonnull String to) {
             int fromIndex = buffer.indexOf(from);
             while (fromIndex != -1) {
                 buffer.replace(fromIndex, fromIndex + from.length(), to);
@@ -206,6 +214,7 @@ public final class FormatHelper {
                     obj = 0.0f;
             }
 
+            FieldPosition exponentSymbolFieldPosition = this.exponentSymbolFieldPosition;
             StringBuffer result;
             if (exponentSymbolFieldPosition != null) {
                 result = subFormat.format(obj, toAppendTo, exponentSymbolFieldPosition);
@@ -257,14 +266,16 @@ public final class FormatHelper {
     /**
      * Build a Format for a C# pattern
      */
-    public static Format buildFormat(Locale locale, String pattern) {
+    @Nonnull
+    public static Format buildFormat(@Nullable Locale locale, @Nullable String pattern) {
         return buildFormat(locale, pattern, 0);
     }
 
     /**
      * Build a Format for a C# pattern, with a specific width
      */
-    public static Format buildFormat(Locale locale, String pattern, int width) {
+    @Nonnull
+    public static Format buildFormat(@Nullable Locale locale, @Nullable String pattern, int width) {
         FormatCacheKey key = new FormatCacheKey(locale, pattern, width);
         Format format = cache.get(key);
         if (format == null) {
@@ -279,47 +290,41 @@ public final class FormatHelper {
     }
 
     private static final class FormatCacheKey {
+        @Nullable
         private final Locale locale;
+        @Nullable
         private final String pattern;
         private final int width;
 
-        public FormatCacheKey(final Locale locale, final String pattern, final int width) {
+        public FormatCacheKey(@Nullable Locale locale, @Nullable String pattern, int width) {
             this.locale = locale;
             this.pattern = pattern;
             this.width = width;
         }
 
         @Override
-        public final int hashCode() {
-            final int prime = 31;
-            int result = 1;
-            result = prime * result + (locale == null ? 0 : locale.hashCode());
-            result = prime * result + (pattern == null ? 0 : pattern.hashCode());
-            result = prime * result + width;
-            return result;
+        public int hashCode() {
+            return HashCodeHelper.combine(Objects.hashCode(locale), Objects.hashCode(pattern), Integer.hashCode(width));
         }
 
         @Override
-        public final boolean equals(final Object obj) {
+        public boolean equals(Object obj) {
             if (this == obj)
                 return true;
-            if (obj == null)
-                return false;
             if (!(obj instanceof FormatCacheKey))
                 return false;
 
-            final FormatCacheKey other = (FormatCacheKey) obj;
-            if (!ObjectHelper.equals(locale, other.locale))
-                return false;
-            if (!ObjectHelper.equals(pattern, other.pattern))
-                return false;
-            if (width != other.width)
-                return false;
-            return true;
+            FormatCacheKey other = (FormatCacheKey) obj;
+            return Objects.equals(locale, other.locale) && Objects.equals(pattern, other.pattern) && width == other.width;
         }
     }
 
-    private static Format createFormat(Locale locale, String pattern, int width) {
+    @Nonnull
+    private static Format createFormat(@Nullable Locale locale, @Nullable String pattern, int width) {
+        if (locale == null) {
+            locale = CultureInfoHelper.getCurrentCulture();
+        }
+
         if (pattern == null || pattern.length() == 0) {
             return createCustomFormat(locale, pattern, width);
         }
@@ -376,7 +381,8 @@ public final class FormatHelper {
         }
     }
 
-    private static Format createCustomFormat(Locale locale, String pattern, int width) {
+    @Nonnull
+    private static Format createCustomFormat(@Nonnull Locale locale, @Nullable String pattern, int width) {
         if (pattern != null && pattern.contains(";")) {
             return new MultiDecimalFormat(locale, pattern, width);
         } else {

@@ -177,7 +177,7 @@ public final class Bounds implements IEquatable<Bounds>, ImmutableValueType {
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(Bounds,Bounds)'")
-    public static boolean equals(@javax.annotation.Nonnull Bounds left, @javax.annotation.Nonnull Bounds right) {
+    public static boolean equals(@Nonnull Bounds left, @Nonnull Bounds right) {
         return left.equalsType(right);
     }
 
@@ -196,7 +196,7 @@ public final class Bounds implements IEquatable<Bounds>, ImmutableValueType {
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(Bounds,Bounds)'")
-    public static boolean notEquals(@javax.annotation.Nonnull Bounds left, @javax.annotation.Nonnull Bounds right) {
+    public static boolean notEquals(@Nonnull Bounds left, @Nonnull Bounds right) {
         return !left.equalsType(right);
     }
 

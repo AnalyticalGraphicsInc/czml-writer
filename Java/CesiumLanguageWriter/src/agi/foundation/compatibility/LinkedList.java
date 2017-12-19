@@ -38,6 +38,9 @@ import agi.foundation.compatibility.annotations.Internal;
 import java.lang.reflect.Array;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+import javax.annotation.Nonnull;
 
 /**
  * Represents a doubly linked list. Unlike the built-in LinkedList, this class allows
@@ -268,12 +271,13 @@ public class LinkedList<T> implements Collection<T> {
         return head != null ? head.previous : null;
     }
 
-    private static class Enumerator<T> implements Iterator<T>, IDisposable, ICloneable {
-        private LinkedList<T> list;
+    private static class Enumerator<T> implements Iterator<T> {
+        @Nonnull
+        private final LinkedList<T> list;
         private LinkedListNode<T> current;
         private int index;
 
-        public Enumerator(LinkedList<T> list) {
+        public Enumerator(@Nonnull LinkedList<T> list) {
             this.list = list;
             current = null;
             index = -1;
@@ -300,47 +304,6 @@ public class LinkedList<T> implements Collection<T> {
             return true;
         }
 
-        @Override
-        public final void dispose() {
-            current = null;
-            list = null;
-        }
-
-        @SuppressWarnings("unchecked")
-        @Override
-        public final Enumerator<T> clone() {
-            try {
-                return (Enumerator<T>) super.clone();
-            } catch (CloneNotSupportedException e) {
-                throw new AssertionError();
-            }
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (obj == this) {
-                return true;
-            }
-            if (!(obj instanceof Enumerator)) {
-                return false;
-            }
-            Enumerator<?> that = (Enumerator<?>) obj;
-            if (list == null ? that.list != null : !list.equals(that.list))
-                return false;
-            if (current == null ? that.current != null : !current.equals(that.current))
-                return false;
-            return index == that.index;
-        }
-
-        @Override
-        public int hashCode() {
-            int result = 17;
-            result = 31 * result + (list == null ? 0 : list.hashCode());
-            result = 31 * result + (current == null ? 0 : current.hashCode());
-            result = 31 * result + (index);
-            return result;
-        }
-
         private int __state;
 
         @Override
@@ -359,12 +322,7 @@ public class LinkedList<T> implements Collection<T> {
                 __state = 0;
                 return getCurrent();
             }
-            throw new java.util.NoSuchElementException();
-        }
-
-        @Override
-        public final void remove() {
-            throw new UnsupportedOperationException("Method not implemented.");
+            throw new NoSuchElementException();
         }
     }
 

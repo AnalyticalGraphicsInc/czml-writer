@@ -193,7 +193,7 @@ public final class UnitSpherical implements IEquatable<UnitSpherical>, Immutable
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(UnitSpherical,UnitSpherical)'")
-    public static boolean equals(@javax.annotation.Nonnull UnitSpherical left, @javax.annotation.Nonnull UnitSpherical right) {
+    public static boolean equals(@Nonnull UnitSpherical left, @Nonnull UnitSpherical right) {
         return left.equalsType(right);
     }
 
@@ -212,7 +212,7 @@ public final class UnitSpherical implements IEquatable<UnitSpherical>, Immutable
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(UnitSpherical,UnitSpherical)'")
-    public static boolean notEquals(@javax.annotation.Nonnull UnitSpherical left, @javax.annotation.Nonnull UnitSpherical right) {
+    public static boolean notEquals(@Nonnull UnitSpherical left, @Nonnull UnitSpherical right) {
         return !left.equalsType(right);
     }
 

@@ -4,6 +4,8 @@ import agi.foundation.compatibility.annotations.Internal;
 
 import java.util.ResourceBundle;
 
+import javax.annotation.Nonnull;
+
 /**
  * @deprecated Internal use only.
  */
@@ -12,7 +14,9 @@ import java.util.ResourceBundle;
 public final class ResourceBundleHelper {
     private ResourceBundleHelper() {}
 
-    public static ResourceBundle getBundle(String baseName) {
+    public static ResourceBundle getBundle(@Nonnull String baseName) {
+        ArgumentNullException.assertNonNull(baseName, "baseName");
+
         int dotIndex = baseName.lastIndexOf(".");
         String packageName = StringHelper.toLowerInvariant(baseName.substring(0, dotIndex));
         String className = baseName.substring(dotIndex);

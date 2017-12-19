@@ -7,6 +7,7 @@ import agi.foundation.compatibility.ExpectedExceptionHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
+import javax.annotation.Nonnull;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
@@ -235,7 +236,7 @@ public class TestUnitQuaternion {
         Assert.assertTrue(new UnitQuaternion(1.0, 1.0, 1.0, Double.NaN).getIsUndefined());
     }
 
-    private final void _TestFromMatrix3By3(double angle, @javax.annotation.Nonnull Cartesian axis) {
+    private final void _TestFromMatrix3By3(double angle, @Nonnull Cartesian axis) {
         Cartesian unit = Cartesian.toCartesian(axis.normalize());
         double c = Math.cos(angle);
         double s = Math.sin(angle);
@@ -324,15 +325,19 @@ public class TestUnitQuaternion {
         Assert.assertEquals("0, 0, 0, 1", test4.toString());
     }
 
+    @Nonnull
     private final TestContextRule rule$testContext = new TestContextRule();
 
+    @Nonnull
     @Rule
     public TestContextRule getRule$testContext() {
         return rule$testContext;
     }
 
+    @Nonnull
     private final ExpectedException rule$expectedException = ExpectedException.none();
 
+    @Nonnull
     @Rule
     public ExpectedException getRule$expectedException() {
         return rule$expectedException;

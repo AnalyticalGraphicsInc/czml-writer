@@ -11,6 +11,7 @@ import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewritertests.data.*;
 import java.awt.image.BufferedImage;
+import javax.annotation.Nonnull;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
@@ -32,7 +33,7 @@ public class TestCesiumResource {
         AssertHelper.assertStringStartsWith("data:image/png;base64,", resource.getUri());
     }
 
-    public final void testFromImageFormats(@javax.annotation.Nonnull CesiumImageFormat format) {
+    public final void testFromImageFormats(@Nonnull CesiumImageFormat format) {
         BufferedImage image = BitmapHelper.create(EmbeddedData.read("satellite.png"));
         cesiumlanguagewriter.CesiumResource resource = CesiumResource.fromImage(image, format);
         Assert.assertNotNull(resource);
@@ -85,8 +86,10 @@ public class TestCesiumResource {
         Assert.assertEquals(expected, resource.getUri());
     }
 
+    @Nonnull
     private final TestContextRule rule$testContext = new TestContextRule();
 
+    @Nonnull
     @Rule
     public TestContextRule getRule$testContext() {
         return rule$testContext;

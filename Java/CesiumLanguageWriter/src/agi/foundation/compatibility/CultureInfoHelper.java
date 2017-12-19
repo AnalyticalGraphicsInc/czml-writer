@@ -47,7 +47,9 @@ public final class CultureInfoHelper {
      * include ja-JP for Japanese (Japan) and en-US for English (United States).
      */
     @Nonnull
-    public static Locale getCultureInfo(String name) {
+    public static Locale getCultureInfo(@Nonnull String name) {
+        ArgumentNullException.assertNonNull(name, "name");
+
         Matcher matcher = nameSplitter.matcher(name);
 
         if (!matcher.matches())

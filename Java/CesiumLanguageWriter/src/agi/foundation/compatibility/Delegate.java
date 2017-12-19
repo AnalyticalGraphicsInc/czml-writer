@@ -141,22 +141,22 @@ public abstract class Delegate {
 
     @Override
     public int hashCode() {
-        int result = 17;
-        result = 31 * result + methodFinder.hashCode();
-        return result;
+        return methodFinder.hashCode();
     }
 
     @Internal
     protected interface MulticastDelegate<T extends Delegate> {
+        @Nonnull
         MulticastList<T> list();
     }
 
     @Internal
     protected static final class MulticastList<T extends Delegate> {
+        @Nonnull
         private final ArrayList<T> list;
 
         @SuppressWarnings("unchecked")
-        public MulticastList(T a, T b) {
+        public MulticastList(@Nonnull T a, @Nonnull T b) {
             list = new ArrayList<>();
 
             if (a instanceof MulticastDelegate<?>) {
@@ -172,10 +172,11 @@ public abstract class Delegate {
             }
         }
 
-        public MulticastList(ArrayList<T> list) {
+        public MulticastList(@Nonnull ArrayList<T> list) {
             this.list = list;
         }
 
+        @Nonnull
         public MulticastList<T> removeLast(T t) {
             ArrayList<T> resultList = new ArrayList<>(list);
             for (int i = resultList.size() - 1; i >= 0; i--) {
@@ -187,10 +188,13 @@ public abstract class Delegate {
             return new MulticastList<>(resultList);
         }
 
+        @Nonnull
         public ArrayList<T> list() {
             return list;
         }
 
+        @SuppressWarnings("null")
+        @Nonnull
         public T last() {
             return list.get(list.size() - 1);
         }
@@ -209,9 +213,7 @@ public abstract class Delegate {
 
         @Override
         public int hashCode() {
-            int result = 17;
-            result = 31 * result + list.hashCode();
-            return result;
+            return list.hashCode();
         }
     }
 }

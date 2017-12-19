@@ -163,7 +163,7 @@ public final class LeapSecond implements IEquatable<LeapSecond>, ImmutableValueT
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(LeapSecond,LeapSecond)'")
-    public static boolean equals(@javax.annotation.Nonnull LeapSecond left, @javax.annotation.Nonnull LeapSecond right) {
+    public static boolean equals(@Nonnull LeapSecond left, @Nonnull LeapSecond right) {
         return left.equalsType(right);
     }
 
@@ -182,7 +182,7 @@ public final class LeapSecond implements IEquatable<LeapSecond>, ImmutableValueT
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(LeapSecond,LeapSecond)'")
-    public static boolean notEquals(@javax.annotation.Nonnull LeapSecond left, @javax.annotation.Nonnull LeapSecond right) {
+    public static boolean notEquals(@Nonnull LeapSecond left, @Nonnull LeapSecond right) {
         return !left.equalsType(right);
     }
 

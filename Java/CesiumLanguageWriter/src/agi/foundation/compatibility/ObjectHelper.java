@@ -1,5 +1,9 @@
 package agi.foundation.compatibility;
 
+import java.util.Objects;
+
+import javax.annotation.Nullable;
+
 import agi.foundation.compatibility.annotations.Internal;
 
 /**
@@ -21,14 +25,8 @@ public final class ObjectHelper {
      *            The second Object to compare.
      * @return true if the instances are equal; otherwise false.
      */
-    public static boolean equals(final Object objA, final Object objB) {
-        if (objA == objB)
-            return true;
-
-        if (objA != null && objB != null)
-            return objA.equals(objB);
-
-        return false;
+    public static boolean equals(@Nullable Object objA, @Nullable Object objB) {
+        return Objects.equals(objA, objB);
     }
 
     /**
@@ -40,8 +38,8 @@ public final class ObjectHelper {
      *            The second Object to compare.
      * @return true if the instances are not equal; otherwise false.
      */
-    public static boolean notEquals(final Object objA, final Object objB) {
-        return !equals(objA, objB);
+    public static boolean notEquals(@Nullable Object objA, @Nullable Object objB) {
+        return !Objects.equals(objA, objB);
     }
 
     /**
@@ -54,7 +52,7 @@ public final class ObjectHelper {
      * @return true if objA is the same instance as objB or if both are null references;
      *         otherwise, false.
      */
-    public static boolean referenceEquals(final Object objA, final Object objB) {
+    public static boolean referenceEquals(@Nullable Object objA, @Nullable Object objB) {
         return objA == objB;
     }
 }

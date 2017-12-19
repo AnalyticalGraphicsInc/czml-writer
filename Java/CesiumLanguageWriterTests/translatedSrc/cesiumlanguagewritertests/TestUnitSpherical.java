@@ -8,6 +8,7 @@ import agi.foundation.compatibility.DoubleHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
+import javax.annotation.Nonnull;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
@@ -159,8 +160,10 @@ public class TestUnitSpherical {
         Assert.assertEquals(s.toString(), test.toString());
     }
 
+    @Nonnull
     private final TestContextRule rule$testContext = new TestContextRule();
 
+    @Nonnull
     @Rule
     public TestContextRule getRule$testContext() {
         return rule$testContext;

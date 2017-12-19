@@ -30,9 +30,8 @@ public final class StringHelper {
     private static final Pattern splitWhitespacePattern;
     @Nonnull
     private static final char[] trimWhitespaceChars;
-
     /**
-     * Represents the empty string. This field is read-only.
+     * Represents the empty string.
      */
     @Nonnull
     public static final String empty = "";
@@ -512,8 +511,8 @@ public final class StringHelper {
      * @return A copy of format in which the format items have been replaced by the string
      *         representation of the corresponding objects in args.
      */
-    public static String format(String format, Object... args) {
-        return format(CultureInfoHelper.getCurrentCulture(), format, args);
+    public static String format(@Nonnull String format, @Nonnull Object... args) {
+        return format(null, format, args);
     }
 
     /**
@@ -530,22 +529,29 @@ public final class StringHelper {
      * @return A copy of format in which the format items have been replaced by the string
      *         representation of the corresponding objects in args.
      */
-    public static String format(Locale locale, String format, Object... args) {
+    public static String format(@Nullable Locale locale, @Nonnull String format, @Nonnull Object... args) {
+        ArgumentNullException.assertNonNull(format, "format");
+        ArgumentNullException.assertNonNull(args, "args");
+
         return new Helper(locale, format, args).format();
     }
 
     // C# format items are of the form: {index[,alignment][:formatString]}
     // { is escaped by {{ and } is escaped by }}
     private static final class Helper {
+        @Nullable
         private final Locale locale;
+        @Nonnull
         private final String format;
+        @Nonnull
         private final Object[] args;
         private final int length;
+        @Nonnull
         private final StringBuilder result;
         private int position;
         private char c;
 
-        public Helper(Locale locale, String format, Object... args) {
+        public Helper(@Nullable Locale locale, @Nonnull String format, @Nonnull Object... args) {
             this.locale = locale;
             this.format = format;
             this.args = args;
@@ -937,7 +943,7 @@ public final class StringHelper {
      *         argument.
      */
     @Nonnull
-    public static StringBuilder appendFormat(@Nonnull StringBuilder builder, Locale locale, @Nonnull String format, @Nonnull Object... args) {
+    public static StringBuilder appendFormat(@Nonnull StringBuilder builder, @Nullable Locale locale, @Nonnull String format, @Nonnull Object... args) {
         ArgumentNullException.assertNonNull(builder, "builder");
         ArgumentNullException.assertNonNull(format, "format");
         ArgumentNullException.assertNonNull(args, "args");

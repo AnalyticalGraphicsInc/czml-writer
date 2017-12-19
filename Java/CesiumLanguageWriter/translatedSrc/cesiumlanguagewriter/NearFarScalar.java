@@ -162,7 +162,7 @@ public final class NearFarScalar implements IEquatable<NearFarScalar>, Immutable
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(NearFarScalar,NearFarScalar)'")
-    public static boolean equals(@javax.annotation.Nonnull NearFarScalar left, @javax.annotation.Nonnull NearFarScalar right) {
+    public static boolean equals(@Nonnull NearFarScalar left, @Nonnull NearFarScalar right) {
         return left.equalsType(right);
     }
 
@@ -181,7 +181,7 @@ public final class NearFarScalar implements IEquatable<NearFarScalar>, Immutable
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(NearFarScalar,NearFarScalar)'")
-    public static boolean notEquals(@javax.annotation.Nonnull NearFarScalar left, @javax.annotation.Nonnull NearFarScalar right) {
+    public static boolean notEquals(@Nonnull NearFarScalar left, @Nonnull NearFarScalar right) {
         return !left.equalsType(right);
     }
 

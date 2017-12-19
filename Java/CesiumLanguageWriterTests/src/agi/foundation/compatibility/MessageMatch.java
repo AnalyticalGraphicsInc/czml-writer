@@ -70,6 +70,7 @@ public enum MessageMatch implements Enumeration {
      *
      * @return The default enum constant.
      */
+    @Nonnull
     public static MessageMatch getDefault() {
         return EXACT;
     }

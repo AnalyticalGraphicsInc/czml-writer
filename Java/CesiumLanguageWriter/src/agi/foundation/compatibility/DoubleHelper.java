@@ -4,6 +4,8 @@ import agi.foundation.compatibility.annotations.Internal;
 
 import java.util.Locale;
 
+import javax.annotation.Nullable;
+
 /**
  * Helper methods related to Doubles.
  *
@@ -50,7 +52,7 @@ public final class DoubleHelper {
      *            An object that supplies culture-specific formatting information.
      * @return The string representation of value as specified by locale.
      */
-    public static String toString(double value, Locale locale) {
+    public static String toString(double value, @Nullable Locale locale) {
         return toString(value, null, locale);
     }
 
@@ -66,10 +68,7 @@ public final class DoubleHelper {
      *            An object that supplies culture-specific formatting information.
      * @return The string representation of value as specified by format and locale.
      */
-    public static String toString(double value, String format, Locale locale) {
-        if (locale == null)
-            locale = CultureInfoHelper.getCurrentCulture();
-
+    public static String toString(double value, @Nullable String format, @Nullable Locale locale) {
         return FormatHelper.buildFormat(locale, format).format(value);
     }
 }

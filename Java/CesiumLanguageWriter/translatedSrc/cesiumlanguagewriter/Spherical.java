@@ -212,7 +212,7 @@ public final class Spherical implements IEquatable<Spherical>, ImmutableValueTyp
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(Spherical,Spherical)'")
-    public static boolean equals(@javax.annotation.Nonnull Spherical left, @javax.annotation.Nonnull Spherical right) {
+    public static boolean equals(@Nonnull Spherical left, @Nonnull Spherical right) {
         return left.equalsType(right);
     }
 
@@ -231,7 +231,7 @@ public final class Spherical implements IEquatable<Spherical>, ImmutableValueTyp
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(Spherical,Spherical)'")
-    public static boolean notEquals(@javax.annotation.Nonnull Spherical left, @javax.annotation.Nonnull Spherical right) {
+    public static boolean notEquals(@Nonnull Spherical left, @Nonnull Spherical right) {
         return !left.equalsType(right);
     }
 

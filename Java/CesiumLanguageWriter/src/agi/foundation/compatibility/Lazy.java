@@ -1,42 +1,50 @@
 package agi.foundation.compatibility;
 
+import java.util.function.Supplier;
+
+import javax.annotation.Nonnull;
+
 import agi.foundation.compatibility.annotations.Internal;
 
 /**
- * Provides support for lazy initialization.
+ * Provides support for lazy initialization. Currently only supports non-thread-safe
+ * initialization.
  *
  * @param <T>
- *            Specifies the type of object that is being lazily initialized.
- *
- * @deprecated Internal use only.
+ *            The type of object that is being lazily initialized.
  */
 @Internal
 @Deprecated
 public class Lazy<T> {
+    @Nonnull
+    private Supplier<T> m_valueFactory;
     private T m_instance;
-    private Func1<T> m_createCallback;
 
     /**
      * Initializes a new instance.
      *
      * @param valueFactory
-     *            The callback to use to create the instance.
+     *            The delegate that is invoked to produce the lazily initialized value
+     *            when it is needed.
      * @param isThreadSafe
      *            Must be {@code false}.
      */
-    public Lazy(Func1<T> valueFactory, boolean isThreadSafe) {
+    public Lazy(@Nonnull Supplier<T> valueFactory, boolean isThreadSafe) {
+        ArgumentNullException.assertNonNull(valueFactory, "valueFactory");
+
         if (isThreadSafe) {
             throw new UnsupportedOperationException();
         }
-        m_createCallback = valueFactory;
+
+        m_valueFactory = valueFactory;
     }
 
     /**
-     * Gets the value, creating it if necessary.
+     * Gets the lazily initialized value of the current instance.
      */
     public final T getValue() {
         if (m_instance == null) {
-            m_instance = m_createCallback.invoke();
+            m_instance = m_valueFactory.get();
         }
         return m_instance;
     }

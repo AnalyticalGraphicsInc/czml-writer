@@ -7,28 +7,36 @@ import java.io.InputStream;
 import java.io.UncheckedIOException;
 import java.net.URLConnection;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 /**
  * @deprecated Internal use only.
  */
 @Internal
 @Deprecated
 public class WebResponse implements IDisposable {
+    @Nonnull
     protected final URLConnection connection;
+    @Nullable
     private InputStream inputStream;
 
-    public WebResponse(URLConnection connection) {
+    WebResponse(@Nonnull URLConnection connection) {
         this.connection = connection;
     }
 
+    @Nonnull
     public InputStream getResponseStream() {
-        if (inputStream == null) {
-            try {
-                inputStream = connection.getInputStream();
-            } catch (IOException e) {
-                throw new UncheckedIOException(e);
-            }
+        if (inputStream != null) {
+            return inputStream;
         }
-        return inputStream;
+
+        try {
+            inputStream = connection.getInputStream();
+            return inputStream;
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
+        }
     }
 
     public String getContentType() {
@@ -37,7 +45,6 @@ public class WebResponse implements IDisposable {
 
     @Override
     public void dispose() {
-        if (inputStream != null)
-            DisposeHelper.dispose(inputStream);
+        DisposeHelper.dispose(inputStream);
     }
 }

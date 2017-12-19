@@ -9,6 +9,7 @@ import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.awt.Color;
 import java.io.StringWriter;
+import javax.annotation.Nonnull;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
@@ -65,8 +66,10 @@ public class TestPolylineDashMaterialCesiumWriter extends TestCesiumPropertyWrit
         return new PolylineDashMaterialCesiumWriter(propertyName);
     }
 
+    @Nonnull
     private final TestContextRule rule$testContext = new TestContextRule();
 
+    @Nonnull
     @Rule
     public TestContextRule getRule$testContext() {
         return rule$testContext;

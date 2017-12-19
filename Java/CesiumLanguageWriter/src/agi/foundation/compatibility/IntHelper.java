@@ -7,6 +7,7 @@ import java.text.ParsePosition;
 import java.util.Locale;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Helper methods related to Ints.
@@ -31,7 +32,7 @@ public final class IntHelper {
      *            An object that supplies culture-specific formatting information.
      * @return The string representation of the value of value as specified by locale.
      */
-    public static String toString(int value, Locale locale) {
+    public static String toString(int value, @Nullable Locale locale) {
         return toString(value, null, locale);
     }
 
@@ -47,10 +48,7 @@ public final class IntHelper {
      *            An object that supplies culture-specific formatting information.
      * @return The string representation of value as specified by format and locale.
      */
-    public static String toString(int value, String format, Locale locale) {
-        if (locale == null)
-            locale = CultureInfoHelper.getCurrentCulture();
-
+    public static String toString(int value, @Nullable String format, @Nullable Locale locale) {
         return FormatHelper.buildFormat(locale, format).format(value);
     }
 
@@ -62,7 +60,7 @@ public final class IntHelper {
      *            A string containing a number to convert.
      * @return A 32-bit signed integer equivalent to the number contained in s.
      */
-    public static int parse(String s) {
+    public static int parse(@Nonnull String s) {
         return parse(s, defaultNumberStyle, null);
     }
 
@@ -80,7 +78,9 @@ public final class IntHelper {
      *            An object that supplies culture-specific formatting information about s.
      * @return A 32-bit signed integer equivalent to the number contained in s.
      */
-    public static int parse(String s, @Nonnull NumberStyles style, Locale locale) {
+    public static int parse(@Nonnull String s, @Nonnull NumberStyles style, @Nullable Locale locale) {
+        ArgumentNullException.assertNonNull(s, "s");
+
         if (locale == null)
             locale = CultureInfoHelper.getCurrentCulture();
 
@@ -106,7 +106,7 @@ public final class IntHelper {
      *            uninitialized.
      * @return true if s was converted successfully; otherwise, false.
      */
-    public static boolean tryParse(String s, int[] out_result) {
+    public static boolean tryParse(@Nullable String s, @Nonnull int[] out_result) {
         return tryParse(s, defaultNumberStyle, null, out_result);
     }
 
@@ -133,7 +133,12 @@ public final class IntHelper {
      *            uninitialized.
      * @return true if s was converted successfully; otherwise, false.
      */
-    public static boolean tryParse(String s, @Nonnull NumberStyles style, Locale locale, int[] out_result) {
+    public static boolean tryParse(@Nullable String s, @Nonnull NumberStyles style, @Nullable Locale locale, @Nonnull int[] out_result) {
+        if (s == null) {
+            out_result[0] = 0;
+            return false;
+        }
+
         if (locale == null)
             locale = CultureInfoHelper.getCurrentCulture();
 

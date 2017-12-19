@@ -2460,7 +2460,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(GregorianDate,GregorianDate)'")
-    public static boolean equals(@javax.annotation.Nonnull GregorianDate left, @javax.annotation.Nonnull GregorianDate right) {
+    public static boolean equals(@Nonnull GregorianDate left, @Nonnull GregorianDate right) {
         return left.equalsType(right);
     }
 
@@ -2479,7 +2479,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(GregorianDate,GregorianDate)'")
-    public static boolean notEquals(@javax.annotation.Nonnull GregorianDate left, @javax.annotation.Nonnull GregorianDate right) {
+    public static boolean notEquals(@Nonnull GregorianDate left, @Nonnull GregorianDate right) {
         return !left.equalsType(right);
     }
 
@@ -2498,7 +2498,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean <(GregorianDate,GregorianDate)'")
-    public static boolean lessThan(@javax.annotation.Nonnull GregorianDate left, @javax.annotation.Nonnull GregorianDate right) {
+    public static boolean lessThan(@Nonnull GregorianDate left, @Nonnull GregorianDate right) {
         return left.compareTo(right) < 0;
     }
 
@@ -2517,7 +2517,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean >(GregorianDate,GregorianDate)'")
-    public static boolean greaterThan(@javax.annotation.Nonnull GregorianDate left, @javax.annotation.Nonnull GregorianDate right) {
+    public static boolean greaterThan(@Nonnull GregorianDate left, @Nonnull GregorianDate right) {
         return left.compareTo(right) > 0;
     }
 
@@ -2536,7 +2536,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean <=(GregorianDate,GregorianDate)'")
-    public static boolean lessThanOrEqual(@javax.annotation.Nonnull GregorianDate left, @javax.annotation.Nonnull GregorianDate right) {
+    public static boolean lessThanOrEqual(@Nonnull GregorianDate left, @Nonnull GregorianDate right) {
         return left.compareTo(right) <= 0;
     }
 
@@ -2555,7 +2555,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean >=(GregorianDate,GregorianDate)'")
-    public static boolean greaterThanOrEqual(@javax.annotation.Nonnull GregorianDate left, @javax.annotation.Nonnull GregorianDate right) {
+    public static boolean greaterThanOrEqual(@Nonnull GregorianDate left, @Nonnull GregorianDate right) {
         return left.compareTo(right) >= 0;
     }
 

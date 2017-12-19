@@ -8,6 +8,7 @@ import agi.foundation.compatibility.ExpectedExceptionHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
+import javax.annotation.Nonnull;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
@@ -466,15 +467,19 @@ public class TestMatrix3By3 {
         Assert.assertTrue((new Cartesian(17D, 23D, 32D).equalsType(Matrix3By3.multiply(test, mult))));
     }
 
+    @Nonnull
     private final TestContextRule rule$testContext = new TestContextRule();
 
+    @Nonnull
     @Rule
     public TestContextRule getRule$testContext() {
         return rule$testContext;
     }
 
+    @Nonnull
     private final ExpectedException rule$expectedException = ExpectedException.none();
 
+    @Nonnull
     @Rule
     public ExpectedException getRule$expectedException() {
         return rule$expectedException;

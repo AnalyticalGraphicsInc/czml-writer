@@ -463,7 +463,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Matrix3By3 *(Matrix3By3,System.Double)'")
     @Nonnull
-    public static Matrix3By3 multiply(@javax.annotation.Nonnull Matrix3By3 matrix, double scalar) {
+    public static Matrix3By3 multiply(@Nonnull Matrix3By3 matrix, double scalar) {
         return matrix.multiply(scalar);
     }
 
@@ -481,7 +481,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Matrix3By3 *(System.Double,Matrix3By3)'")
     @Nonnull
-    public static Matrix3By3 multiply(double scalar, @javax.annotation.Nonnull Matrix3By3 matrix) {
+    public static Matrix3By3 multiply(double scalar, @Nonnull Matrix3By3 matrix) {
         return matrix.multiply(scalar);
     }
 
@@ -499,7 +499,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Matrix3By3 *(Matrix3By3,Matrix3By3)'")
     @Nonnull
-    public static Matrix3By3 multiply(@javax.annotation.Nonnull Matrix3By3 left, @javax.annotation.Nonnull Matrix3By3 right) {
+    public static Matrix3By3 multiply(@Nonnull Matrix3By3 left, @Nonnull Matrix3By3 right) {
         return left.multiply(right);
     }
 
@@ -517,7 +517,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian *(Matrix3By3,Cartesian)'")
     @Nonnull
-    public static Cartesian multiply(@javax.annotation.Nonnull Matrix3By3 matrix, @javax.annotation.Nonnull Cartesian vector) {
+    public static Cartesian multiply(@Nonnull Matrix3By3 matrix, @Nonnull Cartesian vector) {
         return matrix.multiply(vector);
     }
 
@@ -535,7 +535,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Matrix3By3 +(Matrix3By3,Matrix3By3)'")
     @Nonnull
-    public static Matrix3By3 add(@javax.annotation.Nonnull Matrix3By3 left, @javax.annotation.Nonnull Matrix3By3 right) {
+    public static Matrix3By3 add(@Nonnull Matrix3By3 left, @Nonnull Matrix3By3 right) {
         return left.add(right);
     }
 
@@ -553,7 +553,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Matrix3By3 -(Matrix3By3,Matrix3By3)'")
     @Nonnull
-    public static Matrix3By3 subtract(@javax.annotation.Nonnull Matrix3By3 left, @javax.annotation.Nonnull Matrix3By3 right) {
+    public static Matrix3By3 subtract(@Nonnull Matrix3By3 left, @Nonnull Matrix3By3 right) {
         return left.subtract(right);
     }
 
@@ -639,7 +639,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(Matrix3By3,Matrix3By3)'")
-    public static boolean equals(@javax.annotation.Nonnull Matrix3By3 left, @javax.annotation.Nonnull Matrix3By3 right) {
+    public static boolean equals(@Nonnull Matrix3By3 left, @Nonnull Matrix3By3 right) {
         return left.equalsType(right);
     }
 
@@ -658,7 +658,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(Matrix3By3,Matrix3By3)'")
-    public static boolean notEquals(@javax.annotation.Nonnull Matrix3By3 left, @javax.annotation.Nonnull Matrix3By3 right) {
+    public static boolean notEquals(@Nonnull Matrix3By3 left, @Nonnull Matrix3By3 right) {
         return !left.equalsType(right);
     }
 

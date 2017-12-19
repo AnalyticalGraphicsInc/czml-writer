@@ -10,7 +10,7 @@ import agi.foundation.compatibility.TestContext.TestAdapter;
 
 public final class TestContextRule implements MethodRule {
     @Override
-    public Statement apply(final Statement base, final FrameworkMethod method, Object target) {
+    public Statement apply(Statement base, FrameworkMethod method, Object target) {
         return new Statement() {
             @Override
             public void evaluate() throws Throwable {

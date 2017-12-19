@@ -474,7 +474,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian *(UnitCartesian,System.Double)'")
     @Nonnull
-    public static Cartesian multiply(@javax.annotation.Nonnull UnitCartesian left, double right) {
+    public static Cartesian multiply(@Nonnull UnitCartesian left, double right) {
         return left.multiply(right);
     }
 
@@ -492,7 +492,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian *(System.Double,UnitCartesian)'")
     @Nonnull
-    public static Cartesian multiply(double left, @javax.annotation.Nonnull UnitCartesian right) {
+    public static Cartesian multiply(double left, @Nonnull UnitCartesian right) {
         return right.multiply(left);
     }
 
@@ -510,7 +510,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian /(UnitCartesian,System.Double)'")
     @Nonnull
-    public static Cartesian divide(@javax.annotation.Nonnull UnitCartesian left, double right) {
+    public static Cartesian divide(@Nonnull UnitCartesian left, double right) {
         return left.divide(right);
     }
 
@@ -528,7 +528,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian +(UnitCartesian,UnitCartesian)'")
     @Nonnull
-    public static Cartesian add(@javax.annotation.Nonnull UnitCartesian left, @javax.annotation.Nonnull UnitCartesian right) {
+    public static Cartesian add(@Nonnull UnitCartesian left, @Nonnull UnitCartesian right) {
         return left.add(Cartesian.toCartesian(right));
     }
 
@@ -546,7 +546,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian +(UnitCartesian,Cartesian)'")
     @Nonnull
-    public static Cartesian add(@javax.annotation.Nonnull UnitCartesian left, @javax.annotation.Nonnull Cartesian right) {
+    public static Cartesian add(@Nonnull UnitCartesian left, @Nonnull Cartesian right) {
         return left.add(right);
     }
 
@@ -564,7 +564,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian +(Cartesian,UnitCartesian)'")
     @Nonnull
-    public static Cartesian add(@javax.annotation.Nonnull Cartesian left, @javax.annotation.Nonnull UnitCartesian right) {
+    public static Cartesian add(@Nonnull Cartesian left, @Nonnull UnitCartesian right) {
         return right.add(left);
     }
 
@@ -582,7 +582,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian -(UnitCartesian,UnitCartesian)'")
     @Nonnull
-    public static Cartesian subtract(@javax.annotation.Nonnull UnitCartesian left, @javax.annotation.Nonnull UnitCartesian right) {
+    public static Cartesian subtract(@Nonnull UnitCartesian left, @Nonnull UnitCartesian right) {
         return left.subtract(Cartesian.toCartesian(right));
     }
 
@@ -600,7 +600,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian -(UnitCartesian,Cartesian)'")
     @Nonnull
-    public static Cartesian subtract(@javax.annotation.Nonnull UnitCartesian left, @javax.annotation.Nonnull Cartesian right) {
+    public static Cartesian subtract(@Nonnull UnitCartesian left, @Nonnull Cartesian right) {
         return left.subtract(right);
     }
 
@@ -618,7 +618,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian -(Cartesian,UnitCartesian)'")
     @Nonnull
-    public static Cartesian subtract(@javax.annotation.Nonnull Cartesian left, @javax.annotation.Nonnull UnitCartesian right) {
+    public static Cartesian subtract(@Nonnull Cartesian left, @Nonnull UnitCartesian right) {
         return left.subtract(Cartesian.toCartesian(right));
     }
 
@@ -634,7 +634,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'UnitCartesian -(UnitCartesian)'")
     @Nonnull
-    public static UnitCartesian negate(@javax.annotation.Nonnull UnitCartesian coordinates) {
+    public static UnitCartesian negate(@Nonnull UnitCartesian coordinates) {
         return new UnitCartesian(-coordinates.m_x, -coordinates.m_y, -coordinates.m_z, Normalization.NORMALIZED);
     }
 
@@ -741,7 +741,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(UnitCartesian,UnitCartesian)'")
-    public static boolean equals(@javax.annotation.Nonnull UnitCartesian left, @javax.annotation.Nonnull UnitCartesian right) {
+    public static boolean equals(@Nonnull UnitCartesian left, @Nonnull UnitCartesian right) {
         return left.equalsType(right);
     }
 
@@ -760,7 +760,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(UnitCartesian,UnitCartesian)'")
-    public static boolean notEquals(@javax.annotation.Nonnull UnitCartesian left, @javax.annotation.Nonnull UnitCartesian right) {
+    public static boolean notEquals(@Nonnull UnitCartesian left, @Nonnull UnitCartesian right) {
         return !left.equalsType(right);
     }
 

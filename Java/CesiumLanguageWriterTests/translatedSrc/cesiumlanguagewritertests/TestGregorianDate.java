@@ -13,6 +13,7 @@ import cesiumlanguagewriter.*;
 import java.time.ZonedDateTime;
 import java.time.ZoneId;
 import java.util.Locale;
+import javax.annotation.Nonnull;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
@@ -475,15 +476,19 @@ public class TestGregorianDate {
         Assert.assertEquals(expected, iso);
     }
 
+    @Nonnull
     private final TestContextRule rule$testContext = new TestContextRule();
 
+    @Nonnull
     @Rule
     public TestContextRule getRule$testContext() {
         return rule$testContext;
     }
 
+    @Nonnull
     private final ExpectedException rule$expectedException = ExpectedException.none();
 
+    @Nonnull
     @Rule
     public ExpectedException getRule$expectedException() {
         return rule$expectedException;

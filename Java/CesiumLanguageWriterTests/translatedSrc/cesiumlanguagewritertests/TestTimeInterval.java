@@ -7,6 +7,7 @@ import agi.foundation.compatibility.DateTimeHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
+import javax.annotation.Nonnull;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
@@ -218,8 +219,10 @@ public class TestTimeInterval {
         Assert.assertEquals("[2451545:0 TAI (1/1/2000 11:59:28 AM), 2451546:0 TAI (1/2/2000 11:59:28 AM)]", interval.toString());
     }
 
+    @Nonnull
     private final TestContextRule rule$testContext = new TestContextRule();
 
+    @Nonnull
     @Rule
     public TestContextRule getRule$testContext() {
         return rule$testContext;

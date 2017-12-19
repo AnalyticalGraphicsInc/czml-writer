@@ -175,7 +175,7 @@ public final class Cartographic implements IEquatable<Cartographic>, ImmutableVa
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(Cartographic,Cartographic)'")
-    public static boolean equals(@javax.annotation.Nonnull Cartographic left, @javax.annotation.Nonnull Cartographic right) {
+    public static boolean equals(@Nonnull Cartographic left, @Nonnull Cartographic right) {
         return left.equalsType(right);
     }
 
@@ -194,7 +194,7 @@ public final class Cartographic implements IEquatable<Cartographic>, ImmutableVa
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(Cartographic,Cartographic)'")
-    public static boolean notEquals(@javax.annotation.Nonnull Cartographic left, @javax.annotation.Nonnull Cartographic right) {
+    public static boolean notEquals(@Nonnull Cartographic left, @Nonnull Cartographic right) {
         return !left.equalsType(right);
     }
 

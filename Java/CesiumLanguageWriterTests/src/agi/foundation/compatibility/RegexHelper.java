@@ -2,6 +2,8 @@ package agi.foundation.compatibility;
 
 import java.util.regex.Pattern;
 
+import javax.annotation.Nonnull;
+
 public final class RegexHelper {
     private RegexHelper() {}
 
@@ -12,7 +14,9 @@ public final class RegexHelper {
      * @param pattern
      *            The regular expression pattern to match.
      */
-    public static Pattern create(String pattern) {
+    @Nonnull
+    public static Pattern create(@Nonnull String pattern) {
+        ArgumentNullException.assertNonNull(pattern, "pattern");
         return Pattern.compile(pattern);
     }
 
@@ -26,7 +30,10 @@ public final class RegexHelper {
      *            The string to search for a match.
      * @return true if the regular expression finds a match; otherwise, false.
      */
-    public static boolean isMatch(Pattern pattern, String input) {
+    public static boolean isMatch(@Nonnull Pattern pattern, @Nonnull String input) {
+        ArgumentNullException.assertNonNull(pattern, "pattern");
+        ArgumentNullException.assertNonNull(input, "input");
+
         return pattern.matcher(input).find();
     }
 }

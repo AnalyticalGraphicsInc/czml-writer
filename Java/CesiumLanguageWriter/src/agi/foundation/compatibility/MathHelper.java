@@ -1,9 +1,11 @@
 package agi.foundation.compatibility;
 
-import agi.foundation.compatibility.annotations.Internal;
+import static java.lang.Math.abs;
+import static java.lang.Math.rint;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
+import javax.annotation.Nonnull;
+
+import agi.foundation.compatibility.annotations.Internal;
 
 /**
  * Helper methods related to Math.
@@ -25,7 +27,7 @@ public final class MathHelper {
      *         is returned.
      */
     public static double round(double a) {
-        return Math.rint(a);
+        return rint(a);
     }
 
     /**
@@ -59,19 +61,52 @@ public final class MathHelper {
      *         digits. If the number of fractional digits in value is less than digits,
      *         value is returned unchanged.
      */
-    public static double round(double value, int digits, MidpointRounding mode) {
-        RoundingMode roundingMode;
-        switch (mode) {
-        case TO_EVEN:
-            roundingMode = RoundingMode.HALF_EVEN;
-            break;
-        case AWAY_FROM_ZERO:
-            roundingMode = RoundingMode.HALF_UP;
-            break;
-        default:
-            throw new ArgumentException("Unknown MidpointRounding: " + mode);
+    public static double round(double value, int digits, @Nonnull MidpointRounding mode) {
+        if (digits < 0 || digits > 15)
+            throw new ArgumentOutOfRangeException("digits", "Rounding digits must be between 0 and 15, inclusive.");
+
+        // This is the .NET algorithm, which is faster, but less precise than BigDecimal
+        if (abs(value) >= roundingLimit) {
+            return value;
         }
 
-        return BigDecimal.valueOf(value).setScale(digits, roundingMode).doubleValue();
+        double powerOfTen = powerOfTenCache[digits];
+        value *= powerOfTen;
+        switch (mode) {
+        case TO_EVEN:
+            value = rint(value);
+            break;
+        case AWAY_FROM_ZERO:
+            double fractionPart = value % 1.0;
+            value = value - fractionPart;
+            if (abs(fractionPart) >= 0.5) {
+                value += Math.signum(fractionPart);
+            }
+            break;
+        default:
+            throw new IllegalArgumentException();
+        }
+
+        return value / powerOfTen;
     }
+
+    private static final double roundingLimit = 1e16;
+    private static final double[] powerOfTenCache = {
+            1e0,
+            1e1,
+            1e2,
+            1e3,
+            1e4,
+            1e5,
+            1e6,
+            1e7,
+            1e8,
+            1e9,
+            1e10,
+            1e11,
+            1e12,
+            1e13,
+            1e14,
+            1e15,
+    };
 }

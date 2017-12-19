@@ -9,6 +9,7 @@ import cesiumlanguagewriter.advanced.*;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collection;
+import javax.annotation.Nonnull;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
@@ -306,8 +307,10 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
         return new PositionCesiumWriter(propertyName);
     }
 
+    @Nonnull
     private final TestContextRule rule$testContext = new TestContextRule();
 
+    @Nonnull
     @Rule
     public TestContextRule getRule$testContext() {
         return rule$testContext;

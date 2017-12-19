@@ -70,7 +70,7 @@ public final class DateTimeHelper {
      *            Whether ticks specifies a local time or UTC.
      */
     @Nonnull
-    public static ZonedDateTime create(long ticks, ZoneId kind) {
+    public static ZonedDateTime create(long ticks, @Nonnull ZoneId kind) {
         long ticksSinceJavaEpoch = ticks - ticksBetweenDotNetAndJavaEpochs;
         long seconds = ticksSinceJavaEpoch / ticksPerSecond;
         long nanosecondRemainder = (ticksSinceJavaEpoch % ticksPerSecond) * nanosecondsPerTick;
@@ -132,7 +132,7 @@ public final class DateTimeHelper {
      *            Whether the parameters specify a local time or UTC.
      */
     @Nonnull
-    public static ZonedDateTime create(int year, int month, int day, int hour, int minute, int second, ZoneId kind) {
+    public static ZonedDateTime create(int year, int month, int day, int hour, int minute, int second, @Nonnull ZoneId kind) {
         return ZonedDateTime.of(LocalDateTime.of(year, month, day, hour, minute, second), kind);
     }
 
@@ -180,7 +180,7 @@ public final class DateTimeHelper {
      *            Whether the parameters specify a local time or UTC.
      */
     @Nonnull
-    public static ZonedDateTime create(int year, int month, int day, int hour, int minute, int second, int millisecond, ZoneId kind) {
+    public static ZonedDateTime create(int year, int month, int day, int hour, int minute, int second, int millisecond, @Nonnull ZoneId kind) {
         return ZonedDateTime.of(LocalDateTime.of(year, month, day, hour, minute, second, millisecond * nanosecondsPerMillisecond), kind);
     }
 

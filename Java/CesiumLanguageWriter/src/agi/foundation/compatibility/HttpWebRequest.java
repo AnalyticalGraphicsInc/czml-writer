@@ -7,6 +7,7 @@ import java.net.URL;
 import java.net.URLConnection;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * @deprecated Internal use only.
@@ -14,6 +15,7 @@ import javax.annotation.Nonnull;
 @Internal
 @Deprecated
 public class HttpWebRequest extends WebRequest {
+    @Nullable
     private String userAgent;
 
     HttpWebRequest(@Nonnull URL url) {

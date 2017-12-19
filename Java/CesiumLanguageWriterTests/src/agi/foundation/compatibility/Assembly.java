@@ -14,9 +14,9 @@ public class Assembly {
     }
 
     /**
-     * Method to get CS2JAssembly by identifying the location of class.
+     * Gets the assembly that contains the code that is currently executing.
      *
-     * @return CS2Assembly instance
+     * @return The assembly that contains the code that is currently executing.
      */
     public static Assembly getExecutingAssembly() {
         return new Assembly();
@@ -26,7 +26,7 @@ public class Assembly {
      * Loads the specified manifest resource, scoped by the namespace of the specified
      * type, from this assembly.
      *
-     * @param klass
+     * @param type
      *            The type whose namespace is used to scope the manifest resource name.
      * @param name
      *            The case-sensitive name of the manifest resource being requested.
@@ -34,7 +34,7 @@ public class Assembly {
      *         specified during compilation or if the resource is not visible to the
      *         caller.
      */
-    public InputStream getManifestResourceStream(Class<?> klass, String name) {
-        return klass.getResourceAsStream(name);
+    public InputStream getManifestResourceStream(Class<?> type, String name) {
+        return type.getResourceAsStream(name);
     }
 }

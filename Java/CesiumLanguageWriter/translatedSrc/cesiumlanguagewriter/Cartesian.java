@@ -212,7 +212,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian *(Cartesian,System.Double)'")
     @Nonnull
-    public static Cartesian multiply(@javax.annotation.Nonnull Cartesian left, double right) {
+    public static Cartesian multiply(@Nonnull Cartesian left, double right) {
         return left.multiply(right);
     }
 
@@ -230,7 +230,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian *(System.Double,Cartesian)'")
     @Nonnull
-    public static Cartesian multiply(double left, @javax.annotation.Nonnull Cartesian right) {
+    public static Cartesian multiply(double left, @Nonnull Cartesian right) {
         return right.multiply(left);
     }
 
@@ -248,7 +248,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian /(Cartesian,System.Double)'")
     @Nonnull
-    public static Cartesian divide(@javax.annotation.Nonnull Cartesian left, double right) {
+    public static Cartesian divide(@Nonnull Cartesian left, double right) {
         return left.divide(right);
     }
 
@@ -266,7 +266,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian +(Cartesian,Cartesian)'")
     @Nonnull
-    public static Cartesian add(@javax.annotation.Nonnull Cartesian left, @javax.annotation.Nonnull Cartesian right) {
+    public static Cartesian add(@Nonnull Cartesian left, @Nonnull Cartesian right) {
         return left.add(right);
     }
 
@@ -284,7 +284,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian -(Cartesian,Cartesian)'")
     @Nonnull
-    public static Cartesian subtract(@javax.annotation.Nonnull Cartesian left, @javax.annotation.Nonnull Cartesian right) {
+    public static Cartesian subtract(@Nonnull Cartesian left, @Nonnull Cartesian right) {
         return left.subtract(right);
     }
 
@@ -300,7 +300,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian -(Cartesian)'")
     @Nonnull
-    public static Cartesian negate(@javax.annotation.Nonnull Cartesian coordinates) {
+    public static Cartesian negate(@Nonnull Cartesian coordinates) {
         return new Cartesian(-coordinates.m_x, -coordinates.m_y, -coordinates.m_z);
     }
 
@@ -466,7 +466,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(Cartesian,Cartesian)'")
-    public static boolean equals(@javax.annotation.Nonnull Cartesian left, @javax.annotation.Nonnull Cartesian right) {
+    public static boolean equals(@Nonnull Cartesian left, @Nonnull Cartesian right) {
         return left.equalsType(right);
     }
 
@@ -485,7 +485,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(Cartesian,Cartesian)'")
-    public static boolean notEquals(@javax.annotation.Nonnull Cartesian left, @javax.annotation.Nonnull Cartesian right) {
+    public static boolean notEquals(@Nonnull Cartesian left, @Nonnull Cartesian right) {
         return !left.equalsType(right);
     }
 
@@ -585,7 +585,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     */
     @CS2JInfo("This method implements the functionality of the implicit conversion operation 'Cartesian <= UnitCartesian'")
     @Nonnull
-    public static Cartesian toCartesian(@javax.annotation.Nonnull UnitCartesian coordinates) {
+    public static Cartesian toCartesian(@Nonnull UnitCartesian coordinates) {
         return new Cartesian(coordinates.getX(), coordinates.getY(), coordinates.getZ());
     }
 

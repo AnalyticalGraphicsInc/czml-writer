@@ -8,6 +8,8 @@ import java.io.OutputStreamWriter;
 import java.io.UncheckedIOException;
 import java.nio.charset.StandardCharsets;
 
+import javax.annotation.Nonnull;
+
 /**
  * Helper methods related to StreamWriter.
  *
@@ -26,7 +28,8 @@ public final class StreamWriterHelper {
      *            The complete file path to write to.
      * @return the new writer.
      */
-    public static OutputStreamWriter create(String path) {
+    public static OutputStreamWriter create(@Nonnull String path) {
+        ArgumentNullException.assertNonNull(path, "path");
         try {
             return new OutputStreamWriter(new FileOutputStream(path), StandardCharsets.UTF_8);
         } catch (IOException e) {

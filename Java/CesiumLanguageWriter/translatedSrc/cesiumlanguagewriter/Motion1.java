@@ -143,7 +143,7 @@ public final class Motion1<T> implements IEquatable<Motion1<T>>, ImmutableValueT
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(Motion,Motion)'")
-    public static <T> boolean equals(@javax.annotation.Nonnull Motion1<T> left, @javax.annotation.Nonnull Motion1<T> right) {
+    public static <T> boolean equals(@Nonnull Motion1<T> left, @Nonnull Motion1<T> right) {
         return left.equalsType(right);
     }
 
@@ -167,7 +167,7 @@ public final class Motion1<T> implements IEquatable<Motion1<T>>, ImmutableValueT
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(Motion,Motion)'")
-    public static <T> boolean notEquals(@javax.annotation.Nonnull Motion1<T> left, @javax.annotation.Nonnull Motion1<T> right) {
+    public static <T> boolean notEquals(@Nonnull Motion1<T> left, @Nonnull Motion1<T> right) {
         return !left.equalsType(right);
     }
 

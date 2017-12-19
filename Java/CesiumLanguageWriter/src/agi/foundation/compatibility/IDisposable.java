@@ -8,7 +8,7 @@ public interface IDisposable extends AutoCloseable {
      * Performs application-defined tasks associated with freeing, releasing, or resetting
      * unmanaged resources.
      */
-    public void dispose();
+    void dispose();
 
     @Override
     default void close() {

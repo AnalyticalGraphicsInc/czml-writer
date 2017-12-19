@@ -4,25 +4,28 @@ import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.startsWith;
 
+import javax.annotation.Nonnull;
+
 import org.hamcrest.Matcher;
 import org.junit.rules.ExpectedException;
 
 public final class ExpectedExceptionHelper {
-    public static void expectException(ExpectedException rule, Class<? extends Throwable> expectedExceptionType) {
+    public static void expectException(@Nonnull ExpectedException rule, @Nonnull Class<? extends Throwable> expectedExceptionType) {
         rule.expect(expectedExceptionType);
     }
 
-    public static void expectException(ExpectedException rule, Class<? extends Throwable> expectedExceptionType, String message) {
+    public static void expectException(@Nonnull ExpectedException rule, @Nonnull Class<? extends Throwable> expectedExceptionType, @Nonnull String message) {
         expectException(rule, expectedExceptionType, message, MessageMatch.getDefault());
     }
 
-    public static void expectException(ExpectedException rule, Class<? extends Throwable> expectedExceptionType, String message, MessageMatch match) {
+    public static void expectException(@Nonnull ExpectedException rule, @Nonnull Class<? extends Throwable> expectedExceptionType, @Nonnull String message,
+                                       @Nonnull MessageMatch match) {
         expectException(rule, expectedExceptionType);
 
         rule.expectMessage(getMatcher(message, match));
     }
 
-    private static Matcher<String> getMatcher(String message, MessageMatch match) {
+    private static Matcher<String> getMatcher(@Nonnull String message, @Nonnull MessageMatch match) {
         switch (match) {
         case EXACT:
             return equalTo(message);

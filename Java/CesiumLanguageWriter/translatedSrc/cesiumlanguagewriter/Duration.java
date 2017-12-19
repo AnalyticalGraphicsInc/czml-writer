@@ -450,7 +450,7 @@ public final class Duration implements Comparable<Duration>, IEquatable<Duration
     * @return {@code true} if the {@link Duration Durations} are equal, otherwise {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(Duration,Duration)'")
-    public static boolean equals(@javax.annotation.Nonnull Duration left, @javax.annotation.Nonnull Duration right) {
+    public static boolean equals(@Nonnull Duration left, @Nonnull Duration right) {
         return left.equalsType(right);
     }
 
@@ -470,7 +470,7 @@ public final class Duration implements Comparable<Duration>, IEquatable<Duration
     * @return {@code true} if the {@link Duration Durations} are not equal, otherwise {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(Duration,Duration)'")
-    public static boolean notEquals(@javax.annotation.Nonnull Duration left, @javax.annotation.Nonnull Duration right) {
+    public static boolean notEquals(@Nonnull Duration left, @Nonnull Duration right) {
         return !left.equalsType(right);
     }
 
@@ -487,7 +487,7 @@ public final class Duration implements Comparable<Duration>, IEquatable<Duration
     * @return {@code true} if left is less than right, otherwise {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean <(Duration,Duration)'")
-    public static boolean lessThan(@javax.annotation.Nonnull Duration left, @javax.annotation.Nonnull Duration right) {
+    public static boolean lessThan(@Nonnull Duration left, @Nonnull Duration right) {
         return left.compareTo(right) < 0;
     }
 
@@ -504,7 +504,7 @@ public final class Duration implements Comparable<Duration>, IEquatable<Duration
     * @return {@code true} if left is greater than right, otherwise {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean >(Duration,Duration)'")
-    public static boolean greaterThan(@javax.annotation.Nonnull Duration left, @javax.annotation.Nonnull Duration right) {
+    public static boolean greaterThan(@Nonnull Duration left, @Nonnull Duration right) {
         return left.compareTo(right) > 0;
     }
 
@@ -521,7 +521,7 @@ public final class Duration implements Comparable<Duration>, IEquatable<Duration
     * @return {@code true} if left is less than or equal to right, otherwise {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean <=(Duration,Duration)'")
-    public static boolean lessThanOrEqual(@javax.annotation.Nonnull Duration left, @javax.annotation.Nonnull Duration right) {
+    public static boolean lessThanOrEqual(@Nonnull Duration left, @Nonnull Duration right) {
         return left.compareTo(right) <= 0;
     }
 
@@ -538,7 +538,7 @@ public final class Duration implements Comparable<Duration>, IEquatable<Duration
     * @return {@code true} if left is greater than or equal to right, otherwise {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean >=(Duration,Duration)'")
-    public static boolean greaterThanOrEqual(@javax.annotation.Nonnull Duration left, @javax.annotation.Nonnull Duration right) {
+    public static boolean greaterThanOrEqual(@Nonnull Duration left, @Nonnull Duration right) {
         return left.compareTo(right) >= 0;
     }
 
@@ -556,7 +556,7 @@ public final class Duration implements Comparable<Duration>, IEquatable<Duration
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Duration +(Duration,Duration)'")
     @Nonnull
-    public static Duration add(@javax.annotation.Nonnull Duration left, @javax.annotation.Nonnull Duration right) {
+    public static Duration add(@Nonnull Duration left, @Nonnull Duration right) {
         return left.add(right);
     }
 
@@ -574,7 +574,7 @@ public final class Duration implements Comparable<Duration>, IEquatable<Duration
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Duration -(Duration,Duration)'")
     @Nonnull
-    public static Duration subtract(@javax.annotation.Nonnull Duration left, @javax.annotation.Nonnull Duration right) {
+    public static Duration subtract(@Nonnull Duration left, @Nonnull Duration right) {
         return left.subtract(right);
     }
 
@@ -591,7 +591,7 @@ public final class Duration implements Comparable<Duration>, IEquatable<Duration
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Duration -(Duration)'")
     @Nonnull
-    public static Duration negate(@javax.annotation.Nonnull Duration value) {
+    public static Duration negate(@Nonnull Duration value) {
         return new Duration(-value.m_days, -value.m_seconds);
     }
 
@@ -609,7 +609,7 @@ public final class Duration implements Comparable<Duration>, IEquatable<Duration
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Duration *(Duration,System.Double)'")
     @Nonnull
-    public static Duration multiply(@javax.annotation.Nonnull Duration left, double right) {
+    public static Duration multiply(@Nonnull Duration left, double right) {
         return left.multiply(right);
     }
 
@@ -626,7 +626,7 @@ public final class Duration implements Comparable<Duration>, IEquatable<Duration
     * @return The result of dividing the dividend by the divisor.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Double /(Duration,Duration)'")
-    public static double divide(@javax.annotation.Nonnull Duration dividend, @javax.annotation.Nonnull Duration divisor) {
+    public static double divide(@Nonnull Duration dividend, @Nonnull Duration divisor) {
         return dividend.divide(divisor);
     }
 
@@ -644,7 +644,7 @@ public final class Duration implements Comparable<Duration>, IEquatable<Duration
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Duration /(Duration,System.Double)'")
     @Nonnull
-    public static Duration divide(@javax.annotation.Nonnull Duration dividend, double divisor) {
+    public static Duration divide(@Nonnull Duration dividend, double divisor) {
         return dividend.divide(divisor);
     }
 

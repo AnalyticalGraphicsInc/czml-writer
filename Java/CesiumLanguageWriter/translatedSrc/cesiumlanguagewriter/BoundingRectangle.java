@@ -237,7 +237,7 @@ public final class BoundingRectangle implements IEquatable<BoundingRectangle>, I
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(BoundingRectangle,BoundingRectangle)'")
-    public static boolean equals(@javax.annotation.Nonnull BoundingRectangle left, @javax.annotation.Nonnull BoundingRectangle right) {
+    public static boolean equals(@Nonnull BoundingRectangle left, @Nonnull BoundingRectangle right) {
         return left.equalsType(right);
     }
 
@@ -256,7 +256,7 @@ public final class BoundingRectangle implements IEquatable<BoundingRectangle>, I
     
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(BoundingRectangle,BoundingRectangle)'")
-    public static boolean notEquals(@javax.annotation.Nonnull BoundingRectangle left, @javax.annotation.Nonnull BoundingRectangle right) {
+    public static boolean notEquals(@Nonnull BoundingRectangle left, @Nonnull BoundingRectangle right) {
         return !left.equalsType(right);
     }
 
