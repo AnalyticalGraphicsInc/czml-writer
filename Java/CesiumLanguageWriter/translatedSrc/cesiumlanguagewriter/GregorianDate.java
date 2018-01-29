@@ -1908,9 +1908,11 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     *  Gets the day of the week represented by this instance.
     
 
-    * @return A {@code DayOfWeek} ({@link #getDayOfWeek get}) enumerated constant that indicates the day
+    * @return 
+    A {@code DayOfWeek} ({@link #getDayOfWeek get}) value that indicates the day
     of the week. This property value ranges from zero, indicating Sunday, to six,
     indicating Saturday.
+    
     */
     @Nonnull
     public final DayOfWeek getDayOfWeek() {
@@ -1921,8 +1923,10 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     *  Gets the day of the year represented by this instance.
     
 
-    * @return An integer that indicates the day of the year.
+    * @return 
+    An integer that indicates the day of the year.
     This property value ranges from 1 through the number of days in the year.
+    
     */
     public final int getDayOfYear() {
         return m_yearMonthDay.getDayOfYear();
@@ -2202,8 +2206,9 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  Converts the value of this instance to its equivalent string
-    representation.
+    *  
+    Converts the value of this instance to its equivalent string representation.
+    
     
 
     * @return A string representation of value of this instance.
@@ -2214,19 +2219,21 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  Converts the value of this instance to its equivalent string
+    *  
+    Converts the value of this instance to its equivalent string
     representation using the specified format.
     
     
     
+    
 
-    * @param format A format string. 
-    * @return A string representation of value of this instance as specified by
-    {@code format}.
-    * @exception NumberFormatException The length of {@code format} is 1,
-    and it is not one of the format specifier characters defined for
-    {@link DateTimeFormatInfo}.-or- {@code format} does not
-    contain a valid custom format pattern. 
+    * @param format A format string.
+    * @return A string representation of value of this instance as specified by {@code format}.
+    * @exception NumberFormatException 
+    Thrown if the length of {@code format} is 1,
+    and it is not one of the format specifier characters defined for {@link DateTimeFormatInfo}, 
+    or if {@code format} does not contain a valid custom format pattern. 
+    
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     @Nonnull
@@ -2235,16 +2242,15 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  Converts the value of this instance to its equivalent string
+    *  
+    Converts the value of this instance to its equivalent string
     representation using the specified culture-specific format information.
     
     
     
 
-    * @param provider An {@link Locale} that supplies
-    culture-specific formatting information. 
-    * @return A string representation of value of this instance as specified by
-    {@code provider}.
+    * @param provider An {@link Locale} that supplies culture-specific formatting information.
+    * @return A string representation of value of this instance as specified by {@code provider}.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     @Nonnull
@@ -2253,23 +2259,23 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  Converts the value of this instance to its equivalent string
-    representation using the specified format and culture-specific format
-    information.
+    *  
+    Converts the value of this instance to its equivalent string
+    representation using the specified format and culture-specific format information.
+    
     
     
     
     
 
-    * @param format A format string. 
-    * @param provider An {@link Locale} that supplies
-    culture-specific formatting information. 
-    * @return A string representation of value of this instance as specified by
-    {@code format} and {@code provider}.
-    * @exception NumberFormatException The length of {@code format} is 1,
-    and it is not one of the format specifier characters defined for
-    {@link DateTimeFormatInfo}.-or- {@code format} does not
-    contain a valid custom format pattern. 
+    * @param format A format string.
+    * @param provider An {@link Locale} that supplies culture-specific formatting information.
+    * @return A string representation of value of this instance as specified by {@code format} and {@code provider}.
+    * @exception NumberFormatException 
+    Thrown if the length of {@code format} is 1,
+    and it is not one of the format specifier characters defined for {@link DateTimeFormatInfo}, 
+    or if {@code format} does not contain a valid custom format pattern. 
+    
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     @Nonnull
@@ -2279,13 +2285,12 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
 
     /**
     *  
-    Converts the value of this instance to its equivalent ISO8601 extended string
-    representation, corresponding to year month day hours minutes and seconds with
-    seconds represented to machine precision.
+    Converts the value of this instance to its equivalent ISO8601 extended string representation, 
+    with fractional seconds represented to 15 digits.
     
     
 
-    * @return A string representing this date and time in ISO8601 format.
+    * @return A string representing this date and time in extended ISO8601 format.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     @Nonnull
@@ -2296,8 +2301,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     /**
     *  
     Converts the value of this instance to its equivalent ISO8601 string representation,
-    corresponding to year month day hours minutes and seconds with seconds
-    represented to machine precision.
+    with fractional seconds represented to 15 digits.
     
     
     
@@ -2314,8 +2318,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     /**
     *  
     Converts the value of this instance to its equivalent ISO8601 string representation,
-    corresponding to year month day hours minutes and seconds with seconds
-    rounded to and formatted with the specified number of decimal digits.
+    with fractional seconds represented to the specified number of digits.
     
     
     
@@ -2361,11 +2364,11 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
         case COMPACT: {
             formatStringBuilder.append("yyyyMMdd'T'HH");
             boolean hasMinutes = m_minute != 0;
-            if (hasMinutes) {
-                formatStringBuilder.append("mm");
-            }
             // ReSharper disable once CompareOfFloatsByEqualityOperator
             boolean hasSeconds = m_second != 0.0;
+            if (hasMinutes || hasSeconds) {
+                formatStringBuilder.append("mm");
+            }
             if (hasSeconds) {
                 formatStringBuilder.append("ss");
                 appendIso8601FractionalSeconds(formatStringBuilder, digitsOfFractionalSeconds, requireFractionalSeconds);
@@ -2390,10 +2393,15 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  Converts the value of this instance to its equivalent long date string representation.
+    *  
+    Converts the value of this instance to its equivalent long date string representation.
+    
     
 
-    * @return A string containing the name of the day of the week, the name of the month, the numeric day of the month, and the year equivalent to the date value of this instance.
+    * @return 
+    A string containing the name of the day of the week, the name of the month, 
+    the numeric day of the month, and the year equivalent to the date value of this instance.
+    
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     @Nonnull
@@ -2402,13 +2410,15 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  Converts the value of this instance to its equivalent long time string
-    representation.
+    *  
+    Converts the value of this instance to its equivalent long time string representation.
+    
     
 
-    * @return A string containing the name of the day of the week, the name of the
-    month, the numeric day of the hours, minutes, and seconds equivalent to the
-    time value of this instance.
+    * @return 
+    A string containing the name of the day of the week, the name of the month, 
+    the numeric day of the hours, minutes, and seconds equivalent to the time value of this instance.
+    
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     @Nonnull
@@ -2417,12 +2427,15 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  Converts the value of this instance to its equivalent short date
-    string representation.
+    *  
+    Converts the value of this instance to its equivalent short date string representation.
+    
     
 
-    * @return A string containing the numeric month, the numeric day of the month,
+    * @return 
+    A string containing the numeric month, the numeric day of the month,
     and the year equivalent to the date value of this instance.
+    
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     @Nonnull
@@ -2431,13 +2444,15 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  Converts the value of this instance to its equivalent short time
-    string representation.
+    *  
+    Converts the value of this instance to its equivalent short time string representation.
+    
     
 
-    * @return A string containing the name of the day of the week, the name of the
-    month, the numeric day of the hours, minutes, and seconds equivalent to the
-    time value of this instance.
+    * @return 
+    A string containing the name of the day of the week, the name of the month, 
+    the numeric day of the hours, minutes, and seconds equivalent to the time value of this instance.
+    
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     @Nonnull
@@ -2561,14 +2576,26 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
 
     /**
     *  
+    <p>
     Converts the specified string representation of a date and time to its
     {@link GregorianDate} equivalent.
-
+    </p>
+    <p>
     Note: {@link GregorianDate} is always assumed to be in UTC.  You cannot
     parse strings containing time zone information. However, this will handle
-    three common ISO8601 formats: the extended format YYYY-MM-DDThh:mm:ss.sZ
-    (with seconds to machine precision), it's "day of year" equivalent YYYY-DDDThh:mm:ss.sZ,
-    and the basic format YYYYMMDDThhmmss.sZ.
+    three common ISO8601 formats:
+    </p>
+    <ul>
+    <li>
+    the extended format "YYYY-MM-DDThh:mm:ss.sZ"
+    </li>
+    <li>
+    The "day of year" equivalent "YYYY-DDDThh:mm:ss.sZ"
+    </li>
+    <li>
+    The basic format "YYYYMMDDThhmmss.sZ"
+    </li>
+    </ul>
     
     
     
@@ -2580,11 +2607,10 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     A {@link GregorianDate} equivalent to the date and time contained in s.
     
     * @exception ArgumentNullException 
-    {@code s} is null.
+    Thrown if {@code s} is {@code null}.
     
     * @exception NumberFormatException 
-    {@code s} does not contain a valid string representation of a date
-    and time.
+    Thrown if {@code s} does not contain a valid string representation of a date and time.
     
     */
     @Nonnull
@@ -2594,15 +2620,27 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
 
     /**
     *  
+    <p>
     Converts the specified string representation of a date and time to its
     {@link GregorianDate} equivalent using the specified culture-specific
     format information.
-
+    </p>
+    <p>
     Note: {@link GregorianDate} is always assumed to be in UTC.  You cannot
     parse strings containing time zone information. However, this will handle
-    three common ISO8601 formats: the extended format YYYY-MM-DDThh:mm:ss.sZ
-    (with seconds to machine precision), it's "day of year" equivalent YYYY-DDDThh:mm:ss.sZ,
-    and the basic format YYYYMMDDThhmmss.sZ.
+    three common ISO8601 formats:
+    </p>
+    <ul>
+    <li>
+    the extended format "YYYY-MM-DDThh:mm:ss.sZ"
+    </li>
+    <li>
+    The "day of year" equivalent "YYYY-DDDThh:mm:ss.sZ"
+    </li>
+    <li>
+    The basic format "YYYYMMDDThhmmss.sZ"
+    </li>
+    </ul>
     
     
     
@@ -2611,18 +2649,16 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     
 
     * @param s A string containing a date and time to convert.
-    * @param provider An {@link Locale} that supplies
-    culture-specific format information about {@code s}.
+    * @param provider An {@link Locale} that supplies culture-specific format information about {@code s}.
     * @return 
     A {@link GregorianDate} equivalent to the date and time contained in
     {@code s} as specified by {@code provider}.
     
     * @exception ArgumentNullException 
-    {@code s} is null.
+    Thrown if {@code s} is {@code null}.
     
     * @exception NumberFormatException 
-    {@code s} does not contain a valid string representation of a date
-    and time.
+    Thrown if {@code s} does not contain a valid string representation of a date and time.
     
     */
     @Nonnull
@@ -2632,13 +2668,16 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
 
     /**
     *  
+    <p>
     Converts the specified string representation of a date and time to its
     {@link GregorianDate} equivalent using the specified format and
     culture-specific format information. The format of the string representation
     must match the specified format exactly.
-
+    </p>
+    <p>
     Note: {@link GregorianDate} is always assumed to be in UTC.  You cannot
     parse strings containing time zone information.
+    </p>
     
     
     
@@ -2649,21 +2688,19 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
 
     * @param s A string containing a date and time to convert. 
     * @param format The expected format of {@code s}. 
-    * @param provider An {@link Locale} that supplies
-    culture-specific format information about {@code s}. 
+    * @param provider An {@link Locale} that supplies culture-specific format information about {@code s}. 
     * @return 
     A {@link GregorianDate} equivalent to the date and time contained in
     {@code s} as specified by {@code format} and
     {@code provider}.
     
     * @exception ArgumentNullException 
-    {@code s} or {@code format} is null.
+    Thrown if {@code s} or {@code format} is {@code null}.
     
     * @exception NumberFormatException 
-    {@code s} or {@code format} is an empty string. -or-
-    {@code s} does not contain a date and time that corresponds to the
-    pattern specified in
-    {@code format}.
+    Thrown if {@code s} or {@code format} is an empty string, 
+    or if {@code s} does not contain a date and time that corresponds to the 
+    pattern specified in {@code format}.
     
     */
     @Nonnull
@@ -2675,13 +2712,16 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
 
     /**
     *  
+    <p>
     Converts the specified string representation of a date and time to its
     {@link GregorianDate} equivalent using the specified format and
     culture-specific format information. The format of the string representation
     must match the specified format exactly.
-
+    </p>
+    <p>
     Note: {@link GregorianDate} is always assumed to be in UTC.  You cannot
     parse strings containing time zone information.
+    </p>
     
     
     
@@ -2700,13 +2740,12 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     {@code provider}.
     
     * @exception ArgumentNullException 
-    {@code s} or {@code format} is null.
+    Thrown if {@code s} or {@code format} is {@code null}.
     
     * @exception NumberFormatException 
-    {@code s} or {@code format} is an empty string. -or-
-    {@code s} does not contain a date and time that corresponds to the
-    pattern specified in
-    {@code format}.
+    Thrown if {@code s} or {@code format} is an empty string, 
+    or if {@code s} does not contain a date and time that corresponds to the
+    pattern specified in {@code format}.
     
     */
     @Nonnull
@@ -2716,14 +2755,26 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
 
     /**
     *  
+    <p>
     Converts the specified string representation of a date and time to its
     {@link GregorianDate} equivalent.
-
+    </p>
+    <p>
     Note: {@link GregorianDate} is always assumed to be in UTC.  You cannot
     parse strings containing time zone information. However, this will handle
-    three common ISO8601 formats: the extended format YYYY-MM-DDThh:mm:ss.sZ
-    (with seconds to machine precision), it's "day of year" equivalent YYYY-DDDThh:mm:ss.sZ,
-    and the basic format YYYYMMDDThhmmss.sZ.
+    three common ISO8601 formats:
+    </p>
+    <ul>
+    <li>
+    the extended format "YYYY-MM-DDThh:mm:ss.sZ"
+    </li>
+    <li>
+    The "day of year" equivalent "YYYY-DDDThh:mm:ss.sZ"
+    </li>
+    <li>
+    The basic format "YYYYMMDDThhmmss.sZ"
+    </li>
+    </ul>
     
     
     
@@ -2736,13 +2787,11 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     the {@link GregorianDate} value equivalent to the date and time contained in
     {@code s}, if the conversion succeeded, or
     {@link GregorianDate#MinValue} if the conversion failed. The conversion
-    fails if the {@code s} parameter is null, or does not contain a
-    valid string representation of a date and time. This parameter is passed
-    uninitialized.
+    fails if the {@code s} parameter is {@code null}, or does not contain a
+    valid string representation of a date and time.
     
     * @return 
-    true if the {@code s} parameter was converted successfully;
-    otherwise, false.
+    true if the {@code s} parameter was converted successfully; otherwise, false.
     
     */
     @CS2JWarning("Unhandled attribute removed: ContractAnnotation")
@@ -2752,15 +2801,27 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
 
     /**
     *  
+    <p>
     Converts the specified string representation of a date and time to its
     {@link GregorianDate} equivalent using the specified culture-specific
     format information.
-
+    </p>
+    <p>
     Note: {@link GregorianDate} is always assumed to be in UTC.  You cannot
     parse strings containing time zone information. However, this will handle
-    three common ISO8601 formats: the extended format YYYY-MM-DDThh:mm:ss.sZ
-    (with seconds to machine precision), it's "day of year" equivalent YYYY-DDDThh:mm:ss.sZ,
-    and the basic format YYYYMMDDThhmmss.sZ.
+    three common ISO8601 formats:
+    </p>
+    <ul>
+    <li>
+    the extended format "YYYY-MM-DDThh:mm:ss.sZ"
+    </li>
+    <li>
+    The "day of year" equivalent "YYYY-DDDThh:mm:ss.sZ"
+    </li>
+    <li>
+    The basic format "YYYYMMDDThhmmss.sZ"
+    </li>
+    </ul>
     
     
     
@@ -2768,21 +2829,18 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     
 
     * @param s A string containing a date and time to convert.
-    * @param provider An {@link Locale} that supplies
-    culture-specific format information about {@code s}. 
+    * @param provider An {@link Locale} that supplies culture-specific format information about {@code s}. 
     * @param result 
     On input, an array with one element.  On return, the array is populated with
     
     the {@link GregorianDate} value equivalent to the date and time contained in
     {@code s}, if the conversion succeeded, or
     {@link GregorianDate#MinValue} if the conversion failed. The conversion
-    fails if the {@code s} parameter is null, or does not contain a
-    valid string representation of a date and time. This parameter is passed
-    uninitialized.
+    fails if the {@code s} parameter is {@code null}, or does not contain a
+    valid string representation of a date and time.
     
     * @return 
-    true if the {@code s} parameter was converted successfully;
-    otherwise, false.
+    true if the {@code s} parameter was converted successfully; otherwise, false.
     
     */
     @CS2JWarning("Unhandled attribute removed: ContractAnnotation")

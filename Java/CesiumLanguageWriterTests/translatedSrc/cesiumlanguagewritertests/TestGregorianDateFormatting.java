@@ -2,12 +2,15 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
+import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.ExpectedExceptionHelper;
 import agi.foundation.compatibility.ObjectHelper;
 import agi.foundation.compatibility.RegexHelper;
 import agi.foundation.compatibility.StringHelper;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Locale;
 import java.util.regex.Pattern;
 import javax.annotation.Nonnull;
@@ -142,89 +145,202 @@ public class TestGregorianDateFormatting {
         Assert.assertEquals("31 Dec 2008 23:59:60.444", date.toString("d MMM yyyy H:mm:ss.fff", m_cultureInfo));
     }
 
-    @Test
-    public final void toIso8601ExtendedStringProducesCorrectStrings() {
-        String iso = new GregorianDate(2012, 4, 2, 1, 2, 3.12345).toIso8601String(Iso8601Format.EXTENDED);
-        Assert.assertEquals("2012-04-02T01:02:03.12345Z", iso);
-        iso = new GregorianDate(2012, 4, 2, 1, 2, 3D).toIso8601String(Iso8601Format.EXTENDED);
-        Assert.assertEquals("2012-04-02T01:02:03Z", iso);
-        iso = new GregorianDate(2012, 4, 2, 1, 2, 3D).toIso8601String(Iso8601Format.EXTENDED);
-        Assert.assertEquals("2012-04-02T01:02:03Z", iso);
-        iso = new GregorianDate(2012, 4, 2, 1, 2, 0D).toIso8601String(Iso8601Format.EXTENDED);
-        Assert.assertEquals("2012-04-02T01:02:00Z", iso);
-        iso = new GregorianDate(2012, 4, 2, 1, 2, 0D).toIso8601String(Iso8601Format.EXTENDED);
-        Assert.assertEquals("2012-04-02T01:02:00Z", iso);
-        iso = new GregorianDate(2012, 6, 30, 23, 59, 60.123).toIso8601String(Iso8601Format.EXTENDED);
-        Assert.assertEquals("2012-06-30T23:59:60.123Z", iso);
-        iso = new GregorianDate(2012, 4, 2, 1, 0, 0D).toIso8601String(Iso8601Format.EXTENDED);
-        Assert.assertEquals("2012-04-02T01:00:00Z", iso);
+    public final void toIso8601ExtendedStringProducesCorrectStrings(int year, int month, int day, int hour, int minute, double second, String expectedIsoString) {
+        cesiumlanguagewriter.GregorianDate gregorianDate = new GregorianDate(year, month, day, hour, minute, second);
+        String isoString = gregorianDate.toIso8601String(Iso8601Format.EXTENDED);
+        Assert.assertEquals(expectedIsoString, isoString);
+        AssertHelper.assertEquals(gregorianDate, GregorianDate.parse(isoString));
     }
 
     @Test
-    public final void toIso8601BasicStringProducesCorrectStrings() {
-        String iso = new GregorianDate(2012, 4, 2, 1, 2, 3.12345).toIso8601String(Iso8601Format.BASIC);
-        Assert.assertEquals("20120402T010203.12345Z", iso);
-        iso = new GregorianDate(2012, 4, 2, 1, 2, 3D).toIso8601String(Iso8601Format.BASIC);
-        Assert.assertEquals("20120402T010203Z", iso);
-        iso = new GregorianDate(2012, 4, 2, 1, 2, 3D).toIso8601String(Iso8601Format.BASIC);
-        Assert.assertEquals("20120402T010203Z", iso);
-        iso = new GregorianDate(2012, 4, 2, 1, 2, 0D).toIso8601String(Iso8601Format.BASIC);
-        Assert.assertEquals("20120402T010200Z", iso);
-        iso = new GregorianDate(2012, 4, 2, 1, 2, 0D).toIso8601String(Iso8601Format.BASIC);
-        Assert.assertEquals("20120402T010200Z", iso);
-        iso = new GregorianDate(2012, 6, 30, 23, 59, 60.123).toIso8601String(Iso8601Format.BASIC);
-        Assert.assertEquals("20120630T235960.123Z", iso);
-        iso = new GregorianDate(2012, 4, 2, 1, 0, 0D).toIso8601String(Iso8601Format.BASIC);
-        Assert.assertEquals("20120402T010000Z", iso);
+    public final void toIso8601ExtendedStringProducesCorrectStrings$TestCase1() {
+        toIso8601ExtendedStringProducesCorrectStrings(2012, 4, 2, 1, 2, 3.12345, "2012-04-02T01:02:03.12345Z");
     }
 
     @Test
-    public final void toIso8601CompactStringProducesCorrectStrings() {
-        String iso = new GregorianDate(2012, 4, 2, 1, 2, 3.12345).toIso8601String(Iso8601Format.COMPACT);
-        Assert.assertEquals("20120402T010203.12345Z", iso);
-        iso = new GregorianDate(2012, 4, 2, 1, 2, 3D).toIso8601String(Iso8601Format.COMPACT);
-        Assert.assertEquals("20120402T010203Z", iso);
-        iso = new GregorianDate(2012, 4, 2, 1, 2, 3D).toIso8601String(Iso8601Format.COMPACT);
-        Assert.assertEquals("20120402T010203Z", iso);
-        iso = new GregorianDate(2012, 4, 2, 1, 2, 0D).toIso8601String(Iso8601Format.COMPACT);
-        Assert.assertEquals("20120402T0102Z", iso);
-        iso = new GregorianDate(2012, 4, 2, 1, 2, 0D).toIso8601String(Iso8601Format.COMPACT);
-        Assert.assertEquals("20120402T0102Z", iso);
-        iso = new GregorianDate(2012, 6, 30, 23, 59, 60.123).toIso8601String(Iso8601Format.COMPACT);
-        Assert.assertEquals("20120630T235960.123Z", iso);
-        iso = new GregorianDate(2012, 4, 2, 1, 0, 0D).toIso8601String(Iso8601Format.COMPACT);
-        Assert.assertEquals("20120402T01Z", iso);
+    public final void toIso8601ExtendedStringProducesCorrectStrings$TestCase2() {
+        toIso8601ExtendedStringProducesCorrectStrings(2012, 4, 2, 1, 2, 3, "2012-04-02T01:02:03Z");
     }
 
     @Test
-    public final void toIso8601Validation() {
-        cesiumlanguagewriter.GregorianDate[] dates = new cesiumlanguagewriter.GregorianDate[] {
-                new GregorianDate(2012, 4, 2, 1, 2, 3.12345),
-                new GregorianDate(2012, 4, 2, 1, 2, 0D),
-                new GregorianDate(2012, 4, 2, 1, 0, 0D),
-                new GregorianDate(2012, 4, 2, 0, 0, 0D)
-        };
+    public final void toIso8601ExtendedStringProducesCorrectStrings$TestCase3() {
+        toIso8601ExtendedStringProducesCorrectStrings(2012, 4, 2, 1, 2, 0, "2012-04-02T01:02:00Z");
+    }
+
+    @Test
+    public final void toIso8601ExtendedStringProducesCorrectStrings$TestCase4() {
+        toIso8601ExtendedStringProducesCorrectStrings(2012, 6, 30, 23, 59, 60.123, "2012-06-30T23:59:60.123Z");
+    }
+
+    @Test
+    public final void toIso8601ExtendedStringProducesCorrectStrings$TestCase5() {
+        toIso8601ExtendedStringProducesCorrectStrings(2012, 4, 2, 1, 0, 0, "2012-04-02T01:00:00Z");
+    }
+
+    @Test
+    public final void toIso8601ExtendedStringProducesCorrectStrings$TestCase6() {
+        toIso8601ExtendedStringProducesCorrectStrings(2017, 12, 7, 0, 0, 0, "2017-12-07T00:00:00Z");
+    }
+
+    @Test
+    public final void toIso8601ExtendedStringProducesCorrectStrings$TestCase7() {
+        toIso8601ExtendedStringProducesCorrectStrings(2017, 12, 7, 0, 1, 0, "2017-12-07T00:01:00Z");
+    }
+
+    @Test
+    public final void toIso8601ExtendedStringProducesCorrectStrings$TestCase8() {
+        toIso8601ExtendedStringProducesCorrectStrings(2017, 12, 7, 0, 0, 0.123, "2017-12-07T00:00:00.123Z");
+    }
+
+    @Test
+    public final void toIso8601ExtendedStringProducesCorrectStrings$TestCase9() {
+        toIso8601ExtendedStringProducesCorrectStrings(2017, 12, 7, 2, 0, 32.299, "2017-12-07T02:00:32.299Z");
+    }
+
+    public final void toIso8601BasicStringProducesCorrectStrings(int year, int month, int day, int hour, int minute, double second, String expectedIsoString) {
+        cesiumlanguagewriter.GregorianDate gregorianDate = new GregorianDate(year, month, day, hour, minute, second);
+        String isoString = gregorianDate.toIso8601String(Iso8601Format.BASIC);
+        Assert.assertEquals(expectedIsoString, isoString);
+        AssertHelper.assertEquals(gregorianDate, GregorianDate.parse(isoString));
+    }
+
+    @Test
+    public final void toIso8601BasicStringProducesCorrectStrings$TestCase1() {
+        toIso8601BasicStringProducesCorrectStrings(2012, 4, 2, 1, 2, 3.12345, "20120402T010203.12345Z");
+    }
+
+    @Test
+    public final void toIso8601BasicStringProducesCorrectStrings$TestCase2() {
+        toIso8601BasicStringProducesCorrectStrings(2012, 4, 2, 1, 2, 3, "20120402T010203Z");
+    }
+
+    @Test
+    public final void toIso8601BasicStringProducesCorrectStrings$TestCase3() {
+        toIso8601BasicStringProducesCorrectStrings(2012, 4, 2, 1, 2, 0, "20120402T010200Z");
+    }
+
+    @Test
+    public final void toIso8601BasicStringProducesCorrectStrings$TestCase4() {
+        toIso8601BasicStringProducesCorrectStrings(2012, 6, 30, 23, 59, 60.123, "20120630T235960.123Z");
+    }
+
+    @Test
+    public final void toIso8601BasicStringProducesCorrectStrings$TestCase5() {
+        toIso8601BasicStringProducesCorrectStrings(2012, 4, 2, 1, 0, 0, "20120402T010000Z");
+    }
+
+    @Test
+    public final void toIso8601BasicStringProducesCorrectStrings$TestCase6() {
+        toIso8601BasicStringProducesCorrectStrings(2017, 12, 7, 0, 0, 0, "20171207T000000Z");
+    }
+
+    @Test
+    public final void toIso8601BasicStringProducesCorrectStrings$TestCase7() {
+        toIso8601BasicStringProducesCorrectStrings(2017, 12, 7, 0, 1, 0, "20171207T000100Z");
+    }
+
+    @Test
+    public final void toIso8601BasicStringProducesCorrectStrings$TestCase8() {
+        toIso8601BasicStringProducesCorrectStrings(2017, 12, 7, 0, 0, 0.123, "20171207T000000.123Z");
+    }
+
+    @Test
+    public final void toIso8601BasicStringProducesCorrectStrings$TestCase9() {
+        toIso8601BasicStringProducesCorrectStrings(2017, 12, 7, 2, 0, 32.299, "20171207T020032.299Z");
+    }
+
+    public final void toIso8601CompactStringProducesCorrectStrings(int year, int month, int day, int hour, int minute, double second, String expectedIsoString) {
+        cesiumlanguagewriter.GregorianDate gregorianDate = new GregorianDate(year, month, day, hour, minute, second);
+        String isoString = gregorianDate.toIso8601String(Iso8601Format.COMPACT);
+        Assert.assertEquals(expectedIsoString, isoString);
+    }
+
+    @Test
+    public final void toIso8601CompactStringProducesCorrectStrings$TestCase1() {
+        toIso8601CompactStringProducesCorrectStrings(2012, 4, 2, 1, 2, 3.12345, "20120402T010203.12345Z");
+    }
+
+    @Test
+    public final void toIso8601CompactStringProducesCorrectStrings$TestCase2() {
+        toIso8601CompactStringProducesCorrectStrings(2012, 4, 2, 1, 2, 3, "20120402T010203Z");
+    }
+
+    @Test
+    public final void toIso8601CompactStringProducesCorrectStrings$TestCase3() {
+        toIso8601CompactStringProducesCorrectStrings(2012, 4, 2, 1, 2, 0, "20120402T0102Z");
+    }
+
+    @Test
+    public final void toIso8601CompactStringProducesCorrectStrings$TestCase4() {
+        toIso8601CompactStringProducesCorrectStrings(2012, 6, 30, 23, 59, 60.123, "20120630T235960.123Z");
+    }
+
+    @Test
+    public final void toIso8601CompactStringProducesCorrectStrings$TestCase5() {
+        toIso8601CompactStringProducesCorrectStrings(2012, 4, 2, 1, 0, 0, "20120402T01Z");
+    }
+
+    @Test
+    public final void toIso8601CompactStringProducesCorrectStrings$TestCase6() {
+        toIso8601CompactStringProducesCorrectStrings(2017, 12, 7, 0, 0, 0, "20171207T00Z");
+    }
+
+    @Test
+    public final void toIso8601CompactStringProducesCorrectStrings$TestCase7() {
+        toIso8601CompactStringProducesCorrectStrings(2017, 12, 7, 0, 1, 0, "20171207T0001Z");
+    }
+
+    @Test
+    public final void toIso8601CompactStringProducesCorrectStrings$TestCase8() {
+        toIso8601CompactStringProducesCorrectStrings(2017, 12, 7, 0, 0, 0.123, "20171207T000000.123Z");
+    }
+
+    @Test
+    public final void toIso8601CompactStringProducesCorrectStrings$TestCase9() {
+        toIso8601CompactStringProducesCorrectStrings(2017, 12, 7, 2, 0, 32.299, "20171207T020032.299Z");
+    }
+
+    public final void toIso8601Validation(@Nonnull GregorianDate date) {
         // found this regex online
         Pattern regex = RegexHelper
                 .create("^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$");
-        for (final cesiumlanguagewriter.GregorianDate date : dates) {
-            String s = date.toIso8601String();
+        String s = date.toIso8601String();
+        Assert.assertTrue(RegexHelper.isMatch(regex, s));
+        s = date.toIso8601String(Iso8601Format.BASIC);
+        Assert.assertTrue(RegexHelper.isMatch(regex, s));
+        s = date.toIso8601String(Iso8601Format.COMPACT);
+        Assert.assertTrue(RegexHelper.isMatch(regex, s));
+        s = date.toIso8601String(Iso8601Format.EXTENDED);
+        Assert.assertTrue(RegexHelper.isMatch(regex, s));
+        for (int numDigits = 0; numDigits <= 15; ++numDigits) {
+            s = date.toIso8601String(Iso8601Format.BASIC, numDigits);
             Assert.assertTrue(RegexHelper.isMatch(regex, s));
-            s = date.toIso8601String(Iso8601Format.BASIC);
+            s = date.toIso8601String(Iso8601Format.COMPACT, numDigits);
             Assert.assertTrue(RegexHelper.isMatch(regex, s));
-            s = date.toIso8601String(Iso8601Format.COMPACT);
+            s = date.toIso8601String(Iso8601Format.EXTENDED, numDigits);
             Assert.assertTrue(RegexHelper.isMatch(regex, s));
-            s = date.toIso8601String(Iso8601Format.EXTENDED);
-            Assert.assertTrue(RegexHelper.isMatch(regex, s));
-            for (int numDigits = 0; numDigits <= 15; ++numDigits) {
-                s = date.toIso8601String(Iso8601Format.BASIC, numDigits);
-                Assert.assertTrue(RegexHelper.isMatch(regex, s));
-                s = date.toIso8601String(Iso8601Format.COMPACT, numDigits);
-                Assert.assertTrue(RegexHelper.isMatch(regex, s));
-                s = date.toIso8601String(Iso8601Format.EXTENDED, numDigits);
-                Assert.assertTrue(RegexHelper.isMatch(regex, s));
-            }
         }
+    }
+
+    @Test
+    public final void toIso8601Validation$TestCase1() {
+        for (final GregorianDate date : getToIso8601ValidationValues()) {
+            toIso8601Validation(date);
+        }
+    }
+
+    public final Iterable<GregorianDate> getToIso8601ValidationValues() {
+        final ArrayList<cesiumlanguagewriter.GregorianDate> tempCollection$0 = new ArrayList<cesiumlanguagewriter.GregorianDate>();
+        tempCollection$0.add(new GregorianDate(2012, 4, 2, 1, 2, 3.12345));
+        tempCollection$0.add(new GregorianDate(2012, 4, 2, 1, 2, 0.12345));
+        tempCollection$0.add(new GregorianDate(2012, 4, 2, 1, 0, 0.12345));
+        tempCollection$0.add(new GregorianDate(2012, 4, 2, 0, 0, 0.12345));
+        tempCollection$0.add(new GregorianDate(2012, 4, 2, 1, 2, 0D));
+        tempCollection$0.add(new GregorianDate(2012, 4, 2, 1, 0, 0D));
+        tempCollection$0.add(new GregorianDate(2012, 4, 2, 0, 0, 0D));
+        tempCollection$0.add(new GregorianDate(2012, 4, 2, 0, 1, 0D));
+        tempCollection$0.add(new GregorianDate(2012, 4, 2, 0, 0, 1D));
+        return tempCollection$0;
     }
 
     @Test
@@ -251,23 +367,45 @@ public class TestGregorianDateFormatting {
         Assert.assertEquals("2012-08-07 13:59:55", gd.toString("yyyy-MM-dd HH:mm:ss.FFFFFF", m_cultureInfo));
     }
 
+    public final void toIso8601StringWithFractionalSeconds(int year, int month, int day, int hour, int minute, double second, String expectedIsoString) {
+        cesiumlanguagewriter.GregorianDate gregorianDate = new GregorianDate(year, month, day, hour, minute, second);
+        String isoString = gregorianDate.toIso8601String(Iso8601Format.EXTENDED, 6);
+        Assert.assertEquals(expectedIsoString, isoString);
+    }
+
     @Test
-    public final void toIso8601StringWithFractionalSeconds() {
-        GregorianDate gd = new GregorianDate(2012, 8, 7, 13, 59, 59.9999999);
-        Assert.assertEquals("2012-08-07T13:59:59.999999Z", gd.toIso8601String(Iso8601Format.EXTENDED, 6));
-        // Leap second test cases.
-        gd = new GregorianDate(2012, 6, 30, 23, 59, 59.999999);
-        Assert.assertEquals("2012-06-30T23:59:59.999999Z", gd.toIso8601String(Iso8601Format.EXTENDED, 6));
-        gd = new GregorianDate(2012, 6, 30, 23, 59, 59.99999949999999);
-        Assert.assertEquals("2012-06-30T23:59:59.999999Z", gd.toIso8601String(Iso8601Format.EXTENDED, 6));
-        gd = new GregorianDate(2012, 6, 30, 23, 59, 59.99999950000000);
-        Assert.assertEquals("2012-06-30T23:59:59.999999Z", gd.toIso8601String(Iso8601Format.EXTENDED, 6));
-        gd = new GregorianDate(2012, 6, 30, 23, 59, 60.0);
-        Assert.assertEquals("2012-06-30T23:59:60.000000Z", gd.toIso8601String(Iso8601Format.EXTENDED, 6));
-        gd = new GregorianDate(2012, 6, 30, 23, 59, 60.99999949999999);
-        Assert.assertEquals("2012-06-30T23:59:60.999999Z", gd.toIso8601String(Iso8601Format.EXTENDED, 6));
-        gd = new GregorianDate(2012, 6, 30, 23, 59, 60.99999950000000);
-        Assert.assertEquals("2012-06-30T23:59:60.999999Z", gd.toIso8601String(Iso8601Format.EXTENDED, 6));
+    public final void toIso8601StringWithFractionalSeconds$TestCase1() {
+        toIso8601StringWithFractionalSeconds(2012, 8, 7, 13, 59, 59.9999999, "2012-08-07T13:59:59.999999Z");
+    }
+
+    @Test
+    public final void toIso8601StringWithFractionalSeconds$TestCase2() {
+        toIso8601StringWithFractionalSeconds(2012, 6, 30, 23, 59, 59.999999, "2012-06-30T23:59:59.999999Z");
+    }
+
+    @Test
+    public final void toIso8601StringWithFractionalSeconds$TestCase3() {
+        toIso8601StringWithFractionalSeconds(2012, 6, 30, 23, 59, 59.99999949999999, "2012-06-30T23:59:59.999999Z");
+    }
+
+    @Test
+    public final void toIso8601StringWithFractionalSeconds$TestCase4() {
+        toIso8601StringWithFractionalSeconds(2012, 6, 30, 23, 59, 59.99999950000000, "2012-06-30T23:59:59.999999Z");
+    }
+
+    @Test
+    public final void toIso8601StringWithFractionalSeconds$TestCase5() {
+        toIso8601StringWithFractionalSeconds(2012, 6, 30, 23, 59, 60.0, "2012-06-30T23:59:60.000000Z");
+    }
+
+    @Test
+    public final void toIso8601StringWithFractionalSeconds$TestCase6() {
+        toIso8601StringWithFractionalSeconds(2012, 6, 30, 23, 59, 60.99999949999999, "2012-06-30T23:59:60.999999Z");
+    }
+
+    @Test
+    public final void toIso8601StringWithFractionalSeconds$TestCase7() {
+        toIso8601StringWithFractionalSeconds(2012, 6, 30, 23, 59, 60.99999950000000, "2012-06-30T23:59:60.999999Z");
     }
 
     @Test

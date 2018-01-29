@@ -62,6 +62,7 @@ namespace CesiumLanguageWriter
                         result.Add(s);
                     }
                 }
+
                 return result.ToArray();
             }
 
@@ -108,6 +109,7 @@ namespace CesiumLanguageWriter
                     {
                     }
                 }
+
                 result = MinValue;
                 return false;
             }
@@ -191,6 +193,7 @@ namespace CesiumLanguageWriter
                         exception = new FormatException(string.Format(CesiumLocalization.GregorianDateOrderOfMonthAndDateNotDefined, dfi.MonthDayPattern));
                     return false;
                 }
+
                 bool isDayBeforeMonth = dayIndex < monthIndex;
                 string[] monthDayFormats = isDayBeforeMonth ? s_dayMonthShortFormats : s_monthDayShortFormats;
                 for (int i = 0; i < monthDayFormats.Length; i++)
@@ -214,6 +217,7 @@ namespace CesiumLanguageWriter
                         if (DoParse(s, firstPart, monthDayFormats[i], false, out result, dfi, ref incompleteFormat, ref longYear))
                             return true;
                     }
+
                     for (int i = 0; i < allDateFormats.Length; i++)
                     {
                         string dateFormat = allDateFormats[i];
@@ -269,6 +273,7 @@ namespace CesiumLanguageWriter
                             string msg = string.Format(CesiumLocalization.GregorianDateOrderOfYearMonthAndDateNotSupported, dfi.ShortDatePattern);
                             ex = new FormatException(msg);
                         }
+
                         return null;
                     }
 
@@ -284,6 +289,7 @@ namespace CesiumLanguageWriter
                     string msg = string.Format(CesiumLocalization.GregorianDateOrderOfYearMonthAndDateNotSupported, dfi.ShortDatePattern);
                     ex = new FormatException(msg);
                 }
+
                 return null;
             }
 
@@ -321,6 +327,7 @@ namespace CesiumLanguageWriter
 
                     digits = realDigits;
                 }
+
                 if (digits < minDigits)
                 {
                     numParsed = -1;
@@ -411,6 +418,7 @@ namespace CesiumLanguageWriter
                     numParsed = 0;
                     return true;
                 }
+
                 DateTimeFormatInfo invInfo = DateTimeFormatInfo.InvariantInfo;
                 if (!exact && ParseString(s, valuePos, num, invInfo.PMDesignator, out numParsed) ||
                     dfi.PMDesignator != "" && ParseString(s, valuePos, num, dfi.PMDesignator, out numParsed))
@@ -423,6 +431,7 @@ namespace CesiumLanguageWriter
                 }
                 else
                     return false;
+
                 return true;
             }
 
@@ -499,6 +508,7 @@ namespace CesiumLanguageWriter
                                 continue;
                             }
                         }
+
                         if (!afterTFormat && ParseAmPm(s, valuePos, 0, dfi, false, out numParsed, ref ampm))
                         {
                             if (IsLetter(s, valuePos + numParsed))
@@ -549,6 +559,7 @@ namespace CesiumLanguageWriter
                             isFirstPart = false;
                             continue;
                         }
+
                         break;
                     }
 
@@ -626,6 +637,7 @@ namespace CesiumLanguageWriter
                             else
                                 break;
                         }
+
                         valuePos = ws;
                         ws = pos;
                         while (ws < chars.Length)
@@ -635,6 +647,7 @@ namespace CesiumLanguageWriter
                             else
                                 break;
                         }
+
                         pos = ws;
                         // A whitespace may match a '/' in the pattern.
                         if (!exact && pos < chars.Length && chars[pos] == '/')
@@ -709,6 +722,7 @@ namespace CesiumLanguageWriter
                                     int ly = (int)ParseNumber(s, valuePos, 5, 5, false, out np);
                                     longYear = ly > 9999;
                                 }
+
                                 num = 3;
                             }
 
@@ -816,6 +830,7 @@ namespace CesiumLanguageWriter
                                 {
                                     valuePos++;
                                 }
+
                                 break;
                         }
                     }
@@ -830,6 +845,7 @@ namespace CesiumLanguageWriter
                     while (pos < len && chars[pos] == 'F') // '.FFF....' can be mapped to nothing. See bug #444103
                         pos++;
                 }
+
                 while (pos < len && chars[pos] == 'K') // 'K' can be mapped to nothing
                     pos++;
                 if (pos < len)
@@ -1044,6 +1060,7 @@ namespace CesiumLanguageWriter
                     else
                         throw exception;
                 }
+
                 tokens = tokens[1].Split('T');
                 int doy;
                 // The 366 out-of-range check below will handle cases where there are 4 or more digits
@@ -1184,6 +1201,7 @@ namespace CesiumLanguageWriter
                                     {
                                         matchesSeparator = result[result.Length - nfi.NumberDecimalSeparator.Length + separatorIndex] == nfi.NumberDecimalSeparator[separatorIndex];
                                     }
+
                                     if (matchesSeparator)
                                         result.Length = result.Length - nfi.NumberDecimalSeparator.Length;
                                 }
@@ -1296,8 +1314,10 @@ namespace CesiumLanguageWriter
                             tokLen = 1;
                             break;
                     }
+
                     i += tokLen;
                 }
+
                 return result.ToString();
             }
 
@@ -1679,17 +1699,21 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>Gets the day of the week represented by this instance.</summary>
-        /// <returns>A <see cref="DayOfWeek" /> enumerated constant that indicates the day
+        /// <returns>
+        /// A <see cref="DayOfWeek"/> value that indicates the day
         /// of the week. This property value ranges from zero, indicating Sunday, to six,
-        /// indicating Saturday.</returns>
+        /// indicating Saturday.
+        /// </returns>
         public DayOfWeek DayOfWeek
         {
             get { return m_yearMonthDay.DayOfWeek; }
         }
 
         /// <summary>Gets the day of the year represented by this instance.</summary>
-        /// <returns>An integer that indicates the day of the year.
-        /// This property value ranges from 1 through the number of days in the year.</returns>
+        /// <returns>
+        /// An integer that indicates the day of the year.
+        /// This property value ranges from 1 through the number of days in the year.
+        /// </returns>
         public int DayOfYear
         {
             get { return m_yearMonthDay.DayOfYear; }
@@ -1973,23 +1997,26 @@ namespace CesiumLanguageWriter
             return CompareTo(other) == 0;
         }
 
-        /// <summary>Converts the value of this instance to its equivalent string
-        /// representation.</summary>
+        /// <summary>
+        /// Converts the value of this instance to its equivalent string representation.
+        /// </summary>
         /// <returns>A string representation of value of this instance.</returns>
         public override string ToString()
         {
             return ToString(null, null);
         }
 
-        /// <summary>Converts the value of this instance to its equivalent string
-        /// representation using the specified format.</summary>
-        /// <returns>A string representation of value of this instance as specified by
-        /// <paramref name="format"/>.</returns>
-        /// <param name="format">A format string. </param>
-        /// <exception cref="FormatException">The length of <paramref name="format"/> is 1,
-        /// and it is not one of the format specifier characters defined for
-        /// <see cref="DateTimeFormatInfo"/>.-or- <paramref name="format"/> does not
-        /// contain a valid custom format pattern. </exception>
+        /// <summary>
+        /// Converts the value of this instance to its equivalent string
+        /// representation using the specified format.
+        /// </summary>
+        /// <param name="format">A format string.</param>
+        /// <returns>A string representation of value of this instance as specified by <paramref name="format"/>.</returns>
+        /// <exception cref="FormatException">
+        /// Thrown if the length of <paramref name="format"/> is 1,
+        /// and it is not one of the format specifier characters defined for <see cref="DateTimeFormatInfo"/>, 
+        /// or if <paramref name="format"/> does not contain a valid custom format pattern. 
+        /// </exception>
         [Pure]
         [NotNull]
         public string ToString([CanBeNull] string format)
@@ -1997,13 +2024,12 @@ namespace CesiumLanguageWriter
             return ToString(format, null);
         }
 
-        /// <summary>Converts the value of this instance to its equivalent string
+        /// <summary>
+        /// Converts the value of this instance to its equivalent string
         /// representation using the specified culture-specific format information.
         /// </summary>
-        /// <returns>A string representation of value of this instance as specified by
-        /// <paramref name="provider"/>.</returns>
-        /// <param name="provider">An <see cref="IFormatProvider"/> that supplies
-        /// culture-specific formatting information. </param>
+        /// <param name="provider">An <see cref="IFormatProvider"/> that supplies culture-specific formatting information.</param>
+        /// <returns>A string representation of value of this instance as specified by <paramref name="provider"/>.</returns>
         [Pure]
         [NotNull]
         public string ToString([CanBeNull] IFormatProvider provider)
@@ -2011,18 +2037,18 @@ namespace CesiumLanguageWriter
             return ToString(null, provider);
         }
 
-        /// <summary>Converts the value of this instance to its equivalent string
-        /// representation using the specified format and culture-specific format
-        /// information.</summary>
-        /// <returns>A string representation of value of this instance as specified by
-        /// <paramref name="format"/> and <paramref name="provider"/>.</returns>
-        /// <param name="format">A format string. </param>
-        /// <param name="provider">An <see cref="IFormatProvider"/> that supplies
-        /// culture-specific formatting information. </param>
-        /// <exception cref="FormatException">The length of <paramref name="format"/> is 1,
-        /// and it is not one of the format specifier characters defined for
-        /// <see cref="DateTimeFormatInfo" />.-or- <paramref name="format"/> does not
-        /// contain a valid custom format pattern. </exception>
+        /// <summary>
+        /// Converts the value of this instance to its equivalent string
+        /// representation using the specified format and culture-specific format information.
+        /// </summary>
+        /// <param name="format">A format string.</param>
+        /// <param name="provider">An <see cref="IFormatProvider"/> that supplies culture-specific formatting information.</param>
+        /// <returns>A string representation of value of this instance as specified by <paramref name="format"/> and <paramref name="provider"/>.</returns>
+        /// <exception cref="FormatException">
+        /// Thrown if the length of <paramref name="format"/> is 1,
+        /// and it is not one of the format specifier characters defined for <see cref="DateTimeFormatInfo"/>, 
+        /// or if <paramref name="format"/> does not contain a valid custom format pattern. 
+        /// </exception>
         [Pure]
         [NotNull]
         public string ToString([CanBeNull] string format, [CanBeNull] IFormatProvider provider)
@@ -2031,11 +2057,10 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Converts the value of this instance to its equivalent ISO8601 extended string
-        /// representation, corresponding to year month day hours minutes and seconds with
-        /// seconds represented to machine precision.
+        /// Converts the value of this instance to its equivalent ISO8601 extended string representation, 
+        /// with fractional seconds represented to 15 digits.
         /// </summary>
-        /// <returns>A string representing this date and time in ISO8601 format.</returns>
+        /// <returns>A string representing this date and time in extended ISO8601 format.</returns>
         [Pure]
         [NotNull]
         public string ToIso8601String()
@@ -2045,8 +2070,7 @@ namespace CesiumLanguageWriter
 
         /// <summary>
         /// Converts the value of this instance to its equivalent ISO8601 string representation,
-        /// corresponding to year month day hours minutes and seconds with seconds
-        /// represented to machine precision.
+        /// with fractional seconds represented to 15 digits.
         /// </summary>
         /// <param name="format">The type of ISO8601 string to create.</param>
         /// <returns>A string representing this date and time in ISO8601 format.</returns>
@@ -2059,8 +2083,7 @@ namespace CesiumLanguageWriter
 
         /// <summary>
         /// Converts the value of this instance to its equivalent ISO8601 string representation,
-        /// corresponding to year month day hours minutes and seconds with seconds
-        /// rounded to and formatted with the specified number of decimal digits.
+        /// with fractional seconds represented to the specified number of digits.
         /// </summary>
         /// <param name="format">The type of ISO8601 string to create.</param>
         /// <param name="digitsOfFractionalSeconds">The number of digits after the decimal point in the 'seconds' portion of the time.</param>
@@ -2107,13 +2130,13 @@ namespace CesiumLanguageWriter
                     formatStringBuilder.Append("yyyyMMdd'T'HH");
 
                     bool hasMinutes = m_minute != 0;
-                    if (hasMinutes)
+                    // ReSharper disable once CompareOfFloatsByEqualityOperator
+                    bool hasSeconds = m_second != 0.0;
+                    if (hasMinutes || hasSeconds)
                     {
                         formatStringBuilder.Append("mm");
                     }
 
-                    // ReSharper disable once CompareOfFloatsByEqualityOperator
-                    bool hasSeconds = m_second != 0.0;
                     if (hasSeconds)
                     {
                         formatStringBuilder.Append("ss");
@@ -2141,8 +2164,13 @@ namespace CesiumLanguageWriter
             }
         }
 
-        /// <summary>Converts the value of this instance to its equivalent long date string representation.</summary>
-        /// <returns>A string containing the name of the day of the week, the name of the month, the numeric day of the month, and the year equivalent to the date value of this instance.</returns>
+        /// <summary>
+        /// Converts the value of this instance to its equivalent long date string representation.
+        /// </summary>
+        /// <returns>
+        /// A string containing the name of the day of the week, the name of the month, 
+        /// the numeric day of the month, and the year equivalent to the date value of this instance.
+        /// </returns>
         [Pure]
         [NotNull]
         public string ToLongDateString()
@@ -2150,11 +2178,13 @@ namespace CesiumLanguageWriter
             return ToString("D");
         }
 
-        /// <summary>Converts the value of this instance to its equivalent long time string
-        /// representation.</summary>
-        /// <returns>A string containing the name of the day of the week, the name of the
-        /// month, the numeric day of the hours, minutes, and seconds equivalent to the
-        /// time value of this instance.</returns>
+        /// <summary>
+        /// Converts the value of this instance to its equivalent long time string representation.
+        /// </summary>
+        /// <returns>
+        /// A string containing the name of the day of the week, the name of the month, 
+        /// the numeric day of the hours, minutes, and seconds equivalent to the time value of this instance.
+        /// </returns>
         [Pure]
         [NotNull]
         public string ToLongTimeString()
@@ -2162,10 +2192,13 @@ namespace CesiumLanguageWriter
             return ToString("T");
         }
 
-        /// <summary>Converts the value of this instance to its equivalent short date
-        /// string representation.</summary>
-        /// <returns>A string containing the numeric month, the numeric day of the month,
-        /// and the year equivalent to the date value of this instance.</returns>
+        /// <summary>
+        /// Converts the value of this instance to its equivalent short date string representation.
+        /// </summary>
+        /// <returns>
+        /// A string containing the numeric month, the numeric day of the month,
+        /// and the year equivalent to the date value of this instance.
+        /// </returns>
         [Pure]
         [NotNull]
         public string ToShortDateString()
@@ -2173,11 +2206,13 @@ namespace CesiumLanguageWriter
             return ToString("d");
         }
 
-        /// <summary>Converts the value of this instance to its equivalent short time
-        /// string representation.</summary>
-        /// <returns>A string containing the name of the day of the week, the name of the
-        /// month, the numeric day of the hours, minutes, and seconds equivalent to the
-        /// time value of this instance.</returns>
+        /// <summary>
+        /// Converts the value of this instance to its equivalent short time string representation.
+        /// </summary>
+        /// <returns>
+        /// A string containing the name of the day of the week, the name of the month, 
+        /// the numeric day of the hours, minutes, and seconds equivalent to the time value of this instance.
+        /// </returns>
         [Pure]
         [NotNull]
         public string ToShortTimeString()
@@ -2264,25 +2299,36 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// <para>
         /// Converts the specified string representation of a date and time to its
-        /// <see cref="GregorianDate" /> equivalent.
-        ///
+        /// <see cref="GregorianDate"/> equivalent.
+        /// </para>
+        /// <para>
         /// Note: <see cref="GregorianDate"/> is always assumed to be in UTC.  You cannot
         /// parse strings containing time zone information. However, this will handle
-        /// three common ISO8601 formats: the extended format YYYY-MM-DDThh:mm:ss.sZ
-        /// (with seconds to machine precision), it's "day of year" equivalent YYYY-DDDThh:mm:ss.sZ,
-        /// and the basic format YYYYMMDDThhmmss.sZ.
+        /// three common ISO8601 formats:
+        /// </para>
+        /// <list type="bullet">
+        /// <item>
+        /// the extended format "YYYY-MM-DDThh:mm:ss.sZ"
+        /// </item>
+        /// <item>
+        /// The "day of year" equivalent "YYYY-DDDThh:mm:ss.sZ"
+        /// </item>
+        /// <item>
+        /// The basic format "YYYYMMDDThhmmss.sZ"
+        /// </item>
+        /// </list>
         /// </summary>
         /// <returns>
-        /// A <see cref="GregorianDate" /> equivalent to the date and time contained in s.
+        /// A <see cref="GregorianDate"/> equivalent to the date and time contained in s.
         /// </returns>
         /// <param name="s">A string containing a date and time to convert.</param>
         /// <exception cref="ArgumentNullException">
-        /// <paramref name="s"/> is null.
+        /// Thrown if <paramref name="s"/> is <see langword="null"/>.
         /// </exception>
         /// <exception cref="FormatException">
-        /// <paramref name="s"/> does not contain a valid string representation of a date
-        /// and time.
+        /// Thrown if <paramref name="s"/> does not contain a valid string representation of a date and time.
         /// </exception>
         public static GregorianDate Parse([NotNull] string s)
         {
@@ -2290,29 +2336,39 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// <para>
         /// Converts the specified string representation of a date and time to its
-        /// <see cref="GregorianDate" /> equivalent using the specified culture-specific
+        /// <see cref="GregorianDate"/> equivalent using the specified culture-specific
         /// format information.
-        ///
+        ///</para>
+        /// <para>
         /// Note: <see cref="GregorianDate"/> is always assumed to be in UTC.  You cannot
         /// parse strings containing time zone information. However, this will handle
-        /// three common ISO8601 formats: the extended format YYYY-MM-DDThh:mm:ss.sZ
-        /// (with seconds to machine precision), it's "day of year" equivalent YYYY-DDDThh:mm:ss.sZ,
-        /// and the basic format YYYYMMDDThhmmss.sZ.
+        /// three common ISO8601 formats:
+        /// </para>
+        /// <list type="bullet">
+        /// <item>
+        /// the extended format "YYYY-MM-DDThh:mm:ss.sZ"
+        /// </item>
+        /// <item>
+        /// The "day of year" equivalent "YYYY-DDDThh:mm:ss.sZ"
+        /// </item>
+        /// <item>
+        /// The basic format "YYYYMMDDThhmmss.sZ"
+        /// </item>
+        /// </list>
         /// </summary>
         /// <returns>
-        /// A <see cref="GregorianDate" /> equivalent to the date and time contained in
+        /// A <see cref="GregorianDate"/> equivalent to the date and time contained in
         /// <paramref name="s"/> as specified by <paramref name="provider"/>.
         /// </returns>
         /// <param name="s">A string containing a date and time to convert.</param>
-        /// <param name="provider">An <see cref="IFormatProvider" /> that supplies
-        /// culture-specific format information about <paramref name="s"/>.</param>
+        /// <param name="provider">An <see cref="IFormatProvider"/> that supplies culture-specific format information about <paramref name="s"/>.</param>
         /// <exception cref="ArgumentNullException">
-        /// <paramref name="s"/> is null.
+        /// Thrown if <paramref name="s"/> is <see langword="null"/>.
         /// </exception>
         /// <exception cref="FormatException">
-        /// <paramref name="s"/> does not contain a valid string representation of a date
-        /// and time.
+        /// Thrown if <paramref name="s"/> does not contain a valid string representation of a date and time.
         /// </exception>
         public static GregorianDate Parse([NotNull] string s, [CanBeNull] IFormatProvider provider)
         {
@@ -2320,13 +2376,16 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// <para>
         /// Converts the specified string representation of a date and time to its
         /// <see cref="GregorianDate"/> equivalent using the specified format and
         /// culture-specific format information. The format of the string representation
         /// must match the specified format exactly.
-        ///
+        /// </para>
+        /// <para>
         /// Note: <see cref="GregorianDate"/> is always assumed to be in UTC.  You cannot
         /// parse strings containing time zone information.
+        /// </para>
         /// </summary>
         /// <returns>
         /// A <see cref="GregorianDate"/> equivalent to the date and time contained in
@@ -2335,16 +2394,14 @@ namespace CesiumLanguageWriter
         /// </returns>
         /// <param name="s">A string containing a date and time to convert. </param>
         /// <param name="format">The expected format of <paramref name="s"/>. </param>
-        /// <param name="provider">An <see cref="IFormatProvider" /> that supplies
-        /// culture-specific format information about <paramref name="s"/>. </param>
+        /// <param name="provider">An <see cref="IFormatProvider"/> that supplies culture-specific format information about <paramref name="s"/>. </param>
         /// <exception cref="ArgumentNullException">
-        /// <paramref name="s"/> or <paramref name="format"/> is null.
+        /// Thrown if <paramref name="s"/> or <paramref name="format"/> is <see langword="null"/>.
         /// </exception>
         /// <exception cref="FormatException">
-        /// <paramref name="s"/> or <paramref name="format"/> is an empty string. -or-
-        /// <paramref name="s"/> does not contain a date and time that corresponds to the
-        /// pattern specified in
-        /// <paramref name="format"/>.
+        /// Thrown if <paramref name="s"/> or <paramref name="format"/> is an empty string, 
+        /// or if <paramref name="s"/> does not contain a date and time that corresponds to the 
+        /// pattern specified in <paramref name="format"/>.
         /// </exception>
         public static GregorianDate ParseExact([NotNull] string s, [NotNull] string format, [CanBeNull] IFormatProvider provider)
         {
@@ -2352,13 +2409,16 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// <para>
         /// Converts the specified string representation of a date and time to its
         /// <see cref="GregorianDate"/> equivalent using the specified format and
         /// culture-specific format information. The format of the string representation
         /// must match the specified format exactly.
-        ///
+        /// </para>
+        /// <para>
         /// Note: <see cref="GregorianDate"/> is always assumed to be in UTC.  You cannot
         /// parse strings containing time zone information.
+        /// </para>
         /// </summary>
         /// <returns>
         /// A <see cref="GregorianDate"/> equivalent to the date and time contained in
@@ -2367,16 +2427,15 @@ namespace CesiumLanguageWriter
         /// </returns>
         /// <param name="s">A list of strings containing a date and time to convert. </param>
         /// <param name="format">The expected format of <paramref name="s"/>. </param>
-        /// <param name="provider">An <see cref="IFormatProvider" /> that supplies
+        /// <param name="provider">An <see cref="IFormatProvider"/> that supplies
         /// culture-specific format information about <paramref name="s"/>. </param>
         /// <exception cref="ArgumentNullException">
-        /// <paramref name="s"/> or <paramref name="format"/> is null.
+        /// Thrown if <paramref name="s"/> or <paramref name="format"/> is <see langword="null"/>.
         /// </exception>
         /// <exception cref="FormatException">
-        /// <paramref name="s"/> or <paramref name="format"/> is an empty string. -or-
-        /// <paramref name="s"/> does not contain a date and time that corresponds to the
-        /// pattern specified in
-        /// <paramref name="format"/>.
+        /// Thrown if <paramref name="s"/> or <paramref name="format"/> is an empty string, 
+        /// or if <paramref name="s"/> does not contain a date and time that corresponds to the
+        /// pattern specified in <paramref name="format"/>.
         /// </exception>
         public static GregorianDate ParseExact([NotNull] string s, [NotNull] string[] format, [CanBeNull] IFormatProvider provider)
         {
@@ -2384,18 +2443,29 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// <para>
         /// Converts the specified string representation of a date and time to its
-        /// <see cref="GregorianDate" /> equivalent.
-        ///
+        /// <see cref="GregorianDate"/> equivalent.
+        /// </para>
+        /// <para>
         /// Note: <see cref="GregorianDate"/> is always assumed to be in UTC.  You cannot
         /// parse strings containing time zone information. However, this will handle
-        /// three common ISO8601 formats: the extended format YYYY-MM-DDThh:mm:ss.sZ
-        /// (with seconds to machine precision), it's "day of year" equivalent YYYY-DDDThh:mm:ss.sZ,
-        /// and the basic format YYYYMMDDThhmmss.sZ.
+        /// three common ISO8601 formats:
+        /// </para>
+        /// <list type="bullet">
+        /// <item>
+        /// the extended format "YYYY-MM-DDThh:mm:ss.sZ"
+        /// </item>
+        /// <item>
+        /// The "day of year" equivalent "YYYY-DDDThh:mm:ss.sZ"
+        /// </item>
+        /// <item>
+        /// The basic format "YYYYMMDDThhmmss.sZ"
+        /// </item>
+        /// </list>
         /// </summary>
         /// <returns>
-        /// true if the <paramref name="s"/> parameter was converted successfully;
-        /// otherwise, false.
+        /// true if the <paramref name="s"/> parameter was converted successfully; otherwise, false.
         /// </returns>
         /// <param name="s">A string containing a date and time to convert.</param>
         /// <param name="result">
@@ -2404,9 +2474,8 @@ namespace CesiumLanguageWriter
         /// the <see cref="GregorianDate" /> value equivalent to the date and time contained in
         /// <paramref name="s"/>, if the conversion succeeded, or
         /// <see cref="GregorianDate.MinValue" /> if the conversion failed. The conversion
-        /// fails if the <paramref name="s"/> parameter is null, or does not contain a
-        /// valid string representation of a date and time. This parameter is passed
-        /// uninitialized.
+        /// fails if the <paramref name="s"/> parameter is <see langword="null"/>, or does not contain a
+        /// valid string representation of a date and time.
         /// </param>
         [ContractAnnotation("s:null => false")]
         public static bool TryParse(string s, out GregorianDate result)
@@ -2415,32 +2484,41 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// <para>
         /// Converts the specified string representation of a date and time to its
         /// <see cref="GregorianDate" /> equivalent using the specified culture-specific
         /// format information.
-        ///
+        ///</para>
+        /// <para>
         /// Note: <see cref="GregorianDate"/> is always assumed to be in UTC.  You cannot
         /// parse strings containing time zone information. However, this will handle
-        /// three common ISO8601 formats: the extended format YYYY-MM-DDThh:mm:ss.sZ
-        /// (with seconds to machine precision), it's "day of year" equivalent YYYY-DDDThh:mm:ss.sZ,
-        /// and the basic format YYYYMMDDThhmmss.sZ.
+        /// three common ISO8601 formats:
+        /// </para>
+        /// <list type="bullet">
+        /// <item>
+        /// the extended format "YYYY-MM-DDThh:mm:ss.sZ"
+        /// </item>
+        /// <item>
+        /// The "day of year" equivalent "YYYY-DDDThh:mm:ss.sZ"
+        /// </item>
+        /// <item>
+        /// The basic format "YYYYMMDDThhmmss.sZ"
+        /// </item>
+        /// </list>
         /// </summary>
         /// <returns>
-        /// true if the <paramref name="s"/> parameter was converted successfully;
-        /// otherwise, false.
+        /// true if the <paramref name="s"/> parameter was converted successfully; otherwise, false.
         /// </returns>
         /// <param name="s">A string containing a date and time to convert.</param>
-        /// <param name="provider">An <see cref="IFormatProvider" /> that supplies
-        /// culture-specific format information about <paramref name="s"/>. </param>
+        /// <param name="provider">An <see cref="IFormatProvider" /> that supplies culture-specific format information about <paramref name="s"/>. </param>
         /// <param name="result">
         /// <filter name="Java">On input, an array with one element.  On return, the array is populated with</filter>
         /// <filter name="DotNet">On return,</filter>
         /// the <see cref="GregorianDate" /> value equivalent to the date and time contained in
         /// <paramref name="s"/>, if the conversion succeeded, or
         /// <see cref="GregorianDate.MinValue" /> if the conversion failed. The conversion
-        /// fails if the <paramref name="s"/> parameter is null, or does not contain a
-        /// valid string representation of a date and time. This parameter is passed
-        /// uninitialized.
+        /// fails if the <paramref name="s"/> parameter is <see langword="null"/>, or does not contain a
+        /// valid string representation of a date and time.
         /// </param>
         [ContractAnnotation("s:null => false")]
         public static bool TryParse(string s, IFormatProvider provider, out GregorianDate result)
