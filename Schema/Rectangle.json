@@ -63,16 +63,6 @@
             "description": "The width of the rectangle outline.",
             "default": 1.0
         },
-        "closeTop": {
-            "$ref": "Boolean.json",
-            "description": "Whether to close the top of the rectangle.",
-            "default": true
-        },
-        "closeBottom": {
-            "$ref": "Boolean.json",
-            "description": "Whether to close the bottom of the rectangle.",
-            "default": true
-        },
         "shadows": {
             "$ref": "ShadowMode.json",
             "description": "Whether or not the rectangle casts or receives shadows.",
