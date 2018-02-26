@@ -2018,24 +2018,6 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
-                            cesiumlanguagewriter.BooleanCesiumWriter w2 = w.openCloseTopProperty();
-                            try {
-                                w2.writeBoolean(true);
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.closeTop.getValue(date)).toEqual(true);");
-                            } finally {
-                                DisposeHelper.dispose(w2);
-                            }
-                        }
-                        {
-                            cesiumlanguagewriter.BooleanCesiumWriter w2 = w.openCloseBottomProperty();
-                            try {
-                                w2.writeBoolean(true);
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.closeBottom.getValue(date)).toEqual(true);");
-                            } finally {
-                                DisposeHelper.dispose(w2);
-                            }
-                        }
-                        {
                             cesiumlanguagewriter.ShadowModeCesiumWriter w2 = w.openShadowsProperty();
                             try {
                                 w2.writeShadowMode(CesiumShadowMode.CAST_ONLY);
@@ -19735,24 +19717,6 @@ public class TestGenerateValidationDocument {
                             try {
                                 w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangle", "outlineWidth")));
                                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.outlineWidth.getValue(date)).toEqual(constant.rectangle.outlineWidth.getValue(date));");
-                            } finally {
-                                DisposeHelper.dispose(w2);
-                            }
-                        }
-                        {
-                            cesiumlanguagewriter.BooleanCesiumWriter w2 = w.openCloseTopProperty();
-                            try {
-                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangle", "closeTop")));
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.closeTop.getValue(date)).toEqual(constant.rectangle.closeTop.getValue(date));");
-                            } finally {
-                                DisposeHelper.dispose(w2);
-                            }
-                        }
-                        {
-                            cesiumlanguagewriter.BooleanCesiumWriter w2 = w.openCloseBottomProperty();
-                            try {
-                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangle", "closeBottom")));
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.closeBottom.getValue(date)).toEqual(constant.rectangle.closeBottom.getValue(date));");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }

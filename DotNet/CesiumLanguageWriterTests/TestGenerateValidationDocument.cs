@@ -1097,16 +1097,6 @@ namespace CesiumLanguageWriterTests
                         w2.WriteNumber(59794.0);
                         m_assertionsWriter.WriteLine("    expect(e.rectangle.outlineWidth.getValue(date)).toEqual(59794.0);");
                     }
-                    using (var w2 = w.OpenCloseTopProperty())
-                    {
-                        w2.WriteBoolean(true);
-                        m_assertionsWriter.WriteLine("    expect(e.rectangle.closeTop.getValue(date)).toEqual(true);");
-                    }
-                    using (var w2 = w.OpenCloseBottomProperty())
-                    {
-                        w2.WriteBoolean(true);
-                        m_assertionsWriter.WriteLine("    expect(e.rectangle.closeBottom.getValue(date)).toEqual(true);");
-                    }
                     using (var w2 = w.OpenShadowsProperty())
                     {
                         w2.WriteShadowMode(CesiumShadowMode.CastOnly);
@@ -8444,16 +8434,6 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("rectangle", "outlineWidth")));
                         m_assertionsWriter.WriteLine("    expect(e.rectangle.outlineWidth.getValue(date)).toEqual(constant.rectangle.outlineWidth.getValue(date));");
-                    }
-                    using (var w2 = w.OpenCloseTopProperty())
-                    {
-                        w2.WriteReference(new Reference("Constant", CreateList("rectangle", "closeTop")));
-                        m_assertionsWriter.WriteLine("    expect(e.rectangle.closeTop.getValue(date)).toEqual(constant.rectangle.closeTop.getValue(date));");
-                    }
-                    using (var w2 = w.OpenCloseBottomProperty())
-                    {
-                        w2.WriteReference(new Reference("Constant", CreateList("rectangle", "closeBottom")));
-                        m_assertionsWriter.WriteLine("    expect(e.rectangle.closeBottom.getValue(date)).toEqual(constant.rectangle.closeBottom.getValue(date));");
                     }
                     using (var w2 = w.OpenShadowsProperty())
                     {

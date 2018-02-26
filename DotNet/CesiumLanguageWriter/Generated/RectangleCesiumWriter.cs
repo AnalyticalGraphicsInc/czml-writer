@@ -77,16 +77,6 @@ namespace CesiumLanguageWriter
         public const string OutlineWidthPropertyName = "outlineWidth";
 
         /// <summary>
-        /// The name of the <c>closeTop</c> property.
-        /// </summary>
-        public const string CloseTopPropertyName = "closeTop";
-
-        /// <summary>
-        /// The name of the <c>closeBottom</c> property.
-        /// </summary>
-        public const string CloseBottomPropertyName = "closeBottom";
-
-        /// <summary>
         /// The name of the <c>shadows</c> property.
         /// </summary>
         public const string ShadowsPropertyName = "shadows";
@@ -108,8 +98,6 @@ namespace CesiumLanguageWriter
         private readonly Lazy<BooleanCesiumWriter> m_outline = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(OutlinePropertyName), false);
         private readonly Lazy<ColorCesiumWriter> m_outlineColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(OutlineColorPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_outlineWidth = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(OutlineWidthPropertyName), false);
-        private readonly Lazy<BooleanCesiumWriter> m_closeTop = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(CloseTopPropertyName), false);
-        private readonly Lazy<BooleanCesiumWriter> m_closeBottom = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(CloseBottomPropertyName), false);
         private readonly Lazy<ShadowModeCesiumWriter> m_shadows = new Lazy<ShadowModeCesiumWriter>(() => new ShadowModeCesiumWriter(ShadowsPropertyName), false);
         private readonly Lazy<DistanceDisplayConditionCesiumWriter> m_distanceDisplayCondition = new Lazy<DistanceDisplayConditionCesiumWriter>(() => new DistanceDisplayConditionCesiumWriter(DistanceDisplayConditionPropertyName), false);
 
@@ -1406,168 +1394,6 @@ namespace CesiumLanguageWriter
         public void WriteOutlineWidthPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenOutlineWidthProperty())
-            {
-                writer.WriteReference(identifier, propertyNames);
-            }
-        }
-
-        /// <summary>
-        /// Gets the writer for the <c>closeTop</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>closeTop</c> property defines whether to close the top of the rectangle.  If not specified, the default value is <see langword="true"/>.
-        /// </summary>
-        [NotNull]
-        public BooleanCesiumWriter CloseTopWriter
-        {
-            get { return m_closeTop.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <c>closeTop</c> property.  The <c>closeTop</c> property defines whether to close the top of the rectangle.  If not specified, the default value is <see langword="true"/>.
-        /// </summary>
-        [NotNull]
-        public BooleanCesiumWriter OpenCloseTopProperty()
-        {
-            OpenIntervalIfNecessary();
-            return OpenAndReturn(CloseTopWriter);
-        }
-
-        /// <summary>
-        /// Writes a value for the <c>closeTop</c> property as a <c>boolean</c> value.  The <c>closeTop</c> property specifies whether to close the top of the rectangle.  If not specified, the default value is <see langword="true"/>.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        public void WriteCloseTopProperty(bool value)
-        {
-            using (var writer = OpenCloseTopProperty())
-            {
-                writer.WriteBoolean(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <c>closeTop</c> property as a <c>reference</c> value.  The <c>closeTop</c> property specifies whether to close the top of the rectangle.  If not specified, the default value is <see langword="true"/>.
-        /// </summary>
-        /// <param name="value">The reference.</param>
-        public void WriteCloseTopPropertyReference(Reference value)
-        {
-            using (var writer = OpenCloseTopProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <c>closeTop</c> property as a <c>reference</c> value.  The <c>closeTop</c> property specifies whether to close the top of the rectangle.  If not specified, the default value is <see langword="true"/>.
-        /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
-        public void WriteCloseTopPropertyReference(string value)
-        {
-            using (var writer = OpenCloseTopProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <c>closeTop</c> property as a <c>reference</c> value.  The <c>closeTop</c> property specifies whether to close the top of the rectangle.  If not specified, the default value is <see langword="true"/>.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyName">The property on the referenced object.</param>
-        public void WriteCloseTopPropertyReference(string identifier, string propertyName)
-        {
-            using (var writer = OpenCloseTopProperty())
-            {
-                writer.WriteReference(identifier, propertyName);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <c>closeTop</c> property as a <c>reference</c> value.  The <c>closeTop</c> property specifies whether to close the top of the rectangle.  If not specified, the default value is <see langword="true"/>.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
-        public void WriteCloseTopPropertyReference(string identifier, string[] propertyNames)
-        {
-            using (var writer = OpenCloseTopProperty())
-            {
-                writer.WriteReference(identifier, propertyNames);
-            }
-        }
-
-        /// <summary>
-        /// Gets the writer for the <c>closeBottom</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>closeBottom</c> property defines whether to close the bottom of the rectangle.  If not specified, the default value is <see langword="true"/>.
-        /// </summary>
-        [NotNull]
-        public BooleanCesiumWriter CloseBottomWriter
-        {
-            get { return m_closeBottom.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <c>closeBottom</c> property.  The <c>closeBottom</c> property defines whether to close the bottom of the rectangle.  If not specified, the default value is <see langword="true"/>.
-        /// </summary>
-        [NotNull]
-        public BooleanCesiumWriter OpenCloseBottomProperty()
-        {
-            OpenIntervalIfNecessary();
-            return OpenAndReturn(CloseBottomWriter);
-        }
-
-        /// <summary>
-        /// Writes a value for the <c>closeBottom</c> property as a <c>boolean</c> value.  The <c>closeBottom</c> property specifies whether to close the bottom of the rectangle.  If not specified, the default value is <see langword="true"/>.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        public void WriteCloseBottomProperty(bool value)
-        {
-            using (var writer = OpenCloseBottomProperty())
-            {
-                writer.WriteBoolean(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <c>closeBottom</c> property as a <c>reference</c> value.  The <c>closeBottom</c> property specifies whether to close the bottom of the rectangle.  If not specified, the default value is <see langword="true"/>.
-        /// </summary>
-        /// <param name="value">The reference.</param>
-        public void WriteCloseBottomPropertyReference(Reference value)
-        {
-            using (var writer = OpenCloseBottomProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <c>closeBottom</c> property as a <c>reference</c> value.  The <c>closeBottom</c> property specifies whether to close the bottom of the rectangle.  If not specified, the default value is <see langword="true"/>.
-        /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
-        public void WriteCloseBottomPropertyReference(string value)
-        {
-            using (var writer = OpenCloseBottomProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <c>closeBottom</c> property as a <c>reference</c> value.  The <c>closeBottom</c> property specifies whether to close the bottom of the rectangle.  If not specified, the default value is <see langword="true"/>.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyName">The property on the referenced object.</param>
-        public void WriteCloseBottomPropertyReference(string identifier, string propertyName)
-        {
-            using (var writer = OpenCloseBottomProperty())
-            {
-                writer.WriteReference(identifier, propertyName);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <c>closeBottom</c> property as a <c>reference</c> value.  The <c>closeBottom</c> property specifies whether to close the bottom of the rectangle.  If not specified, the default value is <see langword="true"/>.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
-        public void WriteCloseBottomPropertyReference(string identifier, string[] propertyNames)
-        {
-            using (var writer = OpenCloseBottomProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }
