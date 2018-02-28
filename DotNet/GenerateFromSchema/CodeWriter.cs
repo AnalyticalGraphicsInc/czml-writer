@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using JetBrains.Annotations;
 
 namespace GenerateFromSchema
 {
@@ -63,6 +64,7 @@ namespace GenerateFromSchema
             m_writer.WriteLine(str);
         }
 
+        [StringFormatMethod("format")]
         public void WriteLine(string format, params object[] args)
         {
             m_writer.Write(m_indentString);

@@ -118,7 +118,7 @@ namespace CesiumLanguageWriterTests
                     using (var w2 = w.OpenImageProperty())
                     {
                         w2.WriteUri("http://example.com/3792", CesiumResourceBehavior.LinkTo);
-                        m_assertionsWriter.WriteLine("    expect(e.billboard.image.getValue(date)).toEqual('http://example.com/3792');");
+                        m_assertionsWriter.WriteLine("    expect(e.billboard.image.getValue(date).url).toEqual('http://example.com/3792');");
                     }
                     using (var w2 = w.OpenScaleProperty())
                     {
@@ -694,7 +694,7 @@ namespace CesiumLanguageWriterTests
                     using (var w2 = w.OpenGltfProperty())
                     {
                         w2.WriteUri("http://example.com/60043", CesiumResourceBehavior.LinkTo);
-                        m_assertionsWriter.WriteLine("    expect(e.model.uri.getValue(date)).toEqual('http://example.com/60043');");
+                        m_assertionsWriter.WriteLine("    expect(e.model.uri.getValue(date).url).toEqual('http://example.com/60043');");
                     }
                     using (var w2 = w.OpenScaleProperty())
                     {
@@ -1821,7 +1821,7 @@ namespace CesiumLanguageWriterTests
                     using (var m2 = m.OpenImageProperty())
                     {
                         m2.WriteUri("http://example.com/50881", CesiumResourceBehavior.LinkTo);
-                        m_assertionsWriter.WriteLine("    expect(e.box.material.image.getValue(date)).toEqual('http://example.com/50881');");
+                        m_assertionsWriter.WriteLine("    expect(e.box.material.image.getValue(date).url).toEqual('http://example.com/50881');");
                     }
                     using (var m2 = m.OpenRepeatProperty())
                     {
@@ -2022,7 +2022,7 @@ namespace CesiumLanguageWriterTests
                     using (var m2 = m.OpenImageProperty())
                     {
                         m2.WriteUri("http://example.com/8903", CesiumResourceBehavior.LinkTo);
-                        m_assertionsWriter.WriteLine("    expect(e.corridor.material.image.getValue(date)).toEqual('http://example.com/8903');");
+                        m_assertionsWriter.WriteLine("    expect(e.corridor.material.image.getValue(date).url).toEqual('http://example.com/8903');");
                     }
                     using (var m2 = m.OpenRepeatProperty())
                     {
@@ -2201,7 +2201,7 @@ namespace CesiumLanguageWriterTests
                     using (var m2 = m.OpenImageProperty())
                     {
                         m2.WriteUri("http://example.com/27447", CesiumResourceBehavior.LinkTo);
-                        m_assertionsWriter.WriteLine("    expect(e.cylinder.material.image.getValue(date)).toEqual('http://example.com/27447');");
+                        m_assertionsWriter.WriteLine("    expect(e.cylinder.material.image.getValue(date).url).toEqual('http://example.com/27447');");
                     }
                     using (var m2 = m.OpenRepeatProperty())
                     {
@@ -2380,7 +2380,7 @@ namespace CesiumLanguageWriterTests
                     using (var m2 = m.OpenImageProperty())
                     {
                         m2.WriteUri("http://example.com/2481", CesiumResourceBehavior.LinkTo);
-                        m_assertionsWriter.WriteLine("    expect(e.ellipse.material.image.getValue(date)).toEqual('http://example.com/2481');");
+                        m_assertionsWriter.WriteLine("    expect(e.ellipse.material.image.getValue(date).url).toEqual('http://example.com/2481');");
                     }
                     using (var m2 = m.OpenRepeatProperty())
                     {
@@ -2559,7 +2559,7 @@ namespace CesiumLanguageWriterTests
                     using (var m2 = m.OpenImageProperty())
                     {
                         m2.WriteUri("http://example.com/47428", CesiumResourceBehavior.LinkTo);
-                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.material.image.getValue(date)).toEqual('http://example.com/47428');");
+                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.material.image.getValue(date).url).toEqual('http://example.com/47428');");
                     }
                     using (var m2 = m.OpenRepeatProperty())
                     {
@@ -2889,7 +2889,7 @@ namespace CesiumLanguageWriterTests
                     using (var m2 = m.OpenImageProperty())
                     {
                         m2.WriteUri("http://example.com/31068", CesiumResourceBehavior.LinkTo);
-                        m_assertionsWriter.WriteLine("    expect(e.path.material.image.getValue(date)).toEqual('http://example.com/31068');");
+                        m_assertionsWriter.WriteLine("    expect(e.path.material.image.getValue(date).url).toEqual('http://example.com/31068');");
                     }
                     using (var m2 = m.OpenRepeatProperty())
                     {
@@ -3182,7 +3182,7 @@ namespace CesiumLanguageWriterTests
                     using (var m2 = m.OpenImageProperty())
                     {
                         m2.WriteUri("http://example.com/3481", CesiumResourceBehavior.LinkTo);
-                        m_assertionsWriter.WriteLine("    expect(e.polygon.material.image.getValue(date)).toEqual('http://example.com/3481');");
+                        m_assertionsWriter.WriteLine("    expect(e.polygon.material.image.getValue(date).url).toEqual('http://example.com/3481');");
                     }
                     using (var m2 = m.OpenRepeatProperty())
                     {
@@ -3473,7 +3473,7 @@ namespace CesiumLanguageWriterTests
                     using (var m2 = m.OpenImageProperty())
                     {
                         m2.WriteUri("http://example.com/29020", CesiumResourceBehavior.LinkTo);
-                        m_assertionsWriter.WriteLine("    expect(e.polyline.material.image.getValue(date)).toEqual('http://example.com/29020');");
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.material.image.getValue(date).url).toEqual('http://example.com/29020');");
                     }
                     using (var m2 = m.OpenRepeatProperty())
                     {
@@ -3806,7 +3806,7 @@ namespace CesiumLanguageWriterTests
                     using (var m2 = m.OpenImageProperty())
                     {
                         m2.WriteUri("http://example.com/6349", CesiumResourceBehavior.LinkTo);
-                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.image.getValue(date)).toEqual('http://example.com/6349');");
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.image.getValue(date).url).toEqual('http://example.com/6349');");
                     }
                     using (var m2 = m.OpenRepeatProperty())
                     {
@@ -4063,7 +4063,7 @@ namespace CesiumLanguageWriterTests
                     using (var m2 = m.OpenImageProperty())
                     {
                         m2.WriteUri("http://example.com/18033", CesiumResourceBehavior.LinkTo);
-                        m_assertionsWriter.WriteLine("    expect(e.rectangle.material.image.getValue(date)).toEqual('http://example.com/18033');");
+                        m_assertionsWriter.WriteLine("    expect(e.rectangle.material.image.getValue(date).url).toEqual('http://example.com/18033');");
                     }
                     using (var m2 = m.OpenRepeatProperty())
                     {
@@ -4264,7 +4264,7 @@ namespace CesiumLanguageWriterTests
                     using (var m2 = m.OpenImageProperty())
                     {
                         m2.WriteUri("http://example.com/58529", CesiumResourceBehavior.LinkTo);
-                        m_assertionsWriter.WriteLine("    expect(e.wall.material.image.getValue(date)).toEqual('http://example.com/58529');");
+                        m_assertionsWriter.WriteLine("    expect(e.wall.material.image.getValue(date).url).toEqual('http://example.com/58529');");
                     }
                     using (var m2 = m.OpenRepeatProperty())
                     {
@@ -4454,7 +4454,7 @@ namespace CesiumLanguageWriterTests
                     using (var m2 = m.OpenImageProperty())
                     {
                         m2.WriteUri("http://example.com/21823", CesiumResourceBehavior.LinkTo);
-                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.lateralSurfaceMaterial.image.getValue(date)).toEqual('http://example.com/21823');");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.lateralSurfaceMaterial.image.getValue(date).url).toEqual('http://example.com/21823');");
                     }
                     using (var m2 = m.OpenRepeatProperty())
                     {
@@ -4619,7 +4619,7 @@ namespace CesiumLanguageWriterTests
                     using (var m2 = m.OpenImageProperty())
                     {
                         m2.WriteUri("http://example.com/3660", CesiumResourceBehavior.LinkTo);
-                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidSurfaceMaterial.image.getValue(date)).toEqual('http://example.com/3660');");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidSurfaceMaterial.image.getValue(date).url).toEqual('http://example.com/3660');");
                     }
                     using (var m2 = m.OpenRepeatProperty())
                     {
@@ -4784,7 +4784,7 @@ namespace CesiumLanguageWriterTests
                     using (var m2 = m.OpenImageProperty())
                     {
                         m2.WriteUri("http://example.com/42334", CesiumResourceBehavior.LinkTo);
-                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidHorizonSurfaceMaterial.image.getValue(date)).toEqual('http://example.com/42334');");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidHorizonSurfaceMaterial.image.getValue(date).url).toEqual('http://example.com/42334');");
                     }
                     using (var m2 = m.OpenRepeatProperty())
                     {
@@ -4949,7 +4949,7 @@ namespace CesiumLanguageWriterTests
                     using (var m2 = m.OpenImageProperty())
                     {
                         m2.WriteUri("http://example.com/32043", CesiumResourceBehavior.LinkTo);
-                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.domeSurfaceMaterial.image.getValue(date)).toEqual('http://example.com/32043');");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.domeSurfaceMaterial.image.getValue(date).url).toEqual('http://example.com/32043');");
                     }
                     using (var m2 = m.OpenRepeatProperty())
                     {
@@ -5114,7 +5114,7 @@ namespace CesiumLanguageWriterTests
                     using (var m2 = m.OpenImageProperty())
                     {
                         m2.WriteUri("http://example.com/37360", CesiumResourceBehavior.LinkTo);
-                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.environmentOcclusionMaterial.image.getValue(date)).toEqual('http://example.com/37360');");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.environmentOcclusionMaterial.image.getValue(date).url).toEqual('http://example.com/37360');");
                     }
                     using (var m2 = m.OpenRepeatProperty())
                     {
@@ -5337,7 +5337,7 @@ namespace CesiumLanguageWriterTests
                     using (var m2 = m.OpenImageProperty())
                     {
                         m2.WriteUri("http://example.com/43097", CesiumResourceBehavior.LinkTo);
-                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.lateralSurfaceMaterial.image.getValue(date)).toEqual('http://example.com/43097');");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.lateralSurfaceMaterial.image.getValue(date).url).toEqual('http://example.com/43097');");
                     }
                     using (var m2 = m.OpenRepeatProperty())
                     {
@@ -5502,7 +5502,7 @@ namespace CesiumLanguageWriterTests
                     using (var m2 = m.OpenImageProperty())
                     {
                         m2.WriteUri("http://example.com/53957", CesiumResourceBehavior.LinkTo);
-                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidSurfaceMaterial.image.getValue(date)).toEqual('http://example.com/53957');");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidSurfaceMaterial.image.getValue(date).url).toEqual('http://example.com/53957');");
                     }
                     using (var m2 = m.OpenRepeatProperty())
                     {
@@ -5667,7 +5667,7 @@ namespace CesiumLanguageWriterTests
                     using (var m2 = m.OpenImageProperty())
                     {
                         m2.WriteUri("http://example.com/17353", CesiumResourceBehavior.LinkTo);
-                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidHorizonSurfaceMaterial.image.getValue(date)).toEqual('http://example.com/17353');");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidHorizonSurfaceMaterial.image.getValue(date).url).toEqual('http://example.com/17353');");
                     }
                     using (var m2 = m.OpenRepeatProperty())
                     {
@@ -5832,7 +5832,7 @@ namespace CesiumLanguageWriterTests
                     using (var m2 = m.OpenImageProperty())
                     {
                         m2.WriteUri("http://example.com/30161", CesiumResourceBehavior.LinkTo);
-                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.domeSurfaceMaterial.image.getValue(date)).toEqual('http://example.com/30161');");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.domeSurfaceMaterial.image.getValue(date).url).toEqual('http://example.com/30161');");
                     }
                     using (var m2 = m.OpenRepeatProperty())
                     {
@@ -5997,7 +5997,7 @@ namespace CesiumLanguageWriterTests
                     using (var m2 = m.OpenImageProperty())
                     {
                         m2.WriteUri("http://example.com/43990", CesiumResourceBehavior.LinkTo);
-                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.environmentOcclusionMaterial.image.getValue(date)).toEqual('http://example.com/43990');");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.environmentOcclusionMaterial.image.getValue(date).url).toEqual('http://example.com/43990');");
                     }
                     using (var m2 = m.OpenRepeatProperty())
                     {
@@ -6187,7 +6187,7 @@ namespace CesiumLanguageWriterTests
                     using (var m2 = m.OpenImageProperty())
                     {
                         m2.WriteUri("http://example.com/43004", CesiumResourceBehavior.LinkTo);
-                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.lateralSurfaceMaterial.image.getValue(date)).toEqual('http://example.com/43004');");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.lateralSurfaceMaterial.image.getValue(date).url).toEqual('http://example.com/43004');");
                     }
                     using (var m2 = m.OpenRepeatProperty())
                     {
@@ -6352,7 +6352,7 @@ namespace CesiumLanguageWriterTests
                     using (var m2 = m.OpenImageProperty())
                     {
                         m2.WriteUri("http://example.com/9645", CesiumResourceBehavior.LinkTo);
-                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidSurfaceMaterial.image.getValue(date)).toEqual('http://example.com/9645');");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidSurfaceMaterial.image.getValue(date).url).toEqual('http://example.com/9645');");
                     }
                     using (var m2 = m.OpenRepeatProperty())
                     {
@@ -6517,7 +6517,7 @@ namespace CesiumLanguageWriterTests
                     using (var m2 = m.OpenImageProperty())
                     {
                         m2.WriteUri("http://example.com/24029", CesiumResourceBehavior.LinkTo);
-                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidHorizonSurfaceMaterial.image.getValue(date)).toEqual('http://example.com/24029');");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidHorizonSurfaceMaterial.image.getValue(date).url).toEqual('http://example.com/24029');");
                     }
                     using (var m2 = m.OpenRepeatProperty())
                     {
@@ -6682,7 +6682,7 @@ namespace CesiumLanguageWriterTests
                     using (var m2 = m.OpenImageProperty())
                     {
                         m2.WriteUri("http://example.com/39720", CesiumResourceBehavior.LinkTo);
-                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.domeSurfaceMaterial.image.getValue(date)).toEqual('http://example.com/39720');");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.domeSurfaceMaterial.image.getValue(date).url).toEqual('http://example.com/39720');");
                     }
                     using (var m2 = m.OpenRepeatProperty())
                     {
@@ -6847,7 +6847,7 @@ namespace CesiumLanguageWriterTests
                     using (var m2 = m.OpenImageProperty())
                     {
                         m2.WriteUri("http://example.com/22276", CesiumResourceBehavior.LinkTo);
-                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.environmentOcclusionMaterial.image.getValue(date)).toEqual('http://example.com/22276');");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.environmentOcclusionMaterial.image.getValue(date).url).toEqual('http://example.com/22276');");
                     }
                     using (var m2 = m.OpenRepeatProperty())
                     {
@@ -7059,7 +7059,7 @@ namespace CesiumLanguageWriterTests
                     using (var m2 = m.OpenImageProperty())
                     {
                         m2.WriteUri("http://example.com/11768", CesiumResourceBehavior.LinkTo);
-                        m_extensionsAssertionsWriter.WriteLine("    expect(e.fan.material.image.getValue(date)).toEqual('http://example.com/11768');");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.fan.material.image.getValue(date).url).toEqual('http://example.com/11768');");
                     }
                     using (var m2 = m.OpenRepeatProperty())
                     {
@@ -7390,7 +7390,7 @@ namespace CesiumLanguageWriterTests
                     using (var w2 = w.OpenCustomPropertyProperty("custom_uri"))
                     {
                         w2.WriteUri("http://example.com/41986", CesiumResourceBehavior.LinkTo);
-                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_uri.getValue(date)).toEqual('http://example.com/41986');");
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_uri.getValue(date).url).toEqual('http://example.com/41986');");
                     }
                     using (var w2 = w.OpenCustomPropertyProperty("custom_verticalOrigin"))
                     {
