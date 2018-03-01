@@ -1311,6 +1311,7 @@ namespace GenerateFromSchema
                     int cone = GetNumber(1);
                     value = string.Format("new UnitSpherical({0}, {1})", clock, cone);
                     assertionValue = string.Format("Cartesian3.fromSpherical(new Spherical({0}, {1}))", clock, cone);
+                    assertionEpsilon = "1e-14";
                     valueType = "UnitSpherical";
                     return;
                 }

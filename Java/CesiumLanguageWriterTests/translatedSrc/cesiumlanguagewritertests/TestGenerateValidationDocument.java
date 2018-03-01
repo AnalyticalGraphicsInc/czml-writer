@@ -188,7 +188,7 @@ public class TestGenerateValidationDocument {
                             cesiumlanguagewriter.UriCesiumWriter w2 = w.openImageProperty();
                             try {
                                 w2.writeUri("http://example.com/3792", CesiumResourceBehavior.LINK_TO);
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.billboard.image.getValue(date)).toEqual('http://example.com/3792');");
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.billboard.image.getValue(date).url).toEqual('http://example.com/3792');");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -1255,7 +1255,7 @@ public class TestGenerateValidationDocument {
                             cesiumlanguagewriter.UriCesiumWriter w2 = w.openGltfProperty();
                             try {
                                 w2.writeUri("http://example.com/60043", CesiumResourceBehavior.LINK_TO);
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.model.uri.getValue(date)).toEqual('http://example.com/60043');");
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.model.uri.getValue(date).url).toEqual('http://example.com/60043');");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -3329,7 +3329,8 @@ public class TestGenerateValidationDocument {
                             cesiumlanguagewriter.AlignedAxisCesiumWriter w2 = w.openAlignedAxisProperty();
                             try {
                                 w2.writeUnitSpherical(new UnitSpherical(20514D, 39760D));
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.billboard.alignedAxis.getValue(date)).toEqual(Cartesian3.fromSpherical(new Spherical(20514, 39760)));");
+                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                        "    expect(e.billboard.alignedAxis.getValue(date)).toEqualEpsilon(Cartesian3.fromSpherical(new Spherical(20514, 39760)), 1e-14);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -3404,7 +3405,7 @@ public class TestGenerateValidationDocument {
                                             cesiumlanguagewriter.UriCesiumWriter m2 = m.openImageProperty();
                                             try {
                                                 m2.writeUri("http://example.com/50881", CesiumResourceBehavior.LINK_TO);
-                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.box.material.image.getValue(date)).toEqual('http://example.com/50881');");
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.box.material.image.getValue(date).url).toEqual('http://example.com/50881');");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }
@@ -3908,7 +3909,7 @@ public class TestGenerateValidationDocument {
                                             cesiumlanguagewriter.UriCesiumWriter m2 = m.openImageProperty();
                                             try {
                                                 m2.writeUri("http://example.com/8903", CesiumResourceBehavior.LINK_TO);
-                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.corridor.material.image.getValue(date)).toEqual('http://example.com/8903');");
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.corridor.material.image.getValue(date).url).toEqual('http://example.com/8903');");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }
@@ -4359,7 +4360,7 @@ public class TestGenerateValidationDocument {
                                             cesiumlanguagewriter.UriCesiumWriter m2 = m.openImageProperty();
                                             try {
                                                 m2.writeUri("http://example.com/27447", CesiumResourceBehavior.LINK_TO);
-                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.cylinder.material.image.getValue(date)).toEqual('http://example.com/27447');");
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.cylinder.material.image.getValue(date).url).toEqual('http://example.com/27447');");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }
@@ -4809,7 +4810,7 @@ public class TestGenerateValidationDocument {
                                             cesiumlanguagewriter.UriCesiumWriter m2 = m.openImageProperty();
                                             try {
                                                 m2.writeUri("http://example.com/2481", CesiumResourceBehavior.LINK_TO);
-                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.material.image.getValue(date)).toEqual('http://example.com/2481');");
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.material.image.getValue(date).url).toEqual('http://example.com/2481');");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }
@@ -5260,7 +5261,7 @@ public class TestGenerateValidationDocument {
                                             cesiumlanguagewriter.UriCesiumWriter m2 = m.openImageProperty();
                                             try {
                                                 m2.writeUri("http://example.com/47428", CesiumResourceBehavior.LINK_TO);
-                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.material.image.getValue(date)).toEqual('http://example.com/47428');");
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.material.image.getValue(date).url).toEqual('http://example.com/47428');");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }
@@ -6059,7 +6060,7 @@ public class TestGenerateValidationDocument {
                                             cesiumlanguagewriter.UriCesiumWriter m2 = m.openImageProperty();
                                             try {
                                                 m2.writeUri("http://example.com/31068", CesiumResourceBehavior.LINK_TO);
-                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.material.image.getValue(date)).toEqual('http://example.com/31068');");
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.material.image.getValue(date).url).toEqual('http://example.com/31068');");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }
@@ -6839,7 +6840,7 @@ public class TestGenerateValidationDocument {
                                             cesiumlanguagewriter.UriCesiumWriter m2 = m.openImageProperty();
                                             try {
                                                 m2.writeUri("http://example.com/3481", CesiumResourceBehavior.LINK_TO);
-                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.material.image.getValue(date)).toEqual('http://example.com/3481');");
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.material.image.getValue(date).url).toEqual('http://example.com/3481');");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }
@@ -7555,7 +7556,7 @@ public class TestGenerateValidationDocument {
                                             cesiumlanguagewriter.UriCesiumWriter m2 = m.openImageProperty();
                                             try {
                                                 m2.writeUri("http://example.com/29020", CesiumResourceBehavior.LINK_TO);
-                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.material.image.getValue(date)).toEqual('http://example.com/29020');");
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.material.image.getValue(date).url).toEqual('http://example.com/29020');");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }
@@ -8438,7 +8439,7 @@ public class TestGenerateValidationDocument {
                                             cesiumlanguagewriter.UriCesiumWriter m2 = m.openImageProperty();
                                             try {
                                                 m2.writeUri("http://example.com/6349", CesiumResourceBehavior.LINK_TO);
-                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.depthFailMaterial.image.getValue(date)).toEqual('http://example.com/6349');");
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.depthFailMaterial.image.getValue(date).url).toEqual('http://example.com/6349');");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }
@@ -9141,7 +9142,7 @@ public class TestGenerateValidationDocument {
                                             cesiumlanguagewriter.UriCesiumWriter m2 = m.openImageProperty();
                                             try {
                                                 m2.writeUri("http://example.com/18033", CesiumResourceBehavior.LINK_TO);
-                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.material.image.getValue(date)).toEqual('http://example.com/18033');");
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.material.image.getValue(date).url).toEqual('http://example.com/18033');");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }
@@ -9646,7 +9647,7 @@ public class TestGenerateValidationDocument {
                                             cesiumlanguagewriter.UriCesiumWriter m2 = m.openImageProperty();
                                             try {
                                                 m2.writeUri("http://example.com/58529", CesiumResourceBehavior.LINK_TO);
-                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.wall.material.image.getValue(date)).toEqual('http://example.com/58529');");
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.wall.material.image.getValue(date).url).toEqual('http://example.com/58529');");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }
@@ -10124,7 +10125,7 @@ public class TestGenerateValidationDocument {
                                             try {
                                                 m2.writeUri("http://example.com/21823", CesiumResourceBehavior.LINK_TO);
                                                 TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
-                                                        "    expect(e.conicSensor.lateralSurfaceMaterial.image.getValue(date)).toEqual('http://example.com/21823');");
+                                                        "    expect(e.conicSensor.lateralSurfaceMaterial.image.getValue(date).url).toEqual('http://example.com/21823');");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }
@@ -10555,7 +10556,7 @@ public class TestGenerateValidationDocument {
                                             try {
                                                 m2.writeUri("http://example.com/3660", CesiumResourceBehavior.LINK_TO);
                                                 TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
-                                                        "    expect(e.conicSensor.ellipsoidSurfaceMaterial.image.getValue(date)).toEqual('http://example.com/3660');");
+                                                        "    expect(e.conicSensor.ellipsoidSurfaceMaterial.image.getValue(date).url).toEqual('http://example.com/3660');");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }
@@ -10988,7 +10989,7 @@ public class TestGenerateValidationDocument {
                                             try {
                                                 m2.writeUri("http://example.com/42334", CesiumResourceBehavior.LINK_TO);
                                                 TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
-                                                        "    expect(e.conicSensor.ellipsoidHorizonSurfaceMaterial.image.getValue(date)).toEqual('http://example.com/42334');");
+                                                        "    expect(e.conicSensor.ellipsoidHorizonSurfaceMaterial.image.getValue(date).url).toEqual('http://example.com/42334');");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }
@@ -11423,7 +11424,7 @@ public class TestGenerateValidationDocument {
                                             try {
                                                 m2.writeUri("http://example.com/32043", CesiumResourceBehavior.LINK_TO);
                                                 TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
-                                                        "    expect(e.conicSensor.domeSurfaceMaterial.image.getValue(date)).toEqual('http://example.com/32043');");
+                                                        "    expect(e.conicSensor.domeSurfaceMaterial.image.getValue(date).url).toEqual('http://example.com/32043');");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }
@@ -11854,7 +11855,7 @@ public class TestGenerateValidationDocument {
                                             try {
                                                 m2.writeUri("http://example.com/37360", CesiumResourceBehavior.LINK_TO);
                                                 TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
-                                                        "    expect(e.conicSensor.environmentOcclusionMaterial.image.getValue(date)).toEqual('http://example.com/37360');");
+                                                        "    expect(e.conicSensor.environmentOcclusionMaterial.image.getValue(date).url).toEqual('http://example.com/37360');");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }
@@ -12428,7 +12429,7 @@ public class TestGenerateValidationDocument {
                                             try {
                                                 m2.writeUri("http://example.com/43097", CesiumResourceBehavior.LINK_TO);
                                                 TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
-                                                        "    expect(e.customPatternSensor.lateralSurfaceMaterial.image.getValue(date)).toEqual('http://example.com/43097');");
+                                                        "    expect(e.customPatternSensor.lateralSurfaceMaterial.image.getValue(date).url).toEqual('http://example.com/43097');");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }
@@ -12863,7 +12864,7 @@ public class TestGenerateValidationDocument {
                                             try {
                                                 m2.writeUri("http://example.com/53957", CesiumResourceBehavior.LINK_TO);
                                                 TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
-                                                        "    expect(e.customPatternSensor.ellipsoidSurfaceMaterial.image.getValue(date)).toEqual('http://example.com/53957');");
+                                                        "    expect(e.customPatternSensor.ellipsoidSurfaceMaterial.image.getValue(date).url).toEqual('http://example.com/53957');");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }
@@ -13298,7 +13299,7 @@ public class TestGenerateValidationDocument {
                                             try {
                                                 m2.writeUri("http://example.com/17353", CesiumResourceBehavior.LINK_TO);
                                                 TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
-                                                        "    expect(e.customPatternSensor.ellipsoidHorizonSurfaceMaterial.image.getValue(date)).toEqual('http://example.com/17353');");
+                                                        "    expect(e.customPatternSensor.ellipsoidHorizonSurfaceMaterial.image.getValue(date).url).toEqual('http://example.com/17353');");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }
@@ -13735,7 +13736,7 @@ public class TestGenerateValidationDocument {
                                             try {
                                                 m2.writeUri("http://example.com/30161", CesiumResourceBehavior.LINK_TO);
                                                 TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
-                                                        "    expect(e.customPatternSensor.domeSurfaceMaterial.image.getValue(date)).toEqual('http://example.com/30161');");
+                                                        "    expect(e.customPatternSensor.domeSurfaceMaterial.image.getValue(date).url).toEqual('http://example.com/30161');");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }
@@ -14170,7 +14171,7 @@ public class TestGenerateValidationDocument {
                                             try {
                                                 m2.writeUri("http://example.com/43990", CesiumResourceBehavior.LINK_TO);
                                                 TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
-                                                        "    expect(e.customPatternSensor.environmentOcclusionMaterial.image.getValue(date)).toEqual('http://example.com/43990');");
+                                                        "    expect(e.customPatternSensor.environmentOcclusionMaterial.image.getValue(date).url).toEqual('http://example.com/43990');");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }
@@ -14662,7 +14663,7 @@ public class TestGenerateValidationDocument {
                                             try {
                                                 m2.writeUri("http://example.com/43004", CesiumResourceBehavior.LINK_TO);
                                                 TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
-                                                        "    expect(e.rectangularSensor.lateralSurfaceMaterial.image.getValue(date)).toEqual('http://example.com/43004');");
+                                                        "    expect(e.rectangularSensor.lateralSurfaceMaterial.image.getValue(date).url).toEqual('http://example.com/43004');");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }
@@ -15097,7 +15098,7 @@ public class TestGenerateValidationDocument {
                                             try {
                                                 m2.writeUri("http://example.com/9645", CesiumResourceBehavior.LINK_TO);
                                                 TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
-                                                        "    expect(e.rectangularSensor.ellipsoidSurfaceMaterial.image.getValue(date)).toEqual('http://example.com/9645');");
+                                                        "    expect(e.rectangularSensor.ellipsoidSurfaceMaterial.image.getValue(date).url).toEqual('http://example.com/9645');");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }
@@ -15532,7 +15533,7 @@ public class TestGenerateValidationDocument {
                                             try {
                                                 m2.writeUri("http://example.com/24029", CesiumResourceBehavior.LINK_TO);
                                                 TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
-                                                        "    expect(e.rectangularSensor.ellipsoidHorizonSurfaceMaterial.image.getValue(date)).toEqual('http://example.com/24029');");
+                                                        "    expect(e.rectangularSensor.ellipsoidHorizonSurfaceMaterial.image.getValue(date).url).toEqual('http://example.com/24029');");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }
@@ -15967,7 +15968,7 @@ public class TestGenerateValidationDocument {
                                             try {
                                                 m2.writeUri("http://example.com/39720", CesiumResourceBehavior.LINK_TO);
                                                 TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
-                                                        "    expect(e.rectangularSensor.domeSurfaceMaterial.image.getValue(date)).toEqual('http://example.com/39720');");
+                                                        "    expect(e.rectangularSensor.domeSurfaceMaterial.image.getValue(date).url).toEqual('http://example.com/39720');");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }
@@ -16400,7 +16401,7 @@ public class TestGenerateValidationDocument {
                                             try {
                                                 m2.writeUri("http://example.com/22276", CesiumResourceBehavior.LINK_TO);
                                                 TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
-                                                        "    expect(e.rectangularSensor.environmentOcclusionMaterial.image.getValue(date)).toEqual('http://example.com/22276');");
+                                                        "    expect(e.rectangularSensor.environmentOcclusionMaterial.image.getValue(date).url).toEqual('http://example.com/22276');");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }
@@ -16946,7 +16947,7 @@ public class TestGenerateValidationDocument {
                                             cesiumlanguagewriter.UriCesiumWriter m2 = m.openImageProperty();
                                             try {
                                                 m2.writeUri("http://example.com/11768", CesiumResourceBehavior.LINK_TO);
-                                                TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.material.image.getValue(date)).toEqual('http://example.com/11768');");
+                                                TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.material.image.getValue(date).url).toEqual('http://example.com/11768');");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }
@@ -17380,7 +17381,8 @@ public class TestGenerateValidationDocument {
                             cesiumlanguagewriter.DirectionCesiumWriter w2 = w.openDirectionProperty();
                             try {
                                 w2.writeUnitSpherical(new UnitSpherical(34609D, 391D));
-                                TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.vector.direction.getValue(date)).toEqual(Cartesian3.fromSpherical(new Spherical(34609, 391)));");
+                                TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
+                                        "    expect(e.vector.direction.getValue(date)).toEqualEpsilon(Cartesian3.fromSpherical(new Spherical(34609, 391)), 1e-14);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -17536,7 +17538,7 @@ public class TestGenerateValidationDocument {
                             try {
                                 w2.writeUnitSpherical(new UnitSpherical(59387D, 15591D));
                                 TextWriterHelper.writeLine(m_assertionsWriter,
-                                        "    expect(e.properties.custom_unitSpherical.getValue(date)).toEqual(Cartesian3.fromSpherical(new Spherical(59387, 15591)));");
+                                        "    expect(e.properties.custom_unitSpherical.getValue(date)).toEqualEpsilon(Cartesian3.fromSpherical(new Spherical(59387, 15591)), 1e-14);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -17685,7 +17687,7 @@ public class TestGenerateValidationDocument {
                             cesiumlanguagewriter.CustomPropertyCesiumWriter w2 = w.openCustomPropertyProperty("custom_uri");
                             try {
                                 w2.writeUri("http://example.com/41986", CesiumResourceBehavior.LINK_TO);
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_uri.getValue(date)).toEqual('http://example.com/41986');");
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_uri.getValue(date).url).toEqual('http://example.com/41986');");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -31430,9 +31432,9 @@ public class TestGenerateValidationDocument {
                                 w2.writeUnitSpherical(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
                                         .<UnitSpherical> createList(new UnitSpherical(57328D, 53471D), new UnitSpherical(51360D, 27848D)));
                                 TextWriterHelper.writeLine(m_assertionsWriter,
-                                        "    expect(e.billboard.alignedAxis.getValue(documentStartDate)).toEqual(Cartesian3.fromSpherical(new Spherical(57328, 53471)));");
+                                        "    expect(e.billboard.alignedAxis.getValue(documentStartDate)).toEqualEpsilon(Cartesian3.fromSpherical(new Spherical(57328, 53471)), 1e-14);");
                                 TextWriterHelper.writeLine(m_assertionsWriter,
-                                        "    expect(e.billboard.alignedAxis.getValue(documentStopDate)).toEqual(Cartesian3.fromSpherical(new Spherical(51360, 27848)));");
+                                        "    expect(e.billboard.alignedAxis.getValue(documentStopDate)).toEqualEpsilon(Cartesian3.fromSpherical(new Spherical(51360, 27848)), 1e-14);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -46206,9 +46208,9 @@ public class TestGenerateValidationDocument {
                                 w2.writeUnitSpherical(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
                                         .<UnitSpherical> createList(new UnitSpherical(42298D, 7077D), new UnitSpherical(35027D, 44936D)));
                                 TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
-                                        "    expect(e.vector.direction.getValue(documentStartDate)).toEqual(Cartesian3.fromSpherical(new Spherical(42298, 7077)));");
+                                        "    expect(e.vector.direction.getValue(documentStartDate)).toEqualEpsilon(Cartesian3.fromSpherical(new Spherical(42298, 7077)), 1e-14);");
                                 TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
-                                        "    expect(e.vector.direction.getValue(documentStopDate)).toEqual(Cartesian3.fromSpherical(new Spherical(35027, 44936)));");
+                                        "    expect(e.vector.direction.getValue(documentStopDate)).toEqualEpsilon(Cartesian3.fromSpherical(new Spherical(35027, 44936)), 1e-14);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -46386,9 +46388,9 @@ public class TestGenerateValidationDocument {
                                 w2.writeUnitSpherical(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
                                         .<UnitSpherical> createList(new UnitSpherical(48811D, 24254D), new UnitSpherical(44800D, 8111D)));
                                 TextWriterHelper.writeLine(m_assertionsWriter,
-                                        "    expect(e.properties.custom_unitSpherical.getValue(documentStartDate)).toEqual(Cartesian3.fromSpherical(new Spherical(48811, 24254)));");
+                                        "    expect(e.properties.custom_unitSpherical.getValue(documentStartDate)).toEqualEpsilon(Cartesian3.fromSpherical(new Spherical(48811, 24254)), 1e-14);");
                                 TextWriterHelper.writeLine(m_assertionsWriter,
-                                        "    expect(e.properties.custom_unitSpherical.getValue(documentStopDate)).toEqual(Cartesian3.fromSpherical(new Spherical(44800, 8111)));");
+                                        "    expect(e.properties.custom_unitSpherical.getValue(documentStopDate)).toEqualEpsilon(Cartesian3.fromSpherical(new Spherical(44800, 8111)), 1e-14);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }

@@ -1791,7 +1791,7 @@ namespace CesiumLanguageWriterTests
                 using (var w2 = w.OpenAlignedAxisProperty())
                 {
                     w2.WriteUnitSpherical(new UnitSpherical(20514, 39760));
-                    m_assertionsWriter.WriteLine("    expect(e.billboard.alignedAxis.getValue(date)).toEqual(Cartesian3.fromSpherical(new Spherical(20514, 39760)));");
+                    m_assertionsWriter.WriteLine("    expect(e.billboard.alignedAxis.getValue(date)).toEqualEpsilon(Cartesian3.fromSpherical(new Spherical(20514, 39760)), 1e-14);");
                 }
             }
         }
@@ -7233,7 +7233,7 @@ namespace CesiumLanguageWriterTests
                 using (var w2 = w.OpenDirectionProperty())
                 {
                     w2.WriteUnitSpherical(new UnitSpherical(34609, 391));
-                    m_extensionsAssertionsWriter.WriteLine("    expect(e.vector.direction.getValue(date)).toEqual(Cartesian3.fromSpherical(new Spherical(34609, 391)));");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.vector.direction.getValue(date)).toEqualEpsilon(Cartesian3.fromSpherical(new Spherical(34609, 391)), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -7310,7 +7310,7 @@ namespace CesiumLanguageWriterTests
                     using (var w2 = w.OpenCustomPropertyProperty("custom_unitSpherical"))
                     {
                         w2.WriteUnitSpherical(new UnitSpherical(59387, 15591));
-                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_unitSpherical.getValue(date)).toEqual(Cartesian3.fromSpherical(new Spherical(59387, 15591)));");
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_unitSpherical.getValue(date)).toEqualEpsilon(Cartesian3.fromSpherical(new Spherical(59387, 15591)), 1e-14);");
                     }
                     using (var w2 = w.OpenCustomPropertyProperty("custom_rgba"))
                     {
@@ -13406,8 +13406,8 @@ namespace CesiumLanguageWriterTests
                 using (var w2 = w.OpenAlignedAxisProperty())
                 {
                     w2.WriteUnitSpherical(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new UnitSpherical(57328, 53471), new UnitSpherical(51360, 27848)));
-                    m_assertionsWriter.WriteLine("    expect(e.billboard.alignedAxis.getValue(documentStartDate)).toEqual(Cartesian3.fromSpherical(new Spherical(57328, 53471)));");
-                    m_assertionsWriter.WriteLine("    expect(e.billboard.alignedAxis.getValue(documentStopDate)).toEqual(Cartesian3.fromSpherical(new Spherical(51360, 27848)));");
+                    m_assertionsWriter.WriteLine("    expect(e.billboard.alignedAxis.getValue(documentStartDate)).toEqualEpsilon(Cartesian3.fromSpherical(new Spherical(57328, 53471)), 1e-14);");
+                    m_assertionsWriter.WriteLine("    expect(e.billboard.alignedAxis.getValue(documentStopDate)).toEqualEpsilon(Cartesian3.fromSpherical(new Spherical(51360, 27848)), 1e-14);");
                 }
             }
         }
@@ -18794,8 +18794,8 @@ namespace CesiumLanguageWriterTests
                 using (var w2 = w.OpenDirectionProperty())
                 {
                     w2.WriteUnitSpherical(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new UnitSpherical(42298, 7077), new UnitSpherical(35027, 44936)));
-                    m_extensionsAssertionsWriter.WriteLine("    expect(e.vector.direction.getValue(documentStartDate)).toEqual(Cartesian3.fromSpherical(new Spherical(42298, 7077)));");
-                    m_extensionsAssertionsWriter.WriteLine("    expect(e.vector.direction.getValue(documentStopDate)).toEqual(Cartesian3.fromSpherical(new Spherical(35027, 44936)));");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.vector.direction.getValue(documentStartDate)).toEqualEpsilon(Cartesian3.fromSpherical(new Spherical(42298, 7077)), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.vector.direction.getValue(documentStopDate)).toEqualEpsilon(Cartesian3.fromSpherical(new Spherical(35027, 44936)), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -18876,8 +18876,8 @@ namespace CesiumLanguageWriterTests
                     using (var w2 = w.OpenCustomPropertyProperty("custom_unitSpherical"))
                     {
                         w2.WriteUnitSpherical(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new UnitSpherical(48811, 24254), new UnitSpherical(44800, 8111)));
-                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_unitSpherical.getValue(documentStartDate)).toEqual(Cartesian3.fromSpherical(new Spherical(48811, 24254)));");
-                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_unitSpherical.getValue(documentStopDate)).toEqual(Cartesian3.fromSpherical(new Spherical(44800, 8111)));");
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_unitSpherical.getValue(documentStartDate)).toEqualEpsilon(Cartesian3.fromSpherical(new Spherical(48811, 24254)), 1e-14);");
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_unitSpherical.getValue(documentStopDate)).toEqualEpsilon(Cartesian3.fromSpherical(new Spherical(44800, 8111)), 1e-14);");
                     }
                     using (var w2 = w.OpenCustomPropertyProperty("custom_rgba"))
                     {
