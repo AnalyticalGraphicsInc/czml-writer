@@ -95,7 +95,7 @@ public abstract class Func1<TResult> extends Delegate implements Supplier<TResul
          *
          * @return The return value of the method.
          */
-        public abstract TResult invoke();
+        TResult invoke();
     }
 
     private static final class FunctionImpl<TResult> extends Func1<TResult> {

@@ -108,7 +108,7 @@ public abstract class CesiumWriterAdaptorWriteCallback<TWrappedWriter, TValue> e
         * @param wrappedWriter The wrapper writer.
         * @param value The value.
         */
-        public abstract void invoke(TWrappedWriter wrappedWriter, TValue value);
+        void invoke(TWrappedWriter wrappedWriter, TValue value);
     }
 
     private static final class FunctionImpl<TWrappedWriter, TValue> extends CesiumWriterAdaptorWriteCallback<TWrappedWriter, TValue> {

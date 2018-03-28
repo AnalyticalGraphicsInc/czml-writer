@@ -474,10 +474,6 @@ public abstract class TypeLiteral<T> {
             Type[] types = ((ParameterizedType) type).getActualTypeArguments();
             if (types.length == 0) {
                 throw new IllegalArgumentException("No type parameters: " + type);
-            } else if (types.length > 1) {
-                // LogFactory.getLog(TypeLiteral.class).println("Using first type
-                // parameter of: ",
-                // Arrays.asList(types));
             }
             return types[0]; // use first
 

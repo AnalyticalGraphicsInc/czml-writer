@@ -124,7 +124,7 @@ public abstract class CesiumWriterAdaptorWriteSamplesCallback<TWrappedWriter, TV
         * @param startIndex The index of the first sample to write.
         * @param length The number of samples to write.
         */
-        public abstract void invoke(TWrappedWriter wrappedWriter, List<JulianDate> dates, List<TValue> values, int startIndex, int length);
+        void invoke(TWrappedWriter wrappedWriter, List<JulianDate> dates, List<TValue> values, int startIndex, int length);
     }
 
     private static final class FunctionImpl<TWrappedWriter, TValue> extends CesiumWriterAdaptorWriteSamplesCallback<TWrappedWriter, TValue> {

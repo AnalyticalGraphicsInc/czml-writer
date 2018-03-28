@@ -146,7 +146,7 @@ public final class StringHelper {
      * Returns a string array that contains the substrings in this instance that are
      * delimited by elements of a specified Unicode character array.
      *
-     * @param string
+     * @param s
      *            the String to split.
      * @param separator
      *            An array of Unicode characters that delimit the substrings in this
@@ -154,8 +154,8 @@ public final class StringHelper {
      * @return An array whose elements contain the substrings in this instance that are
      *         delimited by one or more characters in separator.
      */
-    public static String[] split(@Nonnull String string, @Nullable char... separator) {
-        return split(string, separator, -1);
+    public static String[] split(@Nonnull String s, @Nullable char... separator) {
+        return split(s, separator, Integer.MAX_VALUE, StringSplitOptions.NONE);
     }
 
     /**
@@ -222,12 +222,20 @@ public final class StringHelper {
         ArgumentNullException.assertNonNull(s, "s");
         ArgumentNullException.assertNonNull(options, "options");
 
+        boolean removeEmptyEntries = options == StringSplitOptions.REMOVE_EMPTY_ENTRIES;
+        if (count == 0 || removeEmptyEntries && s.length() == 0)
+            return new String[0];
+        if (count == 1 || s.length() == 0) {
+            return new String[] {
+                    s
+            };
+        }
+
         Pattern pattern = regex == null ? splitWhitespacePattern : Pattern.compile(regex);
 
         Scanner scanner = new Scanner(s);
         scanner.useDelimiter(pattern);
 
-        boolean removeEmptyEntries = options == StringSplitOptions.REMOVE_EMPTY_ENTRIES;
         ArrayList<String> result = new ArrayList<>();
 
         boolean firstToken = true;
@@ -280,7 +288,7 @@ public final class StringHelper {
             result.add(empty);
         }
 
-        return result.toArray(new String[result.size()]);
+        return result.toArray(new String[0]);
     }
 
     /**
@@ -309,8 +317,8 @@ public final class StringHelper {
             throw new ArgumentOutOfRangeException("startIndex", "startIndex must be less than length of string minus count.");
 
         StringBuilder result = new StringBuilder(strLength - count);
-        result.append(s.substring(0, startIndex));
-        result.append(s.substring(startIndex + count));
+        result.append(s, 0, startIndex);
+        result.append(s, startIndex + count, strLength);
         return result.toString();
     }
 

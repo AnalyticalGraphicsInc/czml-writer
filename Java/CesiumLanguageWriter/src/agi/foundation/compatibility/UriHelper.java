@@ -46,7 +46,7 @@ public final class UriHelper {
                     // ParseAsUnixAbsoluteFilePath
 
                     String path;
-                    if (uri.length() >= 2 && firstChar == '/' && uri.charAt(1) == '/') {
+                    if (uri.length() >= 2 && uri.charAt(1) == '/') {
                         uri = StringHelper.trimStart(uri, '/');
                         path = '/' + uri;
                     } else {

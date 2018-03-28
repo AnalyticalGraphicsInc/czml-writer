@@ -46,18 +46,18 @@ import javax.annotation.Nonnull;
  * Represents a doubly linked list. Unlike the built-in LinkedList, this class allows
  * direct access to the nodes in the linked list, instead of only operating on values.
  *
- * @param <T>
+ * @param <E>
  *            Specifies the element type of the linked list.
  *
  * @deprecated Internal use only.
  */
 @Internal
 @Deprecated
-public class LinkedList<T> implements Collection<T> {
+public class LinkedList<E> implements Collection<E> {
     private int count;
 
     // Internally a circular list - first.previous == last
-    private LinkedListNode<T> head;
+    private LinkedListNode<E> head;
 
     /**
      * Initializes a new instance of the LinkedList class that is empty.
@@ -71,13 +71,13 @@ public class LinkedList<T> implements Collection<T> {
      * @param collection
      *            The Iterable whose elements are copied to the new LinkedList.
      */
-    public LinkedList(Iterable<? extends T> collection) {
-        for (T item : collection) {
+    public LinkedList(Iterable<? extends E> collection) {
+        for (E item : collection) {
             addLast(item);
         }
     }
 
-    private void verifyReferencedNode(LinkedListNode<T> node) {
+    private void verifyReferencedNode(LinkedListNode<E> node) {
         if (node == null) {
             throw new ArgumentNullException("node");
         }
@@ -101,7 +101,7 @@ public class LinkedList<T> implements Collection<T> {
      * @param node
      *            The new LinkedListNode to add at the start of the LinkedList.
      */
-    public final void addFirst(LinkedListNode<T> node) {
+    public final void addFirst(LinkedListNode<E> node) {
         verifyBlankNode(node);
         if (head == null) {
             node.selfReference(this);
@@ -119,8 +119,8 @@ public class LinkedList<T> implements Collection<T> {
      *            The value to add at the start of the LinkedList.
      * @return The new LinkedListNode containing value.
      */
-    public final LinkedListNode<T> addFirst(T value) {
-        LinkedListNode<T> newNode;
+    public final LinkedListNode<E> addFirst(E value) {
+        LinkedListNode<E> newNode;
         if (head == null) {
             newNode = new LinkedListNode<>(this, value);
         } else {
@@ -138,8 +138,8 @@ public class LinkedList<T> implements Collection<T> {
      *            The value to add at the end of the LinkedList.
      * @return The new LinkedListNode containing value.
      */
-    public final LinkedListNode<T> addLast(T value) {
-        LinkedListNode<T> newNode;
+    public final LinkedListNode<E> addLast(E value) {
+        LinkedListNode<E> newNode;
         if (head == null) {
             newNode = new LinkedListNode<>(this, value);
             head = newNode;
@@ -158,7 +158,7 @@ public class LinkedList<T> implements Collection<T> {
 
     @Override
     public final boolean contains(Object value) {
-        LinkedListNode<T> node = head;
+        LinkedListNode<E> node = head;
         if (node == null) {
             return false;
         }
@@ -180,8 +180,8 @@ public class LinkedList<T> implements Collection<T> {
      * @return The first LinkedListNode that contains the specified value, if found;
      *         otherwise, null.
      */
-    public final LinkedListNode<T> find(T value) {
-        LinkedListNode<T> node = head;
+    public final LinkedListNode<E> find(E value) {
+        LinkedListNode<E> node = head;
         if (node == null) {
             return null;
         }
@@ -199,15 +199,15 @@ public class LinkedList<T> implements Collection<T> {
     }
 
     @Override
-    public final Iterator<T> iterator() {
+    public final Iterator<E> iterator() {
         return new Enumerator<>(this);
     }
 
     @Override
     public final boolean remove(Object value) {
         @SuppressWarnings("unchecked")
-        T value_1 = (T) value;
-        LinkedListNode<T> node = find(value_1);
+        E value_1 = (E) value;
+        LinkedListNode<E> node = find(value_1);
         if (node == null) {
             return false;
         }
@@ -221,7 +221,7 @@ public class LinkedList<T> implements Collection<T> {
      * @param node
      *            The LinkedListNode to remove from the LinkedList.
      */
-    public final void remove(LinkedListNode<T> node) {
+    public final void remove(LinkedListNode<E> node) {
         verifyReferencedNode(node);
         count--;
         if (count == 0) {
@@ -243,7 +243,7 @@ public class LinkedList<T> implements Collection<T> {
     }
 
     @Override
-    public final boolean add(T value) {
+    public final boolean add(E value) {
         addLast(value);
         return true;
     }
@@ -258,7 +258,7 @@ public class LinkedList<T> implements Collection<T> {
      *
      * @return The first LinkedListNode of the LinkedList.
      */
-    public final LinkedListNode<T> getFirst() {
+    public final LinkedListNode<E> getFirst() {
         return head;
     }
 
@@ -267,7 +267,7 @@ public class LinkedList<T> implements Collection<T> {
      *
      * @return The last LinkedListNode of the LinkedList.
      */
-    public final LinkedListNode<T> getLast() {
+    public final LinkedListNode<E> getLast() {
         return head != null ? head.previous : null;
     }
 
@@ -345,9 +345,8 @@ public class LinkedList<T> implements Collection<T> {
     public final Object[] toArray() {
         Object[] r = new Object[count];
         int i = 0;
-        for (Iterator<T> it = iterator(); it.hasNext();) {
-            r[i] = it.next();
-            ++i;
+        for (E item : this) {
+            r[i++] = item;
         }
         return r;
     }
@@ -360,9 +359,8 @@ public class LinkedList<T> implements Collection<T> {
     public final <T> T[] toArray(T[] a) {
         T[] r = a.length >= count ? a : (T[]) Array.newInstance(a.getClass().getComponentType(), count);
         int i = 0;
-        for (Iterator<?> it = iterator(); it.hasNext();) {
-            r[i] = (T) it.next();
-            ++i;
+        for (E item : this) {
+            r[i++] = (T) item;
         }
         return r;
     }
@@ -373,7 +371,7 @@ public class LinkedList<T> implements Collection<T> {
     }
 
     @Override
-    public final boolean addAll(Collection<? extends T> c) {
+    public final boolean addAll(Collection<? extends E> c) {
         throw new UnsupportedOperationException("Method not implemented.");
     }
 
