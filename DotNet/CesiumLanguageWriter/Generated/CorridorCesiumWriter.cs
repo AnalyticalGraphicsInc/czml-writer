@@ -126,7 +126,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>show</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>show</c> property defines whether or not the corridor is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Gets the writer for the <c>show</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>show</c> property defines whether or not the corridor is shown. If not specified, the default value is <see langword="true"/>.
         /// </summary>
         [NotNull]
         public BooleanCesiumWriter ShowWriter
@@ -135,7 +135,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>show</c> property.  The <c>show</c> property defines whether or not the corridor is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Opens and returns the writer for the <c>show</c> property.  The <c>show</c> property defines whether or not the corridor is shown. If not specified, the default value is <see langword="true"/>.
         /// </summary>
         [NotNull]
         public BooleanCesiumWriter OpenShowProperty()
@@ -145,7 +145,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>show</c> property as a <c>boolean</c> value.  The <c>show</c> property specifies whether or not the corridor is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>show</c> property as a <c>boolean</c> value.  The <c>show</c> property specifies whether or not the corridor is shown. If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteShowProperty(bool value)
@@ -157,7 +157,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the corridor is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the corridor is shown. If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteShowPropertyReference(Reference value)
@@ -169,7 +169,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the corridor is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the corridor is shown. If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteShowPropertyReference(string value)
@@ -181,7 +181,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the corridor is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the corridor is shown. If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -194,7 +194,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the corridor is shown.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the corridor is shown. If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -207,7 +207,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>positions</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>positions</c> property defines the array of positions defining the centerline of the corridor.
+        /// Gets the writer for the <c>positions</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>positions</c> property defines the array of positions defining the centerline of the corridor. This value is required.
         /// </summary>
         [NotNull]
         public PositionListCesiumWriter PositionsWriter
@@ -216,7 +216,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>positions</c> property.  The <c>positions</c> property defines the array of positions defining the centerline of the corridor.
+        /// Opens and returns the writer for the <c>positions</c> property.  The <c>positions</c> property defines the array of positions defining the centerline of the corridor. This value is required.
         /// </summary>
         [NotNull]
         public PositionListCesiumWriter OpenPositionsProperty()
@@ -226,7 +226,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>positions</c> property as a <c>cartesian</c> value.  The <c>positions</c> property specifies the array of positions defining the centerline of the corridor.
+        /// Writes a value for the <c>positions</c> property as a <c>cartesian</c> value.  The <c>positions</c> property specifies the array of positions defining the centerline of the corridor. This value is required.
         /// </summary>
         /// <param name="values">The values.</param>
         public void WritePositionsProperty(IEnumerable<Cartesian> values)
@@ -238,7 +238,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>positions</c> property as a <c>cartographicRadians</c> value.  The <c>positions</c> property specifies the array of positions defining the centerline of the corridor.
+        /// Writes a value for the <c>positions</c> property as a <c>cartographicRadians</c> value.  The <c>positions</c> property specifies the array of positions defining the centerline of the corridor. This value is required.
         /// </summary>
         /// <param name="values">The values.</param>
         public void WritePositionsPropertyCartographicRadians(IEnumerable<Cartographic> values)
@@ -250,7 +250,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>positions</c> property as a <c>cartographicDegrees</c> value.  The <c>positions</c> property specifies the array of positions defining the centerline of the corridor.
+        /// Writes a value for the <c>positions</c> property as a <c>cartographicDegrees</c> value.  The <c>positions</c> property specifies the array of positions defining the centerline of the corridor. This value is required.
         /// </summary>
         /// <param name="values">The values.</param>
         public void WritePositionsPropertyCartographicDegrees(IEnumerable<Cartographic> values)
@@ -262,7 +262,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>positions</c> property as a <c>references</c> value.  The <c>positions</c> property specifies the array of positions defining the centerline of the corridor.
+        /// Writes a value for the <c>positions</c> property as a <c>references</c> value.  The <c>positions</c> property specifies the array of positions defining the centerline of the corridor. This value is required.
         /// </summary>
         /// <param name="references">The list of references.</param>
         public void WritePositionsPropertyReferences(IEnumerable<Reference> references)
@@ -274,7 +274,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>width</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>width</c> property defines the width of the corridor, which is the distance between the edges of the corridor.
+        /// Gets the writer for the <c>width</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>width</c> property defines the width of the corridor, which is the distance between the edges of the corridor. This value is required.
         /// </summary>
         [NotNull]
         public DoubleCesiumWriter WidthWriter
@@ -283,7 +283,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>width</c> property.  The <c>width</c> property defines the width of the corridor, which is the distance between the edges of the corridor.
+        /// Opens and returns the writer for the <c>width</c> property.  The <c>width</c> property defines the width of the corridor, which is the distance between the edges of the corridor. This value is required.
         /// </summary>
         [NotNull]
         public DoubleCesiumWriter OpenWidthProperty()
@@ -293,7 +293,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>width</c> property as a <c>number</c> value.  The <c>width</c> property specifies the width of the corridor, which is the distance between the edges of the corridor.
+        /// Writes a value for the <c>width</c> property as a <c>number</c> value.  The <c>width</c> property specifies the width of the corridor, which is the distance between the edges of the corridor. This value is required.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteWidthProperty(double value)
@@ -305,7 +305,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>width</c> property as a <c>number</c> value.  The <c>width</c> property specifies the width of the corridor, which is the distance between the edges of the corridor.
+        /// Writes a value for the <c>width</c> property as a <c>number</c> value.  The <c>width</c> property specifies the width of the corridor, which is the distance between the edges of the corridor. This value is required.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -318,7 +318,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>width</c> property as a <c>number</c> value.  The <c>width</c> property specifies the width of the corridor, which is the distance between the edges of the corridor.
+        /// Writes a value for the <c>width</c> property as a <c>number</c> value.  The <c>width</c> property specifies the width of the corridor, which is the distance between the edges of the corridor. This value is required.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -333,7 +333,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>width</c> property as a <c>reference</c> value.  The <c>width</c> property specifies the width of the corridor, which is the distance between the edges of the corridor.
+        /// Writes a value for the <c>width</c> property as a <c>reference</c> value.  The <c>width</c> property specifies the width of the corridor, which is the distance between the edges of the corridor. This value is required.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteWidthPropertyReference(Reference value)
@@ -345,7 +345,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>width</c> property as a <c>reference</c> value.  The <c>width</c> property specifies the width of the corridor, which is the distance between the edges of the corridor.
+        /// Writes a value for the <c>width</c> property as a <c>reference</c> value.  The <c>width</c> property specifies the width of the corridor, which is the distance between the edges of the corridor. This value is required.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteWidthPropertyReference(string value)
@@ -357,7 +357,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>width</c> property as a <c>reference</c> value.  The <c>width</c> property specifies the width of the corridor, which is the distance between the edges of the corridor.
+        /// Writes a value for the <c>width</c> property as a <c>reference</c> value.  The <c>width</c> property specifies the width of the corridor, which is the distance between the edges of the corridor. This value is required.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -370,7 +370,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>width</c> property as a <c>reference</c> value.  The <c>width</c> property specifies the width of the corridor, which is the distance between the edges of the corridor.
+        /// Writes a value for the <c>width</c> property as a <c>reference</c> value.  The <c>width</c> property specifies the width of the corridor, which is the distance between the edges of the corridor. This value is required.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -383,7 +383,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>height</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>height</c> property defines the height of the corridor, which is the altitude of the corridor relative to the surface.
+        /// Gets the writer for the <c>height</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>height</c> property defines the height of the corridor, which is the altitude of the corridor relative to the surface. If not specified, the default value is 0.0.
         /// </summary>
         [NotNull]
         public DoubleCesiumWriter HeightWriter
@@ -392,7 +392,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>height</c> property.  The <c>height</c> property defines the height of the corridor, which is the altitude of the corridor relative to the surface.
+        /// Opens and returns the writer for the <c>height</c> property.  The <c>height</c> property defines the height of the corridor, which is the altitude of the corridor relative to the surface. If not specified, the default value is 0.0.
         /// </summary>
         [NotNull]
         public DoubleCesiumWriter OpenHeightProperty()
@@ -402,7 +402,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>height</c> property as a <c>number</c> value.  The <c>height</c> property specifies the height of the corridor, which is the altitude of the corridor relative to the surface.
+        /// Writes a value for the <c>height</c> property as a <c>number</c> value.  The <c>height</c> property specifies the height of the corridor, which is the altitude of the corridor relative to the surface. If not specified, the default value is 0.0.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteHeightProperty(double value)
@@ -414,7 +414,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>height</c> property as a <c>number</c> value.  The <c>height</c> property specifies the height of the corridor, which is the altitude of the corridor relative to the surface.
+        /// Writes a value for the <c>height</c> property as a <c>number</c> value.  The <c>height</c> property specifies the height of the corridor, which is the altitude of the corridor relative to the surface. If not specified, the default value is 0.0.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -427,7 +427,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>height</c> property as a <c>number</c> value.  The <c>height</c> property specifies the height of the corridor, which is the altitude of the corridor relative to the surface.
+        /// Writes a value for the <c>height</c> property as a <c>number</c> value.  The <c>height</c> property specifies the height of the corridor, which is the altitude of the corridor relative to the surface. If not specified, the default value is 0.0.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -442,7 +442,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>height</c> property as a <c>reference</c> value.  The <c>height</c> property specifies the height of the corridor, which is the altitude of the corridor relative to the surface.
+        /// Writes a value for the <c>height</c> property as a <c>reference</c> value.  The <c>height</c> property specifies the height of the corridor, which is the altitude of the corridor relative to the surface. If not specified, the default value is 0.0.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteHeightPropertyReference(Reference value)
@@ -454,7 +454,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>height</c> property as a <c>reference</c> value.  The <c>height</c> property specifies the height of the corridor, which is the altitude of the corridor relative to the surface.
+        /// Writes a value for the <c>height</c> property as a <c>reference</c> value.  The <c>height</c> property specifies the height of the corridor, which is the altitude of the corridor relative to the surface. If not specified, the default value is 0.0.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteHeightPropertyReference(string value)
@@ -466,7 +466,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>height</c> property as a <c>reference</c> value.  The <c>height</c> property specifies the height of the corridor, which is the altitude of the corridor relative to the surface.
+        /// Writes a value for the <c>height</c> property as a <c>reference</c> value.  The <c>height</c> property specifies the height of the corridor, which is the altitude of the corridor relative to the surface. If not specified, the default value is 0.0.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -479,7 +479,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>height</c> property as a <c>reference</c> value.  The <c>height</c> property specifies the height of the corridor, which is the altitude of the corridor relative to the surface.
+        /// Writes a value for the <c>height</c> property as a <c>reference</c> value.  The <c>height</c> property specifies the height of the corridor, which is the altitude of the corridor relative to the surface. If not specified, the default value is 0.0.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -601,7 +601,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>cornerType</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>cornerType</c> property defines the style of the corners of the corridor.
+        /// Gets the writer for the <c>cornerType</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>cornerType</c> property defines the style of the corners of the corridor. If not specified, the default value is ROUNDED.
         /// </summary>
         [NotNull]
         public CornerTypeCesiumWriter CornerTypeWriter
@@ -610,7 +610,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>cornerType</c> property.  The <c>cornerType</c> property defines the style of the corners of the corridor.
+        /// Opens and returns the writer for the <c>cornerType</c> property.  The <c>cornerType</c> property defines the style of the corners of the corridor. If not specified, the default value is ROUNDED.
         /// </summary>
         [NotNull]
         public CornerTypeCesiumWriter OpenCornerTypeProperty()
@@ -620,7 +620,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>cornerType</c> property as a <c>cornerType</c> value.  The <c>cornerType</c> property specifies the style of the corners of the corridor.
+        /// Writes a value for the <c>cornerType</c> property as a <c>cornerType</c> value.  The <c>cornerType</c> property specifies the style of the corners of the corridor. If not specified, the default value is ROUNDED.
         /// </summary>
         /// <param name="value">The style of a corner.</param>
         public void WriteCornerTypeProperty(CesiumCornerType value)
@@ -632,7 +632,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>cornerType</c> property as a <c>reference</c> value.  The <c>cornerType</c> property specifies the style of the corners of the corridor.
+        /// Writes a value for the <c>cornerType</c> property as a <c>reference</c> value.  The <c>cornerType</c> property specifies the style of the corners of the corridor. If not specified, the default value is ROUNDED.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteCornerTypePropertyReference(Reference value)
@@ -644,7 +644,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>cornerType</c> property as a <c>reference</c> value.  The <c>cornerType</c> property specifies the style of the corners of the corridor.
+        /// Writes a value for the <c>cornerType</c> property as a <c>reference</c> value.  The <c>cornerType</c> property specifies the style of the corners of the corridor. If not specified, the default value is ROUNDED.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteCornerTypePropertyReference(string value)
@@ -656,7 +656,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>cornerType</c> property as a <c>reference</c> value.  The <c>cornerType</c> property specifies the style of the corners of the corridor.
+        /// Writes a value for the <c>cornerType</c> property as a <c>reference</c> value.  The <c>cornerType</c> property specifies the style of the corners of the corridor. If not specified, the default value is ROUNDED.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -669,7 +669,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>cornerType</c> property as a <c>reference</c> value.  The <c>cornerType</c> property specifies the style of the corners of the corridor.
+        /// Writes a value for the <c>cornerType</c> property as a <c>reference</c> value.  The <c>cornerType</c> property specifies the style of the corners of the corridor. If not specified, the default value is ROUNDED.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -682,7 +682,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>granularity</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>granularity</c> property defines the sampling distance, in radians.
+        /// Gets the writer for the <c>granularity</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>granularity</c> property defines the sampling distance, in radians. If not specified, the default value is PI / 180.0.
         /// </summary>
         [NotNull]
         public DoubleCesiumWriter GranularityWriter
@@ -691,7 +691,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>granularity</c> property.  The <c>granularity</c> property defines the sampling distance, in radians.
+        /// Opens and returns the writer for the <c>granularity</c> property.  The <c>granularity</c> property defines the sampling distance, in radians. If not specified, the default value is PI / 180.0.
         /// </summary>
         [NotNull]
         public DoubleCesiumWriter OpenGranularityProperty()
@@ -701,7 +701,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>granularity</c> property as a <c>number</c> value.  The <c>granularity</c> property specifies the sampling distance, in radians.
+        /// Writes a value for the <c>granularity</c> property as a <c>number</c> value.  The <c>granularity</c> property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteGranularityProperty(double value)
@@ -713,7 +713,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>granularity</c> property as a <c>number</c> value.  The <c>granularity</c> property specifies the sampling distance, in radians.
+        /// Writes a value for the <c>granularity</c> property as a <c>number</c> value.  The <c>granularity</c> property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -726,7 +726,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>granularity</c> property as a <c>number</c> value.  The <c>granularity</c> property specifies the sampling distance, in radians.
+        /// Writes a value for the <c>granularity</c> property as a <c>number</c> value.  The <c>granularity</c> property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -741,7 +741,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>granularity</c> property as a <c>reference</c> value.  The <c>granularity</c> property specifies the sampling distance, in radians.
+        /// Writes a value for the <c>granularity</c> property as a <c>reference</c> value.  The <c>granularity</c> property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteGranularityPropertyReference(Reference value)
@@ -753,7 +753,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>granularity</c> property as a <c>reference</c> value.  The <c>granularity</c> property specifies the sampling distance, in radians.
+        /// Writes a value for the <c>granularity</c> property as a <c>reference</c> value.  The <c>granularity</c> property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteGranularityPropertyReference(string value)
@@ -765,7 +765,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>granularity</c> property as a <c>reference</c> value.  The <c>granularity</c> property specifies the sampling distance, in radians.
+        /// Writes a value for the <c>granularity</c> property as a <c>reference</c> value.  The <c>granularity</c> property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -778,7 +778,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>granularity</c> property as a <c>reference</c> value.  The <c>granularity</c> property specifies the sampling distance, in radians.
+        /// Writes a value for the <c>granularity</c> property as a <c>reference</c> value.  The <c>granularity</c> property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -791,7 +791,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>fill</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>fill</c> property defines whether or not the corridor is filled.  If not specified, the default value is <see langword="true"/>.
+        /// Gets the writer for the <c>fill</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>fill</c> property defines whether or not the corridor is filled. If not specified, the default value is <see langword="true"/>.
         /// </summary>
         [NotNull]
         public BooleanCesiumWriter FillWriter
@@ -800,7 +800,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>fill</c> property.  The <c>fill</c> property defines whether or not the corridor is filled.  If not specified, the default value is <see langword="true"/>.
+        /// Opens and returns the writer for the <c>fill</c> property.  The <c>fill</c> property defines whether or not the corridor is filled. If not specified, the default value is <see langword="true"/>.
         /// </summary>
         [NotNull]
         public BooleanCesiumWriter OpenFillProperty()
@@ -810,7 +810,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>fill</c> property as a <c>boolean</c> value.  The <c>fill</c> property specifies whether or not the corridor is filled.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>fill</c> property as a <c>boolean</c> value.  The <c>fill</c> property specifies whether or not the corridor is filled. If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteFillProperty(bool value)
@@ -822,7 +822,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>fill</c> property as a <c>reference</c> value.  The <c>fill</c> property specifies whether or not the corridor is filled.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>fill</c> property as a <c>reference</c> value.  The <c>fill</c> property specifies whether or not the corridor is filled. If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteFillPropertyReference(Reference value)
@@ -834,7 +834,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>fill</c> property as a <c>reference</c> value.  The <c>fill</c> property specifies whether or not the corridor is filled.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>fill</c> property as a <c>reference</c> value.  The <c>fill</c> property specifies whether or not the corridor is filled. If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteFillPropertyReference(string value)
@@ -846,7 +846,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>fill</c> property as a <c>reference</c> value.  The <c>fill</c> property specifies whether or not the corridor is filled.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>fill</c> property as a <c>reference</c> value.  The <c>fill</c> property specifies whether or not the corridor is filled. If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -859,7 +859,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>fill</c> property as a <c>reference</c> value.  The <c>fill</c> property specifies whether or not the corridor is filled.  If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>fill</c> property as a <c>reference</c> value.  The <c>fill</c> property specifies whether or not the corridor is filled. If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -872,7 +872,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>material</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>material</c> property defines the material to display on the surface of the corridor.
+        /// Gets the writer for the <c>material</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>material</c> property defines the material to display on the surface of the corridor. If not specified, the default value is solid white.
         /// </summary>
         [NotNull]
         public MaterialCesiumWriter MaterialWriter
@@ -881,7 +881,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>material</c> property.  The <c>material</c> property defines the material to display on the surface of the corridor.
+        /// Opens and returns the writer for the <c>material</c> property.  The <c>material</c> property defines the material to display on the surface of the corridor. If not specified, the default value is solid white.
         /// </summary>
         [NotNull]
         public MaterialCesiumWriter OpenMaterialProperty()
@@ -891,7 +891,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>outline</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outline</c> property defines whether or not the corridor is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// Gets the writer for the <c>outline</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outline</c> property defines whether or not the corridor is outlined. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         [NotNull]
         public BooleanCesiumWriter OutlineWriter
@@ -900,7 +900,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>outline</c> property.  The <c>outline</c> property defines whether or not the corridor is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// Opens and returns the writer for the <c>outline</c> property.  The <c>outline</c> property defines whether or not the corridor is outlined. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         [NotNull]
         public BooleanCesiumWriter OpenOutlineProperty()
@@ -910,7 +910,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outline</c> property as a <c>boolean</c> value.  The <c>outline</c> property specifies whether or not the corridor is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// Writes a value for the <c>outline</c> property as a <c>boolean</c> value.  The <c>outline</c> property specifies whether or not the corridor is outlined. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteOutlineProperty(bool value)
@@ -922,7 +922,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outline</c> property as a <c>reference</c> value.  The <c>outline</c> property specifies whether or not the corridor is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// Writes a value for the <c>outline</c> property as a <c>reference</c> value.  The <c>outline</c> property specifies whether or not the corridor is outlined. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteOutlinePropertyReference(Reference value)
@@ -934,7 +934,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outline</c> property as a <c>reference</c> value.  The <c>outline</c> property specifies whether or not the corridor is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// Writes a value for the <c>outline</c> property as a <c>reference</c> value.  The <c>outline</c> property specifies whether or not the corridor is outlined. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteOutlinePropertyReference(string value)
@@ -946,7 +946,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outline</c> property as a <c>reference</c> value.  The <c>outline</c> property specifies whether or not the corridor is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// Writes a value for the <c>outline</c> property as a <c>reference</c> value.  The <c>outline</c> property specifies whether or not the corridor is outlined. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -959,7 +959,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outline</c> property as a <c>reference</c> value.  The <c>outline</c> property specifies whether or not the corridor is outlined.  If not specified, the default value is <see langword="false"/>.
+        /// Writes a value for the <c>outline</c> property as a <c>reference</c> value.  The <c>outline</c> property specifies whether or not the corridor is outlined. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -972,7 +972,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>outlineColor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outlineColor</c> property defines the color of the corridor outline.
+        /// Gets the writer for the <c>outlineColor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outlineColor</c> property defines the color of the corridor outline. If not specified, the default value is black.
         /// </summary>
         [NotNull]
         public ColorCesiumWriter OutlineColorWriter
@@ -981,7 +981,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>outlineColor</c> property.  The <c>outlineColor</c> property defines the color of the corridor outline.
+        /// Opens and returns the writer for the <c>outlineColor</c> property.  The <c>outlineColor</c> property defines the color of the corridor outline. If not specified, the default value is black.
         /// </summary>
         [NotNull]
         public ColorCesiumWriter OpenOutlineColorProperty()
@@ -991,7 +991,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outlineColor</c> property as a <c>rgba</c> value.  The <c>outlineColor</c> property specifies the color of the corridor outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgba</c> value.  The <c>outlineColor</c> property specifies the color of the corridor outline. If not specified, the default value is black.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteOutlineColorProperty(Color color)
@@ -1003,7 +1003,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outlineColor</c> property as a <c>rgba</c> value.  The <c>outlineColor</c> property specifies the color of the corridor outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgba</c> value.  The <c>outlineColor</c> property specifies the color of the corridor outline. If not specified, the default value is black.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 255.</param>
         /// <param name="green">The green component in the range 0 to 255.</param>
@@ -1018,7 +1018,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outlineColor</c> property as a <c>rgba</c> value.  The <c>outlineColor</c> property specifies the color of the corridor outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgba</c> value.  The <c>outlineColor</c> property specifies the color of the corridor outline. If not specified, the default value is black.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -1031,7 +1031,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outlineColor</c> property as a <c>rgba</c> value.  The <c>outlineColor</c> property specifies the color of the corridor outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgba</c> value.  The <c>outlineColor</c> property specifies the color of the corridor outline. If not specified, the default value is black.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
@@ -1046,7 +1046,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outlineColor</c> property as a <c>rgbaf</c> value.  The <c>outlineColor</c> property specifies the color of the corridor outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgbaf</c> value.  The <c>outlineColor</c> property specifies the color of the corridor outline. If not specified, the default value is black.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteOutlineColorPropertyRgbaf(Color color)
@@ -1058,7 +1058,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outlineColor</c> property as a <c>rgbaf</c> value.  The <c>outlineColor</c> property specifies the color of the corridor outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgbaf</c> value.  The <c>outlineColor</c> property specifies the color of the corridor outline. If not specified, the default value is black.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 1.0.</param>
         /// <param name="green">The green component in the range 0 to 1.0.</param>
@@ -1073,7 +1073,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outlineColor</c> property as a <c>rgbaf</c> value.  The <c>outlineColor</c> property specifies the color of the corridor outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgbaf</c> value.  The <c>outlineColor</c> property specifies the color of the corridor outline. If not specified, the default value is black.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -1086,7 +1086,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outlineColor</c> property as a <c>rgbaf</c> value.  The <c>outlineColor</c> property specifies the color of the corridor outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgbaf</c> value.  The <c>outlineColor</c> property specifies the color of the corridor outline. If not specified, the default value is black.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
@@ -1101,7 +1101,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value.  The <c>outlineColor</c> property specifies the color of the corridor outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value.  The <c>outlineColor</c> property specifies the color of the corridor outline. If not specified, the default value is black.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteOutlineColorPropertyReference(Reference value)
@@ -1113,7 +1113,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value.  The <c>outlineColor</c> property specifies the color of the corridor outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value.  The <c>outlineColor</c> property specifies the color of the corridor outline. If not specified, the default value is black.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteOutlineColorPropertyReference(string value)
@@ -1125,7 +1125,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value.  The <c>outlineColor</c> property specifies the color of the corridor outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value.  The <c>outlineColor</c> property specifies the color of the corridor outline. If not specified, the default value is black.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -1138,7 +1138,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value.  The <c>outlineColor</c> property specifies the color of the corridor outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value.  The <c>outlineColor</c> property specifies the color of the corridor outline. If not specified, the default value is black.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -1151,7 +1151,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>outlineWidth</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outlineWidth</c> property defines the width of the corridor outline.  If not specified, the default value is 1.0.
+        /// Gets the writer for the <c>outlineWidth</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outlineWidth</c> property defines the width of the corridor outline. If not specified, the default value is 1.0.
         /// </summary>
         [NotNull]
         public DoubleCesiumWriter OutlineWidthWriter
@@ -1160,7 +1160,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>outlineWidth</c> property.  The <c>outlineWidth</c> property defines the width of the corridor outline.  If not specified, the default value is 1.0.
+        /// Opens and returns the writer for the <c>outlineWidth</c> property.  The <c>outlineWidth</c> property defines the width of the corridor outline. If not specified, the default value is 1.0.
         /// </summary>
         [NotNull]
         public DoubleCesiumWriter OpenOutlineWidthProperty()
@@ -1170,7 +1170,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outlineWidth</c> property as a <c>number</c> value.  The <c>outlineWidth</c> property specifies the width of the corridor outline.  If not specified, the default value is 1.0.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>number</c> value.  The <c>outlineWidth</c> property specifies the width of the corridor outline. If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteOutlineWidthProperty(double value)
@@ -1182,7 +1182,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outlineWidth</c> property as a <c>number</c> value.  The <c>outlineWidth</c> property specifies the width of the corridor outline.  If not specified, the default value is 1.0.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>number</c> value.  The <c>outlineWidth</c> property specifies the width of the corridor outline. If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -1195,7 +1195,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outlineWidth</c> property as a <c>number</c> value.  The <c>outlineWidth</c> property specifies the width of the corridor outline.  If not specified, the default value is 1.0.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>number</c> value.  The <c>outlineWidth</c> property specifies the width of the corridor outline. If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -1210,7 +1210,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value.  The <c>outlineWidth</c> property specifies the width of the corridor outline.  If not specified, the default value is 1.0.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value.  The <c>outlineWidth</c> property specifies the width of the corridor outline. If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteOutlineWidthPropertyReference(Reference value)
@@ -1222,7 +1222,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value.  The <c>outlineWidth</c> property specifies the width of the corridor outline.  If not specified, the default value is 1.0.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value.  The <c>outlineWidth</c> property specifies the width of the corridor outline. If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteOutlineWidthPropertyReference(string value)
@@ -1234,7 +1234,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value.  The <c>outlineWidth</c> property specifies the width of the corridor outline.  If not specified, the default value is 1.0.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value.  The <c>outlineWidth</c> property specifies the width of the corridor outline. If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -1247,7 +1247,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value.  The <c>outlineWidth</c> property specifies the width of the corridor outline.  If not specified, the default value is 1.0.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value.  The <c>outlineWidth</c> property specifies the width of the corridor outline. If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -1260,7 +1260,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>shadows</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>shadows</c> property defines whether or not the corridor casts or receives shadows.  If not specified, the default value is DISABLED.
+        /// Gets the writer for the <c>shadows</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>shadows</c> property defines whether or not the corridor casts or receives shadows. If not specified, the default value is DISABLED.
         /// </summary>
         [NotNull]
         public ShadowModeCesiumWriter ShadowsWriter
@@ -1269,7 +1269,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>shadows</c> property.  The <c>shadows</c> property defines whether or not the corridor casts or receives shadows.  If not specified, the default value is DISABLED.
+        /// Opens and returns the writer for the <c>shadows</c> property.  The <c>shadows</c> property defines whether or not the corridor casts or receives shadows. If not specified, the default value is DISABLED.
         /// </summary>
         [NotNull]
         public ShadowModeCesiumWriter OpenShadowsProperty()
@@ -1279,7 +1279,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>shadows</c> property as a <c>shadowMode</c> value.  The <c>shadows</c> property specifies whether or not the corridor casts or receives shadows.  If not specified, the default value is DISABLED.
+        /// Writes a value for the <c>shadows</c> property as a <c>shadowMode</c> value.  The <c>shadows</c> property specifies whether or not the corridor casts or receives shadows. If not specified, the default value is DISABLED.
         /// </summary>
         /// <param name="value">The shadow mode.</param>
         public void WriteShadowsProperty(CesiumShadowMode value)
@@ -1291,7 +1291,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>shadows</c> property as a <c>reference</c> value.  The <c>shadows</c> property specifies whether or not the corridor casts or receives shadows.  If not specified, the default value is DISABLED.
+        /// Writes a value for the <c>shadows</c> property as a <c>reference</c> value.  The <c>shadows</c> property specifies whether or not the corridor casts or receives shadows. If not specified, the default value is DISABLED.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteShadowsPropertyReference(Reference value)
@@ -1303,7 +1303,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>shadows</c> property as a <c>reference</c> value.  The <c>shadows</c> property specifies whether or not the corridor casts or receives shadows.  If not specified, the default value is DISABLED.
+        /// Writes a value for the <c>shadows</c> property as a <c>reference</c> value.  The <c>shadows</c> property specifies whether or not the corridor casts or receives shadows. If not specified, the default value is DISABLED.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteShadowsPropertyReference(string value)
@@ -1315,7 +1315,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>shadows</c> property as a <c>reference</c> value.  The <c>shadows</c> property specifies whether or not the corridor casts or receives shadows.  If not specified, the default value is DISABLED.
+        /// Writes a value for the <c>shadows</c> property as a <c>reference</c> value.  The <c>shadows</c> property specifies whether or not the corridor casts or receives shadows. If not specified, the default value is DISABLED.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -1328,7 +1328,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>shadows</c> property as a <c>reference</c> value.  The <c>shadows</c> property specifies whether or not the corridor casts or receives shadows.  If not specified, the default value is DISABLED.
+        /// Writes a value for the <c>shadows</c> property as a <c>reference</c> value.  The <c>shadows</c> property specifies whether or not the corridor casts or receives shadows. If not specified, the default value is DISABLED.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>

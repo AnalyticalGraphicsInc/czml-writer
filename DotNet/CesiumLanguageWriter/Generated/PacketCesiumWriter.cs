@@ -214,7 +214,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>id</c>, which is the ID of the object described by this packet.  IDs do not need to be GUIDs, but they do need to uniquely identify a single object within a CZML source and any other CZML sources loaded into the same scope.  If this property is not specified, the client will automatically generate a unique one.  However, this prevents later packets from referring to this object in order to add more data to it.
+        /// Writes the value expressed as a <c>id</c>, which is the ID of the object described by this packet. IDs do not need to be GUIDs, but they do need to uniquely identify a single object within a CZML source and any other CZML sources loaded into the same scope. If this property is not specified, the client will automatically generate a unique one. However, this prevents later packets from referring to this object in order to add more data to it.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteId(string value)
@@ -236,7 +236,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>name</c>, which is the name of the object.  It does not have to be unique and is intended for user consumption.
+        /// Writes the value expressed as a <c>name</c>, which is the name of the object. It does not have to be unique and is intended for user consumption.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteName(string value)
@@ -367,7 +367,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>availability</c>, which is the set of time intervals over which data for an object is available. The property can be a single string specifying a single interval, or an array of strings representing intervals.  A later Cesium packet can update this availability if it changes or is found to be incorrect. For example, an SGP4 propagator may initially report availability for all time, but then later the propagator throws an exception and the availability can be adjusted to end at that time. If this optional property is not present, the object is assumed to be available for all time. Availability is scoped to a particular CZML stream, so two different streams can list different availability for a single object. Within a single stream, the last availability stated for an object is the one in effect and any availabilities in previous packets are ignored. If an object is not available at a time, the client will not draw that object.  If not specified, the default value is 0000-00-00T00:00:00Z/9999-12-31T24:00:00Z.
+        /// Writes the value expressed as a <c>availability</c>, which is the set of time intervals over which data for an object is available. The property can be a single string specifying a single interval, or an array of strings representing intervals. A later Cesium packet can update this availability if it changes or is found to be incorrect. For example, an SGP4 propagator may initially report availability for all time, but then later the propagator throws an exception and the availability can be adjusted to end at that time. If this optional property is not present, the object is assumed to be available for all time. Availability is scoped to a particular CZML stream, so two different streams can list different availability for a single object. Within a single stream, the last availability stated for an object is the one in effect and any availabilities in previous packets are ignored. If an object is not available at a time, the client will not draw that object. If not specified, the default value is 0000-00-00T00:00:00Z/9999-12-31T24:00:00Z.
         /// </summary>
         /// <param name="value">The interval.</param>
         public void WriteAvailability(TimeInterval value)
@@ -378,7 +378,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>availability</c>, which is the set of time intervals over which data for an object is available. The property can be a single string specifying a single interval, or an array of strings representing intervals.  A later Cesium packet can update this availability if it changes or is found to be incorrect. For example, an SGP4 propagator may initially report availability for all time, but then later the propagator throws an exception and the availability can be adjusted to end at that time. If this optional property is not present, the object is assumed to be available for all time. Availability is scoped to a particular CZML stream, so two different streams can list different availability for a single object. Within a single stream, the last availability stated for an object is the one in effect and any availabilities in previous packets are ignored. If an object is not available at a time, the client will not draw that object.  If not specified, the default value is 0000-00-00T00:00:00Z/9999-12-31T24:00:00Z.
+        /// Writes the value expressed as a <c>availability</c>, which is the set of time intervals over which data for an object is available. The property can be a single string specifying a single interval, or an array of strings representing intervals. A later Cesium packet can update this availability if it changes or is found to be incorrect. For example, an SGP4 propagator may initially report availability for all time, but then later the propagator throws an exception and the availability can be adjusted to end at that time. If this optional property is not present, the object is assumed to be available for all time. Availability is scoped to a particular CZML stream, so two different streams can list different availability for a single object. Within a single stream, the last availability stated for an object is the one in effect and any availabilities in previous packets are ignored. If an object is not available at a time, the client will not draw that object. If not specified, the default value is 0000-00-00T00:00:00Z/9999-12-31T24:00:00Z.
         /// </summary>
         /// <param name="start">The earliest date of the interval.</param>
         /// <param name="stop">The latest date of the interval.</param>
@@ -388,7 +388,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>availability</c>, which is the set of time intervals over which data for an object is available. The property can be a single string specifying a single interval, or an array of strings representing intervals.  A later Cesium packet can update this availability if it changes or is found to be incorrect. For example, an SGP4 propagator may initially report availability for all time, but then later the propagator throws an exception and the availability can be adjusted to end at that time. If this optional property is not present, the object is assumed to be available for all time. Availability is scoped to a particular CZML stream, so two different streams can list different availability for a single object. Within a single stream, the last availability stated for an object is the one in effect and any availabilities in previous packets are ignored. If an object is not available at a time, the client will not draw that object.  If not specified, the default value is 0000-00-00T00:00:00Z/9999-12-31T24:00:00Z.
+        /// Writes the value expressed as a <c>availability</c>, which is the set of time intervals over which data for an object is available. The property can be a single string specifying a single interval, or an array of strings representing intervals. A later Cesium packet can update this availability if it changes or is found to be incorrect. For example, an SGP4 propagator may initially report availability for all time, but then later the propagator throws an exception and the availability can be adjusted to end at that time. If this optional property is not present, the object is assumed to be available for all time. Availability is scoped to a particular CZML stream, so two different streams can list different availability for a single object. Within a single stream, the last availability stated for an object is the one in effect and any availabilities in previous packets are ignored. If an object is not available at a time, the client will not draw that object. If not specified, the default value is 0000-00-00T00:00:00Z/9999-12-31T24:00:00Z.
         /// </summary>
         /// <param name="value">The intervals.</param>
         public void WriteAvailability(IList<TimeInterval> value)
@@ -645,7 +645,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>orientation</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>orientation</c> property defines the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
+        /// Gets the writer for the <c>orientation</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>orientation</c> property defines the orientation of the object in the world. The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
         /// </summary>
         [NotNull]
         public OrientationCesiumWriter OrientationWriter
@@ -654,7 +654,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>orientation</c> property.  The <c>orientation</c> property defines the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
+        /// Opens and returns the writer for the <c>orientation</c> property.  The <c>orientation</c> property defines the orientation of the object in the world. The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
         /// </summary>
         [NotNull]
         public OrientationCesiumWriter OpenOrientationProperty()
@@ -663,7 +663,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>orientation</c> property as a <c>unitQuaternion</c> value.  The <c>orientation</c> property specifies the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
+        /// Writes a value for the <c>orientation</c> property as a <c>unitQuaternion</c> value.  The <c>orientation</c> property specifies the orientation of the object in the world. The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteOrientationProperty(UnitQuaternion value)
@@ -675,7 +675,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>orientation</c> property as a <c>unitQuaternion</c> value.  The <c>orientation</c> property specifies the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
+        /// Writes a value for the <c>orientation</c> property as a <c>unitQuaternion</c> value.  The <c>orientation</c> property specifies the orientation of the object in the world. The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -688,7 +688,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>orientation</c> property as a <c>unitQuaternion</c> value.  The <c>orientation</c> property specifies the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
+        /// Writes a value for the <c>orientation</c> property as a <c>unitQuaternion</c> value.  The <c>orientation</c> property specifies the orientation of the object in the world. The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -703,7 +703,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>orientation</c> property as a <c>reference</c> value.  The <c>orientation</c> property specifies the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
+        /// Writes a value for the <c>orientation</c> property as a <c>reference</c> value.  The <c>orientation</c> property specifies the orientation of the object in the world. The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteOrientationPropertyReference(Reference value)
@@ -715,7 +715,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>orientation</c> property as a <c>reference</c> value.  The <c>orientation</c> property specifies the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
+        /// Writes a value for the <c>orientation</c> property as a <c>reference</c> value.  The <c>orientation</c> property specifies the orientation of the object in the world. The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteOrientationPropertyReference(string value)
@@ -727,7 +727,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>orientation</c> property as a <c>reference</c> value.  The <c>orientation</c> property specifies the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
+        /// Writes a value for the <c>orientation</c> property as a <c>reference</c> value.  The <c>orientation</c> property specifies the orientation of the object in the world. The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -740,7 +740,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>orientation</c> property as a <c>reference</c> value.  The <c>orientation</c> property specifies the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
+        /// Writes a value for the <c>orientation</c> property as a <c>reference</c> value.  The <c>orientation</c> property specifies the orientation of the object in the world. The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -753,7 +753,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>orientation</c> property as a <c>velocityReference</c> value.  The <c>orientation</c> property specifies the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
+        /// Writes a value for the <c>orientation</c> property as a <c>velocityReference</c> value.  The <c>orientation</c> property specifies the orientation of the object in the world. The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteOrientationPropertyVelocityReference(Reference value)
@@ -765,7 +765,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>orientation</c> property as a <c>velocityReference</c> value.  The <c>orientation</c> property specifies the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
+        /// Writes a value for the <c>orientation</c> property as a <c>velocityReference</c> value.  The <c>orientation</c> property specifies the orientation of the object in the world. The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteOrientationPropertyVelocityReference(string value)
@@ -777,7 +777,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>orientation</c> property as a <c>velocityReference</c> value.  The <c>orientation</c> property specifies the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
+        /// Writes a value for the <c>orientation</c> property as a <c>velocityReference</c> value.  The <c>orientation</c> property specifies the orientation of the object in the world. The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -790,7 +790,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>orientation</c> property as a <c>velocityReference</c> value.  The <c>orientation</c> property specifies the orientation of the object in the world.  The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
+        /// Writes a value for the <c>orientation</c> property as a <c>velocityReference</c> value.  The <c>orientation</c> property specifies the orientation of the object in the world. The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -803,7 +803,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>viewFrom</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>viewFrom</c> property defines a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
+        /// Gets the writer for the <c>viewFrom</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>viewFrom</c> property defines a suggested camera location when viewing this object. The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
         /// </summary>
         [NotNull]
         public ViewFromCesiumWriter ViewFromWriter
@@ -812,7 +812,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>viewFrom</c> property.  The <c>viewFrom</c> property defines a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
+        /// Opens and returns the writer for the <c>viewFrom</c> property.  The <c>viewFrom</c> property defines a suggested camera location when viewing this object. The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
         /// </summary>
         [NotNull]
         public ViewFromCesiumWriter OpenViewFromProperty()
@@ -821,7 +821,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>viewFrom</c> property as a <c>cartesian</c> value.  The <c>viewFrom</c> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
+        /// Writes a value for the <c>viewFrom</c> property as a <c>cartesian</c> value.  The <c>viewFrom</c> property specifies a suggested camera location when viewing this object. The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteViewFromProperty(Cartesian value)
@@ -833,7 +833,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>viewFrom</c> property as a <c>cartesian</c> value.  The <c>viewFrom</c> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
+        /// Writes a value for the <c>viewFrom</c> property as a <c>cartesian</c> value.  The <c>viewFrom</c> property specifies a suggested camera location when viewing this object. The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -846,7 +846,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>viewFrom</c> property as a <c>cartesian</c> value.  The <c>viewFrom</c> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
+        /// Writes a value for the <c>viewFrom</c> property as a <c>cartesian</c> value.  The <c>viewFrom</c> property specifies a suggested camera location when viewing this object. The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -861,7 +861,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>viewFrom</c> property as a <c>reference</c> value.  The <c>viewFrom</c> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
+        /// Writes a value for the <c>viewFrom</c> property as a <c>reference</c> value.  The <c>viewFrom</c> property specifies a suggested camera location when viewing this object. The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteViewFromPropertyReference(Reference value)
@@ -873,7 +873,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>viewFrom</c> property as a <c>reference</c> value.  The <c>viewFrom</c> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
+        /// Writes a value for the <c>viewFrom</c> property as a <c>reference</c> value.  The <c>viewFrom</c> property specifies a suggested camera location when viewing this object. The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteViewFromPropertyReference(string value)
@@ -885,7 +885,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>viewFrom</c> property as a <c>reference</c> value.  The <c>viewFrom</c> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
+        /// Writes a value for the <c>viewFrom</c> property as a <c>reference</c> value.  The <c>viewFrom</c> property specifies a suggested camera location when viewing this object. The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -898,7 +898,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>viewFrom</c> property as a <c>reference</c> value.  The <c>viewFrom</c> property specifies a suggested camera location when viewing this object.  The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
+        /// Writes a value for the <c>viewFrom</c> property as a <c>reference</c> value.  The <c>viewFrom</c> property specifies a suggested camera location when viewing this object. The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -911,7 +911,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>billboard</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>billboard</c> property defines a billboard, or viewport-aligned image, sometimes called a marker.  The billboard is positioned in the scene by the <c>position</c> property.
+        /// Gets the writer for the <c>billboard</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>billboard</c> property defines a billboard, or viewport-aligned image, sometimes called a marker. The billboard is positioned in the scene by the <c>position</c> property.
         /// </summary>
         [NotNull]
         public BillboardCesiumWriter BillboardWriter
@@ -920,7 +920,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>billboard</c> property.  The <c>billboard</c> property defines a billboard, or viewport-aligned image, sometimes called a marker.  The billboard is positioned in the scene by the <c>position</c> property.
+        /// Opens and returns the writer for the <c>billboard</c> property.  The <c>billboard</c> property defines a billboard, or viewport-aligned image, sometimes called a marker. The billboard is positioned in the scene by the <c>position</c> property.
         /// </summary>
         [NotNull]
         public BillboardCesiumWriter OpenBillboardProperty()
@@ -929,7 +929,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>box</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>box</c> property defines a box, which is a closed rectangular cuboid.  The box is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
+        /// Gets the writer for the <c>box</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>box</c> property defines a box, which is a closed rectangular cuboid. The box is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         [NotNull]
         public BoxCesiumWriter BoxWriter
@@ -938,7 +938,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>box</c> property.  The <c>box</c> property defines a box, which is a closed rectangular cuboid.  The box is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
+        /// Opens and returns the writer for the <c>box</c> property.  The <c>box</c> property defines a box, which is a closed rectangular cuboid. The box is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         [NotNull]
         public BoxCesiumWriter OpenBoxProperty()
@@ -965,7 +965,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>cylinder</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>cylinder</c> property defines a cylinder, truncated cone, or cone defined by a length, top radius, and bottom radius.  The cylinder is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
+        /// Gets the writer for the <c>cylinder</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>cylinder</c> property defines a cylinder, truncated cone, or cone defined by a length, top radius, and bottom radius. The cylinder is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         [NotNull]
         public CylinderCesiumWriter CylinderWriter
@@ -974,7 +974,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>cylinder</c> property.  The <c>cylinder</c> property defines a cylinder, truncated cone, or cone defined by a length, top radius, and bottom radius.  The cylinder is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
+        /// Opens and returns the writer for the <c>cylinder</c> property.  The <c>cylinder</c> property defines a cylinder, truncated cone, or cone defined by a length, top radius, and bottom radius. The cylinder is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         [NotNull]
         public CylinderCesiumWriter OpenCylinderProperty()
@@ -983,7 +983,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>ellipse</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>ellipse</c> property defines an ellipse, which is a closed curve on the surface of the Earth.  The ellipse is positioned using the <c>position</c> property.
+        /// Gets the writer for the <c>ellipse</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>ellipse</c> property defines an ellipse, which is a closed curve on the surface of the Earth. The ellipse is positioned using the <c>position</c> property.
         /// </summary>
         [NotNull]
         public EllipseCesiumWriter EllipseWriter
@@ -992,7 +992,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>ellipse</c> property.  The <c>ellipse</c> property defines an ellipse, which is a closed curve on the surface of the Earth.  The ellipse is positioned using the <c>position</c> property.
+        /// Opens and returns the writer for the <c>ellipse</c> property.  The <c>ellipse</c> property defines an ellipse, which is a closed curve on the surface of the Earth. The ellipse is positioned using the <c>position</c> property.
         /// </summary>
         [NotNull]
         public EllipseCesiumWriter OpenEllipseProperty()
@@ -1001,7 +1001,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>ellipsoid</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>ellipsoid</c> property defines an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
+        /// Gets the writer for the <c>ellipsoid</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>ellipsoid</c> property defines an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse. The ellipsoid is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         [NotNull]
         public EllipsoidCesiumWriter EllipsoidWriter
@@ -1010,7 +1010,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>ellipsoid</c> property.  The <c>ellipsoid</c> property defines an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse.  The ellipsoid is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
+        /// Opens and returns the writer for the <c>ellipsoid</c> property.  The <c>ellipsoid</c> property defines an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse. The ellipsoid is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         [NotNull]
         public EllipsoidCesiumWriter OpenEllipsoidProperty()
@@ -1019,7 +1019,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>label</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>label</c> property defines a string of text.  The label is positioned in the scene by the <c>position</c> property.
+        /// Gets the writer for the <c>label</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>label</c> property defines a string of text. The label is positioned in the scene by the <c>position</c> property.
         /// </summary>
         [NotNull]
         public LabelCesiumWriter LabelWriter
@@ -1028,7 +1028,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>label</c> property.  The <c>label</c> property defines a string of text.  The label is positioned in the scene by the <c>position</c> property.
+        /// Opens and returns the writer for the <c>label</c> property.  The <c>label</c> property defines a string of text. The label is positioned in the scene by the <c>position</c> property.
         /// </summary>
         [NotNull]
         public LabelCesiumWriter OpenLabelProperty()
@@ -1037,7 +1037,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>model</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>model</c> property defines a 3D model.  The model is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
+        /// Gets the writer for the <c>model</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>model</c> property defines a 3D model. The model is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         [NotNull]
         public ModelCesiumWriter ModelWriter
@@ -1046,7 +1046,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>model</c> property.  The <c>model</c> property defines a 3D model.  The model is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
+        /// Opens and returns the writer for the <c>model</c> property.  The <c>model</c> property defines a 3D model. The model is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         [NotNull]
         public ModelCesiumWriter OpenModelProperty()
@@ -1055,7 +1055,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>path</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>path</c> property defines a path, which is a polyline defined by the motion of an object over time.  The possible vertices of the path are specified by the <c>position</c> property.
+        /// Gets the writer for the <c>path</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>path</c> property defines a path, which is a polyline defined by the motion of an object over time. The possible vertices of the path are specified by the <c>position</c> property.
         /// </summary>
         [NotNull]
         public PathCesiumWriter PathWriter
@@ -1064,7 +1064,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>path</c> property.  The <c>path</c> property defines a path, which is a polyline defined by the motion of an object over time.  The possible vertices of the path are specified by the <c>position</c> property.
+        /// Opens and returns the writer for the <c>path</c> property.  The <c>path</c> property defines a path, which is a polyline defined by the motion of an object over time. The possible vertices of the path are specified by the <c>position</c> property.
         /// </summary>
         [NotNull]
         public PathCesiumWriter OpenPathProperty()
@@ -1073,7 +1073,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>point</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>point</c> property defines a point, or viewport-aligned circle.  The point is positioned in the scene by the <c>position</c> property.
+        /// Gets the writer for the <c>point</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>point</c> property defines a point, or viewport-aligned circle. The point is positioned in the scene by the <c>position</c> property.
         /// </summary>
         [NotNull]
         public PointCesiumWriter PointWriter
@@ -1082,7 +1082,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>point</c> property.  The <c>point</c> property defines a point, or viewport-aligned circle.  The point is positioned in the scene by the <c>position</c> property.
+        /// Opens and returns the writer for the <c>point</c> property.  The <c>point</c> property defines a point, or viewport-aligned circle. The point is positioned in the scene by the <c>position</c> property.
         /// </summary>
         [NotNull]
         public PointCesiumWriter OpenPointProperty()
@@ -1163,7 +1163,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>agi_conicSensor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>agi_conicSensor</c> property defines a conical sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
+        /// Gets the writer for the <c>agi_conicSensor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>agi_conicSensor</c> property defines a conical sensor volume taking into account occlusion of an ellipsoid, i.e., the globe. The sensor is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         [NotNull]
         public ConicSensorCesiumWriter ConicSensorWriter
@@ -1172,7 +1172,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>agi_conicSensor</c> property.  The <c>agi_conicSensor</c> property defines a conical sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
+        /// Opens and returns the writer for the <c>agi_conicSensor</c> property.  The <c>agi_conicSensor</c> property defines a conical sensor volume taking into account occlusion of an ellipsoid, i.e., the globe. The sensor is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         [NotNull]
         public ConicSensorCesiumWriter OpenConicSensorProperty()
@@ -1181,7 +1181,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>agi_customPatternSensor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>agi_customPatternSensor</c> property defines a custom sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
+        /// Gets the writer for the <c>agi_customPatternSensor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>agi_customPatternSensor</c> property defines a custom sensor volume taking into account occlusion of an ellipsoid, i.e., the globe. The sensor is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         [NotNull]
         public CustomPatternSensorCesiumWriter CustomPatternSensorWriter
@@ -1190,7 +1190,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>agi_customPatternSensor</c> property.  The <c>agi_customPatternSensor</c> property defines a custom sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
+        /// Opens and returns the writer for the <c>agi_customPatternSensor</c> property.  The <c>agi_customPatternSensor</c> property defines a custom sensor volume taking into account occlusion of an ellipsoid, i.e., the globe. The sensor is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         [NotNull]
         public CustomPatternSensorCesiumWriter OpenCustomPatternSensorProperty()
@@ -1199,7 +1199,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>agi_rectangularSensor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>agi_rectangularSensor</c> property defines a rectangular pyramid sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
+        /// Gets the writer for the <c>agi_rectangularSensor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>agi_rectangularSensor</c> property defines a rectangular pyramid sensor volume taking into account occlusion of an ellipsoid, i.e., the globe. The sensor is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         [NotNull]
         public RectangularSensorCesiumWriter RectangularSensorWriter
@@ -1208,7 +1208,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>agi_rectangularSensor</c> property.  The <c>agi_rectangularSensor</c> property defines a rectangular pyramid sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.  The sensor is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
+        /// Opens and returns the writer for the <c>agi_rectangularSensor</c> property.  The <c>agi_rectangularSensor</c> property defines a rectangular pyramid sensor volume taking into account occlusion of an ellipsoid, i.e., the globe. The sensor is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         [NotNull]
         public RectangularSensorCesiumWriter OpenRectangularSensorProperty()
@@ -1217,7 +1217,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>agi_fan</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>agi_fan</c> property defines defines a fan, which starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the fan extending to the specified radius.  The fan is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
+        /// Gets the writer for the <c>agi_fan</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>agi_fan</c> property defines defines a fan, which starts at a point or apex and extends in a specified list of directions from the apex. Each pair of directions forms a face of the fan extending to the specified radius. The fan is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         [NotNull]
         public FanCesiumWriter FanWriter
@@ -1226,7 +1226,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>agi_fan</c> property.  The <c>agi_fan</c> property defines defines a fan, which starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the fan extending to the specified radius.  The fan is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
+        /// Opens and returns the writer for the <c>agi_fan</c> property.  The <c>agi_fan</c> property defines defines a fan, which starts at a point or apex and extends in a specified list of directions from the apex. Each pair of directions forms a face of the fan extending to the specified radius. The fan is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         [NotNull]
         public FanCesiumWriter OpenFanProperty()
@@ -1235,7 +1235,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>agi_vector</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>agi_vector</c> property defines defines a graphical vector that originates at the <c>position</c> property and extends in the provided direction for the provided length.  The vector is positioned using the <c>position</c> property.
+        /// Gets the writer for the <c>agi_vector</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>agi_vector</c> property defines defines a graphical vector that originates at the <c>position</c> property and extends in the provided direction for the provided length. The vector is positioned using the <c>position</c> property.
         /// </summary>
         [NotNull]
         public VectorCesiumWriter VectorWriter
@@ -1244,7 +1244,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>agi_vector</c> property.  The <c>agi_vector</c> property defines defines a graphical vector that originates at the <c>position</c> property and extends in the provided direction for the provided length.  The vector is positioned using the <c>position</c> property.
+        /// Opens and returns the writer for the <c>agi_vector</c> property.  The <c>agi_vector</c> property defines defines a graphical vector that originates at the <c>position</c> property and extends in the provided direction for the provided length. The vector is positioned using the <c>position</c> property.
         /// </summary>
         [NotNull]
         public VectorCesiumWriter OpenVectorProperty()

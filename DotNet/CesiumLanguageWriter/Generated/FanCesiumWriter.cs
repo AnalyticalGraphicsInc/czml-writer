@@ -12,7 +12,7 @@ using System.Drawing;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>Fan</c> to a <see cref="CesiumOutputStream" />.  A <c>Fan</c> is a fan.  A fan starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the fan extending to the specified radius.
+    /// Writes a <c>Fan</c> to a <see cref="CesiumOutputStream" />.  A <c>Fan</c> is a fan. A fan starts at a point or apex and extends in a specified list of directions from the apex. Each pair of directions forms a face of the fan extending to the specified radius.
     /// </summary>
     public class FanCesiumWriter : CesiumPropertyWriter<FanCesiumWriter>
     {
@@ -102,7 +102,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>show</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>show</c> property defines whether or not the fan is shown.
+        /// Gets the writer for the <c>show</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>show</c> property defines whether or not the fan is shown. If not specified, the default value is <see langword="true"/>.
         /// </summary>
         [NotNull]
         public BooleanCesiumWriter ShowWriter
@@ -111,7 +111,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>show</c> property.  The <c>show</c> property defines whether or not the fan is shown.
+        /// Opens and returns the writer for the <c>show</c> property.  The <c>show</c> property defines whether or not the fan is shown. If not specified, the default value is <see langword="true"/>.
         /// </summary>
         [NotNull]
         public BooleanCesiumWriter OpenShowProperty()
@@ -121,7 +121,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>show</c> property as a <c>boolean</c> value.  The <c>show</c> property specifies whether or not the fan is shown.
+        /// Writes a value for the <c>show</c> property as a <c>boolean</c> value.  The <c>show</c> property specifies whether or not the fan is shown. If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteShowProperty(bool value)
@@ -133,7 +133,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the fan is shown.
+        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the fan is shown. If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteShowPropertyReference(Reference value)
@@ -145,7 +145,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the fan is shown.
+        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the fan is shown. If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteShowPropertyReference(string value)
@@ -157,7 +157,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the fan is shown.
+        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the fan is shown. If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -170,7 +170,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the fan is shown.
+        /// Writes a value for the <c>show</c> property as a <c>reference</c> value.  The <c>show</c> property specifies whether or not the fan is shown. If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -183,7 +183,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>directions</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>directions</c> property defines the list of directions defining the fan.
+        /// Gets the writer for the <c>directions</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>directions</c> property defines the list of directions defining the fan. This value is required.
         /// </summary>
         [NotNull]
         public DirectionListCesiumWriter DirectionsWriter
@@ -192,7 +192,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>directions</c> property.  The <c>directions</c> property defines the list of directions defining the fan.
+        /// Opens and returns the writer for the <c>directions</c> property.  The <c>directions</c> property defines the list of directions defining the fan. This value is required.
         /// </summary>
         [NotNull]
         public DirectionListCesiumWriter OpenDirectionsProperty()
@@ -202,7 +202,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>directions</c> property as a <c>spherical</c> value.  The <c>directions</c> property specifies the list of directions defining the fan.
+        /// Writes a value for the <c>directions</c> property as a <c>spherical</c> value.  The <c>directions</c> property specifies the list of directions defining the fan. This value is required.
         /// </summary>
         /// <param name="values">The values.</param>
         public void WriteDirectionsProperty(IEnumerable<Spherical> values)
@@ -214,7 +214,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>directions</c> property as a <c>unitSpherical</c> value.  The <c>directions</c> property specifies the list of directions defining the fan.
+        /// Writes a value for the <c>directions</c> property as a <c>unitSpherical</c> value.  The <c>directions</c> property specifies the list of directions defining the fan. This value is required.
         /// </summary>
         /// <param name="values">The values.</param>
         public void WriteDirectionsPropertyUnitSpherical(IEnumerable<UnitSpherical> values)
@@ -226,7 +226,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>directions</c> property as a <c>cartesian</c> value.  The <c>directions</c> property specifies the list of directions defining the fan.
+        /// Writes a value for the <c>directions</c> property as a <c>cartesian</c> value.  The <c>directions</c> property specifies the list of directions defining the fan. This value is required.
         /// </summary>
         /// <param name="values">The values.</param>
         public void WriteDirectionsPropertyCartesian(IEnumerable<Cartesian> values)
@@ -238,7 +238,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>directions</c> property as a <c>unitCartesian</c> value.  The <c>directions</c> property specifies the list of directions defining the fan.
+        /// Writes a value for the <c>directions</c> property as a <c>unitCartesian</c> value.  The <c>directions</c> property specifies the list of directions defining the fan. This value is required.
         /// </summary>
         /// <param name="values">The values.</param>
         public void WriteDirectionsPropertyUnitCartesian(IEnumerable<UnitCartesian> values)
@@ -250,7 +250,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>radius</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>radius</c> property defines the radial limit of the fan.
+        /// Gets the writer for the <c>radius</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>radius</c> property defines the radial limit of the fan. If <c>perDirectionRadius</c> is false, then this value is required.
         /// </summary>
         [NotNull]
         public DoubleCesiumWriter RadiusWriter
@@ -259,7 +259,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>radius</c> property.  The <c>radius</c> property defines the radial limit of the fan.
+        /// Opens and returns the writer for the <c>radius</c> property.  The <c>radius</c> property defines the radial limit of the fan. If <c>perDirectionRadius</c> is false, then this value is required.
         /// </summary>
         [NotNull]
         public DoubleCesiumWriter OpenRadiusProperty()
@@ -269,7 +269,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>radius</c> property as a <c>number</c> value.  The <c>radius</c> property specifies the radial limit of the fan.
+        /// Writes a value for the <c>radius</c> property as a <c>number</c> value.  The <c>radius</c> property specifies the radial limit of the fan. If <c>perDirectionRadius</c> is false, then this value is required.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteRadiusProperty(double value)
@@ -281,7 +281,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>radius</c> property as a <c>number</c> value.  The <c>radius</c> property specifies the radial limit of the fan.
+        /// Writes a value for the <c>radius</c> property as a <c>number</c> value.  The <c>radius</c> property specifies the radial limit of the fan. If <c>perDirectionRadius</c> is false, then this value is required.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -294,7 +294,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>radius</c> property as a <c>number</c> value.  The <c>radius</c> property specifies the radial limit of the fan.
+        /// Writes a value for the <c>radius</c> property as a <c>number</c> value.  The <c>radius</c> property specifies the radial limit of the fan. If <c>perDirectionRadius</c> is false, then this value is required.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -309,7 +309,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>radius</c> property as a <c>reference</c> value.  The <c>radius</c> property specifies the radial limit of the fan.
+        /// Writes a value for the <c>radius</c> property as a <c>reference</c> value.  The <c>radius</c> property specifies the radial limit of the fan. If <c>perDirectionRadius</c> is false, then this value is required.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteRadiusPropertyReference(Reference value)
@@ -321,7 +321,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>radius</c> property as a <c>reference</c> value.  The <c>radius</c> property specifies the radial limit of the fan.
+        /// Writes a value for the <c>radius</c> property as a <c>reference</c> value.  The <c>radius</c> property specifies the radial limit of the fan. If <c>perDirectionRadius</c> is false, then this value is required.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteRadiusPropertyReference(string value)
@@ -333,7 +333,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>radius</c> property as a <c>reference</c> value.  The <c>radius</c> property specifies the radial limit of the fan.
+        /// Writes a value for the <c>radius</c> property as a <c>reference</c> value.  The <c>radius</c> property specifies the radial limit of the fan. If <c>perDirectionRadius</c> is false, then this value is required.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -346,7 +346,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>radius</c> property as a <c>reference</c> value.  The <c>radius</c> property specifies the radial limit of the fan.
+        /// Writes a value for the <c>radius</c> property as a <c>reference</c> value.  The <c>radius</c> property specifies the radial limit of the fan. If <c>perDirectionRadius</c> is false, then this value is required.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -359,7 +359,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>perDirectionRadius</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>perDirectionRadius</c> property defines whether the magnitude of each direction is used instead of a constant radius.
+        /// Gets the writer for the <c>perDirectionRadius</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>perDirectionRadius</c> property defines whether the magnitude of each direction is used instead of a constant radius. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         [NotNull]
         public BooleanCesiumWriter PerDirectionRadiusWriter
@@ -368,7 +368,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>perDirectionRadius</c> property.  The <c>perDirectionRadius</c> property defines whether the magnitude of each direction is used instead of a constant radius.
+        /// Opens and returns the writer for the <c>perDirectionRadius</c> property.  The <c>perDirectionRadius</c> property defines whether the magnitude of each direction is used instead of a constant radius. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         [NotNull]
         public BooleanCesiumWriter OpenPerDirectionRadiusProperty()
@@ -378,7 +378,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>perDirectionRadius</c> property as a <c>boolean</c> value.  The <c>perDirectionRadius</c> property specifies whether the magnitude of each direction is used instead of a constant radius.
+        /// Writes a value for the <c>perDirectionRadius</c> property as a <c>boolean</c> value.  The <c>perDirectionRadius</c> property specifies whether the magnitude of each direction is used instead of a constant radius. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WritePerDirectionRadiusProperty(bool value)
@@ -390,7 +390,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>perDirectionRadius</c> property as a <c>reference</c> value.  The <c>perDirectionRadius</c> property specifies whether the magnitude of each direction is used instead of a constant radius.
+        /// Writes a value for the <c>perDirectionRadius</c> property as a <c>reference</c> value.  The <c>perDirectionRadius</c> property specifies whether the magnitude of each direction is used instead of a constant radius. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WritePerDirectionRadiusPropertyReference(Reference value)
@@ -402,7 +402,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>perDirectionRadius</c> property as a <c>reference</c> value.  The <c>perDirectionRadius</c> property specifies whether the magnitude of each direction is used instead of a constant radius.
+        /// Writes a value for the <c>perDirectionRadius</c> property as a <c>reference</c> value.  The <c>perDirectionRadius</c> property specifies whether the magnitude of each direction is used instead of a constant radius. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WritePerDirectionRadiusPropertyReference(string value)
@@ -414,7 +414,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>perDirectionRadius</c> property as a <c>reference</c> value.  The <c>perDirectionRadius</c> property specifies whether the magnitude of each direction is used instead of a constant radius.
+        /// Writes a value for the <c>perDirectionRadius</c> property as a <c>reference</c> value.  The <c>perDirectionRadius</c> property specifies whether the magnitude of each direction is used instead of a constant radius. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -427,7 +427,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>perDirectionRadius</c> property as a <c>reference</c> value.  The <c>perDirectionRadius</c> property specifies whether the magnitude of each direction is used instead of a constant radius.
+        /// Writes a value for the <c>perDirectionRadius</c> property as a <c>reference</c> value.  The <c>perDirectionRadius</c> property specifies whether the magnitude of each direction is used instead of a constant radius. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -440,7 +440,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>material</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>material</c> property defines the material to display on the surface of the fan.
+        /// Gets the writer for the <c>material</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>material</c> property defines the material to display on the surface of the fan. If not specified, the default value is solid white.
         /// </summary>
         [NotNull]
         public MaterialCesiumWriter MaterialWriter
@@ -449,7 +449,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>material</c> property.  The <c>material</c> property defines the material to display on the surface of the fan.
+        /// Opens and returns the writer for the <c>material</c> property.  The <c>material</c> property defines the material to display on the surface of the fan. If not specified, the default value is solid white.
         /// </summary>
         [NotNull]
         public MaterialCesiumWriter OpenMaterialProperty()
@@ -459,7 +459,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>fill</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>fill</c> property defines whether or not the fan is filled.
+        /// Gets the writer for the <c>fill</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>fill</c> property defines whether or not the fan is filled. If not specified, the default value is <see langword="true"/>.
         /// </summary>
         [NotNull]
         public BooleanCesiumWriter FillWriter
@@ -468,7 +468,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>fill</c> property.  The <c>fill</c> property defines whether or not the fan is filled.
+        /// Opens and returns the writer for the <c>fill</c> property.  The <c>fill</c> property defines whether or not the fan is filled. If not specified, the default value is <see langword="true"/>.
         /// </summary>
         [NotNull]
         public BooleanCesiumWriter OpenFillProperty()
@@ -478,7 +478,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>fill</c> property as a <c>boolean</c> value.  The <c>fill</c> property specifies whether or not the fan is filled.
+        /// Writes a value for the <c>fill</c> property as a <c>boolean</c> value.  The <c>fill</c> property specifies whether or not the fan is filled. If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteFillProperty(bool value)
@@ -490,7 +490,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>fill</c> property as a <c>reference</c> value.  The <c>fill</c> property specifies whether or not the fan is filled.
+        /// Writes a value for the <c>fill</c> property as a <c>reference</c> value.  The <c>fill</c> property specifies whether or not the fan is filled. If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteFillPropertyReference(Reference value)
@@ -502,7 +502,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>fill</c> property as a <c>reference</c> value.  The <c>fill</c> property specifies whether or not the fan is filled.
+        /// Writes a value for the <c>fill</c> property as a <c>reference</c> value.  The <c>fill</c> property specifies whether or not the fan is filled. If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteFillPropertyReference(string value)
@@ -514,7 +514,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>fill</c> property as a <c>reference</c> value.  The <c>fill</c> property specifies whether or not the fan is filled.
+        /// Writes a value for the <c>fill</c> property as a <c>reference</c> value.  The <c>fill</c> property specifies whether or not the fan is filled. If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -527,7 +527,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>fill</c> property as a <c>reference</c> value.  The <c>fill</c> property specifies whether or not the fan is filled.
+        /// Writes a value for the <c>fill</c> property as a <c>reference</c> value.  The <c>fill</c> property specifies whether or not the fan is filled. If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -540,7 +540,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>outline</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outline</c> property defines whether or not the fan is outlined.
+        /// Gets the writer for the <c>outline</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outline</c> property defines whether or not the fan is outlined. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         [NotNull]
         public BooleanCesiumWriter OutlineWriter
@@ -549,7 +549,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>outline</c> property.  The <c>outline</c> property defines whether or not the fan is outlined.
+        /// Opens and returns the writer for the <c>outline</c> property.  The <c>outline</c> property defines whether or not the fan is outlined. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         [NotNull]
         public BooleanCesiumWriter OpenOutlineProperty()
@@ -559,7 +559,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outline</c> property as a <c>boolean</c> value.  The <c>outline</c> property specifies whether or not the fan is outlined.
+        /// Writes a value for the <c>outline</c> property as a <c>boolean</c> value.  The <c>outline</c> property specifies whether or not the fan is outlined. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteOutlineProperty(bool value)
@@ -571,7 +571,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outline</c> property as a <c>reference</c> value.  The <c>outline</c> property specifies whether or not the fan is outlined.
+        /// Writes a value for the <c>outline</c> property as a <c>reference</c> value.  The <c>outline</c> property specifies whether or not the fan is outlined. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteOutlinePropertyReference(Reference value)
@@ -583,7 +583,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outline</c> property as a <c>reference</c> value.  The <c>outline</c> property specifies whether or not the fan is outlined.
+        /// Writes a value for the <c>outline</c> property as a <c>reference</c> value.  The <c>outline</c> property specifies whether or not the fan is outlined. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteOutlinePropertyReference(string value)
@@ -595,7 +595,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outline</c> property as a <c>reference</c> value.  The <c>outline</c> property specifies whether or not the fan is outlined.
+        /// Writes a value for the <c>outline</c> property as a <c>reference</c> value.  The <c>outline</c> property specifies whether or not the fan is outlined. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -608,7 +608,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outline</c> property as a <c>reference</c> value.  The <c>outline</c> property specifies whether or not the fan is outlined.
+        /// Writes a value for the <c>outline</c> property as a <c>reference</c> value.  The <c>outline</c> property specifies whether or not the fan is outlined. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -621,7 +621,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>outlineColor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outlineColor</c> property defines the color of the fan outline.
+        /// Gets the writer for the <c>outlineColor</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outlineColor</c> property defines the color of the fan outline. If not specified, the default value is black.
         /// </summary>
         [NotNull]
         public ColorCesiumWriter OutlineColorWriter
@@ -630,7 +630,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>outlineColor</c> property.  The <c>outlineColor</c> property defines the color of the fan outline.
+        /// Opens and returns the writer for the <c>outlineColor</c> property.  The <c>outlineColor</c> property defines the color of the fan outline. If not specified, the default value is black.
         /// </summary>
         [NotNull]
         public ColorCesiumWriter OpenOutlineColorProperty()
@@ -640,7 +640,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outlineColor</c> property as a <c>rgba</c> value.  The <c>outlineColor</c> property specifies the color of the fan outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgba</c> value.  The <c>outlineColor</c> property specifies the color of the fan outline. If not specified, the default value is black.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteOutlineColorProperty(Color color)
@@ -652,7 +652,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outlineColor</c> property as a <c>rgba</c> value.  The <c>outlineColor</c> property specifies the color of the fan outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgba</c> value.  The <c>outlineColor</c> property specifies the color of the fan outline. If not specified, the default value is black.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 255.</param>
         /// <param name="green">The green component in the range 0 to 255.</param>
@@ -667,7 +667,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outlineColor</c> property as a <c>rgba</c> value.  The <c>outlineColor</c> property specifies the color of the fan outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgba</c> value.  The <c>outlineColor</c> property specifies the color of the fan outline. If not specified, the default value is black.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -680,7 +680,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outlineColor</c> property as a <c>rgba</c> value.  The <c>outlineColor</c> property specifies the color of the fan outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgba</c> value.  The <c>outlineColor</c> property specifies the color of the fan outline. If not specified, the default value is black.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
@@ -695,7 +695,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outlineColor</c> property as a <c>rgbaf</c> value.  The <c>outlineColor</c> property specifies the color of the fan outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgbaf</c> value.  The <c>outlineColor</c> property specifies the color of the fan outline. If not specified, the default value is black.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteOutlineColorPropertyRgbaf(Color color)
@@ -707,7 +707,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outlineColor</c> property as a <c>rgbaf</c> value.  The <c>outlineColor</c> property specifies the color of the fan outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgbaf</c> value.  The <c>outlineColor</c> property specifies the color of the fan outline. If not specified, the default value is black.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 1.0.</param>
         /// <param name="green">The green component in the range 0 to 1.0.</param>
@@ -722,7 +722,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outlineColor</c> property as a <c>rgbaf</c> value.  The <c>outlineColor</c> property specifies the color of the fan outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgbaf</c> value.  The <c>outlineColor</c> property specifies the color of the fan outline. If not specified, the default value is black.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -735,7 +735,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outlineColor</c> property as a <c>rgbaf</c> value.  The <c>outlineColor</c> property specifies the color of the fan outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>rgbaf</c> value.  The <c>outlineColor</c> property specifies the color of the fan outline. If not specified, the default value is black.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
@@ -750,7 +750,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value.  The <c>outlineColor</c> property specifies the color of the fan outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value.  The <c>outlineColor</c> property specifies the color of the fan outline. If not specified, the default value is black.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteOutlineColorPropertyReference(Reference value)
@@ -762,7 +762,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value.  The <c>outlineColor</c> property specifies the color of the fan outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value.  The <c>outlineColor</c> property specifies the color of the fan outline. If not specified, the default value is black.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteOutlineColorPropertyReference(string value)
@@ -774,7 +774,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value.  The <c>outlineColor</c> property specifies the color of the fan outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value.  The <c>outlineColor</c> property specifies the color of the fan outline. If not specified, the default value is black.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -787,7 +787,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value.  The <c>outlineColor</c> property specifies the color of the fan outline.
+        /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value.  The <c>outlineColor</c> property specifies the color of the fan outline. If not specified, the default value is black.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -800,7 +800,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>outlineWidth</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outlineWidth</c> property defines the width of the fan outline.
+        /// Gets the writer for the <c>outlineWidth</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>outlineWidth</c> property defines the width of the fan outline. If not specified, the default value is 1.0.
         /// </summary>
         [NotNull]
         public DoubleCesiumWriter OutlineWidthWriter
@@ -809,7 +809,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>outlineWidth</c> property.  The <c>outlineWidth</c> property defines the width of the fan outline.
+        /// Opens and returns the writer for the <c>outlineWidth</c> property.  The <c>outlineWidth</c> property defines the width of the fan outline. If not specified, the default value is 1.0.
         /// </summary>
         [NotNull]
         public DoubleCesiumWriter OpenOutlineWidthProperty()
@@ -819,7 +819,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outlineWidth</c> property as a <c>number</c> value.  The <c>outlineWidth</c> property specifies the width of the fan outline.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>number</c> value.  The <c>outlineWidth</c> property specifies the width of the fan outline. If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteOutlineWidthProperty(double value)
@@ -831,7 +831,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outlineWidth</c> property as a <c>number</c> value.  The <c>outlineWidth</c> property specifies the width of the fan outline.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>number</c> value.  The <c>outlineWidth</c> property specifies the width of the fan outline. If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -844,7 +844,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outlineWidth</c> property as a <c>number</c> value.  The <c>outlineWidth</c> property specifies the width of the fan outline.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>number</c> value.  The <c>outlineWidth</c> property specifies the width of the fan outline. If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -859,7 +859,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value.  The <c>outlineWidth</c> property specifies the width of the fan outline.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value.  The <c>outlineWidth</c> property specifies the width of the fan outline. If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteOutlineWidthPropertyReference(Reference value)
@@ -871,7 +871,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value.  The <c>outlineWidth</c> property specifies the width of the fan outline.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value.  The <c>outlineWidth</c> property specifies the width of the fan outline. If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteOutlineWidthPropertyReference(string value)
@@ -883,7 +883,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value.  The <c>outlineWidth</c> property specifies the width of the fan outline.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value.  The <c>outlineWidth</c> property specifies the width of the fan outline. If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -896,7 +896,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value.  The <c>outlineWidth</c> property specifies the width of the fan outline.
+        /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value.  The <c>outlineWidth</c> property specifies the width of the fan outline. If not specified, the default value is 1.0.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -909,7 +909,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>numberOfRings</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>numberOfRings</c> property defines the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+        /// Gets the writer for the <c>numberOfRings</c> property.  The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing.  The <c>numberOfRings</c> property defines the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center. If not specified, the default value is 6.
         /// </summary>
         [NotNull]
         public IntegerCesiumWriter NumberOfRingsWriter
@@ -918,7 +918,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>numberOfRings</c> property.  The <c>numberOfRings</c> property defines the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+        /// Opens and returns the writer for the <c>numberOfRings</c> property.  The <c>numberOfRings</c> property defines the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center. If not specified, the default value is 6.
         /// </summary>
         [NotNull]
         public IntegerCesiumWriter OpenNumberOfRingsProperty()
@@ -928,7 +928,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>numberOfRings</c> property as a <c>number</c> value.  The <c>numberOfRings</c> property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+        /// Writes a value for the <c>numberOfRings</c> property as a <c>number</c> value.  The <c>numberOfRings</c> property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center. If not specified, the default value is 6.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteNumberOfRingsProperty(int value)
@@ -940,7 +940,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>numberOfRings</c> property as a <c>number</c> value.  The <c>numberOfRings</c> property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+        /// Writes a value for the <c>numberOfRings</c> property as a <c>number</c> value.  The <c>numberOfRings</c> property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center. If not specified, the default value is 6.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -953,7 +953,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>numberOfRings</c> property as a <c>number</c> value.  The <c>numberOfRings</c> property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+        /// Writes a value for the <c>numberOfRings</c> property as a <c>number</c> value.  The <c>numberOfRings</c> property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center. If not specified, the default value is 6.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -968,7 +968,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>numberOfRings</c> property as a <c>reference</c> value.  The <c>numberOfRings</c> property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+        /// Writes a value for the <c>numberOfRings</c> property as a <c>reference</c> value.  The <c>numberOfRings</c> property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center. If not specified, the default value is 6.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteNumberOfRingsPropertyReference(Reference value)
@@ -980,7 +980,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>numberOfRings</c> property as a <c>reference</c> value.  The <c>numberOfRings</c> property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+        /// Writes a value for the <c>numberOfRings</c> property as a <c>reference</c> value.  The <c>numberOfRings</c> property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center. If not specified, the default value is 6.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteNumberOfRingsPropertyReference(string value)
@@ -992,7 +992,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>numberOfRings</c> property as a <c>reference</c> value.  The <c>numberOfRings</c> property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+        /// Writes a value for the <c>numberOfRings</c> property as a <c>reference</c> value.  The <c>numberOfRings</c> property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center. If not specified, the default value is 6.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -1005,7 +1005,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>numberOfRings</c> property as a <c>reference</c> value.  The <c>numberOfRings</c> property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+        /// Writes a value for the <c>numberOfRings</c> property as a <c>reference</c> value.  The <c>numberOfRings</c> property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center. If not specified, the default value is 6.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>

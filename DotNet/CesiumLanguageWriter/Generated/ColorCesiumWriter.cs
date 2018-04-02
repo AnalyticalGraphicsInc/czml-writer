@@ -12,7 +12,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>Color</c> to a <see cref="CesiumOutputStream" />.  A <c>Color</c> is a color.  The color can optionally vary over time.
+    /// Writes a <c>Color</c> to a <see cref="CesiumOutputStream" />.  A <c>Color</c> is a color. The color can optionally vary over time.
     /// </summary>
     public class ColorCesiumWriter : CesiumInterpolatablePropertyWriter<ColorCesiumWriter>
     {

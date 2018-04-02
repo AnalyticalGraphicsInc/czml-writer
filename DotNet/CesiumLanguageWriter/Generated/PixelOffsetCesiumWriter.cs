@@ -11,7 +11,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>PixelOffset</c> to a <see cref="CesiumOutputStream" />.  A <c>PixelOffset</c> is a pixel offset in viewport coordinates.  A pixel offset is the number of pixels up and to the right to place an element relative to an origin.
+    /// Writes a <c>PixelOffset</c> to a <see cref="CesiumOutputStream" />.  A <c>PixelOffset</c> is a pixel offset in viewport coordinates. A pixel offset is the number of pixels up and to the right to place an element relative to an origin.
     /// </summary>
     public class PixelOffsetCesiumWriter : CesiumInterpolatablePropertyWriter<PixelOffsetCesiumWriter>
     {
