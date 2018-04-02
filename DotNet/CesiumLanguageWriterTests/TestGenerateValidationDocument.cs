@@ -399,13 +399,13 @@ namespace CesiumLanguageWriterTests
                     }
                     using (var w2 = w.OpenNumberOfVerticalLinesProperty())
                     {
-                        w2.WriteNumber(38567.0);
-                        m_assertionsWriter.WriteLine("    expect(e.cylinder.numberOfVerticalLines.getValue(date)).toEqual(38567.0);");
+                        w2.WriteNumber(38567);
+                        m_assertionsWriter.WriteLine("    expect(e.cylinder.numberOfVerticalLines.getValue(date)).toEqual(38567);");
                     }
                     using (var w2 = w.OpenSlicesProperty())
                     {
-                        w2.WriteNumber(39979.0);
-                        m_assertionsWriter.WriteLine("    expect(e.cylinder.slices.getValue(date)).toEqual(39979.0);");
+                        w2.WriteNumber(39979);
+                        m_assertionsWriter.WriteLine("    expect(e.cylinder.slices.getValue(date)).toEqual(39979);");
                     }
                     using (var w2 = w.OpenShadowsProperty())
                     {
@@ -493,8 +493,8 @@ namespace CesiumLanguageWriterTests
                     }
                     using (var w2 = w.OpenNumberOfVerticalLinesProperty())
                     {
-                        w2.WriteNumber(38878.0);
-                        m_assertionsWriter.WriteLine("    expect(e.ellipse.numberOfVerticalLines.getValue(date)).toEqual(38878.0);");
+                        w2.WriteNumber(38878);
+                        m_assertionsWriter.WriteLine("    expect(e.ellipse.numberOfVerticalLines.getValue(date)).toEqual(38878);");
                     }
                     using (var w2 = w.OpenShadowsProperty())
                     {
@@ -562,8 +562,8 @@ namespace CesiumLanguageWriterTests
                     }
                     using (var w2 = w.OpenSubdivisionsProperty())
                     {
-                        w2.WriteNumber(14008.0);
-                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.subdivisions.getValue(date)).toEqual(14008.0);");
+                        w2.WriteNumber(14008);
+                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.subdivisions.getValue(date)).toEqual(14008);");
                     }
                     using (var w2 = w.OpenShadowsProperty())
                     {
@@ -12335,15 +12335,15 @@ namespace CesiumLanguageWriterTests
                     }
                     using (var w2 = w.OpenNumberOfVerticalLinesProperty())
                     {
-                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(45816.0, 42247.0));
-                        m_assertionsWriter.WriteLine("    expect(e.cylinder.numberOfVerticalLines.getValue(documentStartDate)).toEqual(45816.0);");
-                        m_assertionsWriter.WriteLine("    expect(e.cylinder.numberOfVerticalLines.getValue(documentStopDate)).toEqual(42247.0);");
+                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(45816, 42247));
+                        m_assertionsWriter.WriteLine("    expect(e.cylinder.numberOfVerticalLines.getValue(documentStartDate)).toEqual(45816);");
+                        m_assertionsWriter.WriteLine("    expect(e.cylinder.numberOfVerticalLines.getValue(documentStopDate)).toEqual(42247);");
                     }
                     using (var w2 = w.OpenSlicesProperty())
                     {
-                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(46140.0, 53530.0));
-                        m_assertionsWriter.WriteLine("    expect(e.cylinder.slices.getValue(documentStartDate)).toEqual(46140.0);");
-                        m_assertionsWriter.WriteLine("    expect(e.cylinder.slices.getValue(documentStopDate)).toEqual(53530.0);");
+                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(46140, 53530));
+                        m_assertionsWriter.WriteLine("    expect(e.cylinder.slices.getValue(documentStartDate)).toEqual(46140);");
+                        m_assertionsWriter.WriteLine("    expect(e.cylinder.slices.getValue(documentStopDate)).toEqual(53530);");
                     }
                     using (var w2 = w.OpenDistanceDisplayConditionProperty())
                     {
@@ -12422,9 +12422,9 @@ namespace CesiumLanguageWriterTests
                     }
                     using (var w2 = w.OpenNumberOfVerticalLinesProperty())
                     {
-                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(52822.0, 45768.0));
-                        m_assertionsWriter.WriteLine("    expect(e.ellipse.numberOfVerticalLines.getValue(documentStartDate)).toEqual(52822.0);");
-                        m_assertionsWriter.WriteLine("    expect(e.ellipse.numberOfVerticalLines.getValue(documentStopDate)).toEqual(45768.0);");
+                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(52822, 45768));
+                        m_assertionsWriter.WriteLine("    expect(e.ellipse.numberOfVerticalLines.getValue(documentStartDate)).toEqual(52822);");
+                        m_assertionsWriter.WriteLine("    expect(e.ellipse.numberOfVerticalLines.getValue(documentStopDate)).toEqual(45768);");
                     }
                     using (var w2 = w.OpenDistanceDisplayConditionProperty())
                     {
@@ -12479,9 +12479,9 @@ namespace CesiumLanguageWriterTests
                     }
                     using (var w2 = w.OpenSubdivisionsProperty())
                     {
-                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(10225.0, 53957.0));
-                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.subdivisions.getValue(documentStartDate)).toEqual(10225.0);");
-                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.subdivisions.getValue(documentStopDate)).toEqual(53957.0);");
+                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(10225, 53957));
+                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.subdivisions.getValue(documentStartDate)).toEqual(10225);");
+                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.subdivisions.getValue(documentStopDate)).toEqual(53957);");
                     }
                     using (var w2 = w.OpenDistanceDisplayConditionProperty())
                     {
