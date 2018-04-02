@@ -25,9 +25,9 @@
             "default": "NONE"
         },
         "forwardExtrapolationDuration": {
-            "description": "The amount of time to extrapolate forward before the property becomes undefined.  A value of 0 will extrapolate forever.",
+            "description": "The amount of time to extrapolate forward before the property becomes undefined. A value of 0 will extrapolate forever.",
             "type": "number",
-            "default": 0
+            "default": 0.0
         },
         "backwardExtrapolationType": {
             "description": "The type of extrapolation to perform when a value is requested at a time before any available samples. Valid values are \"NONE\", \"HOLD\", and \"EXTRAPOLATE\".",
@@ -35,9 +35,9 @@
             "default": "NONE"
         },
         "backwardExtrapolationDuration": {
-            "description": "The amount of time to extrapolate backward before the property becomes undefined.  A value of 0 will extrapolate forever.",
+            "description": "The amount of time to extrapolate backward before the property becomes undefined. A value of 0 will extrapolate forever.",
             "type": "number",
-            "default": 0
+            "default": 0.0
         }
     }
 }

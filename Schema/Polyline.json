@@ -22,15 +22,18 @@
         },
         "width": {
             "$ref": "Double.json",
-            "description": "The width of the polyline."
+            "description": "The width of the polyline.",
+            "default": 1.0
         },
         "granularity": {
             "$ref": "Double.json",
-            "description": "The sampling distance, in radians."
+            "description": "The sampling distance, in radians.",
+            "default": "PI / 180.0"
         },
         "material": {
             "$ref": "PolylineMaterial.json",
-            "description": "The material to use to draw the polyline."
+            "description": "The material to use to draw the polyline.",
+            "default": "solid white"
         },
         "followSurface": {
             "$ref": "Boolean.json",
@@ -50,5 +53,6 @@
             "$ref": "DistanceDisplayCondition.json",
             "description": "The display condition specifying at what distance from the camera this polyline will be displayed."
         }
-    }
+    },
+    "required": [ "positions" ]
 }

@@ -36,7 +36,8 @@
         },
         "material": {
             "$ref": "PolylineMaterial.json",
-            "description": "The material to use to draw the path."
+            "description": "The material to use to draw the path.",
+            "default": "solid white"
         },
         "distanceDisplayCondition": {
             "$ref": "DistanceDisplayCondition.json",

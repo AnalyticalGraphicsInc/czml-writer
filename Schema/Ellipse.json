@@ -26,7 +26,8 @@
         },
         "height": {
             "$ref": "Double.json",
-            "description": "The altitude of the ellipse relative to the surface."
+            "description": "The altitude of the ellipse relative to the surface.",
+            "default": "0.0"
         },
         "extrudedHeight": {
             "$ref": "Double.json",
@@ -34,15 +35,18 @@
         },
         "rotation": {
             "$ref": "Double.json",
-            "description": "The angle from north (counter-clockwise) in radians."
+            "description": "The angle from north (counter-clockwise) in radians.",
+            "default": "0.0"
         },
         "stRotation": {
             "$ref": "Double.json",
-            "description": "The rotation of any applied texture coordinates."
+            "description": "The rotation of any applied texture coordinates.",
+            "default": "0.0"
         },
         "granularity": {
             "$ref": "Double.json",
-            "description": "The sampling distance, in radians."
+            "description": "The sampling distance, in radians.",
+            "default": "PI / 180.0"
         },
         "fill": {
             "$ref": "Boolean.json",
@@ -51,7 +55,8 @@
         },
         "material": {
             "$ref": "Material.json",
-            "description": "The material to use to fill the ellipse."
+            "description": "The material to use to fill the ellipse.",
+            "default": "solid white"
         },
         "outline": {
             "$ref": "Boolean.json",
@@ -60,7 +65,8 @@
         },
         "outlineColor": {
             "$ref": "Color.json",
-            "description": "The color of the ellipse outline."
+            "description": "The color of the ellipse outline.",
+            "default": "black"
         },
         "outlineWidth": {
             "$ref": "Double.json",
@@ -68,8 +74,9 @@
             "default": 1.0
         },
         "numberOfVerticalLines": {
-            "$ref": "Double.json",
-            "description": "The number of vertical lines to use when outlining an extruded ellipse."
+            "$ref": "Integer.json",
+            "description": "The number of vertical lines to use when outlining an extruded ellipse.",
+            "default": "16"
         },
         "shadows": {
             "$ref": "ShadowMode.json",
@@ -80,5 +87,6 @@
             "$ref": "DistanceDisplayCondition.json",
             "description": "The display condition specifying at what distance from the camera this ellipse will be displayed."
         }
-    }
+    },
+    "required": [ "semiMajorAxis", "semiMinorAxis" ]
 }

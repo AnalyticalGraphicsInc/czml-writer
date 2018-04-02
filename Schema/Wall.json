@@ -30,7 +30,8 @@
         },
         "granularity": {
             "$ref": "Double.json",
-            "description": "The sampling distance, in radians."
+            "description": "The sampling distance, in radians.",
+            "default": "PI / 180.0"
         },
         "fill": {
             "$ref": "Boolean.json",
@@ -39,7 +40,8 @@
         },
         "material": {
             "$ref": "Material.json",
-            "description": "The material to display on the surface of the wall."
+            "description": "The material to display on the surface of the wall.",
+            "default": "solid white"
         },
         "outline": {
             "$ref": "Boolean.json",
@@ -48,7 +50,8 @@
         },
         "outlineColor": {
             "$ref": "Color.json",
-            "description": "The color of the wall outline."
+            "description": "The color of the wall outline.",
+            "default": "black"
         },
         "outlineWidth": {
             "$ref": "Double.json",
@@ -64,5 +67,6 @@
             "$ref": "DistanceDisplayCondition.json",
             "description": "The display condition specifying at what distance from the camera this wall will be displayed."
         }
-    }
+    },
+    "required": [ "positions" ]
 }

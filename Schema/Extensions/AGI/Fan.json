@@ -2,7 +2,7 @@
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Extensions/AGI/Fan.json",
     "title": "Fan",
-    "description": "A fan.  A fan starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the fan extending to the specified radius.",
+    "description": "A fan. A fan starts at a point or apex and extends in a specified list of directions from the apex. Each pair of directions forms a face of the fan extending to the specified radius.",
     "type": [
         "array",
         "object"
@@ -14,7 +14,8 @@
     "properties": {
         "show": {
             "$ref": "../../Boolean.json",
-            "description": "Whether or not the fan is shown."
+            "description": "Whether or not the fan is shown.",
+            "default": true
         },
         "directions": {
             "$ref": "../../DirectionList.json",
@@ -22,35 +23,43 @@
         },
         "radius": {
             "$ref": "../../Double.json",
-            "description": "The radial limit of the fan."
+            "description": "The radial limit of the fan. If `perDirectionRadius` is false, then this value is required."
         },
         "perDirectionRadius": {
             "$ref": "../../Boolean.json",
-            "description": "Whether the magnitude of each direction is used instead of a constant radius."
+            "description": "Whether the magnitude of each direction is used instead of a constant radius.",
+            "default": false
         },
         "material": {
             "$ref": "../../Material.json",
-            "description": "The material to display on the surface of the fan."
+            "description": "The material to display on the surface of the fan.",
+            "default": "solid white"
         },
         "fill": {
             "$ref": "../../Boolean.json",
-            "description": "Whether or not the fan is filled."
+            "description": "Whether or not the fan is filled.",
+            "default": true
         },
         "outline": {
             "$ref": "../../Boolean.json",
-            "description": "Whether or not the fan is outlined."
+            "description": "Whether or not the fan is outlined.",
+            "default": false
         },
         "outlineColor": {
             "$ref": "../../Color.json",
-            "description": "The color of the fan outline."
+            "description": "The color of the fan outline.",
+            "default": "black"
         },
         "outlineWidth": {
             "$ref": "../../Double.json",
-            "description": "The width of the fan outline."
+            "description": "The width of the fan outline.",
+            "default": 1.0
         },
         "numberOfRings": {
             "$ref": "../../Integer.json",
-            "description": "The number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center."
+            "description": "The number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.",
+            "default": 6
         }
-    }
+    },
+    "required": [ "directions" ]
 }

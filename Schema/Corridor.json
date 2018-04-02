@@ -26,7 +26,8 @@
         },
         "height": {
             "$ref": "Double.json",
-            "description": "The height of the corridor, which is the altitude of the corridor relative to the surface."
+            "description": "The height of the corridor, which is the altitude of the corridor relative to the surface.",
+            "default": 0.0
         },
         "extrudedHeight": {
             "$ref": "Double.json",
@@ -34,11 +35,13 @@
         },
         "cornerType": {
             "$ref": "CornerType.json",
-            "description": "The style of the corners of the corridor."
+            "description": "The style of the corners of the corridor.",
+            "default": "ROUNDED"
         },
         "granularity": {
             "$ref": "Double.json",
-            "description": "The sampling distance, in radians."
+            "description": "The sampling distance, in radians.",
+            "default": "PI / 180.0"
         },
         "fill": {
             "$ref": "Boolean.json",
@@ -47,7 +50,8 @@
         },
         "material": {
             "$ref": "Material.json",
-            "description": "The material to display on the surface of the corridor."
+            "description": "The material to display on the surface of the corridor.",
+            "default": "solid white"
         },
         "outline": {
             "$ref": "Boolean.json",
@@ -56,7 +60,8 @@
         },
         "outlineColor": {
             "$ref": "Color.json",
-            "description": "The color of the corridor outline."
+            "description": "The color of the corridor outline.",
+            "default": "black"
         },
         "outlineWidth": {
             "$ref": "Double.json",
@@ -72,5 +77,6 @@
             "$ref": "DistanceDisplayCondition.json",
             "description": "The display condition specifying the distance from the camera at which this corridor will be displayed."
         }
-    }
+    },
+    "required": [ "positions", "width" ]
 }

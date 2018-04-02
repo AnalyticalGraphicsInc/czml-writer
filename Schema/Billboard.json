@@ -2,7 +2,7 @@
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Billboard.json",
     "title": "Billboard",
-    "description": "A billboard, or viewport-aligned image.  The billboard is positioned in the scene by the `position` property.  A billboard is sometimes called a marker.",
+    "description": "A billboard, or viewport-aligned image. The billboard is positioned in the scene by the `position` property. A billboard is sometimes called a marker.",
     "type": [
         "array",
         "object"
@@ -21,20 +21,22 @@
         },
         "image": {
             "$ref": "Uri.json",
-            "description": "The URI of the image displayed on the billboard.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href=\"https://developer.mozilla.org/en/data_URIs\">data URI</a>."
+            "description": "The URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href=\"https://developer.mozilla.org/en/data_URIs\">data URI</a>."
         },
         "scale": {
             "$ref": "Double.json",
-            "description": "The scale of the billboard.  The scale is multiplied with the pixel size of the billboard's `image`.  For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.",
+            "description": "The scale of the billboard. The scale is multiplied with the pixel size of the billboard's `image`. For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the `image`.",
             "default": 1.0
         },
         "pixelOffset": {
             "$ref": "PixelOffset.json",
-            "description": "The offset, in viewport pixels, of the billboard origin from the `position`.  A pixel offset is the number of pixels up and to the right to place the billboard, relative to the `position`."
+            "description": "The offset, in viewport pixels, of the billboard origin from the `position`. A pixel offset is the number of pixels up and to the right to place the billboard, relative to the `position`.",
+            "default": "[0.0, 0.0]"
         },
         "eyeOffset": {
             "$ref": "EyeOffset.json",
-            "description": "The eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen."
+            "description": "The eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the `position` property. Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen.",
+            "default": "[0.0, 0.0, 0.0]"
         },
         "horizontalOrigin": {
             "$ref": "HorizontalOrigin.json",
@@ -53,7 +55,8 @@
         },
         "color": {
             "$ref": "Color.json",
-            "description": "The color of the billboard.  This color value is multiplied with the values of the billboard's \"image\" to produce the final color."
+            "description": "The color of the billboard. This color value is multiplied with the values of the billboard's \"image\" to produce the final color.",
+            "default": "white"
         },
         "rotation": {
             "$ref": "Double.json",
@@ -62,7 +65,8 @@
         },
         "alignedAxis": {
             "$ref": "AlignedAxis.json",
-            "description": "The aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards.  The default is the zero vector, which means the billboard is aligned to the screen up vector."
+            "description": "The aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards. The default is the zero vector, which means the billboard is aligned to the screen up vector.",
+            "default": "[0.0, 0.0, 0.0]"
         },
         "sizeInMeters": {
             "$ref": "Boolean.json",
@@ -79,15 +83,15 @@
         },
         "scaleByDistance": {
             "$ref": "NearFarScalar.json",
-            "description": "How the billboard's scale should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `scale`."
+            "description": "How the billboard's scale should change based on the billboard's distance from the camera. This scalar value will be multiplied by `scale`."
         },
         "translucencyByDistance": {
             "$ref": "NearFarScalar.json",
-            "description": "How the billboard's translucency should change based on the billboard's distance from the camera.  This scalar value should range from 0 to 1."
+            "description": "How the billboard's translucency should change based on the billboard's distance from the camera. This scalar value should range from 0 to 1."
         },
         "pixelOffsetScaleByDistance": {
             "$ref": "NearFarScalar.json",
-            "description": "How the billboard's pixel offset should change based on the billboard's distance from the camera.  This scalar value will be multiplied by `pixelOffset`."
+            "description": "How the billboard's pixel offset should change based on the billboard's distance from the camera. This scalar value will be multiplied by `pixelOffset`."
         },
         "imageSubRegion": {
             "$ref": "BoundingRectangle.json",
@@ -99,7 +103,9 @@
         },
         "disableDepthTestDistance": {
             "$ref": "Double.json",
-            "description": "The distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied."
+            "description": "The distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied.",
+            "default": 0.0
         }
-    }
+    },
+    "required": [ "image" ]
 }

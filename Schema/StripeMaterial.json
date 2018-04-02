@@ -13,23 +13,28 @@
     "properties": {
         "orientation": {
             "$ref": "StripeOrientation.json",
-            "description": "The value indicating if the stripes are horizontal or vertical."
+            "description": "The value indicating if the stripes are horizontal or vertical.",
+            "default": "HORIZONTAL"
         },
         "evenColor": {
             "$ref": "Color.json",
-            "description": "The even color."
+            "description": "The even color.",
+            "default": "white"
         },
         "oddColor": {
             "$ref": "Color.json",
-            "description": "The odd color."
+            "description": "The odd color.",
+            "default": "black"
         },
         "offset": {
             "$ref": "Double.json",
-            "description": "The value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between."
+            "description": "The value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.",
+            "default": 0.0
         },
         "repeat": {
             "$ref": "Double.json",
-            "description": "The number of times the stripes repeat."
+            "description": "The number of times the stripes repeat.",
+            "default": 1.0
         }
     }
 }

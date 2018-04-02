@@ -27,7 +27,8 @@
         },
         "material": {
             "$ref": "Material.json",
-            "description": "The material to display on the surface of the box."
+            "description": "The material to display on the surface of the box.",
+            "default": "solid white"
         },
         "outline": {
             "$ref": "Boolean.json",
@@ -36,7 +37,8 @@
         },
         "outlineColor": {
             "$ref": "Color.json",
-            "description": "The color of the box outline."
+            "description": "The color of the box outline.",
+            "default": "black"
         },
         "outlineWidth": {
             "$ref": "Double.json",
@@ -52,5 +54,6 @@
             "$ref": "DistanceDisplayCondition.json",
             "description": "The display condition specifying the distance from the camera at which this box will be displayed."
         }
-    }
+    },
+    "required": [ "dimensions" ]
 }

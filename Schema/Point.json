@@ -28,11 +28,13 @@
         },
         "color": {
             "$ref": "Color.json",
-            "description": "The color of the point."
+            "description": "The color of the point.",
+            "default": "white"
         },
         "outlineColor": {
             "$ref": "Color.json",
-            "description": "The color of the outline of the point."
+            "description": "The color of the outline of the point.",
+            "default": "black"
         },
         "outlineWidth": {
             "$ref": "Double.json",
@@ -41,11 +43,11 @@
         },
         "scaleByDistance": {
             "$ref": "NearFarScalar.json",
-            "description": "How the point's scale should change based on the point's distance from the camera.  This scalar value will be multiplied by `pixelSize`."
+            "description": "How the point's scale should change based on the point's distance from the camera. This scalar value will be multiplied by `pixelSize`."
         },
         "translucencyByDistance": {
             "$ref": "NearFarScalar.json",
-            "description": "How the point's translucency should change based on the point's distance from the camera.  This scalar value should range from 0 to 1."
+            "description": "How the point's translucency should change based on the point's distance from the camera. This scalar value should range from 0 to 1."
         },
         "distanceDisplayCondition": {
             "$ref": "DistanceDisplayCondition.json",
@@ -53,7 +55,8 @@
         },
         "disableDepthTestDistance": {
             "$ref": "Double.json",
-            "description": "The distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied."
+            "description": "The distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied.",
+            "default": 0.0
         }
     }
 }

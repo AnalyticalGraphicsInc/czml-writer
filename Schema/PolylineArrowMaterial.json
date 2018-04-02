@@ -13,7 +13,8 @@
     "properties": {
         "color": {
             "$ref": "Color.json",
-            "description": "The color of the surface."
+            "description": "The color of the surface.",
+            "default": "white"
         }
     }
 }

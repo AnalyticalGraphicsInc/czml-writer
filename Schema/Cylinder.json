@@ -35,7 +35,8 @@
         },
         "material": {
             "$ref": "Material.json",
-            "description": "The material to display on the surface of the cylinder."
+            "description": "The material to display on the surface of the cylinder.",
+            "default": "solid white"
         },
         "outline": {
             "$ref": "Boolean.json",
@@ -44,7 +45,8 @@
         },
         "outlineColor": {
             "$ref": "Color.json",
-            "description": "The color of the cylinder outline."
+            "description": "The color of the cylinder outline.",
+            "default": "black"
         },
         "outlineWidth": {
             "$ref": "Double.json",
@@ -52,12 +54,14 @@
             "default": 1.0
         },
         "numberOfVerticalLines": {
-            "$ref": "Double.json",
-            "description": "The number of vertical lines to draw along the perimeter for the outline."
+            "$ref": "Integer.json",
+            "description": "The number of vertical lines to draw along the perimeter for the outline.",
+            "default": 16
         },
         "slices": {
-            "$ref": "Double.json",
-            "description": "The number of edges around the perimeter of the cylinder."
+            "$ref": "Integer.json",
+            "description": "The number of edges around the perimeter of the cylinder.",
+            "default": 128
         },
         "shadows": {
             "$ref": "ShadowMode.json",
@@ -68,5 +72,6 @@
             "$ref": "DistanceDisplayCondition.json",
             "description": "The display condition specifying the distance from the camera at which this cylinder will be displayed."
         }
-    }
+    },
+    "required": [ "length", "topRadius", "bottomRadius" ]
 }

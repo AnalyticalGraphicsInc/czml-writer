@@ -27,7 +27,8 @@
         },
         "material": {
             "$ref": "Material.json",
-            "description": "The material to display on the surface of the ellipsoid."
+            "description": "The material to display on the surface of the ellipsoid.",
+            "default": "solid white"
         },
         "outline": {
             "$ref": "Boolean.json",
@@ -36,7 +37,8 @@
         },
         "outlineColor": {
             "$ref": "Color.json",
-            "description": "The color of the ellipsoid outline."
+            "description": "The color of the ellipsoid outline.",
+            "default": "black"
         },
         "outlineWidth": {
             "$ref": "Double.json",
@@ -54,8 +56,9 @@
             "default": 64
         },
         "subdivisions": {
-            "$ref": "Double.json",
-            "description": "The number of samples per outline ring, determining the granularity of the curvature."
+            "$ref": "Integer.json",
+            "description": "The number of samples per outline ring, determining the granularity of the curvature.",
+            "default": 128
         },
         "shadows": {
             "$ref": "ShadowMode.json",
@@ -66,5 +69,6 @@
             "$ref": "DistanceDisplayCondition.json",
             "description": "The display condition specifying at what distance from the camera this ellipsoid will be displayed."
         }
-    }
+    },
+    "required": [ "radii" ]
 }

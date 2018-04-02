@@ -13,15 +13,18 @@
     "properties": {
         "color": {
             "$ref": "Color.json",
-            "description": "The color of the surface."
+            "description": "The color of the surface.",
+            "default": "white"
         },
         "outlineColor": {
             "$ref": "Color.json",
-            "description": "The color of the surface outline."
+            "description": "The color of the surface outline.",
+            "default": "black"
         },
         "outlineWidth": {
             "$ref": "Double.json",
-            "description": "The width of the outline."
+            "description": "The width of the outline.",
+            "default": 1.0
         }
     }
 }

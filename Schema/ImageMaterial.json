@@ -17,15 +17,18 @@
         },
         "repeat": {
             "$ref": "Repeat.json",
-            "description": "The number of times the image repeats along each axis."
+            "description": "The number of times the image repeats along each axis.",
+            "default": "[1, 1]"
         },
         "color": {
             "$ref": "Color.json",
-            "description": "The color of the image. This color value is multiplied with the image to produce the final color."
+            "description": "The color of the image. This color value is multiplied with the image to produce the final color.",
+            "default": "white"
         },
         "transparent": {
             "$ref": "Boolean.json",
-            "description": "Whether or not the image has transparency."
+            "description": "Whether or not the image has transparency.",
+            "default": false
         }
     }
 }

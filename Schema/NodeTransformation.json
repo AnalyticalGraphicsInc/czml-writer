@@ -13,15 +13,18 @@
     "properties": {
         "translation": {
             "$ref": "Translation.json",
-            "description": "The translation to apply to the model node."
+            "description": "The translation to apply to the model node.",
+            "default": "[0.0, 0.0, 0.0]"
         },
         "rotation": {
             "$ref": "Rotation.json",
-            "description": "The rotation to apply to the model node."
+            "description": "The rotation to apply to the model node.",
+            "default": "[0.0, 0.0, 0.0, 1.0]"
         },
         "scale": {
             "$ref": "Scale.json",
-            "description": "The scaling to apply to the model node."
+            "description": "The scaling to apply to the model node.",
+            "default": "[1.0, 1.0, 1.0]"
         }
     }
 }

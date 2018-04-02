@@ -22,7 +22,8 @@
         },
         "height": {
             "$ref": "Double.json",
-            "description": "The height of the rectangle."
+            "description": "The height of the rectangle.",
+            "default": 0.0
         },
         "extrudedHeight": {
             "$ref": "Double.json",
@@ -30,15 +31,18 @@
         },
         "rotation": {
             "$ref": "Double.json",
-            "description": "The rotation of the rectangle clockwise from north."
+            "description": "The rotation of the rectangle clockwise from north.",
+            "default": 0.0
         },
         "stRotation": {
             "$ref": "Double.json",
-            "description": "The rotation of any applied texture. A positive rotation is counter-clockwise."
+            "description": "The rotation of any applied texture. A positive rotation is counter-clockwise.",
+            "default": 0.0
         },
         "granularity": {
             "$ref": "Double.json",
-            "description": "The sampling distance, in radians."
+            "description": "The sampling distance, in radians.",
+            "default": "PI / 180.0"
         },
         "fill": {
             "$ref": "Boolean.json",
@@ -47,7 +51,8 @@
         },
         "material": {
             "$ref": "Material.json",
-            "description": "The material to display on the surface of the rectangle."
+            "description": "The material to display on the surface of the rectangle.",
+            "default": "solid white"
         },
         "outline": {
             "$ref": "Boolean.json",
@@ -56,7 +61,8 @@
         },
         "outlineColor": {
             "$ref": "Color.json",
-            "description": "The color of the rectangle outline."
+            "description": "The color of the rectangle outline.",
+            "default": "black"
         },
         "outlineWidth": {
             "$ref": "Double.json",
@@ -72,5 +78,6 @@
             "$ref": "DistanceDisplayCondition.json",
             "description": "The display condition specifying at what distance from the camera this rectangle will be displayed."
         }
-    }
+    },
+    "required": [ "coordinates" ]
 }

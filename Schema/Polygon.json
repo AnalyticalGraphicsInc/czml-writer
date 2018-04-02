@@ -22,7 +22,8 @@
         },
         "height": {
             "$ref": "Double.json",
-            "description": "The height of the polygon when `perPositionHeight` is false."
+            "description": "The height of the polygon when `perPositionHeight` is false.",
+            "default": 0.0
         },
         "extrudedHeight": {
             "$ref": "Double.json",
@@ -30,11 +31,13 @@
         },
         "stRotation": {
             "$ref": "Double.json",
-            "description": "The rotation of any applied texture. A positive rotation is counter-clockwise."
+            "description": "The rotation of any applied texture. A positive rotation is counter-clockwise.",
+            "default": 0.0
         },
         "granularity": {
             "$ref": "Double.json",
-            "description": "The sampling distance, in radians."
+            "description": "The sampling distance, in radians.",
+            "default": "PI / 180.0"
         },
         "fill": {
             "$ref": "Boolean.json",
@@ -43,7 +46,8 @@
         },
         "material": {
             "$ref": "Material.json",
-            "description": "The material to use to fill the polygon."
+            "description": "The material to use to fill the polygon.",
+            "default": "solid white"
         },
         "outline": {
             "$ref": "Boolean.json",
@@ -52,7 +56,8 @@
         },
         "outlineColor": {
             "$ref": "Color.json",
-            "description": "The color of the polygon outline."
+            "description": "The color of the polygon outline.",
+            "default": "black"
         },
         "outlineWidth": {
             "$ref": "Double.json",
@@ -61,7 +66,8 @@
         },
         "perPositionHeight": {
             "$ref": "Boolean.json",
-            "description": "Whether to use the height of each position to define the polygon or to use `height` as a constant height above the surface."
+            "description": "Whether to use the height of each position to define the polygon or to use `height` as a constant height above the surface.",
+            "default": false
         },
         "closeTop": {
             "$ref": "Boolean.json",
@@ -82,5 +88,6 @@
             "$ref": "DistanceDisplayCondition.json",
             "description": "The display condition specifying the distance from the camera at which this polygon will be displayed."
         }
-    }
+    },
+    "required": [ "positions" ]
 }

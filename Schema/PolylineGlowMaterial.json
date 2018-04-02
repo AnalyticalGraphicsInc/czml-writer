@@ -13,11 +13,13 @@
     "properties": {
         "color": {
             "$ref": "Color.json",
-            "description": "The color of the surface."
+            "description": "The color of the surface.",
+            "default": "white"
         },
         "glowPower": {
             "$ref": "Double.json",
-            "description": "The strength of the glow."
+            "description": "The strength of the glow.",
+            "default": 0.25
         }
     }
 }

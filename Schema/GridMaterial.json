@@ -13,23 +13,28 @@
     "properties": {
         "color": {
             "$ref": "Color.json",
-            "description": "The color of the surface."
+            "description": "The color of the surface.",
+            "default": "white"
         },
         "cellAlpha": {
             "$ref": "Double.json",
-            "description": "The alpha value for the space between grid lines.  This will be combined with the color alpha."
+            "description": "The alpha value for the space between grid lines. This will be combined with the color alpha.",
+            "default": 0.1
         },
         "lineCount": {
             "$ref": "LineCount.json",
-            "description": "The number of grid lines along each axis."
+            "description": "The number of grid lines along each axis.",
+            "default": "[8, 8]"
         },
         "lineThickness": {
             "$ref": "LineThickness.json",
-            "description": "The thickness of grid lines along each axis, in pixels."
+            "description": "The thickness of grid lines along each axis, in pixels.",
+            "default": "[1.0, 1.0]"
         },
         "lineOffset": {
             "$ref": "LineOffset.json",
-            "description": "The offset of grid lines along each axis, as a percentage from 0 to 1."
+            "description": "The offset of grid lines along each axis, as a percentage from 0 to 1.",
+            "default": "[0.0, 0.0]"
         }
     }
 }

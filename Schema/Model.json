@@ -18,15 +18,17 @@
         },
         "gltf": {
             "$ref": "Uri.json",
-            "description": "The URI of a <a href=\"https://github.com/KhronosGroup/glTF\">glTF</a> model.  For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).  The URI may also be a <a href=\"https://developer.mozilla.org/en/data_URIs\">data URI</a>."
+            "description": "The URI of a <a href=\"https://github.com/KhronosGroup/glTF\">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href=\"https://developer.mozilla.org/en/data_URIs\">data URI</a>."
         },
         "scale": {
             "$ref": "Double.json",
-            "description": "The scale of the model."
+            "description": "The scale of the model.",
+            "default": 1.0
         },
         "minimumPixelSize": {
             "$ref": "Double.json",
-            "description": "The approximate minimum pixel size of the model regardless of zoom."
+            "description": "The approximate minimum pixel size of the model regardless of zoom.",
+            "default": 0.0
         },
         "maximumScale": {
             "$ref": "Double.json",
@@ -54,7 +56,8 @@
         },
         "silhouetteColor": {
             "$ref": "Color.json",
-            "description": "The color of the silhouette drawn around the model."
+            "description": "The color of the silhouette drawn around the model.",
+            "default": "red"
         },
         "silhouetteSize": {
             "$ref": "Double.json",
@@ -63,7 +66,8 @@
         },
         "color": {
             "$ref": "Color.json",
-            "description": "The color to blend with the model's rendered color."
+            "description": "The color to blend with the model's rendered color.",
+            "default": "white"
         },
         "colorBlendMode": {
             "$ref": "ColorBlendMode.json",
@@ -85,5 +89,6 @@
                 "Examples/ModelNodeTransformations.json"
             ]
         }
-    }
+    },
+    "required": [ "gltf" ]
 }

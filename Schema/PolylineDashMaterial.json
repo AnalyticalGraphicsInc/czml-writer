@@ -13,20 +13,22 @@
     "properties": {
         "color": {
             "$ref": "Color.json",
-            "description": "The color of the dashes on the line."
+            "description": "The color of the dashes on the line.",
+            "default": "white"
         },
         "gapColor": {
             "$ref": "Color.json",
-            "description": "The color of the gaps between dashes on the line.  The default is transparent."
+            "description": "The color of the gaps between dashes on the line.",
+            "default": "transparent"
         },
         "dashLength": {
             "$ref": "Double.json",
             "description": "The length in screen-space pixels of a single dash and gap pattern.",
-            "default": 16
+            "default": 16.0
         },
         "dashPattern": {
             "$ref": "Integer.json",
-            "description": "A 16-bit bitfield representing which portions along a single dashLength are the dash (1) and which are the gap (0).  The default value, 255 (0000000011111111), indicates 50% gap followed by 50% dash.",
+            "description": "A 16-bit bitfield representing which portions along a single dashLength are the dash (1) and which are the gap (0). The default value, 255 (0000000011111111), indicates 50% gap followed by 50% dash.",
             "default": 255
         }
     }
