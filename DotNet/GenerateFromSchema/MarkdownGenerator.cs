@@ -108,8 +108,14 @@ namespace GenerateFromSchema
                                 ? JsonSchemaTypesToLabel(property.ValueType.JsonTypes)
                                 : string.Format("[[{0}{1}]]", propertyValueType.Name, property.IsValue ? "Value" : "");
 
-                        output.WriteLine("**{0}** - {1}", property.Name, type);
+                        output.Write("**{0}** - {1}", property.Name, type);
+                        if (property.IsRequired)
+                        {
+                            output.Write(" - **Required**");
+                        }
                         output.WriteLine();
+                        output.WriteLine();
+
                         output.WriteLine(property.Description);
                         output.WriteLine();
 

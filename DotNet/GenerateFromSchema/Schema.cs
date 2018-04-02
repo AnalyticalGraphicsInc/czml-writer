@@ -28,10 +28,7 @@ namespace GenerateFromSchema
 
         public List<string> Examples { get; set; }
 
-        public bool IsSchemaFromType
-        {
-            get { return Name == SchemaFromTypeName; }
-        }
+        public bool IsSchemaFromType => Name == SchemaFromTypeName;
 
         public string NameWithPascalCase
         {
@@ -44,14 +41,8 @@ namespace GenerateFromSchema
             }
         }
 
-        public bool IsInterpolatable
-        {
-            get
-            {
-                return Extends != null &&
-                       Extends.Name == "InterpolatableProperty";
-            }
-        }
+        public bool IsInterpolatable => Extends != null &&
+                                        Extends.Name == "InterpolatableProperty";
 
         public Property FindFirstValueProperty()
         {

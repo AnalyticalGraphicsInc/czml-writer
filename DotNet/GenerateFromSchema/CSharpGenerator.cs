@@ -18,14 +18,9 @@ namespace GenerateFromSchema
 
         public CSharpGenerator(string outputDirectory, string configurationFileName)
         {
-            if (outputDirectory == null)
-                throw new ArgumentNullException("outputDirectory");
-            if (configurationFileName == null)
-                throw new ArgumentNullException("configurationFileName");
+            m_outputDirectory = outputDirectory ?? throw new ArgumentNullException(nameof(outputDirectory));
 
-            m_outputDirectory = outputDirectory;
-
-            string configuration = File.ReadAllText(configurationFileName);
+            string configuration = File.ReadAllText(configurationFileName ?? throw new ArgumentNullException(nameof(configurationFileName)));
             m_configuration = JsonConvert.DeserializeObject<Configuration>(configuration);
         }
 
@@ -130,6 +125,7 @@ namespace GenerateFromSchema
                         }
                     }
                 }
+
                 foreach (Property subProperty in property.ValueType.Properties)
                 {
                     foreach (OverloadInfo overload in GetOverloadsForProperty(subProperty))
@@ -175,7 +171,7 @@ namespace GenerateFromSchema
 
         private static void WriteReturnsText(CodeWriter writer, string description)
         {
-            writer.WriteLine(string.Format("/// <returns>{0}</returns>", description));
+            writer.WriteLine("/// <returns>{0}</returns>", description);
         }
 
         private static void WriteDescriptionAsClassSummary(CodeWriter writer, Schema schema)
@@ -288,6 +284,7 @@ namespace GenerateFromSchema
                 {
                     writer.WriteLine("return new {0}CesiumWriter(name);", additionalPropertiesValueType.NameWithPascalCase);
                 }
+
                 writer.WriteLine();
 
                 WriteSummaryText(writer, string.Format("Opens and returns a new writer for a <c>{0}</c> property.  A <c>{0}</c> property defines {1}", additionalPropertiesValueType.Name, GetDescription(additionalProperties)));
@@ -298,6 +295,7 @@ namespace GenerateFromSchema
                     writer.WriteLine("OpenIntervalIfNecessary();");
                     writer.WriteLine("return OpenAndReturn(new {0}CesiumWriter(name));", additionalPropertiesValueType.NameWithPascalCase);
                 }
+
                 writer.WriteLine();
             }
         }
@@ -313,6 +311,7 @@ namespace GenerateFromSchema
             {
                 writer.WriteLine("get {{ return m_{0}.Value; }}", property.Name);
             }
+
             writer.WriteLine();
 
             WriteSummaryText(writer, string.Format("Opens and returns the writer for the <c>{0}</c> property.  The <c>{0}</c> property defines {1}", property.Name, GetDescription(property)));
@@ -324,6 +323,7 @@ namespace GenerateFromSchema
                     writer.WriteLine("OpenIntervalIfNecessary();");
                 writer.WriteLine("return OpenAndReturn({0}Writer);", property.NameWithPascalCase);
             }
+
             writer.WriteLine();
 
             bool isFirstValueProperty = true;
@@ -357,6 +357,7 @@ namespace GenerateFromSchema
                             writer.WriteLine("writer.Write{0}({1});", nestedProperty.NameWithPascalCase, string.Join(", ", Array.ConvertAll(overload.Parameters, p => p.Name)));
                         }
                     }
+
                     writer.WriteLine();
                 }
 
@@ -405,6 +406,7 @@ namespace GenerateFromSchema
                             {
                                 writer.WriteLine("OpenIntervalIfNecessary();");
                             }
+
                             if (overload.WritePropertyName)
                             {
                                 writer.WriteLine("if (IsInterval)");
@@ -425,6 +427,7 @@ namespace GenerateFromSchema
                         writer.WriteLine(overload.WriteValue);
                     }
                 }
+
                 writer.WriteLine();
             }
         }
@@ -439,6 +442,7 @@ namespace GenerateFromSchema
             {
                 WriteAsTypeLazyInitialization(writer, schema);
             }
+
             writer.WriteLine();
 
             WriteSummaryText(writer, "Initializes a new instance as a copy of an existing instance.");
@@ -449,6 +453,7 @@ namespace GenerateFromSchema
             {
                 WriteAsTypeLazyInitialization(writer, schema);
             }
+
             writer.WriteLine();
 
             WriteInheritDoc(writer);
@@ -457,6 +462,7 @@ namespace GenerateFromSchema
             {
                 writer.WriteLine("return new {0}CesiumWriter(this);", schema.NameWithPascalCase);
             }
+
             writer.WriteLine();
         }
 
@@ -516,6 +522,7 @@ namespace GenerateFromSchema
                     {
                         writer.WriteLine("return m_as{0}.Value;", property.NameWithPascalCase);
                     }
+
                     writer.WriteLine();
 
                     string adaptorName = "CesiumWriterAdaptor";
@@ -533,6 +540,7 @@ namespace GenerateFromSchema
 
                         writer.WriteLine("return new {0}<{1}CesiumWriter, {2}>(this, (me, value) => me.Write{3}(value){4});", adaptorName, schema.NameWithPascalCase, firstOverloadFirstParameterType, property.NameWithPascalCase, extraParameter);
                     }
+
                     writer.WriteLine();
                 }
             }
@@ -567,8 +575,7 @@ namespace GenerateFromSchema
             }
             else
             {
-                OverloadInfo[] overloads;
-                if (m_configuration.Types.TryGetValue(property.ValueType.Name, out overloads))
+                if (m_configuration.Types.TryGetValue(property.ValueType.Name, out var overloads))
                 {
                     foreach (OverloadInfo overload in overloads)
                         yield return overload;
@@ -613,7 +620,12 @@ namespace GenerateFromSchema
                 else
                     defaultText = defaultToken.Value<string>();
 
-                description += string.Format("  If not specified, the default value is {0}.", defaultText);
+                description += string.Format(" If not specified, the default value is {0}.", defaultText);
+            }
+
+            if (property.IsRequired)
+            {
+                description += " This value is required.";
             }
 
             return description;

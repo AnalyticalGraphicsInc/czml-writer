@@ -9,14 +9,11 @@ namespace GenerateFromSchema
 
         public string Description
         {
-            get { return m_description ?? ValueTypeDescription ?? Name; }
-            set { m_description = value; }
+            get => m_description ?? ValueTypeDescription ?? Name;
+            set => m_description = value;
         }
 
-        private string ValueTypeDescription
-        {
-            get { return ValueType != null ? ValueType.Description : null; }
-        }
+        private string ValueTypeDescription => ValueType?.Description;
 
         public Schema ValueType { get; set; }
 
@@ -25,6 +22,7 @@ namespace GenerateFromSchema
         public List<string> Examples { get; set; }
 
         public bool IsValue { get; set; }
+        public bool IsRequired { get; set; }
 
         public string NameWithPascalCase
         {
@@ -38,10 +36,7 @@ namespace GenerateFromSchema
             }
         }
 
-        public bool IsInterpolatable
-        {
-            get { return ValueType.IsInterpolatable; }
-        }
+        public bool IsInterpolatable => ValueType.IsInterpolatable;
 
         private string m_description;
     }
