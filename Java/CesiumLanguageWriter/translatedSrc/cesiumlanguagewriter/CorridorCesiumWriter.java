@@ -239,7 +239,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the corridor is shown.  If not specified, the default value is {@code true}.
+    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the corridor is shown. If not specified, the default value is {@code true}.
     
 
     */
@@ -250,7 +250,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Opens and returns the writer for the {@code show} property.  The {@code show} property defines whether or not the corridor is shown.  If not specified, the default value is {@code true}.
+    Opens and returns the writer for the {@code show} property.  The {@code show} property defines whether or not the corridor is shown. If not specified, the default value is {@code true}.
     
 
     */
@@ -262,7 +262,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code boolean} value.  The {@code show} property specifies whether or not the corridor is shown.  If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code boolean} value.  The {@code show} property specifies whether or not the corridor is shown. If not specified, the default value is {@code true}.
     
     
 
@@ -281,7 +281,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the corridor is shown.  If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the corridor is shown. If not specified, the default value is {@code true}.
     
     
 
@@ -300,7 +300,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the corridor is shown.  If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the corridor is shown. If not specified, the default value is {@code true}.
     
     
 
@@ -319,7 +319,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the corridor is shown.  If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the corridor is shown. If not specified, the default value is {@code true}.
     
     
     
@@ -340,7 +340,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the corridor is shown.  If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the corridor is shown. If not specified, the default value is {@code true}.
     
     
     
@@ -360,7 +360,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code positions} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code positions} property defines the array of positions defining the centerline of the corridor.
+    *  Gets the writer for the {@code positions} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code positions} property defines the array of positions defining the centerline of the corridor. This value is required.
     
 
     */
@@ -371,7 +371,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Opens and returns the writer for the {@code positions} property.  The {@code positions} property defines the array of positions defining the centerline of the corridor.
+    Opens and returns the writer for the {@code positions} property.  The {@code positions} property defines the array of positions defining the centerline of the corridor. This value is required.
     
 
     */
@@ -383,7 +383,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code positions} property as a {@code cartesian} value.  The {@code positions} property specifies the array of positions defining the centerline of the corridor.
+    Writes a value for the {@code positions} property as a {@code cartesian} value.  The {@code positions} property specifies the array of positions defining the centerline of the corridor. This value is required.
     
     
 
@@ -402,7 +402,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code positions} property as a {@code cartographicRadians} value.  The {@code positions} property specifies the array of positions defining the centerline of the corridor.
+    Writes a value for the {@code positions} property as a {@code cartographicRadians} value.  The {@code positions} property specifies the array of positions defining the centerline of the corridor. This value is required.
     
     
 
@@ -421,7 +421,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code positions} property as a {@code cartographicDegrees} value.  The {@code positions} property specifies the array of positions defining the centerline of the corridor.
+    Writes a value for the {@code positions} property as a {@code cartographicDegrees} value.  The {@code positions} property specifies the array of positions defining the centerline of the corridor. This value is required.
     
     
 
@@ -440,7 +440,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code positions} property as a {@code references} value.  The {@code positions} property specifies the array of positions defining the centerline of the corridor.
+    Writes a value for the {@code positions} property as a {@code references} value.  The {@code positions} property specifies the array of positions defining the centerline of the corridor. This value is required.
     
     
 
@@ -458,7 +458,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code width} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code width} property defines the width of the corridor, which is the distance between the edges of the corridor.
+    *  Gets the writer for the {@code width} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code width} property defines the width of the corridor, which is the distance between the edges of the corridor. This value is required.
     
 
     */
@@ -469,7 +469,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Opens and returns the writer for the {@code width} property.  The {@code width} property defines the width of the corridor, which is the distance between the edges of the corridor.
+    Opens and returns the writer for the {@code width} property.  The {@code width} property defines the width of the corridor, which is the distance between the edges of the corridor. This value is required.
     
 
     */
@@ -481,7 +481,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code width} property as a {@code number} value.  The {@code width} property specifies the width of the corridor, which is the distance between the edges of the corridor.
+    Writes a value for the {@code width} property as a {@code number} value.  The {@code width} property specifies the width of the corridor, which is the distance between the edges of the corridor. This value is required.
     
     
 
@@ -500,7 +500,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code width} property as a {@code number} value.  The {@code width} property specifies the width of the corridor, which is the distance between the edges of the corridor.
+    Writes a value for the {@code width} property as a {@code number} value.  The {@code width} property specifies the width of the corridor, which is the distance between the edges of the corridor. This value is required.
     
     
     
@@ -521,7 +521,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code width} property as a {@code number} value.  The {@code width} property specifies the width of the corridor, which is the distance between the edges of the corridor.
+    Writes a value for the {@code width} property as a {@code number} value.  The {@code width} property specifies the width of the corridor, which is the distance between the edges of the corridor. This value is required.
     
     
     
@@ -546,7 +546,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code width} property as a {@code reference} value.  The {@code width} property specifies the width of the corridor, which is the distance between the edges of the corridor.
+    Writes a value for the {@code width} property as a {@code reference} value.  The {@code width} property specifies the width of the corridor, which is the distance between the edges of the corridor. This value is required.
     
     
 
@@ -565,7 +565,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code width} property as a {@code reference} value.  The {@code width} property specifies the width of the corridor, which is the distance between the edges of the corridor.
+    Writes a value for the {@code width} property as a {@code reference} value.  The {@code width} property specifies the width of the corridor, which is the distance between the edges of the corridor. This value is required.
     
     
 
@@ -584,7 +584,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code width} property as a {@code reference} value.  The {@code width} property specifies the width of the corridor, which is the distance between the edges of the corridor.
+    Writes a value for the {@code width} property as a {@code reference} value.  The {@code width} property specifies the width of the corridor, which is the distance between the edges of the corridor. This value is required.
     
     
     
@@ -605,7 +605,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code width} property as a {@code reference} value.  The {@code width} property specifies the width of the corridor, which is the distance between the edges of the corridor.
+    Writes a value for the {@code width} property as a {@code reference} value.  The {@code width} property specifies the width of the corridor, which is the distance between the edges of the corridor. This value is required.
     
     
     
@@ -625,7 +625,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code height} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code height} property defines the height of the corridor, which is the altitude of the corridor relative to the surface.
+    *  Gets the writer for the {@code height} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code height} property defines the height of the corridor, which is the altitude of the corridor relative to the surface. If not specified, the default value is 0.0.
     
 
     */
@@ -636,7 +636,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Opens and returns the writer for the {@code height} property.  The {@code height} property defines the height of the corridor, which is the altitude of the corridor relative to the surface.
+    Opens and returns the writer for the {@code height} property.  The {@code height} property defines the height of the corridor, which is the altitude of the corridor relative to the surface. If not specified, the default value is 0.0.
     
 
     */
@@ -648,7 +648,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code height} property as a {@code number} value.  The {@code height} property specifies the height of the corridor, which is the altitude of the corridor relative to the surface.
+    Writes a value for the {@code height} property as a {@code number} value.  The {@code height} property specifies the height of the corridor, which is the altitude of the corridor relative to the surface. If not specified, the default value is 0.0.
     
     
 
@@ -667,7 +667,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code height} property as a {@code number} value.  The {@code height} property specifies the height of the corridor, which is the altitude of the corridor relative to the surface.
+    Writes a value for the {@code height} property as a {@code number} value.  The {@code height} property specifies the height of the corridor, which is the altitude of the corridor relative to the surface. If not specified, the default value is 0.0.
     
     
     
@@ -688,7 +688,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code height} property as a {@code number} value.  The {@code height} property specifies the height of the corridor, which is the altitude of the corridor relative to the surface.
+    Writes a value for the {@code height} property as a {@code number} value.  The {@code height} property specifies the height of the corridor, which is the altitude of the corridor relative to the surface. If not specified, the default value is 0.0.
     
     
     
@@ -713,7 +713,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code height} property as a {@code reference} value.  The {@code height} property specifies the height of the corridor, which is the altitude of the corridor relative to the surface.
+    Writes a value for the {@code height} property as a {@code reference} value.  The {@code height} property specifies the height of the corridor, which is the altitude of the corridor relative to the surface. If not specified, the default value is 0.0.
     
     
 
@@ -732,7 +732,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code height} property as a {@code reference} value.  The {@code height} property specifies the height of the corridor, which is the altitude of the corridor relative to the surface.
+    Writes a value for the {@code height} property as a {@code reference} value.  The {@code height} property specifies the height of the corridor, which is the altitude of the corridor relative to the surface. If not specified, the default value is 0.0.
     
     
 
@@ -751,7 +751,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code height} property as a {@code reference} value.  The {@code height} property specifies the height of the corridor, which is the altitude of the corridor relative to the surface.
+    Writes a value for the {@code height} property as a {@code reference} value.  The {@code height} property specifies the height of the corridor, which is the altitude of the corridor relative to the surface. If not specified, the default value is 0.0.
     
     
     
@@ -772,7 +772,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code height} property as a {@code reference} value.  The {@code height} property specifies the height of the corridor, which is the altitude of the corridor relative to the surface.
+    Writes a value for the {@code height} property as a {@code reference} value.  The {@code height} property specifies the height of the corridor, which is the altitude of the corridor relative to the surface. If not specified, the default value is 0.0.
     
     
     
@@ -959,7 +959,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code cornerType} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code cornerType} property defines the style of the corners of the corridor.
+    *  Gets the writer for the {@code cornerType} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code cornerType} property defines the style of the corners of the corridor. If not specified, the default value is ROUNDED.
     
 
     */
@@ -970,7 +970,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Opens and returns the writer for the {@code cornerType} property.  The {@code cornerType} property defines the style of the corners of the corridor.
+    Opens and returns the writer for the {@code cornerType} property.  The {@code cornerType} property defines the style of the corners of the corridor. If not specified, the default value is ROUNDED.
     
 
     */
@@ -982,7 +982,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code cornerType} property as a {@code cornerType} value.  The {@code cornerType} property specifies the style of the corners of the corridor.
+    Writes a value for the {@code cornerType} property as a {@code cornerType} value.  The {@code cornerType} property specifies the style of the corners of the corridor. If not specified, the default value is ROUNDED.
     
     
 
@@ -1001,7 +1001,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code cornerType} property as a {@code reference} value.  The {@code cornerType} property specifies the style of the corners of the corridor.
+    Writes a value for the {@code cornerType} property as a {@code reference} value.  The {@code cornerType} property specifies the style of the corners of the corridor. If not specified, the default value is ROUNDED.
     
     
 
@@ -1020,7 +1020,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code cornerType} property as a {@code reference} value.  The {@code cornerType} property specifies the style of the corners of the corridor.
+    Writes a value for the {@code cornerType} property as a {@code reference} value.  The {@code cornerType} property specifies the style of the corners of the corridor. If not specified, the default value is ROUNDED.
     
     
 
@@ -1039,7 +1039,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code cornerType} property as a {@code reference} value.  The {@code cornerType} property specifies the style of the corners of the corridor.
+    Writes a value for the {@code cornerType} property as a {@code reference} value.  The {@code cornerType} property specifies the style of the corners of the corridor. If not specified, the default value is ROUNDED.
     
     
     
@@ -1060,7 +1060,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code cornerType} property as a {@code reference} value.  The {@code cornerType} property specifies the style of the corners of the corridor.
+    Writes a value for the {@code cornerType} property as a {@code reference} value.  The {@code cornerType} property specifies the style of the corners of the corridor. If not specified, the default value is ROUNDED.
     
     
     
@@ -1080,7 +1080,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code granularity} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code granularity} property defines the sampling distance, in radians.
+    *  Gets the writer for the {@code granularity} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code granularity} property defines the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
 
     */
@@ -1091,7 +1091,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Opens and returns the writer for the {@code granularity} property.  The {@code granularity} property defines the sampling distance, in radians.
+    Opens and returns the writer for the {@code granularity} property.  The {@code granularity} property defines the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
 
     */
@@ -1103,7 +1103,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code granularity} property as a {@code number} value.  The {@code granularity} property specifies the sampling distance, in radians.
+    Writes a value for the {@code granularity} property as a {@code number} value.  The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
     
 
@@ -1122,7 +1122,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code granularity} property as a {@code number} value.  The {@code granularity} property specifies the sampling distance, in radians.
+    Writes a value for the {@code granularity} property as a {@code number} value.  The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
     
     
@@ -1143,7 +1143,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code granularity} property as a {@code number} value.  The {@code granularity} property specifies the sampling distance, in radians.
+    Writes a value for the {@code granularity} property as a {@code number} value.  The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
     
     
@@ -1168,7 +1168,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code granularity} property as a {@code reference} value.  The {@code granularity} property specifies the sampling distance, in radians.
+    Writes a value for the {@code granularity} property as a {@code reference} value.  The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
     
 
@@ -1187,7 +1187,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code granularity} property as a {@code reference} value.  The {@code granularity} property specifies the sampling distance, in radians.
+    Writes a value for the {@code granularity} property as a {@code reference} value.  The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
     
 
@@ -1206,7 +1206,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code granularity} property as a {@code reference} value.  The {@code granularity} property specifies the sampling distance, in radians.
+    Writes a value for the {@code granularity} property as a {@code reference} value.  The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
     
     
@@ -1227,7 +1227,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code granularity} property as a {@code reference} value.  The {@code granularity} property specifies the sampling distance, in radians.
+    Writes a value for the {@code granularity} property as a {@code reference} value.  The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
     
     
@@ -1247,7 +1247,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code fill} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code fill} property defines whether or not the corridor is filled.  If not specified, the default value is {@code true}.
+    *  Gets the writer for the {@code fill} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code fill} property defines whether or not the corridor is filled. If not specified, the default value is {@code true}.
     
 
     */
@@ -1258,7 +1258,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Opens and returns the writer for the {@code fill} property.  The {@code fill} property defines whether or not the corridor is filled.  If not specified, the default value is {@code true}.
+    Opens and returns the writer for the {@code fill} property.  The {@code fill} property defines whether or not the corridor is filled. If not specified, the default value is {@code true}.
     
 
     */
@@ -1270,7 +1270,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code fill} property as a {@code boolean} value.  The {@code fill} property specifies whether or not the corridor is filled.  If not specified, the default value is {@code true}.
+    Writes a value for the {@code fill} property as a {@code boolean} value.  The {@code fill} property specifies whether or not the corridor is filled. If not specified, the default value is {@code true}.
     
     
 
@@ -1289,7 +1289,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code fill} property as a {@code reference} value.  The {@code fill} property specifies whether or not the corridor is filled.  If not specified, the default value is {@code true}.
+    Writes a value for the {@code fill} property as a {@code reference} value.  The {@code fill} property specifies whether or not the corridor is filled. If not specified, the default value is {@code true}.
     
     
 
@@ -1308,7 +1308,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code fill} property as a {@code reference} value.  The {@code fill} property specifies whether or not the corridor is filled.  If not specified, the default value is {@code true}.
+    Writes a value for the {@code fill} property as a {@code reference} value.  The {@code fill} property specifies whether or not the corridor is filled. If not specified, the default value is {@code true}.
     
     
 
@@ -1327,7 +1327,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code fill} property as a {@code reference} value.  The {@code fill} property specifies whether or not the corridor is filled.  If not specified, the default value is {@code true}.
+    Writes a value for the {@code fill} property as a {@code reference} value.  The {@code fill} property specifies whether or not the corridor is filled. If not specified, the default value is {@code true}.
     
     
     
@@ -1348,7 +1348,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code fill} property as a {@code reference} value.  The {@code fill} property specifies whether or not the corridor is filled.  If not specified, the default value is {@code true}.
+    Writes a value for the {@code fill} property as a {@code reference} value.  The {@code fill} property specifies whether or not the corridor is filled. If not specified, the default value is {@code true}.
     
     
     
@@ -1368,7 +1368,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code material} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code material} property defines the material to display on the surface of the corridor.
+    *  Gets the writer for the {@code material} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code material} property defines the material to display on the surface of the corridor. If not specified, the default value is solid white.
     
 
     */
@@ -1379,7 +1379,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Opens and returns the writer for the {@code material} property.  The {@code material} property defines the material to display on the surface of the corridor.
+    Opens and returns the writer for the {@code material} property.  The {@code material} property defines the material to display on the surface of the corridor. If not specified, the default value is solid white.
     
 
     */
@@ -1390,7 +1390,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code outline} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outline} property defines whether or not the corridor is outlined.  If not specified, the default value is {@code false}.
+    *  Gets the writer for the {@code outline} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outline} property defines whether or not the corridor is outlined. If not specified, the default value is {@code false}.
     
 
     */
@@ -1401,7 +1401,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Opens and returns the writer for the {@code outline} property.  The {@code outline} property defines whether or not the corridor is outlined.  If not specified, the default value is {@code false}.
+    Opens and returns the writer for the {@code outline} property.  The {@code outline} property defines whether or not the corridor is outlined. If not specified, the default value is {@code false}.
     
 
     */
@@ -1413,7 +1413,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code outline} property as a {@code boolean} value.  The {@code outline} property specifies whether or not the corridor is outlined.  If not specified, the default value is {@code false}.
+    Writes a value for the {@code outline} property as a {@code boolean} value.  The {@code outline} property specifies whether or not the corridor is outlined. If not specified, the default value is {@code false}.
     
     
 
@@ -1432,7 +1432,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code outline} property as a {@code reference} value.  The {@code outline} property specifies whether or not the corridor is outlined.  If not specified, the default value is {@code false}.
+    Writes a value for the {@code outline} property as a {@code reference} value.  The {@code outline} property specifies whether or not the corridor is outlined. If not specified, the default value is {@code false}.
     
     
 
@@ -1451,7 +1451,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code outline} property as a {@code reference} value.  The {@code outline} property specifies whether or not the corridor is outlined.  If not specified, the default value is {@code false}.
+    Writes a value for the {@code outline} property as a {@code reference} value.  The {@code outline} property specifies whether or not the corridor is outlined. If not specified, the default value is {@code false}.
     
     
 
@@ -1470,7 +1470,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code outline} property as a {@code reference} value.  The {@code outline} property specifies whether or not the corridor is outlined.  If not specified, the default value is {@code false}.
+    Writes a value for the {@code outline} property as a {@code reference} value.  The {@code outline} property specifies whether or not the corridor is outlined. If not specified, the default value is {@code false}.
     
     
     
@@ -1491,7 +1491,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code outline} property as a {@code reference} value.  The {@code outline} property specifies whether or not the corridor is outlined.  If not specified, the default value is {@code false}.
+    Writes a value for the {@code outline} property as a {@code reference} value.  The {@code outline} property specifies whether or not the corridor is outlined. If not specified, the default value is {@code false}.
     
     
     
@@ -1511,7 +1511,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code outlineColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineColor} property defines the color of the corridor outline.
+    *  Gets the writer for the {@code outlineColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineColor} property defines the color of the corridor outline. If not specified, the default value is black.
     
 
     */
@@ -1522,7 +1522,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Opens and returns the writer for the {@code outlineColor} property.  The {@code outlineColor} property defines the color of the corridor outline.
+    Opens and returns the writer for the {@code outlineColor} property.  The {@code outlineColor} property defines the color of the corridor outline. If not specified, the default value is black.
     
 
     */
@@ -1534,7 +1534,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the color of the corridor outline.
+    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the color of the corridor outline. If not specified, the default value is black.
     
     
 
@@ -1553,7 +1553,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the color of the corridor outline.
+    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the color of the corridor outline. If not specified, the default value is black.
     
     
     
@@ -1578,7 +1578,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the color of the corridor outline.
+    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the color of the corridor outline. If not specified, the default value is black.
     
     
     
@@ -1599,7 +1599,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the color of the corridor outline.
+    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the color of the corridor outline. If not specified, the default value is black.
     
     
     
@@ -1624,7 +1624,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the color of the corridor outline.
+    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the color of the corridor outline. If not specified, the default value is black.
     
     
 
@@ -1643,7 +1643,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the color of the corridor outline.
+    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the color of the corridor outline. If not specified, the default value is black.
     
     
     
@@ -1668,7 +1668,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the color of the corridor outline.
+    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the color of the corridor outline. If not specified, the default value is black.
     
     
     
@@ -1689,7 +1689,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the color of the corridor outline.
+    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the color of the corridor outline. If not specified, the default value is black.
     
     
     
@@ -1714,7 +1714,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the color of the corridor outline.
+    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the color of the corridor outline. If not specified, the default value is black.
     
     
 
@@ -1733,7 +1733,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the color of the corridor outline.
+    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the color of the corridor outline. If not specified, the default value is black.
     
     
 
@@ -1752,7 +1752,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the color of the corridor outline.
+    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the color of the corridor outline. If not specified, the default value is black.
     
     
     
@@ -1773,7 +1773,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the color of the corridor outline.
+    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the color of the corridor outline. If not specified, the default value is black.
     
     
     
@@ -1793,7 +1793,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code outlineWidth} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineWidth} property defines the width of the corridor outline.  If not specified, the default value is 1.0.
+    *  Gets the writer for the {@code outlineWidth} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineWidth} property defines the width of the corridor outline. If not specified, the default value is 1.0.
     
 
     */
@@ -1804,7 +1804,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Opens and returns the writer for the {@code outlineWidth} property.  The {@code outlineWidth} property defines the width of the corridor outline.  If not specified, the default value is 1.0.
+    Opens and returns the writer for the {@code outlineWidth} property.  The {@code outlineWidth} property defines the width of the corridor outline. If not specified, the default value is 1.0.
     
 
     */
@@ -1816,7 +1816,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code number} value.  The {@code outlineWidth} property specifies the width of the corridor outline.  If not specified, the default value is 1.0.
+    Writes a value for the {@code outlineWidth} property as a {@code number} value.  The {@code outlineWidth} property specifies the width of the corridor outline. If not specified, the default value is 1.0.
     
     
 
@@ -1835,7 +1835,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code number} value.  The {@code outlineWidth} property specifies the width of the corridor outline.  If not specified, the default value is 1.0.
+    Writes a value for the {@code outlineWidth} property as a {@code number} value.  The {@code outlineWidth} property specifies the width of the corridor outline. If not specified, the default value is 1.0.
     
     
     
@@ -1856,7 +1856,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code number} value.  The {@code outlineWidth} property specifies the width of the corridor outline.  If not specified, the default value is 1.0.
+    Writes a value for the {@code outlineWidth} property as a {@code number} value.  The {@code outlineWidth} property specifies the width of the corridor outline. If not specified, the default value is 1.0.
     
     
     
@@ -1881,7 +1881,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the width of the corridor outline.  If not specified, the default value is 1.0.
+    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the width of the corridor outline. If not specified, the default value is 1.0.
     
     
 
@@ -1900,7 +1900,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the width of the corridor outline.  If not specified, the default value is 1.0.
+    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the width of the corridor outline. If not specified, the default value is 1.0.
     
     
 
@@ -1919,7 +1919,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the width of the corridor outline.  If not specified, the default value is 1.0.
+    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the width of the corridor outline. If not specified, the default value is 1.0.
     
     
     
@@ -1940,7 +1940,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the width of the corridor outline.  If not specified, the default value is 1.0.
+    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the width of the corridor outline. If not specified, the default value is 1.0.
     
     
     
@@ -1960,7 +1960,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code shadows} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code shadows} property defines whether or not the corridor casts or receives shadows.  If not specified, the default value is DISABLED.
+    *  Gets the writer for the {@code shadows} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code shadows} property defines whether or not the corridor casts or receives shadows. If not specified, the default value is DISABLED.
     
 
     */
@@ -1971,7 +1971,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Opens and returns the writer for the {@code shadows} property.  The {@code shadows} property defines whether or not the corridor casts or receives shadows.  If not specified, the default value is DISABLED.
+    Opens and returns the writer for the {@code shadows} property.  The {@code shadows} property defines whether or not the corridor casts or receives shadows. If not specified, the default value is DISABLED.
     
 
     */
@@ -1983,7 +1983,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code shadows} property as a {@code shadowMode} value.  The {@code shadows} property specifies whether or not the corridor casts or receives shadows.  If not specified, the default value is DISABLED.
+    Writes a value for the {@code shadows} property as a {@code shadowMode} value.  The {@code shadows} property specifies whether or not the corridor casts or receives shadows. If not specified, the default value is DISABLED.
     
     
 
@@ -2002,7 +2002,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code shadows} property as a {@code reference} value.  The {@code shadows} property specifies whether or not the corridor casts or receives shadows.  If not specified, the default value is DISABLED.
+    Writes a value for the {@code shadows} property as a {@code reference} value.  The {@code shadows} property specifies whether or not the corridor casts or receives shadows. If not specified, the default value is DISABLED.
     
     
 
@@ -2021,7 +2021,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code shadows} property as a {@code reference} value.  The {@code shadows} property specifies whether or not the corridor casts or receives shadows.  If not specified, the default value is DISABLED.
+    Writes a value for the {@code shadows} property as a {@code reference} value.  The {@code shadows} property specifies whether or not the corridor casts or receives shadows. If not specified, the default value is DISABLED.
     
     
 
@@ -2040,7 +2040,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code shadows} property as a {@code reference} value.  The {@code shadows} property specifies whether or not the corridor casts or receives shadows.  If not specified, the default value is DISABLED.
+    Writes a value for the {@code shadows} property as a {@code reference} value.  The {@code shadows} property specifies whether or not the corridor casts or receives shadows. If not specified, the default value is DISABLED.
     
     
     
@@ -2061,7 +2061,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code shadows} property as a {@code reference} value.  The {@code shadows} property specifies whether or not the corridor casts or receives shadows.  If not specified, the default value is DISABLED.
+    Writes a value for the {@code shadows} property as a {@code reference} value.  The {@code shadows} property specifies whether or not the corridor casts or receives shadows. If not specified, the default value is DISABLED.
     
     
     

@@ -100,7 +100,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
     }
 
     /**
-    *  Gets the writer for the {@code color} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code color} property defines the color of the surface.
+    *  Gets the writer for the {@code color} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code color} property defines the color of the surface. If not specified, the default value is white.
     
 
     */
@@ -111,7 +111,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
 
     /**
     *  
-    Opens and returns the writer for the {@code color} property.  The {@code color} property defines the color of the surface.
+    Opens and returns the writer for the {@code color} property.  The {@code color} property defines the color of the surface. If not specified, the default value is white.
     
 
     */
@@ -123,7 +123,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the surface.
+    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
 
@@ -142,7 +142,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the surface.
+    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
     
@@ -167,7 +167,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the surface.
+    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
     
@@ -188,7 +188,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the surface.
+    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
     
@@ -213,7 +213,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the surface.
+    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
 
@@ -232,7 +232,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the surface.
+    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
     
@@ -257,7 +257,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the surface.
+    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
     
@@ -278,7 +278,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the surface.
+    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
     
@@ -303,7 +303,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the surface.
+    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
 
@@ -322,7 +322,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the surface.
+    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
 
@@ -341,7 +341,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the surface.
+    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
     
@@ -362,7 +362,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the surface.
+    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
     
@@ -382,7 +382,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
     }
 
     /**
-    *  Gets the writer for the {@code outlineColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineColor} property defines the color of the surface outline.
+    *  Gets the writer for the {@code outlineColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineColor} property defines the color of the surface outline. If not specified, the default value is black.
     
 
     */
@@ -393,7 +393,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
 
     /**
     *  
-    Opens and returns the writer for the {@code outlineColor} property.  The {@code outlineColor} property defines the color of the surface outline.
+    Opens and returns the writer for the {@code outlineColor} property.  The {@code outlineColor} property defines the color of the surface outline. If not specified, the default value is black.
     
 
     */
@@ -405,7 +405,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the color of the surface outline.
+    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the color of the surface outline. If not specified, the default value is black.
     
     
 
@@ -424,7 +424,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the color of the surface outline.
+    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the color of the surface outline. If not specified, the default value is black.
     
     
     
@@ -449,7 +449,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the color of the surface outline.
+    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the color of the surface outline. If not specified, the default value is black.
     
     
     
@@ -470,7 +470,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the color of the surface outline.
+    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the color of the surface outline. If not specified, the default value is black.
     
     
     
@@ -495,7 +495,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the color of the surface outline.
+    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the color of the surface outline. If not specified, the default value is black.
     
     
 
@@ -514,7 +514,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the color of the surface outline.
+    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the color of the surface outline. If not specified, the default value is black.
     
     
     
@@ -539,7 +539,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the color of the surface outline.
+    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the color of the surface outline. If not specified, the default value is black.
     
     
     
@@ -560,7 +560,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the color of the surface outline.
+    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the color of the surface outline. If not specified, the default value is black.
     
     
     
@@ -585,7 +585,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the color of the surface outline.
+    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the color of the surface outline. If not specified, the default value is black.
     
     
 
@@ -604,7 +604,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the color of the surface outline.
+    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the color of the surface outline. If not specified, the default value is black.
     
     
 
@@ -623,7 +623,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the color of the surface outline.
+    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the color of the surface outline. If not specified, the default value is black.
     
     
     
@@ -644,7 +644,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the color of the surface outline.
+    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the color of the surface outline. If not specified, the default value is black.
     
     
     
@@ -664,7 +664,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
     }
 
     /**
-    *  Gets the writer for the {@code outlineWidth} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineWidth} property defines the width of the outline.
+    *  Gets the writer for the {@code outlineWidth} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineWidth} property defines the width of the outline. If not specified, the default value is 1.0.
     
 
     */
@@ -675,7 +675,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
 
     /**
     *  
-    Opens and returns the writer for the {@code outlineWidth} property.  The {@code outlineWidth} property defines the width of the outline.
+    Opens and returns the writer for the {@code outlineWidth} property.  The {@code outlineWidth} property defines the width of the outline. If not specified, the default value is 1.0.
     
 
     */
@@ -687,7 +687,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code number} value.  The {@code outlineWidth} property specifies the width of the outline.
+    Writes a value for the {@code outlineWidth} property as a {@code number} value.  The {@code outlineWidth} property specifies the width of the outline. If not specified, the default value is 1.0.
     
     
 
@@ -706,7 +706,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code number} value.  The {@code outlineWidth} property specifies the width of the outline.
+    Writes a value for the {@code outlineWidth} property as a {@code number} value.  The {@code outlineWidth} property specifies the width of the outline. If not specified, the default value is 1.0.
     
     
     
@@ -727,7 +727,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code number} value.  The {@code outlineWidth} property specifies the width of the outline.
+    Writes a value for the {@code outlineWidth} property as a {@code number} value.  The {@code outlineWidth} property specifies the width of the outline. If not specified, the default value is 1.0.
     
     
     
@@ -752,7 +752,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the width of the outline.
+    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the width of the outline. If not specified, the default value is 1.0.
     
     
 
@@ -771,7 +771,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the width of the outline.
+    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the width of the outline. If not specified, the default value is 1.0.
     
     
 
@@ -790,7 +790,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the width of the outline.
+    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the width of the outline. If not specified, the default value is 1.0.
     
     
     
@@ -811,7 +811,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the width of the outline.
+    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the width of the outline. If not specified, the default value is 1.0.
     
     
     

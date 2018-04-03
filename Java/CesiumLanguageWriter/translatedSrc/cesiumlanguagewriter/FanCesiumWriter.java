@@ -18,7 +18,7 @@ import javax.annotation.Nonnull;
 
 /**
  *  
- Writes a {@code Fan} to a {@link CesiumOutputStream}.  A {@code Fan} is a fan.  A fan starts at a point or apex and extends in a specified list of directions from the apex.  Each pair of directions forms a face of the fan extending to the specified radius.
+ Writes a {@code Fan} to a {@link CesiumOutputStream}.  A {@code Fan} is a fan. A fan starts at a point or apex and extends in a specified list of directions from the apex. Each pair of directions forms a face of the fan extending to the specified radius.
  
 
  */
@@ -188,7 +188,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the fan is shown.
+    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the fan is shown. If not specified, the default value is {@code true}.
     
 
     */
@@ -199,7 +199,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code show} property.  The {@code show} property defines whether or not the fan is shown.
+    Opens and returns the writer for the {@code show} property.  The {@code show} property defines whether or not the fan is shown. If not specified, the default value is {@code true}.
     
 
     */
@@ -211,7 +211,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code boolean} value.  The {@code show} property specifies whether or not the fan is shown.
+    Writes a value for the {@code show} property as a {@code boolean} value.  The {@code show} property specifies whether or not the fan is shown. If not specified, the default value is {@code true}.
     
     
 
@@ -230,7 +230,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the fan is shown.
+    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the fan is shown. If not specified, the default value is {@code true}.
     
     
 
@@ -249,7 +249,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the fan is shown.
+    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the fan is shown. If not specified, the default value is {@code true}.
     
     
 
@@ -268,7 +268,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the fan is shown.
+    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the fan is shown. If not specified, the default value is {@code true}.
     
     
     
@@ -289,7 +289,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the fan is shown.
+    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the fan is shown. If not specified, the default value is {@code true}.
     
     
     
@@ -309,7 +309,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code directions} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code directions} property defines the list of directions defining the fan.
+    *  Gets the writer for the {@code directions} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code directions} property defines the list of directions defining the fan. This value is required.
     
 
     */
@@ -320,7 +320,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code directions} property.  The {@code directions} property defines the list of directions defining the fan.
+    Opens and returns the writer for the {@code directions} property.  The {@code directions} property defines the list of directions defining the fan. This value is required.
     
 
     */
@@ -332,7 +332,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code directions} property as a {@code spherical} value.  The {@code directions} property specifies the list of directions defining the fan.
+    Writes a value for the {@code directions} property as a {@code spherical} value.  The {@code directions} property specifies the list of directions defining the fan. This value is required.
     
     
 
@@ -351,7 +351,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code directions} property as a {@code unitSpherical} value.  The {@code directions} property specifies the list of directions defining the fan.
+    Writes a value for the {@code directions} property as a {@code unitSpherical} value.  The {@code directions} property specifies the list of directions defining the fan. This value is required.
     
     
 
@@ -370,7 +370,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code directions} property as a {@code cartesian} value.  The {@code directions} property specifies the list of directions defining the fan.
+    Writes a value for the {@code directions} property as a {@code cartesian} value.  The {@code directions} property specifies the list of directions defining the fan. This value is required.
     
     
 
@@ -389,7 +389,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code directions} property as a {@code unitCartesian} value.  The {@code directions} property specifies the list of directions defining the fan.
+    Writes a value for the {@code directions} property as a {@code unitCartesian} value.  The {@code directions} property specifies the list of directions defining the fan. This value is required.
     
     
 
@@ -407,7 +407,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code radius} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code radius} property defines the radial limit of the fan.
+    *  Gets the writer for the {@code radius} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code radius} property defines the radial limit of the fan. If {@code perDirectionRadius} is false, then this value is required.
     
 
     */
@@ -418,7 +418,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code radius} property.  The {@code radius} property defines the radial limit of the fan.
+    Opens and returns the writer for the {@code radius} property.  The {@code radius} property defines the radial limit of the fan. If {@code perDirectionRadius} is false, then this value is required.
     
 
     */
@@ -430,7 +430,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code radius} property as a {@code number} value.  The {@code radius} property specifies the radial limit of the fan.
+    Writes a value for the {@code radius} property as a {@code number} value.  The {@code radius} property specifies the radial limit of the fan. If {@code perDirectionRadius} is false, then this value is required.
     
     
 
@@ -449,7 +449,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code radius} property as a {@code number} value.  The {@code radius} property specifies the radial limit of the fan.
+    Writes a value for the {@code radius} property as a {@code number} value.  The {@code radius} property specifies the radial limit of the fan. If {@code perDirectionRadius} is false, then this value is required.
     
     
     
@@ -470,7 +470,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code radius} property as a {@code number} value.  The {@code radius} property specifies the radial limit of the fan.
+    Writes a value for the {@code radius} property as a {@code number} value.  The {@code radius} property specifies the radial limit of the fan. If {@code perDirectionRadius} is false, then this value is required.
     
     
     
@@ -495,7 +495,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code radius} property as a {@code reference} value.  The {@code radius} property specifies the radial limit of the fan.
+    Writes a value for the {@code radius} property as a {@code reference} value.  The {@code radius} property specifies the radial limit of the fan. If {@code perDirectionRadius} is false, then this value is required.
     
     
 
@@ -514,7 +514,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code radius} property as a {@code reference} value.  The {@code radius} property specifies the radial limit of the fan.
+    Writes a value for the {@code radius} property as a {@code reference} value.  The {@code radius} property specifies the radial limit of the fan. If {@code perDirectionRadius} is false, then this value is required.
     
     
 
@@ -533,7 +533,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code radius} property as a {@code reference} value.  The {@code radius} property specifies the radial limit of the fan.
+    Writes a value for the {@code radius} property as a {@code reference} value.  The {@code radius} property specifies the radial limit of the fan. If {@code perDirectionRadius} is false, then this value is required.
     
     
     
@@ -554,7 +554,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code radius} property as a {@code reference} value.  The {@code radius} property specifies the radial limit of the fan.
+    Writes a value for the {@code radius} property as a {@code reference} value.  The {@code radius} property specifies the radial limit of the fan. If {@code perDirectionRadius} is false, then this value is required.
     
     
     
@@ -574,7 +574,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code perDirectionRadius} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code perDirectionRadius} property defines whether the magnitude of each direction is used instead of a constant radius.
+    *  Gets the writer for the {@code perDirectionRadius} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code perDirectionRadius} property defines whether the magnitude of each direction is used instead of a constant radius. If not specified, the default value is {@code false}.
     
 
     */
@@ -585,7 +585,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code perDirectionRadius} property.  The {@code perDirectionRadius} property defines whether the magnitude of each direction is used instead of a constant radius.
+    Opens and returns the writer for the {@code perDirectionRadius} property.  The {@code perDirectionRadius} property defines whether the magnitude of each direction is used instead of a constant radius. If not specified, the default value is {@code false}.
     
 
     */
@@ -597,7 +597,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code perDirectionRadius} property as a {@code boolean} value.  The {@code perDirectionRadius} property specifies whether the magnitude of each direction is used instead of a constant radius.
+    Writes a value for the {@code perDirectionRadius} property as a {@code boolean} value.  The {@code perDirectionRadius} property specifies whether the magnitude of each direction is used instead of a constant radius. If not specified, the default value is {@code false}.
     
     
 
@@ -616,7 +616,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code perDirectionRadius} property as a {@code reference} value.  The {@code perDirectionRadius} property specifies whether the magnitude of each direction is used instead of a constant radius.
+    Writes a value for the {@code perDirectionRadius} property as a {@code reference} value.  The {@code perDirectionRadius} property specifies whether the magnitude of each direction is used instead of a constant radius. If not specified, the default value is {@code false}.
     
     
 
@@ -635,7 +635,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code perDirectionRadius} property as a {@code reference} value.  The {@code perDirectionRadius} property specifies whether the magnitude of each direction is used instead of a constant radius.
+    Writes a value for the {@code perDirectionRadius} property as a {@code reference} value.  The {@code perDirectionRadius} property specifies whether the magnitude of each direction is used instead of a constant radius. If not specified, the default value is {@code false}.
     
     
 
@@ -654,7 +654,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code perDirectionRadius} property as a {@code reference} value.  The {@code perDirectionRadius} property specifies whether the magnitude of each direction is used instead of a constant radius.
+    Writes a value for the {@code perDirectionRadius} property as a {@code reference} value.  The {@code perDirectionRadius} property specifies whether the magnitude of each direction is used instead of a constant radius. If not specified, the default value is {@code false}.
     
     
     
@@ -675,7 +675,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code perDirectionRadius} property as a {@code reference} value.  The {@code perDirectionRadius} property specifies whether the magnitude of each direction is used instead of a constant radius.
+    Writes a value for the {@code perDirectionRadius} property as a {@code reference} value.  The {@code perDirectionRadius} property specifies whether the magnitude of each direction is used instead of a constant radius. If not specified, the default value is {@code false}.
     
     
     
@@ -695,7 +695,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code material} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code material} property defines the material to display on the surface of the fan.
+    *  Gets the writer for the {@code material} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code material} property defines the material to display on the surface of the fan. If not specified, the default value is solid white.
     
 
     */
@@ -706,7 +706,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code material} property.  The {@code material} property defines the material to display on the surface of the fan.
+    Opens and returns the writer for the {@code material} property.  The {@code material} property defines the material to display on the surface of the fan. If not specified, the default value is solid white.
     
 
     */
@@ -717,7 +717,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code fill} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code fill} property defines whether or not the fan is filled.
+    *  Gets the writer for the {@code fill} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code fill} property defines whether or not the fan is filled. If not specified, the default value is {@code true}.
     
 
     */
@@ -728,7 +728,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code fill} property.  The {@code fill} property defines whether or not the fan is filled.
+    Opens and returns the writer for the {@code fill} property.  The {@code fill} property defines whether or not the fan is filled. If not specified, the default value is {@code true}.
     
 
     */
@@ -740,7 +740,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code fill} property as a {@code boolean} value.  The {@code fill} property specifies whether or not the fan is filled.
+    Writes a value for the {@code fill} property as a {@code boolean} value.  The {@code fill} property specifies whether or not the fan is filled. If not specified, the default value is {@code true}.
     
     
 
@@ -759,7 +759,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code fill} property as a {@code reference} value.  The {@code fill} property specifies whether or not the fan is filled.
+    Writes a value for the {@code fill} property as a {@code reference} value.  The {@code fill} property specifies whether or not the fan is filled. If not specified, the default value is {@code true}.
     
     
 
@@ -778,7 +778,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code fill} property as a {@code reference} value.  The {@code fill} property specifies whether or not the fan is filled.
+    Writes a value for the {@code fill} property as a {@code reference} value.  The {@code fill} property specifies whether or not the fan is filled. If not specified, the default value is {@code true}.
     
     
 
@@ -797,7 +797,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code fill} property as a {@code reference} value.  The {@code fill} property specifies whether or not the fan is filled.
+    Writes a value for the {@code fill} property as a {@code reference} value.  The {@code fill} property specifies whether or not the fan is filled. If not specified, the default value is {@code true}.
     
     
     
@@ -818,7 +818,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code fill} property as a {@code reference} value.  The {@code fill} property specifies whether or not the fan is filled.
+    Writes a value for the {@code fill} property as a {@code reference} value.  The {@code fill} property specifies whether or not the fan is filled. If not specified, the default value is {@code true}.
     
     
     
@@ -838,7 +838,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code outline} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outline} property defines whether or not the fan is outlined.
+    *  Gets the writer for the {@code outline} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outline} property defines whether or not the fan is outlined. If not specified, the default value is {@code false}.
     
 
     */
@@ -849,7 +849,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code outline} property.  The {@code outline} property defines whether or not the fan is outlined.
+    Opens and returns the writer for the {@code outline} property.  The {@code outline} property defines whether or not the fan is outlined. If not specified, the default value is {@code false}.
     
 
     */
@@ -861,7 +861,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outline} property as a {@code boolean} value.  The {@code outline} property specifies whether or not the fan is outlined.
+    Writes a value for the {@code outline} property as a {@code boolean} value.  The {@code outline} property specifies whether or not the fan is outlined. If not specified, the default value is {@code false}.
     
     
 
@@ -880,7 +880,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outline} property as a {@code reference} value.  The {@code outline} property specifies whether or not the fan is outlined.
+    Writes a value for the {@code outline} property as a {@code reference} value.  The {@code outline} property specifies whether or not the fan is outlined. If not specified, the default value is {@code false}.
     
     
 
@@ -899,7 +899,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outline} property as a {@code reference} value.  The {@code outline} property specifies whether or not the fan is outlined.
+    Writes a value for the {@code outline} property as a {@code reference} value.  The {@code outline} property specifies whether or not the fan is outlined. If not specified, the default value is {@code false}.
     
     
 
@@ -918,7 +918,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outline} property as a {@code reference} value.  The {@code outline} property specifies whether or not the fan is outlined.
+    Writes a value for the {@code outline} property as a {@code reference} value.  The {@code outline} property specifies whether or not the fan is outlined. If not specified, the default value is {@code false}.
     
     
     
@@ -939,7 +939,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outline} property as a {@code reference} value.  The {@code outline} property specifies whether or not the fan is outlined.
+    Writes a value for the {@code outline} property as a {@code reference} value.  The {@code outline} property specifies whether or not the fan is outlined. If not specified, the default value is {@code false}.
     
     
     
@@ -959,7 +959,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code outlineColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineColor} property defines the color of the fan outline.
+    *  Gets the writer for the {@code outlineColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineColor} property defines the color of the fan outline. If not specified, the default value is black.
     
 
     */
@@ -970,7 +970,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code outlineColor} property.  The {@code outlineColor} property defines the color of the fan outline.
+    Opens and returns the writer for the {@code outlineColor} property.  The {@code outlineColor} property defines the color of the fan outline. If not specified, the default value is black.
     
 
     */
@@ -982,7 +982,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the color of the fan outline.
+    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the color of the fan outline. If not specified, the default value is black.
     
     
 
@@ -1001,7 +1001,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the color of the fan outline.
+    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the color of the fan outline. If not specified, the default value is black.
     
     
     
@@ -1026,7 +1026,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the color of the fan outline.
+    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the color of the fan outline. If not specified, the default value is black.
     
     
     
@@ -1047,7 +1047,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the color of the fan outline.
+    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the color of the fan outline. If not specified, the default value is black.
     
     
     
@@ -1072,7 +1072,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the color of the fan outline.
+    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the color of the fan outline. If not specified, the default value is black.
     
     
 
@@ -1091,7 +1091,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the color of the fan outline.
+    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the color of the fan outline. If not specified, the default value is black.
     
     
     
@@ -1116,7 +1116,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the color of the fan outline.
+    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the color of the fan outline. If not specified, the default value is black.
     
     
     
@@ -1137,7 +1137,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the color of the fan outline.
+    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the color of the fan outline. If not specified, the default value is black.
     
     
     
@@ -1162,7 +1162,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the color of the fan outline.
+    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the color of the fan outline. If not specified, the default value is black.
     
     
 
@@ -1181,7 +1181,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the color of the fan outline.
+    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the color of the fan outline. If not specified, the default value is black.
     
     
 
@@ -1200,7 +1200,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the color of the fan outline.
+    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the color of the fan outline. If not specified, the default value is black.
     
     
     
@@ -1221,7 +1221,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the color of the fan outline.
+    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the color of the fan outline. If not specified, the default value is black.
     
     
     
@@ -1241,7 +1241,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code outlineWidth} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineWidth} property defines the width of the fan outline.
+    *  Gets the writer for the {@code outlineWidth} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineWidth} property defines the width of the fan outline. If not specified, the default value is 1.0.
     
 
     */
@@ -1252,7 +1252,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code outlineWidth} property.  The {@code outlineWidth} property defines the width of the fan outline.
+    Opens and returns the writer for the {@code outlineWidth} property.  The {@code outlineWidth} property defines the width of the fan outline. If not specified, the default value is 1.0.
     
 
     */
@@ -1264,7 +1264,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code number} value.  The {@code outlineWidth} property specifies the width of the fan outline.
+    Writes a value for the {@code outlineWidth} property as a {@code number} value.  The {@code outlineWidth} property specifies the width of the fan outline. If not specified, the default value is 1.0.
     
     
 
@@ -1283,7 +1283,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code number} value.  The {@code outlineWidth} property specifies the width of the fan outline.
+    Writes a value for the {@code outlineWidth} property as a {@code number} value.  The {@code outlineWidth} property specifies the width of the fan outline. If not specified, the default value is 1.0.
     
     
     
@@ -1304,7 +1304,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code number} value.  The {@code outlineWidth} property specifies the width of the fan outline.
+    Writes a value for the {@code outlineWidth} property as a {@code number} value.  The {@code outlineWidth} property specifies the width of the fan outline. If not specified, the default value is 1.0.
     
     
     
@@ -1329,7 +1329,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the width of the fan outline.
+    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the width of the fan outline. If not specified, the default value is 1.0.
     
     
 
@@ -1348,7 +1348,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the width of the fan outline.
+    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the width of the fan outline. If not specified, the default value is 1.0.
     
     
 
@@ -1367,7 +1367,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the width of the fan outline.
+    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the width of the fan outline. If not specified, the default value is 1.0.
     
     
     
@@ -1388,7 +1388,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the width of the fan outline.
+    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the width of the fan outline. If not specified, the default value is 1.0.
     
     
     
@@ -1408,7 +1408,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code numberOfRings} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code numberOfRings} property defines the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+    *  Gets the writer for the {@code numberOfRings} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code numberOfRings} property defines the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center. If not specified, the default value is 6.
     
 
     */
@@ -1419,7 +1419,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code numberOfRings} property.  The {@code numberOfRings} property defines the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+    Opens and returns the writer for the {@code numberOfRings} property.  The {@code numberOfRings} property defines the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center. If not specified, the default value is 6.
     
 
     */
@@ -1431,7 +1431,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code numberOfRings} property as a {@code number} value.  The {@code numberOfRings} property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+    Writes a value for the {@code numberOfRings} property as a {@code number} value.  The {@code numberOfRings} property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center. If not specified, the default value is 6.
     
     
 
@@ -1450,7 +1450,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code numberOfRings} property as a {@code number} value.  The {@code numberOfRings} property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+    Writes a value for the {@code numberOfRings} property as a {@code number} value.  The {@code numberOfRings} property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center. If not specified, the default value is 6.
     
     
     
@@ -1471,7 +1471,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code numberOfRings} property as a {@code number} value.  The {@code numberOfRings} property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+    Writes a value for the {@code numberOfRings} property as a {@code number} value.  The {@code numberOfRings} property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center. If not specified, the default value is 6.
     
     
     
@@ -1496,7 +1496,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code numberOfRings} property as a {@code reference} value.  The {@code numberOfRings} property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+    Writes a value for the {@code numberOfRings} property as a {@code reference} value.  The {@code numberOfRings} property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center. If not specified, the default value is 6.
     
     
 
@@ -1515,7 +1515,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code numberOfRings} property as a {@code reference} value.  The {@code numberOfRings} property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+    Writes a value for the {@code numberOfRings} property as a {@code reference} value.  The {@code numberOfRings} property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center. If not specified, the default value is 6.
     
     
 
@@ -1534,7 +1534,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code numberOfRings} property as a {@code reference} value.  The {@code numberOfRings} property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+    Writes a value for the {@code numberOfRings} property as a {@code reference} value.  The {@code numberOfRings} property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center. If not specified, the default value is 6.
     
     
     
@@ -1555,7 +1555,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code numberOfRings} property as a {@code reference} value.  The {@code numberOfRings} property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center.
+    Writes a value for the {@code numberOfRings} property as a {@code reference} value.  The {@code numberOfRings} property specifies the number of outline rings to draw, starting from the outer edge and equidistantly spaced towards the center. If not specified, the default value is 6.
     
     
     

@@ -125,7 +125,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     }
 
     /**
-    *  Gets the writer for the {@code orientation} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code orientation} property defines the value indicating if the stripes are horizontal or vertical.
+    *  Gets the writer for the {@code orientation} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code orientation} property defines the value indicating if the stripes are horizontal or vertical. If not specified, the default value is HORIZONTAL.
     
 
     */
@@ -136,7 +136,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Opens and returns the writer for the {@code orientation} property.  The {@code orientation} property defines the value indicating if the stripes are horizontal or vertical.
+    Opens and returns the writer for the {@code orientation} property.  The {@code orientation} property defines the value indicating if the stripes are horizontal or vertical. If not specified, the default value is HORIZONTAL.
     
 
     */
@@ -148,7 +148,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code orientation} property as a {@code stripeOrientation} value.  The {@code orientation} property specifies the value indicating if the stripes are horizontal or vertical.
+    Writes a value for the {@code orientation} property as a {@code stripeOrientation} value.  The {@code orientation} property specifies the value indicating if the stripes are horizontal or vertical. If not specified, the default value is HORIZONTAL.
     
     
 
@@ -167,7 +167,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code orientation} property as a {@code reference} value.  The {@code orientation} property specifies the value indicating if the stripes are horizontal or vertical.
+    Writes a value for the {@code orientation} property as a {@code reference} value.  The {@code orientation} property specifies the value indicating if the stripes are horizontal or vertical. If not specified, the default value is HORIZONTAL.
     
     
 
@@ -186,7 +186,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code orientation} property as a {@code reference} value.  The {@code orientation} property specifies the value indicating if the stripes are horizontal or vertical.
+    Writes a value for the {@code orientation} property as a {@code reference} value.  The {@code orientation} property specifies the value indicating if the stripes are horizontal or vertical. If not specified, the default value is HORIZONTAL.
     
     
 
@@ -205,7 +205,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code orientation} property as a {@code reference} value.  The {@code orientation} property specifies the value indicating if the stripes are horizontal or vertical.
+    Writes a value for the {@code orientation} property as a {@code reference} value.  The {@code orientation} property specifies the value indicating if the stripes are horizontal or vertical. If not specified, the default value is HORIZONTAL.
     
     
     
@@ -226,7 +226,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code orientation} property as a {@code reference} value.  The {@code orientation} property specifies the value indicating if the stripes are horizontal or vertical.
+    Writes a value for the {@code orientation} property as a {@code reference} value.  The {@code orientation} property specifies the value indicating if the stripes are horizontal or vertical. If not specified, the default value is HORIZONTAL.
     
     
     
@@ -246,7 +246,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     }
 
     /**
-    *  Gets the writer for the {@code evenColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code evenColor} property defines the even color.
+    *  Gets the writer for the {@code evenColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code evenColor} property defines the even color. If not specified, the default value is white.
     
 
     */
@@ -257,7 +257,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Opens and returns the writer for the {@code evenColor} property.  The {@code evenColor} property defines the even color.
+    Opens and returns the writer for the {@code evenColor} property.  The {@code evenColor} property defines the even color. If not specified, the default value is white.
     
 
     */
@@ -269,7 +269,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code evenColor} property as a {@code rgba} value.  The {@code evenColor} property specifies the even color.
+    Writes a value for the {@code evenColor} property as a {@code rgba} value.  The {@code evenColor} property specifies the even color. If not specified, the default value is white.
     
     
 
@@ -288,7 +288,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code evenColor} property as a {@code rgba} value.  The {@code evenColor} property specifies the even color.
+    Writes a value for the {@code evenColor} property as a {@code rgba} value.  The {@code evenColor} property specifies the even color. If not specified, the default value is white.
     
     
     
@@ -313,7 +313,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code evenColor} property as a {@code rgba} value.  The {@code evenColor} property specifies the even color.
+    Writes a value for the {@code evenColor} property as a {@code rgba} value.  The {@code evenColor} property specifies the even color. If not specified, the default value is white.
     
     
     
@@ -334,7 +334,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code evenColor} property as a {@code rgba} value.  The {@code evenColor} property specifies the even color.
+    Writes a value for the {@code evenColor} property as a {@code rgba} value.  The {@code evenColor} property specifies the even color. If not specified, the default value is white.
     
     
     
@@ -359,7 +359,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code evenColor} property as a {@code rgbaf} value.  The {@code evenColor} property specifies the even color.
+    Writes a value for the {@code evenColor} property as a {@code rgbaf} value.  The {@code evenColor} property specifies the even color. If not specified, the default value is white.
     
     
 
@@ -378,7 +378,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code evenColor} property as a {@code rgbaf} value.  The {@code evenColor} property specifies the even color.
+    Writes a value for the {@code evenColor} property as a {@code rgbaf} value.  The {@code evenColor} property specifies the even color. If not specified, the default value is white.
     
     
     
@@ -403,7 +403,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code evenColor} property as a {@code rgbaf} value.  The {@code evenColor} property specifies the even color.
+    Writes a value for the {@code evenColor} property as a {@code rgbaf} value.  The {@code evenColor} property specifies the even color. If not specified, the default value is white.
     
     
     
@@ -424,7 +424,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code evenColor} property as a {@code rgbaf} value.  The {@code evenColor} property specifies the even color.
+    Writes a value for the {@code evenColor} property as a {@code rgbaf} value.  The {@code evenColor} property specifies the even color. If not specified, the default value is white.
     
     
     
@@ -449,7 +449,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code evenColor} property as a {@code reference} value.  The {@code evenColor} property specifies the even color.
+    Writes a value for the {@code evenColor} property as a {@code reference} value.  The {@code evenColor} property specifies the even color. If not specified, the default value is white.
     
     
 
@@ -468,7 +468,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code evenColor} property as a {@code reference} value.  The {@code evenColor} property specifies the even color.
+    Writes a value for the {@code evenColor} property as a {@code reference} value.  The {@code evenColor} property specifies the even color. If not specified, the default value is white.
     
     
 
@@ -487,7 +487,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code evenColor} property as a {@code reference} value.  The {@code evenColor} property specifies the even color.
+    Writes a value for the {@code evenColor} property as a {@code reference} value.  The {@code evenColor} property specifies the even color. If not specified, the default value is white.
     
     
     
@@ -508,7 +508,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code evenColor} property as a {@code reference} value.  The {@code evenColor} property specifies the even color.
+    Writes a value for the {@code evenColor} property as a {@code reference} value.  The {@code evenColor} property specifies the even color. If not specified, the default value is white.
     
     
     
@@ -528,7 +528,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     }
 
     /**
-    *  Gets the writer for the {@code oddColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code oddColor} property defines the odd color.
+    *  Gets the writer for the {@code oddColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code oddColor} property defines the odd color. If not specified, the default value is black.
     
 
     */
@@ -539,7 +539,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Opens and returns the writer for the {@code oddColor} property.  The {@code oddColor} property defines the odd color.
+    Opens and returns the writer for the {@code oddColor} property.  The {@code oddColor} property defines the odd color. If not specified, the default value is black.
     
 
     */
@@ -551,7 +551,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code oddColor} property as a {@code rgba} value.  The {@code oddColor} property specifies the odd color.
+    Writes a value for the {@code oddColor} property as a {@code rgba} value.  The {@code oddColor} property specifies the odd color. If not specified, the default value is black.
     
     
 
@@ -570,7 +570,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code oddColor} property as a {@code rgba} value.  The {@code oddColor} property specifies the odd color.
+    Writes a value for the {@code oddColor} property as a {@code rgba} value.  The {@code oddColor} property specifies the odd color. If not specified, the default value is black.
     
     
     
@@ -595,7 +595,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code oddColor} property as a {@code rgba} value.  The {@code oddColor} property specifies the odd color.
+    Writes a value for the {@code oddColor} property as a {@code rgba} value.  The {@code oddColor} property specifies the odd color. If not specified, the default value is black.
     
     
     
@@ -616,7 +616,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code oddColor} property as a {@code rgba} value.  The {@code oddColor} property specifies the odd color.
+    Writes a value for the {@code oddColor} property as a {@code rgba} value.  The {@code oddColor} property specifies the odd color. If not specified, the default value is black.
     
     
     
@@ -641,7 +641,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code oddColor} property as a {@code rgbaf} value.  The {@code oddColor} property specifies the odd color.
+    Writes a value for the {@code oddColor} property as a {@code rgbaf} value.  The {@code oddColor} property specifies the odd color. If not specified, the default value is black.
     
     
 
@@ -660,7 +660,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code oddColor} property as a {@code rgbaf} value.  The {@code oddColor} property specifies the odd color.
+    Writes a value for the {@code oddColor} property as a {@code rgbaf} value.  The {@code oddColor} property specifies the odd color. If not specified, the default value is black.
     
     
     
@@ -685,7 +685,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code oddColor} property as a {@code rgbaf} value.  The {@code oddColor} property specifies the odd color.
+    Writes a value for the {@code oddColor} property as a {@code rgbaf} value.  The {@code oddColor} property specifies the odd color. If not specified, the default value is black.
     
     
     
@@ -706,7 +706,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code oddColor} property as a {@code rgbaf} value.  The {@code oddColor} property specifies the odd color.
+    Writes a value for the {@code oddColor} property as a {@code rgbaf} value.  The {@code oddColor} property specifies the odd color. If not specified, the default value is black.
     
     
     
@@ -731,7 +731,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code oddColor} property as a {@code reference} value.  The {@code oddColor} property specifies the odd color.
+    Writes a value for the {@code oddColor} property as a {@code reference} value.  The {@code oddColor} property specifies the odd color. If not specified, the default value is black.
     
     
 
@@ -750,7 +750,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code oddColor} property as a {@code reference} value.  The {@code oddColor} property specifies the odd color.
+    Writes a value for the {@code oddColor} property as a {@code reference} value.  The {@code oddColor} property specifies the odd color. If not specified, the default value is black.
     
     
 
@@ -769,7 +769,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code oddColor} property as a {@code reference} value.  The {@code oddColor} property specifies the odd color.
+    Writes a value for the {@code oddColor} property as a {@code reference} value.  The {@code oddColor} property specifies the odd color. If not specified, the default value is black.
     
     
     
@@ -790,7 +790,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code oddColor} property as a {@code reference} value.  The {@code oddColor} property specifies the odd color.
+    Writes a value for the {@code oddColor} property as a {@code reference} value.  The {@code oddColor} property specifies the odd color. If not specified, the default value is black.
     
     
     
@@ -810,7 +810,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     }
 
     /**
-    *  Gets the writer for the {@code offset} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code offset} property defines the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+    *  Gets the writer for the {@code offset} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code offset} property defines the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between. If not specified, the default value is 0.0.
     
 
     */
@@ -821,7 +821,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Opens and returns the writer for the {@code offset} property.  The {@code offset} property defines the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+    Opens and returns the writer for the {@code offset} property.  The {@code offset} property defines the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between. If not specified, the default value is 0.0.
     
 
     */
@@ -833,7 +833,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code offset} property as a {@code number} value.  The {@code offset} property specifies the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+    Writes a value for the {@code offset} property as a {@code number} value.  The {@code offset} property specifies the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between. If not specified, the default value is 0.0.
     
     
 
@@ -852,7 +852,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code offset} property as a {@code number} value.  The {@code offset} property specifies the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+    Writes a value for the {@code offset} property as a {@code number} value.  The {@code offset} property specifies the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between. If not specified, the default value is 0.0.
     
     
     
@@ -873,7 +873,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code offset} property as a {@code number} value.  The {@code offset} property specifies the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+    Writes a value for the {@code offset} property as a {@code number} value.  The {@code offset} property specifies the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between. If not specified, the default value is 0.0.
     
     
     
@@ -898,7 +898,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code offset} property as a {@code reference} value.  The {@code offset} property specifies the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+    Writes a value for the {@code offset} property as a {@code reference} value.  The {@code offset} property specifies the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between. If not specified, the default value is 0.0.
     
     
 
@@ -917,7 +917,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code offset} property as a {@code reference} value.  The {@code offset} property specifies the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+    Writes a value for the {@code offset} property as a {@code reference} value.  The {@code offset} property specifies the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between. If not specified, the default value is 0.0.
     
     
 
@@ -936,7 +936,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code offset} property as a {@code reference} value.  The {@code offset} property specifies the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+    Writes a value for the {@code offset} property as a {@code reference} value.  The {@code offset} property specifies the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between. If not specified, the default value is 0.0.
     
     
     
@@ -957,7 +957,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code offset} property as a {@code reference} value.  The {@code offset} property specifies the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between.
+    Writes a value for the {@code offset} property as a {@code reference} value.  The {@code offset} property specifies the value indicating where in the pattern to begin drawing, with 0.0 being the beginning of the even color, 1.0 the beginning of the odd color, 2.0 being the even color again, and any multiple or fractional values being in between. If not specified, the default value is 0.0.
     
     
     
@@ -977,7 +977,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     }
 
     /**
-    *  Gets the writer for the {@code repeat} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code repeat} property defines the number of times the stripes repeat.
+    *  Gets the writer for the {@code repeat} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code repeat} property defines the number of times the stripes repeat. If not specified, the default value is 1.0.
     
 
     */
@@ -988,7 +988,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Opens and returns the writer for the {@code repeat} property.  The {@code repeat} property defines the number of times the stripes repeat.
+    Opens and returns the writer for the {@code repeat} property.  The {@code repeat} property defines the number of times the stripes repeat. If not specified, the default value is 1.0.
     
 
     */
@@ -1000,7 +1000,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code repeat} property as a {@code number} value.  The {@code repeat} property specifies the number of times the stripes repeat.
+    Writes a value for the {@code repeat} property as a {@code number} value.  The {@code repeat} property specifies the number of times the stripes repeat. If not specified, the default value is 1.0.
     
     
 
@@ -1019,7 +1019,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code repeat} property as a {@code number} value.  The {@code repeat} property specifies the number of times the stripes repeat.
+    Writes a value for the {@code repeat} property as a {@code number} value.  The {@code repeat} property specifies the number of times the stripes repeat. If not specified, the default value is 1.0.
     
     
     
@@ -1040,7 +1040,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code repeat} property as a {@code number} value.  The {@code repeat} property specifies the number of times the stripes repeat.
+    Writes a value for the {@code repeat} property as a {@code number} value.  The {@code repeat} property specifies the number of times the stripes repeat. If not specified, the default value is 1.0.
     
     
     
@@ -1065,7 +1065,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code repeat} property as a {@code reference} value.  The {@code repeat} property specifies the number of times the stripes repeat.
+    Writes a value for the {@code repeat} property as a {@code reference} value.  The {@code repeat} property specifies the number of times the stripes repeat. If not specified, the default value is 1.0.
     
     
 
@@ -1084,7 +1084,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code repeat} property as a {@code reference} value.  The {@code repeat} property specifies the number of times the stripes repeat.
+    Writes a value for the {@code repeat} property as a {@code reference} value.  The {@code repeat} property specifies the number of times the stripes repeat. If not specified, the default value is 1.0.
     
     
 
@@ -1103,7 +1103,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code repeat} property as a {@code reference} value.  The {@code repeat} property specifies the number of times the stripes repeat.
+    Writes a value for the {@code repeat} property as a {@code reference} value.  The {@code repeat} property specifies the number of times the stripes repeat. If not specified, the default value is 1.0.
     
     
     
@@ -1124,7 +1124,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
 
     /**
     *  
-    Writes a value for the {@code repeat} property as a {@code reference} value.  The {@code repeat} property specifies the number of times the stripes repeat.
+    Writes a value for the {@code repeat} property as a {@code reference} value.  The {@code repeat} property specifies the number of times the stripes repeat. If not specified, the default value is 1.0.
     
     
     

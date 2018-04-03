@@ -150,7 +150,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the path is shown.  If not specified, the default value is {@code true}.
+    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the path is shown. If not specified, the default value is {@code true}.
     
 
     */
@@ -161,7 +161,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code show} property.  The {@code show} property defines whether or not the path is shown.  If not specified, the default value is {@code true}.
+    Opens and returns the writer for the {@code show} property.  The {@code show} property defines whether or not the path is shown. If not specified, the default value is {@code true}.
     
 
     */
@@ -173,7 +173,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code boolean} value.  The {@code show} property specifies whether or not the path is shown.  If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code boolean} value.  The {@code show} property specifies whether or not the path is shown. If not specified, the default value is {@code true}.
     
     
 
@@ -192,7 +192,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the path is shown.  If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the path is shown. If not specified, the default value is {@code true}.
     
     
 
@@ -211,7 +211,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the path is shown.  If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the path is shown. If not specified, the default value is {@code true}.
     
     
 
@@ -230,7 +230,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the path is shown.  If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the path is shown. If not specified, the default value is {@code true}.
     
     
     
@@ -251,7 +251,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the path is shown.  If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the path is shown. If not specified, the default value is {@code true}.
     
     
     
@@ -271,7 +271,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code width} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code width} property defines the width of the path line.  If not specified, the default value is 1.0.
+    *  Gets the writer for the {@code width} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code width} property defines the width of the path line. If not specified, the default value is 1.0.
     
 
     */
@@ -282,7 +282,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code width} property.  The {@code width} property defines the width of the path line.  If not specified, the default value is 1.0.
+    Opens and returns the writer for the {@code width} property.  The {@code width} property defines the width of the path line. If not specified, the default value is 1.0.
     
 
     */
@@ -294,7 +294,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code width} property as a {@code number} value.  The {@code width} property specifies the width of the path line.  If not specified, the default value is 1.0.
+    Writes a value for the {@code width} property as a {@code number} value.  The {@code width} property specifies the width of the path line. If not specified, the default value is 1.0.
     
     
 
@@ -313,7 +313,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code width} property as a {@code number} value.  The {@code width} property specifies the width of the path line.  If not specified, the default value is 1.0.
+    Writes a value for the {@code width} property as a {@code number} value.  The {@code width} property specifies the width of the path line. If not specified, the default value is 1.0.
     
     
     
@@ -334,7 +334,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code width} property as a {@code number} value.  The {@code width} property specifies the width of the path line.  If not specified, the default value is 1.0.
+    Writes a value for the {@code width} property as a {@code number} value.  The {@code width} property specifies the width of the path line. If not specified, the default value is 1.0.
     
     
     
@@ -359,7 +359,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code width} property as a {@code reference} value.  The {@code width} property specifies the width of the path line.  If not specified, the default value is 1.0.
+    Writes a value for the {@code width} property as a {@code reference} value.  The {@code width} property specifies the width of the path line. If not specified, the default value is 1.0.
     
     
 
@@ -378,7 +378,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code width} property as a {@code reference} value.  The {@code width} property specifies the width of the path line.  If not specified, the default value is 1.0.
+    Writes a value for the {@code width} property as a {@code reference} value.  The {@code width} property specifies the width of the path line. If not specified, the default value is 1.0.
     
     
 
@@ -397,7 +397,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code width} property as a {@code reference} value.  The {@code width} property specifies the width of the path line.  If not specified, the default value is 1.0.
+    Writes a value for the {@code width} property as a {@code reference} value.  The {@code width} property specifies the width of the path line. If not specified, the default value is 1.0.
     
     
     
@@ -418,7 +418,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code width} property as a {@code reference} value.  The {@code width} property specifies the width of the path line.  If not specified, the default value is 1.0.
+    Writes a value for the {@code width} property as a {@code reference} value.  The {@code width} property specifies the width of the path line. If not specified, the default value is 1.0.
     
     
     
@@ -438,7 +438,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code resolution} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code resolution} property defines the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path.  If not specified, the default value is 60.0.
+    *  Gets the writer for the {@code resolution} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code resolution} property defines the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
     
 
     */
@@ -449,7 +449,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code resolution} property.  The {@code resolution} property defines the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path.  If not specified, the default value is 60.0.
+    Opens and returns the writer for the {@code resolution} property.  The {@code resolution} property defines the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
     
 
     */
@@ -461,7 +461,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code resolution} property as a {@code number} value.  The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path.  If not specified, the default value is 60.0.
+    Writes a value for the {@code resolution} property as a {@code number} value.  The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
     
     
 
@@ -480,7 +480,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code resolution} property as a {@code number} value.  The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path.  If not specified, the default value is 60.0.
+    Writes a value for the {@code resolution} property as a {@code number} value.  The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
     
     
     
@@ -501,7 +501,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code resolution} property as a {@code number} value.  The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path.  If not specified, the default value is 60.0.
+    Writes a value for the {@code resolution} property as a {@code number} value.  The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
     
     
     
@@ -526,7 +526,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code resolution} property as a {@code reference} value.  The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path.  If not specified, the default value is 60.0.
+    Writes a value for the {@code resolution} property as a {@code reference} value.  The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
     
     
 
@@ -545,7 +545,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code resolution} property as a {@code reference} value.  The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path.  If not specified, the default value is 60.0.
+    Writes a value for the {@code resolution} property as a {@code reference} value.  The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
     
     
 
@@ -564,7 +564,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code resolution} property as a {@code reference} value.  The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path.  If not specified, the default value is 60.0.
+    Writes a value for the {@code resolution} property as a {@code reference} value.  The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
     
     
     
@@ -585,7 +585,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code resolution} property as a {@code reference} value.  The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path.  If not specified, the default value is 60.0.
+    Writes a value for the {@code resolution} property as a {@code reference} value.  The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
     
     
     
@@ -939,7 +939,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code material} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code material} property defines the material to use to draw the path.
+    *  Gets the writer for the {@code material} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code material} property defines the material to use to draw the path. If not specified, the default value is solid white.
     
 
     */
@@ -950,7 +950,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code material} property.  The {@code material} property defines the material to use to draw the path.
+    Opens and returns the writer for the {@code material} property.  The {@code material} property defines the material to use to draw the path. If not specified, the default value is solid white.
     
 
     */

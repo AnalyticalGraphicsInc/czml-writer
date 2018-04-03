@@ -75,7 +75,7 @@ public class SolidColorMaterialCesiumWriter extends CesiumPropertyWriter<SolidCo
     }
 
     /**
-    *  Gets the writer for the {@code color} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code color} property defines the color of the surface.
+    *  Gets the writer for the {@code color} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code color} property defines the color of the surface. If not specified, the default value is white.
     
 
     */
@@ -86,7 +86,7 @@ public class SolidColorMaterialCesiumWriter extends CesiumPropertyWriter<SolidCo
 
     /**
     *  
-    Opens and returns the writer for the {@code color} property.  The {@code color} property defines the color of the surface.
+    Opens and returns the writer for the {@code color} property.  The {@code color} property defines the color of the surface. If not specified, the default value is white.
     
 
     */
@@ -98,7 +98,7 @@ public class SolidColorMaterialCesiumWriter extends CesiumPropertyWriter<SolidCo
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the surface.
+    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
 
@@ -117,7 +117,7 @@ public class SolidColorMaterialCesiumWriter extends CesiumPropertyWriter<SolidCo
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the surface.
+    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
     
@@ -142,7 +142,7 @@ public class SolidColorMaterialCesiumWriter extends CesiumPropertyWriter<SolidCo
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the surface.
+    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
     
@@ -163,7 +163,7 @@ public class SolidColorMaterialCesiumWriter extends CesiumPropertyWriter<SolidCo
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the surface.
+    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
     
@@ -188,7 +188,7 @@ public class SolidColorMaterialCesiumWriter extends CesiumPropertyWriter<SolidCo
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the surface.
+    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
 
@@ -207,7 +207,7 @@ public class SolidColorMaterialCesiumWriter extends CesiumPropertyWriter<SolidCo
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the surface.
+    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
     
@@ -232,7 +232,7 @@ public class SolidColorMaterialCesiumWriter extends CesiumPropertyWriter<SolidCo
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the surface.
+    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
     
@@ -253,7 +253,7 @@ public class SolidColorMaterialCesiumWriter extends CesiumPropertyWriter<SolidCo
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the surface.
+    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
     
@@ -278,7 +278,7 @@ public class SolidColorMaterialCesiumWriter extends CesiumPropertyWriter<SolidCo
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the surface.
+    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
 
@@ -297,7 +297,7 @@ public class SolidColorMaterialCesiumWriter extends CesiumPropertyWriter<SolidCo
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the surface.
+    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
 
@@ -316,7 +316,7 @@ public class SolidColorMaterialCesiumWriter extends CesiumPropertyWriter<SolidCo
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the surface.
+    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
     
@@ -337,7 +337,7 @@ public class SolidColorMaterialCesiumWriter extends CesiumPropertyWriter<SolidCo
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the surface.
+    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
     

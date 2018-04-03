@@ -12,7 +12,7 @@ import javax.annotation.Nonnull;
 
 /**
  *  
- Writes a {@code Color} to a {@link CesiumOutputStream}.  A {@code Color} is a color.  The color can optionally vary over time.
+ Writes a {@code Color} to a {@link CesiumOutputStream}.  A {@code Color} is a color. The color can optionally vary over time.
  
 
  */

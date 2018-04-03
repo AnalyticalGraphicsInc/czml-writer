@@ -176,7 +176,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the polyline is shown.  If not specified, the default value is {@code true}.
+    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the polyline is shown. If not specified, the default value is {@code true}.
     
 
     */
@@ -187,7 +187,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Opens and returns the writer for the {@code show} property.  The {@code show} property defines whether or not the polyline is shown.  If not specified, the default value is {@code true}.
+    Opens and returns the writer for the {@code show} property.  The {@code show} property defines whether or not the polyline is shown. If not specified, the default value is {@code true}.
     
 
     */
@@ -199,7 +199,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code boolean} value.  The {@code show} property specifies whether or not the polyline is shown.  If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code boolean} value.  The {@code show} property specifies whether or not the polyline is shown. If not specified, the default value is {@code true}.
     
     
 
@@ -218,7 +218,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the polyline is shown.  If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the polyline is shown. If not specified, the default value is {@code true}.
     
     
 
@@ -237,7 +237,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the polyline is shown.  If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the polyline is shown. If not specified, the default value is {@code true}.
     
     
 
@@ -256,7 +256,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the polyline is shown.  If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the polyline is shown. If not specified, the default value is {@code true}.
     
     
     
@@ -277,7 +277,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the polyline is shown.  If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the polyline is shown. If not specified, the default value is {@code true}.
     
     
     
@@ -297,7 +297,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code positions} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code positions} property defines the array of positions defining the polyline as a line strip.
+    *  Gets the writer for the {@code positions} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code positions} property defines the array of positions defining the polyline as a line strip. This value is required.
     
 
     */
@@ -308,7 +308,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Opens and returns the writer for the {@code positions} property.  The {@code positions} property defines the array of positions defining the polyline as a line strip.
+    Opens and returns the writer for the {@code positions} property.  The {@code positions} property defines the array of positions defining the polyline as a line strip. This value is required.
     
 
     */
@@ -320,7 +320,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Writes a value for the {@code positions} property as a {@code cartesian} value.  The {@code positions} property specifies the array of positions defining the polyline as a line strip.
+    Writes a value for the {@code positions} property as a {@code cartesian} value.  The {@code positions} property specifies the array of positions defining the polyline as a line strip. This value is required.
     
     
 
@@ -339,7 +339,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Writes a value for the {@code positions} property as a {@code cartographicRadians} value.  The {@code positions} property specifies the array of positions defining the polyline as a line strip.
+    Writes a value for the {@code positions} property as a {@code cartographicRadians} value.  The {@code positions} property specifies the array of positions defining the polyline as a line strip. This value is required.
     
     
 
@@ -358,7 +358,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Writes a value for the {@code positions} property as a {@code cartographicDegrees} value.  The {@code positions} property specifies the array of positions defining the polyline as a line strip.
+    Writes a value for the {@code positions} property as a {@code cartographicDegrees} value.  The {@code positions} property specifies the array of positions defining the polyline as a line strip. This value is required.
     
     
 
@@ -377,7 +377,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Writes a value for the {@code positions} property as a {@code references} value.  The {@code positions} property specifies the array of positions defining the polyline as a line strip.
+    Writes a value for the {@code positions} property as a {@code references} value.  The {@code positions} property specifies the array of positions defining the polyline as a line strip. This value is required.
     
     
 
@@ -395,7 +395,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code width} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code width} property defines the width of the polyline.
+    *  Gets the writer for the {@code width} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code width} property defines the width of the polyline. If not specified, the default value is 1.0.
     
 
     */
@@ -406,7 +406,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Opens and returns the writer for the {@code width} property.  The {@code width} property defines the width of the polyline.
+    Opens and returns the writer for the {@code width} property.  The {@code width} property defines the width of the polyline. If not specified, the default value is 1.0.
     
 
     */
@@ -418,7 +418,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Writes a value for the {@code width} property as a {@code number} value.  The {@code width} property specifies the width of the polyline.
+    Writes a value for the {@code width} property as a {@code number} value.  The {@code width} property specifies the width of the polyline. If not specified, the default value is 1.0.
     
     
 
@@ -437,7 +437,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Writes a value for the {@code width} property as a {@code number} value.  The {@code width} property specifies the width of the polyline.
+    Writes a value for the {@code width} property as a {@code number} value.  The {@code width} property specifies the width of the polyline. If not specified, the default value is 1.0.
     
     
     
@@ -458,7 +458,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Writes a value for the {@code width} property as a {@code number} value.  The {@code width} property specifies the width of the polyline.
+    Writes a value for the {@code width} property as a {@code number} value.  The {@code width} property specifies the width of the polyline. If not specified, the default value is 1.0.
     
     
     
@@ -483,7 +483,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Writes a value for the {@code width} property as a {@code reference} value.  The {@code width} property specifies the width of the polyline.
+    Writes a value for the {@code width} property as a {@code reference} value.  The {@code width} property specifies the width of the polyline. If not specified, the default value is 1.0.
     
     
 
@@ -502,7 +502,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Writes a value for the {@code width} property as a {@code reference} value.  The {@code width} property specifies the width of the polyline.
+    Writes a value for the {@code width} property as a {@code reference} value.  The {@code width} property specifies the width of the polyline. If not specified, the default value is 1.0.
     
     
 
@@ -521,7 +521,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Writes a value for the {@code width} property as a {@code reference} value.  The {@code width} property specifies the width of the polyline.
+    Writes a value for the {@code width} property as a {@code reference} value.  The {@code width} property specifies the width of the polyline. If not specified, the default value is 1.0.
     
     
     
@@ -542,7 +542,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Writes a value for the {@code width} property as a {@code reference} value.  The {@code width} property specifies the width of the polyline.
+    Writes a value for the {@code width} property as a {@code reference} value.  The {@code width} property specifies the width of the polyline. If not specified, the default value is 1.0.
     
     
     
@@ -562,7 +562,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code granularity} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code granularity} property defines the sampling distance, in radians.
+    *  Gets the writer for the {@code granularity} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code granularity} property defines the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
 
     */
@@ -573,7 +573,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Opens and returns the writer for the {@code granularity} property.  The {@code granularity} property defines the sampling distance, in radians.
+    Opens and returns the writer for the {@code granularity} property.  The {@code granularity} property defines the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
 
     */
@@ -585,7 +585,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Writes a value for the {@code granularity} property as a {@code number} value.  The {@code granularity} property specifies the sampling distance, in radians.
+    Writes a value for the {@code granularity} property as a {@code number} value.  The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
     
 
@@ -604,7 +604,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Writes a value for the {@code granularity} property as a {@code number} value.  The {@code granularity} property specifies the sampling distance, in radians.
+    Writes a value for the {@code granularity} property as a {@code number} value.  The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
     
     
@@ -625,7 +625,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Writes a value for the {@code granularity} property as a {@code number} value.  The {@code granularity} property specifies the sampling distance, in radians.
+    Writes a value for the {@code granularity} property as a {@code number} value.  The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
     
     
@@ -650,7 +650,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Writes a value for the {@code granularity} property as a {@code reference} value.  The {@code granularity} property specifies the sampling distance, in radians.
+    Writes a value for the {@code granularity} property as a {@code reference} value.  The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
     
 
@@ -669,7 +669,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Writes a value for the {@code granularity} property as a {@code reference} value.  The {@code granularity} property specifies the sampling distance, in radians.
+    Writes a value for the {@code granularity} property as a {@code reference} value.  The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
     
 
@@ -688,7 +688,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Writes a value for the {@code granularity} property as a {@code reference} value.  The {@code granularity} property specifies the sampling distance, in radians.
+    Writes a value for the {@code granularity} property as a {@code reference} value.  The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
     
     
@@ -709,7 +709,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Writes a value for the {@code granularity} property as a {@code reference} value.  The {@code granularity} property specifies the sampling distance, in radians.
+    Writes a value for the {@code granularity} property as a {@code reference} value.  The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
     
     
@@ -729,7 +729,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code material} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code material} property defines the material to use to draw the polyline.
+    *  Gets the writer for the {@code material} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code material} property defines the material to use to draw the polyline. If not specified, the default value is solid white.
     
 
     */
@@ -740,7 +740,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Opens and returns the writer for the {@code material} property.  The {@code material} property defines the material to use to draw the polyline.
+    Opens and returns the writer for the {@code material} property.  The {@code material} property defines the material to use to draw the polyline. If not specified, the default value is solid white.
     
 
     */
@@ -751,7 +751,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code followSurface} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code followSurface} property defines whether or not the positions are connected as great arcs (the default) or as straight lines.  If not specified, the default value is {@code true}.
+    *  Gets the writer for the {@code followSurface} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code followSurface} property defines whether or not the positions are connected as great arcs (the default) or as straight lines. If not specified, the default value is {@code true}.
     
 
     */
@@ -762,7 +762,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Opens and returns the writer for the {@code followSurface} property.  The {@code followSurface} property defines whether or not the positions are connected as great arcs (the default) or as straight lines.  If not specified, the default value is {@code true}.
+    Opens and returns the writer for the {@code followSurface} property.  The {@code followSurface} property defines whether or not the positions are connected as great arcs (the default) or as straight lines. If not specified, the default value is {@code true}.
     
 
     */
@@ -774,7 +774,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Writes a value for the {@code followSurface} property as a {@code boolean} value.  The {@code followSurface} property specifies whether or not the positions are connected as great arcs (the default) or as straight lines.  If not specified, the default value is {@code true}.
+    Writes a value for the {@code followSurface} property as a {@code boolean} value.  The {@code followSurface} property specifies whether or not the positions are connected as great arcs (the default) or as straight lines. If not specified, the default value is {@code true}.
     
     
 
@@ -793,7 +793,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Writes a value for the {@code followSurface} property as a {@code reference} value.  The {@code followSurface} property specifies whether or not the positions are connected as great arcs (the default) or as straight lines.  If not specified, the default value is {@code true}.
+    Writes a value for the {@code followSurface} property as a {@code reference} value.  The {@code followSurface} property specifies whether or not the positions are connected as great arcs (the default) or as straight lines. If not specified, the default value is {@code true}.
     
     
 
@@ -812,7 +812,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Writes a value for the {@code followSurface} property as a {@code reference} value.  The {@code followSurface} property specifies whether or not the positions are connected as great arcs (the default) or as straight lines.  If not specified, the default value is {@code true}.
+    Writes a value for the {@code followSurface} property as a {@code reference} value.  The {@code followSurface} property specifies whether or not the positions are connected as great arcs (the default) or as straight lines. If not specified, the default value is {@code true}.
     
     
 
@@ -831,7 +831,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Writes a value for the {@code followSurface} property as a {@code reference} value.  The {@code followSurface} property specifies whether or not the positions are connected as great arcs (the default) or as straight lines.  If not specified, the default value is {@code true}.
+    Writes a value for the {@code followSurface} property as a {@code reference} value.  The {@code followSurface} property specifies whether or not the positions are connected as great arcs (the default) or as straight lines. If not specified, the default value is {@code true}.
     
     
     
@@ -852,7 +852,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Writes a value for the {@code followSurface} property as a {@code reference} value.  The {@code followSurface} property specifies whether or not the positions are connected as great arcs (the default) or as straight lines.  If not specified, the default value is {@code true}.
+    Writes a value for the {@code followSurface} property as a {@code reference} value.  The {@code followSurface} property specifies whether or not the positions are connected as great arcs (the default) or as straight lines. If not specified, the default value is {@code true}.
     
     
     
@@ -872,7 +872,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code shadows} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code shadows} property defines whether or not the polyline casts or receives shadows.  If not specified, the default value is DISABLED.
+    *  Gets the writer for the {@code shadows} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code shadows} property defines whether or not the polyline casts or receives shadows. If not specified, the default value is DISABLED.
     
 
     */
@@ -883,7 +883,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Opens and returns the writer for the {@code shadows} property.  The {@code shadows} property defines whether or not the polyline casts or receives shadows.  If not specified, the default value is DISABLED.
+    Opens and returns the writer for the {@code shadows} property.  The {@code shadows} property defines whether or not the polyline casts or receives shadows. If not specified, the default value is DISABLED.
     
 
     */
@@ -895,7 +895,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Writes a value for the {@code shadows} property as a {@code shadowMode} value.  The {@code shadows} property specifies whether or not the polyline casts or receives shadows.  If not specified, the default value is DISABLED.
+    Writes a value for the {@code shadows} property as a {@code shadowMode} value.  The {@code shadows} property specifies whether or not the polyline casts or receives shadows. If not specified, the default value is DISABLED.
     
     
 
@@ -914,7 +914,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Writes a value for the {@code shadows} property as a {@code reference} value.  The {@code shadows} property specifies whether or not the polyline casts or receives shadows.  If not specified, the default value is DISABLED.
+    Writes a value for the {@code shadows} property as a {@code reference} value.  The {@code shadows} property specifies whether or not the polyline casts or receives shadows. If not specified, the default value is DISABLED.
     
     
 
@@ -933,7 +933,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Writes a value for the {@code shadows} property as a {@code reference} value.  The {@code shadows} property specifies whether or not the polyline casts or receives shadows.  If not specified, the default value is DISABLED.
+    Writes a value for the {@code shadows} property as a {@code reference} value.  The {@code shadows} property specifies whether or not the polyline casts or receives shadows. If not specified, the default value is DISABLED.
     
     
 
@@ -952,7 +952,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Writes a value for the {@code shadows} property as a {@code reference} value.  The {@code shadows} property specifies whether or not the polyline casts or receives shadows.  If not specified, the default value is DISABLED.
+    Writes a value for the {@code shadows} property as a {@code reference} value.  The {@code shadows} property specifies whether or not the polyline casts or receives shadows. If not specified, the default value is DISABLED.
     
     
     
@@ -973,7 +973,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Writes a value for the {@code shadows} property as a {@code reference} value.  The {@code shadows} property specifies whether or not the polyline casts or receives shadows.  If not specified, the default value is DISABLED.
+    Writes a value for the {@code shadows} property as a {@code reference} value.  The {@code shadows} property specifies whether or not the polyline casts or receives shadows. If not specified, the default value is DISABLED.
     
     
     

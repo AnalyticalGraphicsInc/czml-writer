@@ -127,7 +127,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     }
 
     /**
-    *  Gets the writer for the {@code color} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code color} property defines the color of the surface.
+    *  Gets the writer for the {@code color} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code color} property defines the color of the surface. If not specified, the default value is white.
     
 
     */
@@ -138,7 +138,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Opens and returns the writer for the {@code color} property.  The {@code color} property defines the color of the surface.
+    Opens and returns the writer for the {@code color} property.  The {@code color} property defines the color of the surface. If not specified, the default value is white.
     
 
     */
@@ -150,7 +150,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the surface.
+    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
 
@@ -169,7 +169,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the surface.
+    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
     
@@ -194,7 +194,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the surface.
+    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
     
@@ -215,7 +215,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the surface.
+    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
     
@@ -240,7 +240,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the surface.
+    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
 
@@ -259,7 +259,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the surface.
+    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
     
@@ -284,7 +284,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the surface.
+    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
     
@@ -305,7 +305,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the surface.
+    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
     
@@ -330,7 +330,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the surface.
+    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
 
@@ -349,7 +349,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the surface.
+    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
 
@@ -368,7 +368,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the surface.
+    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
     
@@ -389,7 +389,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the surface.
+    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
     
@@ -409,7 +409,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     }
 
     /**
-    *  Gets the writer for the {@code cellAlpha} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code cellAlpha} property defines the alpha value for the space between grid lines.  This will be combined with the color alpha.
+    *  Gets the writer for the {@code cellAlpha} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code cellAlpha} property defines the alpha value for the space between grid lines. This will be combined with the color alpha. If not specified, the default value is 0.1.
     
 
     */
@@ -420,7 +420,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Opens and returns the writer for the {@code cellAlpha} property.  The {@code cellAlpha} property defines the alpha value for the space between grid lines.  This will be combined with the color alpha.
+    Opens and returns the writer for the {@code cellAlpha} property.  The {@code cellAlpha} property defines the alpha value for the space between grid lines. This will be combined with the color alpha. If not specified, the default value is 0.1.
     
 
     */
@@ -432,7 +432,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code cellAlpha} property as a {@code number} value.  The {@code cellAlpha} property specifies the alpha value for the space between grid lines.  This will be combined with the color alpha.
+    Writes a value for the {@code cellAlpha} property as a {@code number} value.  The {@code cellAlpha} property specifies the alpha value for the space between grid lines. This will be combined with the color alpha. If not specified, the default value is 0.1.
     
     
 
@@ -451,7 +451,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code cellAlpha} property as a {@code number} value.  The {@code cellAlpha} property specifies the alpha value for the space between grid lines.  This will be combined with the color alpha.
+    Writes a value for the {@code cellAlpha} property as a {@code number} value.  The {@code cellAlpha} property specifies the alpha value for the space between grid lines. This will be combined with the color alpha. If not specified, the default value is 0.1.
     
     
     
@@ -472,7 +472,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code cellAlpha} property as a {@code number} value.  The {@code cellAlpha} property specifies the alpha value for the space between grid lines.  This will be combined with the color alpha.
+    Writes a value for the {@code cellAlpha} property as a {@code number} value.  The {@code cellAlpha} property specifies the alpha value for the space between grid lines. This will be combined with the color alpha. If not specified, the default value is 0.1.
     
     
     
@@ -497,7 +497,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code cellAlpha} property as a {@code reference} value.  The {@code cellAlpha} property specifies the alpha value for the space between grid lines.  This will be combined with the color alpha.
+    Writes a value for the {@code cellAlpha} property as a {@code reference} value.  The {@code cellAlpha} property specifies the alpha value for the space between grid lines. This will be combined with the color alpha. If not specified, the default value is 0.1.
     
     
 
@@ -516,7 +516,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code cellAlpha} property as a {@code reference} value.  The {@code cellAlpha} property specifies the alpha value for the space between grid lines.  This will be combined with the color alpha.
+    Writes a value for the {@code cellAlpha} property as a {@code reference} value.  The {@code cellAlpha} property specifies the alpha value for the space between grid lines. This will be combined with the color alpha. If not specified, the default value is 0.1.
     
     
 
@@ -535,7 +535,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code cellAlpha} property as a {@code reference} value.  The {@code cellAlpha} property specifies the alpha value for the space between grid lines.  This will be combined with the color alpha.
+    Writes a value for the {@code cellAlpha} property as a {@code reference} value.  The {@code cellAlpha} property specifies the alpha value for the space between grid lines. This will be combined with the color alpha. If not specified, the default value is 0.1.
     
     
     
@@ -556,7 +556,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code cellAlpha} property as a {@code reference} value.  The {@code cellAlpha} property specifies the alpha value for the space between grid lines.  This will be combined with the color alpha.
+    Writes a value for the {@code cellAlpha} property as a {@code reference} value.  The {@code cellAlpha} property specifies the alpha value for the space between grid lines. This will be combined with the color alpha. If not specified, the default value is 0.1.
     
     
     
@@ -576,7 +576,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     }
 
     /**
-    *  Gets the writer for the {@code lineCount} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code lineCount} property defines the number of grid lines along each axis.
+    *  Gets the writer for the {@code lineCount} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code lineCount} property defines the number of grid lines along each axis. If not specified, the default value is [8, 8].
     
 
     */
@@ -587,7 +587,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Opens and returns the writer for the {@code lineCount} property.  The {@code lineCount} property defines the number of grid lines along each axis.
+    Opens and returns the writer for the {@code lineCount} property.  The {@code lineCount} property defines the number of grid lines along each axis. If not specified, the default value is [8, 8].
     
 
     */
@@ -599,7 +599,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code lineCount} property as a {@code cartesian2} value.  The {@code lineCount} property specifies the number of grid lines along each axis.
+    Writes a value for the {@code lineCount} property as a {@code cartesian2} value.  The {@code lineCount} property specifies the number of grid lines along each axis. If not specified, the default value is [8, 8].
     
     
 
@@ -618,7 +618,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code lineCount} property as a {@code cartesian2} value.  The {@code lineCount} property specifies the number of grid lines along each axis.
+    Writes a value for the {@code lineCount} property as a {@code cartesian2} value.  The {@code lineCount} property specifies the number of grid lines along each axis. If not specified, the default value is [8, 8].
     
     
     
@@ -639,7 +639,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code lineCount} property as a {@code cartesian2} value.  The {@code lineCount} property specifies the number of grid lines along each axis.
+    Writes a value for the {@code lineCount} property as a {@code cartesian2} value.  The {@code lineCount} property specifies the number of grid lines along each axis. If not specified, the default value is [8, 8].
     
     
     
@@ -660,7 +660,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code lineCount} property as a {@code cartesian2} value.  The {@code lineCount} property specifies the number of grid lines along each axis.
+    Writes a value for the {@code lineCount} property as a {@code cartesian2} value.  The {@code lineCount} property specifies the number of grid lines along each axis. If not specified, the default value is [8, 8].
     
     
     
@@ -685,7 +685,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code lineCount} property as a {@code reference} value.  The {@code lineCount} property specifies the number of grid lines along each axis.
+    Writes a value for the {@code lineCount} property as a {@code reference} value.  The {@code lineCount} property specifies the number of grid lines along each axis. If not specified, the default value is [8, 8].
     
     
 
@@ -704,7 +704,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code lineCount} property as a {@code reference} value.  The {@code lineCount} property specifies the number of grid lines along each axis.
+    Writes a value for the {@code lineCount} property as a {@code reference} value.  The {@code lineCount} property specifies the number of grid lines along each axis. If not specified, the default value is [8, 8].
     
     
 
@@ -723,7 +723,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code lineCount} property as a {@code reference} value.  The {@code lineCount} property specifies the number of grid lines along each axis.
+    Writes a value for the {@code lineCount} property as a {@code reference} value.  The {@code lineCount} property specifies the number of grid lines along each axis. If not specified, the default value is [8, 8].
     
     
     
@@ -744,7 +744,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code lineCount} property as a {@code reference} value.  The {@code lineCount} property specifies the number of grid lines along each axis.
+    Writes a value for the {@code lineCount} property as a {@code reference} value.  The {@code lineCount} property specifies the number of grid lines along each axis. If not specified, the default value is [8, 8].
     
     
     
@@ -764,7 +764,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     }
 
     /**
-    *  Gets the writer for the {@code lineThickness} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code lineThickness} property defines the thickness of grid lines along each axis, in pixels.
+    *  Gets the writer for the {@code lineThickness} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code lineThickness} property defines the thickness of grid lines along each axis, in pixels. If not specified, the default value is [1.0, 1.0].
     
 
     */
@@ -775,7 +775,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Opens and returns the writer for the {@code lineThickness} property.  The {@code lineThickness} property defines the thickness of grid lines along each axis, in pixels.
+    Opens and returns the writer for the {@code lineThickness} property.  The {@code lineThickness} property defines the thickness of grid lines along each axis, in pixels. If not specified, the default value is [1.0, 1.0].
     
 
     */
@@ -787,7 +787,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code lineThickness} property as a {@code cartesian2} value.  The {@code lineThickness} property specifies the thickness of grid lines along each axis, in pixels.
+    Writes a value for the {@code lineThickness} property as a {@code cartesian2} value.  The {@code lineThickness} property specifies the thickness of grid lines along each axis, in pixels. If not specified, the default value is [1.0, 1.0].
     
     
 
@@ -806,7 +806,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code lineThickness} property as a {@code cartesian2} value.  The {@code lineThickness} property specifies the thickness of grid lines along each axis, in pixels.
+    Writes a value for the {@code lineThickness} property as a {@code cartesian2} value.  The {@code lineThickness} property specifies the thickness of grid lines along each axis, in pixels. If not specified, the default value is [1.0, 1.0].
     
     
     
@@ -827,7 +827,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code lineThickness} property as a {@code cartesian2} value.  The {@code lineThickness} property specifies the thickness of grid lines along each axis, in pixels.
+    Writes a value for the {@code lineThickness} property as a {@code cartesian2} value.  The {@code lineThickness} property specifies the thickness of grid lines along each axis, in pixels. If not specified, the default value is [1.0, 1.0].
     
     
     
@@ -848,7 +848,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code lineThickness} property as a {@code cartesian2} value.  The {@code lineThickness} property specifies the thickness of grid lines along each axis, in pixels.
+    Writes a value for the {@code lineThickness} property as a {@code cartesian2} value.  The {@code lineThickness} property specifies the thickness of grid lines along each axis, in pixels. If not specified, the default value is [1.0, 1.0].
     
     
     
@@ -873,7 +873,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code lineThickness} property as a {@code reference} value.  The {@code lineThickness} property specifies the thickness of grid lines along each axis, in pixels.
+    Writes a value for the {@code lineThickness} property as a {@code reference} value.  The {@code lineThickness} property specifies the thickness of grid lines along each axis, in pixels. If not specified, the default value is [1.0, 1.0].
     
     
 
@@ -892,7 +892,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code lineThickness} property as a {@code reference} value.  The {@code lineThickness} property specifies the thickness of grid lines along each axis, in pixels.
+    Writes a value for the {@code lineThickness} property as a {@code reference} value.  The {@code lineThickness} property specifies the thickness of grid lines along each axis, in pixels. If not specified, the default value is [1.0, 1.0].
     
     
 
@@ -911,7 +911,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code lineThickness} property as a {@code reference} value.  The {@code lineThickness} property specifies the thickness of grid lines along each axis, in pixels.
+    Writes a value for the {@code lineThickness} property as a {@code reference} value.  The {@code lineThickness} property specifies the thickness of grid lines along each axis, in pixels. If not specified, the default value is [1.0, 1.0].
     
     
     
@@ -932,7 +932,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code lineThickness} property as a {@code reference} value.  The {@code lineThickness} property specifies the thickness of grid lines along each axis, in pixels.
+    Writes a value for the {@code lineThickness} property as a {@code reference} value.  The {@code lineThickness} property specifies the thickness of grid lines along each axis, in pixels. If not specified, the default value is [1.0, 1.0].
     
     
     
@@ -952,7 +952,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     }
 
     /**
-    *  Gets the writer for the {@code lineOffset} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code lineOffset} property defines the offset of grid lines along each axis, as a percentage from 0 to 1.
+    *  Gets the writer for the {@code lineOffset} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code lineOffset} property defines the offset of grid lines along each axis, as a percentage from 0 to 1. If not specified, the default value is [0.0, 0.0].
     
 
     */
@@ -963,7 +963,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Opens and returns the writer for the {@code lineOffset} property.  The {@code lineOffset} property defines the offset of grid lines along each axis, as a percentage from 0 to 1.
+    Opens and returns the writer for the {@code lineOffset} property.  The {@code lineOffset} property defines the offset of grid lines along each axis, as a percentage from 0 to 1. If not specified, the default value is [0.0, 0.0].
     
 
     */
@@ -975,7 +975,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code lineOffset} property as a {@code cartesian2} value.  The {@code lineOffset} property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
+    Writes a value for the {@code lineOffset} property as a {@code cartesian2} value.  The {@code lineOffset} property specifies the offset of grid lines along each axis, as a percentage from 0 to 1. If not specified, the default value is [0.0, 0.0].
     
     
 
@@ -994,7 +994,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code lineOffset} property as a {@code cartesian2} value.  The {@code lineOffset} property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
+    Writes a value for the {@code lineOffset} property as a {@code cartesian2} value.  The {@code lineOffset} property specifies the offset of grid lines along each axis, as a percentage from 0 to 1. If not specified, the default value is [0.0, 0.0].
     
     
     
@@ -1015,7 +1015,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code lineOffset} property as a {@code cartesian2} value.  The {@code lineOffset} property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
+    Writes a value for the {@code lineOffset} property as a {@code cartesian2} value.  The {@code lineOffset} property specifies the offset of grid lines along each axis, as a percentage from 0 to 1. If not specified, the default value is [0.0, 0.0].
     
     
     
@@ -1036,7 +1036,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code lineOffset} property as a {@code cartesian2} value.  The {@code lineOffset} property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
+    Writes a value for the {@code lineOffset} property as a {@code cartesian2} value.  The {@code lineOffset} property specifies the offset of grid lines along each axis, as a percentage from 0 to 1. If not specified, the default value is [0.0, 0.0].
     
     
     
@@ -1061,7 +1061,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code lineOffset} property as a {@code reference} value.  The {@code lineOffset} property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
+    Writes a value for the {@code lineOffset} property as a {@code reference} value.  The {@code lineOffset} property specifies the offset of grid lines along each axis, as a percentage from 0 to 1. If not specified, the default value is [0.0, 0.0].
     
     
 
@@ -1080,7 +1080,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code lineOffset} property as a {@code reference} value.  The {@code lineOffset} property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
+    Writes a value for the {@code lineOffset} property as a {@code reference} value.  The {@code lineOffset} property specifies the offset of grid lines along each axis, as a percentage from 0 to 1. If not specified, the default value is [0.0, 0.0].
     
     
 
@@ -1099,7 +1099,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code lineOffset} property as a {@code reference} value.  The {@code lineOffset} property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
+    Writes a value for the {@code lineOffset} property as a {@code reference} value.  The {@code lineOffset} property specifies the offset of grid lines along each axis, as a percentage from 0 to 1. If not specified, the default value is [0.0, 0.0].
     
     
     
@@ -1120,7 +1120,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
 
     /**
     *  
-    Writes a value for the {@code lineOffset} property as a {@code reference} value.  The {@code lineOffset} property specifies the offset of grid lines along each axis, as a percentage from 0 to 1.
+    Writes a value for the {@code lineOffset} property as a {@code reference} value.  The {@code lineOffset} property specifies the offset of grid lines along each axis, as a percentage from 0 to 1. If not specified, the default value is [0.0, 0.0].
     
     
     

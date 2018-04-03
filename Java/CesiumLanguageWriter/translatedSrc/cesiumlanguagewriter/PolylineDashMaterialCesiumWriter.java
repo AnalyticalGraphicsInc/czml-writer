@@ -113,7 +113,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  Gets the writer for the {@code color} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code color} property defines the color of the dashes on the line.
+    *  Gets the writer for the {@code color} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code color} property defines the color of the dashes on the line. If not specified, the default value is white.
     
 
     */
@@ -124,7 +124,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Opens and returns the writer for the {@code color} property.  The {@code color} property defines the color of the dashes on the line.
+    Opens and returns the writer for the {@code color} property.  The {@code color} property defines the color of the dashes on the line. If not specified, the default value is white.
     
 
     */
@@ -136,7 +136,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the dashes on the line.
+    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the dashes on the line. If not specified, the default value is white.
     
     
 
@@ -155,7 +155,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the dashes on the line.
+    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the dashes on the line. If not specified, the default value is white.
     
     
     
@@ -180,7 +180,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the dashes on the line.
+    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the dashes on the line. If not specified, the default value is white.
     
     
     
@@ -201,7 +201,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the dashes on the line.
+    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the dashes on the line. If not specified, the default value is white.
     
     
     
@@ -226,7 +226,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the dashes on the line.
+    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the dashes on the line. If not specified, the default value is white.
     
     
 
@@ -245,7 +245,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the dashes on the line.
+    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the dashes on the line. If not specified, the default value is white.
     
     
     
@@ -270,7 +270,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the dashes on the line.
+    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the dashes on the line. If not specified, the default value is white.
     
     
     
@@ -291,7 +291,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the dashes on the line.
+    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the dashes on the line. If not specified, the default value is white.
     
     
     
@@ -316,7 +316,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the dashes on the line.
+    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the dashes on the line. If not specified, the default value is white.
     
     
 
@@ -335,7 +335,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the dashes on the line.
+    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the dashes on the line. If not specified, the default value is white.
     
     
 
@@ -354,7 +354,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the dashes on the line.
+    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the dashes on the line. If not specified, the default value is white.
     
     
     
@@ -375,7 +375,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the dashes on the line.
+    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the dashes on the line. If not specified, the default value is white.
     
     
     
@@ -395,7 +395,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  Gets the writer for the {@code gapColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code gapColor} property defines the color of the gaps between dashes on the line.  The default is transparent.
+    *  Gets the writer for the {@code gapColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code gapColor} property defines the color of the gaps between dashes on the line. If not specified, the default value is transparent.
     
 
     */
@@ -406,7 +406,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Opens and returns the writer for the {@code gapColor} property.  The {@code gapColor} property defines the color of the gaps between dashes on the line.  The default is transparent.
+    Opens and returns the writer for the {@code gapColor} property.  The {@code gapColor} property defines the color of the gaps between dashes on the line. If not specified, the default value is transparent.
     
 
     */
@@ -418,7 +418,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code gapColor} property as a {@code rgba} value.  The {@code gapColor} property specifies the color of the gaps between dashes on the line.  The default is transparent.
+    Writes a value for the {@code gapColor} property as a {@code rgba} value.  The {@code gapColor} property specifies the color of the gaps between dashes on the line. If not specified, the default value is transparent.
     
     
 
@@ -437,7 +437,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code gapColor} property as a {@code rgba} value.  The {@code gapColor} property specifies the color of the gaps between dashes on the line.  The default is transparent.
+    Writes a value for the {@code gapColor} property as a {@code rgba} value.  The {@code gapColor} property specifies the color of the gaps between dashes on the line. If not specified, the default value is transparent.
     
     
     
@@ -462,7 +462,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code gapColor} property as a {@code rgba} value.  The {@code gapColor} property specifies the color of the gaps between dashes on the line.  The default is transparent.
+    Writes a value for the {@code gapColor} property as a {@code rgba} value.  The {@code gapColor} property specifies the color of the gaps between dashes on the line. If not specified, the default value is transparent.
     
     
     
@@ -483,7 +483,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code gapColor} property as a {@code rgba} value.  The {@code gapColor} property specifies the color of the gaps between dashes on the line.  The default is transparent.
+    Writes a value for the {@code gapColor} property as a {@code rgba} value.  The {@code gapColor} property specifies the color of the gaps between dashes on the line. If not specified, the default value is transparent.
     
     
     
@@ -508,7 +508,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code gapColor} property as a {@code rgbaf} value.  The {@code gapColor} property specifies the color of the gaps between dashes on the line.  The default is transparent.
+    Writes a value for the {@code gapColor} property as a {@code rgbaf} value.  The {@code gapColor} property specifies the color of the gaps between dashes on the line. If not specified, the default value is transparent.
     
     
 
@@ -527,7 +527,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code gapColor} property as a {@code rgbaf} value.  The {@code gapColor} property specifies the color of the gaps between dashes on the line.  The default is transparent.
+    Writes a value for the {@code gapColor} property as a {@code rgbaf} value.  The {@code gapColor} property specifies the color of the gaps between dashes on the line. If not specified, the default value is transparent.
     
     
     
@@ -552,7 +552,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code gapColor} property as a {@code rgbaf} value.  The {@code gapColor} property specifies the color of the gaps between dashes on the line.  The default is transparent.
+    Writes a value for the {@code gapColor} property as a {@code rgbaf} value.  The {@code gapColor} property specifies the color of the gaps between dashes on the line. If not specified, the default value is transparent.
     
     
     
@@ -573,7 +573,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code gapColor} property as a {@code rgbaf} value.  The {@code gapColor} property specifies the color of the gaps between dashes on the line.  The default is transparent.
+    Writes a value for the {@code gapColor} property as a {@code rgbaf} value.  The {@code gapColor} property specifies the color of the gaps between dashes on the line. If not specified, the default value is transparent.
     
     
     
@@ -598,7 +598,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code gapColor} property as a {@code reference} value.  The {@code gapColor} property specifies the color of the gaps between dashes on the line.  The default is transparent.
+    Writes a value for the {@code gapColor} property as a {@code reference} value.  The {@code gapColor} property specifies the color of the gaps between dashes on the line. If not specified, the default value is transparent.
     
     
 
@@ -617,7 +617,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code gapColor} property as a {@code reference} value.  The {@code gapColor} property specifies the color of the gaps between dashes on the line.  The default is transparent.
+    Writes a value for the {@code gapColor} property as a {@code reference} value.  The {@code gapColor} property specifies the color of the gaps between dashes on the line. If not specified, the default value is transparent.
     
     
 
@@ -636,7 +636,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code gapColor} property as a {@code reference} value.  The {@code gapColor} property specifies the color of the gaps between dashes on the line.  The default is transparent.
+    Writes a value for the {@code gapColor} property as a {@code reference} value.  The {@code gapColor} property specifies the color of the gaps between dashes on the line. If not specified, the default value is transparent.
     
     
     
@@ -657,7 +657,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code gapColor} property as a {@code reference} value.  The {@code gapColor} property specifies the color of the gaps between dashes on the line.  The default is transparent.
+    Writes a value for the {@code gapColor} property as a {@code reference} value.  The {@code gapColor} property specifies the color of the gaps between dashes on the line. If not specified, the default value is transparent.
     
     
     
@@ -677,7 +677,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  Gets the writer for the {@code dashLength} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code dashLength} property defines the length in screen-space pixels of a single dash and gap pattern.  If not specified, the default value is 16.
+    *  Gets the writer for the {@code dashLength} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code dashLength} property defines the length in screen-space pixels of a single dash and gap pattern. If not specified, the default value is 16.0.
     
 
     */
@@ -688,7 +688,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Opens and returns the writer for the {@code dashLength} property.  The {@code dashLength} property defines the length in screen-space pixels of a single dash and gap pattern.  If not specified, the default value is 16.
+    Opens and returns the writer for the {@code dashLength} property.  The {@code dashLength} property defines the length in screen-space pixels of a single dash and gap pattern. If not specified, the default value is 16.0.
     
 
     */
@@ -700,7 +700,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code dashLength} property as a {@code number} value.  The {@code dashLength} property specifies the length in screen-space pixels of a single dash and gap pattern.  If not specified, the default value is 16.
+    Writes a value for the {@code dashLength} property as a {@code number} value.  The {@code dashLength} property specifies the length in screen-space pixels of a single dash and gap pattern. If not specified, the default value is 16.0.
     
     
 
@@ -719,7 +719,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code dashLength} property as a {@code number} value.  The {@code dashLength} property specifies the length in screen-space pixels of a single dash and gap pattern.  If not specified, the default value is 16.
+    Writes a value for the {@code dashLength} property as a {@code number} value.  The {@code dashLength} property specifies the length in screen-space pixels of a single dash and gap pattern. If not specified, the default value is 16.0.
     
     
     
@@ -740,7 +740,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code dashLength} property as a {@code number} value.  The {@code dashLength} property specifies the length in screen-space pixels of a single dash and gap pattern.  If not specified, the default value is 16.
+    Writes a value for the {@code dashLength} property as a {@code number} value.  The {@code dashLength} property specifies the length in screen-space pixels of a single dash and gap pattern. If not specified, the default value is 16.0.
     
     
     
@@ -765,7 +765,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code dashLength} property as a {@code reference} value.  The {@code dashLength} property specifies the length in screen-space pixels of a single dash and gap pattern.  If not specified, the default value is 16.
+    Writes a value for the {@code dashLength} property as a {@code reference} value.  The {@code dashLength} property specifies the length in screen-space pixels of a single dash and gap pattern. If not specified, the default value is 16.0.
     
     
 
@@ -784,7 +784,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code dashLength} property as a {@code reference} value.  The {@code dashLength} property specifies the length in screen-space pixels of a single dash and gap pattern.  If not specified, the default value is 16.
+    Writes a value for the {@code dashLength} property as a {@code reference} value.  The {@code dashLength} property specifies the length in screen-space pixels of a single dash and gap pattern. If not specified, the default value is 16.0.
     
     
 
@@ -803,7 +803,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code dashLength} property as a {@code reference} value.  The {@code dashLength} property specifies the length in screen-space pixels of a single dash and gap pattern.  If not specified, the default value is 16.
+    Writes a value for the {@code dashLength} property as a {@code reference} value.  The {@code dashLength} property specifies the length in screen-space pixels of a single dash and gap pattern. If not specified, the default value is 16.0.
     
     
     
@@ -824,7 +824,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code dashLength} property as a {@code reference} value.  The {@code dashLength} property specifies the length in screen-space pixels of a single dash and gap pattern.  If not specified, the default value is 16.
+    Writes a value for the {@code dashLength} property as a {@code reference} value.  The {@code dashLength} property specifies the length in screen-space pixels of a single dash and gap pattern. If not specified, the default value is 16.0.
     
     
     
@@ -844,7 +844,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  Gets the writer for the {@code dashPattern} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code dashPattern} property defines a 16-bit bitfield representing which portions along a single dashLength are the dash (1) and which are the gap (0).  The default value, 255 (0000000011111111), indicates 50% gap followed by 50% dash.  If not specified, the default value is 255.
+    *  Gets the writer for the {@code dashPattern} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code dashPattern} property defines a 16-bit bitfield representing which portions along a single dashLength are the dash (1) and which are the gap (0). The default value, 255 (0000000011111111), indicates 50% gap followed by 50% dash. If not specified, the default value is 255.
     
 
     */
@@ -855,7 +855,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Opens and returns the writer for the {@code dashPattern} property.  The {@code dashPattern} property defines a 16-bit bitfield representing which portions along a single dashLength are the dash (1) and which are the gap (0).  The default value, 255 (0000000011111111), indicates 50% gap followed by 50% dash.  If not specified, the default value is 255.
+    Opens and returns the writer for the {@code dashPattern} property.  The {@code dashPattern} property defines a 16-bit bitfield representing which portions along a single dashLength are the dash (1) and which are the gap (0). The default value, 255 (0000000011111111), indicates 50% gap followed by 50% dash. If not specified, the default value is 255.
     
 
     */
@@ -867,7 +867,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code dashPattern} property as a {@code number} value.  The {@code dashPattern} property specifies a 16-bit bitfield representing which portions along a single dashLength are the dash (1) and which are the gap (0).  The default value, 255 (0000000011111111), indicates 50% gap followed by 50% dash.  If not specified, the default value is 255.
+    Writes a value for the {@code dashPattern} property as a {@code number} value.  The {@code dashPattern} property specifies a 16-bit bitfield representing which portions along a single dashLength are the dash (1) and which are the gap (0). The default value, 255 (0000000011111111), indicates 50% gap followed by 50% dash. If not specified, the default value is 255.
     
     
 
@@ -886,7 +886,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code dashPattern} property as a {@code number} value.  The {@code dashPattern} property specifies a 16-bit bitfield representing which portions along a single dashLength are the dash (1) and which are the gap (0).  The default value, 255 (0000000011111111), indicates 50% gap followed by 50% dash.  If not specified, the default value is 255.
+    Writes a value for the {@code dashPattern} property as a {@code number} value.  The {@code dashPattern} property specifies a 16-bit bitfield representing which portions along a single dashLength are the dash (1) and which are the gap (0). The default value, 255 (0000000011111111), indicates 50% gap followed by 50% dash. If not specified, the default value is 255.
     
     
     
@@ -907,7 +907,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code dashPattern} property as a {@code number} value.  The {@code dashPattern} property specifies a 16-bit bitfield representing which portions along a single dashLength are the dash (1) and which are the gap (0).  The default value, 255 (0000000011111111), indicates 50% gap followed by 50% dash.  If not specified, the default value is 255.
+    Writes a value for the {@code dashPattern} property as a {@code number} value.  The {@code dashPattern} property specifies a 16-bit bitfield representing which portions along a single dashLength are the dash (1) and which are the gap (0). The default value, 255 (0000000011111111), indicates 50% gap followed by 50% dash. If not specified, the default value is 255.
     
     
     
@@ -932,7 +932,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code dashPattern} property as a {@code reference} value.  The {@code dashPattern} property specifies a 16-bit bitfield representing which portions along a single dashLength are the dash (1) and which are the gap (0).  The default value, 255 (0000000011111111), indicates 50% gap followed by 50% dash.  If not specified, the default value is 255.
+    Writes a value for the {@code dashPattern} property as a {@code reference} value.  The {@code dashPattern} property specifies a 16-bit bitfield representing which portions along a single dashLength are the dash (1) and which are the gap (0). The default value, 255 (0000000011111111), indicates 50% gap followed by 50% dash. If not specified, the default value is 255.
     
     
 
@@ -951,7 +951,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code dashPattern} property as a {@code reference} value.  The {@code dashPattern} property specifies a 16-bit bitfield representing which portions along a single dashLength are the dash (1) and which are the gap (0).  The default value, 255 (0000000011111111), indicates 50% gap followed by 50% dash.  If not specified, the default value is 255.
+    Writes a value for the {@code dashPattern} property as a {@code reference} value.  The {@code dashPattern} property specifies a 16-bit bitfield representing which portions along a single dashLength are the dash (1) and which are the gap (0). The default value, 255 (0000000011111111), indicates 50% gap followed by 50% dash. If not specified, the default value is 255.
     
     
 
@@ -970,7 +970,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code dashPattern} property as a {@code reference} value.  The {@code dashPattern} property specifies a 16-bit bitfield representing which portions along a single dashLength are the dash (1) and which are the gap (0).  The default value, 255 (0000000011111111), indicates 50% gap followed by 50% dash.  If not specified, the default value is 255.
+    Writes a value for the {@code dashPattern} property as a {@code reference} value.  The {@code dashPattern} property specifies a 16-bit bitfield representing which portions along a single dashLength are the dash (1) and which are the gap (0). The default value, 255 (0000000011111111), indicates 50% gap followed by 50% dash. If not specified, the default value is 255.
     
     
     
@@ -991,7 +991,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code dashPattern} property as a {@code reference} value.  The {@code dashPattern} property specifies a 16-bit bitfield representing which portions along a single dashLength are the dash (1) and which are the gap (0).  The default value, 255 (0000000011111111), indicates 50% gap followed by 50% dash.  If not specified, the default value is 255.
+    Writes a value for the {@code dashPattern} property as a {@code reference} value.  The {@code dashPattern} property specifies a 16-bit bitfield representing which portions along a single dashLength are the dash (1) and which are the gap (0). The default value, 255 (0000000011111111), indicates 50% gap followed by 50% dash. If not specified, the default value is 255.
     
     
     

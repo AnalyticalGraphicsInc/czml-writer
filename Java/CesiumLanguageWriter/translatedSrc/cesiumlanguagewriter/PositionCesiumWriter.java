@@ -172,7 +172,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
 
     /**
     *  
-    Writes the value expressed as a {@code referenceFrame}, which is the reference frame in which cartesian positions are specified. Possible values are "FIXED" and "INERTIAL".  If not specified, the default value is FIXED.
+    Writes the value expressed as a {@code referenceFrame}, which is the reference frame in which cartesian positions are specified. Possible values are "FIXED" and "INERTIAL". If not specified, the default value is FIXED.
     
     
 
