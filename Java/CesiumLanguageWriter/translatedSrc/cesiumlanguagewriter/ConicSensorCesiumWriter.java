@@ -356,7 +356,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the entire conical sensor is shown.
+    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the entire conical sensor is shown. If not specified, the default value is {@code true}.
     
 
     */
@@ -367,7 +367,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Opens and returns the writer for the {@code show} property.  The {@code show} property defines whether or not the entire conical sensor is shown.
+    Opens and returns the writer for the {@code show} property.  The {@code show} property defines whether or not the entire conical sensor is shown. If not specified, the default value is {@code true}.
     
 
     */
@@ -379,7 +379,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code boolean} value.  The {@code show} property specifies whether or not the entire conical sensor is shown.
+    Writes a value for the {@code show} property as a {@code boolean} value.  The {@code show} property specifies whether or not the entire conical sensor is shown. If not specified, the default value is {@code true}.
     
     
 
@@ -398,7 +398,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the entire conical sensor is shown.
+    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the entire conical sensor is shown. If not specified, the default value is {@code true}.
     
     
 
@@ -417,7 +417,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the entire conical sensor is shown.
+    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the entire conical sensor is shown. If not specified, the default value is {@code true}.
     
     
 
@@ -436,7 +436,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the entire conical sensor is shown.
+    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the entire conical sensor is shown. If not specified, the default value is {@code true}.
     
     
     
@@ -457,7 +457,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the entire conical sensor is shown.
+    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the entire conical sensor is shown. If not specified, the default value is {@code true}.
     
     
     
@@ -477,7 +477,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code innerHalfAngle} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code innerHalfAngle} property defines the inner half angle of the cone.
+    *  Gets the writer for the {@code innerHalfAngle} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code innerHalfAngle} property defines the inner half angle of the cone. If not specified, the default value is 0.0.
     
 
     */
@@ -488,7 +488,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Opens and returns the writer for the {@code innerHalfAngle} property.  The {@code innerHalfAngle} property defines the inner half angle of the cone.
+    Opens and returns the writer for the {@code innerHalfAngle} property.  The {@code innerHalfAngle} property defines the inner half angle of the cone. If not specified, the default value is 0.0.
     
 
     */
@@ -500,7 +500,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code innerHalfAngle} property as a {@code number} value.  The {@code innerHalfAngle} property specifies the inner half angle of the cone.
+    Writes a value for the {@code innerHalfAngle} property as a {@code number} value.  The {@code innerHalfAngle} property specifies the inner half angle of the cone. If not specified, the default value is 0.0.
     
     
 
@@ -519,7 +519,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code innerHalfAngle} property as a {@code number} value.  The {@code innerHalfAngle} property specifies the inner half angle of the cone.
+    Writes a value for the {@code innerHalfAngle} property as a {@code number} value.  The {@code innerHalfAngle} property specifies the inner half angle of the cone. If not specified, the default value is 0.0.
     
     
     
@@ -540,7 +540,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code innerHalfAngle} property as a {@code number} value.  The {@code innerHalfAngle} property specifies the inner half angle of the cone.
+    Writes a value for the {@code innerHalfAngle} property as a {@code number} value.  The {@code innerHalfAngle} property specifies the inner half angle of the cone. If not specified, the default value is 0.0.
     
     
     
@@ -565,7 +565,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code innerHalfAngle} property as a {@code reference} value.  The {@code innerHalfAngle} property specifies the inner half angle of the cone.
+    Writes a value for the {@code innerHalfAngle} property as a {@code reference} value.  The {@code innerHalfAngle} property specifies the inner half angle of the cone. If not specified, the default value is 0.0.
     
     
 
@@ -584,7 +584,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code innerHalfAngle} property as a {@code reference} value.  The {@code innerHalfAngle} property specifies the inner half angle of the cone.
+    Writes a value for the {@code innerHalfAngle} property as a {@code reference} value.  The {@code innerHalfAngle} property specifies the inner half angle of the cone. If not specified, the default value is 0.0.
     
     
 
@@ -603,7 +603,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code innerHalfAngle} property as a {@code reference} value.  The {@code innerHalfAngle} property specifies the inner half angle of the cone.
+    Writes a value for the {@code innerHalfAngle} property as a {@code reference} value.  The {@code innerHalfAngle} property specifies the inner half angle of the cone. If not specified, the default value is 0.0.
     
     
     
@@ -624,7 +624,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code innerHalfAngle} property as a {@code reference} value.  The {@code innerHalfAngle} property specifies the inner half angle of the cone.
+    Writes a value for the {@code innerHalfAngle} property as a {@code reference} value.  The {@code innerHalfAngle} property specifies the inner half angle of the cone. If not specified, the default value is 0.0.
     
     
     
@@ -644,7 +644,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code outerHalfAngle} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outerHalfAngle} property defines the outer half angle of the cone.
+    *  Gets the writer for the {@code outerHalfAngle} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outerHalfAngle} property defines the outer half angle of the cone. If not specified, the default value is PI.
     
 
     */
@@ -655,7 +655,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Opens and returns the writer for the {@code outerHalfAngle} property.  The {@code outerHalfAngle} property defines the outer half angle of the cone.
+    Opens and returns the writer for the {@code outerHalfAngle} property.  The {@code outerHalfAngle} property defines the outer half angle of the cone. If not specified, the default value is PI.
     
 
     */
@@ -667,7 +667,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code outerHalfAngle} property as a {@code number} value.  The {@code outerHalfAngle} property specifies the outer half angle of the cone.
+    Writes a value for the {@code outerHalfAngle} property as a {@code number} value.  The {@code outerHalfAngle} property specifies the outer half angle of the cone. If not specified, the default value is PI.
     
     
 
@@ -686,7 +686,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code outerHalfAngle} property as a {@code number} value.  The {@code outerHalfAngle} property specifies the outer half angle of the cone.
+    Writes a value for the {@code outerHalfAngle} property as a {@code number} value.  The {@code outerHalfAngle} property specifies the outer half angle of the cone. If not specified, the default value is PI.
     
     
     
@@ -707,7 +707,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code outerHalfAngle} property as a {@code number} value.  The {@code outerHalfAngle} property specifies the outer half angle of the cone.
+    Writes a value for the {@code outerHalfAngle} property as a {@code number} value.  The {@code outerHalfAngle} property specifies the outer half angle of the cone. If not specified, the default value is PI.
     
     
     
@@ -732,7 +732,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code outerHalfAngle} property as a {@code reference} value.  The {@code outerHalfAngle} property specifies the outer half angle of the cone.
+    Writes a value for the {@code outerHalfAngle} property as a {@code reference} value.  The {@code outerHalfAngle} property specifies the outer half angle of the cone. If not specified, the default value is PI.
     
     
 
@@ -751,7 +751,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code outerHalfAngle} property as a {@code reference} value.  The {@code outerHalfAngle} property specifies the outer half angle of the cone.
+    Writes a value for the {@code outerHalfAngle} property as a {@code reference} value.  The {@code outerHalfAngle} property specifies the outer half angle of the cone. If not specified, the default value is PI.
     
     
 
@@ -770,7 +770,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code outerHalfAngle} property as a {@code reference} value.  The {@code outerHalfAngle} property specifies the outer half angle of the cone.
+    Writes a value for the {@code outerHalfAngle} property as a {@code reference} value.  The {@code outerHalfAngle} property specifies the outer half angle of the cone. If not specified, the default value is PI.
     
     
     
@@ -791,7 +791,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code outerHalfAngle} property as a {@code reference} value.  The {@code outerHalfAngle} property specifies the outer half angle of the cone.
+    Writes a value for the {@code outerHalfAngle} property as a {@code reference} value.  The {@code outerHalfAngle} property specifies the outer half angle of the cone. If not specified, the default value is PI.
     
     
     
@@ -811,7 +811,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code minimumClockAngle} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code minimumClockAngle} property defines the minimum clock angle limit of the cone.
+    *  Gets the writer for the {@code minimumClockAngle} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code minimumClockAngle} property defines the minimum clock angle limit of the cone. If not specified, the default value is 0.0.
     
 
     */
@@ -822,7 +822,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Opens and returns the writer for the {@code minimumClockAngle} property.  The {@code minimumClockAngle} property defines the minimum clock angle limit of the cone.
+    Opens and returns the writer for the {@code minimumClockAngle} property.  The {@code minimumClockAngle} property defines the minimum clock angle limit of the cone. If not specified, the default value is 0.0.
     
 
     */
@@ -834,7 +834,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code minimumClockAngle} property as a {@code number} value.  The {@code minimumClockAngle} property specifies the minimum clock angle limit of the cone.
+    Writes a value for the {@code minimumClockAngle} property as a {@code number} value.  The {@code minimumClockAngle} property specifies the minimum clock angle limit of the cone. If not specified, the default value is 0.0.
     
     
 
@@ -853,7 +853,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code minimumClockAngle} property as a {@code number} value.  The {@code minimumClockAngle} property specifies the minimum clock angle limit of the cone.
+    Writes a value for the {@code minimumClockAngle} property as a {@code number} value.  The {@code minimumClockAngle} property specifies the minimum clock angle limit of the cone. If not specified, the default value is 0.0.
     
     
     
@@ -874,7 +874,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code minimumClockAngle} property as a {@code number} value.  The {@code minimumClockAngle} property specifies the minimum clock angle limit of the cone.
+    Writes a value for the {@code minimumClockAngle} property as a {@code number} value.  The {@code minimumClockAngle} property specifies the minimum clock angle limit of the cone. If not specified, the default value is 0.0.
     
     
     
@@ -899,7 +899,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code minimumClockAngle} property as a {@code reference} value.  The {@code minimumClockAngle} property specifies the minimum clock angle limit of the cone.
+    Writes a value for the {@code minimumClockAngle} property as a {@code reference} value.  The {@code minimumClockAngle} property specifies the minimum clock angle limit of the cone. If not specified, the default value is 0.0.
     
     
 
@@ -918,7 +918,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code minimumClockAngle} property as a {@code reference} value.  The {@code minimumClockAngle} property specifies the minimum clock angle limit of the cone.
+    Writes a value for the {@code minimumClockAngle} property as a {@code reference} value.  The {@code minimumClockAngle} property specifies the minimum clock angle limit of the cone. If not specified, the default value is 0.0.
     
     
 
@@ -937,7 +937,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code minimumClockAngle} property as a {@code reference} value.  The {@code minimumClockAngle} property specifies the minimum clock angle limit of the cone.
+    Writes a value for the {@code minimumClockAngle} property as a {@code reference} value.  The {@code minimumClockAngle} property specifies the minimum clock angle limit of the cone. If not specified, the default value is 0.0.
     
     
     
@@ -958,7 +958,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code minimumClockAngle} property as a {@code reference} value.  The {@code minimumClockAngle} property specifies the minimum clock angle limit of the cone.
+    Writes a value for the {@code minimumClockAngle} property as a {@code reference} value.  The {@code minimumClockAngle} property specifies the minimum clock angle limit of the cone. If not specified, the default value is 0.0.
     
     
     
@@ -978,7 +978,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code maximumClockAngle} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code maximumClockAngle} property defines the maximum clock angle limit of the cone.
+    *  Gets the writer for the {@code maximumClockAngle} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code maximumClockAngle} property defines the maximum clock angle limit of the cone. If not specified, the default value is 2 * PI.
     
 
     */
@@ -989,7 +989,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Opens and returns the writer for the {@code maximumClockAngle} property.  The {@code maximumClockAngle} property defines the maximum clock angle limit of the cone.
+    Opens and returns the writer for the {@code maximumClockAngle} property.  The {@code maximumClockAngle} property defines the maximum clock angle limit of the cone. If not specified, the default value is 2 * PI.
     
 
     */
@@ -1001,7 +1001,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code maximumClockAngle} property as a {@code number} value.  The {@code maximumClockAngle} property specifies the maximum clock angle limit of the cone.
+    Writes a value for the {@code maximumClockAngle} property as a {@code number} value.  The {@code maximumClockAngle} property specifies the maximum clock angle limit of the cone. If not specified, the default value is 2 * PI.
     
     
 
@@ -1020,7 +1020,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code maximumClockAngle} property as a {@code number} value.  The {@code maximumClockAngle} property specifies the maximum clock angle limit of the cone.
+    Writes a value for the {@code maximumClockAngle} property as a {@code number} value.  The {@code maximumClockAngle} property specifies the maximum clock angle limit of the cone. If not specified, the default value is 2 * PI.
     
     
     
@@ -1041,7 +1041,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code maximumClockAngle} property as a {@code number} value.  The {@code maximumClockAngle} property specifies the maximum clock angle limit of the cone.
+    Writes a value for the {@code maximumClockAngle} property as a {@code number} value.  The {@code maximumClockAngle} property specifies the maximum clock angle limit of the cone. If not specified, the default value is 2 * PI.
     
     
     
@@ -1066,7 +1066,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code maximumClockAngle} property as a {@code reference} value.  The {@code maximumClockAngle} property specifies the maximum clock angle limit of the cone.
+    Writes a value for the {@code maximumClockAngle} property as a {@code reference} value.  The {@code maximumClockAngle} property specifies the maximum clock angle limit of the cone. If not specified, the default value is 2 * PI.
     
     
 
@@ -1085,7 +1085,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code maximumClockAngle} property as a {@code reference} value.  The {@code maximumClockAngle} property specifies the maximum clock angle limit of the cone.
+    Writes a value for the {@code maximumClockAngle} property as a {@code reference} value.  The {@code maximumClockAngle} property specifies the maximum clock angle limit of the cone. If not specified, the default value is 2 * PI.
     
     
 
@@ -1104,7 +1104,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code maximumClockAngle} property as a {@code reference} value.  The {@code maximumClockAngle} property specifies the maximum clock angle limit of the cone.
+    Writes a value for the {@code maximumClockAngle} property as a {@code reference} value.  The {@code maximumClockAngle} property specifies the maximum clock angle limit of the cone. If not specified, the default value is 2 * PI.
     
     
     
@@ -1125,7 +1125,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code maximumClockAngle} property as a {@code reference} value.  The {@code maximumClockAngle} property specifies the maximum clock angle limit of the cone.
+    Writes a value for the {@code maximumClockAngle} property as a {@code reference} value.  The {@code maximumClockAngle} property specifies the maximum clock angle limit of the cone. If not specified, the default value is 2 * PI.
     
     
     
@@ -1145,7 +1145,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code radius} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code radius} property defines the radial limit of the cone.
+    *  Gets the writer for the {@code radius} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code radius} property defines the radial limit of the sensor. If not specified, the default value is Infinity.
     
 
     */
@@ -1156,7 +1156,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Opens and returns the writer for the {@code radius} property.  The {@code radius} property defines the radial limit of the cone.
+    Opens and returns the writer for the {@code radius} property.  The {@code radius} property defines the radial limit of the sensor. If not specified, the default value is Infinity.
     
 
     */
@@ -1168,7 +1168,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code radius} property as a {@code number} value.  The {@code radius} property specifies the radial limit of the cone.
+    Writes a value for the {@code radius} property as a {@code number} value.  The {@code radius} property specifies the radial limit of the sensor. If not specified, the default value is Infinity.
     
     
 
@@ -1187,7 +1187,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code radius} property as a {@code number} value.  The {@code radius} property specifies the radial limit of the cone.
+    Writes a value for the {@code radius} property as a {@code number} value.  The {@code radius} property specifies the radial limit of the sensor. If not specified, the default value is Infinity.
     
     
     
@@ -1208,7 +1208,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code radius} property as a {@code number} value.  The {@code radius} property specifies the radial limit of the cone.
+    Writes a value for the {@code radius} property as a {@code number} value.  The {@code radius} property specifies the radial limit of the sensor. If not specified, the default value is Infinity.
     
     
     
@@ -1233,7 +1233,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code radius} property as a {@code reference} value.  The {@code radius} property specifies the radial limit of the cone.
+    Writes a value for the {@code radius} property as a {@code reference} value.  The {@code radius} property specifies the radial limit of the sensor. If not specified, the default value is Infinity.
     
     
 
@@ -1252,7 +1252,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code radius} property as a {@code reference} value.  The {@code radius} property specifies the radial limit of the cone.
+    Writes a value for the {@code radius} property as a {@code reference} value.  The {@code radius} property specifies the radial limit of the sensor. If not specified, the default value is Infinity.
     
     
 
@@ -1271,7 +1271,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code radius} property as a {@code reference} value.  The {@code radius} property specifies the radial limit of the cone.
+    Writes a value for the {@code radius} property as a {@code reference} value.  The {@code radius} property specifies the radial limit of the sensor. If not specified, the default value is Infinity.
     
     
     
@@ -1292,7 +1292,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code radius} property as a {@code reference} value.  The {@code radius} property specifies the radial limit of the cone.
+    Writes a value for the {@code radius} property as a {@code reference} value.  The {@code radius} property specifies the radial limit of the sensor. If not specified, the default value is Infinity.
     
     
     
@@ -1312,7 +1312,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code showIntersection} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showIntersection} property defines whether or not the intersection of the cone with the Earth is shown.
+    *  Gets the writer for the {@code showIntersection} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showIntersection} property defines whether or not the intersection of the sensor with the Earth is shown. If not specified, the default value is {@code true}.
     
 
     */
@@ -1323,7 +1323,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Opens and returns the writer for the {@code showIntersection} property.  The {@code showIntersection} property defines whether or not the intersection of the cone with the Earth is shown.
+    Opens and returns the writer for the {@code showIntersection} property.  The {@code showIntersection} property defines whether or not the intersection of the sensor with the Earth is shown. If not specified, the default value is {@code true}.
     
 
     */
@@ -1335,7 +1335,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code showIntersection} property as a {@code boolean} value.  The {@code showIntersection} property specifies whether or not the intersection of the cone with the Earth is shown.
+    Writes a value for the {@code showIntersection} property as a {@code boolean} value.  The {@code showIntersection} property specifies whether or not the intersection of the sensor with the Earth is shown. If not specified, the default value is {@code true}.
     
     
 
@@ -1354,7 +1354,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code showIntersection} property as a {@code reference} value.  The {@code showIntersection} property specifies whether or not the intersection of the cone with the Earth is shown.
+    Writes a value for the {@code showIntersection} property as a {@code reference} value.  The {@code showIntersection} property specifies whether or not the intersection of the sensor with the Earth is shown. If not specified, the default value is {@code true}.
     
     
 
@@ -1373,7 +1373,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code showIntersection} property as a {@code reference} value.  The {@code showIntersection} property specifies whether or not the intersection of the cone with the Earth is shown.
+    Writes a value for the {@code showIntersection} property as a {@code reference} value.  The {@code showIntersection} property specifies whether or not the intersection of the sensor with the Earth is shown. If not specified, the default value is {@code true}.
     
     
 
@@ -1392,7 +1392,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code showIntersection} property as a {@code reference} value.  The {@code showIntersection} property specifies whether or not the intersection of the cone with the Earth is shown.
+    Writes a value for the {@code showIntersection} property as a {@code reference} value.  The {@code showIntersection} property specifies whether or not the intersection of the sensor with the Earth is shown. If not specified, the default value is {@code true}.
     
     
     
@@ -1413,7 +1413,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code showIntersection} property as a {@code reference} value.  The {@code showIntersection} property specifies whether or not the intersection of the cone with the Earth is shown.
+    Writes a value for the {@code showIntersection} property as a {@code reference} value.  The {@code showIntersection} property specifies whether or not the intersection of the sensor with the Earth is shown. If not specified, the default value is {@code true}.
     
     
     
@@ -1433,7 +1433,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code intersectionColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code intersectionColor} property defines the color of the intersection of the cone with the Earth.
+    *  Gets the writer for the {@code intersectionColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code intersectionColor} property defines the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
     
 
     */
@@ -1444,7 +1444,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Opens and returns the writer for the {@code intersectionColor} property.  The {@code intersectionColor} property defines the color of the intersection of the cone with the Earth.
+    Opens and returns the writer for the {@code intersectionColor} property.  The {@code intersectionColor} property defines the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
     
 
     */
@@ -1456,7 +1456,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code intersectionColor} property as a {@code rgba} value.  The {@code intersectionColor} property specifies the color of the intersection of the cone with the Earth.
+    Writes a value for the {@code intersectionColor} property as a {@code rgba} value.  The {@code intersectionColor} property specifies the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
     
     
 
@@ -1475,7 +1475,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code intersectionColor} property as a {@code rgba} value.  The {@code intersectionColor} property specifies the color of the intersection of the cone with the Earth.
+    Writes a value for the {@code intersectionColor} property as a {@code rgba} value.  The {@code intersectionColor} property specifies the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
     
     
     
@@ -1500,7 +1500,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code intersectionColor} property as a {@code rgba} value.  The {@code intersectionColor} property specifies the color of the intersection of the cone with the Earth.
+    Writes a value for the {@code intersectionColor} property as a {@code rgba} value.  The {@code intersectionColor} property specifies the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
     
     
     
@@ -1521,7 +1521,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code intersectionColor} property as a {@code rgba} value.  The {@code intersectionColor} property specifies the color of the intersection of the cone with the Earth.
+    Writes a value for the {@code intersectionColor} property as a {@code rgba} value.  The {@code intersectionColor} property specifies the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
     
     
     
@@ -1546,7 +1546,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code intersectionColor} property as a {@code rgbaf} value.  The {@code intersectionColor} property specifies the color of the intersection of the cone with the Earth.
+    Writes a value for the {@code intersectionColor} property as a {@code rgbaf} value.  The {@code intersectionColor} property specifies the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
     
     
 
@@ -1565,7 +1565,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code intersectionColor} property as a {@code rgbaf} value.  The {@code intersectionColor} property specifies the color of the intersection of the cone with the Earth.
+    Writes a value for the {@code intersectionColor} property as a {@code rgbaf} value.  The {@code intersectionColor} property specifies the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
     
     
     
@@ -1590,7 +1590,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code intersectionColor} property as a {@code rgbaf} value.  The {@code intersectionColor} property specifies the color of the intersection of the cone with the Earth.
+    Writes a value for the {@code intersectionColor} property as a {@code rgbaf} value.  The {@code intersectionColor} property specifies the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
     
     
     
@@ -1611,7 +1611,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code intersectionColor} property as a {@code rgbaf} value.  The {@code intersectionColor} property specifies the color of the intersection of the cone with the Earth.
+    Writes a value for the {@code intersectionColor} property as a {@code rgbaf} value.  The {@code intersectionColor} property specifies the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
     
     
     
@@ -1636,7 +1636,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code intersectionColor} property as a {@code reference} value.  The {@code intersectionColor} property specifies the color of the intersection of the cone with the Earth.
+    Writes a value for the {@code intersectionColor} property as a {@code reference} value.  The {@code intersectionColor} property specifies the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
     
     
 
@@ -1655,7 +1655,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code intersectionColor} property as a {@code reference} value.  The {@code intersectionColor} property specifies the color of the intersection of the cone with the Earth.
+    Writes a value for the {@code intersectionColor} property as a {@code reference} value.  The {@code intersectionColor} property specifies the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
     
     
 
@@ -1674,7 +1674,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code intersectionColor} property as a {@code reference} value.  The {@code intersectionColor} property specifies the color of the intersection of the cone with the Earth.
+    Writes a value for the {@code intersectionColor} property as a {@code reference} value.  The {@code intersectionColor} property specifies the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
     
     
     
@@ -1695,7 +1695,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code intersectionColor} property as a {@code reference} value.  The {@code intersectionColor} property specifies the color of the intersection of the cone with the Earth.
+    Writes a value for the {@code intersectionColor} property as a {@code reference} value.  The {@code intersectionColor} property specifies the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
     
     
     
@@ -1715,7 +1715,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code intersectionWidth} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code intersectionWidth} property defines the width of the intersection in pixels.
+    *  Gets the writer for the {@code intersectionWidth} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code intersectionWidth} property defines the width of the intersection in pixels. If not specified, the default value is 1.0.
     
 
     */
@@ -1726,7 +1726,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Opens and returns the writer for the {@code intersectionWidth} property.  The {@code intersectionWidth} property defines the width of the intersection in pixels.
+    Opens and returns the writer for the {@code intersectionWidth} property.  The {@code intersectionWidth} property defines the width of the intersection in pixels. If not specified, the default value is 1.0.
     
 
     */
@@ -1738,7 +1738,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code intersectionWidth} property as a {@code number} value.  The {@code intersectionWidth} property specifies the width of the intersection in pixels.
+    Writes a value for the {@code intersectionWidth} property as a {@code number} value.  The {@code intersectionWidth} property specifies the width of the intersection in pixels. If not specified, the default value is 1.0.
     
     
 
@@ -1757,7 +1757,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code intersectionWidth} property as a {@code number} value.  The {@code intersectionWidth} property specifies the width of the intersection in pixels.
+    Writes a value for the {@code intersectionWidth} property as a {@code number} value.  The {@code intersectionWidth} property specifies the width of the intersection in pixels. If not specified, the default value is 1.0.
     
     
     
@@ -1778,7 +1778,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code intersectionWidth} property as a {@code number} value.  The {@code intersectionWidth} property specifies the width of the intersection in pixels.
+    Writes a value for the {@code intersectionWidth} property as a {@code number} value.  The {@code intersectionWidth} property specifies the width of the intersection in pixels. If not specified, the default value is 1.0.
     
     
     
@@ -1803,7 +1803,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code intersectionWidth} property as a {@code reference} value.  The {@code intersectionWidth} property specifies the width of the intersection in pixels.
+    Writes a value for the {@code intersectionWidth} property as a {@code reference} value.  The {@code intersectionWidth} property specifies the width of the intersection in pixels. If not specified, the default value is 1.0.
     
     
 
@@ -1822,7 +1822,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code intersectionWidth} property as a {@code reference} value.  The {@code intersectionWidth} property specifies the width of the intersection in pixels.
+    Writes a value for the {@code intersectionWidth} property as a {@code reference} value.  The {@code intersectionWidth} property specifies the width of the intersection in pixels. If not specified, the default value is 1.0.
     
     
 
@@ -1841,7 +1841,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code intersectionWidth} property as a {@code reference} value.  The {@code intersectionWidth} property specifies the width of the intersection in pixels.
+    Writes a value for the {@code intersectionWidth} property as a {@code reference} value.  The {@code intersectionWidth} property specifies the width of the intersection in pixels. If not specified, the default value is 1.0.
     
     
     
@@ -1862,7 +1862,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code intersectionWidth} property as a {@code reference} value.  The {@code intersectionWidth} property specifies the width of the intersection in pixels.
+    Writes a value for the {@code intersectionWidth} property as a {@code reference} value.  The {@code intersectionWidth} property specifies the width of the intersection in pixels. If not specified, the default value is 1.0.
     
     
     
@@ -1882,7 +1882,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code showLateralSurfaces} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showLateralSurfaces} property defines whether or not the lateral surfaces of the cone are shown.
+    *  Gets the writer for the {@code showLateralSurfaces} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showLateralSurfaces} property defines whether or not the lateral surfaces, i.e., the outer sides of the sensor, are shown. If not specified, the default value is {@code true}.
     
 
     */
@@ -1893,7 +1893,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Opens and returns the writer for the {@code showLateralSurfaces} property.  The {@code showLateralSurfaces} property defines whether or not the lateral surfaces of the cone are shown.
+    Opens and returns the writer for the {@code showLateralSurfaces} property.  The {@code showLateralSurfaces} property defines whether or not the lateral surfaces, i.e., the outer sides of the sensor, are shown. If not specified, the default value is {@code true}.
     
 
     */
@@ -1905,7 +1905,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code showLateralSurfaces} property as a {@code boolean} value.  The {@code showLateralSurfaces} property specifies whether or not the lateral surfaces of the cone are shown.
+    Writes a value for the {@code showLateralSurfaces} property as a {@code boolean} value.  The {@code showLateralSurfaces} property specifies whether or not the lateral surfaces, i.e., the outer sides of the sensor, are shown. If not specified, the default value is {@code true}.
     
     
 
@@ -1924,7 +1924,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code showLateralSurfaces} property as a {@code reference} value.  The {@code showLateralSurfaces} property specifies whether or not the lateral surfaces of the cone are shown.
+    Writes a value for the {@code showLateralSurfaces} property as a {@code reference} value.  The {@code showLateralSurfaces} property specifies whether or not the lateral surfaces, i.e., the outer sides of the sensor, are shown. If not specified, the default value is {@code true}.
     
     
 
@@ -1943,7 +1943,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code showLateralSurfaces} property as a {@code reference} value.  The {@code showLateralSurfaces} property specifies whether or not the lateral surfaces of the cone are shown.
+    Writes a value for the {@code showLateralSurfaces} property as a {@code reference} value.  The {@code showLateralSurfaces} property specifies whether or not the lateral surfaces, i.e., the outer sides of the sensor, are shown. If not specified, the default value is {@code true}.
     
     
 
@@ -1962,7 +1962,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code showLateralSurfaces} property as a {@code reference} value.  The {@code showLateralSurfaces} property specifies whether or not the lateral surfaces of the cone are shown.
+    Writes a value for the {@code showLateralSurfaces} property as a {@code reference} value.  The {@code showLateralSurfaces} property specifies whether or not the lateral surfaces, i.e., the outer sides of the sensor, are shown. If not specified, the default value is {@code true}.
     
     
     
@@ -1983,7 +1983,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code showLateralSurfaces} property as a {@code reference} value.  The {@code showLateralSurfaces} property specifies whether or not the lateral surfaces of the cone are shown.
+    Writes a value for the {@code showLateralSurfaces} property as a {@code reference} value.  The {@code showLateralSurfaces} property specifies whether or not the lateral surfaces, i.e., the outer sides of the sensor, are shown. If not specified, the default value is {@code true}.
     
     
     
@@ -2003,7 +2003,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code lateralSurfaceMaterial} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code lateralSurfaceMaterial} property defines the material to use for the cone's lateral surfaces.
+    *  Gets the writer for the {@code lateralSurfaceMaterial} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code lateralSurfaceMaterial} property defines the material to use for the sensor's lateral surface, i.e., the outer sides of the sensor. If not specified, the default value is solid white.
     
 
     */
@@ -2014,7 +2014,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Opens and returns the writer for the {@code lateralSurfaceMaterial} property.  The {@code lateralSurfaceMaterial} property defines the material to use for the cone's lateral surfaces.
+    Opens and returns the writer for the {@code lateralSurfaceMaterial} property.  The {@code lateralSurfaceMaterial} property defines the material to use for the sensor's lateral surface, i.e., the outer sides of the sensor. If not specified, the default value is solid white.
     
 
     */
@@ -2025,7 +2025,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code showEllipsoidSurfaces} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showEllipsoidSurfaces} property defines whether or not ellipsoid surfaces are shown.
+    *  Gets the writer for the {@code showEllipsoidSurfaces} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showEllipsoidSurfaces} property defines whether or not ellipsoid surfaces are shown. If not specified, the default value is {@code true}.
     
 
     */
@@ -2036,7 +2036,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Opens and returns the writer for the {@code showEllipsoidSurfaces} property.  The {@code showEllipsoidSurfaces} property defines whether or not ellipsoid surfaces are shown.
+    Opens and returns the writer for the {@code showEllipsoidSurfaces} property.  The {@code showEllipsoidSurfaces} property defines whether or not ellipsoid surfaces are shown. If not specified, the default value is {@code true}.
     
 
     */
@@ -2048,7 +2048,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code showEllipsoidSurfaces} property as a {@code boolean} value.  The {@code showEllipsoidSurfaces} property specifies whether or not ellipsoid surfaces are shown.
+    Writes a value for the {@code showEllipsoidSurfaces} property as a {@code boolean} value.  The {@code showEllipsoidSurfaces} property specifies whether or not ellipsoid surfaces are shown. If not specified, the default value is {@code true}.
     
     
 
@@ -2067,7 +2067,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code showEllipsoidSurfaces} property as a {@code reference} value.  The {@code showEllipsoidSurfaces} property specifies whether or not ellipsoid surfaces are shown.
+    Writes a value for the {@code showEllipsoidSurfaces} property as a {@code reference} value.  The {@code showEllipsoidSurfaces} property specifies whether or not ellipsoid surfaces are shown. If not specified, the default value is {@code true}.
     
     
 
@@ -2086,7 +2086,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code showEllipsoidSurfaces} property as a {@code reference} value.  The {@code showEllipsoidSurfaces} property specifies whether or not ellipsoid surfaces are shown.
+    Writes a value for the {@code showEllipsoidSurfaces} property as a {@code reference} value.  The {@code showEllipsoidSurfaces} property specifies whether or not ellipsoid surfaces are shown. If not specified, the default value is {@code true}.
     
     
 
@@ -2105,7 +2105,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code showEllipsoidSurfaces} property as a {@code reference} value.  The {@code showEllipsoidSurfaces} property specifies whether or not ellipsoid surfaces are shown.
+    Writes a value for the {@code showEllipsoidSurfaces} property as a {@code reference} value.  The {@code showEllipsoidSurfaces} property specifies whether or not ellipsoid surfaces are shown. If not specified, the default value is {@code true}.
     
     
     
@@ -2126,7 +2126,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code showEllipsoidSurfaces} property as a {@code reference} value.  The {@code showEllipsoidSurfaces} property specifies whether or not ellipsoid surfaces are shown.
+    Writes a value for the {@code showEllipsoidSurfaces} property as a {@code reference} value.  The {@code showEllipsoidSurfaces} property specifies whether or not ellipsoid surfaces are shown. If not specified, the default value is {@code true}.
     
     
     
@@ -2146,7 +2146,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code ellipsoidSurfaceMaterial} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code ellipsoidSurfaceMaterial} property defines the material to use for the cone's ellipsoid surfaces.
+    *  Gets the writer for the {@code ellipsoidSurfaceMaterial} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code ellipsoidSurfaceMaterial} property defines the material to use for the sensor's ellipsoid surfaces. If not specified, the default value is solid white.
     
 
     */
@@ -2157,7 +2157,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Opens and returns the writer for the {@code ellipsoidSurfaceMaterial} property.  The {@code ellipsoidSurfaceMaterial} property defines the material to use for the cone's ellipsoid surfaces.
+    Opens and returns the writer for the {@code ellipsoidSurfaceMaterial} property.  The {@code ellipsoidSurfaceMaterial} property defines the material to use for the sensor's ellipsoid surfaces. If not specified, the default value is solid white.
     
 
     */
@@ -2168,7 +2168,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code showEllipsoidHorizonSurfaces} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showEllipsoidHorizonSurfaces} property defines whether or not ellipsoid horizon surfaces are shown.
+    *  Gets the writer for the {@code showEllipsoidHorizonSurfaces} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showEllipsoidHorizonSurfaces} property defines whether or not ellipsoid horizon surfaces are shown. If not specified, the default value is {@code true}.
     
 
     */
@@ -2179,7 +2179,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Opens and returns the writer for the {@code showEllipsoidHorizonSurfaces} property.  The {@code showEllipsoidHorizonSurfaces} property defines whether or not ellipsoid horizon surfaces are shown.
+    Opens and returns the writer for the {@code showEllipsoidHorizonSurfaces} property.  The {@code showEllipsoidHorizonSurfaces} property defines whether or not ellipsoid horizon surfaces are shown. If not specified, the default value is {@code true}.
     
 
     */
@@ -2191,7 +2191,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code showEllipsoidHorizonSurfaces} property as a {@code boolean} value.  The {@code showEllipsoidHorizonSurfaces} property specifies whether or not ellipsoid horizon surfaces are shown.
+    Writes a value for the {@code showEllipsoidHorizonSurfaces} property as a {@code boolean} value.  The {@code showEllipsoidHorizonSurfaces} property specifies whether or not ellipsoid horizon surfaces are shown. If not specified, the default value is {@code true}.
     
     
 
@@ -2210,7 +2210,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code showEllipsoidHorizonSurfaces} property as a {@code reference} value.  The {@code showEllipsoidHorizonSurfaces} property specifies whether or not ellipsoid horizon surfaces are shown.
+    Writes a value for the {@code showEllipsoidHorizonSurfaces} property as a {@code reference} value.  The {@code showEllipsoidHorizonSurfaces} property specifies whether or not ellipsoid horizon surfaces are shown. If not specified, the default value is {@code true}.
     
     
 
@@ -2229,7 +2229,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code showEllipsoidHorizonSurfaces} property as a {@code reference} value.  The {@code showEllipsoidHorizonSurfaces} property specifies whether or not ellipsoid horizon surfaces are shown.
+    Writes a value for the {@code showEllipsoidHorizonSurfaces} property as a {@code reference} value.  The {@code showEllipsoidHorizonSurfaces} property specifies whether or not ellipsoid horizon surfaces are shown. If not specified, the default value is {@code true}.
     
     
 
@@ -2248,7 +2248,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code showEllipsoidHorizonSurfaces} property as a {@code reference} value.  The {@code showEllipsoidHorizonSurfaces} property specifies whether or not ellipsoid horizon surfaces are shown.
+    Writes a value for the {@code showEllipsoidHorizonSurfaces} property as a {@code reference} value.  The {@code showEllipsoidHorizonSurfaces} property specifies whether or not ellipsoid horizon surfaces are shown. If not specified, the default value is {@code true}.
     
     
     
@@ -2269,7 +2269,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code showEllipsoidHorizonSurfaces} property as a {@code reference} value.  The {@code showEllipsoidHorizonSurfaces} property specifies whether or not ellipsoid horizon surfaces are shown.
+    Writes a value for the {@code showEllipsoidHorizonSurfaces} property as a {@code reference} value.  The {@code showEllipsoidHorizonSurfaces} property specifies whether or not ellipsoid horizon surfaces are shown. If not specified, the default value is {@code true}.
     
     
     
@@ -2289,7 +2289,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code ellipsoidHorizonSurfaceMaterial} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code ellipsoidHorizonSurfaceMaterial} property defines the material to use for the cone's ellipsoid horizon surfaces.
+    *  Gets the writer for the {@code ellipsoidHorizonSurfaceMaterial} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code ellipsoidHorizonSurfaceMaterial} property defines the material to use for the sensor's ellipsoid horizon surfaces. If not specified, the default value is solid white.
     
 
     */
@@ -2300,7 +2300,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Opens and returns the writer for the {@code ellipsoidHorizonSurfaceMaterial} property.  The {@code ellipsoidHorizonSurfaceMaterial} property defines the material to use for the cone's ellipsoid horizon surfaces.
+    Opens and returns the writer for the {@code ellipsoidHorizonSurfaceMaterial} property.  The {@code ellipsoidHorizonSurfaceMaterial} property defines the material to use for the sensor's ellipsoid horizon surfaces. If not specified, the default value is solid white.
     
 
     */
@@ -2311,7 +2311,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code showDomeSurfaces} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showDomeSurfaces} property defines whether or not dome surfaces are shown.
+    *  Gets the writer for the {@code showDomeSurfaces} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showDomeSurfaces} property defines whether or not dome surfaces are shown. If not specified, the default value is {@code true}.
     
 
     */
@@ -2322,7 +2322,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Opens and returns the writer for the {@code showDomeSurfaces} property.  The {@code showDomeSurfaces} property defines whether or not dome surfaces are shown.
+    Opens and returns the writer for the {@code showDomeSurfaces} property.  The {@code showDomeSurfaces} property defines whether or not dome surfaces are shown. If not specified, the default value is {@code true}.
     
 
     */
@@ -2334,7 +2334,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code showDomeSurfaces} property as a {@code boolean} value.  The {@code showDomeSurfaces} property specifies whether or not dome surfaces are shown.
+    Writes a value for the {@code showDomeSurfaces} property as a {@code boolean} value.  The {@code showDomeSurfaces} property specifies whether or not dome surfaces are shown. If not specified, the default value is {@code true}.
     
     
 
@@ -2353,7 +2353,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code showDomeSurfaces} property as a {@code reference} value.  The {@code showDomeSurfaces} property specifies whether or not dome surfaces are shown.
+    Writes a value for the {@code showDomeSurfaces} property as a {@code reference} value.  The {@code showDomeSurfaces} property specifies whether or not dome surfaces are shown. If not specified, the default value is {@code true}.
     
     
 
@@ -2372,7 +2372,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code showDomeSurfaces} property as a {@code reference} value.  The {@code showDomeSurfaces} property specifies whether or not dome surfaces are shown.
+    Writes a value for the {@code showDomeSurfaces} property as a {@code reference} value.  The {@code showDomeSurfaces} property specifies whether or not dome surfaces are shown. If not specified, the default value is {@code true}.
     
     
 
@@ -2391,7 +2391,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code showDomeSurfaces} property as a {@code reference} value.  The {@code showDomeSurfaces} property specifies whether or not dome surfaces are shown.
+    Writes a value for the {@code showDomeSurfaces} property as a {@code reference} value.  The {@code showDomeSurfaces} property specifies whether or not dome surfaces are shown. If not specified, the default value is {@code true}.
     
     
     
@@ -2412,7 +2412,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code showDomeSurfaces} property as a {@code reference} value.  The {@code showDomeSurfaces} property specifies whether or not dome surfaces are shown.
+    Writes a value for the {@code showDomeSurfaces} property as a {@code reference} value.  The {@code showDomeSurfaces} property specifies whether or not dome surfaces are shown. If not specified, the default value is {@code true}.
     
     
     
@@ -2432,7 +2432,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code domeSurfaceMaterial} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code domeSurfaceMaterial} property defines the material to use for the cone's dome surfaces.
+    *  Gets the writer for the {@code domeSurfaceMaterial} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code domeSurfaceMaterial} property defines the material to use for the sensor's dome surfaces. If not specified, the default value is solid white.
     
 
     */
@@ -2443,7 +2443,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Opens and returns the writer for the {@code domeSurfaceMaterial} property.  The {@code domeSurfaceMaterial} property defines the material to use for the cone's dome surfaces.
+    Opens and returns the writer for the {@code domeSurfaceMaterial} property.  The {@code domeSurfaceMaterial} property defines the material to use for the sensor's dome surfaces. If not specified, the default value is solid white.
     
 
     */
@@ -2454,7 +2454,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code portionToDisplay} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code portionToDisplay} property defines what part of the sensor should be displayed.
+    *  Gets the writer for the {@code portionToDisplay} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code portionToDisplay} property defines what part of the sensor should be displayed. If not specified, the default value is COMPLETE.
     
 
     */
@@ -2465,7 +2465,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Opens and returns the writer for the {@code portionToDisplay} property.  The {@code portionToDisplay} property defines what part of the sensor should be displayed.
+    Opens and returns the writer for the {@code portionToDisplay} property.  The {@code portionToDisplay} property defines what part of the sensor should be displayed. If not specified, the default value is COMPLETE.
     
 
     */
@@ -2477,7 +2477,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code portionToDisplay} property as a {@code portionToDisplay} value.  The {@code portionToDisplay} property specifies what part of the sensor should be displayed.
+    Writes a value for the {@code portionToDisplay} property as a {@code portionToDisplay} value.  The {@code portionToDisplay} property specifies what part of the sensor should be displayed. If not specified, the default value is COMPLETE.
     
     
 
@@ -2496,7 +2496,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code portionToDisplay} property as a {@code reference} value.  The {@code portionToDisplay} property specifies what part of the sensor should be displayed.
+    Writes a value for the {@code portionToDisplay} property as a {@code reference} value.  The {@code portionToDisplay} property specifies what part of the sensor should be displayed. If not specified, the default value is COMPLETE.
     
     
 
@@ -2515,7 +2515,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code portionToDisplay} property as a {@code reference} value.  The {@code portionToDisplay} property specifies what part of the sensor should be displayed.
+    Writes a value for the {@code portionToDisplay} property as a {@code reference} value.  The {@code portionToDisplay} property specifies what part of the sensor should be displayed. If not specified, the default value is COMPLETE.
     
     
 
@@ -2534,7 +2534,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code portionToDisplay} property as a {@code reference} value.  The {@code portionToDisplay} property specifies what part of the sensor should be displayed.
+    Writes a value for the {@code portionToDisplay} property as a {@code reference} value.  The {@code portionToDisplay} property specifies what part of the sensor should be displayed. If not specified, the default value is COMPLETE.
     
     
     
@@ -2555,7 +2555,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code portionToDisplay} property as a {@code reference} value.  The {@code portionToDisplay} property specifies what part of the sensor should be displayed.
+    Writes a value for the {@code portionToDisplay} property as a {@code reference} value.  The {@code portionToDisplay} property specifies what part of the sensor should be displayed. If not specified, the default value is COMPLETE.
     
     
     
@@ -2575,7 +2575,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code environmentConstraint} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code environmentConstraint} property defines whether or not the sensor will intersect the environment, e.g. terrain or models.
+    *  Gets the writer for the {@code environmentConstraint} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code environmentConstraint} property defines whether or not the sensor will intersect the environment, e.g. terrain or models. If not specified, the default value is {@code false}.
     
 
     */
@@ -2586,7 +2586,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Opens and returns the writer for the {@code environmentConstraint} property.  The {@code environmentConstraint} property defines whether or not the sensor will intersect the environment, e.g. terrain or models.
+    Opens and returns the writer for the {@code environmentConstraint} property.  The {@code environmentConstraint} property defines whether or not the sensor will intersect the environment, e.g. terrain or models. If not specified, the default value is {@code false}.
     
 
     */
@@ -2598,7 +2598,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code environmentConstraint} property as a {@code boolean} value.  The {@code environmentConstraint} property specifies whether or not the sensor will intersect the environment, e.g. terrain or models.
+    Writes a value for the {@code environmentConstraint} property as a {@code boolean} value.  The {@code environmentConstraint} property specifies whether or not the sensor will intersect the environment, e.g. terrain or models. If not specified, the default value is {@code false}.
     
     
 
@@ -2617,7 +2617,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code environmentConstraint} property as a {@code reference} value.  The {@code environmentConstraint} property specifies whether or not the sensor will intersect the environment, e.g. terrain or models.
+    Writes a value for the {@code environmentConstraint} property as a {@code reference} value.  The {@code environmentConstraint} property specifies whether or not the sensor will intersect the environment, e.g. terrain or models. If not specified, the default value is {@code false}.
     
     
 
@@ -2636,7 +2636,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code environmentConstraint} property as a {@code reference} value.  The {@code environmentConstraint} property specifies whether or not the sensor will intersect the environment, e.g. terrain or models.
+    Writes a value for the {@code environmentConstraint} property as a {@code reference} value.  The {@code environmentConstraint} property specifies whether or not the sensor will intersect the environment, e.g. terrain or models. If not specified, the default value is {@code false}.
     
     
 
@@ -2655,7 +2655,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code environmentConstraint} property as a {@code reference} value.  The {@code environmentConstraint} property specifies whether or not the sensor will intersect the environment, e.g. terrain or models.
+    Writes a value for the {@code environmentConstraint} property as a {@code reference} value.  The {@code environmentConstraint} property specifies whether or not the sensor will intersect the environment, e.g. terrain or models. If not specified, the default value is {@code false}.
     
     
     
@@ -2676,7 +2676,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code environmentConstraint} property as a {@code reference} value.  The {@code environmentConstraint} property specifies whether or not the sensor will intersect the environment, e.g. terrain or models.
+    Writes a value for the {@code environmentConstraint} property as a {@code reference} value.  The {@code environmentConstraint} property specifies whether or not the sensor will intersect the environment, e.g. terrain or models. If not specified, the default value is {@code false}.
     
     
     
@@ -2696,7 +2696,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code showEnvironmentOcclusion} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showEnvironmentOcclusion} property defines whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
+    *  Gets the writer for the {@code showEnvironmentOcclusion} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showEnvironmentOcclusion} property defines whether or not the portion of the terrain occluded by the environment will be drawn with a separate material. If not specified, the default value is {@code false}.
     
 
     */
@@ -2707,7 +2707,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Opens and returns the writer for the {@code showEnvironmentOcclusion} property.  The {@code showEnvironmentOcclusion} property defines whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
+    Opens and returns the writer for the {@code showEnvironmentOcclusion} property.  The {@code showEnvironmentOcclusion} property defines whether or not the portion of the terrain occluded by the environment will be drawn with a separate material. If not specified, the default value is {@code false}.
     
 
     */
@@ -2719,7 +2719,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code showEnvironmentOcclusion} property as a {@code boolean} value.  The {@code showEnvironmentOcclusion} property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
+    Writes a value for the {@code showEnvironmentOcclusion} property as a {@code boolean} value.  The {@code showEnvironmentOcclusion} property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material. If not specified, the default value is {@code false}.
     
     
 
@@ -2738,7 +2738,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code showEnvironmentOcclusion} property as a {@code reference} value.  The {@code showEnvironmentOcclusion} property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
+    Writes a value for the {@code showEnvironmentOcclusion} property as a {@code reference} value.  The {@code showEnvironmentOcclusion} property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material. If not specified, the default value is {@code false}.
     
     
 
@@ -2757,7 +2757,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code showEnvironmentOcclusion} property as a {@code reference} value.  The {@code showEnvironmentOcclusion} property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
+    Writes a value for the {@code showEnvironmentOcclusion} property as a {@code reference} value.  The {@code showEnvironmentOcclusion} property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material. If not specified, the default value is {@code false}.
     
     
 
@@ -2776,7 +2776,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code showEnvironmentOcclusion} property as a {@code reference} value.  The {@code showEnvironmentOcclusion} property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
+    Writes a value for the {@code showEnvironmentOcclusion} property as a {@code reference} value.  The {@code showEnvironmentOcclusion} property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material. If not specified, the default value is {@code false}.
     
     
     
@@ -2797,7 +2797,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code showEnvironmentOcclusion} property as a {@code reference} value.  The {@code showEnvironmentOcclusion} property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.
+    Writes a value for the {@code showEnvironmentOcclusion} property as a {@code reference} value.  The {@code showEnvironmentOcclusion} property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material. If not specified, the default value is {@code false}.
     
     
     
@@ -2817,7 +2817,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code environmentOcclusionMaterial} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code environmentOcclusionMaterial} property defines the material to use for the portion of the sensor occluded by the environment.
+    *  Gets the writer for the {@code environmentOcclusionMaterial} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code environmentOcclusionMaterial} property defines the material to use for the portion of the sensor occluded by the environment. If not specified, the default value is solid white.
     
 
     */
@@ -2828,7 +2828,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Opens and returns the writer for the {@code environmentOcclusionMaterial} property.  The {@code environmentOcclusionMaterial} property defines the material to use for the portion of the sensor occluded by the environment.
+    Opens and returns the writer for the {@code environmentOcclusionMaterial} property.  The {@code environmentOcclusionMaterial} property defines the material to use for the portion of the sensor occluded by the environment. If not specified, the default value is solid white.
     
 
     */
@@ -2839,7 +2839,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code showEnvironmentIntersection} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showEnvironmentIntersection} property defines whether or not a line showing where the sensor intersects the environment will be drawn.
+    *  Gets the writer for the {@code showEnvironmentIntersection} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showEnvironmentIntersection} property defines whether or not a line showing where the sensor intersects the environment will be drawn. If not specified, the default value is {@code false}.
     
 
     */
@@ -2850,7 +2850,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Opens and returns the writer for the {@code showEnvironmentIntersection} property.  The {@code showEnvironmentIntersection} property defines whether or not a line showing where the sensor intersects the environment will be drawn.
+    Opens and returns the writer for the {@code showEnvironmentIntersection} property.  The {@code showEnvironmentIntersection} property defines whether or not a line showing where the sensor intersects the environment will be drawn. If not specified, the default value is {@code false}.
     
 
     */
@@ -2862,7 +2862,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code showEnvironmentIntersection} property as a {@code boolean} value.  The {@code showEnvironmentIntersection} property specifies whether or not a line showing where the sensor intersects the environment will be drawn.
+    Writes a value for the {@code showEnvironmentIntersection} property as a {@code boolean} value.  The {@code showEnvironmentIntersection} property specifies whether or not a line showing where the sensor intersects the environment will be drawn. If not specified, the default value is {@code false}.
     
     
 
@@ -2881,7 +2881,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code showEnvironmentIntersection} property as a {@code reference} value.  The {@code showEnvironmentIntersection} property specifies whether or not a line showing where the sensor intersects the environment will be drawn.
+    Writes a value for the {@code showEnvironmentIntersection} property as a {@code reference} value.  The {@code showEnvironmentIntersection} property specifies whether or not a line showing where the sensor intersects the environment will be drawn. If not specified, the default value is {@code false}.
     
     
 
@@ -2900,7 +2900,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code showEnvironmentIntersection} property as a {@code reference} value.  The {@code showEnvironmentIntersection} property specifies whether or not a line showing where the sensor intersects the environment will be drawn.
+    Writes a value for the {@code showEnvironmentIntersection} property as a {@code reference} value.  The {@code showEnvironmentIntersection} property specifies whether or not a line showing where the sensor intersects the environment will be drawn. If not specified, the default value is {@code false}.
     
     
 
@@ -2919,7 +2919,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code showEnvironmentIntersection} property as a {@code reference} value.  The {@code showEnvironmentIntersection} property specifies whether or not a line showing where the sensor intersects the environment will be drawn.
+    Writes a value for the {@code showEnvironmentIntersection} property as a {@code reference} value.  The {@code showEnvironmentIntersection} property specifies whether or not a line showing where the sensor intersects the environment will be drawn. If not specified, the default value is {@code false}.
     
     
     
@@ -2940,7 +2940,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code showEnvironmentIntersection} property as a {@code reference} value.  The {@code showEnvironmentIntersection} property specifies whether or not a line showing where the sensor intersects the environment will be drawn.
+    Writes a value for the {@code showEnvironmentIntersection} property as a {@code reference} value.  The {@code showEnvironmentIntersection} property specifies whether or not a line showing where the sensor intersects the environment will be drawn. If not specified, the default value is {@code false}.
     
     
     
@@ -2960,7 +2960,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code environmentIntersectionColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code environmentIntersectionColor} property defines the color of the intersection line between the sensor and the environment.
+    *  Gets the writer for the {@code environmentIntersectionColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code environmentIntersectionColor} property defines the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
     
 
     */
@@ -2971,7 +2971,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Opens and returns the writer for the {@code environmentIntersectionColor} property.  The {@code environmentIntersectionColor} property defines the color of the intersection line between the sensor and the environment.
+    Opens and returns the writer for the {@code environmentIntersectionColor} property.  The {@code environmentIntersectionColor} property defines the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
     
 
     */
@@ -2983,7 +2983,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code environmentIntersectionColor} property as a {@code rgba} value.  The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment.
+    Writes a value for the {@code environmentIntersectionColor} property as a {@code rgba} value.  The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
     
     
 
@@ -3002,7 +3002,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code environmentIntersectionColor} property as a {@code rgba} value.  The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment.
+    Writes a value for the {@code environmentIntersectionColor} property as a {@code rgba} value.  The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
     
     
     
@@ -3027,7 +3027,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code environmentIntersectionColor} property as a {@code rgba} value.  The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment.
+    Writes a value for the {@code environmentIntersectionColor} property as a {@code rgba} value.  The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
     
     
     
@@ -3048,7 +3048,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code environmentIntersectionColor} property as a {@code rgba} value.  The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment.
+    Writes a value for the {@code environmentIntersectionColor} property as a {@code rgba} value.  The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
     
     
     
@@ -3073,7 +3073,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code environmentIntersectionColor} property as a {@code rgbaf} value.  The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment.
+    Writes a value for the {@code environmentIntersectionColor} property as a {@code rgbaf} value.  The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
     
     
 
@@ -3092,7 +3092,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code environmentIntersectionColor} property as a {@code rgbaf} value.  The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment.
+    Writes a value for the {@code environmentIntersectionColor} property as a {@code rgbaf} value.  The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
     
     
     
@@ -3117,7 +3117,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code environmentIntersectionColor} property as a {@code rgbaf} value.  The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment.
+    Writes a value for the {@code environmentIntersectionColor} property as a {@code rgbaf} value.  The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
     
     
     
@@ -3138,7 +3138,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code environmentIntersectionColor} property as a {@code rgbaf} value.  The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment.
+    Writes a value for the {@code environmentIntersectionColor} property as a {@code rgbaf} value.  The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
     
     
     
@@ -3163,7 +3163,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code environmentIntersectionColor} property as a {@code reference} value.  The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment.
+    Writes a value for the {@code environmentIntersectionColor} property as a {@code reference} value.  The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
     
     
 
@@ -3182,7 +3182,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code environmentIntersectionColor} property as a {@code reference} value.  The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment.
+    Writes a value for the {@code environmentIntersectionColor} property as a {@code reference} value.  The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
     
     
 
@@ -3201,7 +3201,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code environmentIntersectionColor} property as a {@code reference} value.  The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment.
+    Writes a value for the {@code environmentIntersectionColor} property as a {@code reference} value.  The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
     
     
     
@@ -3222,7 +3222,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code environmentIntersectionColor} property as a {@code reference} value.  The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment.
+    Writes a value for the {@code environmentIntersectionColor} property as a {@code reference} value.  The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
     
     
     
@@ -3242,7 +3242,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code environmentIntersectionWidth} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code environmentIntersectionWidth} property defines the width in meters of the intersection line between the sensor and the environment.
+    *  Gets the writer for the {@code environmentIntersectionWidth} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code environmentIntersectionWidth} property defines the width in meters of the intersection line between the sensor and the environment. If not specified, the default value is 5.0.
     
 
     */
@@ -3253,7 +3253,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Opens and returns the writer for the {@code environmentIntersectionWidth} property.  The {@code environmentIntersectionWidth} property defines the width in meters of the intersection line between the sensor and the environment.
+    Opens and returns the writer for the {@code environmentIntersectionWidth} property.  The {@code environmentIntersectionWidth} property defines the width in meters of the intersection line between the sensor and the environment. If not specified, the default value is 5.0.
     
 
     */
@@ -3265,7 +3265,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code environmentIntersectionWidth} property as a {@code number} value.  The {@code environmentIntersectionWidth} property specifies the width in meters of the intersection line between the sensor and the environment.
+    Writes a value for the {@code environmentIntersectionWidth} property as a {@code number} value.  The {@code environmentIntersectionWidth} property specifies the width in meters of the intersection line between the sensor and the environment. If not specified, the default value is 5.0.
     
     
 
@@ -3284,7 +3284,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code environmentIntersectionWidth} property as a {@code number} value.  The {@code environmentIntersectionWidth} property specifies the width in meters of the intersection line between the sensor and the environment.
+    Writes a value for the {@code environmentIntersectionWidth} property as a {@code number} value.  The {@code environmentIntersectionWidth} property specifies the width in meters of the intersection line between the sensor and the environment. If not specified, the default value is 5.0.
     
     
     
@@ -3305,7 +3305,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code environmentIntersectionWidth} property as a {@code number} value.  The {@code environmentIntersectionWidth} property specifies the width in meters of the intersection line between the sensor and the environment.
+    Writes a value for the {@code environmentIntersectionWidth} property as a {@code number} value.  The {@code environmentIntersectionWidth} property specifies the width in meters of the intersection line between the sensor and the environment. If not specified, the default value is 5.0.
     
     
     
@@ -3330,7 +3330,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code environmentIntersectionWidth} property as a {@code reference} value.  The {@code environmentIntersectionWidth} property specifies the width in meters of the intersection line between the sensor and the environment.
+    Writes a value for the {@code environmentIntersectionWidth} property as a {@code reference} value.  The {@code environmentIntersectionWidth} property specifies the width in meters of the intersection line between the sensor and the environment. If not specified, the default value is 5.0.
     
     
 
@@ -3349,7 +3349,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code environmentIntersectionWidth} property as a {@code reference} value.  The {@code environmentIntersectionWidth} property specifies the width in meters of the intersection line between the sensor and the environment.
+    Writes a value for the {@code environmentIntersectionWidth} property as a {@code reference} value.  The {@code environmentIntersectionWidth} property specifies the width in meters of the intersection line between the sensor and the environment. If not specified, the default value is 5.0.
     
     
 
@@ -3368,7 +3368,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code environmentIntersectionWidth} property as a {@code reference} value.  The {@code environmentIntersectionWidth} property specifies the width in meters of the intersection line between the sensor and the environment.
+    Writes a value for the {@code environmentIntersectionWidth} property as a {@code reference} value.  The {@code environmentIntersectionWidth} property specifies the width in meters of the intersection line between the sensor and the environment. If not specified, the default value is 5.0.
     
     
     
@@ -3389,7 +3389,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code environmentIntersectionWidth} property as a {@code reference} value.  The {@code environmentIntersectionWidth} property specifies the width in meters of the intersection line between the sensor and the environment.
+    Writes a value for the {@code environmentIntersectionWidth} property as a {@code reference} value.  The {@code environmentIntersectionWidth} property specifies the width in meters of the intersection line between the sensor and the environment. If not specified, the default value is 5.0.
     
     
     
