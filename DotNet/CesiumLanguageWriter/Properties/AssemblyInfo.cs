@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Analytical Graphics, Inc.")]
 [assembly: AssemblyProduct("CesiumLanguageWriter")]
-[assembly: AssemblyCopyright("Copyright © 2011-2017 Cesium Contributors")]
+[assembly: AssemblyCopyright("Copyright © 2011-2018 Cesium Contributors")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
