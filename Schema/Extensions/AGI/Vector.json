@@ -14,11 +14,13 @@
     "properties": {
         "show": {
             "$ref": "../../Boolean.json",
-            "description": "Whether or not the vector is shown."
+            "description": "Whether or not the vector is shown.",
+            "default": true
         },
         "color": {
             "$ref": "../../Color.json",
-            "description": "The color of the vector."
+            "description": "The color of the vector.",
+            "default": "white"
         },
         "direction": {
             "$ref": "../../Direction.json",
@@ -26,11 +28,14 @@
         },
         "length": {
             "$ref": "../../Double.json",
-            "description": "The graphical length of the vector."
+            "description": "The graphical length of the vector, in meters.",
+            "default": 1.0
         },
         "minimumLengthInPixels": {
             "$ref": "../../Double.json",
-            "description": "The minimum graphical length of the vector in pixels."
+            "description": "The minimum graphical length of the vector in pixels.",
+            "default": 0.0
         }
-    }
+    },
+    "required": [ "direction" ]
 }

@@ -14,7 +14,8 @@
     "properties": {
         "show": {
             "$ref": "../../Boolean.json",
-            "description": "Whether or not the entire custom sensor is shown."
+            "description": "Whether or not the entire custom sensor is shown.",
+            "default": true
         },
         "directions": {
             "$ref": "../../DirectionList.json",
@@ -22,79 +23,99 @@
         },
         "radius": {
             "$ref": "../../Double.json",
-            "description": "The radial limit of the sensor."
+            "description": "The radial limit of the sensor.",
+            "default": "Infinity"
         },
         "showIntersection": {
             "$ref": "../../Boolean.json",
-            "description": "Whether or not the intersection of the sensor with the Earth is shown."
+            "description": "Whether or not the intersection of the sensor with the Earth is shown.",
+            "default": true
         },
         "intersectionColor": {
             "$ref": "../../Color.json",
-            "description": "The color of the intersection of the sensor with the Earth."
+            "description": "The color of the intersection of the sensor with the Earth.",
+            "default": "white"
         },
         "intersectionWidth": {
             "$ref": "../../Double.json",
-            "description": "The width of the intersection in pixels."
+            "description": "The width of the intersection in pixels.",
+            "default": 1.0
         },
         "showLateralSurfaces": {
             "$ref": "../../Boolean.json",
-            "description": "Whether or not the lateral surfaces of the sensor are shown."
+            "description": "Whether or not the lateral surfaces, i.e., the outer sides of the sensor, are shown.",
+            "default": true
         },
         "lateralSurfaceMaterial": {
             "$ref": "../../Material.json",
-            "description": "The material to use for the sensor's lateral surfaces."
+            "description": "The material to use for the sensor's lateral surface, i.e., the outer sides of the sensor.",
+            "default": "solid white"
         },
         "showEllipsoidSurfaces": {
             "$ref": "../../Boolean.json",
-            "description": "Whether or not ellipsoid surfaces are shown."
+            "description": "Whether or not ellipsoid surfaces are shown.",
+            "default": true
         },
         "ellipsoidSurfaceMaterial": {
             "$ref": "../../Material.json",
-            "description": "The material to use for the sensor's ellipsoid surfaces."
+            "description": "The material to use for the sensor's ellipsoid surfaces.",
+            "default": "solid white"
         },
         "showEllipsoidHorizonSurfaces": {
             "$ref": "../../Boolean.json",
-            "description": "Whether or not ellipsoid horizon surfaces are shown."
+            "description": "Whether or not ellipsoid horizon surfaces are shown.",
+            "default": true
         },
         "ellipsoidHorizonSurfaceMaterial": {
             "$ref": "../../Material.json",
-            "description": "The material to use for the sensor's ellipsoid horizon surfaces."
+            "description": "The material to use for the sensor's ellipsoid horizon surfaces.",
+            "default": "solid white"
         },
         "showDomeSurfaces": {
             "$ref": "../../Boolean.json",
-            "description": "Whether or not dome surfaces are shown."
+            "description": "Whether or not dome surfaces are shown.",
+            "default": true
         },
         "domeSurfaceMaterial": {
             "$ref": "../../Material.json",
-            "description": "The material to use for the sensor's dome surfaces."
+            "description": "The material to use for the sensor's dome surfaces.",
+            "default": "solid white"
         },
         "portionToDisplay": {
             "$ref": "../../Extensions/AGI/SensorVolumePortionToDisplay.json",
-            "description": "What part of the sensor should be displayed."
+            "description": "What part of the sensor should be displayed.",
+            "default": "COMPLETE"
         },
         "environmentConstraint": {
             "$ref": "../../Boolean.json",
-            "description": "Whether or not the sensor will intersect the environment, e.g. terrain or models."
+            "description": "Whether or not the sensor will intersect the environment, e.g. terrain or models.",
+            "default": false
         },
         "showEnvironmentOcclusion": {
             "$ref": "../../Boolean.json",
-            "description": "Whether or not the portion of the terrain occluded by the environment will be drawn with a separate material."
+            "description": "Whether or not the portion of the terrain occluded by the environment will be drawn with a separate material.",
+            "default": false
         },
         "environmentOcclusionMaterial": {
             "$ref": "../../Material.json",
-            "description": "The material to use for the portion of the sensor occluded by the environment."
+            "description": "The material to use for the portion of the sensor occluded by the environment.",
+            "default": "solid white"
         },
         "showEnvironmentIntersection": {
             "$ref": "../../Boolean.json",
-            "description": "Whether or not a line showing where the sensor intersects the environment will be drawn."
+            "description": "Whether or not a line showing where the sensor intersects the environment will be drawn.",
+            "default": false
         },
         "environmentIntersectionColor": {
             "$ref": "../../Color.json",
-            "description": "The color of the intersection line between the sensor and the environment."
+            "description": "The color of the intersection line between the sensor and the environment.",
+            "default": "white"
         },
         "environmentIntersectionWidth": {
             "$ref": "../../Double.json",
-            "description": "The width in meters of the intersection line between the sensor and the environment."
+            "description": "The width in meters of the intersection line between the sensor and the environment.",
+            "default": 5.0
         }
-    }
+    },
+    "required": [ "directions" ]
 }
