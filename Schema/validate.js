@@ -6,7 +6,7 @@ function requireJSON(path) {
     return JSON.parse(fs.readFileSync(path, 'utf8'));
 }
 
-var schemas = glob.sync('*.json').concat(glob.sync('Extensions/**/*.json')).map(function (filename) {
+var schemas = glob.sync('*.json', { ignore: 'package.json' }).concat(glob.sync('Extensions/**/*.json')).map(function (filename) {
     return requireJSON(filename);
 });
 
