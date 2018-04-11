@@ -11,7 +11,7 @@ import javax.annotation.Nonnull;
 
 /**
  *  
- Writes a {@code ShadowMode} to a {@link CesiumOutputStream}.  A {@code ShadowMode} is whether or not an object casts or receives shadows from each light source when shadows are enabled.
+ Writes a {@code ShadowMode} to a {@link CesiumOutputStream}. A {@code ShadowMode} is whether or not an object casts or receives shadows from each light source when shadows are enabled.
  
 
  */
@@ -185,7 +185,7 @@ public class ShadowModeCesiumWriter extends CesiumPropertyWriter<ShadowModeCesiu
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code ShadowMode} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code ShadowMode} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
@@ -206,7 +206,7 @@ public class ShadowModeCesiumWriter extends CesiumPropertyWriter<ShadowModeCesiu
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 

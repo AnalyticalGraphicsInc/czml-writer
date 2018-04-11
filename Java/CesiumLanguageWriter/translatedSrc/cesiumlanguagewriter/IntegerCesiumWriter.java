@@ -11,7 +11,7 @@ import javax.annotation.Nonnull;
 
 /**
  *  
- Writes a {@code Integer} to a {@link CesiumOutputStream}.  A {@code Integer} is an integer number.
+ Writes a {@code Integer} to a {@link CesiumOutputStream}. A {@code Integer} is an integer number.
  
 
  */
@@ -219,7 +219,7 @@ public class IntegerCesiumWriter extends CesiumInterpolatablePropertyWriter<Inte
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumInterpolatableValuePropertyWriter} to write a value in {@code Number} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumInterpolatableValuePropertyWriter} to write a value in {@code Number} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
@@ -244,7 +244,7 @@ public class IntegerCesiumWriter extends CesiumInterpolatablePropertyWriter<Inte
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 

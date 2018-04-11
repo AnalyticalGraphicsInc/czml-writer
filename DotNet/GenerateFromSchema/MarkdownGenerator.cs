@@ -35,7 +35,7 @@ namespace GenerateFromSchema
 
             using (var output = new StreamWriter(Path.Combine(m_outputDirectory, $"{fileName}.md")))
             {
-                output.WriteLine("This page describes the possible content of a CZML document or stream.  Please read [[CZML Structure]] for an explanation of how a CZML document is put together.");
+                output.WriteLine("This page describes the possible content of a CZML document or stream. Please read [[CZML Structure]] for an explanation of how a CZML document is put together.");
                 output.WriteLine();
 
                 output.WriteLine("# {0}{1}", schema.Name, isValue ? " (value)" : "");

@@ -7,8 +7,6 @@
     <content url="file://$MODULE_DIR$/../../../CesiumLanguageWriter">
       <sourceFolder url="file://$MODULE_DIR$/../../../CesiumLanguageWriter/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../../CesiumLanguageWriter/translatedSrc" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../../CesiumLanguageWriter/src/test/java" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/../../../CesiumLanguageWriter/src/test/resources" type="java-test-resource" />
       <excludeFolder url="file://$MODULE_DIR$/../../../CesiumLanguageWriter/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/../../../CesiumLanguageWriter/build" />
       <excludeFolder url="file://$MODULE_DIR$/../../../CesiumLanguageWriter/out" />

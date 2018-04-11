@@ -12,7 +12,7 @@ import javax.annotation.Nonnull;
 
 /**
  *  
- Writes a {@code DistanceDisplayCondition} to a {@link CesiumOutputStream}.  A {@code DistanceDisplayCondition} is indicates the visibility of an object based on the distance to the camera.
+ Writes a {@code DistanceDisplayCondition} to a {@link CesiumOutputStream}. A {@code DistanceDisplayCondition} is indicates the visibility of an object based on the distance to the camera.
  
 
  */
@@ -230,7 +230,7 @@ public class DistanceDisplayConditionCesiumWriter extends CesiumInterpolatablePr
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumInterpolatableValuePropertyWriter} to write a value in {@code DistanceDisplayCondition} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumInterpolatableValuePropertyWriter} to write a value in {@code DistanceDisplayCondition} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
@@ -255,7 +255,7 @@ public class DistanceDisplayConditionCesiumWriter extends CesiumInterpolatablePr
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 

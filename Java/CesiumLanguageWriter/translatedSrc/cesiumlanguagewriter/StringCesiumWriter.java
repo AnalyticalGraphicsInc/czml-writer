@@ -10,7 +10,7 @@ import javax.annotation.Nonnull;
 
 /**
  *  
- Writes a {@code String} to a {@link CesiumOutputStream}.  A {@code String} is a string value.  The string can optionally vary with time.
+ Writes a {@code String} to a {@link CesiumOutputStream}. A {@code String} is a string value. The string can optionally vary with time.
  
 
  */
@@ -184,7 +184,7 @@ public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter>
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code String} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code String} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
@@ -204,7 +204,7 @@ public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter>
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 

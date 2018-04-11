@@ -11,7 +11,7 @@ import javax.annotation.Nonnull;
 
 /**
  *  
- Writes a {@code StripeOrientation} to a {@link CesiumOutputStream}.  A {@code StripeOrientation} is the orientation of stripes in a stripe material.
+ Writes a {@code StripeOrientation} to a {@link CesiumOutputStream}. A {@code StripeOrientation} is the orientation of stripes in a stripe material.
  
 
  */
@@ -185,7 +185,7 @@ public class StripeOrientationCesiumWriter extends CesiumPropertyWriter<StripeOr
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code StripeOrientation} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code StripeOrientation} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
@@ -206,7 +206,7 @@ public class StripeOrientationCesiumWriter extends CesiumPropertyWriter<StripeOr
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 

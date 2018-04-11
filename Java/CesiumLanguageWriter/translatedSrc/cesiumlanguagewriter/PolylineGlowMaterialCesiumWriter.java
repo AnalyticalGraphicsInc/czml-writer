@@ -14,7 +14,7 @@ import javax.annotation.Nonnull;
 
 /**
  *  
- Writes a {@code PolylineGlowMaterial} to a {@link CesiumOutputStream}.  A {@code PolylineGlowMaterial} is a material that fills the surface of a line with a glowing color.
+ Writes a {@code PolylineGlowMaterial} to a {@link CesiumOutputStream}. A {@code PolylineGlowMaterial} is a material that fills the surface of a line with a glowing color.
  
 
  */
@@ -88,7 +88,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  Gets the writer for the {@code color} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code color} property defines the color of the surface. If not specified, the default value is white.
+    *  Gets the writer for the {@code color} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code color} property defines the color of the surface. If not specified, the default value is white.
     
 
     */
@@ -99,7 +99,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Opens and returns the writer for the {@code color} property.  The {@code color} property defines the color of the surface. If not specified, the default value is white.
+    Opens and returns the writer for the {@code color} property. The {@code color} property defines the color of the surface. If not specified, the default value is white.
     
 
     */
@@ -111,7 +111,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
+    Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
 
@@ -130,7 +130,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
+    Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
     
@@ -155,7 +155,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
+    Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
     
@@ -176,7 +176,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
+    Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
     
@@ -201,7 +201,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
+    Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
 
@@ -220,7 +220,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
+    Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
     
@@ -245,7 +245,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
+    Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
     
@@ -266,7 +266,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
+    Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
     
@@ -291,7 +291,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
+    Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
 
@@ -310,7 +310,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
+    Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
 
@@ -329,7 +329,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
+    Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
     
@@ -350,7 +350,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the surface. If not specified, the default value is white.
+    Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     
     
     
@@ -370,7 +370,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  Gets the writer for the {@code glowPower} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code glowPower} property defines the strength of the glow. If not specified, the default value is 0.25.
+    *  Gets the writer for the {@code glowPower} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code glowPower} property defines the strength of the glow. If not specified, the default value is 0.25.
     
 
     */
@@ -381,7 +381,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Opens and returns the writer for the {@code glowPower} property.  The {@code glowPower} property defines the strength of the glow. If not specified, the default value is 0.25.
+    Opens and returns the writer for the {@code glowPower} property. The {@code glowPower} property defines the strength of the glow. If not specified, the default value is 0.25.
     
 
     */
@@ -393,7 +393,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code glowPower} property as a {@code number} value.  The {@code glowPower} property specifies the strength of the glow. If not specified, the default value is 0.25.
+    Writes a value for the {@code glowPower} property as a {@code number} value. The {@code glowPower} property specifies the strength of the glow. If not specified, the default value is 0.25.
     
     
 
@@ -412,7 +412,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code glowPower} property as a {@code number} value.  The {@code glowPower} property specifies the strength of the glow. If not specified, the default value is 0.25.
+    Writes a value for the {@code glowPower} property as a {@code number} value. The {@code glowPower} property specifies the strength of the glow. If not specified, the default value is 0.25.
     
     
     
@@ -433,7 +433,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code glowPower} property as a {@code number} value.  The {@code glowPower} property specifies the strength of the glow. If not specified, the default value is 0.25.
+    Writes a value for the {@code glowPower} property as a {@code number} value. The {@code glowPower} property specifies the strength of the glow. If not specified, the default value is 0.25.
     
     
     
@@ -458,7 +458,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code glowPower} property as a {@code reference} value.  The {@code glowPower} property specifies the strength of the glow. If not specified, the default value is 0.25.
+    Writes a value for the {@code glowPower} property as a {@code reference} value. The {@code glowPower} property specifies the strength of the glow. If not specified, the default value is 0.25.
     
     
 
@@ -477,7 +477,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code glowPower} property as a {@code reference} value.  The {@code glowPower} property specifies the strength of the glow. If not specified, the default value is 0.25.
+    Writes a value for the {@code glowPower} property as a {@code reference} value. The {@code glowPower} property specifies the strength of the glow. If not specified, the default value is 0.25.
     
     
 
@@ -496,7 +496,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code glowPower} property as a {@code reference} value.  The {@code glowPower} property specifies the strength of the glow. If not specified, the default value is 0.25.
+    Writes a value for the {@code glowPower} property as a {@code reference} value. The {@code glowPower} property specifies the strength of the glow. If not specified, the default value is 0.25.
     
     
     
@@ -517,7 +517,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     /**
     *  
-    Writes a value for the {@code glowPower} property as a {@code reference} value.  The {@code glowPower} property specifies the strength of the glow. If not specified, the default value is 0.25.
+    Writes a value for the {@code glowPower} property as a {@code reference} value. The {@code glowPower} property specifies the strength of the glow. If not specified, the default value is 0.25.
     
     
     

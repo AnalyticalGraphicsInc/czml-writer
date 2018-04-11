@@ -11,7 +11,7 @@ import javax.annotation.Nonnull;
 
 /**
  *  
- Writes a {@code SensorVolumePortionToDisplay} to a {@link CesiumOutputStream}.  A {@code SensorVolumePortionToDisplay} is what part of a sensor should be displayed.
+ Writes a {@code SensorVolumePortionToDisplay} to a {@link CesiumOutputStream}. A {@code SensorVolumePortionToDisplay} is what part of a sensor should be displayed.
  
 
  */
@@ -185,7 +185,7 @@ public class SensorVolumePortionToDisplayCesiumWriter extends CesiumPropertyWrit
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code PortionToDisplay} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code PortionToDisplay} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
@@ -206,7 +206,7 @@ public class SensorVolumePortionToDisplayCesiumWriter extends CesiumPropertyWrit
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 

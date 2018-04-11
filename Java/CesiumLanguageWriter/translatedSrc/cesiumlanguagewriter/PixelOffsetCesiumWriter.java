@@ -12,7 +12,7 @@ import javax.annotation.Nonnull;
 
 /**
  *  
- Writes a {@code PixelOffset} to a {@link CesiumOutputStream}.  A {@code PixelOffset} is a pixel offset in viewport coordinates. A pixel offset is the number of pixels up and to the right to place an element relative to an origin.
+ Writes a {@code PixelOffset} to a {@link CesiumOutputStream}. A {@code PixelOffset} is a pixel offset in viewport coordinates. A pixel offset is the number of pixels up and to the right to place an element relative to an origin.
  
 
  */
@@ -230,7 +230,7 @@ public class PixelOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumInterpolatableValuePropertyWriter} to write a value in {@code Cartesian2} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumInterpolatableValuePropertyWriter} to write a value in {@code Cartesian2} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
@@ -255,7 +255,7 @@ public class PixelOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 

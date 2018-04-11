@@ -20,7 +20,7 @@ import javax.annotation.Nonnull;
 
 /**
  *  
- Writes a {@code Wall} to a {@link CesiumOutputStream}.  A {@code Wall} is a two dimensional wall defined as a line strip and optional maximum and minimum heights, which conforms to the curvature of the globe and can be placed along the surface or at altitude.
+ Writes a {@code Wall} to a {@link CesiumOutputStream}. A {@code Wall} is a two dimensional wall defined as a line strip and optional maximum and minimum heights, which conforms to the curvature of the globe and can be placed along the surface or at altitude.
  
 
  */
@@ -215,7 +215,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the wall is shown. If not specified, the default value is {@code true}.
+    *  Gets the writer for the {@code show} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code show} property defines whether or not the wall is shown. If not specified, the default value is {@code true}.
     
 
     */
@@ -226,7 +226,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code show} property.  The {@code show} property defines whether or not the wall is shown. If not specified, the default value is {@code true}.
+    Opens and returns the writer for the {@code show} property. The {@code show} property defines whether or not the wall is shown. If not specified, the default value is {@code true}.
     
 
     */
@@ -238,7 +238,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code boolean} value.  The {@code show} property specifies whether or not the wall is shown. If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code boolean} value. The {@code show} property specifies whether or not the wall is shown. If not specified, the default value is {@code true}.
     
     
 
@@ -257,7 +257,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the wall is shown. If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the wall is shown. If not specified, the default value is {@code true}.
     
     
 
@@ -276,7 +276,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the wall is shown. If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the wall is shown. If not specified, the default value is {@code true}.
     
     
 
@@ -295,7 +295,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the wall is shown. If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the wall is shown. If not specified, the default value is {@code true}.
     
     
     
@@ -316,7 +316,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the wall is shown. If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the wall is shown. If not specified, the default value is {@code true}.
     
     
     
@@ -336,7 +336,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code positions} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code positions} property defines the array of positions defining the centerline of the wall. This value is required.
+    *  Gets the writer for the {@code positions} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code positions} property defines the array of positions defining the centerline of the wall. This value is required.
     
 
     */
@@ -347,7 +347,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code positions} property.  The {@code positions} property defines the array of positions defining the centerline of the wall. This value is required.
+    Opens and returns the writer for the {@code positions} property. The {@code positions} property defines the array of positions defining the centerline of the wall. This value is required.
     
 
     */
@@ -359,7 +359,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code positions} property as a {@code cartesian} value.  The {@code positions} property specifies the array of positions defining the centerline of the wall. This value is required.
+    Writes a value for the {@code positions} property as a {@code cartesian} value. The {@code positions} property specifies the array of positions defining the centerline of the wall. This value is required.
     
     
 
@@ -378,7 +378,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code positions} property as a {@code cartographicRadians} value.  The {@code positions} property specifies the array of positions defining the centerline of the wall. This value is required.
+    Writes a value for the {@code positions} property as a {@code cartographicRadians} value. The {@code positions} property specifies the array of positions defining the centerline of the wall. This value is required.
     
     
 
@@ -397,7 +397,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code positions} property as a {@code cartographicDegrees} value.  The {@code positions} property specifies the array of positions defining the centerline of the wall. This value is required.
+    Writes a value for the {@code positions} property as a {@code cartographicDegrees} value. The {@code positions} property specifies the array of positions defining the centerline of the wall. This value is required.
     
     
 
@@ -416,7 +416,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code positions} property as a {@code references} value.  The {@code positions} property specifies the array of positions defining the centerline of the wall. This value is required.
+    Writes a value for the {@code positions} property as a {@code references} value. The {@code positions} property specifies the array of positions defining the centerline of the wall. This value is required.
     
     
 
@@ -434,7 +434,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code minimumHeights} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code minimumHeights} property defines the list of heights to be used for the bottom of the wall, instead of the surface.
+    *  Gets the writer for the {@code minimumHeights} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code minimumHeights} property defines the list of heights to be used for the bottom of the wall, instead of the surface.
     
 
     */
@@ -445,7 +445,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code minimumHeights} property.  The {@code minimumHeights} property defines the list of heights to be used for the bottom of the wall, instead of the surface.
+    Opens and returns the writer for the {@code minimumHeights} property. The {@code minimumHeights} property defines the list of heights to be used for the bottom of the wall, instead of the surface.
     
 
     */
@@ -457,7 +457,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code minimumHeights} property as a {@code array} value.  The {@code minimumHeights} property specifies the list of heights to be used for the bottom of the wall, instead of the surface.
+    Writes a value for the {@code minimumHeights} property as a {@code array} value. The {@code minimumHeights} property specifies the list of heights to be used for the bottom of the wall, instead of the surface.
     
     
 
@@ -476,7 +476,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code minimumHeights} property as a {@code references} value.  The {@code minimumHeights} property specifies the list of heights to be used for the bottom of the wall, instead of the surface.
+    Writes a value for the {@code minimumHeights} property as a {@code references} value. The {@code minimumHeights} property specifies the list of heights to be used for the bottom of the wall, instead of the surface.
     
     
 
@@ -494,7 +494,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code maximumHeights} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code maximumHeights} property defines the list of heights to be used for the top of the wall, instead of the height of each position.
+    *  Gets the writer for the {@code maximumHeights} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code maximumHeights} property defines the list of heights to be used for the top of the wall, instead of the height of each position.
     
 
     */
@@ -505,7 +505,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code maximumHeights} property.  The {@code maximumHeights} property defines the list of heights to be used for the top of the wall, instead of the height of each position.
+    Opens and returns the writer for the {@code maximumHeights} property. The {@code maximumHeights} property defines the list of heights to be used for the top of the wall, instead of the height of each position.
     
 
     */
@@ -517,7 +517,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code maximumHeights} property as a {@code array} value.  The {@code maximumHeights} property specifies the list of heights to be used for the top of the wall, instead of the height of each position.
+    Writes a value for the {@code maximumHeights} property as a {@code array} value. The {@code maximumHeights} property specifies the list of heights to be used for the top of the wall, instead of the height of each position.
     
     
 
@@ -536,7 +536,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code maximumHeights} property as a {@code references} value.  The {@code maximumHeights} property specifies the list of heights to be used for the top of the wall, instead of the height of each position.
+    Writes a value for the {@code maximumHeights} property as a {@code references} value. The {@code maximumHeights} property specifies the list of heights to be used for the top of the wall, instead of the height of each position.
     
     
 
@@ -554,7 +554,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code granularity} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code granularity} property defines the sampling distance, in radians. If not specified, the default value is PI / 180.0.
+    *  Gets the writer for the {@code granularity} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code granularity} property defines the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
 
     */
@@ -565,7 +565,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code granularity} property.  The {@code granularity} property defines the sampling distance, in radians. If not specified, the default value is PI / 180.0.
+    Opens and returns the writer for the {@code granularity} property. The {@code granularity} property defines the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
 
     */
@@ -577,7 +577,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code granularity} property as a {@code number} value.  The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
+    Writes a value for the {@code granularity} property as a {@code number} value. The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
     
 
@@ -596,7 +596,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code granularity} property as a {@code number} value.  The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
+    Writes a value for the {@code granularity} property as a {@code number} value. The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
     
     
@@ -617,7 +617,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code granularity} property as a {@code number} value.  The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
+    Writes a value for the {@code granularity} property as a {@code number} value. The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
     
     
@@ -642,7 +642,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code granularity} property as a {@code reference} value.  The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
+    Writes a value for the {@code granularity} property as a {@code reference} value. The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
     
 
@@ -661,7 +661,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code granularity} property as a {@code reference} value.  The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
+    Writes a value for the {@code granularity} property as a {@code reference} value. The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
     
 
@@ -680,7 +680,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code granularity} property as a {@code reference} value.  The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
+    Writes a value for the {@code granularity} property as a {@code reference} value. The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
     
     
@@ -701,7 +701,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code granularity} property as a {@code reference} value.  The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
+    Writes a value for the {@code granularity} property as a {@code reference} value. The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
     
     
@@ -721,7 +721,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code fill} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code fill} property defines whether or not the wall is filled. If not specified, the default value is {@code true}.
+    *  Gets the writer for the {@code fill} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code fill} property defines whether or not the wall is filled. If not specified, the default value is {@code true}.
     
 
     */
@@ -732,7 +732,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code fill} property.  The {@code fill} property defines whether or not the wall is filled. If not specified, the default value is {@code true}.
+    Opens and returns the writer for the {@code fill} property. The {@code fill} property defines whether or not the wall is filled. If not specified, the default value is {@code true}.
     
 
     */
@@ -744,7 +744,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code fill} property as a {@code boolean} value.  The {@code fill} property specifies whether or not the wall is filled. If not specified, the default value is {@code true}.
+    Writes a value for the {@code fill} property as a {@code boolean} value. The {@code fill} property specifies whether or not the wall is filled. If not specified, the default value is {@code true}.
     
     
 
@@ -763,7 +763,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code fill} property as a {@code reference} value.  The {@code fill} property specifies whether or not the wall is filled. If not specified, the default value is {@code true}.
+    Writes a value for the {@code fill} property as a {@code reference} value. The {@code fill} property specifies whether or not the wall is filled. If not specified, the default value is {@code true}.
     
     
 
@@ -782,7 +782,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code fill} property as a {@code reference} value.  The {@code fill} property specifies whether or not the wall is filled. If not specified, the default value is {@code true}.
+    Writes a value for the {@code fill} property as a {@code reference} value. The {@code fill} property specifies whether or not the wall is filled. If not specified, the default value is {@code true}.
     
     
 
@@ -801,7 +801,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code fill} property as a {@code reference} value.  The {@code fill} property specifies whether or not the wall is filled. If not specified, the default value is {@code true}.
+    Writes a value for the {@code fill} property as a {@code reference} value. The {@code fill} property specifies whether or not the wall is filled. If not specified, the default value is {@code true}.
     
     
     
@@ -822,7 +822,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code fill} property as a {@code reference} value.  The {@code fill} property specifies whether or not the wall is filled. If not specified, the default value is {@code true}.
+    Writes a value for the {@code fill} property as a {@code reference} value. The {@code fill} property specifies whether or not the wall is filled. If not specified, the default value is {@code true}.
     
     
     
@@ -842,7 +842,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code material} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code material} property defines the material to display on the surface of the wall. If not specified, the default value is solid white.
+    *  Gets the writer for the {@code material} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code material} property defines the material to display on the surface of the wall. If not specified, the default value is solid white.
     
 
     */
@@ -853,7 +853,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code material} property.  The {@code material} property defines the material to display on the surface of the wall. If not specified, the default value is solid white.
+    Opens and returns the writer for the {@code material} property. The {@code material} property defines the material to display on the surface of the wall. If not specified, the default value is solid white.
     
 
     */
@@ -864,7 +864,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code outline} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outline} property defines whether or not the wall is outlined. If not specified, the default value is {@code false}.
+    *  Gets the writer for the {@code outline} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code outline} property defines whether or not the wall is outlined. If not specified, the default value is {@code false}.
     
 
     */
@@ -875,7 +875,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code outline} property.  The {@code outline} property defines whether or not the wall is outlined. If not specified, the default value is {@code false}.
+    Opens and returns the writer for the {@code outline} property. The {@code outline} property defines whether or not the wall is outlined. If not specified, the default value is {@code false}.
     
 
     */
@@ -887,7 +887,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outline} property as a {@code boolean} value.  The {@code outline} property specifies whether or not the wall is outlined. If not specified, the default value is {@code false}.
+    Writes a value for the {@code outline} property as a {@code boolean} value. The {@code outline} property specifies whether or not the wall is outlined. If not specified, the default value is {@code false}.
     
     
 
@@ -906,7 +906,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outline} property as a {@code reference} value.  The {@code outline} property specifies whether or not the wall is outlined. If not specified, the default value is {@code false}.
+    Writes a value for the {@code outline} property as a {@code reference} value. The {@code outline} property specifies whether or not the wall is outlined. If not specified, the default value is {@code false}.
     
     
 
@@ -925,7 +925,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outline} property as a {@code reference} value.  The {@code outline} property specifies whether or not the wall is outlined. If not specified, the default value is {@code false}.
+    Writes a value for the {@code outline} property as a {@code reference} value. The {@code outline} property specifies whether or not the wall is outlined. If not specified, the default value is {@code false}.
     
     
 
@@ -944,7 +944,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outline} property as a {@code reference} value.  The {@code outline} property specifies whether or not the wall is outlined. If not specified, the default value is {@code false}.
+    Writes a value for the {@code outline} property as a {@code reference} value. The {@code outline} property specifies whether or not the wall is outlined. If not specified, the default value is {@code false}.
     
     
     
@@ -965,7 +965,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outline} property as a {@code reference} value.  The {@code outline} property specifies whether or not the wall is outlined. If not specified, the default value is {@code false}.
+    Writes a value for the {@code outline} property as a {@code reference} value. The {@code outline} property specifies whether or not the wall is outlined. If not specified, the default value is {@code false}.
     
     
     
@@ -985,7 +985,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code outlineColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineColor} property defines the color of the wall outline. If not specified, the default value is black.
+    *  Gets the writer for the {@code outlineColor} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code outlineColor} property defines the color of the wall outline. If not specified, the default value is black.
     
 
     */
@@ -996,7 +996,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code outlineColor} property.  The {@code outlineColor} property defines the color of the wall outline. If not specified, the default value is black.
+    Opens and returns the writer for the {@code outlineColor} property. The {@code outlineColor} property defines the color of the wall outline. If not specified, the default value is black.
     
 
     */
@@ -1008,7 +1008,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the color of the wall outline. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code rgba} value. The {@code outlineColor} property specifies the color of the wall outline. If not specified, the default value is black.
     
     
 
@@ -1027,7 +1027,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the color of the wall outline. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code rgba} value. The {@code outlineColor} property specifies the color of the wall outline. If not specified, the default value is black.
     
     
     
@@ -1052,7 +1052,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the color of the wall outline. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code rgba} value. The {@code outlineColor} property specifies the color of the wall outline. If not specified, the default value is black.
     
     
     
@@ -1073,7 +1073,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the color of the wall outline. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code rgba} value. The {@code outlineColor} property specifies the color of the wall outline. If not specified, the default value is black.
     
     
     
@@ -1098,7 +1098,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the color of the wall outline. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value. The {@code outlineColor} property specifies the color of the wall outline. If not specified, the default value is black.
     
     
 
@@ -1117,7 +1117,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the color of the wall outline. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value. The {@code outlineColor} property specifies the color of the wall outline. If not specified, the default value is black.
     
     
     
@@ -1142,7 +1142,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the color of the wall outline. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value. The {@code outlineColor} property specifies the color of the wall outline. If not specified, the default value is black.
     
     
     
@@ -1163,7 +1163,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the color of the wall outline. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value. The {@code outlineColor} property specifies the color of the wall outline. If not specified, the default value is black.
     
     
     
@@ -1188,7 +1188,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the color of the wall outline. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code reference} value. The {@code outlineColor} property specifies the color of the wall outline. If not specified, the default value is black.
     
     
 
@@ -1207,7 +1207,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the color of the wall outline. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code reference} value. The {@code outlineColor} property specifies the color of the wall outline. If not specified, the default value is black.
     
     
 
@@ -1226,7 +1226,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the color of the wall outline. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code reference} value. The {@code outlineColor} property specifies the color of the wall outline. If not specified, the default value is black.
     
     
     
@@ -1247,7 +1247,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the color of the wall outline. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code reference} value. The {@code outlineColor} property specifies the color of the wall outline. If not specified, the default value is black.
     
     
     
@@ -1267,7 +1267,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code outlineWidth} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineWidth} property defines the width of the wall outline. If not specified, the default value is 1.0.
+    *  Gets the writer for the {@code outlineWidth} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code outlineWidth} property defines the width of the wall outline. If not specified, the default value is 1.0.
     
 
     */
@@ -1278,7 +1278,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code outlineWidth} property.  The {@code outlineWidth} property defines the width of the wall outline. If not specified, the default value is 1.0.
+    Opens and returns the writer for the {@code outlineWidth} property. The {@code outlineWidth} property defines the width of the wall outline. If not specified, the default value is 1.0.
     
 
     */
@@ -1290,7 +1290,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code number} value.  The {@code outlineWidth} property specifies the width of the wall outline. If not specified, the default value is 1.0.
+    Writes a value for the {@code outlineWidth} property as a {@code number} value. The {@code outlineWidth} property specifies the width of the wall outline. If not specified, the default value is 1.0.
     
     
 
@@ -1309,7 +1309,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code number} value.  The {@code outlineWidth} property specifies the width of the wall outline. If not specified, the default value is 1.0.
+    Writes a value for the {@code outlineWidth} property as a {@code number} value. The {@code outlineWidth} property specifies the width of the wall outline. If not specified, the default value is 1.0.
     
     
     
@@ -1330,7 +1330,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code number} value.  The {@code outlineWidth} property specifies the width of the wall outline. If not specified, the default value is 1.0.
+    Writes a value for the {@code outlineWidth} property as a {@code number} value. The {@code outlineWidth} property specifies the width of the wall outline. If not specified, the default value is 1.0.
     
     
     
@@ -1355,7 +1355,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the width of the wall outline. If not specified, the default value is 1.0.
+    Writes a value for the {@code outlineWidth} property as a {@code reference} value. The {@code outlineWidth} property specifies the width of the wall outline. If not specified, the default value is 1.0.
     
     
 
@@ -1374,7 +1374,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the width of the wall outline. If not specified, the default value is 1.0.
+    Writes a value for the {@code outlineWidth} property as a {@code reference} value. The {@code outlineWidth} property specifies the width of the wall outline. If not specified, the default value is 1.0.
     
     
 
@@ -1393,7 +1393,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the width of the wall outline. If not specified, the default value is 1.0.
+    Writes a value for the {@code outlineWidth} property as a {@code reference} value. The {@code outlineWidth} property specifies the width of the wall outline. If not specified, the default value is 1.0.
     
     
     
@@ -1414,7 +1414,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the width of the wall outline. If not specified, the default value is 1.0.
+    Writes a value for the {@code outlineWidth} property as a {@code reference} value. The {@code outlineWidth} property specifies the width of the wall outline. If not specified, the default value is 1.0.
     
     
     
@@ -1434,7 +1434,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code shadows} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code shadows} property defines whether or not the wall casts or receives shadows. If not specified, the default value is DISABLED.
+    *  Gets the writer for the {@code shadows} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code shadows} property defines whether or not the wall casts or receives shadows. If not specified, the default value is DISABLED.
     
 
     */
@@ -1445,7 +1445,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code shadows} property.  The {@code shadows} property defines whether or not the wall casts or receives shadows. If not specified, the default value is DISABLED.
+    Opens and returns the writer for the {@code shadows} property. The {@code shadows} property defines whether or not the wall casts or receives shadows. If not specified, the default value is DISABLED.
     
 
     */
@@ -1457,7 +1457,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code shadows} property as a {@code shadowMode} value.  The {@code shadows} property specifies whether or not the wall casts or receives shadows. If not specified, the default value is DISABLED.
+    Writes a value for the {@code shadows} property as a {@code shadowMode} value. The {@code shadows} property specifies whether or not the wall casts or receives shadows. If not specified, the default value is DISABLED.
     
     
 
@@ -1476,7 +1476,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code shadows} property as a {@code reference} value.  The {@code shadows} property specifies whether or not the wall casts or receives shadows. If not specified, the default value is DISABLED.
+    Writes a value for the {@code shadows} property as a {@code reference} value. The {@code shadows} property specifies whether or not the wall casts or receives shadows. If not specified, the default value is DISABLED.
     
     
 
@@ -1495,7 +1495,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code shadows} property as a {@code reference} value.  The {@code shadows} property specifies whether or not the wall casts or receives shadows. If not specified, the default value is DISABLED.
+    Writes a value for the {@code shadows} property as a {@code reference} value. The {@code shadows} property specifies whether or not the wall casts or receives shadows. If not specified, the default value is DISABLED.
     
     
 
@@ -1514,7 +1514,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code shadows} property as a {@code reference} value.  The {@code shadows} property specifies whether or not the wall casts or receives shadows. If not specified, the default value is DISABLED.
+    Writes a value for the {@code shadows} property as a {@code reference} value. The {@code shadows} property specifies whether or not the wall casts or receives shadows. If not specified, the default value is DISABLED.
     
     
     
@@ -1535,7 +1535,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code shadows} property as a {@code reference} value.  The {@code shadows} property specifies whether or not the wall casts or receives shadows. If not specified, the default value is DISABLED.
+    Writes a value for the {@code shadows} property as a {@code reference} value. The {@code shadows} property specifies whether or not the wall casts or receives shadows. If not specified, the default value is DISABLED.
     
     
     
@@ -1555,7 +1555,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code distanceDisplayCondition} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code distanceDisplayCondition} property defines the display condition specifying at what distance from the camera this wall will be displayed.
+    *  Gets the writer for the {@code distanceDisplayCondition} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code distanceDisplayCondition} property defines the display condition specifying at what distance from the camera this wall will be displayed.
     
 
     */
@@ -1566,7 +1566,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code distanceDisplayCondition} property.  The {@code distanceDisplayCondition} property defines the display condition specifying at what distance from the camera this wall will be displayed.
+    Opens and returns the writer for the {@code distanceDisplayCondition} property. The {@code distanceDisplayCondition} property defines the display condition specifying at what distance from the camera this wall will be displayed.
     
 
     */
@@ -1578,7 +1578,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this wall will be displayed.
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this wall will be displayed.
     
     
 
@@ -1597,7 +1597,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this wall will be displayed.
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this wall will be displayed.
     
     
     
@@ -1618,7 +1618,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this wall will be displayed.
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this wall will be displayed.
     
     
     
@@ -1639,7 +1639,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this wall will be displayed.
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this wall will be displayed.
     
     
     
@@ -1664,7 +1664,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this wall will be displayed.
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this wall will be displayed.
     
     
 
@@ -1683,7 +1683,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this wall will be displayed.
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this wall will be displayed.
     
     
 
@@ -1702,7 +1702,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this wall will be displayed.
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this wall will be displayed.
     
     
     
@@ -1723,7 +1723,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this wall will be displayed.
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this wall will be displayed.
     
     
     

@@ -26,7 +26,7 @@ import javax.annotation.Nonnull;
 
 /**
  *  
- Writes a {@code Label} to a {@link CesiumOutputStream}.  A {@code Label} is a string of text.
+ Writes a {@code Label} to a {@link CesiumOutputStream}. A {@code Label} is a string of text.
  
 
  */
@@ -329,7 +329,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the label is shown. If not specified, the default value is {@code true}.
+    *  Gets the writer for the {@code show} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code show} property defines whether or not the label is shown. If not specified, the default value is {@code true}.
     
 
     */
@@ -340,7 +340,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code show} property.  The {@code show} property defines whether or not the label is shown. If not specified, the default value is {@code true}.
+    Opens and returns the writer for the {@code show} property. The {@code show} property defines whether or not the label is shown. If not specified, the default value is {@code true}.
     
 
     */
@@ -352,7 +352,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code boolean} value.  The {@code show} property specifies whether or not the label is shown. If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code boolean} value. The {@code show} property specifies whether or not the label is shown. If not specified, the default value is {@code true}.
     
     
 
@@ -371,7 +371,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the label is shown. If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the label is shown. If not specified, the default value is {@code true}.
     
     
 
@@ -390,7 +390,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the label is shown. If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the label is shown. If not specified, the default value is {@code true}.
     
     
 
@@ -409,7 +409,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the label is shown. If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the label is shown. If not specified, the default value is {@code true}.
     
     
     
@@ -430,7 +430,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the label is shown. If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the label is shown. If not specified, the default value is {@code true}.
     
     
     
@@ -450,7 +450,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code text} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code text} property defines the text displayed by the label. The newline character (\n) indicates line breaks.
+    *  Gets the writer for the {@code text} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code text} property defines the text displayed by the label. The newline character (\n) indicates line breaks.
     
 
     */
@@ -461,7 +461,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code text} property.  The {@code text} property defines the text displayed by the label. The newline character (\n) indicates line breaks.
+    Opens and returns the writer for the {@code text} property. The {@code text} property defines the text displayed by the label. The newline character (\n) indicates line breaks.
     
 
     */
@@ -473,7 +473,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code text} property as a {@code string} value.  The {@code text} property specifies the text displayed by the label. The newline character (\n) indicates line breaks.
+    Writes a value for the {@code text} property as a {@code string} value. The {@code text} property specifies the text displayed by the label. The newline character (\n) indicates line breaks.
     
     
 
@@ -492,7 +492,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code text} property as a {@code reference} value.  The {@code text} property specifies the text displayed by the label. The newline character (\n) indicates line breaks.
+    Writes a value for the {@code text} property as a {@code reference} value. The {@code text} property specifies the text displayed by the label. The newline character (\n) indicates line breaks.
     
     
 
@@ -511,7 +511,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code text} property as a {@code reference} value.  The {@code text} property specifies the text displayed by the label. The newline character (\n) indicates line breaks.
+    Writes a value for the {@code text} property as a {@code reference} value. The {@code text} property specifies the text displayed by the label. The newline character (\n) indicates line breaks.
     
     
 
@@ -530,7 +530,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code text} property as a {@code reference} value.  The {@code text} property specifies the text displayed by the label. The newline character (\n) indicates line breaks.
+    Writes a value for the {@code text} property as a {@code reference} value. The {@code text} property specifies the text displayed by the label. The newline character (\n) indicates line breaks.
     
     
     
@@ -551,7 +551,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code text} property as a {@code reference} value.  The {@code text} property specifies the text displayed by the label. The newline character (\n) indicates line breaks.
+    Writes a value for the {@code text} property as a {@code reference} value. The {@code text} property specifies the text displayed by the label. The newline character (\n) indicates line breaks.
     
     
     
@@ -571,7 +571,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code font} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code font} property defines the font to use for the label. If not specified, the default value is 30px sans-serif.
+    *  Gets the writer for the {@code font} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code font} property defines the font to use for the label. If not specified, the default value is 30px sans-serif.
     
 
     */
@@ -582,7 +582,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code font} property.  The {@code font} property defines the font to use for the label. If not specified, the default value is 30px sans-serif.
+    Opens and returns the writer for the {@code font} property. The {@code font} property defines the font to use for the label. If not specified, the default value is 30px sans-serif.
     
 
     */
@@ -594,7 +594,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code font} property as a {@code font} value.  The {@code font} property specifies the font to use for the label. If not specified, the default value is 30px sans-serif.
+    Writes a value for the {@code font} property as a {@code font} value. The {@code font} property specifies the font to use for the label. If not specified, the default value is 30px sans-serif.
     
     
 
@@ -613,7 +613,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code font} property as a {@code reference} value.  The {@code font} property specifies the font to use for the label. If not specified, the default value is 30px sans-serif.
+    Writes a value for the {@code font} property as a {@code reference} value. The {@code font} property specifies the font to use for the label. If not specified, the default value is 30px sans-serif.
     
     
 
@@ -632,7 +632,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code font} property as a {@code reference} value.  The {@code font} property specifies the font to use for the label. If not specified, the default value is 30px sans-serif.
+    Writes a value for the {@code font} property as a {@code reference} value. The {@code font} property specifies the font to use for the label. If not specified, the default value is 30px sans-serif.
     
     
 
@@ -651,7 +651,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code font} property as a {@code reference} value.  The {@code font} property specifies the font to use for the label. If not specified, the default value is 30px sans-serif.
+    Writes a value for the {@code font} property as a {@code reference} value. The {@code font} property specifies the font to use for the label. If not specified, the default value is 30px sans-serif.
     
     
     
@@ -672,7 +672,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code font} property as a {@code reference} value.  The {@code font} property specifies the font to use for the label. If not specified, the default value is 30px sans-serif.
+    Writes a value for the {@code font} property as a {@code reference} value. The {@code font} property specifies the font to use for the label. If not specified, the default value is 30px sans-serif.
     
     
     
@@ -692,7 +692,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code style} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code style} property defines the style of the label. If not specified, the default value is FILL.
+    *  Gets the writer for the {@code style} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code style} property defines the style of the label. If not specified, the default value is FILL.
     
 
     */
@@ -703,7 +703,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code style} property.  The {@code style} property defines the style of the label. If not specified, the default value is FILL.
+    Opens and returns the writer for the {@code style} property. The {@code style} property defines the style of the label. If not specified, the default value is FILL.
     
 
     */
@@ -715,7 +715,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code style} property as a {@code labelStyle} value.  The {@code style} property specifies the style of the label. If not specified, the default value is FILL.
+    Writes a value for the {@code style} property as a {@code labelStyle} value. The {@code style} property specifies the style of the label. If not specified, the default value is FILL.
     
     
 
@@ -734,7 +734,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code style} property as a {@code reference} value.  The {@code style} property specifies the style of the label. If not specified, the default value is FILL.
+    Writes a value for the {@code style} property as a {@code reference} value. The {@code style} property specifies the style of the label. If not specified, the default value is FILL.
     
     
 
@@ -753,7 +753,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code style} property as a {@code reference} value.  The {@code style} property specifies the style of the label. If not specified, the default value is FILL.
+    Writes a value for the {@code style} property as a {@code reference} value. The {@code style} property specifies the style of the label. If not specified, the default value is FILL.
     
     
 
@@ -772,7 +772,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code style} property as a {@code reference} value.  The {@code style} property specifies the style of the label. If not specified, the default value is FILL.
+    Writes a value for the {@code style} property as a {@code reference} value. The {@code style} property specifies the style of the label. If not specified, the default value is FILL.
     
     
     
@@ -793,7 +793,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code style} property as a {@code reference} value.  The {@code style} property specifies the style of the label. If not specified, the default value is FILL.
+    Writes a value for the {@code style} property as a {@code reference} value. The {@code style} property specifies the style of the label. If not specified, the default value is FILL.
     
     
     
@@ -813,7 +813,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code scale} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code scale} property defines the scale of the label. The scale is multiplied with the pixel size of the label's text. For example, if the scale is 2.0, the label will be rendered with twice the number of pixels, in each direction, of the text. If not specified, the default value is 1.0.
+    *  Gets the writer for the {@code scale} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code scale} property defines the scale of the label. The scale is multiplied with the pixel size of the label's text. For example, if the scale is 2.0, the label will be rendered with twice the number of pixels, in each direction, of the text. If not specified, the default value is 1.0.
     
 
     */
@@ -824,7 +824,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code scale} property.  The {@code scale} property defines the scale of the label. The scale is multiplied with the pixel size of the label's text. For example, if the scale is 2.0, the label will be rendered with twice the number of pixels, in each direction, of the text. If not specified, the default value is 1.0.
+    Opens and returns the writer for the {@code scale} property. The {@code scale} property defines the scale of the label. The scale is multiplied with the pixel size of the label's text. For example, if the scale is 2.0, the label will be rendered with twice the number of pixels, in each direction, of the text. If not specified, the default value is 1.0.
     
 
     */
@@ -836,7 +836,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code scale} property as a {@code number} value.  The {@code scale} property specifies the scale of the label. The scale is multiplied with the pixel size of the label's text. For example, if the scale is 2.0, the label will be rendered with twice the number of pixels, in each direction, of the text. If not specified, the default value is 1.0.
+    Writes a value for the {@code scale} property as a {@code number} value. The {@code scale} property specifies the scale of the label. The scale is multiplied with the pixel size of the label's text. For example, if the scale is 2.0, the label will be rendered with twice the number of pixels, in each direction, of the text. If not specified, the default value is 1.0.
     
     
 
@@ -855,7 +855,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code scale} property as a {@code number} value.  The {@code scale} property specifies the scale of the label. The scale is multiplied with the pixel size of the label's text. For example, if the scale is 2.0, the label will be rendered with twice the number of pixels, in each direction, of the text. If not specified, the default value is 1.0.
+    Writes a value for the {@code scale} property as a {@code number} value. The {@code scale} property specifies the scale of the label. The scale is multiplied with the pixel size of the label's text. For example, if the scale is 2.0, the label will be rendered with twice the number of pixels, in each direction, of the text. If not specified, the default value is 1.0.
     
     
     
@@ -876,7 +876,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code scale} property as a {@code number} value.  The {@code scale} property specifies the scale of the label. The scale is multiplied with the pixel size of the label's text. For example, if the scale is 2.0, the label will be rendered with twice the number of pixels, in each direction, of the text. If not specified, the default value is 1.0.
+    Writes a value for the {@code scale} property as a {@code number} value. The {@code scale} property specifies the scale of the label. The scale is multiplied with the pixel size of the label's text. For example, if the scale is 2.0, the label will be rendered with twice the number of pixels, in each direction, of the text. If not specified, the default value is 1.0.
     
     
     
@@ -901,7 +901,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code scale} property as a {@code reference} value.  The {@code scale} property specifies the scale of the label. The scale is multiplied with the pixel size of the label's text. For example, if the scale is 2.0, the label will be rendered with twice the number of pixels, in each direction, of the text. If not specified, the default value is 1.0.
+    Writes a value for the {@code scale} property as a {@code reference} value. The {@code scale} property specifies the scale of the label. The scale is multiplied with the pixel size of the label's text. For example, if the scale is 2.0, the label will be rendered with twice the number of pixels, in each direction, of the text. If not specified, the default value is 1.0.
     
     
 
@@ -920,7 +920,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code scale} property as a {@code reference} value.  The {@code scale} property specifies the scale of the label. The scale is multiplied with the pixel size of the label's text. For example, if the scale is 2.0, the label will be rendered with twice the number of pixels, in each direction, of the text. If not specified, the default value is 1.0.
+    Writes a value for the {@code scale} property as a {@code reference} value. The {@code scale} property specifies the scale of the label. The scale is multiplied with the pixel size of the label's text. For example, if the scale is 2.0, the label will be rendered with twice the number of pixels, in each direction, of the text. If not specified, the default value is 1.0.
     
     
 
@@ -939,7 +939,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code scale} property as a {@code reference} value.  The {@code scale} property specifies the scale of the label. The scale is multiplied with the pixel size of the label's text. For example, if the scale is 2.0, the label will be rendered with twice the number of pixels, in each direction, of the text. If not specified, the default value is 1.0.
+    Writes a value for the {@code scale} property as a {@code reference} value. The {@code scale} property specifies the scale of the label. The scale is multiplied with the pixel size of the label's text. For example, if the scale is 2.0, the label will be rendered with twice the number of pixels, in each direction, of the text. If not specified, the default value is 1.0.
     
     
     
@@ -960,7 +960,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code scale} property as a {@code reference} value.  The {@code scale} property specifies the scale of the label. The scale is multiplied with the pixel size of the label's text. For example, if the scale is 2.0, the label will be rendered with twice the number of pixels, in each direction, of the text. If not specified, the default value is 1.0.
+    Writes a value for the {@code scale} property as a {@code reference} value. The {@code scale} property specifies the scale of the label. The scale is multiplied with the pixel size of the label's text. For example, if the scale is 2.0, the label will be rendered with twice the number of pixels, in each direction, of the text. If not specified, the default value is 1.0.
     
     
     
@@ -980,7 +980,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code showBackground} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code showBackground} property defines whether or not a background behind the label is shown. If not specified, the default value is {@code false}.
+    *  Gets the writer for the {@code showBackground} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code showBackground} property defines whether or not a background behind the label is shown. If not specified, the default value is {@code false}.
     
 
     */
@@ -991,7 +991,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code showBackground} property.  The {@code showBackground} property defines whether or not a background behind the label is shown. If not specified, the default value is {@code false}.
+    Opens and returns the writer for the {@code showBackground} property. The {@code showBackground} property defines whether or not a background behind the label is shown. If not specified, the default value is {@code false}.
     
 
     */
@@ -1003,7 +1003,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code showBackground} property as a {@code boolean} value.  The {@code showBackground} property specifies whether or not a background behind the label is shown. If not specified, the default value is {@code false}.
+    Writes a value for the {@code showBackground} property as a {@code boolean} value. The {@code showBackground} property specifies whether or not a background behind the label is shown. If not specified, the default value is {@code false}.
     
     
 
@@ -1022,7 +1022,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code showBackground} property as a {@code reference} value.  The {@code showBackground} property specifies whether or not a background behind the label is shown. If not specified, the default value is {@code false}.
+    Writes a value for the {@code showBackground} property as a {@code reference} value. The {@code showBackground} property specifies whether or not a background behind the label is shown. If not specified, the default value is {@code false}.
     
     
 
@@ -1041,7 +1041,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code showBackground} property as a {@code reference} value.  The {@code showBackground} property specifies whether or not a background behind the label is shown. If not specified, the default value is {@code false}.
+    Writes a value for the {@code showBackground} property as a {@code reference} value. The {@code showBackground} property specifies whether or not a background behind the label is shown. If not specified, the default value is {@code false}.
     
     
 
@@ -1060,7 +1060,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code showBackground} property as a {@code reference} value.  The {@code showBackground} property specifies whether or not a background behind the label is shown. If not specified, the default value is {@code false}.
+    Writes a value for the {@code showBackground} property as a {@code reference} value. The {@code showBackground} property specifies whether or not a background behind the label is shown. If not specified, the default value is {@code false}.
     
     
     
@@ -1081,7 +1081,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code showBackground} property as a {@code reference} value.  The {@code showBackground} property specifies whether or not a background behind the label is shown. If not specified, the default value is {@code false}.
+    Writes a value for the {@code showBackground} property as a {@code reference} value. The {@code showBackground} property specifies whether or not a background behind the label is shown. If not specified, the default value is {@code false}.
     
     
     
@@ -1101,7 +1101,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code backgroundColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code backgroundColor} property defines the color of the background behind the label. If not specified, the default value is [0.165, 0.165, 0.165, 0.8].
+    *  Gets the writer for the {@code backgroundColor} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code backgroundColor} property defines the color of the background behind the label. If not specified, the default value is [0.165, 0.165, 0.165, 0.8].
     
 
     */
@@ -1112,7 +1112,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code backgroundColor} property.  The {@code backgroundColor} property defines the color of the background behind the label. If not specified, the default value is [0.165, 0.165, 0.165, 0.8].
+    Opens and returns the writer for the {@code backgroundColor} property. The {@code backgroundColor} property defines the color of the background behind the label. If not specified, the default value is [0.165, 0.165, 0.165, 0.8].
     
 
     */
@@ -1124,7 +1124,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code backgroundColor} property as a {@code rgba} value.  The {@code backgroundColor} property specifies the color of the background behind the label. If not specified, the default value is [0.165, 0.165, 0.165, 0.8].
+    Writes a value for the {@code backgroundColor} property as a {@code rgba} value. The {@code backgroundColor} property specifies the color of the background behind the label. If not specified, the default value is [0.165, 0.165, 0.165, 0.8].
     
     
 
@@ -1143,7 +1143,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code backgroundColor} property as a {@code rgba} value.  The {@code backgroundColor} property specifies the color of the background behind the label. If not specified, the default value is [0.165, 0.165, 0.165, 0.8].
+    Writes a value for the {@code backgroundColor} property as a {@code rgba} value. The {@code backgroundColor} property specifies the color of the background behind the label. If not specified, the default value is [0.165, 0.165, 0.165, 0.8].
     
     
     
@@ -1168,7 +1168,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code backgroundColor} property as a {@code rgba} value.  The {@code backgroundColor} property specifies the color of the background behind the label. If not specified, the default value is [0.165, 0.165, 0.165, 0.8].
+    Writes a value for the {@code backgroundColor} property as a {@code rgba} value. The {@code backgroundColor} property specifies the color of the background behind the label. If not specified, the default value is [0.165, 0.165, 0.165, 0.8].
     
     
     
@@ -1189,7 +1189,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code backgroundColor} property as a {@code rgba} value.  The {@code backgroundColor} property specifies the color of the background behind the label. If not specified, the default value is [0.165, 0.165, 0.165, 0.8].
+    Writes a value for the {@code backgroundColor} property as a {@code rgba} value. The {@code backgroundColor} property specifies the color of the background behind the label. If not specified, the default value is [0.165, 0.165, 0.165, 0.8].
     
     
     
@@ -1214,7 +1214,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code backgroundColor} property as a {@code rgbaf} value.  The {@code backgroundColor} property specifies the color of the background behind the label. If not specified, the default value is [0.165, 0.165, 0.165, 0.8].
+    Writes a value for the {@code backgroundColor} property as a {@code rgbaf} value. The {@code backgroundColor} property specifies the color of the background behind the label. If not specified, the default value is [0.165, 0.165, 0.165, 0.8].
     
     
 
@@ -1233,7 +1233,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code backgroundColor} property as a {@code rgbaf} value.  The {@code backgroundColor} property specifies the color of the background behind the label. If not specified, the default value is [0.165, 0.165, 0.165, 0.8].
+    Writes a value for the {@code backgroundColor} property as a {@code rgbaf} value. The {@code backgroundColor} property specifies the color of the background behind the label. If not specified, the default value is [0.165, 0.165, 0.165, 0.8].
     
     
     
@@ -1258,7 +1258,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code backgroundColor} property as a {@code rgbaf} value.  The {@code backgroundColor} property specifies the color of the background behind the label. If not specified, the default value is [0.165, 0.165, 0.165, 0.8].
+    Writes a value for the {@code backgroundColor} property as a {@code rgbaf} value. The {@code backgroundColor} property specifies the color of the background behind the label. If not specified, the default value is [0.165, 0.165, 0.165, 0.8].
     
     
     
@@ -1279,7 +1279,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code backgroundColor} property as a {@code rgbaf} value.  The {@code backgroundColor} property specifies the color of the background behind the label. If not specified, the default value is [0.165, 0.165, 0.165, 0.8].
+    Writes a value for the {@code backgroundColor} property as a {@code rgbaf} value. The {@code backgroundColor} property specifies the color of the background behind the label. If not specified, the default value is [0.165, 0.165, 0.165, 0.8].
     
     
     
@@ -1304,7 +1304,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code backgroundColor} property as a {@code reference} value.  The {@code backgroundColor} property specifies the color of the background behind the label. If not specified, the default value is [0.165, 0.165, 0.165, 0.8].
+    Writes a value for the {@code backgroundColor} property as a {@code reference} value. The {@code backgroundColor} property specifies the color of the background behind the label. If not specified, the default value is [0.165, 0.165, 0.165, 0.8].
     
     
 
@@ -1323,7 +1323,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code backgroundColor} property as a {@code reference} value.  The {@code backgroundColor} property specifies the color of the background behind the label. If not specified, the default value is [0.165, 0.165, 0.165, 0.8].
+    Writes a value for the {@code backgroundColor} property as a {@code reference} value. The {@code backgroundColor} property specifies the color of the background behind the label. If not specified, the default value is [0.165, 0.165, 0.165, 0.8].
     
     
 
@@ -1342,7 +1342,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code backgroundColor} property as a {@code reference} value.  The {@code backgroundColor} property specifies the color of the background behind the label. If not specified, the default value is [0.165, 0.165, 0.165, 0.8].
+    Writes a value for the {@code backgroundColor} property as a {@code reference} value. The {@code backgroundColor} property specifies the color of the background behind the label. If not specified, the default value is [0.165, 0.165, 0.165, 0.8].
     
     
     
@@ -1363,7 +1363,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code backgroundColor} property as a {@code reference} value.  The {@code backgroundColor} property specifies the color of the background behind the label. If not specified, the default value is [0.165, 0.165, 0.165, 0.8].
+    Writes a value for the {@code backgroundColor} property as a {@code reference} value. The {@code backgroundColor} property specifies the color of the background behind the label. If not specified, the default value is [0.165, 0.165, 0.165, 0.8].
     
     
     
@@ -1383,7 +1383,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code backgroundPadding} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code backgroundPadding} property defines the amount of padding between the text and the label's background. If not specified, the default value is [7, 5].
+    *  Gets the writer for the {@code backgroundPadding} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code backgroundPadding} property defines the amount of padding between the text and the label's background. If not specified, the default value is [7, 5].
     
 
     */
@@ -1394,7 +1394,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code backgroundPadding} property.  The {@code backgroundPadding} property defines the amount of padding between the text and the label's background. If not specified, the default value is [7, 5].
+    Opens and returns the writer for the {@code backgroundPadding} property. The {@code backgroundPadding} property defines the amount of padding between the text and the label's background. If not specified, the default value is [7, 5].
     
 
     */
@@ -1406,7 +1406,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code backgroundPadding} property as a {@code cartesian2} value.  The {@code backgroundPadding} property specifies the amount of padding between the text and the label's background. If not specified, the default value is [7, 5].
+    Writes a value for the {@code backgroundPadding} property as a {@code cartesian2} value. The {@code backgroundPadding} property specifies the amount of padding between the text and the label's background. If not specified, the default value is [7, 5].
     
     
 
@@ -1425,7 +1425,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code backgroundPadding} property as a {@code cartesian2} value.  The {@code backgroundPadding} property specifies the amount of padding between the text and the label's background. If not specified, the default value is [7, 5].
+    Writes a value for the {@code backgroundPadding} property as a {@code cartesian2} value. The {@code backgroundPadding} property specifies the amount of padding between the text and the label's background. If not specified, the default value is [7, 5].
     
     
     
@@ -1446,7 +1446,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code backgroundPadding} property as a {@code cartesian2} value.  The {@code backgroundPadding} property specifies the amount of padding between the text and the label's background. If not specified, the default value is [7, 5].
+    Writes a value for the {@code backgroundPadding} property as a {@code cartesian2} value. The {@code backgroundPadding} property specifies the amount of padding between the text and the label's background. If not specified, the default value is [7, 5].
     
     
     
@@ -1467,7 +1467,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code backgroundPadding} property as a {@code cartesian2} value.  The {@code backgroundPadding} property specifies the amount of padding between the text and the label's background. If not specified, the default value is [7, 5].
+    Writes a value for the {@code backgroundPadding} property as a {@code cartesian2} value. The {@code backgroundPadding} property specifies the amount of padding between the text and the label's background. If not specified, the default value is [7, 5].
     
     
     
@@ -1492,7 +1492,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code backgroundPadding} property as a {@code reference} value.  The {@code backgroundPadding} property specifies the amount of padding between the text and the label's background. If not specified, the default value is [7, 5].
+    Writes a value for the {@code backgroundPadding} property as a {@code reference} value. The {@code backgroundPadding} property specifies the amount of padding between the text and the label's background. If not specified, the default value is [7, 5].
     
     
 
@@ -1511,7 +1511,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code backgroundPadding} property as a {@code reference} value.  The {@code backgroundPadding} property specifies the amount of padding between the text and the label's background. If not specified, the default value is [7, 5].
+    Writes a value for the {@code backgroundPadding} property as a {@code reference} value. The {@code backgroundPadding} property specifies the amount of padding between the text and the label's background. If not specified, the default value is [7, 5].
     
     
 
@@ -1530,7 +1530,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code backgroundPadding} property as a {@code reference} value.  The {@code backgroundPadding} property specifies the amount of padding between the text and the label's background. If not specified, the default value is [7, 5].
+    Writes a value for the {@code backgroundPadding} property as a {@code reference} value. The {@code backgroundPadding} property specifies the amount of padding between the text and the label's background. If not specified, the default value is [7, 5].
     
     
     
@@ -1551,7 +1551,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code backgroundPadding} property as a {@code reference} value.  The {@code backgroundPadding} property specifies the amount of padding between the text and the label's background. If not specified, the default value is [7, 5].
+    Writes a value for the {@code backgroundPadding} property as a {@code reference} value. The {@code backgroundPadding} property specifies the amount of padding between the text and the label's background. If not specified, the default value is [7, 5].
     
     
     
@@ -1571,7 +1571,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code pixelOffset} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code pixelOffset} property defines the offset, in viewport pixels, of the label origin from the {@code position}. A pixel offset is the number of pixels up and to the right to place the label, relative to the {@code position}. If not specified, the default value is [0.0, 0.0].
+    *  Gets the writer for the {@code pixelOffset} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code pixelOffset} property defines the offset, in viewport pixels, of the label origin from the {@code position}. A pixel offset is the number of pixels up and to the right to place the label, relative to the {@code position}. If not specified, the default value is [0.0, 0.0].
     
 
     */
@@ -1582,7 +1582,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code pixelOffset} property.  The {@code pixelOffset} property defines the offset, in viewport pixels, of the label origin from the {@code position}. A pixel offset is the number of pixels up and to the right to place the label, relative to the {@code position}. If not specified, the default value is [0.0, 0.0].
+    Opens and returns the writer for the {@code pixelOffset} property. The {@code pixelOffset} property defines the offset, in viewport pixels, of the label origin from the {@code position}. A pixel offset is the number of pixels up and to the right to place the label, relative to the {@code position}. If not specified, the default value is [0.0, 0.0].
     
 
     */
@@ -1594,7 +1594,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code pixelOffset} property as a {@code cartesian2} value.  The {@code pixelOffset} property specifies the offset, in viewport pixels, of the label origin from the {@code position}. A pixel offset is the number of pixels up and to the right to place the label, relative to the {@code position}. If not specified, the default value is [0.0, 0.0].
+    Writes a value for the {@code pixelOffset} property as a {@code cartesian2} value. The {@code pixelOffset} property specifies the offset, in viewport pixels, of the label origin from the {@code position}. A pixel offset is the number of pixels up and to the right to place the label, relative to the {@code position}. If not specified, the default value is [0.0, 0.0].
     
     
 
@@ -1613,7 +1613,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code pixelOffset} property as a {@code cartesian2} value.  The {@code pixelOffset} property specifies the offset, in viewport pixels, of the label origin from the {@code position}. A pixel offset is the number of pixels up and to the right to place the label, relative to the {@code position}. If not specified, the default value is [0.0, 0.0].
+    Writes a value for the {@code pixelOffset} property as a {@code cartesian2} value. The {@code pixelOffset} property specifies the offset, in viewport pixels, of the label origin from the {@code position}. A pixel offset is the number of pixels up and to the right to place the label, relative to the {@code position}. If not specified, the default value is [0.0, 0.0].
     
     
     
@@ -1634,7 +1634,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code pixelOffset} property as a {@code cartesian2} value.  The {@code pixelOffset} property specifies the offset, in viewport pixels, of the label origin from the {@code position}. A pixel offset is the number of pixels up and to the right to place the label, relative to the {@code position}. If not specified, the default value is [0.0, 0.0].
+    Writes a value for the {@code pixelOffset} property as a {@code cartesian2} value. The {@code pixelOffset} property specifies the offset, in viewport pixels, of the label origin from the {@code position}. A pixel offset is the number of pixels up and to the right to place the label, relative to the {@code position}. If not specified, the default value is [0.0, 0.0].
     
     
     
@@ -1655,7 +1655,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code pixelOffset} property as a {@code cartesian2} value.  The {@code pixelOffset} property specifies the offset, in viewport pixels, of the label origin from the {@code position}. A pixel offset is the number of pixels up and to the right to place the label, relative to the {@code position}. If not specified, the default value is [0.0, 0.0].
+    Writes a value for the {@code pixelOffset} property as a {@code cartesian2} value. The {@code pixelOffset} property specifies the offset, in viewport pixels, of the label origin from the {@code position}. A pixel offset is the number of pixels up and to the right to place the label, relative to the {@code position}. If not specified, the default value is [0.0, 0.0].
     
     
     
@@ -1680,7 +1680,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code pixelOffset} property as a {@code reference} value.  The {@code pixelOffset} property specifies the offset, in viewport pixels, of the label origin from the {@code position}. A pixel offset is the number of pixels up and to the right to place the label, relative to the {@code position}. If not specified, the default value is [0.0, 0.0].
+    Writes a value for the {@code pixelOffset} property as a {@code reference} value. The {@code pixelOffset} property specifies the offset, in viewport pixels, of the label origin from the {@code position}. A pixel offset is the number of pixels up and to the right to place the label, relative to the {@code position}. If not specified, the default value is [0.0, 0.0].
     
     
 
@@ -1699,7 +1699,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code pixelOffset} property as a {@code reference} value.  The {@code pixelOffset} property specifies the offset, in viewport pixels, of the label origin from the {@code position}. A pixel offset is the number of pixels up and to the right to place the label, relative to the {@code position}. If not specified, the default value is [0.0, 0.0].
+    Writes a value for the {@code pixelOffset} property as a {@code reference} value. The {@code pixelOffset} property specifies the offset, in viewport pixels, of the label origin from the {@code position}. A pixel offset is the number of pixels up and to the right to place the label, relative to the {@code position}. If not specified, the default value is [0.0, 0.0].
     
     
 
@@ -1718,7 +1718,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code pixelOffset} property as a {@code reference} value.  The {@code pixelOffset} property specifies the offset, in viewport pixels, of the label origin from the {@code position}. A pixel offset is the number of pixels up and to the right to place the label, relative to the {@code position}. If not specified, the default value is [0.0, 0.0].
+    Writes a value for the {@code pixelOffset} property as a {@code reference} value. The {@code pixelOffset} property specifies the offset, in viewport pixels, of the label origin from the {@code position}. A pixel offset is the number of pixels up and to the right to place the label, relative to the {@code position}. If not specified, the default value is [0.0, 0.0].
     
     
     
@@ -1739,7 +1739,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code pixelOffset} property as a {@code reference} value.  The {@code pixelOffset} property specifies the offset, in viewport pixels, of the label origin from the {@code position}. A pixel offset is the number of pixels up and to the right to place the label, relative to the {@code position}. If not specified, the default value is [0.0, 0.0].
+    Writes a value for the {@code pixelOffset} property as a {@code reference} value. The {@code pixelOffset} property specifies the offset, in viewport pixels, of the label origin from the {@code position}. A pixel offset is the number of pixels up and to the right to place the label, relative to the {@code position}. If not specified, the default value is [0.0, 0.0].
     
     
     
@@ -1759,7 +1759,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code eyeOffset} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code eyeOffset} property defines the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the {@code position} property. Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen. If not specified, the default value is [0.0, 0.0, 0.0].
+    *  Gets the writer for the {@code eyeOffset} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code eyeOffset} property defines the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the {@code position} property. Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen. If not specified, the default value is [0.0, 0.0, 0.0].
     
 
     */
@@ -1770,7 +1770,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code eyeOffset} property.  The {@code eyeOffset} property defines the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the {@code position} property. Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen. If not specified, the default value is [0.0, 0.0, 0.0].
+    Opens and returns the writer for the {@code eyeOffset} property. The {@code eyeOffset} property defines the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the {@code position} property. Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen. If not specified, the default value is [0.0, 0.0, 0.0].
     
 
     */
@@ -1782,7 +1782,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code eyeOffset} property as a {@code cartesian} value.  The {@code eyeOffset} property specifies the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the {@code position} property. Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen. If not specified, the default value is [0.0, 0.0, 0.0].
+    Writes a value for the {@code eyeOffset} property as a {@code cartesian} value. The {@code eyeOffset} property specifies the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the {@code position} property. Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen. If not specified, the default value is [0.0, 0.0, 0.0].
     
     
 
@@ -1801,7 +1801,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code eyeOffset} property as a {@code cartesian} value.  The {@code eyeOffset} property specifies the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the {@code position} property. Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen. If not specified, the default value is [0.0, 0.0, 0.0].
+    Writes a value for the {@code eyeOffset} property as a {@code cartesian} value. The {@code eyeOffset} property specifies the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the {@code position} property. Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen. If not specified, the default value is [0.0, 0.0, 0.0].
     
     
     
@@ -1822,7 +1822,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code eyeOffset} property as a {@code cartesian} value.  The {@code eyeOffset} property specifies the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the {@code position} property. Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen. If not specified, the default value is [0.0, 0.0, 0.0].
+    Writes a value for the {@code eyeOffset} property as a {@code cartesian} value. The {@code eyeOffset} property specifies the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the {@code position} property. Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen. If not specified, the default value is [0.0, 0.0, 0.0].
     
     
     
@@ -1847,7 +1847,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code eyeOffset} property as a {@code reference} value.  The {@code eyeOffset} property specifies the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the {@code position} property. Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen. If not specified, the default value is [0.0, 0.0, 0.0].
+    Writes a value for the {@code eyeOffset} property as a {@code reference} value. The {@code eyeOffset} property specifies the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the {@code position} property. Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen. If not specified, the default value is [0.0, 0.0, 0.0].
     
     
 
@@ -1866,7 +1866,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code eyeOffset} property as a {@code reference} value.  The {@code eyeOffset} property specifies the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the {@code position} property. Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen. If not specified, the default value is [0.0, 0.0, 0.0].
+    Writes a value for the {@code eyeOffset} property as a {@code reference} value. The {@code eyeOffset} property specifies the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the {@code position} property. Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen. If not specified, the default value is [0.0, 0.0, 0.0].
     
     
 
@@ -1885,7 +1885,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code eyeOffset} property as a {@code reference} value.  The {@code eyeOffset} property specifies the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the {@code position} property. Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen. If not specified, the default value is [0.0, 0.0, 0.0].
+    Writes a value for the {@code eyeOffset} property as a {@code reference} value. The {@code eyeOffset} property specifies the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the {@code position} property. Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen. If not specified, the default value is [0.0, 0.0, 0.0].
     
     
     
@@ -1906,7 +1906,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code eyeOffset} property as a {@code reference} value.  The {@code eyeOffset} property specifies the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the {@code position} property. Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen. If not specified, the default value is [0.0, 0.0, 0.0].
+    Writes a value for the {@code eyeOffset} property as a {@code reference} value. The {@code eyeOffset} property specifies the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the {@code position} property. Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen. If not specified, the default value is [0.0, 0.0, 0.0].
     
     
     
@@ -1926,7 +1926,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code horizontalOrigin} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code horizontalOrigin} property defines the horizontal origin of the label. It controls whether the label is left-, center-, or right-aligned with the {@code position}. If not specified, the default value is CENTER.
+    *  Gets the writer for the {@code horizontalOrigin} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code horizontalOrigin} property defines the horizontal origin of the label. It controls whether the label is left-, center-, or right-aligned with the {@code position}. If not specified, the default value is CENTER.
     
 
     */
@@ -1937,7 +1937,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code horizontalOrigin} property.  The {@code horizontalOrigin} property defines the horizontal origin of the label. It controls whether the label is left-, center-, or right-aligned with the {@code position}. If not specified, the default value is CENTER.
+    Opens and returns the writer for the {@code horizontalOrigin} property. The {@code horizontalOrigin} property defines the horizontal origin of the label. It controls whether the label is left-, center-, or right-aligned with the {@code position}. If not specified, the default value is CENTER.
     
 
     */
@@ -1949,7 +1949,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code horizontalOrigin} property as a {@code horizontalOrigin} value.  The {@code horizontalOrigin} property specifies the horizontal origin of the label. It controls whether the label is left-, center-, or right-aligned with the {@code position}. If not specified, the default value is CENTER.
+    Writes a value for the {@code horizontalOrigin} property as a {@code horizontalOrigin} value. The {@code horizontalOrigin} property specifies the horizontal origin of the label. It controls whether the label is left-, center-, or right-aligned with the {@code position}. If not specified, the default value is CENTER.
     
     
 
@@ -1968,7 +1968,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code horizontalOrigin} property as a {@code reference} value.  The {@code horizontalOrigin} property specifies the horizontal origin of the label. It controls whether the label is left-, center-, or right-aligned with the {@code position}. If not specified, the default value is CENTER.
+    Writes a value for the {@code horizontalOrigin} property as a {@code reference} value. The {@code horizontalOrigin} property specifies the horizontal origin of the label. It controls whether the label is left-, center-, or right-aligned with the {@code position}. If not specified, the default value is CENTER.
     
     
 
@@ -1987,7 +1987,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code horizontalOrigin} property as a {@code reference} value.  The {@code horizontalOrigin} property specifies the horizontal origin of the label. It controls whether the label is left-, center-, or right-aligned with the {@code position}. If not specified, the default value is CENTER.
+    Writes a value for the {@code horizontalOrigin} property as a {@code reference} value. The {@code horizontalOrigin} property specifies the horizontal origin of the label. It controls whether the label is left-, center-, or right-aligned with the {@code position}. If not specified, the default value is CENTER.
     
     
 
@@ -2006,7 +2006,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code horizontalOrigin} property as a {@code reference} value.  The {@code horizontalOrigin} property specifies the horizontal origin of the label. It controls whether the label is left-, center-, or right-aligned with the {@code position}. If not specified, the default value is CENTER.
+    Writes a value for the {@code horizontalOrigin} property as a {@code reference} value. The {@code horizontalOrigin} property specifies the horizontal origin of the label. It controls whether the label is left-, center-, or right-aligned with the {@code position}. If not specified, the default value is CENTER.
     
     
     
@@ -2027,7 +2027,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code horizontalOrigin} property as a {@code reference} value.  The {@code horizontalOrigin} property specifies the horizontal origin of the label. It controls whether the label is left-, center-, or right-aligned with the {@code position}. If not specified, the default value is CENTER.
+    Writes a value for the {@code horizontalOrigin} property as a {@code reference} value. The {@code horizontalOrigin} property specifies the horizontal origin of the label. It controls whether the label is left-, center-, or right-aligned with the {@code position}. If not specified, the default value is CENTER.
     
     
     
@@ -2047,7 +2047,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code verticalOrigin} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code verticalOrigin} property defines the vertical origin of the label. It controls whether the label image is bottom-, center-, or top-aligned with the {@code position}. If not specified, the default value is CENTER.
+    *  Gets the writer for the {@code verticalOrigin} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code verticalOrigin} property defines the vertical origin of the label. It controls whether the label image is bottom-, center-, or top-aligned with the {@code position}. If not specified, the default value is CENTER.
     
 
     */
@@ -2058,7 +2058,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code verticalOrigin} property.  The {@code verticalOrigin} property defines the vertical origin of the label. It controls whether the label image is bottom-, center-, or top-aligned with the {@code position}. If not specified, the default value is CENTER.
+    Opens and returns the writer for the {@code verticalOrigin} property. The {@code verticalOrigin} property defines the vertical origin of the label. It controls whether the label image is bottom-, center-, or top-aligned with the {@code position}. If not specified, the default value is CENTER.
     
 
     */
@@ -2070,7 +2070,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code verticalOrigin} property as a {@code verticalOrigin} value.  The {@code verticalOrigin} property specifies the vertical origin of the label. It controls whether the label image is bottom-, center-, or top-aligned with the {@code position}. If not specified, the default value is CENTER.
+    Writes a value for the {@code verticalOrigin} property as a {@code verticalOrigin} value. The {@code verticalOrigin} property specifies the vertical origin of the label. It controls whether the label image is bottom-, center-, or top-aligned with the {@code position}. If not specified, the default value is CENTER.
     
     
 
@@ -2089,7 +2089,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code verticalOrigin} property as a {@code reference} value.  The {@code verticalOrigin} property specifies the vertical origin of the label. It controls whether the label image is bottom-, center-, or top-aligned with the {@code position}. If not specified, the default value is CENTER.
+    Writes a value for the {@code verticalOrigin} property as a {@code reference} value. The {@code verticalOrigin} property specifies the vertical origin of the label. It controls whether the label image is bottom-, center-, or top-aligned with the {@code position}. If not specified, the default value is CENTER.
     
     
 
@@ -2108,7 +2108,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code verticalOrigin} property as a {@code reference} value.  The {@code verticalOrigin} property specifies the vertical origin of the label. It controls whether the label image is bottom-, center-, or top-aligned with the {@code position}. If not specified, the default value is CENTER.
+    Writes a value for the {@code verticalOrigin} property as a {@code reference} value. The {@code verticalOrigin} property specifies the vertical origin of the label. It controls whether the label image is bottom-, center-, or top-aligned with the {@code position}. If not specified, the default value is CENTER.
     
     
 
@@ -2127,7 +2127,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code verticalOrigin} property as a {@code reference} value.  The {@code verticalOrigin} property specifies the vertical origin of the label. It controls whether the label image is bottom-, center-, or top-aligned with the {@code position}. If not specified, the default value is CENTER.
+    Writes a value for the {@code verticalOrigin} property as a {@code reference} value. The {@code verticalOrigin} property specifies the vertical origin of the label. It controls whether the label image is bottom-, center-, or top-aligned with the {@code position}. If not specified, the default value is CENTER.
     
     
     
@@ -2148,7 +2148,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code verticalOrigin} property as a {@code reference} value.  The {@code verticalOrigin} property specifies the vertical origin of the label. It controls whether the label image is bottom-, center-, or top-aligned with the {@code position}. If not specified, the default value is CENTER.
+    Writes a value for the {@code verticalOrigin} property as a {@code reference} value. The {@code verticalOrigin} property specifies the vertical origin of the label. It controls whether the label image is bottom-, center-, or top-aligned with the {@code position}. If not specified, the default value is CENTER.
     
     
     
@@ -2168,7 +2168,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code heightReference} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code heightReference} property defines the height reference of the label, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
+    *  Gets the writer for the {@code heightReference} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code heightReference} property defines the height reference of the label, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
     
 
     */
@@ -2179,7 +2179,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code heightReference} property.  The {@code heightReference} property defines the height reference of the label, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
+    Opens and returns the writer for the {@code heightReference} property. The {@code heightReference} property defines the height reference of the label, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
     
 
     */
@@ -2191,7 +2191,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code heightReference} property as a {@code heightReference} value.  The {@code heightReference} property specifies the height reference of the label, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
+    Writes a value for the {@code heightReference} property as a {@code heightReference} value. The {@code heightReference} property specifies the height reference of the label, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
     
     
 
@@ -2210,7 +2210,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code heightReference} property as a {@code reference} value.  The {@code heightReference} property specifies the height reference of the label, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
+    Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the label, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
     
     
 
@@ -2229,7 +2229,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code heightReference} property as a {@code reference} value.  The {@code heightReference} property specifies the height reference of the label, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
+    Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the label, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
     
     
 
@@ -2248,7 +2248,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code heightReference} property as a {@code reference} value.  The {@code heightReference} property specifies the height reference of the label, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
+    Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the label, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
     
     
     
@@ -2269,7 +2269,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code heightReference} property as a {@code reference} value.  The {@code heightReference} property specifies the height reference of the label, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
+    Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the label, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
     
     
     
@@ -2289,7 +2289,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code fillColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code fillColor} property defines the fill color of the label. If not specified, the default value is white.
+    *  Gets the writer for the {@code fillColor} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code fillColor} property defines the fill color of the label. If not specified, the default value is white.
     
 
     */
@@ -2300,7 +2300,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code fillColor} property.  The {@code fillColor} property defines the fill color of the label. If not specified, the default value is white.
+    Opens and returns the writer for the {@code fillColor} property. The {@code fillColor} property defines the fill color of the label. If not specified, the default value is white.
     
 
     */
@@ -2312,7 +2312,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code fillColor} property as a {@code rgba} value.  The {@code fillColor} property specifies the fill color of the label. If not specified, the default value is white.
+    Writes a value for the {@code fillColor} property as a {@code rgba} value. The {@code fillColor} property specifies the fill color of the label. If not specified, the default value is white.
     
     
 
@@ -2331,7 +2331,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code fillColor} property as a {@code rgba} value.  The {@code fillColor} property specifies the fill color of the label. If not specified, the default value is white.
+    Writes a value for the {@code fillColor} property as a {@code rgba} value. The {@code fillColor} property specifies the fill color of the label. If not specified, the default value is white.
     
     
     
@@ -2356,7 +2356,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code fillColor} property as a {@code rgba} value.  The {@code fillColor} property specifies the fill color of the label. If not specified, the default value is white.
+    Writes a value for the {@code fillColor} property as a {@code rgba} value. The {@code fillColor} property specifies the fill color of the label. If not specified, the default value is white.
     
     
     
@@ -2377,7 +2377,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code fillColor} property as a {@code rgba} value.  The {@code fillColor} property specifies the fill color of the label. If not specified, the default value is white.
+    Writes a value for the {@code fillColor} property as a {@code rgba} value. The {@code fillColor} property specifies the fill color of the label. If not specified, the default value is white.
     
     
     
@@ -2402,7 +2402,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code fillColor} property as a {@code rgbaf} value.  The {@code fillColor} property specifies the fill color of the label. If not specified, the default value is white.
+    Writes a value for the {@code fillColor} property as a {@code rgbaf} value. The {@code fillColor} property specifies the fill color of the label. If not specified, the default value is white.
     
     
 
@@ -2421,7 +2421,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code fillColor} property as a {@code rgbaf} value.  The {@code fillColor} property specifies the fill color of the label. If not specified, the default value is white.
+    Writes a value for the {@code fillColor} property as a {@code rgbaf} value. The {@code fillColor} property specifies the fill color of the label. If not specified, the default value is white.
     
     
     
@@ -2446,7 +2446,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code fillColor} property as a {@code rgbaf} value.  The {@code fillColor} property specifies the fill color of the label. If not specified, the default value is white.
+    Writes a value for the {@code fillColor} property as a {@code rgbaf} value. The {@code fillColor} property specifies the fill color of the label. If not specified, the default value is white.
     
     
     
@@ -2467,7 +2467,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code fillColor} property as a {@code rgbaf} value.  The {@code fillColor} property specifies the fill color of the label. If not specified, the default value is white.
+    Writes a value for the {@code fillColor} property as a {@code rgbaf} value. The {@code fillColor} property specifies the fill color of the label. If not specified, the default value is white.
     
     
     
@@ -2492,7 +2492,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code fillColor} property as a {@code reference} value.  The {@code fillColor} property specifies the fill color of the label. If not specified, the default value is white.
+    Writes a value for the {@code fillColor} property as a {@code reference} value. The {@code fillColor} property specifies the fill color of the label. If not specified, the default value is white.
     
     
 
@@ -2511,7 +2511,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code fillColor} property as a {@code reference} value.  The {@code fillColor} property specifies the fill color of the label. If not specified, the default value is white.
+    Writes a value for the {@code fillColor} property as a {@code reference} value. The {@code fillColor} property specifies the fill color of the label. If not specified, the default value is white.
     
     
 
@@ -2530,7 +2530,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code fillColor} property as a {@code reference} value.  The {@code fillColor} property specifies the fill color of the label. If not specified, the default value is white.
+    Writes a value for the {@code fillColor} property as a {@code reference} value. The {@code fillColor} property specifies the fill color of the label. If not specified, the default value is white.
     
     
     
@@ -2551,7 +2551,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code fillColor} property as a {@code reference} value.  The {@code fillColor} property specifies the fill color of the label. If not specified, the default value is white.
+    Writes a value for the {@code fillColor} property as a {@code reference} value. The {@code fillColor} property specifies the fill color of the label. If not specified, the default value is white.
     
     
     
@@ -2571,7 +2571,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code outlineColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineColor} property defines the outline color of the label. If not specified, the default value is black.
+    *  Gets the writer for the {@code outlineColor} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code outlineColor} property defines the outline color of the label. If not specified, the default value is black.
     
 
     */
@@ -2582,7 +2582,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code outlineColor} property.  The {@code outlineColor} property defines the outline color of the label. If not specified, the default value is black.
+    Opens and returns the writer for the {@code outlineColor} property. The {@code outlineColor} property defines the outline color of the label. If not specified, the default value is black.
     
 
     */
@@ -2594,7 +2594,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the outline color of the label. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code rgba} value. The {@code outlineColor} property specifies the outline color of the label. If not specified, the default value is black.
     
     
 
@@ -2613,7 +2613,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the outline color of the label. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code rgba} value. The {@code outlineColor} property specifies the outline color of the label. If not specified, the default value is black.
     
     
     
@@ -2638,7 +2638,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the outline color of the label. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code rgba} value. The {@code outlineColor} property specifies the outline color of the label. If not specified, the default value is black.
     
     
     
@@ -2659,7 +2659,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the outline color of the label. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code rgba} value. The {@code outlineColor} property specifies the outline color of the label. If not specified, the default value is black.
     
     
     
@@ -2684,7 +2684,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the outline color of the label. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value. The {@code outlineColor} property specifies the outline color of the label. If not specified, the default value is black.
     
     
 
@@ -2703,7 +2703,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the outline color of the label. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value. The {@code outlineColor} property specifies the outline color of the label. If not specified, the default value is black.
     
     
     
@@ -2728,7 +2728,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the outline color of the label. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value. The {@code outlineColor} property specifies the outline color of the label. If not specified, the default value is black.
     
     
     
@@ -2749,7 +2749,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the outline color of the label. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value. The {@code outlineColor} property specifies the outline color of the label. If not specified, the default value is black.
     
     
     
@@ -2774,7 +2774,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the outline color of the label. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code reference} value. The {@code outlineColor} property specifies the outline color of the label. If not specified, the default value is black.
     
     
 
@@ -2793,7 +2793,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the outline color of the label. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code reference} value. The {@code outlineColor} property specifies the outline color of the label. If not specified, the default value is black.
     
     
 
@@ -2812,7 +2812,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the outline color of the label. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code reference} value. The {@code outlineColor} property specifies the outline color of the label. If not specified, the default value is black.
     
     
     
@@ -2833,7 +2833,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the outline color of the label. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code reference} value. The {@code outlineColor} property specifies the outline color of the label. If not specified, the default value is black.
     
     
     
@@ -2853,7 +2853,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code outlineWidth} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineWidth} property defines the outline width of the label. If not specified, the default value is 1.0.
+    *  Gets the writer for the {@code outlineWidth} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code outlineWidth} property defines the outline width of the label. If not specified, the default value is 1.0.
     
 
     */
@@ -2864,7 +2864,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code outlineWidth} property.  The {@code outlineWidth} property defines the outline width of the label. If not specified, the default value is 1.0.
+    Opens and returns the writer for the {@code outlineWidth} property. The {@code outlineWidth} property defines the outline width of the label. If not specified, the default value is 1.0.
     
 
     */
@@ -2876,7 +2876,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code number} value.  The {@code outlineWidth} property specifies the outline width of the label. If not specified, the default value is 1.0.
+    Writes a value for the {@code outlineWidth} property as a {@code number} value. The {@code outlineWidth} property specifies the outline width of the label. If not specified, the default value is 1.0.
     
     
 
@@ -2895,7 +2895,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code number} value.  The {@code outlineWidth} property specifies the outline width of the label. If not specified, the default value is 1.0.
+    Writes a value for the {@code outlineWidth} property as a {@code number} value. The {@code outlineWidth} property specifies the outline width of the label. If not specified, the default value is 1.0.
     
     
     
@@ -2916,7 +2916,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code number} value.  The {@code outlineWidth} property specifies the outline width of the label. If not specified, the default value is 1.0.
+    Writes a value for the {@code outlineWidth} property as a {@code number} value. The {@code outlineWidth} property specifies the outline width of the label. If not specified, the default value is 1.0.
     
     
     
@@ -2941,7 +2941,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the outline width of the label. If not specified, the default value is 1.0.
+    Writes a value for the {@code outlineWidth} property as a {@code reference} value. The {@code outlineWidth} property specifies the outline width of the label. If not specified, the default value is 1.0.
     
     
 
@@ -2960,7 +2960,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the outline width of the label. If not specified, the default value is 1.0.
+    Writes a value for the {@code outlineWidth} property as a {@code reference} value. The {@code outlineWidth} property specifies the outline width of the label. If not specified, the default value is 1.0.
     
     
 
@@ -2979,7 +2979,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the outline width of the label. If not specified, the default value is 1.0.
+    Writes a value for the {@code outlineWidth} property as a {@code reference} value. The {@code outlineWidth} property specifies the outline width of the label. If not specified, the default value is 1.0.
     
     
     
@@ -3000,7 +3000,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the outline width of the label. If not specified, the default value is 1.0.
+    Writes a value for the {@code outlineWidth} property as a {@code reference} value. The {@code outlineWidth} property specifies the outline width of the label. If not specified, the default value is 1.0.
     
     
     
@@ -3020,7 +3020,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code translucencyByDistance} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code translucencyByDistance} property defines how the label's translucency should change based on the label's distance from the camera. This scalar value should range from 0 to 1.
+    *  Gets the writer for the {@code translucencyByDistance} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code translucencyByDistance} property defines how the label's translucency should change based on the label's distance from the camera. This scalar value should range from 0 to 1.
     
 
     */
@@ -3031,7 +3031,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code translucencyByDistance} property.  The {@code translucencyByDistance} property defines how the label's translucency should change based on the label's distance from the camera. This scalar value should range from 0 to 1.
+    Opens and returns the writer for the {@code translucencyByDistance} property. The {@code translucencyByDistance} property defines how the label's translucency should change based on the label's distance from the camera. This scalar value should range from 0 to 1.
     
 
     */
@@ -3043,7 +3043,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code translucencyByDistance} property as a {@code nearFarScalar} value.  The {@code translucencyByDistance} property specifies how the label's translucency should change based on the label's distance from the camera. This scalar value should range from 0 to 1.
+    Writes a value for the {@code translucencyByDistance} property as a {@code nearFarScalar} value. The {@code translucencyByDistance} property specifies how the label's translucency should change based on the label's distance from the camera. This scalar value should range from 0 to 1.
     
     
 
@@ -3062,7 +3062,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code translucencyByDistance} property as a {@code nearFarScalar} value.  The {@code translucencyByDistance} property specifies how the label's translucency should change based on the label's distance from the camera. This scalar value should range from 0 to 1.
+    Writes a value for the {@code translucencyByDistance} property as a {@code nearFarScalar} value. The {@code translucencyByDistance} property specifies how the label's translucency should change based on the label's distance from the camera. This scalar value should range from 0 to 1.
     
     
     
@@ -3087,7 +3087,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code translucencyByDistance} property as a {@code nearFarScalar} value.  The {@code translucencyByDistance} property specifies how the label's translucency should change based on the label's distance from the camera. This scalar value should range from 0 to 1.
+    Writes a value for the {@code translucencyByDistance} property as a {@code nearFarScalar} value. The {@code translucencyByDistance} property specifies how the label's translucency should change based on the label's distance from the camera. This scalar value should range from 0 to 1.
     
     
     
@@ -3108,7 +3108,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code translucencyByDistance} property as a {@code nearFarScalar} value.  The {@code translucencyByDistance} property specifies how the label's translucency should change based on the label's distance from the camera. This scalar value should range from 0 to 1.
+    Writes a value for the {@code translucencyByDistance} property as a {@code nearFarScalar} value. The {@code translucencyByDistance} property specifies how the label's translucency should change based on the label's distance from the camera. This scalar value should range from 0 to 1.
     
     
     
@@ -3133,7 +3133,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code translucencyByDistance} property as a {@code reference} value.  The {@code translucencyByDistance} property specifies how the label's translucency should change based on the label's distance from the camera. This scalar value should range from 0 to 1.
+    Writes a value for the {@code translucencyByDistance} property as a {@code reference} value. The {@code translucencyByDistance} property specifies how the label's translucency should change based on the label's distance from the camera. This scalar value should range from 0 to 1.
     
     
 
@@ -3152,7 +3152,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code translucencyByDistance} property as a {@code reference} value.  The {@code translucencyByDistance} property specifies how the label's translucency should change based on the label's distance from the camera. This scalar value should range from 0 to 1.
+    Writes a value for the {@code translucencyByDistance} property as a {@code reference} value. The {@code translucencyByDistance} property specifies how the label's translucency should change based on the label's distance from the camera. This scalar value should range from 0 to 1.
     
     
 
@@ -3171,7 +3171,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code translucencyByDistance} property as a {@code reference} value.  The {@code translucencyByDistance} property specifies how the label's translucency should change based on the label's distance from the camera. This scalar value should range from 0 to 1.
+    Writes a value for the {@code translucencyByDistance} property as a {@code reference} value. The {@code translucencyByDistance} property specifies how the label's translucency should change based on the label's distance from the camera. This scalar value should range from 0 to 1.
     
     
     
@@ -3192,7 +3192,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code translucencyByDistance} property as a {@code reference} value.  The {@code translucencyByDistance} property specifies how the label's translucency should change based on the label's distance from the camera. This scalar value should range from 0 to 1.
+    Writes a value for the {@code translucencyByDistance} property as a {@code reference} value. The {@code translucencyByDistance} property specifies how the label's translucency should change based on the label's distance from the camera. This scalar value should range from 0 to 1.
     
     
     
@@ -3212,7 +3212,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code pixelOffsetScaleByDistance} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code pixelOffsetScaleByDistance} property defines how the label's pixel offset should change based on the label's distance from the camera. This scalar value will be multiplied by {@code pixelOffset}.
+    *  Gets the writer for the {@code pixelOffsetScaleByDistance} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code pixelOffsetScaleByDistance} property defines how the label's pixel offset should change based on the label's distance from the camera. This scalar value will be multiplied by {@code pixelOffset}.
     
 
     */
@@ -3223,7 +3223,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code pixelOffsetScaleByDistance} property.  The {@code pixelOffsetScaleByDistance} property defines how the label's pixel offset should change based on the label's distance from the camera. This scalar value will be multiplied by {@code pixelOffset}.
+    Opens and returns the writer for the {@code pixelOffsetScaleByDistance} property. The {@code pixelOffsetScaleByDistance} property defines how the label's pixel offset should change based on the label's distance from the camera. This scalar value will be multiplied by {@code pixelOffset}.
     
 
     */
@@ -3235,7 +3235,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code pixelOffsetScaleByDistance} property as a {@code nearFarScalar} value.  The {@code pixelOffsetScaleByDistance} property specifies how the label's pixel offset should change based on the label's distance from the camera. This scalar value will be multiplied by {@code pixelOffset}.
+    Writes a value for the {@code pixelOffsetScaleByDistance} property as a {@code nearFarScalar} value. The {@code pixelOffsetScaleByDistance} property specifies how the label's pixel offset should change based on the label's distance from the camera. This scalar value will be multiplied by {@code pixelOffset}.
     
     
 
@@ -3254,7 +3254,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code pixelOffsetScaleByDistance} property as a {@code nearFarScalar} value.  The {@code pixelOffsetScaleByDistance} property specifies how the label's pixel offset should change based on the label's distance from the camera. This scalar value will be multiplied by {@code pixelOffset}.
+    Writes a value for the {@code pixelOffsetScaleByDistance} property as a {@code nearFarScalar} value. The {@code pixelOffsetScaleByDistance} property specifies how the label's pixel offset should change based on the label's distance from the camera. This scalar value will be multiplied by {@code pixelOffset}.
     
     
     
@@ -3279,7 +3279,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code pixelOffsetScaleByDistance} property as a {@code nearFarScalar} value.  The {@code pixelOffsetScaleByDistance} property specifies how the label's pixel offset should change based on the label's distance from the camera. This scalar value will be multiplied by {@code pixelOffset}.
+    Writes a value for the {@code pixelOffsetScaleByDistance} property as a {@code nearFarScalar} value. The {@code pixelOffsetScaleByDistance} property specifies how the label's pixel offset should change based on the label's distance from the camera. This scalar value will be multiplied by {@code pixelOffset}.
     
     
     
@@ -3300,7 +3300,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code pixelOffsetScaleByDistance} property as a {@code nearFarScalar} value.  The {@code pixelOffsetScaleByDistance} property specifies how the label's pixel offset should change based on the label's distance from the camera. This scalar value will be multiplied by {@code pixelOffset}.
+    Writes a value for the {@code pixelOffsetScaleByDistance} property as a {@code nearFarScalar} value. The {@code pixelOffsetScaleByDistance} property specifies how the label's pixel offset should change based on the label's distance from the camera. This scalar value will be multiplied by {@code pixelOffset}.
     
     
     
@@ -3325,7 +3325,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code pixelOffsetScaleByDistance} property as a {@code reference} value.  The {@code pixelOffsetScaleByDistance} property specifies how the label's pixel offset should change based on the label's distance from the camera. This scalar value will be multiplied by {@code pixelOffset}.
+    Writes a value for the {@code pixelOffsetScaleByDistance} property as a {@code reference} value. The {@code pixelOffsetScaleByDistance} property specifies how the label's pixel offset should change based on the label's distance from the camera. This scalar value will be multiplied by {@code pixelOffset}.
     
     
 
@@ -3344,7 +3344,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code pixelOffsetScaleByDistance} property as a {@code reference} value.  The {@code pixelOffsetScaleByDistance} property specifies how the label's pixel offset should change based on the label's distance from the camera. This scalar value will be multiplied by {@code pixelOffset}.
+    Writes a value for the {@code pixelOffsetScaleByDistance} property as a {@code reference} value. The {@code pixelOffsetScaleByDistance} property specifies how the label's pixel offset should change based on the label's distance from the camera. This scalar value will be multiplied by {@code pixelOffset}.
     
     
 
@@ -3363,7 +3363,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code pixelOffsetScaleByDistance} property as a {@code reference} value.  The {@code pixelOffsetScaleByDistance} property specifies how the label's pixel offset should change based on the label's distance from the camera. This scalar value will be multiplied by {@code pixelOffset}.
+    Writes a value for the {@code pixelOffsetScaleByDistance} property as a {@code reference} value. The {@code pixelOffsetScaleByDistance} property specifies how the label's pixel offset should change based on the label's distance from the camera. This scalar value will be multiplied by {@code pixelOffset}.
     
     
     
@@ -3384,7 +3384,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code pixelOffsetScaleByDistance} property as a {@code reference} value.  The {@code pixelOffsetScaleByDistance} property specifies how the label's pixel offset should change based on the label's distance from the camera. This scalar value will be multiplied by {@code pixelOffset}.
+    Writes a value for the {@code pixelOffsetScaleByDistance} property as a {@code reference} value. The {@code pixelOffsetScaleByDistance} property specifies how the label's pixel offset should change based on the label's distance from the camera. This scalar value will be multiplied by {@code pixelOffset}.
     
     
     
@@ -3404,7 +3404,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code scaleByDistance} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code scaleByDistance} property defines how the label's scale should change based on the label's distance from the camera. This scalar value will be multiplied by {@code scale}.
+    *  Gets the writer for the {@code scaleByDistance} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code scaleByDistance} property defines how the label's scale should change based on the label's distance from the camera. This scalar value will be multiplied by {@code scale}.
     
 
     */
@@ -3415,7 +3415,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code scaleByDistance} property.  The {@code scaleByDistance} property defines how the label's scale should change based on the label's distance from the camera. This scalar value will be multiplied by {@code scale}.
+    Opens and returns the writer for the {@code scaleByDistance} property. The {@code scaleByDistance} property defines how the label's scale should change based on the label's distance from the camera. This scalar value will be multiplied by {@code scale}.
     
 
     */
@@ -3427,7 +3427,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code scaleByDistance} property as a {@code nearFarScalar} value.  The {@code scaleByDistance} property specifies how the label's scale should change based on the label's distance from the camera. This scalar value will be multiplied by {@code scale}.
+    Writes a value for the {@code scaleByDistance} property as a {@code nearFarScalar} value. The {@code scaleByDistance} property specifies how the label's scale should change based on the label's distance from the camera. This scalar value will be multiplied by {@code scale}.
     
     
 
@@ -3446,7 +3446,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code scaleByDistance} property as a {@code nearFarScalar} value.  The {@code scaleByDistance} property specifies how the label's scale should change based on the label's distance from the camera. This scalar value will be multiplied by {@code scale}.
+    Writes a value for the {@code scaleByDistance} property as a {@code nearFarScalar} value. The {@code scaleByDistance} property specifies how the label's scale should change based on the label's distance from the camera. This scalar value will be multiplied by {@code scale}.
     
     
     
@@ -3471,7 +3471,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code scaleByDistance} property as a {@code nearFarScalar} value.  The {@code scaleByDistance} property specifies how the label's scale should change based on the label's distance from the camera. This scalar value will be multiplied by {@code scale}.
+    Writes a value for the {@code scaleByDistance} property as a {@code nearFarScalar} value. The {@code scaleByDistance} property specifies how the label's scale should change based on the label's distance from the camera. This scalar value will be multiplied by {@code scale}.
     
     
     
@@ -3492,7 +3492,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code scaleByDistance} property as a {@code nearFarScalar} value.  The {@code scaleByDistance} property specifies how the label's scale should change based on the label's distance from the camera. This scalar value will be multiplied by {@code scale}.
+    Writes a value for the {@code scaleByDistance} property as a {@code nearFarScalar} value. The {@code scaleByDistance} property specifies how the label's scale should change based on the label's distance from the camera. This scalar value will be multiplied by {@code scale}.
     
     
     
@@ -3517,7 +3517,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code scaleByDistance} property as a {@code reference} value.  The {@code scaleByDistance} property specifies how the label's scale should change based on the label's distance from the camera. This scalar value will be multiplied by {@code scale}.
+    Writes a value for the {@code scaleByDistance} property as a {@code reference} value. The {@code scaleByDistance} property specifies how the label's scale should change based on the label's distance from the camera. This scalar value will be multiplied by {@code scale}.
     
     
 
@@ -3536,7 +3536,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code scaleByDistance} property as a {@code reference} value.  The {@code scaleByDistance} property specifies how the label's scale should change based on the label's distance from the camera. This scalar value will be multiplied by {@code scale}.
+    Writes a value for the {@code scaleByDistance} property as a {@code reference} value. The {@code scaleByDistance} property specifies how the label's scale should change based on the label's distance from the camera. This scalar value will be multiplied by {@code scale}.
     
     
 
@@ -3555,7 +3555,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code scaleByDistance} property as a {@code reference} value.  The {@code scaleByDistance} property specifies how the label's scale should change based on the label's distance from the camera. This scalar value will be multiplied by {@code scale}.
+    Writes a value for the {@code scaleByDistance} property as a {@code reference} value. The {@code scaleByDistance} property specifies how the label's scale should change based on the label's distance from the camera. This scalar value will be multiplied by {@code scale}.
     
     
     
@@ -3576,7 +3576,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code scaleByDistance} property as a {@code reference} value.  The {@code scaleByDistance} property specifies how the label's scale should change based on the label's distance from the camera. This scalar value will be multiplied by {@code scale}.
+    Writes a value for the {@code scaleByDistance} property as a {@code reference} value. The {@code scaleByDistance} property specifies how the label's scale should change based on the label's distance from the camera. This scalar value will be multiplied by {@code scale}.
     
     
     
@@ -3596,7 +3596,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code distanceDisplayCondition} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code distanceDisplayCondition} property defines the display condition specifying the distance from the camera at which this label will be displayed.
+    *  Gets the writer for the {@code distanceDisplayCondition} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code distanceDisplayCondition} property defines the display condition specifying the distance from the camera at which this label will be displayed.
     
 
     */
@@ -3607,7 +3607,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code distanceDisplayCondition} property.  The {@code distanceDisplayCondition} property defines the display condition specifying the distance from the camera at which this label will be displayed.
+    Opens and returns the writer for the {@code distanceDisplayCondition} property. The {@code distanceDisplayCondition} property defines the display condition specifying the distance from the camera at which this label will be displayed.
     
 
     */
@@ -3619,7 +3619,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this label will be displayed.
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this label will be displayed.
     
     
 
@@ -3638,7 +3638,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this label will be displayed.
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this label will be displayed.
     
     
     
@@ -3659,7 +3659,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this label will be displayed.
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this label will be displayed.
     
     
     
@@ -3680,7 +3680,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this label will be displayed.
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this label will be displayed.
     
     
     
@@ -3705,7 +3705,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this label will be displayed.
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this label will be displayed.
     
     
 
@@ -3724,7 +3724,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this label will be displayed.
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this label will be displayed.
     
     
 
@@ -3743,7 +3743,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this label will be displayed.
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this label will be displayed.
     
     
     
@@ -3764,7 +3764,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this label will be displayed.
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this label will be displayed.
     
     
     
@@ -3784,7 +3784,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code disableDepthTestDistance} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code disableDepthTestDistance} property defines the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
+    *  Gets the writer for the {@code disableDepthTestDistance} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code disableDepthTestDistance} property defines the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
     
 
     */
@@ -3795,7 +3795,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code disableDepthTestDistance} property.  The {@code disableDepthTestDistance} property defines the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
+    Opens and returns the writer for the {@code disableDepthTestDistance} property. The {@code disableDepthTestDistance} property defines the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
     
 
     */
@@ -3807,7 +3807,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code disableDepthTestDistance} property as a {@code number} value.  The {@code disableDepthTestDistance} property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
+    Writes a value for the {@code disableDepthTestDistance} property as a {@code number} value. The {@code disableDepthTestDistance} property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
     
     
 
@@ -3826,7 +3826,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code disableDepthTestDistance} property as a {@code number} value.  The {@code disableDepthTestDistance} property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
+    Writes a value for the {@code disableDepthTestDistance} property as a {@code number} value. The {@code disableDepthTestDistance} property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
     
     
     
@@ -3847,7 +3847,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code disableDepthTestDistance} property as a {@code number} value.  The {@code disableDepthTestDistance} property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
+    Writes a value for the {@code disableDepthTestDistance} property as a {@code number} value. The {@code disableDepthTestDistance} property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
     
     
     
@@ -3872,7 +3872,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code disableDepthTestDistance} property as a {@code reference} value.  The {@code disableDepthTestDistance} property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
+    Writes a value for the {@code disableDepthTestDistance} property as a {@code reference} value. The {@code disableDepthTestDistance} property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
     
     
 
@@ -3891,7 +3891,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code disableDepthTestDistance} property as a {@code reference} value.  The {@code disableDepthTestDistance} property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
+    Writes a value for the {@code disableDepthTestDistance} property as a {@code reference} value. The {@code disableDepthTestDistance} property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
     
     
 
@@ -3910,7 +3910,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code disableDepthTestDistance} property as a {@code reference} value.  The {@code disableDepthTestDistance} property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
+    Writes a value for the {@code disableDepthTestDistance} property as a {@code reference} value. The {@code disableDepthTestDistance} property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
     
     
     
@@ -3931,7 +3931,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code disableDepthTestDistance} property as a {@code reference} value.  The {@code disableDepthTestDistance} property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
+    Writes a value for the {@code disableDepthTestDistance} property as a {@code reference} value. The {@code disableDepthTestDistance} property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
     
     
     

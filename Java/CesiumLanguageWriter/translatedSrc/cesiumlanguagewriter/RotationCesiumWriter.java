@@ -12,7 +12,7 @@ import javax.annotation.Nonnull;
 
 /**
  *  
- Writes a {@code Rotation} to a {@link CesiumOutputStream}.  A {@code Rotation} is defines a rotation that transforms a vector expressed in one axes and transforms it to another.
+ Writes a {@code Rotation} to a {@link CesiumOutputStream}. A {@code Rotation} is defines a rotation that transforms a vector expressed in one axes and transforms it to another.
  
 
  */
@@ -216,7 +216,7 @@ public class RotationCesiumWriter extends CesiumInterpolatablePropertyWriter<Rot
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumInterpolatableValuePropertyWriter} to write a value in {@code UnitQuaternion} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumInterpolatableValuePropertyWriter} to write a value in {@code UnitQuaternion} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
@@ -241,7 +241,7 @@ public class RotationCesiumWriter extends CesiumInterpolatablePropertyWriter<Rot
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 

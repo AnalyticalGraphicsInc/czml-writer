@@ -13,7 +13,7 @@ import javax.annotation.Nonnull;
 
 /**
  *  
- Writes a {@code Uri} to a {@link CesiumOutputStream}.  A {@code Uri} is a URI value.  The URI can optionally vary with time.
+ Writes a {@code Uri} to a {@link CesiumOutputStream}. A {@code Uri} is a URI value. The URI can optionally vary with time.
  
 
  */
@@ -156,7 +156,7 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
     
     
 
-    * @param uri The URI of the data.  The provided ICesiumUriResolver will be used to build the final URI embedded in the document.
+    * @param uri The URI of the data. The provided ICesiumUriResolver will be used to build the final URI embedded in the document.
     * @param resolver An ICesiumUriResolver used to build the final URI that will be embedded in the document.
     */
     public final void writeUri(URI uri, ICesiumUriResolver resolver) {
@@ -170,7 +170,7 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
     
     
 
-    * @param uri The URI of the data.  The provided ICesiumUriResolver will be used to build the final URI embedded in the document.
+    * @param uri The URI of the data. The provided ICesiumUriResolver will be used to build the final URI embedded in the document.
     * @param resolver An ICesiumUriResolver used to build the final URI that will be embedded in the document.
     */
     public final void writeUri(String uri, ICesiumUriResolver resolver) {
@@ -190,7 +190,7 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
     
     
 
-    * @param image The image.  A data URI will be created for this image, using PNG encoding.
+    * @param image The image. A data URI will be created for this image, using PNG encoding.
     */
     public final void writeUri(RenderedImage image) {
         writeUri(image, CesiumImageFormat.PNG);
@@ -203,7 +203,7 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
     
     
 
-    * @param image The image.  A data URI will be created for this image.
+    * @param image The image. A data URI will be created for this image.
     * @param imageFormat The image format to use to encode the image in the data URI.
     */
     public final void writeUri(RenderedImage image, @Nonnull CesiumImageFormat imageFormat) {
@@ -283,7 +283,7 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Uri} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Uri} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
@@ -304,7 +304,7 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 

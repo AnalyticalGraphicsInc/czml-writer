@@ -2,7 +2,7 @@
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/String.json",
     "title": "String",
-    "description": "A string value.  The string can optionally vary with time.",
+    "description": "A string value. The string can optionally vary with time.",
     "type": [
         "array",
         "object",

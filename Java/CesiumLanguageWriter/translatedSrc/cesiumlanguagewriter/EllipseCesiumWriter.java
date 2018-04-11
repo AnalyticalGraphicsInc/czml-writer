@@ -19,7 +19,7 @@ import javax.annotation.Nonnull;
 
 /**
  *  
- Writes a {@code Ellipse} to a {@link CesiumOutputStream}.  A {@code Ellipse} is an ellipse, which is a closed curve on or above the surface of the Earth.
+ Writes a {@code Ellipse} to a {@link CesiumOutputStream}. A {@code Ellipse} is an ellipse, which is a closed curve on or above the surface of the Earth.
  
 
  */
@@ -262,7 +262,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the ellipse is shown. If not specified, the default value is {@code true}.
+    *  Gets the writer for the {@code show} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code show} property defines whether or not the ellipse is shown. If not specified, the default value is {@code true}.
     
 
     */
@@ -273,7 +273,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Opens and returns the writer for the {@code show} property.  The {@code show} property defines whether or not the ellipse is shown. If not specified, the default value is {@code true}.
+    Opens and returns the writer for the {@code show} property. The {@code show} property defines whether or not the ellipse is shown. If not specified, the default value is {@code true}.
     
 
     */
@@ -285,7 +285,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code boolean} value.  The {@code show} property specifies whether or not the ellipse is shown. If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code boolean} value. The {@code show} property specifies whether or not the ellipse is shown. If not specified, the default value is {@code true}.
     
     
 
@@ -304,7 +304,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the ellipse is shown. If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the ellipse is shown. If not specified, the default value is {@code true}.
     
     
 
@@ -323,7 +323,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the ellipse is shown. If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the ellipse is shown. If not specified, the default value is {@code true}.
     
     
 
@@ -342,7 +342,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the ellipse is shown. If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the ellipse is shown. If not specified, the default value is {@code true}.
     
     
     
@@ -363,7 +363,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the ellipse is shown. If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the ellipse is shown. If not specified, the default value is {@code true}.
     
     
     
@@ -383,7 +383,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code semiMajorAxis} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code semiMajorAxis} property defines the length of the ellipse's semi-major axis in meters. This value is required.
+    *  Gets the writer for the {@code semiMajorAxis} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code semiMajorAxis} property defines the length of the ellipse's semi-major axis in meters. This value is required.
     
 
     */
@@ -394,7 +394,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Opens and returns the writer for the {@code semiMajorAxis} property.  The {@code semiMajorAxis} property defines the length of the ellipse's semi-major axis in meters. This value is required.
+    Opens and returns the writer for the {@code semiMajorAxis} property. The {@code semiMajorAxis} property defines the length of the ellipse's semi-major axis in meters. This value is required.
     
 
     */
@@ -406,7 +406,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code semiMajorAxis} property as a {@code number} value.  The {@code semiMajorAxis} property specifies the length of the ellipse's semi-major axis in meters. This value is required.
+    Writes a value for the {@code semiMajorAxis} property as a {@code number} value. The {@code semiMajorAxis} property specifies the length of the ellipse's semi-major axis in meters. This value is required.
     
     
 
@@ -425,7 +425,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code semiMajorAxis} property as a {@code number} value.  The {@code semiMajorAxis} property specifies the length of the ellipse's semi-major axis in meters. This value is required.
+    Writes a value for the {@code semiMajorAxis} property as a {@code number} value. The {@code semiMajorAxis} property specifies the length of the ellipse's semi-major axis in meters. This value is required.
     
     
     
@@ -446,7 +446,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code semiMajorAxis} property as a {@code number} value.  The {@code semiMajorAxis} property specifies the length of the ellipse's semi-major axis in meters. This value is required.
+    Writes a value for the {@code semiMajorAxis} property as a {@code number} value. The {@code semiMajorAxis} property specifies the length of the ellipse's semi-major axis in meters. This value is required.
     
     
     
@@ -471,7 +471,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code semiMajorAxis} property as a {@code reference} value.  The {@code semiMajorAxis} property specifies the length of the ellipse's semi-major axis in meters. This value is required.
+    Writes a value for the {@code semiMajorAxis} property as a {@code reference} value. The {@code semiMajorAxis} property specifies the length of the ellipse's semi-major axis in meters. This value is required.
     
     
 
@@ -490,7 +490,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code semiMajorAxis} property as a {@code reference} value.  The {@code semiMajorAxis} property specifies the length of the ellipse's semi-major axis in meters. This value is required.
+    Writes a value for the {@code semiMajorAxis} property as a {@code reference} value. The {@code semiMajorAxis} property specifies the length of the ellipse's semi-major axis in meters. This value is required.
     
     
 
@@ -509,7 +509,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code semiMajorAxis} property as a {@code reference} value.  The {@code semiMajorAxis} property specifies the length of the ellipse's semi-major axis in meters. This value is required.
+    Writes a value for the {@code semiMajorAxis} property as a {@code reference} value. The {@code semiMajorAxis} property specifies the length of the ellipse's semi-major axis in meters. This value is required.
     
     
     
@@ -530,7 +530,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code semiMajorAxis} property as a {@code reference} value.  The {@code semiMajorAxis} property specifies the length of the ellipse's semi-major axis in meters. This value is required.
+    Writes a value for the {@code semiMajorAxis} property as a {@code reference} value. The {@code semiMajorAxis} property specifies the length of the ellipse's semi-major axis in meters. This value is required.
     
     
     
@@ -550,7 +550,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code semiMinorAxis} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code semiMinorAxis} property defines the length of the ellipse's semi-minor axis in meters. This value is required.
+    *  Gets the writer for the {@code semiMinorAxis} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code semiMinorAxis} property defines the length of the ellipse's semi-minor axis in meters. This value is required.
     
 
     */
@@ -561,7 +561,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Opens and returns the writer for the {@code semiMinorAxis} property.  The {@code semiMinorAxis} property defines the length of the ellipse's semi-minor axis in meters. This value is required.
+    Opens and returns the writer for the {@code semiMinorAxis} property. The {@code semiMinorAxis} property defines the length of the ellipse's semi-minor axis in meters. This value is required.
     
 
     */
@@ -573,7 +573,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code semiMinorAxis} property as a {@code number} value.  The {@code semiMinorAxis} property specifies the length of the ellipse's semi-minor axis in meters. This value is required.
+    Writes a value for the {@code semiMinorAxis} property as a {@code number} value. The {@code semiMinorAxis} property specifies the length of the ellipse's semi-minor axis in meters. This value is required.
     
     
 
@@ -592,7 +592,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code semiMinorAxis} property as a {@code number} value.  The {@code semiMinorAxis} property specifies the length of the ellipse's semi-minor axis in meters. This value is required.
+    Writes a value for the {@code semiMinorAxis} property as a {@code number} value. The {@code semiMinorAxis} property specifies the length of the ellipse's semi-minor axis in meters. This value is required.
     
     
     
@@ -613,7 +613,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code semiMinorAxis} property as a {@code number} value.  The {@code semiMinorAxis} property specifies the length of the ellipse's semi-minor axis in meters. This value is required.
+    Writes a value for the {@code semiMinorAxis} property as a {@code number} value. The {@code semiMinorAxis} property specifies the length of the ellipse's semi-minor axis in meters. This value is required.
     
     
     
@@ -638,7 +638,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code semiMinorAxis} property as a {@code reference} value.  The {@code semiMinorAxis} property specifies the length of the ellipse's semi-minor axis in meters. This value is required.
+    Writes a value for the {@code semiMinorAxis} property as a {@code reference} value. The {@code semiMinorAxis} property specifies the length of the ellipse's semi-minor axis in meters. This value is required.
     
     
 
@@ -657,7 +657,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code semiMinorAxis} property as a {@code reference} value.  The {@code semiMinorAxis} property specifies the length of the ellipse's semi-minor axis in meters. This value is required.
+    Writes a value for the {@code semiMinorAxis} property as a {@code reference} value. The {@code semiMinorAxis} property specifies the length of the ellipse's semi-minor axis in meters. This value is required.
     
     
 
@@ -676,7 +676,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code semiMinorAxis} property as a {@code reference} value.  The {@code semiMinorAxis} property specifies the length of the ellipse's semi-minor axis in meters. This value is required.
+    Writes a value for the {@code semiMinorAxis} property as a {@code reference} value. The {@code semiMinorAxis} property specifies the length of the ellipse's semi-minor axis in meters. This value is required.
     
     
     
@@ -697,7 +697,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code semiMinorAxis} property as a {@code reference} value.  The {@code semiMinorAxis} property specifies the length of the ellipse's semi-minor axis in meters. This value is required.
+    Writes a value for the {@code semiMinorAxis} property as a {@code reference} value. The {@code semiMinorAxis} property specifies the length of the ellipse's semi-minor axis in meters. This value is required.
     
     
     
@@ -717,7 +717,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code height} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code height} property defines the altitude of the ellipse relative to the surface. If not specified, the default value is 0.0.
+    *  Gets the writer for the {@code height} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code height} property defines the altitude of the ellipse relative to the surface. If not specified, the default value is 0.0.
     
 
     */
@@ -728,7 +728,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Opens and returns the writer for the {@code height} property.  The {@code height} property defines the altitude of the ellipse relative to the surface. If not specified, the default value is 0.0.
+    Opens and returns the writer for the {@code height} property. The {@code height} property defines the altitude of the ellipse relative to the surface. If not specified, the default value is 0.0.
     
 
     */
@@ -740,7 +740,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code height} property as a {@code number} value.  The {@code height} property specifies the altitude of the ellipse relative to the surface. If not specified, the default value is 0.0.
+    Writes a value for the {@code height} property as a {@code number} value. The {@code height} property specifies the altitude of the ellipse relative to the surface. If not specified, the default value is 0.0.
     
     
 
@@ -759,7 +759,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code height} property as a {@code number} value.  The {@code height} property specifies the altitude of the ellipse relative to the surface. If not specified, the default value is 0.0.
+    Writes a value for the {@code height} property as a {@code number} value. The {@code height} property specifies the altitude of the ellipse relative to the surface. If not specified, the default value is 0.0.
     
     
     
@@ -780,7 +780,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code height} property as a {@code number} value.  The {@code height} property specifies the altitude of the ellipse relative to the surface. If not specified, the default value is 0.0.
+    Writes a value for the {@code height} property as a {@code number} value. The {@code height} property specifies the altitude of the ellipse relative to the surface. If not specified, the default value is 0.0.
     
     
     
@@ -805,7 +805,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code height} property as a {@code reference} value.  The {@code height} property specifies the altitude of the ellipse relative to the surface. If not specified, the default value is 0.0.
+    Writes a value for the {@code height} property as a {@code reference} value. The {@code height} property specifies the altitude of the ellipse relative to the surface. If not specified, the default value is 0.0.
     
     
 
@@ -824,7 +824,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code height} property as a {@code reference} value.  The {@code height} property specifies the altitude of the ellipse relative to the surface. If not specified, the default value is 0.0.
+    Writes a value for the {@code height} property as a {@code reference} value. The {@code height} property specifies the altitude of the ellipse relative to the surface. If not specified, the default value is 0.0.
     
     
 
@@ -843,7 +843,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code height} property as a {@code reference} value.  The {@code height} property specifies the altitude of the ellipse relative to the surface. If not specified, the default value is 0.0.
+    Writes a value for the {@code height} property as a {@code reference} value. The {@code height} property specifies the altitude of the ellipse relative to the surface. If not specified, the default value is 0.0.
     
     
     
@@ -864,7 +864,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code height} property as a {@code reference} value.  The {@code height} property specifies the altitude of the ellipse relative to the surface. If not specified, the default value is 0.0.
+    Writes a value for the {@code height} property as a {@code reference} value. The {@code height} property specifies the altitude of the ellipse relative to the surface. If not specified, the default value is 0.0.
     
     
     
@@ -884,7 +884,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code extrudedHeight} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code extrudedHeight} property defines the altitude of the ellipse's extruded face relative to the surface.
+    *  Gets the writer for the {@code extrudedHeight} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code extrudedHeight} property defines the altitude of the ellipse's extruded face relative to the surface.
     
 
     */
@@ -895,7 +895,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Opens and returns the writer for the {@code extrudedHeight} property.  The {@code extrudedHeight} property defines the altitude of the ellipse's extruded face relative to the surface.
+    Opens and returns the writer for the {@code extrudedHeight} property. The {@code extrudedHeight} property defines the altitude of the ellipse's extruded face relative to the surface.
     
 
     */
@@ -907,7 +907,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code extrudedHeight} property as a {@code number} value.  The {@code extrudedHeight} property specifies the altitude of the ellipse's extruded face relative to the surface.
+    Writes a value for the {@code extrudedHeight} property as a {@code number} value. The {@code extrudedHeight} property specifies the altitude of the ellipse's extruded face relative to the surface.
     
     
 
@@ -926,7 +926,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code extrudedHeight} property as a {@code number} value.  The {@code extrudedHeight} property specifies the altitude of the ellipse's extruded face relative to the surface.
+    Writes a value for the {@code extrudedHeight} property as a {@code number} value. The {@code extrudedHeight} property specifies the altitude of the ellipse's extruded face relative to the surface.
     
     
     
@@ -947,7 +947,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code extrudedHeight} property as a {@code number} value.  The {@code extrudedHeight} property specifies the altitude of the ellipse's extruded face relative to the surface.
+    Writes a value for the {@code extrudedHeight} property as a {@code number} value. The {@code extrudedHeight} property specifies the altitude of the ellipse's extruded face relative to the surface.
     
     
     
@@ -972,7 +972,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code extrudedHeight} property as a {@code reference} value.  The {@code extrudedHeight} property specifies the altitude of the ellipse's extruded face relative to the surface.
+    Writes a value for the {@code extrudedHeight} property as a {@code reference} value. The {@code extrudedHeight} property specifies the altitude of the ellipse's extruded face relative to the surface.
     
     
 
@@ -991,7 +991,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code extrudedHeight} property as a {@code reference} value.  The {@code extrudedHeight} property specifies the altitude of the ellipse's extruded face relative to the surface.
+    Writes a value for the {@code extrudedHeight} property as a {@code reference} value. The {@code extrudedHeight} property specifies the altitude of the ellipse's extruded face relative to the surface.
     
     
 
@@ -1010,7 +1010,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code extrudedHeight} property as a {@code reference} value.  The {@code extrudedHeight} property specifies the altitude of the ellipse's extruded face relative to the surface.
+    Writes a value for the {@code extrudedHeight} property as a {@code reference} value. The {@code extrudedHeight} property specifies the altitude of the ellipse's extruded face relative to the surface.
     
     
     
@@ -1031,7 +1031,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code extrudedHeight} property as a {@code reference} value.  The {@code extrudedHeight} property specifies the altitude of the ellipse's extruded face relative to the surface.
+    Writes a value for the {@code extrudedHeight} property as a {@code reference} value. The {@code extrudedHeight} property specifies the altitude of the ellipse's extruded face relative to the surface.
     
     
     
@@ -1051,7 +1051,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code rotation} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code rotation} property defines the angle from north (counter-clockwise) in radians. If not specified, the default value is 0.0.
+    *  Gets the writer for the {@code rotation} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code rotation} property defines the angle from north (counter-clockwise) in radians. If not specified, the default value is 0.0.
     
 
     */
@@ -1062,7 +1062,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Opens and returns the writer for the {@code rotation} property.  The {@code rotation} property defines the angle from north (counter-clockwise) in radians. If not specified, the default value is 0.0.
+    Opens and returns the writer for the {@code rotation} property. The {@code rotation} property defines the angle from north (counter-clockwise) in radians. If not specified, the default value is 0.0.
     
 
     */
@@ -1074,7 +1074,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code rotation} property as a {@code number} value.  The {@code rotation} property specifies the angle from north (counter-clockwise) in radians. If not specified, the default value is 0.0.
+    Writes a value for the {@code rotation} property as a {@code number} value. The {@code rotation} property specifies the angle from north (counter-clockwise) in radians. If not specified, the default value is 0.0.
     
     
 
@@ -1093,7 +1093,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code rotation} property as a {@code number} value.  The {@code rotation} property specifies the angle from north (counter-clockwise) in radians. If not specified, the default value is 0.0.
+    Writes a value for the {@code rotation} property as a {@code number} value. The {@code rotation} property specifies the angle from north (counter-clockwise) in radians. If not specified, the default value is 0.0.
     
     
     
@@ -1114,7 +1114,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code rotation} property as a {@code number} value.  The {@code rotation} property specifies the angle from north (counter-clockwise) in radians. If not specified, the default value is 0.0.
+    Writes a value for the {@code rotation} property as a {@code number} value. The {@code rotation} property specifies the angle from north (counter-clockwise) in radians. If not specified, the default value is 0.0.
     
     
     
@@ -1139,7 +1139,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code rotation} property as a {@code reference} value.  The {@code rotation} property specifies the angle from north (counter-clockwise) in radians. If not specified, the default value is 0.0.
+    Writes a value for the {@code rotation} property as a {@code reference} value. The {@code rotation} property specifies the angle from north (counter-clockwise) in radians. If not specified, the default value is 0.0.
     
     
 
@@ -1158,7 +1158,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code rotation} property as a {@code reference} value.  The {@code rotation} property specifies the angle from north (counter-clockwise) in radians. If not specified, the default value is 0.0.
+    Writes a value for the {@code rotation} property as a {@code reference} value. The {@code rotation} property specifies the angle from north (counter-clockwise) in radians. If not specified, the default value is 0.0.
     
     
 
@@ -1177,7 +1177,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code rotation} property as a {@code reference} value.  The {@code rotation} property specifies the angle from north (counter-clockwise) in radians. If not specified, the default value is 0.0.
+    Writes a value for the {@code rotation} property as a {@code reference} value. The {@code rotation} property specifies the angle from north (counter-clockwise) in radians. If not specified, the default value is 0.0.
     
     
     
@@ -1198,7 +1198,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code rotation} property as a {@code reference} value.  The {@code rotation} property specifies the angle from north (counter-clockwise) in radians. If not specified, the default value is 0.0.
+    Writes a value for the {@code rotation} property as a {@code reference} value. The {@code rotation} property specifies the angle from north (counter-clockwise) in radians. If not specified, the default value is 0.0.
     
     
     
@@ -1218,7 +1218,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code stRotation} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code stRotation} property defines the rotation of any applied texture coordinates. If not specified, the default value is 0.0.
+    *  Gets the writer for the {@code stRotation} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code stRotation} property defines the rotation of any applied texture coordinates. If not specified, the default value is 0.0.
     
 
     */
@@ -1229,7 +1229,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Opens and returns the writer for the {@code stRotation} property.  The {@code stRotation} property defines the rotation of any applied texture coordinates. If not specified, the default value is 0.0.
+    Opens and returns the writer for the {@code stRotation} property. The {@code stRotation} property defines the rotation of any applied texture coordinates. If not specified, the default value is 0.0.
     
 
     */
@@ -1241,7 +1241,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code stRotation} property as a {@code number} value.  The {@code stRotation} property specifies the rotation of any applied texture coordinates. If not specified, the default value is 0.0.
+    Writes a value for the {@code stRotation} property as a {@code number} value. The {@code stRotation} property specifies the rotation of any applied texture coordinates. If not specified, the default value is 0.0.
     
     
 
@@ -1260,7 +1260,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code stRotation} property as a {@code number} value.  The {@code stRotation} property specifies the rotation of any applied texture coordinates. If not specified, the default value is 0.0.
+    Writes a value for the {@code stRotation} property as a {@code number} value. The {@code stRotation} property specifies the rotation of any applied texture coordinates. If not specified, the default value is 0.0.
     
     
     
@@ -1281,7 +1281,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code stRotation} property as a {@code number} value.  The {@code stRotation} property specifies the rotation of any applied texture coordinates. If not specified, the default value is 0.0.
+    Writes a value for the {@code stRotation} property as a {@code number} value. The {@code stRotation} property specifies the rotation of any applied texture coordinates. If not specified, the default value is 0.0.
     
     
     
@@ -1306,7 +1306,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code stRotation} property as a {@code reference} value.  The {@code stRotation} property specifies the rotation of any applied texture coordinates. If not specified, the default value is 0.0.
+    Writes a value for the {@code stRotation} property as a {@code reference} value. The {@code stRotation} property specifies the rotation of any applied texture coordinates. If not specified, the default value is 0.0.
     
     
 
@@ -1325,7 +1325,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code stRotation} property as a {@code reference} value.  The {@code stRotation} property specifies the rotation of any applied texture coordinates. If not specified, the default value is 0.0.
+    Writes a value for the {@code stRotation} property as a {@code reference} value. The {@code stRotation} property specifies the rotation of any applied texture coordinates. If not specified, the default value is 0.0.
     
     
 
@@ -1344,7 +1344,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code stRotation} property as a {@code reference} value.  The {@code stRotation} property specifies the rotation of any applied texture coordinates. If not specified, the default value is 0.0.
+    Writes a value for the {@code stRotation} property as a {@code reference} value. The {@code stRotation} property specifies the rotation of any applied texture coordinates. If not specified, the default value is 0.0.
     
     
     
@@ -1365,7 +1365,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code stRotation} property as a {@code reference} value.  The {@code stRotation} property specifies the rotation of any applied texture coordinates. If not specified, the default value is 0.0.
+    Writes a value for the {@code stRotation} property as a {@code reference} value. The {@code stRotation} property specifies the rotation of any applied texture coordinates. If not specified, the default value is 0.0.
     
     
     
@@ -1385,7 +1385,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code granularity} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code granularity} property defines the sampling distance, in radians. If not specified, the default value is PI / 180.0.
+    *  Gets the writer for the {@code granularity} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code granularity} property defines the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
 
     */
@@ -1396,7 +1396,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Opens and returns the writer for the {@code granularity} property.  The {@code granularity} property defines the sampling distance, in radians. If not specified, the default value is PI / 180.0.
+    Opens and returns the writer for the {@code granularity} property. The {@code granularity} property defines the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
 
     */
@@ -1408,7 +1408,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code granularity} property as a {@code number} value.  The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
+    Writes a value for the {@code granularity} property as a {@code number} value. The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
     
 
@@ -1427,7 +1427,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code granularity} property as a {@code number} value.  The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
+    Writes a value for the {@code granularity} property as a {@code number} value. The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
     
     
@@ -1448,7 +1448,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code granularity} property as a {@code number} value.  The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
+    Writes a value for the {@code granularity} property as a {@code number} value. The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
     
     
@@ -1473,7 +1473,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code granularity} property as a {@code reference} value.  The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
+    Writes a value for the {@code granularity} property as a {@code reference} value. The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
     
 
@@ -1492,7 +1492,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code granularity} property as a {@code reference} value.  The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
+    Writes a value for the {@code granularity} property as a {@code reference} value. The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
     
 
@@ -1511,7 +1511,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code granularity} property as a {@code reference} value.  The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
+    Writes a value for the {@code granularity} property as a {@code reference} value. The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
     
     
@@ -1532,7 +1532,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code granularity} property as a {@code reference} value.  The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
+    Writes a value for the {@code granularity} property as a {@code reference} value. The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
     
     
@@ -1552,7 +1552,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code fill} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code fill} property defines whether or not the ellipse is filled. If not specified, the default value is {@code true}.
+    *  Gets the writer for the {@code fill} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code fill} property defines whether or not the ellipse is filled. If not specified, the default value is {@code true}.
     
 
     */
@@ -1563,7 +1563,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Opens and returns the writer for the {@code fill} property.  The {@code fill} property defines whether or not the ellipse is filled. If not specified, the default value is {@code true}.
+    Opens and returns the writer for the {@code fill} property. The {@code fill} property defines whether or not the ellipse is filled. If not specified, the default value is {@code true}.
     
 
     */
@@ -1575,7 +1575,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code fill} property as a {@code boolean} value.  The {@code fill} property specifies whether or not the ellipse is filled. If not specified, the default value is {@code true}.
+    Writes a value for the {@code fill} property as a {@code boolean} value. The {@code fill} property specifies whether or not the ellipse is filled. If not specified, the default value is {@code true}.
     
     
 
@@ -1594,7 +1594,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code fill} property as a {@code reference} value.  The {@code fill} property specifies whether or not the ellipse is filled. If not specified, the default value is {@code true}.
+    Writes a value for the {@code fill} property as a {@code reference} value. The {@code fill} property specifies whether or not the ellipse is filled. If not specified, the default value is {@code true}.
     
     
 
@@ -1613,7 +1613,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code fill} property as a {@code reference} value.  The {@code fill} property specifies whether or not the ellipse is filled. If not specified, the default value is {@code true}.
+    Writes a value for the {@code fill} property as a {@code reference} value. The {@code fill} property specifies whether or not the ellipse is filled. If not specified, the default value is {@code true}.
     
     
 
@@ -1632,7 +1632,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code fill} property as a {@code reference} value.  The {@code fill} property specifies whether or not the ellipse is filled. If not specified, the default value is {@code true}.
+    Writes a value for the {@code fill} property as a {@code reference} value. The {@code fill} property specifies whether or not the ellipse is filled. If not specified, the default value is {@code true}.
     
     
     
@@ -1653,7 +1653,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code fill} property as a {@code reference} value.  The {@code fill} property specifies whether or not the ellipse is filled. If not specified, the default value is {@code true}.
+    Writes a value for the {@code fill} property as a {@code reference} value. The {@code fill} property specifies whether or not the ellipse is filled. If not specified, the default value is {@code true}.
     
     
     
@@ -1673,7 +1673,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code material} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code material} property defines the material to use to fill the ellipse. If not specified, the default value is solid white.
+    *  Gets the writer for the {@code material} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code material} property defines the material to use to fill the ellipse. If not specified, the default value is solid white.
     
 
     */
@@ -1684,7 +1684,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Opens and returns the writer for the {@code material} property.  The {@code material} property defines the material to use to fill the ellipse. If not specified, the default value is solid white.
+    Opens and returns the writer for the {@code material} property. The {@code material} property defines the material to use to fill the ellipse. If not specified, the default value is solid white.
     
 
     */
@@ -1695,7 +1695,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code outline} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outline} property defines whether or not the ellipse is outlined. If not specified, the default value is {@code false}.
+    *  Gets the writer for the {@code outline} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code outline} property defines whether or not the ellipse is outlined. If not specified, the default value is {@code false}.
     
 
     */
@@ -1706,7 +1706,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Opens and returns the writer for the {@code outline} property.  The {@code outline} property defines whether or not the ellipse is outlined. If not specified, the default value is {@code false}.
+    Opens and returns the writer for the {@code outline} property. The {@code outline} property defines whether or not the ellipse is outlined. If not specified, the default value is {@code false}.
     
 
     */
@@ -1718,7 +1718,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outline} property as a {@code boolean} value.  The {@code outline} property specifies whether or not the ellipse is outlined. If not specified, the default value is {@code false}.
+    Writes a value for the {@code outline} property as a {@code boolean} value. The {@code outline} property specifies whether or not the ellipse is outlined. If not specified, the default value is {@code false}.
     
     
 
@@ -1737,7 +1737,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outline} property as a {@code reference} value.  The {@code outline} property specifies whether or not the ellipse is outlined. If not specified, the default value is {@code false}.
+    Writes a value for the {@code outline} property as a {@code reference} value. The {@code outline} property specifies whether or not the ellipse is outlined. If not specified, the default value is {@code false}.
     
     
 
@@ -1756,7 +1756,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outline} property as a {@code reference} value.  The {@code outline} property specifies whether or not the ellipse is outlined. If not specified, the default value is {@code false}.
+    Writes a value for the {@code outline} property as a {@code reference} value. The {@code outline} property specifies whether or not the ellipse is outlined. If not specified, the default value is {@code false}.
     
     
 
@@ -1775,7 +1775,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outline} property as a {@code reference} value.  The {@code outline} property specifies whether or not the ellipse is outlined. If not specified, the default value is {@code false}.
+    Writes a value for the {@code outline} property as a {@code reference} value. The {@code outline} property specifies whether or not the ellipse is outlined. If not specified, the default value is {@code false}.
     
     
     
@@ -1796,7 +1796,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outline} property as a {@code reference} value.  The {@code outline} property specifies whether or not the ellipse is outlined. If not specified, the default value is {@code false}.
+    Writes a value for the {@code outline} property as a {@code reference} value. The {@code outline} property specifies whether or not the ellipse is outlined. If not specified, the default value is {@code false}.
     
     
     
@@ -1816,7 +1816,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code outlineColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineColor} property defines the color of the ellipse outline. If not specified, the default value is black.
+    *  Gets the writer for the {@code outlineColor} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code outlineColor} property defines the color of the ellipse outline. If not specified, the default value is black.
     
 
     */
@@ -1827,7 +1827,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Opens and returns the writer for the {@code outlineColor} property.  The {@code outlineColor} property defines the color of the ellipse outline. If not specified, the default value is black.
+    Opens and returns the writer for the {@code outlineColor} property. The {@code outlineColor} property defines the color of the ellipse outline. If not specified, the default value is black.
     
 
     */
@@ -1839,7 +1839,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the color of the ellipse outline. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code rgba} value. The {@code outlineColor} property specifies the color of the ellipse outline. If not specified, the default value is black.
     
     
 
@@ -1858,7 +1858,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the color of the ellipse outline. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code rgba} value. The {@code outlineColor} property specifies the color of the ellipse outline. If not specified, the default value is black.
     
     
     
@@ -1883,7 +1883,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the color of the ellipse outline. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code rgba} value. The {@code outlineColor} property specifies the color of the ellipse outline. If not specified, the default value is black.
     
     
     
@@ -1904,7 +1904,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the color of the ellipse outline. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code rgba} value. The {@code outlineColor} property specifies the color of the ellipse outline. If not specified, the default value is black.
     
     
     
@@ -1929,7 +1929,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the color of the ellipse outline. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value. The {@code outlineColor} property specifies the color of the ellipse outline. If not specified, the default value is black.
     
     
 
@@ -1948,7 +1948,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the color of the ellipse outline. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value. The {@code outlineColor} property specifies the color of the ellipse outline. If not specified, the default value is black.
     
     
     
@@ -1973,7 +1973,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the color of the ellipse outline. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value. The {@code outlineColor} property specifies the color of the ellipse outline. If not specified, the default value is black.
     
     
     
@@ -1994,7 +1994,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the color of the ellipse outline. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value. The {@code outlineColor} property specifies the color of the ellipse outline. If not specified, the default value is black.
     
     
     
@@ -2019,7 +2019,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the color of the ellipse outline. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code reference} value. The {@code outlineColor} property specifies the color of the ellipse outline. If not specified, the default value is black.
     
     
 
@@ -2038,7 +2038,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the color of the ellipse outline. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code reference} value. The {@code outlineColor} property specifies the color of the ellipse outline. If not specified, the default value is black.
     
     
 
@@ -2057,7 +2057,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the color of the ellipse outline. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code reference} value. The {@code outlineColor} property specifies the color of the ellipse outline. If not specified, the default value is black.
     
     
     
@@ -2078,7 +2078,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the color of the ellipse outline. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code reference} value. The {@code outlineColor} property specifies the color of the ellipse outline. If not specified, the default value is black.
     
     
     
@@ -2098,7 +2098,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code outlineWidth} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineWidth} property defines the width of the ellipse outline. If not specified, the default value is 1.0.
+    *  Gets the writer for the {@code outlineWidth} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code outlineWidth} property defines the width of the ellipse outline. If not specified, the default value is 1.0.
     
 
     */
@@ -2109,7 +2109,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Opens and returns the writer for the {@code outlineWidth} property.  The {@code outlineWidth} property defines the width of the ellipse outline. If not specified, the default value is 1.0.
+    Opens and returns the writer for the {@code outlineWidth} property. The {@code outlineWidth} property defines the width of the ellipse outline. If not specified, the default value is 1.0.
     
 
     */
@@ -2121,7 +2121,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code number} value.  The {@code outlineWidth} property specifies the width of the ellipse outline. If not specified, the default value is 1.0.
+    Writes a value for the {@code outlineWidth} property as a {@code number} value. The {@code outlineWidth} property specifies the width of the ellipse outline. If not specified, the default value is 1.0.
     
     
 
@@ -2140,7 +2140,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code number} value.  The {@code outlineWidth} property specifies the width of the ellipse outline. If not specified, the default value is 1.0.
+    Writes a value for the {@code outlineWidth} property as a {@code number} value. The {@code outlineWidth} property specifies the width of the ellipse outline. If not specified, the default value is 1.0.
     
     
     
@@ -2161,7 +2161,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code number} value.  The {@code outlineWidth} property specifies the width of the ellipse outline. If not specified, the default value is 1.0.
+    Writes a value for the {@code outlineWidth} property as a {@code number} value. The {@code outlineWidth} property specifies the width of the ellipse outline. If not specified, the default value is 1.0.
     
     
     
@@ -2186,7 +2186,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the width of the ellipse outline. If not specified, the default value is 1.0.
+    Writes a value for the {@code outlineWidth} property as a {@code reference} value. The {@code outlineWidth} property specifies the width of the ellipse outline. If not specified, the default value is 1.0.
     
     
 
@@ -2205,7 +2205,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the width of the ellipse outline. If not specified, the default value is 1.0.
+    Writes a value for the {@code outlineWidth} property as a {@code reference} value. The {@code outlineWidth} property specifies the width of the ellipse outline. If not specified, the default value is 1.0.
     
     
 
@@ -2224,7 +2224,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the width of the ellipse outline. If not specified, the default value is 1.0.
+    Writes a value for the {@code outlineWidth} property as a {@code reference} value. The {@code outlineWidth} property specifies the width of the ellipse outline. If not specified, the default value is 1.0.
     
     
     
@@ -2245,7 +2245,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the width of the ellipse outline. If not specified, the default value is 1.0.
+    Writes a value for the {@code outlineWidth} property as a {@code reference} value. The {@code outlineWidth} property specifies the width of the ellipse outline. If not specified, the default value is 1.0.
     
     
     
@@ -2265,7 +2265,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code numberOfVerticalLines} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code numberOfVerticalLines} property defines the number of vertical lines to use when outlining an extruded ellipse. If not specified, the default value is 16.
+    *  Gets the writer for the {@code numberOfVerticalLines} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code numberOfVerticalLines} property defines the number of vertical lines to use when outlining an extruded ellipse. If not specified, the default value is 16.
     
 
     */
@@ -2276,7 +2276,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Opens and returns the writer for the {@code numberOfVerticalLines} property.  The {@code numberOfVerticalLines} property defines the number of vertical lines to use when outlining an extruded ellipse. If not specified, the default value is 16.
+    Opens and returns the writer for the {@code numberOfVerticalLines} property. The {@code numberOfVerticalLines} property defines the number of vertical lines to use when outlining an extruded ellipse. If not specified, the default value is 16.
     
 
     */
@@ -2288,7 +2288,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code numberOfVerticalLines} property as a {@code number} value.  The {@code numberOfVerticalLines} property specifies the number of vertical lines to use when outlining an extruded ellipse. If not specified, the default value is 16.
+    Writes a value for the {@code numberOfVerticalLines} property as a {@code number} value. The {@code numberOfVerticalLines} property specifies the number of vertical lines to use when outlining an extruded ellipse. If not specified, the default value is 16.
     
     
 
@@ -2307,7 +2307,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code numberOfVerticalLines} property as a {@code number} value.  The {@code numberOfVerticalLines} property specifies the number of vertical lines to use when outlining an extruded ellipse. If not specified, the default value is 16.
+    Writes a value for the {@code numberOfVerticalLines} property as a {@code number} value. The {@code numberOfVerticalLines} property specifies the number of vertical lines to use when outlining an extruded ellipse. If not specified, the default value is 16.
     
     
     
@@ -2328,7 +2328,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code numberOfVerticalLines} property as a {@code number} value.  The {@code numberOfVerticalLines} property specifies the number of vertical lines to use when outlining an extruded ellipse. If not specified, the default value is 16.
+    Writes a value for the {@code numberOfVerticalLines} property as a {@code number} value. The {@code numberOfVerticalLines} property specifies the number of vertical lines to use when outlining an extruded ellipse. If not specified, the default value is 16.
     
     
     
@@ -2353,7 +2353,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code numberOfVerticalLines} property as a {@code reference} value.  The {@code numberOfVerticalLines} property specifies the number of vertical lines to use when outlining an extruded ellipse. If not specified, the default value is 16.
+    Writes a value for the {@code numberOfVerticalLines} property as a {@code reference} value. The {@code numberOfVerticalLines} property specifies the number of vertical lines to use when outlining an extruded ellipse. If not specified, the default value is 16.
     
     
 
@@ -2372,7 +2372,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code numberOfVerticalLines} property as a {@code reference} value.  The {@code numberOfVerticalLines} property specifies the number of vertical lines to use when outlining an extruded ellipse. If not specified, the default value is 16.
+    Writes a value for the {@code numberOfVerticalLines} property as a {@code reference} value. The {@code numberOfVerticalLines} property specifies the number of vertical lines to use when outlining an extruded ellipse. If not specified, the default value is 16.
     
     
 
@@ -2391,7 +2391,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code numberOfVerticalLines} property as a {@code reference} value.  The {@code numberOfVerticalLines} property specifies the number of vertical lines to use when outlining an extruded ellipse. If not specified, the default value is 16.
+    Writes a value for the {@code numberOfVerticalLines} property as a {@code reference} value. The {@code numberOfVerticalLines} property specifies the number of vertical lines to use when outlining an extruded ellipse. If not specified, the default value is 16.
     
     
     
@@ -2412,7 +2412,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code numberOfVerticalLines} property as a {@code reference} value.  The {@code numberOfVerticalLines} property specifies the number of vertical lines to use when outlining an extruded ellipse. If not specified, the default value is 16.
+    Writes a value for the {@code numberOfVerticalLines} property as a {@code reference} value. The {@code numberOfVerticalLines} property specifies the number of vertical lines to use when outlining an extruded ellipse. If not specified, the default value is 16.
     
     
     
@@ -2432,7 +2432,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code shadows} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code shadows} property defines whether or not the ellipse casts or receives shadows. If not specified, the default value is DISABLED.
+    *  Gets the writer for the {@code shadows} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code shadows} property defines whether or not the ellipse casts or receives shadows. If not specified, the default value is DISABLED.
     
 
     */
@@ -2443,7 +2443,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Opens and returns the writer for the {@code shadows} property.  The {@code shadows} property defines whether or not the ellipse casts or receives shadows. If not specified, the default value is DISABLED.
+    Opens and returns the writer for the {@code shadows} property. The {@code shadows} property defines whether or not the ellipse casts or receives shadows. If not specified, the default value is DISABLED.
     
 
     */
@@ -2455,7 +2455,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code shadows} property as a {@code shadowMode} value.  The {@code shadows} property specifies whether or not the ellipse casts or receives shadows. If not specified, the default value is DISABLED.
+    Writes a value for the {@code shadows} property as a {@code shadowMode} value. The {@code shadows} property specifies whether or not the ellipse casts or receives shadows. If not specified, the default value is DISABLED.
     
     
 
@@ -2474,7 +2474,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code shadows} property as a {@code reference} value.  The {@code shadows} property specifies whether or not the ellipse casts or receives shadows. If not specified, the default value is DISABLED.
+    Writes a value for the {@code shadows} property as a {@code reference} value. The {@code shadows} property specifies whether or not the ellipse casts or receives shadows. If not specified, the default value is DISABLED.
     
     
 
@@ -2493,7 +2493,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code shadows} property as a {@code reference} value.  The {@code shadows} property specifies whether or not the ellipse casts or receives shadows. If not specified, the default value is DISABLED.
+    Writes a value for the {@code shadows} property as a {@code reference} value. The {@code shadows} property specifies whether or not the ellipse casts or receives shadows. If not specified, the default value is DISABLED.
     
     
 
@@ -2512,7 +2512,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code shadows} property as a {@code reference} value.  The {@code shadows} property specifies whether or not the ellipse casts or receives shadows. If not specified, the default value is DISABLED.
+    Writes a value for the {@code shadows} property as a {@code reference} value. The {@code shadows} property specifies whether or not the ellipse casts or receives shadows. If not specified, the default value is DISABLED.
     
     
     
@@ -2533,7 +2533,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code shadows} property as a {@code reference} value.  The {@code shadows} property specifies whether or not the ellipse casts or receives shadows. If not specified, the default value is DISABLED.
+    Writes a value for the {@code shadows} property as a {@code reference} value. The {@code shadows} property specifies whether or not the ellipse casts or receives shadows. If not specified, the default value is DISABLED.
     
     
     
@@ -2553,7 +2553,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code distanceDisplayCondition} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code distanceDisplayCondition} property defines the display condition specifying at what distance from the camera this ellipse will be displayed.
+    *  Gets the writer for the {@code distanceDisplayCondition} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code distanceDisplayCondition} property defines the display condition specifying at what distance from the camera this ellipse will be displayed.
     
 
     */
@@ -2564,7 +2564,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Opens and returns the writer for the {@code distanceDisplayCondition} property.  The {@code distanceDisplayCondition} property defines the display condition specifying at what distance from the camera this ellipse will be displayed.
+    Opens and returns the writer for the {@code distanceDisplayCondition} property. The {@code distanceDisplayCondition} property defines the display condition specifying at what distance from the camera this ellipse will be displayed.
     
 
     */
@@ -2576,7 +2576,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this ellipse will be displayed.
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this ellipse will be displayed.
     
     
 
@@ -2595,7 +2595,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this ellipse will be displayed.
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this ellipse will be displayed.
     
     
     
@@ -2616,7 +2616,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this ellipse will be displayed.
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this ellipse will be displayed.
     
     
     
@@ -2637,7 +2637,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this ellipse will be displayed.
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this ellipse will be displayed.
     
     
     
@@ -2662,7 +2662,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this ellipse will be displayed.
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this ellipse will be displayed.
     
     
 
@@ -2681,7 +2681,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this ellipse will be displayed.
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this ellipse will be displayed.
     
     
 
@@ -2700,7 +2700,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this ellipse will be displayed.
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this ellipse will be displayed.
     
     
     
@@ -2721,7 +2721,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this ellipse will be displayed.
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this ellipse will be displayed.
     
     
     

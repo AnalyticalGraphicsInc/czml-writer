@@ -10,7 +10,7 @@ import javax.annotation.Nonnull;
 
 /**
  *  
- Writes a {@code Font} to a {@link CesiumOutputStream}.  A {@code Font} is a font used to draw text. Fonts are specified using the same syntax as the CSS "font" property.
+ Writes a {@code Font} to a {@link CesiumOutputStream}. A {@code Font} is a font used to draw text. Fonts are specified using the same syntax as the CSS "font" property.
  
 
  */
@@ -182,7 +182,7 @@ public class FontCesiumWriter extends CesiumPropertyWriter<FontCesiumWriter> {
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Font} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Font} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
@@ -202,7 +202,7 @@ public class FontCesiumWriter extends CesiumPropertyWriter<FontCesiumWriter> {
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 

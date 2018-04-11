@@ -7,7 +7,7 @@ import javax.annotation.Nonnull;
 
 /**
  *  
- Writes a {@code Clock} to a {@link CesiumOutputStream}.  A {@code Clock} is initial settings for a simulated clock when a document is loaded.  The start and stop time are configured using the interval property.
+ Writes a {@code Clock} to a {@link CesiumOutputStream}. A {@code Clock} is initial settings for a simulated clock when a document is loaded. The start and stop time are configured using the interval property.
  
 
  */
@@ -101,7 +101,7 @@ public class ClockCesiumWriter extends CesiumPropertyWriter<ClockCesiumWriter> {
 
     /**
     *  
-    Writes the value expressed as a {@code multiplier}, which is the multiplier.  When {@code step} is set to {@code TICK_DEPENDENT}, this is the number of seconds to advance each tick.  When {@code step} is set to {@code SYSTEM_CLOCK_DEPENDENT}, this is multiplied by the elapsed system time between ticks.  This value is ignored in {@code SYSTEM_CLOCK} mode.  The default value is 1.0.
+    Writes the value expressed as a {@code multiplier}, which is the multiplier. When {@code step} is set to {@code TICK_DEPENDENT}, this is the number of seconds to advance each tick. When {@code step} is set to {@code SYSTEM_CLOCK_DEPENDENT}, this is multiplied by the elapsed system time between ticks. This value is ignored in {@code SYSTEM_CLOCK} mode. If not specified, the default value is 1.0.
     
     
 
@@ -116,7 +116,7 @@ public class ClockCesiumWriter extends CesiumPropertyWriter<ClockCesiumWriter> {
 
     /**
     *  
-    Writes the value expressed as a {@code range}, which is the behavior when the current time reaches its start or end times.  The default value is {@code LOOP_STOP}.
+    Writes the value expressed as a {@code range}, which is the behavior when the current time reaches its start or end times. If not specified, the default value is LOOP_STOP.
     
     
 
@@ -131,7 +131,7 @@ public class ClockCesiumWriter extends CesiumPropertyWriter<ClockCesiumWriter> {
 
     /**
     *  
-    Writes the value expressed as a {@code step}, which is how the current time advances each tick.  The default value is {@code SYSTEM_CLOCK_MULTIPLIER}.
+    Writes the value expressed as a {@code step}, which is how the current time advances each tick. If not specified, the default value is SYSTEM_CLOCK_MULTIPLIER.
     
     
 

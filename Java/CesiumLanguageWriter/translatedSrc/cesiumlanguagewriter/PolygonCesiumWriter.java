@@ -19,7 +19,7 @@ import javax.annotation.Nonnull;
 
 /**
  *  
- Writes a {@code Polygon} to a {@link CesiumOutputStream}.  A {@code Polygon} is a polygon, which is a closed figure on the surface of the Earth.
+ Writes a {@code Polygon} to a {@link CesiumOutputStream}. A {@code Polygon} is a polygon, which is a closed figure on the surface of the Earth.
  
 
  */
@@ -262,7 +262,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the polygon is shown. If not specified, the default value is {@code true}.
+    *  Gets the writer for the {@code show} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code show} property defines whether or not the polygon is shown. If not specified, the default value is {@code true}.
     
 
     */
@@ -273,7 +273,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Opens and returns the writer for the {@code show} property.  The {@code show} property defines whether or not the polygon is shown. If not specified, the default value is {@code true}.
+    Opens and returns the writer for the {@code show} property. The {@code show} property defines whether or not the polygon is shown. If not specified, the default value is {@code true}.
     
 
     */
@@ -285,7 +285,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code boolean} value.  The {@code show} property specifies whether or not the polygon is shown. If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code boolean} value. The {@code show} property specifies whether or not the polygon is shown. If not specified, the default value is {@code true}.
     
     
 
@@ -304,7 +304,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the polygon is shown. If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the polygon is shown. If not specified, the default value is {@code true}.
     
     
 
@@ -323,7 +323,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the polygon is shown. If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the polygon is shown. If not specified, the default value is {@code true}.
     
     
 
@@ -342,7 +342,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the polygon is shown. If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the polygon is shown. If not specified, the default value is {@code true}.
     
     
     
@@ -363,7 +363,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the polygon is shown. If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the polygon is shown. If not specified, the default value is {@code true}.
     
     
     
@@ -383,7 +383,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code positions} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code positions} property defines the array of positions defining a simple polygon. This value is required.
+    *  Gets the writer for the {@code positions} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code positions} property defines the array of positions defining a simple polygon. This value is required.
     
 
     */
@@ -394,7 +394,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Opens and returns the writer for the {@code positions} property.  The {@code positions} property defines the array of positions defining a simple polygon. This value is required.
+    Opens and returns the writer for the {@code positions} property. The {@code positions} property defines the array of positions defining a simple polygon. This value is required.
     
 
     */
@@ -406,7 +406,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code positions} property as a {@code cartesian} value.  The {@code positions} property specifies the array of positions defining a simple polygon. This value is required.
+    Writes a value for the {@code positions} property as a {@code cartesian} value. The {@code positions} property specifies the array of positions defining a simple polygon. This value is required.
     
     
 
@@ -425,7 +425,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code positions} property as a {@code cartographicRadians} value.  The {@code positions} property specifies the array of positions defining a simple polygon. This value is required.
+    Writes a value for the {@code positions} property as a {@code cartographicRadians} value. The {@code positions} property specifies the array of positions defining a simple polygon. This value is required.
     
     
 
@@ -444,7 +444,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code positions} property as a {@code cartographicDegrees} value.  The {@code positions} property specifies the array of positions defining a simple polygon. This value is required.
+    Writes a value for the {@code positions} property as a {@code cartographicDegrees} value. The {@code positions} property specifies the array of positions defining a simple polygon. This value is required.
     
     
 
@@ -463,7 +463,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code positions} property as a {@code references} value.  The {@code positions} property specifies the array of positions defining a simple polygon. This value is required.
+    Writes a value for the {@code positions} property as a {@code references} value. The {@code positions} property specifies the array of positions defining a simple polygon. This value is required.
     
     
 
@@ -481,7 +481,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code height} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code height} property defines the height of the polygon when {@code perPositionHeight} is false. If not specified, the default value is 0.0.
+    *  Gets the writer for the {@code height} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code height} property defines the height of the polygon when {@code perPositionHeight} is false. If not specified, the default value is 0.0.
     
 
     */
@@ -492,7 +492,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Opens and returns the writer for the {@code height} property.  The {@code height} property defines the height of the polygon when {@code perPositionHeight} is false. If not specified, the default value is 0.0.
+    Opens and returns the writer for the {@code height} property. The {@code height} property defines the height of the polygon when {@code perPositionHeight} is false. If not specified, the default value is 0.0.
     
 
     */
@@ -504,7 +504,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code height} property as a {@code number} value.  The {@code height} property specifies the height of the polygon when {@code perPositionHeight} is false. If not specified, the default value is 0.0.
+    Writes a value for the {@code height} property as a {@code number} value. The {@code height} property specifies the height of the polygon when {@code perPositionHeight} is false. If not specified, the default value is 0.0.
     
     
 
@@ -523,7 +523,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code height} property as a {@code number} value.  The {@code height} property specifies the height of the polygon when {@code perPositionHeight} is false. If not specified, the default value is 0.0.
+    Writes a value for the {@code height} property as a {@code number} value. The {@code height} property specifies the height of the polygon when {@code perPositionHeight} is false. If not specified, the default value is 0.0.
     
     
     
@@ -544,7 +544,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code height} property as a {@code number} value.  The {@code height} property specifies the height of the polygon when {@code perPositionHeight} is false. If not specified, the default value is 0.0.
+    Writes a value for the {@code height} property as a {@code number} value. The {@code height} property specifies the height of the polygon when {@code perPositionHeight} is false. If not specified, the default value is 0.0.
     
     
     
@@ -569,7 +569,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code height} property as a {@code reference} value.  The {@code height} property specifies the height of the polygon when {@code perPositionHeight} is false. If not specified, the default value is 0.0.
+    Writes a value for the {@code height} property as a {@code reference} value. The {@code height} property specifies the height of the polygon when {@code perPositionHeight} is false. If not specified, the default value is 0.0.
     
     
 
@@ -588,7 +588,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code height} property as a {@code reference} value.  The {@code height} property specifies the height of the polygon when {@code perPositionHeight} is false. If not specified, the default value is 0.0.
+    Writes a value for the {@code height} property as a {@code reference} value. The {@code height} property specifies the height of the polygon when {@code perPositionHeight} is false. If not specified, the default value is 0.0.
     
     
 
@@ -607,7 +607,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code height} property as a {@code reference} value.  The {@code height} property specifies the height of the polygon when {@code perPositionHeight} is false. If not specified, the default value is 0.0.
+    Writes a value for the {@code height} property as a {@code reference} value. The {@code height} property specifies the height of the polygon when {@code perPositionHeight} is false. If not specified, the default value is 0.0.
     
     
     
@@ -628,7 +628,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code height} property as a {@code reference} value.  The {@code height} property specifies the height of the polygon when {@code perPositionHeight} is false. If not specified, the default value is 0.0.
+    Writes a value for the {@code height} property as a {@code reference} value. The {@code height} property specifies the height of the polygon when {@code perPositionHeight} is false. If not specified, the default value is 0.0.
     
     
     
@@ -648,7 +648,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code extrudedHeight} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code extrudedHeight} property defines the extruded height of the polygon.
+    *  Gets the writer for the {@code extrudedHeight} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code extrudedHeight} property defines the extruded height of the polygon.
     
 
     */
@@ -659,7 +659,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Opens and returns the writer for the {@code extrudedHeight} property.  The {@code extrudedHeight} property defines the extruded height of the polygon.
+    Opens and returns the writer for the {@code extrudedHeight} property. The {@code extrudedHeight} property defines the extruded height of the polygon.
     
 
     */
@@ -671,7 +671,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code extrudedHeight} property as a {@code number} value.  The {@code extrudedHeight} property specifies the extruded height of the polygon.
+    Writes a value for the {@code extrudedHeight} property as a {@code number} value. The {@code extrudedHeight} property specifies the extruded height of the polygon.
     
     
 
@@ -690,7 +690,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code extrudedHeight} property as a {@code number} value.  The {@code extrudedHeight} property specifies the extruded height of the polygon.
+    Writes a value for the {@code extrudedHeight} property as a {@code number} value. The {@code extrudedHeight} property specifies the extruded height of the polygon.
     
     
     
@@ -711,7 +711,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code extrudedHeight} property as a {@code number} value.  The {@code extrudedHeight} property specifies the extruded height of the polygon.
+    Writes a value for the {@code extrudedHeight} property as a {@code number} value. The {@code extrudedHeight} property specifies the extruded height of the polygon.
     
     
     
@@ -736,7 +736,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code extrudedHeight} property as a {@code reference} value.  The {@code extrudedHeight} property specifies the extruded height of the polygon.
+    Writes a value for the {@code extrudedHeight} property as a {@code reference} value. The {@code extrudedHeight} property specifies the extruded height of the polygon.
     
     
 
@@ -755,7 +755,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code extrudedHeight} property as a {@code reference} value.  The {@code extrudedHeight} property specifies the extruded height of the polygon.
+    Writes a value for the {@code extrudedHeight} property as a {@code reference} value. The {@code extrudedHeight} property specifies the extruded height of the polygon.
     
     
 
@@ -774,7 +774,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code extrudedHeight} property as a {@code reference} value.  The {@code extrudedHeight} property specifies the extruded height of the polygon.
+    Writes a value for the {@code extrudedHeight} property as a {@code reference} value. The {@code extrudedHeight} property specifies the extruded height of the polygon.
     
     
     
@@ -795,7 +795,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code extrudedHeight} property as a {@code reference} value.  The {@code extrudedHeight} property specifies the extruded height of the polygon.
+    Writes a value for the {@code extrudedHeight} property as a {@code reference} value. The {@code extrudedHeight} property specifies the extruded height of the polygon.
     
     
     
@@ -815,7 +815,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code stRotation} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code stRotation} property defines the rotation of any applied texture. A positive rotation is counter-clockwise. If not specified, the default value is 0.0.
+    *  Gets the writer for the {@code stRotation} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code stRotation} property defines the rotation of any applied texture. A positive rotation is counter-clockwise. If not specified, the default value is 0.0.
     
 
     */
@@ -826,7 +826,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Opens and returns the writer for the {@code stRotation} property.  The {@code stRotation} property defines the rotation of any applied texture. A positive rotation is counter-clockwise. If not specified, the default value is 0.0.
+    Opens and returns the writer for the {@code stRotation} property. The {@code stRotation} property defines the rotation of any applied texture. A positive rotation is counter-clockwise. If not specified, the default value is 0.0.
     
 
     */
@@ -838,7 +838,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code stRotation} property as a {@code number} value.  The {@code stRotation} property specifies the rotation of any applied texture. A positive rotation is counter-clockwise. If not specified, the default value is 0.0.
+    Writes a value for the {@code stRotation} property as a {@code number} value. The {@code stRotation} property specifies the rotation of any applied texture. A positive rotation is counter-clockwise. If not specified, the default value is 0.0.
     
     
 
@@ -857,7 +857,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code stRotation} property as a {@code number} value.  The {@code stRotation} property specifies the rotation of any applied texture. A positive rotation is counter-clockwise. If not specified, the default value is 0.0.
+    Writes a value for the {@code stRotation} property as a {@code number} value. The {@code stRotation} property specifies the rotation of any applied texture. A positive rotation is counter-clockwise. If not specified, the default value is 0.0.
     
     
     
@@ -878,7 +878,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code stRotation} property as a {@code number} value.  The {@code stRotation} property specifies the rotation of any applied texture. A positive rotation is counter-clockwise. If not specified, the default value is 0.0.
+    Writes a value for the {@code stRotation} property as a {@code number} value. The {@code stRotation} property specifies the rotation of any applied texture. A positive rotation is counter-clockwise. If not specified, the default value is 0.0.
     
     
     
@@ -903,7 +903,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code stRotation} property as a {@code reference} value.  The {@code stRotation} property specifies the rotation of any applied texture. A positive rotation is counter-clockwise. If not specified, the default value is 0.0.
+    Writes a value for the {@code stRotation} property as a {@code reference} value. The {@code stRotation} property specifies the rotation of any applied texture. A positive rotation is counter-clockwise. If not specified, the default value is 0.0.
     
     
 
@@ -922,7 +922,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code stRotation} property as a {@code reference} value.  The {@code stRotation} property specifies the rotation of any applied texture. A positive rotation is counter-clockwise. If not specified, the default value is 0.0.
+    Writes a value for the {@code stRotation} property as a {@code reference} value. The {@code stRotation} property specifies the rotation of any applied texture. A positive rotation is counter-clockwise. If not specified, the default value is 0.0.
     
     
 
@@ -941,7 +941,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code stRotation} property as a {@code reference} value.  The {@code stRotation} property specifies the rotation of any applied texture. A positive rotation is counter-clockwise. If not specified, the default value is 0.0.
+    Writes a value for the {@code stRotation} property as a {@code reference} value. The {@code stRotation} property specifies the rotation of any applied texture. A positive rotation is counter-clockwise. If not specified, the default value is 0.0.
     
     
     
@@ -962,7 +962,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code stRotation} property as a {@code reference} value.  The {@code stRotation} property specifies the rotation of any applied texture. A positive rotation is counter-clockwise. If not specified, the default value is 0.0.
+    Writes a value for the {@code stRotation} property as a {@code reference} value. The {@code stRotation} property specifies the rotation of any applied texture. A positive rotation is counter-clockwise. If not specified, the default value is 0.0.
     
     
     
@@ -982,7 +982,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code granularity} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code granularity} property defines the sampling distance, in radians. If not specified, the default value is PI / 180.0.
+    *  Gets the writer for the {@code granularity} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code granularity} property defines the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
 
     */
@@ -993,7 +993,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Opens and returns the writer for the {@code granularity} property.  The {@code granularity} property defines the sampling distance, in radians. If not specified, the default value is PI / 180.0.
+    Opens and returns the writer for the {@code granularity} property. The {@code granularity} property defines the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
 
     */
@@ -1005,7 +1005,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code granularity} property as a {@code number} value.  The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
+    Writes a value for the {@code granularity} property as a {@code number} value. The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
     
 
@@ -1024,7 +1024,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code granularity} property as a {@code number} value.  The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
+    Writes a value for the {@code granularity} property as a {@code number} value. The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
     
     
@@ -1045,7 +1045,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code granularity} property as a {@code number} value.  The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
+    Writes a value for the {@code granularity} property as a {@code number} value. The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
     
     
@@ -1070,7 +1070,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code granularity} property as a {@code reference} value.  The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
+    Writes a value for the {@code granularity} property as a {@code reference} value. The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
     
 
@@ -1089,7 +1089,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code granularity} property as a {@code reference} value.  The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
+    Writes a value for the {@code granularity} property as a {@code reference} value. The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
     
 
@@ -1108,7 +1108,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code granularity} property as a {@code reference} value.  The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
+    Writes a value for the {@code granularity} property as a {@code reference} value. The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
     
     
@@ -1129,7 +1129,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code granularity} property as a {@code reference} value.  The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
+    Writes a value for the {@code granularity} property as a {@code reference} value. The {@code granularity} property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
     
     
     
@@ -1149,7 +1149,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code fill} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code fill} property defines whether or not the polygon is filled. If not specified, the default value is {@code true}.
+    *  Gets the writer for the {@code fill} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code fill} property defines whether or not the polygon is filled. If not specified, the default value is {@code true}.
     
 
     */
@@ -1160,7 +1160,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Opens and returns the writer for the {@code fill} property.  The {@code fill} property defines whether or not the polygon is filled. If not specified, the default value is {@code true}.
+    Opens and returns the writer for the {@code fill} property. The {@code fill} property defines whether or not the polygon is filled. If not specified, the default value is {@code true}.
     
 
     */
@@ -1172,7 +1172,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code fill} property as a {@code boolean} value.  The {@code fill} property specifies whether or not the polygon is filled. If not specified, the default value is {@code true}.
+    Writes a value for the {@code fill} property as a {@code boolean} value. The {@code fill} property specifies whether or not the polygon is filled. If not specified, the default value is {@code true}.
     
     
 
@@ -1191,7 +1191,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code fill} property as a {@code reference} value.  The {@code fill} property specifies whether or not the polygon is filled. If not specified, the default value is {@code true}.
+    Writes a value for the {@code fill} property as a {@code reference} value. The {@code fill} property specifies whether or not the polygon is filled. If not specified, the default value is {@code true}.
     
     
 
@@ -1210,7 +1210,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code fill} property as a {@code reference} value.  The {@code fill} property specifies whether or not the polygon is filled. If not specified, the default value is {@code true}.
+    Writes a value for the {@code fill} property as a {@code reference} value. The {@code fill} property specifies whether or not the polygon is filled. If not specified, the default value is {@code true}.
     
     
 
@@ -1229,7 +1229,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code fill} property as a {@code reference} value.  The {@code fill} property specifies whether or not the polygon is filled. If not specified, the default value is {@code true}.
+    Writes a value for the {@code fill} property as a {@code reference} value. The {@code fill} property specifies whether or not the polygon is filled. If not specified, the default value is {@code true}.
     
     
     
@@ -1250,7 +1250,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code fill} property as a {@code reference} value.  The {@code fill} property specifies whether or not the polygon is filled. If not specified, the default value is {@code true}.
+    Writes a value for the {@code fill} property as a {@code reference} value. The {@code fill} property specifies whether or not the polygon is filled. If not specified, the default value is {@code true}.
     
     
     
@@ -1270,7 +1270,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code material} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code material} property defines the material to use to fill the polygon. If not specified, the default value is solid white.
+    *  Gets the writer for the {@code material} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code material} property defines the material to use to fill the polygon. If not specified, the default value is solid white.
     
 
     */
@@ -1281,7 +1281,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Opens and returns the writer for the {@code material} property.  The {@code material} property defines the material to use to fill the polygon. If not specified, the default value is solid white.
+    Opens and returns the writer for the {@code material} property. The {@code material} property defines the material to use to fill the polygon. If not specified, the default value is solid white.
     
 
     */
@@ -1292,7 +1292,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code outline} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outline} property defines whether or not the polygon is outlined. If not specified, the default value is {@code false}.
+    *  Gets the writer for the {@code outline} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code outline} property defines whether or not the polygon is outlined. If not specified, the default value is {@code false}.
     
 
     */
@@ -1303,7 +1303,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Opens and returns the writer for the {@code outline} property.  The {@code outline} property defines whether or not the polygon is outlined. If not specified, the default value is {@code false}.
+    Opens and returns the writer for the {@code outline} property. The {@code outline} property defines whether or not the polygon is outlined. If not specified, the default value is {@code false}.
     
 
     */
@@ -1315,7 +1315,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outline} property as a {@code boolean} value.  The {@code outline} property specifies whether or not the polygon is outlined. If not specified, the default value is {@code false}.
+    Writes a value for the {@code outline} property as a {@code boolean} value. The {@code outline} property specifies whether or not the polygon is outlined. If not specified, the default value is {@code false}.
     
     
 
@@ -1334,7 +1334,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outline} property as a {@code reference} value.  The {@code outline} property specifies whether or not the polygon is outlined. If not specified, the default value is {@code false}.
+    Writes a value for the {@code outline} property as a {@code reference} value. The {@code outline} property specifies whether or not the polygon is outlined. If not specified, the default value is {@code false}.
     
     
 
@@ -1353,7 +1353,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outline} property as a {@code reference} value.  The {@code outline} property specifies whether or not the polygon is outlined. If not specified, the default value is {@code false}.
+    Writes a value for the {@code outline} property as a {@code reference} value. The {@code outline} property specifies whether or not the polygon is outlined. If not specified, the default value is {@code false}.
     
     
 
@@ -1372,7 +1372,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outline} property as a {@code reference} value.  The {@code outline} property specifies whether or not the polygon is outlined. If not specified, the default value is {@code false}.
+    Writes a value for the {@code outline} property as a {@code reference} value. The {@code outline} property specifies whether or not the polygon is outlined. If not specified, the default value is {@code false}.
     
     
     
@@ -1393,7 +1393,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outline} property as a {@code reference} value.  The {@code outline} property specifies whether or not the polygon is outlined. If not specified, the default value is {@code false}.
+    Writes a value for the {@code outline} property as a {@code reference} value. The {@code outline} property specifies whether or not the polygon is outlined. If not specified, the default value is {@code false}.
     
     
     
@@ -1413,7 +1413,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code outlineColor} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineColor} property defines the color of the polygon outline. If not specified, the default value is black.
+    *  Gets the writer for the {@code outlineColor} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code outlineColor} property defines the color of the polygon outline. If not specified, the default value is black.
     
 
     */
@@ -1424,7 +1424,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Opens and returns the writer for the {@code outlineColor} property.  The {@code outlineColor} property defines the color of the polygon outline. If not specified, the default value is black.
+    Opens and returns the writer for the {@code outlineColor} property. The {@code outlineColor} property defines the color of the polygon outline. If not specified, the default value is black.
     
 
     */
@@ -1436,7 +1436,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the color of the polygon outline. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code rgba} value. The {@code outlineColor} property specifies the color of the polygon outline. If not specified, the default value is black.
     
     
 
@@ -1455,7 +1455,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the color of the polygon outline. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code rgba} value. The {@code outlineColor} property specifies the color of the polygon outline. If not specified, the default value is black.
     
     
     
@@ -1480,7 +1480,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the color of the polygon outline. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code rgba} value. The {@code outlineColor} property specifies the color of the polygon outline. If not specified, the default value is black.
     
     
     
@@ -1501,7 +1501,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgba} value.  The {@code outlineColor} property specifies the color of the polygon outline. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code rgba} value. The {@code outlineColor} property specifies the color of the polygon outline. If not specified, the default value is black.
     
     
     
@@ -1526,7 +1526,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the color of the polygon outline. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value. The {@code outlineColor} property specifies the color of the polygon outline. If not specified, the default value is black.
     
     
 
@@ -1545,7 +1545,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the color of the polygon outline. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value. The {@code outlineColor} property specifies the color of the polygon outline. If not specified, the default value is black.
     
     
     
@@ -1570,7 +1570,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the color of the polygon outline. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value. The {@code outlineColor} property specifies the color of the polygon outline. If not specified, the default value is black.
     
     
     
@@ -1591,7 +1591,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value.  The {@code outlineColor} property specifies the color of the polygon outline. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value. The {@code outlineColor} property specifies the color of the polygon outline. If not specified, the default value is black.
     
     
     
@@ -1616,7 +1616,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the color of the polygon outline. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code reference} value. The {@code outlineColor} property specifies the color of the polygon outline. If not specified, the default value is black.
     
     
 
@@ -1635,7 +1635,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the color of the polygon outline. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code reference} value. The {@code outlineColor} property specifies the color of the polygon outline. If not specified, the default value is black.
     
     
 
@@ -1654,7 +1654,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the color of the polygon outline. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code reference} value. The {@code outlineColor} property specifies the color of the polygon outline. If not specified, the default value is black.
     
     
     
@@ -1675,7 +1675,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outlineColor} property as a {@code reference} value.  The {@code outlineColor} property specifies the color of the polygon outline. If not specified, the default value is black.
+    Writes a value for the {@code outlineColor} property as a {@code reference} value. The {@code outlineColor} property specifies the color of the polygon outline. If not specified, the default value is black.
     
     
     
@@ -1695,7 +1695,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code outlineWidth} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code outlineWidth} property defines the width of the polygon outline. If not specified, the default value is 1.0.
+    *  Gets the writer for the {@code outlineWidth} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code outlineWidth} property defines the width of the polygon outline. If not specified, the default value is 1.0.
     
 
     */
@@ -1706,7 +1706,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Opens and returns the writer for the {@code outlineWidth} property.  The {@code outlineWidth} property defines the width of the polygon outline. If not specified, the default value is 1.0.
+    Opens and returns the writer for the {@code outlineWidth} property. The {@code outlineWidth} property defines the width of the polygon outline. If not specified, the default value is 1.0.
     
 
     */
@@ -1718,7 +1718,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code number} value.  The {@code outlineWidth} property specifies the width of the polygon outline. If not specified, the default value is 1.0.
+    Writes a value for the {@code outlineWidth} property as a {@code number} value. The {@code outlineWidth} property specifies the width of the polygon outline. If not specified, the default value is 1.0.
     
     
 
@@ -1737,7 +1737,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code number} value.  The {@code outlineWidth} property specifies the width of the polygon outline. If not specified, the default value is 1.0.
+    Writes a value for the {@code outlineWidth} property as a {@code number} value. The {@code outlineWidth} property specifies the width of the polygon outline. If not specified, the default value is 1.0.
     
     
     
@@ -1758,7 +1758,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code number} value.  The {@code outlineWidth} property specifies the width of the polygon outline. If not specified, the default value is 1.0.
+    Writes a value for the {@code outlineWidth} property as a {@code number} value. The {@code outlineWidth} property specifies the width of the polygon outline. If not specified, the default value is 1.0.
     
     
     
@@ -1783,7 +1783,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the width of the polygon outline. If not specified, the default value is 1.0.
+    Writes a value for the {@code outlineWidth} property as a {@code reference} value. The {@code outlineWidth} property specifies the width of the polygon outline. If not specified, the default value is 1.0.
     
     
 
@@ -1802,7 +1802,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the width of the polygon outline. If not specified, the default value is 1.0.
+    Writes a value for the {@code outlineWidth} property as a {@code reference} value. The {@code outlineWidth} property specifies the width of the polygon outline. If not specified, the default value is 1.0.
     
     
 
@@ -1821,7 +1821,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the width of the polygon outline. If not specified, the default value is 1.0.
+    Writes a value for the {@code outlineWidth} property as a {@code reference} value. The {@code outlineWidth} property specifies the width of the polygon outline. If not specified, the default value is 1.0.
     
     
     
@@ -1842,7 +1842,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code outlineWidth} property as a {@code reference} value.  The {@code outlineWidth} property specifies the width of the polygon outline. If not specified, the default value is 1.0.
+    Writes a value for the {@code outlineWidth} property as a {@code reference} value. The {@code outlineWidth} property specifies the width of the polygon outline. If not specified, the default value is 1.0.
     
     
     
@@ -1862,7 +1862,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code perPositionHeight} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code perPositionHeight} property defines whether to use the height of each position to define the polygon or to use {@code height} as a constant height above the surface. If not specified, the default value is {@code false}.
+    *  Gets the writer for the {@code perPositionHeight} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code perPositionHeight} property defines whether to use the height of each position to define the polygon or to use {@code height} as a constant height above the surface. If not specified, the default value is {@code false}.
     
 
     */
@@ -1873,7 +1873,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Opens and returns the writer for the {@code perPositionHeight} property.  The {@code perPositionHeight} property defines whether to use the height of each position to define the polygon or to use {@code height} as a constant height above the surface. If not specified, the default value is {@code false}.
+    Opens and returns the writer for the {@code perPositionHeight} property. The {@code perPositionHeight} property defines whether to use the height of each position to define the polygon or to use {@code height} as a constant height above the surface. If not specified, the default value is {@code false}.
     
 
     */
@@ -1885,7 +1885,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code perPositionHeight} property as a {@code boolean} value.  The {@code perPositionHeight} property specifies whether to use the height of each position to define the polygon or to use {@code height} as a constant height above the surface. If not specified, the default value is {@code false}.
+    Writes a value for the {@code perPositionHeight} property as a {@code boolean} value. The {@code perPositionHeight} property specifies whether to use the height of each position to define the polygon or to use {@code height} as a constant height above the surface. If not specified, the default value is {@code false}.
     
     
 
@@ -1904,7 +1904,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code perPositionHeight} property as a {@code reference} value.  The {@code perPositionHeight} property specifies whether to use the height of each position to define the polygon or to use {@code height} as a constant height above the surface. If not specified, the default value is {@code false}.
+    Writes a value for the {@code perPositionHeight} property as a {@code reference} value. The {@code perPositionHeight} property specifies whether to use the height of each position to define the polygon or to use {@code height} as a constant height above the surface. If not specified, the default value is {@code false}.
     
     
 
@@ -1923,7 +1923,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code perPositionHeight} property as a {@code reference} value.  The {@code perPositionHeight} property specifies whether to use the height of each position to define the polygon or to use {@code height} as a constant height above the surface. If not specified, the default value is {@code false}.
+    Writes a value for the {@code perPositionHeight} property as a {@code reference} value. The {@code perPositionHeight} property specifies whether to use the height of each position to define the polygon or to use {@code height} as a constant height above the surface. If not specified, the default value is {@code false}.
     
     
 
@@ -1942,7 +1942,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code perPositionHeight} property as a {@code reference} value.  The {@code perPositionHeight} property specifies whether to use the height of each position to define the polygon or to use {@code height} as a constant height above the surface. If not specified, the default value is {@code false}.
+    Writes a value for the {@code perPositionHeight} property as a {@code reference} value. The {@code perPositionHeight} property specifies whether to use the height of each position to define the polygon or to use {@code height} as a constant height above the surface. If not specified, the default value is {@code false}.
     
     
     
@@ -1963,7 +1963,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code perPositionHeight} property as a {@code reference} value.  The {@code perPositionHeight} property specifies whether to use the height of each position to define the polygon or to use {@code height} as a constant height above the surface. If not specified, the default value is {@code false}.
+    Writes a value for the {@code perPositionHeight} property as a {@code reference} value. The {@code perPositionHeight} property specifies whether to use the height of each position to define the polygon or to use {@code height} as a constant height above the surface. If not specified, the default value is {@code false}.
     
     
     
@@ -1983,7 +1983,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code closeTop} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code closeTop} property defines whether to close the top of the polygon. If not specified, the default value is {@code true}.
+    *  Gets the writer for the {@code closeTop} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code closeTop} property defines whether to close the top of the polygon. If not specified, the default value is {@code true}.
     
 
     */
@@ -1994,7 +1994,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Opens and returns the writer for the {@code closeTop} property.  The {@code closeTop} property defines whether to close the top of the polygon. If not specified, the default value is {@code true}.
+    Opens and returns the writer for the {@code closeTop} property. The {@code closeTop} property defines whether to close the top of the polygon. If not specified, the default value is {@code true}.
     
 
     */
@@ -2006,7 +2006,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code closeTop} property as a {@code boolean} value.  The {@code closeTop} property specifies whether to close the top of the polygon. If not specified, the default value is {@code true}.
+    Writes a value for the {@code closeTop} property as a {@code boolean} value. The {@code closeTop} property specifies whether to close the top of the polygon. If not specified, the default value is {@code true}.
     
     
 
@@ -2025,7 +2025,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code closeTop} property as a {@code reference} value.  The {@code closeTop} property specifies whether to close the top of the polygon. If not specified, the default value is {@code true}.
+    Writes a value for the {@code closeTop} property as a {@code reference} value. The {@code closeTop} property specifies whether to close the top of the polygon. If not specified, the default value is {@code true}.
     
     
 
@@ -2044,7 +2044,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code closeTop} property as a {@code reference} value.  The {@code closeTop} property specifies whether to close the top of the polygon. If not specified, the default value is {@code true}.
+    Writes a value for the {@code closeTop} property as a {@code reference} value. The {@code closeTop} property specifies whether to close the top of the polygon. If not specified, the default value is {@code true}.
     
     
 
@@ -2063,7 +2063,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code closeTop} property as a {@code reference} value.  The {@code closeTop} property specifies whether to close the top of the polygon. If not specified, the default value is {@code true}.
+    Writes a value for the {@code closeTop} property as a {@code reference} value. The {@code closeTop} property specifies whether to close the top of the polygon. If not specified, the default value is {@code true}.
     
     
     
@@ -2084,7 +2084,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code closeTop} property as a {@code reference} value.  The {@code closeTop} property specifies whether to close the top of the polygon. If not specified, the default value is {@code true}.
+    Writes a value for the {@code closeTop} property as a {@code reference} value. The {@code closeTop} property specifies whether to close the top of the polygon. If not specified, the default value is {@code true}.
     
     
     
@@ -2104,7 +2104,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code closeBottom} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code closeBottom} property defines whether to close the bottom of the polygon. If not specified, the default value is {@code true}.
+    *  Gets the writer for the {@code closeBottom} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code closeBottom} property defines whether to close the bottom of the polygon. If not specified, the default value is {@code true}.
     
 
     */
@@ -2115,7 +2115,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Opens and returns the writer for the {@code closeBottom} property.  The {@code closeBottom} property defines whether to close the bottom of the polygon. If not specified, the default value is {@code true}.
+    Opens and returns the writer for the {@code closeBottom} property. The {@code closeBottom} property defines whether to close the bottom of the polygon. If not specified, the default value is {@code true}.
     
 
     */
@@ -2127,7 +2127,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code closeBottom} property as a {@code boolean} value.  The {@code closeBottom} property specifies whether to close the bottom of the polygon. If not specified, the default value is {@code true}.
+    Writes a value for the {@code closeBottom} property as a {@code boolean} value. The {@code closeBottom} property specifies whether to close the bottom of the polygon. If not specified, the default value is {@code true}.
     
     
 
@@ -2146,7 +2146,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code closeBottom} property as a {@code reference} value.  The {@code closeBottom} property specifies whether to close the bottom of the polygon. If not specified, the default value is {@code true}.
+    Writes a value for the {@code closeBottom} property as a {@code reference} value. The {@code closeBottom} property specifies whether to close the bottom of the polygon. If not specified, the default value is {@code true}.
     
     
 
@@ -2165,7 +2165,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code closeBottom} property as a {@code reference} value.  The {@code closeBottom} property specifies whether to close the bottom of the polygon. If not specified, the default value is {@code true}.
+    Writes a value for the {@code closeBottom} property as a {@code reference} value. The {@code closeBottom} property specifies whether to close the bottom of the polygon. If not specified, the default value is {@code true}.
     
     
 
@@ -2184,7 +2184,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code closeBottom} property as a {@code reference} value.  The {@code closeBottom} property specifies whether to close the bottom of the polygon. If not specified, the default value is {@code true}.
+    Writes a value for the {@code closeBottom} property as a {@code reference} value. The {@code closeBottom} property specifies whether to close the bottom of the polygon. If not specified, the default value is {@code true}.
     
     
     
@@ -2205,7 +2205,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code closeBottom} property as a {@code reference} value.  The {@code closeBottom} property specifies whether to close the bottom of the polygon. If not specified, the default value is {@code true}.
+    Writes a value for the {@code closeBottom} property as a {@code reference} value. The {@code closeBottom} property specifies whether to close the bottom of the polygon. If not specified, the default value is {@code true}.
     
     
     
@@ -2225,7 +2225,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code shadows} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code shadows} property defines whether or not the polygon casts or receives shadows. If not specified, the default value is DISABLED.
+    *  Gets the writer for the {@code shadows} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code shadows} property defines whether or not the polygon casts or receives shadows. If not specified, the default value is DISABLED.
     
 
     */
@@ -2236,7 +2236,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Opens and returns the writer for the {@code shadows} property.  The {@code shadows} property defines whether or not the polygon casts or receives shadows. If not specified, the default value is DISABLED.
+    Opens and returns the writer for the {@code shadows} property. The {@code shadows} property defines whether or not the polygon casts or receives shadows. If not specified, the default value is DISABLED.
     
 
     */
@@ -2248,7 +2248,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code shadows} property as a {@code shadowMode} value.  The {@code shadows} property specifies whether or not the polygon casts or receives shadows. If not specified, the default value is DISABLED.
+    Writes a value for the {@code shadows} property as a {@code shadowMode} value. The {@code shadows} property specifies whether or not the polygon casts or receives shadows. If not specified, the default value is DISABLED.
     
     
 
@@ -2267,7 +2267,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code shadows} property as a {@code reference} value.  The {@code shadows} property specifies whether or not the polygon casts or receives shadows. If not specified, the default value is DISABLED.
+    Writes a value for the {@code shadows} property as a {@code reference} value. The {@code shadows} property specifies whether or not the polygon casts or receives shadows. If not specified, the default value is DISABLED.
     
     
 
@@ -2286,7 +2286,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code shadows} property as a {@code reference} value.  The {@code shadows} property specifies whether or not the polygon casts or receives shadows. If not specified, the default value is DISABLED.
+    Writes a value for the {@code shadows} property as a {@code reference} value. The {@code shadows} property specifies whether or not the polygon casts or receives shadows. If not specified, the default value is DISABLED.
     
     
 
@@ -2305,7 +2305,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code shadows} property as a {@code reference} value.  The {@code shadows} property specifies whether or not the polygon casts or receives shadows. If not specified, the default value is DISABLED.
+    Writes a value for the {@code shadows} property as a {@code reference} value. The {@code shadows} property specifies whether or not the polygon casts or receives shadows. If not specified, the default value is DISABLED.
     
     
     
@@ -2326,7 +2326,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code shadows} property as a {@code reference} value.  The {@code shadows} property specifies whether or not the polygon casts or receives shadows. If not specified, the default value is DISABLED.
+    Writes a value for the {@code shadows} property as a {@code reference} value. The {@code shadows} property specifies whether or not the polygon casts or receives shadows. If not specified, the default value is DISABLED.
     
     
     
@@ -2346,7 +2346,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code distanceDisplayCondition} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code distanceDisplayCondition} property defines the display condition specifying the distance from the camera at which this polygon will be displayed.
+    *  Gets the writer for the {@code distanceDisplayCondition} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code distanceDisplayCondition} property defines the display condition specifying the distance from the camera at which this polygon will be displayed.
     
 
     */
@@ -2357,7 +2357,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Opens and returns the writer for the {@code distanceDisplayCondition} property.  The {@code distanceDisplayCondition} property defines the display condition specifying the distance from the camera at which this polygon will be displayed.
+    Opens and returns the writer for the {@code distanceDisplayCondition} property. The {@code distanceDisplayCondition} property defines the display condition specifying the distance from the camera at which this polygon will be displayed.
     
 
     */
@@ -2369,7 +2369,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this polygon will be displayed.
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this polygon will be displayed.
     
     
 
@@ -2388,7 +2388,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this polygon will be displayed.
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this polygon will be displayed.
     
     
     
@@ -2409,7 +2409,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this polygon will be displayed.
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this polygon will be displayed.
     
     
     
@@ -2430,7 +2430,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this polygon will be displayed.
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this polygon will be displayed.
     
     
     
@@ -2455,7 +2455,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this polygon will be displayed.
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this polygon will be displayed.
     
     
 
@@ -2474,7 +2474,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this polygon will be displayed.
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this polygon will be displayed.
     
     
 
@@ -2493,7 +2493,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this polygon will be displayed.
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this polygon will be displayed.
     
     
     
@@ -2514,7 +2514,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value.  The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this polygon will be displayed.
+    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this polygon will be displayed.
     
     
     

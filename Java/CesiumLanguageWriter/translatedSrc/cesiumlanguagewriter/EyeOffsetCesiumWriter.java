@@ -12,7 +12,7 @@ import javax.annotation.Nonnull;
 
 /**
  *  
- Writes a {@code EyeOffset} to a {@link CesiumOutputStream}.  A {@code EyeOffset} is an offset in eye coordinates which can optionally vary over time.  Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis poitns up, and the Z-axis points into the screen.
+ Writes a {@code EyeOffset} to a {@link CesiumOutputStream}. A {@code EyeOffset} is an offset in eye coordinates which can optionally vary over time. Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis poitns up, and the Z-axis points into the screen.
  
 
  */
@@ -103,7 +103,7 @@ public class EyeOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<Ey
 
     /**
     *  
-    Writes the value expressed as a {@code cartesian}, which is the eye offset specified as a three-dimensional Cartesian value {@code [X, Y, Z]}, in eye coordinates in meters.  If the array has three elements, the eye offset is constant.  If it has four or more elements, they are time-tagged samples arranged as {@code [Time, X, Y, Z, Time, X, Y, Z, ...]}, where Time is an ISO 8601 date and time string or seconds since epoch.
+    Writes the value expressed as a {@code cartesian}, which is the eye offset specified as a three-dimensional Cartesian value {@code [X, Y, Z]}, in eye coordinates in meters. If the array has three elements, the eye offset is constant. If it has four or more elements, they are time-tagged samples arranged as {@code [Time, X, Y, Z, Time, X, Y, Z, ...]}, where Time is an ISO 8601 date and time string or seconds since epoch.
     
     
 
@@ -118,7 +118,7 @@ public class EyeOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<Ey
 
     /**
     *  
-    Writes the value expressed as a {@code cartesian}, which is the eye offset specified as a three-dimensional Cartesian value {@code [X, Y, Z]}, in eye coordinates in meters.  If the array has three elements, the eye offset is constant.  If it has four or more elements, they are time-tagged samples arranged as {@code [Time, X, Y, Z, Time, X, Y, Z, ...]}, where Time is an ISO 8601 date and time string or seconds since epoch.
+    Writes the value expressed as a {@code cartesian}, which is the eye offset specified as a three-dimensional Cartesian value {@code [X, Y, Z]}, in eye coordinates in meters. If the array has three elements, the eye offset is constant. If it has four or more elements, they are time-tagged samples arranged as {@code [Time, X, Y, Z, Time, X, Y, Z, ...]}, where Time is an ISO 8601 date and time string or seconds since epoch.
     
     
     
@@ -132,7 +132,7 @@ public class EyeOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<Ey
 
     /**
     *  
-    Writes the value expressed as a {@code cartesian}, which is the eye offset specified as a three-dimensional Cartesian value {@code [X, Y, Z]}, in eye coordinates in meters.  If the array has three elements, the eye offset is constant.  If it has four or more elements, they are time-tagged samples arranged as {@code [Time, X, Y, Z, Time, X, Y, Z, ...]}, where Time is an ISO 8601 date and time string or seconds since epoch.
+    Writes the value expressed as a {@code cartesian}, which is the eye offset specified as a three-dimensional Cartesian value {@code [X, Y, Z]}, in eye coordinates in meters. If the array has three elements, the eye offset is constant. If it has four or more elements, they are time-tagged samples arranged as {@code [Time, X, Y, Z, Time, X, Y, Z, ...]}, where Time is an ISO 8601 date and time string or seconds since epoch.
     
     
     
@@ -216,7 +216,7 @@ public class EyeOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<Ey
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumInterpolatableValuePropertyWriter} to write a value in {@code Cartesian} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumInterpolatableValuePropertyWriter} to write a value in {@code Cartesian} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
@@ -241,7 +241,7 @@ public class EyeOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<Ey
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 

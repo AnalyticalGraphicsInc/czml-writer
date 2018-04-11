@@ -21,7 +21,7 @@
         },
         "unitSpherical": {
             "$ref": "UnitSphericalValue.json",
-            "description": "The axis specified as a unit spherical value `[Clock, Cone]`, in radians.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.",
+            "description": "The axis specified as a unit spherical value `[Clock, Cone]`, in radians. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.",
             "czmlValue": true
         },
         "reference": {

@@ -2,7 +2,7 @@
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Clock.json",
     "title": "Clock",
-    "description": "Initial settings for a simulated clock when a document is loaded.  The start and stop time are configured using the interval property.",
+    "description": "Initial settings for a simulated clock when a document is loaded. The start and stop time are configured using the interval property.",
     "type": [
         "array",
         "object"
@@ -19,16 +19,19 @@
             "description": "The current time, specified in ISO8601 format."
         },
         "multiplier": {
-            "description": "The multiplier.  When `step` is set to `TICK_DEPENDENT`, this is the number of seconds to advance each tick.  When `step` is set to `SYSTEM_CLOCK_DEPENDENT`, this is multiplied by the elapsed system time between ticks.  This value is ignored in `SYSTEM_CLOCK` mode.  The default value is 1.0.",
-            "type": "number"
+            "description": "The multiplier. When `step` is set to `TICK_DEPENDENT`, this is the number of seconds to advance each tick. When `step` is set to `SYSTEM_CLOCK_DEPENDENT`, this is multiplied by the elapsed system time between ticks. This value is ignored in `SYSTEM_CLOCK` mode.",
+            "type": "number",
+            "default": 1.0
         },
         "range": {
             "$ref": "ClockRangeValue.json",
-            "description": "The behavior when the current time reaches its start or end times.  The default value is `LOOP_STOP`."
+            "description": "The behavior when the current time reaches its start or end times.",
+            "default": "LOOP_STOP"
         },
         "step": {
             "$ref": "ClockStepValue.json",
-            "description": "How the current time advances each tick.  The default value is `SYSTEM_CLOCK_MULTIPLIER`."
+            "description": "How the current time advances each tick.",
+            "default": "SYSTEM_CLOCK_MULTIPLIER"
         }
     }
 }

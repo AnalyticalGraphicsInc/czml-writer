@@ -16,7 +16,7 @@ import javax.annotation.Nonnull;
 
 /**
  *  
- Writes a {@code Vector} to a {@link CesiumOutputStream}.  A {@code Vector} is defines a graphical vector that originates at the {@code position} property and extends in the provided direction for the provided length.
+ Writes a {@code Vector} to a {@link CesiumOutputStream}. A {@code Vector} is defines a graphical vector that originates at the {@code position} property and extends in the provided direction for the provided length.
  
 
  */
@@ -126,7 +126,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     }
 
     /**
-    *  Gets the writer for the {@code show} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code show} property defines whether or not the vector is shown. If not specified, the default value is {@code true}.
+    *  Gets the writer for the {@code show} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code show} property defines whether or not the vector is shown. If not specified, the default value is {@code true}.
     
 
     */
@@ -137,7 +137,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Opens and returns the writer for the {@code show} property.  The {@code show} property defines whether or not the vector is shown. If not specified, the default value is {@code true}.
+    Opens and returns the writer for the {@code show} property. The {@code show} property defines whether or not the vector is shown. If not specified, the default value is {@code true}.
     
 
     */
@@ -149,7 +149,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code boolean} value.  The {@code show} property specifies whether or not the vector is shown. If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code boolean} value. The {@code show} property specifies whether or not the vector is shown. If not specified, the default value is {@code true}.
     
     
 
@@ -168,7 +168,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the vector is shown. If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the vector is shown. If not specified, the default value is {@code true}.
     
     
 
@@ -187,7 +187,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the vector is shown. If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the vector is shown. If not specified, the default value is {@code true}.
     
     
 
@@ -206,7 +206,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the vector is shown. If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the vector is shown. If not specified, the default value is {@code true}.
     
     
     
@@ -227,7 +227,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code show} property as a {@code reference} value.  The {@code show} property specifies whether or not the vector is shown. If not specified, the default value is {@code true}.
+    Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the vector is shown. If not specified, the default value is {@code true}.
     
     
     
@@ -247,7 +247,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     }
 
     /**
-    *  Gets the writer for the {@code color} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code color} property defines the color of the vector. If not specified, the default value is white.
+    *  Gets the writer for the {@code color} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code color} property defines the color of the vector. If not specified, the default value is white.
     
 
     */
@@ -258,7 +258,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Opens and returns the writer for the {@code color} property.  The {@code color} property defines the color of the vector. If not specified, the default value is white.
+    Opens and returns the writer for the {@code color} property. The {@code color} property defines the color of the vector. If not specified, the default value is white.
     
 
     */
@@ -270,7 +270,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the vector. If not specified, the default value is white.
+    Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the vector. If not specified, the default value is white.
     
     
 
@@ -289,7 +289,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the vector. If not specified, the default value is white.
+    Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the vector. If not specified, the default value is white.
     
     
     
@@ -314,7 +314,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the vector. If not specified, the default value is white.
+    Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the vector. If not specified, the default value is white.
     
     
     
@@ -335,7 +335,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgba} value.  The {@code color} property specifies the color of the vector. If not specified, the default value is white.
+    Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the vector. If not specified, the default value is white.
     
     
     
@@ -360,7 +360,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the vector. If not specified, the default value is white.
+    Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the vector. If not specified, the default value is white.
     
     
 
@@ -379,7 +379,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the vector. If not specified, the default value is white.
+    Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the vector. If not specified, the default value is white.
     
     
     
@@ -404,7 +404,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the vector. If not specified, the default value is white.
+    Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the vector. If not specified, the default value is white.
     
     
     
@@ -425,7 +425,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value.  The {@code color} property specifies the color of the vector. If not specified, the default value is white.
+    Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the vector. If not specified, the default value is white.
     
     
     
@@ -450,7 +450,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the vector. If not specified, the default value is white.
+    Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the vector. If not specified, the default value is white.
     
     
 
@@ -469,7 +469,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the vector. If not specified, the default value is white.
+    Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the vector. If not specified, the default value is white.
     
     
 
@@ -488,7 +488,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the vector. If not specified, the default value is white.
+    Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the vector. If not specified, the default value is white.
     
     
     
@@ -509,7 +509,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code reference} value.  The {@code color} property specifies the color of the vector. If not specified, the default value is white.
+    Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the vector. If not specified, the default value is white.
     
     
     
@@ -529,7 +529,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     }
 
     /**
-    *  Gets the writer for the {@code direction} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code direction} property defines the direction of the vector. This value is required.
+    *  Gets the writer for the {@code direction} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code direction} property defines the direction of the vector. This value is required.
     
 
     */
@@ -540,7 +540,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Opens and returns the writer for the {@code direction} property.  The {@code direction} property defines the direction of the vector. This value is required.
+    Opens and returns the writer for the {@code direction} property. The {@code direction} property defines the direction of the vector. This value is required.
     
 
     */
@@ -552,7 +552,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code direction} property as a {@code spherical} value.  The {@code direction} property specifies the direction of the vector. This value is required.
+    Writes a value for the {@code direction} property as a {@code spherical} value. The {@code direction} property specifies the direction of the vector. This value is required.
     
     
 
@@ -571,7 +571,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code direction} property as a {@code spherical} value.  The {@code direction} property specifies the direction of the vector. This value is required.
+    Writes a value for the {@code direction} property as a {@code spherical} value. The {@code direction} property specifies the direction of the vector. This value is required.
     
     
     
@@ -592,7 +592,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code direction} property as a {@code spherical} value.  The {@code direction} property specifies the direction of the vector. This value is required.
+    Writes a value for the {@code direction} property as a {@code spherical} value. The {@code direction} property specifies the direction of the vector. This value is required.
     
     
     
@@ -617,7 +617,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code direction} property as a {@code unitSpherical} value.  The {@code direction} property specifies the direction of the vector. This value is required.
+    Writes a value for the {@code direction} property as a {@code unitSpherical} value. The {@code direction} property specifies the direction of the vector. This value is required.
     
     
 
@@ -636,7 +636,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code direction} property as a {@code unitSpherical} value.  The {@code direction} property specifies the direction of the vector. This value is required.
+    Writes a value for the {@code direction} property as a {@code unitSpherical} value. The {@code direction} property specifies the direction of the vector. This value is required.
     
     
     
@@ -657,7 +657,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code direction} property as a {@code unitSpherical} value.  The {@code direction} property specifies the direction of the vector. This value is required.
+    Writes a value for the {@code direction} property as a {@code unitSpherical} value. The {@code direction} property specifies the direction of the vector. This value is required.
     
     
     
@@ -682,7 +682,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code direction} property as a {@code cartesian} value.  The {@code direction} property specifies the direction of the vector. This value is required.
+    Writes a value for the {@code direction} property as a {@code cartesian} value. The {@code direction} property specifies the direction of the vector. This value is required.
     
     
 
@@ -701,7 +701,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code direction} property as a {@code cartesian} value.  The {@code direction} property specifies the direction of the vector. This value is required.
+    Writes a value for the {@code direction} property as a {@code cartesian} value. The {@code direction} property specifies the direction of the vector. This value is required.
     
     
     
@@ -722,7 +722,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code direction} property as a {@code cartesian} value.  The {@code direction} property specifies the direction of the vector. This value is required.
+    Writes a value for the {@code direction} property as a {@code cartesian} value. The {@code direction} property specifies the direction of the vector. This value is required.
     
     
     
@@ -747,7 +747,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code direction} property as a {@code unitCartesian} value.  The {@code direction} property specifies the direction of the vector. This value is required.
+    Writes a value for the {@code direction} property as a {@code unitCartesian} value. The {@code direction} property specifies the direction of the vector. This value is required.
     
     
 
@@ -766,7 +766,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code direction} property as a {@code unitCartesian} value.  The {@code direction} property specifies the direction of the vector. This value is required.
+    Writes a value for the {@code direction} property as a {@code unitCartesian} value. The {@code direction} property specifies the direction of the vector. This value is required.
     
     
     
@@ -787,7 +787,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code direction} property as a {@code unitCartesian} value.  The {@code direction} property specifies the direction of the vector. This value is required.
+    Writes a value for the {@code direction} property as a {@code unitCartesian} value. The {@code direction} property specifies the direction of the vector. This value is required.
     
     
     
@@ -812,7 +812,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code direction} property as a {@code reference} value.  The {@code direction} property specifies the direction of the vector. This value is required.
+    Writes a value for the {@code direction} property as a {@code reference} value. The {@code direction} property specifies the direction of the vector. This value is required.
     
     
 
@@ -831,7 +831,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code direction} property as a {@code reference} value.  The {@code direction} property specifies the direction of the vector. This value is required.
+    Writes a value for the {@code direction} property as a {@code reference} value. The {@code direction} property specifies the direction of the vector. This value is required.
     
     
 
@@ -850,7 +850,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code direction} property as a {@code reference} value.  The {@code direction} property specifies the direction of the vector. This value is required.
+    Writes a value for the {@code direction} property as a {@code reference} value. The {@code direction} property specifies the direction of the vector. This value is required.
     
     
     
@@ -871,7 +871,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code direction} property as a {@code reference} value.  The {@code direction} property specifies the direction of the vector. This value is required.
+    Writes a value for the {@code direction} property as a {@code reference} value. The {@code direction} property specifies the direction of the vector. This value is required.
     
     
     
@@ -891,7 +891,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     }
 
     /**
-    *  Gets the writer for the {@code length} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code length} property defines the graphical length of the vector, in meters. If not specified, the default value is 1.0.
+    *  Gets the writer for the {@code length} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code length} property defines the graphical length of the vector, in meters. If not specified, the default value is 1.0.
     
 
     */
@@ -902,7 +902,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Opens and returns the writer for the {@code length} property.  The {@code length} property defines the graphical length of the vector, in meters. If not specified, the default value is 1.0.
+    Opens and returns the writer for the {@code length} property. The {@code length} property defines the graphical length of the vector, in meters. If not specified, the default value is 1.0.
     
 
     */
@@ -914,7 +914,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code length} property as a {@code number} value.  The {@code length} property specifies the graphical length of the vector, in meters. If not specified, the default value is 1.0.
+    Writes a value for the {@code length} property as a {@code number} value. The {@code length} property specifies the graphical length of the vector, in meters. If not specified, the default value is 1.0.
     
     
 
@@ -933,7 +933,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code length} property as a {@code number} value.  The {@code length} property specifies the graphical length of the vector, in meters. If not specified, the default value is 1.0.
+    Writes a value for the {@code length} property as a {@code number} value. The {@code length} property specifies the graphical length of the vector, in meters. If not specified, the default value is 1.0.
     
     
     
@@ -954,7 +954,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code length} property as a {@code number} value.  The {@code length} property specifies the graphical length of the vector, in meters. If not specified, the default value is 1.0.
+    Writes a value for the {@code length} property as a {@code number} value. The {@code length} property specifies the graphical length of the vector, in meters. If not specified, the default value is 1.0.
     
     
     
@@ -979,7 +979,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code length} property as a {@code reference} value.  The {@code length} property specifies the graphical length of the vector, in meters. If not specified, the default value is 1.0.
+    Writes a value for the {@code length} property as a {@code reference} value. The {@code length} property specifies the graphical length of the vector, in meters. If not specified, the default value is 1.0.
     
     
 
@@ -998,7 +998,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code length} property as a {@code reference} value.  The {@code length} property specifies the graphical length of the vector, in meters. If not specified, the default value is 1.0.
+    Writes a value for the {@code length} property as a {@code reference} value. The {@code length} property specifies the graphical length of the vector, in meters. If not specified, the default value is 1.0.
     
     
 
@@ -1017,7 +1017,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code length} property as a {@code reference} value.  The {@code length} property specifies the graphical length of the vector, in meters. If not specified, the default value is 1.0.
+    Writes a value for the {@code length} property as a {@code reference} value. The {@code length} property specifies the graphical length of the vector, in meters. If not specified, the default value is 1.0.
     
     
     
@@ -1038,7 +1038,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code length} property as a {@code reference} value.  The {@code length} property specifies the graphical length of the vector, in meters. If not specified, the default value is 1.0.
+    Writes a value for the {@code length} property as a {@code reference} value. The {@code length} property specifies the graphical length of the vector, in meters. If not specified, the default value is 1.0.
     
     
     
@@ -1058,7 +1058,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     }
 
     /**
-    *  Gets the writer for the {@code minimumLengthInPixels} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  The {@code minimumLengthInPixels} property defines the minimum graphical length of the vector in pixels. If not specified, the default value is 0.0.
+    *  Gets the writer for the {@code minimumLengthInPixels} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code minimumLengthInPixels} property defines the minimum graphical length of the vector in pixels. If not specified, the default value is 0.0.
     
 
     */
@@ -1069,7 +1069,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Opens and returns the writer for the {@code minimumLengthInPixels} property.  The {@code minimumLengthInPixels} property defines the minimum graphical length of the vector in pixels. If not specified, the default value is 0.0.
+    Opens and returns the writer for the {@code minimumLengthInPixels} property. The {@code minimumLengthInPixels} property defines the minimum graphical length of the vector in pixels. If not specified, the default value is 0.0.
     
 
     */
@@ -1081,7 +1081,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code minimumLengthInPixels} property as a {@code number} value.  The {@code minimumLengthInPixels} property specifies the minimum graphical length of the vector in pixels. If not specified, the default value is 0.0.
+    Writes a value for the {@code minimumLengthInPixels} property as a {@code number} value. The {@code minimumLengthInPixels} property specifies the minimum graphical length of the vector in pixels. If not specified, the default value is 0.0.
     
     
 
@@ -1100,7 +1100,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code minimumLengthInPixels} property as a {@code number} value.  The {@code minimumLengthInPixels} property specifies the minimum graphical length of the vector in pixels. If not specified, the default value is 0.0.
+    Writes a value for the {@code minimumLengthInPixels} property as a {@code number} value. The {@code minimumLengthInPixels} property specifies the minimum graphical length of the vector in pixels. If not specified, the default value is 0.0.
     
     
     
@@ -1121,7 +1121,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code minimumLengthInPixels} property as a {@code number} value.  The {@code minimumLengthInPixels} property specifies the minimum graphical length of the vector in pixels. If not specified, the default value is 0.0.
+    Writes a value for the {@code minimumLengthInPixels} property as a {@code number} value. The {@code minimumLengthInPixels} property specifies the minimum graphical length of the vector in pixels. If not specified, the default value is 0.0.
     
     
     
@@ -1146,7 +1146,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code minimumLengthInPixels} property as a {@code reference} value.  The {@code minimumLengthInPixels} property specifies the minimum graphical length of the vector in pixels. If not specified, the default value is 0.0.
+    Writes a value for the {@code minimumLengthInPixels} property as a {@code reference} value. The {@code minimumLengthInPixels} property specifies the minimum graphical length of the vector in pixels. If not specified, the default value is 0.0.
     
     
 
@@ -1165,7 +1165,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code minimumLengthInPixels} property as a {@code reference} value.  The {@code minimumLengthInPixels} property specifies the minimum graphical length of the vector in pixels. If not specified, the default value is 0.0.
+    Writes a value for the {@code minimumLengthInPixels} property as a {@code reference} value. The {@code minimumLengthInPixels} property specifies the minimum graphical length of the vector in pixels. If not specified, the default value is 0.0.
     
     
 
@@ -1184,7 +1184,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code minimumLengthInPixels} property as a {@code reference} value.  The {@code minimumLengthInPixels} property specifies the minimum graphical length of the vector in pixels. If not specified, the default value is 0.0.
+    Writes a value for the {@code minimumLengthInPixels} property as a {@code reference} value. The {@code minimumLengthInPixels} property specifies the minimum graphical length of the vector in pixels. If not specified, the default value is 0.0.
     
     
     
@@ -1205,7 +1205,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code minimumLengthInPixels} property as a {@code reference} value.  The {@code minimumLengthInPixels} property specifies the minimum graphical length of the vector in pixels. If not specified, the default value is 0.0.
+    Writes a value for the {@code minimumLengthInPixels} property as a {@code reference} value. The {@code minimumLengthInPixels} property specifies the minimum graphical length of the vector in pixels. If not specified, the default value is 0.0.
     
     
     

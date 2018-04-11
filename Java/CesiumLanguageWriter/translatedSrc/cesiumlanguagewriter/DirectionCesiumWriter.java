@@ -15,7 +15,7 @@ import javax.annotation.Nonnull;
 
 /**
  *  
- Writes a {@code Direction} to a {@link CesiumOutputStream}.  A {@code Direction} is a unit vector, in world coordinates, that defines a direction.
+ Writes a {@code Direction} to a {@link CesiumOutputStream}. A {@code Direction} is a unit vector, in world coordinates, that defines a direction.
  
 
  */
@@ -166,7 +166,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
     /**
     *  
-    Writes the value expressed as a {@code spherical}, which is the direction specified as a spherical value {@code [Clock, Cone, Magnitude]}, with angles in radians and magnitude in meters.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
+    Writes the value expressed as a {@code spherical}, which is the direction specified as a spherical value {@code [Clock, Cone, Magnitude]}, with angles in radians and magnitude in meters. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
     
     
 
@@ -181,7 +181,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
     /**
     *  
-    Writes the value expressed as a {@code spherical}, which is the direction specified as a spherical value {@code [Clock, Cone, Magnitude]}, with angles in radians and magnitude in meters.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
+    Writes the value expressed as a {@code spherical}, which is the direction specified as a spherical value {@code [Clock, Cone, Magnitude]}, with angles in radians and magnitude in meters. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
     
     
     
@@ -195,7 +195,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
     /**
     *  
-    Writes the value expressed as a {@code spherical}, which is the direction specified as a spherical value {@code [Clock, Cone, Magnitude]}, with angles in radians and magnitude in meters.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
+    Writes the value expressed as a {@code spherical}, which is the direction specified as a spherical value {@code [Clock, Cone, Magnitude]}, with angles in radians and magnitude in meters. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
     
     
     
@@ -215,7 +215,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
     /**
     *  
-    Writes the value expressed as a {@code unitSpherical}, which is the direction specified as a unit spherical value {@code [Clock, Cone]}, in radians.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
+    Writes the value expressed as a {@code unitSpherical}, which is the direction specified as a unit spherical value {@code [Clock, Cone]}, in radians. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
     
     
 
@@ -230,7 +230,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
     /**
     *  
-    Writes the value expressed as a {@code unitSpherical}, which is the direction specified as a unit spherical value {@code [Clock, Cone]}, in radians.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
+    Writes the value expressed as a {@code unitSpherical}, which is the direction specified as a unit spherical value {@code [Clock, Cone]}, in radians. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
     
     
     
@@ -244,7 +244,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
     /**
     *  
-    Writes the value expressed as a {@code unitSpherical}, which is the direction specified as a unit spherical value {@code [Clock, Cone]}, in radians.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
+    Writes the value expressed as a {@code unitSpherical}, which is the direction specified as a unit spherical value {@code [Clock, Cone]}, in radians. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
     
     
     
@@ -426,7 +426,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumInterpolatableValuePropertyWriter} to write a value in {@code Spherical} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumInterpolatableValuePropertyWriter} to write a value in {@code Spherical} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
@@ -451,7 +451,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumInterpolatableValuePropertyWriter} to write a value in {@code UnitSpherical} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumInterpolatableValuePropertyWriter} to write a value in {@code UnitSpherical} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
@@ -476,7 +476,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumInterpolatableValuePropertyWriter} to write a value in {@code Cartesian} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumInterpolatableValuePropertyWriter} to write a value in {@code Cartesian} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
@@ -501,7 +501,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumInterpolatableValuePropertyWriter} to write a value in {@code UnitCartesian} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumInterpolatableValuePropertyWriter} to write a value in {@code UnitCartesian} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
@@ -526,7 +526,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 

@@ -9,7 +9,7 @@ import javax.annotation.Nonnull;
 
 /**
  *  
- Writes a {@code DirectionList} to a {@link CesiumOutputStream}.  A {@code DirectionList} is a list of directions.
+ Writes a {@code DirectionList} to a {@link CesiumOutputStream}. A {@code DirectionList} is a list of directions.
  
 
  */
@@ -140,7 +140,7 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
 
     /**
     *  
-    Writes the value expressed as a {@code spherical}, which is the list of directions specified as spherical values {@code [Clock, Cone, Magnitude, Clock, Cone, Magnitude, ...]}, with angles in radians and magnitude in meters.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
+    Writes the value expressed as a {@code spherical}, which is the list of directions specified as spherical values {@code [Clock, Cone, Magnitude, Clock, Cone, Magnitude, ...]}, with angles in radians and magnitude in meters. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
     
     
 
@@ -155,7 +155,7 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
 
     /**
     *  
-    Writes the value expressed as a {@code unitSpherical}, which is the list of directions specified as unit spherical values {@code [Clock, Cone, Clock, Cone, ...]}, in radians.  The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis.  The cone angle is the angle from the positive Z axis toward the negative Z axis.
+    Writes the value expressed as a {@code unitSpherical}, which is the list of directions specified as unit spherical values {@code [Clock, Cone, Clock, Cone, ...]}, in radians. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
     
     
 
@@ -200,7 +200,7 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Spherical} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Spherical} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
@@ -221,7 +221,7 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code UnitSpherical} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code UnitSpherical} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
@@ -242,7 +242,7 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Cartesian} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Cartesian} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
@@ -263,7 +263,7 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code UnitCartesian} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code UnitCartesian} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 

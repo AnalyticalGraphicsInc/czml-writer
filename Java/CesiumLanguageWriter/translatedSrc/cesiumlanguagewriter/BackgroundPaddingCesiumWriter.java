@@ -12,7 +12,7 @@ import javax.annotation.Nonnull;
 
 /**
  *  
- Writes a {@code BackgroundPadding} to a {@link CesiumOutputStream}.  A {@code BackgroundPadding} is the amount of horizontal and vertical padding, in pixels, between a label's text and its background.
+ Writes a {@code BackgroundPadding} to a {@link CesiumOutputStream}. A {@code BackgroundPadding} is the amount of horizontal and vertical padding, in pixels, between a label's text and its background.
  
 
  */
@@ -230,7 +230,7 @@ public class BackgroundPaddingCesiumWriter extends CesiumInterpolatablePropertyW
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumInterpolatableValuePropertyWriter} to write a value in {@code Cartesian2} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumInterpolatableValuePropertyWriter} to write a value in {@code Cartesian2} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
@@ -255,7 +255,7 @@ public class BackgroundPaddingCesiumWriter extends CesiumInterpolatablePropertyW
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 

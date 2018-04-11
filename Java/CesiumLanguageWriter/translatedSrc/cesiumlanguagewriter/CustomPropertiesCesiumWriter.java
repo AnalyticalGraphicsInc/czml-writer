@@ -8,7 +8,7 @@ import javax.annotation.Nonnull;
 
 /**
  *  
- Writes a {@code CustomProperties} to a {@link CesiumOutputStream}.  A {@code CustomProperties} is a set of custom properties.
+ Writes a {@code CustomProperties} to a {@link CesiumOutputStream}. A {@code CustomProperties} is a set of custom properties.
  
 
  */
@@ -58,7 +58,7 @@ public class CustomPropertiesCesiumWriter extends CesiumPropertyWriter<CustomPro
 
     /**
     *  
-    Gets a new writer for a {@code CustomProperty} property.  The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing.  A {@code CustomProperty} property defines a custom property.
+    Gets a new writer for a {@code CustomProperty} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. A {@code CustomProperty} property defines a custom property.
     
 
     */
@@ -68,7 +68,7 @@ public class CustomPropertiesCesiumWriter extends CesiumPropertyWriter<CustomPro
 
     /**
     *  
-    Opens and returns a new writer for a {@code CustomProperty} property.  A {@code CustomProperty} property defines a custom property.
+    Opens and returns a new writer for a {@code CustomProperty} property. A {@code CustomProperty} property defines a custom property.
     
     
 

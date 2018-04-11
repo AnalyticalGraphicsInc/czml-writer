@@ -9,7 +9,7 @@ import javax.annotation.Nonnull;
 
 /**
  *  
- Writes a {@code DoubleList} to a {@link CesiumOutputStream}.  A {@code DoubleList} is a list of floating-point numbers.
+ Writes a {@code DoubleList} to a {@link CesiumOutputStream}. A {@code DoubleList} is a list of floating-point numbers.
  
 
  */
@@ -115,7 +115,7 @@ public class DoubleListCesiumWriter extends CesiumPropertyWriter<DoubleListCesiu
 
     /**
     *  
-    Writes the value expressed as a {@code references}, which is the list of values specified as references.  Each reference is to a property that defines a single value, which may change with time.
+    Writes the value expressed as a {@code references}, which is the list of values specified as references. Each reference is to a property that defines a single value, which may change with time.
     
     
 
@@ -130,7 +130,7 @@ public class DoubleListCesiumWriter extends CesiumPropertyWriter<DoubleListCesiu
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Array} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Array} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
@@ -151,7 +151,7 @@ public class DoubleListCesiumWriter extends CesiumPropertyWriter<DoubleListCesiu
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code References} format.  Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code References} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 

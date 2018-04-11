@@ -2,7 +2,7 @@
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/VerticalOrigin.json",
     "title": "VerticalOrigin",
-    "description": "The vertical origin of an element, which can optionally vary over time.  It controls whether the element is bottom-, center-, or top-aligned with the `position`.",
+    "description": "The vertical origin of an element, which can optionally vary over time. It controls whether the element is bottom-, center-, or top-aligned with the `position`.",
     "type": [
         "array",
         "object",

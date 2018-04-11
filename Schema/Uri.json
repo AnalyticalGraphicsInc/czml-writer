@@ -2,7 +2,7 @@
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Uri.json",
     "title": "Uri",
-    "description": "A URI value.  The URI can optionally vary with time.",
+    "description": "A URI value. The URI can optionally vary with time.",
     "type": [
         "array",
         "object",
