@@ -83,7 +83,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
         private static String[] buildDateTimePatterns(String[] patterns, int maximumFractionalSeconds) {
             ArrayList<String> result = new ArrayList<String>(patterns.length * (maximumFractionalSeconds + 1));
             for (final String s : patterns) {
-                if (s.endsWith(".f*")) {
+                if (StringHelper.endsWith(s, ".f*")) {
                     result.add(StringHelper.replace(s, ".f*", ""));
                     StringBuilder newStr = new StringBuilder(maximumFractionalSeconds);
                     for (int i = 1; i <= maximumFractionalSeconds; i++) {

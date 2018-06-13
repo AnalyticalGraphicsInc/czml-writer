@@ -757,6 +757,39 @@ public final class StringHelper {
     }
 
     /**
+     * Determines whether the beginning of this string instance matches the specified
+     * string.
+     *
+     * @param s
+     *            The string.
+     * @param value
+     *            The string to compare.
+     * @return true if value matches the beginning of this string; otherwise, false.
+     */
+    public static boolean startsWith(@Nonnull String s, @Nonnull String value) {
+        ArgumentNullException.assertNonNull(s, "s");
+        ArgumentNullException.assertNonNull(value, "value");
+
+        return s.startsWith(value);
+    }
+
+    /**
+     * Determines whether the end of this string instance matches the specified string.
+     *
+     * @param s
+     *            The string.
+     * @param value
+     *            The string to compare.
+     * @return true if value matches the end of this string; otherwise, false.
+     */
+    public static boolean endsWith(@Nonnull String s, @Nonnull String value) {
+        ArgumentNullException.assertNonNull(s, "s");
+        ArgumentNullException.assertNonNull(value, "value");
+
+        return s.endsWith(value);
+    }
+
+    /**
      * Reports the index of the first occurrence of the specified string in the current
      * String object. A parameter specifies the type of search to use for the specified
      * string.
@@ -796,23 +829,6 @@ public final class StringHelper {
     public static String toLowerInvariant(@Nonnull String s) {
         ArgumentNullException.assertNonNull(s, "s");
         return s.toLowerCase(CultureInfoHelper.getInvariantCulture());
-    }
-
-    /**
-     * Determines whether the beginning of this string instance matches the specified
-     * string.
-     *
-     * @param s
-     *            The string.
-     * @param value
-     *            The string to compare.
-     * @return true if value matches the beginning of this string; otherwise, false.
-     */
-    public static boolean startsWith(@Nonnull String s, @Nonnull String value) {
-        ArgumentNullException.assertNonNull(s, "s");
-        ArgumentNullException.assertNonNull(value, "value");
-
-        return s.startsWith(value);
     }
 
     /**
