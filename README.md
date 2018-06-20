@@ -21,6 +21,10 @@ See the [CZML specification](https://github.com/AnalyticalGraphicsInc/czml-write
 
 Binary releases are [available on NuGet](https://www.nuget.org/packages/CesiumLanguageWriter/).
 
+#### Java
+
+Binary releases are available for download on the [releases page](https://github.com/AnalyticalGraphicsInc/czml-writer/releases).
+
 ### Get Started ###
 
 Check out the [wiki](https://github.com/AnalyticalGraphicsInc/czml-writer/wiki), including the [quick start](https://github.com/AnalyticalGraphicsInc/czml-writer/wiki/Quick-Start) and [contributor's guide](https://github.com/AnalyticalGraphicsInc/czml-writer/wiki/Contributor's-Guide).  Also browse the [forum](https://groups.google.com/d/forum/cesium-dev).
