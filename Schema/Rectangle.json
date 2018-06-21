@@ -77,6 +77,11 @@
         "distanceDisplayCondition": {
             "$ref": "DistanceDisplayCondition.json",
             "description": "The display condition specifying at what distance from the camera this rectangle will be displayed."
+        },
+        "zIndex": {
+            "$ref": "Integer.json",
+            "description": "The z-index of the rectangle, used for ordering ground geometry. Only has an effect if the rectangle is constant, and `height` and `extrudedHeight` are not specified.",
+            "default": "0"
         }
     },
     "required": [ "coordinates" ]

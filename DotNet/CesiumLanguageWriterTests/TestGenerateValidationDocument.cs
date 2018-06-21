@@ -345,6 +345,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteDistanceDisplayCondition(new Bounds(15797, 46507));
                         m_assertionsWriter.WriteLine("    expect(e.corridor.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(15797, 46507));");
                     }
+                    using (var w2 = w.OpenZIndexProperty())
+                    {
+                        w2.WriteNumber(59315);
+                        m_assertionsWriter.WriteLine("    expect(e.corridor.zIndex.getValue(date)).toEqual(59315);");
+                    }
                 }
                 using (var w = packet.OpenCylinderProperty())
                 {
@@ -507,6 +512,11 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteDistanceDisplayCondition(new Bounds(27813, 30828));
                         m_assertionsWriter.WriteLine("    expect(e.ellipse.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(27813, 30828));");
+                    }
+                    using (var w2 = w.OpenZIndexProperty())
+                    {
+                        w2.WriteNumber(3341);
+                        m_assertionsWriter.WriteLine("    expect(e.ellipse.zIndex.getValue(date)).toEqual(3341);");
                     }
                 }
                 using (var w = packet.OpenEllipsoidProperty())
@@ -970,6 +980,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteDistanceDisplayCondition(new Bounds(5989, 26104));
                         m_assertionsWriter.WriteLine("    expect(e.polygon.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(5989, 26104));");
                     }
+                    using (var w2 = w.OpenZIndexProperty())
+                    {
+                        w2.WriteNumber(31269);
+                        m_assertionsWriter.WriteLine("    expect(e.polygon.zIndex.getValue(date)).toEqual(31269);");
+                    }
                 }
                 using (var w = packet.OpenPolylineProperty())
                 {
@@ -1029,6 +1044,16 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteDistanceDisplayCondition(new Bounds(5807, 30486));
                         m_assertionsWriter.WriteLine("    expect(e.polyline.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(5807, 30486));");
+                    }
+                    using (var w2 = w.OpenClampToGroundProperty())
+                    {
+                        w2.WriteBoolean(true);
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.clampToGround.getValue(date)).toEqual(true);");
+                    }
+                    using (var w2 = w.OpenZIndexProperty())
+                    {
+                        w2.WriteNumber(17658);
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.zIndex.getValue(date)).toEqual(17658);");
                     }
                 }
                 using (var w = packet.OpenRectangleProperty())
@@ -1108,6 +1133,11 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteDistanceDisplayCondition(new Bounds(21388, 23379));
                         m_assertionsWriter.WriteLine("    expect(e.rectangle.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(21388, 23379));");
+                    }
+                    using (var w2 = w.OpenZIndexProperty())
+                    {
+                        w2.WriteNumber(445);
+                        m_assertionsWriter.WriteLine("    expect(e.rectangle.zIndex.getValue(date)).toEqual(445);");
                     }
                 }
                 using (var w = packet.OpenWallProperty())
@@ -7701,6 +7731,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteReference(new Reference("Constant", CreateList("corridor", "distanceDisplayCondition")));
                         m_assertionsWriter.WriteLine("    expect(e.corridor.distanceDisplayCondition.getValue(date)).toEqual(constant.corridor.distanceDisplayCondition.getValue(date));");
                     }
+                    using (var w2 = w.OpenZIndexProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("corridor", "zIndex")));
+                        m_assertionsWriter.WriteLine("    expect(e.corridor.zIndex.getValue(date)).toEqual(constant.corridor.zIndex.getValue(date));");
+                    }
                 }
                 using (var w = packet.OpenCylinderProperty())
                 {
@@ -7859,6 +7894,11 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("ellipse", "distanceDisplayCondition")));
                         m_assertionsWriter.WriteLine("    expect(e.ellipse.distanceDisplayCondition.getValue(date)).toEqual(constant.ellipse.distanceDisplayCondition.getValue(date));");
+                    }
+                    using (var w2 = w.OpenZIndexProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("ellipse", "zIndex")));
+                        m_assertionsWriter.WriteLine("    expect(e.ellipse.zIndex.getValue(date)).toEqual(constant.ellipse.zIndex.getValue(date));");
                     }
                 }
                 using (var w = packet.OpenEllipsoidProperty())
@@ -8314,6 +8354,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteReference(new Reference("Constant", CreateList("polygon", "distanceDisplayCondition")));
                         m_assertionsWriter.WriteLine("    expect(e.polygon.distanceDisplayCondition.getValue(date)).toEqual(constant.polygon.distanceDisplayCondition.getValue(date));");
                     }
+                    using (var w2 = w.OpenZIndexProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("polygon", "zIndex")));
+                        m_assertionsWriter.WriteLine("    expect(e.polygon.zIndex.getValue(date)).toEqual(constant.polygon.zIndex.getValue(date));");
+                    }
                 }
                 using (var w = packet.OpenPolylineProperty())
                 {
@@ -8369,6 +8414,16 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("polyline", "distanceDisplayCondition")));
                         m_assertionsWriter.WriteLine("    expect(e.polyline.distanceDisplayCondition.getValue(date)).toEqual(constant.polyline.distanceDisplayCondition.getValue(date));");
+                    }
+                    using (var w2 = w.OpenClampToGroundProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("polyline", "clampToGround")));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.clampToGround.getValue(date)).toEqual(constant.polyline.clampToGround.getValue(date));");
+                    }
+                    using (var w2 = w.OpenZIndexProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("polyline", "zIndex")));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.zIndex.getValue(date)).toEqual(constant.polyline.zIndex.getValue(date));");
                     }
                 }
                 using (var w = packet.OpenRectangleProperty())
@@ -8446,6 +8501,11 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("rectangle", "distanceDisplayCondition")));
                         m_assertionsWriter.WriteLine("    expect(e.rectangle.distanceDisplayCondition.getValue(date)).toEqual(constant.rectangle.distanceDisplayCondition.getValue(date));");
+                    }
+                    using (var w2 = w.OpenZIndexProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("rectangle", "zIndex")));
+                        m_assertionsWriter.WriteLine("    expect(e.rectangle.zIndex.getValue(date)).toEqual(constant.rectangle.zIndex.getValue(date));");
                     }
                 }
                 using (var w = packet.OpenWallProperty())
@@ -12290,6 +12350,12 @@ namespace CesiumLanguageWriterTests
                         m_assertionsWriter.WriteLine("    expect(e.corridor.distanceDisplayCondition.getValue(documentStartDate)).toEqual(new DistanceDisplayCondition(10884, 63530));");
                         m_assertionsWriter.WriteLine("    expect(e.corridor.distanceDisplayCondition.getValue(documentStopDate)).toEqual(new DistanceDisplayCondition(20076, 27683));");
                     }
+                    using (var w2 = w.OpenZIndexProperty())
+                    {
+                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(36068, 60697));
+                        m_assertionsWriter.WriteLine("    expect(e.corridor.zIndex.getValue(documentStartDate)).toEqual(36068);");
+                        m_assertionsWriter.WriteLine("    expect(e.corridor.zIndex.getValue(documentStopDate)).toEqual(60697);");
+                    }
                 }
                 using (var w = packet.OpenCylinderProperty())
                 {
@@ -12433,6 +12499,12 @@ namespace CesiumLanguageWriterTests
                         w2.WriteDistanceDisplayCondition(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Bounds(38393, 63947), new Bounds(29119, 43121)));
                         m_assertionsWriter.WriteLine("    expect(e.ellipse.distanceDisplayCondition.getValue(documentStartDate)).toEqual(new DistanceDisplayCondition(38393, 63947));");
                         m_assertionsWriter.WriteLine("    expect(e.ellipse.distanceDisplayCondition.getValue(documentStopDate)).toEqual(new DistanceDisplayCondition(29119, 43121));");
+                    }
+                    using (var w2 = w.OpenZIndexProperty())
+                    {
+                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(8989, 52730));
+                        m_assertionsWriter.WriteLine("    expect(e.ellipse.zIndex.getValue(documentStartDate)).toEqual(8989);");
+                        m_assertionsWriter.WriteLine("    expect(e.ellipse.zIndex.getValue(documentStopDate)).toEqual(52730);");
                     }
                 }
                 using (var w = packet.OpenEllipsoidProperty())
@@ -12776,6 +12848,12 @@ namespace CesiumLanguageWriterTests
                         m_assertionsWriter.WriteLine("    expect(e.polygon.distanceDisplayCondition.getValue(documentStartDate)).toEqual(new DistanceDisplayCondition(22140, 31962));");
                         m_assertionsWriter.WriteLine("    expect(e.polygon.distanceDisplayCondition.getValue(documentStopDate)).toEqual(new DistanceDisplayCondition(3927, 22422));");
                     }
+                    using (var w2 = w.OpenZIndexProperty())
+                    {
+                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(37357, 64769));
+                        m_assertionsWriter.WriteLine("    expect(e.polygon.zIndex.getValue(documentStartDate)).toEqual(37357);");
+                        m_assertionsWriter.WriteLine("    expect(e.polygon.zIndex.getValue(documentStopDate)).toEqual(64769);");
+                    }
                 }
                 using (var w = packet.OpenPolylineProperty())
                 {
@@ -12820,6 +12898,12 @@ namespace CesiumLanguageWriterTests
                         w2.WriteDistanceDisplayCondition(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Bounds(4857, 10258), new Bounds(36588, 47246)));
                         m_assertionsWriter.WriteLine("    expect(e.polyline.distanceDisplayCondition.getValue(documentStartDate)).toEqual(new DistanceDisplayCondition(4857, 10258));");
                         m_assertionsWriter.WriteLine("    expect(e.polyline.distanceDisplayCondition.getValue(documentStopDate)).toEqual(new DistanceDisplayCondition(36588, 47246));");
+                    }
+                    using (var w2 = w.OpenZIndexProperty())
+                    {
+                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(55130, 15491));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.zIndex.getValue(documentStartDate)).toEqual(55130);");
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.zIndex.getValue(documentStopDate)).toEqual(15491);");
                     }
                 }
                 using (var w = packet.OpenRectangleProperty())
@@ -12889,6 +12973,12 @@ namespace CesiumLanguageWriterTests
                         w2.WriteDistanceDisplayCondition(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Bounds(24813, 30560), new Bounds(34617, 40071)));
                         m_assertionsWriter.WriteLine("    expect(e.rectangle.distanceDisplayCondition.getValue(documentStartDate)).toEqual(new DistanceDisplayCondition(24813, 30560));");
                         m_assertionsWriter.WriteLine("    expect(e.rectangle.distanceDisplayCondition.getValue(documentStopDate)).toEqual(new DistanceDisplayCondition(34617, 40071));");
+                    }
+                    using (var w2 = w.OpenZIndexProperty())
+                    {
+                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(27256, 53581));
+                        m_assertionsWriter.WriteLine("    expect(e.rectangle.zIndex.getValue(documentStartDate)).toEqual(27256);");
+                        m_assertionsWriter.WriteLine("    expect(e.rectangle.zIndex.getValue(documentStopDate)).toEqual(53581);");
                     }
                 }
                 using (var w = packet.OpenWallProperty())

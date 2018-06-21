@@ -9,6 +9,7 @@ import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.BooleanCesiumWriter;
 import cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter;
 import cesiumlanguagewriter.DoubleCesiumWriter;
+import cesiumlanguagewriter.IntegerCesiumWriter;
 import cesiumlanguagewriter.PolylineMaterialCesiumWriter;
 import cesiumlanguagewriter.PositionListCesiumWriter;
 import cesiumlanguagewriter.ShadowModeCesiumWriter;
@@ -90,6 +91,20 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     */
     public static final String DistanceDisplayConditionPropertyName = "distanceDisplayCondition";
+    /**
+    *  
+    The name of the {@code clampToGround} property.
+    
+
+    */
+    public static final String ClampToGroundPropertyName = "clampToGround";
+    /**
+    *  
+    The name of the {@code zIndex} property.
+    
+
+    */
+    public static final String ZIndexPropertyName = "zIndex";
     private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
         public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
             return new BooleanCesiumWriter(ShowPropertyName);
@@ -136,6 +151,16 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
                     return new DistanceDisplayConditionCesiumWriter(DistanceDisplayConditionPropertyName);
                 }
             }, false);
+    private Lazy<BooleanCesiumWriter> m_clampToGround = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+        public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
+            return new BooleanCesiumWriter(ClampToGroundPropertyName);
+        }
+    }, false);
+    private Lazy<IntegerCesiumWriter> m_zIndex = new Lazy<cesiumlanguagewriter.IntegerCesiumWriter>(new Func1<cesiumlanguagewriter.IntegerCesiumWriter>() {
+        public cesiumlanguagewriter.IntegerCesiumWriter invoke() {
+            return new IntegerCesiumWriter(ZIndexPropertyName);
+        }
+    }, false);
 
     /**
     *  
@@ -1194,6 +1219,294 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     public final void writeDistanceDisplayConditionPropertyReference(String identifier, String[] propertyNames) {
         {
             cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
+            try {
+                writer.writeReference(identifier, propertyNames);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  Gets the writer for the {@code clampToGround} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code clampToGround} property defines whether or not the polyline should be clamped to the ground. If not specified, the default value is {@code true}.
+    
+
+    */
+    @Nonnull
+    public final BooleanCesiumWriter getClampToGroundWriter() {
+        return m_clampToGround.getValue();
+    }
+
+    /**
+    *  
+    Opens and returns the writer for the {@code clampToGround} property. The {@code clampToGround} property defines whether or not the polyline should be clamped to the ground. If not specified, the default value is {@code true}.
+    
+
+    */
+    @Nonnull
+    public final BooleanCesiumWriter openClampToGroundProperty() {
+        openIntervalIfNecessary();
+        return this.<BooleanCesiumWriter> openAndReturn(getClampToGroundWriter());
+    }
+
+    /**
+    *  
+    Writes a value for the {@code clampToGround} property as a {@code boolean} value. The {@code clampToGround} property specifies whether or not the polyline should be clamped to the ground. If not specified, the default value is {@code true}.
+    
+    
+
+    * @param value The value.
+    */
+    public final void writeClampToGroundProperty(boolean value) {
+        {
+            cesiumlanguagewriter.BooleanCesiumWriter writer = openClampToGroundProperty();
+            try {
+                writer.writeBoolean(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code clampToGround} property as a {@code reference} value. The {@code clampToGround} property specifies whether or not the polyline should be clamped to the ground. If not specified, the default value is {@code true}.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeClampToGroundPropertyReference(Reference value) {
+        {
+            cesiumlanguagewriter.BooleanCesiumWriter writer = openClampToGroundProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code clampToGround} property as a {@code reference} value. The {@code clampToGround} property specifies whether or not the polyline should be clamped to the ground. If not specified, the default value is {@code true}.
+    
+    
+
+    * @param value The earliest date of the interval.
+    */
+    public final void writeClampToGroundPropertyReference(String value) {
+        {
+            cesiumlanguagewriter.BooleanCesiumWriter writer = openClampToGroundProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code clampToGround} property as a {@code reference} value. The {@code clampToGround} property specifies whether or not the polyline should be clamped to the ground. If not specified, the default value is {@code true}.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyName The property on the referenced object.
+    */
+    public final void writeClampToGroundPropertyReference(String identifier, String propertyName) {
+        {
+            cesiumlanguagewriter.BooleanCesiumWriter writer = openClampToGroundProperty();
+            try {
+                writer.writeReference(identifier, propertyName);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code clampToGround} property as a {@code reference} value. The {@code clampToGround} property specifies whether or not the polyline should be clamped to the ground. If not specified, the default value is {@code true}.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+    */
+    public final void writeClampToGroundPropertyReference(String identifier, String[] propertyNames) {
+        {
+            cesiumlanguagewriter.BooleanCesiumWriter writer = openClampToGroundProperty();
+            try {
+                writer.writeReference(identifier, propertyNames);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  Gets the writer for the {@code zIndex} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code zIndex} property defines the z-index of the polyline, used for ordering ground geometry. Only has an effect if the polyline is constant, and {@code clampToGround} is true. If not specified, the default value is 0.
+    
+
+    */
+    @Nonnull
+    public final IntegerCesiumWriter getZIndexWriter() {
+        return m_zIndex.getValue();
+    }
+
+    /**
+    *  
+    Opens and returns the writer for the {@code zIndex} property. The {@code zIndex} property defines the z-index of the polyline, used for ordering ground geometry. Only has an effect if the polyline is constant, and {@code clampToGround} is true. If not specified, the default value is 0.
+    
+
+    */
+    @Nonnull
+    public final IntegerCesiumWriter openZIndexProperty() {
+        openIntervalIfNecessary();
+        return this.<IntegerCesiumWriter> openAndReturn(getZIndexWriter());
+    }
+
+    /**
+    *  
+    Writes a value for the {@code zIndex} property as a {@code number} value. The {@code zIndex} property specifies the z-index of the polyline, used for ordering ground geometry. Only has an effect if the polyline is constant, and {@code clampToGround} is true. If not specified, the default value is 0.
+    
+    
+
+    * @param value The value.
+    */
+    public final void writeZIndexProperty(int value) {
+        {
+            cesiumlanguagewriter.IntegerCesiumWriter writer = openZIndexProperty();
+            try {
+                writer.writeNumber(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code zIndex} property as a {@code number} value. The {@code zIndex} property specifies the z-index of the polyline, used for ordering ground geometry. Only has an effect if the polyline is constant, and {@code clampToGround} is true. If not specified, the default value is 0.
+    
+    
+    
+
+    * @param dates The dates at which the value is specified.
+    * @param values The values corresponding to each date.
+    */
+    public final void writeZIndexProperty(List<JulianDate> dates, List<Integer> values) {
+        {
+            cesiumlanguagewriter.IntegerCesiumWriter writer = openZIndexProperty();
+            try {
+                writer.writeNumber(dates, values);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code zIndex} property as a {@code number} value. The {@code zIndex} property specifies the z-index of the polyline, used for ordering ground geometry. Only has an effect if the polyline is constant, and {@code clampToGround} is true. If not specified, the default value is 0.
+    
+    
+    
+    
+    
+
+    * @param dates The dates at which the value is specified.
+    * @param values The value corresponding to each date.
+    * @param startIndex The index of the first element to write.
+    * @param length The number of elements to write.
+    */
+    public final void writeZIndexProperty(List<JulianDate> dates, List<Integer> values, int startIndex, int length) {
+        {
+            cesiumlanguagewriter.IntegerCesiumWriter writer = openZIndexProperty();
+            try {
+                writer.writeNumber(dates, values, startIndex, length);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code zIndex} property as a {@code reference} value. The {@code zIndex} property specifies the z-index of the polyline, used for ordering ground geometry. Only has an effect if the polyline is constant, and {@code clampToGround} is true. If not specified, the default value is 0.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeZIndexPropertyReference(Reference value) {
+        {
+            cesiumlanguagewriter.IntegerCesiumWriter writer = openZIndexProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code zIndex} property as a {@code reference} value. The {@code zIndex} property specifies the z-index of the polyline, used for ordering ground geometry. Only has an effect if the polyline is constant, and {@code clampToGround} is true. If not specified, the default value is 0.
+    
+    
+
+    * @param value The earliest date of the interval.
+    */
+    public final void writeZIndexPropertyReference(String value) {
+        {
+            cesiumlanguagewriter.IntegerCesiumWriter writer = openZIndexProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code zIndex} property as a {@code reference} value. The {@code zIndex} property specifies the z-index of the polyline, used for ordering ground geometry. Only has an effect if the polyline is constant, and {@code clampToGround} is true. If not specified, the default value is 0.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyName The property on the referenced object.
+    */
+    public final void writeZIndexPropertyReference(String identifier, String propertyName) {
+        {
+            cesiumlanguagewriter.IntegerCesiumWriter writer = openZIndexProperty();
+            try {
+                writer.writeReference(identifier, propertyName);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code zIndex} property as a {@code reference} value. The {@code zIndex} property specifies the z-index of the polyline, used for ordering ground geometry. Only has an effect if the polyline is constant, and {@code clampToGround} is true. If not specified, the default value is 0.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+    */
+    public final void writeZIndexPropertyReference(String identifier, String[] propertyNames) {
+        {
+            cesiumlanguagewriter.IntegerCesiumWriter writer = openZIndexProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {

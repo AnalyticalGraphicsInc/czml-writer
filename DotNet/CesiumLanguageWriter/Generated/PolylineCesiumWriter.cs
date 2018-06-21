@@ -60,6 +60,16 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string DistanceDisplayConditionPropertyName = "distanceDisplayCondition";
 
+        /// <summary>
+        /// The name of the <c>clampToGround</c> property.
+        /// </summary>
+        public const string ClampToGroundPropertyName = "clampToGround";
+
+        /// <summary>
+        /// The name of the <c>zIndex</c> property.
+        /// </summary>
+        public const string ZIndexPropertyName = "zIndex";
+
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
         private readonly Lazy<PositionListCesiumWriter> m_positions = new Lazy<PositionListCesiumWriter>(() => new PositionListCesiumWriter(PositionsPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_width = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(WidthPropertyName), false);
@@ -69,6 +79,8 @@ namespace CesiumLanguageWriter
         private readonly Lazy<ShadowModeCesiumWriter> m_shadows = new Lazy<ShadowModeCesiumWriter>(() => new ShadowModeCesiumWriter(ShadowsPropertyName), false);
         private readonly Lazy<PolylineMaterialCesiumWriter> m_depthFailMaterial = new Lazy<PolylineMaterialCesiumWriter>(() => new PolylineMaterialCesiumWriter(DepthFailMaterialPropertyName), false);
         private readonly Lazy<DistanceDisplayConditionCesiumWriter> m_distanceDisplayCondition = new Lazy<DistanceDisplayConditionCesiumWriter>(() => new DistanceDisplayConditionCesiumWriter(DistanceDisplayConditionPropertyName), false);
+        private readonly Lazy<BooleanCesiumWriter> m_clampToGround = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ClampToGroundPropertyName), false);
+        private readonly Lazy<IntegerCesiumWriter> m_zIndex = new Lazy<IntegerCesiumWriter>(() => new IntegerCesiumWriter(ZIndexPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -777,6 +789,196 @@ namespace CesiumLanguageWriter
         public void WriteDistanceDisplayConditionPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenDistanceDisplayConditionProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <c>clampToGround</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>clampToGround</c> property defines whether or not the polyline should be clamped to the ground. If not specified, the default value is <see langword="true"/>.
+        /// </summary>
+        [NotNull]
+        public BooleanCesiumWriter ClampToGroundWriter
+        {
+            get { return m_clampToGround.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>clampToGround</c> property. The <c>clampToGround</c> property defines whether or not the polyline should be clamped to the ground. If not specified, the default value is <see langword="true"/>.
+        /// </summary>
+        [NotNull]
+        public BooleanCesiumWriter OpenClampToGroundProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(ClampToGroundWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>clampToGround</c> property as a <c>boolean</c> value. The <c>clampToGround</c> property specifies whether or not the polyline should be clamped to the ground. If not specified, the default value is <see langword="true"/>.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteClampToGroundProperty(bool value)
+        {
+            using (var writer = OpenClampToGroundProperty())
+            {
+                writer.WriteBoolean(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>clampToGround</c> property as a <c>reference</c> value. The <c>clampToGround</c> property specifies whether or not the polyline should be clamped to the ground. If not specified, the default value is <see langword="true"/>.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteClampToGroundPropertyReference(Reference value)
+        {
+            using (var writer = OpenClampToGroundProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>clampToGround</c> property as a <c>reference</c> value. The <c>clampToGround</c> property specifies whether or not the polyline should be clamped to the ground. If not specified, the default value is <see langword="true"/>.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteClampToGroundPropertyReference(string value)
+        {
+            using (var writer = OpenClampToGroundProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>clampToGround</c> property as a <c>reference</c> value. The <c>clampToGround</c> property specifies whether or not the polyline should be clamped to the ground. If not specified, the default value is <see langword="true"/>.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteClampToGroundPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenClampToGroundProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>clampToGround</c> property as a <c>reference</c> value. The <c>clampToGround</c> property specifies whether or not the polyline should be clamped to the ground. If not specified, the default value is <see langword="true"/>.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteClampToGroundPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenClampToGroundProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <c>zIndex</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>zIndex</c> property defines the z-index of the polyline, used for ordering ground geometry. Only has an effect if the polyline is constant, and <c>clampToGround</c> is true. If not specified, the default value is 0.
+        /// </summary>
+        [NotNull]
+        public IntegerCesiumWriter ZIndexWriter
+        {
+            get { return m_zIndex.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>zIndex</c> property. The <c>zIndex</c> property defines the z-index of the polyline, used for ordering ground geometry. Only has an effect if the polyline is constant, and <c>clampToGround</c> is true. If not specified, the default value is 0.
+        /// </summary>
+        [NotNull]
+        public IntegerCesiumWriter OpenZIndexProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(ZIndexWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>zIndex</c> property as a <c>number</c> value. The <c>zIndex</c> property specifies the z-index of the polyline, used for ordering ground geometry. Only has an effect if the polyline is constant, and <c>clampToGround</c> is true. If not specified, the default value is 0.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteZIndexProperty(int value)
+        {
+            using (var writer = OpenZIndexProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>zIndex</c> property as a <c>number</c> value. The <c>zIndex</c> property specifies the z-index of the polyline, used for ordering ground geometry. Only has an effect if the polyline is constant, and <c>clampToGround</c> is true. If not specified, the default value is 0.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteZIndexProperty(IList<JulianDate> dates, IList<int> values)
+        {
+            using (var writer = OpenZIndexProperty())
+            {
+                writer.WriteNumber(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>zIndex</c> property as a <c>number</c> value. The <c>zIndex</c> property specifies the z-index of the polyline, used for ordering ground geometry. Only has an effect if the polyline is constant, and <c>clampToGround</c> is true. If not specified, the default value is 0.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
+        public void WriteZIndexProperty(IList<JulianDate> dates, IList<int> values, int startIndex, int length)
+        {
+            using (var writer = OpenZIndexProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>zIndex</c> property as a <c>reference</c> value. The <c>zIndex</c> property specifies the z-index of the polyline, used for ordering ground geometry. Only has an effect if the polyline is constant, and <c>clampToGround</c> is true. If not specified, the default value is 0.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteZIndexPropertyReference(Reference value)
+        {
+            using (var writer = OpenZIndexProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>zIndex</c> property as a <c>reference</c> value. The <c>zIndex</c> property specifies the z-index of the polyline, used for ordering ground geometry. Only has an effect if the polyline is constant, and <c>clampToGround</c> is true. If not specified, the default value is 0.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteZIndexPropertyReference(string value)
+        {
+            using (var writer = OpenZIndexProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>zIndex</c> property as a <c>reference</c> value. The <c>zIndex</c> property specifies the z-index of the polyline, used for ordering ground geometry. Only has an effect if the polyline is constant, and <c>clampToGround</c> is true. If not specified, the default value is 0.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteZIndexPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenZIndexProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>zIndex</c> property as a <c>reference</c> value. The <c>zIndex</c> property specifies the z-index of the polyline, used for ordering ground geometry. Only has an effect if the polyline is constant, and <c>clampToGround</c> is true. If not specified, the default value is 0.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteZIndexPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenZIndexProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }
