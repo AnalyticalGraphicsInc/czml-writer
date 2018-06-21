@@ -607,6 +607,15 @@ public class TestGenerateValidationDocument {
                                 DisposeHelper.dispose(w2);
                             }
                         }
+                        {
+                            cesiumlanguagewriter.IntegerCesiumWriter w2 = w.openZIndexProperty();
+                            try {
+                                w2.writeNumber(59315);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.corridor.zIndex.getValue(date)).toEqual(59315);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
                     } finally {
                         DisposeHelper.dispose(w);
                     }
@@ -906,6 +915,15 @@ public class TestGenerateValidationDocument {
                             try {
                                 w2.writeDistanceDisplayCondition(new Bounds(27813D, 30828D));
                                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(27813, 30828));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.IntegerCesiumWriter w2 = w.openZIndexProperty();
+                            try {
+                                w2.writeNumber(3341);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.zIndex.getValue(date)).toEqual(3341);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -1769,6 +1787,15 @@ public class TestGenerateValidationDocument {
                                 DisposeHelper.dispose(w2);
                             }
                         }
+                        {
+                            cesiumlanguagewriter.IntegerCesiumWriter w2 = w.openZIndexProperty();
+                            try {
+                                w2.writeNumber(31269);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.zIndex.getValue(date)).toEqual(31269);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
                     } finally {
                         DisposeHelper.dispose(w);
                     }
@@ -1883,6 +1910,24 @@ public class TestGenerateValidationDocument {
                             try {
                                 w2.writeDistanceDisplayCondition(new Bounds(5807D, 30486D));
                                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(5807, 30486));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.BooleanCesiumWriter w2 = w.openClampToGroundProperty();
+                            try {
+                                w2.writeBoolean(true);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.clampToGround.getValue(date)).toEqual(true);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.IntegerCesiumWriter w2 = w.openZIndexProperty();
+                            try {
+                                w2.writeNumber(17658);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.zIndex.getValue(date)).toEqual(17658);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -2031,6 +2076,15 @@ public class TestGenerateValidationDocument {
                             try {
                                 w2.writeDistanceDisplayCondition(new Bounds(21388D, 23379D));
                                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(21388, 23379));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.IntegerCesiumWriter w2 = w.openZIndexProperty();
+                            try {
+                                w2.writeNumber(445);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.zIndex.getValue(date)).toEqual(445);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -18282,6 +18336,15 @@ public class TestGenerateValidationDocument {
                                 DisposeHelper.dispose(w2);
                             }
                         }
+                        {
+                            cesiumlanguagewriter.IntegerCesiumWriter w2 = w.openZIndexProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("corridor", "zIndex")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.corridor.zIndex.getValue(date)).toEqual(constant.corridor.zIndex.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
                     } finally {
                         DisposeHelper.dispose(w);
                     }
@@ -18587,6 +18650,15 @@ public class TestGenerateValidationDocument {
                                 w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("ellipse", "distanceDisplayCondition")));
                                 TextWriterHelper.writeLine(m_assertionsWriter,
                                         "    expect(e.ellipse.distanceDisplayCondition.getValue(date)).toEqual(constant.ellipse.distanceDisplayCondition.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.IntegerCesiumWriter w2 = w.openZIndexProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("ellipse", "zIndex")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.zIndex.getValue(date)).toEqual(constant.ellipse.zIndex.getValue(date));");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -19470,6 +19542,15 @@ public class TestGenerateValidationDocument {
                                 DisposeHelper.dispose(w2);
                             }
                         }
+                        {
+                            cesiumlanguagewriter.IntegerCesiumWriter w2 = w.openZIndexProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("polygon", "zIndex")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.zIndex.getValue(date)).toEqual(constant.polygon.zIndex.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
                     } finally {
                         DisposeHelper.dispose(w);
                     }
@@ -19589,6 +19670,24 @@ public class TestGenerateValidationDocument {
                                 w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("polyline", "distanceDisplayCondition")));
                                 TextWriterHelper.writeLine(m_assertionsWriter,
                                         "    expect(e.polyline.distanceDisplayCondition.getValue(date)).toEqual(constant.polyline.distanceDisplayCondition.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.BooleanCesiumWriter w2 = w.openClampToGroundProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("polyline", "clampToGround")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.clampToGround.getValue(date)).toEqual(constant.polyline.clampToGround.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.IntegerCesiumWriter w2 = w.openZIndexProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("polyline", "zIndex")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.zIndex.getValue(date)).toEqual(constant.polyline.zIndex.getValue(date));");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -19738,6 +19837,15 @@ public class TestGenerateValidationDocument {
                                 w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangle", "distanceDisplayCondition")));
                                 TextWriterHelper.writeLine(m_assertionsWriter,
                                         "    expect(e.rectangle.distanceDisplayCondition.getValue(date)).toEqual(constant.rectangle.distanceDisplayCondition.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.IntegerCesiumWriter w2 = w.openZIndexProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangle", "zIndex")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.zIndex.getValue(date)).toEqual(constant.rectangle.zIndex.getValue(date));");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -29202,6 +29310,17 @@ public class TestGenerateValidationDocument {
                                 DisposeHelper.dispose(w2);
                             }
                         }
+                        {
+                            cesiumlanguagewriter.IntegerCesiumWriter w2 = w.openZIndexProperty();
+                            try {
+                                w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Integer> createList(
+                                        36068, 60697));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.corridor.zIndex.getValue(documentStartDate)).toEqual(36068);");
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.corridor.zIndex.getValue(documentStopDate)).toEqual(60697);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
                     } finally {
                         DisposeHelper.dispose(w);
                     }
@@ -29479,6 +29598,17 @@ public class TestGenerateValidationDocument {
                                         "    expect(e.ellipse.distanceDisplayCondition.getValue(documentStartDate)).toEqual(new DistanceDisplayCondition(38393, 63947));");
                                 TextWriterHelper.writeLine(m_assertionsWriter,
                                         "    expect(e.ellipse.distanceDisplayCondition.getValue(documentStopDate)).toEqual(new DistanceDisplayCondition(29119, 43121));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.IntegerCesiumWriter w2 = w.openZIndexProperty();
+                            try {
+                                w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Integer> createList(
+                                        8989, 52730));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.zIndex.getValue(documentStartDate)).toEqual(8989);");
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.zIndex.getValue(documentStopDate)).toEqual(52730);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -30156,6 +30286,17 @@ public class TestGenerateValidationDocument {
                                 DisposeHelper.dispose(w2);
                             }
                         }
+                        {
+                            cesiumlanguagewriter.IntegerCesiumWriter w2 = w.openZIndexProperty();
+                            try {
+                                w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Integer> createList(
+                                        37357, 64769));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.zIndex.getValue(documentStartDate)).toEqual(37357);");
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.zIndex.getValue(documentStopDate)).toEqual(64769);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
                     } finally {
                         DisposeHelper.dispose(w);
                     }
@@ -30248,6 +30389,17 @@ public class TestGenerateValidationDocument {
                                         "    expect(e.polyline.distanceDisplayCondition.getValue(documentStartDate)).toEqual(new DistanceDisplayCondition(4857, 10258));");
                                 TextWriterHelper.writeLine(m_assertionsWriter,
                                         "    expect(e.polyline.distanceDisplayCondition.getValue(documentStopDate)).toEqual(new DistanceDisplayCondition(36588, 47246));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.IntegerCesiumWriter w2 = w.openZIndexProperty();
+                            try {
+                                w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Integer> createList(
+                                        55130, 15491));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.zIndex.getValue(documentStartDate)).toEqual(55130);");
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.zIndex.getValue(documentStopDate)).toEqual(15491);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -30388,6 +30540,17 @@ public class TestGenerateValidationDocument {
                                         "    expect(e.rectangle.distanceDisplayCondition.getValue(documentStartDate)).toEqual(new DistanceDisplayCondition(24813, 30560));");
                                 TextWriterHelper.writeLine(m_assertionsWriter,
                                         "    expect(e.rectangle.distanceDisplayCondition.getValue(documentStopDate)).toEqual(new DistanceDisplayCondition(34617, 40071));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.IntegerCesiumWriter w2 = w.openZIndexProperty();
+                            try {
+                                w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Integer> createList(
+                                        27256, 53581));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.zIndex.getValue(documentStartDate)).toEqual(27256);");
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.zIndex.getValue(documentStopDate)).toEqual(53581);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
