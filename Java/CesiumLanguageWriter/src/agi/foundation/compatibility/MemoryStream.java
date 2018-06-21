@@ -184,8 +184,10 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
 
     @Override
     public synchronized int read(byte[] b, int off, int len) {
-        if (position >= length || len == 0)
+        if (len == 0)
             return 0;
+        if (position >= length)
+            return -1;
 
         if (position > length - len)
             len = length - position;
