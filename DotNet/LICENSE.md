@@ -1,4 +1,4 @@
-Copyright 2011-2017 Analytical Graphics, Inc. and Contributors
+Copyright 2011-2018 Analytical Graphics, Inc. and Contributors
 
                                  Apache License
                            Version 2.0, January 2004

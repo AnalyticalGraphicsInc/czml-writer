@@ -1,6 +1,6 @@
 See the license files for the [.NET](DotNet/LICENSE.md) and [Java](Java/LICENSE.md) versions for details on third-party libraries.
 
-Copyright 2011-2017 Analytical Graphics, Inc. and Contributors
+Copyright 2011-2018 Analytical Graphics, Inc. and Contributors
 
                                  Apache License
                            Version 2.0, January 2004
