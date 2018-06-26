@@ -56,7 +56,7 @@
         "clampToGround": {
             "$ref": "Boolean.json",
             "description": "Whether or not the polyline should be clamped to the ground.",
-            "default": true
+            "default": false
         },
         "zIndex": {
             "$ref": "Integer.json",

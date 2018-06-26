@@ -795,7 +795,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>clampToGround</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>clampToGround</c> property defines whether or not the polyline should be clamped to the ground. If not specified, the default value is <see langword="true"/>.
+        /// Gets the writer for the <c>clampToGround</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>clampToGround</c> property defines whether or not the polyline should be clamped to the ground. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         [NotNull]
         public BooleanCesiumWriter ClampToGroundWriter
@@ -804,7 +804,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>clampToGround</c> property. The <c>clampToGround</c> property defines whether or not the polyline should be clamped to the ground. If not specified, the default value is <see langword="true"/>.
+        /// Opens and returns the writer for the <c>clampToGround</c> property. The <c>clampToGround</c> property defines whether or not the polyline should be clamped to the ground. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         [NotNull]
         public BooleanCesiumWriter OpenClampToGroundProperty()
@@ -814,7 +814,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>clampToGround</c> property as a <c>boolean</c> value. The <c>clampToGround</c> property specifies whether or not the polyline should be clamped to the ground. If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>clampToGround</c> property as a <c>boolean</c> value. The <c>clampToGround</c> property specifies whether or not the polyline should be clamped to the ground. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteClampToGroundProperty(bool value)
@@ -826,7 +826,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>clampToGround</c> property as a <c>reference</c> value. The <c>clampToGround</c> property specifies whether or not the polyline should be clamped to the ground. If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>clampToGround</c> property as a <c>reference</c> value. The <c>clampToGround</c> property specifies whether or not the polyline should be clamped to the ground. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteClampToGroundPropertyReference(Reference value)
@@ -838,7 +838,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>clampToGround</c> property as a <c>reference</c> value. The <c>clampToGround</c> property specifies whether or not the polyline should be clamped to the ground. If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>clampToGround</c> property as a <c>reference</c> value. The <c>clampToGround</c> property specifies whether or not the polyline should be clamped to the ground. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteClampToGroundPropertyReference(string value)
@@ -850,7 +850,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>clampToGround</c> property as a <c>reference</c> value. The <c>clampToGround</c> property specifies whether or not the polyline should be clamped to the ground. If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>clampToGround</c> property as a <c>reference</c> value. The <c>clampToGround</c> property specifies whether or not the polyline should be clamped to the ground. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -863,7 +863,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>clampToGround</c> property as a <c>reference</c> value. The <c>clampToGround</c> property specifies whether or not the polyline should be clamped to the ground. If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>clampToGround</c> property as a <c>reference</c> value. The <c>clampToGround</c> property specifies whether or not the polyline should be clamped to the ground. If not specified, the default value is <see langword="false"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>

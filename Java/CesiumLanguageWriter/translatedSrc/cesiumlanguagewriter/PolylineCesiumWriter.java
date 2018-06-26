@@ -1228,7 +1228,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code clampToGround} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code clampToGround} property defines whether or not the polyline should be clamped to the ground. If not specified, the default value is {@code true}.
+    *  Gets the writer for the {@code clampToGround} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code clampToGround} property defines whether or not the polyline should be clamped to the ground. If not specified, the default value is {@code false}.
     
 
     */
@@ -1239,7 +1239,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Opens and returns the writer for the {@code clampToGround} property. The {@code clampToGround} property defines whether or not the polyline should be clamped to the ground. If not specified, the default value is {@code true}.
+    Opens and returns the writer for the {@code clampToGround} property. The {@code clampToGround} property defines whether or not the polyline should be clamped to the ground. If not specified, the default value is {@code false}.
     
 
     */
@@ -1251,7 +1251,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Writes a value for the {@code clampToGround} property as a {@code boolean} value. The {@code clampToGround} property specifies whether or not the polyline should be clamped to the ground. If not specified, the default value is {@code true}.
+    Writes a value for the {@code clampToGround} property as a {@code boolean} value. The {@code clampToGround} property specifies whether or not the polyline should be clamped to the ground. If not specified, the default value is {@code false}.
     
     
 
@@ -1270,7 +1270,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Writes a value for the {@code clampToGround} property as a {@code reference} value. The {@code clampToGround} property specifies whether or not the polyline should be clamped to the ground. If not specified, the default value is {@code true}.
+    Writes a value for the {@code clampToGround} property as a {@code reference} value. The {@code clampToGround} property specifies whether or not the polyline should be clamped to the ground. If not specified, the default value is {@code false}.
     
     
 
@@ -1289,7 +1289,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Writes a value for the {@code clampToGround} property as a {@code reference} value. The {@code clampToGround} property specifies whether or not the polyline should be clamped to the ground. If not specified, the default value is {@code true}.
+    Writes a value for the {@code clampToGround} property as a {@code reference} value. The {@code clampToGround} property specifies whether or not the polyline should be clamped to the ground. If not specified, the default value is {@code false}.
     
     
 
@@ -1308,7 +1308,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Writes a value for the {@code clampToGround} property as a {@code reference} value. The {@code clampToGround} property specifies whether or not the polyline should be clamped to the ground. If not specified, the default value is {@code true}.
+    Writes a value for the {@code clampToGround} property as a {@code reference} value. The {@code clampToGround} property specifies whether or not the polyline should be clamped to the ground. If not specified, the default value is {@code false}.
     
     
     
@@ -1329,7 +1329,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     /**
     *  
-    Writes a value for the {@code clampToGround} property as a {@code reference} value. The {@code clampToGround} property specifies whether or not the polyline should be clamped to the ground. If not specified, the default value is {@code true}.
+    Writes a value for the {@code clampToGround} property as a {@code reference} value. The {@code clampToGround} property specifies whether or not the polyline should be clamped to the ground. If not specified, the default value is {@code false}.
     
     
     
