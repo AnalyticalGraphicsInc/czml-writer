@@ -12,7 +12,7 @@ import javax.annotation.Nonnull;
 
 /**
  *  
- Writes a {@code ViewFrom} to a {@link CesiumOutputStream}. A {@code ViewFrom} is a suggested camera location when viewing an object, specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
+ Writes a {@code ViewFrom} to a {@link CesiumOutputStream}. A {@code ViewFrom} is a suggested initial camera position offset when tracking this object, specified as a Cartesian position. Typically defined in the East (x), North (y), Up (z) reference frame relative to the object's position, but may use another frame depending on the object's velocity.
  
 
  */
@@ -103,7 +103,7 @@ public class ViewFromCesiumWriter extends CesiumInterpolatablePropertyWriter<Vie
 
     /**
     *  
-    Writes the value expressed as a {@code cartesian}, which is the camera location specified as a three-dimensional Cartesian value {@code [X, Y, Z]}, in the East (x), North (y), Up (z) reference frame relative to the object's position.
+    Writes the value expressed as a {@code cartesian}, which is the offset specified as a three-dimensional Cartesian value {@code [X, Y, Z]}.
     
     
 
@@ -118,7 +118,7 @@ public class ViewFromCesiumWriter extends CesiumInterpolatablePropertyWriter<Vie
 
     /**
     *  
-    Writes the value expressed as a {@code cartesian}, which is the camera location specified as a three-dimensional Cartesian value {@code [X, Y, Z]}, in the East (x), North (y), Up (z) reference frame relative to the object's position.
+    Writes the value expressed as a {@code cartesian}, which is the offset specified as a three-dimensional Cartesian value {@code [X, Y, Z]}.
     
     
     
@@ -132,7 +132,7 @@ public class ViewFromCesiumWriter extends CesiumInterpolatablePropertyWriter<Vie
 
     /**
     *  
-    Writes the value expressed as a {@code cartesian}, which is the camera location specified as a three-dimensional Cartesian value {@code [X, Y, Z]}, in the East (x), North (y), Up (z) reference frame relative to the object's position.
+    Writes the value expressed as a {@code cartesian}, which is the offset specified as a three-dimensional Cartesian value {@code [X, Y, Z]}.
     
     
     
@@ -152,7 +152,7 @@ public class ViewFromCesiumWriter extends CesiumInterpolatablePropertyWriter<Vie
 
     /**
     *  
-    Writes the value expressed as a {@code reference}, which is the camera location specified as a reference to another property.
+    Writes the value expressed as a {@code reference}, which is the offset specified as a reference to another property.
     
     
 
@@ -167,7 +167,7 @@ public class ViewFromCesiumWriter extends CesiumInterpolatablePropertyWriter<Vie
 
     /**
     *  
-    Writes the value expressed as a {@code reference}, which is the camera location specified as a reference to another property.
+    Writes the value expressed as a {@code reference}, which is the offset specified as a reference to another property.
     
     
 
@@ -182,7 +182,7 @@ public class ViewFromCesiumWriter extends CesiumInterpolatablePropertyWriter<Vie
 
     /**
     *  
-    Writes the value expressed as a {@code reference}, which is the camera location specified as a reference to another property.
+    Writes the value expressed as a {@code reference}, which is the offset specified as a reference to another property.
     
     
     
@@ -199,7 +199,7 @@ public class ViewFromCesiumWriter extends CesiumInterpolatablePropertyWriter<Vie
 
     /**
     *  
-    Writes the value expressed as a {@code reference}, which is the camera location specified as a reference to another property.
+    Writes the value expressed as a {@code reference}, which is the offset specified as a reference to another property.
     
     
     

@@ -11,7 +11,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>ViewFrom</c> to a <see cref="CesiumOutputStream" />. A <c>ViewFrom</c> is a suggested camera location when viewing an object, specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
+    /// Writes a <c>ViewFrom</c> to a <see cref="CesiumOutputStream" />. A <c>ViewFrom</c> is a suggested initial camera position offset when tracking this object, specified as a Cartesian position. Typically defined in the East (x), North (y), Up (z) reference frame relative to the object's position, but may use another frame depending on the object's velocity.
     /// </summary>
     public class ViewFromCesiumWriter : CesiumInterpolatablePropertyWriter<ViewFromCesiumWriter>
     {
@@ -57,7 +57,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>cartesian</c>, which is the camera location specified as a three-dimensional Cartesian value <c>[X, Y, Z]</c>, in the East (x), North (y), Up (z) reference frame relative to the object's position.
+        /// Writes the value expressed as a <c>cartesian</c>, which is the offset specified as a three-dimensional Cartesian value <c>[X, Y, Z]</c>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteCartesian(Cartesian value)
@@ -69,7 +69,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>cartesian</c>, which is the camera location specified as a three-dimensional Cartesian value <c>[X, Y, Z]</c>, in the East (x), North (y), Up (z) reference frame relative to the object's position.
+        /// Writes the value expressed as a <c>cartesian</c>, which is the offset specified as a three-dimensional Cartesian value <c>[X, Y, Z]</c>.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -79,7 +79,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>cartesian</c>, which is the camera location specified as a three-dimensional Cartesian value <c>[X, Y, Z]</c>, in the East (x), North (y), Up (z) reference frame relative to the object's position.
+        /// Writes the value expressed as a <c>cartesian</c>, which is the offset specified as a three-dimensional Cartesian value <c>[X, Y, Z]</c>.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -93,7 +93,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>reference</c>, which is the camera location specified as a reference to another property.
+        /// Writes the value expressed as a <c>reference</c>, which is the offset specified as a reference to another property.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteReference(Reference value)
@@ -105,7 +105,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>reference</c>, which is the camera location specified as a reference to another property.
+        /// Writes the value expressed as a <c>reference</c>, which is the offset specified as a reference to another property.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteReference(string value)
@@ -117,7 +117,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>reference</c>, which is the camera location specified as a reference to another property.
+        /// Writes the value expressed as a <c>reference</c>, which is the offset specified as a reference to another property.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -130,7 +130,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>reference</c>, which is the camera location specified as a reference to another property.
+        /// Writes the value expressed as a <c>reference</c>, which is the offset specified as a reference to another property.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
