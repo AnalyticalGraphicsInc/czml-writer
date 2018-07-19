@@ -63,7 +63,7 @@ public class TestJulianDate {
     /**
     *  
     Tests that initialization produces a {@link JulianDate} which is
-    normalized with the time element in the range 0.0 <= seconds < 86400.0.
+    normalized with the time element in the range 0.0 &lt;= seconds &lt; 86400.0.
     
 
     */
@@ -80,7 +80,7 @@ public class TestJulianDate {
     /**
     *  
     Tests that initialization produces a {@link JulianDate} which is
-    normalized with the time element in the range 0.0 <= seconds < 86400.0.
+    normalized with the time element in the range 0.0 &lt;= seconds &lt; 86400.0.
     
 
     */
@@ -97,7 +97,7 @@ public class TestJulianDate {
     /**
     *  
     Tests that initialization produces a {@link JulianDate} which is
-    normalized with the time element in the range 0.0 <= seconds < 86400.0.
+    normalized with the time element in the range 0.0 &lt;= seconds &lt; 86400.0.
     
 
     */

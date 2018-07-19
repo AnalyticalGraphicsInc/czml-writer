@@ -85,7 +85,7 @@ public class TestDuration {
     /**
     *  
     Tests that initialization produces a {@link Duration} which is normalized with the
-    seconds element in the range -86400.0 < seconds < 86400.0.
+    seconds element in the range -86400.0 &lt; seconds &lt; 86400.0.
     
 
     */
