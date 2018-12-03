@@ -126,6 +126,10 @@ public final class StringHelper {
         return new String(array);
     }
 
+    public static boolean isEmpty(@Nullable String str) {
+        return str != null && str.length() == 0;
+    }
+
     /**
      * Indicates whether the specified string is null or an Empty string.
      *

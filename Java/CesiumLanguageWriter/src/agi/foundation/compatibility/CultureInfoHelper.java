@@ -3,8 +3,6 @@ package agi.foundation.compatibility;
 import agi.foundation.compatibility.annotations.Internal;
 
 import java.util.Locale;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javax.annotation.Nonnull;
 
@@ -16,9 +14,6 @@ import javax.annotation.Nonnull;
 @Internal
 @Deprecated
 public final class CultureInfoHelper {
-    @Nonnull
-    private static final Pattern nameSplitter = Pattern.compile("(\\p{Alpha}{2})-(\\p{Alpha}{2})");
-
     private CultureInfoHelper() {}
 
     /**
@@ -39,7 +34,7 @@ public final class CultureInfoHelper {
     }
 
     /**
-     * Gets the locale using the specified C#-style culture name.
+     * Initializes a new instance based on the culture specified by name.
      *
      * The format for the culture name is
      * "&lt;languagecode2&gt;-&lt;country/regioncode2&gt;", where &lt;languagecode2&gt; is
@@ -47,17 +42,24 @@ public final class CultureInfoHelper {
      * include ja-JP for Japanese (Japan) and en-US for English (United States).
      */
     @Nonnull
-    public static Locale getCultureInfo(@Nonnull String name) {
+    public static Locale create(@Nonnull String name) {
         ArgumentNullException.assertNonNull(name, "name");
 
-        Matcher matcher = nameSplitter.matcher(name);
+        if (StringHelper.isEmpty(name)) {
+            return getInvariantCulture();
+        }
 
-        if (!matcher.matches())
-            throw new IllegalArgumentException("unknown Locale " + name);
+        return Locale.forLanguageTag(name);
+    }
 
-        String language = matcher.group(1);
-        String country = matcher.group(2);
-
-        return new Locale(language, country);
+    /**
+     * Retrieves an instance of a culture using the specified culture name.
+     *
+     * NOTE: in .NET, this method caches culture info objects. The current implementation
+     * does not cache results.
+     */
+    @Nonnull
+    public static Locale getCultureInfo(@Nonnull String name) {
+        return create(name);
     }
 }

@@ -18,19 +18,6 @@ public final class MathHelper {
     private MathHelper() {}
 
     /**
-     * Rounds a double-precision floating-point value to the nearest integral value.
-     *
-     * @param a
-     *            A double-precision floating-point number to be rounded.
-     * @return The integer nearest a. If the fractional component of a is halfway between
-     *         two integers, one of which is even and the other odd, then the even number
-     *         is returned.
-     */
-    public static double round(double a) {
-        return rint(a);
-    }
-
-    /**
      * Rounds a double-precision floating-point value to a specified number of fractional
      * digits.
      *

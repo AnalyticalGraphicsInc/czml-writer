@@ -94,7 +94,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                     result.add(s);
                 }
             }
-            return result.toArray(new String[result.size()]);
+            return result.toArray(new String[0]);
         }
 
         @Nonnull
@@ -2064,7 +2064,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
         long ticks = DateTimeHelper.getTicks(date);
         ticks += m_hour * ticksPerHour;
         ticks += m_minute * ticksPerMinute;
-        ticks += (long) MathHelper.round(m_second * ticksPerSecond);
+        ticks += (long) Math.rint(m_second * ticksPerSecond);
         return DateTimeHelper.create(ticks, ZoneOffset.UTC);
     }
 

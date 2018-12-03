@@ -29,7 +29,7 @@ public final class TextWriterHelper {
         }
     }
 
-    public static void write(@Nonnull Writer writer, @Nonnull char buffer[], int index, int count) {
+    public static void write(@Nonnull Writer writer, @Nonnull char[] buffer, int index, int count) {
         ArgumentNullException.assertNonNull(writer, "writer");
         ArgumentNullException.assertNonNull(buffer, "buffer");
 

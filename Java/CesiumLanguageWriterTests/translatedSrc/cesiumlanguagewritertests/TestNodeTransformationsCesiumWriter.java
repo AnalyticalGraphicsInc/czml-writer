@@ -6,6 +6,7 @@ import agi.foundation.compatibility.ConsoleHelper;
 import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.TestContextRule;
 import agi.foundation.compatibility.UriHelper;
+import agi.foundation.compatibility.UriKind;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.io.StringWriter;

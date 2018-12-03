@@ -6,6 +6,7 @@ import agi.foundation.compatibility.annotations.CS2JInfo;
 import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.ArgumentNullException;
 import agi.foundation.compatibility.AssertHelper;
+import agi.foundation.compatibility.CultureInfoHelper;
 import agi.foundation.compatibility.DateTimeHelper;
 import agi.foundation.compatibility.ExpectedExceptionHelper;
 import agi.foundation.compatibility.StringHelper;
@@ -31,7 +32,7 @@ import org.junit.Test;
 public class TestGregorianDateParsing {
     @Before
     public void setUp() {
-        m_cultureInfo = new Locale("en-US");
+        m_cultureInfo = CultureInfoHelper.create("en-US");
     }
 
     @Test

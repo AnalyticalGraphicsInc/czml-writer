@@ -193,7 +193,7 @@ class CachingMethodFinder {
         // anonymous-function-expressions with the same (possibly empty) set of captured
         // outer variable instances are permitted (but not required) to be equal.
 
-        if (targetClass != that.targetClass && (targetClass == null || !targetClass.equals(that.targetClass))) {
+        if (!Objects.equals(targetClass, that.targetClass)) {
             // static method and classes don't match.
             return false;
         }

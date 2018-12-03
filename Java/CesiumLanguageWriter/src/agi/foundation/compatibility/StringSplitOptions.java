@@ -97,6 +97,21 @@ public class StringSplitOptions implements Enumeration {
     }
 
     /**
+     * Remove the specified value from the current set and return the result.
+     *
+     * @return A value that is the current set without the specified value.
+     * @param other
+     *            the new value to be removed from the current set.
+     */
+    @Nonnull
+    public StringSplitOptions remove(@Nonnull StringSplitOptions other) {
+        StringSplitOptions result = new StringSplitOptions();
+        result.value.addAll(value);
+        result.value.removeAll(other.value);
+        return result;
+    }
+
+    /**
      * Determines whether the specified value is present in the current set.
      *
      * @return True if the specified value is present in the current set, false otherwise.

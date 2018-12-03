@@ -4,6 +4,7 @@ package cesiumlanguagewritertests;
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.ArgumentException;
 import agi.foundation.compatibility.AssertHelper;
+import agi.foundation.compatibility.CultureInfoHelper;
 import agi.foundation.compatibility.DateTimeHelper;
 import agi.foundation.compatibility.ExpectedExceptionHelper;
 import agi.foundation.compatibility.IEquatable;
@@ -12,7 +13,6 @@ import agi.foundation.compatibility.ThreadHelper;
 import cesiumlanguagewriter.*;
 import java.time.ZonedDateTime;
 import java.time.ZoneId;
-import java.util.Locale;
 import javax.annotation.Nonnull;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
@@ -208,9 +208,9 @@ public class TestGregorianDate {
     @Test
     public final void testToStringFormatProvider() {
         GregorianDate gd1 = new GregorianDate(2001, 1, 1, 6, 3, 14D);
-        Assert.assertEquals("1/1/2001 6:03:14 AM", gd1.toString(new Locale("en-US")));
+        Assert.assertEquals("1/1/2001 6:03:14 AM", gd1.toString(CultureInfoHelper.create("en-US")));
         gd1 = new GregorianDate(2003, 3, 4, 16, 43, 23.23452);
-        Assert.assertEquals("3/4/2003 4:43:23 PM", gd1.toString(new Locale("en-US")));
+        Assert.assertEquals("3/4/2003 4:43:23 PM", gd1.toString(CultureInfoHelper.create("en-US")));
     }
 
     @Test

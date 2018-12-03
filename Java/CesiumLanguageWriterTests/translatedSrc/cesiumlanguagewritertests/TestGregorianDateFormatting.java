@@ -3,6 +3,7 @@ package cesiumlanguagewritertests;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.AssertHelper;
+import agi.foundation.compatibility.CultureInfoHelper;
 import agi.foundation.compatibility.ExpectedExceptionHelper;
 import agi.foundation.compatibility.ObjectHelper;
 import agi.foundation.compatibility.RegexHelper;
@@ -31,7 +32,7 @@ import org.junit.Test;
 public class TestGregorianDateFormatting {
     @Before
     public void setUp() {
-        m_cultureInfo = new Locale("en-US");
+        m_cultureInfo = CultureInfoHelper.create("en-US");
     }
 
     @Test
