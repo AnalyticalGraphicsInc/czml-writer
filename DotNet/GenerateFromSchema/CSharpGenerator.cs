@@ -39,7 +39,7 @@ namespace GenerateFromSchema
             {
                 WriteGeneratedWarning(writer);
                 writer.WriteLine();
-                WriteNamespaces(writer, schema);
+                WriteUsingStatements(writer, schema);
                 writer.WriteLine();
 
                 writer.WriteLine("namespace {0}", m_configuration.Namespace);
@@ -47,15 +47,14 @@ namespace GenerateFromSchema
                 {
                     WriteDescriptionAsClassSummary(writer, schema);
 
-                    bool isInterpolatable = schema.Extends != null && schema.Extends.Name == "InterpolatableProperty";
-                    if (isInterpolatable)
+                    foreach (string attribute in m_configuration.Attributes ?? Enumerable.Empty<string>())
                     {
-                        writer.WriteLine("{0} class {1}CesiumWriter : CesiumInterpolatablePropertyWriter<{1}CesiumWriter>", m_configuration.Access, schema.NameWithPascalCase);
+                        writer.WriteLine("[{0}]", attribute);
                     }
-                    else
-                    {
-                        writer.WriteLine("{0} class {1}CesiumWriter : CesiumPropertyWriter<{1}CesiumWriter>", m_configuration.Access, schema.NameWithPascalCase);
-                    }
+
+                    bool isInterpolatable = schema.Extends?.Name == "InterpolatableProperty";
+                    string baseClass = isInterpolatable ? "CesiumInterpolatablePropertyWriter" : "CesiumPropertyWriter";
+                    writer.WriteLine("{0} class {1}CesiumWriter : {2}<{1}CesiumWriter>", m_configuration.Access, schema.NameWithPascalCase, baseClass);
 
                     using (writer.OpenScope())
                     {
@@ -76,7 +75,7 @@ namespace GenerateFromSchema
             {
                 WriteGeneratedWarning(writer);
                 writer.WriteLine();
-                WriteNamespaces(writer, packetSchema);
+                WriteUsingStatements(writer, packetSchema);
                 writer.WriteLine();
 
                 writer.WriteLine("namespace {0}", m_configuration.Namespace);
@@ -105,43 +104,22 @@ namespace GenerateFromSchema
             writer.WriteLine("// </auto-generated>");
         }
 
-        private void WriteNamespaces(CodeWriter writer, Schema schema)
+        private void WriteUsingStatements(CodeWriter writer, Schema schema)
         {
-            var namespaces = new HashSet<string>
+            var namespaces = new List<string>
             {
                 m_configuration.Namespace + ".Advanced",
-                m_configuration.LazyNamespace,
+                "System",
                 "JetBrains.Annotations",
             };
-            foreach (Property property in schema.Properties)
-            {
-                foreach (OverloadInfo overload in GetOverloadsForProperty(property))
-                {
-                    if (overload.Namespaces != null)
-                    {
-                        foreach (string ns in overload.Namespaces)
-                        {
-                            namespaces.Add(ns);
-                        }
-                    }
-                }
 
-                foreach (Property subProperty in property.ValueType.Properties)
-                {
-                    foreach (OverloadInfo overload in GetOverloadsForProperty(subProperty))
-                    {
-                        if (overload.Namespaces != null)
-                        {
-                            foreach (string ns in overload.Namespaces)
-                            {
-                                namespaces.Add(ns);
-                            }
-                        }
-                    }
-                }
-            }
+            namespaces.AddRange(m_configuration.UsingNamespaces ?? Enumerable.Empty<string>());
 
-            foreach (string ns in namespaces)
+            namespaces.AddRange(schema.Properties
+                                      .SelectMany(property => GetOverloadsForProperty(property).Concat(property.ValueType.Properties.SelectMany(GetOverloadsForProperty)))
+                                      .SelectMany(overload => overload.UsingNamespaces ?? Enumerable.Empty<string>()));
+
+            foreach (string ns in namespaces.Distinct())
             {
                 writer.WriteLine("using {0};", ns);
             }
@@ -631,19 +609,16 @@ namespace GenerateFromSchema
             return description;
         }
 
-        // All the "= null" nonsense is to avoid warnings from Visual Studio, which isn't aware of
-        // JSON.NET's treachery.
-
         private class ParameterInfo
         {
             [JsonProperty("type")]
-            public string Type = null;
+            public string Type;
 
             [JsonProperty("name")]
-            public string Name = null;
+            public string Name;
 
             [JsonProperty("description")]
-            public string Description = null;
+            public string Description;
 
             public static ParameterInfo SimpleValue(string type)
             {
@@ -658,8 +633,8 @@ namespace GenerateFromSchema
 
         private class OverloadInfo
         {
-            [JsonProperty("namespaces")]
-            public string[] Namespaces = null;
+            [JsonProperty("usingNamespaces")]
+            public string[] UsingNamespaces = null;
 
             [JsonProperty("parameters")]
             public ParameterInfo[] Parameters = null;
@@ -707,8 +682,11 @@ namespace GenerateFromSchema
             [JsonProperty("access")]
             public string Access = null;
 
-            [JsonProperty("lazyNamespace")]
-            public string LazyNamespace = null;
+            [JsonProperty("usingNamespaces")]
+            public string[] UsingNamespaces = null;
+
+            [JsonProperty("attributes")]
+            public string[] Attributes = null;
 
             [JsonProperty("types")]
             public Dictionary<string, OverloadInfo[]> Types = null;
