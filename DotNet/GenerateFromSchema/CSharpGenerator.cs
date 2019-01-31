@@ -83,6 +83,12 @@ namespace GenerateFromSchema
                 using (writer.OpenScope())
                 {
                     WriteDescriptionAsClassSummary(writer, packetSchema);
+
+                    foreach (string attribute in m_configuration.Attributes ?? Enumerable.Empty<string>())
+                    {
+                        writer.WriteLine("[{0}]", attribute);
+                    }
+
                     writer.WriteLine("{0} class PacketCesiumWriter : CesiumElementWriter", m_configuration.Access);
 
                     using (writer.OpenScope())
