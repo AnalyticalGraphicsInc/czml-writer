@@ -76,6 +76,7 @@
     <Compile Include="Cartographic.cs" />
     <Compile Include="CartographicExtent.cs" />
     <Compile Include="CesiumColorBlendMode.cs" />
+    <Compile Include="CesiumArcType.cs" />
     <Compile Include="CesiumCornerType.cs" />
     <Compile Include="CesiumHeightReference.cs" />
     <Compile Include="CesiumSensorVolumePortionToDisplay.cs" />
@@ -99,6 +100,7 @@
     <Compile Include="Generated\AlignedAxisCesiumWriter.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\ArcTypeCesiumWriter.cs" />
     <Compile Include="Generated\BackgroundPaddingCesiumWriter.cs" />
     <Compile Include="Generated\BillboardCesiumWriter.cs">
       <SubType>Code</SubType>

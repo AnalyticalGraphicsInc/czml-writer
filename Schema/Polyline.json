@@ -20,6 +20,11 @@
             "$ref": "PositionList.json",
             "description": "The array of positions defining the polyline as a line strip."
         },
+        "arcType": {
+            "$ref": "ArcType.json",
+            "description": "The type of arc that should connect the positions of the polyline.",
+            "default": "GEODESIC"
+        },
         "width": {
             "$ref": "Double.json",
             "description": "The width of the polyline.",
@@ -37,7 +42,7 @@
         },
         "followSurface": {
             "$ref": "Boolean.json",
-            "description": "Whether or not the positions are connected as great arcs (the default) or as straight lines.",
+            "description": "Whether or not the positions are connected as great arcs (the default) or as straight lines. This property has been superseded by arcType, which should be used instead.",
             "default": true
         },
         "shadows": {

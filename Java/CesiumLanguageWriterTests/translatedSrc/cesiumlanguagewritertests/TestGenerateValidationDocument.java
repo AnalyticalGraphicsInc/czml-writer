@@ -1648,6 +1648,15 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
+                            cesiumlanguagewriter.ArcTypeCesiumWriter w2 = w.openArcTypeProperty();
+                            try {
+                                w2.writeArcType(CesiumArcType.RHUMB);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.arcType.getValue(date)).toEqual(ArcType.RHUMB);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
                             cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openHeightProperty();
                             try {
                                 w2.writeNumber(26391.0);
@@ -1823,6 +1832,15 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
+                            cesiumlanguagewriter.ArcTypeCesiumWriter w2 = w.openArcTypeProperty();
+                            try {
+                                w2.writeArcType(CesiumArcType.RHUMB);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.arcType.getValue(date)).toEqual(ArcType.RHUMB);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
                             cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openWidthProperty();
                             try {
                                 w2.writeNumber(14667.0);
@@ -1859,15 +1877,6 @@ public class TestGenerateValidationDocument {
                                         DisposeHelper.dispose(m);
                                     }
                                 }
-                            } finally {
-                                DisposeHelper.dispose(w2);
-                            }
-                        }
-                        {
-                            cesiumlanguagewriter.BooleanCesiumWriter w2 = w.openFollowSurfaceProperty();
-                            try {
-                                w2.writeBoolean(true);
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.followSurface.getValue(date)).toEqual(true);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -19401,6 +19410,15 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
+                            cesiumlanguagewriter.ArcTypeCesiumWriter w2 = w.openArcTypeProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("polygon", "arcType")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.arcType.getValue(date)).toEqual(constant.polygon.arcType.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
                             cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openHeightProperty();
                             try {
                                 w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("polygon", "height")));
@@ -19581,6 +19599,15 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
+                            cesiumlanguagewriter.ArcTypeCesiumWriter w2 = w.openArcTypeProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("polyline", "arcType")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.arcType.getValue(date)).toEqual(constant.polyline.arcType.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
                             cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openWidthProperty();
                             try {
                                 w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("polyline", "width")));
@@ -19618,15 +19645,6 @@ public class TestGenerateValidationDocument {
                                         DisposeHelper.dispose(m);
                                     }
                                 }
-                            } finally {
-                                DisposeHelper.dispose(w2);
-                            }
-                        }
-                        {
-                            cesiumlanguagewriter.BooleanCesiumWriter w2 = w.openFollowSurfaceProperty();
-                            try {
-                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("polyline", "followSurface")));
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.followSurface.getValue(date)).toEqual(constant.polyline.followSurface.getValue(date));");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }

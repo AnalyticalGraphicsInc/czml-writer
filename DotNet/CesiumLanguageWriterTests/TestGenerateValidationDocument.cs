@@ -904,6 +904,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteCartesian(CreateList(new Cartesian(39143, 2200, 6408), new Cartesian(27161, 33386, 62338)));
                         m_assertionsWriter.WriteLine("    expect(e.polygon.hierarchy.getValue(date)).toEqual([ new Cartesian3(39143, 2200, 6408), new Cartesian3(27161, 33386, 62338) ]);");
                     }
+                    using (var w2 = w.OpenArcTypeProperty())
+                    {
+                        w2.WriteArcType(CesiumArcType.Rhumb);
+                        m_assertionsWriter.WriteLine("    expect(e.polygon.arcType.getValue(date)).toEqual(ArcType.RHUMB);");
+                    }
                     using (var w2 = w.OpenHeightProperty())
                     {
                         w2.WriteNumber(26391.0);
@@ -998,6 +1003,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteCartesian(CreateList(new Cartesian(23333, 31067, 17529), new Cartesian(57924, 41186, 31648)));
                         m_assertionsWriter.WriteLine("    expect(e.polyline.positions.getValue(date)).toEqual([ new Cartesian3(23333, 31067, 17529), new Cartesian3(57924, 41186, 31648) ]);");
                     }
+                    using (var w2 = w.OpenArcTypeProperty())
+                    {
+                        w2.WriteArcType(CesiumArcType.Rhumb);
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.arcType.getValue(date)).toEqual(ArcType.RHUMB);");
+                    }
                     using (var w2 = w.OpenWidthProperty())
                     {
                         w2.WriteNumber(14667.0);
@@ -1018,11 +1028,6 @@ namespace CesiumLanguageWriterTests
                                 m_assertionsWriter.WriteLine("    expect(e.polyline.material.color.getValue(date)).toEqual(Color.fromBytes(88, 0, 232, 230));");
                             }
                         }
-                    }
-                    using (var w2 = w.OpenFollowSurfaceProperty())
-                    {
-                        w2.WriteBoolean(true);
-                        m_assertionsWriter.WriteLine("    expect(e.polyline.followSurface.getValue(date)).toEqual(true);");
                     }
                     using (var w2 = w.OpenShadowsProperty())
                     {
@@ -8280,6 +8285,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteReferences(CreateList(new Reference("ConstantPosition1", CreateList("position")), new Reference("ConstantPosition2", CreateList("position"))));
                         m_assertionsWriter.WriteLine("    expect(e.polygon.hierarchy.getValue(date)).toEqual([dataSource.entities.getById('ConstantPosition1').position.getValue(date), dataSource.entities.getById('ConstantPosition2').position.getValue(date)]);");
                     }
+                    using (var w2 = w.OpenArcTypeProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("polygon", "arcType")));
+                        m_assertionsWriter.WriteLine("    expect(e.polygon.arcType.getValue(date)).toEqual(constant.polygon.arcType.getValue(date));");
+                    }
                     using (var w2 = w.OpenHeightProperty())
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("polygon", "height")));
@@ -8372,6 +8382,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteReferences(CreateList(new Reference("ConstantPosition1", CreateList("position")), new Reference("ConstantPosition2", CreateList("position"))));
                         m_assertionsWriter.WriteLine("    expect(e.polyline.positions.getValue(date)).toEqual([dataSource.entities.getById('ConstantPosition1').position.getValue(date), dataSource.entities.getById('ConstantPosition2').position.getValue(date)]);");
                     }
+                    using (var w2 = w.OpenArcTypeProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("polyline", "arcType")));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.arcType.getValue(date)).toEqual(constant.polyline.arcType.getValue(date));");
+                    }
                     using (var w2 = w.OpenWidthProperty())
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("polyline", "width")));
@@ -8390,11 +8405,6 @@ namespace CesiumLanguageWriterTests
                             m2.WriteReference(new Reference("Constant", CreateList("polyline", "material", "color")));
                             m_assertionsWriter.WriteLine("    expect(e.polyline.material.color.getValue(date)).toEqual(constant.polyline.material.color.getValue(date));");
                         }
-                    }
-                    using (var w2 = w.OpenFollowSurfaceProperty())
-                    {
-                        w2.WriteReference(new Reference("Constant", CreateList("polyline", "followSurface")));
-                        m_assertionsWriter.WriteLine("    expect(e.polyline.followSurface.getValue(date)).toEqual(constant.polyline.followSurface.getValue(date));");
                     }
                     using (var w2 = w.OpenShadowsProperty())
                     {

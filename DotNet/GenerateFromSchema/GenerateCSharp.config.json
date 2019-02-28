@@ -782,6 +782,19 @@
                 "needsInterval": false
             }
         ],
+        "ArcType": [
+            {
+                "parameters": [
+                    {
+                        "type": "CesiumArcType",
+                        "name": "value",
+                        "description": "The style of an arc."
+                    }
+                ],
+                "writeValue": "Output.WriteValue(CesiumFormattingHelper.ArcTypeToString(value));",
+                "needsInterval": false
+            }
+        ],
         "CornerType": [
             {
                 "parameters": [

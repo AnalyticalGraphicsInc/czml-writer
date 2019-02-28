@@ -1,0 +1,27 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/ArcTypeValue.json",
+    "title": "ArcType",
+    "description": "The type of an arc.",
+    "type": "string",
+    "oneOf": [
+        {
+            "enum": [
+                "NONE"
+            ],
+            "description": "The arc is a straight line that does not conform to the surface of an ellipsoid."
+        },
+        {
+            "enum": [
+                "GEODESIC"
+            ],
+            "description": "The arc is a geodesic, which is the shortest path conforming to the surface of an ellipsoid."
+        },
+        {
+            "enum": [
+                "RHUMB"
+            ],
+            "description": "The arc is a rhumb line, or loxodrome, which is the path of constant heading conforming to the surface of an ellipsoid."
+        }
+    ]
+}

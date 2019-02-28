@@ -182,7 +182,7 @@ namespace GenerateFromSchema
                                         }
                                         else
                                         {
-                                            foreach (var subProperty in properties.Where(p => !p.IsValue))
+                                            foreach (var subProperty in properties.Where(p => !p.IsValue && !ExcludeSubPropertyFromValidation(p.Name)))
                                             {
                                                 writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
                                                 using (writer.OpenScope())
@@ -293,7 +293,7 @@ namespace GenerateFromSchema
                                     }
                                 }
 
-                                foreach (var subProperty in properties.Where(p => !p.IsValue))
+                                foreach (var subProperty in properties.Where(p => !p.IsValue && !ExcludeSubPropertyFromValidation(p.Name)))
                                 {
                                     string subPropertyName = GetSubPropertyName(propertyName, subProperty);
 
@@ -553,7 +553,7 @@ namespace GenerateFromSchema
                                         }
                                         else
                                         {
-                                            foreach (var subProperty in properties.Where(p => !p.IsValue))
+                                            foreach (var subProperty in properties.Where(p => !p.IsValue && !ExcludeSubPropertyFromValidation(p.Name)))
                                             {
                                                 properties = subProperty.ValueType.Properties;
 
@@ -1078,6 +1078,18 @@ namespace GenerateFromSchema
             }
         }
 
+        private static bool ExcludeSubPropertyFromValidation(string subPropertyName)
+        {
+            switch (subPropertyName)
+            {
+                case "followSurface":
+                    // handled specially in Cesium by converting to arcType on the client side, so our validation assertions won't work.
+                    return true;
+                default:
+                    return false;
+            }
+        }
+
         private static string GetSubPropertyName(string propertyName, Property subProperty)
         {
             string subPropertyName = subProperty.Name;
@@ -1398,6 +1410,13 @@ namespace GenerateFromSchema
                     value = "CesiumLabelStyle.FillAndOutline";
                     assertionValue = "LabelStyle.FILL_AND_OUTLINE";
                     valueType = "CesiumLabelStyle";
+                    return;
+                }
+                case "ArcType":
+                {
+                    value = "CesiumArcType.Rhumb";
+                    assertionValue = "ArcType.RHUMB";
+                    valueType = "CesiumArcType";
                     return;
                 }
                 case "CornerType":
