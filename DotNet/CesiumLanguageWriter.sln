@@ -10,6 +10,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{04E49F4E-CD74-44F3-9A80-604BCA10FB67}"
 	ProjectSection(SolutionItems) = preProject
 		..\Schema\AlignedAxis.json = ..\Schema\AlignedAxis.json
+		..\Schema\ArcType.json = ..\Schema\ArcType.json
+		..\Schema\ArcTypeValue.json = ..\Schema\ArcTypeValue.json
 		..\Schema\BackgroundPadding.json = ..\Schema\BackgroundPadding.json
 		..\Schema\Billboard.json = ..\Schema\Billboard.json
 		..\Schema\Boolean.json = ..\Schema\Boolean.json

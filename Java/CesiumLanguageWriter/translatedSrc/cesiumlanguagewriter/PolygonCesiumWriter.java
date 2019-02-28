@@ -6,6 +6,7 @@ import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
+import cesiumlanguagewriter.ArcTypeCesiumWriter;
 import cesiumlanguagewriter.BooleanCesiumWriter;
 import cesiumlanguagewriter.ColorCesiumWriter;
 import cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter;
@@ -44,6 +45,13 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     */
     public static final String PositionsPropertyName = "positions";
+    /**
+    *  
+    The name of the {@code arcType} property.
+    
+
+    */
+    public static final String ArcTypePropertyName = "arcType";
     /**
     *  
     The name of the {@code height} property.
@@ -157,6 +165,11 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     private Lazy<PositionListCesiumWriter> m_positions = new Lazy<cesiumlanguagewriter.PositionListCesiumWriter>(new Func1<cesiumlanguagewriter.PositionListCesiumWriter>() {
         public cesiumlanguagewriter.PositionListCesiumWriter invoke() {
             return new PositionListCesiumWriter(PositionsPropertyName);
+        }
+    }, false);
+    private Lazy<ArcTypeCesiumWriter> m_arcType = new Lazy<cesiumlanguagewriter.ArcTypeCesiumWriter>(new Func1<cesiumlanguagewriter.ArcTypeCesiumWriter>() {
+        public cesiumlanguagewriter.ArcTypeCesiumWriter invoke() {
+            return new ArcTypeCesiumWriter(ArcTypePropertyName);
         }
     }, false);
     private Lazy<DoubleCesiumWriter> m_height = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
@@ -487,6 +500,127 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
             cesiumlanguagewriter.PositionListCesiumWriter writer = openPositionsProperty();
             try {
                 writer.writeReferences(references);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  Gets the writer for the {@code arcType} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code arcType} property defines the type of arc that should connect the positions of the polygon. If not specified, the default value is GEODESIC.
+    
+
+    */
+    @Nonnull
+    public final ArcTypeCesiumWriter getArcTypeWriter() {
+        return m_arcType.getValue();
+    }
+
+    /**
+    *  
+    Opens and returns the writer for the {@code arcType} property. The {@code arcType} property defines the type of arc that should connect the positions of the polygon. If not specified, the default value is GEODESIC.
+    
+
+    */
+    @Nonnull
+    public final ArcTypeCesiumWriter openArcTypeProperty() {
+        openIntervalIfNecessary();
+        return this.<ArcTypeCesiumWriter> openAndReturn(getArcTypeWriter());
+    }
+
+    /**
+    *  
+    Writes a value for the {@code arcType} property as a {@code ArcType} value. The {@code arcType} property specifies the type of arc that should connect the positions of the polygon. If not specified, the default value is GEODESIC.
+    
+    
+
+    * @param value The style of an arc.
+    */
+    public final void writeArcTypeProperty(@Nonnull CesiumArcType value) {
+        {
+            cesiumlanguagewriter.ArcTypeCesiumWriter writer = openArcTypeProperty();
+            try {
+                writer.writeArcType(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code arcType} property as a {@code reference} value. The {@code arcType} property specifies the type of arc that should connect the positions of the polygon. If not specified, the default value is GEODESIC.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeArcTypePropertyReference(Reference value) {
+        {
+            cesiumlanguagewriter.ArcTypeCesiumWriter writer = openArcTypeProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code arcType} property as a {@code reference} value. The {@code arcType} property specifies the type of arc that should connect the positions of the polygon. If not specified, the default value is GEODESIC.
+    
+    
+
+    * @param value The earliest date of the interval.
+    */
+    public final void writeArcTypePropertyReference(String value) {
+        {
+            cesiumlanguagewriter.ArcTypeCesiumWriter writer = openArcTypeProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code arcType} property as a {@code reference} value. The {@code arcType} property specifies the type of arc that should connect the positions of the polygon. If not specified, the default value is GEODESIC.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyName The property on the referenced object.
+    */
+    public final void writeArcTypePropertyReference(String identifier, String propertyName) {
+        {
+            cesiumlanguagewriter.ArcTypeCesiumWriter writer = openArcTypeProperty();
+            try {
+                writer.writeReference(identifier, propertyName);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code arcType} property as a {@code reference} value. The {@code arcType} property specifies the type of arc that should connect the positions of the polygon. If not specified, the default value is GEODESIC.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+    */
+    public final void writeArcTypePropertyReference(String identifier, String[] propertyNames) {
+        {
+            cesiumlanguagewriter.ArcTypeCesiumWriter writer = openArcTypeProperty();
+            try {
+                writer.writeReference(identifier, propertyNames);
             } finally {
                 DisposeHelper.dispose(writer);
             }

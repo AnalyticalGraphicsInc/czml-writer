@@ -427,6 +427,27 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
+        /// Converts a <see cref="CesiumArcType"/> to the corresponding string in a CZML stream.
+        /// </summary>
+        /// <param name="value">The value to convert.</param>
+        /// <returns>The string representing the specified value.</returns>
+        [NotNull]
+        public static string ArcTypeToString(CesiumArcType value)
+        {
+            switch (value)
+            {
+                case CesiumArcType.None:
+                    return "NONE";
+                case CesiumArcType.Geodesic:
+                    return "GEODESIC";
+                case CesiumArcType.Rhumb:
+                    return "RHUMB";
+                default:
+                    throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "value");
+            }
+        }
+
+        /// <summary>
         /// Converts a <see cref="CesiumCornerType"/> to the corresponding string in a CZML stream.
         /// </summary>
         /// <param name="value">The value to convert.</param>

@@ -20,6 +20,11 @@
             "$ref": "PositionList.json",
             "description": "The array of positions defining a simple polygon."
         },
+        "arcType": {
+            "$ref": "ArcType.json",
+            "description": "The type of arc that should connect the positions of the polygon.",
+            "default": "GEODESIC"
+        },
         "height": {
             "$ref": "Double.json",
             "description": "The height of the polygon when `perPositionHeight` is false.",

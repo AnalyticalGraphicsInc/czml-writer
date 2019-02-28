@@ -571,6 +571,34 @@ public final class CesiumFormattingHelper {
 
     /**
     *  
+    Converts a {@link CesiumArcType} to the corresponding string in a CZML stream.
+    
+    
+    
+
+    * @param value The value to convert.
+    * @return The string representing the specified value.
+    */
+    @Nonnull
+    public static String arcTypeToString(@Nonnull CesiumArcType value) {
+        switch (value) {
+        case NONE: {
+            return "NONE";
+        }
+        case GEODESIC: {
+            return "GEODESIC";
+        }
+        case RHUMB: {
+            return "RHUMB";
+        }
+        default: {
+            throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "value");
+        }
+        }
+    }
+
+    /**
+    *  
     Converts a {@link CesiumCornerType} to the corresponding string in a CZML stream.
     
     

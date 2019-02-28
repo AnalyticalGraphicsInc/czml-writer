@@ -26,6 +26,11 @@ namespace CesiumLanguageWriter
         public const string PositionsPropertyName = "positions";
 
         /// <summary>
+        /// The name of the <c>arcType</c> property.
+        /// </summary>
+        public const string ArcTypePropertyName = "arcType";
+
+        /// <summary>
         /// The name of the <c>width</c> property.
         /// </summary>
         public const string WidthPropertyName = "width";
@@ -72,6 +77,7 @@ namespace CesiumLanguageWriter
 
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
         private readonly Lazy<PositionListCesiumWriter> m_positions = new Lazy<PositionListCesiumWriter>(() => new PositionListCesiumWriter(PositionsPropertyName), false);
+        private readonly Lazy<ArcTypeCesiumWriter> m_arcType = new Lazy<ArcTypeCesiumWriter>(() => new ArcTypeCesiumWriter(ArcTypePropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_width = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(WidthPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_granularity = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(GranularityPropertyName), false);
         private readonly Lazy<PolylineMaterialCesiumWriter> m_material = new Lazy<PolylineMaterialCesiumWriter>(() => new PolylineMaterialCesiumWriter(MaterialPropertyName), false);
@@ -251,6 +257,87 @@ namespace CesiumLanguageWriter
             using (var writer = OpenPositionsProperty())
             {
                 writer.WriteReferences(references);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <c>arcType</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>arcType</c> property defines the type of arc that should connect the positions of the polyline. If not specified, the default value is GEODESIC.
+        /// </summary>
+        [NotNull]
+        public ArcTypeCesiumWriter ArcTypeWriter
+        {
+            get { return m_arcType.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>arcType</c> property. The <c>arcType</c> property defines the type of arc that should connect the positions of the polyline. If not specified, the default value is GEODESIC.
+        /// </summary>
+        [NotNull]
+        public ArcTypeCesiumWriter OpenArcTypeProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(ArcTypeWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>arcType</c> property as a <c>ArcType</c> value. The <c>arcType</c> property specifies the type of arc that should connect the positions of the polyline. If not specified, the default value is GEODESIC.
+        /// </summary>
+        /// <param name="value">The style of an arc.</param>
+        public void WriteArcTypeProperty(CesiumArcType value)
+        {
+            using (var writer = OpenArcTypeProperty())
+            {
+                writer.WriteArcType(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>arcType</c> property as a <c>reference</c> value. The <c>arcType</c> property specifies the type of arc that should connect the positions of the polyline. If not specified, the default value is GEODESIC.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteArcTypePropertyReference(Reference value)
+        {
+            using (var writer = OpenArcTypeProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>arcType</c> property as a <c>reference</c> value. The <c>arcType</c> property specifies the type of arc that should connect the positions of the polyline. If not specified, the default value is GEODESIC.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteArcTypePropertyReference(string value)
+        {
+            using (var writer = OpenArcTypeProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>arcType</c> property as a <c>reference</c> value. The <c>arcType</c> property specifies the type of arc that should connect the positions of the polyline. If not specified, the default value is GEODESIC.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteArcTypePropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenArcTypeProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>arcType</c> property as a <c>reference</c> value. The <c>arcType</c> property specifies the type of arc that should connect the positions of the polyline. If not specified, the default value is GEODESIC.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteArcTypePropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenArcTypeProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
             }
         }
 
@@ -492,7 +579,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>followSurface</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>followSurface</c> property defines whether or not the positions are connected as great arcs (the default) or as straight lines. If not specified, the default value is <see langword="true"/>.
+        /// Gets the writer for the <c>followSurface</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>followSurface</c> property defines whether or not the positions are connected as great arcs (the default) or as straight lines. This property has been superseded by arcType, which should be used instead. If not specified, the default value is <see langword="true"/>.
         /// </summary>
         [NotNull]
         public BooleanCesiumWriter FollowSurfaceWriter
@@ -501,7 +588,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>followSurface</c> property. The <c>followSurface</c> property defines whether or not the positions are connected as great arcs (the default) or as straight lines. If not specified, the default value is <see langword="true"/>.
+        /// Opens and returns the writer for the <c>followSurface</c> property. The <c>followSurface</c> property defines whether or not the positions are connected as great arcs (the default) or as straight lines. This property has been superseded by arcType, which should be used instead. If not specified, the default value is <see langword="true"/>.
         /// </summary>
         [NotNull]
         public BooleanCesiumWriter OpenFollowSurfaceProperty()
@@ -511,7 +598,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>followSurface</c> property as a <c>boolean</c> value. The <c>followSurface</c> property specifies whether or not the positions are connected as great arcs (the default) or as straight lines. If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>followSurface</c> property as a <c>boolean</c> value. The <c>followSurface</c> property specifies whether or not the positions are connected as great arcs (the default) or as straight lines. This property has been superseded by arcType, which should be used instead. If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteFollowSurfaceProperty(bool value)
@@ -523,7 +610,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>followSurface</c> property as a <c>reference</c> value. The <c>followSurface</c> property specifies whether or not the positions are connected as great arcs (the default) or as straight lines. If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>followSurface</c> property as a <c>reference</c> value. The <c>followSurface</c> property specifies whether or not the positions are connected as great arcs (the default) or as straight lines. This property has been superseded by arcType, which should be used instead. If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteFollowSurfacePropertyReference(Reference value)
@@ -535,7 +622,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>followSurface</c> property as a <c>reference</c> value. The <c>followSurface</c> property specifies whether or not the positions are connected as great arcs (the default) or as straight lines. If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>followSurface</c> property as a <c>reference</c> value. The <c>followSurface</c> property specifies whether or not the positions are connected as great arcs (the default) or as straight lines. This property has been superseded by arcType, which should be used instead. If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteFollowSurfacePropertyReference(string value)
@@ -547,7 +634,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>followSurface</c> property as a <c>reference</c> value. The <c>followSurface</c> property specifies whether or not the positions are connected as great arcs (the default) or as straight lines. If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>followSurface</c> property as a <c>reference</c> value. The <c>followSurface</c> property specifies whether or not the positions are connected as great arcs (the default) or as straight lines. This property has been superseded by arcType, which should be used instead. If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -560,7 +647,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>followSurface</c> property as a <c>reference</c> value. The <c>followSurface</c> property specifies whether or not the positions are connected as great arcs (the default) or as straight lines. If not specified, the default value is <see langword="true"/>.
+        /// Writes a value for the <c>followSurface</c> property as a <c>reference</c> value. The <c>followSurface</c> property specifies whether or not the positions are connected as great arcs (the default) or as straight lines. This property has been superseded by arcType, which should be used instead. If not specified, the default value is <see langword="true"/>.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
