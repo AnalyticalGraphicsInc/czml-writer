@@ -12,3 +12,7 @@ subprojects {
         includeEmptyDirs = false
     }
 }
+
+wrapper {
+    distributionType = Wrapper.DistributionType.ALL
+}
