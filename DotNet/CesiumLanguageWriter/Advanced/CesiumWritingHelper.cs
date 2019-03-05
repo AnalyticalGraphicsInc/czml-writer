@@ -15,6 +15,11 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         public static readonly TimeInterval MaximumInterval = new TimeInterval(GregorianDate.MinValue.ToJulianDate(), GregorianDate.MaxValue.ToJulianDate());
 
+        private static Iso8601Format GetIso8601Format(CesiumOutputStream output)
+        {
+            return output.PrettyFormatting ? Iso8601Format.Extended : Iso8601Format.Compact;
+        }
+
         /// <summary>
         /// Writes a <see cref="JulianDate"/> as an ISO 8601 interval string.
         /// </summary>
@@ -22,7 +27,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="date">The date to write.</param>
         public static void WriteDate(CesiumOutputStream output, JulianDate date)
         {
-            output.WriteValue(CesiumFormattingHelper.ToIso8601(date, output.PrettyFormatting ? Iso8601Format.Extended : Iso8601Format.Compact));
+            output.WriteValue(CesiumFormattingHelper.ToIso8601(date, GetIso8601Format(output)));
         }
 
         /// <summary>
@@ -32,7 +37,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="interval">The interval to write.</param>
         public static void WriteTimeInterval(CesiumOutputStream output, TimeInterval interval)
         {
-            output.WriteValue(CesiumFormattingHelper.ToIso8601Interval(interval.Start, interval.Stop, output.PrettyFormatting ? Iso8601Format.Extended : Iso8601Format.Compact));
+            output.WriteValue(CesiumFormattingHelper.ToIso8601Interval(interval.Start, interval.Stop, GetIso8601Format(output)));
         }
 
         /// <summary>
@@ -55,7 +60,9 @@ namespace CesiumLanguageWriter.Advanced
                 foreach (TimeInterval interval in intervals)
                 {
                     WriteTimeInterval(output, interval);
+                    output.WriteLineBreak();
                 }
+
                 output.WriteEndSequence();
             }
         }
@@ -548,7 +555,7 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
-        /// Writes a list of <see cref="double"/> values as an array in X, Y, Z order.
+        /// Writes a list of <see cref="double"/> values as an array.
         /// </summary>
         /// <param name="output">The stream to which to write the value.</param>
         /// <param name="values">The values to write.</param>
@@ -558,7 +565,9 @@ namespace CesiumLanguageWriter.Advanced
             foreach (double value in values)
             {
                 output.WriteValue(value);
+                output.WriteLineBreak();
             }
+
             output.WriteEndSequence();
         }
 
@@ -575,7 +584,9 @@ namespace CesiumLanguageWriter.Advanced
                 output.WriteValue(value.X);
                 output.WriteValue(value.Y);
                 output.WriteValue(value.Z);
+                output.WriteLineBreak();
             }
+
             output.WriteEndSequence();
         }
 
@@ -640,7 +651,9 @@ namespace CesiumLanguageWriter.Advanced
                 output.WriteValue(value.Longitude);
                 output.WriteValue(value.Latitude);
                 output.WriteValue(value.Height);
+                output.WriteLineBreak();
             }
+
             output.WriteEndSequence();
         }
 
@@ -936,7 +949,9 @@ namespace CesiumLanguageWriter.Advanced
             foreach (var reference in references)
             {
                 output.WriteValue(reference.Value);
+                output.WriteLineBreak();
             }
+
             output.WriteEndSequence();
         }
 
@@ -953,7 +968,9 @@ namespace CesiumLanguageWriter.Advanced
                 output.WriteValue(value.X);
                 output.WriteValue(value.Y);
                 output.WriteValue(value.Z);
+                output.WriteLineBreak();
             }
+
             output.WriteEndSequence();
         }
 
@@ -970,7 +987,9 @@ namespace CesiumLanguageWriter.Advanced
                 output.WriteValue(value.Clock);
                 output.WriteValue(value.Cone);
                 output.WriteValue(value.Magnitude);
+                output.WriteLineBreak();
             }
+
             output.WriteEndSequence();
         }
 
@@ -986,7 +1005,9 @@ namespace CesiumLanguageWriter.Advanced
             {
                 output.WriteValue(value.Clock);
                 output.WriteValue(value.Cone);
+                output.WriteLineBreak();
             }
+
             output.WriteEndSequence();
         }
 
@@ -1003,17 +1024,13 @@ namespace CesiumLanguageWriter.Advanced
         /// <returns>A suitable epoch determined from the collection.</returns>
         private static JulianDate GetAndWriteEpoch(CesiumOutputStream output, IList<JulianDate> dates, int startIndex, int length)
         {
-            if (startIndex < dates.Count)
-            {
-                JulianDate epoch = dates[startIndex];
-                output.WritePropertyName("epoch");
-                output.WriteValue(CesiumFormattingHelper.ToIso8601(epoch, output.PrettyFormatting ? Iso8601Format.Extended : Iso8601Format.Compact));
-                return epoch;
-            }
-            else
-            {
+            if (startIndex >= dates.Count)
                 return JulianDate.MinValue;
-            }
+
+            JulianDate epoch = dates[startIndex];
+            output.WritePropertyName("epoch");
+            output.WriteValue(CesiumFormattingHelper.ToIso8601(epoch, GetIso8601Format(output)));
+            return epoch;
         }
     }
 }

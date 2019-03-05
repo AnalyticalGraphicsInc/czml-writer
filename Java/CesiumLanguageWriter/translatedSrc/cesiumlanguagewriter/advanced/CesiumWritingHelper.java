@@ -31,6 +31,11 @@ public final class CesiumWritingHelper {
     */
     public static final TimeInterval MaximumInterval = new TimeInterval(GregorianDate.MinValue.toJulianDate(), GregorianDate.MaxValue.toJulianDate());
 
+    @Nonnull
+    private static Iso8601Format getIso8601Format(CesiumOutputStream output) {
+        return output.getPrettyFormatting() ? Iso8601Format.EXTENDED : Iso8601Format.COMPACT;
+    }
+
     /**
     *  
     Writes a {@link JulianDate} as an ISO 8601 interval string.
@@ -42,7 +47,7 @@ public final class CesiumWritingHelper {
     * @param date The date to write.
     */
     public static void writeDate(CesiumOutputStream output, @Nonnull JulianDate date) {
-        output.writeValue(CesiumFormattingHelper.toIso8601(date, output.getPrettyFormatting() ? Iso8601Format.EXTENDED : Iso8601Format.COMPACT));
+        output.writeValue(CesiumFormattingHelper.toIso8601(date, getIso8601Format(output)));
     }
 
     /**
@@ -56,7 +61,7 @@ public final class CesiumWritingHelper {
     * @param interval The interval to write.
     */
     public static void writeTimeInterval(CesiumOutputStream output, TimeInterval interval) {
-        output.writeValue(CesiumFormattingHelper.toIso8601Interval(interval.getStart(), interval.getStop(), output.getPrettyFormatting() ? Iso8601Format.EXTENDED : Iso8601Format.COMPACT));
+        output.writeValue(CesiumFormattingHelper.toIso8601Interval(interval.getStart(), interval.getStop(), getIso8601Format(output)));
     }
 
     /**
@@ -79,6 +84,7 @@ public final class CesiumWritingHelper {
             output.writeStartSequence();
             for (final TimeInterval interval : intervals) {
                 writeTimeInterval(output, interval);
+                output.writeLineBreak();
             }
             output.writeEndSequence();
         }
@@ -663,7 +669,7 @@ public final class CesiumWritingHelper {
 
     /**
     *  
-    Writes a list of {@code double} values as an array in X, Y, Z order.
+    Writes a list of {@code double} values as an array.
     
     
     
@@ -675,6 +681,7 @@ public final class CesiumWritingHelper {
         output.writeStartSequence();
         for (final double value : values) {
             output.writeValue(value);
+            output.writeLineBreak();
         }
         output.writeEndSequence();
     }
@@ -695,6 +702,7 @@ public final class CesiumWritingHelper {
             output.writeValue(value.getX());
             output.writeValue(value.getY());
             output.writeValue(value.getZ());
+            output.writeLineBreak();
         }
         output.writeEndSequence();
     }
@@ -772,6 +780,7 @@ public final class CesiumWritingHelper {
             output.writeValue(value.getLongitude());
             output.writeValue(value.getLatitude());
             output.writeValue(value.getHeight());
+            output.writeLineBreak();
         }
         output.writeEndSequence();
     }
@@ -1140,6 +1149,7 @@ public final class CesiumWritingHelper {
         output.writeStartSequence();
         for (final cesiumlanguagewriter.Reference reference : references) {
             output.writeValue(reference.getValue());
+            output.writeLineBreak();
         }
         output.writeEndSequence();
     }
@@ -1160,6 +1170,7 @@ public final class CesiumWritingHelper {
             output.writeValue(value.getX());
             output.writeValue(value.getY());
             output.writeValue(value.getZ());
+            output.writeLineBreak();
         }
         output.writeEndSequence();
     }
@@ -1180,6 +1191,7 @@ public final class CesiumWritingHelper {
             output.writeValue(value.getClock());
             output.writeValue(value.getCone());
             output.writeValue(value.getMagnitude());
+            output.writeLineBreak();
         }
         output.writeEndSequence();
     }
@@ -1199,6 +1211,7 @@ public final class CesiumWritingHelper {
         for (final UnitSpherical value : values) {
             output.writeValue(value.getClock());
             output.writeValue(value.getCone());
+            output.writeLineBreak();
         }
         output.writeEndSequence();
     }
@@ -1224,13 +1237,12 @@ public final class CesiumWritingHelper {
     */
     @Nonnull
     private static JulianDate getAndWriteEpoch(CesiumOutputStream output, List<JulianDate> dates, int startIndex, int length) {
-        if (startIndex < dates.size()) {
-            JulianDate epoch = dates.get(startIndex);
-            output.writePropertyName("epoch");
-            output.writeValue(CesiumFormattingHelper.toIso8601(epoch, output.getPrettyFormatting() ? Iso8601Format.EXTENDED : Iso8601Format.COMPACT));
-            return epoch;
-        } else {
+        if (startIndex >= dates.size()) {
             return JulianDate.getMinValue();
         }
+        JulianDate epoch = dates.get(startIndex);
+        output.writePropertyName("epoch");
+        output.writeValue(CesiumFormattingHelper.toIso8601(epoch, getIso8601Format(output)));
+        return epoch;
     }
 }
