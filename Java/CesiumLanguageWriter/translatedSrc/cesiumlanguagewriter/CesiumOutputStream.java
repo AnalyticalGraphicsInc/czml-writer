@@ -43,8 +43,8 @@ public class CesiumOutputStream {
     }
 
     /**
-    *  Gets whether or not the written data should be formatted for easy human readability.
-    When this property is {@code false} (the default), more compact Cesium is generated.
+    *  Gets a value indicating whether or not the written data should be formatted for easy human readability.
+    When this property is {@code false} (the default), more compact CZML is generated.
     
 
     */
@@ -53,8 +53,8 @@ public class CesiumOutputStream {
     }
 
     /**
-    *  Sets whether or not the written data should be formatted for easy human readability.
-    When this property is {@code false} (the default), more compact Cesium is generated.
+    *  Sets a value indicating whether or not the written data should be formatted for easy human readability.
+    When this property is {@code false} (the default), more compact CZML is generated.
     
 
     */
@@ -74,7 +74,7 @@ public class CesiumOutputStream {
         TextWriterHelper.write(m_writer, '{');
         m_firstInContainer = true;
         m_inProperty = false;
-        m_indent += IndentLevel;
+        increaseIndent();
     }
 
     /**
@@ -85,7 +85,7 @@ public class CesiumOutputStream {
     */
     public final void writeEndObject() {
         m_firstInContainer = false;
-        m_indent -= IndentLevel;
+        decreaseIndent();
         if (getPrettyFormatting()) {
             TextWriterHelper.writeLine(m_writer);
             writeIndent();
@@ -105,7 +105,7 @@ public class CesiumOutputStream {
         TextWriterHelper.write(m_writer, '[');
         m_firstInContainer = true;
         m_inProperty = false;
-        m_indent += IndentLevel;
+        increaseIndent();
     }
 
     /**
@@ -116,7 +116,7 @@ public class CesiumOutputStream {
     */
     public final void writeEndSequence() {
         m_firstInContainer = false;
-        m_indent -= IndentLevel;
+        decreaseIndent();
         if (getPrettyFormatting()) {
             TextWriterHelper.writeLine(m_writer);
             writeIndent();
@@ -191,10 +191,7 @@ public class CesiumOutputStream {
     * @param value The value to write.
     */
     public final void writeValue(int value) {
-        startNewValue();
-        m_firstInContainer = false;
-        m_inProperty = false;
-        TextWriterHelper.write(m_writer, IntHelper.toString(value, CultureInfoHelper.getInvariantCulture()));
+        writeRawValueString(IntHelper.toString(value, CultureInfoHelper.getInvariantCulture()));
     }
 
     /**
@@ -206,10 +203,7 @@ public class CesiumOutputStream {
     * @param value The value to write.
     */
     public final void writeValue(long value) {
-        startNewValue();
-        m_firstInContainer = false;
-        m_inProperty = false;
-        TextWriterHelper.write(m_writer, LongHelper.toString(value, CultureInfoHelper.getInvariantCulture()));
+        writeRawValueString(LongHelper.toString(value, CultureInfoHelper.getInvariantCulture()));
     }
 
     /**
@@ -221,10 +215,14 @@ public class CesiumOutputStream {
     * @param value The value to write.
     */
     public final void writeValue(boolean value) {
+        writeRawValueString(value ? "true" : "false");
+    }
+
+    private final void writeRawValueString(String s) {
         startNewValue();
         m_firstInContainer = false;
         m_inProperty = false;
-        TextWriterHelper.write(m_writer, value ? "true" : "false");
+        TextWriterHelper.write(m_writer, s);
     }
 
     /**
@@ -333,6 +331,7 @@ public class CesiumOutputStream {
         }
     }
 
+    @Nonnull
     private static String toCharAsUnicode(char c) {
         char h1 = intToHex((c >>> 12) & '\u000f');
         char h2 = intToHex((c >>> 8) & '\u000f');
@@ -356,6 +355,10 @@ public class CesiumOutputStream {
     }
 
     private final void startNewValue() {
+        if (m_firstInStream) {
+            m_firstInStream = false;
+            return;
+        }
         if (!m_firstInContainer) {
             TextWriterHelper.write(m_writer, ',');
         }
@@ -366,13 +369,23 @@ public class CesiumOutputStream {
         }
     }
 
+    private final void increaseIndent() {
+        m_indent += IndentLevel;
+    }
+
+    private final void decreaseIndent() {
+        m_indent -= IndentLevel;
+    }
+
     private final void writeIndent() {
-        for (int i = 0; i < m_indent; ++i)
+        for (int i = 0; i < m_indent; ++i) {
             TextWriterHelper.write(m_writer, ' ');
+        }
     }
 
     @Nonnull
     private Writer m_writer;
+    private boolean m_firstInStream = true;
     private boolean m_firstInContainer = true;
     private boolean m_inProperty;
     private boolean m_nextValueOnNewLine;
