@@ -25,8 +25,8 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets or sets whether or not the written data should be formatted for easy human readability.
-        /// When this property is <see langword="false"/> (the default), more compact Cesium is generated.
+        /// Gets or sets a value indicating whether or not the written data should be formatted for easy human readability.
+        /// When this property is <see langword="false"/> (the default), more compact CZML is generated.
         /// </summary>
         public bool PrettyFormatting { get; set; }
 
@@ -40,7 +40,7 @@ namespace CesiumLanguageWriter
             m_writer.Write('{');
             m_firstInContainer = true;
             m_inProperty = false;
-            m_indent += IndentLevel;
+            IncreaseIndent();
         }
 
         /// <summary>
@@ -49,13 +49,14 @@ namespace CesiumLanguageWriter
         public void WriteEndObject()
         {
             m_firstInContainer = false;
-            m_indent -= IndentLevel;
+            DecreaseIndent();
 
             if (PrettyFormatting)
             {
                 m_writer.WriteLine();
                 WriteIndent();
             }
+
             m_writer.Write('}');
         }
 
@@ -69,7 +70,7 @@ namespace CesiumLanguageWriter
             m_writer.Write('[');
             m_firstInContainer = true;
             m_inProperty = false;
-            m_indent += IndentLevel;
+            IncreaseIndent();
         }
 
         /// <summary>
@@ -78,13 +79,14 @@ namespace CesiumLanguageWriter
         public void WriteEndSequence()
         {
             m_firstInContainer = false;
-            m_indent -= IndentLevel;
+            DecreaseIndent();
 
             if (PrettyFormatting)
             {
                 m_writer.WriteLine();
                 WriteIndent();
             }
+
             m_writer.Write(']');
         }
 
@@ -151,10 +153,7 @@ namespace CesiumLanguageWriter
         /// <param name="value">The value to write.</param>
         public void WriteValue(int value)
         {
-            StartNewValue();
-            m_firstInContainer = false;
-            m_inProperty = false;
-            m_writer.Write(value.ToString(CultureInfo.InvariantCulture));
+            WriteRawValueString(value.ToString(CultureInfo.InvariantCulture));
         }
 
         /// <summary>
@@ -163,10 +162,7 @@ namespace CesiumLanguageWriter
         /// <param name="value">The value to write.</param>
         public void WriteValue(long value)
         {
-            StartNewValue();
-            m_firstInContainer = false;
-            m_inProperty = false;
-            m_writer.Write(value.ToString(CultureInfo.InvariantCulture));
+            WriteRawValueString(value.ToString(CultureInfo.InvariantCulture));
         }
 
         /// <summary>
@@ -175,10 +171,15 @@ namespace CesiumLanguageWriter
         /// <param name="value">The value to write.</param>
         public void WriteValue(bool value)
         {
+            WriteRawValueString(value ? "true" : "false");
+        }
+
+        private void WriteRawValueString(string s)
+        {
             StartNewValue();
             m_firstInContainer = false;
             m_inProperty = false;
-            m_writer.Write(value ? "true" : "false");
+            m_writer.Write(s);
         }
 
         /// <summary>
@@ -292,6 +293,7 @@ namespace CesiumLanguageWriter
             }
         }
 
+        [NotNull]
         private static string ToCharAsUnicode(char c)
         {
             char h1 = IntToHex((c >> 12) & '\x000f');
@@ -308,15 +310,23 @@ namespace CesiumLanguageWriter
             {
                 return (char)(n + 48);
             }
+
             return (char)(n - 10 + 97);
         }
 
         private void StartNewValue()
         {
+            if (m_firstInStream)
+            {
+                m_firstInStream = false;
+                return;
+            }
+
             if (!m_firstInContainer)
             {
                 m_writer.Write(',');
             }
+
             if (!m_inProperty && PrettyFormatting && m_nextValueOnNewLine)
             {
                 m_writer.WriteLine();
@@ -325,14 +335,27 @@ namespace CesiumLanguageWriter
             }
         }
 
+        private void IncreaseIndent()
+        {
+            m_indent += IndentLevel;
+        }
+
+        private void DecreaseIndent()
+        {
+            m_indent -= IndentLevel;
+        }
+
         private void WriteIndent()
         {
             for (int i = 0; i < m_indent; ++i)
+            {
                 m_writer.Write(' ');
+        }
         }
 
         [NotNull]
         private readonly TextWriter m_writer;
+        private bool m_firstInStream = true;
         private bool m_firstInContainer = true;
         private bool m_inProperty;
         private bool m_nextValueOnNewLine;
