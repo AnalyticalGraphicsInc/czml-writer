@@ -75,19 +75,19 @@ namespace GrisuDotNet
             }
             else if (decimal_point >= decimal_rep_length)
             {
-                decimalRepLength += decimal_point - decimal_rep_length + 1;
+                decimalRepLength += decimal_point - decimal_rep_length;
             }
 
             int exponent = decimal_point - 1;
             int absExponent = Math.Abs(exponent);
-            int exponentRepLength = decimal_rep_length + 3;
+            int exponentRepLength = decimal_rep_length + 2; // one for 'e' and one for first exponent digit
             if (exponent < 0)
-                ++exponentRepLength;
+                ++exponentRepLength; // additional one for '-'
             if (absExponent >= 10)
             {
-                ++exponentRepLength;
+                ++exponentRepLength; // additional one for second exponent digit
                 if (absExponent >= 100)
-                    ++exponentRepLength;
+                    ++exponentRepLength; // additional one for third exponent digit
             }
 
             if (decimalRepLength <= exponentRepLength)
