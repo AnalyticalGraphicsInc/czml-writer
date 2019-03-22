@@ -350,7 +350,7 @@ namespace CesiumLanguageWriter
             for (int i = 0; i < m_indent; ++i)
             {
                 m_writer.Write(' ');
-        }
+            }
         }
 
         [NotNull]
