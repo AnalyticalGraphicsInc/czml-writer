@@ -35,4 +35,7 @@ public final class ColorHelper {
     public static Color fromArgb(int alpha, int red, int green, int blue) {
         return new Color(red, green, blue, alpha);
     }
+
+    @Nonnull
+    public static final Color LIME = new Color(0x00FF00);
 }
