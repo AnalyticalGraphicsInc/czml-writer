@@ -1,4 +1,4 @@
-package cesiumlanguagewritertests;
+package cesiumlanguagewritertests.java;
 
 import cesiumlanguagewriter.BillboardCesiumWriter;
 import cesiumlanguagewriter.Cartographic;
