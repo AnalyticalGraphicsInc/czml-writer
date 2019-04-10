@@ -120,11 +120,11 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The number of radians in a degree.
         /// </summary>
-        public const double RadiansPerDegree = 2 * Math.PI / 360.0;
+        public const double RadiansPerDegree = TwoPi / 360.0;
 
         /// <summary>
         /// The number of degrees in a radian.
         /// </summary>
-        public const double DegreesPerRadian = 360.0 / (2 * Math.PI);
+        public const double DegreesPerRadian = 360.0 / TwoPi;
     }
 }

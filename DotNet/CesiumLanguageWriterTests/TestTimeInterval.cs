@@ -16,7 +16,7 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestRetainValue()
         {
-            JulianDate start = new JulianDate(DateTime.UtcNow);
+            JulianDate start = JulianDate.Now;
             JulianDate stop = start + Duration.FromDays(1.5);
             TimeInterval interval = new TimeInterval(start, stop);
             Assert.AreEqual(start, interval.Start);
@@ -142,7 +142,7 @@ namespace CesiumLanguageWriterTests
         }
 
         /// <summary>
-        /// Tests thats the <see cref="TimeInterval.EqualsEpsilon"/> method returns true
+        /// Tests that the <see cref="TimeInterval.EqualsEpsilon"/> method returns true
         /// when the difference is exactly epsilon.
         /// </summary>
         [Test]
@@ -190,7 +190,7 @@ namespace CesiumLanguageWriterTests
         public void TestToString()
         {
             TimeInterval interval = new TimeInterval(new JulianDate(2451545, 0.00), new JulianDate(2451546, 0.00));
-            Assert.AreEqual("[2451545:0 TAI (1/1/2000 11:59:28 AM), 2451546:0 TAI (1/2/2000 11:59:28 AM)]", interval.ToString());
+            Assert.AreEqual("[2451545:0 TAI (" + interval.Start.ToGregorianDate() + "), 2451546:0 TAI (" + interval.Stop.ToGregorianDate() + ")]", interval.ToString());
         }
     }
 }

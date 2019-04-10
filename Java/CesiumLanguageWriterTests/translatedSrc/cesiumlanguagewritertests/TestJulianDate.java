@@ -5,6 +5,7 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.annotations.CS2JInfo;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.IEquatable;
+import agi.foundation.compatibility.StringHelper;
 import agi.foundation.compatibility.TestContextRule;
 import agi.foundation.compatibility.ThreadHelper;
 import cesiumlanguagewriter.*;
@@ -239,8 +240,8 @@ public class TestJulianDate {
     */
     @Test
     public final void testMinutesDifference() {
-        double totalElapsedTime = TimeConstants.SecondsPerDay * 2.5;
-        double totalElapsedTimeMinutes = totalElapsedTime / TimeConstants.SecondsPerMinute;
+        final double totalElapsedTime = TimeConstants.SecondsPerDay * 2.5;
+        final double totalElapsedTimeMinutes = totalElapsedTime / TimeConstants.SecondsPerMinute;
         //Test same time standard, both safe
         JulianDate first = new JulianDate(2451545.0);
         JulianDate second = JulianDate.add(first, Duration.fromSeconds(totalElapsedTime));
@@ -265,8 +266,8 @@ public class TestJulianDate {
 
     @Test
     public final void testDaysDifference() {
-        double totalElapsedTime = TimeConstants.SecondsPerDay * 2.5;
-        double totalElapsedTimeDays = totalElapsedTime / TimeConstants.SecondsPerDay;
+        final double totalElapsedTime = TimeConstants.SecondsPerDay * 2.5;
+        final double totalElapsedTimeDays = totalElapsedTime / TimeConstants.SecondsPerDay;
         //Test same time standard, both safe
         JulianDate first = new JulianDate(2451545.0);
         JulianDate second = JulianDate.add(first, Duration.fromSeconds(totalElapsedTime));
@@ -396,7 +397,8 @@ public class TestJulianDate {
     @Test
     public final void testToString() {
         JulianDate date = new JulianDate(2451545.5);
-        Assert.assertEquals("2451545:43200 TAI (1/1/2000 11:59:28 PM)", date.toString());
+        String expected = StringHelper.format("2451545:43200 TAI ({0})", date.toGregorianDate());
+        Assert.assertEquals(expected, date.toString());
     }
 
     /**
@@ -436,7 +438,7 @@ public class TestJulianDate {
     @Test
     public final void testReallySmallNegativeSecondsOfDay() {
         JulianDate date = new JulianDate(2451545, -Constants.Epsilon13);
-        Assert.assertEquals((int) date.getDay(), (int) 2451545);
+        Assert.assertEquals((int) 2451545, (int) date.getDay());
         Assert.assertEquals(0.0, date.getSecondsOfDay(), 0d);
     }
 

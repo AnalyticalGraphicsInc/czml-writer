@@ -11,7 +11,7 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void CanConstructEscapedReferences()
         {
-            var value = "identifier#property";
+            string value = "identifier#property";
             var reference = new Reference(value);
             Assert.AreEqual(reference.Identifier, "identifier");
             Assert.AreEqual(reference.PropertyNames, new List<string> { "property" });
@@ -65,24 +65,33 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentException))]
         public void ThrowsWithMissingDelimiter()
         {
-            new Reference("MissingDelimiter");
+            var exception = Assert.Throws<ArgumentException>(() =>
+            {
+                var unused = new Reference("MissingDelimiter");
+            });
+            StringAssert.Contains("The provided reference string is not in the correct format", exception.Message);
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentException))]
-        public void ThrowsWithMissingDelimiterDoToEscaping()
+        public void ThrowsWithMissingDelimiterDueToEscaping()
         {
-            new Reference(@"Missing\#Delimiter");
+            var exception = Assert.Throws<ArgumentException>(() =>
+            {
+                var unused = new Reference(@"Missing\#Delimiter");
+            });
+            StringAssert.Contains("The provided reference string is not in the correct format", exception.Message);
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentException))]
         public void ThrowsWithMissingProperties()
         {
-            new Reference(@"MissingPropertyName#");
+            var exception = Assert.Throws<ArgumentException>(() =>
+            {
+                var unused = new Reference(@"MissingPropertyName#");
+            });
+            StringAssert.Contains("The provided reference string is not in the correct format", exception.Message);
         }
     }
 }

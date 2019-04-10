@@ -18,47 +18,51 @@ namespace CesiumLanguageWriterTests
         public void TestHoldValue()
         {
             BoundingRectangle boundingRectangle0 = new BoundingRectangle();
-            Assert.AreEqual(boundingRectangle0.Left, 0);
-            Assert.AreEqual(boundingRectangle0.Bottom, 0);
-            Assert.AreEqual(boundingRectangle0.Right, 0);
-            Assert.AreEqual(boundingRectangle0.Top, 0);
-            Assert.AreEqual(boundingRectangle0.Height, 0);
-            Assert.AreEqual(boundingRectangle0.Width, 0);
+            Assert.AreEqual(0, boundingRectangle0.Left);
+            Assert.AreEqual(0, boundingRectangle0.Bottom);
+            Assert.AreEqual(0, boundingRectangle0.Right);
+            Assert.AreEqual(0, boundingRectangle0.Top);
+            Assert.AreEqual(0, boundingRectangle0.Height);
+            Assert.AreEqual(0, boundingRectangle0.Width);
 
-            Assert.AreEqual(BoundingRectangle.Empty.Left, 0);
-            Assert.AreEqual(BoundingRectangle.Empty.Bottom, 0);
-            Assert.AreEqual(BoundingRectangle.Empty.Right, 0);
-            Assert.AreEqual(BoundingRectangle.Empty.Top, 0);
-            Assert.AreEqual(BoundingRectangle.Empty.Height, 0);
-            Assert.AreEqual(BoundingRectangle.Empty.Width, 0);
+            Assert.AreEqual(0, BoundingRectangle.Empty.Left);
+            Assert.AreEqual(0, BoundingRectangle.Empty.Bottom);
+            Assert.AreEqual(0, BoundingRectangle.Empty.Right);
+            Assert.AreEqual(0, BoundingRectangle.Empty.Top);
+            Assert.AreEqual(0, BoundingRectangle.Empty.Height);
+            Assert.AreEqual(0, BoundingRectangle.Empty.Width);
 
             BoundingRectangle boundingRectangle1 = new BoundingRectangle(1, 2, 3, 4);
-            Assert.AreEqual(boundingRectangle1.Left, 1);
-            Assert.AreEqual(boundingRectangle1.Bottom, 2);
-            Assert.AreEqual(boundingRectangle1.Right, 3);
-            Assert.AreEqual(boundingRectangle1.Top, 4);
-            Assert.AreEqual(boundingRectangle1.Height, 2);
-            Assert.AreEqual(boundingRectangle1.Width, 2);
+            Assert.AreEqual(1, boundingRectangle1.Left);
+            Assert.AreEqual(2, boundingRectangle1.Bottom);
+            Assert.AreEqual(3, boundingRectangle1.Right);
+            Assert.AreEqual(4, boundingRectangle1.Top);
+            Assert.AreEqual(2, boundingRectangle1.Height);
+            Assert.AreEqual(2, boundingRectangle1.Width);
         }
 
         /// <summary>
         /// Tests that construction resulting in a negative width throws the correct exception.
         /// </summary>
         [Test]
-        [ExpectedException(typeof(ArgumentException))]
         public void TestInitializationFromBadElementsWidth()
         {
-            BoundingRectangle boundingRectangle = new BoundingRectangle(2, 2, 1, 3);
+            Assert.Throws<ArgumentException>(() =>
+            {
+                var unused = new BoundingRectangle(2, 2, 1, 3);
+            });
         }
 
         /// <summary>
         /// Tests that construction resulting in a negative height throws the correct exception.
         /// </summary>
         [Test]
-        [ExpectedException(typeof(ArgumentException))]
         public void TestInitializationFromBadElementsHeight()
         {
-            BoundingRectangle boundingRectangle = new BoundingRectangle(2, 2, 3, 1);
+            Assert.Throws<ArgumentException>(() =>
+            {
+                var unused = new BoundingRectangle(2, 2, 3, 1);
+            });
         }
 
         /// <summary>
@@ -120,17 +124,17 @@ namespace CesiumLanguageWriterTests
         {
             BoundingRectangle boundingRectangle = new BoundingRectangle(1, 2, 3, 4);
 
-            int val1 = 1;
-            int val2 = 2;
-            int val3 = 3;
-            int val4 = 4;
-            string sep = ", ";
-            string result = val1.ToString(CultureInfo.CurrentCulture) + sep +
-                            val2.ToString(CultureInfo.CurrentCulture) + sep +
-                            val3.ToString(CultureInfo.CurrentCulture) + sep +
-                            val4.ToString(CultureInfo.CurrentCulture);
+            const int val1 = 1;
+            const int val2 = 2;
+            const int val3 = 3;
+            const int val4 = 4;
+            const string sep = ", ";
+            string expected = val1.ToString(CultureInfo.CurrentCulture) + sep +
+                              val2.ToString(CultureInfo.CurrentCulture) + sep +
+                              val3.ToString(CultureInfo.CurrentCulture) + sep +
+                              val4.ToString(CultureInfo.CurrentCulture);
 
-            Assert.AreEqual(boundingRectangle.ToString(), result);
+            Assert.AreEqual(expected, boundingRectangle.ToString());
         }
     }
 }

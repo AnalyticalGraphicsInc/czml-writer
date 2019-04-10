@@ -5,7 +5,6 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.annotations.CS2JInfo;
 import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.ArgumentException;
-import agi.foundation.compatibility.ArgumentNullException;
 import agi.foundation.compatibility.DoubleHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
@@ -37,9 +36,9 @@ public final class Bounds implements IEquatable<Bounds>, ImmutableValueType {
     
     
 
-    * @param lowerBound The minimal value defining the range or numbers.
-    * @param upperBound The maximal value defining the range or numbers.
-    * @exception ArgumentNullException 
+    * @param lowerBound The minimal value defining the range of numbers.
+    * @param upperBound The maximal value defining the range of numbers.
+    * @exception ArgumentException 
     Thrown when the {@code upperBound} is less than the {@code lowerBound}.
     
     */
@@ -154,7 +153,7 @@ public final class Bounds implements IEquatable<Bounds>, ImmutableValueType {
 
     * @return 
     A string that represents the values of this instance in the form
-    "LowerBound, UpperBound".
+    "{@code LowerBound} ({@link #getLowerBound get}), {@code UpperBound} ({@link #getUpperBound get})".
     
     */
     @Override
@@ -201,7 +200,7 @@ public final class Bounds implements IEquatable<Bounds>, ImmutableValueType {
     }
 
     /**
-    *  Gets whether or not this instance has a finite value as either the lower or upper bound.
+    *  Gets a value indicating whether this instance has a finite value as either the lower or upper bound.
     
 
     */
@@ -210,7 +209,7 @@ public final class Bounds implements IEquatable<Bounds>, ImmutableValueType {
     }
 
     /**
-    *  Gets whether or not this instance ranges from {@link Double#NEGATIVE_INFINITY} to {@link Double#POSITIVE_INFINITY}.
+    *  Gets a value indicating whether this instance ranges from {@link Double#NEGATIVE_INFINITY} to {@link Double#POSITIVE_INFINITY}.
     
 
     */

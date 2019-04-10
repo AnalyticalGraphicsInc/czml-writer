@@ -8,6 +8,10 @@ namespace CesiumLanguageWriterTests
     [TestFixture]
     public class TestPacketCesiumWriter
     {
+        private StringWriter m_stringWriter;
+        private CesiumOutputStream m_outputStream;
+        private CesiumStreamWriter m_writer;
+
         [SetUp]
         public void SetUp()
         {
@@ -32,6 +36,7 @@ namespace CesiumLanguageWriterTests
             using (m_writer.OpenPacket(m_outputStream))
             {
             }
+
             Assert.AreEqual("{}", m_stringWriter.ToString());
         }
 
@@ -74,10 +79,12 @@ namespace CesiumLanguageWriterTests
             {
                 packet.WriteAvailability(start, stop);
             }
+
             using (PacketCesiumWriter packet = m_writer.OpenPacket(m_outputStream))
             {
                 packet.WriteAvailability(new TimeInterval(start, stop));
             }
+
             using (PacketCesiumWriter packet = m_writer.OpenPacket(m_outputStream))
             {
                 var intervals = new List<TimeInterval>
@@ -87,12 +94,16 @@ namespace CesiumLanguageWriterTests
                 };
                 packet.WriteAvailability(intervals);
             }
+
             m_outputStream.WriteEndSequence();
 
-            Assert.AreEqual("[{\"availability\":\"20120402T010203Z/20120403T010203Z\"}," +
-                            "{\"availability\":\"20120402T010203Z/20120403T010203Z\"}," +
-                            "{\"availability\":[\"20120402T010203Z/20120403T010203Z\",\"20120404T010203Z/20120405T010203Z\"]}]",
-                            m_stringWriter.ToString());
+            const string expected =
+                "[" +
+                "{\"availability\":\"20120402T010203Z/20120403T010203Z\"}," +
+                "{\"availability\":\"20120402T010203Z/20120403T010203Z\"}," +
+                "{\"availability\":[\"20120402T010203Z/20120403T010203Z\",\"20120404T010203Z/20120405T010203Z\"]}" +
+                "]";
+            Assert.AreEqual(expected, m_stringWriter.ToString());
         }
 
         [Test]
@@ -112,11 +123,8 @@ namespace CesiumLanguageWriterTests
             {
                 Assert.IsNotNull(billboard);
             }
+
             Assert.AreEqual("{\"billboard\":", m_stringWriter.ToString());
         }
-
-        private StringWriter m_stringWriter;
-        private CesiumOutputStream m_outputStream;
-        private CesiumStreamWriter m_writer;
     }
 }

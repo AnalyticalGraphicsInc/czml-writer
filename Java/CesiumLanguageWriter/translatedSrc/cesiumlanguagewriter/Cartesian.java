@@ -32,6 +32,25 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     public Cartesian() {}
 
     /**
+    *  
+    Initializes a set of {@link Cartesian} coordinates from the provided values.
+    
+    
+    
+    
+
+    * @param x The linear coordinate along the positive x-axis.
+    * @param y The linear coordinate along the positive y-axis.
+    * @param z The linear coordinate along the positive z-axis.
+    */
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
+    public Cartesian(double x, double y, double z) {
+        m_x = x;
+        m_y = y;
+        m_z = z;
+    }
+
+    /**
     *  Gets a set of {@link Cartesian} coordinates with values of zero.
     
 
@@ -55,25 +74,6 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     @Nonnull
     public static Cartesian getUndefined() {
         return s_undefined;
-    }
-
-    /**
-    *  
-    Initializes a set of {@link Cartesian} coordinates from the provided values.
-    
-    
-    
-    
-
-    * @param x The linear coordinate along the positive x-axis.
-    * @param y The linear coordinate along the positive y-axis.
-    * @param z The linear coordinate along the positive z-axis.
-    */
-    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
-    public Cartesian(double x, double y, double z) {
-        m_x = x;
-        m_y = y;
-        m_z = z;
     }
 
     /**
@@ -364,7 +364,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     }
 
     /**
-    *  Gets whether or not any of the coordinates for this instance have the value {@link Double#NaN}.
+    *  Gets a value indicating whether or not any of the coordinates for this instance have the value {@link Double#NaN}.
     
 
     */
@@ -528,6 +528,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     The magnitude of the provided coordinates must not be infinite.
     
     */
+    @CS2JWarning("Unhandled attribute removed: Pure")
     @Nonnull
     public final UnitCartesian normalize() {
         double magnitude = 0D;
@@ -567,7 +568,10 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     The magnitude of the provided coordinates must not be infinite.
     
     */
-    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
+    @CS2JWarning( {
+            "Unhandled attribute removed: Pure",
+            "Unhandled attribute removed: SuppressMessage"
+    })
     @Nonnull
     public final UnitCartesian normalize(@Nonnull double[] magnitude) {
         return new UnitCartesian(m_x, m_y, m_z, magnitude);
@@ -589,11 +593,11 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
         return new Cartesian(coordinates.getX(), coordinates.getY(), coordinates.getZ());
     }
 
-    private double m_x;
-    private double m_y;
-    private double m_z;
     @Nonnull
     private static Cartesian s_zero = new Cartesian(0.0, 0.0, 0.0);
     @Nonnull
     private static Cartesian s_undefined = new Cartesian(Double.NaN, Double.NaN, Double.NaN);
+    private double m_x;
+    private double m_y;
+    private double m_z;
 }

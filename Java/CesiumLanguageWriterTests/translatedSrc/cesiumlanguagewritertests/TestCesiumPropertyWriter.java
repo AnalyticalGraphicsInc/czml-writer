@@ -2,9 +2,11 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
+import agi.foundation.compatibility.Action;
+import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.DisposeHelper;
-import agi.foundation.compatibility.ExpectedExceptionHelper;
 import agi.foundation.compatibility.TestContextRule;
+import agi.foundation.TypeLiteral;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.io.StringWriter;
@@ -13,7 +15,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
-import org.junit.rules.ExpectedException;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
@@ -64,7 +65,8 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
         setPacket(getWriter().openPacket(getOutputStream()));
     }
 
-    protected abstract CesiumPropertyWriter<TDerived> createPropertyWriter(String propertyName);
+    @Nonnull
+    protected abstract CesiumPropertyWriter<TDerived> createPropertyWriter(@Nonnull String propertyName);
 
     @Test
     public final void writesPropertyNameOnOpenAndNothingOnClose() {
@@ -131,18 +133,26 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
 
     @Test
     public final void throwsWhenWritingToBeforeOpening() {
-        ExpectedExceptionHelper.expectException(getRule$expectedException(), IllegalStateException.class, "not currently open", MessageMatch.CONTAINS);
-        CesiumPropertyWriter<TDerived> property = createPropertyWriter("woot");
-        property.openInterval();
+        final CesiumPropertyWriter<TDerived> property = createPropertyWriter("woot");
+        IllegalStateException exception = AssertHelper.<IllegalStateException> assertThrows(new TypeLiteral<IllegalStateException>() {}, new Action() {
+            public void invoke() {
+                property.openInterval();
+            }
+        });
+        AssertHelper.assertStringContains("not currently open", exception.getMessage());
     }
 
     @Test
     public final void throwsWhenWritingToAfterClosed() {
-        ExpectedExceptionHelper.expectException(getRule$expectedException(), IllegalStateException.class, "not currently open", MessageMatch.CONTAINS);
-        CesiumPropertyWriter<TDerived> property = createPropertyWriter("woot");
+        final CesiumPropertyWriter<TDerived> property = createPropertyWriter("woot");
         property.open(getOutputStream());
         property.close();
-        property.openInterval();
+        IllegalStateException exception = AssertHelper.<IllegalStateException> assertThrows(new TypeLiteral<IllegalStateException>() {}, new Action() {
+            public void invoke() {
+                property.openInterval();
+            }
+        });
+        AssertHelper.assertStringContains("not currently open", exception.getMessage());
     }
 
     private StringWriter backingField$StringWriter;
@@ -156,14 +166,5 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
     @Rule
     public TestContextRule getRule$testContext() {
         return rule$testContext;
-    }
-
-    @Nonnull
-    private final ExpectedException rule$expectedException = ExpectedException.none();
-
-    @Nonnull
-    @Rule
-    public ExpectedException getRule$expectedException() {
-        return rule$expectedException;
     }
 }

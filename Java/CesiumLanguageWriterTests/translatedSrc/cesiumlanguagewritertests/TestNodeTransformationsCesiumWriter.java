@@ -59,8 +59,9 @@ public class TestNodeTransformationsCesiumWriter extends TestCesiumPropertyWrite
                 DisposeHelper.dispose(usingExpression_0);
             }
         }
-        Assert.assertEquals("{\"model\":{\"nodeTransformations\":{"
-                + "\"node1\":{\"scale\":{\"cartesian\":[0,0,0]},\"rotation\":{\"unitQuaternion\":[0,0,0,1]},\"translation\":{\"cartesian\":[3,3,3]}}" + "}}}", getStringWriter().toString());
+        final String expected = "{\"model\":{\"nodeTransformations\":{"
+                + "\"node1\":{\"scale\":{\"cartesian\":[0,0,0]},\"rotation\":{\"unitQuaternion\":[0,0,0,1]},\"translation\":{\"cartesian\":[3,3,3]}}" + "}}}";
+        Assert.assertEquals(expected, getStringWriter().toString());
     }
 
     @Test
@@ -106,10 +107,10 @@ public class TestNodeTransformationsCesiumWriter extends TestCesiumPropertyWrite
                 DisposeHelper.dispose(usingExpression_1);
             }
         }
-        String expectedValue = "{\"model\":{\"nodeTransformations\":{"
+        final String expected = "{\"model\":{\"nodeTransformations\":{"
                 + "\"node1\":{\"scale\":{\"cartesian\":[1,2,3]},\"rotation\":{\"unitQuaternion\":[0,0,0,1]},\"translation\":{\"cartesian\":[4,5,6]}},"
                 + "\"node2\":{\"scale\":{\"cartesian\":[4,5,6]},\"rotation\":{\"unitQuaternion\":[0,0,1,0]},\"translation\":{\"cartesian\":[7,8,9]}}" + "}}}";
-        Assert.assertEquals(expectedValue, getStringWriter().toString());
+        Assert.assertEquals(expected, getStringWriter().toString());
     }
 
     @Test

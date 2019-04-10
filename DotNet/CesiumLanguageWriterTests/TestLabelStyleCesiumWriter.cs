@@ -16,6 +16,7 @@ namespace CesiumLanguageWriterTests
                 writer.Open(OutputStream);
                 writer.WriteLabelStyle(CesiumLabelStyle.FillAndOutline);
             }
+
             Assert.AreEqual("{\"foo\":\"FILL_AND_OUTLINE\"}", StringWriter.ToString());
         }
 
@@ -31,6 +32,7 @@ namespace CesiumLanguageWriterTests
                 writer.WriteInterval(startDate, startDate.AddSeconds(100.0));
                 writer.WriteLabelStyle(CesiumLabelStyle.FillAndOutline);
             }
+
             Assert.AreEqual("{\"foo\":{\"interval\":\"20120607T12Z/20120607T120140Z\",\"labelStyle\":\"FILL_AND_OUTLINE\"}}", StringWriter.ToString());
         }
 

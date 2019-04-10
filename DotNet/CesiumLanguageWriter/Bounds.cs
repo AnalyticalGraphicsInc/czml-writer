@@ -12,9 +12,9 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Holds the values which form the bounds of a range of real numbers.
         /// </summary>
-        /// <param name="lowerBound">The minimal value defining the range or numbers.</param>
-        /// <param name="upperBound">The maximal value defining the range or numbers.</param>
-        /// <exception cref="ArgumentNullException">
+        /// <param name="lowerBound">The minimal value defining the range of numbers.</param>
+        /// <param name="upperBound">The maximal value defining the range of numbers.</param>
+        /// <exception cref="ArgumentException">
         /// Thrown when the <paramref name="upperBound"/> is less than the <paramref name="lowerBound"/>.
         /// </exception>
         public Bounds(double lowerBound, double upperBound)
@@ -108,7 +108,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <returns>
         /// A string that represents the values of this instance in the form
-        /// "LowerBound, UpperBound".
+        /// "<see cref="LowerBound"/>, <see cref="UpperBound"/>".
         /// </returns>
         public override string ToString()
         {
@@ -142,7 +142,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets whether or not this instance has a finite value as either the lower or upper bound.
+        /// Gets a value indicating whether this instance has a finite value as either the lower or upper bound.
         /// </summary>
         public bool IsFinite
         {
@@ -150,7 +150,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets whether or not this instance ranges from <see cref="double.NegativeInfinity"/> to <see cref="double.PositiveInfinity"/>.
+        /// Gets a value indicating whether this instance ranges from <see cref="double.NegativeInfinity"/> to <see cref="double.PositiveInfinity"/>.
         /// </summary>
         public bool IsUnbounded
         {

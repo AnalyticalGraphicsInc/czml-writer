@@ -11,14 +11,6 @@ namespace CesiumLanguageWriter
     public struct Cartographic : IEquatable<Cartographic>
     {
         /// <summary>
-        /// Gets a set of <see cref="Cartographic"/> coordinates representing the zero vector.
-        /// </summary>
-        public static Cartographic Zero
-        {
-            get { return s_zero; }
-        }
-
-        /// <summary>
         /// Initializes a set of <see cref="Cartographic"/> coordinates from the provided values.
         /// </summary>
         /// <param name="longitude">The angular coordinate lying in the equatorial plane of the ellipsoid and measured from the prime meridian.</param>
@@ -29,6 +21,14 @@ namespace CesiumLanguageWriter
             m_longitude = longitude;
             m_latitude = latitude;
             m_height = height;
+        }
+
+        /// <summary>
+        /// Gets a set of <see cref="Cartographic"/> coordinates representing the zero vector.
+        /// </summary>
+        public static Cartographic Zero
+        {
+            get { return s_zero; }
         }
 
         /// <summary>
@@ -144,10 +144,10 @@ namespace CesiumLanguageWriter
             return !left.Equals(right);
         }
 
+        private static readonly Cartographic s_zero = new Cartographic(0.0, 0.0, 0.0);
+
         private readonly double m_latitude;
         private readonly double m_longitude;
         private readonly double m_height;
-
-        private static readonly Cartographic s_zero = new Cartographic(0.0, 0.0, 0.0);
     }
 }

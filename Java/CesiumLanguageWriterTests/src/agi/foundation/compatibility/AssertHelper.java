@@ -15,6 +15,8 @@ import java.lang.reflect.Array;
 import org.junit.Assert;
 import org.junit.internal.ArrayComparisonFailure;
 
+import agi.foundation.TypeLiteral;
+
 /**
  * Extra assert methods.
  */
@@ -122,5 +124,62 @@ public final class AssertHelper {
         } else {
             Assert.assertEquals(message, ConvertHelper.toInt32(expected), ConvertHelper.toInt32(actual));
         }
+    }
+
+    /**
+     * An assertThrows method is built-in in JUnit 4.13 (not yet released). However, NUnit
+     * requires "Assert.Throws" to match the exception type exactly while "Assert.Catch"
+     * allows derived exception types.
+     */
+    public static <T extends Throwable> T assertThrows(TypeLiteral<T> typeLiteralT, Action action) {
+        return assertThrows(typeLiteralT.asClass(), action);
+    }
+
+    public static <T extends Throwable> T assertThrows(TypeLiteral<T> typeLiteralT, String message, Action action) {
+        return assertThrows(message, typeLiteralT.asClass(), action);
+    }
+
+    public static <T extends Throwable> T assertThrows(Class<T> expectedExceptionType, Action action) {
+        return assertThrows(null, expectedExceptionType, action);
+    }
+
+    public static <T extends Throwable> T assertThrows(String message, Class<T> expectedExceptionType, Action action) {
+        return assertThrows(true, message, expectedExceptionType, action);
+    }
+
+    private static <T extends Throwable> T assertThrows(boolean exact, String message, Class<T> expectedExceptionType, Action action) {
+        if (message == null) {
+            message = "";
+        }
+
+        try {
+            action.invoke();
+        } catch (Throwable actualThrown) {
+            boolean exceptionIsCorrectType;
+            if (exact) {
+                exceptionIsCorrectType = actualThrown.getClass().equals(expectedExceptionType);
+            } else {
+                exceptionIsCorrectType = expectedExceptionType.isInstance(actualThrown);
+            }
+
+            if (exceptionIsCorrectType) {
+                @SuppressWarnings("unchecked")
+                T result = (T) actualThrown;
+                return result;
+            }
+
+            message += " unexpected exception type thrown; expected " + formatClass(expectedExceptionType) + " but was " + formatClass(actualThrown.getClass());
+            AssertionError assertionError = new AssertionError(message);
+            assertionError.initCause(actualThrown);
+            throw assertionError;
+        }
+
+        message += " expected " + formatClass(expectedExceptionType) + " to be thrown but nothing was thrown";
+        throw new AssertionError(message);
+    }
+
+    private static String formatClass(Class<?> c) {
+        String className = c.getCanonicalName();
+        return className == null ? c.getName() : className;
     }
 }

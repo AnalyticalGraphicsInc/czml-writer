@@ -16,6 +16,7 @@ namespace CesiumLanguageWriterTests
                 writer.Open(OutputStream);
                 writer.WriteString("bar");
             }
+
             Assert.AreEqual("{\"foo\":\"bar\"}", StringWriter.ToString());
         }
 
@@ -31,6 +32,7 @@ namespace CesiumLanguageWriterTests
                 writer.WriteInterval(startDate, startDate.AddSeconds(100.0));
                 writer.WriteString("bar");
             }
+
             Assert.AreEqual("{\"foo\":{\"interval\":\"20120607T12Z/20120607T120140Z\",\"string\":\"bar\"}}", StringWriter.ToString());
         }
 
@@ -43,6 +45,7 @@ namespace CesiumLanguageWriterTests
                 writer.Open(OutputStream);
                 writer.WriteNumber(1.23);
             }
+
             Assert.AreEqual("{\"foo\":1.23}", StringWriter.ToString());
         }
 
@@ -58,6 +61,7 @@ namespace CesiumLanguageWriterTests
                 writer.WriteInterval(startDate, startDate.AddSeconds(100.0));
                 writer.WriteNumber(1.23);
             }
+
             Assert.AreEqual("{\"foo\":{\"interval\":\"20120607T12Z/20120607T120140Z\",\"number\":1.23}}", StringWriter.ToString());
         }
 
@@ -70,6 +74,7 @@ namespace CesiumLanguageWriterTests
                 writer.Open(OutputStream);
                 writer.WriteBoolean(false);
             }
+
             Assert.AreEqual("{\"foo\":false}", StringWriter.ToString());
         }
 
@@ -85,6 +90,7 @@ namespace CesiumLanguageWriterTests
                 writer.WriteInterval(startDate, startDate.AddSeconds(100.0));
                 writer.WriteBoolean(false);
             }
+
             Assert.AreEqual("{\"foo\":{\"interval\":\"20120607T12Z/20120607T120140Z\",\"boolean\":false}}", StringWriter.ToString());
         }
 
@@ -97,6 +103,7 @@ namespace CesiumLanguageWriterTests
                 writer.Open(OutputStream);
                 writer.WriteVerticalOrigin(CesiumVerticalOrigin.Center);
             }
+
             Assert.AreEqual("{\"foo\":\"CENTER\"}", StringWriter.ToString());
         }
 
@@ -112,6 +119,7 @@ namespace CesiumLanguageWriterTests
                 writer.WriteInterval(startDate, startDate.AddSeconds(100.0));
                 writer.WriteVerticalOrigin(CesiumVerticalOrigin.Center);
             }
+
             Assert.AreEqual("{\"foo\":{\"interval\":\"20120607T12Z/20120607T120140Z\",\"verticalOrigin\":\"CENTER\"}}", StringWriter.ToString());
         }
 
@@ -124,6 +132,7 @@ namespace CesiumLanguageWriterTests
                 writer.Open(OutputStream);
                 writer.WriteHorizontalOrigin(CesiumHorizontalOrigin.Center);
             }
+
             Assert.AreEqual("{\"foo\":\"CENTER\"}", StringWriter.ToString());
         }
 
@@ -139,6 +148,7 @@ namespace CesiumLanguageWriterTests
                 writer.WriteInterval(startDate, startDate.AddSeconds(100.0));
                 writer.WriteHorizontalOrigin(CesiumHorizontalOrigin.Center);
             }
+
             Assert.AreEqual("{\"foo\":{\"interval\":\"20120607T12Z/20120607T120140Z\",\"horizontalOrigin\":\"CENTER\"}}", StringWriter.ToString());
         }
 
@@ -151,6 +161,7 @@ namespace CesiumLanguageWriterTests
                 writer.Open(OutputStream);
                 writer.WriteLabelStyle(CesiumLabelStyle.FillAndOutline);
             }
+
             Assert.AreEqual("{\"foo\":\"FILL_AND_OUTLINE\"}", StringWriter.ToString());
         }
 
@@ -166,6 +177,7 @@ namespace CesiumLanguageWriterTests
                 writer.WriteInterval(startDate, startDate.AddSeconds(100.0));
                 writer.WriteLabelStyle(CesiumLabelStyle.FillAndOutline);
             }
+
             Assert.AreEqual("{\"foo\":{\"interval\":\"20120607T12Z/20120607T120140Z\",\"labelStyle\":\"FILL_AND_OUTLINE\"}}", StringWriter.ToString());
         }
 

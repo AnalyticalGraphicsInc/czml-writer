@@ -206,6 +206,7 @@ namespace CesiumLanguageWriter
         }
 
         [NotNull]
+        [CSToJavaFinalField]
         private static readonly TimeInterval s_empty = new TimeInterval(new JulianDate(0.0), new JulianDate(0.0));
 
         private readonly JulianDate m_start;

@@ -268,14 +268,13 @@ namespace CesiumLanguageWriter
         /// </returns>
         public int CompareTo(Duration other)
         {
-            if (m_days != other.m_days)
-                return m_days < other.m_days ? -1 : 1;
+            int result = m_days.CompareTo(other.m_days);
+            if (result == 0)
+            {
+                result = m_seconds.CompareTo(other.m_seconds);
+            }
 
-            // ReSharper disable once CompareOfFloatsByEqualityOperator
-            if (m_seconds == other.m_seconds)
-                return 0;
-
-            return m_seconds < other.m_seconds ? -1 : 1;
+            return result;
         }
 
         /// <summary>
@@ -567,11 +566,14 @@ namespace CesiumLanguageWriter
             return new Duration(0, seconds);
         }
 
+        [CSToJavaFinalField]
+        private static readonly Duration s_maxValue = new Duration(int.MaxValue, 0.0);
+        [CSToJavaFinalField]
+        private static readonly Duration s_minValue = new Duration(int.MinValue, 0.0);
+        [CSToJavaFinalField]
+        private static readonly Duration s_zero = new Duration(0, 0.0);
+
         private readonly int m_days;
         private readonly double m_seconds;
-
-        private static readonly Duration s_maxValue = new Duration(int.MaxValue, 0.0);
-        private static readonly Duration s_minValue = new Duration(int.MinValue, 0.0);
-        private static readonly Duration s_zero = new Duration(0, 0.0);
     }
 }

@@ -10,11 +10,11 @@ namespace CesiumLanguageWriterTests.Advanced
         [Test]
         public void PassToIso8601Interval()
         {
-            //Since ToIso8601Interval is just a simple wrapper around two calls to
-            //CesiumFormattingHelper.ToIso8601, this test is just a smoke screen.
-            string expectedBasicInterval = "19800801T000000Z/20720703T000000Z";
-            string expectedExtendedInterval = "1980-08-01T00:00:00Z/2072-07-03T00:00:00Z";
-            string expectedCompactInterval = "19800801T00Z/20720703T00Z";
+            // Since ToIso8601Interval is just a simple wrapper around two calls to
+            // CesiumFormattingHelper.ToIso8601, this test is just a smoke screen.
+            const string expectedBasicInterval = "19800801T000000Z/20720703T000000Z";
+            const string expectedExtendedInterval = "1980-08-01T00:00:00Z/2072-07-03T00:00:00Z";
+            const string expectedCompactInterval = "19800801T00Z/20720703T00Z";
 
             JulianDate start = new GregorianDate(1980, 08, 01).ToJulianDate();
             JulianDate stop = new GregorianDate(2072, 07, 03).ToJulianDate();

@@ -11,9 +11,12 @@ import java.time.YearMonth;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoField;
+import java.util.Locale;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Helper methods related to DateTime.
@@ -254,5 +257,112 @@ public final class DateTimeHelper {
     @Nonnull
     public static ZonedDateTime toUniversalTime(@Nonnull ZonedDateTime dateTime) {
         return dateTime.withZoneSameInstant(ZoneOffset.UTC);
+    }
+
+    @Nonnull
+    private static String adjustFormatString(@Nullable String format, @Nullable Locale locale) {
+        if (StringHelper.isNullOrEmpty(format)) {
+            format = "G";
+        }
+        assert format != null;
+
+        if (format.length() == 1) {
+            // standard format specifiers
+            format = getStandardFormatSpecifier(format, locale);
+        }
+
+        // Custom format string indicator in .NET: '%'. Ignore in Java.
+        if (format.startsWith("%")) {
+            format = format.substring(1);
+        }
+        // day of week in .NET: 3 or 4 'd'. In Java: 'E'.
+        format = format.replace("dddd", "EEEE").replace("ddd", "EEE");
+        // AM/PM in .NET: 'tt'. In Java: 'a'
+        // (not supported by Java: .NET single 't' for first character of AM/PM)
+        format = format.replace("tt", "a").replace("t", "a");
+        // period/era in .NET: 'g'. In Java: 'G'
+        format = format.replace("g", "G");
+        return format;
+    }
+
+    @Nonnull
+    private static String getStandardFormatSpecifier(@Nonnull String format, @Nullable Locale locale) {
+        DateTimeFormatInfo info = DateTimeFormatInfo.getInstance(locale);
+        switch (format) {
+        // The Short Date ("d") Format Specifier
+        case "d":
+            return info.getShortDatePattern();
+        // The Long Date ("D") Format Specifier
+        case "D":
+            return info.getLongDatePattern();
+        // The Full Date Short Time ("f") Format Specifier
+        case "f":
+            return info.getLongDatePattern() + " " + info.getShortTimePattern();
+        // The Full Date Long Time ("F") Format Specifier
+        case "F":
+            return info.getFullDateTimePattern();
+        // The General Date Short Time ("g") Format Specifier
+        case "g":
+            return info.getShortDatePattern() + " " + info.getShortTimePattern();
+        // The General Date Long Time ("G") Format Specifier
+        case "G":
+            return info.getShortDatePattern() + " " + info.getLongTimePattern();
+        // The Month ("M", "m") Format Specifier
+        case "m":
+        case "M":
+            return info.getMonthDayPattern();
+        // The Round-trip ("O", "o") Format Specifier
+        case "o":
+        case "O":
+            // .NET uses K at the end for time zone info, which in Java is X.
+            // f for fractional seconds is S in Java.
+            return "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'SSSSSSSX";
+        // The RFC1123 ("R", "r") Format Specifier
+        case "r":
+        case "R":
+            return info.getRFC1123Pattern();
+        // The Sortable ("s") Format Specifier
+        case "s":
+            return info.getSortableDateTimePattern();
+        // The Short Time ("t") Format Specifier
+        case "t":
+            return info.getShortTimePattern();
+        // The Long Time ("T") Format Specifier
+        case "T":
+            return info.getLongTimePattern();
+        // The Universal Sortable ("u") Format Specifier
+        case "u":
+            return info.getUniversalSortableDateTimePattern();
+        // The Year Month ("Y", "y") Format Specifier
+        case "Y":
+        case "y":
+            return info.getYearMonthPattern();
+        default:
+            // unknown
+            return format;
+        }
+    }
+
+    @Nonnull
+    public static String toString(@Nonnull ZonedDateTime dateTime) {
+        return toString(dateTime, null, null);
+    }
+
+    @Nonnull
+    public static String toString(@Nonnull ZonedDateTime dateTime, @Nullable Locale locale) {
+        return toString(dateTime, null, locale);
+    }
+
+    @Nonnull
+    public static String toString(@Nonnull ZonedDateTime dateTime, @Nullable String format) {
+        return toString(dateTime, format, null);
+    }
+
+    @Nonnull
+    public static String toString(@Nonnull ZonedDateTime dateTime, @Nullable String format, @Nullable Locale locale) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(adjustFormatString(format, locale));
+        if (locale != null)
+            formatter = formatter.withLocale(locale);
+        return formatter.format(dateTime);
     }
 }

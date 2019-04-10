@@ -908,7 +908,7 @@ namespace CesiumLanguageWriter
         /// converted to this type of object.
         /// </summary>
         [CSToJavaExclude("No IConvertible interface in Java.")]
-        Boolean IConvertible.ToBoolean(IFormatProvider provider)
+        bool IConvertible.ToBoolean(IFormatProvider provider)
         {
             throw new InvalidCastException();
         }
@@ -919,7 +919,7 @@ namespace CesiumLanguageWriter
         /// converted to this type of object.
         /// </summary>
         [CSToJavaExclude("No IConvertible interface in Java.")]
-        Byte IConvertible.ToByte(IFormatProvider provider)
+        byte IConvertible.ToByte(IFormatProvider provider)
         {
             throw new InvalidCastException();
         }
@@ -930,7 +930,7 @@ namespace CesiumLanguageWriter
         /// converted to this type of object.
         /// </summary>
         [CSToJavaExclude("No IConvertible interface in Java.")]
-        Char IConvertible.ToChar(IFormatProvider provider)
+        char IConvertible.ToChar(IFormatProvider provider)
         {
             throw new InvalidCastException();
         }
@@ -941,7 +941,7 @@ namespace CesiumLanguageWriter
         /// converted to this type of object.
         /// </summary>
         [CSToJavaExclude("No IConvertible interface in Java.")]
-        Decimal IConvertible.ToDecimal(IFormatProvider provider)
+        decimal IConvertible.ToDecimal(IFormatProvider provider)
         {
             throw new InvalidCastException();
         }
@@ -953,7 +953,7 @@ namespace CesiumLanguageWriter
         /// <returns>The total number of whole and fractional days represented by this astronomical
         /// Julian date.</returns>
         [CSToJavaExclude("No IConvertible interface in Java.")]
-        Double IConvertible.ToDouble(IFormatProvider provider)
+        double IConvertible.ToDouble(IFormatProvider provider)
         {
             return TotalDays;
         }
@@ -964,7 +964,7 @@ namespace CesiumLanguageWriter
         /// converted to this type of object.
         /// </summary>
         [CSToJavaExclude("No IConvertible interface in Java.")]
-        Int16 IConvertible.ToInt16(IFormatProvider provider)
+        short IConvertible.ToInt16(IFormatProvider provider)
         {
             throw new InvalidCastException();
         }
@@ -975,7 +975,7 @@ namespace CesiumLanguageWriter
         /// converted to this type of object.
         /// </summary>
         [CSToJavaExclude("No IConvertible interface in Java.")]
-        Int32 IConvertible.ToInt32(IFormatProvider provider)
+        int IConvertible.ToInt32(IFormatProvider provider)
         {
             throw new InvalidCastException();
         }
@@ -986,7 +986,7 @@ namespace CesiumLanguageWriter
         /// converted to this type of object.
         /// </summary>
         [CSToJavaExclude("No IConvertible interface in Java.")]
-        Int64 IConvertible.ToInt64(IFormatProvider provider)
+        long IConvertible.ToInt64(IFormatProvider provider)
         {
             throw new InvalidCastException();
         }
@@ -997,7 +997,7 @@ namespace CesiumLanguageWriter
         /// converted to this type of object.
         /// </summary>
         [CSToJavaExclude("No IConvertible interface in Java.")]
-        SByte IConvertible.ToSByte(IFormatProvider provider)
+        sbyte IConvertible.ToSByte(IFormatProvider provider)
         {
             throw new InvalidCastException();
         }
@@ -1008,7 +1008,7 @@ namespace CesiumLanguageWriter
         /// converted to this type of object.
         /// </summary>
         [CSToJavaExclude("No IConvertible interface in Java.")]
-        Single IConvertible.ToSingle(IFormatProvider provider)
+        float IConvertible.ToSingle(IFormatProvider provider)
         {
             throw new InvalidCastException();
         }
@@ -1019,7 +1019,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <returns>The string representation of this <see cref="JulianDate"/>.</returns>
         [CSToJavaExclude("No IConvertible interface in Java.")]
-        String IConvertible.ToString(IFormatProvider provider)
+        string IConvertible.ToString(IFormatProvider provider)
         {
             return ToString();
         }
@@ -1032,7 +1032,7 @@ namespace CesiumLanguageWriter
         /// <returns>A <see cref="JulianDate"/> converted to the type specified by
         /// <paramref name="conversionType"/>.</returns>
         [CSToJavaExclude("No IConvertible interface in Java.")]
-        Object IConvertible.ToType(Type conversionType, IFormatProvider provider)
+        object IConvertible.ToType(Type conversionType, IFormatProvider provider)
         {
             return Convert.ChangeType(this, conversionType, provider);
         }
@@ -1043,7 +1043,7 @@ namespace CesiumLanguageWriter
         /// converted to this type of object.
         /// </summary>
         [CSToJavaExclude("No IConvertible interface in Java.")]
-        UInt16 IConvertible.ToUInt16(IFormatProvider provider)
+        ushort IConvertible.ToUInt16(IFormatProvider provider)
         {
             throw new InvalidCastException();
         }
@@ -1054,7 +1054,7 @@ namespace CesiumLanguageWriter
         /// converted to this type of object.
         /// </summary>
         [CSToJavaExclude("No IConvertible interface in Java.")]
-        UInt32 IConvertible.ToUInt32(IFormatProvider provider)
+        uint IConvertible.ToUInt32(IFormatProvider provider)
         {
             throw new InvalidCastException();
         }
@@ -1065,15 +1065,18 @@ namespace CesiumLanguageWriter
         /// converted to this type of object.
         /// </summary>
         [CSToJavaExclude("No IConvertible interface in Java.")]
-        UInt64 IConvertible.ToUInt64(IFormatProvider provider)
+        ulong IConvertible.ToUInt64(IFormatProvider provider)
         {
             throw new InvalidCastException();
         }
+
+        [CSToJavaFinalField]
+        private static readonly JulianDate s_maxValue = new JulianDate(int.MaxValue, 0.0, TimeStandard.InternationalAtomicTime);
+        [CSToJavaFinalField]
+        private static readonly JulianDate s_minValue = new JulianDate(int.MinValue, 0.0, TimeStandard.InternationalAtomicTime);
 
         private readonly int m_day;
         private readonly double m_secondsOfDay;
         private readonly TimeStandard m_timeStandard;
-        private static readonly JulianDate s_maxValue = new JulianDate(int.MaxValue, 0.0, TimeStandard.InternationalAtomicTime);
-        private static readonly JulianDate s_minValue = new JulianDate(int.MinValue, 0.0, TimeStandard.InternationalAtomicTime);
     }
 }

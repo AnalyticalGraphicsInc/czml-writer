@@ -38,52 +38,6 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     public UnitCartesian() {}
 
     /**
-    *  Gets a set of {@link UnitCartesian} coordinates with values of {@link Double#NaN}.
-    
-    
-
-    * <p>
-    Use {@code IsUndefined} ({@link UnitCartesian#getIsUndefined get}) to test whether a {@link UnitCartesian} instance
-    is undefined since it will return {@code true} if any of the coordinate values
-    are {@link Double#NaN}.
-    
-    */
-    @Nonnull
-    public static UnitCartesian getUndefined() {
-        return s_undefined;
-    }
-
-    /**
-    *  Gets a set of {@link UnitCartesian} coordinates representing the x-axis.
-    
-
-    */
-    @Nonnull
-    public static UnitCartesian getUnitX() {
-        return s_x;
-    }
-
-    /**
-    *  Gets a set of {@link UnitCartesian} coordinates representing the y-axis.
-    
-
-    */
-    @Nonnull
-    public static UnitCartesian getUnitY() {
-        return s_y;
-    }
-
-    /**
-    *  Gets a set of {@link UnitCartesian} coordinates representing the z-axis.
-    
-
-    */
-    @Nonnull
-    public static UnitCartesian getUnitZ() {
-        return s_z;
-    }
-
-    /**
     *  
     Initializes a set of {@link UnitCartesian} coordinates from the provided values.
     
@@ -232,11 +186,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     }
 
     private UnitCartesian(double x, double y, double z, @Nonnull Normalization normalization) {
-        if (normalization == Normalization.NORMALIZED) {
-            m_x = x;
-            m_y = y;
-            m_z = z;
-        } else {
+        if (normalization != Normalization.NORMALIZED) {
             double magnitude = 0D;
             final double[] ref$x$3 = {
                 x
@@ -255,10 +205,56 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
             z = ref$z$5[0];
             y = ref$y$4[0];
             x = ref$x$3[0];
-            m_x = x;
-            m_y = y;
-            m_z = z;
         }
+        m_x = x;
+        m_y = y;
+        m_z = z;
+    }
+
+    /**
+    *  Gets a set of {@link UnitCartesian} coordinates with values of {@link Double#NaN}.
+    
+    
+
+    * <p>
+    Use {@code IsUndefined} ({@link #getIsUndefined get}) to test whether a {@link UnitCartesian} instance
+    is undefined since it will return {@code true} if any of the coordinate values
+    are {@link Double#NaN}.
+    
+    */
+    @Nonnull
+    public static UnitCartesian getUndefined() {
+        return s_undefined;
+    }
+
+    /**
+    *  Gets a set of {@link UnitCartesian} coordinates representing the x-axis.
+    
+
+    */
+    @Nonnull
+    public static UnitCartesian getUnitX() {
+        return s_x;
+    }
+
+    /**
+    *  Gets a set of {@link UnitCartesian} coordinates representing the y-axis.
+    
+
+    */
+    @Nonnull
+    public static UnitCartesian getUnitY() {
+        return s_y;
+    }
+
+    /**
+    *  Gets a set of {@link UnitCartesian} coordinates representing the z-axis.
+    
+
+    */
+    @Nonnull
+    public static UnitCartesian getUnitZ() {
+        return s_z;
     }
 
     /**
@@ -639,7 +635,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     }
 
     /**
-    *  Gets whether or not any of the coordinates for this instance have the value {@link Double#NaN}.
+    *  Gets a value indicating whether any of the coordinates for this instance have the value {@link Double#NaN}.
     
 
     */
@@ -778,6 +774,18 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
         z[0] /= magnitude[0];
     }
 
+    @Nonnull
+    private static UnitCartesian s_x = new UnitCartesian(1.0, 0.0, 0.0, Normalization.NORMALIZED);
+    @Nonnull
+    private static UnitCartesian s_y = new UnitCartesian(0.0, 1.0, 0.0, Normalization.NORMALIZED);
+    @Nonnull
+    private static UnitCartesian s_z = new UnitCartesian(0.0, 0.0, 1.0, Normalization.NORMALIZED);
+    @Nonnull
+    private static UnitCartesian s_undefined = new UnitCartesian(Double.NaN, Double.NaN, Double.NaN, Normalization.NORMALIZED);
+    private double m_x;
+    private double m_y;
+    private double m_z;
+
     private static enum Normalization implements Enumeration {
         UNNORMALIZED(0), NORMALIZED(1);
         private final int value;
@@ -821,16 +829,4 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
             return UNNORMALIZED;
         }
     }
-
-    private double m_x;
-    private double m_y;
-    private double m_z;
-    @Nonnull
-    private static UnitCartesian s_x = new UnitCartesian(1.0, 0.0, 0.0, Normalization.NORMALIZED);
-    @Nonnull
-    private static UnitCartesian s_y = new UnitCartesian(0.0, 1.0, 0.0, Normalization.NORMALIZED);
-    @Nonnull
-    private static UnitCartesian s_z = new UnitCartesian(0.0, 0.0, 1.0, Normalization.NORMALIZED);
-    @Nonnull
-    private static UnitCartesian s_undefined = new UnitCartesian(Double.NaN, Double.NaN, Double.NaN, Normalization.NORMALIZED);
 }

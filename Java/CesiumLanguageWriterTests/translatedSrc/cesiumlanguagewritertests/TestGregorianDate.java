@@ -2,22 +2,24 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
+import agi.foundation.compatibility.Action;
 import agi.foundation.compatibility.ArgumentException;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.CultureInfoHelper;
 import agi.foundation.compatibility.DateTimeHelper;
-import agi.foundation.compatibility.ExpectedExceptionHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.TestContextRule;
 import agi.foundation.compatibility.ThreadHelper;
+import agi.foundation.TypeLiteral;
 import cesiumlanguagewriter.*;
 import java.time.ZonedDateTime;
 import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.util.Locale;
 import javax.annotation.Nonnull;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
-import org.junit.rules.ExpectedException;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
@@ -30,32 +32,40 @@ import org.junit.Test;
 public class TestGregorianDate {
     @Test
     public final void canConstructGregorianDate() {
-        GregorianDate gd = new GregorianDate(2000, 1, 2, 6, 30, 15D);
-        Assert.assertEquals((int) 2000, (int) gd.getYear());
-        Assert.assertEquals((int) 1, (int) gd.getMonth());
-        Assert.assertEquals((int) 2, (int) gd.getDay());
-        Assert.assertEquals((int) 6, (int) gd.getHour());
-        Assert.assertEquals((int) 30, (int) gd.getMinute());
-        Assert.assertEquals(15, gd.getSecond(), 0d);
-        gd = new GregorianDate(2000, 1, 2);
-        Assert.assertEquals((int) 2000, (int) gd.getYear());
-        Assert.assertEquals((int) 1, (int) gd.getMonth());
-        Assert.assertEquals((int) 2, (int) gd.getDay());
-        Assert.assertEquals((int) 0, (int) gd.getHour());
-        Assert.assertEquals((int) 0, (int) gd.getMinute());
-        Assert.assertEquals(0, gd.getSecond(), 0d);
+        GregorianDate gregorianDate = new GregorianDate(2000, 1, 2, 6, 30, 15D);
+        Assert.assertEquals((int) 2000, (int) gregorianDate.getYear());
+        Assert.assertEquals((int) 1, (int) gregorianDate.getMonth());
+        Assert.assertEquals((int) 2, (int) gregorianDate.getDay());
+        Assert.assertEquals((int) 6, (int) gregorianDate.getHour());
+        Assert.assertEquals((int) 30, (int) gregorianDate.getMinute());
+        Assert.assertEquals(15, gregorianDate.getSecond(), 0d);
+        gregorianDate = new GregorianDate(2000, 1, 2);
+        Assert.assertEquals((int) 2000, (int) gregorianDate.getYear());
+        Assert.assertEquals((int) 1, (int) gregorianDate.getMonth());
+        Assert.assertEquals((int) 2, (int) gregorianDate.getDay());
+        Assert.assertEquals((int) 0, (int) gregorianDate.getHour());
+        Assert.assertEquals((int) 0, (int) gregorianDate.getMinute());
+        Assert.assertEquals(0, gregorianDate.getSecond(), 0d);
     }
 
     @Test
     public final void cannotConstructWithInvalidTime() {
-        ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentException.class);
-        new GregorianDate(2000, 1, 2, 24, 0, 0D);
+        ArgumentException exception = AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, new Action() {
+            public void invoke() {
+                cesiumlanguagewriter.GregorianDate unused = new GregorianDate(2000, 1, 2, 24, 0, 0D);
+            }
+        });
+        AssertHelper.assertStringContains("One or more of the hour, minute, and second arguments is outside of the acceptable range", exception.getMessage());
     }
 
     @Test
     public final void cannotConstructWithInvalidDate() {
-        ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentException.class);
-        new GregorianDate(2006, 2, 29, 0, 0, 0D);
+        ArgumentException exception = AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, new Action() {
+            public void invoke() {
+                cesiumlanguagewriter.GregorianDate unused = new GregorianDate(2006, 2, 29, 0, 0, 0D);
+            }
+        });
+        AssertHelper.assertStringContains("One or more of the hour, minute, and second arguments is outside of the acceptable range", exception.getMessage());
     }
 
     @Test
@@ -165,8 +175,8 @@ public class TestGregorianDate {
         Assert.assertTrue(GregorianDate.notEquals(date, laterTime));
         Assert.assertTrue(GregorianDate.greaterThanOrEqual(date, sameDate));
         Assert.assertTrue(GregorianDate.lessThanOrEqual(date, sameDate));
-        Assert.assertTrue(date.compareTo(sameDate) == 0);
-        Assert.assertTrue(date.compareTo(laterDay) < 0);
+        Assert.assertEquals((int) 0, (int) date.compareTo(sameDate));
+        AssertHelper.assertLess((int) date.compareTo(laterDay), (int) 0);
         Assert.assertTrue(GregorianDate.lessThan(sameDate, laterTime));
         Assert.assertTrue(GregorianDate.lessThanOrEqual(sameDate, laterTime));
         Assert.assertTrue(GregorianDate.greaterThan(laterTime, sameDate));
@@ -207,70 +217,63 @@ public class TestGregorianDate {
 
     @Test
     public final void testToStringFormatProvider() {
-        GregorianDate gd1 = new GregorianDate(2001, 1, 1, 6, 3, 14D);
-        Assert.assertEquals("1/1/2001 6:03:14 AM", gd1.toString(CultureInfoHelper.create("en-US")));
-        gd1 = new GregorianDate(2003, 3, 4, 16, 43, 23.23452);
-        Assert.assertEquals("3/4/2003 4:43:23 PM", gd1.toString(CultureInfoHelper.create("en-US")));
+        Locale cultureInfo = CultureInfoHelper.create("en-US");
+        ZonedDateTime date = DateTimeHelper.create(2001, 1, 1, 6, 3, 14, ZoneOffset.UTC);
+        cesiumlanguagewriter.GregorianDate gregorianDate = new GregorianDate(date);
+        Assert.assertEquals(DateTimeHelper.toString(date, cultureInfo), gregorianDate.toString(cultureInfo));
+        date = DateTimeHelper.create(2003, 3, 4, 16, 43, 23, 234, ZoneOffset.UTC);
+        gregorianDate = new GregorianDate(date);
+        Assert.assertEquals(DateTimeHelper.toString(date, cultureInfo), gregorianDate.toString(cultureInfo));
     }
 
     @Test
     public final void canConstructFromJulianDate() {
-        {
-            JulianDate jd = new JulianDate(DateTimeHelper.create(2008, 10, 23, 12, 5, 30, 300));
-            GregorianDate gd = new GregorianDate(jd);
-            Assert.assertEquals((int) 2008, (int) gd.getYear());
-            Assert.assertEquals((int) 10, (int) gd.getMonth());
-            Assert.assertEquals((int) 23, (int) gd.getDay());
-            Assert.assertEquals((int) 12, (int) gd.getHour());
-            Assert.assertEquals((int) 5, (int) gd.getMinute());
-            Assert.assertEquals(30.300, gd.getSecond(), Constants.Epsilon11);
-        }
-        {
-            JulianDate jd = new JulianDate(DateTimeHelper.create(2008, 10, 23, 0, 0, 0));
-            GregorianDate gd = new GregorianDate(jd);
-            Assert.assertEquals((int) 2008, (int) gd.getYear());
-            Assert.assertEquals((int) 10, (int) gd.getMonth());
-            Assert.assertEquals((int) 23, (int) gd.getDay());
-            Assert.assertEquals((int) 0, (int) gd.getHour());
-            Assert.assertEquals((int) 0, (int) gd.getMinute());
-            Assert.assertEquals(0.0, gd.getSecond(), Constants.Epsilon11);
-        }
-        {
-            JulianDate jd = new JulianDate(DateTimeHelper.create(2008, 10, 23, 23, 59, 59, 999));
-            GregorianDate gd = new GregorianDate(jd);
-            Assert.assertEquals((int) 2008, (int) gd.getYear());
-            Assert.assertEquals((int) 10, (int) gd.getMonth());
-            Assert.assertEquals((int) 23, (int) gd.getDay());
-            Assert.assertEquals((int) 23, (int) gd.getHour());
-            Assert.assertEquals((int) 59, (int) gd.getMinute());
-            Assert.assertEquals(59.999, gd.getSecond(), Constants.Epsilon11);
-        }
+        JulianDate julianDate = new JulianDate(DateTimeHelper.create(2008, 10, 23, 12, 5, 30, 300));
+        GregorianDate gregorianDate = new GregorianDate(julianDate);
+        Assert.assertEquals((int) 2008, (int) gregorianDate.getYear());
+        Assert.assertEquals((int) 10, (int) gregorianDate.getMonth());
+        Assert.assertEquals((int) 23, (int) gregorianDate.getDay());
+        Assert.assertEquals((int) 12, (int) gregorianDate.getHour());
+        Assert.assertEquals((int) 5, (int) gregorianDate.getMinute());
+        Assert.assertEquals(30.300, gregorianDate.getSecond(), Constants.Epsilon11);
+        julianDate = new JulianDate(DateTimeHelper.create(2008, 10, 23, 0, 0, 0));
+        gregorianDate = new GregorianDate(julianDate);
+        Assert.assertEquals((int) 2008, (int) gregorianDate.getYear());
+        Assert.assertEquals((int) 10, (int) gregorianDate.getMonth());
+        Assert.assertEquals((int) 23, (int) gregorianDate.getDay());
+        Assert.assertEquals((int) 0, (int) gregorianDate.getHour());
+        Assert.assertEquals((int) 0, (int) gregorianDate.getMinute());
+        Assert.assertEquals(0.0, gregorianDate.getSecond(), Constants.Epsilon11);
+        julianDate = new JulianDate(DateTimeHelper.create(2008, 10, 23, 23, 59, 59, 999));
+        gregorianDate = new GregorianDate(julianDate);
+        Assert.assertEquals((int) 2008, (int) gregorianDate.getYear());
+        Assert.assertEquals((int) 10, (int) gregorianDate.getMonth());
+        Assert.assertEquals((int) 23, (int) gregorianDate.getDay());
+        Assert.assertEquals((int) 23, (int) gregorianDate.getHour());
+        Assert.assertEquals((int) 59, (int) gregorianDate.getMinute());
+        Assert.assertEquals(59.999, gregorianDate.getSecond(), Constants.Epsilon11);
     }
 
     @Test
     public final void canConvertToJulianDate() {
-        {
-            GregorianDate gregorianDate = new GregorianDate(2008, 10, 23, 23, 59, 59.999);
-            JulianDate julianDate = gregorianDate.toJulianDate();
-            GregorianDate newGregorianDate = new GregorianDate(julianDate);
-            Assert.assertEquals((int) gregorianDate.getYear(), (int) newGregorianDate.getYear());
-            Assert.assertEquals((int) gregorianDate.getMonth(), (int) newGregorianDate.getMonth());
-            Assert.assertEquals((int) gregorianDate.getDay(), (int) newGregorianDate.getDay());
-            Assert.assertEquals((int) gregorianDate.getHour(), (int) newGregorianDate.getHour());
-            Assert.assertEquals((int) gregorianDate.getMinute(), (int) newGregorianDate.getMinute());
-            Assert.assertEquals(gregorianDate.getSecond(), newGregorianDate.getSecond(), Constants.Epsilon11);
-        }
-        {
-            GregorianDate gregorianDate = new GregorianDate(2008, 10, 23, 1, 1, 1D);
-            JulianDate julianDate = gregorianDate.toJulianDate();
-            GregorianDate newGregorianDate = new GregorianDate(julianDate);
-            Assert.assertEquals((int) gregorianDate.getYear(), (int) newGregorianDate.getYear());
-            Assert.assertEquals((int) gregorianDate.getMonth(), (int) newGregorianDate.getMonth());
-            Assert.assertEquals((int) gregorianDate.getDay(), (int) newGregorianDate.getDay());
-            Assert.assertEquals((int) gregorianDate.getHour(), (int) newGregorianDate.getHour());
-            Assert.assertEquals((int) gregorianDate.getMinute(), (int) newGregorianDate.getMinute());
-            Assert.assertEquals(gregorianDate.getSecond(), newGregorianDate.getSecond(), Constants.Epsilon11);
-        }
+        GregorianDate gregorianDate = new GregorianDate(2008, 10, 23, 23, 59, 59.999);
+        JulianDate julianDate = gregorianDate.toJulianDate();
+        GregorianDate newGregorianDate = new GregorianDate(julianDate);
+        Assert.assertEquals((int) gregorianDate.getYear(), (int) newGregorianDate.getYear());
+        Assert.assertEquals((int) gregorianDate.getMonth(), (int) newGregorianDate.getMonth());
+        Assert.assertEquals((int) gregorianDate.getDay(), (int) newGregorianDate.getDay());
+        Assert.assertEquals((int) gregorianDate.getHour(), (int) newGregorianDate.getHour());
+        Assert.assertEquals((int) gregorianDate.getMinute(), (int) newGregorianDate.getMinute());
+        Assert.assertEquals(gregorianDate.getSecond(), newGregorianDate.getSecond(), Constants.Epsilon11);
+        gregorianDate = new GregorianDate(2008, 10, 23, 1, 1, 1D);
+        julianDate = gregorianDate.toJulianDate();
+        newGregorianDate = new GregorianDate(julianDate);
+        Assert.assertEquals((int) gregorianDate.getYear(), (int) newGregorianDate.getYear());
+        Assert.assertEquals((int) gregorianDate.getMonth(), (int) newGregorianDate.getMonth());
+        Assert.assertEquals((int) gregorianDate.getDay(), (int) newGregorianDate.getDay());
+        Assert.assertEquals((int) gregorianDate.getHour(), (int) newGregorianDate.getHour());
+        Assert.assertEquals((int) gregorianDate.getMinute(), (int) newGregorianDate.getMinute());
+        Assert.assertEquals(gregorianDate.getSecond(), newGregorianDate.getSecond(), Constants.Epsilon11);
     }
 
     @Test
@@ -301,48 +304,48 @@ public class TestGregorianDate {
     @Test
     public final void testJulianSecondsOfDay() {
         final double julianSecondsOfDay = 0.05486;
-        GregorianDate gd = new GregorianDate(new JulianDate(2046050, julianSecondsOfDay, TimeStandard.COORDINATED_UNIVERSAL_TIME));
-        Assert.assertEquals(julianSecondsOfDay, gd.getJulianSecondsOfDay(), Constants.Epsilon11);
+        GregorianDate gregorianDate = new GregorianDate(new JulianDate(2046050, julianSecondsOfDay, TimeStandard.COORDINATED_UNIVERSAL_TIME));
+        Assert.assertEquals(julianSecondsOfDay, gregorianDate.getJulianSecondsOfDay(), Constants.Epsilon11);
     }
 
     @Test
     public final void testYearDayConstructor() {
-        ZonedDateTime aTime = DateTimeHelper.create(2000, 2, 28, 1, 3, 4);
-        Assert.assertEquals((int) 31 + 28, (int) aTime.getDayOfYear());
-        //* January has 31 days, so add 28 to that...
-        GregorianDate sameDate = new GregorianDate(aTime.getYear(), aTime.getDayOfYear());
-        Assert.assertEquals((int) 2000, (int) sameDate.getYear());
-        Assert.assertEquals((int) 59, (int) sameDate.getDayOfYear());
-        Assert.assertEquals((int) 2, (int) sameDate.getMonth());
-        Assert.assertEquals((int) 0, (int) sameDate.getHour());
-        Assert.assertEquals((int) 0, (int) sameDate.getMinute());
-        Assert.assertEquals(0, sameDate.getSecond(), 0d);
-        sameDate = new GregorianDate(2000, 60.6);
-        //* 60 days and 14.4 hours, or 14 hours and 24 minutes (1/10 of a day is 2.4 hours, times that by 6)
-        Assert.assertEquals((int) 2000, (int) sameDate.getYear());
-        Assert.assertEquals((int) 60, (int) sameDate.getDayOfYear());
-        Assert.assertEquals((int) 2, (int) sameDate.getMonth());
-        //* leap year
-        Assert.assertEquals((int) 14, (int) sameDate.getHour());
-        Assert.assertEquals((int) 24, (int) sameDate.getMinute());
-        Assert.assertEquals(0D, sameDate.getSecond(), Constants.Epsilon9);
-        //* Richard and Michael both said this is ok
+        ZonedDateTime dateTime = DateTimeHelper.create(2000, 2, 28, 1, 3, 4);
+        Assert.assertEquals((int) 31 + 28, (int) dateTime.getDayOfYear());
+        // January has 31 days, so add 28 to that...
+        GregorianDate gregorianDate = new GregorianDate(dateTime.getYear(), dateTime.getDayOfYear());
+        Assert.assertEquals((int) 2000, (int) gregorianDate.getYear());
+        Assert.assertEquals((int) 59, (int) gregorianDate.getDayOfYear());
+        Assert.assertEquals((int) 2, (int) gregorianDate.getMonth());
+        Assert.assertEquals((int) 0, (int) gregorianDate.getHour());
+        Assert.assertEquals((int) 0, (int) gregorianDate.getMinute());
+        Assert.assertEquals(0, gregorianDate.getSecond(), 0d);
+        gregorianDate = new GregorianDate(2000, 60.6);
+        // 60 days and 14.4 hours, or 14 hours and 24 minutes (1/10 of a day is 2.4 hours, times that by 6)
+        Assert.assertEquals((int) 2000, (int) gregorianDate.getYear());
+        Assert.assertEquals((int) 60, (int) gregorianDate.getDayOfYear());
+        Assert.assertEquals((int) 2, (int) gregorianDate.getMonth());
+        // leap year
+        Assert.assertEquals((int) 14, (int) gregorianDate.getHour());
+        Assert.assertEquals((int) 24, (int) gregorianDate.getMinute());
+        Assert.assertEquals(0D, gregorianDate.getSecond(), Constants.Epsilon9);
+        // Richard and Michael both said this is ok
     }
 
     @Test
     public final void testDayOfYear() {
         GregorianDate date = new GregorianDate(2000, 1, 1);
-        Assert.assertEquals((int) date.getDayOfYear(), (int) 1);
+        Assert.assertEquals((int) 1, (int) date.getDayOfYear());
         date = new GregorianDate(2000, 2, 1);
-        Assert.assertEquals((int) date.getDayOfYear(), (int) 32);
+        Assert.assertEquals((int) 32, (int) date.getDayOfYear());
         date = new GregorianDate(2003, 12, 31);
-        Assert.assertEquals((int) date.getDayOfYear(), (int) 365);
+        Assert.assertEquals((int) 365, (int) date.getDayOfYear());
         date = new GregorianDate(2004, 12, 31);
-        Assert.assertEquals((int) date.getDayOfYear(), (int) 366);
+        Assert.assertEquals((int) 366, (int) date.getDayOfYear());
         date = new GregorianDate(2000, 250D);
-        Assert.assertEquals((int) date.getDayOfYear(), (int) 250);
+        Assert.assertEquals((int) 250, (int) date.getDayOfYear());
         date = new GregorianDate(2000, 250.5);
-        Assert.assertEquals((int) date.getDayOfYear(), (int) 250);
+        Assert.assertEquals((int) 250, (int) date.getDayOfYear());
     }
 
     @Test
@@ -353,9 +356,9 @@ public class TestGregorianDate {
 
     @Test
     public final void testSixtySecondsAreNotValidIfTheInstantDoesNotRepresentALeapSecond() {
-        //12/30/2008 was not the day of a leap second day.
+        // 12/30/2008 was not the day of a leap second day.
         Assert.assertFalse(GregorianDate.isValid(2008, 12, 30, 23, 59, 60D));
-        //23:58 is one minute before a valid leap second.
+        // 23:58 is one minute before a valid leap second.
         Assert.assertFalse(GregorianDate.isValid(2008, 12, 31, 23, 58, 60D));
     }
 
@@ -367,8 +370,12 @@ public class TestGregorianDate {
 
     @Test
     public final void cannotConstructGregorianDateRepresentingInvalidLeapSecond() {
-        ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentException.class);
-        new GregorianDate(2008, 12, 30, 23, 59, 60D);
+        ArgumentException exception = AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, new Action() {
+            public void invoke() {
+                cesiumlanguagewriter.GregorianDate unused = new GregorianDate(2008, 12, 30, 23, 59, 60D);
+            }
+        });
+        AssertHelper.assertStringContains("One or more of the hour, minute, and second arguments is outside of the acceptable range", exception.getMessage());
     }
 
     /**
@@ -409,62 +416,62 @@ public class TestGregorianDate {
     @Test
     public final void testNonStandardTimeStandard() {
         GregorianDate gregorianDate = new GregorianDate(2008, 12, 31, 23, 59, 40D);
-        JulianDate jd = gregorianDate.toJulianDate(TimeStandard.INTERNATIONAL_ATOMIC_TIME);
-        AssertHelper.assertEquals(TimeStandard.INTERNATIONAL_ATOMIC_TIME, jd.getStandard());
-        GregorianDate roundTrip1 = jd.toGregorianDate(TimeStandard.INTERNATIONAL_ATOMIC_TIME);
-        AssertHelper.assertEquals(gregorianDate, roundTrip1);
-        GregorianDate roundTrip = new GregorianDate(jd);
+        JulianDate julianDate = gregorianDate.toJulianDate(TimeStandard.INTERNATIONAL_ATOMIC_TIME);
+        AssertHelper.assertEquals(TimeStandard.INTERNATIONAL_ATOMIC_TIME, julianDate.getStandard());
+        GregorianDate roundTrip = julianDate.toGregorianDate(TimeStandard.INTERNATIONAL_ATOMIC_TIME);
+        AssertHelper.assertEquals(gregorianDate, roundTrip);
+        roundTrip = new GregorianDate(julianDate);
         AssertHelper.assertNotEqual(gregorianDate, roundTrip);
-        double expectedDifference = LeapSeconds.getInstance().getTaiMinusUtc(jd);
+        double expectedDifference = LeapSeconds.getInstance().getTaiMinusUtc(julianDate);
         Assert.assertEquals(expectedDifference, gregorianDate.getSecond() - roundTrip.getSecond(), 0d);
     }
 
     @Test
     public final void testRoundTripDefaultConstructed() {
-        GregorianDate gd = new GregorianDate();
-        GregorianDate gd2 = new GregorianDate(gd.toJulianDate());
-        AssertHelper.assertEquals(gd, gd2);
+        GregorianDate gregorianDate1 = new GregorianDate();
+        GregorianDate gregorianDate2 = new GregorianDate(gregorianDate1.toJulianDate());
+        AssertHelper.assertEquals(gregorianDate1, gregorianDate2);
     }
 
     @Test
     public final void roundSecondsRoundsFractionalSeconds() {
-        GregorianDate gd = new GregorianDate(2012, 8, 7, 13, 59, 55.5152535);
-        AssertHelper.assertEquals(new GregorianDate(2012, 8, 7, 13, 59, 55.5152535), gd.roundSeconds(7));
-        AssertHelper.assertEquals(new GregorianDate(2012, 8, 7, 13, 59, 55.515254), gd.roundSeconds(6));
-        AssertHelper.assertEquals(new GregorianDate(2012, 8, 7, 13, 59, 55.51525), gd.roundSeconds(5));
-        AssertHelper.assertEquals(new GregorianDate(2012, 8, 7, 13, 59, 55.5153), gd.roundSeconds(4));
-        AssertHelper.assertEquals(new GregorianDate(2012, 8, 7, 13, 59, 55.515), gd.roundSeconds(3));
-        AssertHelper.assertEquals(new GregorianDate(2012, 8, 7, 13, 59, 55.52), gd.roundSeconds(2));
-        AssertHelper.assertEquals(new GregorianDate(2012, 8, 7, 13, 59, 55.5), gd.roundSeconds(1));
-        AssertHelper.assertEquals(new GregorianDate(2012, 8, 7, 13, 59, 56D), gd.roundSeconds(0));
+        GregorianDate gregorianDate = new GregorianDate(2012, 8, 7, 13, 59, 55.5152535);
+        AssertHelper.assertEquals(new GregorianDate(2012, 8, 7, 13, 59, 55.5152535), gregorianDate.roundSeconds(7));
+        AssertHelper.assertEquals(new GregorianDate(2012, 8, 7, 13, 59, 55.515254), gregorianDate.roundSeconds(6));
+        AssertHelper.assertEquals(new GregorianDate(2012, 8, 7, 13, 59, 55.51525), gregorianDate.roundSeconds(5));
+        AssertHelper.assertEquals(new GregorianDate(2012, 8, 7, 13, 59, 55.5153), gregorianDate.roundSeconds(4));
+        AssertHelper.assertEquals(new GregorianDate(2012, 8, 7, 13, 59, 55.515), gregorianDate.roundSeconds(3));
+        AssertHelper.assertEquals(new GregorianDate(2012, 8, 7, 13, 59, 55.52), gregorianDate.roundSeconds(2));
+        AssertHelper.assertEquals(new GregorianDate(2012, 8, 7, 13, 59, 55.5), gregorianDate.roundSeconds(1));
+        AssertHelper.assertEquals(new GregorianDate(2012, 8, 7, 13, 59, 56D), gregorianDate.roundSeconds(0));
     }
 
     @Test
     public final void roundSecondsRollsOver() {
-        GregorianDate gd = new GregorianDate(2012, 8, 7, 13, 55, 59.9999999);
-        AssertHelper.assertEquals(new GregorianDate(2012, 8, 7, 13, 56, 0.0), gd.roundSeconds(6));
-        gd = new GregorianDate(2012, 8, 7, 13, 59, 59.9999999);
-        AssertHelper.assertEquals(new GregorianDate(2012, 8, 7, 14, 0, 0.0), gd.roundSeconds(6));
-        gd = new GregorianDate(2012, 8, 7, 23, 59, 59.9999999);
-        AssertHelper.assertEquals(new GregorianDate(2012, 8, 8, 0, 0, 0.0), gd.roundSeconds(6));
-        gd = new GregorianDate(2012, 8, 31, 23, 59, 59.9999999);
-        AssertHelper.assertEquals(new GregorianDate(2012, 9, 1, 0, 0, 0.0), gd.roundSeconds(6));
-        gd = new GregorianDate(2012, 12, 31, 23, 59, 59.9999999);
-        AssertHelper.assertEquals(new GregorianDate(2013, 1, 1, 0, 0, 0.0), gd.roundSeconds(6));
+        GregorianDate gregorianDate = new GregorianDate(2012, 8, 7, 13, 55, 59.9999999);
+        AssertHelper.assertEquals(new GregorianDate(2012, 8, 7, 13, 56, 0.0), gregorianDate.roundSeconds(6));
+        gregorianDate = new GregorianDate(2012, 8, 7, 13, 59, 59.9999999);
+        AssertHelper.assertEquals(new GregorianDate(2012, 8, 7, 14, 0, 0.0), gregorianDate.roundSeconds(6));
+        gregorianDate = new GregorianDate(2012, 8, 7, 23, 59, 59.9999999);
+        AssertHelper.assertEquals(new GregorianDate(2012, 8, 8, 0, 0, 0.0), gregorianDate.roundSeconds(6));
+        gregorianDate = new GregorianDate(2012, 8, 31, 23, 59, 59.9999999);
+        AssertHelper.assertEquals(new GregorianDate(2012, 9, 1, 0, 0, 0.0), gregorianDate.roundSeconds(6));
+        gregorianDate = new GregorianDate(2012, 12, 31, 23, 59, 59.9999999);
+        AssertHelper.assertEquals(new GregorianDate(2013, 1, 1, 0, 0, 0.0), gregorianDate.roundSeconds(6));
     }
 
     @Test
     public final void roundSecondsAllows61SecondsDuringLeapSecond() {
-        GregorianDate gd = new GregorianDate(2012, 6, 30, 23, 59, 59.9999999);
-        AssertHelper.assertEquals(new GregorianDate(2012, 6, 30, 23, 59, 60.0), gd.roundSeconds(6));
-        gd = new GregorianDate(2012, 6, 30, 23, 59, 60.9999999);
-        AssertHelper.assertEquals(new GregorianDate(2012, 7, 1, 0, 0, 0.0), gd.roundSeconds(6));
+        GregorianDate gregorianDate = new GregorianDate(2012, 6, 30, 23, 59, 59.9999999);
+        AssertHelper.assertEquals(new GregorianDate(2012, 6, 30, 23, 59, 60.0), gregorianDate.roundSeconds(6));
+        gregorianDate = new GregorianDate(2012, 6, 30, 23, 59, 60.9999999);
+        AssertHelper.assertEquals(new GregorianDate(2012, 7, 1, 0, 0, 0.0), gregorianDate.roundSeconds(6));
     }
 
     @Test
     public final void roundSecondsDoesNotAllow61SecondsDuringLeapSecondIfTimeStandardIsNotUtc() {
-        GregorianDate gd = new GregorianDate(2012, 6, 30, 23, 59, 59.9999999);
-        AssertHelper.assertEquals(new GregorianDate(2012, 7, 1, 0, 0, 0.0), gd.roundSeconds(6, TimeStandard.INTERNATIONAL_ATOMIC_TIME));
+        GregorianDate gregorianDate = new GregorianDate(2012, 6, 30, 23, 59, 59.9999999);
+        AssertHelper.assertEquals(new GregorianDate(2012, 7, 1, 0, 0, 0.0), gregorianDate.roundSeconds(6, TimeStandard.INTERNATIONAL_ATOMIC_TIME));
     }
 
     @Test
@@ -483,14 +490,5 @@ public class TestGregorianDate {
     @Rule
     public TestContextRule getRule$testContext() {
         return rule$testContext;
-    }
-
-    @Nonnull
-    private final ExpectedException rule$expectedException = ExpectedException.none();
-
-    @Nonnull
-    @Rule
-    public ExpectedException getRule$expectedException() {
-        return rule$expectedException;
     }
 }

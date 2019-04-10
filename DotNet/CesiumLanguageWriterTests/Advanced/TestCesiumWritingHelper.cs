@@ -9,6 +9,9 @@ namespace CesiumLanguageWriterTests.Advanced
     [TestFixture]
     public class TestCesiumWritingHelper
     {
+        private StringWriter m_stringWriter;
+        private CesiumOutputStream m_outputStream;
+
         [SetUp]
         public void SetUp()
         {
@@ -29,8 +32,5 @@ namespace CesiumLanguageWriterTests.Advanced
             CesiumWritingHelper.WriteReferences(m_outputStream, new List<Reference> { new Reference("bar", "color"), new Reference("foo", "color2") });
             Assert.AreEqual("[\"bar#color\",\"foo#color2\"]", m_stringWriter.ToString());
         }
-
-        private StringWriter m_stringWriter;
-        private CesiumOutputStream m_outputStream;
     }
 }

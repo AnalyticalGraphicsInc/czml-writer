@@ -8,6 +8,10 @@ namespace CesiumLanguageWriterTests
     [TestFixture]
     public class TestCesiumStreamWriter
     {
+        private StringWriter m_stringWriter;
+        private CesiumOutputStream m_outputStream;
+        private CesiumStreamWriter m_writer;
+
         [SetUp]
         public void SetUp()
         {
@@ -38,15 +42,11 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
-        [ExpectedException(typeof(InvalidOperationException), ExpectedMessage = "already opened", MatchType = MessageMatch.Contains)]
         public void MultipleCallsToNewPacketWithoutCloseThrowInvalidOperationException()
         {
-            PacketCesiumWriter packet = m_writer.OpenPacket(m_outputStream);
-            packet = m_writer.OpenPacket(m_outputStream);
+            PacketCesiumWriter unused = m_writer.OpenPacket(m_outputStream);
+            var exception = Assert.Throws<InvalidOperationException>(() => m_writer.OpenPacket(m_outputStream));
+            StringAssert.Contains("already opened", exception.Message);
         }
-
-        private StringWriter m_stringWriter;
-        private CesiumOutputStream m_outputStream;
-        private CesiumStreamWriter m_writer;
     }
 }

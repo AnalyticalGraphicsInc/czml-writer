@@ -41,32 +41,6 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     public UnitQuaternion() {}
 
     /**
-    *  Gets a set of {@link UnitQuaternion} coordinates with values of {@link Double#NaN}.
-    
-    
-
-    * <p>
-    Use {@code IsUndefined} ({@link UnitQuaternion#getIsUndefined get}) to test whether a {@link UnitQuaternion} instance
-    is undefined since it will return {@code true} if any of the coordinate values
-    are {@link Double#NaN}.
-    
-    */
-    @Nonnull
-    public static UnitQuaternion getUndefined() {
-        return s_undefined;
-    }
-
-    /**
-    *  Gets a set of {@link UnitQuaternion} coordinates representing the identity vector.
-    
-
-    */
-    @Nonnull
-    public static UnitQuaternion getIdentity() {
-        return s_identity;
-    }
-
-    /**
     *  
     Initializes a set of {@link UnitQuaternion} coordinates from the provided values.
     
@@ -219,6 +193,32 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
             m_y = factor * (matrix.getM31() - matrix.getM13());
             m_z = factor * (matrix.getM12() - matrix.getM21());
         }
+    }
+
+    /**
+    *  Gets a set of {@link UnitQuaternion} coordinates with values of {@link Double#NaN}.
+    
+    
+
+    * <p>
+    Use {@code IsUndefined} ({@link UnitQuaternion#getIsUndefined get}) to test whether a {@link UnitQuaternion} instance
+    is undefined since it will return {@code true} if any of the coordinate values
+    are {@link Double#NaN}.
+    
+    */
+    @Nonnull
+    public static UnitQuaternion getUndefined() {
+        return s_undefined;
+    }
+
+    /**
+    *  Gets a set of {@link UnitQuaternion} coordinates representing the identity vector.
+    
+
+    */
+    @Nonnull
+    public static UnitQuaternion getIdentity() {
+        return s_identity;
     }
 
     /**
@@ -441,7 +441,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     }
 
     /**
-    *  Gets whether or not any of the coordinates for this instance have the value {@link Double#NaN}.
+    *  Gets a value indicating whether or not any of the coordinates for this instance have the value {@link Double#NaN}.
     
 
     */
@@ -500,14 +500,14 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
         z[0] /= magnitude[0];
     }
 
-    private double m_w;
-    private double m_x;
-    private double m_y;
-    private double m_z;
     @Nonnull
     private static UnitQuaternion s_identity = new UnitQuaternion(1.0, 0.0, 0.0, 0.0);
     @Nonnull
     private static UnitQuaternion s_undefined = new UnitQuaternion(Double.NaN, Double.NaN, Double.NaN, Double.NaN, Normalization.NORMALIZED);
+    private double m_w;
+    private double m_x;
+    private double m_y;
+    private double m_z;
 
     private static enum Normalization implements Enumeration {
         UNNORMALIZED(0), NORMALIZED(1);

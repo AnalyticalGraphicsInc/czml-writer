@@ -10,6 +10,11 @@ namespace CesiumLanguageWriterTests
     [TestFixture]
     public class TestCustomPropertiesCesiumWriter : TestCesiumPropertyWriter<CustomPropertiesCesiumWriter>
     {
+        private JulianDate m_startDate;
+        private string m_isoStartString;
+        private JulianDate m_stopDate;
+        private string m_isoIntervalString;
+
         [SetUp]
         public void SetUp()
         {
@@ -121,6 +126,7 @@ namespace CesiumLanguageWriterTests
                 {
                     customPropertyWriter.WriteBoolean(true);
                 }
+
                 using (var customPropertyWriter = customPropertiesWriter.OpenCustomPropertyProperty("custom_cartesian"))
                 {
                     customPropertyWriter.WriteCartesian(new Cartesian(1, 2, 3));
@@ -164,10 +170,12 @@ namespace CesiumLanguageWriterTests
                             {
                                 intervalWriter.WriteBoolean(true);
                             }
+
                             using (var intervalWriter = intervalListWriter.OpenInterval(m_startDate.AddSeconds(1), m_startDate.AddSeconds(2)))
                             {
                                 intervalWriter.WriteBoolean(false);
                             }
+
                             using (var intervalWriter = intervalListWriter.OpenInterval(m_startDate.AddSeconds(2), m_stopDate))
                             {
                                 intervalWriter.WriteBoolean(true);
@@ -203,10 +211,5 @@ namespace CesiumLanguageWriterTests
         {
             return new CustomPropertiesCesiumWriter(propertyName);
         }
-
-        private JulianDate m_startDate;
-        private string m_isoStartString;
-        private JulianDate m_stopDate;
-        private string m_isoIntervalString;
     }
 }

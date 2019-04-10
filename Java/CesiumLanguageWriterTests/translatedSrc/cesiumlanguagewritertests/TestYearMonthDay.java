@@ -2,12 +2,13 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
+import agi.foundation.compatibility.Action;
 import agi.foundation.compatibility.ArgumentException;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.DateTimeHelper;
-import agi.foundation.compatibility.ExpectedExceptionHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.TestContextRule;
+import agi.foundation.TypeLiteral;
 import cesiumlanguagewriter.*;
 import java.time.DayOfWeek;
 import java.time.ZonedDateTime;
@@ -15,7 +16,6 @@ import javax.annotation.Nonnull;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
-import org.junit.rules.ExpectedException;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
@@ -41,8 +41,11 @@ public class TestYearMonthDay {
     */
     @Test
     public final void testConstructWithInvalidDate() {
-        ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentException.class);
-        YearMonthDay ymd = new YearMonthDay(2006, 2, 29);
+        AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, new Action() {
+            public void invoke() {
+                YearMonthDay unused = new YearMonthDay(2006, 2, 29);
+            }
+        });
     }
 
     /**
@@ -238,7 +241,7 @@ public class TestYearMonthDay {
         Assert.assertTrue(YearMonthDay.notEquals(ymd1, ymd3));
         Assert.assertTrue(YearMonthDay.greaterThanOrEqual(ymd1, ymd2));
         Assert.assertTrue(YearMonthDay.lessThanOrEqual(ymd1, ymd2));
-        Assert.assertTrue(ymd1.compareTo(ymd2) == 0);
+        Assert.assertEquals((int) 0, (int) ymd1.compareTo(ymd2));
         Assert.assertTrue(YearMonthDay.lessThan(ymd2, ymd3));
         Assert.assertTrue(YearMonthDay.lessThanOrEqual(ymd2, ymd3));
         Assert.assertTrue(YearMonthDay.greaterThan(ymd3, ymd2));
@@ -372,14 +375,5 @@ public class TestYearMonthDay {
     @Rule
     public TestContextRule getRule$testContext() {
         return rule$testContext;
-    }
-
-    @Nonnull
-    private final ExpectedException rule$expectedException = ExpectedException.none();
-
-    @Nonnull
-    @Rule
-    public ExpectedException getRule$expectedException() {
-        return rule$expectedException;
     }
 }

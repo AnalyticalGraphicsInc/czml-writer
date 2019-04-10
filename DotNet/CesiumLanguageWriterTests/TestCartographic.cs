@@ -78,7 +78,7 @@ namespace CesiumLanguageWriterTests
             Cartographic second = new Cartographic(0.1, 0.1, 0.1);
             Assert.IsTrue(second.EqualsEpsilon(first, 0));
         }
-        
+
         /// <summary>
         /// Tests to ensure the equality fails when comparing incorrect type.
         /// </summary>
@@ -111,15 +111,15 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestToString()
         {
-            StringBuilder s = new StringBuilder(80);
-            s.Append(Math.PI.ToString(CultureInfo.CurrentCulture));
-            s.Append(", ");
-            s.Append(Constants.HalfPi.ToString(CultureInfo.CurrentCulture));
-            s.Append(", ");
-            double val = 1.2;
-            s.Append(val.ToString(CultureInfo.CurrentCulture));
+            StringBuilder builder = new StringBuilder();
+            builder.Append(Math.PI.ToString(CultureInfo.CurrentCulture));
+            builder.Append(", ");
+            builder.Append(Constants.HalfPi.ToString(CultureInfo.CurrentCulture));
+            builder.Append(", ");
+            const double val = 1.2;
+            builder.Append(val.ToString(CultureInfo.CurrentCulture));
             Cartographic test = new Cartographic(Math.PI, Constants.HalfPi, val);
-            Assert.AreEqual(s.ToString(), test.ToString());
+            Assert.AreEqual(builder.ToString(), test.ToString());
         }
     }
 }

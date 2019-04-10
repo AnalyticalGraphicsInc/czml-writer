@@ -21,11 +21,13 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentException), ExpectedMessage = "The given date must be in the UTC time standard", MatchType = MessageMatch.Contains)]
         public void TestConstructorRequiresUTC()
         {
-            // ReSharper disable once UnusedVariable
-            var leapSecond = new LeapSecond(new JulianDate(2451545.0, TimeStandard.InternationalAtomicTime), 100.0);
+            var exception = Assert.Throws<ArgumentException>(() =>
+            {
+                var unused = new LeapSecond(new JulianDate(2451545.0, TimeStandard.InternationalAtomicTime), 100.0);
+            });
+            StringAssert.Contains("The given date must be in the UTC time standard", exception.Message);
         }
 
         /// <summary>

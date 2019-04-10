@@ -143,22 +143,22 @@ public class TestDuration {
     public final void testCompareTo() {
         Duration duration1 = new Duration(1, 0.0);
         Duration duration2 = new Duration(1, 0.0);
-        Assert.assertTrue(duration1.compareTo(duration2) == 0);
-        Assert.assertTrue(duration2.compareTo(duration1) == 0);
+        Assert.assertEquals((int) 0, (int) duration1.compareTo(duration2));
+        Assert.assertEquals((int) 0, (int) duration2.compareTo(duration1));
         Assert.assertTrue(Duration.greaterThanOrEqual(duration1, duration2));
         Assert.assertTrue(Duration.lessThanOrEqual(duration2, duration1));
         Assert.assertTrue(Duration.lessThanOrEqual(duration1, duration2));
         Assert.assertTrue(Duration.greaterThanOrEqual(duration2, duration1));
         duration2 = new Duration(2, 0.0);
-        Assert.assertTrue(duration1.compareTo(duration2) < 0);
-        Assert.assertTrue(duration2.compareTo(duration1) > 0);
+        AssertHelper.assertLess((int) duration1.compareTo(duration2), (int) 0);
+        AssertHelper.assertGreater((int) duration2.compareTo(duration1), (int) 0);
         Assert.assertTrue(Duration.lessThan(duration1, duration2));
         Assert.assertTrue(Duration.greaterThan(duration2, duration1));
         Assert.assertTrue(Duration.lessThanOrEqual(duration1, duration2));
         Assert.assertTrue(Duration.greaterThanOrEqual(duration2, duration1));
         duration2 = new Duration(1, 1.0);
-        Assert.assertTrue(duration1.compareTo(duration2) < 0);
-        Assert.assertTrue(duration2.compareTo(duration1) > 0);
+        AssertHelper.assertLess((int) duration1.compareTo(duration2), (int) 0);
+        AssertHelper.assertGreater((int) duration2.compareTo(duration1), (int) 0);
         Assert.assertTrue(Duration.lessThan(duration1, duration2));
         Assert.assertTrue(Duration.greaterThan(duration2, duration1));
         Assert.assertTrue(Duration.lessThanOrEqual(duration1, duration2));
@@ -411,10 +411,10 @@ public class TestDuration {
     @Test
     public final void testReallySmallSeconds() {
         Duration duration = new Duration(10, -Constants.Epsilon13);
-        Assert.assertEquals((int) duration.getDays(), (int) 10);
+        Assert.assertEquals((int) 10, (int) duration.getDays());
         Assert.assertEquals(0.0, duration.getSeconds(), 0d);
         duration = new Duration(-10, Constants.Epsilon13);
-        Assert.assertEquals((int) duration.getDays(), (int) -10);
+        Assert.assertEquals((int) -10, (int) duration.getDays());
         Assert.assertEquals(0.0, duration.getSeconds(), 0d);
     }
 

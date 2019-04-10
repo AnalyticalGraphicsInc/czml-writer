@@ -17,43 +17,6 @@ namespace CesiumLanguageWriter
     public struct UnitCartesian : IEquatable<UnitCartesian>
     {
         /// <summary>
-        /// Gets a set of <see cref="UnitCartesian"/> coordinates with values of <see cref="Double.NaN"/>.
-        /// </summary>
-        /// <remarks>
-        /// Use <see cref="UnitCartesian.IsUndefined"/> to test whether a <see cref="UnitCartesian"/> instance
-        /// is undefined since it will return <see langword="true"/> if any of the coordinate values
-        /// are <see cref="Double.NaN"/>.
-        /// </remarks>
-        public static UnitCartesian Undefined
-        {
-            get { return s_undefined; }
-        }
-
-        /// <summary>
-        /// Gets a set of <see cref="UnitCartesian"/> coordinates representing the x-axis.
-        /// </summary>
-        public static UnitCartesian UnitX
-        {
-            get { return s_x; }
-        }
-
-        /// <summary>
-        /// Gets a set of <see cref="UnitCartesian"/> coordinates representing the y-axis.
-        /// </summary>
-        public static UnitCartesian UnitY
-        {
-            get { return s_y; }
-        }
-
-        /// <summary>
-        /// Gets a set of <see cref="UnitCartesian"/> coordinates representing the z-axis.
-        /// </summary>
-        public static UnitCartesian UnitZ
-        {
-            get { return s_z; }
-        }
-
-        /// <summary>
         /// Initializes a set of <see cref="UnitCartesian"/> coordinates from the provided values.
         /// </summary>
         /// <param name="x">The linear coordinate along the positive x-axis.</param>
@@ -163,21 +126,52 @@ namespace CesiumLanguageWriter
 
         private UnitCartesian(double x, double y, double z, Normalization normalization)
         {
-            if (normalization == Normalization.Normalized)
-            {
-                m_x = x;
-                m_y = y;
-                m_z = z;
-            }
-            else
+            if (normalization != Normalization.Normalized)
             {
                 double magnitude;
                 NormalizeCoordinates(ref x, ref y, ref z, out magnitude);
-
-                m_x = x;
-                m_y = y;
-                m_z = z;
             }
+
+            m_x = x;
+            m_y = y;
+            m_z = z;
+        }
+
+        /// <summary>
+        /// Gets a set of <see cref="UnitCartesian"/> coordinates with values of <see cref="double.NaN"/>.
+        /// </summary>
+        /// <remarks>
+        /// Use <see cref="IsUndefined"/> to test whether a <see cref="UnitCartesian"/> instance
+        /// is undefined since it will return <see langword="true"/> if any of the coordinate values
+        /// are <see cref="double.NaN"/>.
+        /// </remarks>
+        public static UnitCartesian Undefined
+        {
+            get { return s_undefined; }
+        }
+
+        /// <summary>
+        /// Gets a set of <see cref="UnitCartesian"/> coordinates representing the x-axis.
+        /// </summary>
+        public static UnitCartesian UnitX
+        {
+            get { return s_x; }
+        }
+
+        /// <summary>
+        /// Gets a set of <see cref="UnitCartesian"/> coordinates representing the y-axis.
+        /// </summary>
+        public static UnitCartesian UnitY
+        {
+            get { return s_y; }
+        }
+
+        /// <summary>
+        /// Gets a set of <see cref="UnitCartesian"/> coordinates representing the z-axis.
+        /// </summary>
+        public static UnitCartesian UnitZ
+        {
+            get { return s_z; }
         }
 
         /// <summary>
@@ -437,7 +431,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets whether or not any of the coordinates for this instance have the value <see cref="Double.NaN"/>.
+        /// Gets a value indicating whether any of the coordinates for this instance have the value <see cref="double.NaN"/>.
         /// </summary>
         public bool IsUndefined
         {
@@ -542,6 +536,7 @@ namespace CesiumLanguageWriter
             {
                 throw new DivideByZeroException(CesiumLocalization.MagnitudeMustNotBeZero);
             }
+
             if (double.IsInfinity(magnitude))
             {
                 throw new NotFiniteNumberException(CesiumLocalization.MagnitudeMustNotBeInfinite);
@@ -552,19 +547,19 @@ namespace CesiumLanguageWriter
             z /= magnitude;
         }
 
-        private enum Normalization
-        {
-            Unnormalized = 0,
-            Normalized = 1
-        }
+        private static readonly UnitCartesian s_x = new UnitCartesian(1.0, 0.0, 0.0, Normalization.Normalized);
+        private static readonly UnitCartesian s_y = new UnitCartesian(0.0, 1.0, 0.0, Normalization.Normalized);
+        private static readonly UnitCartesian s_z = new UnitCartesian(0.0, 0.0, 1.0, Normalization.Normalized);
+        private static readonly UnitCartesian s_undefined = new UnitCartesian(double.NaN, double.NaN, double.NaN, Normalization.Normalized);
 
         private readonly double m_x;
         private readonly double m_y;
         private readonly double m_z;
 
-        private static readonly UnitCartesian s_x = new UnitCartesian(1.0, 0.0, 0.0, Normalization.Normalized);
-        private static readonly UnitCartesian s_y = new UnitCartesian(0.0, 1.0, 0.0, Normalization.Normalized);
-        private static readonly UnitCartesian s_z = new UnitCartesian(0.0, 0.0, 1.0, Normalization.Normalized);
-        private static readonly UnitCartesian s_undefined = new UnitCartesian(double.NaN, double.NaN, double.NaN, Normalization.Normalized);
+        private enum Normalization
+        {
+            Unnormalized = 0,
+            Normalized = 1,
+        }
     }
 }

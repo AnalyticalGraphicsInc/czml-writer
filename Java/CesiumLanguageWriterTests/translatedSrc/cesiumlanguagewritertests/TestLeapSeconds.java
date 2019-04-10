@@ -2,10 +2,11 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
+import agi.foundation.compatibility.Action;
 import agi.foundation.compatibility.ArgumentOutOfRangeException;
 import agi.foundation.compatibility.AssertHelper;
-import agi.foundation.compatibility.ExpectedExceptionHelper;
 import agi.foundation.compatibility.TestContextRule;
+import agi.foundation.TypeLiteral;
 import cesiumlanguagewriter.*;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -13,16 +14,9 @@ import javax.annotation.Nonnull;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
-import org.junit.rules.ExpectedException;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-/**
- *  
- A series of tests to exercise this type.
- 
-
- */
 @SuppressWarnings( {
         "unused",
         "deprecation",
@@ -105,11 +99,12 @@ public class TestLeapSeconds {
     */
     @Test
     public final void testNegativeLeapSecond() {
-        ArrayList<cesiumlanguagewriter.LeapSecond> newList = new ArrayList<cesiumlanguagewriter.LeapSecond>();
-        newList.add(new LeapSecond(2451545.0, 11D));
-        newList.add(new LeapSecond(2451555.0, 12D));
-        newList.add(new LeapSecond(2451565.0, 11D));
-        newList.add(new LeapSecond(2451575.0, 10D));
+        final ArrayList<cesiumlanguagewriter.LeapSecond> tempCollection$0 = new ArrayList<cesiumlanguagewriter.LeapSecond>();
+        tempCollection$0.add(new LeapSecond(2451545.0, 11D));
+        tempCollection$0.add(new LeapSecond(2451555.0, 12D));
+        tempCollection$0.add(new LeapSecond(2451565.0, 11D));
+        tempCollection$0.add(new LeapSecond(2451575.0, 10D));
+        ArrayList<cesiumlanguagewriter.LeapSecond> newList = tempCollection$0;
         LeapSeconds leapSeconds = new LeapSeconds(newList);
         Assert.assertEquals(11, leapSeconds.getTaiMinusUtc(new JulianDate(2451545.5, TimeStandard.COORDINATED_UNIVERSAL_TIME)), 0d);
         Assert.assertEquals(12, leapSeconds.getTaiMinusUtc(new JulianDate(2451555.5, TimeStandard.COORDINATED_UNIVERSAL_TIME)), 0d);
@@ -141,9 +136,12 @@ public class TestLeapSeconds {
     */
     @Test
     public final void testJulianDateCannotRepresentMomentOfLeapSecond() {
-        ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
-        JulianDate momentOfLeapSecond = new JulianDate(2453736, 43232.0, TimeStandard.INTERNATIONAL_ATOMIC_TIME);
-        momentOfLeapSecond.toTimeStandard(TimeStandard.COORDINATED_UNIVERSAL_TIME);
+        final JulianDate momentOfLeapSecond = new JulianDate(2453736, 43232.0, TimeStandard.INTERNATIONAL_ATOMIC_TIME);
+        AssertHelper.<ArgumentOutOfRangeException> assertThrows(new TypeLiteral<ArgumentOutOfRangeException>() {}, new Action() {
+            public void invoke() {
+                cesiumlanguagewriter.JulianDate unused = momentOfLeapSecond.toTimeStandard(TimeStandard.COORDINATED_UNIVERSAL_TIME);
+            }
+        });
     }
 
     /**
@@ -185,7 +183,7 @@ public class TestLeapSeconds {
                 break;
             }
         }
-        //5 second difference, so 50 additions of a tenth of a second each
+        // 5 second difference, so 50 additions of a tenth of a second each
         Assert.assertEquals((int) 50, (int) i);
     }
 
@@ -196,14 +194,5 @@ public class TestLeapSeconds {
     @Rule
     public TestContextRule getRule$testContext() {
         return rule$testContext;
-    }
-
-    @Nonnull
-    private final ExpectedException rule$expectedException = ExpectedException.none();
-
-    @Nonnull
-    @Rule
-    public ExpectedException getRule$expectedException() {
-        return rule$expectedException;
     }
 }

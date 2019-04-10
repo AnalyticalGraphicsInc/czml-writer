@@ -16,21 +16,20 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestHoldValue()
         {
-            Matrix3By3 test = new Matrix3By3(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0);
-            Assert.AreEqual(1.0, test.M11);
-            Assert.AreEqual(2.0, test.M12);
-            Assert.AreEqual(3.0, test.M13);
-            Assert.AreEqual(4.0, test.M21);
-            Assert.AreEqual(5.0, test.M22);
-            Assert.AreEqual(6.0, test.M23);
-            Assert.AreEqual(7.0, test.M31);
-            Assert.AreEqual(8.0, test.M32);
-            Assert.AreEqual(9.0, test.M33);
+            Matrix3By3 matrix = new Matrix3By3(1.0, 2.0, 3.0,
+                                               4.0, 5.0, 6.0,
+                                               7.0, 8.0, 9.0);
+            Assert.AreEqual(1.0, matrix.M11);
+            Assert.AreEqual(2.0, matrix.M12);
+            Assert.AreEqual(3.0, matrix.M13);
+            Assert.AreEqual(4.0, matrix.M21);
+            Assert.AreEqual(5.0, matrix.M22);
+            Assert.AreEqual(6.0, matrix.M23);
+            Assert.AreEqual(7.0, matrix.M31);
+            Assert.AreEqual(8.0, matrix.M32);
+            Assert.AreEqual(9.0, matrix.M33);
         }
 
-        /// <summary>
-        /// Tests construction from a <see cref="Quaternion"/>.
-        /// </summary>
         [Test]
         public void TestFromQuaternion()
         {
@@ -54,8 +53,12 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestEquality()
         {
-            Matrix3By3 first = new Matrix3By3(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0);
-            Matrix3By3 second = new Matrix3By3(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0);
+            Matrix3By3 first = new Matrix3By3(1.0, 2.0, 3.0,
+                                              4.0, 5.0, 6.0,
+                                              7.0, 8.0, 9.0);
+            Matrix3By3 second = new Matrix3By3(1.0, 2.0, 3.0,
+                                               4.0, 5.0, 6.0,
+                                               7.0, 8.0, 9.0);
             Assert.AreEqual(first, second);
             Assert.AreEqual(second, first);
             Assert.IsTrue(first == second);
@@ -67,11 +70,17 @@ namespace CesiumLanguageWriterTests
 
             for (int i = 0; i < 9; ++i)
             {
-                double[] values = { 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0 };
-
+                double[] values =
+                {
+                    1.0, 2.0, 3.0,
+                    4.0, 5.0, 6.0,
+                    7.0, 8.0, 9.0,
+                };
                 values[i] = 0.0;
 
-                second = new Matrix3By3(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7], values[8]);
+                second = new Matrix3By3(values[0], values[1], values[2],
+                                        values[3], values[4], values[5],
+                                        values[6], values[7], values[8]);
                 Assert.AreNotEqual(first, second);
                 Assert.AreNotEqual(second, first);
                 Assert.IsFalse(first == second);
@@ -92,17 +101,19 @@ namespace CesiumLanguageWriterTests
             Matrix3By3 first = Matrix3By3.Identity;
             Cartesian second = new Cartesian(1.0, 2.0, 3.0);
 
+            // ReSharper disable once SuspiciousTypeConversion.Global
             Assert.IsFalse(first.Equals(second));
         }
 
-        /// <summary>
-        /// Tests the <see cref="Matrix3By3.EqualsEpsilon"/> method.
-        /// </summary>
         [Test]
         public void TestEqualsEpsilon()
         {
-            Matrix3By3 first = new Matrix3By3(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
-            Matrix3By3 second = new Matrix3By3(1e-2, 1e-3, 1e-4, 1e-5, 1e-6, 1e-7, 1e-8, 1e-9, 1e-10);
+            Matrix3By3 first = new Matrix3By3(0.0, 0.0, 0.0,
+                                              0.0, 0.0, 0.0,
+                                              0.0, 0.0, 0.0);
+            Matrix3By3 second = new Matrix3By3(1e-2, 1e-3, 1e-4,
+                                               1e-5, 1e-6, 1e-7,
+                                               1e-8, 1e-9, 1e-10);
             Assert.IsTrue(second.EqualsEpsilon(first, 1e-1));
             Assert.IsTrue(second.EqualsEpsilon(first, 1e-2));
             Assert.IsFalse(second.EqualsEpsilon(first, 1e-3));
@@ -121,7 +132,9 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestIndex()
         {
-            Matrix3By3 original = new Matrix3By3(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0);
+            Matrix3By3 original = new Matrix3By3(1.0, 2.0, 3.0,
+                                                 4.0, 5.0, 6.0,
+                                                 7.0, 8.0, 9.0);
             Assert.AreEqual(1.0, original[0, 0]);
             Assert.AreEqual(2.0, original[0, 1]);
             Assert.AreEqual(3.0, original[0, 2]);
@@ -133,13 +146,12 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(9.0, original[2, 2]);
         }
 
-        /// <summary>
-        /// Tests the <see cref="Matrix3By3.Transpose"/> method.
-        /// </summary>
         [Test]
         public void TestTranspose()
         {
-            Matrix3By3 original = new Matrix3By3(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0);
+            Matrix3By3 original = new Matrix3By3(1.0, 2.0, 3.0,
+                                                 4.0, 5.0, 6.0,
+                                                 7.0, 8.0, 9.0);
             Matrix3By3 transposed = original.Transpose();
             Assert.AreEqual(transposed.M11, original.M11);
             Assert.AreEqual(transposed.M12, original.M21);
@@ -152,9 +164,6 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(transposed.M33, original.M33);
         }
 
-        /// <summary>
-        /// Tests <see cref="Matrix3By3.Identity"/>.
-        /// </summary>
         [Test]
         public void TestIdentity()
         {
@@ -170,27 +179,26 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(1.0, identity.M33);
         }
 
-        /// <summary>
-        /// Tests the <see cref="Matrix3By3.IsUndefined"/> method.
-        /// </summary>
         [Test]
         public void TestIsUndefined()
         {
             Assert.IsFalse(Matrix3By3.Identity.IsUndefined);
             Assert.IsTrue(Matrix3By3.Undefined.IsUndefined);
-            //* Check what happens if any of the elements are NaN
+            // Check what happens if any of the elements are NaN
             for (int i = 0; i < 9; i++)
             {
-                double[] values = new double[9];
-                for (int k = 0; k < 9; k++)
+                double[] values =
                 {
-                    values[k] = 1.0;
-                }
+                    1.0, 1.0, 1.0,
+                    1.0, 1.0, 1.0,
+                    1.0, 1.0, 1.0,
+                };
                 values[i] = double.NaN;
-                Assert.IsTrue(new Matrix3By3(
-                                  values[0], values[1], values[2],
-                                  values[3], values[4], values[5],
-                                  values[6], values[7], values[8]).IsUndefined);
+
+                var matrix = new Matrix3By3(values[0], values[1], values[2],
+                                            values[3], values[4], values[5],
+                                            values[6], values[7], values[8]);
+                Assert.IsTrue(matrix.IsUndefined);
             }
         }
 
@@ -200,8 +208,10 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestMultiplyByScalar()
         {
-            Matrix3By3 test = new Matrix3By3(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0);
-            Matrix3By3 result = test.Multiply(-2.0);
+            Matrix3By3 matrix = new Matrix3By3(1.0, 2.0, 3.0,
+                                               4.0, 5.0, 6.0,
+                                               7.0, 8.0, 9.0);
+            Matrix3By3 result = matrix.Multiply(-2.0);
             Assert.AreEqual(-2.0, result.M11);
             Assert.AreEqual(-4.0, result.M12);
             Assert.AreEqual(-6.0, result.M13);
@@ -212,7 +222,7 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(-16.0, result.M32);
             Assert.AreEqual(-18.0, result.M33);
 
-            result = test * -2.0;
+            result = matrix * -2.0;
             Assert.AreEqual(-2.0, result.M11);
             Assert.AreEqual(-4.0, result.M12);
             Assert.AreEqual(-6.0, result.M13);
@@ -223,7 +233,7 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(-16.0, result.M32);
             Assert.AreEqual(-18.0, result.M33);
 
-            result = -2.0 * test;
+            result = -2.0 * matrix;
             Assert.AreEqual(-2.0, result.M11);
             Assert.AreEqual(-4.0, result.M12);
             Assert.AreEqual(-6.0, result.M13);
@@ -241,7 +251,7 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestMultiplyByMatrix()
         {
-            double angle = Math.PI / 4.0;
+            const double angle = Math.PI / 4.0;
             double cos = Math.Cos(angle / 2.0);
             double sin = Math.Sin(angle / 2.0);
 
@@ -252,106 +262,54 @@ namespace CesiumLanguageWriterTests
             // The matrix here is formed from the orthonormal set obtained by rotating
             // the x-axis, y-axis, and z-axis through an angle of 45 degrees about
             // the (1,1,1) vector.
-            Matrix3By3 test = new Matrix3By3(a, c, b, b, a, c, c, b, a);
-            Matrix3By3 transpose = test.Transpose();
+            Matrix3By3 matrix = new Matrix3By3(a, c, b,
+                                               b, a, c,
+                                               c, b, a);
+            Matrix3By3 transpose = matrix.Transpose();
 
-            Matrix3By3 result = test.Multiply(transpose);
-            Assert.IsTrue(result.EqualsEpsilon(Matrix3By3.Identity, 1e-16));
+            Matrix3By3 result = matrix.Multiply(transpose);
+            Assert.IsTrue(result.EqualsEpsilon(Matrix3By3.Identity, Constants.Epsilon16));
 
-            result = test * transpose;
-            Assert.IsTrue(result.EqualsEpsilon(Matrix3By3.Identity, 1e-16));
+            result = matrix * transpose;
+            Assert.IsTrue(result.EqualsEpsilon(Matrix3By3.Identity, Constants.Epsilon16));
         }
 
         /// <summary>
         /// Tests to ensure that an invalid index throws the anticipated exception.
         /// </summary>
         [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestFirstIndexTooHigh()
+        [Combinatorial]
+        public void IndexerThrowsWithRowOutOfRange([Values(-1, 3)] int row,
+                                                   [Range(0, 2)] int column)
         {
-            Matrix3By3 diagonal = Matrix3By3.DiagonalMatrix(-3.0, 1.0, 5.0);
-            double bad = diagonal[3, 0];
+            Matrix3By3 matrix = Matrix3By3.DiagonalMatrix(-3.0, 1.0, 5.0);
+
+            var exception = Assert.Throws<ArgumentOutOfRangeException>(() =>
+            {
+                double unused = matrix[row, column];
+            });
+            Assert.AreEqual("row", exception.ParamName);
         }
 
         /// <summary>
         /// Tests to ensure that an invalid index throws the anticipated exception.
         /// </summary>
         [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestFirstIndexTooLow()
+        [Combinatorial]
+        public void IndexerThrowsWithColumnOutOfRange([Range(0, 2)] int row,
+                                                      [Values(-1, 3)] int column)
         {
-            Matrix3By3 diagonal = Matrix3By3.DiagonalMatrix(-3.0, 1.0, 5.0);
-            double bad = diagonal[-1, 0];
+            Matrix3By3 matrix = Matrix3By3.DiagonalMatrix(-3.0, 1.0, 5.0);
+
+            var exception = Assert.Throws<ArgumentOutOfRangeException>(() =>
+            {
+                double unused = matrix[row, column];
+            });
+            Assert.AreEqual("column", exception.ParamName);
         }
 
         /// <summary>
-        /// Tests to ensure that an invalid index throws the anticipated exception.
-        /// </summary>
-        [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestSecondIndexTooHigh0()
-        {
-            Matrix3By3 diagonal = Matrix3By3.DiagonalMatrix(-3.0, 1.0, 5.0);
-            double bad = diagonal[0, 3];
-        }
-
-        /// <summary>
-        /// Tests to ensure that an invalid index throws the anticipated exception.
-        /// </summary>
-        [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestSecondIndexTooLow0()
-        {
-            Matrix3By3 diagonal = Matrix3By3.DiagonalMatrix(-3.0, 1.0, 5.0);
-            double bad = diagonal[0, -1];
-        }
-
-        /// <summary>
-        /// Tests to ensure that an invalid index throws the anticipated exception.
-        /// </summary>
-        [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestSecondIndexTooHigh1()
-        {
-            Matrix3By3 diagonal = Matrix3By3.DiagonalMatrix(-3.0, 1.0, 5.0);
-            double bad = diagonal[1, -1];
-        }
-
-        /// <summary>
-        /// Tests to ensure that an invalid index throws the anticipated exception.
-        /// </summary>
-        [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestSecondIndexTooLow1()
-        {
-            Matrix3By3 diagonal = Matrix3By3.DiagonalMatrix(-3.0, 1.0, 5.0);
-            double bad = diagonal[1, -1];
-        }
-
-        /// <summary>
-        /// Tests to ensure that an invalid index throws the anticipated exception.
-        /// </summary>
-        [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestSecondIndexTooHigh2()
-        {
-            Matrix3By3 diagonal = Matrix3By3.DiagonalMatrix(-3.0, 1.0, 5.0);
-            double bad = diagonal[2, 3];
-        }
-
-        /// <summary>
-        /// Tests to ensure that an invalid index throws the anticipated exception.
-        /// </summary>
-        [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestSecondIndexTooLow2()
-        {
-            Matrix3By3 diagonal = Matrix3By3.DiagonalMatrix(-3.0, 1.0, 5.0);
-            double bad = diagonal[2, -1];
-        }
-
-        /// <summary>
-        /// Tests that Matrix3By3.GetHashCode returns something at least reasonably random.
+        /// Tests that GetHashCode returns something at least reasonably random.
         /// </summary>
         [Test]
         public void TestGetHashCode()
@@ -387,26 +345,38 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestMathOperators()
         {
-            Matrix3By3 test1 = new Matrix3By3(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0);
-            Matrix3By3 test2 = new Matrix3By3(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0);
-            Assert.IsTrue(Matrix3By3.Zero.Equals(test1.Subtract(test2)));
-            Assert.IsTrue(Matrix3By3.Zero.Equals(test1 - test2));
-            Assert.IsTrue((test2 * 2.0).Equals(test1.Add(test2)));
-            Assert.IsTrue((test2 * 2.0).Equals(test1 + test2));
-            Assert.IsTrue((new Matrix3By3(30, 36, 42, 66, 81, 96, 102, 126, 150).Equals(test1.Multiply(test2))));
-            Assert.IsTrue((new Matrix3By3(30, 36, 42, 66, 81, 96, 102, 126, 150).Equals(test1 * test2)));
-        }
+            var matrix1 = new Matrix3By3(1.0, 2.0, 3.0,
+                                         4.0, 5.0, 6.0,
+                                         7.0, 8.0, 9.0);
+            var matrix2 = new Matrix3By3(1.0, 2.0, 3.0,
+                                         4.0, 5.0, 6.0,
+                                         7.0, 8.0, 9.0);
 
+            Assert.AreEqual(Matrix3By3.Zero, matrix1.Subtract(matrix2));
+            Assert.AreEqual(Matrix3By3.Zero, matrix1 - matrix2);
+            Assert.AreEqual(matrix2 * 2.0, matrix1.Add(matrix2));
+            Assert.AreEqual(matrix2 * 2.0, matrix1 + matrix2);
+
+            var expected = new Matrix3By3(30, 36, 42,
+                                          66, 81, 96,
+                                          102, 126, 150);
+            Assert.AreEqual(expected, matrix1.Multiply(matrix2));
+            Assert.AreEqual(expected, matrix1 * matrix2);
+        }
         /// <summary>
         /// Tests math operators
         /// </summary>
         [Test]
         public void TestMathOperatorsWithCartesian()
         {
-            Matrix3By3 test = new Matrix3By3(1.0, 2.0, 4.0, 2.0, 3.0, 5.0, 4.0, 5.0, 6.0);
-            Cartesian mult = new Cartesian(1, 2, 3);
-            Assert.IsTrue((new Cartesian(17, 23, 32).Equals(test.Multiply(mult))));
-            Assert.IsTrue((new Cartesian(17, 23, 32).Equals(test * mult)));
+            Matrix3By3 matrix = new Matrix3By3(1.0, 2.0, 4.0,
+                                               2.0, 3.0, 5.0,
+                                               4.0, 5.0, 6.0);
+            Cartesian vector = new Cartesian(1, 2, 3);
+
+            var expected = new Cartesian(17, 23, 32);
+            Assert.AreEqual(expected, matrix.Multiply(vector));
+            Assert.AreEqual(expected, matrix * vector);
         }
     }
 }

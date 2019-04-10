@@ -2,10 +2,11 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
+import agi.foundation.compatibility.Action;
 import agi.foundation.compatibility.AssertHelper;
-import agi.foundation.compatibility.ExpectedExceptionHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.TestContextRule;
+import agi.foundation.TypeLiteral;
 import cesiumlanguagewriter.*;
 import javax.annotation.Nonnull;
 import org.junit.Assert;
@@ -70,24 +71,42 @@ public class TestUnitQuaternion {
     
 
     */
+    public final void testFromMatrix3By3(double angle, double axisX, double axisY, double axisZ) {
+        Cartesian axis = new Cartesian(axisX, axisY, axisZ);
+        Cartesian unit = Cartesian.toCartesian(axis.normalize());
+        double c = Math.cos(angle);
+        double s = Math.sin(angle);
+        double w = c;
+        double x = s * unit.getX();
+        double y = s * unit.getY();
+        double z = s * unit.getZ();
+        UnitQuaternion quaternion = new UnitQuaternion(w, x, y, z);
+        Matrix3By3 matrix = new Matrix3By3(quaternion);
+        UnitQuaternion test = new UnitQuaternion(matrix);
+        Assert.assertEquals(w, quaternion.getW(), Constants.Epsilon15);
+        Assert.assertEquals(x, quaternion.getX(), Constants.Epsilon15);
+        Assert.assertEquals(y, quaternion.getY(), Constants.Epsilon15);
+        Assert.assertEquals(z, quaternion.getZ(), Constants.Epsilon15);
+    }
+
     @Test
-    public final void testFromMatrix3By3() {
-        double angle = Math.PI / 6;
-        // 60 degrees.
-        // Test "type == 0:"
-        _TestFromMatrix3By3(angle, new Cartesian(2.0, 3.0, 6.0));
-        //rotation about 2/7, 3/7, 6/7 vector.
-        angle = 2 * Math.PI / 3;
-        // 120 degrees.
-        // Test "type == 1:"
-        _TestFromMatrix3By3(angle, new Cartesian(6.0, -3.0, -2.0));
-        // rotation about 6/7, -3/7, -2/7 vector.
-        // Test "type == 2:"
-        _TestFromMatrix3By3(angle, new Cartesian(-2.0, -3.0, 6.0));
-        // rotation about -2/7, -3/7, 6/7 vector.
-        // Test "type == 3:"
-        _TestFromMatrix3By3(angle, new Cartesian(-2.0, 6.0, -3.0));
-        // rotation about -2/7, 6/7, -3/7 vector.
+    public final void testFromMatrix3By3$TestCase1() {
+        testFromMatrix3By3(Math.PI / 6, 2.0, 3.0, 6.0);
+    }
+
+    @Test
+    public final void testFromMatrix3By3$TestCase2() {
+        testFromMatrix3By3(2 * Math.PI / 3, 6.0, -3.0, -2.0);
+    }
+
+    @Test
+    public final void testFromMatrix3By3$TestCase3() {
+        testFromMatrix3By3(2 * Math.PI / 3, -2.0, -3.0, 6.0);
+    }
+
+    @Test
+    public final void testFromMatrix3By3$TestCase4() {
+        testFromMatrix3By3(2 * Math.PI / 3, -2.0, 6.0, -3.0);
     }
 
     /**
@@ -173,6 +192,7 @@ public class TestUnitQuaternion {
     public final void testEqualityWithWrongType() {
         UnitQuaternion first = new UnitQuaternion(1.0, 2.0, 3.0, 4.0);
         Cartographic second = new Cartographic(1.0, 2.0, 3.0);
+        // ReSharper disable once SuspiciousTypeConversion.Global
         Assert.assertFalse(first.equals(second));
     }
 
@@ -185,8 +205,11 @@ public class TestUnitQuaternion {
     */
     @Test
     public final void testFromInfinity() {
-        ExpectedExceptionHelper.expectException(getRule$expectedException(), ArithmeticException.class);
-        UnitQuaternion first = new UnitQuaternion(Double.POSITIVE_INFINITY, 0.0, 0.0, 0.0);
+        AssertHelper.<ArithmeticException> assertThrows(new TypeLiteral<ArithmeticException>() {}, new Action() {
+            public void invoke() {
+                cesiumlanguagewriter.UnitQuaternion unused = new UnitQuaternion(Double.POSITIVE_INFINITY, 0.0, 0.0, 0.0);
+            }
+        });
     }
 
     /**
@@ -234,23 +257,6 @@ public class TestUnitQuaternion {
         Assert.assertTrue(new UnitQuaternion(1.0, Double.NaN, 1.0, 1.0).getIsUndefined());
         Assert.assertTrue(new UnitQuaternion(1.0, 1.0, Double.NaN, 1.0).getIsUndefined());
         Assert.assertTrue(new UnitQuaternion(1.0, 1.0, 1.0, Double.NaN).getIsUndefined());
-    }
-
-    private final void _TestFromMatrix3By3(double angle, @Nonnull Cartesian axis) {
-        Cartesian unit = Cartesian.toCartesian(axis.normalize());
-        double c = Math.cos(angle);
-        double s = Math.sin(angle);
-        double w = c;
-        double x = s * unit.getX();
-        double y = s * unit.getY();
-        double z = s * unit.getZ();
-        UnitQuaternion quaternion = new UnitQuaternion(w, x, y, z);
-        Matrix3By3 matrix = new Matrix3By3(quaternion);
-        UnitQuaternion test = new UnitQuaternion(matrix);
-        Assert.assertEquals(w, quaternion.getW(), Constants.Epsilon15);
-        Assert.assertEquals(x, quaternion.getX(), Constants.Epsilon15);
-        Assert.assertEquals(y, quaternion.getY(), Constants.Epsilon15);
-        Assert.assertEquals(z, quaternion.getZ(), Constants.Epsilon15);
     }
 
     /**

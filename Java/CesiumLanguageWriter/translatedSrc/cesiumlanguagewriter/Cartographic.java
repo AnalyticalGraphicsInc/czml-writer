@@ -27,16 +27,6 @@ public final class Cartographic implements IEquatable<Cartographic>, ImmutableVa
     public Cartographic() {}
 
     /**
-    *  Gets a set of {@link Cartographic} coordinates representing the zero vector.
-    
-
-    */
-    @Nonnull
-    public static Cartographic getZero() {
-        return s_zero;
-    }
-
-    /**
     *  
     Initializes a set of {@link Cartographic} coordinates from the provided values.
     
@@ -52,6 +42,16 @@ public final class Cartographic implements IEquatable<Cartographic>, ImmutableVa
         m_longitude = longitude;
         m_latitude = latitude;
         m_height = height;
+    }
+
+    /**
+    *  Gets a set of {@link Cartographic} coordinates representing the zero vector.
+    
+
+    */
+    @Nonnull
+    public static Cartographic getZero() {
+        return s_zero;
     }
 
     /**
@@ -198,9 +198,9 @@ public final class Cartographic implements IEquatable<Cartographic>, ImmutableVa
         return !left.equalsType(right);
     }
 
+    @Nonnull
+    private static Cartographic s_zero = new Cartographic(0.0, 0.0, 0.0);
     private double m_latitude;
     private double m_longitude;
     private double m_height;
-    @Nonnull
-    private static Cartographic s_zero = new Cartographic(0.0, 0.0, 0.0);
 }

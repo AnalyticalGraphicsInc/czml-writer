@@ -15,10 +15,12 @@ namespace CesiumLanguageWriterTests
         /// YearMonthDay with an invalid date.
         /// </summary>
         [Test]
-        [ExpectedException(typeof(ArgumentException))]
         public void TestConstructWithInvalidDate()
         {
-            YearMonthDay ymd = new YearMonthDay(2006, 2, 29);
+            Assert.Throws<ArgumentException>(() =>
+            {
+                YearMonthDay unused = new YearMonthDay(2006, 2, 29);
+            });
         }
 
         /// <summary>
@@ -74,6 +76,7 @@ namespace CesiumLanguageWriterTests
                 {
                     Assert.AreEqual(28, YearMonthDay.DaysInMonth(i, 2)); // February of a common year
                 }
+
                 Assert.AreEqual(31, YearMonthDay.DaysInMonth(i, 3)); // March
                 Assert.AreEqual(30, YearMonthDay.DaysInMonth(i, 4)); // April
                 Assert.AreEqual(31, YearMonthDay.DaysInMonth(i, 5)); // May
@@ -118,6 +121,7 @@ namespace CesiumLanguageWriterTests
                 {
                     Assert.IsTrue(YearMonthDay.IsValidDate(2000, month, day));
                 }
+
                 Assert.IsFalse(YearMonthDay.IsValidDate(2000, month, daysInMonth + 1));
             }
         }
@@ -207,7 +211,7 @@ namespace CesiumLanguageWriterTests
             Assert.IsTrue(ymd1 != ymd3);
             Assert.IsTrue(ymd1 >= ymd2);
             Assert.IsTrue(ymd1 <= ymd2);
-            Assert.IsTrue(ymd1.CompareTo(ymd2) == 0);
+            Assert.AreEqual(0, ymd1.CompareTo(ymd2));
             Assert.IsTrue(ymd2 < ymd3);
             Assert.IsTrue(ymd2 <= ymd3);
             Assert.IsTrue(ymd3 > ymd2);
@@ -222,8 +226,8 @@ namespace CesiumLanguageWriterTests
             YearMonthDay ymd1 = new YearMonthDay(2006, 3, 14);
             object ymd4 = new YearMonthDay(2004, 2, 21);
 
-            Assert.IsTrue(ymd1.CompareTo(null) > 0);
-            Assert.IsTrue(ymd1.CompareTo(ymd4) > 0);
+            Assert.Greater(ymd1.CompareTo(null), 0);
+            Assert.Greater(ymd1.CompareTo(ymd4), 0);
         }
 
         /// <summary>
@@ -231,12 +235,14 @@ namespace CesiumLanguageWriterTests
         /// invoked on a type that is not a YearMonthDay.
         /// </summary>
         [Test]
-        [ExpectedException(typeof(ArgumentException))]
         [CSToJavaExclude]
         public void TestCompareToWrongType()
         {
             YearMonthDay ymd = new YearMonthDay(2006, 3, 14);
-            ymd.CompareTo(5);
+            Assert.Throws<ArgumentException>(() =>
+            {
+                int unused = ymd.CompareTo(5);
+            });
         }
 
         /// <summary>

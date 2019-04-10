@@ -11,7 +11,9 @@ import javax.annotation.Nonnull;
 
 /**
  *  
- A 3-by-3 matrix. This type is often used to represent a rotation.
+ A 3-by-3 matrix. This type is often used to represent a rotation. This
+ represents an 'alias' rotation which transforms coordinates by modifying the underlying coordinate
+ basis rather than modifying the coordinates themselves.
  
  
 
@@ -28,6 +30,73 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     * Initializes a new instance.
     */
     public Matrix3By3() {}
+
+    /**
+    *  
+    Initializes a new instance from a {@link UnitQuaternion}.
+    
+    
+
+    * @param quaternion The quaternion.
+    */
+    public Matrix3By3(@Nonnull UnitQuaternion quaternion) {
+        double x2 = quaternion.getX() * quaternion.getX();
+        double xy = quaternion.getX() * quaternion.getY();
+        double xz = quaternion.getX() * quaternion.getZ();
+        double xw = quaternion.getX() * quaternion.getW();
+        double y2 = quaternion.getY() * quaternion.getY();
+        double yz = quaternion.getY() * quaternion.getZ();
+        double yw = quaternion.getY() * quaternion.getW();
+        double z2 = quaternion.getZ() * quaternion.getZ();
+        double zw = quaternion.getZ() * quaternion.getW();
+        double w2 = quaternion.getW() * quaternion.getW();
+        m_m11 = x2 - y2 - z2 + w2;
+        m_m12 = 2.0 * (xy + zw);
+        m_m13 = 2.0 * (xz - yw);
+        m_m21 = 2.0 * (xy - zw);
+        m_m22 = -x2 + y2 - z2 + w2;
+        m_m23 = 2.0 * (yz + xw);
+        m_m31 = 2.0 * (xz + yw);
+        m_m32 = 2.0 * (yz - xw);
+        m_m33 = -x2 - y2 + z2 + w2;
+    }
+
+    /**
+    *  
+    Initializes a new instance from elements.
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    * @param m11 1,1
+    * @param m12 1,2
+    * @param m13 1,3
+    * @param m21 2,1
+    * @param m22 2,2
+    * @param m23 2,3
+    * @param m31 3,1
+    * @param m32 3,2
+    * @param m33 3,3
+    */
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
+    public Matrix3By3(double m11, double m12, double m13, double m21, double m22, double m23, double m31, double m32, double m33) {
+        m_m11 = m11;
+        m_m12 = m12;
+        m_m13 = m13;
+        m_m21 = m21;
+        m_m22 = m22;
+        m_m23 = m23;
+        m_m31 = m31;
+        m_m32 = m32;
+        m_m33 = m33;
+    }
 
     /**
     *  Gets a {@link Matrix3By3} representing an identity transformation.
@@ -117,73 +186,6 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     @Nonnull
     public static Matrix3By3 diagonalMatrix(@Nonnull UnitCartesian vector) {
         return diagonalMatrix(vector.getX(), vector.getY(), vector.getZ());
-    }
-
-    /**
-    *  
-    Initializes a new instance from a {@link UnitQuaternion}.
-    
-    
-
-    * @param quaternion The quaternion.
-    */
-    public Matrix3By3(@Nonnull UnitQuaternion quaternion) {
-        double x2 = quaternion.getX() * quaternion.getX();
-        double xy = quaternion.getX() * quaternion.getY();
-        double xz = quaternion.getX() * quaternion.getZ();
-        double xw = quaternion.getX() * quaternion.getW();
-        double y2 = quaternion.getY() * quaternion.getY();
-        double yz = quaternion.getY() * quaternion.getZ();
-        double yw = quaternion.getY() * quaternion.getW();
-        double z2 = quaternion.getZ() * quaternion.getZ();
-        double zw = quaternion.getZ() * quaternion.getW();
-        double w2 = quaternion.getW() * quaternion.getW();
-        m_m11 = x2 - y2 - z2 + w2;
-        m_m12 = 2.0 * (xy + zw);
-        m_m13 = 2.0 * (xz - yw);
-        m_m21 = 2.0 * (xy - zw);
-        m_m22 = -x2 + y2 - z2 + w2;
-        m_m23 = 2.0 * (yz + xw);
-        m_m31 = 2.0 * (xz + yw);
-        m_m32 = 2.0 * (yz - xw);
-        m_m33 = -x2 - y2 + z2 + w2;
-    }
-
-    /**
-    *  
-    Initializes a new instance from elements.
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    * @param m11 1,1
-    * @param m12 1,2
-    * @param m13 1,3
-    * @param m21 2,1
-    * @param m22 2,2
-    * @param m23 2,3
-    * @param m31 3,1
-    * @param m32 3,2
-    * @param m33 3,3
-    */
-    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
-    public Matrix3By3(double m11, double m12, double m13, double m21, double m22, double m23, double m31, double m32, double m33) {
-        m_m11 = m11;
-        m_m12 = m12;
-        m_m13 = m13;
-        m_m21 = m21;
-        m_m22 = m22;
-        m_m23 = m23;
-        m_m31 = m31;
-        m_m32 = m32;
-        m_m33 = m33;
     }
 
     /**
@@ -354,7 +356,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     }
 
     /**
-    *  Gets an indication as to whether any of the matrix values are {@link Double#NaN}.
+    *  Gets a value indicating whether any of the matrix values are {@link Double#NaN}.
     
 
     */

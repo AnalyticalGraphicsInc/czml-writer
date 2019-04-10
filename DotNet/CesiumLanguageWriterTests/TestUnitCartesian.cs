@@ -68,8 +68,8 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestFromClockAndCone()
         {
-            double fortyFiveDegrees = Math.PI / 4.0;
-            double thirtyDegrees = Math.PI / 6.0;
+            const double fortyFiveDegrees = Math.PI / 4.0;
+            const double thirtyDegrees = Math.PI / 6.0;
 
             UnitCartesian test = new UnitCartesian(thirtyDegrees, fortyFiveDegrees);
             Assert.AreEqual(Math.Sqrt(3.0) / Math.Sqrt(8.0), test.X, Constants.Epsilon15);
@@ -162,6 +162,7 @@ namespace CesiumLanguageWriterTests
             UnitCartesian first = new UnitCartesian(1.0, 2.0, 3.0);
             Cartographic second = new Cartographic(1.0, 2.0, 3.0);
 
+            // ReSharper disable once SuspiciousTypeConversion.Global
             Assert.IsFalse(first.Equals(second));
         }
 
@@ -173,9 +174,9 @@ namespace CesiumLanguageWriterTests
         {
             Assert.IsFalse(new UnitCartesian(1.0, 1.0, 1.0).IsUndefined);
             Assert.IsTrue(UnitCartesian.Undefined.IsUndefined);
-            Assert.IsTrue(new UnitCartesian(Double.NaN, 1.0, 1.0).IsUndefined);
-            Assert.IsTrue(new UnitCartesian(1.0, Double.NaN, 1.0).IsUndefined);
-            Assert.IsTrue(new UnitCartesian(1.0, 1.0, Double.NaN).IsUndefined);
+            Assert.IsTrue(new UnitCartesian(double.NaN, 1.0, 1.0).IsUndefined);
+            Assert.IsTrue(new UnitCartesian(1.0, double.NaN, 1.0).IsUndefined);
+            Assert.IsTrue(new UnitCartesian(1.0, 1.0, double.NaN).IsUndefined);
         }
 
         /// <summary>
@@ -183,10 +184,12 @@ namespace CesiumLanguageWriterTests
         /// <see cref="DivideByZeroException"/>.
         /// </summary>
         [Test]
-        [ExpectedException(typeof(DivideByZeroException))]
         public void TestFromZero()
         {
-            UnitCartesian first = new UnitCartesian(Cartesian.Zero);
+            Assert.Throws<DivideByZeroException>(() =>
+            {
+                var unused = new UnitCartesian(Cartesian.Zero);
+            });
         }
 
         /// <summary>
@@ -194,10 +197,12 @@ namespace CesiumLanguageWriterTests
         /// <see cref="NotFiniteNumberException"/>.
         /// </summary>
         [Test]
-        [ExpectedException(typeof(NotFiniteNumberException))]
         public void TestFromInfinity()
         {
-            UnitCartesian first = new UnitCartesian(Double.PositiveInfinity, 0.0, 0.0);
+            Assert.Throws<NotFiniteNumberException>(() =>
+            {
+                var unused = new UnitCartesian(double.PositiveInfinity, 0.0, 0.0);
+            });
         }
 
         /// <summary>
@@ -336,7 +341,7 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestCrossProduct()
         {
-            double angle = Math.PI / 4.0;
+            const double angle = Math.PI / 4.0;
             double cos = Math.Cos(angle / 2.0);
             double sin = Math.Sin(angle / 2.0);
 

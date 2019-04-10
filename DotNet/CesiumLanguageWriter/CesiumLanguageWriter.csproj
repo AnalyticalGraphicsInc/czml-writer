@@ -35,8 +35,8 @@
     <DocumentationFile>bin\Release\CesiumLanguageWriter.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="JetBrains.Annotations, Version=11.1.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
-      <HintPath>..\packages\JetBrains.Annotations.11.1.0\lib\net20\JetBrains.Annotations.dll</HintPath>
+    <Reference Include="JetBrains.Annotations, Version=2019.1.1.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.2019.1.1\lib\net20\JetBrains.Annotations.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -67,8 +67,8 @@
     <Compile Include="Advanced\PassThroughCesiumUriResolver.cs" />
     <Compile Include="Attributes\CSToJavaExcludeAttribute.cs" />
     <Compile Include="Attributes\CSToJavaExcludeBaseAttribute.cs" />
+    <Compile Include="Attributes\CSToJavaFinalFieldAttribute.cs" />
     <Compile Include="Attributes\CSToJavaImmutableValueType.cs" />
-    <Compile Include="Attributes\CSToJavaRenameAttribute.cs" />
     <Compile Include="Attributes\CSToJavaUseNullForDefaultGenericTypeValueAttribute.cs" />
     <Compile Include="BoundingRectangle.cs" />
     <Compile Include="Bounds.cs" />

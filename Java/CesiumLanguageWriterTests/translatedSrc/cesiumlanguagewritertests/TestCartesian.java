@@ -2,18 +2,18 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
+import agi.foundation.compatibility.Action;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.CultureInfoHelper;
 import agi.foundation.compatibility.DoubleHelper;
-import agi.foundation.compatibility.ExpectedExceptionHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.TestContextRule;
+import agi.foundation.TypeLiteral;
 import cesiumlanguagewriter.*;
 import javax.annotation.Nonnull;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
-import org.junit.rules.ExpectedException;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
@@ -147,6 +147,7 @@ public class TestCartesian {
     public final void testEqualityWithWrongType() {
         Cartesian first = new Cartesian(1.0, 2.0, 3.0);
         Cartographic second = new Cartographic(1.0, 2.0, 3.0);
+        // ReSharper disable once SuspiciousTypeConversion.Global
         Assert.assertFalse(first.equals(second));
     }
 
@@ -186,9 +187,12 @@ public class TestCartesian {
     */
     @Test
     public final void testNormalizeOfZeroMagnitude() {
-        ExpectedExceptionHelper.expectException(getRule$expectedException(), ArithmeticException.class);
-        Cartesian test = Cartesian.getZero();
-        UnitCartesian unit = test.normalize();
+        final Cartesian test = Cartesian.getZero();
+        AssertHelper.<ArithmeticException> assertThrows(new TypeLiteral<ArithmeticException>() {}, new Action() {
+            public void invoke() {
+                cesiumlanguagewriter.UnitCartesian unused = test.normalize();
+            }
+        });
     }
 
     /**
@@ -200,9 +204,12 @@ public class TestCartesian {
     */
     @Test
     public final void testNormalizeOfInfiniteMagnitude() {
-        ExpectedExceptionHelper.expectException(getRule$expectedException(), ArithmeticException.class);
-        Cartesian test = new Cartesian(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
-        UnitCartesian unit = test.normalize();
+        final Cartesian test = new Cartesian(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
+        AssertHelper.<ArithmeticException> assertThrows(new TypeLiteral<ArithmeticException>() {}, new Action() {
+            public void invoke() {
+                cesiumlanguagewriter.UnitCartesian unused = test.normalize();
+            }
+        });
     }
 
     /**
@@ -384,7 +391,7 @@ public class TestCartesian {
         // half angle of 120 degree rotation
         double cos = Math.cos(angle);
         double sin = Math.sin(angle);
-        Cartesian axis = Cartesian.toCartesian((new Cartesian(1.0, 1.0, 1.0)).normalize());
+        Cartesian axis = Cartesian.toCartesian(new Cartesian(1.0, 1.0, 1.0).normalize());
         // unit vector along [1,1,1]
         double w = cos;
         double x = sin * axis.getX();
@@ -411,7 +418,7 @@ public class TestCartesian {
         // half angle of 120 degree rotation
         double cos = Math.cos(angle);
         double sin = Math.sin(angle);
-        Cartesian axis = Cartesian.toCartesian((new Cartesian(1.0, 1.0, 1.0)).normalize());
+        Cartesian axis = Cartesian.toCartesian(new Cartesian(1.0, 1.0, 1.0).normalize());
         // unit vector along [1,1,1]
         double w = cos;
         double x = sin * axis.getX();
@@ -449,14 +456,14 @@ public class TestCartesian {
     */
     @Test
     public final void testToString() {
-        double val1 = 1.1;
-        double val2 = 2.1;
-        double val3 = 3.1;
-        String sep = ", ";
-        String result = DoubleHelper.toString(val1, CultureInfoHelper.getCurrentCulture()) + sep + DoubleHelper.toString(val2, CultureInfoHelper.getCurrentCulture()) + sep
+        final double val1 = 1.1;
+        final double val2 = 2.1;
+        final double val3 = 3.1;
+        final String sep = ", ";
+        String expected = DoubleHelper.toString(val1, CultureInfoHelper.getCurrentCulture()) + sep + DoubleHelper.toString(val2, CultureInfoHelper.getCurrentCulture()) + sep
                 + DoubleHelper.toString(val3, CultureInfoHelper.getCurrentCulture());
         Cartesian test = new Cartesian(val1, val2, val3);
-        Assert.assertEquals(result, test.toString());
+        Assert.assertEquals(expected, test.toString());
     }
 
     @Nonnull
@@ -466,14 +473,5 @@ public class TestCartesian {
     @Rule
     public TestContextRule getRule$testContext() {
         return rule$testContext;
-    }
-
-    @Nonnull
-    private final ExpectedException rule$expectedException = ExpectedException.none();
-
-    @Nonnull
-    @Rule
-    public ExpectedException getRule$expectedException() {
-        return rule$expectedException;
     }
 }

@@ -12,6 +12,7 @@ using System.Diagnostics;
                 AttributeTargets.Field | AttributeTargets.Event | AttributeTargets.Interface |
                 AttributeTargets.Delegate, AllowMultiple = true)]
 [CSToJavaExclude]
+// ReSharper disable once CheckNamespace
 internal class CSToJavaUseNullForDefaultGenericTypeValueAttribute : Attribute
 {
     public CSToJavaUseNullForDefaultGenericTypeValueAttribute(string genericTypeName)

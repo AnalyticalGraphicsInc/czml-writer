@@ -90,8 +90,8 @@ public final class BoundingRectangle implements IEquatable<BoundingRectangle>, I
     }
 
     /**
-    * Gets the x-coordinate of the left edge of the rectangle.
-
+    *  Gets the x-coordinate of the left edge of the rectangle.
+    
 
     */
     public final double getLeft() {
@@ -99,8 +99,8 @@ public final class BoundingRectangle implements IEquatable<BoundingRectangle>, I
     }
 
     /**
-    * Gets the y-coordinate of the top edge of the rectangle.
-
+    *  Gets the y-coordinate of the top edge of the rectangle.
+    
 
     */
     public final double getTop() {
@@ -108,8 +108,8 @@ public final class BoundingRectangle implements IEquatable<BoundingRectangle>, I
     }
 
     /**
-    * Gets the y-coordinate of the bottom edge of the rectangle.
-
+    *  Gets the y-coordinate of the bottom edge of the rectangle.
+    
 
     */
     public final double getBottom() {
@@ -117,8 +117,8 @@ public final class BoundingRectangle implements IEquatable<BoundingRectangle>, I
     }
 
     /**
-    * Gets the x-coordinate of the right edge of the rectangle.
-
+    *  Gets the x-coordinate of the right edge of the rectangle.
+    
 
     */
     public final double getRight() {
@@ -126,8 +126,8 @@ public final class BoundingRectangle implements IEquatable<BoundingRectangle>, I
     }
 
     /**
-    * Gets the width of the rectangle.
-
+    *  Gets the width of the rectangle.
+    
 
     */
     public final double getWidth() {
@@ -135,8 +135,8 @@ public final class BoundingRectangle implements IEquatable<BoundingRectangle>, I
     }
 
     /**
-    * Gets the height of the rectangle.
-
+    *  Gets the height of the rectangle.
+    
 
     */
     public final double getHeight() {
@@ -260,10 +260,10 @@ public final class BoundingRectangle implements IEquatable<BoundingRectangle>, I
         return !left.equalsType(right);
     }
 
+    @Nonnull
+    private static BoundingRectangle s_empty = new BoundingRectangle(0D, 0D, 0D, 0D);
     private double m_left;
     private double m_right;
     private double m_bottom;
     private double m_top;
-    @Nonnull
-    private static BoundingRectangle s_empty = new BoundingRectangle(0D, 0D, 0D, 0D);
 }

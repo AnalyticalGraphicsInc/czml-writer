@@ -41,24 +41,32 @@ namespace CesiumLanguageWriterTests
         /// <summary>
         /// Tests initialization from a <see cref="Matrix3By3"/> rotation.
         /// </summary>
-        [Test]
-        public void TestFromMatrix3By3()
+        [TestCase(Math.PI / 6, 2.0, 3.0, 6.0, Description = "Test type == 0, 60 degrees, rotation about 2/7, 3/7, 6/7 vector.")]
+        [TestCase(2 * Math.PI / 3, 6.0, -3.0, -2.0, Description = "Test type == 1, 120 degrees, rotation about 6/7, -3/7, -2/7 vector.")]
+        [TestCase(2 * Math.PI / 3, -2.0, -3.0, 6.0, Description = "Test type == 2, 120 degrees, rotation about -2/7, -3/7, 6/7 vector.")]
+        [TestCase(2 * Math.PI / 3, -2.0, 6.0, -3.0, Description = "Test type == 3, 120 degrees, rotation about -2/7, 6/7, -3/7 vector.")]
+        public void TestFromMatrix3By3(double angle, double axisX, double axisY, double axisZ)
         {
-            double angle = Math.PI / 6; // 60 degrees.
+            Cartesian axis = new Cartesian(axisX, axisY, axisZ);
+            Cartesian unit = axis.Normalize();
 
-            // Test "type == 0:"
-            _TestFromMatrix3By3(angle, new Cartesian(2.0, 3.0, 6.0)); //rotation about 2/7, 3/7, 6/7 vector.
+            double c = Math.Cos(angle);
+            double s = Math.Sin(angle);
 
-            angle = 2 * Math.PI / 3; // 120 degrees.
+            double w = c;
+            double x = s * unit.X;
+            double y = s * unit.Y;
+            double z = s * unit.Z;
 
-            // Test "type == 1:"
-            _TestFromMatrix3By3(angle, new Cartesian(6.0, -3.0, -2.0)); // rotation about 6/7, -3/7, -2/7 vector.
+            UnitQuaternion quaternion = new UnitQuaternion(w, x, y, z);
+            Matrix3By3 matrix = new Matrix3By3(quaternion);
 
-            // Test "type == 2:"
-            _TestFromMatrix3By3(angle, new Cartesian(-2.0, -3.0, 6.0)); // rotation about -2/7, -3/7, 6/7 vector.
+            UnitQuaternion test = new UnitQuaternion(matrix);
 
-            // Test "type == 3:"
-            _TestFromMatrix3By3(angle, new Cartesian(-2.0, 6.0, -3.0)); // rotation about -2/7, 6/7, -3/7 vector.
+            Assert.AreEqual(w, quaternion.W, Constants.Epsilon15);
+            Assert.AreEqual(x, quaternion.X, Constants.Epsilon15);
+            Assert.AreEqual(y, quaternion.Y, Constants.Epsilon15);
+            Assert.AreEqual(z, quaternion.Z, Constants.Epsilon15);
         }
 
         /// <summary>
@@ -143,6 +151,7 @@ namespace CesiumLanguageWriterTests
             UnitQuaternion first = new UnitQuaternion(1.0, 2.0, 3.0, 4.0);
             Cartographic second = new Cartographic(1.0, 2.0, 3.0);
 
+            // ReSharper disable once SuspiciousTypeConversion.Global
             Assert.IsFalse(first.Equals(second));
         }
 
@@ -151,10 +160,12 @@ namespace CesiumLanguageWriterTests
         /// <see cref="NotFiniteNumberException"/>.
         /// </summary>
         [Test]
-        [ExpectedException(typeof(NotFiniteNumberException))]
         public void TestFromInfinity()
         {
-            UnitQuaternion first = new UnitQuaternion(Double.PositiveInfinity, 0.0, 0.0, 0.0);
+            Assert.Throws<NotFiniteNumberException>(() =>
+            {
+                var unused = new UnitQuaternion(double.PositiveInfinity, 0.0, 0.0, 0.0);
+            });
         }
 
         /// <summary>
@@ -192,33 +203,10 @@ namespace CesiumLanguageWriterTests
         {
             Assert.IsFalse(new UnitQuaternion(1.0, 1.0, 1.0, 1.0).IsUndefined);
             Assert.IsTrue(UnitQuaternion.Undefined.IsUndefined);
-            Assert.IsTrue(new UnitQuaternion(Double.NaN, 1.0, 1.0, 1.0).IsUndefined);
-            Assert.IsTrue(new UnitQuaternion(1.0, Double.NaN, 1.0, 1.0).IsUndefined);
-            Assert.IsTrue(new UnitQuaternion(1.0, 1.0, Double.NaN, 1.0).IsUndefined);
-            Assert.IsTrue(new UnitQuaternion(1.0, 1.0, 1.0, Double.NaN).IsUndefined);
-        }
-
-        private void _TestFromMatrix3By3(double angle, Cartesian axis)
-        {
-            Cartesian unit = axis.Normalize();
-
-            double c = Math.Cos(angle);
-            double s = Math.Sin(angle);
-
-            double w = c;
-            double x = s * unit.X;
-            double y = s * unit.Y;
-            double z = s * unit.Z;
-
-            UnitQuaternion quaternion = new UnitQuaternion(w, x, y, z);
-            Matrix3By3 matrix = new Matrix3By3(quaternion);
-
-            UnitQuaternion test = new UnitQuaternion(matrix);
-
-            Assert.AreEqual(w, quaternion.W, Constants.Epsilon15);
-            Assert.AreEqual(x, quaternion.X, Constants.Epsilon15);
-            Assert.AreEqual(y, quaternion.Y, Constants.Epsilon15);
-            Assert.AreEqual(z, quaternion.Z, Constants.Epsilon15);
+            Assert.IsTrue(new UnitQuaternion(double.NaN, 1.0, 1.0, 1.0).IsUndefined);
+            Assert.IsTrue(new UnitQuaternion(1.0, double.NaN, 1.0, 1.0).IsUndefined);
+            Assert.IsTrue(new UnitQuaternion(1.0, 1.0, double.NaN, 1.0).IsUndefined);
+            Assert.IsTrue(new UnitQuaternion(1.0, 1.0, 1.0, double.NaN).IsUndefined);
         }
 
         /// <summary>

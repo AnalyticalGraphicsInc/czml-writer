@@ -49,8 +49,8 @@ public class TestUnitSpherical {
     */
     @Test
     public final void testFromUnitCartesian() {
-        double fortyFiveDegrees = Math.PI / 4.0;
-        double sixtyDegrees = Math.PI / 3.0;
+        final double fortyFiveDegrees = Math.PI / 4.0;
+        final double sixtyDegrees = Math.PI / 3.0;
         UnitSpherical test = new UnitSpherical(new UnitCartesian(1.0, Math.sqrt(3.0), -2.0));
         Assert.assertEquals(sixtyDegrees, test.getClock(), Constants.Epsilon15);
         Assert.assertEquals(fortyFiveDegrees + Math.PI / 2.0, test.getCone(), Constants.Epsilon15);
@@ -126,6 +126,7 @@ public class TestUnitSpherical {
     public final void testEqualityWithWrongType() {
         UnitSpherical first = new UnitSpherical(1.0, 2.0);
         Cartographic second = new Cartographic(1.0, 2.0, 3.0);
+        // ReSharper disable once SuspiciousTypeConversion.Global
         Assert.assertFalse(first.equals(second));
     }
 
@@ -152,12 +153,12 @@ public class TestUnitSpherical {
     */
     @Test
     public final void testToString() {
-        StringBuilder s = new StringBuilder(80);
-        s.append(DoubleHelper.toString((-Math.PI), CultureInfoHelper.getCurrentCulture()));
-        s.append(", ");
-        s.append(DoubleHelper.toString(Math.PI, CultureInfoHelper.getCurrentCulture()));
+        StringBuilder builder = new StringBuilder();
+        builder.append(DoubleHelper.toString((-Math.PI), CultureInfoHelper.getCurrentCulture()));
+        builder.append(", ");
+        builder.append(DoubleHelper.toString(Math.PI, CultureInfoHelper.getCurrentCulture()));
         UnitSpherical test = new UnitSpherical(-Math.PI, Math.PI);
-        Assert.assertEquals(s.toString(), test.toString());
+        Assert.assertEquals(builder.toString(), test.toString());
     }
 
     @Nonnull

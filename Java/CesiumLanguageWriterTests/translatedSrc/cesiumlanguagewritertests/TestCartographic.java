@@ -139,15 +139,15 @@ public class TestCartographic {
     */
     @Test
     public final void testToString() {
-        StringBuilder s = new StringBuilder(80);
-        s.append(DoubleHelper.toString(Math.PI, CultureInfoHelper.getCurrentCulture()));
-        s.append(", ");
-        s.append(DoubleHelper.toString(Constants.HalfPi, CultureInfoHelper.getCurrentCulture()));
-        s.append(", ");
-        double val = 1.2;
-        s.append(DoubleHelper.toString(val, CultureInfoHelper.getCurrentCulture()));
+        StringBuilder builder = new StringBuilder();
+        builder.append(DoubleHelper.toString(Math.PI, CultureInfoHelper.getCurrentCulture()));
+        builder.append(", ");
+        builder.append(DoubleHelper.toString(Constants.HalfPi, CultureInfoHelper.getCurrentCulture()));
+        builder.append(", ");
+        final double val = 1.2;
+        builder.append(DoubleHelper.toString(val, CultureInfoHelper.getCurrentCulture()));
         Cartographic test = new Cartographic(Math.PI, Constants.HalfPi, val);
-        Assert.assertEquals(s.toString(), test.toString());
+        Assert.assertEquals(builder.toString(), test.toString());
     }
 
     @Nonnull

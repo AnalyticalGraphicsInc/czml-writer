@@ -2,8 +2,10 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.ExpectedExceptionHelper;
+import agi.foundation.compatibility.Action;
+import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.TestContextRule;
+import agi.foundation.TypeLiteral;
 import cesiumlanguagewriter.*;
 import java.io.StringWriter;
 import javax.annotation.Nonnull;
@@ -11,7 +13,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
-import org.junit.rules.ExpectedException;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
@@ -22,6 +23,10 @@ import org.junit.Test;
 })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCesiumStreamWriter {
+    private StringWriter m_stringWriter;
+    private CesiumOutputStream m_outputStream;
+    private CesiumStreamWriter m_writer;
+
     @Before
     public final void setUp() {
         m_stringWriter = new StringWriter();
@@ -49,14 +54,15 @@ public class TestCesiumStreamWriter {
 
     @Test
     public final void multipleCallsToNewPacketWithoutCloseThrowInvalidOperationException() {
-        ExpectedExceptionHelper.expectException(getRule$expectedException(), IllegalStateException.class, "already opened", MessageMatch.CONTAINS);
-        PacketCesiumWriter packet = m_writer.openPacket(m_outputStream);
-        packet = m_writer.openPacket(m_outputStream);
+        PacketCesiumWriter unused = m_writer.openPacket(m_outputStream);
+        IllegalStateException exception = AssertHelper.<IllegalStateException> assertThrows(new TypeLiteral<IllegalStateException>() {}, new Action() {
+            public void invoke() {
+                m_writer.openPacket(m_outputStream);
+            }
+        });
+        AssertHelper.assertStringContains("already opened", exception.getMessage());
     }
 
-    private StringWriter m_stringWriter;
-    private CesiumOutputStream m_outputStream;
-    private CesiumStreamWriter m_writer;
     @Nonnull
     private final TestContextRule rule$testContext = new TestContextRule();
 
@@ -64,14 +70,5 @@ public class TestCesiumStreamWriter {
     @Rule
     public TestContextRule getRule$testContext() {
         return rule$testContext;
-    }
-
-    @Nonnull
-    private final ExpectedException rule$expectedException = ExpectedException.none();
-
-    @Nonnull
-    @Rule
-    public ExpectedException getRule$expectedException() {
-        return rule$expectedException;
     }
 }

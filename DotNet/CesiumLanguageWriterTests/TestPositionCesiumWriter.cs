@@ -17,6 +17,7 @@ namespace CesiumLanguageWriterTests
             {
                 interval.WriteReferenceFrame("myReferenceFrame");
             }
+
             Assert.AreEqual("{\"position\":{\"referenceFrame\":\"myReferenceFrame\"}}", StringWriter.ToString());
         }
 
@@ -29,6 +30,7 @@ namespace CesiumLanguageWriterTests
             {
                 interval.WriteCartesian(new Cartesian(1.0, 2.0, 3.0));
             }
+
             Assert.AreEqual("{\"position\":{\"cartesian\":[1,2,3]}}", StringWriter.ToString());
         }
 
@@ -41,6 +43,7 @@ namespace CesiumLanguageWriterTests
             {
                 interval.WriteCartographicRadians(new Cartographic(1100.0, 2200.0, 3.0));
             }
+
             Assert.AreEqual("{\"position\":{\"cartographicRadians\":[1100,2200,3]}}", StringWriter.ToString());
         }
 
@@ -64,6 +67,7 @@ namespace CesiumLanguageWriterTests
 
                 interval.WriteCartesian(dates, positions);
             }
+
             Assert.AreEqual("{\"position\":{\"epoch\":\"20120402T12Z\",\"cartesian\":[0,1.1,2.2,3.3,60,4.4,5.5,6.6]}}", StringWriter.ToString());
         }
 
@@ -90,6 +94,7 @@ namespace CesiumLanguageWriterTests
 
                 interval.WriteCartesian(dates, positions, 1, 1);
             }
+
             Assert.AreEqual("{\"position\":{\"epoch\":\"20120402T1201Z\",\"cartesian\":[0,4,5,6]}}", StringWriter.ToString());
         }
 
@@ -113,6 +118,7 @@ namespace CesiumLanguageWriterTests
 
                 interval.WriteCartographicRadians(dates, positions);
             }
+
             Assert.AreEqual("{\"position\":{\"epoch\":\"20120402T12Z\",\"cartographicRadians\":[0,1.1,2.2,3.3,60,4.4,5.5,6.6]}}", StringWriter.ToString());
         }
 
@@ -139,6 +145,7 @@ namespace CesiumLanguageWriterTests
 
                 interval.WriteCartographicRadians(dates, positions, 1, 1);
             }
+
             Assert.AreEqual("{\"position\":{\"epoch\":\"20120402T1201Z\",\"cartographicRadians\":[0,4,5,6]}}", StringWriter.ToString());
         }
 
@@ -153,6 +160,7 @@ namespace CesiumLanguageWriterTests
                 var positions = new List<Cartesian>();
                 interval.WriteCartesian(dates, positions);
             }
+
             Assert.AreEqual("{\"position\":{\"cartesian\":[]}}", StringWriter.ToString());
         }
 
@@ -167,6 +175,7 @@ namespace CesiumLanguageWriterTests
                 var positions = new List<Cartographic>();
                 interval.WriteCartographicRadians(dates, positions);
             }
+
             Assert.AreEqual("{\"position\":{\"cartographicRadians\":[]}}", StringWriter.ToString());
         }
 

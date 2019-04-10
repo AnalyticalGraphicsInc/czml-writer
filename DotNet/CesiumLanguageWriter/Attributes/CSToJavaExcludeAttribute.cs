@@ -10,6 +10,7 @@ using System.Diagnostics;
                 AttributeTargets.Field | AttributeTargets.Event | AttributeTargets.Interface |
                 AttributeTargets.Delegate)]
 [CSToJavaExclude]
+// ReSharper disable once CheckNamespace
 internal sealed class CSToJavaExcludeAttribute : Attribute
 {
     public CSToJavaExcludeAttribute()

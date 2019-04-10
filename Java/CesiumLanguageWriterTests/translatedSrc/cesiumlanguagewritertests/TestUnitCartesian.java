@@ -2,16 +2,16 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
+import agi.foundation.compatibility.Action;
 import agi.foundation.compatibility.AssertHelper;
-import agi.foundation.compatibility.ExpectedExceptionHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.TestContextRule;
+import agi.foundation.TypeLiteral;
 import cesiumlanguagewriter.*;
 import javax.annotation.Nonnull;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
-import org.junit.rules.ExpectedException;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
@@ -104,8 +104,8 @@ public class TestUnitCartesian {
     */
     @Test
     public final void testFromClockAndCone() {
-        double fortyFiveDegrees = Math.PI / 4.0;
-        double thirtyDegrees = Math.PI / 6.0;
+        final double fortyFiveDegrees = Math.PI / 4.0;
+        final double thirtyDegrees = Math.PI / 6.0;
         UnitCartesian test = new UnitCartesian(thirtyDegrees, fortyFiveDegrees);
         Assert.assertEquals(Math.sqrt(3.0) / Math.sqrt(8.0), test.getX(), Constants.Epsilon15);
         Assert.assertEquals(1.0 / Math.sqrt(8.0), test.getY(), Constants.Epsilon15);
@@ -200,6 +200,7 @@ public class TestUnitCartesian {
     public final void testEqualityWithWrongType() {
         UnitCartesian first = new UnitCartesian(1.0, 2.0, 3.0);
         Cartographic second = new Cartographic(1.0, 2.0, 3.0);
+        // ReSharper disable once SuspiciousTypeConversion.Global
         Assert.assertFalse(first.equals(second));
     }
 
@@ -227,8 +228,11 @@ public class TestUnitCartesian {
     */
     @Test
     public final void testFromZero() {
-        ExpectedExceptionHelper.expectException(getRule$expectedException(), ArithmeticException.class);
-        UnitCartesian first = new UnitCartesian(Cartesian.getZero());
+        AssertHelper.<ArithmeticException> assertThrows(new TypeLiteral<ArithmeticException>() {}, new Action() {
+            public void invoke() {
+                cesiumlanguagewriter.UnitCartesian unused = new UnitCartesian(Cartesian.getZero());
+            }
+        });
     }
 
     /**
@@ -240,8 +244,11 @@ public class TestUnitCartesian {
     */
     @Test
     public final void testFromInfinity() {
-        ExpectedExceptionHelper.expectException(getRule$expectedException(), ArithmeticException.class);
-        UnitCartesian first = new UnitCartesian(Double.POSITIVE_INFINITY, 0.0, 0.0);
+        AssertHelper.<ArithmeticException> assertThrows(new TypeLiteral<ArithmeticException>() {}, new Action() {
+            public void invoke() {
+                cesiumlanguagewriter.UnitCartesian unused = new UnitCartesian(Double.POSITIVE_INFINITY, 0.0, 0.0);
+            }
+        });
     }
 
     /**
@@ -389,7 +396,7 @@ public class TestUnitCartesian {
     */
     @Test
     public final void testCrossProduct() {
-        double angle = Math.PI / 4.0;
+        final double angle = Math.PI / 4.0;
         double cos = Math.cos(angle / 2.0);
         double sin = Math.sin(angle / 2.0);
         double a = cos * cos - sin * sin / 3.0;
@@ -450,14 +457,5 @@ public class TestUnitCartesian {
     @Rule
     public TestContextRule getRule$testContext() {
         return rule$testContext;
-    }
-
-    @Nonnull
-    private final ExpectedException rule$expectedException = ExpectedException.none();
-
-    @Nonnull
-    @Rule
-    public ExpectedException getRule$expectedException() {
-        return rule$expectedException;
     }
 }

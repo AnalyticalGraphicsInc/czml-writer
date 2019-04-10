@@ -303,14 +303,11 @@ public final class Duration implements Comparable<Duration>, IEquatable<Duration
     
     */
     public final int compareTo(@Nonnull Duration other) {
-        if (m_days != other.m_days) {
-            return m_days < other.m_days ? -1 : 1;
+        int result = Integer.compare(m_days, other.m_days);
+        if (result == 0) {
+            result = Double.compare(m_seconds, other.m_seconds);
         }
-        // ReSharper disable once CompareOfFloatsByEqualityOperator
-        if (m_seconds == other.m_seconds) {
-            return 0;
-        }
-        return m_seconds < other.m_seconds ? -1 : 1;
+        return result;
     }
 
     /**
@@ -680,12 +677,12 @@ public final class Duration implements Comparable<Duration>, IEquatable<Duration
         return new Duration(0, seconds);
     }
 
+    @Nonnull
+    private static final Duration s_maxValue = new Duration(Integer.MAX_VALUE, 0.0);
+    @Nonnull
+    private static final Duration s_minValue = new Duration(Integer.MIN_VALUE, 0.0);
+    @Nonnull
+    private static final Duration s_zero = new Duration(0, 0.0);
     private int m_days;
     private double m_seconds;
-    @Nonnull
-    private static Duration s_maxValue = new Duration(Integer.MAX_VALUE, 0.0);
-    @Nonnull
-    private static Duration s_minValue = new Duration(Integer.MIN_VALUE, 0.0);
-    @Nonnull
-    private static Duration s_zero = new Duration(0, 0.0);
 }

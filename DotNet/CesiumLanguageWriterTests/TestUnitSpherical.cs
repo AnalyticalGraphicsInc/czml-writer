@@ -29,8 +29,8 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestFromUnitCartesian()
         {
-            double fortyFiveDegrees = Math.PI / 4.0;
-            double sixtyDegrees = Math.PI / 3.0;
+            const double fortyFiveDegrees = Math.PI / 4.0;
+            const double sixtyDegrees = Math.PI / 3.0;
 
             UnitSpherical test = new UnitSpherical(new UnitCartesian(1.0, Math.Sqrt(3.0), -2.0));
             Assert.AreEqual(sixtyDegrees, test.Clock, Constants.Epsilon15);
@@ -102,6 +102,7 @@ namespace CesiumLanguageWriterTests
             UnitSpherical first = new UnitSpherical(1.0, 2.0);
             Cartographic second = new Cartographic(1.0, 2.0, 3.0);
 
+            // ReSharper disable once SuspiciousTypeConversion.Global
             Assert.IsFalse(first.Equals(second));
         }
 
@@ -124,12 +125,12 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestToString()
         {
-            StringBuilder s = new StringBuilder(80);
-            s.Append((-Math.PI).ToString(CultureInfo.CurrentCulture));
-            s.Append(", ");
-            s.Append(Math.PI.ToString(CultureInfo.CurrentCulture));
+            StringBuilder builder = new StringBuilder();
+            builder.Append((-Math.PI).ToString(CultureInfo.CurrentCulture));
+            builder.Append(", ");
+            builder.Append(Math.PI.ToString(CultureInfo.CurrentCulture));
             UnitSpherical test = new UnitSpherical(-Math.PI, Math.PI);
-            Assert.AreEqual(s.ToString(), test.ToString());
+            Assert.AreEqual(builder.ToString(), test.ToString());
         }
     }
 }

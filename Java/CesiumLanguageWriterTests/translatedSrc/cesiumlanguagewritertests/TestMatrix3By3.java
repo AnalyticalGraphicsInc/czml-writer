@@ -2,17 +2,18 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
+import agi.foundation.compatibility.Action;
+import agi.foundation.compatibility.ArgumentException;
 import agi.foundation.compatibility.ArgumentOutOfRangeException;
 import agi.foundation.compatibility.AssertHelper;
-import agi.foundation.compatibility.ExpectedExceptionHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.TestContextRule;
+import agi.foundation.TypeLiteral;
 import cesiumlanguagewriter.*;
 import javax.annotation.Nonnull;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
-import org.junit.rules.ExpectedException;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
@@ -37,24 +38,18 @@ public class TestMatrix3By3 {
     */
     @Test
     public final void testHoldValue() {
-        Matrix3By3 test = new Matrix3By3(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0);
-        Assert.assertEquals(1.0, test.getM11(), 0d);
-        Assert.assertEquals(2.0, test.getM12(), 0d);
-        Assert.assertEquals(3.0, test.getM13(), 0d);
-        Assert.assertEquals(4.0, test.getM21(), 0d);
-        Assert.assertEquals(5.0, test.getM22(), 0d);
-        Assert.assertEquals(6.0, test.getM23(), 0d);
-        Assert.assertEquals(7.0, test.getM31(), 0d);
-        Assert.assertEquals(8.0, test.getM32(), 0d);
-        Assert.assertEquals(9.0, test.getM33(), 0d);
+        Matrix3By3 matrix = new Matrix3By3(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0);
+        Assert.assertEquals(1.0, matrix.getM11(), 0d);
+        Assert.assertEquals(2.0, matrix.getM12(), 0d);
+        Assert.assertEquals(3.0, matrix.getM13(), 0d);
+        Assert.assertEquals(4.0, matrix.getM21(), 0d);
+        Assert.assertEquals(5.0, matrix.getM22(), 0d);
+        Assert.assertEquals(6.0, matrix.getM23(), 0d);
+        Assert.assertEquals(7.0, matrix.getM31(), 0d);
+        Assert.assertEquals(8.0, matrix.getM32(), 0d);
+        Assert.assertEquals(9.0, matrix.getM33(), 0d);
     }
 
-    /**
-    *  
-    Tests construction from a {@link Quaternion}.
-    
-
-    */
     @Test
     public final void testFromQuaternion() {
         UnitQuaternion quaternion = UnitQuaternion.getIdentity();
@@ -123,15 +118,10 @@ public class TestMatrix3By3 {
     public final void testEqualityWithWrongType() {
         Matrix3By3 first = Matrix3By3.getIdentity();
         Cartesian second = new Cartesian(1.0, 2.0, 3.0);
+        // ReSharper disable once SuspiciousTypeConversion.Global
         Assert.assertFalse(first.equals(second));
     }
 
-    /**
-    *  
-    Tests the {@link Matrix3By3#equalsEpsilon} method.
-    
-
-    */
     @Test
     public final void testEqualsEpsilon() {
         Matrix3By3 first = new Matrix3By3(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
@@ -168,12 +158,6 @@ public class TestMatrix3By3 {
         Assert.assertEquals(9.0, original.get(2, 2), 0d);
     }
 
-    /**
-    *  
-    Tests the {@link Matrix3By3#transpose} method.
-    
-
-    */
     @Test
     public final void testTranspose() {
         Matrix3By3 original = new Matrix3By3(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0);
@@ -189,12 +173,6 @@ public class TestMatrix3By3 {
         Assert.assertEquals(transposed.getM33(), original.getM33(), 0d);
     }
 
-    /**
-    *  
-    Tests {@code Identity} ({@link Matrix3By3#getIdentity get}).
-    
-
-    */
     @Test
     public final void testIdentity() {
         Matrix3By3 identity = Matrix3By3.getIdentity();
@@ -209,24 +187,26 @@ public class TestMatrix3By3 {
         Assert.assertEquals(1.0, identity.getM33(), 0d);
     }
 
-    /**
-    *  
-    Tests the {@code IsUndefined} ({@link Matrix3By3#getIsUndefined get}) method.
-    
-
-    */
     @Test
     public final void testIsUndefined() {
         Assert.assertFalse(Matrix3By3.getIdentity().getIsUndefined());
         Assert.assertTrue(Matrix3By3.getUndefined().getIsUndefined());
-        //* Check what happens if any of the elements are NaN
+        // Check what happens if any of the elements are NaN
         for (int i = 0; i < 9; i++) {
-            double[] values = new double[9];
-            for (int k = 0; k < 9; k++) {
-                values[k] = 1.0;
-            }
+            double[] values = {
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+            };
             values[i] = Double.NaN;
-            Assert.assertTrue(new Matrix3By3(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7], values[8]).getIsUndefined());
+            cesiumlanguagewriter.Matrix3By3 matrix = new Matrix3By3(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7], values[8]);
+            Assert.assertTrue(matrix.getIsUndefined());
         }
     }
 
@@ -238,8 +218,8 @@ public class TestMatrix3By3 {
     */
     @Test
     public final void testMultiplyByScalar() {
-        Matrix3By3 test = new Matrix3By3(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0);
-        Matrix3By3 result = test.multiply(-2.0);
+        Matrix3By3 matrix = new Matrix3By3(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0);
+        Matrix3By3 result = matrix.multiply(-2.0);
         Assert.assertEquals(-2.0, result.getM11(), 0d);
         Assert.assertEquals(-4.0, result.getM12(), 0d);
         Assert.assertEquals(-6.0, result.getM13(), 0d);
@@ -249,7 +229,7 @@ public class TestMatrix3By3 {
         Assert.assertEquals(-14.0, result.getM31(), 0d);
         Assert.assertEquals(-16.0, result.getM32(), 0d);
         Assert.assertEquals(-18.0, result.getM33(), 0d);
-        result = Matrix3By3.multiply(test, -2.0);
+        result = Matrix3By3.multiply(matrix, -2.0);
         Assert.assertEquals(-2.0, result.getM11(), 0d);
         Assert.assertEquals(-4.0, result.getM12(), 0d);
         Assert.assertEquals(-6.0, result.getM13(), 0d);
@@ -259,7 +239,7 @@ public class TestMatrix3By3 {
         Assert.assertEquals(-14.0, result.getM31(), 0d);
         Assert.assertEquals(-16.0, result.getM32(), 0d);
         Assert.assertEquals(-18.0, result.getM33(), 0d);
-        result = Matrix3By3.multiply(-2.0, test);
+        result = Matrix3By3.multiply(-2.0, matrix);
         Assert.assertEquals(-2.0, result.getM11(), 0d);
         Assert.assertEquals(-4.0, result.getM12(), 0d);
         Assert.assertEquals(-6.0, result.getM13(), 0d);
@@ -279,7 +259,7 @@ public class TestMatrix3By3 {
     */
     @Test
     public final void testMultiplyByMatrix() {
-        double angle = Math.PI / 4.0;
+        final double angle = Math.PI / 4.0;
         double cos = Math.cos(angle / 2.0);
         double sin = Math.sin(angle / 2.0);
         double a = cos * cos - sin * sin / 3.0;
@@ -288,12 +268,12 @@ public class TestMatrix3By3 {
         // The matrix here is formed from the orthonormal set obtained by rotating
         // the x-axis, y-axis, and z-axis through an angle of 45 degrees about
         // the (1,1,1) vector.
-        Matrix3By3 test = new Matrix3By3(a, c, b, b, a, c, c, b, a);
-        Matrix3By3 transpose = test.transpose();
-        Matrix3By3 result = test.multiply(transpose);
-        Assert.assertTrue(result.equalsEpsilon(Matrix3By3.getIdentity(), 1e-16));
-        result = Matrix3By3.multiply(test, transpose);
-        Assert.assertTrue(result.equalsEpsilon(Matrix3By3.getIdentity(), 1e-16));
+        Matrix3By3 matrix = new Matrix3By3(a, c, b, b, a, c, c, b, a);
+        Matrix3By3 transpose = matrix.transpose();
+        Matrix3By3 result = matrix.multiply(transpose);
+        Assert.assertTrue(result.equalsEpsilon(Matrix3By3.getIdentity(), Constants.Epsilon16));
+        result = Matrix3By3.multiply(matrix, transpose);
+        Assert.assertTrue(result.equalsEpsilon(Matrix3By3.getIdentity(), Constants.Epsilon16));
     }
 
     /**
@@ -302,11 +282,26 @@ public class TestMatrix3By3 {
     
 
     */
+    public final void indexerThrowsWithRowOutOfRange(final int row, final int column) {
+        final Matrix3By3 matrix = Matrix3By3.diagonalMatrix(-3.0, 1.0, 5.0);
+        ArgumentOutOfRangeException exception = AssertHelper.<ArgumentOutOfRangeException> assertThrows(new TypeLiteral<ArgumentOutOfRangeException>() {}, new Action() {
+            public void invoke() {
+                double unused = matrix.get(row, column);
+            }
+        });
+        Assert.assertEquals("row", exception.getParamName());
+    }
+
     @Test
-    public final void testFirstIndexTooHigh() {
-        ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
-        Matrix3By3 diagonal = Matrix3By3.diagonalMatrix(-3.0, 1.0, 5.0);
-        double bad = diagonal.get(3, 0);
+    public final void indexerThrowsWithRowOutOfRange$Test() {
+        for (final int row : new int[] {
+                -1,
+                3
+        }) {
+            for (int column = 0; column <= 2; column += 1) {
+                indexerThrowsWithRowOutOfRange(row, column);
+            }
+        }
     }
 
     /**
@@ -315,94 +310,31 @@ public class TestMatrix3By3 {
     
 
     */
+    public final void indexerThrowsWithColumnOutOfRange(final int row, final int column) {
+        final Matrix3By3 matrix = Matrix3By3.diagonalMatrix(-3.0, 1.0, 5.0);
+        ArgumentOutOfRangeException exception = AssertHelper.<ArgumentOutOfRangeException> assertThrows(new TypeLiteral<ArgumentOutOfRangeException>() {}, new Action() {
+            public void invoke() {
+                double unused = matrix.get(row, column);
+            }
+        });
+        Assert.assertEquals("column", exception.getParamName());
+    }
+
     @Test
-    public final void testFirstIndexTooLow() {
-        ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
-        Matrix3By3 diagonal = Matrix3By3.diagonalMatrix(-3.0, 1.0, 5.0);
-        double bad = diagonal.get(-1, 0);
+    public final void indexerThrowsWithColumnOutOfRange$Test() {
+        for (int row = 0; row <= 2; row += 1) {
+            for (final int column : new int[] {
+                    -1,
+                    3
+            }) {
+                indexerThrowsWithColumnOutOfRange(row, column);
+            }
+        }
     }
 
     /**
     *  
-    Tests to ensure that an invalid index throws the anticipated exception.
-    
-
-    */
-    @Test
-    public final void testSecondIndexTooHigh0() {
-        ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
-        Matrix3By3 diagonal = Matrix3By3.diagonalMatrix(-3.0, 1.0, 5.0);
-        double bad = diagonal.get(0, 3);
-    }
-
-    /**
-    *  
-    Tests to ensure that an invalid index throws the anticipated exception.
-    
-
-    */
-    @Test
-    public final void testSecondIndexTooLow0() {
-        ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
-        Matrix3By3 diagonal = Matrix3By3.diagonalMatrix(-3.0, 1.0, 5.0);
-        double bad = diagonal.get(0, -1);
-    }
-
-    /**
-    *  
-    Tests to ensure that an invalid index throws the anticipated exception.
-    
-
-    */
-    @Test
-    public final void testSecondIndexTooHigh1() {
-        ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
-        Matrix3By3 diagonal = Matrix3By3.diagonalMatrix(-3.0, 1.0, 5.0);
-        double bad = diagonal.get(1, -1);
-    }
-
-    /**
-    *  
-    Tests to ensure that an invalid index throws the anticipated exception.
-    
-
-    */
-    @Test
-    public final void testSecondIndexTooLow1() {
-        ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
-        Matrix3By3 diagonal = Matrix3By3.diagonalMatrix(-3.0, 1.0, 5.0);
-        double bad = diagonal.get(1, -1);
-    }
-
-    /**
-    *  
-    Tests to ensure that an invalid index throws the anticipated exception.
-    
-
-    */
-    @Test
-    public final void testSecondIndexTooHigh2() {
-        ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
-        Matrix3By3 diagonal = Matrix3By3.diagonalMatrix(-3.0, 1.0, 5.0);
-        double bad = diagonal.get(2, 3);
-    }
-
-    /**
-    *  
-    Tests to ensure that an invalid index throws the anticipated exception.
-    
-
-    */
-    @Test
-    public final void testSecondIndexTooLow2() {
-        ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentOutOfRangeException.class);
-        Matrix3By3 diagonal = Matrix3By3.diagonalMatrix(-3.0, 1.0, 5.0);
-        double bad = diagonal.get(2, -1);
-    }
-
-    /**
-    *  
-    Tests that Matrix3By3.GetHashCode returns something at least reasonably random.
+    Tests that GetHashCode returns something at least reasonably random.
     
 
     */
@@ -443,14 +375,15 @@ public class TestMatrix3By3 {
     */
     @Test
     public final void testMathOperators() {
-        Matrix3By3 test1 = new Matrix3By3(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0);
-        Matrix3By3 test2 = new Matrix3By3(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0);
-        Assert.assertTrue(Matrix3By3.getZero().equalsType(test1.subtract(test2)));
-        Assert.assertTrue(Matrix3By3.getZero().equalsType(Matrix3By3.subtract(test1, test2)));
-        Assert.assertTrue((Matrix3By3.multiply(test2, 2.0)).equalsType(test1.add(test2)));
-        Assert.assertTrue((Matrix3By3.multiply(test2, 2.0)).equalsType(Matrix3By3.add(test1, test2)));
-        Assert.assertTrue((new Matrix3By3(30D, 36D, 42D, 66D, 81D, 96D, 102D, 126D, 150D).equalsType(test1.multiply(test2))));
-        Assert.assertTrue((new Matrix3By3(30D, 36D, 42D, 66D, 81D, 96D, 102D, 126D, 150D).equalsType(Matrix3By3.multiply(test1, test2))));
+        cesiumlanguagewriter.Matrix3By3 matrix1 = new Matrix3By3(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0);
+        cesiumlanguagewriter.Matrix3By3 matrix2 = new Matrix3By3(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0);
+        AssertHelper.assertEquals(Matrix3By3.getZero(), matrix1.subtract(matrix2));
+        AssertHelper.assertEquals(Matrix3By3.getZero(), Matrix3By3.subtract(matrix1, matrix2));
+        AssertHelper.assertEquals(Matrix3By3.multiply(matrix2, 2.0), matrix1.add(matrix2));
+        AssertHelper.assertEquals(Matrix3By3.multiply(matrix2, 2.0), Matrix3By3.add(matrix1, matrix2));
+        cesiumlanguagewriter.Matrix3By3 expected = new Matrix3By3(30D, 36D, 42D, 66D, 81D, 96D, 102D, 126D, 150D);
+        AssertHelper.assertEquals(expected, matrix1.multiply(matrix2));
+        AssertHelper.assertEquals(expected, Matrix3By3.multiply(matrix1, matrix2));
     }
 
     /**
@@ -461,10 +394,11 @@ public class TestMatrix3By3 {
     */
     @Test
     public final void testMathOperatorsWithCartesian() {
-        Matrix3By3 test = new Matrix3By3(1.0, 2.0, 4.0, 2.0, 3.0, 5.0, 4.0, 5.0, 6.0);
-        Cartesian mult = new Cartesian(1D, 2D, 3D);
-        Assert.assertTrue((new Cartesian(17D, 23D, 32D).equalsType(test.multiply(mult))));
-        Assert.assertTrue((new Cartesian(17D, 23D, 32D).equalsType(Matrix3By3.multiply(test, mult))));
+        Matrix3By3 matrix = new Matrix3By3(1.0, 2.0, 4.0, 2.0, 3.0, 5.0, 4.0, 5.0, 6.0);
+        Cartesian vector = new Cartesian(1D, 2D, 3D);
+        cesiumlanguagewriter.Cartesian expected = new Cartesian(17D, 23D, 32D);
+        AssertHelper.assertEquals(expected, matrix.multiply(vector));
+        AssertHelper.assertEquals(expected, Matrix3By3.multiply(matrix, vector));
     }
 
     @Nonnull
@@ -474,14 +408,5 @@ public class TestMatrix3By3 {
     @Rule
     public TestContextRule getRule$testContext() {
         return rule$testContext;
-    }
-
-    @Nonnull
-    private final ExpectedException rule$expectedException = ExpectedException.none();
-
-    @Nonnull
-    @Rule
-    public ExpectedException getRule$expectedException() {
-        return rule$expectedException;
     }
 }

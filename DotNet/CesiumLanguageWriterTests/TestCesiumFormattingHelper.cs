@@ -17,7 +17,7 @@ namespace CesiumLanguageWriterTests
             Assert.IsNotNull(s);
         }
 
-        public IEnumerable<ClockRange> ClockRangeValues
+        public static IEnumerable<ClockRange> ClockRangeValues
         {
             get { return (ClockRange[])Enum.GetValues(typeof(ClockRange)); }
         }
@@ -30,7 +30,7 @@ namespace CesiumLanguageWriterTests
             Assert.IsNotNull(s);
         }
 
-        public IEnumerable<ClockStep> ClockStepValues
+        public static IEnumerable<ClockStep> ClockStepValues
         {
             get { return (ClockStep[])Enum.GetValues(typeof(ClockStep)); }
         }
@@ -43,7 +43,7 @@ namespace CesiumLanguageWriterTests
             Assert.IsNotNull(s);
         }
 
-        public IEnumerable<CesiumColorBlendMode> ColorBlendModeValues
+        public static IEnumerable<CesiumColorBlendMode> ColorBlendModeValues
         {
             get { return (CesiumColorBlendMode[])Enum.GetValues(typeof(CesiumColorBlendMode)); }
         }
@@ -56,7 +56,7 @@ namespace CesiumLanguageWriterTests
             Assert.IsNotNull(s);
         }
 
-        public IEnumerable<CesiumCornerType> CornerTypeValues
+        public static IEnumerable<CesiumCornerType> CornerTypeValues
         {
             get { return (CesiumCornerType[])Enum.GetValues(typeof(CesiumCornerType)); }
         }
@@ -69,7 +69,7 @@ namespace CesiumLanguageWriterTests
             Assert.IsNotNull(s);
         }
 
-        public IEnumerable<CesiumExtrapolationType> ExtrapolationTypeValues
+        public static IEnumerable<CesiumExtrapolationType> ExtrapolationTypeValues
         {
             get { return (CesiumExtrapolationType[])Enum.GetValues(typeof(CesiumExtrapolationType)); }
         }
@@ -82,7 +82,7 @@ namespace CesiumLanguageWriterTests
             Assert.IsNotNull(s);
         }
 
-        public IEnumerable<CesiumHeightReference> HeightReferenceValues
+        public static IEnumerable<CesiumHeightReference> HeightReferenceValues
         {
             get { return (CesiumHeightReference[])Enum.GetValues(typeof(CesiumHeightReference)); }
         }
@@ -95,7 +95,7 @@ namespace CesiumLanguageWriterTests
             Assert.IsNotNull(s);
         }
 
-        public IEnumerable<CesiumHorizontalOrigin> HorizontalOriginValues
+        public static IEnumerable<CesiumHorizontalOrigin> HorizontalOriginValues
         {
             get { return (CesiumHorizontalOrigin[])Enum.GetValues(typeof(CesiumHorizontalOrigin)); }
         }
@@ -108,7 +108,7 @@ namespace CesiumLanguageWriterTests
             Assert.IsNotNull(s);
         }
 
-        public IEnumerable<CesiumInterpolationAlgorithm> InterpolationAlgorithmValues
+        public static IEnumerable<CesiumInterpolationAlgorithm> InterpolationAlgorithmValues
         {
             get { return (CesiumInterpolationAlgorithm[])Enum.GetValues(typeof(CesiumInterpolationAlgorithm)); }
         }
@@ -121,7 +121,7 @@ namespace CesiumLanguageWriterTests
             Assert.IsNotNull(s);
         }
 
-        public IEnumerable<CesiumLabelStyle> LabelStyleValues
+        public static IEnumerable<CesiumLabelStyle> LabelStyleValues
         {
             get { return (CesiumLabelStyle[])Enum.GetValues(typeof(CesiumLabelStyle)); }
         }
@@ -134,7 +134,7 @@ namespace CesiumLanguageWriterTests
             Assert.IsNotNull(s);
         }
 
-        public IEnumerable<CesiumSensorVolumePortionToDisplay> SensorVolumePortionToDisplayValues
+        public static IEnumerable<CesiumSensorVolumePortionToDisplay> SensorVolumePortionToDisplayValues
         {
             get { return (CesiumSensorVolumePortionToDisplay[])Enum.GetValues(typeof(CesiumSensorVolumePortionToDisplay)); }
         }
@@ -147,7 +147,7 @@ namespace CesiumLanguageWriterTests
             Assert.IsNotNull(s);
         }
 
-        public IEnumerable<CesiumShadowMode> ShadowModeValues
+        public static IEnumerable<CesiumShadowMode> ShadowModeValues
         {
             get { return (CesiumShadowMode[])Enum.GetValues(typeof(CesiumShadowMode)); }
         }
@@ -160,7 +160,7 @@ namespace CesiumLanguageWriterTests
             Assert.IsNotNull(s);
         }
 
-        public IEnumerable<CesiumStripeOrientation> StripeOrientationValues
+        public static IEnumerable<CesiumStripeOrientation> StripeOrientationValues
         {
             get { return (CesiumStripeOrientation[])Enum.GetValues(typeof(CesiumStripeOrientation)); }
         }
@@ -173,7 +173,7 @@ namespace CesiumLanguageWriterTests
             Assert.IsNotNull(s);
         }
 
-        public IEnumerable<CesiumVerticalOrigin> VerticalOriginValues
+        public static IEnumerable<CesiumVerticalOrigin> VerticalOriginValues
         {
             get { return (CesiumVerticalOrigin[])Enum.GetValues(typeof(CesiumVerticalOrigin)); }
         }

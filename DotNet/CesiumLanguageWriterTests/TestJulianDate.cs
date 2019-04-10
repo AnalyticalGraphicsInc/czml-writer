@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Threading;
 using CesiumLanguageWriter;
@@ -214,8 +215,8 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestMinutesDifference()
         {
-            double totalElapsedTime = TimeConstants.SecondsPerDay * 2.5;
-            double totalElapsedTimeMinutes = totalElapsedTime / TimeConstants.SecondsPerMinute;
+            const double totalElapsedTime = TimeConstants.SecondsPerDay * 2.5;
+            const double totalElapsedTimeMinutes = totalElapsedTime / TimeConstants.SecondsPerMinute;
 
             //Test same time standard, both safe
             JulianDate first = new JulianDate(2451545.0);
@@ -245,8 +246,8 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestDaysDifference()
         {
-            double totalElapsedTime = TimeConstants.SecondsPerDay * 2.5;
-            double totalElapsedTimeDays = totalElapsedTime / TimeConstants.SecondsPerDay;
+            const double totalElapsedTime = TimeConstants.SecondsPerDay * 2.5;
+            const double totalElapsedTimeDays = totalElapsedTime / TimeConstants.SecondsPerDay;
 
             //Test same time standard, both safe
             JulianDate first = new JulianDate(2451545.0);
@@ -356,8 +357,8 @@ namespace CesiumLanguageWriterTests
         {
             JulianDate date1 = new JulianDate(2451545.0);
             object date2 = new JulianDate(2451545.0);
-            Assert.IsTrue(date1.CompareTo(null) > 0);
-            Assert.IsTrue(date1.CompareTo(date2) == 0);
+            Assert.Greater(date1.CompareTo(null), 0);
+            Assert.AreEqual(0, date1.CompareTo(date2));
         }
 
         /// <summary>
@@ -365,12 +366,15 @@ namespace CesiumLanguageWriterTests
         /// to a type that is not a JulianDate.
         /// </summary>
         [Test]
-        [ExpectedException(typeof(ArgumentException))]
         [CSToJavaExclude]
         public void TestCompareToWrongType()
         {
-            JulianDate date1 = new JulianDate(2451545.0);
-            int unused = date1.CompareTo(2451545.0);
+            JulianDate date = new JulianDate(2451545.0);
+
+            Assert.Throws<ArgumentException>(() =>
+            {
+                int unused = date.CompareTo(2451545.0);
+            });
         }
 
         /// <summary>
@@ -397,7 +401,9 @@ namespace CesiumLanguageWriterTests
         public void TestToString()
         {
             JulianDate date = new JulianDate(2451545.5);
-            Assert.AreEqual("2451545:43200 TAI (1/1/2000 11:59:28 PM)", date.ToString());
+
+            string expected = string.Format("2451545:43200 TAI ({0})", date.ToGregorianDate());
+            Assert.AreEqual(expected, date.ToString());
         }
 
         /// <summary>
@@ -430,48 +436,6 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(800 + 234 / TimeConstants.SecondsPerDay, Convert.ToDouble(julianDate));
         }
 
-        /// <summary>
-        /// Tests the <see cref="IConvertible.ToSByte(System.IFormatProvider)"/> method.
-        /// </summary>
-        [Test]
-        [ExpectedException(typeof(InvalidCastException))]
-        [CSToJavaExclude]
-        public void TestToSByte()
-        {
-            JulianDate julianDate = new JulianDate(100);
-            IConvertible convertible = julianDate;
-            sbyte unused = convertible.ToSByte(null);
-        }
-
-        /// <summary>
-        /// Tests the <see cref="IConvertible.ToChar(System.IFormatProvider)"/> method.
-        /// </summary>
-        [Test]
-        [ExpectedException(typeof(InvalidCastException))]
-        [CSToJavaExclude]
-        public void TestToChar()
-        {
-            JulianDate julianDate = new JulianDate(100);
-            IConvertible convertible = julianDate;
-            char unused = convertible.ToChar(null);
-        }
-
-        /// <summary>
-        /// Tests the <see cref="IConvertible.ToUInt16(System.IFormatProvider)"/> method.
-        /// </summary>
-        [Test]
-        [ExpectedException(typeof(InvalidCastException))]
-        [CSToJavaExclude]
-        public void TestToUInt16()
-        {
-            JulianDate julianDate = new JulianDate(100);
-            IConvertible convertible = julianDate;
-            ushort unused = convertible.ToUInt16(null);
-        }
-
-        /// <summary>
-        /// Tests the <see cref="IConvertible.ToString"/> method.
-        /// </summary>
         [Test]
         [CSToJavaExclude]
         public void TestIConvertibleToString()
@@ -479,6 +443,27 @@ namespace CesiumLanguageWriterTests
             JulianDate julianDate = new JulianDate(500);
 
             Assert.AreEqual(julianDate.ToString(), Convert.ToString(julianDate));
+        }
+
+        [Test]
+        [CSToJavaExclude]
+        [SuppressMessage("ReSharper", "ReturnValueOfPureMethodIsNotUsed")]
+        public void TestIConvertibleFailures()
+        {
+            JulianDate date = new JulianDate(500);
+
+            Assert.Throws<InvalidCastException>(() => Convert.ToBoolean(date));
+            Assert.Throws<InvalidCastException>(() => Convert.ToByte(date));
+            Assert.Throws<InvalidCastException>(() => Convert.ToChar(date));
+            Assert.Throws<InvalidCastException>(() => Convert.ToDecimal(date));
+            Assert.Throws<InvalidCastException>(() => Convert.ToInt16(date));
+            Assert.Throws<InvalidCastException>(() => Convert.ToInt32(date));
+            Assert.Throws<InvalidCastException>(() => Convert.ToInt64(date));
+            Assert.Throws<InvalidCastException>(() => Convert.ToSByte(date));
+            Assert.Throws<InvalidCastException>(() => Convert.ToSingle(date));
+            Assert.Throws<InvalidCastException>(() => Convert.ToUInt16(date));
+            Assert.Throws<InvalidCastException>(() => Convert.ToUInt32(date));
+            Assert.Throws<InvalidCastException>(() => Convert.ToUInt64(date));
         }
 
         /// <summary>
@@ -489,7 +474,7 @@ namespace CesiumLanguageWriterTests
         public void TestConvertToType()
         {
             JulianDate date = new JulianDate(2451545.0);
-            IConvertible convertible = date as IConvertible;
+            IConvertible convertible = date;
             DateTimeFormatInfo info = new DateTimeFormatInfo();
 
             Assert.AreEqual(date.ToString(), convertible.ToType(typeof(string), info));
@@ -505,7 +490,7 @@ namespace CesiumLanguageWriterTests
         public void TestGetTypeCode()
         {
             JulianDate date = new JulianDate(100);
-            IConvertible convertible = date as IConvertible;
+            IConvertible convertible = date;
             Assert.AreEqual(TypeCode.Object, convertible.GetTypeCode());
         }
 
@@ -543,7 +528,7 @@ namespace CesiumLanguageWriterTests
         public void TestReallySmallNegativeSecondsOfDay()
         {
             JulianDate date = new JulianDate(2451545, -Constants.Epsilon13);
-            Assert.AreEqual(date.Day, 2451545);
+            Assert.AreEqual(2451545, date.Day);
             Assert.AreEqual(0.0, date.SecondsOfDay);
         }
 

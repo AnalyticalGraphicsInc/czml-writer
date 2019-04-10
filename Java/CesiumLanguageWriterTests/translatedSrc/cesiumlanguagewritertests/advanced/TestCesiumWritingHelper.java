@@ -24,6 +24,9 @@ import org.junit.Test;
 })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCesiumWritingHelper {
+    private StringWriter m_stringWriter;
+    private CesiumOutputStream m_outputStream;
+
     @Before
     public final void setUp() {
         m_stringWriter = new StringWriter();
@@ -45,8 +48,6 @@ public class TestCesiumWritingHelper {
         Assert.assertEquals("[\"bar#color\",\"foo#color2\"]", m_stringWriter.toString());
     }
 
-    private StringWriter m_stringWriter;
-    private CesiumOutputStream m_outputStream;
     @Nonnull
     private final TestContextRule rule$testContext = new TestContextRule();
 

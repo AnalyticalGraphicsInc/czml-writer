@@ -14,27 +14,6 @@ namespace CesiumLanguageWriter
     public struct Cartesian : IEquatable<Cartesian>
     {
         /// <summary>
-        /// Gets a set of <see cref="Cartesian"/> coordinates with values of zero.
-        /// </summary>
-        public static Cartesian Zero
-        {
-            get { return s_zero; }
-        }
-
-        /// <summary>
-        /// Gets a set of <see cref="Cartesian"/> coordinates with values of <see cref="Double.NaN"/>.
-        /// </summary>
-        /// <remarks>
-        /// Use <see cref="IsUndefined"/> to test whether a <see cref="Cartesian"/> instance
-        /// is undefined since it will return <see langword="true"/> if any of the coordinate values
-        /// are <see cref="Double.NaN"/>.
-        /// </remarks>
-        public static Cartesian Undefined
-        {
-            get { return s_undefined; }
-        }
-
-        /// <summary>
         /// Initializes a set of <see cref="Cartesian"/> coordinates from the provided values.
         /// </summary>
         /// <param name="x">The linear coordinate along the positive x-axis.</param>
@@ -48,6 +27,27 @@ namespace CesiumLanguageWriter
             m_x = x;
             m_y = y;
             m_z = z;
+        }
+
+        /// <summary>
+        /// Gets a set of <see cref="Cartesian"/> coordinates with values of zero.
+        /// </summary>
+        public static Cartesian Zero
+        {
+            get { return s_zero; }
+        }
+
+        /// <summary>
+        /// Gets a set of <see cref="Cartesian"/> coordinates with values of <see cref="double.NaN"/>.
+        /// </summary>
+        /// <remarks>
+        /// Use <see cref="IsUndefined"/> to test whether a <see cref="Cartesian"/> instance
+        /// is undefined since it will return <see langword="true"/> if any of the coordinate values
+        /// are <see cref="double.NaN"/>.
+        /// </remarks>
+        public static Cartesian Undefined
+        {
+            get { return s_undefined; }
         }
 
         /// <summary>
@@ -265,7 +265,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets whether or not any of the coordinates for this instance have the value <see cref="Double.NaN"/>.
+        /// Gets a value indicating whether or not any of the coordinates for this instance have the value <see cref="double.NaN"/>.
         /// </summary>
         public bool IsUndefined
         {
@@ -391,6 +391,7 @@ namespace CesiumLanguageWriter
         /// <exception cref="NotFiniteNumberException">
         /// The magnitude of the provided coordinates must not be infinite.
         /// </exception>
+        [Pure]
         public UnitCartesian Normalize()
         {
             double magnitude;
@@ -417,6 +418,7 @@ namespace CesiumLanguageWriter
         /// <exception cref="NotFiniteNumberException">
         /// The magnitude of the provided coordinates must not be infinite.
         /// </exception>
+        [Pure]
         [SuppressMessage("Microsoft.Design", "CA1021:AvoidOutParameters", MessageId = "0#")]
         public UnitCartesian Normalize(out double magnitude)
         {
@@ -433,11 +435,11 @@ namespace CesiumLanguageWriter
             return new Cartesian(coordinates.X, coordinates.Y, coordinates.Z);
         }
 
+        private static readonly Cartesian s_zero = new Cartesian(0.0, 0.0, 0.0);
+        private static readonly Cartesian s_undefined = new Cartesian(double.NaN, double.NaN, double.NaN);
+
         private readonly double m_x;
         private readonly double m_y;
         private readonly double m_z;
-
-        private static readonly Cartesian s_zero = new Cartesian(0.0, 0.0, 0.0);
-        private static readonly Cartesian s_undefined = new Cartesian(double.NaN, double.NaN, double.NaN);
     }
 }

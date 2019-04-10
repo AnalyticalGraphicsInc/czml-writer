@@ -2,19 +2,19 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
+import agi.foundation.compatibility.Action;
 import agi.foundation.compatibility.ArgumentException;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.CultureInfoHelper;
-import agi.foundation.compatibility.ExpectedExceptionHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.IntHelper;
 import agi.foundation.compatibility.TestContextRule;
+import agi.foundation.TypeLiteral;
 import cesiumlanguagewriter.*;
 import javax.annotation.Nonnull;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
-import org.junit.rules.ExpectedException;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
@@ -40,25 +40,25 @@ public class TestBoundingRectangle {
     @Test
     public final void testHoldValue() {
         BoundingRectangle boundingRectangle0 = new BoundingRectangle();
-        Assert.assertEquals(boundingRectangle0.getLeft(), 0, 0d);
-        Assert.assertEquals(boundingRectangle0.getBottom(), 0, 0d);
-        Assert.assertEquals(boundingRectangle0.getRight(), 0, 0d);
-        Assert.assertEquals(boundingRectangle0.getTop(), 0, 0d);
-        Assert.assertEquals(boundingRectangle0.getHeight(), 0, 0d);
-        Assert.assertEquals(boundingRectangle0.getWidth(), 0, 0d);
-        Assert.assertEquals(BoundingRectangle.getEmpty().getLeft(), 0, 0d);
-        Assert.assertEquals(BoundingRectangle.getEmpty().getBottom(), 0, 0d);
-        Assert.assertEquals(BoundingRectangle.getEmpty().getRight(), 0, 0d);
-        Assert.assertEquals(BoundingRectangle.getEmpty().getTop(), 0, 0d);
-        Assert.assertEquals(BoundingRectangle.getEmpty().getHeight(), 0, 0d);
-        Assert.assertEquals(BoundingRectangle.getEmpty().getWidth(), 0, 0d);
+        Assert.assertEquals(0, boundingRectangle0.getLeft(), 0d);
+        Assert.assertEquals(0, boundingRectangle0.getBottom(), 0d);
+        Assert.assertEquals(0, boundingRectangle0.getRight(), 0d);
+        Assert.assertEquals(0, boundingRectangle0.getTop(), 0d);
+        Assert.assertEquals(0, boundingRectangle0.getHeight(), 0d);
+        Assert.assertEquals(0, boundingRectangle0.getWidth(), 0d);
+        Assert.assertEquals(0, BoundingRectangle.getEmpty().getLeft(), 0d);
+        Assert.assertEquals(0, BoundingRectangle.getEmpty().getBottom(), 0d);
+        Assert.assertEquals(0, BoundingRectangle.getEmpty().getRight(), 0d);
+        Assert.assertEquals(0, BoundingRectangle.getEmpty().getTop(), 0d);
+        Assert.assertEquals(0, BoundingRectangle.getEmpty().getHeight(), 0d);
+        Assert.assertEquals(0, BoundingRectangle.getEmpty().getWidth(), 0d);
         BoundingRectangle boundingRectangle1 = new BoundingRectangle(1D, 2D, 3D, 4D);
-        Assert.assertEquals(boundingRectangle1.getLeft(), 1, 0d);
-        Assert.assertEquals(boundingRectangle1.getBottom(), 2, 0d);
-        Assert.assertEquals(boundingRectangle1.getRight(), 3, 0d);
-        Assert.assertEquals(boundingRectangle1.getTop(), 4, 0d);
-        Assert.assertEquals(boundingRectangle1.getHeight(), 2, 0d);
-        Assert.assertEquals(boundingRectangle1.getWidth(), 2, 0d);
+        Assert.assertEquals(1, boundingRectangle1.getLeft(), 0d);
+        Assert.assertEquals(2, boundingRectangle1.getBottom(), 0d);
+        Assert.assertEquals(3, boundingRectangle1.getRight(), 0d);
+        Assert.assertEquals(4, boundingRectangle1.getTop(), 0d);
+        Assert.assertEquals(2, boundingRectangle1.getHeight(), 0d);
+        Assert.assertEquals(2, boundingRectangle1.getWidth(), 0d);
     }
 
     /**
@@ -69,8 +69,11 @@ public class TestBoundingRectangle {
     */
     @Test
     public final void testInitializationFromBadElementsWidth() {
-        ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentException.class);
-        BoundingRectangle boundingRectangle = new BoundingRectangle(2D, 2D, 1D, 3D);
+        AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, new Action() {
+            public void invoke() {
+                cesiumlanguagewriter.BoundingRectangle unused = new BoundingRectangle(2D, 2D, 1D, 3D);
+            }
+        });
     }
 
     /**
@@ -81,8 +84,11 @@ public class TestBoundingRectangle {
     */
     @Test
     public final void testInitializationFromBadElementsHeight() {
-        ExpectedExceptionHelper.expectException(getRule$expectedException(), ArgumentException.class);
-        BoundingRectangle boundingRectangle = new BoundingRectangle(2D, 2D, 3D, 1D);
+        AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, new Action() {
+            public void invoke() {
+                cesiumlanguagewriter.BoundingRectangle unused = new BoundingRectangle(2D, 2D, 3D, 1D);
+            }
+        });
     }
 
     /**
@@ -146,14 +152,14 @@ public class TestBoundingRectangle {
     @Test
     public final void testToString() {
         BoundingRectangle boundingRectangle = new BoundingRectangle(1D, 2D, 3D, 4D);
-        int val1 = 1;
-        int val2 = 2;
-        int val3 = 3;
-        int val4 = 4;
-        String sep = ", ";
-        String result = IntHelper.toString(val1, CultureInfoHelper.getCurrentCulture()) + sep + IntHelper.toString(val2, CultureInfoHelper.getCurrentCulture()) + sep
+        final int val1 = 1;
+        final int val2 = 2;
+        final int val3 = 3;
+        final int val4 = 4;
+        final String sep = ", ";
+        String expected = IntHelper.toString(val1, CultureInfoHelper.getCurrentCulture()) + sep + IntHelper.toString(val2, CultureInfoHelper.getCurrentCulture()) + sep
                 + IntHelper.toString(val3, CultureInfoHelper.getCurrentCulture()) + sep + IntHelper.toString(val4, CultureInfoHelper.getCurrentCulture());
-        Assert.assertEquals(boundingRectangle.toString(), result);
+        Assert.assertEquals(expected, boundingRectangle.toString());
     }
 
     @Nonnull
@@ -163,14 +169,5 @@ public class TestBoundingRectangle {
     @Rule
     public TestContextRule getRule$testContext() {
         return rule$testContext;
-    }
-
-    @Nonnull
-    private final ExpectedException rule$expectedException = ExpectedException.none();
-
-    @Nonnull
-    @Rule
-    public ExpectedException getRule$expectedException() {
-        return rule$expectedException;
     }
 }

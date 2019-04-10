@@ -14,27 +14,6 @@ namespace CesiumLanguageWriter
     public struct Rectangular : IEquatable<Rectangular>
     {
         /// <summary>
-        /// Gets a set of <see cref="Rectangular"/> coordinates with values of zero.
-        /// </summary>
-        public static Rectangular Zero
-        {
-            get { return s_zero; }
-        }
-
-        /// <summary>
-        /// Gets a set of <see cref="Rectangular"/> coordinates with values of <see cref="Double.NaN"/>.
-        /// </summary>
-        /// <remarks>
-        /// Use <see cref="Rectangular.IsUndefined"/> to test whether a <see cref="Rectangular"/> instance
-        /// is undefined since it will return <see langword="true"/> if any of the coordinate values
-        /// are <see cref="Double.NaN"/>.
-        /// </remarks>
-        public static Rectangular Undefined
-        {
-            get { return s_undefined; }
-        }
-
-        /// <summary>
         /// Initializes a set of <see cref="Rectangular"/> coordinates from the provided values.
         /// </summary>
         /// <param name="x">The linear coordinate along the positive x-axis.</param>
@@ -45,6 +24,27 @@ namespace CesiumLanguageWriter
         {
             m_x = x;
             m_y = y;
+        }
+
+        /// <summary>
+        /// Gets a set of <see cref="Rectangular"/> coordinates with values of zero.
+        /// </summary>
+        public static Rectangular Zero
+        {
+            get { return s_zero; }
+        }
+
+        /// <summary>
+        /// Gets a set of <see cref="Rectangular"/> coordinates with values of <see cref="double.NaN"/>.
+        /// </summary>
+        /// <remarks>
+        /// Use <see cref="Rectangular.IsUndefined"/> to test whether a <see cref="Rectangular"/> instance
+        /// is undefined since it will return <see langword="true"/> if any of the coordinate values
+        /// are <see cref="double.NaN"/>.
+        /// </remarks>
+        public static Rectangular Undefined
+        {
+            get { return s_undefined; }
         }
 
         /// <summary>
@@ -305,11 +305,10 @@ namespace CesiumLanguageWriter
             get { return double.IsNaN(m_x) || double.IsNaN(m_y); }
         }
 
+        private static readonly Rectangular s_zero = new Rectangular(0.0, 0.0);
+        private static readonly Rectangular s_undefined = new Rectangular(double.NaN, double.NaN);
+
         private readonly double m_x;
         private readonly double m_y;
-
-        private static readonly Rectangular s_zero = new Rectangular(0.0, 0.0);
-
-        private static readonly Rectangular s_undefined = new Rectangular(double.NaN, double.NaN);
     }
 }

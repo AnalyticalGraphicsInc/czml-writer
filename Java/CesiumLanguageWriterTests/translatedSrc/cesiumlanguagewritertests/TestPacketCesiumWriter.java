@@ -23,6 +23,10 @@ import org.junit.Test;
 })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestPacketCesiumWriter {
+    private StringWriter m_stringWriter;
+    private CesiumOutputStream m_outputStream;
+    private CesiumStreamWriter m_writer;
+
     @Before
     public final void setUp() {
         m_stringWriter = new StringWriter();
@@ -109,8 +113,9 @@ public class TestPacketCesiumWriter {
             }
         }
         m_outputStream.writeEndSequence();
-        Assert.assertEquals("[{\"availability\":\"20120402T010203Z/20120403T010203Z\"}," + "{\"availability\":\"20120402T010203Z/20120403T010203Z\"},"
-                + "{\"availability\":[\"20120402T010203Z/20120403T010203Z\",\"20120404T010203Z/20120405T010203Z\"]}]", m_stringWriter.toString());
+        final String expected = "[" + "{\"availability\":\"20120402T010203Z/20120403T010203Z\"}," + "{\"availability\":\"20120402T010203Z/20120403T010203Z\"},"
+                + "{\"availability\":[\"20120402T010203Z/20120403T010203Z\",\"20120404T010203Z/20120405T010203Z\"]}" + "]";
+        Assert.assertEquals(expected, m_stringWriter.toString());
     }
 
     @Test
@@ -135,9 +140,6 @@ public class TestPacketCesiumWriter {
         Assert.assertEquals("{\"billboard\":", m_stringWriter.toString());
     }
 
-    private StringWriter m_stringWriter;
-    private CesiumOutputStream m_outputStream;
-    private CesiumStreamWriter m_writer;
     @Nonnull
     private final TestContextRule rule$testContext = new TestContextRule();
 

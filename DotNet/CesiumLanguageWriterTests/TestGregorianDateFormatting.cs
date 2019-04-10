@@ -10,130 +10,156 @@ namespace CesiumLanguageWriterTests
     [TestFixture]
     public class TestGregorianDateFormatting
     {
+        private CultureInfo m_cultureInfo;
+
         [SetUp]
-        public virtual void SetUp()
+        public void SetUp()
         {
             m_cultureInfo = new CultureInfo("en-US");
         }
 
-        [Test]
-        public void TestToString()
+        [TestCase("d")]
+        [TestCase("D")]
+        [TestCase("f")]
+        [TestCase("F")]
+        [TestCase("g")]
+        [TestCase("G")]
+        [TestCase("m")]
+        [TestCase("M")]
+        [TestCase("r")]
+        [TestCase("R")]
+        [TestCase("s")]
+        [TestCase("t")]
+        [TestCase("T")]
+        [TestCase("u")]
+        [TestCase("y")]
+        [TestCase("Y")]
+        [TestCase("")]
+        public void TestToStringStandardFormats(string format)
         {
-            GregorianDate date = new GregorianDate(2002, 02, 25, 05, 25, 13);
+            var dateTime = new DateTime(2002, 02, 25, 05, 25, 13);
+            var gregorianDate = new GregorianDate(dateTime);
 
-            Assert.AreEqual("2/25/2002", date.ToString("d", m_cultureInfo));
-            Assert.AreEqual("Monday, February 25, 2002", date.ToString("D", m_cultureInfo));
-            Assert.AreEqual("Monday, February 25, 2002 5:25 AM", date.ToString("f", m_cultureInfo));
-            Assert.AreEqual("Monday, February 25, 2002 5:25:13 AM", date.ToString("F", m_cultureInfo));
-            Assert.AreEqual("2/25/2002 5:25 AM", date.ToString("g", m_cultureInfo));
-            Assert.AreEqual("2/25/2002 5:25:13 AM", date.ToString("G", m_cultureInfo));
-            Assert.AreEqual("February 25", date.ToString("m", m_cultureInfo));
-            Assert.AreEqual("February 25", date.ToString("M", m_cultureInfo));
-            Assert.AreEqual("Mon, 25 Feb 2002 05:25:13 GMT", date.ToString("r", m_cultureInfo));
-            Assert.AreEqual("Mon, 25 Feb 2002 05:25:13 GMT", date.ToString("R", m_cultureInfo));
-            Assert.AreEqual("2002-02-25T05:25:13", date.ToString("s", m_cultureInfo));
-            Assert.AreEqual("5:25 AM", date.ToString("t", m_cultureInfo));
-            Assert.AreEqual("5:25:13 AM", date.ToString("T", m_cultureInfo));
-            Assert.AreEqual("2002-02-25 05:25:13Z", date.ToString("u", m_cultureInfo));
+            // .NET Core on Linux uses different standard formats, so we compare against what DateTime does
+            // rather than specific known strings.
+            Assert.AreEqual(dateTime.ToString(format, m_cultureInfo), gregorianDate.ToString(format, m_cultureInfo));
+        }
 
-            // Windows 8 changed to no longer include a comma after the month.  Either is ok.
-            string smallY = date.ToString("y", m_cultureInfo);
-            Assert.IsTrue(smallY == "February, 2002" || smallY == "February 2002");
-            string bigY = date.ToString("Y", m_cultureInfo);
-            Assert.IsTrue(bigY == "February, 2002" || bigY == "February 2002");
+        [Test]
+        public void TestToStringCustomFormats()
+        {
+            var dateTime = new DateTime(2002, 02, 25, 05, 25, 13);
+            var gregorianDate = new GregorianDate(dateTime);
 
-            Assert.AreEqual("2/25/2002 5:25:13 AM", date.ToString("", m_cultureInfo));
-            Assert.AreEqual("25", date.ToString("%d", m_cultureInfo));
-            Assert.AreEqual("25", date.ToString("dd", m_cultureInfo));
-            Assert.AreEqual("Mon", date.ToString("ddd", m_cultureInfo));
-            Assert.AreEqual("Monday", date.ToString("dddd", m_cultureInfo));
-            Assert.AreEqual("2", date.ToString("%M", m_cultureInfo));
-            Assert.AreEqual("02", date.ToString("MM", m_cultureInfo));
-            Assert.AreEqual("Feb", date.ToString("MMM", m_cultureInfo));
-            Assert.AreEqual("February", date.ToString("MMMM", m_cultureInfo));
-            Assert.AreEqual("2", date.ToString("%y", m_cultureInfo));
-            Assert.AreEqual("02", date.ToString("yy", m_cultureInfo));
-            Assert.AreEqual("2002", date.ToString("yyyy", m_cultureInfo));
-            Assert.AreEqual("5", date.ToString("%h", m_cultureInfo));
-            Assert.AreEqual("05", date.ToString("hh", m_cultureInfo));
-            Assert.AreEqual("A", date.ToString("%t", m_cultureInfo));
-            Assert.AreEqual("AM", date.ToString("tt", m_cultureInfo));
+            Assert.AreEqual("25", gregorianDate.ToString("%d", m_cultureInfo));
+            Assert.AreEqual("25", gregorianDate.ToString("dd", m_cultureInfo));
+            Assert.AreEqual("Mon", gregorianDate.ToString("ddd", m_cultureInfo));
+            Assert.AreEqual("Monday", gregorianDate.ToString("dddd", m_cultureInfo));
+            Assert.AreEqual("2", gregorianDate.ToString("%M", m_cultureInfo));
+            Assert.AreEqual("02", gregorianDate.ToString("MM", m_cultureInfo));
+            Assert.AreEqual("Feb", gregorianDate.ToString("MMM", m_cultureInfo));
+            Assert.AreEqual("February", gregorianDate.ToString("MMMM", m_cultureInfo));
+            Assert.AreEqual("2", gregorianDate.ToString("%y", m_cultureInfo));
+            Assert.AreEqual("02", gregorianDate.ToString("yy", m_cultureInfo));
+            Assert.AreEqual("2002", gregorianDate.ToString("yyyy", m_cultureInfo));
+            Assert.AreEqual("5", gregorianDate.ToString("%h", m_cultureInfo));
+            Assert.AreEqual("05", gregorianDate.ToString("hh", m_cultureInfo));
+            Assert.AreEqual("A", gregorianDate.ToString("%t", m_cultureInfo));
+            Assert.AreEqual("AM", gregorianDate.ToString("tt", m_cultureInfo));
 
-            date = new GregorianDate(2009, 06, 10, 00, 30, 00);
-            Assert.AreEqual("12", date.ToString("%h", m_cultureInfo));
-            Assert.AreEqual("0", date.ToString("%H", m_cultureInfo));
+            dateTime = new DateTime(2009, 06, 10, 00, 30, 00);
+            gregorianDate = new GregorianDate(dateTime);
+            Assert.AreEqual("12", gregorianDate.ToString("%h", m_cultureInfo));
+            Assert.AreEqual("0", gregorianDate.ToString("%H", m_cultureInfo));
 
-            date = new GregorianDate(2002, 02, 25, 15, 25, 13);
-            Assert.AreEqual("3", date.ToString("%h", m_cultureInfo));
-            Assert.AreEqual("03", date.ToString("hh", m_cultureInfo));
-            Assert.AreEqual("15", date.ToString("%H", m_cultureInfo));
-            Assert.AreEqual("15", date.ToString("HH", m_cultureInfo));
-            Assert.AreEqual("25", date.ToString("%m", m_cultureInfo));
-            Assert.AreEqual("25", date.ToString("mm", m_cultureInfo));
-            Assert.AreEqual("13", date.ToString("%s", m_cultureInfo));
-            Assert.AreEqual("13", date.ToString("ss", m_cultureInfo));
-            Assert.AreEqual("P", date.ToString("%t", m_cultureInfo));
-            Assert.AreEqual("PM", date.ToString("tt", m_cultureInfo));
-            Assert.AreEqual("A.D.", date.ToString("%g", m_cultureInfo));
+            dateTime = new DateTime(2002, 02, 25, 15, 25, 13);
+            gregorianDate = new GregorianDate(dateTime);
+            Assert.AreEqual("3", gregorianDate.ToString("%h", m_cultureInfo));
+            Assert.AreEqual("03", gregorianDate.ToString("hh", m_cultureInfo));
+            Assert.AreEqual("15", gregorianDate.ToString("%H", m_cultureInfo));
+            Assert.AreEqual("15", gregorianDate.ToString("HH", m_cultureInfo));
+            Assert.AreEqual("25", gregorianDate.ToString("%m", m_cultureInfo));
+            Assert.AreEqual("25", gregorianDate.ToString("mm", m_cultureInfo));
+            Assert.AreEqual("13", gregorianDate.ToString("%s", m_cultureInfo));
+            Assert.AreEqual("13", gregorianDate.ToString("ss", m_cultureInfo));
+            Assert.AreEqual("P", gregorianDate.ToString("%t", m_cultureInfo));
+            Assert.AreEqual("PM", gregorianDate.ToString("tt", m_cultureInfo));
+#if !CSToJava
+            Assert.AreEqual(dateTime.ToString("%g", m_cultureInfo), gregorianDate.ToString("%g", m_cultureInfo));
+#endif
+            Assert.AreEqual(" : ", gregorianDate.ToString(" : ", m_cultureInfo));
+            Assert.AreEqual(" / ", gregorianDate.ToString(" / ", m_cultureInfo));
+            Assert.AreEqual(" yyy ", gregorianDate.ToString(" 'yyy' ", m_cultureInfo));
+            Assert.AreEqual(" d", gregorianDate.ToString(" \\d", m_cultureInfo));
+            Assert.AreEqual("2002", gregorianDate.ToString("yyy", m_cultureInfo));
+            Assert.AreEqual("0002002", gregorianDate.ToString("yyyyyyy", m_cultureInfo));
 
-            Assert.AreEqual(" : ", date.ToString(" : ", m_cultureInfo));
-            Assert.AreEqual(" / ", date.ToString(" / ", m_cultureInfo));
-            Assert.AreEqual(" yyy ", date.ToString(" 'yyy' ", m_cultureInfo));
-            Assert.AreEqual(" d", date.ToString(" \\d", m_cultureInfo));
-            Assert.AreEqual("2002", date.ToString("yyy", m_cultureInfo));
-            Assert.AreEqual("0002002", date.ToString("yyyyyyy", m_cultureInfo));
-
-            date = new GregorianDate(999, 1, 2, 3, 4, 5);
-            Assert.AreEqual("999", date.ToString("yyy", m_cultureInfo));
-            Assert.AreEqual("0999", date.ToString("yyyy", m_cultureInfo));
+            gregorianDate = new GregorianDate(999, 1, 2, 3, 4, 5);
+            Assert.AreEqual("999", gregorianDate.ToString("yyy", m_cultureInfo));
+            Assert.AreEqual("0999", gregorianDate.ToString("yyyy", m_cultureInfo));
 
             // .NET's Double.ToString pads with zeros beyond 15 significant digits.
             // This is kind of obnoxious, but we get the guaranteed precision of
             // a GregorianDate (1e-10 seconds) even so, so it's not worth major
             // heroics to solve.
-            date = new GregorianDate(2009, 06, 10, 15, 0, 13.012345678912345);
-            string s = date.ToString("ss.fffffffffffffff", m_cultureInfo);
+            gregorianDate = new GregorianDate(2009, 06, 10, 15, 0, 13.012345678912345);
+            string s = gregorianDate.ToString("ss.fffffffffffffff", m_cultureInfo);
             Assert.AreEqual(18, s.Length);
             Assert.IsTrue(s.StartsWith("13.0123456789123"));
 
-            date = new GregorianDate(2009, 06, 10, 15, 0, 13.012);
-            Assert.AreEqual("13.012000000000000", date.ToString("ss.fffffffffffffff", m_cultureInfo));
-            Assert.AreEqual("13.012", date.ToString("ss.FFFFFFFFFFFFFFF", m_cultureInfo));
+            gregorianDate = new GregorianDate(2009, 06, 10, 15, 0, 13.012);
+            Assert.AreEqual("13.012000000000000", gregorianDate.ToString("ss.fffffffffffffff", m_cultureInfo));
+            Assert.AreEqual("13.012", gregorianDate.ToString("ss.FFFFFFFFFFFFFFF", m_cultureInfo));
         }
 
         [Test]
-        [ExpectedException(typeof(FormatException))]
         public void ToStringThrowsOnInvalidFormatSpecifier()
         {
-            string unused = new GregorianDate(2009, 06, 10).ToString("X");
+            var exception = Assert.Throws<FormatException>(() =>
+            {
+                string unused = new GregorianDate(2009, 06, 10).ToString("X");
+            });
+            StringAssert.Contains("not one of the format specifier characters", exception.Message);
         }
 
         [Test]
-        [ExpectedException(typeof(FormatException))]
         public void CantFormatMoreThan15FractionalSeconds()
         {
-            string unused = new GregorianDate(2009, 06, 10).ToString("ffffffffffffffff");
+            var exception = Assert.Throws<FormatException>(() =>
+            {
+                string unused = new GregorianDate(2009, 06, 10).ToString("ffffffffffffffff");
+            });
+            StringAssert.Contains("Invalid format string", exception.Message);
         }
 
         [Test]
-        [ExpectedException(typeof(FormatException))]
-        public void CantEndWithAPercent()
+        public void FormatSpecifierCantEndWithAPercent()
         {
-            string unused = new GregorianDate(2009, 06, 10).ToString("f%");
+            var exception = Assert.Throws<FormatException>(() =>
+            {
+                string unused = new GregorianDate(2009, 06, 10).ToString("f%");
+            });
+            StringAssert.Contains("Invalid character % at the end of the format specifier", exception.Message);
         }
 
         [Test]
-        [ExpectedException(typeof(FormatException))]
-        public void CantEndWithABackslash()
+        public void FormatSpecifierCantEndWithABackslash()
         {
-            string unused = new GregorianDate(2009, 06, 10).ToString("f\\");
+            var exception = Assert.Throws<FormatException>(() =>
+            {
+                string unused = new GregorianDate(2009, 06, 10).ToString(@"f\");
+            });
+            StringAssert.Contains(@"Invalid character \ at the end of the format specifier", exception.Message);
         }
 
         [Test]
-        [ExpectedException(typeof(FormatException))]
-        public void CantHaveADoublePercent()
+        public void FormatSpecifierCantHaveADoublePercent()
         {
-            string unused = new GregorianDate(2009, 06, 10).ToString("%%");
+            var exception = Assert.Throws<FormatException>(() =>
+            {
+                string unused = new GregorianDate(2009, 06, 10).ToString("%%");
+            });
+            StringAssert.Contains("Invalid character %% in format specifier", exception.Message);
         }
 
         [Test]
@@ -220,7 +246,7 @@ namespace CesiumLanguageWriterTests
             }
         }
 
-        public IEnumerable<GregorianDate> ToIso8601ValidationValues
+        public static IEnumerable<GregorianDate> ToIso8601ValidationValues
         {
             get
             {
@@ -262,21 +288,21 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void ToStringTruncatesSeconds()
         {
-            GregorianDate gd = new GregorianDate(2012, 8, 7, 13, 59, 59.9999999);
-            Assert.AreEqual("2012-08-07 13:59:59.999999", gd.ToString("yyyy-MM-dd HH:mm:ss.ffffff", m_cultureInfo));
+            var gregorianDate = new GregorianDate(2012, 8, 7, 13, 59, 59.9999999);
+            Assert.AreEqual("2012-08-07 13:59:59.999999", gregorianDate.ToString("yyyy-MM-dd HH:mm:ss.ffffff", m_cultureInfo));
         }
 
         [Test]
         public void WholeNumberSecondsIsFormattedCorrectly()
         {
-            GregorianDate gd = new GregorianDate(2012, 8, 7, 13, 59, 55.0);
-            Assert.AreEqual("2012-08-07 13:59:55.000000", gd.ToString("yyyy-MM-dd HH:mm:ss.ffffff", m_cultureInfo));
+            var gregorianDate = new GregorianDate(2012, 8, 7, 13, 59, 55.0);
+            Assert.AreEqual("2012-08-07 13:59:55.000000", gregorianDate.ToString("yyyy-MM-dd HH:mm:ss.ffffff", m_cultureInfo));
 
-            gd = new GregorianDate(2012, 8, 7, 13, 59, 55.0);
-            Assert.AreEqual("2012-08-07 13:59:55", gd.ToString("yyyy-MM-dd HH:mm:ss", m_cultureInfo));
+            gregorianDate = new GregorianDate(2012, 8, 7, 13, 59, 55.0);
+            Assert.AreEqual("2012-08-07 13:59:55", gregorianDate.ToString("yyyy-MM-dd HH:mm:ss", m_cultureInfo));
 
-            gd = new GregorianDate(2012, 8, 7, 13, 59, 55.0);
-            Assert.AreEqual("2012-08-07 13:59:55", gd.ToString("yyyy-MM-dd HH:mm:ss.FFFFFF", m_cultureInfo));
+            gregorianDate = new GregorianDate(2012, 8, 7, 13, 59, 55.0);
+            Assert.AreEqual("2012-08-07 13:59:55", gregorianDate.ToString("yyyy-MM-dd HH:mm:ss.FFFFFF", m_cultureInfo));
         }
 
         [TestCase(2012, 8, 7, 13, 59, 59.9999999, "2012-08-07T13:59:59.999999Z")]
@@ -300,7 +326,5 @@ namespace CesiumLanguageWriterTests
             var date = new GregorianDate(2012, 2, 25, 0, 15, 0.000000000014551915228366852);
             Assert.AreEqual("001500.0000000", date.ToString("HHmmss.fffffff", m_cultureInfo));
         }
-
-        private CultureInfo m_cultureInfo;
     }
 }

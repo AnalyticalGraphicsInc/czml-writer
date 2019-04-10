@@ -2,10 +2,12 @@
 using System.IO;
 using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
+using JetBrains.Annotations;
 using NUnit.Framework;
 
 namespace CesiumLanguageWriterTests
 {
+    [TestFixture]
     public abstract class TestCesiumPropertyWriter<TDerived>
         where TDerived : CesiumPropertyWriter<TDerived>
     {
@@ -26,7 +28,8 @@ namespace CesiumLanguageWriterTests
             Packet = Writer.OpenPacket(OutputStream);
         }
 
-        protected abstract CesiumPropertyWriter<TDerived> CreatePropertyWriter(string propertyName);
+        [NotNull]
+        protected abstract CesiumPropertyWriter<TDerived> CreatePropertyWriter([NotNull] string propertyName);
 
         [Test]
         public void WritesPropertyNameOnOpenAndNothingOnClose()
@@ -81,30 +84,34 @@ namespace CesiumLanguageWriterTests
             {
                 interval.WriteInterval(start, stop);
             }
+
             using (TDerived interval = intervalList.OpenInterval())
             {
                 interval.WriteInterval(new TimeInterval(start, stop));
             }
+
             intervalList.Close();
             Assert.AreEqual("{\"woot\":[{\"interval\":\"20120402T12Z/20120402T13Z\"},{\"interval\":\"20120402T12Z/20120402T13Z\"}]", StringWriter.ToString());
         }
 
         [Test]
-        [ExpectedException(typeof(InvalidOperationException), ExpectedMessage = "not currently open", MatchType = MessageMatch.Contains)]
         public void ThrowsWhenWritingToBeforeOpening()
         {
             CesiumPropertyWriter<TDerived> property = CreatePropertyWriter("woot");
-            property.OpenInterval();
+
+            var exception = Assert.Throws<InvalidOperationException>(() => property.OpenInterval());
+            StringAssert.Contains("not currently open", exception.Message);
         }
 
         [Test]
-        [ExpectedException(typeof(InvalidOperationException), ExpectedMessage = "not currently open", MatchType = MessageMatch.Contains)]
         public void ThrowsWhenWritingToAfterClosed()
         {
             CesiumPropertyWriter<TDerived> property = CreatePropertyWriter("woot");
             property.Open(OutputStream);
             property.Close();
-            property.OpenInterval();
+
+            var exception = Assert.Throws<InvalidOperationException>(() => property.OpenInterval());
+            StringAssert.Contains("not currently open", exception.Message);
         }
     }
 }

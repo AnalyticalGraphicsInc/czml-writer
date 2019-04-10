@@ -270,7 +270,7 @@ public final class TimeInterval implements IEquatable<TimeInterval> {
     }
 
     @Nonnull
-    private static TimeInterval s_empty = new TimeInterval(new JulianDate(0.0), new JulianDate(0.0));
+    private static final TimeInterval s_empty = new TimeInterval(new JulianDate(0.0), new JulianDate(0.0));
     @CS2JInfo("Initialization of C# struct variable 'm_start' added by translator.")
     @Nonnull
     private JulianDate m_start = new JulianDate();

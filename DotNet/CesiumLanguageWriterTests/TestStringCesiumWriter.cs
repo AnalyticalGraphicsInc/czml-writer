@@ -16,6 +16,7 @@ namespace CesiumLanguageWriterTests
                 writer.Open(OutputStream);
                 writer.WriteString("bar");
             }
+
             Assert.AreEqual("{\"foo\":\"bar\"}", StringWriter.ToString());
         }
 
@@ -31,6 +32,7 @@ namespace CesiumLanguageWriterTests
                 writer.WriteInterval(startDate, startDate.AddSeconds(100.0));
                 writer.WriteString("bar");
             }
+
             Assert.AreEqual("{\"foo\":{\"interval\":\"20120607T12Z/20120607T120140Z\",\"string\":\"bar\"}}", StringWriter.ToString());
         }
 

@@ -15,7 +15,6 @@ import agi.foundation.compatibility.ImmutableValueType;
 import agi.foundation.compatibility.IntHelper;
 import agi.foundation.compatibility.MathHelper;
 import agi.foundation.compatibility.NumberFormatInfo;
-import agi.foundation.compatibility.ObjectHelper;
 import agi.foundation.compatibility.StringComparison;
 import agi.foundation.compatibility.StringHelper;
 import java.time.DayOfWeek;
@@ -83,7 +82,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
         private static String[] buildDateTimePatterns(String[] patterns, int maximumFractionalSeconds) {
             ArrayList<String> result = new ArrayList<String>(patterns.length * (maximumFractionalSeconds + 1));
             for (final String s : patterns) {
-                if (StringHelper.endsWith(s, ".f*")) {
+                if (StringHelper.endsWith(s, ".f*", StringComparison.ORDINAL)) {
                     result.add(StringHelper.replace(s, ".f*", ""));
                     StringBuilder newStr = new StringBuilder(maximumFractionalSeconds);
                     for (int i = 1; i <= maximumFractionalSeconds; i++) {
@@ -252,9 +251,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                     }
                 }
             }
-            //
             // Month day formats
-            //
             int dayIndex = dfi.getMonthDayPattern().indexOf('d');
             int monthIndex = dfi.getMonthDayPattern().indexOf('M');
             if (dayIndex == -1 || monthIndex == -1) {
@@ -381,8 +378,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                 } else {
                     // The year cannot be between the date and the month
                     if (setExceptionOnError) {
-                        String msg = StringHelper.format(CesiumLocalization.getGregorianDateOrderOfYearMonthAndDateNotSupported(), dfi.getShortDatePattern());
-                        ex[0] = new NumberFormatException(msg);
+                        ex[0] = new NumberFormatException(StringHelper.format(CesiumLocalization.getGregorianDateOrderOfYearMonthAndDateNotSupported(), dfi.getShortDatePattern()));
                     }
                     return null;
                 }
@@ -395,8 +391,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
             }
             // The year cannot be between the month and the date
             if (setExceptionOnError) {
-                String msg = StringHelper.format(CesiumLocalization.getGregorianDateOrderOfYearMonthAndDateNotSupported(), dfi.getShortDatePattern());
-                ex[0] = new NumberFormatException(msg);
+                ex[0] = new NumberFormatException(StringHelper.format(CesiumLocalization.getGregorianDateOrderOfYearMonthAndDateNotSupported(), dfi.getShortDatePattern()));
             }
             return null;
         }
@@ -494,7 +489,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                 return false;
             }
             if (!isLetter(s, valuePos)) {
-                if (ObjectHelper.notEquals(dfi.getAMDesignator(), "")) {
+                if (dfi.getAMDesignator().length() != 0) {
                     return false;
                 }
                 if (exact) {
@@ -504,8 +499,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                 return true;
             }
             DateTimeFormatInfo invInfo = DateTimeFormatInfo.getInvariantInfo();
-            if (!exact && parseString(s, valuePos, num, invInfo.getPMDesignator(), numParsed) || ObjectHelper.notEquals(dfi.getPMDesignator(), "")
-                    && parseString(s, valuePos, num, dfi.getPMDesignator(), numParsed)) {
+            if (!exact && parseString(s, valuePos, num, invInfo.getPMDesignator(), numParsed) || dfi.getPMDesignator().length() != 0 && parseString(s, valuePos, num, dfi.getPMDesignator(), numParsed)) {
                 ampm[0] = 1;
             } else if (!exact && parseString(s, valuePos, num, invInfo.getAMDesignator(), numParsed) || parseString(s, valuePos, num, dfi.getAMDesignator(), numParsed)) {
                 if (exact || numParsed[0] != 0) {
@@ -636,7 +630,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                 if (pos + num >= len) {
                     if (flexibleTwoPartsParsing && num == 0) {
                         afterTFormat = isFirstPart && firstPart.charAt(firstPart.length() - 1) == 'T';
-                        if (!isFirstPart && ObjectHelper.equals(format, "")) {
+                        if (!isFirstPart && format.length() == 0) {
                             break;
                         }
                         pos = 0;
@@ -1391,7 +1385,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                     int startLen = result.length();
                     String formattedSeconds = DoubleHelper.toString(dt.getSecond(), "R", provider);
                     formattedSeconds = StringFormatting.toNonExponentialNotation(nfi, formattedSeconds);
-                    int indexOfDecimalPoint = formattedSeconds.indexOf(nfi.getNumberDecimalSeparator());
+                    int indexOfDecimalPoint = StringHelper.indexOf(formattedSeconds, nfi.getNumberDecimalSeparator(), StringComparison.CURRENT_CULTURE);
                     if (indexOfDecimalPoint == -1) {
                         indexOfDecimalPoint = formattedSeconds.length();
                     }
@@ -1933,9 +1927,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    Indicates whether or not this {@link GregorianDate} represents a leap
-    second.
+    *  Gets a value indicating whether or not this {@link GregorianDate} represents a leap second.
     
 
     */
@@ -1997,14 +1989,14 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    * 
+    *  
     Convert this {@link GregorianDate} to a {@link JulianDate}. The
     time standard will be {@link TimeStandard#COORDINATED_UNIVERSAL_TIME}
     (UTC), unless this  {@link GregorianDate} represents the instant of a
     leap second, in which case the {@link JulianDate} will be in
     {@link TimeStandard#INTERNATIONAL_ATOMIC_TIME} (TAI).
-
-
+    
+    
 
     * @return A {@link JulianDate} representing this date.
     */
@@ -2015,18 +2007,18 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    * 
+    *  
     Convert this {@link GregorianDate} to a {@link JulianDate}.  The
     {@link GregorianDate} is assumed to specify a time in the
     specified {@link TimeStandard}.
-
-
-
+    
+    
+    
 
     * @param timeStandard 
     The time standard in which this {@link GregorianDate} is expressed.  The returned
     {@link JulianDate} will be expressed in this time standard as well, if possible.
-
+    
     * @return A {@link JulianDate} representing this date.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
@@ -2047,10 +2039,11 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    * Convert this {@link GregorianDate} to a {@link ZonedDateTime}.
+    *  
+    Convert this {@link GregorianDate} to a {@link ZonedDateTime}.
     The {@link ZonedDateTime} will be in UTC.
-
-
+    
+    
 
     * @return A {@link ZonedDateTime} representing this date.
     */
@@ -2151,16 +2144,16 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     */
     public final int compareTo(@Nonnull GregorianDate other) {
         int result = m_yearMonthDay.compareTo(other.m_yearMonthDay);
-        if (result != 0) {
-            return result;
+        if (result == 0) {
+            result = Integer.compare(m_hour, other.m_hour);
+            if (result == 0) {
+                result = Integer.compare(m_minute, other.m_minute);
+                if (result == 0) {
+                    result = Double.compare(m_second, other.m_second);
+                }
+            }
         }
-        if (m_hour != other.m_hour) {
-            return m_hour < other.m_hour ? -1 : 1;
-        }
-        if (m_minute != other.m_minute) {
-            return m_minute < other.m_minute ? -1 : 1;
-        }
-        return m_second == other.m_second ? 0 : (m_second < other.m_second ? -1 : 1);
+        return result;
     }
 
     /**

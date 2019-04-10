@@ -5,12 +5,74 @@ using JetBrains.Annotations;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// A 3-by-3 matrix. This type is often used to represent a rotation.
+    /// A 3-by-3 matrix. This type is often used to represent a rotation. This
+    /// represents an 'alias' rotation which transforms coordinates by modifying the underlying coordinate
+    /// basis rather than modifying the coordinates themselves.
     /// </summary>
     /// <seealso cref="UnitQuaternion"/>
     [CSToJavaImmutableValueType]
     public struct Matrix3By3 : IEquatable<Matrix3By3>
     {
+        /// <summary>
+        /// Initializes a new instance from a <see cref="UnitQuaternion"/>.
+        /// </summary>
+        /// <param name="quaternion">The quaternion.</param>
+        public Matrix3By3(UnitQuaternion quaternion)
+        {
+            double x2 = quaternion.X * quaternion.X;
+            double xy = quaternion.X * quaternion.Y;
+            double xz = quaternion.X * quaternion.Z;
+            double xw = quaternion.X * quaternion.W;
+            double y2 = quaternion.Y * quaternion.Y;
+            double yz = quaternion.Y * quaternion.Z;
+            double yw = quaternion.Y * quaternion.W;
+            double z2 = quaternion.Z * quaternion.Z;
+            double zw = quaternion.Z * quaternion.W;
+            double w2 = quaternion.W * quaternion.W;
+
+            m_m11 = x2 - y2 - z2 + w2;
+            m_m12 = 2.0 * (xy + zw);
+            m_m13 = 2.0 * (xz - yw);
+
+            m_m21 = 2.0 * (xy - zw);
+            m_m22 = -x2 + y2 - z2 + w2;
+            m_m23 = 2.0 * (yz + xw);
+
+            m_m31 = 2.0 * (xz + yw);
+            m_m32 = 2.0 * (yz - xw);
+            m_m33 = -x2 - y2 + z2 + w2;
+        }
+
+        /// <summary>
+        /// Initializes a new instance from elements.
+        /// </summary>
+        /// <param name="m11">1,1</param>
+        /// <param name="m12">1,2</param>
+        /// <param name="m13">1,3</param>
+        /// <param name="m21">2,1</param>
+        /// <param name="m22">2,2</param>
+        /// <param name="m23">2,3</param>
+        /// <param name="m31">3,1</param>
+        /// <param name="m32">3,2</param>
+        /// <param name="m33">3,3</param>
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "m")]
+        [SuppressMessage("Microsoft.Design", "CA1025:ReplaceRepetitiveArgumentsWithParamsArray")]
+        public Matrix3By3(double m11, double m12, double m13,
+                          double m21, double m22, double m23,
+                          double m31, double m32, double m33)
+        {
+            m_m11 = m11;
+            m_m12 = m12;
+            m_m13 = m13;
+
+            m_m21 = m21;
+            m_m22 = m22;
+            m_m23 = m23;
+
+            m_m31 = m31;
+            m_m32 = m32;
+            m_m33 = m33;
+        }
         /// <summary>
         /// Gets a <see cref="Matrix3By3"/> representing an identity transformation.
         /// </summary>
@@ -73,67 +135,6 @@ namespace CesiumLanguageWriter
         public static Matrix3By3 DiagonalMatrix(UnitCartesian vector)
         {
             return DiagonalMatrix(vector.X, vector.Y, vector.Z);
-        }
-
-        /// <summary>
-        /// Initializes a new instance from a <see cref="UnitQuaternion"/>.
-        /// </summary>
-        /// <param name="quaternion">The quaternion.</param>
-        public Matrix3By3(UnitQuaternion quaternion)
-        {
-            double x2 = quaternion.X * quaternion.X;
-            double xy = quaternion.X * quaternion.Y;
-            double xz = quaternion.X * quaternion.Z;
-            double xw = quaternion.X * quaternion.W;
-            double y2 = quaternion.Y * quaternion.Y;
-            double yz = quaternion.Y * quaternion.Z;
-            double yw = quaternion.Y * quaternion.W;
-            double z2 = quaternion.Z * quaternion.Z;
-            double zw = quaternion.Z * quaternion.W;
-            double w2 = quaternion.W * quaternion.W;
-
-            m_m11 = x2 - y2 - z2 + w2;
-            m_m12 = 2.0 * (xy + zw);
-            m_m13 = 2.0 * (xz - yw);
-
-            m_m21 = 2.0 * (xy - zw);
-            m_m22 = -x2 + y2 - z2 + w2;
-            m_m23 = 2.0 * (yz + xw);
-
-            m_m31 = 2.0 * (xz + yw);
-            m_m32 = 2.0 * (yz - xw);
-            m_m33 = -x2 - y2 + z2 + w2;
-        }
-
-        /// <summary>
-        /// Initializes a new instance from elements.
-        /// </summary>
-        /// <param name="m11">1,1</param>
-        /// <param name="m12">1,2</param>
-        /// <param name="m13">1,3</param>
-        /// <param name="m21">2,1</param>
-        /// <param name="m22">2,2</param>
-        /// <param name="m23">2,3</param>
-        /// <param name="m31">3,1</param>
-        /// <param name="m32">3,2</param>
-        /// <param name="m33">3,3</param>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "m")]
-        [SuppressMessage("Microsoft.Design", "CA1025:ReplaceRepetitiveArgumentsWithParamsArray")]
-        public Matrix3By3(double m11, double m12, double m13,
-                          double m21, double m22, double m23,
-                          double m31, double m32, double m33)
-        {
-            m_m11 = m11;
-            m_m12 = m12;
-            m_m13 = m13;
-
-            m_m21 = m21;
-            m_m22 = m22;
-            m_m23 = m23;
-
-            m_m31 = m31;
-            m_m32 = m32;
-            m_m33 = m33;
         }
 
         /// <summary>
@@ -279,7 +280,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets an indication as to whether any of the matrix values are <see cref="double.NaN"/>.
+        /// Gets a value indicating whether any of the matrix values are <see cref="double.NaN"/>.
         /// </summary>
         public bool IsUndefined
         {

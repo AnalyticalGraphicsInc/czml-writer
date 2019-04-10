@@ -22,6 +22,7 @@ namespace CesiumLanguageWriterTests
             {
                 interval.WriteShowProperty(true);
             }
+
             Assert.AreEqual("{\"billboard\":{\"show\":true}}", StringWriter.ToString());
         }
 
@@ -41,10 +42,12 @@ namespace CesiumLanguageWriterTests
                     {
                         intervalWriter.WriteBoolean(true);
                     }
+
                     using (var intervalWriter = intervalListWriter.OpenInterval(startDate.AddSeconds(1), startDate.AddSeconds(2)))
                     {
                         intervalWriter.WriteBoolean(false);
                     }
+
                     using (var intervalWriter = intervalListWriter.OpenInterval(startDate.AddSeconds(2), stopDate))
                     {
                         intervalWriter.WriteBoolean(true);
@@ -71,6 +74,7 @@ namespace CesiumLanguageWriterTests
             {
                 interval.WriteScaleByDistanceProperty(new NearFarScalar(100.0, 1.0, 200.0, 2.0));
             }
+
             Assert.AreEqual("{\"billboard\":{\"scaleByDistance\":{\"nearFarScalar\":[100,1,200,2]}}}", StringWriter.ToString());
         }
 
@@ -95,6 +99,7 @@ namespace CesiumLanguageWriterTests
 
                 scaleByDistance.WriteNearFarScalar(dates, values);
             }
+
             Assert.AreEqual("{\"billboard\":{\"scaleByDistance\":{\"epoch\":\"20120402T12Z\",\"nearFarScalar\":[0,100,1,200,2,60,200,1,300,2]}}}", StringWriter.ToString());
         }
     }

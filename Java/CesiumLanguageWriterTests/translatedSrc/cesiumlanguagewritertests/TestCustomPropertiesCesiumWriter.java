@@ -26,6 +26,15 @@ import org.junit.Test;
 })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<CustomPropertiesCesiumWriter> {
+    @CS2JInfo("Initialization of C# struct variable 'm_startDate' added by translator.")
+    @Nonnull
+    private JulianDate m_startDate = new JulianDate();
+    private String m_isoStartString;
+    @CS2JInfo("Initialization of C# struct variable 'm_stopDate' added by translator.")
+    @Nonnull
+    private JulianDate m_stopDate = new JulianDate();
+    private String m_isoIntervalString;
+
     @Before
     public final void setUp() {
         m_startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0D));
@@ -347,14 +356,6 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
         return new CustomPropertiesCesiumWriter(propertyName);
     }
 
-    @CS2JInfo("Initialization of C# struct variable 'm_startDate' added by translator.")
-    @Nonnull
-    private JulianDate m_startDate = new JulianDate();
-    private String m_isoStartString;
-    @CS2JInfo("Initialization of C# struct variable 'm_stopDate' added by translator.")
-    @Nonnull
-    private JulianDate m_stopDate = new JulianDate();
-    private String m_isoIntervalString;
     @Nonnull
     private final TestContextRule rule$testContext = new TestContextRule();
 

@@ -47,7 +47,7 @@ namespace CesiumLanguageWriter
                 List<string> result = new List<string>(patterns.Length * (maximumFractionalSeconds + 1));
                 foreach (string s in patterns)
                 {
-                    if (s.EndsWith(".f*"))
+                    if (s.EndsWith(".f*", StringComparison.Ordinal))
                     {
                         result.Add(s.Replace(".f*", ""));
                         StringBuilder newStr = new StringBuilder(maximumFractionalSeconds);
@@ -181,9 +181,7 @@ namespace CesiumLanguageWriter
                     }
                 }
 
-                //
                 // Month day formats
-                //
                 int dayIndex = dfi.MonthDayPattern.IndexOf('d');
                 int monthIndex = dfi.MonthDayPattern.IndexOf('M');
                 if (dayIndex == -1 || monthIndex == -1)
@@ -261,21 +259,26 @@ namespace CesiumLanguageWriter
                 }
 
                 if (yearIndex < monthIndex)
+                {
                     if (monthIndex < dayIndex)
+                    {
                         return s_parseYearMonthDayFormats;
+                    }
                     else if (yearIndex < dayIndex)
+                    {
                         return s_parseYearDayMonthFormats;
+                    }
                     else
                     {
                         // The year cannot be between the date and the month
                         if (setExceptionOnError)
                         {
-                            string msg = string.Format(CesiumLocalization.GregorianDateOrderOfYearMonthAndDateNotSupported, dfi.ShortDatePattern);
-                            ex = new FormatException(msg);
+                            ex = new FormatException(string.Format(CesiumLocalization.GregorianDateOrderOfYearMonthAndDateNotSupported, dfi.ShortDatePattern));
                         }
 
                         return null;
                     }
+                }
 
                 if (dayIndex < monthIndex)
                     return s_parseDayMonthYearFormats;
@@ -286,8 +289,7 @@ namespace CesiumLanguageWriter
                 // The year cannot be between the month and the date
                 if (setExceptionOnError)
                 {
-                    string msg = string.Format(CesiumLocalization.GregorianDateOrderOfYearMonthAndDateNotSupported, dfi.ShortDatePattern);
-                    ex = new FormatException(msg);
+                    ex = new FormatException(string.Format(CesiumLocalization.GregorianDateOrderOfYearMonthAndDateNotSupported, dfi.ShortDatePattern));
                 }
 
                 return null;
@@ -411,7 +413,7 @@ namespace CesiumLanguageWriter
 
                 if (!IsLetter(s, valuePos))
                 {
-                    if (dfi.AMDesignator != "")
+                    if (dfi.AMDesignator.Length != 0)
                         return false;
                     if (exact)
                         ampm = 0;
@@ -421,8 +423,10 @@ namespace CesiumLanguageWriter
 
                 DateTimeFormatInfo invInfo = DateTimeFormatInfo.InvariantInfo;
                 if (!exact && ParseString(s, valuePos, num, invInfo.PMDesignator, out numParsed) ||
-                    dfi.PMDesignator != "" && ParseString(s, valuePos, num, dfi.PMDesignator, out numParsed))
+                    dfi.PMDesignator.Length != 0 && ParseString(s, valuePos, num, dfi.PMDesignator, out numParsed))
+                {
                     ampm = 1;
+                }
                 else if (!exact && ParseString(s, valuePos, num, invInfo.AMDesignator, out numParsed) ||
                          ParseString(s, valuePos, num, dfi.AMDesignator, out numParsed))
                 {
@@ -430,7 +434,9 @@ namespace CesiumLanguageWriter
                         ampm = 0;
                 }
                 else
+                {
                     return false;
+                }
 
                 return true;
             }
@@ -512,7 +518,9 @@ namespace CesiumLanguageWriter
                         if (!afterTFormat && ParseAmPm(s, valuePos, 0, dfi, false, out numParsed, ref ampm))
                         {
                             if (IsLetter(s, valuePos + numParsed))
+                            {
                                 ampm = -1;
+                            }
                             else if (numParsed > 0)
                             {
                                 valuePos += numParsed;
@@ -546,7 +554,7 @@ namespace CesiumLanguageWriter
                         if (flexibleTwoPartsParsing && num == 0)
                         {
                             afterTFormat = isFirstPart && firstPart[firstPart.Length - 1] == 'T';
-                            if (!isFirstPart && format == "")
+                            if (!isFirstPart && format.Length == 0)
                                 break;
 
                             pos = 0;
@@ -651,8 +659,11 @@ namespace CesiumLanguageWriter
                         pos = ws;
                         // A whitespace may match a '/' in the pattern.
                         if (!exact && pos < chars.Length && chars[pos] == '/')
+                        {
                             if (!ParseDateSeparator(s, valuePos, dfi, false, out numParsed))
                                 pos++;
+                        }
+
                         continue;
                     }
 
@@ -1138,9 +1149,7 @@ namespace CesiumLanguageWriter
 
                     switch (ch)
                     {
-                        //
                         // Time Formats
-                        //
                         case 'h':
                             // hour, [1, 12]
                             tokLen = CountRepeat(format, i, ch);
@@ -1179,7 +1188,7 @@ namespace CesiumLanguageWriter
 
                             string formattedSeconds = dt.Second.ToString("R", provider);
                             formattedSeconds = StringFormatting.ToNonExponentialNotation(nfi, formattedSeconds);
-                            int indexOfDecimalPoint = formattedSeconds.IndexOf(nfi.NumberDecimalSeparator);
+                            int indexOfDecimalPoint = formattedSeconds.IndexOf(nfi.NumberDecimalSeparator, StringComparison.CurrentCulture);
                             if (indexOfDecimalPoint == -1)
                                 indexOfDecimalPoint = formattedSeconds.Length;
                             int digitsAfterDecimalPoint = formattedSeconds.Length - indexOfDecimalPoint - 1;
@@ -1219,12 +1228,12 @@ namespace CesiumLanguageWriter
                                     result.Append(desig[0]);
                             }
                             else
+                            {
                                 result.Append(desig);
+                            }
 
                             break;
-                        //
                         // Date tokens
-                        //
                         case 'd':
                             // day. d(d?) = day of month (leading 0 if two d's)
                             // ddd = three leter day of week
@@ -1270,9 +1279,7 @@ namespace CesiumLanguageWriter
                             result.Append(dfi.GetEraName(1));
                             break;
 
-                        //
                         // Other
-                        //
                         case ':':
                             result.Append(dfi.TimeSeparator);
                             tokLen = 1;
@@ -1720,8 +1727,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Indicates whether or not this <see cref="GregorianDate"/> represents a leap
-        /// second.
+        /// Gets a value indicating whether or not this <see cref="GregorianDate"/> represents a leap second.
         /// </summary>
         private bool IsLeapSecond
         {
@@ -1773,30 +1779,30 @@ namespace CesiumLanguageWriter
             return true;
         }
 
-        ///<summary>
+        /// <summary>
         /// Convert this <see cref="GregorianDate"/> to a <see cref="JulianDate"/>. The
         /// time standard will be <see cref="TimeStandard.CoordinatedUniversalTime"/>
         /// (UTC), unless this  <see cref="GregorianDate"/> represents the instant of a
         /// leap second, in which case the <see cref="JulianDate"/> will be in
         /// <see cref="TimeStandard.InternationalAtomicTime"/> (TAI).
-        ///</summary>
-        ///<returns>A <see cref="JulianDate"/> representing this date.</returns>
+        /// </summary>
+        /// <returns>A <see cref="JulianDate"/> representing this date.</returns>
         [Pure]
         public JulianDate ToJulianDate()
         {
             return ToJulianDate(TimeStandard.CoordinatedUniversalTime);
         }
 
-        ///<summary>
+        /// <summary>
         /// Convert this <see cref="GregorianDate"/> to a <see cref="JulianDate"/>.  The
         /// <see cref="GregorianDate"/> is assumed to specify a time in the
         /// specified <see cref="TimeStandard"/>.
-        ///</summary>
-        ///<param name="timeStandard">
-        ///The time standard in which this <see cref="GregorianDate"/> is expressed.  The returned
-        ///<see cref="JulianDate"/> will be expressed in this time standard as well, if possible.
-        ///</param>
-        ///<returns>A <see cref="JulianDate"/> representing this date.</returns>
+        /// </summary>
+        /// <param name="timeStandard">
+        /// The time standard in which this <see cref="GregorianDate"/> is expressed.  The returned
+        /// <see cref="JulianDate"/> will be expressed in this time standard as well, if possible.
+        /// </param>
+        /// <returns>A <see cref="JulianDate"/> representing this date.</returns>
         [Pure]
         public JulianDate ToJulianDate(TimeStandard timeStandard)
         {
@@ -1816,10 +1822,11 @@ namespace CesiumLanguageWriter
             return result;
         }
 
-        ///<summary>Convert this <see cref="GregorianDate"/> to a <see cref="DateTime"/>.
-        ///The <see cref="DateTime"/> will be in UTC.
-        ///</summary>
-        ///<returns>A <see cref="DateTime"/> representing this date.</returns>
+        /// <summary>
+        /// Convert this <see cref="GregorianDate"/> to a <see cref="DateTime"/>.
+        /// The <see cref="DateTime"/> will be in UTC.
+        /// </summary>
+        /// <returns>A <see cref="DateTime"/> representing this date.</returns>
         [Pure]
         public DateTime ToDateTime()
         {
@@ -1907,20 +1914,20 @@ namespace CesiumLanguageWriter
         public int CompareTo(GregorianDate other)
         {
             int result = m_yearMonthDay.CompareTo(other.m_yearMonthDay);
-            if (result != 0)
-                return result;
-
-            if (m_hour != other.m_hour)
+            if (result == 0)
             {
-                return m_hour < other.m_hour ? -1 : 1;
+                result = m_hour.CompareTo(other.m_hour);
+                if (result == 0)
+                {
+                    result = m_minute.CompareTo(other.m_minute);
+                    if (result == 0)
+                    {
+                        result = m_second.CompareTo(other.m_second);
+                    }
+                }
             }
 
-            if (m_minute != other.m_minute)
-            {
-                return m_minute < other.m_minute ? -1 : 1;
-            }
-
-            return m_second == other.m_second ? 0 : (m_second < other.m_second ? -1 : 1);
+            return result;
         }
 
         /// <summary>
@@ -2340,7 +2347,7 @@ namespace CesiumLanguageWriter
         /// Converts the specified string representation of a date and time to its
         /// <see cref="GregorianDate"/> equivalent using the specified culture-specific
         /// format information.
-        ///</para>
+        /// </para>
         /// <para>
         /// Note: <see cref="GregorianDate"/> is always assumed to be in UTC.  You cannot
         /// parse strings containing time zone information. However, this will handle
@@ -2488,7 +2495,7 @@ namespace CesiumLanguageWriter
         /// Converts the specified string representation of a date and time to its
         /// <see cref="GregorianDate" /> equivalent using the specified culture-specific
         /// format information.
-        ///</para>
+        /// </para>
         /// <para>
         /// Note: <see cref="GregorianDate"/> is always assumed to be in UTC.  You cannot
         /// parse strings containing time zone information. However, this will handle

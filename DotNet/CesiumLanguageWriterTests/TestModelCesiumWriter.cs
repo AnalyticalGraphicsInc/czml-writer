@@ -17,6 +17,7 @@ namespace CesiumLanguageWriterTests
             {
                 interval.WriteShowProperty(true);
             }
+
             Assert.AreEqual("{\"model\":{\"show\":true}}", StringWriter.ToString());
         }
 
@@ -29,6 +30,7 @@ namespace CesiumLanguageWriterTests
             {
                 interval.WriteGltfProperty("test.gltf", CesiumResourceBehavior.LinkTo);
             }
+
             Assert.AreEqual("{\"model\":{\"gltf\":\"test.gltf\"}}", StringWriter.ToString());
         }
 
@@ -41,6 +43,7 @@ namespace CesiumLanguageWriterTests
             {
                 interval.WriteSilhouetteColorProperty(Color.Blue);
             }
+
             Assert.AreEqual("{\"model\":{\"silhouetteColor\":{\"rgba\":[0,0,255,255]}}}", StringWriter.ToString());
         }
 
@@ -53,6 +56,7 @@ namespace CesiumLanguageWriterTests
             {
                 interval.WriteSilhouetteSizeProperty(0.75);
             }
+
             Assert.AreEqual("{\"model\":{\"silhouetteSize\":0.75}}", StringWriter.ToString());
         }
 
@@ -65,6 +69,7 @@ namespace CesiumLanguageWriterTests
             {
                 interval.WriteColorProperty(Color.Red);
             }
+
             Assert.AreEqual("{\"model\":{\"color\":{\"rgba\":[255,0,0,255]}}}", StringWriter.ToString());
         }
 
@@ -77,6 +82,7 @@ namespace CesiumLanguageWriterTests
             {
                 interval.WriteColorBlendModeProperty(CesiumColorBlendMode.Replace);
             }
+
             Assert.AreEqual("{\"model\":{\"colorBlendMode\":\"REPLACE\"}}", StringWriter.ToString());
         }
 
@@ -89,6 +95,7 @@ namespace CesiumLanguageWriterTests
             {
                 interval.WriteColorBlendAmountProperty(0.75);
             }
+
             Assert.AreEqual("{\"model\":{\"colorBlendAmount\":0.75}}", StringWriter.ToString());
         }
 

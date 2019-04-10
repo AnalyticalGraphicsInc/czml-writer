@@ -20,27 +20,6 @@ namespace CesiumLanguageWriter
     public struct UnitQuaternion : IEquatable<UnitQuaternion>
     {
         /// <summary>
-        /// Gets a set of <see cref="UnitQuaternion"/> coordinates with values of <see cref="Double.NaN"/>.
-        /// </summary>
-        /// <remarks>
-        /// Use <see cref="UnitQuaternion.IsUndefined"/> to test whether a <see cref="UnitQuaternion"/> instance
-        /// is undefined since it will return <see langword="true"/> if any of the coordinate values
-        /// are <see cref="Double.NaN"/>.
-        /// </remarks>
-        public static UnitQuaternion Undefined
-        {
-            get { return s_undefined; }
-        }
-
-        /// <summary>
-        /// Gets a set of <see cref="UnitQuaternion"/> coordinates representing the identity vector.
-        /// </summary>
-        public static UnitQuaternion Identity
-        {
-            get { return s_identity; }
-        }
-
-        /// <summary>
         /// Initializes a set of <see cref="UnitQuaternion"/> coordinates from the provided values.
         /// </summary>
         /// <param name="w">The W coordinate.</param>
@@ -188,6 +167,27 @@ namespace CesiumLanguageWriter
                 m_y = factor * (matrix.M31 - matrix.M13);
                 m_z = factor * (matrix.M12 - matrix.M21);
             }
+        }
+
+        /// <summary>
+        /// Gets a set of <see cref="UnitQuaternion"/> coordinates with values of <see cref="double.NaN"/>.
+        /// </summary>
+        /// <remarks>
+        /// Use <see cref="UnitQuaternion.IsUndefined"/> to test whether a <see cref="UnitQuaternion"/> instance
+        /// is undefined since it will return <see langword="true"/> if any of the coordinate values
+        /// are <see cref="double.NaN"/>.
+        /// </remarks>
+        public static UnitQuaternion Undefined
+        {
+            get { return s_undefined; }
+        }
+
+        /// <summary>
+        /// Gets a set of <see cref="UnitQuaternion"/> coordinates representing the identity vector.
+        /// </summary>
+        public static UnitQuaternion Identity
+        {
+            get { return s_identity; }
         }
 
         /// <summary>
@@ -364,7 +364,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets whether or not any of the coordinates for this instance have the value <see cref="Double.NaN"/>.
+        /// Gets a value indicating whether or not any of the coordinates for this instance have the value <see cref="double.NaN"/>.
         /// </summary>
         public bool IsUndefined
         {
@@ -407,19 +407,18 @@ namespace CesiumLanguageWriter
             z /= magnitude;
         }
 
+        private static readonly UnitQuaternion s_identity = new UnitQuaternion(1.0, 0.0, 0.0, 0.0);
+        private static readonly UnitQuaternion s_undefined = new UnitQuaternion(double.NaN, double.NaN, double.NaN, double.NaN, Normalization.Normalized);
+
         private readonly double m_w;
         private readonly double m_x;
         private readonly double m_y;
         private readonly double m_z;
 
-        private static readonly UnitQuaternion s_identity = new UnitQuaternion(1.0, 0.0, 0.0, 0.0);
-
-        private static readonly UnitQuaternion s_undefined = new UnitQuaternion(double.NaN, double.NaN, double.NaN, double.NaN, Normalization.Normalized);
-
         private enum Normalization
         {
             Unnormalized = 0,
-            Normalized = 1
+            Normalized = 1,
         }
     }
 }

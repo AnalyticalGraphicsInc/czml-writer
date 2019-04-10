@@ -7,6 +7,7 @@ using System.Diagnostics;
 [Conditional("CSTOJAVA")]
 [AttributeUsage(AttributeTargets.Struct)]
 [CSToJavaExclude]
+// ReSharper disable once CheckNamespace
 internal sealed class CSToJavaImmutableValueType : Attribute
 {
 }

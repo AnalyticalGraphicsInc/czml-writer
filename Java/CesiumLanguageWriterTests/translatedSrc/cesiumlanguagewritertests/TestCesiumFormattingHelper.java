@@ -33,7 +33,7 @@ public class TestCesiumFormattingHelper {
         }
     }
 
-    public final Iterable<ClockRange> getClockRangeValues() {
+    public static Iterable<ClockRange> getClockRangeValues() {
         return ArrayHelper.arrayAsList((ClockRange[]) EnumHelper.getValues(ClockRange.class));
     }
 
@@ -49,7 +49,7 @@ public class TestCesiumFormattingHelper {
         }
     }
 
-    public final Iterable<ClockStep> getClockStepValues() {
+    public static Iterable<ClockStep> getClockStepValues() {
         return ArrayHelper.arrayAsList((ClockStep[]) EnumHelper.getValues(ClockStep.class));
     }
 
@@ -65,7 +65,7 @@ public class TestCesiumFormattingHelper {
         }
     }
 
-    public final Iterable<CesiumColorBlendMode> getColorBlendModeValues() {
+    public static Iterable<CesiumColorBlendMode> getColorBlendModeValues() {
         return ArrayHelper.arrayAsList((CesiumColorBlendMode[]) EnumHelper.getValues(CesiumColorBlendMode.class));
     }
 
@@ -81,7 +81,7 @@ public class TestCesiumFormattingHelper {
         }
     }
 
-    public final Iterable<CesiumCornerType> getCornerTypeValues() {
+    public static Iterable<CesiumCornerType> getCornerTypeValues() {
         return ArrayHelper.arrayAsList((CesiumCornerType[]) EnumHelper.getValues(CesiumCornerType.class));
     }
 
@@ -97,7 +97,7 @@ public class TestCesiumFormattingHelper {
         }
     }
 
-    public final Iterable<CesiumExtrapolationType> getExtrapolationTypeValues() {
+    public static Iterable<CesiumExtrapolationType> getExtrapolationTypeValues() {
         return ArrayHelper.arrayAsList((CesiumExtrapolationType[]) EnumHelper.getValues(CesiumExtrapolationType.class));
     }
 
@@ -113,7 +113,7 @@ public class TestCesiumFormattingHelper {
         }
     }
 
-    public final Iterable<CesiumHeightReference> getHeightReferenceValues() {
+    public static Iterable<CesiumHeightReference> getHeightReferenceValues() {
         return ArrayHelper.arrayAsList((CesiumHeightReference[]) EnumHelper.getValues(CesiumHeightReference.class));
     }
 
@@ -129,7 +129,7 @@ public class TestCesiumFormattingHelper {
         }
     }
 
-    public final Iterable<CesiumHorizontalOrigin> getHorizontalOriginValues() {
+    public static Iterable<CesiumHorizontalOrigin> getHorizontalOriginValues() {
         return ArrayHelper.arrayAsList((CesiumHorizontalOrigin[]) EnumHelper.getValues(CesiumHorizontalOrigin.class));
     }
 
@@ -145,7 +145,7 @@ public class TestCesiumFormattingHelper {
         }
     }
 
-    public final Iterable<CesiumInterpolationAlgorithm> getInterpolationAlgorithmValues() {
+    public static Iterable<CesiumInterpolationAlgorithm> getInterpolationAlgorithmValues() {
         return ArrayHelper.arrayAsList((CesiumInterpolationAlgorithm[]) EnumHelper.getValues(CesiumInterpolationAlgorithm.class));
     }
 
@@ -161,7 +161,7 @@ public class TestCesiumFormattingHelper {
         }
     }
 
-    public final Iterable<CesiumLabelStyle> getLabelStyleValues() {
+    public static Iterable<CesiumLabelStyle> getLabelStyleValues() {
         return ArrayHelper.arrayAsList((CesiumLabelStyle[]) EnumHelper.getValues(CesiumLabelStyle.class));
     }
 
@@ -177,7 +177,7 @@ public class TestCesiumFormattingHelper {
         }
     }
 
-    public final Iterable<CesiumSensorVolumePortionToDisplay> getSensorVolumePortionToDisplayValues() {
+    public static Iterable<CesiumSensorVolumePortionToDisplay> getSensorVolumePortionToDisplayValues() {
         return ArrayHelper.arrayAsList((CesiumSensorVolumePortionToDisplay[]) EnumHelper.getValues(CesiumSensorVolumePortionToDisplay.class));
     }
 
@@ -193,7 +193,7 @@ public class TestCesiumFormattingHelper {
         }
     }
 
-    public final Iterable<CesiumShadowMode> getShadowModeValues() {
+    public static Iterable<CesiumShadowMode> getShadowModeValues() {
         return ArrayHelper.arrayAsList((CesiumShadowMode[]) EnumHelper.getValues(CesiumShadowMode.class));
     }
 
@@ -209,7 +209,7 @@ public class TestCesiumFormattingHelper {
         }
     }
 
-    public final Iterable<CesiumStripeOrientation> getStripeOrientationValues() {
+    public static Iterable<CesiumStripeOrientation> getStripeOrientationValues() {
         return ArrayHelper.arrayAsList((CesiumStripeOrientation[]) EnumHelper.getValues(CesiumStripeOrientation.class));
     }
 
@@ -225,7 +225,7 @@ public class TestCesiumFormattingHelper {
         }
     }
 
-    public final Iterable<CesiumVerticalOrigin> getVerticalOriginValues() {
+    public static Iterable<CesiumVerticalOrigin> getVerticalOriginValues() {
         return ArrayHelper.arrayAsList((CesiumVerticalOrigin[]) EnumHelper.getValues(CesiumVerticalOrigin.class));
     }
 

@@ -110,7 +110,7 @@ namespace CesiumLanguageWriterTests
             Cartesian second = new Cartesian(0.1, 0.1, 0.1);
             Assert.IsTrue(second.EqualsEpsilon(first, 0));
         }
-        
+
         /// <summary>
         /// Tests to ensure the equality fails when comparing incorrect type.
         /// </summary>
@@ -120,9 +120,10 @@ namespace CesiumLanguageWriterTests
             Cartesian first = new Cartesian(1.0, 2.0, 3.0);
             Cartographic second = new Cartographic(1.0, 2.0, 3.0);
 
+            // ReSharper disable once SuspiciousTypeConversion.Global
             Assert.IsFalse(first.Equals(second));
         }
-        
+
         /// <summary>
         /// Tests the <see cref="Cartesian.Magnitude"/> property.
         /// </summary>
@@ -151,11 +152,13 @@ namespace CesiumLanguageWriterTests
         /// produces an <see cref="UnsupportedCaseException"/>.
         /// </summary>
         [Test]
-        [ExpectedException(typeof(DivideByZeroException))]
         public void TestNormalizeOfZeroMagnitude()
         {
             Cartesian test = Cartesian.Zero;
-            UnitCartesian unit = test.Normalize();
+            Assert.Throws<DivideByZeroException>(() =>
+            {
+                var unused = test.Normalize();
+            });
         }
 
         /// <summary>
@@ -163,11 +166,13 @@ namespace CesiumLanguageWriterTests
         /// produces an <see cref="NotFiniteNumberException"/>.
         /// </summary>
         [Test]
-        [ExpectedException(typeof(NotFiniteNumberException))]
         public void TestNormalizeOfInfiniteMagnitude()
         {
-            Cartesian test = new Cartesian(Double.PositiveInfinity, Double.PositiveInfinity, Double.PositiveInfinity);
-            UnitCartesian unit = test.Normalize();
+            Cartesian test = new Cartesian(double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity);
+            Assert.Throws<NotFiniteNumberException>(() =>
+            {
+                var unused = test.Normalize();
+            });
         }
 
         /// <summary>
@@ -178,9 +183,9 @@ namespace CesiumLanguageWriterTests
         {
             Assert.IsFalse(new Cartesian(1.0, 1.0, 1.0).IsUndefined);
             Assert.IsTrue(Cartesian.Undefined.IsUndefined);
-            Assert.IsTrue(new Cartesian(Double.NaN, 1.0, 1.0).IsUndefined);
-            Assert.IsTrue(new Cartesian(1.0, Double.NaN, 1.0).IsUndefined);
-            Assert.IsTrue(new Cartesian(1.0, 1.0, Double.NaN).IsUndefined);
+            Assert.IsTrue(new Cartesian(double.NaN, 1.0, 1.0).IsUndefined);
+            Assert.IsTrue(new Cartesian(1.0, double.NaN, 1.0).IsUndefined);
+            Assert.IsTrue(new Cartesian(1.0, 1.0, double.NaN).IsUndefined);
         }
 
         /// <summary>
@@ -337,7 +342,7 @@ namespace CesiumLanguageWriterTests
             double cos = Math.Cos(angle);
             double sin = Math.Sin(angle);
 
-            Cartesian axis = (new Cartesian(1.0, 1.0, 1.0)).Normalize(); // unit vector along [1,1,1]
+            Cartesian axis = new Cartesian(1.0, 1.0, 1.0).Normalize(); // unit vector along [1,1,1]
 
             double w = cos;
             double x = sin * axis.X;
@@ -364,7 +369,7 @@ namespace CesiumLanguageWriterTests
             double cos = Math.Cos(angle);
             double sin = Math.Sin(angle);
 
-            Cartesian axis = (new Cartesian(1.0, 1.0, 1.0)).Normalize(); // unit vector along [1,1,1]
+            Cartesian axis = new Cartesian(1.0, 1.0, 1.0).Normalize(); // unit vector along [1,1,1]
 
             double w = cos;
             double x = sin * axis.X;
@@ -400,14 +405,15 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestToString()
         {
-            double val1 = 1.1;
-            double val2 = 2.1;
-            double val3 = 3.1;
-            string sep = ", ";
-            String result = val1.ToString(CultureInfo.CurrentCulture) + sep + val2.ToString(CultureInfo.CurrentCulture) + sep +
-                            val3.ToString(CultureInfo.CurrentCulture);
+            const double val1 = 1.1;
+            const double val2 = 2.1;
+            const double val3 = 3.1;
+            const string sep = ", ";
+            string expected = val1.ToString(CultureInfo.CurrentCulture) + sep +
+                              val2.ToString(CultureInfo.CurrentCulture) + sep +
+                              val3.ToString(CultureInfo.CurrentCulture);
             Cartesian test = new Cartesian(val1, val2, val3);
-            Assert.AreEqual(result, test.ToString());
+            Assert.AreEqual(expected, test.ToString());
         }
     }
 }

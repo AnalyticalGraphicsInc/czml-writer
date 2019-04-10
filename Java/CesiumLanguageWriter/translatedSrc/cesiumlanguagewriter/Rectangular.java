@@ -32,6 +32,22 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     public Rectangular() {}
 
     /**
+    *  
+    Initializes a set of {@link Rectangular} coordinates from the provided values.
+    
+    
+    
+
+    * @param x The linear coordinate along the positive x-axis.
+    * @param y The linear coordinate along the positive y-axis.
+    */
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
+    public Rectangular(double x, double y) {
+        m_x = x;
+        m_y = y;
+    }
+
+    /**
     *  Gets a set of {@link Rectangular} coordinates with values of zero.
     
 
@@ -55,22 +71,6 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     @Nonnull
     public static Rectangular getUndefined() {
         return s_undefined;
-    }
-
-    /**
-    *  
-    Initializes a set of {@link Rectangular} coordinates from the provided values.
-    
-    
-    
-
-    * @param x The linear coordinate along the positive x-axis.
-    * @param y The linear coordinate along the positive y-axis.
-    */
-    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
-    public Rectangular(double x, double y) {
-        m_x = x;
-        m_y = y;
     }
 
     /**
@@ -438,10 +438,10 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
         return Double.isNaN(m_x) || Double.isNaN(m_y);
     }
 
-    private double m_x;
-    private double m_y;
     @Nonnull
     private static Rectangular s_zero = new Rectangular(0.0, 0.0);
     @Nonnull
     private static Rectangular s_undefined = new Rectangular(Double.NaN, Double.NaN);
+    private double m_x;
+    private double m_y;
 }

@@ -98,7 +98,7 @@ namespace CesiumLanguageWriterTests
         /// Test BUG40644 - JulianDate.ToDateTime rounds to the nearest millisecond
         /// </summary>
         [Test]
-        [CSToJavaExclude] // Java DateTime only supports millisecond precision
+        [CSToJavaExclude("Java DateTime only supports millisecond precision")]
         public void TestBug40644()
         {
             JulianDate jd1 = new JulianDate(2451545, 0.0, TimeStandard.CoordinatedUniversalTime);
@@ -118,7 +118,7 @@ namespace CesiumLanguageWriterTests
         /// Testing that ticks are accurately accounted for
         /// </summary>
         [Test]
-        [CSToJavaExclude] // Java DateTime only supports millisecond precision
+        [CSToJavaExclude("Java DateTime only supports millisecond precision")]
         public void TestTicks()
         {
             DateTime yesterday = new DateTime(2008, 3, 4, 12, 5, 12, 24, DateTimeKind.Utc);
@@ -137,11 +137,14 @@ namespace CesiumLanguageWriterTests
         /// from a JulianDate prior to the earliest possible DateTime.
         /// </summary>
         [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void TestJulianDateMinimumToDateTime()
         {
             JulianDate date = JulianDate.MinValue;
-            DateTime unused = date.ToDateTime();
+
+            Assert.Throws<ArgumentOutOfRangeException>(() =>
+            {
+                DateTime unused = date.ToDateTime();
+            });
         }
 
         /// <summary>
@@ -224,7 +227,6 @@ namespace CesiumLanguageWriterTests
             var dateTimes = new List<DateTime>
             {
                 DateTime.UtcNow,
-
                 // a previous version of the code didn't round-trip for this particular date due to 
                 // an error when values were rounded
                 new DateTime(2017, 8, 31, 13, 53, 32, 44, DateTimeKind.Utc)

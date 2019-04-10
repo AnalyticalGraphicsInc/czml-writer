@@ -122,24 +122,24 @@ namespace CesiumLanguageWriterTests
         {
             Duration duration1 = new Duration(1, 0.0);
             Duration duration2 = new Duration(1, 0.0);
-            Assert.IsTrue(duration1.CompareTo(duration2) == 0);
-            Assert.IsTrue(duration2.CompareTo(duration1) == 0);
+            Assert.AreEqual(0, duration1.CompareTo(duration2));
+            Assert.AreEqual(0, duration2.CompareTo(duration1));
             Assert.IsTrue(duration1 >= duration2);
             Assert.IsTrue(duration2 <= duration1);
             Assert.IsTrue(duration1 <= duration2);
             Assert.IsTrue(duration2 >= duration1);
 
             duration2 = new Duration(2, 0.0);
-            Assert.IsTrue(duration1.CompareTo(duration2) < 0);
-            Assert.IsTrue(duration2.CompareTo(duration1) > 0);
+            Assert.Less(duration1.CompareTo(duration2), 0);
+            Assert.Greater(duration2.CompareTo(duration1), 0);
             Assert.IsTrue(duration1 < duration2);
             Assert.IsTrue(duration2 > duration1);
             Assert.IsTrue(duration1 <= duration2);
             Assert.IsTrue(duration2 >= duration1);
 
             duration2 = new Duration(1, 1.0);
-            Assert.IsTrue(duration1.CompareTo(duration2) < 0);
-            Assert.IsTrue(duration2.CompareTo(duration1) > 0);
+            Assert.Less(duration1.CompareTo(duration2), 0);
+            Assert.Greater(duration2.CompareTo(duration1), 0);
             Assert.IsTrue(duration1 < duration2);
             Assert.IsTrue(duration2 > duration1);
             Assert.IsTrue(duration1 <= duration2);
@@ -354,10 +354,10 @@ namespace CesiumLanguageWriterTests
         public void TestObjectCompareTo()
         {
             Duration duration1 = new Duration(1, 1.0);
-            Assert.IsTrue(duration1.CompareTo(null) > 0);
+            Assert.Greater(duration1.CompareTo(null), 0);
 
             object duration2 = new Duration(1, 1.0);
-            Assert.IsTrue(duration1.CompareTo(duration2) == 0);
+            Assert.AreEqual(0, duration1.CompareTo(duration2));
         }
 
         /// <summary>
@@ -365,12 +365,15 @@ namespace CesiumLanguageWriterTests
         /// passed to the method is not a Duration.
         /// </summary>
         [Test]
-        [ExpectedException(typeof(ArgumentException))]
         [CSToJavaExclude]
         public void TestObjectCompareToNotDuration()
         {
-            Duration duration1 = new Duration(1, 1.0);
-            Assert.IsTrue(duration1.CompareTo(5) == 0);
+            Duration duration = new Duration(1, 1.0);
+
+            Assert.Throws<ArgumentException>(() =>
+            {
+                int unused = duration.CompareTo(5);
+            });
         }
 
         /// <summary>
@@ -417,11 +420,11 @@ namespace CesiumLanguageWriterTests
         public void TestReallySmallSeconds()
         {
             Duration duration = new Duration(10, -Constants.Epsilon13);
-            Assert.AreEqual(duration.Days, 10);
+            Assert.AreEqual(10, duration.Days);
             Assert.AreEqual(0.0, duration.Seconds);
 
             duration = new Duration(-10, Constants.Epsilon13);
-            Assert.AreEqual(duration.Days, -10);
+            Assert.AreEqual(-10, duration.Days);
             Assert.AreEqual(0.0, duration.Seconds);
         }
     }

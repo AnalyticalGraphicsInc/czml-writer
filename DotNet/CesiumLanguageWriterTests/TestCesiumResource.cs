@@ -36,7 +36,7 @@ namespace CesiumLanguageWriterTests
             StringAssert.Contains(";base64,", resource.Uri);
         }
 
-        public IEnumerable<CesiumImageFormat> ImageFormatValues
+        public static IEnumerable<CesiumImageFormat> ImageFormatValues
         {
             get { return (CesiumImageFormat[])Enum.GetValues(typeof(CesiumImageFormat)); }
         }

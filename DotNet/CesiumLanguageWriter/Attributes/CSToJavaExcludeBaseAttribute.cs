@@ -8,6 +8,7 @@ using System.Diagnostics;
 [Conditional("CSTOJAVA")]
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Interface, AllowMultiple = true)]
 [CSToJavaExclude]
+// ReSharper disable once CheckNamespace
 internal class CSToJavaExcludeBaseAttribute : Attribute
 {
     public CSToJavaExcludeBaseAttribute(string typeName)

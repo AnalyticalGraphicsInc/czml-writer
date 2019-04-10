@@ -40,42 +40,41 @@ namespace CesiumLanguageWriterTests.grisu
     [CSToJavaExclude]
     public class TestGrisu
     {
-        [TestCase("0", 0.0)]
-        [TestCase("12345", 12345.0)]
-        [TestCase("1.2345e27", 12345e23)]
-        [TestCase("1e21", 1e21)]
-        [TestCase("1e20", 1e20)]
-        [TestCase("1.1111111111111111e20", 111111111111111111111.0)]
-        [TestCase("1.1111111111111111e21", 1111111111111111111111.0)]
-        [TestCase("1.1111111111111111e22", 11111111111111111111111.0)]
-        [TestCase("-1e-5", -0.00001)]
-        [TestCase("-1e-6", -0.000001)]
-        [TestCase("-1e-7", -0.0000001)]
-        [TestCase("0", -0.0)]
-        [TestCase("0.1", 0.1)]
-        [TestCase("0.01", 0.01)]
-        [TestCase("1", 1.0)]
-        [TestCase("10", 10.0)]
-        [TestCase("1100", 1100.0)]
-        [TestCase("1122", 1122.0)]
-        [TestCase("1e4", 10000.0)]
-        [TestCase("11100", 11100.0)]
-        [TestCase("1e5", 100000.0)]
-        [TestCase("1e-6", 0.000001)]
-        [TestCase("1e-7", 0.0000001)]
-        [TestCase("1e20", 100000000000000000000.0)]
-        [TestCase("Infinity", double.PositiveInfinity)]
-        [TestCase("-Infinity", double.NegativeInfinity)]
-        [TestCase("NaN", double.NaN)]
-        [TestCase("NaN", -double.NaN)]
-        [TestCase("3.5844466002796428E+298", 3.5844466002796428e+298)]
-        [TestCase("-5.401035826582183e-4", -0.0005401035826582183)]
-        [TestCase("5.401035826582183e-4", 0.0005401035826582183)]
-        [TestCase("5401.035826582183", 5401.035826582183)]
-        [TestCase("-5401.035826582183", -5401.035826582183)]
-        [TestCase("-0.0015677654444036897", -0.0015677654444036897)]
-        [TestCase("-3.3200274383931173e-4", -3.3200274383931173e-4)]
-        public void TestDoubleToString(string expected, double value)
+        [Test]
+        public void TestDoubleToString()
+        {
+            CheckDoubleToStringEquals("0", 0.0);
+            CheckDoubleToStringEquals("12345", 12345.0);
+            CheckDoubleToStringEquals("1.2345e27", 12345e23);
+            CheckDoubleToStringEquals("1e21", 1e21);
+            CheckDoubleToStringEquals("1e20", 1e20);
+            CheckDoubleToStringEquals("1.1111111111111111e20", 111111111111111111111.0);
+            CheckDoubleToStringEquals("1.1111111111111111e21", 1111111111111111111111.0);
+            CheckDoubleToStringEquals("1.1111111111111111e22", 11111111111111111111111.0);
+            CheckDoubleToStringEquals("-1e-5", -0.00001);
+            CheckDoubleToStringEquals("-1e-6", -0.000001);
+            CheckDoubleToStringEquals("-1e-7", -0.0000001);
+            CheckDoubleToStringEquals("0", -0.0);
+            CheckDoubleToStringEquals("0.1", 0.1);
+            CheckDoubleToStringEquals("0.01", 0.01);
+            CheckDoubleToStringEquals("1", 1.0);
+            CheckDoubleToStringEquals("10", 10.0);
+            CheckDoubleToStringEquals("1100", 1100.0);
+            CheckDoubleToStringEquals("1122", 1122.0);
+            CheckDoubleToStringEquals("1e4", 10000.0);
+            CheckDoubleToStringEquals("11100", 11100.0);
+            CheckDoubleToStringEquals("1e5", 100000.0);
+            CheckDoubleToStringEquals("1e-6", 0.000001);
+            CheckDoubleToStringEquals("1e-7", 0.0000001);
+            CheckDoubleToStringEquals("1e20", 100000000000000000000.0);
+            CheckDoubleToStringEquals("Infinity", double.PositiveInfinity);
+            CheckDoubleToStringEquals("-Infinity", double.NegativeInfinity);
+            CheckDoubleToStringEquals("NaN", double.NaN);
+            CheckDoubleToStringEquals("NaN", -double.NaN);
+            CheckDoubleToStringEquals("3.5844466002796428E+298", 3.5844466002796428e+298);
+        }
+
+        private void CheckDoubleToStringEquals(string expected, double value)
         {
             StringWriter writer = new StringWriter();
             Grisu.DoubleToString(value, writer);

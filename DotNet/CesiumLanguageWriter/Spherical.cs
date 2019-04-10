@@ -11,14 +11,6 @@ namespace CesiumLanguageWriter
     public struct Spherical : IEquatable<Spherical>
     {
         /// <summary>
-        /// Gets a set of <see cref="Spherical"/> coordinates with values of zero.
-        /// </summary>
-        public static Spherical Zero
-        {
-            get { return s_zero; }
-        }
-
-        /// <summary>
         /// Initializes a set of <see cref="Spherical"/> coordinates from the provided clock angle, cone angle, and magnitude.
         /// </summary>
         /// <param name="clock">The angular coordinate lying in the xy-plane measured from the positive x-axis and toward the positive y-axis.</param>
@@ -48,6 +40,14 @@ namespace CesiumLanguageWriter
             m_clock = Math.Atan2(y, x);
             m_cone = Math.Atan2(Math.Sqrt(radialSquared), z);
             m_magnitude = Math.Sqrt(radialSquared + z * z);
+        }
+
+        /// <summary>
+        /// Gets a set of <see cref="Spherical"/> coordinates with values of zero.
+        /// </summary>
+        public static Spherical Zero
+        {
+            get { return s_zero; }
         }
 
         /// <summary>
@@ -173,10 +173,10 @@ namespace CesiumLanguageWriter
             return !left.Equals(right);
         }
 
+        private static readonly Spherical s_zero = new Spherical(0.0, 0.0, 0.0);
+
         private readonly double m_clock;
         private readonly double m_cone;
         private readonly double m_magnitude;
-
-        private static readonly Spherical s_zero = new Spherical(0.0, 0.0, 0.0);
     }
 }

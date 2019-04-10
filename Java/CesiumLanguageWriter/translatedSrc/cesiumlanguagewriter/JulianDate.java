@@ -1021,12 +1021,12 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
         return 0;
     }
 
+    @Nonnull
+    private static final JulianDate s_maxValue = new JulianDate(Integer.MAX_VALUE, 0.0, TimeStandard.INTERNATIONAL_ATOMIC_TIME);
+    @Nonnull
+    private static final JulianDate s_minValue = new JulianDate(Integer.MIN_VALUE, 0.0, TimeStandard.INTERNATIONAL_ATOMIC_TIME);
     private int m_day;
     private double m_secondsOfDay;
     @Nonnull
     private TimeStandard m_timeStandard = TimeStandard.getDefault();
-    @Nonnull
-    private static JulianDate s_maxValue = new JulianDate(Integer.MAX_VALUE, 0.0, TimeStandard.INTERNATIONAL_ATOMIC_TIME);
-    @Nonnull
-    private static JulianDate s_minValue = new JulianDate(Integer.MIN_VALUE, 0.0, TimeStandard.INTERNATIONAL_ATOMIC_TIME);
 }

@@ -5,9 +5,6 @@ using NUnit.Framework;
 
 namespace CesiumLanguageWriterTests
 {
-    /// <summary>
-    /// A series of tests to exercise this type.
-    /// </summary>
     [TestFixture]
     public class TestLeapSeconds
     {
@@ -82,11 +79,13 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestNegativeLeapSecond()
         {
-            List<LeapSecond> newList = new List<LeapSecond>();
-            newList.Add(new LeapSecond(2451545.0, 11));
-            newList.Add(new LeapSecond(2451555.0, 12));
-            newList.Add(new LeapSecond(2451565.0, 11));
-            newList.Add(new LeapSecond(2451575.0, 10));
+            List<LeapSecond> newList = new List<LeapSecond>
+            {
+                new LeapSecond(2451545.0, 11),
+                new LeapSecond(2451555.0, 12),
+                new LeapSecond(2451565.0, 11),
+                new LeapSecond(2451575.0, 10)
+            };
 
             LeapSeconds leapSeconds = new LeapSeconds(newList);
 
@@ -114,11 +113,14 @@ namespace CesiumLanguageWriterTests
         /// represent a day containing a leap second.
         /// </summary>
         [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void TestJulianDateCannotRepresentMomentOfLeapSecond()
         {
             JulianDate momentOfLeapSecond = new JulianDate(2453736, 43232.0, TimeStandard.InternationalAtomicTime);
-            momentOfLeapSecond.ToTimeStandard(TimeStandard.CoordinatedUniversalTime);
+
+            Assert.Throws<ArgumentOutOfRangeException>(() =>
+            {
+                var unused = momentOfLeapSecond.ToTimeStandard(TimeStandard.CoordinatedUniversalTime);
+            });
         }
 
         /// <summary>
@@ -163,7 +165,7 @@ namespace CesiumLanguageWriterTests
                 }
             }
 
-            //5 second difference, so 50 additions of a tenth of a second each
+            // 5 second difference, so 50 additions of a tenth of a second each
             Assert.AreEqual(50, i);
         }
     }

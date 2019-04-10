@@ -18,6 +18,7 @@ namespace CesiumLanguageWriterTests
             {
                 interval.WriteShowProperty(true);
             }
+
             Assert.AreEqual("{\"label\":{\"show\":true}}", StringWriter.ToString());
         }
 
@@ -30,6 +31,7 @@ namespace CesiumLanguageWriterTests
             {
                 interval.WriteTextProperty("asdf");
             }
+
             Assert.AreEqual("{\"label\":{\"text\":\"asdf\"}}", StringWriter.ToString());
         }
 
@@ -42,6 +44,7 @@ namespace CesiumLanguageWriterTests
             {
                 interval.WriteShowBackgroundProperty(true);
             }
+
             Assert.AreEqual("{\"label\":{\"showBackground\":true}}", StringWriter.ToString());
         }
 
@@ -54,6 +57,7 @@ namespace CesiumLanguageWriterTests
             {
                 interval.WriteBackgroundColorProperty(Color.Red);
             }
+
             Assert.AreEqual("{\"label\":{\"backgroundColor\":{\"rgba\":[255,0,0,255]}}}", StringWriter.ToString());
         }
 
@@ -66,6 +70,7 @@ namespace CesiumLanguageWriterTests
             {
                 interval.WriteBackgroundPaddingProperty(new Rectangular(3, 4));
             }
+
             Assert.AreEqual("{\"label\":{\"backgroundPadding\":{\"cartesian2\":[3,4]}}}", StringWriter.ToString());
         }
 
@@ -78,6 +83,7 @@ namespace CesiumLanguageWriterTests
             {
                 interval.WriteTranslucencyByDistanceProperty(new NearFarScalar(100.0, 1.0, 200.0, 2.0));
             }
+
             Assert.AreEqual("{\"label\":{\"translucencyByDistance\":{\"nearFarScalar\":[100,1,200,2]}}}", StringWriter.ToString());
         }
 
@@ -102,6 +108,7 @@ namespace CesiumLanguageWriterTests
 
                 scaleByDistance.WriteNearFarScalar(dates, values);
             }
+
             Assert.AreEqual("{\"label\":{\"translucencyByDistance\":{\"epoch\":\"20120402T12Z\",\"nearFarScalar\":[0,100,1,200,2,60,200,1,300,2]}}}", StringWriter.ToString());
         }
 

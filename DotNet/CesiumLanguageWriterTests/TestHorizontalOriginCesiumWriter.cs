@@ -16,6 +16,7 @@ namespace CesiumLanguageWriterTests
                 writer.Open(OutputStream);
                 writer.WriteHorizontalOrigin(CesiumHorizontalOrigin.Center);
             }
+
             Assert.AreEqual("{\"foo\":\"CENTER\"}", StringWriter.ToString());
         }
 
@@ -31,6 +32,7 @@ namespace CesiumLanguageWriterTests
                 writer.WriteInterval(startDate, startDate.AddSeconds(100.0));
                 writer.WriteHorizontalOrigin(CesiumHorizontalOrigin.Center);
             }
+
             Assert.AreEqual("{\"foo\":{\"interval\":\"20120607T12Z/20120607T120140Z\",\"horizontalOrigin\":\"CENTER\"}}", StringWriter.ToString());
         }
 

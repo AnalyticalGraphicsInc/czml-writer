@@ -32,7 +32,6 @@ namespace CesiumLanguageWriter
         {
             if (right < left)
                 throw new ArgumentException("right must be greater than or equal to left");
-
             if (top < bottom)
                 throw new ArgumentException("top must be greater than or equal to bottom");
 
@@ -55,49 +54,49 @@ namespace CesiumLanguageWriter
             return new BoundingRectangle(x, y, x + width, y + height);
         }
 
-        ///<summary>
+        /// <summary>
         /// Gets the x-coordinate of the left edge of the rectangle.
-        ///</summary>
+        /// </summary>
         public double Left
         {
             get { return m_left; }
         }
 
-        ///<summary>
+        /// <summary>
         /// Gets the y-coordinate of the top edge of the rectangle.
-        ///</summary>
+        /// </summary>
         public double Top
         {
             get { return m_top; }
         }
 
-        ///<summary>
+        /// <summary>
         /// Gets the y-coordinate of the bottom edge of the rectangle.
-        ///</summary>
+        /// </summary>
         public double Bottom
         {
             get { return m_bottom; }
         }
 
-        ///<summary>
+        /// <summary>
         /// Gets the x-coordinate of the right edge of the rectangle.
-        ///</summary>
+        /// </summary>
         public double Right
         {
             get { return m_right; }
         }
 
-        ///<summary>
+        /// <summary>
         /// Gets the width of the rectangle.
-        ///</summary>
+        /// </summary>
         public double Width
         {
             get { return m_right - m_left; }
         }
 
-        ///<summary>
+        /// <summary>
         /// Gets the height of the rectangle.
-        ///</summary>
+        /// </summary>
         public double Height
         {
             get { return m_top - m_bottom; }
@@ -195,11 +194,11 @@ namespace CesiumLanguageWriter
             return !left.Equals(right);
         }
 
+        private static readonly BoundingRectangle s_empty = new BoundingRectangle(0, 0, 0, 0);
+
         private readonly double m_left;
         private readonly double m_right;
         private readonly double m_bottom;
         private readonly double m_top;
-
-        private static readonly BoundingRectangle s_empty = new BoundingRectangle(0, 0, 0, 0);
     }
 }

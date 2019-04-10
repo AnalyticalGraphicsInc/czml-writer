@@ -3,7 +3,6 @@ package cesiumlanguagewritertests;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.AssertHelper;
-import agi.foundation.compatibility.DateTimeHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
@@ -35,7 +34,7 @@ public class TestTimeInterval {
     */
     @Test
     public final void testRetainValue() {
-        JulianDate start = new JulianDate(DateTimeHelper.utcNow());
+        JulianDate start = JulianDate.getNow();
         JulianDate stop = JulianDate.add(start, Duration.fromDays(1.5));
         TimeInterval interval = new TimeInterval(start, stop);
         AssertHelper.assertEquals(start, interval.getStart());
@@ -168,7 +167,7 @@ public class TestTimeInterval {
 
     /**
     *  
-    Tests thats the {@link TimeInterval#equalsEpsilon} method returns true
+    Tests that the {@link TimeInterval#equalsEpsilon} method returns true
     when the difference is exactly epsilon.
     
 
@@ -216,7 +215,7 @@ public class TestTimeInterval {
     @Test
     public final void testToString() {
         TimeInterval interval = new TimeInterval(new JulianDate(2451545, 0.00), new JulianDate(2451546, 0.00));
-        Assert.assertEquals("[2451545:0 TAI (1/1/2000 11:59:28 AM), 2451546:0 TAI (1/2/2000 11:59:28 AM)]", interval.toString());
+        AssertHelper.assertEquals("[2451545:0 TAI (" + interval.getStart().toGregorianDate() + "), 2451546:0 TAI (" + interval.getStop().toGregorianDate() + ")]", interval.toString());
     }
 
     @Nonnull

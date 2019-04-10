@@ -177,12 +177,12 @@ public final class Constants {
     
 
     */
-    public static final double RadiansPerDegree = 2 * Math.PI / 360.0;
+    public static final double RadiansPerDegree = TwoPi / 360.0;
     /**
     *  
     The number of degrees in a radian.
     
 
     */
-    public static final double DegreesPerRadian = 360.0 / (2 * Math.PI);
+    public static final double DegreesPerRadian = 360.0 / TwoPi;
 }

@@ -75,6 +75,7 @@ namespace CesiumLanguageWriterTests
                             interval.WriteCartographicRadians(interval2SampleDates, interval2SamplePositions);
                         }
                     }
+
                     using (var orientationWriter = packet.OpenOrientationProperty())
                     using (var intervalListWriter = orientationWriter.OpenMultipleIntervals())
                     {
@@ -93,7 +94,7 @@ namespace CesiumLanguageWriterTests
                         }
                     }
                 }
-                
+
                 Console.WriteLine(stringWriter.ToString());
             }
         }

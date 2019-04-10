@@ -27,16 +27,6 @@ public final class Spherical implements IEquatable<Spherical>, ImmutableValueTyp
     public Spherical() {}
 
     /**
-    *  Gets a set of {@link Spherical} coordinates with values of zero.
-    
-
-    */
-    @Nonnull
-    public static Spherical getZero() {
-        return s_zero;
-    }
-
-    /**
     *  
     Initializes a set of {@link Spherical} coordinates from the provided clock angle, cone angle, and magnitude.
     
@@ -75,6 +65,16 @@ public final class Spherical implements IEquatable<Spherical>, ImmutableValueTyp
         m_clock = Math.atan2(y, x);
         m_cone = Math.atan2(Math.sqrt(radialSquared), z);
         m_magnitude = Math.sqrt(radialSquared + z * z);
+    }
+
+    /**
+    *  Gets a set of {@link Spherical} coordinates with values of zero.
+    
+
+    */
+    @Nonnull
+    public static Spherical getZero() {
+        return s_zero;
     }
 
     /**
@@ -235,9 +235,9 @@ public final class Spherical implements IEquatable<Spherical>, ImmutableValueTyp
         return !left.equalsType(right);
     }
 
+    @Nonnull
+    private static Spherical s_zero = new Spherical(0.0, 0.0, 0.0);
     private double m_clock;
     private double m_cone;
     private double m_magnitude;
-    @Nonnull
-    private static Spherical s_zero = new Spherical(0.0, 0.0, 0.0);
 }

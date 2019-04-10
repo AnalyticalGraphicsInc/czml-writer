@@ -22,6 +22,7 @@ namespace CesiumLanguageWriterTests
                 polylineDashMaterial.WriteGapColorProperty(Color.Blue);
                 polylineDashMaterial.WriteDashLengthProperty(25);
             }
+
             Assert.AreEqual("{\"polyline\":{\"material\":{\"polylineDash\":{\"color\":{\"rgba\":[255,0,0,255]},\"dashPattern\":13107,\"gapColor\":{\"rgba\":[0,0,255,255]},\"dashLength\":25}}}}", StringWriter.ToString());
         }
 

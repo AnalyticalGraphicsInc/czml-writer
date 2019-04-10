@@ -25,9 +25,11 @@ namespace CesiumLanguageWriterTests
                 }
             }
 
-            Assert.AreEqual("{\"model\":{\"nodeTransformations\":{" +
-                            "\"node1\":{\"scale\":{\"cartesian\":[0,0,0]},\"rotation\":{\"unitQuaternion\":[0,0,0,1]},\"translation\":{\"cartesian\":[3,3,3]}}" +
-                            "}}}", StringWriter.ToString());
+            const string expected =
+                "{\"model\":{\"nodeTransformations\":{" +
+                "\"node1\":{\"scale\":{\"cartesian\":[0,0,0]},\"rotation\":{\"unitQuaternion\":[0,0,0,1]},\"translation\":{\"cartesian\":[3,3,3]}}" +
+                "}}}";
+            Assert.AreEqual(expected, StringWriter.ToString());
         }
 
         [Test]
@@ -52,12 +54,12 @@ namespace CesiumLanguageWriterTests
                 }
             }
 
-            string expectedValue =
+            const string expected =
                 "{\"model\":{\"nodeTransformations\":{" +
                 "\"node1\":{\"scale\":{\"cartesian\":[1,2,3]},\"rotation\":{\"unitQuaternion\":[0,0,0,1]},\"translation\":{\"cartesian\":[4,5,6]}}," +
                 "\"node2\":{\"scale\":{\"cartesian\":[4,5,6]},\"rotation\":{\"unitQuaternion\":[0,0,1,0]},\"translation\":{\"cartesian\":[7,8,9]}}" +
                 "}}}";
-            Assert.AreEqual(expectedValue, StringWriter.ToString());
+            Assert.AreEqual(expected, StringWriter.ToString());
         }
 
         [Test]
