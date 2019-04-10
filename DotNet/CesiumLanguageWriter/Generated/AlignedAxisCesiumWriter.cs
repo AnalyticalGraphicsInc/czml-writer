@@ -35,6 +35,11 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string VelocityReferencePropertyName = "velocityReference";
 
+        /// <summary>
+        /// The name of the <c>delete</c> property.
+        /// </summary>
+        public const string DeletePropertyName = "delete";
+
         private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<UnitCartesian>> m_asUnitCartesian;
         private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<UnitSpherical>> m_asUnitSpherical;
         private readonly Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
@@ -242,6 +247,18 @@ namespace CesiumLanguageWriter
             OpenIntervalIfNecessary();
             Output.WritePropertyName(PropertyName);
             CesiumWritingHelper.WriteReference(Output, identifier, propertyNames);
+        }
+
+        /// <summary>
+        /// Writes the value expressed as a <c>delete</c>, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteDelete(bool value)
+        {
+            const string PropertyName = DeletePropertyName;
+            OpenIntervalIfNecessary();
+            Output.WritePropertyName(PropertyName);
+            Output.WriteValue(value);
         }
 
         /// <summary>

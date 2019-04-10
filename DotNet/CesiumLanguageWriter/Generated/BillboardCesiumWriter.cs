@@ -984,7 +984,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>color</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>color</c> property defines the color of the billboard. This color value is multiplied with the values of the billboard's "image" to produce the final color. If not specified, the default value is white.
+        /// Gets the writer for the <c>color</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>color</c> property defines the color of the billboard. This color value is multiplied with the values of the billboard's <c>image</c> to produce the final color. If not specified, the default value is white.
         /// </summary>
         [NotNull]
         public ColorCesiumWriter ColorWriter
@@ -993,7 +993,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>color</c> property. The <c>color</c> property defines the color of the billboard. This color value is multiplied with the values of the billboard's "image" to produce the final color. If not specified, the default value is white.
+        /// Opens and returns the writer for the <c>color</c> property. The <c>color</c> property defines the color of the billboard. This color value is multiplied with the values of the billboard's <c>image</c> to produce the final color. If not specified, the default value is white.
         /// </summary>
         [NotNull]
         public ColorCesiumWriter OpenColorProperty()
@@ -1003,7 +1003,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>color</c> property as a <c>rgba</c> value. The <c>color</c> property specifies the color of the billboard. This color value is multiplied with the values of the billboard's "image" to produce the final color. If not specified, the default value is white.
+        /// Writes a value for the <c>color</c> property as a <c>rgba</c> value. The <c>color</c> property specifies the color of the billboard. This color value is multiplied with the values of the billboard's <c>image</c> to produce the final color. If not specified, the default value is white.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteColorProperty(Color color)
@@ -1015,7 +1015,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>color</c> property as a <c>rgba</c> value. The <c>color</c> property specifies the color of the billboard. This color value is multiplied with the values of the billboard's "image" to produce the final color. If not specified, the default value is white.
+        /// Writes a value for the <c>color</c> property as a <c>rgba</c> value. The <c>color</c> property specifies the color of the billboard. This color value is multiplied with the values of the billboard's <c>image</c> to produce the final color. If not specified, the default value is white.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 255.</param>
         /// <param name="green">The green component in the range 0 to 255.</param>
@@ -1030,7 +1030,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>color</c> property as a <c>rgba</c> value. The <c>color</c> property specifies the color of the billboard. This color value is multiplied with the values of the billboard's "image" to produce the final color. If not specified, the default value is white.
+        /// Writes a value for the <c>color</c> property as a <c>rgba</c> value. The <c>color</c> property specifies the color of the billboard. This color value is multiplied with the values of the billboard's <c>image</c> to produce the final color. If not specified, the default value is white.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -1043,7 +1043,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>color</c> property as a <c>rgba</c> value. The <c>color</c> property specifies the color of the billboard. This color value is multiplied with the values of the billboard's "image" to produce the final color. If not specified, the default value is white.
+        /// Writes a value for the <c>color</c> property as a <c>rgba</c> value. The <c>color</c> property specifies the color of the billboard. This color value is multiplied with the values of the billboard's <c>image</c> to produce the final color. If not specified, the default value is white.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
@@ -1058,7 +1058,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>color</c> property as a <c>rgbaf</c> value. The <c>color</c> property specifies the color of the billboard. This color value is multiplied with the values of the billboard's "image" to produce the final color. If not specified, the default value is white.
+        /// Writes a value for the <c>color</c> property as a <c>rgbaf</c> value. The <c>color</c> property specifies the color of the billboard. This color value is multiplied with the values of the billboard's <c>image</c> to produce the final color. If not specified, the default value is white.
         /// </summary>
         /// <param name="color">The color.</param>
         public void WriteColorPropertyRgbaf(Color color)
@@ -1070,7 +1070,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>color</c> property as a <c>rgbaf</c> value. The <c>color</c> property specifies the color of the billboard. This color value is multiplied with the values of the billboard's "image" to produce the final color. If not specified, the default value is white.
+        /// Writes a value for the <c>color</c> property as a <c>rgbaf</c> value. The <c>color</c> property specifies the color of the billboard. This color value is multiplied with the values of the billboard's <c>image</c> to produce the final color. If not specified, the default value is white.
         /// </summary>
         /// <param name="red">The red component in the range 0 to 1.0.</param>
         /// <param name="green">The green component in the range 0 to 1.0.</param>
@@ -1085,7 +1085,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>color</c> property as a <c>rgbaf</c> value. The <c>color</c> property specifies the color of the billboard. This color value is multiplied with the values of the billboard's "image" to produce the final color. If not specified, the default value is white.
+        /// Writes a value for the <c>color</c> property as a <c>rgbaf</c> value. The <c>color</c> property specifies the color of the billboard. This color value is multiplied with the values of the billboard's <c>image</c> to produce the final color. If not specified, the default value is white.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -1098,7 +1098,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>color</c> property as a <c>rgbaf</c> value. The <c>color</c> property specifies the color of the billboard. This color value is multiplied with the values of the billboard's "image" to produce the final color. If not specified, the default value is white.
+        /// Writes a value for the <c>color</c> property as a <c>rgbaf</c> value. The <c>color</c> property specifies the color of the billboard. This color value is multiplied with the values of the billboard's <c>image</c> to produce the final color. If not specified, the default value is white.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="colors">The color corresponding to each date.</param>
@@ -1113,7 +1113,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>color</c> property as a <c>reference</c> value. The <c>color</c> property specifies the color of the billboard. This color value is multiplied with the values of the billboard's "image" to produce the final color. If not specified, the default value is white.
+        /// Writes a value for the <c>color</c> property as a <c>reference</c> value. The <c>color</c> property specifies the color of the billboard. This color value is multiplied with the values of the billboard's <c>image</c> to produce the final color. If not specified, the default value is white.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteColorPropertyReference(Reference value)
@@ -1125,7 +1125,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>color</c> property as a <c>reference</c> value. The <c>color</c> property specifies the color of the billboard. This color value is multiplied with the values of the billboard's "image" to produce the final color. If not specified, the default value is white.
+        /// Writes a value for the <c>color</c> property as a <c>reference</c> value. The <c>color</c> property specifies the color of the billboard. This color value is multiplied with the values of the billboard's <c>image</c> to produce the final color. If not specified, the default value is white.
         /// </summary>
         /// <param name="value">The earliest date of the interval.</param>
         public void WriteColorPropertyReference(string value)
@@ -1137,7 +1137,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>color</c> property as a <c>reference</c> value. The <c>color</c> property specifies the color of the billboard. This color value is multiplied with the values of the billboard's "image" to produce the final color. If not specified, the default value is white.
+        /// Writes a value for the <c>color</c> property as a <c>reference</c> value. The <c>color</c> property specifies the color of the billboard. This color value is multiplied with the values of the billboard's <c>image</c> to produce the final color. If not specified, the default value is white.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -1150,7 +1150,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>color</c> property as a <c>reference</c> value. The <c>color</c> property specifies the color of the billboard. This color value is multiplied with the values of the billboard's "image" to produce the final color. If not specified, the default value is white.
+        /// Writes a value for the <c>color</c> property as a <c>reference</c> value. The <c>color</c> property specifies the color of the billboard. This color value is multiplied with the values of the billboard's <c>image</c> to produce the final color. If not specified, the default value is white.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>

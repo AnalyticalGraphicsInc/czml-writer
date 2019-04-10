@@ -43,6 +43,13 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
     */
     public static final String VelocityReferencePropertyName = "velocityReference";
+    /**
+    *  
+    The name of the {@code delete} property.
+    
+
+    */
+    public static final String DeletePropertyName = "delete";
     private Lazy<ICesiumInterpolatableValuePropertyWriter<UnitQuaternion>> m_asUnitQuaternion;
     private Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
     private Lazy<ICesiumValuePropertyWriter<Reference>> m_asVelocityReference;
@@ -296,6 +303,21 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
         openIntervalIfNecessary();
         getOutput().writePropertyName(PropertyName);
         CesiumWritingHelper.writeReference(getOutput(), identifier, propertyNames);
+    }
+
+    /**
+    *  
+    Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
+    
+    
+
+    * @param value The value.
+    */
+    public final void writeDelete(boolean value) {
+        final String PropertyName = DeletePropertyName;
+        openIntervalIfNecessary();
+        getOutput().writePropertyName(PropertyName);
+        getOutput().writeValue(value);
     }
 
     /**

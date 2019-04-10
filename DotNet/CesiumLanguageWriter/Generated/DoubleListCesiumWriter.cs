@@ -25,6 +25,11 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string ReferencesPropertyName = "references";
 
+        /// <summary>
+        /// The name of the <c>delete</c> property.
+        /// </summary>
+        public const string DeletePropertyName = "delete";
+
         private readonly Lazy<ICesiumValuePropertyWriter<IEnumerable<double>>> m_asArray;
         private readonly Lazy<ICesiumValuePropertyWriter<IEnumerable<Reference>>> m_asReferences;
 
@@ -78,6 +83,18 @@ namespace CesiumLanguageWriter
             OpenIntervalIfNecessary();
             Output.WritePropertyName(PropertyName);
             CesiumWritingHelper.WriteReferences(Output, references);
+        }
+
+        /// <summary>
+        /// Writes the value expressed as a <c>delete</c>, which is whether the client should delete existing data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteDelete(bool value)
+        {
+            const string PropertyName = DeletePropertyName;
+            OpenIntervalIfNecessary();
+            Output.WritePropertyName(PropertyName);
+            Output.WriteValue(value);
         }
 
         /// <summary>

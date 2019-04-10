@@ -55,7 +55,7 @@
         },
         "color": {
             "$ref": "Color.json",
-            "description": "The color of the billboard. This color value is multiplied with the values of the billboard's \"image\" to produce the final color.",
+            "description": "The color of the billboard. This color value is multiplied with the values of the billboard's `image` to produce the final color.",
             "default": "white"
         },
         "rotation": {

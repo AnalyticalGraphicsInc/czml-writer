@@ -47,6 +47,13 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
 
     */
     public static final String UnitCartesianPropertyName = "unitCartesian";
+    /**
+    *  
+    The name of the {@code delete} property.
+    
+
+    */
+    public static final String DeletePropertyName = "delete";
     private Lazy<ICesiumValuePropertyWriter<Iterable<Spherical>>> m_asSpherical;
     private Lazy<ICesiumValuePropertyWriter<Iterable<UnitSpherical>>> m_asUnitSpherical;
     private Lazy<ICesiumValuePropertyWriter<Iterable<Cartesian>>> m_asCartesian;
@@ -196,6 +203,21 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
         openIntervalIfNecessary();
         getOutput().writePropertyName(PropertyName);
         CesiumWritingHelper.writeUnitCartesian3List(getOutput(), values);
+    }
+
+    /**
+    *  
+    Writes the value expressed as a {@code delete}, which is whether the client should delete existing data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
+    
+    
+
+    * @param value The value.
+    */
+    public final void writeDelete(boolean value) {
+        final String PropertyName = DeletePropertyName;
+        openIntervalIfNecessary();
+        getOutput().writePropertyName(PropertyName);
+        getOutput().writeValue(value);
     }
 
     /**

@@ -37,6 +37,13 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
 
     */
     public static final String ReferencePropertyName = "reference";
+    /**
+    *  
+    The name of the {@code delete} property.
+    
+
+    */
+    public static final String DeletePropertyName = "delete";
     private Lazy<ICesiumValuePropertyWriter<CesiumResource>> m_asUri;
     private Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
 
@@ -279,6 +286,21 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
         openIntervalIfNecessary();
         getOutput().writePropertyName(PropertyName);
         CesiumWritingHelper.writeReference(getOutput(), identifier, propertyNames);
+    }
+
+    /**
+    *  
+    Writes the value expressed as a {@code delete}, which is whether the client should delete existing data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
+    
+    
+
+    * @param value The value.
+    */
+    public final void writeDelete(boolean value) {
+        final String PropertyName = DeletePropertyName;
+        openIntervalIfNecessary();
+        getOutput().writePropertyName(PropertyName);
+        getOutput().writeValue(value);
     }
 
     /**

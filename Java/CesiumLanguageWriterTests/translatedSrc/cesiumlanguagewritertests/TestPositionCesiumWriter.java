@@ -29,10 +29,10 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
             final PacketCesiumWriter usingExpression_0 = (getPacket());
             try {
                 {
-                    PositionCesiumWriter position = getPacket().openPositionProperty();
+                    cesiumlanguagewriter.PositionCesiumWriter position = getPacket().openPositionProperty();
                     try {
                         {
-                            PositionCesiumWriter interval = position.openInterval();
+                            cesiumlanguagewriter.PositionCesiumWriter interval = position.openInterval();
                             try {
                                 interval.writeReferenceFrame("myReferenceFrame");
                             } finally {
@@ -56,10 +56,10 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
             final PacketCesiumWriter usingExpression_1 = (getPacket());
             try {
                 {
-                    PositionCesiumWriter position = getPacket().openPositionProperty();
+                    cesiumlanguagewriter.PositionCesiumWriter position = getPacket().openPositionProperty();
                     try {
                         {
-                            PositionCesiumWriter interval = position.openInterval();
+                            cesiumlanguagewriter.PositionCesiumWriter interval = position.openInterval();
                             try {
                                 interval.writeCartesian(new Cartesian(1.0, 2.0, 3.0));
                             } finally {
@@ -83,10 +83,10 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
             final PacketCesiumWriter usingExpression_2 = (getPacket());
             try {
                 {
-                    PositionCesiumWriter position = getPacket().openPositionProperty();
+                    cesiumlanguagewriter.PositionCesiumWriter position = getPacket().openPositionProperty();
                     try {
                         {
-                            PositionCesiumWriter interval = position.openInterval();
+                            cesiumlanguagewriter.PositionCesiumWriter interval = position.openInterval();
                             try {
                                 interval.writeCartographicRadians(new Cartographic(1100.0, 2200.0, 3.0));
                             } finally {
@@ -106,15 +106,15 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
 
     @Test
     public final void cartesianValueWritesMultipleCartesianProperty() {
-        JulianDate startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0D));
+        cesiumlanguagewriter.JulianDate startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0D));
         {
             final PacketCesiumWriter usingExpression_3 = (getPacket());
             try {
                 {
-                    PositionCesiumWriter position = getPacket().openPositionProperty();
+                    cesiumlanguagewriter.PositionCesiumWriter position = getPacket().openPositionProperty();
                     try {
                         {
-                            PositionCesiumWriter interval = position.openInterval();
+                            cesiumlanguagewriter.PositionCesiumWriter interval = position.openInterval();
                             try {
                                 ArrayList<cesiumlanguagewriter.JulianDate> dates = new ArrayList<cesiumlanguagewriter.JulianDate>();
                                 ArrayList<cesiumlanguagewriter.Cartesian> positions = new ArrayList<cesiumlanguagewriter.Cartesian>();
@@ -140,15 +140,15 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
 
     @Test
     public final void cartesianValueSubsetWritesMultipleCartesianProperty() {
-        JulianDate startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0D));
+        cesiumlanguagewriter.JulianDate startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0D));
         {
             final PacketCesiumWriter usingExpression_4 = (getPacket());
             try {
                 {
-                    PositionCesiumWriter position = getPacket().openPositionProperty();
+                    cesiumlanguagewriter.PositionCesiumWriter position = getPacket().openPositionProperty();
                     try {
                         {
-                            PositionCesiumWriter interval = position.openInterval();
+                            cesiumlanguagewriter.PositionCesiumWriter interval = position.openInterval();
                             try {
                                 ArrayList<cesiumlanguagewriter.JulianDate> dates = new ArrayList<cesiumlanguagewriter.JulianDate>();
                                 ArrayList<cesiumlanguagewriter.Cartesian> positions = new ArrayList<cesiumlanguagewriter.Cartesian>();
@@ -176,15 +176,15 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
 
     @Test
     public final void cartographicRadiansValueWritesMultipleCartographicRadiansProperty() {
-        JulianDate startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0D));
+        cesiumlanguagewriter.JulianDate startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0D));
         {
             final PacketCesiumWriter usingExpression_5 = (getPacket());
             try {
                 {
-                    PositionCesiumWriter position = getPacket().openPositionProperty();
+                    cesiumlanguagewriter.PositionCesiumWriter position = getPacket().openPositionProperty();
                     try {
                         {
-                            PositionCesiumWriter interval = position.openInterval();
+                            cesiumlanguagewriter.PositionCesiumWriter interval = position.openInterval();
                             try {
                                 ArrayList<cesiumlanguagewriter.JulianDate> dates = new ArrayList<cesiumlanguagewriter.JulianDate>();
                                 ArrayList<cesiumlanguagewriter.Cartographic> positions = new ArrayList<cesiumlanguagewriter.Cartographic>();
@@ -210,15 +210,15 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
 
     @Test
     public final void cartographicRadiansValueSubsetWritesMultipleCartographicRadiansProperty() {
-        JulianDate startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0D));
+        cesiumlanguagewriter.JulianDate startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0D));
         {
             final PacketCesiumWriter usingExpression_6 = (getPacket());
             try {
                 {
-                    PositionCesiumWriter position = getPacket().openPositionProperty();
+                    cesiumlanguagewriter.PositionCesiumWriter position = getPacket().openPositionProperty();
                     try {
                         {
-                            PositionCesiumWriter interval = position.openInterval();
+                            cesiumlanguagewriter.PositionCesiumWriter interval = position.openInterval();
                             try {
                                 ArrayList<cesiumlanguagewriter.JulianDate> dates = new ArrayList<cesiumlanguagewriter.JulianDate>();
                                 ArrayList<cesiumlanguagewriter.Cartographic> positions = new ArrayList<cesiumlanguagewriter.Cartographic>();
@@ -250,10 +250,10 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
             final PacketCesiumWriter usingExpression_7 = (getPacket());
             try {
                 {
-                    PositionCesiumWriter position = getPacket().openPositionProperty();
+                    cesiumlanguagewriter.PositionCesiumWriter position = getPacket().openPositionProperty();
                     try {
                         {
-                            PositionCesiumWriter interval = position.openInterval();
+                            cesiumlanguagewriter.PositionCesiumWriter interval = position.openInterval();
                             try {
                                 ArrayList<cesiumlanguagewriter.JulianDate> dates = new ArrayList<cesiumlanguagewriter.JulianDate>();
                                 ArrayList<cesiumlanguagewriter.Cartesian> positions = new ArrayList<cesiumlanguagewriter.Cartesian>();
@@ -279,10 +279,10 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
             final PacketCesiumWriter usingExpression_8 = (getPacket());
             try {
                 {
-                    PositionCesiumWriter position = getPacket().openPositionProperty();
+                    cesiumlanguagewriter.PositionCesiumWriter position = getPacket().openPositionProperty();
                     try {
                         {
-                            PositionCesiumWriter interval = position.openInterval();
+                            cesiumlanguagewriter.PositionCesiumWriter interval = position.openInterval();
                             try {
                                 ArrayList<cesiumlanguagewriter.JulianDate> dates = new ArrayList<cesiumlanguagewriter.JulianDate>();
                                 ArrayList<cesiumlanguagewriter.Cartographic> positions = new ArrayList<cesiumlanguagewriter.Cartographic>();
@@ -300,6 +300,64 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
             }
         }
         Assert.assertEquals("{\"position\":{\"cartographicRadians\":[]}}", getStringWriter().toString());
+    }
+
+    @Test
+    public final void testDeletePropertyWithStartAndStop() {
+        cesiumlanguagewriter.JulianDate start = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0D));
+        cesiumlanguagewriter.JulianDate stop = start.addDays(1.0);
+        {
+            final PacketCesiumWriter usingExpression_9 = (getPacket());
+            try {
+                getPacket().writeId("id");
+                {
+                    cesiumlanguagewriter.PositionCesiumWriter position = getPacket().openPositionProperty();
+                    try {
+                        {
+                            cesiumlanguagewriter.PositionCesiumWriter interval = position.openInterval(start, stop);
+                            try {
+                                interval.writeDelete(true);
+                            } finally {
+                                DisposeHelper.dispose(interval);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(position);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(usingExpression_9);
+            }
+        }
+        Assert.assertEquals("{\"id\":\"id\",\"position\":{\"interval\":\"20120402T12Z/20120403T12Z\",\"delete\":true}}", getStringWriter().toString());
+    }
+
+    @Test
+    public final void testDeletePropertyWithNoInterval() {
+        {
+            final PacketCesiumWriter usingExpression_10 = (getPacket());
+            try {
+                getPacket().writeId("id");
+                {
+                    cesiumlanguagewriter.PositionCesiumWriter position = getPacket().openPositionProperty();
+                    try {
+                        {
+                            cesiumlanguagewriter.PositionCesiumWriter interval = position.openInterval();
+                            try {
+                                interval.writeDelete(true);
+                            } finally {
+                                DisposeHelper.dispose(interval);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(position);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(usingExpression_10);
+            }
+        }
+        Assert.assertEquals("{\"id\":\"id\",\"position\":{\"delete\":true}}", getStringWriter().toString());
     }
 
     @Override
