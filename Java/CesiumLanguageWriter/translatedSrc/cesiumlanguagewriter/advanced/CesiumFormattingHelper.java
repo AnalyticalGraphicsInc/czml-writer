@@ -11,6 +11,7 @@ import agi.foundation.compatibility.ImageFormat;
 import agi.foundation.compatibility.ImageHelper;
 import agi.foundation.compatibility.MemoryStream;
 import agi.foundation.compatibility.StreamHelper;
+import agi.foundation.compatibility.StringComparison;
 import agi.foundation.compatibility.StringHelper;
 import agi.foundation.compatibility.WebRequest;
 import agi.foundation.compatibility.WebResponse;
@@ -120,7 +121,7 @@ public final class CesiumFormattingHelper {
         if (uri == null) {
             throw new ArgumentNullException("uri");
         }
-        if (StringHelper.startsWith(uri, "data:")) {
+        if (StringHelper.startsWith(uri, "data:", StringComparison.ORDINAL)) {
             return uri;
         }
         WebRequest webRequest = WebRequest.create(uri);

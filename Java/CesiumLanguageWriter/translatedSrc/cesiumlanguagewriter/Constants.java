@@ -159,6 +159,13 @@ public final class Constants {
     public static final double Epsilon20 = 1e-20;
     /**
     *  
+    One quarter of {@link Math#PI}.
+    
+
+    */
+    public static final double QuarterPi = Math.PI / 4;
+    /**
+    *  
     Half of {@link Math#PI}.
     
 
@@ -171,6 +178,20 @@ public final class Constants {
 
     */
     public static final double TwoPi = Math.PI * 2;
+    /**
+    *  
+    Four {@link Math#PI}.
+    
+
+    */
+    public static final double FourPi = Math.PI * 4;
+    /**
+    *  
+    Three-halves {@link Math#PI}.
+    
+
+    */
+    public static final double ThreeHalvesPi = 3 * Math.PI / 2;
     /**
     *  
     The number of radians in a degree.

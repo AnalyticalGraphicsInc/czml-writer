@@ -778,6 +778,34 @@ public final class StringHelper {
     }
 
     /**
+     * Determines whether the beginning of this string matches the specified string when
+     * compared using the specified comparison option.
+     *
+     * @param s
+     *            The string to search.
+     * @param value
+     *            A String object to compare to.
+     * @param comparisonType
+     *            One of the StringComparison values that determines how this string and
+     *            value are compared.
+     * @return true if the value parameter matches the beginning of this string;
+     *         otherwise, false.
+     */
+    public static boolean startsWith(@Nonnull String s, @Nonnull String value, @Nonnull StringComparison comparisonType) {
+        ArgumentNullException.assertNonNull(s, "s");
+        ArgumentNullException.assertNonNull(value, "value");
+
+        if (getIgnoreCase(comparisonType)) {
+            Locale locale = getLocale(comparisonType);
+
+            s = s.toUpperCase(locale);
+            value = value.toUpperCase(locale);
+        }
+
+        return s.startsWith(value);
+    }
+
+    /**
      * Determines whether the end of this string instance matches the specified string.
      *
      * @param s

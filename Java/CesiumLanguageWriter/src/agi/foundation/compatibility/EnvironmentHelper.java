@@ -21,4 +21,13 @@ public final class EnvironmentHelper {
     public static String newLine() {
         return System.getProperty("line.separator");
     }
+
+    /**
+     * Gets the fully qualified path of the current working directory.
+     *
+     * @return A string containing a directory path.
+     */
+    public static String getCurrentDirectory() {
+        return DirectoryHelper.getCurrentDirectory();
+    }
 }

@@ -10,7 +10,9 @@ import javax.annotation.Nonnull;
  *  
  An interface to an object that writes a list of intervals containing a specific type of value for a CZML property.
  
+ 
 
+ * @param <TValue> The type of value.
  */
 @SuppressWarnings( {
         "unused",

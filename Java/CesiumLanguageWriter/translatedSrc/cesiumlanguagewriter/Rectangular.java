@@ -430,7 +430,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     }
 
     /**
-    *  Gets whether or not any of the coordinates for this instance have the value {@link Double#NaN}.
+    *  Gets a value indicating whether or not any of the coordinates for this instance have the value {@link Double#NaN}.
     
 
     */

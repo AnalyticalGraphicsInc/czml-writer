@@ -72,7 +72,7 @@ public class CesiumWriterAdaptor<TFrom extends ICesiumPropertyWriter, TValue> im
 
     /**
     *  
-    Gets {@code true} if the writer is open; otherwise, {@code false}.
+    Gets a value indicating whether the writer is open.
     
 
     */
