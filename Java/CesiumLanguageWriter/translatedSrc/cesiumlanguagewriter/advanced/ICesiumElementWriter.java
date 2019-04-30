@@ -19,7 +19,7 @@ import javax.annotation.Nonnull;
 })
 public interface ICesiumElementWriter extends IDisposable {
     /**
-    *  Gets {@code true} if the writer is open; otherwise, {@code false}.
+    *  Gets a value indicating whether the writer is open.
     
 
     */

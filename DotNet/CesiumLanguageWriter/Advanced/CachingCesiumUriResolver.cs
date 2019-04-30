@@ -109,7 +109,7 @@ namespace CesiumLanguageWriter.Advanced
         [NotNull]
         private readonly LinkedList<CacheItem> m_lruList;
 
-        private class CacheItem
+        private sealed class CacheItem
         {
             public CacheItem([NotNull] string sourceUri, [NotNull] string resolvedUri)
             {

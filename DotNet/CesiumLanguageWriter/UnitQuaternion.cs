@@ -5,8 +5,9 @@ using JetBrains.Annotations;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// A set of 4-dimensional coordinates used to represent rotation in 3-dimensional space.
-    /// To transform a <see cref="Cartesian"/> 
+    /// A set of 4-dimensional coordinates used to represent rotation in 3-dimensional space.  This
+    /// represents an 'alias' rotation which transforms coordinates by modifying the underlying coordinate
+    /// basis rather than modifying the coordinates themselves. To transform a <see cref="Cartesian"/> 
     /// with this rotation, see <see cref="Cartesian.Rotate(UnitQuaternion)"/>.
     /// </summary>
     /// <remarks>

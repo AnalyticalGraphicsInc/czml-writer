@@ -82,7 +82,7 @@ public class CesiumInterpolatableWriterAdaptor<TFrom extends ICesiumPropertyWrit
 
     /**
     *  
-    Gets {@code true} if the writer is open; otherwise, {@code false}.
+    Gets a value indicating whether the writer is open.
     
 
     */

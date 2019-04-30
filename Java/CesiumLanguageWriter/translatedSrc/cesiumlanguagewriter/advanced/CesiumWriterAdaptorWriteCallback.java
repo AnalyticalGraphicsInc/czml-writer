@@ -65,7 +65,7 @@ public abstract class CesiumWriterAdaptorWriteCallback<TWrappedWriter, TValue> e
     * @param wrappedWriter The wrapper writer.
     * @param value The value.
     */
-    public abstract void invoke(TWrappedWriter wrappedWriter, TValue value);
+    public abstract void invoke(@Nonnull TWrappedWriter wrappedWriter, TValue value);
 
     @Override
     public boolean equals(Object obj) {
@@ -108,7 +108,7 @@ public abstract class CesiumWriterAdaptorWriteCallback<TWrappedWriter, TValue> e
         * @param wrappedWriter The wrapper writer.
         * @param value The value.
         */
-        void invoke(TWrappedWriter wrappedWriter, TValue value);
+        void invoke(@Nonnull TWrappedWriter wrappedWriter, TValue value);
     }
 
     private static final class FunctionImpl<TWrappedWriter, TValue> extends CesiumWriterAdaptorWriteCallback<TWrappedWriter, TValue> {
@@ -120,7 +120,7 @@ public abstract class CesiumWriterAdaptorWriteCallback<TWrappedWriter, TValue> e
         }
 
         @Override
-        public void invoke(TWrappedWriter wrappedWriter, TValue value) {
+        public void invoke(@Nonnull TWrappedWriter wrappedWriter, TValue value) {
             f.invoke(wrappedWriter, value);
         }
     }

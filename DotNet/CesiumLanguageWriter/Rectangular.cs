@@ -298,7 +298,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets whether or not any of the coordinates for this instance have the value <see cref="Double.NaN"/>.
+        /// Gets a value indicating whether or not any of the coordinates for this instance have the value <see cref="double.NaN"/>.
         /// </summary>
         public bool IsUndefined
         {

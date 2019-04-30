@@ -86,7 +86,7 @@ namespace CesiumLanguageWriterTests.grisu
         {
             private CultureInfo m_originalCulture;
 
-            [TestFixtureSetUp]
+            [OneTimeSetUp]
             public void TestFixtureSetUp()
             {
                 m_originalCulture = Thread.CurrentThread.CurrentCulture;
@@ -94,7 +94,7 @@ namespace CesiumLanguageWriterTests.grisu
                 Thread.CurrentThread.CurrentCulture = new CultureInfo("de-DE");
             }
 
-            [TestFixtureTearDown]
+            [OneTimeTearDown]
             public void TestFixtureTearDown()
             {
                 Thread.CurrentThread.CurrentCulture = m_originalCulture;

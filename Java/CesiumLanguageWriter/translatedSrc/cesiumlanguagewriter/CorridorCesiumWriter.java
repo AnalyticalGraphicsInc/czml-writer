@@ -11,6 +11,7 @@ import cesiumlanguagewriter.ColorCesiumWriter;
 import cesiumlanguagewriter.CornerTypeCesiumWriter;
 import cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter;
 import cesiumlanguagewriter.DoubleCesiumWriter;
+import cesiumlanguagewriter.HeightReferenceCesiumWriter;
 import cesiumlanguagewriter.IntegerCesiumWriter;
 import cesiumlanguagewriter.MaterialCesiumWriter;
 import cesiumlanguagewriter.PositionListCesiumWriter;
@@ -66,6 +67,20 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     */
     public static final String ExtrudedHeightPropertyName = "extrudedHeight";
+    /**
+    *  
+    The name of the {@code heightReference} property.
+    
+
+    */
+    public static final String HeightReferencePropertyName = "heightReference";
+    /**
+    *  
+    The name of the {@code extrudedHeightReference} property.
+    
+
+    */
+    public static final String ExtrudedHeightReferencePropertyName = "extrudedHeightReference";
     /**
     *  
     The name of the {@code cornerType} property.
@@ -159,6 +174,16 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     private Lazy<DoubleCesiumWriter> m_extrudedHeight = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
         public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
             return new DoubleCesiumWriter(ExtrudedHeightPropertyName);
+        }
+    }, false);
+    private Lazy<HeightReferenceCesiumWriter> m_heightReference = new Lazy<cesiumlanguagewriter.HeightReferenceCesiumWriter>(new Func1<cesiumlanguagewriter.HeightReferenceCesiumWriter>() {
+        public cesiumlanguagewriter.HeightReferenceCesiumWriter invoke() {
+            return new HeightReferenceCesiumWriter(HeightReferencePropertyName);
+        }
+    }, false);
+    private Lazy<HeightReferenceCesiumWriter> m_extrudedHeightReference = new Lazy<cesiumlanguagewriter.HeightReferenceCesiumWriter>(new Func1<cesiumlanguagewriter.HeightReferenceCesiumWriter>() {
+        public cesiumlanguagewriter.HeightReferenceCesiumWriter invoke() {
+            return new HeightReferenceCesiumWriter(ExtrudedHeightReferencePropertyName);
         }
     }, false);
     private Lazy<CornerTypeCesiumWriter> m_cornerType = new Lazy<cesiumlanguagewriter.CornerTypeCesiumWriter>(new Func1<cesiumlanguagewriter.CornerTypeCesiumWriter>() {
@@ -963,6 +988,248 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     public final void writeExtrudedHeightPropertyReference(String identifier, String[] propertyNames) {
         {
             cesiumlanguagewriter.DoubleCesiumWriter writer = openExtrudedHeightProperty();
+            try {
+                writer.writeReference(identifier, propertyNames);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  Gets the writer for the {@code heightReference} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code heightReference} property defines the height reference of the corridor, which indicates if {@code height} is relative to terrain or not. If not specified, the default value is NONE.
+    
+
+    */
+    @Nonnull
+    public final HeightReferenceCesiumWriter getHeightReferenceWriter() {
+        return m_heightReference.getValue();
+    }
+
+    /**
+    *  
+    Opens and returns the writer for the {@code heightReference} property. The {@code heightReference} property defines the height reference of the corridor, which indicates if {@code height} is relative to terrain or not. If not specified, the default value is NONE.
+    
+
+    */
+    @Nonnull
+    public final HeightReferenceCesiumWriter openHeightReferenceProperty() {
+        openIntervalIfNecessary();
+        return this.<HeightReferenceCesiumWriter> openAndReturn(getHeightReferenceWriter());
+    }
+
+    /**
+    *  
+    Writes a value for the {@code heightReference} property as a {@code heightReference} value. The {@code heightReference} property specifies the height reference of the corridor, which indicates if {@code height} is relative to terrain or not. If not specified, the default value is NONE.
+    
+    
+
+    * @param value The height reference.
+    */
+    public final void writeHeightReferenceProperty(@Nonnull CesiumHeightReference value) {
+        {
+            cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
+            try {
+                writer.writeHeightReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the corridor, which indicates if {@code height} is relative to terrain or not. If not specified, the default value is NONE.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeHeightReferencePropertyReference(Reference value) {
+        {
+            cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the corridor, which indicates if {@code height} is relative to terrain or not. If not specified, the default value is NONE.
+    
+    
+
+    * @param value The earliest date of the interval.
+    */
+    public final void writeHeightReferencePropertyReference(String value) {
+        {
+            cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the corridor, which indicates if {@code height} is relative to terrain or not. If not specified, the default value is NONE.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyName The property on the referenced object.
+    */
+    public final void writeHeightReferencePropertyReference(String identifier, String propertyName) {
+        {
+            cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
+            try {
+                writer.writeReference(identifier, propertyName);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the corridor, which indicates if {@code height} is relative to terrain or not. If not specified, the default value is NONE.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+    */
+    public final void writeHeightReferencePropertyReference(String identifier, String[] propertyNames) {
+        {
+            cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
+            try {
+                writer.writeReference(identifier, propertyNames);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  Gets the writer for the {@code extrudedHeightReference} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code extrudedHeightReference} property defines the extruded height reference of the corridor, which indicates if {@code extrudedHeight} is relative to terrain or not. If not specified, the default value is NONE.
+    
+
+    */
+    @Nonnull
+    public final HeightReferenceCesiumWriter getExtrudedHeightReferenceWriter() {
+        return m_extrudedHeightReference.getValue();
+    }
+
+    /**
+    *  
+    Opens and returns the writer for the {@code extrudedHeightReference} property. The {@code extrudedHeightReference} property defines the extruded height reference of the corridor, which indicates if {@code extrudedHeight} is relative to terrain or not. If not specified, the default value is NONE.
+    
+
+    */
+    @Nonnull
+    public final HeightReferenceCesiumWriter openExtrudedHeightReferenceProperty() {
+        openIntervalIfNecessary();
+        return this.<HeightReferenceCesiumWriter> openAndReturn(getExtrudedHeightReferenceWriter());
+    }
+
+    /**
+    *  
+    Writes a value for the {@code extrudedHeightReference} property as a {@code heightReference} value. The {@code extrudedHeightReference} property specifies the extruded height reference of the corridor, which indicates if {@code extrudedHeight} is relative to terrain or not. If not specified, the default value is NONE.
+    
+    
+
+    * @param value The height reference.
+    */
+    public final void writeExtrudedHeightReferenceProperty(@Nonnull CesiumHeightReference value) {
+        {
+            cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openExtrudedHeightReferenceProperty();
+            try {
+                writer.writeHeightReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code extrudedHeightReference} property as a {@code reference} value. The {@code extrudedHeightReference} property specifies the extruded height reference of the corridor, which indicates if {@code extrudedHeight} is relative to terrain or not. If not specified, the default value is NONE.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeExtrudedHeightReferencePropertyReference(Reference value) {
+        {
+            cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openExtrudedHeightReferenceProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code extrudedHeightReference} property as a {@code reference} value. The {@code extrudedHeightReference} property specifies the extruded height reference of the corridor, which indicates if {@code extrudedHeight} is relative to terrain or not. If not specified, the default value is NONE.
+    
+    
+
+    * @param value The earliest date of the interval.
+    */
+    public final void writeExtrudedHeightReferencePropertyReference(String value) {
+        {
+            cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openExtrudedHeightReferenceProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code extrudedHeightReference} property as a {@code reference} value. The {@code extrudedHeightReference} property specifies the extruded height reference of the corridor, which indicates if {@code extrudedHeight} is relative to terrain or not. If not specified, the default value is NONE.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyName The property on the referenced object.
+    */
+    public final void writeExtrudedHeightReferencePropertyReference(String identifier, String propertyName) {
+        {
+            cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openExtrudedHeightReferenceProperty();
+            try {
+                writer.writeReference(identifier, propertyName);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code extrudedHeightReference} property as a {@code reference} value. The {@code extrudedHeightReference} property specifies the extruded height reference of the corridor, which indicates if {@code extrudedHeight} is relative to terrain or not. If not specified, the default value is NONE.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+    */
+    public final void writeExtrudedHeightReferencePropertyReference(String identifier, String[] propertyNames) {
+        {
+            cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openExtrudedHeightReferenceProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {

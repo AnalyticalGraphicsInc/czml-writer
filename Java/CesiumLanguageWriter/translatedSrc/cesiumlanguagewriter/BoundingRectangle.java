@@ -28,16 +28,6 @@ public final class BoundingRectangle implements IEquatable<BoundingRectangle>, I
     public BoundingRectangle() {}
 
     /**
-    *  Gets a {@link BoundingRectangle} with all values set to zero.
-    
-
-    */
-    @Nonnull
-    public static BoundingRectangle getEmpty() {
-        return s_empty;
-    }
-
-    /**
     *  
     Initializes a new instance.
     
@@ -66,6 +56,16 @@ public final class BoundingRectangle implements IEquatable<BoundingRectangle>, I
         m_bottom = bottom;
         m_right = right;
         m_top = top;
+    }
+
+    /**
+    *  Gets a {@link BoundingRectangle} with all values set to zero.
+    
+
+    */
+    @Nonnull
+    public static BoundingRectangle getEmpty() {
+        return s_empty;
     }
 
     /**

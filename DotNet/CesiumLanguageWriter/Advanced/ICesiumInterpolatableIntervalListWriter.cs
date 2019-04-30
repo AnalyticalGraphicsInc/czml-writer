@@ -5,6 +5,7 @@ namespace CesiumLanguageWriter.Advanced
     /// <summary>
     /// An interface to an object that writes a list of intervals containing a specific type of value for a CZML property.
     /// </summary>
+    /// <typeparam name="TValue">The type of value.</typeparam>
     public interface ICesiumInterpolatableIntervalListWriter<TValue> : ICesiumIntervalListWriter
     {
         /// <summary>

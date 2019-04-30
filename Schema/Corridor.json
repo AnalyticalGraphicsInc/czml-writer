@@ -33,6 +33,16 @@
             "$ref": "Double.json",
             "description": "The extruded height of the corridor, which is the altitude of the corridor's extruded face relative to the surface."
         },
+        "heightReference": {
+            "$ref": "HeightReference.json",
+            "description": "The height reference of the corridor, which indicates if `height` is relative to terrain or not.",
+            "default": "NONE"
+        },
+        "extrudedHeightReference": {
+            "$ref": "HeightReference.json",
+            "description": "The extruded height reference of the corridor, which indicates if `extrudedHeight` is relative to terrain or not.",
+            "default": "NONE"
+        },
         "cornerType": {
             "$ref": "CornerType.json",
             "description": "The style of the corners of the corridor.",

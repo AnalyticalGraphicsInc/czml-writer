@@ -13,8 +13,9 @@ import javax.annotation.Nullable;
 
 /**
  *  
- A set of 4-dimensional coordinates used to represent rotation in 3-dimensional space.
- To transform a {@link Cartesian} 
+ A set of 4-dimensional coordinates used to represent rotation in 3-dimensional space.  This
+ represents an 'alias' rotation which transforms coordinates by modifying the underlying coordinate
+ basis rather than modifying the coordinates themselves. To transform a {@link Cartesian} 
  with this rotation, see {@link Cartesian#rotate(UnitQuaternion)}.
  
  

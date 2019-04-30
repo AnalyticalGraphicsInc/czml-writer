@@ -909,10 +909,12 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     */
     public final int compareTo(@Nonnull JulianDate other) {
         // If the days aren't even close, don't bother thinking about the time standard.
-        int isClose = isClose(other);
-        if (isClose != 0) {
-            return isClose;
+        long dayDifference = (long) m_day - other.m_day;
+        if (dayDifference > 1 || dayDifference < -1) {
+            // just compare the days for ordering
+            return Integer.compare(m_day, other.m_day);
         }
+        // convert time standards
         @CS2JInfo("Initialization of C# struct variable 'self' added by translator.")
         JulianDate self = new JulianDate();
         @CS2JInfo("Initialization of C# struct variable 'otherDate' added by translator.")
@@ -923,19 +925,18 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
         final boolean temp$4 = other.tryConvertTimeStandard(getStandard(), out$otherDate$5);
         otherDate = out$otherDate$5[0];
         if (temp$4) {
+            // if we can convert the other date to our time standard, then we're done
             self = this;
         } else {
-            //if we can't convert the other date to our time standard, then try our ArithmeticSafeStandard
+            // otherwise if we can't convert the other date to our time standard, then convert both to our ArithmeticSafeStandard
             self = toInternationalAtomicTime();
             otherDate = other.toInternationalAtomicTime();
         }
-        if (self.getDay() != otherDate.getDay()) {
-            return self.getDay() < otherDate.getDay() ? -1 : 1;
+        int result = Integer.compare(self.m_day, otherDate.m_day);
+        if (result == 0) {
+            result = Double.compare(self.m_secondsOfDay, otherDate.m_secondsOfDay);
         }
-        if (self.getSecondsOfDay() != otherDate.getSecondsOfDay()) {
-            return self.getSecondsOfDay() < otherDate.getSecondsOfDay() ? -1 : 1;
-        }
-        return 0;
+        return result;
     }
 
     /**
@@ -1003,22 +1004,6 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     @Nonnull
     public final GregorianDate toGregorianDate(@Nonnull TimeStandard standard) {
         return new GregorianDate(this, standard);
-    }
-
-    /**
-    *  
-    Returns 0 if this date is anywhere near the specified date such that time
-    standard conversions might affect their equality or ordering.  Otherwise
-    returns the difference Day - other.Day.  This is helpful for optimizations.
-    
-
-    */
-    private final int isClose(@Nonnull JulianDate other) {
-        long dayDifference = (long) m_day - other.m_day;
-        if (dayDifference > 1 || dayDifference < -1) {
-            return m_day < other.m_day ? -1 : 1;
-        }
-        return 0;
     }
 
     @Nonnull

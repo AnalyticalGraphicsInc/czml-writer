@@ -82,7 +82,7 @@ namespace CesiumLanguageWriter.Advanced
             if (uri == null)
                 throw new ArgumentNullException("uri");
 
-            if (uri.StartsWith("data:"))
+            if (uri.StartsWith("data:", StringComparison.Ordinal))
                 return uri;
 
             var webRequest = WebRequest.Create(uri);

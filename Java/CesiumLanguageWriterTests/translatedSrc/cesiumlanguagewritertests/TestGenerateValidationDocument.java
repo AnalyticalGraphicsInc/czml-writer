@@ -6,6 +6,8 @@ import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.ArrayHelper;
 import agi.foundation.compatibility.ColorHelper;
 import agi.foundation.compatibility.DisposeHelper;
+import agi.foundation.compatibility.EnvironmentHelper;
+import agi.foundation.compatibility.PathHelper;
 import agi.foundation.compatibility.StreamWriterHelper;
 import agi.foundation.compatibility.TestContextRule;
 import agi.foundation.compatibility.TextWriterHelper;
@@ -57,14 +59,15 @@ public class TestGenerateValidationDocument {
 
     @Test
     public final void generateValidationDocument() {
+        String dir = EnvironmentHelper.getCurrentDirectory();
         {
-            final Writer usingExpression_0 = (m_streamWriter = StreamWriterHelper.create("ValidationDocument.czml"));
+            final Writer usingExpression_0 = (m_streamWriter = StreamWriterHelper.create(PathHelper.combine(dir, "ValidationDocument.czml")));
             try {
                 {
-                    final Writer usingExpression_1 = (m_assertionsWriter = StreamWriterHelper.create("ValidationDocumentAssertions.js"));
+                    final Writer usingExpression_1 = (m_assertionsWriter = StreamWriterHelper.create(PathHelper.combine(dir, "ValidationDocumentAssertions.js")));
                     try {
                         {
-                            final Writer usingExpression_2 = (m_extensionsAssertionsWriter = StreamWriterHelper.create("ValidationDocumentExtensionAssertions.js"));
+                            final Writer usingExpression_2 = (m_extensionsAssertionsWriter = StreamWriterHelper.create(PathHelper.combine(dir, "ValidationDocumentExtensionAssertions.js")));
                             try {
                                 writeAssertionBoth("return CzmlDataSource.load('Data/CZML/ValidationDocument.czml').then(function(dataSource) {");
                                 writeAssertionBoth("    var e;");
@@ -513,6 +516,24 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
+                            cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
+                            try {
+                                w2.writeHeightReference(CesiumHeightReference.CLAMP_TO_GROUND);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.corridor.heightReference.getValue(date)).toEqual(HeightReference.CLAMP_TO_GROUND);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openExtrudedHeightReferenceProperty();
+                            try {
+                                w2.writeHeightReference(CesiumHeightReference.CLAMP_TO_GROUND);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.corridor.extrudedHeightReference.getValue(date)).toEqual(HeightReference.CLAMP_TO_GROUND);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
                             cesiumlanguagewriter.CornerTypeCesiumWriter w2 = w.openCornerTypeProperty();
                             try {
                                 w2.writeCornerType(CesiumCornerType.BEVELED);
@@ -802,6 +823,24 @@ public class TestGenerateValidationDocument {
                             try {
                                 w2.writeNumber(55640.0);
                                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.extrudedHeight.getValue(date)).toEqual(55640.0);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
+                            try {
+                                w2.writeHeightReference(CesiumHeightReference.CLAMP_TO_GROUND);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.heightReference.getValue(date)).toEqual(HeightReference.CLAMP_TO_GROUND);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openExtrudedHeightReferenceProperty();
+                            try {
+                                w2.writeHeightReference(CesiumHeightReference.CLAMP_TO_GROUND);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.extrudedHeightReference.getValue(date)).toEqual(HeightReference.CLAMP_TO_GROUND);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -1675,6 +1714,24 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
+                            cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
+                            try {
+                                w2.writeHeightReference(CesiumHeightReference.CLAMP_TO_GROUND);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.heightReference.getValue(date)).toEqual(HeightReference.CLAMP_TO_GROUND);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openExtrudedHeightReferenceProperty();
+                            try {
+                                w2.writeHeightReference(CesiumHeightReference.CLAMP_TO_GROUND);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.extrudedHeightReference.getValue(date)).toEqual(HeightReference.CLAMP_TO_GROUND);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
                             cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openStRotationProperty();
                             try {
                                 w2.writeNumber(2555.0);
@@ -1981,6 +2038,24 @@ public class TestGenerateValidationDocument {
                             try {
                                 w2.writeNumber(23002.0);
                                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.extrudedHeight.getValue(date)).toEqual(23002.0);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
+                            try {
+                                w2.writeHeightReference(CesiumHeightReference.CLAMP_TO_GROUND);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.heightReference.getValue(date)).toEqual(HeightReference.CLAMP_TO_GROUND);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openExtrudedHeightReferenceProperty();
+                            try {
+                                w2.writeHeightReference(CesiumHeightReference.CLAMP_TO_GROUND);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.extrudedHeightReference.getValue(date)).toEqual(HeightReference.CLAMP_TO_GROUND);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -6089,6 +6164,15 @@ public class TestGenerateValidationDocument {
                                                 DisposeHelper.dispose(m2);
                                             }
                                         }
+                                        {
+                                            cesiumlanguagewriter.DoubleCesiumWriter m2 = m.openTaperPowerProperty();
+                                            try {
+                                                m2.writeNumber(39950.0);
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.material.taperPower.getValue(date)).toEqual(39950.0);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
                                     } finally {
                                         DisposeHelper.dispose(m);
                                     }
@@ -7585,6 +7669,15 @@ public class TestGenerateValidationDocument {
                                                 DisposeHelper.dispose(m2);
                                             }
                                         }
+                                        {
+                                            cesiumlanguagewriter.DoubleCesiumWriter m2 = m.openTaperPowerProperty();
+                                            try {
+                                                m2.writeNumber(29908.0);
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.material.taperPower.getValue(date)).toEqual(29908.0);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
                                     } finally {
                                         DisposeHelper.dispose(m);
                                     }
@@ -8464,6 +8557,15 @@ public class TestGenerateValidationDocument {
                                             try {
                                                 m2.writeNumber(52932.0);
                                                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.depthFailMaterial.glowPower.getValue(date)).toEqual(52932.0);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            cesiumlanguagewriter.DoubleCesiumWriter m2 = m.openTaperPowerProperty();
+                                            try {
+                                                m2.writeNumber(29589.0);
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.depthFailMaterial.taperPower.getValue(date)).toEqual(29589.0);");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }
@@ -18249,6 +18351,25 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
+                            cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("corridor", "heightReference")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.corridor.heightReference.getValue(date)).toEqual(constant.corridor.heightReference.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openExtrudedHeightReferenceProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("corridor", "extrudedHeightReference")));
+                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                        "    expect(e.corridor.extrudedHeightReference.getValue(date)).toEqual(constant.corridor.extrudedHeightReference.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
                             cesiumlanguagewriter.CornerTypeCesiumWriter w2 = w.openCornerTypeProperty();
                             try {
                                 w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("corridor", "cornerType")));
@@ -18543,6 +18664,25 @@ public class TestGenerateValidationDocument {
                             try {
                                 w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("ellipse", "extrudedHeight")));
                                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.extrudedHeight.getValue(date)).toEqual(constant.ellipse.extrudedHeight.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("ellipse", "heightReference")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.heightReference.getValue(date)).toEqual(constant.ellipse.heightReference.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openExtrudedHeightReferenceProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("ellipse", "extrudedHeightReference")));
+                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                        "    expect(e.ellipse.extrudedHeightReference.getValue(date)).toEqual(constant.ellipse.extrudedHeightReference.getValue(date));");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -19437,6 +19577,25 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
+                            cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("polygon", "heightReference")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.heightReference.getValue(date)).toEqual(constant.polygon.heightReference.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openExtrudedHeightReferenceProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("polygon", "extrudedHeightReference")));
+                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                        "    expect(e.polygon.extrudedHeightReference.getValue(date)).toEqual(constant.polygon.extrudedHeightReference.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
                             cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openStRotationProperty();
                             try {
                                 w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("polygon", "stRotation")));
@@ -19749,6 +19908,25 @@ public class TestGenerateValidationDocument {
                             try {
                                 w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangle", "extrudedHeight")));
                                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.extrudedHeight.getValue(date)).toEqual(constant.rectangle.extrudedHeight.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangle", "heightReference")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.heightReference.getValue(date)).toEqual(constant.rectangle.heightReference.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openExtrudedHeightReferenceProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangle", "extrudedHeightReference")));
+                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                        "    expect(e.rectangle.extrudedHeightReference.getValue(date)).toEqual(constant.rectangle.extrudedHeightReference.getValue(date));");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -22625,6 +22803,17 @@ public class TestGenerateValidationDocument {
                                                 DisposeHelper.dispose(m2);
                                             }
                                         }
+                                        {
+                                            cesiumlanguagewriter.DoubleCesiumWriter m2 = m.openTaperPowerProperty();
+                                            try {
+                                                m2.writeReference(new Reference("material_path_material_polylineGlow", createList("path", "material", "taperPower")));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.path.material.taperPower.getValue(date)).toEqual(dataSource.entities.getById('material_path_material_polylineGlow').path.material.taperPower.getValue(date));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
                                     } finally {
                                         DisposeHelper.dispose(m);
                                     }
@@ -23351,6 +23540,17 @@ public class TestGenerateValidationDocument {
                                                 DisposeHelper.dispose(m2);
                                             }
                                         }
+                                        {
+                                            cesiumlanguagewriter.DoubleCesiumWriter m2 = m.openTaperPowerProperty();
+                                            try {
+                                                m2.writeReference(new Reference("material_polyline_material_polylineGlow", createList("polyline", "material", "taperPower")));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polyline.material.taperPower.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_material_polylineGlow').polyline.material.taperPower.getValue(date));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
                                     } finally {
                                         DisposeHelper.dispose(m);
                                     }
@@ -23831,6 +24031,18 @@ public class TestGenerateValidationDocument {
                                                         .writeLine(
                                                                 m_assertionsWriter,
                                                                 "    expect(e.polyline.depthFailMaterial.glowPower.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_depthFailMaterial_polylineGlow').polyline.depthFailMaterial.glowPower.getValue(date));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            cesiumlanguagewriter.DoubleCesiumWriter m2 = m.openTaperPowerProperty();
+                                            try {
+                                                m2.writeReference(new Reference("material_polyline_depthFailMaterial_polylineGlow", createList("polyline", "depthFailMaterial", "taperPower")));
+                                                TextWriterHelper
+                                                        .writeLine(
+                                                                m_assertionsWriter,
+                                                                "    expect(e.polyline.depthFailMaterial.taperPower.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_depthFailMaterial_polylineGlow').polyline.depthFailMaterial.taperPower.getValue(date));");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }
@@ -34490,6 +34702,17 @@ public class TestGenerateValidationDocument {
                                                 DisposeHelper.dispose(m2);
                                             }
                                         }
+                                        {
+                                            cesiumlanguagewriter.DoubleCesiumWriter m2 = m.openTaperPowerProperty();
+                                            try {
+                                                m2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                                        .<Double> createList(30159.0, 35636.0));
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.material.taperPower.getValue(documentStartDate)).toEqual(30159.0);");
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.material.taperPower.getValue(documentStopDate)).toEqual(35636.0);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
                                     } finally {
                                         DisposeHelper.dispose(m);
                                     }
@@ -36006,6 +36229,17 @@ public class TestGenerateValidationDocument {
                                                 DisposeHelper.dispose(m2);
                                             }
                                         }
+                                        {
+                                            cesiumlanguagewriter.DoubleCesiumWriter m2 = m.openTaperPowerProperty();
+                                            try {
+                                                m2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                                        .<Double> createList(50068.0, 2516.0));
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.material.taperPower.getValue(documentStartDate)).toEqual(50068.0);");
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.material.taperPower.getValue(documentStopDate)).toEqual(2516.0);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
                                     } finally {
                                         DisposeHelper.dispose(m);
                                     }
@@ -36966,6 +37200,17 @@ public class TestGenerateValidationDocument {
                                                         .<Double> createList(8542.0, 54440.0));
                                                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.depthFailMaterial.glowPower.getValue(documentStartDate)).toEqual(8542.0);");
                                                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.depthFailMaterial.glowPower.getValue(documentStopDate)).toEqual(54440.0);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            cesiumlanguagewriter.DoubleCesiumWriter m2 = m.openTaperPowerProperty();
+                                            try {
+                                                m2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                                        .<Double> createList(61950.0, 36891.0));
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.depthFailMaterial.taperPower.getValue(documentStartDate)).toEqual(61950.0);");
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.depthFailMaterial.taperPower.getValue(documentStopDate)).toEqual(36891.0);");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }

@@ -325,17 +325,17 @@ namespace CesiumLanguageWriter
         /// </returns>
         public int CompareTo(YearMonthDay other)
         {
-            if (m_year != other.m_year)
+            int result = m_year.CompareTo(other.m_year);
+            if (result == 0)
             {
-                return m_year < other.m_year ? -1 : 1;
+                result = m_month.CompareTo(other.m_month);
+                if (result == 0)
+                {
+                    result = m_day.CompareTo(other.m_day);
+                }
             }
 
-            if (m_month != other.m_month)
-            {
-                return m_month < other.m_month ? -1 : 1;
-            }
-
-            return m_day == other.m_day ? 0 : (m_day < other.m_day ? -1 : 1);
+            return result;
         }
 
         /// <summary>

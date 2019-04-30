@@ -11,14 +11,6 @@ namespace CesiumLanguageWriter
     public struct BoundingRectangle : IEquatable<BoundingRectangle>
     {
         /// <summary>
-        /// Gets a <see cref="BoundingRectangle"/> with all values set to zero.
-        /// </summary>
-        public static BoundingRectangle Empty
-        {
-            get { return s_empty; }
-        }
-
-        /// <summary>
         /// Initializes a new instance.
         /// </summary>
         /// <param name="left">The x coordinate of the lower-left corner.</param>
@@ -39,6 +31,14 @@ namespace CesiumLanguageWriter
             m_bottom = bottom;
             m_right = right;
             m_top = top;
+        }
+
+        /// <summary>
+        /// Gets a <see cref="BoundingRectangle"/> with all values set to zero.
+        /// </summary>
+        public static BoundingRectangle Empty
+        {
+            get { return s_empty; }
         }
 
         /// <summary>

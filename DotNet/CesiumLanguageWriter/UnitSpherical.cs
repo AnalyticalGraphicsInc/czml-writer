@@ -158,5 +158,5 @@ namespace CesiumLanguageWriter
 
         private readonly double m_clock;
         private readonly double m_cone;
-   }
+    }
 }

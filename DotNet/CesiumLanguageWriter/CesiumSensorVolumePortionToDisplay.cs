@@ -18,6 +18,6 @@
         /// <summary>
         /// Only the part of the sensor projection above the ellipsoid horizon is shown.
         /// </summary>
-        AboveEllipsoidHorizon
+        AboveEllipsoidHorizon,
     }
 }

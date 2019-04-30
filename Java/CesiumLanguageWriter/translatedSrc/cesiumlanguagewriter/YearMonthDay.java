@@ -387,13 +387,14 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     
     */
     public final int compareTo(@Nonnull YearMonthDay other) {
-        if (m_year != other.m_year) {
-            return m_year < other.m_year ? -1 : 1;
+        int result = Integer.compare(m_year, other.m_year);
+        if (result == 0) {
+            result = Integer.compare(m_month, other.m_month);
+            if (result == 0) {
+                result = Integer.compare(m_day, other.m_day);
+            }
         }
-        if (m_month != other.m_month) {
-            return m_month < other.m_month ? -1 : 1;
-        }
-        return m_day == other.m_day ? 0 : (m_day < other.m_day ? -1 : 1);
+        return result;
     }
 
     /**

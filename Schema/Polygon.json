@@ -34,6 +34,16 @@
             "$ref": "Double.json",
             "description": "The extruded height of the polygon."
         },
+        "heightReference": {
+            "$ref": "HeightReference.json",
+            "description": "The height reference of the polygon, which indicates if `height` is relative to terrain or not.",
+            "default": "NONE"
+        },
+        "extrudedHeightReference": {
+            "$ref": "HeightReference.json",
+            "description": "The extruded height reference of the polygon, which indicates if `extrudedHeight` is relative to terrain or not.",
+            "default": "NONE"
+        },
         "stRotation": {
             "$ref": "Double.json",
             "description": "The rotation of any applied texture. A positive rotation is counter-clockwise.",
