@@ -29,6 +29,16 @@
             "$ref": "Double.json",
             "description": "The extruded height of the rectangle."
         },
+        "heightReference": {
+            "$ref": "HeightReference.json",
+            "description": "The height reference of the rectangle, which indicates if `height` is relative to terrain or not.",
+            "default": "NONE"
+        },
+        "extrudedHeightReference": {
+            "$ref": "HeightReference.json",
+            "description": "The extruded height reference of the rectangle, which indicates if `extrudedHeight` is relative to terrain or not.",
+            "default": "NONE"
+        },
         "rotation": {
             "$ref": "Double.json",
             "description": "The rotation of the rectangle clockwise from north.",

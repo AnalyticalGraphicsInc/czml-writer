@@ -33,6 +33,16 @@
             "$ref": "Double.json",
             "description": "The altitude of the ellipse's extruded face relative to the surface."
         },
+        "heightReference": {
+            "$ref": "HeightReference.json",
+            "description": "The height reference of the ellipse, which indicates if `height` is relative to terrain or not.",
+            "default": "NONE"
+        },
+        "extrudedHeightReference": {
+            "$ref": "HeightReference.json",
+            "description": "The extruded height reference of the ellipse, which indicates if `extrudedHeight` is relative to terrain or not.",
+            "default": "NONE"
+        },
         "rotation": {
             "$ref": "Double.json",
             "description": "The angle from north (counter-clockwise) in radians.",
