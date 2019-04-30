@@ -38,6 +38,13 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
 
     */
     public static final String GlowPowerPropertyName = "glowPower";
+    /**
+    *  
+    The name of the {@code taperPower} property.
+    
+
+    */
+    public static final String TaperPowerPropertyName = "taperPower";
     private Lazy<ColorCesiumWriter> m_color = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
         public cesiumlanguagewriter.ColorCesiumWriter invoke() {
             return new ColorCesiumWriter(ColorPropertyName);
@@ -46,6 +53,11 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     private Lazy<DoubleCesiumWriter> m_glowPower = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
         public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
             return new DoubleCesiumWriter(GlowPowerPropertyName);
+        }
+    }, false);
+    private Lazy<DoubleCesiumWriter> m_taperPower = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+        public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+            return new DoubleCesiumWriter(TaperPowerPropertyName);
         }
     }, false);
 
@@ -528,6 +540,173 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     public final void writeGlowPowerPropertyReference(String identifier, String[] propertyNames) {
         {
             cesiumlanguagewriter.DoubleCesiumWriter writer = openGlowPowerProperty();
+            try {
+                writer.writeReference(identifier, propertyNames);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  Gets the writer for the {@code taperPower} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code taperPower} property defines the strength of the tapering effect.  1.0 and higher means no tapering. If not specified, the default value is 1.0.
+    
+
+    */
+    @Nonnull
+    public final DoubleCesiumWriter getTaperPowerWriter() {
+        return m_taperPower.getValue();
+    }
+
+    /**
+    *  
+    Opens and returns the writer for the {@code taperPower} property. The {@code taperPower} property defines the strength of the tapering effect.  1.0 and higher means no tapering. If not specified, the default value is 1.0.
+    
+
+    */
+    @Nonnull
+    public final DoubleCesiumWriter openTaperPowerProperty() {
+        openIntervalIfNecessary();
+        return this.<DoubleCesiumWriter> openAndReturn(getTaperPowerWriter());
+    }
+
+    /**
+    *  
+    Writes a value for the {@code taperPower} property as a {@code number} value. The {@code taperPower} property specifies the strength of the tapering effect.  1.0 and higher means no tapering. If not specified, the default value is 1.0.
+    
+    
+
+    * @param value The value.
+    */
+    public final void writeTaperPowerProperty(double value) {
+        {
+            cesiumlanguagewriter.DoubleCesiumWriter writer = openTaperPowerProperty();
+            try {
+                writer.writeNumber(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code taperPower} property as a {@code number} value. The {@code taperPower} property specifies the strength of the tapering effect.  1.0 and higher means no tapering. If not specified, the default value is 1.0.
+    
+    
+    
+
+    * @param dates The dates at which the value is specified.
+    * @param values The values corresponding to each date.
+    */
+    public final void writeTaperPowerProperty(List<JulianDate> dates, List<Double> values) {
+        {
+            cesiumlanguagewriter.DoubleCesiumWriter writer = openTaperPowerProperty();
+            try {
+                writer.writeNumber(dates, values);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code taperPower} property as a {@code number} value. The {@code taperPower} property specifies the strength of the tapering effect.  1.0 and higher means no tapering. If not specified, the default value is 1.0.
+    
+    
+    
+    
+    
+
+    * @param dates The dates at which the value is specified.
+    * @param values The value corresponding to each date.
+    * @param startIndex The index of the first element to write.
+    * @param length The number of elements to write.
+    */
+    public final void writeTaperPowerProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+        {
+            cesiumlanguagewriter.DoubleCesiumWriter writer = openTaperPowerProperty();
+            try {
+                writer.writeNumber(dates, values, startIndex, length);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code taperPower} property as a {@code reference} value. The {@code taperPower} property specifies the strength of the tapering effect.  1.0 and higher means no tapering. If not specified, the default value is 1.0.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeTaperPowerPropertyReference(Reference value) {
+        {
+            cesiumlanguagewriter.DoubleCesiumWriter writer = openTaperPowerProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code taperPower} property as a {@code reference} value. The {@code taperPower} property specifies the strength of the tapering effect.  1.0 and higher means no tapering. If not specified, the default value is 1.0.
+    
+    
+
+    * @param value The earliest date of the interval.
+    */
+    public final void writeTaperPowerPropertyReference(String value) {
+        {
+            cesiumlanguagewriter.DoubleCesiumWriter writer = openTaperPowerProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code taperPower} property as a {@code reference} value. The {@code taperPower} property specifies the strength of the tapering effect.  1.0 and higher means no tapering. If not specified, the default value is 1.0.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyName The property on the referenced object.
+    */
+    public final void writeTaperPowerPropertyReference(String identifier, String propertyName) {
+        {
+            cesiumlanguagewriter.DoubleCesiumWriter writer = openTaperPowerProperty();
+            try {
+                writer.writeReference(identifier, propertyName);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code taperPower} property as a {@code reference} value. The {@code taperPower} property specifies the strength of the tapering effect.  1.0 and higher means no tapering. If not specified, the default value is 1.0.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+    */
+    public final void writeTaperPowerPropertyReference(String identifier, String[] propertyNames) {
+        {
+            cesiumlanguagewriter.DoubleCesiumWriter writer = openTaperPowerProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
