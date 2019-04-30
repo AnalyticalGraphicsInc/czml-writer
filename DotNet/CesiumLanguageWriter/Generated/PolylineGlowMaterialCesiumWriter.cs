@@ -26,8 +26,14 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string GlowPowerPropertyName = "glowPower";
 
+        /// <summary>
+        /// The name of the <c>taperPower</c> property.
+        /// </summary>
+        public const string TaperPowerPropertyName = "taperPower";
+
         private readonly Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(ColorPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_glowPower = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(GlowPowerPropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_taperPower = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(TaperPowerPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -336,6 +342,115 @@ namespace CesiumLanguageWriter
         public void WriteGlowPowerPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenGlowPowerProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <c>taperPower</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>taperPower</c> property defines the strength of the tapering effect.  1.0 and higher means no tapering. If not specified, the default value is 1.0.
+        /// </summary>
+        [NotNull]
+        public DoubleCesiumWriter TaperPowerWriter
+        {
+            get { return m_taperPower.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>taperPower</c> property. The <c>taperPower</c> property defines the strength of the tapering effect.  1.0 and higher means no tapering. If not specified, the default value is 1.0.
+        /// </summary>
+        [NotNull]
+        public DoubleCesiumWriter OpenTaperPowerProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(TaperPowerWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>taperPower</c> property as a <c>number</c> value. The <c>taperPower</c> property specifies the strength of the tapering effect.  1.0 and higher means no tapering. If not specified, the default value is 1.0.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteTaperPowerProperty(double value)
+        {
+            using (var writer = OpenTaperPowerProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>taperPower</c> property as a <c>number</c> value. The <c>taperPower</c> property specifies the strength of the tapering effect.  1.0 and higher means no tapering. If not specified, the default value is 1.0.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteTaperPowerProperty(IList<JulianDate> dates, IList<double> values)
+        {
+            using (var writer = OpenTaperPowerProperty())
+            {
+                writer.WriteNumber(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>taperPower</c> property as a <c>number</c> value. The <c>taperPower</c> property specifies the strength of the tapering effect.  1.0 and higher means no tapering. If not specified, the default value is 1.0.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
+        public void WriteTaperPowerProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenTaperPowerProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>taperPower</c> property as a <c>reference</c> value. The <c>taperPower</c> property specifies the strength of the tapering effect.  1.0 and higher means no tapering. If not specified, the default value is 1.0.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteTaperPowerPropertyReference(Reference value)
+        {
+            using (var writer = OpenTaperPowerProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>taperPower</c> property as a <c>reference</c> value. The <c>taperPower</c> property specifies the strength of the tapering effect.  1.0 and higher means no tapering. If not specified, the default value is 1.0.
+        /// </summary>
+        /// <param name="value">The earliest date of the interval.</param>
+        public void WriteTaperPowerPropertyReference(string value)
+        {
+            using (var writer = OpenTaperPowerProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>taperPower</c> property as a <c>reference</c> value. The <c>taperPower</c> property specifies the strength of the tapering effect.  1.0 and higher means no tapering. If not specified, the default value is 1.0.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteTaperPowerPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenTaperPowerProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>taperPower</c> property as a <c>reference</c> value. The <c>taperPower</c> property specifies the strength of the tapering effect.  1.0 and higher means no tapering. If not specified, the default value is 1.0.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteTaperPowerPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenTaperPowerProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }

@@ -20,6 +20,11 @@
             "$ref": "Double.json",
             "description": "The strength of the glow.",
             "default": 0.25
+        },
+        "taperPower": {
+            "$ref": "Double.json",
+            "description": "The strength of the tapering effect.  1.0 and higher means no tapering.",
+            "default": 1.0
         }
     }
 }

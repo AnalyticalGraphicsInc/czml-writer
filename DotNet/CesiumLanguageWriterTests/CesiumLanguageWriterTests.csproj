@@ -84,6 +84,7 @@
     <Compile Include="TestNodeTransformationsCesiumWriter.cs" />
     <Compile Include="TestOrientationCesiumWriter.cs" />
     <Compile Include="TestPolylineDashMaterialCesiumWriter.cs" />
+    <Compile Include="TestPolylineGlowMaterialCesiumWriter.cs" />
     <Compile Include="TestPositionCesiumWriter.cs" />
     <Compile Include="TestPropertiesOfSimpleJsonTypes.cs" />
     <Compile Include="TestReference.cs" />
