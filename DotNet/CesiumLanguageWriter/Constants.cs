@@ -108,6 +108,11 @@ namespace CesiumLanguageWriter
         public const double Epsilon20 = 1e-20;
 
         /// <summary>
+        /// One quarter of <see cref="Math.PI" />.
+        /// </summary>
+        public const double QuarterPi = Math.PI / 4;
+
+        /// <summary>
         /// Half of <see cref="Math.PI" />.
         /// </summary>
         public const double HalfPi = Math.PI / 2;
@@ -116,6 +121,16 @@ namespace CesiumLanguageWriter
         /// Twice <see cref="Math.PI" />.
         /// </summary>
         public const double TwoPi = Math.PI * 2;
+
+        /// <summary>
+        /// Four <see cref="Math.PI" />.
+        /// </summary>
+        public const double FourPi = Math.PI * 4;
+
+        /// <summary>
+        /// Three-halves <see cref="Math.PI"/>.
+        /// </summary>
+        public const double ThreeHalvesPi = 3 * Math.PI / 2;
 
         /// <summary>
         /// The number of radians in a degree.

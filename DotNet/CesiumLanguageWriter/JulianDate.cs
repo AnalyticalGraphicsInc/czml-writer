@@ -734,37 +734,36 @@ namespace CesiumLanguageWriter
         public int CompareTo(JulianDate other)
         {
             // If the days aren't even close, don't bother thinking about the time standard.
-            int isClose = IsClose(other);
-            if (isClose != 0)
+            long dayDifference = (long)m_day - other.m_day;
+            if (dayDifference > 1 || dayDifference < -1)
             {
-                return isClose;
+                // just compare the days for ordering
+                return m_day.CompareTo(other.m_day);
             }
 
+            // convert time standards
             JulianDate self;
             JulianDate otherDate;
 
             if (other.TryConvertTimeStandard(Standard, out otherDate))
             {
+                // if we can convert the other date to our time standard, then we're done
                 self = this;
             }
             else
             {
-                //if we can't convert the other date to our time standard, then try our ArithmeticSafeStandard
+                // otherwise if we can't convert the other date to our time standard, then convert both to our ArithmeticSafeStandard
                 self = ToInternationalAtomicTime();
                 otherDate = other.ToInternationalAtomicTime();
             }
 
-            if (self.Day != otherDate.Day)
+            int result = self.m_day.CompareTo(otherDate.m_day);
+            if (result == 0)
             {
-                return self.Day < otherDate.Day ? -1 : 1;
+                result = self.m_secondsOfDay.CompareTo(otherDate.m_secondsOfDay);
             }
 
-            if (self.SecondsOfDay != otherDate.SecondsOfDay)
-            {
-                return self.SecondsOfDay < otherDate.SecondsOfDay ? -1 : 1;
-            }
-
-            return 0;
+            return result;
         }
 
         /// <summary>
@@ -861,22 +860,6 @@ namespace CesiumLanguageWriter
         public GregorianDate ToGregorianDate(TimeStandard standard)
         {
             return new GregorianDate(this, standard);
-        }
-
-        /// <summary>
-        /// Returns 0 if this date is anywhere near the specified date such that time
-        /// standard conversions might affect their equality or ordering.  Otherwise
-        /// returns the difference Day - other.Day.  This is helpful for optimizations.
-        /// </summary>
-        private int IsClose(JulianDate other)
-        {
-            long dayDifference = (long)m_day - other.m_day;
-            if (dayDifference > 1 || dayDifference < -1)
-            {
-                return m_day < other.m_day ? -1 : 1;
-            }
-
-            return 0;
         }
 
         /// <summary>

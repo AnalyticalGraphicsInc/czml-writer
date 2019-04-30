@@ -9,7 +9,7 @@ namespace CesiumLanguageWriter.Advanced
     public interface ICesiumElementWriter : IDisposable
     {
         /// <summary>
-        /// Gets <see langword="true" /> if the writer is open; otherwise, <see langword="false" />.
+        /// Gets a value indicating whether the writer is open.
         /// </summary>
         bool IsOpen { get; }
 

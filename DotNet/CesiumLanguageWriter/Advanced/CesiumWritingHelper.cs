@@ -212,7 +212,7 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
-        /// Writes a <see cref="Motion&lt;Cartesian&gt;"/> value as an array in X, Y, Z, vX, vY, vZ order.
+        /// Writes a <see cref="Motion{Cartesian}"/> value as an array in X, Y, Z, vX, vY, vZ order.
         /// </summary>
         /// <param name="output">The stream to which to write the value.</param>
         /// <param name="value">The value to write.</param>
@@ -229,7 +229,7 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
-        /// Writes time-tagged <see cref="Motion&lt;Cartesian&gt;"/> values as an array in [Time, X, Y, Z, vX, vY, vZ] order.
+        /// Writes time-tagged <see cref="Motion{Cartesian}"/> values as an array in [Time, X, Y, Z, vX, vY, vZ] order.
         /// Times are epoch seconds since an epoch that is determined from the first date to be written.
         /// The epoch property is written as well.
         /// </summary>
