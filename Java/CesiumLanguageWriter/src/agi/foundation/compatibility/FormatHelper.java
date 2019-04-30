@@ -263,6 +263,40 @@ public final class FormatHelper {
         }
     }
 
+    private static final class GeneralNumberFormat extends NumberFormat {
+        private static final long serialVersionUID = -5819015933095511219L;
+        private final PaddingDecimalFormat format;
+        private final PaddingDecimalFormat scientificFormat;
+
+        public GeneralNumberFormat(@Nonnull Locale locale, int width, boolean uppercase) {
+            format = new PaddingDecimalFormat(locale, null, width);
+            format.setMaximumFractionDigits(Integer.MAX_VALUE);
+            scientificFormat = new PaddingDecimalFormat(locale, createExponentPattern(uppercase ? 'E' : 'e', 1, 2), width);
+            scientificFormat.setMaximumFractionDigits(Integer.MAX_VALUE);
+        }
+
+        @Override
+        public StringBuffer format(double number, StringBuffer toAppendTo, FieldPosition pos) {
+            double exponentDigits = number == 0.0 ? 0.0 : Math.floor(Math.log10(number));
+
+            if (exponentDigits > -5 && exponentDigits < 17) {
+                return format.format(number, toAppendTo, pos);
+            } else {
+                return scientificFormat.format(number, toAppendTo, pos);
+            }
+        }
+
+        @Override
+        public StringBuffer format(long number, StringBuffer toAppendTo, FieldPosition pos) {
+            return format.format(number, toAppendTo, pos);
+        }
+
+        @Override
+        public Number parse(String source, ParsePosition parsePosition) {
+            throw new UnsupportedOperationException();
+        }
+    }
+
     /**
      * Build a Format for a C# pattern
      */
@@ -331,54 +365,77 @@ public final class FormatHelper {
 
         if (Character.isLetter(pattern.charAt(0))) {
             char firstChar = pattern.charAt(0);
-            char upperCaseFirstChar = Character.toUpperCase(firstChar);
-
-            if (upperCaseFirstChar == 'R') {
-                return new PaddingDecimalFormat(locale, null, width);
-            }
 
             pattern = pattern.substring(1);
-            int precision;
-            try {
-                precision = Integer.parseInt(pattern);
-            } catch (NumberFormatException e) {
-                precision = -1;
+            int precision = -1;
+            if (pattern.length() > 0) {
+                try {
+                    precision = Integer.parseInt(pattern);
+                } catch (NumberFormatException e) {}
             }
 
-            if (upperCaseFirstChar == 'F' && precision != -1) {
+            switch (firstChar) {
+            case 'r':
+            case 'g':
+            case 'R':
+            case 'G': {
+                return new GeneralNumberFormat(locale, width, firstChar == 'R' || firstChar == 'G');
+            }
+            case 'f':
+            case 'F': {
                 PaddingDecimalFormat format = new PaddingDecimalFormat(locale, null, width);
-                format.setMinimumFractionDigits(precision);
-                format.setMaximumFractionDigits(precision);
+                if (precision != -1) {
+                    format.setMinimumFractionDigits(precision);
+                    format.setMaximumFractionDigits(precision);
+                }
                 return format;
-            } else if (upperCaseFirstChar == 'D' && precision != -1) {
+            }
+            case 'd':
+            case 'D': {
                 PaddingDecimalFormat format = new PaddingDecimalFormat(locale, null, width);
-                format.setMinimumIntegerDigits(precision);
+                if (precision != -1) {
+                    format.setMinimumIntegerDigits(precision);
+                }
                 return format;
-            } else if (upperCaseFirstChar == 'E') {
+            }
+            case 'e':
+            case 'E': {
                 if (precision == -1) {
                     precision = 6;
                 }
-                StringBuilder sb = new StringBuilder("0.");
-                for (int i = 0; i < precision; ++i) {
-                    sb.append("#");
-                }
-                sb.append(firstChar);
-                sb.append("+000");
-                PaddingDecimalFormat format = new PaddingDecimalFormat(locale, sb.toString(), width);
+
+                PaddingDecimalFormat format = new PaddingDecimalFormat(locale, createExponentPattern(firstChar, precision, 3), width);
                 format.setMinimumFractionDigits(precision);
                 format.setMaximumFractionDigits(precision);
                 return format;
-            } else if (upperCaseFirstChar == 'X') {
+            }
+            case 'x':
+            case 'X': {
                 PaddingDecimalFormat format = new PaddingDecimalFormat(new HexNumberFormat(firstChar == 'X'), width);
                 format.setMinimumIntegerDigits(precision);
                 return format;
-            } else {
+            }
+            default: {
                 String m = MessageFormat.format("Unsupported format specifier \"{0}\" for format string \"{1}\"", firstChar, pattern);
                 throw new UnsupportedOperationException(m);
+            }
             }
         } else {
             return createCustomFormat(locale, pattern, width);
         }
+    }
+
+    private static String createExponentPattern(char exponentChar, int precision, int exponentDigits) {
+        StringBuilder builder = new StringBuilder("0.");
+        for (int i = 0; i < precision; ++i) {
+            builder.append("#");
+        }
+        builder.append(exponentChar);
+        builder.append("+");
+        for (int i = 0; i < exponentDigits; ++i) {
+            builder.append("0");
+        }
+        return builder.toString();
     }
 
     @Nonnull
