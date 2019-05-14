@@ -68,6 +68,7 @@
     <Compile Include="TestCustomPropertiesCesiumWriter.cs" />
     <Compile Include="TestDoubleCesiumWriter.cs" />
     <Compile Include="TestGenerateValidationDocument.cs" />
+    <Compile Include="TestGridMaterialCesiumWriter.cs" />
     <Compile Include="TestHorizontalOriginCesiumWriter.cs" />
     <Compile Include="TestLabelCesiumWriter.cs" />
     <Compile Include="TestLabelStyleCesiumWriter.cs" />
@@ -86,13 +87,17 @@
     <Compile Include="TestMatrix3By3.cs" />
     <Compile Include="TestNodeTransformationsCesiumWriter.cs" />
     <Compile Include="TestOrientationCesiumWriter.cs" />
+    <Compile Include="TestPolylineArrowMaterialCesiumWriter.cs" />
     <Compile Include="TestPolylineDashMaterialCesiumWriter.cs" />
     <Compile Include="TestPolylineGlowMaterialCesiumWriter.cs" />
+    <Compile Include="TestPolylineOutlineMaterialCesiumWriter.cs" />
     <Compile Include="TestPositionCesiumWriter.cs" />
     <Compile Include="TestPropertiesOfSimpleJsonTypes.cs" />
     <Compile Include="TestRectangleCesiumWriter.cs" />
     <Compile Include="TestReference.cs" />
+    <Compile Include="TestSolidColorMaterialCesiumWriter.cs" />
     <Compile Include="TestStringCesiumWriter.cs" />
+    <Compile Include="TestStripeMaterialCesiumWriter.cs" />
     <Compile Include="TestTimeInterval.cs" />
     <Compile Include="TestUnitCartesian.cs" />
     <Compile Include="TestUnitQuaternion.cs" />
