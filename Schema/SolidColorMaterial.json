@@ -1,6 +1,6 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/SolidColorMaterial.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/SolidColorMaterial.json",
     "title": "SolidColorMaterial",
     "description": "A material that fills the surface with a solid color.",
     "type": [

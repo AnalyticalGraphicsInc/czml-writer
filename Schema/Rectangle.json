@@ -1,6 +1,6 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Rectangle.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Rectangle.json",
     "title": "Rectangle",
     "description": "A cartographic rectangle, which conforms to the curvature of the globe and can be placed on the surface or at altitude and can optionally be extruded into a volume.",
     "type": [
@@ -94,5 +94,7 @@
             "default": "0"
         }
     },
-    "required": [ "coordinates" ]
+    "required": [
+        "coordinates"
+    ]
 }

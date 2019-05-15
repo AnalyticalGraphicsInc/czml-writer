@@ -1,26 +1,20 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/ClockStepValue.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/ClockStepValue.json",
     "title": "ClockStep",
     "description": "Defines how a clock advances each tick.",
     "type": "string",
     "oneOf": [
         {
-            "enum": [
-                "TICK_DEPENDENT"
-            ],
+            "const": "TICK_DEPENDENT",
             "description": "The current time is advanced by `multiplier` seconds each tick."
         },
         {
-            "enum": [
-                "SYSTEM_CLOCK_MULTIPLIER"
-            ],
+            "const": "SYSTEM_CLOCK_MULTIPLIER",
             "description": "The current time is advanced by the amount of system time since the last tick, multiplied by `multiplier`."
         },
         {
-            "enum": [
-                "SYSTEM_CLOCK"
-            ],
+            "const": "SYSTEM_CLOCK",
             "description": "The clock is always set to the current system time."
         }
     ]

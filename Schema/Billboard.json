@@ -1,6 +1,6 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Billboard.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Billboard.json",
     "title": "Billboard",
     "description": "A billboard, or viewport-aligned image. The billboard is positioned in the scene by the `position` property. A billboard is sometimes called a marker.",
     "type": [
@@ -107,5 +107,7 @@
             "default": 0.0
         }
     },
-    "required": [ "image" ]
+    "required": [
+        "image"
+    ]
 }

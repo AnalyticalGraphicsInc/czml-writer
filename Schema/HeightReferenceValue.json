@@ -1,26 +1,20 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/HeightReferenceValue.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/HeightReferenceValue.json",
     "title": "HeightReference",
     "description": "The height reference of an object, which indicates if the object's position is relative to terrain or not.",
     "type": "string",
     "oneOf": [
         {
-            "enum": [
-                "NONE"
-            ],
+            "const": "NONE",
             "description": "The position is absolute."
         },
         {
-            "enum": [
-                "CLAMP_TO_GROUND"
-            ],
+            "const": "CLAMP_TO_GROUND",
             "description": "The position is clamped to the terrain."
         },
         {
-            "enum": [
-                "RELATIVE_TO_GROUND"
-            ],
+            "const": "RELATIVE_TO_GROUND",
             "description": "The position height is the height above the terrain."
         }
     ]

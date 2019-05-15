@@ -1,6 +1,6 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/LineOffset.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/LineOffset.json",
     "title": "LineOffset",
     "description": "The offset of grid lines along each axis, as a percentage from 0 to 1.",
     "extends": {

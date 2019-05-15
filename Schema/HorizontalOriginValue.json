@@ -1,26 +1,20 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/HorizontalOriginValue.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/HorizontalOriginValue.json",
     "title": "HorizontalOrigin",
     "description": "The horizontal location of an origin relative to an object's position.",
     "type": "string",
     "oneOf": [
         {
-            "enum": [
-                "LEFT"
-            ],
+            "const": "LEFT",
             "description": "The origin is on the left side of the object."
         },
         {
-            "enum": [
-                "CENTER"
-            ],
+            "const": "CENTER",
             "description": "The origin is at the horizontal center of the object."
         },
         {
-            "enum": [
-                "RIGHT"
-            ],
+            "const": "RIGHT",
             "description": "The origin is on the right side of the object."
         }
     ]

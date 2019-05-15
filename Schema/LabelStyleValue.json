@@ -1,26 +1,20 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/LabelStyleValue.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/LabelStyleValue.json",
     "title": "LabelStyle",
     "description": "The style of a label.",
     "type": "string",
     "oneOf": [
         {
-            "enum": [
-                "FILL"
-            ],
+            "const": "FILL",
             "description": "The text of the label is filled, but not outlined."
         },
         {
-            "enum": [
-                "OUTLINE"
-            ],
+            "const": "OUTLINE",
             "description": "The text of the label is outlined, but not filled."
         },
         {
-            "enum": [
-                "FILL_AND_OUTLINE"
-            ],
+            "const": "FILL_AND_OUTLINE",
             "description": "The text of the label is both filled and outlined."
         }
     ]

@@ -1,6 +1,6 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Ellipse.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Ellipse.json",
     "title": "Ellipse",
     "description": "An ellipse, which is a closed curve on or above the surface of the Earth.",
     "type": [
@@ -103,5 +103,8 @@
             "default": "0"
         }
     },
-    "required": [ "semiMajorAxis", "semiMinorAxis" ]
+    "required": [
+        "semiMajorAxis",
+        "semiMinorAxis"
+    ]
 }

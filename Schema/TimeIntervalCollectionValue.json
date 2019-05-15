@@ -1,6 +1,6 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/TimeIntervalCollectionValue.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/TimeIntervalCollectionValue.json",
     "title": "TimeIntervalCollection",
     "description": "A collection of time intervals, specified in ISO8601 interval format.",
     "type": [

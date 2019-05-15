@@ -1,26 +1,20 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Extensions/AGI/SensorVolumePortionToDisplayValue.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Extensions/AGI/SensorVolumePortionToDisplayValue.json",
     "title": "SensorVolumePortionToDisplay",
     "description": "What part of a sensor should be displayed.",
     "type": "string",
     "oneOf": [
         {
-            "enum": [
-                "COMPLETE"
-            ],
+            "const": "COMPLETE",
             "description": "Display the complete sensor volume."
         },
         {
-            "enum": [
-                "BELOW_ELLIPSOID_HORIZON"
-            ],
+            "const": "BELOW_ELLIPSOID_HORIZON",
             "description": "Display the portion of the sensor volume that lies below the true horizon of the ellipsoid."
         },
         {
-            "enum": [
-                "ABOVE_ELLIPSOID_HORIZON"
-            ],
+            "const": "ABOVE_ELLIPSOID_HORIZON",
             "description": "Display the portion of the sensor volume that lies above the true horizon of the ellipsoid."
         }
     ]

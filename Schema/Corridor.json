@@ -1,6 +1,6 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Corridor.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Corridor.json",
     "title": "Corridor",
     "description": "A corridor, which is a shape defined by a centerline and width that conforms to the curvature of the globe. It can be placed on the surface or at altitude and can optionally be extruded into a volume.",
     "type": [
@@ -93,5 +93,8 @@
             "default": "0"
         }
     },
-    "required": [ "positions", "width" ]
+    "required": [
+        "positions",
+        "width"
+    ]
 }

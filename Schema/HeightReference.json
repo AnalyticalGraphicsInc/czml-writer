@@ -1,6 +1,6 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/HeightReference.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/HeightReference.json",
     "title": "HeightReference",
     "description": "The height reference of an object, which indicates if the object's position is relative to terrain or not.",
     "type": [

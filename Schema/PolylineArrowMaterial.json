@@ -1,6 +1,6 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/PolylineArrowMaterial.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/PolylineArrowMaterial.json",
     "title": "PolylineArrowMaterial",
     "description": "A material that fills the surface of a line with an arrow.",
     "type": [
