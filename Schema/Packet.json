@@ -1,6 +1,6 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Packet.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Packet.json",
     "title": "Packet",
     "description": "Describes the graphical properties of a single object in a scene, such as a single aircraft.",
     "type": "object",

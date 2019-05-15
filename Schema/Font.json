@@ -1,6 +1,6 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Font.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Font.json",
     "title": "Font",
     "description": "A font used to draw text. Fonts are specified using the same syntax as the CSS \"font\" property.",
     "type": [

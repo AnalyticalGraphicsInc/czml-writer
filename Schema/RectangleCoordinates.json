@@ -1,6 +1,6 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/RectangleCoordinates.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/RectangleCoordinates.json",
     "title": "RectangleCoordinates",
     "description": "A set of coordinates describing a cartographic rectangle on the surface of the ellipsoid.",
     "extends": {

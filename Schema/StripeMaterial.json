@@ -1,6 +1,6 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/StripeMaterial.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/StripeMaterial.json",
     "title": "StripeMaterial",
     "description": "A material that fills the surface with alternating colors.",
     "type": [

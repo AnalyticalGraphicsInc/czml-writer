@@ -1,6 +1,6 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/PixelOffset.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/PixelOffset.json",
     "title": "PixelOffset",
     "description": "A pixel offset in viewport coordinates. A pixel offset is the number of pixels up and to the right to place an element relative to an origin.",
     "extends": {

@@ -1,6 +1,6 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Extensions/AGI/CustomPatternSensor.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Extensions/AGI/CustomPatternSensor.json",
     "title": "CustomPatternSensor",
     "description": "A custom sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.",
     "type": [
@@ -117,5 +117,7 @@
             "default": 5.0
         }
     },
-    "required": [ "directions" ]
+    "required": [
+        "directions"
+    ]
 }

@@ -1,6 +1,6 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Extensions/AGI/Fan.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Extensions/AGI/Fan.json",
     "title": "Fan",
     "description": "A fan. A fan starts at a point or apex and extends in a specified list of directions from the apex. Each pair of directions forms a face of the fan extending to the specified radius.",
     "type": [
@@ -61,5 +61,7 @@
             "default": 6
         }
     },
-    "required": [ "directions" ]
+    "required": [
+        "directions"
+    ]
 }

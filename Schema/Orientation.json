@@ -1,6 +1,6 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Orientation.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Orientation.json",
     "title": "Orientation",
     "description": "Defines an orientation. An orientation is a rotation that takes a vector expressed in the \"body\" axes of the object and transforms it to the Earth fixed axes.",
     "extends": {

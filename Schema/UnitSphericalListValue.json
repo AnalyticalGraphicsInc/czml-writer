@@ -1,6 +1,6 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/UnitSphericalListValue.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/UnitSphericalListValue.json",
     "title": "UnitSphericalList",
     "description": "A list of unit spherical values specified as `[Clock, Cone, Clock, Cone, ...]` angles.",
     "type": "array"

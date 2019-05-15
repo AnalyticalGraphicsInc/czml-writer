@@ -1,6 +1,6 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Extensions/AGI/RectangularSensor.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Extensions/AGI/RectangularSensor.json",
     "title": "RectangularSensor",
     "description": "A rectangular pyramid sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.",
     "type": [

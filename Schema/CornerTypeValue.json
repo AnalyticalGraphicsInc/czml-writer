@@ -1,26 +1,20 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/CornerTypeValue.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/CornerTypeValue.json",
     "title": "CornerType",
     "description": "The style of a corner.",
     "type": "string",
     "oneOf": [
         {
-            "enum": [
-                "ROUNDED"
-            ],
+            "const": "ROUNDED",
             "description": "The corner has a smooth edge."
         },
         {
-            "enum": [
-                "MITERED"
-            ],
+            "const": "MITERED",
             "description": "The corner point is the intersection of adjacent edges."
         },
         {
-            "enum": [
-                "BEVELED"
-            ],
+            "const": "BEVELED",
             "description": "The corner is clipped."
         }
     ]

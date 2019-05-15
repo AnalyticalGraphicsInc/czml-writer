@@ -1,6 +1,6 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Cylinder.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Cylinder.json",
     "title": "Cylinder",
     "description": "A cylinder, truncated cone, or cone defined by a length, top radius, and bottom radius.",
     "type": [
@@ -73,5 +73,9 @@
             "description": "The display condition specifying the distance from the camera at which this cylinder will be displayed."
         }
     },
-    "required": [ "length", "topRadius", "bottomRadius" ]
+    "required": [
+        "length",
+        "topRadius",
+        "bottomRadius"
+    ]
 }

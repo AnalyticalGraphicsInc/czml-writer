@@ -1,6 +1,6 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/DistanceDisplayCondition.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/DistanceDisplayCondition.json",
     "title": "DistanceDisplayCondition",
     "description": "Indicates the visibility of an object based on the distance to the camera.",
     "extends": {

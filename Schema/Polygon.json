@@ -1,6 +1,6 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Polygon.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Polygon.json",
     "title": "Polygon",
     "description": "A polygon, which is a closed figure on the surface of the Earth.",
     "type": [
@@ -109,5 +109,7 @@
             "default": "0"
         }
     },
-    "required": [ "positions" ]
+    "required": [
+        "positions"
+    ]
 }

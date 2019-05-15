@@ -1,6 +1,6 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Rotation.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Rotation.json",
     "title": "Rotation",
     "description": "Defines a rotation that transforms a vector expressed in one axes and transforms it to another.",
     "extends": {

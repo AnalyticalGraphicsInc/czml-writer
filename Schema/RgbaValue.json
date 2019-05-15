@@ -1,6 +1,6 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/RgbaValue.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/RgbaValue.json",
     "title": "Rgba",
     "description": "A color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is in the range 0-255. If the array has four elements, the color is constant. If it has five or more elements, they are time-tagged samples arranged as `[Time, Red, Green, Blue, Alpha, Time, Red, Green, Blue, Alpha, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.",
     "type": "array"

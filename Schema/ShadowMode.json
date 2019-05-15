@@ -1,6 +1,6 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/ShadowMode.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/ShadowMode.json",
     "title": "ShadowMode",
     "description": "Whether or not an object casts or receives shadows from each light source when shadows are enabled.",
     "type": [

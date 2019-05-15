@@ -1,6 +1,6 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Polyline.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Polyline.json",
     "title": "Polyline",
     "description": "A polyline, which is a line in the scene composed of multiple segments.",
     "type": [
@@ -69,5 +69,7 @@
             "default": "0"
         }
     },
-    "required": [ "positions" ]
+    "required": [
+        "positions"
+    ]
 }

@@ -1,6 +1,6 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/InterpolatableProperty.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/InterpolatableProperty.json",
     "title": "InterpolatableProperty",
     "description": "The base schema for a property whose value may be determined by interpolating over provided time-tagged samples.",
     "properties": {

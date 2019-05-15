@@ -1,6 +1,6 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/AlignedAxis.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/AlignedAxis.json",
     "title": "AlignedAxis",
     "description": "An aligned axis represented by a unit vector which can optionally vary over time.",
     "extends": {

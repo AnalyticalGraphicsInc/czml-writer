@@ -1,6 +1,6 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Ellipsoid.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Ellipsoid.json",
     "title": "Ellipsoid",
     "description": "A closed quadric surface that is a three dimensional analogue of an ellipse.",
     "type": [
@@ -70,5 +70,7 @@
             "description": "The display condition specifying at what distance from the camera this ellipsoid will be displayed."
         }
     },
-    "required": [ "radii" ]
+    "required": [
+        "radii"
+    ]
 }

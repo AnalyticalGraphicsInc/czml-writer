@@ -75,11 +75,11 @@ namespace GenerateFromSchema
                 schema.AdditionalProperties = LoadProperty(schemaFileName, additionalProperties);
             }
 
-            schema.EnumValues = schemaJson.SelectTokens("oneOf[?(@.enum)]")
+            schema.EnumValues = schemaJson.SelectTokens("oneOf[?(@.const)]")
                                           .Cast<JObject>()
                                           .Select(obj => new SchemaEnumValue
                                           {
-                                              Name = obj.SelectToken("enum[0]").Value<string>(),
+                                              Name = obj.SelectToken("const").Value<string>(),
                                               Description = obj.SelectToken("description").Value<string>()
                                           }).ToList();
 

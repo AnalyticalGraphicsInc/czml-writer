@@ -1,6 +1,6 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/EllipsoidRadii.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/EllipsoidRadii.json",
     "title": "EllipsoidRadii",
     "description": "The radii of an ellipsoid.",
     "extends": {

@@ -1,6 +1,6 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/DistanceDisplayConditionValue.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/DistanceDisplayConditionValue.json",
     "title": "DistanceDisplayCondition",
     "description": "Indicates the visibility of an object based on the distance to the camera, specified as two values `[NearDistance, FarDistance]`. If the array has two elements, the value is constant. If it has three or more elements, they are time-tagged samples arranged as `[Time, NearDistance, FarDistance, Time, NearDistance, FarDistance, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.",
     "type": "array",
