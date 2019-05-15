@@ -4,8 +4,7 @@
   "description": "CZML JSON Schema",
   "dependencies": {},
   "devDependencies": {
-    "ajv": "^6.10.0",
-    "glob": "^7.1.4"
+    "ajv": "^6.10.0"
   },
   "scripts": {
     "validate": "node validate.js"
