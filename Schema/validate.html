@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>CZML Validator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ajv/6.10.0/ajv.bundle.js"></script>
+</head>
+<body>
+
+    <div>
+        <input type="radio" id="validateDocument" name="validationType" checked>
+        <label for="validateDocument">Validate CZML Document</label>
+    </div>
+
+    <div>
+        <input type="radio" id="validatePacket" name="validationType">
+        <label for="validatePacket">Validate CZML Packet</label>
+    </div>
+
+    <div>
+        <textarea id="data" rows="40" cols="100"></textarea>
+    </div>
+
+    <div>
+        <button id="validateButton" type="button" onclick="validate()">Validate</button>
+    </div>
+
+    <div id="validationResults"></div>
+
+    <script>
+
+        function fetchJson(uri) {
+            return fetch(uri).then(response => response.json());
+        }
+
+        function loadSchema(uri) {
+            uri = uri.replace('https://analyticalgraphicsinc.github.io/czml-writer/Schema/', '');
+            return fetchJson(uri);
+        }
+
+        const ajv = new Ajv({
+            allErrors: true,
+            verbose: true,
+            loadSchema: loadSchema
+        });
+
+        const packetValidatePromise = fetchJson('Packet.json').then(schema => ajv.compileAsync(schema));
+        const documentValidatePromise = fetchJson('Document.json').then(schema => ajv.compileAsync(schema));
+
+        function validate() {
+            const validatePromise = document.getElementById('validateDocument').checked ? documentValidatePromise : packetValidatePromise;
+            const validationResults = document.getElementById('validationResults');
+
+            validatePromise.then(validate => {
+                var json;
+                try {
+                    json = JSON.parse(document.getElementById('data').value);
+                } catch (e) {
+                    validationResults.innerText = 'Invalid JSON';
+                    return;
+                }
+
+                const valid = validate(json);
+                if (valid) {
+                    validationResults.innerText = 'Valid';
+                } else {
+                    validationResults.innerText = `Invalid: ${ajv.errorsText(validate.errors)}`;
+                }
+            });
+        }
+    </script>
+</body>
+</html>

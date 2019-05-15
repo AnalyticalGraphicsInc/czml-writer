@@ -120,6 +120,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{04E49F
 		..\Schema\UnitSphericalValue.json = ..\Schema\UnitSphericalValue.json
 		..\Schema\Uri.json = ..\Schema\Uri.json
 		..\Schema\UriValue.json = ..\Schema\UriValue.json
+		..\Schema\validate.html = ..\Schema\validate.html
 		..\Schema\validate.js = ..\Schema\validate.js
 		..\Schema\VerticalOrigin.json = ..\Schema\VerticalOrigin.json
 		..\Schema\VerticalOriginValue.json = ..\Schema\VerticalOriginValue.json
