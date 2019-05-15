@@ -1,0 +1,30 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/CheckerboardMaterial.json",
+    "title": "CheckerboardMaterial",
+    "description": "A material that fills the surface with a checkerboard pattern.",
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "properties": {
+        "evenColor": {
+            "$ref": "Color.json",
+            "description": "The even color.",
+            "default": "white"
+        },
+        "oddColor": {
+            "$ref": "Color.json",
+            "description": "The odd color.",
+            "default": "black"
+        },
+        "repeat": {
+            "$ref": "Repeat.json",
+            "description": "The number of times the tiles repeat along each axis.",
+            "default": "[2, 2]"
+        }
+    }
+}

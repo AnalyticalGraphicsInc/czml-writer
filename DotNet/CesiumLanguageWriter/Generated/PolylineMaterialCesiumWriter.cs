@@ -56,6 +56,11 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string StripePropertyName = "stripe";
 
+        /// <summary>
+        /// The name of the <c>checkerboard</c> property.
+        /// </summary>
+        public const string CheckerboardPropertyName = "checkerboard";
+
         private readonly Lazy<SolidColorMaterialCesiumWriter> m_solidColor = new Lazy<SolidColorMaterialCesiumWriter>(() => new SolidColorMaterialCesiumWriter(SolidColorPropertyName), false);
         private readonly Lazy<PolylineOutlineMaterialCesiumWriter> m_polylineOutline = new Lazy<PolylineOutlineMaterialCesiumWriter>(() => new PolylineOutlineMaterialCesiumWriter(PolylineOutlinePropertyName), false);
         private readonly Lazy<PolylineArrowMaterialCesiumWriter> m_polylineArrow = new Lazy<PolylineArrowMaterialCesiumWriter>(() => new PolylineArrowMaterialCesiumWriter(PolylineArrowPropertyName), false);
@@ -64,6 +69,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<ImageMaterialCesiumWriter> m_image = new Lazy<ImageMaterialCesiumWriter>(() => new ImageMaterialCesiumWriter(ImagePropertyName), false);
         private readonly Lazy<GridMaterialCesiumWriter> m_grid = new Lazy<GridMaterialCesiumWriter>(() => new GridMaterialCesiumWriter(GridPropertyName), false);
         private readonly Lazy<StripeMaterialCesiumWriter> m_stripe = new Lazy<StripeMaterialCesiumWriter>(() => new StripeMaterialCesiumWriter(StripePropertyName), false);
+        private readonly Lazy<CheckerboardMaterialCesiumWriter> m_checkerboard = new Lazy<CheckerboardMaterialCesiumWriter>(() => new CheckerboardMaterialCesiumWriter(CheckerboardPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -239,6 +245,25 @@ namespace CesiumLanguageWriter
         {
             OpenIntervalIfNecessary();
             return OpenAndReturn(StripeWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <c>checkerboard</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>checkerboard</c> property defines a material that fills the line with a checkerboard pattern.
+        /// </summary>
+        [NotNull]
+        public CheckerboardMaterialCesiumWriter CheckerboardWriter
+        {
+            get { return m_checkerboard.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>checkerboard</c> property. The <c>checkerboard</c> property defines a material that fills the line with a checkerboard pattern.
+        /// </summary>
+        [NotNull]
+        public CheckerboardMaterialCesiumWriter OpenCheckerboardProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(CheckerboardWriter);
         }
 
     }

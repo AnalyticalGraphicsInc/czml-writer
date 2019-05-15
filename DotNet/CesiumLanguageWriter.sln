@@ -27,6 +27,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{04E49F
 		..\Schema\CartographicListValue.json = ..\Schema\CartographicListValue.json
 		..\Schema\CartographicRectangleValue.json = ..\Schema\CartographicRectangleValue.json
 		..\Schema\CartographicValue.json = ..\Schema\CartographicValue.json
+		..\Schema\CheckerboardMaterial.json = ..\Schema\CheckerboardMaterial.json
 		..\Schema\Clock.json = ..\Schema\Clock.json
 		..\Schema\ClockRangeValue.json = ..\Schema\ClockRangeValue.json
 		..\Schema\ClockStepValue.json = ..\Schema\ClockStepValue.json

@@ -1994,6 +1994,31 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("material_box_material_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('material_box_material_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenBoxProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(166, 188, 19, 247));
+                        m_assertionsWriter.WriteLine("    expect(e.box.material.evenColor.getValue(date)).toEqual(Color.fromBytes(188, 19, 247, 166));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(45, 70, 241, 211));
+                        m_assertionsWriter.WriteLine("    expect(e.box.material.oddColor.getValue(date)).toEqual(Color.fromBytes(70, 241, 211, 45));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(new Rectangular(31491, 2427));
+                        m_assertionsWriter.WriteLine("    expect(e.box.material.repeat.getValue(date)).toEqual(new Cartesian2(31491, 2427));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("constant_box_material_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_box_material_image_color')).toBeDefined();");
                 using (var w = packet.OpenBoxProperty())
@@ -2042,6 +2067,32 @@ namespace CesiumLanguageWriterTests
                 {
                     m2.WriteRgbaf(Color.FromArgb(191, 66, 203, 183));
                     m_assertionsWriter.WriteLine("    expect(e.box.material.oddColor.getValue(date)).toEqualEpsilon(new Color(0.258823529411765, 0.796078431372549, 0.717647058823529, 0.749019607843137), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_box_material_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_box_material_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenBoxProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(130, 189, 24, 26));
+                    m_assertionsWriter.WriteLine("    expect(e.box.material.evenColor.getValue(date)).toEqualEpsilon(new Color(0.741176470588235, 0.0941176470588235, 0.101960784313725, 0.509803921568627), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_box_material_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_box_material_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenBoxProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(10, 103, 196, 183));
+                    m_assertionsWriter.WriteLine("    expect(e.box.material.oddColor.getValue(date)).toEqualEpsilon(new Color(0.403921568627451, 0.768627450980392, 0.717647058823529, 0.0392156862745098), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -2195,6 +2246,31 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("material_corridor_material_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('material_corridor_material_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenCorridorProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(165, 24, 195, 5));
+                        m_assertionsWriter.WriteLine("    expect(e.corridor.material.evenColor.getValue(date)).toEqual(Color.fromBytes(24, 195, 5, 165));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(249, 15, 107, 210));
+                        m_assertionsWriter.WriteLine("    expect(e.corridor.material.oddColor.getValue(date)).toEqual(Color.fromBytes(15, 107, 210, 249));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(new Rectangular(19640, 18252));
+                        m_assertionsWriter.WriteLine("    expect(e.corridor.material.repeat.getValue(date)).toEqual(new Cartesian2(19640, 18252));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("constant_corridor_material_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_corridor_material_image_color')).toBeDefined();");
                 using (var w = packet.OpenCorridorProperty())
@@ -2243,6 +2319,32 @@ namespace CesiumLanguageWriterTests
                 {
                     m2.WriteRgbaf(Color.FromArgb(77, 51, 35, 202));
                     m_assertionsWriter.WriteLine("    expect(e.corridor.material.oddColor.getValue(date)).toEqualEpsilon(new Color(0.2, 0.137254901960784, 0.792156862745098, 0.301960784313725), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_corridor_material_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_corridor_material_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenCorridorProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(59, 73, 158, 157));
+                    m_assertionsWriter.WriteLine("    expect(e.corridor.material.evenColor.getValue(date)).toEqualEpsilon(new Color(0.286274509803922, 0.619607843137255, 0.615686274509804, 0.231372549019608), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_corridor_material_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_corridor_material_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenCorridorProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(112, 176, 44, 251));
+                    m_assertionsWriter.WriteLine("    expect(e.corridor.material.oddColor.getValue(date)).toEqualEpsilon(new Color(0.690196078431373, 0.172549019607843, 0.984313725490196, 0.43921568627451), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -2374,6 +2476,31 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("material_cylinder_material_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('material_cylinder_material_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenCylinderProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(93, 90, 151, 142));
+                        m_assertionsWriter.WriteLine("    expect(e.cylinder.material.evenColor.getValue(date)).toEqual(Color.fromBytes(90, 151, 142, 93));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(118, 29, 42, 163));
+                        m_assertionsWriter.WriteLine("    expect(e.cylinder.material.oddColor.getValue(date)).toEqual(Color.fromBytes(29, 42, 163, 118));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(new Rectangular(62750, 3317));
+                        m_assertionsWriter.WriteLine("    expect(e.cylinder.material.repeat.getValue(date)).toEqual(new Cartesian2(62750, 3317));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("constant_cylinder_material_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_cylinder_material_image_color')).toBeDefined();");
                 using (var w = packet.OpenCylinderProperty())
@@ -2422,6 +2549,32 @@ namespace CesiumLanguageWriterTests
                 {
                     m2.WriteRgbaf(Color.FromArgb(173, 231, 144, 124));
                     m_assertionsWriter.WriteLine("    expect(e.cylinder.material.oddColor.getValue(date)).toEqualEpsilon(new Color(0.905882352941176, 0.564705882352941, 0.486274509803922, 0.67843137254902), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_cylinder_material_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_cylinder_material_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenCylinderProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(225, 131, 193, 195));
+                    m_assertionsWriter.WriteLine("    expect(e.cylinder.material.evenColor.getValue(date)).toEqualEpsilon(new Color(0.513725490196078, 0.756862745098039, 0.764705882352941, 0.882352941176471), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_cylinder_material_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_cylinder_material_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenCylinderProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(137, 115, 100, 85));
+                    m_assertionsWriter.WriteLine("    expect(e.cylinder.material.oddColor.getValue(date)).toEqualEpsilon(new Color(0.450980392156863, 0.392156862745098, 0.333333333333333, 0.537254901960784), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -2553,6 +2706,31 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("material_ellipse_material_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('material_ellipse_material_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenEllipseProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(118, 62, 67, 234));
+                        m_assertionsWriter.WriteLine("    expect(e.ellipse.material.evenColor.getValue(date)).toEqual(Color.fromBytes(62, 67, 234, 118));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(32, 116, 61, 76));
+                        m_assertionsWriter.WriteLine("    expect(e.ellipse.material.oddColor.getValue(date)).toEqual(Color.fromBytes(116, 61, 76, 32));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(new Rectangular(62262, 11507));
+                        m_assertionsWriter.WriteLine("    expect(e.ellipse.material.repeat.getValue(date)).toEqual(new Cartesian2(62262, 11507));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("constant_ellipse_material_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_ellipse_material_image_color')).toBeDefined();");
                 using (var w = packet.OpenEllipseProperty())
@@ -2601,6 +2779,32 @@ namespace CesiumLanguageWriterTests
                 {
                     m2.WriteRgbaf(Color.FromArgb(21, 174, 168, 243));
                     m_assertionsWriter.WriteLine("    expect(e.ellipse.material.oddColor.getValue(date)).toEqualEpsilon(new Color(0.682352941176471, 0.658823529411765, 0.952941176470588, 0.0823529411764706), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_ellipse_material_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_ellipse_material_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenEllipseProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(103, 5, 137, 74));
+                    m_assertionsWriter.WriteLine("    expect(e.ellipse.material.evenColor.getValue(date)).toEqualEpsilon(new Color(0.0196078431372549, 0.537254901960784, 0.290196078431373, 0.403921568627451), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_ellipse_material_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_ellipse_material_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenEllipseProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(226, 81, 176, 57));
+                    m_assertionsWriter.WriteLine("    expect(e.ellipse.material.oddColor.getValue(date)).toEqualEpsilon(new Color(0.317647058823529, 0.690196078431373, 0.223529411764706, 0.886274509803922), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -2732,6 +2936,31 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("material_ellipsoid_material_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('material_ellipsoid_material_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenEllipsoidProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(252, 65, 215, 40));
+                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.material.evenColor.getValue(date)).toEqual(Color.fromBytes(65, 215, 40, 252));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(195, 63, 63, 46));
+                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.material.oddColor.getValue(date)).toEqual(Color.fromBytes(63, 63, 46, 195));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(new Rectangular(40702, 13470));
+                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.material.repeat.getValue(date)).toEqual(new Cartesian2(40702, 13470));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("constant_ellipsoid_material_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_ellipsoid_material_image_color')).toBeDefined();");
                 using (var w = packet.OpenEllipsoidProperty())
@@ -2780,6 +3009,32 @@ namespace CesiumLanguageWriterTests
                 {
                     m2.WriteRgbaf(Color.FromArgb(24, 148, 42, 189));
                     m_assertionsWriter.WriteLine("    expect(e.ellipsoid.material.oddColor.getValue(date)).toEqualEpsilon(new Color(0.580392156862745, 0.164705882352941, 0.741176470588235, 0.0941176470588235), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_ellipsoid_material_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_ellipsoid_material_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenEllipsoidProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(246, 35, 200, 75));
+                    m_assertionsWriter.WriteLine("    expect(e.ellipsoid.material.evenColor.getValue(date)).toEqualEpsilon(new Color(0.137254901960784, 0.784313725490196, 0.294117647058824, 0.964705882352941), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_ellipsoid_material_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_ellipsoid_material_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenEllipsoidProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(29, 231, 237, 109));
+                    m_assertionsWriter.WriteLine("    expect(e.ellipsoid.material.oddColor.getValue(date)).toEqualEpsilon(new Color(0.905882352941176, 0.929411764705882, 0.427450980392157, 0.113725490196078), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -3067,6 +3322,31 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("material_path_material_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('material_path_material_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenPathProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(107, 174, 238, 222));
+                        m_assertionsWriter.WriteLine("    expect(e.path.material.evenColor.getValue(date)).toEqual(Color.fromBytes(174, 238, 222, 107));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(237, 184, 189, 156));
+                        m_assertionsWriter.WriteLine("    expect(e.path.material.oddColor.getValue(date)).toEqual(Color.fromBytes(184, 189, 156, 237));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(new Rectangular(57303, 45535));
+                        m_assertionsWriter.WriteLine("    expect(e.path.material.repeat.getValue(date)).toEqual(new Cartesian2(57303, 45535));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("constant_path_material_polylineOutline_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_path_material_polylineOutline_color')).toBeDefined();");
                 using (var w = packet.OpenPathProperty())
@@ -3193,6 +3473,32 @@ namespace CesiumLanguageWriterTests
                 {
                     m2.WriteRgbaf(Color.FromArgb(128, 59, 54, 240));
                     m_assertionsWriter.WriteLine("    expect(e.path.material.oddColor.getValue(date)).toEqualEpsilon(new Color(0.231372549019608, 0.211764705882353, 0.941176470588235, 0.501960784313725), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_path_material_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_path_material_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenPathProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(207, 66, 217, 50));
+                    m_assertionsWriter.WriteLine("    expect(e.path.material.evenColor.getValue(date)).toEqualEpsilon(new Color(0.258823529411765, 0.850980392156863, 0.196078431372549, 0.811764705882353), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_path_material_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_path_material_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenPathProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(30, 19, 238, 47));
+                    m_assertionsWriter.WriteLine("    expect(e.path.material.oddColor.getValue(date)).toEqualEpsilon(new Color(0.0745098039215686, 0.933333333333333, 0.184313725490196, 0.117647058823529), 1e-14);");
                 }
             }
         }
@@ -3360,6 +3666,31 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("material_polygon_material_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('material_polygon_material_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenPolygonProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(98, 187, 186, 46));
+                        m_assertionsWriter.WriteLine("    expect(e.polygon.material.evenColor.getValue(date)).toEqual(Color.fromBytes(187, 186, 46, 98));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(217, 19, 74, 101));
+                        m_assertionsWriter.WriteLine("    expect(e.polygon.material.oddColor.getValue(date)).toEqual(Color.fromBytes(19, 74, 101, 217));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(new Rectangular(45028, 15023));
+                        m_assertionsWriter.WriteLine("    expect(e.polygon.material.repeat.getValue(date)).toEqual(new Cartesian2(45028, 15023));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("constant_polygon_material_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_polygon_material_image_color')).toBeDefined();");
                 using (var w = packet.OpenPolygonProperty())
@@ -3408,6 +3739,32 @@ namespace CesiumLanguageWriterTests
                 {
                     m2.WriteRgbaf(Color.FromArgb(152, 220, 10, 117));
                     m_assertionsWriter.WriteLine("    expect(e.polygon.material.oddColor.getValue(date)).toEqualEpsilon(new Color(0.862745098039216, 0.0392156862745098, 0.458823529411765, 0.596078431372549), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_polygon_material_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_polygon_material_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenPolygonProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(232, 101, 147, 121));
+                    m_assertionsWriter.WriteLine("    expect(e.polygon.material.evenColor.getValue(date)).toEqualEpsilon(new Color(0.396078431372549, 0.576470588235294, 0.474509803921569, 0.909803921568627), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_polygon_material_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_polygon_material_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenPolygonProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(53, 30, 66, 138));
+                    m_assertionsWriter.WriteLine("    expect(e.polygon.material.oddColor.getValue(date)).toEqualEpsilon(new Color(0.117647058823529, 0.258823529411765, 0.541176470588235, 0.207843137254902), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -3656,6 +4013,31 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("material_polyline_material_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('material_polyline_material_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(39, 29, 196, 146));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.material.evenColor.getValue(date)).toEqual(Color.fromBytes(29, 196, 146, 39));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(32, 189, 110, 12));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.material.oddColor.getValue(date)).toEqual(Color.fromBytes(189, 110, 12, 32));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(new Rectangular(22832, 11097));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.material.repeat.getValue(date)).toEqual(new Cartesian2(22832, 11097));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("constant_polyline_material_polylineOutline_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_polyline_material_polylineOutline_color')).toBeDefined();");
                 using (var w = packet.OpenPolylineProperty())
@@ -3782,6 +4164,32 @@ namespace CesiumLanguageWriterTests
                 {
                     m2.WriteRgbaf(Color.FromArgb(71, 74, 199, 18));
                     m_assertionsWriter.WriteLine("    expect(e.polyline.material.oddColor.getValue(date)).toEqualEpsilon(new Color(0.290196078431373, 0.780392156862745, 0.0705882352941176, 0.27843137254902), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_polyline_material_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_polyline_material_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(205, 129, 119, 220));
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.material.evenColor.getValue(date)).toEqualEpsilon(new Color(0.505882352941176, 0.466666666666667, 0.862745098039216, 0.803921568627451), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_polyline_material_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_polyline_material_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(52, 82, 116, 205));
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.material.oddColor.getValue(date)).toEqualEpsilon(new Color(0.32156862745098, 0.454901960784314, 0.803921568627451, 0.203921568627451), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -3994,6 +4402,31 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("material_polyline_depthFailMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('material_polyline_depthFailMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(1, 143, 196, 196));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.evenColor.getValue(date)).toEqual(Color.fromBytes(143, 196, 196, 1));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(119, 49, 118, 113));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.oddColor.getValue(date)).toEqual(Color.fromBytes(49, 118, 113, 119));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(new Rectangular(32284, 46718));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.repeat.getValue(date)).toEqual(new Cartesian2(32284, 46718));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("constant_polyline_depthFailMaterial_polylineOutline_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_polyline_depthFailMaterial_polylineOutline_color')).toBeDefined();");
                 using (var w = packet.OpenPolylineProperty())
@@ -4120,6 +4553,32 @@ namespace CesiumLanguageWriterTests
                 {
                     m2.WriteRgbaf(Color.FromArgb(168, 85, 137, 113));
                     m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.oddColor.getValue(date)).toEqualEpsilon(new Color(0.333333333333333, 0.537254901960784, 0.443137254901961, 0.658823529411765), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_polyline_depthFailMaterial_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_polyline_depthFailMaterial_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(186, 37, 208, 29));
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.evenColor.getValue(date)).toEqualEpsilon(new Color(0.145098039215686, 0.815686274509804, 0.113725490196078, 0.729411764705882), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_polyline_depthFailMaterial_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_polyline_depthFailMaterial_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(1, 24, 157, 114));
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.oddColor.getValue(date)).toEqualEpsilon(new Color(0.0941176470588235, 0.615686274509804, 0.447058823529412, 0.00392156862745098), 1e-14);");
                 }
             }
         }
@@ -4251,6 +4710,31 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("material_rectangle_material_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('material_rectangle_material_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenRectangleProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(116, 210, 132, 163));
+                        m_assertionsWriter.WriteLine("    expect(e.rectangle.material.evenColor.getValue(date)).toEqual(Color.fromBytes(210, 132, 163, 116));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(14, 159, 4, 119));
+                        m_assertionsWriter.WriteLine("    expect(e.rectangle.material.oddColor.getValue(date)).toEqual(Color.fromBytes(159, 4, 119, 14));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(new Rectangular(27335, 51818));
+                        m_assertionsWriter.WriteLine("    expect(e.rectangle.material.repeat.getValue(date)).toEqual(new Cartesian2(27335, 51818));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("constant_rectangle_material_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_rectangle_material_image_color')).toBeDefined();");
                 using (var w = packet.OpenRectangleProperty())
@@ -4299,6 +4783,32 @@ namespace CesiumLanguageWriterTests
                 {
                     m2.WriteRgbaf(Color.FromArgb(5, 221, 242, 16));
                     m_assertionsWriter.WriteLine("    expect(e.rectangle.material.oddColor.getValue(date)).toEqualEpsilon(new Color(0.866666666666667, 0.949019607843137, 0.0627450980392157, 0.0196078431372549), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_rectangle_material_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_rectangle_material_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenRectangleProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(185, 139, 165, 154));
+                    m_assertionsWriter.WriteLine("    expect(e.rectangle.material.evenColor.getValue(date)).toEqualEpsilon(new Color(0.545098039215686, 0.647058823529412, 0.603921568627451, 0.725490196078431), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_rectangle_material_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_rectangle_material_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenRectangleProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(231, 58, 42, 158));
+                    m_assertionsWriter.WriteLine("    expect(e.rectangle.material.oddColor.getValue(date)).toEqualEpsilon(new Color(0.227450980392157, 0.164705882352941, 0.619607843137255, 0.905882352941176), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -4452,6 +4962,31 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("material_wall_material_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('material_wall_material_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenWallProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(130, 187, 134, 139));
+                        m_assertionsWriter.WriteLine("    expect(e.wall.material.evenColor.getValue(date)).toEqual(Color.fromBytes(187, 134, 139, 130));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(149, 177, 172, 79));
+                        m_assertionsWriter.WriteLine("    expect(e.wall.material.oddColor.getValue(date)).toEqual(Color.fromBytes(177, 172, 79, 149));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(new Rectangular(22341, 60503));
+                        m_assertionsWriter.WriteLine("    expect(e.wall.material.repeat.getValue(date)).toEqual(new Cartesian2(22341, 60503));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("constant_wall_material_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_wall_material_image_color')).toBeDefined();");
                 using (var w = packet.OpenWallProperty())
@@ -4500,6 +5035,32 @@ namespace CesiumLanguageWriterTests
                 {
                     m2.WriteRgbaf(Color.FromArgb(1, 247, 94, 56));
                     m_assertionsWriter.WriteLine("    expect(e.wall.material.oddColor.getValue(date)).toEqualEpsilon(new Color(0.968627450980392, 0.368627450980392, 0.219607843137255, 0.00392156862745098), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_wall_material_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_wall_material_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenWallProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(139, 96, 101, 178));
+                    m_assertionsWriter.WriteLine("    expect(e.wall.material.evenColor.getValue(date)).toEqualEpsilon(new Color(0.376470588235294, 0.396078431372549, 0.698039215686274, 0.545098039215686), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_wall_material_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_wall_material_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenWallProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(134, 101, 5, 71));
+                    m_assertionsWriter.WriteLine("    expect(e.wall.material.oddColor.getValue(date)).toEqualEpsilon(new Color(0.396078431372549, 0.0196078431372549, 0.27843137254902, 0.525490196078431), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -4642,6 +5203,31 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("material_conicSensor_lateralSurfaceMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('material_conicSensor_lateralSurfaceMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenLateralSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(115, 143, 14, 11));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.lateralSurfaceMaterial.evenColor.getValue(date)).toEqual(Color.fromBytes(143, 14, 11, 115));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(237, 219, 175, 60));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.lateralSurfaceMaterial.oddColor.getValue(date)).toEqual(Color.fromBytes(219, 175, 60, 237));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(new Rectangular(33167, 58753));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.lateralSurfaceMaterial.repeat.getValue(date)).toEqual(new Cartesian2(33167, 58753));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("constant_conicSensor_lateralSurfaceMaterial_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_conicSensor_lateralSurfaceMaterial_image_color')).toBeDefined();");
                 using (var w = packet.OpenConicSensorProperty())
@@ -4690,6 +5276,32 @@ namespace CesiumLanguageWriterTests
                 {
                     m2.WriteRgbaf(Color.FromArgb(145, 32, 115, 155));
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.lateralSurfaceMaterial.oddColor.getValue(date)).toEqualEpsilon(new Color(0.125490196078431, 0.450980392156863, 0.607843137254902, 0.568627450980392), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_conicSensor_lateralSurfaceMaterial_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_conicSensor_lateralSurfaceMaterial_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenLateralSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(242, 8, 25, 205));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.lateralSurfaceMaterial.evenColor.getValue(date)).toEqualEpsilon(new Color(0.0313725490196078, 0.0980392156862745, 0.803921568627451, 0.949019607843137), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_conicSensor_lateralSurfaceMaterial_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_conicSensor_lateralSurfaceMaterial_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenLateralSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(35, 212, 99, 33));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.lateralSurfaceMaterial.oddColor.getValue(date)).toEqualEpsilon(new Color(0.831372549019608, 0.388235294117647, 0.129411764705882, 0.137254901960784), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -4807,6 +5419,31 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("material_conicSensor_ellipsoidSurfaceMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('material_conicSensor_ellipsoidSurfaceMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenEllipsoidSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(245, 103, 129, 36));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidSurfaceMaterial.evenColor.getValue(date)).toEqual(Color.fromBytes(103, 129, 36, 245));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(45, 125, 17, 186));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidSurfaceMaterial.oddColor.getValue(date)).toEqual(Color.fromBytes(125, 17, 186, 45));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(new Rectangular(56863, 31454));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidSurfaceMaterial.repeat.getValue(date)).toEqual(new Cartesian2(56863, 31454));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("constant_conicSensor_ellipsoidSurfaceMaterial_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_conicSensor_ellipsoidSurfaceMaterial_image_color')).toBeDefined();");
                 using (var w = packet.OpenConicSensorProperty())
@@ -4855,6 +5492,32 @@ namespace CesiumLanguageWriterTests
                 {
                     m2.WriteRgbaf(Color.FromArgb(219, 116, 158, 29));
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidSurfaceMaterial.oddColor.getValue(date)).toEqualEpsilon(new Color(0.454901960784314, 0.619607843137255, 0.113725490196078, 0.858823529411765), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_conicSensor_ellipsoidSurfaceMaterial_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_conicSensor_ellipsoidSurfaceMaterial_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenEllipsoidSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(28, 74, 119, 138));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidSurfaceMaterial.evenColor.getValue(date)).toEqualEpsilon(new Color(0.290196078431373, 0.466666666666667, 0.541176470588235, 0.109803921568627), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_conicSensor_ellipsoidSurfaceMaterial_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_conicSensor_ellipsoidSurfaceMaterial_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenEllipsoidSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(161, 196, 154, 218));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidSurfaceMaterial.oddColor.getValue(date)).toEqualEpsilon(new Color(0.768627450980392, 0.603921568627451, 0.854901960784314, 0.631372549019608), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -4972,6 +5635,31 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("material_conicSensor_ellipsoidHorizonSurfaceMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('material_conicSensor_ellipsoidHorizonSurfaceMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenEllipsoidHorizonSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(64, 184, 26, 104));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidHorizonSurfaceMaterial.evenColor.getValue(date)).toEqual(Color.fromBytes(184, 26, 104, 64));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(170, 5, 165, 153));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidHorizonSurfaceMaterial.oddColor.getValue(date)).toEqual(Color.fromBytes(5, 165, 153, 170));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(new Rectangular(25804, 5220));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidHorizonSurfaceMaterial.repeat.getValue(date)).toEqual(new Cartesian2(25804, 5220));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("constant_conicSensor_ellipsoidHorizonSurfaceMaterial_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_conicSensor_ellipsoidHorizonSurfaceMaterial_image_color')).toBeDefined();");
                 using (var w = packet.OpenConicSensorProperty())
@@ -5020,6 +5708,32 @@ namespace CesiumLanguageWriterTests
                 {
                     m2.WriteRgbaf(Color.FromArgb(85, 100, 220, 216));
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidHorizonSurfaceMaterial.oddColor.getValue(date)).toEqualEpsilon(new Color(0.392156862745098, 0.862745098039216, 0.847058823529412, 0.333333333333333), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_conicSensor_ellipsoidHorizonSurfaceMaterial_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_conicSensor_ellipsoidHorizonSurfaceMaterial_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenEllipsoidHorizonSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(84, 61, 156, 74));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidHorizonSurfaceMaterial.evenColor.getValue(date)).toEqualEpsilon(new Color(0.23921568627451, 0.611764705882353, 0.290196078431373, 0.329411764705882), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_conicSensor_ellipsoidHorizonSurfaceMaterial_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_conicSensor_ellipsoidHorizonSurfaceMaterial_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenEllipsoidHorizonSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(118, 162, 13, 109));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidHorizonSurfaceMaterial.oddColor.getValue(date)).toEqualEpsilon(new Color(0.635294117647059, 0.0509803921568627, 0.427450980392157, 0.462745098039216), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -5137,6 +5851,31 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("material_conicSensor_domeSurfaceMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('material_conicSensor_domeSurfaceMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenDomeSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(17, 82, 4, 132));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.domeSurfaceMaterial.evenColor.getValue(date)).toEqual(Color.fromBytes(82, 4, 132, 17));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(253, 224, 212, 71));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.domeSurfaceMaterial.oddColor.getValue(date)).toEqual(Color.fromBytes(224, 212, 71, 253));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(new Rectangular(24608, 33120));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.domeSurfaceMaterial.repeat.getValue(date)).toEqual(new Cartesian2(24608, 33120));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("constant_conicSensor_domeSurfaceMaterial_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_conicSensor_domeSurfaceMaterial_image_color')).toBeDefined();");
                 using (var w = packet.OpenConicSensorProperty())
@@ -5185,6 +5924,32 @@ namespace CesiumLanguageWriterTests
                 {
                     m2.WriteRgbaf(Color.FromArgb(166, 225, 57, 240));
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.domeSurfaceMaterial.oddColor.getValue(date)).toEqualEpsilon(new Color(0.882352941176471, 0.223529411764706, 0.941176470588235, 0.650980392156863), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_conicSensor_domeSurfaceMaterial_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_conicSensor_domeSurfaceMaterial_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenDomeSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(52, 198, 85, 231));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.domeSurfaceMaterial.evenColor.getValue(date)).toEqualEpsilon(new Color(0.776470588235294, 0.333333333333333, 0.905882352941176, 0.203921568627451), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_conicSensor_domeSurfaceMaterial_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_conicSensor_domeSurfaceMaterial_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenDomeSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(201, 16, 114, 100));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.domeSurfaceMaterial.oddColor.getValue(date)).toEqualEpsilon(new Color(0.0627450980392157, 0.447058823529412, 0.392156862745098, 0.788235294117647), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -5302,6 +6067,31 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("material_conicSensor_environmentOcclusionMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('material_conicSensor_environmentOcclusionMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenEnvironmentOcclusionMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(224, 158, 112, 6));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.environmentOcclusionMaterial.evenColor.getValue(date)).toEqual(Color.fromBytes(158, 112, 6, 224));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(238, 176, 40, 146));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.environmentOcclusionMaterial.oddColor.getValue(date)).toEqual(Color.fromBytes(176, 40, 146, 238));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(new Rectangular(29879, 39796));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.environmentOcclusionMaterial.repeat.getValue(date)).toEqual(new Cartesian2(29879, 39796));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("constant_conicSensor_environmentOcclusionMaterial_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_conicSensor_environmentOcclusionMaterial_image_color')).toBeDefined();");
                 using (var w = packet.OpenConicSensorProperty())
@@ -5350,6 +6140,32 @@ namespace CesiumLanguageWriterTests
                 {
                     m2.WriteRgbaf(Color.FromArgb(151, 20, 139, 134));
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.environmentOcclusionMaterial.oddColor.getValue(date)).toEqualEpsilon(new Color(0.0784313725490196, 0.545098039215686, 0.525490196078431, 0.592156862745098), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_conicSensor_environmentOcclusionMaterial_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_conicSensor_environmentOcclusionMaterial_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenEnvironmentOcclusionMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(9, 162, 152, 88));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.environmentOcclusionMaterial.evenColor.getValue(date)).toEqualEpsilon(new Color(0.635294117647059, 0.596078431372549, 0.345098039215686, 0.0352941176470588), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_conicSensor_environmentOcclusionMaterial_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_conicSensor_environmentOcclusionMaterial_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenEnvironmentOcclusionMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(169, 67, 76, 148));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.environmentOcclusionMaterial.oddColor.getValue(date)).toEqualEpsilon(new Color(0.262745098039216, 0.298039215686275, 0.580392156862745, 0.662745098039216), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -5525,6 +6341,31 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("material_customPatternSensor_lateralSurfaceMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('material_customPatternSensor_lateralSurfaceMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenLateralSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(87, 145, 158, 64));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.lateralSurfaceMaterial.evenColor.getValue(date)).toEqual(Color.fromBytes(145, 158, 64, 87));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(59, 8, 152, 176));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.lateralSurfaceMaterial.oddColor.getValue(date)).toEqual(Color.fromBytes(8, 152, 176, 59));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(new Rectangular(32394, 37502));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.lateralSurfaceMaterial.repeat.getValue(date)).toEqual(new Cartesian2(32394, 37502));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("constant_customPatternSensor_lateralSurfaceMaterial_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_customPatternSensor_lateralSurfaceMaterial_image_color')).toBeDefined();");
                 using (var w = packet.OpenCustomPatternSensorProperty())
@@ -5573,6 +6414,32 @@ namespace CesiumLanguageWriterTests
                 {
                     m2.WriteRgbaf(Color.FromArgb(32, 186, 137, 177));
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.lateralSurfaceMaterial.oddColor.getValue(date)).toEqualEpsilon(new Color(0.729411764705882, 0.537254901960784, 0.694117647058824, 0.125490196078431), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_customPatternSensor_lateralSurfaceMaterial_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_customPatternSensor_lateralSurfaceMaterial_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenLateralSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(228, 24, 20, 161));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.lateralSurfaceMaterial.evenColor.getValue(date)).toEqualEpsilon(new Color(0.0941176470588235, 0.0784313725490196, 0.631372549019608, 0.894117647058824), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_customPatternSensor_lateralSurfaceMaterial_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_customPatternSensor_lateralSurfaceMaterial_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenLateralSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(220, 192, 79, 223));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.lateralSurfaceMaterial.oddColor.getValue(date)).toEqualEpsilon(new Color(0.752941176470588, 0.309803921568627, 0.874509803921569, 0.862745098039216), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -5690,6 +6557,31 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("material_customPatternSensor_ellipsoidSurfaceMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('material_customPatternSensor_ellipsoidSurfaceMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenEllipsoidSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(156, 95, 175, 187));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidSurfaceMaterial.evenColor.getValue(date)).toEqual(Color.fromBytes(95, 175, 187, 156));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(100, 163, 10, 92));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidSurfaceMaterial.oddColor.getValue(date)).toEqual(Color.fromBytes(163, 10, 92, 100));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(new Rectangular(45574, 30898));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidSurfaceMaterial.repeat.getValue(date)).toEqual(new Cartesian2(45574, 30898));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("constant_customPatternSensor_ellipsoidSurfaceMaterial_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_customPatternSensor_ellipsoidSurfaceMaterial_image_color')).toBeDefined();");
                 using (var w = packet.OpenCustomPatternSensorProperty())
@@ -5738,6 +6630,32 @@ namespace CesiumLanguageWriterTests
                 {
                     m2.WriteRgbaf(Color.FromArgb(35, 69, 56, 209));
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidSurfaceMaterial.oddColor.getValue(date)).toEqualEpsilon(new Color(0.270588235294118, 0.219607843137255, 0.819607843137255, 0.137254901960784), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_customPatternSensor_ellipsoidSurfaceMaterial_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_customPatternSensor_ellipsoidSurfaceMaterial_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenEllipsoidSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(194, 12, 215, 131));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidSurfaceMaterial.evenColor.getValue(date)).toEqualEpsilon(new Color(0.0470588235294118, 0.843137254901961, 0.513725490196078, 0.76078431372549), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_customPatternSensor_ellipsoidSurfaceMaterial_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_customPatternSensor_ellipsoidSurfaceMaterial_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenEllipsoidSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(240, 87, 110, 14));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidSurfaceMaterial.oddColor.getValue(date)).toEqualEpsilon(new Color(0.341176470588235, 0.431372549019608, 0.0549019607843137, 0.941176470588235), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -5855,6 +6773,31 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("material_customPatternSensor_ellipsoidHorizonSurfaceMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('material_customPatternSensor_ellipsoidHorizonSurfaceMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenEllipsoidHorizonSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(165, 167, 231, 126));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidHorizonSurfaceMaterial.evenColor.getValue(date)).toEqual(Color.fromBytes(167, 231, 126, 165));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(70, 240, 113, 184));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidHorizonSurfaceMaterial.oddColor.getValue(date)).toEqual(Color.fromBytes(240, 113, 184, 70));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(new Rectangular(62427, 63987));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidHorizonSurfaceMaterial.repeat.getValue(date)).toEqual(new Cartesian2(62427, 63987));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("constant_customPatternSensor_ellipsoidHorizonSurfaceMaterial_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_customPatternSensor_ellipsoidHorizonSurfaceMaterial_image_color')).toBeDefined();");
                 using (var w = packet.OpenCustomPatternSensorProperty())
@@ -5903,6 +6846,32 @@ namespace CesiumLanguageWriterTests
                 {
                     m2.WriteRgbaf(Color.FromArgb(33, 201, 163, 226));
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidHorizonSurfaceMaterial.oddColor.getValue(date)).toEqualEpsilon(new Color(0.788235294117647, 0.63921568627451, 0.886274509803922, 0.129411764705882), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_customPatternSensor_ellipsoidHorizonSurfaceMaterial_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_customPatternSensor_ellipsoidHorizonSurfaceMaterial_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenEllipsoidHorizonSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(217, 233, 99, 124));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidHorizonSurfaceMaterial.evenColor.getValue(date)).toEqualEpsilon(new Color(0.913725490196078, 0.388235294117647, 0.486274509803922, 0.850980392156863), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_customPatternSensor_ellipsoidHorizonSurfaceMaterial_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_customPatternSensor_ellipsoidHorizonSurfaceMaterial_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenEllipsoidHorizonSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(244, 85, 119, 51));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidHorizonSurfaceMaterial.oddColor.getValue(date)).toEqualEpsilon(new Color(0.333333333333333, 0.466666666666667, 0.2, 0.956862745098039), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -6020,6 +6989,31 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("material_customPatternSensor_domeSurfaceMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('material_customPatternSensor_domeSurfaceMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenDomeSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(80, 237, 200, 236));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.domeSurfaceMaterial.evenColor.getValue(date)).toEqual(Color.fromBytes(237, 200, 236, 80));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(14, 253, 232, 10));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.domeSurfaceMaterial.oddColor.getValue(date)).toEqual(Color.fromBytes(253, 232, 10, 14));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(new Rectangular(4049, 46095));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.domeSurfaceMaterial.repeat.getValue(date)).toEqual(new Cartesian2(4049, 46095));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("constant_customPatternSensor_domeSurfaceMaterial_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_customPatternSensor_domeSurfaceMaterial_image_color')).toBeDefined();");
                 using (var w = packet.OpenCustomPatternSensorProperty())
@@ -6068,6 +7062,32 @@ namespace CesiumLanguageWriterTests
                 {
                     m2.WriteRgbaf(Color.FromArgb(89, 220, 113, 166));
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.domeSurfaceMaterial.oddColor.getValue(date)).toEqualEpsilon(new Color(0.862745098039216, 0.443137254901961, 0.650980392156863, 0.349019607843137), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_customPatternSensor_domeSurfaceMaterial_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_customPatternSensor_domeSurfaceMaterial_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenDomeSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(183, 42, 10, 34));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.domeSurfaceMaterial.evenColor.getValue(date)).toEqualEpsilon(new Color(0.164705882352941, 0.0392156862745098, 0.133333333333333, 0.717647058823529), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_customPatternSensor_domeSurfaceMaterial_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_customPatternSensor_domeSurfaceMaterial_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenDomeSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(177, 20, 97, 36));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.domeSurfaceMaterial.oddColor.getValue(date)).toEqualEpsilon(new Color(0.0784313725490196, 0.380392156862745, 0.141176470588235, 0.694117647058824), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -6185,6 +7205,31 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("material_customPatternSensor_environmentOcclusionMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('material_customPatternSensor_environmentOcclusionMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenEnvironmentOcclusionMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(231, 214, 144, 88));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.environmentOcclusionMaterial.evenColor.getValue(date)).toEqual(Color.fromBytes(214, 144, 88, 231));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(79, 133, 77, 73));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.environmentOcclusionMaterial.oddColor.getValue(date)).toEqual(Color.fromBytes(133, 77, 73, 79));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(new Rectangular(20601, 18000));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.environmentOcclusionMaterial.repeat.getValue(date)).toEqual(new Cartesian2(20601, 18000));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("constant_customPatternSensor_environmentOcclusionMaterial_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_customPatternSensor_environmentOcclusionMaterial_image_color')).toBeDefined();");
                 using (var w = packet.OpenCustomPatternSensorProperty())
@@ -6233,6 +7278,32 @@ namespace CesiumLanguageWriterTests
                 {
                     m2.WriteRgbaf(Color.FromArgb(180, 46, 184, 26));
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.environmentOcclusionMaterial.oddColor.getValue(date)).toEqualEpsilon(new Color(0.180392156862745, 0.72156862745098, 0.101960784313725, 0.705882352941177), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_customPatternSensor_environmentOcclusionMaterial_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_customPatternSensor_environmentOcclusionMaterial_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenEnvironmentOcclusionMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(35, 4, 14, 178));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.environmentOcclusionMaterial.evenColor.getValue(date)).toEqualEpsilon(new Color(0.0156862745098039, 0.0549019607843137, 0.698039215686274, 0.137254901960784), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_customPatternSensor_environmentOcclusionMaterial_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_customPatternSensor_environmentOcclusionMaterial_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenEnvironmentOcclusionMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(139, 159, 66, 169));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.environmentOcclusionMaterial.oddColor.getValue(date)).toEqualEpsilon(new Color(0.623529411764706, 0.258823529411765, 0.662745098039216, 0.545098039215686), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -6375,6 +7446,31 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("material_rectangularSensor_lateralSurfaceMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('material_rectangularSensor_lateralSurfaceMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenLateralSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(96, 56, 163, 110));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.lateralSurfaceMaterial.evenColor.getValue(date)).toEqual(Color.fromBytes(56, 163, 110, 96));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(129, 193, 174, 249));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.lateralSurfaceMaterial.oddColor.getValue(date)).toEqual(Color.fromBytes(193, 174, 249, 129));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(new Rectangular(18769, 30537));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.lateralSurfaceMaterial.repeat.getValue(date)).toEqual(new Cartesian2(18769, 30537));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("constant_rectangularSensor_lateralSurfaceMaterial_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_rectangularSensor_lateralSurfaceMaterial_image_color')).toBeDefined();");
                 using (var w = packet.OpenRectangularSensorProperty())
@@ -6423,6 +7519,32 @@ namespace CesiumLanguageWriterTests
                 {
                     m2.WriteRgbaf(Color.FromArgb(119, 67, 54, 209));
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.lateralSurfaceMaterial.oddColor.getValue(date)).toEqualEpsilon(new Color(0.262745098039216, 0.211764705882353, 0.819607843137255, 0.466666666666667), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_rectangularSensor_lateralSurfaceMaterial_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_rectangularSensor_lateralSurfaceMaterial_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenLateralSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(0, 36, 15, 18));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.lateralSurfaceMaterial.evenColor.getValue(date)).toEqualEpsilon(new Color(0.141176470588235, 0.0588235294117647, 0.0705882352941176, 0), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_rectangularSensor_lateralSurfaceMaterial_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_rectangularSensor_lateralSurfaceMaterial_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenLateralSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(134, 44, 174, 156));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.lateralSurfaceMaterial.oddColor.getValue(date)).toEqualEpsilon(new Color(0.172549019607843, 0.682352941176471, 0.611764705882353, 0.525490196078431), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -6540,6 +7662,31 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("material_rectangularSensor_ellipsoidSurfaceMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('material_rectangularSensor_ellipsoidSurfaceMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenEllipsoidSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(207, 109, 156, 164));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidSurfaceMaterial.evenColor.getValue(date)).toEqual(Color.fromBytes(109, 156, 164, 207));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(209, 97, 121, 77));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidSurfaceMaterial.oddColor.getValue(date)).toEqual(Color.fromBytes(97, 121, 77, 209));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(new Rectangular(40989, 43680));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidSurfaceMaterial.repeat.getValue(date)).toEqual(new Cartesian2(40989, 43680));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("constant_rectangularSensor_ellipsoidSurfaceMaterial_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_rectangularSensor_ellipsoidSurfaceMaterial_image_color')).toBeDefined();");
                 using (var w = packet.OpenRectangularSensorProperty())
@@ -6588,6 +7735,32 @@ namespace CesiumLanguageWriterTests
                 {
                     m2.WriteRgbaf(Color.FromArgb(2, 26, 156, 210));
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidSurfaceMaterial.oddColor.getValue(date)).toEqualEpsilon(new Color(0.101960784313725, 0.611764705882353, 0.823529411764706, 0.00784313725490196), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_rectangularSensor_ellipsoidSurfaceMaterial_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_rectangularSensor_ellipsoidSurfaceMaterial_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenEllipsoidSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(30, 56, 94, 187));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidSurfaceMaterial.evenColor.getValue(date)).toEqualEpsilon(new Color(0.219607843137255, 0.368627450980392, 0.733333333333333, 0.117647058823529), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_rectangularSensor_ellipsoidSurfaceMaterial_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_rectangularSensor_ellipsoidSurfaceMaterial_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenEllipsoidSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(134, 25, 217, 164));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidSurfaceMaterial.oddColor.getValue(date)).toEqualEpsilon(new Color(0.0980392156862745, 0.850980392156863, 0.643137254901961, 0.525490196078431), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -6705,6 +7878,31 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("material_rectangularSensor_ellipsoidHorizonSurfaceMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('material_rectangularSensor_ellipsoidHorizonSurfaceMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenEllipsoidHorizonSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(123, 180, 69, 194));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidHorizonSurfaceMaterial.evenColor.getValue(date)).toEqual(Color.fromBytes(180, 69, 194, 123));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(47, 118, 6, 103));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidHorizonSurfaceMaterial.oddColor.getValue(date)).toEqual(Color.fromBytes(118, 6, 103, 47));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(new Rectangular(65401, 31999));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidHorizonSurfaceMaterial.repeat.getValue(date)).toEqual(new Cartesian2(65401, 31999));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("constant_rectangularSensor_ellipsoidHorizonSurfaceMaterial_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_rectangularSensor_ellipsoidHorizonSurfaceMaterial_image_color')).toBeDefined();");
                 using (var w = packet.OpenRectangularSensorProperty())
@@ -6753,6 +7951,32 @@ namespace CesiumLanguageWriterTests
                 {
                     m2.WriteRgbaf(Color.FromArgb(52, 201, 137, 40));
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidHorizonSurfaceMaterial.oddColor.getValue(date)).toEqualEpsilon(new Color(0.788235294117647, 0.537254901960784, 0.156862745098039, 0.203921568627451), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_rectangularSensor_ellipsoidHorizonSurfaceMaterial_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_rectangularSensor_ellipsoidHorizonSurfaceMaterial_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenEllipsoidHorizonSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(8, 69, 221, 79));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidHorizonSurfaceMaterial.evenColor.getValue(date)).toEqualEpsilon(new Color(0.270588235294118, 0.866666666666667, 0.309803921568627, 0.0313725490196078), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_rectangularSensor_ellipsoidHorizonSurfaceMaterial_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_rectangularSensor_ellipsoidHorizonSurfaceMaterial_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenEllipsoidHorizonSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(77, 82, 214, 42));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidHorizonSurfaceMaterial.oddColor.getValue(date)).toEqualEpsilon(new Color(0.32156862745098, 0.83921568627451, 0.164705882352941, 0.301960784313725), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -6870,6 +8094,31 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("material_rectangularSensor_domeSurfaceMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('material_rectangularSensor_domeSurfaceMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenDomeSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(29, 238, 64, 137));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.domeSurfaceMaterial.evenColor.getValue(date)).toEqual(Color.fromBytes(238, 64, 137, 29));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(30, 254, 141, 98));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.domeSurfaceMaterial.oddColor.getValue(date)).toEqual(Color.fromBytes(254, 141, 98, 30));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(new Rectangular(58995, 46566));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.domeSurfaceMaterial.repeat.getValue(date)).toEqual(new Cartesian2(58995, 46566));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("constant_rectangularSensor_domeSurfaceMaterial_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_rectangularSensor_domeSurfaceMaterial_image_color')).toBeDefined();");
                 using (var w = packet.OpenRectangularSensorProperty())
@@ -6918,6 +8167,32 @@ namespace CesiumLanguageWriterTests
                 {
                     m2.WriteRgbaf(Color.FromArgb(126, 240, 161, 180));
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.domeSurfaceMaterial.oddColor.getValue(date)).toEqualEpsilon(new Color(0.941176470588235, 0.631372549019608, 0.705882352941177, 0.494117647058824), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_rectangularSensor_domeSurfaceMaterial_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_rectangularSensor_domeSurfaceMaterial_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenDomeSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(21, 192, 108, 117));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.domeSurfaceMaterial.evenColor.getValue(date)).toEqualEpsilon(new Color(0.752941176470588, 0.423529411764706, 0.458823529411765, 0.0823529411764706), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_rectangularSensor_domeSurfaceMaterial_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_rectangularSensor_domeSurfaceMaterial_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenDomeSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(205, 102, 236, 11));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.domeSurfaceMaterial.oddColor.getValue(date)).toEqualEpsilon(new Color(0.4, 0.925490196078431, 0.0431372549019608, 0.803921568627451), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -7035,6 +8310,31 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("material_rectangularSensor_environmentOcclusionMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('material_rectangularSensor_environmentOcclusionMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenEnvironmentOcclusionMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(75, 215, 166, 202));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.environmentOcclusionMaterial.evenColor.getValue(date)).toEqual(Color.fromBytes(215, 166, 202, 75));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(14, 72, 105, 185));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.environmentOcclusionMaterial.oddColor.getValue(date)).toEqual(Color.fromBytes(72, 105, 185, 14));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(new Rectangular(51334, 47048));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.environmentOcclusionMaterial.repeat.getValue(date)).toEqual(new Cartesian2(51334, 47048));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("constant_rectangularSensor_environmentOcclusionMaterial_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_rectangularSensor_environmentOcclusionMaterial_image_color')).toBeDefined();");
                 using (var w = packet.OpenRectangularSensorProperty())
@@ -7083,6 +8383,32 @@ namespace CesiumLanguageWriterTests
                 {
                     m2.WriteRgbaf(Color.FromArgb(114, 55, 177, 99));
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.environmentOcclusionMaterial.oddColor.getValue(date)).toEqualEpsilon(new Color(0.215686274509804, 0.694117647058824, 0.388235294117647, 0.447058823529412), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_rectangularSensor_environmentOcclusionMaterial_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_rectangularSensor_environmentOcclusionMaterial_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenEnvironmentOcclusionMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(110, 172, 19, 23));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.environmentOcclusionMaterial.evenColor.getValue(date)).toEqualEpsilon(new Color(0.674509803921569, 0.0745098039215686, 0.0901960784313725, 0.431372549019608), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_rectangularSensor_environmentOcclusionMaterial_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_rectangularSensor_environmentOcclusionMaterial_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenEnvironmentOcclusionMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(154, 172, 124, 8));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.environmentOcclusionMaterial.oddColor.getValue(date)).toEqualEpsilon(new Color(0.674509803921569, 0.486274509803922, 0.0313725490196078, 0.603921568627451), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -7247,6 +8573,31 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("material_fan_material_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('material_fan_material_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenFanProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(9, 65, 103, 119));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.fan.material.evenColor.getValue(date)).toEqual(Color.fromBytes(65, 103, 119, 9));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(Color.FromArgb(13, 34, 102, 5));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.fan.material.oddColor.getValue(date)).toEqual(Color.fromBytes(34, 102, 5, 13));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(new Rectangular(27029, 37737));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.fan.material.repeat.getValue(date)).toEqual(new Cartesian2(27029, 37737));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("constant_fan_material_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_fan_material_image_color')).toBeDefined();");
                 using (var w = packet.OpenFanProperty())
@@ -7295,6 +8646,32 @@ namespace CesiumLanguageWriterTests
                 {
                     m2.WriteRgbaf(Color.FromArgb(189, 244, 137, 252));
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.fan.material.oddColor.getValue(date)).toEqualEpsilon(new Color(0.956862745098039, 0.537254901960784, 0.988235294117647, 0.741176470588235), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_fan_material_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_fan_material_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenFanProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(195, 145, 82, 206));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.fan.material.evenColor.getValue(date)).toEqualEpsilon(new Color(0.568627450980392, 0.32156862745098, 0.807843137254902, 0.764705882352941), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_fan_material_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_fan_material_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenFanProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(Color.FromArgb(124, 250, 167, 68));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.fan.material.oddColor.getValue(date)).toEqualEpsilon(new Color(0.980392156862745, 0.654901960784314, 0.266666666666667, 0.486274509803922), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -9332,6 +10709,31 @@ namespace CesiumLanguageWriterTests
                     }
                 }
             }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("reference_box_material_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_box_material_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenBoxProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_box_material_checkerboard", CreateList("box", "material", "evenColor")));
+                        m_assertionsWriter.WriteLine("    expect(e.box.material.evenColor.getValue(date)).toEqual(dataSource.entities.getById('material_box_material_checkerboard').box.material.evenColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_box_material_checkerboard", CreateList("box", "material", "oddColor")));
+                        m_assertionsWriter.WriteLine("    expect(e.box.material.oddColor.getValue(date)).toEqual(dataSource.entities.getById('material_box_material_checkerboard').box.material.oddColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteReference(new Reference("material_box_material_checkerboard", CreateList("box", "material", "repeat")));
+                        m_assertionsWriter.WriteLine("    expect(e.box.material.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_box_material_checkerboard').box.material.repeat.getValue(date));");
+                    }
+                }
+            }
         }
         private void WriteReferenceValuesIndividualCorridor()
         {
@@ -9432,6 +10834,31 @@ namespace CesiumLanguageWriterTests
                     {
                         m2.WriteReference(new Reference("material_corridor_material_stripe", CreateList("corridor", "material", "repeat")));
                         m_assertionsWriter.WriteLine("    expect(e.corridor.material.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_corridor_material_stripe').corridor.material.repeat.getValue(date));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("reference_corridor_material_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_corridor_material_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenCorridorProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_corridor_material_checkerboard", CreateList("corridor", "material", "evenColor")));
+                        m_assertionsWriter.WriteLine("    expect(e.corridor.material.evenColor.getValue(date)).toEqual(dataSource.entities.getById('material_corridor_material_checkerboard').corridor.material.evenColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_corridor_material_checkerboard", CreateList("corridor", "material", "oddColor")));
+                        m_assertionsWriter.WriteLine("    expect(e.corridor.material.oddColor.getValue(date)).toEqual(dataSource.entities.getById('material_corridor_material_checkerboard').corridor.material.oddColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteReference(new Reference("material_corridor_material_checkerboard", CreateList("corridor", "material", "repeat")));
+                        m_assertionsWriter.WriteLine("    expect(e.corridor.material.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_corridor_material_checkerboard').corridor.material.repeat.getValue(date));");
                     }
                 }
             }
@@ -9538,6 +10965,31 @@ namespace CesiumLanguageWriterTests
                     }
                 }
             }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("reference_cylinder_material_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_cylinder_material_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenCylinderProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_cylinder_material_checkerboard", CreateList("cylinder", "material", "evenColor")));
+                        m_assertionsWriter.WriteLine("    expect(e.cylinder.material.evenColor.getValue(date)).toEqual(dataSource.entities.getById('material_cylinder_material_checkerboard').cylinder.material.evenColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_cylinder_material_checkerboard", CreateList("cylinder", "material", "oddColor")));
+                        m_assertionsWriter.WriteLine("    expect(e.cylinder.material.oddColor.getValue(date)).toEqual(dataSource.entities.getById('material_cylinder_material_checkerboard').cylinder.material.oddColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteReference(new Reference("material_cylinder_material_checkerboard", CreateList("cylinder", "material", "repeat")));
+                        m_assertionsWriter.WriteLine("    expect(e.cylinder.material.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_cylinder_material_checkerboard').cylinder.material.repeat.getValue(date));");
+                    }
+                }
+            }
         }
         private void WriteReferenceValuesIndividualEllipse()
         {
@@ -9641,6 +11093,31 @@ namespace CesiumLanguageWriterTests
                     }
                 }
             }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("reference_ellipse_material_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_ellipse_material_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenEllipseProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_ellipse_material_checkerboard", CreateList("ellipse", "material", "evenColor")));
+                        m_assertionsWriter.WriteLine("    expect(e.ellipse.material.evenColor.getValue(date)).toEqual(dataSource.entities.getById('material_ellipse_material_checkerboard').ellipse.material.evenColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_ellipse_material_checkerboard", CreateList("ellipse", "material", "oddColor")));
+                        m_assertionsWriter.WriteLine("    expect(e.ellipse.material.oddColor.getValue(date)).toEqual(dataSource.entities.getById('material_ellipse_material_checkerboard').ellipse.material.oddColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteReference(new Reference("material_ellipse_material_checkerboard", CreateList("ellipse", "material", "repeat")));
+                        m_assertionsWriter.WriteLine("    expect(e.ellipse.material.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_ellipse_material_checkerboard').ellipse.material.repeat.getValue(date));");
+                    }
+                }
+            }
         }
         private void WriteReferenceValuesIndividualEllipsoid()
         {
@@ -9741,6 +11218,31 @@ namespace CesiumLanguageWriterTests
                     {
                         m2.WriteReference(new Reference("material_ellipsoid_material_stripe", CreateList("ellipsoid", "material", "repeat")));
                         m_assertionsWriter.WriteLine("    expect(e.ellipsoid.material.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_ellipsoid_material_stripe').ellipsoid.material.repeat.getValue(date));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("reference_ellipsoid_material_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_ellipsoid_material_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenEllipsoidProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_ellipsoid_material_checkerboard", CreateList("ellipsoid", "material", "evenColor")));
+                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.material.evenColor.getValue(date)).toEqual(dataSource.entities.getById('material_ellipsoid_material_checkerboard').ellipsoid.material.evenColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_ellipsoid_material_checkerboard", CreateList("ellipsoid", "material", "oddColor")));
+                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.material.oddColor.getValue(date)).toEqual(dataSource.entities.getById('material_ellipsoid_material_checkerboard').ellipsoid.material.oddColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteReference(new Reference("material_ellipsoid_material_checkerboard", CreateList("ellipsoid", "material", "repeat")));
+                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.material.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_ellipsoid_material_checkerboard').ellipsoid.material.repeat.getValue(date));");
                     }
                 }
             }
@@ -9948,6 +11450,31 @@ namespace CesiumLanguageWriterTests
                     }
                 }
             }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("reference_path_material_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_path_material_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenPathProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_path_material_checkerboard", CreateList("path", "material", "evenColor")));
+                        m_assertionsWriter.WriteLine("    expect(e.path.material.evenColor.getValue(date)).toEqual(dataSource.entities.getById('material_path_material_checkerboard').path.material.evenColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_path_material_checkerboard", CreateList("path", "material", "oddColor")));
+                        m_assertionsWriter.WriteLine("    expect(e.path.material.oddColor.getValue(date)).toEqual(dataSource.entities.getById('material_path_material_checkerboard').path.material.oddColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteReference(new Reference("material_path_material_checkerboard", CreateList("path", "material", "repeat")));
+                        m_assertionsWriter.WriteLine("    expect(e.path.material.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_path_material_checkerboard').path.material.repeat.getValue(date));");
+                    }
+                }
+            }
         }
         private void WriteReferenceValuesIndividualPoint()
         {
@@ -10051,6 +11578,31 @@ namespace CesiumLanguageWriterTests
                     {
                         m2.WriteReference(new Reference("material_polygon_material_stripe", CreateList("polygon", "material", "repeat")));
                         m_assertionsWriter.WriteLine("    expect(e.polygon.material.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_polygon_material_stripe').polygon.material.repeat.getValue(date));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("reference_polygon_material_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_polygon_material_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenPolygonProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_polygon_material_checkerboard", CreateList("polygon", "material", "evenColor")));
+                        m_assertionsWriter.WriteLine("    expect(e.polygon.material.evenColor.getValue(date)).toEqual(dataSource.entities.getById('material_polygon_material_checkerboard').polygon.material.evenColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_polygon_material_checkerboard", CreateList("polygon", "material", "oddColor")));
+                        m_assertionsWriter.WriteLine("    expect(e.polygon.material.oddColor.getValue(date)).toEqual(dataSource.entities.getById('material_polygon_material_checkerboard').polygon.material.oddColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteReference(new Reference("material_polygon_material_checkerboard", CreateList("polygon", "material", "repeat")));
+                        m_assertionsWriter.WriteLine("    expect(e.polygon.material.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_polygon_material_checkerboard').polygon.material.repeat.getValue(date));");
                     }
                 }
             }
@@ -10254,6 +11806,31 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("reference_polyline_material_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_polyline_material_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_polyline_material_checkerboard", CreateList("polyline", "material", "evenColor")));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.material.evenColor.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_material_checkerboard').polyline.material.evenColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_polyline_material_checkerboard", CreateList("polyline", "material", "oddColor")));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.material.oddColor.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_material_checkerboard').polyline.material.oddColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteReference(new Reference("material_polyline_material_checkerboard", CreateList("polyline", "material", "repeat")));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.material.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_material_checkerboard').polyline.material.repeat.getValue(date));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("reference_polyline_depthFailMaterial_polylineOutline");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_polyline_depthFailMaterial_polylineOutline')).toBeDefined();");
                 using (var w = packet.OpenPolylineProperty())
@@ -10447,6 +12024,31 @@ namespace CesiumLanguageWriterTests
                     }
                 }
             }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("reference_polyline_depthFailMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_polyline_depthFailMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_polyline_depthFailMaterial_checkerboard", CreateList("polyline", "depthFailMaterial", "evenColor")));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.evenColor.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_depthFailMaterial_checkerboard').polyline.depthFailMaterial.evenColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_polyline_depthFailMaterial_checkerboard", CreateList("polyline", "depthFailMaterial", "oddColor")));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.oddColor.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_depthFailMaterial_checkerboard').polyline.depthFailMaterial.oddColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteReference(new Reference("material_polyline_depthFailMaterial_checkerboard", CreateList("polyline", "depthFailMaterial", "repeat")));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_depthFailMaterial_checkerboard').polyline.depthFailMaterial.repeat.getValue(date));");
+                    }
+                }
+            }
         }
         private void WriteReferenceValuesIndividualRectangle()
         {
@@ -10550,6 +12152,31 @@ namespace CesiumLanguageWriterTests
                     }
                 }
             }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("reference_rectangle_material_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_rectangle_material_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenRectangleProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_rectangle_material_checkerboard", CreateList("rectangle", "material", "evenColor")));
+                        m_assertionsWriter.WriteLine("    expect(e.rectangle.material.evenColor.getValue(date)).toEqual(dataSource.entities.getById('material_rectangle_material_checkerboard').rectangle.material.evenColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_rectangle_material_checkerboard", CreateList("rectangle", "material", "oddColor")));
+                        m_assertionsWriter.WriteLine("    expect(e.rectangle.material.oddColor.getValue(date)).toEqual(dataSource.entities.getById('material_rectangle_material_checkerboard').rectangle.material.oddColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteReference(new Reference("material_rectangle_material_checkerboard", CreateList("rectangle", "material", "repeat")));
+                        m_assertionsWriter.WriteLine("    expect(e.rectangle.material.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_rectangle_material_checkerboard').rectangle.material.repeat.getValue(date));");
+                    }
+                }
+            }
         }
         private void WriteReferenceValuesIndividualWall()
         {
@@ -10650,6 +12277,31 @@ namespace CesiumLanguageWriterTests
                     {
                         m2.WriteReference(new Reference("material_wall_material_stripe", CreateList("wall", "material", "repeat")));
                         m_assertionsWriter.WriteLine("    expect(e.wall.material.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_wall_material_stripe').wall.material.repeat.getValue(date));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("reference_wall_material_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_wall_material_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenWallProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_wall_material_checkerboard", CreateList("wall", "material", "evenColor")));
+                        m_assertionsWriter.WriteLine("    expect(e.wall.material.evenColor.getValue(date)).toEqual(dataSource.entities.getById('material_wall_material_checkerboard').wall.material.evenColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_wall_material_checkerboard", CreateList("wall", "material", "oddColor")));
+                        m_assertionsWriter.WriteLine("    expect(e.wall.material.oddColor.getValue(date)).toEqual(dataSource.entities.getById('material_wall_material_checkerboard').wall.material.oddColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteReference(new Reference("material_wall_material_checkerboard", CreateList("wall", "material", "repeat")));
+                        m_assertionsWriter.WriteLine("    expect(e.wall.material.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_wall_material_checkerboard').wall.material.repeat.getValue(date));");
                     }
                 }
             }
@@ -10758,6 +12410,31 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("reference_conicSensor_lateralSurfaceMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_conicSensor_lateralSurfaceMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenLateralSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_conicSensor_lateralSurfaceMaterial_checkerboard", CreateList("conicSensor", "lateralSurfaceMaterial", "evenColor")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.lateralSurfaceMaterial.evenColor.getValue(date)).toEqual(dataSource.entities.getById('material_conicSensor_lateralSurfaceMaterial_checkerboard').conicSensor.lateralSurfaceMaterial.evenColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_conicSensor_lateralSurfaceMaterial_checkerboard", CreateList("conicSensor", "lateralSurfaceMaterial", "oddColor")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.lateralSurfaceMaterial.oddColor.getValue(date)).toEqual(dataSource.entities.getById('material_conicSensor_lateralSurfaceMaterial_checkerboard').conicSensor.lateralSurfaceMaterial.oddColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteReference(new Reference("material_conicSensor_lateralSurfaceMaterial_checkerboard", CreateList("conicSensor", "lateralSurfaceMaterial", "repeat")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.lateralSurfaceMaterial.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_conicSensor_lateralSurfaceMaterial_checkerboard').conicSensor.lateralSurfaceMaterial.repeat.getValue(date));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("reference_conicSensor_ellipsoidSurfaceMaterial_image");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_conicSensor_ellipsoidSurfaceMaterial_image')).toBeDefined();");
                 using (var w = packet.OpenConicSensorProperty())
@@ -10853,6 +12530,31 @@ namespace CesiumLanguageWriterTests
                     {
                         m2.WriteReference(new Reference("material_conicSensor_ellipsoidSurfaceMaterial_stripe", CreateList("conicSensor", "ellipsoidSurfaceMaterial", "repeat")));
                         m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidSurfaceMaterial.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_conicSensor_ellipsoidSurfaceMaterial_stripe').conicSensor.ellipsoidSurfaceMaterial.repeat.getValue(date));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("reference_conicSensor_ellipsoidSurfaceMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_conicSensor_ellipsoidSurfaceMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenEllipsoidSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_conicSensor_ellipsoidSurfaceMaterial_checkerboard", CreateList("conicSensor", "ellipsoidSurfaceMaterial", "evenColor")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidSurfaceMaterial.evenColor.getValue(date)).toEqual(dataSource.entities.getById('material_conicSensor_ellipsoidSurfaceMaterial_checkerboard').conicSensor.ellipsoidSurfaceMaterial.evenColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_conicSensor_ellipsoidSurfaceMaterial_checkerboard", CreateList("conicSensor", "ellipsoidSurfaceMaterial", "oddColor")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidSurfaceMaterial.oddColor.getValue(date)).toEqual(dataSource.entities.getById('material_conicSensor_ellipsoidSurfaceMaterial_checkerboard').conicSensor.ellipsoidSurfaceMaterial.oddColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteReference(new Reference("material_conicSensor_ellipsoidSurfaceMaterial_checkerboard", CreateList("conicSensor", "ellipsoidSurfaceMaterial", "repeat")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidSurfaceMaterial.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_conicSensor_ellipsoidSurfaceMaterial_checkerboard').conicSensor.ellipsoidSurfaceMaterial.repeat.getValue(date));");
                     }
                 }
             }
@@ -10958,6 +12660,31 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("reference_conicSensor_ellipsoidHorizonSurfaceMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_conicSensor_ellipsoidHorizonSurfaceMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenEllipsoidHorizonSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_conicSensor_ellipsoidHorizonSurfaceMaterial_checkerboard", CreateList("conicSensor", "ellipsoidHorizonSurfaceMaterial", "evenColor")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidHorizonSurfaceMaterial.evenColor.getValue(date)).toEqual(dataSource.entities.getById('material_conicSensor_ellipsoidHorizonSurfaceMaterial_checkerboard').conicSensor.ellipsoidHorizonSurfaceMaterial.evenColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_conicSensor_ellipsoidHorizonSurfaceMaterial_checkerboard", CreateList("conicSensor", "ellipsoidHorizonSurfaceMaterial", "oddColor")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidHorizonSurfaceMaterial.oddColor.getValue(date)).toEqual(dataSource.entities.getById('material_conicSensor_ellipsoidHorizonSurfaceMaterial_checkerboard').conicSensor.ellipsoidHorizonSurfaceMaterial.oddColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteReference(new Reference("material_conicSensor_ellipsoidHorizonSurfaceMaterial_checkerboard", CreateList("conicSensor", "ellipsoidHorizonSurfaceMaterial", "repeat")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidHorizonSurfaceMaterial.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_conicSensor_ellipsoidHorizonSurfaceMaterial_checkerboard').conicSensor.ellipsoidHorizonSurfaceMaterial.repeat.getValue(date));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("reference_conicSensor_domeSurfaceMaterial_image");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_conicSensor_domeSurfaceMaterial_image')).toBeDefined();");
                 using (var w = packet.OpenConicSensorProperty())
@@ -11058,6 +12785,31 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("reference_conicSensor_domeSurfaceMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_conicSensor_domeSurfaceMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenDomeSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_conicSensor_domeSurfaceMaterial_checkerboard", CreateList("conicSensor", "domeSurfaceMaterial", "evenColor")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.domeSurfaceMaterial.evenColor.getValue(date)).toEqual(dataSource.entities.getById('material_conicSensor_domeSurfaceMaterial_checkerboard').conicSensor.domeSurfaceMaterial.evenColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_conicSensor_domeSurfaceMaterial_checkerboard", CreateList("conicSensor", "domeSurfaceMaterial", "oddColor")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.domeSurfaceMaterial.oddColor.getValue(date)).toEqual(dataSource.entities.getById('material_conicSensor_domeSurfaceMaterial_checkerboard').conicSensor.domeSurfaceMaterial.oddColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteReference(new Reference("material_conicSensor_domeSurfaceMaterial_checkerboard", CreateList("conicSensor", "domeSurfaceMaterial", "repeat")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.domeSurfaceMaterial.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_conicSensor_domeSurfaceMaterial_checkerboard').conicSensor.domeSurfaceMaterial.repeat.getValue(date));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("reference_conicSensor_environmentOcclusionMaterial_image");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_conicSensor_environmentOcclusionMaterial_image')).toBeDefined();");
                 using (var w = packet.OpenConicSensorProperty())
@@ -11153,6 +12905,31 @@ namespace CesiumLanguageWriterTests
                     {
                         m2.WriteReference(new Reference("material_conicSensor_environmentOcclusionMaterial_stripe", CreateList("conicSensor", "environmentOcclusionMaterial", "repeat")));
                         m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.environmentOcclusionMaterial.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_conicSensor_environmentOcclusionMaterial_stripe').conicSensor.environmentOcclusionMaterial.repeat.getValue(date));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("reference_conicSensor_environmentOcclusionMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_conicSensor_environmentOcclusionMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenEnvironmentOcclusionMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_conicSensor_environmentOcclusionMaterial_checkerboard", CreateList("conicSensor", "environmentOcclusionMaterial", "evenColor")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.environmentOcclusionMaterial.evenColor.getValue(date)).toEqual(dataSource.entities.getById('material_conicSensor_environmentOcclusionMaterial_checkerboard').conicSensor.environmentOcclusionMaterial.evenColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_conicSensor_environmentOcclusionMaterial_checkerboard", CreateList("conicSensor", "environmentOcclusionMaterial", "oddColor")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.environmentOcclusionMaterial.oddColor.getValue(date)).toEqual(dataSource.entities.getById('material_conicSensor_environmentOcclusionMaterial_checkerboard').conicSensor.environmentOcclusionMaterial.oddColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteReference(new Reference("material_conicSensor_environmentOcclusionMaterial_checkerboard", CreateList("conicSensor", "environmentOcclusionMaterial", "repeat")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.environmentOcclusionMaterial.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_conicSensor_environmentOcclusionMaterial_checkerboard').conicSensor.environmentOcclusionMaterial.repeat.getValue(date));");
                     }
                 }
             }
@@ -11261,6 +13038,31 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("reference_customPatternSensor_lateralSurfaceMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_customPatternSensor_lateralSurfaceMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenLateralSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_customPatternSensor_lateralSurfaceMaterial_checkerboard", CreateList("customPatternSensor", "lateralSurfaceMaterial", "evenColor")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.lateralSurfaceMaterial.evenColor.getValue(date)).toEqual(dataSource.entities.getById('material_customPatternSensor_lateralSurfaceMaterial_checkerboard').customPatternSensor.lateralSurfaceMaterial.evenColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_customPatternSensor_lateralSurfaceMaterial_checkerboard", CreateList("customPatternSensor", "lateralSurfaceMaterial", "oddColor")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.lateralSurfaceMaterial.oddColor.getValue(date)).toEqual(dataSource.entities.getById('material_customPatternSensor_lateralSurfaceMaterial_checkerboard').customPatternSensor.lateralSurfaceMaterial.oddColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteReference(new Reference("material_customPatternSensor_lateralSurfaceMaterial_checkerboard", CreateList("customPatternSensor", "lateralSurfaceMaterial", "repeat")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.lateralSurfaceMaterial.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_customPatternSensor_lateralSurfaceMaterial_checkerboard').customPatternSensor.lateralSurfaceMaterial.repeat.getValue(date));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("reference_customPatternSensor_ellipsoidSurfaceMaterial_image");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_customPatternSensor_ellipsoidSurfaceMaterial_image')).toBeDefined();");
                 using (var w = packet.OpenCustomPatternSensorProperty())
@@ -11356,6 +13158,31 @@ namespace CesiumLanguageWriterTests
                     {
                         m2.WriteReference(new Reference("material_customPatternSensor_ellipsoidSurfaceMaterial_stripe", CreateList("customPatternSensor", "ellipsoidSurfaceMaterial", "repeat")));
                         m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidSurfaceMaterial.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_customPatternSensor_ellipsoidSurfaceMaterial_stripe').customPatternSensor.ellipsoidSurfaceMaterial.repeat.getValue(date));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("reference_customPatternSensor_ellipsoidSurfaceMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_customPatternSensor_ellipsoidSurfaceMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenEllipsoidSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_customPatternSensor_ellipsoidSurfaceMaterial_checkerboard", CreateList("customPatternSensor", "ellipsoidSurfaceMaterial", "evenColor")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidSurfaceMaterial.evenColor.getValue(date)).toEqual(dataSource.entities.getById('material_customPatternSensor_ellipsoidSurfaceMaterial_checkerboard').customPatternSensor.ellipsoidSurfaceMaterial.evenColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_customPatternSensor_ellipsoidSurfaceMaterial_checkerboard", CreateList("customPatternSensor", "ellipsoidSurfaceMaterial", "oddColor")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidSurfaceMaterial.oddColor.getValue(date)).toEqual(dataSource.entities.getById('material_customPatternSensor_ellipsoidSurfaceMaterial_checkerboard').customPatternSensor.ellipsoidSurfaceMaterial.oddColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteReference(new Reference("material_customPatternSensor_ellipsoidSurfaceMaterial_checkerboard", CreateList("customPatternSensor", "ellipsoidSurfaceMaterial", "repeat")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidSurfaceMaterial.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_customPatternSensor_ellipsoidSurfaceMaterial_checkerboard').customPatternSensor.ellipsoidSurfaceMaterial.repeat.getValue(date));");
                     }
                 }
             }
@@ -11461,6 +13288,31 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("reference_customPatternSensor_ellipsoidHorizonSurfaceMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_customPatternSensor_ellipsoidHorizonSurfaceMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenEllipsoidHorizonSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_customPatternSensor_ellipsoidHorizonSurfaceMaterial_checkerboard", CreateList("customPatternSensor", "ellipsoidHorizonSurfaceMaterial", "evenColor")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidHorizonSurfaceMaterial.evenColor.getValue(date)).toEqual(dataSource.entities.getById('material_customPatternSensor_ellipsoidHorizonSurfaceMaterial_checkerboard').customPatternSensor.ellipsoidHorizonSurfaceMaterial.evenColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_customPatternSensor_ellipsoidHorizonSurfaceMaterial_checkerboard", CreateList("customPatternSensor", "ellipsoidHorizonSurfaceMaterial", "oddColor")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidHorizonSurfaceMaterial.oddColor.getValue(date)).toEqual(dataSource.entities.getById('material_customPatternSensor_ellipsoidHorizonSurfaceMaterial_checkerboard').customPatternSensor.ellipsoidHorizonSurfaceMaterial.oddColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteReference(new Reference("material_customPatternSensor_ellipsoidHorizonSurfaceMaterial_checkerboard", CreateList("customPatternSensor", "ellipsoidHorizonSurfaceMaterial", "repeat")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidHorizonSurfaceMaterial.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_customPatternSensor_ellipsoidHorizonSurfaceMaterial_checkerboard').customPatternSensor.ellipsoidHorizonSurfaceMaterial.repeat.getValue(date));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("reference_customPatternSensor_domeSurfaceMaterial_image");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_customPatternSensor_domeSurfaceMaterial_image')).toBeDefined();");
                 using (var w = packet.OpenCustomPatternSensorProperty())
@@ -11561,6 +13413,31 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("reference_customPatternSensor_domeSurfaceMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_customPatternSensor_domeSurfaceMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenDomeSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_customPatternSensor_domeSurfaceMaterial_checkerboard", CreateList("customPatternSensor", "domeSurfaceMaterial", "evenColor")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.domeSurfaceMaterial.evenColor.getValue(date)).toEqual(dataSource.entities.getById('material_customPatternSensor_domeSurfaceMaterial_checkerboard').customPatternSensor.domeSurfaceMaterial.evenColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_customPatternSensor_domeSurfaceMaterial_checkerboard", CreateList("customPatternSensor", "domeSurfaceMaterial", "oddColor")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.domeSurfaceMaterial.oddColor.getValue(date)).toEqual(dataSource.entities.getById('material_customPatternSensor_domeSurfaceMaterial_checkerboard').customPatternSensor.domeSurfaceMaterial.oddColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteReference(new Reference("material_customPatternSensor_domeSurfaceMaterial_checkerboard", CreateList("customPatternSensor", "domeSurfaceMaterial", "repeat")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.domeSurfaceMaterial.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_customPatternSensor_domeSurfaceMaterial_checkerboard').customPatternSensor.domeSurfaceMaterial.repeat.getValue(date));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("reference_customPatternSensor_environmentOcclusionMaterial_image");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_customPatternSensor_environmentOcclusionMaterial_image')).toBeDefined();");
                 using (var w = packet.OpenCustomPatternSensorProperty())
@@ -11656,6 +13533,31 @@ namespace CesiumLanguageWriterTests
                     {
                         m2.WriteReference(new Reference("material_customPatternSensor_environmentOcclusionMaterial_stripe", CreateList("customPatternSensor", "environmentOcclusionMaterial", "repeat")));
                         m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.environmentOcclusionMaterial.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_customPatternSensor_environmentOcclusionMaterial_stripe').customPatternSensor.environmentOcclusionMaterial.repeat.getValue(date));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("reference_customPatternSensor_environmentOcclusionMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_customPatternSensor_environmentOcclusionMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenEnvironmentOcclusionMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_customPatternSensor_environmentOcclusionMaterial_checkerboard", CreateList("customPatternSensor", "environmentOcclusionMaterial", "evenColor")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.environmentOcclusionMaterial.evenColor.getValue(date)).toEqual(dataSource.entities.getById('material_customPatternSensor_environmentOcclusionMaterial_checkerboard').customPatternSensor.environmentOcclusionMaterial.evenColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_customPatternSensor_environmentOcclusionMaterial_checkerboard", CreateList("customPatternSensor", "environmentOcclusionMaterial", "oddColor")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.environmentOcclusionMaterial.oddColor.getValue(date)).toEqual(dataSource.entities.getById('material_customPatternSensor_environmentOcclusionMaterial_checkerboard').customPatternSensor.environmentOcclusionMaterial.oddColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteReference(new Reference("material_customPatternSensor_environmentOcclusionMaterial_checkerboard", CreateList("customPatternSensor", "environmentOcclusionMaterial", "repeat")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.environmentOcclusionMaterial.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_customPatternSensor_environmentOcclusionMaterial_checkerboard').customPatternSensor.environmentOcclusionMaterial.repeat.getValue(date));");
                     }
                 }
             }
@@ -11764,6 +13666,31 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("reference_rectangularSensor_lateralSurfaceMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_rectangularSensor_lateralSurfaceMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenLateralSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_rectangularSensor_lateralSurfaceMaterial_checkerboard", CreateList("rectangularSensor", "lateralSurfaceMaterial", "evenColor")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.lateralSurfaceMaterial.evenColor.getValue(date)).toEqual(dataSource.entities.getById('material_rectangularSensor_lateralSurfaceMaterial_checkerboard').rectangularSensor.lateralSurfaceMaterial.evenColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_rectangularSensor_lateralSurfaceMaterial_checkerboard", CreateList("rectangularSensor", "lateralSurfaceMaterial", "oddColor")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.lateralSurfaceMaterial.oddColor.getValue(date)).toEqual(dataSource.entities.getById('material_rectangularSensor_lateralSurfaceMaterial_checkerboard').rectangularSensor.lateralSurfaceMaterial.oddColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteReference(new Reference("material_rectangularSensor_lateralSurfaceMaterial_checkerboard", CreateList("rectangularSensor", "lateralSurfaceMaterial", "repeat")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.lateralSurfaceMaterial.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_rectangularSensor_lateralSurfaceMaterial_checkerboard').rectangularSensor.lateralSurfaceMaterial.repeat.getValue(date));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("reference_rectangularSensor_ellipsoidSurfaceMaterial_image");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_rectangularSensor_ellipsoidSurfaceMaterial_image')).toBeDefined();");
                 using (var w = packet.OpenRectangularSensorProperty())
@@ -11859,6 +13786,31 @@ namespace CesiumLanguageWriterTests
                     {
                         m2.WriteReference(new Reference("material_rectangularSensor_ellipsoidSurfaceMaterial_stripe", CreateList("rectangularSensor", "ellipsoidSurfaceMaterial", "repeat")));
                         m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidSurfaceMaterial.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_rectangularSensor_ellipsoidSurfaceMaterial_stripe').rectangularSensor.ellipsoidSurfaceMaterial.repeat.getValue(date));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("reference_rectangularSensor_ellipsoidSurfaceMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_rectangularSensor_ellipsoidSurfaceMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenEllipsoidSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_rectangularSensor_ellipsoidSurfaceMaterial_checkerboard", CreateList("rectangularSensor", "ellipsoidSurfaceMaterial", "evenColor")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidSurfaceMaterial.evenColor.getValue(date)).toEqual(dataSource.entities.getById('material_rectangularSensor_ellipsoidSurfaceMaterial_checkerboard').rectangularSensor.ellipsoidSurfaceMaterial.evenColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_rectangularSensor_ellipsoidSurfaceMaterial_checkerboard", CreateList("rectangularSensor", "ellipsoidSurfaceMaterial", "oddColor")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidSurfaceMaterial.oddColor.getValue(date)).toEqual(dataSource.entities.getById('material_rectangularSensor_ellipsoidSurfaceMaterial_checkerboard').rectangularSensor.ellipsoidSurfaceMaterial.oddColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteReference(new Reference("material_rectangularSensor_ellipsoidSurfaceMaterial_checkerboard", CreateList("rectangularSensor", "ellipsoidSurfaceMaterial", "repeat")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidSurfaceMaterial.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_rectangularSensor_ellipsoidSurfaceMaterial_checkerboard').rectangularSensor.ellipsoidSurfaceMaterial.repeat.getValue(date));");
                     }
                 }
             }
@@ -11964,6 +13916,31 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("reference_rectangularSensor_ellipsoidHorizonSurfaceMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_rectangularSensor_ellipsoidHorizonSurfaceMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenEllipsoidHorizonSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_rectangularSensor_ellipsoidHorizonSurfaceMaterial_checkerboard", CreateList("rectangularSensor", "ellipsoidHorizonSurfaceMaterial", "evenColor")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidHorizonSurfaceMaterial.evenColor.getValue(date)).toEqual(dataSource.entities.getById('material_rectangularSensor_ellipsoidHorizonSurfaceMaterial_checkerboard').rectangularSensor.ellipsoidHorizonSurfaceMaterial.evenColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_rectangularSensor_ellipsoidHorizonSurfaceMaterial_checkerboard", CreateList("rectangularSensor", "ellipsoidHorizonSurfaceMaterial", "oddColor")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidHorizonSurfaceMaterial.oddColor.getValue(date)).toEqual(dataSource.entities.getById('material_rectangularSensor_ellipsoidHorizonSurfaceMaterial_checkerboard').rectangularSensor.ellipsoidHorizonSurfaceMaterial.oddColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteReference(new Reference("material_rectangularSensor_ellipsoidHorizonSurfaceMaterial_checkerboard", CreateList("rectangularSensor", "ellipsoidHorizonSurfaceMaterial", "repeat")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidHorizonSurfaceMaterial.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_rectangularSensor_ellipsoidHorizonSurfaceMaterial_checkerboard').rectangularSensor.ellipsoidHorizonSurfaceMaterial.repeat.getValue(date));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("reference_rectangularSensor_domeSurfaceMaterial_image");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_rectangularSensor_domeSurfaceMaterial_image')).toBeDefined();");
                 using (var w = packet.OpenRectangularSensorProperty())
@@ -12059,6 +14036,31 @@ namespace CesiumLanguageWriterTests
                     {
                         m2.WriteReference(new Reference("material_rectangularSensor_domeSurfaceMaterial_stripe", CreateList("rectangularSensor", "domeSurfaceMaterial", "repeat")));
                         m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.domeSurfaceMaterial.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_rectangularSensor_domeSurfaceMaterial_stripe').rectangularSensor.domeSurfaceMaterial.repeat.getValue(date));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("reference_rectangularSensor_domeSurfaceMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_rectangularSensor_domeSurfaceMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenDomeSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_rectangularSensor_domeSurfaceMaterial_checkerboard", CreateList("rectangularSensor", "domeSurfaceMaterial", "evenColor")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.domeSurfaceMaterial.evenColor.getValue(date)).toEqual(dataSource.entities.getById('material_rectangularSensor_domeSurfaceMaterial_checkerboard').rectangularSensor.domeSurfaceMaterial.evenColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_rectangularSensor_domeSurfaceMaterial_checkerboard", CreateList("rectangularSensor", "domeSurfaceMaterial", "oddColor")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.domeSurfaceMaterial.oddColor.getValue(date)).toEqual(dataSource.entities.getById('material_rectangularSensor_domeSurfaceMaterial_checkerboard').rectangularSensor.domeSurfaceMaterial.oddColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteReference(new Reference("material_rectangularSensor_domeSurfaceMaterial_checkerboard", CreateList("rectangularSensor", "domeSurfaceMaterial", "repeat")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.domeSurfaceMaterial.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_rectangularSensor_domeSurfaceMaterial_checkerboard').rectangularSensor.domeSurfaceMaterial.repeat.getValue(date));");
                     }
                 }
             }
@@ -12162,6 +14164,31 @@ namespace CesiumLanguageWriterTests
                     }
                 }
             }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("reference_rectangularSensor_environmentOcclusionMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_rectangularSensor_environmentOcclusionMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenEnvironmentOcclusionMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_rectangularSensor_environmentOcclusionMaterial_checkerboard", CreateList("rectangularSensor", "environmentOcclusionMaterial", "evenColor")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.environmentOcclusionMaterial.evenColor.getValue(date)).toEqual(dataSource.entities.getById('material_rectangularSensor_environmentOcclusionMaterial_checkerboard').rectangularSensor.environmentOcclusionMaterial.evenColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_rectangularSensor_environmentOcclusionMaterial_checkerboard", CreateList("rectangularSensor", "environmentOcclusionMaterial", "oddColor")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.environmentOcclusionMaterial.oddColor.getValue(date)).toEqual(dataSource.entities.getById('material_rectangularSensor_environmentOcclusionMaterial_checkerboard').rectangularSensor.environmentOcclusionMaterial.oddColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteReference(new Reference("material_rectangularSensor_environmentOcclusionMaterial_checkerboard", CreateList("rectangularSensor", "environmentOcclusionMaterial", "repeat")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.environmentOcclusionMaterial.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_rectangularSensor_environmentOcclusionMaterial_checkerboard').rectangularSensor.environmentOcclusionMaterial.repeat.getValue(date));");
+                    }
+                }
+            }
         }
         private void WriteReferenceValuesIndividualFan()
         {
@@ -12262,6 +14289,31 @@ namespace CesiumLanguageWriterTests
                     {
                         m2.WriteReference(new Reference("material_fan_material_stripe", CreateList("fan", "material", "repeat")));
                         m_extensionsAssertionsWriter.WriteLine("    expect(e.fan.material.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_fan_material_stripe').fan.material.repeat.getValue(date));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("reference_fan_material_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('reference_fan_material_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenFanProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_fan_material_checkerboard", CreateList("fan", "material", "evenColor")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.fan.material.evenColor.getValue(date)).toEqual(dataSource.entities.getById('material_fan_material_checkerboard').fan.material.evenColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteReference(new Reference("material_fan_material_checkerboard", CreateList("fan", "material", "oddColor")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.fan.material.oddColor.getValue(date)).toEqual(dataSource.entities.getById('material_fan_material_checkerboard').fan.material.oddColor.getValue(date));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteReference(new Reference("material_fan_material_checkerboard", CreateList("fan", "material", "repeat")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.fan.material.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_fan_material_checkerboard').fan.material.repeat.getValue(date));");
                     }
                 }
             }
@@ -13742,6 +15794,34 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("sampled_box_material_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_box_material_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenBoxProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(218, 2, 215, 87), Color.FromArgb(227, 164, 235, 142)));
+                        m_assertionsWriter.WriteLine("    expect(e.box.material.evenColor.getValue(documentStartDate)).toEqual(Color.fromBytes(2, 215, 87, 218));");
+                        m_assertionsWriter.WriteLine("    expect(e.box.material.evenColor.getValue(documentStopDate)).toEqual(Color.fromBytes(164, 235, 142, 227));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(243, 117, 88, 89), Color.FromArgb(49, 104, 182, 78)));
+                        m_assertionsWriter.WriteLine("    expect(e.box.material.oddColor.getValue(documentStartDate)).toEqual(Color.fromBytes(117, 88, 89, 243));");
+                        m_assertionsWriter.WriteLine("    expect(e.box.material.oddColor.getValue(documentStopDate)).toEqual(Color.fromBytes(104, 182, 78, 49));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Rectangular(6238, 42520), new Rectangular(34685, 17543)));
+                        m_assertionsWriter.WriteLine("    expect(e.box.material.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(6238, 42520));");
+                        m_assertionsWriter.WriteLine("    expect(e.box.material.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(34685, 17543));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("sampled_box_material_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_box_material_image_color')).toBeDefined();");
                 using (var w = packet.OpenBoxProperty())
@@ -13794,6 +15874,34 @@ namespace CesiumLanguageWriterTests
                     m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(50, 139, 43, 167), Color.FromArgb(154, 104, 115, 223)));
                     m_assertionsWriter.WriteLine("    expect(e.box.material.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.545098039215686, 0.168627450980392, 0.654901960784314, 0.196078431372549), 1e-14);");
                     m_assertionsWriter.WriteLine("    expect(e.box.material.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.407843137254902, 0.450980392156863, 0.874509803921569, 0.603921568627451), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_box_material_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_box_material_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenBoxProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(224, 35, 239, 131), Color.FromArgb(53, 184, 17, 70)));
+                    m_assertionsWriter.WriteLine("    expect(e.box.material.evenColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.137254901960784, 0.937254901960784, 0.513725490196078, 0.87843137254902), 1e-14);");
+                    m_assertionsWriter.WriteLine("    expect(e.box.material.evenColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.72156862745098, 0.0666666666666667, 0.274509803921569, 0.207843137254902), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_box_material_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_box_material_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenBoxProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(2, 90, 70, 217), Color.FromArgb(98, 214, 199, 203)));
+                    m_assertionsWriter.WriteLine("    expect(e.box.material.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.352941176470588, 0.274509803921569, 0.850980392156863, 0.00784313725490196), 1e-14);");
+                    m_assertionsWriter.WriteLine("    expect(e.box.material.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.83921568627451, 0.780392156862745, 0.796078431372549, 0.384313725490196), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -13923,6 +16031,34 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("sampled_corridor_material_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_corridor_material_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenCorridorProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(110, 135, 211, 180), Color.FromArgb(155, 44, 134, 8)));
+                        m_assertionsWriter.WriteLine("    expect(e.corridor.material.evenColor.getValue(documentStartDate)).toEqual(Color.fromBytes(135, 211, 180, 110));");
+                        m_assertionsWriter.WriteLine("    expect(e.corridor.material.evenColor.getValue(documentStopDate)).toEqual(Color.fromBytes(44, 134, 8, 155));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(47, 212, 71, 156), Color.FromArgb(104, 34, 36, 157)));
+                        m_assertionsWriter.WriteLine("    expect(e.corridor.material.oddColor.getValue(documentStartDate)).toEqual(Color.fromBytes(212, 71, 156, 47));");
+                        m_assertionsWriter.WriteLine("    expect(e.corridor.material.oddColor.getValue(documentStopDate)).toEqual(Color.fromBytes(34, 36, 157, 104));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Rectangular(62107, 62450), new Rectangular(51782, 25290)));
+                        m_assertionsWriter.WriteLine("    expect(e.corridor.material.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(62107, 62450));");
+                        m_assertionsWriter.WriteLine("    expect(e.corridor.material.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(51782, 25290));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("sampled_corridor_material_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_corridor_material_image_color')).toBeDefined();");
                 using (var w = packet.OpenCorridorProperty())
@@ -13975,6 +16111,34 @@ namespace CesiumLanguageWriterTests
                     m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(128, 35, 102, 91), Color.FromArgb(65, 253, 110, 77)));
                     m_assertionsWriter.WriteLine("    expect(e.corridor.material.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.137254901960784, 0.4, 0.356862745098039, 0.501960784313725), 1e-14);");
                     m_assertionsWriter.WriteLine("    expect(e.corridor.material.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.992156862745098, 0.431372549019608, 0.301960784313725, 0.254901960784314), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_corridor_material_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_corridor_material_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenCorridorProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(193, 75, 15, 38), Color.FromArgb(214, 62, 143, 65)));
+                    m_assertionsWriter.WriteLine("    expect(e.corridor.material.evenColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.294117647058824, 0.0588235294117647, 0.149019607843137, 0.756862745098039), 1e-14);");
+                    m_assertionsWriter.WriteLine("    expect(e.corridor.material.evenColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.243137254901961, 0.56078431372549, 0.254901960784314, 0.83921568627451), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_corridor_material_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_corridor_material_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenCorridorProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(95, 196, 166, 135), Color.FromArgb(185, 31, 199, 190)));
+                    m_assertionsWriter.WriteLine("    expect(e.corridor.material.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.768627450980392, 0.650980392156863, 0.529411764705882, 0.372549019607843), 1e-14);");
+                    m_assertionsWriter.WriteLine("    expect(e.corridor.material.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.12156862745098, 0.780392156862745, 0.745098039215686, 0.725490196078431), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -14104,6 +16268,34 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("sampled_cylinder_material_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_cylinder_material_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenCylinderProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(158, 199, 80, 86), Color.FromArgb(187, 207, 161, 23)));
+                        m_assertionsWriter.WriteLine("    expect(e.cylinder.material.evenColor.getValue(documentStartDate)).toEqual(Color.fromBytes(199, 80, 86, 158));");
+                        m_assertionsWriter.WriteLine("    expect(e.cylinder.material.evenColor.getValue(documentStopDate)).toEqual(Color.fromBytes(207, 161, 23, 187));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(198, 175, 210, 242), Color.FromArgb(24, 116, 91, 127)));
+                        m_assertionsWriter.WriteLine("    expect(e.cylinder.material.oddColor.getValue(documentStartDate)).toEqual(Color.fromBytes(175, 210, 242, 198));");
+                        m_assertionsWriter.WriteLine("    expect(e.cylinder.material.oddColor.getValue(documentStopDate)).toEqual(Color.fromBytes(116, 91, 127, 24));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Rectangular(27893, 32108), new Rectangular(57420, 52960)));
+                        m_assertionsWriter.WriteLine("    expect(e.cylinder.material.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(27893, 32108));");
+                        m_assertionsWriter.WriteLine("    expect(e.cylinder.material.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(57420, 52960));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("sampled_cylinder_material_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_cylinder_material_image_color')).toBeDefined();");
                 using (var w = packet.OpenCylinderProperty())
@@ -14156,6 +16348,34 @@ namespace CesiumLanguageWriterTests
                     m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(28, 53, 119, 109), Color.FromArgb(108, 80, 127, 51)));
                     m_assertionsWriter.WriteLine("    expect(e.cylinder.material.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.207843137254902, 0.466666666666667, 0.427450980392157, 0.109803921568627), 1e-14);");
                     m_assertionsWriter.WriteLine("    expect(e.cylinder.material.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.313725490196078, 0.498039215686275, 0.2, 0.423529411764706), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_cylinder_material_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_cylinder_material_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenCylinderProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(131, 133, 184, 75), Color.FromArgb(10, 246, 105, 14)));
+                    m_assertionsWriter.WriteLine("    expect(e.cylinder.material.evenColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.52156862745098, 0.72156862745098, 0.294117647058824, 0.513725490196078), 1e-14);");
+                    m_assertionsWriter.WriteLine("    expect(e.cylinder.material.evenColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.964705882352941, 0.411764705882353, 0.0549019607843137, 0.0392156862745098), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_cylinder_material_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_cylinder_material_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenCylinderProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(103, 200, 79, 17), Color.FromArgb(236, 164, 188, 86)));
+                    m_assertionsWriter.WriteLine("    expect(e.cylinder.material.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.784313725490196, 0.309803921568627, 0.0666666666666667, 0.403921568627451), 1e-14);");
+                    m_assertionsWriter.WriteLine("    expect(e.cylinder.material.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.643137254901961, 0.737254901960784, 0.337254901960784, 0.925490196078431), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -14285,6 +16505,34 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("sampled_ellipse_material_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_ellipse_material_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenEllipseProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(200, 65, 135, 226), Color.FromArgb(112, 70, 33, 98)));
+                        m_assertionsWriter.WriteLine("    expect(e.ellipse.material.evenColor.getValue(documentStartDate)).toEqual(Color.fromBytes(65, 135, 226, 200));");
+                        m_assertionsWriter.WriteLine("    expect(e.ellipse.material.evenColor.getValue(documentStopDate)).toEqual(Color.fromBytes(70, 33, 98, 112));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(224, 246, 224, 230), Color.FromArgb(204, 110, 127, 138)));
+                        m_assertionsWriter.WriteLine("    expect(e.ellipse.material.oddColor.getValue(documentStartDate)).toEqual(Color.fromBytes(246, 224, 230, 224));");
+                        m_assertionsWriter.WriteLine("    expect(e.ellipse.material.oddColor.getValue(documentStopDate)).toEqual(Color.fromBytes(110, 127, 138, 204));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Rectangular(24670, 352), new Rectangular(16830, 33857)));
+                        m_assertionsWriter.WriteLine("    expect(e.ellipse.material.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(24670, 352));");
+                        m_assertionsWriter.WriteLine("    expect(e.ellipse.material.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(16830, 33857));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("sampled_ellipse_material_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_ellipse_material_image_color')).toBeDefined();");
                 using (var w = packet.OpenEllipseProperty())
@@ -14337,6 +16585,34 @@ namespace CesiumLanguageWriterTests
                     m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(33, 67, 44, 72), Color.FromArgb(212, 247, 162, 134)));
                     m_assertionsWriter.WriteLine("    expect(e.ellipse.material.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.262745098039216, 0.172549019607843, 0.282352941176471, 0.129411764705882), 1e-14);");
                     m_assertionsWriter.WriteLine("    expect(e.ellipse.material.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.968627450980392, 0.635294117647059, 0.525490196078431, 0.831372549019608), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_ellipse_material_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_ellipse_material_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenEllipseProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(183, 53, 40, 243), Color.FromArgb(60, 162, 213, 194)));
+                    m_assertionsWriter.WriteLine("    expect(e.ellipse.material.evenColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.207843137254902, 0.156862745098039, 0.952941176470588, 0.717647058823529), 1e-14);");
+                    m_assertionsWriter.WriteLine("    expect(e.ellipse.material.evenColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.635294117647059, 0.835294117647059, 0.76078431372549, 0.235294117647059), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_ellipse_material_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_ellipse_material_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenEllipseProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(159, 227, 36, 59), Color.FromArgb(7, 49, 75, 189)));
+                    m_assertionsWriter.WriteLine("    expect(e.ellipse.material.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.890196078431373, 0.141176470588235, 0.231372549019608, 0.623529411764706), 1e-14);");
+                    m_assertionsWriter.WriteLine("    expect(e.ellipse.material.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.192156862745098, 0.294117647058824, 0.741176470588235, 0.0274509803921569), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -14466,6 +16742,34 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("sampled_ellipsoid_material_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_ellipsoid_material_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenEllipsoidProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(56, 147, 239, 19), Color.FromArgb(178, 5, 32, 143)));
+                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.material.evenColor.getValue(documentStartDate)).toEqual(Color.fromBytes(147, 239, 19, 56));");
+                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.material.evenColor.getValue(documentStopDate)).toEqual(Color.fromBytes(5, 32, 143, 178));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(186, 131, 51, 246), Color.FromArgb(89, 214, 117, 149)));
+                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.material.oddColor.getValue(documentStartDate)).toEqual(Color.fromBytes(131, 51, 246, 186));");
+                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.material.oddColor.getValue(documentStopDate)).toEqual(Color.fromBytes(214, 117, 149, 89));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Rectangular(28116, 51821), new Rectangular(60296, 50923)));
+                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.material.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(28116, 51821));");
+                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.material.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(60296, 50923));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("sampled_ellipsoid_material_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_ellipsoid_material_image_color')).toBeDefined();");
                 using (var w = packet.OpenEllipsoidProperty())
@@ -14518,6 +16822,34 @@ namespace CesiumLanguageWriterTests
                     m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(64, 165, 162, 66), Color.FromArgb(250, 234, 67, 170)));
                     m_assertionsWriter.WriteLine("    expect(e.ellipsoid.material.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.647058823529412, 0.635294117647059, 0.258823529411765, 0.250980392156863), 1e-14);");
                     m_assertionsWriter.WriteLine("    expect(e.ellipsoid.material.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.917647058823529, 0.262745098039216, 0.666666666666667, 0.980392156862745), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_ellipsoid_material_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_ellipsoid_material_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenEllipsoidProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(128, 209, 72, 237), Color.FromArgb(244, 217, 75, 127)));
+                    m_assertionsWriter.WriteLine("    expect(e.ellipsoid.material.evenColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.819607843137255, 0.282352941176471, 0.929411764705882, 0.501960784313725), 1e-14);");
+                    m_assertionsWriter.WriteLine("    expect(e.ellipsoid.material.evenColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.850980392156863, 0.294117647058824, 0.498039215686275, 0.956862745098039), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_ellipsoid_material_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_ellipsoid_material_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenEllipsoidProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(53, 58, 220, 227), Color.FromArgb(99, 203, 12, 215)));
+                    m_assertionsWriter.WriteLine("    expect(e.ellipsoid.material.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.227450980392157, 0.862745098039216, 0.890196078431373, 0.207843137254902), 1e-14);");
+                    m_assertionsWriter.WriteLine("    expect(e.ellipsoid.material.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.796078431372549, 0.0470588235294118, 0.843137254901961, 0.388235294117647), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -14819,6 +17151,34 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("sampled_path_material_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_path_material_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenPathProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(174, 29, 130, 90), Color.FromArgb(181, 42, 131, 191)));
+                        m_assertionsWriter.WriteLine("    expect(e.path.material.evenColor.getValue(documentStartDate)).toEqual(Color.fromBytes(29, 130, 90, 174));");
+                        m_assertionsWriter.WriteLine("    expect(e.path.material.evenColor.getValue(documentStopDate)).toEqual(Color.fromBytes(42, 131, 191, 181));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(56, 32, 82, 30), Color.FromArgb(118, 161, 13, 144)));
+                        m_assertionsWriter.WriteLine("    expect(e.path.material.oddColor.getValue(documentStartDate)).toEqual(Color.fromBytes(32, 82, 30, 56));");
+                        m_assertionsWriter.WriteLine("    expect(e.path.material.oddColor.getValue(documentStopDate)).toEqual(Color.fromBytes(161, 13, 144, 118));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Rectangular(14368, 54840), new Rectangular(58386, 2276)));
+                        m_assertionsWriter.WriteLine("    expect(e.path.material.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(14368, 54840));");
+                        m_assertionsWriter.WriteLine("    expect(e.path.material.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(58386, 2276));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("sampled_path_material_polylineOutline_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_path_material_polylineOutline_color')).toBeDefined();");
                 using (var w = packet.OpenPathProperty())
@@ -14955,6 +17315,34 @@ namespace CesiumLanguageWriterTests
                     m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(155, 37, 150, 234), Color.FromArgb(134, 30, 18, 230)));
                     m_assertionsWriter.WriteLine("    expect(e.path.material.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.145098039215686, 0.588235294117647, 0.917647058823529, 0.607843137254902), 1e-14);");
                     m_assertionsWriter.WriteLine("    expect(e.path.material.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.117647058823529, 0.0705882352941176, 0.901960784313726, 0.525490196078431), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_path_material_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_path_material_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenPathProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(50, 161, 189, 72), Color.FromArgb(203, 64, 28, 48)));
+                    m_assertionsWriter.WriteLine("    expect(e.path.material.evenColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.631372549019608, 0.741176470588235, 0.282352941176471, 0.196078431372549), 1e-14);");
+                    m_assertionsWriter.WriteLine("    expect(e.path.material.evenColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.250980392156863, 0.109803921568627, 0.188235294117647, 0.796078431372549), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_path_material_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_path_material_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenPathProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(168, 99, 33, 85), Color.FromArgb(182, 40, 161, 74)));
+                    m_assertionsWriter.WriteLine("    expect(e.path.material.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.388235294117647, 0.129411764705882, 0.333333333333333, 0.658823529411765), 1e-14);");
+                    m_assertionsWriter.WriteLine("    expect(e.path.material.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.156862745098039, 0.631372549019608, 0.290196078431373, 0.713725490196078), 1e-14);");
                 }
             }
         }
@@ -15099,6 +17487,34 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("sampled_polygon_material_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polygon_material_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenPolygonProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(219, 167, 56, 202), Color.FromArgb(125, 231, 169, 74)));
+                        m_assertionsWriter.WriteLine("    expect(e.polygon.material.evenColor.getValue(documentStartDate)).toEqual(Color.fromBytes(167, 56, 202, 219));");
+                        m_assertionsWriter.WriteLine("    expect(e.polygon.material.evenColor.getValue(documentStopDate)).toEqual(Color.fromBytes(231, 169, 74, 125));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(35, 88, 174, 167), Color.FromArgb(23, 12, 69, 69)));
+                        m_assertionsWriter.WriteLine("    expect(e.polygon.material.oddColor.getValue(documentStartDate)).toEqual(Color.fromBytes(88, 174, 167, 35));");
+                        m_assertionsWriter.WriteLine("    expect(e.polygon.material.oddColor.getValue(documentStopDate)).toEqual(Color.fromBytes(12, 69, 69, 23));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Rectangular(32132, 20093), new Rectangular(31300, 27514)));
+                        m_assertionsWriter.WriteLine("    expect(e.polygon.material.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(32132, 20093));");
+                        m_assertionsWriter.WriteLine("    expect(e.polygon.material.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(31300, 27514));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("sampled_polygon_material_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polygon_material_image_color')).toBeDefined();");
                 using (var w = packet.OpenPolygonProperty())
@@ -15151,6 +17567,34 @@ namespace CesiumLanguageWriterTests
                     m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(185, 83, 89, 148), Color.FromArgb(219, 145, 176, 1)));
                     m_assertionsWriter.WriteLine("    expect(e.polygon.material.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.325490196078431, 0.349019607843137, 0.580392156862745, 0.725490196078431), 1e-14);");
                     m_assertionsWriter.WriteLine("    expect(e.polygon.material.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.568627450980392, 0.690196078431373, 0.00392156862745098, 0.858823529411765), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_polygon_material_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polygon_material_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenPolygonProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(69, 212, 116, 225), Color.FromArgb(41, 126, 98, 88)));
+                    m_assertionsWriter.WriteLine("    expect(e.polygon.material.evenColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.831372549019608, 0.454901960784314, 0.882352941176471, 0.270588235294118), 1e-14);");
+                    m_assertionsWriter.WriteLine("    expect(e.polygon.material.evenColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.494117647058824, 0.384313725490196, 0.345098039215686, 0.16078431372549), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_polygon_material_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polygon_material_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenPolygonProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(200, 3, 231, 151), Color.FromArgb(164, 109, 179, 23)));
+                    m_assertionsWriter.WriteLine("    expect(e.polygon.material.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.0117647058823529, 0.905882352941176, 0.592156862745098, 0.784313725490196), 1e-14);");
+                    m_assertionsWriter.WriteLine("    expect(e.polygon.material.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.427450980392157, 0.701960784313725, 0.0901960784313725, 0.643137254901961), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -15386,6 +17830,34 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("sampled_polyline_material_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polyline_material_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(31, 94, 152, 152), Color.FromArgb(102, 76, 129, 223)));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.material.evenColor.getValue(documentStartDate)).toEqual(Color.fromBytes(94, 152, 152, 31));");
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.material.evenColor.getValue(documentStopDate)).toEqual(Color.fromBytes(76, 129, 223, 102));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(172, 71, 237, 5), Color.FromArgb(160, 209, 132, 204)));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.material.oddColor.getValue(documentStartDate)).toEqual(Color.fromBytes(71, 237, 5, 172));");
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.material.oddColor.getValue(documentStopDate)).toEqual(Color.fromBytes(209, 132, 204, 160));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Rectangular(19943, 17997), new Rectangular(55528, 16856)));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.material.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(19943, 17997));");
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.material.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(55528, 16856));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("sampled_polyline_material_polylineOutline_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polyline_material_polylineOutline_color')).toBeDefined();");
                 using (var w = packet.OpenPolylineProperty())
@@ -15522,6 +17994,34 @@ namespace CesiumLanguageWriterTests
                     m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(223, 109, 104, 120), Color.FromArgb(0, 130, 109, 249)));
                     m_assertionsWriter.WriteLine("    expect(e.polyline.material.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.427450980392157, 0.407843137254902, 0.470588235294118, 0.874509803921569), 1e-14);");
                     m_assertionsWriter.WriteLine("    expect(e.polyline.material.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.509803921568627, 0.427450980392157, 0.976470588235294, 0), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_polyline_material_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polyline_material_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(147, 80, 106, 21), Color.FromArgb(238, 5, 79, 61)));
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.material.evenColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.313725490196078, 0.415686274509804, 0.0823529411764706, 0.576470588235294), 1e-14);");
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.material.evenColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.0196078431372549, 0.309803921568627, 0.23921568627451, 0.933333333333333), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_polyline_material_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polyline_material_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(46, 200, 60, 134), Color.FromArgb(201, 91, 32, 62)));
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.material.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.784313725490196, 0.235294117647059, 0.525490196078431, 0.180392156862745), 1e-14);");
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.material.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.356862745098039, 0.125490196078431, 0.243137254901961, 0.788235294117647), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -15742,6 +18242,34 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("sampled_polyline_depthFailMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polyline_depthFailMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(160, 0, 159, 59), Color.FromArgb(165, 202, 33, 125)));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.evenColor.getValue(documentStartDate)).toEqual(Color.fromBytes(0, 159, 59, 160));");
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.evenColor.getValue(documentStopDate)).toEqual(Color.fromBytes(202, 33, 125, 165));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(24, 19, 37, 14), Color.FromArgb(84, 66, 150, 238)));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.oddColor.getValue(documentStartDate)).toEqual(Color.fromBytes(19, 37, 14, 24));");
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.oddColor.getValue(documentStopDate)).toEqual(Color.fromBytes(66, 150, 238, 84));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Rectangular(15034, 58938), new Rectangular(62661, 23796)));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(15034, 58938));");
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(62661, 23796));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("sampled_polyline_depthFailMaterial_polylineOutline_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polyline_depthFailMaterial_polylineOutline_color')).toBeDefined();");
                 using (var w = packet.OpenPolylineProperty())
@@ -15880,6 +18408,34 @@ namespace CesiumLanguageWriterTests
                     m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.219607843137255, 0.847058823529412, 0.752941176470588, 0.172549019607843), 1e-14);");
                 }
             }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_polyline_depthFailMaterial_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polyline_depthFailMaterial_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(209, 245, 24, 185), Color.FromArgb(14, 15, 114, 146)));
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.evenColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.96078431372549, 0.0941176470588235, 0.725490196078431, 0.819607843137255), 1e-14);");
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.evenColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.0588235294117647, 0.447058823529412, 0.572549019607843, 0.0549019607843137), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_polyline_depthFailMaterial_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polyline_depthFailMaterial_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenPolylineProperty())
+                using (var w2 = w.OpenDepthFailMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(98, 85, 11, 226), Color.FromArgb(137, 60, 187, 192)));
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.333333333333333, 0.0431372549019608, 0.886274509803922, 0.384313725490196), 1e-14);");
+                    m_assertionsWriter.WriteLine("    expect(e.polyline.depthFailMaterial.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.235294117647059, 0.733333333333333, 0.752941176470588, 0.537254901960784), 1e-14);");
+                }
+            }
         }
         private void WriteSampledValuesIndividualRectangle()
         {
@@ -16007,6 +18563,34 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("sampled_rectangle_material_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_rectangle_material_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenRectangleProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(24, 142, 184, 89), Color.FromArgb(224, 200, 249, 166)));
+                        m_assertionsWriter.WriteLine("    expect(e.rectangle.material.evenColor.getValue(documentStartDate)).toEqual(Color.fromBytes(142, 184, 89, 24));");
+                        m_assertionsWriter.WriteLine("    expect(e.rectangle.material.evenColor.getValue(documentStopDate)).toEqual(Color.fromBytes(200, 249, 166, 224));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(244, 237, 53, 233), Color.FromArgb(150, 101, 61, 234)));
+                        m_assertionsWriter.WriteLine("    expect(e.rectangle.material.oddColor.getValue(documentStartDate)).toEqual(Color.fromBytes(237, 53, 233, 244));");
+                        m_assertionsWriter.WriteLine("    expect(e.rectangle.material.oddColor.getValue(documentStopDate)).toEqual(Color.fromBytes(101, 61, 234, 150));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Rectangular(44089, 8876), new Rectangular(60682, 18669)));
+                        m_assertionsWriter.WriteLine("    expect(e.rectangle.material.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(44089, 8876));");
+                        m_assertionsWriter.WriteLine("    expect(e.rectangle.material.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(60682, 18669));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("sampled_rectangle_material_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_rectangle_material_image_color')).toBeDefined();");
                 using (var w = packet.OpenRectangleProperty())
@@ -16059,6 +18643,34 @@ namespace CesiumLanguageWriterTests
                     m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(236, 251, 212, 211), Color.FromArgb(125, 37, 4, 97)));
                     m_assertionsWriter.WriteLine("    expect(e.rectangle.material.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.984313725490196, 0.831372549019608, 0.827450980392157, 0.925490196078431), 1e-14);");
                     m_assertionsWriter.WriteLine("    expect(e.rectangle.material.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.145098039215686, 0.0156862745098039, 0.380392156862745, 0.490196078431373), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_rectangle_material_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_rectangle_material_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenRectangleProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(44, 73, 212, 47), Color.FromArgb(60, 152, 154, 177)));
+                    m_assertionsWriter.WriteLine("    expect(e.rectangle.material.evenColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.286274509803922, 0.831372549019608, 0.184313725490196, 0.172549019607843), 1e-14);");
+                    m_assertionsWriter.WriteLine("    expect(e.rectangle.material.evenColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.596078431372549, 0.603921568627451, 0.694117647058824, 0.235294117647059), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_rectangle_material_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_rectangle_material_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenRectangleProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(17, 237, 235, 69), Color.FromArgb(130, 105, 32, 129)));
+                    m_assertionsWriter.WriteLine("    expect(e.rectangle.material.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.929411764705882, 0.92156862745098, 0.270588235294118, 0.0666666666666667), 1e-14);");
+                    m_assertionsWriter.WriteLine("    expect(e.rectangle.material.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.411764705882353, 0.125490196078431, 0.505882352941176, 0.509803921568627), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -16188,6 +18800,34 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("sampled_wall_material_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_wall_material_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenWallProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(42, 38, 200, 78), Color.FromArgb(135, 115, 149, 62)));
+                        m_assertionsWriter.WriteLine("    expect(e.wall.material.evenColor.getValue(documentStartDate)).toEqual(Color.fromBytes(38, 200, 78, 42));");
+                        m_assertionsWriter.WriteLine("    expect(e.wall.material.evenColor.getValue(documentStopDate)).toEqual(Color.fromBytes(115, 149, 62, 135));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(56, 79, 103, 165), Color.FromArgb(217, 201, 220, 190)));
+                        m_assertionsWriter.WriteLine("    expect(e.wall.material.oddColor.getValue(documentStartDate)).toEqual(Color.fromBytes(79, 103, 165, 56));");
+                        m_assertionsWriter.WriteLine("    expect(e.wall.material.oddColor.getValue(documentStopDate)).toEqual(Color.fromBytes(201, 220, 190, 217));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Rectangular(30510, 28535), new Rectangular(22105, 29014)));
+                        m_assertionsWriter.WriteLine("    expect(e.wall.material.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(30510, 28535));");
+                        m_assertionsWriter.WriteLine("    expect(e.wall.material.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(22105, 29014));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("sampled_wall_material_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_wall_material_image_color')).toBeDefined();");
                 using (var w = packet.OpenWallProperty())
@@ -16240,6 +18880,34 @@ namespace CesiumLanguageWriterTests
                     m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(169, 88, 5, 14), Color.FromArgb(81, 177, 227, 97)));
                     m_assertionsWriter.WriteLine("    expect(e.wall.material.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.345098039215686, 0.0196078431372549, 0.0549019607843137, 0.662745098039216), 1e-14);");
                     m_assertionsWriter.WriteLine("    expect(e.wall.material.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.694117647058824, 0.890196078431373, 0.380392156862745, 0.317647058823529), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_wall_material_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_wall_material_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenWallProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(61, 171, 118, 113), Color.FromArgb(238, 80, 23, 159)));
+                    m_assertionsWriter.WriteLine("    expect(e.wall.material.evenColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.670588235294118, 0.462745098039216, 0.443137254901961, 0.23921568627451), 1e-14);");
+                    m_assertionsWriter.WriteLine("    expect(e.wall.material.evenColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.313725490196078, 0.0901960784313725, 0.623529411764706, 0.933333333333333), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_wall_material_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_wall_material_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenWallProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(146, 47, 185, 228), Color.FromArgb(198, 190, 111, 156)));
+                    m_assertionsWriter.WriteLine("    expect(e.wall.material.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.184313725490196, 0.725490196078431, 0.894117647058824, 0.572549019607843), 1e-14);");
+                    m_assertionsWriter.WriteLine("    expect(e.wall.material.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.745098039215686, 0.435294117647059, 0.611764705882353, 0.776470588235294), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -16381,6 +19049,34 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("sampled_conicSensor_lateralSurfaceMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_conicSensor_lateralSurfaceMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenLateralSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(131, 160, 182, 11), Color.FromArgb(192, 30, 29, 80)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.lateralSurfaceMaterial.evenColor.getValue(documentStartDate)).toEqual(Color.fromBytes(160, 182, 11, 131));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.lateralSurfaceMaterial.evenColor.getValue(documentStopDate)).toEqual(Color.fromBytes(30, 29, 80, 192));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(49, 7, 148, 122), Color.FromArgb(36, 136, 179, 0)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.lateralSurfaceMaterial.oddColor.getValue(documentStartDate)).toEqual(Color.fromBytes(7, 148, 122, 49));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.lateralSurfaceMaterial.oddColor.getValue(documentStopDate)).toEqual(Color.fromBytes(136, 179, 0, 36));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Rectangular(23744, 47196), new Rectangular(16577, 25920)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.lateralSurfaceMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(23744, 47196));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.lateralSurfaceMaterial.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(16577, 25920));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("sampled_conicSensor_lateralSurfaceMaterial_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_conicSensor_lateralSurfaceMaterial_image_color')).toBeDefined();");
                 using (var w = packet.OpenConicSensorProperty())
@@ -16433,6 +19129,34 @@ namespace CesiumLanguageWriterTests
                     m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(253, 193, 24, 221), Color.FromArgb(97, 15, 36, 165)));
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.lateralSurfaceMaterial.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.756862745098039, 0.0941176470588235, 0.866666666666667, 0.992156862745098), 1e-14);");
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.lateralSurfaceMaterial.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.0588235294117647, 0.141176470588235, 0.647058823529412, 0.380392156862745), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_conicSensor_lateralSurfaceMaterial_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_conicSensor_lateralSurfaceMaterial_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenLateralSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(241, 81, 79, 161), Color.FromArgb(164, 45, 66, 77)));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.lateralSurfaceMaterial.evenColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.317647058823529, 0.309803921568627, 0.631372549019608, 0.945098039215686), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.lateralSurfaceMaterial.evenColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.176470588235294, 0.258823529411765, 0.301960784313725, 0.643137254901961), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_conicSensor_lateralSurfaceMaterial_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_conicSensor_lateralSurfaceMaterial_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenLateralSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(85, 51, 227, 60), Color.FromArgb(207, 158, 92, 83)));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.lateralSurfaceMaterial.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.2, 0.890196078431373, 0.235294117647059, 0.333333333333333), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.lateralSurfaceMaterial.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.619607843137255, 0.36078431372549, 0.325490196078431, 0.811764705882353), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -16547,6 +19271,34 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("sampled_conicSensor_ellipsoidSurfaceMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_conicSensor_ellipsoidSurfaceMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenEllipsoidSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(201, 60, 54, 248), Color.FromArgb(149, 127, 230, 253)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidSurfaceMaterial.evenColor.getValue(documentStartDate)).toEqual(Color.fromBytes(60, 54, 248, 201));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidSurfaceMaterial.evenColor.getValue(documentStopDate)).toEqual(Color.fromBytes(127, 230, 253, 149));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(51, 28, 77, 71), Color.FromArgb(32, 100, 176, 204)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidSurfaceMaterial.oddColor.getValue(documentStartDate)).toEqual(Color.fromBytes(28, 77, 71, 51));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidSurfaceMaterial.oddColor.getValue(documentStopDate)).toEqual(Color.fromBytes(100, 176, 204, 32));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Rectangular(43465, 4521), new Rectangular(27484, 58219)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidSurfaceMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(43465, 4521));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidSurfaceMaterial.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(27484, 58219));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("sampled_conicSensor_ellipsoidSurfaceMaterial_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_conicSensor_ellipsoidSurfaceMaterial_image_color')).toBeDefined();");
                 using (var w = packet.OpenConicSensorProperty())
@@ -16599,6 +19351,34 @@ namespace CesiumLanguageWriterTests
                     m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(195, 104, 117, 144), Color.FromArgb(188, 46, 126, 122)));
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidSurfaceMaterial.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.407843137254902, 0.458823529411765, 0.564705882352941, 0.764705882352941), 1e-14);");
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidSurfaceMaterial.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.180392156862745, 0.494117647058824, 0.47843137254902, 0.737254901960784), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_conicSensor_ellipsoidSurfaceMaterial_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_conicSensor_ellipsoidSurfaceMaterial_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenEllipsoidSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(79, 79, 114, 136), Color.FromArgb(6, 0, 98, 143)));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidSurfaceMaterial.evenColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.309803921568627, 0.447058823529412, 0.533333333333333, 0.309803921568627), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidSurfaceMaterial.evenColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0, 0.384313725490196, 0.56078431372549, 0.0235294117647059), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_conicSensor_ellipsoidSurfaceMaterial_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_conicSensor_ellipsoidSurfaceMaterial_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenEllipsoidSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(138, 31, 50, 200), Color.FromArgb(195, 37, 10, 227)));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidSurfaceMaterial.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.12156862745098, 0.196078431372549, 0.784313725490196, 0.541176470588235), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidSurfaceMaterial.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.145098039215686, 0.0392156862745098, 0.890196078431373, 0.764705882352941), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -16713,6 +19493,34 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("sampled_conicSensor_ellipsoidHorizonSurfaceMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_conicSensor_ellipsoidHorizonSurfaceMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenEllipsoidHorizonSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(37, 19, 184, 118), Color.FromArgb(36, 20, 185, 173)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidHorizonSurfaceMaterial.evenColor.getValue(documentStartDate)).toEqual(Color.fromBytes(19, 184, 118, 37));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidHorizonSurfaceMaterial.evenColor.getValue(documentStopDate)).toEqual(Color.fromBytes(20, 185, 173, 36));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(53, 161, 60, 224), Color.FromArgb(143, 85, 151, 170)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidHorizonSurfaceMaterial.oddColor.getValue(documentStartDate)).toEqual(Color.fromBytes(161, 60, 224, 53));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidHorizonSurfaceMaterial.oddColor.getValue(documentStopDate)).toEqual(Color.fromBytes(85, 151, 170, 143));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Rectangular(59856, 38121), new Rectangular(64609, 1020)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidHorizonSurfaceMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(59856, 38121));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidHorizonSurfaceMaterial.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(64609, 1020));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("sampled_conicSensor_ellipsoidHorizonSurfaceMaterial_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_conicSensor_ellipsoidHorizonSurfaceMaterial_image_color')).toBeDefined();");
                 using (var w = packet.OpenConicSensorProperty())
@@ -16765,6 +19573,34 @@ namespace CesiumLanguageWriterTests
                     m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(7, 96, 13, 184), Color.FromArgb(236, 55, 243, 44)));
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidHorizonSurfaceMaterial.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.376470588235294, 0.0509803921568627, 0.72156862745098, 0.0274509803921569), 1e-14);");
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidHorizonSurfaceMaterial.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.215686274509804, 0.952941176470588, 0.172549019607843, 0.925490196078431), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_conicSensor_ellipsoidHorizonSurfaceMaterial_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_conicSensor_ellipsoidHorizonSurfaceMaterial_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenEllipsoidHorizonSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(50, 17, 200, 31), Color.FromArgb(196, 76, 237, 74)));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidHorizonSurfaceMaterial.evenColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.0666666666666667, 0.784313725490196, 0.12156862745098, 0.196078431372549), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidHorizonSurfaceMaterial.evenColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.298039215686275, 0.929411764705882, 0.290196078431373, 0.768627450980392), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_conicSensor_ellipsoidHorizonSurfaceMaterial_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_conicSensor_ellipsoidHorizonSurfaceMaterial_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenEllipsoidHorizonSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(167, 207, 144, 148), Color.FromArgb(54, 221, 129, 31)));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidHorizonSurfaceMaterial.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.811764705882353, 0.564705882352941, 0.580392156862745, 0.654901960784314), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.ellipsoidHorizonSurfaceMaterial.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.866666666666667, 0.505882352941176, 0.12156862745098, 0.211764705882353), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -16879,6 +19715,34 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("sampled_conicSensor_domeSurfaceMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_conicSensor_domeSurfaceMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenDomeSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(165, 245, 110, 168), Color.FromArgb(192, 123, 9, 221)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.domeSurfaceMaterial.evenColor.getValue(documentStartDate)).toEqual(Color.fromBytes(245, 110, 168, 165));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.domeSurfaceMaterial.evenColor.getValue(documentStopDate)).toEqual(Color.fromBytes(123, 9, 221, 192));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(179, 14, 154, 253), Color.FromArgb(123, 221, 213, 240)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.domeSurfaceMaterial.oddColor.getValue(documentStartDate)).toEqual(Color.fromBytes(14, 154, 253, 179));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.domeSurfaceMaterial.oddColor.getValue(documentStopDate)).toEqual(Color.fromBytes(221, 213, 240, 123));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Rectangular(36587, 22670), new Rectangular(7761, 46622)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.domeSurfaceMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(36587, 22670));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.domeSurfaceMaterial.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(7761, 46622));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("sampled_conicSensor_domeSurfaceMaterial_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_conicSensor_domeSurfaceMaterial_image_color')).toBeDefined();");
                 using (var w = packet.OpenConicSensorProperty())
@@ -16931,6 +19795,34 @@ namespace CesiumLanguageWriterTests
                     m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(119, 194, 241, 246), Color.FromArgb(137, 127, 63, 68)));
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.domeSurfaceMaterial.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.76078431372549, 0.945098039215686, 0.964705882352941, 0.466666666666667), 1e-14);");
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.domeSurfaceMaterial.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.498039215686275, 0.247058823529412, 0.266666666666667, 0.537254901960784), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_conicSensor_domeSurfaceMaterial_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_conicSensor_domeSurfaceMaterial_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenDomeSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(213, 207, 125, 197), Color.FromArgb(134, 55, 113, 10)));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.domeSurfaceMaterial.evenColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.811764705882353, 0.490196078431373, 0.772549019607843, 0.835294117647059), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.domeSurfaceMaterial.evenColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.215686274509804, 0.443137254901961, 0.0392156862745098, 0.525490196078431), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_conicSensor_domeSurfaceMaterial_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_conicSensor_domeSurfaceMaterial_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenDomeSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(180, 36, 118, 211), Color.FromArgb(157, 221, 117, 15)));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.domeSurfaceMaterial.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.141176470588235, 0.462745098039216, 0.827450980392157, 0.705882352941177), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.domeSurfaceMaterial.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.866666666666667, 0.458823529411765, 0.0588235294117647, 0.615686274509804), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -17045,6 +19937,34 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("sampled_conicSensor_environmentOcclusionMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_conicSensor_environmentOcclusionMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenEnvironmentOcclusionMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(69, 220, 129, 242), Color.FromArgb(243, 82, 92, 121)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.environmentOcclusionMaterial.evenColor.getValue(documentStartDate)).toEqual(Color.fromBytes(220, 129, 242, 69));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.environmentOcclusionMaterial.evenColor.getValue(documentStopDate)).toEqual(Color.fromBytes(82, 92, 121, 243));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(114, 173, 81, 120), Color.FromArgb(59, 166, 36, 208)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.environmentOcclusionMaterial.oddColor.getValue(documentStartDate)).toEqual(Color.fromBytes(173, 81, 120, 114));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.environmentOcclusionMaterial.oddColor.getValue(documentStopDate)).toEqual(Color.fromBytes(166, 36, 208, 59));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Rectangular(50981, 48583), new Rectangular(32485, 61310)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.environmentOcclusionMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(50981, 48583));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.environmentOcclusionMaterial.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(32485, 61310));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("sampled_conicSensor_environmentOcclusionMaterial_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_conicSensor_environmentOcclusionMaterial_image_color')).toBeDefined();");
                 using (var w = packet.OpenConicSensorProperty())
@@ -17097,6 +20017,34 @@ namespace CesiumLanguageWriterTests
                     m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(190, 123, 54, 14), Color.FromArgb(102, 77, 150, 129)));
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.environmentOcclusionMaterial.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.482352941176471, 0.211764705882353, 0.0549019607843137, 0.745098039215686), 1e-14);");
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.environmentOcclusionMaterial.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.301960784313725, 0.588235294117647, 0.505882352941176, 0.4), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_conicSensor_environmentOcclusionMaterial_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_conicSensor_environmentOcclusionMaterial_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenEnvironmentOcclusionMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(161, 46, 147, 181), Color.FromArgb(78, 199, 145, 26)));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.environmentOcclusionMaterial.evenColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.180392156862745, 0.576470588235294, 0.709803921568627, 0.631372549019608), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.environmentOcclusionMaterial.evenColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.780392156862745, 0.568627450980392, 0.101960784313725, 0.305882352941176), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_conicSensor_environmentOcclusionMaterial_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_conicSensor_environmentOcclusionMaterial_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenEnvironmentOcclusionMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(218, 109, 244, 37), Color.FromArgb(4, 195, 75, 200)));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.environmentOcclusionMaterial.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.427450980392157, 0.956862745098039, 0.145098039215686, 0.854901960784314), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.environmentOcclusionMaterial.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.764705882352941, 0.294117647058824, 0.784313725490196, 0.0156862745098039), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -17238,6 +20186,34 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("sampled_customPatternSensor_lateralSurfaceMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_customPatternSensor_lateralSurfaceMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenLateralSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(195, 188, 142, 42), Color.FromArgb(83, 106, 168, 73)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.lateralSurfaceMaterial.evenColor.getValue(documentStartDate)).toEqual(Color.fromBytes(188, 142, 42, 195));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.lateralSurfaceMaterial.evenColor.getValue(documentStopDate)).toEqual(Color.fromBytes(106, 168, 73, 83));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(131, 131, 240, 191), Color.FromArgb(11, 220, 1, 39)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.lateralSurfaceMaterial.oddColor.getValue(documentStartDate)).toEqual(Color.fromBytes(131, 240, 191, 131));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.lateralSurfaceMaterial.oddColor.getValue(documentStopDate)).toEqual(Color.fromBytes(220, 1, 39, 11));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Rectangular(17911, 1349), new Rectangular(19690, 25676)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.lateralSurfaceMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(17911, 1349));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.lateralSurfaceMaterial.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(19690, 25676));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("sampled_customPatternSensor_lateralSurfaceMaterial_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_customPatternSensor_lateralSurfaceMaterial_image_color')).toBeDefined();");
                 using (var w = packet.OpenCustomPatternSensorProperty())
@@ -17290,6 +20266,34 @@ namespace CesiumLanguageWriterTests
                     m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(103, 111, 159, 23), Color.FromArgb(39, 249, 127, 239)));
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.lateralSurfaceMaterial.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.435294117647059, 0.623529411764706, 0.0901960784313725, 0.403921568627451), 1e-14);");
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.lateralSurfaceMaterial.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.976470588235294, 0.498039215686275, 0.937254901960784, 0.152941176470588), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_customPatternSensor_lateralSurfaceMaterial_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_customPatternSensor_lateralSurfaceMaterial_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenLateralSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(231, 104, 222, 196), Color.FromArgb(89, 34, 229, 101)));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.lateralSurfaceMaterial.evenColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.407843137254902, 0.870588235294118, 0.768627450980392, 0.905882352941176), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.lateralSurfaceMaterial.evenColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.133333333333333, 0.898039215686275, 0.396078431372549, 0.349019607843137), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_customPatternSensor_lateralSurfaceMaterial_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_customPatternSensor_lateralSurfaceMaterial_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenLateralSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(123, 205, 190, 180), Color.FromArgb(6, 83, 211, 73)));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.lateralSurfaceMaterial.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.803921568627451, 0.745098039215686, 0.705882352941177, 0.482352941176471), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.lateralSurfaceMaterial.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.325490196078431, 0.827450980392157, 0.286274509803922, 0.0235294117647059), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -17404,6 +20408,34 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("sampled_customPatternSensor_ellipsoidSurfaceMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_customPatternSensor_ellipsoidSurfaceMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenEllipsoidSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(16, 22, 212, 30), Color.FromArgb(143, 218, 60, 248)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidSurfaceMaterial.evenColor.getValue(documentStartDate)).toEqual(Color.fromBytes(22, 212, 30, 16));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidSurfaceMaterial.evenColor.getValue(documentStopDate)).toEqual(Color.fromBytes(218, 60, 248, 143));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(117, 146, 59, 229), Color.FromArgb(212, 150, 111, 214)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidSurfaceMaterial.oddColor.getValue(documentStartDate)).toEqual(Color.fromBytes(146, 59, 229, 117));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidSurfaceMaterial.oddColor.getValue(documentStopDate)).toEqual(Color.fromBytes(150, 111, 214, 212));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Rectangular(62246, 30451), new Rectangular(37575, 26258)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidSurfaceMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(62246, 30451));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidSurfaceMaterial.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(37575, 26258));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("sampled_customPatternSensor_ellipsoidSurfaceMaterial_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_customPatternSensor_ellipsoidSurfaceMaterial_image_color')).toBeDefined();");
                 using (var w = packet.OpenCustomPatternSensorProperty())
@@ -17456,6 +20488,34 @@ namespace CesiumLanguageWriterTests
                     m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(140, 189, 83, 245), Color.FromArgb(238, 126, 229, 79)));
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidSurfaceMaterial.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.741176470588235, 0.325490196078431, 0.96078431372549, 0.549019607843137), 1e-14);");
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidSurfaceMaterial.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.494117647058824, 0.898039215686275, 0.309803921568627, 0.933333333333333), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_customPatternSensor_ellipsoidSurfaceMaterial_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_customPatternSensor_ellipsoidSurfaceMaterial_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenEllipsoidSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(216, 69, 129, 212), Color.FromArgb(8, 89, 32, 89)));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidSurfaceMaterial.evenColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.270588235294118, 0.505882352941176, 0.831372549019608, 0.847058823529412), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidSurfaceMaterial.evenColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.349019607843137, 0.125490196078431, 0.349019607843137, 0.0313725490196078), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_customPatternSensor_ellipsoidSurfaceMaterial_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_customPatternSensor_ellipsoidSurfaceMaterial_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenEllipsoidSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(21, 189, 38, 95), Color.FromArgb(83, 155, 219, 115)));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidSurfaceMaterial.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.741176470588235, 0.149019607843137, 0.372549019607843, 0.0823529411764706), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidSurfaceMaterial.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.607843137254902, 0.858823529411765, 0.450980392156863, 0.325490196078431), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -17570,6 +20630,34 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("sampled_customPatternSensor_ellipsoidHorizonSurfaceMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_customPatternSensor_ellipsoidHorizonSurfaceMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenEllipsoidHorizonSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(135, 246, 191, 195), Color.FromArgb(116, 49, 92, 224)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidHorizonSurfaceMaterial.evenColor.getValue(documentStartDate)).toEqual(Color.fromBytes(246, 191, 195, 135));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidHorizonSurfaceMaterial.evenColor.getValue(documentStopDate)).toEqual(Color.fromBytes(49, 92, 224, 116));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(251, 131, 114, 134), Color.FromArgb(96, 107, 100, 206)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidHorizonSurfaceMaterial.oddColor.getValue(documentStartDate)).toEqual(Color.fromBytes(131, 114, 134, 251));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidHorizonSurfaceMaterial.oddColor.getValue(documentStopDate)).toEqual(Color.fromBytes(107, 100, 206, 96));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Rectangular(52216, 34251), new Rectangular(42684, 49318)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidHorizonSurfaceMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(52216, 34251));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidHorizonSurfaceMaterial.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(42684, 49318));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("sampled_customPatternSensor_ellipsoidHorizonSurfaceMaterial_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_customPatternSensor_ellipsoidHorizonSurfaceMaterial_image_color')).toBeDefined();");
                 using (var w = packet.OpenCustomPatternSensorProperty())
@@ -17622,6 +20710,34 @@ namespace CesiumLanguageWriterTests
                     m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(75, 14, 103, 6), Color.FromArgb(31, 111, 105, 52)));
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidHorizonSurfaceMaterial.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.0549019607843137, 0.403921568627451, 0.0235294117647059, 0.294117647058824), 1e-14);");
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidHorizonSurfaceMaterial.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.435294117647059, 0.411764705882353, 0.203921568627451, 0.12156862745098), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_customPatternSensor_ellipsoidHorizonSurfaceMaterial_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_customPatternSensor_ellipsoidHorizonSurfaceMaterial_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenEllipsoidHorizonSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(177, 127, 54, 47), Color.FromArgb(55, 107, 100, 148)));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidHorizonSurfaceMaterial.evenColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.498039215686275, 0.211764705882353, 0.184313725490196, 0.694117647058824), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidHorizonSurfaceMaterial.evenColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.419607843137255, 0.392156862745098, 0.580392156862745, 0.215686274509804), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_customPatternSensor_ellipsoidHorizonSurfaceMaterial_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_customPatternSensor_ellipsoidHorizonSurfaceMaterial_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenEllipsoidHorizonSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(54, 8, 15, 58), Color.FromArgb(233, 32, 113, 179)));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidHorizonSurfaceMaterial.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.0313725490196078, 0.0588235294117647, 0.227450980392157, 0.211764705882353), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.ellipsoidHorizonSurfaceMaterial.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.125490196078431, 0.443137254901961, 0.701960784313725, 0.913725490196078), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -17736,6 +20852,34 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("sampled_customPatternSensor_domeSurfaceMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_customPatternSensor_domeSurfaceMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenDomeSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(240, 85, 219, 208), Color.FromArgb(109, 57, 93, 247)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.domeSurfaceMaterial.evenColor.getValue(documentStartDate)).toEqual(Color.fromBytes(85, 219, 208, 240));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.domeSurfaceMaterial.evenColor.getValue(documentStopDate)).toEqual(Color.fromBytes(57, 93, 247, 109));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(23, 153, 120, 96), Color.FromArgb(52, 32, 47, 36)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.domeSurfaceMaterial.oddColor.getValue(documentStartDate)).toEqual(Color.fromBytes(153, 120, 96, 23));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.domeSurfaceMaterial.oddColor.getValue(documentStopDate)).toEqual(Color.fromBytes(32, 47, 36, 52));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Rectangular(26766, 25960), new Rectangular(41604, 30626)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.domeSurfaceMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(26766, 25960));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.domeSurfaceMaterial.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(41604, 30626));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("sampled_customPatternSensor_domeSurfaceMaterial_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_customPatternSensor_domeSurfaceMaterial_image_color')).toBeDefined();");
                 using (var w = packet.OpenCustomPatternSensorProperty())
@@ -17788,6 +20932,34 @@ namespace CesiumLanguageWriterTests
                     m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(151, 190, 174, 175), Color.FromArgb(4, 208, 52, 188)));
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.domeSurfaceMaterial.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.745098039215686, 0.682352941176471, 0.686274509803922, 0.592156862745098), 1e-14);");
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.domeSurfaceMaterial.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.815686274509804, 0.203921568627451, 0.737254901960784, 0.0156862745098039), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_customPatternSensor_domeSurfaceMaterial_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_customPatternSensor_domeSurfaceMaterial_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenDomeSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(14, 63, 160, 196), Color.FromArgb(27, 165, 187, 202)));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.domeSurfaceMaterial.evenColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.247058823529412, 0.627450980392157, 0.768627450980392, 0.0549019607843137), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.domeSurfaceMaterial.evenColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.647058823529412, 0.733333333333333, 0.792156862745098, 0.105882352941176), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_customPatternSensor_domeSurfaceMaterial_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_customPatternSensor_domeSurfaceMaterial_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenDomeSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(51, 156, 33, 236), Color.FromArgb(78, 221, 151, 178)));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.domeSurfaceMaterial.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.611764705882353, 0.129411764705882, 0.925490196078431, 0.2), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.domeSurfaceMaterial.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.866666666666667, 0.592156862745098, 0.698039215686274, 0.305882352941176), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -17902,6 +21074,34 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("sampled_customPatternSensor_environmentOcclusionMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_customPatternSensor_environmentOcclusionMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenEnvironmentOcclusionMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(63, 47, 112, 129), Color.FromArgb(130, 244, 112, 201)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.environmentOcclusionMaterial.evenColor.getValue(documentStartDate)).toEqual(Color.fromBytes(47, 112, 129, 63));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.environmentOcclusionMaterial.evenColor.getValue(documentStopDate)).toEqual(Color.fromBytes(244, 112, 201, 130));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(110, 172, 24, 171), Color.FromArgb(212, 79, 175, 200)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.environmentOcclusionMaterial.oddColor.getValue(documentStartDate)).toEqual(Color.fromBytes(172, 24, 171, 110));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.environmentOcclusionMaterial.oddColor.getValue(documentStopDate)).toEqual(Color.fromBytes(79, 175, 200, 212));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Rectangular(47658, 17082), new Rectangular(53788, 22482)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.environmentOcclusionMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(47658, 17082));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.environmentOcclusionMaterial.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(53788, 22482));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("sampled_customPatternSensor_environmentOcclusionMaterial_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_customPatternSensor_environmentOcclusionMaterial_image_color')).toBeDefined();");
                 using (var w = packet.OpenCustomPatternSensorProperty())
@@ -17954,6 +21154,34 @@ namespace CesiumLanguageWriterTests
                     m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(224, 125, 122, 54), Color.FromArgb(222, 66, 105, 65)));
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.environmentOcclusionMaterial.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.490196078431373, 0.47843137254902, 0.211764705882353, 0.87843137254902), 1e-14);");
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.environmentOcclusionMaterial.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.258823529411765, 0.411764705882353, 0.254901960784314, 0.870588235294118), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_customPatternSensor_environmentOcclusionMaterial_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_customPatternSensor_environmentOcclusionMaterial_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenEnvironmentOcclusionMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(100, 45, 106, 204), Color.FromArgb(119, 117, 243, 88)));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.environmentOcclusionMaterial.evenColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.176470588235294, 0.415686274509804, 0.8, 0.392156862745098), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.environmentOcclusionMaterial.evenColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.458823529411765, 0.952941176470588, 0.345098039215686, 0.466666666666667), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_customPatternSensor_environmentOcclusionMaterial_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_customPatternSensor_environmentOcclusionMaterial_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenEnvironmentOcclusionMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(247, 253, 145, 88), Color.FromArgb(234, 215, 191, 92)));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.environmentOcclusionMaterial.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.992156862745098, 0.568627450980392, 0.345098039215686, 0.968627450980392), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.environmentOcclusionMaterial.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.843137254901961, 0.749019607843137, 0.36078431372549, 0.917647058823529), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -18095,6 +21323,34 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("sampled_rectangularSensor_lateralSurfaceMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_rectangularSensor_lateralSurfaceMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenLateralSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(169, 26, 198, 89), Color.FromArgb(179, 233, 195, 129)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.lateralSurfaceMaterial.evenColor.getValue(documentStartDate)).toEqual(Color.fromBytes(26, 198, 89, 169));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.lateralSurfaceMaterial.evenColor.getValue(documentStopDate)).toEqual(Color.fromBytes(233, 195, 129, 179));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(93, 17, 115, 191), Color.FromArgb(167, 184, 78, 48)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.lateralSurfaceMaterial.oddColor.getValue(documentStartDate)).toEqual(Color.fromBytes(17, 115, 191, 93));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.lateralSurfaceMaterial.oddColor.getValue(documentStopDate)).toEqual(Color.fromBytes(184, 78, 48, 167));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Rectangular(17119, 42050), new Rectangular(61338, 26607)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.lateralSurfaceMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(17119, 42050));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.lateralSurfaceMaterial.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(61338, 26607));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("sampled_rectangularSensor_lateralSurfaceMaterial_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_rectangularSensor_lateralSurfaceMaterial_image_color')).toBeDefined();");
                 using (var w = packet.OpenRectangularSensorProperty())
@@ -18147,6 +21403,34 @@ namespace CesiumLanguageWriterTests
                     m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(9, 163, 165, 198), Color.FromArgb(59, 53, 200, 106)));
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.lateralSurfaceMaterial.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.63921568627451, 0.647058823529412, 0.776470588235294, 0.0352941176470588), 1e-14);");
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.lateralSurfaceMaterial.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.207843137254902, 0.784313725490196, 0.415686274509804, 0.231372549019608), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_rectangularSensor_lateralSurfaceMaterial_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_rectangularSensor_lateralSurfaceMaterial_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenLateralSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(64, 52, 144, 95), Color.FromArgb(232, 223, 223, 21)));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.lateralSurfaceMaterial.evenColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.203921568627451, 0.564705882352941, 0.372549019607843, 0.250980392156863), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.lateralSurfaceMaterial.evenColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.874509803921569, 0.874509803921569, 0.0823529411764706, 0.909803921568627), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_rectangularSensor_lateralSurfaceMaterial_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_rectangularSensor_lateralSurfaceMaterial_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenLateralSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(182, 158, 11, 0), Color.FromArgb(43, 90, 105, 105)));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.lateralSurfaceMaterial.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.619607843137255, 0.0431372549019608, 0, 0.713725490196078), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.lateralSurfaceMaterial.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.352941176470588, 0.411764705882353, 0.411764705882353, 0.168627450980392), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -18261,6 +21545,34 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("sampled_rectangularSensor_ellipsoidSurfaceMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_rectangularSensor_ellipsoidSurfaceMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenEllipsoidSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(128, 108, 220, 153), Color.FromArgb(190, 48, 38, 33)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidSurfaceMaterial.evenColor.getValue(documentStartDate)).toEqual(Color.fromBytes(108, 220, 153, 128));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidSurfaceMaterial.evenColor.getValue(documentStopDate)).toEqual(Color.fromBytes(48, 38, 33, 190));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(73, 84, 139, 229), Color.FromArgb(39, 6, 103, 50)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidSurfaceMaterial.oddColor.getValue(documentStartDate)).toEqual(Color.fromBytes(84, 139, 229, 73));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidSurfaceMaterial.oddColor.getValue(documentStopDate)).toEqual(Color.fromBytes(6, 103, 50, 39));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Rectangular(61213, 61935), new Rectangular(53596, 3025)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidSurfaceMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(61213, 61935));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidSurfaceMaterial.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(53596, 3025));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("sampled_rectangularSensor_ellipsoidSurfaceMaterial_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_rectangularSensor_ellipsoidSurfaceMaterial_image_color')).toBeDefined();");
                 using (var w = packet.OpenRectangularSensorProperty())
@@ -18313,6 +21625,34 @@ namespace CesiumLanguageWriterTests
                     m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(223, 19, 59, 199), Color.FromArgb(210, 3, 69, 229)));
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidSurfaceMaterial.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.0745098039215686, 0.231372549019608, 0.780392156862745, 0.874509803921569), 1e-14);");
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidSurfaceMaterial.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.0117647058823529, 0.270588235294118, 0.898039215686275, 0.823529411764706), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_rectangularSensor_ellipsoidSurfaceMaterial_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_rectangularSensor_ellipsoidSurfaceMaterial_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenEllipsoidSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(20, 188, 96, 35), Color.FromArgb(46, 72, 90, 97)));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidSurfaceMaterial.evenColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.737254901960784, 0.376470588235294, 0.137254901960784, 0.0784313725490196), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidSurfaceMaterial.evenColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.282352941176471, 0.352941176470588, 0.380392156862745, 0.180392156862745), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_rectangularSensor_ellipsoidSurfaceMaterial_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_rectangularSensor_ellipsoidSurfaceMaterial_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenEllipsoidSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(62, 191, 87, 88), Color.FromArgb(72, 219, 50, 196)));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidSurfaceMaterial.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.749019607843137, 0.341176470588235, 0.345098039215686, 0.243137254901961), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidSurfaceMaterial.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.858823529411765, 0.196078431372549, 0.768627450980392, 0.282352941176471), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -18427,6 +21767,34 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("sampled_rectangularSensor_ellipsoidHorizonSurfaceMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_rectangularSensor_ellipsoidHorizonSurfaceMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenEllipsoidHorizonSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(242, 215, 163, 115), Color.FromArgb(178, 14, 129, 184)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidHorizonSurfaceMaterial.evenColor.getValue(documentStartDate)).toEqual(Color.fromBytes(215, 163, 115, 242));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidHorizonSurfaceMaterial.evenColor.getValue(documentStopDate)).toEqual(Color.fromBytes(14, 129, 184, 178));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(91, 106, 179, 139), Color.FromArgb(237, 109, 40, 46)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidHorizonSurfaceMaterial.oddColor.getValue(documentStartDate)).toEqual(Color.fromBytes(106, 179, 139, 91));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidHorizonSurfaceMaterial.oddColor.getValue(documentStopDate)).toEqual(Color.fromBytes(109, 40, 46, 237));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Rectangular(22491, 23127), new Rectangular(34352, 6022)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidHorizonSurfaceMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(22491, 23127));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidHorizonSurfaceMaterial.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(34352, 6022));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("sampled_rectangularSensor_ellipsoidHorizonSurfaceMaterial_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_rectangularSensor_ellipsoidHorizonSurfaceMaterial_image_color')).toBeDefined();");
                 using (var w = packet.OpenRectangularSensorProperty())
@@ -18479,6 +21847,34 @@ namespace CesiumLanguageWriterTests
                     m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(185, 233, 186, 182), Color.FromArgb(204, 151, 243, 121)));
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidHorizonSurfaceMaterial.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.913725490196078, 0.729411764705882, 0.713725490196078, 0.725490196078431), 1e-14);");
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidHorizonSurfaceMaterial.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.592156862745098, 0.952941176470588, 0.474509803921569, 0.8), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_rectangularSensor_ellipsoidHorizonSurfaceMaterial_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_rectangularSensor_ellipsoidHorizonSurfaceMaterial_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenEllipsoidHorizonSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(92, 77, 75, 149), Color.FromArgb(239, 218, 36, 221)));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidHorizonSurfaceMaterial.evenColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.301960784313725, 0.294117647058824, 0.584313725490196, 0.36078431372549), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidHorizonSurfaceMaterial.evenColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.854901960784314, 0.141176470588235, 0.866666666666667, 0.937254901960784), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_rectangularSensor_ellipsoidHorizonSurfaceMaterial_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_rectangularSensor_ellipsoidHorizonSurfaceMaterial_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenEllipsoidHorizonSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(15, 123, 234, 39), Color.FromArgb(32, 67, 191, 120)));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidHorizonSurfaceMaterial.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.482352941176471, 0.917647058823529, 0.152941176470588, 0.0588235294117647), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.ellipsoidHorizonSurfaceMaterial.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.262745098039216, 0.749019607843137, 0.470588235294118, 0.125490196078431), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -18593,6 +21989,34 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("sampled_rectangularSensor_domeSurfaceMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_rectangularSensor_domeSurfaceMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenDomeSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(3, 189, 106, 55), Color.FromArgb(14, 105, 160, 100)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.domeSurfaceMaterial.evenColor.getValue(documentStartDate)).toEqual(Color.fromBytes(189, 106, 55, 3));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.domeSurfaceMaterial.evenColor.getValue(documentStopDate)).toEqual(Color.fromBytes(105, 160, 100, 14));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(56, 18, 68, 176), Color.FromArgb(18, 25, 79, 0)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.domeSurfaceMaterial.oddColor.getValue(documentStartDate)).toEqual(Color.fromBytes(18, 68, 176, 56));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.domeSurfaceMaterial.oddColor.getValue(documentStopDate)).toEqual(Color.fromBytes(25, 79, 0, 18));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Rectangular(18624, 13896), new Rectangular(39440, 15002)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.domeSurfaceMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(18624, 13896));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.domeSurfaceMaterial.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(39440, 15002));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("sampled_rectangularSensor_domeSurfaceMaterial_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_rectangularSensor_domeSurfaceMaterial_image_color')).toBeDefined();");
                 using (var w = packet.OpenRectangularSensorProperty())
@@ -18645,6 +22069,34 @@ namespace CesiumLanguageWriterTests
                     m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(252, 4, 151, 146), Color.FromArgb(80, 246, 70, 19)));
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.domeSurfaceMaterial.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.0156862745098039, 0.592156862745098, 0.572549019607843, 0.988235294117647), 1e-14);");
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.domeSurfaceMaterial.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.964705882352941, 0.274509803921569, 0.0745098039215686, 0.313725490196078), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_rectangularSensor_domeSurfaceMaterial_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_rectangularSensor_domeSurfaceMaterial_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenDomeSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(180, 4, 75, 126), Color.FromArgb(216, 32, 26, 140)));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.domeSurfaceMaterial.evenColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.0156862745098039, 0.294117647058824, 0.494117647058824, 0.705882352941177), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.domeSurfaceMaterial.evenColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.125490196078431, 0.101960784313725, 0.549019607843137, 0.847058823529412), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_rectangularSensor_domeSurfaceMaterial_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_rectangularSensor_domeSurfaceMaterial_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenDomeSurfaceMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(112, 244, 136, 220), Color.FromArgb(202, 93, 15, 9)));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.domeSurfaceMaterial.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.956862745098039, 0.533333333333333, 0.862745098039216, 0.43921568627451), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.domeSurfaceMaterial.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.364705882352941, 0.0588235294117647, 0.0352941176470588, 0.792156862745098), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -18759,6 +22211,34 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("sampled_rectangularSensor_environmentOcclusionMaterial_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_rectangularSensor_environmentOcclusionMaterial_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenEnvironmentOcclusionMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(200, 200, 100, 162), Color.FromArgb(195, 119, 5, 79)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.environmentOcclusionMaterial.evenColor.getValue(documentStartDate)).toEqual(Color.fromBytes(200, 100, 162, 200));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.environmentOcclusionMaterial.evenColor.getValue(documentStopDate)).toEqual(Color.fromBytes(119, 5, 79, 195));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(38, 105, 142, 119), Color.FromArgb(143, 22, 29, 213)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.environmentOcclusionMaterial.oddColor.getValue(documentStartDate)).toEqual(Color.fromBytes(105, 142, 119, 38));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.environmentOcclusionMaterial.oddColor.getValue(documentStopDate)).toEqual(Color.fromBytes(22, 29, 213, 143));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Rectangular(30919, 15224), new Rectangular(4399, 15633)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.environmentOcclusionMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(30919, 15224));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.environmentOcclusionMaterial.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(4399, 15633));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("sampled_rectangularSensor_environmentOcclusionMaterial_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_rectangularSensor_environmentOcclusionMaterial_image_color')).toBeDefined();");
                 using (var w = packet.OpenRectangularSensorProperty())
@@ -18811,6 +22291,34 @@ namespace CesiumLanguageWriterTests
                     m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(68, 86, 117, 74), Color.FromArgb(36, 119, 151, 191)));
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.environmentOcclusionMaterial.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.337254901960784, 0.458823529411765, 0.290196078431373, 0.266666666666667), 1e-14);");
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.environmentOcclusionMaterial.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.466666666666667, 0.592156862745098, 0.749019607843137, 0.141176470588235), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_rectangularSensor_environmentOcclusionMaterial_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_rectangularSensor_environmentOcclusionMaterial_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenEnvironmentOcclusionMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(88, 108, 232, 138), Color.FromArgb(250, 196, 175, 99)));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.environmentOcclusionMaterial.evenColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.423529411764706, 0.909803921568627, 0.541176470588235, 0.345098039215686), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.environmentOcclusionMaterial.evenColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.768627450980392, 0.686274509803922, 0.388235294117647, 0.980392156862745), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_rectangularSensor_environmentOcclusionMaterial_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_rectangularSensor_environmentOcclusionMaterial_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenEnvironmentOcclusionMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(24, 100, 32, 238), Color.FromArgb(246, 130, 234, 172)));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.environmentOcclusionMaterial.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.392156862745098, 0.125490196078431, 0.933333333333333, 0.0941176470588235), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.environmentOcclusionMaterial.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.509803921568627, 0.917647058823529, 0.674509803921569, 0.964705882352941), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -18940,6 +22448,34 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("sampled_fan_material_checkerboard");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_fan_material_checkerboard')).toBeDefined();");
+                using (var w = packet.OpenFanProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                {
+                    using (var m2 = m.OpenEvenColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(208, 47, 118, 217), Color.FromArgb(62, 217, 74, 171)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.fan.material.evenColor.getValue(documentStartDate)).toEqual(Color.fromBytes(47, 118, 217, 208));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.fan.material.evenColor.getValue(documentStopDate)).toEqual(Color.fromBytes(217, 74, 171, 62));");
+                    }
+                    using (var m2 = m.OpenOddColorProperty())
+                    {
+                        m2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(107, 126, 245, 28), Color.FromArgb(116, 30, 145, 194)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.fan.material.oddColor.getValue(documentStartDate)).toEqual(Color.fromBytes(126, 245, 28, 107));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.fan.material.oddColor.getValue(documentStopDate)).toEqual(Color.fromBytes(30, 145, 194, 116));");
+                    }
+                    using (var m2 = m.OpenRepeatProperty())
+                    {
+                        m2.WriteCartesian2(CreateList(m_documentStartDate, m_documentStopDate), CreateList(new Rectangular(50034, 2755), new Rectangular(23022, 2137)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.fan.material.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(50034, 2755));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.fan.material.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(23022, 2137));");
+                    }
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("sampled_fan_material_image_color");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_fan_material_image_color')).toBeDefined();");
                 using (var w = packet.OpenFanProperty())
@@ -18992,6 +22528,34 @@ namespace CesiumLanguageWriterTests
                     m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(83, 10, 156, 204), Color.FromArgb(6, 45, 216, 224)));
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.fan.material.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.0392156862745098, 0.611764705882353, 0.8, 0.325490196078431), 1e-14);");
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.fan.material.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.176470588235294, 0.847058823529412, 0.87843137254902, 0.0235294117647059), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_fan_material_checkerboard_evenColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_fan_material_checkerboard_evenColor')).toBeDefined();");
+                using (var w = packet.OpenFanProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenEvenColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(116, 62, 235, 239), Color.FromArgb(16, 136, 227, 39)));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.fan.material.evenColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.243137254901961, 0.92156862745098, 0.937254901960784, 0.454901960784314), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.fan.material.evenColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.533333333333333, 0.890196078431373, 0.152941176470588, 0.0627450980392157), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_fan_material_checkerboard_oddColor");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_fan_material_checkerboard_oddColor')).toBeDefined();");
+                using (var w = packet.OpenFanProperty())
+                using (var w2 = w.OpenMaterialProperty())
+                using (var m = w2.OpenCheckerboardProperty())
+                using (var m2 = m.OpenOddColorProperty())
+                {
+                    m2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(251, 1, 102, 238), Color.FromArgb(167, 125, 6, 21)));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.fan.material.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.00392156862745098, 0.4, 0.933333333333333, 0.984313725490196), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.fan.material.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.490196078431373, 0.0235294117647059, 0.0823529411764706, 0.654901960784314), 1e-14);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
