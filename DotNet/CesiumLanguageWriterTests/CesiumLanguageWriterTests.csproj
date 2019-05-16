@@ -65,6 +65,7 @@
     <Compile Include="TestCesiumFormattingHelper.cs" />
     <Compile Include="TestCesiumInterpolatablePropertyWriter.cs" />
     <Compile Include="TestCesiumResource.cs" />
+    <Compile Include="TestCheckerboardMaterialCesiumWriter.cs" />
     <Compile Include="TestCustomPropertiesCesiumWriter.cs" />
     <Compile Include="TestDoubleCesiumWriter.cs" />
     <Compile Include="TestGenerateValidationDocument.cs" />

@@ -42,6 +42,10 @@
         "stripe": {
             "$ref": "StripeMaterial.json",
             "description": "A material that fills the line with alternating colors."
+        },
+        "checkerboard": {
+            "$ref": "CheckerboardMaterial.json",
+            "description": "A material that fills the line with a checkerboard pattern."
         }
     }
 }

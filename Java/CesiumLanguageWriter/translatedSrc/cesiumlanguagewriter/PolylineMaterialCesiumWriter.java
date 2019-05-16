@@ -5,6 +5,7 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
+import cesiumlanguagewriter.CheckerboardMaterialCesiumWriter;
 import cesiumlanguagewriter.GridMaterialCesiumWriter;
 import cesiumlanguagewriter.ImageMaterialCesiumWriter;
 import cesiumlanguagewriter.PolylineArrowMaterialCesiumWriter;
@@ -83,6 +84,13 @@ public class PolylineMaterialCesiumWriter extends CesiumPropertyWriter<PolylineM
 
     */
     public static final String StripePropertyName = "stripe";
+    /**
+    *  
+    The name of the {@code checkerboard} property.
+    
+
+    */
+    public static final String CheckerboardPropertyName = "checkerboard";
     private Lazy<SolidColorMaterialCesiumWriter> m_solidColor = new Lazy<cesiumlanguagewriter.SolidColorMaterialCesiumWriter>(new Func1<cesiumlanguagewriter.SolidColorMaterialCesiumWriter>() {
         public cesiumlanguagewriter.SolidColorMaterialCesiumWriter invoke() {
             return new SolidColorMaterialCesiumWriter(SolidColorPropertyName);
@@ -123,6 +131,11 @@ public class PolylineMaterialCesiumWriter extends CesiumPropertyWriter<PolylineM
     private Lazy<StripeMaterialCesiumWriter> m_stripe = new Lazy<cesiumlanguagewriter.StripeMaterialCesiumWriter>(new Func1<cesiumlanguagewriter.StripeMaterialCesiumWriter>() {
         public cesiumlanguagewriter.StripeMaterialCesiumWriter invoke() {
             return new StripeMaterialCesiumWriter(StripePropertyName);
+        }
+    }, false);
+    private Lazy<CheckerboardMaterialCesiumWriter> m_checkerboard = new Lazy<cesiumlanguagewriter.CheckerboardMaterialCesiumWriter>(new Func1<cesiumlanguagewriter.CheckerboardMaterialCesiumWriter>() {
+        public cesiumlanguagewriter.CheckerboardMaterialCesiumWriter invoke() {
+            return new CheckerboardMaterialCesiumWriter(CheckerboardPropertyName);
         }
     }, false);
 
@@ -338,5 +351,27 @@ public class PolylineMaterialCesiumWriter extends CesiumPropertyWriter<PolylineM
     public final StripeMaterialCesiumWriter openStripeProperty() {
         openIntervalIfNecessary();
         return this.<StripeMaterialCesiumWriter> openAndReturn(getStripeWriter());
+    }
+
+    /**
+    *  Gets the writer for the {@code checkerboard} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code checkerboard} property defines a material that fills the line with a checkerboard pattern.
+    
+
+    */
+    @Nonnull
+    public final CheckerboardMaterialCesiumWriter getCheckerboardWriter() {
+        return m_checkerboard.getValue();
+    }
+
+    /**
+    *  
+    Opens and returns the writer for the {@code checkerboard} property. The {@code checkerboard} property defines a material that fills the line with a checkerboard pattern.
+    
+
+    */
+    @Nonnull
+    public final CheckerboardMaterialCesiumWriter openCheckerboardProperty() {
+        openIntervalIfNecessary();
+        return this.<CheckerboardMaterialCesiumWriter> openAndReturn(getCheckerboardWriter());
     }
 }
