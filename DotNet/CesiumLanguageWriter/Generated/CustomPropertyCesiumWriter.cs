@@ -146,6 +146,11 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string VerticalOriginPropertyName = "verticalOrigin";
 
+        /// <summary>
+        /// The name of the <c>delete</c> property.
+        /// </summary>
+        public const string DeletePropertyName = "delete";
+
         private readonly Lazy<ICesiumValuePropertyWriter<bool>> m_asBoolean;
         private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>> m_asBoundingRectangle;
         private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<Cartesian>> m_asCartesian;
@@ -1066,6 +1071,18 @@ namespace CesiumLanguageWriter
             OpenIntervalIfNecessary();
             Output.WritePropertyName(PropertyName);
             Output.WriteValue(CesiumFormattingHelper.VerticalOriginToString(value));
+        }
+
+        /// <summary>
+        /// Writes the value expressed as a <c>delete</c>, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteDelete(bool value)
+        {
+            const string PropertyName = DeletePropertyName;
+            OpenIntervalIfNecessary();
+            Output.WritePropertyName(PropertyName);
+            Output.WriteValue(value);
         }
 
         /// <summary>

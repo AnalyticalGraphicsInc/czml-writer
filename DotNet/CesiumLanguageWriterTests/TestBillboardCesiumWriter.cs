@@ -8,17 +8,12 @@ namespace CesiumLanguageWriterTests
     [TestFixture]
     public class TestBillboardCesiumWriter : TestCesiumPropertyWriter<BillboardCesiumWriter>
     {
-        protected override CesiumPropertyWriter<BillboardCesiumWriter> CreatePropertyWriter(string propertyName)
-        {
-            return new BillboardCesiumWriter(propertyName);
-        }
-
         [Test]
         public void TestShowProperty()
         {
             using (Packet)
-            using (BillboardCesiumWriter billboard = Packet.OpenBillboardProperty())
-            using (BillboardCesiumWriter interval = billboard.OpenInterval())
+            using (var billboard = Packet.OpenBillboardProperty())
+            using (var interval = billboard.OpenInterval())
             {
                 interval.WriteShowProperty(true);
             }
@@ -33,25 +28,23 @@ namespace CesiumLanguageWriterTests
             var stopDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 1, 0));
 
             using (Packet)
-            using (var billboardWriter = Packet.OpenBillboardProperty())
-            using (var showWriter = billboardWriter.OpenShowProperty())
+            using (var billboard = Packet.OpenBillboardProperty())
+            using (var show = billboard.OpenShowProperty())
+            using (var showIntervals = show.OpenMultipleIntervals())
             {
-                using (var intervalListWriter = showWriter.OpenMultipleIntervals())
+                using (var interval = showIntervals.OpenInterval(startDate, startDate.AddSeconds(1)))
                 {
-                    using (var intervalWriter = intervalListWriter.OpenInterval(startDate, startDate.AddSeconds(1)))
-                    {
-                        intervalWriter.WriteBoolean(true);
-                    }
+                    interval.WriteBoolean(true);
+                }
 
-                    using (var intervalWriter = intervalListWriter.OpenInterval(startDate.AddSeconds(1), startDate.AddSeconds(2)))
-                    {
-                        intervalWriter.WriteBoolean(false);
-                    }
+                using (var interval = showIntervals.OpenInterval(startDate.AddSeconds(1), startDate.AddSeconds(2)))
+                {
+                    interval.WriteBoolean(false);
+                }
 
-                    using (var intervalWriter = intervalListWriter.OpenInterval(startDate.AddSeconds(2), stopDate))
-                    {
-                        intervalWriter.WriteBoolean(true);
-                    }
+                using (var interval = showIntervals.OpenInterval(startDate.AddSeconds(2), stopDate))
+                {
+                    interval.WriteBoolean(true);
                 }
             }
 
@@ -69,8 +62,8 @@ namespace CesiumLanguageWriterTests
         public void TestScaleByDistanceProperty()
         {
             using (Packet)
-            using (BillboardCesiumWriter billboard = Packet.OpenBillboardProperty())
-            using (BillboardCesiumWriter interval = billboard.OpenInterval())
+            using (var billboard = Packet.OpenBillboardProperty())
+            using (var interval = billboard.OpenInterval())
             {
                 interval.WriteScaleByDistanceProperty(new NearFarScalar(100.0, 1.0, 200.0, 2.0));
             }
@@ -81,12 +74,12 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestScaleByDistancePropertySamples()
         {
-            JulianDate startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0));
+            var startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0));
 
             using (Packet)
-            using (BillboardCesiumWriter billboard = Packet.OpenBillboardProperty())
-            using (BillboardCesiumWriter interval = billboard.OpenInterval())
-            using (NearFarScalarCesiumWriter scaleByDistance = interval.OpenScaleByDistanceProperty())
+            using (var billboard = Packet.OpenBillboardProperty())
+            using (var interval = billboard.OpenInterval())
+            using (var scaleByDistance = interval.OpenScaleByDistanceProperty())
             {
                 var dates = new List<JulianDate>();
                 var values = new List<NearFarScalar>();
@@ -101,6 +94,37 @@ namespace CesiumLanguageWriterTests
             }
 
             Assert.AreEqual("{\"billboard\":{\"scaleByDistance\":{\"epoch\":\"20120402T12Z\",\"nearFarScalar\":[0,100,1,200,2,60,200,1,300,2]}}}", StringWriter.ToString());
+        }
+
+        [Test]
+        public void TestDeleteAlignedAxis()
+        {
+            using (Packet)
+            using (var billboard = Packet.OpenBillboardProperty())
+            using (var alignedAxis = billboard.OpenAlignedAxisProperty())
+            {
+                alignedAxis.WriteDelete(true);
+            }
+
+            Assert.AreEqual("{\"billboard\":{\"alignedAxis\":{\"delete\":true}}}", StringWriter.ToString());
+        }
+
+        [Test]
+        public void TestDeleteScale()
+        {
+            using (Packet)
+            using (var billboard = Packet.OpenBillboardProperty())
+            using (var scale = billboard.OpenScaleProperty())
+            {
+                scale.WriteDelete(true);
+            }
+
+            Assert.AreEqual("{\"billboard\":{\"scale\":{\"delete\":true}}}", StringWriter.ToString());
+        }
+
+        protected override CesiumPropertyWriter<BillboardCesiumWriter> CreatePropertyWriter(string propertyName)
+        {
+            return new BillboardCesiumWriter(propertyName);
         }
     }
 }

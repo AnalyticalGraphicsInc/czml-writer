@@ -1569,7 +1569,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code color} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code color} property defines the color of the billboard. This color value is multiplied with the values of the billboard's "image" to produce the final color. If not specified, the default value is white.
+    *  Gets the writer for the {@code color} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code color} property defines the color of the billboard. This color value is multiplied with the values of the billboard's {@code image} to produce the final color. If not specified, the default value is white.
     
 
     */
@@ -1580,7 +1580,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     /**
     *  
-    Opens and returns the writer for the {@code color} property. The {@code color} property defines the color of the billboard. This color value is multiplied with the values of the billboard's "image" to produce the final color. If not specified, the default value is white.
+    Opens and returns the writer for the {@code color} property. The {@code color} property defines the color of the billboard. This color value is multiplied with the values of the billboard's {@code image} to produce the final color. If not specified, the default value is white.
     
 
     */
@@ -1592,7 +1592,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the billboard. This color value is multiplied with the values of the billboard's "image" to produce the final color. If not specified, the default value is white.
+    Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the billboard. This color value is multiplied with the values of the billboard's {@code image} to produce the final color. If not specified, the default value is white.
     
     
 
@@ -1611,7 +1611,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the billboard. This color value is multiplied with the values of the billboard's "image" to produce the final color. If not specified, the default value is white.
+    Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the billboard. This color value is multiplied with the values of the billboard's {@code image} to produce the final color. If not specified, the default value is white.
     
     
     
@@ -1636,7 +1636,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the billboard. This color value is multiplied with the values of the billboard's "image" to produce the final color. If not specified, the default value is white.
+    Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the billboard. This color value is multiplied with the values of the billboard's {@code image} to produce the final color. If not specified, the default value is white.
     
     
     
@@ -1657,7 +1657,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the billboard. This color value is multiplied with the values of the billboard's "image" to produce the final color. If not specified, the default value is white.
+    Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the billboard. This color value is multiplied with the values of the billboard's {@code image} to produce the final color. If not specified, the default value is white.
     
     
     
@@ -1682,7 +1682,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the billboard. This color value is multiplied with the values of the billboard's "image" to produce the final color. If not specified, the default value is white.
+    Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the billboard. This color value is multiplied with the values of the billboard's {@code image} to produce the final color. If not specified, the default value is white.
     
     
 
@@ -1701,7 +1701,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the billboard. This color value is multiplied with the values of the billboard's "image" to produce the final color. If not specified, the default value is white.
+    Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the billboard. This color value is multiplied with the values of the billboard's {@code image} to produce the final color. If not specified, the default value is white.
     
     
     
@@ -1726,7 +1726,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the billboard. This color value is multiplied with the values of the billboard's "image" to produce the final color. If not specified, the default value is white.
+    Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the billboard. This color value is multiplied with the values of the billboard's {@code image} to produce the final color. If not specified, the default value is white.
     
     
     
@@ -1747,7 +1747,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the billboard. This color value is multiplied with the values of the billboard's "image" to produce the final color. If not specified, the default value is white.
+    Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the billboard. This color value is multiplied with the values of the billboard's {@code image} to produce the final color. If not specified, the default value is white.
     
     
     
@@ -1772,7 +1772,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the billboard. This color value is multiplied with the values of the billboard's "image" to produce the final color. If not specified, the default value is white.
+    Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the billboard. This color value is multiplied with the values of the billboard's {@code image} to produce the final color. If not specified, the default value is white.
     
     
 
@@ -1791,7 +1791,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the billboard. This color value is multiplied with the values of the billboard's "image" to produce the final color. If not specified, the default value is white.
+    Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the billboard. This color value is multiplied with the values of the billboard's {@code image} to produce the final color. If not specified, the default value is white.
     
     
 
@@ -1810,7 +1810,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the billboard. This color value is multiplied with the values of the billboard's "image" to produce the final color. If not specified, the default value is white.
+    Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the billboard. This color value is multiplied with the values of the billboard's {@code image} to produce the final color. If not specified, the default value is white.
     
     
     
@@ -1831,7 +1831,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     /**
     *  
-    Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the billboard. This color value is multiplied with the values of the billboard's "image" to produce the final color. If not specified, the default value is white.
+    Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the billboard. This color value is multiplied with the values of the billboard's {@code image} to produce the final color. If not specified, the default value is white.
     
     
     

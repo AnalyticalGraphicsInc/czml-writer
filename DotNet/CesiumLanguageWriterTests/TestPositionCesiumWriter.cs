@@ -12,8 +12,8 @@ namespace CesiumLanguageWriterTests
         public void ReferenceFrameValueWritesReferenceFrameProperty()
         {
             using (Packet)
-            using (PositionCesiumWriter position = Packet.OpenPositionProperty())
-            using (PositionCesiumWriter interval = position.OpenInterval())
+            using (var position = Packet.OpenPositionProperty())
+            using (var interval = position.OpenInterval())
             {
                 interval.WriteReferenceFrame("myReferenceFrame");
             }
@@ -25,8 +25,8 @@ namespace CesiumLanguageWriterTests
         public void CartesianValueWritesSingleCartesianProperty()
         {
             using (Packet)
-            using (PositionCesiumWriter position = Packet.OpenPositionProperty())
-            using (PositionCesiumWriter interval = position.OpenInterval())
+            using (var position = Packet.OpenPositionProperty())
+            using (var interval = position.OpenInterval())
             {
                 interval.WriteCartesian(new Cartesian(1.0, 2.0, 3.0));
             }
@@ -38,8 +38,8 @@ namespace CesiumLanguageWriterTests
         public void CartographicRadiansValueWritesSingleCartographicRadiansProperty()
         {
             using (Packet)
-            using (PositionCesiumWriter position = Packet.OpenPositionProperty())
-            using (PositionCesiumWriter interval = position.OpenInterval())
+            using (var position = Packet.OpenPositionProperty())
+            using (var interval = position.OpenInterval())
             {
                 interval.WriteCartographicRadians(new Cartographic(1100.0, 2200.0, 3.0));
             }
@@ -50,11 +50,11 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void CartesianValueWritesMultipleCartesianProperty()
         {
-            JulianDate startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0));
+            var startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0));
 
             using (Packet)
-            using (PositionCesiumWriter position = Packet.OpenPositionProperty())
-            using (PositionCesiumWriter interval = position.OpenInterval())
+            using (var position = Packet.OpenPositionProperty())
+            using (var interval = position.OpenInterval())
             {
                 var dates = new List<JulianDate>();
                 var positions = new List<Cartesian>();
@@ -74,11 +74,11 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void CartesianValueSubsetWritesMultipleCartesianProperty()
         {
-            JulianDate startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0));
+            var startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0));
 
             using (Packet)
-            using (PositionCesiumWriter position = Packet.OpenPositionProperty())
-            using (PositionCesiumWriter interval = position.OpenInterval())
+            using (var position = Packet.OpenPositionProperty())
+            using (var interval = position.OpenInterval())
             {
                 var dates = new List<JulianDate>();
                 var positions = new List<Cartesian>();
@@ -101,11 +101,11 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void CartographicRadiansValueWritesMultipleCartographicRadiansProperty()
         {
-            JulianDate startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0));
+            var startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0));
 
             using (Packet)
-            using (PositionCesiumWriter position = Packet.OpenPositionProperty())
-            using (PositionCesiumWriter interval = position.OpenInterval())
+            using (var position = Packet.OpenPositionProperty())
+            using (var interval = position.OpenInterval())
             {
                 var dates = new List<JulianDate>();
                 var positions = new List<Cartographic>();
@@ -125,11 +125,11 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void CartographicRadiansValueSubsetWritesMultipleCartographicRadiansProperty()
         {
-            JulianDate startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0));
+            var startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0));
 
             using (Packet)
-            using (PositionCesiumWriter position = Packet.OpenPositionProperty())
-            using (PositionCesiumWriter interval = position.OpenInterval())
+            using (var position = Packet.OpenPositionProperty())
+            using (var interval = position.OpenInterval())
             {
                 var dates = new List<JulianDate>();
                 var positions = new List<Cartographic>();
@@ -153,8 +153,8 @@ namespace CesiumLanguageWriterTests
         public void CartesianValueWritesEmptyArrayAndDoesNotWriteEpochWhenGivenAnEmptyCollection()
         {
             using (Packet)
-            using (PositionCesiumWriter position = Packet.OpenPositionProperty())
-            using (PositionCesiumWriter interval = position.OpenInterval())
+            using (var position = Packet.OpenPositionProperty())
+            using (var interval = position.OpenInterval())
             {
                 var dates = new List<JulianDate>();
                 var positions = new List<Cartesian>();
@@ -168,8 +168,8 @@ namespace CesiumLanguageWriterTests
         public void CartographicRadiansValueWritesEmptyArrayAndDoesNotWriteEpochWhenGivenAnEmptyCollection()
         {
             using (Packet)
-            using (PositionCesiumWriter position = Packet.OpenPositionProperty())
-            using (PositionCesiumWriter interval = position.OpenInterval())
+            using (var position = Packet.OpenPositionProperty())
+            using (var interval = position.OpenInterval())
             {
                 var dates = new List<JulianDate>();
                 var positions = new List<Cartographic>();
@@ -177,6 +177,43 @@ namespace CesiumLanguageWriterTests
             }
 
             Assert.AreEqual("{\"position\":{\"cartographicRadians\":[]}}", StringWriter.ToString());
+        }
+
+        [Test]
+        public void TestDeletePropertyWithStartAndStop()
+        {
+            var start = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0));
+            var stop = start.AddDays(1.0);
+
+            using (Packet)
+            {
+                Packet.WriteId("id");
+
+                using (var position = Packet.OpenPositionProperty())
+                using (var interval = position.OpenInterval(start, stop))
+                {
+                    interval.WriteDelete(true);
+                }
+            }
+
+            Assert.AreEqual("{\"id\":\"id\",\"position\":{\"interval\":\"20120402T12Z/20120403T12Z\",\"delete\":true}}", StringWriter.ToString());
+        }
+
+        [Test]
+        public void TestDeletePropertyWithNoInterval()
+        {
+            using (Packet)
+            {
+                Packet.WriteId("id");
+
+                using (var position = Packet.OpenPositionProperty())
+                using (var interval = position.OpenInterval())
+                {
+                    interval.WriteDelete(true);
+                }
+            }
+
+            Assert.AreEqual("{\"id\":\"id\",\"position\":{\"delete\":true}}", StringWriter.ToString());
         }
 
         protected override CesiumPropertyWriter<PositionCesiumWriter> CreatePropertyWriter(string propertyName)

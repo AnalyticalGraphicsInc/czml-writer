@@ -23,21 +23,16 @@ import org.junit.Test;
 })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<BillboardCesiumWriter> {
-    @Override
-    protected CesiumPropertyWriter<BillboardCesiumWriter> createPropertyWriter(String propertyName) {
-        return new BillboardCesiumWriter(propertyName);
-    }
-
     @Test
     public final void testShowProperty() {
         {
             final PacketCesiumWriter usingExpression_0 = (getPacket());
             try {
                 {
-                    BillboardCesiumWriter billboard = getPacket().openBillboardProperty();
+                    cesiumlanguagewriter.BillboardCesiumWriter billboard = getPacket().openBillboardProperty();
                     try {
                         {
-                            BillboardCesiumWriter interval = billboard.openInterval();
+                            cesiumlanguagewriter.BillboardCesiumWriter interval = billboard.openInterval();
                             try {
                                 interval.writeShowProperty(true);
                             } finally {
@@ -63,48 +58,48 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
             final PacketCesiumWriter usingExpression_1 = (getPacket());
             try {
                 {
-                    cesiumlanguagewriter.BillboardCesiumWriter billboardWriter = getPacket().openBillboardProperty();
+                    cesiumlanguagewriter.BillboardCesiumWriter billboard = getPacket().openBillboardProperty();
                     try {
                         {
-                            cesiumlanguagewriter.BooleanCesiumWriter showWriter = billboardWriter.openShowProperty();
+                            cesiumlanguagewriter.BooleanCesiumWriter show = billboard.openShowProperty();
                             try {
                                 {
-                                    cesiumlanguagewriter.CesiumIntervalListWriter<cesiumlanguagewriter.BooleanCesiumWriter> intervalListWriter = showWriter.openMultipleIntervals();
+                                    cesiumlanguagewriter.CesiumIntervalListWriter<cesiumlanguagewriter.BooleanCesiumWriter> showIntervals = show.openMultipleIntervals();
                                     try {
                                         {
-                                            cesiumlanguagewriter.BooleanCesiumWriter intervalWriter = intervalListWriter.openInterval(startDate, startDate.addSeconds(1D));
+                                            cesiumlanguagewriter.BooleanCesiumWriter interval = showIntervals.openInterval(startDate, startDate.addSeconds(1D));
                                             try {
-                                                intervalWriter.writeBoolean(true);
+                                                interval.writeBoolean(true);
                                             } finally {
-                                                DisposeHelper.dispose(intervalWriter);
+                                                DisposeHelper.dispose(interval);
                                             }
                                         }
                                         {
-                                            cesiumlanguagewriter.BooleanCesiumWriter intervalWriter = intervalListWriter.openInterval(startDate.addSeconds(1D), startDate.addSeconds(2D));
+                                            cesiumlanguagewriter.BooleanCesiumWriter interval = showIntervals.openInterval(startDate.addSeconds(1D), startDate.addSeconds(2D));
                                             try {
-                                                intervalWriter.writeBoolean(false);
+                                                interval.writeBoolean(false);
                                             } finally {
-                                                DisposeHelper.dispose(intervalWriter);
+                                                DisposeHelper.dispose(interval);
                                             }
                                         }
                                         {
-                                            cesiumlanguagewriter.BooleanCesiumWriter intervalWriter = intervalListWriter.openInterval(startDate.addSeconds(2D), stopDate);
+                                            cesiumlanguagewriter.BooleanCesiumWriter interval = showIntervals.openInterval(startDate.addSeconds(2D), stopDate);
                                             try {
-                                                intervalWriter.writeBoolean(true);
+                                                interval.writeBoolean(true);
                                             } finally {
-                                                DisposeHelper.dispose(intervalWriter);
+                                                DisposeHelper.dispose(interval);
                                             }
                                         }
                                     } finally {
-                                        DisposeHelper.dispose(intervalListWriter);
+                                        DisposeHelper.dispose(showIntervals);
                                     }
                                 }
                             } finally {
-                                DisposeHelper.dispose(showWriter);
+                                DisposeHelper.dispose(show);
                             }
                         }
                     } finally {
-                        DisposeHelper.dispose(billboardWriter);
+                        DisposeHelper.dispose(billboard);
                     }
                 }
             } finally {
@@ -124,10 +119,10 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
             final PacketCesiumWriter usingExpression_2 = (getPacket());
             try {
                 {
-                    BillboardCesiumWriter billboard = getPacket().openBillboardProperty();
+                    cesiumlanguagewriter.BillboardCesiumWriter billboard = getPacket().openBillboardProperty();
                     try {
                         {
-                            BillboardCesiumWriter interval = billboard.openInterval();
+                            cesiumlanguagewriter.BillboardCesiumWriter interval = billboard.openInterval();
                             try {
                                 interval.writeScaleByDistanceProperty(new NearFarScalar(100.0, 1.0, 200.0, 2.0));
                             } finally {
@@ -147,18 +142,18 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
 
     @Test
     public final void testScaleByDistancePropertySamples() {
-        JulianDate startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0D));
+        cesiumlanguagewriter.JulianDate startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0D));
         {
             final PacketCesiumWriter usingExpression_3 = (getPacket());
             try {
                 {
-                    BillboardCesiumWriter billboard = getPacket().openBillboardProperty();
+                    cesiumlanguagewriter.BillboardCesiumWriter billboard = getPacket().openBillboardProperty();
                     try {
                         {
-                            BillboardCesiumWriter interval = billboard.openInterval();
+                            cesiumlanguagewriter.BillboardCesiumWriter interval = billboard.openInterval();
                             try {
                                 {
-                                    NearFarScalarCesiumWriter scaleByDistance = interval.openScaleByDistanceProperty();
+                                    cesiumlanguagewriter.NearFarScalarCesiumWriter scaleByDistance = interval.openScaleByDistanceProperty();
                                     try {
                                         ArrayList<cesiumlanguagewriter.JulianDate> dates = new ArrayList<cesiumlanguagewriter.JulianDate>();
                                         ArrayList<cesiumlanguagewriter.NearFarScalar> values = new ArrayList<cesiumlanguagewriter.NearFarScalar>();
@@ -184,6 +179,65 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
             }
         }
         Assert.assertEquals("{\"billboard\":{\"scaleByDistance\":{\"epoch\":\"20120402T12Z\",\"nearFarScalar\":[0,100,1,200,2,60,200,1,300,2]}}}", getStringWriter().toString());
+    }
+
+    @Test
+    public final void testDeleteAlignedAxis() {
+        {
+            final PacketCesiumWriter usingExpression_4 = (getPacket());
+            try {
+                {
+                    cesiumlanguagewriter.BillboardCesiumWriter billboard = getPacket().openBillboardProperty();
+                    try {
+                        {
+                            cesiumlanguagewriter.AlignedAxisCesiumWriter alignedAxis = billboard.openAlignedAxisProperty();
+                            try {
+                                alignedAxis.writeDelete(true);
+                            } finally {
+                                DisposeHelper.dispose(alignedAxis);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(billboard);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(usingExpression_4);
+            }
+        }
+        Assert.assertEquals("{\"billboard\":{\"alignedAxis\":{\"delete\":true}}}", getStringWriter().toString());
+    }
+
+    @Test
+    public final void testDeleteScale() {
+        {
+            final PacketCesiumWriter usingExpression_5 = (getPacket());
+            try {
+                {
+                    cesiumlanguagewriter.BillboardCesiumWriter billboard = getPacket().openBillboardProperty();
+                    try {
+                        {
+                            cesiumlanguagewriter.DoubleCesiumWriter scale = billboard.openScaleProperty();
+                            try {
+                                scale.writeDelete(true);
+                            } finally {
+                                DisposeHelper.dispose(scale);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(billboard);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(usingExpression_5);
+            }
+        }
+        Assert.assertEquals("{\"billboard\":{\"scale\":{\"delete\":true}}}", getStringWriter().toString());
+    }
+
+    @Override
+    protected CesiumPropertyWriter<BillboardCesiumWriter> createPropertyWriter(String propertyName) {
+        return new BillboardCesiumWriter(propertyName);
     }
 
     @Nonnull
