@@ -10,7 +10,7 @@ using JetBrains.Annotations;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>Clock</c> to a <see cref="CesiumOutputStream" />. A <c>Clock</c> is initial settings for a simulated clock when a document is loaded. The start and stop time are configured using the interval property.
+    /// Writes a <c>Clock</c> to a <see cref="CesiumOutputStream"/>. A <c>Clock</c> is initial settings for a simulated clock when a document is loaded. The start and stop time are configured using the interval property.
     /// </summary>
     public class ClockCesiumWriter : CesiumPropertyWriter<ClockCesiumWriter>
     {
@@ -53,7 +53,7 @@ namespace CesiumLanguageWriter
         {
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override ClockCesiumWriter Clone()
         {
             return new ClockCesiumWriter(this);

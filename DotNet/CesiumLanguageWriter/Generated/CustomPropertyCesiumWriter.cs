@@ -12,9 +12,9 @@ using System.Drawing;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>CustomProperty</c> to a <see cref="CesiumOutputStream" />. A <c>CustomProperty</c> is a custom property.
+    /// Writes a <c>CustomProperty</c> to a <see cref="CesiumOutputStream"/>. A <c>CustomProperty</c> is a custom property.
     /// </summary>
-    public class CustomPropertyCesiumWriter : CesiumInterpolatablePropertyWriter<CustomPropertyCesiumWriter>
+    public class CustomPropertyCesiumWriter : CesiumInterpolatablePropertyWriter<CustomPropertyCesiumWriter>, ICesiumDeletablePropertyWriter, ICesiumBooleanValuePropertyWriter, ICesiumBoundingRectangleValuePropertyWriter, ICesiumCartesian3ValuePropertyWriter, ICesiumCartographicDegreesValuePropertyWriter, ICesiumCartographicRadiansValuePropertyWriter, ICesiumCartesian2ValuePropertyWriter, ICesiumUnitCartesian3ValuePropertyWriter, ICesiumSphericalValuePropertyWriter, ICesiumUnitSphericalValuePropertyWriter, ICesiumRgbaValuePropertyWriter, ICesiumRgbafValuePropertyWriter, ICesiumColorBlendModeValuePropertyWriter, ICesiumCornerTypeValuePropertyWriter, ICesiumHeightReferenceValuePropertyWriter, ICesiumHorizontalOriginValuePropertyWriter, ICesiumLabelStyleValuePropertyWriter, ICesiumDoubleValuePropertyWriter, ICesiumNearFarScalarValuePropertyWriter, ICesiumUnitQuaternionValuePropertyWriter, ICesiumShadowModeValuePropertyWriter, ICesiumStringValuePropertyWriter, ICesiumStripeOrientationValuePropertyWriter, ICesiumCartographicRectangleRadiansValuePropertyWriter, ICesiumCartographicRectangleDegreesValuePropertyWriter, ICesiumUriValuePropertyWriter, ICesiumVerticalOriginValuePropertyWriter
     {
         /// <summary>
         /// The name of the <c>boolean</c> property.
@@ -151,32 +151,32 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string DeletePropertyName = "delete";
 
-        private readonly Lazy<ICesiumValuePropertyWriter<bool>> m_asBoolean;
-        private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>> m_asBoundingRectangle;
-        private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<Cartesian>> m_asCartesian;
-        private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<Cartographic>> m_asCartographicRadians;
-        private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<Cartographic>> m_asCartographicDegrees;
-        private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<Rectangular>> m_asCartesian2;
-        private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<UnitCartesian>> m_asUnitCartesian;
-        private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<Spherical>> m_asSpherical;
-        private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<UnitSpherical>> m_asUnitSpherical;
-        private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<Color>> m_asRgba;
-        private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<Color>> m_asRgbaf;
-        private readonly Lazy<ICesiumValuePropertyWriter<CesiumColorBlendMode>> m_asColorBlendMode;
-        private readonly Lazy<ICesiumValuePropertyWriter<CesiumCornerType>> m_asCornerType;
-        private readonly Lazy<ICesiumValuePropertyWriter<CesiumHeightReference>> m_asHeightReference;
-        private readonly Lazy<ICesiumValuePropertyWriter<CesiumHorizontalOrigin>> m_asHorizontalOrigin;
-        private readonly Lazy<ICesiumValuePropertyWriter<CesiumLabelStyle>> m_asLabelStyle;
-        private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<double>> m_asNumber;
-        private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<NearFarScalar>> m_asNearFarScalar;
-        private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<UnitQuaternion>> m_asUnitQuaternion;
-        private readonly Lazy<ICesiumValuePropertyWriter<CesiumShadowMode>> m_asShadowMode;
-        private readonly Lazy<ICesiumValuePropertyWriter<string>> m_asString;
-        private readonly Lazy<ICesiumValuePropertyWriter<CesiumStripeOrientation>> m_asStripeOrientation;
-        private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<CartographicExtent>> m_asWsen;
-        private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<CartographicExtent>> m_asWsenDegrees;
-        private readonly Lazy<ICesiumValuePropertyWriter<CesiumResource>> m_asUri;
-        private readonly Lazy<ICesiumValuePropertyWriter<CesiumVerticalOrigin>> m_asVerticalOrigin;
+        private readonly Lazy<CesiumBooleanValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asBoolean;
+        private readonly Lazy<CesiumBoundingRectangleValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asBoundingRectangle;
+        private readonly Lazy<CesiumCartesian3ValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asCartesian;
+        private readonly Lazy<CesiumCartographicRadiansValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asCartographicRadians;
+        private readonly Lazy<CesiumCartographicDegreesValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asCartographicDegrees;
+        private readonly Lazy<CesiumCartesian2ValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asCartesian2;
+        private readonly Lazy<CesiumUnitCartesian3ValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asUnitCartesian;
+        private readonly Lazy<CesiumSphericalValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asSpherical;
+        private readonly Lazy<CesiumUnitSphericalValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asUnitSpherical;
+        private readonly Lazy<CesiumRgbaValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asRgba;
+        private readonly Lazy<CesiumRgbafValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asRgbaf;
+        private readonly Lazy<CesiumColorBlendModeValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asColorBlendMode;
+        private readonly Lazy<CesiumCornerTypeValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asCornerType;
+        private readonly Lazy<CesiumHeightReferenceValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asHeightReference;
+        private readonly Lazy<CesiumHorizontalOriginValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asHorizontalOrigin;
+        private readonly Lazy<CesiumLabelStyleValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asLabelStyle;
+        private readonly Lazy<CesiumDoubleValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asNumber;
+        private readonly Lazy<CesiumNearFarScalarValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asNearFarScalar;
+        private readonly Lazy<CesiumUnitQuaternionValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asUnitQuaternion;
+        private readonly Lazy<CesiumShadowModeValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asShadowMode;
+        private readonly Lazy<CesiumStringValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asString;
+        private readonly Lazy<CesiumStripeOrientationValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asStripeOrientation;
+        private readonly Lazy<CesiumCartographicRectangleRadiansValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asWsen;
+        private readonly Lazy<CesiumCartographicRectangleDegreesValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asWsenDegrees;
+        private readonly Lazy<CesiumUriValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asUri;
+        private readonly Lazy<CesiumVerticalOriginValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asVerticalOrigin;
 
         /// <summary>
         /// Initializes a new instance.
@@ -185,32 +185,32 @@ namespace CesiumLanguageWriter
         public CustomPropertyCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
-            m_asBoolean = new Lazy<ICesiumValuePropertyWriter<bool>>(CreateBooleanAdaptor, false);
-            m_asBoundingRectangle = new Lazy<ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>>(CreateBoundingRectangleAdaptor, false);
-            m_asCartesian = new Lazy<ICesiumInterpolatableValuePropertyWriter<Cartesian>>(CreateCartesianAdaptor, false);
-            m_asCartographicRadians = new Lazy<ICesiumInterpolatableValuePropertyWriter<Cartographic>>(CreateCartographicRadiansAdaptor, false);
-            m_asCartographicDegrees = new Lazy<ICesiumInterpolatableValuePropertyWriter<Cartographic>>(CreateCartographicDegreesAdaptor, false);
-            m_asCartesian2 = new Lazy<ICesiumInterpolatableValuePropertyWriter<Rectangular>>(CreateCartesian2Adaptor, false);
-            m_asUnitCartesian = new Lazy<ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(CreateUnitCartesianAdaptor, false);
-            m_asSpherical = new Lazy<ICesiumInterpolatableValuePropertyWriter<Spherical>>(CreateSphericalAdaptor, false);
-            m_asUnitSpherical = new Lazy<ICesiumInterpolatableValuePropertyWriter<UnitSpherical>>(CreateUnitSphericalAdaptor, false);
-            m_asRgba = new Lazy<ICesiumInterpolatableValuePropertyWriter<Color>>(CreateRgbaAdaptor, false);
-            m_asRgbaf = new Lazy<ICesiumInterpolatableValuePropertyWriter<Color>>(CreateRgbafAdaptor, false);
-            m_asColorBlendMode = new Lazy<ICesiumValuePropertyWriter<CesiumColorBlendMode>>(CreateColorBlendModeAdaptor, false);
-            m_asCornerType = new Lazy<ICesiumValuePropertyWriter<CesiumCornerType>>(CreateCornerTypeAdaptor, false);
-            m_asHeightReference = new Lazy<ICesiumValuePropertyWriter<CesiumHeightReference>>(CreateHeightReferenceAdaptor, false);
-            m_asHorizontalOrigin = new Lazy<ICesiumValuePropertyWriter<CesiumHorizontalOrigin>>(CreateHorizontalOriginAdaptor, false);
-            m_asLabelStyle = new Lazy<ICesiumValuePropertyWriter<CesiumLabelStyle>>(CreateLabelStyleAdaptor, false);
-            m_asNumber = new Lazy<ICesiumInterpolatableValuePropertyWriter<double>>(CreateNumberAdaptor, false);
-            m_asNearFarScalar = new Lazy<ICesiumInterpolatableValuePropertyWriter<NearFarScalar>>(CreateNearFarScalarAdaptor, false);
-            m_asUnitQuaternion = new Lazy<ICesiumInterpolatableValuePropertyWriter<UnitQuaternion>>(CreateUnitQuaternionAdaptor, false);
-            m_asShadowMode = new Lazy<ICesiumValuePropertyWriter<CesiumShadowMode>>(CreateShadowModeAdaptor, false);
-            m_asString = new Lazy<ICesiumValuePropertyWriter<string>>(CreateStringAdaptor, false);
-            m_asStripeOrientation = new Lazy<ICesiumValuePropertyWriter<CesiumStripeOrientation>>(CreateStripeOrientationAdaptor, false);
-            m_asWsen = new Lazy<ICesiumInterpolatableValuePropertyWriter<CartographicExtent>>(CreateWsenAdaptor, false);
-            m_asWsenDegrees = new Lazy<ICesiumInterpolatableValuePropertyWriter<CartographicExtent>>(CreateWsenDegreesAdaptor, false);
-            m_asUri = new Lazy<ICesiumValuePropertyWriter<CesiumResource>>(CreateUriAdaptor, false);
-            m_asVerticalOrigin = new Lazy<ICesiumValuePropertyWriter<CesiumVerticalOrigin>>(CreateVerticalOriginAdaptor, false);
+            m_asBoolean = CreateAsBoolean();
+            m_asBoundingRectangle = CreateAsBoundingRectangle();
+            m_asCartesian = CreateAsCartesian();
+            m_asCartographicRadians = CreateAsCartographicRadians();
+            m_asCartographicDegrees = CreateAsCartographicDegrees();
+            m_asCartesian2 = CreateAsCartesian2();
+            m_asUnitCartesian = CreateAsUnitCartesian();
+            m_asSpherical = CreateAsSpherical();
+            m_asUnitSpherical = CreateAsUnitSpherical();
+            m_asRgba = CreateAsRgba();
+            m_asRgbaf = CreateAsRgbaf();
+            m_asColorBlendMode = CreateAsColorBlendMode();
+            m_asCornerType = CreateAsCornerType();
+            m_asHeightReference = CreateAsHeightReference();
+            m_asHorizontalOrigin = CreateAsHorizontalOrigin();
+            m_asLabelStyle = CreateAsLabelStyle();
+            m_asNumber = CreateAsNumber();
+            m_asNearFarScalar = CreateAsNearFarScalar();
+            m_asUnitQuaternion = CreateAsUnitQuaternion();
+            m_asShadowMode = CreateAsShadowMode();
+            m_asString = CreateAsString();
+            m_asStripeOrientation = CreateAsStripeOrientation();
+            m_asWsen = CreateAsWsen();
+            m_asWsenDegrees = CreateAsWsenDegrees();
+            m_asUri = CreateAsUri();
+            m_asVerticalOrigin = CreateAsVerticalOrigin();
         }
 
         /// <summary>
@@ -220,35 +220,35 @@ namespace CesiumLanguageWriter
         protected CustomPropertyCesiumWriter([NotNull] CustomPropertyCesiumWriter existingInstance)
             : base(existingInstance)
         {
-            m_asBoolean = new Lazy<ICesiumValuePropertyWriter<bool>>(CreateBooleanAdaptor, false);
-            m_asBoundingRectangle = new Lazy<ICesiumInterpolatableValuePropertyWriter<BoundingRectangle>>(CreateBoundingRectangleAdaptor, false);
-            m_asCartesian = new Lazy<ICesiumInterpolatableValuePropertyWriter<Cartesian>>(CreateCartesianAdaptor, false);
-            m_asCartographicRadians = new Lazy<ICesiumInterpolatableValuePropertyWriter<Cartographic>>(CreateCartographicRadiansAdaptor, false);
-            m_asCartographicDegrees = new Lazy<ICesiumInterpolatableValuePropertyWriter<Cartographic>>(CreateCartographicDegreesAdaptor, false);
-            m_asCartesian2 = new Lazy<ICesiumInterpolatableValuePropertyWriter<Rectangular>>(CreateCartesian2Adaptor, false);
-            m_asUnitCartesian = new Lazy<ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(CreateUnitCartesianAdaptor, false);
-            m_asSpherical = new Lazy<ICesiumInterpolatableValuePropertyWriter<Spherical>>(CreateSphericalAdaptor, false);
-            m_asUnitSpherical = new Lazy<ICesiumInterpolatableValuePropertyWriter<UnitSpherical>>(CreateUnitSphericalAdaptor, false);
-            m_asRgba = new Lazy<ICesiumInterpolatableValuePropertyWriter<Color>>(CreateRgbaAdaptor, false);
-            m_asRgbaf = new Lazy<ICesiumInterpolatableValuePropertyWriter<Color>>(CreateRgbafAdaptor, false);
-            m_asColorBlendMode = new Lazy<ICesiumValuePropertyWriter<CesiumColorBlendMode>>(CreateColorBlendModeAdaptor, false);
-            m_asCornerType = new Lazy<ICesiumValuePropertyWriter<CesiumCornerType>>(CreateCornerTypeAdaptor, false);
-            m_asHeightReference = new Lazy<ICesiumValuePropertyWriter<CesiumHeightReference>>(CreateHeightReferenceAdaptor, false);
-            m_asHorizontalOrigin = new Lazy<ICesiumValuePropertyWriter<CesiumHorizontalOrigin>>(CreateHorizontalOriginAdaptor, false);
-            m_asLabelStyle = new Lazy<ICesiumValuePropertyWriter<CesiumLabelStyle>>(CreateLabelStyleAdaptor, false);
-            m_asNumber = new Lazy<ICesiumInterpolatableValuePropertyWriter<double>>(CreateNumberAdaptor, false);
-            m_asNearFarScalar = new Lazy<ICesiumInterpolatableValuePropertyWriter<NearFarScalar>>(CreateNearFarScalarAdaptor, false);
-            m_asUnitQuaternion = new Lazy<ICesiumInterpolatableValuePropertyWriter<UnitQuaternion>>(CreateUnitQuaternionAdaptor, false);
-            m_asShadowMode = new Lazy<ICesiumValuePropertyWriter<CesiumShadowMode>>(CreateShadowModeAdaptor, false);
-            m_asString = new Lazy<ICesiumValuePropertyWriter<string>>(CreateStringAdaptor, false);
-            m_asStripeOrientation = new Lazy<ICesiumValuePropertyWriter<CesiumStripeOrientation>>(CreateStripeOrientationAdaptor, false);
-            m_asWsen = new Lazy<ICesiumInterpolatableValuePropertyWriter<CartographicExtent>>(CreateWsenAdaptor, false);
-            m_asWsenDegrees = new Lazy<ICesiumInterpolatableValuePropertyWriter<CartographicExtent>>(CreateWsenDegreesAdaptor, false);
-            m_asUri = new Lazy<ICesiumValuePropertyWriter<CesiumResource>>(CreateUriAdaptor, false);
-            m_asVerticalOrigin = new Lazy<ICesiumValuePropertyWriter<CesiumVerticalOrigin>>(CreateVerticalOriginAdaptor, false);
+            m_asBoolean = CreateAsBoolean();
+            m_asBoundingRectangle = CreateAsBoundingRectangle();
+            m_asCartesian = CreateAsCartesian();
+            m_asCartographicRadians = CreateAsCartographicRadians();
+            m_asCartographicDegrees = CreateAsCartographicDegrees();
+            m_asCartesian2 = CreateAsCartesian2();
+            m_asUnitCartesian = CreateAsUnitCartesian();
+            m_asSpherical = CreateAsSpherical();
+            m_asUnitSpherical = CreateAsUnitSpherical();
+            m_asRgba = CreateAsRgba();
+            m_asRgbaf = CreateAsRgbaf();
+            m_asColorBlendMode = CreateAsColorBlendMode();
+            m_asCornerType = CreateAsCornerType();
+            m_asHeightReference = CreateAsHeightReference();
+            m_asHorizontalOrigin = CreateAsHorizontalOrigin();
+            m_asLabelStyle = CreateAsLabelStyle();
+            m_asNumber = CreateAsNumber();
+            m_asNearFarScalar = CreateAsNearFarScalar();
+            m_asUnitQuaternion = CreateAsUnitQuaternion();
+            m_asShadowMode = CreateAsShadowMode();
+            m_asString = CreateAsString();
+            m_asStripeOrientation = CreateAsStripeOrientation();
+            m_asWsen = CreateAsWsen();
+            m_asWsenDegrees = CreateAsWsenDegrees();
+            m_asUri = CreateAsUri();
+            m_asVerticalOrigin = CreateAsVerticalOrigin();
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override CustomPropertyCesiumWriter Clone()
         {
             return new CustomPropertyCesiumWriter(this);
@@ -345,7 +345,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>cartographicRadians</c>, which is the property specified in Cartographic WGS84 coordinates, <c>[Longitude, Latitude, Height]</c>, where Longitude and Latitude are in radians.
+        /// Writes the value expressed as a <c>cartographicRadians</c>, which is the property specified in Cartographic WGS84 coordinates, <c>[Longitude, Latitude, Height]</c>, where Longitude and Latitude are in radians and Height is in meters.
         /// </summary>
         /// <param name="value">The interval.</param>
         public void WriteCartographicRadians(Cartographic value)
@@ -357,7 +357,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>cartographicRadians</c>, which is the property specified in Cartographic WGS84 coordinates, <c>[Longitude, Latitude, Height]</c>, where Longitude and Latitude are in radians.
+        /// Writes the value expressed as a <c>cartographicRadians</c>, which is the property specified in Cartographic WGS84 coordinates, <c>[Longitude, Latitude, Height]</c>, where Longitude and Latitude are in radians and Height is in meters.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -367,7 +367,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>cartographicRadians</c>, which is the property specified in Cartographic WGS84 coordinates, <c>[Longitude, Latitude, Height]</c>, where Longitude and Latitude are in radians.
+        /// Writes the value expressed as a <c>cartographicRadians</c>, which is the property specified in Cartographic WGS84 coordinates, <c>[Longitude, Latitude, Height]</c>, where Longitude and Latitude are in radians and Height is in meters.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The position corresponding to each date.</param>
@@ -381,7 +381,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>cartographicDegrees</c>, which is the property specified in Cartographic WGS84 coordinates, <c>[Longitude, Latitude, Height]</c>, where Longitude and Latitude are in degrees.
+        /// Writes the value expressed as a <c>cartographicDegrees</c>, which is the property specified in Cartographic WGS84 coordinates, <c>[Longitude, Latitude, Height]</c>, where Longitude and Latitude are in degrees and Height is in meters.
         /// </summary>
         /// <param name="value">The interval.</param>
         public void WriteCartographicDegrees(Cartographic value)
@@ -393,7 +393,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>cartographicDegrees</c>, which is the property specified in Cartographic WGS84 coordinates, <c>[Longitude, Latitude, Height]</c>, where Longitude and Latitude are in degrees.
+        /// Writes the value expressed as a <c>cartographicDegrees</c>, which is the property specified in Cartographic WGS84 coordinates, <c>[Longitude, Latitude, Height]</c>, where Longitude and Latitude are in degrees and Height is in meters.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -403,7 +403,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>cartographicDegrees</c>, which is the property specified in Cartographic WGS84 coordinates, <c>[Longitude, Latitude, Height]</c>, where Longitude and Latitude are in degrees.
+        /// Writes the value expressed as a <c>cartographicDegrees</c>, which is the property specified in Cartographic WGS84 coordinates, <c>[Longitude, Latitude, Height]</c>, where Longitude and Latitude are in degrees and Height is in meters.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The position corresponding to each date.</param>
@@ -1086,367 +1086,497 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>Boolean</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumBooleanValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<bool> AsBoolean()
+        public CesiumBooleanValuePropertyAdaptor<CustomPropertyCesiumWriter> AsBoolean()
         {
             return m_asBoolean.Value;
         }
 
-        private ICesiumValuePropertyWriter<bool> CreateBooleanAdaptor()
+        private Lazy<CesiumBooleanValuePropertyAdaptor<CustomPropertyCesiumWriter>> CreateAsBoolean()
         {
-            return new CesiumWriterAdaptor<CustomPropertyCesiumWriter, bool>(this, (me, value) => me.WriteBoolean(value));
+            return new Lazy<CesiumBooleanValuePropertyAdaptor<CustomPropertyCesiumWriter>>(CreateBoolean, false);
+        }
+
+        private CesiumBooleanValuePropertyAdaptor<CustomPropertyCesiumWriter> CreateBoolean()
+        {
+            return CesiumValuePropertyAdaptors.CreateBoolean(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <c>BoundingRectangle</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumBoundingRectangleValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumInterpolatableValuePropertyWriter<BoundingRectangle> AsBoundingRectangle()
+        public CesiumBoundingRectangleValuePropertyAdaptor<CustomPropertyCesiumWriter> AsBoundingRectangle()
         {
             return m_asBoundingRectangle.Value;
         }
 
-        private ICesiumInterpolatableValuePropertyWriter<BoundingRectangle> CreateBoundingRectangleAdaptor()
+        private Lazy<CesiumBoundingRectangleValuePropertyAdaptor<CustomPropertyCesiumWriter>> CreateAsBoundingRectangle()
         {
-            return new CesiumInterpolatableWriterAdaptor<CustomPropertyCesiumWriter, BoundingRectangle>(this, (me, value) => me.WriteBoundingRectangle(value), (me, dates, values, startIndex, length) => me.WriteBoundingRectangle(dates, values, startIndex, length));
+            return new Lazy<CesiumBoundingRectangleValuePropertyAdaptor<CustomPropertyCesiumWriter>>(CreateBoundingRectangle, false);
+        }
+
+        private CesiumBoundingRectangleValuePropertyAdaptor<CustomPropertyCesiumWriter> CreateBoundingRectangle()
+        {
+            return CesiumValuePropertyAdaptors.CreateBoundingRectangle(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <c>Cartesian</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumCartesian3ValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumInterpolatableValuePropertyWriter<Cartesian> AsCartesian()
+        public CesiumCartesian3ValuePropertyAdaptor<CustomPropertyCesiumWriter> AsCartesian()
         {
             return m_asCartesian.Value;
         }
 
-        private ICesiumInterpolatableValuePropertyWriter<Cartesian> CreateCartesianAdaptor()
+        private Lazy<CesiumCartesian3ValuePropertyAdaptor<CustomPropertyCesiumWriter>> CreateAsCartesian()
         {
-            return new CesiumInterpolatableWriterAdaptor<CustomPropertyCesiumWriter, Cartesian>(this, (me, value) => me.WriteCartesian(value), (me, dates, values, startIndex, length) => me.WriteCartesian(dates, values, startIndex, length));
+            return new Lazy<CesiumCartesian3ValuePropertyAdaptor<CustomPropertyCesiumWriter>>(CreateCartesian3, false);
+        }
+
+        private CesiumCartesian3ValuePropertyAdaptor<CustomPropertyCesiumWriter> CreateCartesian3()
+        {
+            return CesiumValuePropertyAdaptors.CreateCartesian3(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <c>CartographicRadians</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumCartographicRadiansValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumInterpolatableValuePropertyWriter<Cartographic> AsCartographicRadians()
+        public CesiumCartographicRadiansValuePropertyAdaptor<CustomPropertyCesiumWriter> AsCartographicRadians()
         {
             return m_asCartographicRadians.Value;
         }
 
-        private ICesiumInterpolatableValuePropertyWriter<Cartographic> CreateCartographicRadiansAdaptor()
+        private Lazy<CesiumCartographicRadiansValuePropertyAdaptor<CustomPropertyCesiumWriter>> CreateAsCartographicRadians()
         {
-            return new CesiumInterpolatableWriterAdaptor<CustomPropertyCesiumWriter, Cartographic>(this, (me, value) => me.WriteCartographicRadians(value), (me, dates, values, startIndex, length) => me.WriteCartographicRadians(dates, values, startIndex, length));
+            return new Lazy<CesiumCartographicRadiansValuePropertyAdaptor<CustomPropertyCesiumWriter>>(CreateCartographicRadians, false);
+        }
+
+        private CesiumCartographicRadiansValuePropertyAdaptor<CustomPropertyCesiumWriter> CreateCartographicRadians()
+        {
+            return CesiumValuePropertyAdaptors.CreateCartographicRadians(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <c>CartographicDegrees</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumCartographicDegreesValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumInterpolatableValuePropertyWriter<Cartographic> AsCartographicDegrees()
+        public CesiumCartographicDegreesValuePropertyAdaptor<CustomPropertyCesiumWriter> AsCartographicDegrees()
         {
             return m_asCartographicDegrees.Value;
         }
 
-        private ICesiumInterpolatableValuePropertyWriter<Cartographic> CreateCartographicDegreesAdaptor()
+        private Lazy<CesiumCartographicDegreesValuePropertyAdaptor<CustomPropertyCesiumWriter>> CreateAsCartographicDegrees()
         {
-            return new CesiumInterpolatableWriterAdaptor<CustomPropertyCesiumWriter, Cartographic>(this, (me, value) => me.WriteCartographicDegrees(value), (me, dates, values, startIndex, length) => me.WriteCartographicDegrees(dates, values, startIndex, length));
+            return new Lazy<CesiumCartographicDegreesValuePropertyAdaptor<CustomPropertyCesiumWriter>>(CreateCartographicDegrees, false);
+        }
+
+        private CesiumCartographicDegreesValuePropertyAdaptor<CustomPropertyCesiumWriter> CreateCartographicDegrees()
+        {
+            return CesiumValuePropertyAdaptors.CreateCartographicDegrees(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <c>Cartesian2</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumCartesian2ValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumInterpolatableValuePropertyWriter<Rectangular> AsCartesian2()
+        public CesiumCartesian2ValuePropertyAdaptor<CustomPropertyCesiumWriter> AsCartesian2()
         {
             return m_asCartesian2.Value;
         }
 
-        private ICesiumInterpolatableValuePropertyWriter<Rectangular> CreateCartesian2Adaptor()
+        private Lazy<CesiumCartesian2ValuePropertyAdaptor<CustomPropertyCesiumWriter>> CreateAsCartesian2()
         {
-            return new CesiumInterpolatableWriterAdaptor<CustomPropertyCesiumWriter, Rectangular>(this, (me, value) => me.WriteCartesian2(value), (me, dates, values, startIndex, length) => me.WriteCartesian2(dates, values, startIndex, length));
+            return new Lazy<CesiumCartesian2ValuePropertyAdaptor<CustomPropertyCesiumWriter>>(CreateCartesian2, false);
+        }
+
+        private CesiumCartesian2ValuePropertyAdaptor<CustomPropertyCesiumWriter> CreateCartesian2()
+        {
+            return CesiumValuePropertyAdaptors.CreateCartesian2(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <c>UnitCartesian</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumUnitCartesian3ValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumInterpolatableValuePropertyWriter<UnitCartesian> AsUnitCartesian()
+        public CesiumUnitCartesian3ValuePropertyAdaptor<CustomPropertyCesiumWriter> AsUnitCartesian()
         {
             return m_asUnitCartesian.Value;
         }
 
-        private ICesiumInterpolatableValuePropertyWriter<UnitCartesian> CreateUnitCartesianAdaptor()
+        private Lazy<CesiumUnitCartesian3ValuePropertyAdaptor<CustomPropertyCesiumWriter>> CreateAsUnitCartesian()
         {
-            return new CesiumInterpolatableWriterAdaptor<CustomPropertyCesiumWriter, UnitCartesian>(this, (me, value) => me.WriteUnitCartesian(value), (me, dates, values, startIndex, length) => me.WriteUnitCartesian(dates, values, startIndex, length));
+            return new Lazy<CesiumUnitCartesian3ValuePropertyAdaptor<CustomPropertyCesiumWriter>>(CreateUnitCartesian3, false);
+        }
+
+        private CesiumUnitCartesian3ValuePropertyAdaptor<CustomPropertyCesiumWriter> CreateUnitCartesian3()
+        {
+            return CesiumValuePropertyAdaptors.CreateUnitCartesian3(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <c>Spherical</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumSphericalValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumInterpolatableValuePropertyWriter<Spherical> AsSpherical()
+        public CesiumSphericalValuePropertyAdaptor<CustomPropertyCesiumWriter> AsSpherical()
         {
             return m_asSpherical.Value;
         }
 
-        private ICesiumInterpolatableValuePropertyWriter<Spherical> CreateSphericalAdaptor()
+        private Lazy<CesiumSphericalValuePropertyAdaptor<CustomPropertyCesiumWriter>> CreateAsSpherical()
         {
-            return new CesiumInterpolatableWriterAdaptor<CustomPropertyCesiumWriter, Spherical>(this, (me, value) => me.WriteSpherical(value), (me, dates, values, startIndex, length) => me.WriteSpherical(dates, values, startIndex, length));
+            return new Lazy<CesiumSphericalValuePropertyAdaptor<CustomPropertyCesiumWriter>>(CreateSpherical, false);
+        }
+
+        private CesiumSphericalValuePropertyAdaptor<CustomPropertyCesiumWriter> CreateSpherical()
+        {
+            return CesiumValuePropertyAdaptors.CreateSpherical(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <c>UnitSpherical</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumUnitSphericalValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumInterpolatableValuePropertyWriter<UnitSpherical> AsUnitSpherical()
+        public CesiumUnitSphericalValuePropertyAdaptor<CustomPropertyCesiumWriter> AsUnitSpherical()
         {
             return m_asUnitSpherical.Value;
         }
 
-        private ICesiumInterpolatableValuePropertyWriter<UnitSpherical> CreateUnitSphericalAdaptor()
+        private Lazy<CesiumUnitSphericalValuePropertyAdaptor<CustomPropertyCesiumWriter>> CreateAsUnitSpherical()
         {
-            return new CesiumInterpolatableWriterAdaptor<CustomPropertyCesiumWriter, UnitSpherical>(this, (me, value) => me.WriteUnitSpherical(value), (me, dates, values, startIndex, length) => me.WriteUnitSpherical(dates, values, startIndex, length));
+            return new Lazy<CesiumUnitSphericalValuePropertyAdaptor<CustomPropertyCesiumWriter>>(CreateUnitSpherical, false);
+        }
+
+        private CesiumUnitSphericalValuePropertyAdaptor<CustomPropertyCesiumWriter> CreateUnitSpherical()
+        {
+            return CesiumValuePropertyAdaptors.CreateUnitSpherical(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <c>Rgba</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumRgbaValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumInterpolatableValuePropertyWriter<Color> AsRgba()
+        public CesiumRgbaValuePropertyAdaptor<CustomPropertyCesiumWriter> AsRgba()
         {
             return m_asRgba.Value;
         }
 
-        private ICesiumInterpolatableValuePropertyWriter<Color> CreateRgbaAdaptor()
+        private Lazy<CesiumRgbaValuePropertyAdaptor<CustomPropertyCesiumWriter>> CreateAsRgba()
         {
-            return new CesiumInterpolatableWriterAdaptor<CustomPropertyCesiumWriter, Color>(this, (me, value) => me.WriteRgba(value), (me, dates, values, startIndex, length) => me.WriteRgba(dates, values, startIndex, length));
+            return new Lazy<CesiumRgbaValuePropertyAdaptor<CustomPropertyCesiumWriter>>(CreateRgba, false);
+        }
+
+        private CesiumRgbaValuePropertyAdaptor<CustomPropertyCesiumWriter> CreateRgba()
+        {
+            return CesiumValuePropertyAdaptors.CreateRgba(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <c>Rgbaf</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumRgbafValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumInterpolatableValuePropertyWriter<Color> AsRgbaf()
+        public CesiumRgbafValuePropertyAdaptor<CustomPropertyCesiumWriter> AsRgbaf()
         {
             return m_asRgbaf.Value;
         }
 
-        private ICesiumInterpolatableValuePropertyWriter<Color> CreateRgbafAdaptor()
+        private Lazy<CesiumRgbafValuePropertyAdaptor<CustomPropertyCesiumWriter>> CreateAsRgbaf()
         {
-            return new CesiumInterpolatableWriterAdaptor<CustomPropertyCesiumWriter, Color>(this, (me, value) => me.WriteRgbaf(value), (me, dates, values, startIndex, length) => me.WriteRgbaf(dates, values, startIndex, length));
+            return new Lazy<CesiumRgbafValuePropertyAdaptor<CustomPropertyCesiumWriter>>(CreateRgbaf, false);
+        }
+
+        private CesiumRgbafValuePropertyAdaptor<CustomPropertyCesiumWriter> CreateRgbaf()
+        {
+            return CesiumValuePropertyAdaptors.CreateRgbaf(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>ColorBlendMode</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumColorBlendModeValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<CesiumColorBlendMode> AsColorBlendMode()
+        public CesiumColorBlendModeValuePropertyAdaptor<CustomPropertyCesiumWriter> AsColorBlendMode()
         {
             return m_asColorBlendMode.Value;
         }
 
-        private ICesiumValuePropertyWriter<CesiumColorBlendMode> CreateColorBlendModeAdaptor()
+        private Lazy<CesiumColorBlendModeValuePropertyAdaptor<CustomPropertyCesiumWriter>> CreateAsColorBlendMode()
         {
-            return new CesiumWriterAdaptor<CustomPropertyCesiumWriter, CesiumColorBlendMode>(this, (me, value) => me.WriteColorBlendMode(value));
+            return new Lazy<CesiumColorBlendModeValuePropertyAdaptor<CustomPropertyCesiumWriter>>(CreateColorBlendMode, false);
+        }
+
+        private CesiumColorBlendModeValuePropertyAdaptor<CustomPropertyCesiumWriter> CreateColorBlendMode()
+        {
+            return CesiumValuePropertyAdaptors.CreateColorBlendMode(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>CornerType</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumCornerTypeValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<CesiumCornerType> AsCornerType()
+        public CesiumCornerTypeValuePropertyAdaptor<CustomPropertyCesiumWriter> AsCornerType()
         {
             return m_asCornerType.Value;
         }
 
-        private ICesiumValuePropertyWriter<CesiumCornerType> CreateCornerTypeAdaptor()
+        private Lazy<CesiumCornerTypeValuePropertyAdaptor<CustomPropertyCesiumWriter>> CreateAsCornerType()
         {
-            return new CesiumWriterAdaptor<CustomPropertyCesiumWriter, CesiumCornerType>(this, (me, value) => me.WriteCornerType(value));
+            return new Lazy<CesiumCornerTypeValuePropertyAdaptor<CustomPropertyCesiumWriter>>(CreateCornerType, false);
+        }
+
+        private CesiumCornerTypeValuePropertyAdaptor<CustomPropertyCesiumWriter> CreateCornerType()
+        {
+            return CesiumValuePropertyAdaptors.CreateCornerType(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>HeightReference</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumHeightReferenceValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<CesiumHeightReference> AsHeightReference()
+        public CesiumHeightReferenceValuePropertyAdaptor<CustomPropertyCesiumWriter> AsHeightReference()
         {
             return m_asHeightReference.Value;
         }
 
-        private ICesiumValuePropertyWriter<CesiumHeightReference> CreateHeightReferenceAdaptor()
+        private Lazy<CesiumHeightReferenceValuePropertyAdaptor<CustomPropertyCesiumWriter>> CreateAsHeightReference()
         {
-            return new CesiumWriterAdaptor<CustomPropertyCesiumWriter, CesiumHeightReference>(this, (me, value) => me.WriteHeightReference(value));
+            return new Lazy<CesiumHeightReferenceValuePropertyAdaptor<CustomPropertyCesiumWriter>>(CreateHeightReference, false);
+        }
+
+        private CesiumHeightReferenceValuePropertyAdaptor<CustomPropertyCesiumWriter> CreateHeightReference()
+        {
+            return CesiumValuePropertyAdaptors.CreateHeightReference(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>HorizontalOrigin</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumHorizontalOriginValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<CesiumHorizontalOrigin> AsHorizontalOrigin()
+        public CesiumHorizontalOriginValuePropertyAdaptor<CustomPropertyCesiumWriter> AsHorizontalOrigin()
         {
             return m_asHorizontalOrigin.Value;
         }
 
-        private ICesiumValuePropertyWriter<CesiumHorizontalOrigin> CreateHorizontalOriginAdaptor()
+        private Lazy<CesiumHorizontalOriginValuePropertyAdaptor<CustomPropertyCesiumWriter>> CreateAsHorizontalOrigin()
         {
-            return new CesiumWriterAdaptor<CustomPropertyCesiumWriter, CesiumHorizontalOrigin>(this, (me, value) => me.WriteHorizontalOrigin(value));
+            return new Lazy<CesiumHorizontalOriginValuePropertyAdaptor<CustomPropertyCesiumWriter>>(CreateHorizontalOrigin, false);
+        }
+
+        private CesiumHorizontalOriginValuePropertyAdaptor<CustomPropertyCesiumWriter> CreateHorizontalOrigin()
+        {
+            return CesiumValuePropertyAdaptors.CreateHorizontalOrigin(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>LabelStyle</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumLabelStyleValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<CesiumLabelStyle> AsLabelStyle()
+        public CesiumLabelStyleValuePropertyAdaptor<CustomPropertyCesiumWriter> AsLabelStyle()
         {
             return m_asLabelStyle.Value;
         }
 
-        private ICesiumValuePropertyWriter<CesiumLabelStyle> CreateLabelStyleAdaptor()
+        private Lazy<CesiumLabelStyleValuePropertyAdaptor<CustomPropertyCesiumWriter>> CreateAsLabelStyle()
         {
-            return new CesiumWriterAdaptor<CustomPropertyCesiumWriter, CesiumLabelStyle>(this, (me, value) => me.WriteLabelStyle(value));
+            return new Lazy<CesiumLabelStyleValuePropertyAdaptor<CustomPropertyCesiumWriter>>(CreateLabelStyle, false);
+        }
+
+        private CesiumLabelStyleValuePropertyAdaptor<CustomPropertyCesiumWriter> CreateLabelStyle()
+        {
+            return CesiumValuePropertyAdaptors.CreateLabelStyle(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <c>Number</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumDoubleValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumInterpolatableValuePropertyWriter<double> AsNumber()
+        public CesiumDoubleValuePropertyAdaptor<CustomPropertyCesiumWriter> AsNumber()
         {
             return m_asNumber.Value;
         }
 
-        private ICesiumInterpolatableValuePropertyWriter<double> CreateNumberAdaptor()
+        private Lazy<CesiumDoubleValuePropertyAdaptor<CustomPropertyCesiumWriter>> CreateAsNumber()
         {
-            return new CesiumInterpolatableWriterAdaptor<CustomPropertyCesiumWriter, double>(this, (me, value) => me.WriteNumber(value), (me, dates, values, startIndex, length) => me.WriteNumber(dates, values, startIndex, length));
+            return new Lazy<CesiumDoubleValuePropertyAdaptor<CustomPropertyCesiumWriter>>(CreateDouble, false);
+        }
+
+        private CesiumDoubleValuePropertyAdaptor<CustomPropertyCesiumWriter> CreateDouble()
+        {
+            return CesiumValuePropertyAdaptors.CreateDouble(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <c>NearFarScalar</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumNearFarScalarValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumInterpolatableValuePropertyWriter<NearFarScalar> AsNearFarScalar()
+        public CesiumNearFarScalarValuePropertyAdaptor<CustomPropertyCesiumWriter> AsNearFarScalar()
         {
             return m_asNearFarScalar.Value;
         }
 
-        private ICesiumInterpolatableValuePropertyWriter<NearFarScalar> CreateNearFarScalarAdaptor()
+        private Lazy<CesiumNearFarScalarValuePropertyAdaptor<CustomPropertyCesiumWriter>> CreateAsNearFarScalar()
         {
-            return new CesiumInterpolatableWriterAdaptor<CustomPropertyCesiumWriter, NearFarScalar>(this, (me, value) => me.WriteNearFarScalar(value), (me, dates, values, startIndex, length) => me.WriteNearFarScalar(dates, values, startIndex, length));
+            return new Lazy<CesiumNearFarScalarValuePropertyAdaptor<CustomPropertyCesiumWriter>>(CreateNearFarScalar, false);
+        }
+
+        private CesiumNearFarScalarValuePropertyAdaptor<CustomPropertyCesiumWriter> CreateNearFarScalar()
+        {
+            return CesiumValuePropertyAdaptors.CreateNearFarScalar(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <c>UnitQuaternion</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumUnitQuaternionValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumInterpolatableValuePropertyWriter<UnitQuaternion> AsUnitQuaternion()
+        public CesiumUnitQuaternionValuePropertyAdaptor<CustomPropertyCesiumWriter> AsUnitQuaternion()
         {
             return m_asUnitQuaternion.Value;
         }
 
-        private ICesiumInterpolatableValuePropertyWriter<UnitQuaternion> CreateUnitQuaternionAdaptor()
+        private Lazy<CesiumUnitQuaternionValuePropertyAdaptor<CustomPropertyCesiumWriter>> CreateAsUnitQuaternion()
         {
-            return new CesiumInterpolatableWriterAdaptor<CustomPropertyCesiumWriter, UnitQuaternion>(this, (me, value) => me.WriteUnitQuaternion(value), (me, dates, values, startIndex, length) => me.WriteUnitQuaternion(dates, values, startIndex, length));
+            return new Lazy<CesiumUnitQuaternionValuePropertyAdaptor<CustomPropertyCesiumWriter>>(CreateUnitQuaternion, false);
+        }
+
+        private CesiumUnitQuaternionValuePropertyAdaptor<CustomPropertyCesiumWriter> CreateUnitQuaternion()
+        {
+            return CesiumValuePropertyAdaptors.CreateUnitQuaternion(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>ShadowMode</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumShadowModeValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<CesiumShadowMode> AsShadowMode()
+        public CesiumShadowModeValuePropertyAdaptor<CustomPropertyCesiumWriter> AsShadowMode()
         {
             return m_asShadowMode.Value;
         }
 
-        private ICesiumValuePropertyWriter<CesiumShadowMode> CreateShadowModeAdaptor()
+        private Lazy<CesiumShadowModeValuePropertyAdaptor<CustomPropertyCesiumWriter>> CreateAsShadowMode()
         {
-            return new CesiumWriterAdaptor<CustomPropertyCesiumWriter, CesiumShadowMode>(this, (me, value) => me.WriteShadowMode(value));
+            return new Lazy<CesiumShadowModeValuePropertyAdaptor<CustomPropertyCesiumWriter>>(CreateShadowMode, false);
+        }
+
+        private CesiumShadowModeValuePropertyAdaptor<CustomPropertyCesiumWriter> CreateShadowMode()
+        {
+            return CesiumValuePropertyAdaptors.CreateShadowMode(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>String</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumStringValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<string> AsString()
+        public CesiumStringValuePropertyAdaptor<CustomPropertyCesiumWriter> AsString()
         {
             return m_asString.Value;
         }
 
-        private ICesiumValuePropertyWriter<string> CreateStringAdaptor()
+        private Lazy<CesiumStringValuePropertyAdaptor<CustomPropertyCesiumWriter>> CreateAsString()
         {
-            return new CesiumWriterAdaptor<CustomPropertyCesiumWriter, string>(this, (me, value) => me.WriteString(value));
+            return new Lazy<CesiumStringValuePropertyAdaptor<CustomPropertyCesiumWriter>>(CreateString, false);
+        }
+
+        private CesiumStringValuePropertyAdaptor<CustomPropertyCesiumWriter> CreateString()
+        {
+            return CesiumValuePropertyAdaptors.CreateString(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>StripeOrientation</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumStripeOrientationValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<CesiumStripeOrientation> AsStripeOrientation()
+        public CesiumStripeOrientationValuePropertyAdaptor<CustomPropertyCesiumWriter> AsStripeOrientation()
         {
             return m_asStripeOrientation.Value;
         }
 
-        private ICesiumValuePropertyWriter<CesiumStripeOrientation> CreateStripeOrientationAdaptor()
+        private Lazy<CesiumStripeOrientationValuePropertyAdaptor<CustomPropertyCesiumWriter>> CreateAsStripeOrientation()
         {
-            return new CesiumWriterAdaptor<CustomPropertyCesiumWriter, CesiumStripeOrientation>(this, (me, value) => me.WriteStripeOrientation(value));
+            return new Lazy<CesiumStripeOrientationValuePropertyAdaptor<CustomPropertyCesiumWriter>>(CreateStripeOrientation, false);
+        }
+
+        private CesiumStripeOrientationValuePropertyAdaptor<CustomPropertyCesiumWriter> CreateStripeOrientation()
+        {
+            return CesiumValuePropertyAdaptors.CreateStripeOrientation(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <c>Wsen</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumCartographicRectangleRadiansValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumInterpolatableValuePropertyWriter<CartographicExtent> AsWsen()
+        public CesiumCartographicRectangleRadiansValuePropertyAdaptor<CustomPropertyCesiumWriter> AsWsen()
         {
             return m_asWsen.Value;
         }
 
-        private ICesiumInterpolatableValuePropertyWriter<CartographicExtent> CreateWsenAdaptor()
+        private Lazy<CesiumCartographicRectangleRadiansValuePropertyAdaptor<CustomPropertyCesiumWriter>> CreateAsWsen()
         {
-            return new CesiumInterpolatableWriterAdaptor<CustomPropertyCesiumWriter, CartographicExtent>(this, (me, value) => me.WriteWsen(value), (me, dates, values, startIndex, length) => me.WriteWsen(dates, values, startIndex, length));
+            return new Lazy<CesiumCartographicRectangleRadiansValuePropertyAdaptor<CustomPropertyCesiumWriter>>(CreateCartographicRectangleRadians, false);
+        }
+
+        private CesiumCartographicRectangleRadiansValuePropertyAdaptor<CustomPropertyCesiumWriter> CreateCartographicRectangleRadians()
+        {
+            return CesiumValuePropertyAdaptors.CreateCartographicRectangleRadians(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <c>WsenDegrees</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumCartographicRectangleDegreesValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumInterpolatableValuePropertyWriter<CartographicExtent> AsWsenDegrees()
+        public CesiumCartographicRectangleDegreesValuePropertyAdaptor<CustomPropertyCesiumWriter> AsWsenDegrees()
         {
             return m_asWsenDegrees.Value;
         }
 
-        private ICesiumInterpolatableValuePropertyWriter<CartographicExtent> CreateWsenDegreesAdaptor()
+        private Lazy<CesiumCartographicRectangleDegreesValuePropertyAdaptor<CustomPropertyCesiumWriter>> CreateAsWsenDegrees()
         {
-            return new CesiumInterpolatableWriterAdaptor<CustomPropertyCesiumWriter, CartographicExtent>(this, (me, value) => me.WriteWsenDegrees(value), (me, dates, values, startIndex, length) => me.WriteWsenDegrees(dates, values, startIndex, length));
+            return new Lazy<CesiumCartographicRectangleDegreesValuePropertyAdaptor<CustomPropertyCesiumWriter>>(CreateCartographicRectangleDegrees, false);
+        }
+
+        private CesiumCartographicRectangleDegreesValuePropertyAdaptor<CustomPropertyCesiumWriter> CreateCartographicRectangleDegrees()
+        {
+            return CesiumValuePropertyAdaptors.CreateCartographicRectangleDegrees(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>Uri</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumUriValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<CesiumResource> AsUri()
+        public CesiumUriValuePropertyAdaptor<CustomPropertyCesiumWriter> AsUri()
         {
             return m_asUri.Value;
         }
 
-        private ICesiumValuePropertyWriter<CesiumResource> CreateUriAdaptor()
+        private Lazy<CesiumUriValuePropertyAdaptor<CustomPropertyCesiumWriter>> CreateAsUri()
         {
-            return new CesiumWriterAdaptor<CustomPropertyCesiumWriter, CesiumResource>(this, (me, value) => me.WriteUri(value));
+            return new Lazy<CesiumUriValuePropertyAdaptor<CustomPropertyCesiumWriter>>(CreateUri, false);
+        }
+
+        private CesiumUriValuePropertyAdaptor<CustomPropertyCesiumWriter> CreateUri()
+        {
+            return CesiumValuePropertyAdaptors.CreateUri(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>VerticalOrigin</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumVerticalOriginValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<CesiumVerticalOrigin> AsVerticalOrigin()
+        public CesiumVerticalOriginValuePropertyAdaptor<CustomPropertyCesiumWriter> AsVerticalOrigin()
         {
             return m_asVerticalOrigin.Value;
         }
 
-        private ICesiumValuePropertyWriter<CesiumVerticalOrigin> CreateVerticalOriginAdaptor()
+        private Lazy<CesiumVerticalOriginValuePropertyAdaptor<CustomPropertyCesiumWriter>> CreateAsVerticalOrigin()
         {
-            return new CesiumWriterAdaptor<CustomPropertyCesiumWriter, CesiumVerticalOrigin>(this, (me, value) => me.WriteVerticalOrigin(value));
+            return new Lazy<CesiumVerticalOriginValuePropertyAdaptor<CustomPropertyCesiumWriter>>(CreateVerticalOrigin, false);
+        }
+
+        private CesiumVerticalOriginValuePropertyAdaptor<CustomPropertyCesiumWriter> CreateVerticalOrigin()
+        {
+            return CesiumValuePropertyAdaptors.CreateVerticalOrigin(this);
         }
 
     }

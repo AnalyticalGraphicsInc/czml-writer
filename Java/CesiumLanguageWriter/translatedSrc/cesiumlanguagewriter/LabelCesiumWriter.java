@@ -394,7 +394,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShowPropertyReference(String value) {
         {
@@ -515,7 +515,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeTextPropertyReference(String value) {
         {
@@ -636,7 +636,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeFontPropertyReference(String value) {
         {
@@ -757,7 +757,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeStylePropertyReference(String value) {
         {
@@ -924,7 +924,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeScalePropertyReference(String value) {
         {
@@ -1045,7 +1045,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShowBackgroundPropertyReference(String value) {
         {
@@ -1327,7 +1327,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeBackgroundColorPropertyReference(String value) {
         {
@@ -1515,7 +1515,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeBackgroundPaddingPropertyReference(String value) {
         {
@@ -1703,7 +1703,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writePixelOffsetPropertyReference(String value) {
         {
@@ -1870,7 +1870,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeEyeOffsetPropertyReference(String value) {
         {
@@ -1991,7 +1991,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeHorizontalOriginPropertyReference(String value) {
         {
@@ -2112,7 +2112,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeVerticalOriginPropertyReference(String value) {
         {
@@ -2233,7 +2233,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeHeightReferencePropertyReference(String value) {
         {
@@ -2515,7 +2515,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeFillColorPropertyReference(String value) {
         {
@@ -2797,7 +2797,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeOutlineColorPropertyReference(String value) {
         {
@@ -2964,7 +2964,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeOutlineWidthPropertyReference(String value) {
         {
@@ -3156,7 +3156,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeTranslucencyByDistancePropertyReference(String value) {
         {
@@ -3348,7 +3348,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writePixelOffsetScaleByDistancePropertyReference(String value) {
         {
@@ -3540,7 +3540,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeScaleByDistancePropertyReference(String value) {
         {
@@ -3728,7 +3728,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeDistanceDisplayConditionPropertyReference(String value) {
         {
@@ -3895,7 +3895,7 @@ public class LabelCesiumWriter extends CesiumPropertyWriter<LabelCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeDisableDepthTestDistancePropertyReference(String value) {
         {

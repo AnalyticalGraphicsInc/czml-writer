@@ -3,9 +3,13 @@
     "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Color.json",
     "title": "Color",
     "description": "A color. The color can optionally vary over time.",
-    "extends": {
-        "$ref": "InterpolatableProperty.json"
-    },
+    "allOf": [
+        { "$ref": "InterpolatableProperty.json" },
+        { "$ref": "DeletableProperty.json" },
+        { "$ref": "ValueProperties/RgbaValueProperty.json" },
+        { "$ref": "ValueProperties/RgbafValueProperty.json" },
+        { "$ref": "ValueProperties/ReferenceValueProperty.json" }
+    ],
     "type": [
         "array",
         "object"
@@ -15,23 +19,16 @@
     },
     "properties": {
         "rgba": {
-            "$ref": "RgbaValue.json",
-            "description": "The color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is an integer in the range 0-255.",
-            "czmlValue": true
+            "$ref": "Values/RgbaValue.json",
+            "description": "The color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is an integer in the range 0-255."
         },
         "rgbaf": {
-            "$ref": "RgbafValue.json",
-            "description": "The color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is a double in the range 0.0-1.0.",
-            "czmlValue": true
+            "$ref": "Values/RgbafValue.json",
+            "description": "The color specified as an array of color components `[Red, Green, Blue, Alpha]` where each component is a double in the range 0.0-1.0."
         },
         "reference": {
-            "$ref": "ReferenceValue.json",
-            "description": "The color specified as a reference to another property.",
-            "czmlValue": true
-        },
-        "delete": {
-            "description": "Whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.",
-            "type": "boolean"
+            "$ref": "Values/ReferenceValue.json",
+            "description": "The color specified as a reference to another property."
         }
     }
 }

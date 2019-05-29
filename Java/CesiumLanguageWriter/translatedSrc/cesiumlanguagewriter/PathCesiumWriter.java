@@ -215,7 +215,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShowPropertyReference(String value) {
         {
@@ -382,7 +382,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeWidthPropertyReference(String value) {
         {
@@ -549,7 +549,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeResolutionPropertyReference(String value) {
         {
@@ -716,7 +716,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeLeadTimePropertyReference(String value) {
         {
@@ -883,7 +883,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeTrailTimePropertyReference(String value) {
         {
@@ -1093,7 +1093,7 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeDistanceDisplayConditionPropertyReference(String value) {
         {

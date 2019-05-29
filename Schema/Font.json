@@ -3,6 +3,11 @@
     "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Font.json",
     "title": "Font",
     "description": "A font used to draw text. Fonts are specified using the same syntax as the CSS \"font\" property.",
+    "allOf": [
+        { "$ref": "DeletableProperty.json" },
+        { "$ref": "ValueProperties/FontValueProperty.json" },
+        { "$ref": "ValueProperties/ReferenceValueProperty.json" }
+    ],
     "type": [
         "array",
         "object",
@@ -13,18 +18,12 @@
     },
     "properties": {
         "font": {
-            "$ref": "FontValue.json",
-            "description": "The font, specified using the same syntax as the CSS \"font\" property.",
-            "czmlValue": true
+            "$ref": "Values/FontValue.json",
+            "description": "The font, specified using the same syntax as the CSS \"font\" property."
         },
         "reference": {
-            "$ref": "ReferenceValue.json",
-            "description": "The font specified as a reference to another property.",
-            "czmlValue": true
-        },
-        "delete": {
-            "description": "Whether the client should delete existing data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.",
-            "type": "boolean"
+            "$ref": "Values/ReferenceValue.json",
+            "description": "The font specified as a reference to another property."
         }
     }
 }

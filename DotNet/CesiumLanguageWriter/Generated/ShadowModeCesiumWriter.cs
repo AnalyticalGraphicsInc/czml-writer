@@ -10,9 +10,9 @@ using JetBrains.Annotations;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>ShadowMode</c> to a <see cref="CesiumOutputStream" />. A <c>ShadowMode</c> is whether or not an object casts or receives shadows from each light source when shadows are enabled.
+    /// Writes a <c>ShadowMode</c> to a <see cref="CesiumOutputStream"/>. A <c>ShadowMode</c> is whether or not an object casts or receives shadows from each light source when shadows are enabled.
     /// </summary>
-    public class ShadowModeCesiumWriter : CesiumPropertyWriter<ShadowModeCesiumWriter>
+    public class ShadowModeCesiumWriter : CesiumPropertyWriter<ShadowModeCesiumWriter>, ICesiumDeletablePropertyWriter, ICesiumShadowModeValuePropertyWriter, ICesiumReferenceValuePropertyWriter
     {
         /// <summary>
         /// The name of the <c>shadowMode</c> property.
@@ -29,8 +29,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string DeletePropertyName = "delete";
 
-        private readonly Lazy<ICesiumValuePropertyWriter<CesiumShadowMode>> m_asShadowMode;
-        private readonly Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
+        private readonly Lazy<CesiumShadowModeValuePropertyAdaptor<ShadowModeCesiumWriter>> m_asShadowMode;
+        private readonly Lazy<CesiumReferenceValuePropertyAdaptor<ShadowModeCesiumWriter>> m_asReference;
 
         /// <summary>
         /// Initializes a new instance.
@@ -39,8 +39,8 @@ namespace CesiumLanguageWriter
         public ShadowModeCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
-            m_asShadowMode = new Lazy<ICesiumValuePropertyWriter<CesiumShadowMode>>(CreateShadowModeAdaptor, false);
-            m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
+            m_asShadowMode = CreateAsShadowMode();
+            m_asReference = CreateAsReference();
         }
 
         /// <summary>
@@ -50,11 +50,11 @@ namespace CesiumLanguageWriter
         protected ShadowModeCesiumWriter([NotNull] ShadowModeCesiumWriter existingInstance)
             : base(existingInstance)
         {
-            m_asShadowMode = new Lazy<ICesiumValuePropertyWriter<CesiumShadowMode>>(CreateShadowModeAdaptor, false);
-            m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
+            m_asShadowMode = CreateAsShadowMode();
+            m_asReference = CreateAsReference();
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override ShadowModeCesiumWriter Clone()
         {
             return new ShadowModeCesiumWriter(this);
@@ -93,7 +93,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes the value expressed as a <c>reference</c>, which is the shadow mode specified as a reference to another property.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteReference(string value)
         {
             const string PropertyName = ReferencePropertyName;
@@ -129,7 +129,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>delete</c>, which is whether the client should delete existing data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
+        /// Writes the value expressed as a <c>delete</c>, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteDelete(bool value)
@@ -141,31 +141,41 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>ShadowMode</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumShadowModeValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<CesiumShadowMode> AsShadowMode()
+        public CesiumShadowModeValuePropertyAdaptor<ShadowModeCesiumWriter> AsShadowMode()
         {
             return m_asShadowMode.Value;
         }
 
-        private ICesiumValuePropertyWriter<CesiumShadowMode> CreateShadowModeAdaptor()
+        private Lazy<CesiumShadowModeValuePropertyAdaptor<ShadowModeCesiumWriter>> CreateAsShadowMode()
         {
-            return new CesiumWriterAdaptor<ShadowModeCesiumWriter, CesiumShadowMode>(this, (me, value) => me.WriteShadowMode(value));
+            return new Lazy<CesiumShadowModeValuePropertyAdaptor<ShadowModeCesiumWriter>>(CreateShadowMode, false);
+        }
+
+        private CesiumShadowModeValuePropertyAdaptor<ShadowModeCesiumWriter> CreateShadowMode()
+        {
+            return CesiumValuePropertyAdaptors.CreateShadowMode(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>Reference</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumReferenceValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<Reference> AsReference()
+        public CesiumReferenceValuePropertyAdaptor<ShadowModeCesiumWriter> AsReference()
         {
             return m_asReference.Value;
         }
 
-        private ICesiumValuePropertyWriter<Reference> CreateReferenceAdaptor()
+        private Lazy<CesiumReferenceValuePropertyAdaptor<ShadowModeCesiumWriter>> CreateAsReference()
         {
-            return new CesiumWriterAdaptor<ShadowModeCesiumWriter, Reference>(this, (me, value) => me.WriteReference(value));
+            return new Lazy<CesiumReferenceValuePropertyAdaptor<ShadowModeCesiumWriter>>(CreateReference, false);
+        }
+
+        private CesiumReferenceValuePropertyAdaptor<ShadowModeCesiumWriter> CreateReference()
+        {
+            return CesiumValuePropertyAdaptors.CreateReference(this);
         }
 
     }

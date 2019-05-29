@@ -12,7 +12,7 @@ using System.Drawing;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>Label</c> to a <see cref="CesiumOutputStream" />. A <c>Label</c> is a string of text.
+    /// Writes a <c>Label</c> to a <see cref="CesiumOutputStream"/>. A <c>Label</c> is a string of text.
     /// </summary>
     public class LabelCesiumWriter : CesiumPropertyWriter<LabelCesiumWriter>
     {
@@ -161,7 +161,7 @@ namespace CesiumLanguageWriter
         {
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override LabelCesiumWriter Clone()
         {
             return new LabelCesiumWriter(this);
@@ -213,7 +213,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>show</c> property as a <c>reference</c> value. The <c>show</c> property specifies whether or not the label is shown. If not specified, the default value is <see langword="true"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteShowPropertyReference(string value)
         {
             using (var writer = OpenShowProperty())
@@ -294,7 +294,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>text</c> property as a <c>reference</c> value. The <c>text</c> property specifies the text displayed by the label. The newline character (\n) indicates line breaks.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteTextPropertyReference(string value)
         {
             using (var writer = OpenTextProperty())
@@ -375,7 +375,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>font</c> property as a <c>reference</c> value. The <c>font</c> property specifies the font to use for the label. If not specified, the default value is 30px sans-serif.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteFontPropertyReference(string value)
         {
             using (var writer = OpenFontProperty())
@@ -456,7 +456,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>style</c> property as a <c>reference</c> value. The <c>style</c> property specifies the style of the label. If not specified, the default value is FILL.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteStylePropertyReference(string value)
         {
             using (var writer = OpenStyleProperty())
@@ -565,7 +565,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>scale</c> property as a <c>reference</c> value. The <c>scale</c> property specifies the scale of the label. The scale is multiplied with the pixel size of the label's text. For example, if the scale is 2.0, the label will be rendered with twice the number of pixels, in each direction, of the text. If not specified, the default value is 1.0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteScalePropertyReference(string value)
         {
             using (var writer = OpenScaleProperty())
@@ -646,7 +646,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>showBackground</c> property as a <c>reference</c> value. The <c>showBackground</c> property specifies whether or not a background behind the label is shown. If not specified, the default value is <see langword="false"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteShowBackgroundPropertyReference(string value)
         {
             using (var writer = OpenShowBackgroundProperty())
@@ -825,7 +825,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>backgroundColor</c> property as a <c>reference</c> value. The <c>backgroundColor</c> property specifies the color of the background behind the label. If not specified, the default value is [0.165, 0.165, 0.165, 0.8].
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteBackgroundColorPropertyReference(string value)
         {
             using (var writer = OpenBackgroundColorProperty())
@@ -947,7 +947,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>backgroundPadding</c> property as a <c>reference</c> value. The <c>backgroundPadding</c> property specifies the amount of padding between the text and the label's background. If not specified, the default value is [7, 5].
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteBackgroundPaddingPropertyReference(string value)
         {
             using (var writer = OpenBackgroundPaddingProperty())
@@ -1069,7 +1069,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>pixelOffset</c> property as a <c>reference</c> value. The <c>pixelOffset</c> property specifies the offset, in viewport pixels, of the label origin from the <c>position</c>. A pixel offset is the number of pixels up and to the right to place the label, relative to the <c>position</c>. If not specified, the default value is [0.0, 0.0].
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WritePixelOffsetPropertyReference(string value)
         {
             using (var writer = OpenPixelOffsetProperty())
@@ -1178,7 +1178,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>eyeOffset</c> property as a <c>reference</c> value. The <c>eyeOffset</c> property specifies the eye offset of the label, which is the offset in eye coordinates at which to place the label relative to the <c>position</c> property. Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen. If not specified, the default value is [0.0, 0.0, 0.0].
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteEyeOffsetPropertyReference(string value)
         {
             using (var writer = OpenEyeOffsetProperty())
@@ -1259,7 +1259,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>horizontalOrigin</c> property as a <c>reference</c> value. The <c>horizontalOrigin</c> property specifies the horizontal origin of the label. It controls whether the label is left-, center-, or right-aligned with the <c>position</c>. If not specified, the default value is CENTER.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteHorizontalOriginPropertyReference(string value)
         {
             using (var writer = OpenHorizontalOriginProperty())
@@ -1340,7 +1340,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>verticalOrigin</c> property as a <c>reference</c> value. The <c>verticalOrigin</c> property specifies the vertical origin of the label. It controls whether the label image is bottom-, center-, or top-aligned with the <c>position</c>. If not specified, the default value is CENTER.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteVerticalOriginPropertyReference(string value)
         {
             using (var writer = OpenVerticalOriginProperty())
@@ -1421,7 +1421,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>heightReference</c> property as a <c>reference</c> value. The <c>heightReference</c> property specifies the height reference of the label, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteHeightReferencePropertyReference(string value)
         {
             using (var writer = OpenHeightReferenceProperty())
@@ -1600,7 +1600,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>fillColor</c> property as a <c>reference</c> value. The <c>fillColor</c> property specifies the fill color of the label. If not specified, the default value is white.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteFillColorPropertyReference(string value)
         {
             using (var writer = OpenFillColorProperty())
@@ -1779,7 +1779,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value. The <c>outlineColor</c> property specifies the outline color of the label. If not specified, the default value is black.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteOutlineColorPropertyReference(string value)
         {
             using (var writer = OpenOutlineColorProperty())
@@ -1888,7 +1888,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value. The <c>outlineWidth</c> property specifies the outline width of the label. If not specified, the default value is 1.0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteOutlineWidthPropertyReference(string value)
         {
             using (var writer = OpenOutlineWidthProperty())
@@ -2012,7 +2012,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>translucencyByDistance</c> property as a <c>reference</c> value. The <c>translucencyByDistance</c> property specifies how the label's translucency should change based on the label's distance from the camera. This scalar value should range from 0 to 1.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteTranslucencyByDistancePropertyReference(string value)
         {
             using (var writer = OpenTranslucencyByDistanceProperty())
@@ -2136,7 +2136,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>pixelOffsetScaleByDistance</c> property as a <c>reference</c> value. The <c>pixelOffsetScaleByDistance</c> property specifies how the label's pixel offset should change based on the label's distance from the camera. This scalar value will be multiplied by <c>pixelOffset</c>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WritePixelOffsetScaleByDistancePropertyReference(string value)
         {
             using (var writer = OpenPixelOffsetScaleByDistanceProperty())
@@ -2260,7 +2260,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>scaleByDistance</c> property as a <c>reference</c> value. The <c>scaleByDistance</c> property specifies how the label's scale should change based on the label's distance from the camera. This scalar value will be multiplied by <c>scale</c>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteScaleByDistancePropertyReference(string value)
         {
             using (var writer = OpenScaleByDistanceProperty())
@@ -2382,7 +2382,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>distanceDisplayCondition</c> property as a <c>reference</c> value. The <c>distanceDisplayCondition</c> property specifies the display condition specifying the distance from the camera at which this label will be displayed.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteDistanceDisplayConditionPropertyReference(string value)
         {
             using (var writer = OpenDistanceDisplayConditionProperty())
@@ -2491,7 +2491,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>disableDepthTestDistance</c> property as a <c>reference</c> value. The <c>disableDepthTestDistance</c> property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteDisableDepthTestDistancePropertyReference(string value)
         {
             using (var writer = OpenDisableDepthTestDistanceProperty())

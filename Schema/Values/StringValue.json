@@ -1,0 +1,8 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Values/StringValue.json",
+    "title": "String",
+    "description": "A string value.",
+    "type": "string",
+    "czmlValue": true
+}

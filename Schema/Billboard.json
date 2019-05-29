@@ -3,13 +3,7 @@
     "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Billboard.json",
     "title": "Billboard",
     "description": "A billboard, or viewport-aligned image. The billboard is positioned in the scene by the `position` property. A billboard is sometimes called a marker.",
-    "type": [
-        "array",
-        "object"
-    ],
-    "items": {
-        "$ref": "#"
-    },
+    "type": "object",
     "czmlExamples": [
         "Examples/Billboard.json"
     ],
@@ -21,7 +15,8 @@
         },
         "image": {
             "$ref": "Uri.json",
-            "description": "The URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href=\"https://developer.mozilla.org/en/data_URIs\">data URI</a>."
+            "description": "The URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href=\"https://developer.mozilla.org/en/data_URIs\">data URI</a>.",
+            "czmlRequiredForDisplay": true
         },
         "scale": {
             "$ref": "Double.json",
@@ -106,8 +101,5 @@
             "description": "The distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied.",
             "default": 0.0
         }
-    },
-    "required": [
-        "image"
-    ]
+    }
 }

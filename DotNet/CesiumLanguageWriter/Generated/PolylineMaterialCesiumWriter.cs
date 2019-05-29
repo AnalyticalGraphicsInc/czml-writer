@@ -12,7 +12,7 @@ using System.Drawing;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>PolylineMaterial</c> to a <see cref="CesiumOutputStream" />. A <c>PolylineMaterial</c> is a definition of how a polyline is colored or shaded.
+    /// Writes a <c>PolylineMaterial</c> to a <see cref="CesiumOutputStream"/>. A <c>PolylineMaterial</c> is a definition of how a polyline is colored or shaded.
     /// </summary>
     public class PolylineMaterialCesiumWriter : CesiumPropertyWriter<PolylineMaterialCesiumWriter>
     {
@@ -89,7 +89,7 @@ namespace CesiumLanguageWriter
         {
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override PolylineMaterialCesiumWriter Clone()
         {
             return new PolylineMaterialCesiumWriter(this);

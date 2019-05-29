@@ -18,7 +18,8 @@ import javax.annotation.Nonnull;
         "deprecation",
         "serial"
 })
-public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionListCesiumWriter> {
+public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionListCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumSphericalListValuePropertyWriter,
+        ICesiumUnitSphericalListValuePropertyWriter, ICesiumCartesian3ListValuePropertyWriter, ICesiumUnitCartesian3ListValuePropertyWriter {
     /**
     *  
     The name of the {@code spherical} property.
@@ -54,10 +55,10 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
 
     */
     public static final String DeletePropertyName = "delete";
-    private Lazy<ICesiumValuePropertyWriter<Iterable<Spherical>>> m_asSpherical;
-    private Lazy<ICesiumValuePropertyWriter<Iterable<UnitSpherical>>> m_asUnitSpherical;
-    private Lazy<ICesiumValuePropertyWriter<Iterable<Cartesian>>> m_asCartesian;
-    private Lazy<ICesiumValuePropertyWriter<Iterable<UnitCartesian>>> m_asUnitCartesian;
+    private Lazy<CesiumSphericalListValuePropertyAdaptor<DirectionListCesiumWriter>> m_asSpherical;
+    private Lazy<CesiumUnitSphericalListValuePropertyAdaptor<DirectionListCesiumWriter>> m_asUnitSpherical;
+    private Lazy<CesiumCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter>> m_asCartesian;
+    private Lazy<CesiumUnitCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter>> m_asUnitCartesian;
 
     /**
     *  
@@ -69,30 +70,10 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
     */
     public DirectionListCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
-        m_asSpherical = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Spherical>>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Spherical>>>(this, "createSphericalAdaptor") {
-                    public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Spherical>> invoke() {
-                        return createSphericalAdaptor();
-                    }
-                }, false);
-        m_asUnitSpherical = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<UnitSpherical>>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<UnitSpherical>>>(this, "createUnitSphericalAdaptor") {
-                    public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<UnitSpherical>> invoke() {
-                        return createUnitSphericalAdaptor();
-                    }
-                }, false);
-        m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartesian>>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartesian>>>(this, "createCartesianAdaptor") {
-                    public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartesian>> invoke() {
-                        return createCartesianAdaptor();
-                    }
-                }, false);
-        m_asUnitCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<UnitCartesian>>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<UnitCartesian>>>(this, "createUnitCartesianAdaptor") {
-                    public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<UnitCartesian>> invoke() {
-                        return createUnitCartesianAdaptor();
-                    }
-                }, false);
+        m_asSpherical = createAsSpherical();
+        m_asUnitSpherical = createAsUnitSpherical();
+        m_asCartesian = createAsCartesian();
+        m_asUnitCartesian = createAsUnitCartesian();
     }
 
     /**
@@ -105,30 +86,10 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
     */
     protected DirectionListCesiumWriter(@Nonnull DirectionListCesiumWriter existingInstance) {
         super(existingInstance);
-        m_asSpherical = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Spherical>>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Spherical>>>(this, "createSphericalAdaptor") {
-                    public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Spherical>> invoke() {
-                        return createSphericalAdaptor();
-                    }
-                }, false);
-        m_asUnitSpherical = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<UnitSpherical>>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<UnitSpherical>>>(this, "createUnitSphericalAdaptor") {
-                    public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<UnitSpherical>> invoke() {
-                        return createUnitSphericalAdaptor();
-                    }
-                }, false);
-        m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartesian>>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartesian>>>(this, "createCartesianAdaptor") {
-                    public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<Cartesian>> invoke() {
-                        return createCartesianAdaptor();
-                    }
-                }, false);
-        m_asUnitCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<UnitCartesian>>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<UnitCartesian>>>(this, "createUnitCartesianAdaptor") {
-                    public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Iterable<UnitCartesian>> invoke() {
-                        return createUnitCartesianAdaptor();
-                    }
-                }, false);
+        m_asSpherical = createAsSpherical();
+        m_asUnitSpherical = createAsUnitSpherical();
+        m_asCartesian = createAsCartesian();
+        m_asUnitCartesian = createAsUnitCartesian();
     }
 
     /**
@@ -207,7 +168,7 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
 
     /**
     *  
-    Writes the value expressed as a {@code delete}, which is whether the client should delete existing data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
+    Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
     
     
 
@@ -222,85 +183,101 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Spherical} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumSphericalListValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
     * @return The wrapper.
     */
-    public final ICesiumValuePropertyWriter<Iterable<Spherical>> asSpherical() {
+    public final CesiumSphericalListValuePropertyAdaptor<DirectionListCesiumWriter> asSpherical() {
         return m_asSpherical.getValue();
     }
 
-    private final ICesiumValuePropertyWriter<Iterable<Spherical>> createSphericalAdaptor() {
-        return new CesiumWriterAdaptor<cesiumlanguagewriter.DirectionListCesiumWriter, Iterable<Spherical>>(this,
-                new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.DirectionListCesiumWriter, Iterable<Spherical>>() {
-                    public void invoke(DirectionListCesiumWriter me, Iterable<Spherical> value) {
-                        me.writeSpherical(value);
+    private final Lazy<CesiumSphericalListValuePropertyAdaptor<DirectionListCesiumWriter>> createAsSpherical() {
+        return new Lazy<cesiumlanguagewriter.advanced.CesiumSphericalListValuePropertyAdaptor<DirectionListCesiumWriter>>(
+                new Func1<cesiumlanguagewriter.advanced.CesiumSphericalListValuePropertyAdaptor<DirectionListCesiumWriter>>(this, "createSphericalList") {
+                    public cesiumlanguagewriter.advanced.CesiumSphericalListValuePropertyAdaptor<DirectionListCesiumWriter> invoke() {
+                        return createSphericalList();
                     }
-                });
+                }, false);
+    }
+
+    private final CesiumSphericalListValuePropertyAdaptor<DirectionListCesiumWriter> createSphericalList() {
+        return CesiumValuePropertyAdaptors.<DirectionListCesiumWriter> createSphericalList(this);
     }
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code UnitSpherical} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumUnitSphericalListValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
     * @return The wrapper.
     */
-    public final ICesiumValuePropertyWriter<Iterable<UnitSpherical>> asUnitSpherical() {
+    public final CesiumUnitSphericalListValuePropertyAdaptor<DirectionListCesiumWriter> asUnitSpherical() {
         return m_asUnitSpherical.getValue();
     }
 
-    private final ICesiumValuePropertyWriter<Iterable<UnitSpherical>> createUnitSphericalAdaptor() {
-        return new CesiumWriterAdaptor<cesiumlanguagewriter.DirectionListCesiumWriter, Iterable<UnitSpherical>>(this,
-                new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.DirectionListCesiumWriter, Iterable<UnitSpherical>>() {
-                    public void invoke(DirectionListCesiumWriter me, Iterable<UnitSpherical> value) {
-                        me.writeUnitSpherical(value);
+    private final Lazy<CesiumUnitSphericalListValuePropertyAdaptor<DirectionListCesiumWriter>> createAsUnitSpherical() {
+        return new Lazy<cesiumlanguagewriter.advanced.CesiumUnitSphericalListValuePropertyAdaptor<DirectionListCesiumWriter>>(
+                new Func1<cesiumlanguagewriter.advanced.CesiumUnitSphericalListValuePropertyAdaptor<DirectionListCesiumWriter>>(this, "createUnitSphericalList") {
+                    public cesiumlanguagewriter.advanced.CesiumUnitSphericalListValuePropertyAdaptor<DirectionListCesiumWriter> invoke() {
+                        return createUnitSphericalList();
                     }
-                });
+                }, false);
+    }
+
+    private final CesiumUnitSphericalListValuePropertyAdaptor<DirectionListCesiumWriter> createUnitSphericalList() {
+        return CesiumValuePropertyAdaptors.<DirectionListCesiumWriter> createUnitSphericalList(this);
     }
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Cartesian} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumCartesian3ListValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
     * @return The wrapper.
     */
-    public final ICesiumValuePropertyWriter<Iterable<Cartesian>> asCartesian() {
+    public final CesiumCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter> asCartesian() {
         return m_asCartesian.getValue();
     }
 
-    private final ICesiumValuePropertyWriter<Iterable<Cartesian>> createCartesianAdaptor() {
-        return new CesiumWriterAdaptor<cesiumlanguagewriter.DirectionListCesiumWriter, Iterable<Cartesian>>(this,
-                new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.DirectionListCesiumWriter, Iterable<Cartesian>>() {
-                    public void invoke(DirectionListCesiumWriter me, Iterable<Cartesian> value) {
-                        me.writeCartesian(value);
+    private final Lazy<CesiumCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter>> createAsCartesian() {
+        return new Lazy<cesiumlanguagewriter.advanced.CesiumCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter>>(
+                new Func1<cesiumlanguagewriter.advanced.CesiumCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter>>(this, "createCartesian3List") {
+                    public cesiumlanguagewriter.advanced.CesiumCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter> invoke() {
+                        return createCartesian3List();
                     }
-                });
+                }, false);
+    }
+
+    private final CesiumCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter> createCartesian3List() {
+        return CesiumValuePropertyAdaptors.<DirectionListCesiumWriter> createCartesian3List(this);
     }
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code UnitCartesian} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumUnitCartesian3ListValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
     * @return The wrapper.
     */
-    public final ICesiumValuePropertyWriter<Iterable<UnitCartesian>> asUnitCartesian() {
+    public final CesiumUnitCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter> asUnitCartesian() {
         return m_asUnitCartesian.getValue();
     }
 
-    private final ICesiumValuePropertyWriter<Iterable<UnitCartesian>> createUnitCartesianAdaptor() {
-        return new CesiumWriterAdaptor<cesiumlanguagewriter.DirectionListCesiumWriter, Iterable<UnitCartesian>>(this,
-                new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.DirectionListCesiumWriter, Iterable<UnitCartesian>>() {
-                    public void invoke(DirectionListCesiumWriter me, Iterable<UnitCartesian> value) {
-                        me.writeUnitCartesian(value);
+    private final Lazy<CesiumUnitCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter>> createAsUnitCartesian() {
+        return new Lazy<cesiumlanguagewriter.advanced.CesiumUnitCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter>>(
+                new Func1<cesiumlanguagewriter.advanced.CesiumUnitCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter>>(this, "createUnitCartesian3List") {
+                    public cesiumlanguagewriter.advanced.CesiumUnitCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter> invoke() {
+                        return createUnitCartesian3List();
                     }
-                });
+                }, false);
+    }
+
+    private final CesiumUnitCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter> createUnitCartesian3List() {
+        return CesiumValuePropertyAdaptors.<DirectionListCesiumWriter> createUnitCartesian3List(this);
     }
 }

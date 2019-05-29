@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using JetBrains.Annotations;
 using Newtonsoft.Json.Schema;
 
 namespace GenerateFromSchema
@@ -7,20 +9,23 @@ namespace GenerateFromSchema
     {
         public Schema()
         {
-            Properties = new List<Property>();
         }
 
         public string Name { get; set; }
 
         public string Description { get; set; }
 
+        public bool IsValue { get; set; }
+
         public string ExtensionPrefix { get; set; }
 
-        public Schema Extends { get; set; }
+        [NotNull]
+        public List<Schema> Extends { get; } = new List<Schema>();
 
         public JsonSchemaType JsonTypes { get; set; }
 
-        public List<Property> Properties { get; set; }
+        [NotNull]
+        public List<Property> Properties { get; } = new List<Property>();
 
         public Property AdditionalProperties { get; set; }
 
@@ -30,25 +35,24 @@ namespace GenerateFromSchema
 
         public bool IsSchemaFromType => Name == SchemaFromTypeName;
 
-        public string NameWithPascalCase
-        {
-            get
-            {
-                if (Name.Length == 0)
-                    return Name;
+        public string NameWithPascalCase => Name.CapitalizeFirstLetter();
 
-                return Name.CapitalizeFirstLetter();
-            }
-        }
+        public bool IsInterpolatable => Extends.Any(schema => schema.Name == InterpolatableProperty);
 
-        public bool IsInterpolatable => Extends != null &&
-                                        Extends.Name == "InterpolatableProperty";
+        /// <summary>
+        /// Mixins are other schemas whose properties we inherit.  Because we can't use multiple
+        /// inheritance, this defines a set of interfaces we implement, but the implementations
+        /// are generated in each class.
+        /// </summary>
+        public IEnumerable<Schema> Mixins => Extends.Where(schema => schema.Name != InterpolatableProperty);
+        public IEnumerable<string> Interfaces => Mixins.Select(schema => $"ICesium{schema.Name}Writer");
 
-        public Property FindFirstValueProperty()
-        {
-            return Properties.Find(property => property.IsValue);
-        }
+        /// <summary>
+        /// All properties to be generated, including those properties defined by mixins.
+        /// </summary>
+        public List<Property> AllProperties => Properties.Concat(Mixins.SelectMany(schema => schema.Properties)).ToList();
 
+        private const string InterpolatableProperty = "InterpolatableProperty";
         public static readonly string SchemaFromTypeName = "<Schema from Type>";
     }
 }

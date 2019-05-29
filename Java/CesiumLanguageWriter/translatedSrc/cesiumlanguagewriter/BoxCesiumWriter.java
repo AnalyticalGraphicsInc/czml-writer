@@ -243,7 +243,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShowPropertyReference(String value) {
         {
@@ -299,7 +299,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code dimensions} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code dimensions} property defines the dimensions of the box. This value is required.
+    *  Gets the writer for the {@code dimensions} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code dimensions} property defines the dimensions of the box. This value must be specified in order for the client to display graphics.
     
 
     */
@@ -310,7 +310,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code dimensions} property. The {@code dimensions} property defines the dimensions of the box. This value is required.
+    Opens and returns the writer for the {@code dimensions} property. The {@code dimensions} property defines the dimensions of the box. This value must be specified in order for the client to display graphics.
     
 
     */
@@ -322,7 +322,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code dimensions} property as a {@code cartesian} value. The {@code dimensions} property specifies the dimensions of the box. This value is required.
+    Writes a value for the {@code dimensions} property as a {@code cartesian} value. The {@code dimensions} property specifies the dimensions of the box. This value must be specified in order for the client to display graphics.
     
     
 
@@ -341,7 +341,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code dimensions} property as a {@code cartesian} value. The {@code dimensions} property specifies the dimensions of the box. This value is required.
+    Writes a value for the {@code dimensions} property as a {@code cartesian} value. The {@code dimensions} property specifies the dimensions of the box. This value must be specified in order for the client to display graphics.
     
     
     
@@ -362,7 +362,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code dimensions} property as a {@code cartesian} value. The {@code dimensions} property specifies the dimensions of the box. This value is required.
+    Writes a value for the {@code dimensions} property as a {@code cartesian} value. The {@code dimensions} property specifies the dimensions of the box. This value must be specified in order for the client to display graphics.
     
     
     
@@ -387,7 +387,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code dimensions} property as a {@code reference} value. The {@code dimensions} property specifies the dimensions of the box. This value is required.
+    Writes a value for the {@code dimensions} property as a {@code reference} value. The {@code dimensions} property specifies the dimensions of the box. This value must be specified in order for the client to display graphics.
     
     
 
@@ -406,11 +406,11 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code dimensions} property as a {@code reference} value. The {@code dimensions} property specifies the dimensions of the box. This value is required.
+    Writes a value for the {@code dimensions} property as a {@code reference} value. The {@code dimensions} property specifies the dimensions of the box. This value must be specified in order for the client to display graphics.
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeDimensionsPropertyReference(String value) {
         {
@@ -425,7 +425,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code dimensions} property as a {@code reference} value. The {@code dimensions} property specifies the dimensions of the box. This value is required.
+    Writes a value for the {@code dimensions} property as a {@code reference} value. The {@code dimensions} property specifies the dimensions of the box. This value must be specified in order for the client to display graphics.
     
     
     
@@ -446,7 +446,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code dimensions} property as a {@code reference} value. The {@code dimensions} property specifies the dimensions of the box. This value is required.
+    Writes a value for the {@code dimensions} property as a {@code reference} value. The {@code dimensions} property specifies the dimensions of the box. This value must be specified in order for the client to display graphics.
     
     
     
@@ -531,7 +531,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeFillPropertyReference(String value) {
         {
@@ -674,7 +674,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeOutlinePropertyReference(String value) {
         {
@@ -956,7 +956,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeOutlineColorPropertyReference(String value) {
         {
@@ -1123,7 +1123,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeOutlineWidthPropertyReference(String value) {
         {
@@ -1244,7 +1244,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShadowsPropertyReference(String value) {
         {
@@ -1432,7 +1432,7 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeDistanceDisplayConditionPropertyReference(String value) {
         {

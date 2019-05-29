@@ -10,14 +10,14 @@ using JetBrains.Annotations;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>ArcType</c> to a <see cref="CesiumOutputStream" />. A <c>ArcType</c> is the type of an arc.
+    /// Writes a <c>ArcType</c> to a <see cref="CesiumOutputStream"/>. A <c>ArcType</c> is the type of an arc.
     /// </summary>
-    public class ArcTypeCesiumWriter : CesiumPropertyWriter<ArcTypeCesiumWriter>
+    public class ArcTypeCesiumWriter : CesiumPropertyWriter<ArcTypeCesiumWriter>, ICesiumDeletablePropertyWriter, ICesiumArcTypeValuePropertyWriter, ICesiumReferenceValuePropertyWriter
     {
         /// <summary>
-        /// The name of the <c>ArcType</c> property.
+        /// The name of the <c>arcType</c> property.
         /// </summary>
-        public const string ArcTypePropertyName = "ArcType";
+        public const string ArcTypePropertyName = "arcType";
 
         /// <summary>
         /// The name of the <c>reference</c> property.
@@ -29,8 +29,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string DeletePropertyName = "delete";
 
-        private readonly Lazy<ICesiumValuePropertyWriter<CesiumArcType>> m_asArcType;
-        private readonly Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
+        private readonly Lazy<CesiumArcTypeValuePropertyAdaptor<ArcTypeCesiumWriter>> m_asArcType;
+        private readonly Lazy<CesiumReferenceValuePropertyAdaptor<ArcTypeCesiumWriter>> m_asReference;
 
         /// <summary>
         /// Initializes a new instance.
@@ -39,8 +39,8 @@ namespace CesiumLanguageWriter
         public ArcTypeCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
-            m_asArcType = new Lazy<ICesiumValuePropertyWriter<CesiumArcType>>(CreateArcTypeAdaptor, false);
-            m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
+            m_asArcType = CreateAsArcType();
+            m_asReference = CreateAsReference();
         }
 
         /// <summary>
@@ -50,20 +50,20 @@ namespace CesiumLanguageWriter
         protected ArcTypeCesiumWriter([NotNull] ArcTypeCesiumWriter existingInstance)
             : base(existingInstance)
         {
-            m_asArcType = new Lazy<ICesiumValuePropertyWriter<CesiumArcType>>(CreateArcTypeAdaptor, false);
-            m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
+            m_asArcType = CreateAsArcType();
+            m_asReference = CreateAsReference();
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override ArcTypeCesiumWriter Clone()
         {
             return new ArcTypeCesiumWriter(this);
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>ArcType</c>, which is the arc type.
+        /// Writes the value expressed as a <c>arcType</c>, which is the arc type.
         /// </summary>
-        /// <param name="value">The style of an arc.</param>
+        /// <param name="value">The type of an arc.</param>
         public void WriteArcType(CesiumArcType value)
         {
             const string PropertyName = ArcTypePropertyName;
@@ -93,7 +93,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes the value expressed as a <c>reference</c>, which is the arc type specified as a reference to another property.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteReference(string value)
         {
             const string PropertyName = ReferencePropertyName;
@@ -129,7 +129,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>delete</c>, which is whether the client should delete existing data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
+        /// Writes the value expressed as a <c>delete</c>, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteDelete(bool value)
@@ -141,31 +141,41 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>ArcType</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumArcTypeValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<CesiumArcType> AsArcType()
+        public CesiumArcTypeValuePropertyAdaptor<ArcTypeCesiumWriter> AsArcType()
         {
             return m_asArcType.Value;
         }
 
-        private ICesiumValuePropertyWriter<CesiumArcType> CreateArcTypeAdaptor()
+        private Lazy<CesiumArcTypeValuePropertyAdaptor<ArcTypeCesiumWriter>> CreateAsArcType()
         {
-            return new CesiumWriterAdaptor<ArcTypeCesiumWriter, CesiumArcType>(this, (me, value) => me.WriteArcType(value));
+            return new Lazy<CesiumArcTypeValuePropertyAdaptor<ArcTypeCesiumWriter>>(CreateArcType, false);
+        }
+
+        private CesiumArcTypeValuePropertyAdaptor<ArcTypeCesiumWriter> CreateArcType()
+        {
+            return CesiumValuePropertyAdaptors.CreateArcType(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>Reference</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumReferenceValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<Reference> AsReference()
+        public CesiumReferenceValuePropertyAdaptor<ArcTypeCesiumWriter> AsReference()
         {
             return m_asReference.Value;
         }
 
-        private ICesiumValuePropertyWriter<Reference> CreateReferenceAdaptor()
+        private Lazy<CesiumReferenceValuePropertyAdaptor<ArcTypeCesiumWriter>> CreateAsReference()
         {
-            return new CesiumWriterAdaptor<ArcTypeCesiumWriter, Reference>(this, (me, value) => me.WriteReference(value));
+            return new Lazy<CesiumReferenceValuePropertyAdaptor<ArcTypeCesiumWriter>>(CreateReference, false);
+        }
+
+        private CesiumReferenceValuePropertyAdaptor<ArcTypeCesiumWriter> CreateReference()
+        {
+            return CesiumValuePropertyAdaptors.CreateReference(this);
         }
 
     }

@@ -11,7 +11,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>Path</c> to a <see cref="CesiumOutputStream" />. A <c>Path</c> is a path, which is a polyline defined by the motion of an object over time. The possible vertices of the path are specified by the <c>position</c> property. Note that because clients cannot render a truly infinite path, the path must be limited, either by defining availability for this object, or by using the <c>leadTime</c> and <c>trailTime</c> properties.
+    /// Writes a <c>Path</c> to a <see cref="CesiumOutputStream"/>. A <c>Path</c> is a path, which is a polyline defined by the motion of an object over time. The possible vertices of the path are specified by the <c>position</c> property. Note that because clients cannot render a truly infinite path, the path must be limited, either by defining availability for this object, or by using the <c>leadTime</c> and <c>trailTime</c> properties.
     /// </summary>
     public class PathCesiumWriter : CesiumPropertyWriter<PathCesiumWriter>
     {
@@ -76,7 +76,7 @@ namespace CesiumLanguageWriter
         {
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override PathCesiumWriter Clone()
         {
             return new PathCesiumWriter(this);
@@ -128,7 +128,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>show</c> property as a <c>reference</c> value. The <c>show</c> property specifies whether or not the path is shown. If not specified, the default value is <see langword="true"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteShowPropertyReference(string value)
         {
             using (var writer = OpenShowProperty())
@@ -237,7 +237,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>width</c> property as a <c>reference</c> value. The <c>width</c> property specifies the width of the path line. If not specified, the default value is 1.0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteWidthPropertyReference(string value)
         {
             using (var writer = OpenWidthProperty())
@@ -346,7 +346,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>resolution</c> property as a <c>reference</c> value. The <c>resolution</c> property specifies the maximum step-size, in seconds, used to sample the path. If the <c>position</c> property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteResolutionPropertyReference(string value)
         {
             using (var writer = OpenResolutionProperty())
@@ -455,7 +455,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>leadTime</c> property as a <c>reference</c> value. The <c>leadTime</c> property specifies the time ahead of the animation time, in seconds, to show the path. The time will be limited to not exceed the object's availability. By default, the value is unlimited, which effectively results in drawing the entire available path of the object.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteLeadTimePropertyReference(string value)
         {
             using (var writer = OpenLeadTimeProperty())
@@ -564,7 +564,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>trailTime</c> property as a <c>reference</c> value. The <c>trailTime</c> property specifies the time behind the animation time, in seconds, to show the path. The time will be limited to not exceed the object's availability. By default, the value is unlimited, which effectively results in drawing the entire available path of the object.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteTrailTimePropertyReference(string value)
         {
             using (var writer = OpenTrailTimeProperty())
@@ -705,7 +705,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>distanceDisplayCondition</c> property as a <c>reference</c> value. The <c>distanceDisplayCondition</c> property specifies the display condition specifying at what distance from the camera this path will be displayed.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteDistanceDisplayConditionPropertyReference(string value)
         {
             using (var writer = OpenDistanceDisplayConditionProperty())

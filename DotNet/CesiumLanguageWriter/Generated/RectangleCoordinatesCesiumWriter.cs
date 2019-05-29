@@ -11,9 +11,9 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>RectangleCoordinates</c> to a <see cref="CesiumOutputStream" />. A <c>RectangleCoordinates</c> is a set of coordinates describing a cartographic rectangle on the surface of the ellipsoid.
+    /// Writes a <c>RectangleCoordinates</c> to a <see cref="CesiumOutputStream"/>. A <c>RectangleCoordinates</c> is a set of coordinates describing a cartographic rectangle on the surface of the ellipsoid.
     /// </summary>
-    public class RectangleCoordinatesCesiumWriter : CesiumInterpolatablePropertyWriter<RectangleCoordinatesCesiumWriter>
+    public class RectangleCoordinatesCesiumWriter : CesiumInterpolatablePropertyWriter<RectangleCoordinatesCesiumWriter>, ICesiumDeletablePropertyWriter, ICesiumCartographicRectangleRadiansValuePropertyWriter, ICesiumCartographicRectangleDegreesValuePropertyWriter, ICesiumReferenceValuePropertyWriter
     {
         /// <summary>
         /// The name of the <c>wsen</c> property.
@@ -35,9 +35,9 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string DeletePropertyName = "delete";
 
-        private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<CartographicExtent>> m_asWsen;
-        private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<CartographicExtent>> m_asWsenDegrees;
-        private readonly Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
+        private readonly Lazy<CesiumCartographicRectangleRadiansValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>> m_asWsen;
+        private readonly Lazy<CesiumCartographicRectangleDegreesValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>> m_asWsenDegrees;
+        private readonly Lazy<CesiumReferenceValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>> m_asReference;
 
         /// <summary>
         /// Initializes a new instance.
@@ -46,9 +46,9 @@ namespace CesiumLanguageWriter
         public RectangleCoordinatesCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
-            m_asWsen = new Lazy<ICesiumInterpolatableValuePropertyWriter<CartographicExtent>>(CreateWsenAdaptor, false);
-            m_asWsenDegrees = new Lazy<ICesiumInterpolatableValuePropertyWriter<CartographicExtent>>(CreateWsenDegreesAdaptor, false);
-            m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
+            m_asWsen = CreateAsWsen();
+            m_asWsenDegrees = CreateAsWsenDegrees();
+            m_asReference = CreateAsReference();
         }
 
         /// <summary>
@@ -58,12 +58,12 @@ namespace CesiumLanguageWriter
         protected RectangleCoordinatesCesiumWriter([NotNull] RectangleCoordinatesCesiumWriter existingInstance)
             : base(existingInstance)
         {
-            m_asWsen = new Lazy<ICesiumInterpolatableValuePropertyWriter<CartographicExtent>>(CreateWsenAdaptor, false);
-            m_asWsenDegrees = new Lazy<ICesiumInterpolatableValuePropertyWriter<CartographicExtent>>(CreateWsenDegreesAdaptor, false);
-            m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
+            m_asWsen = CreateAsWsen();
+            m_asWsenDegrees = CreateAsWsenDegrees();
+            m_asReference = CreateAsReference();
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override RectangleCoordinatesCesiumWriter Clone()
         {
             return new RectangleCoordinatesCesiumWriter(this);
@@ -180,7 +180,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes the value expressed as a <c>reference</c>, which is the set of coordinates specified as a reference to another property.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteReference(string value)
         {
             const string PropertyName = ReferencePropertyName;
@@ -228,45 +228,60 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <c>Wsen</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumCartographicRectangleRadiansValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumInterpolatableValuePropertyWriter<CartographicExtent> AsWsen()
+        public CesiumCartographicRectangleRadiansValuePropertyAdaptor<RectangleCoordinatesCesiumWriter> AsWsen()
         {
             return m_asWsen.Value;
         }
 
-        private ICesiumInterpolatableValuePropertyWriter<CartographicExtent> CreateWsenAdaptor()
+        private Lazy<CesiumCartographicRectangleRadiansValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>> CreateAsWsen()
         {
-            return new CesiumInterpolatableWriterAdaptor<RectangleCoordinatesCesiumWriter, CartographicExtent>(this, (me, value) => me.WriteWsen(value), (me, dates, values, startIndex, length) => me.WriteWsen(dates, values, startIndex, length));
+            return new Lazy<CesiumCartographicRectangleRadiansValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>>(CreateCartographicRectangleRadians, false);
+        }
+
+        private CesiumCartographicRectangleRadiansValuePropertyAdaptor<RectangleCoordinatesCesiumWriter> CreateCartographicRectangleRadians()
+        {
+            return CesiumValuePropertyAdaptors.CreateCartographicRectangleRadians(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <c>WsenDegrees</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumCartographicRectangleDegreesValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumInterpolatableValuePropertyWriter<CartographicExtent> AsWsenDegrees()
+        public CesiumCartographicRectangleDegreesValuePropertyAdaptor<RectangleCoordinatesCesiumWriter> AsWsenDegrees()
         {
             return m_asWsenDegrees.Value;
         }
 
-        private ICesiumInterpolatableValuePropertyWriter<CartographicExtent> CreateWsenDegreesAdaptor()
+        private Lazy<CesiumCartographicRectangleDegreesValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>> CreateAsWsenDegrees()
         {
-            return new CesiumInterpolatableWriterAdaptor<RectangleCoordinatesCesiumWriter, CartographicExtent>(this, (me, value) => me.WriteWsenDegrees(value), (me, dates, values, startIndex, length) => me.WriteWsenDegrees(dates, values, startIndex, length));
+            return new Lazy<CesiumCartographicRectangleDegreesValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>>(CreateCartographicRectangleDegrees, false);
+        }
+
+        private CesiumCartographicRectangleDegreesValuePropertyAdaptor<RectangleCoordinatesCesiumWriter> CreateCartographicRectangleDegrees()
+        {
+            return CesiumValuePropertyAdaptors.CreateCartographicRectangleDegrees(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>Reference</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumReferenceValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<Reference> AsReference()
+        public CesiumReferenceValuePropertyAdaptor<RectangleCoordinatesCesiumWriter> AsReference()
         {
             return m_asReference.Value;
         }
 
-        private ICesiumValuePropertyWriter<Reference> CreateReferenceAdaptor()
+        private Lazy<CesiumReferenceValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>> CreateAsReference()
         {
-            return new CesiumWriterAdaptor<RectangleCoordinatesCesiumWriter, Reference>(this, (me, value) => me.WriteReference(value));
+            return new Lazy<CesiumReferenceValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>>(CreateReference, false);
+        }
+
+        private CesiumReferenceValuePropertyAdaptor<RectangleCoordinatesCesiumWriter> CreateReference()
+        {
+            return CesiumValuePropertyAdaptors.CreateReference(this);
         }
 
     }

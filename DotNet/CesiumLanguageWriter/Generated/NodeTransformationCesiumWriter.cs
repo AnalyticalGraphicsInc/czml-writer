@@ -11,7 +11,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>NodeTransformation</c> to a <see cref="CesiumOutputStream" />. A <c>NodeTransformation</c> is a set of transformations to apply to a particular node in a 3D model.
+    /// Writes a <c>NodeTransformation</c> to a <see cref="CesiumOutputStream"/>. A <c>NodeTransformation</c> is a set of transformations to apply to a particular node in a 3D model.
     /// </summary>
     public class NodeTransformationCesiumWriter : CesiumPropertyWriter<NodeTransformationCesiumWriter>
     {
@@ -52,7 +52,7 @@ namespace CesiumLanguageWriter
         {
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override NodeTransformationCesiumWriter Clone()
         {
             return new NodeTransformationCesiumWriter(this);
@@ -132,7 +132,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>translation</c> property as a <c>reference</c> value. The <c>translation</c> property specifies the translation to apply to the model node. If not specified, the default value is [0.0, 0.0, 0.0].
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteTranslationPropertyReference(string value)
         {
             using (var writer = OpenTranslationProperty())
@@ -241,7 +241,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>rotation</c> property as a <c>reference</c> value. The <c>rotation</c> property specifies the rotation to apply to the model node. If not specified, the default value is [0.0, 0.0, 0.0, 1.0].
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteRotationPropertyReference(string value)
         {
             using (var writer = OpenRotationProperty())
@@ -350,7 +350,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>scale</c> property as a <c>reference</c> value. The <c>scale</c> property specifies the scaling to apply to the model node. If not specified, the default value is [1.0, 1.0, 1.0].
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteScalePropertyReference(string value)
         {
             using (var writer = OpenScaleProperty())

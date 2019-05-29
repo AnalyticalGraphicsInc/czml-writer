@@ -341,7 +341,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShowPropertyReference(String value) {
         {
@@ -397,7 +397,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code coordinates} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code coordinates} property defines the coordinates of the rectangle. This value is required.
+    *  Gets the writer for the {@code coordinates} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code coordinates} property defines the coordinates of the rectangle. This value must be specified in order for the client to display graphics.
     
 
     */
@@ -408,7 +408,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
 
     /**
     *  
-    Opens and returns the writer for the {@code coordinates} property. The {@code coordinates} property defines the coordinates of the rectangle. This value is required.
+    Opens and returns the writer for the {@code coordinates} property. The {@code coordinates} property defines the coordinates of the rectangle. This value must be specified in order for the client to display graphics.
     
 
     */
@@ -420,7 +420,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
 
     /**
     *  
-    Writes a value for the {@code coordinates} property as a {@code wsen} value. The {@code coordinates} property specifies the coordinates of the rectangle. This value is required.
+    Writes a value for the {@code coordinates} property as a {@code wsen} value. The {@code coordinates} property specifies the coordinates of the rectangle. This value must be specified in order for the client to display graphics.
     
     
 
@@ -439,7 +439,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
 
     /**
     *  
-    Writes a value for the {@code coordinates} property as a {@code wsen} value. The {@code coordinates} property specifies the coordinates of the rectangle. This value is required.
+    Writes a value for the {@code coordinates} property as a {@code wsen} value. The {@code coordinates} property specifies the coordinates of the rectangle. This value must be specified in order for the client to display graphics.
     
     
     
@@ -464,7 +464,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
 
     /**
     *  
-    Writes a value for the {@code coordinates} property as a {@code wsen} value. The {@code coordinates} property specifies the coordinates of the rectangle. This value is required.
+    Writes a value for the {@code coordinates} property as a {@code wsen} value. The {@code coordinates} property specifies the coordinates of the rectangle. This value must be specified in order for the client to display graphics.
     
     
     
@@ -485,7 +485,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
 
     /**
     *  
-    Writes a value for the {@code coordinates} property as a {@code wsen} value. The {@code coordinates} property specifies the coordinates of the rectangle. This value is required.
+    Writes a value for the {@code coordinates} property as a {@code wsen} value. The {@code coordinates} property specifies the coordinates of the rectangle. This value must be specified in order for the client to display graphics.
     
     
     
@@ -510,7 +510,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
 
     /**
     *  
-    Writes a value for the {@code coordinates} property as a {@code wsenDegrees} value. The {@code coordinates} property specifies the coordinates of the rectangle. This value is required.
+    Writes a value for the {@code coordinates} property as a {@code wsenDegrees} value. The {@code coordinates} property specifies the coordinates of the rectangle. This value must be specified in order for the client to display graphics.
     
     
 
@@ -529,7 +529,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
 
     /**
     *  
-    Writes a value for the {@code coordinates} property as a {@code wsenDegrees} value. The {@code coordinates} property specifies the coordinates of the rectangle. This value is required.
+    Writes a value for the {@code coordinates} property as a {@code wsenDegrees} value. The {@code coordinates} property specifies the coordinates of the rectangle. This value must be specified in order for the client to display graphics.
     
     
     
@@ -554,7 +554,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
 
     /**
     *  
-    Writes a value for the {@code coordinates} property as a {@code wsenDegrees} value. The {@code coordinates} property specifies the coordinates of the rectangle. This value is required.
+    Writes a value for the {@code coordinates} property as a {@code wsenDegrees} value. The {@code coordinates} property specifies the coordinates of the rectangle. This value must be specified in order for the client to display graphics.
     
     
     
@@ -575,7 +575,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
 
     /**
     *  
-    Writes a value for the {@code coordinates} property as a {@code wsenDegrees} value. The {@code coordinates} property specifies the coordinates of the rectangle. This value is required.
+    Writes a value for the {@code coordinates} property as a {@code wsenDegrees} value. The {@code coordinates} property specifies the coordinates of the rectangle. This value must be specified in order for the client to display graphics.
     
     
     
@@ -600,7 +600,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
 
     /**
     *  
-    Writes a value for the {@code coordinates} property as a {@code reference} value. The {@code coordinates} property specifies the coordinates of the rectangle. This value is required.
+    Writes a value for the {@code coordinates} property as a {@code reference} value. The {@code coordinates} property specifies the coordinates of the rectangle. This value must be specified in order for the client to display graphics.
     
     
 
@@ -619,11 +619,11 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
 
     /**
     *  
-    Writes a value for the {@code coordinates} property as a {@code reference} value. The {@code coordinates} property specifies the coordinates of the rectangle. This value is required.
+    Writes a value for the {@code coordinates} property as a {@code reference} value. The {@code coordinates} property specifies the coordinates of the rectangle. This value must be specified in order for the client to display graphics.
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeCoordinatesPropertyReference(String value) {
         {
@@ -638,7 +638,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
 
     /**
     *  
-    Writes a value for the {@code coordinates} property as a {@code reference} value. The {@code coordinates} property specifies the coordinates of the rectangle. This value is required.
+    Writes a value for the {@code coordinates} property as a {@code reference} value. The {@code coordinates} property specifies the coordinates of the rectangle. This value must be specified in order for the client to display graphics.
     
     
     
@@ -659,7 +659,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
 
     /**
     *  
-    Writes a value for the {@code coordinates} property as a {@code reference} value. The {@code coordinates} property specifies the coordinates of the rectangle. This value is required.
+    Writes a value for the {@code coordinates} property as a {@code reference} value. The {@code coordinates} property specifies the coordinates of the rectangle. This value must be specified in order for the client to display graphics.
     
     
     
@@ -790,7 +790,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeHeightPropertyReference(String value) {
         {
@@ -957,7 +957,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeExtrudedHeightPropertyReference(String value) {
         {
@@ -1078,7 +1078,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeHeightReferencePropertyReference(String value) {
         {
@@ -1199,7 +1199,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeExtrudedHeightReferencePropertyReference(String value) {
         {
@@ -1366,7 +1366,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeRotationPropertyReference(String value) {
         {
@@ -1533,7 +1533,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeStRotationPropertyReference(String value) {
         {
@@ -1700,7 +1700,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeGranularityPropertyReference(String value) {
         {
@@ -1821,7 +1821,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeFillPropertyReference(String value) {
         {
@@ -1964,7 +1964,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeOutlinePropertyReference(String value) {
         {
@@ -2246,7 +2246,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeOutlineColorPropertyReference(String value) {
         {
@@ -2413,7 +2413,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeOutlineWidthPropertyReference(String value) {
         {
@@ -2534,7 +2534,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShadowsPropertyReference(String value) {
         {
@@ -2722,7 +2722,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeDistanceDisplayConditionPropertyReference(String value) {
         {
@@ -2889,7 +2889,7 @@ public class RectangleCesiumWriter extends CesiumPropertyWriter<RectangleCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeZIndexPropertyReference(String value) {
         {

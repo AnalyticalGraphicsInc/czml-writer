@@ -12,7 +12,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>PolylineDashMaterial</c> to a <see cref="CesiumOutputStream" />. A <c>PolylineDashMaterial</c> is a material that fills the surface of a line with a pattern of dashes.
+    /// Writes a <c>PolylineDashMaterial</c> to a <see cref="CesiumOutputStream"/>. A <c>PolylineDashMaterial</c> is a material that fills the surface of a line with a pattern of dashes.
     /// </summary>
     public class PolylineDashMaterialCesiumWriter : CesiumPropertyWriter<PolylineDashMaterialCesiumWriter>
     {
@@ -59,7 +59,7 @@ namespace CesiumLanguageWriter
         {
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override PolylineDashMaterialCesiumWriter Clone()
         {
             return new PolylineDashMaterialCesiumWriter(this);
@@ -209,7 +209,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>color</c> property as a <c>reference</c> value. The <c>color</c> property specifies the color of the dashes on the line. If not specified, the default value is white.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteColorPropertyReference(string value)
         {
             using (var writer = OpenColorProperty())
@@ -388,7 +388,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>gapColor</c> property as a <c>reference</c> value. The <c>gapColor</c> property specifies the color of the gaps between dashes on the line. If not specified, the default value is transparent.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteGapColorPropertyReference(string value)
         {
             using (var writer = OpenGapColorProperty())
@@ -497,7 +497,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>dashLength</c> property as a <c>reference</c> value. The <c>dashLength</c> property specifies the length in screen-space pixels of a single dash and gap pattern. If not specified, the default value is 16.0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteDashLengthPropertyReference(string value)
         {
             using (var writer = OpenDashLengthProperty())
@@ -606,7 +606,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>dashPattern</c> property as a <c>reference</c> value. The <c>dashPattern</c> property specifies a 16-bit bitfield representing which portions along a single dashLength are the dash (1) and which are the gap (0). The default value, 255 (0000000011111111), indicates 50% gap followed by 50% dash. If not specified, the default value is 255.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteDashPatternPropertyReference(string value)
         {
             using (var writer = OpenDashPatternProperty())

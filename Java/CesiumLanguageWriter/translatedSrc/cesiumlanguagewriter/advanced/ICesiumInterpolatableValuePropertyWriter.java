@@ -18,7 +18,7 @@ import java.util.List;
         "deprecation",
         "serial"
 })
-public interface ICesiumInterpolatableValuePropertyWriter<TValue> extends ICesiumValuePropertyWriter<TValue>, ICesiumInterpolationInformationWriter {
+public interface ICesiumInterpolatableValuePropertyWriter<TValue> extends ICesiumValuePropertyWriter<TValue>, ICesiumInterpolatablePropertyWriter {
     /**
     *  
     Writes time-tagged samples for this property.  Clients will interpolate over the samples

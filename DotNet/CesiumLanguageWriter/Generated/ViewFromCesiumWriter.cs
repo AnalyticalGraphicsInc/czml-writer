@@ -11,9 +11,9 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>ViewFrom</c> to a <see cref="CesiumOutputStream" />. A <c>ViewFrom</c> is a suggested initial camera position offset when tracking this object, specified as a Cartesian position. Typically defined in the East (x), North (y), Up (z) reference frame relative to the object's position, but may use another frame depending on the object's velocity.
+    /// Writes a <c>ViewFrom</c> to a <see cref="CesiumOutputStream"/>. A <c>ViewFrom</c> is a suggested initial camera position offset when tracking this object, specified as a Cartesian position. Typically defined in the East (x), North (y), Up (z) reference frame relative to the object's position, but may use another frame depending on the object's velocity.
     /// </summary>
-    public class ViewFromCesiumWriter : CesiumInterpolatablePropertyWriter<ViewFromCesiumWriter>
+    public class ViewFromCesiumWriter : CesiumInterpolatablePropertyWriter<ViewFromCesiumWriter>, ICesiumDeletablePropertyWriter, ICesiumCartesian3ValuePropertyWriter, ICesiumReferenceValuePropertyWriter
     {
         /// <summary>
         /// The name of the <c>cartesian</c> property.
@@ -30,8 +30,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string DeletePropertyName = "delete";
 
-        private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<Cartesian>> m_asCartesian;
-        private readonly Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
+        private readonly Lazy<CesiumCartesian3ValuePropertyAdaptor<ViewFromCesiumWriter>> m_asCartesian;
+        private readonly Lazy<CesiumReferenceValuePropertyAdaptor<ViewFromCesiumWriter>> m_asReference;
 
         /// <summary>
         /// Initializes a new instance.
@@ -40,8 +40,8 @@ namespace CesiumLanguageWriter
         public ViewFromCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
-            m_asCartesian = new Lazy<ICesiumInterpolatableValuePropertyWriter<Cartesian>>(CreateCartesianAdaptor, false);
-            m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
+            m_asCartesian = CreateAsCartesian();
+            m_asReference = CreateAsReference();
         }
 
         /// <summary>
@@ -51,11 +51,11 @@ namespace CesiumLanguageWriter
         protected ViewFromCesiumWriter([NotNull] ViewFromCesiumWriter existingInstance)
             : base(existingInstance)
         {
-            m_asCartesian = new Lazy<ICesiumInterpolatableValuePropertyWriter<Cartesian>>(CreateCartesianAdaptor, false);
-            m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
+            m_asCartesian = CreateAsCartesian();
+            m_asReference = CreateAsReference();
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override ViewFromCesiumWriter Clone()
         {
             return new ViewFromCesiumWriter(this);
@@ -112,7 +112,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes the value expressed as a <c>reference</c>, which is the offset specified as a reference to another property.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteReference(string value)
         {
             const string PropertyName = ReferencePropertyName;
@@ -160,31 +160,41 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <c>Cartesian</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumCartesian3ValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumInterpolatableValuePropertyWriter<Cartesian> AsCartesian()
+        public CesiumCartesian3ValuePropertyAdaptor<ViewFromCesiumWriter> AsCartesian()
         {
             return m_asCartesian.Value;
         }
 
-        private ICesiumInterpolatableValuePropertyWriter<Cartesian> CreateCartesianAdaptor()
+        private Lazy<CesiumCartesian3ValuePropertyAdaptor<ViewFromCesiumWriter>> CreateAsCartesian()
         {
-            return new CesiumInterpolatableWriterAdaptor<ViewFromCesiumWriter, Cartesian>(this, (me, value) => me.WriteCartesian(value), (me, dates, values, startIndex, length) => me.WriteCartesian(dates, values, startIndex, length));
+            return new Lazy<CesiumCartesian3ValuePropertyAdaptor<ViewFromCesiumWriter>>(CreateCartesian3, false);
+        }
+
+        private CesiumCartesian3ValuePropertyAdaptor<ViewFromCesiumWriter> CreateCartesian3()
+        {
+            return CesiumValuePropertyAdaptors.CreateCartesian3(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>Reference</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumReferenceValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<Reference> AsReference()
+        public CesiumReferenceValuePropertyAdaptor<ViewFromCesiumWriter> AsReference()
         {
             return m_asReference.Value;
         }
 
-        private ICesiumValuePropertyWriter<Reference> CreateReferenceAdaptor()
+        private Lazy<CesiumReferenceValuePropertyAdaptor<ViewFromCesiumWriter>> CreateAsReference()
         {
-            return new CesiumWriterAdaptor<ViewFromCesiumWriter, Reference>(this, (me, value) => me.WriteReference(value));
+            return new Lazy<CesiumReferenceValuePropertyAdaptor<ViewFromCesiumWriter>>(CreateReference, false);
+        }
+
+        private CesiumReferenceValuePropertyAdaptor<ViewFromCesiumWriter> CreateReference()
+        {
+            return CesiumValuePropertyAdaptors.CreateReference(this);
         }
 
     }

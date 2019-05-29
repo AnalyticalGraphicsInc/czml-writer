@@ -5,7 +5,6 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
-import cesiumlanguagewriter.Reference;
 import java.util.List;
 import javax.annotation.Nonnull;
 
@@ -20,7 +19,8 @@ import javax.annotation.Nonnull;
         "deprecation",
         "serial"
 })
-public class IntegerCesiumWriter extends CesiumInterpolatablePropertyWriter<IntegerCesiumWriter> {
+public class IntegerCesiumWriter extends CesiumInterpolatablePropertyWriter<IntegerCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumIntegerValuePropertyWriter,
+        ICesiumReferenceValuePropertyWriter {
     /**
     *  
     The name of the {@code number} property.
@@ -42,8 +42,8 @@ public class IntegerCesiumWriter extends CesiumInterpolatablePropertyWriter<Inte
 
     */
     public static final String DeletePropertyName = "delete";
-    private Lazy<ICesiumInterpolatableValuePropertyWriter<Integer>> m_asNumber;
-    private Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
+    private Lazy<CesiumIntegerValuePropertyAdaptor<IntegerCesiumWriter>> m_asNumber;
+    private Lazy<CesiumReferenceValuePropertyAdaptor<IntegerCesiumWriter>> m_asReference;
 
     /**
     *  
@@ -55,18 +55,8 @@ public class IntegerCesiumWriter extends CesiumInterpolatablePropertyWriter<Inte
     */
     public IntegerCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
-        m_asNumber = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Integer>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Integer>>(this, "createNumberAdaptor") {
-                    public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Integer> invoke() {
-                        return createNumberAdaptor();
-                    }
-                }, false);
-        m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor") {
-            public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
-                return createReferenceAdaptor();
-            }
-        }, false);
+        m_asNumber = createAsNumber();
+        m_asReference = createAsReference();
     }
 
     /**
@@ -79,18 +69,8 @@ public class IntegerCesiumWriter extends CesiumInterpolatablePropertyWriter<Inte
     */
     protected IntegerCesiumWriter(@Nonnull IntegerCesiumWriter existingInstance) {
         super(existingInstance);
-        m_asNumber = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Integer>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Integer>>(this, "createNumberAdaptor") {
-                    public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Integer> invoke() {
-                        return createNumberAdaptor();
-                    }
-                }, false);
-        m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor") {
-            public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
-                return createReferenceAdaptor();
-            }
-        }, false);
+        m_asNumber = createAsNumber();
+        m_asReference = createAsReference();
     }
 
     /**
@@ -181,7 +161,7 @@ public class IntegerCesiumWriter extends CesiumInterpolatablePropertyWriter<Inte
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeReference(String value) {
         final String PropertyName = ReferencePropertyName;
@@ -226,7 +206,7 @@ public class IntegerCesiumWriter extends CesiumInterpolatablePropertyWriter<Inte
 
     /**
     *  
-    Writes the value expressed as a {@code delete}, which is whether the client should delete existing data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
+    Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
     
     
 
@@ -241,47 +221,51 @@ public class IntegerCesiumWriter extends CesiumInterpolatablePropertyWriter<Inte
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumInterpolatableValuePropertyWriter} to write a value in {@code Number} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumIntegerValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
     * @return The wrapper.
     */
-    public final ICesiumInterpolatableValuePropertyWriter<Integer> asNumber() {
+    public final CesiumIntegerValuePropertyAdaptor<IntegerCesiumWriter> asNumber() {
         return m_asNumber.getValue();
     }
 
-    private final ICesiumInterpolatableValuePropertyWriter<Integer> createNumberAdaptor() {
-        return new CesiumInterpolatableWriterAdaptor<cesiumlanguagewriter.IntegerCesiumWriter, Integer>(this,
-                new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.IntegerCesiumWriter, Integer>() {
-                    public void invoke(IntegerCesiumWriter me, Integer value) {
-                        me.writeNumber(value);
+    private final Lazy<CesiumIntegerValuePropertyAdaptor<IntegerCesiumWriter>> createAsNumber() {
+        return new Lazy<cesiumlanguagewriter.advanced.CesiumIntegerValuePropertyAdaptor<IntegerCesiumWriter>>(
+                new Func1<cesiumlanguagewriter.advanced.CesiumIntegerValuePropertyAdaptor<IntegerCesiumWriter>>(this, "createInteger") {
+                    public cesiumlanguagewriter.advanced.CesiumIntegerValuePropertyAdaptor<IntegerCesiumWriter> invoke() {
+                        return createInteger();
                     }
-                }, new CesiumWriterAdaptorWriteSamplesCallback<cesiumlanguagewriter.IntegerCesiumWriter, Integer>() {
-                    public void invoke(IntegerCesiumWriter me, List<JulianDate> dates, List<Integer> values, int startIndex, int length) {
-                        me.writeNumber(dates, values, startIndex, length);
-                    }
-                });
+                }, false);
+    }
+
+    private final CesiumIntegerValuePropertyAdaptor<IntegerCesiumWriter> createInteger() {
+        return CesiumValuePropertyAdaptors.<IntegerCesiumWriter> createInteger(this);
     }
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
     * @return The wrapper.
     */
-    public final ICesiumValuePropertyWriter<Reference> asReference() {
+    public final CesiumReferenceValuePropertyAdaptor<IntegerCesiumWriter> asReference() {
         return m_asReference.getValue();
     }
 
-    private final ICesiumValuePropertyWriter<Reference> createReferenceAdaptor() {
-        return new CesiumWriterAdaptor<cesiumlanguagewriter.IntegerCesiumWriter, cesiumlanguagewriter.Reference>(this,
-                new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.IntegerCesiumWriter, cesiumlanguagewriter.Reference>() {
-                    public void invoke(IntegerCesiumWriter me, Reference value) {
-                        me.writeReference(value);
+    private final Lazy<CesiumReferenceValuePropertyAdaptor<IntegerCesiumWriter>> createAsReference() {
+        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<IntegerCesiumWriter>>(
+                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<IntegerCesiumWriter>>(this, "createReference") {
+                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<IntegerCesiumWriter> invoke() {
+                        return createReference();
                     }
-                });
+                }, false);
+    }
+
+    private final CesiumReferenceValuePropertyAdaptor<IntegerCesiumWriter> createReference() {
+        return CesiumValuePropertyAdaptors.<IntegerCesiumWriter> createReference(this);
     }
 }

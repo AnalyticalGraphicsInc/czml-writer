@@ -280,7 +280,7 @@ namespace GenerateFromSchema
                                     propertyName = propertyName.Substring(property.ValueType.ExtensionPrefix.Length + 1);
 
                                 var properties = property.ValueType.Properties;
-                                foreach (var valueProperty in properties.Where(p => p.IsValue && !p.ValueType.Name.StartsWith("Reference")).Skip(1))
+                                foreach (var valueProperty in properties.Where(p => p.IsValue && !p.ValueType.Name.Contains("Reference")).Skip(1))
                                 {
                                     writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                     using (writer.OpenScope())
@@ -304,7 +304,7 @@ namespace GenerateFromSchema
 
                                     properties = subProperty.ValueType.Properties;
 
-                                    foreach (var valueProperty in properties.Where(p => p.IsValue && !p.ValueType.Name.StartsWith("Reference")).Skip(1))
+                                    foreach (var valueProperty in properties.Where(p => p.IsValue && !p.ValueType.Name.Contains("Reference")).Skip(1))
                                     {
                                         writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                         using (writer.OpenScope())
@@ -334,7 +334,7 @@ namespace GenerateFromSchema
                                         foreach (var materialSubProperty in properties.Where(p => !p.IsValue))
                                         {
                                             properties = materialSubProperty.ValueType.Properties;
-                                            foreach (var valueProperty in properties.Where(p => p.IsValue && !p.ValueType.Name.StartsWith("Reference")).Skip(1))
+                                            foreach (var valueProperty in properties.Where(p => p.IsValue && !p.ValueType.Name.Contains("Reference")).Skip(1))
                                             {
                                                 writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                                 using (writer.OpenScope())
@@ -397,7 +397,7 @@ namespace GenerateFromSchema
                                             foreach (var materialSubProperty in properties.Where(p => !p.IsValue))
                                             {
                                                 properties = materialSubProperty.ValueType.Properties;
-                                                foreach (var valueProperty in properties.Where(p => p.IsValue && !p.ValueType.Name.StartsWith("Reference")).Skip(1))
+                                                foreach (var valueProperty in properties.Where(p => p.IsValue && !p.ValueType.Name.Contains("Reference")).Skip(1))
                                                 {
                                                     writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                                     using (writer.OpenScope())
@@ -428,7 +428,7 @@ namespace GenerateFromSchema
                                         {
                                             int i = 0;
                                             properties = additionalProperty.ValueType.Properties;
-                                            foreach (var valueProperty in properties.Where(p => p.IsValue && !p.ValueType.Name.StartsWith("Reference")).Skip(1))
+                                            foreach (var valueProperty in properties.Where(p => p.IsValue && !p.ValueType.Name.Contains("Reference")).Skip(1))
                                             {
                                                 writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                                 using (writer.OpenScope())
@@ -678,11 +678,11 @@ namespace GenerateFromSchema
                                     double z1 = 3.0;
                                     double z2 = z1 + dz * deltaTime;
 
-                                    string value1 = string.Format("new Cartesian({0}, {1}, {2})", x1, y1, z1);
-                                    string assertionValue1 = string.Format("new Cartesian3({0}, {1}, {2})", x1, y1, z1);
+                                    string value1 = $"new Cartesian({x1}, {y1}, {z1})";
+                                    string assertionValue1 = $"new Cartesian3({x1}, {y1}, {z1})";
 
-                                    string value2 = string.Format("new Cartesian({0}, {1}, {2})", x2, y2, z2);
-                                    string assertionValue2 = string.Format("new Cartesian3({0}, {1}, {2})", x2, y2, z2);
+                                    string value2 = $"new Cartesian({x2}, {y2}, {z2})";
+                                    string assertionValue2 = $"new Cartesian3({x2}, {y2}, {z2})";
 
                                     writer.WriteLine("w.WriteCartesian(CreateList(m_documentStartDate, m_documentStartDate.AddSeconds({0})), CreateList({1}, {2}));", deltaTime, value1, value2);
                                     WriteAssertion(writer, false, "expect(e.position.getValue(documentStartDate)).toEqual({0});", assertionValue1);
@@ -1157,7 +1157,8 @@ namespace GenerateFromSchema
                 return BitConverter.ToUInt16(hash.Value, n);
             }
 
-            switch (valueProperty.ValueType.Name)
+            string valueTypeName = valueProperty.ValueType.Name;
+            switch (valueTypeName)
             {
                 case "Boolean":
                 {
@@ -1181,16 +1182,16 @@ namespace GenerateFromSchema
                 {
                     int v1 = GetNumber(0);
                     int v2 = GetNumber(1);
-                    value = string.Format("CreateList<double>({0}, {1})", v1, v2);
-                    assertionValue = string.Format("[ {0}, {1} ]", v1, v2);
+                    value = $"CreateList<double>({v1}, {v2})";
+                    assertionValue = $"[ {v1}, {v2} ]";
                     valueType = "List<double>";
                     return;
                 }
                 case "String":
                 {
-                    string v = string.Format("string{0}", GetNumber(0));
-                    value = string.Format("\"{0}\"", v);
-                    assertionValue = string.Format("'{0}'", v);
+                    string v = $"string{GetNumber(0)}";
+                    value = $"\"{v}\"";
+                    assertionValue = $"'{v}'";
                     valueType = "string";
                     return;
                 }
@@ -1199,8 +1200,9 @@ namespace GenerateFromSchema
                     int x = GetNumber(0);
                     int y = GetNumber(1);
                     int z = GetNumber(2);
-                    value = string.Format("new Cartesian({0}, {1}, {2})", x, y, z);
-                    assertionValue = string.Format("new Cartesian3({0}, {1}, {2})", x, y, z);
+
+                    value = $"new Cartesian({x}, {y}, {z})";
+                    assertionValue = $"new Cartesian3({x}, {y}, {z})";
                     valueType = "Cartesian";
                     return;
                 }
@@ -1212,10 +1214,16 @@ namespace GenerateFromSchema
                     int x2 = GetNumber(3);
                     int y2 = GetNumber(4);
                     int z2 = GetNumber(5);
-                    value = string.Format("CreateList(new Cartesian({0}, {1}, {2}), new Cartesian({3}, {4}, {5}))", x1, y1, z1, x2, y2, z2);
-                    assertionValue = string.Format("[ {6}new Cartesian3({0}, {1}, {2}){7}, {6}new Cartesian3({3}, {4}, {5}){7} ]", x1, y1, z1, x2, y2, z2,
-                                                   parentProperty.ValueType.Name == "DirectionList" ? "Spherical.fromCartesian3(" : "",
-                                                   parentProperty.ValueType.Name == "DirectionList" ? ")" : "");
+
+                    value = $"CreateList(new Cartesian({x1}, {y1}, {z1}), new Cartesian({x2}, {y2}, {z2}))";
+                    string prefix = "";
+                    string suffix = "";
+                    if (parentProperty.ValueType.Name == "DirectionList")
+                    {
+                        prefix = "Spherical.fromCartesian3(";
+                        suffix = ")";
+                    }
+                    assertionValue = $"[ {prefix}new Cartesian3({x1}, {y1}, {z1}){suffix}, {prefix}new Cartesian3({x2}, {y2}, {z2}){suffix} ]";
                     valueType = "List<Cartesian>";
                     return;
                 }
@@ -1226,8 +1234,8 @@ namespace GenerateFromSchema
                     double z = GetNumber(2);
                     NormalizeCartesian(ref x, ref y, ref z);
 
-                    value = string.Format("new UnitCartesian({0}, {1}, {2})", x, y, z);
-                    assertionValue = string.Format("new Cartesian3({0}, {1}, {2})", x, y, z);
+                    value = $"new UnitCartesian({x}, {y}, {z})";
+                    assertionValue = $"new Cartesian3({x}, {y}, {z})";
                     valueType = "UnitCartesian";
                     assertionEpsilon = "1e-14";
                     return;
@@ -1238,16 +1246,20 @@ namespace GenerateFromSchema
                     double y1 = GetNumber(1);
                     double z1 = GetNumber(2);
                     NormalizeCartesian(ref x1, ref y1, ref z1);
-
                     double x2 = GetNumber(3);
                     double y2 = GetNumber(4);
                     double z2 = GetNumber(5);
                     NormalizeCartesian(ref x2, ref y2, ref z2);
 
-                    value = string.Format("CreateList(new UnitCartesian({0}, {1}, {2}), new UnitCartesian({3}, {4}, {5}))", x1, y1, z1, x2, y2, z2);
-                    assertionValue = string.Format("[ {6}new Cartesian3({0}, {1}, {2}){7}, {6}new Cartesian3({3}, {4}, {5}){7} ]", x1, y1, z1, x2, y2, z2,
-                                                   parentProperty.ValueType.Name == "DirectionList" ? "Spherical.fromCartesian3(" : "",
-                                                   parentProperty.ValueType.Name == "DirectionList" ? ")" : "");
+                    value = $"CreateList(new UnitCartesian({x1}, {y1}, {z1}), new UnitCartesian({x2}, {y2}, {z2}))";
+                    string prefix = "";
+                    string suffix = "";
+                    if (parentProperty.ValueType.Name == "DirectionList")
+                    {
+                        prefix = "Spherical.fromCartesian3(";
+                        suffix = ")";
+                    }
+                    assertionValue = $"[ {prefix}new Cartesian3({x1}, {y1}, {z1}){suffix}, {prefix}new Cartesian3({x2}, {y2}, {z2}){suffix} ]";
                     assertionEpsilon = "1e-14";
                     valueType = "List<UnitCartesian>";
                     return;
@@ -1260,24 +1272,28 @@ namespace GenerateFromSchema
                     int dX = GetNumber(3);
                     int dY = GetNumber(4);
                     int dZ = GetNumber(5);
-                    value = string.Format("new Motion<Cartesian>(new Cartesian({0}, {1}, {2}), new Cartesian({3}, {4}, {5}))", x, y, z, dX, dY, dZ);
-                    assertionValue = string.Format("new Cartesian3({0}, {1}, {2})", x, y, z);
+
+                    value = $"new Motion<Cartesian>(new Cartesian({x}, {y}, {z}), new Cartesian({dX}, {dY}, {dZ}))";
+                    assertionValue = $"new Cartesian3({x}, {y}, {z})";
                     valueType = "Motion<Cartesian>";
                     return;
                 }
-                case "Cartographic":
+                case "CartographicDegrees":
+                case "CartographicRadians":
                 {
                     bool isDegrees = valueProperty.Name == "cartographicDegrees";
                     double longitude = GetNumber(0) % (isDegrees ? 45 : Math.PI / 2);
                     double latitude = GetNumber(1) % (isDegrees ? 45 : Math.PI / 2);
                     double height = GetNumber(2);
-                    value = string.Format("new Cartographic({0}, {1}, {2})", longitude, latitude, height);
-                    assertionValue = string.Format("Cartesian3.from{3}({0}, {1}, {2})", longitude, latitude, height,
-                                                   isDegrees ? "Degrees" : "Radians");
+
+                    value = $"new Cartographic({longitude}, {latitude}, {height})";
+                    string units = isDegrees ? "Degrees" : "Radians";
+                    assertionValue = $"Cartesian3.from{units}({longitude}, {latitude}, {height})";
                     valueType = "Cartographic";
                     return;
                 }
-                case "CartographicList":
+                case "CartographicDegreesList":
+                case "CartographicRadiansList":
                 {
                     bool isDegrees = valueProperty.Name == "cartographicDegrees";
                     double longitude1 = GetNumber(0) % (isDegrees ? 45 : Math.PI / 2);
@@ -1286,9 +1302,10 @@ namespace GenerateFromSchema
                     double longitude2 = GetNumber(3) % (isDegrees ? 45 : Math.PI / 2);
                     double latitude2 = GetNumber(4) % (isDegrees ? 45 : Math.PI / 2);
                     double height2 = GetNumber(5);
-                    value = string.Format("CreateList(new Cartographic({0}, {1}, {2}), new Cartographic({3}, {4}, {5}))", longitude1, latitude1, height1, longitude2, latitude2, height2);
-                    assertionValue = string.Format("[ Cartesian3.from{6}({0}, {1}, {2}), Cartesian3.from{6}({3}, {4}, {5}) ]", longitude1, latitude1, height1, longitude2, latitude2, height2,
-                                                   isDegrees ? "Degrees" : "Radians");
+
+                    value = $"CreateList(new Cartographic({longitude1}, {latitude1}, {height1}), new Cartographic({longitude2}, {latitude2}, {height2}))";
+                    string units = isDegrees ? "Degrees" : "Radians";
+                    assertionValue = $"[ Cartesian3.from{units}({longitude1}, {latitude1}, {height1}), Cartesian3.from{units}({longitude2}, {latitude2}, {height2}) ]";
                     valueType = "List<Cartesian>";
                     return;
                 }
@@ -1296,8 +1313,9 @@ namespace GenerateFromSchema
                 {
                     int x = GetNumber(0);
                     int y = GetNumber(1);
-                    value = string.Format("new Rectangular({0}, {1})", x, y);
-                    assertionValue = string.Format("new Cartesian2({0}, {1})", x, y);
+
+                    value = $"new Rectangular({x}, {y})";
+                    assertionValue = $"new Cartesian2({x}, {y})";
                     valueType = "Rectangular";
                     return;
                 }
@@ -1306,8 +1324,9 @@ namespace GenerateFromSchema
                     int clock = GetNumber(0);
                     int cone = GetNumber(1);
                     int magnitude = GetNumber(2);
-                    value = string.Format("new Spherical({0}, {1}, {2})", clock, cone, magnitude);
-                    assertionValue = string.Format("Cartesian3.fromSpherical(new Spherical({0}, {1}, {2}))", clock, cone, magnitude);
+
+                    value = $"new Spherical({clock}, {cone}, {magnitude})";
+                    assertionValue = $"Cartesian3.fromSpherical(new Spherical({clock}, {cone}, {magnitude}))";
                     valueType = "Spherical";
                     return;
                 }
@@ -1319,8 +1338,9 @@ namespace GenerateFromSchema
                     int clock2 = GetNumber(3);
                     int cone2 = GetNumber(4);
                     int magnitude2 = GetNumber(5);
-                    value = string.Format("CreateList(new Spherical({0}, {1}, {2}), new Spherical({3}, {4}, {5}))", clock1, cone1, magnitude1, clock2, cone2, magnitude2);
-                    assertionValue = string.Format("[ new Spherical({0}, {1}, {2}), new Spherical({3}, {4}, {5}) ]", clock1, cone1, magnitude1, clock2, cone2, magnitude2);
+
+                    value = $"CreateList(new Spherical({clock1}, {cone1}, {magnitude1}), new Spherical({clock2}, {cone2}, {magnitude2}))";
+                    assertionValue = $"[ new Spherical({clock1}, {cone1}, {magnitude1}), new Spherical({clock2}, {cone2}, {magnitude2}) ]";
                     valueType = "List<Spherical>";
                     return;
                 }
@@ -1328,8 +1348,9 @@ namespace GenerateFromSchema
                 {
                     int clock = GetNumber(0);
                     int cone = GetNumber(1);
-                    value = string.Format("new UnitSpherical({0}, {1})", clock, cone);
-                    assertionValue = string.Format("Cartesian3.fromSpherical(new Spherical({0}, {1}))", clock, cone);
+
+                    value = $"new UnitSpherical({clock}, {cone})";
+                    assertionValue = $"Cartesian3.fromSpherical(new Spherical({clock}, {cone}))";
                     assertionEpsilon = "1e-14";
                     valueType = "UnitSpherical";
                     return;
@@ -1340,8 +1361,9 @@ namespace GenerateFromSchema
                     int cone1 = GetNumber(1);
                     int clock2 = GetNumber(2);
                     int cone2 = GetNumber(3);
-                    value = string.Format("CreateList(new UnitSpherical({0}, {1}), new UnitSpherical({2}, {3}))", clock1, cone1, clock2, cone2);
-                    assertionValue = string.Format("[ new Spherical({0}, {1}), new Spherical({2}, {3}) ]", clock1, cone1, clock2, cone2);
+
+                    value = $"CreateList(new UnitSpherical({clock1}, {cone1}), new UnitSpherical({clock2}, {cone2}))";
+                    assertionValue = $"[ new Spherical({clock1}, {cone1}), new Spherical({clock2}, {cone2}) ]";
                     valueType = "List<UnitSpherical>";
                     return;
                 }
@@ -1358,24 +1380,13 @@ namespace GenerateFromSchema
                     x /= magnitude;
                     y /= magnitude;
                     z /= magnitude;
-                    value = string.Format("new UnitQuaternion({0}, {1}, {2}, {3})", w, x, y, z);
-                    assertionValue = string.Format("new Quaternion({0}, {1}, {2}, {3})", x, y, z, w);
+                    value = $"new UnitQuaternion({w}, {x}, {y}, {z})";
+                    assertionValue = $"new Quaternion({x}, {y}, {z}, {w})";
                     assertionEpsilon = "1e-14";
                     valueType = "UnitQuaternion";
                     return;
                 }
                 case "Rgba":
-                {
-                    int a = GetNumber(0) % 255;
-                    int r = GetNumber(1) % 255;
-                    int g = GetNumber(2) % 255;
-                    int b = GetNumber(3) % 255;
-
-                    value = string.Format("Color.FromArgb({0}, {1}, {2}, {3})", a, r, g, b);
-                    assertionValue = string.Format("Color.fromBytes({0}, {1}, {2}, {3})", r, g, b, a);
-                    valueType = "Color";
-                    return;
-                }
                 case "Rgbaf":
                 {
                     int a = GetNumber(0) % 255;
@@ -1383,9 +1394,18 @@ namespace GenerateFromSchema
                     int g = GetNumber(2) % 255;
                     int b = GetNumber(3) % 255;
 
-                    value = string.Format("Color.FromArgb({0}, {1}, {2}, {3})", a, r, g, b);
-                    assertionValue = string.Format("new Color({0}, {1}, {2}, {3})", r / 255.0, g / 255.0, b / 255.0, a / 255.0);
-                    assertionEpsilon = "1e-14";
+                    value = $"Color.FromArgb({a}, {r}, {g}, {b})";
+                    switch (valueTypeName)
+                    {
+                        case "Rgba":
+                            assertionValue = $"Color.fromBytes({r}, {g}, {b}, {a})";
+                            break;
+                        case "Rgbaf":
+                            assertionValue = $"new Color({r / 255.0}, {g / 255.0}, {b / 255.0}, {a / 255.0})";
+                            assertionEpsilon = "1e-14";
+                            break;
+                    }
+
                     valueType = "Color";
                     return;
                 }
@@ -1461,18 +1481,18 @@ namespace GenerateFromSchema
                 }
                 case "Font":
                 {
-                    string s = string.Format("{0}px sans-serif", (GetNumber(0) + 5) % 25);
-                    value = string.Format("\"{0}\"", s);
-                    assertionValue = string.Format("'{0}'", s);
+                    string s = $"{(GetNumber(0) + 5) % 25}px sans-serif";
+                    value = $"\"{s}\"";
+                    assertionValue = $"'{s}'";
                     valueType = "string";
                     return;
                 }
                 case "Uri":
                 {
-                    string s = string.Format("http://example.com/{0}", GetNumber(0));
-                    value = string.Format("\"{0}\", CesiumResourceBehavior.LinkTo", s);
+                    string s = $"http://example.com/{GetNumber(0)}";
+                    value = $"\"{s}\", CesiumResourceBehavior.LinkTo";
                     valueSuffix = ".url";
-                    assertionValue = string.Format("'{0}'", s);
+                    assertionValue = $"'{s}'";
                     valueType = "string";
                     return;
                 }
@@ -1483,8 +1503,8 @@ namespace GenerateFromSchema
                     int farDistance = GetNumber(2);
                     int farValue = GetNumber(3);
 
-                    value = string.Format("new NearFarScalar({0}, {1}, {2}, {3})", nearDistance, nearValue, farDistance, farValue);
-                    assertionValue = string.Format("new NearFarScalar({0}, {1}, {2}, {3})", nearDistance, nearValue, farDistance, farValue);
+                    value = $"new NearFarScalar({nearDistance}, {nearValue}, {farDistance}, {farValue})";
+                    assertionValue = $"new NearFarScalar({nearDistance}, {nearValue}, {farDistance}, {farValue})";
                     valueType = "NearFarScalar";
                     return;
                 }
@@ -1500,8 +1520,8 @@ namespace GenerateFromSchema
                         farDistance = temp;
                     }
 
-                    value = string.Format("new Bounds({0}, {1})", nearDistance, farDistance);
-                    assertionValue = string.Format("new DistanceDisplayCondition({0}, {1})", nearDistance, farDistance);
+                    value = $"new Bounds({nearDistance}, {farDistance})";
+                    assertionValue = $"new DistanceDisplayCondition({nearDistance}, {farDistance})";
                     valueType = "Bounds";
                     return;
                 }
@@ -1512,12 +1532,13 @@ namespace GenerateFromSchema
                     int width = GetNumber(2);
                     int height = GetNumber(3);
 
-                    value = string.Format("BoundingRectangle.FromWidthHeight({0}, {1}, {2}, {3})", x, y, width, height);
-                    assertionValue = string.Format("new BoundingRectangle({0}, {1}, {2}, {3})", x, y, width, height);
+                    value = $"BoundingRectangle.FromWidthHeight({x}, {y}, {width}, {height})";
+                    assertionValue = $"new BoundingRectangle({x}, {y}, {width}, {height})";
                     valueType = "BoundingRectangle";
                     return;
                 }
-                case "CartographicRectangle":
+                case "CartographicRectangleDegrees":
+                case "CartographicRectangleRadians":
                 {
                     bool isDegrees = valueProperty.Name == "wsenDegrees";
                     double w = GetNumber(0) % (isDegrees ? 45 : Math.PI / 2);
@@ -1525,9 +1546,8 @@ namespace GenerateFromSchema
                     double e = GetNumber(2) % (isDegrees ? 45 : Math.PI / 2);
                     double n = GetNumber(3) % (isDegrees ? 45 : Math.PI / 2);
 
-                    value = string.Format("new CartographicExtent({0}, {1}, {2}, {3})", w, s, e, n);
-                    assertionValue = string.Format("{4}({0}, {1}, {2}, {3})", w, s, e, n,
-                                                   isDegrees ? "Rectangle.fromDegrees" : "new Rectangle");
+                    value = $"new CartographicExtent({w}, {s}, {e}, {n})";
+                    assertionValue = $"{(isDegrees ? "Rectangle.fromDegrees" : "new Rectangle")}({w}, {s}, {e}, {n})";
                     valueType = "CartographicExtent";
                     return;
                 }

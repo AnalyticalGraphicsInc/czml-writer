@@ -3,13 +3,7 @@
     "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Polyline.json",
     "title": "Polyline",
     "description": "A polyline, which is a line in the scene composed of multiple segments.",
-    "type": [
-        "array",
-        "object"
-    ],
-    "items": {
-        "$ref": "#"
-    },
+    "type": "object",
     "properties": {
         "show": {
             "$ref": "Boolean.json",
@@ -18,7 +12,8 @@
         },
         "positions": {
             "$ref": "PositionList.json",
-            "description": "The array of positions defining the polyline as a line strip."
+            "description": "The array of positions defining the polyline as a line strip.",
+            "czmlRequiredForDisplay": true
         },
         "arcType": {
             "$ref": "ArcType.json",
@@ -68,8 +63,5 @@
             "description": "The z-index of the polyline, used for ordering ground geometry. Only has an effect if the polyline is constant, and `clampToGround` is true.",
             "default": "0"
         }
-    },
-    "required": [
-        "positions"
-    ]
+    }
 }

@@ -10,7 +10,7 @@ using JetBrains.Annotations;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>NodeTransformations</c> to a <see cref="CesiumOutputStream" />. A <c>NodeTransformations</c> is a mapping of node names to node transformations.
+    /// Writes a <c>NodeTransformations</c> to a <see cref="CesiumOutputStream"/>. A <c>NodeTransformations</c> is a mapping of node names to node transformations.
     /// </summary>
     public class NodeTransformationsCesiumWriter : CesiumPropertyWriter<NodeTransformationsCesiumWriter>
     {
@@ -32,7 +32,7 @@ namespace CesiumLanguageWriter
         {
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override NodeTransformationsCesiumWriter Clone()
         {
             return new NodeTransformationsCesiumWriter(this);

@@ -5,8 +5,6 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
-import cesiumlanguagewriter.CesiumVerticalOrigin;
-import cesiumlanguagewriter.Reference;
 import javax.annotation.Nonnull;
 
 /**
@@ -20,7 +18,8 @@ import javax.annotation.Nonnull;
         "deprecation",
         "serial"
 })
-public class VerticalOriginCesiumWriter extends CesiumPropertyWriter<VerticalOriginCesiumWriter> {
+public class VerticalOriginCesiumWriter extends CesiumPropertyWriter<VerticalOriginCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumVerticalOriginValuePropertyWriter,
+        ICesiumReferenceValuePropertyWriter {
     /**
     *  
     The name of the {@code verticalOrigin} property.
@@ -42,8 +41,8 @@ public class VerticalOriginCesiumWriter extends CesiumPropertyWriter<VerticalOri
 
     */
     public static final String DeletePropertyName = "delete";
-    private Lazy<ICesiumValuePropertyWriter<CesiumVerticalOrigin>> m_asVerticalOrigin;
-    private Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
+    private Lazy<CesiumVerticalOriginValuePropertyAdaptor<VerticalOriginCesiumWriter>> m_asVerticalOrigin;
+    private Lazy<CesiumReferenceValuePropertyAdaptor<VerticalOriginCesiumWriter>> m_asReference;
 
     /**
     *  
@@ -55,18 +54,8 @@ public class VerticalOriginCesiumWriter extends CesiumPropertyWriter<VerticalOri
     */
     public VerticalOriginCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
-        m_asVerticalOrigin = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumVerticalOrigin>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumVerticalOrigin>>(this, "createVerticalOriginAdaptor") {
-                    public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumVerticalOrigin> invoke() {
-                        return createVerticalOriginAdaptor();
-                    }
-                }, false);
-        m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor") {
-            public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
-                return createReferenceAdaptor();
-            }
-        }, false);
+        m_asVerticalOrigin = createAsVerticalOrigin();
+        m_asReference = createAsReference();
     }
 
     /**
@@ -79,18 +68,8 @@ public class VerticalOriginCesiumWriter extends CesiumPropertyWriter<VerticalOri
     */
     protected VerticalOriginCesiumWriter(@Nonnull VerticalOriginCesiumWriter existingInstance) {
         super(existingInstance);
-        m_asVerticalOrigin = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumVerticalOrigin>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumVerticalOrigin>>(this, "createVerticalOriginAdaptor") {
-                    public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumVerticalOrigin> invoke() {
-                        return createVerticalOriginAdaptor();
-                    }
-                }, false);
-        m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor") {
-            public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
-                return createReferenceAdaptor();
-            }
-        }, false);
+        m_asVerticalOrigin = createAsVerticalOrigin();
+        m_asReference = createAsReference();
     }
 
     /**
@@ -147,7 +126,7 @@ public class VerticalOriginCesiumWriter extends CesiumPropertyWriter<VerticalOri
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeReference(String value) {
         final String PropertyName = ReferencePropertyName;
@@ -192,7 +171,7 @@ public class VerticalOriginCesiumWriter extends CesiumPropertyWriter<VerticalOri
 
     /**
     *  
-    Writes the value expressed as a {@code delete}, which is whether the client should delete existing data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
+    Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
     
     
 
@@ -207,43 +186,51 @@ public class VerticalOriginCesiumWriter extends CesiumPropertyWriter<VerticalOri
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code VerticalOrigin} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumVerticalOriginValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
     * @return The wrapper.
     */
-    public final ICesiumValuePropertyWriter<CesiumVerticalOrigin> asVerticalOrigin() {
+    public final CesiumVerticalOriginValuePropertyAdaptor<VerticalOriginCesiumWriter> asVerticalOrigin() {
         return m_asVerticalOrigin.getValue();
     }
 
-    private final ICesiumValuePropertyWriter<CesiumVerticalOrigin> createVerticalOriginAdaptor() {
-        return new CesiumWriterAdaptor<cesiumlanguagewriter.VerticalOriginCesiumWriter, cesiumlanguagewriter.CesiumVerticalOrigin>(this,
-                new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.VerticalOriginCesiumWriter, cesiumlanguagewriter.CesiumVerticalOrigin>() {
-                    public void invoke(VerticalOriginCesiumWriter me, @Nonnull CesiumVerticalOrigin value) {
-                        me.writeVerticalOrigin(value);
+    private final Lazy<CesiumVerticalOriginValuePropertyAdaptor<VerticalOriginCesiumWriter>> createAsVerticalOrigin() {
+        return new Lazy<cesiumlanguagewriter.advanced.CesiumVerticalOriginValuePropertyAdaptor<VerticalOriginCesiumWriter>>(
+                new Func1<cesiumlanguagewriter.advanced.CesiumVerticalOriginValuePropertyAdaptor<VerticalOriginCesiumWriter>>(this, "createVerticalOrigin") {
+                    public cesiumlanguagewriter.advanced.CesiumVerticalOriginValuePropertyAdaptor<VerticalOriginCesiumWriter> invoke() {
+                        return createVerticalOrigin();
                     }
-                });
+                }, false);
+    }
+
+    private final CesiumVerticalOriginValuePropertyAdaptor<VerticalOriginCesiumWriter> createVerticalOrigin() {
+        return CesiumValuePropertyAdaptors.<VerticalOriginCesiumWriter> createVerticalOrigin(this);
     }
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
     * @return The wrapper.
     */
-    public final ICesiumValuePropertyWriter<Reference> asReference() {
+    public final CesiumReferenceValuePropertyAdaptor<VerticalOriginCesiumWriter> asReference() {
         return m_asReference.getValue();
     }
 
-    private final ICesiumValuePropertyWriter<Reference> createReferenceAdaptor() {
-        return new CesiumWriterAdaptor<cesiumlanguagewriter.VerticalOriginCesiumWriter, cesiumlanguagewriter.Reference>(this,
-                new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.VerticalOriginCesiumWriter, cesiumlanguagewriter.Reference>() {
-                    public void invoke(VerticalOriginCesiumWriter me, Reference value) {
-                        me.writeReference(value);
+    private final Lazy<CesiumReferenceValuePropertyAdaptor<VerticalOriginCesiumWriter>> createAsReference() {
+        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<VerticalOriginCesiumWriter>>(
+                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<VerticalOriginCesiumWriter>>(this, "createReference") {
+                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<VerticalOriginCesiumWriter> invoke() {
+                        return createReference();
                     }
-                });
+                }, false);
+    }
+
+    private final CesiumReferenceValuePropertyAdaptor<VerticalOriginCesiumWriter> createReference() {
+        return CesiumValuePropertyAdaptors.<VerticalOriginCesiumWriter> createReference(this);
     }
 }

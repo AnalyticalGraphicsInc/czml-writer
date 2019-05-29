@@ -3,9 +3,12 @@
     "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/BoundingRectangle.json",
     "title": "BoundingRectangle",
     "description": "A bounding rectangle specified by a corner, width and height.",
-    "extends": {
-        "$ref": "InterpolatableProperty.json"
-    },
+    "allOf": [
+        { "$ref": "InterpolatableProperty.json" },
+        { "$ref": "DeletableProperty.json" },
+        { "$ref": "ValueProperties/BoundingRectangleValueProperty.json" },
+        { "$ref": "ValueProperties/ReferenceValueProperty.json" }
+    ],
     "type": [
         "array",
         "object"
@@ -15,18 +18,12 @@
     },
     "properties": {
         "boundingRectangle": {
-            "$ref": "BoundingRectangleValue.json",
-            "description": "The bounding rectangle specified as `[X, Y, Width, Height]`.",
-            "czmlValue": true
+            "$ref": "Values/BoundingRectangleValue.json",
+            "description": "The bounding rectangle specified as `[X, Y, Width, Height]`."
         },
         "reference": {
-            "$ref": "ReferenceValue.json",
-            "description": "The bounding rectangle specified as a reference to another property.",
-            "czmlValue": true
-        },
-        "delete": {
-            "description": "Whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.",
-            "type": "boolean"
+            "$ref": "Values/ReferenceValue.json",
+            "description": "The bounding rectangle specified as a reference to another property."
         }
     }
 }

@@ -3,13 +3,7 @@
     "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Box.json",
     "title": "Box",
     "description": "A box, which is a closed rectangular cuboid.",
-    "type": [
-        "array",
-        "object"
-    ],
-    "items": {
-        "$ref": "#"
-    },
+    "type": "object",
     "properties": {
         "show": {
             "$ref": "Boolean.json",
@@ -18,7 +12,8 @@
         },
         "dimensions": {
             "$ref": "BoxDimensions.json",
-            "description": "The dimensions of the box."
+            "description": "The dimensions of the box.",
+            "czmlRequiredForDisplay": true
         },
         "fill": {
             "$ref": "Boolean.json",
@@ -54,8 +49,5 @@
             "$ref": "DistanceDisplayCondition.json",
             "description": "The display condition specifying the distance from the camera at which this box will be displayed."
         }
-    },
-    "required": [
-        "dimensions"
-    ]
+    }
 }

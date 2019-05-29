@@ -3,6 +3,11 @@
     "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/LabelStyle.json",
     "title": "LabelStyle",
     "description": "The style of a label.",
+    "allOf": [
+        { "$ref": "DeletableProperty.json" },
+        { "$ref": "ValueProperties/LabelStyleValueProperty.json" },
+        { "$ref": "ValueProperties/ReferenceValueProperty.json" }
+    ],
     "type": [
         "array",
         "object",
@@ -13,18 +18,12 @@
     },
     "properties": {
         "labelStyle": {
-            "$ref": "LabelStyleValue.json",
-            "description": "The label style.",
-            "czmlValue": true
+            "$ref": "Values/LabelStyleValue.json",
+            "description": "The label style."
         },
         "reference": {
-            "$ref": "ReferenceValue.json",
-            "description": "The label style specified as a reference to another property.",
-            "czmlValue": true
-        },
-        "delete": {
-            "description": "Whether the client should delete existing data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.",
-            "type": "boolean"
+            "$ref": "Values/ReferenceValue.json",
+            "description": "The label style specified as a reference to another property."
         }
     }
 }

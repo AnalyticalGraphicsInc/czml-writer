@@ -11,9 +11,9 @@ using System.Drawing;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>Uri</c> to a <see cref="CesiumOutputStream" />. A <c>Uri</c> is a URI value. The URI can optionally vary with time.
+    /// Writes a <c>Uri</c> to a <see cref="CesiumOutputStream"/>. A <c>Uri</c> is a URI value. The URI can optionally vary with time.
     /// </summary>
-    public class UriCesiumWriter : CesiumPropertyWriter<UriCesiumWriter>
+    public class UriCesiumWriter : CesiumPropertyWriter<UriCesiumWriter>, ICesiumDeletablePropertyWriter, ICesiumUriValuePropertyWriter, ICesiumReferenceValuePropertyWriter
     {
         /// <summary>
         /// The name of the <c>uri</c> property.
@@ -30,8 +30,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string DeletePropertyName = "delete";
 
-        private readonly Lazy<ICesiumValuePropertyWriter<CesiumResource>> m_asUri;
-        private readonly Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
+        private readonly Lazy<CesiumUriValuePropertyAdaptor<UriCesiumWriter>> m_asUri;
+        private readonly Lazy<CesiumReferenceValuePropertyAdaptor<UriCesiumWriter>> m_asReference;
 
         /// <summary>
         /// Initializes a new instance.
@@ -40,8 +40,8 @@ namespace CesiumLanguageWriter
         public UriCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
-            m_asUri = new Lazy<ICesiumValuePropertyWriter<CesiumResource>>(CreateUriAdaptor, false);
-            m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
+            m_asUri = CreateAsUri();
+            m_asReference = CreateAsReference();
         }
 
         /// <summary>
@@ -51,11 +51,11 @@ namespace CesiumLanguageWriter
         protected UriCesiumWriter([NotNull] UriCesiumWriter existingInstance)
             : base(existingInstance)
         {
-            m_asUri = new Lazy<ICesiumValuePropertyWriter<CesiumResource>>(CreateUriAdaptor, false);
-            m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
+            m_asUri = CreateAsUri();
+            m_asReference = CreateAsReference();
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override UriCesiumWriter Clone()
         {
             return new UriCesiumWriter(this);
@@ -171,7 +171,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes the value expressed as a <c>reference</c>, which is the URI specified as a reference to another property.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteReference(string value)
         {
             const string PropertyName = ReferencePropertyName;
@@ -207,7 +207,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>delete</c>, which is whether the client should delete existing data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
+        /// Writes the value expressed as a <c>delete</c>, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteDelete(bool value)
@@ -219,31 +219,41 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>Uri</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumUriValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<CesiumResource> AsUri()
+        public CesiumUriValuePropertyAdaptor<UriCesiumWriter> AsUri()
         {
             return m_asUri.Value;
         }
 
-        private ICesiumValuePropertyWriter<CesiumResource> CreateUriAdaptor()
+        private Lazy<CesiumUriValuePropertyAdaptor<UriCesiumWriter>> CreateAsUri()
         {
-            return new CesiumWriterAdaptor<UriCesiumWriter, CesiumResource>(this, (me, value) => me.WriteUri(value));
+            return new Lazy<CesiumUriValuePropertyAdaptor<UriCesiumWriter>>(CreateUri, false);
+        }
+
+        private CesiumUriValuePropertyAdaptor<UriCesiumWriter> CreateUri()
+        {
+            return CesiumValuePropertyAdaptors.CreateUri(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>Reference</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumReferenceValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<Reference> AsReference()
+        public CesiumReferenceValuePropertyAdaptor<UriCesiumWriter> AsReference()
         {
             return m_asReference.Value;
         }
 
-        private ICesiumValuePropertyWriter<Reference> CreateReferenceAdaptor()
+        private Lazy<CesiumReferenceValuePropertyAdaptor<UriCesiumWriter>> CreateAsReference()
         {
-            return new CesiumWriterAdaptor<UriCesiumWriter, Reference>(this, (me, value) => me.WriteReference(value));
+            return new Lazy<CesiumReferenceValuePropertyAdaptor<UriCesiumWriter>>(CreateReference, false);
+        }
+
+        private CesiumReferenceValuePropertyAdaptor<UriCesiumWriter> CreateReference()
+        {
+            return CesiumValuePropertyAdaptors.CreateReference(this);
         }
 
     }

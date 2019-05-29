@@ -3,6 +3,11 @@
     "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/ArcType.json",
     "title": "ArcType",
     "description": "The type of an arc.",
+    "allOf": [
+        { "$ref": "DeletableProperty.json" },
+        { "$ref": "ValueProperties/ArcTypeValueProperty.json" },
+        { "$ref": "ValueProperties/ReferenceValueProperty.json" }
+    ],
     "type": [
         "array",
         "object",
@@ -12,19 +17,13 @@
         "$ref": "#"
     },
     "properties": {
-        "ArcType": {
-            "$ref": "ArcTypeValue.json",
-            "description": "The arc type.",
-            "czmlValue": true
+        "arcType": {
+            "$ref": "Values/ArcTypeValue.json",
+            "description": "The arc type."
         },
         "reference": {
-            "$ref": "ReferenceValue.json",
-            "description": "The arc type specified as a reference to another property.",
-            "czmlValue": true
-        },
-        "delete": {
-            "description": "Whether the client should delete existing data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.",
-            "type": "boolean"
+            "$ref": "Values/ReferenceValue.json",
+            "description": "The arc type specified as a reference to another property."
         }
     }
 }

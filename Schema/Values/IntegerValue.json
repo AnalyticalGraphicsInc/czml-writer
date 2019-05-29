@@ -1,0 +1,11 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Values/IntegerValue.json",
+    "title": "Integer",
+    "description": "An integer number. The value may be a single integer, or an array with one element, in which case the value is constant. If it is an array with two or more elements, they are time-tagged samples arranged as `[Time, Value, Time, Value, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.",
+    "type": [
+        "integer",
+        "array"
+    ],
+    "czmlValue": true
+}

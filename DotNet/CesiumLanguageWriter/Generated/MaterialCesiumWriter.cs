@@ -12,7 +12,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>Material</c> to a <see cref="CesiumOutputStream" />. A <c>Material</c> is a definition of how a surface is colored or shaded.
+    /// Writes a <c>Material</c> to a <see cref="CesiumOutputStream"/>. A <c>Material</c> is a definition of how a surface is colored or shaded.
     /// </summary>
     public class MaterialCesiumWriter : CesiumPropertyWriter<MaterialCesiumWriter>
     {
@@ -65,7 +65,7 @@ namespace CesiumLanguageWriter
         {
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override MaterialCesiumWriter Clone()
         {
             return new MaterialCesiumWriter(this);

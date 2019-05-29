@@ -12,7 +12,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>PolylineOutlineMaterial</c> to a <see cref="CesiumOutputStream" />. A <c>PolylineOutlineMaterial</c> is a material that fills the surface of a line with an outlined color.
+    /// Writes a <c>PolylineOutlineMaterial</c> to a <see cref="CesiumOutputStream"/>. A <c>PolylineOutlineMaterial</c> is a material that fills the surface of a line with an outlined color.
     /// </summary>
     public class PolylineOutlineMaterialCesiumWriter : CesiumPropertyWriter<PolylineOutlineMaterialCesiumWriter>
     {
@@ -53,7 +53,7 @@ namespace CesiumLanguageWriter
         {
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override PolylineOutlineMaterialCesiumWriter Clone()
         {
             return new PolylineOutlineMaterialCesiumWriter(this);
@@ -203,7 +203,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>color</c> property as a <c>reference</c> value. The <c>color</c> property specifies the color of the surface. If not specified, the default value is white.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteColorPropertyReference(string value)
         {
             using (var writer = OpenColorProperty())
@@ -382,7 +382,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value. The <c>outlineColor</c> property specifies the color of the surface outline. If not specified, the default value is black.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteOutlineColorPropertyReference(string value)
         {
             using (var writer = OpenOutlineColorProperty())
@@ -491,7 +491,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value. The <c>outlineWidth</c> property specifies the width of the outline. If not specified, the default value is 1.0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteOutlineWidthPropertyReference(string value)
         {
             using (var writer = OpenOutlineWidthProperty())

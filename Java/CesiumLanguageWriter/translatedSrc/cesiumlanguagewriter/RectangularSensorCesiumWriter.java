@@ -397,7 +397,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShowPropertyReference(String value) {
         {
@@ -564,7 +564,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeXHalfAnglePropertyReference(String value) {
         {
@@ -731,7 +731,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeYHalfAnglePropertyReference(String value) {
         {
@@ -898,7 +898,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeRadiusPropertyReference(String value) {
         {
@@ -1019,7 +1019,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShowIntersectionPropertyReference(String value) {
         {
@@ -1301,7 +1301,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeIntersectionColorPropertyReference(String value) {
         {
@@ -1468,7 +1468,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeIntersectionWidthPropertyReference(String value) {
         {
@@ -1589,7 +1589,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShowLateralSurfacesPropertyReference(String value) {
         {
@@ -1732,7 +1732,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShowEllipsoidSurfacesPropertyReference(String value) {
         {
@@ -1875,7 +1875,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShowEllipsoidHorizonSurfacesPropertyReference(String value) {
         {
@@ -2018,7 +2018,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShowDomeSurfacesPropertyReference(String value) {
         {
@@ -2161,7 +2161,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writePortionToDisplayPropertyReference(String value) {
         {
@@ -2282,7 +2282,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeEnvironmentConstraintPropertyReference(String value) {
         {
@@ -2403,7 +2403,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShowEnvironmentOcclusionPropertyReference(String value) {
         {
@@ -2546,7 +2546,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShowEnvironmentIntersectionPropertyReference(String value) {
         {
@@ -2828,7 +2828,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeEnvironmentIntersectionColorPropertyReference(String value) {
         {
@@ -2995,7 +2995,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeEnvironmentIntersectionWidthPropertyReference(String value) {
         {

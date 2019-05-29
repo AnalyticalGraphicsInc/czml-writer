@@ -18,7 +18,7 @@ import javax.annotation.Nonnull;
 
 /**
  *  
- Writes a {@code Fan} to a {@link CesiumOutputStream}. A {@code Fan} is a fan. A fan starts at a point or apex and extends in a specified list of directions from the apex. Each pair of directions forms a face of the fan extending to the specified radius.
+ Writes a {@code Fan} to a {@link CesiumOutputStream}. A {@code Fan} is a fan, which starts at a point or apex and extends in a specified list of directions from the apex. Each pair of directions forms a face of the fan extending to the specified radius.
  
 
  */
@@ -253,7 +253,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShowPropertyReference(String value) {
         {
@@ -309,7 +309,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code directions} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code directions} property defines the list of directions defining the fan. This value is required.
+    *  Gets the writer for the {@code directions} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code directions} property defines the list of directions defining the fan. This value must be specified in order for the client to display graphics.
     
 
     */
@@ -320,7 +320,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code directions} property. The {@code directions} property defines the list of directions defining the fan. This value is required.
+    Opens and returns the writer for the {@code directions} property. The {@code directions} property defines the list of directions defining the fan. This value must be specified in order for the client to display graphics.
     
 
     */
@@ -332,7 +332,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code directions} property as a {@code spherical} value. The {@code directions} property specifies the list of directions defining the fan. This value is required.
+    Writes a value for the {@code directions} property as a {@code spherical} value. The {@code directions} property specifies the list of directions defining the fan. This value must be specified in order for the client to display graphics.
     
     
 
@@ -351,7 +351,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code directions} property as a {@code unitSpherical} value. The {@code directions} property specifies the list of directions defining the fan. This value is required.
+    Writes a value for the {@code directions} property as a {@code unitSpherical} value. The {@code directions} property specifies the list of directions defining the fan. This value must be specified in order for the client to display graphics.
     
     
 
@@ -370,7 +370,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code directions} property as a {@code cartesian} value. The {@code directions} property specifies the list of directions defining the fan. This value is required.
+    Writes a value for the {@code directions} property as a {@code cartesian} value. The {@code directions} property specifies the list of directions defining the fan. This value must be specified in order for the client to display graphics.
     
     
 
@@ -389,7 +389,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code directions} property as a {@code unitCartesian} value. The {@code directions} property specifies the list of directions defining the fan. This value is required.
+    Writes a value for the {@code directions} property as a {@code unitCartesian} value. The {@code directions} property specifies the list of directions defining the fan. This value must be specified in order for the client to display graphics.
     
     
 
@@ -518,7 +518,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeRadiusPropertyReference(String value) {
         {
@@ -639,7 +639,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writePerDirectionRadiusPropertyReference(String value) {
         {
@@ -782,7 +782,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeFillPropertyReference(String value) {
         {
@@ -903,7 +903,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeOutlinePropertyReference(String value) {
         {
@@ -1185,7 +1185,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeOutlineColorPropertyReference(String value) {
         {
@@ -1352,7 +1352,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeOutlineWidthPropertyReference(String value) {
         {
@@ -1519,7 +1519,7 @@ public class FanCesiumWriter extends CesiumPropertyWriter<FanCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeNumberOfRingsPropertyReference(String value) {
         {

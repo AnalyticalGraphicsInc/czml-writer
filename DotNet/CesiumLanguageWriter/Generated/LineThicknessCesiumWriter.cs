@@ -11,9 +11,9 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>LineThickness</c> to a <see cref="CesiumOutputStream" />. A <c>LineThickness</c> is the thickness of grid lines along each axis, in pixels.
+    /// Writes a <c>LineThickness</c> to a <see cref="CesiumOutputStream"/>. A <c>LineThickness</c> is the thickness of grid lines along each axis, in pixels.
     /// </summary>
-    public class LineThicknessCesiumWriter : CesiumInterpolatablePropertyWriter<LineThicknessCesiumWriter>
+    public class LineThicknessCesiumWriter : CesiumInterpolatablePropertyWriter<LineThicknessCesiumWriter>, ICesiumDeletablePropertyWriter, ICesiumCartesian2ValuePropertyWriter, ICesiumReferenceValuePropertyWriter
     {
         /// <summary>
         /// The name of the <c>cartesian2</c> property.
@@ -30,8 +30,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string DeletePropertyName = "delete";
 
-        private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<Rectangular>> m_asCartesian2;
-        private readonly Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
+        private readonly Lazy<CesiumCartesian2ValuePropertyAdaptor<LineThicknessCesiumWriter>> m_asCartesian2;
+        private readonly Lazy<CesiumReferenceValuePropertyAdaptor<LineThicknessCesiumWriter>> m_asReference;
 
         /// <summary>
         /// Initializes a new instance.
@@ -40,8 +40,8 @@ namespace CesiumLanguageWriter
         public LineThicknessCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
-            m_asCartesian2 = new Lazy<ICesiumInterpolatableValuePropertyWriter<Rectangular>>(CreateCartesian2Adaptor, false);
-            m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
+            m_asCartesian2 = CreateAsCartesian2();
+            m_asReference = CreateAsReference();
         }
 
         /// <summary>
@@ -51,11 +51,11 @@ namespace CesiumLanguageWriter
         protected LineThicknessCesiumWriter([NotNull] LineThicknessCesiumWriter existingInstance)
             : base(existingInstance)
         {
-            m_asCartesian2 = new Lazy<ICesiumInterpolatableValuePropertyWriter<Rectangular>>(CreateCartesian2Adaptor, false);
-            m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
+            m_asCartesian2 = CreateAsCartesian2();
+            m_asReference = CreateAsReference();
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override LineThicknessCesiumWriter Clone()
         {
             return new LineThicknessCesiumWriter(this);
@@ -122,7 +122,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes the value expressed as a <c>reference</c>, which is the thickness specified as a reference to another property.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteReference(string value)
         {
             const string PropertyName = ReferencePropertyName;
@@ -170,31 +170,41 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <c>Cartesian2</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumCartesian2ValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumInterpolatableValuePropertyWriter<Rectangular> AsCartesian2()
+        public CesiumCartesian2ValuePropertyAdaptor<LineThicknessCesiumWriter> AsCartesian2()
         {
             return m_asCartesian2.Value;
         }
 
-        private ICesiumInterpolatableValuePropertyWriter<Rectangular> CreateCartesian2Adaptor()
+        private Lazy<CesiumCartesian2ValuePropertyAdaptor<LineThicknessCesiumWriter>> CreateAsCartesian2()
         {
-            return new CesiumInterpolatableWriterAdaptor<LineThicknessCesiumWriter, Rectangular>(this, (me, value) => me.WriteCartesian2(value), (me, dates, values, startIndex, length) => me.WriteCartesian2(dates, values, startIndex, length));
+            return new Lazy<CesiumCartesian2ValuePropertyAdaptor<LineThicknessCesiumWriter>>(CreateCartesian2, false);
+        }
+
+        private CesiumCartesian2ValuePropertyAdaptor<LineThicknessCesiumWriter> CreateCartesian2()
+        {
+            return CesiumValuePropertyAdaptors.CreateCartesian2(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>Reference</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumReferenceValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<Reference> AsReference()
+        public CesiumReferenceValuePropertyAdaptor<LineThicknessCesiumWriter> AsReference()
         {
             return m_asReference.Value;
         }
 
-        private ICesiumValuePropertyWriter<Reference> CreateReferenceAdaptor()
+        private Lazy<CesiumReferenceValuePropertyAdaptor<LineThicknessCesiumWriter>> CreateAsReference()
         {
-            return new CesiumWriterAdaptor<LineThicknessCesiumWriter, Reference>(this, (me, value) => me.WriteReference(value));
+            return new Lazy<CesiumReferenceValuePropertyAdaptor<LineThicknessCesiumWriter>>(CreateReference, false);
+        }
+
+        private CesiumReferenceValuePropertyAdaptor<LineThicknessCesiumWriter> CreateReference()
+        {
+            return CesiumValuePropertyAdaptors.CreateReference(this);
         }
 
     }

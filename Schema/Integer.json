@@ -3,9 +3,12 @@
     "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Integer.json",
     "title": "Integer",
     "description": "An integer number.",
-    "extends": {
-        "$ref": "InterpolatableProperty.json"
-    },
+    "allOf": [
+        { "$ref": "InterpolatableProperty.json" },
+        { "$ref": "DeletableProperty.json" },
+        { "$ref": "ValueProperties/IntegerValueProperty.json" },
+        { "$ref": "ValueProperties/ReferenceValueProperty.json" }
+    ],
     "type": [
         "array",
         "object",
@@ -16,18 +19,12 @@
     },
     "properties": {
         "number": {
-            "$ref": "IntegerValue.json",
-            "description": "The integer.",
-            "czmlValue": true
+            "$ref": "Values/IntegerValue.json",
+            "description": "The integer."
         },
         "reference": {
-            "$ref": "ReferenceValue.json",
-            "description": "The integer specified as a reference to another property.",
-            "czmlValue": true
-        },
-        "delete": {
-            "description": "Whether the client should delete existing data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.",
-            "type": "boolean"
+            "$ref": "Values/ReferenceValue.json",
+            "description": "The integer specified as a reference to another property."
         }
     }
 }

@@ -332,7 +332,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShowPropertyReference(String value) {
         {
@@ -388,7 +388,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code gltf} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code gltf} property defines the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+    *  Gets the writer for the {@code gltf} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code gltf} property defines the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     
 
     */
@@ -399,7 +399,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code gltf} property. The {@code gltf} property defines the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+    Opens and returns the writer for the {@code gltf} property. The {@code gltf} property defines the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     
 
     */
@@ -411,7 +411,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code gltf} property as a {@code uri} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+    Writes a value for the {@code gltf} property as a {@code uri} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     
     
 
@@ -430,7 +430,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code gltf} property as a {@code uri} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+    Writes a value for the {@code gltf} property as a {@code uri} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     
     
     
@@ -451,7 +451,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code gltf} property as a {@code uri} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+    Writes a value for the {@code gltf} property as a {@code uri} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     
     
     
@@ -472,7 +472,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code gltf} property as a {@code uri} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+    Writes a value for the {@code gltf} property as a {@code uri} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     
     
     
@@ -493,7 +493,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code gltf} property as a {@code uri} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+    Writes a value for the {@code gltf} property as a {@code uri} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     
     
     
@@ -514,7 +514,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code gltf} property as a {@code uri} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+    Writes a value for the {@code gltf} property as a {@code uri} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     
     
 
@@ -533,7 +533,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code gltf} property as a {@code uri} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+    Writes a value for the {@code gltf} property as a {@code uri} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     
     
     
@@ -554,7 +554,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code gltf} property as a {@code reference} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+    Writes a value for the {@code gltf} property as a {@code reference} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     
     
 
@@ -573,11 +573,11 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code gltf} property as a {@code reference} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+    Writes a value for the {@code gltf} property as a {@code reference} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeGltfPropertyReference(String value) {
         {
@@ -592,7 +592,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code gltf} property as a {@code reference} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+    Writes a value for the {@code gltf} property as a {@code reference} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     
     
     
@@ -613,7 +613,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code gltf} property as a {@code reference} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+    Writes a value for the {@code gltf} property as a {@code reference} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     
     
     
@@ -744,7 +744,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeScalePropertyReference(String value) {
         {
@@ -911,7 +911,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeMinimumPixelSizePropertyReference(String value) {
         {
@@ -1078,7 +1078,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeMaximumScalePropertyReference(String value) {
         {
@@ -1199,7 +1199,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeIncrementallyLoadTexturesPropertyReference(String value) {
         {
@@ -1320,7 +1320,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeRunAnimationsPropertyReference(String value) {
         {
@@ -1441,7 +1441,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShadowsPropertyReference(String value) {
         {
@@ -1562,7 +1562,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeHeightReferencePropertyReference(String value) {
         {
@@ -1844,7 +1844,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeSilhouetteColorPropertyReference(String value) {
         {
@@ -2011,7 +2011,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeSilhouetteSizePropertyReference(String value) {
         {
@@ -2293,7 +2293,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeColorPropertyReference(String value) {
         {
@@ -2414,7 +2414,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeColorBlendModePropertyReference(String value) {
         {
@@ -2581,7 +2581,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeColorBlendAmountPropertyReference(String value) {
         {
@@ -2769,7 +2769,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeDistanceDisplayConditionPropertyReference(String value) {
         {

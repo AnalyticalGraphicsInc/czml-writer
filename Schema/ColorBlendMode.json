@@ -2,7 +2,12 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/ColorBlendMode.json",
     "title": "ColorBlendMode",
-    "description": "Defines different modes for blending between a target color and an entity's source color.",
+    "description": "The mode of blending between a target color and an entity's source color.",
+    "allOf": [
+        { "$ref": "DeletableProperty.json" },
+        { "$ref": "ValueProperties/ColorBlendModeValueProperty.json" },
+        { "$ref": "ValueProperties/ReferenceValueProperty.json" }
+    ],
     "type": [
         "array",
         "object",
@@ -13,18 +18,12 @@
     },
     "properties": {
         "colorBlendMode": {
-            "$ref": "ColorBlendModeValue.json",
-            "description": "The color blend mode.",
-            "czmlValue": true
+            "$ref": "Values/ColorBlendModeValue.json",
+            "description": "The color blend mode."
         },
         "reference": {
-            "$ref": "ReferenceValue.json",
-            "description": "The color blend mode specified as a reference to another property.",
-            "czmlValue": true
-        },
-        "delete": {
-            "description": "Whether the client should delete existing data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.",
-            "type": "boolean"
+            "$ref": "Values/ReferenceValue.json",
+            "description": "The color blend mode specified as a reference to another property."
         }
     }
 }

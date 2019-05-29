@@ -24,7 +24,7 @@ import javax.annotation.Nonnull;
         "deprecation",
         "serial"
 })
-public abstract class CesiumWriterAdaptorWriteCallback<TWrappedWriter, TValue> extends Delegate {
+public abstract class CesiumWriterAdaptorWriteCallback<TWrappedWriter extends ICesiumPropertyWriter, TValue> extends Delegate {
     /**
     * Creates a new instance of this delegate.
     */
@@ -84,7 +84,7 @@ public abstract class CesiumWriterAdaptorWriteCallback<TWrappedWriter, TValue> e
     * @return A new delegate that will invoke the given function.
     */
     @Nonnull
-    public static <TWrappedWriter, TValue> CesiumWriterAdaptorWriteCallback<TWrappedWriter, TValue> of(@Nonnull Function<TWrappedWriter, TValue> f) {
+    public static <TWrappedWriter extends ICesiumPropertyWriter, TValue> CesiumWriterAdaptorWriteCallback<TWrappedWriter, TValue> of(@Nonnull Function<TWrappedWriter, TValue> f) {
         return new FunctionImpl<TWrappedWriter, TValue>(f);
     }
 
@@ -94,7 +94,7 @@ public abstract class CesiumWriterAdaptorWriteCallback<TWrappedWriter, TValue> e
     * @param <TValue> The type of the value to write.
     */
     @FunctionalInterface
-    public interface Function<TWrappedWriter, TValue> {
+    public interface Function<TWrappedWriter extends ICesiumPropertyWriter, TValue> {
         /**
         *  
         A callback to write a value to a {@link CesiumOutputStream} using a given
@@ -111,7 +111,7 @@ public abstract class CesiumWriterAdaptorWriteCallback<TWrappedWriter, TValue> e
         void invoke(@Nonnull TWrappedWriter wrappedWriter, TValue value);
     }
 
-    private static final class FunctionImpl<TWrappedWriter, TValue> extends CesiumWriterAdaptorWriteCallback<TWrappedWriter, TValue> {
+    private static final class FunctionImpl<TWrappedWriter extends ICesiumPropertyWriter, TValue> extends CesiumWriterAdaptorWriteCallback<TWrappedWriter, TValue> {
         @Nonnull
         private final Function<TWrappedWriter, TValue> f;
 

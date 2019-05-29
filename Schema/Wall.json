@@ -3,13 +3,7 @@
     "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Wall.json",
     "title": "Wall",
     "description": "A two dimensional wall defined as a line strip and optional maximum and minimum heights, which conforms to the curvature of the globe and can be placed along the surface or at altitude.",
-    "type": [
-        "array",
-        "object"
-    ],
-    "items": {
-        "$ref": "#"
-    },
+    "type": "object",
     "properties": {
         "show": {
             "$ref": "Boolean.json",
@@ -18,7 +12,8 @@
         },
         "positions": {
             "$ref": "PositionList.json",
-            "description": "The array of positions defining the centerline of the wall."
+            "description": "The array of positions defining the centerline of the wall.",
+            "czmlRequiredForDisplay": true
         },
         "minimumHeights": {
             "$ref": "DoubleList.json",
@@ -67,8 +62,5 @@
             "$ref": "DistanceDisplayCondition.json",
             "description": "The display condition specifying at what distance from the camera this wall will be displayed."
         }
-    },
-    "required": [
-        "positions"
-    ]
+    }
 }

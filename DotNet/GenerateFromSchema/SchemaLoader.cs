@@ -39,22 +39,17 @@ namespace GenerateFromSchema
         {
             schema.Name = GetValue<string>(schemaJson, "title", null);
             schema.Description = GetValue<string>(schemaJson, "description", null);
-            schema.ExtensionPrefix = GetValue<string>(schemaJson, "extensionPrefix", null);
+            schema.ExtensionPrefix = GetValue<string>(schemaJson, "czmlExtensionPrefix", null);
+            schema.IsValue = GetValue<bool>(schemaJson, "czmlValue", false);
 
-            string extends = GetValue<string>(schemaJson, "extends.$ref", null);
-            if (extends != null)
-            {
-                schema.Extends = Load(Path.Combine(Path.GetDirectoryName(schemaFileName), extends));
-            }
+            schema.Extends.AddRange(GetValues<string>(schemaJson, "allOf..$ref")
+                                        .Select(extend => Load(Path.Combine(Path.GetDirectoryName(schemaFileName), extend))));
 
             schema.JsonTypes = LoadJsonSchemaType(schemaJson);
 
             if (schemaJson.Property("properties")?.Value is JObject properties)
             {
-                foreach (var property in properties.Properties())
-                {
-                    schema.Properties.Add(LoadProperty(schemaFileName, property));
-                }
+                schema.Properties.AddRange(properties.Properties().Select(property => LoadProperty(schemaFileName, property)));
             }
 
             if (schemaJson.Property("required")?.Value is JArray requiredProperties)
@@ -64,7 +59,7 @@ namespace GenerateFromSchema
                     var property = schema.Properties.Find(p => p.Name == requiredPropertyName);
                     if (property != null)
                     {
-                        property.IsRequired = true;
+                        property.IsRequiredForDisplay = true;
                     }
                 }
             }
@@ -100,7 +95,7 @@ namespace GenerateFromSchema
                 Name = property.Name,
                 Description = GetValue<string>(propertySchema, "description", null),
                 Default = propertySchema.SelectToken("default"),
-                IsValue = GetValue<bool>(propertySchema, "czmlValue", false)
+                IsRequiredForDisplay = GetValue<bool>(propertySchema, "czmlRequiredForDisplay", false),
             };
 
             string refString = GetValue<string>(propertySchema, "$ref", null);
@@ -147,12 +142,17 @@ namespace GenerateFromSchema
             return s_jsonSchemaTypeMapping[type.Value.Value<string>()];
         }
 
-        private static T GetValue<T>(JObject obj, string path, T defaultValue)
+        private static T GetValue<T>([NotNull] JObject obj, string path, T defaultValue)
         {
             JToken token = obj.SelectToken(path);
             if (token == null)
                 return defaultValue;
             return token.Value<T>();
+        }
+
+        private static IEnumerable<T> GetValues<T>([NotNull] JObject obj, string path)
+        {
+            return obj.SelectTokens(path).Select(token => token.Value<T>());
         }
 
         [NotNull]

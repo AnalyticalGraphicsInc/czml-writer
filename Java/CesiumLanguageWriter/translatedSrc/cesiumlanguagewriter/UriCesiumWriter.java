@@ -5,8 +5,6 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
-import cesiumlanguagewriter.CesiumResource;
-import cesiumlanguagewriter.Reference;
 import java.awt.image.RenderedImage;
 import java.net.URI;
 import javax.annotation.Nonnull;
@@ -22,7 +20,7 @@ import javax.annotation.Nonnull;
         "deprecation",
         "serial"
 })
-public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
+public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumUriValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     *  
     The name of the {@code uri} property.
@@ -44,8 +42,8 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
 
     */
     public static final String DeletePropertyName = "delete";
-    private Lazy<ICesiumValuePropertyWriter<CesiumResource>> m_asUri;
-    private Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
+    private Lazy<CesiumUriValuePropertyAdaptor<UriCesiumWriter>> m_asUri;
+    private Lazy<CesiumReferenceValuePropertyAdaptor<UriCesiumWriter>> m_asReference;
 
     /**
     *  
@@ -57,18 +55,8 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
     */
     public UriCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
-        m_asUri = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumResource>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumResource>>(this,
-                "createUriAdaptor") {
-            public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumResource> invoke() {
-                return createUriAdaptor();
-            }
-        }, false);
-        m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor") {
-            public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
-                return createReferenceAdaptor();
-            }
-        }, false);
+        m_asUri = createAsUri();
+        m_asReference = createAsReference();
     }
 
     /**
@@ -81,18 +69,8 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
     */
     protected UriCesiumWriter(@Nonnull UriCesiumWriter existingInstance) {
         super(existingInstance);
-        m_asUri = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumResource>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumResource>>(this,
-                "createUriAdaptor") {
-            public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumResource> invoke() {
-                return createUriAdaptor();
-            }
-        }, false);
-        m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor") {
-            public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
-                return createReferenceAdaptor();
-            }
-        }, false);
+        m_asUri = createAsUri();
+        m_asReference = createAsReference();
     }
 
     /**
@@ -245,7 +223,7 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeReference(String value) {
         final String PropertyName = ReferencePropertyName;
@@ -290,7 +268,7 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
 
     /**
     *  
-    Writes the value expressed as a {@code delete}, which is whether the client should delete existing data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
+    Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
     
     
 
@@ -305,43 +283,51 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> {
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Uri} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumUriValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
     * @return The wrapper.
     */
-    public final ICesiumValuePropertyWriter<CesiumResource> asUri() {
+    public final CesiumUriValuePropertyAdaptor<UriCesiumWriter> asUri() {
         return m_asUri.getValue();
     }
 
-    private final ICesiumValuePropertyWriter<CesiumResource> createUriAdaptor() {
-        return new CesiumWriterAdaptor<cesiumlanguagewriter.UriCesiumWriter, cesiumlanguagewriter.CesiumResource>(this,
-                new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.UriCesiumWriter, cesiumlanguagewriter.CesiumResource>() {
-                    public void invoke(UriCesiumWriter me, CesiumResource value) {
-                        me.writeUri(value);
-                    }
-                });
+    private final Lazy<CesiumUriValuePropertyAdaptor<UriCesiumWriter>> createAsUri() {
+        return new Lazy<cesiumlanguagewriter.advanced.CesiumUriValuePropertyAdaptor<UriCesiumWriter>>(new Func1<cesiumlanguagewriter.advanced.CesiumUriValuePropertyAdaptor<UriCesiumWriter>>(this,
+                "createUri") {
+            public cesiumlanguagewriter.advanced.CesiumUriValuePropertyAdaptor<UriCesiumWriter> invoke() {
+                return createUri();
+            }
+        }, false);
+    }
+
+    private final CesiumUriValuePropertyAdaptor<UriCesiumWriter> createUri() {
+        return CesiumValuePropertyAdaptors.<UriCesiumWriter> createUri(this);
     }
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
     * @return The wrapper.
     */
-    public final ICesiumValuePropertyWriter<Reference> asReference() {
+    public final CesiumReferenceValuePropertyAdaptor<UriCesiumWriter> asReference() {
         return m_asReference.getValue();
     }
 
-    private final ICesiumValuePropertyWriter<Reference> createReferenceAdaptor() {
-        return new CesiumWriterAdaptor<cesiumlanguagewriter.UriCesiumWriter, cesiumlanguagewriter.Reference>(this,
-                new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.UriCesiumWriter, cesiumlanguagewriter.Reference>() {
-                    public void invoke(UriCesiumWriter me, Reference value) {
-                        me.writeReference(value);
+    private final Lazy<CesiumReferenceValuePropertyAdaptor<UriCesiumWriter>> createAsReference() {
+        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<UriCesiumWriter>>(
+                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<UriCesiumWriter>>(this, "createReference") {
+                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<UriCesiumWriter> invoke() {
+                        return createReference();
                     }
-                });
+                }, false);
+    }
+
+    private final CesiumReferenceValuePropertyAdaptor<UriCesiumWriter> createReference() {
+        return CesiumValuePropertyAdaptors.<UriCesiumWriter> createReference(this);
     }
 }

@@ -12,7 +12,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>Model</c> to a <see cref="CesiumOutputStream" />. A <c>Model</c> is a 3D model.
+    /// Writes a <c>Model</c> to a <see cref="CesiumOutputStream"/>. A <c>Model</c> is a 3D model.
     /// </summary>
     public class ModelCesiumWriter : CesiumPropertyWriter<ModelCesiumWriter>
     {
@@ -131,7 +131,7 @@ namespace CesiumLanguageWriter
         {
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override ModelCesiumWriter Clone()
         {
             return new ModelCesiumWriter(this);
@@ -183,7 +183,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>show</c> property as a <c>reference</c> value. The <c>show</c> property specifies whether or not the model is shown. If not specified, the default value is <see langword="true"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteShowPropertyReference(string value)
         {
             using (var writer = OpenShowProperty())
@@ -219,7 +219,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>gltf</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>gltf</c> property defines the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+        /// Gets the writer for the <c>gltf</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>gltf</c> property defines the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
         /// </summary>
         [NotNull]
         public UriCesiumWriter GltfWriter
@@ -228,7 +228,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>gltf</c> property. The <c>gltf</c> property defines the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+        /// Opens and returns the writer for the <c>gltf</c> property. The <c>gltf</c> property defines the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
         /// </summary>
         [NotNull]
         public UriCesiumWriter OpenGltfProperty()
@@ -238,7 +238,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>gltf</c> property as a <c>uri</c> value. The <c>gltf</c> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+        /// Writes a value for the <c>gltf</c> property as a <c>uri</c> value. The <c>gltf</c> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="resource">A resource object describing external data.</param>
         public void WriteGltfProperty(CesiumResource resource)
@@ -250,7 +250,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>gltf</c> property as a <c>uri</c> value. The <c>gltf</c> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+        /// Writes a value for the <c>gltf</c> property as a <c>uri</c> value. The <c>gltf</c> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="uri">The URI of the data.</param>
         /// <param name="resourceBehavior">An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.</param>
@@ -263,7 +263,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>gltf</c> property as a <c>uri</c> value. The <c>gltf</c> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+        /// Writes a value for the <c>gltf</c> property as a <c>uri</c> value. The <c>gltf</c> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="uri">The URI of the data.</param>
         /// <param name="resourceBehavior">An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.</param>
@@ -276,7 +276,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>gltf</c> property as a <c>uri</c> value. The <c>gltf</c> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+        /// Writes a value for the <c>gltf</c> property as a <c>uri</c> value. The <c>gltf</c> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="uri">The URI of the data. The provided ICesiumUriResolver will be used to build the final URI embedded in the document.</param>
         /// <param name="resolver">An ICesiumUriResolver used to build the final URI that will be embedded in the document.</param>
@@ -289,7 +289,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>gltf</c> property as a <c>uri</c> value. The <c>gltf</c> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+        /// Writes a value for the <c>gltf</c> property as a <c>uri</c> value. The <c>gltf</c> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="uri">The URI of the data. The provided ICesiumUriResolver will be used to build the final URI embedded in the document.</param>
         /// <param name="resolver">An ICesiumUriResolver used to build the final URI that will be embedded in the document.</param>
@@ -302,7 +302,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>gltf</c> property as a <c>uri</c> value. The <c>gltf</c> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+        /// Writes a value for the <c>gltf</c> property as a <c>uri</c> value. The <c>gltf</c> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="image">The image. A data URI will be created for this image, using PNG encoding.</param>
         public void WriteGltfProperty(Image image)
@@ -314,7 +314,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>gltf</c> property as a <c>uri</c> value. The <c>gltf</c> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+        /// Writes a value for the <c>gltf</c> property as a <c>uri</c> value. The <c>gltf</c> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="image">The image. A data URI will be created for this image.</param>
         /// <param name="imageFormat">The image format to use to encode the image in the data URI.</param>
@@ -327,7 +327,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>gltf</c> property as a <c>reference</c> value. The <c>gltf</c> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+        /// Writes a value for the <c>gltf</c> property as a <c>reference</c> value. The <c>gltf</c> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteGltfPropertyReference(Reference value)
@@ -339,9 +339,9 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>gltf</c> property as a <c>reference</c> value. The <c>gltf</c> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+        /// Writes a value for the <c>gltf</c> property as a <c>reference</c> value. The <c>gltf</c> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteGltfPropertyReference(string value)
         {
             using (var writer = OpenGltfProperty())
@@ -351,7 +351,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>gltf</c> property as a <c>reference</c> value. The <c>gltf</c> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+        /// Writes a value for the <c>gltf</c> property as a <c>reference</c> value. The <c>gltf</c> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -364,7 +364,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>gltf</c> property as a <c>reference</c> value. The <c>gltf</c> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+        /// Writes a value for the <c>gltf</c> property as a <c>reference</c> value. The <c>gltf</c> property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -450,7 +450,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>scale</c> property as a <c>reference</c> value. The <c>scale</c> property specifies the scale of the model. If not specified, the default value is 1.0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteScalePropertyReference(string value)
         {
             using (var writer = OpenScaleProperty())
@@ -559,7 +559,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>minimumPixelSize</c> property as a <c>reference</c> value. The <c>minimumPixelSize</c> property specifies the approximate minimum pixel size of the model regardless of zoom. If not specified, the default value is 0.0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteMinimumPixelSizePropertyReference(string value)
         {
             using (var writer = OpenMinimumPixelSizeProperty())
@@ -668,7 +668,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>maximumScale</c> property as a <c>reference</c> value. The <c>maximumScale</c> property specifies the maximum scale size of the model. This is used as an upper limit for <c>minimumPixelSize</c>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteMaximumScalePropertyReference(string value)
         {
             using (var writer = OpenMaximumScaleProperty())
@@ -749,7 +749,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>incrementallyLoadTextures</c> property as a <c>reference</c> value. The <c>incrementallyLoadTextures</c> property specifies whether or not the model can be rendered before all textures have loaded. If not specified, the default value is <see langword="true"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteIncrementallyLoadTexturesPropertyReference(string value)
         {
             using (var writer = OpenIncrementallyLoadTexturesProperty())
@@ -830,7 +830,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>runAnimations</c> property as a <c>reference</c> value. The <c>runAnimations</c> property specifies whether or not to run all animations defined in the glTF model. If not specified, the default value is <see langword="true"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteRunAnimationsPropertyReference(string value)
         {
             using (var writer = OpenRunAnimationsProperty())
@@ -911,7 +911,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>shadows</c> property as a <c>reference</c> value. The <c>shadows</c> property specifies whether or not the model casts or receives shadows. If not specified, the default value is ENABLED.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteShadowsPropertyReference(string value)
         {
             using (var writer = OpenShadowsProperty())
@@ -992,7 +992,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>heightReference</c> property as a <c>reference</c> value. The <c>heightReference</c> property specifies the height reference of the model, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteHeightReferencePropertyReference(string value)
         {
             using (var writer = OpenHeightReferenceProperty())
@@ -1171,7 +1171,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>silhouetteColor</c> property as a <c>reference</c> value. The <c>silhouetteColor</c> property specifies the color of the silhouette drawn around the model. If not specified, the default value is red.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteSilhouetteColorPropertyReference(string value)
         {
             using (var writer = OpenSilhouetteColorProperty())
@@ -1280,7 +1280,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>silhouetteSize</c> property as a <c>reference</c> value. The <c>silhouetteSize</c> property specifies the size, in pixels, of the silhouette drawn around the model. If not specified, the default value is 0.0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteSilhouetteSizePropertyReference(string value)
         {
             using (var writer = OpenSilhouetteSizeProperty())
@@ -1459,7 +1459,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>color</c> property as a <c>reference</c> value. The <c>color</c> property specifies the color to blend with the model's rendered color. If not specified, the default value is white.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteColorPropertyReference(string value)
         {
             using (var writer = OpenColorProperty())
@@ -1540,7 +1540,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>colorBlendMode</c> property as a <c>reference</c> value. The <c>colorBlendMode</c> property specifies the mode to use for blending between <c>color</c> and the model's color. If not specified, the default value is HIGHLIGHT.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteColorBlendModePropertyReference(string value)
         {
             using (var writer = OpenColorBlendModeProperty())
@@ -1649,7 +1649,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>colorBlendAmount</c> property as a <c>reference</c> value. The <c>colorBlendAmount</c> property specifies the color strength when <c>colorBlendMode</c> is <c>MIX</c>. A value of 0.0 results in the model's rendered color while a value of 1.0 results in a solid color, with any value in-between resulting in a mix of the two. If not specified, the default value is 0.5.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteColorBlendAmountPropertyReference(string value)
         {
             using (var writer = OpenColorBlendAmountProperty())
@@ -1771,7 +1771,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>distanceDisplayCondition</c> property as a <c>reference</c> value. The <c>distanceDisplayCondition</c> property specifies the display condition specifying at what distance from the camera this model will be displayed.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteDistanceDisplayConditionPropertyReference(string value)
         {
             using (var writer = OpenDistanceDisplayConditionProperty())

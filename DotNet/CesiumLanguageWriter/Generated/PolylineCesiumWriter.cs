@@ -11,7 +11,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>Polyline</c> to a <see cref="CesiumOutputStream" />. A <c>Polyline</c> is a polyline, which is a line in the scene composed of multiple segments.
+    /// Writes a <c>Polyline</c> to a <see cref="CesiumOutputStream"/>. A <c>Polyline</c> is a polyline, which is a line in the scene composed of multiple segments.
     /// </summary>
     public class PolylineCesiumWriter : CesiumPropertyWriter<PolylineCesiumWriter>
     {
@@ -106,7 +106,7 @@ namespace CesiumLanguageWriter
         {
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override PolylineCesiumWriter Clone()
         {
             return new PolylineCesiumWriter(this);
@@ -158,7 +158,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>show</c> property as a <c>reference</c> value. The <c>show</c> property specifies whether or not the polyline is shown. If not specified, the default value is <see langword="true"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteShowPropertyReference(string value)
         {
             using (var writer = OpenShowProperty())
@@ -194,7 +194,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>positions</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>positions</c> property defines the array of positions defining the polyline as a line strip. This value is required.
+        /// Gets the writer for the <c>positions</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>positions</c> property defines the array of positions defining the polyline as a line strip. This value must be specified in order for the client to display graphics.
         /// </summary>
         [NotNull]
         public PositionListCesiumWriter PositionsWriter
@@ -203,7 +203,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>positions</c> property. The <c>positions</c> property defines the array of positions defining the polyline as a line strip. This value is required.
+        /// Opens and returns the writer for the <c>positions</c> property. The <c>positions</c> property defines the array of positions defining the polyline as a line strip. This value must be specified in order for the client to display graphics.
         /// </summary>
         [NotNull]
         public PositionListCesiumWriter OpenPositionsProperty()
@@ -213,7 +213,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>positions</c> property as a <c>cartesian</c> value. The <c>positions</c> property specifies the array of positions defining the polyline as a line strip. This value is required.
+        /// Writes a value for the <c>positions</c> property as a <c>cartesian</c> value. The <c>positions</c> property specifies the array of positions defining the polyline as a line strip. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="values">The values.</param>
         public void WritePositionsProperty(IEnumerable<Cartesian> values)
@@ -225,7 +225,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>positions</c> property as a <c>cartographicRadians</c> value. The <c>positions</c> property specifies the array of positions defining the polyline as a line strip. This value is required.
+        /// Writes a value for the <c>positions</c> property as a <c>cartographicRadians</c> value. The <c>positions</c> property specifies the array of positions defining the polyline as a line strip. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="values">The values.</param>
         public void WritePositionsPropertyCartographicRadians(IEnumerable<Cartographic> values)
@@ -237,7 +237,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>positions</c> property as a <c>cartographicDegrees</c> value. The <c>positions</c> property specifies the array of positions defining the polyline as a line strip. This value is required.
+        /// Writes a value for the <c>positions</c> property as a <c>cartographicDegrees</c> value. The <c>positions</c> property specifies the array of positions defining the polyline as a line strip. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="values">The values.</param>
         public void WritePositionsPropertyCartographicDegrees(IEnumerable<Cartographic> values)
@@ -249,7 +249,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>positions</c> property as a <c>references</c> value. The <c>positions</c> property specifies the array of positions defining the polyline as a line strip. This value is required.
+        /// Writes a value for the <c>positions</c> property as a <c>references</c> value. The <c>positions</c> property specifies the array of positions defining the polyline as a line strip. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="references">The list of references.</param>
         public void WritePositionsPropertyReferences(IEnumerable<Reference> references)
@@ -280,9 +280,9 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>arcType</c> property as a <c>ArcType</c> value. The <c>arcType</c> property specifies the type of arc that should connect the positions of the polyline. If not specified, the default value is GEODESIC.
+        /// Writes a value for the <c>arcType</c> property as a <c>arcType</c> value. The <c>arcType</c> property specifies the type of arc that should connect the positions of the polyline. If not specified, the default value is GEODESIC.
         /// </summary>
-        /// <param name="value">The style of an arc.</param>
+        /// <param name="value">The type of an arc.</param>
         public void WriteArcTypeProperty(CesiumArcType value)
         {
             using (var writer = OpenArcTypeProperty())
@@ -306,7 +306,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>arcType</c> property as a <c>reference</c> value. The <c>arcType</c> property specifies the type of arc that should connect the positions of the polyline. If not specified, the default value is GEODESIC.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteArcTypePropertyReference(string value)
         {
             using (var writer = OpenArcTypeProperty())
@@ -415,7 +415,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>width</c> property as a <c>reference</c> value. The <c>width</c> property specifies the width of the polyline. If not specified, the default value is 1.0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteWidthPropertyReference(string value)
         {
             using (var writer = OpenWidthProperty())
@@ -524,7 +524,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>granularity</c> property as a <c>reference</c> value. The <c>granularity</c> property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteGranularityPropertyReference(string value)
         {
             using (var writer = OpenGranularityProperty())
@@ -624,7 +624,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>followSurface</c> property as a <c>reference</c> value. The <c>followSurface</c> property specifies whether or not the positions are connected as great arcs (the default) or as straight lines. This property has been superseded by <c>arcType</c>, which should be used instead. If not specified, the default value is <see langword="true"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteFollowSurfacePropertyReference(string value)
         {
             using (var writer = OpenFollowSurfaceProperty())
@@ -705,7 +705,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>shadows</c> property as a <c>reference</c> value. The <c>shadows</c> property specifies whether or not the polyline casts or receives shadows. If not specified, the default value is DISABLED.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteShadowsPropertyReference(string value)
         {
             using (var writer = OpenShadowsProperty())
@@ -846,7 +846,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>distanceDisplayCondition</c> property as a <c>reference</c> value. The <c>distanceDisplayCondition</c> property specifies the display condition specifying at what distance from the camera this polyline will be displayed.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteDistanceDisplayConditionPropertyReference(string value)
         {
             using (var writer = OpenDistanceDisplayConditionProperty())
@@ -927,7 +927,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>clampToGround</c> property as a <c>reference</c> value. The <c>clampToGround</c> property specifies whether or not the polyline should be clamped to the ground. If not specified, the default value is <see langword="false"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteClampToGroundPropertyReference(string value)
         {
             using (var writer = OpenClampToGroundProperty())
@@ -1036,7 +1036,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>zIndex</c> property as a <c>reference</c> value. The <c>zIndex</c> property specifies the z-index of the polyline, used for ordering ground geometry. Only has an effect if the polyline is constant, and <c>clampToGround</c> is true. If not specified, the default value is 0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteZIndexPropertyReference(string value)
         {
             using (var writer = OpenZIndexProperty())

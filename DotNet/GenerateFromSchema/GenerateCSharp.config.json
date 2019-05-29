@@ -149,7 +149,87 @@
                 "writeValue": "CesiumWritingHelper.WriteCartesian2(Output, PropertyName, dates, values, startIndex, length);"
             }
         ],
-        "CartographicRectangle": [
+        "CartographicRectangleRadians": [
+            {
+                "parameters": [
+                    {
+                        "type": "CartographicExtent",
+                        "name": "value",
+                        "description": "The value."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteCartographicExtent(Output, value);"
+            },
+            {
+                "parameters": [
+                    {
+                        "type": "double",
+                        "name": "west",
+                        "description": "The westernmost longitude."
+                    },
+                    {
+                        "type": "double",
+                        "name": "south",
+                        "description": "The southernmost latitude."
+                    },
+                    {
+                        "type": "double",
+                        "name": "east",
+                        "description": "The easternmost longitude."
+                    },
+                    {
+                        "type": "double",
+                        "name": "north",
+                        "description": "The northernmost latitude."
+                    }
+                ],
+                "callOverload": "new CartographicExtent(west, south, east, north)"
+            },
+            {
+                "usingNamespaces": [ "System.Collections.Generic" ],
+                "parameters": [
+                    {
+                        "type": "IList<JulianDate>",
+                        "name": "dates",
+                        "description": "The dates at which the value is specified."
+                    },
+                    {
+                        "type": "IList<CartographicExtent>",
+                        "name": "values",
+                        "description": "The values corresponding to each date."
+                    }
+                ],
+                "callOverload": "dates, values, 0, dates.Count"
+            },
+            {
+                "usingNamespaces": [ "System.Collections.Generic" ],
+                "parameters": [
+                    {
+                        "type": "IList<JulianDate>",
+                        "name": "dates",
+                        "description": "The dates at which the value is specified."
+                    },
+                    {
+                        "type": "IList<CartographicExtent>",
+                        "name": "values",
+                        "description": "The values corresponding to each date."
+                    },
+                    {
+                        "type": "int",
+                        "name": "startIndex",
+                        "description": "The index of the first element to write."
+                    },
+                    {
+                        "type": "int",
+                        "name": "length",
+                        "description": "The number of elements to write."
+                    }
+                ],
+                "writePropertyName": false,
+                "writeValue": "CesiumWritingHelper.WriteCartographicExtent(Output, PropertyName, dates, values, startIndex, length);"
+            }
+        ],
+        "CartographicRectangleDegrees": [
             {
                 "parameters": [
                     {
@@ -514,7 +594,7 @@
                 "writeValue": "CesiumWritingHelper.WriteUnitSphericalList(Output, values);"
             }
         ],
-        "Cartographic": [
+        "CartographicRadians": [
             {
                 "parameters": [
                     {
@@ -569,7 +649,75 @@
                 "writeValue": "CesiumWritingHelper.WriteCartographic(Output, PropertyName, dates, values, startIndex, length);"
             }
         ],
-        "CartographicList": [
+        "CartographicDegrees": [
+            {
+                "parameters": [
+                    {
+                        "type": "Cartographic",
+                        "name": "value",
+                        "description": "The interval."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteCartographic(Output, value);"
+            },
+            {
+                "usingNamespaces": [ "System.Collections.Generic" ],
+                "parameters": [
+                    {
+                        "type": "IList<JulianDate>",
+                        "name": "dates",
+                        "description": "The dates at which the value is specified."
+                    },
+                    {
+                        "type": "IList<Cartographic>",
+                        "name": "values",
+                        "description": "The values corresponding to each date."
+                    }
+                ],
+                "callOverload": "dates, values, 0, dates.Count"
+            },
+            {
+                "usingNamespaces": [ "System.Collections.Generic" ],
+                "parameters": [
+                    {
+                        "type": "IList<JulianDate>",
+                        "name": "dates",
+                        "description": "The dates at which the value is specified."
+                    },
+                    {
+                        "type": "IList<Cartographic>",
+                        "name": "values",
+                        "description": "The position corresponding to each date."
+                    },
+                    {
+                        "type": "int",
+                        "name": "startIndex",
+                        "description": "The index of the first element to write."
+                    },
+                    {
+                        "type": "int",
+                        "name": "length",
+                        "description": "The number of elements to write."
+                    }
+                ],
+                "writePropertyName": false,
+                "writeValue": "CesiumWritingHelper.WriteCartographic(Output, PropertyName, dates, values, startIndex, length);"
+            }
+        ],
+        "CartographicRadiansList": [
+            {
+                "usingNamespaces": [ "System.Collections.Generic" ],
+                "parameters": [
+                    {
+                        "type": "IEnumerable<Cartographic>",
+                        "name": "values",
+                        "description": "The values."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteCartographicList(Output, values);"
+            }
+        ],
+        "CartographicDegreesList": [
             {
                 "usingNamespaces": [ "System.Collections.Generic" ],
                 "parameters": [
@@ -788,7 +936,7 @@
                     {
                         "type": "CesiumArcType",
                         "name": "value",
-                        "description": "The style of an arc."
+                        "description": "The type of an arc."
                     }
                 ],
                 "writeValue": "Output.WriteValue(CesiumFormattingHelper.ArcTypeToString(value));",
@@ -1205,7 +1353,59 @@
                     {
                         "type": "string",
                         "name": "value",
-                        "description": "The earliest date of the interval."
+                        "description": "The reference."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteReference(Output, value);"
+            },
+            {
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "identifier",
+                        "description": "The identifier of the object which contains the referenced property."
+                    },
+                    {
+                        "type": "string",
+                        "name": "propertyName",
+                        "description": "The property on the referenced object."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteReference(Output, identifier, propertyName);"
+            },
+            {
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "identifier",
+                        "description": "The identifier of the object which contains the referenced property."
+                    },
+                    {
+                        "type": "string[]",
+                        "name": "propertyNames",
+                        "description": "The hierarchy of properties to be indexed on the referenced object."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteReference(Output, identifier, propertyNames);"
+            }
+        ],
+        "VelocityReference": [
+            {
+                "parameters": [
+                    {
+                        "type": "Reference",
+                        "name": "value",
+                        "description": "The reference."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteReference(Output, value);"
+            },
+            {
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "value",
+                        "description": "The reference."
                     }
                 ],
                 "writeValue": "CesiumWritingHelper.WriteReference(Output, value);"

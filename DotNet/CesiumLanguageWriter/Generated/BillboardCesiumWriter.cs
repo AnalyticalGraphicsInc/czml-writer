@@ -12,7 +12,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>Billboard</c> to a <see cref="CesiumOutputStream" />. A <c>Billboard</c> is a billboard, or viewport-aligned image. The billboard is positioned in the scene by the <c>position</c> property. A billboard is sometimes called a marker.
+    /// Writes a <c>Billboard</c> to a <see cref="CesiumOutputStream"/>. A <c>Billboard</c> is a billboard, or viewport-aligned image. The billboard is positioned in the scene by the <c>position</c> property. A billboard is sometimes called a marker.
     /// </summary>
     public class BillboardCesiumWriter : CesiumPropertyWriter<BillboardCesiumWriter>
     {
@@ -155,7 +155,7 @@ namespace CesiumLanguageWriter
         {
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override BillboardCesiumWriter Clone()
         {
             return new BillboardCesiumWriter(this);
@@ -207,7 +207,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>show</c> property as a <c>reference</c> value. The <c>show</c> property specifies whether or not the billboard is shown. If not specified, the default value is <see langword="true"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteShowPropertyReference(string value)
         {
             using (var writer = OpenShowProperty())
@@ -243,7 +243,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>image</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>image</c> property defines the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+        /// Gets the writer for the <c>image</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>image</c> property defines the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
         /// </summary>
         [NotNull]
         public UriCesiumWriter ImageWriter
@@ -252,7 +252,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>image</c> property. The <c>image</c> property defines the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+        /// Opens and returns the writer for the <c>image</c> property. The <c>image</c> property defines the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
         /// </summary>
         [NotNull]
         public UriCesiumWriter OpenImageProperty()
@@ -262,7 +262,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>image</c> property as a <c>uri</c> value. The <c>image</c> property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+        /// Writes a value for the <c>image</c> property as a <c>uri</c> value. The <c>image</c> property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="resource">A resource object describing external data.</param>
         public void WriteImageProperty(CesiumResource resource)
@@ -274,7 +274,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>image</c> property as a <c>uri</c> value. The <c>image</c> property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+        /// Writes a value for the <c>image</c> property as a <c>uri</c> value. The <c>image</c> property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="uri">The URI of the data.</param>
         /// <param name="resourceBehavior">An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.</param>
@@ -287,7 +287,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>image</c> property as a <c>uri</c> value. The <c>image</c> property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+        /// Writes a value for the <c>image</c> property as a <c>uri</c> value. The <c>image</c> property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="uri">The URI of the data.</param>
         /// <param name="resourceBehavior">An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.</param>
@@ -300,7 +300,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>image</c> property as a <c>uri</c> value. The <c>image</c> property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+        /// Writes a value for the <c>image</c> property as a <c>uri</c> value. The <c>image</c> property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="uri">The URI of the data. The provided ICesiumUriResolver will be used to build the final URI embedded in the document.</param>
         /// <param name="resolver">An ICesiumUriResolver used to build the final URI that will be embedded in the document.</param>
@@ -313,7 +313,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>image</c> property as a <c>uri</c> value. The <c>image</c> property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+        /// Writes a value for the <c>image</c> property as a <c>uri</c> value. The <c>image</c> property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="uri">The URI of the data. The provided ICesiumUriResolver will be used to build the final URI embedded in the document.</param>
         /// <param name="resolver">An ICesiumUriResolver used to build the final URI that will be embedded in the document.</param>
@@ -326,7 +326,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>image</c> property as a <c>uri</c> value. The <c>image</c> property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+        /// Writes a value for the <c>image</c> property as a <c>uri</c> value. The <c>image</c> property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="image">The image. A data URI will be created for this image, using PNG encoding.</param>
         public void WriteImageProperty(Image image)
@@ -338,7 +338,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>image</c> property as a <c>uri</c> value. The <c>image</c> property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+        /// Writes a value for the <c>image</c> property as a <c>uri</c> value. The <c>image</c> property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="image">The image. A data URI will be created for this image.</param>
         /// <param name="imageFormat">The image format to use to encode the image in the data URI.</param>
@@ -351,7 +351,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>image</c> property as a <c>reference</c> value. The <c>image</c> property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+        /// Writes a value for the <c>image</c> property as a <c>reference</c> value. The <c>image</c> property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteImagePropertyReference(Reference value)
@@ -363,9 +363,9 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>image</c> property as a <c>reference</c> value. The <c>image</c> property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+        /// Writes a value for the <c>image</c> property as a <c>reference</c> value. The <c>image</c> property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteImagePropertyReference(string value)
         {
             using (var writer = OpenImageProperty())
@@ -375,7 +375,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>image</c> property as a <c>reference</c> value. The <c>image</c> property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+        /// Writes a value for the <c>image</c> property as a <c>reference</c> value. The <c>image</c> property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -388,7 +388,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>image</c> property as a <c>reference</c> value. The <c>image</c> property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+        /// Writes a value for the <c>image</c> property as a <c>reference</c> value. The <c>image</c> property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -474,7 +474,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>scale</c> property as a <c>reference</c> value. The <c>scale</c> property specifies the scale of the billboard. The scale is multiplied with the pixel size of the billboard's <c>image</c>. For example, if the scale is 2.0, the billboard will be rendered with twice the number of pixels, in each direction, of the <c>image</c>. If not specified, the default value is 1.0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteScalePropertyReference(string value)
         {
             using (var writer = OpenScaleProperty())
@@ -596,7 +596,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>pixelOffset</c> property as a <c>reference</c> value. The <c>pixelOffset</c> property specifies the offset, in viewport pixels, of the billboard origin from the <c>position</c>. A pixel offset is the number of pixels up and to the right to place the billboard, relative to the <c>position</c>. If not specified, the default value is [0.0, 0.0].
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WritePixelOffsetPropertyReference(string value)
         {
             using (var writer = OpenPixelOffsetProperty())
@@ -705,7 +705,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>eyeOffset</c> property as a <c>reference</c> value. The <c>eyeOffset</c> property specifies the eye offset of the billboard, which is the offset in eye coordinates at which to place the billboard relative to the <c>position</c> property. Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis points up, and the Z-axis points into the screen. If not specified, the default value is [0.0, 0.0, 0.0].
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteEyeOffsetPropertyReference(string value)
         {
             using (var writer = OpenEyeOffsetProperty())
@@ -786,7 +786,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>horizontalOrigin</c> property as a <c>reference</c> value. The <c>horizontalOrigin</c> property specifies the horizontal origin of the billboard, which determines whether the billboard image is left-, center-, or right-aligned with the <c>position</c>. If not specified, the default value is CENTER.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteHorizontalOriginPropertyReference(string value)
         {
             using (var writer = OpenHorizontalOriginProperty())
@@ -867,7 +867,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>verticalOrigin</c> property as a <c>reference</c> value. The <c>verticalOrigin</c> property specifies the vertical origin of the billboard, which determines whether the billboard image is bottom-, center-, or top-aligned with the <c>position</c>. If not specified, the default value is CENTER.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteVerticalOriginPropertyReference(string value)
         {
             using (var writer = OpenVerticalOriginProperty())
@@ -948,7 +948,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>heightReference</c> property as a <c>reference</c> value. The <c>heightReference</c> property specifies the height reference of the billboard, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteHeightReferencePropertyReference(string value)
         {
             using (var writer = OpenHeightReferenceProperty())
@@ -1127,7 +1127,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>color</c> property as a <c>reference</c> value. The <c>color</c> property specifies the color of the billboard. This color value is multiplied with the values of the billboard's <c>image</c> to produce the final color. If not specified, the default value is white.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteColorPropertyReference(string value)
         {
             using (var writer = OpenColorProperty())
@@ -1236,7 +1236,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>rotation</c> property as a <c>reference</c> value. The <c>rotation</c> property specifies the rotation of the billboard, in radians, counter-clockwise from the alignedAxis. If not specified, the default value is 0.0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteRotationPropertyReference(string value)
         {
             using (var writer = OpenRotationProperty())
@@ -1385,7 +1385,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>alignedAxis</c> property as a <c>reference</c> value. The <c>alignedAxis</c> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards. The default is the zero vector, which means the billboard is aligned to the screen up vector. If not specified, the default value is [0.0, 0.0, 0.0].
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteAlignedAxisPropertyReference(string value)
         {
             using (var writer = OpenAlignedAxisProperty())
@@ -1435,7 +1435,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>alignedAxis</c> property as a <c>velocityReference</c> value. The <c>alignedAxis</c> property specifies the aligned axis is the unit vector, in world coordinates, that the billboard up vector points towards. The default is the zero vector, which means the billboard is aligned to the screen up vector. If not specified, the default value is [0.0, 0.0, 0.0].
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteAlignedAxisPropertyVelocityReference(string value)
         {
             using (var writer = OpenAlignedAxisProperty())
@@ -1516,7 +1516,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>sizeInMeters</c> property as a <c>reference</c> value. The <c>sizeInMeters</c> property specifies whether this billboard's size (<c>width</c> and <c>height</c>) should be measured in meters, otherwise size is measured in pixels. If not specified, the default value is <see langword="false"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteSizeInMetersPropertyReference(string value)
         {
             using (var writer = OpenSizeInMetersProperty())
@@ -1625,7 +1625,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>width</c> property as a <c>reference</c> value. The <c>width</c> property specifies the width of the billboard, in pixels (or meters, if <c>sizeInMeters</c> is true). By default, the native width of the image is used.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteWidthPropertyReference(string value)
         {
             using (var writer = OpenWidthProperty())
@@ -1734,7 +1734,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>height</c> property as a <c>reference</c> value. The <c>height</c> property specifies the height of the billboard, in pixels (or meters, if <c>sizeInMeters</c> is true). By default, the native height of the image is used.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteHeightPropertyReference(string value)
         {
             using (var writer = OpenHeightProperty())
@@ -1858,7 +1858,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>scaleByDistance</c> property as a <c>reference</c> value. The <c>scaleByDistance</c> property specifies how the billboard's scale should change based on the billboard's distance from the camera. This scalar value will be multiplied by <c>scale</c>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteScaleByDistancePropertyReference(string value)
         {
             using (var writer = OpenScaleByDistanceProperty())
@@ -1982,7 +1982,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>translucencyByDistance</c> property as a <c>reference</c> value. The <c>translucencyByDistance</c> property specifies how the billboard's translucency should change based on the billboard's distance from the camera. This scalar value should range from 0 to 1.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteTranslucencyByDistancePropertyReference(string value)
         {
             using (var writer = OpenTranslucencyByDistanceProperty())
@@ -2106,7 +2106,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>pixelOffsetScaleByDistance</c> property as a <c>reference</c> value. The <c>pixelOffsetScaleByDistance</c> property specifies how the billboard's pixel offset should change based on the billboard's distance from the camera. This scalar value will be multiplied by <c>pixelOffset</c>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WritePixelOffsetScaleByDistancePropertyReference(string value)
         {
             using (var writer = OpenPixelOffsetScaleByDistanceProperty())
@@ -2215,7 +2215,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>imageSubRegion</c> property as a <c>reference</c> value. The <c>imageSubRegion</c> property specifies a sub-region of the image which will be used for the billboard, rather than the entire image, measured in pixels from the bottom-left.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteImageSubRegionPropertyReference(string value)
         {
             using (var writer = OpenImageSubRegionProperty())
@@ -2337,7 +2337,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>distanceDisplayCondition</c> property as a <c>reference</c> value. The <c>distanceDisplayCondition</c> property specifies the display condition specifying the distance from the camera at which this billboard will be displayed.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteDistanceDisplayConditionPropertyReference(string value)
         {
             using (var writer = OpenDistanceDisplayConditionProperty())
@@ -2446,7 +2446,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>disableDepthTestDistance</c> property as a <c>reference</c> value. The <c>disableDepthTestDistance</c> property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteDisableDepthTestDistancePropertyReference(string value)
         {
             using (var writer = OpenDisableDepthTestDistanceProperty())

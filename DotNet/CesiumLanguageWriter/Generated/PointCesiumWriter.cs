@@ -12,7 +12,7 @@ using System.Drawing;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>Point</c> to a <see cref="CesiumOutputStream" />. A <c>Point</c> is a point, or viewport-aligned circle.
+    /// Writes a <c>Point</c> to a <see cref="CesiumOutputStream"/>. A <c>Point</c> is a point, or viewport-aligned circle.
     /// </summary>
     public class PointCesiumWriter : CesiumPropertyWriter<PointCesiumWriter>
     {
@@ -95,7 +95,7 @@ namespace CesiumLanguageWriter
         {
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override PointCesiumWriter Clone()
         {
             return new PointCesiumWriter(this);
@@ -147,7 +147,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>show</c> property as a <c>reference</c> value. The <c>show</c> property specifies whether or not the point is shown. If not specified, the default value is <see langword="true"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteShowPropertyReference(string value)
         {
             using (var writer = OpenShowProperty())
@@ -256,7 +256,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>pixelSize</c> property as a <c>reference</c> value. The <c>pixelSize</c> property specifies the size of the point, in pixels. If not specified, the default value is 1.0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WritePixelSizePropertyReference(string value)
         {
             using (var writer = OpenPixelSizeProperty())
@@ -337,7 +337,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>heightReference</c> property as a <c>reference</c> value. The <c>heightReference</c> property specifies the height reference of the point, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteHeightReferencePropertyReference(string value)
         {
             using (var writer = OpenHeightReferenceProperty())
@@ -516,7 +516,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>color</c> property as a <c>reference</c> value. The <c>color</c> property specifies the color of the point. If not specified, the default value is white.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteColorPropertyReference(string value)
         {
             using (var writer = OpenColorProperty())
@@ -695,7 +695,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value. The <c>outlineColor</c> property specifies the color of the outline of the point. If not specified, the default value is black.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteOutlineColorPropertyReference(string value)
         {
             using (var writer = OpenOutlineColorProperty())
@@ -804,7 +804,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value. The <c>outlineWidth</c> property specifies the width of the outline of the point. If not specified, the default value is 0.0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteOutlineWidthPropertyReference(string value)
         {
             using (var writer = OpenOutlineWidthProperty())
@@ -928,7 +928,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>scaleByDistance</c> property as a <c>reference</c> value. The <c>scaleByDistance</c> property specifies how the point's scale should change based on the point's distance from the camera. This scalar value will be multiplied by <c>pixelSize</c>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteScaleByDistancePropertyReference(string value)
         {
             using (var writer = OpenScaleByDistanceProperty())
@@ -1052,7 +1052,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>translucencyByDistance</c> property as a <c>reference</c> value. The <c>translucencyByDistance</c> property specifies how the point's translucency should change based on the point's distance from the camera. This scalar value should range from 0 to 1.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteTranslucencyByDistancePropertyReference(string value)
         {
             using (var writer = OpenTranslucencyByDistanceProperty())
@@ -1174,7 +1174,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>distanceDisplayCondition</c> property as a <c>reference</c> value. The <c>distanceDisplayCondition</c> property specifies the display condition specifying the distance from the camera at which this point will be displayed.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteDistanceDisplayConditionPropertyReference(string value)
         {
             using (var writer = OpenDistanceDisplayConditionProperty())
@@ -1283,7 +1283,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>disableDepthTestDistance</c> property as a <c>reference</c> value. The <c>disableDepthTestDistance</c> property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteDisableDepthTestDistancePropertyReference(string value)
         {
             using (var writer = OpenDisableDepthTestDistanceProperty())

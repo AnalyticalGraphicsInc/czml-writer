@@ -364,7 +364,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShowPropertyReference(String value) {
         {
@@ -420,7 +420,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code semiMajorAxis} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code semiMajorAxis} property defines the length of the ellipse's semi-major axis in meters. This value is required.
+    *  Gets the writer for the {@code semiMajorAxis} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code semiMajorAxis} property defines the length of the ellipse's semi-major axis in meters. This value must be specified in order for the client to display graphics.
     
 
     */
@@ -431,7 +431,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Opens and returns the writer for the {@code semiMajorAxis} property. The {@code semiMajorAxis} property defines the length of the ellipse's semi-major axis in meters. This value is required.
+    Opens and returns the writer for the {@code semiMajorAxis} property. The {@code semiMajorAxis} property defines the length of the ellipse's semi-major axis in meters. This value must be specified in order for the client to display graphics.
     
 
     */
@@ -443,7 +443,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code semiMajorAxis} property as a {@code number} value. The {@code semiMajorAxis} property specifies the length of the ellipse's semi-major axis in meters. This value is required.
+    Writes a value for the {@code semiMajorAxis} property as a {@code number} value. The {@code semiMajorAxis} property specifies the length of the ellipse's semi-major axis in meters. This value must be specified in order for the client to display graphics.
     
     
 
@@ -462,7 +462,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code semiMajorAxis} property as a {@code number} value. The {@code semiMajorAxis} property specifies the length of the ellipse's semi-major axis in meters. This value is required.
+    Writes a value for the {@code semiMajorAxis} property as a {@code number} value. The {@code semiMajorAxis} property specifies the length of the ellipse's semi-major axis in meters. This value must be specified in order for the client to display graphics.
     
     
     
@@ -483,7 +483,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code semiMajorAxis} property as a {@code number} value. The {@code semiMajorAxis} property specifies the length of the ellipse's semi-major axis in meters. This value is required.
+    Writes a value for the {@code semiMajorAxis} property as a {@code number} value. The {@code semiMajorAxis} property specifies the length of the ellipse's semi-major axis in meters. This value must be specified in order for the client to display graphics.
     
     
     
@@ -508,7 +508,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code semiMajorAxis} property as a {@code reference} value. The {@code semiMajorAxis} property specifies the length of the ellipse's semi-major axis in meters. This value is required.
+    Writes a value for the {@code semiMajorAxis} property as a {@code reference} value. The {@code semiMajorAxis} property specifies the length of the ellipse's semi-major axis in meters. This value must be specified in order for the client to display graphics.
     
     
 
@@ -527,11 +527,11 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code semiMajorAxis} property as a {@code reference} value. The {@code semiMajorAxis} property specifies the length of the ellipse's semi-major axis in meters. This value is required.
+    Writes a value for the {@code semiMajorAxis} property as a {@code reference} value. The {@code semiMajorAxis} property specifies the length of the ellipse's semi-major axis in meters. This value must be specified in order for the client to display graphics.
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeSemiMajorAxisPropertyReference(String value) {
         {
@@ -546,7 +546,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code semiMajorAxis} property as a {@code reference} value. The {@code semiMajorAxis} property specifies the length of the ellipse's semi-major axis in meters. This value is required.
+    Writes a value for the {@code semiMajorAxis} property as a {@code reference} value. The {@code semiMajorAxis} property specifies the length of the ellipse's semi-major axis in meters. This value must be specified in order for the client to display graphics.
     
     
     
@@ -567,7 +567,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code semiMajorAxis} property as a {@code reference} value. The {@code semiMajorAxis} property specifies the length of the ellipse's semi-major axis in meters. This value is required.
+    Writes a value for the {@code semiMajorAxis} property as a {@code reference} value. The {@code semiMajorAxis} property specifies the length of the ellipse's semi-major axis in meters. This value must be specified in order for the client to display graphics.
     
     
     
@@ -587,7 +587,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code semiMinorAxis} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code semiMinorAxis} property defines the length of the ellipse's semi-minor axis in meters. This value is required.
+    *  Gets the writer for the {@code semiMinorAxis} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code semiMinorAxis} property defines the length of the ellipse's semi-minor axis in meters. This value must be specified in order for the client to display graphics.
     
 
     */
@@ -598,7 +598,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Opens and returns the writer for the {@code semiMinorAxis} property. The {@code semiMinorAxis} property defines the length of the ellipse's semi-minor axis in meters. This value is required.
+    Opens and returns the writer for the {@code semiMinorAxis} property. The {@code semiMinorAxis} property defines the length of the ellipse's semi-minor axis in meters. This value must be specified in order for the client to display graphics.
     
 
     */
@@ -610,7 +610,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code semiMinorAxis} property as a {@code number} value. The {@code semiMinorAxis} property specifies the length of the ellipse's semi-minor axis in meters. This value is required.
+    Writes a value for the {@code semiMinorAxis} property as a {@code number} value. The {@code semiMinorAxis} property specifies the length of the ellipse's semi-minor axis in meters. This value must be specified in order for the client to display graphics.
     
     
 
@@ -629,7 +629,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code semiMinorAxis} property as a {@code number} value. The {@code semiMinorAxis} property specifies the length of the ellipse's semi-minor axis in meters. This value is required.
+    Writes a value for the {@code semiMinorAxis} property as a {@code number} value. The {@code semiMinorAxis} property specifies the length of the ellipse's semi-minor axis in meters. This value must be specified in order for the client to display graphics.
     
     
     
@@ -650,7 +650,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code semiMinorAxis} property as a {@code number} value. The {@code semiMinorAxis} property specifies the length of the ellipse's semi-minor axis in meters. This value is required.
+    Writes a value for the {@code semiMinorAxis} property as a {@code number} value. The {@code semiMinorAxis} property specifies the length of the ellipse's semi-minor axis in meters. This value must be specified in order for the client to display graphics.
     
     
     
@@ -675,7 +675,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code semiMinorAxis} property as a {@code reference} value. The {@code semiMinorAxis} property specifies the length of the ellipse's semi-minor axis in meters. This value is required.
+    Writes a value for the {@code semiMinorAxis} property as a {@code reference} value. The {@code semiMinorAxis} property specifies the length of the ellipse's semi-minor axis in meters. This value must be specified in order for the client to display graphics.
     
     
 
@@ -694,11 +694,11 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code semiMinorAxis} property as a {@code reference} value. The {@code semiMinorAxis} property specifies the length of the ellipse's semi-minor axis in meters. This value is required.
+    Writes a value for the {@code semiMinorAxis} property as a {@code reference} value. The {@code semiMinorAxis} property specifies the length of the ellipse's semi-minor axis in meters. This value must be specified in order for the client to display graphics.
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeSemiMinorAxisPropertyReference(String value) {
         {
@@ -713,7 +713,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code semiMinorAxis} property as a {@code reference} value. The {@code semiMinorAxis} property specifies the length of the ellipse's semi-minor axis in meters. This value is required.
+    Writes a value for the {@code semiMinorAxis} property as a {@code reference} value. The {@code semiMinorAxis} property specifies the length of the ellipse's semi-minor axis in meters. This value must be specified in order for the client to display graphics.
     
     
     
@@ -734,7 +734,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code semiMinorAxis} property as a {@code reference} value. The {@code semiMinorAxis} property specifies the length of the ellipse's semi-minor axis in meters. This value is required.
+    Writes a value for the {@code semiMinorAxis} property as a {@code reference} value. The {@code semiMinorAxis} property specifies the length of the ellipse's semi-minor axis in meters. This value must be specified in order for the client to display graphics.
     
     
     
@@ -865,7 +865,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeHeightPropertyReference(String value) {
         {
@@ -1032,7 +1032,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeExtrudedHeightPropertyReference(String value) {
         {
@@ -1153,7 +1153,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeHeightReferencePropertyReference(String value) {
         {
@@ -1274,7 +1274,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeExtrudedHeightReferencePropertyReference(String value) {
         {
@@ -1441,7 +1441,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeRotationPropertyReference(String value) {
         {
@@ -1608,7 +1608,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeStRotationPropertyReference(String value) {
         {
@@ -1775,7 +1775,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeGranularityPropertyReference(String value) {
         {
@@ -1896,7 +1896,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeFillPropertyReference(String value) {
         {
@@ -2039,7 +2039,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeOutlinePropertyReference(String value) {
         {
@@ -2321,7 +2321,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeOutlineColorPropertyReference(String value) {
         {
@@ -2488,7 +2488,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeOutlineWidthPropertyReference(String value) {
         {
@@ -2655,7 +2655,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeNumberOfVerticalLinesPropertyReference(String value) {
         {
@@ -2776,7 +2776,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShadowsPropertyReference(String value) {
         {
@@ -2964,7 +2964,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeDistanceDisplayConditionPropertyReference(String value) {
         {
@@ -3131,7 +3131,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeZIndexPropertyReference(String value) {
         {

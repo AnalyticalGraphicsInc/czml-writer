@@ -11,9 +11,9 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>Double</c> to a <see cref="CesiumOutputStream" />. A <c>Double</c> is a floating-point number.
+    /// Writes a <c>Double</c> to a <see cref="CesiumOutputStream"/>. A <c>Double</c> is a floating-point number.
     /// </summary>
-    public class DoubleCesiumWriter : CesiumInterpolatablePropertyWriter<DoubleCesiumWriter>
+    public class DoubleCesiumWriter : CesiumInterpolatablePropertyWriter<DoubleCesiumWriter>, ICesiumDeletablePropertyWriter, ICesiumDoubleValuePropertyWriter, ICesiumReferenceValuePropertyWriter
     {
         /// <summary>
         /// The name of the <c>number</c> property.
@@ -30,8 +30,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string DeletePropertyName = "delete";
 
-        private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<double>> m_asNumber;
-        private readonly Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
+        private readonly Lazy<CesiumDoubleValuePropertyAdaptor<DoubleCesiumWriter>> m_asNumber;
+        private readonly Lazy<CesiumReferenceValuePropertyAdaptor<DoubleCesiumWriter>> m_asReference;
 
         /// <summary>
         /// Initializes a new instance.
@@ -40,8 +40,8 @@ namespace CesiumLanguageWriter
         public DoubleCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
-            m_asNumber = new Lazy<ICesiumInterpolatableValuePropertyWriter<double>>(CreateNumberAdaptor, false);
-            m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
+            m_asNumber = CreateAsNumber();
+            m_asReference = CreateAsReference();
         }
 
         /// <summary>
@@ -51,11 +51,11 @@ namespace CesiumLanguageWriter
         protected DoubleCesiumWriter([NotNull] DoubleCesiumWriter existingInstance)
             : base(existingInstance)
         {
-            m_asNumber = new Lazy<ICesiumInterpolatableValuePropertyWriter<double>>(CreateNumberAdaptor, false);
-            m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
+            m_asNumber = CreateAsNumber();
+            m_asReference = CreateAsReference();
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override DoubleCesiumWriter Clone()
         {
             return new DoubleCesiumWriter(this);
@@ -118,7 +118,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes the value expressed as a <c>reference</c>, which is the number specified as a reference to another property.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteReference(string value)
         {
             const string PropertyName = ReferencePropertyName;
@@ -166,31 +166,41 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <c>Number</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumDoubleValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumInterpolatableValuePropertyWriter<double> AsNumber()
+        public CesiumDoubleValuePropertyAdaptor<DoubleCesiumWriter> AsNumber()
         {
             return m_asNumber.Value;
         }
 
-        private ICesiumInterpolatableValuePropertyWriter<double> CreateNumberAdaptor()
+        private Lazy<CesiumDoubleValuePropertyAdaptor<DoubleCesiumWriter>> CreateAsNumber()
         {
-            return new CesiumInterpolatableWriterAdaptor<DoubleCesiumWriter, double>(this, (me, value) => me.WriteNumber(value), (me, dates, values, startIndex, length) => me.WriteNumber(dates, values, startIndex, length));
+            return new Lazy<CesiumDoubleValuePropertyAdaptor<DoubleCesiumWriter>>(CreateDouble, false);
+        }
+
+        private CesiumDoubleValuePropertyAdaptor<DoubleCesiumWriter> CreateDouble()
+        {
+            return CesiumValuePropertyAdaptors.CreateDouble(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>Reference</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumReferenceValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<Reference> AsReference()
+        public CesiumReferenceValuePropertyAdaptor<DoubleCesiumWriter> AsReference()
         {
             return m_asReference.Value;
         }
 
-        private ICesiumValuePropertyWriter<Reference> CreateReferenceAdaptor()
+        private Lazy<CesiumReferenceValuePropertyAdaptor<DoubleCesiumWriter>> CreateAsReference()
         {
-            return new CesiumWriterAdaptor<DoubleCesiumWriter, Reference>(this, (me, value) => me.WriteReference(value));
+            return new Lazy<CesiumReferenceValuePropertyAdaptor<DoubleCesiumWriter>>(CreateReference, false);
+        }
+
+        private CesiumReferenceValuePropertyAdaptor<DoubleCesiumWriter> CreateReference()
+        {
+            return CesiumValuePropertyAdaptors.CreateReference(this);
         }
 
     }

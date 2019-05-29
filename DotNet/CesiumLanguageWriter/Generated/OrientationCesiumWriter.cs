@@ -11,9 +11,9 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>Orientation</c> to a <see cref="CesiumOutputStream" />. A <c>Orientation</c> is defines an orientation. An orientation is a rotation that takes a vector expressed in the "body" axes of the object and transforms it to the Earth fixed axes.
+    /// Writes a <c>Orientation</c> to a <see cref="CesiumOutputStream"/>. A <c>Orientation</c> is defines an orientation. An orientation is a rotation that takes a vector expressed in the "body" axes of the object and transforms it to the Earth fixed axes.
     /// </summary>
-    public class OrientationCesiumWriter : CesiumInterpolatablePropertyWriter<OrientationCesiumWriter>
+    public class OrientationCesiumWriter : CesiumInterpolatablePropertyWriter<OrientationCesiumWriter>, ICesiumDeletablePropertyWriter, ICesiumUnitQuaternionValuePropertyWriter, ICesiumReferenceValuePropertyWriter, ICesiumVelocityReferenceValuePropertyWriter
     {
         /// <summary>
         /// The name of the <c>unitQuaternion</c> property.
@@ -35,9 +35,9 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string DeletePropertyName = "delete";
 
-        private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<UnitQuaternion>> m_asUnitQuaternion;
-        private readonly Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
-        private readonly Lazy<ICesiumValuePropertyWriter<Reference>> m_asVelocityReference;
+        private readonly Lazy<CesiumUnitQuaternionValuePropertyAdaptor<OrientationCesiumWriter>> m_asUnitQuaternion;
+        private readonly Lazy<CesiumReferenceValuePropertyAdaptor<OrientationCesiumWriter>> m_asReference;
+        private readonly Lazy<CesiumVelocityReferenceValuePropertyAdaptor<OrientationCesiumWriter>> m_asVelocityReference;
 
         /// <summary>
         /// Initializes a new instance.
@@ -46,9 +46,9 @@ namespace CesiumLanguageWriter
         public OrientationCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
-            m_asUnitQuaternion = new Lazy<ICesiumInterpolatableValuePropertyWriter<UnitQuaternion>>(CreateUnitQuaternionAdaptor, false);
-            m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
-            m_asVelocityReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateVelocityReferenceAdaptor, false);
+            m_asUnitQuaternion = CreateAsUnitQuaternion();
+            m_asReference = CreateAsReference();
+            m_asVelocityReference = CreateAsVelocityReference();
         }
 
         /// <summary>
@@ -58,12 +58,12 @@ namespace CesiumLanguageWriter
         protected OrientationCesiumWriter([NotNull] OrientationCesiumWriter existingInstance)
             : base(existingInstance)
         {
-            m_asUnitQuaternion = new Lazy<ICesiumInterpolatableValuePropertyWriter<UnitQuaternion>>(CreateUnitQuaternionAdaptor, false);
-            m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
-            m_asVelocityReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateVelocityReferenceAdaptor, false);
+            m_asUnitQuaternion = CreateAsUnitQuaternion();
+            m_asReference = CreateAsReference();
+            m_asVelocityReference = CreateAsVelocityReference();
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override OrientationCesiumWriter Clone()
         {
             return new OrientationCesiumWriter(this);
@@ -120,7 +120,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes the value expressed as a <c>reference</c>, which is the orientation specified as a reference to another property.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteReference(string value)
         {
             const string PropertyName = ReferencePropertyName;
@@ -170,7 +170,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes the value expressed as a <c>velocityReference</c>, which is the orientation specified as the normalized velocity vector of a position property. The reference must be to a <c>position</c> property.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteVelocityReference(string value)
         {
             const string PropertyName = VelocityReferencePropertyName;
@@ -218,45 +218,60 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <c>UnitQuaternion</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumUnitQuaternionValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumInterpolatableValuePropertyWriter<UnitQuaternion> AsUnitQuaternion()
+        public CesiumUnitQuaternionValuePropertyAdaptor<OrientationCesiumWriter> AsUnitQuaternion()
         {
             return m_asUnitQuaternion.Value;
         }
 
-        private ICesiumInterpolatableValuePropertyWriter<UnitQuaternion> CreateUnitQuaternionAdaptor()
+        private Lazy<CesiumUnitQuaternionValuePropertyAdaptor<OrientationCesiumWriter>> CreateAsUnitQuaternion()
         {
-            return new CesiumInterpolatableWriterAdaptor<OrientationCesiumWriter, UnitQuaternion>(this, (me, value) => me.WriteUnitQuaternion(value), (me, dates, values, startIndex, length) => me.WriteUnitQuaternion(dates, values, startIndex, length));
+            return new Lazy<CesiumUnitQuaternionValuePropertyAdaptor<OrientationCesiumWriter>>(CreateUnitQuaternion, false);
+        }
+
+        private CesiumUnitQuaternionValuePropertyAdaptor<OrientationCesiumWriter> CreateUnitQuaternion()
+        {
+            return CesiumValuePropertyAdaptors.CreateUnitQuaternion(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>Reference</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumReferenceValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<Reference> AsReference()
+        public CesiumReferenceValuePropertyAdaptor<OrientationCesiumWriter> AsReference()
         {
             return m_asReference.Value;
         }
 
-        private ICesiumValuePropertyWriter<Reference> CreateReferenceAdaptor()
+        private Lazy<CesiumReferenceValuePropertyAdaptor<OrientationCesiumWriter>> CreateAsReference()
         {
-            return new CesiumWriterAdaptor<OrientationCesiumWriter, Reference>(this, (me, value) => me.WriteReference(value));
+            return new Lazy<CesiumReferenceValuePropertyAdaptor<OrientationCesiumWriter>>(CreateReference, false);
+        }
+
+        private CesiumReferenceValuePropertyAdaptor<OrientationCesiumWriter> CreateReference()
+        {
+            return CesiumValuePropertyAdaptors.CreateReference(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>VelocityReference</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumVelocityReferenceValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<Reference> AsVelocityReference()
+        public CesiumVelocityReferenceValuePropertyAdaptor<OrientationCesiumWriter> AsVelocityReference()
         {
             return m_asVelocityReference.Value;
         }
 
-        private ICesiumValuePropertyWriter<Reference> CreateVelocityReferenceAdaptor()
+        private Lazy<CesiumVelocityReferenceValuePropertyAdaptor<OrientationCesiumWriter>> CreateAsVelocityReference()
         {
-            return new CesiumWriterAdaptor<OrientationCesiumWriter, Reference>(this, (me, value) => me.WriteVelocityReference(value));
+            return new Lazy<CesiumVelocityReferenceValuePropertyAdaptor<OrientationCesiumWriter>>(CreateVelocityReference, false);
+        }
+
+        private CesiumVelocityReferenceValuePropertyAdaptor<OrientationCesiumWriter> CreateVelocityReference()
+        {
+            return CesiumValuePropertyAdaptors.CreateVelocityReference(this);
         }
 
     }

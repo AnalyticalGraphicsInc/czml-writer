@@ -5,8 +5,6 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
-import cesiumlanguagewriter.Rectangular;
-import cesiumlanguagewriter.Reference;
 import java.util.List;
 import javax.annotation.Nonnull;
 
@@ -21,7 +19,8 @@ import javax.annotation.Nonnull;
         "deprecation",
         "serial"
 })
-public class LineOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<LineOffsetCesiumWriter> {
+public class LineOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<LineOffsetCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumCartesian2ValuePropertyWriter,
+        ICesiumReferenceValuePropertyWriter {
     /**
     *  
     The name of the {@code cartesian2} property.
@@ -43,8 +42,8 @@ public class LineOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<L
 
     */
     public static final String DeletePropertyName = "delete";
-    private Lazy<ICesiumInterpolatableValuePropertyWriter<Rectangular>> m_asCartesian2;
-    private Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
+    private Lazy<CesiumCartesian2ValuePropertyAdaptor<LineOffsetCesiumWriter>> m_asCartesian2;
+    private Lazy<CesiumReferenceValuePropertyAdaptor<LineOffsetCesiumWriter>> m_asReference;
 
     /**
     *  
@@ -56,18 +55,8 @@ public class LineOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<L
     */
     public LineOffsetCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
-        m_asCartesian2 = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Rectangular>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Rectangular>>(this, "createCartesian2Adaptor") {
-                    public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Rectangular> invoke() {
-                        return createCartesian2Adaptor();
-                    }
-                }, false);
-        m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor") {
-            public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
-                return createReferenceAdaptor();
-            }
-        }, false);
+        m_asCartesian2 = createAsCartesian2();
+        m_asReference = createAsReference();
     }
 
     /**
@@ -80,18 +69,8 @@ public class LineOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<L
     */
     protected LineOffsetCesiumWriter(@Nonnull LineOffsetCesiumWriter existingInstance) {
         super(existingInstance);
-        m_asCartesian2 = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Rectangular>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Rectangular>>(this, "createCartesian2Adaptor") {
-                    public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Rectangular> invoke() {
-                        return createCartesian2Adaptor();
-                    }
-                }, false);
-        m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor") {
-            public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
-                return createReferenceAdaptor();
-            }
-        }, false);
+        m_asCartesian2 = createAsCartesian2();
+        m_asReference = createAsReference();
     }
 
     /**
@@ -192,7 +171,7 @@ public class LineOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<L
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeReference(String value) {
         final String PropertyName = ReferencePropertyName;
@@ -252,47 +231,51 @@ public class LineOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<L
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumInterpolatableValuePropertyWriter} to write a value in {@code Cartesian2} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumCartesian2ValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
     * @return The wrapper.
     */
-    public final ICesiumInterpolatableValuePropertyWriter<Rectangular> asCartesian2() {
+    public final CesiumCartesian2ValuePropertyAdaptor<LineOffsetCesiumWriter> asCartesian2() {
         return m_asCartesian2.getValue();
     }
 
-    private final ICesiumInterpolatableValuePropertyWriter<Rectangular> createCartesian2Adaptor() {
-        return new CesiumInterpolatableWriterAdaptor<cesiumlanguagewriter.LineOffsetCesiumWriter, cesiumlanguagewriter.Rectangular>(this,
-                new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.LineOffsetCesiumWriter, cesiumlanguagewriter.Rectangular>() {
-                    public void invoke(LineOffsetCesiumWriter me, Rectangular value) {
-                        me.writeCartesian2(value);
+    private final Lazy<CesiumCartesian2ValuePropertyAdaptor<LineOffsetCesiumWriter>> createAsCartesian2() {
+        return new Lazy<cesiumlanguagewriter.advanced.CesiumCartesian2ValuePropertyAdaptor<LineOffsetCesiumWriter>>(
+                new Func1<cesiumlanguagewriter.advanced.CesiumCartesian2ValuePropertyAdaptor<LineOffsetCesiumWriter>>(this, "createCartesian2") {
+                    public cesiumlanguagewriter.advanced.CesiumCartesian2ValuePropertyAdaptor<LineOffsetCesiumWriter> invoke() {
+                        return createCartesian2();
                     }
-                }, new CesiumWriterAdaptorWriteSamplesCallback<cesiumlanguagewriter.LineOffsetCesiumWriter, cesiumlanguagewriter.Rectangular>() {
-                    public void invoke(LineOffsetCesiumWriter me, List<JulianDate> dates, List<Rectangular> values, int startIndex, int length) {
-                        me.writeCartesian2(dates, values, startIndex, length);
-                    }
-                });
+                }, false);
+    }
+
+    private final CesiumCartesian2ValuePropertyAdaptor<LineOffsetCesiumWriter> createCartesian2() {
+        return CesiumValuePropertyAdaptors.<LineOffsetCesiumWriter> createCartesian2(this);
     }
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
     * @return The wrapper.
     */
-    public final ICesiumValuePropertyWriter<Reference> asReference() {
+    public final CesiumReferenceValuePropertyAdaptor<LineOffsetCesiumWriter> asReference() {
         return m_asReference.getValue();
     }
 
-    private final ICesiumValuePropertyWriter<Reference> createReferenceAdaptor() {
-        return new CesiumWriterAdaptor<cesiumlanguagewriter.LineOffsetCesiumWriter, cesiumlanguagewriter.Reference>(this,
-                new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.LineOffsetCesiumWriter, cesiumlanguagewriter.Reference>() {
-                    public void invoke(LineOffsetCesiumWriter me, Reference value) {
-                        me.writeReference(value);
+    private final Lazy<CesiumReferenceValuePropertyAdaptor<LineOffsetCesiumWriter>> createAsReference() {
+        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<LineOffsetCesiumWriter>>(
+                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<LineOffsetCesiumWriter>>(this, "createReference") {
+                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<LineOffsetCesiumWriter> invoke() {
+                        return createReference();
                     }
-                });
+                }, false);
+    }
+
+    private final CesiumReferenceValuePropertyAdaptor<LineOffsetCesiumWriter> createReference() {
+        return CesiumValuePropertyAdaptors.<LineOffsetCesiumWriter> createReference(this);
     }
 }

@@ -3,9 +3,7 @@
     "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Document.json",
     "title": "Document",
     "description": "Describes a CZML document.",
-    "type": [
-        "array"
-    ],
+    "type": "array",
     "items": {
         "$ref": "Packet.json"
     }

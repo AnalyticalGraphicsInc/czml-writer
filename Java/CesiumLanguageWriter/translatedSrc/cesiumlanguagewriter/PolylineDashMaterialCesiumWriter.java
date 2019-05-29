@@ -339,7 +339,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeColorPropertyReference(String value) {
         {
@@ -621,7 +621,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeGapColorPropertyReference(String value) {
         {
@@ -788,7 +788,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeDashLengthPropertyReference(String value) {
         {
@@ -955,7 +955,7 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeDashPatternPropertyReference(String value) {
         {

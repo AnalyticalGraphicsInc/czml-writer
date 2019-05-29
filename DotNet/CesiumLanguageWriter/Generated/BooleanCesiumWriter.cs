@@ -10,9 +10,9 @@ using JetBrains.Annotations;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>Boolean</c> to a <see cref="CesiumOutputStream" />. A <c>Boolean</c> is a boolean value.
+    /// Writes a <c>Boolean</c> to a <see cref="CesiumOutputStream"/>. A <c>Boolean</c> is a boolean value.
     /// </summary>
-    public class BooleanCesiumWriter : CesiumPropertyWriter<BooleanCesiumWriter>
+    public class BooleanCesiumWriter : CesiumPropertyWriter<BooleanCesiumWriter>, ICesiumDeletablePropertyWriter, ICesiumBooleanValuePropertyWriter, ICesiumReferenceValuePropertyWriter
     {
         /// <summary>
         /// The name of the <c>boolean</c> property.
@@ -29,8 +29,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string DeletePropertyName = "delete";
 
-        private readonly Lazy<ICesiumValuePropertyWriter<bool>> m_asBoolean;
-        private readonly Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
+        private readonly Lazy<CesiumBooleanValuePropertyAdaptor<BooleanCesiumWriter>> m_asBoolean;
+        private readonly Lazy<CesiumReferenceValuePropertyAdaptor<BooleanCesiumWriter>> m_asReference;
 
         /// <summary>
         /// Initializes a new instance.
@@ -39,8 +39,8 @@ namespace CesiumLanguageWriter
         public BooleanCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
-            m_asBoolean = new Lazy<ICesiumValuePropertyWriter<bool>>(CreateBooleanAdaptor, false);
-            m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
+            m_asBoolean = CreateAsBoolean();
+            m_asReference = CreateAsReference();
         }
 
         /// <summary>
@@ -50,11 +50,11 @@ namespace CesiumLanguageWriter
         protected BooleanCesiumWriter([NotNull] BooleanCesiumWriter existingInstance)
             : base(existingInstance)
         {
-            m_asBoolean = new Lazy<ICesiumValuePropertyWriter<bool>>(CreateBooleanAdaptor, false);
-            m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
+            m_asBoolean = CreateAsBoolean();
+            m_asReference = CreateAsReference();
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override BooleanCesiumWriter Clone()
         {
             return new BooleanCesiumWriter(this);
@@ -93,7 +93,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes the value expressed as a <c>reference</c>, which is the boolean specified as a reference to another property.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteReference(string value)
         {
             const string PropertyName = ReferencePropertyName;
@@ -129,7 +129,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>delete</c>, which is whether the client should delete existing data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
+        /// Writes the value expressed as a <c>delete</c>, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteDelete(bool value)
@@ -141,31 +141,41 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>Boolean</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumBooleanValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<bool> AsBoolean()
+        public CesiumBooleanValuePropertyAdaptor<BooleanCesiumWriter> AsBoolean()
         {
             return m_asBoolean.Value;
         }
 
-        private ICesiumValuePropertyWriter<bool> CreateBooleanAdaptor()
+        private Lazy<CesiumBooleanValuePropertyAdaptor<BooleanCesiumWriter>> CreateAsBoolean()
         {
-            return new CesiumWriterAdaptor<BooleanCesiumWriter, bool>(this, (me, value) => me.WriteBoolean(value));
+            return new Lazy<CesiumBooleanValuePropertyAdaptor<BooleanCesiumWriter>>(CreateBoolean, false);
+        }
+
+        private CesiumBooleanValuePropertyAdaptor<BooleanCesiumWriter> CreateBoolean()
+        {
+            return CesiumValuePropertyAdaptors.CreateBoolean(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>Reference</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumReferenceValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<Reference> AsReference()
+        public CesiumReferenceValuePropertyAdaptor<BooleanCesiumWriter> AsReference()
         {
             return m_asReference.Value;
         }
 
-        private ICesiumValuePropertyWriter<Reference> CreateReferenceAdaptor()
+        private Lazy<CesiumReferenceValuePropertyAdaptor<BooleanCesiumWriter>> CreateAsReference()
         {
-            return new CesiumWriterAdaptor<BooleanCesiumWriter, Reference>(this, (me, value) => me.WriteReference(value));
+            return new Lazy<CesiumReferenceValuePropertyAdaptor<BooleanCesiumWriter>>(CreateReference, false);
+        }
+
+        private CesiumReferenceValuePropertyAdaptor<BooleanCesiumWriter> CreateReference()
+        {
+            return CesiumValuePropertyAdaptors.CreateReference(this);
         }
 
     }

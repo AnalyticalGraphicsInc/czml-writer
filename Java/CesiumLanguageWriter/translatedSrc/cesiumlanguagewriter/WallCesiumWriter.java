@@ -280,7 +280,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShowPropertyReference(String value) {
         {
@@ -336,7 +336,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code positions} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code positions} property defines the array of positions defining the centerline of the wall. This value is required.
+    *  Gets the writer for the {@code positions} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code positions} property defines the array of positions defining the centerline of the wall. This value must be specified in order for the client to display graphics.
     
 
     */
@@ -347,7 +347,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Opens and returns the writer for the {@code positions} property. The {@code positions} property defines the array of positions defining the centerline of the wall. This value is required.
+    Opens and returns the writer for the {@code positions} property. The {@code positions} property defines the array of positions defining the centerline of the wall. This value must be specified in order for the client to display graphics.
     
 
     */
@@ -359,7 +359,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code positions} property as a {@code cartesian} value. The {@code positions} property specifies the array of positions defining the centerline of the wall. This value is required.
+    Writes a value for the {@code positions} property as a {@code cartesian} value. The {@code positions} property specifies the array of positions defining the centerline of the wall. This value must be specified in order for the client to display graphics.
     
     
 
@@ -378,7 +378,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code positions} property as a {@code cartographicRadians} value. The {@code positions} property specifies the array of positions defining the centerline of the wall. This value is required.
+    Writes a value for the {@code positions} property as a {@code cartographicRadians} value. The {@code positions} property specifies the array of positions defining the centerline of the wall. This value must be specified in order for the client to display graphics.
     
     
 
@@ -397,7 +397,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code positions} property as a {@code cartographicDegrees} value. The {@code positions} property specifies the array of positions defining the centerline of the wall. This value is required.
+    Writes a value for the {@code positions} property as a {@code cartographicDegrees} value. The {@code positions} property specifies the array of positions defining the centerline of the wall. This value must be specified in order for the client to display graphics.
     
     
 
@@ -416,7 +416,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     /**
     *  
-    Writes a value for the {@code positions} property as a {@code references} value. The {@code positions} property specifies the array of positions defining the centerline of the wall. This value is required.
+    Writes a value for the {@code positions} property as a {@code references} value. The {@code positions} property specifies the array of positions defining the centerline of the wall. This value must be specified in order for the client to display graphics.
     
     
 
@@ -665,7 +665,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeGranularityPropertyReference(String value) {
         {
@@ -786,7 +786,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeFillPropertyReference(String value) {
         {
@@ -929,7 +929,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeOutlinePropertyReference(String value) {
         {
@@ -1211,7 +1211,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeOutlineColorPropertyReference(String value) {
         {
@@ -1378,7 +1378,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeOutlineWidthPropertyReference(String value) {
         {
@@ -1499,7 +1499,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShadowsPropertyReference(String value) {
         {
@@ -1687,7 +1687,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeDistanceDisplayConditionPropertyReference(String value) {
         {

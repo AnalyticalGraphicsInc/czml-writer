@@ -326,7 +326,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeEvenColorPropertyReference(String value) {
         {
@@ -608,7 +608,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeOddColorPropertyReference(String value) {
         {
@@ -796,7 +796,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeRepeatPropertyReference(String value) {
         {

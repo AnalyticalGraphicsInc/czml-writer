@@ -12,7 +12,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>SolidColorMaterial</c> to a <see cref="CesiumOutputStream" />. A <c>SolidColorMaterial</c> is a material that fills the surface with a solid color.
+    /// Writes a <c>SolidColorMaterial</c> to a <see cref="CesiumOutputStream"/>. A <c>SolidColorMaterial</c> is a material that fills the surface with a solid color.
     /// </summary>
     public class SolidColorMaterialCesiumWriter : CesiumPropertyWriter<SolidColorMaterialCesiumWriter>
     {
@@ -41,7 +41,7 @@ namespace CesiumLanguageWriter
         {
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override SolidColorMaterialCesiumWriter Clone()
         {
             return new SolidColorMaterialCesiumWriter(this);
@@ -191,7 +191,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>color</c> property as a <c>reference</c> value. The <c>color</c> property specifies the color of the surface. If not specified, the default value is white.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteColorPropertyReference(string value)
         {
             using (var writer = OpenColorProperty())

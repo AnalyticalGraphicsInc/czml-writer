@@ -3,13 +3,7 @@
     "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Ellipsoid.json",
     "title": "Ellipsoid",
     "description": "A closed quadric surface that is a three dimensional analogue of an ellipse.",
-    "type": [
-        "array",
-        "object"
-    ],
-    "items": {
-        "$ref": "#"
-    },
+    "type": "object",
     "properties": {
         "show": {
             "$ref": "Boolean.json",
@@ -18,7 +12,8 @@
         },
         "radii": {
             "$ref": "EllipsoidRadii.json",
-            "description": "The dimensions of the ellipsoid."
+            "description": "The dimensions of the ellipsoid.",
+            "czmlRequiredForDisplay": true
         },
         "fill": {
             "$ref": "Boolean.json",
@@ -69,8 +64,5 @@
             "$ref": "DistanceDisplayCondition.json",
             "description": "The display condition specifying at what distance from the camera this ellipsoid will be displayed."
         }
-    },
-    "required": [
-        "radii"
-    ]
+    }
 }

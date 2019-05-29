@@ -1,0 +1,22 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Values/ColorBlendModeValue.json",
+    "title": "ColorBlendMode",
+    "description": "The mode of blending between a target color and an entity's source color.",
+    "type": "string",
+    "czmlValue": true,
+    "oneOf": [
+        {
+            "const": "HIGHLIGHT",
+            "description": "Multiplies the source color by the target color."
+        },
+        {
+            "const": "REPLACE",
+            "description": "Replaces the source color with the target color."
+        },
+        {
+            "const": "MIX",
+            "description": "Blends the source color and target color together."
+        }
+    ]
+}

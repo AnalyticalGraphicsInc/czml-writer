@@ -4,6 +4,7 @@
     "title": "SensorVolumePortionToDisplay",
     "description": "What part of a sensor should be displayed.",
     "type": "string",
+    "czmlValue": true,
     "oneOf": [
         {
             "const": "COMPLETE",

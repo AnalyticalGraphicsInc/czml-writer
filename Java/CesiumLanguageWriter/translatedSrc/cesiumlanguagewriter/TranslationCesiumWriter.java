@@ -5,8 +5,6 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
-import cesiumlanguagewriter.Cartesian;
-import cesiumlanguagewriter.Reference;
 import java.util.List;
 import javax.annotation.Nonnull;
 
@@ -21,7 +19,8 @@ import javax.annotation.Nonnull;
         "deprecation",
         "serial"
 })
-public class TranslationCesiumWriter extends CesiumInterpolatablePropertyWriter<TranslationCesiumWriter> {
+public class TranslationCesiumWriter extends CesiumInterpolatablePropertyWriter<TranslationCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumCartesian3ValuePropertyWriter,
+        ICesiumReferenceValuePropertyWriter {
     /**
     *  
     The name of the {@code cartesian} property.
@@ -43,8 +42,8 @@ public class TranslationCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
     */
     public static final String DeletePropertyName = "delete";
-    private Lazy<ICesiumInterpolatableValuePropertyWriter<Cartesian>> m_asCartesian;
-    private Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
+    private Lazy<CesiumCartesian3ValuePropertyAdaptor<TranslationCesiumWriter>> m_asCartesian;
+    private Lazy<CesiumReferenceValuePropertyAdaptor<TranslationCesiumWriter>> m_asReference;
 
     /**
     *  
@@ -56,18 +55,8 @@ public class TranslationCesiumWriter extends CesiumInterpolatablePropertyWriter<
     */
     public TranslationCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
-        m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(this, "createCartesianAdaptor") {
-                    public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian> invoke() {
-                        return createCartesianAdaptor();
-                    }
-                }, false);
-        m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor") {
-            public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
-                return createReferenceAdaptor();
-            }
-        }, false);
+        m_asCartesian = createAsCartesian();
+        m_asReference = createAsReference();
     }
 
     /**
@@ -80,18 +69,8 @@ public class TranslationCesiumWriter extends CesiumInterpolatablePropertyWriter<
     */
     protected TranslationCesiumWriter(@Nonnull TranslationCesiumWriter existingInstance) {
         super(existingInstance);
-        m_asCartesian = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian>>(this, "createCartesianAdaptor") {
-                    public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Cartesian> invoke() {
-                        return createCartesianAdaptor();
-                    }
-                }, false);
-        m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor") {
-            public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
-                return createReferenceAdaptor();
-            }
-        }, false);
+        m_asCartesian = createAsCartesian();
+        m_asReference = createAsReference();
     }
 
     /**
@@ -178,7 +157,7 @@ public class TranslationCesiumWriter extends CesiumInterpolatablePropertyWriter<
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeReference(String value) {
         final String PropertyName = ReferencePropertyName;
@@ -238,47 +217,51 @@ public class TranslationCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumInterpolatableValuePropertyWriter} to write a value in {@code Cartesian} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumCartesian3ValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
     * @return The wrapper.
     */
-    public final ICesiumInterpolatableValuePropertyWriter<Cartesian> asCartesian() {
+    public final CesiumCartesian3ValuePropertyAdaptor<TranslationCesiumWriter> asCartesian() {
         return m_asCartesian.getValue();
     }
 
-    private final ICesiumInterpolatableValuePropertyWriter<Cartesian> createCartesianAdaptor() {
-        return new CesiumInterpolatableWriterAdaptor<cesiumlanguagewriter.TranslationCesiumWriter, cesiumlanguagewriter.Cartesian>(this,
-                new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.TranslationCesiumWriter, cesiumlanguagewriter.Cartesian>() {
-                    public void invoke(TranslationCesiumWriter me, Cartesian value) {
-                        me.writeCartesian(value);
+    private final Lazy<CesiumCartesian3ValuePropertyAdaptor<TranslationCesiumWriter>> createAsCartesian() {
+        return new Lazy<cesiumlanguagewriter.advanced.CesiumCartesian3ValuePropertyAdaptor<TranslationCesiumWriter>>(
+                new Func1<cesiumlanguagewriter.advanced.CesiumCartesian3ValuePropertyAdaptor<TranslationCesiumWriter>>(this, "createCartesian3") {
+                    public cesiumlanguagewriter.advanced.CesiumCartesian3ValuePropertyAdaptor<TranslationCesiumWriter> invoke() {
+                        return createCartesian3();
                     }
-                }, new CesiumWriterAdaptorWriteSamplesCallback<cesiumlanguagewriter.TranslationCesiumWriter, cesiumlanguagewriter.Cartesian>() {
-                    public void invoke(TranslationCesiumWriter me, List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
-                        me.writeCartesian(dates, values, startIndex, length);
-                    }
-                });
+                }, false);
+    }
+
+    private final CesiumCartesian3ValuePropertyAdaptor<TranslationCesiumWriter> createCartesian3() {
+        return CesiumValuePropertyAdaptors.<TranslationCesiumWriter> createCartesian3(this);
     }
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
     * @return The wrapper.
     */
-    public final ICesiumValuePropertyWriter<Reference> asReference() {
+    public final CesiumReferenceValuePropertyAdaptor<TranslationCesiumWriter> asReference() {
         return m_asReference.getValue();
     }
 
-    private final ICesiumValuePropertyWriter<Reference> createReferenceAdaptor() {
-        return new CesiumWriterAdaptor<cesiumlanguagewriter.TranslationCesiumWriter, cesiumlanguagewriter.Reference>(this,
-                new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.TranslationCesiumWriter, cesiumlanguagewriter.Reference>() {
-                    public void invoke(TranslationCesiumWriter me, Reference value) {
-                        me.writeReference(value);
+    private final Lazy<CesiumReferenceValuePropertyAdaptor<TranslationCesiumWriter>> createAsReference() {
+        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<TranslationCesiumWriter>>(
+                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<TranslationCesiumWriter>>(this, "createReference") {
+                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<TranslationCesiumWriter> invoke() {
+                        return createReference();
                     }
-                });
+                }, false);
+    }
+
+    private final CesiumReferenceValuePropertyAdaptor<TranslationCesiumWriter> createReference() {
+        return CesiumValuePropertyAdaptors.<TranslationCesiumWriter> createReference(this);
     }
 }

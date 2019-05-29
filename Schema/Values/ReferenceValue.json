@@ -1,0 +1,11 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Values/ReferenceValue.json",
+    "title": "Reference",
+    "description": "Represents a reference to another property. References can be used to specify that two properties on different objects are in fact, the same property.",
+    "type": "string",
+    "czmlValue": true,
+    "czmlExamples": [
+        "Examples/ReferenceValue.json"
+    ]
+}

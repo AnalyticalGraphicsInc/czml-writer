@@ -12,7 +12,7 @@ using System.Drawing;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>RectangularSensor</c> to a <see cref="CesiumOutputStream" />. A <c>RectangularSensor</c> is a rectangular pyramid sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.
+    /// Writes a <c>RectangularSensor</c> to a <see cref="CesiumOutputStream"/>. A <c>RectangularSensor</c> is a rectangular pyramid sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.
     /// </summary>
     public class RectangularSensorCesiumWriter : CesiumPropertyWriter<RectangularSensorCesiumWriter>
     {
@@ -167,7 +167,7 @@ namespace CesiumLanguageWriter
         {
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override RectangularSensorCesiumWriter Clone()
         {
             return new RectangularSensorCesiumWriter(this);
@@ -219,7 +219,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>show</c> property as a <c>reference</c> value. The <c>show</c> property specifies whether or not the entire rectangular pyramid sensor is shown. If not specified, the default value is <see langword="true"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteShowPropertyReference(string value)
         {
             using (var writer = OpenShowProperty())
@@ -328,7 +328,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>xHalfAngle</c> property as a <c>reference</c> value. The <c>xHalfAngle</c> property specifies the X half angle. If not specified, the default value is PI / 2.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteXHalfAnglePropertyReference(string value)
         {
             using (var writer = OpenXHalfAngleProperty())
@@ -437,7 +437,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>yHalfAngle</c> property as a <c>reference</c> value. The <c>yHalfAngle</c> property specifies the Y half angle. If not specified, the default value is PI / 2.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteYHalfAnglePropertyReference(string value)
         {
             using (var writer = OpenYHalfAngleProperty())
@@ -546,7 +546,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>radius</c> property as a <c>reference</c> value. The <c>radius</c> property specifies the radial limit of the sensor. If not specified, the default value is Infinity.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteRadiusPropertyReference(string value)
         {
             using (var writer = OpenRadiusProperty())
@@ -627,7 +627,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>showIntersection</c> property as a <c>reference</c> value. The <c>showIntersection</c> property specifies whether or not the intersection of the sensor with the Earth is shown. If not specified, the default value is <see langword="true"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteShowIntersectionPropertyReference(string value)
         {
             using (var writer = OpenShowIntersectionProperty())
@@ -806,7 +806,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>intersectionColor</c> property as a <c>reference</c> value. The <c>intersectionColor</c> property specifies the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteIntersectionColorPropertyReference(string value)
         {
             using (var writer = OpenIntersectionColorProperty())
@@ -915,7 +915,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>intersectionWidth</c> property as a <c>reference</c> value. The <c>intersectionWidth</c> property specifies the width of the intersection in pixels. If not specified, the default value is 1.0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteIntersectionWidthPropertyReference(string value)
         {
             using (var writer = OpenIntersectionWidthProperty())
@@ -996,7 +996,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>showLateralSurfaces</c> property as a <c>reference</c> value. The <c>showLateralSurfaces</c> property specifies whether or not the lateral surfaces, i.e., the outer sides of the sensor, are shown. If not specified, the default value is <see langword="true"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteShowLateralSurfacesPropertyReference(string value)
         {
             using (var writer = OpenShowLateralSurfacesProperty())
@@ -1096,7 +1096,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>showEllipsoidSurfaces</c> property as a <c>reference</c> value. The <c>showEllipsoidSurfaces</c> property specifies whether or not ellipsoid surfaces are shown. If not specified, the default value is <see langword="true"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteShowEllipsoidSurfacesPropertyReference(string value)
         {
             using (var writer = OpenShowEllipsoidSurfacesProperty())
@@ -1196,7 +1196,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>showEllipsoidHorizonSurfaces</c> property as a <c>reference</c> value. The <c>showEllipsoidHorizonSurfaces</c> property specifies whether or not ellipsoid horizon surfaces are shown. If not specified, the default value is <see langword="true"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteShowEllipsoidHorizonSurfacesPropertyReference(string value)
         {
             using (var writer = OpenShowEllipsoidHorizonSurfacesProperty())
@@ -1296,7 +1296,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>showDomeSurfaces</c> property as a <c>reference</c> value. The <c>showDomeSurfaces</c> property specifies whether or not dome surfaces are shown. If not specified, the default value is <see langword="true"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteShowDomeSurfacesPropertyReference(string value)
         {
             using (var writer = OpenShowDomeSurfacesProperty())
@@ -1396,7 +1396,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>portionToDisplay</c> property as a <c>reference</c> value. The <c>portionToDisplay</c> property specifies what part of the sensor should be displayed. If not specified, the default value is COMPLETE.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WritePortionToDisplayPropertyReference(string value)
         {
             using (var writer = OpenPortionToDisplayProperty())
@@ -1477,7 +1477,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>environmentConstraint</c> property as a <c>reference</c> value. The <c>environmentConstraint</c> property specifies whether or not the sensor will intersect the environment, e.g. terrain or models. If not specified, the default value is <see langword="false"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteEnvironmentConstraintPropertyReference(string value)
         {
             using (var writer = OpenEnvironmentConstraintProperty())
@@ -1558,7 +1558,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>showEnvironmentOcclusion</c> property as a <c>reference</c> value. The <c>showEnvironmentOcclusion</c> property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material. If not specified, the default value is <see langword="false"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteShowEnvironmentOcclusionPropertyReference(string value)
         {
             using (var writer = OpenShowEnvironmentOcclusionProperty())
@@ -1658,7 +1658,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>showEnvironmentIntersection</c> property as a <c>reference</c> value. The <c>showEnvironmentIntersection</c> property specifies whether or not a line showing where the sensor intersects the environment will be drawn. If not specified, the default value is <see langword="false"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteShowEnvironmentIntersectionPropertyReference(string value)
         {
             using (var writer = OpenShowEnvironmentIntersectionProperty())
@@ -1837,7 +1837,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>environmentIntersectionColor</c> property as a <c>reference</c> value. The <c>environmentIntersectionColor</c> property specifies the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteEnvironmentIntersectionColorPropertyReference(string value)
         {
             using (var writer = OpenEnvironmentIntersectionColorProperty())
@@ -1946,7 +1946,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>environmentIntersectionWidth</c> property as a <c>reference</c> value. The <c>environmentIntersectionWidth</c> property specifies the width in meters of the intersection line between the sensor and the environment. If not specified, the default value is 5.0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteEnvironmentIntersectionWidthPropertyReference(string value)
         {
             using (var writer = OpenEnvironmentIntersectionWidthProperty())
