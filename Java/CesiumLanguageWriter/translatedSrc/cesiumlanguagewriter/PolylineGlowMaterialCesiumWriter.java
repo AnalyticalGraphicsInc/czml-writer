@@ -326,7 +326,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeColorPropertyReference(String value) {
         {
@@ -493,7 +493,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeGlowPowerPropertyReference(String value) {
         {
@@ -660,7 +660,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeTaperPowerPropertyReference(String value) {
         {

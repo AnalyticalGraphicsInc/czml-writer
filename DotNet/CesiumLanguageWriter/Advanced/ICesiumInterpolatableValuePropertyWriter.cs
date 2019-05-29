@@ -6,7 +6,7 @@ namespace CesiumLanguageWriter.Advanced
     /// An interface to a property that writes a sampled, interpolatable value.
     /// </summary>
     /// <typeparam name="TValue">The type of the value.</typeparam>
-    public interface ICesiumInterpolatableValuePropertyWriter<TValue> : ICesiumValuePropertyWriter<TValue>, ICesiumInterpolationInformationWriter
+    public interface ICesiumInterpolatableValuePropertyWriter<TValue> : ICesiumValuePropertyWriter<TValue>, ICesiumInterpolatablePropertyWriter
     {
         /// <summary>
         /// Writes time-tagged samples for this property.  Clients will interpolate over the samples

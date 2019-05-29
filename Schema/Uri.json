@@ -3,6 +3,11 @@
     "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Uri.json",
     "title": "Uri",
     "description": "A URI value. The URI can optionally vary with time.",
+    "allOf": [
+        { "$ref": "DeletableProperty.json" },
+        { "$ref": "ValueProperties/UriValueProperty.json" },
+        { "$ref": "ValueProperties/ReferenceValueProperty.json" }
+    ],
     "type": [
         "array",
         "object",
@@ -16,18 +21,12 @@
     ],
     "properties": {
         "uri": {
-            "$ref": "UriValue.json",
-            "description": "The URI value.",
-            "czmlValue": true
+            "$ref": "Values/UriValue.json",
+            "description": "The URI value."
         },
         "reference": {
-            "$ref": "ReferenceValue.json",
-            "description": "The URI specified as a reference to another property.",
-            "czmlValue": true
-        },
-        "delete": {
-            "description": "Whether the client should delete existing data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.",
-            "type": "boolean"
+            "$ref": "Values/ReferenceValue.json",
+            "description": "The URI specified as a reference to another property."
         }
     }
 }

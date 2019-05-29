@@ -11,9 +11,9 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>DirectionList</c> to a <see cref="CesiumOutputStream" />. A <c>DirectionList</c> is a list of directions.
+    /// Writes a <c>DirectionList</c> to a <see cref="CesiumOutputStream"/>. A <c>DirectionList</c> is a list of directions.
     /// </summary>
-    public class DirectionListCesiumWriter : CesiumPropertyWriter<DirectionListCesiumWriter>
+    public class DirectionListCesiumWriter : CesiumPropertyWriter<DirectionListCesiumWriter>, ICesiumDeletablePropertyWriter, ICesiumSphericalListValuePropertyWriter, ICesiumUnitSphericalListValuePropertyWriter, ICesiumCartesian3ListValuePropertyWriter, ICesiumUnitCartesian3ListValuePropertyWriter
     {
         /// <summary>
         /// The name of the <c>spherical</c> property.
@@ -40,10 +40,10 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string DeletePropertyName = "delete";
 
-        private readonly Lazy<ICesiumValuePropertyWriter<IEnumerable<Spherical>>> m_asSpherical;
-        private readonly Lazy<ICesiumValuePropertyWriter<IEnumerable<UnitSpherical>>> m_asUnitSpherical;
-        private readonly Lazy<ICesiumValuePropertyWriter<IEnumerable<Cartesian>>> m_asCartesian;
-        private readonly Lazy<ICesiumValuePropertyWriter<IEnumerable<UnitCartesian>>> m_asUnitCartesian;
+        private readonly Lazy<CesiumSphericalListValuePropertyAdaptor<DirectionListCesiumWriter>> m_asSpherical;
+        private readonly Lazy<CesiumUnitSphericalListValuePropertyAdaptor<DirectionListCesiumWriter>> m_asUnitSpherical;
+        private readonly Lazy<CesiumCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter>> m_asCartesian;
+        private readonly Lazy<CesiumUnitCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter>> m_asUnitCartesian;
 
         /// <summary>
         /// Initializes a new instance.
@@ -52,10 +52,10 @@ namespace CesiumLanguageWriter
         public DirectionListCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
-            m_asSpherical = new Lazy<ICesiumValuePropertyWriter<IEnumerable<Spherical>>>(CreateSphericalAdaptor, false);
-            m_asUnitSpherical = new Lazy<ICesiumValuePropertyWriter<IEnumerable<UnitSpherical>>>(CreateUnitSphericalAdaptor, false);
-            m_asCartesian = new Lazy<ICesiumValuePropertyWriter<IEnumerable<Cartesian>>>(CreateCartesianAdaptor, false);
-            m_asUnitCartesian = new Lazy<ICesiumValuePropertyWriter<IEnumerable<UnitCartesian>>>(CreateUnitCartesianAdaptor, false);
+            m_asSpherical = CreateAsSpherical();
+            m_asUnitSpherical = CreateAsUnitSpherical();
+            m_asCartesian = CreateAsCartesian();
+            m_asUnitCartesian = CreateAsUnitCartesian();
         }
 
         /// <summary>
@@ -65,13 +65,13 @@ namespace CesiumLanguageWriter
         protected DirectionListCesiumWriter([NotNull] DirectionListCesiumWriter existingInstance)
             : base(existingInstance)
         {
-            m_asSpherical = new Lazy<ICesiumValuePropertyWriter<IEnumerable<Spherical>>>(CreateSphericalAdaptor, false);
-            m_asUnitSpherical = new Lazy<ICesiumValuePropertyWriter<IEnumerable<UnitSpherical>>>(CreateUnitSphericalAdaptor, false);
-            m_asCartesian = new Lazy<ICesiumValuePropertyWriter<IEnumerable<Cartesian>>>(CreateCartesianAdaptor, false);
-            m_asUnitCartesian = new Lazy<ICesiumValuePropertyWriter<IEnumerable<UnitCartesian>>>(CreateUnitCartesianAdaptor, false);
+            m_asSpherical = CreateAsSpherical();
+            m_asUnitSpherical = CreateAsUnitSpherical();
+            m_asCartesian = CreateAsCartesian();
+            m_asUnitCartesian = CreateAsUnitCartesian();
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override DirectionListCesiumWriter Clone()
         {
             return new DirectionListCesiumWriter(this);
@@ -126,7 +126,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>delete</c>, which is whether the client should delete existing data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
+        /// Writes the value expressed as a <c>delete</c>, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteDelete(bool value)
@@ -138,59 +138,79 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>Spherical</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumSphericalListValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<IEnumerable<Spherical>> AsSpherical()
+        public CesiumSphericalListValuePropertyAdaptor<DirectionListCesiumWriter> AsSpherical()
         {
             return m_asSpherical.Value;
         }
 
-        private ICesiumValuePropertyWriter<IEnumerable<Spherical>> CreateSphericalAdaptor()
+        private Lazy<CesiumSphericalListValuePropertyAdaptor<DirectionListCesiumWriter>> CreateAsSpherical()
         {
-            return new CesiumWriterAdaptor<DirectionListCesiumWriter, IEnumerable<Spherical>>(this, (me, value) => me.WriteSpherical(value));
+            return new Lazy<CesiumSphericalListValuePropertyAdaptor<DirectionListCesiumWriter>>(CreateSphericalList, false);
+        }
+
+        private CesiumSphericalListValuePropertyAdaptor<DirectionListCesiumWriter> CreateSphericalList()
+        {
+            return CesiumValuePropertyAdaptors.CreateSphericalList(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>UnitSpherical</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumUnitSphericalListValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<IEnumerable<UnitSpherical>> AsUnitSpherical()
+        public CesiumUnitSphericalListValuePropertyAdaptor<DirectionListCesiumWriter> AsUnitSpherical()
         {
             return m_asUnitSpherical.Value;
         }
 
-        private ICesiumValuePropertyWriter<IEnumerable<UnitSpherical>> CreateUnitSphericalAdaptor()
+        private Lazy<CesiumUnitSphericalListValuePropertyAdaptor<DirectionListCesiumWriter>> CreateAsUnitSpherical()
         {
-            return new CesiumWriterAdaptor<DirectionListCesiumWriter, IEnumerable<UnitSpherical>>(this, (me, value) => me.WriteUnitSpherical(value));
+            return new Lazy<CesiumUnitSphericalListValuePropertyAdaptor<DirectionListCesiumWriter>>(CreateUnitSphericalList, false);
+        }
+
+        private CesiumUnitSphericalListValuePropertyAdaptor<DirectionListCesiumWriter> CreateUnitSphericalList()
+        {
+            return CesiumValuePropertyAdaptors.CreateUnitSphericalList(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>Cartesian</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumCartesian3ListValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<IEnumerable<Cartesian>> AsCartesian()
+        public CesiumCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter> AsCartesian()
         {
             return m_asCartesian.Value;
         }
 
-        private ICesiumValuePropertyWriter<IEnumerable<Cartesian>> CreateCartesianAdaptor()
+        private Lazy<CesiumCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter>> CreateAsCartesian()
         {
-            return new CesiumWriterAdaptor<DirectionListCesiumWriter, IEnumerable<Cartesian>>(this, (me, value) => me.WriteCartesian(value));
+            return new Lazy<CesiumCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter>>(CreateCartesian3List, false);
+        }
+
+        private CesiumCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter> CreateCartesian3List()
+        {
+            return CesiumValuePropertyAdaptors.CreateCartesian3List(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>UnitCartesian</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumUnitCartesian3ListValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<IEnumerable<UnitCartesian>> AsUnitCartesian()
+        public CesiumUnitCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter> AsUnitCartesian()
         {
             return m_asUnitCartesian.Value;
         }
 
-        private ICesiumValuePropertyWriter<IEnumerable<UnitCartesian>> CreateUnitCartesianAdaptor()
+        private Lazy<CesiumUnitCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter>> CreateAsUnitCartesian()
         {
-            return new CesiumWriterAdaptor<DirectionListCesiumWriter, IEnumerable<UnitCartesian>>(this, (me, value) => me.WriteUnitCartesian(value));
+            return new Lazy<CesiumUnitCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter>>(CreateUnitCartesian3List, false);
+        }
+
+        private CesiumUnitCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter> CreateUnitCartesian3List()
+        {
+            return CesiumValuePropertyAdaptors.CreateUnitCartesian3List(this);
         }
 
     }

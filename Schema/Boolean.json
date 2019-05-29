@@ -3,6 +3,11 @@
     "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Boolean.json",
     "title": "Boolean",
     "description": "A boolean value.",
+    "allOf": [
+        { "$ref": "DeletableProperty.json" },
+        { "$ref": "ValueProperties/BooleanValueProperty.json" },
+        { "$ref": "ValueProperties/ReferenceValueProperty.json" }
+    ],
     "type": [
         "array",
         "object",
@@ -13,18 +18,12 @@
     },
     "properties": {
         "boolean": {
-            "$ref": "BooleanValue.json",
-            "description": "The boolean value.",
-            "czmlValue": true
+            "$ref": "Values/BooleanValue.json",
+            "description": "The boolean value."
         },
         "reference": {
-            "$ref": "ReferenceValue.json",
-            "description": "The boolean specified as a reference to another property.",
-            "czmlValue": true
-        },
-        "delete": {
-            "description": "Whether the client should delete existing data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.",
-            "type": "boolean"
+            "$ref": "Values/ReferenceValue.json",
+            "description": "The boolean specified as a reference to another property."
         }
     }
 }

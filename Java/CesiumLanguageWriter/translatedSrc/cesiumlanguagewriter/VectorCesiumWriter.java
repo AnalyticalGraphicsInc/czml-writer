@@ -191,7 +191,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShowPropertyReference(String value) {
         {
@@ -473,7 +473,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeColorPropertyReference(String value) {
         {
@@ -529,7 +529,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     }
 
     /**
-    *  Gets the writer for the {@code direction} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code direction} property defines the direction of the vector. This value is required.
+    *  Gets the writer for the {@code direction} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code direction} property defines the direction of the vector. This value must be specified in order for the client to display graphics.
     
 
     */
@@ -540,7 +540,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Opens and returns the writer for the {@code direction} property. The {@code direction} property defines the direction of the vector. This value is required.
+    Opens and returns the writer for the {@code direction} property. The {@code direction} property defines the direction of the vector. This value must be specified in order for the client to display graphics.
     
 
     */
@@ -552,7 +552,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code direction} property as a {@code spherical} value. The {@code direction} property specifies the direction of the vector. This value is required.
+    Writes a value for the {@code direction} property as a {@code spherical} value. The {@code direction} property specifies the direction of the vector. This value must be specified in order for the client to display graphics.
     
     
 
@@ -571,7 +571,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code direction} property as a {@code spherical} value. The {@code direction} property specifies the direction of the vector. This value is required.
+    Writes a value for the {@code direction} property as a {@code spherical} value. The {@code direction} property specifies the direction of the vector. This value must be specified in order for the client to display graphics.
     
     
     
@@ -592,7 +592,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code direction} property as a {@code spherical} value. The {@code direction} property specifies the direction of the vector. This value is required.
+    Writes a value for the {@code direction} property as a {@code spherical} value. The {@code direction} property specifies the direction of the vector. This value must be specified in order for the client to display graphics.
     
     
     
@@ -617,7 +617,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code direction} property as a {@code unitSpherical} value. The {@code direction} property specifies the direction of the vector. This value is required.
+    Writes a value for the {@code direction} property as a {@code unitSpherical} value. The {@code direction} property specifies the direction of the vector. This value must be specified in order for the client to display graphics.
     
     
 
@@ -636,7 +636,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code direction} property as a {@code unitSpherical} value. The {@code direction} property specifies the direction of the vector. This value is required.
+    Writes a value for the {@code direction} property as a {@code unitSpherical} value. The {@code direction} property specifies the direction of the vector. This value must be specified in order for the client to display graphics.
     
     
     
@@ -657,7 +657,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code direction} property as a {@code unitSpherical} value. The {@code direction} property specifies the direction of the vector. This value is required.
+    Writes a value for the {@code direction} property as a {@code unitSpherical} value. The {@code direction} property specifies the direction of the vector. This value must be specified in order for the client to display graphics.
     
     
     
@@ -682,7 +682,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code direction} property as a {@code cartesian} value. The {@code direction} property specifies the direction of the vector. This value is required.
+    Writes a value for the {@code direction} property as a {@code cartesian} value. The {@code direction} property specifies the direction of the vector. This value must be specified in order for the client to display graphics.
     
     
 
@@ -701,7 +701,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code direction} property as a {@code cartesian} value. The {@code direction} property specifies the direction of the vector. This value is required.
+    Writes a value for the {@code direction} property as a {@code cartesian} value. The {@code direction} property specifies the direction of the vector. This value must be specified in order for the client to display graphics.
     
     
     
@@ -722,7 +722,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code direction} property as a {@code cartesian} value. The {@code direction} property specifies the direction of the vector. This value is required.
+    Writes a value for the {@code direction} property as a {@code cartesian} value. The {@code direction} property specifies the direction of the vector. This value must be specified in order for the client to display graphics.
     
     
     
@@ -747,7 +747,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code direction} property as a {@code unitCartesian} value. The {@code direction} property specifies the direction of the vector. This value is required.
+    Writes a value for the {@code direction} property as a {@code unitCartesian} value. The {@code direction} property specifies the direction of the vector. This value must be specified in order for the client to display graphics.
     
     
 
@@ -766,7 +766,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code direction} property as a {@code unitCartesian} value. The {@code direction} property specifies the direction of the vector. This value is required.
+    Writes a value for the {@code direction} property as a {@code unitCartesian} value. The {@code direction} property specifies the direction of the vector. This value must be specified in order for the client to display graphics.
     
     
     
@@ -787,7 +787,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code direction} property as a {@code unitCartesian} value. The {@code direction} property specifies the direction of the vector. This value is required.
+    Writes a value for the {@code direction} property as a {@code unitCartesian} value. The {@code direction} property specifies the direction of the vector. This value must be specified in order for the client to display graphics.
     
     
     
@@ -812,7 +812,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code direction} property as a {@code reference} value. The {@code direction} property specifies the direction of the vector. This value is required.
+    Writes a value for the {@code direction} property as a {@code reference} value. The {@code direction} property specifies the direction of the vector. This value must be specified in order for the client to display graphics.
     
     
 
@@ -831,11 +831,11 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code direction} property as a {@code reference} value. The {@code direction} property specifies the direction of the vector. This value is required.
+    Writes a value for the {@code direction} property as a {@code reference} value. The {@code direction} property specifies the direction of the vector. This value must be specified in order for the client to display graphics.
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeDirectionPropertyReference(String value) {
         {
@@ -850,7 +850,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code direction} property as a {@code reference} value. The {@code direction} property specifies the direction of the vector. This value is required.
+    Writes a value for the {@code direction} property as a {@code reference} value. The {@code direction} property specifies the direction of the vector. This value must be specified in order for the client to display graphics.
     
     
     
@@ -871,7 +871,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
 
     /**
     *  
-    Writes a value for the {@code direction} property as a {@code reference} value. The {@code direction} property specifies the direction of the vector. This value is required.
+    Writes a value for the {@code direction} property as a {@code reference} value. The {@code direction} property specifies the direction of the vector. This value must be specified in order for the client to display graphics.
     
     
     
@@ -1002,7 +1002,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeLengthPropertyReference(String value) {
         {
@@ -1169,7 +1169,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeMinimumLengthInPixelsPropertyReference(String value) {
         {

@@ -1,0 +1,8 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Values/Cartesian3VelocityValue.json",
+    "title": "Cartesian3Velocity",
+    "description": "A three-dimensional Cartesian value and its derivative specified as `[X, Y, Z, dX, dY, dZ]`. If the array has six elements, the value is constant. If it has seven or more elements, they are time-tagged samples arranged as `[Time, X, Y, Z, dX, dY, dZ, Time, X, Y, Z, dX, dY, dZ, ...]`, where Time is an ISO 8601 date and time string or seconds since epoch.",
+    "type": "array",
+    "czmlValue": true
+}

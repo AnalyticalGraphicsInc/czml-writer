@@ -5,7 +5,6 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
-import cesiumlanguagewriter.Reference;
 import javax.annotation.Nonnull;
 
 /**
@@ -19,7 +18,7 @@ import javax.annotation.Nonnull;
         "deprecation",
         "serial"
 })
-public class BooleanCesiumWriter extends CesiumPropertyWriter<BooleanCesiumWriter> {
+public class BooleanCesiumWriter extends CesiumPropertyWriter<BooleanCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumBooleanValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     *  
     The name of the {@code boolean} property.
@@ -41,8 +40,8 @@ public class BooleanCesiumWriter extends CesiumPropertyWriter<BooleanCesiumWrite
 
     */
     public static final String DeletePropertyName = "delete";
-    private Lazy<ICesiumValuePropertyWriter<Boolean>> m_asBoolean;
-    private Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
+    private Lazy<CesiumBooleanValuePropertyAdaptor<BooleanCesiumWriter>> m_asBoolean;
+    private Lazy<CesiumReferenceValuePropertyAdaptor<BooleanCesiumWriter>> m_asReference;
 
     /**
     *  
@@ -54,18 +53,8 @@ public class BooleanCesiumWriter extends CesiumPropertyWriter<BooleanCesiumWrite
     */
     public BooleanCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
-        m_asBoolean = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Boolean>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Boolean>>(this,
-                "createBooleanAdaptor") {
-            public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Boolean> invoke() {
-                return createBooleanAdaptor();
-            }
-        }, false);
-        m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor") {
-            public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
-                return createReferenceAdaptor();
-            }
-        }, false);
+        m_asBoolean = createAsBoolean();
+        m_asReference = createAsReference();
     }
 
     /**
@@ -78,18 +67,8 @@ public class BooleanCesiumWriter extends CesiumPropertyWriter<BooleanCesiumWrite
     */
     protected BooleanCesiumWriter(@Nonnull BooleanCesiumWriter existingInstance) {
         super(existingInstance);
-        m_asBoolean = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Boolean>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Boolean>>(this,
-                "createBooleanAdaptor") {
-            public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Boolean> invoke() {
-                return createBooleanAdaptor();
-            }
-        }, false);
-        m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor") {
-            public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
-                return createReferenceAdaptor();
-            }
-        }, false);
+        m_asBoolean = createAsBoolean();
+        m_asReference = createAsReference();
     }
 
     /**
@@ -146,7 +125,7 @@ public class BooleanCesiumWriter extends CesiumPropertyWriter<BooleanCesiumWrite
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeReference(String value) {
         final String PropertyName = ReferencePropertyName;
@@ -191,7 +170,7 @@ public class BooleanCesiumWriter extends CesiumPropertyWriter<BooleanCesiumWrite
 
     /**
     *  
-    Writes the value expressed as a {@code delete}, which is whether the client should delete existing data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
+    Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
     
     
 
@@ -206,42 +185,51 @@ public class BooleanCesiumWriter extends CesiumPropertyWriter<BooleanCesiumWrite
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Boolean} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumBooleanValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
     * @return The wrapper.
     */
-    public final ICesiumValuePropertyWriter<Boolean> asBoolean() {
+    public final CesiumBooleanValuePropertyAdaptor<BooleanCesiumWriter> asBoolean() {
         return m_asBoolean.getValue();
     }
 
-    private final ICesiumValuePropertyWriter<Boolean> createBooleanAdaptor() {
-        return new CesiumWriterAdaptor<cesiumlanguagewriter.BooleanCesiumWriter, Boolean>(this, new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.BooleanCesiumWriter, Boolean>() {
-            public void invoke(BooleanCesiumWriter me, Boolean value) {
-                me.writeBoolean(value);
-            }
-        });
+    private final Lazy<CesiumBooleanValuePropertyAdaptor<BooleanCesiumWriter>> createAsBoolean() {
+        return new Lazy<cesiumlanguagewriter.advanced.CesiumBooleanValuePropertyAdaptor<BooleanCesiumWriter>>(
+                new Func1<cesiumlanguagewriter.advanced.CesiumBooleanValuePropertyAdaptor<BooleanCesiumWriter>>(this, "createBoolean") {
+                    public cesiumlanguagewriter.advanced.CesiumBooleanValuePropertyAdaptor<BooleanCesiumWriter> invoke() {
+                        return createBoolean();
+                    }
+                }, false);
+    }
+
+    private final CesiumBooleanValuePropertyAdaptor<BooleanCesiumWriter> createBoolean() {
+        return CesiumValuePropertyAdaptors.<BooleanCesiumWriter> createBoolean(this);
     }
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
     * @return The wrapper.
     */
-    public final ICesiumValuePropertyWriter<Reference> asReference() {
+    public final CesiumReferenceValuePropertyAdaptor<BooleanCesiumWriter> asReference() {
         return m_asReference.getValue();
     }
 
-    private final ICesiumValuePropertyWriter<Reference> createReferenceAdaptor() {
-        return new CesiumWriterAdaptor<cesiumlanguagewriter.BooleanCesiumWriter, cesiumlanguagewriter.Reference>(this,
-                new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.BooleanCesiumWriter, cesiumlanguagewriter.Reference>() {
-                    public void invoke(BooleanCesiumWriter me, Reference value) {
-                        me.writeReference(value);
+    private final Lazy<CesiumReferenceValuePropertyAdaptor<BooleanCesiumWriter>> createAsReference() {
+        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<BooleanCesiumWriter>>(
+                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<BooleanCesiumWriter>>(this, "createReference") {
+                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<BooleanCesiumWriter> invoke() {
+                        return createReference();
                     }
-                });
+                }, false);
+    }
+
+    private final CesiumReferenceValuePropertyAdaptor<BooleanCesiumWriter> createReference() {
+        return CesiumValuePropertyAdaptors.<BooleanCesiumWriter> createReference(this);
     }
 }

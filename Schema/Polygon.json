@@ -3,13 +3,7 @@
     "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Polygon.json",
     "title": "Polygon",
     "description": "A polygon, which is a closed figure on the surface of the Earth.",
-    "type": [
-        "array",
-        "object"
-    ],
-    "items": {
-        "$ref": "#"
-    },
+    "type": "object",
     "properties": {
         "show": {
             "$ref": "Boolean.json",
@@ -18,7 +12,8 @@
         },
         "positions": {
             "$ref": "PositionList.json",
-            "description": "The array of positions defining a simple polygon."
+            "description": "The array of positions defining a simple polygon.",
+            "czmlRequiredForDisplay": true
         },
         "arcType": {
             "$ref": "ArcType.json",
@@ -108,8 +103,5 @@
             "description": "The z-index of the polygon, used for ordering ground geometry. Only has an effect if the polygon is constant, and `height` and `extrudedHeight` are not specified.",
             "default": "0"
         }
-    },
-    "required": [
-        "positions"
-    ]
+    }
 }

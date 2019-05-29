@@ -10,9 +10,9 @@ using JetBrains.Annotations;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>HorizontalOrigin</c> to a <see cref="CesiumOutputStream" />. A <c>HorizontalOrigin</c> is the horizontal origin of an element, which can optionally vary over time. It controls whether the element is left-, center-, or right-aligned with the <c>position</c>.
+    /// Writes a <c>HorizontalOrigin</c> to a <see cref="CesiumOutputStream"/>. A <c>HorizontalOrigin</c> is the horizontal origin of an element, which can optionally vary over time. It controls whether the element is left-, center-, or right-aligned with the <c>position</c>.
     /// </summary>
-    public class HorizontalOriginCesiumWriter : CesiumPropertyWriter<HorizontalOriginCesiumWriter>
+    public class HorizontalOriginCesiumWriter : CesiumPropertyWriter<HorizontalOriginCesiumWriter>, ICesiumDeletablePropertyWriter, ICesiumHorizontalOriginValuePropertyWriter, ICesiumReferenceValuePropertyWriter
     {
         /// <summary>
         /// The name of the <c>horizontalOrigin</c> property.
@@ -29,8 +29,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string DeletePropertyName = "delete";
 
-        private readonly Lazy<ICesiumValuePropertyWriter<CesiumHorizontalOrigin>> m_asHorizontalOrigin;
-        private readonly Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
+        private readonly Lazy<CesiumHorizontalOriginValuePropertyAdaptor<HorizontalOriginCesiumWriter>> m_asHorizontalOrigin;
+        private readonly Lazy<CesiumReferenceValuePropertyAdaptor<HorizontalOriginCesiumWriter>> m_asReference;
 
         /// <summary>
         /// Initializes a new instance.
@@ -39,8 +39,8 @@ namespace CesiumLanguageWriter
         public HorizontalOriginCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
-            m_asHorizontalOrigin = new Lazy<ICesiumValuePropertyWriter<CesiumHorizontalOrigin>>(CreateHorizontalOriginAdaptor, false);
-            m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
+            m_asHorizontalOrigin = CreateAsHorizontalOrigin();
+            m_asReference = CreateAsReference();
         }
 
         /// <summary>
@@ -50,11 +50,11 @@ namespace CesiumLanguageWriter
         protected HorizontalOriginCesiumWriter([NotNull] HorizontalOriginCesiumWriter existingInstance)
             : base(existingInstance)
         {
-            m_asHorizontalOrigin = new Lazy<ICesiumValuePropertyWriter<CesiumHorizontalOrigin>>(CreateHorizontalOriginAdaptor, false);
-            m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
+            m_asHorizontalOrigin = CreateAsHorizontalOrigin();
+            m_asReference = CreateAsReference();
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override HorizontalOriginCesiumWriter Clone()
         {
             return new HorizontalOriginCesiumWriter(this);
@@ -93,7 +93,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes the value expressed as a <c>reference</c>, which is the horizontal origin specified as a reference to another property.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteReference(string value)
         {
             const string PropertyName = ReferencePropertyName;
@@ -129,7 +129,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>delete</c>, which is whether the client should delete existing data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
+        /// Writes the value expressed as a <c>delete</c>, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteDelete(bool value)
@@ -141,31 +141,41 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>HorizontalOrigin</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumHorizontalOriginValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<CesiumHorizontalOrigin> AsHorizontalOrigin()
+        public CesiumHorizontalOriginValuePropertyAdaptor<HorizontalOriginCesiumWriter> AsHorizontalOrigin()
         {
             return m_asHorizontalOrigin.Value;
         }
 
-        private ICesiumValuePropertyWriter<CesiumHorizontalOrigin> CreateHorizontalOriginAdaptor()
+        private Lazy<CesiumHorizontalOriginValuePropertyAdaptor<HorizontalOriginCesiumWriter>> CreateAsHorizontalOrigin()
         {
-            return new CesiumWriterAdaptor<HorizontalOriginCesiumWriter, CesiumHorizontalOrigin>(this, (me, value) => me.WriteHorizontalOrigin(value));
+            return new Lazy<CesiumHorizontalOriginValuePropertyAdaptor<HorizontalOriginCesiumWriter>>(CreateHorizontalOrigin, false);
+        }
+
+        private CesiumHorizontalOriginValuePropertyAdaptor<HorizontalOriginCesiumWriter> CreateHorizontalOrigin()
+        {
+            return CesiumValuePropertyAdaptors.CreateHorizontalOrigin(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>Reference</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumReferenceValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<Reference> AsReference()
+        public CesiumReferenceValuePropertyAdaptor<HorizontalOriginCesiumWriter> AsReference()
         {
             return m_asReference.Value;
         }
 
-        private ICesiumValuePropertyWriter<Reference> CreateReferenceAdaptor()
+        private Lazy<CesiumReferenceValuePropertyAdaptor<HorizontalOriginCesiumWriter>> CreateAsReference()
         {
-            return new CesiumWriterAdaptor<HorizontalOriginCesiumWriter, Reference>(this, (me, value) => me.WriteReference(value));
+            return new Lazy<CesiumReferenceValuePropertyAdaptor<HorizontalOriginCesiumWriter>>(CreateReference, false);
+        }
+
+        private CesiumReferenceValuePropertyAdaptor<HorizontalOriginCesiumWriter> CreateReference()
+        {
+            return CesiumValuePropertyAdaptors.CreateReference(this);
         }
 
     }

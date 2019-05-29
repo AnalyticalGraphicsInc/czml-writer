@@ -3,6 +3,11 @@
     "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/VerticalOrigin.json",
     "title": "VerticalOrigin",
     "description": "The vertical origin of an element, which can optionally vary over time. It controls whether the element is bottom-, center-, or top-aligned with the `position`.",
+    "allOf": [
+        { "$ref": "DeletableProperty.json" },
+        { "$ref": "ValueProperties/VerticalOriginValueProperty.json" },
+        { "$ref": "ValueProperties/ReferenceValueProperty.json" }
+    ],
     "type": [
         "array",
         "object",
@@ -13,18 +18,12 @@
     },
     "properties": {
         "verticalOrigin": {
-            "$ref": "VerticalOriginValue.json",
-            "description": "The vertical origin.",
-            "czmlValue": true
+            "$ref": "Values/VerticalOriginValue.json",
+            "description": "The vertical origin."
         },
         "reference": {
-            "$ref": "ReferenceValue.json",
-            "description": "The vertical origin specified as a reference to another property.",
-            "czmlValue": true
-        },
-        "delete": {
-            "description": "Whether the client should delete existing data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.",
-            "type": "boolean"
+            "$ref": "Values/ReferenceValue.json",
+            "description": "The vertical origin specified as a reference to another property."
         }
     }
 }

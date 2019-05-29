@@ -12,7 +12,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>CheckerboardMaterial</c> to a <see cref="CesiumOutputStream" />. A <c>CheckerboardMaterial</c> is a material that fills the surface with a checkerboard pattern.
+    /// Writes a <c>CheckerboardMaterial</c> to a <see cref="CesiumOutputStream"/>. A <c>CheckerboardMaterial</c> is a material that fills the surface with a checkerboard pattern.
     /// </summary>
     public class CheckerboardMaterialCesiumWriter : CesiumPropertyWriter<CheckerboardMaterialCesiumWriter>
     {
@@ -53,7 +53,7 @@ namespace CesiumLanguageWriter
         {
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override CheckerboardMaterialCesiumWriter Clone()
         {
             return new CheckerboardMaterialCesiumWriter(this);
@@ -203,7 +203,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>evenColor</c> property as a <c>reference</c> value. The <c>evenColor</c> property specifies the even color. If not specified, the default value is white.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteEvenColorPropertyReference(string value)
         {
             using (var writer = OpenEvenColorProperty())
@@ -382,7 +382,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>oddColor</c> property as a <c>reference</c> value. The <c>oddColor</c> property specifies the odd color. If not specified, the default value is black.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteOddColorPropertyReference(string value)
         {
             using (var writer = OpenOddColorProperty())
@@ -504,7 +504,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>repeat</c> property as a <c>reference</c> value. The <c>repeat</c> property specifies the number of times the tiles repeat along each axis. If not specified, the default value is [2, 2].
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteRepeatPropertyReference(string value)
         {
             using (var writer = OpenRepeatProperty())

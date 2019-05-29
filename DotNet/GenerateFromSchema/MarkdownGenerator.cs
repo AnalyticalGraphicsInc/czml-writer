@@ -50,12 +50,12 @@ namespace GenerateFromSchema
                     output.WriteLine();
                 }
 
-                if (schema.Extends != null)
+                foreach (var extends in schema.Extends.Where(s => s.Properties.Any()))
                 {
-                    output.WriteLine("**Extends**: [[{0}]]", schema.Extends.Name);
+                    output.WriteLine("**Extends**: [[{0}]]", extends.Name);
                     output.WriteLine();
 
-                    Generate(schema.Extends);
+                    Generate(extends);
                 }
 
                 if (isValue)
@@ -95,12 +95,12 @@ namespace GenerateFromSchema
                     }
                 }
 
-                if (schema.Properties.Count > 0)
+                if (schema.AllProperties.Any())
                 {
                     output.WriteLine("## Properties");
                     output.WriteLine();
 
-                    foreach (Property property in schema.Properties)
+                    foreach (var property in schema.Properties)
                     {
                         Schema propertyValueType = property.ValueType;
                         string type =
@@ -109,7 +109,7 @@ namespace GenerateFromSchema
                                 : string.Format("[[{0}{1}]]", propertyValueType.Name, property.IsValue ? "Value" : "");
 
                         output.Write("**{0}** - {1}", property.Name, type);
-                        if (property.IsRequired)
+                        if (property.IsRequiredForDisplay)
                         {
                             output.Write(" - **Required**");
                         }
@@ -124,12 +124,18 @@ namespace GenerateFromSchema
                         {
                             string defaultValue;
 
-                            if (defaultToken.Type == JTokenType.Boolean)
-                                defaultValue = defaultToken.Value<bool>() ? "true" : "false";
-                            else if (defaultToken.Type == JTokenType.Float)
-                                defaultValue = defaultToken.Value<double>().ToString("0.0###############", CultureInfo.InvariantCulture);
-                            else
-                                defaultValue = defaultToken.Value<string>();
+                            switch (defaultToken.Type)
+                            {
+                                case JTokenType.Boolean:
+                                    defaultValue = defaultToken.Value<bool>() ? "true" : "false";
+                                    break;
+                                case JTokenType.Float:
+                                    defaultValue = defaultToken.Value<double>().ToString("0.0###############", CultureInfo.InvariantCulture);
+                                    break;
+                                default:
+                                    defaultValue = defaultToken.Value<string>();
+                                    break;
+                            }
 
                             output.WriteLine("Default: `{0}`", defaultValue);
                             output.WriteLine();

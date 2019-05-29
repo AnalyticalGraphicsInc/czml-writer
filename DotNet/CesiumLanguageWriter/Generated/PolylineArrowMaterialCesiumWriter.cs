@@ -12,7 +12,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>PolylineArrowMaterial</c> to a <see cref="CesiumOutputStream" />. A <c>PolylineArrowMaterial</c> is a material that fills the surface of a line with an arrow.
+    /// Writes a <c>PolylineArrowMaterial</c> to a <see cref="CesiumOutputStream"/>. A <c>PolylineArrowMaterial</c> is a material that fills the surface of a line with an arrow.
     /// </summary>
     public class PolylineArrowMaterialCesiumWriter : CesiumPropertyWriter<PolylineArrowMaterialCesiumWriter>
     {
@@ -41,7 +41,7 @@ namespace CesiumLanguageWriter
         {
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override PolylineArrowMaterialCesiumWriter Clone()
         {
             return new PolylineArrowMaterialCesiumWriter(this);
@@ -191,7 +191,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>color</c> property as a <c>reference</c> value. The <c>color</c> property specifies the color of the surface. If not specified, the default value is white.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteColorPropertyReference(string value)
         {
             using (var writer = OpenColorProperty())

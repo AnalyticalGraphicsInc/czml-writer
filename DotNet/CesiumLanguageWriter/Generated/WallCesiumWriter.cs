@@ -12,7 +12,7 @@ using System.Drawing;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>Wall</c> to a <see cref="CesiumOutputStream" />. A <c>Wall</c> is a two dimensional wall defined as a line strip and optional maximum and minimum heights, which conforms to the curvature of the globe and can be placed along the surface or at altitude.
+    /// Writes a <c>Wall</c> to a <see cref="CesiumOutputStream"/>. A <c>Wall</c> is a two dimensional wall defined as a line strip and optional maximum and minimum heights, which conforms to the curvature of the globe and can be placed along the surface or at altitude.
     /// </summary>
     public class WallCesiumWriter : CesiumPropertyWriter<WallCesiumWriter>
     {
@@ -107,7 +107,7 @@ namespace CesiumLanguageWriter
         {
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override WallCesiumWriter Clone()
         {
             return new WallCesiumWriter(this);
@@ -159,7 +159,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>show</c> property as a <c>reference</c> value. The <c>show</c> property specifies whether or not the wall is shown. If not specified, the default value is <see langword="true"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteShowPropertyReference(string value)
         {
             using (var writer = OpenShowProperty())
@@ -195,7 +195,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>positions</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>positions</c> property defines the array of positions defining the centerline of the wall. This value is required.
+        /// Gets the writer for the <c>positions</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>positions</c> property defines the array of positions defining the centerline of the wall. This value must be specified in order for the client to display graphics.
         /// </summary>
         [NotNull]
         public PositionListCesiumWriter PositionsWriter
@@ -204,7 +204,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>positions</c> property. The <c>positions</c> property defines the array of positions defining the centerline of the wall. This value is required.
+        /// Opens and returns the writer for the <c>positions</c> property. The <c>positions</c> property defines the array of positions defining the centerline of the wall. This value must be specified in order for the client to display graphics.
         /// </summary>
         [NotNull]
         public PositionListCesiumWriter OpenPositionsProperty()
@@ -214,7 +214,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>positions</c> property as a <c>cartesian</c> value. The <c>positions</c> property specifies the array of positions defining the centerline of the wall. This value is required.
+        /// Writes a value for the <c>positions</c> property as a <c>cartesian</c> value. The <c>positions</c> property specifies the array of positions defining the centerline of the wall. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="values">The values.</param>
         public void WritePositionsProperty(IEnumerable<Cartesian> values)
@@ -226,7 +226,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>positions</c> property as a <c>cartographicRadians</c> value. The <c>positions</c> property specifies the array of positions defining the centerline of the wall. This value is required.
+        /// Writes a value for the <c>positions</c> property as a <c>cartographicRadians</c> value. The <c>positions</c> property specifies the array of positions defining the centerline of the wall. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="values">The values.</param>
         public void WritePositionsPropertyCartographicRadians(IEnumerable<Cartographic> values)
@@ -238,7 +238,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>positions</c> property as a <c>cartographicDegrees</c> value. The <c>positions</c> property specifies the array of positions defining the centerline of the wall. This value is required.
+        /// Writes a value for the <c>positions</c> property as a <c>cartographicDegrees</c> value. The <c>positions</c> property specifies the array of positions defining the centerline of the wall. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="values">The values.</param>
         public void WritePositionsPropertyCartographicDegrees(IEnumerable<Cartographic> values)
@@ -250,7 +250,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>positions</c> property as a <c>references</c> value. The <c>positions</c> property specifies the array of positions defining the centerline of the wall. This value is required.
+        /// Writes a value for the <c>positions</c> property as a <c>references</c> value. The <c>positions</c> property specifies the array of positions defining the centerline of the wall. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="references">The list of references.</param>
         public void WritePositionsPropertyReferences(IEnumerable<Reference> references)
@@ -421,7 +421,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>granularity</c> property as a <c>reference</c> value. The <c>granularity</c> property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteGranularityPropertyReference(string value)
         {
             using (var writer = OpenGranularityProperty())
@@ -502,7 +502,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>fill</c> property as a <c>reference</c> value. The <c>fill</c> property specifies whether or not the wall is filled. If not specified, the default value is <see langword="true"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteFillPropertyReference(string value)
         {
             using (var writer = OpenFillProperty())
@@ -602,7 +602,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>outline</c> property as a <c>reference</c> value. The <c>outline</c> property specifies whether or not the wall is outlined. If not specified, the default value is <see langword="false"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteOutlinePropertyReference(string value)
         {
             using (var writer = OpenOutlineProperty())
@@ -781,7 +781,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value. The <c>outlineColor</c> property specifies the color of the wall outline. If not specified, the default value is black.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteOutlineColorPropertyReference(string value)
         {
             using (var writer = OpenOutlineColorProperty())
@@ -890,7 +890,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value. The <c>outlineWidth</c> property specifies the width of the wall outline. If not specified, the default value is 1.0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteOutlineWidthPropertyReference(string value)
         {
             using (var writer = OpenOutlineWidthProperty())
@@ -971,7 +971,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>shadows</c> property as a <c>reference</c> value. The <c>shadows</c> property specifies whether or not the wall casts or receives shadows. If not specified, the default value is DISABLED.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteShadowsPropertyReference(string value)
         {
             using (var writer = OpenShadowsProperty())
@@ -1093,7 +1093,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>distanceDisplayCondition</c> property as a <c>reference</c> value. The <c>distanceDisplayCondition</c> property specifies the display condition specifying at what distance from the camera this wall will be displayed.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteDistanceDisplayConditionPropertyReference(string value)
         {
             using (var writer = OpenDistanceDisplayConditionProperty())

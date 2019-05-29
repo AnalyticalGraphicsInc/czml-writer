@@ -3,13 +3,7 @@
     "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Corridor.json",
     "title": "Corridor",
     "description": "A corridor, which is a shape defined by a centerline and width that conforms to the curvature of the globe. It can be placed on the surface or at altitude and can optionally be extruded into a volume.",
-    "type": [
-        "array",
-        "object"
-    ],
-    "items": {
-        "$ref": "#"
-    },
+    "type": "object",
     "properties": {
         "show": {
             "$ref": "Boolean.json",
@@ -18,11 +12,13 @@
         },
         "positions": {
             "$ref": "PositionList.json",
-            "description": "The array of positions defining the centerline of the corridor."
+            "description": "The array of positions defining the centerline of the corridor.",
+            "czmlRequiredForDisplay": true
         },
         "width": {
             "$ref": "Double.json",
-            "description": "The width of the corridor, which is the distance between the edges of the corridor."
+            "description": "The width of the corridor, which is the distance between the edges of the corridor.",
+            "czmlRequiredForDisplay": true
         },
         "height": {
             "$ref": "Double.json",
@@ -92,9 +88,5 @@
             "description": "The z-index of the corridor, used for ordering ground geometry. Only has an effect if the corridor is constant, and `height` and `extrudedHeight` are not specified.",
             "default": "0"
         }
-    },
-    "required": [
-        "positions",
-        "width"
-    ]
+    }
 }

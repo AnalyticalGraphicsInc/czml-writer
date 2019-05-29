@@ -71,7 +71,7 @@ namespace GenerateFromSchema
             m_writer.WriteLine(format, args);
         }
 
-        public class CodeScope : IDisposable
+        public sealed class CodeScope : IDisposable
         {
             private readonly CodeWriter m_codeWriter;
 

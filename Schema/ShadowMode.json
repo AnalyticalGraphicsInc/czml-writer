@@ -3,6 +3,11 @@
     "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/ShadowMode.json",
     "title": "ShadowMode",
     "description": "Whether or not an object casts or receives shadows from each light source when shadows are enabled.",
+    "allOf": [
+        { "$ref": "DeletableProperty.json" },
+        { "$ref": "ValueProperties/ShadowModeValueProperty.json" },
+        { "$ref": "ValueProperties/ReferenceValueProperty.json" }
+    ],
     "type": [
         "array",
         "object",
@@ -13,18 +18,12 @@
     },
     "properties": {
         "shadowMode": {
-            "$ref": "ShadowModeValue.json",
-            "description": "The shadow mode.",
-            "czmlValue": true
+            "$ref": "Values/ShadowModeValue.json",
+            "description": "The shadow mode."
         },
         "reference": {
-            "$ref": "ReferenceValue.json",
-            "description": "The shadow mode specified as a reference to another property.",
-            "czmlValue": true
-        },
-        "delete": {
-            "description": "Whether the client should delete existing data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.",
-            "type": "boolean"
+            "$ref": "Values/ReferenceValue.json",
+            "description": "The shadow mode specified as a reference to another property."
         }
     }
 }

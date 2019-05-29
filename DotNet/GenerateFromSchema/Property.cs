@@ -21,8 +21,14 @@ namespace GenerateFromSchema
 
         public List<string> Examples { get; set; }
 
-        public bool IsValue { get; set; }
-        public bool IsRequired { get; set; }
+        public bool IsValue => ValueType.IsValue;
+
+        /// <summary>
+        /// Indicates that the value must be provided in order for Cesium
+        /// to display the graphics.  Because packets can be partial, a valid packet
+        /// can omit these properties, so they are not "required" in the schema.
+        /// </summary>
+        public bool IsRequiredForDisplay { get; set; }
 
         public string NameWithPascalCase
         {

@@ -12,7 +12,7 @@ using System.Drawing;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>Ellipse</c> to a <see cref="CesiumOutputStream" />. A <c>Ellipse</c> is an ellipse, which is a closed curve on or above the surface of the Earth.
+    /// Writes a <c>Ellipse</c> to a <see cref="CesiumOutputStream"/>. A <c>Ellipse</c> is an ellipse, which is a closed curve on or above the surface of the Earth.
     /// </summary>
     public class EllipseCesiumWriter : CesiumPropertyWriter<EllipseCesiumWriter>
     {
@@ -149,7 +149,7 @@ namespace CesiumLanguageWriter
         {
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override EllipseCesiumWriter Clone()
         {
             return new EllipseCesiumWriter(this);
@@ -201,7 +201,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>show</c> property as a <c>reference</c> value. The <c>show</c> property specifies whether or not the ellipse is shown. If not specified, the default value is <see langword="true"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteShowPropertyReference(string value)
         {
             using (var writer = OpenShowProperty())
@@ -237,7 +237,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>semiMajorAxis</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>semiMajorAxis</c> property defines the length of the ellipse's semi-major axis in meters. This value is required.
+        /// Gets the writer for the <c>semiMajorAxis</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>semiMajorAxis</c> property defines the length of the ellipse's semi-major axis in meters. This value must be specified in order for the client to display graphics.
         /// </summary>
         [NotNull]
         public DoubleCesiumWriter SemiMajorAxisWriter
@@ -246,7 +246,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>semiMajorAxis</c> property. The <c>semiMajorAxis</c> property defines the length of the ellipse's semi-major axis in meters. This value is required.
+        /// Opens and returns the writer for the <c>semiMajorAxis</c> property. The <c>semiMajorAxis</c> property defines the length of the ellipse's semi-major axis in meters. This value must be specified in order for the client to display graphics.
         /// </summary>
         [NotNull]
         public DoubleCesiumWriter OpenSemiMajorAxisProperty()
@@ -256,7 +256,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>semiMajorAxis</c> property as a <c>number</c> value. The <c>semiMajorAxis</c> property specifies the length of the ellipse's semi-major axis in meters. This value is required.
+        /// Writes a value for the <c>semiMajorAxis</c> property as a <c>number</c> value. The <c>semiMajorAxis</c> property specifies the length of the ellipse's semi-major axis in meters. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteSemiMajorAxisProperty(double value)
@@ -268,7 +268,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>semiMajorAxis</c> property as a <c>number</c> value. The <c>semiMajorAxis</c> property specifies the length of the ellipse's semi-major axis in meters. This value is required.
+        /// Writes a value for the <c>semiMajorAxis</c> property as a <c>number</c> value. The <c>semiMajorAxis</c> property specifies the length of the ellipse's semi-major axis in meters. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -281,7 +281,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>semiMajorAxis</c> property as a <c>number</c> value. The <c>semiMajorAxis</c> property specifies the length of the ellipse's semi-major axis in meters. This value is required.
+        /// Writes a value for the <c>semiMajorAxis</c> property as a <c>number</c> value. The <c>semiMajorAxis</c> property specifies the length of the ellipse's semi-major axis in meters. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -296,7 +296,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>semiMajorAxis</c> property as a <c>reference</c> value. The <c>semiMajorAxis</c> property specifies the length of the ellipse's semi-major axis in meters. This value is required.
+        /// Writes a value for the <c>semiMajorAxis</c> property as a <c>reference</c> value. The <c>semiMajorAxis</c> property specifies the length of the ellipse's semi-major axis in meters. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteSemiMajorAxisPropertyReference(Reference value)
@@ -308,9 +308,9 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>semiMajorAxis</c> property as a <c>reference</c> value. The <c>semiMajorAxis</c> property specifies the length of the ellipse's semi-major axis in meters. This value is required.
+        /// Writes a value for the <c>semiMajorAxis</c> property as a <c>reference</c> value. The <c>semiMajorAxis</c> property specifies the length of the ellipse's semi-major axis in meters. This value must be specified in order for the client to display graphics.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteSemiMajorAxisPropertyReference(string value)
         {
             using (var writer = OpenSemiMajorAxisProperty())
@@ -320,7 +320,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>semiMajorAxis</c> property as a <c>reference</c> value. The <c>semiMajorAxis</c> property specifies the length of the ellipse's semi-major axis in meters. This value is required.
+        /// Writes a value for the <c>semiMajorAxis</c> property as a <c>reference</c> value. The <c>semiMajorAxis</c> property specifies the length of the ellipse's semi-major axis in meters. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -333,7 +333,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>semiMajorAxis</c> property as a <c>reference</c> value. The <c>semiMajorAxis</c> property specifies the length of the ellipse's semi-major axis in meters. This value is required.
+        /// Writes a value for the <c>semiMajorAxis</c> property as a <c>reference</c> value. The <c>semiMajorAxis</c> property specifies the length of the ellipse's semi-major axis in meters. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -346,7 +346,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>semiMinorAxis</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>semiMinorAxis</c> property defines the length of the ellipse's semi-minor axis in meters. This value is required.
+        /// Gets the writer for the <c>semiMinorAxis</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>semiMinorAxis</c> property defines the length of the ellipse's semi-minor axis in meters. This value must be specified in order for the client to display graphics.
         /// </summary>
         [NotNull]
         public DoubleCesiumWriter SemiMinorAxisWriter
@@ -355,7 +355,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>semiMinorAxis</c> property. The <c>semiMinorAxis</c> property defines the length of the ellipse's semi-minor axis in meters. This value is required.
+        /// Opens and returns the writer for the <c>semiMinorAxis</c> property. The <c>semiMinorAxis</c> property defines the length of the ellipse's semi-minor axis in meters. This value must be specified in order for the client to display graphics.
         /// </summary>
         [NotNull]
         public DoubleCesiumWriter OpenSemiMinorAxisProperty()
@@ -365,7 +365,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>semiMinorAxis</c> property as a <c>number</c> value. The <c>semiMinorAxis</c> property specifies the length of the ellipse's semi-minor axis in meters. This value is required.
+        /// Writes a value for the <c>semiMinorAxis</c> property as a <c>number</c> value. The <c>semiMinorAxis</c> property specifies the length of the ellipse's semi-minor axis in meters. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteSemiMinorAxisProperty(double value)
@@ -377,7 +377,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>semiMinorAxis</c> property as a <c>number</c> value. The <c>semiMinorAxis</c> property specifies the length of the ellipse's semi-minor axis in meters. This value is required.
+        /// Writes a value for the <c>semiMinorAxis</c> property as a <c>number</c> value. The <c>semiMinorAxis</c> property specifies the length of the ellipse's semi-minor axis in meters. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -390,7 +390,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>semiMinorAxis</c> property as a <c>number</c> value. The <c>semiMinorAxis</c> property specifies the length of the ellipse's semi-minor axis in meters. This value is required.
+        /// Writes a value for the <c>semiMinorAxis</c> property as a <c>number</c> value. The <c>semiMinorAxis</c> property specifies the length of the ellipse's semi-minor axis in meters. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The value corresponding to each date.</param>
@@ -405,7 +405,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>semiMinorAxis</c> property as a <c>reference</c> value. The <c>semiMinorAxis</c> property specifies the length of the ellipse's semi-minor axis in meters. This value is required.
+        /// Writes a value for the <c>semiMinorAxis</c> property as a <c>reference</c> value. The <c>semiMinorAxis</c> property specifies the length of the ellipse's semi-minor axis in meters. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteSemiMinorAxisPropertyReference(Reference value)
@@ -417,9 +417,9 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>semiMinorAxis</c> property as a <c>reference</c> value. The <c>semiMinorAxis</c> property specifies the length of the ellipse's semi-minor axis in meters. This value is required.
+        /// Writes a value for the <c>semiMinorAxis</c> property as a <c>reference</c> value. The <c>semiMinorAxis</c> property specifies the length of the ellipse's semi-minor axis in meters. This value must be specified in order for the client to display graphics.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteSemiMinorAxisPropertyReference(string value)
         {
             using (var writer = OpenSemiMinorAxisProperty())
@@ -429,7 +429,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>semiMinorAxis</c> property as a <c>reference</c> value. The <c>semiMinorAxis</c> property specifies the length of the ellipse's semi-minor axis in meters. This value is required.
+        /// Writes a value for the <c>semiMinorAxis</c> property as a <c>reference</c> value. The <c>semiMinorAxis</c> property specifies the length of the ellipse's semi-minor axis in meters. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -442,7 +442,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>semiMinorAxis</c> property as a <c>reference</c> value. The <c>semiMinorAxis</c> property specifies the length of the ellipse's semi-minor axis in meters. This value is required.
+        /// Writes a value for the <c>semiMinorAxis</c> property as a <c>reference</c> value. The <c>semiMinorAxis</c> property specifies the length of the ellipse's semi-minor axis in meters. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -528,7 +528,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>height</c> property as a <c>reference</c> value. The <c>height</c> property specifies the altitude of the ellipse relative to the surface. If not specified, the default value is 0.0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteHeightPropertyReference(string value)
         {
             using (var writer = OpenHeightProperty())
@@ -637,7 +637,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>extrudedHeight</c> property as a <c>reference</c> value. The <c>extrudedHeight</c> property specifies the altitude of the ellipse's extruded face relative to the surface.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteExtrudedHeightPropertyReference(string value)
         {
             using (var writer = OpenExtrudedHeightProperty())
@@ -718,7 +718,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>heightReference</c> property as a <c>reference</c> value. The <c>heightReference</c> property specifies the height reference of the ellipse, which indicates if <c>height</c> is relative to terrain or not. If not specified, the default value is NONE.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteHeightReferencePropertyReference(string value)
         {
             using (var writer = OpenHeightReferenceProperty())
@@ -799,7 +799,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>extrudedHeightReference</c> property as a <c>reference</c> value. The <c>extrudedHeightReference</c> property specifies the extruded height reference of the ellipse, which indicates if <c>extrudedHeight</c> is relative to terrain or not. If not specified, the default value is NONE.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteExtrudedHeightReferencePropertyReference(string value)
         {
             using (var writer = OpenExtrudedHeightReferenceProperty())
@@ -908,7 +908,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>rotation</c> property as a <c>reference</c> value. The <c>rotation</c> property specifies the angle from north (counter-clockwise) in radians. If not specified, the default value is 0.0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteRotationPropertyReference(string value)
         {
             using (var writer = OpenRotationProperty())
@@ -1017,7 +1017,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>stRotation</c> property as a <c>reference</c> value. The <c>stRotation</c> property specifies the rotation of any applied texture coordinates. If not specified, the default value is 0.0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteStRotationPropertyReference(string value)
         {
             using (var writer = OpenStRotationProperty())
@@ -1126,7 +1126,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>granularity</c> property as a <c>reference</c> value. The <c>granularity</c> property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteGranularityPropertyReference(string value)
         {
             using (var writer = OpenGranularityProperty())
@@ -1207,7 +1207,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>fill</c> property as a <c>reference</c> value. The <c>fill</c> property specifies whether or not the ellipse is filled. If not specified, the default value is <see langword="true"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteFillPropertyReference(string value)
         {
             using (var writer = OpenFillProperty())
@@ -1307,7 +1307,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>outline</c> property as a <c>reference</c> value. The <c>outline</c> property specifies whether or not the ellipse is outlined. If not specified, the default value is <see langword="false"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteOutlinePropertyReference(string value)
         {
             using (var writer = OpenOutlineProperty())
@@ -1486,7 +1486,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value. The <c>outlineColor</c> property specifies the color of the ellipse outline. If not specified, the default value is black.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteOutlineColorPropertyReference(string value)
         {
             using (var writer = OpenOutlineColorProperty())
@@ -1595,7 +1595,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value. The <c>outlineWidth</c> property specifies the width of the ellipse outline. If not specified, the default value is 1.0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteOutlineWidthPropertyReference(string value)
         {
             using (var writer = OpenOutlineWidthProperty())
@@ -1704,7 +1704,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>numberOfVerticalLines</c> property as a <c>reference</c> value. The <c>numberOfVerticalLines</c> property specifies the number of vertical lines to use when outlining an extruded ellipse. If not specified, the default value is 16.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteNumberOfVerticalLinesPropertyReference(string value)
         {
             using (var writer = OpenNumberOfVerticalLinesProperty())
@@ -1785,7 +1785,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>shadows</c> property as a <c>reference</c> value. The <c>shadows</c> property specifies whether or not the ellipse casts or receives shadows. If not specified, the default value is DISABLED.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteShadowsPropertyReference(string value)
         {
             using (var writer = OpenShadowsProperty())
@@ -1907,7 +1907,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>distanceDisplayCondition</c> property as a <c>reference</c> value. The <c>distanceDisplayCondition</c> property specifies the display condition specifying at what distance from the camera this ellipse will be displayed.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteDistanceDisplayConditionPropertyReference(string value)
         {
             using (var writer = OpenDistanceDisplayConditionProperty())
@@ -2016,7 +2016,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>zIndex</c> property as a <c>reference</c> value. The <c>zIndex</c> property specifies the z-index of the ellipse, used for ordering ground geometry. Only has an effect if the ellipse is constant, and <c>height</c> and <c>extrudedHeight</c> are not specified. If not specified, the default value is 0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteZIndexPropertyReference(string value)
         {
             using (var writer = OpenZIndexProperty())

@@ -254,7 +254,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShowPropertyReference(String value) {
         {
@@ -421,7 +421,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writePixelSizePropertyReference(String value) {
         {
@@ -542,7 +542,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeHeightReferencePropertyReference(String value) {
         {
@@ -824,7 +824,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeColorPropertyReference(String value) {
         {
@@ -1106,7 +1106,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeOutlineColorPropertyReference(String value) {
         {
@@ -1273,7 +1273,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeOutlineWidthPropertyReference(String value) {
         {
@@ -1465,7 +1465,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeScaleByDistancePropertyReference(String value) {
         {
@@ -1657,7 +1657,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeTranslucencyByDistancePropertyReference(String value) {
         {
@@ -1845,7 +1845,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeDistanceDisplayConditionPropertyReference(String value) {
         {
@@ -2012,7 +2012,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeDisableDepthTestDistancePropertyReference(String value) {
         {

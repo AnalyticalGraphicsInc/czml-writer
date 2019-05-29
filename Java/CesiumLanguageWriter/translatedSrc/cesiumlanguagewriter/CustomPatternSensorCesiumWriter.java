@@ -386,7 +386,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShowPropertyReference(String value) {
         {
@@ -442,7 +442,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     }
 
     /**
-    *  Gets the writer for the {@code directions} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code directions} property defines the list of directions defining the custom sensor. This value is required.
+    *  Gets the writer for the {@code directions} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code directions} property defines the list of directions defining the custom sensor. This value must be specified in order for the client to display graphics.
     
 
     */
@@ -453,7 +453,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
     /**
     *  
-    Opens and returns the writer for the {@code directions} property. The {@code directions} property defines the list of directions defining the custom sensor. This value is required.
+    Opens and returns the writer for the {@code directions} property. The {@code directions} property defines the list of directions defining the custom sensor. This value must be specified in order for the client to display graphics.
     
 
     */
@@ -465,7 +465,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
     /**
     *  
-    Writes a value for the {@code directions} property as a {@code spherical} value. The {@code directions} property specifies the list of directions defining the custom sensor. This value is required.
+    Writes a value for the {@code directions} property as a {@code spherical} value. The {@code directions} property specifies the list of directions defining the custom sensor. This value must be specified in order for the client to display graphics.
     
     
 
@@ -484,7 +484,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
     /**
     *  
-    Writes a value for the {@code directions} property as a {@code unitSpherical} value. The {@code directions} property specifies the list of directions defining the custom sensor. This value is required.
+    Writes a value for the {@code directions} property as a {@code unitSpherical} value. The {@code directions} property specifies the list of directions defining the custom sensor. This value must be specified in order for the client to display graphics.
     
     
 
@@ -503,7 +503,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
     /**
     *  
-    Writes a value for the {@code directions} property as a {@code cartesian} value. The {@code directions} property specifies the list of directions defining the custom sensor. This value is required.
+    Writes a value for the {@code directions} property as a {@code cartesian} value. The {@code directions} property specifies the list of directions defining the custom sensor. This value must be specified in order for the client to display graphics.
     
     
 
@@ -522,7 +522,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
 
     /**
     *  
-    Writes a value for the {@code directions} property as a {@code unitCartesian} value. The {@code directions} property specifies the list of directions defining the custom sensor. This value is required.
+    Writes a value for the {@code directions} property as a {@code unitCartesian} value. The {@code directions} property specifies the list of directions defining the custom sensor. This value must be specified in order for the client to display graphics.
     
     
 
@@ -651,7 +651,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeRadiusPropertyReference(String value) {
         {
@@ -772,7 +772,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShowIntersectionPropertyReference(String value) {
         {
@@ -1054,7 +1054,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeIntersectionColorPropertyReference(String value) {
         {
@@ -1221,7 +1221,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeIntersectionWidthPropertyReference(String value) {
         {
@@ -1342,7 +1342,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShowLateralSurfacesPropertyReference(String value) {
         {
@@ -1485,7 +1485,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShowEllipsoidSurfacesPropertyReference(String value) {
         {
@@ -1628,7 +1628,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShowEllipsoidHorizonSurfacesPropertyReference(String value) {
         {
@@ -1771,7 +1771,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShowDomeSurfacesPropertyReference(String value) {
         {
@@ -1914,7 +1914,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writePortionToDisplayPropertyReference(String value) {
         {
@@ -2035,7 +2035,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeEnvironmentConstraintPropertyReference(String value) {
         {
@@ -2156,7 +2156,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShowEnvironmentOcclusionPropertyReference(String value) {
         {
@@ -2299,7 +2299,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShowEnvironmentIntersectionPropertyReference(String value) {
         {
@@ -2581,7 +2581,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeEnvironmentIntersectionColorPropertyReference(String value) {
         {
@@ -2748,7 +2748,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeEnvironmentIntersectionWidthPropertyReference(String value) {
         {

@@ -3,9 +3,15 @@
     "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Position.json",
     "title": "Position",
     "description": "Defines a position. The position can optionally vary over time.",
-    "extends": {
-        "$ref": "InterpolatableProperty.json"
-    },
+    "allOf": [
+        { "$ref": "InterpolatableProperty.json" },
+        { "$ref": "DeletableProperty.json" },
+        { "$ref": "ValueProperties/Cartesian3ValueProperty.json" },
+        { "$ref": "ValueProperties/CartographicRadiansValueProperty.json" },
+        { "$ref": "ValueProperties/CartographicDegreesValueProperty.json" },
+        { "$ref": "ValueProperties/Cartesian3VelocityValueProperty.json" },
+        { "$ref": "ValueProperties/ReferenceValueProperty.json" }
+    ],
     "type": [
         "array",
         "object"
@@ -20,39 +26,30 @@
             "default": "FIXED"
         },
         "cartesian": {
-            "$ref": "Cartesian3Value.json",
-            "description": "The position specified as a three-dimensional Cartesian value, `[X, Y, Z]`, in meters relative to the `referenceFrame`.",
-            "czmlValue": true
+            "$ref": "Values/Cartesian3Value.json",
+            "description": "The position specified as a three-dimensional Cartesian value, `[X, Y, Z]`, in meters relative to the `referenceFrame`."
         },
         "cartographicRadians": {
-            "$ref": "CartographicValue.json",
+            "$ref": "Values/CartographicRadiansValue.json",
             "description": "The position specified in Cartographic WGS84 coordinates, `[Longitude, Latitude, Height]`, where Longitude and Latitude are in radians and Height is in meters.",
-            "czmlValue": true,
             "czmlExamples": [
                 "Examples/PositionCartographicRadians.json"
             ]
         },
         "cartographicDegrees": {
-            "$ref": "CartographicValue.json",
+            "$ref": "Values/CartographicDegreesValue.json",
             "description": "The position specified in Cartographic WGS84 coordinates, `[Longitude, Latitude, Height]`, where Longitude and Latitude are in degrees and Height is in meters.",
-            "czmlValue": true,
             "czmlExamples": [
                 "Examples/PositionCartographicDegrees.json"
             ]
         },
         "cartesianVelocity": {
-            "$ref": "Cartesian3VelocityValue.json",
-            "description": "The position and velocity specified as a three-dimensional Cartesian value and its derivative, `[X, Y, Z, dX, dY, dZ]`, in meters relative to the `referenceFrame`.",
-            "czmlValue": true
+            "$ref": "Values/Cartesian3VelocityValue.json",
+            "description": "The position and velocity specified as a three-dimensional Cartesian value and its derivative, `[X, Y, Z, dX, dY, dZ]`, in meters relative to the `referenceFrame`."
         },
         "reference": {
-            "$ref": "ReferenceValue.json",
-            "description": "The position specified as a reference to another property.",
-            "czmlValue": true
-        },
-        "delete": {
-            "description": "Whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.",
-            "type": "boolean"
+            "$ref": "Values/ReferenceValue.json",
+            "description": "The position specified as a reference to another property."
         }
     }
 }

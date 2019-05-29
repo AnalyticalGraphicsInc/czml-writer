@@ -3,6 +3,11 @@
     "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/String.json",
     "title": "String",
     "description": "A string value. The string can optionally vary with time.",
+    "allOf": [
+        { "$ref": "DeletableProperty.json" },
+        { "$ref": "ValueProperties/StringValueProperty.json" },
+        { "$ref": "ValueProperties/ReferenceValueProperty.json" }
+    ],
     "type": [
         "array",
         "object",
@@ -13,18 +18,12 @@
     },
     "properties": {
         "string": {
-            "$ref": "StringValue.json",
-            "description": "The string value.",
-            "czmlValue": true
+            "$ref": "Values/StringValue.json",
+            "description": "The string value."
         },
         "reference": {
-            "$ref": "ReferenceValue.json",
-            "description": "The string specified as a reference to another property.",
-            "czmlValue": true
-        },
-        "delete": {
-            "description": "Whether the client should delete existing data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.",
-            "type": "boolean"
+            "$ref": "Values/ReferenceValue.json",
+            "description": "The string specified as a reference to another property."
         }
     }
 }

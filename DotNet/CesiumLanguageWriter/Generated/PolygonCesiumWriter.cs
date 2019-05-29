@@ -12,7 +12,7 @@ using System.Drawing;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>Polygon</c> to a <see cref="CesiumOutputStream" />. A <c>Polygon</c> is a polygon, which is a closed figure on the surface of the Earth.
+    /// Writes a <c>Polygon</c> to a <see cref="CesiumOutputStream"/>. A <c>Polygon</c> is a polygon, which is a closed figure on the surface of the Earth.
     /// </summary>
     public class PolygonCesiumWriter : CesiumPropertyWriter<PolygonCesiumWriter>
     {
@@ -155,7 +155,7 @@ namespace CesiumLanguageWriter
         {
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override PolygonCesiumWriter Clone()
         {
             return new PolygonCesiumWriter(this);
@@ -207,7 +207,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>show</c> property as a <c>reference</c> value. The <c>show</c> property specifies whether or not the polygon is shown. If not specified, the default value is <see langword="true"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteShowPropertyReference(string value)
         {
             using (var writer = OpenShowProperty())
@@ -243,7 +243,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>positions</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>positions</c> property defines the array of positions defining a simple polygon. This value is required.
+        /// Gets the writer for the <c>positions</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>positions</c> property defines the array of positions defining a simple polygon. This value must be specified in order for the client to display graphics.
         /// </summary>
         [NotNull]
         public PositionListCesiumWriter PositionsWriter
@@ -252,7 +252,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>positions</c> property. The <c>positions</c> property defines the array of positions defining a simple polygon. This value is required.
+        /// Opens and returns the writer for the <c>positions</c> property. The <c>positions</c> property defines the array of positions defining a simple polygon. This value must be specified in order for the client to display graphics.
         /// </summary>
         [NotNull]
         public PositionListCesiumWriter OpenPositionsProperty()
@@ -262,7 +262,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>positions</c> property as a <c>cartesian</c> value. The <c>positions</c> property specifies the array of positions defining a simple polygon. This value is required.
+        /// Writes a value for the <c>positions</c> property as a <c>cartesian</c> value. The <c>positions</c> property specifies the array of positions defining a simple polygon. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="values">The values.</param>
         public void WritePositionsProperty(IEnumerable<Cartesian> values)
@@ -274,7 +274,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>positions</c> property as a <c>cartographicRadians</c> value. The <c>positions</c> property specifies the array of positions defining a simple polygon. This value is required.
+        /// Writes a value for the <c>positions</c> property as a <c>cartographicRadians</c> value. The <c>positions</c> property specifies the array of positions defining a simple polygon. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="values">The values.</param>
         public void WritePositionsPropertyCartographicRadians(IEnumerable<Cartographic> values)
@@ -286,7 +286,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>positions</c> property as a <c>cartographicDegrees</c> value. The <c>positions</c> property specifies the array of positions defining a simple polygon. This value is required.
+        /// Writes a value for the <c>positions</c> property as a <c>cartographicDegrees</c> value. The <c>positions</c> property specifies the array of positions defining a simple polygon. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="values">The values.</param>
         public void WritePositionsPropertyCartographicDegrees(IEnumerable<Cartographic> values)
@@ -298,7 +298,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>positions</c> property as a <c>references</c> value. The <c>positions</c> property specifies the array of positions defining a simple polygon. This value is required.
+        /// Writes a value for the <c>positions</c> property as a <c>references</c> value. The <c>positions</c> property specifies the array of positions defining a simple polygon. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="references">The list of references.</param>
         public void WritePositionsPropertyReferences(IEnumerable<Reference> references)
@@ -329,9 +329,9 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>arcType</c> property as a <c>ArcType</c> value. The <c>arcType</c> property specifies the type of arc that should connect the positions of the polygon. If not specified, the default value is GEODESIC.
+        /// Writes a value for the <c>arcType</c> property as a <c>arcType</c> value. The <c>arcType</c> property specifies the type of arc that should connect the positions of the polygon. If not specified, the default value is GEODESIC.
         /// </summary>
-        /// <param name="value">The style of an arc.</param>
+        /// <param name="value">The type of an arc.</param>
         public void WriteArcTypeProperty(CesiumArcType value)
         {
             using (var writer = OpenArcTypeProperty())
@@ -355,7 +355,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>arcType</c> property as a <c>reference</c> value. The <c>arcType</c> property specifies the type of arc that should connect the positions of the polygon. If not specified, the default value is GEODESIC.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteArcTypePropertyReference(string value)
         {
             using (var writer = OpenArcTypeProperty())
@@ -464,7 +464,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>height</c> property as a <c>reference</c> value. The <c>height</c> property specifies the height of the polygon when <c>perPositionHeight</c> is false. If not specified, the default value is 0.0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteHeightPropertyReference(string value)
         {
             using (var writer = OpenHeightProperty())
@@ -573,7 +573,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>extrudedHeight</c> property as a <c>reference</c> value. The <c>extrudedHeight</c> property specifies the extruded height of the polygon.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteExtrudedHeightPropertyReference(string value)
         {
             using (var writer = OpenExtrudedHeightProperty())
@@ -654,7 +654,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>heightReference</c> property as a <c>reference</c> value. The <c>heightReference</c> property specifies the height reference of the polygon, which indicates if <c>height</c> is relative to terrain or not. If not specified, the default value is NONE.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteHeightReferencePropertyReference(string value)
         {
             using (var writer = OpenHeightReferenceProperty())
@@ -735,7 +735,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>extrudedHeightReference</c> property as a <c>reference</c> value. The <c>extrudedHeightReference</c> property specifies the extruded height reference of the polygon, which indicates if <c>extrudedHeight</c> is relative to terrain or not. If not specified, the default value is NONE.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteExtrudedHeightReferencePropertyReference(string value)
         {
             using (var writer = OpenExtrudedHeightReferenceProperty())
@@ -844,7 +844,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>stRotation</c> property as a <c>reference</c> value. The <c>stRotation</c> property specifies the rotation of any applied texture. A positive rotation is counter-clockwise. If not specified, the default value is 0.0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteStRotationPropertyReference(string value)
         {
             using (var writer = OpenStRotationProperty())
@@ -953,7 +953,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>granularity</c> property as a <c>reference</c> value. The <c>granularity</c> property specifies the sampling distance, in radians. If not specified, the default value is PI / 180.0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteGranularityPropertyReference(string value)
         {
             using (var writer = OpenGranularityProperty())
@@ -1034,7 +1034,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>fill</c> property as a <c>reference</c> value. The <c>fill</c> property specifies whether or not the polygon is filled. If not specified, the default value is <see langword="true"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteFillPropertyReference(string value)
         {
             using (var writer = OpenFillProperty())
@@ -1134,7 +1134,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>outline</c> property as a <c>reference</c> value. The <c>outline</c> property specifies whether or not the polygon is outlined. If not specified, the default value is <see langword="false"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteOutlinePropertyReference(string value)
         {
             using (var writer = OpenOutlineProperty())
@@ -1313,7 +1313,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value. The <c>outlineColor</c> property specifies the color of the polygon outline. If not specified, the default value is black.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteOutlineColorPropertyReference(string value)
         {
             using (var writer = OpenOutlineColorProperty())
@@ -1422,7 +1422,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value. The <c>outlineWidth</c> property specifies the width of the polygon outline. If not specified, the default value is 1.0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteOutlineWidthPropertyReference(string value)
         {
             using (var writer = OpenOutlineWidthProperty())
@@ -1503,7 +1503,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>perPositionHeight</c> property as a <c>reference</c> value. The <c>perPositionHeight</c> property specifies whether to use the height of each position to define the polygon or to use <c>height</c> as a constant height above the surface. If not specified, the default value is <see langword="false"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WritePerPositionHeightPropertyReference(string value)
         {
             using (var writer = OpenPerPositionHeightProperty())
@@ -1584,7 +1584,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>closeTop</c> property as a <c>reference</c> value. The <c>closeTop</c> property specifies whether to close the top of the polygon. If not specified, the default value is <see langword="true"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteCloseTopPropertyReference(string value)
         {
             using (var writer = OpenCloseTopProperty())
@@ -1665,7 +1665,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>closeBottom</c> property as a <c>reference</c> value. The <c>closeBottom</c> property specifies whether to close the bottom of the polygon. If not specified, the default value is <see langword="true"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteCloseBottomPropertyReference(string value)
         {
             using (var writer = OpenCloseBottomProperty())
@@ -1746,7 +1746,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>shadows</c> property as a <c>reference</c> value. The <c>shadows</c> property specifies whether or not the polygon casts or receives shadows. If not specified, the default value is DISABLED.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteShadowsPropertyReference(string value)
         {
             using (var writer = OpenShadowsProperty())
@@ -1868,7 +1868,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>distanceDisplayCondition</c> property as a <c>reference</c> value. The <c>distanceDisplayCondition</c> property specifies the display condition specifying the distance from the camera at which this polygon will be displayed.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteDistanceDisplayConditionPropertyReference(string value)
         {
             using (var writer = OpenDistanceDisplayConditionProperty())
@@ -1977,7 +1977,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>zIndex</c> property as a <c>reference</c> value. The <c>zIndex</c> property specifies the z-index of the polygon, used for ordering ground geometry. Only has an effect if the polygon is constant, and <c>height</c> and <c>extrudedHeight</c> are not specified. If not specified, the default value is 0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteZIndexPropertyReference(string value)
         {
             using (var writer = OpenZIndexProperty())

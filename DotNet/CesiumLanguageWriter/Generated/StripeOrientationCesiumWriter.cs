@@ -10,9 +10,9 @@ using JetBrains.Annotations;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>StripeOrientation</c> to a <see cref="CesiumOutputStream" />. A <c>StripeOrientation</c> is the orientation of stripes in a stripe material.
+    /// Writes a <c>StripeOrientation</c> to a <see cref="CesiumOutputStream"/>. A <c>StripeOrientation</c> is the orientation of stripes in a stripe material.
     /// </summary>
-    public class StripeOrientationCesiumWriter : CesiumPropertyWriter<StripeOrientationCesiumWriter>
+    public class StripeOrientationCesiumWriter : CesiumPropertyWriter<StripeOrientationCesiumWriter>, ICesiumDeletablePropertyWriter, ICesiumStripeOrientationValuePropertyWriter, ICesiumReferenceValuePropertyWriter
     {
         /// <summary>
         /// The name of the <c>stripeOrientation</c> property.
@@ -29,8 +29,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string DeletePropertyName = "delete";
 
-        private readonly Lazy<ICesiumValuePropertyWriter<CesiumStripeOrientation>> m_asStripeOrientation;
-        private readonly Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
+        private readonly Lazy<CesiumStripeOrientationValuePropertyAdaptor<StripeOrientationCesiumWriter>> m_asStripeOrientation;
+        private readonly Lazy<CesiumReferenceValuePropertyAdaptor<StripeOrientationCesiumWriter>> m_asReference;
 
         /// <summary>
         /// Initializes a new instance.
@@ -39,8 +39,8 @@ namespace CesiumLanguageWriter
         public StripeOrientationCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
-            m_asStripeOrientation = new Lazy<ICesiumValuePropertyWriter<CesiumStripeOrientation>>(CreateStripeOrientationAdaptor, false);
-            m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
+            m_asStripeOrientation = CreateAsStripeOrientation();
+            m_asReference = CreateAsReference();
         }
 
         /// <summary>
@@ -50,11 +50,11 @@ namespace CesiumLanguageWriter
         protected StripeOrientationCesiumWriter([NotNull] StripeOrientationCesiumWriter existingInstance)
             : base(existingInstance)
         {
-            m_asStripeOrientation = new Lazy<ICesiumValuePropertyWriter<CesiumStripeOrientation>>(CreateStripeOrientationAdaptor, false);
-            m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
+            m_asStripeOrientation = CreateAsStripeOrientation();
+            m_asReference = CreateAsReference();
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override StripeOrientationCesiumWriter Clone()
         {
             return new StripeOrientationCesiumWriter(this);
@@ -93,7 +93,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes the value expressed as a <c>reference</c>, which is the orientation of stripes specified as a reference to another property.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteReference(string value)
         {
             const string PropertyName = ReferencePropertyName;
@@ -129,7 +129,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>delete</c>, which is whether the client should delete existing data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
+        /// Writes the value expressed as a <c>delete</c>, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteDelete(bool value)
@@ -141,31 +141,41 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>StripeOrientation</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumStripeOrientationValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<CesiumStripeOrientation> AsStripeOrientation()
+        public CesiumStripeOrientationValuePropertyAdaptor<StripeOrientationCesiumWriter> AsStripeOrientation()
         {
             return m_asStripeOrientation.Value;
         }
 
-        private ICesiumValuePropertyWriter<CesiumStripeOrientation> CreateStripeOrientationAdaptor()
+        private Lazy<CesiumStripeOrientationValuePropertyAdaptor<StripeOrientationCesiumWriter>> CreateAsStripeOrientation()
         {
-            return new CesiumWriterAdaptor<StripeOrientationCesiumWriter, CesiumStripeOrientation>(this, (me, value) => me.WriteStripeOrientation(value));
+            return new Lazy<CesiumStripeOrientationValuePropertyAdaptor<StripeOrientationCesiumWriter>>(CreateStripeOrientation, false);
+        }
+
+        private CesiumStripeOrientationValuePropertyAdaptor<StripeOrientationCesiumWriter> CreateStripeOrientation()
+        {
+            return CesiumValuePropertyAdaptors.CreateStripeOrientation(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>Reference</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumReferenceValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<Reference> AsReference()
+        public CesiumReferenceValuePropertyAdaptor<StripeOrientationCesiumWriter> AsReference()
         {
             return m_asReference.Value;
         }
 
-        private ICesiumValuePropertyWriter<Reference> CreateReferenceAdaptor()
+        private Lazy<CesiumReferenceValuePropertyAdaptor<StripeOrientationCesiumWriter>> CreateAsReference()
         {
-            return new CesiumWriterAdaptor<StripeOrientationCesiumWriter, Reference>(this, (me, value) => me.WriteReference(value));
+            return new Lazy<CesiumReferenceValuePropertyAdaptor<StripeOrientationCesiumWriter>>(CreateReference, false);
+        }
+
+        private CesiumReferenceValuePropertyAdaptor<StripeOrientationCesiumWriter> CreateReference()
+        {
+            return CesiumValuePropertyAdaptors.CreateReference(this);
         }
 
     }

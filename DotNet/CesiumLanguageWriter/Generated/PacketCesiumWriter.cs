@@ -12,7 +12,7 @@ using System.Drawing;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>Packet</c> to a <see cref="CesiumOutputStream" />. A <c>Packet</c> is describes the graphical properties of a single object in a scene, such as a single aircraft.
+    /// Writes a <c>Packet</c> to a <see cref="CesiumOutputStream"/>. A <c>Packet</c> is describes the graphical properties of a single object in a scene, such as a single aircraft.
     /// </summary>
     public class PacketCesiumWriter : CesiumElementWriter
     {
@@ -302,7 +302,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>description</c> property as a <c>reference</c> value. The <c>description</c> property specifies an HTML description of the object.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteDescriptionPropertyReference(string value)
         {
             using (var writer = OpenDescriptionProperty())
@@ -367,7 +367,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>availability</c>, which is the set of time intervals over which data for an object is available. The property can be a single string specifying a single interval, or an array of strings representing intervals. A later Cesium packet can update this availability if it changes or is found to be incorrect. For example, an SGP4 propagator may initially report availability for all time, but then later the propagator throws an exception and the availability can be adjusted to end at that time. If this optional property is not present, the object is assumed to be available for all time. Availability is scoped to a particular CZML stream, so two different streams can list different availability for a single object. Within a single stream, the last availability stated for an object is the one in effect and any availabilities in previous packets are ignored. If an object is not available at a time, the client will not draw that object. If not specified, the default value is 0000-00-00T00:00:00Z/9999-12-31T24:00:00Z.
+        /// Writes the value expressed as a <c>availability</c>, which is the set of time intervals over which data for an object is available. The property can be a single string specifying a single interval, or an array of strings representing intervals. A later CZML packet can update this availability if it changes or is found to be incorrect. For example, an SGP4 propagator may initially report availability for all time, but then later the propagator throws an exception and the availability can be adjusted to end at that time. If this optional property is not present, the object is assumed to be available for all time. Availability is scoped to a particular CZML stream, so two different streams can list different availability for a single object. Within a single stream, the last availability stated for an object is the one in effect and any availabilities in previous packets are ignored. If an object is not available at a time, the client will not draw that object. If not specified, the default value is 0000-00-00T00:00:00Z/9999-12-31T24:00:00Z.
         /// </summary>
         /// <param name="value">The interval.</param>
         public void WriteAvailability(TimeInterval value)
@@ -378,7 +378,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>availability</c>, which is the set of time intervals over which data for an object is available. The property can be a single string specifying a single interval, or an array of strings representing intervals. A later Cesium packet can update this availability if it changes or is found to be incorrect. For example, an SGP4 propagator may initially report availability for all time, but then later the propagator throws an exception and the availability can be adjusted to end at that time. If this optional property is not present, the object is assumed to be available for all time. Availability is scoped to a particular CZML stream, so two different streams can list different availability for a single object. Within a single stream, the last availability stated for an object is the one in effect and any availabilities in previous packets are ignored. If an object is not available at a time, the client will not draw that object. If not specified, the default value is 0000-00-00T00:00:00Z/9999-12-31T24:00:00Z.
+        /// Writes the value expressed as a <c>availability</c>, which is the set of time intervals over which data for an object is available. The property can be a single string specifying a single interval, or an array of strings representing intervals. A later CZML packet can update this availability if it changes or is found to be incorrect. For example, an SGP4 propagator may initially report availability for all time, but then later the propagator throws an exception and the availability can be adjusted to end at that time. If this optional property is not present, the object is assumed to be available for all time. Availability is scoped to a particular CZML stream, so two different streams can list different availability for a single object. Within a single stream, the last availability stated for an object is the one in effect and any availabilities in previous packets are ignored. If an object is not available at a time, the client will not draw that object. If not specified, the default value is 0000-00-00T00:00:00Z/9999-12-31T24:00:00Z.
         /// </summary>
         /// <param name="start">The earliest date of the interval.</param>
         /// <param name="stop">The latest date of the interval.</param>
@@ -388,7 +388,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>availability</c>, which is the set of time intervals over which data for an object is available. The property can be a single string specifying a single interval, or an array of strings representing intervals. A later Cesium packet can update this availability if it changes or is found to be incorrect. For example, an SGP4 propagator may initially report availability for all time, but then later the propagator throws an exception and the availability can be adjusted to end at that time. If this optional property is not present, the object is assumed to be available for all time. Availability is scoped to a particular CZML stream, so two different streams can list different availability for a single object. Within a single stream, the last availability stated for an object is the one in effect and any availabilities in previous packets are ignored. If an object is not available at a time, the client will not draw that object. If not specified, the default value is 0000-00-00T00:00:00Z/9999-12-31T24:00:00Z.
+        /// Writes the value expressed as a <c>availability</c>, which is the set of time intervals over which data for an object is available. The property can be a single string specifying a single interval, or an array of strings representing intervals. A later CZML packet can update this availability if it changes or is found to be incorrect. For example, an SGP4 propagator may initially report availability for all time, but then later the propagator throws an exception and the availability can be adjusted to end at that time. If this optional property is not present, the object is assumed to be available for all time. Availability is scoped to a particular CZML stream, so two different streams can list different availability for a single object. Within a single stream, the last availability stated for an object is the one in effect and any availabilities in previous packets are ignored. If an object is not available at a time, the client will not draw that object. If not specified, the default value is 0000-00-00T00:00:00Z/9999-12-31T24:00:00Z.
         /// </summary>
         /// <param name="value">The intervals.</param>
         public void WriteAvailability(IList<TimeInterval> value)
@@ -609,7 +609,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>position</c> property as a <c>reference</c> value. The <c>position</c> property specifies the position of the object in the world. The position has no direct visual representation, but it is used to locate billboards, labels, and other graphical items attached to the object.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WritePositionPropertyReference(string value)
         {
             using (var writer = OpenPositionProperty())
@@ -717,7 +717,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>orientation</c> property as a <c>reference</c> value. The <c>orientation</c> property specifies the orientation of the object in the world. The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteOrientationPropertyReference(string value)
         {
             using (var writer = OpenOrientationProperty())
@@ -767,7 +767,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>orientation</c> property as a <c>velocityReference</c> value. The <c>orientation</c> property specifies the orientation of the object in the world. The orientation has no direct visual representation, but it is used to orient models, cones, pyramids, and other graphical items attached to the object.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteOrientationPropertyVelocityReference(string value)
         {
             using (var writer = OpenOrientationProperty())
@@ -875,7 +875,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>viewFrom</c> property as a <c>reference</c> value. The <c>viewFrom</c> property specifies a suggested camera location when viewing this object. The property is specified as a Cartesian position in the East (x), North (y), Up (z) reference frame relative to the object's position.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteViewFromPropertyReference(string value)
         {
             using (var writer = OpenViewFromProperty())

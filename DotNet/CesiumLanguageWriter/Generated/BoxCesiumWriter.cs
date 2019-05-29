@@ -12,7 +12,7 @@ using System.Drawing;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>Box</c> to a <see cref="CesiumOutputStream" />. A <c>Box</c> is a box, which is a closed rectangular cuboid.
+    /// Writes a <c>Box</c> to a <see cref="CesiumOutputStream"/>. A <c>Box</c> is a box, which is a closed rectangular cuboid.
     /// </summary>
     public class BoxCesiumWriter : CesiumPropertyWriter<BoxCesiumWriter>
     {
@@ -89,7 +89,7 @@ namespace CesiumLanguageWriter
         {
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override BoxCesiumWriter Clone()
         {
             return new BoxCesiumWriter(this);
@@ -141,7 +141,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>show</c> property as a <c>reference</c> value. The <c>show</c> property specifies whether or not the box is shown. If not specified, the default value is <see langword="true"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteShowPropertyReference(string value)
         {
             using (var writer = OpenShowProperty())
@@ -177,7 +177,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>dimensions</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>dimensions</c> property defines the dimensions of the box. This value is required.
+        /// Gets the writer for the <c>dimensions</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>dimensions</c> property defines the dimensions of the box. This value must be specified in order for the client to display graphics.
         /// </summary>
         [NotNull]
         public BoxDimensionsCesiumWriter DimensionsWriter
@@ -186,7 +186,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>dimensions</c> property. The <c>dimensions</c> property defines the dimensions of the box. This value is required.
+        /// Opens and returns the writer for the <c>dimensions</c> property. The <c>dimensions</c> property defines the dimensions of the box. This value must be specified in order for the client to display graphics.
         /// </summary>
         [NotNull]
         public BoxDimensionsCesiumWriter OpenDimensionsProperty()
@@ -196,7 +196,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>dimensions</c> property as a <c>cartesian</c> value. The <c>dimensions</c> property specifies the dimensions of the box. This value is required.
+        /// Writes a value for the <c>dimensions</c> property as a <c>cartesian</c> value. The <c>dimensions</c> property specifies the dimensions of the box. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteDimensionsProperty(Cartesian value)
@@ -208,7 +208,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>dimensions</c> property as a <c>cartesian</c> value. The <c>dimensions</c> property specifies the dimensions of the box. This value is required.
+        /// Writes a value for the <c>dimensions</c> property as a <c>cartesian</c> value. The <c>dimensions</c> property specifies the dimensions of the box. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -221,7 +221,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>dimensions</c> property as a <c>cartesian</c> value. The <c>dimensions</c> property specifies the dimensions of the box. This value is required.
+        /// Writes a value for the <c>dimensions</c> property as a <c>cartesian</c> value. The <c>dimensions</c> property specifies the dimensions of the box. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -236,7 +236,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>dimensions</c> property as a <c>reference</c> value. The <c>dimensions</c> property specifies the dimensions of the box. This value is required.
+        /// Writes a value for the <c>dimensions</c> property as a <c>reference</c> value. The <c>dimensions</c> property specifies the dimensions of the box. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteDimensionsPropertyReference(Reference value)
@@ -248,9 +248,9 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>dimensions</c> property as a <c>reference</c> value. The <c>dimensions</c> property specifies the dimensions of the box. This value is required.
+        /// Writes a value for the <c>dimensions</c> property as a <c>reference</c> value. The <c>dimensions</c> property specifies the dimensions of the box. This value must be specified in order for the client to display graphics.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteDimensionsPropertyReference(string value)
         {
             using (var writer = OpenDimensionsProperty())
@@ -260,7 +260,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>dimensions</c> property as a <c>reference</c> value. The <c>dimensions</c> property specifies the dimensions of the box. This value is required.
+        /// Writes a value for the <c>dimensions</c> property as a <c>reference</c> value. The <c>dimensions</c> property specifies the dimensions of the box. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -273,7 +273,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>dimensions</c> property as a <c>reference</c> value. The <c>dimensions</c> property specifies the dimensions of the box. This value is required.
+        /// Writes a value for the <c>dimensions</c> property as a <c>reference</c> value. The <c>dimensions</c> property specifies the dimensions of the box. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -331,7 +331,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>fill</c> property as a <c>reference</c> value. The <c>fill</c> property specifies whether or not the box is filled. If not specified, the default value is <see langword="true"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteFillPropertyReference(string value)
         {
             using (var writer = OpenFillProperty())
@@ -431,7 +431,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>outline</c> property as a <c>reference</c> value. The <c>outline</c> property specifies whether or not the box is outlined. If not specified, the default value is <see langword="false"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteOutlinePropertyReference(string value)
         {
             using (var writer = OpenOutlineProperty())
@@ -610,7 +610,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value. The <c>outlineColor</c> property specifies the color of the box outline. If not specified, the default value is black.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteOutlineColorPropertyReference(string value)
         {
             using (var writer = OpenOutlineColorProperty())
@@ -719,7 +719,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value. The <c>outlineWidth</c> property specifies the width of the box outline. If not specified, the default value is 1.0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteOutlineWidthPropertyReference(string value)
         {
             using (var writer = OpenOutlineWidthProperty())
@@ -800,7 +800,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>shadows</c> property as a <c>reference</c> value. The <c>shadows</c> property specifies whether or not the box casts or receives shadows. If not specified, the default value is DISABLED.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteShadowsPropertyReference(string value)
         {
             using (var writer = OpenShadowsProperty())
@@ -922,7 +922,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>distanceDisplayCondition</c> property as a <c>reference</c> value. The <c>distanceDisplayCondition</c> property specifies the display condition specifying the distance from the camera at which this box will be displayed.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteDistanceDisplayConditionPropertyReference(string value)
         {
             using (var writer = OpenDistanceDisplayConditionProperty())

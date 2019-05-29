@@ -3,9 +3,12 @@
     "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/NearFarScalar.json",
     "title": "NearFarScalar",
     "description": "A numeric value which will be linearly interpolated between two values based on an object's distance from the camera, in eye coordinates. The computed value will interpolate between the near value and the far value while the camera distance falls between the near distance and the far distance, and will be clamped to the near or far value while the distance is less than the near distance or greater than the far distance, respectively.",
-    "extends": {
-        "$ref": "InterpolatableProperty.json"
-    },
+    "allOf": [
+        { "$ref": "InterpolatableProperty.json" },
+        { "$ref": "DeletableProperty.json" },
+        { "$ref": "ValueProperties/NearFarScalarValueProperty.json" },
+        { "$ref": "ValueProperties/ReferenceValueProperty.json" }
+    ],
     "type": [
         "array",
         "object"
@@ -15,18 +18,12 @@
     },
     "properties": {
         "nearFarScalar": {
-            "$ref": "NearFarScalarValue.json",
-            "description": "The value specified as four values `[NearDistance, NearValue, FarDistance, FarValue]`, with distances in eye coordinates in meters.",
-            "czmlValue": true
+            "$ref": "Values/NearFarScalarValue.json",
+            "description": "The value specified as four values `[NearDistance, NearValue, FarDistance, FarValue]`, with distances in eye coordinates in meters."
         },
         "reference": {
-            "$ref": "ReferenceValue.json",
-            "description": "The value specified as a reference to another property.",
-            "czmlValue": true
-        },
-        "delete": {
-            "description": "Whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.",
-            "type": "boolean"
+            "$ref": "Values/ReferenceValue.json",
+            "description": "The value specified as a reference to another property."
         }
     }
 }

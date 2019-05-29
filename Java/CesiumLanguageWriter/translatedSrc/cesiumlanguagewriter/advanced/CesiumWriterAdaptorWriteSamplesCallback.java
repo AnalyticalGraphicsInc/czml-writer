@@ -28,7 +28,7 @@ import javax.annotation.Nonnull;
         "deprecation",
         "serial"
 })
-public abstract class CesiumWriterAdaptorWriteSamplesCallback<TWrappedWriter, TValue> extends Delegate {
+public abstract class CesiumWriterAdaptorWriteSamplesCallback<TWrappedWriter extends ICesiumPropertyWriter & ICesiumInterpolatablePropertyWriter, TValue> extends Delegate {
     /**
     * Creates a new instance of this delegate.
     */
@@ -94,7 +94,8 @@ public abstract class CesiumWriterAdaptorWriteSamplesCallback<TWrappedWriter, TV
     * @return A new delegate that will invoke the given function.
     */
     @Nonnull
-    public static <TWrappedWriter, TValue> CesiumWriterAdaptorWriteSamplesCallback<TWrappedWriter, TValue> of(@Nonnull Function<TWrappedWriter, TValue> f) {
+    public static <TWrappedWriter extends ICesiumPropertyWriter & ICesiumInterpolatablePropertyWriter, TValue> CesiumWriterAdaptorWriteSamplesCallback<TWrappedWriter, TValue> of(
+            @Nonnull Function<TWrappedWriter, TValue> f) {
         return new FunctionImpl<TWrappedWriter, TValue>(f);
     }
 
@@ -104,7 +105,7 @@ public abstract class CesiumWriterAdaptorWriteSamplesCallback<TWrappedWriter, TV
     * @param <TValue> The type of the value to write.
     */
     @FunctionalInterface
-    public interface Function<TWrappedWriter, TValue> {
+    public interface Function<TWrappedWriter extends ICesiumPropertyWriter & ICesiumInterpolatablePropertyWriter, TValue> {
         /**
         *  
         A callback to write a value to a {@link CesiumOutputStream} using a given
@@ -127,7 +128,8 @@ public abstract class CesiumWriterAdaptorWriteSamplesCallback<TWrappedWriter, TV
         void invoke(TWrappedWriter wrappedWriter, List<JulianDate> dates, List<TValue> values, int startIndex, int length);
     }
 
-    private static final class FunctionImpl<TWrappedWriter, TValue> extends CesiumWriterAdaptorWriteSamplesCallback<TWrappedWriter, TValue> {
+    private static final class FunctionImpl<TWrappedWriter extends ICesiumPropertyWriter & ICesiumInterpolatablePropertyWriter, TValue> extends
+            CesiumWriterAdaptorWriteSamplesCallback<TWrappedWriter, TValue> {
         @Nonnull
         private final Function<TWrappedWriter, TValue> f;
 

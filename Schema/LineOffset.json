@@ -3,9 +3,12 @@
     "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/LineOffset.json",
     "title": "LineOffset",
     "description": "The offset of grid lines along each axis, as a percentage from 0 to 1.",
-    "extends": {
-        "$ref": "InterpolatableProperty.json"
-    },
+    "allOf": [
+        { "$ref": "InterpolatableProperty.json" },
+        { "$ref": "DeletableProperty.json" },
+        { "$ref": "ValueProperties/Cartesian2ValueProperty.json" },
+        { "$ref": "ValueProperties/ReferenceValueProperty.json" }
+    ],
     "type": [
         "array",
         "object"
@@ -15,18 +18,12 @@
     },
     "properties": {
         "cartesian2": {
-            "$ref": "Cartesian2Value.json",
-            "description": "The offset of grid lines along each axis, specified as a percentage from 0 to 1.",
-            "czmlValue": true
+            "$ref": "Values/Cartesian2Value.json",
+            "description": "The offset of grid lines along each axis, specified as a percentage from 0 to 1."
         },
         "reference": {
-            "$ref": "ReferenceValue.json",
-            "description": "The offset of grid lines along each axis specified as a reference to another property.",
-            "czmlValue": true
-        },
-        "delete": {
-            "description": "Whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.",
-            "type": "boolean"
+            "$ref": "Values/ReferenceValue.json",
+            "description": "The offset of grid lines along each axis specified as a reference to another property."
         }
     }
 }

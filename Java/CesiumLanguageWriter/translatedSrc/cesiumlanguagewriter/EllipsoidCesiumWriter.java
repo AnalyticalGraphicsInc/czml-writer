@@ -280,7 +280,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShowPropertyReference(String value) {
         {
@@ -336,7 +336,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code radii} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code radii} property defines the dimensions of the ellipsoid. This value is required.
+    *  Gets the writer for the {@code radii} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code radii} property defines the dimensions of the ellipsoid. This value must be specified in order for the client to display graphics.
     
 
     */
@@ -347,7 +347,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
     /**
     *  
-    Opens and returns the writer for the {@code radii} property. The {@code radii} property defines the dimensions of the ellipsoid. This value is required.
+    Opens and returns the writer for the {@code radii} property. The {@code radii} property defines the dimensions of the ellipsoid. This value must be specified in order for the client to display graphics.
     
 
     */
@@ -359,7 +359,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
     /**
     *  
-    Writes a value for the {@code radii} property as a {@code cartesian} value. The {@code radii} property specifies the dimensions of the ellipsoid. This value is required.
+    Writes a value for the {@code radii} property as a {@code cartesian} value. The {@code radii} property specifies the dimensions of the ellipsoid. This value must be specified in order for the client to display graphics.
     
     
 
@@ -378,7 +378,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
     /**
     *  
-    Writes a value for the {@code radii} property as a {@code cartesian} value. The {@code radii} property specifies the dimensions of the ellipsoid. This value is required.
+    Writes a value for the {@code radii} property as a {@code cartesian} value. The {@code radii} property specifies the dimensions of the ellipsoid. This value must be specified in order for the client to display graphics.
     
     
     
@@ -399,7 +399,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
     /**
     *  
-    Writes a value for the {@code radii} property as a {@code cartesian} value. The {@code radii} property specifies the dimensions of the ellipsoid. This value is required.
+    Writes a value for the {@code radii} property as a {@code cartesian} value. The {@code radii} property specifies the dimensions of the ellipsoid. This value must be specified in order for the client to display graphics.
     
     
     
@@ -424,7 +424,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
     /**
     *  
-    Writes a value for the {@code radii} property as a {@code reference} value. The {@code radii} property specifies the dimensions of the ellipsoid. This value is required.
+    Writes a value for the {@code radii} property as a {@code reference} value. The {@code radii} property specifies the dimensions of the ellipsoid. This value must be specified in order for the client to display graphics.
     
     
 
@@ -443,11 +443,11 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
     /**
     *  
-    Writes a value for the {@code radii} property as a {@code reference} value. The {@code radii} property specifies the dimensions of the ellipsoid. This value is required.
+    Writes a value for the {@code radii} property as a {@code reference} value. The {@code radii} property specifies the dimensions of the ellipsoid. This value must be specified in order for the client to display graphics.
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeRadiiPropertyReference(String value) {
         {
@@ -462,7 +462,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
     /**
     *  
-    Writes a value for the {@code radii} property as a {@code reference} value. The {@code radii} property specifies the dimensions of the ellipsoid. This value is required.
+    Writes a value for the {@code radii} property as a {@code reference} value. The {@code radii} property specifies the dimensions of the ellipsoid. This value must be specified in order for the client to display graphics.
     
     
     
@@ -483,7 +483,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
     /**
     *  
-    Writes a value for the {@code radii} property as a {@code reference} value. The {@code radii} property specifies the dimensions of the ellipsoid. This value is required.
+    Writes a value for the {@code radii} property as a {@code reference} value. The {@code radii} property specifies the dimensions of the ellipsoid. This value must be specified in order for the client to display graphics.
     
     
     
@@ -568,7 +568,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeFillPropertyReference(String value) {
         {
@@ -711,7 +711,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeOutlinePropertyReference(String value) {
         {
@@ -993,7 +993,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeOutlineColorPropertyReference(String value) {
         {
@@ -1160,7 +1160,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeOutlineWidthPropertyReference(String value) {
         {
@@ -1327,7 +1327,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeStackPartitionsPropertyReference(String value) {
         {
@@ -1494,7 +1494,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeSlicePartitionsPropertyReference(String value) {
         {
@@ -1661,7 +1661,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeSubdivisionsPropertyReference(String value) {
         {
@@ -1782,7 +1782,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShadowsPropertyReference(String value) {
         {
@@ -1970,7 +1970,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeDistanceDisplayConditionPropertyReference(String value) {
         {

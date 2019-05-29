@@ -3,9 +3,14 @@
     "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/AlignedAxis.json",
     "title": "AlignedAxis",
     "description": "An aligned axis represented by a unit vector which can optionally vary over time.",
-    "extends": {
-        "$ref": "InterpolatableProperty.json"
-    },
+    "allOf": [
+        { "$ref": "InterpolatableProperty.json" },
+        { "$ref": "DeletableProperty.json" },
+        { "$ref": "ValueProperties/UnitCartesian3ValueProperty.json" },
+        { "$ref": "ValueProperties/UnitSphericalValueProperty.json" },
+        { "$ref": "ValueProperties/ReferenceValueProperty.json" },
+        { "$ref": "ValueProperties/VelocityReferenceValueProperty.json" }
+    ],
     "type": [
         "array",
         "object"
@@ -15,28 +20,20 @@
     },
     "properties": {
         "unitCartesian": {
-            "$ref": "UnitCartesian3Value.json",
-            "description": "The axis specified as a three-dimensional unit magnitude Cartesian value `[X, Y, Z]`, in world coordinates.",
-            "czmlValue": true
+            "$ref": "Values/UnitCartesian3Value.json",
+            "description": "The axis specified as a three-dimensional unit magnitude Cartesian value `[X, Y, Z]`, in world coordinates."
         },
         "unitSpherical": {
-            "$ref": "UnitSphericalValue.json",
-            "description": "The axis specified as a unit spherical value `[Clock, Cone]`, in radians. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.",
-            "czmlValue": true
+            "$ref": "Values/UnitSphericalValue.json",
+            "description": "The axis specified as a unit spherical value `[Clock, Cone]`, in radians. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis."
         },
         "reference": {
-            "$ref": "ReferenceValue.json",
-            "description": "The axis specified as a reference to another property.",
-            "czmlValue": true
+            "$ref": "Values/ReferenceValue.json",
+            "description": "The axis specified as a reference to another property."
         },
         "velocityReference": {
-            "$ref": "ReferenceValue.json",
-            "description": "The axis specified as the normalized velocity vector of a position property. The reference must be to a `position` property.",
-            "czmlValue": true
-        },
-        "delete": {
-            "description": "Whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.",
-            "type": "boolean"
+            "$ref": "Values/VelocityReferenceValue.json",
+            "description": "The axis specified as the normalized velocity vector of a position property. The reference must be to a `position` property."
         }
     }
 }

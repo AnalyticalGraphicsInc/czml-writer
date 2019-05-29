@@ -10,9 +10,9 @@ using JetBrains.Annotations;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>CornerType</c> to a <see cref="CesiumOutputStream" />. A <c>CornerType</c> is the style of a corner.
+    /// Writes a <c>CornerType</c> to a <see cref="CesiumOutputStream"/>. A <c>CornerType</c> is the style of a corner.
     /// </summary>
-    public class CornerTypeCesiumWriter : CesiumPropertyWriter<CornerTypeCesiumWriter>
+    public class CornerTypeCesiumWriter : CesiumPropertyWriter<CornerTypeCesiumWriter>, ICesiumDeletablePropertyWriter, ICesiumCornerTypeValuePropertyWriter, ICesiumReferenceValuePropertyWriter
     {
         /// <summary>
         /// The name of the <c>cornerType</c> property.
@@ -29,8 +29,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string DeletePropertyName = "delete";
 
-        private readonly Lazy<ICesiumValuePropertyWriter<CesiumCornerType>> m_asCornerType;
-        private readonly Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
+        private readonly Lazy<CesiumCornerTypeValuePropertyAdaptor<CornerTypeCesiumWriter>> m_asCornerType;
+        private readonly Lazy<CesiumReferenceValuePropertyAdaptor<CornerTypeCesiumWriter>> m_asReference;
 
         /// <summary>
         /// Initializes a new instance.
@@ -39,8 +39,8 @@ namespace CesiumLanguageWriter
         public CornerTypeCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
-            m_asCornerType = new Lazy<ICesiumValuePropertyWriter<CesiumCornerType>>(CreateCornerTypeAdaptor, false);
-            m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
+            m_asCornerType = CreateAsCornerType();
+            m_asReference = CreateAsReference();
         }
 
         /// <summary>
@@ -50,11 +50,11 @@ namespace CesiumLanguageWriter
         protected CornerTypeCesiumWriter([NotNull] CornerTypeCesiumWriter existingInstance)
             : base(existingInstance)
         {
-            m_asCornerType = new Lazy<ICesiumValuePropertyWriter<CesiumCornerType>>(CreateCornerTypeAdaptor, false);
-            m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
+            m_asCornerType = CreateAsCornerType();
+            m_asReference = CreateAsReference();
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override CornerTypeCesiumWriter Clone()
         {
             return new CornerTypeCesiumWriter(this);
@@ -93,7 +93,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes the value expressed as a <c>reference</c>, which is the corner style specified as a reference to another property.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteReference(string value)
         {
             const string PropertyName = ReferencePropertyName;
@@ -129,7 +129,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>delete</c>, which is whether the client should delete existing data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
+        /// Writes the value expressed as a <c>delete</c>, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteDelete(bool value)
@@ -141,31 +141,41 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>CornerType</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumCornerTypeValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<CesiumCornerType> AsCornerType()
+        public CesiumCornerTypeValuePropertyAdaptor<CornerTypeCesiumWriter> AsCornerType()
         {
             return m_asCornerType.Value;
         }
 
-        private ICesiumValuePropertyWriter<CesiumCornerType> CreateCornerTypeAdaptor()
+        private Lazy<CesiumCornerTypeValuePropertyAdaptor<CornerTypeCesiumWriter>> CreateAsCornerType()
         {
-            return new CesiumWriterAdaptor<CornerTypeCesiumWriter, CesiumCornerType>(this, (me, value) => me.WriteCornerType(value));
+            return new Lazy<CesiumCornerTypeValuePropertyAdaptor<CornerTypeCesiumWriter>>(CreateCornerType, false);
+        }
+
+        private CesiumCornerTypeValuePropertyAdaptor<CornerTypeCesiumWriter> CreateCornerType()
+        {
+            return CesiumValuePropertyAdaptors.CreateCornerType(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>Reference</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumReferenceValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<Reference> AsReference()
+        public CesiumReferenceValuePropertyAdaptor<CornerTypeCesiumWriter> AsReference()
         {
             return m_asReference.Value;
         }
 
-        private ICesiumValuePropertyWriter<Reference> CreateReferenceAdaptor()
+        private Lazy<CesiumReferenceValuePropertyAdaptor<CornerTypeCesiumWriter>> CreateAsReference()
         {
-            return new CesiumWriterAdaptor<CornerTypeCesiumWriter, Reference>(this, (me, value) => me.WriteReference(value));
+            return new Lazy<CesiumReferenceValuePropertyAdaptor<CornerTypeCesiumWriter>>(CreateReference, false);
+        }
+
+        private CesiumReferenceValuePropertyAdaptor<CornerTypeCesiumWriter> CreateReference()
+        {
+            return CesiumValuePropertyAdaptors.CreateReference(this);
         }
 
     }

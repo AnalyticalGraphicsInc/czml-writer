@@ -3,13 +3,7 @@
     "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Cylinder.json",
     "title": "Cylinder",
     "description": "A cylinder, truncated cone, or cone defined by a length, top radius, and bottom radius.",
-    "type": [
-        "array",
-        "object"
-    ],
-    "items": {
-        "$ref": "#"
-    },
+    "type": "object",
     "properties": {
         "show": {
             "$ref": "Boolean.json",
@@ -18,15 +12,18 @@
         },
         "length": {
             "$ref": "Double.json",
-            "description": "The length of the cylinder."
+            "description": "The length of the cylinder.",
+            "czmlRequiredForDisplay": true
         },
         "topRadius": {
             "$ref": "Double.json",
-            "description": "The radius of the top of the cylinder."
+            "description": "The radius of the top of the cylinder.",
+            "czmlRequiredForDisplay": true
         },
         "bottomRadius": {
             "$ref": "Double.json",
-            "description": "The radius of the bottom of the cylinder."
+            "description": "The radius of the bottom of the cylinder.",
+            "czmlRequiredForDisplay": true
         },
         "fill": {
             "$ref": "Boolean.json",
@@ -72,10 +69,5 @@
             "$ref": "DistanceDisplayCondition.json",
             "description": "The display condition specifying the distance from the camera at which this cylinder will be displayed."
         }
-    },
-    "required": [
-        "length",
-        "topRadius",
-        "bottomRadius"
-    ]
+    }
 }

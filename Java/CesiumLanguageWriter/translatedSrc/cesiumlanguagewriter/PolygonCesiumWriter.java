@@ -378,7 +378,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShowPropertyReference(String value) {
         {
@@ -434,7 +434,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code positions} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code positions} property defines the array of positions defining a simple polygon. This value is required.
+    *  Gets the writer for the {@code positions} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code positions} property defines the array of positions defining a simple polygon. This value must be specified in order for the client to display graphics.
     
 
     */
@@ -445,7 +445,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Opens and returns the writer for the {@code positions} property. The {@code positions} property defines the array of positions defining a simple polygon. This value is required.
+    Opens and returns the writer for the {@code positions} property. The {@code positions} property defines the array of positions defining a simple polygon. This value must be specified in order for the client to display graphics.
     
 
     */
@@ -457,7 +457,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code positions} property as a {@code cartesian} value. The {@code positions} property specifies the array of positions defining a simple polygon. This value is required.
+    Writes a value for the {@code positions} property as a {@code cartesian} value. The {@code positions} property specifies the array of positions defining a simple polygon. This value must be specified in order for the client to display graphics.
     
     
 
@@ -476,7 +476,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code positions} property as a {@code cartographicRadians} value. The {@code positions} property specifies the array of positions defining a simple polygon. This value is required.
+    Writes a value for the {@code positions} property as a {@code cartographicRadians} value. The {@code positions} property specifies the array of positions defining a simple polygon. This value must be specified in order for the client to display graphics.
     
     
 
@@ -495,7 +495,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code positions} property as a {@code cartographicDegrees} value. The {@code positions} property specifies the array of positions defining a simple polygon. This value is required.
+    Writes a value for the {@code positions} property as a {@code cartographicDegrees} value. The {@code positions} property specifies the array of positions defining a simple polygon. This value must be specified in order for the client to display graphics.
     
     
 
@@ -514,7 +514,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code positions} property as a {@code references} value. The {@code positions} property specifies the array of positions defining a simple polygon. This value is required.
+    Writes a value for the {@code positions} property as a {@code references} value. The {@code positions} property specifies the array of positions defining a simple polygon. This value must be specified in order for the client to display graphics.
     
     
 
@@ -555,11 +555,11 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code arcType} property as a {@code ArcType} value. The {@code arcType} property specifies the type of arc that should connect the positions of the polygon. If not specified, the default value is GEODESIC.
+    Writes a value for the {@code arcType} property as a {@code arcType} value. The {@code arcType} property specifies the type of arc that should connect the positions of the polygon. If not specified, the default value is GEODESIC.
     
     
 
-    * @param value The style of an arc.
+    * @param value The type of an arc.
     */
     public final void writeArcTypeProperty(@Nonnull CesiumArcType value) {
         {
@@ -597,7 +597,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeArcTypePropertyReference(String value) {
         {
@@ -764,7 +764,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeHeightPropertyReference(String value) {
         {
@@ -931,7 +931,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeExtrudedHeightPropertyReference(String value) {
         {
@@ -1052,7 +1052,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeHeightReferencePropertyReference(String value) {
         {
@@ -1173,7 +1173,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeExtrudedHeightReferencePropertyReference(String value) {
         {
@@ -1340,7 +1340,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeStRotationPropertyReference(String value) {
         {
@@ -1507,7 +1507,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeGranularityPropertyReference(String value) {
         {
@@ -1628,7 +1628,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeFillPropertyReference(String value) {
         {
@@ -1771,7 +1771,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeOutlinePropertyReference(String value) {
         {
@@ -2053,7 +2053,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeOutlineColorPropertyReference(String value) {
         {
@@ -2220,7 +2220,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeOutlineWidthPropertyReference(String value) {
         {
@@ -2341,7 +2341,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writePerPositionHeightPropertyReference(String value) {
         {
@@ -2462,7 +2462,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeCloseTopPropertyReference(String value) {
         {
@@ -2583,7 +2583,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeCloseBottomPropertyReference(String value) {
         {
@@ -2704,7 +2704,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShadowsPropertyReference(String value) {
         {
@@ -2892,7 +2892,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeDistanceDisplayConditionPropertyReference(String value) {
         {
@@ -3059,7 +3059,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeZIndexPropertyReference(String value) {
         {

@@ -5,8 +5,6 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
-import cesiumlanguagewriter.CesiumStripeOrientation;
-import cesiumlanguagewriter.Reference;
 import javax.annotation.Nonnull;
 
 /**
@@ -20,7 +18,8 @@ import javax.annotation.Nonnull;
         "deprecation",
         "serial"
 })
-public class StripeOrientationCesiumWriter extends CesiumPropertyWriter<StripeOrientationCesiumWriter> {
+public class StripeOrientationCesiumWriter extends CesiumPropertyWriter<StripeOrientationCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumStripeOrientationValuePropertyWriter,
+        ICesiumReferenceValuePropertyWriter {
     /**
     *  
     The name of the {@code stripeOrientation} property.
@@ -42,8 +41,8 @@ public class StripeOrientationCesiumWriter extends CesiumPropertyWriter<StripeOr
 
     */
     public static final String DeletePropertyName = "delete";
-    private Lazy<ICesiumValuePropertyWriter<CesiumStripeOrientation>> m_asStripeOrientation;
-    private Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
+    private Lazy<CesiumStripeOrientationValuePropertyAdaptor<StripeOrientationCesiumWriter>> m_asStripeOrientation;
+    private Lazy<CesiumReferenceValuePropertyAdaptor<StripeOrientationCesiumWriter>> m_asReference;
 
     /**
     *  
@@ -55,18 +54,8 @@ public class StripeOrientationCesiumWriter extends CesiumPropertyWriter<StripeOr
     */
     public StripeOrientationCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
-        m_asStripeOrientation = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumStripeOrientation>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumStripeOrientation>>(this, "createStripeOrientationAdaptor") {
-                    public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumStripeOrientation> invoke() {
-                        return createStripeOrientationAdaptor();
-                    }
-                }, false);
-        m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor") {
-            public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
-                return createReferenceAdaptor();
-            }
-        }, false);
+        m_asStripeOrientation = createAsStripeOrientation();
+        m_asReference = createAsReference();
     }
 
     /**
@@ -79,18 +68,8 @@ public class StripeOrientationCesiumWriter extends CesiumPropertyWriter<StripeOr
     */
     protected StripeOrientationCesiumWriter(@Nonnull StripeOrientationCesiumWriter existingInstance) {
         super(existingInstance);
-        m_asStripeOrientation = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumStripeOrientation>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumStripeOrientation>>(this, "createStripeOrientationAdaptor") {
-                    public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<CesiumStripeOrientation> invoke() {
-                        return createStripeOrientationAdaptor();
-                    }
-                }, false);
-        m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor") {
-            public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
-                return createReferenceAdaptor();
-            }
-        }, false);
+        m_asStripeOrientation = createAsStripeOrientation();
+        m_asReference = createAsReference();
     }
 
     /**
@@ -147,7 +126,7 @@ public class StripeOrientationCesiumWriter extends CesiumPropertyWriter<StripeOr
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeReference(String value) {
         final String PropertyName = ReferencePropertyName;
@@ -192,7 +171,7 @@ public class StripeOrientationCesiumWriter extends CesiumPropertyWriter<StripeOr
 
     /**
     *  
-    Writes the value expressed as a {@code delete}, which is whether the client should delete existing data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
+    Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
     
     
 
@@ -207,43 +186,51 @@ public class StripeOrientationCesiumWriter extends CesiumPropertyWriter<StripeOr
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code StripeOrientation} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumStripeOrientationValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
     * @return The wrapper.
     */
-    public final ICesiumValuePropertyWriter<CesiumStripeOrientation> asStripeOrientation() {
+    public final CesiumStripeOrientationValuePropertyAdaptor<StripeOrientationCesiumWriter> asStripeOrientation() {
         return m_asStripeOrientation.getValue();
     }
 
-    private final ICesiumValuePropertyWriter<CesiumStripeOrientation> createStripeOrientationAdaptor() {
-        return new CesiumWriterAdaptor<cesiumlanguagewriter.StripeOrientationCesiumWriter, cesiumlanguagewriter.CesiumStripeOrientation>(this,
-                new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.StripeOrientationCesiumWriter, cesiumlanguagewriter.CesiumStripeOrientation>() {
-                    public void invoke(StripeOrientationCesiumWriter me, @Nonnull CesiumStripeOrientation value) {
-                        me.writeStripeOrientation(value);
+    private final Lazy<CesiumStripeOrientationValuePropertyAdaptor<StripeOrientationCesiumWriter>> createAsStripeOrientation() {
+        return new Lazy<cesiumlanguagewriter.advanced.CesiumStripeOrientationValuePropertyAdaptor<StripeOrientationCesiumWriter>>(
+                new Func1<cesiumlanguagewriter.advanced.CesiumStripeOrientationValuePropertyAdaptor<StripeOrientationCesiumWriter>>(this, "createStripeOrientation") {
+                    public cesiumlanguagewriter.advanced.CesiumStripeOrientationValuePropertyAdaptor<StripeOrientationCesiumWriter> invoke() {
+                        return createStripeOrientation();
                     }
-                });
+                }, false);
+    }
+
+    private final CesiumStripeOrientationValuePropertyAdaptor<StripeOrientationCesiumWriter> createStripeOrientation() {
+        return CesiumValuePropertyAdaptors.<StripeOrientationCesiumWriter> createStripeOrientation(this);
     }
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
     * @return The wrapper.
     */
-    public final ICesiumValuePropertyWriter<Reference> asReference() {
+    public final CesiumReferenceValuePropertyAdaptor<StripeOrientationCesiumWriter> asReference() {
         return m_asReference.getValue();
     }
 
-    private final ICesiumValuePropertyWriter<Reference> createReferenceAdaptor() {
-        return new CesiumWriterAdaptor<cesiumlanguagewriter.StripeOrientationCesiumWriter, cesiumlanguagewriter.Reference>(this,
-                new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.StripeOrientationCesiumWriter, cesiumlanguagewriter.Reference>() {
-                    public void invoke(StripeOrientationCesiumWriter me, Reference value) {
-                        me.writeReference(value);
+    private final Lazy<CesiumReferenceValuePropertyAdaptor<StripeOrientationCesiumWriter>> createAsReference() {
+        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<StripeOrientationCesiumWriter>>(
+                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<StripeOrientationCesiumWriter>>(this, "createReference") {
+                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<StripeOrientationCesiumWriter> invoke() {
+                        return createReference();
                     }
-                });
+                }, false);
+    }
+
+    private final CesiumReferenceValuePropertyAdaptor<StripeOrientationCesiumWriter> createReference() {
+        return CesiumValuePropertyAdaptors.<StripeOrientationCesiumWriter> createReference(this);
     }
 }

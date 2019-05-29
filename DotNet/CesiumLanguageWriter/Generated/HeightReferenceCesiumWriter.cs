@@ -10,9 +10,9 @@ using JetBrains.Annotations;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>HeightReference</c> to a <see cref="CesiumOutputStream" />. A <c>HeightReference</c> is the height reference of an object, which indicates if the object's position is relative to terrain or not.
+    /// Writes a <c>HeightReference</c> to a <see cref="CesiumOutputStream"/>. A <c>HeightReference</c> is the height reference of an object, which indicates if the object's position is relative to terrain or not.
     /// </summary>
-    public class HeightReferenceCesiumWriter : CesiumPropertyWriter<HeightReferenceCesiumWriter>
+    public class HeightReferenceCesiumWriter : CesiumPropertyWriter<HeightReferenceCesiumWriter>, ICesiumDeletablePropertyWriter, ICesiumHeightReferenceValuePropertyWriter, ICesiumReferenceValuePropertyWriter
     {
         /// <summary>
         /// The name of the <c>heightReference</c> property.
@@ -29,8 +29,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string DeletePropertyName = "delete";
 
-        private readonly Lazy<ICesiumValuePropertyWriter<CesiumHeightReference>> m_asHeightReference;
-        private readonly Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
+        private readonly Lazy<CesiumHeightReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter>> m_asHeightReference;
+        private readonly Lazy<CesiumReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter>> m_asReference;
 
         /// <summary>
         /// Initializes a new instance.
@@ -39,8 +39,8 @@ namespace CesiumLanguageWriter
         public HeightReferenceCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
-            m_asHeightReference = new Lazy<ICesiumValuePropertyWriter<CesiumHeightReference>>(CreateHeightReferenceAdaptor, false);
-            m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
+            m_asHeightReference = CreateAsHeightReference();
+            m_asReference = CreateAsReference();
         }
 
         /// <summary>
@@ -50,11 +50,11 @@ namespace CesiumLanguageWriter
         protected HeightReferenceCesiumWriter([NotNull] HeightReferenceCesiumWriter existingInstance)
             : base(existingInstance)
         {
-            m_asHeightReference = new Lazy<ICesiumValuePropertyWriter<CesiumHeightReference>>(CreateHeightReferenceAdaptor, false);
-            m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
+            m_asHeightReference = CreateAsHeightReference();
+            m_asReference = CreateAsReference();
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override HeightReferenceCesiumWriter Clone()
         {
             return new HeightReferenceCesiumWriter(this);
@@ -93,7 +93,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes the value expressed as a <c>reference</c>, which is the height reference specified as a reference to another property.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteReference(string value)
         {
             const string PropertyName = ReferencePropertyName;
@@ -129,7 +129,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>delete</c>, which is whether the client should delete existing data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
+        /// Writes the value expressed as a <c>delete</c>, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteDelete(bool value)
@@ -141,31 +141,41 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>HeightReference</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumHeightReferenceValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<CesiumHeightReference> AsHeightReference()
+        public CesiumHeightReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter> AsHeightReference()
         {
             return m_asHeightReference.Value;
         }
 
-        private ICesiumValuePropertyWriter<CesiumHeightReference> CreateHeightReferenceAdaptor()
+        private Lazy<CesiumHeightReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter>> CreateAsHeightReference()
         {
-            return new CesiumWriterAdaptor<HeightReferenceCesiumWriter, CesiumHeightReference>(this, (me, value) => me.WriteHeightReference(value));
+            return new Lazy<CesiumHeightReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter>>(CreateHeightReference, false);
+        }
+
+        private CesiumHeightReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter> CreateHeightReference()
+        {
+            return CesiumValuePropertyAdaptors.CreateHeightReference(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>Reference</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumReferenceValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<Reference> AsReference()
+        public CesiumReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter> AsReference()
         {
             return m_asReference.Value;
         }
 
-        private ICesiumValuePropertyWriter<Reference> CreateReferenceAdaptor()
+        private Lazy<CesiumReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter>> CreateAsReference()
         {
-            return new CesiumWriterAdaptor<HeightReferenceCesiumWriter, Reference>(this, (me, value) => me.WriteReference(value));
+            return new Lazy<CesiumReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter>>(CreateReference, false);
+        }
+
+        private CesiumReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter> CreateReference()
+        {
+            return CesiumValuePropertyAdaptors.CreateReference(this);
         }
 
     }

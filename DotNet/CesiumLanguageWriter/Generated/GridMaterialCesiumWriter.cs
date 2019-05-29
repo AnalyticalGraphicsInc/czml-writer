@@ -12,7 +12,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>GridMaterial</c> to a <see cref="CesiumOutputStream" />. A <c>GridMaterial</c> is a material that fills the surface with a two dimensional grid.
+    /// Writes a <c>GridMaterial</c> to a <see cref="CesiumOutputStream"/>. A <c>GridMaterial</c> is a material that fills the surface with a two dimensional grid.
     /// </summary>
     public class GridMaterialCesiumWriter : CesiumPropertyWriter<GridMaterialCesiumWriter>
     {
@@ -65,7 +65,7 @@ namespace CesiumLanguageWriter
         {
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override GridMaterialCesiumWriter Clone()
         {
             return new GridMaterialCesiumWriter(this);
@@ -215,7 +215,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>color</c> property as a <c>reference</c> value. The <c>color</c> property specifies the color of the surface. If not specified, the default value is white.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteColorPropertyReference(string value)
         {
             using (var writer = OpenColorProperty())
@@ -324,7 +324,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>cellAlpha</c> property as a <c>reference</c> value. The <c>cellAlpha</c> property specifies the alpha value for the space between grid lines. This will be combined with the color alpha. If not specified, the default value is 0.1.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteCellAlphaPropertyReference(string value)
         {
             using (var writer = OpenCellAlphaProperty())
@@ -446,7 +446,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>lineCount</c> property as a <c>reference</c> value. The <c>lineCount</c> property specifies the number of grid lines along each axis. If not specified, the default value is [8, 8].
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteLineCountPropertyReference(string value)
         {
             using (var writer = OpenLineCountProperty())
@@ -568,7 +568,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>lineThickness</c> property as a <c>reference</c> value. The <c>lineThickness</c> property specifies the thickness of grid lines along each axis, in pixels. If not specified, the default value is [1.0, 1.0].
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteLineThicknessPropertyReference(string value)
         {
             using (var writer = OpenLineThicknessProperty())
@@ -690,7 +690,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>lineOffset</c> property as a <c>reference</c> value. The <c>lineOffset</c> property specifies the offset of grid lines along each axis, as a percentage from 0 to 1. If not specified, the default value is [0.0, 0.0].
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteLineOffsetPropertyReference(string value)
         {
             using (var writer = OpenLineOffsetProperty())

@@ -3,9 +3,12 @@
     "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Scale.json",
     "title": "Scale",
     "description": "A scaling factor which can optionally vary over time.",
-    "extends": {
-        "$ref": "InterpolatableProperty.json"
-    },
+    "allOf": [
+        { "$ref": "InterpolatableProperty.json" },
+        { "$ref": "DeletableProperty.json" },
+        { "$ref": "ValueProperties/Cartesian3ValueProperty.json" },
+        { "$ref": "ValueProperties/ReferenceValueProperty.json" }
+    ],
     "type": [
         "array",
         "object"
@@ -15,18 +18,12 @@
     },
     "properties": {
         "cartesian": {
-            "$ref": "Cartesian3Value.json",
-            "description": "The scale specified as a three-dimensional Cartesian value `[X, Y, Z]`.",
-            "czmlValue": true
+            "$ref": "Values/Cartesian3Value.json",
+            "description": "The scale specified as a three-dimensional Cartesian value `[X, Y, Z]`."
         },
         "reference": {
-            "$ref": "ReferenceValue.json",
-            "description": "The scale specified as a reference to another property.",
-            "czmlValue": true
-        },
-        "delete": {
-            "description": "Whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.",
-            "type": "boolean"
+            "$ref": "Values/ReferenceValue.json",
+            "description": "The scale specified as a reference to another property."
         }
     }
 }

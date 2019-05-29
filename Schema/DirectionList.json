@@ -3,6 +3,13 @@
     "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/DirectionList.json",
     "title": "DirectionList",
     "description": "A list of directions.",
+    "allOf": [
+        { "$ref": "DeletableProperty.json" },
+        { "$ref": "ValueProperties/SphericalListValueProperty.json" },
+        { "$ref": "ValueProperties/UnitSphericalListValueProperty.json" },
+        { "$ref": "ValueProperties/Cartesian3ListValueProperty.json" },
+        { "$ref": "ValueProperties/UnitCartesian3ListValueProperty.json" }
+    ],
     "type": [
         "array",
         "object"
@@ -12,28 +19,20 @@
     },
     "properties": {
         "spherical": {
-            "$ref": "SphericalListValue.json",
-            "description": "The list of directions specified as spherical values `[Clock, Cone, Magnitude, Clock, Cone, Magnitude, ...]`, with angles in radians and magnitude in meters. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.",
-            "czmlValue": true
+            "$ref": "Values/SphericalListValue.json",
+            "description": "The list of directions specified as spherical values `[Clock, Cone, Magnitude, Clock, Cone, Magnitude, ...]`, with angles in radians and magnitude in meters. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis."
         },
         "unitSpherical": {
-            "$ref": "UnitSphericalListValue.json",
-            "description": "The list of directions specified as unit spherical values `[Clock, Cone, Clock, Cone, ...]`, in radians. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.",
-            "czmlValue": true
+            "$ref": "Values/UnitSphericalListValue.json",
+            "description": "The list of directions specified as unit spherical values `[Clock, Cone, Clock, Cone, ...]`, in radians. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis."
         },
         "cartesian": {
-            "$ref": "Cartesian3ListValue.json",
-            "description": "The list of directions specified as three-dimensional Cartesian values `[X, Y, Z, X, Y, Z, ...]`, in world coordinates in meters.",
-            "czmlValue": true
+            "$ref": "Values/Cartesian3ListValue.json",
+            "description": "The list of directions specified as three-dimensional Cartesian values `[X, Y, Z, X, Y, Z, ...]`, in world coordinates in meters."
         },
         "unitCartesian": {
-            "$ref": "UnitCartesian3ListValue.json",
-            "description": "The list of directions specified as three-dimensional unit magnitude Cartesian values, `[X, Y, Z, X, Y, Z, ...]`, in world coordinates in meters.",
-            "czmlValue": true
-        },
-        "delete": {
-            "description": "Whether the client should delete existing data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.",
-            "type": "boolean"
+            "$ref": "Values/UnitCartesian3ListValue.json",
+            "description": "The list of directions specified as three-dimensional unit magnitude Cartesian values, `[X, Y, Z, X, Y, Z, ...]`, in world coordinates in meters."
         }
     }
 }

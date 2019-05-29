@@ -1,0 +1,26 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Values/VerticalOriginValue.json",
+    "title": "VerticalOrigin",
+    "description": "The vertical location of an origin relative to an object's position.",
+    "type": "string",
+    "czmlValue": true,
+    "oneOf": [
+        {
+            "const": "BASELINE",
+            "description": "If the object contains text, the origin is at the baseline of the text, otherwise the origin is at the bottom of the object."
+        },
+        {
+            "const": "BOTTOM",
+            "description": "The origin is at the bottom of the object."
+        },
+        {
+            "const": "CENTER",
+            "description": "The origin is at the vertical center between `BASELINE` and `TOP`."
+        },
+        {
+            "const": "TOP",
+            "description": "The origin is at the top of the object."
+        }
+    ]
+}

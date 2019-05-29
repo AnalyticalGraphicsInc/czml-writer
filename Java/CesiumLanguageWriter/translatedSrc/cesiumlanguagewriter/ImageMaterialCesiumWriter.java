@@ -305,7 +305,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeImagePropertyReference(String value) {
         {
@@ -493,7 +493,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeRepeatPropertyReference(String value) {
         {
@@ -775,7 +775,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeColorPropertyReference(String value) {
         {
@@ -896,7 +896,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeTransparentPropertyReference(String value) {
         {

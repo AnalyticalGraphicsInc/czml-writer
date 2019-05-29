@@ -26,29 +26,36 @@ import javax.annotation.Nonnull;
         "deprecation",
         "serial"
 })
-public class CesiumWriterAdaptor<TFrom extends ICesiumPropertyWriter, TValue> implements ICesiumValuePropertyWriter<TValue>, ICesiumWriterAdaptor<TFrom> {
+public class CesiumWriterAdaptor<TFrom extends ICesiumPropertyWriter, TValue> implements ICesiumWriterAdaptor<TFrom>, ICesiumValuePropertyWriter<TValue>, ICesiumDeletablePropertyWriter {
     /**
     *  
     Initializes a new instance.
     
     
     
+    
 
     * @param parent The instance to wrap.
     * @param writeValueCallback The callback to write values of type {@code TValue}.
+    * @param writeDeleteValueCallback The callback to write an indication that the client should delete existing data.
     */
-    public CesiumWriterAdaptor(@Nonnull TFrom parent, @Nonnull CesiumWriterAdaptorWriteCallback<TFrom, TValue> writeValueCallback) {
+    public CesiumWriterAdaptor(@Nonnull TFrom parent, @Nonnull CesiumWriterAdaptorWriteCallback<TFrom, TValue> writeValueCallback,
+            @Nonnull CesiumWriterAdaptorWriteDeleteCallback<TFrom> writeDeleteValueCallback) {
         if (parent == null) {
             throw new ArgumentNullException("parent");
         }
         if (writeValueCallback == null) {
             throw new ArgumentNullException("writeValueCallback");
         }
+        if (writeDeleteValueCallback == null) {
+            throw new ArgumentNullException("writeDeleteValueCallback");
+        }
         m_parent = parent;
         m_writeValueCallback = writeValueCallback;
+        m_writeDeleteValueCallback = writeDeleteValueCallback;
         m_interval = new Lazy<CesiumWriterAdaptor<TFrom, TValue>>(new Func1<CesiumWriterAdaptor<TFrom, TValue>>() {
             public CesiumWriterAdaptor<TFrom, TValue> invoke() {
-                return new CesiumWriterAdaptor<TFrom, TValue>((TFrom) m_parent.getIntervalWriter(), m_writeValueCallback);
+                return new CesiumWriterAdaptor<TFrom, TValue>((TFrom) m_parent.getIntervalWriter(), m_writeValueCallback, m_writeDeleteValueCallback);
             }
         }, false);
     }
@@ -99,6 +106,21 @@ public class CesiumWriterAdaptor<TFrom extends ICesiumPropertyWriter, TValue> im
     */
     public final void writeValue(TValue value) {
         m_writeValueCallback.invoke(m_parent, value);
+    }
+
+    /**
+    *  
+    
+    Writes an indication that the client should delete existing samples or interval data for this property.
+    Data will be deleted for the containing interval, or if there is no containing interval, then all data.
+    If true, all other properties in this property will be ignored.
+    
+    
+
+    * @param value The value.
+    */
+    public final void writeDelete(boolean value) {
+        m_writeDeleteValueCallback.invoke(m_parent);
     }
 
     /**
@@ -210,6 +232,8 @@ public class CesiumWriterAdaptor<TFrom extends ICesiumPropertyWriter, TValue> im
     private TFrom m_parent;
     @Nonnull
     private CesiumWriterAdaptorWriteCallback<TFrom, TValue> m_writeValueCallback;
+    @Nonnull
+    private CesiumWriterAdaptorWriteDeleteCallback<TFrom> m_writeDeleteValueCallback;
     @Nonnull
     private Lazy<CesiumWriterAdaptor<TFrom, TValue>> m_interval;
 }

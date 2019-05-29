@@ -32,7 +32,8 @@ var filesToValidate = [
     'Examples/PositionCartographicRadians.json',
     'Examples/SimplePosition.json',
     'Examples/TimeVaryingPosition.json',
-    'Examples/ViewFrom.json'
+    'Examples/ViewFrom.json',
+    'Examples/Clock.json'
 ];
 
 ajv.compileAsync(schema).then(validate => {

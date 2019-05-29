@@ -5,7 +5,6 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
-import cesiumlanguagewriter.Reference;
 import java.util.List;
 import javax.annotation.Nonnull;
 
@@ -20,7 +19,8 @@ import javax.annotation.Nonnull;
         "deprecation",
         "serial"
 })
-public class DoubleCesiumWriter extends CesiumInterpolatablePropertyWriter<DoubleCesiumWriter> {
+public class DoubleCesiumWriter extends CesiumInterpolatablePropertyWriter<DoubleCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumDoubleValuePropertyWriter,
+        ICesiumReferenceValuePropertyWriter {
     /**
     *  
     The name of the {@code number} property.
@@ -42,8 +42,8 @@ public class DoubleCesiumWriter extends CesiumInterpolatablePropertyWriter<Doubl
 
     */
     public static final String DeletePropertyName = "delete";
-    private Lazy<ICesiumInterpolatableValuePropertyWriter<Double>> m_asNumber;
-    private Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
+    private Lazy<CesiumDoubleValuePropertyAdaptor<DoubleCesiumWriter>> m_asNumber;
+    private Lazy<CesiumReferenceValuePropertyAdaptor<DoubleCesiumWriter>> m_asReference;
 
     /**
     *  
@@ -55,18 +55,8 @@ public class DoubleCesiumWriter extends CesiumInterpolatablePropertyWriter<Doubl
     */
     public DoubleCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
-        m_asNumber = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Double>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Double>>(this, "createNumberAdaptor") {
-                    public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Double> invoke() {
-                        return createNumberAdaptor();
-                    }
-                }, false);
-        m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor") {
-            public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
-                return createReferenceAdaptor();
-            }
-        }, false);
+        m_asNumber = createAsNumber();
+        m_asReference = createAsReference();
     }
 
     /**
@@ -79,18 +69,8 @@ public class DoubleCesiumWriter extends CesiumInterpolatablePropertyWriter<Doubl
     */
     protected DoubleCesiumWriter(@Nonnull DoubleCesiumWriter existingInstance) {
         super(existingInstance);
-        m_asNumber = new Lazy<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Double>>(
-                new Func1<cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Double>>(this, "createNumberAdaptor") {
-                    public cesiumlanguagewriter.advanced.ICesiumInterpolatableValuePropertyWriter<Double> invoke() {
-                        return createNumberAdaptor();
-                    }
-                }, false);
-        m_asReference = new Lazy<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(new Func1<cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference>>(this,
-                "createReferenceAdaptor") {
-            public cesiumlanguagewriter.advanced.ICesiumValuePropertyWriter<Reference> invoke() {
-                return createReferenceAdaptor();
-            }
-        }, false);
+        m_asNumber = createAsNumber();
+        m_asReference = createAsReference();
     }
 
     /**
@@ -181,7 +161,7 @@ public class DoubleCesiumWriter extends CesiumInterpolatablePropertyWriter<Doubl
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeReference(String value) {
         final String PropertyName = ReferencePropertyName;
@@ -241,46 +221,51 @@ public class DoubleCesiumWriter extends CesiumInterpolatablePropertyWriter<Doubl
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumInterpolatableValuePropertyWriter} to write a value in {@code Number} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumDoubleValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
     * @return The wrapper.
     */
-    public final ICesiumInterpolatableValuePropertyWriter<Double> asNumber() {
+    public final CesiumDoubleValuePropertyAdaptor<DoubleCesiumWriter> asNumber() {
         return m_asNumber.getValue();
     }
 
-    private final ICesiumInterpolatableValuePropertyWriter<Double> createNumberAdaptor() {
-        return new CesiumInterpolatableWriterAdaptor<cesiumlanguagewriter.DoubleCesiumWriter, Double>(this, new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.DoubleCesiumWriter, Double>() {
-            public void invoke(DoubleCesiumWriter me, Double value) {
-                me.writeNumber(value);
-            }
-        }, new CesiumWriterAdaptorWriteSamplesCallback<cesiumlanguagewriter.DoubleCesiumWriter, Double>() {
-            public void invoke(DoubleCesiumWriter me, List<JulianDate> dates, List<Double> values, int startIndex, int length) {
-                me.writeNumber(dates, values, startIndex, length);
-            }
-        });
+    private final Lazy<CesiumDoubleValuePropertyAdaptor<DoubleCesiumWriter>> createAsNumber() {
+        return new Lazy<cesiumlanguagewriter.advanced.CesiumDoubleValuePropertyAdaptor<DoubleCesiumWriter>>(
+                new Func1<cesiumlanguagewriter.advanced.CesiumDoubleValuePropertyAdaptor<DoubleCesiumWriter>>(this, "createDouble") {
+                    public cesiumlanguagewriter.advanced.CesiumDoubleValuePropertyAdaptor<DoubleCesiumWriter> invoke() {
+                        return createDouble();
+                    }
+                }, false);
+    }
+
+    private final CesiumDoubleValuePropertyAdaptor<DoubleCesiumWriter> createDouble() {
+        return CesiumValuePropertyAdaptors.<DoubleCesiumWriter> createDouble(this);
     }
 
     /**
     *  
-    Returns a wrapper for this instance that implements {@link ICesiumValuePropertyWriter} to write a value in {@code Reference} format. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     
     
 
     * @return The wrapper.
     */
-    public final ICesiumValuePropertyWriter<Reference> asReference() {
+    public final CesiumReferenceValuePropertyAdaptor<DoubleCesiumWriter> asReference() {
         return m_asReference.getValue();
     }
 
-    private final ICesiumValuePropertyWriter<Reference> createReferenceAdaptor() {
-        return new CesiumWriterAdaptor<cesiumlanguagewriter.DoubleCesiumWriter, cesiumlanguagewriter.Reference>(this,
-                new CesiumWriterAdaptorWriteCallback<cesiumlanguagewriter.DoubleCesiumWriter, cesiumlanguagewriter.Reference>() {
-                    public void invoke(DoubleCesiumWriter me, Reference value) {
-                        me.writeReference(value);
+    private final Lazy<CesiumReferenceValuePropertyAdaptor<DoubleCesiumWriter>> createAsReference() {
+        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<DoubleCesiumWriter>>(
+                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<DoubleCesiumWriter>>(this, "createReference") {
+                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<DoubleCesiumWriter> invoke() {
+                        return createReference();
                     }
-                });
+                }, false);
+    }
+
+    private final CesiumReferenceValuePropertyAdaptor<DoubleCesiumWriter> createReference() {
+        return CesiumValuePropertyAdaptors.<DoubleCesiumWriter> createReference(this);
     }
 }

@@ -1,0 +1,11 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Values/ReferenceListValue.json",
+    "title": "ReferenceList",
+    "description": "A list of references to other properties.",
+    "type": "array",
+    "czmlValue": true,
+    "items": {
+        "type": "string"
+    }
+}

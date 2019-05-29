@@ -342,7 +342,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShowPropertyReference(String value) {
         {
@@ -398,7 +398,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code positions} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code positions} property defines the array of positions defining the centerline of the corridor. This value is required.
+    *  Gets the writer for the {@code positions} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code positions} property defines the array of positions defining the centerline of the corridor. This value must be specified in order for the client to display graphics.
     
 
     */
@@ -409,7 +409,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Opens and returns the writer for the {@code positions} property. The {@code positions} property defines the array of positions defining the centerline of the corridor. This value is required.
+    Opens and returns the writer for the {@code positions} property. The {@code positions} property defines the array of positions defining the centerline of the corridor. This value must be specified in order for the client to display graphics.
     
 
     */
@@ -421,7 +421,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code positions} property as a {@code cartesian} value. The {@code positions} property specifies the array of positions defining the centerline of the corridor. This value is required.
+    Writes a value for the {@code positions} property as a {@code cartesian} value. The {@code positions} property specifies the array of positions defining the centerline of the corridor. This value must be specified in order for the client to display graphics.
     
     
 
@@ -440,7 +440,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code positions} property as a {@code cartographicRadians} value. The {@code positions} property specifies the array of positions defining the centerline of the corridor. This value is required.
+    Writes a value for the {@code positions} property as a {@code cartographicRadians} value. The {@code positions} property specifies the array of positions defining the centerline of the corridor. This value must be specified in order for the client to display graphics.
     
     
 
@@ -459,7 +459,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code positions} property as a {@code cartographicDegrees} value. The {@code positions} property specifies the array of positions defining the centerline of the corridor. This value is required.
+    Writes a value for the {@code positions} property as a {@code cartographicDegrees} value. The {@code positions} property specifies the array of positions defining the centerline of the corridor. This value must be specified in order for the client to display graphics.
     
     
 
@@ -478,7 +478,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code positions} property as a {@code references} value. The {@code positions} property specifies the array of positions defining the centerline of the corridor. This value is required.
+    Writes a value for the {@code positions} property as a {@code references} value. The {@code positions} property specifies the array of positions defining the centerline of the corridor. This value must be specified in order for the client to display graphics.
     
     
 
@@ -496,7 +496,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code width} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code width} property defines the width of the corridor, which is the distance between the edges of the corridor. This value is required.
+    *  Gets the writer for the {@code width} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code width} property defines the width of the corridor, which is the distance between the edges of the corridor. This value must be specified in order for the client to display graphics.
     
 
     */
@@ -507,7 +507,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Opens and returns the writer for the {@code width} property. The {@code width} property defines the width of the corridor, which is the distance between the edges of the corridor. This value is required.
+    Opens and returns the writer for the {@code width} property. The {@code width} property defines the width of the corridor, which is the distance between the edges of the corridor. This value must be specified in order for the client to display graphics.
     
 
     */
@@ -519,7 +519,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code width} property as a {@code number} value. The {@code width} property specifies the width of the corridor, which is the distance between the edges of the corridor. This value is required.
+    Writes a value for the {@code width} property as a {@code number} value. The {@code width} property specifies the width of the corridor, which is the distance between the edges of the corridor. This value must be specified in order for the client to display graphics.
     
     
 
@@ -538,7 +538,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code width} property as a {@code number} value. The {@code width} property specifies the width of the corridor, which is the distance between the edges of the corridor. This value is required.
+    Writes a value for the {@code width} property as a {@code number} value. The {@code width} property specifies the width of the corridor, which is the distance between the edges of the corridor. This value must be specified in order for the client to display graphics.
     
     
     
@@ -559,7 +559,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code width} property as a {@code number} value. The {@code width} property specifies the width of the corridor, which is the distance between the edges of the corridor. This value is required.
+    Writes a value for the {@code width} property as a {@code number} value. The {@code width} property specifies the width of the corridor, which is the distance between the edges of the corridor. This value must be specified in order for the client to display graphics.
     
     
     
@@ -584,7 +584,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code width} property as a {@code reference} value. The {@code width} property specifies the width of the corridor, which is the distance between the edges of the corridor. This value is required.
+    Writes a value for the {@code width} property as a {@code reference} value. The {@code width} property specifies the width of the corridor, which is the distance between the edges of the corridor. This value must be specified in order for the client to display graphics.
     
     
 
@@ -603,11 +603,11 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code width} property as a {@code reference} value. The {@code width} property specifies the width of the corridor, which is the distance between the edges of the corridor. This value is required.
+    Writes a value for the {@code width} property as a {@code reference} value. The {@code width} property specifies the width of the corridor, which is the distance between the edges of the corridor. This value must be specified in order for the client to display graphics.
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeWidthPropertyReference(String value) {
         {
@@ -622,7 +622,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code width} property as a {@code reference} value. The {@code width} property specifies the width of the corridor, which is the distance between the edges of the corridor. This value is required.
+    Writes a value for the {@code width} property as a {@code reference} value. The {@code width} property specifies the width of the corridor, which is the distance between the edges of the corridor. This value must be specified in order for the client to display graphics.
     
     
     
@@ -643,7 +643,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
 
     /**
     *  
-    Writes a value for the {@code width} property as a {@code reference} value. The {@code width} property specifies the width of the corridor, which is the distance between the edges of the corridor. This value is required.
+    Writes a value for the {@code width} property as a {@code reference} value. The {@code width} property specifies the width of the corridor, which is the distance between the edges of the corridor. This value must be specified in order for the client to display graphics.
     
     
     
@@ -774,7 +774,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeHeightPropertyReference(String value) {
         {
@@ -941,7 +941,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeExtrudedHeightPropertyReference(String value) {
         {
@@ -1062,7 +1062,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeHeightReferencePropertyReference(String value) {
         {
@@ -1183,7 +1183,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeExtrudedHeightReferencePropertyReference(String value) {
         {
@@ -1304,7 +1304,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeCornerTypePropertyReference(String value) {
         {
@@ -1471,7 +1471,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeGranularityPropertyReference(String value) {
         {
@@ -1592,7 +1592,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeFillPropertyReference(String value) {
         {
@@ -1735,7 +1735,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeOutlinePropertyReference(String value) {
         {
@@ -2017,7 +2017,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeOutlineColorPropertyReference(String value) {
         {
@@ -2184,7 +2184,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeOutlineWidthPropertyReference(String value) {
         {
@@ -2305,7 +2305,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShadowsPropertyReference(String value) {
         {
@@ -2493,7 +2493,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeDistanceDisplayConditionPropertyReference(String value) {
         {
@@ -2660,7 +2660,7 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeZIndexPropertyReference(String value) {
         {

@@ -12,7 +12,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>PolylineGlowMaterial</c> to a <see cref="CesiumOutputStream" />. A <c>PolylineGlowMaterial</c> is a material that fills the surface of a line with a glowing color.
+    /// Writes a <c>PolylineGlowMaterial</c> to a <see cref="CesiumOutputStream"/>. A <c>PolylineGlowMaterial</c> is a material that fills the surface of a line with a glowing color.
     /// </summary>
     public class PolylineGlowMaterialCesiumWriter : CesiumPropertyWriter<PolylineGlowMaterialCesiumWriter>
     {
@@ -53,7 +53,7 @@ namespace CesiumLanguageWriter
         {
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override PolylineGlowMaterialCesiumWriter Clone()
         {
             return new PolylineGlowMaterialCesiumWriter(this);
@@ -203,7 +203,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>color</c> property as a <c>reference</c> value. The <c>color</c> property specifies the color of the surface. If not specified, the default value is white.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteColorPropertyReference(string value)
         {
             using (var writer = OpenColorProperty())
@@ -312,7 +312,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>glowPower</c> property as a <c>reference</c> value. The <c>glowPower</c> property specifies the strength of the glow. If not specified, the default value is 0.25.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteGlowPowerPropertyReference(string value)
         {
             using (var writer = OpenGlowPowerProperty())
@@ -421,7 +421,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>taperPower</c> property as a <c>reference</c> value. The <c>taperPower</c> property specifies the strength of the tapering effect.  1.0 and higher means no tapering. If not specified, the default value is 1.0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteTaperPowerPropertyReference(string value)
         {
             using (var writer = OpenTaperPowerProperty())

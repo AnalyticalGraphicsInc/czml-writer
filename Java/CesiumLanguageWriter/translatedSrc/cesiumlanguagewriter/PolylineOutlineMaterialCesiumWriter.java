@@ -326,7 +326,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeColorPropertyReference(String value) {
         {
@@ -608,7 +608,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeOutlineColorPropertyReference(String value) {
         {
@@ -775,7 +775,7 @@ public class PolylineOutlineMaterialCesiumWriter extends CesiumPropertyWriter<Po
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeOutlineWidthPropertyReference(String value) {
         {

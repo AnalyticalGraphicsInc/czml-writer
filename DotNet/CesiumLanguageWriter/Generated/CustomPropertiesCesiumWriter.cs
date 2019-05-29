@@ -10,7 +10,7 @@ using JetBrains.Annotations;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>CustomProperties</c> to a <see cref="CesiumOutputStream" />. A <c>CustomProperties</c> is a set of custom properties.
+    /// Writes a <c>CustomProperties</c> to a <see cref="CesiumOutputStream"/>. A <c>CustomProperties</c> is a set of custom properties.
     /// </summary>
     public class CustomPropertiesCesiumWriter : CesiumPropertyWriter<CustomPropertiesCesiumWriter>
     {
@@ -32,7 +32,7 @@ namespace CesiumLanguageWriter
         {
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override CustomPropertiesCesiumWriter Clone()
         {
             return new CustomPropertiesCesiumWriter(this);

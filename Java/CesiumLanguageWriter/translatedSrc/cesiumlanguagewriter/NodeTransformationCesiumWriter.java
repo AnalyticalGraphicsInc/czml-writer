@@ -211,7 +211,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeTranslationPropertyReference(String value) {
         {
@@ -378,7 +378,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeRotationPropertyReference(String value) {
         {
@@ -545,7 +545,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeScalePropertyReference(String value) {
         {

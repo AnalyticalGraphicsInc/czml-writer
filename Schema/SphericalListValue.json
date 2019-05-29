@@ -1,7 +1,0 @@
-{
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/SphericalListValue.json",
-    "title": "SphericalList",
-    "description": "A list of spherical values `[Clock, Cone, Magnitude, Clock, Cone, Magnitude, ...]`, with angles in radians and magnitude in meters. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.",
-    "type": "array"
-}

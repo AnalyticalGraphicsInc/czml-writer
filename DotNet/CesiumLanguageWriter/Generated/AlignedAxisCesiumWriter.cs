@@ -11,9 +11,9 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>AlignedAxis</c> to a <see cref="CesiumOutputStream" />. A <c>AlignedAxis</c> is an aligned axis represented by a unit vector which can optionally vary over time.
+    /// Writes a <c>AlignedAxis</c> to a <see cref="CesiumOutputStream"/>. A <c>AlignedAxis</c> is an aligned axis represented by a unit vector which can optionally vary over time.
     /// </summary>
-    public class AlignedAxisCesiumWriter : CesiumInterpolatablePropertyWriter<AlignedAxisCesiumWriter>
+    public class AlignedAxisCesiumWriter : CesiumInterpolatablePropertyWriter<AlignedAxisCesiumWriter>, ICesiumDeletablePropertyWriter, ICesiumUnitCartesian3ValuePropertyWriter, ICesiumUnitSphericalValuePropertyWriter, ICesiumReferenceValuePropertyWriter, ICesiumVelocityReferenceValuePropertyWriter
     {
         /// <summary>
         /// The name of the <c>unitCartesian</c> property.
@@ -40,10 +40,10 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string DeletePropertyName = "delete";
 
-        private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<UnitCartesian>> m_asUnitCartesian;
-        private readonly Lazy<ICesiumInterpolatableValuePropertyWriter<UnitSpherical>> m_asUnitSpherical;
-        private readonly Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
-        private readonly Lazy<ICesiumValuePropertyWriter<Reference>> m_asVelocityReference;
+        private readonly Lazy<CesiumUnitCartesian3ValuePropertyAdaptor<AlignedAxisCesiumWriter>> m_asUnitCartesian;
+        private readonly Lazy<CesiumUnitSphericalValuePropertyAdaptor<AlignedAxisCesiumWriter>> m_asUnitSpherical;
+        private readonly Lazy<CesiumReferenceValuePropertyAdaptor<AlignedAxisCesiumWriter>> m_asReference;
+        private readonly Lazy<CesiumVelocityReferenceValuePropertyAdaptor<AlignedAxisCesiumWriter>> m_asVelocityReference;
 
         /// <summary>
         /// Initializes a new instance.
@@ -52,10 +52,10 @@ namespace CesiumLanguageWriter
         public AlignedAxisCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
-            m_asUnitCartesian = new Lazy<ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(CreateUnitCartesianAdaptor, false);
-            m_asUnitSpherical = new Lazy<ICesiumInterpolatableValuePropertyWriter<UnitSpherical>>(CreateUnitSphericalAdaptor, false);
-            m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
-            m_asVelocityReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateVelocityReferenceAdaptor, false);
+            m_asUnitCartesian = CreateAsUnitCartesian();
+            m_asUnitSpherical = CreateAsUnitSpherical();
+            m_asReference = CreateAsReference();
+            m_asVelocityReference = CreateAsVelocityReference();
         }
 
         /// <summary>
@@ -65,13 +65,13 @@ namespace CesiumLanguageWriter
         protected AlignedAxisCesiumWriter([NotNull] AlignedAxisCesiumWriter existingInstance)
             : base(existingInstance)
         {
-            m_asUnitCartesian = new Lazy<ICesiumInterpolatableValuePropertyWriter<UnitCartesian>>(CreateUnitCartesianAdaptor, false);
-            m_asUnitSpherical = new Lazy<ICesiumInterpolatableValuePropertyWriter<UnitSpherical>>(CreateUnitSphericalAdaptor, false);
-            m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
-            m_asVelocityReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateVelocityReferenceAdaptor, false);
+            m_asUnitCartesian = CreateAsUnitCartesian();
+            m_asUnitSpherical = CreateAsUnitSpherical();
+            m_asReference = CreateAsReference();
+            m_asVelocityReference = CreateAsVelocityReference();
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override AlignedAxisCesiumWriter Clone()
         {
             return new AlignedAxisCesiumWriter(this);
@@ -164,7 +164,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes the value expressed as a <c>reference</c>, which is the axis specified as a reference to another property.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteReference(string value)
         {
             const string PropertyName = ReferencePropertyName;
@@ -214,7 +214,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes the value expressed as a <c>velocityReference</c>, which is the axis specified as the normalized velocity vector of a position property. The reference must be to a <c>position</c> property.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteVelocityReference(string value)
         {
             const string PropertyName = VelocityReferencePropertyName;
@@ -262,59 +262,79 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <c>UnitCartesian</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumUnitCartesian3ValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumInterpolatableValuePropertyWriter<UnitCartesian> AsUnitCartesian()
+        public CesiumUnitCartesian3ValuePropertyAdaptor<AlignedAxisCesiumWriter> AsUnitCartesian()
         {
             return m_asUnitCartesian.Value;
         }
 
-        private ICesiumInterpolatableValuePropertyWriter<UnitCartesian> CreateUnitCartesianAdaptor()
+        private Lazy<CesiumUnitCartesian3ValuePropertyAdaptor<AlignedAxisCesiumWriter>> CreateAsUnitCartesian()
         {
-            return new CesiumInterpolatableWriterAdaptor<AlignedAxisCesiumWriter, UnitCartesian>(this, (me, value) => me.WriteUnitCartesian(value), (me, dates, values, startIndex, length) => me.WriteUnitCartesian(dates, values, startIndex, length));
+            return new Lazy<CesiumUnitCartesian3ValuePropertyAdaptor<AlignedAxisCesiumWriter>>(CreateUnitCartesian3, false);
+        }
+
+        private CesiumUnitCartesian3ValuePropertyAdaptor<AlignedAxisCesiumWriter> CreateUnitCartesian3()
+        {
+            return CesiumValuePropertyAdaptors.CreateUnitCartesian3(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumInterpolatableValuePropertyWriter{T}" /> to write a value in <c>UnitSpherical</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumUnitSphericalValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumInterpolatableValuePropertyWriter<UnitSpherical> AsUnitSpherical()
+        public CesiumUnitSphericalValuePropertyAdaptor<AlignedAxisCesiumWriter> AsUnitSpherical()
         {
             return m_asUnitSpherical.Value;
         }
 
-        private ICesiumInterpolatableValuePropertyWriter<UnitSpherical> CreateUnitSphericalAdaptor()
+        private Lazy<CesiumUnitSphericalValuePropertyAdaptor<AlignedAxisCesiumWriter>> CreateAsUnitSpherical()
         {
-            return new CesiumInterpolatableWriterAdaptor<AlignedAxisCesiumWriter, UnitSpherical>(this, (me, value) => me.WriteUnitSpherical(value), (me, dates, values, startIndex, length) => me.WriteUnitSpherical(dates, values, startIndex, length));
+            return new Lazy<CesiumUnitSphericalValuePropertyAdaptor<AlignedAxisCesiumWriter>>(CreateUnitSpherical, false);
+        }
+
+        private CesiumUnitSphericalValuePropertyAdaptor<AlignedAxisCesiumWriter> CreateUnitSpherical()
+        {
+            return CesiumValuePropertyAdaptors.CreateUnitSpherical(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>Reference</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumReferenceValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<Reference> AsReference()
+        public CesiumReferenceValuePropertyAdaptor<AlignedAxisCesiumWriter> AsReference()
         {
             return m_asReference.Value;
         }
 
-        private ICesiumValuePropertyWriter<Reference> CreateReferenceAdaptor()
+        private Lazy<CesiumReferenceValuePropertyAdaptor<AlignedAxisCesiumWriter>> CreateAsReference()
         {
-            return new CesiumWriterAdaptor<AlignedAxisCesiumWriter, Reference>(this, (me, value) => me.WriteReference(value));
+            return new Lazy<CesiumReferenceValuePropertyAdaptor<AlignedAxisCesiumWriter>>(CreateReference, false);
+        }
+
+        private CesiumReferenceValuePropertyAdaptor<AlignedAxisCesiumWriter> CreateReference()
+        {
+            return CesiumValuePropertyAdaptors.CreateReference(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>VelocityReference</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumVelocityReferenceValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<Reference> AsVelocityReference()
+        public CesiumVelocityReferenceValuePropertyAdaptor<AlignedAxisCesiumWriter> AsVelocityReference()
         {
             return m_asVelocityReference.Value;
         }
 
-        private ICesiumValuePropertyWriter<Reference> CreateVelocityReferenceAdaptor()
+        private Lazy<CesiumVelocityReferenceValuePropertyAdaptor<AlignedAxisCesiumWriter>> CreateAsVelocityReference()
         {
-            return new CesiumWriterAdaptor<AlignedAxisCesiumWriter, Reference>(this, (me, value) => me.WriteVelocityReference(value));
+            return new Lazy<CesiumVelocityReferenceValuePropertyAdaptor<AlignedAxisCesiumWriter>>(CreateVelocityReference, false);
+        }
+
+        private CesiumVelocityReferenceValuePropertyAdaptor<AlignedAxisCesiumWriter> CreateVelocityReference()
+        {
+            return CesiumValuePropertyAdaptors.CreateVelocityReference(this);
         }
 
     }

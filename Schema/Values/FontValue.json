@@ -1,0 +1,8 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Values/FontValue.json",
+    "title": "Font",
+    "description": "A font, specified using the same syntax as the CSS \"font\" property.",
+    "type": "string",
+    "czmlValue": true
+}

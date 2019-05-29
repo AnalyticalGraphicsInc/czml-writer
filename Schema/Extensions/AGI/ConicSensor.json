@@ -3,14 +3,8 @@
     "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Extensions/AGI/ConicSensor.json",
     "title": "ConicSensor",
     "description": "A conical sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.",
-    "type": [
-        "array",
-        "object"
-    ],
-    "items": {
-        "$ref": "#"
-    },
-    "extensionPrefix": "agi",
+    "type": "object",
+    "czmlExtensionPrefix": "agi",
     "properties": {
         "show": {
             "$ref": "../../Boolean.json",

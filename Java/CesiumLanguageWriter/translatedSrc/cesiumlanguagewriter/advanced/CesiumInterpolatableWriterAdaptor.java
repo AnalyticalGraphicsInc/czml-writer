@@ -12,15 +12,15 @@ import javax.annotation.Nonnull;
 
 /**
  *  
- Adapts a class derived from {@link CesiumInterpolatablePropertyWriter} to implement
- {@link ICesiumValuePropertyWriter} for a different type of value.  Typically, the
- class has a method to write values of the new type, but that method is not exposed via an interface.
+ Adapts a class that implements {@link ICesiumInterpolatablePropertyWriter} to implement
+ {@link ICesiumInterpolatableValuePropertyWriter} for a different type of value.
+ Typically, the class has a method to write values of the new type, but that method is not exposed via an interface.
  This class adapts the method to the interface via a callback delegate.
  
  
  
 
- * @param <TFrom> The class derived from {@link CesiumInterpolatablePropertyWriter} to adapt.
+ * @param <TFrom> The class that implements {@link ICesiumInterpolatablePropertyWriter} to adapt.
  * @param <TValue> The type of value to which to adapt the class to write.
  */
 @SuppressWarnings( {
@@ -28,11 +28,12 @@ import javax.annotation.Nonnull;
         "deprecation",
         "serial"
 })
-public class CesiumInterpolatableWriterAdaptor<TFrom extends ICesiumPropertyWriter & ICesiumInterpolationInformationWriter, TValue> implements ICesiumInterpolatableValuePropertyWriter<TValue>,
-        ICesiumWriterAdaptor<TFrom> {
+public class CesiumInterpolatableWriterAdaptor<TFrom extends ICesiumPropertyWriter & ICesiumInterpolatablePropertyWriter, TValue> implements ICesiumWriterAdaptor<TFrom>,
+        ICesiumInterpolatableValuePropertyWriter<TValue>, ICesiumDeletablePropertyWriter {
     /**
     *  
     Initializes a new instance.
+    
     
     
     
@@ -41,9 +42,10 @@ public class CesiumInterpolatableWriterAdaptor<TFrom extends ICesiumPropertyWrit
     * @param parent The instance to wrap.
     * @param writeValueCallback The callback to write a value of type {@code TValue}.
     * @param writeSamplesCallback The callback to write samples of type {@code TValue}.
+    * @param writeDeleteValueCallback The callback to write an indication that the client should delete existing data.
     */
     public CesiumInterpolatableWriterAdaptor(@Nonnull TFrom parent, @Nonnull CesiumWriterAdaptorWriteCallback<TFrom, TValue> writeValueCallback,
-            @Nonnull CesiumWriterAdaptorWriteSamplesCallback<TFrom, TValue> writeSamplesCallback) {
+            @Nonnull CesiumWriterAdaptorWriteSamplesCallback<TFrom, TValue> writeSamplesCallback, @Nonnull CesiumWriterAdaptorWriteDeleteCallback<TFrom> writeDeleteValueCallback) {
         if (parent == null) {
             throw new ArgumentNullException("parent");
         }
@@ -53,12 +55,16 @@ public class CesiumInterpolatableWriterAdaptor<TFrom extends ICesiumPropertyWrit
         if (writeSamplesCallback == null) {
             throw new ArgumentNullException("writeSamplesCallback");
         }
+        if (writeDeleteValueCallback == null) {
+            throw new ArgumentNullException("writeDeleteValueCallback");
+        }
         m_parent = parent;
         m_writeValueCallback = writeValueCallback;
         m_writeSamplesCallback = writeSamplesCallback;
+        m_writeDeleteValueCallback = writeDeleteValueCallback;
         m_interval = new Lazy<CesiumInterpolatableWriterAdaptor<TFrom, TValue>>(new Func1<CesiumInterpolatableWriterAdaptor<TFrom, TValue>>() {
             public CesiumInterpolatableWriterAdaptor<TFrom, TValue> invoke() {
-                return new CesiumInterpolatableWriterAdaptor<TFrom, TValue>((TFrom) m_parent.getIntervalWriter(), m_writeValueCallback, m_writeSamplesCallback);
+                return new CesiumInterpolatableWriterAdaptor<TFrom, TValue>((TFrom) m_parent.getIntervalWriter(), m_writeValueCallback, m_writeSamplesCallback, m_writeDeleteValueCallback);
             }
         }, false);
     }
@@ -109,6 +115,21 @@ public class CesiumInterpolatableWriterAdaptor<TFrom extends ICesiumPropertyWrit
     */
     public final void writeValue(TValue value) {
         m_writeValueCallback.invoke(m_parent, value);
+    }
+
+    /**
+    *  
+    
+    Writes an indication that the client should delete existing samples or interval data for this property.
+    Data will be deleted for the containing interval, or if there is no containing interval, then all data.
+    If true, all other properties in this property will be ignored.
+    
+    
+
+    * @param value The value.
+    */
+    public final void writeDelete(boolean value) {
+        m_writeDeleteValueCallback.invoke(m_parent);
     }
 
     /**
@@ -214,7 +235,6 @@ public class CesiumInterpolatableWriterAdaptor<TFrom extends ICesiumPropertyWrit
 
     /**
     *  
-    
     Opens a writer that is used to write information about this property for a single interval.
     
     
@@ -229,7 +249,6 @@ public class CesiumInterpolatableWriterAdaptor<TFrom extends ICesiumPropertyWrit
 
     /**
     *  
-    
     Opens a writer that is used to write information about this property for multiple discrete intervals.
     
     
@@ -311,9 +330,11 @@ public class CesiumInterpolatableWriterAdaptor<TFrom extends ICesiumPropertyWrit
     @Nonnull
     private CesiumWriterAdaptorWriteSamplesCallback<TFrom, TValue> m_writeSamplesCallback;
     @Nonnull
+    private CesiumWriterAdaptorWriteDeleteCallback<TFrom> m_writeDeleteValueCallback;
+    @Nonnull
     private Lazy<CesiumInterpolatableWriterAdaptor<TFrom, TValue>> m_interval;
 
-    private static class MultipleIntervalsAdaptor<TFrom extends ICesiumPropertyWriter & ICesiumInterpolationInformationWriter, TValue> implements ICesiumInterpolatableIntervalListWriter<TValue> {
+    private static class MultipleIntervalsAdaptor<TFrom extends ICesiumPropertyWriter & ICesiumInterpolatablePropertyWriter, TValue> implements ICesiumInterpolatableIntervalListWriter<TValue> {
         public MultipleIntervalsAdaptor(@Nonnull CesiumInterpolatableWriterAdaptor<TFrom, TValue> intervalAdaptor, @Nonnull ICesiumIntervalListWriter parent) {
             if (intervalAdaptor == null) {
                 throw new ArgumentNullException("intervalAdaptor");

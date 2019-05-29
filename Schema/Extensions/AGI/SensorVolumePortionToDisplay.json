@@ -2,7 +2,12 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Extensions/AGI/SensorVolumePortionToDisplay.json",
     "title": "SensorVolumePortionToDisplay",
-    "description": "What part of a sensor should be displayed.",
+    "description": "The part of a sensor that should be displayed.",
+    "allOf": [
+        { "$ref": "../../DeletableProperty.json" },
+        { "$ref": "../../Extensions/AGI/SensorVolumePortionToDisplayValueProperty.json" },
+        { "$ref": "../../ValueProperties/ReferenceValueProperty.json" }
+    ],
     "type": [
         "array",
         "object",
@@ -14,17 +19,11 @@
     "properties": {
         "portionToDisplay": {
             "$ref": "../../Extensions/AGI/SensorVolumePortionToDisplayValue.json",
-            "description": "The part of a sensor to display.",
-            "czmlValue": true
+            "description": "The part of a sensor to display."
         },
         "reference": {
-            "$ref": "../../ReferenceValue.json",
-            "description": "The part of a sensor to display, specified as a reference to another property.",
-            "czmlValue": true
-        },
-        "delete": {
-            "description": "Whether the client should delete existing data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.",
-            "type": "boolean"
+            "$ref": "../../Values/ReferenceValue.json",
+            "description": "The part of a sensor to display, specified as a reference to another property."
         }
     }
 }

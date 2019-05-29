@@ -1,18 +1,20 @@
-﻿namespace CesiumLanguageWriter.Advanced
+﻿using JetBrains.Annotations;
+
+namespace CesiumLanguageWriter.Advanced
 {
     /// <summary>
     /// A CZML writer for a property that represents a value that may be sampled
     /// and interpolated.  The property may be defined over a single interval or over multiple intervals.
     /// </summary>
     /// <typeparam name="TDerived">The type of the class derived from this one.</typeparam>
-    public abstract class CesiumInterpolatablePropertyWriter<TDerived> : CesiumPropertyWriter<TDerived>, ICesiumInterpolationInformationWriter
+    public abstract class CesiumInterpolatablePropertyWriter<TDerived> : CesiumPropertyWriter<TDerived>, ICesiumInterpolatablePropertyWriter
         where TDerived : CesiumInterpolatablePropertyWriter<TDerived>
     {
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
         /// <param name="propertyName">The name of the property.</param>
-        protected CesiumInterpolatablePropertyWriter(string propertyName)
+        protected CesiumInterpolatablePropertyWriter([NotNull] string propertyName)
             : base(propertyName)
         {
         }
@@ -21,7 +23,7 @@
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
         /// <param name="existingInstance">The existing instance to copy.</param>
-        protected CesiumInterpolatablePropertyWriter(CesiumInterpolatablePropertyWriter<TDerived> existingInstance)
+        protected CesiumInterpolatablePropertyWriter([NotNull] CesiumInterpolatablePropertyWriter<TDerived> existingInstance)
             : base(existingInstance)
         {
         }

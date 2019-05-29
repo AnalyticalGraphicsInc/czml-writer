@@ -13,5 +13,6 @@ namespace CesiumLanguageWriter.Advanced
     /// <param name="values">The sampled value corresponding to each date.</param>
     /// <param name="startIndex">The index of the first sample to write.</param>
     /// <param name="length">The number of samples to write.</param>
-    public delegate void CesiumWriterAdaptorWriteSamplesCallback<TWrappedWriter, TValue>(TWrappedWriter wrappedWriter, IList<JulianDate> dates, IList<TValue> values, int startIndex, int length);
+    public delegate void CesiumWriterAdaptorWriteSamplesCallback<TWrappedWriter, TValue>(TWrappedWriter wrappedWriter, IList<JulianDate> dates, IList<TValue> values, int startIndex, int length)
+        where TWrappedWriter : class, ICesiumPropertyWriter, ICesiumInterpolatablePropertyWriter;
 }

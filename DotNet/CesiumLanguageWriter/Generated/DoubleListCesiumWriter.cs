@@ -11,9 +11,9 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>DoubleList</c> to a <see cref="CesiumOutputStream" />. A <c>DoubleList</c> is a list of floating-point numbers.
+    /// Writes a <c>DoubleList</c> to a <see cref="CesiumOutputStream"/>. A <c>DoubleList</c> is a list of floating-point numbers.
     /// </summary>
-    public class DoubleListCesiumWriter : CesiumPropertyWriter<DoubleListCesiumWriter>
+    public class DoubleListCesiumWriter : CesiumPropertyWriter<DoubleListCesiumWriter>, ICesiumDeletablePropertyWriter, ICesiumDoubleListValuePropertyWriter, ICesiumReferenceListValuePropertyWriter
     {
         /// <summary>
         /// The name of the <c>array</c> property.
@@ -30,8 +30,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string DeletePropertyName = "delete";
 
-        private readonly Lazy<ICesiumValuePropertyWriter<IEnumerable<double>>> m_asArray;
-        private readonly Lazy<ICesiumValuePropertyWriter<IEnumerable<Reference>>> m_asReferences;
+        private readonly Lazy<CesiumDoubleListValuePropertyAdaptor<DoubleListCesiumWriter>> m_asArray;
+        private readonly Lazy<CesiumReferenceListValuePropertyAdaptor<DoubleListCesiumWriter>> m_asReferences;
 
         /// <summary>
         /// Initializes a new instance.
@@ -40,8 +40,8 @@ namespace CesiumLanguageWriter
         public DoubleListCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
-            m_asArray = new Lazy<ICesiumValuePropertyWriter<IEnumerable<double>>>(CreateArrayAdaptor, false);
-            m_asReferences = new Lazy<ICesiumValuePropertyWriter<IEnumerable<Reference>>>(CreateReferencesAdaptor, false);
+            m_asArray = CreateAsArray();
+            m_asReferences = CreateAsReferences();
         }
 
         /// <summary>
@@ -51,11 +51,11 @@ namespace CesiumLanguageWriter
         protected DoubleListCesiumWriter([NotNull] DoubleListCesiumWriter existingInstance)
             : base(existingInstance)
         {
-            m_asArray = new Lazy<ICesiumValuePropertyWriter<IEnumerable<double>>>(CreateArrayAdaptor, false);
-            m_asReferences = new Lazy<ICesiumValuePropertyWriter<IEnumerable<Reference>>>(CreateReferencesAdaptor, false);
+            m_asArray = CreateAsArray();
+            m_asReferences = CreateAsReferences();
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override DoubleListCesiumWriter Clone()
         {
             return new DoubleListCesiumWriter(this);
@@ -86,7 +86,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>delete</c>, which is whether the client should delete existing data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
+        /// Writes the value expressed as a <c>delete</c>, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteDelete(bool value)
@@ -98,31 +98,41 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>Array</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumDoubleListValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<IEnumerable<double>> AsArray()
+        public CesiumDoubleListValuePropertyAdaptor<DoubleListCesiumWriter> AsArray()
         {
             return m_asArray.Value;
         }
 
-        private ICesiumValuePropertyWriter<IEnumerable<double>> CreateArrayAdaptor()
+        private Lazy<CesiumDoubleListValuePropertyAdaptor<DoubleListCesiumWriter>> CreateAsArray()
         {
-            return new CesiumWriterAdaptor<DoubleListCesiumWriter, IEnumerable<double>>(this, (me, value) => me.WriteArray(value));
+            return new Lazy<CesiumDoubleListValuePropertyAdaptor<DoubleListCesiumWriter>>(CreateDoubleList, false);
+        }
+
+        private CesiumDoubleListValuePropertyAdaptor<DoubleListCesiumWriter> CreateDoubleList()
+        {
+            return CesiumValuePropertyAdaptors.CreateDoubleList(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>References</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumReferenceListValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<IEnumerable<Reference>> AsReferences()
+        public CesiumReferenceListValuePropertyAdaptor<DoubleListCesiumWriter> AsReferences()
         {
             return m_asReferences.Value;
         }
 
-        private ICesiumValuePropertyWriter<IEnumerable<Reference>> CreateReferencesAdaptor()
+        private Lazy<CesiumReferenceListValuePropertyAdaptor<DoubleListCesiumWriter>> CreateAsReferences()
         {
-            return new CesiumWriterAdaptor<DoubleListCesiumWriter, IEnumerable<Reference>>(this, (me, value) => me.WriteReferences(value));
+            return new Lazy<CesiumReferenceListValuePropertyAdaptor<DoubleListCesiumWriter>>(CreateReferenceList, false);
+        }
+
+        private CesiumReferenceListValuePropertyAdaptor<DoubleListCesiumWriter> CreateReferenceList()
+        {
+            return CesiumValuePropertyAdaptors.CreateReferenceList(this);
         }
 
     }

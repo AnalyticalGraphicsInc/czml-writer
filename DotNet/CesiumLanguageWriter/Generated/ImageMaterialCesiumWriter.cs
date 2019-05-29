@@ -12,7 +12,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>ImageMaterial</c> to a <see cref="CesiumOutputStream" />. A <c>ImageMaterial</c> is a material that fills the surface with an image.
+    /// Writes a <c>ImageMaterial</c> to a <see cref="CesiumOutputStream"/>. A <c>ImageMaterial</c> is a material that fills the surface with an image.
     /// </summary>
     public class ImageMaterialCesiumWriter : CesiumPropertyWriter<ImageMaterialCesiumWriter>
     {
@@ -59,7 +59,7 @@ namespace CesiumLanguageWriter
         {
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override ImageMaterialCesiumWriter Clone()
         {
             return new ImageMaterialCesiumWriter(this);
@@ -188,7 +188,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>image</c> property as a <c>reference</c> value. The <c>image</c> property specifies the image to display on the surface.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteImagePropertyReference(string value)
         {
             using (var writer = OpenImageProperty())
@@ -310,7 +310,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>repeat</c> property as a <c>reference</c> value. The <c>repeat</c> property specifies the number of times the image repeats along each axis. If not specified, the default value is [1, 1].
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteRepeatPropertyReference(string value)
         {
             using (var writer = OpenRepeatProperty())
@@ -489,7 +489,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>color</c> property as a <c>reference</c> value. The <c>color</c> property specifies the color of the image. This color value is multiplied with the image to produce the final color. If not specified, the default value is white.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteColorPropertyReference(string value)
         {
             using (var writer = OpenColorProperty())
@@ -570,7 +570,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>transparent</c> property as a <c>reference</c> value. The <c>transparent</c> property specifies whether or not the image has transparency. If not specified, the default value is <see langword="false"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteTransparentPropertyReference(string value)
         {
             using (var writer = OpenTransparentProperty())

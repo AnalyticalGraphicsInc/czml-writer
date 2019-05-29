@@ -10,9 +10,9 @@ using JetBrains.Annotations;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>Font</c> to a <see cref="CesiumOutputStream" />. A <c>Font</c> is a font used to draw text. Fonts are specified using the same syntax as the CSS "font" property.
+    /// Writes a <c>Font</c> to a <see cref="CesiumOutputStream"/>. A <c>Font</c> is a font used to draw text. Fonts are specified using the same syntax as the CSS "font" property.
     /// </summary>
-    public class FontCesiumWriter : CesiumPropertyWriter<FontCesiumWriter>
+    public class FontCesiumWriter : CesiumPropertyWriter<FontCesiumWriter>, ICesiumDeletablePropertyWriter, ICesiumFontValuePropertyWriter, ICesiumReferenceValuePropertyWriter
     {
         /// <summary>
         /// The name of the <c>font</c> property.
@@ -29,8 +29,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string DeletePropertyName = "delete";
 
-        private readonly Lazy<ICesiumValuePropertyWriter<string>> m_asFont;
-        private readonly Lazy<ICesiumValuePropertyWriter<Reference>> m_asReference;
+        private readonly Lazy<CesiumFontValuePropertyAdaptor<FontCesiumWriter>> m_asFont;
+        private readonly Lazy<CesiumReferenceValuePropertyAdaptor<FontCesiumWriter>> m_asReference;
 
         /// <summary>
         /// Initializes a new instance.
@@ -39,8 +39,8 @@ namespace CesiumLanguageWriter
         public FontCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
-            m_asFont = new Lazy<ICesiumValuePropertyWriter<string>>(CreateFontAdaptor, false);
-            m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
+            m_asFont = CreateAsFont();
+            m_asReference = CreateAsReference();
         }
 
         /// <summary>
@@ -50,11 +50,11 @@ namespace CesiumLanguageWriter
         protected FontCesiumWriter([NotNull] FontCesiumWriter existingInstance)
             : base(existingInstance)
         {
-            m_asFont = new Lazy<ICesiumValuePropertyWriter<string>>(CreateFontAdaptor, false);
-            m_asReference = new Lazy<ICesiumValuePropertyWriter<Reference>>(CreateReferenceAdaptor, false);
+            m_asFont = CreateAsFont();
+            m_asReference = CreateAsReference();
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override FontCesiumWriter Clone()
         {
             return new FontCesiumWriter(this);
@@ -93,7 +93,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes the value expressed as a <c>reference</c>, which is the font specified as a reference to another property.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteReference(string value)
         {
             const string PropertyName = ReferencePropertyName;
@@ -129,7 +129,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>delete</c>, which is whether the client should delete existing data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
+        /// Writes the value expressed as a <c>delete</c>, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteDelete(bool value)
@@ -141,31 +141,41 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>Font</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumFontValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<string> AsFont()
+        public CesiumFontValuePropertyAdaptor<FontCesiumWriter> AsFont()
         {
             return m_asFont.Value;
         }
 
-        private ICesiumValuePropertyWriter<string> CreateFontAdaptor()
+        private Lazy<CesiumFontValuePropertyAdaptor<FontCesiumWriter>> CreateAsFont()
         {
-            return new CesiumWriterAdaptor<FontCesiumWriter, string>(this, (me, value) => me.WriteFont(value));
+            return new Lazy<CesiumFontValuePropertyAdaptor<FontCesiumWriter>>(CreateFont, false);
+        }
+
+        private CesiumFontValuePropertyAdaptor<FontCesiumWriter> CreateFont()
+        {
+            return CesiumValuePropertyAdaptors.CreateFont(this);
         }
 
         /// <summary>
-        /// Returns a wrapper for this instance that implements <see cref="ICesiumValuePropertyWriter{T}" /> to write a value in <c>Reference</c> format. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close" /> on either this instance or the wrapper, but you must not call it on both.
+        /// Returns a wrapper for this instance that implements <see cref="ICesiumReferenceValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
-        public ICesiumValuePropertyWriter<Reference> AsReference()
+        public CesiumReferenceValuePropertyAdaptor<FontCesiumWriter> AsReference()
         {
             return m_asReference.Value;
         }
 
-        private ICesiumValuePropertyWriter<Reference> CreateReferenceAdaptor()
+        private Lazy<CesiumReferenceValuePropertyAdaptor<FontCesiumWriter>> CreateAsReference()
         {
-            return new CesiumWriterAdaptor<FontCesiumWriter, Reference>(this, (me, value) => me.WriteReference(value));
+            return new Lazy<CesiumReferenceValuePropertyAdaptor<FontCesiumWriter>>(CreateReference, false);
+        }
+
+        private CesiumReferenceValuePropertyAdaptor<FontCesiumWriter> CreateReference()
+        {
+            return CesiumValuePropertyAdaptors.CreateReference(this);
         }
 
     }

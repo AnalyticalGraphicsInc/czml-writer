@@ -12,7 +12,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>Vector</c> to a <see cref="CesiumOutputStream" />. A <c>Vector</c> is defines a graphical vector that originates at the <c>position</c> property and extends in the provided direction for the provided length.
+    /// Writes a <c>Vector</c> to a <see cref="CesiumOutputStream"/>. A <c>Vector</c> is defines a graphical vector that originates at the <c>position</c> property and extends in the provided direction for the provided length.
     /// </summary>
     public class VectorCesiumWriter : CesiumPropertyWriter<VectorCesiumWriter>
     {
@@ -65,7 +65,7 @@ namespace CesiumLanguageWriter
         {
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override VectorCesiumWriter Clone()
         {
             return new VectorCesiumWriter(this);
@@ -117,7 +117,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>show</c> property as a <c>reference</c> value. The <c>show</c> property specifies whether or not the vector is shown. If not specified, the default value is <see langword="true"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteShowPropertyReference(string value)
         {
             using (var writer = OpenShowProperty())
@@ -296,7 +296,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>color</c> property as a <c>reference</c> value. The <c>color</c> property specifies the color of the vector. If not specified, the default value is white.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteColorPropertyReference(string value)
         {
             using (var writer = OpenColorProperty())
@@ -332,7 +332,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>direction</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>direction</c> property defines the direction of the vector. This value is required.
+        /// Gets the writer for the <c>direction</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>direction</c> property defines the direction of the vector. This value must be specified in order for the client to display graphics.
         /// </summary>
         [NotNull]
         public DirectionCesiumWriter DirectionWriter
@@ -341,7 +341,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>direction</c> property. The <c>direction</c> property defines the direction of the vector. This value is required.
+        /// Opens and returns the writer for the <c>direction</c> property. The <c>direction</c> property defines the direction of the vector. This value must be specified in order for the client to display graphics.
         /// </summary>
         [NotNull]
         public DirectionCesiumWriter OpenDirectionProperty()
@@ -351,7 +351,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>direction</c> property as a <c>spherical</c> value. The <c>direction</c> property specifies the direction of the vector. This value is required.
+        /// Writes a value for the <c>direction</c> property as a <c>spherical</c> value. The <c>direction</c> property specifies the direction of the vector. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteDirectionProperty(Spherical value)
@@ -363,7 +363,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>direction</c> property as a <c>spherical</c> value. The <c>direction</c> property specifies the direction of the vector. This value is required.
+        /// Writes a value for the <c>direction</c> property as a <c>spherical</c> value. The <c>direction</c> property specifies the direction of the vector. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -376,7 +376,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>direction</c> property as a <c>spherical</c> value. The <c>direction</c> property specifies the direction of the vector. This value is required.
+        /// Writes a value for the <c>direction</c> property as a <c>spherical</c> value. The <c>direction</c> property specifies the direction of the vector. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -391,7 +391,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>direction</c> property as a <c>unitSpherical</c> value. The <c>direction</c> property specifies the direction of the vector. This value is required.
+        /// Writes a value for the <c>direction</c> property as a <c>unitSpherical</c> value. The <c>direction</c> property specifies the direction of the vector. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteDirectionPropertyUnitSpherical(UnitSpherical value)
@@ -403,7 +403,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>direction</c> property as a <c>unitSpherical</c> value. The <c>direction</c> property specifies the direction of the vector. This value is required.
+        /// Writes a value for the <c>direction</c> property as a <c>unitSpherical</c> value. The <c>direction</c> property specifies the direction of the vector. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -416,7 +416,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>direction</c> property as a <c>unitSpherical</c> value. The <c>direction</c> property specifies the direction of the vector. This value is required.
+        /// Writes a value for the <c>direction</c> property as a <c>unitSpherical</c> value. The <c>direction</c> property specifies the direction of the vector. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -431,7 +431,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>direction</c> property as a <c>cartesian</c> value. The <c>direction</c> property specifies the direction of the vector. This value is required.
+        /// Writes a value for the <c>direction</c> property as a <c>cartesian</c> value. The <c>direction</c> property specifies the direction of the vector. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteDirectionPropertyCartesian(Cartesian value)
@@ -443,7 +443,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>direction</c> property as a <c>cartesian</c> value. The <c>direction</c> property specifies the direction of the vector. This value is required.
+        /// Writes a value for the <c>direction</c> property as a <c>cartesian</c> value. The <c>direction</c> property specifies the direction of the vector. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -456,7 +456,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>direction</c> property as a <c>cartesian</c> value. The <c>direction</c> property specifies the direction of the vector. This value is required.
+        /// Writes a value for the <c>direction</c> property as a <c>cartesian</c> value. The <c>direction</c> property specifies the direction of the vector. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -471,7 +471,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>direction</c> property as a <c>unitCartesian</c> value. The <c>direction</c> property specifies the direction of the vector. This value is required.
+        /// Writes a value for the <c>direction</c> property as a <c>unitCartesian</c> value. The <c>direction</c> property specifies the direction of the vector. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteDirectionPropertyUnitCartesian(UnitCartesian value)
@@ -483,7 +483,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>direction</c> property as a <c>unitCartesian</c> value. The <c>direction</c> property specifies the direction of the vector. This value is required.
+        /// Writes a value for the <c>direction</c> property as a <c>unitCartesian</c> value. The <c>direction</c> property specifies the direction of the vector. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -496,7 +496,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>direction</c> property as a <c>unitCartesian</c> value. The <c>direction</c> property specifies the direction of the vector. This value is required.
+        /// Writes a value for the <c>direction</c> property as a <c>unitCartesian</c> value. The <c>direction</c> property specifies the direction of the vector. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -511,7 +511,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>direction</c> property as a <c>reference</c> value. The <c>direction</c> property specifies the direction of the vector. This value is required.
+        /// Writes a value for the <c>direction</c> property as a <c>reference</c> value. The <c>direction</c> property specifies the direction of the vector. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteDirectionPropertyReference(Reference value)
@@ -523,9 +523,9 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>direction</c> property as a <c>reference</c> value. The <c>direction</c> property specifies the direction of the vector. This value is required.
+        /// Writes a value for the <c>direction</c> property as a <c>reference</c> value. The <c>direction</c> property specifies the direction of the vector. This value must be specified in order for the client to display graphics.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteDirectionPropertyReference(string value)
         {
             using (var writer = OpenDirectionProperty())
@@ -535,7 +535,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>direction</c> property as a <c>reference</c> value. The <c>direction</c> property specifies the direction of the vector. This value is required.
+        /// Writes a value for the <c>direction</c> property as a <c>reference</c> value. The <c>direction</c> property specifies the direction of the vector. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -548,7 +548,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>direction</c> property as a <c>reference</c> value. The <c>direction</c> property specifies the direction of the vector. This value is required.
+        /// Writes a value for the <c>direction</c> property as a <c>reference</c> value. The <c>direction</c> property specifies the direction of the vector. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -634,7 +634,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>length</c> property as a <c>reference</c> value. The <c>length</c> property specifies the graphical length of the vector, in meters. If not specified, the default value is 1.0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteLengthPropertyReference(string value)
         {
             using (var writer = OpenLengthProperty())
@@ -743,7 +743,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>minimumLengthInPixels</c> property as a <c>reference</c> value. The <c>minimumLengthInPixels</c> property specifies the minimum graphical length of the vector in pixels. If not specified, the default value is 0.0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteMinimumLengthInPixelsPropertyReference(string value)
         {
             using (var writer = OpenMinimumLengthInPixelsProperty())

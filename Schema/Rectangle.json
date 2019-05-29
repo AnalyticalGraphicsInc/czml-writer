@@ -3,13 +3,7 @@
     "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Rectangle.json",
     "title": "Rectangle",
     "description": "A cartographic rectangle, which conforms to the curvature of the globe and can be placed on the surface or at altitude and can optionally be extruded into a volume.",
-    "type": [
-        "array",
-        "object"
-    ],
-    "items": {
-        "$ref": "#"
-    },
+    "type": "object",
     "properties": {
         "show": {
             "$ref": "Boolean.json",
@@ -18,7 +12,8 @@
         },
         "coordinates": {
             "$ref": "RectangleCoordinates.json",
-            "description": "The coordinates of the rectangle."
+            "description": "The coordinates of the rectangle.",
+            "czmlRequiredForDisplay": true
         },
         "height": {
             "$ref": "Double.json",
@@ -93,8 +88,5 @@
             "description": "The z-index of the rectangle, used for ordering ground geometry. Only has an effect if the rectangle is constant, and `height` and `extrudedHeight` are not specified.",
             "default": "0"
         }
-    },
-    "required": [
-        "coordinates"
-    ]
+    }
 }

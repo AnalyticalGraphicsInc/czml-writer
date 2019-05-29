@@ -1,7 +1,0 @@
-{
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/UnitCartesian3ListValue.json",
-    "title": "UnitCartesian3List",
-    "description": "A list of three-dimensional unit magnitude Cartesian values, specified as `[X, Y, Z, X, Y, Z, ...]`.",
-    "type": "array"
-}

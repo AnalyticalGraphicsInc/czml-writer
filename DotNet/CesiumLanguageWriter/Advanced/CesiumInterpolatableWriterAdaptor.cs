@@ -5,15 +5,15 @@ using JetBrains.Annotations;
 namespace CesiumLanguageWriter.Advanced
 {
     /// <summary>
-    /// Adapts a class derived from <see cref="CesiumInterpolatablePropertyWriter{TDerived}"/> to implement
-    /// <see cref="ICesiumValuePropertyWriter{TValue}"/> for a different type of value.  Typically, the
-    /// class has a method to write values of the new type, but that method is not exposed via an interface.
+    /// Adapts a class that implements <see cref="ICesiumInterpolatablePropertyWriter"/> to implement
+    /// <see cref="ICesiumInterpolatableValuePropertyWriter{TValue}"/> for a different type of value.
+    /// Typically, the class has a method to write values of the new type, but that method is not exposed via an interface.
     /// This class adapts the method to the interface via a callback delegate.
     /// </summary>
-    /// <typeparam name="TFrom">The class derived from <see cref="CesiumInterpolatablePropertyWriter{TDerived}"/> to adapt.</typeparam>
+    /// <typeparam name="TFrom">The class that implements <see cref="ICesiumInterpolatablePropertyWriter"/> to adapt.</typeparam>
     /// <typeparam name="TValue">The type of value to which to adapt the class to write.</typeparam>
-    public class CesiumInterpolatableWriterAdaptor<TFrom, TValue> : ICesiumInterpolatableValuePropertyWriter<TValue>, ICesiumWriterAdaptor<TFrom>
-        where TFrom : class, ICesiumPropertyWriter, ICesiumInterpolationInformationWriter
+    public class CesiumInterpolatableWriterAdaptor<TFrom, TValue> : ICesiumWriterAdaptor<TFrom>, ICesiumInterpolatableValuePropertyWriter<TValue>, ICesiumDeletablePropertyWriter
+        where TFrom : class, ICesiumPropertyWriter, ICesiumInterpolatablePropertyWriter
     {
         /// <summary>
         /// Initializes a new instance.
@@ -21,9 +21,11 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="parent">The instance to wrap.</param>
         /// <param name="writeValueCallback">The callback to write a value of type <typeparamref name="TValue"/>.</param>
         /// <param name="writeSamplesCallback">The callback to write samples of type <typeparamref name="TValue"/>.</param>
+        /// <param name="writeDeleteValueCallback">The callback to write an indication that the client should delete existing data.</param>
         public CesiumInterpolatableWriterAdaptor([NotNull] TFrom parent,
                                                  [NotNull] CesiumWriterAdaptorWriteCallback<TFrom, TValue> writeValueCallback,
-                                                 [NotNull] CesiumWriterAdaptorWriteSamplesCallback<TFrom, TValue> writeSamplesCallback)
+                                                 [NotNull] CesiumWriterAdaptorWriteSamplesCallback<TFrom, TValue> writeSamplesCallback,
+                                                 [NotNull] CesiumWriterAdaptorWriteDeleteCallback<TFrom> writeDeleteValueCallback)
         {
             if (parent == null)
                 throw new ArgumentNullException("parent");
@@ -31,11 +33,14 @@ namespace CesiumLanguageWriter.Advanced
                 throw new ArgumentNullException("writeValueCallback");
             if (writeSamplesCallback == null)
                 throw new ArgumentNullException("writeSamplesCallback");
+            if (writeDeleteValueCallback == null)
+                throw new ArgumentNullException("writeDeleteValueCallback");
 
             m_parent = parent;
             m_writeValueCallback = writeValueCallback;
             m_writeSamplesCallback = writeSamplesCallback;
-            m_interval = new Lazy<CesiumInterpolatableWriterAdaptor<TFrom, TValue>>(() => new CesiumInterpolatableWriterAdaptor<TFrom, TValue>((TFrom)m_parent.IntervalWriter, m_writeValueCallback, m_writeSamplesCallback), false);
+            m_writeDeleteValueCallback = writeDeleteValueCallback;
+            m_interval = new Lazy<CesiumInterpolatableWriterAdaptor<TFrom, TValue>>(() => new CesiumInterpolatableWriterAdaptor<TFrom, TValue>((TFrom)m_parent.IntervalWriter, m_writeValueCallback, m_writeSamplesCallback, m_writeDeleteValueCallback), false);
         }
 
         /// <inheritdoc />
@@ -68,6 +73,12 @@ namespace CesiumLanguageWriter.Advanced
         public void WriteValue(TValue value)
         {
             m_writeValueCallback(m_parent, value);
+        }
+
+        /// <inheritdoc />
+        public void WriteDelete(bool value)
+        {
+            m_writeDeleteValueCallback(m_parent);
         }
 
         /// <inheritdoc />
@@ -118,7 +129,10 @@ namespace CesiumLanguageWriter.Advanced
             m_parent.WriteInterval(start, stop);
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Opens a writer that is used to write information about this property for a single interval.
+        /// </summary>
+        /// <returns>The writer.</returns>
         [NotNull]
         public ICesiumInterpolatableValuePropertyWriter<TValue> OpenInterval()
         {
@@ -131,7 +145,10 @@ namespace CesiumLanguageWriter.Advanced
             return OpenInterval();
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Opens a writer that is used to write information about this property for multiple discrete intervals.
+        /// </summary>
+        /// <returns>The writer.</returns>
         [NotNull]
         public ICesiumInterpolatableIntervalListWriter<TValue> OpenMultipleIntervals()
         {
@@ -174,6 +191,8 @@ namespace CesiumLanguageWriter.Advanced
         private readonly CesiumWriterAdaptorWriteCallback<TFrom, TValue> m_writeValueCallback;
         [NotNull]
         private readonly CesiumWriterAdaptorWriteSamplesCallback<TFrom, TValue> m_writeSamplesCallback;
+        [NotNull]
+        private readonly CesiumWriterAdaptorWriteDeleteCallback<TFrom> m_writeDeleteValueCallback;
         [NotNull]
         private readonly Lazy<CesiumInterpolatableWriterAdaptor<TFrom, TValue>> m_interval;
 

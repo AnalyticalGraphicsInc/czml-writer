@@ -12,7 +12,7 @@ using System.Drawing;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>Ellipsoid</c> to a <see cref="CesiumOutputStream" />. A <c>Ellipsoid</c> is a closed quadric surface that is a three dimensional analogue of an ellipse.
+    /// Writes a <c>Ellipsoid</c> to a <see cref="CesiumOutputStream"/>. A <c>Ellipsoid</c> is a closed quadric surface that is a three dimensional analogue of an ellipse.
     /// </summary>
     public class EllipsoidCesiumWriter : CesiumPropertyWriter<EllipsoidCesiumWriter>
     {
@@ -107,7 +107,7 @@ namespace CesiumLanguageWriter
         {
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override EllipsoidCesiumWriter Clone()
         {
             return new EllipsoidCesiumWriter(this);
@@ -159,7 +159,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>show</c> property as a <c>reference</c> value. The <c>show</c> property specifies whether or not the ellipsoid is shown. If not specified, the default value is <see langword="true"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteShowPropertyReference(string value)
         {
             using (var writer = OpenShowProperty())
@@ -195,7 +195,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>radii</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>radii</c> property defines the dimensions of the ellipsoid. This value is required.
+        /// Gets the writer for the <c>radii</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>radii</c> property defines the dimensions of the ellipsoid. This value must be specified in order for the client to display graphics.
         /// </summary>
         [NotNull]
         public EllipsoidRadiiCesiumWriter RadiiWriter
@@ -204,7 +204,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>radii</c> property. The <c>radii</c> property defines the dimensions of the ellipsoid. This value is required.
+        /// Opens and returns the writer for the <c>radii</c> property. The <c>radii</c> property defines the dimensions of the ellipsoid. This value must be specified in order for the client to display graphics.
         /// </summary>
         [NotNull]
         public EllipsoidRadiiCesiumWriter OpenRadiiProperty()
@@ -214,7 +214,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>radii</c> property as a <c>cartesian</c> value. The <c>radii</c> property specifies the dimensions of the ellipsoid. This value is required.
+        /// Writes a value for the <c>radii</c> property as a <c>cartesian</c> value. The <c>radii</c> property specifies the dimensions of the ellipsoid. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteRadiiProperty(Cartesian value)
@@ -226,7 +226,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>radii</c> property as a <c>cartesian</c> value. The <c>radii</c> property specifies the dimensions of the ellipsoid. This value is required.
+        /// Writes a value for the <c>radii</c> property as a <c>cartesian</c> value. The <c>radii</c> property specifies the dimensions of the ellipsoid. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -239,7 +239,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>radii</c> property as a <c>cartesian</c> value. The <c>radii</c> property specifies the dimensions of the ellipsoid. This value is required.
+        /// Writes a value for the <c>radii</c> property as a <c>cartesian</c> value. The <c>radii</c> property specifies the dimensions of the ellipsoid. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -254,7 +254,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>radii</c> property as a <c>reference</c> value. The <c>radii</c> property specifies the dimensions of the ellipsoid. This value is required.
+        /// Writes a value for the <c>radii</c> property as a <c>reference</c> value. The <c>radii</c> property specifies the dimensions of the ellipsoid. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteRadiiPropertyReference(Reference value)
@@ -266,9 +266,9 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>radii</c> property as a <c>reference</c> value. The <c>radii</c> property specifies the dimensions of the ellipsoid. This value is required.
+        /// Writes a value for the <c>radii</c> property as a <c>reference</c> value. The <c>radii</c> property specifies the dimensions of the ellipsoid. This value must be specified in order for the client to display graphics.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteRadiiPropertyReference(string value)
         {
             using (var writer = OpenRadiiProperty())
@@ -278,7 +278,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>radii</c> property as a <c>reference</c> value. The <c>radii</c> property specifies the dimensions of the ellipsoid. This value is required.
+        /// Writes a value for the <c>radii</c> property as a <c>reference</c> value. The <c>radii</c> property specifies the dimensions of the ellipsoid. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -291,7 +291,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>radii</c> property as a <c>reference</c> value. The <c>radii</c> property specifies the dimensions of the ellipsoid. This value is required.
+        /// Writes a value for the <c>radii</c> property as a <c>reference</c> value. The <c>radii</c> property specifies the dimensions of the ellipsoid. This value must be specified in order for the client to display graphics.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
@@ -349,7 +349,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>fill</c> property as a <c>reference</c> value. The <c>fill</c> property specifies whether or not the ellipsoid is filled. If not specified, the default value is <see langword="true"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteFillPropertyReference(string value)
         {
             using (var writer = OpenFillProperty())
@@ -449,7 +449,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>outline</c> property as a <c>reference</c> value. The <c>outline</c> property specifies whether or not the ellipsoid is outlined. If not specified, the default value is <see langword="false"/>.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteOutlinePropertyReference(string value)
         {
             using (var writer = OpenOutlineProperty())
@@ -628,7 +628,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>outlineColor</c> property as a <c>reference</c> value. The <c>outlineColor</c> property specifies the color of the ellipsoid outline. If not specified, the default value is black.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteOutlineColorPropertyReference(string value)
         {
             using (var writer = OpenOutlineColorProperty())
@@ -737,7 +737,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>outlineWidth</c> property as a <c>reference</c> value. The <c>outlineWidth</c> property specifies the width of the ellipsoid outline. If not specified, the default value is 1.0.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteOutlineWidthPropertyReference(string value)
         {
             using (var writer = OpenOutlineWidthProperty())
@@ -846,7 +846,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>stackPartitions</c> property as a <c>reference</c> value. The <c>stackPartitions</c> property specifies the number of times to partition the ellipsoid into stacks. If not specified, the default value is 64.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteStackPartitionsPropertyReference(string value)
         {
             using (var writer = OpenStackPartitionsProperty())
@@ -955,7 +955,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>slicePartitions</c> property as a <c>reference</c> value. The <c>slicePartitions</c> property specifies the number of times to partition the ellipsoid into radial slices. If not specified, the default value is 64.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteSlicePartitionsPropertyReference(string value)
         {
             using (var writer = OpenSlicePartitionsProperty())
@@ -1064,7 +1064,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>subdivisions</c> property as a <c>reference</c> value. The <c>subdivisions</c> property specifies the number of samples per outline ring, determining the granularity of the curvature. If not specified, the default value is 128.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteSubdivisionsPropertyReference(string value)
         {
             using (var writer = OpenSubdivisionsProperty())
@@ -1145,7 +1145,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>shadows</c> property as a <c>reference</c> value. The <c>shadows</c> property specifies whether or not the ellipsoid casts or receives shadows. If not specified, the default value is DISABLED.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteShadowsPropertyReference(string value)
         {
             using (var writer = OpenShadowsProperty())
@@ -1267,7 +1267,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes a value for the <c>distanceDisplayCondition</c> property as a <c>reference</c> value. The <c>distanceDisplayCondition</c> property specifies the display condition specifying at what distance from the camera this ellipsoid will be displayed.
         /// </summary>
-        /// <param name="value">The earliest date of the interval.</param>
+        /// <param name="value">The reference.</param>
         public void WriteDistanceDisplayConditionPropertyReference(string value)
         {
             using (var writer = OpenDistanceDisplayConditionProperty())

@@ -383,7 +383,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeShowPropertyReference(String value) {
         {
@@ -439,7 +439,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code image} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code image} property defines the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+    *  Gets the writer for the {@code image} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code image} property defines the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     
 
     */
@@ -450,7 +450,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     /**
     *  
-    Opens and returns the writer for the {@code image} property. The {@code image} property defines the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+    Opens and returns the writer for the {@code image} property. The {@code image} property defines the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     
 
     */
@@ -462,7 +462,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     /**
     *  
-    Writes a value for the {@code image} property as a {@code uri} value. The {@code image} property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+    Writes a value for the {@code image} property as a {@code uri} value. The {@code image} property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     
     
 
@@ -481,7 +481,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     /**
     *  
-    Writes a value for the {@code image} property as a {@code uri} value. The {@code image} property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+    Writes a value for the {@code image} property as a {@code uri} value. The {@code image} property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     
     
     
@@ -502,7 +502,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     /**
     *  
-    Writes a value for the {@code image} property as a {@code uri} value. The {@code image} property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+    Writes a value for the {@code image} property as a {@code uri} value. The {@code image} property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     
     
     
@@ -523,7 +523,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     /**
     *  
-    Writes a value for the {@code image} property as a {@code uri} value. The {@code image} property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+    Writes a value for the {@code image} property as a {@code uri} value. The {@code image} property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     
     
     
@@ -544,7 +544,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     /**
     *  
-    Writes a value for the {@code image} property as a {@code uri} value. The {@code image} property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+    Writes a value for the {@code image} property as a {@code uri} value. The {@code image} property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     
     
     
@@ -565,7 +565,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     /**
     *  
-    Writes a value for the {@code image} property as a {@code uri} value. The {@code image} property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+    Writes a value for the {@code image} property as a {@code uri} value. The {@code image} property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     
     
 
@@ -584,7 +584,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     /**
     *  
-    Writes a value for the {@code image} property as a {@code uri} value. The {@code image} property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+    Writes a value for the {@code image} property as a {@code uri} value. The {@code image} property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     
     
     
@@ -605,7 +605,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     /**
     *  
-    Writes a value for the {@code image} property as a {@code reference} value. The {@code image} property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+    Writes a value for the {@code image} property as a {@code reference} value. The {@code image} property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     
     
 
@@ -624,11 +624,11 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     /**
     *  
-    Writes a value for the {@code image} property as a {@code reference} value. The {@code image} property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+    Writes a value for the {@code image} property as a {@code reference} value. The {@code image} property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeImagePropertyReference(String value) {
         {
@@ -643,7 +643,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     /**
     *  
-    Writes a value for the {@code image} property as a {@code reference} value. The {@code image} property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+    Writes a value for the {@code image} property as a {@code reference} value. The {@code image} property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     
     
     
@@ -664,7 +664,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
 
     /**
     *  
-    Writes a value for the {@code image} property as a {@code reference} value. The {@code image} property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value is required.
+    Writes a value for the {@code image} property as a {@code reference} value. The {@code image} property specifies the URI of the image displayed on the billboard. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     
     
     
@@ -795,7 +795,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeScalePropertyReference(String value) {
         {
@@ -983,7 +983,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writePixelOffsetPropertyReference(String value) {
         {
@@ -1150,7 +1150,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeEyeOffsetPropertyReference(String value) {
         {
@@ -1271,7 +1271,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeHorizontalOriginPropertyReference(String value) {
         {
@@ -1392,7 +1392,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeVerticalOriginPropertyReference(String value) {
         {
@@ -1513,7 +1513,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeHeightReferencePropertyReference(String value) {
         {
@@ -1795,7 +1795,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeColorPropertyReference(String value) {
         {
@@ -1962,7 +1962,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeRotationPropertyReference(String value) {
         {
@@ -2194,7 +2194,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeAlignedAxisPropertyReference(String value) {
         {
@@ -2274,7 +2274,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeAlignedAxisPropertyVelocityReference(String value) {
         {
@@ -2395,7 +2395,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeSizeInMetersPropertyReference(String value) {
         {
@@ -2562,7 +2562,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeWidthPropertyReference(String value) {
         {
@@ -2729,7 +2729,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeHeightPropertyReference(String value) {
         {
@@ -2921,7 +2921,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeScaleByDistancePropertyReference(String value) {
         {
@@ -3113,7 +3113,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeTranslucencyByDistancePropertyReference(String value) {
         {
@@ -3305,7 +3305,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writePixelOffsetScaleByDistancePropertyReference(String value) {
         {
@@ -3472,7 +3472,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeImageSubRegionPropertyReference(String value) {
         {
@@ -3660,7 +3660,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeDistanceDisplayConditionPropertyReference(String value) {
         {
@@ -3827,7 +3827,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeDisableDepthTestDistancePropertyReference(String value) {
         {

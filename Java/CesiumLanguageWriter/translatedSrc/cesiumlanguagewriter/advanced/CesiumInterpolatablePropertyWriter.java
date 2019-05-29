@@ -20,7 +20,7 @@ import javax.annotation.Nonnull;
         "serial"
 })
 public abstract class CesiumInterpolatablePropertyWriter<TDerived extends CesiumInterpolatablePropertyWriter<TDerived>> extends CesiumPropertyWriter<TDerived> implements
-        ICesiumInterpolationInformationWriter {
+        ICesiumInterpolatablePropertyWriter {
     /**
     *  
     Initializes a new instance.
@@ -29,7 +29,7 @@ public abstract class CesiumInterpolatablePropertyWriter<TDerived extends Cesium
 
     * @param propertyName The name of the property.
     */
-    protected CesiumInterpolatablePropertyWriter(String propertyName) {
+    protected CesiumInterpolatablePropertyWriter(@Nonnull String propertyName) {
         super(propertyName);
     }
 
@@ -41,7 +41,7 @@ public abstract class CesiumInterpolatablePropertyWriter<TDerived extends Cesium
 
     * @param existingInstance The existing instance to copy.
     */
-    protected CesiumInterpolatablePropertyWriter(CesiumInterpolatablePropertyWriter<TDerived> existingInstance) {
+    protected CesiumInterpolatablePropertyWriter(@Nonnull CesiumInterpolatablePropertyWriter<TDerived> existingInstance) {
         super(existingInstance);
     }
 

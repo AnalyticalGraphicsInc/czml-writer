@@ -3,9 +3,12 @@
     "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/DistanceDisplayCondition.json",
     "title": "DistanceDisplayCondition",
     "description": "Indicates the visibility of an object based on the distance to the camera.",
-    "extends": {
-        "$ref": "InterpolatableProperty.json"
-    },
+    "allOf": [
+        { "$ref": "InterpolatableProperty.json" },
+        { "$ref": "DeletableProperty.json" },
+        { "$ref": "ValueProperties/DistanceDisplayConditionValueProperty.json" },
+        { "$ref": "ValueProperties/ReferenceValueProperty.json" }
+    ],
     "type": [
         "array",
         "object"
@@ -15,18 +18,12 @@
     },
     "properties": {
         "distanceDisplayCondition": {
-            "$ref": "DistanceDisplayConditionValue.json",
-            "description": "The value specified as two values `[NearDistance, FarDistance]`, with distances in meters.",
-            "czmlValue": true
+            "$ref": "Values/DistanceDisplayConditionValue.json",
+            "description": "The value specified as two values `[NearDistance, FarDistance]`, with distances in meters."
         },
         "reference": {
-            "$ref": "ReferenceValue.json",
-            "description": "The value specified as a reference to another property.",
-            "czmlValue": true
-        },
-        "delete": {
-            "description": "Whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.",
-            "type": "boolean"
+            "$ref": "Values/ReferenceValue.json",
+            "description": "The value specified as a reference to another property."
         }
     }
 }

@@ -301,7 +301,7 @@ public class SolidColorMaterialCesiumWriter extends CesiumPropertyWriter<SolidCo
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeColorPropertyReference(String value) {
         {

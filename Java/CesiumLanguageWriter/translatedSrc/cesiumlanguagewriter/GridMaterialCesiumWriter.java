@@ -353,7 +353,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeColorPropertyReference(String value) {
         {
@@ -520,7 +520,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeCellAlphaPropertyReference(String value) {
         {
@@ -708,7 +708,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeLineCountPropertyReference(String value) {
         {
@@ -896,7 +896,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeLineThicknessPropertyReference(String value) {
         {
@@ -1084,7 +1084,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeLineOffsetPropertyReference(String value) {
         {

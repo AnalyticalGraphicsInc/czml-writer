@@ -190,7 +190,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeOrientationPropertyReference(String value) {
         {
@@ -472,7 +472,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeEvenColorPropertyReference(String value) {
         {
@@ -754,7 +754,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeOddColorPropertyReference(String value) {
         {
@@ -921,7 +921,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeOffsetPropertyReference(String value) {
         {
@@ -1088,7 +1088,7 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     
     
 
-    * @param value The earliest date of the interval.
+    * @param value The reference.
     */
     public final void writeRepeatPropertyReference(String value) {
         {

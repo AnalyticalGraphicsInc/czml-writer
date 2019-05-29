@@ -3,14 +3,8 @@
     "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Extensions/AGI/CustomPatternSensor.json",
     "title": "CustomPatternSensor",
     "description": "A custom sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.",
-    "type": [
-        "array",
-        "object"
-    ],
-    "items": {
-        "$ref": "#"
-    },
-    "extensionPrefix": "agi",
+    "type": "object",
+    "czmlExtensionPrefix": "agi",
     "properties": {
         "show": {
             "$ref": "../../Boolean.json",
@@ -19,7 +13,8 @@
         },
         "directions": {
             "$ref": "../../DirectionList.json",
-            "description": "The list of directions defining the custom sensor."
+            "description": "The list of directions defining the custom sensor.",
+            "czmlRequiredForDisplay": true
         },
         "radius": {
             "$ref": "../../Double.json",
@@ -116,8 +111,5 @@
             "description": "The width in meters of the intersection line between the sensor and the environment.",
             "default": 5.0
         }
-    },
-    "required": [
-        "directions"
-    ]
+    }
 }

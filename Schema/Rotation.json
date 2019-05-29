@@ -3,9 +3,12 @@
     "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Rotation.json",
     "title": "Rotation",
     "description": "Defines a rotation that transforms a vector expressed in one axes and transforms it to another.",
-    "extends": {
-        "$ref": "InterpolatableProperty.json"
-    },
+    "allOf": [
+        { "$ref": "InterpolatableProperty.json" },
+        { "$ref": "DeletableProperty.json" },
+        { "$ref": "ValueProperties/UnitQuaternionValueProperty.json" },
+        { "$ref": "ValueProperties/ReferenceValueProperty.json" }
+    ],
     "type": [
         "array",
         "object"
@@ -19,18 +22,12 @@
     ],
     "properties": {
         "unitQuaternion": {
-            "$ref": "UnitQuaternionValue.json",
-            "description": "The rotation specified as a 4-dimensional unit magnitude quaternion, specified as `[X, Y, Z, W]`.",
-            "czmlValue": true
+            "$ref": "Values/UnitQuaternionValue.json",
+            "description": "The rotation specified as a 4-dimensional unit magnitude quaternion, specified as `[X, Y, Z, W]`."
         },
         "reference": {
-            "$ref": "ReferenceValue.json",
-            "description": "The rotation specified as a reference to another property.",
-            "czmlValue": true
-        },
-        "delete": {
-            "description": "Whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.",
-            "type": "boolean"
+            "$ref": "Values/ReferenceValue.json",
+            "description": "The rotation specified as a reference to another property."
         }
     }
 }
