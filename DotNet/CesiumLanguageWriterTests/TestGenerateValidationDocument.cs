@@ -230,6 +230,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteCartesian(new Cartesian(57494, 62432, 42995));
                         m_assertionsWriter.WriteLine("    expect(e.box.dimensions.getValue(date)).toEqual(new Cartesian3(57494, 62432, 42995));");
                     }
+                    using (var w2 = w.OpenHeightReferenceProperty())
+                    {
+                        w2.WriteHeightReference(CesiumHeightReference.ClampToGround);
+                        m_assertionsWriter.WriteLine("    expect(e.box.heightReference.getValue(date)).toEqual(HeightReference.CLAMP_TO_GROUND);");
+                    }
                     using (var w2 = w.OpenFillProperty())
                     {
                         w2.WriteBoolean(true);
@@ -294,15 +299,15 @@ namespace CesiumLanguageWriterTests
                         w2.WriteNumber(8062.0);
                         m_assertionsWriter.WriteLine("    expect(e.corridor.height.getValue(date)).toEqual(8062.0);");
                     }
-                    using (var w2 = w.OpenExtrudedHeightProperty())
-                    {
-                        w2.WriteNumber(22846.0);
-                        m_assertionsWriter.WriteLine("    expect(e.corridor.extrudedHeight.getValue(date)).toEqual(22846.0);");
-                    }
                     using (var w2 = w.OpenHeightReferenceProperty())
                     {
                         w2.WriteHeightReference(CesiumHeightReference.ClampToGround);
                         m_assertionsWriter.WriteLine("    expect(e.corridor.heightReference.getValue(date)).toEqual(HeightReference.CLAMP_TO_GROUND);");
+                    }
+                    using (var w2 = w.OpenExtrudedHeightProperty())
+                    {
+                        w2.WriteNumber(22846.0);
+                        m_assertionsWriter.WriteLine("    expect(e.corridor.extrudedHeight.getValue(date)).toEqual(22846.0);");
                     }
                     using (var w2 = w.OpenExtrudedHeightReferenceProperty())
                     {
@@ -360,6 +365,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteDistanceDisplayCondition(new Bounds(15797, 46507));
                         m_assertionsWriter.WriteLine("    expect(e.corridor.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(15797, 46507));");
                     }
+                    using (var w2 = w.OpenClassificationTypeProperty())
+                    {
+                        w2.WriteClassificationType(CesiumClassificationType.Terrain);
+                        m_assertionsWriter.WriteLine("    expect(e.corridor.classificationType.getValue(date)).toEqual(ClassificationType.TERRAIN);");
+                    }
                     using (var w2 = w.OpenZIndexProperty())
                     {
                         w2.WriteNumber(59315);
@@ -387,6 +397,11 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteNumber(59378.0);
                         m_assertionsWriter.WriteLine("    expect(e.cylinder.bottomRadius.getValue(date)).toEqual(59378.0);");
+                    }
+                    using (var w2 = w.OpenHeightReferenceProperty())
+                    {
+                        w2.WriteHeightReference(CesiumHeightReference.ClampToGround);
+                        m_assertionsWriter.WriteLine("    expect(e.cylinder.heightReference.getValue(date)).toEqual(HeightReference.CLAMP_TO_GROUND);");
                     }
                     using (var w2 = w.OpenFillProperty())
                     {
@@ -462,15 +477,15 @@ namespace CesiumLanguageWriterTests
                         w2.WriteNumber(15549.0);
                         m_assertionsWriter.WriteLine("    expect(e.ellipse.height.getValue(date)).toEqual(15549.0);");
                     }
-                    using (var w2 = w.OpenExtrudedHeightProperty())
-                    {
-                        w2.WriteNumber(55640.0);
-                        m_assertionsWriter.WriteLine("    expect(e.ellipse.extrudedHeight.getValue(date)).toEqual(55640.0);");
-                    }
                     using (var w2 = w.OpenHeightReferenceProperty())
                     {
                         w2.WriteHeightReference(CesiumHeightReference.ClampToGround);
                         m_assertionsWriter.WriteLine("    expect(e.ellipse.heightReference.getValue(date)).toEqual(HeightReference.CLAMP_TO_GROUND);");
+                    }
+                    using (var w2 = w.OpenExtrudedHeightProperty())
+                    {
+                        w2.WriteNumber(55640.0);
+                        m_assertionsWriter.WriteLine("    expect(e.ellipse.extrudedHeight.getValue(date)).toEqual(55640.0);");
                     }
                     using (var w2 = w.OpenExtrudedHeightReferenceProperty())
                     {
@@ -538,6 +553,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteDistanceDisplayCondition(new Bounds(27813, 30828));
                         m_assertionsWriter.WriteLine("    expect(e.ellipse.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(27813, 30828));");
                     }
+                    using (var w2 = w.OpenClassificationTypeProperty())
+                    {
+                        w2.WriteClassificationType(CesiumClassificationType.Terrain);
+                        m_assertionsWriter.WriteLine("    expect(e.ellipse.classificationType.getValue(date)).toEqual(ClassificationType.TERRAIN);");
+                    }
                     using (var w2 = w.OpenZIndexProperty())
                     {
                         w2.WriteNumber(3341);
@@ -555,6 +575,11 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteCartesian(new Cartesian(15638, 24381, 37983));
                         m_assertionsWriter.WriteLine("    expect(e.ellipsoid.radii.getValue(date)).toEqual(new Cartesian3(15638, 24381, 37983));");
+                    }
+                    using (var w2 = w.OpenHeightReferenceProperty())
+                    {
+                        w2.WriteHeightReference(CesiumHeightReference.ClampToGround);
+                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.heightReference.getValue(date)).toEqual(HeightReference.CLAMP_TO_GROUND);");
                     }
                     using (var w2 = w.OpenFillProperty())
                     {
@@ -827,16 +852,6 @@ namespace CesiumLanguageWriterTests
                         w2.WriteBoolean(true);
                         m_assertionsWriter.WriteLine("    expect(e.path.show.getValue(date)).toEqual(true);");
                     }
-                    using (var w2 = w.OpenWidthProperty())
-                    {
-                        w2.WriteNumber(56040.0);
-                        m_assertionsWriter.WriteLine("    expect(e.path.width.getValue(date)).toEqual(56040.0);");
-                    }
-                    using (var w2 = w.OpenResolutionProperty())
-                    {
-                        w2.WriteNumber(31563.0);
-                        m_assertionsWriter.WriteLine("    expect(e.path.resolution.getValue(date)).toEqual(31563.0);");
-                    }
                     using (var w2 = w.OpenLeadTimeProperty())
                     {
                         w2.WriteNumber(5997.0);
@@ -846,6 +861,16 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteNumber(52915.0);
                         m_assertionsWriter.WriteLine("    expect(e.path.trailTime.getValue(date)).toEqual(52915.0);");
+                    }
+                    using (var w2 = w.OpenWidthProperty())
+                    {
+                        w2.WriteNumber(56040.0);
+                        m_assertionsWriter.WriteLine("    expect(e.path.width.getValue(date)).toEqual(56040.0);");
+                    }
+                    using (var w2 = w.OpenResolutionProperty())
+                    {
+                        w2.WriteNumber(31563.0);
+                        m_assertionsWriter.WriteLine("    expect(e.path.resolution.getValue(date)).toEqual(31563.0);");
                     }
                     using (var w2 = w.OpenMaterialProperty())
                     {
@@ -939,15 +964,15 @@ namespace CesiumLanguageWriterTests
                         w2.WriteNumber(26391.0);
                         m_assertionsWriter.WriteLine("    expect(e.polygon.height.getValue(date)).toEqual(26391.0);");
                     }
-                    using (var w2 = w.OpenExtrudedHeightProperty())
-                    {
-                        w2.WriteNumber(15922.0);
-                        m_assertionsWriter.WriteLine("    expect(e.polygon.extrudedHeight.getValue(date)).toEqual(15922.0);");
-                    }
                     using (var w2 = w.OpenHeightReferenceProperty())
                     {
                         w2.WriteHeightReference(CesiumHeightReference.ClampToGround);
                         m_assertionsWriter.WriteLine("    expect(e.polygon.heightReference.getValue(date)).toEqual(HeightReference.CLAMP_TO_GROUND);");
+                    }
+                    using (var w2 = w.OpenExtrudedHeightProperty())
+                    {
+                        w2.WriteNumber(15922.0);
+                        m_assertionsWriter.WriteLine("    expect(e.polygon.extrudedHeight.getValue(date)).toEqual(15922.0);");
                     }
                     using (var w2 = w.OpenExtrudedHeightReferenceProperty())
                     {
@@ -1020,6 +1045,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteDistanceDisplayCondition(new Bounds(5989, 26104));
                         m_assertionsWriter.WriteLine("    expect(e.polygon.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(5989, 26104));");
                     }
+                    using (var w2 = w.OpenClassificationTypeProperty())
+                    {
+                        w2.WriteClassificationType(CesiumClassificationType.Terrain);
+                        m_assertionsWriter.WriteLine("    expect(e.polygon.classificationType.getValue(date)).toEqual(ClassificationType.TERRAIN);");
+                    }
                     using (var w2 = w.OpenZIndexProperty())
                     {
                         w2.WriteNumber(31269);
@@ -1090,6 +1120,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteBoolean(true);
                         m_assertionsWriter.WriteLine("    expect(e.polyline.clampToGround.getValue(date)).toEqual(true);");
                     }
+                    using (var w2 = w.OpenClassificationTypeProperty())
+                    {
+                        w2.WriteClassificationType(CesiumClassificationType.Terrain);
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.classificationType.getValue(date)).toEqual(ClassificationType.TERRAIN);");
+                    }
                     using (var w2 = w.OpenZIndexProperty())
                     {
                         w2.WriteNumber(17658);
@@ -1113,15 +1148,15 @@ namespace CesiumLanguageWriterTests
                         w2.WriteNumber(20608.0);
                         m_assertionsWriter.WriteLine("    expect(e.rectangle.height.getValue(date)).toEqual(20608.0);");
                     }
-                    using (var w2 = w.OpenExtrudedHeightProperty())
-                    {
-                        w2.WriteNumber(23002.0);
-                        m_assertionsWriter.WriteLine("    expect(e.rectangle.extrudedHeight.getValue(date)).toEqual(23002.0);");
-                    }
                     using (var w2 = w.OpenHeightReferenceProperty())
                     {
                         w2.WriteHeightReference(CesiumHeightReference.ClampToGround);
                         m_assertionsWriter.WriteLine("    expect(e.rectangle.heightReference.getValue(date)).toEqual(HeightReference.CLAMP_TO_GROUND);");
+                    }
+                    using (var w2 = w.OpenExtrudedHeightProperty())
+                    {
+                        w2.WriteNumber(23002.0);
+                        m_assertionsWriter.WriteLine("    expect(e.rectangle.extrudedHeight.getValue(date)).toEqual(23002.0);");
                     }
                     using (var w2 = w.OpenExtrudedHeightReferenceProperty())
                     {
@@ -1183,6 +1218,11 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteDistanceDisplayCondition(new Bounds(21388, 23379));
                         m_assertionsWriter.WriteLine("    expect(e.rectangle.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(21388, 23379));");
+                    }
+                    using (var w2 = w.OpenClassificationTypeProperty())
+                    {
+                        w2.WriteClassificationType(CesiumClassificationType.Terrain);
+                        m_assertionsWriter.WriteLine("    expect(e.rectangle.classificationType.getValue(date)).toEqual(ClassificationType.TERRAIN);");
                     }
                     using (var w2 = w.OpenZIndexProperty())
                     {
@@ -9057,6 +9097,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteReference(new Reference("Constant", CreateList("box", "dimensions")));
                         m_assertionsWriter.WriteLine("    expect(e.box.dimensions.getValue(date)).toEqual(constant.box.dimensions.getValue(date));");
                     }
+                    using (var w2 = w.OpenHeightReferenceProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("box", "heightReference")));
+                        m_assertionsWriter.WriteLine("    expect(e.box.heightReference.getValue(date)).toEqual(constant.box.heightReference.getValue(date));");
+                    }
                     using (var w2 = w.OpenFillProperty())
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("box", "fill")));
@@ -9119,15 +9164,15 @@ namespace CesiumLanguageWriterTests
                         w2.WriteReference(new Reference("Constant", CreateList("corridor", "height")));
                         m_assertionsWriter.WriteLine("    expect(e.corridor.height.getValue(date)).toEqual(constant.corridor.height.getValue(date));");
                     }
-                    using (var w2 = w.OpenExtrudedHeightProperty())
-                    {
-                        w2.WriteReference(new Reference("Constant", CreateList("corridor", "extrudedHeight")));
-                        m_assertionsWriter.WriteLine("    expect(e.corridor.extrudedHeight.getValue(date)).toEqual(constant.corridor.extrudedHeight.getValue(date));");
-                    }
                     using (var w2 = w.OpenHeightReferenceProperty())
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("corridor", "heightReference")));
                         m_assertionsWriter.WriteLine("    expect(e.corridor.heightReference.getValue(date)).toEqual(constant.corridor.heightReference.getValue(date));");
+                    }
+                    using (var w2 = w.OpenExtrudedHeightProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("corridor", "extrudedHeight")));
+                        m_assertionsWriter.WriteLine("    expect(e.corridor.extrudedHeight.getValue(date)).toEqual(constant.corridor.extrudedHeight.getValue(date));");
                     }
                     using (var w2 = w.OpenExtrudedHeightReferenceProperty())
                     {
@@ -9183,6 +9228,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteReference(new Reference("Constant", CreateList("corridor", "distanceDisplayCondition")));
                         m_assertionsWriter.WriteLine("    expect(e.corridor.distanceDisplayCondition.getValue(date)).toEqual(constant.corridor.distanceDisplayCondition.getValue(date));");
                     }
+                    using (var w2 = w.OpenClassificationTypeProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("corridor", "classificationType")));
+                        m_assertionsWriter.WriteLine("    expect(e.corridor.classificationType.getValue(date)).toEqual(constant.corridor.classificationType.getValue(date));");
+                    }
                     using (var w2 = w.OpenZIndexProperty())
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("corridor", "zIndex")));
@@ -9210,6 +9260,11 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("cylinder", "bottomRadius")));
                         m_assertionsWriter.WriteLine("    expect(e.cylinder.bottomRadius.getValue(date)).toEqual(constant.cylinder.bottomRadius.getValue(date));");
+                    }
+                    using (var w2 = w.OpenHeightReferenceProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("cylinder", "heightReference")));
+                        m_assertionsWriter.WriteLine("    expect(e.cylinder.heightReference.getValue(date)).toEqual(constant.cylinder.heightReference.getValue(date));");
                     }
                     using (var w2 = w.OpenFillProperty())
                     {
@@ -9283,15 +9338,15 @@ namespace CesiumLanguageWriterTests
                         w2.WriteReference(new Reference("Constant", CreateList("ellipse", "height")));
                         m_assertionsWriter.WriteLine("    expect(e.ellipse.height.getValue(date)).toEqual(constant.ellipse.height.getValue(date));");
                     }
-                    using (var w2 = w.OpenExtrudedHeightProperty())
-                    {
-                        w2.WriteReference(new Reference("Constant", CreateList("ellipse", "extrudedHeight")));
-                        m_assertionsWriter.WriteLine("    expect(e.ellipse.extrudedHeight.getValue(date)).toEqual(constant.ellipse.extrudedHeight.getValue(date));");
-                    }
                     using (var w2 = w.OpenHeightReferenceProperty())
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("ellipse", "heightReference")));
                         m_assertionsWriter.WriteLine("    expect(e.ellipse.heightReference.getValue(date)).toEqual(constant.ellipse.heightReference.getValue(date));");
+                    }
+                    using (var w2 = w.OpenExtrudedHeightProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("ellipse", "extrudedHeight")));
+                        m_assertionsWriter.WriteLine("    expect(e.ellipse.extrudedHeight.getValue(date)).toEqual(constant.ellipse.extrudedHeight.getValue(date));");
                     }
                     using (var w2 = w.OpenExtrudedHeightReferenceProperty())
                     {
@@ -9357,6 +9412,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteReference(new Reference("Constant", CreateList("ellipse", "distanceDisplayCondition")));
                         m_assertionsWriter.WriteLine("    expect(e.ellipse.distanceDisplayCondition.getValue(date)).toEqual(constant.ellipse.distanceDisplayCondition.getValue(date));");
                     }
+                    using (var w2 = w.OpenClassificationTypeProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("ellipse", "classificationType")));
+                        m_assertionsWriter.WriteLine("    expect(e.ellipse.classificationType.getValue(date)).toEqual(constant.ellipse.classificationType.getValue(date));");
+                    }
                     using (var w2 = w.OpenZIndexProperty())
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("ellipse", "zIndex")));
@@ -9374,6 +9434,11 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("ellipsoid", "radii")));
                         m_assertionsWriter.WriteLine("    expect(e.ellipsoid.radii.getValue(date)).toEqual(constant.ellipsoid.radii.getValue(date));");
+                    }
+                    using (var w2 = w.OpenHeightReferenceProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("ellipsoid", "heightReference")));
+                        m_assertionsWriter.WriteLine("    expect(e.ellipsoid.heightReference.getValue(date)).toEqual(constant.ellipsoid.heightReference.getValue(date));");
                     }
                     using (var w2 = w.OpenFillProperty())
                     {
@@ -9642,16 +9707,6 @@ namespace CesiumLanguageWriterTests
                         w2.WriteReference(new Reference("Constant", CreateList("path", "show")));
                         m_assertionsWriter.WriteLine("    expect(e.path.show.getValue(date)).toEqual(constant.path.show.getValue(date));");
                     }
-                    using (var w2 = w.OpenWidthProperty())
-                    {
-                        w2.WriteReference(new Reference("Constant", CreateList("path", "width")));
-                        m_assertionsWriter.WriteLine("    expect(e.path.width.getValue(date)).toEqual(constant.path.width.getValue(date));");
-                    }
-                    using (var w2 = w.OpenResolutionProperty())
-                    {
-                        w2.WriteReference(new Reference("Constant", CreateList("path", "resolution")));
-                        m_assertionsWriter.WriteLine("    expect(e.path.resolution.getValue(date)).toEqual(constant.path.resolution.getValue(date));");
-                    }
                     using (var w2 = w.OpenLeadTimeProperty())
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("path", "leadTime")));
@@ -9661,6 +9716,16 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("path", "trailTime")));
                         m_assertionsWriter.WriteLine("    expect(e.path.trailTime.getValue(date)).toEqual(constant.path.trailTime.getValue(date));");
+                    }
+                    using (var w2 = w.OpenWidthProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("path", "width")));
+                        m_assertionsWriter.WriteLine("    expect(e.path.width.getValue(date)).toEqual(constant.path.width.getValue(date));");
+                    }
+                    using (var w2 = w.OpenResolutionProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("path", "resolution")));
+                        m_assertionsWriter.WriteLine("    expect(e.path.resolution.getValue(date)).toEqual(constant.path.resolution.getValue(date));");
                     }
                     using (var w2 = w.OpenMaterialProperty())
                     using (var m = w2.OpenSolidColorProperty())
@@ -9752,15 +9817,15 @@ namespace CesiumLanguageWriterTests
                         w2.WriteReference(new Reference("Constant", CreateList("polygon", "height")));
                         m_assertionsWriter.WriteLine("    expect(e.polygon.height.getValue(date)).toEqual(constant.polygon.height.getValue(date));");
                     }
-                    using (var w2 = w.OpenExtrudedHeightProperty())
-                    {
-                        w2.WriteReference(new Reference("Constant", CreateList("polygon", "extrudedHeight")));
-                        m_assertionsWriter.WriteLine("    expect(e.polygon.extrudedHeight.getValue(date)).toEqual(constant.polygon.extrudedHeight.getValue(date));");
-                    }
                     using (var w2 = w.OpenHeightReferenceProperty())
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("polygon", "heightReference")));
                         m_assertionsWriter.WriteLine("    expect(e.polygon.heightReference.getValue(date)).toEqual(constant.polygon.heightReference.getValue(date));");
+                    }
+                    using (var w2 = w.OpenExtrudedHeightProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("polygon", "extrudedHeight")));
+                        m_assertionsWriter.WriteLine("    expect(e.polygon.extrudedHeight.getValue(date)).toEqual(constant.polygon.extrudedHeight.getValue(date));");
                     }
                     using (var w2 = w.OpenExtrudedHeightReferenceProperty())
                     {
@@ -9831,6 +9896,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteReference(new Reference("Constant", CreateList("polygon", "distanceDisplayCondition")));
                         m_assertionsWriter.WriteLine("    expect(e.polygon.distanceDisplayCondition.getValue(date)).toEqual(constant.polygon.distanceDisplayCondition.getValue(date));");
                     }
+                    using (var w2 = w.OpenClassificationTypeProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("polygon", "classificationType")));
+                        m_assertionsWriter.WriteLine("    expect(e.polygon.classificationType.getValue(date)).toEqual(constant.polygon.classificationType.getValue(date));");
+                    }
                     using (var w2 = w.OpenZIndexProperty())
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("polygon", "zIndex")));
@@ -9897,6 +9967,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteReference(new Reference("Constant", CreateList("polyline", "clampToGround")));
                         m_assertionsWriter.WriteLine("    expect(e.polyline.clampToGround.getValue(date)).toEqual(constant.polyline.clampToGround.getValue(date));");
                     }
+                    using (var w2 = w.OpenClassificationTypeProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("polyline", "classificationType")));
+                        m_assertionsWriter.WriteLine("    expect(e.polyline.classificationType.getValue(date)).toEqual(constant.polyline.classificationType.getValue(date));");
+                    }
                     using (var w2 = w.OpenZIndexProperty())
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("polyline", "zIndex")));
@@ -9920,15 +9995,15 @@ namespace CesiumLanguageWriterTests
                         w2.WriteReference(new Reference("Constant", CreateList("rectangle", "height")));
                         m_assertionsWriter.WriteLine("    expect(e.rectangle.height.getValue(date)).toEqual(constant.rectangle.height.getValue(date));");
                     }
-                    using (var w2 = w.OpenExtrudedHeightProperty())
-                    {
-                        w2.WriteReference(new Reference("Constant", CreateList("rectangle", "extrudedHeight")));
-                        m_assertionsWriter.WriteLine("    expect(e.rectangle.extrudedHeight.getValue(date)).toEqual(constant.rectangle.extrudedHeight.getValue(date));");
-                    }
                     using (var w2 = w.OpenHeightReferenceProperty())
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("rectangle", "heightReference")));
                         m_assertionsWriter.WriteLine("    expect(e.rectangle.heightReference.getValue(date)).toEqual(constant.rectangle.heightReference.getValue(date));");
+                    }
+                    using (var w2 = w.OpenExtrudedHeightProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("rectangle", "extrudedHeight")));
+                        m_assertionsWriter.WriteLine("    expect(e.rectangle.extrudedHeight.getValue(date)).toEqual(constant.rectangle.extrudedHeight.getValue(date));");
                     }
                     using (var w2 = w.OpenExtrudedHeightReferenceProperty())
                     {
@@ -9988,6 +10063,11 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("rectangle", "distanceDisplayCondition")));
                         m_assertionsWriter.WriteLine("    expect(e.rectangle.distanceDisplayCondition.getValue(date)).toEqual(constant.rectangle.distanceDisplayCondition.getValue(date));");
+                    }
+                    using (var w2 = w.OpenClassificationTypeProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("rectangle", "classificationType")));
+                        m_assertionsWriter.WriteLine("    expect(e.rectangle.classificationType.getValue(date)).toEqual(constant.rectangle.classificationType.getValue(date));");
                     }
                     using (var w2 = w.OpenZIndexProperty())
                     {
@@ -14875,18 +14955,6 @@ namespace CesiumLanguageWriterTests
                 }
                 using (var w = packet.OpenPathProperty())
                 {
-                    using (var w2 = w.OpenWidthProperty())
-                    {
-                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(32449.0, 33819.0));
-                        m_assertionsWriter.WriteLine("    expect(e.path.width.getValue(documentStartDate)).toEqual(32449.0);");
-                        m_assertionsWriter.WriteLine("    expect(e.path.width.getValue(documentStopDate)).toEqual(33819.0);");
-                    }
-                    using (var w2 = w.OpenResolutionProperty())
-                    {
-                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(8399.0, 19400.0));
-                        m_assertionsWriter.WriteLine("    expect(e.path.resolution.getValue(documentStartDate)).toEqual(8399.0);");
-                        m_assertionsWriter.WriteLine("    expect(e.path.resolution.getValue(documentStopDate)).toEqual(19400.0);");
-                    }
                     using (var w2 = w.OpenLeadTimeProperty())
                     {
                         w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(40222.0, 33294.0));
@@ -14898,6 +14966,18 @@ namespace CesiumLanguageWriterTests
                         w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(34052.0, 57713.0));
                         m_assertionsWriter.WriteLine("    expect(e.path.trailTime.getValue(documentStartDate)).toEqual(34052.0);");
                         m_assertionsWriter.WriteLine("    expect(e.path.trailTime.getValue(documentStopDate)).toEqual(57713.0);");
+                    }
+                    using (var w2 = w.OpenWidthProperty())
+                    {
+                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(32449.0, 33819.0));
+                        m_assertionsWriter.WriteLine("    expect(e.path.width.getValue(documentStartDate)).toEqual(32449.0);");
+                        m_assertionsWriter.WriteLine("    expect(e.path.width.getValue(documentStopDate)).toEqual(33819.0);");
+                    }
+                    using (var w2 = w.OpenResolutionProperty())
+                    {
+                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(8399.0, 19400.0));
+                        m_assertionsWriter.WriteLine("    expect(e.path.resolution.getValue(documentStartDate)).toEqual(8399.0);");
+                        m_assertionsWriter.WriteLine("    expect(e.path.resolution.getValue(documentStopDate)).toEqual(19400.0);");
                     }
                     using (var w2 = w.OpenMaterialProperty())
                     {

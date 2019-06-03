@@ -8,6 +8,7 @@ import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.ArcTypeCesiumWriter;
 import cesiumlanguagewriter.BooleanCesiumWriter;
+import cesiumlanguagewriter.ClassificationTypeCesiumWriter;
 import cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter;
 import cesiumlanguagewriter.DoubleCesiumWriter;
 import cesiumlanguagewriter.IntegerCesiumWriter;
@@ -108,6 +109,13 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     public static final String ClampToGroundPropertyName = "clampToGround";
     /**
     *  
+    The name of the {@code classificationType} property.
+    
+
+    */
+    public static final String ClassificationTypePropertyName = "classificationType";
+    /**
+    *  
     The name of the {@code zIndex} property.
     
 
@@ -167,6 +175,11 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     private Lazy<BooleanCesiumWriter> m_clampToGround = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
         public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
             return new BooleanCesiumWriter(ClampToGroundPropertyName);
+        }
+    }, false);
+    private Lazy<ClassificationTypeCesiumWriter> m_classificationType = new Lazy<cesiumlanguagewriter.ClassificationTypeCesiumWriter>(new Func1<cesiumlanguagewriter.ClassificationTypeCesiumWriter>() {
+        public cesiumlanguagewriter.ClassificationTypeCesiumWriter invoke() {
+            return new ClassificationTypeCesiumWriter(ClassificationTypePropertyName);
         }
     }, false);
     private Lazy<IntegerCesiumWriter> m_zIndex = new Lazy<cesiumlanguagewriter.IntegerCesiumWriter>(new Func1<cesiumlanguagewriter.IntegerCesiumWriter>() {
@@ -1474,6 +1487,127 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     public final void writeClampToGroundPropertyReference(String identifier, String[] propertyNames) {
         {
             cesiumlanguagewriter.BooleanCesiumWriter writer = openClampToGroundProperty();
+            try {
+                writer.writeReference(identifier, propertyNames);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  Gets the writer for the {@code classificationType} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code classificationType} property defines whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+    
+
+    */
+    @Nonnull
+    public final ClassificationTypeCesiumWriter getClassificationTypeWriter() {
+        return m_classificationType.getValue();
+    }
+
+    /**
+    *  
+    Opens and returns the writer for the {@code classificationType} property. The {@code classificationType} property defines whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+    
+
+    */
+    @Nonnull
+    public final ClassificationTypeCesiumWriter openClassificationTypeProperty() {
+        openIntervalIfNecessary();
+        return this.<ClassificationTypeCesiumWriter> openAndReturn(getClassificationTypeWriter());
+    }
+
+    /**
+    *  
+    Writes a value for the {@code classificationType} property as a {@code classificationType} value. The {@code classificationType} property specifies whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+    
+    
+
+    * @param value The classification type.
+    */
+    public final void writeClassificationTypeProperty(@Nonnull CesiumClassificationType value) {
+        {
+            cesiumlanguagewriter.ClassificationTypeCesiumWriter writer = openClassificationTypeProperty();
+            try {
+                writer.writeClassificationType(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code classificationType} property as a {@code reference} value. The {@code classificationType} property specifies whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeClassificationTypePropertyReference(Reference value) {
+        {
+            cesiumlanguagewriter.ClassificationTypeCesiumWriter writer = openClassificationTypeProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code classificationType} property as a {@code reference} value. The {@code classificationType} property specifies whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeClassificationTypePropertyReference(String value) {
+        {
+            cesiumlanguagewriter.ClassificationTypeCesiumWriter writer = openClassificationTypeProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code classificationType} property as a {@code reference} value. The {@code classificationType} property specifies whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyName The property on the referenced object.
+    */
+    public final void writeClassificationTypePropertyReference(String identifier, String propertyName) {
+        {
+            cesiumlanguagewriter.ClassificationTypeCesiumWriter writer = openClassificationTypeProperty();
+            try {
+                writer.writeReference(identifier, propertyName);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code classificationType} property as a {@code reference} value. The {@code classificationType} property specifies whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+    */
+    public final void writeClassificationTypePropertyReference(String identifier, String[] propertyNames) {
+        {
+            cesiumlanguagewriter.ClassificationTypeCesiumWriter writer = openClassificationTypeProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {

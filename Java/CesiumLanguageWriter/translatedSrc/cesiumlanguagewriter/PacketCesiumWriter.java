@@ -1565,7 +1565,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     }
 
     /**
-    *  Gets the writer for the {@code ellipsoid} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code ellipsoid} property defines an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse. The ellipsoid is positioned and oriented using the {@code position} and {@code orientation} properties.
+    *  Gets the writer for the {@code ellipsoid} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code ellipsoid} property defines an ellipsoid, which is a closed quadric surface that is a three-dimensional analogue of an ellipse. The ellipsoid is positioned and oriented using the {@code position} and {@code orientation} properties.
     
 
     */
@@ -1576,7 +1576,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 
     /**
     *  
-    Opens and returns the writer for the {@code ellipsoid} property. The {@code ellipsoid} property defines an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse. The ellipsoid is positioned and oriented using the {@code position} and {@code orientation} properties.
+    Opens and returns the writer for the {@code ellipsoid} property. The {@code ellipsoid} property defines an ellipsoid, which is a closed quadric surface that is a three-dimensional analogue of an ellipse. The ellipsoid is positioned and oriented using the {@code position} and {@code orientation} properties.
     
 
     */
@@ -1733,7 +1733,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     }
 
     /**
-    *  Gets the writer for the {@code wall} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code wall} property defines a two dimensional wall which conforms to the curvature of the globe and can be placed along the surface or at altitude.
+    *  Gets the writer for the {@code wall} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code wall} property defines a two-dimensional wall which conforms to the curvature of the globe and can be placed along the surface or at altitude.
     
 
     */
@@ -1744,7 +1744,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
 
     /**
     *  
-    Opens and returns the writer for the {@code wall} property. The {@code wall} property defines a two dimensional wall which conforms to the curvature of the globe and can be placed along the surface or at altitude.
+    Opens and returns the writer for the {@code wall} property. The {@code wall} property defines a two-dimensional wall which conforms to the curvature of the globe and can be placed along the surface or at altitude.
     
 
     */

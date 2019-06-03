@@ -21,16 +21,6 @@ namespace CesiumLanguageWriter
         public const string ShowPropertyName = "show";
 
         /// <summary>
-        /// The name of the <c>width</c> property.
-        /// </summary>
-        public const string WidthPropertyName = "width";
-
-        /// <summary>
-        /// The name of the <c>resolution</c> property.
-        /// </summary>
-        public const string ResolutionPropertyName = "resolution";
-
-        /// <summary>
         /// The name of the <c>leadTime</c> property.
         /// </summary>
         public const string LeadTimePropertyName = "leadTime";
@@ -39,6 +29,16 @@ namespace CesiumLanguageWriter
         /// The name of the <c>trailTime</c> property.
         /// </summary>
         public const string TrailTimePropertyName = "trailTime";
+
+        /// <summary>
+        /// The name of the <c>width</c> property.
+        /// </summary>
+        public const string WidthPropertyName = "width";
+
+        /// <summary>
+        /// The name of the <c>resolution</c> property.
+        /// </summary>
+        public const string ResolutionPropertyName = "resolution";
 
         /// <summary>
         /// The name of the <c>material</c> property.
@@ -51,10 +51,10 @@ namespace CesiumLanguageWriter
         public const string DistanceDisplayConditionPropertyName = "distanceDisplayCondition";
 
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
-        private readonly Lazy<DoubleCesiumWriter> m_width = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(WidthPropertyName), false);
-        private readonly Lazy<DoubleCesiumWriter> m_resolution = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ResolutionPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_leadTime = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(LeadTimePropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_trailTime = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(TrailTimePropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_width = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(WidthPropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_resolution = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ResolutionPropertyName), false);
         private readonly Lazy<PolylineMaterialCesiumWriter> m_material = new Lazy<PolylineMaterialCesiumWriter>(() => new PolylineMaterialCesiumWriter(MaterialPropertyName), false);
         private readonly Lazy<DistanceDisplayConditionCesiumWriter> m_distanceDisplayCondition = new Lazy<DistanceDisplayConditionCesiumWriter>(() => new DistanceDisplayConditionCesiumWriter(DistanceDisplayConditionPropertyName), false);
 
@@ -158,224 +158,6 @@ namespace CesiumLanguageWriter
         public void WriteShowPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenShowProperty())
-            {
-                writer.WriteReference(identifier, propertyNames);
-            }
-        }
-
-        /// <summary>
-        /// Gets the writer for the <c>width</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>width</c> property defines the width of the path line. If not specified, the default value is 1.0.
-        /// </summary>
-        [NotNull]
-        public DoubleCesiumWriter WidthWriter
-        {
-            get { return m_width.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <c>width</c> property. The <c>width</c> property defines the width of the path line. If not specified, the default value is 1.0.
-        /// </summary>
-        [NotNull]
-        public DoubleCesiumWriter OpenWidthProperty()
-        {
-            OpenIntervalIfNecessary();
-            return OpenAndReturn(WidthWriter);
-        }
-
-        /// <summary>
-        /// Writes a value for the <c>width</c> property as a <c>number</c> value. The <c>width</c> property specifies the width of the path line. If not specified, the default value is 1.0.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        public void WriteWidthProperty(double value)
-        {
-            using (var writer = OpenWidthProperty())
-            {
-                writer.WriteNumber(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <c>width</c> property as a <c>number</c> value. The <c>width</c> property specifies the width of the path line. If not specified, the default value is 1.0.
-        /// </summary>
-        /// <param name="dates">The dates at which the value is specified.</param>
-        /// <param name="values">The values corresponding to each date.</param>
-        public void WriteWidthProperty(IList<JulianDate> dates, IList<double> values)
-        {
-            using (var writer = OpenWidthProperty())
-            {
-                writer.WriteNumber(dates, values);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <c>width</c> property as a <c>number</c> value. The <c>width</c> property specifies the width of the path line. If not specified, the default value is 1.0.
-        /// </summary>
-        /// <param name="dates">The dates at which the value is specified.</param>
-        /// <param name="values">The value corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to write.</param>
-        /// <param name="length">The number of elements to write.</param>
-        public void WriteWidthProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
-        {
-            using (var writer = OpenWidthProperty())
-            {
-                writer.WriteNumber(dates, values, startIndex, length);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <c>width</c> property as a <c>reference</c> value. The <c>width</c> property specifies the width of the path line. If not specified, the default value is 1.0.
-        /// </summary>
-        /// <param name="value">The reference.</param>
-        public void WriteWidthPropertyReference(Reference value)
-        {
-            using (var writer = OpenWidthProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <c>width</c> property as a <c>reference</c> value. The <c>width</c> property specifies the width of the path line. If not specified, the default value is 1.0.
-        /// </summary>
-        /// <param name="value">The reference.</param>
-        public void WriteWidthPropertyReference(string value)
-        {
-            using (var writer = OpenWidthProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <c>width</c> property as a <c>reference</c> value. The <c>width</c> property specifies the width of the path line. If not specified, the default value is 1.0.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyName">The property on the referenced object.</param>
-        public void WriteWidthPropertyReference(string identifier, string propertyName)
-        {
-            using (var writer = OpenWidthProperty())
-            {
-                writer.WriteReference(identifier, propertyName);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <c>width</c> property as a <c>reference</c> value. The <c>width</c> property specifies the width of the path line. If not specified, the default value is 1.0.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
-        public void WriteWidthPropertyReference(string identifier, string[] propertyNames)
-        {
-            using (var writer = OpenWidthProperty())
-            {
-                writer.WriteReference(identifier, propertyNames);
-            }
-        }
-
-        /// <summary>
-        /// Gets the writer for the <c>resolution</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>resolution</c> property defines the maximum step-size, in seconds, used to sample the path. If the <c>position</c> property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
-        /// </summary>
-        [NotNull]
-        public DoubleCesiumWriter ResolutionWriter
-        {
-            get { return m_resolution.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <c>resolution</c> property. The <c>resolution</c> property defines the maximum step-size, in seconds, used to sample the path. If the <c>position</c> property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
-        /// </summary>
-        [NotNull]
-        public DoubleCesiumWriter OpenResolutionProperty()
-        {
-            OpenIntervalIfNecessary();
-            return OpenAndReturn(ResolutionWriter);
-        }
-
-        /// <summary>
-        /// Writes a value for the <c>resolution</c> property as a <c>number</c> value. The <c>resolution</c> property specifies the maximum step-size, in seconds, used to sample the path. If the <c>position</c> property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        public void WriteResolutionProperty(double value)
-        {
-            using (var writer = OpenResolutionProperty())
-            {
-                writer.WriteNumber(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <c>resolution</c> property as a <c>number</c> value. The <c>resolution</c> property specifies the maximum step-size, in seconds, used to sample the path. If the <c>position</c> property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
-        /// </summary>
-        /// <param name="dates">The dates at which the value is specified.</param>
-        /// <param name="values">The values corresponding to each date.</param>
-        public void WriteResolutionProperty(IList<JulianDate> dates, IList<double> values)
-        {
-            using (var writer = OpenResolutionProperty())
-            {
-                writer.WriteNumber(dates, values);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <c>resolution</c> property as a <c>number</c> value. The <c>resolution</c> property specifies the maximum step-size, in seconds, used to sample the path. If the <c>position</c> property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
-        /// </summary>
-        /// <param name="dates">The dates at which the value is specified.</param>
-        /// <param name="values">The value corresponding to each date.</param>
-        /// <param name="startIndex">The index of the first element to write.</param>
-        /// <param name="length">The number of elements to write.</param>
-        public void WriteResolutionProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
-        {
-            using (var writer = OpenResolutionProperty())
-            {
-                writer.WriteNumber(dates, values, startIndex, length);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <c>resolution</c> property as a <c>reference</c> value. The <c>resolution</c> property specifies the maximum step-size, in seconds, used to sample the path. If the <c>position</c> property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
-        /// </summary>
-        /// <param name="value">The reference.</param>
-        public void WriteResolutionPropertyReference(Reference value)
-        {
-            using (var writer = OpenResolutionProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <c>resolution</c> property as a <c>reference</c> value. The <c>resolution</c> property specifies the maximum step-size, in seconds, used to sample the path. If the <c>position</c> property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
-        /// </summary>
-        /// <param name="value">The reference.</param>
-        public void WriteResolutionPropertyReference(string value)
-        {
-            using (var writer = OpenResolutionProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <c>resolution</c> property as a <c>reference</c> value. The <c>resolution</c> property specifies the maximum step-size, in seconds, used to sample the path. If the <c>position</c> property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyName">The property on the referenced object.</param>
-        public void WriteResolutionPropertyReference(string identifier, string propertyName)
-        {
-            using (var writer = OpenResolutionProperty())
-            {
-                writer.WriteReference(identifier, propertyName);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <c>resolution</c> property as a <c>reference</c> value. The <c>resolution</c> property specifies the maximum step-size, in seconds, used to sample the path. If the <c>position</c> property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
-        public void WriteResolutionPropertyReference(string identifier, string[] propertyNames)
-        {
-            using (var writer = OpenResolutionProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }
@@ -594,6 +376,224 @@ namespace CesiumLanguageWriter
         public void WriteTrailTimePropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenTrailTimeProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <c>width</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>width</c> property defines the width of the path line. If not specified, the default value is 1.0.
+        /// </summary>
+        [NotNull]
+        public DoubleCesiumWriter WidthWriter
+        {
+            get { return m_width.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>width</c> property. The <c>width</c> property defines the width of the path line. If not specified, the default value is 1.0.
+        /// </summary>
+        [NotNull]
+        public DoubleCesiumWriter OpenWidthProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(WidthWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>width</c> property as a <c>number</c> value. The <c>width</c> property specifies the width of the path line. If not specified, the default value is 1.0.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteWidthProperty(double value)
+        {
+            using (var writer = OpenWidthProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>width</c> property as a <c>number</c> value. The <c>width</c> property specifies the width of the path line. If not specified, the default value is 1.0.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteWidthProperty(IList<JulianDate> dates, IList<double> values)
+        {
+            using (var writer = OpenWidthProperty())
+            {
+                writer.WriteNumber(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>width</c> property as a <c>number</c> value. The <c>width</c> property specifies the width of the path line. If not specified, the default value is 1.0.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
+        public void WriteWidthProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenWidthProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>width</c> property as a <c>reference</c> value. The <c>width</c> property specifies the width of the path line. If not specified, the default value is 1.0.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteWidthPropertyReference(Reference value)
+        {
+            using (var writer = OpenWidthProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>width</c> property as a <c>reference</c> value. The <c>width</c> property specifies the width of the path line. If not specified, the default value is 1.0.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteWidthPropertyReference(string value)
+        {
+            using (var writer = OpenWidthProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>width</c> property as a <c>reference</c> value. The <c>width</c> property specifies the width of the path line. If not specified, the default value is 1.0.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteWidthPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenWidthProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>width</c> property as a <c>reference</c> value. The <c>width</c> property specifies the width of the path line. If not specified, the default value is 1.0.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteWidthPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenWidthProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <c>resolution</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>resolution</c> property defines the maximum step-size, in seconds, used to sample the path. If the <c>position</c> property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
+        /// </summary>
+        [NotNull]
+        public DoubleCesiumWriter ResolutionWriter
+        {
+            get { return m_resolution.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>resolution</c> property. The <c>resolution</c> property defines the maximum step-size, in seconds, used to sample the path. If the <c>position</c> property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
+        /// </summary>
+        [NotNull]
+        public DoubleCesiumWriter OpenResolutionProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(ResolutionWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>resolution</c> property as a <c>number</c> value. The <c>resolution</c> property specifies the maximum step-size, in seconds, used to sample the path. If the <c>position</c> property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteResolutionProperty(double value)
+        {
+            using (var writer = OpenResolutionProperty())
+            {
+                writer.WriteNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>resolution</c> property as a <c>number</c> value. The <c>resolution</c> property specifies the maximum step-size, in seconds, used to sample the path. If the <c>position</c> property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The values corresponding to each date.</param>
+        public void WriteResolutionProperty(IList<JulianDate> dates, IList<double> values)
+        {
+            using (var writer = OpenResolutionProperty())
+            {
+                writer.WriteNumber(dates, values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>resolution</c> property as a <c>number</c> value. The <c>resolution</c> property specifies the maximum step-size, in seconds, used to sample the path. If the <c>position</c> property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
+        /// </summary>
+        /// <param name="dates">The dates at which the value is specified.</param>
+        /// <param name="values">The value corresponding to each date.</param>
+        /// <param name="startIndex">The index of the first element to write.</param>
+        /// <param name="length">The number of elements to write.</param>
+        public void WriteResolutionProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        {
+            using (var writer = OpenResolutionProperty())
+            {
+                writer.WriteNumber(dates, values, startIndex, length);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>resolution</c> property as a <c>reference</c> value. The <c>resolution</c> property specifies the maximum step-size, in seconds, used to sample the path. If the <c>position</c> property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteResolutionPropertyReference(Reference value)
+        {
+            using (var writer = OpenResolutionProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>resolution</c> property as a <c>reference</c> value. The <c>resolution</c> property specifies the maximum step-size, in seconds, used to sample the path. If the <c>position</c> property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteResolutionPropertyReference(string value)
+        {
+            using (var writer = OpenResolutionProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>resolution</c> property as a <c>reference</c> value. The <c>resolution</c> property specifies the maximum step-size, in seconds, used to sample the path. If the <c>position</c> property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteResolutionPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenResolutionProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>resolution</c> property as a <c>reference</c> value. The <c>resolution</c> property specifies the maximum step-size, in seconds, used to sample the path. If the <c>position</c> property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteResolutionPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenResolutionProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }

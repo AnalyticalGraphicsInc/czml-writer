@@ -2,7 +2,7 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Ellipsoid.json",
     "title": "Ellipsoid",
-    "description": "A closed quadric surface that is a three dimensional analogue of an ellipse.",
+    "description": "A closed quadric surface that is a three-dimensional analogue of an ellipse.",
     "type": "object",
     "properties": {
         "show": {
@@ -14,6 +14,11 @@
             "$ref": "EllipsoidRadii.json",
             "description": "The dimensions of the ellipsoid.",
             "czmlRequiredForDisplay": true
+        },
+        "heightReference": {
+            "$ref": "HeightReference.json",
+            "description": "The height reference of the ellipsoid, which indicates if the position is relative to terrain or not.",
+            "default": "NONE"
         },
         "fill": {
             "$ref": "Boolean.json",

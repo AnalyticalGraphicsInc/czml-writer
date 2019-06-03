@@ -85,7 +85,7 @@
         },
         "ellipsoid": {
             "$ref": "Ellipsoid.json",
-            "description": "An ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse. The ellipsoid is positioned and oriented using the `position` and `orientation` properties."
+            "description": "An ellipsoid, which is a closed quadric surface that is a three-dimensional analogue of an ellipse. The ellipsoid is positioned and oriented using the `position` and `orientation` properties."
         },
         "label": {
             "$ref": "Label.json",
@@ -117,7 +117,7 @@
         },
         "wall": {
             "$ref": "Wall.json",
-            "description": "A two dimensional wall which conforms to the curvature of the globe and can be placed along the surface or at altitude."
+            "description": "A two-dimensional wall which conforms to the curvature of the globe and can be placed along the surface or at altitude."
         },
         "agi_conicSensor": {
             "$ref": "Extensions/AGI/ConicSensor.json",

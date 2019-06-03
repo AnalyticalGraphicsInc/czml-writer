@@ -71,6 +71,11 @@ namespace CesiumLanguageWriter
         public const string ClampToGroundPropertyName = "clampToGround";
 
         /// <summary>
+        /// The name of the <c>classificationType</c> property.
+        /// </summary>
+        public const string ClassificationTypePropertyName = "classificationType";
+
+        /// <summary>
         /// The name of the <c>zIndex</c> property.
         /// </summary>
         public const string ZIndexPropertyName = "zIndex";
@@ -86,6 +91,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<PolylineMaterialCesiumWriter> m_depthFailMaterial = new Lazy<PolylineMaterialCesiumWriter>(() => new PolylineMaterialCesiumWriter(DepthFailMaterialPropertyName), false);
         private readonly Lazy<DistanceDisplayConditionCesiumWriter> m_distanceDisplayCondition = new Lazy<DistanceDisplayConditionCesiumWriter>(() => new DistanceDisplayConditionCesiumWriter(DistanceDisplayConditionPropertyName), false);
         private readonly Lazy<BooleanCesiumWriter> m_clampToGround = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ClampToGroundPropertyName), false);
+        private readonly Lazy<ClassificationTypeCesiumWriter> m_classificationType = new Lazy<ClassificationTypeCesiumWriter>(() => new ClassificationTypeCesiumWriter(ClassificationTypePropertyName), false);
         private readonly Lazy<IntegerCesiumWriter> m_zIndex = new Lazy<IntegerCesiumWriter>(() => new IntegerCesiumWriter(ZIndexPropertyName), false);
 
         /// <summary>
@@ -957,6 +963,87 @@ namespace CesiumLanguageWriter
         public void WriteClampToGroundPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenClampToGroundProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <c>classificationType</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>classificationType</c> property defines whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+        /// </summary>
+        [NotNull]
+        public ClassificationTypeCesiumWriter ClassificationTypeWriter
+        {
+            get { return m_classificationType.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>classificationType</c> property. The <c>classificationType</c> property defines whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+        /// </summary>
+        [NotNull]
+        public ClassificationTypeCesiumWriter OpenClassificationTypeProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(ClassificationTypeWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>classificationType</c> property as a <c>classificationType</c> value. The <c>classificationType</c> property specifies whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+        /// </summary>
+        /// <param name="value">The classification type.</param>
+        public void WriteClassificationTypeProperty(CesiumClassificationType value)
+        {
+            using (var writer = OpenClassificationTypeProperty())
+            {
+                writer.WriteClassificationType(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>classificationType</c> property as a <c>reference</c> value. The <c>classificationType</c> property specifies whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteClassificationTypePropertyReference(Reference value)
+        {
+            using (var writer = OpenClassificationTypeProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>classificationType</c> property as a <c>reference</c> value. The <c>classificationType</c> property specifies whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteClassificationTypePropertyReference(string value)
+        {
+            using (var writer = OpenClassificationTypeProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>classificationType</c> property as a <c>reference</c> value. The <c>classificationType</c> property specifies whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteClassificationTypePropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenClassificationTypeProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>classificationType</c> property as a <c>reference</c> value. The <c>classificationType</c> property specifies whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteClassificationTypePropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenClassificationTypeProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }

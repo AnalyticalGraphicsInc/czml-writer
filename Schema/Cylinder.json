@@ -25,6 +25,11 @@
             "description": "The radius of the bottom of the cylinder.",
             "czmlRequiredForDisplay": true
         },
+        "heightReference": {
+            "$ref": "HeightReference.json",
+            "description": "The height reference of the cylinder, which indicates if the position is relative to terrain or not.",
+            "default": "NONE"
+        },
         "fill": {
             "$ref": "Boolean.json",
             "description": "Whether or not the cylinder is filled.",

@@ -1001,7 +1001,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>ellipsoid</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>ellipsoid</c> property defines an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse. The ellipsoid is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
+        /// Gets the writer for the <c>ellipsoid</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>ellipsoid</c> property defines an ellipsoid, which is a closed quadric surface that is a three-dimensional analogue of an ellipse. The ellipsoid is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         [NotNull]
         public EllipsoidCesiumWriter EllipsoidWriter
@@ -1010,7 +1010,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>ellipsoid</c> property. The <c>ellipsoid</c> property defines an ellipsoid, which is a closed quadric surface that is a three dimensional analogue of an ellipse. The ellipsoid is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
+        /// Opens and returns the writer for the <c>ellipsoid</c> property. The <c>ellipsoid</c> property defines an ellipsoid, which is a closed quadric surface that is a three-dimensional analogue of an ellipse. The ellipsoid is positioned and oriented using the <c>position</c> and <c>orientation</c> properties.
         /// </summary>
         [NotNull]
         public EllipsoidCesiumWriter OpenEllipsoidProperty()
@@ -1145,7 +1145,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>wall</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>wall</c> property defines a two dimensional wall which conforms to the curvature of the globe and can be placed along the surface or at altitude.
+        /// Gets the writer for the <c>wall</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>wall</c> property defines a two-dimensional wall which conforms to the curvature of the globe and can be placed along the surface or at altitude.
         /// </summary>
         [NotNull]
         public WallCesiumWriter WallWriter
@@ -1154,7 +1154,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>wall</c> property. The <c>wall</c> property defines a two dimensional wall which conforms to the curvature of the globe and can be placed along the surface or at altitude.
+        /// Opens and returns the writer for the <c>wall</c> property. The <c>wall</c> property defines a two-dimensional wall which conforms to the curvature of the globe and can be placed along the surface or at altitude.
         /// </summary>
         [NotNull]
         public WallCesiumWriter OpenWallProperty()

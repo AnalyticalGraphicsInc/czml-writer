@@ -334,6 +334,27 @@ public final class CesiumValuePropertyAdaptors {
 
     /**
     *  
+    Create an adaptor for {@link CesiumClassificationType} values.
+    
+    
+    
+    
+
+    * @param <TFrom> The class that implements {@link ICesiumClassificationTypeValuePropertyWriter} to adapt.
+    * @param parent The instance to wrap.
+    * @return The new adaptor.
+    */
+    public static <TFrom extends ICesiumClassificationTypeValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumClassificationTypeValuePropertyAdaptor<TFrom> createClassificationType(
+            @Nonnull TFrom parent) {
+        return new CesiumClassificationTypeValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.CesiumClassificationType>() {
+            public void invoke(TFrom writer, @Nonnull CesiumClassificationType value) {
+                writer.writeClassificationType(value);
+            }
+        }, CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());
+    }
+
+    /**
+    *  
     Create an adaptor for {@link CesiumColorBlendMode} values.
     
     

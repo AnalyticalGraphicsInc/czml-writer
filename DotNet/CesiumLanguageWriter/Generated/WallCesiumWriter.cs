@@ -12,7 +12,7 @@ using System.Drawing;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>Wall</c> to a <see cref="CesiumOutputStream"/>. A <c>Wall</c> is a two dimensional wall defined as a line strip and optional maximum and minimum heights, which conforms to the curvature of the globe and can be placed along the surface or at altitude.
+    /// Writes a <c>Wall</c> to a <see cref="CesiumOutputStream"/>. A <c>Wall</c> is a two-dimensional wall defined as a line strip and optional maximum and minimum heights, which conforms to the curvature of the globe and can be placed along the surface or at altitude.
     /// </summary>
     public class WallCesiumWriter : CesiumPropertyWriter<WallCesiumWriter>
     {

@@ -58,6 +58,11 @@
             "description": "Whether or not the polyline should be clamped to the ground.",
             "default": false
         },
+        "classificationType": {
+            "$ref": "ClassificationType.json",
+            "description": "Whether a classification affects terrain, 3D Tiles or both.",
+            "default": "BOTH"
+        },
         "zIndex": {
             "$ref": "Integer.json",
             "description": "The z-index of the polyline, used for ordering ground geometry. Only has an effect if the polyline is constant, and `clampToGround` is true.",

@@ -12,7 +12,7 @@ using System.Drawing;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>Ellipsoid</c> to a <see cref="CesiumOutputStream"/>. A <c>Ellipsoid</c> is a closed quadric surface that is a three dimensional analogue of an ellipse.
+    /// Writes a <c>Ellipsoid</c> to a <see cref="CesiumOutputStream"/>. A <c>Ellipsoid</c> is a closed quadric surface that is a three-dimensional analogue of an ellipse.
     /// </summary>
     public class EllipsoidCesiumWriter : CesiumPropertyWriter<EllipsoidCesiumWriter>
     {
@@ -25,6 +25,11 @@ namespace CesiumLanguageWriter
         /// The name of the <c>radii</c> property.
         /// </summary>
         public const string RadiiPropertyName = "radii";
+
+        /// <summary>
+        /// The name of the <c>heightReference</c> property.
+        /// </summary>
+        public const string HeightReferencePropertyName = "heightReference";
 
         /// <summary>
         /// The name of the <c>fill</c> property.
@@ -78,6 +83,7 @@ namespace CesiumLanguageWriter
 
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
         private readonly Lazy<EllipsoidRadiiCesiumWriter> m_radii = new Lazy<EllipsoidRadiiCesiumWriter>(() => new EllipsoidRadiiCesiumWriter(RadiiPropertyName), false);
+        private readonly Lazy<HeightReferenceCesiumWriter> m_heightReference = new Lazy<HeightReferenceCesiumWriter>(() => new HeightReferenceCesiumWriter(HeightReferencePropertyName), false);
         private readonly Lazy<BooleanCesiumWriter> m_fill = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(FillPropertyName), false);
         private readonly Lazy<MaterialCesiumWriter> m_material = new Lazy<MaterialCesiumWriter>(() => new MaterialCesiumWriter(MaterialPropertyName), false);
         private readonly Lazy<BooleanCesiumWriter> m_outline = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(OutlinePropertyName), false);
@@ -298,6 +304,87 @@ namespace CesiumLanguageWriter
         public void WriteRadiiPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenRadiiProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <c>heightReference</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>heightReference</c> property defines the height reference of the ellipsoid, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
+        /// </summary>
+        [NotNull]
+        public HeightReferenceCesiumWriter HeightReferenceWriter
+        {
+            get { return m_heightReference.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>heightReference</c> property. The <c>heightReference</c> property defines the height reference of the ellipsoid, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
+        /// </summary>
+        [NotNull]
+        public HeightReferenceCesiumWriter OpenHeightReferenceProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(HeightReferenceWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>heightReference</c> property as a <c>heightReference</c> value. The <c>heightReference</c> property specifies the height reference of the ellipsoid, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
+        /// </summary>
+        /// <param name="value">The height reference.</param>
+        public void WriteHeightReferenceProperty(CesiumHeightReference value)
+        {
+            using (var writer = OpenHeightReferenceProperty())
+            {
+                writer.WriteHeightReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>heightReference</c> property as a <c>reference</c> value. The <c>heightReference</c> property specifies the height reference of the ellipsoid, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteHeightReferencePropertyReference(Reference value)
+        {
+            using (var writer = OpenHeightReferenceProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>heightReference</c> property as a <c>reference</c> value. The <c>heightReference</c> property specifies the height reference of the ellipsoid, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteHeightReferencePropertyReference(string value)
+        {
+            using (var writer = OpenHeightReferenceProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>heightReference</c> property as a <c>reference</c> value. The <c>heightReference</c> property specifies the height reference of the ellipsoid, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteHeightReferencePropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenHeightReferenceProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>heightReference</c> property as a <c>reference</c> value. The <c>heightReference</c> property specifies the height reference of the ellipsoid, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteHeightReferencePropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenHeightReferenceProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }

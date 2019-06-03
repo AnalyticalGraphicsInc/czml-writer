@@ -956,6 +956,19 @@
                 "needsInterval": false
             }
         ],
+        "ClassificationType": [
+            {
+                "parameters": [
+                    {
+                        "type": "CesiumClassificationType",
+                        "name": "value",
+                        "description": "The classification type."
+                    }
+                ],
+                "writeValue": "Output.WriteValue(CesiumFormattingHelper.ClassificationTypeToString(value));",
+                "needsInterval": false
+            }
+        ],
         "ColorBlendMode": [
             {
                 "parameters": [

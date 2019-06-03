@@ -17,7 +17,7 @@ import javax.annotation.Nonnull;
 
 /**
  *  
- Writes a {@code GridMaterial} to a {@link CesiumOutputStream}. A {@code GridMaterial} is a material that fills the surface with a two dimensional grid.
+ Writes a {@code GridMaterial} to a {@link CesiumOutputStream}. A {@code GridMaterial} is a material that fills the surface with a two-dimensional grid.
  
 
  */
