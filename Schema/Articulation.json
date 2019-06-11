@@ -1,0 +1,30 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Articulation.json",
+    "title": "Articulation",
+    "description": "An articulation value.",
+    "allOf": [
+        { "$ref": "InterpolatableProperty.json" },
+        { "$ref": "DeletableProperty.json" },
+        { "$ref": "ValueProperties/DoubleValueProperty.json" },
+        { "$ref": "ValueProperties/ReferenceValueProperty.json" }
+    ],
+    "type": [
+        "array",
+        "object",
+        "number"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "properties": {
+        "number": {
+            "$ref": "Values/DoubleValue.json",
+            "description": "The articulation value."
+        },
+        "reference": {
+            "$ref": "Values/ReferenceValue.json",
+            "description": "The articulation value specified as a reference to another property."
+        }
+    }
+}

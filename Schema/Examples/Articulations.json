@@ -1,0 +1,12 @@
+{
+    "articulations": {
+        "articulation1 stage1": 45.0,
+        "articulation1 stage2": {
+            "epoch": "2012-04-02T12:00:00Z",
+            "number": [
+                0.0, 1.0,
+                60.0, 10.0
+            ]
+        }
+    }
+}

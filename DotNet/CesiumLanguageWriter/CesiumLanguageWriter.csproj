@@ -191,6 +191,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Generated\ArcTypeCesiumWriter.cs" />
+    <Compile Include="Generated\ArticulationCesiumWriter.cs" />
+    <Compile Include="Generated\ArticulationsCesiumWriter.cs" />
     <Compile Include="Generated\BackgroundPaddingCesiumWriter.cs" />
     <Compile Include="Generated\BillboardCesiumWriter.cs">
       <SubType>Code</SubType>

@@ -96,6 +96,11 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string NodeTransformationsPropertyName = "nodeTransformations";
 
+        /// <summary>
+        /// The name of the <c>articulations</c> property.
+        /// </summary>
+        public const string ArticulationsPropertyName = "articulations";
+
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
         private readonly Lazy<UriCesiumWriter> m_gltf = new Lazy<UriCesiumWriter>(() => new UriCesiumWriter(GltfPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_scale = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ScalePropertyName), false);
@@ -112,6 +117,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<DoubleCesiumWriter> m_colorBlendAmount = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ColorBlendAmountPropertyName), false);
         private readonly Lazy<DistanceDisplayConditionCesiumWriter> m_distanceDisplayCondition = new Lazy<DistanceDisplayConditionCesiumWriter>(() => new DistanceDisplayConditionCesiumWriter(DistanceDisplayConditionPropertyName), false);
         private readonly Lazy<NodeTransformationsCesiumWriter> m_nodeTransformations = new Lazy<NodeTransformationsCesiumWriter>(() => new NodeTransformationsCesiumWriter(NodeTransformationsPropertyName), false);
+        private readonly Lazy<ArticulationsCesiumWriter> m_articulations = new Lazy<ArticulationsCesiumWriter>(() => new ArticulationsCesiumWriter(ArticulationsPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -1823,6 +1829,25 @@ namespace CesiumLanguageWriter
         {
             OpenIntervalIfNecessary();
             return OpenAndReturn(NodeTransformationsWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <c>articulations</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>articulations</c> property defines a mapping of keys to articulation values, where the keys are the name of the articulation, a single space, and the name of the stage.
+        /// </summary>
+        [NotNull]
+        public ArticulationsCesiumWriter ArticulationsWriter
+        {
+            get { return m_articulations.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>articulations</c> property. The <c>articulations</c> property defines a mapping of keys to articulation values, where the keys are the name of the articulation, a single space, and the name of the stage.
+        /// </summary>
+        [NotNull]
+        public ArticulationsCesiumWriter OpenArticulationsProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(ArticulationsWriter);
         }
 
     }

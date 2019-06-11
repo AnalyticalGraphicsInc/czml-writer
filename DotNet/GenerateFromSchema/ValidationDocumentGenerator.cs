@@ -231,17 +231,28 @@ namespace GenerateFromSchema
                                                             writer.WriteLine("using (var a = w2.Open{0}Property(\"prop\"))", additionalProperties.ValueType.NameWithPascalCase);
                                                             using (writer.OpenScope())
                                                             {
-                                                                foreach (var additionalProperty in additionalProperties.ValueType.Properties.Where(p => !p.IsValue))
+                                                                var additionalSubProperties = additionalProperties.ValueType.Properties.Where(p => !p.IsValue).ToList();
+                                                                foreach (var additionalSubProperty in additionalSubProperties)
                                                                 {
-                                                                    writer.WriteLine("using (var w3 = a.Open{0}Property())", additionalProperty.NameWithPascalCase);
+                                                                    writer.WriteLine("using (var w3 = a.Open{0}Property())", additionalSubProperty.NameWithPascalCase);
                                                                     using (writer.OpenScope())
                                                                     {
-                                                                        properties = additionalProperty.ValueType.Properties;
+                                                                        properties = additionalSubProperty.ValueType.Properties;
                                                                         firstValueProperty = properties.FirstOrDefault(p => p.IsValue);
                                                                         if (firstValueProperty != null)
                                                                         {
-                                                                            WriteValue(writer, "w3", id + property.Name, firstValueProperty, additionalProperty, isExtension, $"{propertyName}.{subPropertyName}.prop.{additionalProperty.Name}");
+                                                                            WriteValue(writer, "w3", id + property.Name, firstValueProperty, additionalSubProperty, isExtension, $"{propertyName}.{subPropertyName}.prop.{additionalSubProperty.Name}");
                                                                         }
+                                                                    }
+                                                                }
+
+                                                                if (!additionalSubProperties.Any())
+                                                                {
+                                                                    properties = additionalProperties.ValueType.Properties;
+                                                                    firstValueProperty = properties.FirstOrDefault(p => p.IsValue);
+                                                                    if (firstValueProperty != null)
+                                                                    {
+                                                                        WriteValue(writer, "a", id + property.Name, firstValueProperty, additionalProperties, isExtension, $"{propertyName}.{subPropertyName}.prop");
                                                                     }
                                                                 }
                                                             }
@@ -424,16 +435,17 @@ namespace GenerateFromSchema
                                     var additionalProperties = subProperty.ValueType.AdditionalProperties;
                                     if (additionalProperties != null)
                                     {
-                                        foreach (var additionalProperty in additionalProperties.ValueType.Properties.Where(p => !p.IsValue))
+                                        var additionalSubProperties = additionalProperties.ValueType.Properties.Where(p => !p.IsValue).ToList();
+                                        foreach (var additionalSubProperty in additionalSubProperties)
                                         {
                                             int i = 0;
-                                            properties = additionalProperty.ValueType.Properties;
+                                            properties = additionalSubProperty.ValueType.Properties;
                                             foreach (var valueProperty in properties.Where(p => p.IsValue && !p.ValueType.Name.Contains("Reference")).Skip(1))
                                             {
                                                 writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                                 using (writer.OpenScope())
                                                 {
-                                                    string id = $"constant_{propertyName}_{subPropertyName}_{additionalProperties.ValueType.Name}_{additionalProperty.Name}";
+                                                    string id = $"constant_{propertyName}_{subPropertyName}_{additionalProperties.ValueType.Name}_{additionalSubProperty.Name}";
                                                     writer.WriteLine("packet.WriteId(\"{0}\");", id);
 
                                                     WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}')).toBeDefined();", id);
@@ -442,10 +454,10 @@ namespace GenerateFromSchema
                                                     writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
                                                     writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
                                                     writer.WriteLine("using (var a = w2.Open{0}Property(\"{1}\"))", additionalProperties.ValueType.NameWithPascalCase, propName);
-                                                    writer.WriteLine("using (var w3 = a.Open{0}Property())", additionalProperty.NameWithPascalCase);
+                                                    writer.WriteLine("using (var w3 = a.Open{0}Property())", additionalSubProperty.NameWithPascalCase);
                                                     using (writer.OpenScope())
                                                     {
-                                                        WriteValue(writer, "w3", id + property.Name + subProperty.Name, valueProperty, additionalProperty, isExtension, $"{propertyName}.{subPropertyName}.{propName}.{additionalProperty.Name}");
+                                                        WriteValue(writer, "w3", id + property.Name + subProperty.Name, valueProperty, additionalSubProperty, isExtension, $"{propertyName}.{subPropertyName}.{propName}.{additionalSubProperty.Name}");
                                                     }
                                                 }
                                             }
@@ -623,14 +635,21 @@ namespace GenerateFromSchema
                                                         writer.WriteLine("using (var a = w2.Open{0}Property(\"referenceProp\"))", additionalProperties.ValueType.NameWithPascalCase);
                                                         using (writer.OpenScope())
                                                         {
-                                                            foreach (var additionalProperty in additionalProperties.ValueType.Properties.Where(p => !p.IsValue))
+                                                            var additionalSubProperties = additionalProperties.ValueType.Properties.Where(p => !p.IsValue).ToList();
+                                                            foreach (var additionalSubProperty in additionalSubProperties)
                                                             {
-                                                                writer.WriteLine("using (var w3 = a.Open{0}Property())", additionalProperty.NameWithPascalCase);
+                                                                writer.WriteLine("using (var w3 = a.Open{0}Property())", additionalSubProperty.NameWithPascalCase);
                                                                 using (writer.OpenScope())
                                                                 {
-                                                                    writer.WriteLine("w3.WriteReference(new Reference(\"Constant\", CreateList(\"{0}\", \"{1}\", \"prop\", \"{2}\")));", propertyName, subPropertyName, additionalProperty.Name);
-                                                                    WriteAssertion(writer, isExtension, "expect(e.{0}.{1}.referenceProp.{2}.getValue(date)).toEqual(constant.{0}.{1}.prop.{2}.getValue(date));", propertyName, subPropertyName, additionalProperty.Name);
+                                                                    writer.WriteLine("w3.WriteReference(new Reference(\"Constant\", CreateList(\"{0}\", \"{1}\", \"prop\", \"{2}\")));", propertyName, subPropertyName, additionalSubProperty.Name);
+                                                                    WriteAssertion(writer, isExtension, "expect(e.{0}.{1}.referenceProp.{2}.getValue(date)).toEqual(constant.{0}.{1}.prop.{2}.getValue(date));", propertyName, subPropertyName, additionalSubProperty.Name);
                                                                 }
+                                                            }
+
+                                                            if (!additionalSubProperties.Any())
+                                                            {
+                                                                writer.WriteLine("a.WriteReference(new Reference(\"Constant\", CreateList(\"{0}\", \"{1}\", \"prop\")));", propertyName, subPropertyName);
+                                                                WriteAssertion(writer, isExtension, "expect(e.{0}.{1}.referenceProp.getValue(date)).toEqual(constant.{0}.{1}.prop.getValue(date));", propertyName, subPropertyName);
                                                             }
                                                         }
                                                     }

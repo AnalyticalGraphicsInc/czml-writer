@@ -1,0 +1,11 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Articulations.json",
+    "title": "Articulations",
+    "description": "A mapping of keys to articulation values, where the keys are the name of the articulation, a single space, and the name of the stage.",
+    "type": "object",
+    "additionalProperties": {
+        "$ref": "Articulation.json",
+        "description": "Articulation values to apply to a 3D model."
+    }
+}

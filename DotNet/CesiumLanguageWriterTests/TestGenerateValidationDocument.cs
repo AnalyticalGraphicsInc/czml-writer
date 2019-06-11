@@ -844,6 +844,14 @@ namespace CesiumLanguageWriterTests
                             }
                         }
                     }
+                    using (var w2 = w.OpenArticulationsProperty())
+                    {
+                        using (var a = w2.OpenArticulationProperty("prop"))
+                        {
+                            a.WriteNumber(25496.0);
+                            m_assertionsWriter.WriteLine("    expect(e.model.articulations.prop.getValue(date)).toEqual(25496.0);");
+                        }
+                    }
                 }
                 using (var w = packet.OpenPathProperty())
                 {
@@ -9698,6 +9706,12 @@ namespace CesiumLanguageWriterTests
                             w3.WriteReference(new Reference("Constant", CreateList("model", "nodeTransformations", "prop", "scale")));
                             m_assertionsWriter.WriteLine("    expect(e.model.nodeTransformations.referenceProp.scale.getValue(date)).toEqual(constant.model.nodeTransformations.prop.scale.getValue(date));");
                         }
+                    }
+                    using (var w2 = w.OpenArticulationsProperty())
+                    using (var a = w2.OpenArticulationProperty("referenceProp"))
+                    {
+                        a.WriteReference(new Reference("Constant", CreateList("model", "articulations", "prop")));
+                        m_assertionsWriter.WriteLine("    expect(e.model.articulations.referenceProp.getValue(date)).toEqual(constant.model.articulations.prop.getValue(date));");
                     }
                 }
                 using (var w = packet.OpenPathProperty())

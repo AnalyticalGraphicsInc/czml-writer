@@ -55,6 +55,7 @@
     <Compile Include="grisu\TestGrisu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sandbox.cs" />
+    <Compile Include="TestArticulationsCesiumWriter.cs" />
     <Compile Include="TestBillboardCesiumWriter.cs" />
     <Compile Include="TestBooleanCesiumWriter.cs" />
     <Compile Include="TestBoundingRectangle.cs" />

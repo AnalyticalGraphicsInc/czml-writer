@@ -83,6 +83,12 @@
             "czmlExamples": [
                 "Examples/ModelNodeTransformations.json"
             ]
+        },
+        "articulations": {
+            "$ref": "Articulations.json",
+            "czmlExamples": [
+                "Examples/ModelArticulations.json"
+            ]
         }
     }
 }

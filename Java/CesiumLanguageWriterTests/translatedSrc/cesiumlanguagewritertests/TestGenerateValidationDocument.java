@@ -1524,6 +1524,22 @@ public class TestGenerateValidationDocument {
                                 DisposeHelper.dispose(w2);
                             }
                         }
+                        {
+                            cesiumlanguagewriter.ArticulationsCesiumWriter w2 = w.openArticulationsProperty();
+                            try {
+                                {
+                                    cesiumlanguagewriter.ArticulationCesiumWriter a = w2.openArticulationProperty("prop");
+                                    try {
+                                        a.writeNumber(25496.0);
+                                        TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.model.articulations.prop.getValue(date)).toEqual(25496.0);");
+                                    } finally {
+                                        DisposeHelper.dispose(a);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
                     } finally {
                         DisposeHelper.dispose(w);
                     }
@@ -23250,6 +23266,23 @@ public class TestGenerateValidationDocument {
                                                 DisposeHelper.dispose(w3);
                                             }
                                         }
+                                    } finally {
+                                        DisposeHelper.dispose(a);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.ArticulationsCesiumWriter w2 = w.openArticulationsProperty();
+                            try {
+                                {
+                                    cesiumlanguagewriter.ArticulationCesiumWriter a = w2.openArticulationProperty("referenceProp");
+                                    try {
+                                        a.writeReference(new Reference("Constant", createList("model", "articulations", "prop")));
+                                        TextWriterHelper.writeLine(m_assertionsWriter,
+                                                "    expect(e.model.articulations.referenceProp.getValue(date)).toEqual(constant.model.articulations.prop.getValue(date));");
                                     } finally {
                                         DisposeHelper.dispose(a);
                                     }
