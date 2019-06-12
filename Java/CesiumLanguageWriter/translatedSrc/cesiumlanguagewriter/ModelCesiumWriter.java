@@ -6,6 +6,7 @@ import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
+import cesiumlanguagewriter.ArticulationsCesiumWriter;
 import cesiumlanguagewriter.BooleanCesiumWriter;
 import cesiumlanguagewriter.ColorBlendModeCesiumWriter;
 import cesiumlanguagewriter.ColorCesiumWriter;
@@ -145,6 +146,13 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
 
     */
     public static final String NodeTransformationsPropertyName = "nodeTransformations";
+    /**
+    *  
+    The name of the {@code articulations} property.
+    
+
+    */
+    public static final String ArticulationsPropertyName = "articulations";
     private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
         public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
             return new BooleanCesiumWriter(ShowPropertyName);
@@ -227,6 +235,11 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
                     return new NodeTransformationsCesiumWriter(NodeTransformationsPropertyName);
                 }
             }, false);
+    private Lazy<ArticulationsCesiumWriter> m_articulations = new Lazy<cesiumlanguagewriter.ArticulationsCesiumWriter>(new Func1<cesiumlanguagewriter.ArticulationsCesiumWriter>() {
+        public cesiumlanguagewriter.ArticulationsCesiumWriter invoke() {
+            return new ArticulationsCesiumWriter(ArticulationsPropertyName);
+        }
+    }, false);
 
     /**
     *  
@@ -2844,5 +2857,27 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     public final NodeTransformationsCesiumWriter openNodeTransformationsProperty() {
         openIntervalIfNecessary();
         return this.<NodeTransformationsCesiumWriter> openAndReturn(getNodeTransformationsWriter());
+    }
+
+    /**
+    *  Gets the writer for the {@code articulations} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code articulations} property defines a mapping of keys to articulation values, where the keys are the name of the articulation, a single space, and the name of the stage.
+    
+
+    */
+    @Nonnull
+    public final ArticulationsCesiumWriter getArticulationsWriter() {
+        return m_articulations.getValue();
+    }
+
+    /**
+    *  
+    Opens and returns the writer for the {@code articulations} property. The {@code articulations} property defines a mapping of keys to articulation values, where the keys are the name of the articulation, a single space, and the name of the stage.
+    
+
+    */
+    @Nonnull
+    public final ArticulationsCesiumWriter openArticulationsProperty() {
+        openIntervalIfNecessary();
+        return this.<ArticulationsCesiumWriter> openAndReturn(getArticulationsWriter());
     }
 }
