@@ -11,6 +11,7 @@ import cesiumlanguagewriter.BoxDimensionsCesiumWriter;
 import cesiumlanguagewriter.ColorCesiumWriter;
 import cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter;
 import cesiumlanguagewriter.DoubleCesiumWriter;
+import cesiumlanguagewriter.HeightReferenceCesiumWriter;
 import cesiumlanguagewriter.MaterialCesiumWriter;
 import cesiumlanguagewriter.ShadowModeCesiumWriter;
 import java.awt.Color;
@@ -43,6 +44,13 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
 
     */
     public static final String DimensionsPropertyName = "dimensions";
+    /**
+    *  
+    The name of the {@code heightReference} property.
+    
+
+    */
+    public static final String HeightReferencePropertyName = "heightReference";
     /**
     *  
     The name of the {@code fill} property.
@@ -100,6 +108,11 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
     private Lazy<BoxDimensionsCesiumWriter> m_dimensions = new Lazy<cesiumlanguagewriter.BoxDimensionsCesiumWriter>(new Func1<cesiumlanguagewriter.BoxDimensionsCesiumWriter>() {
         public cesiumlanguagewriter.BoxDimensionsCesiumWriter invoke() {
             return new BoxDimensionsCesiumWriter(DimensionsPropertyName);
+        }
+    }, false);
+    private Lazy<HeightReferenceCesiumWriter> m_heightReference = new Lazy<cesiumlanguagewriter.HeightReferenceCesiumWriter>(new Func1<cesiumlanguagewriter.HeightReferenceCesiumWriter>() {
+        public cesiumlanguagewriter.HeightReferenceCesiumWriter invoke() {
+            return new HeightReferenceCesiumWriter(HeightReferencePropertyName);
         }
     }, false);
     private Lazy<BooleanCesiumWriter> m_fill = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
@@ -457,6 +470,127 @@ public class BoxCesiumWriter extends CesiumPropertyWriter<BoxCesiumWriter> {
     public final void writeDimensionsPropertyReference(String identifier, String[] propertyNames) {
         {
             cesiumlanguagewriter.BoxDimensionsCesiumWriter writer = openDimensionsProperty();
+            try {
+                writer.writeReference(identifier, propertyNames);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  Gets the writer for the {@code heightReference} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code heightReference} property defines the height reference of the box, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
+    
+
+    */
+    @Nonnull
+    public final HeightReferenceCesiumWriter getHeightReferenceWriter() {
+        return m_heightReference.getValue();
+    }
+
+    /**
+    *  
+    Opens and returns the writer for the {@code heightReference} property. The {@code heightReference} property defines the height reference of the box, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
+    
+
+    */
+    @Nonnull
+    public final HeightReferenceCesiumWriter openHeightReferenceProperty() {
+        openIntervalIfNecessary();
+        return this.<HeightReferenceCesiumWriter> openAndReturn(getHeightReferenceWriter());
+    }
+
+    /**
+    *  
+    Writes a value for the {@code heightReference} property as a {@code heightReference} value. The {@code heightReference} property specifies the height reference of the box, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
+    
+    
+
+    * @param value The height reference.
+    */
+    public final void writeHeightReferenceProperty(@Nonnull CesiumHeightReference value) {
+        {
+            cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
+            try {
+                writer.writeHeightReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the box, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeHeightReferencePropertyReference(Reference value) {
+        {
+            cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the box, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeHeightReferencePropertyReference(String value) {
+        {
+            cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the box, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyName The property on the referenced object.
+    */
+    public final void writeHeightReferencePropertyReference(String identifier, String propertyName) {
+        {
+            cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
+            try {
+                writer.writeReference(identifier, propertyName);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the box, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+    */
+    public final void writeHeightReferencePropertyReference(String identifier, String[] propertyNames) {
+        {
+            cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {

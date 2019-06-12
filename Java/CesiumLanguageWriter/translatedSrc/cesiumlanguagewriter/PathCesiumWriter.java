@@ -34,20 +34,6 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     public static final String ShowPropertyName = "show";
     /**
     *  
-    The name of the {@code width} property.
-    
-
-    */
-    public static final String WidthPropertyName = "width";
-    /**
-    *  
-    The name of the {@code resolution} property.
-    
-
-    */
-    public static final String ResolutionPropertyName = "resolution";
-    /**
-    *  
     The name of the {@code leadTime} property.
     
 
@@ -60,6 +46,20 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
 
     */
     public static final String TrailTimePropertyName = "trailTime";
+    /**
+    *  
+    The name of the {@code width} property.
+    
+
+    */
+    public static final String WidthPropertyName = "width";
+    /**
+    *  
+    The name of the {@code resolution} property.
+    
+
+    */
+    public static final String ResolutionPropertyName = "resolution";
     /**
     *  
     The name of the {@code material} property.
@@ -79,16 +79,6 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
             return new BooleanCesiumWriter(ShowPropertyName);
         }
     }, false);
-    private Lazy<DoubleCesiumWriter> m_width = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
-        public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
-            return new DoubleCesiumWriter(WidthPropertyName);
-        }
-    }, false);
-    private Lazy<DoubleCesiumWriter> m_resolution = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
-        public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
-            return new DoubleCesiumWriter(ResolutionPropertyName);
-        }
-    }, false);
     private Lazy<DoubleCesiumWriter> m_leadTime = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
         public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
             return new DoubleCesiumWriter(LeadTimePropertyName);
@@ -97,6 +87,16 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     private Lazy<DoubleCesiumWriter> m_trailTime = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
         public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
             return new DoubleCesiumWriter(TrailTimePropertyName);
+        }
+    }, false);
+    private Lazy<DoubleCesiumWriter> m_width = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+        public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+            return new DoubleCesiumWriter(WidthPropertyName);
+        }
+    }, false);
+    private Lazy<DoubleCesiumWriter> m_resolution = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+        public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+            return new DoubleCesiumWriter(ResolutionPropertyName);
         }
     }, false);
     private Lazy<PolylineMaterialCesiumWriter> m_material = new Lazy<cesiumlanguagewriter.PolylineMaterialCesiumWriter>(new Func1<cesiumlanguagewriter.PolylineMaterialCesiumWriter>() {
@@ -262,340 +262,6 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     public final void writeShowPropertyReference(String identifier, String[] propertyNames) {
         {
             cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
-            try {
-                writer.writeReference(identifier, propertyNames);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
-        }
-    }
-
-    /**
-    *  Gets the writer for the {@code width} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code width} property defines the width of the path line. If not specified, the default value is 1.0.
-    
-
-    */
-    @Nonnull
-    public final DoubleCesiumWriter getWidthWriter() {
-        return m_width.getValue();
-    }
-
-    /**
-    *  
-    Opens and returns the writer for the {@code width} property. The {@code width} property defines the width of the path line. If not specified, the default value is 1.0.
-    
-
-    */
-    @Nonnull
-    public final DoubleCesiumWriter openWidthProperty() {
-        openIntervalIfNecessary();
-        return this.<DoubleCesiumWriter> openAndReturn(getWidthWriter());
-    }
-
-    /**
-    *  
-    Writes a value for the {@code width} property as a {@code number} value. The {@code width} property specifies the width of the path line. If not specified, the default value is 1.0.
-    
-    
-
-    * @param value The value.
-    */
-    public final void writeWidthProperty(double value) {
-        {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
-            try {
-                writer.writeNumber(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
-        }
-    }
-
-    /**
-    *  
-    Writes a value for the {@code width} property as a {@code number} value. The {@code width} property specifies the width of the path line. If not specified, the default value is 1.0.
-    
-    
-    
-
-    * @param dates The dates at which the value is specified.
-    * @param values The values corresponding to each date.
-    */
-    public final void writeWidthProperty(List<JulianDate> dates, List<Double> values) {
-        {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
-            try {
-                writer.writeNumber(dates, values);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
-        }
-    }
-
-    /**
-    *  
-    Writes a value for the {@code width} property as a {@code number} value. The {@code width} property specifies the width of the path line. If not specified, the default value is 1.0.
-    
-    
-    
-    
-    
-
-    * @param dates The dates at which the value is specified.
-    * @param values The value corresponding to each date.
-    * @param startIndex The index of the first element to write.
-    * @param length The number of elements to write.
-    */
-    public final void writeWidthProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
-        {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
-            try {
-                writer.writeNumber(dates, values, startIndex, length);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
-        }
-    }
-
-    /**
-    *  
-    Writes a value for the {@code width} property as a {@code reference} value. The {@code width} property specifies the width of the path line. If not specified, the default value is 1.0.
-    
-    
-
-    * @param value The reference.
-    */
-    public final void writeWidthPropertyReference(Reference value) {
-        {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
-        }
-    }
-
-    /**
-    *  
-    Writes a value for the {@code width} property as a {@code reference} value. The {@code width} property specifies the width of the path line. If not specified, the default value is 1.0.
-    
-    
-
-    * @param value The reference.
-    */
-    public final void writeWidthPropertyReference(String value) {
-        {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
-        }
-    }
-
-    /**
-    *  
-    Writes a value for the {@code width} property as a {@code reference} value. The {@code width} property specifies the width of the path line. If not specified, the default value is 1.0.
-    
-    
-    
-
-    * @param identifier The identifier of the object which contains the referenced property.
-    * @param propertyName The property on the referenced object.
-    */
-    public final void writeWidthPropertyReference(String identifier, String propertyName) {
-        {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
-            try {
-                writer.writeReference(identifier, propertyName);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
-        }
-    }
-
-    /**
-    *  
-    Writes a value for the {@code width} property as a {@code reference} value. The {@code width} property specifies the width of the path line. If not specified, the default value is 1.0.
-    
-    
-    
-
-    * @param identifier The identifier of the object which contains the referenced property.
-    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
-    */
-    public final void writeWidthPropertyReference(String identifier, String[] propertyNames) {
-        {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
-            try {
-                writer.writeReference(identifier, propertyNames);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
-        }
-    }
-
-    /**
-    *  Gets the writer for the {@code resolution} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code resolution} property defines the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
-    
-
-    */
-    @Nonnull
-    public final DoubleCesiumWriter getResolutionWriter() {
-        return m_resolution.getValue();
-    }
-
-    /**
-    *  
-    Opens and returns the writer for the {@code resolution} property. The {@code resolution} property defines the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
-    
-
-    */
-    @Nonnull
-    public final DoubleCesiumWriter openResolutionProperty() {
-        openIntervalIfNecessary();
-        return this.<DoubleCesiumWriter> openAndReturn(getResolutionWriter());
-    }
-
-    /**
-    *  
-    Writes a value for the {@code resolution} property as a {@code number} value. The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
-    
-    
-
-    * @param value The value.
-    */
-    public final void writeResolutionProperty(double value) {
-        {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openResolutionProperty();
-            try {
-                writer.writeNumber(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
-        }
-    }
-
-    /**
-    *  
-    Writes a value for the {@code resolution} property as a {@code number} value. The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
-    
-    
-    
-
-    * @param dates The dates at which the value is specified.
-    * @param values The values corresponding to each date.
-    */
-    public final void writeResolutionProperty(List<JulianDate> dates, List<Double> values) {
-        {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openResolutionProperty();
-            try {
-                writer.writeNumber(dates, values);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
-        }
-    }
-
-    /**
-    *  
-    Writes a value for the {@code resolution} property as a {@code number} value. The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
-    
-    
-    
-    
-    
-
-    * @param dates The dates at which the value is specified.
-    * @param values The value corresponding to each date.
-    * @param startIndex The index of the first element to write.
-    * @param length The number of elements to write.
-    */
-    public final void writeResolutionProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
-        {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openResolutionProperty();
-            try {
-                writer.writeNumber(dates, values, startIndex, length);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
-        }
-    }
-
-    /**
-    *  
-    Writes a value for the {@code resolution} property as a {@code reference} value. The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
-    
-    
-
-    * @param value The reference.
-    */
-    public final void writeResolutionPropertyReference(Reference value) {
-        {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openResolutionProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
-        }
-    }
-
-    /**
-    *  
-    Writes a value for the {@code resolution} property as a {@code reference} value. The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
-    
-    
-
-    * @param value The reference.
-    */
-    public final void writeResolutionPropertyReference(String value) {
-        {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openResolutionProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
-        }
-    }
-
-    /**
-    *  
-    Writes a value for the {@code resolution} property as a {@code reference} value. The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
-    
-    
-    
-
-    * @param identifier The identifier of the object which contains the referenced property.
-    * @param propertyName The property on the referenced object.
-    */
-    public final void writeResolutionPropertyReference(String identifier, String propertyName) {
-        {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openResolutionProperty();
-            try {
-                writer.writeReference(identifier, propertyName);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
-        }
-    }
-
-    /**
-    *  
-    Writes a value for the {@code resolution} property as a {@code reference} value. The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
-    
-    
-    
-
-    * @param identifier The identifier of the object which contains the referenced property.
-    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
-    */
-    public final void writeResolutionPropertyReference(String identifier, String[] propertyNames) {
-        {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openResolutionProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -930,6 +596,340 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     public final void writeTrailTimePropertyReference(String identifier, String[] propertyNames) {
         {
             cesiumlanguagewriter.DoubleCesiumWriter writer = openTrailTimeProperty();
+            try {
+                writer.writeReference(identifier, propertyNames);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  Gets the writer for the {@code width} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code width} property defines the width of the path line. If not specified, the default value is 1.0.
+    
+
+    */
+    @Nonnull
+    public final DoubleCesiumWriter getWidthWriter() {
+        return m_width.getValue();
+    }
+
+    /**
+    *  
+    Opens and returns the writer for the {@code width} property. The {@code width} property defines the width of the path line. If not specified, the default value is 1.0.
+    
+
+    */
+    @Nonnull
+    public final DoubleCesiumWriter openWidthProperty() {
+        openIntervalIfNecessary();
+        return this.<DoubleCesiumWriter> openAndReturn(getWidthWriter());
+    }
+
+    /**
+    *  
+    Writes a value for the {@code width} property as a {@code number} value. The {@code width} property specifies the width of the path line. If not specified, the default value is 1.0.
+    
+    
+
+    * @param value The value.
+    */
+    public final void writeWidthProperty(double value) {
+        {
+            cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
+            try {
+                writer.writeNumber(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code width} property as a {@code number} value. The {@code width} property specifies the width of the path line. If not specified, the default value is 1.0.
+    
+    
+    
+
+    * @param dates The dates at which the value is specified.
+    * @param values The values corresponding to each date.
+    */
+    public final void writeWidthProperty(List<JulianDate> dates, List<Double> values) {
+        {
+            cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
+            try {
+                writer.writeNumber(dates, values);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code width} property as a {@code number} value. The {@code width} property specifies the width of the path line. If not specified, the default value is 1.0.
+    
+    
+    
+    
+    
+
+    * @param dates The dates at which the value is specified.
+    * @param values The value corresponding to each date.
+    * @param startIndex The index of the first element to write.
+    * @param length The number of elements to write.
+    */
+    public final void writeWidthProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+        {
+            cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
+            try {
+                writer.writeNumber(dates, values, startIndex, length);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code width} property as a {@code reference} value. The {@code width} property specifies the width of the path line. If not specified, the default value is 1.0.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeWidthPropertyReference(Reference value) {
+        {
+            cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code width} property as a {@code reference} value. The {@code width} property specifies the width of the path line. If not specified, the default value is 1.0.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeWidthPropertyReference(String value) {
+        {
+            cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code width} property as a {@code reference} value. The {@code width} property specifies the width of the path line. If not specified, the default value is 1.0.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyName The property on the referenced object.
+    */
+    public final void writeWidthPropertyReference(String identifier, String propertyName) {
+        {
+            cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
+            try {
+                writer.writeReference(identifier, propertyName);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code width} property as a {@code reference} value. The {@code width} property specifies the width of the path line. If not specified, the default value is 1.0.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+    */
+    public final void writeWidthPropertyReference(String identifier, String[] propertyNames) {
+        {
+            cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
+            try {
+                writer.writeReference(identifier, propertyNames);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  Gets the writer for the {@code resolution} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code resolution} property defines the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
+    
+
+    */
+    @Nonnull
+    public final DoubleCesiumWriter getResolutionWriter() {
+        return m_resolution.getValue();
+    }
+
+    /**
+    *  
+    Opens and returns the writer for the {@code resolution} property. The {@code resolution} property defines the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
+    
+
+    */
+    @Nonnull
+    public final DoubleCesiumWriter openResolutionProperty() {
+        openIntervalIfNecessary();
+        return this.<DoubleCesiumWriter> openAndReturn(getResolutionWriter());
+    }
+
+    /**
+    *  
+    Writes a value for the {@code resolution} property as a {@code number} value. The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
+    
+    
+
+    * @param value The value.
+    */
+    public final void writeResolutionProperty(double value) {
+        {
+            cesiumlanguagewriter.DoubleCesiumWriter writer = openResolutionProperty();
+            try {
+                writer.writeNumber(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code resolution} property as a {@code number} value. The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
+    
+    
+    
+
+    * @param dates The dates at which the value is specified.
+    * @param values The values corresponding to each date.
+    */
+    public final void writeResolutionProperty(List<JulianDate> dates, List<Double> values) {
+        {
+            cesiumlanguagewriter.DoubleCesiumWriter writer = openResolutionProperty();
+            try {
+                writer.writeNumber(dates, values);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code resolution} property as a {@code number} value. The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
+    
+    
+    
+    
+    
+
+    * @param dates The dates at which the value is specified.
+    * @param values The value corresponding to each date.
+    * @param startIndex The index of the first element to write.
+    * @param length The number of elements to write.
+    */
+    public final void writeResolutionProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+        {
+            cesiumlanguagewriter.DoubleCesiumWriter writer = openResolutionProperty();
+            try {
+                writer.writeNumber(dates, values, startIndex, length);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code resolution} property as a {@code reference} value. The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeResolutionPropertyReference(Reference value) {
+        {
+            cesiumlanguagewriter.DoubleCesiumWriter writer = openResolutionProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code resolution} property as a {@code reference} value. The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeResolutionPropertyReference(String value) {
+        {
+            cesiumlanguagewriter.DoubleCesiumWriter writer = openResolutionProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code resolution} property as a {@code reference} value. The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyName The property on the referenced object.
+    */
+    public final void writeResolutionPropertyReference(String identifier, String propertyName) {
+        {
+            cesiumlanguagewriter.DoubleCesiumWriter writer = openResolutionProperty();
+            try {
+                writer.writeReference(identifier, propertyName);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code resolution} property as a {@code reference} value. The {@code resolution} property specifies the maximum step-size, in seconds, used to sample the path. If the {@code position} property has data points farther apart than resolution specifies, additional samples will be computed, creating a smoother path. If not specified, the default value is 60.0.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+    */
+    public final void writeResolutionPropertyReference(String identifier, String[] propertyNames) {
+        {
+            cesiumlanguagewriter.DoubleCesiumWriter writer = openResolutionProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {

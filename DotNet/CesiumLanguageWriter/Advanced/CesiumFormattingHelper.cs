@@ -469,6 +469,27 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
+        /// Converts a <see cref="CesiumClassificationType"/> to the corresponding string in a CZML stream.
+        /// </summary>
+        /// <param name="value">The value to convert.</param>
+        /// <returns>The string representing the specified value.</returns>
+        [NotNull]
+        public static string ClassificationTypeToString(CesiumClassificationType value)
+        {
+            switch (value)
+            {
+                case CesiumClassificationType.Terrain:
+                    return "TERRAIN";
+                case CesiumClassificationType.Cesium3DTile:
+                    return "CESIUM_3D_TILE";
+                case CesiumClassificationType.Both:
+                    return "BOTH";
+                default:
+                    throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "value");
+            }
+        }
+
+        /// <summary>
         /// Converts a <see cref="CesiumColorBlendMode"/> to the corresponding string in a CZML stream.
         /// </summary>
         /// <param name="value">The value to convert.</param>

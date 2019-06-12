@@ -15,6 +15,11 @@
             "description": "The dimensions of the box.",
             "czmlRequiredForDisplay": true
         },
+        "heightReference": {
+            "$ref": "HeightReference.json",
+            "description": "The height reference of the box, which indicates if the position is relative to terrain or not.",
+            "default": "NONE"
+        },
         "fill": {
             "$ref": "Boolean.json",
             "description": "Whether or not the box is filled.",

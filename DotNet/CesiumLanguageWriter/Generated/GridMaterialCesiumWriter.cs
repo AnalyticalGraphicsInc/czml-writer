@@ -12,7 +12,7 @@ using System.Collections.Generic;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>GridMaterial</c> to a <see cref="CesiumOutputStream"/>. A <c>GridMaterial</c> is a material that fills the surface with a two dimensional grid.
+    /// Writes a <c>GridMaterial</c> to a <see cref="CesiumOutputStream"/>. A <c>GridMaterial</c> is a material that fills the surface with a two-dimensional grid.
     /// </summary>
     public class GridMaterialCesiumWriter : CesiumPropertyWriter<GridMaterialCesiumWriter>
     {

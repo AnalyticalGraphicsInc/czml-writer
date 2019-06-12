@@ -8,6 +8,7 @@ import agi.foundation.compatibility.Lazy;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.ArcTypeCesiumWriter;
 import cesiumlanguagewriter.BooleanCesiumWriter;
+import cesiumlanguagewriter.ClassificationTypeCesiumWriter;
 import cesiumlanguagewriter.ColorCesiumWriter;
 import cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter;
 import cesiumlanguagewriter.DoubleCesiumWriter;
@@ -62,18 +63,18 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     public static final String HeightPropertyName = "height";
     /**
     *  
-    The name of the {@code extrudedHeight} property.
-    
-
-    */
-    public static final String ExtrudedHeightPropertyName = "extrudedHeight";
-    /**
-    *  
     The name of the {@code heightReference} property.
     
 
     */
     public static final String HeightReferencePropertyName = "heightReference";
+    /**
+    *  
+    The name of the {@code extrudedHeight} property.
+    
+
+    */
+    public static final String ExtrudedHeightPropertyName = "extrudedHeight";
     /**
     *  
     The name of the {@code extrudedHeightReference} property.
@@ -167,6 +168,13 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     public static final String DistanceDisplayConditionPropertyName = "distanceDisplayCondition";
     /**
     *  
+    The name of the {@code classificationType} property.
+    
+
+    */
+    public static final String ClassificationTypePropertyName = "classificationType";
+    /**
+    *  
     The name of the {@code zIndex} property.
     
 
@@ -192,14 +200,14 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
             return new DoubleCesiumWriter(HeightPropertyName);
         }
     }, false);
-    private Lazy<DoubleCesiumWriter> m_extrudedHeight = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
-        public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
-            return new DoubleCesiumWriter(ExtrudedHeightPropertyName);
-        }
-    }, false);
     private Lazy<HeightReferenceCesiumWriter> m_heightReference = new Lazy<cesiumlanguagewriter.HeightReferenceCesiumWriter>(new Func1<cesiumlanguagewriter.HeightReferenceCesiumWriter>() {
         public cesiumlanguagewriter.HeightReferenceCesiumWriter invoke() {
             return new HeightReferenceCesiumWriter(HeightReferencePropertyName);
+        }
+    }, false);
+    private Lazy<DoubleCesiumWriter> m_extrudedHeight = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+        public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+            return new DoubleCesiumWriter(ExtrudedHeightPropertyName);
         }
     }, false);
     private Lazy<HeightReferenceCesiumWriter> m_extrudedHeightReference = new Lazy<cesiumlanguagewriter.HeightReferenceCesiumWriter>(new Func1<cesiumlanguagewriter.HeightReferenceCesiumWriter>() {
@@ -268,6 +276,11 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
                     return new DistanceDisplayConditionCesiumWriter(DistanceDisplayConditionPropertyName);
                 }
             }, false);
+    private Lazy<ClassificationTypeCesiumWriter> m_classificationType = new Lazy<cesiumlanguagewriter.ClassificationTypeCesiumWriter>(new Func1<cesiumlanguagewriter.ClassificationTypeCesiumWriter>() {
+        public cesiumlanguagewriter.ClassificationTypeCesiumWriter invoke() {
+            return new ClassificationTypeCesiumWriter(ClassificationTypePropertyName);
+        }
+    }, false);
     private Lazy<IntegerCesiumWriter> m_zIndex = new Lazy<cesiumlanguagewriter.IntegerCesiumWriter>(new Func1<cesiumlanguagewriter.IntegerCesiumWriter>() {
         public cesiumlanguagewriter.IntegerCesiumWriter invoke() {
             return new IntegerCesiumWriter(ZIndexPropertyName);
@@ -820,6 +833,127 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     }
 
     /**
+    *  Gets the writer for the {@code heightReference} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code heightReference} property defines the height reference of the polygon, which indicates if {@code height} is relative to terrain or not. If not specified, the default value is NONE.
+    
+
+    */
+    @Nonnull
+    public final HeightReferenceCesiumWriter getHeightReferenceWriter() {
+        return m_heightReference.getValue();
+    }
+
+    /**
+    *  
+    Opens and returns the writer for the {@code heightReference} property. The {@code heightReference} property defines the height reference of the polygon, which indicates if {@code height} is relative to terrain or not. If not specified, the default value is NONE.
+    
+
+    */
+    @Nonnull
+    public final HeightReferenceCesiumWriter openHeightReferenceProperty() {
+        openIntervalIfNecessary();
+        return this.<HeightReferenceCesiumWriter> openAndReturn(getHeightReferenceWriter());
+    }
+
+    /**
+    *  
+    Writes a value for the {@code heightReference} property as a {@code heightReference} value. The {@code heightReference} property specifies the height reference of the polygon, which indicates if {@code height} is relative to terrain or not. If not specified, the default value is NONE.
+    
+    
+
+    * @param value The height reference.
+    */
+    public final void writeHeightReferenceProperty(@Nonnull CesiumHeightReference value) {
+        {
+            cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
+            try {
+                writer.writeHeightReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the polygon, which indicates if {@code height} is relative to terrain or not. If not specified, the default value is NONE.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeHeightReferencePropertyReference(Reference value) {
+        {
+            cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the polygon, which indicates if {@code height} is relative to terrain or not. If not specified, the default value is NONE.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeHeightReferencePropertyReference(String value) {
+        {
+            cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the polygon, which indicates if {@code height} is relative to terrain or not. If not specified, the default value is NONE.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyName The property on the referenced object.
+    */
+    public final void writeHeightReferencePropertyReference(String identifier, String propertyName) {
+        {
+            cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
+            try {
+                writer.writeReference(identifier, propertyName);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the polygon, which indicates if {@code height} is relative to terrain or not. If not specified, the default value is NONE.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+    */
+    public final void writeHeightReferencePropertyReference(String identifier, String[] propertyNames) {
+        {
+            cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
+            try {
+                writer.writeReference(identifier, propertyNames);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
     *  Gets the writer for the {@code extrudedHeight} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code extrudedHeight} property defines the extruded height of the polygon.
     
 
@@ -978,127 +1112,6 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     public final void writeExtrudedHeightPropertyReference(String identifier, String[] propertyNames) {
         {
             cesiumlanguagewriter.DoubleCesiumWriter writer = openExtrudedHeightProperty();
-            try {
-                writer.writeReference(identifier, propertyNames);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
-        }
-    }
-
-    /**
-    *  Gets the writer for the {@code heightReference} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code heightReference} property defines the height reference of the polygon, which indicates if {@code height} is relative to terrain or not. If not specified, the default value is NONE.
-    
-
-    */
-    @Nonnull
-    public final HeightReferenceCesiumWriter getHeightReferenceWriter() {
-        return m_heightReference.getValue();
-    }
-
-    /**
-    *  
-    Opens and returns the writer for the {@code heightReference} property. The {@code heightReference} property defines the height reference of the polygon, which indicates if {@code height} is relative to terrain or not. If not specified, the default value is NONE.
-    
-
-    */
-    @Nonnull
-    public final HeightReferenceCesiumWriter openHeightReferenceProperty() {
-        openIntervalIfNecessary();
-        return this.<HeightReferenceCesiumWriter> openAndReturn(getHeightReferenceWriter());
-    }
-
-    /**
-    *  
-    Writes a value for the {@code heightReference} property as a {@code heightReference} value. The {@code heightReference} property specifies the height reference of the polygon, which indicates if {@code height} is relative to terrain or not. If not specified, the default value is NONE.
-    
-    
-
-    * @param value The height reference.
-    */
-    public final void writeHeightReferenceProperty(@Nonnull CesiumHeightReference value) {
-        {
-            cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
-            try {
-                writer.writeHeightReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
-        }
-    }
-
-    /**
-    *  
-    Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the polygon, which indicates if {@code height} is relative to terrain or not. If not specified, the default value is NONE.
-    
-    
-
-    * @param value The reference.
-    */
-    public final void writeHeightReferencePropertyReference(Reference value) {
-        {
-            cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
-        }
-    }
-
-    /**
-    *  
-    Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the polygon, which indicates if {@code height} is relative to terrain or not. If not specified, the default value is NONE.
-    
-    
-
-    * @param value The reference.
-    */
-    public final void writeHeightReferencePropertyReference(String value) {
-        {
-            cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
-        }
-    }
-
-    /**
-    *  
-    Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the polygon, which indicates if {@code height} is relative to terrain or not. If not specified, the default value is NONE.
-    
-    
-    
-
-    * @param identifier The identifier of the object which contains the referenced property.
-    * @param propertyName The property on the referenced object.
-    */
-    public final void writeHeightReferencePropertyReference(String identifier, String propertyName) {
-        {
-            cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
-            try {
-                writer.writeReference(identifier, propertyName);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
-        }
-    }
-
-    /**
-    *  
-    Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the polygon, which indicates if {@code height} is relative to terrain or not. If not specified, the default value is NONE.
-    
-    
-    
-
-    * @param identifier The identifier of the object which contains the referenced property.
-    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
-    */
-    public final void writeHeightReferencePropertyReference(String identifier, String[] propertyNames) {
-        {
-            cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -2939,6 +2952,127 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     public final void writeDistanceDisplayConditionPropertyReference(String identifier, String[] propertyNames) {
         {
             cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
+            try {
+                writer.writeReference(identifier, propertyNames);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  Gets the writer for the {@code classificationType} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code classificationType} property defines whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+    
+
+    */
+    @Nonnull
+    public final ClassificationTypeCesiumWriter getClassificationTypeWriter() {
+        return m_classificationType.getValue();
+    }
+
+    /**
+    *  
+    Opens and returns the writer for the {@code classificationType} property. The {@code classificationType} property defines whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+    
+
+    */
+    @Nonnull
+    public final ClassificationTypeCesiumWriter openClassificationTypeProperty() {
+        openIntervalIfNecessary();
+        return this.<ClassificationTypeCesiumWriter> openAndReturn(getClassificationTypeWriter());
+    }
+
+    /**
+    *  
+    Writes a value for the {@code classificationType} property as a {@code classificationType} value. The {@code classificationType} property specifies whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+    
+    
+
+    * @param value The classification type.
+    */
+    public final void writeClassificationTypeProperty(@Nonnull CesiumClassificationType value) {
+        {
+            cesiumlanguagewriter.ClassificationTypeCesiumWriter writer = openClassificationTypeProperty();
+            try {
+                writer.writeClassificationType(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code classificationType} property as a {@code reference} value. The {@code classificationType} property specifies whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeClassificationTypePropertyReference(Reference value) {
+        {
+            cesiumlanguagewriter.ClassificationTypeCesiumWriter writer = openClassificationTypeProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code classificationType} property as a {@code reference} value. The {@code classificationType} property specifies whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeClassificationTypePropertyReference(String value) {
+        {
+            cesiumlanguagewriter.ClassificationTypeCesiumWriter writer = openClassificationTypeProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code classificationType} property as a {@code reference} value. The {@code classificationType} property specifies whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyName The property on the referenced object.
+    */
+    public final void writeClassificationTypePropertyReference(String identifier, String propertyName) {
+        {
+            cesiumlanguagewriter.ClassificationTypeCesiumWriter writer = openClassificationTypeProperty();
+            try {
+                writer.writeReference(identifier, propertyName);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code classificationType} property as a {@code reference} value. The {@code classificationType} property specifies whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+    */
+    public final void writeClassificationTypePropertyReference(String identifier, String[] propertyNames) {
+        {
+            cesiumlanguagewriter.ClassificationTypeCesiumWriter writer = openClassificationTypeProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {

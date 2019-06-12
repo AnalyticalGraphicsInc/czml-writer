@@ -628,6 +628,34 @@ public final class CesiumFormattingHelper {
 
     /**
     *  
+    Converts a {@link CesiumClassificationType} to the corresponding string in a CZML stream.
+    
+    
+    
+
+    * @param value The value to convert.
+    * @return The string representing the specified value.
+    */
+    @Nonnull
+    public static String classificationTypeToString(@Nonnull CesiumClassificationType value) {
+        switch (value) {
+        case TERRAIN: {
+            return "TERRAIN";
+        }
+        case CESIUM3DTILE: {
+            return "CESIUM_3D_TILE";
+        }
+        case BOTH: {
+            return "BOTH";
+        }
+        default: {
+            throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "value");
+        }
+        }
+    }
+
+    /**
+    *  
     Converts a {@link CesiumColorBlendMode} to the corresponding string in a CZML stream.
     
     

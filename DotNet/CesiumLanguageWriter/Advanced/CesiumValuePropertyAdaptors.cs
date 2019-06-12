@@ -171,6 +171,18 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
+        /// Create an adaptor for <see cref="CesiumClassificationType"/> values.
+        /// </summary>
+        /// <typeparam name="TFrom">The class that implements <see cref="ICesiumClassificationTypeValuePropertyWriter"/> to adapt.</typeparam>
+        /// <param name="parent">The instance to wrap.</param>
+        /// <returns>The new adaptor.</returns>
+        public static CesiumClassificationTypeValuePropertyAdaptor<TFrom> CreateClassificationType<TFrom>([NotNull] TFrom parent)
+            where TFrom : class, ICesiumClassificationTypeValuePropertyWriter, ICesiumDeletablePropertyWriter
+        {
+            return new CesiumClassificationTypeValuePropertyAdaptor<TFrom>(parent, (writer, value) => writer.WriteClassificationType(value), CreateWriteDeleteCallback<TFrom>());
+        }
+
+        /// <summary>
         /// Create an adaptor for <see cref="CesiumColorBlendMode"/> values.
         /// </summary>
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumColorBlendModeValuePropertyWriter"/> to adapt.</typeparam>

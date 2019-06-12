@@ -1458,6 +1458,13 @@ namespace GenerateFromSchema
                     valueType = "CesiumShadowMode";
                     return;
                 }
+                case "ClassificationType":
+                {
+                    value = "CesiumClassificationType.Terrain";
+                    assertionValue = "ClassificationType.TERRAIN";
+                    valueType = "CesiumClassificationType";
+                    return;
+                }
                 case "ColorBlendMode":
                 {
                     value = "CesiumColorBlendMode.Replace";

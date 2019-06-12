@@ -20,14 +20,14 @@
             "description": "The height of the rectangle.",
             "default": 0.0
         },
-        "extrudedHeight": {
-            "$ref": "Double.json",
-            "description": "The extruded height of the rectangle."
-        },
         "heightReference": {
             "$ref": "HeightReference.json",
             "description": "The height reference of the rectangle, which indicates if `height` is relative to terrain or not.",
             "default": "NONE"
+        },
+        "extrudedHeight": {
+            "$ref": "Double.json",
+            "description": "The extruded height of the rectangle."
         },
         "extrudedHeightReference": {
             "$ref": "HeightReference.json",
@@ -82,6 +82,11 @@
         "distanceDisplayCondition": {
             "$ref": "DistanceDisplayCondition.json",
             "description": "The display condition specifying at what distance from the camera this rectangle will be displayed."
+        },
+        "classificationType": {
+            "$ref": "ClassificationType.json",
+            "description": "Whether a classification affects terrain, 3D Tiles or both.",
+            "default": "BOTH"
         },
         "zIndex": {
             "$ref": "Integer.json",

@@ -58,6 +58,7 @@
     <Compile Include="Advanced\CesiumCartographicRadiansListValuePropertyAdaptor.cs" />
     <Compile Include="Advanced\CesiumCartographicRectangleDegreesValuePropertyAdaptor.cs" />
     <Compile Include="Advanced\CesiumCartographicRadiansValuePropertyAdaptor.cs" />
+    <Compile Include="Advanced\CesiumClassificationTypeValuePropertyAdaptor.cs" />
     <Compile Include="Advanced\CesiumColorBlendModeValuePropertyAdaptor.cs" />
     <Compile Include="Advanced\CesiumCornerTypeValuePropertyAdaptor.cs" />
     <Compile Include="Advanced\CesiumDistanceDisplayConditionValuePropertyAdaptor.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="Advanced\ICesiumCartographicRadiansListValuePropertyWriter.cs" />
     <Compile Include="Advanced\ICesiumCartographicRectangleDegreesValuePropertyWriter.cs" />
     <Compile Include="Advanced\ICesiumCartographicRadiansValuePropertyWriter.cs" />
+    <Compile Include="Advanced\ICesiumClassificationTypeValuePropertyWriter.cs" />
     <Compile Include="Advanced\ICesiumColorBlendModeValuePropertyWriter.cs" />
     <Compile Include="Advanced\ICesiumCornerTypeValuePropertyWriter.cs" />
     <Compile Include="Advanced\ICesiumDeletablePropertyWriter.cs" />
@@ -162,6 +164,7 @@
     <Compile Include="Cartesian.cs" />
     <Compile Include="Cartographic.cs" />
     <Compile Include="CartographicExtent.cs" />
+    <Compile Include="CesiumClassificationType.cs" />
     <Compile Include="CesiumColorBlendMode.cs" />
     <Compile Include="CesiumArcType.cs" />
     <Compile Include="CesiumCornerType.cs" />
@@ -205,6 +208,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Generated\CheckerboardMaterialCesiumWriter.cs" />
+    <Compile Include="Generated\ClassificationTypeCesiumWriter.cs" />
     <Compile Include="Generated\ClockCesiumWriter.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -25,14 +25,14 @@
             "description": "The height of the corridor, which is the altitude of the corridor relative to the surface.",
             "default": 0.0
         },
-        "extrudedHeight": {
-            "$ref": "Double.json",
-            "description": "The extruded height of the corridor, which is the altitude of the corridor's extruded face relative to the surface."
-        },
         "heightReference": {
             "$ref": "HeightReference.json",
             "description": "The height reference of the corridor, which indicates if `height` is relative to terrain or not.",
             "default": "NONE"
+        },
+        "extrudedHeight": {
+            "$ref": "Double.json",
+            "description": "The extruded height of the corridor, which is the altitude of the corridor's extruded face relative to the surface."
         },
         "extrudedHeightReference": {
             "$ref": "HeightReference.json",
@@ -82,6 +82,11 @@
         "distanceDisplayCondition": {
             "$ref": "DistanceDisplayCondition.json",
             "description": "The display condition specifying the distance from the camera at which this corridor will be displayed."
+        },
+        "classificationType": {
+            "$ref": "ClassificationType.json",
+            "description": "Whether a classification affects terrain, 3D Tiles or both.",
+            "default": "BOTH"
         },
         "zIndex": {
             "$ref": "Integer.json",

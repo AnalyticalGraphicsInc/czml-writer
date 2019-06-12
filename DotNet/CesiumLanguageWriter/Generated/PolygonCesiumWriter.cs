@@ -37,14 +37,14 @@ namespace CesiumLanguageWriter
         public const string HeightPropertyName = "height";
 
         /// <summary>
-        /// The name of the <c>extrudedHeight</c> property.
-        /// </summary>
-        public const string ExtrudedHeightPropertyName = "extrudedHeight";
-
-        /// <summary>
         /// The name of the <c>heightReference</c> property.
         /// </summary>
         public const string HeightReferencePropertyName = "heightReference";
+
+        /// <summary>
+        /// The name of the <c>extrudedHeight</c> property.
+        /// </summary>
+        public const string ExtrudedHeightPropertyName = "extrudedHeight";
 
         /// <summary>
         /// The name of the <c>extrudedHeightReference</c> property.
@@ -112,6 +112,11 @@ namespace CesiumLanguageWriter
         public const string DistanceDisplayConditionPropertyName = "distanceDisplayCondition";
 
         /// <summary>
+        /// The name of the <c>classificationType</c> property.
+        /// </summary>
+        public const string ClassificationTypePropertyName = "classificationType";
+
+        /// <summary>
         /// The name of the <c>zIndex</c> property.
         /// </summary>
         public const string ZIndexPropertyName = "zIndex";
@@ -120,8 +125,8 @@ namespace CesiumLanguageWriter
         private readonly Lazy<PositionListCesiumWriter> m_positions = new Lazy<PositionListCesiumWriter>(() => new PositionListCesiumWriter(PositionsPropertyName), false);
         private readonly Lazy<ArcTypeCesiumWriter> m_arcType = new Lazy<ArcTypeCesiumWriter>(() => new ArcTypeCesiumWriter(ArcTypePropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_height = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(HeightPropertyName), false);
-        private readonly Lazy<DoubleCesiumWriter> m_extrudedHeight = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ExtrudedHeightPropertyName), false);
         private readonly Lazy<HeightReferenceCesiumWriter> m_heightReference = new Lazy<HeightReferenceCesiumWriter>(() => new HeightReferenceCesiumWriter(HeightReferencePropertyName), false);
+        private readonly Lazy<DoubleCesiumWriter> m_extrudedHeight = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ExtrudedHeightPropertyName), false);
         private readonly Lazy<HeightReferenceCesiumWriter> m_extrudedHeightReference = new Lazy<HeightReferenceCesiumWriter>(() => new HeightReferenceCesiumWriter(ExtrudedHeightReferencePropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_stRotation = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(StRotationPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_granularity = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(GranularityPropertyName), false);
@@ -135,6 +140,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<BooleanCesiumWriter> m_closeBottom = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(CloseBottomPropertyName), false);
         private readonly Lazy<ShadowModeCesiumWriter> m_shadows = new Lazy<ShadowModeCesiumWriter>(() => new ShadowModeCesiumWriter(ShadowsPropertyName), false);
         private readonly Lazy<DistanceDisplayConditionCesiumWriter> m_distanceDisplayCondition = new Lazy<DistanceDisplayConditionCesiumWriter>(() => new DistanceDisplayConditionCesiumWriter(DistanceDisplayConditionPropertyName), false);
+        private readonly Lazy<ClassificationTypeCesiumWriter> m_classificationType = new Lazy<ClassificationTypeCesiumWriter>(() => new ClassificationTypeCesiumWriter(ClassificationTypePropertyName), false);
         private readonly Lazy<IntegerCesiumWriter> m_zIndex = new Lazy<IntegerCesiumWriter>(() => new IntegerCesiumWriter(ZIndexPropertyName), false);
 
         /// <summary>
@@ -500,6 +506,87 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Gets the writer for the <c>heightReference</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>heightReference</c> property defines the height reference of the polygon, which indicates if <c>height</c> is relative to terrain or not. If not specified, the default value is NONE.
+        /// </summary>
+        [NotNull]
+        public HeightReferenceCesiumWriter HeightReferenceWriter
+        {
+            get { return m_heightReference.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>heightReference</c> property. The <c>heightReference</c> property defines the height reference of the polygon, which indicates if <c>height</c> is relative to terrain or not. If not specified, the default value is NONE.
+        /// </summary>
+        [NotNull]
+        public HeightReferenceCesiumWriter OpenHeightReferenceProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(HeightReferenceWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>heightReference</c> property as a <c>heightReference</c> value. The <c>heightReference</c> property specifies the height reference of the polygon, which indicates if <c>height</c> is relative to terrain or not. If not specified, the default value is NONE.
+        /// </summary>
+        /// <param name="value">The height reference.</param>
+        public void WriteHeightReferenceProperty(CesiumHeightReference value)
+        {
+            using (var writer = OpenHeightReferenceProperty())
+            {
+                writer.WriteHeightReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>heightReference</c> property as a <c>reference</c> value. The <c>heightReference</c> property specifies the height reference of the polygon, which indicates if <c>height</c> is relative to terrain or not. If not specified, the default value is NONE.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteHeightReferencePropertyReference(Reference value)
+        {
+            using (var writer = OpenHeightReferenceProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>heightReference</c> property as a <c>reference</c> value. The <c>heightReference</c> property specifies the height reference of the polygon, which indicates if <c>height</c> is relative to terrain or not. If not specified, the default value is NONE.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteHeightReferencePropertyReference(string value)
+        {
+            using (var writer = OpenHeightReferenceProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>heightReference</c> property as a <c>reference</c> value. The <c>heightReference</c> property specifies the height reference of the polygon, which indicates if <c>height</c> is relative to terrain or not. If not specified, the default value is NONE.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteHeightReferencePropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenHeightReferenceProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>heightReference</c> property as a <c>reference</c> value. The <c>heightReference</c> property specifies the height reference of the polygon, which indicates if <c>height</c> is relative to terrain or not. If not specified, the default value is NONE.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteHeightReferencePropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenHeightReferenceProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
         /// Gets the writer for the <c>extrudedHeight</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>extrudedHeight</c> property defines the extruded height of the polygon.
         /// </summary>
         [NotNull]
@@ -603,87 +690,6 @@ namespace CesiumLanguageWriter
         public void WriteExtrudedHeightPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenExtrudedHeightProperty())
-            {
-                writer.WriteReference(identifier, propertyNames);
-            }
-        }
-
-        /// <summary>
-        /// Gets the writer for the <c>heightReference</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>heightReference</c> property defines the height reference of the polygon, which indicates if <c>height</c> is relative to terrain or not. If not specified, the default value is NONE.
-        /// </summary>
-        [NotNull]
-        public HeightReferenceCesiumWriter HeightReferenceWriter
-        {
-            get { return m_heightReference.Value; }
-        }
-
-        /// <summary>
-        /// Opens and returns the writer for the <c>heightReference</c> property. The <c>heightReference</c> property defines the height reference of the polygon, which indicates if <c>height</c> is relative to terrain or not. If not specified, the default value is NONE.
-        /// </summary>
-        [NotNull]
-        public HeightReferenceCesiumWriter OpenHeightReferenceProperty()
-        {
-            OpenIntervalIfNecessary();
-            return OpenAndReturn(HeightReferenceWriter);
-        }
-
-        /// <summary>
-        /// Writes a value for the <c>heightReference</c> property as a <c>heightReference</c> value. The <c>heightReference</c> property specifies the height reference of the polygon, which indicates if <c>height</c> is relative to terrain or not. If not specified, the default value is NONE.
-        /// </summary>
-        /// <param name="value">The height reference.</param>
-        public void WriteHeightReferenceProperty(CesiumHeightReference value)
-        {
-            using (var writer = OpenHeightReferenceProperty())
-            {
-                writer.WriteHeightReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <c>heightReference</c> property as a <c>reference</c> value. The <c>heightReference</c> property specifies the height reference of the polygon, which indicates if <c>height</c> is relative to terrain or not. If not specified, the default value is NONE.
-        /// </summary>
-        /// <param name="value">The reference.</param>
-        public void WriteHeightReferencePropertyReference(Reference value)
-        {
-            using (var writer = OpenHeightReferenceProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <c>heightReference</c> property as a <c>reference</c> value. The <c>heightReference</c> property specifies the height reference of the polygon, which indicates if <c>height</c> is relative to terrain or not. If not specified, the default value is NONE.
-        /// </summary>
-        /// <param name="value">The reference.</param>
-        public void WriteHeightReferencePropertyReference(string value)
-        {
-            using (var writer = OpenHeightReferenceProperty())
-            {
-                writer.WriteReference(value);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <c>heightReference</c> property as a <c>reference</c> value. The <c>heightReference</c> property specifies the height reference of the polygon, which indicates if <c>height</c> is relative to terrain or not. If not specified, the default value is NONE.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyName">The property on the referenced object.</param>
-        public void WriteHeightReferencePropertyReference(string identifier, string propertyName)
-        {
-            using (var writer = OpenHeightReferenceProperty())
-            {
-                writer.WriteReference(identifier, propertyName);
-            }
-        }
-
-        /// <summary>
-        /// Writes a value for the <c>heightReference</c> property as a <c>reference</c> value. The <c>heightReference</c> property specifies the height reference of the polygon, which indicates if <c>height</c> is relative to terrain or not. If not specified, the default value is NONE.
-        /// </summary>
-        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
-        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
-        public void WriteHeightReferencePropertyReference(string identifier, string[] propertyNames)
-        {
-            using (var writer = OpenHeightReferenceProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }
@@ -1898,6 +1904,87 @@ namespace CesiumLanguageWriter
         public void WriteDistanceDisplayConditionPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenDistanceDisplayConditionProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <c>classificationType</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>classificationType</c> property defines whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+        /// </summary>
+        [NotNull]
+        public ClassificationTypeCesiumWriter ClassificationTypeWriter
+        {
+            get { return m_classificationType.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>classificationType</c> property. The <c>classificationType</c> property defines whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+        /// </summary>
+        [NotNull]
+        public ClassificationTypeCesiumWriter OpenClassificationTypeProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(ClassificationTypeWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>classificationType</c> property as a <c>classificationType</c> value. The <c>classificationType</c> property specifies whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+        /// </summary>
+        /// <param name="value">The classification type.</param>
+        public void WriteClassificationTypeProperty(CesiumClassificationType value)
+        {
+            using (var writer = OpenClassificationTypeProperty())
+            {
+                writer.WriteClassificationType(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>classificationType</c> property as a <c>reference</c> value. The <c>classificationType</c> property specifies whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteClassificationTypePropertyReference(Reference value)
+        {
+            using (var writer = OpenClassificationTypeProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>classificationType</c> property as a <c>reference</c> value. The <c>classificationType</c> property specifies whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteClassificationTypePropertyReference(string value)
+        {
+            using (var writer = OpenClassificationTypeProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>classificationType</c> property as a <c>reference</c> value. The <c>classificationType</c> property specifies whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteClassificationTypePropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenClassificationTypeProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>classificationType</c> property as a <c>reference</c> value. The <c>classificationType</c> property specifies whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteClassificationTypePropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenClassificationTypeProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }

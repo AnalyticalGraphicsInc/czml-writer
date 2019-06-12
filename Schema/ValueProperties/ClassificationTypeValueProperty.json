@@ -1,0 +1,6 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/ValueProperties/ClassificationTypeValueProperty.json",
+    "title": "ClassificationTypeValueProperty",
+    "description": "The base schema for a property whose value may be written as a classification type."
+}

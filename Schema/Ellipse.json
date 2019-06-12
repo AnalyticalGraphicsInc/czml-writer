@@ -25,14 +25,14 @@
             "description": "The altitude of the ellipse relative to the surface.",
             "default": "0.0"
         },
-        "extrudedHeight": {
-            "$ref": "Double.json",
-            "description": "The altitude of the ellipse's extruded face relative to the surface."
-        },
         "heightReference": {
             "$ref": "HeightReference.json",
             "description": "The height reference of the ellipse, which indicates if `height` is relative to terrain or not.",
             "default": "NONE"
+        },
+        "extrudedHeight": {
+            "$ref": "Double.json",
+            "description": "The altitude of the ellipse's extruded face relative to the surface."
         },
         "extrudedHeightReference": {
             "$ref": "HeightReference.json",
@@ -92,6 +92,11 @@
         "distanceDisplayCondition": {
             "$ref": "DistanceDisplayCondition.json",
             "description": "The display condition specifying at what distance from the camera this ellipse will be displayed."
+        },
+        "classificationType": {
+            "$ref": "ClassificationType.json",
+            "description": "Whether a classification affects terrain, 3D Tiles or both.",
+            "default": "BOTH"
         },
         "zIndex": {
             "$ref": "Integer.json",

@@ -386,6 +386,15 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
+                            cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
+                            try {
+                                w2.writeHeightReference(CesiumHeightReference.CLAMP_TO_GROUND);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.box.heightReference.getValue(date)).toEqual(HeightReference.CLAMP_TO_GROUND);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
                             cesiumlanguagewriter.BooleanCesiumWriter w2 = w.openFillProperty();
                             try {
                                 w2.writeBoolean(true);
@@ -507,19 +516,19 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
-                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openExtrudedHeightProperty();
+                            cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
                             try {
-                                w2.writeNumber(22846.0);
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.corridor.extrudedHeight.getValue(date)).toEqual(22846.0);");
+                                w2.writeHeightReference(CesiumHeightReference.CLAMP_TO_GROUND);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.corridor.heightReference.getValue(date)).toEqual(HeightReference.CLAMP_TO_GROUND);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
                         }
                         {
-                            cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
+                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openExtrudedHeightProperty();
                             try {
-                                w2.writeHeightReference(CesiumHeightReference.CLAMP_TO_GROUND);
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.corridor.heightReference.getValue(date)).toEqual(HeightReference.CLAMP_TO_GROUND);");
+                                w2.writeNumber(22846.0);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.corridor.extrudedHeight.getValue(date)).toEqual(22846.0);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -629,6 +638,15 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
+                            cesiumlanguagewriter.ClassificationTypeCesiumWriter w2 = w.openClassificationTypeProperty();
+                            try {
+                                w2.writeClassificationType(CesiumClassificationType.TERRAIN);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.corridor.classificationType.getValue(date)).toEqual(ClassificationType.TERRAIN);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
                             cesiumlanguagewriter.IntegerCesiumWriter w2 = w.openZIndexProperty();
                             try {
                                 w2.writeNumber(59315);
@@ -676,6 +694,15 @@ public class TestGenerateValidationDocument {
                             try {
                                 w2.writeNumber(59378.0);
                                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.cylinder.bottomRadius.getValue(date)).toEqual(59378.0);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
+                            try {
+                                w2.writeHeightReference(CesiumHeightReference.CLAMP_TO_GROUND);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.cylinder.heightReference.getValue(date)).toEqual(HeightReference.CLAMP_TO_GROUND);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -819,19 +846,19 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
-                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openExtrudedHeightProperty();
+                            cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
                             try {
-                                w2.writeNumber(55640.0);
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.extrudedHeight.getValue(date)).toEqual(55640.0);");
+                                w2.writeHeightReference(CesiumHeightReference.CLAMP_TO_GROUND);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.heightReference.getValue(date)).toEqual(HeightReference.CLAMP_TO_GROUND);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
                         }
                         {
-                            cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
+                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openExtrudedHeightProperty();
                             try {
-                                w2.writeHeightReference(CesiumHeightReference.CLAMP_TO_GROUND);
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.heightReference.getValue(date)).toEqual(HeightReference.CLAMP_TO_GROUND);");
+                                w2.writeNumber(55640.0);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.extrudedHeight.getValue(date)).toEqual(55640.0);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -959,6 +986,15 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
+                            cesiumlanguagewriter.ClassificationTypeCesiumWriter w2 = w.openClassificationTypeProperty();
+                            try {
+                                w2.writeClassificationType(CesiumClassificationType.TERRAIN);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.classificationType.getValue(date)).toEqual(ClassificationType.TERRAIN);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
                             cesiumlanguagewriter.IntegerCesiumWriter w2 = w.openZIndexProperty();
                             try {
                                 w2.writeNumber(3341);
@@ -988,6 +1024,15 @@ public class TestGenerateValidationDocument {
                             try {
                                 w2.writeCartesian(new Cartesian(15638D, 24381D, 37983D));
                                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.radii.getValue(date)).toEqual(new Cartesian3(15638, 24381, 37983));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
+                            try {
+                                w2.writeHeightReference(CesiumHeightReference.CLAMP_TO_GROUND);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.heightReference.getValue(date)).toEqual(HeightReference.CLAMP_TO_GROUND);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -1496,24 +1541,6 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
-                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openWidthProperty();
-                            try {
-                                w2.writeNumber(56040.0);
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.width.getValue(date)).toEqual(56040.0);");
-                            } finally {
-                                DisposeHelper.dispose(w2);
-                            }
-                        }
-                        {
-                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openResolutionProperty();
-                            try {
-                                w2.writeNumber(31563.0);
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.resolution.getValue(date)).toEqual(31563.0);");
-                            } finally {
-                                DisposeHelper.dispose(w2);
-                            }
-                        }
-                        {
                             cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openLeadTimeProperty();
                             try {
                                 w2.writeNumber(5997.0);
@@ -1527,6 +1554,24 @@ public class TestGenerateValidationDocument {
                             try {
                                 w2.writeNumber(52915.0);
                                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.trailTime.getValue(date)).toEqual(52915.0);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openWidthProperty();
+                            try {
+                                w2.writeNumber(56040.0);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.width.getValue(date)).toEqual(56040.0);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openResolutionProperty();
+                            try {
+                                w2.writeNumber(31563.0);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.resolution.getValue(date)).toEqual(31563.0);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -1705,19 +1750,19 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
-                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openExtrudedHeightProperty();
+                            cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
                             try {
-                                w2.writeNumber(15922.0);
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.extrudedHeight.getValue(date)).toEqual(15922.0);");
+                                w2.writeHeightReference(CesiumHeightReference.CLAMP_TO_GROUND);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.heightReference.getValue(date)).toEqual(HeightReference.CLAMP_TO_GROUND);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
                         }
                         {
-                            cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
+                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openExtrudedHeightProperty();
                             try {
-                                w2.writeHeightReference(CesiumHeightReference.CLAMP_TO_GROUND);
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.heightReference.getValue(date)).toEqual(HeightReference.CLAMP_TO_GROUND);");
+                                w2.writeNumber(15922.0);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.extrudedHeight.getValue(date)).toEqual(15922.0);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -1849,6 +1894,15 @@ public class TestGenerateValidationDocument {
                             try {
                                 w2.writeDistanceDisplayCondition(new Bounds(5989D, 26104D));
                                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(5989, 26104));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.ClassificationTypeCesiumWriter w2 = w.openClassificationTypeProperty();
+                            try {
+                                w2.writeClassificationType(CesiumClassificationType.TERRAIN);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.classificationType.getValue(date)).toEqual(ClassificationType.TERRAIN);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -1990,6 +2044,15 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
+                            cesiumlanguagewriter.ClassificationTypeCesiumWriter w2 = w.openClassificationTypeProperty();
+                            try {
+                                w2.writeClassificationType(CesiumClassificationType.TERRAIN);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.classificationType.getValue(date)).toEqual(ClassificationType.TERRAIN);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
                             cesiumlanguagewriter.IntegerCesiumWriter w2 = w.openZIndexProperty();
                             try {
                                 w2.writeNumber(17658);
@@ -2034,19 +2097,19 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
-                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openExtrudedHeightProperty();
+                            cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
                             try {
-                                w2.writeNumber(23002.0);
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.extrudedHeight.getValue(date)).toEqual(23002.0);");
+                                w2.writeHeightReference(CesiumHeightReference.CLAMP_TO_GROUND);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.heightReference.getValue(date)).toEqual(HeightReference.CLAMP_TO_GROUND);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
                         }
                         {
-                            cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
+                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openExtrudedHeightProperty();
                             try {
-                                w2.writeHeightReference(CesiumHeightReference.CLAMP_TO_GROUND);
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.heightReference.getValue(date)).toEqual(HeightReference.CLAMP_TO_GROUND);");
+                                w2.writeNumber(23002.0);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.extrudedHeight.getValue(date)).toEqual(23002.0);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -2160,6 +2223,15 @@ public class TestGenerateValidationDocument {
                             try {
                                 w2.writeDistanceDisplayCondition(new Bounds(21388D, 23379D));
                                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(21388, 23379));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.ClassificationTypeCesiumWriter w2 = w.openClassificationTypeProperty();
+                            try {
+                                w2.writeClassificationType(CesiumClassificationType.TERRAIN);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.classificationType.getValue(date)).toEqual(ClassificationType.TERRAIN);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -22023,6 +22095,15 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
+                            cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("box", "heightReference")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.box.heightReference.getValue(date)).toEqual(constant.box.heightReference.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
                             cesiumlanguagewriter.BooleanCesiumWriter w2 = w.openFillProperty();
                             try {
                                 w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("box", "fill")));
@@ -22148,19 +22229,19 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
-                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openExtrudedHeightProperty();
+                            cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
                             try {
-                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("corridor", "extrudedHeight")));
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.corridor.extrudedHeight.getValue(date)).toEqual(constant.corridor.extrudedHeight.getValue(date));");
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("corridor", "heightReference")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.corridor.heightReference.getValue(date)).toEqual(constant.corridor.heightReference.getValue(date));");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
                         }
                         {
-                            cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
+                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openExtrudedHeightProperty();
                             try {
-                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("corridor", "heightReference")));
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.corridor.heightReference.getValue(date)).toEqual(constant.corridor.heightReference.getValue(date));");
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("corridor", "extrudedHeight")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.corridor.extrudedHeight.getValue(date)).toEqual(constant.corridor.extrudedHeight.getValue(date));");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -22273,6 +22354,16 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
+                            cesiumlanguagewriter.ClassificationTypeCesiumWriter w2 = w.openClassificationTypeProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("corridor", "classificationType")));
+                                TextWriterHelper
+                                        .writeLine(m_assertionsWriter, "    expect(e.corridor.classificationType.getValue(date)).toEqual(constant.corridor.classificationType.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
                             cesiumlanguagewriter.IntegerCesiumWriter w2 = w.openZIndexProperty();
                             try {
                                 w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("corridor", "zIndex")));
@@ -22320,6 +22411,15 @@ public class TestGenerateValidationDocument {
                             try {
                                 w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("cylinder", "bottomRadius")));
                                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.cylinder.bottomRadius.getValue(date)).toEqual(constant.cylinder.bottomRadius.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("cylinder", "heightReference")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.cylinder.heightReference.getValue(date)).toEqual(constant.cylinder.heightReference.getValue(date));");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -22466,19 +22566,19 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
-                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openExtrudedHeightProperty();
+                            cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
                             try {
-                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("ellipse", "extrudedHeight")));
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.extrudedHeight.getValue(date)).toEqual(constant.ellipse.extrudedHeight.getValue(date));");
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("ellipse", "heightReference")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.heightReference.getValue(date)).toEqual(constant.ellipse.heightReference.getValue(date));");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
                         }
                         {
-                            cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
+                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openExtrudedHeightProperty();
                             try {
-                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("ellipse", "heightReference")));
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.heightReference.getValue(date)).toEqual(constant.ellipse.heightReference.getValue(date));");
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("ellipse", "extrudedHeight")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.extrudedHeight.getValue(date)).toEqual(constant.ellipse.extrudedHeight.getValue(date));");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -22610,6 +22710,15 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
+                            cesiumlanguagewriter.ClassificationTypeCesiumWriter w2 = w.openClassificationTypeProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("ellipse", "classificationType")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.classificationType.getValue(date)).toEqual(constant.ellipse.classificationType.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
                             cesiumlanguagewriter.IntegerCesiumWriter w2 = w.openZIndexProperty();
                             try {
                                 w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("ellipse", "zIndex")));
@@ -22639,6 +22748,15 @@ public class TestGenerateValidationDocument {
                             try {
                                 w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("ellipsoid", "radii")));
                                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.radii.getValue(date)).toEqual(constant.ellipsoid.radii.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("ellipsoid", "heightReference")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.heightReference.getValue(date)).toEqual(constant.ellipsoid.heightReference.getValue(date));");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -23157,24 +23275,6 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
-                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openWidthProperty();
-                            try {
-                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("path", "width")));
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.width.getValue(date)).toEqual(constant.path.width.getValue(date));");
-                            } finally {
-                                DisposeHelper.dispose(w2);
-                            }
-                        }
-                        {
-                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openResolutionProperty();
-                            try {
-                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("path", "resolution")));
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.resolution.getValue(date)).toEqual(constant.path.resolution.getValue(date));");
-                            } finally {
-                                DisposeHelper.dispose(w2);
-                            }
-                        }
-                        {
                             cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openLeadTimeProperty();
                             try {
                                 w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("path", "leadTime")));
@@ -23188,6 +23288,24 @@ public class TestGenerateValidationDocument {
                             try {
                                 w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("path", "trailTime")));
                                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.trailTime.getValue(date)).toEqual(constant.path.trailTime.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openWidthProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("path", "width")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.width.getValue(date)).toEqual(constant.path.width.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openResolutionProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("path", "resolution")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.resolution.getValue(date)).toEqual(constant.path.resolution.getValue(date));");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -23374,19 +23492,19 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
-                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openExtrudedHeightProperty();
+                            cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
                             try {
-                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("polygon", "extrudedHeight")));
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.extrudedHeight.getValue(date)).toEqual(constant.polygon.extrudedHeight.getValue(date));");
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("polygon", "heightReference")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.heightReference.getValue(date)).toEqual(constant.polygon.heightReference.getValue(date));");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
                         }
                         {
-                            cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
+                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openExtrudedHeightProperty();
                             try {
-                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("polygon", "heightReference")));
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.heightReference.getValue(date)).toEqual(constant.polygon.heightReference.getValue(date));");
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("polygon", "extrudedHeight")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.extrudedHeight.getValue(date)).toEqual(constant.polygon.extrudedHeight.getValue(date));");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -23521,6 +23639,15 @@ public class TestGenerateValidationDocument {
                                 w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("polygon", "distanceDisplayCondition")));
                                 TextWriterHelper.writeLine(m_assertionsWriter,
                                         "    expect(e.polygon.distanceDisplayCondition.getValue(date)).toEqual(constant.polygon.distanceDisplayCondition.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.ClassificationTypeCesiumWriter w2 = w.openClassificationTypeProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("polygon", "classificationType")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.classificationType.getValue(date)).toEqual(constant.polygon.classificationType.getValue(date));");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -23667,6 +23794,16 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
+                            cesiumlanguagewriter.ClassificationTypeCesiumWriter w2 = w.openClassificationTypeProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("polyline", "classificationType")));
+                                TextWriterHelper
+                                        .writeLine(m_assertionsWriter, "    expect(e.polyline.classificationType.getValue(date)).toEqual(constant.polyline.classificationType.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
                             cesiumlanguagewriter.IntegerCesiumWriter w2 = w.openZIndexProperty();
                             try {
                                 w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("polyline", "zIndex")));
@@ -23710,19 +23847,19 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
-                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openExtrudedHeightProperty();
+                            cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
                             try {
-                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangle", "extrudedHeight")));
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.extrudedHeight.getValue(date)).toEqual(constant.rectangle.extrudedHeight.getValue(date));");
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangle", "heightReference")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.heightReference.getValue(date)).toEqual(constant.rectangle.heightReference.getValue(date));");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
                         }
                         {
-                            cesiumlanguagewriter.HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
+                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openExtrudedHeightProperty();
                             try {
-                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangle", "heightReference")));
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.heightReference.getValue(date)).toEqual(constant.rectangle.heightReference.getValue(date));");
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangle", "extrudedHeight")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.extrudedHeight.getValue(date)).toEqual(constant.rectangle.extrudedHeight.getValue(date));");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -23839,6 +23976,16 @@ public class TestGenerateValidationDocument {
                                 w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangle", "distanceDisplayCondition")));
                                 TextWriterHelper.writeLine(m_assertionsWriter,
                                         "    expect(e.rectangle.distanceDisplayCondition.getValue(date)).toEqual(constant.rectangle.distanceDisplayCondition.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.ClassificationTypeCesiumWriter w2 = w.openClassificationTypeProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangle", "classificationType")));
+                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                        "    expect(e.rectangle.classificationType.getValue(date)).toEqual(constant.rectangle.classificationType.getValue(date));");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -35818,28 +35965,6 @@ public class TestGenerateValidationDocument {
                     cesiumlanguagewriter.PathCesiumWriter w = packet.openPathProperty();
                     try {
                         {
-                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openWidthProperty();
-                            try {
-                                w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Double> createList(
-                                        32449.0, 33819.0));
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.width.getValue(documentStartDate)).toEqual(32449.0);");
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.width.getValue(documentStopDate)).toEqual(33819.0);");
-                            } finally {
-                                DisposeHelper.dispose(w2);
-                            }
-                        }
-                        {
-                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openResolutionProperty();
-                            try {
-                                w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Double> createList(
-                                        8399.0, 19400.0));
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.resolution.getValue(documentStartDate)).toEqual(8399.0);");
-                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.resolution.getValue(documentStopDate)).toEqual(19400.0);");
-                            } finally {
-                                DisposeHelper.dispose(w2);
-                            }
-                        }
-                        {
                             cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openLeadTimeProperty();
                             try {
                                 w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Double> createList(
@@ -35857,6 +35982,28 @@ public class TestGenerateValidationDocument {
                                         34052.0, 57713.0));
                                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.trailTime.getValue(documentStartDate)).toEqual(34052.0);");
                                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.trailTime.getValue(documentStopDate)).toEqual(57713.0);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openWidthProperty();
+                            try {
+                                w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Double> createList(
+                                        32449.0, 33819.0));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.width.getValue(documentStartDate)).toEqual(32449.0);");
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.width.getValue(documentStopDate)).toEqual(33819.0);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openResolutionProperty();
+                            try {
+                                w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Double> createList(
+                                        8399.0, 19400.0));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.resolution.getValue(documentStartDate)).toEqual(8399.0);");
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.resolution.getValue(documentStopDate)).toEqual(19400.0);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }

@@ -2,7 +2,7 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/GridMaterial.json",
     "title": "GridMaterial",
-    "description": "A material that fills the surface with a two dimensional grid.",
+    "description": "A material that fills the surface with a two-dimensional grid.",
     "type": [
         "array",
         "object"

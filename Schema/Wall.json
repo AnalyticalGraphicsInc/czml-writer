@@ -2,7 +2,7 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Wall.json",
     "title": "Wall",
-    "description": "A two dimensional wall defined as a line strip and optional maximum and minimum heights, which conforms to the curvature of the globe and can be placed along the surface or at altitude.",
+    "description": "A two-dimensional wall defined as a line strip and optional maximum and minimum heights, which conforms to the curvature of the globe and can be placed along the surface or at altitude.",
     "type": "object",
     "properties": {
         "show": {
