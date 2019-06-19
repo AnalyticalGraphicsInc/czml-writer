@@ -591,6 +591,31 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
+        /// Writes a list of <see cref="Cartesian"/> values as an array in X, Y, Z order.
+        /// </summary>
+        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="values">The values to write.</param>
+        public static void WriteCartesian3ListOfLists(CesiumOutputStream output, IEnumerable<IEnumerable<Cartesian>> values)
+        {
+            output.WriteStartSequence();
+            foreach (IEnumerable<Cartesian> list in values)
+            {
+                output.WriteStartSequence();
+                output.WriteLineBreak();
+                foreach (Cartesian value in list)
+                {
+                    output.WriteValue(value.X);
+                    output.WriteValue(value.Y);
+                    output.WriteValue(value.Z);
+                    output.WriteLineBreak();
+                }
+                output.WriteEndSequence();
+            }
+
+            output.WriteEndSequence();
+        }
+
+        /// <summary>
         /// Writes a <see cref="Cartographic"/> value as an array in Longitude, Latitude, Height order.
         /// </summary>
         /// <param name="output">The stream to which to write the value.</param>
@@ -652,6 +677,31 @@ namespace CesiumLanguageWriter.Advanced
                 output.WriteValue(value.Latitude);
                 output.WriteValue(value.Height);
                 output.WriteLineBreak();
+            }
+
+            output.WriteEndSequence();
+        }
+
+        /// <summary>
+        /// Writes a list of <see cref="Cartographic"/> values as an array in Longitude, Latitude, Height order.
+        /// </summary>
+        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="values">The values to write.</param>
+        public static void WriteCartographicListOfLists(CesiumOutputStream output, IEnumerable<IEnumerable<Cartographic>> values)
+        {
+            output.WriteStartSequence();
+            foreach (IEnumerable<Cartographic> list in values)
+            {
+                output.WriteStartSequence();
+                output.WriteLineBreak();
+                foreach (Cartographic value in list)
+                {
+                    output.WriteValue(value.Longitude);
+                    output.WriteValue(value.Latitude);
+                    output.WriteValue(value.Height);
+                    output.WriteLineBreak();
+                }
+                output.WriteEndSequence();
             }
 
             output.WriteEndSequence();
@@ -939,10 +989,10 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
-        /// Writes a list of references.
+        /// Writes a list of values.
         /// </summary>
         /// <param name="output">The stream to which to write the value.</param>
-        /// <param name="references">The list of references.</param>
+        /// <param name="references">The list of values.</param>
         public static void WriteReferences(CesiumOutputStream output, IEnumerable<Reference> references)
         {
             output.WriteStartSequence();
@@ -952,6 +1002,28 @@ namespace CesiumLanguageWriter.Advanced
                 output.WriteLineBreak();
             }
 
+            output.WriteEndSequence();
+        }
+
+        /// <summary>
+        /// Writes a list of values.
+        /// </summary>
+        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="values">The list of lists of values.</param>
+        public static void WriteReferenceListOfLists(CesiumOutputStream output, IEnumerable<IEnumerable<Reference>> values)
+        {
+            output.WriteStartSequence();
+            foreach (var list in values)
+            {
+                output.WriteStartSequence();
+                output.WriteLineBreak();
+                foreach (var reference in list)
+                {
+                    output.WriteValue(reference.Value);
+                    output.WriteLineBreak();
+                }
+                output.WriteEndSequence();
+            }
             output.WriteEndSequence();
         }
 

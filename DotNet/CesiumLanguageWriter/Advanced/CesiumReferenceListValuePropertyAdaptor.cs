@@ -7,7 +7,7 @@ namespace CesiumLanguageWriter.Advanced
     /// Adapts a class that implements <see cref="ICesiumReferenceListValuePropertyWriter"/> to implement
     /// <see cref="ICesiumPropertyWriter"/> for a list of <see cref="Reference"/> values.
     /// </summary>
-    /// <typeparam name="TFrom">The class that implements <see cref="ICesiumReferenceValuePropertyWriter"/> to adapt.</typeparam>
+    /// <typeparam name="TFrom">The class that implements <see cref="ICesiumReferenceListValuePropertyWriter"/> to adapt.</typeparam>
     public class CesiumReferenceListValuePropertyAdaptor<TFrom> : CesiumWriterAdaptor<TFrom, IEnumerable<Reference>>
         where TFrom : class, ICesiumReferenceListValuePropertyWriter
     {

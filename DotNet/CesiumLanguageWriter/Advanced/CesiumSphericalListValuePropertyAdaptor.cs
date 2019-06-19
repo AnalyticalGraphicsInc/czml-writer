@@ -7,7 +7,7 @@ namespace CesiumLanguageWriter.Advanced
     /// Adapts a class that implements <see cref="ICesiumSphericalListValuePropertyWriter"/> to implement
     /// <see cref="ICesiumPropertyWriter"/> for a list of <see cref="Spherical"/> values.
     /// </summary>
-    /// <typeparam name="TFrom">The class that implements <see cref="ICesiumSphericalValuePropertyWriter"/> to adapt.</typeparam>
+    /// <typeparam name="TFrom">The class that implements <see cref="ICesiumSphericalListValuePropertyWriter"/> to adapt.</typeparam>
     public class CesiumSphericalListValuePropertyAdaptor<TFrom> : CesiumWriterAdaptor<TFrom, IEnumerable<Spherical>>
         where TFrom : class, ICesiumSphericalListValuePropertyWriter
     {

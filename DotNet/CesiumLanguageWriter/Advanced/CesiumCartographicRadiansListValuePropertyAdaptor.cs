@@ -7,7 +7,7 @@ namespace CesiumLanguageWriter.Advanced
     /// Adapts a class that implements <see cref="ICesiumCartographicRadiansListValuePropertyWriter"/> to implement
     /// <see cref="ICesiumPropertyWriter"/> for a list of <see cref="Cartographic"/> values.
     /// </summary>
-    /// <typeparam name="TFrom">The class that implements <see cref="ICesiumCartographicRadiansValuePropertyWriter"/> to adapt.</typeparam>
+    /// <typeparam name="TFrom">The class that implements <see cref="ICesiumCartographicRadiansListValuePropertyWriter"/> to adapt.</typeparam>
     public class CesiumCartographicRadiansListValuePropertyAdaptor<TFrom> : CesiumWriterAdaptor<TFrom, IEnumerable<Cartographic>>
         where TFrom : class, ICesiumCartographicRadiansListValuePropertyWriter
     {

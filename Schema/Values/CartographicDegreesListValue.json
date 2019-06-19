@@ -4,5 +4,8 @@
     "title": "CartographicDegreesList",
     "description": "A list of geodetic, WGS84 positions specified as `[Longitude, Latitude, Height, Longitude, Latitude, Height, ...]`, where Longitude and Latitude are in degrees and Height is in meters.",
     "type": "array",
-    "czmlValue": true
+    "czmlValue": true,
+    "items": {
+        "type": "number"
+    }
 }

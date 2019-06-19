@@ -89,6 +89,7 @@
     <Compile Include="TestMatrix3By3.cs" />
     <Compile Include="TestNodeTransformationsCesiumWriter.cs" />
     <Compile Include="TestOrientationCesiumWriter.cs" />
+    <Compile Include="TestPolygonCesiumWriter.cs" />
     <Compile Include="TestPolylineArrowMaterialCesiumWriter.cs" />
     <Compile Include="TestPolylineDashMaterialCesiumWriter.cs" />
     <Compile Include="TestPolylineGlowMaterialCesiumWriter.cs" />

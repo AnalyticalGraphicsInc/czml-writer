@@ -4,5 +4,8 @@
     "title": "UnitSphericalList",
     "description": "A list of unit spherical values specified as `[Clock, Cone, Clock, Cone, ...]` angles.",
     "type": "array",
-    "czmlValue": true
+    "czmlValue": true,
+    "items": {
+        "type": "number"
+    }
 }

@@ -50,11 +50,14 @@
     <Compile Include="Advanced\CesiumBooleanValuePropertyAdaptor.cs" />
     <Compile Include="Advanced\CesiumBoundingRectangleValuePropertyAdaptor.cs" />
     <Compile Include="Advanced\CesiumCartesian2ValuePropertyAdaptor.cs" />
+    <Compile Include="Advanced\CesiumCartesian3ListOfListsValuePropertyAdaptor.cs" />
     <Compile Include="Advanced\CesiumCartesian3ListValuePropertyAdaptor.cs" />
     <Compile Include="Advanced\CesiumCartesian3ValuePropertyAdaptor.cs" />
     <Compile Include="Advanced\CesiumCartesian3VelocityValuePropertyAdaptor.cs" />
+    <Compile Include="Advanced\CesiumCartographicDegreesListOfListsValuePropertyAdaptor.cs" />
     <Compile Include="Advanced\CesiumCartographicDegreesListValuePropertyAdaptor.cs" />
     <Compile Include="Advanced\CesiumCartographicDegreesValuePropertyAdaptor.cs" />
+    <Compile Include="Advanced\CesiumCartographicRadiansListOfListsValuePropertyAdaptor.cs" />
     <Compile Include="Advanced\CesiumCartographicRadiansListValuePropertyAdaptor.cs" />
     <Compile Include="Advanced\CesiumCartographicRectangleDegreesValuePropertyAdaptor.cs" />
     <Compile Include="Advanced\CesiumCartographicRadiansValuePropertyAdaptor.cs" />
@@ -75,6 +78,7 @@
     <Compile Include="Advanced\CesiumInterpolatableWriterAdaptor.cs" />
     <Compile Include="Advanced\CesiumLabelStyleValuePropertyAdaptor.cs" />
     <Compile Include="Advanced\CesiumPropertyWriter.cs" />
+    <Compile Include="Advanced\CesiumReferenceListOfListsValuePropertyAdaptor.cs" />
     <Compile Include="Advanced\CesiumReferenceListValuePropertyAdaptor.cs" />
     <Compile Include="Advanced\CesiumReferenceValuePropertyAdaptor.cs" />
     <Compile Include="Advanced\CesiumRgbafValuePropertyAdaptor.cs" />
@@ -104,11 +108,14 @@
     <Compile Include="Advanced\ICesiumBooleanValuePropertyWriter.cs" />
     <Compile Include="Advanced\ICesiumBoundingRectangleValuePropertyWriter.cs" />
     <Compile Include="Advanced\ICesiumCartesian2ValuePropertyWriter.cs" />
+    <Compile Include="Advanced\ICesiumCartesian3ListOfListsValuePropertyWriter.cs" />
     <Compile Include="Advanced\ICesiumCartesian3ListValuePropertyWriter.cs" />
     <Compile Include="Advanced\ICesiumCartesian3ValuePropertyWriter.cs" />
     <Compile Include="Advanced\ICesiumCartesian3VelocityValuePropertyWriter.cs" />
+    <Compile Include="Advanced\ICesiumCartographicDegreesListOfListsValuePropertyWriter.cs" />
     <Compile Include="Advanced\ICesiumCartographicDegreesListValuePropertyWriter.cs" />
     <Compile Include="Advanced\ICesiumCartographicDegreesValuePropertyWriter.cs" />
+    <Compile Include="Advanced\ICesiumCartographicRadiansListOfListsValuePropertyWriter.cs" />
     <Compile Include="Advanced\ICesiumCartographicRadiansListValuePropertyWriter.cs" />
     <Compile Include="Advanced\ICesiumCartographicRectangleDegreesValuePropertyWriter.cs" />
     <Compile Include="Advanced\ICesiumCartographicRadiansValuePropertyWriter.cs" />
@@ -127,6 +134,7 @@
     <Compile Include="Advanced\ICesiumInterpolatableIntervalListWriter.cs" />
     <Compile Include="Advanced\ICesiumLabelStyleValuePropertyWriter.cs" />
     <Compile Include="Advanced\ICesiumNearFarScalarValuePropertyWriter.cs" />
+    <Compile Include="Advanced\ICesiumReferenceListOfListsValuePropertyWriter.cs" />
     <Compile Include="Advanced\ICesiumReferenceListValuePropertyWriter.cs" />
     <Compile Include="Advanced\ICesiumReferenceValuePropertyWriter.cs" />
     <Compile Include="Advanced\ICesiumRgbafValuePropertyWriter.cs" />
@@ -351,6 +359,7 @@
     <Compile Include="Generated\PositionListCesiumWriter.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\PositionListOfListsCesiumWriter.cs" />
     <Compile Include="Generated\RectangleCesiumWriter.cs">
       <SubType>Code</SubType>
     </Compile>

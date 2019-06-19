@@ -555,6 +555,19 @@
                 "writeValue": "CesiumWritingHelper.WriteCartesian3List(Output, values);"
             }
         ],
+        "Cartesian3ListOfLists": [
+            {
+                "usingNamespaces": [ "System.Collections.Generic" ],
+                "parameters": [
+                    {
+                        "type": "IEnumerable<IEnumerable<Cartesian>>",
+                        "name": "values",
+                        "description": "The values."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteCartesian3ListOfLists(Output, values);"
+            }
+        ],
         "UnitCartesian3List": [
             {
                 "usingNamespaces": [ "System.Collections.Generic" ],
@@ -717,6 +730,19 @@
                 "writeValue": "CesiumWritingHelper.WriteCartographicList(Output, values);"
             }
         ],
+        "CartographicRadiansListOfLists": [
+            {
+                "usingNamespaces": [ "System.Collections.Generic" ],
+                "parameters": [
+                    {
+                        "type": "IEnumerable<IEnumerable<Cartographic>>",
+                        "name": "values",
+                        "description": "The values."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteCartographicListOfLists(Output, values);"
+            }
+        ],
         "CartographicDegreesList": [
             {
                 "usingNamespaces": [ "System.Collections.Generic" ],
@@ -728,6 +754,19 @@
                     }
                 ],
                 "writeValue": "CesiumWritingHelper.WriteCartographicList(Output, values);"
+            }
+        ],
+        "CartographicDegreesListOfLists": [
+            {
+                "usingNamespaces": [ "System.Collections.Generic" ],
+                "parameters": [
+                    {
+                        "type": "IEnumerable<IEnumerable<Cartographic>>",
+                        "name": "values",
+                        "description": "The values."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteCartographicListOfLists(Output, values);"
             }
         ],
         "Uri": [
@@ -1465,6 +1504,19 @@
                     }
                 ],
                 "writeValue": "CesiumWritingHelper.WriteReferences(Output, references);"
+            }
+        ],
+        "ReferenceListOfLists": [
+            {
+                "usingNamespaces": [ "System.Collections.Generic" ],
+                "parameters": [
+                    {
+                        "type": "IEnumerable<IEnumerable<Reference>>",
+                        "name": "references",
+                        "description": "The list of lists of references."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteReferenceListOfLists(Output, references);"
             }
         ],
         "String": [

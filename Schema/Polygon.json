@@ -15,6 +15,10 @@
             "description": "The array of positions defining a simple polygon.",
             "czmlRequiredForDisplay": true
         },
+        "holes": {
+            "$ref": "PositionListOfLists.json",
+            "description": "The array of arrays of positions defining holes in the polygon."
+        },
         "arcType": {
             "$ref": "ArcType.json",
             "description": "The type of arc that should connect the positions of the polygon.",
