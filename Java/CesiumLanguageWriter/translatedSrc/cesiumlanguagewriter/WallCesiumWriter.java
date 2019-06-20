@@ -422,7 +422,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     * @param references The list of references.
     */
-    public final void writePositionsPropertyReferences(Iterable<Reference> references) {
+    public final void writePositionsPropertyReferences(Iterable<? extends Reference> references) {
         {
             cesiumlanguagewriter.PositionListCesiumWriter writer = openPositionsProperty();
             try {
@@ -482,7 +482,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     * @param references The list of references.
     */
-    public final void writeMinimumHeightsPropertyReferences(Iterable<Reference> references) {
+    public final void writeMinimumHeightsPropertyReferences(Iterable<? extends Reference> references) {
         {
             cesiumlanguagewriter.DoubleListCesiumWriter writer = openMinimumHeightsProperty();
             try {
@@ -542,7 +542,7 @@ public class WallCesiumWriter extends CesiumPropertyWriter<WallCesiumWriter> {
 
     * @param references The list of references.
     */
-    public final void writeMaximumHeightsPropertyReferences(Iterable<Reference> references) {
+    public final void writeMaximumHeightsPropertyReferences(Iterable<? extends Reference> references) {
         {
             cesiumlanguagewriter.DoubleListCesiumWriter writer = openMaximumHeightsProperty();
             try {

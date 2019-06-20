@@ -12,7 +12,7 @@ import javax.annotation.Nonnull;
  
  
 
- * @param <TFrom> The class that implements {@link ICesiumCartographicRadiansValuePropertyWriter} to adapt.
+ * @param <TFrom> The class that implements {@link ICesiumCartographicRadiansListValuePropertyWriter} to adapt.
  */
 @SuppressWarnings( {
         "unused",

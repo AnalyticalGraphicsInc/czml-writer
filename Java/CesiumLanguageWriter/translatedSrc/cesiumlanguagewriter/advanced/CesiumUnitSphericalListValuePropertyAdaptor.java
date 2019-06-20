@@ -12,7 +12,7 @@ import javax.annotation.Nonnull;
  
  
 
- * @param <TFrom> The class that implements {@link ICesiumUnitSphericalValuePropertyWriter} to adapt.
+ * @param <TFrom> The class that implements {@link ICesiumUnitSphericalListValuePropertyWriter} to adapt.
  */
 @SuppressWarnings( {
         "unused",

@@ -109,7 +109,7 @@ public class DoubleListCesiumWriter extends CesiumPropertyWriter<DoubleListCesiu
 
     * @param references The list of references.
     */
-    public final void writeReferences(Iterable<Reference> references) {
+    public final void writeReferences(Iterable<? extends Reference> references) {
         final String PropertyName = ReferencesPropertyName;
         openIntervalIfNecessary();
         getOutput().writePropertyName(PropertyName);

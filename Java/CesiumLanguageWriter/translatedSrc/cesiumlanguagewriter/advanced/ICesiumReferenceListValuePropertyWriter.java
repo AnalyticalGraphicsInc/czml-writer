@@ -24,5 +24,5 @@ public interface ICesiumReferenceListValuePropertyWriter extends ICesiumProperty
 
     * @param references The list of references.
     */
-    void writeReferences(Iterable<Reference> references);
+    void writeReferences(Iterable<? extends Reference> references);
 }

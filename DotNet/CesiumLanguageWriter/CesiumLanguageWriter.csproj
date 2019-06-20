@@ -165,7 +165,7 @@
     <Compile Include="Attributes\CSToJavaExcludeAttribute.cs" />
     <Compile Include="Attributes\CSToJavaExcludeBaseAttribute.cs" />
     <Compile Include="Attributes\CSToJavaFinalFieldAttribute.cs" />
-    <Compile Include="Attributes\CSToJavaImmutableValueType.cs" />
+    <Compile Include="Attributes\CSToJavaImmutableValueTypeAttribute.cs" />
     <Compile Include="Attributes\CSToJavaUseNullForDefaultGenericTypeValueAttribute.cs" />
     <Compile Include="BoundingRectangle.cs" />
     <Compile Include="Bounds.cs" />

@@ -709,6 +709,32 @@ public final class CesiumWritingHelper {
 
     /**
     *  
+    Writes a list of {@link Cartesian} values as an array in X, Y, Z order.
+    
+    
+    
+
+    * @param output The stream to which to write the value.
+    * @param values The values to write.
+    */
+    public static void writeCartesian3ListOfLists(CesiumOutputStream output, Iterable<? extends Iterable<Cartesian>> values) {
+        output.writeStartSequence();
+        for (final Iterable<Cartesian> list : values) {
+            output.writeStartSequence();
+            output.writeLineBreak();
+            for (final Cartesian value : list) {
+                output.writeValue(value.getX());
+                output.writeValue(value.getY());
+                output.writeValue(value.getZ());
+                output.writeLineBreak();
+            }
+            output.writeEndSequence();
+        }
+        output.writeEndSequence();
+    }
+
+    /**
+    *  
     Writes a {@link Cartographic} value as an array in Longitude, Latitude, Height order.
     
     
@@ -781,6 +807,32 @@ public final class CesiumWritingHelper {
             output.writeValue(value.getLatitude());
             output.writeValue(value.getHeight());
             output.writeLineBreak();
+        }
+        output.writeEndSequence();
+    }
+
+    /**
+    *  
+    Writes a list of {@link Cartographic} values as an array in Longitude, Latitude, Height order.
+    
+    
+    
+
+    * @param output The stream to which to write the value.
+    * @param values The values to write.
+    */
+    public static void writeCartographicListOfLists(CesiumOutputStream output, Iterable<? extends Iterable<Cartographic>> values) {
+        output.writeStartSequence();
+        for (final Iterable<Cartographic> list : values) {
+            output.writeStartSequence();
+            output.writeLineBreak();
+            for (final Cartographic value : list) {
+                output.writeValue(value.getLongitude());
+                output.writeValue(value.getLatitude());
+                output.writeValue(value.getHeight());
+                output.writeLineBreak();
+            }
+            output.writeEndSequence();
         }
         output.writeEndSequence();
     }
@@ -1137,19 +1189,43 @@ public final class CesiumWritingHelper {
 
     /**
     *  
-    Writes a list of references.
+    Writes a list of values.
     
     
     
 
     * @param output The stream to which to write the value.
-    * @param references The list of references.
+    * @param references The list of values.
     */
-    public static void writeReferences(CesiumOutputStream output, Iterable<Reference> references) {
+    public static void writeReferences(CesiumOutputStream output, Iterable<? extends Reference> references) {
         output.writeStartSequence();
         for (final cesiumlanguagewriter.Reference reference : references) {
             output.writeValue(reference.getValue());
             output.writeLineBreak();
+        }
+        output.writeEndSequence();
+    }
+
+    /**
+    *  
+    Writes a list of values.
+    
+    
+    
+
+    * @param output The stream to which to write the value.
+    * @param values The list of lists of values.
+    */
+    public static void writeReferenceListOfLists(CesiumOutputStream output, Iterable<? extends Iterable<? extends Reference>> values) {
+        output.writeStartSequence();
+        for (final Iterable<? extends cesiumlanguagewriter.Reference> list : values) {
+            output.writeStartSequence();
+            output.writeLineBreak();
+            for (final cesiumlanguagewriter.Reference reference : list) {
+                output.writeValue(reference.getValue());
+                output.writeLineBreak();
+            }
+            output.writeEndSequence();
         }
         output.writeEndSequence();
     }

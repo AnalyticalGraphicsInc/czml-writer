@@ -434,7 +434,7 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
 
     * @param references The list of references.
     */
-    public final void writePositionsPropertyReferences(Iterable<Reference> references) {
+    public final void writePositionsPropertyReferences(Iterable<? extends Reference> references) {
         {
             cesiumlanguagewriter.PositionListCesiumWriter writer = openPositionsProperty();
             try {
