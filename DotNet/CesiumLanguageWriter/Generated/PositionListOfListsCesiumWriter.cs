@@ -81,7 +81,7 @@ namespace CesiumLanguageWriter
         /// Writes the value expressed as a <c>cartesian</c>, which is the list of lists of positions specified as three-dimensional Cartesian values, <c>[X, Y, Z, X, Y, Z, ...]</c>, in meters relative to the <c>referenceFrame</c>.
         /// </summary>
         /// <param name="values">The values.</param>
-        public void WriteCartesian(IEnumerable<IEnumerable<Cartesian>> values)
+        public void WriteCartesian([CSToJavaUseWildcardGenerics] IEnumerable<IEnumerable<Cartesian>> values)
         {
             const string PropertyName = CartesianPropertyName;
             OpenIntervalIfNecessary();
@@ -93,7 +93,7 @@ namespace CesiumLanguageWriter
         /// Writes the value expressed as a <c>cartographicRadians</c>, which is the list of lists of positions specified in Cartographic WGS84 coordinates, <c>[Longitude, Latitude, Height, Longitude, Latitude, Height, ...]</c>, where Longitude and Latitude are in radians and Height is in meters.
         /// </summary>
         /// <param name="values">The values.</param>
-        public void WriteCartographicRadians(IEnumerable<IEnumerable<Cartographic>> values)
+        public void WriteCartographicRadians([CSToJavaUseWildcardGenerics] IEnumerable<IEnumerable<Cartographic>> values)
         {
             const string PropertyName = CartographicRadiansPropertyName;
             OpenIntervalIfNecessary();
@@ -105,7 +105,7 @@ namespace CesiumLanguageWriter
         /// Writes the value expressed as a <c>cartographicDegrees</c>, which is the list of lists of positions specified in Cartographic WGS84 coordinates, <c>[Longitude, Latitude, Height, Longitude, Latitude, Height, ...]</c>, where Longitude and Latitude are in degrees and Height is in meters.
         /// </summary>
         /// <param name="values">The values.</param>
-        public void WriteCartographicDegrees(IEnumerable<IEnumerable<Cartographic>> values)
+        public void WriteCartographicDegrees([CSToJavaUseWildcardGenerics] IEnumerable<IEnumerable<Cartographic>> values)
         {
             const string PropertyName = CartographicDegreesPropertyName;
             OpenIntervalIfNecessary();
@@ -117,7 +117,7 @@ namespace CesiumLanguageWriter
         /// Writes the value expressed as a <c>references</c>, which is the list of lists of positions specified as references. Each reference is to a property that defines a single position, which may change with time.
         /// </summary>
         /// <param name="references">The list of lists of references.</param>
-        public void WriteReferences(IEnumerable<IEnumerable<Reference>> references)
+        public void WriteReferences([CSToJavaUseWildcardGenerics] IEnumerable<IEnumerable<Reference>> references)
         {
             const string PropertyName = ReferencesPropertyName;
             OpenIntervalIfNecessary();

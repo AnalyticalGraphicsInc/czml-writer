@@ -1197,7 +1197,7 @@ public final class CesiumWritingHelper {
     * @param output The stream to which to write the value.
     * @param references The list of values.
     */
-    public static void writeReferences(CesiumOutputStream output, Iterable<? extends Reference> references) {
+    public static void writeReferences(CesiumOutputStream output, Iterable<Reference> references) {
         output.writeStartSequence();
         for (final cesiumlanguagewriter.Reference reference : references) {
             output.writeValue(reference.getValue());

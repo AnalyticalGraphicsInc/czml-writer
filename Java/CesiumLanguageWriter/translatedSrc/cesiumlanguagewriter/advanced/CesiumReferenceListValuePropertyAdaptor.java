@@ -19,7 +19,7 @@ import javax.annotation.Nonnull;
         "deprecation",
         "serial"
 })
-public class CesiumReferenceListValuePropertyAdaptor<TFrom extends ICesiumReferenceListValuePropertyWriter> extends CesiumWriterAdaptor<TFrom, Iterable<? extends Reference>> {
+public class CesiumReferenceListValuePropertyAdaptor<TFrom extends ICesiumReferenceListValuePropertyWriter> extends CesiumWriterAdaptor<TFrom, Iterable<Reference>> {
     /**
     *  
     Initializes a new instance.
@@ -32,7 +32,7 @@ public class CesiumReferenceListValuePropertyAdaptor<TFrom extends ICesiumRefere
     * @param writeValueCallback The callback to write a list of {@link Reference} values.
     * @param writeDeleteValueCallback The callback to write an indication that the client should delete existing data.
     */
-    public CesiumReferenceListValuePropertyAdaptor(@Nonnull TFrom parent, @Nonnull CesiumWriterAdaptorWriteCallback<TFrom, Iterable<? extends Reference>> writeValueCallback,
+    public CesiumReferenceListValuePropertyAdaptor(@Nonnull TFrom parent, @Nonnull CesiumWriterAdaptorWriteCallback<TFrom, Iterable<Reference>> writeValueCallback,
             @Nonnull CesiumWriterAdaptorWriteDeleteCallback<TFrom> writeDeleteValueCallback) {
         super(parent, writeValueCallback, writeDeleteValueCallback);
     }

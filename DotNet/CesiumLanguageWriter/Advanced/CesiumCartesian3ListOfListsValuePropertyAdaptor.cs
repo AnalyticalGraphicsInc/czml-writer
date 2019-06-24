@@ -8,6 +8,7 @@ namespace CesiumLanguageWriter.Advanced
     /// <see cref="ICesiumPropertyWriter"/> for a list of lists of <see cref="Cartesian"/> values.
     /// </summary>
     /// <typeparam name="TFrom">The class that implements <see cref="ICesiumCartesian3ListOfListsValuePropertyWriter"/> to adapt.</typeparam>
+    [CSToJavaUseWildcardGenerics]
     public class CesiumCartesian3ListOfListsValuePropertyAdaptor<TFrom> : CesiumWriterAdaptor<TFrom, IEnumerable<IEnumerable<Cartesian>>>
         where TFrom : class, ICesiumCartesian3ListOfListsValuePropertyWriter
     {

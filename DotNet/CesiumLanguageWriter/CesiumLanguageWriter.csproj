@@ -167,6 +167,7 @@
     <Compile Include="Attributes\CSToJavaFinalFieldAttribute.cs" />
     <Compile Include="Attributes\CSToJavaImmutableValueTypeAttribute.cs" />
     <Compile Include="Attributes\CSToJavaUseNullForDefaultGenericTypeValueAttribute.cs" />
+    <Compile Include="Attributes\CSToJavaUseWildcardGenericsAttribute.cs" />
     <Compile Include="BoundingRectangle.cs" />
     <Compile Include="Bounds.cs" />
     <Compile Include="Cartesian.cs" />

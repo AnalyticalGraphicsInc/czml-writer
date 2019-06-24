@@ -8,6 +8,7 @@ namespace CesiumLanguageWriter.Advanced
     /// <see cref="ICesiumPropertyWriter"/> for a list of lists of <see cref="Cartographic"/> values.
     /// </summary>
     /// <typeparam name="TFrom">The class that implements <see cref="ICesiumCartographicDegreesListOfListsValuePropertyWriter"/> to adapt.</typeparam>
+    [CSToJavaUseWildcardGenerics]
     public class CesiumCartographicDegreesListOfListsValuePropertyAdaptor<TFrom> : CesiumWriterAdaptor<TFrom, IEnumerable<IEnumerable<Cartographic>>>
         where TFrom : class, ICesiumCartographicDegreesListOfListsValuePropertyWriter
     {

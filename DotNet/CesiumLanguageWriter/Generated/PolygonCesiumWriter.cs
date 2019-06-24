@@ -344,7 +344,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <c>holes</c> property as a <c>cartesian</c> value. The <c>holes</c> property specifies the array of arrays of positions defining holes in the polygon.
         /// </summary>
         /// <param name="values">The values.</param>
-        public void WriteHolesProperty(IEnumerable<IEnumerable<Cartesian>> values)
+        public void WriteHolesProperty([CSToJavaUseWildcardGenerics] IEnumerable<IEnumerable<Cartesian>> values)
         {
             using (var writer = OpenHolesProperty())
             {
@@ -356,7 +356,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <c>holes</c> property as a <c>cartographicRadians</c> value. The <c>holes</c> property specifies the array of arrays of positions defining holes in the polygon.
         /// </summary>
         /// <param name="values">The values.</param>
-        public void WriteHolesPropertyCartographicRadians(IEnumerable<IEnumerable<Cartographic>> values)
+        public void WriteHolesPropertyCartographicRadians([CSToJavaUseWildcardGenerics] IEnumerable<IEnumerable<Cartographic>> values)
         {
             using (var writer = OpenHolesProperty())
             {
@@ -368,7 +368,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <c>holes</c> property as a <c>cartographicDegrees</c> value. The <c>holes</c> property specifies the array of arrays of positions defining holes in the polygon.
         /// </summary>
         /// <param name="values">The values.</param>
-        public void WriteHolesPropertyCartographicDegrees(IEnumerable<IEnumerable<Cartographic>> values)
+        public void WriteHolesPropertyCartographicDegrees([CSToJavaUseWildcardGenerics] IEnumerable<IEnumerable<Cartographic>> values)
         {
             using (var writer = OpenHolesProperty())
             {
@@ -380,7 +380,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <c>holes</c> property as a <c>references</c> value. The <c>holes</c> property specifies the array of arrays of positions defining holes in the polygon.
         /// </summary>
         /// <param name="references">The list of lists of references.</param>
-        public void WriteHolesPropertyReferences(IEnumerable<IEnumerable<Reference>> references)
+        public void WriteHolesPropertyReferences([CSToJavaUseWildcardGenerics] IEnumerable<IEnumerable<Reference>> references)
         {
             using (var writer = OpenHolesProperty())
             {

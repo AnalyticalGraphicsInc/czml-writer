@@ -595,6 +595,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="output">The stream to which to write the value.</param>
         /// <param name="values">The values to write.</param>
+        [CSToJavaUseWildcardGenerics]
         public static void WriteCartesian3ListOfLists(CesiumOutputStream output, IEnumerable<IEnumerable<Cartesian>> values)
         {
             output.WriteStartSequence();
@@ -687,6 +688,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="output">The stream to which to write the value.</param>
         /// <param name="values">The values to write.</param>
+        [CSToJavaUseWildcardGenerics]
         public static void WriteCartographicListOfLists(CesiumOutputStream output, IEnumerable<IEnumerable<Cartographic>> values)
         {
             output.WriteStartSequence();
@@ -1010,6 +1012,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="output">The stream to which to write the value.</param>
         /// <param name="values">The list of lists of values.</param>
+        [CSToJavaUseWildcardGenerics]
         public static void WriteReferenceListOfLists(CesiumOutputStream output, IEnumerable<IEnumerable<Reference>> values)
         {
             output.WriteStartSequence();

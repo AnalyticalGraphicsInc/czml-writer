@@ -546,7 +546,7 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     * @param references The list of references.
     */
-    public final void writePositionsPropertyReferences(Iterable<? extends Reference> references) {
+    public final void writePositionsPropertyReferences(Iterable<Reference> references) {
         {
             cesiumlanguagewriter.PositionListCesiumWriter writer = openPositionsProperty();
             try {

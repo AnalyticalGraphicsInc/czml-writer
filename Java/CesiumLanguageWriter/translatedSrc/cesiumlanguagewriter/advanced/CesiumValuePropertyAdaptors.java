@@ -668,8 +668,8 @@ public final class CesiumValuePropertyAdaptors {
     * @return The new adaptor.
     */
     public static <TFrom extends ICesiumReferenceListValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumReferenceListValuePropertyAdaptor<TFrom> createReferenceList(@Nonnull TFrom parent) {
-        return new CesiumReferenceListValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Iterable<? extends Reference>>() {
-            public void invoke(TFrom writer, Iterable<? extends Reference> value) {
+        return new CesiumReferenceListValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Iterable<Reference>>() {
+            public void invoke(TFrom writer, Iterable<Reference> value) {
                 writer.writeReferences(value);
             }
         }, CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());

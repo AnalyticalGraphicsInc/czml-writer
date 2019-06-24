@@ -11,6 +11,7 @@ namespace CesiumLanguageWriter.Advanced
         /// Writes the value expressed as a list of lists of Cartographic WGS84 coordinates, where Longitude and Latitude are in degrees and Height is in meters.
         /// </summary>
         /// <param name="values">The values.</param>
+        [CSToJavaUseWildcardGenerics]
         void WriteCartographicDegrees(IEnumerable<IEnumerable<Cartographic>> values);
     }
 }
