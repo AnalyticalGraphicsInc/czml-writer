@@ -196,14 +196,14 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
                                             cesiumlanguagewriter.PositionListOfListsCesiumWriter interval = holesIntervals.openInterval(startDate.addSeconds(60 * 30), stopDate);
                                             try {
                                                 final ArrayList<cesiumlanguagewriter.Cartographic> tempCollection$7 = new ArrayList<cesiumlanguagewriter.Cartographic>();
-                                                tempCollection$7.add(new Cartographic(-1D, -1D, 0D));
-                                                tempCollection$7.add(new Cartographic(-1D, -2D, 0D));
-                                                tempCollection$7.add(new Cartographic(-2D, -2D, 0D));
+                                                tempCollection$7.add(new Cartographic(11D, 1D, 0D));
+                                                tempCollection$7.add(new Cartographic(11D, 2D, 0D));
+                                                tempCollection$7.add(new Cartographic(12D, 2D, 0D));
                                                 final ArrayList<cesiumlanguagewriter.Cartographic> tempCollection$8 = new ArrayList<cesiumlanguagewriter.Cartographic>();
-                                                tempCollection$8.add(new Cartographic(-4D, -4D, 0D));
-                                                tempCollection$8.add(new Cartographic(-4D, -5D, 0D));
-                                                tempCollection$8.add(new Cartographic(-5D, -5D, 0D));
-                                                tempCollection$8.add(new Cartographic(-5D, -4D, 0D));
+                                                tempCollection$8.add(new Cartographic(14D, 4D, 0D));
+                                                tempCollection$8.add(new Cartographic(14D, 5D, 0D));
+                                                tempCollection$8.add(new Cartographic(15D, 5D, 0D));
+                                                tempCollection$8.add(new Cartographic(15D, 4D, 0D));
                                                 final ArrayList<ArrayList<Cartographic>> tempCollection$6 = new ArrayList<ArrayList<Cartographic>>();
                                                 tempCollection$6.add(tempCollection$7);
                                                 tempCollection$6.add(tempCollection$8);
@@ -230,7 +230,7 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
             }
         }
         Assert.assertEquals("{\"polygon\":{\"holes\":[" + "{\"interval\":\"20120402T12Z/20120402T1230Z\",\"cartographicDegrees\":[[1,1,0,1,2,0,2,2,0],[4,4,0,4,5,0,5,5,0,5,4,0]]},"
-                + "{\"interval\":\"20120402T1230Z/20120402T13Z\",\"cartographicDegrees\":[[-1,-1,0,-1,-2,0,-2,-2,0],[-4,-4,0,-4,-5,0,-5,-5,0,-5,-4,0]]}" + "]}}", getStringWriter().toString());
+                + "{\"interval\":\"20120402T1230Z/20120402T13Z\",\"cartographicDegrees\":[[11,1,0,11,2,0,12,2,0],[14,4,0,14,5,0,15,5,0,15,4,0]]}" + "]}}", getStringWriter().toString());
     }
 
     @Test

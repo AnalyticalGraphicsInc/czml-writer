@@ -1742,7 +1742,21 @@ public class TestGenerateValidationDocument {
                             try {
                                 w2.writeCartesian(TestGenerateValidationDocument.<Cartesian> createList(new Cartesian(39143D, 2200D, 6408D), new Cartesian(27161D, 33386D, 62338D)));
                                 TextWriterHelper.writeLine(m_assertionsWriter,
-                                        "    expect(e.polygon.hierarchy.getValue(date)).toEqual([ new Cartesian3(39143, 2200, 6408), new Cartesian3(27161, 33386, 62338) ]);");
+                                        "    expect(e.polygon.hierarchy.getValue(date).positions).toEqual([ new Cartesian3(39143, 2200, 6408), new Cartesian3(27161, 33386, 62338) ]);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.PositionListOfListsCesiumWriter w2 = w.openHolesProperty();
+                            try {
+                                w2.writeCartesian(TestGenerateValidationDocument.<List<Cartesian>> createList(createList(new Cartesian(47462D, 20409D, 3151D), new Cartesian(58636D, 39653D, 53914D),
+                                        new Cartesian(31954D, 4988D, 47462D)), createList(new Cartesian(20409D, 3151D, 58636D), new Cartesian(39653D, 53914D, 31954D), new Cartesian(4988D, 47462D,
+                                        20409D), new Cartesian(3151D, 58636D, 39653D))));
+                                TextWriterHelper
+                                        .writeLine(
+                                                m_assertionsWriter,
+                                                "    expect(e.polygon.hierarchy.getValue(date).holes).toEqual([ [ new Cartesian3(47462, 20409, 3151), new Cartesian3(58636, 39653, 53914), new Cartesian3(31954, 4988, 47462) ], [ new Cartesian3(20409, 3151, 58636), new Cartesian3(39653, 53914, 31954), new Cartesian3(4988, 47462, 20409), new Cartesian3(3151, 58636, 39653) ] ]);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -7799,19 +7813,20 @@ public class TestGenerateValidationDocument {
         {
             cesiumlanguagewriter.PacketCesiumWriter packet = m_writer.openPacket(m_output);
             try {
-                packet.writeId("constant_polygon_hierarchy_cartographicRadians");
-                writeAssertionBoth("    expect(e = dataSource.entities.getById('constant_polygon_hierarchy_cartographicRadians')).toBeDefined();");
+                packet.writeId("constant_polygon_positions_cartographicRadians");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('constant_polygon_positions_cartographicRadians')).toBeDefined();");
                 {
                     cesiumlanguagewriter.PolygonCesiumWriter w = packet.openPolygonProperty();
                     try {
                         {
                             cesiumlanguagewriter.PositionListCesiumWriter w2 = w.openPositionsProperty();
                             try {
-                                w2.writeCartographicRadians(TestGenerateValidationDocument.<Cartographic> createList(new Cartographic(0.612948853926511, 1.3346715688367, 54401D), new Cartographic(
-                                        1.1867596160592, 0.345663242797974, 35811D)));
+                                w2.writeCartographicRadians(TestGenerateValidationDocument.<Cartographic> createList(new Cartographic(0.278819883450618, 1.34192534297912, 13112D), new Cartographic(
+                                        1.08460649779701, 1.26665808721843, 9013D)));
                                 TextWriterHelper
-                                        .writeLine(m_assertionsWriter,
-                                                "    expect(e.polygon.hierarchy.getValue(date)).toEqual([ Cartesian3.fromRadians(0.612948853926511, 1.3346715688367, 54401), Cartesian3.fromRadians(1.1867596160592, 0.345663242797974, 35811) ]);");
+                                        .writeLine(
+                                                m_assertionsWriter,
+                                                "    expect(e.polygon.hierarchy.getValue(date).positions).toEqual([ Cartesian3.fromRadians(0.278819883450618, 1.34192534297912, 13112), Cartesian3.fromRadians(1.08460649779701, 1.26665808721843, 9013) ]);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -7827,17 +7842,78 @@ public class TestGenerateValidationDocument {
         {
             cesiumlanguagewriter.PacketCesiumWriter packet = m_writer.openPacket(m_output);
             try {
-                packet.writeId("constant_polygon_hierarchy_cartographicDegrees");
-                writeAssertionBoth("    expect(e = dataSource.entities.getById('constant_polygon_hierarchy_cartographicDegrees')).toBeDefined();");
+                packet.writeId("constant_polygon_positions_cartographicDegrees");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('constant_polygon_positions_cartographicDegrees')).toBeDefined();");
                 {
                     cesiumlanguagewriter.PolygonCesiumWriter w = packet.openPolygonProperty();
                     try {
                         {
                             cesiumlanguagewriter.PositionListCesiumWriter w2 = w.openPositionsProperty();
                             try {
-                                w2.writeCartographicDegrees(TestGenerateValidationDocument.<Cartographic> createList(new Cartographic(19D, 41D, 50907D), new Cartographic(28D, 40D, 24937D)));
+                                w2.writeCartographicDegrees(TestGenerateValidationDocument.<Cartographic> createList(new Cartographic(20D, 42D, 343D), new Cartographic(21D, 14D, 24042D)));
                                 TextWriterHelper.writeLine(m_assertionsWriter,
-                                        "    expect(e.polygon.hierarchy.getValue(date)).toEqual([ Cartesian3.fromDegrees(19, 41, 50907), Cartesian3.fromDegrees(28, 40, 24937) ]);");
+                                        "    expect(e.polygon.hierarchy.getValue(date).positions).toEqual([ Cartesian3.fromDegrees(20, 42, 343), Cartesian3.fromDegrees(21, 14, 24042) ]);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            cesiumlanguagewriter.PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("constant_polygon_holes_cartographicRadians");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('constant_polygon_holes_cartographicRadians')).toBeDefined();");
+                {
+                    cesiumlanguagewriter.PolygonCesiumWriter w = packet.openPolygonProperty();
+                    try {
+                        {
+                            cesiumlanguagewriter.PositionListOfListsCesiumWriter w2 = w.openHolesProperty();
+                            try {
+                                w2.writeCartographicRadians(TestGenerateValidationDocument.<List<Cartographic>> createList(createList(new Cartographic(0.799220652820836, 1.50366253893541, 4776D),
+                                        new Cartographic(0.179862066646486, 1.42489853818289, 42245D), new Cartographic(0.0636782022426772, 0.558333087028927, 32510D)), createList(new Cartographic(
+                                        1.50366253893541, 0.779166543514464, 33810D), new Cartographic(1.42489853818289, 0.00358717805196918, 20389D), new Cartographic(0.558333087028927,
+                                        0.799220652820836, 43134D), new Cartographic(0.779166543514464, 0.179862066646486, 1412D))));
+                                TextWriterHelper
+                                        .writeLine(
+                                                m_assertionsWriter,
+                                                "    expect(e.polygon.hierarchy.getValue(date).holes).toEqual([ [ Cartesian3.fromRadians(0.799220652820836, 1.50366253893541, 4776), Cartesian3.fromRadians(0.179862066646486, 1.42489853818289, 42245), Cartesian3.fromRadians(0.0636782022426772, 0.558333087028927, 32510) ], [ Cartesian3.fromRadians(1.50366253893541, 0.779166543514464, 33810), Cartesian3.fromRadians(1.42489853818289, 0.00358717805196918, 20389), Cartesian3.fromRadians(0.558333087028927, 0.799220652820836, 43134), Cartesian3.fromRadians(0.779166543514464, 0.179862066646486, 1412) ] ]);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            cesiumlanguagewriter.PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("constant_polygon_holes_cartographicDegrees");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('constant_polygon_holes_cartographicDegrees')).toBeDefined();");
+                {
+                    cesiumlanguagewriter.PolygonCesiumWriter w = packet.openPolygonProperty();
+                    try {
+                        {
+                            cesiumlanguagewriter.PositionListOfListsCesiumWriter w2 = w.openHolesProperty();
+                            try {
+                                w2.writeCartographicDegrees(TestGenerateValidationDocument.<List<Cartographic>> createList(createList(new Cartographic(38D, 39D, 52122D), new Cartographic(30D, 41D,
+                                        40406D), new Cartographic(9D, 42D, 55073D)), createList(new Cartographic(39D, 12D, 5835D), new Cartographic(41D, 41D, 39069D), new Cartographic(42D, 38D,
+                                        39639D), new Cartographic(12D, 30D, 54806D))));
+                                TextWriterHelper
+                                        .writeLine(
+                                                m_assertionsWriter,
+                                                "    expect(e.polygon.hierarchy.getValue(date).holes).toEqual([ [ Cartesian3.fromDegrees(38, 39, 52122), Cartesian3.fromDegrees(30, 41, 40406), Cartesian3.fromDegrees(9, 42, 55073) ], [ Cartesian3.fromDegrees(39, 12, 5835), Cartesian3.fromDegrees(41, 41, 39069), Cartesian3.fromDegrees(42, 38, 39639), Cartesian3.fromDegrees(12, 30, 54806) ] ]);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -21860,6 +21936,49 @@ public class TestGenerateValidationDocument {
         {
             cesiumlanguagewriter.PacketCesiumWriter packet = m_writer.openPacket(m_output);
             try {
+                packet.writeId("ConstantPosition3");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('ConstantPosition3')).toBeDefined();");
+                {
+                    cesiumlanguagewriter.PositionCesiumWriter w = packet.openPositionProperty();
+                    try {
+                        w.writeCartesian(new Cartesian(1758D, 45062D, 8624D));
+                        TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.position.getValue(date)).toEqual(new Cartesian3(1758, 45062, 8624));");
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            cesiumlanguagewriter.PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("ConstantDouble3");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('ConstantDouble3')).toBeDefined();");
+                {
+                    cesiumlanguagewriter.BillboardCesiumWriter w = packet.openBillboardProperty();
+                    try {
+                        {
+                            cesiumlanguagewriter.DoubleCesiumWriter w2 = w.openScaleProperty();
+                            try {
+                                w2.writeNumber(50938.0);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.billboard.scale.getValue(date)).toEqual(50938.0);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            cesiumlanguagewriter.PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
                 packet.writeId("Reference");
                 writeAssertionBoth("    expect(e = dataSource.entities.getById('Reference')).toBeDefined();");
                 {
@@ -23501,7 +23620,20 @@ public class TestGenerateValidationDocument {
                                 TextWriterHelper
                                         .writeLine(
                                                 m_assertionsWriter,
-                                                "    expect(e.polygon.hierarchy.getValue(date)).toEqual([dataSource.entities.getById('ConstantPosition1').position.getValue(date), dataSource.entities.getById('ConstantPosition2').position.getValue(date)]);");
+                                                "    expect(e.polygon.hierarchy.getValue(date).positions).toEqual([dataSource.entities.getById('ConstantPosition1').position.getValue(date), dataSource.entities.getById('ConstantPosition2').position.getValue(date)]);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            cesiumlanguagewriter.PositionListOfListsCesiumWriter w2 = w.openHolesProperty();
+                            try {
+                                w2.writeReferences(createList(createList(new Reference("ConstantPosition1", createList("position")), new Reference("ConstantPosition2", createList("position")),
+                                        new Reference("ConstantPosition3", createList("position")))));
+                                TextWriterHelper
+                                        .writeLine(
+                                                m_assertionsWriter,
+                                                "    expect(e.polygon.hierarchy.getValue(date).holes).toEqual([ [ dataSource.entities.getById('ConstantPosition1').position.getValue(date), dataSource.entities.getById('ConstantPosition2').position.getValue(date), dataSource.entities.getById('ConstantPosition3').position.getValue(date) ] ]);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
