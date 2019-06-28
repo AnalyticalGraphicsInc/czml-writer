@@ -104,8 +104,8 @@ namespace CesiumLanguageWriterTests
                     {
                         var listOfHoles = new List<List<Cartographic>>
                         {
-                            new List<Cartographic> { new Cartographic(-1, -1, 0), new Cartographic(-1, -2, 0), new Cartographic(-2, -2, 0), },
-                            new List<Cartographic> { new Cartographic(-4, -4, 0), new Cartographic(-4, -5, 0), new Cartographic(-5, -5, 0), new Cartographic(-5, -4, 0), },
+                            new List<Cartographic> { new Cartographic(11, 1, 0), new Cartographic(11, 2, 0), new Cartographic(12, 2, 0), },
+                            new List<Cartographic> { new Cartographic(14, 4, 0), new Cartographic(14, 5, 0), new Cartographic(15, 5, 0), new Cartographic(15, 4, 0), },
                         };
                         interval.WriteCartographicDegrees(listOfHoles);
                     }
@@ -114,7 +114,7 @@ namespace CesiumLanguageWriterTests
 
             Assert.AreEqual("{\"polygon\":{\"holes\":[" +
                             "{\"interval\":\"20120402T12Z/20120402T1230Z\",\"cartographicDegrees\":[[1,1,0,1,2,0,2,2,0],[4,4,0,4,5,0,5,5,0,5,4,0]]}," +
-                            "{\"interval\":\"20120402T1230Z/20120402T13Z\",\"cartographicDegrees\":[[-1,-1,0,-1,-2,0,-2,-2,0],[-4,-4,0,-4,-5,0,-5,-5,0,-5,-4,0]]}" +
+                            "{\"interval\":\"20120402T1230Z/20120402T13Z\",\"cartographicDegrees\":[[11,1,0,11,2,0,12,2,0],[14,4,0,14,5,0,15,5,0,15,4,0]]}" +
                             "]}}", StringWriter.ToString());
         }
 
