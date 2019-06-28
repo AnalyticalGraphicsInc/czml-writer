@@ -960,7 +960,12 @@ namespace CesiumLanguageWriterTests
                     using (var w2 = w.OpenPositionsProperty())
                     {
                         w2.WriteCartesian(CreateList(new Cartesian(39143, 2200, 6408), new Cartesian(27161, 33386, 62338)));
-                        m_assertionsWriter.WriteLine("    expect(e.polygon.hierarchy.getValue(date)).toEqual([ new Cartesian3(39143, 2200, 6408), new Cartesian3(27161, 33386, 62338) ]);");
+                        m_assertionsWriter.WriteLine("    expect(e.polygon.hierarchy.getValue(date).positions).toEqual([ new Cartesian3(39143, 2200, 6408), new Cartesian3(27161, 33386, 62338) ]);");
+                    }
+                    using (var w2 = w.OpenHolesProperty())
+                    {
+                        w2.WriteCartesian(CreateList(CreateList(new Cartesian(47462, 20409, 3151), new Cartesian(58636, 39653, 53914), new Cartesian(31954, 4988, 47462)), CreateList(new Cartesian(20409, 3151, 58636), new Cartesian(39653, 53914, 31954), new Cartesian(4988, 47462, 20409), new Cartesian(3151, 58636, 39653))));
+                        m_assertionsWriter.WriteLine("    expect(e.polygon.hierarchy.getValue(date).holes).toEqual([ [ new Cartesian3(47462, 20409, 3151), new Cartesian3(58636, 39653, 53914), new Cartesian3(31954, 4988, 47462) ], [ new Cartesian3(20409, 3151, 58636), new Cartesian3(39653, 53914, 31954), new Cartesian3(4988, 47462, 20409), new Cartesian3(3151, 58636, 39653) ] ]);");
                     }
                     using (var w2 = w.OpenArcTypeProperty())
                     {
@@ -3579,24 +3584,46 @@ namespace CesiumLanguageWriterTests
         {
             using (var packet = m_writer.OpenPacket(m_output))
             {
-                packet.WriteId("constant_polygon_hierarchy_cartographicRadians");
-                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_polygon_hierarchy_cartographicRadians')).toBeDefined();");
+                packet.WriteId("constant_polygon_positions_cartographicRadians");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_polygon_positions_cartographicRadians')).toBeDefined();");
                 using (var w = packet.OpenPolygonProperty())
                 using (var w2 = w.OpenPositionsProperty())
                 {
-                    w2.WriteCartographicRadians(CreateList(new Cartographic(0.612948853926511, 1.3346715688367, 54401), new Cartographic(1.1867596160592, 0.345663242797974, 35811)));
-                    m_assertionsWriter.WriteLine("    expect(e.polygon.hierarchy.getValue(date)).toEqual([ Cartesian3.fromRadians(0.612948853926511, 1.3346715688367, 54401), Cartesian3.fromRadians(1.1867596160592, 0.345663242797974, 35811) ]);");
+                    w2.WriteCartographicRadians(CreateList(new Cartographic(0.278819883450618, 1.34192534297912, 13112), new Cartographic(1.08460649779701, 1.26665808721843, 9013)));
+                    m_assertionsWriter.WriteLine("    expect(e.polygon.hierarchy.getValue(date).positions).toEqual([ Cartesian3.fromRadians(0.278819883450618, 1.34192534297912, 13112), Cartesian3.fromRadians(1.08460649779701, 1.26665808721843, 9013) ]);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
-                packet.WriteId("constant_polygon_hierarchy_cartographicDegrees");
-                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_polygon_hierarchy_cartographicDegrees')).toBeDefined();");
+                packet.WriteId("constant_polygon_positions_cartographicDegrees");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_polygon_positions_cartographicDegrees')).toBeDefined();");
                 using (var w = packet.OpenPolygonProperty())
                 using (var w2 = w.OpenPositionsProperty())
                 {
-                    w2.WriteCartographicDegrees(CreateList(new Cartographic(19, 41, 50907), new Cartographic(28, 40, 24937)));
-                    m_assertionsWriter.WriteLine("    expect(e.polygon.hierarchy.getValue(date)).toEqual([ Cartesian3.fromDegrees(19, 41, 50907), Cartesian3.fromDegrees(28, 40, 24937) ]);");
+                    w2.WriteCartographicDegrees(CreateList(new Cartographic(20, 42, 343), new Cartographic(21, 14, 24042)));
+                    m_assertionsWriter.WriteLine("    expect(e.polygon.hierarchy.getValue(date).positions).toEqual([ Cartesian3.fromDegrees(20, 42, 343), Cartesian3.fromDegrees(21, 14, 24042) ]);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_polygon_holes_cartographicRadians");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_polygon_holes_cartographicRadians')).toBeDefined();");
+                using (var w = packet.OpenPolygonProperty())
+                using (var w2 = w.OpenHolesProperty())
+                {
+                    w2.WriteCartographicRadians(CreateList(CreateList(new Cartographic(0.799220652820836, 1.50366253893541, 4776), new Cartographic(0.179862066646486, 1.42489853818289, 42245), new Cartographic(0.0636782022426772, 0.558333087028927, 32510)), CreateList(new Cartographic(1.50366253893541, 0.779166543514464, 33810), new Cartographic(1.42489853818289, 0.00358717805196918, 20389), new Cartographic(0.558333087028927, 0.799220652820836, 43134), new Cartographic(0.779166543514464, 0.179862066646486, 1412))));
+                    m_assertionsWriter.WriteLine("    expect(e.polygon.hierarchy.getValue(date).holes).toEqual([ [ Cartesian3.fromRadians(0.799220652820836, 1.50366253893541, 4776), Cartesian3.fromRadians(0.179862066646486, 1.42489853818289, 42245), Cartesian3.fromRadians(0.0636782022426772, 0.558333087028927, 32510) ], [ Cartesian3.fromRadians(1.50366253893541, 0.779166543514464, 33810), Cartesian3.fromRadians(1.42489853818289, 0.00358717805196918, 20389), Cartesian3.fromRadians(0.558333087028927, 0.799220652820836, 43134), Cartesian3.fromRadians(0.779166543514464, 0.179862066646486, 1412) ] ]);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_polygon_holes_cartographicDegrees");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_polygon_holes_cartographicDegrees')).toBeDefined();");
+                using (var w = packet.OpenPolygonProperty())
+                using (var w2 = w.OpenHolesProperty())
+                {
+                    w2.WriteCartographicDegrees(CreateList(CreateList(new Cartographic(38, 39, 52122), new Cartographic(30, 41, 40406), new Cartographic(9, 42, 55073)), CreateList(new Cartographic(39, 12, 5835), new Cartographic(41, 41, 39069), new Cartographic(42, 38, 39639), new Cartographic(12, 30, 54806))));
+                    m_assertionsWriter.WriteLine("    expect(e.polygon.hierarchy.getValue(date).holes).toEqual([ [ Cartesian3.fromDegrees(38, 39, 52122), Cartesian3.fromDegrees(30, 41, 40406), Cartesian3.fromDegrees(9, 42, 55073) ], [ Cartesian3.fromDegrees(39, 12, 5835), Cartesian3.fromDegrees(41, 41, 39069), Cartesian3.fromDegrees(42, 38, 39639), Cartesian3.fromDegrees(12, 30, 54806) ] ]);");
                 }
             }
             using (var packet = m_writer.OpenPacket(m_output))
@@ -8968,6 +8995,27 @@ namespace CesiumLanguageWriterTests
             }
             using (var packet = m_writer.OpenPacket(m_output))
             {
+                packet.WriteId("ConstantPosition3");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('ConstantPosition3')).toBeDefined();");
+                using (var w = packet.OpenPositionProperty())
+                {
+                    w.WriteCartesian(new Cartesian(1758, 45062, 8624));
+                    m_assertionsWriter.WriteLine("    expect(e.position.getValue(date)).toEqual(new Cartesian3(1758, 45062, 8624));");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("ConstantDouble3");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('ConstantDouble3')).toBeDefined();");
+                using (var w = packet.OpenBillboardProperty())
+                using (var w2 = w.OpenScaleProperty())
+                {
+                    w2.WriteNumber(50938.0);
+                    m_assertionsWriter.WriteLine("    expect(e.billboard.scale.getValue(date)).toEqual(50938.0);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
                 packet.WriteId("Reference");
                 WriteAssertionBoth("    expect(e = dataSource.entities.getById('Reference')).toBeDefined();");
                 using (var w = packet.OpenDescriptionProperty())
@@ -9819,7 +9867,12 @@ namespace CesiumLanguageWriterTests
                     using (var w2 = w.OpenPositionsProperty())
                     {
                         w2.WriteReferences(CreateList(new Reference("ConstantPosition1", CreateList("position")), new Reference("ConstantPosition2", CreateList("position"))));
-                        m_assertionsWriter.WriteLine("    expect(e.polygon.hierarchy.getValue(date)).toEqual([dataSource.entities.getById('ConstantPosition1').position.getValue(date), dataSource.entities.getById('ConstantPosition2').position.getValue(date)]);");
+                        m_assertionsWriter.WriteLine("    expect(e.polygon.hierarchy.getValue(date).positions).toEqual([dataSource.entities.getById('ConstantPosition1').position.getValue(date), dataSource.entities.getById('ConstantPosition2').position.getValue(date)]);");
+                    }
+                    using (var w2 = w.OpenHolesProperty())
+                    {
+                        w2.WriteReferences(CreateList(CreateList(new Reference("ConstantPosition1", CreateList("position")), new Reference("ConstantPosition2", CreateList("position")), new Reference("ConstantPosition3", CreateList("position")))));
+                        m_assertionsWriter.WriteLine("    expect(e.polygon.hierarchy.getValue(date).holes).toEqual([ [ dataSource.entities.getById('ConstantPosition1').position.getValue(date), dataSource.entities.getById('ConstantPosition2').position.getValue(date), dataSource.entities.getById('ConstantPosition3').position.getValue(date) ] ]);");
                     }
                     using (var w2 = w.OpenArcTypeProperty())
                     {
