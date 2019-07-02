@@ -631,7 +631,7 @@ namespace GenerateFromSchema
                                                     using (writer.OpenScope())
                                                     {
                                                         writer.WriteLine("w2.WriteReferences(CreateList(CreateList(new Reference(\"Constant{0}1\", CreateList({1})), new Reference(\"Constant{0}2\", CreateList({1})), new Reference(\"Constant{0}3\", CreateList({1})))));", targetId, string.Join(", ", referencePropertyNames.Select(n => $"\"{n}\"")));
-                                                        WriteAssertion(writer, isExtension, "expect(e.{0}.{1}.getValue(date){4}).toEqual([ [ dataSource.entities.getById('Constant{2}1').{3}.getValue(date), dataSource.entities.getById('Constant{2}2').{3}.getValue(date), dataSource.entities.getById('Constant{2}3').{3}.getValue(date) ] ]);", propertyName, subPropertyName, targetId, string.Join(".", referencePropertyNames), valueSuffix);
+                                                        WriteAssertion(writer, isExtension, "expect(e.{0}.{1}.getValue(date){4}).toEqual([ new PolygonHierarchy([ dataSource.entities.getById('Constant{2}1').{3}.getValue(date), dataSource.entities.getById('Constant{2}2').{3}.getValue(date), dataSource.entities.getById('Constant{2}3').{3}.getValue(date) ])]);", propertyName, subPropertyName, targetId, string.Join(".", referencePropertyNames), valueSuffix);
                                                     }
                                                 }
                                                 else if (subProperty.ValueType.Name.Contains("Material"))
@@ -1307,14 +1307,15 @@ namespace GenerateFromSchema
                         return $"new Cartesian3({values[valuesPerCartesian * index + 0]}, {values[valuesPerCartesian * index + 1]}, {values[valuesPerCartesian * index + 2]})";
                     }
 
+                    string array1 = $"[ {CreateCartesianJavaScript(0)}, {CreateCartesianJavaScript(1)}, {CreateCartesianJavaScript(2)} ]";
+                    string array2 = $"[ {CreateCartesianJavaScript(3)}, {CreateCartesianJavaScript(4)}, {CreateCartesianJavaScript(5)}, {CreateCartesianJavaScript(6)} ]";
 
                     if (parentProperty.Name == "holes")
                     {
                         valueSuffix = ".holes";
+                        array1 = $"new PolygonHierarchy({array1})";
+                        array2 = $"new PolygonHierarchy({array2})";
                     }
-
-                    string array1 = $"[ {CreateCartesianJavaScript(0)}, {CreateCartesianJavaScript(1)}, {CreateCartesianJavaScript(2)} ]";
-                    string array2 = $"[ {CreateCartesianJavaScript(3)}, {CreateCartesianJavaScript(4)}, {CreateCartesianJavaScript(5)}, {CreateCartesianJavaScript(6)} ]";
 
                     assertionValue = $"[ {array1}, {array2} ]";
                     valueType = "List<List<Cartesian>>";
@@ -1438,13 +1439,15 @@ namespace GenerateFromSchema
                         return $"Cartesian3.from{units}({values[valuesPerCartographic * index + 0]}, {values[valuesPerCartographic * index + 1]}, {values[valuesPerCartographic * index + 2]})";
                     }
 
+                    string array1 = $"[ {CreateCartographicJavaScript(0)}, {CreateCartographicJavaScript(1)}, {CreateCartographicJavaScript(2)} ]";
+                    string array2 = $"[ {CreateCartographicJavaScript(3)}, {CreateCartographicJavaScript(4)}, {CreateCartographicJavaScript(5)}, {CreateCartographicJavaScript(6)} ]";
+
                     if (parentProperty.Name == "holes")
                     {
                         valueSuffix = ".holes";
+                        array1 = $"new PolygonHierarchy({array1})";
+                        array2 = $"new PolygonHierarchy({array2})";
                     }
-
-                    string array1 = $"[ {CreateCartographicJavaScript(0)}, {CreateCartographicJavaScript(1)}, {CreateCartographicJavaScript(2)} ]";
-                    string array2 = $"[ {CreateCartographicJavaScript(3)}, {CreateCartographicJavaScript(4)}, {CreateCartographicJavaScript(5)}, {CreateCartographicJavaScript(6)} ]";
 
                     assertionValue = $"[ {array1}, {array2} ]";
                     valueType = "List<List<Cartesian>>";
