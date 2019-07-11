@@ -16,6 +16,7 @@ import cesiumlanguagewriter.HeightReferenceCesiumWriter;
 import cesiumlanguagewriter.IntegerCesiumWriter;
 import cesiumlanguagewriter.MaterialCesiumWriter;
 import cesiumlanguagewriter.PositionListCesiumWriter;
+import cesiumlanguagewriter.PositionListOfListsCesiumWriter;
 import cesiumlanguagewriter.ShadowModeCesiumWriter;
 import java.awt.Color;
 import java.util.List;
@@ -47,6 +48,13 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
 
     */
     public static final String PositionsPropertyName = "positions";
+    /**
+    *  
+    The name of the {@code holes} property.
+    
+
+    */
+    public static final String HolesPropertyName = "holes";
     /**
     *  
     The name of the {@code arcType} property.
@@ -188,6 +196,11 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     private Lazy<PositionListCesiumWriter> m_positions = new Lazy<cesiumlanguagewriter.PositionListCesiumWriter>(new Func1<cesiumlanguagewriter.PositionListCesiumWriter>() {
         public cesiumlanguagewriter.PositionListCesiumWriter invoke() {
             return new PositionListCesiumWriter(PositionsPropertyName);
+        }
+    }, false);
+    private Lazy<PositionListOfListsCesiumWriter> m_holes = new Lazy<cesiumlanguagewriter.PositionListOfListsCesiumWriter>(new Func1<cesiumlanguagewriter.PositionListOfListsCesiumWriter>() {
+        public cesiumlanguagewriter.PositionListOfListsCesiumWriter invoke() {
+            return new PositionListOfListsCesiumWriter(HolesPropertyName);
         }
     }, false);
     private Lazy<ArcTypeCesiumWriter> m_arcType = new Lazy<cesiumlanguagewriter.ArcTypeCesiumWriter>(new Func1<cesiumlanguagewriter.ArcTypeCesiumWriter>() {
@@ -536,6 +549,104 @@ public class PolygonCesiumWriter extends CesiumPropertyWriter<PolygonCesiumWrite
     public final void writePositionsPropertyReferences(Iterable<Reference> references) {
         {
             cesiumlanguagewriter.PositionListCesiumWriter writer = openPositionsProperty();
+            try {
+                writer.writeReferences(references);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  Gets the writer for the {@code holes} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code holes} property defines the array of arrays of positions defining holes in the polygon.
+    
+
+    */
+    @Nonnull
+    public final PositionListOfListsCesiumWriter getHolesWriter() {
+        return m_holes.getValue();
+    }
+
+    /**
+    *  
+    Opens and returns the writer for the {@code holes} property. The {@code holes} property defines the array of arrays of positions defining holes in the polygon.
+    
+
+    */
+    @Nonnull
+    public final PositionListOfListsCesiumWriter openHolesProperty() {
+        openIntervalIfNecessary();
+        return this.<PositionListOfListsCesiumWriter> openAndReturn(getHolesWriter());
+    }
+
+    /**
+    *  
+    Writes a value for the {@code holes} property as a {@code cartesian} value. The {@code holes} property specifies the array of arrays of positions defining holes in the polygon.
+    
+    
+
+    * @param values The values.
+    */
+    public final void writeHolesProperty(Iterable<? extends Iterable<Cartesian>> values) {
+        {
+            cesiumlanguagewriter.PositionListOfListsCesiumWriter writer = openHolesProperty();
+            try {
+                writer.writeCartesian(values);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code holes} property as a {@code cartographicRadians} value. The {@code holes} property specifies the array of arrays of positions defining holes in the polygon.
+    
+    
+
+    * @param values The values.
+    */
+    public final void writeHolesPropertyCartographicRadians(Iterable<? extends Iterable<Cartographic>> values) {
+        {
+            cesiumlanguagewriter.PositionListOfListsCesiumWriter writer = openHolesProperty();
+            try {
+                writer.writeCartographicRadians(values);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code holes} property as a {@code cartographicDegrees} value. The {@code holes} property specifies the array of arrays of positions defining holes in the polygon.
+    
+    
+
+    * @param values The values.
+    */
+    public final void writeHolesPropertyCartographicDegrees(Iterable<? extends Iterable<Cartographic>> values) {
+        {
+            cesiumlanguagewriter.PositionListOfListsCesiumWriter writer = openHolesProperty();
+            try {
+                writer.writeCartographicDegrees(values);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code holes} property as a {@code references} value. The {@code holes} property specifies the array of arrays of positions defining holes in the polygon.
+    
+    
+
+    * @param references The list of lists of references.
+    */
+    public final void writeHolesPropertyReferences(Iterable<? extends Iterable<? extends Reference>> references) {
+        {
+            cesiumlanguagewriter.PositionListOfListsCesiumWriter writer = openHolesProperty();
             try {
                 writer.writeReferences(references);
             } finally {

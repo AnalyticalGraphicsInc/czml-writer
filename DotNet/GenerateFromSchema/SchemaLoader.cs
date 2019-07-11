@@ -35,33 +35,23 @@ namespace GenerateFromSchema
             }
         }
 
+        private Schema LoadRelativeSchema(string baseFileName, string fileName)
+        {
+            return Load(Path.Combine(Path.GetDirectoryName(baseFileName), fileName));
+        }
+
         private void LoadSchema(string schemaFileName, JObject schemaJson, Schema schema)
         {
             schema.Name = GetValue<string>(schemaJson, "title", null);
             schema.Description = GetValue<string>(schemaJson, "description", null);
             schema.ExtensionPrefix = GetValue<string>(schemaJson, "czmlExtensionPrefix", null);
             schema.IsValue = GetValue<bool>(schemaJson, "czmlValue", false);
-
-            schema.Extends.AddRange(GetValues<string>(schemaJson, "allOf..$ref")
-                                        .Select(extend => Load(Path.Combine(Path.GetDirectoryName(schemaFileName), extend))));
-
+            schema.Extends.AddRange(GetValues<string>(schemaJson, "allOf..$ref").Select(extend => LoadRelativeSchema(schemaFileName, extend)));
             schema.JsonTypes = LoadJsonSchemaType(schemaJson);
 
             if (schemaJson.Property("properties")?.Value is JObject properties)
             {
                 schema.Properties.AddRange(properties.Properties().Select(property => LoadProperty(schemaFileName, property)));
-            }
-
-            if (schemaJson.Property("required")?.Value is JArray requiredProperties)
-            {
-                foreach (string requiredPropertyName in requiredProperties.Values<string>())
-                {
-                    var property = schema.Properties.Find(p => p.Name == requiredPropertyName);
-                    if (property != null)
-                    {
-                        property.IsRequiredForDisplay = true;
-                    }
-                }
             }
 
             var additionalProperties = schemaJson.Property("additionalProperties");
@@ -101,7 +91,7 @@ namespace GenerateFromSchema
             string refString = GetValue<string>(propertySchema, "$ref", null);
             if (refString != null)
             {
-                result.ValueType = Load(Path.Combine(Path.GetDirectoryName(schemaFileName), refString));
+                result.ValueType = LoadRelativeSchema(schemaFileName, refString);
             }
             else
             {

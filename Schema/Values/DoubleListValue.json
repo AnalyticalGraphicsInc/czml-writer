@@ -4,5 +4,8 @@
     "title": "DoubleList",
     "description": "A list of values specified as an array of numbers.",
     "type": "array",
-    "czmlValue": true
+    "czmlValue": true,
+    "items": {
+        "type": "number"
+    }
 }

@@ -1,0 +1,11 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Values/CartographicDegreesListOfListsValue.json",
+    "title": "CartographicDegreesListOfLists",
+    "description": "A list of lists of geodetic, WGS84 positions specified as `[Longitude, Latitude, Height, Longitude, Latitude, Height, ...]`, where Longitude and Latitude are in degrees and Height is in meters.",
+    "type": "array",
+    "czmlValue": true,
+    "items": {
+        "type": "array"
+    }
+}

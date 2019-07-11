@@ -12,7 +12,7 @@ import javax.annotation.Nonnull;
  
  
 
- * @param <TFrom> The class that implements {@link ICesiumCartographicDegreesValuePropertyWriter} to adapt.
+ * @param <TFrom> The class that implements {@link ICesiumCartographicDegreesListValuePropertyWriter} to adapt.
  */
 @SuppressWarnings( {
         "unused",

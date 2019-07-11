@@ -7,7 +7,7 @@ namespace CesiumLanguageWriter.Advanced
     /// Adapts a class that implements <see cref="ICesiumDoubleListValuePropertyWriter"/> to implement
     /// <see cref="ICesiumPropertyWriter"/> for a list of <see cref="double"/> values.
     /// </summary>
-    /// <typeparam name="TFrom">The class that implements <see cref="ICesiumDoubleValuePropertyWriter"/> to adapt.</typeparam>
+    /// <typeparam name="TFrom">The class that implements <see cref="ICesiumDoubleListValuePropertyWriter"/> to adapt.</typeparam>
     public class CesiumDoubleListValuePropertyAdaptor<TFrom> : CesiumWriterAdaptor<TFrom, IEnumerable<double>>
         where TFrom : class, ICesiumDoubleListValuePropertyWriter
     {

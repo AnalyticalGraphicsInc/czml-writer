@@ -320,7 +320,7 @@ namespace GenerateFromSchema
                                         writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                         using (writer.OpenScope())
                                         {
-                                            string id = $"constant_{property.Name}_{subPropertyName}_{valueProperty.Name}";
+                                            string id = $"constant_{property.Name}_{subProperty.Name}_{valueProperty.Name}";
                                             writer.WriteLine("packet.WriteId(\"{0}\");", id);
 
                                             WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}')).toBeDefined();", id);
@@ -350,7 +350,7 @@ namespace GenerateFromSchema
                                                 writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                                 using (writer.OpenScope())
                                                 {
-                                                    string id = $"constant_{propertyName}_{subPropertyName}_{firstMaterialProperty.Name}_{materialSubProperty.Name}";
+                                                    string id = $"constant_{propertyName}_{subProperty.Name}_{firstMaterialProperty.Name}_{materialSubProperty.Name}";
                                                     writer.WriteLine("packet.WriteId(\"{0}\");", id);
 
                                                     WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}')).toBeDefined();", id);
@@ -413,7 +413,7 @@ namespace GenerateFromSchema
                                                     writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                                     using (writer.OpenScope())
                                                     {
-                                                        string id = $"constant_{propertyName}_{subPropertyName}_{materialProperty.Name}_{materialSubProperty.Name}";
+                                                        string id = $"constant_{propertyName}_{subProperty.Name}_{materialProperty.Name}_{materialSubProperty.Name}";
                                                         writer.WriteLine("packet.WriteId(\"{0}\");", id);
 
                                                         WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}')).toBeDefined();", id);
@@ -445,7 +445,7 @@ namespace GenerateFromSchema
                                                 writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                                 using (writer.OpenScope())
                                                 {
-                                                    string id = $"constant_{propertyName}_{subPropertyName}_{additionalProperties.ValueType.Name}_{additionalSubProperty.Name}";
+                                                    string id = $"constant_{propertyName}_{subProperty.Name}_{additionalProperties.ValueType.Name}_{additionalSubProperty.Name}";
                                                     writer.WriteLine("packet.WriteId(\"{0}\");", id);
 
                                                     WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}')).toBeDefined();", id);
@@ -505,7 +505,7 @@ namespace GenerateFromSchema
                         {
                             // write some positions and double values to use to create reference lists for position lists and double lists later
 
-                            for (int i = 1; i <= 2; ++i)
+                            for (int i = 1; i <= 3; ++i)
                             {
                                 writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                 using (writer.OpenScope())
@@ -599,12 +599,39 @@ namespace GenerateFromSchema
                                                         targetId = "Double";
                                                         referencePropertyNames = new[] { "billboard", "scale" };
                                                     }
+                                                    string valueSuffix = "";
+                                                    if (propertyName == "polygon" && subProperty.Name == "positions")
+                                                    {
+                                                        valueSuffix = ".positions";
+                                                    }
 
                                                     writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
                                                     using (writer.OpenScope())
                                                     {
                                                         writer.WriteLine("w2.WriteReferences(CreateList(new Reference(\"Constant{0}1\", CreateList({1})), new Reference(\"Constant{0}2\", CreateList({1}))));", targetId, string.Join(", ", referencePropertyNames.Select(n => $"\"{n}\"")));
-                                                        WriteAssertion(writer, isExtension, "expect(e.{0}.{1}.getValue(date)).toEqual([dataSource.entities.getById('Constant{2}1').{3}.getValue(date), dataSource.entities.getById('Constant{2}2').{3}.getValue(date)]);", propertyName, subPropertyName, targetId, string.Join(".", referencePropertyNames));
+                                                        WriteAssertion(writer, isExtension, "expect(e.{0}.{1}.getValue(date){4}).toEqual([dataSource.entities.getById('Constant{2}1').{3}.getValue(date), dataSource.entities.getById('Constant{2}2').{3}.getValue(date)]);", propertyName, subPropertyName, targetId, string.Join(".", referencePropertyNames), valueSuffix);
+                                                    }
+                                                }
+                                                else if (properties.Any(p => p.ValueType.Name == "ReferenceListOfLists"))
+                                                {
+                                                    string targetId = "";
+                                                    string[] referencePropertyNames = { };
+                                                    if (subProperty.ValueType.Name == "PositionListOfLists")
+                                                    {
+                                                        targetId = "Position";
+                                                        referencePropertyNames = new[] { "position" };
+                                                    }
+                                                    string valueSuffix = "";
+                                                    if (propertyName == "polygon" && subProperty.Name == "holes")
+                                                    {
+                                                        valueSuffix = ".holes";
+                                                    }
+
+                                                    writer.WriteLine("using (var w2 = w.Open{0}Property())", subProperty.NameWithPascalCase);
+                                                    using (writer.OpenScope())
+                                                    {
+                                                        writer.WriteLine("w2.WriteReferences(CreateList(CreateList(new Reference(\"Constant{0}1\", CreateList({1})), new Reference(\"Constant{0}2\", CreateList({1})), new Reference(\"Constant{0}3\", CreateList({1})))));", targetId, string.Join(", ", referencePropertyNames.Select(n => $"\"{n}\"")));
+                                                        WriteAssertion(writer, isExtension, "expect(e.{0}.{1}.getValue(date){4}).toEqual([ new PolygonHierarchy([ dataSource.entities.getById('Constant{2}1').{3}.getValue(date), dataSource.entities.getById('Constant{2}2').{3}.getValue(date), dataSource.entities.getById('Constant{2}3').{3}.getValue(date) ])]);", propertyName, subPropertyName, targetId, string.Join(".", referencePropertyNames), valueSuffix);
                                                     }
                                                 }
                                                 else if (subProperty.ValueType.Name.Contains("Material"))
@@ -782,7 +809,7 @@ namespace GenerateFromSchema
                                             using (writer.OpenScope())
                                             {
                                                 string targetId = $"material_{propertyName}_{subProperty.Name}_{materialProperty.Name}";
-                                                string id = $"reference_{propertyName}_{subPropertyName}_{materialProperty.Name}";
+                                                string id = $"reference_{propertyName}_{subProperty.Name}_{materialProperty.Name}";
 
                                                 writer.WriteLine("packet.WriteId(\"{0}\");", id);
                                                 WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}')).toBeDefined();", id);
@@ -953,7 +980,7 @@ namespace GenerateFromSchema
                                                 writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                                 using (writer.OpenScope())
                                                 {
-                                                    string id = $"sampled_{propertyName}_{subPropertyName}_{valueProperty.Name}";
+                                                    string id = $"sampled_{propertyName}_{subProperty.Name}_{valueProperty.Name}";
                                                     writer.WriteLine("packet.WriteId(\"{0}\");", id);
 
                                                     WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}')).toBeDefined();", id);
@@ -983,7 +1010,7 @@ namespace GenerateFromSchema
                                                     writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                                     using (writer.OpenScope())
                                                     {
-                                                        string id = $"sampled_{propertyName}_{subPropertyName}_{firstMaterialProperty.Name}_{materialSubProperty.Name}";
+                                                        string id = $"sampled_{propertyName}_{subProperty.Name}_{firstMaterialProperty.Name}_{materialSubProperty.Name}";
                                                         writer.WriteLine("packet.WriteId(\"{0}\");", id);
 
                                                         WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}')).toBeDefined();", id);
@@ -1006,7 +1033,7 @@ namespace GenerateFromSchema
                                                 writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                                 using (writer.OpenScope())
                                                 {
-                                                    string id = $"sampled_{propertyName}_{subPropertyName}_{materialProperty.Name}";
+                                                    string id = $"sampled_{propertyName}_{subProperty.Name}_{materialProperty.Name}";
                                                     writer.WriteLine("packet.WriteId(\"{0}\");", id);
 
                                                     WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}')).toBeDefined();", id);
@@ -1043,7 +1070,7 @@ namespace GenerateFromSchema
                                                         writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                                         using (writer.OpenScope())
                                                         {
-                                                            string id = $"sampled_{propertyName}_{subPropertyName}_{materialProperty.Name}_{materialSubProperty.Name}";
+                                                            string id = $"sampled_{propertyName}_{subProperty.Name}_{materialProperty.Name}_{materialSubProperty.Name}";
                                                             writer.WriteLine("packet.WriteId(\"{0}\");", id);
 
                                                             WriteAssertionBoth(writer, "expect(e = dataSource.entities.getById('{0}')).toBeDefined();", id);
@@ -1119,14 +1146,14 @@ namespace GenerateFromSchema
             string subPropertyName = subProperty.Name;
             if (subPropertyName == "gltf")
                 subPropertyName = "uri";
-            else if (propertyName == "polygon" && subPropertyName == "positions")
+            else if (propertyName == "polygon" && (subPropertyName == "positions" || subPropertyName == "holes"))
                 subPropertyName = "hierarchy";
             return subPropertyName;
         }
 
         private static void WriteValue(CodeWriter writer, string openWriterName, string valueName, Property valueProperty, Property parentProperty, bool isExtension, string propertyName)
         {
-            GetUniqueValue(valueName, valueProperty, parentProperty, out string value, out string valueSuffix, out string assertionValue, out string assertionEpsilon, out _);
+            GetUniqueValue(propertyName, valueName, valueProperty, parentProperty, out string value, out string valueSuffix, out string assertionValue, out string assertionEpsilon, out _);
             writer.WriteLine("{0}.Write{1}({2});", openWriterName, valueProperty.NameWithPascalCase, value);
             WriteAssertion(writer, isExtension, "expect(e.{0}.getValue(date){1}).{2}({3}{4});",
                            propertyName,
@@ -1138,8 +1165,8 @@ namespace GenerateFromSchema
 
         private static void WriteValues(CodeWriter writer, string openWriterName, string valueName, Property valueProperty, Property parentProperty, bool isExtension, string propertyName)
         {
-            GetUniqueValue(valueName + 1, valueProperty, parentProperty, out string value1, out string valueSuffix1, out string assertionValue1, out string assertionEpsilon1, out _);
-            GetUniqueValue(valueName + 2, valueProperty, parentProperty, out string value2, out string valueSuffix2, out string assertionValue2, out string assertionEpsilon2, out _);
+            GetUniqueValue(propertyName, valueName + 1, valueProperty, parentProperty, out string value1, out string valueSuffix1, out string assertionValue1, out string assertionEpsilon1, out _);
+            GetUniqueValue(propertyName, valueName + 2, valueProperty, parentProperty, out string value2, out string valueSuffix2, out string assertionValue2, out string assertionEpsilon2, out _);
             writer.WriteLine("{0}.Write{1}(CreateList(m_documentStartDate, m_documentStopDate), CreateList({2}, {3}));", openWriterName, valueProperty.NameWithPascalCase, value1, value2);
             WriteAssertion(writer, isExtension, "expect(e.{0}.getValue(documentStartDate){1}).{2}({3}{4});",
                            propertyName,
@@ -1155,7 +1182,7 @@ namespace GenerateFromSchema
                            assertionEpsilon2 == null ? "" : $", {assertionEpsilon2}");
         }
 
-        private static void GetUniqueValue(string valueName, Property valueProperty, Property parentProperty,
+        private static void GetUniqueValue(string propertyName, string valueName, Property valueProperty, Property parentProperty,
                                            [NotNull] out string value, [NotNull] out string valueSuffix,
                                            [NotNull] out string assertionValue, out string assertionEpsilon,
                                            [NotNull] out string valueType)
@@ -1173,7 +1200,7 @@ namespace GenerateFromSchema
 
             int GetNumber(int n)
             {
-                return BitConverter.ToUInt16(hash.Value, n);
+                return BitConverter.ToUInt16(hash.Value, n % 8);
             }
 
             string valueTypeName = valueProperty.ValueType.Name;
@@ -1242,8 +1269,56 @@ namespace GenerateFromSchema
                         prefix = "Spherical.fromCartesian3(";
                         suffix = ")";
                     }
+                    else if (propertyName == "polygon.hierarchy")
+                    {
+                        valueSuffix = ".positions";
+                    }
+
                     assertionValue = $"[ {prefix}new Cartesian3({x1}, {y1}, {z1}){suffix}, {prefix}new Cartesian3({x2}, {y2}, {z2}){suffix} ]";
                     valueType = "List<Cartesian>";
+                    return;
+                }
+                case "Cartesian3ListOfLists":
+                {
+                    const int valuesPerCartesian = 3;
+                    double[] values = new double[7 * valuesPerCartesian];
+                    for (int i = 0; i < values.Length; i += valuesPerCartesian)
+                    {
+                        double x = GetNumber(i + 0);
+                        double y = GetNumber(i + 1);
+                        double z = GetNumber(i + 2);
+                        values[i + 0] = x;
+                        values[i + 1] = y;
+                        values[i + 2] = z;
+                    }
+
+                    string CreateCartesian(int index)
+                    {
+                        return $"new Cartesian({values[valuesPerCartesian * index + 0]}, {values[valuesPerCartesian * index + 1]}, {values[valuesPerCartesian * index + 2]})";
+                    }
+
+                    string list1 = $"CreateList({CreateCartesian(0)}, {CreateCartesian(1)}, {CreateCartesian(2)})";
+                    string list2 = $"CreateList({CreateCartesian(3)}, {CreateCartesian(4)}, {CreateCartesian(5)}, {CreateCartesian(6)})";
+
+                    value = $"CreateList({list1}, {list2})";
+
+                    string CreateCartesianJavaScript(int index)
+                    {
+                        return $"new Cartesian3({values[valuesPerCartesian * index + 0]}, {values[valuesPerCartesian * index + 1]}, {values[valuesPerCartesian * index + 2]})";
+                    }
+
+                    string array1 = $"[ {CreateCartesianJavaScript(0)}, {CreateCartesianJavaScript(1)}, {CreateCartesianJavaScript(2)} ]";
+                    string array2 = $"[ {CreateCartesianJavaScript(3)}, {CreateCartesianJavaScript(4)}, {CreateCartesianJavaScript(5)}, {CreateCartesianJavaScript(6)} ]";
+
+                    if (parentProperty.Name == "holes")
+                    {
+                        valueSuffix = ".holes";
+                        array1 = $"new PolygonHierarchy({array1})";
+                        array2 = $"new PolygonHierarchy({array2})";
+                    }
+
+                    assertionValue = $"[ {array1}, {array2} ]";
+                    valueType = "List<List<Cartesian>>";
                     return;
                 }
                 case "UnitCartesian3":
@@ -1323,9 +1398,59 @@ namespace GenerateFromSchema
                     double height2 = GetNumber(5);
 
                     value = $"CreateList(new Cartographic({longitude1}, {latitude1}, {height1}), new Cartographic({longitude2}, {latitude2}, {height2}))";
+                    if (propertyName == "polygon.hierarchy")
+                    {
+                        valueSuffix = ".positions";
+                    }
                     string units = isDegrees ? "Degrees" : "Radians";
                     assertionValue = $"[ Cartesian3.from{units}({longitude1}, {latitude1}, {height1}), Cartesian3.from{units}({longitude2}, {latitude2}, {height2}) ]";
                     valueType = "List<Cartesian>";
+                    return;
+                }
+                case "CartographicDegreesListOfLists":
+                case "CartographicRadiansListOfLists":
+                {
+                    bool isDegrees = valueProperty.Name == "cartographicDegrees";
+                    const int valuesPerCartographic = 3;
+                    double[] values = new double[7 * valuesPerCartographic];
+                    for (int i = 0; i < values.Length; i += valuesPerCartographic)
+                    {
+                        double longitude = GetNumber(i + 0) % (isDegrees ? 45 : Math.PI / 2);
+                        double latitude = GetNumber(i + 1) % (isDegrees ? 45 : Math.PI / 2);
+                        double height = GetNumber(i + 2);
+                        values[i + 0] = longitude;
+                        values[i + 1] = latitude;
+                        values[i + 2] = height;
+                    }
+
+                    string CreateCartographic(int index)
+                    {
+                        return $"new Cartographic({values[valuesPerCartographic * index + 0]}, {values[valuesPerCartographic * index + 1]}, {values[valuesPerCartographic * index + 2]})";
+                    }
+
+                    string list1 = $"CreateList({CreateCartographic(0)}, {CreateCartographic(1)}, {CreateCartographic(2)})";
+                    string list2 = $"CreateList({CreateCartographic(3)}, {CreateCartographic(4)}, {CreateCartographic(5)}, {CreateCartographic(6)})";
+
+                    value = $"CreateList({list1}, {list2})";
+                    string units = isDegrees ? "Degrees" : "Radians";
+
+                    string CreateCartographicJavaScript(int index)
+                    {
+                        return $"Cartesian3.from{units}({values[valuesPerCartographic * index + 0]}, {values[valuesPerCartographic * index + 1]}, {values[valuesPerCartographic * index + 2]})";
+                    }
+
+                    string array1 = $"[ {CreateCartographicJavaScript(0)}, {CreateCartographicJavaScript(1)}, {CreateCartographicJavaScript(2)} ]";
+                    string array2 = $"[ {CreateCartographicJavaScript(3)}, {CreateCartographicJavaScript(4)}, {CreateCartographicJavaScript(5)}, {CreateCartographicJavaScript(6)} ]";
+
+                    if (parentProperty.Name == "holes")
+                    {
+                        valueSuffix = ".holes";
+                        array1 = $"new PolygonHierarchy({array1})";
+                        array2 = $"new PolygonHierarchy({array2})";
+                    }
+
+                    assertionValue = $"[ {array1}, {array2} ]";
+                    valueType = "List<List<Cartesian>>";
                     return;
                 }
                 case "Cartesian2":

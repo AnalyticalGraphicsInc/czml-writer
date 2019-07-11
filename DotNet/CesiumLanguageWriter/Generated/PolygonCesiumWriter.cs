@@ -27,6 +27,11 @@ namespace CesiumLanguageWriter
         public const string PositionsPropertyName = "positions";
 
         /// <summary>
+        /// The name of the <c>holes</c> property.
+        /// </summary>
+        public const string HolesPropertyName = "holes";
+
+        /// <summary>
         /// The name of the <c>arcType</c> property.
         /// </summary>
         public const string ArcTypePropertyName = "arcType";
@@ -123,6 +128,7 @@ namespace CesiumLanguageWriter
 
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
         private readonly Lazy<PositionListCesiumWriter> m_positions = new Lazy<PositionListCesiumWriter>(() => new PositionListCesiumWriter(PositionsPropertyName), false);
+        private readonly Lazy<PositionListOfListsCesiumWriter> m_holes = new Lazy<PositionListOfListsCesiumWriter>(() => new PositionListOfListsCesiumWriter(HolesPropertyName), false);
         private readonly Lazy<ArcTypeCesiumWriter> m_arcType = new Lazy<ArcTypeCesiumWriter>(() => new ArcTypeCesiumWriter(ArcTypePropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_height = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(HeightPropertyName), false);
         private readonly Lazy<HeightReferenceCesiumWriter> m_heightReference = new Lazy<HeightReferenceCesiumWriter>(() => new HeightReferenceCesiumWriter(HeightReferencePropertyName), false);
@@ -310,6 +316,73 @@ namespace CesiumLanguageWriter
         public void WritePositionsPropertyReferences(IEnumerable<Reference> references)
         {
             using (var writer = OpenPositionsProperty())
+            {
+                writer.WriteReferences(references);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <c>holes</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>holes</c> property defines the array of arrays of positions defining holes in the polygon.
+        /// </summary>
+        [NotNull]
+        public PositionListOfListsCesiumWriter HolesWriter
+        {
+            get { return m_holes.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>holes</c> property. The <c>holes</c> property defines the array of arrays of positions defining holes in the polygon.
+        /// </summary>
+        [NotNull]
+        public PositionListOfListsCesiumWriter OpenHolesProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(HolesWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>holes</c> property as a <c>cartesian</c> value. The <c>holes</c> property specifies the array of arrays of positions defining holes in the polygon.
+        /// </summary>
+        /// <param name="values">The values.</param>
+        public void WriteHolesProperty([CSToJavaUseWildcardGenerics] IEnumerable<IEnumerable<Cartesian>> values)
+        {
+            using (var writer = OpenHolesProperty())
+            {
+                writer.WriteCartesian(values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>holes</c> property as a <c>cartographicRadians</c> value. The <c>holes</c> property specifies the array of arrays of positions defining holes in the polygon.
+        /// </summary>
+        /// <param name="values">The values.</param>
+        public void WriteHolesPropertyCartographicRadians([CSToJavaUseWildcardGenerics] IEnumerable<IEnumerable<Cartographic>> values)
+        {
+            using (var writer = OpenHolesProperty())
+            {
+                writer.WriteCartographicRadians(values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>holes</c> property as a <c>cartographicDegrees</c> value. The <c>holes</c> property specifies the array of arrays of positions defining holes in the polygon.
+        /// </summary>
+        /// <param name="values">The values.</param>
+        public void WriteHolesPropertyCartographicDegrees([CSToJavaUseWildcardGenerics] IEnumerable<IEnumerable<Cartographic>> values)
+        {
+            using (var writer = OpenHolesProperty())
+            {
+                writer.WriteCartographicDegrees(values);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>holes</c> property as a <c>references</c> value. The <c>holes</c> property specifies the array of arrays of positions defining holes in the polygon.
+        /// </summary>
+        /// <param name="references">The list of lists of references.</param>
+        public void WriteHolesPropertyReferences([CSToJavaUseWildcardGenerics] IEnumerable<IEnumerable<Reference>> references)
+        {
+            using (var writer = OpenHolesProperty())
             {
                 writer.WriteReferences(references);
             }

@@ -1,0 +1,38 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/PositionListOfLists.json",
+    "title": "PositionListOfLists",
+    "description": "A list of lists of positions.",
+    "allOf": [
+        { "$ref": "DeletableProperty.json" },
+        { "$ref": "ValueProperties/Cartesian3ListOfListsValueProperty.json" },
+        { "$ref": "ValueProperties/CartographicRadiansListOfListsValueProperty.json" },
+        { "$ref": "ValueProperties/CartographicDegreesListOfListsValueProperty.json" },
+        { "$ref": "ValueProperties/ReferenceListOfListsValueProperty.json" }
+    ],
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "properties": {
+        "cartesian": {
+            "$ref": "Values/Cartesian3ListOfListsValue.json",
+            "description": "The list of lists of positions specified as three-dimensional Cartesian values, `[X, Y, Z, X, Y, Z, ...]`, in meters relative to the `referenceFrame`."
+        },
+        "cartographicRadians": {
+            "$ref": "Values/CartographicRadiansListOfListsValue.json",
+            "description": "The list of lists of positions specified in Cartographic WGS84 coordinates, `[Longitude, Latitude, Height, Longitude, Latitude, Height, ...]`, where Longitude and Latitude are in radians and Height is in meters."
+        },
+        "cartographicDegrees": {
+            "$ref": "Values/CartographicDegreesListOfListsValue.json",
+            "description": "The list of lists of positions specified in Cartographic WGS84 coordinates, `[Longitude, Latitude, Height, Longitude, Latitude, Height, ...]`, where Longitude and Latitude are in degrees and Height is in meters."
+        },
+        "references": {
+            "$ref": "Values/ReferenceListOfListsValue.json",
+            "description": "The list of lists of positions specified as references. Each reference is to a property that defines a single position, which may change with time."
+        }
+    }
+}

@@ -99,6 +99,19 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
+        /// Create an adaptor for lists of lists of <see cref="Cartesian"/> values.
+        /// </summary>
+        /// <typeparam name="TFrom">The class that implements <see cref="ICesiumCartesian3ListOfListsValuePropertyWriter"/> to adapt.</typeparam>
+        /// <param name="parent">The instance to wrap.</param>
+        /// <returns>The new adaptor.</returns>
+        [CSToJavaUseWildcardGenerics]
+        public static CesiumCartesian3ListOfListsValuePropertyAdaptor<TFrom> CreateCartesian3ListOfLists<TFrom>([NotNull] TFrom parent)
+            where TFrom : class, ICesiumCartesian3ListOfListsValuePropertyWriter, ICesiumDeletablePropertyWriter
+        {
+            return new CesiumCartesian3ListOfListsValuePropertyAdaptor<TFrom>(parent, (writer, value) => writer.WriteCartesian(value), CreateWriteDeleteCallback<TFrom>());
+        }
+
+        /// <summary>
         /// Create an adaptor for <see cref="Cartographic"/> values.
         /// </summary>
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumCartographicRadiansValuePropertyWriter"/> to adapt.</typeparam>
@@ -123,6 +136,19 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
+        /// Create an adaptor for lists of lists of <see cref="Cartographic"/> values.
+        /// </summary>
+        /// <typeparam name="TFrom">The class that implements <see cref="ICesiumCartographicRadiansListOfListsValuePropertyWriter"/> to adapt.</typeparam>
+        /// <param name="parent">The instance to wrap.</param>
+        /// <returns>The new adaptor.</returns>
+        [CSToJavaUseWildcardGenerics]
+        public static CesiumCartographicRadiansListOfListsValuePropertyAdaptor<TFrom> CreateCartographicRadiansListOfLists<TFrom>([NotNull] TFrom parent)
+            where TFrom : class, ICesiumCartographicRadiansListOfListsValuePropertyWriter, ICesiumDeletablePropertyWriter
+        {
+            return new CesiumCartographicRadiansListOfListsValuePropertyAdaptor<TFrom>(parent, (writer, value) => writer.WriteCartographicRadians(value), CreateWriteDeleteCallback<TFrom>());
+        }
+
+        /// <summary>
         /// Create an adaptor for <see cref="Cartographic"/> values.
         /// </summary>
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumCartographicDegreesValuePropertyWriter"/> to adapt.</typeparam>
@@ -144,6 +170,19 @@ namespace CesiumLanguageWriter.Advanced
             where TFrom : class, ICesiumCartographicDegreesListValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
             return new CesiumCartographicDegreesListValuePropertyAdaptor<TFrom>(parent, (writer, value) => writer.WriteCartographicDegrees(value), CreateWriteDeleteCallback<TFrom>());
+        }
+
+        /// <summary>
+        /// Create an adaptor for lists of lists of <see cref="Cartographic"/> values.
+        /// </summary>
+        /// <typeparam name="TFrom">The class that implements <see cref="ICesiumCartographicDegreesListOfListsValuePropertyWriter"/> to adapt.</typeparam>
+        /// <param name="parent">The instance to wrap.</param>
+        /// <returns>The new adaptor.</returns>
+        [CSToJavaUseWildcardGenerics]
+        public static CesiumCartographicDegreesListOfListsValuePropertyAdaptor<TFrom> CreateCartographicDegreesListOfLists<TFrom>([NotNull] TFrom parent)
+            where TFrom : class, ICesiumCartographicDegreesListOfListsValuePropertyWriter, ICesiumDeletablePropertyWriter
+        {
+            return new CesiumCartographicDegreesListOfListsValuePropertyAdaptor<TFrom>(parent, (writer, value) => writer.WriteCartographicDegrees(value), CreateWriteDeleteCallback<TFrom>());
         }
 
         /// <summary>
@@ -324,6 +363,19 @@ namespace CesiumLanguageWriter.Advanced
             where TFrom : class, ICesiumReferenceListValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
             return new CesiumReferenceListValuePropertyAdaptor<TFrom>(parent, (writer, value) => writer.WriteReferences(value), CreateWriteDeleteCallback<TFrom>());
+        }
+
+        /// <summary>
+        /// Create an adaptor for lists of lists of <see cref="Reference"/> values.
+        /// </summary>
+        /// <typeparam name="TFrom">The class that implements <see cref="ICesiumReferenceListOfListsValuePropertyWriter"/> to adapt.</typeparam>
+        /// <param name="parent">The instance to wrap.</param>
+        /// <returns>The new adaptor.</returns>
+        [CSToJavaUseWildcardGenerics]
+        public static CesiumReferenceListOfListsValuePropertyAdaptor<TFrom> CreateReferenceListOfLists<TFrom>([NotNull] TFrom parent)
+            where TFrom : class, ICesiumReferenceListOfListsValuePropertyWriter, ICesiumDeletablePropertyWriter
+        {
+            return new CesiumReferenceListOfListsValuePropertyAdaptor<TFrom>(parent, (writer, value) => writer.WriteReferences(value), CreateWriteDeleteCallback<TFrom>());
         }
 
         /// <summary>

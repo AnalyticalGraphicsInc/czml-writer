@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -50,7 +51,7 @@ namespace GenerateFromSchema
                 {
                     WriteDescriptionAsClassSummary(writer, schema);
 
-                    foreach (string attribute in m_configuration.Attributes ?? Enumerable.Empty<string>())
+                    foreach (string attribute in m_configuration.Attributes ?? Array.Empty<string>())
                     {
                         writer.WriteLine("[{0}]", attribute);
                     }
@@ -90,7 +91,7 @@ namespace GenerateFromSchema
                 {
                     WriteDescriptionAsClassSummary(writer, packetSchema);
 
-                    foreach (string attribute in m_configuration.Attributes ?? Enumerable.Empty<string>())
+                    foreach (string attribute in m_configuration.Attributes ?? Array.Empty<string>())
                     {
                         writer.WriteLine("[{0}]", attribute);
                     }
@@ -599,6 +600,7 @@ namespace GenerateFromSchema
             return description;
         }
 
+        [SuppressMessage("ReSharper", "RedundantDefaultMemberInitializer")]
         private class ParameterInfo
         {
             [JsonProperty("type")]
@@ -610,6 +612,9 @@ namespace GenerateFromSchema
             [JsonProperty("description")]
             public string Description;
 
+            [JsonProperty("attributes")]
+            public string[] Attributes = null;
+
             public static ParameterInfo SimpleValue(string type)
             {
                 return new ParameterInfo
@@ -619,8 +624,18 @@ namespace GenerateFromSchema
                     Description = "The value."
                 };
             }
+
+            public string Format()
+            {
+                string attributes = string.Join(" ", Array.ConvertAll(Attributes ?? Array.Empty<string>(), attribute => $"[{attribute}]"));
+                if (attributes.Length > 0)
+                    attributes += " ";
+
+                return $"{attributes}{Type} {Name}";
+            }
         }
 
+        [SuppressMessage("ReSharper", "RedundantDefaultMemberInitializer")]
         private class OverloadInfo
         {
             [JsonProperty("usingNamespaces")]
@@ -641,29 +656,19 @@ namespace GenerateFromSchema
             [JsonProperty("needsInterval")]
             public bool NeedsInterval = true;
 
-            public string FormattedParameters
-            {
-                get { return string.Join(", ", Array.ConvertAll(Parameters, parameter => parameter.Type + ' ' + parameter.Name)); }
-            }
+            public string FormattedParameters => string.Join(", ", Array.ConvertAll(Parameters, parameter => parameter.Format()));
 
             public static OverloadInfo CreateDefault(string typeName)
             {
                 return new OverloadInfo
                 {
-                    Parameters = new[]
-                    {
-                        new ParameterInfo
-                        {
-                            Type = typeName,
-                            Name = "value",
-                            Description = "The value."
-                        }
-                    },
+                    Parameters = new[] { ParameterInfo.SimpleValue(typeName) },
                     WriteValue = "Output.WriteValue(value);",
                 };
             }
         }
 
+        [SuppressMessage("ReSharper", "RedundantDefaultMemberInitializer")]
         private class Configuration
         {
             [JsonProperty("namespace")]

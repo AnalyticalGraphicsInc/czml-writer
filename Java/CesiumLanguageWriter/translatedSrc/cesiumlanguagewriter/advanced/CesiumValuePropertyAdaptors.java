@@ -192,6 +192,27 @@ public final class CesiumValuePropertyAdaptors {
 
     /**
     *  
+    Create an adaptor for lists of lists of {@link Cartesian} values.
+    
+    
+    
+    
+
+    * @param <TFrom> The class that implements {@link ICesiumCartesian3ListOfListsValuePropertyWriter} to adapt.
+    * @param parent The instance to wrap.
+    * @return The new adaptor.
+    */
+    public static <TFrom extends ICesiumCartesian3ListOfListsValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumCartesian3ListOfListsValuePropertyAdaptor<TFrom> createCartesian3ListOfLists(
+            @Nonnull TFrom parent) {
+        return new CesiumCartesian3ListOfListsValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Iterable<? extends Iterable<Cartesian>>>() {
+            public void invoke(TFrom writer, Iterable<? extends Iterable<Cartesian>> value) {
+                writer.writeCartesian(value);
+            }
+        }, CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());
+    }
+
+    /**
+    *  
     Create an adaptor for {@link Cartographic} values.
     
     
@@ -238,6 +259,27 @@ public final class CesiumValuePropertyAdaptors {
 
     /**
     *  
+    Create an adaptor for lists of lists of {@link Cartographic} values.
+    
+    
+    
+    
+
+    * @param <TFrom> The class that implements {@link ICesiumCartographicRadiansListOfListsValuePropertyWriter} to adapt.
+    * @param parent The instance to wrap.
+    * @return The new adaptor.
+    */
+    public static <TFrom extends ICesiumCartographicRadiansListOfListsValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumCartographicRadiansListOfListsValuePropertyAdaptor<TFrom> createCartographicRadiansListOfLists(
+            @Nonnull TFrom parent) {
+        return new CesiumCartographicRadiansListOfListsValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Iterable<? extends Iterable<Cartographic>>>() {
+            public void invoke(TFrom writer, Iterable<? extends Iterable<Cartographic>> value) {
+                writer.writeCartographicRadians(value);
+            }
+        }, CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());
+    }
+
+    /**
+    *  
     Create an adaptor for {@link Cartographic} values.
     
     
@@ -277,6 +319,27 @@ public final class CesiumValuePropertyAdaptors {
             @Nonnull TFrom parent) {
         return new CesiumCartographicDegreesListValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Iterable<Cartographic>>() {
             public void invoke(TFrom writer, Iterable<Cartographic> value) {
+                writer.writeCartographicDegrees(value);
+            }
+        }, CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());
+    }
+
+    /**
+    *  
+    Create an adaptor for lists of lists of {@link Cartographic} values.
+    
+    
+    
+    
+
+    * @param <TFrom> The class that implements {@link ICesiumCartographicDegreesListOfListsValuePropertyWriter} to adapt.
+    * @param parent The instance to wrap.
+    * @return The new adaptor.
+    */
+    public static <TFrom extends ICesiumCartographicDegreesListOfListsValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumCartographicDegreesListOfListsValuePropertyAdaptor<TFrom> createCartographicDegreesListOfLists(
+            @Nonnull TFrom parent) {
+        return new CesiumCartographicDegreesListOfListsValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Iterable<? extends Iterable<Cartographic>>>() {
+            public void invoke(TFrom writer, Iterable<? extends Iterable<Cartographic>> value) {
                 writer.writeCartographicDegrees(value);
             }
         }, CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());
@@ -607,6 +670,27 @@ public final class CesiumValuePropertyAdaptors {
     public static <TFrom extends ICesiumReferenceListValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumReferenceListValuePropertyAdaptor<TFrom> createReferenceList(@Nonnull TFrom parent) {
         return new CesiumReferenceListValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Iterable<Reference>>() {
             public void invoke(TFrom writer, Iterable<Reference> value) {
+                writer.writeReferences(value);
+            }
+        }, CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());
+    }
+
+    /**
+    *  
+    Create an adaptor for lists of lists of {@link Reference} values.
+    
+    
+    
+    
+
+    * @param <TFrom> The class that implements {@link ICesiumReferenceListOfListsValuePropertyWriter} to adapt.
+    * @param parent The instance to wrap.
+    * @return The new adaptor.
+    */
+    public static <TFrom extends ICesiumReferenceListOfListsValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumReferenceListOfListsValuePropertyAdaptor<TFrom> createReferenceListOfLists(
+            @Nonnull TFrom parent) {
+        return new CesiumReferenceListOfListsValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Iterable<? extends Iterable<? extends Reference>>>() {
+            public void invoke(TFrom writer, Iterable<? extends Iterable<? extends Reference>> value) {
                 writer.writeReferences(value);
             }
         }, CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());
