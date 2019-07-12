@@ -29,7 +29,7 @@ public class CesiumShadowModeValuePropertyAdaptor<TFrom extends ICesiumShadowMod
     
 
     * @param parent The instance to wrap.
-    * @param writeValueCallback The callback to write values of type {@link CesiumArcType}.
+    * @param writeValueCallback The callback to write values of type {@link CesiumShadowMode}.
     * @param writeDeleteValueCallback The callback to write an indication that the client should delete existing data.
     */
     public CesiumShadowModeValuePropertyAdaptor(@Nonnull TFrom parent, @Nonnull CesiumWriterAdaptorWriteCallback<TFrom, CesiumShadowMode> writeValueCallback,

@@ -2,7 +2,7 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Values/ClassificationTypeValue.json",
     "title": "ClassificationType",
-    "description": "Whether a classification affects terrain, 3D Tiles or both.",
+    "description": "Whether a classification affects terrain, 3D Tiles, or both.",
     "type": "string",
     "czmlValue": true,
     "oneOf": [

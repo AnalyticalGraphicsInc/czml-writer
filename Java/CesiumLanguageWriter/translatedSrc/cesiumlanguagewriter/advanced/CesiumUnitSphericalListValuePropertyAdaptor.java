@@ -29,7 +29,7 @@ public class CesiumUnitSphericalListValuePropertyAdaptor<TFrom extends ICesiumUn
     
 
     * @param parent The instance to wrap.
-    * @param writeValueCallback The callback to write a list of {@link UnitSpherical} values..
+    * @param writeValueCallback The callback to write a list of {@link UnitSpherical} values.
     * @param writeDeleteValueCallback The callback to write an indication that the client should delete existing data.
     */
     public CesiumUnitSphericalListValuePropertyAdaptor(@Nonnull TFrom parent, @Nonnull CesiumWriterAdaptorWriteCallback<TFrom, Iterable<UnitSpherical>> writeValueCallback,

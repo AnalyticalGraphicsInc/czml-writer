@@ -29,7 +29,7 @@ public class CesiumCornerTypeValuePropertyAdaptor<TFrom extends ICesiumCornerTyp
     
 
     * @param parent The instance to wrap.
-    * @param writeValueCallback The callback to write values of type {@link CesiumArcType}.
+    * @param writeValueCallback The callback to write values of type {@link CesiumCornerType}.
     * @param writeDeleteValueCallback The callback to write an indication that the client should delete existing data.
     */
     public CesiumCornerTypeValuePropertyAdaptor(@Nonnull TFrom parent, @Nonnull CesiumWriterAdaptorWriteCallback<TFrom, CesiumCornerType> writeValueCallback,

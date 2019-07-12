@@ -2,7 +2,7 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/ClassificationType.json",
     "title": "ClassificationType",
-    "description": "Whether a classification affects terrain, 3D Tiles or both.",
+    "description": "Whether a classification affects terrain, 3D Tiles, or both.",
     "allOf": [
         { "$ref": "DeletableProperty.json" },
         { "$ref": "ValueProperties/ClassificationTypeValueProperty.json" },
@@ -19,7 +19,7 @@
     "properties": {
         "classificationType": {
             "$ref": "Values/ClassificationTypeValue.json",
-            "description": "The classification type, which indicates whether a classification affects terrain, 3D Tiles or both."
+            "description": "The classification type, which indicates whether a classification affects terrain, 3D Tiles, or both."
         },
         "reference": {
             "$ref": "Values/ReferenceValue.json",

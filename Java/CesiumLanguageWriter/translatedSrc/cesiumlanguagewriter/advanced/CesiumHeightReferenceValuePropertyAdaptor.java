@@ -29,7 +29,7 @@ public class CesiumHeightReferenceValuePropertyAdaptor<TFrom extends ICesiumHeig
     
 
     * @param parent The instance to wrap.
-    * @param writeValueCallback The callback to write values of type {@link CesiumArcType}.
+    * @param writeValueCallback The callback to write values of type {@link CesiumHeightReference}.
     * @param writeDeleteValueCallback The callback to write an indication that the client should delete existing data.
     */
     public CesiumHeightReferenceValuePropertyAdaptor(@Nonnull TFrom parent, @Nonnull CesiumWriterAdaptorWriteCallback<TFrom, CesiumHeightReference> writeValueCallback,

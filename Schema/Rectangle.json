@@ -85,7 +85,7 @@
         },
         "classificationType": {
             "$ref": "ClassificationType.json",
-            "description": "Whether a classification affects terrain, 3D Tiles or both.",
+            "description": "Whether a classification affects terrain, 3D Tiles, or both.",
             "default": "BOTH"
         },
         "zIndex": {

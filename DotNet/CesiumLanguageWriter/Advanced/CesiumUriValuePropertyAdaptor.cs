@@ -14,7 +14,7 @@ namespace CesiumLanguageWriter.Advanced
         /// Initializes a new instance.
         /// </summary>
         /// <param name="parent">The instance to wrap.</param>
-        /// <param name="writeValueCallback">The callback to write values of type <see cref="CesiumArcType"/>.</param>
+        /// <param name="writeValueCallback">The callback to write values of type <see cref="CesiumResource"/>.</param>
         /// <param name="writeDeleteValueCallback">The callback to write an indication that the client should delete existing data.</param>
         public CesiumUriValuePropertyAdaptor([NotNull] TFrom parent,
                                              [NotNull] CesiumWriterAdaptorWriteCallback<TFrom, CesiumResource> writeValueCallback,

@@ -29,7 +29,7 @@ public class CesiumUriValuePropertyAdaptor<TFrom extends ICesiumUriValueProperty
     
 
     * @param parent The instance to wrap.
-    * @param writeValueCallback The callback to write values of type {@link CesiumArcType}.
+    * @param writeValueCallback The callback to write values of type {@link CesiumResource}.
     * @param writeDeleteValueCallback The callback to write an indication that the client should delete existing data.
     */
     public CesiumUriValuePropertyAdaptor(@Nonnull TFrom parent, @Nonnull CesiumWriterAdaptorWriteCallback<TFrom, CesiumResource> writeValueCallback,

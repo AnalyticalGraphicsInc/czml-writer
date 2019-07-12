@@ -10,7 +10,7 @@ using JetBrains.Annotations;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Writes a <c>ClassificationType</c> to a <see cref="CesiumOutputStream"/>. A <c>ClassificationType</c> is whether a classification affects terrain, 3D Tiles or both.
+    /// Writes a <c>ClassificationType</c> to a <see cref="CesiumOutputStream"/>. A <c>ClassificationType</c> is whether a classification affects terrain, 3D Tiles, or both.
     /// </summary>
     public class ClassificationTypeCesiumWriter : CesiumPropertyWriter<ClassificationTypeCesiumWriter>, ICesiumDeletablePropertyWriter, ICesiumClassificationTypeValuePropertyWriter, ICesiumReferenceValuePropertyWriter
     {
@@ -61,7 +61,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes the value expressed as a <c>classificationType</c>, which is the classification type, which indicates whether a classification affects terrain, 3D Tiles or both.
+        /// Writes the value expressed as a <c>classificationType</c>, which is the classification type, which indicates whether a classification affects terrain, 3D Tiles, or both.
         /// </summary>
         /// <param name="value">The classification type.</param>
         public void WriteClassificationType(CesiumClassificationType value)

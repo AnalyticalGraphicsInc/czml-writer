@@ -3033,7 +3033,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
     }
 
     /**
-    *  Gets the writer for the {@code classificationType} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code classificationType} property defines whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+    *  Gets the writer for the {@code classificationType} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code classificationType} property defines whether a classification affects terrain, 3D Tiles, or both. If not specified, the default value is BOTH.
     
 
     */
@@ -3044,7 +3044,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Opens and returns the writer for the {@code classificationType} property. The {@code classificationType} property defines whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+    Opens and returns the writer for the {@code classificationType} property. The {@code classificationType} property defines whether a classification affects terrain, 3D Tiles, or both. If not specified, the default value is BOTH.
     
 
     */
@@ -3056,7 +3056,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code classificationType} property as a {@code classificationType} value. The {@code classificationType} property specifies whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+    Writes a value for the {@code classificationType} property as a {@code classificationType} value. The {@code classificationType} property specifies whether a classification affects terrain, 3D Tiles, or both. If not specified, the default value is BOTH.
     
     
 
@@ -3075,7 +3075,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code classificationType} property as a {@code reference} value. The {@code classificationType} property specifies whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+    Writes a value for the {@code classificationType} property as a {@code reference} value. The {@code classificationType} property specifies whether a classification affects terrain, 3D Tiles, or both. If not specified, the default value is BOTH.
     
     
 
@@ -3094,7 +3094,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code classificationType} property as a {@code reference} value. The {@code classificationType} property specifies whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+    Writes a value for the {@code classificationType} property as a {@code reference} value. The {@code classificationType} property specifies whether a classification affects terrain, 3D Tiles, or both. If not specified, the default value is BOTH.
     
     
 
@@ -3113,7 +3113,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code classificationType} property as a {@code reference} value. The {@code classificationType} property specifies whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+    Writes a value for the {@code classificationType} property as a {@code reference} value. The {@code classificationType} property specifies whether a classification affects terrain, 3D Tiles, or both. If not specified, the default value is BOTH.
     
     
     
@@ -3134,7 +3134,7 @@ public class EllipseCesiumWriter extends CesiumPropertyWriter<EllipseCesiumWrite
 
     /**
     *  
-    Writes a value for the {@code classificationType} property as a {@code reference} value. The {@code classificationType} property specifies whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+    Writes a value for the {@code classificationType} property as a {@code reference} value. The {@code classificationType} property specifies whether a classification affects terrain, 3D Tiles, or both. If not specified, the default value is BOTH.
     
     
     

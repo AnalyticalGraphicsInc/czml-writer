@@ -9,7 +9,7 @@ import javax.annotation.Nonnull;
 
 /**
  *  
- Writes a {@code ClassificationType} to a {@link CesiumOutputStream}. A {@code ClassificationType} is whether a classification affects terrain, 3D Tiles or both.
+ Writes a {@code ClassificationType} to a {@link CesiumOutputStream}. A {@code ClassificationType} is whether a classification affects terrain, 3D Tiles, or both.
  
 
  */
@@ -88,7 +88,7 @@ public class ClassificationTypeCesiumWriter extends CesiumPropertyWriter<Classif
 
     /**
     *  
-    Writes the value expressed as a {@code classificationType}, which is the classification type, which indicates whether a classification affects terrain, 3D Tiles or both.
+    Writes the value expressed as a {@code classificationType}, which is the classification type, which indicates whether a classification affects terrain, 3D Tiles, or both.
     
     
 

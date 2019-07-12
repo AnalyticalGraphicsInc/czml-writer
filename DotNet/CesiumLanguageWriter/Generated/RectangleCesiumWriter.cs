@@ -1789,7 +1789,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>classificationType</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>classificationType</c> property defines whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+        /// Gets the writer for the <c>classificationType</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>classificationType</c> property defines whether a classification affects terrain, 3D Tiles, or both. If not specified, the default value is BOTH.
         /// </summary>
         [NotNull]
         public ClassificationTypeCesiumWriter ClassificationTypeWriter
@@ -1798,7 +1798,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>classificationType</c> property. The <c>classificationType</c> property defines whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+        /// Opens and returns the writer for the <c>classificationType</c> property. The <c>classificationType</c> property defines whether a classification affects terrain, 3D Tiles, or both. If not specified, the default value is BOTH.
         /// </summary>
         [NotNull]
         public ClassificationTypeCesiumWriter OpenClassificationTypeProperty()
@@ -1808,7 +1808,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>classificationType</c> property as a <c>classificationType</c> value. The <c>classificationType</c> property specifies whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+        /// Writes a value for the <c>classificationType</c> property as a <c>classificationType</c> value. The <c>classificationType</c> property specifies whether a classification affects terrain, 3D Tiles, or both. If not specified, the default value is BOTH.
         /// </summary>
         /// <param name="value">The classification type.</param>
         public void WriteClassificationTypeProperty(CesiumClassificationType value)
@@ -1820,7 +1820,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>classificationType</c> property as a <c>reference</c> value. The <c>classificationType</c> property specifies whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+        /// Writes a value for the <c>classificationType</c> property as a <c>reference</c> value. The <c>classificationType</c> property specifies whether a classification affects terrain, 3D Tiles, or both. If not specified, the default value is BOTH.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteClassificationTypePropertyReference(Reference value)
@@ -1832,7 +1832,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>classificationType</c> property as a <c>reference</c> value. The <c>classificationType</c> property specifies whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+        /// Writes a value for the <c>classificationType</c> property as a <c>reference</c> value. The <c>classificationType</c> property specifies whether a classification affects terrain, 3D Tiles, or both. If not specified, the default value is BOTH.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteClassificationTypePropertyReference(string value)
@@ -1844,7 +1844,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>classificationType</c> property as a <c>reference</c> value. The <c>classificationType</c> property specifies whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+        /// Writes a value for the <c>classificationType</c> property as a <c>reference</c> value. The <c>classificationType</c> property specifies whether a classification affects terrain, 3D Tiles, or both. If not specified, the default value is BOTH.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -1857,7 +1857,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>classificationType</c> property as a <c>reference</c> value. The <c>classificationType</c> property specifies whether a classification affects terrain, 3D Tiles or both. If not specified, the default value is BOTH.
+        /// Writes a value for the <c>classificationType</c> property as a <c>reference</c> value. The <c>classificationType</c> property specifies whether a classification affects terrain, 3D Tiles, or both. If not specified, the default value is BOTH.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
