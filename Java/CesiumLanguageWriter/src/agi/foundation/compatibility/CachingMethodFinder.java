@@ -48,7 +48,7 @@ class CachingMethodFinder {
      * finds an "invoke" method directly on a delegate-like object (either Delegate or
      * DelegateInvocation)
      */
-    public CachingMethodFinder(Object delegateObject) {
+    public CachingMethodFinder(@Nonnull Object delegateObject) {
         this.delegateObject = delegateObject;
         this.targetObject = null;
         this.targetClass = null;
@@ -81,21 +81,29 @@ class CachingMethodFinder {
     /**
      * Find the method referred to and memoize the result.
      */
+    @Nonnull
     public Method findMethod() {
-        if (cachedMethod == null) {
-            if (delegateObject != null) {
-                cacheMethod("invoke", delegateObject.getClass(), delegateObjectSearchCriteria);
-            } else if (targetObject != null) {
-                // if we have a target object, then we are a delegate to an
-                // instance method on that object
-                cacheMethod(methodName, targetObject.getClass(), instanceMethodSearchCriteria);
-            } else if (targetClass != null) {
-                // if we have a target class, then we are a delegate to an
-                // static method on that class
-                cacheMethod(methodName, targetClass, staticMethodSearchCriteria);
-            }
+        if (cachedMethod != null) {
+            return cachedMethod;
         }
-        return cachedMethod;
+
+        if (delegateObject != null) {
+            cacheMethod("invoke", delegateObject.getClass(), delegateObjectSearchCriteria);
+        } else if (targetObject != null) {
+            // if we have a target object, then we are a delegate to an
+            // instance method on that object
+            cacheMethod(methodName, targetObject.getClass(), instanceMethodSearchCriteria);
+        } else if (targetClass != null) {
+            // if we have a target class, then we are a delegate to an
+            // static method on that class
+            cacheMethod(methodName, targetClass, staticMethodSearchCriteria);
+        }
+
+        if (cachedMethod != null) {
+            return cachedMethod;
+        }
+
+        throw new RuntimeException("Unable to find method for delegate: " + methodName);
     }
 
     private void cacheMethod(String name, Class<?> classToSearch, EnumSet<SearchCriteria> searchCriteria) {

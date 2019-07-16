@@ -10,6 +10,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Defines how DateTime values are formatted and displayed, depending on the culture.
@@ -21,6 +22,7 @@ import javax.annotation.Nonnull;
 public final class DateTimeFormatInfo {
     @Nonnull
     private static final Map<Locale, DateFormats> s_dateFormatsByLocale;
+    @Nonnull
     private final DateFormats m_dateFormats;
     private final String[] m_amPmStrings;
     private final String[] m_shortWeekdays;
@@ -46,11 +48,12 @@ public final class DateTimeFormatInfo {
 
         DateFormats enUS = new DateFormats(invariant);
         enUS.setShortDatePattern("M/d/yyyy");
-        enUS.setLongDatePattern("dddd, MMMM dd, yyyy");
-        enUS.setFullDateTimePattern("dddd, MMMM dd, yyyy h:mm:ss tt");
+        enUS.setLongDatePattern("dddd, MMMM d, yyyy");
+        enUS.setFullDateTimePattern("dddd, MMMM d, yyyy h:mm:ss tt");
+        enUS.setMonthDayPattern("MMMM d");
         enUS.setShortTimePattern("h:mm tt");
         enUS.setLongTimePattern("h:mm:ss tt");
-        enUS.setYearMonthPattern("MMMM, yyyy");
+        enUS.setYearMonthPattern("MMMM yyyy");
         s_dateFormatsByLocale.put(CultureInfoHelper.getCultureInfo("en-US"), enUS);
     }
 
@@ -59,6 +62,7 @@ public final class DateTimeFormatInfo {
         if (dateFormats == null)
             dateFormats = s_dateFormatsByLocale.get(CultureInfoHelper.getInvariantCulture());
 
+        assert dateFormats != null;
         m_dateFormats = dateFormats;
         m_amPmStrings = dateFormatSymbols.getAmPmStrings();
         m_shortWeekdays = dateFormatSymbols.getShortWeekdays();
@@ -88,83 +92,93 @@ public final class DateTimeFormatInfo {
             this.defaults = defaults;
         }
 
+        @Nonnull
         public String getFullDateTimePattern() {
             return fullDateTime != null ? fullDateTime : defaults.getFullDateTimePattern();
         }
 
+        @Nonnull
         public String getLongDatePattern() {
             return longDate != null ? longDate : defaults.getLongDatePattern();
         }
 
+        @Nonnull
         public String getLongTimePattern() {
             return longTime != null ? longTime : defaults.getLongTimePattern();
         }
 
+        @Nonnull
         public String getMonthDayPattern() {
             return monthDay != null ? monthDay : defaults.getMonthDayPattern();
         }
 
+        @Nonnull
         public String getRFC1123Pattern() {
             return rfc1123 != null ? rfc1123 : defaults.getRFC1123Pattern();
         }
 
+        @Nonnull
         public String getShortDatePattern() {
             return shortDate != null ? shortDate : defaults.getShortDatePattern();
         }
 
+        @Nonnull
         public String getShortTimePattern() {
             return shortTime != null ? shortTime : defaults.getShortTimePattern();
         }
 
+        @Nonnull
         public String getSortableDateTimePattern() {
             return sortableDateTime != null ? sortableDateTime : defaults.getSortableDateTimePattern();
         }
 
+        @Nonnull
         public String getUniversalSortableDateTimePattern() {
             return universalSortableDateTime != null ? universalSortableDateTime : defaults.getUniversalSortableDateTimePattern();
         }
 
+        @Nonnull
         public String getYearMonthPattern() {
             return yearMonth != null ? yearMonth : defaults.getYearMonthPattern();
         }
 
-        public void setFullDateTimePattern(String fullDateTimePattern) {
+        public void setFullDateTimePattern(@Nonnull String fullDateTimePattern) {
             fullDateTime = fullDateTimePattern;
         }
 
-        public void setLongDatePattern(String longDatePattern) {
+        public void setLongDatePattern(@Nonnull String longDatePattern) {
             longDate = longDatePattern;
         }
 
-        public void setLongTimePattern(String longTimePattern) {
+        public void setLongTimePattern(@Nonnull String longTimePattern) {
             longTime = longTimePattern;
         }
 
-        public void setMonthDayPattern(String monthDayPattern) {
+        public void setMonthDayPattern(@Nonnull String monthDayPattern) {
             monthDay = monthDayPattern;
         }
 
-        public void setRFC1123Pattern(String rfc1123Pattern) {
+        public void setRFC1123Pattern(@Nonnull String rfc1123Pattern) {
             rfc1123 = rfc1123Pattern;
         }
 
-        public void setShortDatePattern(String shortDatePattern) {
+        public void setShortDatePattern(@Nonnull String shortDatePattern) {
             shortDate = shortDatePattern;
         }
 
-        public void setShortTimePattern(String shortTimePattern) {
+        public void setShortTimePattern(@Nonnull String shortTimePattern) {
             shortTime = shortTimePattern;
         }
 
-        public void setSortableDateTimePattern(String sortableDateTimePattern) {
+        public void setSortableDateTimePattern(@Nonnull String sortableDateTimePattern) {
             sortableDateTime = sortableDateTimePattern;
         }
 
-        public void setUniversalSortableDateTimePattern(String universalSortableDateTimePattern) {
+        public void setUniversalSortableDateTimePattern(@Nonnull String universalSortableDateTimePattern) {
             universalSortableDateTime = universalSortableDateTimePattern;
         }
 
-        public void setYearMonthPattern(String yearMonthPattern) {
+        public void setYearMonthPattern(@Nonnull String yearMonthPattern) {
             yearMonth = yearMonthPattern;
         }
     }
@@ -193,7 +207,8 @@ public final class DateTimeFormatInfo {
     /**
      * Returns the DateTimeFormatInfo associated with the specified Locale.
      */
-    public static DateTimeFormatInfo getInstance(Locale locale) {
+    @Nonnull
+    public static DateTimeFormatInfo getInstance(@Nullable Locale locale) {
         if (locale == null)
             locale = CultureInfoHelper.getCurrentCulture();
         return new DateTimeFormatInfo(locale, DateFormatSymbols.getInstance(locale));
@@ -203,6 +218,7 @@ public final class DateTimeFormatInfo {
      * Gets the default read-only DateTimeFormatInfo that is culture-independent
      * (invariant).
      */
+    @Nonnull
     public static DateTimeFormatInfo getInvariantInfo() {
         return getInstance(CultureInfoHelper.getInvariantCulture());
     }
@@ -343,42 +359,52 @@ public final class DateTimeFormatInfo {
         }
     }
 
+    @Nonnull
     public String getMonthDayPattern() {
         return m_dateFormats.getMonthDayPattern();
     }
 
+    @Nonnull
     public String getYearMonthPattern() {
         return m_dateFormats.getYearMonthPattern();
     }
 
+    @Nonnull
     public String getShortDatePattern() {
         return m_dateFormats.getShortDatePattern();
     }
 
+    @Nonnull
     public String getLongDatePattern() {
         return m_dateFormats.getLongDatePattern();
     }
 
+    @Nonnull
     public String getShortTimePattern() {
         return m_dateFormats.getShortTimePattern();
     }
 
+    @Nonnull
     public String getLongTimePattern() {
         return m_dateFormats.getLongTimePattern();
     }
 
+    @Nonnull
     public String getFullDateTimePattern() {
         return m_dateFormats.getFullDateTimePattern();
     }
 
+    @Nonnull
     public String getRFC1123Pattern() {
         return m_dateFormats.getRFC1123Pattern();
     }
 
+    @Nonnull
     public String getSortableDateTimePattern() {
         return m_dateFormats.getSortableDateTimePattern();
     }
 
+    @Nonnull
     public String getUniversalSortableDateTimePattern() {
         return m_dateFormats.getUniversalSortableDateTimePattern();
     }

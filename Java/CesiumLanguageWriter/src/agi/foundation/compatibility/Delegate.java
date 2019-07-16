@@ -101,6 +101,7 @@ public abstract class Delegate {
      *
      * @return An object describing the method represented by the delegate.
      */
+    @Nonnull
     public Method getMethod() {
         return methodFinder.findMethod();
     }

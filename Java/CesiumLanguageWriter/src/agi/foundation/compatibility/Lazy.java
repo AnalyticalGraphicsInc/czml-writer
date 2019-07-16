@@ -19,7 +19,7 @@ import agi.foundation.compatibility.annotations.Internal;
 @Deprecated
 public final class Lazy<T> {
     @Nonnull
-    private final Supplier<T> m_valueFactory;
+    private final Supplier<? extends T> m_valueFactory;
     @Nonnull
     private final Strategy<T> m_strategy;
 
@@ -111,7 +111,7 @@ public final class Lazy<T> {
      *            The delegate that is invoked to produce the lazily initialized value
      *            when it is needed.
      */
-    public Lazy(@Nonnull Supplier<T> valueFactory) {
+    public Lazy(@Nonnull Supplier<? extends T> valueFactory) {
         this(valueFactory, LazyThreadSafetyMode.EXECUTION_AND_PUBLICATION);
     }
 
@@ -126,7 +126,7 @@ public final class Lazy<T> {
      *            threads; {@code false} to make this instance usable by only one thread
      *            at a time.
      */
-    public Lazy(@Nonnull Supplier<T> valueFactory, boolean isThreadSafe) {
+    public Lazy(@Nonnull Supplier<? extends T> valueFactory, boolean isThreadSafe) {
         this(valueFactory, isThreadSafe ? LazyThreadSafetyMode.EXECUTION_AND_PUBLICATION : LazyThreadSafetyMode.NONE);
     }
 
@@ -140,7 +140,7 @@ public final class Lazy<T> {
      * @param mode
      *            The thread safety mode.
      */
-    public Lazy(@Nonnull Supplier<T> valueFactory, @Nonnull LazyThreadSafetyMode mode) {
+    public Lazy(@Nonnull Supplier<? extends T> valueFactory, @Nonnull LazyThreadSafetyMode mode) {
         ArgumentNullException.assertNonNull(valueFactory, "valueFactory");
 
         m_valueFactory = valueFactory;
