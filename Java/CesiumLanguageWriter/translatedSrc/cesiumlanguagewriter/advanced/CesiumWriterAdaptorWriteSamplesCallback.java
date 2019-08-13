@@ -100,6 +100,34 @@ public abstract class CesiumWriterAdaptorWriteSamplesCallback<TWrappedWriter ext
     }
 
     /**
+    * Create a delegate for the given interface. This can be used to create a delegate from a method reference to an instance method.
+    * @param f The function which will be invoked.
+    * @param targetObject The class instance on which the delegate will invoke the method.
+    * @param methodName The name of the instance method.
+    * @param methodParameterClasses The type of the parameters of the instance method.
+    * @return A new delegate that will invoke the given function.
+    */
+    @Nonnull
+    public static <TWrappedWriter extends ICesiumPropertyWriter & ICesiumInterpolatablePropertyWriter, TValue> CesiumWriterAdaptorWriteSamplesCallback<TWrappedWriter, TValue> of(
+            @Nonnull Function<TWrappedWriter, TValue> f, @Nonnull Object targetObject, @Nonnull String methodName, @Nonnull Class<?>... methodParameterClasses) {
+        return new FunctionImpl<TWrappedWriter, TValue>(f, targetObject, methodName, methodParameterClasses);
+    }
+
+    /**
+    * Create a delegate for the given interface. This can be used to create a delegate from a method reference to a static method.
+    * @param f The function which will be invoked.
+    * @param targetClass The class that defines the method.
+    * @param methodName The name of the static method.
+    * @param methodParameterClasses The type of the parameters of the static method.
+    * @return A new delegate that will invoke the given function.
+    */
+    @Nonnull
+    public static <TWrappedWriter extends ICesiumPropertyWriter & ICesiumInterpolatablePropertyWriter, TValue> CesiumWriterAdaptorWriteSamplesCallback<TWrappedWriter, TValue> of(
+            @Nonnull Function<TWrappedWriter, TValue> f, @Nonnull Class<?> targetClass, @Nonnull String methodName, @Nonnull Class<?>... methodParameterClasses) {
+        return new FunctionImpl<TWrappedWriter, TValue>(f, targetClass, methodName, methodParameterClasses);
+    }
+
+    /**
     * A functional interface for the containing delegate type.
     * @param <TWrappedWriter> The type of the wrapped writer.
     * @param <TValue> The type of the value to write.
@@ -134,6 +162,16 @@ public abstract class CesiumWriterAdaptorWriteSamplesCallback<TWrappedWriter ext
         private final Function<TWrappedWriter, TValue> f;
 
         public FunctionImpl(@Nonnull Function<TWrappedWriter, TValue> f) {
+            this.f = f;
+        }
+
+        public FunctionImpl(@Nonnull Function<TWrappedWriter, TValue> f, @Nonnull Object targetObject, @Nonnull String methodName, @Nonnull Class<?>... methodParameterClasses) {
+            super(targetObject, methodName, methodParameterClasses);
+            this.f = f;
+        }
+
+        public FunctionImpl(@Nonnull Function<TWrappedWriter, TValue> f, @Nonnull Class<?> targetClass, @Nonnull String methodName, @Nonnull Class<?>... methodParameterClasses) {
+            super(targetClass, methodName, methodParameterClasses);
             this.f = f;
         }
 

@@ -85,6 +85,44 @@ public abstract class Func1<TResult> extends Delegate implements Supplier<TResul
     }
 
     /**
+     * Create a delegate for the given interface. This can be used to create a delegate
+     * from a method reference to an instance method.
+     *
+     * @param f
+     *            The function which will be invoked.
+     * @param targetObject
+     *            The class instance on which the delegate will invoke the method.
+     * @param methodName
+     *            The name of the instance method.
+     * @param methodParameterClasses
+     *            The type of the parameters of the instance method.
+     * @return A new delegate that will invoke the given function.
+     */
+    @Nonnull
+    public static <TResult> Func1<TResult> of(@Nonnull Function<TResult> f, @Nonnull Object targetObject, @Nonnull String methodName, @Nonnull Class<?>... methodParameterClasses) {
+        return new FunctionImpl<>(f, targetObject, methodName, methodParameterClasses);
+    }
+
+    /**
+     * Create a delegate for the given interface. This can be used to create a delegate
+     * from a method reference to a static method.
+     *
+     * @param f
+     *            The function which will be invoked.
+     * @param targetClass
+     *            The class that defines the method.
+     * @param methodName
+     *            The name of the static method.
+     * @param methodParameterClasses
+     *            The type of the parameters of the static method.
+     * @return A new delegate that will invoke the given function.
+     */
+    @Nonnull
+    public static <TResult> Func1<TResult> of(@Nonnull Function<TResult> f, @Nonnull Class<?> targetClass, @Nonnull String methodName, @Nonnull Class<?>... methodParameterClasses) {
+        return new FunctionImpl<>(f, targetClass, methodName, methodParameterClasses);
+    }
+
+    /**
      * A functional interface for the containing delegate type.
      */
     @FunctionalInterface
@@ -103,6 +141,16 @@ public abstract class Func1<TResult> extends Delegate implements Supplier<TResul
         private final Function<TResult> f;
 
         public FunctionImpl(@Nonnull Function<TResult> f) {
+            this.f = f;
+        }
+
+        public FunctionImpl(@Nonnull Function<TResult> f, @Nonnull Object targetObject, @Nonnull String methodName, @Nonnull Class<?>... methodParameterClasses) {
+            super(targetObject, methodName, methodParameterClasses);
+            this.f = f;
+        }
+
+        public FunctionImpl(@Nonnull Function<TResult> f, @Nonnull Class<?> targetClass, @Nonnull String methodName, @Nonnull Class<?>... methodParameterClasses) {
+            super(targetClass, methodName, methodParameterClasses);
             this.f = f;
         }
 
