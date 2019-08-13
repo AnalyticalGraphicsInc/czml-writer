@@ -8,9 +8,9 @@ import java.text.Format;
 import java.text.MessageFormat;
 import java.text.NumberFormat;
 import java.text.ParsePosition;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.Objects;
-import java.util.concurrent.ConcurrentHashMap;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -23,10 +23,10 @@ import javax.annotation.Nullable;
 @Internal
 @Deprecated
 public final class FormatHelper {
-    @Nonnull
-    private static final ConcurrentHashMap<FormatCacheKey, Format> cache = new ConcurrentHashMap<>();
-
     private FormatHelper() {}
+
+    @Nonnull
+    private static final ThreadLocal<HashMap<FormatCacheKey, Format>> formatCache = ThreadLocal.withInitial(HashMap::new);
 
     /**
      * Custom Format subclass that splits a format string into separate parts for
@@ -310,25 +310,17 @@ public final class FormatHelper {
      */
     @Nonnull
     public static Format buildFormat(@Nullable Locale locale, @Nullable String pattern, int width) {
-        FormatCacheKey key = new FormatCacheKey(locale, pattern, width);
-        Format format = cache.get(key);
-        if (format == null) {
-            format = createFormat(locale, pattern, width);
-
-            Format existingFormat = cache.putIfAbsent(key, format);
-            if (existingFormat != null) {
-                format = existingFormat;
-            }
-        }
+        Format format = formatCache.get().computeIfAbsent(new FormatCacheKey(locale, pattern, width), FormatHelper::createFormat);
+        assert format != null;
         return format;
     }
 
     private static final class FormatCacheKey {
         @Nullable
-        private final Locale locale;
+        public final Locale locale;
         @Nullable
-        private final String pattern;
-        private final int width;
+        public final String pattern;
+        public final int width;
 
         public FormatCacheKey(@Nullable Locale locale, @Nullable String pattern, int width) {
             this.locale = locale;
@@ -351,6 +343,11 @@ public final class FormatHelper {
             FormatCacheKey other = (FormatCacheKey) obj;
             return Objects.equals(locale, other.locale) && Objects.equals(pattern, other.pattern) && width == other.width;
         }
+    }
+
+    @Nonnull
+    private static Format createFormat(@Nonnull FormatCacheKey key) {
+        return createFormat(key.locale, key.pattern, key.width);
     }
 
     @Nonnull
