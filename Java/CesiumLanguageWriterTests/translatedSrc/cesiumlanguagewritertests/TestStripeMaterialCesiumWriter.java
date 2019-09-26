@@ -28,13 +28,13 @@ public class TestStripeMaterialCesiumWriter extends TestCesiumPropertyWriter<Str
             final PacketCesiumWriter usingExpression_0 = (getPacket());
             try {
                 {
-                    cesiumlanguagewriter.PolylineCesiumWriter polyline = getPacket().openPolylineProperty();
+                    PolylineCesiumWriter polyline = getPacket().openPolylineProperty();
                     try {
                         {
-                            cesiumlanguagewriter.PolylineMaterialCesiumWriter material = polyline.openMaterialProperty();
+                            PolylineMaterialCesiumWriter material = polyline.openMaterialProperty();
                             try {
                                 {
-                                    cesiumlanguagewriter.StripeMaterialCesiumWriter stripeMaterial = material.openStripeProperty();
+                                    StripeMaterialCesiumWriter stripeMaterial = material.openStripeProperty();
                                     try {
                                         stripeMaterial.writeEvenColorProperty(Color.RED);
                                         stripeMaterial.writeOddColorProperty(Color.BLUE);

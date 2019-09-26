@@ -1705,7 +1705,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     
     */
     public GregorianDate(int year, int dayOfYear, int hour, int minute, double second) {
-        cesiumlanguagewriter.YearMonthDay yearMonthDay = new YearMonthDay(year, dayOfYear);
+        YearMonthDay yearMonthDay = new YearMonthDay(year, dayOfYear);
         if (!isValid(year, yearMonthDay.getMonth(), yearMonthDay.getDay(), hour, minute, second)) {
             throw new ArgumentException(CesiumLocalization.getHourMinuteSecondInvalidArgument());
         }

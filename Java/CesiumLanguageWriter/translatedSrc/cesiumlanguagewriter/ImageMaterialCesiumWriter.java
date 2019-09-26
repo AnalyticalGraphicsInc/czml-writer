@@ -147,7 +147,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     */
     public final void writeImageProperty(CesiumResource resource) {
         {
-            cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
+            UriCesiumWriter writer = openImageProperty();
             try {
                 writer.writeUri(resource);
             } finally {
@@ -168,7 +168,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     */
     public final void writeImageProperty(URI uri, @Nonnull CesiumResourceBehavior resourceBehavior) {
         {
-            cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
+            UriCesiumWriter writer = openImageProperty();
             try {
                 writer.writeUri(uri, resourceBehavior);
             } finally {
@@ -189,7 +189,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     */
     public final void writeImageProperty(String uri, @Nonnull CesiumResourceBehavior resourceBehavior) {
         {
-            cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
+            UriCesiumWriter writer = openImageProperty();
             try {
                 writer.writeUri(uri, resourceBehavior);
             } finally {
@@ -210,7 +210,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     */
     public final void writeImageProperty(URI uri, ICesiumUriResolver resolver) {
         {
-            cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
+            UriCesiumWriter writer = openImageProperty();
             try {
                 writer.writeUri(uri, resolver);
             } finally {
@@ -231,7 +231,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     */
     public final void writeImageProperty(String uri, ICesiumUriResolver resolver) {
         {
-            cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
+            UriCesiumWriter writer = openImageProperty();
             try {
                 writer.writeUri(uri, resolver);
             } finally {
@@ -250,7 +250,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     */
     public final void writeImageProperty(RenderedImage image) {
         {
-            cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
+            UriCesiumWriter writer = openImageProperty();
             try {
                 writer.writeUri(image);
             } finally {
@@ -271,7 +271,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     */
     public final void writeImageProperty(RenderedImage image, @Nonnull CesiumImageFormat imageFormat) {
         {
-            cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
+            UriCesiumWriter writer = openImageProperty();
             try {
                 writer.writeUri(image, imageFormat);
             } finally {
@@ -290,7 +290,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     */
     public final void writeImagePropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
+            UriCesiumWriter writer = openImageProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -309,7 +309,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     */
     public final void writeImagePropertyReference(String value) {
         {
-            cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
+            UriCesiumWriter writer = openImageProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -330,7 +330,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     */
     public final void writeImagePropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
+            UriCesiumWriter writer = openImageProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -351,7 +351,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     */
     public final void writeImagePropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
+            UriCesiumWriter writer = openImageProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -392,7 +392,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     */
     public final void writeRepeatProperty(@Nonnull Rectangular value) {
         {
-            cesiumlanguagewriter.RepeatCesiumWriter writer = openRepeatProperty();
+            RepeatCesiumWriter writer = openRepeatProperty();
             try {
                 writer.writeCartesian2(value);
             } finally {
@@ -413,7 +413,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     */
     public final void writeRepeatProperty(double x, double y) {
         {
-            cesiumlanguagewriter.RepeatCesiumWriter writer = openRepeatProperty();
+            RepeatCesiumWriter writer = openRepeatProperty();
             try {
                 writer.writeCartesian2(x, y);
             } finally {
@@ -434,7 +434,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     */
     public final void writeRepeatProperty(List<JulianDate> dates, List<Rectangular> values) {
         {
-            cesiumlanguagewriter.RepeatCesiumWriter writer = openRepeatProperty();
+            RepeatCesiumWriter writer = openRepeatProperty();
             try {
                 writer.writeCartesian2(dates, values);
             } finally {
@@ -459,7 +459,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     */
     public final void writeRepeatProperty(List<JulianDate> dates, List<Rectangular> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.RepeatCesiumWriter writer = openRepeatProperty();
+            RepeatCesiumWriter writer = openRepeatProperty();
             try {
                 writer.writeCartesian2(dates, values, startIndex, length);
             } finally {
@@ -478,7 +478,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     */
     public final void writeRepeatPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.RepeatCesiumWriter writer = openRepeatProperty();
+            RepeatCesiumWriter writer = openRepeatProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -497,7 +497,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     */
     public final void writeRepeatPropertyReference(String value) {
         {
-            cesiumlanguagewriter.RepeatCesiumWriter writer = openRepeatProperty();
+            RepeatCesiumWriter writer = openRepeatProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -518,7 +518,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     */
     public final void writeRepeatPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.RepeatCesiumWriter writer = openRepeatProperty();
+            RepeatCesiumWriter writer = openRepeatProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -539,7 +539,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     */
     public final void writeRepeatPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.RepeatCesiumWriter writer = openRepeatProperty();
+            RepeatCesiumWriter writer = openRepeatProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -580,7 +580,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     */
     public final void writeColorProperty(@Nonnull Color color) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgba(color);
             } finally {
@@ -605,7 +605,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     */
     public final void writeColorProperty(int red, int green, int blue, int alpha) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgba(red, green, blue, alpha);
             } finally {
@@ -626,7 +626,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     */
     public final void writeColorProperty(List<JulianDate> dates, List<Color> values) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgba(dates, values);
             } finally {
@@ -651,7 +651,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     */
     public final void writeColorProperty(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgba(dates, colors, startIndex, length);
             } finally {
@@ -670,7 +670,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     */
     public final void writeColorPropertyRgbaf(@Nonnull Color color) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgbaf(color);
             } finally {
@@ -695,7 +695,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     */
     public final void writeColorPropertyRgbaf(float red, float green, float blue, float alpha) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgbaf(red, green, blue, alpha);
             } finally {
@@ -716,7 +716,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     */
     public final void writeColorPropertyRgbaf(List<JulianDate> dates, List<Color> values) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgbaf(dates, values);
             } finally {
@@ -741,7 +741,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     */
     public final void writeColorPropertyRgbaf(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgbaf(dates, colors, startIndex, length);
             } finally {
@@ -760,7 +760,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     */
     public final void writeColorPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -779,7 +779,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     */
     public final void writeColorPropertyReference(String value) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -800,7 +800,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     */
     public final void writeColorPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -821,7 +821,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     */
     public final void writeColorPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -862,7 +862,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     */
     public final void writeTransparentProperty(boolean value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openTransparentProperty();
+            BooleanCesiumWriter writer = openTransparentProperty();
             try {
                 writer.writeBoolean(value);
             } finally {
@@ -881,7 +881,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     */
     public final void writeTransparentPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openTransparentProperty();
+            BooleanCesiumWriter writer = openTransparentProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -900,7 +900,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     */
     public final void writeTransparentPropertyReference(String value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openTransparentProperty();
+            BooleanCesiumWriter writer = openTransparentProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -921,7 +921,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     */
     public final void writeTransparentPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openTransparentProperty();
+            BooleanCesiumWriter writer = openTransparentProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -942,7 +942,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     */
     public final void writeTransparentPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openTransparentProperty();
+            BooleanCesiumWriter writer = openTransparentProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {

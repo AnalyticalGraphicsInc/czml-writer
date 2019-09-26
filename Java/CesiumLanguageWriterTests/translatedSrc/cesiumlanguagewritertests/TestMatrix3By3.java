@@ -205,7 +205,7 @@ public class TestMatrix3By3 {
                     1.0
             };
             values[i] = Double.NaN;
-            cesiumlanguagewriter.Matrix3By3 matrix = new Matrix3By3(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7], values[8]);
+            Matrix3By3 matrix = new Matrix3By3(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7], values[8]);
             Assert.assertTrue(matrix.getIsUndefined());
         }
     }
@@ -375,13 +375,13 @@ public class TestMatrix3By3 {
     */
     @Test
     public final void testMathOperators() {
-        cesiumlanguagewriter.Matrix3By3 matrix1 = new Matrix3By3(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0);
-        cesiumlanguagewriter.Matrix3By3 matrix2 = new Matrix3By3(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0);
+        Matrix3By3 matrix1 = new Matrix3By3(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0);
+        Matrix3By3 matrix2 = new Matrix3By3(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0);
         AssertHelper.assertEquals(Matrix3By3.getZero(), matrix1.subtract(matrix2));
         AssertHelper.assertEquals(Matrix3By3.getZero(), Matrix3By3.subtract(matrix1, matrix2));
         AssertHelper.assertEquals(Matrix3By3.multiply(matrix2, 2.0), matrix1.add(matrix2));
         AssertHelper.assertEquals(Matrix3By3.multiply(matrix2, 2.0), Matrix3By3.add(matrix1, matrix2));
-        cesiumlanguagewriter.Matrix3By3 expected = new Matrix3By3(30D, 36D, 42D, 66D, 81D, 96D, 102D, 126D, 150D);
+        Matrix3By3 expected = new Matrix3By3(30D, 36D, 42D, 66D, 81D, 96D, 102D, 126D, 150D);
         AssertHelper.assertEquals(expected, matrix1.multiply(matrix2));
         AssertHelper.assertEquals(expected, Matrix3By3.multiply(matrix1, matrix2));
     }
@@ -396,7 +396,7 @@ public class TestMatrix3By3 {
     public final void testMathOperatorsWithCartesian() {
         Matrix3By3 matrix = new Matrix3By3(1.0, 2.0, 4.0, 2.0, 3.0, 5.0, 4.0, 5.0, 6.0);
         Cartesian vector = new Cartesian(1D, 2D, 3D);
-        cesiumlanguagewriter.Cartesian expected = new Cartesian(17D, 23D, 32D);
+        Cartesian expected = new Cartesian(17D, 23D, 32D);
         AssertHelper.assertEquals(expected, matrix.multiply(vector));
         AssertHelper.assertEquals(expected, Matrix3By3.multiply(matrix, vector));
     }

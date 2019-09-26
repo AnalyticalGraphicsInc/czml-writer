@@ -70,7 +70,7 @@ public class TestBounds {
     public final void testConstructorThrowsWithUpperLessThanLower() {
         AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, new Action() {
             public void invoke() {
-                cesiumlanguagewriter.Bounds unused = new Bounds(1.0, -1.0);
+                Bounds unused = new Bounds(1.0, -1.0);
             }
         });
     }

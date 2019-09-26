@@ -29,10 +29,10 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
             final PacketCesiumWriter usingExpression_0 = (getPacket());
             try {
                 {
-                    cesiumlanguagewriter.BillboardCesiumWriter billboard = getPacket().openBillboardProperty();
+                    BillboardCesiumWriter billboard = getPacket().openBillboardProperty();
                     try {
                         {
-                            cesiumlanguagewriter.BillboardCesiumWriter interval = billboard.openInterval();
+                            BillboardCesiumWriter interval = billboard.openInterval();
                             try {
                                 interval.writeShowProperty(true);
                             } finally {
@@ -52,22 +52,22 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
 
     @Test
     public final void testShowPropertyInterval() {
-        cesiumlanguagewriter.JulianDate startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0D));
-        cesiumlanguagewriter.JulianDate stopDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 1, 0D));
+        JulianDate startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0D));
+        JulianDate stopDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 1, 0D));
         {
             final PacketCesiumWriter usingExpression_1 = (getPacket());
             try {
                 {
-                    cesiumlanguagewriter.BillboardCesiumWriter billboard = getPacket().openBillboardProperty();
+                    BillboardCesiumWriter billboard = getPacket().openBillboardProperty();
                     try {
                         {
-                            cesiumlanguagewriter.BooleanCesiumWriter show = billboard.openShowProperty();
+                            BooleanCesiumWriter show = billboard.openShowProperty();
                             try {
                                 {
-                                    cesiumlanguagewriter.CesiumIntervalListWriter<cesiumlanguagewriter.BooleanCesiumWriter> showIntervals = show.openMultipleIntervals();
+                                    CesiumIntervalListWriter<cesiumlanguagewriter.BooleanCesiumWriter> showIntervals = show.openMultipleIntervals();
                                     try {
                                         {
-                                            cesiumlanguagewriter.BooleanCesiumWriter interval = showIntervals.openInterval(startDate, startDate.addSeconds(1D));
+                                            BooleanCesiumWriter interval = showIntervals.openInterval(startDate, startDate.addSeconds(1D));
                                             try {
                                                 interval.writeBoolean(true);
                                             } finally {
@@ -75,7 +75,7 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
                                             }
                                         }
                                         {
-                                            cesiumlanguagewriter.BooleanCesiumWriter interval = showIntervals.openInterval(startDate.addSeconds(1D), startDate.addSeconds(2D));
+                                            BooleanCesiumWriter interval = showIntervals.openInterval(startDate.addSeconds(1D), startDate.addSeconds(2D));
                                             try {
                                                 interval.writeBoolean(false);
                                             } finally {
@@ -83,7 +83,7 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
                                             }
                                         }
                                         {
-                                            cesiumlanguagewriter.BooleanCesiumWriter interval = showIntervals.openInterval(startDate.addSeconds(2D), stopDate);
+                                            BooleanCesiumWriter interval = showIntervals.openInterval(startDate.addSeconds(2D), stopDate);
                                             try {
                                                 interval.writeBoolean(true);
                                             } finally {
@@ -119,10 +119,10 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
             final PacketCesiumWriter usingExpression_2 = (getPacket());
             try {
                 {
-                    cesiumlanguagewriter.BillboardCesiumWriter billboard = getPacket().openBillboardProperty();
+                    BillboardCesiumWriter billboard = getPacket().openBillboardProperty();
                     try {
                         {
-                            cesiumlanguagewriter.BillboardCesiumWriter interval = billboard.openInterval();
+                            BillboardCesiumWriter interval = billboard.openInterval();
                             try {
                                 interval.writeScaleByDistanceProperty(new NearFarScalar(100.0, 1.0, 200.0, 2.0));
                             } finally {
@@ -142,18 +142,18 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
 
     @Test
     public final void testScaleByDistancePropertySamples() {
-        cesiumlanguagewriter.JulianDate startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0D));
+        JulianDate startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0D));
         {
             final PacketCesiumWriter usingExpression_3 = (getPacket());
             try {
                 {
-                    cesiumlanguagewriter.BillboardCesiumWriter billboard = getPacket().openBillboardProperty();
+                    BillboardCesiumWriter billboard = getPacket().openBillboardProperty();
                     try {
                         {
-                            cesiumlanguagewriter.BillboardCesiumWriter interval = billboard.openInterval();
+                            BillboardCesiumWriter interval = billboard.openInterval();
                             try {
                                 {
-                                    cesiumlanguagewriter.NearFarScalarCesiumWriter scaleByDistance = interval.openScaleByDistanceProperty();
+                                    NearFarScalarCesiumWriter scaleByDistance = interval.openScaleByDistanceProperty();
                                     try {
                                         ArrayList<cesiumlanguagewriter.JulianDate> dates = new ArrayList<cesiumlanguagewriter.JulianDate>();
                                         ArrayList<cesiumlanguagewriter.NearFarScalar> values = new ArrayList<cesiumlanguagewriter.NearFarScalar>();
@@ -187,10 +187,10 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
             final PacketCesiumWriter usingExpression_4 = (getPacket());
             try {
                 {
-                    cesiumlanguagewriter.BillboardCesiumWriter billboard = getPacket().openBillboardProperty();
+                    BillboardCesiumWriter billboard = getPacket().openBillboardProperty();
                     try {
                         {
-                            cesiumlanguagewriter.AlignedAxisCesiumWriter alignedAxis = billboard.openAlignedAxisProperty();
+                            AlignedAxisCesiumWriter alignedAxis = billboard.openAlignedAxisProperty();
                             try {
                                 alignedAxis.writeDelete(true);
                             } finally {
@@ -214,10 +214,10 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
             final PacketCesiumWriter usingExpression_5 = (getPacket());
             try {
                 {
-                    cesiumlanguagewriter.BillboardCesiumWriter billboard = getPacket().openBillboardProperty();
+                    BillboardCesiumWriter billboard = getPacket().openBillboardProperty();
                     try {
                         {
-                            cesiumlanguagewriter.DoubleCesiumWriter scale = billboard.openScaleProperty();
+                            DoubleCesiumWriter scale = billboard.openScaleProperty();
                             try {
                                 scale.writeDelete(true);
                             } finally {

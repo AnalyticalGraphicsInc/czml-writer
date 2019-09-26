@@ -52,7 +52,7 @@ public class TestGregorianDate {
     public final void cannotConstructWithInvalidTime() {
         ArgumentException exception = AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, new Action() {
             public void invoke() {
-                cesiumlanguagewriter.GregorianDate unused = new GregorianDate(2000, 1, 2, 24, 0, 0D);
+                GregorianDate unused = new GregorianDate(2000, 1, 2, 24, 0, 0D);
             }
         });
         AssertHelper.assertStringContains("One or more of the hour, minute, and second arguments is outside of the acceptable range", exception.getMessage());
@@ -62,7 +62,7 @@ public class TestGregorianDate {
     public final void cannotConstructWithInvalidDate() {
         ArgumentException exception = AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, new Action() {
             public void invoke() {
-                cesiumlanguagewriter.GregorianDate unused = new GregorianDate(2006, 2, 29, 0, 0, 0D);
+                GregorianDate unused = new GregorianDate(2006, 2, 29, 0, 0, 0D);
             }
         });
         AssertHelper.assertStringContains("One or more of the hour, minute, and second arguments is outside of the acceptable range", exception.getMessage());
@@ -219,7 +219,7 @@ public class TestGregorianDate {
     public final void testToStringFormatProvider() {
         Locale cultureInfo = CultureInfoHelper.create("en-US");
         ZonedDateTime date = DateTimeHelper.create(2001, 1, 1, 6, 3, 14, ZoneOffset.UTC);
-        cesiumlanguagewriter.GregorianDate gregorianDate = new GregorianDate(date);
+        GregorianDate gregorianDate = new GregorianDate(date);
         Assert.assertEquals(DateTimeHelper.toString(date, cultureInfo), gregorianDate.toString(cultureInfo));
         date = DateTimeHelper.create(2003, 3, 4, 16, 43, 23, 234, ZoneOffset.UTC);
         gregorianDate = new GregorianDate(date);
@@ -372,7 +372,7 @@ public class TestGregorianDate {
     public final void cannotConstructGregorianDateRepresentingInvalidLeapSecond() {
         ArgumentException exception = AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, new Action() {
             public void invoke() {
-                cesiumlanguagewriter.GregorianDate unused = new GregorianDate(2008, 12, 30, 23, 59, 60D);
+                GregorianDate unused = new GregorianDate(2008, 12, 30, 23, 59, 60D);
             }
         });
         AssertHelper.assertStringContains("One or more of the hour, minute, and second arguments is outside of the acceptable range", exception.getMessage());

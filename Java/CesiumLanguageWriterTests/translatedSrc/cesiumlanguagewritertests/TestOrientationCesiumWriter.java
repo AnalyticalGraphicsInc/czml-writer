@@ -26,13 +26,13 @@ import org.junit.Test;
 public class TestOrientationCesiumWriter extends TestCesiumInterpolatablePropertyWriter<OrientationCesiumWriter> {
     @Test
     public final void testCompleteExample() {
-        cesiumlanguagewriter.JulianDate date = new JulianDate(2451545.0);
+        JulianDate date = new JulianDate(2451545.0);
         final String id = "MyID";
-        cesiumlanguagewriter.TimeInterval availability = new TimeInterval(date, date.addDays(2.0));
-        cesiumlanguagewriter.TimeInterval interval1 = new TimeInterval(date, date.addDays(1.0));
-        cesiumlanguagewriter.Cartesian interval1Position = new Cartesian(1.0, 2.0, 3.0);
-        cesiumlanguagewriter.UnitQuaternion interval1Orientation = new UnitQuaternion(1D, 0D, 0D, 0D);
-        cesiumlanguagewriter.TimeInterval interval2 = new TimeInterval(date.addDays(1.0), date.addDays(2.0));
+        TimeInterval availability = new TimeInterval(date, date.addDays(2.0));
+        TimeInterval interval1 = new TimeInterval(date, date.addDays(1.0));
+        Cartesian interval1Position = new Cartesian(1.0, 2.0, 3.0);
+        UnitQuaternion interval1Orientation = new UnitQuaternion(1D, 0D, 0D, 0D);
+        TimeInterval interval2 = new TimeInterval(date.addDays(1.0), date.addDays(2.0));
         final ArrayList<cesiumlanguagewriter.JulianDate> tempCollection$0 = new ArrayList<cesiumlanguagewriter.JulianDate>();
         tempCollection$0.add(date.addDays(1.0));
         tempCollection$0.add(date.addDays(1.5));
@@ -52,21 +52,21 @@ public class TestOrientationCesiumWriter extends TestCesiumInterpolatablePropert
         final int orientationInterpolationDegree = 1;
         final CesiumOutputStream tempObj$0 = new CesiumOutputStream(getStringWriter());
         tempObj$0.setPrettyFormatting(true);
-        cesiumlanguagewriter.CesiumOutputStream outputStream = tempObj$0;
-        cesiumlanguagewriter.CesiumStreamWriter writer = new CesiumStreamWriter();
+        CesiumOutputStream outputStream = tempObj$0;
+        CesiumStreamWriter writer = new CesiumStreamWriter();
         {
-            cesiumlanguagewriter.PacketCesiumWriter packet = writer.openPacket(outputStream);
+            PacketCesiumWriter packet = writer.openPacket(outputStream);
             try {
                 packet.writeId(id);
                 packet.writeAvailability(availability);
                 {
-                    cesiumlanguagewriter.PositionCesiumWriter positionWriter = packet.openPositionProperty();
+                    PositionCesiumWriter positionWriter = packet.openPositionProperty();
                     try {
                         {
-                            cesiumlanguagewriter.CesiumIntervalListWriter<cesiumlanguagewriter.PositionCesiumWriter> intervalListWriter = positionWriter.openMultipleIntervals();
+                            CesiumIntervalListWriter<cesiumlanguagewriter.PositionCesiumWriter> intervalListWriter = positionWriter.openMultipleIntervals();
                             try {
                                 {
-                                    cesiumlanguagewriter.PositionCesiumWriter interval = intervalListWriter.openInterval();
+                                    PositionCesiumWriter interval = intervalListWriter.openInterval();
                                     try {
                                         interval.writeInterval(interval1);
                                         interval.writeCartesian(interval1Position);
@@ -75,7 +75,7 @@ public class TestOrientationCesiumWriter extends TestCesiumInterpolatablePropert
                                     }
                                 }
                                 {
-                                    cesiumlanguagewriter.PositionCesiumWriter interval = intervalListWriter.openInterval(interval2.getStart(), interval2.getStop());
+                                    PositionCesiumWriter interval = intervalListWriter.openInterval(interval2.getStart(), interval2.getStop());
                                     try {
                                         interval.writeCartographicRadians(interval2SampleDates, interval2SamplePositions);
                                     } finally {
@@ -91,13 +91,13 @@ public class TestOrientationCesiumWriter extends TestCesiumInterpolatablePropert
                     }
                 }
                 {
-                    cesiumlanguagewriter.OrientationCesiumWriter orientationWriter = packet.openOrientationProperty();
+                    OrientationCesiumWriter orientationWriter = packet.openOrientationProperty();
                     try {
                         {
-                            cesiumlanguagewriter.CesiumIntervalListWriter<cesiumlanguagewriter.OrientationCesiumWriter> intervalListWriter = orientationWriter.openMultipleIntervals();
+                            CesiumIntervalListWriter<cesiumlanguagewriter.OrientationCesiumWriter> intervalListWriter = orientationWriter.openMultipleIntervals();
                             try {
                                 {
-                                    cesiumlanguagewriter.OrientationCesiumWriter interval = intervalListWriter.openInterval();
+                                    OrientationCesiumWriter interval = intervalListWriter.openInterval();
                                     try {
                                         interval.writeInterval(interval1);
                                         interval.writeUnitQuaternion(interval1Orientation);
@@ -106,7 +106,7 @@ public class TestOrientationCesiumWriter extends TestCesiumInterpolatablePropert
                                     }
                                 }
                                 {
-                                    cesiumlanguagewriter.OrientationCesiumWriter interval = intervalListWriter.openInterval(interval2.getStart(), interval2.getStop());
+                                    OrientationCesiumWriter interval = intervalListWriter.openInterval(interval2.getStart(), interval2.getStop());
                                     try {
                                         interval.writeInterpolationAlgorithm(orientationInterpolationAlgorithm);
                                         interval.writeInterpolationDegree(orientationInterpolationDegree);
@@ -132,17 +132,17 @@ public class TestOrientationCesiumWriter extends TestCesiumInterpolatablePropert
 
     @Test
     public final void testDeletePropertyWithStartAndStop() {
-        cesiumlanguagewriter.JulianDate start = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0D));
-        cesiumlanguagewriter.JulianDate stop = start.addDays(1.0);
+        JulianDate start = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0D));
+        JulianDate stop = start.addDays(1.0);
         {
             final PacketCesiumWriter usingExpression_0 = (getPacket());
             try {
                 getPacket().writeId("id");
                 {
-                    cesiumlanguagewriter.OrientationCesiumWriter orientation = getPacket().openOrientationProperty();
+                    OrientationCesiumWriter orientation = getPacket().openOrientationProperty();
                     try {
                         {
-                            cesiumlanguagewriter.OrientationCesiumWriter interval = orientation.openInterval(start, stop);
+                            OrientationCesiumWriter interval = orientation.openInterval(start, stop);
                             try {
                                 interval.writeDelete(true);
                             } finally {
@@ -167,10 +167,10 @@ public class TestOrientationCesiumWriter extends TestCesiumInterpolatablePropert
             try {
                 getPacket().writeId("id");
                 {
-                    cesiumlanguagewriter.OrientationCesiumWriter orientation = getPacket().openOrientationProperty();
+                    OrientationCesiumWriter orientation = getPacket().openOrientationProperty();
                     try {
                         {
-                            cesiumlanguagewriter.OrientationCesiumWriter interval = orientation.openInterval();
+                            OrientationCesiumWriter interval = orientation.openInterval();
                             try {
                                 interval.writeDelete(true);
                             } finally {

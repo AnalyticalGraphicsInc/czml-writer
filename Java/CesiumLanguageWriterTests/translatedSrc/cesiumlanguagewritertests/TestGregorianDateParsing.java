@@ -115,7 +115,7 @@ public class TestGregorianDateParsing {
     public final void testParseIso8601DayOfYearOutOfRange() {
         NumberFormatException exception = AssertHelper.<NumberFormatException> assertThrows(new TypeLiteral<NumberFormatException>() {}, new Action() {
             public void invoke() {
-                cesiumlanguagewriter.GregorianDate unused = GregorianDate.parse("1985-367T02:00:05.2134");
+                GregorianDate unused = GregorianDate.parse("1985-367T02:00:05.2134");
             }
         });
         AssertHelper.assertStringContains("was not recognized as a valid GregorianDate", exception.getMessage());
@@ -125,7 +125,7 @@ public class TestGregorianDateParsing {
     public final void testParseIso8601DayOfYearError() {
         NumberFormatException exception = AssertHelper.<NumberFormatException> assertThrows(new TypeLiteral<NumberFormatException>() {}, new Action() {
             public void invoke() {
-                cesiumlanguagewriter.GregorianDate unused = GregorianDate.parse("1985-12#T02:00:05.2134");
+                GregorianDate unused = GregorianDate.parse("1985-12#T02:00:05.2134");
             }
         });
         AssertHelper.assertStringContains("was not recognized as a valid GregorianDate", exception.getMessage());
@@ -135,7 +135,7 @@ public class TestGregorianDateParsing {
     public final void testParseIso8601YearOutOfRange() {
         NumberFormatException exception = AssertHelper.<NumberFormatException> assertThrows(new TypeLiteral<NumberFormatException>() {}, new Action() {
             public void invoke() {
-                cesiumlanguagewriter.GregorianDate unused = GregorianDate.parse("21985-167T02:00:05.2134");
+                GregorianDate unused = GregorianDate.parse("21985-167T02:00:05.2134");
             }
         });
         AssertHelper.assertStringContains("was not recognized as a valid GregorianDate", exception.getMessage());
@@ -157,7 +157,7 @@ public class TestGregorianDateParsing {
     public final void testParseIso8601InvalidDay() {
         NumberFormatException exception = AssertHelper.<NumberFormatException> assertThrows(new TypeLiteral<NumberFormatException>() {}, new Action() {
             public void invoke() {
-                cesiumlanguagewriter.GregorianDate unused = GregorianDate.parse("2009-02-30");
+                GregorianDate unused = GregorianDate.parse("2009-02-30");
             }
         });
         AssertHelper.assertStringContains("was not recognized as a valid GregorianDate", exception.getMessage());

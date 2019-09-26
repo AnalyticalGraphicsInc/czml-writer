@@ -31,10 +31,10 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
             final PacketCesiumWriter usingExpression_0 = (getPacket());
             try {
                 {
-                    cesiumlanguagewriter.PolygonCesiumWriter polygon = getPacket().openPolygonProperty();
+                    PolygonCesiumWriter polygon = getPacket().openPolygonProperty();
                     try {
                         {
-                            cesiumlanguagewriter.PolygonCesiumWriter interval = polygon.openInterval();
+                            PolygonCesiumWriter interval = polygon.openInterval();
                             try {
                                 interval.writeShowProperty(true);
                             } finally {
@@ -54,22 +54,22 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
 
     @Test
     public final void testShowPropertyInterval() {
-        cesiumlanguagewriter.JulianDate startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0D));
-        cesiumlanguagewriter.JulianDate stopDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 1, 0D));
+        JulianDate startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0D));
+        JulianDate stopDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 1, 0D));
         {
             final PacketCesiumWriter usingExpression_1 = (getPacket());
             try {
                 {
-                    cesiumlanguagewriter.PolygonCesiumWriter polygon = getPacket().openPolygonProperty();
+                    PolygonCesiumWriter polygon = getPacket().openPolygonProperty();
                     try {
                         {
-                            cesiumlanguagewriter.BooleanCesiumWriter show = polygon.openShowProperty();
+                            BooleanCesiumWriter show = polygon.openShowProperty();
                             try {
                                 {
-                                    cesiumlanguagewriter.CesiumIntervalListWriter<cesiumlanguagewriter.BooleanCesiumWriter> showIntervals = show.openMultipleIntervals();
+                                    CesiumIntervalListWriter<cesiumlanguagewriter.BooleanCesiumWriter> showIntervals = show.openMultipleIntervals();
                                     try {
                                         {
-                                            cesiumlanguagewriter.BooleanCesiumWriter interval = showIntervals.openInterval(startDate, startDate.addSeconds(1D));
+                                            BooleanCesiumWriter interval = showIntervals.openInterval(startDate, startDate.addSeconds(1D));
                                             try {
                                                 interval.writeBoolean(true);
                                             } finally {
@@ -77,7 +77,7 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
                                             }
                                         }
                                         {
-                                            cesiumlanguagewriter.BooleanCesiumWriter interval = showIntervals.openInterval(startDate.addSeconds(1D), startDate.addSeconds(2D));
+                                            BooleanCesiumWriter interval = showIntervals.openInterval(startDate.addSeconds(1D), startDate.addSeconds(2D));
                                             try {
                                                 interval.writeBoolean(false);
                                             } finally {
@@ -85,7 +85,7 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
                                             }
                                         }
                                         {
-                                            cesiumlanguagewriter.BooleanCesiumWriter interval = showIntervals.openInterval(startDate.addSeconds(2D), stopDate);
+                                            BooleanCesiumWriter interval = showIntervals.openInterval(startDate.addSeconds(2D), stopDate);
                                             try {
                                                 interval.writeBoolean(true);
                                             } finally {
@@ -121,10 +121,10 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
             final PacketCesiumWriter usingExpression_2 = (getPacket());
             try {
                 {
-                    cesiumlanguagewriter.PolygonCesiumWriter polygon = getPacket().openPolygonProperty();
+                    PolygonCesiumWriter polygon = getPacket().openPolygonProperty();
                     try {
                         {
-                            cesiumlanguagewriter.PositionListOfListsCesiumWriter holes = polygon.openHolesProperty();
+                            PositionListOfListsCesiumWriter holes = polygon.openHolesProperty();
                             try {
                                 final ArrayList<cesiumlanguagewriter.Cartographic> tempCollection$1 = new ArrayList<cesiumlanguagewriter.Cartographic>();
                                 tempCollection$1.add(new Cartographic(1D, 1D, 0D));
@@ -138,7 +138,7 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
                                 final ArrayList<ArrayList<Cartographic>> tempCollection$0 = new ArrayList<ArrayList<Cartographic>>();
                                 tempCollection$0.add(tempCollection$1);
                                 tempCollection$0.add(tempCollection$2);
-                                ArrayList<ArrayList<cesiumlanguagewriter.Cartographic>> listOfHoles = tempCollection$0;
+                                ArrayList<ArrayList<Cartographic>> listOfHoles = tempCollection$0;
                                 holes.writeCartographicDegrees(listOfHoles);
                             } finally {
                                 DisposeHelper.dispose(holes);
@@ -157,22 +157,22 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
 
     @Test
     public final void testHolesIntervals() {
-        cesiumlanguagewriter.JulianDate startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0D));
-        cesiumlanguagewriter.JulianDate stopDate = new JulianDate(new GregorianDate(2012, 4, 2, 13, 0, 0D));
+        JulianDate startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0D));
+        JulianDate stopDate = new JulianDate(new GregorianDate(2012, 4, 2, 13, 0, 0D));
         {
             final PacketCesiumWriter usingExpression_3 = (getPacket());
             try {
                 {
-                    cesiumlanguagewriter.PolygonCesiumWriter polygon = getPacket().openPolygonProperty();
+                    PolygonCesiumWriter polygon = getPacket().openPolygonProperty();
                     try {
                         {
-                            cesiumlanguagewriter.PositionListOfListsCesiumWriter holes = polygon.openHolesProperty();
+                            PositionListOfListsCesiumWriter holes = polygon.openHolesProperty();
                             try {
                                 {
-                                    cesiumlanguagewriter.CesiumIntervalListWriter<cesiumlanguagewriter.PositionListOfListsCesiumWriter> holesIntervals = holes.openMultipleIntervals();
+                                    CesiumIntervalListWriter<cesiumlanguagewriter.PositionListOfListsCesiumWriter> holesIntervals = holes.openMultipleIntervals();
                                     try {
                                         {
-                                            cesiumlanguagewriter.PositionListOfListsCesiumWriter interval = holesIntervals.openInterval(startDate, startDate.addSeconds(60 * 30));
+                                            PositionListOfListsCesiumWriter interval = holesIntervals.openInterval(startDate, startDate.addSeconds(60 * 30));
                                             try {
                                                 final ArrayList<cesiumlanguagewriter.Cartographic> tempCollection$4 = new ArrayList<cesiumlanguagewriter.Cartographic>();
                                                 tempCollection$4.add(new Cartographic(1D, 1D, 0D));
@@ -186,14 +186,14 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
                                                 final ArrayList<ArrayList<Cartographic>> tempCollection$3 = new ArrayList<ArrayList<Cartographic>>();
                                                 tempCollection$3.add(tempCollection$4);
                                                 tempCollection$3.add(tempCollection$5);
-                                                ArrayList<ArrayList<cesiumlanguagewriter.Cartographic>> listOfHoles = tempCollection$3;
+                                                ArrayList<ArrayList<Cartographic>> listOfHoles = tempCollection$3;
                                                 interval.writeCartographicDegrees(listOfHoles);
                                             } finally {
                                                 DisposeHelper.dispose(interval);
                                             }
                                         }
                                         {
-                                            cesiumlanguagewriter.PositionListOfListsCesiumWriter interval = holesIntervals.openInterval(startDate.addSeconds(60 * 30), stopDate);
+                                            PositionListOfListsCesiumWriter interval = holesIntervals.openInterval(startDate.addSeconds(60 * 30), stopDate);
                                             try {
                                                 final ArrayList<cesiumlanguagewriter.Cartographic> tempCollection$7 = new ArrayList<cesiumlanguagewriter.Cartographic>();
                                                 tempCollection$7.add(new Cartographic(11D, 1D, 0D));
@@ -207,7 +207,7 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
                                                 final ArrayList<ArrayList<Cartographic>> tempCollection$6 = new ArrayList<ArrayList<Cartographic>>();
                                                 tempCollection$6.add(tempCollection$7);
                                                 tempCollection$6.add(tempCollection$8);
-                                                ArrayList<ArrayList<cesiumlanguagewriter.Cartographic>> listOfHoles = tempCollection$6;
+                                                ArrayList<ArrayList<Cartographic>> listOfHoles = tempCollection$6;
                                                 interval.writeCartographicDegrees(listOfHoles);
                                             } finally {
                                                 DisposeHelper.dispose(interval);
@@ -237,17 +237,17 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
     public final void testExample() {
         final CesiumOutputStream tempObj$0 = new CesiumOutputStream(getStringWriter());
         tempObj$0.setPrettyFormatting(true);
-        cesiumlanguagewriter.CesiumOutputStream outputStream = tempObj$0;
-        cesiumlanguagewriter.CesiumStreamWriter writer = new CesiumStreamWriter();
+        CesiumOutputStream outputStream = tempObj$0;
+        CesiumStreamWriter writer = new CesiumStreamWriter();
         {
-            cesiumlanguagewriter.PacketCesiumWriter packet = writer.openPacket(outputStream);
+            PacketCesiumWriter packet = writer.openPacket(outputStream);
             try {
                 packet.writeId("examplePolygon");
                 {
-                    cesiumlanguagewriter.PolygonCesiumWriter polygon = packet.openPolygonProperty();
+                    PolygonCesiumWriter polygon = packet.openPolygonProperty();
                     try {
                         {
-                            cesiumlanguagewriter.PositionListCesiumWriter positions = polygon.openPositionsProperty();
+                            PositionListCesiumWriter positions = polygon.openPositionsProperty();
                             try {
                                 final ArrayList<cesiumlanguagewriter.Cartographic> tempCollection$9 = new ArrayList<cesiumlanguagewriter.Cartographic>();
                                 tempCollection$9.add(new Cartographic(0D, 0D, 0D));
@@ -261,7 +261,7 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
                             }
                         }
                         {
-                            cesiumlanguagewriter.PositionListOfListsCesiumWriter holes = polygon.openHolesProperty();
+                            PositionListOfListsCesiumWriter holes = polygon.openHolesProperty();
                             try {
                                 final ArrayList<cesiumlanguagewriter.Cartographic> tempCollection$11 = new ArrayList<cesiumlanguagewriter.Cartographic>();
                                 tempCollection$11.add(new Cartographic(1D, 1D, 0D));
@@ -275,17 +275,17 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
                                 final ArrayList<ArrayList<Cartographic>> tempCollection$10 = new ArrayList<ArrayList<Cartographic>>();
                                 tempCollection$10.add(tempCollection$11);
                                 tempCollection$10.add(tempCollection$12);
-                                ArrayList<ArrayList<cesiumlanguagewriter.Cartographic>> listOfHoles = tempCollection$10;
+                                ArrayList<ArrayList<Cartographic>> listOfHoles = tempCollection$10;
                                 holes.writeCartographicDegrees(listOfHoles);
                             } finally {
                                 DisposeHelper.dispose(holes);
                             }
                         }
                         {
-                            cesiumlanguagewriter.MaterialCesiumWriter material = polygon.openMaterialProperty();
+                            MaterialCesiumWriter material = polygon.openMaterialProperty();
                             try {
                                 {
-                                    cesiumlanguagewriter.SolidColorMaterialCesiumWriter solidColor = material.openSolidColorProperty();
+                                    SolidColorMaterialCesiumWriter solidColor = material.openSolidColorProperty();
                                     try {
                                         solidColor.writeColorProperty(Color.RED);
                                     } finally {

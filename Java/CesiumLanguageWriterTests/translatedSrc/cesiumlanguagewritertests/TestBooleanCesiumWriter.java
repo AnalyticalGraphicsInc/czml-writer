@@ -27,7 +27,7 @@ public class TestBooleanCesiumWriter extends TestCesiumPropertyWriter<BooleanCes
             final PacketCesiumWriter usingExpression_0 = (getPacket());
             try {
                 {
-                    cesiumlanguagewriter.BooleanCesiumWriter writer = new BooleanCesiumWriter("foo");
+                    BooleanCesiumWriter writer = new BooleanCesiumWriter("foo");
                     try {
                         writer.open(getOutputStream());
                         writer.writeBoolean(false);
@@ -44,12 +44,12 @@ public class TestBooleanCesiumWriter extends TestCesiumPropertyWriter<BooleanCes
 
     @Test
     public final void booleanCanBeWrittenInsideInterval() {
-        cesiumlanguagewriter.JulianDate startDate = new GregorianDate(2012, 6, 7, 12, 0, 0D).toJulianDate();
+        JulianDate startDate = new GregorianDate(2012, 6, 7, 12, 0, 0D).toJulianDate();
         {
             final PacketCesiumWriter usingExpression_1 = (getPacket());
             try {
                 {
-                    cesiumlanguagewriter.BooleanCesiumWriter writer = new BooleanCesiumWriter("foo");
+                    BooleanCesiumWriter writer = new BooleanCesiumWriter("foo");
                     try {
                         writer.open(getOutputStream());
                         writer.writeInterval(startDate, startDate.addSeconds(100.0));
@@ -67,14 +67,14 @@ public class TestBooleanCesiumWriter extends TestCesiumPropertyWriter<BooleanCes
 
     @Test
     public final void testDeletePropertyWithStartAndStop() {
-        cesiumlanguagewriter.JulianDate start = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0D));
-        cesiumlanguagewriter.JulianDate stop = start.addDays(1.0);
+        JulianDate start = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0D));
+        JulianDate stop = start.addDays(1.0);
         {
             final PacketCesiumWriter usingExpression_2 = (getPacket());
             try {
                 getPacket().writeId("id");
                 {
-                    cesiumlanguagewriter.BooleanCesiumWriter writer = new BooleanCesiumWriter("foo");
+                    BooleanCesiumWriter writer = new BooleanCesiumWriter("foo");
                     try {
                         writer.open(getOutputStream());
                         writer.writeInterval(start, stop);
@@ -97,7 +97,7 @@ public class TestBooleanCesiumWriter extends TestCesiumPropertyWriter<BooleanCes
             try {
                 getPacket().writeId("id");
                 {
-                    cesiumlanguagewriter.BooleanCesiumWriter writer = new BooleanCesiumWriter("foo");
+                    BooleanCesiumWriter writer = new BooleanCesiumWriter("foo");
                     try {
                         writer.open(getOutputStream());
                         writer.writeDelete(true);

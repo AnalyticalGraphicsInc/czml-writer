@@ -28,13 +28,13 @@ public class TestGridMaterialCesiumWriter extends TestCesiumPropertyWriter<GridM
             final PacketCesiumWriter usingExpression_0 = (getPacket());
             try {
                 {
-                    cesiumlanguagewriter.PolylineCesiumWriter polyline = getPacket().openPolylineProperty();
+                    PolylineCesiumWriter polyline = getPacket().openPolylineProperty();
                     try {
                         {
-                            cesiumlanguagewriter.PolylineMaterialCesiumWriter material = polyline.openMaterialProperty();
+                            PolylineMaterialCesiumWriter material = polyline.openMaterialProperty();
                             try {
                                 {
-                                    cesiumlanguagewriter.GridMaterialCesiumWriter gridMaterial = material.openGridProperty();
+                                    GridMaterialCesiumWriter gridMaterial = material.openGridProperty();
                                     try {
                                         gridMaterial.writeColorProperty(Color.RED);
                                         gridMaterial.writeCellAlphaProperty(0.7);

@@ -190,7 +190,7 @@ public class TestCartesian {
         final Cartesian test = Cartesian.getZero();
         AssertHelper.<ArithmeticException> assertThrows(new TypeLiteral<ArithmeticException>() {}, new Action() {
             public void invoke() {
-                cesiumlanguagewriter.UnitCartesian unused = test.normalize();
+                UnitCartesian unused = test.normalize();
             }
         });
     }
@@ -207,7 +207,7 @@ public class TestCartesian {
         final Cartesian test = new Cartesian(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
         AssertHelper.<ArithmeticException> assertThrows(new TypeLiteral<ArithmeticException>() {}, new Action() {
             public void invoke() {
-                cesiumlanguagewriter.UnitCartesian unused = test.normalize();
+                UnitCartesian unused = test.normalize();
             }
         });
     }

@@ -349,7 +349,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeShowProperty(boolean value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+            BooleanCesiumWriter writer = openShowProperty();
             try {
                 writer.writeBoolean(value);
             } finally {
@@ -368,7 +368,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeShowPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+            BooleanCesiumWriter writer = openShowProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -387,7 +387,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeShowPropertyReference(String value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+            BooleanCesiumWriter writer = openShowProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -408,7 +408,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeShowPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+            BooleanCesiumWriter writer = openShowProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -429,7 +429,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeShowPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+            BooleanCesiumWriter writer = openShowProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -470,7 +470,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeImageProperty(CesiumResource resource) {
         {
-            cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
+            UriCesiumWriter writer = openImageProperty();
             try {
                 writer.writeUri(resource);
             } finally {
@@ -491,7 +491,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeImageProperty(URI uri, @Nonnull CesiumResourceBehavior resourceBehavior) {
         {
-            cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
+            UriCesiumWriter writer = openImageProperty();
             try {
                 writer.writeUri(uri, resourceBehavior);
             } finally {
@@ -512,7 +512,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeImageProperty(String uri, @Nonnull CesiumResourceBehavior resourceBehavior) {
         {
-            cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
+            UriCesiumWriter writer = openImageProperty();
             try {
                 writer.writeUri(uri, resourceBehavior);
             } finally {
@@ -533,7 +533,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeImageProperty(URI uri, ICesiumUriResolver resolver) {
         {
-            cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
+            UriCesiumWriter writer = openImageProperty();
             try {
                 writer.writeUri(uri, resolver);
             } finally {
@@ -554,7 +554,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeImageProperty(String uri, ICesiumUriResolver resolver) {
         {
-            cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
+            UriCesiumWriter writer = openImageProperty();
             try {
                 writer.writeUri(uri, resolver);
             } finally {
@@ -573,7 +573,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeImageProperty(RenderedImage image) {
         {
-            cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
+            UriCesiumWriter writer = openImageProperty();
             try {
                 writer.writeUri(image);
             } finally {
@@ -594,7 +594,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeImageProperty(RenderedImage image, @Nonnull CesiumImageFormat imageFormat) {
         {
-            cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
+            UriCesiumWriter writer = openImageProperty();
             try {
                 writer.writeUri(image, imageFormat);
             } finally {
@@ -613,7 +613,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeImagePropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
+            UriCesiumWriter writer = openImageProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -632,7 +632,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeImagePropertyReference(String value) {
         {
-            cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
+            UriCesiumWriter writer = openImageProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -653,7 +653,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeImagePropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
+            UriCesiumWriter writer = openImageProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -674,7 +674,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeImagePropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.UriCesiumWriter writer = openImageProperty();
+            UriCesiumWriter writer = openImageProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -715,7 +715,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeScaleProperty(double value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openScaleProperty();
+            DoubleCesiumWriter writer = openScaleProperty();
             try {
                 writer.writeNumber(value);
             } finally {
@@ -736,7 +736,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeScaleProperty(List<JulianDate> dates, List<Double> values) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openScaleProperty();
+            DoubleCesiumWriter writer = openScaleProperty();
             try {
                 writer.writeNumber(dates, values);
             } finally {
@@ -761,7 +761,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeScaleProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openScaleProperty();
+            DoubleCesiumWriter writer = openScaleProperty();
             try {
                 writer.writeNumber(dates, values, startIndex, length);
             } finally {
@@ -780,7 +780,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeScalePropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openScaleProperty();
+            DoubleCesiumWriter writer = openScaleProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -799,7 +799,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeScalePropertyReference(String value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openScaleProperty();
+            DoubleCesiumWriter writer = openScaleProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -820,7 +820,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeScalePropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openScaleProperty();
+            DoubleCesiumWriter writer = openScaleProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -841,7 +841,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeScalePropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openScaleProperty();
+            DoubleCesiumWriter writer = openScaleProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -882,7 +882,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writePixelOffsetProperty(@Nonnull Rectangular value) {
         {
-            cesiumlanguagewriter.PixelOffsetCesiumWriter writer = openPixelOffsetProperty();
+            PixelOffsetCesiumWriter writer = openPixelOffsetProperty();
             try {
                 writer.writeCartesian2(value);
             } finally {
@@ -903,7 +903,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writePixelOffsetProperty(double x, double y) {
         {
-            cesiumlanguagewriter.PixelOffsetCesiumWriter writer = openPixelOffsetProperty();
+            PixelOffsetCesiumWriter writer = openPixelOffsetProperty();
             try {
                 writer.writeCartesian2(x, y);
             } finally {
@@ -924,7 +924,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writePixelOffsetProperty(List<JulianDate> dates, List<Rectangular> values) {
         {
-            cesiumlanguagewriter.PixelOffsetCesiumWriter writer = openPixelOffsetProperty();
+            PixelOffsetCesiumWriter writer = openPixelOffsetProperty();
             try {
                 writer.writeCartesian2(dates, values);
             } finally {
@@ -949,7 +949,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writePixelOffsetProperty(List<JulianDate> dates, List<Rectangular> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.PixelOffsetCesiumWriter writer = openPixelOffsetProperty();
+            PixelOffsetCesiumWriter writer = openPixelOffsetProperty();
             try {
                 writer.writeCartesian2(dates, values, startIndex, length);
             } finally {
@@ -968,7 +968,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writePixelOffsetPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.PixelOffsetCesiumWriter writer = openPixelOffsetProperty();
+            PixelOffsetCesiumWriter writer = openPixelOffsetProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -987,7 +987,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writePixelOffsetPropertyReference(String value) {
         {
-            cesiumlanguagewriter.PixelOffsetCesiumWriter writer = openPixelOffsetProperty();
+            PixelOffsetCesiumWriter writer = openPixelOffsetProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1008,7 +1008,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writePixelOffsetPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.PixelOffsetCesiumWriter writer = openPixelOffsetProperty();
+            PixelOffsetCesiumWriter writer = openPixelOffsetProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -1029,7 +1029,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writePixelOffsetPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.PixelOffsetCesiumWriter writer = openPixelOffsetProperty();
+            PixelOffsetCesiumWriter writer = openPixelOffsetProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -1070,7 +1070,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeEyeOffsetProperty(@Nonnull Cartesian value) {
         {
-            cesiumlanguagewriter.EyeOffsetCesiumWriter writer = openEyeOffsetProperty();
+            EyeOffsetCesiumWriter writer = openEyeOffsetProperty();
             try {
                 writer.writeCartesian(value);
             } finally {
@@ -1091,7 +1091,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeEyeOffsetProperty(List<JulianDate> dates, List<Cartesian> values) {
         {
-            cesiumlanguagewriter.EyeOffsetCesiumWriter writer = openEyeOffsetProperty();
+            EyeOffsetCesiumWriter writer = openEyeOffsetProperty();
             try {
                 writer.writeCartesian(dates, values);
             } finally {
@@ -1116,7 +1116,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeEyeOffsetProperty(List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.EyeOffsetCesiumWriter writer = openEyeOffsetProperty();
+            EyeOffsetCesiumWriter writer = openEyeOffsetProperty();
             try {
                 writer.writeCartesian(dates, values, startIndex, length);
             } finally {
@@ -1135,7 +1135,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeEyeOffsetPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.EyeOffsetCesiumWriter writer = openEyeOffsetProperty();
+            EyeOffsetCesiumWriter writer = openEyeOffsetProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1154,7 +1154,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeEyeOffsetPropertyReference(String value) {
         {
-            cesiumlanguagewriter.EyeOffsetCesiumWriter writer = openEyeOffsetProperty();
+            EyeOffsetCesiumWriter writer = openEyeOffsetProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1175,7 +1175,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeEyeOffsetPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.EyeOffsetCesiumWriter writer = openEyeOffsetProperty();
+            EyeOffsetCesiumWriter writer = openEyeOffsetProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -1196,7 +1196,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeEyeOffsetPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.EyeOffsetCesiumWriter writer = openEyeOffsetProperty();
+            EyeOffsetCesiumWriter writer = openEyeOffsetProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -1237,7 +1237,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeHorizontalOriginProperty(@Nonnull CesiumHorizontalOrigin value) {
         {
-            cesiumlanguagewriter.HorizontalOriginCesiumWriter writer = openHorizontalOriginProperty();
+            HorizontalOriginCesiumWriter writer = openHorizontalOriginProperty();
             try {
                 writer.writeHorizontalOrigin(value);
             } finally {
@@ -1256,7 +1256,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeHorizontalOriginPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.HorizontalOriginCesiumWriter writer = openHorizontalOriginProperty();
+            HorizontalOriginCesiumWriter writer = openHorizontalOriginProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1275,7 +1275,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeHorizontalOriginPropertyReference(String value) {
         {
-            cesiumlanguagewriter.HorizontalOriginCesiumWriter writer = openHorizontalOriginProperty();
+            HorizontalOriginCesiumWriter writer = openHorizontalOriginProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1296,7 +1296,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeHorizontalOriginPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.HorizontalOriginCesiumWriter writer = openHorizontalOriginProperty();
+            HorizontalOriginCesiumWriter writer = openHorizontalOriginProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -1317,7 +1317,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeHorizontalOriginPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.HorizontalOriginCesiumWriter writer = openHorizontalOriginProperty();
+            HorizontalOriginCesiumWriter writer = openHorizontalOriginProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -1358,7 +1358,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeVerticalOriginProperty(@Nonnull CesiumVerticalOrigin value) {
         {
-            cesiumlanguagewriter.VerticalOriginCesiumWriter writer = openVerticalOriginProperty();
+            VerticalOriginCesiumWriter writer = openVerticalOriginProperty();
             try {
                 writer.writeVerticalOrigin(value);
             } finally {
@@ -1377,7 +1377,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeVerticalOriginPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.VerticalOriginCesiumWriter writer = openVerticalOriginProperty();
+            VerticalOriginCesiumWriter writer = openVerticalOriginProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1396,7 +1396,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeVerticalOriginPropertyReference(String value) {
         {
-            cesiumlanguagewriter.VerticalOriginCesiumWriter writer = openVerticalOriginProperty();
+            VerticalOriginCesiumWriter writer = openVerticalOriginProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1417,7 +1417,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeVerticalOriginPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.VerticalOriginCesiumWriter writer = openVerticalOriginProperty();
+            VerticalOriginCesiumWriter writer = openVerticalOriginProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -1438,7 +1438,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeVerticalOriginPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.VerticalOriginCesiumWriter writer = openVerticalOriginProperty();
+            VerticalOriginCesiumWriter writer = openVerticalOriginProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -1479,7 +1479,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeHeightReferenceProperty(@Nonnull CesiumHeightReference value) {
         {
-            cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
+            HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
             try {
                 writer.writeHeightReference(value);
             } finally {
@@ -1498,7 +1498,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeHeightReferencePropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
+            HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1517,7 +1517,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeHeightReferencePropertyReference(String value) {
         {
-            cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
+            HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1538,7 +1538,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeHeightReferencePropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
+            HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -1559,7 +1559,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeHeightReferencePropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
+            HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -1600,7 +1600,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeColorProperty(@Nonnull Color color) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgba(color);
             } finally {
@@ -1625,7 +1625,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeColorProperty(int red, int green, int blue, int alpha) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgba(red, green, blue, alpha);
             } finally {
@@ -1646,7 +1646,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeColorProperty(List<JulianDate> dates, List<Color> values) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgba(dates, values);
             } finally {
@@ -1671,7 +1671,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeColorProperty(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgba(dates, colors, startIndex, length);
             } finally {
@@ -1690,7 +1690,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeColorPropertyRgbaf(@Nonnull Color color) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgbaf(color);
             } finally {
@@ -1715,7 +1715,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeColorPropertyRgbaf(float red, float green, float blue, float alpha) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgbaf(red, green, blue, alpha);
             } finally {
@@ -1736,7 +1736,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeColorPropertyRgbaf(List<JulianDate> dates, List<Color> values) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgbaf(dates, values);
             } finally {
@@ -1761,7 +1761,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeColorPropertyRgbaf(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgbaf(dates, colors, startIndex, length);
             } finally {
@@ -1780,7 +1780,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeColorPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1799,7 +1799,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeColorPropertyReference(String value) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1820,7 +1820,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeColorPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -1841,7 +1841,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeColorPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -1882,7 +1882,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeRotationProperty(double value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openRotationProperty();
+            DoubleCesiumWriter writer = openRotationProperty();
             try {
                 writer.writeNumber(value);
             } finally {
@@ -1903,7 +1903,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeRotationProperty(List<JulianDate> dates, List<Double> values) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openRotationProperty();
+            DoubleCesiumWriter writer = openRotationProperty();
             try {
                 writer.writeNumber(dates, values);
             } finally {
@@ -1928,7 +1928,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeRotationProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openRotationProperty();
+            DoubleCesiumWriter writer = openRotationProperty();
             try {
                 writer.writeNumber(dates, values, startIndex, length);
             } finally {
@@ -1947,7 +1947,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeRotationPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openRotationProperty();
+            DoubleCesiumWriter writer = openRotationProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1966,7 +1966,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeRotationPropertyReference(String value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openRotationProperty();
+            DoubleCesiumWriter writer = openRotationProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1987,7 +1987,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeRotationPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openRotationProperty();
+            DoubleCesiumWriter writer = openRotationProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -2008,7 +2008,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeRotationPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openRotationProperty();
+            DoubleCesiumWriter writer = openRotationProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -2049,7 +2049,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeAlignedAxisProperty(@Nonnull UnitCartesian value) {
         {
-            cesiumlanguagewriter.AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
+            AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
             try {
                 writer.writeUnitCartesian(value);
             } finally {
@@ -2070,7 +2070,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeAlignedAxisProperty(List<JulianDate> dates, List<UnitCartesian> values) {
         {
-            cesiumlanguagewriter.AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
+            AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
             try {
                 writer.writeUnitCartesian(dates, values);
             } finally {
@@ -2095,7 +2095,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeAlignedAxisProperty(List<JulianDate> dates, List<UnitCartesian> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
+            AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
             try {
                 writer.writeUnitCartesian(dates, values, startIndex, length);
             } finally {
@@ -2114,7 +2114,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeAlignedAxisPropertyUnitSpherical(@Nonnull UnitSpherical value) {
         {
-            cesiumlanguagewriter.AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
+            AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
             try {
                 writer.writeUnitSpherical(value);
             } finally {
@@ -2135,7 +2135,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeAlignedAxisPropertyUnitSpherical(List<JulianDate> dates, List<UnitSpherical> values) {
         {
-            cesiumlanguagewriter.AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
+            AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
             try {
                 writer.writeUnitSpherical(dates, values);
             } finally {
@@ -2160,7 +2160,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeAlignedAxisPropertyUnitSpherical(List<JulianDate> dates, List<UnitSpherical> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
+            AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
             try {
                 writer.writeUnitSpherical(dates, values, startIndex, length);
             } finally {
@@ -2179,7 +2179,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeAlignedAxisPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
+            AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -2198,7 +2198,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeAlignedAxisPropertyReference(String value) {
         {
-            cesiumlanguagewriter.AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
+            AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -2219,7 +2219,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeAlignedAxisPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
+            AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -2240,7 +2240,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeAlignedAxisPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
+            AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -2259,7 +2259,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeAlignedAxisPropertyVelocityReference(Reference value) {
         {
-            cesiumlanguagewriter.AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
+            AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
             try {
                 writer.writeVelocityReference(value);
             } finally {
@@ -2278,7 +2278,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeAlignedAxisPropertyVelocityReference(String value) {
         {
-            cesiumlanguagewriter.AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
+            AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
             try {
                 writer.writeVelocityReference(value);
             } finally {
@@ -2299,7 +2299,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeAlignedAxisPropertyVelocityReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
+            AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
             try {
                 writer.writeVelocityReference(identifier, propertyName);
             } finally {
@@ -2320,7 +2320,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeAlignedAxisPropertyVelocityReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
+            AlignedAxisCesiumWriter writer = openAlignedAxisProperty();
             try {
                 writer.writeVelocityReference(identifier, propertyNames);
             } finally {
@@ -2361,7 +2361,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeSizeInMetersProperty(boolean value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openSizeInMetersProperty();
+            BooleanCesiumWriter writer = openSizeInMetersProperty();
             try {
                 writer.writeBoolean(value);
             } finally {
@@ -2380,7 +2380,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeSizeInMetersPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openSizeInMetersProperty();
+            BooleanCesiumWriter writer = openSizeInMetersProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -2399,7 +2399,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeSizeInMetersPropertyReference(String value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openSizeInMetersProperty();
+            BooleanCesiumWriter writer = openSizeInMetersProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -2420,7 +2420,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeSizeInMetersPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openSizeInMetersProperty();
+            BooleanCesiumWriter writer = openSizeInMetersProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -2441,7 +2441,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeSizeInMetersPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openSizeInMetersProperty();
+            BooleanCesiumWriter writer = openSizeInMetersProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -2482,7 +2482,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeWidthProperty(double value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
+            DoubleCesiumWriter writer = openWidthProperty();
             try {
                 writer.writeNumber(value);
             } finally {
@@ -2503,7 +2503,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeWidthProperty(List<JulianDate> dates, List<Double> values) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
+            DoubleCesiumWriter writer = openWidthProperty();
             try {
                 writer.writeNumber(dates, values);
             } finally {
@@ -2528,7 +2528,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeWidthProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
+            DoubleCesiumWriter writer = openWidthProperty();
             try {
                 writer.writeNumber(dates, values, startIndex, length);
             } finally {
@@ -2547,7 +2547,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeWidthPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
+            DoubleCesiumWriter writer = openWidthProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -2566,7 +2566,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeWidthPropertyReference(String value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
+            DoubleCesiumWriter writer = openWidthProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -2587,7 +2587,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeWidthPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
+            DoubleCesiumWriter writer = openWidthProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -2608,7 +2608,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeWidthPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openWidthProperty();
+            DoubleCesiumWriter writer = openWidthProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -2649,7 +2649,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeHeightProperty(double value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openHeightProperty();
+            DoubleCesiumWriter writer = openHeightProperty();
             try {
                 writer.writeNumber(value);
             } finally {
@@ -2670,7 +2670,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeHeightProperty(List<JulianDate> dates, List<Double> values) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openHeightProperty();
+            DoubleCesiumWriter writer = openHeightProperty();
             try {
                 writer.writeNumber(dates, values);
             } finally {
@@ -2695,7 +2695,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeHeightProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openHeightProperty();
+            DoubleCesiumWriter writer = openHeightProperty();
             try {
                 writer.writeNumber(dates, values, startIndex, length);
             } finally {
@@ -2714,7 +2714,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeHeightPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openHeightProperty();
+            DoubleCesiumWriter writer = openHeightProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -2733,7 +2733,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeHeightPropertyReference(String value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openHeightProperty();
+            DoubleCesiumWriter writer = openHeightProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -2754,7 +2754,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeHeightPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openHeightProperty();
+            DoubleCesiumWriter writer = openHeightProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -2775,7 +2775,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeHeightPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openHeightProperty();
+            DoubleCesiumWriter writer = openHeightProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -2816,7 +2816,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeScaleByDistanceProperty(@Nonnull NearFarScalar value) {
         {
-            cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openScaleByDistanceProperty();
+            NearFarScalarCesiumWriter writer = openScaleByDistanceProperty();
             try {
                 writer.writeNearFarScalar(value);
             } finally {
@@ -2841,7 +2841,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeScaleByDistanceProperty(double nearDistance, double nearValue, double farDistance, double farValue) {
         {
-            cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openScaleByDistanceProperty();
+            NearFarScalarCesiumWriter writer = openScaleByDistanceProperty();
             try {
                 writer.writeNearFarScalar(nearDistance, nearValue, farDistance, farValue);
             } finally {
@@ -2862,7 +2862,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeScaleByDistanceProperty(List<JulianDate> dates, List<NearFarScalar> values) {
         {
-            cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openScaleByDistanceProperty();
+            NearFarScalarCesiumWriter writer = openScaleByDistanceProperty();
             try {
                 writer.writeNearFarScalar(dates, values);
             } finally {
@@ -2887,7 +2887,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeScaleByDistanceProperty(List<JulianDate> dates, List<NearFarScalar> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openScaleByDistanceProperty();
+            NearFarScalarCesiumWriter writer = openScaleByDistanceProperty();
             try {
                 writer.writeNearFarScalar(dates, values, startIndex, length);
             } finally {
@@ -2906,7 +2906,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeScaleByDistancePropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openScaleByDistanceProperty();
+            NearFarScalarCesiumWriter writer = openScaleByDistanceProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -2925,7 +2925,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeScaleByDistancePropertyReference(String value) {
         {
-            cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openScaleByDistanceProperty();
+            NearFarScalarCesiumWriter writer = openScaleByDistanceProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -2946,7 +2946,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeScaleByDistancePropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openScaleByDistanceProperty();
+            NearFarScalarCesiumWriter writer = openScaleByDistanceProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -2967,7 +2967,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeScaleByDistancePropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openScaleByDistanceProperty();
+            NearFarScalarCesiumWriter writer = openScaleByDistanceProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -3008,7 +3008,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeTranslucencyByDistanceProperty(@Nonnull NearFarScalar value) {
         {
-            cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
+            NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
             try {
                 writer.writeNearFarScalar(value);
             } finally {
@@ -3033,7 +3033,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeTranslucencyByDistanceProperty(double nearDistance, double nearValue, double farDistance, double farValue) {
         {
-            cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
+            NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
             try {
                 writer.writeNearFarScalar(nearDistance, nearValue, farDistance, farValue);
             } finally {
@@ -3054,7 +3054,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeTranslucencyByDistanceProperty(List<JulianDate> dates, List<NearFarScalar> values) {
         {
-            cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
+            NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
             try {
                 writer.writeNearFarScalar(dates, values);
             } finally {
@@ -3079,7 +3079,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeTranslucencyByDistanceProperty(List<JulianDate> dates, List<NearFarScalar> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
+            NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
             try {
                 writer.writeNearFarScalar(dates, values, startIndex, length);
             } finally {
@@ -3098,7 +3098,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeTranslucencyByDistancePropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
+            NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -3117,7 +3117,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeTranslucencyByDistancePropertyReference(String value) {
         {
-            cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
+            NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -3138,7 +3138,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeTranslucencyByDistancePropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
+            NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -3159,7 +3159,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeTranslucencyByDistancePropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
+            NearFarScalarCesiumWriter writer = openTranslucencyByDistanceProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -3200,7 +3200,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writePixelOffsetScaleByDistanceProperty(@Nonnull NearFarScalar value) {
         {
-            cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openPixelOffsetScaleByDistanceProperty();
+            NearFarScalarCesiumWriter writer = openPixelOffsetScaleByDistanceProperty();
             try {
                 writer.writeNearFarScalar(value);
             } finally {
@@ -3225,7 +3225,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writePixelOffsetScaleByDistanceProperty(double nearDistance, double nearValue, double farDistance, double farValue) {
         {
-            cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openPixelOffsetScaleByDistanceProperty();
+            NearFarScalarCesiumWriter writer = openPixelOffsetScaleByDistanceProperty();
             try {
                 writer.writeNearFarScalar(nearDistance, nearValue, farDistance, farValue);
             } finally {
@@ -3246,7 +3246,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writePixelOffsetScaleByDistanceProperty(List<JulianDate> dates, List<NearFarScalar> values) {
         {
-            cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openPixelOffsetScaleByDistanceProperty();
+            NearFarScalarCesiumWriter writer = openPixelOffsetScaleByDistanceProperty();
             try {
                 writer.writeNearFarScalar(dates, values);
             } finally {
@@ -3271,7 +3271,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writePixelOffsetScaleByDistanceProperty(List<JulianDate> dates, List<NearFarScalar> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openPixelOffsetScaleByDistanceProperty();
+            NearFarScalarCesiumWriter writer = openPixelOffsetScaleByDistanceProperty();
             try {
                 writer.writeNearFarScalar(dates, values, startIndex, length);
             } finally {
@@ -3290,7 +3290,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writePixelOffsetScaleByDistancePropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openPixelOffsetScaleByDistanceProperty();
+            NearFarScalarCesiumWriter writer = openPixelOffsetScaleByDistanceProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -3309,7 +3309,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writePixelOffsetScaleByDistancePropertyReference(String value) {
         {
-            cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openPixelOffsetScaleByDistanceProperty();
+            NearFarScalarCesiumWriter writer = openPixelOffsetScaleByDistanceProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -3330,7 +3330,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writePixelOffsetScaleByDistancePropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openPixelOffsetScaleByDistanceProperty();
+            NearFarScalarCesiumWriter writer = openPixelOffsetScaleByDistanceProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -3351,7 +3351,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writePixelOffsetScaleByDistancePropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.NearFarScalarCesiumWriter writer = openPixelOffsetScaleByDistanceProperty();
+            NearFarScalarCesiumWriter writer = openPixelOffsetScaleByDistanceProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -3392,7 +3392,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeImageSubRegionProperty(@Nonnull BoundingRectangle value) {
         {
-            cesiumlanguagewriter.BoundingRectangleCesiumWriter writer = openImageSubRegionProperty();
+            BoundingRectangleCesiumWriter writer = openImageSubRegionProperty();
             try {
                 writer.writeBoundingRectangle(value);
             } finally {
@@ -3413,7 +3413,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeImageSubRegionProperty(List<JulianDate> dates, List<BoundingRectangle> values) {
         {
-            cesiumlanguagewriter.BoundingRectangleCesiumWriter writer = openImageSubRegionProperty();
+            BoundingRectangleCesiumWriter writer = openImageSubRegionProperty();
             try {
                 writer.writeBoundingRectangle(dates, values);
             } finally {
@@ -3438,7 +3438,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeImageSubRegionProperty(List<JulianDate> dates, List<BoundingRectangle> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.BoundingRectangleCesiumWriter writer = openImageSubRegionProperty();
+            BoundingRectangleCesiumWriter writer = openImageSubRegionProperty();
             try {
                 writer.writeBoundingRectangle(dates, values, startIndex, length);
             } finally {
@@ -3457,7 +3457,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeImageSubRegionPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.BoundingRectangleCesiumWriter writer = openImageSubRegionProperty();
+            BoundingRectangleCesiumWriter writer = openImageSubRegionProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -3476,7 +3476,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeImageSubRegionPropertyReference(String value) {
         {
-            cesiumlanguagewriter.BoundingRectangleCesiumWriter writer = openImageSubRegionProperty();
+            BoundingRectangleCesiumWriter writer = openImageSubRegionProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -3497,7 +3497,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeImageSubRegionPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.BoundingRectangleCesiumWriter writer = openImageSubRegionProperty();
+            BoundingRectangleCesiumWriter writer = openImageSubRegionProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -3518,7 +3518,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeImageSubRegionPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.BoundingRectangleCesiumWriter writer = openImageSubRegionProperty();
+            BoundingRectangleCesiumWriter writer = openImageSubRegionProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -3559,7 +3559,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeDistanceDisplayConditionProperty(@Nonnull Bounds value) {
         {
-            cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
+            DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
             try {
                 writer.writeDistanceDisplayCondition(value);
             } finally {
@@ -3580,7 +3580,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeDistanceDisplayConditionProperty(double lowerBound, double upperBound) {
         {
-            cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
+            DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
             try {
                 writer.writeDistanceDisplayCondition(lowerBound, upperBound);
             } finally {
@@ -3601,7 +3601,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeDistanceDisplayConditionProperty(List<JulianDate> dates, List<Bounds> values) {
         {
-            cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
+            DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
             try {
                 writer.writeDistanceDisplayCondition(dates, values);
             } finally {
@@ -3626,7 +3626,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeDistanceDisplayConditionProperty(List<JulianDate> dates, List<Bounds> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
+            DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
             try {
                 writer.writeDistanceDisplayCondition(dates, values, startIndex, length);
             } finally {
@@ -3645,7 +3645,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeDistanceDisplayConditionPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
+            DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -3664,7 +3664,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeDistanceDisplayConditionPropertyReference(String value) {
         {
-            cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
+            DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -3685,7 +3685,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeDistanceDisplayConditionPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
+            DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -3706,7 +3706,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeDistanceDisplayConditionPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
+            DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -3747,7 +3747,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeDisableDepthTestDistanceProperty(double value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openDisableDepthTestDistanceProperty();
+            DoubleCesiumWriter writer = openDisableDepthTestDistanceProperty();
             try {
                 writer.writeNumber(value);
             } finally {
@@ -3768,7 +3768,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeDisableDepthTestDistanceProperty(List<JulianDate> dates, List<Double> values) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openDisableDepthTestDistanceProperty();
+            DoubleCesiumWriter writer = openDisableDepthTestDistanceProperty();
             try {
                 writer.writeNumber(dates, values);
             } finally {
@@ -3793,7 +3793,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeDisableDepthTestDistanceProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openDisableDepthTestDistanceProperty();
+            DoubleCesiumWriter writer = openDisableDepthTestDistanceProperty();
             try {
                 writer.writeNumber(dates, values, startIndex, length);
             } finally {
@@ -3812,7 +3812,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeDisableDepthTestDistancePropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openDisableDepthTestDistanceProperty();
+            DoubleCesiumWriter writer = openDisableDepthTestDistanceProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -3831,7 +3831,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeDisableDepthTestDistancePropertyReference(String value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openDisableDepthTestDistanceProperty();
+            DoubleCesiumWriter writer = openDisableDepthTestDistanceProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -3852,7 +3852,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeDisableDepthTestDistancePropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openDisableDepthTestDistanceProperty();
+            DoubleCesiumWriter writer = openDisableDepthTestDistanceProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -3873,7 +3873,7 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     */
     public final void writeDisableDepthTestDistancePropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openDisableDepthTestDistanceProperty();
+            DoubleCesiumWriter writer = openDisableDepthTestDistanceProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {

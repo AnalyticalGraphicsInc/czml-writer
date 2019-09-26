@@ -157,7 +157,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeShowProperty(boolean value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+            BooleanCesiumWriter writer = openShowProperty();
             try {
                 writer.writeBoolean(value);
             } finally {
@@ -176,7 +176,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeShowPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+            BooleanCesiumWriter writer = openShowProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -195,7 +195,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeShowPropertyReference(String value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+            BooleanCesiumWriter writer = openShowProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -216,7 +216,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeShowPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+            BooleanCesiumWriter writer = openShowProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -237,7 +237,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeShowPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+            BooleanCesiumWriter writer = openShowProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -278,7 +278,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeColorProperty(@Nonnull Color color) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgba(color);
             } finally {
@@ -303,7 +303,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeColorProperty(int red, int green, int blue, int alpha) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgba(red, green, blue, alpha);
             } finally {
@@ -324,7 +324,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeColorProperty(List<JulianDate> dates, List<Color> values) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgba(dates, values);
             } finally {
@@ -349,7 +349,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeColorProperty(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgba(dates, colors, startIndex, length);
             } finally {
@@ -368,7 +368,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeColorPropertyRgbaf(@Nonnull Color color) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgbaf(color);
             } finally {
@@ -393,7 +393,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeColorPropertyRgbaf(float red, float green, float blue, float alpha) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgbaf(red, green, blue, alpha);
             } finally {
@@ -414,7 +414,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeColorPropertyRgbaf(List<JulianDate> dates, List<Color> values) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgbaf(dates, values);
             } finally {
@@ -439,7 +439,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeColorPropertyRgbaf(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgbaf(dates, colors, startIndex, length);
             } finally {
@@ -458,7 +458,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeColorPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -477,7 +477,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeColorPropertyReference(String value) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -498,7 +498,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeColorPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -519,7 +519,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeColorPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -560,7 +560,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeDirectionProperty(@Nonnull Spherical value) {
         {
-            cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
+            DirectionCesiumWriter writer = openDirectionProperty();
             try {
                 writer.writeSpherical(value);
             } finally {
@@ -581,7 +581,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeDirectionProperty(List<JulianDate> dates, List<Spherical> values) {
         {
-            cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
+            DirectionCesiumWriter writer = openDirectionProperty();
             try {
                 writer.writeSpherical(dates, values);
             } finally {
@@ -606,7 +606,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeDirectionProperty(List<JulianDate> dates, List<Spherical> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
+            DirectionCesiumWriter writer = openDirectionProperty();
             try {
                 writer.writeSpherical(dates, values, startIndex, length);
             } finally {
@@ -625,7 +625,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeDirectionPropertyUnitSpherical(@Nonnull UnitSpherical value) {
         {
-            cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
+            DirectionCesiumWriter writer = openDirectionProperty();
             try {
                 writer.writeUnitSpherical(value);
             } finally {
@@ -646,7 +646,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeDirectionPropertyUnitSpherical(List<JulianDate> dates, List<UnitSpherical> values) {
         {
-            cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
+            DirectionCesiumWriter writer = openDirectionProperty();
             try {
                 writer.writeUnitSpherical(dates, values);
             } finally {
@@ -671,7 +671,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeDirectionPropertyUnitSpherical(List<JulianDate> dates, List<UnitSpherical> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
+            DirectionCesiumWriter writer = openDirectionProperty();
             try {
                 writer.writeUnitSpherical(dates, values, startIndex, length);
             } finally {
@@ -690,7 +690,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeDirectionPropertyCartesian(@Nonnull Cartesian value) {
         {
-            cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
+            DirectionCesiumWriter writer = openDirectionProperty();
             try {
                 writer.writeCartesian(value);
             } finally {
@@ -711,7 +711,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeDirectionPropertyCartesian(List<JulianDate> dates, List<Cartesian> values) {
         {
-            cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
+            DirectionCesiumWriter writer = openDirectionProperty();
             try {
                 writer.writeCartesian(dates, values);
             } finally {
@@ -736,7 +736,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeDirectionPropertyCartesian(List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
+            DirectionCesiumWriter writer = openDirectionProperty();
             try {
                 writer.writeCartesian(dates, values, startIndex, length);
             } finally {
@@ -755,7 +755,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeDirectionPropertyUnitCartesian(@Nonnull UnitCartesian value) {
         {
-            cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
+            DirectionCesiumWriter writer = openDirectionProperty();
             try {
                 writer.writeUnitCartesian(value);
             } finally {
@@ -776,7 +776,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeDirectionPropertyUnitCartesian(List<JulianDate> dates, List<UnitCartesian> values) {
         {
-            cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
+            DirectionCesiumWriter writer = openDirectionProperty();
             try {
                 writer.writeUnitCartesian(dates, values);
             } finally {
@@ -801,7 +801,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeDirectionPropertyUnitCartesian(List<JulianDate> dates, List<UnitCartesian> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
+            DirectionCesiumWriter writer = openDirectionProperty();
             try {
                 writer.writeUnitCartesian(dates, values, startIndex, length);
             } finally {
@@ -820,7 +820,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeDirectionPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
+            DirectionCesiumWriter writer = openDirectionProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -839,7 +839,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeDirectionPropertyReference(String value) {
         {
-            cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
+            DirectionCesiumWriter writer = openDirectionProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -860,7 +860,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeDirectionPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
+            DirectionCesiumWriter writer = openDirectionProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -881,7 +881,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeDirectionPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.DirectionCesiumWriter writer = openDirectionProperty();
+            DirectionCesiumWriter writer = openDirectionProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -922,7 +922,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeLengthProperty(double value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openLengthProperty();
+            DoubleCesiumWriter writer = openLengthProperty();
             try {
                 writer.writeNumber(value);
             } finally {
@@ -943,7 +943,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeLengthProperty(List<JulianDate> dates, List<Double> values) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openLengthProperty();
+            DoubleCesiumWriter writer = openLengthProperty();
             try {
                 writer.writeNumber(dates, values);
             } finally {
@@ -968,7 +968,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeLengthProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openLengthProperty();
+            DoubleCesiumWriter writer = openLengthProperty();
             try {
                 writer.writeNumber(dates, values, startIndex, length);
             } finally {
@@ -987,7 +987,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeLengthPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openLengthProperty();
+            DoubleCesiumWriter writer = openLengthProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1006,7 +1006,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeLengthPropertyReference(String value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openLengthProperty();
+            DoubleCesiumWriter writer = openLengthProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1027,7 +1027,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeLengthPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openLengthProperty();
+            DoubleCesiumWriter writer = openLengthProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -1048,7 +1048,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeLengthPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openLengthProperty();
+            DoubleCesiumWriter writer = openLengthProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -1089,7 +1089,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeMinimumLengthInPixelsProperty(double value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openMinimumLengthInPixelsProperty();
+            DoubleCesiumWriter writer = openMinimumLengthInPixelsProperty();
             try {
                 writer.writeNumber(value);
             } finally {
@@ -1110,7 +1110,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeMinimumLengthInPixelsProperty(List<JulianDate> dates, List<Double> values) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openMinimumLengthInPixelsProperty();
+            DoubleCesiumWriter writer = openMinimumLengthInPixelsProperty();
             try {
                 writer.writeNumber(dates, values);
             } finally {
@@ -1135,7 +1135,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeMinimumLengthInPixelsProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openMinimumLengthInPixelsProperty();
+            DoubleCesiumWriter writer = openMinimumLengthInPixelsProperty();
             try {
                 writer.writeNumber(dates, values, startIndex, length);
             } finally {
@@ -1154,7 +1154,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeMinimumLengthInPixelsPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openMinimumLengthInPixelsProperty();
+            DoubleCesiumWriter writer = openMinimumLengthInPixelsProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1173,7 +1173,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeMinimumLengthInPixelsPropertyReference(String value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openMinimumLengthInPixelsProperty();
+            DoubleCesiumWriter writer = openMinimumLengthInPixelsProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1194,7 +1194,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeMinimumLengthInPixelsPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openMinimumLengthInPixelsProperty();
+            DoubleCesiumWriter writer = openMinimumLengthInPixelsProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -1215,7 +1215,7 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     */
     public final void writeMinimumLengthInPixelsPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openMinimumLengthInPixelsProperty();
+            DoubleCesiumWriter writer = openMinimumLengthInPixelsProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {

@@ -207,7 +207,7 @@ public class TestUnitQuaternion {
     public final void testFromInfinity() {
         AssertHelper.<ArithmeticException> assertThrows(new TypeLiteral<ArithmeticException>() {}, new Action() {
             public void invoke() {
-                cesiumlanguagewriter.UnitQuaternion unused = new UnitQuaternion(Double.POSITIVE_INFINITY, 0.0, 0.0, 0.0);
+                UnitQuaternion unused = new UnitQuaternion(Double.POSITIVE_INFINITY, 0.0, 0.0, 0.0);
             }
         });
     }

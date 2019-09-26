@@ -131,7 +131,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     */
     public final void writeColorProperty(@Nonnull Color color) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgba(color);
             } finally {
@@ -156,7 +156,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     */
     public final void writeColorProperty(int red, int green, int blue, int alpha) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgba(red, green, blue, alpha);
             } finally {
@@ -177,7 +177,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     */
     public final void writeColorProperty(List<JulianDate> dates, List<Color> values) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgba(dates, values);
             } finally {
@@ -202,7 +202,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     */
     public final void writeColorProperty(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgba(dates, colors, startIndex, length);
             } finally {
@@ -221,7 +221,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     */
     public final void writeColorPropertyRgbaf(@Nonnull Color color) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgbaf(color);
             } finally {
@@ -246,7 +246,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     */
     public final void writeColorPropertyRgbaf(float red, float green, float blue, float alpha) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgbaf(red, green, blue, alpha);
             } finally {
@@ -267,7 +267,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     */
     public final void writeColorPropertyRgbaf(List<JulianDate> dates, List<Color> values) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgbaf(dates, values);
             } finally {
@@ -292,7 +292,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     */
     public final void writeColorPropertyRgbaf(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgbaf(dates, colors, startIndex, length);
             } finally {
@@ -311,7 +311,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     */
     public final void writeColorPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -330,7 +330,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     */
     public final void writeColorPropertyReference(String value) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -351,7 +351,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     */
     public final void writeColorPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -372,7 +372,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     */
     public final void writeColorPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -413,7 +413,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     */
     public final void writeGlowPowerProperty(double value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openGlowPowerProperty();
+            DoubleCesiumWriter writer = openGlowPowerProperty();
             try {
                 writer.writeNumber(value);
             } finally {
@@ -434,7 +434,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     */
     public final void writeGlowPowerProperty(List<JulianDate> dates, List<Double> values) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openGlowPowerProperty();
+            DoubleCesiumWriter writer = openGlowPowerProperty();
             try {
                 writer.writeNumber(dates, values);
             } finally {
@@ -459,7 +459,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     */
     public final void writeGlowPowerProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openGlowPowerProperty();
+            DoubleCesiumWriter writer = openGlowPowerProperty();
             try {
                 writer.writeNumber(dates, values, startIndex, length);
             } finally {
@@ -478,7 +478,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     */
     public final void writeGlowPowerPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openGlowPowerProperty();
+            DoubleCesiumWriter writer = openGlowPowerProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -497,7 +497,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     */
     public final void writeGlowPowerPropertyReference(String value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openGlowPowerProperty();
+            DoubleCesiumWriter writer = openGlowPowerProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -518,7 +518,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     */
     public final void writeGlowPowerPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openGlowPowerProperty();
+            DoubleCesiumWriter writer = openGlowPowerProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -539,7 +539,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     */
     public final void writeGlowPowerPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openGlowPowerProperty();
+            DoubleCesiumWriter writer = openGlowPowerProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -580,7 +580,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     */
     public final void writeTaperPowerProperty(double value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openTaperPowerProperty();
+            DoubleCesiumWriter writer = openTaperPowerProperty();
             try {
                 writer.writeNumber(value);
             } finally {
@@ -601,7 +601,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     */
     public final void writeTaperPowerProperty(List<JulianDate> dates, List<Double> values) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openTaperPowerProperty();
+            DoubleCesiumWriter writer = openTaperPowerProperty();
             try {
                 writer.writeNumber(dates, values);
             } finally {
@@ -626,7 +626,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     */
     public final void writeTaperPowerProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openTaperPowerProperty();
+            DoubleCesiumWriter writer = openTaperPowerProperty();
             try {
                 writer.writeNumber(dates, values, startIndex, length);
             } finally {
@@ -645,7 +645,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     */
     public final void writeTaperPowerPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openTaperPowerProperty();
+            DoubleCesiumWriter writer = openTaperPowerProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -664,7 +664,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     */
     public final void writeTaperPowerPropertyReference(String value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openTaperPowerProperty();
+            DoubleCesiumWriter writer = openTaperPowerProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -685,7 +685,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     */
     public final void writeTaperPowerPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openTaperPowerProperty();
+            DoubleCesiumWriter writer = openTaperPowerProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -706,7 +706,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     */
     public final void writeTaperPowerPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openTaperPowerProperty();
+            DoubleCesiumWriter writer = openTaperPowerProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {

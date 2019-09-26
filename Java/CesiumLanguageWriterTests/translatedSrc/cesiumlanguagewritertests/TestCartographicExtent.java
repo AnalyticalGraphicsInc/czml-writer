@@ -89,7 +89,7 @@ public class TestCartographicExtent {
 
     @Test
     public final void testToString() {
-        cesiumlanguagewriter.CartographicExtent extent = new CartographicExtent(-2D, -1D, 1D, 2D);
+        CartographicExtent extent = new CartographicExtent(-2D, -1D, 1D, 2D);
         Assert.assertEquals("-2, -1, 1, 2", extent.toString());
     }
 

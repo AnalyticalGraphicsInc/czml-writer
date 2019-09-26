@@ -158,7 +158,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeColorProperty(@Nonnull Color color) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgba(color);
             } finally {
@@ -183,7 +183,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeColorProperty(int red, int green, int blue, int alpha) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgba(red, green, blue, alpha);
             } finally {
@@ -204,7 +204,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeColorProperty(List<JulianDate> dates, List<Color> values) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgba(dates, values);
             } finally {
@@ -229,7 +229,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeColorProperty(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgba(dates, colors, startIndex, length);
             } finally {
@@ -248,7 +248,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeColorPropertyRgbaf(@Nonnull Color color) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgbaf(color);
             } finally {
@@ -273,7 +273,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeColorPropertyRgbaf(float red, float green, float blue, float alpha) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgbaf(red, green, blue, alpha);
             } finally {
@@ -294,7 +294,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeColorPropertyRgbaf(List<JulianDate> dates, List<Color> values) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgbaf(dates, values);
             } finally {
@@ -319,7 +319,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeColorPropertyRgbaf(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgbaf(dates, colors, startIndex, length);
             } finally {
@@ -338,7 +338,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeColorPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -357,7 +357,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeColorPropertyReference(String value) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -378,7 +378,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeColorPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -399,7 +399,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeColorPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -440,7 +440,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeCellAlphaProperty(double value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openCellAlphaProperty();
+            DoubleCesiumWriter writer = openCellAlphaProperty();
             try {
                 writer.writeNumber(value);
             } finally {
@@ -461,7 +461,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeCellAlphaProperty(List<JulianDate> dates, List<Double> values) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openCellAlphaProperty();
+            DoubleCesiumWriter writer = openCellAlphaProperty();
             try {
                 writer.writeNumber(dates, values);
             } finally {
@@ -486,7 +486,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeCellAlphaProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openCellAlphaProperty();
+            DoubleCesiumWriter writer = openCellAlphaProperty();
             try {
                 writer.writeNumber(dates, values, startIndex, length);
             } finally {
@@ -505,7 +505,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeCellAlphaPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openCellAlphaProperty();
+            DoubleCesiumWriter writer = openCellAlphaProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -524,7 +524,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeCellAlphaPropertyReference(String value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openCellAlphaProperty();
+            DoubleCesiumWriter writer = openCellAlphaProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -545,7 +545,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeCellAlphaPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openCellAlphaProperty();
+            DoubleCesiumWriter writer = openCellAlphaProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -566,7 +566,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeCellAlphaPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openCellAlphaProperty();
+            DoubleCesiumWriter writer = openCellAlphaProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -607,7 +607,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeLineCountProperty(@Nonnull Rectangular value) {
         {
-            cesiumlanguagewriter.LineCountCesiumWriter writer = openLineCountProperty();
+            LineCountCesiumWriter writer = openLineCountProperty();
             try {
                 writer.writeCartesian2(value);
             } finally {
@@ -628,7 +628,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeLineCountProperty(double x, double y) {
         {
-            cesiumlanguagewriter.LineCountCesiumWriter writer = openLineCountProperty();
+            LineCountCesiumWriter writer = openLineCountProperty();
             try {
                 writer.writeCartesian2(x, y);
             } finally {
@@ -649,7 +649,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeLineCountProperty(List<JulianDate> dates, List<Rectangular> values) {
         {
-            cesiumlanguagewriter.LineCountCesiumWriter writer = openLineCountProperty();
+            LineCountCesiumWriter writer = openLineCountProperty();
             try {
                 writer.writeCartesian2(dates, values);
             } finally {
@@ -674,7 +674,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeLineCountProperty(List<JulianDate> dates, List<Rectangular> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.LineCountCesiumWriter writer = openLineCountProperty();
+            LineCountCesiumWriter writer = openLineCountProperty();
             try {
                 writer.writeCartesian2(dates, values, startIndex, length);
             } finally {
@@ -693,7 +693,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeLineCountPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.LineCountCesiumWriter writer = openLineCountProperty();
+            LineCountCesiumWriter writer = openLineCountProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -712,7 +712,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeLineCountPropertyReference(String value) {
         {
-            cesiumlanguagewriter.LineCountCesiumWriter writer = openLineCountProperty();
+            LineCountCesiumWriter writer = openLineCountProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -733,7 +733,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeLineCountPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.LineCountCesiumWriter writer = openLineCountProperty();
+            LineCountCesiumWriter writer = openLineCountProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -754,7 +754,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeLineCountPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.LineCountCesiumWriter writer = openLineCountProperty();
+            LineCountCesiumWriter writer = openLineCountProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -795,7 +795,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeLineThicknessProperty(@Nonnull Rectangular value) {
         {
-            cesiumlanguagewriter.LineThicknessCesiumWriter writer = openLineThicknessProperty();
+            LineThicknessCesiumWriter writer = openLineThicknessProperty();
             try {
                 writer.writeCartesian2(value);
             } finally {
@@ -816,7 +816,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeLineThicknessProperty(double x, double y) {
         {
-            cesiumlanguagewriter.LineThicknessCesiumWriter writer = openLineThicknessProperty();
+            LineThicknessCesiumWriter writer = openLineThicknessProperty();
             try {
                 writer.writeCartesian2(x, y);
             } finally {
@@ -837,7 +837,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeLineThicknessProperty(List<JulianDate> dates, List<Rectangular> values) {
         {
-            cesiumlanguagewriter.LineThicknessCesiumWriter writer = openLineThicknessProperty();
+            LineThicknessCesiumWriter writer = openLineThicknessProperty();
             try {
                 writer.writeCartesian2(dates, values);
             } finally {
@@ -862,7 +862,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeLineThicknessProperty(List<JulianDate> dates, List<Rectangular> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.LineThicknessCesiumWriter writer = openLineThicknessProperty();
+            LineThicknessCesiumWriter writer = openLineThicknessProperty();
             try {
                 writer.writeCartesian2(dates, values, startIndex, length);
             } finally {
@@ -881,7 +881,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeLineThicknessPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.LineThicknessCesiumWriter writer = openLineThicknessProperty();
+            LineThicknessCesiumWriter writer = openLineThicknessProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -900,7 +900,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeLineThicknessPropertyReference(String value) {
         {
-            cesiumlanguagewriter.LineThicknessCesiumWriter writer = openLineThicknessProperty();
+            LineThicknessCesiumWriter writer = openLineThicknessProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -921,7 +921,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeLineThicknessPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.LineThicknessCesiumWriter writer = openLineThicknessProperty();
+            LineThicknessCesiumWriter writer = openLineThicknessProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -942,7 +942,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeLineThicknessPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.LineThicknessCesiumWriter writer = openLineThicknessProperty();
+            LineThicknessCesiumWriter writer = openLineThicknessProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -983,7 +983,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeLineOffsetProperty(@Nonnull Rectangular value) {
         {
-            cesiumlanguagewriter.LineOffsetCesiumWriter writer = openLineOffsetProperty();
+            LineOffsetCesiumWriter writer = openLineOffsetProperty();
             try {
                 writer.writeCartesian2(value);
             } finally {
@@ -1004,7 +1004,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeLineOffsetProperty(double x, double y) {
         {
-            cesiumlanguagewriter.LineOffsetCesiumWriter writer = openLineOffsetProperty();
+            LineOffsetCesiumWriter writer = openLineOffsetProperty();
             try {
                 writer.writeCartesian2(x, y);
             } finally {
@@ -1025,7 +1025,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeLineOffsetProperty(List<JulianDate> dates, List<Rectangular> values) {
         {
-            cesiumlanguagewriter.LineOffsetCesiumWriter writer = openLineOffsetProperty();
+            LineOffsetCesiumWriter writer = openLineOffsetProperty();
             try {
                 writer.writeCartesian2(dates, values);
             } finally {
@@ -1050,7 +1050,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeLineOffsetProperty(List<JulianDate> dates, List<Rectangular> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.LineOffsetCesiumWriter writer = openLineOffsetProperty();
+            LineOffsetCesiumWriter writer = openLineOffsetProperty();
             try {
                 writer.writeCartesian2(dates, values, startIndex, length);
             } finally {
@@ -1069,7 +1069,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeLineOffsetPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.LineOffsetCesiumWriter writer = openLineOffsetProperty();
+            LineOffsetCesiumWriter writer = openLineOffsetProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1088,7 +1088,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeLineOffsetPropertyReference(String value) {
         {
-            cesiumlanguagewriter.LineOffsetCesiumWriter writer = openLineOffsetProperty();
+            LineOffsetCesiumWriter writer = openLineOffsetProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1109,7 +1109,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeLineOffsetPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.LineOffsetCesiumWriter writer = openLineOffsetProperty();
+            LineOffsetCesiumWriter writer = openLineOffsetProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -1130,7 +1130,7 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     */
     public final void writeLineOffsetPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.LineOffsetCesiumWriter writer = openLineOffsetProperty();
+            LineOffsetCesiumWriter writer = openLineOffsetProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {

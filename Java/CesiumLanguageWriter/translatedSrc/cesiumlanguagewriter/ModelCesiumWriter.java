@@ -311,7 +311,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeShowProperty(boolean value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+            BooleanCesiumWriter writer = openShowProperty();
             try {
                 writer.writeBoolean(value);
             } finally {
@@ -330,7 +330,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeShowPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+            BooleanCesiumWriter writer = openShowProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -349,7 +349,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeShowPropertyReference(String value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+            BooleanCesiumWriter writer = openShowProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -370,7 +370,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeShowPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+            BooleanCesiumWriter writer = openShowProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -391,7 +391,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeShowPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+            BooleanCesiumWriter writer = openShowProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -432,7 +432,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeGltfProperty(CesiumResource resource) {
         {
-            cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
+            UriCesiumWriter writer = openGltfProperty();
             try {
                 writer.writeUri(resource);
             } finally {
@@ -453,7 +453,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeGltfProperty(URI uri, @Nonnull CesiumResourceBehavior resourceBehavior) {
         {
-            cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
+            UriCesiumWriter writer = openGltfProperty();
             try {
                 writer.writeUri(uri, resourceBehavior);
             } finally {
@@ -474,7 +474,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeGltfProperty(String uri, @Nonnull CesiumResourceBehavior resourceBehavior) {
         {
-            cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
+            UriCesiumWriter writer = openGltfProperty();
             try {
                 writer.writeUri(uri, resourceBehavior);
             } finally {
@@ -495,7 +495,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeGltfProperty(URI uri, ICesiumUriResolver resolver) {
         {
-            cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
+            UriCesiumWriter writer = openGltfProperty();
             try {
                 writer.writeUri(uri, resolver);
             } finally {
@@ -516,7 +516,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeGltfProperty(String uri, ICesiumUriResolver resolver) {
         {
-            cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
+            UriCesiumWriter writer = openGltfProperty();
             try {
                 writer.writeUri(uri, resolver);
             } finally {
@@ -535,7 +535,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeGltfProperty(RenderedImage image) {
         {
-            cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
+            UriCesiumWriter writer = openGltfProperty();
             try {
                 writer.writeUri(image);
             } finally {
@@ -556,7 +556,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeGltfProperty(RenderedImage image, @Nonnull CesiumImageFormat imageFormat) {
         {
-            cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
+            UriCesiumWriter writer = openGltfProperty();
             try {
                 writer.writeUri(image, imageFormat);
             } finally {
@@ -575,7 +575,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeGltfPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
+            UriCesiumWriter writer = openGltfProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -594,7 +594,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeGltfPropertyReference(String value) {
         {
-            cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
+            UriCesiumWriter writer = openGltfProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -615,7 +615,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeGltfPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
+            UriCesiumWriter writer = openGltfProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -636,7 +636,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeGltfPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.UriCesiumWriter writer = openGltfProperty();
+            UriCesiumWriter writer = openGltfProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -677,7 +677,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeScaleProperty(double value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openScaleProperty();
+            DoubleCesiumWriter writer = openScaleProperty();
             try {
                 writer.writeNumber(value);
             } finally {
@@ -698,7 +698,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeScaleProperty(List<JulianDate> dates, List<Double> values) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openScaleProperty();
+            DoubleCesiumWriter writer = openScaleProperty();
             try {
                 writer.writeNumber(dates, values);
             } finally {
@@ -723,7 +723,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeScaleProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openScaleProperty();
+            DoubleCesiumWriter writer = openScaleProperty();
             try {
                 writer.writeNumber(dates, values, startIndex, length);
             } finally {
@@ -742,7 +742,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeScalePropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openScaleProperty();
+            DoubleCesiumWriter writer = openScaleProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -761,7 +761,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeScalePropertyReference(String value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openScaleProperty();
+            DoubleCesiumWriter writer = openScaleProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -782,7 +782,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeScalePropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openScaleProperty();
+            DoubleCesiumWriter writer = openScaleProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -803,7 +803,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeScalePropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openScaleProperty();
+            DoubleCesiumWriter writer = openScaleProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -844,7 +844,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeMinimumPixelSizeProperty(double value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openMinimumPixelSizeProperty();
+            DoubleCesiumWriter writer = openMinimumPixelSizeProperty();
             try {
                 writer.writeNumber(value);
             } finally {
@@ -865,7 +865,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeMinimumPixelSizeProperty(List<JulianDate> dates, List<Double> values) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openMinimumPixelSizeProperty();
+            DoubleCesiumWriter writer = openMinimumPixelSizeProperty();
             try {
                 writer.writeNumber(dates, values);
             } finally {
@@ -890,7 +890,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeMinimumPixelSizeProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openMinimumPixelSizeProperty();
+            DoubleCesiumWriter writer = openMinimumPixelSizeProperty();
             try {
                 writer.writeNumber(dates, values, startIndex, length);
             } finally {
@@ -909,7 +909,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeMinimumPixelSizePropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openMinimumPixelSizeProperty();
+            DoubleCesiumWriter writer = openMinimumPixelSizeProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -928,7 +928,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeMinimumPixelSizePropertyReference(String value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openMinimumPixelSizeProperty();
+            DoubleCesiumWriter writer = openMinimumPixelSizeProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -949,7 +949,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeMinimumPixelSizePropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openMinimumPixelSizeProperty();
+            DoubleCesiumWriter writer = openMinimumPixelSizeProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -970,7 +970,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeMinimumPixelSizePropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openMinimumPixelSizeProperty();
+            DoubleCesiumWriter writer = openMinimumPixelSizeProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -1011,7 +1011,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeMaximumScaleProperty(double value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openMaximumScaleProperty();
+            DoubleCesiumWriter writer = openMaximumScaleProperty();
             try {
                 writer.writeNumber(value);
             } finally {
@@ -1032,7 +1032,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeMaximumScaleProperty(List<JulianDate> dates, List<Double> values) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openMaximumScaleProperty();
+            DoubleCesiumWriter writer = openMaximumScaleProperty();
             try {
                 writer.writeNumber(dates, values);
             } finally {
@@ -1057,7 +1057,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeMaximumScaleProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openMaximumScaleProperty();
+            DoubleCesiumWriter writer = openMaximumScaleProperty();
             try {
                 writer.writeNumber(dates, values, startIndex, length);
             } finally {
@@ -1076,7 +1076,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeMaximumScalePropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openMaximumScaleProperty();
+            DoubleCesiumWriter writer = openMaximumScaleProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1095,7 +1095,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeMaximumScalePropertyReference(String value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openMaximumScaleProperty();
+            DoubleCesiumWriter writer = openMaximumScaleProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1116,7 +1116,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeMaximumScalePropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openMaximumScaleProperty();
+            DoubleCesiumWriter writer = openMaximumScaleProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -1137,7 +1137,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeMaximumScalePropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openMaximumScaleProperty();
+            DoubleCesiumWriter writer = openMaximumScaleProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -1178,7 +1178,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeIncrementallyLoadTexturesProperty(boolean value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openIncrementallyLoadTexturesProperty();
+            BooleanCesiumWriter writer = openIncrementallyLoadTexturesProperty();
             try {
                 writer.writeBoolean(value);
             } finally {
@@ -1197,7 +1197,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeIncrementallyLoadTexturesPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openIncrementallyLoadTexturesProperty();
+            BooleanCesiumWriter writer = openIncrementallyLoadTexturesProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1216,7 +1216,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeIncrementallyLoadTexturesPropertyReference(String value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openIncrementallyLoadTexturesProperty();
+            BooleanCesiumWriter writer = openIncrementallyLoadTexturesProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1237,7 +1237,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeIncrementallyLoadTexturesPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openIncrementallyLoadTexturesProperty();
+            BooleanCesiumWriter writer = openIncrementallyLoadTexturesProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -1258,7 +1258,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeIncrementallyLoadTexturesPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openIncrementallyLoadTexturesProperty();
+            BooleanCesiumWriter writer = openIncrementallyLoadTexturesProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -1299,7 +1299,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeRunAnimationsProperty(boolean value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openRunAnimationsProperty();
+            BooleanCesiumWriter writer = openRunAnimationsProperty();
             try {
                 writer.writeBoolean(value);
             } finally {
@@ -1318,7 +1318,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeRunAnimationsPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openRunAnimationsProperty();
+            BooleanCesiumWriter writer = openRunAnimationsProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1337,7 +1337,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeRunAnimationsPropertyReference(String value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openRunAnimationsProperty();
+            BooleanCesiumWriter writer = openRunAnimationsProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1358,7 +1358,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeRunAnimationsPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openRunAnimationsProperty();
+            BooleanCesiumWriter writer = openRunAnimationsProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -1379,7 +1379,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeRunAnimationsPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openRunAnimationsProperty();
+            BooleanCesiumWriter writer = openRunAnimationsProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -1420,7 +1420,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeShadowsProperty(@Nonnull CesiumShadowMode value) {
         {
-            cesiumlanguagewriter.ShadowModeCesiumWriter writer = openShadowsProperty();
+            ShadowModeCesiumWriter writer = openShadowsProperty();
             try {
                 writer.writeShadowMode(value);
             } finally {
@@ -1439,7 +1439,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeShadowsPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.ShadowModeCesiumWriter writer = openShadowsProperty();
+            ShadowModeCesiumWriter writer = openShadowsProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1458,7 +1458,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeShadowsPropertyReference(String value) {
         {
-            cesiumlanguagewriter.ShadowModeCesiumWriter writer = openShadowsProperty();
+            ShadowModeCesiumWriter writer = openShadowsProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1479,7 +1479,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeShadowsPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.ShadowModeCesiumWriter writer = openShadowsProperty();
+            ShadowModeCesiumWriter writer = openShadowsProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -1500,7 +1500,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeShadowsPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.ShadowModeCesiumWriter writer = openShadowsProperty();
+            ShadowModeCesiumWriter writer = openShadowsProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -1541,7 +1541,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeHeightReferenceProperty(@Nonnull CesiumHeightReference value) {
         {
-            cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
+            HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
             try {
                 writer.writeHeightReference(value);
             } finally {
@@ -1560,7 +1560,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeHeightReferencePropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
+            HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1579,7 +1579,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeHeightReferencePropertyReference(String value) {
         {
-            cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
+            HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1600,7 +1600,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeHeightReferencePropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
+            HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -1621,7 +1621,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeHeightReferencePropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
+            HeightReferenceCesiumWriter writer = openHeightReferenceProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -1662,7 +1662,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeSilhouetteColorProperty(@Nonnull Color color) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openSilhouetteColorProperty();
+            ColorCesiumWriter writer = openSilhouetteColorProperty();
             try {
                 writer.writeRgba(color);
             } finally {
@@ -1687,7 +1687,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeSilhouetteColorProperty(int red, int green, int blue, int alpha) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openSilhouetteColorProperty();
+            ColorCesiumWriter writer = openSilhouetteColorProperty();
             try {
                 writer.writeRgba(red, green, blue, alpha);
             } finally {
@@ -1708,7 +1708,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeSilhouetteColorProperty(List<JulianDate> dates, List<Color> values) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openSilhouetteColorProperty();
+            ColorCesiumWriter writer = openSilhouetteColorProperty();
             try {
                 writer.writeRgba(dates, values);
             } finally {
@@ -1733,7 +1733,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeSilhouetteColorProperty(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openSilhouetteColorProperty();
+            ColorCesiumWriter writer = openSilhouetteColorProperty();
             try {
                 writer.writeRgba(dates, colors, startIndex, length);
             } finally {
@@ -1752,7 +1752,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeSilhouetteColorPropertyRgbaf(@Nonnull Color color) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openSilhouetteColorProperty();
+            ColorCesiumWriter writer = openSilhouetteColorProperty();
             try {
                 writer.writeRgbaf(color);
             } finally {
@@ -1777,7 +1777,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeSilhouetteColorPropertyRgbaf(float red, float green, float blue, float alpha) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openSilhouetteColorProperty();
+            ColorCesiumWriter writer = openSilhouetteColorProperty();
             try {
                 writer.writeRgbaf(red, green, blue, alpha);
             } finally {
@@ -1798,7 +1798,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeSilhouetteColorPropertyRgbaf(List<JulianDate> dates, List<Color> values) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openSilhouetteColorProperty();
+            ColorCesiumWriter writer = openSilhouetteColorProperty();
             try {
                 writer.writeRgbaf(dates, values);
             } finally {
@@ -1823,7 +1823,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeSilhouetteColorPropertyRgbaf(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openSilhouetteColorProperty();
+            ColorCesiumWriter writer = openSilhouetteColorProperty();
             try {
                 writer.writeRgbaf(dates, colors, startIndex, length);
             } finally {
@@ -1842,7 +1842,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeSilhouetteColorPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openSilhouetteColorProperty();
+            ColorCesiumWriter writer = openSilhouetteColorProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1861,7 +1861,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeSilhouetteColorPropertyReference(String value) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openSilhouetteColorProperty();
+            ColorCesiumWriter writer = openSilhouetteColorProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1882,7 +1882,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeSilhouetteColorPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openSilhouetteColorProperty();
+            ColorCesiumWriter writer = openSilhouetteColorProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -1903,7 +1903,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeSilhouetteColorPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openSilhouetteColorProperty();
+            ColorCesiumWriter writer = openSilhouetteColorProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -1944,7 +1944,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeSilhouetteSizeProperty(double value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openSilhouetteSizeProperty();
+            DoubleCesiumWriter writer = openSilhouetteSizeProperty();
             try {
                 writer.writeNumber(value);
             } finally {
@@ -1965,7 +1965,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeSilhouetteSizeProperty(List<JulianDate> dates, List<Double> values) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openSilhouetteSizeProperty();
+            DoubleCesiumWriter writer = openSilhouetteSizeProperty();
             try {
                 writer.writeNumber(dates, values);
             } finally {
@@ -1990,7 +1990,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeSilhouetteSizeProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openSilhouetteSizeProperty();
+            DoubleCesiumWriter writer = openSilhouetteSizeProperty();
             try {
                 writer.writeNumber(dates, values, startIndex, length);
             } finally {
@@ -2009,7 +2009,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeSilhouetteSizePropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openSilhouetteSizeProperty();
+            DoubleCesiumWriter writer = openSilhouetteSizeProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -2028,7 +2028,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeSilhouetteSizePropertyReference(String value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openSilhouetteSizeProperty();
+            DoubleCesiumWriter writer = openSilhouetteSizeProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -2049,7 +2049,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeSilhouetteSizePropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openSilhouetteSizeProperty();
+            DoubleCesiumWriter writer = openSilhouetteSizeProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -2070,7 +2070,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeSilhouetteSizePropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openSilhouetteSizeProperty();
+            DoubleCesiumWriter writer = openSilhouetteSizeProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -2111,7 +2111,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeColorProperty(@Nonnull Color color) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgba(color);
             } finally {
@@ -2136,7 +2136,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeColorProperty(int red, int green, int blue, int alpha) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgba(red, green, blue, alpha);
             } finally {
@@ -2157,7 +2157,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeColorProperty(List<JulianDate> dates, List<Color> values) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgba(dates, values);
             } finally {
@@ -2182,7 +2182,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeColorProperty(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgba(dates, colors, startIndex, length);
             } finally {
@@ -2201,7 +2201,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeColorPropertyRgbaf(@Nonnull Color color) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgbaf(color);
             } finally {
@@ -2226,7 +2226,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeColorPropertyRgbaf(float red, float green, float blue, float alpha) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgbaf(red, green, blue, alpha);
             } finally {
@@ -2247,7 +2247,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeColorPropertyRgbaf(List<JulianDate> dates, List<Color> values) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgbaf(dates, values);
             } finally {
@@ -2272,7 +2272,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeColorPropertyRgbaf(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeRgbaf(dates, colors, startIndex, length);
             } finally {
@@ -2291,7 +2291,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeColorPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -2310,7 +2310,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeColorPropertyReference(String value) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -2331,7 +2331,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeColorPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -2352,7 +2352,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeColorPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openColorProperty();
+            ColorCesiumWriter writer = openColorProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -2393,7 +2393,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeColorBlendModeProperty(@Nonnull CesiumColorBlendMode value) {
         {
-            cesiumlanguagewriter.ColorBlendModeCesiumWriter writer = openColorBlendModeProperty();
+            ColorBlendModeCesiumWriter writer = openColorBlendModeProperty();
             try {
                 writer.writeColorBlendMode(value);
             } finally {
@@ -2412,7 +2412,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeColorBlendModePropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.ColorBlendModeCesiumWriter writer = openColorBlendModeProperty();
+            ColorBlendModeCesiumWriter writer = openColorBlendModeProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -2431,7 +2431,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeColorBlendModePropertyReference(String value) {
         {
-            cesiumlanguagewriter.ColorBlendModeCesiumWriter writer = openColorBlendModeProperty();
+            ColorBlendModeCesiumWriter writer = openColorBlendModeProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -2452,7 +2452,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeColorBlendModePropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.ColorBlendModeCesiumWriter writer = openColorBlendModeProperty();
+            ColorBlendModeCesiumWriter writer = openColorBlendModeProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -2473,7 +2473,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeColorBlendModePropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.ColorBlendModeCesiumWriter writer = openColorBlendModeProperty();
+            ColorBlendModeCesiumWriter writer = openColorBlendModeProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -2514,7 +2514,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeColorBlendAmountProperty(double value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openColorBlendAmountProperty();
+            DoubleCesiumWriter writer = openColorBlendAmountProperty();
             try {
                 writer.writeNumber(value);
             } finally {
@@ -2535,7 +2535,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeColorBlendAmountProperty(List<JulianDate> dates, List<Double> values) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openColorBlendAmountProperty();
+            DoubleCesiumWriter writer = openColorBlendAmountProperty();
             try {
                 writer.writeNumber(dates, values);
             } finally {
@@ -2560,7 +2560,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeColorBlendAmountProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openColorBlendAmountProperty();
+            DoubleCesiumWriter writer = openColorBlendAmountProperty();
             try {
                 writer.writeNumber(dates, values, startIndex, length);
             } finally {
@@ -2579,7 +2579,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeColorBlendAmountPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openColorBlendAmountProperty();
+            DoubleCesiumWriter writer = openColorBlendAmountProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -2598,7 +2598,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeColorBlendAmountPropertyReference(String value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openColorBlendAmountProperty();
+            DoubleCesiumWriter writer = openColorBlendAmountProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -2619,7 +2619,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeColorBlendAmountPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openColorBlendAmountProperty();
+            DoubleCesiumWriter writer = openColorBlendAmountProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -2640,7 +2640,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeColorBlendAmountPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openColorBlendAmountProperty();
+            DoubleCesiumWriter writer = openColorBlendAmountProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -2681,7 +2681,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeDistanceDisplayConditionProperty(@Nonnull Bounds value) {
         {
-            cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
+            DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
             try {
                 writer.writeDistanceDisplayCondition(value);
             } finally {
@@ -2702,7 +2702,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeDistanceDisplayConditionProperty(double lowerBound, double upperBound) {
         {
-            cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
+            DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
             try {
                 writer.writeDistanceDisplayCondition(lowerBound, upperBound);
             } finally {
@@ -2723,7 +2723,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeDistanceDisplayConditionProperty(List<JulianDate> dates, List<Bounds> values) {
         {
-            cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
+            DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
             try {
                 writer.writeDistanceDisplayCondition(dates, values);
             } finally {
@@ -2748,7 +2748,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeDistanceDisplayConditionProperty(List<JulianDate> dates, List<Bounds> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
+            DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
             try {
                 writer.writeDistanceDisplayCondition(dates, values, startIndex, length);
             } finally {
@@ -2767,7 +2767,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeDistanceDisplayConditionPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
+            DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -2786,7 +2786,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeDistanceDisplayConditionPropertyReference(String value) {
         {
-            cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
+            DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -2807,7 +2807,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeDistanceDisplayConditionPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
+            DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -2828,7 +2828,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     */
     public final void writeDistanceDisplayConditionPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
+            DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {

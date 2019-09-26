@@ -41,7 +41,7 @@ public class TestGregorianDateFormatting {
 
     public final void testToStringStandardFormats(String format) {
         ZonedDateTime dateTime = DateTimeHelper.create(2002, 2, 25, 5, 25, 13);
-        cesiumlanguagewriter.GregorianDate gregorianDate = new GregorianDate(dateTime);
+        GregorianDate gregorianDate = new GregorianDate(dateTime);
         // .NET Core on Linux uses different standard formats, so we compare against what DateTime does
         // rather than specific known strings.
         Assert.assertEquals(DateTimeHelper.toString(dateTime, format, m_cultureInfo), gregorianDate.toString(format, m_cultureInfo));
@@ -135,7 +135,7 @@ public class TestGregorianDateFormatting {
     @Test
     public final void testToStringCustomFormats() {
         ZonedDateTime dateTime = DateTimeHelper.create(2002, 2, 25, 5, 25, 13);
-        cesiumlanguagewriter.GregorianDate gregorianDate = new GregorianDate(dateTime);
+        GregorianDate gregorianDate = new GregorianDate(dateTime);
         Assert.assertEquals("25", gregorianDate.toString("%d", m_cultureInfo));
         Assert.assertEquals("25", gregorianDate.toString("dd", m_cultureInfo));
         Assert.assertEquals("Mon", gregorianDate.toString("ddd", m_cultureInfo));
@@ -246,7 +246,7 @@ public class TestGregorianDateFormatting {
     }
 
     public final void toIso8601ExtendedStringProducesCorrectStrings(int year, int month, int day, int hour, int minute, double second, String expectedIsoString) {
-        cesiumlanguagewriter.GregorianDate gregorianDate = new GregorianDate(year, month, day, hour, minute, second);
+        GregorianDate gregorianDate = new GregorianDate(year, month, day, hour, minute, second);
         String isoString = gregorianDate.toIso8601String(Iso8601Format.EXTENDED);
         Assert.assertEquals(expectedIsoString, isoString);
         AssertHelper.assertEquals(gregorianDate, GregorianDate.parse(isoString));
@@ -298,7 +298,7 @@ public class TestGregorianDateFormatting {
     }
 
     public final void toIso8601BasicStringProducesCorrectStrings(int year, int month, int day, int hour, int minute, double second, String expectedIsoString) {
-        cesiumlanguagewriter.GregorianDate gregorianDate = new GregorianDate(year, month, day, hour, minute, second);
+        GregorianDate gregorianDate = new GregorianDate(year, month, day, hour, minute, second);
         String isoString = gregorianDate.toIso8601String(Iso8601Format.BASIC);
         Assert.assertEquals(expectedIsoString, isoString);
         AssertHelper.assertEquals(gregorianDate, GregorianDate.parse(isoString));
@@ -350,7 +350,7 @@ public class TestGregorianDateFormatting {
     }
 
     public final void toIso8601CompactStringProducesCorrectStrings(int year, int month, int day, int hour, int minute, double second, String expectedIsoString) {
-        cesiumlanguagewriter.GregorianDate gregorianDate = new GregorianDate(year, month, day, hour, minute, second);
+        GregorianDate gregorianDate = new GregorianDate(year, month, day, hour, minute, second);
         String isoString = gregorianDate.toIso8601String(Iso8601Format.COMPACT);
         Assert.assertEquals(expectedIsoString, isoString);
     }
@@ -453,13 +453,13 @@ public class TestGregorianDateFormatting {
 
     @Test
     public final void toStringTruncatesSeconds() {
-        cesiumlanguagewriter.GregorianDate gregorianDate = new GregorianDate(2012, 8, 7, 13, 59, 59.9999999);
+        GregorianDate gregorianDate = new GregorianDate(2012, 8, 7, 13, 59, 59.9999999);
         Assert.assertEquals("2012-08-07 13:59:59.999999", gregorianDate.toString("yyyy-MM-dd HH:mm:ss.ffffff", m_cultureInfo));
     }
 
     @Test
     public final void wholeNumberSecondsIsFormattedCorrectly() {
-        cesiumlanguagewriter.GregorianDate gregorianDate = new GregorianDate(2012, 8, 7, 13, 59, 55.0);
+        GregorianDate gregorianDate = new GregorianDate(2012, 8, 7, 13, 59, 55.0);
         Assert.assertEquals("2012-08-07 13:59:55.000000", gregorianDate.toString("yyyy-MM-dd HH:mm:ss.ffffff", m_cultureInfo));
         gregorianDate = new GregorianDate(2012, 8, 7, 13, 59, 55.0);
         Assert.assertEquals("2012-08-07 13:59:55", gregorianDate.toString("yyyy-MM-dd HH:mm:ss", m_cultureInfo));
@@ -468,7 +468,7 @@ public class TestGregorianDateFormatting {
     }
 
     public final void toIso8601StringWithFractionalSeconds(int year, int month, int day, int hour, int minute, double second, String expectedIsoString) {
-        cesiumlanguagewriter.GregorianDate gregorianDate = new GregorianDate(year, month, day, hour, minute, second);
+        GregorianDate gregorianDate = new GregorianDate(year, month, day, hour, minute, second);
         String isoString = gregorianDate.toIso8601String(Iso8601Format.EXTENDED, 6);
         Assert.assertEquals(expectedIsoString, isoString);
     }
@@ -511,7 +511,7 @@ public class TestGregorianDateFormatting {
     @Test
     public final void fractionalSecondsCloseToZeroAreFormattedCorrectly() {
         // Based on BUG71966: GregorianDate.ToString(format) produces incorrect value for fractional seconds
-        cesiumlanguagewriter.GregorianDate date = new GregorianDate(2012, 2, 25, 0, 15, 0.000000000014551915228366852);
+        GregorianDate date = new GregorianDate(2012, 2, 25, 0, 15, 0.000000000014551915228366852);
         Assert.assertEquals("001500.0000000", date.toString("HHmmss.fffffff", m_cultureInfo));
     }
 

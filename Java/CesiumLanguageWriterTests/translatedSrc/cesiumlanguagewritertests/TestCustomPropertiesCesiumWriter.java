@@ -49,10 +49,10 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
             final PacketCesiumWriter usingExpression_0 = (getPacket());
             try {
                 {
-                    cesiumlanguagewriter.CustomPropertiesCesiumWriter customPropertiesWriter = getPacket().openPropertiesProperty();
+                    CustomPropertiesCesiumWriter customPropertiesWriter = getPacket().openPropertiesProperty();
                     try {
                         {
-                            cesiumlanguagewriter.CustomPropertyCesiumWriter customPropertyWriter = customPropertiesWriter.openCustomPropertyProperty("custom_property");
+                            CustomPropertyCesiumWriter customPropertyWriter = customPropertiesWriter.openCustomPropertyProperty("custom_property");
                             try {
                                 customPropertyWriter.writeBoolean(true);
                             } finally {
@@ -76,13 +76,13 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
             final PacketCesiumWriter usingExpression_1 = (getPacket());
             try {
                 {
-                    cesiumlanguagewriter.CustomPropertiesCesiumWriter customPropertiesWriter = getPacket().openPropertiesProperty();
+                    CustomPropertiesCesiumWriter customPropertiesWriter = getPacket().openPropertiesProperty();
                     try {
                         {
-                            cesiumlanguagewriter.CustomPropertyCesiumWriter customPropertyWriter = customPropertiesWriter.openCustomPropertyProperty("custom_property");
+                            CustomPropertyCesiumWriter customPropertyWriter = customPropertiesWriter.openCustomPropertyProperty("custom_property");
                             try {
                                 {
-                                    cesiumlanguagewriter.CustomPropertyCesiumWriter intervalWriter = customPropertyWriter.openInterval(m_startDate, m_stopDate);
+                                    CustomPropertyCesiumWriter intervalWriter = customPropertyWriter.openInterval(m_startDate, m_stopDate);
                                     try {
                                         intervalWriter.writeBoolean(true);
                                     } finally {
@@ -110,10 +110,10 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
             final PacketCesiumWriter usingExpression_2 = (getPacket());
             try {
                 {
-                    cesiumlanguagewriter.CustomPropertiesCesiumWriter customPropertiesWriter = getPacket().openPropertiesProperty();
+                    CustomPropertiesCesiumWriter customPropertiesWriter = getPacket().openPropertiesProperty();
                     try {
                         {
-                            cesiumlanguagewriter.CustomPropertyCesiumWriter customPropertyWriter = customPropertiesWriter.openCustomPropertyProperty("custom_property");
+                            CustomPropertyCesiumWriter customPropertyWriter = customPropertiesWriter.openCustomPropertyProperty("custom_property");
                             try {
                                 customPropertyWriter.writeCartesian(new Cartesian(1D, 2D, 3D));
                             } finally {
@@ -137,10 +137,10 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
             final PacketCesiumWriter usingExpression_3 = (getPacket());
             try {
                 {
-                    cesiumlanguagewriter.CustomPropertiesCesiumWriter customPropertiesWriter = getPacket().openPropertiesProperty();
+                    CustomPropertiesCesiumWriter customPropertiesWriter = getPacket().openPropertiesProperty();
                     try {
                         {
-                            cesiumlanguagewriter.CustomPropertyCesiumWriter customPropertyWriter = customPropertiesWriter.openCustomPropertyProperty("custom_property");
+                            CustomPropertyCesiumWriter customPropertyWriter = customPropertiesWriter.openCustomPropertyProperty("custom_property");
                             try {
                                 ArrayList<cesiumlanguagewriter.JulianDate> dates = new ArrayList<cesiumlanguagewriter.JulianDate>();
                                 ArrayList<cesiumlanguagewriter.Cartesian> values = new ArrayList<cesiumlanguagewriter.Cartesian>();
@@ -172,10 +172,10 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
             final PacketCesiumWriter usingExpression_4 = (getPacket());
             try {
                 {
-                    cesiumlanguagewriter.CustomPropertiesCesiumWriter customPropertiesWriter = getPacket().openPropertiesProperty();
+                    CustomPropertiesCesiumWriter customPropertiesWriter = getPacket().openPropertiesProperty();
                     try {
                         {
-                            cesiumlanguagewriter.CustomPropertyCesiumWriter customPropertyWriter = customPropertiesWriter.openCustomPropertyProperty("custom_property");
+                            CustomPropertyCesiumWriter customPropertyWriter = customPropertiesWriter.openCustomPropertyProperty("custom_property");
                             try {
                                 customPropertyWriter.writeInterpolationAlgorithm(CesiumInterpolationAlgorithm.HERMITE);
                                 ArrayList<cesiumlanguagewriter.JulianDate> dates = new ArrayList<cesiumlanguagewriter.JulianDate>();
@@ -209,10 +209,10 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
             final PacketCesiumWriter usingExpression_5 = (getPacket());
             try {
                 {
-                    cesiumlanguagewriter.CustomPropertiesCesiumWriter customPropertiesWriter = getPacket().openPropertiesProperty();
+                    CustomPropertiesCesiumWriter customPropertiesWriter = getPacket().openPropertiesProperty();
                     try {
                         {
-                            cesiumlanguagewriter.CustomPropertyCesiumWriter customPropertyWriter = customPropertiesWriter.openCustomPropertyProperty("custom_boolean");
+                            CustomPropertyCesiumWriter customPropertyWriter = customPropertiesWriter.openCustomPropertyProperty("custom_boolean");
                             try {
                                 customPropertyWriter.writeBoolean(true);
                             } finally {
@@ -220,7 +220,7 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
                             }
                         }
                         {
-                            cesiumlanguagewriter.CustomPropertyCesiumWriter customPropertyWriter = customPropertiesWriter.openCustomPropertyProperty("custom_cartesian");
+                            CustomPropertyCesiumWriter customPropertyWriter = customPropertiesWriter.openCustomPropertyProperty("custom_cartesian");
                             try {
                                 customPropertyWriter.writeCartesian(new Cartesian(1D, 2D, 3D));
                             } finally {
@@ -245,19 +245,19 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
             try {
                 final CesiumOutputStream tempObj$0 = new CesiumOutputStream(stringWriter);
                 tempObj$0.setPrettyFormatting(true);
-                cesiumlanguagewriter.CesiumOutputStream output = tempObj$0;
-                cesiumlanguagewriter.CesiumStreamWriter writer = new CesiumStreamWriter();
+                CesiumOutputStream output = tempObj$0;
+                CesiumStreamWriter writer = new CesiumStreamWriter();
                 output.writeStartSequence();
                 {
-                    cesiumlanguagewriter.PacketCesiumWriter documentPacket = writer.openPacket(output);
+                    PacketCesiumWriter documentPacket = writer.openPacket(output);
                     try {
                         documentPacket.writeId("document");
                         documentPacket.writeVersion("1.0");
                         {
-                            cesiumlanguagewriter.ClockCesiumWriter clockWriter = documentPacket.openClockProperty();
+                            ClockCesiumWriter clockWriter = documentPacket.openClockProperty();
                             try {
                                 {
-                                    cesiumlanguagewriter.ClockCesiumWriter intervalClockWriter = clockWriter.openInterval(m_startDate, m_stopDate);
+                                    ClockCesiumWriter intervalClockWriter = clockWriter.openInterval(m_startDate, m_stopDate);
                                     try {
                                         intervalClockWriter.writeCurrentTime(m_startDate);
                                     } finally {
@@ -273,21 +273,20 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
                     }
                 }
                 {
-                    cesiumlanguagewriter.PacketCesiumWriter packet = writer.openPacket(output);
+                    PacketCesiumWriter packet = writer.openPacket(output);
                     try {
                         packet.writeId("MyID");
                         {
-                            cesiumlanguagewriter.CustomPropertiesCesiumWriter customPropertiesWriter = packet.openPropertiesProperty();
+                            CustomPropertiesCesiumWriter customPropertiesWriter = packet.openPropertiesProperty();
                             try {
                                 {
-                                    cesiumlanguagewriter.CustomPropertyCesiumWriter customPropertyWriter = customPropertiesWriter.openCustomPropertyProperty("custom_boolean");
+                                    CustomPropertyCesiumWriter customPropertyWriter = customPropertiesWriter.openCustomPropertyProperty("custom_boolean");
                                     try {
                                         {
-                                            cesiumlanguagewriter.CesiumIntervalListWriter<cesiumlanguagewriter.CustomPropertyCesiumWriter> intervalListWriter = customPropertyWriter
-                                                    .openMultipleIntervals();
+                                            CesiumIntervalListWriter<cesiumlanguagewriter.CustomPropertyCesiumWriter> intervalListWriter = customPropertyWriter.openMultipleIntervals();
                                             try {
                                                 {
-                                                    cesiumlanguagewriter.CustomPropertyCesiumWriter intervalWriter = intervalListWriter.openInterval(m_startDate, m_startDate.addSeconds(1D));
+                                                    CustomPropertyCesiumWriter intervalWriter = intervalListWriter.openInterval(m_startDate, m_startDate.addSeconds(1D));
                                                     try {
                                                         intervalWriter.writeBoolean(true);
                                                     } finally {
@@ -295,8 +294,7 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
                                                     }
                                                 }
                                                 {
-                                                    cesiumlanguagewriter.CustomPropertyCesiumWriter intervalWriter = intervalListWriter.openInterval(m_startDate.addSeconds(1D), m_startDate
-                                                            .addSeconds(2D));
+                                                    CustomPropertyCesiumWriter intervalWriter = intervalListWriter.openInterval(m_startDate.addSeconds(1D), m_startDate.addSeconds(2D));
                                                     try {
                                                         intervalWriter.writeBoolean(false);
                                                     } finally {
@@ -304,7 +302,7 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
                                                     }
                                                 }
                                                 {
-                                                    cesiumlanguagewriter.CustomPropertyCesiumWriter intervalWriter = intervalListWriter.openInterval(m_startDate.addSeconds(2D), m_stopDate);
+                                                    CustomPropertyCesiumWriter intervalWriter = intervalListWriter.openInterval(m_startDate.addSeconds(2D), m_stopDate);
                                                     try {
                                                         intervalWriter.writeBoolean(true);
                                                     } finally {
@@ -320,7 +318,7 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
                                     }
                                 }
                                 {
-                                    cesiumlanguagewriter.CustomPropertyCesiumWriter customPropertyWriter = customPropertiesWriter.openCustomPropertyProperty("custom_cartesian");
+                                    CustomPropertyCesiumWriter customPropertyWriter = customPropertiesWriter.openCustomPropertyProperty("custom_cartesian");
                                     try {
                                         ArrayList<cesiumlanguagewriter.JulianDate> dates = new ArrayList<cesiumlanguagewriter.JulianDate>();
                                         ArrayList<cesiumlanguagewriter.Cartesian> values = new ArrayList<cesiumlanguagewriter.Cartesian>();

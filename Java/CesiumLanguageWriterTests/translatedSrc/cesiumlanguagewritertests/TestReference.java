@@ -27,7 +27,7 @@ public class TestReference {
     @Test
     public final void canConstructEscapedReferences() {
         String value = "identifier#property";
-        cesiumlanguagewriter.Reference reference = new Reference(value);
+        Reference reference = new Reference(value);
         Assert.assertEquals(reference.getIdentifier(), "identifier");
         final ArrayList<String> tempCollection$0 = new ArrayList<String>();
         tempCollection$0.add("property");
@@ -63,7 +63,7 @@ public class TestReference {
 
     @Test
     public final void canConstructFromIdentifierAndProperty() {
-        cesiumlanguagewriter.Reference reference = new Reference("identifier", "property");
+        Reference reference = new Reference("identifier", "property");
         Assert.assertEquals(reference.getIdentifier(), "identifier");
         final ArrayList<String> tempCollection$4 = new ArrayList<String>();
         tempCollection$4.add("property");
@@ -82,7 +82,7 @@ public class TestReference {
         final ArrayList<String> tempCollection$6 = new ArrayList<String>();
         tempCollection$6.add("property");
         tempCollection$6.add("subProperty");
-        cesiumlanguagewriter.Reference reference = new Reference("identifier", tempCollection$6);
+        Reference reference = new Reference("identifier", tempCollection$6);
         Assert.assertEquals(reference.getIdentifier(), "identifier");
         final ArrayList<String> tempCollection$7 = new ArrayList<String>();
         tempCollection$7.add("property");
@@ -105,7 +105,7 @@ public class TestReference {
     public final void throwsWithMissingDelimiter() {
         ArgumentException exception = AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, new Action() {
             public void invoke() {
-                cesiumlanguagewriter.Reference unused = new Reference("MissingDelimiter");
+                Reference unused = new Reference("MissingDelimiter");
             }
         });
         AssertHelper.assertStringContains("The provided reference string is not in the correct format", exception.getMessage());
@@ -115,7 +115,7 @@ public class TestReference {
     public final void throwsWithMissingDelimiterDueToEscaping() {
         ArgumentException exception = AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, new Action() {
             public void invoke() {
-                cesiumlanguagewriter.Reference unused = new Reference("Missing\\#Delimiter");
+                Reference unused = new Reference("Missing\\#Delimiter");
             }
         });
         AssertHelper.assertStringContains("The provided reference string is not in the correct format", exception.getMessage());
@@ -125,7 +125,7 @@ public class TestReference {
     public final void throwsWithMissingProperties() {
         ArgumentException exception = AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, new Action() {
             public void invoke() {
-                cesiumlanguagewriter.Reference unused = new Reference("MissingPropertyName#");
+                Reference unused = new Reference("MissingPropertyName#");
             }
         });
         AssertHelper.assertStringContains("The provided reference string is not in the correct format", exception.getMessage());

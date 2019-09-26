@@ -499,7 +499,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writeDescriptionProperty(String value) {
         {
-            cesiumlanguagewriter.StringCesiumWriter writer = openDescriptionProperty();
+            StringCesiumWriter writer = openDescriptionProperty();
             try {
                 writer.writeString(value);
             } finally {
@@ -518,7 +518,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writeDescriptionPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.StringCesiumWriter writer = openDescriptionProperty();
+            StringCesiumWriter writer = openDescriptionProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -537,7 +537,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writeDescriptionPropertyReference(String value) {
         {
-            cesiumlanguagewriter.StringCesiumWriter writer = openDescriptionProperty();
+            StringCesiumWriter writer = openDescriptionProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -558,7 +558,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writeDescriptionPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.StringCesiumWriter writer = openDescriptionProperty();
+            StringCesiumWriter writer = openDescriptionProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -579,7 +579,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writeDescriptionPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.StringCesiumWriter writer = openDescriptionProperty();
+            StringCesiumWriter writer = openDescriptionProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -717,7 +717,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writePositionProperty(@Nonnull Cartesian value) {
         {
-            cesiumlanguagewriter.PositionCesiumWriter writer = openPositionProperty();
+            PositionCesiumWriter writer = openPositionProperty();
             try {
                 writer.writeCartesian(value);
             } finally {
@@ -738,7 +738,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writePositionProperty(List<JulianDate> dates, List<Cartesian> values) {
         {
-            cesiumlanguagewriter.PositionCesiumWriter writer = openPositionProperty();
+            PositionCesiumWriter writer = openPositionProperty();
             try {
                 writer.writeCartesian(dates, values);
             } finally {
@@ -763,7 +763,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writePositionProperty(List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.PositionCesiumWriter writer = openPositionProperty();
+            PositionCesiumWriter writer = openPositionProperty();
             try {
                 writer.writeCartesian(dates, values, startIndex, length);
             } finally {
@@ -782,7 +782,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writePositionPropertyCartographicRadians(@Nonnull Cartographic value) {
         {
-            cesiumlanguagewriter.PositionCesiumWriter writer = openPositionProperty();
+            PositionCesiumWriter writer = openPositionProperty();
             try {
                 writer.writeCartographicRadians(value);
             } finally {
@@ -803,7 +803,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writePositionPropertyCartographicRadians(List<JulianDate> dates, List<Cartographic> values) {
         {
-            cesiumlanguagewriter.PositionCesiumWriter writer = openPositionProperty();
+            PositionCesiumWriter writer = openPositionProperty();
             try {
                 writer.writeCartographicRadians(dates, values);
             } finally {
@@ -828,7 +828,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writePositionPropertyCartographicRadians(List<JulianDate> dates, List<Cartographic> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.PositionCesiumWriter writer = openPositionProperty();
+            PositionCesiumWriter writer = openPositionProperty();
             try {
                 writer.writeCartographicRadians(dates, values, startIndex, length);
             } finally {
@@ -847,7 +847,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writePositionPropertyCartographicDegrees(@Nonnull Cartographic value) {
         {
-            cesiumlanguagewriter.PositionCesiumWriter writer = openPositionProperty();
+            PositionCesiumWriter writer = openPositionProperty();
             try {
                 writer.writeCartographicDegrees(value);
             } finally {
@@ -868,7 +868,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writePositionPropertyCartographicDegrees(List<JulianDate> dates, List<Cartographic> values) {
         {
-            cesiumlanguagewriter.PositionCesiumWriter writer = openPositionProperty();
+            PositionCesiumWriter writer = openPositionProperty();
             try {
                 writer.writeCartographicDegrees(dates, values);
             } finally {
@@ -893,7 +893,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writePositionPropertyCartographicDegrees(List<JulianDate> dates, List<Cartographic> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.PositionCesiumWriter writer = openPositionProperty();
+            PositionCesiumWriter writer = openPositionProperty();
             try {
                 writer.writeCartographicDegrees(dates, values, startIndex, length);
             } finally {
@@ -912,7 +912,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writePositionPropertyCartesianVelocity(@Nonnull Motion1<Cartesian> value) {
         {
-            cesiumlanguagewriter.PositionCesiumWriter writer = openPositionProperty();
+            PositionCesiumWriter writer = openPositionProperty();
             try {
                 writer.writeCartesianVelocity(value);
             } finally {
@@ -933,7 +933,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writePositionPropertyCartesianVelocity(List<JulianDate> dates, List<Motion1<Cartesian>> values) {
         {
-            cesiumlanguagewriter.PositionCesiumWriter writer = openPositionProperty();
+            PositionCesiumWriter writer = openPositionProperty();
             try {
                 writer.writeCartesianVelocity(dates, values);
             } finally {
@@ -958,7 +958,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writePositionPropertyCartesianVelocity(List<JulianDate> dates, List<Motion1<Cartesian>> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.PositionCesiumWriter writer = openPositionProperty();
+            PositionCesiumWriter writer = openPositionProperty();
             try {
                 writer.writeCartesianVelocity(dates, values, startIndex, length);
             } finally {
@@ -977,7 +977,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writePositionPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.PositionCesiumWriter writer = openPositionProperty();
+            PositionCesiumWriter writer = openPositionProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -996,7 +996,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writePositionPropertyReference(String value) {
         {
-            cesiumlanguagewriter.PositionCesiumWriter writer = openPositionProperty();
+            PositionCesiumWriter writer = openPositionProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1017,7 +1017,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writePositionPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.PositionCesiumWriter writer = openPositionProperty();
+            PositionCesiumWriter writer = openPositionProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -1038,7 +1038,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writePositionPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.PositionCesiumWriter writer = openPositionProperty();
+            PositionCesiumWriter writer = openPositionProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -1078,7 +1078,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writeOrientationProperty(@Nonnull UnitQuaternion value) {
         {
-            cesiumlanguagewriter.OrientationCesiumWriter writer = openOrientationProperty();
+            OrientationCesiumWriter writer = openOrientationProperty();
             try {
                 writer.writeUnitQuaternion(value);
             } finally {
@@ -1099,7 +1099,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writeOrientationProperty(List<JulianDate> dates, List<UnitQuaternion> values) {
         {
-            cesiumlanguagewriter.OrientationCesiumWriter writer = openOrientationProperty();
+            OrientationCesiumWriter writer = openOrientationProperty();
             try {
                 writer.writeUnitQuaternion(dates, values);
             } finally {
@@ -1124,7 +1124,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writeOrientationProperty(List<JulianDate> dates, List<UnitQuaternion> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.OrientationCesiumWriter writer = openOrientationProperty();
+            OrientationCesiumWriter writer = openOrientationProperty();
             try {
                 writer.writeUnitQuaternion(dates, values, startIndex, length);
             } finally {
@@ -1143,7 +1143,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writeOrientationPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.OrientationCesiumWriter writer = openOrientationProperty();
+            OrientationCesiumWriter writer = openOrientationProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1162,7 +1162,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writeOrientationPropertyReference(String value) {
         {
-            cesiumlanguagewriter.OrientationCesiumWriter writer = openOrientationProperty();
+            OrientationCesiumWriter writer = openOrientationProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1183,7 +1183,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writeOrientationPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.OrientationCesiumWriter writer = openOrientationProperty();
+            OrientationCesiumWriter writer = openOrientationProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -1204,7 +1204,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writeOrientationPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.OrientationCesiumWriter writer = openOrientationProperty();
+            OrientationCesiumWriter writer = openOrientationProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -1223,7 +1223,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writeOrientationPropertyVelocityReference(Reference value) {
         {
-            cesiumlanguagewriter.OrientationCesiumWriter writer = openOrientationProperty();
+            OrientationCesiumWriter writer = openOrientationProperty();
             try {
                 writer.writeVelocityReference(value);
             } finally {
@@ -1242,7 +1242,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writeOrientationPropertyVelocityReference(String value) {
         {
-            cesiumlanguagewriter.OrientationCesiumWriter writer = openOrientationProperty();
+            OrientationCesiumWriter writer = openOrientationProperty();
             try {
                 writer.writeVelocityReference(value);
             } finally {
@@ -1263,7 +1263,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writeOrientationPropertyVelocityReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.OrientationCesiumWriter writer = openOrientationProperty();
+            OrientationCesiumWriter writer = openOrientationProperty();
             try {
                 writer.writeVelocityReference(identifier, propertyName);
             } finally {
@@ -1284,7 +1284,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writeOrientationPropertyVelocityReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.OrientationCesiumWriter writer = openOrientationProperty();
+            OrientationCesiumWriter writer = openOrientationProperty();
             try {
                 writer.writeVelocityReference(identifier, propertyNames);
             } finally {
@@ -1324,7 +1324,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writeViewFromProperty(@Nonnull Cartesian value) {
         {
-            cesiumlanguagewriter.ViewFromCesiumWriter writer = openViewFromProperty();
+            ViewFromCesiumWriter writer = openViewFromProperty();
             try {
                 writer.writeCartesian(value);
             } finally {
@@ -1345,7 +1345,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writeViewFromProperty(List<JulianDate> dates, List<Cartesian> values) {
         {
-            cesiumlanguagewriter.ViewFromCesiumWriter writer = openViewFromProperty();
+            ViewFromCesiumWriter writer = openViewFromProperty();
             try {
                 writer.writeCartesian(dates, values);
             } finally {
@@ -1370,7 +1370,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writeViewFromProperty(List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.ViewFromCesiumWriter writer = openViewFromProperty();
+            ViewFromCesiumWriter writer = openViewFromProperty();
             try {
                 writer.writeCartesian(dates, values, startIndex, length);
             } finally {
@@ -1389,7 +1389,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writeViewFromPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.ViewFromCesiumWriter writer = openViewFromProperty();
+            ViewFromCesiumWriter writer = openViewFromProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1408,7 +1408,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writeViewFromPropertyReference(String value) {
         {
-            cesiumlanguagewriter.ViewFromCesiumWriter writer = openViewFromProperty();
+            ViewFromCesiumWriter writer = openViewFromProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1429,7 +1429,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writeViewFromPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.ViewFromCesiumWriter writer = openViewFromProperty();
+            ViewFromCesiumWriter writer = openViewFromProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -1450,7 +1450,7 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     */
     public final void writeViewFromPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.ViewFromCesiumWriter writer = openViewFromProperty();
+            ViewFromCesiumWriter writer = openViewFromProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {

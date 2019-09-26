@@ -28,13 +28,13 @@ public class TestCheckerboardMaterialCesiumWriter extends TestCesiumPropertyWrit
             final PacketCesiumWriter usingExpression_0 = (getPacket());
             try {
                 {
-                    cesiumlanguagewriter.PolylineCesiumWriter polyline = getPacket().openPolylineProperty();
+                    PolylineCesiumWriter polyline = getPacket().openPolylineProperty();
                     try {
                         {
-                            cesiumlanguagewriter.PolylineMaterialCesiumWriter material = polyline.openMaterialProperty();
+                            PolylineMaterialCesiumWriter material = polyline.openMaterialProperty();
                             try {
                                 {
-                                    cesiumlanguagewriter.CheckerboardMaterialCesiumWriter checkerboardMaterial = material.openCheckerboardProperty();
+                                    CheckerboardMaterialCesiumWriter checkerboardMaterial = material.openCheckerboardProperty();
                                     try {
                                         checkerboardMaterial.writeEvenColorProperty(Color.RED);
                                         checkerboardMaterial.writeOddColorProperty(Color.BLUE);

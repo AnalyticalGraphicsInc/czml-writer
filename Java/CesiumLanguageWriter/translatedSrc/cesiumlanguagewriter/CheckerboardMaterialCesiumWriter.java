@@ -131,7 +131,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     */
     public final void writeEvenColorProperty(@Nonnull Color color) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openEvenColorProperty();
+            ColorCesiumWriter writer = openEvenColorProperty();
             try {
                 writer.writeRgba(color);
             } finally {
@@ -156,7 +156,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     */
     public final void writeEvenColorProperty(int red, int green, int blue, int alpha) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openEvenColorProperty();
+            ColorCesiumWriter writer = openEvenColorProperty();
             try {
                 writer.writeRgba(red, green, blue, alpha);
             } finally {
@@ -177,7 +177,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     */
     public final void writeEvenColorProperty(List<JulianDate> dates, List<Color> values) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openEvenColorProperty();
+            ColorCesiumWriter writer = openEvenColorProperty();
             try {
                 writer.writeRgba(dates, values);
             } finally {
@@ -202,7 +202,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     */
     public final void writeEvenColorProperty(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openEvenColorProperty();
+            ColorCesiumWriter writer = openEvenColorProperty();
             try {
                 writer.writeRgba(dates, colors, startIndex, length);
             } finally {
@@ -221,7 +221,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     */
     public final void writeEvenColorPropertyRgbaf(@Nonnull Color color) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openEvenColorProperty();
+            ColorCesiumWriter writer = openEvenColorProperty();
             try {
                 writer.writeRgbaf(color);
             } finally {
@@ -246,7 +246,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     */
     public final void writeEvenColorPropertyRgbaf(float red, float green, float blue, float alpha) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openEvenColorProperty();
+            ColorCesiumWriter writer = openEvenColorProperty();
             try {
                 writer.writeRgbaf(red, green, blue, alpha);
             } finally {
@@ -267,7 +267,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     */
     public final void writeEvenColorPropertyRgbaf(List<JulianDate> dates, List<Color> values) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openEvenColorProperty();
+            ColorCesiumWriter writer = openEvenColorProperty();
             try {
                 writer.writeRgbaf(dates, values);
             } finally {
@@ -292,7 +292,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     */
     public final void writeEvenColorPropertyRgbaf(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openEvenColorProperty();
+            ColorCesiumWriter writer = openEvenColorProperty();
             try {
                 writer.writeRgbaf(dates, colors, startIndex, length);
             } finally {
@@ -311,7 +311,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     */
     public final void writeEvenColorPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openEvenColorProperty();
+            ColorCesiumWriter writer = openEvenColorProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -330,7 +330,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     */
     public final void writeEvenColorPropertyReference(String value) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openEvenColorProperty();
+            ColorCesiumWriter writer = openEvenColorProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -351,7 +351,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     */
     public final void writeEvenColorPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openEvenColorProperty();
+            ColorCesiumWriter writer = openEvenColorProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -372,7 +372,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     */
     public final void writeEvenColorPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openEvenColorProperty();
+            ColorCesiumWriter writer = openEvenColorProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -413,7 +413,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     */
     public final void writeOddColorProperty(@Nonnull Color color) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openOddColorProperty();
+            ColorCesiumWriter writer = openOddColorProperty();
             try {
                 writer.writeRgba(color);
             } finally {
@@ -438,7 +438,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     */
     public final void writeOddColorProperty(int red, int green, int blue, int alpha) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openOddColorProperty();
+            ColorCesiumWriter writer = openOddColorProperty();
             try {
                 writer.writeRgba(red, green, blue, alpha);
             } finally {
@@ -459,7 +459,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     */
     public final void writeOddColorProperty(List<JulianDate> dates, List<Color> values) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openOddColorProperty();
+            ColorCesiumWriter writer = openOddColorProperty();
             try {
                 writer.writeRgba(dates, values);
             } finally {
@@ -484,7 +484,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     */
     public final void writeOddColorProperty(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openOddColorProperty();
+            ColorCesiumWriter writer = openOddColorProperty();
             try {
                 writer.writeRgba(dates, colors, startIndex, length);
             } finally {
@@ -503,7 +503,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     */
     public final void writeOddColorPropertyRgbaf(@Nonnull Color color) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openOddColorProperty();
+            ColorCesiumWriter writer = openOddColorProperty();
             try {
                 writer.writeRgbaf(color);
             } finally {
@@ -528,7 +528,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     */
     public final void writeOddColorPropertyRgbaf(float red, float green, float blue, float alpha) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openOddColorProperty();
+            ColorCesiumWriter writer = openOddColorProperty();
             try {
                 writer.writeRgbaf(red, green, blue, alpha);
             } finally {
@@ -549,7 +549,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     */
     public final void writeOddColorPropertyRgbaf(List<JulianDate> dates, List<Color> values) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openOddColorProperty();
+            ColorCesiumWriter writer = openOddColorProperty();
             try {
                 writer.writeRgbaf(dates, values);
             } finally {
@@ -574,7 +574,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     */
     public final void writeOddColorPropertyRgbaf(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openOddColorProperty();
+            ColorCesiumWriter writer = openOddColorProperty();
             try {
                 writer.writeRgbaf(dates, colors, startIndex, length);
             } finally {
@@ -593,7 +593,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     */
     public final void writeOddColorPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openOddColorProperty();
+            ColorCesiumWriter writer = openOddColorProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -612,7 +612,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     */
     public final void writeOddColorPropertyReference(String value) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openOddColorProperty();
+            ColorCesiumWriter writer = openOddColorProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -633,7 +633,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     */
     public final void writeOddColorPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openOddColorProperty();
+            ColorCesiumWriter writer = openOddColorProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -654,7 +654,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     */
     public final void writeOddColorPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openOddColorProperty();
+            ColorCesiumWriter writer = openOddColorProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -695,7 +695,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     */
     public final void writeRepeatProperty(@Nonnull Rectangular value) {
         {
-            cesiumlanguagewriter.RepeatCesiumWriter writer = openRepeatProperty();
+            RepeatCesiumWriter writer = openRepeatProperty();
             try {
                 writer.writeCartesian2(value);
             } finally {
@@ -716,7 +716,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     */
     public final void writeRepeatProperty(double x, double y) {
         {
-            cesiumlanguagewriter.RepeatCesiumWriter writer = openRepeatProperty();
+            RepeatCesiumWriter writer = openRepeatProperty();
             try {
                 writer.writeCartesian2(x, y);
             } finally {
@@ -737,7 +737,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     */
     public final void writeRepeatProperty(List<JulianDate> dates, List<Rectangular> values) {
         {
-            cesiumlanguagewriter.RepeatCesiumWriter writer = openRepeatProperty();
+            RepeatCesiumWriter writer = openRepeatProperty();
             try {
                 writer.writeCartesian2(dates, values);
             } finally {
@@ -762,7 +762,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     */
     public final void writeRepeatProperty(List<JulianDate> dates, List<Rectangular> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.RepeatCesiumWriter writer = openRepeatProperty();
+            RepeatCesiumWriter writer = openRepeatProperty();
             try {
                 writer.writeCartesian2(dates, values, startIndex, length);
             } finally {
@@ -781,7 +781,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     */
     public final void writeRepeatPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.RepeatCesiumWriter writer = openRepeatProperty();
+            RepeatCesiumWriter writer = openRepeatProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -800,7 +800,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     */
     public final void writeRepeatPropertyReference(String value) {
         {
-            cesiumlanguagewriter.RepeatCesiumWriter writer = openRepeatProperty();
+            RepeatCesiumWriter writer = openRepeatProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -821,7 +821,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     */
     public final void writeRepeatPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.RepeatCesiumWriter writer = openRepeatProperty();
+            RepeatCesiumWriter writer = openRepeatProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -842,7 +842,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     */
     public final void writeRepeatPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.RepeatCesiumWriter writer = openRepeatProperty();
+            RepeatCesiumWriter writer = openRepeatProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {

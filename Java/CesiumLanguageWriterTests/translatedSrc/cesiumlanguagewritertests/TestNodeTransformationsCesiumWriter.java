@@ -32,13 +32,13 @@ public class TestNodeTransformationsCesiumWriter extends TestCesiumPropertyWrite
             final PacketCesiumWriter usingExpression_0 = (getPacket());
             try {
                 {
-                    cesiumlanguagewriter.ModelCesiumWriter modelWriter = getPacket().openModelProperty();
+                    ModelCesiumWriter modelWriter = getPacket().openModelProperty();
                     try {
                         {
-                            cesiumlanguagewriter.NodeTransformationsCesiumWriter nodeTransformationsWriter = modelWriter.openNodeTransformationsProperty();
+                            NodeTransformationsCesiumWriter nodeTransformationsWriter = modelWriter.openNodeTransformationsProperty();
                             try {
                                 {
-                                    cesiumlanguagewriter.NodeTransformationCesiumWriter nodeTransformationWriter = nodeTransformationsWriter.openNodeTransformationProperty("node1");
+                                    NodeTransformationCesiumWriter nodeTransformationWriter = nodeTransformationsWriter.openNodeTransformationProperty("node1");
                                     try {
                                         nodeTransformationWriter.writeScaleProperty(Cartesian.getZero());
                                         nodeTransformationWriter.writeRotationProperty(UnitQuaternion.getIdentity());
@@ -70,13 +70,13 @@ public class TestNodeTransformationsCesiumWriter extends TestCesiumPropertyWrite
             final PacketCesiumWriter usingExpression_1 = (getPacket());
             try {
                 {
-                    cesiumlanguagewriter.ModelCesiumWriter modelWriter = getPacket().openModelProperty();
+                    ModelCesiumWriter modelWriter = getPacket().openModelProperty();
                     try {
                         {
-                            cesiumlanguagewriter.NodeTransformationsCesiumWriter nodeTransformationsWriter = modelWriter.openNodeTransformationsProperty();
+                            NodeTransformationsCesiumWriter nodeTransformationsWriter = modelWriter.openNodeTransformationsProperty();
                             try {
                                 {
-                                    cesiumlanguagewriter.NodeTransformationCesiumWriter nodeTransformationWriter = nodeTransformationsWriter.openNodeTransformationProperty("node1");
+                                    NodeTransformationCesiumWriter nodeTransformationWriter = nodeTransformationsWriter.openNodeTransformationProperty("node1");
                                     try {
                                         nodeTransformationWriter.writeScaleProperty(new Cartesian(1.0, 2.0, 3.0));
                                         nodeTransformationWriter.writeRotationProperty(new UnitQuaternion(1.0, 0.0, 0.0, 0.0));
@@ -86,7 +86,7 @@ public class TestNodeTransformationsCesiumWriter extends TestCesiumPropertyWrite
                                     }
                                 }
                                 {
-                                    cesiumlanguagewriter.NodeTransformationCesiumWriter nodeTransformationWriter = nodeTransformationsWriter.openNodeTransformationProperty("node2");
+                                    NodeTransformationCesiumWriter nodeTransformationWriter = nodeTransformationsWriter.openNodeTransformationProperty("node2");
                                     try {
                                         nodeTransformationWriter.writeScaleProperty(new Cartesian(4.0, 5.0, 6.0));
                                         nodeTransformationWriter.writeRotationProperty(new UnitQuaternion(0.0, 0.0, 0.0, 1.0));
@@ -120,19 +120,19 @@ public class TestNodeTransformationsCesiumWriter extends TestCesiumPropertyWrite
             try {
                 final CesiumOutputStream tempObj$0 = new CesiumOutputStream(stringWriter);
                 tempObj$0.setPrettyFormatting(true);
-                cesiumlanguagewriter.CesiumOutputStream output = tempObj$0;
-                cesiumlanguagewriter.CesiumStreamWriter writer = new CesiumStreamWriter();
+                CesiumOutputStream output = tempObj$0;
+                CesiumStreamWriter writer = new CesiumStreamWriter();
                 {
-                    cesiumlanguagewriter.PacketCesiumWriter packet = writer.openPacket(output);
+                    PacketCesiumWriter packet = writer.openPacket(output);
                     try {
                         packet.writeId("MyID");
-                        cesiumlanguagewriter.JulianDate startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0D));
-                        cesiumlanguagewriter.JulianDate stopDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 1, 0D));
+                        JulianDate startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0D));
+                        JulianDate stopDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 1, 0D));
                         {
-                            cesiumlanguagewriter.ClockCesiumWriter clockWriter = packet.openClockProperty();
+                            ClockCesiumWriter clockWriter = packet.openClockProperty();
                             try {
                                 {
-                                    cesiumlanguagewriter.ClockCesiumWriter intervalClockWriter = clockWriter.openInterval(startDate, stopDate);
+                                    ClockCesiumWriter intervalClockWriter = clockWriter.openInterval(startDate, stopDate);
                                     try {
                                         intervalClockWriter.writeCurrentTime(startDate);
                                     } finally {
@@ -144,14 +144,14 @@ public class TestNodeTransformationsCesiumWriter extends TestCesiumPropertyWrite
                             }
                         }
                         {
-                            cesiumlanguagewriter.ModelCesiumWriter modelWriter = packet.openModelProperty();
+                            ModelCesiumWriter modelWriter = packet.openModelProperty();
                             try {
                                 modelWriter.writeGltfProperty(UriHelper.create("example.gltf", UriKind.RELATIVE), CesiumResourceBehavior.LINK_TO);
                                 {
-                                    cesiumlanguagewriter.NodeTransformationsCesiumWriter nodeTransformationsWriter = modelWriter.openNodeTransformationsProperty();
+                                    NodeTransformationsCesiumWriter nodeTransformationsWriter = modelWriter.openNodeTransformationsProperty();
                                     try {
                                         {
-                                            cesiumlanguagewriter.NodeTransformationCesiumWriter nodeTransformationWriter = nodeTransformationsWriter.openNodeTransformationProperty("node1");
+                                            NodeTransformationCesiumWriter nodeTransformationWriter = nodeTransformationsWriter.openNodeTransformationProperty("node1");
                                             try {
                                                 nodeTransformationWriter.writeScaleProperty(new Cartesian(1.0, 2.0, 3.0));
                                                 nodeTransformationWriter.writeRotationProperty(UnitQuaternion.getIdentity());
@@ -161,7 +161,7 @@ public class TestNodeTransformationsCesiumWriter extends TestCesiumPropertyWrite
                                             }
                                         }
                                         {
-                                            cesiumlanguagewriter.NodeTransformationCesiumWriter nodeTransformationWriter = nodeTransformationsWriter.openNodeTransformationProperty("node2");
+                                            NodeTransformationCesiumWriter nodeTransformationWriter = nodeTransformationsWriter.openNodeTransformationProperty("node2");
                                             try {
                                                 final ArrayList<cesiumlanguagewriter.JulianDate> tempCollection$0 = new ArrayList<cesiumlanguagewriter.JulianDate>();
                                                 tempCollection$0.add(startDate);

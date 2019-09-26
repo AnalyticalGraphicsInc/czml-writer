@@ -230,7 +230,7 @@ public class TestUnitCartesian {
     public final void testFromZero() {
         AssertHelper.<ArithmeticException> assertThrows(new TypeLiteral<ArithmeticException>() {}, new Action() {
             public void invoke() {
-                cesiumlanguagewriter.UnitCartesian unused = new UnitCartesian(Cartesian.getZero());
+                UnitCartesian unused = new UnitCartesian(Cartesian.getZero());
             }
         });
     }
@@ -246,7 +246,7 @@ public class TestUnitCartesian {
     public final void testFromInfinity() {
         AssertHelper.<ArithmeticException> assertThrows(new TypeLiteral<ArithmeticException>() {}, new Action() {
             public void invoke() {
-                cesiumlanguagewriter.UnitCartesian unused = new UnitCartesian(Double.POSITIVE_INFINITY, 0.0, 0.0);
+                UnitCartesian unused = new UnitCartesian(Double.POSITIVE_INFINITY, 0.0, 0.0);
             }
         });
     }

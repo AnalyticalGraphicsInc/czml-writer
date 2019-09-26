@@ -138,7 +138,7 @@ public class Reference implements IEquatable<Reference> {
     */
     @Override
     public boolean equals(Object obj) {
-        cesiumlanguagewriter.Reference reference = (obj instanceof Reference) ? (Reference) obj : null;
+        Reference reference = (obj instanceof Reference) ? (Reference) obj : null;
         return reference != null && equalsType(reference);
     }
 

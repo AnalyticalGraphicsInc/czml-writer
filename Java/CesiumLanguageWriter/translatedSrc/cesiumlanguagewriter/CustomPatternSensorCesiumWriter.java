@@ -352,7 +352,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowProperty(boolean value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+            BooleanCesiumWriter writer = openShowProperty();
             try {
                 writer.writeBoolean(value);
             } finally {
@@ -371,7 +371,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+            BooleanCesiumWriter writer = openShowProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -390,7 +390,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowPropertyReference(String value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+            BooleanCesiumWriter writer = openShowProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -411,7 +411,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+            BooleanCesiumWriter writer = openShowProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -432,7 +432,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowProperty();
+            BooleanCesiumWriter writer = openShowProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -473,7 +473,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeDirectionsProperty(Iterable<Spherical> values) {
         {
-            cesiumlanguagewriter.DirectionListCesiumWriter writer = openDirectionsProperty();
+            DirectionListCesiumWriter writer = openDirectionsProperty();
             try {
                 writer.writeSpherical(values);
             } finally {
@@ -492,7 +492,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeDirectionsPropertyUnitSpherical(Iterable<UnitSpherical> values) {
         {
-            cesiumlanguagewriter.DirectionListCesiumWriter writer = openDirectionsProperty();
+            DirectionListCesiumWriter writer = openDirectionsProperty();
             try {
                 writer.writeUnitSpherical(values);
             } finally {
@@ -511,7 +511,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeDirectionsPropertyCartesian(Iterable<Cartesian> values) {
         {
-            cesiumlanguagewriter.DirectionListCesiumWriter writer = openDirectionsProperty();
+            DirectionListCesiumWriter writer = openDirectionsProperty();
             try {
                 writer.writeCartesian(values);
             } finally {
@@ -530,7 +530,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeDirectionsPropertyUnitCartesian(Iterable<UnitCartesian> values) {
         {
-            cesiumlanguagewriter.DirectionListCesiumWriter writer = openDirectionsProperty();
+            DirectionListCesiumWriter writer = openDirectionsProperty();
             try {
                 writer.writeUnitCartesian(values);
             } finally {
@@ -571,7 +571,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeRadiusProperty(double value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openRadiusProperty();
+            DoubleCesiumWriter writer = openRadiusProperty();
             try {
                 writer.writeNumber(value);
             } finally {
@@ -592,7 +592,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeRadiusProperty(List<JulianDate> dates, List<Double> values) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openRadiusProperty();
+            DoubleCesiumWriter writer = openRadiusProperty();
             try {
                 writer.writeNumber(dates, values);
             } finally {
@@ -617,7 +617,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeRadiusProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openRadiusProperty();
+            DoubleCesiumWriter writer = openRadiusProperty();
             try {
                 writer.writeNumber(dates, values, startIndex, length);
             } finally {
@@ -636,7 +636,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeRadiusPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openRadiusProperty();
+            DoubleCesiumWriter writer = openRadiusProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -655,7 +655,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeRadiusPropertyReference(String value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openRadiusProperty();
+            DoubleCesiumWriter writer = openRadiusProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -676,7 +676,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeRadiusPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openRadiusProperty();
+            DoubleCesiumWriter writer = openRadiusProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -697,7 +697,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeRadiusPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openRadiusProperty();
+            DoubleCesiumWriter writer = openRadiusProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -738,7 +738,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowIntersectionProperty(boolean value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowIntersectionProperty();
+            BooleanCesiumWriter writer = openShowIntersectionProperty();
             try {
                 writer.writeBoolean(value);
             } finally {
@@ -757,7 +757,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowIntersectionPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowIntersectionProperty();
+            BooleanCesiumWriter writer = openShowIntersectionProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -776,7 +776,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowIntersectionPropertyReference(String value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowIntersectionProperty();
+            BooleanCesiumWriter writer = openShowIntersectionProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -797,7 +797,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowIntersectionPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowIntersectionProperty();
+            BooleanCesiumWriter writer = openShowIntersectionProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -818,7 +818,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowIntersectionPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowIntersectionProperty();
+            BooleanCesiumWriter writer = openShowIntersectionProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -859,7 +859,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeIntersectionColorProperty(@Nonnull Color color) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openIntersectionColorProperty();
+            ColorCesiumWriter writer = openIntersectionColorProperty();
             try {
                 writer.writeRgba(color);
             } finally {
@@ -884,7 +884,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeIntersectionColorProperty(int red, int green, int blue, int alpha) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openIntersectionColorProperty();
+            ColorCesiumWriter writer = openIntersectionColorProperty();
             try {
                 writer.writeRgba(red, green, blue, alpha);
             } finally {
@@ -905,7 +905,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeIntersectionColorProperty(List<JulianDate> dates, List<Color> values) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openIntersectionColorProperty();
+            ColorCesiumWriter writer = openIntersectionColorProperty();
             try {
                 writer.writeRgba(dates, values);
             } finally {
@@ -930,7 +930,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeIntersectionColorProperty(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openIntersectionColorProperty();
+            ColorCesiumWriter writer = openIntersectionColorProperty();
             try {
                 writer.writeRgba(dates, colors, startIndex, length);
             } finally {
@@ -949,7 +949,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeIntersectionColorPropertyRgbaf(@Nonnull Color color) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openIntersectionColorProperty();
+            ColorCesiumWriter writer = openIntersectionColorProperty();
             try {
                 writer.writeRgbaf(color);
             } finally {
@@ -974,7 +974,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeIntersectionColorPropertyRgbaf(float red, float green, float blue, float alpha) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openIntersectionColorProperty();
+            ColorCesiumWriter writer = openIntersectionColorProperty();
             try {
                 writer.writeRgbaf(red, green, blue, alpha);
             } finally {
@@ -995,7 +995,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeIntersectionColorPropertyRgbaf(List<JulianDate> dates, List<Color> values) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openIntersectionColorProperty();
+            ColorCesiumWriter writer = openIntersectionColorProperty();
             try {
                 writer.writeRgbaf(dates, values);
             } finally {
@@ -1020,7 +1020,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeIntersectionColorPropertyRgbaf(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openIntersectionColorProperty();
+            ColorCesiumWriter writer = openIntersectionColorProperty();
             try {
                 writer.writeRgbaf(dates, colors, startIndex, length);
             } finally {
@@ -1039,7 +1039,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeIntersectionColorPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openIntersectionColorProperty();
+            ColorCesiumWriter writer = openIntersectionColorProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1058,7 +1058,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeIntersectionColorPropertyReference(String value) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openIntersectionColorProperty();
+            ColorCesiumWriter writer = openIntersectionColorProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1079,7 +1079,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeIntersectionColorPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openIntersectionColorProperty();
+            ColorCesiumWriter writer = openIntersectionColorProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -1100,7 +1100,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeIntersectionColorPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openIntersectionColorProperty();
+            ColorCesiumWriter writer = openIntersectionColorProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -1141,7 +1141,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeIntersectionWidthProperty(double value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openIntersectionWidthProperty();
+            DoubleCesiumWriter writer = openIntersectionWidthProperty();
             try {
                 writer.writeNumber(value);
             } finally {
@@ -1162,7 +1162,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeIntersectionWidthProperty(List<JulianDate> dates, List<Double> values) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openIntersectionWidthProperty();
+            DoubleCesiumWriter writer = openIntersectionWidthProperty();
             try {
                 writer.writeNumber(dates, values);
             } finally {
@@ -1187,7 +1187,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeIntersectionWidthProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openIntersectionWidthProperty();
+            DoubleCesiumWriter writer = openIntersectionWidthProperty();
             try {
                 writer.writeNumber(dates, values, startIndex, length);
             } finally {
@@ -1206,7 +1206,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeIntersectionWidthPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openIntersectionWidthProperty();
+            DoubleCesiumWriter writer = openIntersectionWidthProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1225,7 +1225,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeIntersectionWidthPropertyReference(String value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openIntersectionWidthProperty();
+            DoubleCesiumWriter writer = openIntersectionWidthProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1246,7 +1246,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeIntersectionWidthPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openIntersectionWidthProperty();
+            DoubleCesiumWriter writer = openIntersectionWidthProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -1267,7 +1267,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeIntersectionWidthPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openIntersectionWidthProperty();
+            DoubleCesiumWriter writer = openIntersectionWidthProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -1308,7 +1308,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowLateralSurfacesProperty(boolean value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowLateralSurfacesProperty();
+            BooleanCesiumWriter writer = openShowLateralSurfacesProperty();
             try {
                 writer.writeBoolean(value);
             } finally {
@@ -1327,7 +1327,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowLateralSurfacesPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowLateralSurfacesProperty();
+            BooleanCesiumWriter writer = openShowLateralSurfacesProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1346,7 +1346,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowLateralSurfacesPropertyReference(String value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowLateralSurfacesProperty();
+            BooleanCesiumWriter writer = openShowLateralSurfacesProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1367,7 +1367,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowLateralSurfacesPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowLateralSurfacesProperty();
+            BooleanCesiumWriter writer = openShowLateralSurfacesProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -1388,7 +1388,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowLateralSurfacesPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowLateralSurfacesProperty();
+            BooleanCesiumWriter writer = openShowLateralSurfacesProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -1451,7 +1451,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowEllipsoidSurfacesProperty(boolean value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowEllipsoidSurfacesProperty();
+            BooleanCesiumWriter writer = openShowEllipsoidSurfacesProperty();
             try {
                 writer.writeBoolean(value);
             } finally {
@@ -1470,7 +1470,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowEllipsoidSurfacesPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowEllipsoidSurfacesProperty();
+            BooleanCesiumWriter writer = openShowEllipsoidSurfacesProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1489,7 +1489,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowEllipsoidSurfacesPropertyReference(String value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowEllipsoidSurfacesProperty();
+            BooleanCesiumWriter writer = openShowEllipsoidSurfacesProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1510,7 +1510,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowEllipsoidSurfacesPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowEllipsoidSurfacesProperty();
+            BooleanCesiumWriter writer = openShowEllipsoidSurfacesProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -1531,7 +1531,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowEllipsoidSurfacesPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowEllipsoidSurfacesProperty();
+            BooleanCesiumWriter writer = openShowEllipsoidSurfacesProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -1594,7 +1594,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowEllipsoidHorizonSurfacesProperty(boolean value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowEllipsoidHorizonSurfacesProperty();
+            BooleanCesiumWriter writer = openShowEllipsoidHorizonSurfacesProperty();
             try {
                 writer.writeBoolean(value);
             } finally {
@@ -1613,7 +1613,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowEllipsoidHorizonSurfacesPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowEllipsoidHorizonSurfacesProperty();
+            BooleanCesiumWriter writer = openShowEllipsoidHorizonSurfacesProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1632,7 +1632,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowEllipsoidHorizonSurfacesPropertyReference(String value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowEllipsoidHorizonSurfacesProperty();
+            BooleanCesiumWriter writer = openShowEllipsoidHorizonSurfacesProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1653,7 +1653,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowEllipsoidHorizonSurfacesPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowEllipsoidHorizonSurfacesProperty();
+            BooleanCesiumWriter writer = openShowEllipsoidHorizonSurfacesProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -1674,7 +1674,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowEllipsoidHorizonSurfacesPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowEllipsoidHorizonSurfacesProperty();
+            BooleanCesiumWriter writer = openShowEllipsoidHorizonSurfacesProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -1737,7 +1737,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowDomeSurfacesProperty(boolean value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowDomeSurfacesProperty();
+            BooleanCesiumWriter writer = openShowDomeSurfacesProperty();
             try {
                 writer.writeBoolean(value);
             } finally {
@@ -1756,7 +1756,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowDomeSurfacesPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowDomeSurfacesProperty();
+            BooleanCesiumWriter writer = openShowDomeSurfacesProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1775,7 +1775,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowDomeSurfacesPropertyReference(String value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowDomeSurfacesProperty();
+            BooleanCesiumWriter writer = openShowDomeSurfacesProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1796,7 +1796,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowDomeSurfacesPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowDomeSurfacesProperty();
+            BooleanCesiumWriter writer = openShowDomeSurfacesProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -1817,7 +1817,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowDomeSurfacesPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowDomeSurfacesProperty();
+            BooleanCesiumWriter writer = openShowDomeSurfacesProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -1880,7 +1880,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writePortionToDisplayProperty(@Nonnull CesiumSensorVolumePortionToDisplay value) {
         {
-            cesiumlanguagewriter.SensorVolumePortionToDisplayCesiumWriter writer = openPortionToDisplayProperty();
+            SensorVolumePortionToDisplayCesiumWriter writer = openPortionToDisplayProperty();
             try {
                 writer.writePortionToDisplay(value);
             } finally {
@@ -1899,7 +1899,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writePortionToDisplayPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.SensorVolumePortionToDisplayCesiumWriter writer = openPortionToDisplayProperty();
+            SensorVolumePortionToDisplayCesiumWriter writer = openPortionToDisplayProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1918,7 +1918,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writePortionToDisplayPropertyReference(String value) {
         {
-            cesiumlanguagewriter.SensorVolumePortionToDisplayCesiumWriter writer = openPortionToDisplayProperty();
+            SensorVolumePortionToDisplayCesiumWriter writer = openPortionToDisplayProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -1939,7 +1939,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writePortionToDisplayPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.SensorVolumePortionToDisplayCesiumWriter writer = openPortionToDisplayProperty();
+            SensorVolumePortionToDisplayCesiumWriter writer = openPortionToDisplayProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -1960,7 +1960,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writePortionToDisplayPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.SensorVolumePortionToDisplayCesiumWriter writer = openPortionToDisplayProperty();
+            SensorVolumePortionToDisplayCesiumWriter writer = openPortionToDisplayProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -2001,7 +2001,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeEnvironmentConstraintProperty(boolean value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openEnvironmentConstraintProperty();
+            BooleanCesiumWriter writer = openEnvironmentConstraintProperty();
             try {
                 writer.writeBoolean(value);
             } finally {
@@ -2020,7 +2020,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeEnvironmentConstraintPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openEnvironmentConstraintProperty();
+            BooleanCesiumWriter writer = openEnvironmentConstraintProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -2039,7 +2039,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeEnvironmentConstraintPropertyReference(String value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openEnvironmentConstraintProperty();
+            BooleanCesiumWriter writer = openEnvironmentConstraintProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -2060,7 +2060,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeEnvironmentConstraintPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openEnvironmentConstraintProperty();
+            BooleanCesiumWriter writer = openEnvironmentConstraintProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -2081,7 +2081,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeEnvironmentConstraintPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openEnvironmentConstraintProperty();
+            BooleanCesiumWriter writer = openEnvironmentConstraintProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -2122,7 +2122,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowEnvironmentOcclusionProperty(boolean value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowEnvironmentOcclusionProperty();
+            BooleanCesiumWriter writer = openShowEnvironmentOcclusionProperty();
             try {
                 writer.writeBoolean(value);
             } finally {
@@ -2141,7 +2141,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowEnvironmentOcclusionPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowEnvironmentOcclusionProperty();
+            BooleanCesiumWriter writer = openShowEnvironmentOcclusionProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -2160,7 +2160,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowEnvironmentOcclusionPropertyReference(String value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowEnvironmentOcclusionProperty();
+            BooleanCesiumWriter writer = openShowEnvironmentOcclusionProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -2181,7 +2181,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowEnvironmentOcclusionPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowEnvironmentOcclusionProperty();
+            BooleanCesiumWriter writer = openShowEnvironmentOcclusionProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -2202,7 +2202,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowEnvironmentOcclusionPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowEnvironmentOcclusionProperty();
+            BooleanCesiumWriter writer = openShowEnvironmentOcclusionProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -2265,7 +2265,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowEnvironmentIntersectionProperty(boolean value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowEnvironmentIntersectionProperty();
+            BooleanCesiumWriter writer = openShowEnvironmentIntersectionProperty();
             try {
                 writer.writeBoolean(value);
             } finally {
@@ -2284,7 +2284,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowEnvironmentIntersectionPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowEnvironmentIntersectionProperty();
+            BooleanCesiumWriter writer = openShowEnvironmentIntersectionProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -2303,7 +2303,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowEnvironmentIntersectionPropertyReference(String value) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowEnvironmentIntersectionProperty();
+            BooleanCesiumWriter writer = openShowEnvironmentIntersectionProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -2324,7 +2324,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowEnvironmentIntersectionPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowEnvironmentIntersectionProperty();
+            BooleanCesiumWriter writer = openShowEnvironmentIntersectionProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -2345,7 +2345,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeShowEnvironmentIntersectionPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.BooleanCesiumWriter writer = openShowEnvironmentIntersectionProperty();
+            BooleanCesiumWriter writer = openShowEnvironmentIntersectionProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -2386,7 +2386,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeEnvironmentIntersectionColorProperty(@Nonnull Color color) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
+            ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
             try {
                 writer.writeRgba(color);
             } finally {
@@ -2411,7 +2411,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeEnvironmentIntersectionColorProperty(int red, int green, int blue, int alpha) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
+            ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
             try {
                 writer.writeRgba(red, green, blue, alpha);
             } finally {
@@ -2432,7 +2432,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeEnvironmentIntersectionColorProperty(List<JulianDate> dates, List<Color> values) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
+            ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
             try {
                 writer.writeRgba(dates, values);
             } finally {
@@ -2457,7 +2457,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeEnvironmentIntersectionColorProperty(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
+            ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
             try {
                 writer.writeRgba(dates, colors, startIndex, length);
             } finally {
@@ -2476,7 +2476,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeEnvironmentIntersectionColorPropertyRgbaf(@Nonnull Color color) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
+            ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
             try {
                 writer.writeRgbaf(color);
             } finally {
@@ -2501,7 +2501,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeEnvironmentIntersectionColorPropertyRgbaf(float red, float green, float blue, float alpha) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
+            ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
             try {
                 writer.writeRgbaf(red, green, blue, alpha);
             } finally {
@@ -2522,7 +2522,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeEnvironmentIntersectionColorPropertyRgbaf(List<JulianDate> dates, List<Color> values) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
+            ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
             try {
                 writer.writeRgbaf(dates, values);
             } finally {
@@ -2547,7 +2547,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeEnvironmentIntersectionColorPropertyRgbaf(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
+            ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
             try {
                 writer.writeRgbaf(dates, colors, startIndex, length);
             } finally {
@@ -2566,7 +2566,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeEnvironmentIntersectionColorPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
+            ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -2585,7 +2585,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeEnvironmentIntersectionColorPropertyReference(String value) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
+            ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -2606,7 +2606,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeEnvironmentIntersectionColorPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
+            ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -2627,7 +2627,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeEnvironmentIntersectionColorPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
+            ColorCesiumWriter writer = openEnvironmentIntersectionColorProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
@@ -2668,7 +2668,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeEnvironmentIntersectionWidthProperty(double value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openEnvironmentIntersectionWidthProperty();
+            DoubleCesiumWriter writer = openEnvironmentIntersectionWidthProperty();
             try {
                 writer.writeNumber(value);
             } finally {
@@ -2689,7 +2689,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeEnvironmentIntersectionWidthProperty(List<JulianDate> dates, List<Double> values) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openEnvironmentIntersectionWidthProperty();
+            DoubleCesiumWriter writer = openEnvironmentIntersectionWidthProperty();
             try {
                 writer.writeNumber(dates, values);
             } finally {
@@ -2714,7 +2714,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeEnvironmentIntersectionWidthProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openEnvironmentIntersectionWidthProperty();
+            DoubleCesiumWriter writer = openEnvironmentIntersectionWidthProperty();
             try {
                 writer.writeNumber(dates, values, startIndex, length);
             } finally {
@@ -2733,7 +2733,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeEnvironmentIntersectionWidthPropertyReference(Reference value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openEnvironmentIntersectionWidthProperty();
+            DoubleCesiumWriter writer = openEnvironmentIntersectionWidthProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -2752,7 +2752,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeEnvironmentIntersectionWidthPropertyReference(String value) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openEnvironmentIntersectionWidthProperty();
+            DoubleCesiumWriter writer = openEnvironmentIntersectionWidthProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -2773,7 +2773,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeEnvironmentIntersectionWidthPropertyReference(String identifier, String propertyName) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openEnvironmentIntersectionWidthProperty();
+            DoubleCesiumWriter writer = openEnvironmentIntersectionWidthProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -2794,7 +2794,7 @@ public class CustomPatternSensorCesiumWriter extends CesiumPropertyWriter<Custom
     */
     public final void writeEnvironmentIntersectionWidthPropertyReference(String identifier, String[] propertyNames) {
         {
-            cesiumlanguagewriter.DoubleCesiumWriter writer = openEnvironmentIntersectionWidthProperty();
+            DoubleCesiumWriter writer = openEnvironmentIntersectionWidthProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {

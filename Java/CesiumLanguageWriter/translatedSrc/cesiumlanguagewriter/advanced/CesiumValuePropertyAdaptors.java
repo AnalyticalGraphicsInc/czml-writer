@@ -91,7 +91,7 @@ public final class CesiumValuePropertyAdaptors {
                 writer.writeBoundingRectangle(value);
             }
         }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, cesiumlanguagewriter.BoundingRectangle>() {
-            public void invoke(TFrom writer, List<JulianDate> dates, List<BoundingRectangle> values, int startIndex, int length) {
+            public void invoke(TFrom writer, List<cesiumlanguagewriter.JulianDate> dates, List<cesiumlanguagewriter.BoundingRectangle> values, int startIndex, int length) {
                 writer.writeBoundingRectangle(dates, values, startIndex, length);
             }
         }, CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());
@@ -115,7 +115,7 @@ public final class CesiumValuePropertyAdaptors {
                 writer.writeCartesian2(value);
             }
         }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, cesiumlanguagewriter.Rectangular>() {
-            public void invoke(TFrom writer, List<JulianDate> dates, List<Rectangular> values, int startIndex, int length) {
+            public void invoke(TFrom writer, List<cesiumlanguagewriter.JulianDate> dates, List<cesiumlanguagewriter.Rectangular> values, int startIndex, int length) {
                 writer.writeCartesian2(dates, values, startIndex, length);
             }
         }, CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());
@@ -139,7 +139,7 @@ public final class CesiumValuePropertyAdaptors {
                 writer.writeCartesian(value);
             }
         }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, cesiumlanguagewriter.Cartesian>() {
-            public void invoke(TFrom writer, List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
+            public void invoke(TFrom writer, List<cesiumlanguagewriter.JulianDate> dates, List<cesiumlanguagewriter.Cartesian> values, int startIndex, int length) {
                 writer.writeCartesian(dates, values, startIndex, length);
             }
         }, CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());
@@ -164,7 +164,7 @@ public final class CesiumValuePropertyAdaptors {
                 writer.writeCartesianVelocity(value);
             }
         }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, cesiumlanguagewriter.Motion1<Cartesian>>() {
-            public void invoke(TFrom writer, List<JulianDate> dates, List<Motion1<Cartesian>> values, int startIndex, int length) {
+            public void invoke(TFrom writer, List<cesiumlanguagewriter.JulianDate> dates, List<cesiumlanguagewriter.Motion1<cesiumlanguagewriter.Cartesian>> values, int startIndex, int length) {
                 writer.writeCartesianVelocity(dates, values, startIndex, length);
             }
         }, CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());
@@ -184,7 +184,7 @@ public final class CesiumValuePropertyAdaptors {
     */
     public static <TFrom extends ICesiumCartesian3ListValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumCartesian3ListValuePropertyAdaptor<TFrom> createCartesian3List(@Nonnull TFrom parent) {
         return new CesiumCartesian3ListValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Iterable<Cartesian>>() {
-            public void invoke(TFrom writer, Iterable<Cartesian> value) {
+            public void invoke(TFrom writer, Iterable<cesiumlanguagewriter.Cartesian> value) {
                 writer.writeCartesian(value);
             }
         }, CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());
@@ -205,7 +205,7 @@ public final class CesiumValuePropertyAdaptors {
     public static <TFrom extends ICesiumCartesian3ListOfListsValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumCartesian3ListOfListsValuePropertyAdaptor<TFrom> createCartesian3ListOfLists(
             @Nonnull TFrom parent) {
         return new CesiumCartesian3ListOfListsValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Iterable<? extends Iterable<Cartesian>>>() {
-            public void invoke(TFrom writer, Iterable<? extends Iterable<Cartesian>> value) {
+            public void invoke(TFrom writer, Iterable<? extends Iterable<cesiumlanguagewriter.Cartesian>> value) {
                 writer.writeCartesian(value);
             }
         }, CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());
@@ -230,7 +230,7 @@ public final class CesiumValuePropertyAdaptors {
                 writer.writeCartographicRadians(value);
             }
         }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, cesiumlanguagewriter.Cartographic>() {
-            public void invoke(TFrom writer, List<JulianDate> dates, List<Cartographic> values, int startIndex, int length) {
+            public void invoke(TFrom writer, List<cesiumlanguagewriter.JulianDate> dates, List<cesiumlanguagewriter.Cartographic> values, int startIndex, int length) {
                 writer.writeCartographicRadians(dates, values, startIndex, length);
             }
         }, CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());
@@ -251,7 +251,7 @@ public final class CesiumValuePropertyAdaptors {
     public static <TFrom extends ICesiumCartographicRadiansListValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumCartographicRadiansListValuePropertyAdaptor<TFrom> createCartographicRadiansList(
             @Nonnull TFrom parent) {
         return new CesiumCartographicRadiansListValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Iterable<Cartographic>>() {
-            public void invoke(TFrom writer, Iterable<Cartographic> value) {
+            public void invoke(TFrom writer, Iterable<cesiumlanguagewriter.Cartographic> value) {
                 writer.writeCartographicRadians(value);
             }
         }, CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());
@@ -272,7 +272,7 @@ public final class CesiumValuePropertyAdaptors {
     public static <TFrom extends ICesiumCartographicRadiansListOfListsValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumCartographicRadiansListOfListsValuePropertyAdaptor<TFrom> createCartographicRadiansListOfLists(
             @Nonnull TFrom parent) {
         return new CesiumCartographicRadiansListOfListsValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Iterable<? extends Iterable<Cartographic>>>() {
-            public void invoke(TFrom writer, Iterable<? extends Iterable<Cartographic>> value) {
+            public void invoke(TFrom writer, Iterable<? extends Iterable<cesiumlanguagewriter.Cartographic>> value) {
                 writer.writeCartographicRadians(value);
             }
         }, CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());
@@ -297,7 +297,7 @@ public final class CesiumValuePropertyAdaptors {
                 writer.writeCartographicDegrees(value);
             }
         }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, cesiumlanguagewriter.Cartographic>() {
-            public void invoke(TFrom writer, List<JulianDate> dates, List<Cartographic> values, int startIndex, int length) {
+            public void invoke(TFrom writer, List<cesiumlanguagewriter.JulianDate> dates, List<cesiumlanguagewriter.Cartographic> values, int startIndex, int length) {
                 writer.writeCartographicDegrees(dates, values, startIndex, length);
             }
         }, CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());
@@ -318,7 +318,7 @@ public final class CesiumValuePropertyAdaptors {
     public static <TFrom extends ICesiumCartographicDegreesListValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumCartographicDegreesListValuePropertyAdaptor<TFrom> createCartographicDegreesList(
             @Nonnull TFrom parent) {
         return new CesiumCartographicDegreesListValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Iterable<Cartographic>>() {
-            public void invoke(TFrom writer, Iterable<Cartographic> value) {
+            public void invoke(TFrom writer, Iterable<cesiumlanguagewriter.Cartographic> value) {
                 writer.writeCartographicDegrees(value);
             }
         }, CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());
@@ -339,7 +339,7 @@ public final class CesiumValuePropertyAdaptors {
     public static <TFrom extends ICesiumCartographicDegreesListOfListsValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumCartographicDegreesListOfListsValuePropertyAdaptor<TFrom> createCartographicDegreesListOfLists(
             @Nonnull TFrom parent) {
         return new CesiumCartographicDegreesListOfListsValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Iterable<? extends Iterable<Cartographic>>>() {
-            public void invoke(TFrom writer, Iterable<? extends Iterable<Cartographic>> value) {
+            public void invoke(TFrom writer, Iterable<? extends Iterable<cesiumlanguagewriter.Cartographic>> value) {
                 writer.writeCartographicDegrees(value);
             }
         }, CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());
@@ -364,7 +364,7 @@ public final class CesiumValuePropertyAdaptors {
                 writer.writeWsen(value);
             }
         }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, cesiumlanguagewriter.CartographicExtent>() {
-            public void invoke(TFrom writer, List<JulianDate> dates, List<CartographicExtent> values, int startIndex, int length) {
+            public void invoke(TFrom writer, List<cesiumlanguagewriter.JulianDate> dates, List<cesiumlanguagewriter.CartographicExtent> values, int startIndex, int length) {
                 writer.writeWsen(dates, values, startIndex, length);
             }
         }, CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());
@@ -389,7 +389,7 @@ public final class CesiumValuePropertyAdaptors {
                 writer.writeWsenDegrees(value);
             }
         }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, cesiumlanguagewriter.CartographicExtent>() {
-            public void invoke(TFrom writer, List<JulianDate> dates, List<CartographicExtent> values, int startIndex, int length) {
+            public void invoke(TFrom writer, List<cesiumlanguagewriter.JulianDate> dates, List<cesiumlanguagewriter.CartographicExtent> values, int startIndex, int length) {
                 writer.writeWsenDegrees(dates, values, startIndex, length);
             }
         }, CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());
@@ -475,7 +475,7 @@ public final class CesiumValuePropertyAdaptors {
                 writer.writeDistanceDisplayCondition(value);
             }
         }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, cesiumlanguagewriter.Bounds>() {
-            public void invoke(TFrom writer, List<JulianDate> dates, List<Bounds> values, int startIndex, int length) {
+            public void invoke(TFrom writer, List<cesiumlanguagewriter.JulianDate> dates, List<cesiumlanguagewriter.Bounds> values, int startIndex, int length) {
                 writer.writeDistanceDisplayCondition(dates, values, startIndex, length);
             }
         }, CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());
@@ -499,7 +499,7 @@ public final class CesiumValuePropertyAdaptors {
                 writer.writeNumber(value);
             }
         }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, Double>() {
-            public void invoke(TFrom writer, List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+            public void invoke(TFrom writer, List<cesiumlanguagewriter.JulianDate> dates, List<Double> values, int startIndex, int length) {
                 writer.writeNumber(dates, values, startIndex, length);
             }
         }, CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());
@@ -585,7 +585,7 @@ public final class CesiumValuePropertyAdaptors {
                 writer.writeNumber(value);
             }
         }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, Integer>() {
-            public void invoke(TFrom writer, List<JulianDate> dates, List<Integer> values, int startIndex, int length) {
+            public void invoke(TFrom writer, List<cesiumlanguagewriter.JulianDate> dates, List<Integer> values, int startIndex, int length) {
                 writer.writeNumber(dates, values, startIndex, length);
             }
         }, CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());
@@ -629,7 +629,7 @@ public final class CesiumValuePropertyAdaptors {
                 writer.writeNearFarScalar(value);
             }
         }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, cesiumlanguagewriter.NearFarScalar>() {
-            public void invoke(TFrom writer, List<JulianDate> dates, List<NearFarScalar> values, int startIndex, int length) {
+            public void invoke(TFrom writer, List<cesiumlanguagewriter.JulianDate> dates, List<cesiumlanguagewriter.NearFarScalar> values, int startIndex, int length) {
                 writer.writeNearFarScalar(dates, values, startIndex, length);
             }
         }, CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());
@@ -669,7 +669,7 @@ public final class CesiumValuePropertyAdaptors {
     */
     public static <TFrom extends ICesiumReferenceListValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumReferenceListValuePropertyAdaptor<TFrom> createReferenceList(@Nonnull TFrom parent) {
         return new CesiumReferenceListValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Iterable<Reference>>() {
-            public void invoke(TFrom writer, Iterable<Reference> value) {
+            public void invoke(TFrom writer, Iterable<cesiumlanguagewriter.Reference> value) {
                 writer.writeReferences(value);
             }
         }, CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());
@@ -690,7 +690,7 @@ public final class CesiumValuePropertyAdaptors {
     public static <TFrom extends ICesiumReferenceListOfListsValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumReferenceListOfListsValuePropertyAdaptor<TFrom> createReferenceListOfLists(
             @Nonnull TFrom parent) {
         return new CesiumReferenceListOfListsValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Iterable<? extends Iterable<? extends Reference>>>() {
-            public void invoke(TFrom writer, Iterable<? extends Iterable<? extends Reference>> value) {
+            public void invoke(TFrom writer, Iterable<? extends Iterable<? extends cesiumlanguagewriter.Reference>> value) {
                 writer.writeReferences(value);
             }
         }, CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());
@@ -714,7 +714,7 @@ public final class CesiumValuePropertyAdaptors {
                 writer.writeRgbaf(value);
             }
         }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, Color>() {
-            public void invoke(TFrom writer, List<JulianDate> dates, List<Color> values, int startIndex, int length) {
+            public void invoke(TFrom writer, List<cesiumlanguagewriter.JulianDate> dates, List<Color> values, int startIndex, int length) {
                 writer.writeRgbaf(dates, values, startIndex, length);
             }
         }, CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());
@@ -738,7 +738,7 @@ public final class CesiumValuePropertyAdaptors {
                 writer.writeRgba(value);
             }
         }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, Color>() {
-            public void invoke(TFrom writer, List<JulianDate> dates, List<Color> values, int startIndex, int length) {
+            public void invoke(TFrom writer, List<cesiumlanguagewriter.JulianDate> dates, List<Color> values, int startIndex, int length) {
                 writer.writeRgba(dates, values, startIndex, length);
             }
         }, CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());
@@ -803,7 +803,7 @@ public final class CesiumValuePropertyAdaptors {
                 writer.writeSpherical(value);
             }
         }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, cesiumlanguagewriter.Spherical>() {
-            public void invoke(TFrom writer, List<JulianDate> dates, List<Spherical> values, int startIndex, int length) {
+            public void invoke(TFrom writer, List<cesiumlanguagewriter.JulianDate> dates, List<cesiumlanguagewriter.Spherical> values, int startIndex, int length) {
                 writer.writeSpherical(dates, values, startIndex, length);
             }
         }, CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());
@@ -823,7 +823,7 @@ public final class CesiumValuePropertyAdaptors {
     */
     public static <TFrom extends ICesiumSphericalListValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumSphericalListValuePropertyAdaptor<TFrom> createSphericalList(@Nonnull TFrom parent) {
         return new CesiumSphericalListValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Iterable<Spherical>>() {
-            public void invoke(TFrom writer, Iterable<Spherical> value) {
+            public void invoke(TFrom writer, Iterable<cesiumlanguagewriter.Spherical> value) {
                 writer.writeSpherical(value);
             }
         }, CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());
@@ -908,7 +908,7 @@ public final class CesiumValuePropertyAdaptors {
                 writer.writeUnitCartesian(value);
             }
         }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, cesiumlanguagewriter.UnitCartesian>() {
-            public void invoke(TFrom writer, List<JulianDate> dates, List<UnitCartesian> values, int startIndex, int length) {
+            public void invoke(TFrom writer, List<cesiumlanguagewriter.JulianDate> dates, List<cesiumlanguagewriter.UnitCartesian> values, int startIndex, int length) {
                 writer.writeUnitCartesian(dates, values, startIndex, length);
             }
         }, CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());
@@ -929,7 +929,7 @@ public final class CesiumValuePropertyAdaptors {
     public static <TFrom extends ICesiumUnitCartesian3ListValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumUnitCartesian3ListValuePropertyAdaptor<TFrom> createUnitCartesian3List(
             @Nonnull TFrom parent) {
         return new CesiumUnitCartesian3ListValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Iterable<UnitCartesian>>() {
-            public void invoke(TFrom writer, Iterable<UnitCartesian> value) {
+            public void invoke(TFrom writer, Iterable<cesiumlanguagewriter.UnitCartesian> value) {
                 writer.writeUnitCartesian(value);
             }
         }, CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());
@@ -953,7 +953,7 @@ public final class CesiumValuePropertyAdaptors {
                 writer.writeUnitQuaternion(value);
             }
         }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, cesiumlanguagewriter.UnitQuaternion>() {
-            public void invoke(TFrom writer, List<JulianDate> dates, List<UnitQuaternion> values, int startIndex, int length) {
+            public void invoke(TFrom writer, List<cesiumlanguagewriter.JulianDate> dates, List<cesiumlanguagewriter.UnitQuaternion> values, int startIndex, int length) {
                 writer.writeUnitQuaternion(dates, values, startIndex, length);
             }
         }, CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());
@@ -977,7 +977,7 @@ public final class CesiumValuePropertyAdaptors {
                 writer.writeUnitSpherical(value);
             }
         }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, cesiumlanguagewriter.UnitSpherical>() {
-            public void invoke(TFrom writer, List<JulianDate> dates, List<UnitSpherical> values, int startIndex, int length) {
+            public void invoke(TFrom writer, List<cesiumlanguagewriter.JulianDate> dates, List<cesiumlanguagewriter.UnitSpherical> values, int startIndex, int length) {
                 writer.writeUnitSpherical(dates, values, startIndex, length);
             }
         }, CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());
@@ -998,7 +998,7 @@ public final class CesiumValuePropertyAdaptors {
     public static <TFrom extends ICesiumUnitSphericalListValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumUnitSphericalListValuePropertyAdaptor<TFrom> createUnitSphericalList(
             @Nonnull TFrom parent) {
         return new CesiumUnitSphericalListValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Iterable<UnitSpherical>>() {
-            public void invoke(TFrom writer, Iterable<UnitSpherical> value) {
+            public void invoke(TFrom writer, Iterable<cesiumlanguagewriter.UnitSpherical> value) {
                 writer.writeUnitSpherical(value);
             }
         }, CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());

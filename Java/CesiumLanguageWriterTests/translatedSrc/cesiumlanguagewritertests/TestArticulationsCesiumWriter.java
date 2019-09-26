@@ -32,13 +32,13 @@ public class TestArticulationsCesiumWriter extends TestCesiumPropertyWriter<Arti
             final PacketCesiumWriter usingExpression_0 = (getPacket());
             try {
                 {
-                    cesiumlanguagewriter.ModelCesiumWriter modelWriter = getPacket().openModelProperty();
+                    ModelCesiumWriter modelWriter = getPacket().openModelProperty();
                     try {
                         {
-                            cesiumlanguagewriter.ArticulationsCesiumWriter articulationsWriter = modelWriter.openArticulationsProperty();
+                            ArticulationsCesiumWriter articulationsWriter = modelWriter.openArticulationsProperty();
                             try {
                                 {
-                                    cesiumlanguagewriter.ArticulationCesiumWriter articulationWriter = articulationsWriter.openArticulationProperty("articulation1 stage1");
+                                    ArticulationCesiumWriter articulationWriter = articulationsWriter.openArticulationProperty("articulation1 stage1");
                                     try {
                                         articulationWriter.writeNumber(3.5);
                                     } finally {
@@ -67,13 +67,13 @@ public class TestArticulationsCesiumWriter extends TestCesiumPropertyWriter<Arti
             final PacketCesiumWriter usingExpression_1 = (getPacket());
             try {
                 {
-                    cesiumlanguagewriter.ModelCesiumWriter modelWriter = getPacket().openModelProperty();
+                    ModelCesiumWriter modelWriter = getPacket().openModelProperty();
                     try {
                         {
-                            cesiumlanguagewriter.ArticulationsCesiumWriter articulationsWriter = modelWriter.openArticulationsProperty();
+                            ArticulationsCesiumWriter articulationsWriter = modelWriter.openArticulationsProperty();
                             try {
                                 {
-                                    cesiumlanguagewriter.ArticulationCesiumWriter articulationWriter = articulationsWriter.openArticulationProperty("articulation1 stage1");
+                                    ArticulationCesiumWriter articulationWriter = articulationsWriter.openArticulationProperty("articulation1 stage1");
                                     try {
                                         articulationWriter.writeNumber(4.0);
                                     } finally {
@@ -81,7 +81,7 @@ public class TestArticulationsCesiumWriter extends TestCesiumPropertyWriter<Arti
                                     }
                                 }
                                 {
-                                    cesiumlanguagewriter.ArticulationCesiumWriter articulationWriter = articulationsWriter.openArticulationProperty("articulation1 stage2");
+                                    ArticulationCesiumWriter articulationWriter = articulationsWriter.openArticulationProperty("articulation1 stage2");
                                     try {
                                         articulationWriter.writeNumber(5.0);
                                     } finally {
@@ -111,19 +111,19 @@ public class TestArticulationsCesiumWriter extends TestCesiumPropertyWriter<Arti
             try {
                 final CesiumOutputStream tempObj$0 = new CesiumOutputStream(stringWriter);
                 tempObj$0.setPrettyFormatting(true);
-                cesiumlanguagewriter.CesiumOutputStream output = tempObj$0;
-                cesiumlanguagewriter.CesiumStreamWriter writer = new CesiumStreamWriter();
+                CesiumOutputStream output = tempObj$0;
+                CesiumStreamWriter writer = new CesiumStreamWriter();
                 {
-                    cesiumlanguagewriter.PacketCesiumWriter packet = writer.openPacket(output);
+                    PacketCesiumWriter packet = writer.openPacket(output);
                     try {
                         packet.writeId("MyID");
-                        cesiumlanguagewriter.JulianDate startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0D));
-                        cesiumlanguagewriter.JulianDate stopDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 1, 0D));
+                        JulianDate startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0D));
+                        JulianDate stopDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 1, 0D));
                         {
-                            cesiumlanguagewriter.ClockCesiumWriter clockWriter = packet.openClockProperty();
+                            ClockCesiumWriter clockWriter = packet.openClockProperty();
                             try {
                                 {
-                                    cesiumlanguagewriter.ClockCesiumWriter intervalClockWriter = clockWriter.openInterval(startDate, stopDate);
+                                    ClockCesiumWriter intervalClockWriter = clockWriter.openInterval(startDate, stopDate);
                                     try {
                                         intervalClockWriter.writeCurrentTime(startDate);
                                     } finally {
@@ -135,14 +135,14 @@ public class TestArticulationsCesiumWriter extends TestCesiumPropertyWriter<Arti
                             }
                         }
                         {
-                            cesiumlanguagewriter.ModelCesiumWriter modelWriter = packet.openModelProperty();
+                            ModelCesiumWriter modelWriter = packet.openModelProperty();
                             try {
                                 modelWriter.writeGltfProperty(UriHelper.create("example.gltf", UriKind.RELATIVE), CesiumResourceBehavior.LINK_TO);
                                 {
-                                    cesiumlanguagewriter.ArticulationsCesiumWriter articulationsWriter = modelWriter.openArticulationsProperty();
+                                    ArticulationsCesiumWriter articulationsWriter = modelWriter.openArticulationsProperty();
                                     try {
                                         {
-                                            cesiumlanguagewriter.ArticulationCesiumWriter articulationWriter = articulationsWriter.openArticulationProperty("articulation1 stage1");
+                                            ArticulationCesiumWriter articulationWriter = articulationsWriter.openArticulationProperty("articulation1 stage1");
                                             try {
                                                 articulationWriter.writeNumber(45D);
                                             } finally {
@@ -150,7 +150,7 @@ public class TestArticulationsCesiumWriter extends TestCesiumPropertyWriter<Arti
                                             }
                                         }
                                         {
-                                            cesiumlanguagewriter.ArticulationCesiumWriter articulationWriter = articulationsWriter.openArticulationProperty("articulation1 stage2");
+                                            ArticulationCesiumWriter articulationWriter = articulationsWriter.openArticulationProperty("articulation1 stage2");
                                             try {
                                                 final ArrayList<cesiumlanguagewriter.JulianDate> tempCollection$0 = new ArrayList<cesiumlanguagewriter.JulianDate>();
                                                 tempCollection$0.add(startDate);

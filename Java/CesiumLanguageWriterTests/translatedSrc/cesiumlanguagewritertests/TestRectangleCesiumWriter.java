@@ -27,10 +27,10 @@ public class TestRectangleCesiumWriter extends TestCesiumPropertyWriter<Rectangl
             final PacketCesiumWriter usingExpression_0 = (getPacket());
             try {
                 {
-                    cesiumlanguagewriter.RectangleCesiumWriter rectangle = getPacket().openRectangleProperty();
+                    RectangleCesiumWriter rectangle = getPacket().openRectangleProperty();
                     try {
                         {
-                            cesiumlanguagewriter.RectangleCesiumWriter interval = rectangle.openInterval();
+                            RectangleCesiumWriter interval = rectangle.openInterval();
                             try {
                                 interval.writeExtrudedHeightProperty(10.0);
                                 interval.writeExtrudedHeightReferenceProperty(CesiumHeightReference.RELATIVE_TO_GROUND);

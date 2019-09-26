@@ -28,14 +28,14 @@ public class Sandbox {
         StringWriter stringWriter = new StringWriter();
         final CesiumOutputStream tempObj$0 = new CesiumOutputStream(stringWriter);
         tempObj$0.setPrettyFormatting(true);
-        cesiumlanguagewriter.CesiumOutputStream output = tempObj$0;
-        cesiumlanguagewriter.CesiumStreamWriter stream = new CesiumStreamWriter();
+        CesiumOutputStream output = tempObj$0;
+        CesiumStreamWriter stream = new CesiumStreamWriter();
         {
-            cesiumlanguagewriter.PacketCesiumWriter packet = stream.openPacket(output);
+            PacketCesiumWriter packet = stream.openPacket(output);
             try {
                 packet.writeId("Test");
                 {
-                    cesiumlanguagewriter.BillboardCesiumWriter billboard = packet.openBillboardProperty();
+                    BillboardCesiumWriter billboard = packet.openBillboardProperty();
                     try {
                         billboard.writeColorProperty(123, 67, 0, 255);
                         billboard.writeImageProperty(UriHelper.create("http://cesiumjs.org/images/CesiumHeaderLogo.png"), CesiumResourceBehavior.LINK_TO);
@@ -44,7 +44,7 @@ public class Sandbox {
                     }
                 }
                 {
-                    cesiumlanguagewriter.PositionCesiumWriter position = packet.openPositionProperty();
+                    PositionCesiumWriter position = packet.openPositionProperty();
                     try {
                         position.writeCartographicDegrees(new Cartographic(-75.0, 45.0, 100.0));
                     } finally {
@@ -52,18 +52,18 @@ public class Sandbox {
                     }
                 }
                 {
-                    cesiumlanguagewriter.ModelCesiumWriter model = packet.openModelProperty();
+                    ModelCesiumWriter model = packet.openModelProperty();
                     try {
                         {
-                            cesiumlanguagewriter.ColorCesiumWriter color = model.openColorProperty();
+                            ColorCesiumWriter color = model.openColorProperty();
                             try {
                                 {
-                                    cesiumlanguagewriter.CesiumIntervalListWriter<cesiumlanguagewriter.ColorCesiumWriter> intervals = color.openMultipleIntervals();
+                                    CesiumIntervalListWriter<cesiumlanguagewriter.ColorCesiumWriter> intervals = color.openMultipleIntervals();
                                     try {
-                                        cesiumlanguagewriter.JulianDate start = new GregorianDate(2012, 8, 4, 16, 0, 0D).toJulianDate();
-                                        cesiumlanguagewriter.JulianDate stop = new GregorianDate(2012, 8, 4, 16, 1, 0D).toJulianDate();
+                                        JulianDate start = new GregorianDate(2012, 8, 4, 16, 0, 0D).toJulianDate();
+                                        JulianDate stop = new GregorianDate(2012, 8, 4, 16, 1, 0D).toJulianDate();
                                         {
-                                            cesiumlanguagewriter.ColorCesiumWriter interval = intervals.openInterval(start, stop);
+                                            ColorCesiumWriter interval = intervals.openInterval(start, stop);
                                             try {
                                                 interval.writeRgbaf(Color.RED);
                                             } finally {
@@ -73,7 +73,7 @@ public class Sandbox {
                                         start = new GregorianDate(2012, 8, 4, 16, 1, 0D).toJulianDate();
                                         stop = new GregorianDate(2012, 8, 4, 16, 2, 0D).toJulianDate();
                                         {
-                                            cesiumlanguagewriter.ColorCesiumWriter interval = intervals.openInterval(start, stop);
+                                            ColorCesiumWriter interval = intervals.openInterval(start, stop);
                                             try {
                                                 interval.writeRgbaf(ColorHelper.LIME);
                                             } finally {

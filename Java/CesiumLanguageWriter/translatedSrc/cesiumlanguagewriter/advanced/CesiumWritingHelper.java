@@ -1199,7 +1199,7 @@ public final class CesiumWritingHelper {
     */
     public static void writeReferences(CesiumOutputStream output, Iterable<Reference> references) {
         output.writeStartSequence();
-        for (final cesiumlanguagewriter.Reference reference : references) {
+        for (final Reference reference : references) {
             output.writeValue(reference.getValue());
             output.writeLineBreak();
         }
@@ -1218,10 +1218,10 @@ public final class CesiumWritingHelper {
     */
     public static void writeReferenceListOfLists(CesiumOutputStream output, Iterable<? extends Iterable<? extends Reference>> values) {
         output.writeStartSequence();
-        for (final Iterable<? extends cesiumlanguagewriter.Reference> list : values) {
+        for (final Iterable<? extends Reference> list : values) {
             output.writeStartSequence();
             output.writeLineBreak();
-            for (final cesiumlanguagewriter.Reference reference : list) {
+            for (final Reference reference : list) {
                 output.writeValue(reference.getValue());
                 output.writeLineBreak();
             }

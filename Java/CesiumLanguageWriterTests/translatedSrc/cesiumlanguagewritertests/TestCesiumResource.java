@@ -28,14 +28,14 @@ public class TestCesiumResource {
     @Test
     public final void testFromImage() {
         BufferedImage image = BitmapHelper.create(EmbeddedData.read("satellite.png"));
-        cesiumlanguagewriter.CesiumResource resource = CesiumResource.fromImage(image, CesiumImageFormat.PNG);
+        CesiumResource resource = CesiumResource.fromImage(image, CesiumImageFormat.PNG);
         Assert.assertNotNull(resource);
         AssertHelper.assertStringStartsWith("data:image/png;base64,", resource.getUri());
     }
 
     public final void testFromImageFormats(@Nonnull CesiumImageFormat format) {
         BufferedImage image = BitmapHelper.create(EmbeddedData.read("satellite.png"));
-        cesiumlanguagewriter.CesiumResource resource = CesiumResource.fromImage(image, format);
+        CesiumResource resource = CesiumResource.fromImage(image, format);
         Assert.assertNotNull(resource);
         AssertHelper.assertStringStartsWith("data:", resource.getUri());
         AssertHelper.assertStringContains(";base64,", resource.getUri());
@@ -63,7 +63,7 @@ public class TestCesiumResource {
                 4
         };
         MemoryStream stream = new MemoryStream(contents);
-        cesiumlanguagewriter.CesiumResource resource = CesiumResource.fromStream(stream, CesiumImageFormat.PNG);
+        CesiumResource resource = CesiumResource.fromStream(stream, CesiumImageFormat.PNG);
         Assert.assertNotNull(resource);
         final String expected = "data:image/png;base64,AAECAwQ=";
         Assert.assertEquals(expected, resource.getUri());
@@ -80,7 +80,7 @@ public class TestCesiumResource {
                 4
         };
         MemoryStream stream = new MemoryStream(contents);
-        cesiumlanguagewriter.CesiumResource resource = CesiumResource.fromStream(stream, "application/octet-stream");
+        CesiumResource resource = CesiumResource.fromStream(stream, "application/octet-stream");
         Assert.assertNotNull(resource);
         final String expected = "data:application/octet-stream;base64,AAECAwQ=";
         Assert.assertEquals(expected, resource.getUri());

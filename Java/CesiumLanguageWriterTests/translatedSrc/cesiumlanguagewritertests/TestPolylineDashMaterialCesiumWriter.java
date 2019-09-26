@@ -29,13 +29,13 @@ public class TestPolylineDashMaterialCesiumWriter extends TestCesiumPropertyWrit
             final PacketCesiumWriter usingExpression_0 = (getPacket());
             try {
                 {
-                    cesiumlanguagewriter.PolylineCesiumWriter polyline = getPacket().openPolylineProperty();
+                    PolylineCesiumWriter polyline = getPacket().openPolylineProperty();
                     try {
                         {
-                            cesiumlanguagewriter.PolylineMaterialCesiumWriter material = polyline.openMaterialProperty();
+                            PolylineMaterialCesiumWriter material = polyline.openMaterialProperty();
                             try {
                                 {
-                                    cesiumlanguagewriter.PolylineDashMaterialCesiumWriter polylineDashMaterial = material.openPolylineDashProperty();
+                                    PolylineDashMaterialCesiumWriter polylineDashMaterial = material.openPolylineDashProperty();
                                     try {
                                         polylineDashMaterial.writeColorProperty(Color.RED);
                                         polylineDashMaterial.writeDashPatternProperty(ConvertHelper.toInt32("0011001100110011", 2));

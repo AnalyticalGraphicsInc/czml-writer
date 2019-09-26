@@ -394,7 +394,7 @@ public class TestDuration {
     */
     @Test
     public final void testToString() {
-        cesiumlanguagewriter.Duration duration = new Duration(1, 43200.0);
+        Duration duration = new Duration(1, 43200.0);
         Assert.assertEquals("1:43200", duration.toString());
     }
 

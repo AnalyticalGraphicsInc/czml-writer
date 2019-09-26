@@ -28,13 +28,13 @@ public class TestPolylineGlowMaterialCesiumWriter extends TestCesiumPropertyWrit
             final PacketCesiumWriter usingExpression_0 = (getPacket());
             try {
                 {
-                    cesiumlanguagewriter.PolylineCesiumWriter polyline = getPacket().openPolylineProperty();
+                    PolylineCesiumWriter polyline = getPacket().openPolylineProperty();
                     try {
                         {
-                            cesiumlanguagewriter.PolylineMaterialCesiumWriter material = polyline.openMaterialProperty();
+                            PolylineMaterialCesiumWriter material = polyline.openMaterialProperty();
                             try {
                                 {
-                                    cesiumlanguagewriter.PolylineGlowMaterialCesiumWriter polylineGlowMaterial = material.openPolylineGlowProperty();
+                                    PolylineGlowMaterialCesiumWriter polylineGlowMaterial = material.openPolylineGlowProperty();
                                     try {
                                         polylineGlowMaterial.writeColorProperty(Color.RED);
                                         polylineGlowMaterial.writeGlowPowerProperty(0.7);

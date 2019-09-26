@@ -71,7 +71,7 @@ public class TestBoundingRectangle {
     public final void testInitializationFromBadElementsWidth() {
         AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, new Action() {
             public void invoke() {
-                cesiumlanguagewriter.BoundingRectangle unused = new BoundingRectangle(2D, 2D, 1D, 3D);
+                BoundingRectangle unused = new BoundingRectangle(2D, 2D, 1D, 3D);
             }
         });
     }
@@ -86,7 +86,7 @@ public class TestBoundingRectangle {
     public final void testInitializationFromBadElementsHeight() {
         AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, new Action() {
             public void invoke() {
-                cesiumlanguagewriter.BoundingRectangle unused = new BoundingRectangle(2D, 2D, 3D, 1D);
+                BoundingRectangle unused = new BoundingRectangle(2D, 2D, 3D, 1D);
             }
         });
     }
