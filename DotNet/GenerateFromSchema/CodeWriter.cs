@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 using JetBrains.Annotations;
 
 namespace GenerateFromSchema
@@ -18,7 +19,7 @@ namespace GenerateFromSchema
         }
 
         public CodeWriter(string filename)
-            : this(new StreamWriter(filename))
+            : this(new StreamWriter(filename, false, Encoding.UTF8))
         {
         }
 
