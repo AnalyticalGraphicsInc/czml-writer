@@ -1029,6 +1029,51 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
+                            EllipsoidRadiiCesiumWriter w2 = w.openInnerRadiiProperty();
+                            try {
+                                w2.writeCartesian(new Cartesian(21988D, 44373D, 36013D));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.innerRadii.getValue(date)).toEqual(new Cartesian3(21988, 44373, 36013));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            DoubleCesiumWriter w2 = w.openMinimumClockProperty();
+                            try {
+                                w2.writeNumber(57589.0);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.minimumClock.getValue(date)).toEqual(57589.0);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            DoubleCesiumWriter w2 = w.openMaximumClockProperty();
+                            try {
+                                w2.writeNumber(24940.0);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.maximumClock.getValue(date)).toEqual(24940.0);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            DoubleCesiumWriter w2 = w.openMinimumConeProperty();
+                            try {
+                                w2.writeNumber(54533.0);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.minimumCone.getValue(date)).toEqual(54533.0);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            DoubleCesiumWriter w2 = w.openMaximumConeProperty();
+                            try {
+                                w2.writeNumber(64532.0);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.maximumCone.getValue(date)).toEqual(64532.0);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
                             HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
                             try {
                                 w2.writeHeightReference(CesiumHeightReference.CLAMP_TO_GROUND);
@@ -22888,6 +22933,51 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
+                            EllipsoidRadiiCesiumWriter w2 = w.openInnerRadiiProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("ellipsoid", "innerRadii")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.innerRadii.getValue(date)).toEqual(constant.ellipsoid.innerRadii.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            DoubleCesiumWriter w2 = w.openMinimumClockProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("ellipsoid", "minimumClock")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.minimumClock.getValue(date)).toEqual(constant.ellipsoid.minimumClock.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            DoubleCesiumWriter w2 = w.openMaximumClockProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("ellipsoid", "maximumClock")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.maximumClock.getValue(date)).toEqual(constant.ellipsoid.maximumClock.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            DoubleCesiumWriter w2 = w.openMinimumConeProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("ellipsoid", "minimumCone")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.minimumCone.getValue(date)).toEqual(constant.ellipsoid.minimumCone.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            DoubleCesiumWriter w2 = w.openMaximumConeProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("ellipsoid", "maximumCone")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.maximumCone.getValue(date)).toEqual(constant.ellipsoid.maximumCone.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
                             HeightReferenceCesiumWriter w2 = w.openHeightReferenceProperty();
                             try {
                                 w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("ellipsoid", "heightReference")));
@@ -35768,6 +35858,61 @@ public class TestGenerateValidationDocument {
                                         .<Cartesian> createList(new Cartesian(5183D, 10004D, 13863D), new Cartesian(39497D, 12186D, 45103D)));
                                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.radii.getValue(documentStartDate)).toEqual(new Cartesian3(5183, 10004, 13863));");
                                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.radii.getValue(documentStopDate)).toEqual(new Cartesian3(39497, 12186, 45103));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            EllipsoidRadiiCesiumWriter w2 = w.openInnerRadiiProperty();
+                            try {
+                                w2.writeCartesian(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                        .<Cartesian> createList(new Cartesian(40318D, 27037D, 59497D), new Cartesian(57650D, 53729D, 12241D)));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.innerRadii.getValue(documentStartDate)).toEqual(new Cartesian3(40318, 27037, 59497));");
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.innerRadii.getValue(documentStopDate)).toEqual(new Cartesian3(57650, 53729, 12241));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            DoubleCesiumWriter w2 = w.openMinimumClockProperty();
+                            try {
+                                w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Double> createList(
+                                        13484.0, 2170.0));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.minimumClock.getValue(documentStartDate)).toEqual(13484.0);");
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.minimumClock.getValue(documentStopDate)).toEqual(2170.0);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            DoubleCesiumWriter w2 = w.openMaximumClockProperty();
+                            try {
+                                w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Double> createList(
+                                        10874.0, 2968.0));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.maximumClock.getValue(documentStartDate)).toEqual(10874.0);");
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.maximumClock.getValue(documentStopDate)).toEqual(2968.0);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            DoubleCesiumWriter w2 = w.openMinimumConeProperty();
+                            try {
+                                w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Double> createList(
+                                        54230.0, 59454.0));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.minimumCone.getValue(documentStartDate)).toEqual(54230.0);");
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.minimumCone.getValue(documentStopDate)).toEqual(59454.0);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            DoubleCesiumWriter w2 = w.openMaximumConeProperty();
+                            try {
+                                w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Double> createList(
+                                        49077.0, 26303.0));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.maximumCone.getValue(documentStartDate)).toEqual(49077.0);");
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.maximumCone.getValue(documentStopDate)).toEqual(26303.0);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
