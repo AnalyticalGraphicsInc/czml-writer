@@ -6,3 +6,9 @@ trim_trailing_whitespace = true
 [*.{json,cs}]
 indent_style = space
 indent_size = 4
+
+[*.json]
+charset = utf-8
+
+[*.cs]
+charset = utf-8-bom

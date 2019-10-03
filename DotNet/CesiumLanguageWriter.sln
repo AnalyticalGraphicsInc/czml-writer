@@ -156,6 +156,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{275808F5-DE8A-4BA8-9751-3F15D09FE7DB}"
 	ProjectSection(SolutionItems) = preProject
 		..\.appveyor.yml = ..\.appveyor.yml
+		..\.editorconfig = ..\.editorconfig
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ValueProperties", "ValueProperties", "{BAE894F9-C91D-4F94-8CF0-6F336B2D9C4C}"
