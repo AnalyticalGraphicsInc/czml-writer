@@ -12,8 +12,33 @@
         },
         "radii": {
             "$ref": "EllipsoidRadii.json",
-            "description": "The dimensions of the ellipsoid.",
+            "description": "The radii of the ellipsoid.",
             "czmlRequiredForDisplay": true
+        },
+        "innerRadii": {
+            "$ref": "EllipsoidRadii.json",
+            "description": "The inner radii of the ellipsoid.",
+            "czmlRequiredForDisplay": true
+        },
+        "minimumClock": {
+            "$ref": "Double.json",
+            "description": "The minimum clock angle of the ellipsoid.",
+            "default": 0.0
+        },
+        "maximumClock": {
+            "$ref": "Double.json",
+            "description": "The maximum clock angle of the ellipsoid.",
+            "default": "2π"
+        },
+        "minimumCone": {
+            "$ref": "Double.json",
+            "description": "The minimum cone angle of the ellipsoid.",
+            "default": 0.0
+        },
+        "maximumCone": {
+            "$ref": "Double.json",
+            "description": "The maximum cone angle of the ellipsoid.",
+            "default": "π"
         },
         "heightReference": {
             "$ref": "HeightReference.json",

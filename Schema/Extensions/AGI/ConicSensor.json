@@ -19,7 +19,7 @@
         "outerHalfAngle": {
             "$ref": "../../Double.json",
             "description": "The outer half angle of the cone.",
-            "default": "PI"
+            "default": "π"
         },
         "minimumClockAngle": {
             "$ref": "../../Double.json",
@@ -29,7 +29,7 @@
         "maximumClockAngle": {
             "$ref": "../../Double.json",
             "description": "The maximum clock angle limit of the cone.",
-            "default": "2 * PI"
+            "default": "2π"
         },
         "radius": {
             "$ref": "../../Double.json",

@@ -29,6 +29,9 @@ test {
     enabled = false
 }
 
-tasks.withType(Javadoc) {
-    options.addStringOption('Xdoclint:none', '-quiet')
+javadoc {
+    options.addBooleanOption("Xdoclint:none", true)
+    options.encoding = "UTF-8"
+    options.docEncoding = "UTF-8"
+    options.charSet = "UTF-8"
 }

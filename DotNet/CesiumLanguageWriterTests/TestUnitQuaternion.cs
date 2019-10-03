@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using CesiumLanguageWriter;
 using NUnit.Framework;
 

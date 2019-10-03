@@ -644,7 +644,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code outerHalfAngle} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code outerHalfAngle} property defines the outer half angle of the cone. If not specified, the default value is PI.
+    *  Gets the writer for the {@code outerHalfAngle} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code outerHalfAngle} property defines the outer half angle of the cone. If not specified, the default value is π.
     
 
     */
@@ -655,7 +655,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Opens and returns the writer for the {@code outerHalfAngle} property. The {@code outerHalfAngle} property defines the outer half angle of the cone. If not specified, the default value is PI.
+    Opens and returns the writer for the {@code outerHalfAngle} property. The {@code outerHalfAngle} property defines the outer half angle of the cone. If not specified, the default value is π.
     
 
     */
@@ -667,7 +667,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code outerHalfAngle} property as a {@code number} value. The {@code outerHalfAngle} property specifies the outer half angle of the cone. If not specified, the default value is PI.
+    Writes a value for the {@code outerHalfAngle} property as a {@code number} value. The {@code outerHalfAngle} property specifies the outer half angle of the cone. If not specified, the default value is π.
     
     
 
@@ -686,7 +686,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code outerHalfAngle} property as a {@code number} value. The {@code outerHalfAngle} property specifies the outer half angle of the cone. If not specified, the default value is PI.
+    Writes a value for the {@code outerHalfAngle} property as a {@code number} value. The {@code outerHalfAngle} property specifies the outer half angle of the cone. If not specified, the default value is π.
     
     
     
@@ -707,7 +707,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code outerHalfAngle} property as a {@code number} value. The {@code outerHalfAngle} property specifies the outer half angle of the cone. If not specified, the default value is PI.
+    Writes a value for the {@code outerHalfAngle} property as a {@code number} value. The {@code outerHalfAngle} property specifies the outer half angle of the cone. If not specified, the default value is π.
     
     
     
@@ -732,7 +732,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code outerHalfAngle} property as a {@code reference} value. The {@code outerHalfAngle} property specifies the outer half angle of the cone. If not specified, the default value is PI.
+    Writes a value for the {@code outerHalfAngle} property as a {@code reference} value. The {@code outerHalfAngle} property specifies the outer half angle of the cone. If not specified, the default value is π.
     
     
 
@@ -751,7 +751,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code outerHalfAngle} property as a {@code reference} value. The {@code outerHalfAngle} property specifies the outer half angle of the cone. If not specified, the default value is PI.
+    Writes a value for the {@code outerHalfAngle} property as a {@code reference} value. The {@code outerHalfAngle} property specifies the outer half angle of the cone. If not specified, the default value is π.
     
     
 
@@ -770,7 +770,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code outerHalfAngle} property as a {@code reference} value. The {@code outerHalfAngle} property specifies the outer half angle of the cone. If not specified, the default value is PI.
+    Writes a value for the {@code outerHalfAngle} property as a {@code reference} value. The {@code outerHalfAngle} property specifies the outer half angle of the cone. If not specified, the default value is π.
     
     
     
@@ -791,7 +791,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code outerHalfAngle} property as a {@code reference} value. The {@code outerHalfAngle} property specifies the outer half angle of the cone. If not specified, the default value is PI.
+    Writes a value for the {@code outerHalfAngle} property as a {@code reference} value. The {@code outerHalfAngle} property specifies the outer half angle of the cone. If not specified, the default value is π.
     
     
     
@@ -978,7 +978,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     }
 
     /**
-    *  Gets the writer for the {@code maximumClockAngle} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code maximumClockAngle} property defines the maximum clock angle limit of the cone. If not specified, the default value is 2 * PI.
+    *  Gets the writer for the {@code maximumClockAngle} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code maximumClockAngle} property defines the maximum clock angle limit of the cone. If not specified, the default value is 2π.
     
 
     */
@@ -989,7 +989,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Opens and returns the writer for the {@code maximumClockAngle} property. The {@code maximumClockAngle} property defines the maximum clock angle limit of the cone. If not specified, the default value is 2 * PI.
+    Opens and returns the writer for the {@code maximumClockAngle} property. The {@code maximumClockAngle} property defines the maximum clock angle limit of the cone. If not specified, the default value is 2π.
     
 
     */
@@ -1001,7 +1001,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code maximumClockAngle} property as a {@code number} value. The {@code maximumClockAngle} property specifies the maximum clock angle limit of the cone. If not specified, the default value is 2 * PI.
+    Writes a value for the {@code maximumClockAngle} property as a {@code number} value. The {@code maximumClockAngle} property specifies the maximum clock angle limit of the cone. If not specified, the default value is 2π.
     
     
 
@@ -1020,7 +1020,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code maximumClockAngle} property as a {@code number} value. The {@code maximumClockAngle} property specifies the maximum clock angle limit of the cone. If not specified, the default value is 2 * PI.
+    Writes a value for the {@code maximumClockAngle} property as a {@code number} value. The {@code maximumClockAngle} property specifies the maximum clock angle limit of the cone. If not specified, the default value is 2π.
     
     
     
@@ -1041,7 +1041,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code maximumClockAngle} property as a {@code number} value. The {@code maximumClockAngle} property specifies the maximum clock angle limit of the cone. If not specified, the default value is 2 * PI.
+    Writes a value for the {@code maximumClockAngle} property as a {@code number} value. The {@code maximumClockAngle} property specifies the maximum clock angle limit of the cone. If not specified, the default value is 2π.
     
     
     
@@ -1066,7 +1066,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code maximumClockAngle} property as a {@code reference} value. The {@code maximumClockAngle} property specifies the maximum clock angle limit of the cone. If not specified, the default value is 2 * PI.
+    Writes a value for the {@code maximumClockAngle} property as a {@code reference} value. The {@code maximumClockAngle} property specifies the maximum clock angle limit of the cone. If not specified, the default value is 2π.
     
     
 
@@ -1085,7 +1085,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code maximumClockAngle} property as a {@code reference} value. The {@code maximumClockAngle} property specifies the maximum clock angle limit of the cone. If not specified, the default value is 2 * PI.
+    Writes a value for the {@code maximumClockAngle} property as a {@code reference} value. The {@code maximumClockAngle} property specifies the maximum clock angle limit of the cone. If not specified, the default value is 2π.
     
     
 
@@ -1104,7 +1104,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code maximumClockAngle} property as a {@code reference} value. The {@code maximumClockAngle} property specifies the maximum clock angle limit of the cone. If not specified, the default value is 2 * PI.
+    Writes a value for the {@code maximumClockAngle} property as a {@code reference} value. The {@code maximumClockAngle} property specifies the maximum clock angle limit of the cone. If not specified, the default value is 2π.
     
     
     
@@ -1125,7 +1125,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
 
     /**
     *  
-    Writes a value for the {@code maximumClockAngle} property as a {@code reference} value. The {@code maximumClockAngle} property specifies the maximum clock angle limit of the cone. If not specified, the default value is 2 * PI.
+    Writes a value for the {@code maximumClockAngle} property as a {@code reference} value. The {@code maximumClockAngle} property specifies the maximum clock angle limit of the cone. If not specified, the default value is 2π.
     
     
     

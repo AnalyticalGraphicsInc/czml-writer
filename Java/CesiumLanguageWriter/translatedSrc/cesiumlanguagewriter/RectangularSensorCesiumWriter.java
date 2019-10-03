@@ -453,7 +453,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code xHalfAngle} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code xHalfAngle} property defines the X half angle. If not specified, the default value is PI / 2.
+    *  Gets the writer for the {@code xHalfAngle} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code xHalfAngle} property defines the X half angle. If not specified, the default value is π / 2.
     
 
     */
@@ -464,7 +464,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
     /**
     *  
-    Opens and returns the writer for the {@code xHalfAngle} property. The {@code xHalfAngle} property defines the X half angle. If not specified, the default value is PI / 2.
+    Opens and returns the writer for the {@code xHalfAngle} property. The {@code xHalfAngle} property defines the X half angle. If not specified, the default value is π / 2.
     
 
     */
@@ -476,7 +476,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
     /**
     *  
-    Writes a value for the {@code xHalfAngle} property as a {@code number} value. The {@code xHalfAngle} property specifies the X half angle. If not specified, the default value is PI / 2.
+    Writes a value for the {@code xHalfAngle} property as a {@code number} value. The {@code xHalfAngle} property specifies the X half angle. If not specified, the default value is π / 2.
     
     
 
@@ -495,7 +495,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
     /**
     *  
-    Writes a value for the {@code xHalfAngle} property as a {@code number} value. The {@code xHalfAngle} property specifies the X half angle. If not specified, the default value is PI / 2.
+    Writes a value for the {@code xHalfAngle} property as a {@code number} value. The {@code xHalfAngle} property specifies the X half angle. If not specified, the default value is π / 2.
     
     
     
@@ -516,7 +516,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
     /**
     *  
-    Writes a value for the {@code xHalfAngle} property as a {@code number} value. The {@code xHalfAngle} property specifies the X half angle. If not specified, the default value is PI / 2.
+    Writes a value for the {@code xHalfAngle} property as a {@code number} value. The {@code xHalfAngle} property specifies the X half angle. If not specified, the default value is π / 2.
     
     
     
@@ -541,7 +541,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
     /**
     *  
-    Writes a value for the {@code xHalfAngle} property as a {@code reference} value. The {@code xHalfAngle} property specifies the X half angle. If not specified, the default value is PI / 2.
+    Writes a value for the {@code xHalfAngle} property as a {@code reference} value. The {@code xHalfAngle} property specifies the X half angle. If not specified, the default value is π / 2.
     
     
 
@@ -560,7 +560,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
     /**
     *  
-    Writes a value for the {@code xHalfAngle} property as a {@code reference} value. The {@code xHalfAngle} property specifies the X half angle. If not specified, the default value is PI / 2.
+    Writes a value for the {@code xHalfAngle} property as a {@code reference} value. The {@code xHalfAngle} property specifies the X half angle. If not specified, the default value is π / 2.
     
     
 
@@ -579,7 +579,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
     /**
     *  
-    Writes a value for the {@code xHalfAngle} property as a {@code reference} value. The {@code xHalfAngle} property specifies the X half angle. If not specified, the default value is PI / 2.
+    Writes a value for the {@code xHalfAngle} property as a {@code reference} value. The {@code xHalfAngle} property specifies the X half angle. If not specified, the default value is π / 2.
     
     
     
@@ -600,7 +600,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
     /**
     *  
-    Writes a value for the {@code xHalfAngle} property as a {@code reference} value. The {@code xHalfAngle} property specifies the X half angle. If not specified, the default value is PI / 2.
+    Writes a value for the {@code xHalfAngle} property as a {@code reference} value. The {@code xHalfAngle} property specifies the X half angle. If not specified, the default value is π / 2.
     
     
     
@@ -620,7 +620,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code yHalfAngle} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code yHalfAngle} property defines the Y half angle. If not specified, the default value is PI / 2.
+    *  Gets the writer for the {@code yHalfAngle} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code yHalfAngle} property defines the Y half angle. If not specified, the default value is π / 2.
     
 
     */
@@ -631,7 +631,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
     /**
     *  
-    Opens and returns the writer for the {@code yHalfAngle} property. The {@code yHalfAngle} property defines the Y half angle. If not specified, the default value is PI / 2.
+    Opens and returns the writer for the {@code yHalfAngle} property. The {@code yHalfAngle} property defines the Y half angle. If not specified, the default value is π / 2.
     
 
     */
@@ -643,7 +643,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
     /**
     *  
-    Writes a value for the {@code yHalfAngle} property as a {@code number} value. The {@code yHalfAngle} property specifies the Y half angle. If not specified, the default value is PI / 2.
+    Writes a value for the {@code yHalfAngle} property as a {@code number} value. The {@code yHalfAngle} property specifies the Y half angle. If not specified, the default value is π / 2.
     
     
 
@@ -662,7 +662,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
     /**
     *  
-    Writes a value for the {@code yHalfAngle} property as a {@code number} value. The {@code yHalfAngle} property specifies the Y half angle. If not specified, the default value is PI / 2.
+    Writes a value for the {@code yHalfAngle} property as a {@code number} value. The {@code yHalfAngle} property specifies the Y half angle. If not specified, the default value is π / 2.
     
     
     
@@ -683,7 +683,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
     /**
     *  
-    Writes a value for the {@code yHalfAngle} property as a {@code number} value. The {@code yHalfAngle} property specifies the Y half angle. If not specified, the default value is PI / 2.
+    Writes a value for the {@code yHalfAngle} property as a {@code number} value. The {@code yHalfAngle} property specifies the Y half angle. If not specified, the default value is π / 2.
     
     
     
@@ -708,7 +708,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
     /**
     *  
-    Writes a value for the {@code yHalfAngle} property as a {@code reference} value. The {@code yHalfAngle} property specifies the Y half angle. If not specified, the default value is PI / 2.
+    Writes a value for the {@code yHalfAngle} property as a {@code reference} value. The {@code yHalfAngle} property specifies the Y half angle. If not specified, the default value is π / 2.
     
     
 
@@ -727,7 +727,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
     /**
     *  
-    Writes a value for the {@code yHalfAngle} property as a {@code reference} value. The {@code yHalfAngle} property specifies the Y half angle. If not specified, the default value is PI / 2.
+    Writes a value for the {@code yHalfAngle} property as a {@code reference} value. The {@code yHalfAngle} property specifies the Y half angle. If not specified, the default value is π / 2.
     
     
 
@@ -746,7 +746,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
     /**
     *  
-    Writes a value for the {@code yHalfAngle} property as a {@code reference} value. The {@code yHalfAngle} property specifies the Y half angle. If not specified, the default value is PI / 2.
+    Writes a value for the {@code yHalfAngle} property as a {@code reference} value. The {@code yHalfAngle} property specifies the Y half angle. If not specified, the default value is π / 2.
     
     
     
@@ -767,7 +767,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
 
     /**
     *  
-    Writes a value for the {@code yHalfAngle} property as a {@code reference} value. The {@code yHalfAngle} property specifies the Y half angle. If not specified, the default value is PI / 2.
+    Writes a value for the {@code yHalfAngle} property as a {@code reference} value. The {@code yHalfAngle} property specifies the Y half angle. If not specified, the default value is π / 2.
     
     
     

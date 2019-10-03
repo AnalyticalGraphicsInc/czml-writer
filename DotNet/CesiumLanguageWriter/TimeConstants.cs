@@ -1,4 +1,4 @@
-namespace CesiumLanguageWriter
+﻿namespace CesiumLanguageWriter
 {
     /// <summary>
     /// Contains time-related constants.

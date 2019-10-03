@@ -1,4 +1,4 @@
-using System.Drawing;
+﻿using System.Drawing;
 using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
 using NUnit.Framework;

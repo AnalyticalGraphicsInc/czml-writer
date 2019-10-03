@@ -47,6 +47,41 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     public static final String RadiiPropertyName = "radii";
     /**
     *  
+    The name of the {@code innerRadii} property.
+    
+
+    */
+    public static final String InnerRadiiPropertyName = "innerRadii";
+    /**
+    *  
+    The name of the {@code minimumClock} property.
+    
+
+    */
+    public static final String MinimumClockPropertyName = "minimumClock";
+    /**
+    *  
+    The name of the {@code maximumClock} property.
+    
+
+    */
+    public static final String MaximumClockPropertyName = "maximumClock";
+    /**
+    *  
+    The name of the {@code minimumCone} property.
+    
+
+    */
+    public static final String MinimumConePropertyName = "minimumCone";
+    /**
+    *  
+    The name of the {@code maximumCone} property.
+    
+
+    */
+    public static final String MaximumConePropertyName = "maximumCone";
+    /**
+    *  
     The name of the {@code heightReference} property.
     
 
@@ -130,6 +165,31 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     private Lazy<EllipsoidRadiiCesiumWriter> m_radii = new Lazy<cesiumlanguagewriter.EllipsoidRadiiCesiumWriter>(new Func1<cesiumlanguagewriter.EllipsoidRadiiCesiumWriter>() {
         public cesiumlanguagewriter.EllipsoidRadiiCesiumWriter invoke() {
             return new EllipsoidRadiiCesiumWriter(RadiiPropertyName);
+        }
+    }, false);
+    private Lazy<EllipsoidRadiiCesiumWriter> m_innerRadii = new Lazy<cesiumlanguagewriter.EllipsoidRadiiCesiumWriter>(new Func1<cesiumlanguagewriter.EllipsoidRadiiCesiumWriter>() {
+        public cesiumlanguagewriter.EllipsoidRadiiCesiumWriter invoke() {
+            return new EllipsoidRadiiCesiumWriter(InnerRadiiPropertyName);
+        }
+    }, false);
+    private Lazy<DoubleCesiumWriter> m_minimumClock = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+        public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+            return new DoubleCesiumWriter(MinimumClockPropertyName);
+        }
+    }, false);
+    private Lazy<DoubleCesiumWriter> m_maximumClock = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+        public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+            return new DoubleCesiumWriter(MaximumClockPropertyName);
+        }
+    }, false);
+    private Lazy<DoubleCesiumWriter> m_minimumCone = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+        public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+            return new DoubleCesiumWriter(MinimumConePropertyName);
+        }
+    }, false);
+    private Lazy<DoubleCesiumWriter> m_maximumCone = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+        public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+            return new DoubleCesiumWriter(MaximumConePropertyName);
         }
     }, false);
     private Lazy<HeightReferenceCesiumWriter> m_heightReference = new Lazy<cesiumlanguagewriter.HeightReferenceCesiumWriter>(new Func1<cesiumlanguagewriter.HeightReferenceCesiumWriter>() {
@@ -349,7 +409,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code radii} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code radii} property defines the dimensions of the ellipsoid. This value must be specified in order for the client to display graphics.
+    *  Gets the writer for the {@code radii} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code radii} property defines the radii of the ellipsoid. This value must be specified in order for the client to display graphics.
     
 
     */
@@ -360,7 +420,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
     /**
     *  
-    Opens and returns the writer for the {@code radii} property. The {@code radii} property defines the dimensions of the ellipsoid. This value must be specified in order for the client to display graphics.
+    Opens and returns the writer for the {@code radii} property. The {@code radii} property defines the radii of the ellipsoid. This value must be specified in order for the client to display graphics.
     
 
     */
@@ -372,7 +432,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
     /**
     *  
-    Writes a value for the {@code radii} property as a {@code cartesian} value. The {@code radii} property specifies the dimensions of the ellipsoid. This value must be specified in order for the client to display graphics.
+    Writes a value for the {@code radii} property as a {@code cartesian} value. The {@code radii} property specifies the radii of the ellipsoid. This value must be specified in order for the client to display graphics.
     
     
 
@@ -391,7 +451,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
     /**
     *  
-    Writes a value for the {@code radii} property as a {@code cartesian} value. The {@code radii} property specifies the dimensions of the ellipsoid. This value must be specified in order for the client to display graphics.
+    Writes a value for the {@code radii} property as a {@code cartesian} value. The {@code radii} property specifies the radii of the ellipsoid. This value must be specified in order for the client to display graphics.
     
     
     
@@ -412,7 +472,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
     /**
     *  
-    Writes a value for the {@code radii} property as a {@code cartesian} value. The {@code radii} property specifies the dimensions of the ellipsoid. This value must be specified in order for the client to display graphics.
+    Writes a value for the {@code radii} property as a {@code cartesian} value. The {@code radii} property specifies the radii of the ellipsoid. This value must be specified in order for the client to display graphics.
     
     
     
@@ -437,7 +497,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
     /**
     *  
-    Writes a value for the {@code radii} property as a {@code reference} value. The {@code radii} property specifies the dimensions of the ellipsoid. This value must be specified in order for the client to display graphics.
+    Writes a value for the {@code radii} property as a {@code reference} value. The {@code radii} property specifies the radii of the ellipsoid. This value must be specified in order for the client to display graphics.
     
     
 
@@ -456,7 +516,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
     /**
     *  
-    Writes a value for the {@code radii} property as a {@code reference} value. The {@code radii} property specifies the dimensions of the ellipsoid. This value must be specified in order for the client to display graphics.
+    Writes a value for the {@code radii} property as a {@code reference} value. The {@code radii} property specifies the radii of the ellipsoid. This value must be specified in order for the client to display graphics.
     
     
 
@@ -475,7 +535,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
     /**
     *  
-    Writes a value for the {@code radii} property as a {@code reference} value. The {@code radii} property specifies the dimensions of the ellipsoid. This value must be specified in order for the client to display graphics.
+    Writes a value for the {@code radii} property as a {@code reference} value. The {@code radii} property specifies the radii of the ellipsoid. This value must be specified in order for the client to display graphics.
     
     
     
@@ -496,7 +556,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
     /**
     *  
-    Writes a value for the {@code radii} property as a {@code reference} value. The {@code radii} property specifies the dimensions of the ellipsoid. This value must be specified in order for the client to display graphics.
+    Writes a value for the {@code radii} property as a {@code reference} value. The {@code radii} property specifies the radii of the ellipsoid. This value must be specified in order for the client to display graphics.
     
     
     
@@ -507,6 +567,841 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     public final void writeRadiiPropertyReference(String identifier, String[] propertyNames) {
         {
             EllipsoidRadiiCesiumWriter writer = openRadiiProperty();
+            try {
+                writer.writeReference(identifier, propertyNames);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  Gets the writer for the {@code innerRadii} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code innerRadii} property defines the inner radii of the ellipsoid. This value must be specified in order for the client to display graphics.
+    
+
+    */
+    @Nonnull
+    public final EllipsoidRadiiCesiumWriter getInnerRadiiWriter() {
+        return m_innerRadii.getValue();
+    }
+
+    /**
+    *  
+    Opens and returns the writer for the {@code innerRadii} property. The {@code innerRadii} property defines the inner radii of the ellipsoid. This value must be specified in order for the client to display graphics.
+    
+
+    */
+    @Nonnull
+    public final EllipsoidRadiiCesiumWriter openInnerRadiiProperty() {
+        openIntervalIfNecessary();
+        return this.<EllipsoidRadiiCesiumWriter> openAndReturn(getInnerRadiiWriter());
+    }
+
+    /**
+    *  
+    Writes a value for the {@code innerRadii} property as a {@code cartesian} value. The {@code innerRadii} property specifies the inner radii of the ellipsoid. This value must be specified in order for the client to display graphics.
+    
+    
+
+    * @param value The value.
+    */
+    public final void writeInnerRadiiProperty(@Nonnull Cartesian value) {
+        {
+            EllipsoidRadiiCesiumWriter writer = openInnerRadiiProperty();
+            try {
+                writer.writeCartesian(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code innerRadii} property as a {@code cartesian} value. The {@code innerRadii} property specifies the inner radii of the ellipsoid. This value must be specified in order for the client to display graphics.
+    
+    
+    
+
+    * @param dates The dates at which the value is specified.
+    * @param values The values corresponding to each date.
+    */
+    public final void writeInnerRadiiProperty(List<JulianDate> dates, List<Cartesian> values) {
+        {
+            EllipsoidRadiiCesiumWriter writer = openInnerRadiiProperty();
+            try {
+                writer.writeCartesian(dates, values);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code innerRadii} property as a {@code cartesian} value. The {@code innerRadii} property specifies the inner radii of the ellipsoid. This value must be specified in order for the client to display graphics.
+    
+    
+    
+    
+    
+
+    * @param dates The dates at which the value is specified.
+    * @param values The values corresponding to each date.
+    * @param startIndex The index of the first element to write.
+    * @param length The number of elements to write.
+    */
+    public final void writeInnerRadiiProperty(List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
+        {
+            EllipsoidRadiiCesiumWriter writer = openInnerRadiiProperty();
+            try {
+                writer.writeCartesian(dates, values, startIndex, length);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code innerRadii} property as a {@code reference} value. The {@code innerRadii} property specifies the inner radii of the ellipsoid. This value must be specified in order for the client to display graphics.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeInnerRadiiPropertyReference(Reference value) {
+        {
+            EllipsoidRadiiCesiumWriter writer = openInnerRadiiProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code innerRadii} property as a {@code reference} value. The {@code innerRadii} property specifies the inner radii of the ellipsoid. This value must be specified in order for the client to display graphics.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeInnerRadiiPropertyReference(String value) {
+        {
+            EllipsoidRadiiCesiumWriter writer = openInnerRadiiProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code innerRadii} property as a {@code reference} value. The {@code innerRadii} property specifies the inner radii of the ellipsoid. This value must be specified in order for the client to display graphics.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyName The property on the referenced object.
+    */
+    public final void writeInnerRadiiPropertyReference(String identifier, String propertyName) {
+        {
+            EllipsoidRadiiCesiumWriter writer = openInnerRadiiProperty();
+            try {
+                writer.writeReference(identifier, propertyName);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code innerRadii} property as a {@code reference} value. The {@code innerRadii} property specifies the inner radii of the ellipsoid. This value must be specified in order for the client to display graphics.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+    */
+    public final void writeInnerRadiiPropertyReference(String identifier, String[] propertyNames) {
+        {
+            EllipsoidRadiiCesiumWriter writer = openInnerRadiiProperty();
+            try {
+                writer.writeReference(identifier, propertyNames);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  Gets the writer for the {@code minimumClock} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code minimumClock} property defines the minimum clock angle of the ellipsoid. If not specified, the default value is 0.0.
+    
+
+    */
+    @Nonnull
+    public final DoubleCesiumWriter getMinimumClockWriter() {
+        return m_minimumClock.getValue();
+    }
+
+    /**
+    *  
+    Opens and returns the writer for the {@code minimumClock} property. The {@code minimumClock} property defines the minimum clock angle of the ellipsoid. If not specified, the default value is 0.0.
+    
+
+    */
+    @Nonnull
+    public final DoubleCesiumWriter openMinimumClockProperty() {
+        openIntervalIfNecessary();
+        return this.<DoubleCesiumWriter> openAndReturn(getMinimumClockWriter());
+    }
+
+    /**
+    *  
+    Writes a value for the {@code minimumClock} property as a {@code number} value. The {@code minimumClock} property specifies the minimum clock angle of the ellipsoid. If not specified, the default value is 0.0.
+    
+    
+
+    * @param value The value.
+    */
+    public final void writeMinimumClockProperty(double value) {
+        {
+            DoubleCesiumWriter writer = openMinimumClockProperty();
+            try {
+                writer.writeNumber(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code minimumClock} property as a {@code number} value. The {@code minimumClock} property specifies the minimum clock angle of the ellipsoid. If not specified, the default value is 0.0.
+    
+    
+    
+
+    * @param dates The dates at which the value is specified.
+    * @param values The values corresponding to each date.
+    */
+    public final void writeMinimumClockProperty(List<JulianDate> dates, List<Double> values) {
+        {
+            DoubleCesiumWriter writer = openMinimumClockProperty();
+            try {
+                writer.writeNumber(dates, values);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code minimumClock} property as a {@code number} value. The {@code minimumClock} property specifies the minimum clock angle of the ellipsoid. If not specified, the default value is 0.0.
+    
+    
+    
+    
+    
+
+    * @param dates The dates at which the value is specified.
+    * @param values The value corresponding to each date.
+    * @param startIndex The index of the first element to write.
+    * @param length The number of elements to write.
+    */
+    public final void writeMinimumClockProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+        {
+            DoubleCesiumWriter writer = openMinimumClockProperty();
+            try {
+                writer.writeNumber(dates, values, startIndex, length);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code minimumClock} property as a {@code reference} value. The {@code minimumClock} property specifies the minimum clock angle of the ellipsoid. If not specified, the default value is 0.0.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeMinimumClockPropertyReference(Reference value) {
+        {
+            DoubleCesiumWriter writer = openMinimumClockProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code minimumClock} property as a {@code reference} value. The {@code minimumClock} property specifies the minimum clock angle of the ellipsoid. If not specified, the default value is 0.0.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeMinimumClockPropertyReference(String value) {
+        {
+            DoubleCesiumWriter writer = openMinimumClockProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code minimumClock} property as a {@code reference} value. The {@code minimumClock} property specifies the minimum clock angle of the ellipsoid. If not specified, the default value is 0.0.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyName The property on the referenced object.
+    */
+    public final void writeMinimumClockPropertyReference(String identifier, String propertyName) {
+        {
+            DoubleCesiumWriter writer = openMinimumClockProperty();
+            try {
+                writer.writeReference(identifier, propertyName);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code minimumClock} property as a {@code reference} value. The {@code minimumClock} property specifies the minimum clock angle of the ellipsoid. If not specified, the default value is 0.0.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+    */
+    public final void writeMinimumClockPropertyReference(String identifier, String[] propertyNames) {
+        {
+            DoubleCesiumWriter writer = openMinimumClockProperty();
+            try {
+                writer.writeReference(identifier, propertyNames);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  Gets the writer for the {@code maximumClock} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code maximumClock} property defines the maximum clock angle of the ellipsoid. If not specified, the default value is 2π.
+    
+
+    */
+    @Nonnull
+    public final DoubleCesiumWriter getMaximumClockWriter() {
+        return m_maximumClock.getValue();
+    }
+
+    /**
+    *  
+    Opens and returns the writer for the {@code maximumClock} property. The {@code maximumClock} property defines the maximum clock angle of the ellipsoid. If not specified, the default value is 2π.
+    
+
+    */
+    @Nonnull
+    public final DoubleCesiumWriter openMaximumClockProperty() {
+        openIntervalIfNecessary();
+        return this.<DoubleCesiumWriter> openAndReturn(getMaximumClockWriter());
+    }
+
+    /**
+    *  
+    Writes a value for the {@code maximumClock} property as a {@code number} value. The {@code maximumClock} property specifies the maximum clock angle of the ellipsoid. If not specified, the default value is 2π.
+    
+    
+
+    * @param value The value.
+    */
+    public final void writeMaximumClockProperty(double value) {
+        {
+            DoubleCesiumWriter writer = openMaximumClockProperty();
+            try {
+                writer.writeNumber(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code maximumClock} property as a {@code number} value. The {@code maximumClock} property specifies the maximum clock angle of the ellipsoid. If not specified, the default value is 2π.
+    
+    
+    
+
+    * @param dates The dates at which the value is specified.
+    * @param values The values corresponding to each date.
+    */
+    public final void writeMaximumClockProperty(List<JulianDate> dates, List<Double> values) {
+        {
+            DoubleCesiumWriter writer = openMaximumClockProperty();
+            try {
+                writer.writeNumber(dates, values);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code maximumClock} property as a {@code number} value. The {@code maximumClock} property specifies the maximum clock angle of the ellipsoid. If not specified, the default value is 2π.
+    
+    
+    
+    
+    
+
+    * @param dates The dates at which the value is specified.
+    * @param values The value corresponding to each date.
+    * @param startIndex The index of the first element to write.
+    * @param length The number of elements to write.
+    */
+    public final void writeMaximumClockProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+        {
+            DoubleCesiumWriter writer = openMaximumClockProperty();
+            try {
+                writer.writeNumber(dates, values, startIndex, length);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code maximumClock} property as a {@code reference} value. The {@code maximumClock} property specifies the maximum clock angle of the ellipsoid. If not specified, the default value is 2π.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeMaximumClockPropertyReference(Reference value) {
+        {
+            DoubleCesiumWriter writer = openMaximumClockProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code maximumClock} property as a {@code reference} value. The {@code maximumClock} property specifies the maximum clock angle of the ellipsoid. If not specified, the default value is 2π.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeMaximumClockPropertyReference(String value) {
+        {
+            DoubleCesiumWriter writer = openMaximumClockProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code maximumClock} property as a {@code reference} value. The {@code maximumClock} property specifies the maximum clock angle of the ellipsoid. If not specified, the default value is 2π.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyName The property on the referenced object.
+    */
+    public final void writeMaximumClockPropertyReference(String identifier, String propertyName) {
+        {
+            DoubleCesiumWriter writer = openMaximumClockProperty();
+            try {
+                writer.writeReference(identifier, propertyName);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code maximumClock} property as a {@code reference} value. The {@code maximumClock} property specifies the maximum clock angle of the ellipsoid. If not specified, the default value is 2π.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+    */
+    public final void writeMaximumClockPropertyReference(String identifier, String[] propertyNames) {
+        {
+            DoubleCesiumWriter writer = openMaximumClockProperty();
+            try {
+                writer.writeReference(identifier, propertyNames);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  Gets the writer for the {@code minimumCone} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code minimumCone} property defines the minimum cone angle of the ellipsoid. If not specified, the default value is 0.0.
+    
+
+    */
+    @Nonnull
+    public final DoubleCesiumWriter getMinimumConeWriter() {
+        return m_minimumCone.getValue();
+    }
+
+    /**
+    *  
+    Opens and returns the writer for the {@code minimumCone} property. The {@code minimumCone} property defines the minimum cone angle of the ellipsoid. If not specified, the default value is 0.0.
+    
+
+    */
+    @Nonnull
+    public final DoubleCesiumWriter openMinimumConeProperty() {
+        openIntervalIfNecessary();
+        return this.<DoubleCesiumWriter> openAndReturn(getMinimumConeWriter());
+    }
+
+    /**
+    *  
+    Writes a value for the {@code minimumCone} property as a {@code number} value. The {@code minimumCone} property specifies the minimum cone angle of the ellipsoid. If not specified, the default value is 0.0.
+    
+    
+
+    * @param value The value.
+    */
+    public final void writeMinimumConeProperty(double value) {
+        {
+            DoubleCesiumWriter writer = openMinimumConeProperty();
+            try {
+                writer.writeNumber(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code minimumCone} property as a {@code number} value. The {@code minimumCone} property specifies the minimum cone angle of the ellipsoid. If not specified, the default value is 0.0.
+    
+    
+    
+
+    * @param dates The dates at which the value is specified.
+    * @param values The values corresponding to each date.
+    */
+    public final void writeMinimumConeProperty(List<JulianDate> dates, List<Double> values) {
+        {
+            DoubleCesiumWriter writer = openMinimumConeProperty();
+            try {
+                writer.writeNumber(dates, values);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code minimumCone} property as a {@code number} value. The {@code minimumCone} property specifies the minimum cone angle of the ellipsoid. If not specified, the default value is 0.0.
+    
+    
+    
+    
+    
+
+    * @param dates The dates at which the value is specified.
+    * @param values The value corresponding to each date.
+    * @param startIndex The index of the first element to write.
+    * @param length The number of elements to write.
+    */
+    public final void writeMinimumConeProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+        {
+            DoubleCesiumWriter writer = openMinimumConeProperty();
+            try {
+                writer.writeNumber(dates, values, startIndex, length);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code minimumCone} property as a {@code reference} value. The {@code minimumCone} property specifies the minimum cone angle of the ellipsoid. If not specified, the default value is 0.0.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeMinimumConePropertyReference(Reference value) {
+        {
+            DoubleCesiumWriter writer = openMinimumConeProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code minimumCone} property as a {@code reference} value. The {@code minimumCone} property specifies the minimum cone angle of the ellipsoid. If not specified, the default value is 0.0.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeMinimumConePropertyReference(String value) {
+        {
+            DoubleCesiumWriter writer = openMinimumConeProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code minimumCone} property as a {@code reference} value. The {@code minimumCone} property specifies the minimum cone angle of the ellipsoid. If not specified, the default value is 0.0.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyName The property on the referenced object.
+    */
+    public final void writeMinimumConePropertyReference(String identifier, String propertyName) {
+        {
+            DoubleCesiumWriter writer = openMinimumConeProperty();
+            try {
+                writer.writeReference(identifier, propertyName);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code minimumCone} property as a {@code reference} value. The {@code minimumCone} property specifies the minimum cone angle of the ellipsoid. If not specified, the default value is 0.0.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+    */
+    public final void writeMinimumConePropertyReference(String identifier, String[] propertyNames) {
+        {
+            DoubleCesiumWriter writer = openMinimumConeProperty();
+            try {
+                writer.writeReference(identifier, propertyNames);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  Gets the writer for the {@code maximumCone} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code maximumCone} property defines the maximum cone angle of the ellipsoid. If not specified, the default value is π.
+    
+
+    */
+    @Nonnull
+    public final DoubleCesiumWriter getMaximumConeWriter() {
+        return m_maximumCone.getValue();
+    }
+
+    /**
+    *  
+    Opens and returns the writer for the {@code maximumCone} property. The {@code maximumCone} property defines the maximum cone angle of the ellipsoid. If not specified, the default value is π.
+    
+
+    */
+    @Nonnull
+    public final DoubleCesiumWriter openMaximumConeProperty() {
+        openIntervalIfNecessary();
+        return this.<DoubleCesiumWriter> openAndReturn(getMaximumConeWriter());
+    }
+
+    /**
+    *  
+    Writes a value for the {@code maximumCone} property as a {@code number} value. The {@code maximumCone} property specifies the maximum cone angle of the ellipsoid. If not specified, the default value is π.
+    
+    
+
+    * @param value The value.
+    */
+    public final void writeMaximumConeProperty(double value) {
+        {
+            DoubleCesiumWriter writer = openMaximumConeProperty();
+            try {
+                writer.writeNumber(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code maximumCone} property as a {@code number} value. The {@code maximumCone} property specifies the maximum cone angle of the ellipsoid. If not specified, the default value is π.
+    
+    
+    
+
+    * @param dates The dates at which the value is specified.
+    * @param values The values corresponding to each date.
+    */
+    public final void writeMaximumConeProperty(List<JulianDate> dates, List<Double> values) {
+        {
+            DoubleCesiumWriter writer = openMaximumConeProperty();
+            try {
+                writer.writeNumber(dates, values);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code maximumCone} property as a {@code number} value. The {@code maximumCone} property specifies the maximum cone angle of the ellipsoid. If not specified, the default value is π.
+    
+    
+    
+    
+    
+
+    * @param dates The dates at which the value is specified.
+    * @param values The value corresponding to each date.
+    * @param startIndex The index of the first element to write.
+    * @param length The number of elements to write.
+    */
+    public final void writeMaximumConeProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+        {
+            DoubleCesiumWriter writer = openMaximumConeProperty();
+            try {
+                writer.writeNumber(dates, values, startIndex, length);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code maximumCone} property as a {@code reference} value. The {@code maximumCone} property specifies the maximum cone angle of the ellipsoid. If not specified, the default value is π.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeMaximumConePropertyReference(Reference value) {
+        {
+            DoubleCesiumWriter writer = openMaximumConeProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code maximumCone} property as a {@code reference} value. The {@code maximumCone} property specifies the maximum cone angle of the ellipsoid. If not specified, the default value is π.
+    
+    
+
+    * @param value The reference.
+    */
+    public final void writeMaximumConePropertyReference(String value) {
+        {
+            DoubleCesiumWriter writer = openMaximumConeProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code maximumCone} property as a {@code reference} value. The {@code maximumCone} property specifies the maximum cone angle of the ellipsoid. If not specified, the default value is π.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyName The property on the referenced object.
+    */
+    public final void writeMaximumConePropertyReference(String identifier, String propertyName) {
+        {
+            DoubleCesiumWriter writer = openMaximumConeProperty();
+            try {
+                writer.writeReference(identifier, propertyName);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    *  
+    Writes a value for the {@code maximumCone} property as a {@code reference} value. The {@code maximumCone} property specifies the maximum cone angle of the ellipsoid. If not specified, the default value is π.
+    
+    
+    
+
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+    */
+    public final void writeMaximumConePropertyReference(String identifier, String[] propertyNames) {
+        {
+            DoubleCesiumWriter writer = openMaximumConeProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
