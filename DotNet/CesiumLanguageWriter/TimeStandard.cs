@@ -1,4 +1,4 @@
-namespace CesiumLanguageWriter
+﻿namespace CesiumLanguageWriter
 {
     /// <summary>
     /// Provides a means for measuring time by specifying the rate at which time passes and/or points in time.
