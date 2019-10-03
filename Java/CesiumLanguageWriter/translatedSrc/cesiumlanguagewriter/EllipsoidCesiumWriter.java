@@ -576,7 +576,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
     }
 
     /**
-    *  Gets the writer for the {@code innerRadii} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code innerRadii} property defines the inner radii of the ellipsoid. This value must be specified in order for the client to display graphics.
+    *  Gets the writer for the {@code innerRadii} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code innerRadii} property defines the inner radii of the ellipsoid.
     
 
     */
@@ -587,7 +587,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
     /**
     *  
-    Opens and returns the writer for the {@code innerRadii} property. The {@code innerRadii} property defines the inner radii of the ellipsoid. This value must be specified in order for the client to display graphics.
+    Opens and returns the writer for the {@code innerRadii} property. The {@code innerRadii} property defines the inner radii of the ellipsoid.
     
 
     */
@@ -599,7 +599,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
     /**
     *  
-    Writes a value for the {@code innerRadii} property as a {@code cartesian} value. The {@code innerRadii} property specifies the inner radii of the ellipsoid. This value must be specified in order for the client to display graphics.
+    Writes a value for the {@code innerRadii} property as a {@code cartesian} value. The {@code innerRadii} property specifies the inner radii of the ellipsoid.
     
     
 
@@ -618,7 +618,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
     /**
     *  
-    Writes a value for the {@code innerRadii} property as a {@code cartesian} value. The {@code innerRadii} property specifies the inner radii of the ellipsoid. This value must be specified in order for the client to display graphics.
+    Writes a value for the {@code innerRadii} property as a {@code cartesian} value. The {@code innerRadii} property specifies the inner radii of the ellipsoid.
     
     
     
@@ -639,7 +639,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
     /**
     *  
-    Writes a value for the {@code innerRadii} property as a {@code cartesian} value. The {@code innerRadii} property specifies the inner radii of the ellipsoid. This value must be specified in order for the client to display graphics.
+    Writes a value for the {@code innerRadii} property as a {@code cartesian} value. The {@code innerRadii} property specifies the inner radii of the ellipsoid.
     
     
     
@@ -664,7 +664,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
     /**
     *  
-    Writes a value for the {@code innerRadii} property as a {@code reference} value. The {@code innerRadii} property specifies the inner radii of the ellipsoid. This value must be specified in order for the client to display graphics.
+    Writes a value for the {@code innerRadii} property as a {@code reference} value. The {@code innerRadii} property specifies the inner radii of the ellipsoid.
     
     
 
@@ -683,7 +683,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
     /**
     *  
-    Writes a value for the {@code innerRadii} property as a {@code reference} value. The {@code innerRadii} property specifies the inner radii of the ellipsoid. This value must be specified in order for the client to display graphics.
+    Writes a value for the {@code innerRadii} property as a {@code reference} value. The {@code innerRadii} property specifies the inner radii of the ellipsoid.
     
     
 
@@ -702,7 +702,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
     /**
     *  
-    Writes a value for the {@code innerRadii} property as a {@code reference} value. The {@code innerRadii} property specifies the inner radii of the ellipsoid. This value must be specified in order for the client to display graphics.
+    Writes a value for the {@code innerRadii} property as a {@code reference} value. The {@code innerRadii} property specifies the inner radii of the ellipsoid.
     
     
     
@@ -723,7 +723,7 @@ public class EllipsoidCesiumWriter extends CesiumPropertyWriter<EllipsoidCesiumW
 
     /**
     *  
-    Writes a value for the {@code innerRadii} property as a {@code reference} value. The {@code innerRadii} property specifies the inner radii of the ellipsoid. This value must be specified in order for the client to display graphics.
+    Writes a value for the {@code innerRadii} property as a {@code reference} value. The {@code innerRadii} property specifies the inner radii of the ellipsoid.
     
     
     

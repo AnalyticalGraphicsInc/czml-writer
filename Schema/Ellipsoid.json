@@ -17,8 +17,7 @@
         },
         "innerRadii": {
             "$ref": "EllipsoidRadii.json",
-            "description": "The inner radii of the ellipsoid.",
-            "czmlRequiredForDisplay": true
+            "description": "The inner radii of the ellipsoid."
         },
         "minimumClock": {
             "$ref": "Double.json",

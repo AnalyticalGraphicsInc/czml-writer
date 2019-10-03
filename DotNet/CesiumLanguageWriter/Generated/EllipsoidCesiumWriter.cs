@@ -340,7 +340,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the writer for the <c>innerRadii</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>innerRadii</c> property defines the inner radii of the ellipsoid. This value must be specified in order for the client to display graphics.
+        /// Gets the writer for the <c>innerRadii</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>innerRadii</c> property defines the inner radii of the ellipsoid.
         /// </summary>
         [NotNull]
         public EllipsoidRadiiCesiumWriter InnerRadiiWriter
@@ -349,7 +349,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Opens and returns the writer for the <c>innerRadii</c> property. The <c>innerRadii</c> property defines the inner radii of the ellipsoid. This value must be specified in order for the client to display graphics.
+        /// Opens and returns the writer for the <c>innerRadii</c> property. The <c>innerRadii</c> property defines the inner radii of the ellipsoid.
         /// </summary>
         [NotNull]
         public EllipsoidRadiiCesiumWriter OpenInnerRadiiProperty()
@@ -359,7 +359,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>innerRadii</c> property as a <c>cartesian</c> value. The <c>innerRadii</c> property specifies the inner radii of the ellipsoid. This value must be specified in order for the client to display graphics.
+        /// Writes a value for the <c>innerRadii</c> property as a <c>cartesian</c> value. The <c>innerRadii</c> property specifies the inner radii of the ellipsoid.
         /// </summary>
         /// <param name="value">The value.</param>
         public void WriteInnerRadiiProperty(Cartesian value)
@@ -371,7 +371,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>innerRadii</c> property as a <c>cartesian</c> value. The <c>innerRadii</c> property specifies the inner radii of the ellipsoid. This value must be specified in order for the client to display graphics.
+        /// Writes a value for the <c>innerRadii</c> property as a <c>cartesian</c> value. The <c>innerRadii</c> property specifies the inner radii of the ellipsoid.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -384,7 +384,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>innerRadii</c> property as a <c>cartesian</c> value. The <c>innerRadii</c> property specifies the inner radii of the ellipsoid. This value must be specified in order for the client to display graphics.
+        /// Writes a value for the <c>innerRadii</c> property as a <c>cartesian</c> value. The <c>innerRadii</c> property specifies the inner radii of the ellipsoid.
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
@@ -399,7 +399,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>innerRadii</c> property as a <c>reference</c> value. The <c>innerRadii</c> property specifies the inner radii of the ellipsoid. This value must be specified in order for the client to display graphics.
+        /// Writes a value for the <c>innerRadii</c> property as a <c>reference</c> value. The <c>innerRadii</c> property specifies the inner radii of the ellipsoid.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteInnerRadiiPropertyReference(Reference value)
@@ -411,7 +411,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>innerRadii</c> property as a <c>reference</c> value. The <c>innerRadii</c> property specifies the inner radii of the ellipsoid. This value must be specified in order for the client to display graphics.
+        /// Writes a value for the <c>innerRadii</c> property as a <c>reference</c> value. The <c>innerRadii</c> property specifies the inner radii of the ellipsoid.
         /// </summary>
         /// <param name="value">The reference.</param>
         public void WriteInnerRadiiPropertyReference(string value)
@@ -423,7 +423,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>innerRadii</c> property as a <c>reference</c> value. The <c>innerRadii</c> property specifies the inner radii of the ellipsoid. This value must be specified in order for the client to display graphics.
+        /// Writes a value for the <c>innerRadii</c> property as a <c>reference</c> value. The <c>innerRadii</c> property specifies the inner radii of the ellipsoid.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyName">The property on the referenced object.</param>
@@ -436,7 +436,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Writes a value for the <c>innerRadii</c> property as a <c>reference</c> value. The <c>innerRadii</c> property specifies the inner radii of the ellipsoid. This value must be specified in order for the client to display graphics.
+        /// Writes a value for the <c>innerRadii</c> property as a <c>reference</c> value. The <c>innerRadii</c> property specifies the inner radii of the ellipsoid.
         /// </summary>
         /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
         /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
