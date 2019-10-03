@@ -14,12 +14,12 @@
         "xHalfAngle": {
             "$ref": "../../Double.json",
             "description": "The X half angle.",
-            "default": "PI / 2"
+            "default": "π / 2"
         },
         "yHalfAngle": {
             "$ref": "../../Double.json",
             "description": "The Y half angle.",
-            "default": "PI / 2"
+            "default": "π / 2"
         },
         "radius": {
             "$ref": "../../Double.json",

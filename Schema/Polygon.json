@@ -51,7 +51,7 @@
         "granularity": {
             "$ref": "Double.json",
             "description": "The sampling distance, in radians.",
-            "default": "PI / 180.0"
+            "default": "π / 180.0"
         },
         "fill": {
             "$ref": "Boolean.json",
