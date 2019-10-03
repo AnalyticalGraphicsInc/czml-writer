@@ -8,8 +8,12 @@ subprojects {
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
 
-    processResources {
+    tasks.withType(ProcessResources) {
         includeEmptyDirs = false
+    }
+
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
     }
 }
 

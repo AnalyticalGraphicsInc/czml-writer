@@ -26,6 +26,7 @@ test {
 jar {
     enabled = false
 }
+
 javadoc {
     enabled = false
 }
