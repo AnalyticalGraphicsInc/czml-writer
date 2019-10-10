@@ -23,7 +23,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <summary>
         /// Writes a <see cref="JulianDate"/> as an ISO 8601 interval string.
         /// </summary>
-        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="date">The date to write.</param>
         public static void WriteDate(CesiumOutputStream output, JulianDate date)
         {
@@ -33,7 +33,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <summary>
         /// Writes a <see cref="TimeInterval"/> as an ISO 8601 interval string.
         /// </summary>
-        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="interval">The interval to write.</param>
         public static void WriteTimeInterval(CesiumOutputStream output, TimeInterval interval)
         {
@@ -45,7 +45,7 @@ namespace CesiumLanguageWriter.Advanced
         /// interval, the interval is written as an ISO 8601 interval string.  If it has multiple intervals,
         /// it is written as an array of ISO 8601 interval strings.
         /// </summary>
-        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="intervals">The intervals to write.</param>
         public static void WriteTimeIntervalCollection(CesiumOutputStream output, IList<TimeInterval> intervals)
         {
@@ -70,7 +70,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <summary>
         /// Writes a <see cref="Rectangular"/> value as an array in X, Y order.
         /// </summary>
-        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="value">The value to write.</param>
         public static void WriteCartesian2(CesiumOutputStream output, Rectangular value)
         {
@@ -85,7 +85,7 @@ namespace CesiumLanguageWriter.Advanced
         /// Times are epoch seconds since an epoch that is determined from the first date to be written.
         /// The epoch property is written as well.
         /// </summary>
-        /// <param name="output">The stream to which to write the array.</param>
+        /// <param name="output">The stream to which the values will be written.</param>
         /// <param name="propertyName">The name of the property to write.</param>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The corresponding value for each date.</param>
@@ -116,7 +116,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <summary>
         /// Writes a <see cref="CartographicExtent"/> value as an array in WestLongitude, SouthLatitude, EastLongitude, NorthLatitude order.
         /// </summary>
-        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="value">The value to write.</param>
         public static void WriteCartographicExtent(CesiumOutputStream output, CartographicExtent value)
         {
@@ -133,7 +133,7 @@ namespace CesiumLanguageWriter.Advanced
         /// Times are epoch seconds since an epoch that is determined from the first date to be written.
         /// The epoch property is written as well.
         /// </summary>
-        /// <param name="output">The stream to which to write the array.</param>
+        /// <param name="output">The stream to which the values will be written.</param>
         /// <param name="propertyName">The name of the property to write.</param>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The corresponding value for each date.</param>
@@ -166,7 +166,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <summary>
         /// Writes a <see cref="Cartesian"/> value as an array in X, Y, Z order.
         /// </summary>
-        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="value">The value to write.</param>
         public static void WriteCartesian3(CesiumOutputStream output, Cartesian value)
         {
@@ -182,7 +182,7 @@ namespace CesiumLanguageWriter.Advanced
         /// Times are epoch seconds since an epoch that is determined from the first date to be written.
         /// The epoch property is written as well.
         /// </summary>
-        /// <param name="output">The stream to which to write the array.</param>
+        /// <param name="output">The stream to which the values will be written.</param>
         /// <param name="propertyName">The name of the property to write.</param>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The corresponding value for each date.</param>
@@ -214,7 +214,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <summary>
         /// Writes a <see cref="Motion{Cartesian}"/> value as an array in X, Y, Z, vX, vY, vZ order.
         /// </summary>
-        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="value">The value to write.</param>
         public static void WriteCartesian3Velocity(CesiumOutputStream output, Motion<Cartesian> value)
         {
@@ -233,7 +233,7 @@ namespace CesiumLanguageWriter.Advanced
         /// Times are epoch seconds since an epoch that is determined from the first date to be written.
         /// The epoch property is written as well.
         /// </summary>
-        /// <param name="output">The stream to which to write the array.</param>
+        /// <param name="output">The stream to which the values will be written.</param>
         /// <param name="propertyName">The name of the property to write.</param>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The corresponding value for each date.</param>
@@ -269,7 +269,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <summary>
         /// Writes a <see cref="UnitCartesian"/> value as an array in X, Y, Z order.
         /// </summary>
-        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="value">The value to write.</param>
         public static void WriteUnitCartesian3(CesiumOutputStream output, UnitCartesian value)
         {
@@ -285,7 +285,7 @@ namespace CesiumLanguageWriter.Advanced
         /// Times are epoch seconds since an epoch that is determined from the first date to be written.
         /// The epoch property is written as well.
         /// </summary>
-        /// <param name="output">The stream to which to write the array.</param>
+        /// <param name="output">The stream to which the values will be written.</param>
         /// <param name="propertyName">The name of the property to write.</param>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The corresponding value for each date.</param>
@@ -317,7 +317,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <summary>
         /// Writes a <see cref="Spherical"/> value as an array in Clock, Cone, Magnitude order.
         /// </summary>
-        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="value">The value to write.</param>
         public static void WriteSpherical(CesiumOutputStream output, Spherical value)
         {
@@ -333,7 +333,7 @@ namespace CesiumLanguageWriter.Advanced
         /// Times are epoch seconds since an epoch that is determined from the first date to be written.
         /// The epoch property is written as well.
         /// </summary>
-        /// <param name="output">The stream to which to write the array.</param>
+        /// <param name="output">The stream to which the values will be written.</param>
         /// <param name="propertyName">The name of the property to write.</param>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The corresponding value for each date.</param>
@@ -365,7 +365,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <summary>
         /// Writes a <see cref="BoundingRectangle"/> value as an array in X, Y, Width, Height order.
         /// </summary>
-        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="value">The value to write.</param>
         public static void WriteBoundingRectangle(CesiumOutputStream output, BoundingRectangle value)
         {
@@ -382,7 +382,7 @@ namespace CesiumLanguageWriter.Advanced
         /// Times are epoch seconds since an epoch that is determined from the first date to be written.
         /// The epoch property is written as well.
         /// </summary>
-        /// <param name="output">The stream to which to write the array.</param>
+        /// <param name="output">The stream to which the values will be written.</param>
         /// <param name="propertyName">The name of the property to write.</param>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The corresponding value for each date.</param>
@@ -415,7 +415,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <summary>
         /// Writes a <see cref="NearFarScalar"/> value as an array in NearDistance, NearValue, FarDistance, FarValue order.
         /// </summary>
-        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="value">The value to write.</param>
         public static void WriteNearFarScalar(CesiumOutputStream output, NearFarScalar value)
         {
@@ -432,7 +432,7 @@ namespace CesiumLanguageWriter.Advanced
         /// Times are epoch seconds since an epoch that is determined from the first date to be written.
         /// The epoch property is written as well.
         /// </summary>
-        /// <param name="output">The stream to which to write the array.</param>
+        /// <param name="output">The stream to which the values will be written.</param>
         /// <param name="propertyName">The name of the property to write.</param>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The corresponding value for each date.</param>
@@ -465,7 +465,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <summary>
         /// Writes a <see cref="Bounds"/> value as an array in LowerBound, UpperBound order.
         /// </summary>
-        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="value">The value to write.</param>
         public static void WriteBounds(CesiumOutputStream output, Bounds value)
         {
@@ -480,7 +480,7 @@ namespace CesiumLanguageWriter.Advanced
         /// Times are epoch seconds since an epoch that is determined from the first date to be written.
         /// The epoch property is written as well.
         /// </summary>
-        /// <param name="output">The stream to which to write the array.</param>
+        /// <param name="output">The stream to which the values will be written.</param>
         /// <param name="propertyName">The name of the property to write.</param>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The corresponding value for each date.</param>
@@ -511,7 +511,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <summary>
         /// Writes a <see cref="UnitSpherical"/> value as an array in Clock, Cone order.
         /// </summary>
-        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="value">The value to write.</param>
         public static void WriteUnitSpherical(CesiumOutputStream output, UnitSpherical value)
         {
@@ -526,7 +526,7 @@ namespace CesiumLanguageWriter.Advanced
         /// Times are epoch seconds since an epoch that is determined from the first date to be written.
         /// The epoch property is written as well.
         /// </summary>
-        /// <param name="output">The stream to which to write the array.</param>
+        /// <param name="output">The stream to which the values will be written.</param>
         /// <param name="propertyName">The name of the property to write.</param>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The corresponding value for each date.</param>
@@ -557,7 +557,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <summary>
         /// Writes a list of <see cref="double"/> values as an array.
         /// </summary>
-        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="values">The values to write.</param>
         public static void WriteDoubleList(CesiumOutputStream output, IEnumerable<double> values)
         {
@@ -574,7 +574,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <summary>
         /// Writes a list of <see cref="Cartesian"/> values as an array in X, Y, Z order.
         /// </summary>
-        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="values">The values to write.</param>
         public static void WriteCartesian3List(CesiumOutputStream output, IEnumerable<Cartesian> values)
         {
@@ -593,7 +593,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <summary>
         /// Writes a list of <see cref="Cartesian"/> values as an array in X, Y, Z order.
         /// </summary>
-        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="values">The values to write.</param>
         [CSToJavaUseWildcardGenerics]
         public static void WriteCartesian3ListOfLists(CesiumOutputStream output, IEnumerable<IEnumerable<Cartesian>> values)
@@ -619,7 +619,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <summary>
         /// Writes a <see cref="Cartographic"/> value as an array in Longitude, Latitude, Height order.
         /// </summary>
-        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="value">The value to write.</param>
         public static void WriteCartographic(CesiumOutputStream output, Cartographic value)
         {
@@ -635,7 +635,7 @@ namespace CesiumLanguageWriter.Advanced
         /// Times are epoch seconds since an epoch that is determined from the first date to be written.
         /// The epoch property is written as well.
         /// </summary>
-        /// <param name="output">The stream to which to write the array.</param>
+        /// <param name="output">The stream to which the values will be written.</param>
         /// <param name="propertyName">The name of the property to write.</param>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The corresponding value for each date.</param>
@@ -667,7 +667,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <summary>
         /// Writes a list of <see cref="Cartographic"/> values as an array in Longitude, Latitude, Height order.
         /// </summary>
-        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="values">The values to write.</param>
         public static void WriteCartographicList(CesiumOutputStream output, IEnumerable<Cartographic> values)
         {
@@ -686,7 +686,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <summary>
         /// Writes a list of <see cref="Cartographic"/> values as an array in Longitude, Latitude, Height order.
         /// </summary>
-        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="values">The values to write.</param>
         [CSToJavaUseWildcardGenerics]
         public static void WriteCartographicListOfLists(CesiumOutputStream output, IEnumerable<IEnumerable<Cartographic>> values)
@@ -742,7 +742,7 @@ namespace CesiumLanguageWriter.Advanced
         /// Times are epoch seconds since an epoch that is determined from the first date to be written.
         /// The epoch property is written as well.
         /// </summary>
-        /// <param name="output">The stream to which to write the array.</param>
+        /// <param name="output">The stream to which the values will be written.</param>
         /// <param name="propertyName">The name of the property to write.</param>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The corresponding value for each date.</param>
@@ -805,7 +805,7 @@ namespace CesiumLanguageWriter.Advanced
         /// Times are epoch seconds since an epoch that is determined from the first date to be written.
         /// The epoch property is written as well.
         /// </summary>
-        /// <param name="output">The stream to which to write the array.</param>
+        /// <param name="output">The stream to which the values will be written.</param>
         /// <param name="propertyName">The name of the property to write.</param>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The corresponding value for each date.</param>
@@ -840,7 +840,7 @@ namespace CesiumLanguageWriter.Advanced
         /// Times are epoch seconds since an epoch that is determined from the first date to be written.
         /// The epoch property is written as well.
         /// </summary>
-        /// <param name="output">The stream to which to write the array.</param>
+        /// <param name="output">The stream to which the values will be written.</param>
         /// <param name="propertyName">The name of the property to write.</param>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The corresponding value for each date.</param>
@@ -871,7 +871,7 @@ namespace CesiumLanguageWriter.Advanced
         /// Times are epoch seconds since an epoch that is determined from the first date to be written.
         /// The epoch property is written as well.
         /// </summary>
-        /// <param name="output">The stream to which to write the array.</param>
+        /// <param name="output">The stream to which the values will be written.</param>
         /// <param name="propertyName">The name of the property to write.</param>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The corresponding value for each date.</param>
@@ -900,7 +900,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <summary>
         /// Writes a <see cref="UnitQuaternion"/> as an array in [X, Y, Z, W] order.
         /// </summary>
-        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="value">The value to write.</param>
         public static void WriteUnitQuaternion(CesiumOutputStream output, UnitQuaternion value)
         {
@@ -918,7 +918,7 @@ namespace CesiumLanguageWriter.Advanced
         /// Times are epoch seconds since an epoch that is determined from the first date to be written.
         /// The epoch property is written as well.
         /// </summary>
-        /// <param name="output">The stream to which to write the array.</param>
+        /// <param name="output">The stream to which the values will be written.</param>
         /// <param name="propertyName">The name of the property to write.</param>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The corresponding value for each date.</param>
@@ -951,7 +951,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <summary>
         /// Writes a reference.
         /// </summary>
-        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="value">The value to write.</param>
         public static void WriteReference([NotNull] CesiumOutputStream output, string value)
         {
@@ -961,7 +961,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <summary>
         /// Writes a reference.
         /// </summary>
-        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="value">The value to write.</param>
         public static void WriteReference(CesiumOutputStream output, Reference value)
         {
@@ -971,7 +971,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <summary>
         /// Writes a reference and an identifier and property name.
         /// </summary>
-        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="identifier">The identifier of the referenced object.</param>
         /// <param name="propertyName">The property name.</param>
         public static void WriteReference(CesiumOutputStream output, string identifier, string propertyName)
@@ -982,7 +982,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <summary>
         /// Writes a reference from an identifier and hierarchy of property names.
         /// </summary>
-        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="identifier">The identifier of the referenced object.</param>
         /// <param name="propertyNames">The hierarchy of property names, where each name is a subproperty of the previous item.</param>
         public static void WriteReference(CesiumOutputStream output, string identifier, string[] propertyNames)
@@ -993,7 +993,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <summary>
         /// Writes a list of values.
         /// </summary>
-        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="references">The list of values.</param>
         public static void WriteReferences(CesiumOutputStream output, IEnumerable<Reference> references)
         {
@@ -1010,7 +1010,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <summary>
         /// Writes a list of values.
         /// </summary>
-        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="values">The list of lists of values.</param>
         [CSToJavaUseWildcardGenerics]
         public static void WriteReferenceListOfLists(CesiumOutputStream output, IEnumerable<IEnumerable<Reference>> values)
@@ -1033,7 +1033,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <summary>
         /// Writes a list of <see cref="UnitCartesian"/> values as an array in X, Y, Z order.
         /// </summary>
-        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="values">The values to write.</param>
         public static void WriteUnitCartesian3List(CesiumOutputStream output, IEnumerable<UnitCartesian> values)
         {
@@ -1052,7 +1052,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <summary>
         /// Writes a list of <see cref="Spherical"/> values as an array in Clock, Cone, Magnitude order.
         /// </summary>
-        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="values">The values to write.</param>
         public static void WriteSphericalList(CesiumOutputStream output, IEnumerable<Spherical> values)
         {
@@ -1071,7 +1071,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <summary>
         /// Writes a list of <see cref="UnitSpherical"/> values as an array in Clock, Cone order.
         /// </summary>
-        /// <param name="output">The stream to which to write the value.</param>
+        /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="values">The values to write.</param>
         public static void WriteUnitSphericalList(CesiumOutputStream output, IEnumerable<UnitSpherical> values)
         {

@@ -24,6 +24,7 @@ import javax.annotation.Nonnull;
 public final class CesiumValuePropertyAdaptors {
     private CesiumValuePropertyAdaptors() {}
 
+    @Nonnull
     private static <TFrom extends ICesiumDeletablePropertyWriter> CesiumWriterAdaptorWriteDeleteCallback<TFrom> createWriteDeleteCallback() {
         return new CesiumWriterAdaptorWriteDeleteCallback<TFrom>() {
             public void invoke(TFrom writer) {
@@ -44,6 +45,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumArcTypeValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumArcTypeValuePropertyAdaptor<TFrom> createArcType(@Nonnull TFrom parent) {
         return new CesiumArcTypeValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.CesiumArcType>() {
             public void invoke(TFrom writer, @Nonnull CesiumArcType value) {
@@ -64,6 +66,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumBooleanValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumBooleanValuePropertyAdaptor<TFrom> createBoolean(@Nonnull TFrom parent) {
         return new CesiumBooleanValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Boolean>() {
             public void invoke(TFrom writer, Boolean value) {
@@ -84,6 +87,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumBoundingRectangleValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumBoundingRectangleValuePropertyAdaptor<TFrom> createBoundingRectangle(
             @Nonnull TFrom parent) {
         return new CesiumBoundingRectangleValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.BoundingRectangle>() {
@@ -109,6 +113,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumCartesian2ValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumCartesian2ValuePropertyAdaptor<TFrom> createCartesian2(@Nonnull TFrom parent) {
         return new CesiumCartesian2ValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.Rectangular>() {
             public void invoke(TFrom writer, Rectangular value) {
@@ -133,6 +138,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumCartesian3ValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumCartesian3ValuePropertyAdaptor<TFrom> createCartesian3(@Nonnull TFrom parent) {
         return new CesiumCartesian3ValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.Cartesian>() {
             public void invoke(TFrom writer, Cartesian value) {
@@ -157,6 +163,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumCartesian3VelocityValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumCartesian3VelocityValuePropertyAdaptor<TFrom> createCartesian3Velocity(
             @Nonnull TFrom parent) {
         return new CesiumCartesian3VelocityValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.Motion1<Cartesian>>() {
@@ -182,6 +189,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumCartesian3ListValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumCartesian3ListValuePropertyAdaptor<TFrom> createCartesian3List(@Nonnull TFrom parent) {
         return new CesiumCartesian3ListValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Iterable<Cartesian>>() {
             public void invoke(TFrom writer, Iterable<cesiumlanguagewriter.Cartesian> value) {
@@ -223,6 +231,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumCartographicRadiansValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumCartographicRadiansValuePropertyAdaptor<TFrom> createCartographicRadians(
             @Nonnull TFrom parent) {
         return new CesiumCartographicRadiansValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.Cartographic>() {
@@ -248,6 +257,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumCartographicRadiansListValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumCartographicRadiansListValuePropertyAdaptor<TFrom> createCartographicRadiansList(
             @Nonnull TFrom parent) {
         return new CesiumCartographicRadiansListValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Iterable<Cartographic>>() {
@@ -290,6 +300,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumCartographicDegreesValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumCartographicDegreesValuePropertyAdaptor<TFrom> createCartographicDegrees(
             @Nonnull TFrom parent) {
         return new CesiumCartographicDegreesValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.Cartographic>() {
@@ -315,6 +326,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumCartographicDegreesListValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumCartographicDegreesListValuePropertyAdaptor<TFrom> createCartographicDegreesList(
             @Nonnull TFrom parent) {
         return new CesiumCartographicDegreesListValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Iterable<Cartographic>>() {
@@ -357,6 +369,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumCartographicRectangleRadiansValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumCartographicRectangleRadiansValuePropertyAdaptor<TFrom> createCartographicRectangleRadians(
             @Nonnull TFrom parent) {
         return new CesiumCartographicRectangleRadiansValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.CartographicExtent>() {
@@ -382,6 +395,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumCartographicRectangleDegreesValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumCartographicRectangleDegreesValuePropertyAdaptor<TFrom> createCartographicRectangleDegrees(
             @Nonnull TFrom parent) {
         return new CesiumCartographicRectangleDegreesValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.CartographicExtent>() {
@@ -428,6 +442,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumColorBlendModeValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumColorBlendModeValuePropertyAdaptor<TFrom> createColorBlendMode(@Nonnull TFrom parent) {
         return new CesiumColorBlendModeValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.CesiumColorBlendMode>() {
             public void invoke(TFrom writer, @Nonnull CesiumColorBlendMode value) {
@@ -448,6 +463,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumCornerTypeValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumCornerTypeValuePropertyAdaptor<TFrom> createCornerType(@Nonnull TFrom parent) {
         return new CesiumCornerTypeValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.CesiumCornerType>() {
             public void invoke(TFrom writer, @Nonnull CesiumCornerType value) {
@@ -468,6 +484,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumDistanceDisplayConditionValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumDistanceDisplayConditionValuePropertyAdaptor<TFrom> createDistanceDisplayCondition(
             @Nonnull TFrom parent) {
         return new CesiumDistanceDisplayConditionValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.Bounds>() {
@@ -493,6 +510,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumDoubleValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumDoubleValuePropertyAdaptor<TFrom> createDouble(@Nonnull TFrom parent) {
         return new CesiumDoubleValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Double>() {
             public void invoke(TFrom writer, Double value) {
@@ -517,6 +535,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumDoubleListValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumDoubleListValuePropertyAdaptor<TFrom> createDoubleList(@Nonnull TFrom parent) {
         return new CesiumDoubleListValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Iterable<Double>>() {
             public void invoke(TFrom writer, Iterable<Double> value) {
@@ -537,6 +556,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumHeightReferenceValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumHeightReferenceValuePropertyAdaptor<TFrom> createHeightReference(
             @Nonnull TFrom parent) {
         return new CesiumHeightReferenceValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.CesiumHeightReference>() {
@@ -558,6 +578,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumHorizontalOriginValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumHorizontalOriginValuePropertyAdaptor<TFrom> createHorizontalOrigin(
             @Nonnull TFrom parent) {
         return new CesiumHorizontalOriginValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.CesiumHorizontalOrigin>() {
@@ -579,6 +600,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumIntegerValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumIntegerValuePropertyAdaptor<TFrom> createInteger(@Nonnull TFrom parent) {
         return new CesiumIntegerValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Integer>() {
             public void invoke(TFrom writer, Integer value) {
@@ -603,6 +625,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumLabelStyleValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumLabelStyleValuePropertyAdaptor<TFrom> createLabelStyle(@Nonnull TFrom parent) {
         return new CesiumLabelStyleValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.CesiumLabelStyle>() {
             public void invoke(TFrom writer, @Nonnull CesiumLabelStyle value) {
@@ -623,6 +646,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumNearFarScalarValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumNearFarScalarValuePropertyAdaptor<TFrom> createNearFarScalar(@Nonnull TFrom parent) {
         return new CesiumNearFarScalarValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.NearFarScalar>() {
             public void invoke(TFrom writer, NearFarScalar value) {
@@ -647,6 +671,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumReferenceValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumReferenceValuePropertyAdaptor<TFrom> createReference(@Nonnull TFrom parent) {
         return new CesiumReferenceValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.Reference>() {
             public void invoke(TFrom writer, Reference value) {
@@ -667,6 +692,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumReferenceListValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumReferenceListValuePropertyAdaptor<TFrom> createReferenceList(@Nonnull TFrom parent) {
         return new CesiumReferenceListValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Iterable<Reference>>() {
             public void invoke(TFrom writer, Iterable<cesiumlanguagewriter.Reference> value) {
@@ -708,6 +734,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumRgbafValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumRgbafValuePropertyAdaptor<TFrom> createRgbaf(@Nonnull TFrom parent) {
         return new CesiumRgbafValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Color>() {
             public void invoke(TFrom writer, Color value) {
@@ -732,6 +759,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumRgbaValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumRgbaValuePropertyAdaptor<TFrom> createRgba(@Nonnull TFrom parent) {
         return new CesiumRgbaValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Color>() {
             public void invoke(TFrom writer, Color value) {
@@ -756,6 +784,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumSensorVolumePortionToDisplayValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumSensorVolumePortionToDisplayValuePropertyAdaptor<TFrom> createSensorVolumePortionToDisplay(
             @Nonnull TFrom parent) {
         return new CesiumSensorVolumePortionToDisplayValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.CesiumSensorVolumePortionToDisplay>() {
@@ -777,6 +806,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumShadowModeValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumShadowModeValuePropertyAdaptor<TFrom> createShadowMode(@Nonnull TFrom parent) {
         return new CesiumShadowModeValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.CesiumShadowMode>() {
             public void invoke(TFrom writer, @Nonnull CesiumShadowMode value) {
@@ -797,6 +827,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumSphericalValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumSphericalValuePropertyAdaptor<TFrom> createSpherical(@Nonnull TFrom parent) {
         return new CesiumSphericalValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.Spherical>() {
             public void invoke(TFrom writer, Spherical value) {
@@ -821,6 +852,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumSphericalListValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumSphericalListValuePropertyAdaptor<TFrom> createSphericalList(@Nonnull TFrom parent) {
         return new CesiumSphericalListValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Iterable<Spherical>>() {
             public void invoke(TFrom writer, Iterable<cesiumlanguagewriter.Spherical> value) {
@@ -841,6 +873,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumFontValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumFontValuePropertyAdaptor<TFrom> createFont(@Nonnull TFrom parent) {
         return new CesiumFontValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, String>() {
             public void invoke(TFrom writer, String value) {
@@ -861,6 +894,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumStringValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumStringValuePropertyAdaptor<TFrom> createString(@Nonnull TFrom parent) {
         return new CesiumStringValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, String>() {
             public void invoke(TFrom writer, String value) {
@@ -881,6 +915,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumStripeOrientationValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumStripeOrientationValuePropertyAdaptor<TFrom> createStripeOrientation(
             @Nonnull TFrom parent) {
         return new CesiumStripeOrientationValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.CesiumStripeOrientation>() {
@@ -902,6 +937,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumUnitCartesian3ValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumUnitCartesian3ValuePropertyAdaptor<TFrom> createUnitCartesian3(@Nonnull TFrom parent) {
         return new CesiumUnitCartesian3ValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.UnitCartesian>() {
             public void invoke(TFrom writer, UnitCartesian value) {
@@ -926,6 +962,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumUnitCartesian3ListValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumUnitCartesian3ListValuePropertyAdaptor<TFrom> createUnitCartesian3List(
             @Nonnull TFrom parent) {
         return new CesiumUnitCartesian3ListValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Iterable<UnitCartesian>>() {
@@ -947,6 +984,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumUnitQuaternionValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumUnitQuaternionValuePropertyAdaptor<TFrom> createUnitQuaternion(@Nonnull TFrom parent) {
         return new CesiumUnitQuaternionValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.UnitQuaternion>() {
             public void invoke(TFrom writer, UnitQuaternion value) {
@@ -971,6 +1009,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumUnitSphericalValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumUnitSphericalValuePropertyAdaptor<TFrom> createUnitSpherical(@Nonnull TFrom parent) {
         return new CesiumUnitSphericalValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.UnitSpherical>() {
             public void invoke(TFrom writer, UnitSpherical value) {
@@ -995,6 +1034,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumUnitSphericalListValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumUnitSphericalListValuePropertyAdaptor<TFrom> createUnitSphericalList(
             @Nonnull TFrom parent) {
         return new CesiumUnitSphericalListValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Iterable<UnitSpherical>>() {
@@ -1016,6 +1056,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumUriValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumUriValuePropertyAdaptor<TFrom> createUri(@Nonnull TFrom parent) {
         return new CesiumUriValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.CesiumResource>() {
             public void invoke(TFrom writer, CesiumResource value) {
@@ -1036,6 +1077,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumVerticalOriginValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumVerticalOriginValuePropertyAdaptor<TFrom> createVerticalOrigin(@Nonnull TFrom parent) {
         return new CesiumVerticalOriginValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.CesiumVerticalOrigin>() {
             public void invoke(TFrom writer, @Nonnull CesiumVerticalOrigin value) {
@@ -1056,6 +1098,7 @@ public final class CesiumValuePropertyAdaptors {
     * @param parent The instance to wrap.
     * @return The new adaptor.
     */
+    @Nonnull
     public static <TFrom extends ICesiumVelocityReferenceValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumVelocityReferenceValuePropertyAdaptor<TFrom> createVelocityReference(
             @Nonnull TFrom parent) {
         return new CesiumVelocityReferenceValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.Reference>() {

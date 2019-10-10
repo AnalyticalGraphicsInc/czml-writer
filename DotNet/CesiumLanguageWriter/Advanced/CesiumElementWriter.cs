@@ -17,7 +17,7 @@ namespace CesiumLanguageWriter.Advanced
         /// Opens this writer on a given <see cref="CesiumOutputStream"/>.  A single writer can write to multiple
         /// streams over its lifetime.  Opening a writer on a stream may cause data to be written to the stream.
         /// </summary>
-        /// <param name="output">The stream to which to write.</param>
+        /// <param name="output">The stream to write to.</param>
         /// <exception cref="InvalidOperationException">The writer is already open on a stream.</exception>
         public void Open(CesiumOutputStream output)
         {

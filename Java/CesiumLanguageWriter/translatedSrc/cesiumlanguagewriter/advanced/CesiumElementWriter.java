@@ -32,7 +32,7 @@ public abstract class CesiumElementWriter implements ICesiumElementWriter {
     
     
 
-    * @param output The stream to which to write.
+    * @param output The stream to write to.
     * @exception IllegalStateException The writer is already open on a stream.
     */
     public final void open(CesiumOutputStream output) {

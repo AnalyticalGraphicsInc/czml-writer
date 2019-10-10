@@ -33,7 +33,7 @@ public class CesiumOutputStream {
     
     
 
-    * @param writer The text stream to which to write data.
+    * @param writer The writer to which data will be written.
     */
     public CesiumOutputStream(@Nonnull Writer writer) {
         if (writer == null) {
@@ -43,13 +43,28 @@ public class CesiumOutputStream {
     }
 
     /**
+    *  
+    Initializes a new instance.
+    
+    
+    
+
+    * @param writer The writer to which data will be written.
+    * @param prettyFormatting Whether or not the written data should be formatted for easy human readability.
+    */
+    public CesiumOutputStream(@Nonnull Writer writer, boolean prettyFormatting) {
+        this(writer);
+        m_prettyFormatting = prettyFormatting;
+    }
+
+    /**
     *  Gets a value indicating whether or not the written data should be formatted for easy human readability.
     When this property is {@code false} (the default), more compact CZML is generated.
     
 
     */
     public final boolean getPrettyFormatting() {
-        return backingField$PrettyFormatting;
+        return m_prettyFormatting;
     }
 
     /**
@@ -59,7 +74,7 @@ public class CesiumOutputStream {
 
     */
     public final void setPrettyFormatting(boolean value) {
-        backingField$PrettyFormatting = value;
+        m_prettyFormatting = value;
     }
 
     /**
@@ -68,7 +83,7 @@ public class CesiumOutputStream {
     
 
     */
-    public final void writeStartObject() {
+    public void writeStartObject() {
         m_nextValueOnNewLine = true;
         startNewValue();
         TextWriterHelper.write(m_writer, '{');
@@ -83,10 +98,10 @@ public class CesiumOutputStream {
     
 
     */
-    public final void writeEndObject() {
+    public void writeEndObject() {
         m_firstInContainer = false;
         decreaseIndent();
-        if (getPrettyFormatting()) {
+        if (m_prettyFormatting) {
             TextWriterHelper.writeLine(m_writer);
             writeIndent();
         }
@@ -99,7 +114,7 @@ public class CesiumOutputStream {
     
 
     */
-    public final void writeStartSequence() {
+    public void writeStartSequence() {
         m_nextValueOnNewLine = true;
         startNewValue();
         TextWriterHelper.write(m_writer, '[');
@@ -114,10 +129,10 @@ public class CesiumOutputStream {
     
 
     */
-    public final void writeEndSequence() {
+    public void writeEndSequence() {
         m_firstInContainer = false;
         decreaseIndent();
-        if (getPrettyFormatting()) {
+        if (m_prettyFormatting) {
             TextWriterHelper.writeLine(m_writer);
             writeIndent();
         }
@@ -132,7 +147,7 @@ public class CesiumOutputStream {
 
     * @param propertyName The name of the property.
     */
-    public final void writePropertyName(@Nonnull String propertyName) {
+    public void writePropertyName(@Nonnull String propertyName) {
         if (propertyName == null) {
             throw new ArgumentNullException("propertyName");
         }
@@ -154,7 +169,7 @@ public class CesiumOutputStream {
 
     * @param value The value to write.
     */
-    public final void writeValue(@Nullable String value) {
+    public void writeValue(@Nullable String value) {
         startNewValue();
         m_firstInContainer = false;
         m_inProperty = false;
@@ -175,7 +190,7 @@ public class CesiumOutputStream {
 
     * @param value The value to write.
     */
-    public final void writeValue(double value) {
+    public void writeValue(double value) {
         startNewValue();
         m_firstInContainer = false;
         m_inProperty = false;
@@ -190,7 +205,7 @@ public class CesiumOutputStream {
 
     * @param value The value to write.
     */
-    public final void writeValue(int value) {
+    public void writeValue(int value) {
         writeRawValueString(IntHelper.toString(value, CultureInfoHelper.getInvariantCulture()));
     }
 
@@ -202,7 +217,7 @@ public class CesiumOutputStream {
 
     * @param value The value to write.
     */
-    public final void writeValue(long value) {
+    public void writeValue(long value) {
         writeRawValueString(LongHelper.toString(value, CultureInfoHelper.getInvariantCulture()));
     }
 
@@ -214,7 +229,7 @@ public class CesiumOutputStream {
 
     * @param value The value to write.
     */
-    public final void writeValue(boolean value) {
+    public void writeValue(boolean value) {
         writeRawValueString(value ? "true" : "false");
     }
 
@@ -233,7 +248,7 @@ public class CesiumOutputStream {
 
     * @param value The value to write.
     */
-    public final void writeValue(@Nonnull URI value) {
+    public void writeValue(@Nonnull URI value) {
         if (value == null) {
             throw new ArgumentNullException("value");
         }
@@ -247,7 +262,7 @@ public class CesiumOutputStream {
     
 
     */
-    public final void writeLineBreak() {
+    public void writeLineBreak() {
         m_nextValueOnNewLine = true;
     }
 
@@ -362,7 +377,7 @@ public class CesiumOutputStream {
         if (!m_firstInContainer) {
             TextWriterHelper.write(m_writer, ',');
         }
-        if (!m_inProperty && getPrettyFormatting() && m_nextValueOnNewLine) {
+        if (!m_inProperty && m_prettyFormatting && m_nextValueOnNewLine) {
             TextWriterHelper.writeLine(m_writer);
             writeIndent();
             m_nextValueOnNewLine = false;
@@ -390,6 +405,6 @@ public class CesiumOutputStream {
     private boolean m_inProperty;
     private boolean m_nextValueOnNewLine;
     private int m_indent = 0;
+    private boolean m_prettyFormatting;
     private static final int IndentLevel = 2;
-    private boolean backingField$PrettyFormatting;
 }

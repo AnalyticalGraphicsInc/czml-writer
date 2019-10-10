@@ -43,7 +43,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the value.
+    * @param output The stream to which the value will be written.
     * @param date The date to write.
     */
     public static void writeDate(CesiumOutputStream output, @Nonnull JulianDate date) {
@@ -57,7 +57,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the value.
+    * @param output The stream to which the value will be written.
     * @param interval The interval to write.
     */
     public static void writeTimeInterval(CesiumOutputStream output, TimeInterval interval) {
@@ -73,7 +73,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the value.
+    * @param output The stream to which the value will be written.
     * @param intervals The intervals to write.
     */
     public static void writeTimeIntervalCollection(CesiumOutputStream output, List<TimeInterval> intervals) {
@@ -97,7 +97,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the value.
+    * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
     public static void writeCartesian2(CesiumOutputStream output, @Nonnull Rectangular value) {
@@ -120,7 +120,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the array.
+    * @param output The stream to which the values will be written.
     * @param propertyName The name of the property to write.
     * @param dates The dates at which the value is specified.
     * @param values The corresponding value for each date.
@@ -152,7 +152,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the value.
+    * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
     public static void writeCartographicExtent(CesiumOutputStream output, CartographicExtent value) {
@@ -177,7 +177,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the array.
+    * @param output The stream to which the values will be written.
     * @param propertyName The name of the property to write.
     * @param dates The dates at which the value is specified.
     * @param values The corresponding value for each date.
@@ -211,7 +211,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the value.
+    * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
     public static void writeCartesian3(CesiumOutputStream output, @Nonnull Cartesian value) {
@@ -235,7 +235,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the array.
+    * @param output The stream to which the values will be written.
     * @param propertyName The name of the property to write.
     * @param dates The dates at which the value is specified.
     * @param values The corresponding value for each date.
@@ -268,7 +268,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the value.
+    * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
     public static void writeCartesian3Velocity(CesiumOutputStream output, @Nonnull Motion1<Cartesian> value) {
@@ -295,7 +295,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the array.
+    * @param output The stream to which the values will be written.
     * @param propertyName The name of the property to write.
     * @param dates The dates at which the value is specified.
     * @param values The corresponding value for each date.
@@ -332,7 +332,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the value.
+    * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
     public static void writeUnitCartesian3(CesiumOutputStream output, @Nonnull UnitCartesian value) {
@@ -356,7 +356,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the array.
+    * @param output The stream to which the values will be written.
     * @param propertyName The name of the property to write.
     * @param dates The dates at which the value is specified.
     * @param values The corresponding value for each date.
@@ -389,7 +389,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the value.
+    * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
     public static void writeSpherical(CesiumOutputStream output, @Nonnull Spherical value) {
@@ -413,7 +413,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the array.
+    * @param output The stream to which the values will be written.
     * @param propertyName The name of the property to write.
     * @param dates The dates at which the value is specified.
     * @param values The corresponding value for each date.
@@ -446,7 +446,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the value.
+    * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
     public static void writeBoundingRectangle(CesiumOutputStream output, @Nonnull BoundingRectangle value) {
@@ -471,7 +471,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the array.
+    * @param output The stream to which the values will be written.
     * @param propertyName The name of the property to write.
     * @param dates The dates at which the value is specified.
     * @param values The corresponding value for each date.
@@ -505,7 +505,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the value.
+    * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
     public static void writeNearFarScalar(CesiumOutputStream output, @Nonnull NearFarScalar value) {
@@ -530,7 +530,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the array.
+    * @param output The stream to which the values will be written.
     * @param propertyName The name of the property to write.
     * @param dates The dates at which the value is specified.
     * @param values The corresponding value for each date.
@@ -564,7 +564,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the value.
+    * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
     public static void writeBounds(CesiumOutputStream output, @Nonnull Bounds value) {
@@ -587,7 +587,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the array.
+    * @param output The stream to which the values will be written.
     * @param propertyName The name of the property to write.
     * @param dates The dates at which the value is specified.
     * @param values The corresponding value for each date.
@@ -619,7 +619,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the value.
+    * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
     public static void writeUnitSpherical(CesiumOutputStream output, @Nonnull UnitSpherical value) {
@@ -642,7 +642,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the array.
+    * @param output The stream to which the values will be written.
     * @param propertyName The name of the property to write.
     * @param dates The dates at which the value is specified.
     * @param values The corresponding value for each date.
@@ -674,7 +674,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the value.
+    * @param output The stream to which the value will be written.
     * @param values The values to write.
     */
     public static void writeDoubleList(CesiumOutputStream output, Iterable<Double> values) {
@@ -693,7 +693,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the value.
+    * @param output The stream to which the value will be written.
     * @param values The values to write.
     */
     public static void writeCartesian3List(CesiumOutputStream output, Iterable<Cartesian> values) {
@@ -714,7 +714,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the value.
+    * @param output The stream to which the value will be written.
     * @param values The values to write.
     */
     public static void writeCartesian3ListOfLists(CesiumOutputStream output, Iterable<? extends Iterable<Cartesian>> values) {
@@ -740,7 +740,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the value.
+    * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
     public static void writeCartographic(CesiumOutputStream output, @Nonnull Cartographic value) {
@@ -764,7 +764,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the array.
+    * @param output The stream to which the values will be written.
     * @param propertyName The name of the property to write.
     * @param dates The dates at which the value is specified.
     * @param values The corresponding value for each date.
@@ -797,7 +797,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the value.
+    * @param output The stream to which the value will be written.
     * @param values The values to write.
     */
     public static void writeCartographicList(CesiumOutputStream output, Iterable<Cartographic> values) {
@@ -818,7 +818,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the value.
+    * @param output The stream to which the value will be written.
     * @param values The values to write.
     */
     public static void writeCartographicListOfLists(CesiumOutputStream output, Iterable<? extends Iterable<Cartographic>> values) {
@@ -889,7 +889,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the array.
+    * @param output The stream to which the values will be written.
     * @param propertyName The name of the property to write.
     * @param dates The dates at which the value is specified.
     * @param values The corresponding value for each date.
@@ -968,7 +968,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the array.
+    * @param output The stream to which the values will be written.
     * @param propertyName The name of the property to write.
     * @param dates The dates at which the value is specified.
     * @param values The corresponding value for each date.
@@ -1008,7 +1008,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the array.
+    * @param output The stream to which the values will be written.
     * @param propertyName The name of the property to write.
     * @param dates The dates at which the value is specified.
     * @param values The corresponding value for each date.
@@ -1044,7 +1044,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the array.
+    * @param output The stream to which the values will be written.
     * @param propertyName The name of the property to write.
     * @param dates The dates at which the value is specified.
     * @param values The corresponding value for each date.
@@ -1074,7 +1074,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the value.
+    * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
     public static void writeUnitQuaternion(CesiumOutputStream output, @Nonnull UnitQuaternion value) {
@@ -1100,7 +1100,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the array.
+    * @param output The stream to which the values will be written.
     * @param propertyName The name of the property to write.
     * @param dates The dates at which the value is specified.
     * @param values The corresponding value for each date.
@@ -1134,7 +1134,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the value.
+    * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
     public static void writeReference(@Nonnull CesiumOutputStream output, String value) {
@@ -1148,7 +1148,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the value.
+    * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
     public static void writeReference(CesiumOutputStream output, Reference value) {
@@ -1163,7 +1163,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the value.
+    * @param output The stream to which the value will be written.
     * @param identifier The identifier of the referenced object.
     * @param propertyName The property name.
     */
@@ -1179,7 +1179,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the value.
+    * @param output The stream to which the value will be written.
     * @param identifier The identifier of the referenced object.
     * @param propertyNames The hierarchy of property names, where each name is a subproperty of the previous item.
     */
@@ -1194,7 +1194,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the value.
+    * @param output The stream to which the value will be written.
     * @param references The list of values.
     */
     public static void writeReferences(CesiumOutputStream output, Iterable<Reference> references) {
@@ -1213,7 +1213,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the value.
+    * @param output The stream to which the value will be written.
     * @param values The list of lists of values.
     */
     public static void writeReferenceListOfLists(CesiumOutputStream output, Iterable<? extends Iterable<? extends Reference>> values) {
@@ -1237,7 +1237,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the value.
+    * @param output The stream to which the value will be written.
     * @param values The values to write.
     */
     public static void writeUnitCartesian3List(CesiumOutputStream output, Iterable<UnitCartesian> values) {
@@ -1258,7 +1258,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the value.
+    * @param output The stream to which the value will be written.
     * @param values The values to write.
     */
     public static void writeSphericalList(CesiumOutputStream output, Iterable<Spherical> values) {
@@ -1279,7 +1279,7 @@ public final class CesiumWritingHelper {
     
     
 
-    * @param output The stream to which to write the value.
+    * @param output The stream to which the value will be written.
     * @param values The values to write.
     */
     public static void writeUnitSphericalList(CesiumOutputStream output, Iterable<UnitSpherical> values) {

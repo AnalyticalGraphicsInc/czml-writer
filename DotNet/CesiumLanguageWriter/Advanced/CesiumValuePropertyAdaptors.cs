@@ -8,6 +8,7 @@ namespace CesiumLanguageWriter.Advanced
     /// </summary>
     public static class CesiumValuePropertyAdaptors
     {
+        [NotNull]
         private static CesiumWriterAdaptorWriteDeleteCallback<TFrom> CreateWriteDeleteCallback<TFrom>()
             where TFrom : class, ICesiumDeletablePropertyWriter
         {
@@ -20,6 +21,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumArcTypeValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumArcTypeValuePropertyAdaptor<TFrom> CreateArcType<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumArcTypeValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -32,6 +34,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumBooleanValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumBooleanValuePropertyAdaptor<TFrom> CreateBoolean<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumBooleanValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -44,6 +47,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumBoundingRectangleValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumBoundingRectangleValuePropertyAdaptor<TFrom> CreateBoundingRectangle<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumBoundingRectangleValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -56,6 +60,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumCartesian2ValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumCartesian2ValuePropertyAdaptor<TFrom> CreateCartesian2<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumCartesian2ValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -68,6 +73,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumCartesian3ValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumCartesian3ValuePropertyAdaptor<TFrom> CreateCartesian3<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumCartesian3ValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -80,6 +86,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumCartesian3VelocityValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumCartesian3VelocityValuePropertyAdaptor<TFrom> CreateCartesian3Velocity<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumCartesian3VelocityValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -92,6 +99,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumCartesian3ListValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumCartesian3ListValuePropertyAdaptor<TFrom> CreateCartesian3List<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumCartesian3ListValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -117,6 +125,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumCartographicRadiansValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumCartographicRadiansValuePropertyAdaptor<TFrom> CreateCartographicRadians<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumCartographicRadiansValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -129,6 +138,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumCartographicRadiansListValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumCartographicRadiansListValuePropertyAdaptor<TFrom> CreateCartographicRadiansList<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumCartographicRadiansListValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -154,6 +164,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumCartographicDegreesValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumCartographicDegreesValuePropertyAdaptor<TFrom> CreateCartographicDegrees<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumCartographicDegreesValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -166,6 +177,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumCartographicDegreesListValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumCartographicDegreesListValuePropertyAdaptor<TFrom> CreateCartographicDegreesList<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumCartographicDegreesListValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -191,6 +203,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumCartographicRectangleRadiansValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumCartographicRectangleRadiansValuePropertyAdaptor<TFrom> CreateCartographicRectangleRadians<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumCartographicRectangleRadiansValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -203,6 +216,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumCartographicRectangleDegreesValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumCartographicRectangleDegreesValuePropertyAdaptor<TFrom> CreateCartographicRectangleDegrees<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumCartographicRectangleDegreesValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -227,6 +241,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumColorBlendModeValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumColorBlendModeValuePropertyAdaptor<TFrom> CreateColorBlendMode<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumColorBlendModeValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -239,6 +254,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumCornerTypeValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumCornerTypeValuePropertyAdaptor<TFrom> CreateCornerType<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumCornerTypeValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -251,6 +267,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumDistanceDisplayConditionValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumDistanceDisplayConditionValuePropertyAdaptor<TFrom> CreateDistanceDisplayCondition<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumDistanceDisplayConditionValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -263,6 +280,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumDoubleValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumDoubleValuePropertyAdaptor<TFrom> CreateDouble<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumDoubleValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -275,6 +293,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumDoubleListValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumDoubleListValuePropertyAdaptor<TFrom> CreateDoubleList<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumDoubleListValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -287,6 +306,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumHeightReferenceValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumHeightReferenceValuePropertyAdaptor<TFrom> CreateHeightReference<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumHeightReferenceValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -299,6 +319,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumHorizontalOriginValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumHorizontalOriginValuePropertyAdaptor<TFrom> CreateHorizontalOrigin<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumHorizontalOriginValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -311,6 +332,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumIntegerValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumIntegerValuePropertyAdaptor<TFrom> CreateInteger<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumIntegerValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -323,6 +345,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumLabelStyleValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumLabelStyleValuePropertyAdaptor<TFrom> CreateLabelStyle<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumLabelStyleValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -335,6 +358,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumNearFarScalarValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumNearFarScalarValuePropertyAdaptor<TFrom> CreateNearFarScalar<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumNearFarScalarValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -347,6 +371,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumReferenceValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumReferenceValuePropertyAdaptor<TFrom> CreateReference<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumReferenceValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -359,6 +384,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumReferenceListValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumReferenceListValuePropertyAdaptor<TFrom> CreateReferenceList<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumReferenceListValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -384,6 +410,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumRgbafValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumRgbafValuePropertyAdaptor<TFrom> CreateRgbaf<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumRgbafValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -396,6 +423,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumRgbaValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumRgbaValuePropertyAdaptor<TFrom> CreateRgba<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumRgbaValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -408,6 +436,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumSensorVolumePortionToDisplayValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumSensorVolumePortionToDisplayValuePropertyAdaptor<TFrom> CreateSensorVolumePortionToDisplay<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumSensorVolumePortionToDisplayValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -420,6 +449,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumShadowModeValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumShadowModeValuePropertyAdaptor<TFrom> CreateShadowMode<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumShadowModeValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -432,6 +462,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumSphericalValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumSphericalValuePropertyAdaptor<TFrom> CreateSpherical<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumSphericalValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -444,6 +475,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumSphericalListValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumSphericalListValuePropertyAdaptor<TFrom> CreateSphericalList<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumSphericalListValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -456,6 +488,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumFontValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumFontValuePropertyAdaptor<TFrom> CreateFont<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumFontValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -468,6 +501,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumStringValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumStringValuePropertyAdaptor<TFrom> CreateString<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumStringValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -480,6 +514,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumStripeOrientationValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumStripeOrientationValuePropertyAdaptor<TFrom> CreateStripeOrientation<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumStripeOrientationValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -492,6 +527,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumUnitCartesian3ValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumUnitCartesian3ValuePropertyAdaptor<TFrom> CreateUnitCartesian3<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumUnitCartesian3ValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -504,6 +540,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumUnitCartesian3ListValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumUnitCartesian3ListValuePropertyAdaptor<TFrom> CreateUnitCartesian3List<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumUnitCartesian3ListValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -516,6 +553,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumUnitQuaternionValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumUnitQuaternionValuePropertyAdaptor<TFrom> CreateUnitQuaternion<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumUnitQuaternionValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -528,6 +566,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumUnitSphericalValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumUnitSphericalValuePropertyAdaptor<TFrom> CreateUnitSpherical<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumUnitSphericalValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -540,6 +579,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumUnitSphericalListValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumUnitSphericalListValuePropertyAdaptor<TFrom> CreateUnitSphericalList<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumUnitSphericalListValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -552,6 +592,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumUriValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumUriValuePropertyAdaptor<TFrom> CreateUri<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumUriValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -564,6 +605,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumVerticalOriginValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumVerticalOriginValuePropertyAdaptor<TFrom> CreateVerticalOrigin<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumVerticalOriginValuePropertyWriter, ICesiumDeletablePropertyWriter
         {
@@ -576,6 +618,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumVelocityReferenceValuePropertyWriter"/> to adapt.</typeparam>
         /// <param name="parent">The instance to wrap.</param>
         /// <returns>The new adaptor.</returns>
+        [NotNull]
         public static CesiumVelocityReferenceValuePropertyAdaptor<TFrom> CreateVelocityReference<TFrom>([NotNull] TFrom parent)
             where TFrom : class, ICesiumVelocityReferenceValuePropertyWriter, ICesiumDeletablePropertyWriter
         {

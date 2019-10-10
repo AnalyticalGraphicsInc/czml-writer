@@ -15,7 +15,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        /// <param name="writer">The text stream to which to write data.</param>
+        /// <param name="writer">The writer to which data will be written.</param>
         public CesiumOutputStream([NotNull] TextWriter writer)
         {
             if (writer == null)
@@ -25,15 +25,30 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
+        /// Initializes a new instance.
+        /// </summary>
+        /// <param name="writer">The writer to which data will be written.</param>
+        /// <param name="prettyFormatting">Whether or not the written data should be formatted for easy human readability.</param>
+        public CesiumOutputStream([NotNull] TextWriter writer, bool prettyFormatting)
+            : this(writer)
+        {
+            m_prettyFormatting = prettyFormatting;
+        }
+
+        /// <summary>
         /// Gets or sets a value indicating whether or not the written data should be formatted for easy human readability.
         /// When this property is <see langword="false"/> (the default), more compact CZML is generated.
         /// </summary>
-        public bool PrettyFormatting { get; set; }
+        public bool PrettyFormatting
+        {
+            get { return m_prettyFormatting; }
+            set { m_prettyFormatting = value; }
+        }
 
         /// <summary>
         /// Writes the start of an object.
         /// </summary>
-        public void WriteStartObject()
+        public virtual void WriteStartObject()
         {
             m_nextValueOnNewLine = true;
             StartNewValue();
@@ -46,12 +61,12 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes the end of an object.
         /// </summary>
-        public void WriteEndObject()
+        public virtual void WriteEndObject()
         {
             m_firstInContainer = false;
             DecreaseIndent();
 
-            if (PrettyFormatting)
+            if (m_prettyFormatting)
             {
                 m_writer.WriteLine();
                 WriteIndent();
@@ -63,7 +78,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes the start of a sequence.
         /// </summary>
-        public void WriteStartSequence()
+        public virtual void WriteStartSequence()
         {
             m_nextValueOnNewLine = true;
             StartNewValue();
@@ -76,12 +91,12 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Writes the end of a sequence.
         /// </summary>
-        public void WriteEndSequence()
+        public virtual void WriteEndSequence()
         {
             m_firstInContainer = false;
             DecreaseIndent();
 
-            if (PrettyFormatting)
+            if (m_prettyFormatting)
             {
                 m_writer.WriteLine();
                 WriteIndent();
@@ -94,7 +109,7 @@ namespace CesiumLanguageWriter
         /// Writes the name of a property.
         /// </summary>
         /// <param name="propertyName">The name of the property.</param>
-        public void WritePropertyName([NotNull] string propertyName)
+        public virtual void WritePropertyName([NotNull] string propertyName)
         {
             if (propertyName == null)
                 throw new ArgumentNullException("propertyName");
@@ -113,7 +128,7 @@ namespace CesiumLanguageWriter
         /// Writes the value of a property or element in a sequence.
         /// </summary>
         /// <param name="value">The value to write.</param>
-        public void WriteValue([CanBeNull] string value)
+        public virtual void WriteValue([CanBeNull] string value)
         {
             StartNewValue();
             m_firstInContainer = false;
@@ -135,7 +150,7 @@ namespace CesiumLanguageWriter
         /// Writes the value of a property or element in a sequence.
         /// </summary>
         /// <param name="value">The value to write.</param>
-        public void WriteValue(double value)
+        public virtual void WriteValue(double value)
         {
             StartNewValue();
             m_firstInContainer = false;
@@ -151,7 +166,7 @@ namespace CesiumLanguageWriter
         /// Writes the value of a property or element in a sequence.
         /// </summary>
         /// <param name="value">The value to write.</param>
-        public void WriteValue(int value)
+        public virtual void WriteValue(int value)
         {
             WriteRawValueString(value.ToString(CultureInfo.InvariantCulture));
         }
@@ -160,7 +175,7 @@ namespace CesiumLanguageWriter
         /// Writes the value of a property or element in a sequence.
         /// </summary>
         /// <param name="value">The value to write.</param>
-        public void WriteValue(long value)
+        public virtual void WriteValue(long value)
         {
             WriteRawValueString(value.ToString(CultureInfo.InvariantCulture));
         }
@@ -169,7 +184,7 @@ namespace CesiumLanguageWriter
         /// Writes the value of a property or element in a sequence.
         /// </summary>
         /// <param name="value">The value to write.</param>
-        public void WriteValue(bool value)
+        public virtual void WriteValue(bool value)
         {
             WriteRawValueString(value ? "true" : "false");
         }
@@ -186,7 +201,7 @@ namespace CesiumLanguageWriter
         /// Writes the value of a property or element in a sequence.
         /// </summary>
         /// <param name="value">The value to write.</param>
-        public void WriteValue([NotNull] Uri value)
+        public virtual void WriteValue([NotNull] Uri value)
         {
             if (value == null)
                 throw new ArgumentNullException("value");
@@ -198,7 +213,7 @@ namespace CesiumLanguageWriter
         /// When <see cref="PrettyFormatting"/> is <see langword="true"/>, adds a line break in a sequence of simple values.
         /// When <see cref="PrettyFormatting"/> is <see langword="false"/>, this method does nothing.
         /// </summary>
-        public void WriteLineBreak()
+        public virtual void WriteLineBreak()
         {
             m_nextValueOnNewLine = true;
         }
@@ -327,7 +342,7 @@ namespace CesiumLanguageWriter
                 m_writer.Write(',');
             }
 
-            if (!m_inProperty && PrettyFormatting && m_nextValueOnNewLine)
+            if (!m_inProperty && m_prettyFormatting && m_nextValueOnNewLine)
             {
                 m_writer.WriteLine();
                 WriteIndent();
@@ -360,6 +375,7 @@ namespace CesiumLanguageWriter
         private bool m_inProperty;
         private bool m_nextValueOnNewLine;
         private int m_indent = 0;
+        private bool m_prettyFormatting;
         private const int IndentLevel = 2;
     }
 }
