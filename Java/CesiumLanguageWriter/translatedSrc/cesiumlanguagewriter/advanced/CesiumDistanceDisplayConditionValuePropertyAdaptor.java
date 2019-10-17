@@ -6,12 +6,8 @@ import cesiumlanguagewriter.*;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Adapts a class that implements {@link ICesiumDistanceDisplayConditionValuePropertyWriter} to implement
+ * Adapts a class that implements {@link ICesiumDistanceDisplayConditionValuePropertyWriter} to implement
  {@link ICesiumInterpolatableValuePropertyWriter} for {@link Bounds} values.
- 
- 
-
  * @param <TFrom> The class that implements {@link ICesiumDistanceDisplayConditionValuePropertyWriter} to adapt.
  */
 @SuppressWarnings( {
@@ -21,14 +17,7 @@ import javax.annotation.Nonnull;
 })
 public class CesiumDistanceDisplayConditionValuePropertyAdaptor<TFrom extends ICesiumDistanceDisplayConditionValuePropertyWriter> extends CesiumInterpolatableWriterAdaptor<TFrom, Bounds> {
     /**
-    *  
-    Initializes a new instance.
-    
-    
-    
-    
-    
-
+    * Initializes a new instance.
     * @param parent The instance to wrap.
     * @param writeValueCallback The callback to write values of type {@link Bounds}.
     * @param writeSamplesCallback The callback to write samples of type {@link Bounds}.

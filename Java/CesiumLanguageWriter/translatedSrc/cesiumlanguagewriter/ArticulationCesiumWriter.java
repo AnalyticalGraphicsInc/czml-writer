@@ -9,10 +9,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Writes a {@code Articulation} to a {@link CesiumOutputStream}. A {@code Articulation} is an articulation value.
- 
-
+ * Writes a {@code Articulation} to a {@link CesiumOutputStream}. A {@code Articulation} is an articulation value.
  */
 @SuppressWarnings( {
         "unused",
@@ -22,35 +19,22 @@ import javax.annotation.Nonnull;
 public class ArticulationCesiumWriter extends CesiumInterpolatablePropertyWriter<ArticulationCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumDoubleValuePropertyWriter,
         ICesiumReferenceValuePropertyWriter {
     /**
-    *  
-    The name of the {@code number} property.
-    
-
+    * The name of the {@code number} property.
     */
     public static final String NumberPropertyName = "number";
     /**
-    *  
-    The name of the {@code reference} property.
-    
-
+    * The name of the {@code reference} property.
     */
     public static final String ReferencePropertyName = "reference";
     /**
-    *  
-    The name of the {@code delete} property.
-    
-
+    * The name of the {@code delete} property.
     */
     public static final String DeletePropertyName = "delete";
     private Lazy<CesiumDoubleValuePropertyAdaptor<ArticulationCesiumWriter>> m_asNumber;
     private Lazy<CesiumReferenceValuePropertyAdaptor<ArticulationCesiumWriter>> m_asReference;
 
     /**
-    *  
-    Initializes a new instance.
-    
-    
-
+    * Initializes a new instance.
     * @param propertyName The name of the property.
     */
     public ArticulationCesiumWriter(@Nonnull String propertyName) {
@@ -60,11 +44,7 @@ public class ArticulationCesiumWriter extends CesiumInterpolatablePropertyWriter
     }
 
     /**
-    *  
-    Initializes a new instance as a copy of an existing instance.
-    
-    
-
+    * Initializes a new instance as a copy of an existing instance.
     * @param existingInstance The existing instance to copy.
     */
     protected ArticulationCesiumWriter(@Nonnull ArticulationCesiumWriter existingInstance) {
@@ -74,12 +54,7 @@ public class ArticulationCesiumWriter extends CesiumInterpolatablePropertyWriter
     }
 
     /**
-    *  
-    
-    Copies this instance and returns the copy.
-    
-    
-
+    * Copies this instance and returns the copy.
     * @return The copy.
     */
     @Override
@@ -88,11 +63,7 @@ public class ArticulationCesiumWriter extends CesiumInterpolatablePropertyWriter
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code number}, which is the articulation value.
-    
-    
-
+    * Writes the value expressed as a {@code number}, which is the articulation value.
     * @param value The value.
     */
     public final void writeNumber(double value) {
@@ -107,12 +78,7 @@ public class ArticulationCesiumWriter extends CesiumInterpolatablePropertyWriter
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code number}, which is the articulation value.
-    
-    
-    
-
+    * Writes the value expressed as a {@code number}, which is the articulation value.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -121,14 +87,7 @@ public class ArticulationCesiumWriter extends CesiumInterpolatablePropertyWriter
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code number}, which is the articulation value.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code number}, which is the articulation value.
     * @param dates The dates at which the value is specified.
     * @param values The value corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -141,11 +100,7 @@ public class ArticulationCesiumWriter extends CesiumInterpolatablePropertyWriter
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the articulation value specified as a reference to another property.
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the articulation value specified as a reference to another property.
     * @param value The reference.
     */
     public final void writeReference(Reference value) {
@@ -156,11 +111,7 @@ public class ArticulationCesiumWriter extends CesiumInterpolatablePropertyWriter
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the articulation value specified as a reference to another property.
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the articulation value specified as a reference to another property.
     * @param value The reference.
     */
     public final void writeReference(String value) {
@@ -171,12 +122,7 @@ public class ArticulationCesiumWriter extends CesiumInterpolatablePropertyWriter
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the articulation value specified as a reference to another property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the articulation value specified as a reference to another property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -188,12 +134,7 @@ public class ArticulationCesiumWriter extends CesiumInterpolatablePropertyWriter
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the articulation value specified as a reference to another property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the articulation value specified as a reference to another property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -205,11 +146,7 @@ public class ArticulationCesiumWriter extends CesiumInterpolatablePropertyWriter
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
-    
-    
-
+    * Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
     * @param value The value.
     */
     public final void writeDelete(boolean value) {
@@ -220,11 +157,7 @@ public class ArticulationCesiumWriter extends CesiumInterpolatablePropertyWriter
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumDoubleValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumDoubleValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumDoubleValuePropertyAdaptor<ArticulationCesiumWriter> asNumber() {
@@ -245,11 +178,7 @@ public class ArticulationCesiumWriter extends CesiumInterpolatablePropertyWriter
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumReferenceValuePropertyAdaptor<ArticulationCesiumWriter> asReference() {

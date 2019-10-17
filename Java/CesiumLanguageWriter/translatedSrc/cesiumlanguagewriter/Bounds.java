@@ -12,10 +12,7 @@ import agi.foundation.compatibility.StringHelper;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Holds two values which form the bounds of a range of real numbers.
- 
-
+ * Holds two values which form the bounds of a range of real numbers.
  */
 @SuppressWarnings( {
         "unused",
@@ -29,18 +26,10 @@ public final class Bounds implements IEquatable<Bounds>, ImmutableValueType {
     public Bounds() {}
 
     /**
-    *  
-    Holds the values which form the bounds of a range of real numbers.
-    
-    
-    
-    
-
+    * Holds the values which form the bounds of a range of real numbers.
     * @param lowerBound The minimal value defining the range of numbers.
     * @param upperBound The maximal value defining the range of numbers.
-    * @exception ArgumentException 
-    Thrown when the {@code upperBound} is less than the {@code lowerBound}.
-    
+    * @exception ArgumentException Thrown when the {@code upperBound} is less than the {@code lowerBound}.
     */
     public Bounds(double lowerBound, double upperBound) {
         if (upperBound < lowerBound) {
@@ -51,14 +40,10 @@ public final class Bounds implements IEquatable<Bounds>, ImmutableValueType {
     }
 
     /**
-    *  Gets a set of {@link Bounds} representing the full range of real values from negative infinity to positive infinity.
-    
-    
-
+    * Gets a set of {@link Bounds} representing the full range of real values from negative infinity to positive infinity.
     * <p>
     Use {@code IsUnbounded} ({@link #getIsUnbounded get}) to test whether a {@link Bounds} instance is unbounded
     since it will return {@code true} if the values range from {@link Double#NEGATIVE_INFINITY} to {@link Double#POSITIVE_INFINITY}.
-    
     */
     @Nonnull
     public static Bounds getUnbounded() {
@@ -66,30 +51,21 @@ public final class Bounds implements IEquatable<Bounds>, ImmutableValueType {
     }
 
     /**
-    *  Gets the minimal value defining the range of numbers.
-    
-
+    * Gets the minimal value defining the range of numbers.
     */
     public final double getLowerBound() {
         return m_lowerBound;
     }
 
     /**
-    *  Gets the maximal value defining the range of numbers.
-    
-
+    * Gets the maximal value defining the range of numbers.
     */
     public final double getUpperBound() {
         return m_upperBound;
     }
 
     /**
-    *  
-    Indicates whether another object is exactly equal to this instance.
-    
-    
-    
-
+    * Indicates whether another object is exactly equal to this instance.
     * @param obj The object to compare to this instance.
     * @return {@code true} if {@code obj} is an instance of this type and represents the same value as this instance; otherwise, {@code false}.
     */
@@ -99,12 +75,7 @@ public final class Bounds implements IEquatable<Bounds>, ImmutableValueType {
     }
 
     /**
-    *  
-    Indicates whether another instance of this type is exactly equal to this instance.
-    
-    
-    
-
+    * Indicates whether another instance of this type is exactly equal to this instance.
     * @param other The instance to compare to this instance.
     * @return {@code true} if {@code other} represents the same value as this instance; otherwise, {@code false}.
     */
@@ -114,30 +85,18 @@ public final class Bounds implements IEquatable<Bounds>, ImmutableValueType {
     }
 
     /**
-    *  
-    Indicates whether each value of another instance of this type
+    * Indicates whether each value of another instance of this type
     is within the required tolerance of the corresponding value of this instance.
-    
-    
-    
-    
-
     * @param other The set of {@link Bounds} to compare to this instance.
     * @param epsilon The limit at which the absolute differences between the values will not be considered equal.
-    * @return 
-    {@code true} if the absolute differences are less than or equal to {@code epsilon}; otherwise, {@code false}.
-    
+    * @return {@code true} if the absolute differences are less than or equal to {@code epsilon}; otherwise, {@code false}.
     */
     public final boolean equalsEpsilon(@Nonnull Bounds other, double epsilon) {
         return Math.abs(m_lowerBound - other.m_lowerBound) <= epsilon && Math.abs(m_upperBound - other.m_upperBound) <= epsilon;
     }
 
     /**
-    *  
-    Returns a hash code for this instance, which is suitable for use in hashing algorithms and data structures like a hash table.
-    
-    
-
+    * Returns a hash code for this instance, which is suitable for use in hashing algorithms and data structures like a hash table.
     * @return A hash code for the current object.
     */
     @Override
@@ -146,15 +105,9 @@ public final class Bounds implements IEquatable<Bounds>, ImmutableValueType {
     }
 
     /**
-    *  
-    Returns the string representation of the value of this instance.
-    
-    
-
-    * @return 
-    A string that represents the values of this instance in the form
+    * Returns the string representation of the value of this instance.
+    * @return A string that represents the values of this instance in the form
     "{@code LowerBound} ({@link #getLowerBound get}), {@code UpperBound} ({@link #getUpperBound get})".
-    
     */
     @Override
     public String toString() {
@@ -162,18 +115,10 @@ public final class Bounds implements IEquatable<Bounds>, ImmutableValueType {
     }
 
     /**
-    *  
-    Returns {@code true} if the two instances are exactly equal.
-    
-    
-    
-    
-
+    * Returns {@code true} if the two instances are exactly equal.
     * @param left The instance to compare to {@code right}.
     * @param right The instance to compare to {@code left}.
-    * @return 
-    {@code true} if {@code left} represents the same value as {@code right}; otherwise, {@code false}.
-    
+    * @return {@code true} if {@code left} represents the same value as {@code right}; otherwise, {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(Bounds,Bounds)'")
     public static boolean equals(@Nonnull Bounds left, @Nonnull Bounds right) {
@@ -181,18 +126,10 @@ public final class Bounds implements IEquatable<Bounds>, ImmutableValueType {
     }
 
     /**
-    *  
-    Returns {@code true} if the two instances are not exactly equal.
-    
-    
-    
-    
-
+    * Returns {@code true} if the two instances are not exactly equal.
     * @param left The instance to compare to {@code right}.
     * @param right The instance to compare to {@code left}.
-    * @return 
-    {@code true} if {@code left} does not represent the same value as {@code right}; otherwise, {@code false}.
-    
+    * @return {@code true} if {@code left} does not represent the same value as {@code right}; otherwise, {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(Bounds,Bounds)'")
     public static boolean notEquals(@Nonnull Bounds left, @Nonnull Bounds right) {
@@ -200,18 +137,14 @@ public final class Bounds implements IEquatable<Bounds>, ImmutableValueType {
     }
 
     /**
-    *  Gets a value indicating whether this instance has a finite value as either the lower or upper bound.
-    
-
+    * Gets a value indicating whether this instance has a finite value as either the lower or upper bound.
     */
     public final boolean getIsFinite() {
         return !DoubleHelper.isNegativeInfinity(m_lowerBound) && !DoubleHelper.isPositiveInfinity(m_upperBound);
     }
 
     /**
-    *  Gets a value indicating whether this instance ranges from {@link Double#NEGATIVE_INFINITY} to {@link Double#POSITIVE_INFINITY}.
-    
-
+    * Gets a value indicating whether this instance ranges from {@link Double#NEGATIVE_INFINITY} to {@link Double#POSITIVE_INFINITY}.
     */
     public final boolean getIsUnbounded() {
         return DoubleHelper.isNegativeInfinity(m_lowerBound) && DoubleHelper.isPositiveInfinity(m_upperBound);

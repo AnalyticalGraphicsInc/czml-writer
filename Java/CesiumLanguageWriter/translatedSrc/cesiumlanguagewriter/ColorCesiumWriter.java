@@ -10,10 +10,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Writes a {@code Color} to a {@link CesiumOutputStream}. A {@code Color} is a color. The color can optionally vary over time.
- 
-
+ * Writes a {@code Color} to a {@link CesiumOutputStream}. A {@code Color} is a color. The color can optionally vary over time.
  */
 @SuppressWarnings( {
         "unused",
@@ -23,31 +20,19 @@ import javax.annotation.Nonnull;
 public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumRgbaValuePropertyWriter,
         ICesiumRgbafValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
-    *  
-    The name of the {@code rgba} property.
-    
-
+    * The name of the {@code rgba} property.
     */
     public static final String RgbaPropertyName = "rgba";
     /**
-    *  
-    The name of the {@code rgbaf} property.
-    
-
+    * The name of the {@code rgbaf} property.
     */
     public static final String RgbafPropertyName = "rgbaf";
     /**
-    *  
-    The name of the {@code reference} property.
-    
-
+    * The name of the {@code reference} property.
     */
     public static final String ReferencePropertyName = "reference";
     /**
-    *  
-    The name of the {@code delete} property.
-    
-
+    * The name of the {@code delete} property.
     */
     public static final String DeletePropertyName = "delete";
     private Lazy<CesiumRgbaValuePropertyAdaptor<ColorCesiumWriter>> m_asRgba;
@@ -55,11 +40,7 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
     private Lazy<CesiumReferenceValuePropertyAdaptor<ColorCesiumWriter>> m_asReference;
 
     /**
-    *  
-    Initializes a new instance.
-    
-    
-
+    * Initializes a new instance.
     * @param propertyName The name of the property.
     */
     public ColorCesiumWriter(@Nonnull String propertyName) {
@@ -70,11 +51,7 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
     }
 
     /**
-    *  
-    Initializes a new instance as a copy of an existing instance.
-    
-    
-
+    * Initializes a new instance as a copy of an existing instance.
     * @param existingInstance The existing instance to copy.
     */
     protected ColorCesiumWriter(@Nonnull ColorCesiumWriter existingInstance) {
@@ -85,12 +62,7 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
     }
 
     /**
-    *  
-    
-    Copies this instance and returns the copy.
-    
-    
-
+    * Copies this instance and returns the copy.
     * @return The copy.
     */
     @Override
@@ -99,11 +71,7 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code rgba}, which is the color specified as an array of color components {@code [Red, Green, Blue, Alpha]} where each component is an integer in the range 0-255.
-    
-    
-
+    * Writes the value expressed as a {@code rgba}, which is the color specified as an array of color components {@code [Red, Green, Blue, Alpha]} where each component is an integer in the range 0-255.
     * @param color The color.
     */
     public final void writeRgba(@Nonnull Color color) {
@@ -114,14 +82,7 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code rgba}, which is the color specified as an array of color components {@code [Red, Green, Blue, Alpha]} where each component is an integer in the range 0-255.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code rgba}, which is the color specified as an array of color components {@code [Red, Green, Blue, Alpha]} where each component is an integer in the range 0-255.
     * @param red The red component in the range 0 to 255.
     * @param green The green component in the range 0 to 255.
     * @param blue The blue component in the range 0 to 255.
@@ -135,12 +96,7 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code rgba}, which is the color specified as an array of color components {@code [Red, Green, Blue, Alpha]} where each component is an integer in the range 0-255.
-    
-    
-    
-
+    * Writes the value expressed as a {@code rgba}, which is the color specified as an array of color components {@code [Red, Green, Blue, Alpha]} where each component is an integer in the range 0-255.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -149,14 +105,7 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code rgba}, which is the color specified as an array of color components {@code [Red, Green, Blue, Alpha]} where each component is an integer in the range 0-255.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code rgba}, which is the color specified as an array of color components {@code [Red, Green, Blue, Alpha]} where each component is an integer in the range 0-255.
     * @param dates The dates at which the value is specified.
     * @param colors The color corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -169,11 +118,7 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code rgbaf}, which is the color specified as an array of color components {@code [Red, Green, Blue, Alpha]} where each component is a double in the range 0.0-1.0.
-    
-    
-
+    * Writes the value expressed as a {@code rgbaf}, which is the color specified as an array of color components {@code [Red, Green, Blue, Alpha]} where each component is a double in the range 0.0-1.0.
     * @param color The color.
     */
     public final void writeRgbaf(@Nonnull Color color) {
@@ -184,14 +129,7 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code rgbaf}, which is the color specified as an array of color components {@code [Red, Green, Blue, Alpha]} where each component is a double in the range 0.0-1.0.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code rgbaf}, which is the color specified as an array of color components {@code [Red, Green, Blue, Alpha]} where each component is a double in the range 0.0-1.0.
     * @param red The red component in the range 0 to 1.0.
     * @param green The green component in the range 0 to 1.0.
     * @param blue The blue component in the range 0 to 1.0.
@@ -205,12 +143,7 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code rgbaf}, which is the color specified as an array of color components {@code [Red, Green, Blue, Alpha]} where each component is a double in the range 0.0-1.0.
-    
-    
-    
-
+    * Writes the value expressed as a {@code rgbaf}, which is the color specified as an array of color components {@code [Red, Green, Blue, Alpha]} where each component is a double in the range 0.0-1.0.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -219,14 +152,7 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code rgbaf}, which is the color specified as an array of color components {@code [Red, Green, Blue, Alpha]} where each component is a double in the range 0.0-1.0.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code rgbaf}, which is the color specified as an array of color components {@code [Red, Green, Blue, Alpha]} where each component is a double in the range 0.0-1.0.
     * @param dates The dates at which the value is specified.
     * @param colors The color corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -239,11 +165,7 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the color specified as a reference to another property.
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the color specified as a reference to another property.
     * @param value The reference.
     */
     public final void writeReference(Reference value) {
@@ -254,11 +176,7 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the color specified as a reference to another property.
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the color specified as a reference to another property.
     * @param value The reference.
     */
     public final void writeReference(String value) {
@@ -269,12 +187,7 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the color specified as a reference to another property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the color specified as a reference to another property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -286,12 +199,7 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the color specified as a reference to another property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the color specified as a reference to another property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -303,11 +211,7 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
-    
-    
-
+    * Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
     * @param value The value.
     */
     public final void writeDelete(boolean value) {
@@ -318,11 +222,7 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumRgbaValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumRgbaValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumRgbaValuePropertyAdaptor<ColorCesiumWriter> asRgba() {
@@ -343,11 +243,7 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumRgbafValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumRgbafValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumRgbafValuePropertyAdaptor<ColorCesiumWriter> asRgbaf() {
@@ -368,11 +264,7 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumReferenceValuePropertyAdaptor<ColorCesiumWriter> asReference() {

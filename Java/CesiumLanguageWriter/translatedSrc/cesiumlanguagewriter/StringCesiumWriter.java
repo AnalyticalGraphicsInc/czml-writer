@@ -8,10 +8,7 @@ import cesiumlanguagewriter.advanced.*;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Writes a {@code String} to a {@link CesiumOutputStream}. A {@code String} is a string value. The string can optionally vary with time.
- 
-
+ * Writes a {@code String} to a {@link CesiumOutputStream}. A {@code String} is a string value. The string can optionally vary with time.
  */
 @SuppressWarnings( {
         "unused",
@@ -20,35 +17,22 @@ import javax.annotation.Nonnull;
 })
 public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumStringValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
-    *  
-    The name of the {@code string} property.
-    
-
+    * The name of the {@code string} property.
     */
     public static final String StringPropertyName = "string";
     /**
-    *  
-    The name of the {@code reference} property.
-    
-
+    * The name of the {@code reference} property.
     */
     public static final String ReferencePropertyName = "reference";
     /**
-    *  
-    The name of the {@code delete} property.
-    
-
+    * The name of the {@code delete} property.
     */
     public static final String DeletePropertyName = "delete";
     private Lazy<CesiumStringValuePropertyAdaptor<StringCesiumWriter>> m_asString;
     private Lazy<CesiumReferenceValuePropertyAdaptor<StringCesiumWriter>> m_asReference;
 
     /**
-    *  
-    Initializes a new instance.
-    
-    
-
+    * Initializes a new instance.
     * @param propertyName The name of the property.
     */
     public StringCesiumWriter(@Nonnull String propertyName) {
@@ -58,11 +42,7 @@ public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter>
     }
 
     /**
-    *  
-    Initializes a new instance as a copy of an existing instance.
-    
-    
-
+    * Initializes a new instance as a copy of an existing instance.
     * @param existingInstance The existing instance to copy.
     */
     protected StringCesiumWriter(@Nonnull StringCesiumWriter existingInstance) {
@@ -72,12 +52,7 @@ public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter>
     }
 
     /**
-    *  
-    
-    Copies this instance and returns the copy.
-    
-    
-
+    * Copies this instance and returns the copy.
     * @return The copy.
     */
     @Override
@@ -86,11 +61,7 @@ public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter>
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code string}, which is the string value.
-    
-    
-
+    * Writes the value expressed as a {@code string}, which is the string value.
     * @param value The value.
     */
     public final void writeString(String value) {
@@ -105,11 +76,7 @@ public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter>
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the string specified as a reference to another property.
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the string specified as a reference to another property.
     * @param value The reference.
     */
     public final void writeReference(Reference value) {
@@ -120,11 +87,7 @@ public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter>
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the string specified as a reference to another property.
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the string specified as a reference to another property.
     * @param value The reference.
     */
     public final void writeReference(String value) {
@@ -135,12 +98,7 @@ public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter>
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the string specified as a reference to another property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the string specified as a reference to another property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -152,12 +110,7 @@ public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter>
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the string specified as a reference to another property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the string specified as a reference to another property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -169,11 +122,7 @@ public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter>
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
-    
-    
-
+    * Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
     * @param value The value.
     */
     public final void writeDelete(boolean value) {
@@ -184,11 +133,7 @@ public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter>
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumStringValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumStringValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumStringValuePropertyAdaptor<StringCesiumWriter> asString() {
@@ -209,11 +154,7 @@ public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter>
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumReferenceValuePropertyAdaptor<StringCesiumWriter> asReference() {

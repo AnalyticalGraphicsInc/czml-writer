@@ -7,12 +7,8 @@ import java.awt.Color;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Adapts a class that implements {@link ICesiumRgbafValuePropertyWriter} to implement
+ * Adapts a class that implements {@link ICesiumRgbafValuePropertyWriter} to implement
  {@link ICesiumInterpolatableValuePropertyWriter} for {@link Color} values.
- 
- 
-
  * @param <TFrom> The class that implements {@link ICesiumRgbafValuePropertyWriter} to adapt.
  */
 @SuppressWarnings( {
@@ -22,14 +18,7 @@ import javax.annotation.Nonnull;
 })
 public class CesiumRgbafValuePropertyAdaptor<TFrom extends ICesiumRgbafValuePropertyWriter> extends CesiumInterpolatableWriterAdaptor<TFrom, Color> {
     /**
-    *  
-    Initializes a new instance.
-    
-    
-    
-    
-    
-
+    * Initializes a new instance.
     * @param parent The instance to wrap.
     * @param writeValueCallback The callback to write values of type {@link Color}.
     * @param writeSamplesCallback The callback to write samples of type {@link Color}.

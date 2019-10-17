@@ -7,12 +7,7 @@ import cesiumlanguagewriter.*;
 import javax.annotation.Nonnull;
 
 /**
- *  
- A callback to write an indication that the client should delete existing samples for a given wrapped property writer.
- 
- 
- 
-
+ * A callback to write an indication that the client should delete existing samples for a given wrapped property writer.
  * @param <TWrappedWriter> The type of the wrapped writer.
  */
 @SuppressWarnings( {
@@ -49,12 +44,7 @@ public abstract class CesiumWriterAdaptorWriteDeleteCallback<TWrappedWriter exte
     }
 
     /**
-    *  
-    A callback to write an indication that the client should delete existing samples for a given wrapped property writer.
-    
-    
-    
-
+    * A callback to write an indication that the client should delete existing samples for a given wrapped property writer.
     * @param wrappedWriter The wrapper writer.
     */
     public abstract void invoke(@Nonnull TWrappedWriter wrappedWriter);
@@ -115,12 +105,7 @@ public abstract class CesiumWriterAdaptorWriteDeleteCallback<TWrappedWriter exte
     @FunctionalInterface
     public interface Function<TWrappedWriter extends ICesiumPropertyWriter> {
         /**
-        *  
-        A callback to write an indication that the client should delete existing samples for a given wrapped property writer.
-        
-        
-        
-
+        * A callback to write an indication that the client should delete existing samples for a given wrapped property writer.
         * @param wrappedWriter The wrapper writer.
         */
         void invoke(@Nonnull TWrappedWriter wrappedWriter);

@@ -6,10 +6,7 @@ import cesiumlanguagewriter.*;
 import javax.annotation.Nonnull;
 
 /**
- *  
- A writer that can write a value as a height reference.
- 
-
+ * A writer that can write a value as a height reference.
  */
 @SuppressWarnings( {
         "unused",
@@ -18,11 +15,7 @@ import javax.annotation.Nonnull;
 })
 public interface ICesiumHeightReferenceValuePropertyWriter extends ICesiumPropertyWriter {
     /**
-    *  
-    Writes the value as a height reference.
-    
-    
-
+    * Writes the value as a height reference.
     * @param value The height reference.
     */
     void writeHeightReference(@Nonnull CesiumHeightReference value);

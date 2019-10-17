@@ -6,12 +6,8 @@ import cesiumlanguagewriter.*;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Adapts a class that implements {@link ICesiumHeightReferenceValuePropertyWriter} to implement
+ * Adapts a class that implements {@link ICesiumHeightReferenceValuePropertyWriter} to implement
  {@link ICesiumPropertyWriter} for {@link CesiumHeightReference} values.
- 
- 
-
  * @param <TFrom> The class that implements {@link ICesiumHeightReferenceValuePropertyWriter} to adapt.
  */
 @SuppressWarnings( {
@@ -21,13 +17,7 @@ import javax.annotation.Nonnull;
 })
 public class CesiumHeightReferenceValuePropertyAdaptor<TFrom extends ICesiumHeightReferenceValuePropertyWriter> extends CesiumWriterAdaptor<TFrom, CesiumHeightReference> {
     /**
-    *  
-    Initializes a new instance.
-    
-    
-    
-    
-
+    * Initializes a new instance.
     * @param parent The instance to wrap.
     * @param writeValueCallback The callback to write values of type {@link CesiumHeightReference}.
     * @param writeDeleteValueCallback The callback to write an indication that the client should delete existing data.

@@ -9,10 +9,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Writes a {@code RectangleCoordinates} to a {@link CesiumOutputStream}. A {@code RectangleCoordinates} is a set of coordinates describing a cartographic rectangle on the surface of the ellipsoid.
- 
-
+ * Writes a {@code RectangleCoordinates} to a {@link CesiumOutputStream}. A {@code RectangleCoordinates} is a set of coordinates describing a cartographic rectangle on the surface of the ellipsoid.
  */
 @SuppressWarnings( {
         "unused",
@@ -22,31 +19,19 @@ import javax.annotation.Nonnull;
 public class RectangleCoordinatesCesiumWriter extends CesiumInterpolatablePropertyWriter<RectangleCoordinatesCesiumWriter> implements ICesiumDeletablePropertyWriter,
         ICesiumCartographicRectangleRadiansValuePropertyWriter, ICesiumCartographicRectangleDegreesValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
-    *  
-    The name of the {@code wsen} property.
-    
-
+    * The name of the {@code wsen} property.
     */
     public static final String WsenPropertyName = "wsen";
     /**
-    *  
-    The name of the {@code wsenDegrees} property.
-    
-
+    * The name of the {@code wsenDegrees} property.
     */
     public static final String WsenDegreesPropertyName = "wsenDegrees";
     /**
-    *  
-    The name of the {@code reference} property.
-    
-
+    * The name of the {@code reference} property.
     */
     public static final String ReferencePropertyName = "reference";
     /**
-    *  
-    The name of the {@code delete} property.
-    
-
+    * The name of the {@code delete} property.
     */
     public static final String DeletePropertyName = "delete";
     private Lazy<CesiumCartographicRectangleRadiansValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>> m_asWsen;
@@ -54,11 +39,7 @@ public class RectangleCoordinatesCesiumWriter extends CesiumInterpolatableProper
     private Lazy<CesiumReferenceValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>> m_asReference;
 
     /**
-    *  
-    Initializes a new instance.
-    
-    
-
+    * Initializes a new instance.
     * @param propertyName The name of the property.
     */
     public RectangleCoordinatesCesiumWriter(@Nonnull String propertyName) {
@@ -69,11 +50,7 @@ public class RectangleCoordinatesCesiumWriter extends CesiumInterpolatableProper
     }
 
     /**
-    *  
-    Initializes a new instance as a copy of an existing instance.
-    
-    
-
+    * Initializes a new instance as a copy of an existing instance.
     * @param existingInstance The existing instance to copy.
     */
     protected RectangleCoordinatesCesiumWriter(@Nonnull RectangleCoordinatesCesiumWriter existingInstance) {
@@ -84,12 +61,7 @@ public class RectangleCoordinatesCesiumWriter extends CesiumInterpolatableProper
     }
 
     /**
-    *  
-    
-    Copies this instance and returns the copy.
-    
-    
-
+    * Copies this instance and returns the copy.
     * @return The copy.
     */
     @Override
@@ -98,11 +70,7 @@ public class RectangleCoordinatesCesiumWriter extends CesiumInterpolatableProper
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code wsen}, which is the set of coordinates specified as Cartographic values {@code [WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]}, with values in radians.
-    
-    
-
+    * Writes the value expressed as a {@code wsen}, which is the set of coordinates specified as Cartographic values {@code [WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]}, with values in radians.
     * @param value The value.
     */
     public final void writeWsen(CartographicExtent value) {
@@ -113,14 +81,7 @@ public class RectangleCoordinatesCesiumWriter extends CesiumInterpolatableProper
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code wsen}, which is the set of coordinates specified as Cartographic values {@code [WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]}, with values in radians.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code wsen}, which is the set of coordinates specified as Cartographic values {@code [WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]}, with values in radians.
     * @param west The westernmost longitude.
     * @param south The southernmost latitude.
     * @param east The easternmost longitude.
@@ -131,12 +92,7 @@ public class RectangleCoordinatesCesiumWriter extends CesiumInterpolatableProper
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code wsen}, which is the set of coordinates specified as Cartographic values {@code [WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]}, with values in radians.
-    
-    
-    
-
+    * Writes the value expressed as a {@code wsen}, which is the set of coordinates specified as Cartographic values {@code [WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]}, with values in radians.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -145,14 +101,7 @@ public class RectangleCoordinatesCesiumWriter extends CesiumInterpolatableProper
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code wsen}, which is the set of coordinates specified as Cartographic values {@code [WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]}, with values in radians.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code wsen}, which is the set of coordinates specified as Cartographic values {@code [WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]}, with values in radians.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -165,11 +114,7 @@ public class RectangleCoordinatesCesiumWriter extends CesiumInterpolatableProper
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code wsenDegrees}, which is the set of coordinates specified as Cartographic values {@code [WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]}, with values in degrees.
-    
-    
-
+    * Writes the value expressed as a {@code wsenDegrees}, which is the set of coordinates specified as Cartographic values {@code [WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]}, with values in degrees.
     * @param value The value.
     */
     public final void writeWsenDegrees(CartographicExtent value) {
@@ -180,14 +125,7 @@ public class RectangleCoordinatesCesiumWriter extends CesiumInterpolatableProper
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code wsenDegrees}, which is the set of coordinates specified as Cartographic values {@code [WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]}, with values in degrees.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code wsenDegrees}, which is the set of coordinates specified as Cartographic values {@code [WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]}, with values in degrees.
     * @param west The westernmost longitude.
     * @param south The southernmost latitude.
     * @param east The easternmost longitude.
@@ -198,12 +136,7 @@ public class RectangleCoordinatesCesiumWriter extends CesiumInterpolatableProper
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code wsenDegrees}, which is the set of coordinates specified as Cartographic values {@code [WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]}, with values in degrees.
-    
-    
-    
-
+    * Writes the value expressed as a {@code wsenDegrees}, which is the set of coordinates specified as Cartographic values {@code [WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]}, with values in degrees.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -212,14 +145,7 @@ public class RectangleCoordinatesCesiumWriter extends CesiumInterpolatableProper
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code wsenDegrees}, which is the set of coordinates specified as Cartographic values {@code [WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]}, with values in degrees.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code wsenDegrees}, which is the set of coordinates specified as Cartographic values {@code [WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]}, with values in degrees.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -232,11 +158,7 @@ public class RectangleCoordinatesCesiumWriter extends CesiumInterpolatableProper
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the set of coordinates specified as a reference to another property.
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the set of coordinates specified as a reference to another property.
     * @param value The reference.
     */
     public final void writeReference(Reference value) {
@@ -247,11 +169,7 @@ public class RectangleCoordinatesCesiumWriter extends CesiumInterpolatableProper
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the set of coordinates specified as a reference to another property.
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the set of coordinates specified as a reference to another property.
     * @param value The reference.
     */
     public final void writeReference(String value) {
@@ -262,12 +180,7 @@ public class RectangleCoordinatesCesiumWriter extends CesiumInterpolatableProper
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the set of coordinates specified as a reference to another property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the set of coordinates specified as a reference to another property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -279,12 +192,7 @@ public class RectangleCoordinatesCesiumWriter extends CesiumInterpolatableProper
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the set of coordinates specified as a reference to another property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the set of coordinates specified as a reference to another property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -296,11 +204,7 @@ public class RectangleCoordinatesCesiumWriter extends CesiumInterpolatableProper
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
-    
-    
-
+    * Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
     * @param value The value.
     */
     public final void writeDelete(boolean value) {
@@ -311,11 +215,7 @@ public class RectangleCoordinatesCesiumWriter extends CesiumInterpolatableProper
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumCartographicRectangleRadiansValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumCartographicRectangleRadiansValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumCartographicRectangleRadiansValuePropertyAdaptor<RectangleCoordinatesCesiumWriter> asWsen() {
@@ -336,11 +236,7 @@ public class RectangleCoordinatesCesiumWriter extends CesiumInterpolatableProper
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumCartographicRectangleDegreesValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumCartographicRectangleDegreesValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumCartographicRectangleDegreesValuePropertyAdaptor<RectangleCoordinatesCesiumWriter> asWsenDegrees() {
@@ -361,11 +257,7 @@ public class RectangleCoordinatesCesiumWriter extends CesiumInterpolatableProper
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumReferenceValuePropertyAdaptor<RectangleCoordinatesCesiumWriter> asReference() {

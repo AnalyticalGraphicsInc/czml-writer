@@ -6,12 +6,8 @@ import cesiumlanguagewriter.*;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Adapts a class that implements {@link ICesiumCartesian3ListValuePropertyWriter} to implement
+ * Adapts a class that implements {@link ICesiumCartesian3ListValuePropertyWriter} to implement
  {@link ICesiumPropertyWriter} for a list of {@link Cartesian} values.
- 
- 
-
  * @param <TFrom> The class that implements {@link ICesiumCartesian3ListValuePropertyWriter} to adapt.
  */
 @SuppressWarnings( {
@@ -21,13 +17,7 @@ import javax.annotation.Nonnull;
 })
 public class CesiumCartesian3ListValuePropertyAdaptor<TFrom extends ICesiumCartesian3ListValuePropertyWriter> extends CesiumWriterAdaptor<TFrom, Iterable<Cartesian>> {
     /**
-    *  
-    Initializes a new instance.
-    
-    
-    
-    
-
+    * Initializes a new instance.
     * @param parent The instance to wrap.
     * @param writeValueCallback The callback to write a list of {@link Cartesian} values.
     * @param writeDeleteValueCallback The callback to write an indication that the client should delete existing data.

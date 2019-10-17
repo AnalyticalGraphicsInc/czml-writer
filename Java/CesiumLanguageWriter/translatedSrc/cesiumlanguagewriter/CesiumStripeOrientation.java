@@ -7,10 +7,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
- *  
- The orientation of the stripes in a stripe material.
- 
-
+ * The orientation of the stripes in a stripe material.
  */
 @SuppressWarnings( {
         "unused",
@@ -19,16 +16,10 @@ import javax.annotation.Nullable;
 })
 public enum CesiumStripeOrientation implements Enumeration {
     /**
-    *  
-    The stripes are oriented horizontally along the X axis.
-    
-
+    * The stripes are oriented horizontally along the X axis.
     */
     HORIZONTAL(0), /**
-                   *  
-                   The stripes are oriented vertically along the Y axis.
-                   
-
+                   * The stripes are oriented vertically along the Y axis.
                    */
     VERTICAL(1);
     private final int value;

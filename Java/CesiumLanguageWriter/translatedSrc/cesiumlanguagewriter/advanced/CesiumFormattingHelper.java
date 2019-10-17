@@ -21,10 +21,7 @@ import java.io.InputStream;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Contains static methods for formatting data for writing to a CZML stream.
- 
-
+ * Contains static methods for formatting data for writing to a CZML stream.
  */
 @SuppressWarnings( {
         "unused",
@@ -40,14 +37,7 @@ public final class CesiumFormattingHelper {
     private static JulianDate s_maximumDate = GregorianDate.MaxValue.toJulianDate();
 
     /**
-    *  
-    Converts a {@link TimeInterval} as an ISO8601 interval string.
-    
-    
-    
-    
-    
-
+    * Converts a {@link TimeInterval} as an ISO8601 interval string.
     * @param start The start of the interval.
     * @param stop The end of the interval.
     * @param format The format to use.
@@ -59,13 +49,7 @@ public final class CesiumFormattingHelper {
     }
 
     /**
-    *  
-    Converts a {@link TimeInterval} as an ISO8601 interval string.
-    
-    
-    
-    
-
+    * Converts a {@link TimeInterval} as an ISO8601 interval string.
     * @param interval The interval to convert.
     * @param format The format to use.
     * @return The interval represented as an ISO8601 interval string.
@@ -79,13 +63,7 @@ public final class CesiumFormattingHelper {
     }
 
     /**
-    *  
-    Converts a {@link JulianDate} to an ISO8601 date string.
-    
-    
-    
-    
-
+    * Converts a {@link JulianDate} to an ISO8601 date string.
     * @param date The date to convert.
     * @param format The format to use.
     * @return The date represented as an ISO8601 date string.
@@ -104,15 +82,10 @@ public final class CesiumFormattingHelper {
     }
 
     /**
-    *  
-    Downloads and converts a remote resource URI into a data URI in the form
+    * Downloads and converts a remote resource URI into a data URI in the form
     {@code data:<MimeType>;base64,<ImageData>}, where
     {@code <MimeType>} is the MIME type of the specified resource, and
     {@code <ImageData>} is the data encoded as a Base 64 string.
-    
-    
-    
-
     * @param uri The URI of the resource to convert.
     * @return A data URI containing the content of the resource.
     */
@@ -151,17 +124,11 @@ public final class CesiumFormattingHelper {
     }
 
     /**
-    *  
-    Reads from a stream containing an image into a data URI in the form
+    * Reads from a stream containing an image into a data URI in the form
     {@code data:<MimeType>;base64,<ImageData>}, where
     {@code <MimeType>} is the MIME type of the specified image format, and
     {@code <ImageData>} is the image data encoded as a Base 64 string.
     This method does not attempt to decode the image data, but simply writes it directly to the data URI.
-    
-    
-    
-    
-
     * @param stream The stream containing the image to encode into a data URI.
     * @param imageFormat The format of the image, which controls the mime type.
     * @return A data URI containing the content of the image.
@@ -173,16 +140,10 @@ public final class CesiumFormattingHelper {
     }
 
     /**
-    *  
-    Converts an image to a data URI in the form
+    * Converts an image to a data URI in the form
     {@code data:<MimeType>;base64,<ImageData>}, where
     {@code <MimeType>} is the MIME type of the specified {@code image}, and
     {@code <ImageData>} is the image data encoded as a Base 64 string.
-    
-    
-    
-    
-
     * @param image The image to convert.
     * @param imageFormat The format of the image, which controls the mime type.
     * @return A data URI containing the content of the image.
@@ -224,16 +185,10 @@ public final class CesiumFormattingHelper {
     }
 
     /**
-    *  
-    Reads data from a stream into a data URI in the form
+    * Reads data from a stream into a data URI in the form
     {@code data:<MimeType>;base64,<ImageData>}, where
     {@code <MimeType>} is the given MIME type, and
     {@code <ImageData>} is the image data encoded as a Base 64 string.
-    
-    
-    
-    
-
     * @param stream The stream to read from.
     * @param mimeType The mime type of the data in the stream.
     * @return A data URI containing the contents of the stream.
@@ -288,12 +243,7 @@ public final class CesiumFormattingHelper {
     }
 
     /**
-    *  
-    Converts a {@link CesiumStripeOrientation} to the corresponding string in a CZML stream.
-    
-    
-    
-
+    * Converts a {@link CesiumStripeOrientation} to the corresponding string in a CZML stream.
     * @param value The value to convert.
     * @return The string representing the specified value.
     */
@@ -313,12 +263,7 @@ public final class CesiumFormattingHelper {
     }
 
     /**
-    *  
-    Converts a {@link CesiumHorizontalOrigin} to the corresponding string in a CZML stream.
-    
-    
-    
-
+    * Converts a {@link CesiumHorizontalOrigin} to the corresponding string in a CZML stream.
     * @param value The value to convert.
     * @return The string representing the specified value.
     */
@@ -341,12 +286,7 @@ public final class CesiumFormattingHelper {
     }
 
     /**
-    *  
-    Converts a {@link CesiumVerticalOrigin} to the corresponding string in a CZML stream.
-    
-    
-    
-
+    * Converts a {@link CesiumVerticalOrigin} to the corresponding string in a CZML stream.
     * @param value The value to convert.
     * @return The string representing the specified value.
     */
@@ -372,12 +312,7 @@ public final class CesiumFormattingHelper {
     }
 
     /**
-    *  
-    Converts a {@link CesiumHeightReference} to the corresponding string in a CZML stream.
-    
-    
-    
-
+    * Converts a {@link CesiumHeightReference} to the corresponding string in a CZML stream.
     * @param value The value to convert.
     * @return The string representing the specified value.
     */
@@ -400,12 +335,7 @@ public final class CesiumFormattingHelper {
     }
 
     /**
-    *  
-    Converts a {@link CesiumShadowMode} to the corresponding string in a CZML stream.
-    
-    
-    
-
+    * Converts a {@link CesiumShadowMode} to the corresponding string in a CZML stream.
     * @param value The value to convert.
     * @return The string representing the specified value.
     */
@@ -431,12 +361,7 @@ public final class CesiumFormattingHelper {
     }
 
     /**
-    *  
-    Converts a {@link CesiumInterpolationAlgorithm} to the corresponding string in a CZML stream.
-    
-    
-    
-
+    * Converts a {@link CesiumInterpolationAlgorithm} to the corresponding string in a CZML stream.
     * @param value The value to convert.
     * @return The string representing the specified value.
     */
@@ -459,12 +384,7 @@ public final class CesiumFormattingHelper {
     }
 
     /**
-    *  
-    Converts a {@link CesiumExtrapolationType} to the corresponding string in a CZML stream.
-    
-    
-    
-
+    * Converts a {@link CesiumExtrapolationType} to the corresponding string in a CZML stream.
     * @param value The value to convert.
     * @return The string representing the specified value.
     */
@@ -487,12 +407,7 @@ public final class CesiumFormattingHelper {
     }
 
     /**
-    *  
-    Converts a {@link ClockRange} to the corresponding string in a CZML stream.
-    
-    
-    
-
+    * Converts a {@link ClockRange} to the corresponding string in a CZML stream.
     * @param value The value to convert.
     * @return The string representing the specified value.
     */
@@ -515,12 +430,7 @@ public final class CesiumFormattingHelper {
     }
 
     /**
-    *  
-    Converts a {@link ClockStep} to the corresponding string in a CZML stream.
-    
-    
-    
-
+    * Converts a {@link ClockStep} to the corresponding string in a CZML stream.
     * @param value The value to convert.
     * @return The string representing the specified value.
     */
@@ -543,12 +453,7 @@ public final class CesiumFormattingHelper {
     }
 
     /**
-    *  
-    Converts a {@link CesiumLabelStyle} to the corresponding string in a CZML stream.
-    
-    
-    
-
+    * Converts a {@link CesiumLabelStyle} to the corresponding string in a CZML stream.
     * @param value The value to convert.
     * @return The string representing the specified value.
     */
@@ -571,12 +476,7 @@ public final class CesiumFormattingHelper {
     }
 
     /**
-    *  
-    Converts a {@link CesiumArcType} to the corresponding string in a CZML stream.
-    
-    
-    
-
+    * Converts a {@link CesiumArcType} to the corresponding string in a CZML stream.
     * @param value The value to convert.
     * @return The string representing the specified value.
     */
@@ -599,12 +499,7 @@ public final class CesiumFormattingHelper {
     }
 
     /**
-    *  
-    Converts a {@link CesiumCornerType} to the corresponding string in a CZML stream.
-    
-    
-    
-
+    * Converts a {@link CesiumCornerType} to the corresponding string in a CZML stream.
     * @param value The value to convert.
     * @return The string representing the specified value.
     */
@@ -627,12 +522,7 @@ public final class CesiumFormattingHelper {
     }
 
     /**
-    *  
-    Converts a {@link CesiumClassificationType} to the corresponding string in a CZML stream.
-    
-    
-    
-
+    * Converts a {@link CesiumClassificationType} to the corresponding string in a CZML stream.
     * @param value The value to convert.
     * @return The string representing the specified value.
     */
@@ -655,12 +545,7 @@ public final class CesiumFormattingHelper {
     }
 
     /**
-    *  
-    Converts a {@link CesiumColorBlendMode} to the corresponding string in a CZML stream.
-    
-    
-    
-
+    * Converts a {@link CesiumColorBlendMode} to the corresponding string in a CZML stream.
     * @param value The value to convert.
     * @return The string representing the specified value.
     */
@@ -683,12 +568,7 @@ public final class CesiumFormattingHelper {
     }
 
     /**
-    *  
-    Converts a {@link CesiumSensorVolumePortionToDisplay} to the corresponding string in a CZML stream.
-    
-    
-    
-
+    * Converts a {@link CesiumSensorVolumePortionToDisplay} to the corresponding string in a CZML stream.
     * @param value The value to convert.
     * @return The string representing the specified value.
     */
@@ -711,13 +591,7 @@ public final class CesiumFormattingHelper {
     }
 
     /**
-    *  
-    Returns a resolved url, using the given {@link CesiumResourceBehavior}.
-    
-    
-    
-    
-
+    * Returns a resolved url, using the given {@link CesiumResourceBehavior}.
     * @param uri The url of the resource.
     * @param resourceBehavior A {@link CesiumResourceBehavior} specifying how include the resource into a CZML document.
     * @return The resolved url.

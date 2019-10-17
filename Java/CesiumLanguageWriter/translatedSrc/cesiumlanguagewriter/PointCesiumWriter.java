@@ -17,10 +17,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Writes a {@code Point} to a {@link CesiumOutputStream}. A {@code Point} is a point, or viewport-aligned circle.
- 
-
+ * Writes a {@code Point} to a {@link CesiumOutputStream}. A {@code Point} is a point, or viewport-aligned circle.
  */
 @SuppressWarnings( {
         "unused",
@@ -29,73 +26,43 @@ import javax.annotation.Nonnull;
 })
 public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     /**
-    *  
-    The name of the {@code show} property.
-    
-
+    * The name of the {@code show} property.
     */
     public static final String ShowPropertyName = "show";
     /**
-    *  
-    The name of the {@code pixelSize} property.
-    
-
+    * The name of the {@code pixelSize} property.
     */
     public static final String PixelSizePropertyName = "pixelSize";
     /**
-    *  
-    The name of the {@code heightReference} property.
-    
-
+    * The name of the {@code heightReference} property.
     */
     public static final String HeightReferencePropertyName = "heightReference";
     /**
-    *  
-    The name of the {@code color} property.
-    
-
+    * The name of the {@code color} property.
     */
     public static final String ColorPropertyName = "color";
     /**
-    *  
-    The name of the {@code outlineColor} property.
-    
-
+    * The name of the {@code outlineColor} property.
     */
     public static final String OutlineColorPropertyName = "outlineColor";
     /**
-    *  
-    The name of the {@code outlineWidth} property.
-    
-
+    * The name of the {@code outlineWidth} property.
     */
     public static final String OutlineWidthPropertyName = "outlineWidth";
     /**
-    *  
-    The name of the {@code scaleByDistance} property.
-    
-
+    * The name of the {@code scaleByDistance} property.
     */
     public static final String ScaleByDistancePropertyName = "scaleByDistance";
     /**
-    *  
-    The name of the {@code translucencyByDistance} property.
-    
-
+    * The name of the {@code translucencyByDistance} property.
     */
     public static final String TranslucencyByDistancePropertyName = "translucencyByDistance";
     /**
-    *  
-    The name of the {@code distanceDisplayCondition} property.
-    
-
+    * The name of the {@code distanceDisplayCondition} property.
     */
     public static final String DistanceDisplayConditionPropertyName = "distanceDisplayCondition";
     /**
-    *  
-    The name of the {@code disableDepthTestDistance} property.
-    
-
+    * The name of the {@code disableDepthTestDistance} property.
     */
     public static final String DisableDepthTestDistancePropertyName = "disableDepthTestDistance";
     private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
@@ -151,11 +118,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }, false);
 
     /**
-    *  
-    Initializes a new instance.
-    
-    
-
+    * Initializes a new instance.
     * @param propertyName The name of the property.
     */
     public PointCesiumWriter(@Nonnull String propertyName) {
@@ -163,11 +126,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Initializes a new instance as a copy of an existing instance.
-    
-    
-
+    * Initializes a new instance as a copy of an existing instance.
     * @param existingInstance The existing instance to copy.
     */
     protected PointCesiumWriter(@Nonnull PointCesiumWriter existingInstance) {
@@ -175,12 +134,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    
-    Copies this instance and returns the copy.
-    
-    
-
+    * Copies this instance and returns the copy.
     * @return The copy.
     */
     @Override
@@ -189,9 +143,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code show} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code show} property defines whether or not the point is shown. If not specified, the default value is {@code true}.
-    
-
+    * Gets the writer for the {@code show} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code show} property defines whether or not the point is shown. If not specified, the default value is {@code true}.
     */
     @Nonnull
     public final BooleanCesiumWriter getShowWriter() {
@@ -199,10 +151,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code show} property. The {@code show} property defines whether or not the point is shown. If not specified, the default value is {@code true}.
-    
-
+    * Opens and returns the writer for the {@code show} property. The {@code show} property defines whether or not the point is shown. If not specified, the default value is {@code true}.
     */
     @Nonnull
     public final BooleanCesiumWriter openShowProperty() {
@@ -211,11 +160,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code show} property as a {@code boolean} value. The {@code show} property specifies whether or not the point is shown. If not specified, the default value is {@code true}.
-    
-    
-
+    * Writes a value for the {@code show} property as a {@code boolean} value. The {@code show} property specifies whether or not the point is shown. If not specified, the default value is {@code true}.
     * @param value The value.
     */
     public final void writeShowProperty(boolean value) {
@@ -230,11 +175,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the point is shown. If not specified, the default value is {@code true}.
-    
-    
-
+    * Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the point is shown. If not specified, the default value is {@code true}.
     * @param value The reference.
     */
     public final void writeShowPropertyReference(Reference value) {
@@ -249,11 +190,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the point is shown. If not specified, the default value is {@code true}.
-    
-    
-
+    * Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the point is shown. If not specified, the default value is {@code true}.
     * @param value The reference.
     */
     public final void writeShowPropertyReference(String value) {
@@ -268,12 +205,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the point is shown. If not specified, the default value is {@code true}.
-    
-    
-    
-
+    * Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the point is shown. If not specified, the default value is {@code true}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -289,12 +221,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the point is shown. If not specified, the default value is {@code true}.
-    
-    
-    
-
+    * Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the point is shown. If not specified, the default value is {@code true}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -310,9 +237,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code pixelSize} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code pixelSize} property defines the size of the point, in pixels. If not specified, the default value is 1.0.
-    
-
+    * Gets the writer for the {@code pixelSize} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code pixelSize} property defines the size of the point, in pixels. If not specified, the default value is 1.0.
     */
     @Nonnull
     public final DoubleCesiumWriter getPixelSizeWriter() {
@@ -320,10 +245,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code pixelSize} property. The {@code pixelSize} property defines the size of the point, in pixels. If not specified, the default value is 1.0.
-    
-
+    * Opens and returns the writer for the {@code pixelSize} property. The {@code pixelSize} property defines the size of the point, in pixels. If not specified, the default value is 1.0.
     */
     @Nonnull
     public final DoubleCesiumWriter openPixelSizeProperty() {
@@ -332,11 +254,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code pixelSize} property as a {@code number} value. The {@code pixelSize} property specifies the size of the point, in pixels. If not specified, the default value is 1.0.
-    
-    
-
+    * Writes a value for the {@code pixelSize} property as a {@code number} value. The {@code pixelSize} property specifies the size of the point, in pixels. If not specified, the default value is 1.0.
     * @param value The value.
     */
     public final void writePixelSizeProperty(double value) {
@@ -351,12 +269,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code pixelSize} property as a {@code number} value. The {@code pixelSize} property specifies the size of the point, in pixels. If not specified, the default value is 1.0.
-    
-    
-    
-
+    * Writes a value for the {@code pixelSize} property as a {@code number} value. The {@code pixelSize} property specifies the size of the point, in pixels. If not specified, the default value is 1.0.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -372,14 +285,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code pixelSize} property as a {@code number} value. The {@code pixelSize} property specifies the size of the point, in pixels. If not specified, the default value is 1.0.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code pixelSize} property as a {@code number} value. The {@code pixelSize} property specifies the size of the point, in pixels. If not specified, the default value is 1.0.
     * @param dates The dates at which the value is specified.
     * @param values The value corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -397,11 +303,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code pixelSize} property as a {@code reference} value. The {@code pixelSize} property specifies the size of the point, in pixels. If not specified, the default value is 1.0.
-    
-    
-
+    * Writes a value for the {@code pixelSize} property as a {@code reference} value. The {@code pixelSize} property specifies the size of the point, in pixels. If not specified, the default value is 1.0.
     * @param value The reference.
     */
     public final void writePixelSizePropertyReference(Reference value) {
@@ -416,11 +318,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code pixelSize} property as a {@code reference} value. The {@code pixelSize} property specifies the size of the point, in pixels. If not specified, the default value is 1.0.
-    
-    
-
+    * Writes a value for the {@code pixelSize} property as a {@code reference} value. The {@code pixelSize} property specifies the size of the point, in pixels. If not specified, the default value is 1.0.
     * @param value The reference.
     */
     public final void writePixelSizePropertyReference(String value) {
@@ -435,12 +333,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code pixelSize} property as a {@code reference} value. The {@code pixelSize} property specifies the size of the point, in pixels. If not specified, the default value is 1.0.
-    
-    
-    
-
+    * Writes a value for the {@code pixelSize} property as a {@code reference} value. The {@code pixelSize} property specifies the size of the point, in pixels. If not specified, the default value is 1.0.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -456,12 +349,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code pixelSize} property as a {@code reference} value. The {@code pixelSize} property specifies the size of the point, in pixels. If not specified, the default value is 1.0.
-    
-    
-    
-
+    * Writes a value for the {@code pixelSize} property as a {@code reference} value. The {@code pixelSize} property specifies the size of the point, in pixels. If not specified, the default value is 1.0.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -477,9 +365,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code heightReference} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code heightReference} property defines the height reference of the point, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
-    
-
+    * Gets the writer for the {@code heightReference} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code heightReference} property defines the height reference of the point, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
     */
     @Nonnull
     public final HeightReferenceCesiumWriter getHeightReferenceWriter() {
@@ -487,10 +373,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code heightReference} property. The {@code heightReference} property defines the height reference of the point, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
-    
-
+    * Opens and returns the writer for the {@code heightReference} property. The {@code heightReference} property defines the height reference of the point, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
     */
     @Nonnull
     public final HeightReferenceCesiumWriter openHeightReferenceProperty() {
@@ -499,11 +382,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code heightReference} property as a {@code heightReference} value. The {@code heightReference} property specifies the height reference of the point, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
-    
-    
-
+    * Writes a value for the {@code heightReference} property as a {@code heightReference} value. The {@code heightReference} property specifies the height reference of the point, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
     * @param value The height reference.
     */
     public final void writeHeightReferenceProperty(@Nonnull CesiumHeightReference value) {
@@ -518,11 +397,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the point, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
-    
-    
-
+    * Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the point, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
     * @param value The reference.
     */
     public final void writeHeightReferencePropertyReference(Reference value) {
@@ -537,11 +412,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the point, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
-    
-    
-
+    * Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the point, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
     * @param value The reference.
     */
     public final void writeHeightReferencePropertyReference(String value) {
@@ -556,12 +427,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the point, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
-    
-    
-    
-
+    * Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the point, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -577,12 +443,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the point, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
-    
-    
-    
-
+    * Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the point, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -598,9 +459,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code color} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code color} property defines the color of the point. If not specified, the default value is white.
-    
-
+    * Gets the writer for the {@code color} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code color} property defines the color of the point. If not specified, the default value is white.
     */
     @Nonnull
     public final ColorCesiumWriter getColorWriter() {
@@ -608,10 +467,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code color} property. The {@code color} property defines the color of the point. If not specified, the default value is white.
-    
-
+    * Opens and returns the writer for the {@code color} property. The {@code color} property defines the color of the point. If not specified, the default value is white.
     */
     @Nonnull
     public final ColorCesiumWriter openColorProperty() {
@@ -620,11 +476,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the point. If not specified, the default value is white.
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the point. If not specified, the default value is white.
     * @param color The color.
     */
     public final void writeColorProperty(@Nonnull Color color) {
@@ -639,14 +491,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the point. If not specified, the default value is white.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the point. If not specified, the default value is white.
     * @param red The red component in the range 0 to 255.
     * @param green The green component in the range 0 to 255.
     * @param blue The blue component in the range 0 to 255.
@@ -664,12 +509,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the point. If not specified, the default value is white.
-    
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the point. If not specified, the default value is white.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -685,14 +525,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the point. If not specified, the default value is white.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the point. If not specified, the default value is white.
     * @param dates The dates at which the value is specified.
     * @param colors The color corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -710,11 +543,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the point. If not specified, the default value is white.
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the point. If not specified, the default value is white.
     * @param color The color.
     */
     public final void writeColorPropertyRgbaf(@Nonnull Color color) {
@@ -729,14 +558,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the point. If not specified, the default value is white.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the point. If not specified, the default value is white.
     * @param red The red component in the range 0 to 1.0.
     * @param green The green component in the range 0 to 1.0.
     * @param blue The blue component in the range 0 to 1.0.
@@ -754,12 +576,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the point. If not specified, the default value is white.
-    
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the point. If not specified, the default value is white.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -775,14 +592,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the point. If not specified, the default value is white.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the point. If not specified, the default value is white.
     * @param dates The dates at which the value is specified.
     * @param colors The color corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -800,11 +610,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the point. If not specified, the default value is white.
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the point. If not specified, the default value is white.
     * @param value The reference.
     */
     public final void writeColorPropertyReference(Reference value) {
@@ -819,11 +625,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the point. If not specified, the default value is white.
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the point. If not specified, the default value is white.
     * @param value The reference.
     */
     public final void writeColorPropertyReference(String value) {
@@ -838,12 +640,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the point. If not specified, the default value is white.
-    
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the point. If not specified, the default value is white.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -859,12 +656,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the point. If not specified, the default value is white.
-    
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the point. If not specified, the default value is white.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -880,9 +672,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code outlineColor} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code outlineColor} property defines the color of the outline of the point. If not specified, the default value is black.
-    
-
+    * Gets the writer for the {@code outlineColor} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code outlineColor} property defines the color of the outline of the point. If not specified, the default value is black.
     */
     @Nonnull
     public final ColorCesiumWriter getOutlineColorWriter() {
@@ -890,10 +680,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code outlineColor} property. The {@code outlineColor} property defines the color of the outline of the point. If not specified, the default value is black.
-    
-
+    * Opens and returns the writer for the {@code outlineColor} property. The {@code outlineColor} property defines the color of the outline of the point. If not specified, the default value is black.
     */
     @Nonnull
     public final ColorCesiumWriter openOutlineColorProperty() {
@@ -902,11 +689,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code outlineColor} property as a {@code rgba} value. The {@code outlineColor} property specifies the color of the outline of the point. If not specified, the default value is black.
-    
-    
-
+    * Writes a value for the {@code outlineColor} property as a {@code rgba} value. The {@code outlineColor} property specifies the color of the outline of the point. If not specified, the default value is black.
     * @param color The color.
     */
     public final void writeOutlineColorProperty(@Nonnull Color color) {
@@ -921,14 +704,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code outlineColor} property as a {@code rgba} value. The {@code outlineColor} property specifies the color of the outline of the point. If not specified, the default value is black.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code outlineColor} property as a {@code rgba} value. The {@code outlineColor} property specifies the color of the outline of the point. If not specified, the default value is black.
     * @param red The red component in the range 0 to 255.
     * @param green The green component in the range 0 to 255.
     * @param blue The blue component in the range 0 to 255.
@@ -946,12 +722,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code outlineColor} property as a {@code rgba} value. The {@code outlineColor} property specifies the color of the outline of the point. If not specified, the default value is black.
-    
-    
-    
-
+    * Writes a value for the {@code outlineColor} property as a {@code rgba} value. The {@code outlineColor} property specifies the color of the outline of the point. If not specified, the default value is black.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -967,14 +738,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code outlineColor} property as a {@code rgba} value. The {@code outlineColor} property specifies the color of the outline of the point. If not specified, the default value is black.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code outlineColor} property as a {@code rgba} value. The {@code outlineColor} property specifies the color of the outline of the point. If not specified, the default value is black.
     * @param dates The dates at which the value is specified.
     * @param colors The color corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -992,11 +756,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value. The {@code outlineColor} property specifies the color of the outline of the point. If not specified, the default value is black.
-    
-    
-
+    * Writes a value for the {@code outlineColor} property as a {@code rgbaf} value. The {@code outlineColor} property specifies the color of the outline of the point. If not specified, the default value is black.
     * @param color The color.
     */
     public final void writeOutlineColorPropertyRgbaf(@Nonnull Color color) {
@@ -1011,14 +771,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value. The {@code outlineColor} property specifies the color of the outline of the point. If not specified, the default value is black.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code outlineColor} property as a {@code rgbaf} value. The {@code outlineColor} property specifies the color of the outline of the point. If not specified, the default value is black.
     * @param red The red component in the range 0 to 1.0.
     * @param green The green component in the range 0 to 1.0.
     * @param blue The blue component in the range 0 to 1.0.
@@ -1036,12 +789,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value. The {@code outlineColor} property specifies the color of the outline of the point. If not specified, the default value is black.
-    
-    
-    
-
+    * Writes a value for the {@code outlineColor} property as a {@code rgbaf} value. The {@code outlineColor} property specifies the color of the outline of the point. If not specified, the default value is black.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -1057,14 +805,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value. The {@code outlineColor} property specifies the color of the outline of the point. If not specified, the default value is black.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code outlineColor} property as a {@code rgbaf} value. The {@code outlineColor} property specifies the color of the outline of the point. If not specified, the default value is black.
     * @param dates The dates at which the value is specified.
     * @param colors The color corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -1082,11 +823,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code outlineColor} property as a {@code reference} value. The {@code outlineColor} property specifies the color of the outline of the point. If not specified, the default value is black.
-    
-    
-
+    * Writes a value for the {@code outlineColor} property as a {@code reference} value. The {@code outlineColor} property specifies the color of the outline of the point. If not specified, the default value is black.
     * @param value The reference.
     */
     public final void writeOutlineColorPropertyReference(Reference value) {
@@ -1101,11 +838,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code outlineColor} property as a {@code reference} value. The {@code outlineColor} property specifies the color of the outline of the point. If not specified, the default value is black.
-    
-    
-
+    * Writes a value for the {@code outlineColor} property as a {@code reference} value. The {@code outlineColor} property specifies the color of the outline of the point. If not specified, the default value is black.
     * @param value The reference.
     */
     public final void writeOutlineColorPropertyReference(String value) {
@@ -1120,12 +853,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code outlineColor} property as a {@code reference} value. The {@code outlineColor} property specifies the color of the outline of the point. If not specified, the default value is black.
-    
-    
-    
-
+    * Writes a value for the {@code outlineColor} property as a {@code reference} value. The {@code outlineColor} property specifies the color of the outline of the point. If not specified, the default value is black.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -1141,12 +869,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code outlineColor} property as a {@code reference} value. The {@code outlineColor} property specifies the color of the outline of the point. If not specified, the default value is black.
-    
-    
-    
-
+    * Writes a value for the {@code outlineColor} property as a {@code reference} value. The {@code outlineColor} property specifies the color of the outline of the point. If not specified, the default value is black.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -1162,9 +885,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code outlineWidth} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code outlineWidth} property defines the width of the outline of the point. If not specified, the default value is 0.0.
-    
-
+    * Gets the writer for the {@code outlineWidth} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code outlineWidth} property defines the width of the outline of the point. If not specified, the default value is 0.0.
     */
     @Nonnull
     public final DoubleCesiumWriter getOutlineWidthWriter() {
@@ -1172,10 +893,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code outlineWidth} property. The {@code outlineWidth} property defines the width of the outline of the point. If not specified, the default value is 0.0.
-    
-
+    * Opens and returns the writer for the {@code outlineWidth} property. The {@code outlineWidth} property defines the width of the outline of the point. If not specified, the default value is 0.0.
     */
     @Nonnull
     public final DoubleCesiumWriter openOutlineWidthProperty() {
@@ -1184,11 +902,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code outlineWidth} property as a {@code number} value. The {@code outlineWidth} property specifies the width of the outline of the point. If not specified, the default value is 0.0.
-    
-    
-
+    * Writes a value for the {@code outlineWidth} property as a {@code number} value. The {@code outlineWidth} property specifies the width of the outline of the point. If not specified, the default value is 0.0.
     * @param value The value.
     */
     public final void writeOutlineWidthProperty(double value) {
@@ -1203,12 +917,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code outlineWidth} property as a {@code number} value. The {@code outlineWidth} property specifies the width of the outline of the point. If not specified, the default value is 0.0.
-    
-    
-    
-
+    * Writes a value for the {@code outlineWidth} property as a {@code number} value. The {@code outlineWidth} property specifies the width of the outline of the point. If not specified, the default value is 0.0.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -1224,14 +933,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code outlineWidth} property as a {@code number} value. The {@code outlineWidth} property specifies the width of the outline of the point. If not specified, the default value is 0.0.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code outlineWidth} property as a {@code number} value. The {@code outlineWidth} property specifies the width of the outline of the point. If not specified, the default value is 0.0.
     * @param dates The dates at which the value is specified.
     * @param values The value corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -1249,11 +951,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code outlineWidth} property as a {@code reference} value. The {@code outlineWidth} property specifies the width of the outline of the point. If not specified, the default value is 0.0.
-    
-    
-
+    * Writes a value for the {@code outlineWidth} property as a {@code reference} value. The {@code outlineWidth} property specifies the width of the outline of the point. If not specified, the default value is 0.0.
     * @param value The reference.
     */
     public final void writeOutlineWidthPropertyReference(Reference value) {
@@ -1268,11 +966,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code outlineWidth} property as a {@code reference} value. The {@code outlineWidth} property specifies the width of the outline of the point. If not specified, the default value is 0.0.
-    
-    
-
+    * Writes a value for the {@code outlineWidth} property as a {@code reference} value. The {@code outlineWidth} property specifies the width of the outline of the point. If not specified, the default value is 0.0.
     * @param value The reference.
     */
     public final void writeOutlineWidthPropertyReference(String value) {
@@ -1287,12 +981,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code outlineWidth} property as a {@code reference} value. The {@code outlineWidth} property specifies the width of the outline of the point. If not specified, the default value is 0.0.
-    
-    
-    
-
+    * Writes a value for the {@code outlineWidth} property as a {@code reference} value. The {@code outlineWidth} property specifies the width of the outline of the point. If not specified, the default value is 0.0.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -1308,12 +997,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code outlineWidth} property as a {@code reference} value. The {@code outlineWidth} property specifies the width of the outline of the point. If not specified, the default value is 0.0.
-    
-    
-    
-
+    * Writes a value for the {@code outlineWidth} property as a {@code reference} value. The {@code outlineWidth} property specifies the width of the outline of the point. If not specified, the default value is 0.0.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -1329,9 +1013,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code scaleByDistance} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code scaleByDistance} property defines how the point's scale should change based on the point's distance from the camera. This scalar value will be multiplied by {@code pixelSize}.
-    
-
+    * Gets the writer for the {@code scaleByDistance} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code scaleByDistance} property defines how the point's scale should change based on the point's distance from the camera. This scalar value will be multiplied by {@code pixelSize}.
     */
     @Nonnull
     public final NearFarScalarCesiumWriter getScaleByDistanceWriter() {
@@ -1339,10 +1021,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code scaleByDistance} property. The {@code scaleByDistance} property defines how the point's scale should change based on the point's distance from the camera. This scalar value will be multiplied by {@code pixelSize}.
-    
-
+    * Opens and returns the writer for the {@code scaleByDistance} property. The {@code scaleByDistance} property defines how the point's scale should change based on the point's distance from the camera. This scalar value will be multiplied by {@code pixelSize}.
     */
     @Nonnull
     public final NearFarScalarCesiumWriter openScaleByDistanceProperty() {
@@ -1351,11 +1030,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code scaleByDistance} property as a {@code nearFarScalar} value. The {@code scaleByDistance} property specifies how the point's scale should change based on the point's distance from the camera. This scalar value will be multiplied by {@code pixelSize}.
-    
-    
-
+    * Writes a value for the {@code scaleByDistance} property as a {@code nearFarScalar} value. The {@code scaleByDistance} property specifies how the point's scale should change based on the point's distance from the camera. This scalar value will be multiplied by {@code pixelSize}.
     * @param value The value.
     */
     public final void writeScaleByDistanceProperty(@Nonnull NearFarScalar value) {
@@ -1370,14 +1045,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code scaleByDistance} property as a {@code nearFarScalar} value. The {@code scaleByDistance} property specifies how the point's scale should change based on the point's distance from the camera. This scalar value will be multiplied by {@code pixelSize}.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code scaleByDistance} property as a {@code nearFarScalar} value. The {@code scaleByDistance} property specifies how the point's scale should change based on the point's distance from the camera. This scalar value will be multiplied by {@code pixelSize}.
     * @param nearDistance The lower bound of the camera distance range.
     * @param nearValue The value to use at the lower bound of the camera distance range.
     * @param farDistance The upper bound of the camera distance range.
@@ -1395,12 +1063,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code scaleByDistance} property as a {@code nearFarScalar} value. The {@code scaleByDistance} property specifies how the point's scale should change based on the point's distance from the camera. This scalar value will be multiplied by {@code pixelSize}.
-    
-    
-    
-
+    * Writes a value for the {@code scaleByDistance} property as a {@code nearFarScalar} value. The {@code scaleByDistance} property specifies how the point's scale should change based on the point's distance from the camera. This scalar value will be multiplied by {@code pixelSize}.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -1416,14 +1079,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code scaleByDistance} property as a {@code nearFarScalar} value. The {@code scaleByDistance} property specifies how the point's scale should change based on the point's distance from the camera. This scalar value will be multiplied by {@code pixelSize}.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code scaleByDistance} property as a {@code nearFarScalar} value. The {@code scaleByDistance} property specifies how the point's scale should change based on the point's distance from the camera. This scalar value will be multiplied by {@code pixelSize}.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -1441,11 +1097,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code scaleByDistance} property as a {@code reference} value. The {@code scaleByDistance} property specifies how the point's scale should change based on the point's distance from the camera. This scalar value will be multiplied by {@code pixelSize}.
-    
-    
-
+    * Writes a value for the {@code scaleByDistance} property as a {@code reference} value. The {@code scaleByDistance} property specifies how the point's scale should change based on the point's distance from the camera. This scalar value will be multiplied by {@code pixelSize}.
     * @param value The reference.
     */
     public final void writeScaleByDistancePropertyReference(Reference value) {
@@ -1460,11 +1112,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code scaleByDistance} property as a {@code reference} value. The {@code scaleByDistance} property specifies how the point's scale should change based on the point's distance from the camera. This scalar value will be multiplied by {@code pixelSize}.
-    
-    
-
+    * Writes a value for the {@code scaleByDistance} property as a {@code reference} value. The {@code scaleByDistance} property specifies how the point's scale should change based on the point's distance from the camera. This scalar value will be multiplied by {@code pixelSize}.
     * @param value The reference.
     */
     public final void writeScaleByDistancePropertyReference(String value) {
@@ -1479,12 +1127,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code scaleByDistance} property as a {@code reference} value. The {@code scaleByDistance} property specifies how the point's scale should change based on the point's distance from the camera. This scalar value will be multiplied by {@code pixelSize}.
-    
-    
-    
-
+    * Writes a value for the {@code scaleByDistance} property as a {@code reference} value. The {@code scaleByDistance} property specifies how the point's scale should change based on the point's distance from the camera. This scalar value will be multiplied by {@code pixelSize}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -1500,12 +1143,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code scaleByDistance} property as a {@code reference} value. The {@code scaleByDistance} property specifies how the point's scale should change based on the point's distance from the camera. This scalar value will be multiplied by {@code pixelSize}.
-    
-    
-    
-
+    * Writes a value for the {@code scaleByDistance} property as a {@code reference} value. The {@code scaleByDistance} property specifies how the point's scale should change based on the point's distance from the camera. This scalar value will be multiplied by {@code pixelSize}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -1521,9 +1159,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code translucencyByDistance} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code translucencyByDistance} property defines how the point's translucency should change based on the point's distance from the camera. This scalar value should range from 0 to 1.
-    
-
+    * Gets the writer for the {@code translucencyByDistance} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code translucencyByDistance} property defines how the point's translucency should change based on the point's distance from the camera. This scalar value should range from 0 to 1.
     */
     @Nonnull
     public final NearFarScalarCesiumWriter getTranslucencyByDistanceWriter() {
@@ -1531,10 +1167,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code translucencyByDistance} property. The {@code translucencyByDistance} property defines how the point's translucency should change based on the point's distance from the camera. This scalar value should range from 0 to 1.
-    
-
+    * Opens and returns the writer for the {@code translucencyByDistance} property. The {@code translucencyByDistance} property defines how the point's translucency should change based on the point's distance from the camera. This scalar value should range from 0 to 1.
     */
     @Nonnull
     public final NearFarScalarCesiumWriter openTranslucencyByDistanceProperty() {
@@ -1543,11 +1176,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code translucencyByDistance} property as a {@code nearFarScalar} value. The {@code translucencyByDistance} property specifies how the point's translucency should change based on the point's distance from the camera. This scalar value should range from 0 to 1.
-    
-    
-
+    * Writes a value for the {@code translucencyByDistance} property as a {@code nearFarScalar} value. The {@code translucencyByDistance} property specifies how the point's translucency should change based on the point's distance from the camera. This scalar value should range from 0 to 1.
     * @param value The value.
     */
     public final void writeTranslucencyByDistanceProperty(@Nonnull NearFarScalar value) {
@@ -1562,14 +1191,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code translucencyByDistance} property as a {@code nearFarScalar} value. The {@code translucencyByDistance} property specifies how the point's translucency should change based on the point's distance from the camera. This scalar value should range from 0 to 1.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code translucencyByDistance} property as a {@code nearFarScalar} value. The {@code translucencyByDistance} property specifies how the point's translucency should change based on the point's distance from the camera. This scalar value should range from 0 to 1.
     * @param nearDistance The lower bound of the camera distance range.
     * @param nearValue The value to use at the lower bound of the camera distance range.
     * @param farDistance The upper bound of the camera distance range.
@@ -1587,12 +1209,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code translucencyByDistance} property as a {@code nearFarScalar} value. The {@code translucencyByDistance} property specifies how the point's translucency should change based on the point's distance from the camera. This scalar value should range from 0 to 1.
-    
-    
-    
-
+    * Writes a value for the {@code translucencyByDistance} property as a {@code nearFarScalar} value. The {@code translucencyByDistance} property specifies how the point's translucency should change based on the point's distance from the camera. This scalar value should range from 0 to 1.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -1608,14 +1225,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code translucencyByDistance} property as a {@code nearFarScalar} value. The {@code translucencyByDistance} property specifies how the point's translucency should change based on the point's distance from the camera. This scalar value should range from 0 to 1.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code translucencyByDistance} property as a {@code nearFarScalar} value. The {@code translucencyByDistance} property specifies how the point's translucency should change based on the point's distance from the camera. This scalar value should range from 0 to 1.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -1633,11 +1243,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code translucencyByDistance} property as a {@code reference} value. The {@code translucencyByDistance} property specifies how the point's translucency should change based on the point's distance from the camera. This scalar value should range from 0 to 1.
-    
-    
-
+    * Writes a value for the {@code translucencyByDistance} property as a {@code reference} value. The {@code translucencyByDistance} property specifies how the point's translucency should change based on the point's distance from the camera. This scalar value should range from 0 to 1.
     * @param value The reference.
     */
     public final void writeTranslucencyByDistancePropertyReference(Reference value) {
@@ -1652,11 +1258,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code translucencyByDistance} property as a {@code reference} value. The {@code translucencyByDistance} property specifies how the point's translucency should change based on the point's distance from the camera. This scalar value should range from 0 to 1.
-    
-    
-
+    * Writes a value for the {@code translucencyByDistance} property as a {@code reference} value. The {@code translucencyByDistance} property specifies how the point's translucency should change based on the point's distance from the camera. This scalar value should range from 0 to 1.
     * @param value The reference.
     */
     public final void writeTranslucencyByDistancePropertyReference(String value) {
@@ -1671,12 +1273,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code translucencyByDistance} property as a {@code reference} value. The {@code translucencyByDistance} property specifies how the point's translucency should change based on the point's distance from the camera. This scalar value should range from 0 to 1.
-    
-    
-    
-
+    * Writes a value for the {@code translucencyByDistance} property as a {@code reference} value. The {@code translucencyByDistance} property specifies how the point's translucency should change based on the point's distance from the camera. This scalar value should range from 0 to 1.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -1692,12 +1289,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code translucencyByDistance} property as a {@code reference} value. The {@code translucencyByDistance} property specifies how the point's translucency should change based on the point's distance from the camera. This scalar value should range from 0 to 1.
-    
-    
-    
-
+    * Writes a value for the {@code translucencyByDistance} property as a {@code reference} value. The {@code translucencyByDistance} property specifies how the point's translucency should change based on the point's distance from the camera. This scalar value should range from 0 to 1.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -1713,9 +1305,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code distanceDisplayCondition} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code distanceDisplayCondition} property defines the display condition specifying the distance from the camera at which this point will be displayed.
-    
-
+    * Gets the writer for the {@code distanceDisplayCondition} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code distanceDisplayCondition} property defines the display condition specifying the distance from the camera at which this point will be displayed.
     */
     @Nonnull
     public final DistanceDisplayConditionCesiumWriter getDistanceDisplayConditionWriter() {
@@ -1723,10 +1313,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code distanceDisplayCondition} property. The {@code distanceDisplayCondition} property defines the display condition specifying the distance from the camera at which this point will be displayed.
-    
-
+    * Opens and returns the writer for the {@code distanceDisplayCondition} property. The {@code distanceDisplayCondition} property defines the display condition specifying the distance from the camera at which this point will be displayed.
     */
     @Nonnull
     public final DistanceDisplayConditionCesiumWriter openDistanceDisplayConditionProperty() {
@@ -1735,11 +1322,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this point will be displayed.
-    
-    
-
+    * Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this point will be displayed.
     * @param value The value.
     */
     public final void writeDistanceDisplayConditionProperty(@Nonnull Bounds value) {
@@ -1754,12 +1337,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this point will be displayed.
-    
-    
-    
-
+    * Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this point will be displayed.
     * @param lowerBound The lower bound.
     * @param upperBound The upper bound.
     */
@@ -1775,12 +1353,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this point will be displayed.
-    
-    
-    
-
+    * Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this point will be displayed.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -1796,14 +1369,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this point will be displayed.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this point will be displayed.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -1821,11 +1387,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this point will be displayed.
-    
-    
-
+    * Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this point will be displayed.
     * @param value The reference.
     */
     public final void writeDistanceDisplayConditionPropertyReference(Reference value) {
@@ -1840,11 +1402,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this point will be displayed.
-    
-    
-
+    * Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this point will be displayed.
     * @param value The reference.
     */
     public final void writeDistanceDisplayConditionPropertyReference(String value) {
@@ -1859,12 +1417,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this point will be displayed.
-    
-    
-    
-
+    * Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this point will be displayed.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -1880,12 +1433,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this point will be displayed.
-    
-    
-    
-
+    * Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this point will be displayed.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -1901,9 +1449,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code disableDepthTestDistance} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code disableDepthTestDistance} property defines the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
-    
-
+    * Gets the writer for the {@code disableDepthTestDistance} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code disableDepthTestDistance} property defines the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
     */
     @Nonnull
     public final DoubleCesiumWriter getDisableDepthTestDistanceWriter() {
@@ -1911,10 +1457,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code disableDepthTestDistance} property. The {@code disableDepthTestDistance} property defines the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
-    
-
+    * Opens and returns the writer for the {@code disableDepthTestDistance} property. The {@code disableDepthTestDistance} property defines the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
     */
     @Nonnull
     public final DoubleCesiumWriter openDisableDepthTestDistanceProperty() {
@@ -1923,11 +1466,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code disableDepthTestDistance} property as a {@code number} value. The {@code disableDepthTestDistance} property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
-    
-    
-
+    * Writes a value for the {@code disableDepthTestDistance} property as a {@code number} value. The {@code disableDepthTestDistance} property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
     * @param value The value.
     */
     public final void writeDisableDepthTestDistanceProperty(double value) {
@@ -1942,12 +1481,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code disableDepthTestDistance} property as a {@code number} value. The {@code disableDepthTestDistance} property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
-    
-    
-    
-
+    * Writes a value for the {@code disableDepthTestDistance} property as a {@code number} value. The {@code disableDepthTestDistance} property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -1963,14 +1497,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code disableDepthTestDistance} property as a {@code number} value. The {@code disableDepthTestDistance} property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code disableDepthTestDistance} property as a {@code number} value. The {@code disableDepthTestDistance} property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
     * @param dates The dates at which the value is specified.
     * @param values The value corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -1988,11 +1515,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code disableDepthTestDistance} property as a {@code reference} value. The {@code disableDepthTestDistance} property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
-    
-    
-
+    * Writes a value for the {@code disableDepthTestDistance} property as a {@code reference} value. The {@code disableDepthTestDistance} property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
     * @param value The reference.
     */
     public final void writeDisableDepthTestDistancePropertyReference(Reference value) {
@@ -2007,11 +1530,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code disableDepthTestDistance} property as a {@code reference} value. The {@code disableDepthTestDistance} property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
-    
-    
-
+    * Writes a value for the {@code disableDepthTestDistance} property as a {@code reference} value. The {@code disableDepthTestDistance} property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
     * @param value The reference.
     */
     public final void writeDisableDepthTestDistancePropertyReference(String value) {
@@ -2026,12 +1545,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code disableDepthTestDistance} property as a {@code reference} value. The {@code disableDepthTestDistance} property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
-    
-    
-    
-
+    * Writes a value for the {@code disableDepthTestDistance} property as a {@code reference} value. The {@code disableDepthTestDistance} property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -2047,12 +1561,7 @@ public class PointCesiumWriter extends CesiumPropertyWriter<PointCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code disableDepthTestDistance} property as a {@code reference} value. The {@code disableDepthTestDistance} property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
-    
-    
-    
-
+    * Writes a value for the {@code disableDepthTestDistance} property as a {@code reference} value. The {@code disableDepthTestDistance} property specifies the distance from the camera at which to disable the depth test. This can be used to prevent clipping against terrain, for example. When set to zero, the depth test is always applied. When set to Infinity, the depth test is never applied. If not specified, the default value is 0.0.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */

@@ -6,12 +6,8 @@ import cesiumlanguagewriter.*;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Adapts a class that implements {@link ICesiumUnitSphericalListValuePropertyWriter} to implement
+ * Adapts a class that implements {@link ICesiumUnitSphericalListValuePropertyWriter} to implement
  {@link ICesiumInterpolatableValuePropertyWriter} for a list of {@link UnitSpherical} values.
- 
- 
-
  * @param <TFrom> The class that implements {@link ICesiumUnitSphericalListValuePropertyWriter} to adapt.
  */
 @SuppressWarnings( {
@@ -21,13 +17,7 @@ import javax.annotation.Nonnull;
 })
 public class CesiumUnitSphericalListValuePropertyAdaptor<TFrom extends ICesiumUnitSphericalListValuePropertyWriter> extends CesiumWriterAdaptor<TFrom, Iterable<UnitSpherical>> {
     /**
-    *  
-    Initializes a new instance.
-    
-    
-    
-    
-
+    * Initializes a new instance.
     * @param parent The instance to wrap.
     * @param writeValueCallback The callback to write a list of {@link UnitSpherical} values.
     * @param writeDeleteValueCallback The callback to write an indication that the client should delete existing data.

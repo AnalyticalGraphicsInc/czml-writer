@@ -9,10 +9,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Writes a {@code LineCount} to a {@link CesiumOutputStream}. A {@code LineCount} is the number of grid lines along each axis.
- 
-
+ * Writes a {@code LineCount} to a {@link CesiumOutputStream}. A {@code LineCount} is the number of grid lines along each axis.
  */
 @SuppressWarnings( {
         "unused",
@@ -22,35 +19,22 @@ import javax.annotation.Nonnull;
 public class LineCountCesiumWriter extends CesiumInterpolatablePropertyWriter<LineCountCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumCartesian2ValuePropertyWriter,
         ICesiumReferenceValuePropertyWriter {
     /**
-    *  
-    The name of the {@code cartesian2} property.
-    
-
+    * The name of the {@code cartesian2} property.
     */
     public static final String Cartesian2PropertyName = "cartesian2";
     /**
-    *  
-    The name of the {@code reference} property.
-    
-
+    * The name of the {@code reference} property.
     */
     public static final String ReferencePropertyName = "reference";
     /**
-    *  
-    The name of the {@code delete} property.
-    
-
+    * The name of the {@code delete} property.
     */
     public static final String DeletePropertyName = "delete";
     private Lazy<CesiumCartesian2ValuePropertyAdaptor<LineCountCesiumWriter>> m_asCartesian2;
     private Lazy<CesiumReferenceValuePropertyAdaptor<LineCountCesiumWriter>> m_asReference;
 
     /**
-    *  
-    Initializes a new instance.
-    
-    
-
+    * Initializes a new instance.
     * @param propertyName The name of the property.
     */
     public LineCountCesiumWriter(@Nonnull String propertyName) {
@@ -60,11 +44,7 @@ public class LineCountCesiumWriter extends CesiumInterpolatablePropertyWriter<Li
     }
 
     /**
-    *  
-    Initializes a new instance as a copy of an existing instance.
-    
-    
-
+    * Initializes a new instance as a copy of an existing instance.
     * @param existingInstance The existing instance to copy.
     */
     protected LineCountCesiumWriter(@Nonnull LineCountCesiumWriter existingInstance) {
@@ -74,12 +54,7 @@ public class LineCountCesiumWriter extends CesiumInterpolatablePropertyWriter<Li
     }
 
     /**
-    *  
-    
-    Copies this instance and returns the copy.
-    
-    
-
+    * Copies this instance and returns the copy.
     * @return The copy.
     */
     @Override
@@ -88,11 +63,7 @@ public class LineCountCesiumWriter extends CesiumInterpolatablePropertyWriter<Li
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartesian2}, which is the number of grid lines along each axis.
-    
-    
-
+    * Writes the value expressed as a {@code cartesian2}, which is the number of grid lines along each axis.
     * @param value The value.
     */
     public final void writeCartesian2(@Nonnull Rectangular value) {
@@ -103,12 +74,7 @@ public class LineCountCesiumWriter extends CesiumInterpolatablePropertyWriter<Li
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartesian2}, which is the number of grid lines along each axis.
-    
-    
-    
-
+    * Writes the value expressed as a {@code cartesian2}, which is the number of grid lines along each axis.
     * @param x The X component.
     * @param y The Y component.
     */
@@ -117,12 +83,7 @@ public class LineCountCesiumWriter extends CesiumInterpolatablePropertyWriter<Li
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartesian2}, which is the number of grid lines along each axis.
-    
-    
-    
-
+    * Writes the value expressed as a {@code cartesian2}, which is the number of grid lines along each axis.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -131,14 +92,7 @@ public class LineCountCesiumWriter extends CesiumInterpolatablePropertyWriter<Li
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartesian2}, which is the number of grid lines along each axis.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code cartesian2}, which is the number of grid lines along each axis.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -151,11 +105,7 @@ public class LineCountCesiumWriter extends CesiumInterpolatablePropertyWriter<Li
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the number of grid lines along each axis specified as a reference to another property.
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the number of grid lines along each axis specified as a reference to another property.
     * @param value The reference.
     */
     public final void writeReference(Reference value) {
@@ -166,11 +116,7 @@ public class LineCountCesiumWriter extends CesiumInterpolatablePropertyWriter<Li
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the number of grid lines along each axis specified as a reference to another property.
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the number of grid lines along each axis specified as a reference to another property.
     * @param value The reference.
     */
     public final void writeReference(String value) {
@@ -181,12 +127,7 @@ public class LineCountCesiumWriter extends CesiumInterpolatablePropertyWriter<Li
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the number of grid lines along each axis specified as a reference to another property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the number of grid lines along each axis specified as a reference to another property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -198,12 +139,7 @@ public class LineCountCesiumWriter extends CesiumInterpolatablePropertyWriter<Li
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the number of grid lines along each axis specified as a reference to another property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the number of grid lines along each axis specified as a reference to another property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -215,11 +151,7 @@ public class LineCountCesiumWriter extends CesiumInterpolatablePropertyWriter<Li
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
-    
-    
-
+    * Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
     * @param value The value.
     */
     public final void writeDelete(boolean value) {
@@ -230,11 +162,7 @@ public class LineCountCesiumWriter extends CesiumInterpolatablePropertyWriter<Li
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumCartesian2ValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumCartesian2ValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumCartesian2ValuePropertyAdaptor<LineCountCesiumWriter> asCartesian2() {
@@ -255,11 +183,7 @@ public class LineCountCesiumWriter extends CesiumInterpolatablePropertyWriter<Li
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumReferenceValuePropertyAdaptor<LineCountCesiumWriter> asReference() {

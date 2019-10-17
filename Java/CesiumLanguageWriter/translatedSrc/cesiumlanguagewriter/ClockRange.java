@@ -7,10 +7,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
- *  
- Defines the behavior of a clock when its current time reaches its start or end point.
- 
-
+ * Defines the behavior of a clock when its current time reaches its start or end point.
  */
 @SuppressWarnings( {
         "unused",
@@ -19,22 +16,13 @@ import javax.annotation.Nullable;
 })
 public enum ClockRange implements Enumeration {
     /**
-    *  
-    The clock can continue forever in either direction.
-    
-
+    * The clock can continue forever in either direction.
     */
     UNBOUNDED(0), /**
-                  *  
-                  The clock stops when either its start or end time is reached.
-                  
-
+                  * The clock stops when either its start or end time is reached.
                   */
     CLAMPED(1), /**
-                *  
-                The clock stops when its start time is reached, but loops back to start when its end time is reached.
-                
-
+                * The clock stops when its start time is reached, but loops back to start when its end time is reached.
                 */
     LOOP_STOP(2);
     private final int value;

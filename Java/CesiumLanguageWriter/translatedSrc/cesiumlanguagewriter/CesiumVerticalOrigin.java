@@ -7,10 +7,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
- *  
- The vertical origin of an item relative to its position.
- 
-
+ * The vertical origin of an item relative to its position.
  */
 @SuppressWarnings( {
         "unused",
@@ -19,28 +16,16 @@ import javax.annotation.Nullable;
 })
 public enum CesiumVerticalOrigin implements Enumeration {
     /**
-    *  
-    The bottom of the item is located at the position.
-    
-
+    * The bottom of the item is located at the position.
     */
     BOTTOM(0), /**
-               *  
-               The item is at the vertical center between {@link #BASELINE} and {@link #TOP}.
-               
-
+               * The item is at the vertical center between {@link #BASELINE} and {@link #TOP}.
                */
     CENTER(1), /**
-               *  
-               The top of the item is located at the position.
-               
-
+               * The top of the item is located at the position.
                */
     TOP(2), /**
-            *  
-            If the object contains text, the origin is at the baseline of the text, otherwise the origin is at the bottom of the object.
-            
-
+            * If the object contains text, the origin is at the baseline of the text, otherwise the origin is at the bottom of the object.
             */
     BASELINE(3);
     private final int value;

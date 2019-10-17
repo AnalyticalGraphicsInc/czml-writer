@@ -9,10 +9,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Writes a {@code Rotation} to a {@link CesiumOutputStream}. A {@code Rotation} is defines a rotation that transforms a vector expressed in one axes and transforms it to another.
- 
-
+ * Writes a {@code Rotation} to a {@link CesiumOutputStream}. A {@code Rotation} is defines a rotation that transforms a vector expressed in one axes and transforms it to another.
  */
 @SuppressWarnings( {
         "unused",
@@ -22,35 +19,22 @@ import javax.annotation.Nonnull;
 public class RotationCesiumWriter extends CesiumInterpolatablePropertyWriter<RotationCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumUnitQuaternionValuePropertyWriter,
         ICesiumReferenceValuePropertyWriter {
     /**
-    *  
-    The name of the {@code unitQuaternion} property.
-    
-
+    * The name of the {@code unitQuaternion} property.
     */
     public static final String UnitQuaternionPropertyName = "unitQuaternion";
     /**
-    *  
-    The name of the {@code reference} property.
-    
-
+    * The name of the {@code reference} property.
     */
     public static final String ReferencePropertyName = "reference";
     /**
-    *  
-    The name of the {@code delete} property.
-    
-
+    * The name of the {@code delete} property.
     */
     public static final String DeletePropertyName = "delete";
     private Lazy<CesiumUnitQuaternionValuePropertyAdaptor<RotationCesiumWriter>> m_asUnitQuaternion;
     private Lazy<CesiumReferenceValuePropertyAdaptor<RotationCesiumWriter>> m_asReference;
 
     /**
-    *  
-    Initializes a new instance.
-    
-    
-
+    * Initializes a new instance.
     * @param propertyName The name of the property.
     */
     public RotationCesiumWriter(@Nonnull String propertyName) {
@@ -60,11 +44,7 @@ public class RotationCesiumWriter extends CesiumInterpolatablePropertyWriter<Rot
     }
 
     /**
-    *  
-    Initializes a new instance as a copy of an existing instance.
-    
-    
-
+    * Initializes a new instance as a copy of an existing instance.
     * @param existingInstance The existing instance to copy.
     */
     protected RotationCesiumWriter(@Nonnull RotationCesiumWriter existingInstance) {
@@ -74,12 +54,7 @@ public class RotationCesiumWriter extends CesiumInterpolatablePropertyWriter<Rot
     }
 
     /**
-    *  
-    
-    Copies this instance and returns the copy.
-    
-    
-
+    * Copies this instance and returns the copy.
     * @return The copy.
     */
     @Override
@@ -88,11 +63,7 @@ public class RotationCesiumWriter extends CesiumInterpolatablePropertyWriter<Rot
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code unitQuaternion}, which is the rotation specified as a 4-dimensional unit magnitude quaternion, specified as {@code [X, Y, Z, W]}.
-    
-    
-
+    * Writes the value expressed as a {@code unitQuaternion}, which is the rotation specified as a 4-dimensional unit magnitude quaternion, specified as {@code [X, Y, Z, W]}.
     * @param value The value.
     */
     public final void writeUnitQuaternion(@Nonnull UnitQuaternion value) {
@@ -103,12 +74,7 @@ public class RotationCesiumWriter extends CesiumInterpolatablePropertyWriter<Rot
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code unitQuaternion}, which is the rotation specified as a 4-dimensional unit magnitude quaternion, specified as {@code [X, Y, Z, W]}.
-    
-    
-    
-
+    * Writes the value expressed as a {@code unitQuaternion}, which is the rotation specified as a 4-dimensional unit magnitude quaternion, specified as {@code [X, Y, Z, W]}.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -117,14 +83,7 @@ public class RotationCesiumWriter extends CesiumInterpolatablePropertyWriter<Rot
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code unitQuaternion}, which is the rotation specified as a 4-dimensional unit magnitude quaternion, specified as {@code [X, Y, Z, W]}.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code unitQuaternion}, which is the rotation specified as a 4-dimensional unit magnitude quaternion, specified as {@code [X, Y, Z, W]}.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -137,11 +96,7 @@ public class RotationCesiumWriter extends CesiumInterpolatablePropertyWriter<Rot
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the rotation specified as a reference to another property.
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the rotation specified as a reference to another property.
     * @param value The reference.
     */
     public final void writeReference(Reference value) {
@@ -152,11 +107,7 @@ public class RotationCesiumWriter extends CesiumInterpolatablePropertyWriter<Rot
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the rotation specified as a reference to another property.
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the rotation specified as a reference to another property.
     * @param value The reference.
     */
     public final void writeReference(String value) {
@@ -167,12 +118,7 @@ public class RotationCesiumWriter extends CesiumInterpolatablePropertyWriter<Rot
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the rotation specified as a reference to another property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the rotation specified as a reference to another property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -184,12 +130,7 @@ public class RotationCesiumWriter extends CesiumInterpolatablePropertyWriter<Rot
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the rotation specified as a reference to another property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the rotation specified as a reference to another property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -201,11 +142,7 @@ public class RotationCesiumWriter extends CesiumInterpolatablePropertyWriter<Rot
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
-    
-    
-
+    * Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
     * @param value The value.
     */
     public final void writeDelete(boolean value) {
@@ -216,11 +153,7 @@ public class RotationCesiumWriter extends CesiumInterpolatablePropertyWriter<Rot
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumUnitQuaternionValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumUnitQuaternionValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumUnitQuaternionValuePropertyAdaptor<RotationCesiumWriter> asUnitQuaternion() {
@@ -241,11 +174,7 @@ public class RotationCesiumWriter extends CesiumInterpolatablePropertyWriter<Rot
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumReferenceValuePropertyAdaptor<RotationCesiumWriter> asReference() {

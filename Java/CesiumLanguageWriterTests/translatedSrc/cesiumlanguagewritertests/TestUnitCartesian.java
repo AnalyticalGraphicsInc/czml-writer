@@ -16,10 +16,7 @@ import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
 /**
- *  
- Tests the {@link UnitCartesian} type.
- 
-
+ * Tests the {@link UnitCartesian} type.
  */
 @SuppressWarnings( {
         "unused",
@@ -29,10 +26,7 @@ import org.junit.Test;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestUnitCartesian {
     /**
-    *  
-    Tests that initialization of and access to the type's values works correctly.
-    
-
+    * Tests that initialization of and access to the type's values works correctly.
     */
     @Test
     public final void testHoldValue() {
@@ -43,10 +37,7 @@ public class TestUnitCartesian {
     }
 
     /**
-    *  
-    Tests initialization from {@link Cartesian} coordinates.
-    
-
+    * Tests initialization from {@link Cartesian} coordinates.
     */
     @Test
     public final void testFromCartesian() {
@@ -57,10 +48,7 @@ public class TestUnitCartesian {
     }
 
     /**
-    *  
-    Tests initialization from {@link Cartesian} coordinates.
-    
-
+    * Tests initialization from {@link Cartesian} coordinates.
     */
     @Test
     public final void testFromCartesianAndReturnMagnitude() {
@@ -77,10 +65,7 @@ public class TestUnitCartesian {
     }
 
     /**
-    *  
-    Tests initialization from coordinates.
-    
-
+    * Tests initialization from coordinates.
     */
     @Test
     public final void testInitializeAndReturnMagnitude() {
@@ -97,10 +82,7 @@ public class TestUnitCartesian {
     }
 
     /**
-    *  
-    Tests initialization from clock and cone angles.
-    
-
+    * Tests initialization from clock and cone angles.
     */
     @Test
     public final void testFromClockAndCone() {
@@ -113,10 +95,7 @@ public class TestUnitCartesian {
     }
 
     /**
-    *  
-    Tests the equality and inequality methods and operators.
-    
-
+    * Tests the equality and inequality methods and operators.
     */
     @Test
     public final void testEquality() {
@@ -160,10 +139,7 @@ public class TestUnitCartesian {
     }
 
     /**
-    *  
-    Tests the {@link UnitCartesian#equalsEpsilon} method.
-    
-
+    * Tests the {@link UnitCartesian#equalsEpsilon} method.
     */
     @Test
     public final void testEqualsEpsilon() {
@@ -177,11 +153,8 @@ public class TestUnitCartesian {
     }
 
     /**
-    *  
-    Tests thats the {@link UnitCartesian#equalsEpsilon} method returns true
+    * Tests thats the {@link UnitCartesian#equalsEpsilon} method returns true
     when the difference is exactly epsilon.
-    
-
     */
     @Test
     public final void testEqualsEpsilonExact() {
@@ -191,10 +164,7 @@ public class TestUnitCartesian {
     }
 
     /**
-    *  
-    Tests to ensure the equality fails when comparing incorrect type.
-    
-
+    * Tests to ensure the equality fails when comparing incorrect type.
     */
     @Test
     public final void testEqualityWithWrongType() {
@@ -205,10 +175,7 @@ public class TestUnitCartesian {
     }
 
     /**
-    *  
-    Tests the {@code IsUndefined} ({@link UnitCartesian#getIsUndefined get}) method.
-    
-
+    * Tests the {@code IsUndefined} ({@link UnitCartesian#getIsUndefined get}) method.
     */
     @Test
     public final void testIsUndefined() {
@@ -220,11 +187,8 @@ public class TestUnitCartesian {
     }
 
     /**
-    *  
-    Tests that rotation by an invalid {@link ElementaryRotation} produces an
+    * Tests that rotation by an invalid {@link ElementaryRotation} produces an
     {@link ArithmeticException}.
-    
-
     */
     @Test
     public final void testFromZero() {
@@ -236,11 +200,8 @@ public class TestUnitCartesian {
     }
 
     /**
-    *  
-    Tests that rotation by an invalid {@link ElementaryRotation} produces an
+    * Tests that rotation by an invalid {@link ElementaryRotation} produces an
     {@link ArithmeticException}.
-    
-
     */
     @Test
     public final void testFromInfinity() {
@@ -252,10 +213,7 @@ public class TestUnitCartesian {
     }
 
     /**
-    *  
-    Tests the {@link UnitCartesian#invert} method.
-    
-
+    * Tests the {@link UnitCartesian#invert} method.
     */
     @Test
     public final void testInvert() {
@@ -267,10 +225,7 @@ public class TestUnitCartesian {
     }
 
     /**
-    *  
-    Tests negation of a set of coordinates.
-    
-
+    * Tests negation of a set of coordinates.
     */
     @Test
     public final void testNegation() {
@@ -281,10 +236,7 @@ public class TestUnitCartesian {
     }
 
     /**
-    *  
-    Tests the addition methods and operators.
-    
-
+    * Tests the addition methods and operators.
     */
     @Test
     public final void testAdd() {
@@ -308,10 +260,7 @@ public class TestUnitCartesian {
     }
 
     /**
-    *  
-    Tests the subtraction methods and operators.
-    
-
+    * Tests the subtraction methods and operators.
     */
     @Test
     public final void testSubtract() {
@@ -335,10 +284,7 @@ public class TestUnitCartesian {
     }
 
     /**
-    *  
-    Tests the multiplication methods and operators.
-    
-
+    * Tests the multiplication methods and operators.
     */
     @Test
     public final void testMultiply() {
@@ -354,10 +300,7 @@ public class TestUnitCartesian {
     }
 
     /**
-    *  
-    Tests the multiplication methods and operators.
-    
-
+    * Tests the multiplication methods and operators.
     */
     @Test
     public final void testDivide() {
@@ -373,10 +316,7 @@ public class TestUnitCartesian {
     }
 
     /**
-    *  
-    Tests the Dot method.
-    
-
+    * Tests the Dot method.
     */
     @Test
     public final void testDotProduct() {
@@ -389,10 +329,7 @@ public class TestUnitCartesian {
     }
 
     /**
-    *  
-    Tests the Cross method.
-    
-
+    * Tests the Cross method.
     */
     @Test
     public final void testCrossProduct() {
@@ -420,10 +357,7 @@ public class TestUnitCartesian {
     }
 
     /**
-    *  
-    Tests that GetHashCode returns something at least reasonably random.
-    
-
+    * Tests that GetHashCode returns something at least reasonably random.
     */
     @Test
     public final void testGetHashCode() {
@@ -435,10 +369,7 @@ public class TestUnitCartesian {
     }
 
     /**
-    *  
-    Tests ToString method
-    
-
+    * Tests ToString method
     */
     @Test
     public final void testToString() {

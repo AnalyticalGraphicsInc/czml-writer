@@ -8,10 +8,7 @@ import cesiumlanguagewriter.advanced.*;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Writes data to a {@link CesiumOutputStream}.
- 
-
+ * Writes data to a {@link CesiumOutputStream}.
  */
 @SuppressWarnings( {
         "unused",
@@ -20,12 +17,7 @@ import javax.annotation.Nonnull;
 })
 public class CesiumStreamWriter {
     /**
-    *  
-    Starts a new CZML packet on the given stream.
-    
-    
-    
-
+    * Starts a new CZML packet on the given stream.
     * @param output The stream to which to write the packet.
     * @return The packet writer.
     */
@@ -37,12 +29,10 @@ public class CesiumStreamWriter {
     }
 
     /**
-    *  Gets the {@link PacketCesiumWriter} that this instances uses to write packets.
+    * Gets the {@link PacketCesiumWriter} that this instances uses to write packets.
     The packet writer must be opened by calling {@link CesiumElementWriter#open}
     before it can be use for writing.  Consider calling {@link #openPacket} instead,
     which returns the same instance but opens it first.
-    
-
     */
     @Nonnull
     public final PacketCesiumWriter getPacketWriter() {

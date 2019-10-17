@@ -18,10 +18,7 @@ import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
 /**
- *  
- Tests the {@link Cartesian} type.
- 
-
+ * Tests the {@link Cartesian} type.
  */
 @SuppressWarnings( {
         "unused",
@@ -31,10 +28,7 @@ import org.junit.Test;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCartesian {
     /**
-    *  
-    Tests that initialization of and access to the type's values works correctly.
-    
-
+    * Tests that initialization of and access to the type's values works correctly.
     */
     @Test
     public final void testHoldValue() {
@@ -45,10 +39,7 @@ public class TestCartesian {
     }
 
     /**
-    *  
-    Tests implicit conversion from {@link UnitCartesian} coordinates.
-    
-
+    * Tests implicit conversion from {@link UnitCartesian} coordinates.
     */
     @Test
     public final void testConversionFromUnitCartesian() {
@@ -60,10 +51,7 @@ public class TestCartesian {
     }
 
     /**
-    *  
-    Tests the equality and inequality methods and operators.
-    
-
+    * Tests the equality and inequality methods and operators.
     */
     @Test
     public final void testEquality() {
@@ -107,10 +95,7 @@ public class TestCartesian {
     }
 
     /**
-    *  
-    Tests the {@link Cartesian#equalsEpsilon} method.
-    
-
+    * Tests the {@link Cartesian#equalsEpsilon} method.
     */
     @Test
     public final void testEqualsEpsilon() {
@@ -124,11 +109,8 @@ public class TestCartesian {
     }
 
     /**
-    *  
-    Tests thats the {@link Cartesian#equalsEpsilon} method returns true
+    * Tests thats the {@link Cartesian#equalsEpsilon} method returns true
     when the difference is exactly epsilon.
-    
-
     */
     @Test
     public final void testEqualsEpsilonExact() {
@@ -138,10 +120,7 @@ public class TestCartesian {
     }
 
     /**
-    *  
-    Tests to ensure the equality fails when comparing incorrect type.
-    
-
+    * Tests to ensure the equality fails when comparing incorrect type.
     */
     @Test
     public final void testEqualityWithWrongType() {
@@ -152,10 +131,7 @@ public class TestCartesian {
     }
 
     /**
-    *  
-    Tests the {@code Magnitude} ({@link Cartesian#getMagnitude get}) property.
-    
-
+    * Tests the {@code Magnitude} ({@link Cartesian#getMagnitude get}) property.
     */
     @Test
     public final void testMagnitude() {
@@ -164,10 +140,7 @@ public class TestCartesian {
     }
 
     /**
-    *  
-    Tests the {@link Cartesian#normalize()} method.
-    
-
+    * Tests the {@link Cartesian#normalize()} method.
     */
     @Test
     public final void testNormalize() {
@@ -179,11 +152,8 @@ public class TestCartesian {
     }
 
     /**
-    *  
-    Tests that normalization of a {@link Cartesian} with zero magnitude
+    * Tests that normalization of a {@link Cartesian} with zero magnitude
     produces an {@link UnsupportedCaseException}.
-    
-
     */
     @Test
     public final void testNormalizeOfZeroMagnitude() {
@@ -196,11 +166,8 @@ public class TestCartesian {
     }
 
     /**
-    *  
-    Tests that normalization of a {@link Cartesian} with infinite magnitude
+    * Tests that normalization of a {@link Cartesian} with infinite magnitude
     produces an {@link ArithmeticException}.
-    
-
     */
     @Test
     public final void testNormalizeOfInfiniteMagnitude() {
@@ -213,10 +180,7 @@ public class TestCartesian {
     }
 
     /**
-    *  
-    Tests the {@code IsUndefined} ({@link Cartesian#getIsUndefined get}) method.
-    
-
+    * Tests the {@code IsUndefined} ({@link Cartesian#getIsUndefined get}) method.
     */
     @Test
     public final void testIsUndefined() {
@@ -228,10 +192,7 @@ public class TestCartesian {
     }
 
     /**
-    *  
-    Tests the {@code MostOrthogonalAxis} ({@link Cartesian#getMostOrthogonalAxis get}) method.
-    
-
+    * Tests the {@code MostOrthogonalAxis} ({@link Cartesian#getMostOrthogonalAxis get}) method.
     */
     @Test
     public final void testMostOrthogonalAxis() {
@@ -244,10 +205,7 @@ public class TestCartesian {
     }
 
     /**
-    *  
-    Tests negation of a set of coordinates.
-    
-
+    * Tests negation of a set of coordinates.
     */
     @Test
     public final void testNegation() {
@@ -258,10 +216,7 @@ public class TestCartesian {
     }
 
     /**
-    *  
-    Tests the addition methods and operators.
-    
-
+    * Tests the addition methods and operators.
     */
     @Test
     public final void testAdd() {
@@ -278,10 +233,7 @@ public class TestCartesian {
     }
 
     /**
-    *  
-    Tests the subtraction methods and operators.
-    
-
+    * Tests the subtraction methods and operators.
     */
     @Test
     public final void testSubtract() {
@@ -298,10 +250,7 @@ public class TestCartesian {
     }
 
     /**
-    *  
-    Tests the multiplication methods and operators.
-    
-
+    * Tests the multiplication methods and operators.
     */
     @Test
     public final void testMultiply() {
@@ -321,10 +270,7 @@ public class TestCartesian {
     }
 
     /**
-    *  
-    Tests the multiplication methods and operators.
-    
-
+    * Tests the multiplication methods and operators.
     */
     @Test
     public final void testDivide() {
@@ -340,10 +286,7 @@ public class TestCartesian {
     }
 
     /**
-    *  
-    Tests the {@link Cartesian#dot} method.
-    
-
+    * Tests the {@link Cartesian#dot} method.
     */
     @Test
     public final void testDotProduct() {
@@ -354,10 +297,7 @@ public class TestCartesian {
     }
 
     /**
-    *  
-    Tests the {@link Cartesian#cross} method.
-    
-
+    * Tests the {@link Cartesian#cross} method.
     */
     @Test
     public final void testCrossProduct() {
@@ -380,10 +320,7 @@ public class TestCartesian {
     }
 
     /**
-    *  
-    Tests rotation by a {@link UnitQuaternion}.
-    
-
+    * Tests rotation by a {@link UnitQuaternion}.
     */
     @Test
     public final void testRotateByUnitQuaternion() {
@@ -407,10 +344,7 @@ public class TestCartesian {
     }
 
     /**
-    *  
-    Tests rotation by an {@link Matrix3By3}.
-    
-
+    * Tests rotation by an {@link Matrix3By3}.
     */
     @Test
     public final void testRotateByMatrix3By3() {
@@ -434,10 +368,7 @@ public class TestCartesian {
     }
 
     /**
-    *  
-    Tests that GetHashCode returns something at least reasonably random.
-    
-
+    * Tests that GetHashCode returns something at least reasonably random.
     */
     @Test
     public final void testGetHashCode() {
@@ -449,10 +380,7 @@ public class TestCartesian {
     }
 
     /**
-    *  
-    Tests ToString method
-    
-
+    * Tests ToString method
     */
     @Test
     public final void testToString() {

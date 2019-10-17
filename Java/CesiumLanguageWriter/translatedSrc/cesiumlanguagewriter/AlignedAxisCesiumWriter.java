@@ -9,10 +9,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Writes a {@code AlignedAxis} to a {@link CesiumOutputStream}. A {@code AlignedAxis} is an aligned axis represented by a unit vector which can optionally vary over time.
- 
-
+ * Writes a {@code AlignedAxis} to a {@link CesiumOutputStream}. A {@code AlignedAxis} is an aligned axis represented by a unit vector which can optionally vary over time.
  */
 @SuppressWarnings( {
         "unused",
@@ -22,38 +19,23 @@ import javax.annotation.Nonnull;
 public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<AlignedAxisCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumUnitCartesian3ValuePropertyWriter,
         ICesiumUnitSphericalValuePropertyWriter, ICesiumReferenceValuePropertyWriter, ICesiumVelocityReferenceValuePropertyWriter {
     /**
-    *  
-    The name of the {@code unitCartesian} property.
-    
-
+    * The name of the {@code unitCartesian} property.
     */
     public static final String UnitCartesianPropertyName = "unitCartesian";
     /**
-    *  
-    The name of the {@code unitSpherical} property.
-    
-
+    * The name of the {@code unitSpherical} property.
     */
     public static final String UnitSphericalPropertyName = "unitSpherical";
     /**
-    *  
-    The name of the {@code reference} property.
-    
-
+    * The name of the {@code reference} property.
     */
     public static final String ReferencePropertyName = "reference";
     /**
-    *  
-    The name of the {@code velocityReference} property.
-    
-
+    * The name of the {@code velocityReference} property.
     */
     public static final String VelocityReferencePropertyName = "velocityReference";
     /**
-    *  
-    The name of the {@code delete} property.
-    
-
+    * The name of the {@code delete} property.
     */
     public static final String DeletePropertyName = "delete";
     private Lazy<CesiumUnitCartesian3ValuePropertyAdaptor<AlignedAxisCesiumWriter>> m_asUnitCartesian;
@@ -62,11 +44,7 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
     private Lazy<CesiumVelocityReferenceValuePropertyAdaptor<AlignedAxisCesiumWriter>> m_asVelocityReference;
 
     /**
-    *  
-    Initializes a new instance.
-    
-    
-
+    * Initializes a new instance.
     * @param propertyName The name of the property.
     */
     public AlignedAxisCesiumWriter(@Nonnull String propertyName) {
@@ -78,11 +56,7 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
     }
 
     /**
-    *  
-    Initializes a new instance as a copy of an existing instance.
-    
-    
-
+    * Initializes a new instance as a copy of an existing instance.
     * @param existingInstance The existing instance to copy.
     */
     protected AlignedAxisCesiumWriter(@Nonnull AlignedAxisCesiumWriter existingInstance) {
@@ -94,12 +68,7 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
     }
 
     /**
-    *  
-    
-    Copies this instance and returns the copy.
-    
-    
-
+    * Copies this instance and returns the copy.
     * @return The copy.
     */
     @Override
@@ -108,11 +77,7 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code unitCartesian}, which is the axis specified as a three-dimensional unit magnitude Cartesian value {@code [X, Y, Z]}, in world coordinates.
-    
-    
-
+    * Writes the value expressed as a {@code unitCartesian}, which is the axis specified as a three-dimensional unit magnitude Cartesian value {@code [X, Y, Z]}, in world coordinates.
     * @param value The value.
     */
     public final void writeUnitCartesian(@Nonnull UnitCartesian value) {
@@ -123,12 +88,7 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code unitCartesian}, which is the axis specified as a three-dimensional unit magnitude Cartesian value {@code [X, Y, Z]}, in world coordinates.
-    
-    
-    
-
+    * Writes the value expressed as a {@code unitCartesian}, which is the axis specified as a three-dimensional unit magnitude Cartesian value {@code [X, Y, Z]}, in world coordinates.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -137,14 +97,7 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code unitCartesian}, which is the axis specified as a three-dimensional unit magnitude Cartesian value {@code [X, Y, Z]}, in world coordinates.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code unitCartesian}, which is the axis specified as a three-dimensional unit magnitude Cartesian value {@code [X, Y, Z]}, in world coordinates.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -157,11 +110,7 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code unitSpherical}, which is the axis specified as a unit spherical value {@code [Clock, Cone]}, in radians. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
-    
-    
-
+    * Writes the value expressed as a {@code unitSpherical}, which is the axis specified as a unit spherical value {@code [Clock, Cone]}, in radians. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
     * @param value The value.
     */
     public final void writeUnitSpherical(@Nonnull UnitSpherical value) {
@@ -172,12 +121,7 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code unitSpherical}, which is the axis specified as a unit spherical value {@code [Clock, Cone]}, in radians. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
-    
-    
-    
-
+    * Writes the value expressed as a {@code unitSpherical}, which is the axis specified as a unit spherical value {@code [Clock, Cone]}, in radians. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -186,14 +130,7 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code unitSpherical}, which is the axis specified as a unit spherical value {@code [Clock, Cone]}, in radians. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code unitSpherical}, which is the axis specified as a unit spherical value {@code [Clock, Cone]}, in radians. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -206,11 +143,7 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the axis specified as a reference to another property.
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the axis specified as a reference to another property.
     * @param value The reference.
     */
     public final void writeReference(Reference value) {
@@ -221,11 +154,7 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the axis specified as a reference to another property.
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the axis specified as a reference to another property.
     * @param value The reference.
     */
     public final void writeReference(String value) {
@@ -236,12 +165,7 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the axis specified as a reference to another property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the axis specified as a reference to another property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -253,12 +177,7 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the axis specified as a reference to another property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the axis specified as a reference to another property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -270,11 +189,7 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code velocityReference}, which is the axis specified as the normalized velocity vector of a position property. The reference must be to a {@code position} property.
-    
-    
-
+    * Writes the value expressed as a {@code velocityReference}, which is the axis specified as the normalized velocity vector of a position property. The reference must be to a {@code position} property.
     * @param value The reference.
     */
     public final void writeVelocityReference(Reference value) {
@@ -285,11 +200,7 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code velocityReference}, which is the axis specified as the normalized velocity vector of a position property. The reference must be to a {@code position} property.
-    
-    
-
+    * Writes the value expressed as a {@code velocityReference}, which is the axis specified as the normalized velocity vector of a position property. The reference must be to a {@code position} property.
     * @param value The reference.
     */
     public final void writeVelocityReference(String value) {
@@ -300,12 +211,7 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code velocityReference}, which is the axis specified as the normalized velocity vector of a position property. The reference must be to a {@code position} property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code velocityReference}, which is the axis specified as the normalized velocity vector of a position property. The reference must be to a {@code position} property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -317,12 +223,7 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code velocityReference}, which is the axis specified as the normalized velocity vector of a position property. The reference must be to a {@code position} property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code velocityReference}, which is the axis specified as the normalized velocity vector of a position property. The reference must be to a {@code position} property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -334,11 +235,7 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
-    
-    
-
+    * Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
     * @param value The value.
     */
     public final void writeDelete(boolean value) {
@@ -349,11 +246,7 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumUnitCartesian3ValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumUnitCartesian3ValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumUnitCartesian3ValuePropertyAdaptor<AlignedAxisCesiumWriter> asUnitCartesian() {
@@ -374,11 +267,7 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumUnitSphericalValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumUnitSphericalValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumUnitSphericalValuePropertyAdaptor<AlignedAxisCesiumWriter> asUnitSpherical() {
@@ -399,11 +288,7 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumReferenceValuePropertyAdaptor<AlignedAxisCesiumWriter> asReference() {
@@ -424,11 +309,7 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumVelocityReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumVelocityReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumVelocityReferenceValuePropertyAdaptor<AlignedAxisCesiumWriter> asVelocityReference() {

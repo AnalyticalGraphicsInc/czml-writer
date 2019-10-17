@@ -9,10 +9,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Writes a {@code Direction} to a {@link CesiumOutputStream}. A {@code Direction} is a unit vector, in world coordinates, that defines a direction.
- 
-
+ * Writes a {@code Direction} to a {@link CesiumOutputStream}. A {@code Direction} is a unit vector, in world coordinates, that defines a direction.
  */
 @SuppressWarnings( {
         "unused",
@@ -22,45 +19,27 @@ import javax.annotation.Nonnull;
 public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<DirectionCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumSphericalValuePropertyWriter,
         ICesiumUnitSphericalValuePropertyWriter, ICesiumCartesian3ValuePropertyWriter, ICesiumUnitCartesian3ValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
-    *  
-    The name of the {@code spherical} property.
-    
-
+    * The name of the {@code spherical} property.
     */
     public static final String SphericalPropertyName = "spherical";
     /**
-    *  
-    The name of the {@code unitSpherical} property.
-    
-
+    * The name of the {@code unitSpherical} property.
     */
     public static final String UnitSphericalPropertyName = "unitSpherical";
     /**
-    *  
-    The name of the {@code cartesian} property.
-    
-
+    * The name of the {@code cartesian} property.
     */
     public static final String CartesianPropertyName = "cartesian";
     /**
-    *  
-    The name of the {@code unitCartesian} property.
-    
-
+    * The name of the {@code unitCartesian} property.
     */
     public static final String UnitCartesianPropertyName = "unitCartesian";
     /**
-    *  
-    The name of the {@code reference} property.
-    
-
+    * The name of the {@code reference} property.
     */
     public static final String ReferencePropertyName = "reference";
     /**
-    *  
-    The name of the {@code delete} property.
-    
-
+    * The name of the {@code delete} property.
     */
     public static final String DeletePropertyName = "delete";
     private Lazy<CesiumSphericalValuePropertyAdaptor<DirectionCesiumWriter>> m_asSpherical;
@@ -70,11 +49,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
     private Lazy<CesiumReferenceValuePropertyAdaptor<DirectionCesiumWriter>> m_asReference;
 
     /**
-    *  
-    Initializes a new instance.
-    
-    
-
+    * Initializes a new instance.
     * @param propertyName The name of the property.
     */
     public DirectionCesiumWriter(@Nonnull String propertyName) {
@@ -87,11 +62,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
     }
 
     /**
-    *  
-    Initializes a new instance as a copy of an existing instance.
-    
-    
-
+    * Initializes a new instance as a copy of an existing instance.
     * @param existingInstance The existing instance to copy.
     */
     protected DirectionCesiumWriter(@Nonnull DirectionCesiumWriter existingInstance) {
@@ -104,12 +75,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
     }
 
     /**
-    *  
-    
-    Copies this instance and returns the copy.
-    
-    
-
+    * Copies this instance and returns the copy.
     * @return The copy.
     */
     @Override
@@ -118,11 +84,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code spherical}, which is the direction specified as a spherical value {@code [Clock, Cone, Magnitude]}, with angles in radians and magnitude in meters. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
-    
-    
-
+    * Writes the value expressed as a {@code spherical}, which is the direction specified as a spherical value {@code [Clock, Cone, Magnitude]}, with angles in radians and magnitude in meters. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
     * @param value The value.
     */
     public final void writeSpherical(@Nonnull Spherical value) {
@@ -133,12 +95,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code spherical}, which is the direction specified as a spherical value {@code [Clock, Cone, Magnitude]}, with angles in radians and magnitude in meters. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
-    
-    
-    
-
+    * Writes the value expressed as a {@code spherical}, which is the direction specified as a spherical value {@code [Clock, Cone, Magnitude]}, with angles in radians and magnitude in meters. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -147,14 +104,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code spherical}, which is the direction specified as a spherical value {@code [Clock, Cone, Magnitude]}, with angles in radians and magnitude in meters. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code spherical}, which is the direction specified as a spherical value {@code [Clock, Cone, Magnitude]}, with angles in radians and magnitude in meters. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -167,11 +117,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code unitSpherical}, which is the direction specified as a unit spherical value {@code [Clock, Cone]}, in radians. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
-    
-    
-
+    * Writes the value expressed as a {@code unitSpherical}, which is the direction specified as a unit spherical value {@code [Clock, Cone]}, in radians. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
     * @param value The value.
     */
     public final void writeUnitSpherical(@Nonnull UnitSpherical value) {
@@ -182,12 +128,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code unitSpherical}, which is the direction specified as a unit spherical value {@code [Clock, Cone]}, in radians. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
-    
-    
-    
-
+    * Writes the value expressed as a {@code unitSpherical}, which is the direction specified as a unit spherical value {@code [Clock, Cone]}, in radians. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -196,14 +137,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code unitSpherical}, which is the direction specified as a unit spherical value {@code [Clock, Cone]}, in radians. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code unitSpherical}, which is the direction specified as a unit spherical value {@code [Clock, Cone]}, in radians. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -216,11 +150,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartesian}, which is the direction specified as a three-dimensional Cartesian value {@code [X, Y, Z]}, in world coordinates in meters.
-    
-    
-
+    * Writes the value expressed as a {@code cartesian}, which is the direction specified as a three-dimensional Cartesian value {@code [X, Y, Z]}, in world coordinates in meters.
     * @param value The value.
     */
     public final void writeCartesian(@Nonnull Cartesian value) {
@@ -231,12 +161,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartesian}, which is the direction specified as a three-dimensional Cartesian value {@code [X, Y, Z]}, in world coordinates in meters.
-    
-    
-    
-
+    * Writes the value expressed as a {@code cartesian}, which is the direction specified as a three-dimensional Cartesian value {@code [X, Y, Z]}, in world coordinates in meters.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -245,14 +170,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartesian}, which is the direction specified as a three-dimensional Cartesian value {@code [X, Y, Z]}, in world coordinates in meters.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code cartesian}, which is the direction specified as a three-dimensional Cartesian value {@code [X, Y, Z]}, in world coordinates in meters.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -265,11 +183,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code unitCartesian}, which is the direction specified as a three-dimensional unit magnitude Cartesian value {@code [X, Y, Z]}, in world coordinates in meters.
-    
-    
-
+    * Writes the value expressed as a {@code unitCartesian}, which is the direction specified as a three-dimensional unit magnitude Cartesian value {@code [X, Y, Z]}, in world coordinates in meters.
     * @param value The value.
     */
     public final void writeUnitCartesian(@Nonnull UnitCartesian value) {
@@ -280,12 +194,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code unitCartesian}, which is the direction specified as a three-dimensional unit magnitude Cartesian value {@code [X, Y, Z]}, in world coordinates in meters.
-    
-    
-    
-
+    * Writes the value expressed as a {@code unitCartesian}, which is the direction specified as a three-dimensional unit magnitude Cartesian value {@code [X, Y, Z]}, in world coordinates in meters.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -294,14 +203,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code unitCartesian}, which is the direction specified as a three-dimensional unit magnitude Cartesian value {@code [X, Y, Z]}, in world coordinates in meters.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code unitCartesian}, which is the direction specified as a three-dimensional unit magnitude Cartesian value {@code [X, Y, Z]}, in world coordinates in meters.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -314,11 +216,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the direction specified as a reference to another property.
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the direction specified as a reference to another property.
     * @param value The reference.
     */
     public final void writeReference(Reference value) {
@@ -329,11 +227,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the direction specified as a reference to another property.
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the direction specified as a reference to another property.
     * @param value The reference.
     */
     public final void writeReference(String value) {
@@ -344,12 +238,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the direction specified as a reference to another property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the direction specified as a reference to another property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -361,12 +250,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the direction specified as a reference to another property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the direction specified as a reference to another property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -378,11 +262,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
-    
-    
-
+    * Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
     * @param value The value.
     */
     public final void writeDelete(boolean value) {
@@ -393,11 +273,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumSphericalValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumSphericalValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumSphericalValuePropertyAdaptor<DirectionCesiumWriter> asSpherical() {
@@ -418,11 +294,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumUnitSphericalValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumUnitSphericalValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumUnitSphericalValuePropertyAdaptor<DirectionCesiumWriter> asUnitSpherical() {
@@ -443,11 +315,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumCartesian3ValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumCartesian3ValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumCartesian3ValuePropertyAdaptor<DirectionCesiumWriter> asCartesian() {
@@ -468,11 +336,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumUnitCartesian3ValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumUnitCartesian3ValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumUnitCartesian3ValuePropertyAdaptor<DirectionCesiumWriter> asUnitCartesian() {
@@ -493,11 +357,7 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumReferenceValuePropertyAdaptor<DirectionCesiumWriter> asReference() {

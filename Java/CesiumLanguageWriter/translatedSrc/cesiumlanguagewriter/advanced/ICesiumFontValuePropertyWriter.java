@@ -5,10 +5,7 @@ import agi.foundation.compatibility.*;
 import cesiumlanguagewriter.*;
 
 /**
- *  
- A writer that can write a value as a CSS font.
- 
-
+ * A writer that can write a value as a CSS font.
  */
 @SuppressWarnings( {
         "unused",
@@ -17,11 +14,7 @@ import cesiumlanguagewriter.*;
 })
 public interface ICesiumFontValuePropertyWriter extends ICesiumPropertyWriter {
     /**
-    *  
-    Writes the value expressed as a CSS font.
-    
-    
-
+    * Writes the value expressed as a CSS font.
     * @param font The font.
     */
     void writeFont(String font);

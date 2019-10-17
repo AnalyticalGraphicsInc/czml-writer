@@ -9,10 +9,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Writes a {@code DistanceDisplayCondition} to a {@link CesiumOutputStream}. A {@code DistanceDisplayCondition} is indicates the visibility of an object based on the distance to the camera.
- 
-
+ * Writes a {@code DistanceDisplayCondition} to a {@link CesiumOutputStream}. A {@code DistanceDisplayCondition} is indicates the visibility of an object based on the distance to the camera.
  */
 @SuppressWarnings( {
         "unused",
@@ -22,35 +19,22 @@ import javax.annotation.Nonnull;
 public class DistanceDisplayConditionCesiumWriter extends CesiumInterpolatablePropertyWriter<DistanceDisplayConditionCesiumWriter> implements ICesiumDeletablePropertyWriter,
         ICesiumDistanceDisplayConditionValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
-    *  
-    The name of the {@code distanceDisplayCondition} property.
-    
-
+    * The name of the {@code distanceDisplayCondition} property.
     */
     public static final String DistanceDisplayConditionPropertyName = "distanceDisplayCondition";
     /**
-    *  
-    The name of the {@code reference} property.
-    
-
+    * The name of the {@code reference} property.
     */
     public static final String ReferencePropertyName = "reference";
     /**
-    *  
-    The name of the {@code delete} property.
-    
-
+    * The name of the {@code delete} property.
     */
     public static final String DeletePropertyName = "delete";
     private Lazy<CesiumDistanceDisplayConditionValuePropertyAdaptor<DistanceDisplayConditionCesiumWriter>> m_asDistanceDisplayCondition;
     private Lazy<CesiumReferenceValuePropertyAdaptor<DistanceDisplayConditionCesiumWriter>> m_asReference;
 
     /**
-    *  
-    Initializes a new instance.
-    
-    
-
+    * Initializes a new instance.
     * @param propertyName The name of the property.
     */
     public DistanceDisplayConditionCesiumWriter(@Nonnull String propertyName) {
@@ -60,11 +44,7 @@ public class DistanceDisplayConditionCesiumWriter extends CesiumInterpolatablePr
     }
 
     /**
-    *  
-    Initializes a new instance as a copy of an existing instance.
-    
-    
-
+    * Initializes a new instance as a copy of an existing instance.
     * @param existingInstance The existing instance to copy.
     */
     protected DistanceDisplayConditionCesiumWriter(@Nonnull DistanceDisplayConditionCesiumWriter existingInstance) {
@@ -74,12 +54,7 @@ public class DistanceDisplayConditionCesiumWriter extends CesiumInterpolatablePr
     }
 
     /**
-    *  
-    
-    Copies this instance and returns the copy.
-    
-    
-
+    * Copies this instance and returns the copy.
     * @return The copy.
     */
     @Override
@@ -88,11 +63,7 @@ public class DistanceDisplayConditionCesiumWriter extends CesiumInterpolatablePr
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code distanceDisplayCondition}, which is the value specified as two values {@code [NearDistance, FarDistance]}, with distances in meters.
-    
-    
-
+    * Writes the value expressed as a {@code distanceDisplayCondition}, which is the value specified as two values {@code [NearDistance, FarDistance]}, with distances in meters.
     * @param value The value.
     */
     public final void writeDistanceDisplayCondition(@Nonnull Bounds value) {
@@ -103,12 +74,7 @@ public class DistanceDisplayConditionCesiumWriter extends CesiumInterpolatablePr
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code distanceDisplayCondition}, which is the value specified as two values {@code [NearDistance, FarDistance]}, with distances in meters.
-    
-    
-    
-
+    * Writes the value expressed as a {@code distanceDisplayCondition}, which is the value specified as two values {@code [NearDistance, FarDistance]}, with distances in meters.
     * @param lowerBound The lower bound.
     * @param upperBound The upper bound.
     */
@@ -117,12 +83,7 @@ public class DistanceDisplayConditionCesiumWriter extends CesiumInterpolatablePr
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code distanceDisplayCondition}, which is the value specified as two values {@code [NearDistance, FarDistance]}, with distances in meters.
-    
-    
-    
-
+    * Writes the value expressed as a {@code distanceDisplayCondition}, which is the value specified as two values {@code [NearDistance, FarDistance]}, with distances in meters.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -131,14 +92,7 @@ public class DistanceDisplayConditionCesiumWriter extends CesiumInterpolatablePr
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code distanceDisplayCondition}, which is the value specified as two values {@code [NearDistance, FarDistance]}, with distances in meters.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code distanceDisplayCondition}, which is the value specified as two values {@code [NearDistance, FarDistance]}, with distances in meters.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -151,11 +105,7 @@ public class DistanceDisplayConditionCesiumWriter extends CesiumInterpolatablePr
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the value specified as a reference to another property.
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the value specified as a reference to another property.
     * @param value The reference.
     */
     public final void writeReference(Reference value) {
@@ -166,11 +116,7 @@ public class DistanceDisplayConditionCesiumWriter extends CesiumInterpolatablePr
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the value specified as a reference to another property.
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the value specified as a reference to another property.
     * @param value The reference.
     */
     public final void writeReference(String value) {
@@ -181,12 +127,7 @@ public class DistanceDisplayConditionCesiumWriter extends CesiumInterpolatablePr
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the value specified as a reference to another property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the value specified as a reference to another property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -198,12 +139,7 @@ public class DistanceDisplayConditionCesiumWriter extends CesiumInterpolatablePr
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the value specified as a reference to another property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the value specified as a reference to another property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -215,11 +151,7 @@ public class DistanceDisplayConditionCesiumWriter extends CesiumInterpolatablePr
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
-    
-    
-
+    * Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
     * @param value The value.
     */
     public final void writeDelete(boolean value) {
@@ -230,11 +162,7 @@ public class DistanceDisplayConditionCesiumWriter extends CesiumInterpolatablePr
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumDistanceDisplayConditionValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumDistanceDisplayConditionValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumDistanceDisplayConditionValuePropertyAdaptor<DistanceDisplayConditionCesiumWriter> asDistanceDisplayCondition() {
@@ -255,11 +183,7 @@ public class DistanceDisplayConditionCesiumWriter extends CesiumInterpolatablePr
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumReferenceValuePropertyAdaptor<DistanceDisplayConditionCesiumWriter> asReference() {

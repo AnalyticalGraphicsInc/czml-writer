@@ -5,10 +5,7 @@ import agi.foundation.compatibility.*;
 import cesiumlanguagewriter.*;
 
 /**
- *  
- A writer that can write a value as a list of unit spherical values.
- 
-
+ * A writer that can write a value as a list of unit spherical values.
  */
 @SuppressWarnings( {
         "unused",
@@ -17,11 +14,7 @@ import cesiumlanguagewriter.*;
 })
 public interface ICesiumUnitSphericalListValuePropertyWriter extends ICesiumPropertyWriter {
     /**
-    *  
-    Writes the value as a list of unit spherical values.
-    
-    
-
+    * Writes the value as a list of unit spherical values.
     * @param values The values.
     */
     void writeUnitSpherical(Iterable<UnitSpherical> values);

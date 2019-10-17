@@ -19,10 +19,7 @@ import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
 /**
- *  
- Tests the {@link BoundingRectangle} type.
- 
-
+ * Tests the {@link BoundingRectangle} type.
  */
 @SuppressWarnings( {
         "unused",
@@ -32,10 +29,7 @@ import org.junit.Test;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestBoundingRectangle {
     /**
-    *  
-    Tests that initialization of and access to the type's values works correctly.
-    
-
+    * Tests that initialization of and access to the type's values works correctly.
     */
     @Test
     public final void testHoldValue() {
@@ -62,10 +56,7 @@ public class TestBoundingRectangle {
     }
 
     /**
-    *  
-    Tests that construction resulting in a negative width throws the correct exception.
-    
-
+    * Tests that construction resulting in a negative width throws the correct exception.
     */
     @Test
     public final void testInitializationFromBadElementsWidth() {
@@ -77,10 +68,7 @@ public class TestBoundingRectangle {
     }
 
     /**
-    *  
-    Tests that construction resulting in a negative height throws the correct exception.
-    
-
+    * Tests that construction resulting in a negative height throws the correct exception.
     */
     @Test
     public final void testInitializationFromBadElementsHeight() {
@@ -92,10 +80,7 @@ public class TestBoundingRectangle {
     }
 
     /**
-    *  
-    Tests the equality and inequality methods and operators.
-    
-
+    * Tests the equality and inequality methods and operators.
     */
     @Test
     public final void equalityTest() {
@@ -113,10 +98,7 @@ public class TestBoundingRectangle {
     }
 
     /**
-    *  
-    Tests the {@link BoundingRectangle#equalsEpsilon} method.
-    
-
+    * Tests the {@link BoundingRectangle#equalsEpsilon} method.
     */
     @Test
     public final void testEqualsEpsilon() {
@@ -129,10 +111,7 @@ public class TestBoundingRectangle {
     }
 
     /**
-    *  
-    Tests that {@link BoundingRectangle#hashCode} returns something at least reasonably random.
-    
-
+    * Tests that {@link BoundingRectangle#hashCode} returns something at least reasonably random.
     */
     @Test
     public final void testGetHashCode() {
@@ -144,10 +123,7 @@ public class TestBoundingRectangle {
     }
 
     /**
-    *  
-    Tests the {@link BoundingRectangle#toString} method.
-    
-
+    * Tests the {@link BoundingRectangle#toString} method.
     */
     @Test
     public final void testToString() {

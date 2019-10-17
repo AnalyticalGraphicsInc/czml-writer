@@ -6,12 +6,8 @@ import cesiumlanguagewriter.*;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Adapts a class that implements {@link ICesiumSensorVolumePortionToDisplayValuePropertyWriter} to implement
+ * Adapts a class that implements {@link ICesiumSensorVolumePortionToDisplayValuePropertyWriter} to implement
  {@link ICesiumPropertyWriter} for {@link CesiumSensorVolumePortionToDisplay} values.
- 
- 
-
  * @param <TFrom> The class that implements {@link ICesiumSensorVolumePortionToDisplayValuePropertyWriter} to adapt.
  */
 @SuppressWarnings( {
@@ -22,13 +18,7 @@ import javax.annotation.Nonnull;
 public class CesiumSensorVolumePortionToDisplayValuePropertyAdaptor<TFrom extends ICesiumSensorVolumePortionToDisplayValuePropertyWriter> extends
         CesiumWriterAdaptor<TFrom, CesiumSensorVolumePortionToDisplay> {
     /**
-    *  
-    Initializes a new instance.
-    
-    
-    
-    
-
+    * Initializes a new instance.
     * @param parent The instance to wrap.
     * @param writeValueCallback The callback to write values of type {@link CesiumSensorVolumePortionToDisplay}.
     * @param writeDeleteValueCallback The callback to write an indication that the client should delete existing data.

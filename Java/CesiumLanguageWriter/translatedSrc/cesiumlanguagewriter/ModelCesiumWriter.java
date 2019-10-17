@@ -23,10 +23,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Writes a {@code Model} to a {@link CesiumOutputStream}. A {@code Model} is a 3D model.
- 
-
+ * Writes a {@code Model} to a {@link CesiumOutputStream}. A {@code Model} is a 3D model.
  */
 @SuppressWarnings( {
         "unused",
@@ -35,122 +32,71 @@ import javax.annotation.Nonnull;
 })
 public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     /**
-    *  
-    The name of the {@code show} property.
-    
-
+    * The name of the {@code show} property.
     */
     public static final String ShowPropertyName = "show";
     /**
-    *  
-    The name of the {@code gltf} property.
-    
-
+    * The name of the {@code gltf} property.
     */
     public static final String GltfPropertyName = "gltf";
     /**
-    *  
-    The name of the {@code scale} property.
-    
-
+    * The name of the {@code scale} property.
     */
     public static final String ScalePropertyName = "scale";
     /**
-    *  
-    The name of the {@code minimumPixelSize} property.
-    
-
+    * The name of the {@code minimumPixelSize} property.
     */
     public static final String MinimumPixelSizePropertyName = "minimumPixelSize";
     /**
-    *  
-    The name of the {@code maximumScale} property.
-    
-
+    * The name of the {@code maximumScale} property.
     */
     public static final String MaximumScalePropertyName = "maximumScale";
     /**
-    *  
-    The name of the {@code incrementallyLoadTextures} property.
-    
-
+    * The name of the {@code incrementallyLoadTextures} property.
     */
     public static final String IncrementallyLoadTexturesPropertyName = "incrementallyLoadTextures";
     /**
-    *  
-    The name of the {@code runAnimations} property.
-    
-
+    * The name of the {@code runAnimations} property.
     */
     public static final String RunAnimationsPropertyName = "runAnimations";
     /**
-    *  
-    The name of the {@code shadows} property.
-    
-
+    * The name of the {@code shadows} property.
     */
     public static final String ShadowsPropertyName = "shadows";
     /**
-    *  
-    The name of the {@code heightReference} property.
-    
-
+    * The name of the {@code heightReference} property.
     */
     public static final String HeightReferencePropertyName = "heightReference";
     /**
-    *  
-    The name of the {@code silhouetteColor} property.
-    
-
+    * The name of the {@code silhouetteColor} property.
     */
     public static final String SilhouetteColorPropertyName = "silhouetteColor";
     /**
-    *  
-    The name of the {@code silhouetteSize} property.
-    
-
+    * The name of the {@code silhouetteSize} property.
     */
     public static final String SilhouetteSizePropertyName = "silhouetteSize";
     /**
-    *  
-    The name of the {@code color} property.
-    
-
+    * The name of the {@code color} property.
     */
     public static final String ColorPropertyName = "color";
     /**
-    *  
-    The name of the {@code colorBlendMode} property.
-    
-
+    * The name of the {@code colorBlendMode} property.
     */
     public static final String ColorBlendModePropertyName = "colorBlendMode";
     /**
-    *  
-    The name of the {@code colorBlendAmount} property.
-    
-
+    * The name of the {@code colorBlendAmount} property.
     */
     public static final String ColorBlendAmountPropertyName = "colorBlendAmount";
     /**
-    *  
-    The name of the {@code distanceDisplayCondition} property.
-    
-
+    * The name of the {@code distanceDisplayCondition} property.
     */
     public static final String DistanceDisplayConditionPropertyName = "distanceDisplayCondition";
     /**
-    *  
-    The name of the {@code nodeTransformations} property.
-    
-
+    * The name of the {@code nodeTransformations} property.
     */
     public static final String NodeTransformationsPropertyName = "nodeTransformations";
     /**
-    *  
-    The name of the {@code articulations} property.
-    
-
+    * The name of the {@code articulations} property.
     */
     public static final String ArticulationsPropertyName = "articulations";
     private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
@@ -242,11 +188,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }, false);
 
     /**
-    *  
-    Initializes a new instance.
-    
-    
-
+    * Initializes a new instance.
     * @param propertyName The name of the property.
     */
     public ModelCesiumWriter(@Nonnull String propertyName) {
@@ -254,11 +196,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Initializes a new instance as a copy of an existing instance.
-    
-    
-
+    * Initializes a new instance as a copy of an existing instance.
     * @param existingInstance The existing instance to copy.
     */
     protected ModelCesiumWriter(@Nonnull ModelCesiumWriter existingInstance) {
@@ -266,12 +204,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    
-    Copies this instance and returns the copy.
-    
-    
-
+    * Copies this instance and returns the copy.
     * @return The copy.
     */
     @Override
@@ -280,9 +213,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code show} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code show} property defines whether or not the model is shown. If not specified, the default value is {@code true}.
-    
-
+    * Gets the writer for the {@code show} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code show} property defines whether or not the model is shown. If not specified, the default value is {@code true}.
     */
     @Nonnull
     public final BooleanCesiumWriter getShowWriter() {
@@ -290,10 +221,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code show} property. The {@code show} property defines whether or not the model is shown. If not specified, the default value is {@code true}.
-    
-
+    * Opens and returns the writer for the {@code show} property. The {@code show} property defines whether or not the model is shown. If not specified, the default value is {@code true}.
     */
     @Nonnull
     public final BooleanCesiumWriter openShowProperty() {
@@ -302,11 +230,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code show} property as a {@code boolean} value. The {@code show} property specifies whether or not the model is shown. If not specified, the default value is {@code true}.
-    
-    
-
+    * Writes a value for the {@code show} property as a {@code boolean} value. The {@code show} property specifies whether or not the model is shown. If not specified, the default value is {@code true}.
     * @param value The value.
     */
     public final void writeShowProperty(boolean value) {
@@ -321,11 +245,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the model is shown. If not specified, the default value is {@code true}.
-    
-    
-
+    * Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the model is shown. If not specified, the default value is {@code true}.
     * @param value The reference.
     */
     public final void writeShowPropertyReference(Reference value) {
@@ -340,11 +260,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the model is shown. If not specified, the default value is {@code true}.
-    
-    
-
+    * Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the model is shown. If not specified, the default value is {@code true}.
     * @param value The reference.
     */
     public final void writeShowPropertyReference(String value) {
@@ -359,12 +275,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the model is shown. If not specified, the default value is {@code true}.
-    
-    
-    
-
+    * Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the model is shown. If not specified, the default value is {@code true}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -380,12 +291,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the model is shown. If not specified, the default value is {@code true}.
-    
-    
-    
-
+    * Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the model is shown. If not specified, the default value is {@code true}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -401,9 +307,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code gltf} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code gltf} property defines the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
-    
-
+    * Gets the writer for the {@code gltf} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code gltf} property defines the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     */
     @Nonnull
     public final UriCesiumWriter getGltfWriter() {
@@ -411,10 +315,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code gltf} property. The {@code gltf} property defines the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
-    
-
+    * Opens and returns the writer for the {@code gltf} property. The {@code gltf} property defines the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     */
     @Nonnull
     public final UriCesiumWriter openGltfProperty() {
@@ -423,11 +324,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code gltf} property as a {@code uri} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
-    
-    
-
+    * Writes a value for the {@code gltf} property as a {@code uri} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     * @param resource A resource object describing external data.
     */
     public final void writeGltfProperty(CesiumResource resource) {
@@ -442,12 +339,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code gltf} property as a {@code uri} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
-    
-    
-    
-
+    * Writes a value for the {@code gltf} property as a {@code uri} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     * @param uri The URI of the data.
     * @param resourceBehavior An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.
     */
@@ -463,12 +355,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code gltf} property as a {@code uri} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
-    
-    
-    
-
+    * Writes a value for the {@code gltf} property as a {@code uri} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     * @param uri The URI of the data.
     * @param resourceBehavior An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.
     */
@@ -484,12 +371,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code gltf} property as a {@code uri} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
-    
-    
-    
-
+    * Writes a value for the {@code gltf} property as a {@code uri} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     * @param uri The URI of the data. The provided ICesiumUriResolver will be used to build the final URI embedded in the document.
     * @param resolver An ICesiumUriResolver used to build the final URI that will be embedded in the document.
     */
@@ -505,12 +387,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code gltf} property as a {@code uri} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
-    
-    
-    
-
+    * Writes a value for the {@code gltf} property as a {@code uri} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     * @param uri The URI of the data. The provided ICesiumUriResolver will be used to build the final URI embedded in the document.
     * @param resolver An ICesiumUriResolver used to build the final URI that will be embedded in the document.
     */
@@ -526,11 +403,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code gltf} property as a {@code uri} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
-    
-    
-
+    * Writes a value for the {@code gltf} property as a {@code uri} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     * @param image The image. A data URI will be created for this image, using PNG encoding.
     */
     public final void writeGltfProperty(RenderedImage image) {
@@ -545,12 +418,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code gltf} property as a {@code uri} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
-    
-    
-    
-
+    * Writes a value for the {@code gltf} property as a {@code uri} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     * @param image The image. A data URI will be created for this image.
     * @param imageFormat The image format to use to encode the image in the data URI.
     */
@@ -566,11 +434,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code gltf} property as a {@code reference} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
-    
-    
-
+    * Writes a value for the {@code gltf} property as a {@code reference} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     * @param value The reference.
     */
     public final void writeGltfPropertyReference(Reference value) {
@@ -585,11 +449,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code gltf} property as a {@code reference} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
-    
-    
-
+    * Writes a value for the {@code gltf} property as a {@code reference} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     * @param value The reference.
     */
     public final void writeGltfPropertyReference(String value) {
@@ -604,12 +464,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code gltf} property as a {@code reference} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
-    
-    
-    
-
+    * Writes a value for the {@code gltf} property as a {@code reference} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -625,12 +480,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code gltf} property as a {@code reference} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
-    
-    
-    
-
+    * Writes a value for the {@code gltf} property as a {@code reference} value. The {@code gltf} property specifies the URI of a <a href="https://github.com/KhronosGroup/glTF">glTF</a> model. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS). The URI may also be a <a href="https://developer.mozilla.org/en/data_URIs">data URI</a>. This value must be specified in order for the client to display graphics.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -646,9 +496,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code scale} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code scale} property defines the scale of the model. If not specified, the default value is 1.0.
-    
-
+    * Gets the writer for the {@code scale} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code scale} property defines the scale of the model. If not specified, the default value is 1.0.
     */
     @Nonnull
     public final DoubleCesiumWriter getScaleWriter() {
@@ -656,10 +504,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code scale} property. The {@code scale} property defines the scale of the model. If not specified, the default value is 1.0.
-    
-
+    * Opens and returns the writer for the {@code scale} property. The {@code scale} property defines the scale of the model. If not specified, the default value is 1.0.
     */
     @Nonnull
     public final DoubleCesiumWriter openScaleProperty() {
@@ -668,11 +513,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code scale} property as a {@code number} value. The {@code scale} property specifies the scale of the model. If not specified, the default value is 1.0.
-    
-    
-
+    * Writes a value for the {@code scale} property as a {@code number} value. The {@code scale} property specifies the scale of the model. If not specified, the default value is 1.0.
     * @param value The value.
     */
     public final void writeScaleProperty(double value) {
@@ -687,12 +528,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code scale} property as a {@code number} value. The {@code scale} property specifies the scale of the model. If not specified, the default value is 1.0.
-    
-    
-    
-
+    * Writes a value for the {@code scale} property as a {@code number} value. The {@code scale} property specifies the scale of the model. If not specified, the default value is 1.0.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -708,14 +544,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code scale} property as a {@code number} value. The {@code scale} property specifies the scale of the model. If not specified, the default value is 1.0.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code scale} property as a {@code number} value. The {@code scale} property specifies the scale of the model. If not specified, the default value is 1.0.
     * @param dates The dates at which the value is specified.
     * @param values The value corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -733,11 +562,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code scale} property as a {@code reference} value. The {@code scale} property specifies the scale of the model. If not specified, the default value is 1.0.
-    
-    
-
+    * Writes a value for the {@code scale} property as a {@code reference} value. The {@code scale} property specifies the scale of the model. If not specified, the default value is 1.0.
     * @param value The reference.
     */
     public final void writeScalePropertyReference(Reference value) {
@@ -752,11 +577,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code scale} property as a {@code reference} value. The {@code scale} property specifies the scale of the model. If not specified, the default value is 1.0.
-    
-    
-
+    * Writes a value for the {@code scale} property as a {@code reference} value. The {@code scale} property specifies the scale of the model. If not specified, the default value is 1.0.
     * @param value The reference.
     */
     public final void writeScalePropertyReference(String value) {
@@ -771,12 +592,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code scale} property as a {@code reference} value. The {@code scale} property specifies the scale of the model. If not specified, the default value is 1.0.
-    
-    
-    
-
+    * Writes a value for the {@code scale} property as a {@code reference} value. The {@code scale} property specifies the scale of the model. If not specified, the default value is 1.0.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -792,12 +608,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code scale} property as a {@code reference} value. The {@code scale} property specifies the scale of the model. If not specified, the default value is 1.0.
-    
-    
-    
-
+    * Writes a value for the {@code scale} property as a {@code reference} value. The {@code scale} property specifies the scale of the model. If not specified, the default value is 1.0.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -813,9 +624,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code minimumPixelSize} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code minimumPixelSize} property defines the approximate minimum pixel size of the model regardless of zoom. If not specified, the default value is 0.0.
-    
-
+    * Gets the writer for the {@code minimumPixelSize} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code minimumPixelSize} property defines the approximate minimum pixel size of the model regardless of zoom. If not specified, the default value is 0.0.
     */
     @Nonnull
     public final DoubleCesiumWriter getMinimumPixelSizeWriter() {
@@ -823,10 +632,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code minimumPixelSize} property. The {@code minimumPixelSize} property defines the approximate minimum pixel size of the model regardless of zoom. If not specified, the default value is 0.0.
-    
-
+    * Opens and returns the writer for the {@code minimumPixelSize} property. The {@code minimumPixelSize} property defines the approximate minimum pixel size of the model regardless of zoom. If not specified, the default value is 0.0.
     */
     @Nonnull
     public final DoubleCesiumWriter openMinimumPixelSizeProperty() {
@@ -835,11 +641,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code minimumPixelSize} property as a {@code number} value. The {@code minimumPixelSize} property specifies the approximate minimum pixel size of the model regardless of zoom. If not specified, the default value is 0.0.
-    
-    
-
+    * Writes a value for the {@code minimumPixelSize} property as a {@code number} value. The {@code minimumPixelSize} property specifies the approximate minimum pixel size of the model regardless of zoom. If not specified, the default value is 0.0.
     * @param value The value.
     */
     public final void writeMinimumPixelSizeProperty(double value) {
@@ -854,12 +656,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code minimumPixelSize} property as a {@code number} value. The {@code minimumPixelSize} property specifies the approximate minimum pixel size of the model regardless of zoom. If not specified, the default value is 0.0.
-    
-    
-    
-
+    * Writes a value for the {@code minimumPixelSize} property as a {@code number} value. The {@code minimumPixelSize} property specifies the approximate minimum pixel size of the model regardless of zoom. If not specified, the default value is 0.0.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -875,14 +672,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code minimumPixelSize} property as a {@code number} value. The {@code minimumPixelSize} property specifies the approximate minimum pixel size of the model regardless of zoom. If not specified, the default value is 0.0.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code minimumPixelSize} property as a {@code number} value. The {@code minimumPixelSize} property specifies the approximate minimum pixel size of the model regardless of zoom. If not specified, the default value is 0.0.
     * @param dates The dates at which the value is specified.
     * @param values The value corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -900,11 +690,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code minimumPixelSize} property as a {@code reference} value. The {@code minimumPixelSize} property specifies the approximate minimum pixel size of the model regardless of zoom. If not specified, the default value is 0.0.
-    
-    
-
+    * Writes a value for the {@code minimumPixelSize} property as a {@code reference} value. The {@code minimumPixelSize} property specifies the approximate minimum pixel size of the model regardless of zoom. If not specified, the default value is 0.0.
     * @param value The reference.
     */
     public final void writeMinimumPixelSizePropertyReference(Reference value) {
@@ -919,11 +705,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code minimumPixelSize} property as a {@code reference} value. The {@code minimumPixelSize} property specifies the approximate minimum pixel size of the model regardless of zoom. If not specified, the default value is 0.0.
-    
-    
-
+    * Writes a value for the {@code minimumPixelSize} property as a {@code reference} value. The {@code minimumPixelSize} property specifies the approximate minimum pixel size of the model regardless of zoom. If not specified, the default value is 0.0.
     * @param value The reference.
     */
     public final void writeMinimumPixelSizePropertyReference(String value) {
@@ -938,12 +720,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code minimumPixelSize} property as a {@code reference} value. The {@code minimumPixelSize} property specifies the approximate minimum pixel size of the model regardless of zoom. If not specified, the default value is 0.0.
-    
-    
-    
-
+    * Writes a value for the {@code minimumPixelSize} property as a {@code reference} value. The {@code minimumPixelSize} property specifies the approximate minimum pixel size of the model regardless of zoom. If not specified, the default value is 0.0.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -959,12 +736,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code minimumPixelSize} property as a {@code reference} value. The {@code minimumPixelSize} property specifies the approximate minimum pixel size of the model regardless of zoom. If not specified, the default value is 0.0.
-    
-    
-    
-
+    * Writes a value for the {@code minimumPixelSize} property as a {@code reference} value. The {@code minimumPixelSize} property specifies the approximate minimum pixel size of the model regardless of zoom. If not specified, the default value is 0.0.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -980,9 +752,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code maximumScale} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code maximumScale} property defines the maximum scale size of the model. This is used as an upper limit for {@code minimumPixelSize}.
-    
-
+    * Gets the writer for the {@code maximumScale} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code maximumScale} property defines the maximum scale size of the model. This is used as an upper limit for {@code minimumPixelSize}.
     */
     @Nonnull
     public final DoubleCesiumWriter getMaximumScaleWriter() {
@@ -990,10 +760,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code maximumScale} property. The {@code maximumScale} property defines the maximum scale size of the model. This is used as an upper limit for {@code minimumPixelSize}.
-    
-
+    * Opens and returns the writer for the {@code maximumScale} property. The {@code maximumScale} property defines the maximum scale size of the model. This is used as an upper limit for {@code minimumPixelSize}.
     */
     @Nonnull
     public final DoubleCesiumWriter openMaximumScaleProperty() {
@@ -1002,11 +769,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code maximumScale} property as a {@code number} value. The {@code maximumScale} property specifies the maximum scale size of the model. This is used as an upper limit for {@code minimumPixelSize}.
-    
-    
-
+    * Writes a value for the {@code maximumScale} property as a {@code number} value. The {@code maximumScale} property specifies the maximum scale size of the model. This is used as an upper limit for {@code minimumPixelSize}.
     * @param value The value.
     */
     public final void writeMaximumScaleProperty(double value) {
@@ -1021,12 +784,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code maximumScale} property as a {@code number} value. The {@code maximumScale} property specifies the maximum scale size of the model. This is used as an upper limit for {@code minimumPixelSize}.
-    
-    
-    
-
+    * Writes a value for the {@code maximumScale} property as a {@code number} value. The {@code maximumScale} property specifies the maximum scale size of the model. This is used as an upper limit for {@code minimumPixelSize}.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -1042,14 +800,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code maximumScale} property as a {@code number} value. The {@code maximumScale} property specifies the maximum scale size of the model. This is used as an upper limit for {@code minimumPixelSize}.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code maximumScale} property as a {@code number} value. The {@code maximumScale} property specifies the maximum scale size of the model. This is used as an upper limit for {@code minimumPixelSize}.
     * @param dates The dates at which the value is specified.
     * @param values The value corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -1067,11 +818,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code maximumScale} property as a {@code reference} value. The {@code maximumScale} property specifies the maximum scale size of the model. This is used as an upper limit for {@code minimumPixelSize}.
-    
-    
-
+    * Writes a value for the {@code maximumScale} property as a {@code reference} value. The {@code maximumScale} property specifies the maximum scale size of the model. This is used as an upper limit for {@code minimumPixelSize}.
     * @param value The reference.
     */
     public final void writeMaximumScalePropertyReference(Reference value) {
@@ -1086,11 +833,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code maximumScale} property as a {@code reference} value. The {@code maximumScale} property specifies the maximum scale size of the model. This is used as an upper limit for {@code minimumPixelSize}.
-    
-    
-
+    * Writes a value for the {@code maximumScale} property as a {@code reference} value. The {@code maximumScale} property specifies the maximum scale size of the model. This is used as an upper limit for {@code minimumPixelSize}.
     * @param value The reference.
     */
     public final void writeMaximumScalePropertyReference(String value) {
@@ -1105,12 +848,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code maximumScale} property as a {@code reference} value. The {@code maximumScale} property specifies the maximum scale size of the model. This is used as an upper limit for {@code minimumPixelSize}.
-    
-    
-    
-
+    * Writes a value for the {@code maximumScale} property as a {@code reference} value. The {@code maximumScale} property specifies the maximum scale size of the model. This is used as an upper limit for {@code minimumPixelSize}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -1126,12 +864,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code maximumScale} property as a {@code reference} value. The {@code maximumScale} property specifies the maximum scale size of the model. This is used as an upper limit for {@code minimumPixelSize}.
-    
-    
-    
-
+    * Writes a value for the {@code maximumScale} property as a {@code reference} value. The {@code maximumScale} property specifies the maximum scale size of the model. This is used as an upper limit for {@code minimumPixelSize}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -1147,9 +880,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code incrementallyLoadTextures} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code incrementallyLoadTextures} property defines whether or not the model can be rendered before all textures have loaded. If not specified, the default value is {@code true}.
-    
-
+    * Gets the writer for the {@code incrementallyLoadTextures} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code incrementallyLoadTextures} property defines whether or not the model can be rendered before all textures have loaded. If not specified, the default value is {@code true}.
     */
     @Nonnull
     public final BooleanCesiumWriter getIncrementallyLoadTexturesWriter() {
@@ -1157,10 +888,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code incrementallyLoadTextures} property. The {@code incrementallyLoadTextures} property defines whether or not the model can be rendered before all textures have loaded. If not specified, the default value is {@code true}.
-    
-
+    * Opens and returns the writer for the {@code incrementallyLoadTextures} property. The {@code incrementallyLoadTextures} property defines whether or not the model can be rendered before all textures have loaded. If not specified, the default value is {@code true}.
     */
     @Nonnull
     public final BooleanCesiumWriter openIncrementallyLoadTexturesProperty() {
@@ -1169,11 +897,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code incrementallyLoadTextures} property as a {@code boolean} value. The {@code incrementallyLoadTextures} property specifies whether or not the model can be rendered before all textures have loaded. If not specified, the default value is {@code true}.
-    
-    
-
+    * Writes a value for the {@code incrementallyLoadTextures} property as a {@code boolean} value. The {@code incrementallyLoadTextures} property specifies whether or not the model can be rendered before all textures have loaded. If not specified, the default value is {@code true}.
     * @param value The value.
     */
     public final void writeIncrementallyLoadTexturesProperty(boolean value) {
@@ -1188,11 +912,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code incrementallyLoadTextures} property as a {@code reference} value. The {@code incrementallyLoadTextures} property specifies whether or not the model can be rendered before all textures have loaded. If not specified, the default value is {@code true}.
-    
-    
-
+    * Writes a value for the {@code incrementallyLoadTextures} property as a {@code reference} value. The {@code incrementallyLoadTextures} property specifies whether or not the model can be rendered before all textures have loaded. If not specified, the default value is {@code true}.
     * @param value The reference.
     */
     public final void writeIncrementallyLoadTexturesPropertyReference(Reference value) {
@@ -1207,11 +927,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code incrementallyLoadTextures} property as a {@code reference} value. The {@code incrementallyLoadTextures} property specifies whether or not the model can be rendered before all textures have loaded. If not specified, the default value is {@code true}.
-    
-    
-
+    * Writes a value for the {@code incrementallyLoadTextures} property as a {@code reference} value. The {@code incrementallyLoadTextures} property specifies whether or not the model can be rendered before all textures have loaded. If not specified, the default value is {@code true}.
     * @param value The reference.
     */
     public final void writeIncrementallyLoadTexturesPropertyReference(String value) {
@@ -1226,12 +942,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code incrementallyLoadTextures} property as a {@code reference} value. The {@code incrementallyLoadTextures} property specifies whether or not the model can be rendered before all textures have loaded. If not specified, the default value is {@code true}.
-    
-    
-    
-
+    * Writes a value for the {@code incrementallyLoadTextures} property as a {@code reference} value. The {@code incrementallyLoadTextures} property specifies whether or not the model can be rendered before all textures have loaded. If not specified, the default value is {@code true}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -1247,12 +958,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code incrementallyLoadTextures} property as a {@code reference} value. The {@code incrementallyLoadTextures} property specifies whether or not the model can be rendered before all textures have loaded. If not specified, the default value is {@code true}.
-    
-    
-    
-
+    * Writes a value for the {@code incrementallyLoadTextures} property as a {@code reference} value. The {@code incrementallyLoadTextures} property specifies whether or not the model can be rendered before all textures have loaded. If not specified, the default value is {@code true}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -1268,9 +974,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code runAnimations} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code runAnimations} property defines whether or not to run all animations defined in the glTF model. If not specified, the default value is {@code true}.
-    
-
+    * Gets the writer for the {@code runAnimations} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code runAnimations} property defines whether or not to run all animations defined in the glTF model. If not specified, the default value is {@code true}.
     */
     @Nonnull
     public final BooleanCesiumWriter getRunAnimationsWriter() {
@@ -1278,10 +982,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code runAnimations} property. The {@code runAnimations} property defines whether or not to run all animations defined in the glTF model. If not specified, the default value is {@code true}.
-    
-
+    * Opens and returns the writer for the {@code runAnimations} property. The {@code runAnimations} property defines whether or not to run all animations defined in the glTF model. If not specified, the default value is {@code true}.
     */
     @Nonnull
     public final BooleanCesiumWriter openRunAnimationsProperty() {
@@ -1290,11 +991,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code runAnimations} property as a {@code boolean} value. The {@code runAnimations} property specifies whether or not to run all animations defined in the glTF model. If not specified, the default value is {@code true}.
-    
-    
-
+    * Writes a value for the {@code runAnimations} property as a {@code boolean} value. The {@code runAnimations} property specifies whether or not to run all animations defined in the glTF model. If not specified, the default value is {@code true}.
     * @param value The value.
     */
     public final void writeRunAnimationsProperty(boolean value) {
@@ -1309,11 +1006,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code runAnimations} property as a {@code reference} value. The {@code runAnimations} property specifies whether or not to run all animations defined in the glTF model. If not specified, the default value is {@code true}.
-    
-    
-
+    * Writes a value for the {@code runAnimations} property as a {@code reference} value. The {@code runAnimations} property specifies whether or not to run all animations defined in the glTF model. If not specified, the default value is {@code true}.
     * @param value The reference.
     */
     public final void writeRunAnimationsPropertyReference(Reference value) {
@@ -1328,11 +1021,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code runAnimations} property as a {@code reference} value. The {@code runAnimations} property specifies whether or not to run all animations defined in the glTF model. If not specified, the default value is {@code true}.
-    
-    
-
+    * Writes a value for the {@code runAnimations} property as a {@code reference} value. The {@code runAnimations} property specifies whether or not to run all animations defined in the glTF model. If not specified, the default value is {@code true}.
     * @param value The reference.
     */
     public final void writeRunAnimationsPropertyReference(String value) {
@@ -1347,12 +1036,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code runAnimations} property as a {@code reference} value. The {@code runAnimations} property specifies whether or not to run all animations defined in the glTF model. If not specified, the default value is {@code true}.
-    
-    
-    
-
+    * Writes a value for the {@code runAnimations} property as a {@code reference} value. The {@code runAnimations} property specifies whether or not to run all animations defined in the glTF model. If not specified, the default value is {@code true}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -1368,12 +1052,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code runAnimations} property as a {@code reference} value. The {@code runAnimations} property specifies whether or not to run all animations defined in the glTF model. If not specified, the default value is {@code true}.
-    
-    
-    
-
+    * Writes a value for the {@code runAnimations} property as a {@code reference} value. The {@code runAnimations} property specifies whether or not to run all animations defined in the glTF model. If not specified, the default value is {@code true}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -1389,9 +1068,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code shadows} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code shadows} property defines whether or not the model casts or receives shadows. If not specified, the default value is ENABLED.
-    
-
+    * Gets the writer for the {@code shadows} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code shadows} property defines whether or not the model casts or receives shadows. If not specified, the default value is ENABLED.
     */
     @Nonnull
     public final ShadowModeCesiumWriter getShadowsWriter() {
@@ -1399,10 +1076,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code shadows} property. The {@code shadows} property defines whether or not the model casts or receives shadows. If not specified, the default value is ENABLED.
-    
-
+    * Opens and returns the writer for the {@code shadows} property. The {@code shadows} property defines whether or not the model casts or receives shadows. If not specified, the default value is ENABLED.
     */
     @Nonnull
     public final ShadowModeCesiumWriter openShadowsProperty() {
@@ -1411,11 +1085,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code shadows} property as a {@code shadowMode} value. The {@code shadows} property specifies whether or not the model casts or receives shadows. If not specified, the default value is ENABLED.
-    
-    
-
+    * Writes a value for the {@code shadows} property as a {@code shadowMode} value. The {@code shadows} property specifies whether or not the model casts or receives shadows. If not specified, the default value is ENABLED.
     * @param value The shadow mode.
     */
     public final void writeShadowsProperty(@Nonnull CesiumShadowMode value) {
@@ -1430,11 +1100,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code shadows} property as a {@code reference} value. The {@code shadows} property specifies whether or not the model casts or receives shadows. If not specified, the default value is ENABLED.
-    
-    
-
+    * Writes a value for the {@code shadows} property as a {@code reference} value. The {@code shadows} property specifies whether or not the model casts or receives shadows. If not specified, the default value is ENABLED.
     * @param value The reference.
     */
     public final void writeShadowsPropertyReference(Reference value) {
@@ -1449,11 +1115,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code shadows} property as a {@code reference} value. The {@code shadows} property specifies whether or not the model casts or receives shadows. If not specified, the default value is ENABLED.
-    
-    
-
+    * Writes a value for the {@code shadows} property as a {@code reference} value. The {@code shadows} property specifies whether or not the model casts or receives shadows. If not specified, the default value is ENABLED.
     * @param value The reference.
     */
     public final void writeShadowsPropertyReference(String value) {
@@ -1468,12 +1130,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code shadows} property as a {@code reference} value. The {@code shadows} property specifies whether or not the model casts or receives shadows. If not specified, the default value is ENABLED.
-    
-    
-    
-
+    * Writes a value for the {@code shadows} property as a {@code reference} value. The {@code shadows} property specifies whether or not the model casts or receives shadows. If not specified, the default value is ENABLED.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -1489,12 +1146,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code shadows} property as a {@code reference} value. The {@code shadows} property specifies whether or not the model casts or receives shadows. If not specified, the default value is ENABLED.
-    
-    
-    
-
+    * Writes a value for the {@code shadows} property as a {@code reference} value. The {@code shadows} property specifies whether or not the model casts or receives shadows. If not specified, the default value is ENABLED.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -1510,9 +1162,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code heightReference} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code heightReference} property defines the height reference of the model, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
-    
-
+    * Gets the writer for the {@code heightReference} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code heightReference} property defines the height reference of the model, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
     */
     @Nonnull
     public final HeightReferenceCesiumWriter getHeightReferenceWriter() {
@@ -1520,10 +1170,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code heightReference} property. The {@code heightReference} property defines the height reference of the model, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
-    
-
+    * Opens and returns the writer for the {@code heightReference} property. The {@code heightReference} property defines the height reference of the model, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
     */
     @Nonnull
     public final HeightReferenceCesiumWriter openHeightReferenceProperty() {
@@ -1532,11 +1179,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code heightReference} property as a {@code heightReference} value. The {@code heightReference} property specifies the height reference of the model, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
-    
-    
-
+    * Writes a value for the {@code heightReference} property as a {@code heightReference} value. The {@code heightReference} property specifies the height reference of the model, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
     * @param value The height reference.
     */
     public final void writeHeightReferenceProperty(@Nonnull CesiumHeightReference value) {
@@ -1551,11 +1194,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the model, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
-    
-    
-
+    * Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the model, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
     * @param value The reference.
     */
     public final void writeHeightReferencePropertyReference(Reference value) {
@@ -1570,11 +1209,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the model, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
-    
-    
-
+    * Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the model, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
     * @param value The reference.
     */
     public final void writeHeightReferencePropertyReference(String value) {
@@ -1589,12 +1224,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the model, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
-    
-    
-    
-
+    * Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the model, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -1610,12 +1240,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the model, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
-    
-    
-    
-
+    * Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the model, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -1631,9 +1256,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code silhouetteColor} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code silhouetteColor} property defines the color of the silhouette drawn around the model. If not specified, the default value is red.
-    
-
+    * Gets the writer for the {@code silhouetteColor} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code silhouetteColor} property defines the color of the silhouette drawn around the model. If not specified, the default value is red.
     */
     @Nonnull
     public final ColorCesiumWriter getSilhouetteColorWriter() {
@@ -1641,10 +1264,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code silhouetteColor} property. The {@code silhouetteColor} property defines the color of the silhouette drawn around the model. If not specified, the default value is red.
-    
-
+    * Opens and returns the writer for the {@code silhouetteColor} property. The {@code silhouetteColor} property defines the color of the silhouette drawn around the model. If not specified, the default value is red.
     */
     @Nonnull
     public final ColorCesiumWriter openSilhouetteColorProperty() {
@@ -1653,11 +1273,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code silhouetteColor} property as a {@code rgba} value. The {@code silhouetteColor} property specifies the color of the silhouette drawn around the model. If not specified, the default value is red.
-    
-    
-
+    * Writes a value for the {@code silhouetteColor} property as a {@code rgba} value. The {@code silhouetteColor} property specifies the color of the silhouette drawn around the model. If not specified, the default value is red.
     * @param color The color.
     */
     public final void writeSilhouetteColorProperty(@Nonnull Color color) {
@@ -1672,14 +1288,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code silhouetteColor} property as a {@code rgba} value. The {@code silhouetteColor} property specifies the color of the silhouette drawn around the model. If not specified, the default value is red.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code silhouetteColor} property as a {@code rgba} value. The {@code silhouetteColor} property specifies the color of the silhouette drawn around the model. If not specified, the default value is red.
     * @param red The red component in the range 0 to 255.
     * @param green The green component in the range 0 to 255.
     * @param blue The blue component in the range 0 to 255.
@@ -1697,12 +1306,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code silhouetteColor} property as a {@code rgba} value. The {@code silhouetteColor} property specifies the color of the silhouette drawn around the model. If not specified, the default value is red.
-    
-    
-    
-
+    * Writes a value for the {@code silhouetteColor} property as a {@code rgba} value. The {@code silhouetteColor} property specifies the color of the silhouette drawn around the model. If not specified, the default value is red.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -1718,14 +1322,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code silhouetteColor} property as a {@code rgba} value. The {@code silhouetteColor} property specifies the color of the silhouette drawn around the model. If not specified, the default value is red.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code silhouetteColor} property as a {@code rgba} value. The {@code silhouetteColor} property specifies the color of the silhouette drawn around the model. If not specified, the default value is red.
     * @param dates The dates at which the value is specified.
     * @param colors The color corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -1743,11 +1340,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code silhouetteColor} property as a {@code rgbaf} value. The {@code silhouetteColor} property specifies the color of the silhouette drawn around the model. If not specified, the default value is red.
-    
-    
-
+    * Writes a value for the {@code silhouetteColor} property as a {@code rgbaf} value. The {@code silhouetteColor} property specifies the color of the silhouette drawn around the model. If not specified, the default value is red.
     * @param color The color.
     */
     public final void writeSilhouetteColorPropertyRgbaf(@Nonnull Color color) {
@@ -1762,14 +1355,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code silhouetteColor} property as a {@code rgbaf} value. The {@code silhouetteColor} property specifies the color of the silhouette drawn around the model. If not specified, the default value is red.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code silhouetteColor} property as a {@code rgbaf} value. The {@code silhouetteColor} property specifies the color of the silhouette drawn around the model. If not specified, the default value is red.
     * @param red The red component in the range 0 to 1.0.
     * @param green The green component in the range 0 to 1.0.
     * @param blue The blue component in the range 0 to 1.0.
@@ -1787,12 +1373,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code silhouetteColor} property as a {@code rgbaf} value. The {@code silhouetteColor} property specifies the color of the silhouette drawn around the model. If not specified, the default value is red.
-    
-    
-    
-
+    * Writes a value for the {@code silhouetteColor} property as a {@code rgbaf} value. The {@code silhouetteColor} property specifies the color of the silhouette drawn around the model. If not specified, the default value is red.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -1808,14 +1389,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code silhouetteColor} property as a {@code rgbaf} value. The {@code silhouetteColor} property specifies the color of the silhouette drawn around the model. If not specified, the default value is red.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code silhouetteColor} property as a {@code rgbaf} value. The {@code silhouetteColor} property specifies the color of the silhouette drawn around the model. If not specified, the default value is red.
     * @param dates The dates at which the value is specified.
     * @param colors The color corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -1833,11 +1407,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code silhouetteColor} property as a {@code reference} value. The {@code silhouetteColor} property specifies the color of the silhouette drawn around the model. If not specified, the default value is red.
-    
-    
-
+    * Writes a value for the {@code silhouetteColor} property as a {@code reference} value. The {@code silhouetteColor} property specifies the color of the silhouette drawn around the model. If not specified, the default value is red.
     * @param value The reference.
     */
     public final void writeSilhouetteColorPropertyReference(Reference value) {
@@ -1852,11 +1422,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code silhouetteColor} property as a {@code reference} value. The {@code silhouetteColor} property specifies the color of the silhouette drawn around the model. If not specified, the default value is red.
-    
-    
-
+    * Writes a value for the {@code silhouetteColor} property as a {@code reference} value. The {@code silhouetteColor} property specifies the color of the silhouette drawn around the model. If not specified, the default value is red.
     * @param value The reference.
     */
     public final void writeSilhouetteColorPropertyReference(String value) {
@@ -1871,12 +1437,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code silhouetteColor} property as a {@code reference} value. The {@code silhouetteColor} property specifies the color of the silhouette drawn around the model. If not specified, the default value is red.
-    
-    
-    
-
+    * Writes a value for the {@code silhouetteColor} property as a {@code reference} value. The {@code silhouetteColor} property specifies the color of the silhouette drawn around the model. If not specified, the default value is red.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -1892,12 +1453,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code silhouetteColor} property as a {@code reference} value. The {@code silhouetteColor} property specifies the color of the silhouette drawn around the model. If not specified, the default value is red.
-    
-    
-    
-
+    * Writes a value for the {@code silhouetteColor} property as a {@code reference} value. The {@code silhouetteColor} property specifies the color of the silhouette drawn around the model. If not specified, the default value is red.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -1913,9 +1469,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code silhouetteSize} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code silhouetteSize} property defines the size, in pixels, of the silhouette drawn around the model. If not specified, the default value is 0.0.
-    
-
+    * Gets the writer for the {@code silhouetteSize} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code silhouetteSize} property defines the size, in pixels, of the silhouette drawn around the model. If not specified, the default value is 0.0.
     */
     @Nonnull
     public final DoubleCesiumWriter getSilhouetteSizeWriter() {
@@ -1923,10 +1477,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code silhouetteSize} property. The {@code silhouetteSize} property defines the size, in pixels, of the silhouette drawn around the model. If not specified, the default value is 0.0.
-    
-
+    * Opens and returns the writer for the {@code silhouetteSize} property. The {@code silhouetteSize} property defines the size, in pixels, of the silhouette drawn around the model. If not specified, the default value is 0.0.
     */
     @Nonnull
     public final DoubleCesiumWriter openSilhouetteSizeProperty() {
@@ -1935,11 +1486,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code silhouetteSize} property as a {@code number} value. The {@code silhouetteSize} property specifies the size, in pixels, of the silhouette drawn around the model. If not specified, the default value is 0.0.
-    
-    
-
+    * Writes a value for the {@code silhouetteSize} property as a {@code number} value. The {@code silhouetteSize} property specifies the size, in pixels, of the silhouette drawn around the model. If not specified, the default value is 0.0.
     * @param value The value.
     */
     public final void writeSilhouetteSizeProperty(double value) {
@@ -1954,12 +1501,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code silhouetteSize} property as a {@code number} value. The {@code silhouetteSize} property specifies the size, in pixels, of the silhouette drawn around the model. If not specified, the default value is 0.0.
-    
-    
-    
-
+    * Writes a value for the {@code silhouetteSize} property as a {@code number} value. The {@code silhouetteSize} property specifies the size, in pixels, of the silhouette drawn around the model. If not specified, the default value is 0.0.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -1975,14 +1517,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code silhouetteSize} property as a {@code number} value. The {@code silhouetteSize} property specifies the size, in pixels, of the silhouette drawn around the model. If not specified, the default value is 0.0.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code silhouetteSize} property as a {@code number} value. The {@code silhouetteSize} property specifies the size, in pixels, of the silhouette drawn around the model. If not specified, the default value is 0.0.
     * @param dates The dates at which the value is specified.
     * @param values The value corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -2000,11 +1535,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code silhouetteSize} property as a {@code reference} value. The {@code silhouetteSize} property specifies the size, in pixels, of the silhouette drawn around the model. If not specified, the default value is 0.0.
-    
-    
-
+    * Writes a value for the {@code silhouetteSize} property as a {@code reference} value. The {@code silhouetteSize} property specifies the size, in pixels, of the silhouette drawn around the model. If not specified, the default value is 0.0.
     * @param value The reference.
     */
     public final void writeSilhouetteSizePropertyReference(Reference value) {
@@ -2019,11 +1550,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code silhouetteSize} property as a {@code reference} value. The {@code silhouetteSize} property specifies the size, in pixels, of the silhouette drawn around the model. If not specified, the default value is 0.0.
-    
-    
-
+    * Writes a value for the {@code silhouetteSize} property as a {@code reference} value. The {@code silhouetteSize} property specifies the size, in pixels, of the silhouette drawn around the model. If not specified, the default value is 0.0.
     * @param value The reference.
     */
     public final void writeSilhouetteSizePropertyReference(String value) {
@@ -2038,12 +1565,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code silhouetteSize} property as a {@code reference} value. The {@code silhouetteSize} property specifies the size, in pixels, of the silhouette drawn around the model. If not specified, the default value is 0.0.
-    
-    
-    
-
+    * Writes a value for the {@code silhouetteSize} property as a {@code reference} value. The {@code silhouetteSize} property specifies the size, in pixels, of the silhouette drawn around the model. If not specified, the default value is 0.0.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -2059,12 +1581,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code silhouetteSize} property as a {@code reference} value. The {@code silhouetteSize} property specifies the size, in pixels, of the silhouette drawn around the model. If not specified, the default value is 0.0.
-    
-    
-    
-
+    * Writes a value for the {@code silhouetteSize} property as a {@code reference} value. The {@code silhouetteSize} property specifies the size, in pixels, of the silhouette drawn around the model. If not specified, the default value is 0.0.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -2080,9 +1597,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code color} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code color} property defines the color to blend with the model's rendered color. If not specified, the default value is white.
-    
-
+    * Gets the writer for the {@code color} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code color} property defines the color to blend with the model's rendered color. If not specified, the default value is white.
     */
     @Nonnull
     public final ColorCesiumWriter getColorWriter() {
@@ -2090,10 +1605,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code color} property. The {@code color} property defines the color to blend with the model's rendered color. If not specified, the default value is white.
-    
-
+    * Opens and returns the writer for the {@code color} property. The {@code color} property defines the color to blend with the model's rendered color. If not specified, the default value is white.
     */
     @Nonnull
     public final ColorCesiumWriter openColorProperty() {
@@ -2102,11 +1614,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color to blend with the model's rendered color. If not specified, the default value is white.
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color to blend with the model's rendered color. If not specified, the default value is white.
     * @param color The color.
     */
     public final void writeColorProperty(@Nonnull Color color) {
@@ -2121,14 +1629,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color to blend with the model's rendered color. If not specified, the default value is white.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color to blend with the model's rendered color. If not specified, the default value is white.
     * @param red The red component in the range 0 to 255.
     * @param green The green component in the range 0 to 255.
     * @param blue The blue component in the range 0 to 255.
@@ -2146,12 +1647,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color to blend with the model's rendered color. If not specified, the default value is white.
-    
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color to blend with the model's rendered color. If not specified, the default value is white.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -2167,14 +1663,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color to blend with the model's rendered color. If not specified, the default value is white.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color to blend with the model's rendered color. If not specified, the default value is white.
     * @param dates The dates at which the value is specified.
     * @param colors The color corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -2192,11 +1681,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color to blend with the model's rendered color. If not specified, the default value is white.
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color to blend with the model's rendered color. If not specified, the default value is white.
     * @param color The color.
     */
     public final void writeColorPropertyRgbaf(@Nonnull Color color) {
@@ -2211,14 +1696,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color to blend with the model's rendered color. If not specified, the default value is white.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color to blend with the model's rendered color. If not specified, the default value is white.
     * @param red The red component in the range 0 to 1.0.
     * @param green The green component in the range 0 to 1.0.
     * @param blue The blue component in the range 0 to 1.0.
@@ -2236,12 +1714,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color to blend with the model's rendered color. If not specified, the default value is white.
-    
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color to blend with the model's rendered color. If not specified, the default value is white.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -2257,14 +1730,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color to blend with the model's rendered color. If not specified, the default value is white.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color to blend with the model's rendered color. If not specified, the default value is white.
     * @param dates The dates at which the value is specified.
     * @param colors The color corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -2282,11 +1748,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color to blend with the model's rendered color. If not specified, the default value is white.
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color to blend with the model's rendered color. If not specified, the default value is white.
     * @param value The reference.
     */
     public final void writeColorPropertyReference(Reference value) {
@@ -2301,11 +1763,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color to blend with the model's rendered color. If not specified, the default value is white.
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color to blend with the model's rendered color. If not specified, the default value is white.
     * @param value The reference.
     */
     public final void writeColorPropertyReference(String value) {
@@ -2320,12 +1778,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color to blend with the model's rendered color. If not specified, the default value is white.
-    
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color to blend with the model's rendered color. If not specified, the default value is white.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -2341,12 +1794,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color to blend with the model's rendered color. If not specified, the default value is white.
-    
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color to blend with the model's rendered color. If not specified, the default value is white.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -2362,9 +1810,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code colorBlendMode} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code colorBlendMode} property defines the mode to use for blending between {@code color} and the model's color. If not specified, the default value is HIGHLIGHT.
-    
-
+    * Gets the writer for the {@code colorBlendMode} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code colorBlendMode} property defines the mode to use for blending between {@code color} and the model's color. If not specified, the default value is HIGHLIGHT.
     */
     @Nonnull
     public final ColorBlendModeCesiumWriter getColorBlendModeWriter() {
@@ -2372,10 +1818,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code colorBlendMode} property. The {@code colorBlendMode} property defines the mode to use for blending between {@code color} and the model's color. If not specified, the default value is HIGHLIGHT.
-    
-
+    * Opens and returns the writer for the {@code colorBlendMode} property. The {@code colorBlendMode} property defines the mode to use for blending between {@code color} and the model's color. If not specified, the default value is HIGHLIGHT.
     */
     @Nonnull
     public final ColorBlendModeCesiumWriter openColorBlendModeProperty() {
@@ -2384,11 +1827,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code colorBlendMode} property as a {@code colorBlendMode} value. The {@code colorBlendMode} property specifies the mode to use for blending between {@code color} and the model's color. If not specified, the default value is HIGHLIGHT.
-    
-    
-
+    * Writes a value for the {@code colorBlendMode} property as a {@code colorBlendMode} value. The {@code colorBlendMode} property specifies the mode to use for blending between {@code color} and the model's color. If not specified, the default value is HIGHLIGHT.
     * @param value The blend mode.
     */
     public final void writeColorBlendModeProperty(@Nonnull CesiumColorBlendMode value) {
@@ -2403,11 +1842,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code colorBlendMode} property as a {@code reference} value. The {@code colorBlendMode} property specifies the mode to use for blending between {@code color} and the model's color. If not specified, the default value is HIGHLIGHT.
-    
-    
-
+    * Writes a value for the {@code colorBlendMode} property as a {@code reference} value. The {@code colorBlendMode} property specifies the mode to use for blending between {@code color} and the model's color. If not specified, the default value is HIGHLIGHT.
     * @param value The reference.
     */
     public final void writeColorBlendModePropertyReference(Reference value) {
@@ -2422,11 +1857,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code colorBlendMode} property as a {@code reference} value. The {@code colorBlendMode} property specifies the mode to use for blending between {@code color} and the model's color. If not specified, the default value is HIGHLIGHT.
-    
-    
-
+    * Writes a value for the {@code colorBlendMode} property as a {@code reference} value. The {@code colorBlendMode} property specifies the mode to use for blending between {@code color} and the model's color. If not specified, the default value is HIGHLIGHT.
     * @param value The reference.
     */
     public final void writeColorBlendModePropertyReference(String value) {
@@ -2441,12 +1872,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code colorBlendMode} property as a {@code reference} value. The {@code colorBlendMode} property specifies the mode to use for blending between {@code color} and the model's color. If not specified, the default value is HIGHLIGHT.
-    
-    
-    
-
+    * Writes a value for the {@code colorBlendMode} property as a {@code reference} value. The {@code colorBlendMode} property specifies the mode to use for blending between {@code color} and the model's color. If not specified, the default value is HIGHLIGHT.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -2462,12 +1888,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code colorBlendMode} property as a {@code reference} value. The {@code colorBlendMode} property specifies the mode to use for blending between {@code color} and the model's color. If not specified, the default value is HIGHLIGHT.
-    
-    
-    
-
+    * Writes a value for the {@code colorBlendMode} property as a {@code reference} value. The {@code colorBlendMode} property specifies the mode to use for blending between {@code color} and the model's color. If not specified, the default value is HIGHLIGHT.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -2483,9 +1904,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code colorBlendAmount} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code colorBlendAmount} property defines the color strength when {@code colorBlendMode} is {@code MIX}. A value of 0.0 results in the model's rendered color while a value of 1.0 results in a solid color, with any value in-between resulting in a mix of the two. If not specified, the default value is 0.5.
-    
-
+    * Gets the writer for the {@code colorBlendAmount} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code colorBlendAmount} property defines the color strength when {@code colorBlendMode} is {@code MIX}. A value of 0.0 results in the model's rendered color while a value of 1.0 results in a solid color, with any value in-between resulting in a mix of the two. If not specified, the default value is 0.5.
     */
     @Nonnull
     public final DoubleCesiumWriter getColorBlendAmountWriter() {
@@ -2493,10 +1912,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code colorBlendAmount} property. The {@code colorBlendAmount} property defines the color strength when {@code colorBlendMode} is {@code MIX}. A value of 0.0 results in the model's rendered color while a value of 1.0 results in a solid color, with any value in-between resulting in a mix of the two. If not specified, the default value is 0.5.
-    
-
+    * Opens and returns the writer for the {@code colorBlendAmount} property. The {@code colorBlendAmount} property defines the color strength when {@code colorBlendMode} is {@code MIX}. A value of 0.0 results in the model's rendered color while a value of 1.0 results in a solid color, with any value in-between resulting in a mix of the two. If not specified, the default value is 0.5.
     */
     @Nonnull
     public final DoubleCesiumWriter openColorBlendAmountProperty() {
@@ -2505,11 +1921,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code colorBlendAmount} property as a {@code number} value. The {@code colorBlendAmount} property specifies the color strength when {@code colorBlendMode} is {@code MIX}. A value of 0.0 results in the model's rendered color while a value of 1.0 results in a solid color, with any value in-between resulting in a mix of the two. If not specified, the default value is 0.5.
-    
-    
-
+    * Writes a value for the {@code colorBlendAmount} property as a {@code number} value. The {@code colorBlendAmount} property specifies the color strength when {@code colorBlendMode} is {@code MIX}. A value of 0.0 results in the model's rendered color while a value of 1.0 results in a solid color, with any value in-between resulting in a mix of the two. If not specified, the default value is 0.5.
     * @param value The value.
     */
     public final void writeColorBlendAmountProperty(double value) {
@@ -2524,12 +1936,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code colorBlendAmount} property as a {@code number} value. The {@code colorBlendAmount} property specifies the color strength when {@code colorBlendMode} is {@code MIX}. A value of 0.0 results in the model's rendered color while a value of 1.0 results in a solid color, with any value in-between resulting in a mix of the two. If not specified, the default value is 0.5.
-    
-    
-    
-
+    * Writes a value for the {@code colorBlendAmount} property as a {@code number} value. The {@code colorBlendAmount} property specifies the color strength when {@code colorBlendMode} is {@code MIX}. A value of 0.0 results in the model's rendered color while a value of 1.0 results in a solid color, with any value in-between resulting in a mix of the two. If not specified, the default value is 0.5.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -2545,14 +1952,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code colorBlendAmount} property as a {@code number} value. The {@code colorBlendAmount} property specifies the color strength when {@code colorBlendMode} is {@code MIX}. A value of 0.0 results in the model's rendered color while a value of 1.0 results in a solid color, with any value in-between resulting in a mix of the two. If not specified, the default value is 0.5.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code colorBlendAmount} property as a {@code number} value. The {@code colorBlendAmount} property specifies the color strength when {@code colorBlendMode} is {@code MIX}. A value of 0.0 results in the model's rendered color while a value of 1.0 results in a solid color, with any value in-between resulting in a mix of the two. If not specified, the default value is 0.5.
     * @param dates The dates at which the value is specified.
     * @param values The value corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -2570,11 +1970,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code colorBlendAmount} property as a {@code reference} value. The {@code colorBlendAmount} property specifies the color strength when {@code colorBlendMode} is {@code MIX}. A value of 0.0 results in the model's rendered color while a value of 1.0 results in a solid color, with any value in-between resulting in a mix of the two. If not specified, the default value is 0.5.
-    
-    
-
+    * Writes a value for the {@code colorBlendAmount} property as a {@code reference} value. The {@code colorBlendAmount} property specifies the color strength when {@code colorBlendMode} is {@code MIX}. A value of 0.0 results in the model's rendered color while a value of 1.0 results in a solid color, with any value in-between resulting in a mix of the two. If not specified, the default value is 0.5.
     * @param value The reference.
     */
     public final void writeColorBlendAmountPropertyReference(Reference value) {
@@ -2589,11 +1985,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code colorBlendAmount} property as a {@code reference} value. The {@code colorBlendAmount} property specifies the color strength when {@code colorBlendMode} is {@code MIX}. A value of 0.0 results in the model's rendered color while a value of 1.0 results in a solid color, with any value in-between resulting in a mix of the two. If not specified, the default value is 0.5.
-    
-    
-
+    * Writes a value for the {@code colorBlendAmount} property as a {@code reference} value. The {@code colorBlendAmount} property specifies the color strength when {@code colorBlendMode} is {@code MIX}. A value of 0.0 results in the model's rendered color while a value of 1.0 results in a solid color, with any value in-between resulting in a mix of the two. If not specified, the default value is 0.5.
     * @param value The reference.
     */
     public final void writeColorBlendAmountPropertyReference(String value) {
@@ -2608,12 +2000,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code colorBlendAmount} property as a {@code reference} value. The {@code colorBlendAmount} property specifies the color strength when {@code colorBlendMode} is {@code MIX}. A value of 0.0 results in the model's rendered color while a value of 1.0 results in a solid color, with any value in-between resulting in a mix of the two. If not specified, the default value is 0.5.
-    
-    
-    
-
+    * Writes a value for the {@code colorBlendAmount} property as a {@code reference} value. The {@code colorBlendAmount} property specifies the color strength when {@code colorBlendMode} is {@code MIX}. A value of 0.0 results in the model's rendered color while a value of 1.0 results in a solid color, with any value in-between resulting in a mix of the two. If not specified, the default value is 0.5.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -2629,12 +2016,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code colorBlendAmount} property as a {@code reference} value. The {@code colorBlendAmount} property specifies the color strength when {@code colorBlendMode} is {@code MIX}. A value of 0.0 results in the model's rendered color while a value of 1.0 results in a solid color, with any value in-between resulting in a mix of the two. If not specified, the default value is 0.5.
-    
-    
-    
-
+    * Writes a value for the {@code colorBlendAmount} property as a {@code reference} value. The {@code colorBlendAmount} property specifies the color strength when {@code colorBlendMode} is {@code MIX}. A value of 0.0 results in the model's rendered color while a value of 1.0 results in a solid color, with any value in-between resulting in a mix of the two. If not specified, the default value is 0.5.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -2650,9 +2032,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code distanceDisplayCondition} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code distanceDisplayCondition} property defines the display condition specifying at what distance from the camera this model will be displayed.
-    
-
+    * Gets the writer for the {@code distanceDisplayCondition} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code distanceDisplayCondition} property defines the display condition specifying at what distance from the camera this model will be displayed.
     */
     @Nonnull
     public final DistanceDisplayConditionCesiumWriter getDistanceDisplayConditionWriter() {
@@ -2660,10 +2040,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code distanceDisplayCondition} property. The {@code distanceDisplayCondition} property defines the display condition specifying at what distance from the camera this model will be displayed.
-    
-
+    * Opens and returns the writer for the {@code distanceDisplayCondition} property. The {@code distanceDisplayCondition} property defines the display condition specifying at what distance from the camera this model will be displayed.
     */
     @Nonnull
     public final DistanceDisplayConditionCesiumWriter openDistanceDisplayConditionProperty() {
@@ -2672,11 +2049,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this model will be displayed.
-    
-    
-
+    * Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this model will be displayed.
     * @param value The value.
     */
     public final void writeDistanceDisplayConditionProperty(@Nonnull Bounds value) {
@@ -2691,12 +2064,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this model will be displayed.
-    
-    
-    
-
+    * Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this model will be displayed.
     * @param lowerBound The lower bound.
     * @param upperBound The upper bound.
     */
@@ -2712,12 +2080,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this model will be displayed.
-    
-    
-    
-
+    * Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this model will be displayed.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -2733,14 +2096,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this model will be displayed.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this model will be displayed.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -2758,11 +2114,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this model will be displayed.
-    
-    
-
+    * Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this model will be displayed.
     * @param value The reference.
     */
     public final void writeDistanceDisplayConditionPropertyReference(Reference value) {
@@ -2777,11 +2129,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this model will be displayed.
-    
-    
-
+    * Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this model will be displayed.
     * @param value The reference.
     */
     public final void writeDistanceDisplayConditionPropertyReference(String value) {
@@ -2796,12 +2144,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this model will be displayed.
-    
-    
-    
-
+    * Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this model will be displayed.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -2817,12 +2160,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this model will be displayed.
-    
-    
-    
-
+    * Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying at what distance from the camera this model will be displayed.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -2838,9 +2176,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code nodeTransformations} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code nodeTransformations} property defines a mapping of node names to node transformations.
-    
-
+    * Gets the writer for the {@code nodeTransformations} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code nodeTransformations} property defines a mapping of node names to node transformations.
     */
     @Nonnull
     public final NodeTransformationsCesiumWriter getNodeTransformationsWriter() {
@@ -2848,10 +2184,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code nodeTransformations} property. The {@code nodeTransformations} property defines a mapping of node names to node transformations.
-    
-
+    * Opens and returns the writer for the {@code nodeTransformations} property. The {@code nodeTransformations} property defines a mapping of node names to node transformations.
     */
     @Nonnull
     public final NodeTransformationsCesiumWriter openNodeTransformationsProperty() {
@@ -2860,9 +2193,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  Gets the writer for the {@code articulations} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code articulations} property defines a mapping of keys to articulation values, where the keys are the name of the articulation, a single space, and the name of the stage.
-    
-
+    * Gets the writer for the {@code articulations} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code articulations} property defines a mapping of keys to articulation values, where the keys are the name of the articulation, a single space, and the name of the stage.
     */
     @Nonnull
     public final ArticulationsCesiumWriter getArticulationsWriter() {
@@ -2870,10 +2201,7 @@ public class ModelCesiumWriter extends CesiumPropertyWriter<ModelCesiumWriter> {
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code articulations} property. The {@code articulations} property defines a mapping of keys to articulation values, where the keys are the name of the articulation, a single space, and the name of the stage.
-    
-
+    * Opens and returns the writer for the {@code articulations} property. The {@code articulations} property defines a mapping of keys to articulation values, where the keys are the name of the articulation, a single space, and the name of the stage.
     */
     @Nonnull
     public final ArticulationsCesiumWriter openArticulationsProperty() {

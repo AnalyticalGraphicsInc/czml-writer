@@ -6,12 +6,8 @@ import cesiumlanguagewriter.*;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Adapts a class that implements {@link ICesiumCartographicRectangleDegreesValuePropertyWriter} to implement
+ * Adapts a class that implements {@link ICesiumCartographicRectangleDegreesValuePropertyWriter} to implement
  {@link ICesiumInterpolatableValuePropertyWriter} for {@link CartographicExtent} values.
- 
- 
-
  * @param <TFrom> The class that implements {@link ICesiumCartographicRectangleDegreesValuePropertyWriter} to adapt.
  */
 @SuppressWarnings( {
@@ -22,14 +18,7 @@ import javax.annotation.Nonnull;
 public class CesiumCartographicRectangleDegreesValuePropertyAdaptor<TFrom extends ICesiumCartographicRectangleDegreesValuePropertyWriter> extends
         CesiumInterpolatableWriterAdaptor<TFrom, CartographicExtent> {
     /**
-    *  
-    Initializes a new instance.
-    
-    
-    
-    
-    
-
+    * Initializes a new instance.
     * @param parent The instance to wrap.
     * @param writeValueCallback The callback to write values of type {@link CartographicExtent}.
     * @param writeSamplesCallback The callback to write samples of type {@link CartographicExtent}.

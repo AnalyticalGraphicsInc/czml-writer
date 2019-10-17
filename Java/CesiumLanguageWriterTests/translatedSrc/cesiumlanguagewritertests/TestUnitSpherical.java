@@ -16,10 +16,7 @@ import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
 /**
- *  
- Tests the {@link UnitSpherical} type.
- 
-
+ * Tests the {@link UnitSpherical} type.
  */
 @SuppressWarnings( {
         "unused",
@@ -29,10 +26,7 @@ import org.junit.Test;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestUnitSpherical {
     /**
-    *  
-    Tests that initialization of and access to the type's values works correctly.
-    
-
+    * Tests that initialization of and access to the type's values works correctly.
     */
     @Test
     public final void testHoldValue() {
@@ -42,10 +36,7 @@ public class TestUnitSpherical {
     }
 
     /**
-    *  
-    Tests initialization from {@link UnitCartesian} coordinates.
-    
-
+    * Tests initialization from {@link UnitCartesian} coordinates.
     */
     @Test
     public final void testFromUnitCartesian() {
@@ -57,10 +48,7 @@ public class TestUnitSpherical {
     }
 
     /**
-    *  
-    Tests the equality and inequality methods and operators.
-    
-
+    * Tests the equality and inequality methods and operators.
     */
     @Test
     public final void testEquality() {
@@ -86,10 +74,7 @@ public class TestUnitSpherical {
     }
 
     /**
-    *  
-    Tests the {@link UnitSpherical#equalsEpsilon} method.
-    
-
+    * Tests the {@link UnitSpherical#equalsEpsilon} method.
     */
     @Test
     public final void testEqualsEpsilon() {
@@ -103,11 +88,8 @@ public class TestUnitSpherical {
     }
 
     /**
-    *  
-    Tests thats the {@link UnitSpherical#equalsEpsilon} method returns true
+    * Tests thats the {@link UnitSpherical#equalsEpsilon} method returns true
     when the difference is exactly epsilon.
-    
-
     */
     @Test
     public final void testEqualsEpsilonExact() {
@@ -117,10 +99,7 @@ public class TestUnitSpherical {
     }
 
     /**
-    *  
-    Tests to ensure the equality fails when comparing incorrect type.
-    
-
+    * Tests to ensure the equality fails when comparing incorrect type.
     */
     @Test
     public final void testEqualityWithWrongType() {
@@ -131,10 +110,7 @@ public class TestUnitSpherical {
     }
 
     /**
-    *  
-    Tests that UnitSpherical.GetHashCode returns something at least reasonably random.
-    
-
+    * Tests that UnitSpherical.GetHashCode returns something at least reasonably random.
     */
     @Test
     public final void testGetHashCode() {
@@ -146,10 +122,7 @@ public class TestUnitSpherical {
     }
 
     /**
-    *  
-    Tests ToString method
-    
-
+    * Tests ToString method
     */
     @Test
     public final void testToString() {

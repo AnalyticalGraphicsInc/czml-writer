@@ -6,12 +6,8 @@ import cesiumlanguagewriter.*;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Adapts a class that implements {@link ICesiumHorizontalOriginValuePropertyWriter} to implement
+ * Adapts a class that implements {@link ICesiumHorizontalOriginValuePropertyWriter} to implement
  {@link ICesiumPropertyWriter} for {@link CesiumHorizontalOrigin} values.
- 
- 
-
  * @param <TFrom> The class that implements {@link ICesiumHorizontalOriginValuePropertyWriter} to adapt.
  */
 @SuppressWarnings( {
@@ -21,13 +17,7 @@ import javax.annotation.Nonnull;
 })
 public class CesiumHorizontalOriginValuePropertyAdaptor<TFrom extends ICesiumHorizontalOriginValuePropertyWriter> extends CesiumWriterAdaptor<TFrom, CesiumHorizontalOrigin> {
     /**
-    *  
-    Initializes a new instance.
-    
-    
-    
-    
-
+    * Initializes a new instance.
     * @param parent The instance to wrap.
     * @param writeValueCallback The callback to write values of type {@link CesiumHorizontalOrigin}.
     * @param writeDeleteValueCallback The callback to write an indication that the client should delete existing data.

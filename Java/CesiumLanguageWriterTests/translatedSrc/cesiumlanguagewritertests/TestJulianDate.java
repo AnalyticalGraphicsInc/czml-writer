@@ -17,10 +17,7 @@ import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
 /**
- *  
- A series of tests to exercise this type.
- 
-
+ * A series of tests to exercise this type.
  */
 @SuppressWarnings( {
         "unused",
@@ -30,11 +27,8 @@ import org.junit.Test;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestJulianDate {
     /**
-    *  
-    Tests that initialization of and access to the structure day and time
+    * Tests that initialization of and access to the structure day and time
     elements is performed correctly.
-    
-
     */
     @Test
     public final void testRetainValue() {
@@ -44,12 +38,9 @@ public class TestJulianDate {
     }
 
     /**
-    *  
-    Tests that initialization of and access to the structure time standard
+    * Tests that initialization of and access to the structure time standard
     element is performed correctly.  Also tests that the default time standard
     is {@link TimeStandard#INTERNATIONAL_ATOMIC_TIME}.
-    
-
     */
     @Test
     public final void testTimeStandard() {
@@ -62,11 +53,8 @@ public class TestJulianDate {
     }
 
     /**
-    *  
-    Tests that initialization produces a {@link JulianDate} which is
+    * Tests that initialization produces a {@link JulianDate} which is
     normalized with the time element in the range 0.0 &lt;= seconds &lt; 86400.0.
-    
-
     */
     @Test
     public final void testTimeGreaterThanADay() {
@@ -79,11 +67,8 @@ public class TestJulianDate {
     }
 
     /**
-    *  
-    Tests that initialization produces a {@link JulianDate} which is
+    * Tests that initialization produces a {@link JulianDate} which is
     normalized with the time element in the range 0.0 &lt;= seconds &lt; 86400.0.
-    
-
     */
     @Test
     public final void testTimeNegative() {
@@ -96,11 +81,8 @@ public class TestJulianDate {
     }
 
     /**
-    *  
-    Tests that initialization produces a {@link JulianDate} which is
+    * Tests that initialization produces a {@link JulianDate} which is
     normalized with the time element in the range 0.0 &lt;= seconds &lt; 86400.0.
-    
-
     */
     @Test
     public final void testTimeExactlyOneDay() {
@@ -113,10 +95,7 @@ public class TestJulianDate {
     }
 
     /**
-    *  
-    Tests the check for EXACT equality and the check for equality within a specified tolerance.
-    
-
+    * Tests the check for EXACT equality and the check for equality within a specified tolerance.
     */
     @Test
     public final void testEquality() {
@@ -140,10 +119,7 @@ public class TestJulianDate {
     }
 
     /**
-    *  
-    A simple test of the {@code Now} ({@link JulianDate#getNow get}) method.
-    
-
+    * A simple test of the {@code Now} ({@link JulianDate#getNow get}) method.
     */
     @Test
     public final void testJulianDateNow() {
@@ -154,11 +130,8 @@ public class TestJulianDate {
     }
 
     /**
-    *  
-    Tests that the {@link JulianDate#equalsEpsilon} method returns true
+    * Tests that the {@link JulianDate#equalsEpsilon} method returns true
     when the difference is exactly epsilon.
-    
-
     */
     @Test
     public final void testEqualsEpsilonExact() {
@@ -168,11 +141,8 @@ public class TestJulianDate {
     }
 
     /**
-    *  
-    Tests the addition operation between a {@link Duration} with unspecified time standard
+    * Tests the addition operation between a {@link Duration} with unspecified time standard
     and a {@link JulianDate}.
-    
-
     */
     @Test
     public final void testAddition() {
@@ -203,10 +173,7 @@ public class TestJulianDate {
     }
 
     /**
-    *  
-    Tests the function that determines the number of seconds between two Julian Dates
-    
-
+    * Tests the function that determines the number of seconds between two Julian Dates
     */
     @Test
     public final void testSecondsDifference() {
@@ -233,10 +200,7 @@ public class TestJulianDate {
     }
 
     /**
-    *  
-    Tests the function that determines the number of seconds between two Julian Dates
-    
-
+    * Tests the function that determines the number of seconds between two Julian Dates
     */
     @Test
     public final void testMinutesDifference() {
@@ -291,10 +255,7 @@ public class TestJulianDate {
     }
 
     /**
-    *  
-    Tests the subtraction operation between Julian dates.
-    
-
+    * Tests the subtraction operation between Julian dates.
     */
     @Test
     public final void testSubtraction() {
@@ -323,10 +284,7 @@ public class TestJulianDate {
     }
 
     /**
-    *  
-    Tests the {@link JulianDate#addSeconds} method.
-    
-
+    * Tests the {@link JulianDate#addSeconds} method.
     */
     @Test
     public final void testAddSeconds() {
@@ -339,10 +297,7 @@ public class TestJulianDate {
     }
 
     /**
-    *  
-    Tests the {@link JulianDate#subtractSeconds} method.
-    
-
+    * Tests the {@link JulianDate#subtractSeconds} method.
     */
     @Test
     public final void testSubtractSeconds() {
@@ -355,10 +310,7 @@ public class TestJulianDate {
     }
 
     /**
-    *  
-    Tests the {@link JulianDate#addDays} method.
-    
-
+    * Tests the {@link JulianDate#addDays} method.
     */
     @Test
     public final void testAddDays() {
@@ -371,10 +323,7 @@ public class TestJulianDate {
     }
 
     /**
-    *  
-    Tests that JulianDate.GetHashCode returns something at least reasonably random.
-    
-
+    * Tests that JulianDate.GetHashCode returns something at least reasonably random.
     */
     @Test
     public final void testGetHashCode() {
@@ -389,10 +338,7 @@ public class TestJulianDate {
     }
 
     /**
-    *  
-    Tests the JulianDate override of the {@link Object#toString} method.
-    
-
+    * Tests the JulianDate override of the {@link Object#toString} method.
     */
     @Test
     public final void testToString() {
@@ -402,10 +348,7 @@ public class TestJulianDate {
     }
 
     /**
-    *  
-    Tests for consistency between the comparison operators.
-    
-
+    * Tests for consistency between the comparison operators.
     */
     @Test
     public final void testComparisonConsistency() {
@@ -426,14 +369,11 @@ public class TestJulianDate {
     }
 
     /**
-    *  
-    Tests construction of a {@link JulianDate} with a really small negative
+    * Tests construction of a {@link JulianDate} with a really small negative
     secondsOfDay.  JulianDate will attempt to eliminate the negative SecondsOfDay
     by rolling the Day back one day, but doing so results in setting the SecondsOfDay to
     86400.0 seconds.  This is still not normalized, so JulianDate should bump the Day
     back up and round the SecondsOfDay to 0.0.
-    
-
     */
     @Test
     public final void testReallySmallNegativeSecondsOfDay() {

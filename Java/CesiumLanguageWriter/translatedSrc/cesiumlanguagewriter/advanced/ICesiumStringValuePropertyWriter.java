@@ -5,10 +5,7 @@ import agi.foundation.compatibility.*;
 import cesiumlanguagewriter.*;
 
 /**
- *  
- A writer that can write a value as a string.
- 
-
+ * A writer that can write a value as a string.
  */
 @SuppressWarnings( {
         "unused",
@@ -17,11 +14,7 @@ import cesiumlanguagewriter.*;
 })
 public interface ICesiumStringValuePropertyWriter extends ICesiumPropertyWriter {
     /**
-    *  
-    Writes the value expressed as a string value.
-    
-    
-
+    * Writes the value expressed as a string value.
     * @param value The value.
     */
     void writeString(String value);

@@ -11,12 +11,8 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
- *  
- A CZML writer for a property.  The property may be defined over a
+ * A CZML writer for a property.  The property may be defined over a
  single interval or over multiple intervals.
- 
- 
-
  * @param <TDerived> The type of the class derived from this one.
  */
 @SuppressWarnings( {
@@ -26,11 +22,7 @@ import javax.annotation.Nullable;
 })
 public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter<TDerived>> extends CesiumElementWriter implements ICesiumPropertyWriter {
     /**
-    *  
-    Initializes a new instance.
-    
-    
-
+    * Initializes a new instance.
     * @param propertyName The name of the property.
     */
     protected CesiumPropertyWriter(@Nonnull String propertyName) {
@@ -42,11 +34,7 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
     }
 
     /**
-    *  
-    Initializes a new instance as a copy of an existing instance.
-    
-    
-
+    * Initializes a new instance as a copy of an existing instance.
     * @param existingInstance The existing instance to copy.
     */
     protected CesiumPropertyWriter(@Nonnull CesiumPropertyWriter<TDerived> existingInstance) {
@@ -71,11 +59,7 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
     }
 
     /**
-    *  
-    Copies this instance and returns the copy.
-    
-    
-
+    * Copies this instance and returns the copy.
     * @return The copy.
     */
     @Nonnull
@@ -87,9 +71,7 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
     }
 
     /**
-    *  Gets the name of the property written by this instance.
-    
-
+    * Gets the name of the property written by this instance.
     */
     @Nonnull
     public final String getPropertyName() {
@@ -97,50 +79,38 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
     }
 
     /**
-    *  Gets a value indicating whether this instance represents an open interval.
-    
-
+    * Gets a value indicating whether this instance represents an open interval.
     */
     public final boolean getIsInterval() {
         return m_elementType == ElementType.INTERVAL || m_elementType == ElementType.PROPERTY_CONVERTED_TO_INTERVAL;
     }
 
     /**
-    *  Gets a writer for intervals of this property.  The returned instance must be opened by calling
+    * Gets a writer for intervals of this property.  The returned instance must be opened by calling
     the {@link ICesiumElementWriter#open} method before it can be used for writing.  Consider
     calling the {@link #openInterval(JulianDate,JulianDate)} or {@link #openMultipleIntervals} method, which will automatically
     open the writer, instead of accessing this property directly.
-    
-
     */
     public final TDerived getIntervalWriter() {
         return m_interval.getValue();
     }
 
     /**
-    *  Gets a value indicating whether this instance should always open an interval.
-    
-
+    * Gets a value indicating whether this instance should always open an interval.
     */
     public final boolean getForceInterval() {
         return backingField$ForceInterval;
     }
 
     /**
-    *  Sets a value indicating whether this instance should always open an interval.
-    
-
+    * Sets a value indicating whether this instance should always open an interval.
     */
     public final void setForceInterval(boolean value) {
         backingField$ForceInterval = value;
     }
 
     /**
-    *  
-    Opens a writer that is used to write information about this property for a single interval.
-    
-    
-
+    * Opens a writer that is used to write information about this property for a single interval.
     * @return The writer.
     */
     @Nonnull
@@ -149,13 +119,7 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
     }
 
     /**
-    *  
-    Opens a writer that is used to write information about this property for a single interval.
-    
-    
-    
-    
-
+    * Opens a writer that is used to write information about this property for a single interval.
     * @param start The start of the interval of time covered by this interval element.
     * @param stop The end of the interval of time covered by this interval element.
     * @return The writer.
@@ -168,11 +132,7 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
     }
 
     /**
-    *  
-    Opens a writer that is used to write information about this property for multiple discrete intervals.
-    
-    
-
+    * Opens a writer that is used to write information about this property for multiple discrete intervals.
     * @return The writer.
     */
     @Nonnull
@@ -181,12 +141,7 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
     }
 
     /**
-    *  
-    Writes the actual interval of time covered by this CZML interval.
-    
-    
-    
-
+    * Writes the actual interval of time covered by this CZML interval.
     * @param start The first date of the interval.
     * @param stop The last date of the interval.
     */
@@ -195,11 +150,7 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
     }
 
     /**
-    *  
-    Writes the actual interval of time covered by this CZML interval.
-    
-    
-
+    * Writes the actual interval of time covered by this CZML interval.
     * @param interval The interval.
     */
     public final void writeInterval(@Nonnull TimeInterval interval) {
@@ -212,11 +163,7 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
     }
 
     /**
-    *  
-    
-    When overridden in a derived class, writes content to the stream immediately after opening the writer on it.
-    
-
+    * When overridden in a derived class, writes content to the stream immediately after opening the writer on it.
     */
     @Override
     protected final void onOpen() {
@@ -228,11 +175,7 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
     }
 
     /**
-    *  
-    
-    When overridden in a derived class, writes content to the stream immediately before closing the writer on it.
-    
-
+    * When overridden in a derived class, writes content to the stream immediately before closing the writer on it.
     */
     @Override
     protected final void onClose() {
@@ -245,10 +188,7 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
     }
 
     /**
-    *  
-    Opens an interval for this property if one is not already open.
-    
-
+    * Opens an interval for this property if one is not already open.
     */
     protected final void openIntervalIfNecessary() {
         if (m_elementType == ElementType.PROPERTY) {

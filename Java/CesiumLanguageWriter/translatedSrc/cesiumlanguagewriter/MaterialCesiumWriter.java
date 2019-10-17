@@ -13,10 +13,7 @@ import cesiumlanguagewriter.StripeMaterialCesiumWriter;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Writes a {@code Material} to a {@link CesiumOutputStream}. A {@code Material} is a definition of how a surface is colored or shaded.
- 
-
+ * Writes a {@code Material} to a {@link CesiumOutputStream}. A {@code Material} is a definition of how a surface is colored or shaded.
  */
 @SuppressWarnings( {
         "unused",
@@ -25,38 +22,23 @@ import javax.annotation.Nonnull;
 })
 public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWriter> {
     /**
-    *  
-    The name of the {@code solidColor} property.
-    
-
+    * The name of the {@code solidColor} property.
     */
     public static final String SolidColorPropertyName = "solidColor";
     /**
-    *  
-    The name of the {@code image} property.
-    
-
+    * The name of the {@code image} property.
     */
     public static final String ImagePropertyName = "image";
     /**
-    *  
-    The name of the {@code grid} property.
-    
-
+    * The name of the {@code grid} property.
     */
     public static final String GridPropertyName = "grid";
     /**
-    *  
-    The name of the {@code stripe} property.
-    
-
+    * The name of the {@code stripe} property.
     */
     public static final String StripePropertyName = "stripe";
     /**
-    *  
-    The name of the {@code checkerboard} property.
-    
-
+    * The name of the {@code checkerboard} property.
     */
     public static final String CheckerboardPropertyName = "checkerboard";
     private Lazy<SolidColorMaterialCesiumWriter> m_solidColor = new Lazy<cesiumlanguagewriter.SolidColorMaterialCesiumWriter>(new Func1<cesiumlanguagewriter.SolidColorMaterialCesiumWriter>() {
@@ -86,11 +68,7 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
     }, false);
 
     /**
-    *  
-    Initializes a new instance.
-    
-    
-
+    * Initializes a new instance.
     * @param propertyName The name of the property.
     */
     public MaterialCesiumWriter(@Nonnull String propertyName) {
@@ -98,11 +76,7 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
     }
 
     /**
-    *  
-    Initializes a new instance as a copy of an existing instance.
-    
-    
-
+    * Initializes a new instance as a copy of an existing instance.
     * @param existingInstance The existing instance to copy.
     */
     protected MaterialCesiumWriter(@Nonnull MaterialCesiumWriter existingInstance) {
@@ -110,12 +84,7 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
     }
 
     /**
-    *  
-    
-    Copies this instance and returns the copy.
-    
-    
-
+    * Copies this instance and returns the copy.
     * @return The copy.
     */
     @Override
@@ -124,9 +93,7 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code solidColor} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code solidColor} property defines a material that fills the surface with a solid color, which may be translucent.
-    
-
+    * Gets the writer for the {@code solidColor} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code solidColor} property defines a material that fills the surface with a solid color, which may be translucent.
     */
     @Nonnull
     public final SolidColorMaterialCesiumWriter getSolidColorWriter() {
@@ -134,10 +101,7 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code solidColor} property. The {@code solidColor} property defines a material that fills the surface with a solid color, which may be translucent.
-    
-
+    * Opens and returns the writer for the {@code solidColor} property. The {@code solidColor} property defines a material that fills the surface with a solid color, which may be translucent.
     */
     @Nonnull
     public final SolidColorMaterialCesiumWriter openSolidColorProperty() {
@@ -146,9 +110,7 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code image} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code image} property defines a material that fills the surface with an image.
-    
-
+    * Gets the writer for the {@code image} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code image} property defines a material that fills the surface with an image.
     */
     @Nonnull
     public final ImageMaterialCesiumWriter getImageWriter() {
@@ -156,10 +118,7 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code image} property. The {@code image} property defines a material that fills the surface with an image.
-    
-
+    * Opens and returns the writer for the {@code image} property. The {@code image} property defines a material that fills the surface with an image.
     */
     @Nonnull
     public final ImageMaterialCesiumWriter openImageProperty() {
@@ -168,9 +127,7 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code grid} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code grid} property defines a material that fills the surface with a grid.
-    
-
+    * Gets the writer for the {@code grid} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code grid} property defines a material that fills the surface with a grid.
     */
     @Nonnull
     public final GridMaterialCesiumWriter getGridWriter() {
@@ -178,10 +135,7 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code grid} property. The {@code grid} property defines a material that fills the surface with a grid.
-    
-
+    * Opens and returns the writer for the {@code grid} property. The {@code grid} property defines a material that fills the surface with a grid.
     */
     @Nonnull
     public final GridMaterialCesiumWriter openGridProperty() {
@@ -190,9 +144,7 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code stripe} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code stripe} property defines a material that fills the surface with alternating colors.
-    
-
+    * Gets the writer for the {@code stripe} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code stripe} property defines a material that fills the surface with alternating colors.
     */
     @Nonnull
     public final StripeMaterialCesiumWriter getStripeWriter() {
@@ -200,10 +152,7 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code stripe} property. The {@code stripe} property defines a material that fills the surface with alternating colors.
-    
-
+    * Opens and returns the writer for the {@code stripe} property. The {@code stripe} property defines a material that fills the surface with alternating colors.
     */
     @Nonnull
     public final StripeMaterialCesiumWriter openStripeProperty() {
@@ -212,9 +161,7 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code checkerboard} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code checkerboard} property defines a material that fills the surface with a checkerboard pattern.
-    
-
+    * Gets the writer for the {@code checkerboard} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code checkerboard} property defines a material that fills the surface with a checkerboard pattern.
     */
     @Nonnull
     public final CheckerboardMaterialCesiumWriter getCheckerboardWriter() {
@@ -222,10 +169,7 @@ public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWri
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code checkerboard} property. The {@code checkerboard} property defines a material that fills the surface with a checkerboard pattern.
-    
-
+    * Opens and returns the writer for the {@code checkerboard} property. The {@code checkerboard} property defines a material that fills the surface with a checkerboard pattern.
     */
     @Nonnull
     public final CheckerboardMaterialCesiumWriter openCheckerboardProperty() {

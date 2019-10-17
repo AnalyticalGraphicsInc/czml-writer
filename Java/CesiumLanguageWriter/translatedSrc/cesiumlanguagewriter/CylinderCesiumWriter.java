@@ -19,10 +19,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Writes a {@code Cylinder} to a {@link CesiumOutputStream}. A {@code Cylinder} is a cylinder, truncated cone, or cone defined by a length, top radius, and bottom radius.
- 
-
+ * Writes a {@code Cylinder} to a {@link CesiumOutputStream}. A {@code Cylinder} is a cylinder, truncated cone, or cone defined by a length, top radius, and bottom radius.
  */
 @SuppressWarnings( {
         "unused",
@@ -31,101 +28,59 @@ import javax.annotation.Nonnull;
 })
 public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWriter> {
     /**
-    *  
-    The name of the {@code show} property.
-    
-
+    * The name of the {@code show} property.
     */
     public static final String ShowPropertyName = "show";
     /**
-    *  
-    The name of the {@code length} property.
-    
-
+    * The name of the {@code length} property.
     */
     public static final String LengthPropertyName = "length";
     /**
-    *  
-    The name of the {@code topRadius} property.
-    
-
+    * The name of the {@code topRadius} property.
     */
     public static final String TopRadiusPropertyName = "topRadius";
     /**
-    *  
-    The name of the {@code bottomRadius} property.
-    
-
+    * The name of the {@code bottomRadius} property.
     */
     public static final String BottomRadiusPropertyName = "bottomRadius";
     /**
-    *  
-    The name of the {@code heightReference} property.
-    
-
+    * The name of the {@code heightReference} property.
     */
     public static final String HeightReferencePropertyName = "heightReference";
     /**
-    *  
-    The name of the {@code fill} property.
-    
-
+    * The name of the {@code fill} property.
     */
     public static final String FillPropertyName = "fill";
     /**
-    *  
-    The name of the {@code material} property.
-    
-
+    * The name of the {@code material} property.
     */
     public static final String MaterialPropertyName = "material";
     /**
-    *  
-    The name of the {@code outline} property.
-    
-
+    * The name of the {@code outline} property.
     */
     public static final String OutlinePropertyName = "outline";
     /**
-    *  
-    The name of the {@code outlineColor} property.
-    
-
+    * The name of the {@code outlineColor} property.
     */
     public static final String OutlineColorPropertyName = "outlineColor";
     /**
-    *  
-    The name of the {@code outlineWidth} property.
-    
-
+    * The name of the {@code outlineWidth} property.
     */
     public static final String OutlineWidthPropertyName = "outlineWidth";
     /**
-    *  
-    The name of the {@code numberOfVerticalLines} property.
-    
-
+    * The name of the {@code numberOfVerticalLines} property.
     */
     public static final String NumberOfVerticalLinesPropertyName = "numberOfVerticalLines";
     /**
-    *  
-    The name of the {@code slices} property.
-    
-
+    * The name of the {@code slices} property.
     */
     public static final String SlicesPropertyName = "slices";
     /**
-    *  
-    The name of the {@code shadows} property.
-    
-
+    * The name of the {@code shadows} property.
     */
     public static final String ShadowsPropertyName = "shadows";
     /**
-    *  
-    The name of the {@code distanceDisplayCondition} property.
-    
-
+    * The name of the {@code distanceDisplayCondition} property.
     */
     public static final String DistanceDisplayConditionPropertyName = "distanceDisplayCondition";
     private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
@@ -201,11 +156,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
             }, false);
 
     /**
-    *  
-    Initializes a new instance.
-    
-    
-
+    * Initializes a new instance.
     * @param propertyName The name of the property.
     */
     public CylinderCesiumWriter(@Nonnull String propertyName) {
@@ -213,11 +164,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Initializes a new instance as a copy of an existing instance.
-    
-    
-
+    * Initializes a new instance as a copy of an existing instance.
     * @param existingInstance The existing instance to copy.
     */
     protected CylinderCesiumWriter(@Nonnull CylinderCesiumWriter existingInstance) {
@@ -225,12 +172,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    
-    Copies this instance and returns the copy.
-    
-    
-
+    * Copies this instance and returns the copy.
     * @return The copy.
     */
     @Override
@@ -239,9 +181,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code show} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code show} property defines whether or not the cylinder is shown. If not specified, the default value is {@code true}.
-    
-
+    * Gets the writer for the {@code show} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code show} property defines whether or not the cylinder is shown. If not specified, the default value is {@code true}.
     */
     @Nonnull
     public final BooleanCesiumWriter getShowWriter() {
@@ -249,10 +189,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code show} property. The {@code show} property defines whether or not the cylinder is shown. If not specified, the default value is {@code true}.
-    
-
+    * Opens and returns the writer for the {@code show} property. The {@code show} property defines whether or not the cylinder is shown. If not specified, the default value is {@code true}.
     */
     @Nonnull
     public final BooleanCesiumWriter openShowProperty() {
@@ -261,11 +198,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code show} property as a {@code boolean} value. The {@code show} property specifies whether or not the cylinder is shown. If not specified, the default value is {@code true}.
-    
-    
-
+    * Writes a value for the {@code show} property as a {@code boolean} value. The {@code show} property specifies whether or not the cylinder is shown. If not specified, the default value is {@code true}.
     * @param value The value.
     */
     public final void writeShowProperty(boolean value) {
@@ -280,11 +213,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the cylinder is shown. If not specified, the default value is {@code true}.
-    
-    
-
+    * Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the cylinder is shown. If not specified, the default value is {@code true}.
     * @param value The reference.
     */
     public final void writeShowPropertyReference(Reference value) {
@@ -299,11 +228,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the cylinder is shown. If not specified, the default value is {@code true}.
-    
-    
-
+    * Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the cylinder is shown. If not specified, the default value is {@code true}.
     * @param value The reference.
     */
     public final void writeShowPropertyReference(String value) {
@@ -318,12 +243,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the cylinder is shown. If not specified, the default value is {@code true}.
-    
-    
-    
-
+    * Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the cylinder is shown. If not specified, the default value is {@code true}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -339,12 +259,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the cylinder is shown. If not specified, the default value is {@code true}.
-    
-    
-    
-
+    * Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the cylinder is shown. If not specified, the default value is {@code true}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -360,9 +275,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code length} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code length} property defines the length of the cylinder. This value must be specified in order for the client to display graphics.
-    
-
+    * Gets the writer for the {@code length} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code length} property defines the length of the cylinder. This value must be specified in order for the client to display graphics.
     */
     @Nonnull
     public final DoubleCesiumWriter getLengthWriter() {
@@ -370,10 +283,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code length} property. The {@code length} property defines the length of the cylinder. This value must be specified in order for the client to display graphics.
-    
-
+    * Opens and returns the writer for the {@code length} property. The {@code length} property defines the length of the cylinder. This value must be specified in order for the client to display graphics.
     */
     @Nonnull
     public final DoubleCesiumWriter openLengthProperty() {
@@ -382,11 +292,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code length} property as a {@code number} value. The {@code length} property specifies the length of the cylinder. This value must be specified in order for the client to display graphics.
-    
-    
-
+    * Writes a value for the {@code length} property as a {@code number} value. The {@code length} property specifies the length of the cylinder. This value must be specified in order for the client to display graphics.
     * @param value The value.
     */
     public final void writeLengthProperty(double value) {
@@ -401,12 +307,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code length} property as a {@code number} value. The {@code length} property specifies the length of the cylinder. This value must be specified in order for the client to display graphics.
-    
-    
-    
-
+    * Writes a value for the {@code length} property as a {@code number} value. The {@code length} property specifies the length of the cylinder. This value must be specified in order for the client to display graphics.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -422,14 +323,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code length} property as a {@code number} value. The {@code length} property specifies the length of the cylinder. This value must be specified in order for the client to display graphics.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code length} property as a {@code number} value. The {@code length} property specifies the length of the cylinder. This value must be specified in order for the client to display graphics.
     * @param dates The dates at which the value is specified.
     * @param values The value corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -447,11 +341,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code length} property as a {@code reference} value. The {@code length} property specifies the length of the cylinder. This value must be specified in order for the client to display graphics.
-    
-    
-
+    * Writes a value for the {@code length} property as a {@code reference} value. The {@code length} property specifies the length of the cylinder. This value must be specified in order for the client to display graphics.
     * @param value The reference.
     */
     public final void writeLengthPropertyReference(Reference value) {
@@ -466,11 +356,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code length} property as a {@code reference} value. The {@code length} property specifies the length of the cylinder. This value must be specified in order for the client to display graphics.
-    
-    
-
+    * Writes a value for the {@code length} property as a {@code reference} value. The {@code length} property specifies the length of the cylinder. This value must be specified in order for the client to display graphics.
     * @param value The reference.
     */
     public final void writeLengthPropertyReference(String value) {
@@ -485,12 +371,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code length} property as a {@code reference} value. The {@code length} property specifies the length of the cylinder. This value must be specified in order for the client to display graphics.
-    
-    
-    
-
+    * Writes a value for the {@code length} property as a {@code reference} value. The {@code length} property specifies the length of the cylinder. This value must be specified in order for the client to display graphics.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -506,12 +387,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code length} property as a {@code reference} value. The {@code length} property specifies the length of the cylinder. This value must be specified in order for the client to display graphics.
-    
-    
-    
-
+    * Writes a value for the {@code length} property as a {@code reference} value. The {@code length} property specifies the length of the cylinder. This value must be specified in order for the client to display graphics.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -527,9 +403,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code topRadius} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code topRadius} property defines the radius of the top of the cylinder. This value must be specified in order for the client to display graphics.
-    
-
+    * Gets the writer for the {@code topRadius} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code topRadius} property defines the radius of the top of the cylinder. This value must be specified in order for the client to display graphics.
     */
     @Nonnull
     public final DoubleCesiumWriter getTopRadiusWriter() {
@@ -537,10 +411,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code topRadius} property. The {@code topRadius} property defines the radius of the top of the cylinder. This value must be specified in order for the client to display graphics.
-    
-
+    * Opens and returns the writer for the {@code topRadius} property. The {@code topRadius} property defines the radius of the top of the cylinder. This value must be specified in order for the client to display graphics.
     */
     @Nonnull
     public final DoubleCesiumWriter openTopRadiusProperty() {
@@ -549,11 +420,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code topRadius} property as a {@code number} value. The {@code topRadius} property specifies the radius of the top of the cylinder. This value must be specified in order for the client to display graphics.
-    
-    
-
+    * Writes a value for the {@code topRadius} property as a {@code number} value. The {@code topRadius} property specifies the radius of the top of the cylinder. This value must be specified in order for the client to display graphics.
     * @param value The value.
     */
     public final void writeTopRadiusProperty(double value) {
@@ -568,12 +435,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code topRadius} property as a {@code number} value. The {@code topRadius} property specifies the radius of the top of the cylinder. This value must be specified in order for the client to display graphics.
-    
-    
-    
-
+    * Writes a value for the {@code topRadius} property as a {@code number} value. The {@code topRadius} property specifies the radius of the top of the cylinder. This value must be specified in order for the client to display graphics.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -589,14 +451,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code topRadius} property as a {@code number} value. The {@code topRadius} property specifies the radius of the top of the cylinder. This value must be specified in order for the client to display graphics.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code topRadius} property as a {@code number} value. The {@code topRadius} property specifies the radius of the top of the cylinder. This value must be specified in order for the client to display graphics.
     * @param dates The dates at which the value is specified.
     * @param values The value corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -614,11 +469,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code topRadius} property as a {@code reference} value. The {@code topRadius} property specifies the radius of the top of the cylinder. This value must be specified in order for the client to display graphics.
-    
-    
-
+    * Writes a value for the {@code topRadius} property as a {@code reference} value. The {@code topRadius} property specifies the radius of the top of the cylinder. This value must be specified in order for the client to display graphics.
     * @param value The reference.
     */
     public final void writeTopRadiusPropertyReference(Reference value) {
@@ -633,11 +484,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code topRadius} property as a {@code reference} value. The {@code topRadius} property specifies the radius of the top of the cylinder. This value must be specified in order for the client to display graphics.
-    
-    
-
+    * Writes a value for the {@code topRadius} property as a {@code reference} value. The {@code topRadius} property specifies the radius of the top of the cylinder. This value must be specified in order for the client to display graphics.
     * @param value The reference.
     */
     public final void writeTopRadiusPropertyReference(String value) {
@@ -652,12 +499,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code topRadius} property as a {@code reference} value. The {@code topRadius} property specifies the radius of the top of the cylinder. This value must be specified in order for the client to display graphics.
-    
-    
-    
-
+    * Writes a value for the {@code topRadius} property as a {@code reference} value. The {@code topRadius} property specifies the radius of the top of the cylinder. This value must be specified in order for the client to display graphics.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -673,12 +515,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code topRadius} property as a {@code reference} value. The {@code topRadius} property specifies the radius of the top of the cylinder. This value must be specified in order for the client to display graphics.
-    
-    
-    
-
+    * Writes a value for the {@code topRadius} property as a {@code reference} value. The {@code topRadius} property specifies the radius of the top of the cylinder. This value must be specified in order for the client to display graphics.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -694,9 +531,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code bottomRadius} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code bottomRadius} property defines the radius of the bottom of the cylinder. This value must be specified in order for the client to display graphics.
-    
-
+    * Gets the writer for the {@code bottomRadius} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code bottomRadius} property defines the radius of the bottom of the cylinder. This value must be specified in order for the client to display graphics.
     */
     @Nonnull
     public final DoubleCesiumWriter getBottomRadiusWriter() {
@@ -704,10 +539,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code bottomRadius} property. The {@code bottomRadius} property defines the radius of the bottom of the cylinder. This value must be specified in order for the client to display graphics.
-    
-
+    * Opens and returns the writer for the {@code bottomRadius} property. The {@code bottomRadius} property defines the radius of the bottom of the cylinder. This value must be specified in order for the client to display graphics.
     */
     @Nonnull
     public final DoubleCesiumWriter openBottomRadiusProperty() {
@@ -716,11 +548,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code bottomRadius} property as a {@code number} value. The {@code bottomRadius} property specifies the radius of the bottom of the cylinder. This value must be specified in order for the client to display graphics.
-    
-    
-
+    * Writes a value for the {@code bottomRadius} property as a {@code number} value. The {@code bottomRadius} property specifies the radius of the bottom of the cylinder. This value must be specified in order for the client to display graphics.
     * @param value The value.
     */
     public final void writeBottomRadiusProperty(double value) {
@@ -735,12 +563,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code bottomRadius} property as a {@code number} value. The {@code bottomRadius} property specifies the radius of the bottom of the cylinder. This value must be specified in order for the client to display graphics.
-    
-    
-    
-
+    * Writes a value for the {@code bottomRadius} property as a {@code number} value. The {@code bottomRadius} property specifies the radius of the bottom of the cylinder. This value must be specified in order for the client to display graphics.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -756,14 +579,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code bottomRadius} property as a {@code number} value. The {@code bottomRadius} property specifies the radius of the bottom of the cylinder. This value must be specified in order for the client to display graphics.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code bottomRadius} property as a {@code number} value. The {@code bottomRadius} property specifies the radius of the bottom of the cylinder. This value must be specified in order for the client to display graphics.
     * @param dates The dates at which the value is specified.
     * @param values The value corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -781,11 +597,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code bottomRadius} property as a {@code reference} value. The {@code bottomRadius} property specifies the radius of the bottom of the cylinder. This value must be specified in order for the client to display graphics.
-    
-    
-
+    * Writes a value for the {@code bottomRadius} property as a {@code reference} value. The {@code bottomRadius} property specifies the radius of the bottom of the cylinder. This value must be specified in order for the client to display graphics.
     * @param value The reference.
     */
     public final void writeBottomRadiusPropertyReference(Reference value) {
@@ -800,11 +612,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code bottomRadius} property as a {@code reference} value. The {@code bottomRadius} property specifies the radius of the bottom of the cylinder. This value must be specified in order for the client to display graphics.
-    
-    
-
+    * Writes a value for the {@code bottomRadius} property as a {@code reference} value. The {@code bottomRadius} property specifies the radius of the bottom of the cylinder. This value must be specified in order for the client to display graphics.
     * @param value The reference.
     */
     public final void writeBottomRadiusPropertyReference(String value) {
@@ -819,12 +627,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code bottomRadius} property as a {@code reference} value. The {@code bottomRadius} property specifies the radius of the bottom of the cylinder. This value must be specified in order for the client to display graphics.
-    
-    
-    
-
+    * Writes a value for the {@code bottomRadius} property as a {@code reference} value. The {@code bottomRadius} property specifies the radius of the bottom of the cylinder. This value must be specified in order for the client to display graphics.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -840,12 +643,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code bottomRadius} property as a {@code reference} value. The {@code bottomRadius} property specifies the radius of the bottom of the cylinder. This value must be specified in order for the client to display graphics.
-    
-    
-    
-
+    * Writes a value for the {@code bottomRadius} property as a {@code reference} value. The {@code bottomRadius} property specifies the radius of the bottom of the cylinder. This value must be specified in order for the client to display graphics.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -861,9 +659,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code heightReference} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code heightReference} property defines the height reference of the cylinder, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
-    
-
+    * Gets the writer for the {@code heightReference} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code heightReference} property defines the height reference of the cylinder, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
     */
     @Nonnull
     public final HeightReferenceCesiumWriter getHeightReferenceWriter() {
@@ -871,10 +667,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code heightReference} property. The {@code heightReference} property defines the height reference of the cylinder, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
-    
-
+    * Opens and returns the writer for the {@code heightReference} property. The {@code heightReference} property defines the height reference of the cylinder, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
     */
     @Nonnull
     public final HeightReferenceCesiumWriter openHeightReferenceProperty() {
@@ -883,11 +676,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code heightReference} property as a {@code heightReference} value. The {@code heightReference} property specifies the height reference of the cylinder, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
-    
-    
-
+    * Writes a value for the {@code heightReference} property as a {@code heightReference} value. The {@code heightReference} property specifies the height reference of the cylinder, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
     * @param value The height reference.
     */
     public final void writeHeightReferenceProperty(@Nonnull CesiumHeightReference value) {
@@ -902,11 +691,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the cylinder, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
-    
-    
-
+    * Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the cylinder, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
     * @param value The reference.
     */
     public final void writeHeightReferencePropertyReference(Reference value) {
@@ -921,11 +706,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the cylinder, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
-    
-    
-
+    * Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the cylinder, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
     * @param value The reference.
     */
     public final void writeHeightReferencePropertyReference(String value) {
@@ -940,12 +721,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the cylinder, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
-    
-    
-    
-
+    * Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the cylinder, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -961,12 +737,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the cylinder, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
-    
-    
-    
-
+    * Writes a value for the {@code heightReference} property as a {@code reference} value. The {@code heightReference} property specifies the height reference of the cylinder, which indicates if the position is relative to terrain or not. If not specified, the default value is NONE.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -982,9 +753,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code fill} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code fill} property defines whether or not the cylinder is filled. If not specified, the default value is {@code true}.
-    
-
+    * Gets the writer for the {@code fill} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code fill} property defines whether or not the cylinder is filled. If not specified, the default value is {@code true}.
     */
     @Nonnull
     public final BooleanCesiumWriter getFillWriter() {
@@ -992,10 +761,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code fill} property. The {@code fill} property defines whether or not the cylinder is filled. If not specified, the default value is {@code true}.
-    
-
+    * Opens and returns the writer for the {@code fill} property. The {@code fill} property defines whether or not the cylinder is filled. If not specified, the default value is {@code true}.
     */
     @Nonnull
     public final BooleanCesiumWriter openFillProperty() {
@@ -1004,11 +770,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code fill} property as a {@code boolean} value. The {@code fill} property specifies whether or not the cylinder is filled. If not specified, the default value is {@code true}.
-    
-    
-
+    * Writes a value for the {@code fill} property as a {@code boolean} value. The {@code fill} property specifies whether or not the cylinder is filled. If not specified, the default value is {@code true}.
     * @param value The value.
     */
     public final void writeFillProperty(boolean value) {
@@ -1023,11 +785,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code fill} property as a {@code reference} value. The {@code fill} property specifies whether or not the cylinder is filled. If not specified, the default value is {@code true}.
-    
-    
-
+    * Writes a value for the {@code fill} property as a {@code reference} value. The {@code fill} property specifies whether or not the cylinder is filled. If not specified, the default value is {@code true}.
     * @param value The reference.
     */
     public final void writeFillPropertyReference(Reference value) {
@@ -1042,11 +800,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code fill} property as a {@code reference} value. The {@code fill} property specifies whether or not the cylinder is filled. If not specified, the default value is {@code true}.
-    
-    
-
+    * Writes a value for the {@code fill} property as a {@code reference} value. The {@code fill} property specifies whether or not the cylinder is filled. If not specified, the default value is {@code true}.
     * @param value The reference.
     */
     public final void writeFillPropertyReference(String value) {
@@ -1061,12 +815,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code fill} property as a {@code reference} value. The {@code fill} property specifies whether or not the cylinder is filled. If not specified, the default value is {@code true}.
-    
-    
-    
-
+    * Writes a value for the {@code fill} property as a {@code reference} value. The {@code fill} property specifies whether or not the cylinder is filled. If not specified, the default value is {@code true}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -1082,12 +831,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code fill} property as a {@code reference} value. The {@code fill} property specifies whether or not the cylinder is filled. If not specified, the default value is {@code true}.
-    
-    
-    
-
+    * Writes a value for the {@code fill} property as a {@code reference} value. The {@code fill} property specifies whether or not the cylinder is filled. If not specified, the default value is {@code true}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -1103,9 +847,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code material} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code material} property defines the material to display on the surface of the cylinder. If not specified, the default value is solid white.
-    
-
+    * Gets the writer for the {@code material} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code material} property defines the material to display on the surface of the cylinder. If not specified, the default value is solid white.
     */
     @Nonnull
     public final MaterialCesiumWriter getMaterialWriter() {
@@ -1113,10 +855,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code material} property. The {@code material} property defines the material to display on the surface of the cylinder. If not specified, the default value is solid white.
-    
-
+    * Opens and returns the writer for the {@code material} property. The {@code material} property defines the material to display on the surface of the cylinder. If not specified, the default value is solid white.
     */
     @Nonnull
     public final MaterialCesiumWriter openMaterialProperty() {
@@ -1125,9 +864,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code outline} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code outline} property defines whether or not the cylinder is outlined. If not specified, the default value is {@code false}.
-    
-
+    * Gets the writer for the {@code outline} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code outline} property defines whether or not the cylinder is outlined. If not specified, the default value is {@code false}.
     */
     @Nonnull
     public final BooleanCesiumWriter getOutlineWriter() {
@@ -1135,10 +872,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code outline} property. The {@code outline} property defines whether or not the cylinder is outlined. If not specified, the default value is {@code false}.
-    
-
+    * Opens and returns the writer for the {@code outline} property. The {@code outline} property defines whether or not the cylinder is outlined. If not specified, the default value is {@code false}.
     */
     @Nonnull
     public final BooleanCesiumWriter openOutlineProperty() {
@@ -1147,11 +881,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code outline} property as a {@code boolean} value. The {@code outline} property specifies whether or not the cylinder is outlined. If not specified, the default value is {@code false}.
-    
-    
-
+    * Writes a value for the {@code outline} property as a {@code boolean} value. The {@code outline} property specifies whether or not the cylinder is outlined. If not specified, the default value is {@code false}.
     * @param value The value.
     */
     public final void writeOutlineProperty(boolean value) {
@@ -1166,11 +896,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code outline} property as a {@code reference} value. The {@code outline} property specifies whether or not the cylinder is outlined. If not specified, the default value is {@code false}.
-    
-    
-
+    * Writes a value for the {@code outline} property as a {@code reference} value. The {@code outline} property specifies whether or not the cylinder is outlined. If not specified, the default value is {@code false}.
     * @param value The reference.
     */
     public final void writeOutlinePropertyReference(Reference value) {
@@ -1185,11 +911,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code outline} property as a {@code reference} value. The {@code outline} property specifies whether or not the cylinder is outlined. If not specified, the default value is {@code false}.
-    
-    
-
+    * Writes a value for the {@code outline} property as a {@code reference} value. The {@code outline} property specifies whether or not the cylinder is outlined. If not specified, the default value is {@code false}.
     * @param value The reference.
     */
     public final void writeOutlinePropertyReference(String value) {
@@ -1204,12 +926,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code outline} property as a {@code reference} value. The {@code outline} property specifies whether or not the cylinder is outlined. If not specified, the default value is {@code false}.
-    
-    
-    
-
+    * Writes a value for the {@code outline} property as a {@code reference} value. The {@code outline} property specifies whether or not the cylinder is outlined. If not specified, the default value is {@code false}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -1225,12 +942,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code outline} property as a {@code reference} value. The {@code outline} property specifies whether or not the cylinder is outlined. If not specified, the default value is {@code false}.
-    
-    
-    
-
+    * Writes a value for the {@code outline} property as a {@code reference} value. The {@code outline} property specifies whether or not the cylinder is outlined. If not specified, the default value is {@code false}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -1246,9 +958,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code outlineColor} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code outlineColor} property defines the color of the cylinder outline. If not specified, the default value is black.
-    
-
+    * Gets the writer for the {@code outlineColor} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code outlineColor} property defines the color of the cylinder outline. If not specified, the default value is black.
     */
     @Nonnull
     public final ColorCesiumWriter getOutlineColorWriter() {
@@ -1256,10 +966,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code outlineColor} property. The {@code outlineColor} property defines the color of the cylinder outline. If not specified, the default value is black.
-    
-
+    * Opens and returns the writer for the {@code outlineColor} property. The {@code outlineColor} property defines the color of the cylinder outline. If not specified, the default value is black.
     */
     @Nonnull
     public final ColorCesiumWriter openOutlineColorProperty() {
@@ -1268,11 +975,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code outlineColor} property as a {@code rgba} value. The {@code outlineColor} property specifies the color of the cylinder outline. If not specified, the default value is black.
-    
-    
-
+    * Writes a value for the {@code outlineColor} property as a {@code rgba} value. The {@code outlineColor} property specifies the color of the cylinder outline. If not specified, the default value is black.
     * @param color The color.
     */
     public final void writeOutlineColorProperty(@Nonnull Color color) {
@@ -1287,14 +990,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code outlineColor} property as a {@code rgba} value. The {@code outlineColor} property specifies the color of the cylinder outline. If not specified, the default value is black.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code outlineColor} property as a {@code rgba} value. The {@code outlineColor} property specifies the color of the cylinder outline. If not specified, the default value is black.
     * @param red The red component in the range 0 to 255.
     * @param green The green component in the range 0 to 255.
     * @param blue The blue component in the range 0 to 255.
@@ -1312,12 +1008,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code outlineColor} property as a {@code rgba} value. The {@code outlineColor} property specifies the color of the cylinder outline. If not specified, the default value is black.
-    
-    
-    
-
+    * Writes a value for the {@code outlineColor} property as a {@code rgba} value. The {@code outlineColor} property specifies the color of the cylinder outline. If not specified, the default value is black.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -1333,14 +1024,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code outlineColor} property as a {@code rgba} value. The {@code outlineColor} property specifies the color of the cylinder outline. If not specified, the default value is black.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code outlineColor} property as a {@code rgba} value. The {@code outlineColor} property specifies the color of the cylinder outline. If not specified, the default value is black.
     * @param dates The dates at which the value is specified.
     * @param colors The color corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -1358,11 +1042,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value. The {@code outlineColor} property specifies the color of the cylinder outline. If not specified, the default value is black.
-    
-    
-
+    * Writes a value for the {@code outlineColor} property as a {@code rgbaf} value. The {@code outlineColor} property specifies the color of the cylinder outline. If not specified, the default value is black.
     * @param color The color.
     */
     public final void writeOutlineColorPropertyRgbaf(@Nonnull Color color) {
@@ -1377,14 +1057,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value. The {@code outlineColor} property specifies the color of the cylinder outline. If not specified, the default value is black.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code outlineColor} property as a {@code rgbaf} value. The {@code outlineColor} property specifies the color of the cylinder outline. If not specified, the default value is black.
     * @param red The red component in the range 0 to 1.0.
     * @param green The green component in the range 0 to 1.0.
     * @param blue The blue component in the range 0 to 1.0.
@@ -1402,12 +1075,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value. The {@code outlineColor} property specifies the color of the cylinder outline. If not specified, the default value is black.
-    
-    
-    
-
+    * Writes a value for the {@code outlineColor} property as a {@code rgbaf} value. The {@code outlineColor} property specifies the color of the cylinder outline. If not specified, the default value is black.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -1423,14 +1091,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code outlineColor} property as a {@code rgbaf} value. The {@code outlineColor} property specifies the color of the cylinder outline. If not specified, the default value is black.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code outlineColor} property as a {@code rgbaf} value. The {@code outlineColor} property specifies the color of the cylinder outline. If not specified, the default value is black.
     * @param dates The dates at which the value is specified.
     * @param colors The color corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -1448,11 +1109,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code outlineColor} property as a {@code reference} value. The {@code outlineColor} property specifies the color of the cylinder outline. If not specified, the default value is black.
-    
-    
-
+    * Writes a value for the {@code outlineColor} property as a {@code reference} value. The {@code outlineColor} property specifies the color of the cylinder outline. If not specified, the default value is black.
     * @param value The reference.
     */
     public final void writeOutlineColorPropertyReference(Reference value) {
@@ -1467,11 +1124,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code outlineColor} property as a {@code reference} value. The {@code outlineColor} property specifies the color of the cylinder outline. If not specified, the default value is black.
-    
-    
-
+    * Writes a value for the {@code outlineColor} property as a {@code reference} value. The {@code outlineColor} property specifies the color of the cylinder outline. If not specified, the default value is black.
     * @param value The reference.
     */
     public final void writeOutlineColorPropertyReference(String value) {
@@ -1486,12 +1139,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code outlineColor} property as a {@code reference} value. The {@code outlineColor} property specifies the color of the cylinder outline. If not specified, the default value is black.
-    
-    
-    
-
+    * Writes a value for the {@code outlineColor} property as a {@code reference} value. The {@code outlineColor} property specifies the color of the cylinder outline. If not specified, the default value is black.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -1507,12 +1155,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code outlineColor} property as a {@code reference} value. The {@code outlineColor} property specifies the color of the cylinder outline. If not specified, the default value is black.
-    
-    
-    
-
+    * Writes a value for the {@code outlineColor} property as a {@code reference} value. The {@code outlineColor} property specifies the color of the cylinder outline. If not specified, the default value is black.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -1528,9 +1171,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code outlineWidth} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code outlineWidth} property defines the width of the cylinder outline. If not specified, the default value is 1.0.
-    
-
+    * Gets the writer for the {@code outlineWidth} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code outlineWidth} property defines the width of the cylinder outline. If not specified, the default value is 1.0.
     */
     @Nonnull
     public final DoubleCesiumWriter getOutlineWidthWriter() {
@@ -1538,10 +1179,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code outlineWidth} property. The {@code outlineWidth} property defines the width of the cylinder outline. If not specified, the default value is 1.0.
-    
-
+    * Opens and returns the writer for the {@code outlineWidth} property. The {@code outlineWidth} property defines the width of the cylinder outline. If not specified, the default value is 1.0.
     */
     @Nonnull
     public final DoubleCesiumWriter openOutlineWidthProperty() {
@@ -1550,11 +1188,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code outlineWidth} property as a {@code number} value. The {@code outlineWidth} property specifies the width of the cylinder outline. If not specified, the default value is 1.0.
-    
-    
-
+    * Writes a value for the {@code outlineWidth} property as a {@code number} value. The {@code outlineWidth} property specifies the width of the cylinder outline. If not specified, the default value is 1.0.
     * @param value The value.
     */
     public final void writeOutlineWidthProperty(double value) {
@@ -1569,12 +1203,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code outlineWidth} property as a {@code number} value. The {@code outlineWidth} property specifies the width of the cylinder outline. If not specified, the default value is 1.0.
-    
-    
-    
-
+    * Writes a value for the {@code outlineWidth} property as a {@code number} value. The {@code outlineWidth} property specifies the width of the cylinder outline. If not specified, the default value is 1.0.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -1590,14 +1219,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code outlineWidth} property as a {@code number} value. The {@code outlineWidth} property specifies the width of the cylinder outline. If not specified, the default value is 1.0.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code outlineWidth} property as a {@code number} value. The {@code outlineWidth} property specifies the width of the cylinder outline. If not specified, the default value is 1.0.
     * @param dates The dates at which the value is specified.
     * @param values The value corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -1615,11 +1237,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code outlineWidth} property as a {@code reference} value. The {@code outlineWidth} property specifies the width of the cylinder outline. If not specified, the default value is 1.0.
-    
-    
-
+    * Writes a value for the {@code outlineWidth} property as a {@code reference} value. The {@code outlineWidth} property specifies the width of the cylinder outline. If not specified, the default value is 1.0.
     * @param value The reference.
     */
     public final void writeOutlineWidthPropertyReference(Reference value) {
@@ -1634,11 +1252,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code outlineWidth} property as a {@code reference} value. The {@code outlineWidth} property specifies the width of the cylinder outline. If not specified, the default value is 1.0.
-    
-    
-
+    * Writes a value for the {@code outlineWidth} property as a {@code reference} value. The {@code outlineWidth} property specifies the width of the cylinder outline. If not specified, the default value is 1.0.
     * @param value The reference.
     */
     public final void writeOutlineWidthPropertyReference(String value) {
@@ -1653,12 +1267,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code outlineWidth} property as a {@code reference} value. The {@code outlineWidth} property specifies the width of the cylinder outline. If not specified, the default value is 1.0.
-    
-    
-    
-
+    * Writes a value for the {@code outlineWidth} property as a {@code reference} value. The {@code outlineWidth} property specifies the width of the cylinder outline. If not specified, the default value is 1.0.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -1674,12 +1283,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code outlineWidth} property as a {@code reference} value. The {@code outlineWidth} property specifies the width of the cylinder outline. If not specified, the default value is 1.0.
-    
-    
-    
-
+    * Writes a value for the {@code outlineWidth} property as a {@code reference} value. The {@code outlineWidth} property specifies the width of the cylinder outline. If not specified, the default value is 1.0.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -1695,9 +1299,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code numberOfVerticalLines} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code numberOfVerticalLines} property defines the number of vertical lines to draw along the perimeter for the outline. If not specified, the default value is 16.
-    
-
+    * Gets the writer for the {@code numberOfVerticalLines} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code numberOfVerticalLines} property defines the number of vertical lines to draw along the perimeter for the outline. If not specified, the default value is 16.
     */
     @Nonnull
     public final IntegerCesiumWriter getNumberOfVerticalLinesWriter() {
@@ -1705,10 +1307,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code numberOfVerticalLines} property. The {@code numberOfVerticalLines} property defines the number of vertical lines to draw along the perimeter for the outline. If not specified, the default value is 16.
-    
-
+    * Opens and returns the writer for the {@code numberOfVerticalLines} property. The {@code numberOfVerticalLines} property defines the number of vertical lines to draw along the perimeter for the outline. If not specified, the default value is 16.
     */
     @Nonnull
     public final IntegerCesiumWriter openNumberOfVerticalLinesProperty() {
@@ -1717,11 +1316,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code numberOfVerticalLines} property as a {@code number} value. The {@code numberOfVerticalLines} property specifies the number of vertical lines to draw along the perimeter for the outline. If not specified, the default value is 16.
-    
-    
-
+    * Writes a value for the {@code numberOfVerticalLines} property as a {@code number} value. The {@code numberOfVerticalLines} property specifies the number of vertical lines to draw along the perimeter for the outline. If not specified, the default value is 16.
     * @param value The value.
     */
     public final void writeNumberOfVerticalLinesProperty(int value) {
@@ -1736,12 +1331,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code numberOfVerticalLines} property as a {@code number} value. The {@code numberOfVerticalLines} property specifies the number of vertical lines to draw along the perimeter for the outline. If not specified, the default value is 16.
-    
-    
-    
-
+    * Writes a value for the {@code numberOfVerticalLines} property as a {@code number} value. The {@code numberOfVerticalLines} property specifies the number of vertical lines to draw along the perimeter for the outline. If not specified, the default value is 16.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -1757,14 +1347,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code numberOfVerticalLines} property as a {@code number} value. The {@code numberOfVerticalLines} property specifies the number of vertical lines to draw along the perimeter for the outline. If not specified, the default value is 16.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code numberOfVerticalLines} property as a {@code number} value. The {@code numberOfVerticalLines} property specifies the number of vertical lines to draw along the perimeter for the outline. If not specified, the default value is 16.
     * @param dates The dates at which the value is specified.
     * @param values The value corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -1782,11 +1365,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code numberOfVerticalLines} property as a {@code reference} value. The {@code numberOfVerticalLines} property specifies the number of vertical lines to draw along the perimeter for the outline. If not specified, the default value is 16.
-    
-    
-
+    * Writes a value for the {@code numberOfVerticalLines} property as a {@code reference} value. The {@code numberOfVerticalLines} property specifies the number of vertical lines to draw along the perimeter for the outline. If not specified, the default value is 16.
     * @param value The reference.
     */
     public final void writeNumberOfVerticalLinesPropertyReference(Reference value) {
@@ -1801,11 +1380,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code numberOfVerticalLines} property as a {@code reference} value. The {@code numberOfVerticalLines} property specifies the number of vertical lines to draw along the perimeter for the outline. If not specified, the default value is 16.
-    
-    
-
+    * Writes a value for the {@code numberOfVerticalLines} property as a {@code reference} value. The {@code numberOfVerticalLines} property specifies the number of vertical lines to draw along the perimeter for the outline. If not specified, the default value is 16.
     * @param value The reference.
     */
     public final void writeNumberOfVerticalLinesPropertyReference(String value) {
@@ -1820,12 +1395,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code numberOfVerticalLines} property as a {@code reference} value. The {@code numberOfVerticalLines} property specifies the number of vertical lines to draw along the perimeter for the outline. If not specified, the default value is 16.
-    
-    
-    
-
+    * Writes a value for the {@code numberOfVerticalLines} property as a {@code reference} value. The {@code numberOfVerticalLines} property specifies the number of vertical lines to draw along the perimeter for the outline. If not specified, the default value is 16.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -1841,12 +1411,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code numberOfVerticalLines} property as a {@code reference} value. The {@code numberOfVerticalLines} property specifies the number of vertical lines to draw along the perimeter for the outline. If not specified, the default value is 16.
-    
-    
-    
-
+    * Writes a value for the {@code numberOfVerticalLines} property as a {@code reference} value. The {@code numberOfVerticalLines} property specifies the number of vertical lines to draw along the perimeter for the outline. If not specified, the default value is 16.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -1862,9 +1427,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code slices} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code slices} property defines the number of edges around the perimeter of the cylinder. If not specified, the default value is 128.
-    
-
+    * Gets the writer for the {@code slices} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code slices} property defines the number of edges around the perimeter of the cylinder. If not specified, the default value is 128.
     */
     @Nonnull
     public final IntegerCesiumWriter getSlicesWriter() {
@@ -1872,10 +1435,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code slices} property. The {@code slices} property defines the number of edges around the perimeter of the cylinder. If not specified, the default value is 128.
-    
-
+    * Opens and returns the writer for the {@code slices} property. The {@code slices} property defines the number of edges around the perimeter of the cylinder. If not specified, the default value is 128.
     */
     @Nonnull
     public final IntegerCesiumWriter openSlicesProperty() {
@@ -1884,11 +1444,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code slices} property as a {@code number} value. The {@code slices} property specifies the number of edges around the perimeter of the cylinder. If not specified, the default value is 128.
-    
-    
-
+    * Writes a value for the {@code slices} property as a {@code number} value. The {@code slices} property specifies the number of edges around the perimeter of the cylinder. If not specified, the default value is 128.
     * @param value The value.
     */
     public final void writeSlicesProperty(int value) {
@@ -1903,12 +1459,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code slices} property as a {@code number} value. The {@code slices} property specifies the number of edges around the perimeter of the cylinder. If not specified, the default value is 128.
-    
-    
-    
-
+    * Writes a value for the {@code slices} property as a {@code number} value. The {@code slices} property specifies the number of edges around the perimeter of the cylinder. If not specified, the default value is 128.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -1924,14 +1475,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code slices} property as a {@code number} value. The {@code slices} property specifies the number of edges around the perimeter of the cylinder. If not specified, the default value is 128.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code slices} property as a {@code number} value. The {@code slices} property specifies the number of edges around the perimeter of the cylinder. If not specified, the default value is 128.
     * @param dates The dates at which the value is specified.
     * @param values The value corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -1949,11 +1493,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code slices} property as a {@code reference} value. The {@code slices} property specifies the number of edges around the perimeter of the cylinder. If not specified, the default value is 128.
-    
-    
-
+    * Writes a value for the {@code slices} property as a {@code reference} value. The {@code slices} property specifies the number of edges around the perimeter of the cylinder. If not specified, the default value is 128.
     * @param value The reference.
     */
     public final void writeSlicesPropertyReference(Reference value) {
@@ -1968,11 +1508,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code slices} property as a {@code reference} value. The {@code slices} property specifies the number of edges around the perimeter of the cylinder. If not specified, the default value is 128.
-    
-    
-
+    * Writes a value for the {@code slices} property as a {@code reference} value. The {@code slices} property specifies the number of edges around the perimeter of the cylinder. If not specified, the default value is 128.
     * @param value The reference.
     */
     public final void writeSlicesPropertyReference(String value) {
@@ -1987,12 +1523,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code slices} property as a {@code reference} value. The {@code slices} property specifies the number of edges around the perimeter of the cylinder. If not specified, the default value is 128.
-    
-    
-    
-
+    * Writes a value for the {@code slices} property as a {@code reference} value. The {@code slices} property specifies the number of edges around the perimeter of the cylinder. If not specified, the default value is 128.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -2008,12 +1539,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code slices} property as a {@code reference} value. The {@code slices} property specifies the number of edges around the perimeter of the cylinder. If not specified, the default value is 128.
-    
-    
-    
-
+    * Writes a value for the {@code slices} property as a {@code reference} value. The {@code slices} property specifies the number of edges around the perimeter of the cylinder. If not specified, the default value is 128.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -2029,9 +1555,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code shadows} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code shadows} property defines whether or not the cylinder casts or receives shadows. If not specified, the default value is DISABLED.
-    
-
+    * Gets the writer for the {@code shadows} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code shadows} property defines whether or not the cylinder casts or receives shadows. If not specified, the default value is DISABLED.
     */
     @Nonnull
     public final ShadowModeCesiumWriter getShadowsWriter() {
@@ -2039,10 +1563,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code shadows} property. The {@code shadows} property defines whether or not the cylinder casts or receives shadows. If not specified, the default value is DISABLED.
-    
-
+    * Opens and returns the writer for the {@code shadows} property. The {@code shadows} property defines whether or not the cylinder casts or receives shadows. If not specified, the default value is DISABLED.
     */
     @Nonnull
     public final ShadowModeCesiumWriter openShadowsProperty() {
@@ -2051,11 +1572,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code shadows} property as a {@code shadowMode} value. The {@code shadows} property specifies whether or not the cylinder casts or receives shadows. If not specified, the default value is DISABLED.
-    
-    
-
+    * Writes a value for the {@code shadows} property as a {@code shadowMode} value. The {@code shadows} property specifies whether or not the cylinder casts or receives shadows. If not specified, the default value is DISABLED.
     * @param value The shadow mode.
     */
     public final void writeShadowsProperty(@Nonnull CesiumShadowMode value) {
@@ -2070,11 +1587,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code shadows} property as a {@code reference} value. The {@code shadows} property specifies whether or not the cylinder casts or receives shadows. If not specified, the default value is DISABLED.
-    
-    
-
+    * Writes a value for the {@code shadows} property as a {@code reference} value. The {@code shadows} property specifies whether or not the cylinder casts or receives shadows. If not specified, the default value is DISABLED.
     * @param value The reference.
     */
     public final void writeShadowsPropertyReference(Reference value) {
@@ -2089,11 +1602,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code shadows} property as a {@code reference} value. The {@code shadows} property specifies whether or not the cylinder casts or receives shadows. If not specified, the default value is DISABLED.
-    
-    
-
+    * Writes a value for the {@code shadows} property as a {@code reference} value. The {@code shadows} property specifies whether or not the cylinder casts or receives shadows. If not specified, the default value is DISABLED.
     * @param value The reference.
     */
     public final void writeShadowsPropertyReference(String value) {
@@ -2108,12 +1617,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code shadows} property as a {@code reference} value. The {@code shadows} property specifies whether or not the cylinder casts or receives shadows. If not specified, the default value is DISABLED.
-    
-    
-    
-
+    * Writes a value for the {@code shadows} property as a {@code reference} value. The {@code shadows} property specifies whether or not the cylinder casts or receives shadows. If not specified, the default value is DISABLED.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -2129,12 +1633,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code shadows} property as a {@code reference} value. The {@code shadows} property specifies whether or not the cylinder casts or receives shadows. If not specified, the default value is DISABLED.
-    
-    
-    
-
+    * Writes a value for the {@code shadows} property as a {@code reference} value. The {@code shadows} property specifies whether or not the cylinder casts or receives shadows. If not specified, the default value is DISABLED.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -2150,9 +1649,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  Gets the writer for the {@code distanceDisplayCondition} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code distanceDisplayCondition} property defines the display condition specifying the distance from the camera at which this cylinder will be displayed.
-    
-
+    * Gets the writer for the {@code distanceDisplayCondition} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code distanceDisplayCondition} property defines the display condition specifying the distance from the camera at which this cylinder will be displayed.
     */
     @Nonnull
     public final DistanceDisplayConditionCesiumWriter getDistanceDisplayConditionWriter() {
@@ -2160,10 +1657,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code distanceDisplayCondition} property. The {@code distanceDisplayCondition} property defines the display condition specifying the distance from the camera at which this cylinder will be displayed.
-    
-
+    * Opens and returns the writer for the {@code distanceDisplayCondition} property. The {@code distanceDisplayCondition} property defines the display condition specifying the distance from the camera at which this cylinder will be displayed.
     */
     @Nonnull
     public final DistanceDisplayConditionCesiumWriter openDistanceDisplayConditionProperty() {
@@ -2172,11 +1666,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this cylinder will be displayed.
-    
-    
-
+    * Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this cylinder will be displayed.
     * @param value The value.
     */
     public final void writeDistanceDisplayConditionProperty(@Nonnull Bounds value) {
@@ -2191,12 +1681,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this cylinder will be displayed.
-    
-    
-    
-
+    * Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this cylinder will be displayed.
     * @param lowerBound The lower bound.
     * @param upperBound The upper bound.
     */
@@ -2212,12 +1697,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this cylinder will be displayed.
-    
-    
-    
-
+    * Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this cylinder will be displayed.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -2233,14 +1713,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this cylinder will be displayed.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code distanceDisplayCondition} property as a {@code distanceDisplayCondition} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this cylinder will be displayed.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -2258,11 +1731,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this cylinder will be displayed.
-    
-    
-
+    * Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this cylinder will be displayed.
     * @param value The reference.
     */
     public final void writeDistanceDisplayConditionPropertyReference(Reference value) {
@@ -2277,11 +1746,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this cylinder will be displayed.
-    
-    
-
+    * Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this cylinder will be displayed.
     * @param value The reference.
     */
     public final void writeDistanceDisplayConditionPropertyReference(String value) {
@@ -2296,12 +1761,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this cylinder will be displayed.
-    
-    
-    
-
+    * Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this cylinder will be displayed.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -2317,12 +1777,7 @@ public class CylinderCesiumWriter extends CesiumPropertyWriter<CylinderCesiumWri
     }
 
     /**
-    *  
-    Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this cylinder will be displayed.
-    
-    
-    
-
+    * Writes a value for the {@code distanceDisplayCondition} property as a {@code reference} value. The {@code distanceDisplayCondition} property specifies the display condition specifying the distance from the camera at which this cylinder will be displayed.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */

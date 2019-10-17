@@ -9,10 +9,7 @@ import agi.foundation.compatibility.ObjectHelper;
 import agi.foundation.compatibility.StringHelper;
 
 /**
- *  
- A two dimensional region specified as longitude and latitude coordinates.
- 
-
+ * A two dimensional region specified as longitude and latitude coordinates.
  */
 @SuppressWarnings( {
         "unused",
@@ -21,14 +18,7 @@ import agi.foundation.compatibility.StringHelper;
 })
 public class CartographicExtent implements IEquatable<CartographicExtent> {
     /**
-    *  
-    Initializes a new instance with the specified extents.
-    
-    
-    
-    
-    
-
+    * Initializes a new instance with the specified extents.
     * @param west The westernmost longitude.
     * @param south The southernmost latitude.
     * @param east The easternmost longitude.
@@ -42,55 +32,39 @@ public class CartographicExtent implements IEquatable<CartographicExtent> {
     }
 
     /**
-    *  Gets the northernmost latitude.
-    
-
+    * Gets the northernmost latitude.
     */
     public final double getNorthLatitude() {
         return m_north;
     }
 
     /**
-    *  Gets the southernmost latitude.
-    
-
+    * Gets the southernmost latitude.
     */
     public final double getSouthLatitude() {
         return m_south;
     }
 
     /**
-    *  Gets the easternmost longitude.
-    
-
+    * Gets the easternmost longitude.
     */
     public final double getEastLongitude() {
         return m_east;
     }
 
     /**
-    *  Gets the westernmost longitude.
-    
-
+    * Gets the westernmost longitude.
     */
     public final double getWestLongitude() {
         return m_west;
     }
 
     /**
-    *  
-    Returns true if the specified location is inside the extent, otherwise false.
-    
-    
-    
-    
-
+    * Returns true if the specified location is inside the extent, otherwise false.
     * @param longitude The longitude.
     * @param latitude The latitude.
-    * @return 
-    {@code true} if the specified location is inside the extent (or on the border),
+    * @return {@code true} if the specified location is inside the extent (or on the border),
     otherwise {@code false}.
-    
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final boolean isInsideExtent(double longitude, double latitude) {
@@ -98,13 +72,8 @@ public class CartographicExtent implements IEquatable<CartographicExtent> {
     }
 
     /**
-    *  
-    Computes the union of this extent with another extent.  The union of two extents is
+    * Computes the union of this extent with another extent.  The union of two extents is
     the smallest extent that includes both.
-    
-    
-    
-
     * @param other The other extent.
     * @return The union of the two extents.
     */
@@ -114,12 +83,7 @@ public class CartographicExtent implements IEquatable<CartographicExtent> {
     }
 
     /**
-    *  
-    Indicates whether another object is exactly equal to this instance.
-    
-    
-    
-
+    * Indicates whether another object is exactly equal to this instance.
     * @param obj The object to compare to this instance.
     * @return {@code true} if {@code obj} is an instance of this type and represents the same value as this instance; otherwise, {@code false}.
     */
@@ -129,12 +93,7 @@ public class CartographicExtent implements IEquatable<CartographicExtent> {
     }
 
     /**
-    *  
-    Indicates whether another {@link CartographicExtent} is exactly equal to this instance.
-    
-    
-    
-
+    * Indicates whether another {@link CartographicExtent} is exactly equal to this instance.
     * @param other The {@link CartographicExtent} to compare to this instance.
     * @return {@code true} if {@code other} is an instance of this type and represents the same value as this instance; otherwise, {@code false}.
     */
@@ -150,19 +109,11 @@ public class CartographicExtent implements IEquatable<CartographicExtent> {
     }
 
     /**
-    *  
-    Indicates whether each coordinate value of another instance of this type
+    * Indicates whether each coordinate value of another instance of this type
     is within the required tolerance of the corresponding coordinate value of this instance.
-    
-    
-    
-    
-
     * @param other The set of {@link CartographicExtent} to compare to this instance.
     * @param epsilon The limit at which the absolute differences between the coordinate values will not be considered equal.
-    * @return 
-    {@code true} if the absolute differences are less than or equal to {@code epsilon}; otherwise, {@code false}.
-    
+    * @return {@code true} if the absolute differences are less than or equal to {@code epsilon}; otherwise, {@code false}.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final boolean equalsEpsilon(CartographicExtent other, double epsilon) {
@@ -170,11 +121,7 @@ public class CartographicExtent implements IEquatable<CartographicExtent> {
     }
 
     /**
-    *  
-    Returns a hash code for this instance, which is suitable for use in hashing algorithms and data structures like a hash table.
-    
-    
-
+    * Returns a hash code for this instance, which is suitable for use in hashing algorithms and data structures like a hash table.
     * @return A hash code for the current object.
     */
     @Override
@@ -183,18 +130,10 @@ public class CartographicExtent implements IEquatable<CartographicExtent> {
     }
 
     /**
-    *  
-    Returns {@code true} if the two instances are exactly equal.
-    
-    
-    
-    
-
+    * Returns {@code true} if the two instances are exactly equal.
     * @param left The instance to compare to {@code right}.
     * @param right The instance to compare to {@code left}.
-    * @return 
-    {@code true} if {@code left} represents the same value as {@code right}; otherwise, {@code false}.
-    
+    * @return {@code true} if {@code left} represents the same value as {@code right}; otherwise, {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(CartographicExtent,CartographicExtent)'")
     public static boolean equals(CartographicExtent left, CartographicExtent right) {
@@ -205,18 +144,10 @@ public class CartographicExtent implements IEquatable<CartographicExtent> {
     }
 
     /**
-    *  
-    Returns {@code true} if the two instances are not exactly equal.
-    
-    
-    
-    
-
+    * Returns {@code true} if the two instances are not exactly equal.
     * @param left The instance to compare to {@code right}.
     * @param right The instance to compare to {@code left}.
-    * @return 
-    {@code true} if {@code left} does not represent the same value as {@code right}; otherwise, {@code false}.
-    
+    * @return {@code true} if {@code left} does not represent the same value as {@code right}; otherwise, {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(CartographicExtent,CartographicExtent)'")
     public static boolean notEquals(CartographicExtent left, CartographicExtent right) {
@@ -224,15 +155,9 @@ public class CartographicExtent implements IEquatable<CartographicExtent> {
     }
 
     /**
-    *  
-    Returns the string representation of the value of this instance.
-    
-    
-
-    * @return 
-    A string that represents the value of this instance in the form
+    * Returns the string representation of the value of this instance.
+    * @return A string that represents the value of this instance in the form
     WestLongitude, SouthLatitude, EastLongitude, NorthLatitude.
-    
     */
     @Override
     public String toString() {

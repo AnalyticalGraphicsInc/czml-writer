@@ -8,18 +8,8 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 /**
- *  
- A callback to write a value to a {@link CesiumOutputStream} using a given
+ * A callback to write a value to a {@link CesiumOutputStream} using a given
  wrapped property writer.
- 
- 
- 
- 
- 
- 
- 
- 
-
  * @param <TWrappedWriter> The type of the wrapped writer.
  * @param <TValue> The type of the value to write.
  */
@@ -57,18 +47,8 @@ public abstract class CesiumWriterAdaptorWriteSamplesCallback<TWrappedWriter ext
     }
 
     /**
-    *  
-    A callback to write a value to a {@link CesiumOutputStream} using a given
+    * A callback to write a value to a {@link CesiumOutputStream} using a given
     wrapped property writer.
-    
-    
-    
-    
-    
-    
-    
-    
-
     * @param wrappedWriter The wrapper writer.
     * @param dates The dates at which samples are provided.
     * @param values The sampled value corresponding to each date.
@@ -135,18 +115,8 @@ public abstract class CesiumWriterAdaptorWriteSamplesCallback<TWrappedWriter ext
     @FunctionalInterface
     public interface Function<TWrappedWriter extends ICesiumPropertyWriter & ICesiumInterpolatablePropertyWriter, TValue> {
         /**
-        *  
-        A callback to write a value to a {@link CesiumOutputStream} using a given
+        * A callback to write a value to a {@link CesiumOutputStream} using a given
         wrapped property writer.
-        
-        
-        
-        
-        
-        
-        
-        
-
         * @param wrappedWriter The wrapper writer.
         * @param dates The dates at which samples are provided.
         * @param values The sampled value corresponding to each date.

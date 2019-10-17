@@ -16,10 +16,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Writes a {@code RectangularSensor} to a {@link CesiumOutputStream}. A {@code RectangularSensor} is a rectangular pyramid sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.
- 
-
+ * Writes a {@code RectangularSensor} to a {@link CesiumOutputStream}. A {@code RectangularSensor} is a rectangular pyramid sensor volume taking into account occlusion of an ellipsoid, i.e., the globe.
  */
 @SuppressWarnings( {
         "unused",
@@ -28,157 +25,91 @@ import javax.annotation.Nonnull;
 })
 public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<RectangularSensorCesiumWriter> {
     /**
-    *  
-    The name of the {@code show} property.
-    
-
+    * The name of the {@code show} property.
     */
     public static final String ShowPropertyName = "show";
     /**
-    *  
-    The name of the {@code xHalfAngle} property.
-    
-
+    * The name of the {@code xHalfAngle} property.
     */
     public static final String XHalfAnglePropertyName = "xHalfAngle";
     /**
-    *  
-    The name of the {@code yHalfAngle} property.
-    
-
+    * The name of the {@code yHalfAngle} property.
     */
     public static final String YHalfAnglePropertyName = "yHalfAngle";
     /**
-    *  
-    The name of the {@code radius} property.
-    
-
+    * The name of the {@code radius} property.
     */
     public static final String RadiusPropertyName = "radius";
     /**
-    *  
-    The name of the {@code showIntersection} property.
-    
-
+    * The name of the {@code showIntersection} property.
     */
     public static final String ShowIntersectionPropertyName = "showIntersection";
     /**
-    *  
-    The name of the {@code intersectionColor} property.
-    
-
+    * The name of the {@code intersectionColor} property.
     */
     public static final String IntersectionColorPropertyName = "intersectionColor";
     /**
-    *  
-    The name of the {@code intersectionWidth} property.
-    
-
+    * The name of the {@code intersectionWidth} property.
     */
     public static final String IntersectionWidthPropertyName = "intersectionWidth";
     /**
-    *  
-    The name of the {@code showLateralSurfaces} property.
-    
-
+    * The name of the {@code showLateralSurfaces} property.
     */
     public static final String ShowLateralSurfacesPropertyName = "showLateralSurfaces";
     /**
-    *  
-    The name of the {@code lateralSurfaceMaterial} property.
-    
-
+    * The name of the {@code lateralSurfaceMaterial} property.
     */
     public static final String LateralSurfaceMaterialPropertyName = "lateralSurfaceMaterial";
     /**
-    *  
-    The name of the {@code showEllipsoidSurfaces} property.
-    
-
+    * The name of the {@code showEllipsoidSurfaces} property.
     */
     public static final String ShowEllipsoidSurfacesPropertyName = "showEllipsoidSurfaces";
     /**
-    *  
-    The name of the {@code ellipsoidSurfaceMaterial} property.
-    
-
+    * The name of the {@code ellipsoidSurfaceMaterial} property.
     */
     public static final String EllipsoidSurfaceMaterialPropertyName = "ellipsoidSurfaceMaterial";
     /**
-    *  
-    The name of the {@code showEllipsoidHorizonSurfaces} property.
-    
-
+    * The name of the {@code showEllipsoidHorizonSurfaces} property.
     */
     public static final String ShowEllipsoidHorizonSurfacesPropertyName = "showEllipsoidHorizonSurfaces";
     /**
-    *  
-    The name of the {@code ellipsoidHorizonSurfaceMaterial} property.
-    
-
+    * The name of the {@code ellipsoidHorizonSurfaceMaterial} property.
     */
     public static final String EllipsoidHorizonSurfaceMaterialPropertyName = "ellipsoidHorizonSurfaceMaterial";
     /**
-    *  
-    The name of the {@code showDomeSurfaces} property.
-    
-
+    * The name of the {@code showDomeSurfaces} property.
     */
     public static final String ShowDomeSurfacesPropertyName = "showDomeSurfaces";
     /**
-    *  
-    The name of the {@code domeSurfaceMaterial} property.
-    
-
+    * The name of the {@code domeSurfaceMaterial} property.
     */
     public static final String DomeSurfaceMaterialPropertyName = "domeSurfaceMaterial";
     /**
-    *  
-    The name of the {@code portionToDisplay} property.
-    
-
+    * The name of the {@code portionToDisplay} property.
     */
     public static final String PortionToDisplayPropertyName = "portionToDisplay";
     /**
-    *  
-    The name of the {@code environmentConstraint} property.
-    
-
+    * The name of the {@code environmentConstraint} property.
     */
     public static final String EnvironmentConstraintPropertyName = "environmentConstraint";
     /**
-    *  
-    The name of the {@code showEnvironmentOcclusion} property.
-    
-
+    * The name of the {@code showEnvironmentOcclusion} property.
     */
     public static final String ShowEnvironmentOcclusionPropertyName = "showEnvironmentOcclusion";
     /**
-    *  
-    The name of the {@code environmentOcclusionMaterial} property.
-    
-
+    * The name of the {@code environmentOcclusionMaterial} property.
     */
     public static final String EnvironmentOcclusionMaterialPropertyName = "environmentOcclusionMaterial";
     /**
-    *  
-    The name of the {@code showEnvironmentIntersection} property.
-    
-
+    * The name of the {@code showEnvironmentIntersection} property.
     */
     public static final String ShowEnvironmentIntersectionPropertyName = "showEnvironmentIntersection";
     /**
-    *  
-    The name of the {@code environmentIntersectionColor} property.
-    
-
+    * The name of the {@code environmentIntersectionColor} property.
     */
     public static final String EnvironmentIntersectionColorPropertyName = "environmentIntersectionColor";
     /**
-    *  
-    The name of the {@code environmentIntersectionWidth} property.
-    
-
+    * The name of the {@code environmentIntersectionWidth} property.
     */
     public static final String EnvironmentIntersectionWidthPropertyName = "environmentIntersectionWidth";
     private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
@@ -294,11 +225,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }, false);
 
     /**
-    *  
-    Initializes a new instance.
-    
-    
-
+    * Initializes a new instance.
     * @param propertyName The name of the property.
     */
     public RectangularSensorCesiumWriter(@Nonnull String propertyName) {
@@ -306,11 +233,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Initializes a new instance as a copy of an existing instance.
-    
-    
-
+    * Initializes a new instance as a copy of an existing instance.
     * @param existingInstance The existing instance to copy.
     */
     protected RectangularSensorCesiumWriter(@Nonnull RectangularSensorCesiumWriter existingInstance) {
@@ -318,12 +241,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    
-    Copies this instance and returns the copy.
-    
-    
-
+    * Copies this instance and returns the copy.
     * @return The copy.
     */
     @Override
@@ -332,9 +250,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code show} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code show} property defines whether or not the entire rectangular pyramid sensor is shown. If not specified, the default value is {@code true}.
-    
-
+    * Gets the writer for the {@code show} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code show} property defines whether or not the entire rectangular pyramid sensor is shown. If not specified, the default value is {@code true}.
     */
     @Nonnull
     public final BooleanCesiumWriter getShowWriter() {
@@ -342,10 +258,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code show} property. The {@code show} property defines whether or not the entire rectangular pyramid sensor is shown. If not specified, the default value is {@code true}.
-    
-
+    * Opens and returns the writer for the {@code show} property. The {@code show} property defines whether or not the entire rectangular pyramid sensor is shown. If not specified, the default value is {@code true}.
     */
     @Nonnull
     public final BooleanCesiumWriter openShowProperty() {
@@ -354,11 +267,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code show} property as a {@code boolean} value. The {@code show} property specifies whether or not the entire rectangular pyramid sensor is shown. If not specified, the default value is {@code true}.
-    
-    
-
+    * Writes a value for the {@code show} property as a {@code boolean} value. The {@code show} property specifies whether or not the entire rectangular pyramid sensor is shown. If not specified, the default value is {@code true}.
     * @param value The value.
     */
     public final void writeShowProperty(boolean value) {
@@ -373,11 +282,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the entire rectangular pyramid sensor is shown. If not specified, the default value is {@code true}.
-    
-    
-
+    * Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the entire rectangular pyramid sensor is shown. If not specified, the default value is {@code true}.
     * @param value The reference.
     */
     public final void writeShowPropertyReference(Reference value) {
@@ -392,11 +297,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the entire rectangular pyramid sensor is shown. If not specified, the default value is {@code true}.
-    
-    
-
+    * Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the entire rectangular pyramid sensor is shown. If not specified, the default value is {@code true}.
     * @param value The reference.
     */
     public final void writeShowPropertyReference(String value) {
@@ -411,12 +312,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the entire rectangular pyramid sensor is shown. If not specified, the default value is {@code true}.
-    
-    
-    
-
+    * Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the entire rectangular pyramid sensor is shown. If not specified, the default value is {@code true}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -432,12 +328,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the entire rectangular pyramid sensor is shown. If not specified, the default value is {@code true}.
-    
-    
-    
-
+    * Writes a value for the {@code show} property as a {@code reference} value. The {@code show} property specifies whether or not the entire rectangular pyramid sensor is shown. If not specified, the default value is {@code true}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -453,9 +344,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code xHalfAngle} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code xHalfAngle} property defines the X half angle. If not specified, the default value is π / 2.
-    
-
+    * Gets the writer for the {@code xHalfAngle} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code xHalfAngle} property defines the X half angle. If not specified, the default value is π / 2.
     */
     @Nonnull
     public final DoubleCesiumWriter getXHalfAngleWriter() {
@@ -463,10 +352,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code xHalfAngle} property. The {@code xHalfAngle} property defines the X half angle. If not specified, the default value is π / 2.
-    
-
+    * Opens and returns the writer for the {@code xHalfAngle} property. The {@code xHalfAngle} property defines the X half angle. If not specified, the default value is π / 2.
     */
     @Nonnull
     public final DoubleCesiumWriter openXHalfAngleProperty() {
@@ -475,11 +361,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code xHalfAngle} property as a {@code number} value. The {@code xHalfAngle} property specifies the X half angle. If not specified, the default value is π / 2.
-    
-    
-
+    * Writes a value for the {@code xHalfAngle} property as a {@code number} value. The {@code xHalfAngle} property specifies the X half angle. If not specified, the default value is π / 2.
     * @param value The value.
     */
     public final void writeXHalfAngleProperty(double value) {
@@ -494,12 +376,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code xHalfAngle} property as a {@code number} value. The {@code xHalfAngle} property specifies the X half angle. If not specified, the default value is π / 2.
-    
-    
-    
-
+    * Writes a value for the {@code xHalfAngle} property as a {@code number} value. The {@code xHalfAngle} property specifies the X half angle. If not specified, the default value is π / 2.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -515,14 +392,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code xHalfAngle} property as a {@code number} value. The {@code xHalfAngle} property specifies the X half angle. If not specified, the default value is π / 2.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code xHalfAngle} property as a {@code number} value. The {@code xHalfAngle} property specifies the X half angle. If not specified, the default value is π / 2.
     * @param dates The dates at which the value is specified.
     * @param values The value corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -540,11 +410,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code xHalfAngle} property as a {@code reference} value. The {@code xHalfAngle} property specifies the X half angle. If not specified, the default value is π / 2.
-    
-    
-
+    * Writes a value for the {@code xHalfAngle} property as a {@code reference} value. The {@code xHalfAngle} property specifies the X half angle. If not specified, the default value is π / 2.
     * @param value The reference.
     */
     public final void writeXHalfAnglePropertyReference(Reference value) {
@@ -559,11 +425,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code xHalfAngle} property as a {@code reference} value. The {@code xHalfAngle} property specifies the X half angle. If not specified, the default value is π / 2.
-    
-    
-
+    * Writes a value for the {@code xHalfAngle} property as a {@code reference} value. The {@code xHalfAngle} property specifies the X half angle. If not specified, the default value is π / 2.
     * @param value The reference.
     */
     public final void writeXHalfAnglePropertyReference(String value) {
@@ -578,12 +440,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code xHalfAngle} property as a {@code reference} value. The {@code xHalfAngle} property specifies the X half angle. If not specified, the default value is π / 2.
-    
-    
-    
-
+    * Writes a value for the {@code xHalfAngle} property as a {@code reference} value. The {@code xHalfAngle} property specifies the X half angle. If not specified, the default value is π / 2.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -599,12 +456,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code xHalfAngle} property as a {@code reference} value. The {@code xHalfAngle} property specifies the X half angle. If not specified, the default value is π / 2.
-    
-    
-    
-
+    * Writes a value for the {@code xHalfAngle} property as a {@code reference} value. The {@code xHalfAngle} property specifies the X half angle. If not specified, the default value is π / 2.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -620,9 +472,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code yHalfAngle} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code yHalfAngle} property defines the Y half angle. If not specified, the default value is π / 2.
-    
-
+    * Gets the writer for the {@code yHalfAngle} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code yHalfAngle} property defines the Y half angle. If not specified, the default value is π / 2.
     */
     @Nonnull
     public final DoubleCesiumWriter getYHalfAngleWriter() {
@@ -630,10 +480,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code yHalfAngle} property. The {@code yHalfAngle} property defines the Y half angle. If not specified, the default value is π / 2.
-    
-
+    * Opens and returns the writer for the {@code yHalfAngle} property. The {@code yHalfAngle} property defines the Y half angle. If not specified, the default value is π / 2.
     */
     @Nonnull
     public final DoubleCesiumWriter openYHalfAngleProperty() {
@@ -642,11 +489,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code yHalfAngle} property as a {@code number} value. The {@code yHalfAngle} property specifies the Y half angle. If not specified, the default value is π / 2.
-    
-    
-
+    * Writes a value for the {@code yHalfAngle} property as a {@code number} value. The {@code yHalfAngle} property specifies the Y half angle. If not specified, the default value is π / 2.
     * @param value The value.
     */
     public final void writeYHalfAngleProperty(double value) {
@@ -661,12 +504,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code yHalfAngle} property as a {@code number} value. The {@code yHalfAngle} property specifies the Y half angle. If not specified, the default value is π / 2.
-    
-    
-    
-
+    * Writes a value for the {@code yHalfAngle} property as a {@code number} value. The {@code yHalfAngle} property specifies the Y half angle. If not specified, the default value is π / 2.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -682,14 +520,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code yHalfAngle} property as a {@code number} value. The {@code yHalfAngle} property specifies the Y half angle. If not specified, the default value is π / 2.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code yHalfAngle} property as a {@code number} value. The {@code yHalfAngle} property specifies the Y half angle. If not specified, the default value is π / 2.
     * @param dates The dates at which the value is specified.
     * @param values The value corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -707,11 +538,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code yHalfAngle} property as a {@code reference} value. The {@code yHalfAngle} property specifies the Y half angle. If not specified, the default value is π / 2.
-    
-    
-
+    * Writes a value for the {@code yHalfAngle} property as a {@code reference} value. The {@code yHalfAngle} property specifies the Y half angle. If not specified, the default value is π / 2.
     * @param value The reference.
     */
     public final void writeYHalfAnglePropertyReference(Reference value) {
@@ -726,11 +553,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code yHalfAngle} property as a {@code reference} value. The {@code yHalfAngle} property specifies the Y half angle. If not specified, the default value is π / 2.
-    
-    
-
+    * Writes a value for the {@code yHalfAngle} property as a {@code reference} value. The {@code yHalfAngle} property specifies the Y half angle. If not specified, the default value is π / 2.
     * @param value The reference.
     */
     public final void writeYHalfAnglePropertyReference(String value) {
@@ -745,12 +568,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code yHalfAngle} property as a {@code reference} value. The {@code yHalfAngle} property specifies the Y half angle. If not specified, the default value is π / 2.
-    
-    
-    
-
+    * Writes a value for the {@code yHalfAngle} property as a {@code reference} value. The {@code yHalfAngle} property specifies the Y half angle. If not specified, the default value is π / 2.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -766,12 +584,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code yHalfAngle} property as a {@code reference} value. The {@code yHalfAngle} property specifies the Y half angle. If not specified, the default value is π / 2.
-    
-    
-    
-
+    * Writes a value for the {@code yHalfAngle} property as a {@code reference} value. The {@code yHalfAngle} property specifies the Y half angle. If not specified, the default value is π / 2.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -787,9 +600,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code radius} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code radius} property defines the radial limit of the sensor. If not specified, the default value is Infinity.
-    
-
+    * Gets the writer for the {@code radius} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code radius} property defines the radial limit of the sensor. If not specified, the default value is Infinity.
     */
     @Nonnull
     public final DoubleCesiumWriter getRadiusWriter() {
@@ -797,10 +608,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code radius} property. The {@code radius} property defines the radial limit of the sensor. If not specified, the default value is Infinity.
-    
-
+    * Opens and returns the writer for the {@code radius} property. The {@code radius} property defines the radial limit of the sensor. If not specified, the default value is Infinity.
     */
     @Nonnull
     public final DoubleCesiumWriter openRadiusProperty() {
@@ -809,11 +617,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code radius} property as a {@code number} value. The {@code radius} property specifies the radial limit of the sensor. If not specified, the default value is Infinity.
-    
-    
-
+    * Writes a value for the {@code radius} property as a {@code number} value. The {@code radius} property specifies the radial limit of the sensor. If not specified, the default value is Infinity.
     * @param value The value.
     */
     public final void writeRadiusProperty(double value) {
@@ -828,12 +632,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code radius} property as a {@code number} value. The {@code radius} property specifies the radial limit of the sensor. If not specified, the default value is Infinity.
-    
-    
-    
-
+    * Writes a value for the {@code radius} property as a {@code number} value. The {@code radius} property specifies the radial limit of the sensor. If not specified, the default value is Infinity.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -849,14 +648,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code radius} property as a {@code number} value. The {@code radius} property specifies the radial limit of the sensor. If not specified, the default value is Infinity.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code radius} property as a {@code number} value. The {@code radius} property specifies the radial limit of the sensor. If not specified, the default value is Infinity.
     * @param dates The dates at which the value is specified.
     * @param values The value corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -874,11 +666,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code radius} property as a {@code reference} value. The {@code radius} property specifies the radial limit of the sensor. If not specified, the default value is Infinity.
-    
-    
-
+    * Writes a value for the {@code radius} property as a {@code reference} value. The {@code radius} property specifies the radial limit of the sensor. If not specified, the default value is Infinity.
     * @param value The reference.
     */
     public final void writeRadiusPropertyReference(Reference value) {
@@ -893,11 +681,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code radius} property as a {@code reference} value. The {@code radius} property specifies the radial limit of the sensor. If not specified, the default value is Infinity.
-    
-    
-
+    * Writes a value for the {@code radius} property as a {@code reference} value. The {@code radius} property specifies the radial limit of the sensor. If not specified, the default value is Infinity.
     * @param value The reference.
     */
     public final void writeRadiusPropertyReference(String value) {
@@ -912,12 +696,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code radius} property as a {@code reference} value. The {@code radius} property specifies the radial limit of the sensor. If not specified, the default value is Infinity.
-    
-    
-    
-
+    * Writes a value for the {@code radius} property as a {@code reference} value. The {@code radius} property specifies the radial limit of the sensor. If not specified, the default value is Infinity.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -933,12 +712,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code radius} property as a {@code reference} value. The {@code radius} property specifies the radial limit of the sensor. If not specified, the default value is Infinity.
-    
-    
-    
-
+    * Writes a value for the {@code radius} property as a {@code reference} value. The {@code radius} property specifies the radial limit of the sensor. If not specified, the default value is Infinity.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -954,9 +728,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code showIntersection} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code showIntersection} property defines whether or not the intersection of the sensor with the Earth is shown. If not specified, the default value is {@code true}.
-    
-
+    * Gets the writer for the {@code showIntersection} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code showIntersection} property defines whether or not the intersection of the sensor with the Earth is shown. If not specified, the default value is {@code true}.
     */
     @Nonnull
     public final BooleanCesiumWriter getShowIntersectionWriter() {
@@ -964,10 +736,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code showIntersection} property. The {@code showIntersection} property defines whether or not the intersection of the sensor with the Earth is shown. If not specified, the default value is {@code true}.
-    
-
+    * Opens and returns the writer for the {@code showIntersection} property. The {@code showIntersection} property defines whether or not the intersection of the sensor with the Earth is shown. If not specified, the default value is {@code true}.
     */
     @Nonnull
     public final BooleanCesiumWriter openShowIntersectionProperty() {
@@ -976,11 +745,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code showIntersection} property as a {@code boolean} value. The {@code showIntersection} property specifies whether or not the intersection of the sensor with the Earth is shown. If not specified, the default value is {@code true}.
-    
-    
-
+    * Writes a value for the {@code showIntersection} property as a {@code boolean} value. The {@code showIntersection} property specifies whether or not the intersection of the sensor with the Earth is shown. If not specified, the default value is {@code true}.
     * @param value The value.
     */
     public final void writeShowIntersectionProperty(boolean value) {
@@ -995,11 +760,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code showIntersection} property as a {@code reference} value. The {@code showIntersection} property specifies whether or not the intersection of the sensor with the Earth is shown. If not specified, the default value is {@code true}.
-    
-    
-
+    * Writes a value for the {@code showIntersection} property as a {@code reference} value. The {@code showIntersection} property specifies whether or not the intersection of the sensor with the Earth is shown. If not specified, the default value is {@code true}.
     * @param value The reference.
     */
     public final void writeShowIntersectionPropertyReference(Reference value) {
@@ -1014,11 +775,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code showIntersection} property as a {@code reference} value. The {@code showIntersection} property specifies whether or not the intersection of the sensor with the Earth is shown. If not specified, the default value is {@code true}.
-    
-    
-
+    * Writes a value for the {@code showIntersection} property as a {@code reference} value. The {@code showIntersection} property specifies whether or not the intersection of the sensor with the Earth is shown. If not specified, the default value is {@code true}.
     * @param value The reference.
     */
     public final void writeShowIntersectionPropertyReference(String value) {
@@ -1033,12 +790,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code showIntersection} property as a {@code reference} value. The {@code showIntersection} property specifies whether or not the intersection of the sensor with the Earth is shown. If not specified, the default value is {@code true}.
-    
-    
-    
-
+    * Writes a value for the {@code showIntersection} property as a {@code reference} value. The {@code showIntersection} property specifies whether or not the intersection of the sensor with the Earth is shown. If not specified, the default value is {@code true}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -1054,12 +806,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code showIntersection} property as a {@code reference} value. The {@code showIntersection} property specifies whether or not the intersection of the sensor with the Earth is shown. If not specified, the default value is {@code true}.
-    
-    
-    
-
+    * Writes a value for the {@code showIntersection} property as a {@code reference} value. The {@code showIntersection} property specifies whether or not the intersection of the sensor with the Earth is shown. If not specified, the default value is {@code true}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -1075,9 +822,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code intersectionColor} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code intersectionColor} property defines the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
-    
-
+    * Gets the writer for the {@code intersectionColor} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code intersectionColor} property defines the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
     */
     @Nonnull
     public final ColorCesiumWriter getIntersectionColorWriter() {
@@ -1085,10 +830,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code intersectionColor} property. The {@code intersectionColor} property defines the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
-    
-
+    * Opens and returns the writer for the {@code intersectionColor} property. The {@code intersectionColor} property defines the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
     */
     @Nonnull
     public final ColorCesiumWriter openIntersectionColorProperty() {
@@ -1097,11 +839,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code intersectionColor} property as a {@code rgba} value. The {@code intersectionColor} property specifies the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
-    
-    
-
+    * Writes a value for the {@code intersectionColor} property as a {@code rgba} value. The {@code intersectionColor} property specifies the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
     * @param color The color.
     */
     public final void writeIntersectionColorProperty(@Nonnull Color color) {
@@ -1116,14 +854,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code intersectionColor} property as a {@code rgba} value. The {@code intersectionColor} property specifies the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code intersectionColor} property as a {@code rgba} value. The {@code intersectionColor} property specifies the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
     * @param red The red component in the range 0 to 255.
     * @param green The green component in the range 0 to 255.
     * @param blue The blue component in the range 0 to 255.
@@ -1141,12 +872,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code intersectionColor} property as a {@code rgba} value. The {@code intersectionColor} property specifies the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
-    
-    
-    
-
+    * Writes a value for the {@code intersectionColor} property as a {@code rgba} value. The {@code intersectionColor} property specifies the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -1162,14 +888,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code intersectionColor} property as a {@code rgba} value. The {@code intersectionColor} property specifies the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code intersectionColor} property as a {@code rgba} value. The {@code intersectionColor} property specifies the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
     * @param dates The dates at which the value is specified.
     * @param colors The color corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -1187,11 +906,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code intersectionColor} property as a {@code rgbaf} value. The {@code intersectionColor} property specifies the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
-    
-    
-
+    * Writes a value for the {@code intersectionColor} property as a {@code rgbaf} value. The {@code intersectionColor} property specifies the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
     * @param color The color.
     */
     public final void writeIntersectionColorPropertyRgbaf(@Nonnull Color color) {
@@ -1206,14 +921,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code intersectionColor} property as a {@code rgbaf} value. The {@code intersectionColor} property specifies the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code intersectionColor} property as a {@code rgbaf} value. The {@code intersectionColor} property specifies the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
     * @param red The red component in the range 0 to 1.0.
     * @param green The green component in the range 0 to 1.0.
     * @param blue The blue component in the range 0 to 1.0.
@@ -1231,12 +939,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code intersectionColor} property as a {@code rgbaf} value. The {@code intersectionColor} property specifies the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
-    
-    
-    
-
+    * Writes a value for the {@code intersectionColor} property as a {@code rgbaf} value. The {@code intersectionColor} property specifies the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -1252,14 +955,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code intersectionColor} property as a {@code rgbaf} value. The {@code intersectionColor} property specifies the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code intersectionColor} property as a {@code rgbaf} value. The {@code intersectionColor} property specifies the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
     * @param dates The dates at which the value is specified.
     * @param colors The color corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -1277,11 +973,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code intersectionColor} property as a {@code reference} value. The {@code intersectionColor} property specifies the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
-    
-    
-
+    * Writes a value for the {@code intersectionColor} property as a {@code reference} value. The {@code intersectionColor} property specifies the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
     * @param value The reference.
     */
     public final void writeIntersectionColorPropertyReference(Reference value) {
@@ -1296,11 +988,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code intersectionColor} property as a {@code reference} value. The {@code intersectionColor} property specifies the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
-    
-    
-
+    * Writes a value for the {@code intersectionColor} property as a {@code reference} value. The {@code intersectionColor} property specifies the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
     * @param value The reference.
     */
     public final void writeIntersectionColorPropertyReference(String value) {
@@ -1315,12 +1003,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code intersectionColor} property as a {@code reference} value. The {@code intersectionColor} property specifies the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
-    
-    
-    
-
+    * Writes a value for the {@code intersectionColor} property as a {@code reference} value. The {@code intersectionColor} property specifies the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -1336,12 +1019,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code intersectionColor} property as a {@code reference} value. The {@code intersectionColor} property specifies the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
-    
-    
-    
-
+    * Writes a value for the {@code intersectionColor} property as a {@code reference} value. The {@code intersectionColor} property specifies the color of the intersection of the sensor with the Earth. If not specified, the default value is white.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -1357,9 +1035,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code intersectionWidth} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code intersectionWidth} property defines the width of the intersection in pixels. If not specified, the default value is 1.0.
-    
-
+    * Gets the writer for the {@code intersectionWidth} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code intersectionWidth} property defines the width of the intersection in pixels. If not specified, the default value is 1.0.
     */
     @Nonnull
     public final DoubleCesiumWriter getIntersectionWidthWriter() {
@@ -1367,10 +1043,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code intersectionWidth} property. The {@code intersectionWidth} property defines the width of the intersection in pixels. If not specified, the default value is 1.0.
-    
-
+    * Opens and returns the writer for the {@code intersectionWidth} property. The {@code intersectionWidth} property defines the width of the intersection in pixels. If not specified, the default value is 1.0.
     */
     @Nonnull
     public final DoubleCesiumWriter openIntersectionWidthProperty() {
@@ -1379,11 +1052,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code intersectionWidth} property as a {@code number} value. The {@code intersectionWidth} property specifies the width of the intersection in pixels. If not specified, the default value is 1.0.
-    
-    
-
+    * Writes a value for the {@code intersectionWidth} property as a {@code number} value. The {@code intersectionWidth} property specifies the width of the intersection in pixels. If not specified, the default value is 1.0.
     * @param value The value.
     */
     public final void writeIntersectionWidthProperty(double value) {
@@ -1398,12 +1067,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code intersectionWidth} property as a {@code number} value. The {@code intersectionWidth} property specifies the width of the intersection in pixels. If not specified, the default value is 1.0.
-    
-    
-    
-
+    * Writes a value for the {@code intersectionWidth} property as a {@code number} value. The {@code intersectionWidth} property specifies the width of the intersection in pixels. If not specified, the default value is 1.0.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -1419,14 +1083,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code intersectionWidth} property as a {@code number} value. The {@code intersectionWidth} property specifies the width of the intersection in pixels. If not specified, the default value is 1.0.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code intersectionWidth} property as a {@code number} value. The {@code intersectionWidth} property specifies the width of the intersection in pixels. If not specified, the default value is 1.0.
     * @param dates The dates at which the value is specified.
     * @param values The value corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -1444,11 +1101,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code intersectionWidth} property as a {@code reference} value. The {@code intersectionWidth} property specifies the width of the intersection in pixels. If not specified, the default value is 1.0.
-    
-    
-
+    * Writes a value for the {@code intersectionWidth} property as a {@code reference} value. The {@code intersectionWidth} property specifies the width of the intersection in pixels. If not specified, the default value is 1.0.
     * @param value The reference.
     */
     public final void writeIntersectionWidthPropertyReference(Reference value) {
@@ -1463,11 +1116,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code intersectionWidth} property as a {@code reference} value. The {@code intersectionWidth} property specifies the width of the intersection in pixels. If not specified, the default value is 1.0.
-    
-    
-
+    * Writes a value for the {@code intersectionWidth} property as a {@code reference} value. The {@code intersectionWidth} property specifies the width of the intersection in pixels. If not specified, the default value is 1.0.
     * @param value The reference.
     */
     public final void writeIntersectionWidthPropertyReference(String value) {
@@ -1482,12 +1131,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code intersectionWidth} property as a {@code reference} value. The {@code intersectionWidth} property specifies the width of the intersection in pixels. If not specified, the default value is 1.0.
-    
-    
-    
-
+    * Writes a value for the {@code intersectionWidth} property as a {@code reference} value. The {@code intersectionWidth} property specifies the width of the intersection in pixels. If not specified, the default value is 1.0.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -1503,12 +1147,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code intersectionWidth} property as a {@code reference} value. The {@code intersectionWidth} property specifies the width of the intersection in pixels. If not specified, the default value is 1.0.
-    
-    
-    
-
+    * Writes a value for the {@code intersectionWidth} property as a {@code reference} value. The {@code intersectionWidth} property specifies the width of the intersection in pixels. If not specified, the default value is 1.0.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -1524,9 +1163,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code showLateralSurfaces} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code showLateralSurfaces} property defines whether or not the lateral surfaces, i.e., the outer sides of the sensor, are shown. If not specified, the default value is {@code true}.
-    
-
+    * Gets the writer for the {@code showLateralSurfaces} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code showLateralSurfaces} property defines whether or not the lateral surfaces, i.e., the outer sides of the sensor, are shown. If not specified, the default value is {@code true}.
     */
     @Nonnull
     public final BooleanCesiumWriter getShowLateralSurfacesWriter() {
@@ -1534,10 +1171,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code showLateralSurfaces} property. The {@code showLateralSurfaces} property defines whether or not the lateral surfaces, i.e., the outer sides of the sensor, are shown. If not specified, the default value is {@code true}.
-    
-
+    * Opens and returns the writer for the {@code showLateralSurfaces} property. The {@code showLateralSurfaces} property defines whether or not the lateral surfaces, i.e., the outer sides of the sensor, are shown. If not specified, the default value is {@code true}.
     */
     @Nonnull
     public final BooleanCesiumWriter openShowLateralSurfacesProperty() {
@@ -1546,11 +1180,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code showLateralSurfaces} property as a {@code boolean} value. The {@code showLateralSurfaces} property specifies whether or not the lateral surfaces, i.e., the outer sides of the sensor, are shown. If not specified, the default value is {@code true}.
-    
-    
-
+    * Writes a value for the {@code showLateralSurfaces} property as a {@code boolean} value. The {@code showLateralSurfaces} property specifies whether or not the lateral surfaces, i.e., the outer sides of the sensor, are shown. If not specified, the default value is {@code true}.
     * @param value The value.
     */
     public final void writeShowLateralSurfacesProperty(boolean value) {
@@ -1565,11 +1195,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code showLateralSurfaces} property as a {@code reference} value. The {@code showLateralSurfaces} property specifies whether or not the lateral surfaces, i.e., the outer sides of the sensor, are shown. If not specified, the default value is {@code true}.
-    
-    
-
+    * Writes a value for the {@code showLateralSurfaces} property as a {@code reference} value. The {@code showLateralSurfaces} property specifies whether or not the lateral surfaces, i.e., the outer sides of the sensor, are shown. If not specified, the default value is {@code true}.
     * @param value The reference.
     */
     public final void writeShowLateralSurfacesPropertyReference(Reference value) {
@@ -1584,11 +1210,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code showLateralSurfaces} property as a {@code reference} value. The {@code showLateralSurfaces} property specifies whether or not the lateral surfaces, i.e., the outer sides of the sensor, are shown. If not specified, the default value is {@code true}.
-    
-    
-
+    * Writes a value for the {@code showLateralSurfaces} property as a {@code reference} value. The {@code showLateralSurfaces} property specifies whether or not the lateral surfaces, i.e., the outer sides of the sensor, are shown. If not specified, the default value is {@code true}.
     * @param value The reference.
     */
     public final void writeShowLateralSurfacesPropertyReference(String value) {
@@ -1603,12 +1225,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code showLateralSurfaces} property as a {@code reference} value. The {@code showLateralSurfaces} property specifies whether or not the lateral surfaces, i.e., the outer sides of the sensor, are shown. If not specified, the default value is {@code true}.
-    
-    
-    
-
+    * Writes a value for the {@code showLateralSurfaces} property as a {@code reference} value. The {@code showLateralSurfaces} property specifies whether or not the lateral surfaces, i.e., the outer sides of the sensor, are shown. If not specified, the default value is {@code true}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -1624,12 +1241,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code showLateralSurfaces} property as a {@code reference} value. The {@code showLateralSurfaces} property specifies whether or not the lateral surfaces, i.e., the outer sides of the sensor, are shown. If not specified, the default value is {@code true}.
-    
-    
-    
-
+    * Writes a value for the {@code showLateralSurfaces} property as a {@code reference} value. The {@code showLateralSurfaces} property specifies whether or not the lateral surfaces, i.e., the outer sides of the sensor, are shown. If not specified, the default value is {@code true}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -1645,9 +1257,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code lateralSurfaceMaterial} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code lateralSurfaceMaterial} property defines the material to use for the sensor's lateral surface, i.e., the outer sides of the sensor. If not specified, the default value is solid white.
-    
-
+    * Gets the writer for the {@code lateralSurfaceMaterial} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code lateralSurfaceMaterial} property defines the material to use for the sensor's lateral surface, i.e., the outer sides of the sensor. If not specified, the default value is solid white.
     */
     @Nonnull
     public final MaterialCesiumWriter getLateralSurfaceMaterialWriter() {
@@ -1655,10 +1265,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code lateralSurfaceMaterial} property. The {@code lateralSurfaceMaterial} property defines the material to use for the sensor's lateral surface, i.e., the outer sides of the sensor. If not specified, the default value is solid white.
-    
-
+    * Opens and returns the writer for the {@code lateralSurfaceMaterial} property. The {@code lateralSurfaceMaterial} property defines the material to use for the sensor's lateral surface, i.e., the outer sides of the sensor. If not specified, the default value is solid white.
     */
     @Nonnull
     public final MaterialCesiumWriter openLateralSurfaceMaterialProperty() {
@@ -1667,9 +1274,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code showEllipsoidSurfaces} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code showEllipsoidSurfaces} property defines whether or not ellipsoid surfaces are shown. If not specified, the default value is {@code true}.
-    
-
+    * Gets the writer for the {@code showEllipsoidSurfaces} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code showEllipsoidSurfaces} property defines whether or not ellipsoid surfaces are shown. If not specified, the default value is {@code true}.
     */
     @Nonnull
     public final BooleanCesiumWriter getShowEllipsoidSurfacesWriter() {
@@ -1677,10 +1282,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code showEllipsoidSurfaces} property. The {@code showEllipsoidSurfaces} property defines whether or not ellipsoid surfaces are shown. If not specified, the default value is {@code true}.
-    
-
+    * Opens and returns the writer for the {@code showEllipsoidSurfaces} property. The {@code showEllipsoidSurfaces} property defines whether or not ellipsoid surfaces are shown. If not specified, the default value is {@code true}.
     */
     @Nonnull
     public final BooleanCesiumWriter openShowEllipsoidSurfacesProperty() {
@@ -1689,11 +1291,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code showEllipsoidSurfaces} property as a {@code boolean} value. The {@code showEllipsoidSurfaces} property specifies whether or not ellipsoid surfaces are shown. If not specified, the default value is {@code true}.
-    
-    
-
+    * Writes a value for the {@code showEllipsoidSurfaces} property as a {@code boolean} value. The {@code showEllipsoidSurfaces} property specifies whether or not ellipsoid surfaces are shown. If not specified, the default value is {@code true}.
     * @param value The value.
     */
     public final void writeShowEllipsoidSurfacesProperty(boolean value) {
@@ -1708,11 +1306,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code showEllipsoidSurfaces} property as a {@code reference} value. The {@code showEllipsoidSurfaces} property specifies whether or not ellipsoid surfaces are shown. If not specified, the default value is {@code true}.
-    
-    
-
+    * Writes a value for the {@code showEllipsoidSurfaces} property as a {@code reference} value. The {@code showEllipsoidSurfaces} property specifies whether or not ellipsoid surfaces are shown. If not specified, the default value is {@code true}.
     * @param value The reference.
     */
     public final void writeShowEllipsoidSurfacesPropertyReference(Reference value) {
@@ -1727,11 +1321,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code showEllipsoidSurfaces} property as a {@code reference} value. The {@code showEllipsoidSurfaces} property specifies whether or not ellipsoid surfaces are shown. If not specified, the default value is {@code true}.
-    
-    
-
+    * Writes a value for the {@code showEllipsoidSurfaces} property as a {@code reference} value. The {@code showEllipsoidSurfaces} property specifies whether or not ellipsoid surfaces are shown. If not specified, the default value is {@code true}.
     * @param value The reference.
     */
     public final void writeShowEllipsoidSurfacesPropertyReference(String value) {
@@ -1746,12 +1336,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code showEllipsoidSurfaces} property as a {@code reference} value. The {@code showEllipsoidSurfaces} property specifies whether or not ellipsoid surfaces are shown. If not specified, the default value is {@code true}.
-    
-    
-    
-
+    * Writes a value for the {@code showEllipsoidSurfaces} property as a {@code reference} value. The {@code showEllipsoidSurfaces} property specifies whether or not ellipsoid surfaces are shown. If not specified, the default value is {@code true}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -1767,12 +1352,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code showEllipsoidSurfaces} property as a {@code reference} value. The {@code showEllipsoidSurfaces} property specifies whether or not ellipsoid surfaces are shown. If not specified, the default value is {@code true}.
-    
-    
-    
-
+    * Writes a value for the {@code showEllipsoidSurfaces} property as a {@code reference} value. The {@code showEllipsoidSurfaces} property specifies whether or not ellipsoid surfaces are shown. If not specified, the default value is {@code true}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -1788,9 +1368,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code ellipsoidSurfaceMaterial} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code ellipsoidSurfaceMaterial} property defines the material to use for the sensor's ellipsoid surfaces. If not specified, the default value is solid white.
-    
-
+    * Gets the writer for the {@code ellipsoidSurfaceMaterial} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code ellipsoidSurfaceMaterial} property defines the material to use for the sensor's ellipsoid surfaces. If not specified, the default value is solid white.
     */
     @Nonnull
     public final MaterialCesiumWriter getEllipsoidSurfaceMaterialWriter() {
@@ -1798,10 +1376,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code ellipsoidSurfaceMaterial} property. The {@code ellipsoidSurfaceMaterial} property defines the material to use for the sensor's ellipsoid surfaces. If not specified, the default value is solid white.
-    
-
+    * Opens and returns the writer for the {@code ellipsoidSurfaceMaterial} property. The {@code ellipsoidSurfaceMaterial} property defines the material to use for the sensor's ellipsoid surfaces. If not specified, the default value is solid white.
     */
     @Nonnull
     public final MaterialCesiumWriter openEllipsoidSurfaceMaterialProperty() {
@@ -1810,9 +1385,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code showEllipsoidHorizonSurfaces} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code showEllipsoidHorizonSurfaces} property defines whether or not ellipsoid horizon surfaces are shown. If not specified, the default value is {@code true}.
-    
-
+    * Gets the writer for the {@code showEllipsoidHorizonSurfaces} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code showEllipsoidHorizonSurfaces} property defines whether or not ellipsoid horizon surfaces are shown. If not specified, the default value is {@code true}.
     */
     @Nonnull
     public final BooleanCesiumWriter getShowEllipsoidHorizonSurfacesWriter() {
@@ -1820,10 +1393,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code showEllipsoidHorizonSurfaces} property. The {@code showEllipsoidHorizonSurfaces} property defines whether or not ellipsoid horizon surfaces are shown. If not specified, the default value is {@code true}.
-    
-
+    * Opens and returns the writer for the {@code showEllipsoidHorizonSurfaces} property. The {@code showEllipsoidHorizonSurfaces} property defines whether or not ellipsoid horizon surfaces are shown. If not specified, the default value is {@code true}.
     */
     @Nonnull
     public final BooleanCesiumWriter openShowEllipsoidHorizonSurfacesProperty() {
@@ -1832,11 +1402,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code showEllipsoidHorizonSurfaces} property as a {@code boolean} value. The {@code showEllipsoidHorizonSurfaces} property specifies whether or not ellipsoid horizon surfaces are shown. If not specified, the default value is {@code true}.
-    
-    
-
+    * Writes a value for the {@code showEllipsoidHorizonSurfaces} property as a {@code boolean} value. The {@code showEllipsoidHorizonSurfaces} property specifies whether or not ellipsoid horizon surfaces are shown. If not specified, the default value is {@code true}.
     * @param value The value.
     */
     public final void writeShowEllipsoidHorizonSurfacesProperty(boolean value) {
@@ -1851,11 +1417,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code showEllipsoidHorizonSurfaces} property as a {@code reference} value. The {@code showEllipsoidHorizonSurfaces} property specifies whether or not ellipsoid horizon surfaces are shown. If not specified, the default value is {@code true}.
-    
-    
-
+    * Writes a value for the {@code showEllipsoidHorizonSurfaces} property as a {@code reference} value. The {@code showEllipsoidHorizonSurfaces} property specifies whether or not ellipsoid horizon surfaces are shown. If not specified, the default value is {@code true}.
     * @param value The reference.
     */
     public final void writeShowEllipsoidHorizonSurfacesPropertyReference(Reference value) {
@@ -1870,11 +1432,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code showEllipsoidHorizonSurfaces} property as a {@code reference} value. The {@code showEllipsoidHorizonSurfaces} property specifies whether or not ellipsoid horizon surfaces are shown. If not specified, the default value is {@code true}.
-    
-    
-
+    * Writes a value for the {@code showEllipsoidHorizonSurfaces} property as a {@code reference} value. The {@code showEllipsoidHorizonSurfaces} property specifies whether or not ellipsoid horizon surfaces are shown. If not specified, the default value is {@code true}.
     * @param value The reference.
     */
     public final void writeShowEllipsoidHorizonSurfacesPropertyReference(String value) {
@@ -1889,12 +1447,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code showEllipsoidHorizonSurfaces} property as a {@code reference} value. The {@code showEllipsoidHorizonSurfaces} property specifies whether or not ellipsoid horizon surfaces are shown. If not specified, the default value is {@code true}.
-    
-    
-    
-
+    * Writes a value for the {@code showEllipsoidHorizonSurfaces} property as a {@code reference} value. The {@code showEllipsoidHorizonSurfaces} property specifies whether or not ellipsoid horizon surfaces are shown. If not specified, the default value is {@code true}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -1910,12 +1463,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code showEllipsoidHorizonSurfaces} property as a {@code reference} value. The {@code showEllipsoidHorizonSurfaces} property specifies whether or not ellipsoid horizon surfaces are shown. If not specified, the default value is {@code true}.
-    
-    
-    
-
+    * Writes a value for the {@code showEllipsoidHorizonSurfaces} property as a {@code reference} value. The {@code showEllipsoidHorizonSurfaces} property specifies whether or not ellipsoid horizon surfaces are shown. If not specified, the default value is {@code true}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -1931,9 +1479,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code ellipsoidHorizonSurfaceMaterial} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code ellipsoidHorizonSurfaceMaterial} property defines the material to use for the sensor's ellipsoid horizon surfaces. If not specified, the default value is solid white.
-    
-
+    * Gets the writer for the {@code ellipsoidHorizonSurfaceMaterial} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code ellipsoidHorizonSurfaceMaterial} property defines the material to use for the sensor's ellipsoid horizon surfaces. If not specified, the default value is solid white.
     */
     @Nonnull
     public final MaterialCesiumWriter getEllipsoidHorizonSurfaceMaterialWriter() {
@@ -1941,10 +1487,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code ellipsoidHorizonSurfaceMaterial} property. The {@code ellipsoidHorizonSurfaceMaterial} property defines the material to use for the sensor's ellipsoid horizon surfaces. If not specified, the default value is solid white.
-    
-
+    * Opens and returns the writer for the {@code ellipsoidHorizonSurfaceMaterial} property. The {@code ellipsoidHorizonSurfaceMaterial} property defines the material to use for the sensor's ellipsoid horizon surfaces. If not specified, the default value is solid white.
     */
     @Nonnull
     public final MaterialCesiumWriter openEllipsoidHorizonSurfaceMaterialProperty() {
@@ -1953,9 +1496,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code showDomeSurfaces} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code showDomeSurfaces} property defines whether or not dome surfaces are shown. If not specified, the default value is {@code true}.
-    
-
+    * Gets the writer for the {@code showDomeSurfaces} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code showDomeSurfaces} property defines whether or not dome surfaces are shown. If not specified, the default value is {@code true}.
     */
     @Nonnull
     public final BooleanCesiumWriter getShowDomeSurfacesWriter() {
@@ -1963,10 +1504,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code showDomeSurfaces} property. The {@code showDomeSurfaces} property defines whether or not dome surfaces are shown. If not specified, the default value is {@code true}.
-    
-
+    * Opens and returns the writer for the {@code showDomeSurfaces} property. The {@code showDomeSurfaces} property defines whether or not dome surfaces are shown. If not specified, the default value is {@code true}.
     */
     @Nonnull
     public final BooleanCesiumWriter openShowDomeSurfacesProperty() {
@@ -1975,11 +1513,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code showDomeSurfaces} property as a {@code boolean} value. The {@code showDomeSurfaces} property specifies whether or not dome surfaces are shown. If not specified, the default value is {@code true}.
-    
-    
-
+    * Writes a value for the {@code showDomeSurfaces} property as a {@code boolean} value. The {@code showDomeSurfaces} property specifies whether or not dome surfaces are shown. If not specified, the default value is {@code true}.
     * @param value The value.
     */
     public final void writeShowDomeSurfacesProperty(boolean value) {
@@ -1994,11 +1528,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code showDomeSurfaces} property as a {@code reference} value. The {@code showDomeSurfaces} property specifies whether or not dome surfaces are shown. If not specified, the default value is {@code true}.
-    
-    
-
+    * Writes a value for the {@code showDomeSurfaces} property as a {@code reference} value. The {@code showDomeSurfaces} property specifies whether or not dome surfaces are shown. If not specified, the default value is {@code true}.
     * @param value The reference.
     */
     public final void writeShowDomeSurfacesPropertyReference(Reference value) {
@@ -2013,11 +1543,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code showDomeSurfaces} property as a {@code reference} value. The {@code showDomeSurfaces} property specifies whether or not dome surfaces are shown. If not specified, the default value is {@code true}.
-    
-    
-
+    * Writes a value for the {@code showDomeSurfaces} property as a {@code reference} value. The {@code showDomeSurfaces} property specifies whether or not dome surfaces are shown. If not specified, the default value is {@code true}.
     * @param value The reference.
     */
     public final void writeShowDomeSurfacesPropertyReference(String value) {
@@ -2032,12 +1558,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code showDomeSurfaces} property as a {@code reference} value. The {@code showDomeSurfaces} property specifies whether or not dome surfaces are shown. If not specified, the default value is {@code true}.
-    
-    
-    
-
+    * Writes a value for the {@code showDomeSurfaces} property as a {@code reference} value. The {@code showDomeSurfaces} property specifies whether or not dome surfaces are shown. If not specified, the default value is {@code true}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -2053,12 +1574,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code showDomeSurfaces} property as a {@code reference} value. The {@code showDomeSurfaces} property specifies whether or not dome surfaces are shown. If not specified, the default value is {@code true}.
-    
-    
-    
-
+    * Writes a value for the {@code showDomeSurfaces} property as a {@code reference} value. The {@code showDomeSurfaces} property specifies whether or not dome surfaces are shown. If not specified, the default value is {@code true}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -2074,9 +1590,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code domeSurfaceMaterial} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code domeSurfaceMaterial} property defines the material to use for the sensor's dome surfaces. If not specified, the default value is solid white.
-    
-
+    * Gets the writer for the {@code domeSurfaceMaterial} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code domeSurfaceMaterial} property defines the material to use for the sensor's dome surfaces. If not specified, the default value is solid white.
     */
     @Nonnull
     public final MaterialCesiumWriter getDomeSurfaceMaterialWriter() {
@@ -2084,10 +1598,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code domeSurfaceMaterial} property. The {@code domeSurfaceMaterial} property defines the material to use for the sensor's dome surfaces. If not specified, the default value is solid white.
-    
-
+    * Opens and returns the writer for the {@code domeSurfaceMaterial} property. The {@code domeSurfaceMaterial} property defines the material to use for the sensor's dome surfaces. If not specified, the default value is solid white.
     */
     @Nonnull
     public final MaterialCesiumWriter openDomeSurfaceMaterialProperty() {
@@ -2096,9 +1607,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code portionToDisplay} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code portionToDisplay} property defines what part of the sensor should be displayed. If not specified, the default value is COMPLETE.
-    
-
+    * Gets the writer for the {@code portionToDisplay} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code portionToDisplay} property defines what part of the sensor should be displayed. If not specified, the default value is COMPLETE.
     */
     @Nonnull
     public final SensorVolumePortionToDisplayCesiumWriter getPortionToDisplayWriter() {
@@ -2106,10 +1615,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code portionToDisplay} property. The {@code portionToDisplay} property defines what part of the sensor should be displayed. If not specified, the default value is COMPLETE.
-    
-
+    * Opens and returns the writer for the {@code portionToDisplay} property. The {@code portionToDisplay} property defines what part of the sensor should be displayed. If not specified, the default value is COMPLETE.
     */
     @Nonnull
     public final SensorVolumePortionToDisplayCesiumWriter openPortionToDisplayProperty() {
@@ -2118,11 +1624,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code portionToDisplay} property as a {@code portionToDisplay} value. The {@code portionToDisplay} property specifies what part of the sensor should be displayed. If not specified, the default value is COMPLETE.
-    
-    
-
+    * Writes a value for the {@code portionToDisplay} property as a {@code portionToDisplay} value. The {@code portionToDisplay} property specifies what part of the sensor should be displayed. If not specified, the default value is COMPLETE.
     * @param value The portion of the sensor to display.
     */
     public final void writePortionToDisplayProperty(@Nonnull CesiumSensorVolumePortionToDisplay value) {
@@ -2137,11 +1639,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code portionToDisplay} property as a {@code reference} value. The {@code portionToDisplay} property specifies what part of the sensor should be displayed. If not specified, the default value is COMPLETE.
-    
-    
-
+    * Writes a value for the {@code portionToDisplay} property as a {@code reference} value. The {@code portionToDisplay} property specifies what part of the sensor should be displayed. If not specified, the default value is COMPLETE.
     * @param value The reference.
     */
     public final void writePortionToDisplayPropertyReference(Reference value) {
@@ -2156,11 +1654,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code portionToDisplay} property as a {@code reference} value. The {@code portionToDisplay} property specifies what part of the sensor should be displayed. If not specified, the default value is COMPLETE.
-    
-    
-
+    * Writes a value for the {@code portionToDisplay} property as a {@code reference} value. The {@code portionToDisplay} property specifies what part of the sensor should be displayed. If not specified, the default value is COMPLETE.
     * @param value The reference.
     */
     public final void writePortionToDisplayPropertyReference(String value) {
@@ -2175,12 +1669,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code portionToDisplay} property as a {@code reference} value. The {@code portionToDisplay} property specifies what part of the sensor should be displayed. If not specified, the default value is COMPLETE.
-    
-    
-    
-
+    * Writes a value for the {@code portionToDisplay} property as a {@code reference} value. The {@code portionToDisplay} property specifies what part of the sensor should be displayed. If not specified, the default value is COMPLETE.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -2196,12 +1685,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code portionToDisplay} property as a {@code reference} value. The {@code portionToDisplay} property specifies what part of the sensor should be displayed. If not specified, the default value is COMPLETE.
-    
-    
-    
-
+    * Writes a value for the {@code portionToDisplay} property as a {@code reference} value. The {@code portionToDisplay} property specifies what part of the sensor should be displayed. If not specified, the default value is COMPLETE.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -2217,9 +1701,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code environmentConstraint} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code environmentConstraint} property defines whether or not the sensor will intersect the environment, e.g. terrain or models. If not specified, the default value is {@code false}.
-    
-
+    * Gets the writer for the {@code environmentConstraint} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code environmentConstraint} property defines whether or not the sensor will intersect the environment, e.g. terrain or models. If not specified, the default value is {@code false}.
     */
     @Nonnull
     public final BooleanCesiumWriter getEnvironmentConstraintWriter() {
@@ -2227,10 +1709,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code environmentConstraint} property. The {@code environmentConstraint} property defines whether or not the sensor will intersect the environment, e.g. terrain or models. If not specified, the default value is {@code false}.
-    
-
+    * Opens and returns the writer for the {@code environmentConstraint} property. The {@code environmentConstraint} property defines whether or not the sensor will intersect the environment, e.g. terrain or models. If not specified, the default value is {@code false}.
     */
     @Nonnull
     public final BooleanCesiumWriter openEnvironmentConstraintProperty() {
@@ -2239,11 +1718,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code environmentConstraint} property as a {@code boolean} value. The {@code environmentConstraint} property specifies whether or not the sensor will intersect the environment, e.g. terrain or models. If not specified, the default value is {@code false}.
-    
-    
-
+    * Writes a value for the {@code environmentConstraint} property as a {@code boolean} value. The {@code environmentConstraint} property specifies whether or not the sensor will intersect the environment, e.g. terrain or models. If not specified, the default value is {@code false}.
     * @param value The value.
     */
     public final void writeEnvironmentConstraintProperty(boolean value) {
@@ -2258,11 +1733,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code environmentConstraint} property as a {@code reference} value. The {@code environmentConstraint} property specifies whether or not the sensor will intersect the environment, e.g. terrain or models. If not specified, the default value is {@code false}.
-    
-    
-
+    * Writes a value for the {@code environmentConstraint} property as a {@code reference} value. The {@code environmentConstraint} property specifies whether or not the sensor will intersect the environment, e.g. terrain or models. If not specified, the default value is {@code false}.
     * @param value The reference.
     */
     public final void writeEnvironmentConstraintPropertyReference(Reference value) {
@@ -2277,11 +1748,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code environmentConstraint} property as a {@code reference} value. The {@code environmentConstraint} property specifies whether or not the sensor will intersect the environment, e.g. terrain or models. If not specified, the default value is {@code false}.
-    
-    
-
+    * Writes a value for the {@code environmentConstraint} property as a {@code reference} value. The {@code environmentConstraint} property specifies whether or not the sensor will intersect the environment, e.g. terrain or models. If not specified, the default value is {@code false}.
     * @param value The reference.
     */
     public final void writeEnvironmentConstraintPropertyReference(String value) {
@@ -2296,12 +1763,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code environmentConstraint} property as a {@code reference} value. The {@code environmentConstraint} property specifies whether or not the sensor will intersect the environment, e.g. terrain or models. If not specified, the default value is {@code false}.
-    
-    
-    
-
+    * Writes a value for the {@code environmentConstraint} property as a {@code reference} value. The {@code environmentConstraint} property specifies whether or not the sensor will intersect the environment, e.g. terrain or models. If not specified, the default value is {@code false}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -2317,12 +1779,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code environmentConstraint} property as a {@code reference} value. The {@code environmentConstraint} property specifies whether or not the sensor will intersect the environment, e.g. terrain or models. If not specified, the default value is {@code false}.
-    
-    
-    
-
+    * Writes a value for the {@code environmentConstraint} property as a {@code reference} value. The {@code environmentConstraint} property specifies whether or not the sensor will intersect the environment, e.g. terrain or models. If not specified, the default value is {@code false}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -2338,9 +1795,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code showEnvironmentOcclusion} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code showEnvironmentOcclusion} property defines whether or not the portion of the terrain occluded by the environment will be drawn with a separate material. If not specified, the default value is {@code false}.
-    
-
+    * Gets the writer for the {@code showEnvironmentOcclusion} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code showEnvironmentOcclusion} property defines whether or not the portion of the terrain occluded by the environment will be drawn with a separate material. If not specified, the default value is {@code false}.
     */
     @Nonnull
     public final BooleanCesiumWriter getShowEnvironmentOcclusionWriter() {
@@ -2348,10 +1803,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code showEnvironmentOcclusion} property. The {@code showEnvironmentOcclusion} property defines whether or not the portion of the terrain occluded by the environment will be drawn with a separate material. If not specified, the default value is {@code false}.
-    
-
+    * Opens and returns the writer for the {@code showEnvironmentOcclusion} property. The {@code showEnvironmentOcclusion} property defines whether or not the portion of the terrain occluded by the environment will be drawn with a separate material. If not specified, the default value is {@code false}.
     */
     @Nonnull
     public final BooleanCesiumWriter openShowEnvironmentOcclusionProperty() {
@@ -2360,11 +1812,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code showEnvironmentOcclusion} property as a {@code boolean} value. The {@code showEnvironmentOcclusion} property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material. If not specified, the default value is {@code false}.
-    
-    
-
+    * Writes a value for the {@code showEnvironmentOcclusion} property as a {@code boolean} value. The {@code showEnvironmentOcclusion} property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material. If not specified, the default value is {@code false}.
     * @param value The value.
     */
     public final void writeShowEnvironmentOcclusionProperty(boolean value) {
@@ -2379,11 +1827,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code showEnvironmentOcclusion} property as a {@code reference} value. The {@code showEnvironmentOcclusion} property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material. If not specified, the default value is {@code false}.
-    
-    
-
+    * Writes a value for the {@code showEnvironmentOcclusion} property as a {@code reference} value. The {@code showEnvironmentOcclusion} property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material. If not specified, the default value is {@code false}.
     * @param value The reference.
     */
     public final void writeShowEnvironmentOcclusionPropertyReference(Reference value) {
@@ -2398,11 +1842,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code showEnvironmentOcclusion} property as a {@code reference} value. The {@code showEnvironmentOcclusion} property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material. If not specified, the default value is {@code false}.
-    
-    
-
+    * Writes a value for the {@code showEnvironmentOcclusion} property as a {@code reference} value. The {@code showEnvironmentOcclusion} property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material. If not specified, the default value is {@code false}.
     * @param value The reference.
     */
     public final void writeShowEnvironmentOcclusionPropertyReference(String value) {
@@ -2417,12 +1857,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code showEnvironmentOcclusion} property as a {@code reference} value. The {@code showEnvironmentOcclusion} property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material. If not specified, the default value is {@code false}.
-    
-    
-    
-
+    * Writes a value for the {@code showEnvironmentOcclusion} property as a {@code reference} value. The {@code showEnvironmentOcclusion} property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material. If not specified, the default value is {@code false}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -2438,12 +1873,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code showEnvironmentOcclusion} property as a {@code reference} value. The {@code showEnvironmentOcclusion} property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material. If not specified, the default value is {@code false}.
-    
-    
-    
-
+    * Writes a value for the {@code showEnvironmentOcclusion} property as a {@code reference} value. The {@code showEnvironmentOcclusion} property specifies whether or not the portion of the terrain occluded by the environment will be drawn with a separate material. If not specified, the default value is {@code false}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -2459,9 +1889,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code environmentOcclusionMaterial} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code environmentOcclusionMaterial} property defines the material to use for the portion of the sensor occluded by the environment. If not specified, the default value is solid white.
-    
-
+    * Gets the writer for the {@code environmentOcclusionMaterial} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code environmentOcclusionMaterial} property defines the material to use for the portion of the sensor occluded by the environment. If not specified, the default value is solid white.
     */
     @Nonnull
     public final MaterialCesiumWriter getEnvironmentOcclusionMaterialWriter() {
@@ -2469,10 +1897,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code environmentOcclusionMaterial} property. The {@code environmentOcclusionMaterial} property defines the material to use for the portion of the sensor occluded by the environment. If not specified, the default value is solid white.
-    
-
+    * Opens and returns the writer for the {@code environmentOcclusionMaterial} property. The {@code environmentOcclusionMaterial} property defines the material to use for the portion of the sensor occluded by the environment. If not specified, the default value is solid white.
     */
     @Nonnull
     public final MaterialCesiumWriter openEnvironmentOcclusionMaterialProperty() {
@@ -2481,9 +1906,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code showEnvironmentIntersection} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code showEnvironmentIntersection} property defines whether or not a line showing where the sensor intersects the environment will be drawn. If not specified, the default value is {@code false}.
-    
-
+    * Gets the writer for the {@code showEnvironmentIntersection} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code showEnvironmentIntersection} property defines whether or not a line showing where the sensor intersects the environment will be drawn. If not specified, the default value is {@code false}.
     */
     @Nonnull
     public final BooleanCesiumWriter getShowEnvironmentIntersectionWriter() {
@@ -2491,10 +1914,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code showEnvironmentIntersection} property. The {@code showEnvironmentIntersection} property defines whether or not a line showing where the sensor intersects the environment will be drawn. If not specified, the default value is {@code false}.
-    
-
+    * Opens and returns the writer for the {@code showEnvironmentIntersection} property. The {@code showEnvironmentIntersection} property defines whether or not a line showing where the sensor intersects the environment will be drawn. If not specified, the default value is {@code false}.
     */
     @Nonnull
     public final BooleanCesiumWriter openShowEnvironmentIntersectionProperty() {
@@ -2503,11 +1923,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code showEnvironmentIntersection} property as a {@code boolean} value. The {@code showEnvironmentIntersection} property specifies whether or not a line showing where the sensor intersects the environment will be drawn. If not specified, the default value is {@code false}.
-    
-    
-
+    * Writes a value for the {@code showEnvironmentIntersection} property as a {@code boolean} value. The {@code showEnvironmentIntersection} property specifies whether or not a line showing where the sensor intersects the environment will be drawn. If not specified, the default value is {@code false}.
     * @param value The value.
     */
     public final void writeShowEnvironmentIntersectionProperty(boolean value) {
@@ -2522,11 +1938,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code showEnvironmentIntersection} property as a {@code reference} value. The {@code showEnvironmentIntersection} property specifies whether or not a line showing where the sensor intersects the environment will be drawn. If not specified, the default value is {@code false}.
-    
-    
-
+    * Writes a value for the {@code showEnvironmentIntersection} property as a {@code reference} value. The {@code showEnvironmentIntersection} property specifies whether or not a line showing where the sensor intersects the environment will be drawn. If not specified, the default value is {@code false}.
     * @param value The reference.
     */
     public final void writeShowEnvironmentIntersectionPropertyReference(Reference value) {
@@ -2541,11 +1953,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code showEnvironmentIntersection} property as a {@code reference} value. The {@code showEnvironmentIntersection} property specifies whether or not a line showing where the sensor intersects the environment will be drawn. If not specified, the default value is {@code false}.
-    
-    
-
+    * Writes a value for the {@code showEnvironmentIntersection} property as a {@code reference} value. The {@code showEnvironmentIntersection} property specifies whether or not a line showing where the sensor intersects the environment will be drawn. If not specified, the default value is {@code false}.
     * @param value The reference.
     */
     public final void writeShowEnvironmentIntersectionPropertyReference(String value) {
@@ -2560,12 +1968,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code showEnvironmentIntersection} property as a {@code reference} value. The {@code showEnvironmentIntersection} property specifies whether or not a line showing where the sensor intersects the environment will be drawn. If not specified, the default value is {@code false}.
-    
-    
-    
-
+    * Writes a value for the {@code showEnvironmentIntersection} property as a {@code reference} value. The {@code showEnvironmentIntersection} property specifies whether or not a line showing where the sensor intersects the environment will be drawn. If not specified, the default value is {@code false}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -2581,12 +1984,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code showEnvironmentIntersection} property as a {@code reference} value. The {@code showEnvironmentIntersection} property specifies whether or not a line showing where the sensor intersects the environment will be drawn. If not specified, the default value is {@code false}.
-    
-    
-    
-
+    * Writes a value for the {@code showEnvironmentIntersection} property as a {@code reference} value. The {@code showEnvironmentIntersection} property specifies whether or not a line showing where the sensor intersects the environment will be drawn. If not specified, the default value is {@code false}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -2602,9 +2000,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code environmentIntersectionColor} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code environmentIntersectionColor} property defines the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
-    
-
+    * Gets the writer for the {@code environmentIntersectionColor} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code environmentIntersectionColor} property defines the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
     */
     @Nonnull
     public final ColorCesiumWriter getEnvironmentIntersectionColorWriter() {
@@ -2612,10 +2008,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code environmentIntersectionColor} property. The {@code environmentIntersectionColor} property defines the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
-    
-
+    * Opens and returns the writer for the {@code environmentIntersectionColor} property. The {@code environmentIntersectionColor} property defines the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
     */
     @Nonnull
     public final ColorCesiumWriter openEnvironmentIntersectionColorProperty() {
@@ -2624,11 +2017,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code environmentIntersectionColor} property as a {@code rgba} value. The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
-    
-    
-
+    * Writes a value for the {@code environmentIntersectionColor} property as a {@code rgba} value. The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
     * @param color The color.
     */
     public final void writeEnvironmentIntersectionColorProperty(@Nonnull Color color) {
@@ -2643,14 +2032,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code environmentIntersectionColor} property as a {@code rgba} value. The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code environmentIntersectionColor} property as a {@code rgba} value. The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
     * @param red The red component in the range 0 to 255.
     * @param green The green component in the range 0 to 255.
     * @param blue The blue component in the range 0 to 255.
@@ -2668,12 +2050,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code environmentIntersectionColor} property as a {@code rgba} value. The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
-    
-    
-    
-
+    * Writes a value for the {@code environmentIntersectionColor} property as a {@code rgba} value. The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -2689,14 +2066,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code environmentIntersectionColor} property as a {@code rgba} value. The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code environmentIntersectionColor} property as a {@code rgba} value. The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
     * @param dates The dates at which the value is specified.
     * @param colors The color corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -2714,11 +2084,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code environmentIntersectionColor} property as a {@code rgbaf} value. The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
-    
-    
-
+    * Writes a value for the {@code environmentIntersectionColor} property as a {@code rgbaf} value. The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
     * @param color The color.
     */
     public final void writeEnvironmentIntersectionColorPropertyRgbaf(@Nonnull Color color) {
@@ -2733,14 +2099,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code environmentIntersectionColor} property as a {@code rgbaf} value. The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code environmentIntersectionColor} property as a {@code rgbaf} value. The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
     * @param red The red component in the range 0 to 1.0.
     * @param green The green component in the range 0 to 1.0.
     * @param blue The blue component in the range 0 to 1.0.
@@ -2758,12 +2117,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code environmentIntersectionColor} property as a {@code rgbaf} value. The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
-    
-    
-    
-
+    * Writes a value for the {@code environmentIntersectionColor} property as a {@code rgbaf} value. The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -2779,14 +2133,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code environmentIntersectionColor} property as a {@code rgbaf} value. The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code environmentIntersectionColor} property as a {@code rgbaf} value. The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
     * @param dates The dates at which the value is specified.
     * @param colors The color corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -2804,11 +2151,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code environmentIntersectionColor} property as a {@code reference} value. The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
-    
-    
-
+    * Writes a value for the {@code environmentIntersectionColor} property as a {@code reference} value. The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
     * @param value The reference.
     */
     public final void writeEnvironmentIntersectionColorPropertyReference(Reference value) {
@@ -2823,11 +2166,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code environmentIntersectionColor} property as a {@code reference} value. The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
-    
-    
-
+    * Writes a value for the {@code environmentIntersectionColor} property as a {@code reference} value. The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
     * @param value The reference.
     */
     public final void writeEnvironmentIntersectionColorPropertyReference(String value) {
@@ -2842,12 +2181,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code environmentIntersectionColor} property as a {@code reference} value. The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
-    
-    
-    
-
+    * Writes a value for the {@code environmentIntersectionColor} property as a {@code reference} value. The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -2863,12 +2197,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code environmentIntersectionColor} property as a {@code reference} value. The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
-    
-    
-    
-
+    * Writes a value for the {@code environmentIntersectionColor} property as a {@code reference} value. The {@code environmentIntersectionColor} property specifies the color of the intersection line between the sensor and the environment. If not specified, the default value is white.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -2884,9 +2213,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  Gets the writer for the {@code environmentIntersectionWidth} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code environmentIntersectionWidth} property defines the width in meters of the intersection line between the sensor and the environment. If not specified, the default value is 5.0.
-    
-
+    * Gets the writer for the {@code environmentIntersectionWidth} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code environmentIntersectionWidth} property defines the width in meters of the intersection line between the sensor and the environment. If not specified, the default value is 5.0.
     */
     @Nonnull
     public final DoubleCesiumWriter getEnvironmentIntersectionWidthWriter() {
@@ -2894,10 +2221,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code environmentIntersectionWidth} property. The {@code environmentIntersectionWidth} property defines the width in meters of the intersection line between the sensor and the environment. If not specified, the default value is 5.0.
-    
-
+    * Opens and returns the writer for the {@code environmentIntersectionWidth} property. The {@code environmentIntersectionWidth} property defines the width in meters of the intersection line between the sensor and the environment. If not specified, the default value is 5.0.
     */
     @Nonnull
     public final DoubleCesiumWriter openEnvironmentIntersectionWidthProperty() {
@@ -2906,11 +2230,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code environmentIntersectionWidth} property as a {@code number} value. The {@code environmentIntersectionWidth} property specifies the width in meters of the intersection line between the sensor and the environment. If not specified, the default value is 5.0.
-    
-    
-
+    * Writes a value for the {@code environmentIntersectionWidth} property as a {@code number} value. The {@code environmentIntersectionWidth} property specifies the width in meters of the intersection line between the sensor and the environment. If not specified, the default value is 5.0.
     * @param value The value.
     */
     public final void writeEnvironmentIntersectionWidthProperty(double value) {
@@ -2925,12 +2245,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code environmentIntersectionWidth} property as a {@code number} value. The {@code environmentIntersectionWidth} property specifies the width in meters of the intersection line between the sensor and the environment. If not specified, the default value is 5.0.
-    
-    
-    
-
+    * Writes a value for the {@code environmentIntersectionWidth} property as a {@code number} value. The {@code environmentIntersectionWidth} property specifies the width in meters of the intersection line between the sensor and the environment. If not specified, the default value is 5.0.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -2946,14 +2261,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code environmentIntersectionWidth} property as a {@code number} value. The {@code environmentIntersectionWidth} property specifies the width in meters of the intersection line between the sensor and the environment. If not specified, the default value is 5.0.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code environmentIntersectionWidth} property as a {@code number} value. The {@code environmentIntersectionWidth} property specifies the width in meters of the intersection line between the sensor and the environment. If not specified, the default value is 5.0.
     * @param dates The dates at which the value is specified.
     * @param values The value corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -2971,11 +2279,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code environmentIntersectionWidth} property as a {@code reference} value. The {@code environmentIntersectionWidth} property specifies the width in meters of the intersection line between the sensor and the environment. If not specified, the default value is 5.0.
-    
-    
-
+    * Writes a value for the {@code environmentIntersectionWidth} property as a {@code reference} value. The {@code environmentIntersectionWidth} property specifies the width in meters of the intersection line between the sensor and the environment. If not specified, the default value is 5.0.
     * @param value The reference.
     */
     public final void writeEnvironmentIntersectionWidthPropertyReference(Reference value) {
@@ -2990,11 +2294,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code environmentIntersectionWidth} property as a {@code reference} value. The {@code environmentIntersectionWidth} property specifies the width in meters of the intersection line between the sensor and the environment. If not specified, the default value is 5.0.
-    
-    
-
+    * Writes a value for the {@code environmentIntersectionWidth} property as a {@code reference} value. The {@code environmentIntersectionWidth} property specifies the width in meters of the intersection line between the sensor and the environment. If not specified, the default value is 5.0.
     * @param value The reference.
     */
     public final void writeEnvironmentIntersectionWidthPropertyReference(String value) {
@@ -3009,12 +2309,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code environmentIntersectionWidth} property as a {@code reference} value. The {@code environmentIntersectionWidth} property specifies the width in meters of the intersection line between the sensor and the environment. If not specified, the default value is 5.0.
-    
-    
-    
-
+    * Writes a value for the {@code environmentIntersectionWidth} property as a {@code reference} value. The {@code environmentIntersectionWidth} property specifies the width in meters of the intersection line between the sensor and the environment. If not specified, the default value is 5.0.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -3030,12 +2325,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    *  
-    Writes a value for the {@code environmentIntersectionWidth} property as a {@code reference} value. The {@code environmentIntersectionWidth} property specifies the width in meters of the intersection line between the sensor and the environment. If not specified, the default value is 5.0.
-    
-    
-    
-
+    * Writes a value for the {@code environmentIntersectionWidth} property as a {@code reference} value. The {@code environmentIntersectionWidth} property specifies the width in meters of the intersection line between the sensor and the environment. If not specified, the default value is 5.0.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */

@@ -6,12 +6,8 @@ import cesiumlanguagewriter.*;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Adapts a class that implements {@link ICesiumArcTypeValuePropertyWriter} to implement
+ * Adapts a class that implements {@link ICesiumArcTypeValuePropertyWriter} to implement
  {@link ICesiumPropertyWriter} for {@link CesiumArcType} values.
- 
- 
-
  * @param <TFrom> The class that implements {@link ICesiumArcTypeValuePropertyWriter} to adapt.
  */
 @SuppressWarnings( {
@@ -21,13 +17,7 @@ import javax.annotation.Nonnull;
 })
 public class CesiumArcTypeValuePropertyAdaptor<TFrom extends ICesiumArcTypeValuePropertyWriter> extends CesiumWriterAdaptor<TFrom, CesiumArcType> {
     /**
-    *  
-    Initializes a new instance.
-    
-    
-    
-    
-
+    * Initializes a new instance.
     * @param parent The instance to wrap.
     * @param writeValueCallback The callback to write values of type {@link CesiumArcType}.
     * @param writeDeleteValueCallback The callback to write an indication that the client should delete existing data.

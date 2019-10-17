@@ -6,10 +6,7 @@ import cesiumlanguagewriter.*;
 import javax.annotation.Nonnull;
 
 /**
- *  
- A writer that can write a value as a part of a sensor to display.
- 
-
+ * A writer that can write a value as a part of a sensor to display.
  */
 @SuppressWarnings( {
         "unused",
@@ -18,11 +15,7 @@ import javax.annotation.Nonnull;
 })
 public interface ICesiumSensorVolumePortionToDisplayValuePropertyWriter extends ICesiumPropertyWriter {
     /**
-    *  
-    Writes the value as a part of a sensor to display.
-    
-    
-
+    * Writes the value as a part of a sensor to display.
     * @param value The portion of the sensor to display.
     */
     void writePortionToDisplay(@Nonnull CesiumSensorVolumePortionToDisplay value);

@@ -13,10 +13,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Writes a {@code NodeTransformation} to a {@link CesiumOutputStream}. A {@code NodeTransformation} is a set of transformations to apply to a particular node in a 3D model.
- 
-
+ * Writes a {@code NodeTransformation} to a {@link CesiumOutputStream}. A {@code NodeTransformation} is a set of transformations to apply to a particular node in a 3D model.
  */
 @SuppressWarnings( {
         "unused",
@@ -25,24 +22,15 @@ import javax.annotation.Nonnull;
 })
 public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTransformationCesiumWriter> {
     /**
-    *  
-    The name of the {@code translation} property.
-    
-
+    * The name of the {@code translation} property.
     */
     public static final String TranslationPropertyName = "translation";
     /**
-    *  
-    The name of the {@code rotation} property.
-    
-
+    * The name of the {@code rotation} property.
     */
     public static final String RotationPropertyName = "rotation";
     /**
-    *  
-    The name of the {@code scale} property.
-    
-
+    * The name of the {@code scale} property.
     */
     public static final String ScalePropertyName = "scale";
     private Lazy<TranslationCesiumWriter> m_translation = new Lazy<cesiumlanguagewriter.TranslationCesiumWriter>(new Func1<cesiumlanguagewriter.TranslationCesiumWriter>() {
@@ -62,11 +50,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     }, false);
 
     /**
-    *  
-    Initializes a new instance.
-    
-    
-
+    * Initializes a new instance.
     * @param propertyName The name of the property.
     */
     public NodeTransformationCesiumWriter(@Nonnull String propertyName) {
@@ -74,11 +58,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     }
 
     /**
-    *  
-    Initializes a new instance as a copy of an existing instance.
-    
-    
-
+    * Initializes a new instance as a copy of an existing instance.
     * @param existingInstance The existing instance to copy.
     */
     protected NodeTransformationCesiumWriter(@Nonnull NodeTransformationCesiumWriter existingInstance) {
@@ -86,12 +66,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     }
 
     /**
-    *  
-    
-    Copies this instance and returns the copy.
-    
-    
-
+    * Copies this instance and returns the copy.
     * @return The copy.
     */
     @Override
@@ -100,9 +75,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     }
 
     /**
-    *  Gets the writer for the {@code translation} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code translation} property defines the translation to apply to the model node. If not specified, the default value is [0.0, 0.0, 0.0].
-    
-
+    * Gets the writer for the {@code translation} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code translation} property defines the translation to apply to the model node. If not specified, the default value is [0.0, 0.0, 0.0].
     */
     @Nonnull
     public final TranslationCesiumWriter getTranslationWriter() {
@@ -110,10 +83,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code translation} property. The {@code translation} property defines the translation to apply to the model node. If not specified, the default value is [0.0, 0.0, 0.0].
-    
-
+    * Opens and returns the writer for the {@code translation} property. The {@code translation} property defines the translation to apply to the model node. If not specified, the default value is [0.0, 0.0, 0.0].
     */
     @Nonnull
     public final TranslationCesiumWriter openTranslationProperty() {
@@ -122,11 +92,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     }
 
     /**
-    *  
-    Writes a value for the {@code translation} property as a {@code cartesian} value. The {@code translation} property specifies the translation to apply to the model node. If not specified, the default value is [0.0, 0.0, 0.0].
-    
-    
-
+    * Writes a value for the {@code translation} property as a {@code cartesian} value. The {@code translation} property specifies the translation to apply to the model node. If not specified, the default value is [0.0, 0.0, 0.0].
     * @param value The value.
     */
     public final void writeTranslationProperty(@Nonnull Cartesian value) {
@@ -141,12 +107,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     }
 
     /**
-    *  
-    Writes a value for the {@code translation} property as a {@code cartesian} value. The {@code translation} property specifies the translation to apply to the model node. If not specified, the default value is [0.0, 0.0, 0.0].
-    
-    
-    
-
+    * Writes a value for the {@code translation} property as a {@code cartesian} value. The {@code translation} property specifies the translation to apply to the model node. If not specified, the default value is [0.0, 0.0, 0.0].
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -162,14 +123,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     }
 
     /**
-    *  
-    Writes a value for the {@code translation} property as a {@code cartesian} value. The {@code translation} property specifies the translation to apply to the model node. If not specified, the default value is [0.0, 0.0, 0.0].
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code translation} property as a {@code cartesian} value. The {@code translation} property specifies the translation to apply to the model node. If not specified, the default value is [0.0, 0.0, 0.0].
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -187,11 +141,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     }
 
     /**
-    *  
-    Writes a value for the {@code translation} property as a {@code reference} value. The {@code translation} property specifies the translation to apply to the model node. If not specified, the default value is [0.0, 0.0, 0.0].
-    
-    
-
+    * Writes a value for the {@code translation} property as a {@code reference} value. The {@code translation} property specifies the translation to apply to the model node. If not specified, the default value is [0.0, 0.0, 0.0].
     * @param value The reference.
     */
     public final void writeTranslationPropertyReference(Reference value) {
@@ -206,11 +156,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     }
 
     /**
-    *  
-    Writes a value for the {@code translation} property as a {@code reference} value. The {@code translation} property specifies the translation to apply to the model node. If not specified, the default value is [0.0, 0.0, 0.0].
-    
-    
-
+    * Writes a value for the {@code translation} property as a {@code reference} value. The {@code translation} property specifies the translation to apply to the model node. If not specified, the default value is [0.0, 0.0, 0.0].
     * @param value The reference.
     */
     public final void writeTranslationPropertyReference(String value) {
@@ -225,12 +171,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     }
 
     /**
-    *  
-    Writes a value for the {@code translation} property as a {@code reference} value. The {@code translation} property specifies the translation to apply to the model node. If not specified, the default value is [0.0, 0.0, 0.0].
-    
-    
-    
-
+    * Writes a value for the {@code translation} property as a {@code reference} value. The {@code translation} property specifies the translation to apply to the model node. If not specified, the default value is [0.0, 0.0, 0.0].
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -246,12 +187,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     }
 
     /**
-    *  
-    Writes a value for the {@code translation} property as a {@code reference} value. The {@code translation} property specifies the translation to apply to the model node. If not specified, the default value is [0.0, 0.0, 0.0].
-    
-    
-    
-
+    * Writes a value for the {@code translation} property as a {@code reference} value. The {@code translation} property specifies the translation to apply to the model node. If not specified, the default value is [0.0, 0.0, 0.0].
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -267,9 +203,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     }
 
     /**
-    *  Gets the writer for the {@code rotation} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code rotation} property defines the rotation to apply to the model node. If not specified, the default value is [0.0, 0.0, 0.0, 1.0].
-    
-
+    * Gets the writer for the {@code rotation} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code rotation} property defines the rotation to apply to the model node. If not specified, the default value is [0.0, 0.0, 0.0, 1.0].
     */
     @Nonnull
     public final RotationCesiumWriter getRotationWriter() {
@@ -277,10 +211,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code rotation} property. The {@code rotation} property defines the rotation to apply to the model node. If not specified, the default value is [0.0, 0.0, 0.0, 1.0].
-    
-
+    * Opens and returns the writer for the {@code rotation} property. The {@code rotation} property defines the rotation to apply to the model node. If not specified, the default value is [0.0, 0.0, 0.0, 1.0].
     */
     @Nonnull
     public final RotationCesiumWriter openRotationProperty() {
@@ -289,11 +220,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     }
 
     /**
-    *  
-    Writes a value for the {@code rotation} property as a {@code unitQuaternion} value. The {@code rotation} property specifies the rotation to apply to the model node. If not specified, the default value is [0.0, 0.0, 0.0, 1.0].
-    
-    
-
+    * Writes a value for the {@code rotation} property as a {@code unitQuaternion} value. The {@code rotation} property specifies the rotation to apply to the model node. If not specified, the default value is [0.0, 0.0, 0.0, 1.0].
     * @param value The value.
     */
     public final void writeRotationProperty(@Nonnull UnitQuaternion value) {
@@ -308,12 +235,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     }
 
     /**
-    *  
-    Writes a value for the {@code rotation} property as a {@code unitQuaternion} value. The {@code rotation} property specifies the rotation to apply to the model node. If not specified, the default value is [0.0, 0.0, 0.0, 1.0].
-    
-    
-    
-
+    * Writes a value for the {@code rotation} property as a {@code unitQuaternion} value. The {@code rotation} property specifies the rotation to apply to the model node. If not specified, the default value is [0.0, 0.0, 0.0, 1.0].
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -329,14 +251,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     }
 
     /**
-    *  
-    Writes a value for the {@code rotation} property as a {@code unitQuaternion} value. The {@code rotation} property specifies the rotation to apply to the model node. If not specified, the default value is [0.0, 0.0, 0.0, 1.0].
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code rotation} property as a {@code unitQuaternion} value. The {@code rotation} property specifies the rotation to apply to the model node. If not specified, the default value is [0.0, 0.0, 0.0, 1.0].
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -354,11 +269,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     }
 
     /**
-    *  
-    Writes a value for the {@code rotation} property as a {@code reference} value. The {@code rotation} property specifies the rotation to apply to the model node. If not specified, the default value is [0.0, 0.0, 0.0, 1.0].
-    
-    
-
+    * Writes a value for the {@code rotation} property as a {@code reference} value. The {@code rotation} property specifies the rotation to apply to the model node. If not specified, the default value is [0.0, 0.0, 0.0, 1.0].
     * @param value The reference.
     */
     public final void writeRotationPropertyReference(Reference value) {
@@ -373,11 +284,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     }
 
     /**
-    *  
-    Writes a value for the {@code rotation} property as a {@code reference} value. The {@code rotation} property specifies the rotation to apply to the model node. If not specified, the default value is [0.0, 0.0, 0.0, 1.0].
-    
-    
-
+    * Writes a value for the {@code rotation} property as a {@code reference} value. The {@code rotation} property specifies the rotation to apply to the model node. If not specified, the default value is [0.0, 0.0, 0.0, 1.0].
     * @param value The reference.
     */
     public final void writeRotationPropertyReference(String value) {
@@ -392,12 +299,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     }
 
     /**
-    *  
-    Writes a value for the {@code rotation} property as a {@code reference} value. The {@code rotation} property specifies the rotation to apply to the model node. If not specified, the default value is [0.0, 0.0, 0.0, 1.0].
-    
-    
-    
-
+    * Writes a value for the {@code rotation} property as a {@code reference} value. The {@code rotation} property specifies the rotation to apply to the model node. If not specified, the default value is [0.0, 0.0, 0.0, 1.0].
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -413,12 +315,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     }
 
     /**
-    *  
-    Writes a value for the {@code rotation} property as a {@code reference} value. The {@code rotation} property specifies the rotation to apply to the model node. If not specified, the default value is [0.0, 0.0, 0.0, 1.0].
-    
-    
-    
-
+    * Writes a value for the {@code rotation} property as a {@code reference} value. The {@code rotation} property specifies the rotation to apply to the model node. If not specified, the default value is [0.0, 0.0, 0.0, 1.0].
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -434,9 +331,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     }
 
     /**
-    *  Gets the writer for the {@code scale} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code scale} property defines the scaling to apply to the model node. If not specified, the default value is [1.0, 1.0, 1.0].
-    
-
+    * Gets the writer for the {@code scale} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code scale} property defines the scaling to apply to the model node. If not specified, the default value is [1.0, 1.0, 1.0].
     */
     @Nonnull
     public final ScaleCesiumWriter getScaleWriter() {
@@ -444,10 +339,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code scale} property. The {@code scale} property defines the scaling to apply to the model node. If not specified, the default value is [1.0, 1.0, 1.0].
-    
-
+    * Opens and returns the writer for the {@code scale} property. The {@code scale} property defines the scaling to apply to the model node. If not specified, the default value is [1.0, 1.0, 1.0].
     */
     @Nonnull
     public final ScaleCesiumWriter openScaleProperty() {
@@ -456,11 +348,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     }
 
     /**
-    *  
-    Writes a value for the {@code scale} property as a {@code cartesian} value. The {@code scale} property specifies the scaling to apply to the model node. If not specified, the default value is [1.0, 1.0, 1.0].
-    
-    
-
+    * Writes a value for the {@code scale} property as a {@code cartesian} value. The {@code scale} property specifies the scaling to apply to the model node. If not specified, the default value is [1.0, 1.0, 1.0].
     * @param value The value.
     */
     public final void writeScaleProperty(@Nonnull Cartesian value) {
@@ -475,12 +363,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     }
 
     /**
-    *  
-    Writes a value for the {@code scale} property as a {@code cartesian} value. The {@code scale} property specifies the scaling to apply to the model node. If not specified, the default value is [1.0, 1.0, 1.0].
-    
-    
-    
-
+    * Writes a value for the {@code scale} property as a {@code cartesian} value. The {@code scale} property specifies the scaling to apply to the model node. If not specified, the default value is [1.0, 1.0, 1.0].
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -496,14 +379,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     }
 
     /**
-    *  
-    Writes a value for the {@code scale} property as a {@code cartesian} value. The {@code scale} property specifies the scaling to apply to the model node. If not specified, the default value is [1.0, 1.0, 1.0].
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code scale} property as a {@code cartesian} value. The {@code scale} property specifies the scaling to apply to the model node. If not specified, the default value is [1.0, 1.0, 1.0].
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -521,11 +397,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     }
 
     /**
-    *  
-    Writes a value for the {@code scale} property as a {@code reference} value. The {@code scale} property specifies the scaling to apply to the model node. If not specified, the default value is [1.0, 1.0, 1.0].
-    
-    
-
+    * Writes a value for the {@code scale} property as a {@code reference} value. The {@code scale} property specifies the scaling to apply to the model node. If not specified, the default value is [1.0, 1.0, 1.0].
     * @param value The reference.
     */
     public final void writeScalePropertyReference(Reference value) {
@@ -540,11 +412,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     }
 
     /**
-    *  
-    Writes a value for the {@code scale} property as a {@code reference} value. The {@code scale} property specifies the scaling to apply to the model node. If not specified, the default value is [1.0, 1.0, 1.0].
-    
-    
-
+    * Writes a value for the {@code scale} property as a {@code reference} value. The {@code scale} property specifies the scaling to apply to the model node. If not specified, the default value is [1.0, 1.0, 1.0].
     * @param value The reference.
     */
     public final void writeScalePropertyReference(String value) {
@@ -559,12 +427,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     }
 
     /**
-    *  
-    Writes a value for the {@code scale} property as a {@code reference} value. The {@code scale} property specifies the scaling to apply to the model node. If not specified, the default value is [1.0, 1.0, 1.0].
-    
-    
-    
-
+    * Writes a value for the {@code scale} property as a {@code reference} value. The {@code scale} property specifies the scaling to apply to the model node. If not specified, the default value is [1.0, 1.0, 1.0].
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -580,12 +443,7 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     }
 
     /**
-    *  
-    Writes a value for the {@code scale} property as a {@code reference} value. The {@code scale} property specifies the scaling to apply to the model node. If not specified, the default value is [1.0, 1.0, 1.0].
-    
-    
-    
-
+    * Writes a value for the {@code scale} property as a {@code reference} value. The {@code scale} property specifies the scaling to apply to the model node. If not specified, the default value is [1.0, 1.0, 1.0].
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */

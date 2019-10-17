@@ -7,10 +7,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
- *  
- The horizontal origin of an item relative to its position.
- 
-
+ * The horizontal origin of an item relative to its position.
  */
 @SuppressWarnings( {
         "unused",
@@ -19,22 +16,13 @@ import javax.annotation.Nullable;
 })
 public enum CesiumHorizontalOrigin implements Enumeration {
     /**
-    *  
-    The left side of the item is located at the position.
-    
-
+    * The left side of the item is located at the position.
     */
     LEFT(0), /**
-             *  
-             The item is horizontally centered on the position.
-             
-
+             * The item is horizontally centered on the position.
              */
     CENTER(1), /**
-               *  
-               The right side of the item is located at the position.
-               
-
+               * The right side of the item is located at the position.
                */
     RIGHT(2);
     private final int value;

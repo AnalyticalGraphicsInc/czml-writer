@@ -11,10 +11,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Creation methods for {@link CesiumWriterAdaptor} objects.
- 
-
+ * Creation methods for {@link CesiumWriterAdaptor} objects.
  */
 @SuppressWarnings( {
         "unused",
@@ -34,13 +31,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for {@link CesiumArcType} values.
-    
-    
-    
-    
-
+    * Create an adaptor for {@link CesiumArcType} values.
     * @param <TFrom> The class that implements {@link ICesiumArcTypeValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -55,13 +46,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for {@code boolean} values.
-    
-    
-    
-    
-
+    * Create an adaptor for {@code boolean} values.
     * @param <TFrom> The class that implements {@link ICesiumBooleanValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -76,13 +61,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for {@link BoundingRectangle} values.
-    
-    
-    
-    
-
+    * Create an adaptor for {@link BoundingRectangle} values.
     * @param <TFrom> The class that implements {@link ICesiumBoundingRectangleValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -102,13 +81,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for {@link Rectangular} values.
-    
-    
-    
-    
-
+    * Create an adaptor for {@link Rectangular} values.
     * @param <TFrom> The class that implements {@link ICesiumCartesian2ValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -127,13 +100,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for {@link Cartesian} values.
-    
-    
-    
-    
-
+    * Create an adaptor for {@link Cartesian} values.
     * @param <TFrom> The class that implements {@link ICesiumCartesian3ValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -152,13 +119,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for {@link Motion1} values.
-    
-    
-    
-    
-
+    * Create an adaptor for {@link Motion1} values.
     * @param <TFrom> The class that implements {@link ICesiumCartesian3VelocityValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -178,13 +139,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for lists of {@link Cartesian} values.
-    
-    
-    
-    
-
+    * Create an adaptor for lists of {@link Cartesian} values.
     * @param <TFrom> The class that implements {@link ICesiumCartesian3ListValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -199,13 +154,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for lists of lists of {@link Cartesian} values.
-    
-    
-    
-    
-
+    * Create an adaptor for lists of lists of {@link Cartesian} values.
     * @param <TFrom> The class that implements {@link ICesiumCartesian3ListOfListsValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -220,13 +169,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for {@link Cartographic} values.
-    
-    
-    
-    
-
+    * Create an adaptor for {@link Cartographic} values.
     * @param <TFrom> The class that implements {@link ICesiumCartographicRadiansValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -246,13 +189,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for lists of {@link Cartographic} values.
-    
-    
-    
-    
-
+    * Create an adaptor for lists of {@link Cartographic} values.
     * @param <TFrom> The class that implements {@link ICesiumCartographicRadiansListValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -268,13 +205,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for lists of lists of {@link Cartographic} values.
-    
-    
-    
-    
-
+    * Create an adaptor for lists of lists of {@link Cartographic} values.
     * @param <TFrom> The class that implements {@link ICesiumCartographicRadiansListOfListsValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -289,13 +220,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for {@link Cartographic} values.
-    
-    
-    
-    
-
+    * Create an adaptor for {@link Cartographic} values.
     * @param <TFrom> The class that implements {@link ICesiumCartographicDegreesValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -315,13 +240,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for lists of {@link Cartographic} values.
-    
-    
-    
-    
-
+    * Create an adaptor for lists of {@link Cartographic} values.
     * @param <TFrom> The class that implements {@link ICesiumCartographicDegreesListValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -337,13 +256,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for lists of lists of {@link Cartographic} values.
-    
-    
-    
-    
-
+    * Create an adaptor for lists of lists of {@link Cartographic} values.
     * @param <TFrom> The class that implements {@link ICesiumCartographicDegreesListOfListsValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -358,13 +271,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for {@link CartographicExtent} values.
-    
-    
-    
-    
-
+    * Create an adaptor for {@link CartographicExtent} values.
     * @param <TFrom> The class that implements {@link ICesiumCartographicRectangleRadiansValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -384,13 +291,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for {@link CartographicExtent} values.
-    
-    
-    
-    
-
+    * Create an adaptor for {@link CartographicExtent} values.
     * @param <TFrom> The class that implements {@link ICesiumCartographicRectangleDegreesValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -410,13 +311,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for {@link CesiumClassificationType} values.
-    
-    
-    
-    
-
+    * Create an adaptor for {@link CesiumClassificationType} values.
     * @param <TFrom> The class that implements {@link ICesiumClassificationTypeValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -431,13 +326,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for {@link CesiumColorBlendMode} values.
-    
-    
-    
-    
-
+    * Create an adaptor for {@link CesiumColorBlendMode} values.
     * @param <TFrom> The class that implements {@link ICesiumColorBlendModeValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -452,13 +341,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for {@link CesiumCornerType} values.
-    
-    
-    
-    
-
+    * Create an adaptor for {@link CesiumCornerType} values.
     * @param <TFrom> The class that implements {@link ICesiumCornerTypeValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -473,13 +356,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for {@link Bounds} values.
-    
-    
-    
-    
-
+    * Create an adaptor for {@link Bounds} values.
     * @param <TFrom> The class that implements {@link ICesiumDistanceDisplayConditionValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -499,13 +376,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for {@code double} values.
-    
-    
-    
-    
-
+    * Create an adaptor for {@code double} values.
     * @param <TFrom> The class that implements {@link ICesiumDoubleValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -524,13 +395,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for lists of {@code double} values.
-    
-    
-    
-    
-
+    * Create an adaptor for lists of {@code double} values.
     * @param <TFrom> The class that implements {@link ICesiumDoubleListValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -545,13 +410,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for {@link CesiumHeightReference} values.
-    
-    
-    
-    
-
+    * Create an adaptor for {@link CesiumHeightReference} values.
     * @param <TFrom> The class that implements {@link ICesiumHeightReferenceValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -567,13 +426,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for {@link CesiumHorizontalOrigin} values.
-    
-    
-    
-    
-
+    * Create an adaptor for {@link CesiumHorizontalOrigin} values.
     * @param <TFrom> The class that implements {@link ICesiumHorizontalOriginValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -589,13 +442,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for {@code int} values.
-    
-    
-    
-    
-
+    * Create an adaptor for {@code int} values.
     * @param <TFrom> The class that implements {@link ICesiumIntegerValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -614,13 +461,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for {@link CesiumLabelStyle} values.
-    
-    
-    
-    
-
+    * Create an adaptor for {@link CesiumLabelStyle} values.
     * @param <TFrom> The class that implements {@link ICesiumLabelStyleValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -635,13 +476,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for {@link NearFarScalar} values.
-    
-    
-    
-    
-
+    * Create an adaptor for {@link NearFarScalar} values.
     * @param <TFrom> The class that implements {@link ICesiumNearFarScalarValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -660,13 +495,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for {@link Reference} values.
-    
-    
-    
-    
-
+    * Create an adaptor for {@link Reference} values.
     * @param <TFrom> The class that implements {@link ICesiumReferenceValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -681,13 +510,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for lists of {@link Reference} values.
-    
-    
-    
-    
-
+    * Create an adaptor for lists of {@link Reference} values.
     * @param <TFrom> The class that implements {@link ICesiumReferenceListValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -702,13 +525,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for lists of lists of {@link Reference} values.
-    
-    
-    
-    
-
+    * Create an adaptor for lists of lists of {@link Reference} values.
     * @param <TFrom> The class that implements {@link ICesiumReferenceListOfListsValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -723,13 +540,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for {@link Color} values.
-    
-    
-    
-    
-
+    * Create an adaptor for {@link Color} values.
     * @param <TFrom> The class that implements {@link ICesiumRgbafValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -748,13 +559,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for {@link Color} values.
-    
-    
-    
-    
-
+    * Create an adaptor for {@link Color} values.
     * @param <TFrom> The class that implements {@link ICesiumRgbaValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -773,13 +578,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for {@link CesiumSensorVolumePortionToDisplay} values.
-    
-    
-    
-    
-
+    * Create an adaptor for {@link CesiumSensorVolumePortionToDisplay} values.
     * @param <TFrom> The class that implements {@link ICesiumSensorVolumePortionToDisplayValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -795,13 +594,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for {@link CesiumShadowMode} values.
-    
-    
-    
-    
-
+    * Create an adaptor for {@link CesiumShadowMode} values.
     * @param <TFrom> The class that implements {@link ICesiumShadowModeValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -816,13 +609,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for {@link Spherical} values.
-    
-    
-    
-    
-
+    * Create an adaptor for {@link Spherical} values.
     * @param <TFrom> The class that implements {@link ICesiumSphericalValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -841,13 +628,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for lists of {@link Spherical} values.
-    
-    
-    
-    
-
+    * Create an adaptor for lists of {@link Spherical} values.
     * @param <TFrom> The class that implements {@link ICesiumSphericalListValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -862,13 +643,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for {@link String} values.
-    
-    
-    
-    
-
+    * Create an adaptor for {@link String} values.
     * @param <TFrom> The class that implements {@link ICesiumFontValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -883,13 +658,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for {@link String} values.
-    
-    
-    
-    
-
+    * Create an adaptor for {@link String} values.
     * @param <TFrom> The class that implements {@link ICesiumStringValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -904,13 +673,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for {@link CesiumStripeOrientation} values.
-    
-    
-    
-    
-
+    * Create an adaptor for {@link CesiumStripeOrientation} values.
     * @param <TFrom> The class that implements {@link ICesiumStripeOrientationValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -926,13 +689,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for {@link UnitCartesian} values.
-    
-    
-    
-    
-
+    * Create an adaptor for {@link UnitCartesian} values.
     * @param <TFrom> The class that implements {@link ICesiumUnitCartesian3ValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -951,13 +708,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for lists of {@link UnitCartesian} values.
-    
-    
-    
-    
-
+    * Create an adaptor for lists of {@link UnitCartesian} values.
     * @param <TFrom> The class that implements {@link ICesiumUnitCartesian3ListValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -973,13 +724,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for {@link UnitQuaternion} values.
-    
-    
-    
-    
-
+    * Create an adaptor for {@link UnitQuaternion} values.
     * @param <TFrom> The class that implements {@link ICesiumUnitQuaternionValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -998,13 +743,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for {@link UnitSpherical} values.
-    
-    
-    
-    
-
+    * Create an adaptor for {@link UnitSpherical} values.
     * @param <TFrom> The class that implements {@link ICesiumUnitSphericalValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -1023,13 +762,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for lists of {@link UnitSpherical} values.
-    
-    
-    
-    
-
+    * Create an adaptor for lists of {@link UnitSpherical} values.
     * @param <TFrom> The class that implements {@link ICesiumUnitSphericalListValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -1045,13 +778,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for {@link CesiumResource} values.
-    
-    
-    
-    
-
+    * Create an adaptor for {@link CesiumResource} values.
     * @param <TFrom> The class that implements {@link ICesiumUriValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -1066,13 +793,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for {@link CesiumVerticalOrigin} values.
-    
-    
-    
-    
-
+    * Create an adaptor for {@link CesiumVerticalOrigin} values.
     * @param <TFrom> The class that implements {@link ICesiumVerticalOriginValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.
@@ -1087,13 +808,7 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
-    *  
-    Create an adaptor for {@link Reference} values.
-    
-    
-    
-    
-
+    * Create an adaptor for {@link Reference} values.
     * @param <TFrom> The class that implements {@link ICesiumVelocityReferenceValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.
     * @return The new adaptor.

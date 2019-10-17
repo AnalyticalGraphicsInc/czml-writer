@@ -6,10 +6,7 @@ import cesiumlanguagewriter.*;
 import javax.annotation.Nonnull;
 
 /**
- *  
- A writer that can write a value as a shadow mode.
- 
-
+ * A writer that can write a value as a shadow mode.
  */
 @SuppressWarnings( {
         "unused",
@@ -18,11 +15,7 @@ import javax.annotation.Nonnull;
 })
 public interface ICesiumShadowModeValuePropertyWriter extends ICesiumPropertyWriter {
     /**
-    *  
-    Writes the value as a shadow mode.
-    
-    
-
+    * Writes the value as a shadow mode.
     * @param value The shadow mode.
     */
     void writeShadowMode(@Nonnull CesiumShadowMode value);

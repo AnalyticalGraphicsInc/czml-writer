@@ -6,10 +6,7 @@ import cesiumlanguagewriter.*;
 import javax.annotation.Nonnull;
 
 /**
- *  
- A writer that can write a value as a color blend mode.
- 
-
+ * A writer that can write a value as a color blend mode.
  */
 @SuppressWarnings( {
         "unused",
@@ -18,11 +15,7 @@ import javax.annotation.Nonnull;
 })
 public interface ICesiumColorBlendModeValuePropertyWriter extends ICesiumPropertyWriter {
     /**
-    *  
-    Writes the value expressed as a color blend mode.
-    
-    
-
+    * Writes the value expressed as a color blend mode.
     * @param value The blend mode.
     */
     void writeColorBlendMode(@Nonnull CesiumColorBlendMode value);

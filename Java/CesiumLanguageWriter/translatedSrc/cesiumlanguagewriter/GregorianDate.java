@@ -27,16 +27,13 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
- *  
- Represents a calendar date in the Gregorian calendar.  A
+ * Represents a calendar date in the Gregorian calendar.  A
  {@link GregorianDate} does not include a {@link TimeStandard} as {@link JulianDate}
  does.  However, without explicitly specifying a {@link TimeStandard} for the date, the {@link GregorianDate}
  is assumed to be represented in {@link TimeStandard#COORDINATED_UNIVERSAL_TIME}. {@link GregorianDate} is
  also capable of representing leap seconds, which are represented as the second measured from 60 to 61.  In this case,
  the {@link GregorianDate} is assumed to be the {@link TimeStandard#COORDINATED_UNIVERSAL_TIME} represented
  in {@link TimeStandard#INTERNATIONAL_ATOMIC_TIME} which can represent leap seconds exactly.
- 
-
  */
 @SuppressWarnings( {
         "unused",
@@ -50,8 +47,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     public GregorianDate() {}
 
     /**
-    *  
-    This class was taken from the Mono {@link ZonedDateTime} class, and
+    * This class was taken from the Mono {@link ZonedDateTime} class, and
     substantially altered to fit the needs of Gregorian Date.  Gregorian Date
     assumes UTC, so all time-zone handling was ripped out.  The "f" parsing was
     also changed to allow more precision than the 7 digits that
@@ -59,21 +55,13 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
 
     Note: any comment from here on is taken from the Mono source, so any references
     to bug numbers refer to their bugs.
-    
-
     */
     @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     private static class Parser {
         /**
-        *  
-        Build an array of date/time patterns that support up to the number of
+        * Build an array of date/time patterns that support up to the number of
         fractional second digits specified.  {@link ZonedDateTime} will only parse up
         to seven.
-        
-        
-        
-        
-
         * @param patterns The set of formats to use as a template.
         * @param maximumFractionalSeconds The maximum number of fractional second
         digits to include in the pattern set.
@@ -1513,11 +1501,8 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
         }
 
         /**
-        *  
-        Don't use these patterns directly.  Instead get your patterns from
+        * Don't use these patterns directly.  Instead get your patterns from
         {@link #buildDateTimePatterns}.
-        
-
         */
         private static String[] s_extraDateTimePatternTemplates = {
                 "M/d/yyyy H:mm:ss.f*",
@@ -1623,17 +1608,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    Initializes a {@link GregorianDate} from the provided values.
-    
-    
-    
-    
-    
-    
-    
-    
-
+    * Initializes a {@link GregorianDate} from the provided values.
     * @param year The year.
     * @param month The month of the year (in the range 1 through 12)
     * @param day The day of the month (in the range 1 through the number of
@@ -1643,10 +1618,8 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     * @param second The second, including fractional seconds (in the range 0.0
     up to, but not including, 61.0).  A second between 60.0 and 61.0 (a leap
     second) is only valid if the overall time is during one of the official leap
-    seconds. 
-    * @exception ArgumentException 
-    Thrown when one of the provided parameters is outside of its acceptable range.
-    
+    seconds.
+    * @exception ArgumentException Thrown when one of the provided parameters is outside of its acceptable range.
     */
     public GregorianDate(int year, int month, int day, int hour, int minute, double second) {
         if (!isValid(year, month, day, hour, minute, second)) {
@@ -1659,38 +1632,20 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    Initializes a {@link GregorianDate} from the provided values.  The
+    * Initializes a {@link GregorianDate} from the provided values.  The
     remaining values are assumed to be zero.
-    
-    
-    
-    
-    
-
     * @param year The year.
     * @param month The month of the year (in the range 1 through 12)
     * @param day The day of the month (in the range 1 through the number of
     days in {@code month})
-    * @exception ArgumentException 
-    Thrown when one of the provided parameters is outside of its acceptable range.
-    
+    * @exception ArgumentException Thrown when one of the provided parameters is outside of its acceptable range.
     */
     public GregorianDate(int year, int month, int day) {
         this(year, month, day, 0, 0, 0);
     }
 
     /**
-    *  
-    Initializes a {@link GregorianDate} from the provided values.
-    
-    
-    
-    
-    
-    
-    
-
+    * Initializes a {@link GregorianDate} from the provided values.
     * @param year The year.
     * @param dayOfYear The day of year
     (in the range 1 through the number of days in the given year).
@@ -1699,10 +1654,8 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     * @param second The second, including fractional seconds (in the range 0.0
     up to, but not including, 61.0).  A second between 60.0 and 61.0 (a leap
     second) is only valid if the overall time is during one of the official leap
-    seconds. 
-    * @exception ArgumentException 
-    Thrown when one of the provided parameters is outside of its acceptable range.
-    
+    seconds.
+    * @exception ArgumentException Thrown when one of the provided parameters is outside of its acceptable range.
     */
     public GregorianDate(int year, int dayOfYear, int hour, int minute, double second) {
         YearMonthDay yearMonthDay = new YearMonthDay(year, dayOfYear);
@@ -1716,14 +1669,9 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    Initializes a {@link GregorianDate} from the provided values.  The
+    * Initializes a {@link GregorianDate} from the provided values.  The
     fractional portion of the {@code daysOfYear} will be converted into
     hours, minutes, and seconds.
-    
-    
-    
-
     * @param year The year.
     * @param daysOfYear The day of year plus the fractional portion of the day
     (in the range 1 through the number of days in the given year).
@@ -1740,13 +1688,9 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    Initializes a {@link GregorianDate} from the provided
+    * Initializes a {@link GregorianDate} from the provided
     {@link JulianDate}.  The new {@link GregorianDate} will be in the
     {@link TimeStandard#COORDINATED_UNIVERSAL_TIME} (UTC) time standard.
-    
-    
-
     * @param julianDate The {@link JulianDate}.
     */
     public GregorianDate(@Nonnull JulianDate julianDate) {
@@ -1754,19 +1698,12 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    Initializes a {@link GregorianDate} from the provided
+    * Initializes a {@link GregorianDate} from the provided
     {@link JulianDate}.  The new {@link GregorianDate} will be in the
     provided {@link TimeStandard}.
-    
-    
-    
-
     * @param julianDate The {@link JulianDate}.
-    * @param timeStandard 
-    The {@link TimeStandard} to represent the new {@link GregorianDate}
+    * @param timeStandard The {@link TimeStandard} to represent the new {@link GregorianDate}
     in.
-    
     */
     public GregorianDate(@Nonnull JulianDate julianDate, @Nonnull TimeStandard timeStandard) {
         boolean isLeapSecond = false;
@@ -1798,13 +1735,9 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    Initializes a {@link GregorianDate} from the provided
+    * Initializes a {@link GregorianDate} from the provided
     {@link ZonedDateTime}.  If the provided {@link ZonedDateTime} is in local
     time, it is converted to UTC.
-    
-    
-
     * @param dateTime The {@link ZonedDateTime}.
     */
     public GregorianDate(@Nonnull ZonedDateTime dateTime) {
@@ -1820,74 +1753,58 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  Gets the year.
-    
-
+    * Gets the year.
     */
     public final int getYear() {
         return m_yearMonthDay.getYear();
     }
 
     /**
-    *  Gets the month of the year (in the range 1 through 12).
-    
-
+    * Gets the month of the year (in the range 1 through 12).
     */
     public final int getMonth() {
         return m_yearMonthDay.getMonth();
     }
 
     /**
-    *  Gets the day of the month (in the range 1 through the number of days in the
+    * Gets the day of the month (in the range 1 through the number of days in the
     month).
-    
-
     */
     public final int getDay() {
         return m_yearMonthDay.getDay();
     }
 
     /**
-    *  Gets the hour (in the range 0 through 23).
-    
-
+    * Gets the hour (in the range 0 through 23).
     */
     public final int getHour() {
         return m_hour;
     }
 
     /**
-    *  Gets the minute (in the range 0 through 59).
-    
-
+    * Gets the minute (in the range 0 through 59).
     */
     public final int getMinute() {
         return m_minute;
     }
 
     /**
-    *  Gets the second, including fractional seconds (in the range 0.0 up to, but not
+    * Gets the second, including fractional seconds (in the range 0.0 up to, but not
     including, 61.0).  A value between 60.0 and 61.0 indicates a leap second.
-    
-
     */
     public final double getSecond() {
         return m_second;
     }
 
     /**
-    *  Gets the corresponding seconds past midnight for this instance.
-    
-
+    * Gets the corresponding seconds past midnight for this instance.
     */
     public final double getSecondsOfDay() {
         return m_second + m_hour * SecondsPerHour + m_minute * SecondsPerMinute;
     }
 
     /**
-    *  Gets the corresponding seconds past noon for this instance.
-    
-
+    * Gets the corresponding seconds past noon for this instance.
     */
     public final double getJulianSecondsOfDay() {
         // JulianDates are noon-based
@@ -1899,14 +1816,10 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  Gets the day of the week represented by this instance.
-    
-
-    * @return 
-    A {@code DayOfWeek} ({@link #getDayOfWeek get}) value that indicates the day
+    * Gets the day of the week represented by this instance.
+    * @return A {@code DayOfWeek} ({@link #getDayOfWeek get}) value that indicates the day
     of the week. This property value ranges from zero, indicating Sunday, to six,
     indicating Saturday.
-    
     */
     @Nonnull
     public final DayOfWeek getDayOfWeek() {
@@ -1914,31 +1827,23 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  Gets the day of the year represented by this instance.
-    
-
-    * @return 
-    An integer that indicates the day of the year.
+    * Gets the day of the year represented by this instance.
+    * @return An integer that indicates the day of the year.
     This property value ranges from 1 through the number of days in the year.
-    
     */
     public final int getDayOfYear() {
         return m_yearMonthDay.getDayOfYear();
     }
 
     /**
-    *  Gets a value indicating whether or not this {@link GregorianDate} represents a leap second.
-    
-
+    * Gets a value indicating whether or not this {@link GregorianDate} represents a leap second.
     */
     private final boolean getIsLeapSecond() {
         return m_second >= 60.0;
     }
 
     /**
-    *  Gets the {@link GregorianDate} that represents the current date and time.
-    
-
+    * Gets the {@link GregorianDate} that represents the current date and time.
     */
     @Nonnull
     public static GregorianDate getNow() {
@@ -1946,18 +1851,8 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    Indicates whether the date values provided are a valid representation of a date
+    * Indicates whether the date values provided are a valid representation of a date
     and time.
-    
-    
-    
-    
-    
-    
-    
-    
-
     * @param year The year.
     * @param month The month of the year (in the range 1 through 12)
     * @param day The day of the month (in the range 1 through the number of
@@ -1967,7 +1862,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     * @param second The second, including fractional seconds (in the range 0.0
     up to, but not including, 61.0).  A second between 60.0 and 61.0 (a leap
     second) is only valid if the overall time is during one of the official leap
-    seconds. 
+    seconds.
     * @return true if the representation is valid and false if it is not.
     */
     public static boolean isValid(int year, int month, int day, int hour, int minute, double second) {
@@ -1989,15 +1884,11 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    Convert this {@link GregorianDate} to a {@link JulianDate}. The
+    * Convert this {@link GregorianDate} to a {@link JulianDate}. The
     time standard will be {@link TimeStandard#COORDINATED_UNIVERSAL_TIME}
     (UTC), unless this  {@link GregorianDate} represents the instant of a
     leap second, in which case the {@link JulianDate} will be in
     {@link TimeStandard#INTERNATIONAL_ATOMIC_TIME} (TAI).
-    
-    
-
     * @return A {@link JulianDate} representing this date.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
@@ -2007,18 +1898,11 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    Convert this {@link GregorianDate} to a {@link JulianDate}.  The
+    * Convert this {@link GregorianDate} to a {@link JulianDate}.  The
     {@link GregorianDate} is assumed to specify a time in the
     specified {@link TimeStandard}.
-    
-    
-    
-
-    * @param timeStandard 
-    The time standard in which this {@link GregorianDate} is expressed.  The returned
+    * @param timeStandard The time standard in which this {@link GregorianDate} is expressed.  The returned
     {@link JulianDate} will be expressed in this time standard as well, if possible.
-    
     * @return A {@link JulianDate} representing this date.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
@@ -2039,12 +1923,8 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    Convert this {@link GregorianDate} to a {@link ZonedDateTime}.
+    * Convert this {@link GregorianDate} to a {@link ZonedDateTime}.
     The {@link ZonedDateTime} will be in UTC.
-    
-    
-
     * @return A {@link ZonedDateTime} representing this date.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
@@ -2062,14 +1942,9 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    Rounds this instance to the specified number of decimal digits in the seconds, rolling over to minutes, hours, days,
+    * Rounds this instance to the specified number of decimal digits in the seconds, rolling over to minutes, hours, days,
     etc. as necessary.  This instance is assumed to express a time in the {@link TimeStandard#COORDINATED_UNIVERSAL_TIME}
     (UTC) time standard so the {@code Second} ({@link #getSecond get}) will be allowed to go above 60 during a leap second.
-    
-    
-    
-
     * @param digits The number of digits after the decimal point to include in the seconds.
     * @return The rounded date.
     */
@@ -2080,16 +1955,10 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    Rounds this instance to the specified number of decimal digits in the seconds, rolling over to minutes, hours, days,
+    * Rounds this instance to the specified number of decimal digits in the seconds, rolling over to minutes, hours, days,
     etc. as necessary.  If the specified {@code timeStandard} is {@link TimeStandard#COORDINATED_UNIVERSAL_TIME},
     (UTC), the seconds will be allowed to go above 60 during a leap second.  For any other time standard, the
     {@code Second} ({@link #getSecond get}) will be below 60.
-    
-    
-    
-    
-
     * @param digits The number of digits after the decimal point to include in the seconds.
     * @param timeStandard The time standard in which this {@link GregorianDate} is expressed.
     * @return The rounded date.
@@ -2107,15 +1976,9 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    Compares this instance with another instance of the same type.
-    
-    
-    
-
+    * Compares this instance with another instance of the same type.
     * @param other An object to compare with this instance.
-    * @return 
-    A value indicating the relative order of the objects being compared.  The return value has these meanings:
+    * @return A value indicating the relative order of the objects being compared.  The return value has these meanings:
     <table border="1">
     <tr>
     <th>Value</th>
@@ -2140,7 +2003,6 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     </td>
     </tr>
     </table>
-    
     */
     public final int compareTo(@Nonnull GregorianDate other) {
         int result = m_yearMonthDay.compareTo(other.m_yearMonthDay);
@@ -2157,11 +2019,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    Returns a hash code for this instance, which is suitable for use in hashing algorithms and data structures like a hash table.
-    
-    
-
+    * Returns a hash code for this instance, which is suitable for use in hashing algorithms and data structures like a hash table.
     * @return A hash code for the current object.
     */
     @Override
@@ -2170,12 +2028,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    Indicates whether another object is exactly equal to this instance.
-    
-    
-    
-
+    * Indicates whether another object is exactly equal to this instance.
     * @param obj The object to compare to this instance.
     * @return {@code true} if {@code obj} is an instance of this type and represents the same value as this instance; otherwise, {@code false}.
     */
@@ -2185,12 +2038,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    Indicates whether another instance of this type is exactly equal to this instance.
-    
-    
-    
-
+    * Indicates whether another instance of this type is exactly equal to this instance.
     * @param other The instance to compare to this instance.
     * @return {@code true} if {@code other} represents the same value as this instance; otherwise, {@code false}.
     */
@@ -2199,11 +2047,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    Converts the value of this instance to its equivalent string representation.
-    
-    
-
+    * Converts the value of this instance to its equivalent string representation.
     * @return A string representation of value of this instance.
     */
     @Override
@@ -2212,21 +2056,13 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    Converts the value of this instance to its equivalent string
+    * Converts the value of this instance to its equivalent string
     representation using the specified format.
-    
-    
-    
-    
-
     * @param format A format string.
     * @return A string representation of value of this instance as specified by {@code format}.
-    * @exception NumberFormatException 
-    Thrown if the length of {@code format} is 1,
+    * @exception NumberFormatException Thrown if the length of {@code format} is 1,
     and it is not one of the format specifier characters defined for {@link DateTimeFormatInfo}, 
-    or if {@code format} does not contain a valid custom format pattern. 
-    
+    or if {@code format} does not contain a valid custom format pattern.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     @Nonnull
@@ -2235,13 +2071,8 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    Converts the value of this instance to its equivalent string
+    * Converts the value of this instance to its equivalent string
     representation using the specified culture-specific format information.
-    
-    
-    
-
     * @param provider An {@link Locale} that supplies culture-specific formatting information.
     * @return A string representation of value of this instance as specified by {@code provider}.
     */
@@ -2252,23 +2083,14 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    Converts the value of this instance to its equivalent string
+    * Converts the value of this instance to its equivalent string
     representation using the specified format and culture-specific format information.
-    
-    
-    
-    
-    
-
     * @param format A format string.
     * @param provider An {@link Locale} that supplies culture-specific formatting information.
     * @return A string representation of value of this instance as specified by {@code format} and {@code provider}.
-    * @exception NumberFormatException 
-    Thrown if the length of {@code format} is 1,
+    * @exception NumberFormatException Thrown if the length of {@code format} is 1,
     and it is not one of the format specifier characters defined for {@link DateTimeFormatInfo}, 
-    or if {@code format} does not contain a valid custom format pattern. 
-    
+    or if {@code format} does not contain a valid custom format pattern.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     @Nonnull
@@ -2277,12 +2099,8 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    Converts the value of this instance to its equivalent ISO8601 extended string representation, 
+    * Converts the value of this instance to its equivalent ISO8601 extended string representation, 
     with fractional seconds represented to 15 digits.
-    
-    
-
     * @return A string representing this date and time in extended ISO8601 format.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
@@ -2292,13 +2110,8 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    Converts the value of this instance to its equivalent ISO8601 string representation,
+    * Converts the value of this instance to its equivalent ISO8601 string representation,
     with fractional seconds represented to 15 digits.
-    
-    
-    
-
     * @param format The type of ISO8601 string to create.
     * @return A string representing this date and time in ISO8601 format.
     */
@@ -2309,14 +2122,8 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    Converts the value of this instance to its equivalent ISO8601 string representation,
+    * Converts the value of this instance to its equivalent ISO8601 string representation,
     with fractional seconds represented to the specified number of digits.
-    
-    
-    
-    
-
     * @param format The type of ISO8601 string to create.
     * @param digitsOfFractionalSeconds The number of digits after the decimal point in the 'seconds' portion of the time.
     * @return A string representing this date and time in ISO8601 format.
@@ -2386,15 +2193,9 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    Converts the value of this instance to its equivalent long date string representation.
-    
-    
-
-    * @return 
-    A string containing the name of the day of the week, the name of the month, 
+    * Converts the value of this instance to its equivalent long date string representation.
+    * @return A string containing the name of the day of the week, the name of the month, 
     the numeric day of the month, and the year equivalent to the date value of this instance.
-    
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     @Nonnull
@@ -2403,15 +2204,9 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    Converts the value of this instance to its equivalent long time string representation.
-    
-    
-
-    * @return 
-    A string containing the name of the day of the week, the name of the month, 
+    * Converts the value of this instance to its equivalent long time string representation.
+    * @return A string containing the name of the day of the week, the name of the month, 
     the numeric day of the hours, minutes, and seconds equivalent to the time value of this instance.
-    
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     @Nonnull
@@ -2420,15 +2215,9 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    Converts the value of this instance to its equivalent short date string representation.
-    
-    
-
-    * @return 
-    A string containing the numeric month, the numeric day of the month,
+    * Converts the value of this instance to its equivalent short date string representation.
+    * @return A string containing the numeric month, the numeric day of the month,
     and the year equivalent to the date value of this instance.
-    
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     @Nonnull
@@ -2437,15 +2226,9 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    Converts the value of this instance to its equivalent short time string representation.
-    
-    
-
-    * @return 
-    A string containing the name of the day of the week, the name of the month, 
+    * Converts the value of this instance to its equivalent short time string representation.
+    * @return A string containing the name of the day of the week, the name of the month, 
     the numeric day of the hours, minutes, and seconds equivalent to the time value of this instance.
-    
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     @Nonnull
@@ -2454,18 +2237,10 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    Returns {@code true} if the two instances are exactly equal.
-    
-    
-    
-    
-
+    * Returns {@code true} if the two instances are exactly equal.
     * @param left The instance to compare to {@code right}.
     * @param right The instance to compare to {@code left}.
-    * @return 
-    {@code true} if {@code left} represents the same value as {@code right}; otherwise, {@code false}.
-    
+    * @return {@code true} if {@code left} represents the same value as {@code right}; otherwise, {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(GregorianDate,GregorianDate)'")
     public static boolean equals(@Nonnull GregorianDate left, @Nonnull GregorianDate right) {
@@ -2473,18 +2248,10 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    Returns {@code true} if the two instances are not exactly equal.
-    
-    
-    
-    
-
+    * Returns {@code true} if the two instances are not exactly equal.
     * @param left The instance to compare to {@code right}.
     * @param right The instance to compare to {@code left}.
-    * @return 
-    {@code true} if {@code left} does not represent the same value as {@code right}; otherwise, {@code false}.
-    
+    * @return {@code true} if {@code left} does not represent the same value as {@code right}; otherwise, {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(GregorianDate,GregorianDate)'")
     public static boolean notEquals(@Nonnull GregorianDate left, @Nonnull GregorianDate right) {
@@ -2492,18 +2259,10 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    Returns {@code true} if {@code left} is less than {@code right}.
-    
-    
-    
-    
-
+    * Returns {@code true} if {@code left} is less than {@code right}.
     * @param left The instance to compare to {@code right}.
     * @param right The instance to compare to {@code left}.
-    * @return 
-    {@code true} if {@code left} is less than {@code right}; otherwise, {@code false}.
-    
+    * @return {@code true} if {@code left} is less than {@code right}; otherwise, {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean <(GregorianDate,GregorianDate)'")
     public static boolean lessThan(@Nonnull GregorianDate left, @Nonnull GregorianDate right) {
@@ -2511,18 +2270,10 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    Returns {@code true} if {@code left} is greater than {@code right}.
-    
-    
-    
-    
-
+    * Returns {@code true} if {@code left} is greater than {@code right}.
     * @param left The instance to compare to {@code right}.
     * @param right The instance to compare to {@code left}.
-    * @return 
-    {@code true} if {@code left} is greater than {@code right}; otherwise, {@code false}.
-    
+    * @return {@code true} if {@code left} is greater than {@code right}; otherwise, {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean >(GregorianDate,GregorianDate)'")
     public static boolean greaterThan(@Nonnull GregorianDate left, @Nonnull GregorianDate right) {
@@ -2530,18 +2281,10 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    Returns {@code true} if {@code left} is less than or equal to {@code right}.
-    
-    
-    
-    
-
+    * Returns {@code true} if {@code left} is less than or equal to {@code right}.
     * @param left The instance to compare to {@code right}.
     * @param right The instance to compare to {@code left}.
-    * @return 
-    {@code true} if {@code left} is less than or equal to {@code right}; otherwise, {@code false}.
-    
+    * @return {@code true} if {@code left} is less than or equal to {@code right}; otherwise, {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean <=(GregorianDate,GregorianDate)'")
     public static boolean lessThanOrEqual(@Nonnull GregorianDate left, @Nonnull GregorianDate right) {
@@ -2549,18 +2292,10 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    Returns {@code true} if {@code left} is greater than or equal to {@code right}.
-    
-    
-    
-    
-
+    * Returns {@code true} if {@code left} is greater than or equal to {@code right}.
     * @param left The instance to compare to {@code right}.
     * @param right The instance to compare to {@code left}.
-    * @return 
-    {@code true} if {@code left} is greater than or equal to {@code right}; otherwise, {@code false}.
-    
+    * @return {@code true} if {@code left} is greater than or equal to {@code right}; otherwise, {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean >=(GregorianDate,GregorianDate)'")
     public static boolean greaterThanOrEqual(@Nonnull GregorianDate left, @Nonnull GregorianDate right) {
@@ -2568,8 +2303,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    <p>
+    * <p>
     Converts the specified string representation of a date and time to its
     {@link GregorianDate} equivalent.
     </p>
@@ -2589,22 +2323,10 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     The basic format "YYYYMMDDThhmmss.sZ"
     </li>
     </ul>
-    
-    
-    
-    
-    
-
     * @param s A string containing a date and time to convert.
-    * @return 
-    A {@link GregorianDate} equivalent to the date and time contained in s.
-    
-    * @exception ArgumentNullException 
-    Thrown if {@code s} is {@code null}.
-    
-    * @exception NumberFormatException 
-    Thrown if {@code s} does not contain a valid string representation of a date and time.
-    
+    * @return A {@link GregorianDate} equivalent to the date and time contained in s.
+    * @exception ArgumentNullException Thrown if {@code s} is {@code null}.
+    * @exception NumberFormatException Thrown if {@code s} does not contain a valid string representation of a date and time.
     */
     @Nonnull
     public static GregorianDate parse(@Nonnull String s) {
@@ -2612,8 +2334,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    <p>
+    * <p>
     Converts the specified string representation of a date and time to its
     {@link GregorianDate} equivalent using the specified culture-specific
     format information.
@@ -2634,25 +2355,12 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     The basic format "YYYYMMDDThhmmss.sZ"
     </li>
     </ul>
-    
-    
-    
-    
-    
-    
-
     * @param s A string containing a date and time to convert.
     * @param provider An {@link Locale} that supplies culture-specific format information about {@code s}.
-    * @return 
-    A {@link GregorianDate} equivalent to the date and time contained in
+    * @return A {@link GregorianDate} equivalent to the date and time contained in
     {@code s} as specified by {@code provider}.
-    
-    * @exception ArgumentNullException 
-    Thrown if {@code s} is {@code null}.
-    
-    * @exception NumberFormatException 
-    Thrown if {@code s} does not contain a valid string representation of a date and time.
-    
+    * @exception ArgumentNullException Thrown if {@code s} is {@code null}.
+    * @exception NumberFormatException Thrown if {@code s} does not contain a valid string representation of a date and time.
     */
     @Nonnull
     public static GregorianDate parse(@Nonnull String s, @Nullable Locale provider) {
@@ -2660,8 +2368,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    <p>
+    * <p>
     Converts the specified string representation of a date and time to its
     {@link GregorianDate} equivalent using the specified format and
     culture-specific format information. The format of the string representation
@@ -2671,30 +2378,16 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     Note: {@link GregorianDate} is always assumed to be in UTC.  You cannot
     parse strings containing time zone information.
     </p>
-    
-    
-    
-    
-    
-    
-    
-
-    * @param s A string containing a date and time to convert. 
-    * @param format The expected format of {@code s}. 
-    * @param provider An {@link Locale} that supplies culture-specific format information about {@code s}. 
-    * @return 
-    A {@link GregorianDate} equivalent to the date and time contained in
+    * @param s A string containing a date and time to convert.
+    * @param format The expected format of {@code s}.
+    * @param provider An {@link Locale} that supplies culture-specific format information about {@code s}.
+    * @return A {@link GregorianDate} equivalent to the date and time contained in
     {@code s} as specified by {@code format} and
     {@code provider}.
-    
-    * @exception ArgumentNullException 
-    Thrown if {@code s} or {@code format} is {@code null}.
-    
-    * @exception NumberFormatException 
-    Thrown if {@code s} or {@code format} is an empty string, 
+    * @exception ArgumentNullException Thrown if {@code s} or {@code format} is {@code null}.
+    * @exception NumberFormatException Thrown if {@code s} or {@code format} is an empty string, 
     or if {@code s} does not contain a date and time that corresponds to the 
     pattern specified in {@code format}.
-    
     */
     @Nonnull
     public static GregorianDate parseExact(@Nonnull String s, @Nonnull String format, @Nullable Locale provider) {
@@ -2704,8 +2397,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    <p>
+    * <p>
     Converts the specified string representation of a date and time to its
     {@link GregorianDate} equivalent using the specified format and
     culture-specific format information. The format of the string representation
@@ -2715,31 +2407,17 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     Note: {@link GregorianDate} is always assumed to be in UTC.  You cannot
     parse strings containing time zone information.
     </p>
-    
-    
-    
-    
-    
-    
-    
-
-    * @param s A list of strings containing a date and time to convert. 
-    * @param format The expected format of {@code s}. 
+    * @param s A list of strings containing a date and time to convert.
+    * @param format The expected format of {@code s}.
     * @param provider An {@link Locale} that supplies
-    culture-specific format information about {@code s}. 
-    * @return 
-    A {@link GregorianDate} equivalent to the date and time contained in
+    culture-specific format information about {@code s}.
+    * @return A {@link GregorianDate} equivalent to the date and time contained in
     {@code s} as specified by {@code format} and
     {@code provider}.
-    
-    * @exception ArgumentNullException 
-    Thrown if {@code s} or {@code format} is {@code null}.
-    
-    * @exception NumberFormatException 
-    Thrown if {@code s} or {@code format} is an empty string, 
+    * @exception ArgumentNullException Thrown if {@code s} or {@code format} is {@code null}.
+    * @exception NumberFormatException Thrown if {@code s} or {@code format} is an empty string, 
     or if {@code s} does not contain a date and time that corresponds to the
     pattern specified in {@code format}.
-    
     */
     @Nonnull
     public static GregorianDate parseExact(@Nonnull String s, @Nonnull String[] format, @Nullable Locale provider) {
@@ -2747,8 +2425,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    <p>
+    * <p>
     Converts the specified string representation of a date and time to its
     {@link GregorianDate} equivalent.
     </p>
@@ -2768,24 +2445,15 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     The basic format "YYYYMMDDThhmmss.sZ"
     </li>
     </ul>
-    
-    
-    
-    
-
     * @param s A string containing a date and time to convert.
-    * @param result 
-    On input, an array with one element.  On return, the array is populated with
+    * @param result On input, an array with one element.  On return, the array is populated with
     
     the {@link GregorianDate} value equivalent to the date and time contained in
     {@code s}, if the conversion succeeded, or
     {@link GregorianDate#MinValue} if the conversion failed. The conversion
     fails if the {@code s} parameter is {@code null}, or does not contain a
     valid string representation of a date and time.
-    
-    * @return 
-    true if the {@code s} parameter was converted successfully; otherwise, false.
-    
+    * @return true if the {@code s} parameter was converted successfully; otherwise, false.
     */
     @CS2JWarning("Unhandled attribute removed: ContractAnnotation")
     public static boolean tryParse(String s, @Nonnull GregorianDate[] result) {
@@ -2793,8 +2461,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    <p>
+    * <p>
     Converts the specified string representation of a date and time to its
     {@link GregorianDate} equivalent using the specified culture-specific
     format information.
@@ -2815,26 +2482,16 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     The basic format "YYYYMMDDThhmmss.sZ"
     </li>
     </ul>
-    
-    
-    
-    
-    
-
     * @param s A string containing a date and time to convert.
-    * @param provider An {@link Locale} that supplies culture-specific format information about {@code s}. 
-    * @param result 
-    On input, an array with one element.  On return, the array is populated with
+    * @param provider An {@link Locale} that supplies culture-specific format information about {@code s}.
+    * @param result On input, an array with one element.  On return, the array is populated with
     
     the {@link GregorianDate} value equivalent to the date and time contained in
     {@code s}, if the conversion succeeded, or
     {@link GregorianDate#MinValue} if the conversion failed. The conversion
     fails if the {@code s} parameter is {@code null}, or does not contain a
     valid string representation of a date and time.
-    
-    * @return 
-    true if the {@code s} parameter was converted successfully; otherwise, false.
-    
+    * @return true if the {@code s} parameter was converted successfully; otherwise, false.
     */
     @CS2JWarning("Unhandled attribute removed: ContractAnnotation")
     public static boolean tryParse(String s, Locale provider, @Nonnull GregorianDate[] result) {
@@ -2855,20 +2512,14 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     }
 
     /**
-    *  
-    Represents the largest possible value of {@link GregorianDate}.
+    * Represents the largest possible value of {@link GregorianDate}.
     Corresponds to {@link DateTimeHelper#maxValue()}.
-    
-
     */
     @Nonnull
     public static final GregorianDate MaxValue = new GregorianDate(DateTimeHelper.maxValue());
     /**
-    *  
-    Represents the smallest possible value of {@link GregorianDate}.
+    * Represents the smallest possible value of {@link GregorianDate}.
     Corresponds to {@link DateTimeHelper#minValue()}.
-    
-
     */
     @Nonnull
     public static final GregorianDate MinValue = new GregorianDate(DateTimeHelper.minValue());

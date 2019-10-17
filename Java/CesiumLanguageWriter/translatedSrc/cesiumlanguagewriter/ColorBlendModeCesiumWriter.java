@@ -8,10 +8,7 @@ import cesiumlanguagewriter.advanced.*;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Writes a {@code ColorBlendMode} to a {@link CesiumOutputStream}. A {@code ColorBlendMode} is the mode of blending between a target color and an entity's source color.
- 
-
+ * Writes a {@code ColorBlendMode} to a {@link CesiumOutputStream}. A {@code ColorBlendMode} is the mode of blending between a target color and an entity's source color.
  */
 @SuppressWarnings( {
         "unused",
@@ -21,35 +18,22 @@ import javax.annotation.Nonnull;
 public class ColorBlendModeCesiumWriter extends CesiumPropertyWriter<ColorBlendModeCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumColorBlendModeValuePropertyWriter,
         ICesiumReferenceValuePropertyWriter {
     /**
-    *  
-    The name of the {@code colorBlendMode} property.
-    
-
+    * The name of the {@code colorBlendMode} property.
     */
     public static final String ColorBlendModePropertyName = "colorBlendMode";
     /**
-    *  
-    The name of the {@code reference} property.
-    
-
+    * The name of the {@code reference} property.
     */
     public static final String ReferencePropertyName = "reference";
     /**
-    *  
-    The name of the {@code delete} property.
-    
-
+    * The name of the {@code delete} property.
     */
     public static final String DeletePropertyName = "delete";
     private Lazy<CesiumColorBlendModeValuePropertyAdaptor<ColorBlendModeCesiumWriter>> m_asColorBlendMode;
     private Lazy<CesiumReferenceValuePropertyAdaptor<ColorBlendModeCesiumWriter>> m_asReference;
 
     /**
-    *  
-    Initializes a new instance.
-    
-    
-
+    * Initializes a new instance.
     * @param propertyName The name of the property.
     */
     public ColorBlendModeCesiumWriter(@Nonnull String propertyName) {
@@ -59,11 +43,7 @@ public class ColorBlendModeCesiumWriter extends CesiumPropertyWriter<ColorBlendM
     }
 
     /**
-    *  
-    Initializes a new instance as a copy of an existing instance.
-    
-    
-
+    * Initializes a new instance as a copy of an existing instance.
     * @param existingInstance The existing instance to copy.
     */
     protected ColorBlendModeCesiumWriter(@Nonnull ColorBlendModeCesiumWriter existingInstance) {
@@ -73,12 +53,7 @@ public class ColorBlendModeCesiumWriter extends CesiumPropertyWriter<ColorBlendM
     }
 
     /**
-    *  
-    
-    Copies this instance and returns the copy.
-    
-    
-
+    * Copies this instance and returns the copy.
     * @return The copy.
     */
     @Override
@@ -87,11 +62,7 @@ public class ColorBlendModeCesiumWriter extends CesiumPropertyWriter<ColorBlendM
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code colorBlendMode}, which is the color blend mode.
-    
-    
-
+    * Writes the value expressed as a {@code colorBlendMode}, which is the color blend mode.
     * @param value The blend mode.
     */
     public final void writeColorBlendMode(@Nonnull CesiumColorBlendMode value) {
@@ -106,11 +77,7 @@ public class ColorBlendModeCesiumWriter extends CesiumPropertyWriter<ColorBlendM
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the color blend mode specified as a reference to another property.
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the color blend mode specified as a reference to another property.
     * @param value The reference.
     */
     public final void writeReference(Reference value) {
@@ -121,11 +88,7 @@ public class ColorBlendModeCesiumWriter extends CesiumPropertyWriter<ColorBlendM
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the color blend mode specified as a reference to another property.
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the color blend mode specified as a reference to another property.
     * @param value The reference.
     */
     public final void writeReference(String value) {
@@ -136,12 +99,7 @@ public class ColorBlendModeCesiumWriter extends CesiumPropertyWriter<ColorBlendM
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the color blend mode specified as a reference to another property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the color blend mode specified as a reference to another property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -153,12 +111,7 @@ public class ColorBlendModeCesiumWriter extends CesiumPropertyWriter<ColorBlendM
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the color blend mode specified as a reference to another property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the color blend mode specified as a reference to another property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -170,11 +123,7 @@ public class ColorBlendModeCesiumWriter extends CesiumPropertyWriter<ColorBlendM
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
-    
-    
-
+    * Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
     * @param value The value.
     */
     public final void writeDelete(boolean value) {
@@ -185,11 +134,7 @@ public class ColorBlendModeCesiumWriter extends CesiumPropertyWriter<ColorBlendM
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumColorBlendModeValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumColorBlendModeValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumColorBlendModeValuePropertyAdaptor<ColorBlendModeCesiumWriter> asColorBlendMode() {
@@ -210,11 +155,7 @@ public class ColorBlendModeCesiumWriter extends CesiumPropertyWriter<ColorBlendM
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumReferenceValuePropertyAdaptor<ColorBlendModeCesiumWriter> asReference() {

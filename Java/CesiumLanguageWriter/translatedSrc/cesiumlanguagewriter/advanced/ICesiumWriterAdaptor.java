@@ -6,11 +6,7 @@ import cesiumlanguagewriter.*;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Interface for classes that adapt a class derived from {@link CesiumPropertyWriter}.
- 
- 
-
+ * Interface for classes that adapt a class derived from {@link CesiumPropertyWriter}.
  * @param <TFrom> The type of property writer class to adapt.
  */
 @SuppressWarnings( {
@@ -20,9 +16,7 @@ import javax.annotation.Nonnull;
 })
 public interface ICesiumWriterAdaptor<TFrom> {
     /**
-    *  Gets the parent being adapted.
-    
-
+    * Gets the parent being adapted.
     */
     @Nonnull
     TFrom getParent();

@@ -13,8 +13,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Represents a link to another property.  References can be used to specify that
+ * Represents a link to another property.  References can be used to specify that
  two properties on different objects are in fact, the same property.  This also
  has the added benefit of cutting down on CZML file size.
  
@@ -22,8 +21,6 @@ import javax.annotation.Nonnull;
  by a hashtag (#) and one or more property names, each separated by a period (.).
  Any hash symbols or periods that exist in the reference identifier or property must
  be properly escaped with a backslash (\\) in order for the reference to be valid.
- 
-
  */
 @SuppressWarnings( {
         "unused",
@@ -32,11 +29,7 @@ import javax.annotation.Nonnull;
 })
 public class Reference implements IEquatable<Reference> {
     /**
-    *  
-    Creates a new instance from an escaped reference string.
-    
-    
-
+    * Creates a new instance from an escaped reference string.
     * @param value The reference string.
     */
     public Reference(String value) {
@@ -53,12 +46,7 @@ public class Reference implements IEquatable<Reference> {
     }
 
     /**
-    *  
-    Creates a new instance from an identifier and property.
-    
-    
-    
-
+    * Creates a new instance from an identifier and property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -71,12 +59,7 @@ public class Reference implements IEquatable<Reference> {
     }
 
     /**
-    *  
-    Creates a new instance from an identifier and a list of properties.
-    
-    
-    
-
+    * Creates a new instance from an identifier and a list of properties.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames A list of property names with each property being a sub-property of the previous one.
     */
@@ -87,38 +70,28 @@ public class Reference implements IEquatable<Reference> {
     }
 
     /**
-    *  Gets the identifier of the object which contains the referenced property.
-    
-
+    * Gets the identifier of the object which contains the referenced property.
     */
     public final String getIdentifier() {
         return m_identifier;
     }
 
     /**
-    *  Gets the list of properties to be indexed on the referenced object.
-    
-
+    * Gets the list of properties to be indexed on the referenced object.
     */
     public final Iterable<String> getPropertyNames() {
         return m_properties;
     }
 
     /**
-    *  Gets the escaped CZML value of the reference.
-    
-
+    * Gets the escaped CZML value of the reference.
     */
     public final String getValue() {
         return m_value;
     }
 
     /**
-    *  
-    Gets the escaped CZML value of the reference.
-    
-    
-
+    * Gets the escaped CZML value of the reference.
     * @return The escaped CZML value of the reference.
     */
     @Override
@@ -127,12 +100,7 @@ public class Reference implements IEquatable<Reference> {
     }
 
     /**
-    *  
-    Indicates whether another object is exactly equal to this instance.
-    
-    
-    
-
+    * Indicates whether another object is exactly equal to this instance.
     * @param obj The object to compare to this instance.
     * @return {@code true} if {@code obj} is an instance of this type and represents the same value as this instance; otherwise, {@code false}.
     */
@@ -143,12 +111,7 @@ public class Reference implements IEquatable<Reference> {
     }
 
     /**
-    *  
-    Indicates whether another object is exactly equal to this instance.
-    
-    
-    
-
+    * Indicates whether another object is exactly equal to this instance.
     * @param other The object to compare to this instance.
     * @return {@code true} if {@code other} is an instance of this type and represents the same value as this instance; otherwise, {@code false}.
     */
@@ -157,11 +120,7 @@ public class Reference implements IEquatable<Reference> {
     }
 
     /**
-    *  
-    Returns a hash code for this instance, which is suitable for use in hashing algorithms and data structures like a hash table.
-    
-    
-
+    * Returns a hash code for this instance, which is suitable for use in hashing algorithms and data structures like a hash table.
     * @return A hash code for the current object.
     */
     @Override
@@ -184,10 +143,7 @@ public class Reference implements IEquatable<Reference> {
     }
 
     /**
-    *  
-    Escape \ # . characters with a \
-    
-
+    * Escape \ # . characters with a \
     */
     private static void appendAndEscape(StringBuilder builder, String str) {
         for (int i = 0; i < str.length(); i++) {

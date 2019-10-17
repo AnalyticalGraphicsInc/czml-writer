@@ -12,10 +12,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Writes a {@code CustomProperty} to a {@link CesiumOutputStream}. A {@code CustomProperty} is a custom property.
- 
-
+ * Writes a {@code CustomProperty} to a {@link CesiumOutputStream}. A {@code CustomProperty} is a custom property.
  */
 @SuppressWarnings( {
         "unused",
@@ -30,192 +27,111 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
         ICesiumUnitQuaternionValuePropertyWriter, ICesiumShadowModeValuePropertyWriter, ICesiumStringValuePropertyWriter, ICesiumStripeOrientationValuePropertyWriter,
         ICesiumCartographicRectangleRadiansValuePropertyWriter, ICesiumCartographicRectangleDegreesValuePropertyWriter, ICesiumUriValuePropertyWriter, ICesiumVerticalOriginValuePropertyWriter {
     /**
-    *  
-    The name of the {@code boolean} property.
-    
-
+    * The name of the {@code boolean} property.
     */
     public static final String BooleanPropertyName = "boolean";
     /**
-    *  
-    The name of the {@code boundingRectangle} property.
-    
-
+    * The name of the {@code boundingRectangle} property.
     */
     public static final String BoundingRectanglePropertyName = "boundingRectangle";
     /**
-    *  
-    The name of the {@code cartesian} property.
-    
-
+    * The name of the {@code cartesian} property.
     */
     public static final String CartesianPropertyName = "cartesian";
     /**
-    *  
-    The name of the {@code cartographicRadians} property.
-    
-
+    * The name of the {@code cartographicRadians} property.
     */
     public static final String CartographicRadiansPropertyName = "cartographicRadians";
     /**
-    *  
-    The name of the {@code cartographicDegrees} property.
-    
-
+    * The name of the {@code cartographicDegrees} property.
     */
     public static final String CartographicDegreesPropertyName = "cartographicDegrees";
     /**
-    *  
-    The name of the {@code cartesian2} property.
-    
-
+    * The name of the {@code cartesian2} property.
     */
     public static final String Cartesian2PropertyName = "cartesian2";
     /**
-    *  
-    The name of the {@code unitCartesian} property.
-    
-
+    * The name of the {@code unitCartesian} property.
     */
     public static final String UnitCartesianPropertyName = "unitCartesian";
     /**
-    *  
-    The name of the {@code spherical} property.
-    
-
+    * The name of the {@code spherical} property.
     */
     public static final String SphericalPropertyName = "spherical";
     /**
-    *  
-    The name of the {@code unitSpherical} property.
-    
-
+    * The name of the {@code unitSpherical} property.
     */
     public static final String UnitSphericalPropertyName = "unitSpherical";
     /**
-    *  
-    The name of the {@code rgba} property.
-    
-
+    * The name of the {@code rgba} property.
     */
     public static final String RgbaPropertyName = "rgba";
     /**
-    *  
-    The name of the {@code rgbaf} property.
-    
-
+    * The name of the {@code rgbaf} property.
     */
     public static final String RgbafPropertyName = "rgbaf";
     /**
-    *  
-    The name of the {@code colorBlendMode} property.
-    
-
+    * The name of the {@code colorBlendMode} property.
     */
     public static final String ColorBlendModePropertyName = "colorBlendMode";
     /**
-    *  
-    The name of the {@code cornerType} property.
-    
-
+    * The name of the {@code cornerType} property.
     */
     public static final String CornerTypePropertyName = "cornerType";
     /**
-    *  
-    The name of the {@code heightReference} property.
-    
-
+    * The name of the {@code heightReference} property.
     */
     public static final String HeightReferencePropertyName = "heightReference";
     /**
-    *  
-    The name of the {@code horizontalOrigin} property.
-    
-
+    * The name of the {@code horizontalOrigin} property.
     */
     public static final String HorizontalOriginPropertyName = "horizontalOrigin";
     /**
-    *  
-    The name of the {@code labelStyle} property.
-    
-
+    * The name of the {@code labelStyle} property.
     */
     public static final String LabelStylePropertyName = "labelStyle";
     /**
-    *  
-    The name of the {@code number} property.
-    
-
+    * The name of the {@code number} property.
     */
     public static final String NumberPropertyName = "number";
     /**
-    *  
-    The name of the {@code nearFarScalar} property.
-    
-
+    * The name of the {@code nearFarScalar} property.
     */
     public static final String NearFarScalarPropertyName = "nearFarScalar";
     /**
-    *  
-    The name of the {@code unitQuaternion} property.
-    
-
+    * The name of the {@code unitQuaternion} property.
     */
     public static final String UnitQuaternionPropertyName = "unitQuaternion";
     /**
-    *  
-    The name of the {@code shadowMode} property.
-    
-
+    * The name of the {@code shadowMode} property.
     */
     public static final String ShadowModePropertyName = "shadowMode";
     /**
-    *  
-    The name of the {@code string} property.
-    
-
+    * The name of the {@code string} property.
     */
     public static final String StringPropertyName = "string";
     /**
-    *  
-    The name of the {@code stripeOrientation} property.
-    
-
+    * The name of the {@code stripeOrientation} property.
     */
     public static final String StripeOrientationPropertyName = "stripeOrientation";
     /**
-    *  
-    The name of the {@code wsen} property.
-    
-
+    * The name of the {@code wsen} property.
     */
     public static final String WsenPropertyName = "wsen";
     /**
-    *  
-    The name of the {@code wsenDegrees} property.
-    
-
+    * The name of the {@code wsenDegrees} property.
     */
     public static final String WsenDegreesPropertyName = "wsenDegrees";
     /**
-    *  
-    The name of the {@code uri} property.
-    
-
+    * The name of the {@code uri} property.
     */
     public static final String UriPropertyName = "uri";
     /**
-    *  
-    The name of the {@code verticalOrigin} property.
-    
-
+    * The name of the {@code verticalOrigin} property.
     */
     public static final String VerticalOriginPropertyName = "verticalOrigin";
     /**
-    *  
-    The name of the {@code delete} property.
-    
-
+    * The name of the {@code delete} property.
     */
     public static final String DeletePropertyName = "delete";
     private Lazy<CesiumBooleanValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asBoolean;
@@ -246,11 +162,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     private Lazy<CesiumVerticalOriginValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asVerticalOrigin;
 
     /**
-    *  
-    Initializes a new instance.
-    
-    
-
+    * Initializes a new instance.
     * @param propertyName The name of the property.
     */
     public CustomPropertyCesiumWriter(@Nonnull String propertyName) {
@@ -284,11 +196,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Initializes a new instance as a copy of an existing instance.
-    
-    
-
+    * Initializes a new instance as a copy of an existing instance.
     * @param existingInstance The existing instance to copy.
     */
     protected CustomPropertyCesiumWriter(@Nonnull CustomPropertyCesiumWriter existingInstance) {
@@ -322,12 +230,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    
-    Copies this instance and returns the copy.
-    
-    
-
+    * Copies this instance and returns the copy.
     * @return The copy.
     */
     @Override
@@ -336,11 +239,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code boolean}, which is the property specified as a boolean value.
-    
-    
-
+    * Writes the value expressed as a {@code boolean}, which is the property specified as a boolean value.
     * @param value The value.
     */
     public final void writeBoolean(boolean value) {
@@ -355,11 +254,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code boundingRectangle}, which is the property specified as {@code [X, Y, Width, Height]}.
-    
-    
-
+    * Writes the value expressed as a {@code boundingRectangle}, which is the property specified as {@code [X, Y, Width, Height]}.
     * @param value The value.
     */
     public final void writeBoundingRectangle(@Nonnull BoundingRectangle value) {
@@ -370,12 +265,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code boundingRectangle}, which is the property specified as {@code [X, Y, Width, Height]}.
-    
-    
-    
-
+    * Writes the value expressed as a {@code boundingRectangle}, which is the property specified as {@code [X, Y, Width, Height]}.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -384,14 +274,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code boundingRectangle}, which is the property specified as {@code [X, Y, Width, Height]}.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code boundingRectangle}, which is the property specified as {@code [X, Y, Width, Height]}.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -404,11 +287,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartesian}, which is the property specified as a three-dimensional Cartesian value {@code [X, Y, Z]}.
-    
-    
-
+    * Writes the value expressed as a {@code cartesian}, which is the property specified as a three-dimensional Cartesian value {@code [X, Y, Z]}.
     * @param value The value.
     */
     public final void writeCartesian(@Nonnull Cartesian value) {
@@ -419,12 +298,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartesian}, which is the property specified as a three-dimensional Cartesian value {@code [X, Y, Z]}.
-    
-    
-    
-
+    * Writes the value expressed as a {@code cartesian}, which is the property specified as a three-dimensional Cartesian value {@code [X, Y, Z]}.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -433,14 +307,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartesian}, which is the property specified as a three-dimensional Cartesian value {@code [X, Y, Z]}.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code cartesian}, which is the property specified as a three-dimensional Cartesian value {@code [X, Y, Z]}.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -453,11 +320,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartographicRadians}, which is the property specified in Cartographic WGS84 coordinates, {@code [Longitude, Latitude, Height]}, where Longitude and Latitude are in radians and Height is in meters.
-    
-    
-
+    * Writes the value expressed as a {@code cartographicRadians}, which is the property specified in Cartographic WGS84 coordinates, {@code [Longitude, Latitude, Height]}, where Longitude and Latitude are in radians and Height is in meters.
     * @param value The interval.
     */
     public final void writeCartographicRadians(@Nonnull Cartographic value) {
@@ -468,12 +331,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartographicRadians}, which is the property specified in Cartographic WGS84 coordinates, {@code [Longitude, Latitude, Height]}, where Longitude and Latitude are in radians and Height is in meters.
-    
-    
-    
-
+    * Writes the value expressed as a {@code cartographicRadians}, which is the property specified in Cartographic WGS84 coordinates, {@code [Longitude, Latitude, Height]}, where Longitude and Latitude are in radians and Height is in meters.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -482,14 +340,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartographicRadians}, which is the property specified in Cartographic WGS84 coordinates, {@code [Longitude, Latitude, Height]}, where Longitude and Latitude are in radians and Height is in meters.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code cartographicRadians}, which is the property specified in Cartographic WGS84 coordinates, {@code [Longitude, Latitude, Height]}, where Longitude and Latitude are in radians and Height is in meters.
     * @param dates The dates at which the value is specified.
     * @param values The position corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -502,11 +353,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartographicDegrees}, which is the property specified in Cartographic WGS84 coordinates, {@code [Longitude, Latitude, Height]}, where Longitude and Latitude are in degrees and Height is in meters.
-    
-    
-
+    * Writes the value expressed as a {@code cartographicDegrees}, which is the property specified in Cartographic WGS84 coordinates, {@code [Longitude, Latitude, Height]}, where Longitude and Latitude are in degrees and Height is in meters.
     * @param value The interval.
     */
     public final void writeCartographicDegrees(@Nonnull Cartographic value) {
@@ -517,12 +364,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartographicDegrees}, which is the property specified in Cartographic WGS84 coordinates, {@code [Longitude, Latitude, Height]}, where Longitude and Latitude are in degrees and Height is in meters.
-    
-    
-    
-
+    * Writes the value expressed as a {@code cartographicDegrees}, which is the property specified in Cartographic WGS84 coordinates, {@code [Longitude, Latitude, Height]}, where Longitude and Latitude are in degrees and Height is in meters.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -531,14 +373,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartographicDegrees}, which is the property specified in Cartographic WGS84 coordinates, {@code [Longitude, Latitude, Height]}, where Longitude and Latitude are in degrees and Height is in meters.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code cartographicDegrees}, which is the property specified in Cartographic WGS84 coordinates, {@code [Longitude, Latitude, Height]}, where Longitude and Latitude are in degrees and Height is in meters.
     * @param dates The dates at which the value is specified.
     * @param values The position corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -551,11 +386,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartesian2}, which is the property specified as a two-dimensional Cartesian value {@code [X, Y]}.
-    
-    
-
+    * Writes the value expressed as a {@code cartesian2}, which is the property specified as a two-dimensional Cartesian value {@code [X, Y]}.
     * @param value The value.
     */
     public final void writeCartesian2(@Nonnull Rectangular value) {
@@ -566,12 +397,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartesian2}, which is the property specified as a two-dimensional Cartesian value {@code [X, Y]}.
-    
-    
-    
-
+    * Writes the value expressed as a {@code cartesian2}, which is the property specified as a two-dimensional Cartesian value {@code [X, Y]}.
     * @param x The X component.
     * @param y The Y component.
     */
@@ -580,12 +406,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartesian2}, which is the property specified as a two-dimensional Cartesian value {@code [X, Y]}.
-    
-    
-    
-
+    * Writes the value expressed as a {@code cartesian2}, which is the property specified as a two-dimensional Cartesian value {@code [X, Y]}.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -594,14 +415,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartesian2}, which is the property specified as a two-dimensional Cartesian value {@code [X, Y]}.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code cartesian2}, which is the property specified as a two-dimensional Cartesian value {@code [X, Y]}.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -614,11 +428,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code unitCartesian}, which is the property specified as a three-dimensional unit magnitude Cartesian value {@code [X, Y, Z]}.
-    
-    
-
+    * Writes the value expressed as a {@code unitCartesian}, which is the property specified as a three-dimensional unit magnitude Cartesian value {@code [X, Y, Z]}.
     * @param value The value.
     */
     public final void writeUnitCartesian(@Nonnull UnitCartesian value) {
@@ -629,12 +439,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code unitCartesian}, which is the property specified as a three-dimensional unit magnitude Cartesian value {@code [X, Y, Z]}.
-    
-    
-    
-
+    * Writes the value expressed as a {@code unitCartesian}, which is the property specified as a three-dimensional unit magnitude Cartesian value {@code [X, Y, Z]}.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -643,14 +448,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code unitCartesian}, which is the property specified as a three-dimensional unit magnitude Cartesian value {@code [X, Y, Z]}.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code unitCartesian}, which is the property specified as a three-dimensional unit magnitude Cartesian value {@code [X, Y, Z]}.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -663,11 +461,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code spherical}, which is the property specified as a spherical value {@code [Clock, Cone, Magnitude]}. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
-    
-    
-
+    * Writes the value expressed as a {@code spherical}, which is the property specified as a spherical value {@code [Clock, Cone, Magnitude]}. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
     * @param value The value.
     */
     public final void writeSpherical(@Nonnull Spherical value) {
@@ -678,12 +472,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code spherical}, which is the property specified as a spherical value {@code [Clock, Cone, Magnitude]}. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
-    
-    
-    
-
+    * Writes the value expressed as a {@code spherical}, which is the property specified as a spherical value {@code [Clock, Cone, Magnitude]}. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -692,14 +481,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code spherical}, which is the property specified as a spherical value {@code [Clock, Cone, Magnitude]}. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code spherical}, which is the property specified as a spherical value {@code [Clock, Cone, Magnitude]}. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -712,11 +494,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code unitSpherical}, which is the property specified as a unit spherical value {@code [Clock, Cone]}. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
-    
-    
-
+    * Writes the value expressed as a {@code unitSpherical}, which is the property specified as a unit spherical value {@code [Clock, Cone]}. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
     * @param value The value.
     */
     public final void writeUnitSpherical(@Nonnull UnitSpherical value) {
@@ -727,12 +505,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code unitSpherical}, which is the property specified as a unit spherical value {@code [Clock, Cone]}. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
-    
-    
-    
-
+    * Writes the value expressed as a {@code unitSpherical}, which is the property specified as a unit spherical value {@code [Clock, Cone]}. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -741,14 +514,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code unitSpherical}, which is the property specified as a unit spherical value {@code [Clock, Cone]}. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code unitSpherical}, which is the property specified as a unit spherical value {@code [Clock, Cone]}. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -761,11 +527,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code rgba}, which is the property specified as an array of color components {@code [Red, Green, Blue, Alpha]} where each component is an integer in the range 0-255.
-    
-    
-
+    * Writes the value expressed as a {@code rgba}, which is the property specified as an array of color components {@code [Red, Green, Blue, Alpha]} where each component is an integer in the range 0-255.
     * @param color The color.
     */
     public final void writeRgba(@Nonnull Color color) {
@@ -776,14 +538,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code rgba}, which is the property specified as an array of color components {@code [Red, Green, Blue, Alpha]} where each component is an integer in the range 0-255.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code rgba}, which is the property specified as an array of color components {@code [Red, Green, Blue, Alpha]} where each component is an integer in the range 0-255.
     * @param red The red component in the range 0 to 255.
     * @param green The green component in the range 0 to 255.
     * @param blue The blue component in the range 0 to 255.
@@ -797,12 +552,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code rgba}, which is the property specified as an array of color components {@code [Red, Green, Blue, Alpha]} where each component is an integer in the range 0-255.
-    
-    
-    
-
+    * Writes the value expressed as a {@code rgba}, which is the property specified as an array of color components {@code [Red, Green, Blue, Alpha]} where each component is an integer in the range 0-255.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -811,14 +561,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code rgba}, which is the property specified as an array of color components {@code [Red, Green, Blue, Alpha]} where each component is an integer in the range 0-255.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code rgba}, which is the property specified as an array of color components {@code [Red, Green, Blue, Alpha]} where each component is an integer in the range 0-255.
     * @param dates The dates at which the value is specified.
     * @param colors The color corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -831,11 +574,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code rgbaf}, which is the property specified as an array of color components {@code [Red, Green, Blue, Alpha]} where each component is a double in the range 0.0-1.0.
-    
-    
-
+    * Writes the value expressed as a {@code rgbaf}, which is the property specified as an array of color components {@code [Red, Green, Blue, Alpha]} where each component is a double in the range 0.0-1.0.
     * @param color The color.
     */
     public final void writeRgbaf(@Nonnull Color color) {
@@ -846,14 +585,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code rgbaf}, which is the property specified as an array of color components {@code [Red, Green, Blue, Alpha]} where each component is a double in the range 0.0-1.0.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code rgbaf}, which is the property specified as an array of color components {@code [Red, Green, Blue, Alpha]} where each component is a double in the range 0.0-1.0.
     * @param red The red component in the range 0 to 1.0.
     * @param green The green component in the range 0 to 1.0.
     * @param blue The blue component in the range 0 to 1.0.
@@ -867,12 +599,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code rgbaf}, which is the property specified as an array of color components {@code [Red, Green, Blue, Alpha]} where each component is a double in the range 0.0-1.0.
-    
-    
-    
-
+    * Writes the value expressed as a {@code rgbaf}, which is the property specified as an array of color components {@code [Red, Green, Blue, Alpha]} where each component is a double in the range 0.0-1.0.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -881,14 +608,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code rgbaf}, which is the property specified as an array of color components {@code [Red, Green, Blue, Alpha]} where each component is a double in the range 0.0-1.0.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code rgbaf}, which is the property specified as an array of color components {@code [Red, Green, Blue, Alpha]} where each component is a double in the range 0.0-1.0.
     * @param dates The dates at which the value is specified.
     * @param colors The color corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -901,11 +621,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code colorBlendMode}, which is the property specified as a color blend mode.
-    
-    
-
+    * Writes the value expressed as a {@code colorBlendMode}, which is the property specified as a color blend mode.
     * @param value The blend mode.
     */
     public final void writeColorBlendMode(@Nonnull CesiumColorBlendMode value) {
@@ -916,11 +632,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cornerType}, which is the property specified as a corner style.
-    
-    
-
+    * Writes the value expressed as a {@code cornerType}, which is the property specified as a corner style.
     * @param value The style of a corner.
     */
     public final void writeCornerType(@Nonnull CesiumCornerType value) {
@@ -931,11 +643,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code heightReference}, which is the property specified as a height reference.
-    
-    
-
+    * Writes the value expressed as a {@code heightReference}, which is the property specified as a height reference.
     * @param value The height reference.
     */
     public final void writeHeightReference(@Nonnull CesiumHeightReference value) {
@@ -946,11 +654,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code horizontalOrigin}, which is the property specified as a horizontal origin.
-    
-    
-
+    * Writes the value expressed as a {@code horizontalOrigin}, which is the property specified as a horizontal origin.
     * @param value The horizontal origin.
     */
     public final void writeHorizontalOrigin(@Nonnull CesiumHorizontalOrigin value) {
@@ -961,11 +665,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code labelStyle}, which is the property specified as a label style.
-    
-    
-
+    * Writes the value expressed as a {@code labelStyle}, which is the property specified as a label style.
     * @param value The label style.
     */
     public final void writeLabelStyle(@Nonnull CesiumLabelStyle value) {
@@ -976,11 +676,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code number}, which is the property specified as a number.
-    
-    
-
+    * Writes the value expressed as a {@code number}, which is the property specified as a number.
     * @param value The value.
     */
     public final void writeNumber(double value) {
@@ -991,12 +687,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code number}, which is the property specified as a number.
-    
-    
-    
-
+    * Writes the value expressed as a {@code number}, which is the property specified as a number.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -1005,14 +696,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code number}, which is the property specified as a number.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code number}, which is the property specified as a number.
     * @param dates The dates at which the value is specified.
     * @param values The value corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -1025,11 +709,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code nearFarScalar}, which is the property specified as four values {@code [NearDistance, NearValue, FarDistance, FarValue]}.
-    
-    
-
+    * Writes the value expressed as a {@code nearFarScalar}, which is the property specified as four values {@code [NearDistance, NearValue, FarDistance, FarValue]}.
     * @param value The value.
     */
     public final void writeNearFarScalar(@Nonnull NearFarScalar value) {
@@ -1040,14 +720,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code nearFarScalar}, which is the property specified as four values {@code [NearDistance, NearValue, FarDistance, FarValue]}.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code nearFarScalar}, which is the property specified as four values {@code [NearDistance, NearValue, FarDistance, FarValue]}.
     * @param nearDistance The lower bound of the camera distance range.
     * @param nearValue The value to use at the lower bound of the camera distance range.
     * @param farDistance The upper bound of the camera distance range.
@@ -1058,12 +731,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code nearFarScalar}, which is the property specified as four values {@code [NearDistance, NearValue, FarDistance, FarValue]}.
-    
-    
-    
-
+    * Writes the value expressed as a {@code nearFarScalar}, which is the property specified as four values {@code [NearDistance, NearValue, FarDistance, FarValue]}.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -1072,14 +740,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code nearFarScalar}, which is the property specified as four values {@code [NearDistance, NearValue, FarDistance, FarValue]}.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code nearFarScalar}, which is the property specified as four values {@code [NearDistance, NearValue, FarDistance, FarValue]}.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -1092,11 +753,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code unitQuaternion}, which is the property specified as a 4-dimensional unit magnitude quaternion, specified as {@code [X, Y, Z, W]}.
-    
-    
-
+    * Writes the value expressed as a {@code unitQuaternion}, which is the property specified as a 4-dimensional unit magnitude quaternion, specified as {@code [X, Y, Z, W]}.
     * @param value The value.
     */
     public final void writeUnitQuaternion(@Nonnull UnitQuaternion value) {
@@ -1107,12 +764,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code unitQuaternion}, which is the property specified as a 4-dimensional unit magnitude quaternion, specified as {@code [X, Y, Z, W]}.
-    
-    
-    
-
+    * Writes the value expressed as a {@code unitQuaternion}, which is the property specified as a 4-dimensional unit magnitude quaternion, specified as {@code [X, Y, Z, W]}.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -1121,14 +773,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code unitQuaternion}, which is the property specified as a 4-dimensional unit magnitude quaternion, specified as {@code [X, Y, Z, W]}.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code unitQuaternion}, which is the property specified as a 4-dimensional unit magnitude quaternion, specified as {@code [X, Y, Z, W]}.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -1141,11 +786,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code shadowMode}, which is the property specified as a shadow mode.
-    
-    
-
+    * Writes the value expressed as a {@code shadowMode}, which is the property specified as a shadow mode.
     * @param value The shadow mode.
     */
     public final void writeShadowMode(@Nonnull CesiumShadowMode value) {
@@ -1156,11 +797,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code string}, which is the property specified as a string.
-    
-    
-
+    * Writes the value expressed as a {@code string}, which is the property specified as a string.
     * @param value The value.
     */
     public final void writeString(String value) {
@@ -1171,11 +808,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code stripeOrientation}, which is the property specified as an orientation of stripes in the stripe material.
-    
-    
-
+    * Writes the value expressed as a {@code stripeOrientation}, which is the property specified as an orientation of stripes in the stripe material.
     * @param value The orientation.
     */
     public final void writeStripeOrientation(@Nonnull CesiumStripeOrientation value) {
@@ -1186,11 +819,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code wsen}, which is the property specified as a Cartographic rectangle {@code [WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]}, with values in radians.
-    
-    
-
+    * Writes the value expressed as a {@code wsen}, which is the property specified as a Cartographic rectangle {@code [WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]}, with values in radians.
     * @param value The value.
     */
     public final void writeWsen(CartographicExtent value) {
@@ -1201,14 +830,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code wsen}, which is the property specified as a Cartographic rectangle {@code [WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]}, with values in radians.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code wsen}, which is the property specified as a Cartographic rectangle {@code [WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]}, with values in radians.
     * @param west The westernmost longitude.
     * @param south The southernmost latitude.
     * @param east The easternmost longitude.
@@ -1219,12 +841,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code wsen}, which is the property specified as a Cartographic rectangle {@code [WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]}, with values in radians.
-    
-    
-    
-
+    * Writes the value expressed as a {@code wsen}, which is the property specified as a Cartographic rectangle {@code [WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]}, with values in radians.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -1233,14 +850,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code wsen}, which is the property specified as a Cartographic rectangle {@code [WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]}, with values in radians.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code wsen}, which is the property specified as a Cartographic rectangle {@code [WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]}, with values in radians.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -1253,11 +863,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code wsenDegrees}, which is the property specified as a Cartographic rectangle {@code [WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]}, with values in degrees.
-    
-    
-
+    * Writes the value expressed as a {@code wsenDegrees}, which is the property specified as a Cartographic rectangle {@code [WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]}, with values in degrees.
     * @param value The value.
     */
     public final void writeWsenDegrees(CartographicExtent value) {
@@ -1268,14 +874,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code wsenDegrees}, which is the property specified as a Cartographic rectangle {@code [WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]}, with values in degrees.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code wsenDegrees}, which is the property specified as a Cartographic rectangle {@code [WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]}, with values in degrees.
     * @param west The westernmost longitude.
     * @param south The southernmost latitude.
     * @param east The easternmost longitude.
@@ -1286,12 +885,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code wsenDegrees}, which is the property specified as a Cartographic rectangle {@code [WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]}, with values in degrees.
-    
-    
-    
-
+    * Writes the value expressed as a {@code wsenDegrees}, which is the property specified as a Cartographic rectangle {@code [WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]}, with values in degrees.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -1300,14 +894,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code wsenDegrees}, which is the property specified as a Cartographic rectangle {@code [WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]}, with values in degrees.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code wsenDegrees}, which is the property specified as a Cartographic rectangle {@code [WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]}, with values in degrees.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -1320,11 +907,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code uri}, which is the property specified as a URI.
-    
-    
-
+    * Writes the value expressed as a {@code uri}, which is the property specified as a URI.
     * @param resource A resource object describing external data.
     */
     public final void writeUri(CesiumResource resource) {
@@ -1332,12 +915,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code uri}, which is the property specified as a URI.
-    
-    
-    
-
+    * Writes the value expressed as a {@code uri}, which is the property specified as a URI.
     * @param uri The URI of the data.
     * @param resourceBehavior An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.
     */
@@ -1346,12 +924,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code uri}, which is the property specified as a URI.
-    
-    
-    
-
+    * Writes the value expressed as a {@code uri}, which is the property specified as a URI.
     * @param uri The URI of the data.
     * @param resourceBehavior An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.
     */
@@ -1363,12 +936,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code uri}, which is the property specified as a URI.
-    
-    
-    
-
+    * Writes the value expressed as a {@code uri}, which is the property specified as a URI.
     * @param uri The URI of the data. The provided ICesiumUriResolver will be used to build the final URI embedded in the document.
     * @param resolver An ICesiumUriResolver used to build the final URI that will be embedded in the document.
     */
@@ -1377,12 +945,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code uri}, which is the property specified as a URI.
-    
-    
-    
-
+    * Writes the value expressed as a {@code uri}, which is the property specified as a URI.
     * @param uri The URI of the data. The provided ICesiumUriResolver will be used to build the final URI embedded in the document.
     * @param resolver An ICesiumUriResolver used to build the final URI that will be embedded in the document.
     */
@@ -1394,11 +957,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code uri}, which is the property specified as a URI.
-    
-    
-
+    * Writes the value expressed as a {@code uri}, which is the property specified as a URI.
     * @param image The image. A data URI will be created for this image, using PNG encoding.
     */
     public final void writeUri(RenderedImage image) {
@@ -1406,12 +965,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code uri}, which is the property specified as a URI.
-    
-    
-    
-
+    * Writes the value expressed as a {@code uri}, which is the property specified as a URI.
     * @param image The image. A data URI will be created for this image.
     * @param imageFormat The image format to use to encode the image in the data URI.
     */
@@ -1423,11 +977,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code verticalOrigin}, which is the property specified as a vertical origin.
-    
-    
-
+    * Writes the value expressed as a {@code verticalOrigin}, which is the property specified as a vertical origin.
     * @param value The vertical origin.
     */
     public final void writeVerticalOrigin(@Nonnull CesiumVerticalOrigin value) {
@@ -1438,11 +988,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
-    
-    
-
+    * Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
     * @param value The value.
     */
     public final void writeDelete(boolean value) {
@@ -1453,11 +999,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumBooleanValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumBooleanValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumBooleanValuePropertyAdaptor<CustomPropertyCesiumWriter> asBoolean() {
@@ -1478,11 +1020,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumBoundingRectangleValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumBoundingRectangleValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumBoundingRectangleValuePropertyAdaptor<CustomPropertyCesiumWriter> asBoundingRectangle() {
@@ -1503,11 +1041,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumCartesian3ValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumCartesian3ValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumCartesian3ValuePropertyAdaptor<CustomPropertyCesiumWriter> asCartesian() {
@@ -1528,11 +1062,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumCartographicRadiansValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumCartographicRadiansValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumCartographicRadiansValuePropertyAdaptor<CustomPropertyCesiumWriter> asCartographicRadians() {
@@ -1553,11 +1083,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumCartographicDegreesValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumCartographicDegreesValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumCartographicDegreesValuePropertyAdaptor<CustomPropertyCesiumWriter> asCartographicDegrees() {
@@ -1578,11 +1104,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumCartesian2ValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumCartesian2ValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumCartesian2ValuePropertyAdaptor<CustomPropertyCesiumWriter> asCartesian2() {
@@ -1603,11 +1125,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumUnitCartesian3ValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumUnitCartesian3ValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumUnitCartesian3ValuePropertyAdaptor<CustomPropertyCesiumWriter> asUnitCartesian() {
@@ -1628,11 +1146,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumSphericalValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumSphericalValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumSphericalValuePropertyAdaptor<CustomPropertyCesiumWriter> asSpherical() {
@@ -1653,11 +1167,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumUnitSphericalValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumUnitSphericalValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumUnitSphericalValuePropertyAdaptor<CustomPropertyCesiumWriter> asUnitSpherical() {
@@ -1678,11 +1188,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumRgbaValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumRgbaValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumRgbaValuePropertyAdaptor<CustomPropertyCesiumWriter> asRgba() {
@@ -1703,11 +1209,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumRgbafValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumRgbafValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumRgbafValuePropertyAdaptor<CustomPropertyCesiumWriter> asRgbaf() {
@@ -1728,11 +1230,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumColorBlendModeValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumColorBlendModeValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumColorBlendModeValuePropertyAdaptor<CustomPropertyCesiumWriter> asColorBlendMode() {
@@ -1753,11 +1251,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumCornerTypeValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumCornerTypeValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumCornerTypeValuePropertyAdaptor<CustomPropertyCesiumWriter> asCornerType() {
@@ -1778,11 +1272,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumHeightReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumHeightReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumHeightReferenceValuePropertyAdaptor<CustomPropertyCesiumWriter> asHeightReference() {
@@ -1803,11 +1293,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumHorizontalOriginValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumHorizontalOriginValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumHorizontalOriginValuePropertyAdaptor<CustomPropertyCesiumWriter> asHorizontalOrigin() {
@@ -1828,11 +1314,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumLabelStyleValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumLabelStyleValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumLabelStyleValuePropertyAdaptor<CustomPropertyCesiumWriter> asLabelStyle() {
@@ -1853,11 +1335,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumDoubleValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumDoubleValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumDoubleValuePropertyAdaptor<CustomPropertyCesiumWriter> asNumber() {
@@ -1878,11 +1356,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumNearFarScalarValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumNearFarScalarValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumNearFarScalarValuePropertyAdaptor<CustomPropertyCesiumWriter> asNearFarScalar() {
@@ -1903,11 +1377,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumUnitQuaternionValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumUnitQuaternionValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumUnitQuaternionValuePropertyAdaptor<CustomPropertyCesiumWriter> asUnitQuaternion() {
@@ -1928,11 +1398,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumShadowModeValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumShadowModeValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumShadowModeValuePropertyAdaptor<CustomPropertyCesiumWriter> asShadowMode() {
@@ -1953,11 +1419,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumStringValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumStringValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumStringValuePropertyAdaptor<CustomPropertyCesiumWriter> asString() {
@@ -1978,11 +1440,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumStripeOrientationValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumStripeOrientationValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumStripeOrientationValuePropertyAdaptor<CustomPropertyCesiumWriter> asStripeOrientation() {
@@ -2003,11 +1461,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumCartographicRectangleRadiansValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumCartographicRectangleRadiansValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumCartographicRectangleRadiansValuePropertyAdaptor<CustomPropertyCesiumWriter> asWsen() {
@@ -2028,11 +1482,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumCartographicRectangleDegreesValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumCartographicRectangleDegreesValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumCartographicRectangleDegreesValuePropertyAdaptor<CustomPropertyCesiumWriter> asWsenDegrees() {
@@ -2053,11 +1503,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumUriValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumUriValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumUriValuePropertyAdaptor<CustomPropertyCesiumWriter> asUri() {
@@ -2078,11 +1524,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumVerticalOriginValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumVerticalOriginValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumVerticalOriginValuePropertyAdaptor<CustomPropertyCesiumWriter> asVerticalOrigin() {

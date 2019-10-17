@@ -22,16 +22,10 @@ public final class StringFormatting {
     private StringFormatting() {}
 
     /**
-    *  
-    Reformats a string representation of a decimal floating point number, which may or may not be expressed
+    * Reformats a string representation of a decimal floating point number, which may or may not be expressed
     in exponential notation, to eliminate the use of exponential notation.  The formatted number is assumed not to contain
     any characters other than significant numbers, an optional negative sign in front of the number, an optional
     negative sign in front of the exponent, and an optional decimal separator specified by {@code format}.
-    
-    
-    
-    
-
     * @param format The format used to format the number.  This is used to determine the decimal separator.
     * @param formattedNumber The formatted decimal floating point number.
     * @return An equivalent number without the use of exponential notation.

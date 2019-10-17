@@ -6,12 +6,8 @@ import cesiumlanguagewriter.*;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Adapts a class that implements {@link ICesiumUnitQuaternionValuePropertyWriter} to implement
+ * Adapts a class that implements {@link ICesiumUnitQuaternionValuePropertyWriter} to implement
  {@link ICesiumInterpolatableValuePropertyWriter} for {@link UnitQuaternion} values.
- 
- 
-
  * @param <TFrom> The class that implements {@link ICesiumUnitQuaternionValuePropertyWriter} to adapt.
  */
 @SuppressWarnings( {
@@ -21,14 +17,7 @@ import javax.annotation.Nonnull;
 })
 public class CesiumUnitQuaternionValuePropertyAdaptor<TFrom extends ICesiumUnitQuaternionValuePropertyWriter> extends CesiumInterpolatableWriterAdaptor<TFrom, UnitQuaternion> {
     /**
-    *  
-    Initializes a new instance.
-    
-    
-    
-    
-    
-
+    * Initializes a new instance.
     * @param parent The instance to wrap.
     * @param writeValueCallback The callback to write values of type {@link UnitQuaternion}.
     * @param writeSamplesCallback The callback to write samples of type {@link UnitQuaternion}.

@@ -13,10 +13,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Writes a {@code CheckerboardMaterial} to a {@link CesiumOutputStream}. A {@code CheckerboardMaterial} is a material that fills the surface with a checkerboard pattern.
- 
-
+ * Writes a {@code CheckerboardMaterial} to a {@link CesiumOutputStream}. A {@code CheckerboardMaterial} is a material that fills the surface with a checkerboard pattern.
  */
 @SuppressWarnings( {
         "unused",
@@ -25,24 +22,15 @@ import javax.annotation.Nonnull;
 })
 public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<CheckerboardMaterialCesiumWriter> {
     /**
-    *  
-    The name of the {@code evenColor} property.
-    
-
+    * The name of the {@code evenColor} property.
     */
     public static final String EvenColorPropertyName = "evenColor";
     /**
-    *  
-    The name of the {@code oddColor} property.
-    
-
+    * The name of the {@code oddColor} property.
     */
     public static final String OddColorPropertyName = "oddColor";
     /**
-    *  
-    The name of the {@code repeat} property.
-    
-
+    * The name of the {@code repeat} property.
     */
     public static final String RepeatPropertyName = "repeat";
     private Lazy<ColorCesiumWriter> m_evenColor = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
@@ -62,11 +50,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }, false);
 
     /**
-    *  
-    Initializes a new instance.
-    
-    
-
+    * Initializes a new instance.
     * @param propertyName The name of the property.
     */
     public CheckerboardMaterialCesiumWriter(@Nonnull String propertyName) {
@@ -74,11 +58,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  
-    Initializes a new instance as a copy of an existing instance.
-    
-    
-
+    * Initializes a new instance as a copy of an existing instance.
     * @param existingInstance The existing instance to copy.
     */
     protected CheckerboardMaterialCesiumWriter(@Nonnull CheckerboardMaterialCesiumWriter existingInstance) {
@@ -86,12 +66,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  
-    
-    Copies this instance and returns the copy.
-    
-    
-
+    * Copies this instance and returns the copy.
     * @return The copy.
     */
     @Override
@@ -100,9 +75,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  Gets the writer for the {@code evenColor} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code evenColor} property defines the even color. If not specified, the default value is white.
-    
-
+    * Gets the writer for the {@code evenColor} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code evenColor} property defines the even color. If not specified, the default value is white.
     */
     @Nonnull
     public final ColorCesiumWriter getEvenColorWriter() {
@@ -110,10 +83,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code evenColor} property. The {@code evenColor} property defines the even color. If not specified, the default value is white.
-    
-
+    * Opens and returns the writer for the {@code evenColor} property. The {@code evenColor} property defines the even color. If not specified, the default value is white.
     */
     @Nonnull
     public final ColorCesiumWriter openEvenColorProperty() {
@@ -122,11 +92,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  
-    Writes a value for the {@code evenColor} property as a {@code rgba} value. The {@code evenColor} property specifies the even color. If not specified, the default value is white.
-    
-    
-
+    * Writes a value for the {@code evenColor} property as a {@code rgba} value. The {@code evenColor} property specifies the even color. If not specified, the default value is white.
     * @param color The color.
     */
     public final void writeEvenColorProperty(@Nonnull Color color) {
@@ -141,14 +107,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  
-    Writes a value for the {@code evenColor} property as a {@code rgba} value. The {@code evenColor} property specifies the even color. If not specified, the default value is white.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code evenColor} property as a {@code rgba} value. The {@code evenColor} property specifies the even color. If not specified, the default value is white.
     * @param red The red component in the range 0 to 255.
     * @param green The green component in the range 0 to 255.
     * @param blue The blue component in the range 0 to 255.
@@ -166,12 +125,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  
-    Writes a value for the {@code evenColor} property as a {@code rgba} value. The {@code evenColor} property specifies the even color. If not specified, the default value is white.
-    
-    
-    
-
+    * Writes a value for the {@code evenColor} property as a {@code rgba} value. The {@code evenColor} property specifies the even color. If not specified, the default value is white.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -187,14 +141,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  
-    Writes a value for the {@code evenColor} property as a {@code rgba} value. The {@code evenColor} property specifies the even color. If not specified, the default value is white.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code evenColor} property as a {@code rgba} value. The {@code evenColor} property specifies the even color. If not specified, the default value is white.
     * @param dates The dates at which the value is specified.
     * @param colors The color corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -212,11 +159,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  
-    Writes a value for the {@code evenColor} property as a {@code rgbaf} value. The {@code evenColor} property specifies the even color. If not specified, the default value is white.
-    
-    
-
+    * Writes a value for the {@code evenColor} property as a {@code rgbaf} value. The {@code evenColor} property specifies the even color. If not specified, the default value is white.
     * @param color The color.
     */
     public final void writeEvenColorPropertyRgbaf(@Nonnull Color color) {
@@ -231,14 +174,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  
-    Writes a value for the {@code evenColor} property as a {@code rgbaf} value. The {@code evenColor} property specifies the even color. If not specified, the default value is white.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code evenColor} property as a {@code rgbaf} value. The {@code evenColor} property specifies the even color. If not specified, the default value is white.
     * @param red The red component in the range 0 to 1.0.
     * @param green The green component in the range 0 to 1.0.
     * @param blue The blue component in the range 0 to 1.0.
@@ -256,12 +192,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  
-    Writes a value for the {@code evenColor} property as a {@code rgbaf} value. The {@code evenColor} property specifies the even color. If not specified, the default value is white.
-    
-    
-    
-
+    * Writes a value for the {@code evenColor} property as a {@code rgbaf} value. The {@code evenColor} property specifies the even color. If not specified, the default value is white.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -277,14 +208,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  
-    Writes a value for the {@code evenColor} property as a {@code rgbaf} value. The {@code evenColor} property specifies the even color. If not specified, the default value is white.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code evenColor} property as a {@code rgbaf} value. The {@code evenColor} property specifies the even color. If not specified, the default value is white.
     * @param dates The dates at which the value is specified.
     * @param colors The color corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -302,11 +226,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  
-    Writes a value for the {@code evenColor} property as a {@code reference} value. The {@code evenColor} property specifies the even color. If not specified, the default value is white.
-    
-    
-
+    * Writes a value for the {@code evenColor} property as a {@code reference} value. The {@code evenColor} property specifies the even color. If not specified, the default value is white.
     * @param value The reference.
     */
     public final void writeEvenColorPropertyReference(Reference value) {
@@ -321,11 +241,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  
-    Writes a value for the {@code evenColor} property as a {@code reference} value. The {@code evenColor} property specifies the even color. If not specified, the default value is white.
-    
-    
-
+    * Writes a value for the {@code evenColor} property as a {@code reference} value. The {@code evenColor} property specifies the even color. If not specified, the default value is white.
     * @param value The reference.
     */
     public final void writeEvenColorPropertyReference(String value) {
@@ -340,12 +256,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  
-    Writes a value for the {@code evenColor} property as a {@code reference} value. The {@code evenColor} property specifies the even color. If not specified, the default value is white.
-    
-    
-    
-
+    * Writes a value for the {@code evenColor} property as a {@code reference} value. The {@code evenColor} property specifies the even color. If not specified, the default value is white.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -361,12 +272,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  
-    Writes a value for the {@code evenColor} property as a {@code reference} value. The {@code evenColor} property specifies the even color. If not specified, the default value is white.
-    
-    
-    
-
+    * Writes a value for the {@code evenColor} property as a {@code reference} value. The {@code evenColor} property specifies the even color. If not specified, the default value is white.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -382,9 +288,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  Gets the writer for the {@code oddColor} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code oddColor} property defines the odd color. If not specified, the default value is black.
-    
-
+    * Gets the writer for the {@code oddColor} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code oddColor} property defines the odd color. If not specified, the default value is black.
     */
     @Nonnull
     public final ColorCesiumWriter getOddColorWriter() {
@@ -392,10 +296,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code oddColor} property. The {@code oddColor} property defines the odd color. If not specified, the default value is black.
-    
-
+    * Opens and returns the writer for the {@code oddColor} property. The {@code oddColor} property defines the odd color. If not specified, the default value is black.
     */
     @Nonnull
     public final ColorCesiumWriter openOddColorProperty() {
@@ -404,11 +305,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  
-    Writes a value for the {@code oddColor} property as a {@code rgba} value. The {@code oddColor} property specifies the odd color. If not specified, the default value is black.
-    
-    
-
+    * Writes a value for the {@code oddColor} property as a {@code rgba} value. The {@code oddColor} property specifies the odd color. If not specified, the default value is black.
     * @param color The color.
     */
     public final void writeOddColorProperty(@Nonnull Color color) {
@@ -423,14 +320,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  
-    Writes a value for the {@code oddColor} property as a {@code rgba} value. The {@code oddColor} property specifies the odd color. If not specified, the default value is black.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code oddColor} property as a {@code rgba} value. The {@code oddColor} property specifies the odd color. If not specified, the default value is black.
     * @param red The red component in the range 0 to 255.
     * @param green The green component in the range 0 to 255.
     * @param blue The blue component in the range 0 to 255.
@@ -448,12 +338,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  
-    Writes a value for the {@code oddColor} property as a {@code rgba} value. The {@code oddColor} property specifies the odd color. If not specified, the default value is black.
-    
-    
-    
-
+    * Writes a value for the {@code oddColor} property as a {@code rgba} value. The {@code oddColor} property specifies the odd color. If not specified, the default value is black.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -469,14 +354,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  
-    Writes a value for the {@code oddColor} property as a {@code rgba} value. The {@code oddColor} property specifies the odd color. If not specified, the default value is black.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code oddColor} property as a {@code rgba} value. The {@code oddColor} property specifies the odd color. If not specified, the default value is black.
     * @param dates The dates at which the value is specified.
     * @param colors The color corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -494,11 +372,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  
-    Writes a value for the {@code oddColor} property as a {@code rgbaf} value. The {@code oddColor} property specifies the odd color. If not specified, the default value is black.
-    
-    
-
+    * Writes a value for the {@code oddColor} property as a {@code rgbaf} value. The {@code oddColor} property specifies the odd color. If not specified, the default value is black.
     * @param color The color.
     */
     public final void writeOddColorPropertyRgbaf(@Nonnull Color color) {
@@ -513,14 +387,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  
-    Writes a value for the {@code oddColor} property as a {@code rgbaf} value. The {@code oddColor} property specifies the odd color. If not specified, the default value is black.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code oddColor} property as a {@code rgbaf} value. The {@code oddColor} property specifies the odd color. If not specified, the default value is black.
     * @param red The red component in the range 0 to 1.0.
     * @param green The green component in the range 0 to 1.0.
     * @param blue The blue component in the range 0 to 1.0.
@@ -538,12 +405,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  
-    Writes a value for the {@code oddColor} property as a {@code rgbaf} value. The {@code oddColor} property specifies the odd color. If not specified, the default value is black.
-    
-    
-    
-
+    * Writes a value for the {@code oddColor} property as a {@code rgbaf} value. The {@code oddColor} property specifies the odd color. If not specified, the default value is black.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -559,14 +421,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  
-    Writes a value for the {@code oddColor} property as a {@code rgbaf} value. The {@code oddColor} property specifies the odd color. If not specified, the default value is black.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code oddColor} property as a {@code rgbaf} value. The {@code oddColor} property specifies the odd color. If not specified, the default value is black.
     * @param dates The dates at which the value is specified.
     * @param colors The color corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -584,11 +439,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  
-    Writes a value for the {@code oddColor} property as a {@code reference} value. The {@code oddColor} property specifies the odd color. If not specified, the default value is black.
-    
-    
-
+    * Writes a value for the {@code oddColor} property as a {@code reference} value. The {@code oddColor} property specifies the odd color. If not specified, the default value is black.
     * @param value The reference.
     */
     public final void writeOddColorPropertyReference(Reference value) {
@@ -603,11 +454,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  
-    Writes a value for the {@code oddColor} property as a {@code reference} value. The {@code oddColor} property specifies the odd color. If not specified, the default value is black.
-    
-    
-
+    * Writes a value for the {@code oddColor} property as a {@code reference} value. The {@code oddColor} property specifies the odd color. If not specified, the default value is black.
     * @param value The reference.
     */
     public final void writeOddColorPropertyReference(String value) {
@@ -622,12 +469,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  
-    Writes a value for the {@code oddColor} property as a {@code reference} value. The {@code oddColor} property specifies the odd color. If not specified, the default value is black.
-    
-    
-    
-
+    * Writes a value for the {@code oddColor} property as a {@code reference} value. The {@code oddColor} property specifies the odd color. If not specified, the default value is black.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -643,12 +485,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  
-    Writes a value for the {@code oddColor} property as a {@code reference} value. The {@code oddColor} property specifies the odd color. If not specified, the default value is black.
-    
-    
-    
-
+    * Writes a value for the {@code oddColor} property as a {@code reference} value. The {@code oddColor} property specifies the odd color. If not specified, the default value is black.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -664,9 +501,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  Gets the writer for the {@code repeat} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code repeat} property defines the number of times the tiles repeat along each axis. If not specified, the default value is [2, 2].
-    
-
+    * Gets the writer for the {@code repeat} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code repeat} property defines the number of times the tiles repeat along each axis. If not specified, the default value is [2, 2].
     */
     @Nonnull
     public final RepeatCesiumWriter getRepeatWriter() {
@@ -674,10 +509,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code repeat} property. The {@code repeat} property defines the number of times the tiles repeat along each axis. If not specified, the default value is [2, 2].
-    
-
+    * Opens and returns the writer for the {@code repeat} property. The {@code repeat} property defines the number of times the tiles repeat along each axis. If not specified, the default value is [2, 2].
     */
     @Nonnull
     public final RepeatCesiumWriter openRepeatProperty() {
@@ -686,11 +518,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  
-    Writes a value for the {@code repeat} property as a {@code cartesian2} value. The {@code repeat} property specifies the number of times the tiles repeat along each axis. If not specified, the default value is [2, 2].
-    
-    
-
+    * Writes a value for the {@code repeat} property as a {@code cartesian2} value. The {@code repeat} property specifies the number of times the tiles repeat along each axis. If not specified, the default value is [2, 2].
     * @param value The value.
     */
     public final void writeRepeatProperty(@Nonnull Rectangular value) {
@@ -705,12 +533,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  
-    Writes a value for the {@code repeat} property as a {@code cartesian2} value. The {@code repeat} property specifies the number of times the tiles repeat along each axis. If not specified, the default value is [2, 2].
-    
-    
-    
-
+    * Writes a value for the {@code repeat} property as a {@code cartesian2} value. The {@code repeat} property specifies the number of times the tiles repeat along each axis. If not specified, the default value is [2, 2].
     * @param x The X component.
     * @param y The Y component.
     */
@@ -726,12 +549,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  
-    Writes a value for the {@code repeat} property as a {@code cartesian2} value. The {@code repeat} property specifies the number of times the tiles repeat along each axis. If not specified, the default value is [2, 2].
-    
-    
-    
-
+    * Writes a value for the {@code repeat} property as a {@code cartesian2} value. The {@code repeat} property specifies the number of times the tiles repeat along each axis. If not specified, the default value is [2, 2].
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -747,14 +565,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  
-    Writes a value for the {@code repeat} property as a {@code cartesian2} value. The {@code repeat} property specifies the number of times the tiles repeat along each axis. If not specified, the default value is [2, 2].
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code repeat} property as a {@code cartesian2} value. The {@code repeat} property specifies the number of times the tiles repeat along each axis. If not specified, the default value is [2, 2].
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -772,11 +583,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  
-    Writes a value for the {@code repeat} property as a {@code reference} value. The {@code repeat} property specifies the number of times the tiles repeat along each axis. If not specified, the default value is [2, 2].
-    
-    
-
+    * Writes a value for the {@code repeat} property as a {@code reference} value. The {@code repeat} property specifies the number of times the tiles repeat along each axis. If not specified, the default value is [2, 2].
     * @param value The reference.
     */
     public final void writeRepeatPropertyReference(Reference value) {
@@ -791,11 +598,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  
-    Writes a value for the {@code repeat} property as a {@code reference} value. The {@code repeat} property specifies the number of times the tiles repeat along each axis. If not specified, the default value is [2, 2].
-    
-    
-
+    * Writes a value for the {@code repeat} property as a {@code reference} value. The {@code repeat} property specifies the number of times the tiles repeat along each axis. If not specified, the default value is [2, 2].
     * @param value The reference.
     */
     public final void writeRepeatPropertyReference(String value) {
@@ -810,12 +613,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  
-    Writes a value for the {@code repeat} property as a {@code reference} value. The {@code repeat} property specifies the number of times the tiles repeat along each axis. If not specified, the default value is [2, 2].
-    
-    
-    
-
+    * Writes a value for the {@code repeat} property as a {@code reference} value. The {@code repeat} property specifies the number of times the tiles repeat along each axis. If not specified, the default value is [2, 2].
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -831,12 +629,7 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     }
 
     /**
-    *  
-    Writes a value for the {@code repeat} property as a {@code reference} value. The {@code repeat} property specifies the number of times the tiles repeat along each axis. If not specified, the default value is [2, 2].
-    
-    
-    
-
+    * Writes a value for the {@code repeat} property as a {@code reference} value. The {@code repeat} property specifies the number of times the tiles repeat along each axis. If not specified, the default value is [2, 2].
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */

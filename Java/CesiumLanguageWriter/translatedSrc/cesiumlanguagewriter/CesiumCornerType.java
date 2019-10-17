@@ -7,10 +7,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
- *  
- Specifies the style of a corner.
- 
-
+ * Specifies the style of a corner.
  */
 @SuppressWarnings( {
         "unused",
@@ -19,22 +16,13 @@ import javax.annotation.Nullable;
 })
 public enum CesiumCornerType implements Enumeration {
     /**
-    *  
-    The corner has a smooth edge.
-    
-
+    * The corner has a smooth edge.
     */
     ROUNDED(0), /**
-                *  
-                The corner point is the intersection of adjacent edges.
-                
-
+                * The corner point is the intersection of adjacent edges.
                 */
     MITERED(1), /**
-                *  
-                The corner is clipped.
-                
-
+                * The corner is clipped.
                 */
     BEVELED(2);
     private final int value;

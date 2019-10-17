@@ -17,10 +17,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Writes a {@code ImageMaterial} to a {@link CesiumOutputStream}. A {@code ImageMaterial} is a material that fills the surface with an image.
- 
-
+ * Writes a {@code ImageMaterial} to a {@link CesiumOutputStream}. A {@code ImageMaterial} is a material that fills the surface with an image.
  */
 @SuppressWarnings( {
         "unused",
@@ -29,31 +26,19 @@ import javax.annotation.Nonnull;
 })
 public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMaterialCesiumWriter> {
     /**
-    *  
-    The name of the {@code image} property.
-    
-
+    * The name of the {@code image} property.
     */
     public static final String ImagePropertyName = "image";
     /**
-    *  
-    The name of the {@code repeat} property.
-    
-
+    * The name of the {@code repeat} property.
     */
     public static final String RepeatPropertyName = "repeat";
     /**
-    *  
-    The name of the {@code color} property.
-    
-
+    * The name of the {@code color} property.
     */
     public static final String ColorPropertyName = "color";
     /**
-    *  
-    The name of the {@code transparent} property.
-    
-
+    * The name of the {@code transparent} property.
     */
     public static final String TransparentPropertyName = "transparent";
     private Lazy<UriCesiumWriter> m_image = new Lazy<cesiumlanguagewriter.UriCesiumWriter>(new Func1<cesiumlanguagewriter.UriCesiumWriter>() {
@@ -78,11 +63,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }, false);
 
     /**
-    *  
-    Initializes a new instance.
-    
-    
-
+    * Initializes a new instance.
     * @param propertyName The name of the property.
     */
     public ImageMaterialCesiumWriter(@Nonnull String propertyName) {
@@ -90,11 +71,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Initializes a new instance as a copy of an existing instance.
-    
-    
-
+    * Initializes a new instance as a copy of an existing instance.
     * @param existingInstance The existing instance to copy.
     */
     protected ImageMaterialCesiumWriter(@Nonnull ImageMaterialCesiumWriter existingInstance) {
@@ -102,12 +79,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    
-    Copies this instance and returns the copy.
-    
-    
-
+    * Copies this instance and returns the copy.
     * @return The copy.
     */
     @Override
@@ -116,9 +88,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  Gets the writer for the {@code image} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code image} property defines the image to display on the surface.
-    
-
+    * Gets the writer for the {@code image} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code image} property defines the image to display on the surface.
     */
     @Nonnull
     public final UriCesiumWriter getImageWriter() {
@@ -126,10 +96,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code image} property. The {@code image} property defines the image to display on the surface.
-    
-
+    * Opens and returns the writer for the {@code image} property. The {@code image} property defines the image to display on the surface.
     */
     @Nonnull
     public final UriCesiumWriter openImageProperty() {
@@ -138,11 +105,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Writes a value for the {@code image} property as a {@code uri} value. The {@code image} property specifies the image to display on the surface.
-    
-    
-
+    * Writes a value for the {@code image} property as a {@code uri} value. The {@code image} property specifies the image to display on the surface.
     * @param resource A resource object describing external data.
     */
     public final void writeImageProperty(CesiumResource resource) {
@@ -157,12 +120,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Writes a value for the {@code image} property as a {@code uri} value. The {@code image} property specifies the image to display on the surface.
-    
-    
-    
-
+    * Writes a value for the {@code image} property as a {@code uri} value. The {@code image} property specifies the image to display on the surface.
     * @param uri The URI of the data.
     * @param resourceBehavior An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.
     */
@@ -178,12 +136,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Writes a value for the {@code image} property as a {@code uri} value. The {@code image} property specifies the image to display on the surface.
-    
-    
-    
-
+    * Writes a value for the {@code image} property as a {@code uri} value. The {@code image} property specifies the image to display on the surface.
     * @param uri The URI of the data.
     * @param resourceBehavior An enumeration describing how to include the URI in the document. For even more control, use the overload that takes a ICesiumUriResolver.
     */
@@ -199,12 +152,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Writes a value for the {@code image} property as a {@code uri} value. The {@code image} property specifies the image to display on the surface.
-    
-    
-    
-
+    * Writes a value for the {@code image} property as a {@code uri} value. The {@code image} property specifies the image to display on the surface.
     * @param uri The URI of the data. The provided ICesiumUriResolver will be used to build the final URI embedded in the document.
     * @param resolver An ICesiumUriResolver used to build the final URI that will be embedded in the document.
     */
@@ -220,12 +168,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Writes a value for the {@code image} property as a {@code uri} value. The {@code image} property specifies the image to display on the surface.
-    
-    
-    
-
+    * Writes a value for the {@code image} property as a {@code uri} value. The {@code image} property specifies the image to display on the surface.
     * @param uri The URI of the data. The provided ICesiumUriResolver will be used to build the final URI embedded in the document.
     * @param resolver An ICesiumUriResolver used to build the final URI that will be embedded in the document.
     */
@@ -241,11 +184,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Writes a value for the {@code image} property as a {@code uri} value. The {@code image} property specifies the image to display on the surface.
-    
-    
-
+    * Writes a value for the {@code image} property as a {@code uri} value. The {@code image} property specifies the image to display on the surface.
     * @param image The image. A data URI will be created for this image, using PNG encoding.
     */
     public final void writeImageProperty(RenderedImage image) {
@@ -260,12 +199,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Writes a value for the {@code image} property as a {@code uri} value. The {@code image} property specifies the image to display on the surface.
-    
-    
-    
-
+    * Writes a value for the {@code image} property as a {@code uri} value. The {@code image} property specifies the image to display on the surface.
     * @param image The image. A data URI will be created for this image.
     * @param imageFormat The image format to use to encode the image in the data URI.
     */
@@ -281,11 +215,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Writes a value for the {@code image} property as a {@code reference} value. The {@code image} property specifies the image to display on the surface.
-    
-    
-
+    * Writes a value for the {@code image} property as a {@code reference} value. The {@code image} property specifies the image to display on the surface.
     * @param value The reference.
     */
     public final void writeImagePropertyReference(Reference value) {
@@ -300,11 +230,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Writes a value for the {@code image} property as a {@code reference} value. The {@code image} property specifies the image to display on the surface.
-    
-    
-
+    * Writes a value for the {@code image} property as a {@code reference} value. The {@code image} property specifies the image to display on the surface.
     * @param value The reference.
     */
     public final void writeImagePropertyReference(String value) {
@@ -319,12 +245,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Writes a value for the {@code image} property as a {@code reference} value. The {@code image} property specifies the image to display on the surface.
-    
-    
-    
-
+    * Writes a value for the {@code image} property as a {@code reference} value. The {@code image} property specifies the image to display on the surface.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -340,12 +261,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Writes a value for the {@code image} property as a {@code reference} value. The {@code image} property specifies the image to display on the surface.
-    
-    
-    
-
+    * Writes a value for the {@code image} property as a {@code reference} value. The {@code image} property specifies the image to display on the surface.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -361,9 +277,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  Gets the writer for the {@code repeat} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code repeat} property defines the number of times the image repeats along each axis. If not specified, the default value is [1, 1].
-    
-
+    * Gets the writer for the {@code repeat} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code repeat} property defines the number of times the image repeats along each axis. If not specified, the default value is [1, 1].
     */
     @Nonnull
     public final RepeatCesiumWriter getRepeatWriter() {
@@ -371,10 +285,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code repeat} property. The {@code repeat} property defines the number of times the image repeats along each axis. If not specified, the default value is [1, 1].
-    
-
+    * Opens and returns the writer for the {@code repeat} property. The {@code repeat} property defines the number of times the image repeats along each axis. If not specified, the default value is [1, 1].
     */
     @Nonnull
     public final RepeatCesiumWriter openRepeatProperty() {
@@ -383,11 +294,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Writes a value for the {@code repeat} property as a {@code cartesian2} value. The {@code repeat} property specifies the number of times the image repeats along each axis. If not specified, the default value is [1, 1].
-    
-    
-
+    * Writes a value for the {@code repeat} property as a {@code cartesian2} value. The {@code repeat} property specifies the number of times the image repeats along each axis. If not specified, the default value is [1, 1].
     * @param value The value.
     */
     public final void writeRepeatProperty(@Nonnull Rectangular value) {
@@ -402,12 +309,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Writes a value for the {@code repeat} property as a {@code cartesian2} value. The {@code repeat} property specifies the number of times the image repeats along each axis. If not specified, the default value is [1, 1].
-    
-    
-    
-
+    * Writes a value for the {@code repeat} property as a {@code cartesian2} value. The {@code repeat} property specifies the number of times the image repeats along each axis. If not specified, the default value is [1, 1].
     * @param x The X component.
     * @param y The Y component.
     */
@@ -423,12 +325,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Writes a value for the {@code repeat} property as a {@code cartesian2} value. The {@code repeat} property specifies the number of times the image repeats along each axis. If not specified, the default value is [1, 1].
-    
-    
-    
-
+    * Writes a value for the {@code repeat} property as a {@code cartesian2} value. The {@code repeat} property specifies the number of times the image repeats along each axis. If not specified, the default value is [1, 1].
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -444,14 +341,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Writes a value for the {@code repeat} property as a {@code cartesian2} value. The {@code repeat} property specifies the number of times the image repeats along each axis. If not specified, the default value is [1, 1].
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code repeat} property as a {@code cartesian2} value. The {@code repeat} property specifies the number of times the image repeats along each axis. If not specified, the default value is [1, 1].
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -469,11 +359,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Writes a value for the {@code repeat} property as a {@code reference} value. The {@code repeat} property specifies the number of times the image repeats along each axis. If not specified, the default value is [1, 1].
-    
-    
-
+    * Writes a value for the {@code repeat} property as a {@code reference} value. The {@code repeat} property specifies the number of times the image repeats along each axis. If not specified, the default value is [1, 1].
     * @param value The reference.
     */
     public final void writeRepeatPropertyReference(Reference value) {
@@ -488,11 +374,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Writes a value for the {@code repeat} property as a {@code reference} value. The {@code repeat} property specifies the number of times the image repeats along each axis. If not specified, the default value is [1, 1].
-    
-    
-
+    * Writes a value for the {@code repeat} property as a {@code reference} value. The {@code repeat} property specifies the number of times the image repeats along each axis. If not specified, the default value is [1, 1].
     * @param value The reference.
     */
     public final void writeRepeatPropertyReference(String value) {
@@ -507,12 +389,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Writes a value for the {@code repeat} property as a {@code reference} value. The {@code repeat} property specifies the number of times the image repeats along each axis. If not specified, the default value is [1, 1].
-    
-    
-    
-
+    * Writes a value for the {@code repeat} property as a {@code reference} value. The {@code repeat} property specifies the number of times the image repeats along each axis. If not specified, the default value is [1, 1].
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -528,12 +405,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Writes a value for the {@code repeat} property as a {@code reference} value. The {@code repeat} property specifies the number of times the image repeats along each axis. If not specified, the default value is [1, 1].
-    
-    
-    
-
+    * Writes a value for the {@code repeat} property as a {@code reference} value. The {@code repeat} property specifies the number of times the image repeats along each axis. If not specified, the default value is [1, 1].
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -549,9 +421,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  Gets the writer for the {@code color} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code color} property defines the color of the image. This color value is multiplied with the image to produce the final color. If not specified, the default value is white.
-    
-
+    * Gets the writer for the {@code color} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code color} property defines the color of the image. This color value is multiplied with the image to produce the final color. If not specified, the default value is white.
     */
     @Nonnull
     public final ColorCesiumWriter getColorWriter() {
@@ -559,10 +429,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code color} property. The {@code color} property defines the color of the image. This color value is multiplied with the image to produce the final color. If not specified, the default value is white.
-    
-
+    * Opens and returns the writer for the {@code color} property. The {@code color} property defines the color of the image. This color value is multiplied with the image to produce the final color. If not specified, the default value is white.
     */
     @Nonnull
     public final ColorCesiumWriter openColorProperty() {
@@ -571,11 +438,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the image. This color value is multiplied with the image to produce the final color. If not specified, the default value is white.
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the image. This color value is multiplied with the image to produce the final color. If not specified, the default value is white.
     * @param color The color.
     */
     public final void writeColorProperty(@Nonnull Color color) {
@@ -590,14 +453,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the image. This color value is multiplied with the image to produce the final color. If not specified, the default value is white.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the image. This color value is multiplied with the image to produce the final color. If not specified, the default value is white.
     * @param red The red component in the range 0 to 255.
     * @param green The green component in the range 0 to 255.
     * @param blue The blue component in the range 0 to 255.
@@ -615,12 +471,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the image. This color value is multiplied with the image to produce the final color. If not specified, the default value is white.
-    
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the image. This color value is multiplied with the image to produce the final color. If not specified, the default value is white.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -636,14 +487,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the image. This color value is multiplied with the image to produce the final color. If not specified, the default value is white.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the image. This color value is multiplied with the image to produce the final color. If not specified, the default value is white.
     * @param dates The dates at which the value is specified.
     * @param colors The color corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -661,11 +505,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the image. This color value is multiplied with the image to produce the final color. If not specified, the default value is white.
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the image. This color value is multiplied with the image to produce the final color. If not specified, the default value is white.
     * @param color The color.
     */
     public final void writeColorPropertyRgbaf(@Nonnull Color color) {
@@ -680,14 +520,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the image. This color value is multiplied with the image to produce the final color. If not specified, the default value is white.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the image. This color value is multiplied with the image to produce the final color. If not specified, the default value is white.
     * @param red The red component in the range 0 to 1.0.
     * @param green The green component in the range 0 to 1.0.
     * @param blue The blue component in the range 0 to 1.0.
@@ -705,12 +538,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the image. This color value is multiplied with the image to produce the final color. If not specified, the default value is white.
-    
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the image. This color value is multiplied with the image to produce the final color. If not specified, the default value is white.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -726,14 +554,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the image. This color value is multiplied with the image to produce the final color. If not specified, the default value is white.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the image. This color value is multiplied with the image to produce the final color. If not specified, the default value is white.
     * @param dates The dates at which the value is specified.
     * @param colors The color corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -751,11 +572,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the image. This color value is multiplied with the image to produce the final color. If not specified, the default value is white.
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the image. This color value is multiplied with the image to produce the final color. If not specified, the default value is white.
     * @param value The reference.
     */
     public final void writeColorPropertyReference(Reference value) {
@@ -770,11 +587,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the image. This color value is multiplied with the image to produce the final color. If not specified, the default value is white.
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the image. This color value is multiplied with the image to produce the final color. If not specified, the default value is white.
     * @param value The reference.
     */
     public final void writeColorPropertyReference(String value) {
@@ -789,12 +602,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the image. This color value is multiplied with the image to produce the final color. If not specified, the default value is white.
-    
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the image. This color value is multiplied with the image to produce the final color. If not specified, the default value is white.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -810,12 +618,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the image. This color value is multiplied with the image to produce the final color. If not specified, the default value is white.
-    
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the image. This color value is multiplied with the image to produce the final color. If not specified, the default value is white.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -831,9 +634,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  Gets the writer for the {@code transparent} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code transparent} property defines whether or not the image has transparency. If not specified, the default value is {@code false}.
-    
-
+    * Gets the writer for the {@code transparent} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code transparent} property defines whether or not the image has transparency. If not specified, the default value is {@code false}.
     */
     @Nonnull
     public final BooleanCesiumWriter getTransparentWriter() {
@@ -841,10 +642,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code transparent} property. The {@code transparent} property defines whether or not the image has transparency. If not specified, the default value is {@code false}.
-    
-
+    * Opens and returns the writer for the {@code transparent} property. The {@code transparent} property defines whether or not the image has transparency. If not specified, the default value is {@code false}.
     */
     @Nonnull
     public final BooleanCesiumWriter openTransparentProperty() {
@@ -853,11 +651,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Writes a value for the {@code transparent} property as a {@code boolean} value. The {@code transparent} property specifies whether or not the image has transparency. If not specified, the default value is {@code false}.
-    
-    
-
+    * Writes a value for the {@code transparent} property as a {@code boolean} value. The {@code transparent} property specifies whether or not the image has transparency. If not specified, the default value is {@code false}.
     * @param value The value.
     */
     public final void writeTransparentProperty(boolean value) {
@@ -872,11 +666,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Writes a value for the {@code transparent} property as a {@code reference} value. The {@code transparent} property specifies whether or not the image has transparency. If not specified, the default value is {@code false}.
-    
-    
-
+    * Writes a value for the {@code transparent} property as a {@code reference} value. The {@code transparent} property specifies whether or not the image has transparency. If not specified, the default value is {@code false}.
     * @param value The reference.
     */
     public final void writeTransparentPropertyReference(Reference value) {
@@ -891,11 +681,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Writes a value for the {@code transparent} property as a {@code reference} value. The {@code transparent} property specifies whether or not the image has transparency. If not specified, the default value is {@code false}.
-    
-    
-
+    * Writes a value for the {@code transparent} property as a {@code reference} value. The {@code transparent} property specifies whether or not the image has transparency. If not specified, the default value is {@code false}.
     * @param value The reference.
     */
     public final void writeTransparentPropertyReference(String value) {
@@ -910,12 +696,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Writes a value for the {@code transparent} property as a {@code reference} value. The {@code transparent} property specifies whether or not the image has transparency. If not specified, the default value is {@code false}.
-    
-    
-    
-
+    * Writes a value for the {@code transparent} property as a {@code reference} value. The {@code transparent} property specifies whether or not the image has transparency. If not specified, the default value is {@code false}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -931,12 +712,7 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     }
 
     /**
-    *  
-    Writes a value for the {@code transparent} property as a {@code reference} value. The {@code transparent} property specifies whether or not the image has transparency. If not specified, the default value is {@code false}.
-    
-    
-    
-
+    * Writes a value for the {@code transparent} property as a {@code reference} value. The {@code transparent} property specifies whether or not the image has transparency. If not specified, the default value is {@code false}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */

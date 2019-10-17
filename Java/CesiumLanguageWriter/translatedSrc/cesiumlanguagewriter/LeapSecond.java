@@ -11,11 +11,7 @@ import agi.foundation.compatibility.StringHelper;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Describes a single leap second.
- 
- 
-
+ * Describes a single leap second.
  * <p>
  The International Earth Rotation Service (IERS) periodically introduces an intercalary adjustment
  to the Coordinated Universal Time (UTC) time scale in order to keep it in close agreement with the
@@ -24,7 +20,6 @@ import javax.annotation.Nonnull;
  other continuous time scales.  Since the inception of leap seconds, all adjustments have been
  performed either at the end of 30 June or 31 December UTC though a leap second could, by rule,
  be applied at the end of any month.
- 
  */
 @SuppressWarnings( {
         "unused",
@@ -38,12 +33,7 @@ public final class LeapSecond implements IEquatable<LeapSecond>, ImmutableValueT
     public LeapSecond() {}
 
     /**
-    *  
-    Initializes a new instance.
-    
-    
-    
-
+    * Initializes a new instance.
     * @param date The Julian date of the leap second, in Coordinated Universal Time (UTC).
     * @param totalTaiOffsetFromUtc The offset of TAI from UTC after this leap second.
     */
@@ -52,18 +42,10 @@ public final class LeapSecond implements IEquatable<LeapSecond>, ImmutableValueT
     }
 
     /**
-    *  
-    Initializes a new instance of a Leap Second.
-    
-    
-    
-    
-
+    * Initializes a new instance of a Leap Second.
     * @param date The date of the leap second.  This date must be in Coordinated Universal Time (UTC).
     * @param totalTaiOffsetFromUtc The offset of TAI from UTC after this leap second.
-    * @exception ArgumentException 
-    Thrown if the given date is not in UTC.
-    
+    * @exception ArgumentException Thrown if the given date is not in UTC.
     */
     public LeapSecond(@Nonnull JulianDate date, double totalTaiOffsetFromUtc) {
         if (date.getStandard() != TimeStandard.COORDINATED_UNIVERSAL_TIME) {
@@ -74,9 +56,7 @@ public final class LeapSecond implements IEquatable<LeapSecond>, ImmutableValueT
     }
 
     /**
-    *  Gets the date of the leap second.
-    
-
+    * Gets the date of the leap second.
     */
     @Nonnull
     public final JulianDate getDate() {
@@ -84,21 +64,14 @@ public final class LeapSecond implements IEquatable<LeapSecond>, ImmutableValueT
     }
 
     /**
-    *  Gets the total difference TAI - UTC after this leap second, in seconds.
-    
-
+    * Gets the total difference TAI - UTC after this leap second, in seconds.
     */
     public final double getTotalTaiOffsetFromUtc() {
         return m_totalTaiOffsetFromUtc;
     }
 
     /**
-    *  
-    Indicates whether another object is exactly equal to this instance.
-    
-    
-    
-
+    * Indicates whether another object is exactly equal to this instance.
     * @param obj The object to compare to this instance.
     * @return {@code true} if {@code obj} is an instance of this type and represents the same value as this instance; otherwise, {@code false}.
     */
@@ -108,12 +81,7 @@ public final class LeapSecond implements IEquatable<LeapSecond>, ImmutableValueT
     }
 
     /**
-    *  
-    Indicates whether another instance of this type is exactly equal to this instance.
-    
-    
-    
-
+    * Indicates whether another instance of this type is exactly equal to this instance.
     * @param other The instance to compare to this instance.
     * @return {@code true} if {@code other} represents the same value as this instance; otherwise, {@code false}.
     */
@@ -123,11 +91,7 @@ public final class LeapSecond implements IEquatable<LeapSecond>, ImmutableValueT
     }
 
     /**
-    *  
-    Returns a hash code for this instance, which is suitable for use in hashing algorithms and data structures like a hash table.
-    
-    
-
+    * Returns a hash code for this instance, which is suitable for use in hashing algorithms and data structures like a hash table.
     * @return A hash code for the current object.
     */
     @Override
@@ -136,11 +100,7 @@ public final class LeapSecond implements IEquatable<LeapSecond>, ImmutableValueT
     }
 
     /**
-    *  
-    Returns the date of this LeapSecond and offset from UTC as a string.
-    
-    
-
+    * Returns the date of this LeapSecond and offset from UTC as a string.
     * @return The string.
     */
     @Override
@@ -149,18 +109,10 @@ public final class LeapSecond implements IEquatable<LeapSecond>, ImmutableValueT
     }
 
     /**
-    *  
-    Returns {@code true} if the two instances are exactly equal.
-    
-    
-    
-    
-
+    * Returns {@code true} if the two instances are exactly equal.
     * @param left The instance to compare to {@code right}.
     * @param right The instance to compare to {@code left}.
-    * @return 
-    {@code true} if {@code left} represents the same value as {@code right}; otherwise, {@code false}.
-    
+    * @return {@code true} if {@code left} represents the same value as {@code right}; otherwise, {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(LeapSecond,LeapSecond)'")
     public static boolean equals(@Nonnull LeapSecond left, @Nonnull LeapSecond right) {
@@ -168,18 +120,10 @@ public final class LeapSecond implements IEquatable<LeapSecond>, ImmutableValueT
     }
 
     /**
-    *  
-    Returns {@code true} if the two instances are not exactly equal.
-    
-    
-    
-    
-
+    * Returns {@code true} if the two instances are not exactly equal.
     * @param left The instance to compare to {@code right}.
     * @param right The instance to compare to {@code left}.
-    * @return 
-    {@code true} if {@code left} does not represent the same value as {@code right}; otherwise, {@code false}.
-    
+    * @return {@code true} if {@code left} does not represent the same value as {@code right}; otherwise, {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(LeapSecond,LeapSecond)'")
     public static boolean notEquals(@Nonnull LeapSecond left, @Nonnull LeapSecond right) {

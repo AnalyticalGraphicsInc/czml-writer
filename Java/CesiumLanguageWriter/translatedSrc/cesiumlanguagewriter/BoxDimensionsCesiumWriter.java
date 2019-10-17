@@ -9,10 +9,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Writes a {@code BoxDimensions} to a {@link CesiumOutputStream}. A {@code BoxDimensions} is the width, depth, and height of a box.
- 
-
+ * Writes a {@code BoxDimensions} to a {@link CesiumOutputStream}. A {@code BoxDimensions} is the width, depth, and height of a box.
  */
 @SuppressWarnings( {
         "unused",
@@ -22,35 +19,22 @@ import javax.annotation.Nonnull;
 public class BoxDimensionsCesiumWriter extends CesiumInterpolatablePropertyWriter<BoxDimensionsCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumCartesian3ValuePropertyWriter,
         ICesiumReferenceValuePropertyWriter {
     /**
-    *  
-    The name of the {@code cartesian} property.
-    
-
+    * The name of the {@code cartesian} property.
     */
     public static final String CartesianPropertyName = "cartesian";
     /**
-    *  
-    The name of the {@code reference} property.
-    
-
+    * The name of the {@code reference} property.
     */
     public static final String ReferencePropertyName = "reference";
     /**
-    *  
-    The name of the {@code delete} property.
-    
-
+    * The name of the {@code delete} property.
     */
     public static final String DeletePropertyName = "delete";
     private Lazy<CesiumCartesian3ValuePropertyAdaptor<BoxDimensionsCesiumWriter>> m_asCartesian;
     private Lazy<CesiumReferenceValuePropertyAdaptor<BoxDimensionsCesiumWriter>> m_asReference;
 
     /**
-    *  
-    Initializes a new instance.
-    
-    
-
+    * Initializes a new instance.
     * @param propertyName The name of the property.
     */
     public BoxDimensionsCesiumWriter(@Nonnull String propertyName) {
@@ -60,11 +44,7 @@ public class BoxDimensionsCesiumWriter extends CesiumInterpolatablePropertyWrite
     }
 
     /**
-    *  
-    Initializes a new instance as a copy of an existing instance.
-    
-    
-
+    * Initializes a new instance as a copy of an existing instance.
     * @param existingInstance The existing instance to copy.
     */
     protected BoxDimensionsCesiumWriter(@Nonnull BoxDimensionsCesiumWriter existingInstance) {
@@ -74,12 +54,7 @@ public class BoxDimensionsCesiumWriter extends CesiumInterpolatablePropertyWrite
     }
 
     /**
-    *  
-    
-    Copies this instance and returns the copy.
-    
-    
-
+    * Copies this instance and returns the copy.
     * @return The copy.
     */
     @Override
@@ -88,11 +63,7 @@ public class BoxDimensionsCesiumWriter extends CesiumInterpolatablePropertyWrite
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartesian}, which is the dimensions specified as a three-dimensional Cartesian value {@code [X, Y, Z]}, with X representing width, Y representing depth, and Z representing height, in world coordinates in meters.
-    
-    
-
+    * Writes the value expressed as a {@code cartesian}, which is the dimensions specified as a three-dimensional Cartesian value {@code [X, Y, Z]}, with X representing width, Y representing depth, and Z representing height, in world coordinates in meters.
     * @param value The value.
     */
     public final void writeCartesian(@Nonnull Cartesian value) {
@@ -103,12 +74,7 @@ public class BoxDimensionsCesiumWriter extends CesiumInterpolatablePropertyWrite
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartesian}, which is the dimensions specified as a three-dimensional Cartesian value {@code [X, Y, Z]}, with X representing width, Y representing depth, and Z representing height, in world coordinates in meters.
-    
-    
-    
-
+    * Writes the value expressed as a {@code cartesian}, which is the dimensions specified as a three-dimensional Cartesian value {@code [X, Y, Z]}, with X representing width, Y representing depth, and Z representing height, in world coordinates in meters.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -117,14 +83,7 @@ public class BoxDimensionsCesiumWriter extends CesiumInterpolatablePropertyWrite
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartesian}, which is the dimensions specified as a three-dimensional Cartesian value {@code [X, Y, Z]}, with X representing width, Y representing depth, and Z representing height, in world coordinates in meters.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code cartesian}, which is the dimensions specified as a three-dimensional Cartesian value {@code [X, Y, Z]}, with X representing width, Y representing depth, and Z representing height, in world coordinates in meters.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -137,11 +96,7 @@ public class BoxDimensionsCesiumWriter extends CesiumInterpolatablePropertyWrite
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the dimensions specified as a reference to another property.
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the dimensions specified as a reference to another property.
     * @param value The reference.
     */
     public final void writeReference(Reference value) {
@@ -152,11 +107,7 @@ public class BoxDimensionsCesiumWriter extends CesiumInterpolatablePropertyWrite
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the dimensions specified as a reference to another property.
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the dimensions specified as a reference to another property.
     * @param value The reference.
     */
     public final void writeReference(String value) {
@@ -167,12 +118,7 @@ public class BoxDimensionsCesiumWriter extends CesiumInterpolatablePropertyWrite
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the dimensions specified as a reference to another property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the dimensions specified as a reference to another property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -184,12 +130,7 @@ public class BoxDimensionsCesiumWriter extends CesiumInterpolatablePropertyWrite
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the dimensions specified as a reference to another property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the dimensions specified as a reference to another property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -201,11 +142,7 @@ public class BoxDimensionsCesiumWriter extends CesiumInterpolatablePropertyWrite
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
-    
-    
-
+    * Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
     * @param value The value.
     */
     public final void writeDelete(boolean value) {
@@ -216,11 +153,7 @@ public class BoxDimensionsCesiumWriter extends CesiumInterpolatablePropertyWrite
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumCartesian3ValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumCartesian3ValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumCartesian3ValuePropertyAdaptor<BoxDimensionsCesiumWriter> asCartesian() {
@@ -241,11 +174,7 @@ public class BoxDimensionsCesiumWriter extends CesiumInterpolatablePropertyWrite
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumReferenceValuePropertyAdaptor<BoxDimensionsCesiumWriter> asReference() {

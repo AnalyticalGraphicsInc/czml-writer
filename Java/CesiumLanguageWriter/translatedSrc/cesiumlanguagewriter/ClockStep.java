@@ -7,10 +7,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
- *  
- Defines how a simulated clock advances in time.
- 
-
+ * Defines how a simulated clock advances in time.
  */
 @SuppressWarnings( {
         "unused",
@@ -19,22 +16,13 @@ import javax.annotation.Nullable;
 })
 public enum ClockStep implements Enumeration {
     /**
-    *  
-    The clock always matches the system clock.
-    
-
+    * The clock always matches the system clock.
     */
     SYSTEM_CLOCK(0), /**
-                     *  
-                     The clock advances by the elapsed system time between ticks, multiplied by a user specified value.
-                     
-
+                     * The clock advances by the elapsed system time between ticks, multiplied by a user specified value.
                      */
     SYSTEM_CLOCK_MULTIPLIER(1), /**
-                                *  
-                                The clock advances by a fixed step each tick.
-                                
-
+                                * The clock advances by a fixed step each tick.
                                 */
     TICK_DEPENDENT(2);
     private final int value;

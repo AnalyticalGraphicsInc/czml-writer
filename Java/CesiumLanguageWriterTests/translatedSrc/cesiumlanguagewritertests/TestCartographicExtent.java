@@ -12,10 +12,7 @@ import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
 /**
- *  
- A simple test making sure the CartographicExtent class works
- 
-
+ * A simple test making sure the CartographicExtent class works
  */
 @SuppressWarnings( {
         "unused",
@@ -25,10 +22,7 @@ import org.junit.Test;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCartographicExtent {
     /**
-    *  
-    Testing the class
-    
-
+    * Testing the class
     */
     @Test
     public final void testExtentClass() {
@@ -57,10 +51,7 @@ public class TestCartographicExtent {
     }
 
     /**
-    *  
-    Tests the {@link CartographicExtent#equalsEpsilon} method.
-    
-
+    * Tests the {@link CartographicExtent#equalsEpsilon} method.
     */
     @Test
     public final void testEqualsEpsilon() {
@@ -74,11 +65,8 @@ public class TestCartographicExtent {
     }
 
     /**
-    *  
-    Tests that the {@link CartographicExtent#equalsEpsilon} method returns true
+    * Tests that the {@link CartographicExtent#equalsEpsilon} method returns true
     when the difference is exactly epsilon.
-    
-
     */
     @Test
     public final void testEqualsEpsilonExact() {

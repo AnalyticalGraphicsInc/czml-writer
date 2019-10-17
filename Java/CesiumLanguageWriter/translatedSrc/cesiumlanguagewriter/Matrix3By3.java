@@ -10,13 +10,9 @@ import agi.foundation.compatibility.ImmutableValueType;
 import javax.annotation.Nonnull;
 
 /**
- *  
- A 3-by-3 matrix. This type is often used to represent a rotation. This
+ * A 3-by-3 matrix. This type is often used to represent a rotation. This
  represents an 'alias' rotation which transforms coordinates by modifying the underlying coordinate
  basis rather than modifying the coordinates themselves.
- 
- 
-
  * @see UnitQuaternion
  */
 @SuppressWarnings( {
@@ -32,11 +28,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     public Matrix3By3() {}
 
     /**
-    *  
-    Initializes a new instance from a {@link UnitQuaternion}.
-    
-    
-
+    * Initializes a new instance from a {@link UnitQuaternion}.
     * @param quaternion The quaternion.
     */
     public Matrix3By3(@Nonnull UnitQuaternion quaternion) {
@@ -62,19 +54,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     }
 
     /**
-    *  
-    Initializes a new instance from elements.
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
+    * Initializes a new instance from elements.
     * @param m11 1,1
     * @param m12 1,2
     * @param m13 1,3
@@ -99,10 +79,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     }
 
     /**
-    *  Gets a {@link Matrix3By3} representing an identity transformation.
-    
-    
-
+    * Gets a {@link Matrix3By3} representing an identity transformation.
     * @return The 3-by-3 identity matrix.
     */
     @Nonnull
@@ -111,15 +88,11 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     }
 
     /**
-    *  Gets a {@link Matrix3By3} with elements of {@link Double#NaN}.
-    
-    
-
+    * Gets a {@link Matrix3By3} with elements of {@link Double#NaN}.
     * <p>
     Use {@code IsUndefined} ({@link #getIsUndefined get}) to test whether a {@link Matrix3By3} instance
     is undefined since it will return {@code true} if any of the element values
     are {@link Double#NaN}.
-    
     */
     @Nonnull
     public static Matrix3By3 getUndefined() {
@@ -127,10 +100,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     }
 
     /**
-    *  Gets a {@link Matrix3By3} representing the zero matrix.
-    
-    
-
+    * Gets a {@link Matrix3By3} representing the zero matrix.
     * @return The 3-by-3 zero matrix.
     */
     @Nonnull
@@ -139,14 +109,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     }
 
     /**
-    *  
-    Forms a diagonal matrix from the input elements.
-    
-    
-    
-    
-    
-
+    * Forms a diagonal matrix from the input elements.
     * @param m11 1,1
     * @param m22 2,2
     * @param m33 3,3
@@ -159,12 +122,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     }
 
     /**
-    *  
-    Forms a diagonal matrix from the input vector.
-    
-    
-    
-
+    * Forms a diagonal matrix from the input vector.
     * @param vector The vector.
     * @return The diagonal matrix
     */
@@ -174,12 +132,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     }
 
     /**
-    *  
-    Forms a diagonal matrix from the input unit vector.
-    
-    
-    
-
+    * Forms a diagonal matrix from the input unit vector.
     * @param vector The vector.
     * @return The diagonal matrix.
     */
@@ -189,20 +142,11 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     }
 
     /**
-    *  
-    Accesses the matrix elements using zero-based indexing.
-    
-    
-    
-    
-    
-
+    * Accesses the matrix elements using zero-based indexing.
     * @param row The row index.
     * @param column The column index.
     * @return The value corresponding to the indicated element of the matrix.
-    * @exception ArgumentOutOfRangeException 
-    Thrown when either {@code row} or {@code column} is less than 0 or greater than 2.
-    
+    * @exception ArgumentOutOfRangeException Thrown when either {@code row} or {@code column} is less than 0 or greater than 2.
     */
     public final double get(int row, int column) {
         switch (row) {
@@ -261,92 +205,70 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     }
 
     /**
-    *  Gets the element in the first row, first column.
-    
-
+    * Gets the element in the first row, first column.
     */
     public final double getM11() {
         return m_m11;
     }
 
     /**
-    *  Gets the element in the first row, second column.
-    
-
+    * Gets the element in the first row, second column.
     */
     public final double getM12() {
         return m_m12;
     }
 
     /**
-    *  Gets the element in the first row, third column.
-    
-
+    * Gets the element in the first row, third column.
     */
     public final double getM13() {
         return m_m13;
     }
 
     /**
-    *  Gets the element in the second row, first column.
-    
-
+    * Gets the element in the second row, first column.
     */
     public final double getM21() {
         return m_m21;
     }
 
     /**
-    *  Gets the element in the second row, second column.
-    
-
+    * Gets the element in the second row, second column.
     */
     public final double getM22() {
         return m_m22;
     }
 
     /**
-    *  Gets the element in the second row, third column.
-    
-
+    * Gets the element in the second row, third column.
     */
     public final double getM23() {
         return m_m23;
     }
 
     /**
-    *  Gets the element in the third row, first column.
-    
-
+    * Gets the element in the third row, first column.
     */
     public final double getM31() {
         return m_m31;
     }
 
     /**
-    *  Gets the element in the third row, second column.
-    
-
+    * Gets the element in the third row, second column.
     */
     public final double getM32() {
         return m_m32;
     }
 
     /**
-    *  Gets the element in the third row, third column.
-    
-
+    * Gets the element in the third row, third column.
     */
     public final double getM33() {
         return m_m33;
     }
 
     /**
-    *  
-    Transposes the matrix.
-    
-    
-
+    * Transposes the matrix.
     * @return The transposed matrix.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
@@ -356,9 +278,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     }
 
     /**
-    *  Gets a value indicating whether any of the matrix values are {@link Double#NaN}.
-    
-
+    * Gets a value indicating whether any of the matrix values are {@link Double#NaN}.
     */
     public final boolean getIsUndefined() {
         return Double.isNaN(m_m11) || Double.isNaN(m_m12) || Double.isNaN(m_m13) || Double.isNaN(m_m21) || Double.isNaN(m_m22) || Double.isNaN(m_m23) || Double.isNaN(m_m31) || Double.isNaN(m_m32)
@@ -366,12 +286,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     }
 
     /**
-    *  
-    Adds a matrix to this matrix.
-    
-    
-    
-
+    * Adds a matrix to this matrix.
     * @param matrix The matrix.
     * @return The sum of the matrices.
     */
@@ -383,12 +298,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     }
 
     /**
-    *  
-    Subtracts a matrix from this matrix.
-    
-    
-    
-
+    * Subtracts a matrix from this matrix.
     * @param matrix The matrix to subtract.
     * @return The result of the subtraction.
     */
@@ -400,12 +310,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     }
 
     /**
-    *  
-    Multiplies this matrix by a scalar.
-    
-    
-    
-
+    * Multiplies this matrix by a scalar.
     * @param scalar The scalar to multiply by.
     * @return The result of the multiplication.
     */
@@ -416,12 +321,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     }
 
     /**
-    *  
-    Multiplies this matrix by a matrix.
-    
-    
-    
-
+    * Multiplies this matrix by a matrix.
     * @param matrix The matrix to multiply by.
     * @return The result of the multiplication.
     */
@@ -435,12 +335,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     }
 
     /**
-    *  
-    Forms a new Cartesian vector as the product of this 3-by-3 matrix and the provided Cartesian vector.
-    
-    
-    
-
+    * Forms a new Cartesian vector as the product of this 3-by-3 matrix and the provided Cartesian vector.
     * @param vector The vector.
     * @return The resulting Cartesian vector.
     */
@@ -452,13 +347,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     }
 
     /**
-    *  
-    Multiplies a matrix by a scalar.
-    
-    
-    
-    
-
+    * Multiplies a matrix by a scalar.
     * @param matrix The matrix.
     * @param scalar The scalar.
     * @return The result of the multiplication.
@@ -470,13 +359,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     }
 
     /**
-    *  
-    Multiplies a scalar by a matrix.
-    
-    
-    
-    
-
+    * Multiplies a scalar by a matrix.
     * @param scalar The scalar.
     * @param matrix The matrix.
     * @return The result of the multiplication.
@@ -488,13 +371,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     }
 
     /**
-    *  
-    Multiplies the left matrix by the right matrix.
-    
-    
-    
-    
-
+    * Multiplies the left matrix by the right matrix.
     * @param left The matrix on the left.
     * @param right The matrix on the right.
     * @return The result of the multiplication.
@@ -506,13 +383,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     }
 
     /**
-    *  
-    Multiplies the 3-by-3 matrix by the Cartesian vector.
-    
-    
-    
-    
-
+    * Multiplies the 3-by-3 matrix by the Cartesian vector.
     * @param matrix The matrix.
     * @param vector The vector.
     * @return The result of the multiplication.
@@ -524,13 +395,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     }
 
     /**
-    *  
-    Adds a matrix to this matrix.
-    
-    
-    
-    
-
+    * Adds a matrix to this matrix.
     * @param left The left matrix.
     * @param right The right matrix.
     * @return The sum of the matrices.
@@ -542,13 +407,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     }
 
     /**
-    *  
-    Subtracts the second matrix from the first.
-    
-    
-    
-    
-
+    * Subtracts the second matrix from the first.
     * @param left The left matrix.
     * @param right The right matrix.
     * @return The result of subtracting the second matrix from the first.
@@ -560,12 +419,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     }
 
     /**
-    *  
-    Indicates whether another object is exactly equal to this instance.
-    
-    
-    
-
+    * Indicates whether another object is exactly equal to this instance.
     * @param obj The object to compare to this instance.
     * @return {@code true} if {@code obj} is an instance of this type and represents the same value as this instance; otherwise, {@code false}.
     */
@@ -575,12 +429,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     }
 
     /**
-    *  
-    Indicates whether another instance of this type is exactly equal to this instance.
-    
-    
-    
-
+    * Indicates whether another instance of this type is exactly equal to this instance.
     * @param other The instance to compare to this instance.
     * @return {@code true} if {@code other} represents the same value as this instance; otherwise, {@code false}.
     */
@@ -591,16 +440,10 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     }
 
     /**
-    *  
-    Returns true if all of the elements of this matrix are within {@code epsilon}
+    * Returns true if all of the elements of this matrix are within {@code epsilon}
     of the same elements of the specified matrix.  That is, in order for the matrices to be
     considered equal (and for this function to return true), the absolute value of the
     difference between each of their elements must be less than or equal to {@code epsilon}.
-    
-    
-    
-    
-
     * @param other The {@link Matrix3By3} to compare to this matrix.
     * @param epsilon The largest difference between the elements of the matrices for which they will be considered equal.
     * @return true if the matrices are equal as defined by the epsilon value.
@@ -613,11 +456,7 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     }
 
     /**
-    *  
-    Returns a hash code for this instance, which is suitable for use in hashing algorithms and data structures like a hash table.
-    
-    
-
+    * Returns a hash code for this instance, which is suitable for use in hashing algorithms and data structures like a hash table.
     * @return A hash code for the current object.
     */
     @Override
@@ -627,18 +466,10 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     }
 
     /**
-    *  
-    Returns {@code true} if the two instances are exactly equal.
-    
-    
-    
-    
-
+    * Returns {@code true} if the two instances are exactly equal.
     * @param left The instance to compare to {@code right}.
     * @param right The instance to compare to {@code left}.
-    * @return 
-    {@code true} if {@code left} represents the same value as {@code right}; otherwise, {@code false}.
-    
+    * @return {@code true} if {@code left} represents the same value as {@code right}; otherwise, {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(Matrix3By3,Matrix3By3)'")
     public static boolean equals(@Nonnull Matrix3By3 left, @Nonnull Matrix3By3 right) {
@@ -646,18 +477,10 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     }
 
     /**
-    *  
-    Returns {@code true} if the two instances are not exactly equal.
-    
-    
-    
-    
-
+    * Returns {@code true} if the two instances are not exactly equal.
     * @param left The instance to compare to {@code right}.
     * @param right The instance to compare to {@code left}.
-    * @return 
-    {@code true} if {@code left} does not represent the same value as {@code right}; otherwise, {@code false}.
-    
+    * @return {@code true} if {@code left} does not represent the same value as {@code right}; otherwise, {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(Matrix3By3,Matrix3By3)'")
     public static boolean notEquals(@Nonnull Matrix3By3 left, @Nonnull Matrix3By3 right) {

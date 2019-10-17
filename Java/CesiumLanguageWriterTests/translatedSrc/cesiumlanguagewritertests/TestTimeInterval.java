@@ -14,10 +14,7 @@ import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
 /**
- *  
- A series of tests to exercise this type.
- 
-
+ * A series of tests to exercise this type.
  */
 @SuppressWarnings( {
         "unused",
@@ -27,10 +24,7 @@ import org.junit.Test;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestTimeInterval {
     /**
-    *  
-    Tests that initialization of and access to the type's values is performed correctly.
-    
-
+    * Tests that initialization of and access to the type's values is performed correctly.
     */
     @Test
     public final void testRetainValue() {
@@ -42,10 +36,7 @@ public class TestTimeInterval {
     }
 
     /**
-    *  
-    Tests that the Duration of an Interval is calculated correctly.
-    
-
+    * Tests that the Duration of an Interval is calculated correctly.
     */
     @Test
     public final void testCalculateDuration() {
@@ -56,10 +47,7 @@ public class TestTimeInterval {
     }
 
     /**
-    *  
-    Tests the IsEmpty property.
-    
-
+    * Tests the IsEmpty property.
     */
     @Test
     public final void testIsEmpty() {
@@ -70,10 +58,7 @@ public class TestTimeInterval {
     }
 
     /**
-    *  
-    Tests equality between time intervals.
-    
-
+    * Tests equality between time intervals.
     */
     @Test
     public final void testEquality() {
@@ -100,10 +85,7 @@ public class TestTimeInterval {
     }
 
     /**
-    *  
-    Tests equality between nullable time intervals.
-    
-
+    * Tests equality between nullable time intervals.
     */
     @Test
     public final void testNullableEquality() {
@@ -117,10 +99,7 @@ public class TestTimeInterval {
     }
 
     /**
-    *  
-    Tests that JulianDate.GetHashCode returns something at least reasonably random.
-    
-
+    * Tests that JulianDate.GetHashCode returns something at least reasonably random.
     */
     @Test
     public final void testGetHashCode() {
@@ -134,10 +113,7 @@ public class TestTimeInterval {
     }
 
     /**
-    *  
-    Tests the {@link TimeInterval#contains} method.
-    
-
+    * Tests the {@link TimeInterval#contains} method.
     */
     @Test
     public final void testContains() {
@@ -150,10 +126,7 @@ public class TestTimeInterval {
     }
 
     /**
-    *  
-    Tests the {@link TimeInterval#equalsEpsilon} method.
-    
-
+    * Tests the {@link TimeInterval#equalsEpsilon} method.
     */
     @Test
     public final void testEqualsEpsilon() {
@@ -166,11 +139,8 @@ public class TestTimeInterval {
     }
 
     /**
-    *  
-    Tests that the {@link TimeInterval#equalsEpsilon} method returns true
+    * Tests that the {@link TimeInterval#equalsEpsilon} method returns true
     when the difference is exactly epsilon.
-    
-
     */
     @Test
     public final void testEqualsEpsilonExact() {
@@ -180,10 +150,7 @@ public class TestTimeInterval {
     }
 
     /**
-    *  
-    Tests the {@link TimeInterval#toTimeStandard} method.
-    
-
+    * Tests the {@link TimeInterval#toTimeStandard} method.
     */
     @Test
     public final void testToTimeStandard() {
@@ -207,10 +174,7 @@ public class TestTimeInterval {
     }
 
     /**
-    *  
-    Tests the {@link TimeInterval#toString} method
-    
-
+    * Tests the {@link TimeInterval#toString} method
     */
     @Test
     public final void testToString() {

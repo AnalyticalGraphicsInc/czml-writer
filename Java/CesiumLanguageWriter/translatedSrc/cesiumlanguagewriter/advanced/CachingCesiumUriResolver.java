@@ -13,11 +13,8 @@ import java.util.Map;
 import javax.annotation.Nonnull;
 
 /**
- *  
- A URI resolver that downloads files and converts them to data URIs.  Downloaded files are cached
+ * A URI resolver that downloads files and converts them to data URIs.  Downloaded files are cached
  using a least-recently used cache.
- 
-
  */
 @SuppressWarnings( {
         "unused",
@@ -26,11 +23,7 @@ import javax.annotation.Nonnull;
 })
 public class CachingCesiumUriResolver implements ICesiumUriResolver {
     /**
-    *  
-    Initializes a new instance.
-    
-    
-
+    * Initializes a new instance.
     * @param max The maximum number of remote files to cache before removing the oldest.
     */
     public CachingCesiumUriResolver(int max) {
@@ -40,12 +33,7 @@ public class CachingCesiumUriResolver implements ICesiumUriResolver {
     }
 
     /**
-    *  
-    Resolves a URI, producing a new URI for inclusion in a CZML document.
-    
-    
-    
-
+    * Resolves a URI, producing a new URI for inclusion in a CZML document.
     * @param uri The source URI.
     * @return A URI suitable for CZML.
     */
@@ -74,12 +62,7 @@ public class CachingCesiumUriResolver implements ICesiumUriResolver {
     }
 
     /**
-    *  
-    Add a URI to the cache for future calls to {@link #resolveUri}.
-    
-    
-    
-
+    * Add a URI to the cache for future calls to {@link #resolveUri}.
     * @param sourceUri The source URI.
     * @param resolvedUri The resolved URI.
     */
@@ -100,12 +83,7 @@ public class CachingCesiumUriResolver implements ICesiumUriResolver {
     }
 
     /**
-    *  
-    Checks whether the cache already contains a resolved URI for the given URI.
-    
-    
-    
-
+    * Checks whether the cache already contains a resolved URI for the given URI.
     * @param sourceUri The source URI.
     * @return True if the cache already has a resolved URI for that URI, false otherwise.
     */
@@ -117,9 +95,7 @@ public class CachingCesiumUriResolver implements ICesiumUriResolver {
     }
 
     /**
-    *  Gets an instance of {@link CachingCesiumUriResolver} local to the calling thread.
-    
-
+    * Gets an instance of {@link CachingCesiumUriResolver} local to the calling thread.
     */
     @Nonnull
     public static CachingCesiumUriResolver getThreadLocalInstance() {

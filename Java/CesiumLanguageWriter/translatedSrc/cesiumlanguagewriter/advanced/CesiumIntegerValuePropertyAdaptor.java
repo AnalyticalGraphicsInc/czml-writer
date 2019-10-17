@@ -6,12 +6,8 @@ import cesiumlanguagewriter.*;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Adapts a class that implements {@link ICesiumIntegerValuePropertyWriter} to implement
+ * Adapts a class that implements {@link ICesiumIntegerValuePropertyWriter} to implement
  {@link ICesiumInterpolatableValuePropertyWriter} for {@code int} values.
- 
- 
-
  * @param <TFrom> The class that implements {@link ICesiumIntegerValuePropertyWriter} to adapt.
  */
 @SuppressWarnings( {
@@ -21,14 +17,7 @@ import javax.annotation.Nonnull;
 })
 public class CesiumIntegerValuePropertyAdaptor<TFrom extends ICesiumIntegerValuePropertyWriter> extends CesiumInterpolatableWriterAdaptor<TFrom, Integer> {
     /**
-    *  
-    Initializes a new instance.
-    
-    
-    
-    
-    
-
+    * Initializes a new instance.
     * @param parent The instance to wrap.
     * @param writeValueCallback The callback to write values of type {@code int}.
     * @param writeSamplesCallback The callback to write samples of type {@code int}.

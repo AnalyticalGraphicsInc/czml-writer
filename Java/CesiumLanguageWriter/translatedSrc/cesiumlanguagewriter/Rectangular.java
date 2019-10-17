@@ -10,14 +10,9 @@ import agi.foundation.compatibility.StringHelper;
 import javax.annotation.Nonnull;
 
 /**
- *  
- A set of rectilinear 2-dimensional coordinates.
- 
- 
-
+ * A set of rectilinear 2-dimensional coordinates.
  * <p>
  The corresponding 3-dimensional coordinates are {@link Cartesian} coordinates.
- 
  */
 @SuppressWarnings( {
         "unused",
@@ -32,12 +27,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     public Rectangular() {}
 
     /**
-    *  
-    Initializes a set of {@link Rectangular} coordinates from the provided values.
-    
-    
-    
-
+    * Initializes a set of {@link Rectangular} coordinates from the provided values.
     * @param x The linear coordinate along the positive x-axis.
     * @param y The linear coordinate along the positive y-axis.
     */
@@ -48,9 +38,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     }
 
     /**
-    *  Gets a set of {@link Rectangular} coordinates with values of zero.
-    
-
+    * Gets a set of {@link Rectangular} coordinates with values of zero.
     */
     @Nonnull
     public static Rectangular getZero() {
@@ -58,15 +46,11 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     }
 
     /**
-    *  Gets a set of {@link Rectangular} coordinates with values of {@link Double#NaN}.
-    
-    
-
+    * Gets a set of {@link Rectangular} coordinates with values of {@link Double#NaN}.
     * <p>
     Use {@code IsUndefined} ({@link Rectangular#getIsUndefined get}) to test whether a {@link Rectangular} instance
     is undefined since it will return {@code true} if any of the coordinate values
     are {@link Double#NaN}.
-    
     */
     @Nonnull
     public static Rectangular getUndefined() {
@@ -74,29 +58,21 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     }
 
     /**
-    *  Gets the linear coordinate along the positive x-axis.
-    
-
+    * Gets the linear coordinate along the positive x-axis.
     */
     public final double getX() {
         return m_x;
     }
 
     /**
-    *  Gets the linear coordinate along the positive y-axis.
-    
-
+    * Gets the linear coordinate along the positive y-axis.
     */
     public final double getY() {
         return m_y;
     }
 
     /**
-    *  
-    Inverts this instance.
-    
-    
-
+    * Inverts this instance.
     * @return A set of {@link Rectangular} coordinates that represents the inverse of this instance.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
@@ -106,12 +82,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     }
 
     /**
-    *  
-    Multiplies this instance by a scalar.
-    
-    
-    
-
+    * Multiplies this instance by a scalar.
     * @param scalar The multiplier, or value which is to multiply this instance.
     * @return A set of {@link Rectangular} coordinates that represents the result of the multiplication.
     */
@@ -122,12 +93,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     }
 
     /**
-    *  
-    Divides this instance by a scalar.
-    
-    
-    
-
+    * Divides this instance by a scalar.
     * @param scalar The divisor, or value which is to divide this instance.
     * @return A set of {@link Rectangular} coordinates that represents the result of the division.
     */
@@ -138,12 +104,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     }
 
     /**
-    *  
-    Adds the specified set of {@link Rectangular} coordinates to this instance.
-    
-    
-    
-
+    * Adds the specified set of {@link Rectangular} coordinates to this instance.
     * @param other The addend, or value which is to be added to this instance.
     * @return A set of {@link Rectangular} coordinates that represents the result of the addition.
     */
@@ -154,12 +115,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     }
 
     /**
-    *  
-    Subtracts the specified set of {@link Rectangular} coordinates from this instance.
-    
-    
-    
-
+    * Subtracts the specified set of {@link Rectangular} coordinates from this instance.
     * @param other The subtrahend, or value which is to be subtracted from this instance.
     * @return A set of {@link Rectangular} coordinates that represents the result of the subtraction.
     */
@@ -170,12 +126,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     }
 
     /**
-    *  
-    Forms the dot product of the specified set of {@link Rectangular} coordinates with this instance.
-    
-    
-    
-
+    * Forms the dot product of the specified set of {@link Rectangular} coordinates with this instance.
     * @param other The set of {@link Rectangular} coordinates to dot with this instance.
     * @return A {@code double} that represents the result of the product.
     */
@@ -185,13 +136,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     }
 
     /**
-    *  
-    Multiplies a specified set of {@link Rectangular} coordinates by a scalar.
-    
-    
-    
-    
-
+    * Multiplies a specified set of {@link Rectangular} coordinates by a scalar.
     * @param left The multiplicand, or value which is to be multiplied by {@code right}.
     * @param right The multiplier, or value which is to multiply {@code left}.
     * @return A set of {@link Rectangular} coordinates that represents the result of the multiplication.
@@ -203,13 +148,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     }
 
     /**
-    *  
-    Multiplies a scalar by a specified set of set of {@link Rectangular} coordinates.
-    
-    
-    
-    
-
+    * Multiplies a scalar by a specified set of set of {@link Rectangular} coordinates.
     * @param left The multiplicand, or value which is to be multiplied by {@code right}.
     * @param right The multiplier, or value which is to multiply {@code left}.
     * @return A set of {@link Rectangular} coordinates that represents the result of the multiplication.
@@ -221,13 +160,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     }
 
     /**
-    *  
-    Divides a specified set of {@link Rectangular} coordinates by a scalar.
-    
-    
-    
-    
-
+    * Divides a specified set of {@link Rectangular} coordinates by a scalar.
     * @param left The dividend, or value which is to be divided by {@code right}.
     * @param right The divisor, or value which is to divide {@code left}.
     * @return A set of {@link Rectangular} coordinates that represents the result of the division.
@@ -239,13 +172,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     }
 
     /**
-    *  
-    Adds a specified set of {@link Rectangular} coordinates to another specified set of {@link Cartesian} coordinates.
-    
-    
-    
-    
-
+    * Adds a specified set of {@link Rectangular} coordinates to another specified set of {@link Cartesian} coordinates.
     * @param left The augend, or value to which {@code right} is to be added.
     * @param right The addend, or value which is to be added to {@code left}.
     * @return A set of {@link Rectangular} coordinates that represents the result of the addition.
@@ -257,13 +184,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     }
 
     /**
-    *  
-    Subtracts a specified set of {@link Rectangular} coordinates from another specified set of {@link Rectangular} coordinates.
-    
-    
-    
-    
-
+    * Subtracts a specified set of {@link Rectangular} coordinates from another specified set of {@link Rectangular} coordinates.
     * @param left The minuend, or value from which {@code right} is to be subtracted.
     * @param right The subtrahend, or value which is to be subtracted from {@code left}.
     * @return A set of {@link Rectangular} coordinates that represents the result of the subtraction.
@@ -275,12 +196,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     }
 
     /**
-    *  
-    Negates the specified set of {@link Rectangular} coordinates, yielding a new set of {@link Rectangular} coordinates.
-    
-    
-    
-
+    * Negates the specified set of {@link Rectangular} coordinates, yielding a new set of {@link Rectangular} coordinates.
     * @param coordinates The set of coordinates.
     * @return The result of negating the elements of the original set of {@link Rectangular} coordinates.
     */
@@ -291,17 +207,10 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     }
 
     /**
-    *  
-    Produces a set of {@link Rectangular} coordinates representing this instance which results from rotating
+    * Produces a set of {@link Rectangular} coordinates representing this instance which results from rotating
     the original axes used to represent this instance by the provided angle.
-    
-    
-    
-    
-
     * <p>
     This type of rotation is sometimes referred to as an "alias rotation".
-    
     * @param angle The angle of rotation.
     * @return A set of {@link Rectangular} coordinates which is the result of the rotation.
     */
@@ -314,12 +223,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     }
 
     /**
-    *  
-    Indicates whether another object is exactly equal to this instance.
-    
-    
-    
-
+    * Indicates whether another object is exactly equal to this instance.
     * @param obj The object to compare to this instance.
     * @return {@code true} if {@code obj} is an instance of this type and represents the same value as this instance; otherwise, {@code false}.
     */
@@ -329,12 +233,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     }
 
     /**
-    *  
-    Indicates whether another instance of this type is exactly equal to this instance.
-    
-    
-    
-
+    * Indicates whether another instance of this type is exactly equal to this instance.
     * @param other The instance to compare to this instance.
     * @return {@code true} if {@code other} represents the same value as this instance; otherwise, {@code false}.
     */
@@ -344,30 +243,18 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     }
 
     /**
-    *  
-    Indicates whether each coordinate value of another instance of this type
+    * Indicates whether each coordinate value of another instance of this type
     is within the required tolerance of the corresponding coordinate value of this instance.
-    
-    
-    
-    
-
     * @param other The set of {@link Rectangular} coordinates to compare to this instance.
     * @param epsilon The limit at which the absolute differences between the coordinate values will not be considered equal.
-    * @return 
-    {@code true} if the absolute differences are less than or equal to {@code epsilon}; otherwise, {@code false}.
-    
+    * @return {@code true} if the absolute differences are less than or equal to {@code epsilon}; otherwise, {@code false}.
     */
     public final boolean equalsEpsilon(@Nonnull Rectangular other, double epsilon) {
         return Math.abs(m_x - other.m_x) <= epsilon && Math.abs(m_y - other.m_y) <= epsilon;
     }
 
     /**
-    *  
-    Returns a hash code for this instance, which is suitable for use in hashing algorithms and data structures like a hash table.
-    
-    
-
+    * Returns a hash code for this instance, which is suitable for use in hashing algorithms and data structures like a hash table.
     * @return A hash code for the current object.
     */
     @Override
@@ -376,15 +263,9 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     }
 
     /**
-    *  
-    Returns the string representation of the value of this instance.
-    
-    
-
-    * @return 
-    A string that represents the value of this instance in the form
+    * Returns the string representation of the value of this instance.
+    * @return A string that represents the value of this instance in the form
     "X, Y".
-    
     */
     @Override
     public String toString() {
@@ -392,18 +273,10 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     }
 
     /**
-    *  
-    Returns {@code true} if the two instances are exactly equal.
-    
-    
-    
-    
-
+    * Returns {@code true} if the two instances are exactly equal.
     * @param left The instance to compare to {@code right}.
     * @param right The instance to compare to {@code left}.
-    * @return 
-    {@code true} if {@code left} represents the same value as {@code right}; otherwise, {@code false}.
-    
+    * @return {@code true} if {@code left} represents the same value as {@code right}; otherwise, {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(Rectangular,Rectangular)'")
     public static boolean equals(@Nonnull Rectangular left, @Nonnull Rectangular right) {
@@ -411,18 +284,10 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     }
 
     /**
-    *  
-    Returns {@code true} if the two instances are not exactly equal.
-    
-    
-    
-    
-
+    * Returns {@code true} if the two instances are not exactly equal.
     * @param left The instance to compare to {@code right}.
     * @param right The instance to compare to {@code left}.
-    * @return 
-    {@code true} if {@code left} does not represent the same value as {@code right}; otherwise, {@code false}.
-    
+    * @return {@code true} if {@code left} does not represent the same value as {@code right}; otherwise, {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(Rectangular,Rectangular)'")
     public static boolean notEquals(@Nonnull Rectangular left, @Nonnull Rectangular right) {
@@ -430,9 +295,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     }
 
     /**
-    *  Gets a value indicating whether or not any of the coordinates for this instance have the value {@link Double#NaN}.
-    
-
+    * Gets a value indicating whether or not any of the coordinates for this instance have the value {@link Double#NaN}.
     */
     public final boolean getIsUndefined() {
         return Double.isNaN(m_x) || Double.isNaN(m_y);

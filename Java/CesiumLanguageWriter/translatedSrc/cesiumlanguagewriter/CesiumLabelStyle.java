@@ -7,10 +7,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
- *  
- Specifies how the text of a label is drawn.
- 
-
+ * Specifies how the text of a label is drawn.
  */
 @SuppressWarnings( {
         "unused",
@@ -19,22 +16,13 @@ import javax.annotation.Nullable;
 })
 public enum CesiumLabelStyle implements Enumeration {
     /**
-    *  
-    The text of the label is filled, but not outlined.
-    
-
+    * The text of the label is filled, but not outlined.
     */
     FILL(0), /**
-             *  
-             The text of the label is outlined, but not filled.
-             
-
+             * The text of the label is outlined, but not filled.
              */
     OUTLINE(1), /**
-                *  
-                The text of the label is both filled and outlined.
-                
-
+                * The text of the label is both filled and outlined.
                 */
     FILL_AND_OUTLINE(2);
     private final int value;

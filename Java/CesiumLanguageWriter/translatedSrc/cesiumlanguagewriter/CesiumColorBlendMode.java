@@ -7,10 +7,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
- *  
- The mode to use when blending between a target color and an entity's source color.
- 
-
+ * The mode to use when blending between a target color and an entity's source color.
  */
 @SuppressWarnings( {
         "unused",
@@ -19,22 +16,13 @@ import javax.annotation.Nullable;
 })
 public enum CesiumColorBlendMode implements Enumeration {
     /**
-    *  
-    Multiplies the source color by the target color.
-    
-
+    * Multiplies the source color by the target color.
     */
     HIGHLIGHT(0), /**
-                  *  
-                  Replaces the source color with the target color.
-                  
-
+                  * Replaces the source color with the target color.
                   */
     REPLACE(1), /**
-                *  
-                Blends the source color and target color together.
-                
-
+                * Blends the source color and target color together.
                 */
     MIX(2);
     private final int value;

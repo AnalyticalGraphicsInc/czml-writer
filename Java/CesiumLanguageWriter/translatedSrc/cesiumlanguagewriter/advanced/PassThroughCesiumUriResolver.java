@@ -6,10 +6,7 @@ import cesiumlanguagewriter.*;
 import javax.annotation.Nonnull;
 
 /**
- *  
- A URI resolver that leaves URIs unchanged.
- 
-
+ * A URI resolver that leaves URIs unchanged.
  */
 @SuppressWarnings( {
         "unused",
@@ -18,12 +15,7 @@ import javax.annotation.Nonnull;
 })
 public class PassThroughCesiumUriResolver implements ICesiumUriResolver {
     /**
-    *  
-    Resolves a URI, leaving it unchanged.
-    
-    
-    
-
+    * Resolves a URI, leaving it unchanged.
     * @param uri The source URI.
     * @return The same URI.
     */
@@ -32,9 +24,7 @@ public class PassThroughCesiumUriResolver implements ICesiumUriResolver {
     }
 
     /**
-    *  Gets a static instance of {@link PassThroughCesiumUriResolver} usable from any thread.
-    
-
+    * Gets a static instance of {@link PassThroughCesiumUriResolver} usable from any thread.
     */
     @Nonnull
     public static PassThroughCesiumUriResolver getInstance() {

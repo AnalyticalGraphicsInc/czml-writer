@@ -17,10 +17,7 @@ import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
 /**
- *  
- Tests the {@link LeapSecond} type.
- 
-
+ * Tests the {@link LeapSecond} type.
  */
 @SuppressWarnings( {
         "unused",
@@ -48,10 +45,7 @@ public class TestLeapSecond {
     }
 
     /**
-    *  
-    Tests equality between leap second instances.
-    
-
+    * Tests equality between leap second instances.
     */
     @Test
     public final void testEquality() {
@@ -68,10 +62,7 @@ public class TestLeapSecond {
     }
 
     /**
-    *  
-    Tests that JulianDate.GetHashCode returns something at least reasonably random.
-    
-
+    * Tests that JulianDate.GetHashCode returns something at least reasonably random.
     */
     @Test
     public final void testGetHashCode() {
@@ -83,10 +74,7 @@ public class TestLeapSecond {
     }
 
     /**
-    *  
-    Tests the ToString of LeapSecond.
-    
-
+    * Tests the ToString of LeapSecond.
     */
     @Test
     public final void testToString() {

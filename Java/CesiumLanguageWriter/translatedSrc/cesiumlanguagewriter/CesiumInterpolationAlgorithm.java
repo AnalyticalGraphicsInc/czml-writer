@@ -7,10 +7,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
- *  
- The algorithm to use for interpolation of sampled data.
- 
-
+ * The algorithm to use for interpolation of sampled data.
  */
 @SuppressWarnings( {
         "unused",
@@ -19,22 +16,13 @@ import javax.annotation.Nullable;
 })
 public enum CesiumInterpolationAlgorithm implements Enumeration {
     /**
-    *  
-    Simple linear interpolation between two samples.
-    
-
+    * Simple linear interpolation between two samples.
     */
     LINEAR(0), /**
-               *  
-               Lagrange polynomial approximation.
-               
-
+               * Lagrange polynomial approximation.
                */
     LAGRANGE(1), /**
-                 *  
-                 Hermite polynomial approximation.
-                 
-
+                 * Hermite polynomial approximation.
                  */
     HERMITE(2);
     private final int value;

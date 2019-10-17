@@ -16,10 +16,7 @@ import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
 /**
- *  
- Tests the {@link Cartographic} type.
- 
-
+ * Tests the {@link Cartographic} type.
  */
 @SuppressWarnings( {
         "unused",
@@ -29,10 +26,7 @@ import org.junit.Test;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCartographic {
     /**
-    *  
-    Tests that initialization of and access to the type's values works correctly.
-    
-
+    * Tests that initialization of and access to the type's values works correctly.
     */
     @Test
     public final void testHoldValue() {
@@ -43,10 +37,7 @@ public class TestCartographic {
     }
 
     /**
-    *  
-    Tests the equality and inequality methods and operators.
-    
-
+    * Tests the equality and inequality methods and operators.
     */
     @Test
     public final void testEquality() {
@@ -72,10 +63,7 @@ public class TestCartographic {
     }
 
     /**
-    *  
-    Tests the {@link Cartesian#equalsEpsilon} method.
-    
-
+    * Tests the {@link Cartesian#equalsEpsilon} method.
     */
     @Test
     public final void testEqualsEpsilon() {
@@ -89,11 +77,8 @@ public class TestCartographic {
     }
 
     /**
-    *  
-    Tests thats the {@link Cartographic#equalsEpsilon} method returns true
+    * Tests thats the {@link Cartographic#equalsEpsilon} method returns true
     when the difference is exactly epsilon.
-    
-
     */
     @Test
     public final void testEqualsEpsilonExact() {
@@ -103,10 +88,7 @@ public class TestCartographic {
     }
 
     /**
-    *  
-    Tests to ensure the equality fails when comparing incorrect type.
-    
-
+    * Tests to ensure the equality fails when comparing incorrect type.
     */
     @Test
     public final void testEqualityWithWrongType() {
@@ -117,10 +99,7 @@ public class TestCartographic {
     }
 
     /**
-    *  
-    Tests that Cartographic.GetHashCode returns something at least reasonably random.
-    
-
+    * Tests that Cartographic.GetHashCode returns something at least reasonably random.
     */
     @Test
     public final void testGetHashCode() {
@@ -132,10 +111,7 @@ public class TestCartographic {
     }
 
     /**
-    *  
-    Tests ToString method
-    
-
+    * Tests ToString method
     */
     @Test
     public final void testToString() {

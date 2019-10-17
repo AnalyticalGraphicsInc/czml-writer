@@ -8,10 +8,7 @@ import cesiumlanguagewriter.advanced.*;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Writes a {@code DirectionList} to a {@link CesiumOutputStream}. A {@code DirectionList} is a list of directions.
- 
-
+ * Writes a {@code DirectionList} to a {@link CesiumOutputStream}. A {@code DirectionList} is a list of directions.
  */
 @SuppressWarnings( {
         "unused",
@@ -21,38 +18,23 @@ import javax.annotation.Nonnull;
 public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionListCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumSphericalListValuePropertyWriter,
         ICesiumUnitSphericalListValuePropertyWriter, ICesiumCartesian3ListValuePropertyWriter, ICesiumUnitCartesian3ListValuePropertyWriter {
     /**
-    *  
-    The name of the {@code spherical} property.
-    
-
+    * The name of the {@code spherical} property.
     */
     public static final String SphericalPropertyName = "spherical";
     /**
-    *  
-    The name of the {@code unitSpherical} property.
-    
-
+    * The name of the {@code unitSpherical} property.
     */
     public static final String UnitSphericalPropertyName = "unitSpherical";
     /**
-    *  
-    The name of the {@code cartesian} property.
-    
-
+    * The name of the {@code cartesian} property.
     */
     public static final String CartesianPropertyName = "cartesian";
     /**
-    *  
-    The name of the {@code unitCartesian} property.
-    
-
+    * The name of the {@code unitCartesian} property.
     */
     public static final String UnitCartesianPropertyName = "unitCartesian";
     /**
-    *  
-    The name of the {@code delete} property.
-    
-
+    * The name of the {@code delete} property.
     */
     public static final String DeletePropertyName = "delete";
     private Lazy<CesiumSphericalListValuePropertyAdaptor<DirectionListCesiumWriter>> m_asSpherical;
@@ -61,11 +43,7 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
     private Lazy<CesiumUnitCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter>> m_asUnitCartesian;
 
     /**
-    *  
-    Initializes a new instance.
-    
-    
-
+    * Initializes a new instance.
     * @param propertyName The name of the property.
     */
     public DirectionListCesiumWriter(@Nonnull String propertyName) {
@@ -77,11 +55,7 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
     }
 
     /**
-    *  
-    Initializes a new instance as a copy of an existing instance.
-    
-    
-
+    * Initializes a new instance as a copy of an existing instance.
     * @param existingInstance The existing instance to copy.
     */
     protected DirectionListCesiumWriter(@Nonnull DirectionListCesiumWriter existingInstance) {
@@ -93,12 +67,7 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
     }
 
     /**
-    *  
-    
-    Copies this instance and returns the copy.
-    
-    
-
+    * Copies this instance and returns the copy.
     * @return The copy.
     */
     @Override
@@ -107,11 +76,7 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code spherical}, which is the list of directions specified as spherical values {@code [Clock, Cone, Magnitude, Clock, Cone, Magnitude, ...]}, with angles in radians and magnitude in meters. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
-    
-    
-
+    * Writes the value expressed as a {@code spherical}, which is the list of directions specified as spherical values {@code [Clock, Cone, Magnitude, Clock, Cone, Magnitude, ...]}, with angles in radians and magnitude in meters. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
     * @param values The values.
     */
     public final void writeSpherical(Iterable<Spherical> values) {
@@ -122,11 +87,7 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code unitSpherical}, which is the list of directions specified as unit spherical values {@code [Clock, Cone, Clock, Cone, ...]}, in radians. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
-    
-    
-
+    * Writes the value expressed as a {@code unitSpherical}, which is the list of directions specified as unit spherical values {@code [Clock, Cone, Clock, Cone, ...]}, in radians. The clock angle is measured in the XY plane from the positive X axis toward the positive Y axis. The cone angle is the angle from the positive Z axis toward the negative Z axis.
     * @param values The values.
     */
     public final void writeUnitSpherical(Iterable<UnitSpherical> values) {
@@ -137,11 +98,7 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartesian}, which is the list of directions specified as three-dimensional Cartesian values {@code [X, Y, Z, X, Y, Z, ...]}, in world coordinates in meters.
-    
-    
-
+    * Writes the value expressed as a {@code cartesian}, which is the list of directions specified as three-dimensional Cartesian values {@code [X, Y, Z, X, Y, Z, ...]}, in world coordinates in meters.
     * @param values The values.
     */
     public final void writeCartesian(Iterable<Cartesian> values) {
@@ -152,11 +109,7 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code unitCartesian}, which is the list of directions specified as three-dimensional unit magnitude Cartesian values, {@code [X, Y, Z, X, Y, Z, ...]}, in world coordinates in meters.
-    
-    
-
+    * Writes the value expressed as a {@code unitCartesian}, which is the list of directions specified as three-dimensional unit magnitude Cartesian values, {@code [X, Y, Z, X, Y, Z, ...]}, in world coordinates in meters.
     * @param values The values.
     */
     public final void writeUnitCartesian(Iterable<UnitCartesian> values) {
@@ -167,11 +120,7 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
-    
-    
-
+    * Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
     * @param value The value.
     */
     public final void writeDelete(boolean value) {
@@ -182,11 +131,7 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumSphericalListValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumSphericalListValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumSphericalListValuePropertyAdaptor<DirectionListCesiumWriter> asSpherical() {
@@ -207,11 +152,7 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumUnitSphericalListValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumUnitSphericalListValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumUnitSphericalListValuePropertyAdaptor<DirectionListCesiumWriter> asUnitSpherical() {
@@ -232,11 +173,7 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumCartesian3ListValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumCartesian3ListValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter> asCartesian() {
@@ -257,11 +194,7 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumUnitCartesian3ListValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumUnitCartesian3ListValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumUnitCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter> asUnitCartesian() {

@@ -6,12 +6,8 @@ import cesiumlanguagewriter.*;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Adapts a class that implements {@link ICesiumCartesian2ValuePropertyWriter} to implement
+ * Adapts a class that implements {@link ICesiumCartesian2ValuePropertyWriter} to implement
  {@link ICesiumInterpolatableValuePropertyWriter} for {@link Rectangular} values.
- 
- 
-
  * @param <TFrom> The class that implements {@link ICesiumCartesian2ValuePropertyWriter} to adapt.
  */
 @SuppressWarnings( {
@@ -21,14 +17,7 @@ import javax.annotation.Nonnull;
 })
 public class CesiumCartesian2ValuePropertyAdaptor<TFrom extends ICesiumCartesian2ValuePropertyWriter> extends CesiumInterpolatableWriterAdaptor<TFrom, Rectangular> {
     /**
-    *  
-    Initializes a new instance.
-    
-    
-    
-    
-    
-
+    * Initializes a new instance.
     * @param parent The instance to wrap.
     * @param writeValueCallback The callback to write values of type {@link Rectangular}.
     * @param writeSamplesCallback The callback to write samples of type {@link Rectangular}.

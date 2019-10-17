@@ -16,10 +16,7 @@ import java.time.ZonedDateTime;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Represents a calendar year, month, and day.
- 
-
+ * Represents a calendar year, month, and day.
  */
 @SuppressWarnings( {
         "unused",
@@ -33,20 +30,12 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     public YearMonthDay() {}
 
     /**
-    *  
-    Initializes a {@link YearMonthDay} from the provided values.
-    
-    
-    
-    
-    
-
+    * Initializes a {@link YearMonthDay} from the provided values.
     * @param year The year.
     * @param month The month of the year (in the range 1 through 12)
     * @param day The day of the month (in the range 1 through the number of
     days in {@code month})
-    * @exception ArgumentException 
-    Thrown when the {@code year}, {@code month}, or
+    * @exception ArgumentException Thrown when the {@code year}, {@code month}, or
     {@code day} is outside of its acceptable range.
     */
     public YearMonthDay(int year, int month, int day) {
@@ -60,12 +49,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     }
 
     /**
-    *  
-    Initializes a {@link YearMonthDay} from the provided values.
-    
-    
-    
-
+    * Initializes a {@link YearMonthDay} from the provided values.
     * @param year The year.
     * @param dayOfYear The day of the year
     (in the range 1 through the number of days in the year).
@@ -91,15 +75,10 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     }
 
     /**
-    *  
-    Initializes a {@link YearMonthDay} in the Gregorian calendar from the
+    * Initializes a {@link YearMonthDay} in the Gregorian calendar from the
     provided astronomical  Julian day number, assuming the beginning of the Julian
     day (noon).
-    
-    
-
     * @param astronomicalJulianDayNumber The astronomical Julian day number.
-    
     */
     @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     public YearMonthDay(int astronomicalJulianDayNumber) {
@@ -124,11 +103,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     }
 
     /**
-    *  
-    Initializes a new instance from a {@link JulianDate}.
-    
-    
-
+    * Initializes a new instance from a {@link JulianDate}.
     * @param date The date.
     */
     public YearMonthDay(@Nonnull JulianDate date) {
@@ -136,8 +111,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     }
 
     /**
-    *  
-    The constructor taking an integer Julian day number assumes that the desired
+    * The constructor taking an integer Julian day number assumes that the desired
     {@link YearMonthDay} should represent the Gregorian day corresponding to
     the beginning of the provided Julian day number. If the
     {@link JulianDate} is more than one half day later than that, the
@@ -145,10 +119,6 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
 
     So, if {@code date} is more than 12 hours past the start of the
     Julian day, we instead use the  Julian date number of tomorrow.
-    
-    
-    
-
     * @param date The date.
     * @return The Julian day number that will produce the correct Gregorian day
     number.
@@ -162,18 +132,14 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     }
 
     /**
-    *  Gets the year.
-    
-
+    * Gets the year.
     */
     public final int getYear() {
         return m_year + 1;
     }
 
     /**
-    *  Gets the month of the year (in the range 1 through 12).
-    
-
+    * Gets the month of the year (in the range 1 through 12).
     */
     public final int getMonth() {
         // month is stored zero-indexed
@@ -181,10 +147,8 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     }
 
     /**
-    *  Gets the day of the month (in the range 1 through the number of days in the
+    * Gets the day of the month (in the range 1 through the number of days in the
     month).
-    
-
     */
     public final int getDay() {
         // day is stored zero-indexed
@@ -192,9 +156,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     }
 
     /**
-    *  Gets the day of the year (in the range 1 through the number of days in the year).
-    
-
+    * Gets the day of the year (in the range 1 through the number of days in the year).
     */
     public final int getDayOfYear() {
         int[] cumulativeMonthTable = getCumulativeMonthTable(getYear());
@@ -202,9 +164,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     }
 
     /**
-    *  Gets the day of the week represented by this instance.
-    
-
+    * Gets the day of the week represented by this instance.
     * @return A {@code DayOfWeek} ({@link #getDayOfWeek get}) enumerated constant that indicates the day
     of the week. This property value ranges from zero, indicating Sunday, to six,
     indicating Saturday.
@@ -215,10 +175,8 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     }
 
     /**
-    *  Gets the Julian day number for this {@link YearMonthDay} instance,
+    * Gets the Julian day number for this {@link YearMonthDay} instance,
     assuming noon on this day.
-    
-
     */
     public final int getJulianDayNumber() {
         // Algorithm from page 604 of the Explanatory Supplement to the
@@ -229,29 +187,17 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     }
 
     /**
-    *  
-    Indicates whether the year in question is a leap year.
-    
-    
-    
-
+    * Indicates whether the year in question is a leap year.
     * @param year The year.
     * @return {@code true} if {@code year} is a leap year and
     {@code false} if it is not.
-    
     */
     public static boolean isLeapYear(int year) {
         return DateTimeHelper.isLeapYear(year);
     }
 
     /**
-    *  
-    Provides the number of days in the month of the indicated year.
-    
-    
-    
-    
-
+    * Provides the number of days in the month of the indicated year.
     * @param year The year.
     * @param month The month of the year.
     * @return The number of days in the month.
@@ -261,12 +207,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     }
 
     /**
-    *  
-    Provides the number of days in the indicated year.
-    
-    
-    
-
+    * Provides the number of days in the indicated year.
     * @param year The year.
     * @return The number of days in the year (365 for a common year and 366 for a
     leap year).
@@ -276,14 +217,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     }
 
     /**
-    *  
-    Indicates whether the year, month, and day are a valid representation.
-    
-    
-    
-    
-    
-
+    * Indicates whether the year, month, and day are a valid representation.
     * @param year The year.
     * @param month The month of the year (in the range 1 through 12)
     * @param day The day of the month (in the range 1 through the number of days in
@@ -296,11 +230,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     }
 
     /**
-    *  
-    Returns a hash code for this instance, which is suitable for use in hashing algorithms and data structures like a hash table.
-    
-    
-
+    * Returns a hash code for this instance, which is suitable for use in hashing algorithms and data structures like a hash table.
     * @return A hash code for the current object.
     */
     @Override
@@ -309,12 +239,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     }
 
     /**
-    *  
-    Indicates whether another instance of this type is exactly equal to this instance.
-    
-    
-    
-
+    * Indicates whether another instance of this type is exactly equal to this instance.
     * @param other The instance to compare to this instance.
     * @return {@code true} if {@code other} represents the same value as this instance; otherwise, {@code false}.
     */
@@ -323,12 +248,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     }
 
     /**
-    *  
-    Indicates whether another object is exactly equal to this instance.
-    
-    
-    
-
+    * Indicates whether another object is exactly equal to this instance.
     * @param obj The object to compare to this instance.
     * @return {@code true} if {@code obj} is an instance of this type and represents the same value as this instance; otherwise, {@code false}.
     */
@@ -338,11 +258,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     }
 
     /**
-    *  
-    Returns a string formatted as Year:Month:Day
-    
-    
-
+    * Returns a string formatted as Year:Month:Day
     * @return The string.
     */
     @Override
@@ -351,15 +267,9 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     }
 
     /**
-    *  
-    Compares this instance with another instance of the same type.
-    
-    
-    
-
+    * Compares this instance with another instance of the same type.
     * @param other An object to compare with this instance.
-    * @return 
-    A value indicating the relative order of the objects being compared.  The return value has these meanings:
+    * @return A value indicating the relative order of the objects being compared.  The return value has these meanings:
     <table border="1">
     <tr>
     <th>Value</th>
@@ -384,7 +294,6 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     </td>
     </tr>
     </table>
-    
     */
     public final int compareTo(@Nonnull YearMonthDay other) {
         int result = Integer.compare(m_year, other.m_year);
@@ -398,18 +307,10 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     }
 
     /**
-    *  
-    Returns {@code true} if the two instances are exactly equal.
-    
-    
-    
-    
-
+    * Returns {@code true} if the two instances are exactly equal.
     * @param left The instance to compare to {@code right}.
     * @param right The instance to compare to {@code left}.
-    * @return 
-    {@code true} if {@code left} represents the same value as {@code right}; otherwise, {@code false}.
-    
+    * @return {@code true} if {@code left} represents the same value as {@code right}; otherwise, {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(YearMonthDay,YearMonthDay)'")
     public static boolean equals(@Nonnull YearMonthDay left, @Nonnull YearMonthDay right) {
@@ -417,18 +318,10 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     }
 
     /**
-    *  
-    Returns {@code true} if the two instances are not exactly equal.
-    
-    
-    
-    
-
+    * Returns {@code true} if the two instances are not exactly equal.
     * @param left The instance to compare to {@code right}.
     * @param right The instance to compare to {@code left}.
-    * @return 
-    {@code true} if {@code left} does not represent the same value as {@code right}; otherwise, {@code false}.
-    
+    * @return {@code true} if {@code left} does not represent the same value as {@code right}; otherwise, {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(YearMonthDay,YearMonthDay)'")
     public static boolean notEquals(@Nonnull YearMonthDay left, @Nonnull YearMonthDay right) {
@@ -436,18 +329,10 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     }
 
     /**
-    *  
-    Returns {@code true} if {@code left} is less than {@code right}.
-    
-    
-    
-    
-
+    * Returns {@code true} if {@code left} is less than {@code right}.
     * @param left The instance to compare to {@code right}.
     * @param right The instance to compare to {@code left}.
-    * @return 
-    {@code true} if {@code left} is less than {@code right}; otherwise, {@code false}.
-    
+    * @return {@code true} if {@code left} is less than {@code right}; otherwise, {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean <(YearMonthDay,YearMonthDay)'")
     public static boolean lessThan(@Nonnull YearMonthDay left, @Nonnull YearMonthDay right) {
@@ -455,18 +340,10 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     }
 
     /**
-    *  
-    Returns {@code true} if {@code left} is greater than {@code right}.
-    
-    
-    
-    
-
+    * Returns {@code true} if {@code left} is greater than {@code right}.
     * @param left The instance to compare to {@code right}.
     * @param right The instance to compare to {@code left}.
-    * @return 
-    {@code true} if {@code left} is greater than {@code right}; otherwise, {@code false}.
-    
+    * @return {@code true} if {@code left} is greater than {@code right}; otherwise, {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean >(YearMonthDay,YearMonthDay)'")
     public static boolean greaterThan(@Nonnull YearMonthDay left, @Nonnull YearMonthDay right) {
@@ -474,18 +351,10 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     }
 
     /**
-    *  
-    Returns {@code true} if {@code left} is less than or equal to {@code right}.
-    
-    
-    
-    
-
+    * Returns {@code true} if {@code left} is less than or equal to {@code right}.
     * @param left The instance to compare to {@code right}.
     * @param right The instance to compare to {@code left}.
-    * @return 
-    {@code true} if {@code left} is less than or equal to {@code right}; otherwise, {@code false}.
-    
+    * @return {@code true} if {@code left} is less than or equal to {@code right}; otherwise, {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean <=(YearMonthDay,YearMonthDay)'")
     public static boolean lessThanOrEqual(@Nonnull YearMonthDay left, @Nonnull YearMonthDay right) {
@@ -493,18 +362,10 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     }
 
     /**
-    *  
-    Returns {@code true} if {@code left} is greater than or equal to {@code right}.
-    
-    
-    
-    
-
+    * Returns {@code true} if {@code left} is greater than or equal to {@code right}.
     * @param left The instance to compare to {@code right}.
     * @param right The instance to compare to {@code left}.
-    * @return 
-    {@code true} if {@code left} is greater than or equal to {@code right}; otherwise, {@code false}.
-    
+    * @return {@code true} if {@code left} is greater than or equal to {@code right}; otherwise, {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean >=(YearMonthDay,YearMonthDay)'")
     public static boolean greaterThanOrEqual(@Nonnull YearMonthDay left, @Nonnull YearMonthDay right) {
@@ -512,10 +373,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     }
 
     /**
-    *  
-    Gets the appropriate table of cumulative days per month for the given year.
-    
-
+    * Gets the appropriate table of cumulative days per month for the given year.
     */
     private static int[] getCumulativeMonthTable(int year) {
         return isLeapYear(year) ? s_leapYearCumulativeMonthTable : s_commonYearCumulativeMonthTable;

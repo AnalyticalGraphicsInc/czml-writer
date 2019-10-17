@@ -6,10 +6,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
- *  
- Contains static methods for working with hash codes.
- 
-
+ * Contains static methods for working with hash codes.
  */
 @SuppressWarnings( {
         "unused",
@@ -20,12 +17,7 @@ public final class HashCode {
     private HashCode() {}
 
     /**
-    *  
-    Combines an arbitrary number of hash codes.
-    
-    
-    
-
+    * Combines an arbitrary number of hash codes.
     * @param hashes The hash codes.
     * @return The combined hash code.
     */
@@ -38,12 +30,7 @@ public final class HashCode {
     }
 
     /**
-    *  
-    Gets a hash code for a specified object, or zero if the object is {@code null}.
-    
-    
-    
-
+    * Gets a hash code for a specified object, or zero if the object is {@code null}.
     * @param o The object for which to get the hash code.
     * @return The hash code of the object, or zero if the object is {@code null}.
     */

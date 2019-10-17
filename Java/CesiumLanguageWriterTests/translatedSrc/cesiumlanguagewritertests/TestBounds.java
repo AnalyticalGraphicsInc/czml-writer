@@ -19,10 +19,7 @@ import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
 /**
- *  
- Tests the Bounds class.
- 
-
+ * Tests the Bounds class.
  */
 @SuppressWarnings( {
         "unused",
@@ -76,10 +73,7 @@ public class TestBounds {
     }
 
     /**
-    *  
-    Tests that GetHashCode returns something at least reasonably random.
-    
-
+    * Tests that GetHashCode returns something at least reasonably random.
     */
     @Test
     public final void testGetHashCode() {
@@ -91,10 +85,7 @@ public class TestBounds {
     }
 
     /**
-    *  
-    Tests the equality and inequality methods and operators.
-    
-
+    * Tests the equality and inequality methods and operators.
     */
     @Test
     public final void testEquality() {
@@ -129,10 +120,7 @@ public class TestBounds {
     }
 
     /**
-    *  
-    Tests the {@link Bounds#equalsEpsilon} method.
-    
-
+    * Tests the {@link Bounds#equalsEpsilon} method.
     */
     @Test
     public final void testEqualsEpsilon() {
@@ -146,11 +134,8 @@ public class TestBounds {
     }
 
     /**
-    *  
-    Tests that the {@link Bounds#equalsEpsilon} method returns true
+    * Tests that the {@link Bounds#equalsEpsilon} method returns true
     when the difference is exactly epsilon.
-    
-
     */
     @Test
     public final void testEqualsEpsilonExact() {
@@ -160,10 +145,7 @@ public class TestBounds {
     }
 
     /**
-    *  
-    Tests to ensure the equality fails when comparing incorrect type.
-    
-
+    * Tests to ensure the equality fails when comparing incorrect type.
     */
     @Test
     public final void testEqualityWithWrongType() {
@@ -174,10 +156,7 @@ public class TestBounds {
     }
 
     /**
-    *  
-    Tests ToString method
-    
-
+    * Tests ToString method
     */
     @Test
     public final void testToString() {

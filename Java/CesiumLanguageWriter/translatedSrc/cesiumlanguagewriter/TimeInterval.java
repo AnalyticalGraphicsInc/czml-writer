@@ -11,11 +11,8 @@ import agi.foundation.compatibility.StringHelper;
 import javax.annotation.Nonnull;
 
 /**
- *  
- An interval defined by a start date and a stop date.  The end points are optionally included
+ * An interval defined by a start date and a stop date.  The end points are optionally included
  in the interval.
- 
-
  */
 @SuppressWarnings( {
         "unused",
@@ -24,13 +21,8 @@ import javax.annotation.Nonnull;
 })
 public final class TimeInterval implements IEquatable<TimeInterval> {
     /**
-    *  
-    Initializes a new interval with the specified start date and stop date.
+    * Initializes a new interval with the specified start date and stop date.
     The new interval is closed, meaning that both end points are included.
-    
-    
-    
-
     * @param start The first date in the interval.
     * @param stop The last date in the interval.
     */
@@ -40,9 +32,7 @@ public final class TimeInterval implements IEquatable<TimeInterval> {
     }
 
     /**
-    *  Gets the start date of the interval.
-    
-
+    * Gets the start date of the interval.
     */
     @Nonnull
     public final JulianDate getStart() {
@@ -50,9 +40,7 @@ public final class TimeInterval implements IEquatable<TimeInterval> {
     }
 
     /**
-    *  Gets the stop date of the interval.
-    
-
+    * Gets the stop date of the interval.
     */
     @Nonnull
     public final JulianDate getStop() {
@@ -60,21 +48,15 @@ public final class TimeInterval implements IEquatable<TimeInterval> {
     }
 
     /**
-    *  Gets a value indicating whether or not the interval is empty.
-    
-
+    * Gets a value indicating whether or not the interval is empty.
     */
     public final boolean getIsEmpty() {
         return JulianDate.greaterThanOrEqual(m_start, m_stop);
     }
 
     /**
-    *  
-    Returns a {@link Duration} representing the span of time between the
+    * Returns a {@link Duration} representing the span of time between the
     {@code Start} ({@link #getStart get}) and {@code Stop} ({@link #getStop get}) of the interval.
-    
-    
-
     * @return The duration.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
@@ -84,13 +66,8 @@ public final class TimeInterval implements IEquatable<TimeInterval> {
     }
 
     /**
-    *  
-    Returns a {@link TimeInterval} equivalent to this one where the time standard
+    * Returns a {@link TimeInterval} equivalent to this one where the time standard
     of the start and end dates has been converted to the specified standard.
-    
-    
-    
-
     * @param timeStandard The time standard of the new interval.
     * @return An equivalent interval with the new time standard.
     */
@@ -104,12 +81,7 @@ public final class TimeInterval implements IEquatable<TimeInterval> {
     }
 
     /**
-    *  
-    Determines if the interval contains a specified date.
-    
-    
-    
-
+    * Determines if the interval contains a specified date.
     * @param date The date to test.
     * @return true if the interval contains the date, otherwise false.
     */
@@ -124,16 +96,10 @@ public final class TimeInterval implements IEquatable<TimeInterval> {
     }
 
     /**
-    *  
-    Determines if this time interval is equal to another time interval, using an epsilon to compare
+    * Determines if this time interval is equal to another time interval, using an epsilon to compare
     the {@code Start} ({@link #getStart get}) and {@code Stop} ({@link #getStop get}) properties of the
     two intervals.  The dates are considered equal if they are within {@code epsilon}
     seconds of each other.  All other properties must be identical.
-    
-    
-    
-    
-
     * @param other The time interval to compare to this time interval.
     * @param epsilon The largest difference between the {@code Start} ({@link #getStart get}) and {@code Stop} ({@link #getStop get}) dates, in seconds, such that they will be considered equal.
     * @return true if the {@code Start} ({@link #getStart get}) and {@code Stop} ({@link #getStop get}) dates of the intervals are equal as defined by the epsilon value and all other properties are identical.
@@ -153,12 +119,7 @@ public final class TimeInterval implements IEquatable<TimeInterval> {
     }
 
     /**
-    *  
-    Indicates whether another instance of this type is exactly equal to this instance.
-    
-    
-    
-
+    * Indicates whether another instance of this type is exactly equal to this instance.
     * @param other The instance to compare to this instance.
     * @return {@code true} if {@code other} represents the same value as this instance; otherwise, {@code false}.
     */
@@ -176,12 +137,7 @@ public final class TimeInterval implements IEquatable<TimeInterval> {
     }
 
     /**
-    *  
-    Indicates whether another object is exactly equal to this instance.
-    
-    
-    
-
+    * Indicates whether another object is exactly equal to this instance.
     * @param obj The object to compare to this instance.
     * @return {@code true} if {@code obj} is an instance of this type and represents the same value as this instance; otherwise, {@code false}.
     */
@@ -191,13 +147,9 @@ public final class TimeInterval implements IEquatable<TimeInterval> {
     }
 
     /**
-    *  
-    Returns a string with interval in the format "[Start, Stop)".  Square brackets indicate
+    * Returns a string with interval in the format "[Start, Stop)".  Square brackets indicate
     that the end point of the interval is included in the intervals.  Parenthesis indicate that the
     end point is not included.
-    
-    
-
     * @return The string.
     */
     @Override
@@ -206,11 +158,7 @@ public final class TimeInterval implements IEquatable<TimeInterval> {
     }
 
     /**
-    *  
-    Returns a hash code for this instance, which is suitable for use in hashing algorithms and data structures like a hash table.
-    
-    
-
+    * Returns a hash code for this instance, which is suitable for use in hashing algorithms and data structures like a hash table.
     * @return A hash code for the current object.
     */
     @Override
@@ -219,18 +167,10 @@ public final class TimeInterval implements IEquatable<TimeInterval> {
     }
 
     /**
-    *  
-    Returns {@code true} if the two instances are exactly equal.
-    
-    
-    
-    
-
+    * Returns {@code true} if the two instances are exactly equal.
     * @param left The instance to compare to {@code right}.
     * @param right The instance to compare to {@code left}.
-    * @return 
-    {@code true} if {@code left} represents the same value as {@code right}; otherwise, {@code false}.
-    
+    * @return {@code true} if {@code left} represents the same value as {@code right}; otherwise, {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(TimeInterval,TimeInterval)'")
     public static boolean equals(TimeInterval left, TimeInterval right) {
@@ -241,18 +181,10 @@ public final class TimeInterval implements IEquatable<TimeInterval> {
     }
 
     /**
-    *  
-    Returns {@code true} if the two instances are not exactly equal.
-    
-    
-    
-    
-
+    * Returns {@code true} if the two instances are not exactly equal.
     * @param left The instance to compare to {@code right}.
     * @param right The instance to compare to {@code left}.
-    * @return 
-    {@code true} if {@code left} does not represent the same value as {@code right}; otherwise, {@code false}.
-    
+    * @return {@code true} if {@code left} does not represent the same value as {@code right}; otherwise, {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(TimeInterval,TimeInterval)'")
     public static boolean notEquals(TimeInterval left, TimeInterval right) {
@@ -260,9 +192,7 @@ public final class TimeInterval implements IEquatable<TimeInterval> {
     }
 
     /**
-    *  Gets an empty interval.
-    
-
+    * Gets an empty interval.
     */
     @Nonnull
     public static TimeInterval getEmpty() {

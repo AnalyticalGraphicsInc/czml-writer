@@ -7,15 +7,8 @@ import cesiumlanguagewriter.*;
 import javax.annotation.Nonnull;
 
 /**
- *  
- A callback to write a value to a {@link CesiumOutputStream} using a given
+ * A callback to write a value to a {@link CesiumOutputStream} using a given
  wrapped property writer.
- 
- 
- 
- 
- 
-
  * @param <TWrappedWriter> The type of the wrapped writer.
  * @param <TValue> The type of the value to write.
  */
@@ -53,15 +46,8 @@ public abstract class CesiumWriterAdaptorWriteCallback<TWrappedWriter extends IC
     }
 
     /**
-    *  
-    A callback to write a value to a {@link CesiumOutputStream} using a given
+    * A callback to write a value to a {@link CesiumOutputStream} using a given
     wrapped property writer.
-    
-    
-    
-    
-    
-
     * @param wrappedWriter The wrapper writer.
     * @param value The value.
     */
@@ -124,15 +110,8 @@ public abstract class CesiumWriterAdaptorWriteCallback<TWrappedWriter extends IC
     @FunctionalInterface
     public interface Function<TWrappedWriter extends ICesiumPropertyWriter, TValue> {
         /**
-        *  
-        A callback to write a value to a {@link CesiumOutputStream} using a given
+        * A callback to write a value to a {@link CesiumOutputStream} using a given
         wrapped property writer.
-        
-        
-        
-        
-        
-
         * @param wrappedWriter The wrapper writer.
         * @param value The value.
         */

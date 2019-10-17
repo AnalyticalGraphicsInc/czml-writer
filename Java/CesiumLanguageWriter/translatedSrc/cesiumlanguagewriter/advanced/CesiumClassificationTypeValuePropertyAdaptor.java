@@ -6,12 +6,8 @@ import cesiumlanguagewriter.*;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Adapts a class that implements {@link ICesiumClassificationTypeValuePropertyWriter} to implement
+ * Adapts a class that implements {@link ICesiumClassificationTypeValuePropertyWriter} to implement
  {@link ICesiumPropertyWriter} for {@link CesiumClassificationType} values.
- 
- 
-
  * @param <TFrom> The class that implements {@link ICesiumClassificationTypeValuePropertyWriter} to adapt.
  */
 @SuppressWarnings( {
@@ -21,13 +17,7 @@ import javax.annotation.Nonnull;
 })
 public class CesiumClassificationTypeValuePropertyAdaptor<TFrom extends ICesiumClassificationTypeValuePropertyWriter> extends CesiumWriterAdaptor<TFrom, CesiumClassificationType> {
     /**
-    *  
-    Initializes a new instance.
-    
-    
-    
-    
-
+    * Initializes a new instance.
     * @param parent The instance to wrap.
     * @param writeValueCallback The callback to write values of type {@link CesiumClassificationType}.
     * @param writeDeleteValueCallback The callback to write an indication that the client should delete existing data.

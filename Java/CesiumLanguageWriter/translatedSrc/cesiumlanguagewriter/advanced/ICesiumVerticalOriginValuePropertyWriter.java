@@ -6,10 +6,7 @@ import cesiumlanguagewriter.*;
 import javax.annotation.Nonnull;
 
 /**
- *  
- A writer that can write a value as a vertical origin.
- 
-
+ * A writer that can write a value as a vertical origin.
  */
 @SuppressWarnings( {
         "unused",
@@ -18,11 +15,7 @@ import javax.annotation.Nonnull;
 })
 public interface ICesiumVerticalOriginValuePropertyWriter extends ICesiumPropertyWriter {
     /**
-    *  
-    Writes the value as a vertical origin.
-    
-    
-
+    * Writes the value as a vertical origin.
     * @param value The vertical origin.
     */
     void writeVerticalOrigin(@Nonnull CesiumVerticalOrigin value);

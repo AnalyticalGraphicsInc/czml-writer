@@ -6,12 +6,8 @@ import cesiumlanguagewriter.*;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Adapts a class that implements {@link ICesiumCartographicRadiansValuePropertyWriter} to implement
+ * Adapts a class that implements {@link ICesiumCartographicRadiansValuePropertyWriter} to implement
  {@link ICesiumInterpolatableValuePropertyWriter} for {@link Cartographic} values.
- 
- 
-
  * @param <TFrom> The class that implements {@link ICesiumCartographicRadiansValuePropertyWriter} to adapt.
  */
 @SuppressWarnings( {
@@ -21,14 +17,7 @@ import javax.annotation.Nonnull;
 })
 public class CesiumCartographicRadiansValuePropertyAdaptor<TFrom extends ICesiumCartographicRadiansValuePropertyWriter> extends CesiumInterpolatableWriterAdaptor<TFrom, Cartographic> {
     /**
-    *  
-    Initializes a new instance.
-    
-    
-    
-    
-    
-
+    * Initializes a new instance.
     * @param parent The instance to wrap.
     * @param writeValueCallback The callback to write values of type {@link Cartographic}.
     * @param writeSamplesCallback The callback to write samples of type {@link Cartographic}.

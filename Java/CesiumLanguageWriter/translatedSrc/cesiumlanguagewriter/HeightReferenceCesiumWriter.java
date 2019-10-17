@@ -8,10 +8,7 @@ import cesiumlanguagewriter.advanced.*;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Writes a {@code HeightReference} to a {@link CesiumOutputStream}. A {@code HeightReference} is the height reference of an object, which indicates if the object's position is relative to terrain or not.
- 
-
+ * Writes a {@code HeightReference} to a {@link CesiumOutputStream}. A {@code HeightReference} is the height reference of an object, which indicates if the object's position is relative to terrain or not.
  */
 @SuppressWarnings( {
         "unused",
@@ -21,35 +18,22 @@ import javax.annotation.Nonnull;
 public class HeightReferenceCesiumWriter extends CesiumPropertyWriter<HeightReferenceCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumHeightReferenceValuePropertyWriter,
         ICesiumReferenceValuePropertyWriter {
     /**
-    *  
-    The name of the {@code heightReference} property.
-    
-
+    * The name of the {@code heightReference} property.
     */
     public static final String HeightReferencePropertyName = "heightReference";
     /**
-    *  
-    The name of the {@code reference} property.
-    
-
+    * The name of the {@code reference} property.
     */
     public static final String ReferencePropertyName = "reference";
     /**
-    *  
-    The name of the {@code delete} property.
-    
-
+    * The name of the {@code delete} property.
     */
     public static final String DeletePropertyName = "delete";
     private Lazy<CesiumHeightReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter>> m_asHeightReference;
     private Lazy<CesiumReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter>> m_asReference;
 
     /**
-    *  
-    Initializes a new instance.
-    
-    
-
+    * Initializes a new instance.
     * @param propertyName The name of the property.
     */
     public HeightReferenceCesiumWriter(@Nonnull String propertyName) {
@@ -59,11 +43,7 @@ public class HeightReferenceCesiumWriter extends CesiumPropertyWriter<HeightRefe
     }
 
     /**
-    *  
-    Initializes a new instance as a copy of an existing instance.
-    
-    
-
+    * Initializes a new instance as a copy of an existing instance.
     * @param existingInstance The existing instance to copy.
     */
     protected HeightReferenceCesiumWriter(@Nonnull HeightReferenceCesiumWriter existingInstance) {
@@ -73,12 +53,7 @@ public class HeightReferenceCesiumWriter extends CesiumPropertyWriter<HeightRefe
     }
 
     /**
-    *  
-    
-    Copies this instance and returns the copy.
-    
-    
-
+    * Copies this instance and returns the copy.
     * @return The copy.
     */
     @Override
@@ -87,11 +62,7 @@ public class HeightReferenceCesiumWriter extends CesiumPropertyWriter<HeightRefe
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code heightReference}, which is the height reference.
-    
-    
-
+    * Writes the value expressed as a {@code heightReference}, which is the height reference.
     * @param value The height reference.
     */
     public final void writeHeightReference(@Nonnull CesiumHeightReference value) {
@@ -106,11 +77,7 @@ public class HeightReferenceCesiumWriter extends CesiumPropertyWriter<HeightRefe
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the height reference specified as a reference to another property.
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the height reference specified as a reference to another property.
     * @param value The reference.
     */
     public final void writeReference(Reference value) {
@@ -121,11 +88,7 @@ public class HeightReferenceCesiumWriter extends CesiumPropertyWriter<HeightRefe
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the height reference specified as a reference to another property.
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the height reference specified as a reference to another property.
     * @param value The reference.
     */
     public final void writeReference(String value) {
@@ -136,12 +99,7 @@ public class HeightReferenceCesiumWriter extends CesiumPropertyWriter<HeightRefe
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the height reference specified as a reference to another property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the height reference specified as a reference to another property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -153,12 +111,7 @@ public class HeightReferenceCesiumWriter extends CesiumPropertyWriter<HeightRefe
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the height reference specified as a reference to another property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the height reference specified as a reference to another property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -170,11 +123,7 @@ public class HeightReferenceCesiumWriter extends CesiumPropertyWriter<HeightRefe
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
-    
-    
-
+    * Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
     * @param value The value.
     */
     public final void writeDelete(boolean value) {
@@ -185,11 +134,7 @@ public class HeightReferenceCesiumWriter extends CesiumPropertyWriter<HeightRefe
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumHeightReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumHeightReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumHeightReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter> asHeightReference() {
@@ -210,11 +155,7 @@ public class HeightReferenceCesiumWriter extends CesiumPropertyWriter<HeightRefe
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter> asReference() {

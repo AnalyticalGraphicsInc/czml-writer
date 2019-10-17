@@ -14,10 +14,7 @@ import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
 /**
- *  
- A series of tests to exercise this type.
- 
-
+ * A series of tests to exercise this type.
  */
 @SuppressWarnings( {
         "unused",
@@ -27,10 +24,7 @@ import org.junit.Test;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestDuration {
     /**
-    *  
-    Tests that {@code MinValue} ({@link Duration#getMinValue get}), {@code MaxValue} ({@link Duration#getMaxValue get}), and {@code Zero} ({@link Duration#getZero get}) can be constructed as claimed.
-    
-
+    * Tests that {@code MinValue} ({@link Duration#getMinValue get}), {@code MaxValue} ({@link Duration#getMaxValue get}), and {@code Zero} ({@link Duration#getZero get}) can be constructed as claimed.
     */
     @Test
     public final void testMinValueMaxValueZeroValue() {
@@ -46,10 +40,7 @@ public class TestDuration {
     }
 
     /**
-    *  
-    Tests the Duration constructors that take days, minutes, hours, and seconds.
-    
-
+    * Tests the Duration constructors that take days, minutes, hours, and seconds.
     */
     @Test
     public final void testDaysHoursMinutesSecondsConstructors() {
@@ -59,11 +50,8 @@ public class TestDuration {
     }
 
     /**
-    *  
-    Tests that initialization produces a {@link Duration} in canonical form
+    * Tests that initialization produces a {@link Duration} in canonical form
     with day and seconds elements being either both positive or both negative.
-    
-
     */
     @Test
     public final void testNormalization() {
@@ -83,11 +71,8 @@ public class TestDuration {
     }
 
     /**
-    *  
-    Tests that initialization produces a {@link Duration} which is normalized with the
+    * Tests that initialization produces a {@link Duration} which is normalized with the
     seconds element in the range -86400.0 &lt; seconds &lt; 86400.0.
-    
-
     */
     @Test
     public final void testSecondsGreaterThanADay() {
@@ -97,10 +82,7 @@ public class TestDuration {
     }
 
     /**
-    *  
-    Tests the check for EXACT equality and the check for equality within a specified tolerance.
-    
-
+    * Tests the check for EXACT equality and the check for equality within a specified tolerance.
     */
     @Test
     public final void testEquality() {
@@ -134,10 +116,7 @@ public class TestDuration {
     }
 
     /**
-    *  
-    Tests Duration.CompareTo
-    
-
+    * Tests Duration.CompareTo
     */
     @Test
     public final void testCompareTo() {
@@ -166,11 +145,8 @@ public class TestDuration {
     }
 
     /**
-    *  
-    Tests the addition operation between two {@link Duration} instances
+    * Tests the addition operation between two {@link Duration} instances
     with unspecified time standards.
-    
-
     */
     @Test
     public final void testAddition() {
@@ -192,11 +168,8 @@ public class TestDuration {
     }
 
     /**
-    *  
-    Tests the subtraction operation between two {@link Duration} instances
+    * Tests the subtraction operation between two {@link Duration} instances
     with unspecified time standards.
-    
-
     */
     @Test
     public final void testSubtraction() {
@@ -225,10 +198,7 @@ public class TestDuration {
     }
 
     /**
-    *  
-    Tests multiplication of a {@link Duration} instance by a constant.
-    
-
+    * Tests multiplication of a {@link Duration} instance by a constant.
     */
     @Test
     public final void testMultiplication() {
@@ -265,10 +235,7 @@ public class TestDuration {
     }
 
     /**
-    *  
-    Tests division of a {@link Duration} by another.
-    
-
+    * Tests division of a {@link Duration} by another.
     */
     @Test
     public final void testDivisionByDuration() {
@@ -291,10 +258,7 @@ public class TestDuration {
     }
 
     /**
-    *  
-    Tests division of a {@link Duration} by a constant.
-    
-
+    * Tests division of a {@link Duration} by a constant.
     */
     @Test
     public final void testDivisionByConstant() {
@@ -332,10 +296,7 @@ public class TestDuration {
     }
 
     /**
-    *  
-    Tests the Duration.AddSeconds method.
-    
-
+    * Tests the Duration.AddSeconds method.
     */
     @Test
     public final void testAddSeconds() {
@@ -346,10 +307,7 @@ public class TestDuration {
     }
 
     /**
-    *  
-    Tests the Duration.AddDays method.
-    
-
+    * Tests the Duration.AddDays method.
     */
     @Test
     public final void testAddDays() {
@@ -360,10 +318,7 @@ public class TestDuration {
     }
 
     /**
-    *  
-    Tests that Duration.GetHashCode returns something at least reasonably random.
-    
-
+    * Tests that Duration.GetHashCode returns something at least reasonably random.
     */
     @Test
     public final void testGetHashCode() {
@@ -375,10 +330,7 @@ public class TestDuration {
     }
 
     /**
-    *  
-    Tests the Duration.TotalDays property
-    
-
+    * Tests the Duration.TotalDays property
     */
     @Test
     public final void testTotalDays() {
@@ -387,10 +339,7 @@ public class TestDuration {
     }
 
     /**
-    *  
-    Test the {@link Duration#toString} method.
-    
-
+    * Test the {@link Duration#toString} method.
     */
     @Test
     public final void testToString() {
@@ -399,14 +348,11 @@ public class TestDuration {
     }
 
     /**
-    *  
-    Tests construction of a {@link Duration} with a really small negative
+    * Tests construction of a {@link Duration} with a really small negative
     seconds.  Duration will attempt to eliminate the negative Seconds
     by rolling the Days back one day, but doing so results in setting the Seconds to
     86400.0 seconds.  This is still not normalized, so Duration should bump the Days
     back up and round the Seconds to 0.0.
-    
-
     */
     @Test
     public final void testReallySmallSeconds() {

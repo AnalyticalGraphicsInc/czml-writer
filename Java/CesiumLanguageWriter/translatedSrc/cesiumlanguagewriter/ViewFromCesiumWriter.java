@@ -9,10 +9,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Writes a {@code ViewFrom} to a {@link CesiumOutputStream}. A {@code ViewFrom} is a suggested initial camera position offset when tracking this object, specified as a Cartesian position. Typically defined in the East (x), North (y), Up (z) reference frame relative to the object's position, but may use another frame depending on the object's velocity.
- 
-
+ * Writes a {@code ViewFrom} to a {@link CesiumOutputStream}. A {@code ViewFrom} is a suggested initial camera position offset when tracking this object, specified as a Cartesian position. Typically defined in the East (x), North (y), Up (z) reference frame relative to the object's position, but may use another frame depending on the object's velocity.
  */
 @SuppressWarnings( {
         "unused",
@@ -22,35 +19,22 @@ import javax.annotation.Nonnull;
 public class ViewFromCesiumWriter extends CesiumInterpolatablePropertyWriter<ViewFromCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumCartesian3ValuePropertyWriter,
         ICesiumReferenceValuePropertyWriter {
     /**
-    *  
-    The name of the {@code cartesian} property.
-    
-
+    * The name of the {@code cartesian} property.
     */
     public static final String CartesianPropertyName = "cartesian";
     /**
-    *  
-    The name of the {@code reference} property.
-    
-
+    * The name of the {@code reference} property.
     */
     public static final String ReferencePropertyName = "reference";
     /**
-    *  
-    The name of the {@code delete} property.
-    
-
+    * The name of the {@code delete} property.
     */
     public static final String DeletePropertyName = "delete";
     private Lazy<CesiumCartesian3ValuePropertyAdaptor<ViewFromCesiumWriter>> m_asCartesian;
     private Lazy<CesiumReferenceValuePropertyAdaptor<ViewFromCesiumWriter>> m_asReference;
 
     /**
-    *  
-    Initializes a new instance.
-    
-    
-
+    * Initializes a new instance.
     * @param propertyName The name of the property.
     */
     public ViewFromCesiumWriter(@Nonnull String propertyName) {
@@ -60,11 +44,7 @@ public class ViewFromCesiumWriter extends CesiumInterpolatablePropertyWriter<Vie
     }
 
     /**
-    *  
-    Initializes a new instance as a copy of an existing instance.
-    
-    
-
+    * Initializes a new instance as a copy of an existing instance.
     * @param existingInstance The existing instance to copy.
     */
     protected ViewFromCesiumWriter(@Nonnull ViewFromCesiumWriter existingInstance) {
@@ -74,12 +54,7 @@ public class ViewFromCesiumWriter extends CesiumInterpolatablePropertyWriter<Vie
     }
 
     /**
-    *  
-    
-    Copies this instance and returns the copy.
-    
-    
-
+    * Copies this instance and returns the copy.
     * @return The copy.
     */
     @Override
@@ -88,11 +63,7 @@ public class ViewFromCesiumWriter extends CesiumInterpolatablePropertyWriter<Vie
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartesian}, which is the offset specified as a three-dimensional Cartesian value {@code [X, Y, Z]}.
-    
-    
-
+    * Writes the value expressed as a {@code cartesian}, which is the offset specified as a three-dimensional Cartesian value {@code [X, Y, Z]}.
     * @param value The value.
     */
     public final void writeCartesian(@Nonnull Cartesian value) {
@@ -103,12 +74,7 @@ public class ViewFromCesiumWriter extends CesiumInterpolatablePropertyWriter<Vie
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartesian}, which is the offset specified as a three-dimensional Cartesian value {@code [X, Y, Z]}.
-    
-    
-    
-
+    * Writes the value expressed as a {@code cartesian}, which is the offset specified as a three-dimensional Cartesian value {@code [X, Y, Z]}.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -117,14 +83,7 @@ public class ViewFromCesiumWriter extends CesiumInterpolatablePropertyWriter<Vie
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartesian}, which is the offset specified as a three-dimensional Cartesian value {@code [X, Y, Z]}.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code cartesian}, which is the offset specified as a three-dimensional Cartesian value {@code [X, Y, Z]}.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -137,11 +96,7 @@ public class ViewFromCesiumWriter extends CesiumInterpolatablePropertyWriter<Vie
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the offset specified as a reference to another property.
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the offset specified as a reference to another property.
     * @param value The reference.
     */
     public final void writeReference(Reference value) {
@@ -152,11 +107,7 @@ public class ViewFromCesiumWriter extends CesiumInterpolatablePropertyWriter<Vie
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the offset specified as a reference to another property.
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the offset specified as a reference to another property.
     * @param value The reference.
     */
     public final void writeReference(String value) {
@@ -167,12 +118,7 @@ public class ViewFromCesiumWriter extends CesiumInterpolatablePropertyWriter<Vie
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the offset specified as a reference to another property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the offset specified as a reference to another property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -184,12 +130,7 @@ public class ViewFromCesiumWriter extends CesiumInterpolatablePropertyWriter<Vie
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the offset specified as a reference to another property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the offset specified as a reference to another property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -201,11 +142,7 @@ public class ViewFromCesiumWriter extends CesiumInterpolatablePropertyWriter<Vie
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
-    
-    
-
+    * Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
     * @param value The value.
     */
     public final void writeDelete(boolean value) {
@@ -216,11 +153,7 @@ public class ViewFromCesiumWriter extends CesiumInterpolatablePropertyWriter<Vie
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumCartesian3ValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumCartesian3ValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumCartesian3ValuePropertyAdaptor<ViewFromCesiumWriter> asCartesian() {
@@ -241,11 +174,7 @@ public class ViewFromCesiumWriter extends CesiumInterpolatablePropertyWriter<Vie
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumReferenceValuePropertyAdaptor<ViewFromCesiumWriter> asReference() {

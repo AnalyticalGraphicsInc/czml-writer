@@ -9,10 +9,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Writes a {@code Position} to a {@link CesiumOutputStream}. A {@code Position} is defines a position. The position can optionally vary over time.
- 
-
+ * Writes a {@code Position} to a {@link CesiumOutputStream}. A {@code Position} is defines a position. The position can optionally vary over time.
  */
 @SuppressWarnings( {
         "unused",
@@ -22,52 +19,31 @@ import javax.annotation.Nonnull;
 public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<PositionCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumCartesian3ValuePropertyWriter,
         ICesiumCartographicRadiansValuePropertyWriter, ICesiumCartographicDegreesValuePropertyWriter, ICesiumCartesian3VelocityValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
-    *  
-    The name of the {@code referenceFrame} property.
-    
-
+    * The name of the {@code referenceFrame} property.
     */
     public static final String ReferenceFramePropertyName = "referenceFrame";
     /**
-    *  
-    The name of the {@code cartesian} property.
-    
-
+    * The name of the {@code cartesian} property.
     */
     public static final String CartesianPropertyName = "cartesian";
     /**
-    *  
-    The name of the {@code cartographicRadians} property.
-    
-
+    * The name of the {@code cartographicRadians} property.
     */
     public static final String CartographicRadiansPropertyName = "cartographicRadians";
     /**
-    *  
-    The name of the {@code cartographicDegrees} property.
-    
-
+    * The name of the {@code cartographicDegrees} property.
     */
     public static final String CartographicDegreesPropertyName = "cartographicDegrees";
     /**
-    *  
-    The name of the {@code cartesianVelocity} property.
-    
-
+    * The name of the {@code cartesianVelocity} property.
     */
     public static final String CartesianVelocityPropertyName = "cartesianVelocity";
     /**
-    *  
-    The name of the {@code reference} property.
-    
-
+    * The name of the {@code reference} property.
     */
     public static final String ReferencePropertyName = "reference";
     /**
-    *  
-    The name of the {@code delete} property.
-    
-
+    * The name of the {@code delete} property.
     */
     public static final String DeletePropertyName = "delete";
     private Lazy<CesiumCartesian3ValuePropertyAdaptor<PositionCesiumWriter>> m_asCartesian;
@@ -77,11 +53,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
     private Lazy<CesiumReferenceValuePropertyAdaptor<PositionCesiumWriter>> m_asReference;
 
     /**
-    *  
-    Initializes a new instance.
-    
-    
-
+    * Initializes a new instance.
     * @param propertyName The name of the property.
     */
     public PositionCesiumWriter(@Nonnull String propertyName) {
@@ -94,11 +66,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
     }
 
     /**
-    *  
-    Initializes a new instance as a copy of an existing instance.
-    
-    
-
+    * Initializes a new instance as a copy of an existing instance.
     * @param existingInstance The existing instance to copy.
     */
     protected PositionCesiumWriter(@Nonnull PositionCesiumWriter existingInstance) {
@@ -111,12 +79,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
     }
 
     /**
-    *  
-    
-    Copies this instance and returns the copy.
-    
-    
-
+    * Copies this instance and returns the copy.
     * @return The copy.
     */
     @Override
@@ -125,11 +88,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code referenceFrame}, which is the reference frame in which cartesian positions are specified. Possible values are "FIXED" and "INERTIAL". If not specified, the default value is FIXED.
-    
-    
-
+    * Writes the value expressed as a {@code referenceFrame}, which is the reference frame in which cartesian positions are specified. Possible values are "FIXED" and "INERTIAL". If not specified, the default value is FIXED.
     * @param value The value.
     */
     public final void writeReferenceFrame(String value) {
@@ -140,11 +99,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartesian}, which is the position specified as a three-dimensional Cartesian value, {@code [X, Y, Z]}, in meters relative to the {@code referenceFrame}.
-    
-    
-
+    * Writes the value expressed as a {@code cartesian}, which is the position specified as a three-dimensional Cartesian value, {@code [X, Y, Z]}, in meters relative to the {@code referenceFrame}.
     * @param value The value.
     */
     public final void writeCartesian(@Nonnull Cartesian value) {
@@ -155,12 +110,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartesian}, which is the position specified as a three-dimensional Cartesian value, {@code [X, Y, Z]}, in meters relative to the {@code referenceFrame}.
-    
-    
-    
-
+    * Writes the value expressed as a {@code cartesian}, which is the position specified as a three-dimensional Cartesian value, {@code [X, Y, Z]}, in meters relative to the {@code referenceFrame}.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -169,14 +119,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartesian}, which is the position specified as a three-dimensional Cartesian value, {@code [X, Y, Z]}, in meters relative to the {@code referenceFrame}.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code cartesian}, which is the position specified as a three-dimensional Cartesian value, {@code [X, Y, Z]}, in meters relative to the {@code referenceFrame}.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -189,11 +132,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartographicRadians}, which is the position specified in Cartographic WGS84 coordinates, {@code [Longitude, Latitude, Height]}, where Longitude and Latitude are in radians and Height is in meters.
-    
-    
-
+    * Writes the value expressed as a {@code cartographicRadians}, which is the position specified in Cartographic WGS84 coordinates, {@code [Longitude, Latitude, Height]}, where Longitude and Latitude are in radians and Height is in meters.
     * @param value The interval.
     */
     public final void writeCartographicRadians(@Nonnull Cartographic value) {
@@ -204,12 +143,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartographicRadians}, which is the position specified in Cartographic WGS84 coordinates, {@code [Longitude, Latitude, Height]}, where Longitude and Latitude are in radians and Height is in meters.
-    
-    
-    
-
+    * Writes the value expressed as a {@code cartographicRadians}, which is the position specified in Cartographic WGS84 coordinates, {@code [Longitude, Latitude, Height]}, where Longitude and Latitude are in radians and Height is in meters.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -218,14 +152,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartographicRadians}, which is the position specified in Cartographic WGS84 coordinates, {@code [Longitude, Latitude, Height]}, where Longitude and Latitude are in radians and Height is in meters.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code cartographicRadians}, which is the position specified in Cartographic WGS84 coordinates, {@code [Longitude, Latitude, Height]}, where Longitude and Latitude are in radians and Height is in meters.
     * @param dates The dates at which the value is specified.
     * @param values The position corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -238,11 +165,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartographicDegrees}, which is the position specified in Cartographic WGS84 coordinates, {@code [Longitude, Latitude, Height]}, where Longitude and Latitude are in degrees and Height is in meters.
-    
-    
-
+    * Writes the value expressed as a {@code cartographicDegrees}, which is the position specified in Cartographic WGS84 coordinates, {@code [Longitude, Latitude, Height]}, where Longitude and Latitude are in degrees and Height is in meters.
     * @param value The interval.
     */
     public final void writeCartographicDegrees(@Nonnull Cartographic value) {
@@ -253,12 +176,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartographicDegrees}, which is the position specified in Cartographic WGS84 coordinates, {@code [Longitude, Latitude, Height]}, where Longitude and Latitude are in degrees and Height is in meters.
-    
-    
-    
-
+    * Writes the value expressed as a {@code cartographicDegrees}, which is the position specified in Cartographic WGS84 coordinates, {@code [Longitude, Latitude, Height]}, where Longitude and Latitude are in degrees and Height is in meters.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -267,14 +185,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartographicDegrees}, which is the position specified in Cartographic WGS84 coordinates, {@code [Longitude, Latitude, Height]}, where Longitude and Latitude are in degrees and Height is in meters.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code cartographicDegrees}, which is the position specified in Cartographic WGS84 coordinates, {@code [Longitude, Latitude, Height]}, where Longitude and Latitude are in degrees and Height is in meters.
     * @param dates The dates at which the value is specified.
     * @param values The position corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -287,11 +198,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartesianVelocity}, which is the position and velocity specified as a three-dimensional Cartesian value and its derivative, {@code [X, Y, Z, dX, dY, dZ]}, in meters relative to the {@code referenceFrame}.
-    
-    
-
+    * Writes the value expressed as a {@code cartesianVelocity}, which is the position and velocity specified as a three-dimensional Cartesian value and its derivative, {@code [X, Y, Z, dX, dY, dZ]}, in meters relative to the {@code referenceFrame}.
     * @param value The value.
     */
     public final void writeCartesianVelocity(@Nonnull Motion1<Cartesian> value) {
@@ -302,12 +209,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartesianVelocity}, which is the position and velocity specified as a three-dimensional Cartesian value and its derivative, {@code [X, Y, Z, dX, dY, dZ]}, in meters relative to the {@code referenceFrame}.
-    
-    
-    
-
+    * Writes the value expressed as a {@code cartesianVelocity}, which is the position and velocity specified as a three-dimensional Cartesian value and its derivative, {@code [X, Y, Z, dX, dY, dZ]}, in meters relative to the {@code referenceFrame}.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -316,14 +218,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartesianVelocity}, which is the position and velocity specified as a three-dimensional Cartesian value and its derivative, {@code [X, Y, Z, dX, dY, dZ]}, in meters relative to the {@code referenceFrame}.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code cartesianVelocity}, which is the position and velocity specified as a three-dimensional Cartesian value and its derivative, {@code [X, Y, Z, dX, dY, dZ]}, in meters relative to the {@code referenceFrame}.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -336,11 +231,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the position specified as a reference to another property.
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the position specified as a reference to another property.
     * @param value The reference.
     */
     public final void writeReference(Reference value) {
@@ -351,11 +242,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the position specified as a reference to another property.
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the position specified as a reference to another property.
     * @param value The reference.
     */
     public final void writeReference(String value) {
@@ -366,12 +253,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the position specified as a reference to another property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the position specified as a reference to another property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -383,12 +265,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the position specified as a reference to another property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the position specified as a reference to another property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -400,11 +277,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
-    
-    
-
+    * Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
     * @param value The value.
     */
     public final void writeDelete(boolean value) {
@@ -415,11 +288,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumCartesian3ValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumCartesian3ValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumCartesian3ValuePropertyAdaptor<PositionCesiumWriter> asCartesian() {
@@ -440,11 +309,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumCartographicRadiansValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumCartographicRadiansValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumCartographicRadiansValuePropertyAdaptor<PositionCesiumWriter> asCartographicRadians() {
@@ -465,11 +330,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumCartographicDegreesValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumCartographicDegreesValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumCartographicDegreesValuePropertyAdaptor<PositionCesiumWriter> asCartographicDegrees() {
@@ -490,11 +351,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumCartesian3VelocityValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumCartesian3VelocityValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumCartesian3VelocityValuePropertyAdaptor<PositionCesiumWriter> asCartesianVelocity() {
@@ -515,11 +372,7 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumReferenceValuePropertyAdaptor<PositionCesiumWriter> asReference() {

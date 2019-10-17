@@ -6,12 +6,8 @@ import cesiumlanguagewriter.*;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Adapts a class that implements {@link ICesiumBoundingRectangleValuePropertyWriter} to implement
+ * Adapts a class that implements {@link ICesiumBoundingRectangleValuePropertyWriter} to implement
  {@link ICesiumInterpolatableValuePropertyWriter} for {@link BoundingRectangle} values.
- 
- 
-
  * @param <TFrom> The class that implements {@link ICesiumBoundingRectangleValuePropertyWriter} to adapt.
  */
 @SuppressWarnings( {
@@ -21,14 +17,7 @@ import javax.annotation.Nonnull;
 })
 public class CesiumBoundingRectangleValuePropertyAdaptor<TFrom extends ICesiumBoundingRectangleValuePropertyWriter> extends CesiumInterpolatableWriterAdaptor<TFrom, BoundingRectangle> {
     /**
-    *  
-    Initializes a new instance.
-    
-    
-    
-    
-    
-
+    * Initializes a new instance.
     * @param parent The instance to wrap.
     * @param writeValueCallback The callback to write values of type {@link BoundingRectangle}.
     * @param writeSamplesCallback The callback to write samples of type {@link BoundingRectangle}.

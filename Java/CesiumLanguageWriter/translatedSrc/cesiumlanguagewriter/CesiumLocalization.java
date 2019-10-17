@@ -11,10 +11,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 /**
- *  
-   A strongly-typed resource class, for looking up localized strings, etc.
- 
-
+ * A strongly-typed resource class, for looking up localized strings, etc.
  * @deprecated Internal use only.
  */
 @SuppressWarnings( {
@@ -43,10 +40,7 @@ public class CesiumLocalization {
     public CesiumLocalization() {}
 
     /**
-    *  
-    Returns the cached ResourceManager instance used by this class.
-    
-
+    * Returns the cached ResourceManager instance used by this class.
     * @deprecated Internal use only.
     */
     @Deprecated
@@ -60,11 +54,8 @@ public class CesiumLocalization {
     }
 
     /**
-    *  
-    Overrides the current thread's CurrentUICulture property for all
+    * Overrides the current thread's CurrentUICulture property for all
     resource lookups using this strongly typed resource class.
-    
-
     * @deprecated Internal use only.
     */
     @Deprecated
@@ -74,11 +65,8 @@ public class CesiumLocalization {
     }
 
     /**
-    *  
-    Overrides the current thread's CurrentUICulture property for all
+    * Overrides the current thread's CurrentUICulture property for all
     resource lookups using this strongly typed resource class.
-    
-
     * @deprecated Internal use only.
     */
     @Deprecated
@@ -88,10 +76,7 @@ public class CesiumLocalization {
     }
 
     /**
-    *  
-    Looks up a localized string similar to The argument is not an expected type for the method..
-    
-
+    * Looks up a localized string similar to The argument is not an expected type for the method..
     * @deprecated Internal use only.
     */
     @Deprecated
@@ -101,10 +86,7 @@ public class CesiumLocalization {
     }
 
     /**
-    *  
-    Looks up a localized string similar to JulianDate cannot represent the moment of a leap second with the UTC time standard..
-    
-
+    * Looks up a localized string similar to JulianDate cannot represent the moment of a leap second with the UTC time standard..
     * @deprecated Internal use only.
     */
     @Deprecated
@@ -114,10 +96,7 @@ public class CesiumLocalization {
     }
 
     /**
-    *  
-    Looks up a localized string similar to The requested data cannot be downloaded..
-    
-
+    * Looks up a localized string similar to The requested data cannot be downloaded..
     * @deprecated Internal use only.
     */
     @Deprecated
@@ -127,10 +106,7 @@ public class CesiumLocalization {
     }
 
     /**
-    *  
-    Looks up a localized string similar to The given date must be in the UTC time standard..
-    
-
+    * Looks up a localized string similar to The given date must be in the UTC time standard..
     * @deprecated Internal use only.
     */
     @Deprecated
@@ -140,10 +116,7 @@ public class CesiumLocalization {
     }
 
     /**
-    *  
-    Looks up a localized string similar to The Day of Year must be between 1 and 366 inclusive..
-    
-
+    * Looks up a localized string similar to The Day of Year must be between 1 and 366 inclusive..
     * @deprecated Internal use only.
     */
     @Deprecated
@@ -153,10 +126,7 @@ public class CesiumLocalization {
     }
 
     /**
-    *  
-    Looks up a localized string similar to Invalid format string..
-    
-
+    * Looks up a localized string similar to Invalid format string..
     * @deprecated Internal use only.
     */
     @Deprecated
@@ -166,10 +136,7 @@ public class CesiumLocalization {
     }
 
     /**
-    *  
-    Looks up a localized string similar to Invalid character {0} in format specifier..
-    
-
+    * Looks up a localized string similar to Invalid character {0} in format specifier..
     * @deprecated Internal use only.
     */
     @Deprecated
@@ -179,10 +146,7 @@ public class CesiumLocalization {
     }
 
     /**
-    *  
-    Looks up a localized string similar to Invalid character {0} at the end of the format specifier..
-    
-
+    * Looks up a localized string similar to Invalid character {0} at the end of the format specifier..
     * @deprecated Internal use only.
     */
     @Deprecated
@@ -192,10 +156,7 @@ public class CesiumLocalization {
     }
 
     /**
-    *  
-    Looks up a localized string similar to {0} is not one of the format specifier characters defined for DateTimeFormatInfo..
-    
-
+    * Looks up a localized string similar to {0} is not one of the format specifier characters defined for DateTimeFormatInfo..
     * @deprecated Internal use only.
     */
     @Deprecated
@@ -205,10 +166,7 @@ public class CesiumLocalization {
     }
 
     /**
-    *  
-    Looks up a localized string similar to Order of month and date is not defined by {0}..
-    
-
+    * Looks up a localized string similar to Order of month and date is not defined by {0}..
     * @deprecated Internal use only.
     */
     @Deprecated
@@ -218,10 +176,7 @@ public class CesiumLocalization {
     }
 
     /**
-    *  
-    Looks up a localized string similar to Order of year, month and date is not defined by {0}..
-    
-
+    * Looks up a localized string similar to Order of year, month and date is not defined by {0}..
     * @deprecated Internal use only.
     */
     @Deprecated
@@ -231,10 +186,7 @@ public class CesiumLocalization {
     }
 
     /**
-    *  
-    Looks up a localized string similar to Order of year, month and date defined by {0} is not supported..
-    
-
+    * Looks up a localized string similar to Order of year, month and date defined by {0} is not supported..
     * @deprecated Internal use only.
     */
     @Deprecated
@@ -244,10 +196,7 @@ public class CesiumLocalization {
     }
 
     /**
-    *  
-    Looks up a localized string similar to A quote was not terminated..
-    
-
+    * Looks up a localized string similar to A quote was not terminated..
     * @deprecated Internal use only.
     */
     @Deprecated
@@ -257,10 +206,7 @@ public class CesiumLocalization {
     }
 
     /**
-    *  
-    Looks up a localized string similar to Input {0} was not recognized as a valid GregorianDate..
-    
-
+    * Looks up a localized string similar to Input {0} was not recognized as a valid GregorianDate..
     * @deprecated Internal use only.
     */
     @Deprecated
@@ -270,10 +216,7 @@ public class CesiumLocalization {
     }
 
     /**
-    *  
-    Looks up a localized string similar to One or more of the hour, minute, and second arguments is outside of the acceptable range..
-    
-
+    * Looks up a localized string similar to One or more of the hour, minute, and second arguments is outside of the acceptable range..
     * @deprecated Internal use only.
     */
     @Deprecated
@@ -283,10 +226,7 @@ public class CesiumLocalization {
     }
 
     /**
-    *  
-    Looks up a localized string similar to The provided reference string is not in the correct format..
-    
-
+    * Looks up a localized string similar to The provided reference string is not in the correct format..
     * @deprecated Internal use only.
     */
     @Deprecated
@@ -296,10 +236,7 @@ public class CesiumLocalization {
     }
 
     /**
-    *  
-    Looks up a localized string similar to The magnitude of the provided coordinates must not be infinite..
-    
-
+    * Looks up a localized string similar to The magnitude of the provided coordinates must not be infinite..
     * @deprecated Internal use only.
     */
     @Deprecated
@@ -309,10 +246,7 @@ public class CesiumLocalization {
     }
 
     /**
-    *  
-    Looks up a localized string similar to The magnitude of the provided coordinates must not be zero..
-    
-
+    * Looks up a localized string similar to The magnitude of the provided coordinates must not be zero..
     * @deprecated Internal use only.
     */
     @Deprecated
@@ -322,10 +256,7 @@ public class CesiumLocalization {
     }
 
     /**
-    *  
-    Looks up a localized string similar to This collection must have the same number of elements as the "dates" collection..
-    
-
+    * Looks up a localized string similar to This collection must have the same number of elements as the "dates" collection..
     * @deprecated Internal use only.
     */
     @Deprecated
@@ -335,10 +266,7 @@ public class CesiumLocalization {
     }
 
     /**
-    *  
-    Looks up a localized string similar to A Motion instance must be constructed with at least one value..
-    
-
+    * Looks up a localized string similar to A Motion instance must be constructed with at least one value..
     * @deprecated Internal use only.
     */
     @Deprecated
@@ -348,10 +276,7 @@ public class CesiumLocalization {
     }
 
     /**
-    *  
-    Looks up a localized string similar to The enumeration has an invalid or unsupported value..
-    
-
+    * Looks up a localized string similar to The enumeration has an invalid or unsupported value..
     * @deprecated Internal use only.
     */
     @Deprecated
@@ -361,10 +286,7 @@ public class CesiumLocalization {
     }
 
     /**
-    *  
-    Looks up a localized string similar to The upper bound cannot be less than the lower bound..
-    
-
+    * Looks up a localized string similar to The upper bound cannot be less than the lower bound..
     * @deprecated Internal use only.
     */
     @Deprecated
@@ -374,10 +296,7 @@ public class CesiumLocalization {
     }
 
     /**
-    *  
-    Looks up a localized string similar to The Cesium writer cannot be closed because it is not open..
-    
-
+    * Looks up a localized string similar to The Cesium writer cannot be closed because it is not open..
     * @deprecated Internal use only.
     */
     @Deprecated
@@ -387,10 +306,7 @@ public class CesiumLocalization {
     }
 
     /**
-    *  
-    Looks up a localized string similar to The Cesium writer cannot be opened because it is already opened.  Please close the previous element before opening a new one..
-    
-
+    * Looks up a localized string similar to The Cesium writer cannot be opened because it is already opened.  Please close the previous element before opening a new one..
     * @deprecated Internal use only.
     */
     @Deprecated
@@ -400,10 +316,7 @@ public class CesiumLocalization {
     }
 
     /**
-    *  
-    Looks up a localized string similar to The Cesium writer cannot be used to write elements because it is not currently open.  This usually indicates an attempt to use a writer after is has been closed..
-    
-
+    * Looks up a localized string similar to The Cesium writer cannot be used to write elements because it is not currently open.  This usually indicates an attempt to use a writer after is has been closed..
     * @deprecated Internal use only.
     */
     @Deprecated
@@ -413,10 +326,7 @@ public class CesiumLocalization {
     }
 
     /**
-    *  
-    Looks up a localized string similar to One or more of the year, month, and day arguments is outside of the acceptable range..
-    
-
+    * Looks up a localized string similar to One or more of the year, month, and day arguments is outside of the acceptable range..
     * @deprecated Internal use only.
     */
     @Deprecated

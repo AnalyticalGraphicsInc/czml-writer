@@ -20,10 +20,7 @@ import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
 /**
- *  
- A series of tests to exercise this type.
- 
-
+ * A series of tests to exercise this type.
  */
 @SuppressWarnings( {
         "unused",
@@ -33,11 +30,8 @@ import org.junit.Test;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestYearMonthDay {
     /**
-    *  
-    Tests that an appropriate exception is thrown when constructing a
+    * Tests that an appropriate exception is thrown when constructing a
     YearMonthDay with an invalid date.
-    
-
     */
     @Test
     public final void testConstructWithInvalidDate() {
@@ -49,11 +43,8 @@ public class TestYearMonthDay {
     }
 
     /**
-    *  
-    Tests that years divisible by 4, except for years which are both divisible
+    * Tests that years divisible by 4, except for years which are both divisible
     by 100 and not divisible by 400, are leap years.
-    
-
     */
     @Test
     public final void testIsLeapYear() {
@@ -65,11 +56,8 @@ public class TestYearMonthDay {
     }
 
     /**
-    *  
-    Tests that years divisible by 4, except for years which are both divisible
+    * Tests that years divisible by 4, except for years which are both divisible
     by 100 and not divisible by 400, have 366 days instead of 365.
-    
-
     */
     @Test
     public final void testDaysInYear() {
@@ -83,10 +71,7 @@ public class TestYearMonthDay {
     }
 
     /**
-    *  
-    Tests that the length of the month is reported correctly for common years and leap years.
-    
-
+    * Tests that the length of the month is reported correctly for common years and leap years.
     */
     @Test
     public final void testDaysInMonth() {
@@ -124,11 +109,8 @@ public class TestYearMonthDay {
     }
 
     /**
-    *  
-    Tests that month of year and day of month ranges are validated correctly.
+    * Tests that month of year and day of month ranges are validated correctly.
     There is no current limit on the year representation.
-    
-
     */
     @Test
     public final void testIsValidDate() {
@@ -157,10 +139,7 @@ public class TestYearMonthDay {
     }
 
     /**
-    *  
-    Tests that initialization of and access to the structure elements is performed correctly.
-    
-
+    * Tests that initialization of and access to the structure elements is performed correctly.
     */
     @Test
     public final void testRetainValue() {
@@ -171,10 +150,7 @@ public class TestYearMonthDay {
     }
 
     /**
-    *  
-    Tests the check for EXACT equality.
-    
-
+    * Tests the check for EXACT equality.
     */
     @Test
     public final void testEquality() {
@@ -207,10 +183,7 @@ public class TestYearMonthDay {
     }
 
     /**
-    *  
-    Tests the {@code DayOfYear} ({@link YearMonthDay#getDayOfYear get}) property.
-    
-
+    * Tests the {@code DayOfYear} ({@link YearMonthDay#getDayOfYear get}) property.
     */
     @Test
     public final void testDayOfYear() {
@@ -225,10 +198,7 @@ public class TestYearMonthDay {
     }
 
     /**
-    *  
-    Tests the CompareTo methods and the comparison operators.
-    
-
+    * Tests the CompareTo methods and the comparison operators.
     */
     @Test
     public final void testComparisons() {
@@ -250,10 +220,7 @@ public class TestYearMonthDay {
     }
 
     /**
-    *  
-    Tests that YearMonthDay.GetHashCode returns something at least reasonably random.
-    
-
+    * Tests that YearMonthDay.GetHashCode returns something at least reasonably random.
     */
     @Test
     public final void testGetHashCode() {
@@ -265,10 +232,7 @@ public class TestYearMonthDay {
     }
 
     /**
-    *  
-    Tests the {@link YearMonthDay#toString} method.
-    
-
+    * Tests the {@link YearMonthDay#toString} method.
     */
     @Test
     public final void testToString() {
@@ -277,10 +241,7 @@ public class TestYearMonthDay {
     }
 
     /**
-    *  
-    Tests the constructor overload that takes a {@link JulianDate}.
-    
-
+    * Tests the constructor overload that takes a {@link JulianDate}.
     */
     @Test
     public final void testConstructFromJulianDate() {
@@ -305,10 +266,7 @@ public class TestYearMonthDay {
     }
 
     /**
-    *  
-    Tests the constructor overload that takes a year and the day of the year as parameters.
-    
-
+    * Tests the constructor overload that takes a year and the day of the year as parameters.
     */
     @Test
     public final void testConstructFromDayOfYear() {

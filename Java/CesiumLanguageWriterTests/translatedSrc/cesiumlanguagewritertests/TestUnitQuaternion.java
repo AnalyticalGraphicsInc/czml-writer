@@ -17,10 +17,7 @@ import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
 /**
- *  
- Tests the {@link UnitQuaternion} type.
- 
-
+ * Tests the {@link UnitQuaternion} type.
  */
 @SuppressWarnings( {
         "unused",
@@ -30,10 +27,7 @@ import org.junit.Test;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestUnitQuaternion {
     /**
-    *  
-    Tests that initialization of and access to the type's values works correctly.
-    
-
+    * Tests that initialization of and access to the type's values works correctly.
     */
     @Test
     public final void testHoldValue() {
@@ -45,10 +39,7 @@ public class TestUnitQuaternion {
     }
 
     /**
-    *  
-    Tests initialization from coordinates.
-    
-
+    * Tests initialization from coordinates.
     */
     @Test
     public final void testInitializeAndReturnMagnitude() {
@@ -66,10 +57,7 @@ public class TestUnitQuaternion {
     }
 
     /**
-    *  
-    Tests initialization from a {@link Matrix3By3} rotation.
-    
-
+    * Tests initialization from a {@link Matrix3By3} rotation.
     */
     public final void testFromMatrix3By3(double angle, double axisX, double axisY, double axisZ) {
         Cartesian axis = new Cartesian(axisX, axisY, axisZ);
@@ -110,10 +98,7 @@ public class TestUnitQuaternion {
     }
 
     /**
-    *  
-    Tests the equality and inequality methods and operators.
-    
-
+    * Tests the equality and inequality methods and operators.
     */
     @Test
     public final void testEquality() {
@@ -166,10 +151,7 @@ public class TestUnitQuaternion {
     }
 
     /**
-    *  
-    Tests the {@link UnitQuaternion#equalsEpsilon} method.
-    
-
+    * Tests the {@link UnitQuaternion#equalsEpsilon} method.
     */
     @Test
     public final void testEqualsEpsilon() {
@@ -183,10 +165,7 @@ public class TestUnitQuaternion {
     }
 
     /**
-    *  
-    Tests to ensure the equality fails when comparing incorrect type.
-    
-
+    * Tests to ensure the equality fails when comparing incorrect type.
     */
     @Test
     public final void testEqualityWithWrongType() {
@@ -197,11 +176,8 @@ public class TestUnitQuaternion {
     }
 
     /**
-    *  
-    Tests that rotation by an invalid value produces an
+    * Tests that rotation by an invalid value produces an
     {@link ArithmeticException}.
-    
-
     */
     @Test
     public final void testFromInfinity() {
@@ -213,10 +189,7 @@ public class TestUnitQuaternion {
     }
 
     /**
-    *  
-    Tests the {@link UnitQuaternion#conjugate} method.
-    
-
+    * Tests the {@link UnitQuaternion#conjugate} method.
     */
     @Test
     public final void testConjugate() {
@@ -229,10 +202,7 @@ public class TestUnitQuaternion {
     }
 
     /**
-    *  
-    Tests {@code Identity} ({@link UnitQuaternion#getIdentity get}).
-    
-
+    * Tests {@code Identity} ({@link UnitQuaternion#getIdentity get}).
     */
     @Test
     public final void testIdentity() {
@@ -244,10 +214,7 @@ public class TestUnitQuaternion {
     }
 
     /**
-    *  
-    Tests the {@code IsUndefined} ({@link UnitQuaternion#getIsUndefined get}) method.
-    
-
+    * Tests the {@code IsUndefined} ({@link UnitQuaternion#getIsUndefined get}) method.
     */
     @Test
     public final void testIsUndefined() {
@@ -260,10 +227,7 @@ public class TestUnitQuaternion {
     }
 
     /**
-    *  
-    Tests negation of a set of coordinates.
-    
-
+    * Tests negation of a set of coordinates.
     */
     @Test
     public final void testNegation() {
@@ -275,10 +239,7 @@ public class TestUnitQuaternion {
     }
 
     /**
-    *  
-    Tests multiplication by another {@link UnitQuaternion}.
-    
-
+    * Tests multiplication by another {@link UnitQuaternion}.
     */
     @Test
     public final void testMultiplicationByUnitQuaternion() {
@@ -299,10 +260,7 @@ public class TestUnitQuaternion {
     }
 
     /**
-    *  
-    Tests that GetHashCode returns something at least reasonably random.
-    
-
+    * Tests that GetHashCode returns something at least reasonably random.
     */
     @Test
     public final void testGetHashCode() {
@@ -314,10 +272,7 @@ public class TestUnitQuaternion {
     }
 
     /**
-    *  
-    Tests ToString method
-    
-
+    * Tests ToString method
     */
     @Test
     public final void testToString() {

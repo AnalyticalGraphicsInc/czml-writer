@@ -18,10 +18,7 @@ import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
 /**
- *  
- Tests the {@link Matrix3By3} type.
- 
-
+ * Tests the {@link Matrix3By3} type.
  */
 @SuppressWarnings( {
         "unused",
@@ -31,10 +28,7 @@ import org.junit.Test;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestMatrix3By3 {
     /**
-    *  
-    Tests that initialization of and access to the type's values works correctly.
-    
-
+    * Tests that initialization of and access to the type's values works correctly.
     */
     @Test
     public final void testHoldValue() {
@@ -66,10 +60,7 @@ public class TestMatrix3By3 {
     }
 
     /**
-    *  
-    Tests the equality and inequality methods and operators.
-    
-
+    * Tests the equality and inequality methods and operators.
     */
     @Test
     public final void testEquality() {
@@ -109,10 +100,7 @@ public class TestMatrix3By3 {
     }
 
     /**
-    *  
-    Tests to ensure the equality fails when comparing incorrect type.
-    
-
+    * Tests to ensure the equality fails when comparing incorrect type.
     */
     @Test
     public final void testEqualityWithWrongType() {
@@ -139,10 +127,7 @@ public class TestMatrix3By3 {
     }
 
     /**
-    *  
-    Tests indexing.
-    
-
+    * Tests indexing.
     */
     @Test
     public final void testIndex() {
@@ -211,10 +196,7 @@ public class TestMatrix3By3 {
     }
 
     /**
-    *  
-    Tests multiplication by a scalar.
-    
-
+    * Tests multiplication by a scalar.
     */
     @Test
     public final void testMultiplyByScalar() {
@@ -252,10 +234,7 @@ public class TestMatrix3By3 {
     }
 
     /**
-    *  
-    Tests multiplication by another {@link Matrix3By3}.
-    
-
+    * Tests multiplication by another {@link Matrix3By3}.
     */
     @Test
     public final void testMultiplyByMatrix() {
@@ -277,10 +256,7 @@ public class TestMatrix3By3 {
     }
 
     /**
-    *  
-    Tests to ensure that an invalid index throws the anticipated exception.
-    
-
+    * Tests to ensure that an invalid index throws the anticipated exception.
     */
     public final void indexerThrowsWithRowOutOfRange(final int row, final int column) {
         final Matrix3By3 matrix = Matrix3By3.diagonalMatrix(-3.0, 1.0, 5.0);
@@ -305,10 +281,7 @@ public class TestMatrix3By3 {
     }
 
     /**
-    *  
-    Tests to ensure that an invalid index throws the anticipated exception.
-    
-
+    * Tests to ensure that an invalid index throws the anticipated exception.
     */
     public final void indexerThrowsWithColumnOutOfRange(final int row, final int column) {
         final Matrix3By3 matrix = Matrix3By3.diagonalMatrix(-3.0, 1.0, 5.0);
@@ -333,10 +306,7 @@ public class TestMatrix3By3 {
     }
 
     /**
-    *  
-    Tests that GetHashCode returns something at least reasonably random.
-    
-
+    * Tests that GetHashCode returns something at least reasonably random.
     */
     @Test
     public final void testGetHashCode() {
@@ -348,10 +318,7 @@ public class TestMatrix3By3 {
     }
 
     /**
-    *  
-    Tests the zero matrix
-    
-
+    * Tests the zero matrix
     */
     @Test
     public final void testZeroMatrix() {
@@ -368,10 +335,7 @@ public class TestMatrix3By3 {
     }
 
     /**
-    *  
-    Tests math operators
-    
-
+    * Tests math operators
     */
     @Test
     public final void testMathOperators() {
@@ -387,10 +351,7 @@ public class TestMatrix3By3 {
     }
 
     /**
-    *  
-    Tests math operators
-    
-
+    * Tests math operators
     */
     @Test
     public final void testMathOperatorsWithCartesian() {

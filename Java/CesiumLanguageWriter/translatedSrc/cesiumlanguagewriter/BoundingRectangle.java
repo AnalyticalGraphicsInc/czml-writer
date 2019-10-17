@@ -11,10 +11,7 @@ import agi.foundation.compatibility.StringHelper;
 import javax.annotation.Nonnull;
 
 /**
- * 
- A bounding rectangle in a two-dimensional plane given by two corner points.
-
-
+ * A bounding rectangle in a two-dimensional plane given by two corner points.
  */
 @SuppressWarnings( {
         "unused",
@@ -28,22 +25,12 @@ public final class BoundingRectangle implements IEquatable<BoundingRectangle>, I
     public BoundingRectangle() {}
 
     /**
-    *  
-    Initializes a new instance.
-    
-    
-    
-    
-    
-    
-
+    * Initializes a new instance.
     * @param left The x coordinate of the lower-left corner.
     * @param bottom The y coordinate of the lower-left corner.
     * @param right The x coordinate of the upper-right corner.
     * @param top The y coordinate of the upper-right corner.
-    * @exception ArgumentException 
-    Thrown when the right parameter is less than the left parameter or when the top parameter is less than the bottom parameter.
-    
+    * @exception ArgumentException Thrown when the right parameter is less than the left parameter or when the top parameter is less than the bottom parameter.
     */
     public BoundingRectangle(double left, double bottom, double right, double top) {
         if (right < left) {
@@ -59,9 +46,7 @@ public final class BoundingRectangle implements IEquatable<BoundingRectangle>, I
     }
 
     /**
-    *  Gets a {@link BoundingRectangle} with all values set to zero.
-    
-
+    * Gets a {@link BoundingRectangle} with all values set to zero.
     */
     @Nonnull
     public static BoundingRectangle getEmpty() {
@@ -69,15 +54,7 @@ public final class BoundingRectangle implements IEquatable<BoundingRectangle>, I
     }
 
     /**
-    *  
-    Initializes a new instance.
-    
-    
-    
-    
-    
-    
-
+    * Initializes a new instance.
     * @param x The x coordinate of the lower-left corner.
     * @param y The y coordinate of the lower-left corner.
     * @param width The width of the rectangle.
@@ -90,66 +67,49 @@ public final class BoundingRectangle implements IEquatable<BoundingRectangle>, I
     }
 
     /**
-    *  Gets the x-coordinate of the left edge of the rectangle.
-    
-
+    * Gets the x-coordinate of the left edge of the rectangle.
     */
     public final double getLeft() {
         return m_left;
     }
 
     /**
-    *  Gets the y-coordinate of the top edge of the rectangle.
-    
-
+    * Gets the y-coordinate of the top edge of the rectangle.
     */
     public final double getTop() {
         return m_top;
     }
 
     /**
-    *  Gets the y-coordinate of the bottom edge of the rectangle.
-    
-
+    * Gets the y-coordinate of the bottom edge of the rectangle.
     */
     public final double getBottom() {
         return m_bottom;
     }
 
     /**
-    *  Gets the x-coordinate of the right edge of the rectangle.
-    
-
+    * Gets the x-coordinate of the right edge of the rectangle.
     */
     public final double getRight() {
         return m_right;
     }
 
     /**
-    *  Gets the width of the rectangle.
-    
-
+    * Gets the width of the rectangle.
     */
     public final double getWidth() {
         return m_right - m_left;
     }
 
     /**
-    *  Gets the height of the rectangle.
-    
-
+    * Gets the height of the rectangle.
     */
     public final double getHeight() {
         return m_top - m_bottom;
     }
 
     /**
-    *  
-    Indicates whether another object is exactly equal to this instance.
-    
-    
-    
-
+    * Indicates whether another object is exactly equal to this instance.
     * @param obj The object to compare to this instance.
     * @return {@code true} if {@code obj} is an instance of this type and represents the same value as this instance; otherwise, {@code false}.
     */
@@ -159,12 +119,7 @@ public final class BoundingRectangle implements IEquatable<BoundingRectangle>, I
     }
 
     /**
-    *  
-    Indicates whether another instance of this type is exactly equal to this instance.
-    
-    
-    
-
+    * Indicates whether another instance of this type is exactly equal to this instance.
     * @param other The instance to compare to this instance.
     * @return {@code true} if {@code other} represents the same value as this instance; otherwise, {@code false}.
     */
@@ -174,19 +129,11 @@ public final class BoundingRectangle implements IEquatable<BoundingRectangle>, I
     }
 
     /**
-    *  
-    Indicates whether each coordinate value of another instance of this type
+    * Indicates whether each coordinate value of another instance of this type
     is within the required tolerance of the corresponding coordinate value of this instance.
-    
-    
-    
-    
-
     * @param other The set of {@link BoundingRectangle} coordinates to compare to this instance.
     * @param epsilon The limit at which the absolute differences between the coordinate values will not be considered equal.
-    * @return 
-    {@code true} if the absolute differences are less than or equal to {@code epsilon}; otherwise, {@code false}.
-    
+    * @return {@code true} if the absolute differences are less than or equal to {@code epsilon}; otherwise, {@code false}.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final boolean equalsEpsilon(@Nonnull BoundingRectangle other, double epsilon) {
@@ -194,11 +141,7 @@ public final class BoundingRectangle implements IEquatable<BoundingRectangle>, I
     }
 
     /**
-    *  
-    Returns a hash code for this instance, which is suitable for use in hashing algorithms and data structures like a hash table.
-    
-    
-
+    * Returns a hash code for this instance, which is suitable for use in hashing algorithms and data structures like a hash table.
     * @return A hash code for the current object.
     */
     @Override
@@ -207,15 +150,9 @@ public final class BoundingRectangle implements IEquatable<BoundingRectangle>, I
     }
 
     /**
-    *  
-    Returns the string representation of the value of this instance.
-    
-    
-
-    * @return 
-    A string that represents the value of this instance in the form
+    * Returns the string representation of the value of this instance.
+    * @return A string that represents the value of this instance in the form
     "Left, Bottom, Right, Top".
-    
     */
     @Override
     public String toString() {
@@ -223,18 +160,10 @@ public final class BoundingRectangle implements IEquatable<BoundingRectangle>, I
     }
 
     /**
-    *  
-    Returns {@code true} if the two instances are exactly equal.
-    
-    
-    
-    
-
+    * Returns {@code true} if the two instances are exactly equal.
     * @param left The instance to compare to {@code right}.
     * @param right The instance to compare to {@code left}.
-    * @return 
-    {@code true} if {@code left} represents the same value as {@code right}; otherwise, {@code false}.
-    
+    * @return {@code true} if {@code left} represents the same value as {@code right}; otherwise, {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(BoundingRectangle,BoundingRectangle)'")
     public static boolean equals(@Nonnull BoundingRectangle left, @Nonnull BoundingRectangle right) {
@@ -242,18 +171,10 @@ public final class BoundingRectangle implements IEquatable<BoundingRectangle>, I
     }
 
     /**
-    *  
-    Returns {@code true} if the two instances are not exactly equal.
-    
-    
-    
-    
-
+    * Returns {@code true} if the two instances are not exactly equal.
     * @param left The instance to compare to {@code right}.
     * @param right The instance to compare to {@code left}.
-    * @return 
-    {@code true} if {@code left} does not represent the same value as {@code right}; otherwise, {@code false}.
-    
+    * @return {@code true} if {@code left} does not represent the same value as {@code right}; otherwise, {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(BoundingRectangle,BoundingRectangle)'")
     public static boolean notEquals(@Nonnull BoundingRectangle left, @Nonnull BoundingRectangle right) {

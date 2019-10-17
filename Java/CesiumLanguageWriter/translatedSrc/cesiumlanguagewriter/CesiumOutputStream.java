@@ -14,12 +14,9 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
- *  
- A stream to which raw CZML data can be written.  This is a low-level class that
+ * A stream to which raw CZML data can be written.  This is a low-level class that
  does not extensively validate that methods are called in a valid order,
  so it can be used to generate invalid JSON.
- 
-
  */
 @SuppressWarnings( {
         "unused",
@@ -28,11 +25,7 @@ import javax.annotation.Nullable;
 })
 public class CesiumOutputStream {
     /**
-    *  
-    Initializes a new instance.
-    
-    
-
+    * Initializes a new instance.
     * @param writer The writer to which data will be written.
     */
     public CesiumOutputStream(@Nonnull Writer writer) {
@@ -43,12 +36,7 @@ public class CesiumOutputStream {
     }
 
     /**
-    *  
-    Initializes a new instance.
-    
-    
-    
-
+    * Initializes a new instance.
     * @param writer The writer to which data will be written.
     * @param prettyFormatting Whether or not the written data should be formatted for easy human readability.
     */
@@ -58,30 +46,23 @@ public class CesiumOutputStream {
     }
 
     /**
-    *  Gets a value indicating whether or not the written data should be formatted for easy human readability.
+    * Gets a value indicating whether or not the written data should be formatted for easy human readability.
     When this property is {@code false} (the default), more compact CZML is generated.
-    
-
     */
     public final boolean getPrettyFormatting() {
         return m_prettyFormatting;
     }
 
     /**
-    *  Sets a value indicating whether or not the written data should be formatted for easy human readability.
+    * Sets a value indicating whether or not the written data should be formatted for easy human readability.
     When this property is {@code false} (the default), more compact CZML is generated.
-    
-
     */
     public final void setPrettyFormatting(boolean value) {
         m_prettyFormatting = value;
     }
 
     /**
-    *  
-    Writes the start of an object.
-    
-
+    * Writes the start of an object.
     */
     public void writeStartObject() {
         m_nextValueOnNewLine = true;
@@ -93,10 +74,7 @@ public class CesiumOutputStream {
     }
 
     /**
-    *  
-    Writes the end of an object.
-    
-
+    * Writes the end of an object.
     */
     public void writeEndObject() {
         m_firstInContainer = false;
@@ -109,10 +87,7 @@ public class CesiumOutputStream {
     }
 
     /**
-    *  
-    Writes the start of a sequence.
-    
-
+    * Writes the start of a sequence.
     */
     public void writeStartSequence() {
         m_nextValueOnNewLine = true;
@@ -124,10 +99,7 @@ public class CesiumOutputStream {
     }
 
     /**
-    *  
-    Writes the end of a sequence.
-    
-
+    * Writes the end of a sequence.
     */
     public void writeEndSequence() {
         m_firstInContainer = false;
@@ -140,11 +112,7 @@ public class CesiumOutputStream {
     }
 
     /**
-    *  
-    Writes the name of a property.
-    
-    
-
+    * Writes the name of a property.
     * @param propertyName The name of the property.
     */
     public void writePropertyName(@Nonnull String propertyName) {
@@ -162,11 +130,7 @@ public class CesiumOutputStream {
     }
 
     /**
-    *  
-    Writes the value of a property or element in a sequence.
-    
-    
-
+    * Writes the value of a property or element in a sequence.
     * @param value The value to write.
     */
     public void writeValue(@Nullable String value) {
@@ -183,11 +147,7 @@ public class CesiumOutputStream {
     }
 
     /**
-    *  
-    Writes the value of a property or element in a sequence.
-    
-    
-
+    * Writes the value of a property or element in a sequence.
     * @param value The value to write.
     */
     public void writeValue(double value) {
@@ -198,11 +158,7 @@ public class CesiumOutputStream {
     }
 
     /**
-    *  
-    Writes the value of a property or element in a sequence.
-    
-    
-
+    * Writes the value of a property or element in a sequence.
     * @param value The value to write.
     */
     public void writeValue(int value) {
@@ -210,11 +166,7 @@ public class CesiumOutputStream {
     }
 
     /**
-    *  
-    Writes the value of a property or element in a sequence.
-    
-    
-
+    * Writes the value of a property or element in a sequence.
     * @param value The value to write.
     */
     public void writeValue(long value) {
@@ -222,11 +174,7 @@ public class CesiumOutputStream {
     }
 
     /**
-    *  
-    Writes the value of a property or element in a sequence.
-    
-    
-
+    * Writes the value of a property or element in a sequence.
     * @param value The value to write.
     */
     public void writeValue(boolean value) {
@@ -241,11 +189,7 @@ public class CesiumOutputStream {
     }
 
     /**
-    *  
-    Writes the value of a property or element in a sequence.
-    
-    
-
+    * Writes the value of a property or element in a sequence.
     * @param value The value to write.
     */
     public void writeValue(@Nonnull URI value) {
@@ -256,11 +200,8 @@ public class CesiumOutputStream {
     }
 
     /**
-    *  
-    When {@code PrettyFormatting} ({@link #getPrettyFormatting get} / {@link #setPrettyFormatting set}) is {@code true}, adds a line break in a sequence of simple values.
+    * When {@code PrettyFormatting} ({@link #getPrettyFormatting get} / {@link #setPrettyFormatting set}) is {@code true}, adds a line break in a sequence of simple values.
     When {@code PrettyFormatting} ({@link #getPrettyFormatting get} / {@link #setPrettyFormatting set}) is {@code false}, this method does nothing.
-    
-
     */
     public void writeLineBreak() {
         m_nextValueOnNewLine = true;

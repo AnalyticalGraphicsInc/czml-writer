@@ -8,10 +8,7 @@ import cesiumlanguagewriter.advanced.*;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Writes a {@code VerticalOrigin} to a {@link CesiumOutputStream}. A {@code VerticalOrigin} is the vertical origin of an element, which can optionally vary over time. It controls whether the element is bottom-, center-, or top-aligned with the {@code position}.
- 
-
+ * Writes a {@code VerticalOrigin} to a {@link CesiumOutputStream}. A {@code VerticalOrigin} is the vertical origin of an element, which can optionally vary over time. It controls whether the element is bottom-, center-, or top-aligned with the {@code position}.
  */
 @SuppressWarnings( {
         "unused",
@@ -21,35 +18,22 @@ import javax.annotation.Nonnull;
 public class VerticalOriginCesiumWriter extends CesiumPropertyWriter<VerticalOriginCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumVerticalOriginValuePropertyWriter,
         ICesiumReferenceValuePropertyWriter {
     /**
-    *  
-    The name of the {@code verticalOrigin} property.
-    
-
+    * The name of the {@code verticalOrigin} property.
     */
     public static final String VerticalOriginPropertyName = "verticalOrigin";
     /**
-    *  
-    The name of the {@code reference} property.
-    
-
+    * The name of the {@code reference} property.
     */
     public static final String ReferencePropertyName = "reference";
     /**
-    *  
-    The name of the {@code delete} property.
-    
-
+    * The name of the {@code delete} property.
     */
     public static final String DeletePropertyName = "delete";
     private Lazy<CesiumVerticalOriginValuePropertyAdaptor<VerticalOriginCesiumWriter>> m_asVerticalOrigin;
     private Lazy<CesiumReferenceValuePropertyAdaptor<VerticalOriginCesiumWriter>> m_asReference;
 
     /**
-    *  
-    Initializes a new instance.
-    
-    
-
+    * Initializes a new instance.
     * @param propertyName The name of the property.
     */
     public VerticalOriginCesiumWriter(@Nonnull String propertyName) {
@@ -59,11 +43,7 @@ public class VerticalOriginCesiumWriter extends CesiumPropertyWriter<VerticalOri
     }
 
     /**
-    *  
-    Initializes a new instance as a copy of an existing instance.
-    
-    
-
+    * Initializes a new instance as a copy of an existing instance.
     * @param existingInstance The existing instance to copy.
     */
     protected VerticalOriginCesiumWriter(@Nonnull VerticalOriginCesiumWriter existingInstance) {
@@ -73,12 +53,7 @@ public class VerticalOriginCesiumWriter extends CesiumPropertyWriter<VerticalOri
     }
 
     /**
-    *  
-    
-    Copies this instance and returns the copy.
-    
-    
-
+    * Copies this instance and returns the copy.
     * @return The copy.
     */
     @Override
@@ -87,11 +62,7 @@ public class VerticalOriginCesiumWriter extends CesiumPropertyWriter<VerticalOri
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code verticalOrigin}, which is the vertical origin.
-    
-    
-
+    * Writes the value expressed as a {@code verticalOrigin}, which is the vertical origin.
     * @param value The vertical origin.
     */
     public final void writeVerticalOrigin(@Nonnull CesiumVerticalOrigin value) {
@@ -106,11 +77,7 @@ public class VerticalOriginCesiumWriter extends CesiumPropertyWriter<VerticalOri
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the vertical origin specified as a reference to another property.
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the vertical origin specified as a reference to another property.
     * @param value The reference.
     */
     public final void writeReference(Reference value) {
@@ -121,11 +88,7 @@ public class VerticalOriginCesiumWriter extends CesiumPropertyWriter<VerticalOri
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the vertical origin specified as a reference to another property.
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the vertical origin specified as a reference to another property.
     * @param value The reference.
     */
     public final void writeReference(String value) {
@@ -136,12 +99,7 @@ public class VerticalOriginCesiumWriter extends CesiumPropertyWriter<VerticalOri
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the vertical origin specified as a reference to another property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the vertical origin specified as a reference to another property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -153,12 +111,7 @@ public class VerticalOriginCesiumWriter extends CesiumPropertyWriter<VerticalOri
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the vertical origin specified as a reference to another property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the vertical origin specified as a reference to another property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -170,11 +123,7 @@ public class VerticalOriginCesiumWriter extends CesiumPropertyWriter<VerticalOri
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
-    
-    
-
+    * Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
     * @param value The value.
     */
     public final void writeDelete(boolean value) {
@@ -185,11 +134,7 @@ public class VerticalOriginCesiumWriter extends CesiumPropertyWriter<VerticalOri
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumVerticalOriginValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumVerticalOriginValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumVerticalOriginValuePropertyAdaptor<VerticalOriginCesiumWriter> asVerticalOrigin() {
@@ -210,11 +155,7 @@ public class VerticalOriginCesiumWriter extends CesiumPropertyWriter<VerticalOri
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumReferenceValuePropertyAdaptor<VerticalOriginCesiumWriter> asReference() {

@@ -25,10 +25,7 @@ import org.junit.Test;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestLeapSeconds {
     /**
-    *  
-    Tests that epochs outside the leap second table range are supported.
-    
-
+    * Tests that epochs outside the leap second table range are supported.
     */
     @Test
     public final void testExtremes() {
@@ -44,11 +41,8 @@ public class TestLeapSeconds {
     }
 
     /**
-    *  
-    Tests that the look-up operation produces the same result using either the
+    * Tests that the look-up operation produces the same result using either the
     {@link TimeStandard#INTERNATIONAL_ATOMIC_TIME} standard or the {@link TimeStandard#COORDINATED_UNIVERSAL_TIME} standard.
-    
-
     */
     @Test
     public final void testGetLeapSecondsForDateTaiUtc() {
@@ -62,11 +56,8 @@ public class TestLeapSeconds {
     }
 
     /**
-    *  
-    Tests the method which reports whether the indicated Julian Day Number is a day
+    * Tests the method which reports whether the indicated Julian Day Number is a day
     which contains a leap second.
-    
-
     */
     @Test
     public final void testDoesDayHaveLeapSecond() {
@@ -76,11 +67,8 @@ public class TestLeapSeconds {
     }
 
     /**
-    *  
-    Tests that the look-up operation produces the correct result for times within the range
+    * Tests that the look-up operation produces the correct result for times within the range
     of the table.
-    
-
     */
     @Test
     public final void testLeapSecondCount() {
@@ -92,10 +80,7 @@ public class TestLeapSeconds {
     }
 
     /**
-    *  
-    Tests that negative leap seconds are supported.
-    
-
+    * Tests that negative leap seconds are supported.
     */
     @Test
     public final void testNegativeLeapSecond() {
@@ -113,11 +98,8 @@ public class TestLeapSeconds {
     }
 
     /**
-    *  
-    Tests that the look-up operation produces the correct result when using the
+    * Tests that the look-up operation produces the correct result when using the
     {@link TimeStandard#INTERNATIONAL_ATOMIC_TIME} standard.
-    
-
     */
     @Test
     public final void testGetOffsetTai() {
@@ -127,12 +109,9 @@ public class TestLeapSeconds {
     }
 
     /**
-    *  
-    Tests that a {@link JulianDate} in the 
+    * Tests that a {@link JulianDate} in the 
     {@link TimeStandard#COORDINATED_UNIVERSAL_TIME} standard cannot correctly
     represent a day containing a leap second.
-    
-
     */
     @Test
     public final void testJulianDateCannotRepresentMomentOfLeapSecond() {
@@ -145,11 +124,8 @@ public class TestLeapSeconds {
     }
 
     /**
-    *  
-    Converts two Julian dates in TAI to UTC: one just before a leap second, and one
+    * Converts two Julian dates in TAI to UTC: one just before a leap second, and one
     after a leap second.  Verifies that they convert to different UTC Julian dates.
-    
-
     */
     @Test
     public final void testTaiToUtcNearLeapSecond() {
@@ -164,11 +140,8 @@ public class TestLeapSeconds {
     }
 
     /**
-    *  
-    Tests that adding small values to a UTC Julian date does not result in getting
+    * Tests that adding small values to a UTC Julian date does not result in getting
     stuck when crossing a leap second.
-    
-
     */
     @Test
     public final void testUtcAddNotStuckAtLeapSecond() {

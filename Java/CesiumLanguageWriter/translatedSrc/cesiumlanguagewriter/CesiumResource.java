@@ -9,10 +9,7 @@ import java.net.URI;
 import javax.annotation.Nonnull;
 
 /**
- *  
- A resource to be linked from or embedded into a CZML document.
- 
-
+ * A resource to be linked from or embedded into a CZML document.
  */
 @SuppressWarnings( {
         "unused",
@@ -25,12 +22,7 @@ public class CesiumResource {
     private CesiumResourceBehavior m_behavior = CesiumResourceBehavior.getDefault();
 
     /**
-    *  
-    Initializes a new instance.
-    
-    
-    
-
+    * Initializes a new instance.
     * @param uri The URI of the resource.
     * @param behavior The enumeration describing how the resource is to be included in the document.
     */
@@ -39,12 +31,7 @@ public class CesiumResource {
     }
 
     /**
-    *  
-    Initializes a new instance.
-    
-    
-    
-
+    * Initializes a new instance.
     * @param uri The URI of the resource.
     * @param behavior The enumeration describing how the resource is to be included in the document.
     */
@@ -54,18 +41,14 @@ public class CesiumResource {
     }
 
     /**
-    *  Gets the URI of the resource.
-    
-
+    * Gets the URI of the resource.
     */
     public final String getUri() {
         return m_uri;
     }
 
     /**
-    *  Gets how the resource is to be included in the document.
-    
-
+    * Gets how the resource is to be included in the document.
     */
     @Nonnull
     public final CesiumResourceBehavior getBehavior() {
@@ -73,14 +56,8 @@ public class CesiumResource {
     }
 
     /**
-    *  
-    Create a CZML resource from an image loaded into memory.  The image data will 
+    * Create a CZML resource from an image loaded into memory.  The image data will 
     be embedded in the CZML document using a data URI.
-    
-    
-    
-    
-
     * @param image The image to write.
     * @param imageFormat The format of the image.
     * @return A new {@link CesiumResource} containing the image data as a data URI.
@@ -91,14 +68,8 @@ public class CesiumResource {
     }
 
     /**
-    *  
-    Create a CZML resource from a stream containing image data.  The image data will 
+    * Create a CZML resource from a stream containing image data.  The image data will 
     be embedded in the CZML document using a data URI.
-    
-    
-    
-    
-
     * @param stream The stream containing image data to write.
     * @param imageFormat The format of the image.
     * @return A new {@link CesiumResource} containing the image data as a data URI.
@@ -109,14 +80,8 @@ public class CesiumResource {
     }
 
     /**
-    *  
-    Create a CZML resource from a stream.  The data will 
+    * Create a CZML resource from a stream.  The data will 
     be embedded in the CZML document using a data URI.
-    
-    
-    
-    
-
     * @param stream The stream containing data to write.
     * @param mimeType The mime type of the data.
     * @return A new {@link CesiumResource} containing the data as a data URI.

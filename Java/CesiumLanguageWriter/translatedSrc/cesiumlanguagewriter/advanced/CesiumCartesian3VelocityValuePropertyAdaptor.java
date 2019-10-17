@@ -6,12 +6,8 @@ import cesiumlanguagewriter.*;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Adapts a class that implements {@link ICesiumCartesian3VelocityValuePropertyWriter} to implement
+ * Adapts a class that implements {@link ICesiumCartesian3VelocityValuePropertyWriter} to implement
  {@link ICesiumInterpolatableValuePropertyWriter} for {@link Motion1} values.
- 
- 
-
  * @param <TFrom> The class that implements {@link ICesiumCartesian3VelocityValuePropertyWriter} to adapt.
  */
 @SuppressWarnings( {
@@ -21,14 +17,7 @@ import javax.annotation.Nonnull;
 })
 public class CesiumCartesian3VelocityValuePropertyAdaptor<TFrom extends ICesiumCartesian3VelocityValuePropertyWriter> extends CesiumInterpolatableWriterAdaptor<TFrom, Motion1<Cartesian>> {
     /**
-    *  
-    Initializes a new instance.
-    
-    
-    
-    
-    
-
+    * Initializes a new instance.
     * @param parent The instance to wrap.
     * @param writeValueCallback The callback to write values of type {@link Motion1}.
     * @param writeSamplesCallback The callback to write samples of type {@link Motion1}.

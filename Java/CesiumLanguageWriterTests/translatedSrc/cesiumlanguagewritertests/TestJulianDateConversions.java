@@ -22,10 +22,7 @@ import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
 /**
- *  
- A series of tests to exercise the various date and time types.
- 
-
+ * A series of tests to exercise the various date and time types.
  */
 @SuppressWarnings( {
         "unused",
@@ -35,10 +32,7 @@ import org.junit.Test;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestJulianDateConversions {
     /**
-    *  
-    Tests conversion from a {@link JulianDate} to a {@link ZonedDateTime}.
-    
-
+    * Tests conversion from a {@link JulianDate} to a {@link ZonedDateTime}.
     */
     @Test
     public final void julianToDateTime() {
@@ -112,11 +106,8 @@ public class TestJulianDateConversions {
     }
 
     /**
-    *  
-    Tests that an appropriate exception is thrown when attempting to construct a DateTime
+    * Tests that an appropriate exception is thrown when attempting to construct a DateTime
     from a JulianDate prior to the earliest possible DateTime.
-    
-
     */
     @Test
     public final void testJulianDateMinimumToDateTime() {
@@ -129,10 +120,7 @@ public class TestJulianDateConversions {
     }
 
     /**
-    *  
-    Tests conversion from a {@link ZonedDateTime} to a {@link JulianDate}.
-    
-
+    * Tests conversion from a {@link ZonedDateTime} to a {@link JulianDate}.
     */
     @Test
     public final void dateTimeToJulian() {
@@ -171,11 +159,8 @@ public class TestJulianDateConversions {
     }
 
     /**
-    *  
-    Tests conversion of a {@link ZonedDateTime} to a {@link JulianDate} when
+    * Tests conversion of a {@link ZonedDateTime} to a {@link JulianDate} when
     the {@link ZonedDateTime} is specified as a local time instead of as UTC.
-    
-
     */
     @Test
     public final void testLocalDateTimeToJulian() {
@@ -192,10 +177,7 @@ public class TestJulianDateConversions {
     }
 
     /**
-    *  
-    Tests the "round-trip" conversion between a {@link ZonedDateTime} and a {@link JulianDate}.
-    
-
+    * Tests the "round-trip" conversion between a {@link ZonedDateTime} and a {@link JulianDate}.
     */
     @Test
     public final void julianDateTimeRoundTrip() {

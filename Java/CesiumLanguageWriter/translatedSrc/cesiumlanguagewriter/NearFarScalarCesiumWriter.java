@@ -9,10 +9,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Writes a {@code NearFarScalar} to a {@link CesiumOutputStream}. A {@code NearFarScalar} is a numeric value which will be linearly interpolated between two values based on an object's distance from the camera, in eye coordinates. The computed value will interpolate between the near value and the far value while the camera distance falls between the near distance and the far distance, and will be clamped to the near or far value while the distance is less than the near distance or greater than the far distance, respectively.
- 
-
+ * Writes a {@code NearFarScalar} to a {@link CesiumOutputStream}. A {@code NearFarScalar} is a numeric value which will be linearly interpolated between two values based on an object's distance from the camera, in eye coordinates. The computed value will interpolate between the near value and the far value while the camera distance falls between the near distance and the far distance, and will be clamped to the near or far value while the distance is less than the near distance or greater than the far distance, respectively.
  */
 @SuppressWarnings( {
         "unused",
@@ -22,35 +19,22 @@ import javax.annotation.Nonnull;
 public class NearFarScalarCesiumWriter extends CesiumInterpolatablePropertyWriter<NearFarScalarCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumNearFarScalarValuePropertyWriter,
         ICesiumReferenceValuePropertyWriter {
     /**
-    *  
-    The name of the {@code nearFarScalar} property.
-    
-
+    * The name of the {@code nearFarScalar} property.
     */
     public static final String NearFarScalarPropertyName = "nearFarScalar";
     /**
-    *  
-    The name of the {@code reference} property.
-    
-
+    * The name of the {@code reference} property.
     */
     public static final String ReferencePropertyName = "reference";
     /**
-    *  
-    The name of the {@code delete} property.
-    
-
+    * The name of the {@code delete} property.
     */
     public static final String DeletePropertyName = "delete";
     private Lazy<CesiumNearFarScalarValuePropertyAdaptor<NearFarScalarCesiumWriter>> m_asNearFarScalar;
     private Lazy<CesiumReferenceValuePropertyAdaptor<NearFarScalarCesiumWriter>> m_asReference;
 
     /**
-    *  
-    Initializes a new instance.
-    
-    
-
+    * Initializes a new instance.
     * @param propertyName The name of the property.
     */
     public NearFarScalarCesiumWriter(@Nonnull String propertyName) {
@@ -60,11 +44,7 @@ public class NearFarScalarCesiumWriter extends CesiumInterpolatablePropertyWrite
     }
 
     /**
-    *  
-    Initializes a new instance as a copy of an existing instance.
-    
-    
-
+    * Initializes a new instance as a copy of an existing instance.
     * @param existingInstance The existing instance to copy.
     */
     protected NearFarScalarCesiumWriter(@Nonnull NearFarScalarCesiumWriter existingInstance) {
@@ -74,12 +54,7 @@ public class NearFarScalarCesiumWriter extends CesiumInterpolatablePropertyWrite
     }
 
     /**
-    *  
-    
-    Copies this instance and returns the copy.
-    
-    
-
+    * Copies this instance and returns the copy.
     * @return The copy.
     */
     @Override
@@ -88,11 +63,7 @@ public class NearFarScalarCesiumWriter extends CesiumInterpolatablePropertyWrite
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code nearFarScalar}, which is the value specified as four values {@code [NearDistance, NearValue, FarDistance, FarValue]}, with distances in eye coordinates in meters.
-    
-    
-
+    * Writes the value expressed as a {@code nearFarScalar}, which is the value specified as four values {@code [NearDistance, NearValue, FarDistance, FarValue]}, with distances in eye coordinates in meters.
     * @param value The value.
     */
     public final void writeNearFarScalar(@Nonnull NearFarScalar value) {
@@ -103,14 +74,7 @@ public class NearFarScalarCesiumWriter extends CesiumInterpolatablePropertyWrite
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code nearFarScalar}, which is the value specified as four values {@code [NearDistance, NearValue, FarDistance, FarValue]}, with distances in eye coordinates in meters.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code nearFarScalar}, which is the value specified as four values {@code [NearDistance, NearValue, FarDistance, FarValue]}, with distances in eye coordinates in meters.
     * @param nearDistance The lower bound of the camera distance range.
     * @param nearValue The value to use at the lower bound of the camera distance range.
     * @param farDistance The upper bound of the camera distance range.
@@ -121,12 +85,7 @@ public class NearFarScalarCesiumWriter extends CesiumInterpolatablePropertyWrite
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code nearFarScalar}, which is the value specified as four values {@code [NearDistance, NearValue, FarDistance, FarValue]}, with distances in eye coordinates in meters.
-    
-    
-    
-
+    * Writes the value expressed as a {@code nearFarScalar}, which is the value specified as four values {@code [NearDistance, NearValue, FarDistance, FarValue]}, with distances in eye coordinates in meters.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -135,14 +94,7 @@ public class NearFarScalarCesiumWriter extends CesiumInterpolatablePropertyWrite
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code nearFarScalar}, which is the value specified as four values {@code [NearDistance, NearValue, FarDistance, FarValue]}, with distances in eye coordinates in meters.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code nearFarScalar}, which is the value specified as four values {@code [NearDistance, NearValue, FarDistance, FarValue]}, with distances in eye coordinates in meters.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -155,11 +107,7 @@ public class NearFarScalarCesiumWriter extends CesiumInterpolatablePropertyWrite
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the value specified as a reference to another property.
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the value specified as a reference to another property.
     * @param value The reference.
     */
     public final void writeReference(Reference value) {
@@ -170,11 +118,7 @@ public class NearFarScalarCesiumWriter extends CesiumInterpolatablePropertyWrite
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the value specified as a reference to another property.
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the value specified as a reference to another property.
     * @param value The reference.
     */
     public final void writeReference(String value) {
@@ -185,12 +129,7 @@ public class NearFarScalarCesiumWriter extends CesiumInterpolatablePropertyWrite
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the value specified as a reference to another property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the value specified as a reference to another property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -202,12 +141,7 @@ public class NearFarScalarCesiumWriter extends CesiumInterpolatablePropertyWrite
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the value specified as a reference to another property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the value specified as a reference to another property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -219,11 +153,7 @@ public class NearFarScalarCesiumWriter extends CesiumInterpolatablePropertyWrite
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
-    
-    
-
+    * Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
     * @param value The value.
     */
     public final void writeDelete(boolean value) {
@@ -234,11 +164,7 @@ public class NearFarScalarCesiumWriter extends CesiumInterpolatablePropertyWrite
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumNearFarScalarValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumNearFarScalarValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumNearFarScalarValuePropertyAdaptor<NearFarScalarCesiumWriter> asNearFarScalar() {
@@ -259,11 +185,7 @@ public class NearFarScalarCesiumWriter extends CesiumInterpolatablePropertyWrite
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumReferenceValuePropertyAdaptor<NearFarScalarCesiumWriter> asReference() {

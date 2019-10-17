@@ -379,10 +379,7 @@ public class TestGregorianDate {
     }
 
     /**
-    *  
-    A simple test of the {@code Now} ({@link GregorianDate#getNow get}) method.
-    
-
+    * A simple test of the {@code Now} ({@link GregorianDate#getNow get}) method.
     */
     @Test
     public final void testGregorianDateNow() {

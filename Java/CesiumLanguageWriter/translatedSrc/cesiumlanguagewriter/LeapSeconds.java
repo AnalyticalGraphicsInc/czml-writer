@@ -14,10 +14,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Manages Leap Seconds.
- 
-
+ * Manages Leap Seconds.
  */
 @SuppressWarnings( {
         "unused",
@@ -26,11 +23,8 @@ import javax.annotation.Nonnull;
 })
 public class LeapSeconds {
     /**
-    *  
-    Initializes a new instance with the list of leap seconds that was available
+    * Initializes a new instance with the list of leap seconds that was available
     when the library was released.
-    
-
     */
     public LeapSeconds() {
         final ArrayList<cesiumlanguagewriter.LeapSecond> tempCollection$0 = new ArrayList<LeapSecond>();
@@ -66,11 +60,7 @@ public class LeapSeconds {
     }
 
     /**
-    *  
-    Initializes a new instance with the specified list of leap seconds.
-    
-    
-
+    * Initializes a new instance with the specified list of leap seconds.
     * @param leapSeconds The list of leap seconds.
     */
     public LeapSeconds(Iterable<LeapSecond> leapSeconds) {
@@ -79,39 +69,28 @@ public class LeapSeconds {
     }
 
     /**
-    *  Gets the default (and usually only) instance.
-    
-
+    * Gets the default (and usually only) instance.
     */
     public static LeapSeconds getInstance() {
         return s_leapSeconds;
     }
 
     /**
-    *  Sets the default (and usually only) instance.
-    
-
+    * Sets the default (and usually only) instance.
     */
     public static void setInstance(LeapSeconds value) {
         s_leapSeconds = value;
     }
 
     /**
-    *  Gets the list of leap seconds currently being used by this class.
-    
-
+    * Gets the list of leap seconds currently being used by this class.
     */
     public final List<LeapSecond> getLeapSecondList() {
         return Collections.unmodifiableList(m_leapSeconds);
     }
 
     /**
-    *  
-    Returns the difference TAI - UTC as of the given date, in seconds.
-    
-    
-    
-
+    * Returns the difference TAI - UTC as of the given date, in seconds.
     * @param date The date.
     * @return The difference.
     */
@@ -141,13 +120,7 @@ public class LeapSeconds {
     }
 
     /**
-    *  
-    Convert {@code date} from TAI to UTC, if possible.
-    
-    
-    
-    
-
+    * Convert {@code date} from TAI to UTC, if possible.
     * @param date The date, which must be in the TAI
     {@link TimeStandard}.
     * @return The resulting UTC
@@ -174,13 +147,7 @@ public class LeapSeconds {
     }
 
     /**
-    *  
-    Try to convert {@code date} from TAI to UTC, if possible.
-    
-    
-    
-    
-
+    * Try to convert {@code date} from TAI to UTC, if possible.
     * @param date The date, which must be in the TAI
     {@link TimeStandard}.
     * @param result Out parameter for returning the resulting UTC
@@ -236,12 +203,7 @@ public class LeapSeconds {
     }
 
     /**
-    *  
-    Determines if a given day contains a leap second.
-    
-    
-    
-
+    * Determines if a given day contains a leap second.
     * @param julianDayNumber The day, specified as a Julian day number.
     * @return true if the day contains a leap second, otherwise false.
     */

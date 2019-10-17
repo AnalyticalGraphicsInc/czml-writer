@@ -7,10 +7,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
- *  
- Provides a means for measuring time by specifying the rate at which time passes and/or points in time.
- 
-
+ * Provides a means for measuring time by specifying the rate at which time passes and/or points in time.
  */
 @SuppressWarnings( {
         "unused",
@@ -19,24 +16,16 @@ import javax.annotation.Nullable;
 })
 public enum TimeStandard implements Enumeration {
     /**
-    *  
-    The International Atomic Time (TAI) time standard.
-    
-
+    * The International Atomic Time (TAI) time standard.
     */
     INTERNATIONAL_ATOMIC_TIME(0), /**
-                                  *  
-                                  The Coordinated Universal Time (UTC) time standard.
-                                  
-                                  
-
+                                  * The Coordinated Universal Time (UTC) time standard.
                                   * <p>
                                   <p>
                                   UTC is related to TAI according to the relationship
                                   {@code UTC = TAI - deltaT},
                                   where {@code deltaT} is the number of leap seconds which have been introduced as of the time in TAI.
                                   </p>
-                                  
                                   */
     COORDINATED_UNIVERSAL_TIME(1);
     private final int value;

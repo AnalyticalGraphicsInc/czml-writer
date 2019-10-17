@@ -5,10 +5,7 @@ import agi.foundation.compatibility.*;
 import cesiumlanguagewriter.*;
 
 /**
- *  
- A writer that can write a value as a list of double values.
- 
-
+ * A writer that can write a value as a list of double values.
  */
 @SuppressWarnings( {
         "unused",
@@ -17,11 +14,7 @@ import cesiumlanguagewriter.*;
 })
 public interface ICesiumDoubleListValuePropertyWriter extends ICesiumPropertyWriter {
     /**
-    *  
-    Writes the value as a list of double values.
-    
-    
-
+    * Writes the value as a list of double values.
     * @param values The values.
     */
     void writeArray(Iterable<Double> values);

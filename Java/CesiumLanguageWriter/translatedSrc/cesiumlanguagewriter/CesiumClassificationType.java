@@ -7,10 +7,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
- *  
- Whether a classification affects terrain, 3D Tiles, or both.
- 
-
+ * Whether a classification affects terrain, 3D Tiles, or both.
  */
 @SuppressWarnings( {
         "unused",
@@ -19,22 +16,13 @@ import javax.annotation.Nullable;
 })
 public enum CesiumClassificationType implements Enumeration {
     /**
-    *  
-    Only terrain will be classified.
-    
-
+    * Only terrain will be classified.
     */
     TERRAIN(0), /**
-                *  
-                Only 3D Tiles will be classified.
-                
-
+                * Only 3D Tiles will be classified.
                 */
     CESIUM3DTILE(1), /**
-                     *  
-                     Both terrain and 3D Tiles will be classified.
-                     
-
+                     * Both terrain and 3D Tiles will be classified.
                      */
     BOTH(2);
     private final int value;

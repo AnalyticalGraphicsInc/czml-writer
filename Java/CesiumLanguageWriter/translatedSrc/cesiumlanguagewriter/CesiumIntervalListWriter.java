@@ -6,11 +6,7 @@ import cesiumlanguagewriter.advanced.*;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Writes a list of intervals for which a property is defined.
- 
- 
-
+ * Writes a list of intervals for which a property is defined.
  * @param <TPropertyWriter> The type used to represent the value of this property for a single interval.
  */
 @SuppressWarnings( {
@@ -22,11 +18,7 @@ public class CesiumIntervalListWriter<TPropertyWriter extends CesiumPropertyWrit
     private TPropertyWriter m_propertyWriter;
 
     /**
-    *  
-    Initializes a new instance.
-    
-    
-
+    * Initializes a new instance.
     * @param propertyWriter The instance used to write the value of this property for a single interval.
     */
     public CesiumIntervalListWriter(TPropertyWriter propertyWriter) {
@@ -34,10 +26,7 @@ public class CesiumIntervalListWriter<TPropertyWriter extends CesiumPropertyWrit
     }
 
     /**
-    *  
-    Writes the start of a JSON sequence representing the interval list.
-    
-
+    * Writes the start of a JSON sequence representing the interval list.
     */
     @Override
     protected void onOpen() {
@@ -45,10 +34,7 @@ public class CesiumIntervalListWriter<TPropertyWriter extends CesiumPropertyWrit
     }
 
     /**
-    *  
-    Writes the end of a JSON array representing the interval list.
-    
-
+    * Writes the end of a JSON array representing the interval list.
     */
     @Override
     protected void onClose() {
@@ -56,11 +42,7 @@ public class CesiumIntervalListWriter<TPropertyWriter extends CesiumPropertyWrit
     }
 
     /**
-    *  
-    Opens a writer to write information about a single interval.
-    
-    
-
+    * Opens a writer to write information about a single interval.
     * @return The interval writer.
     */
     @Nonnull
@@ -69,13 +51,7 @@ public class CesiumIntervalListWriter<TPropertyWriter extends CesiumPropertyWrit
     }
 
     /**
-    *  
-    Opens a writer to write information about a single interval.
-    
-    
-    
-    
-
+    * Opens a writer to write information about a single interval.
     * @param start The start of the interval of time covered by this interval element.
     * @param stop The end of the interval of time covered by this interval element.
     * @return The interval writer.

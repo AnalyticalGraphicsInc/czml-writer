@@ -8,10 +8,7 @@ import cesiumlanguagewriter.advanced.*;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Writes a {@code SensorVolumePortionToDisplay} to a {@link CesiumOutputStream}. A {@code SensorVolumePortionToDisplay} is the part of a sensor that should be displayed.
- 
-
+ * Writes a {@code SensorVolumePortionToDisplay} to a {@link CesiumOutputStream}. A {@code SensorVolumePortionToDisplay} is the part of a sensor that should be displayed.
  */
 @SuppressWarnings( {
         "unused",
@@ -21,35 +18,22 @@ import javax.annotation.Nonnull;
 public class SensorVolumePortionToDisplayCesiumWriter extends CesiumPropertyWriter<SensorVolumePortionToDisplayCesiumWriter> implements ICesiumDeletablePropertyWriter,
         ICesiumSensorVolumePortionToDisplayValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
-    *  
-    The name of the {@code portionToDisplay} property.
-    
-
+    * The name of the {@code portionToDisplay} property.
     */
     public static final String PortionToDisplayPropertyName = "portionToDisplay";
     /**
-    *  
-    The name of the {@code reference} property.
-    
-
+    * The name of the {@code reference} property.
     */
     public static final String ReferencePropertyName = "reference";
     /**
-    *  
-    The name of the {@code delete} property.
-    
-
+    * The name of the {@code delete} property.
     */
     public static final String DeletePropertyName = "delete";
     private Lazy<CesiumSensorVolumePortionToDisplayValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter>> m_asPortionToDisplay;
     private Lazy<CesiumReferenceValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter>> m_asReference;
 
     /**
-    *  
-    Initializes a new instance.
-    
-    
-
+    * Initializes a new instance.
     * @param propertyName The name of the property.
     */
     public SensorVolumePortionToDisplayCesiumWriter(@Nonnull String propertyName) {
@@ -59,11 +43,7 @@ public class SensorVolumePortionToDisplayCesiumWriter extends CesiumPropertyWrit
     }
 
     /**
-    *  
-    Initializes a new instance as a copy of an existing instance.
-    
-    
-
+    * Initializes a new instance as a copy of an existing instance.
     * @param existingInstance The existing instance to copy.
     */
     protected SensorVolumePortionToDisplayCesiumWriter(@Nonnull SensorVolumePortionToDisplayCesiumWriter existingInstance) {
@@ -73,12 +53,7 @@ public class SensorVolumePortionToDisplayCesiumWriter extends CesiumPropertyWrit
     }
 
     /**
-    *  
-    
-    Copies this instance and returns the copy.
-    
-    
-
+    * Copies this instance and returns the copy.
     * @return The copy.
     */
     @Override
@@ -87,11 +62,7 @@ public class SensorVolumePortionToDisplayCesiumWriter extends CesiumPropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code portionToDisplay}, which is the part of a sensor to display.
-    
-    
-
+    * Writes the value expressed as a {@code portionToDisplay}, which is the part of a sensor to display.
     * @param value The portion of the sensor to display.
     */
     public final void writePortionToDisplay(@Nonnull CesiumSensorVolumePortionToDisplay value) {
@@ -106,11 +77,7 @@ public class SensorVolumePortionToDisplayCesiumWriter extends CesiumPropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the part of a sensor to display, specified as a reference to another property.
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the part of a sensor to display, specified as a reference to another property.
     * @param value The reference.
     */
     public final void writeReference(Reference value) {
@@ -121,11 +88,7 @@ public class SensorVolumePortionToDisplayCesiumWriter extends CesiumPropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the part of a sensor to display, specified as a reference to another property.
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the part of a sensor to display, specified as a reference to another property.
     * @param value The reference.
     */
     public final void writeReference(String value) {
@@ -136,12 +99,7 @@ public class SensorVolumePortionToDisplayCesiumWriter extends CesiumPropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the part of a sensor to display, specified as a reference to another property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the part of a sensor to display, specified as a reference to another property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -153,12 +111,7 @@ public class SensorVolumePortionToDisplayCesiumWriter extends CesiumPropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the part of a sensor to display, specified as a reference to another property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the part of a sensor to display, specified as a reference to another property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -170,11 +123,7 @@ public class SensorVolumePortionToDisplayCesiumWriter extends CesiumPropertyWrit
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
-    
-    
-
+    * Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
     * @param value The value.
     */
     public final void writeDelete(boolean value) {
@@ -185,11 +134,7 @@ public class SensorVolumePortionToDisplayCesiumWriter extends CesiumPropertyWrit
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumSensorVolumePortionToDisplayValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumSensorVolumePortionToDisplayValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumSensorVolumePortionToDisplayValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter> asPortionToDisplay() {
@@ -210,11 +155,7 @@ public class SensorVolumePortionToDisplayCesiumWriter extends CesiumPropertyWrit
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumReferenceValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter> asReference() {

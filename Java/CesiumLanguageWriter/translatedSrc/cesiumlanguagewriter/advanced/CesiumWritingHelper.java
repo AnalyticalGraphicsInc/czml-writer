@@ -10,10 +10,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Contains helper methods for writing CZML values.
- 
-
+ * Contains helper methods for writing CZML values.
  */
 @SuppressWarnings( {
         "unused",
@@ -24,10 +21,7 @@ public final class CesiumWritingHelper {
     private CesiumWritingHelper() {}
 
     /**
-    *  
-    The maximum interval of time that can be specified.
-    
-
+    * The maximum interval of time that can be specified.
     */
     public static final TimeInterval MaximumInterval = new TimeInterval(GregorianDate.MinValue.toJulianDate(), GregorianDate.MaxValue.toJulianDate());
 
@@ -37,12 +31,7 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes a {@link JulianDate} as an ISO 8601 interval string.
-    
-    
-    
-
+    * Writes a {@link JulianDate} as an ISO 8601 interval string.
     * @param output The stream to which the value will be written.
     * @param date The date to write.
     */
@@ -51,12 +40,7 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes a {@link TimeInterval} as an ISO 8601 interval string.
-    
-    
-    
-
+    * Writes a {@link TimeInterval} as an ISO 8601 interval string.
     * @param output The stream to which the value will be written.
     * @param interval The interval to write.
     */
@@ -65,14 +49,9 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes a list of {@link TimeInterval TimeIntervals}.  If the collection has a single
+    * Writes a list of {@link TimeInterval TimeIntervals}.  If the collection has a single
     interval, the interval is written as an ISO 8601 interval string.  If it has multiple intervals,
     it is written as an array of ISO 8601 interval strings.
-    
-    
-    
-
     * @param output The stream to which the value will be written.
     * @param intervals The intervals to write.
     */
@@ -91,12 +70,7 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes a {@link Rectangular} value as an array in X, Y order.
-    
-    
-    
-
+    * Writes a {@link Rectangular} value as an array in X, Y order.
     * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
@@ -108,18 +82,9 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes time-tagged {@link Rectangular} values as an array in [Time, X, Y] order.
+    * Writes time-tagged {@link Rectangular} values as an array in [Time, X, Y] order.
     Times are epoch seconds since an epoch that is determined from the first date to be written.
     The epoch property is written as well.
-    
-    
-    
-    
-    
-    
-    
-
     * @param output The stream to which the values will be written.
     * @param propertyName The name of the property to write.
     * @param dates The dates at which the value is specified.
@@ -146,12 +111,7 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes a {@link CartographicExtent} value as an array in WestLongitude, SouthLatitude, EastLongitude, NorthLatitude order.
-    
-    
-    
-
+    * Writes a {@link CartographicExtent} value as an array in WestLongitude, SouthLatitude, EastLongitude, NorthLatitude order.
     * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
@@ -165,18 +125,9 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes time-tagged {@link CartographicExtent} values as an array in [Time, WestLongitude, SouthLatitude, EastLongitude, NorthLatitude] order.
+    * Writes time-tagged {@link CartographicExtent} values as an array in [Time, WestLongitude, SouthLatitude, EastLongitude, NorthLatitude] order.
     Times are epoch seconds since an epoch that is determined from the first date to be written.
     The epoch property is written as well.
-    
-    
-    
-    
-    
-    
-    
-
     * @param output The stream to which the values will be written.
     * @param propertyName The name of the property to write.
     * @param dates The dates at which the value is specified.
@@ -205,12 +156,7 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes a {@link Cartesian} value as an array in X, Y, Z order.
-    
-    
-    
-
+    * Writes a {@link Cartesian} value as an array in X, Y, Z order.
     * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
@@ -223,18 +169,9 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes time-tagged {@link Cartesian} values as an array in [Time, X, Y, Z] order.
+    * Writes time-tagged {@link Cartesian} values as an array in [Time, X, Y, Z] order.
     Times are epoch seconds since an epoch that is determined from the first date to be written.
     The epoch property is written as well.
-    
-    
-    
-    
-    
-    
-    
-
     * @param output The stream to which the values will be written.
     * @param propertyName The name of the property to write.
     * @param dates The dates at which the value is specified.
@@ -262,12 +199,7 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes a {@link Motion1} value as an array in X, Y, Z, vX, vY, vZ order.
-    
-    
-    
-
+    * Writes a {@link Motion1} value as an array in X, Y, Z, vX, vY, vZ order.
     * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
@@ -283,18 +215,9 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes time-tagged {@link Motion1} values as an array in [Time, X, Y, Z, vX, vY, vZ] order.
+    * Writes time-tagged {@link Motion1} values as an array in [Time, X, Y, Z, vX, vY, vZ] order.
     Times are epoch seconds since an epoch that is determined from the first date to be written.
     The epoch property is written as well.
-    
-    
-    
-    
-    
-    
-    
-
     * @param output The stream to which the values will be written.
     * @param propertyName The name of the property to write.
     * @param dates The dates at which the value is specified.
@@ -326,12 +249,7 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes a {@link UnitCartesian} value as an array in X, Y, Z order.
-    
-    
-    
-
+    * Writes a {@link UnitCartesian} value as an array in X, Y, Z order.
     * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
@@ -344,18 +262,9 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes time-tagged {@link UnitCartesian} values as an array in [Time, X, Y, Z] order.
+    * Writes time-tagged {@link UnitCartesian} values as an array in [Time, X, Y, Z] order.
     Times are epoch seconds since an epoch that is determined from the first date to be written.
     The epoch property is written as well.
-    
-    
-    
-    
-    
-    
-    
-
     * @param output The stream to which the values will be written.
     * @param propertyName The name of the property to write.
     * @param dates The dates at which the value is specified.
@@ -383,12 +292,7 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes a {@link Spherical} value as an array in Clock, Cone, Magnitude order.
-    
-    
-    
-
+    * Writes a {@link Spherical} value as an array in Clock, Cone, Magnitude order.
     * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
@@ -401,18 +305,9 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes time-tagged {@link Spherical} values as an array in [Time, Clock, Cone, Magnitude] order.
+    * Writes time-tagged {@link Spherical} values as an array in [Time, Clock, Cone, Magnitude] order.
     Times are epoch seconds since an epoch that is determined from the first date to be written.
     The epoch property is written as well.
-    
-    
-    
-    
-    
-    
-    
-
     * @param output The stream to which the values will be written.
     * @param propertyName The name of the property to write.
     * @param dates The dates at which the value is specified.
@@ -440,12 +335,7 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes a {@link BoundingRectangle} value as an array in X, Y, Width, Height order.
-    
-    
-    
-
+    * Writes a {@link BoundingRectangle} value as an array in X, Y, Width, Height order.
     * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
@@ -459,18 +349,9 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes time-tagged {@link BoundingRectangle} values as an array in [Time, X, Y, Width, Height] order.
+    * Writes time-tagged {@link BoundingRectangle} values as an array in [Time, X, Y, Width, Height] order.
     Times are epoch seconds since an epoch that is determined from the first date to be written.
     The epoch property is written as well.
-    
-    
-    
-    
-    
-    
-    
-
     * @param output The stream to which the values will be written.
     * @param propertyName The name of the property to write.
     * @param dates The dates at which the value is specified.
@@ -499,12 +380,7 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes a {@link NearFarScalar} value as an array in NearDistance, NearValue, FarDistance, FarValue order.
-    
-    
-    
-
+    * Writes a {@link NearFarScalar} value as an array in NearDistance, NearValue, FarDistance, FarValue order.
     * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
@@ -518,18 +394,9 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes time-tagged {@link NearFarScalar} values as an array in [Time, NearDistance, NearValue, FarDistance, FarValue] order.
+    * Writes time-tagged {@link NearFarScalar} values as an array in [Time, NearDistance, NearValue, FarDistance, FarValue] order.
     Times are epoch seconds since an epoch that is determined from the first date to be written.
     The epoch property is written as well.
-    
-    
-    
-    
-    
-    
-    
-
     * @param output The stream to which the values will be written.
     * @param propertyName The name of the property to write.
     * @param dates The dates at which the value is specified.
@@ -558,12 +425,7 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes a {@link Bounds} value as an array in LowerBound, UpperBound order.
-    
-    
-    
-
+    * Writes a {@link Bounds} value as an array in LowerBound, UpperBound order.
     * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
@@ -575,18 +437,9 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes time-tagged {@link Bounds} values as an array in [Time, LowerBound, UpperBound] order.
+    * Writes time-tagged {@link Bounds} values as an array in [Time, LowerBound, UpperBound] order.
     Times are epoch seconds since an epoch that is determined from the first date to be written.
     The epoch property is written as well.
-    
-    
-    
-    
-    
-    
-    
-
     * @param output The stream to which the values will be written.
     * @param propertyName The name of the property to write.
     * @param dates The dates at which the value is specified.
@@ -613,12 +466,7 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes a {@link UnitSpherical} value as an array in Clock, Cone order.
-    
-    
-    
-
+    * Writes a {@link UnitSpherical} value as an array in Clock, Cone order.
     * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
@@ -630,18 +478,9 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes time-tagged {@link UnitSpherical} values as an array in [Time, Clock, Cone] order.
+    * Writes time-tagged {@link UnitSpherical} values as an array in [Time, Clock, Cone] order.
     Times are epoch seconds since an epoch that is determined from the first date to be written.
     The epoch property is written as well.
-    
-    
-    
-    
-    
-    
-    
-
     * @param output The stream to which the values will be written.
     * @param propertyName The name of the property to write.
     * @param dates The dates at which the value is specified.
@@ -668,12 +507,7 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes a list of {@code double} values as an array.
-    
-    
-    
-
+    * Writes a list of {@code double} values as an array.
     * @param output The stream to which the value will be written.
     * @param values The values to write.
     */
@@ -687,12 +521,7 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes a list of {@link Cartesian} values as an array in X, Y, Z order.
-    
-    
-    
-
+    * Writes a list of {@link Cartesian} values as an array in X, Y, Z order.
     * @param output The stream to which the value will be written.
     * @param values The values to write.
     */
@@ -708,12 +537,7 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes a list of {@link Cartesian} values as an array in X, Y, Z order.
-    
-    
-    
-
+    * Writes a list of {@link Cartesian} values as an array in X, Y, Z order.
     * @param output The stream to which the value will be written.
     * @param values The values to write.
     */
@@ -734,12 +558,7 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes a {@link Cartographic} value as an array in Longitude, Latitude, Height order.
-    
-    
-    
-
+    * Writes a {@link Cartographic} value as an array in Longitude, Latitude, Height order.
     * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
@@ -752,18 +571,9 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes time-tagged {@link Cartographic} values as an array in [Time, Longitude, Latitude, Height] order.
+    * Writes time-tagged {@link Cartographic} values as an array in [Time, Longitude, Latitude, Height] order.
     Times are epoch seconds since an epoch that is determined from the first date to be written.
     The epoch property is written as well.
-    
-    
-    
-    
-    
-    
-    
-
     * @param output The stream to which the values will be written.
     * @param propertyName The name of the property to write.
     * @param dates The dates at which the value is specified.
@@ -791,12 +601,7 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes a list of {@link Cartographic} values as an array in Longitude, Latitude, Height order.
-    
-    
-    
-
+    * Writes a list of {@link Cartographic} values as an array in Longitude, Latitude, Height order.
     * @param output The stream to which the value will be written.
     * @param values The values to write.
     */
@@ -812,12 +617,7 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes a list of {@link Cartographic} values as an array in Longitude, Latitude, Height order.
-    
-    
-    
-
+    * Writes a list of {@link Cartographic} values as an array in Longitude, Latitude, Height order.
     * @param output The stream to which the value will be written.
     * @param values The values to write.
     */
@@ -838,12 +638,7 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes a color value as an array in Red, Green, Blue, Alpha order.
-    
-    
-    
-
+    * Writes a color value as an array in Red, Green, Blue, Alpha order.
     * @param output The stream to which to write the color.
     * @param value The value to write.
     */
@@ -852,15 +647,7 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes a color value as an array in Red, Green, Blue, Alpha order.
-    
-    
-    
-    
-    
-    
-
+    * Writes a color value as an array in Red, Green, Blue, Alpha order.
     * @param output The stream to which to write the color.
     * @param red The red component in the range 0-255.
     * @param green The green component in the range 0-255.
@@ -877,18 +664,9 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes time-tagged color values as an array in [Time, Red, Green, Blue, Alpha] order.
+    * Writes time-tagged color values as an array in [Time, Red, Green, Blue, Alpha] order.
     Times are epoch seconds since an epoch that is determined from the first date to be written.
     The epoch property is written as well.
-    
-    
-    
-    
-    
-    
-    
-
     * @param output The stream to which the values will be written.
     * @param propertyName The name of the property to write.
     * @param dates The dates at which the value is specified.
@@ -917,12 +695,7 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes a color value as an array in Red, Green, Blue, Alpha order as floating-point values.
-    
-    
-    
-
+    * Writes a color value as an array in Red, Green, Blue, Alpha order as floating-point values.
     * @param output The stream to which to write the color.
     * @param value The value to write.
     */
@@ -931,15 +704,7 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes a color value as an array in Red, Green, Blue, Alpha order as floating-point values.
-    
-    
-    
-    
-    
-    
-
+    * Writes a color value as an array in Red, Green, Blue, Alpha order as floating-point values.
     * @param output The stream to which to write the color.
     * @param red The red component in the range 0.0-1.0.
     * @param green The green component in the range 0.0-1.0.
@@ -956,18 +721,9 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes time-tagged color values as an array in [Time, Red, Green, Blue, Alpha] order as floating-point values.
+    * Writes time-tagged color values as an array in [Time, Red, Green, Blue, Alpha] order as floating-point values.
     Times are epoch seconds since an epoch that is determined from the first date to be written.
     The epoch property is written as well.
-    
-    
-    
-    
-    
-    
-    
-
     * @param output The stream to which the values will be written.
     * @param propertyName The name of the property to write.
     * @param dates The dates at which the value is specified.
@@ -996,18 +752,9 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes time-tagged floating-point values as an array in [Time, Value] order.
+    * Writes time-tagged floating-point values as an array in [Time, Value] order.
     Times are epoch seconds since an epoch that is determined from the first date to be written.
     The epoch property is written as well.
-    
-    
-    
-    
-    
-    
-    
-
     * @param output The stream to which the values will be written.
     * @param propertyName The name of the property to write.
     * @param dates The dates at which the value is specified.
@@ -1032,18 +779,9 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes time-tagged floating-point values as an array in [Time, Value] order.
+    * Writes time-tagged floating-point values as an array in [Time, Value] order.
     Times are epoch seconds since an epoch that is determined from the first date to be written.
     The epoch property is written as well.
-    
-    
-    
-    
-    
-    
-    
-
     * @param output The stream to which the values will be written.
     * @param propertyName The name of the property to write.
     * @param dates The dates at which the value is specified.
@@ -1068,12 +806,7 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes a {@link UnitQuaternion} as an array in [X, Y, Z, W] order.
-    
-    
-    
-
+    * Writes a {@link UnitQuaternion} as an array in [X, Y, Z, W] order.
     * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
@@ -1087,19 +820,10 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes the time-tagged {@link UnitQuaternion} collection as an array in
+    * Writes the time-tagged {@link UnitQuaternion} collection as an array in
     [Time, X, Y, Z, W] order.
     Times are epoch seconds since an epoch that is determined from the first date to be written.
     The epoch property is written as well.
-    
-    
-    
-    
-    
-    
-    
-
     * @param output The stream to which the values will be written.
     * @param propertyName The name of the property to write.
     * @param dates The dates at which the value is specified.
@@ -1128,12 +852,7 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes a reference.
-    
-    
-    
-
+    * Writes a reference.
     * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
@@ -1142,12 +861,7 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes a reference.
-    
-    
-    
-
+    * Writes a reference.
     * @param output The stream to which the value will be written.
     * @param value The value to write.
     */
@@ -1156,13 +870,7 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes a reference and an identifier and property name.
-    
-    
-    
-    
-
+    * Writes a reference and an identifier and property name.
     * @param output The stream to which the value will be written.
     * @param identifier The identifier of the referenced object.
     * @param propertyName The property name.
@@ -1172,13 +880,7 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes a reference from an identifier and hierarchy of property names.
-    
-    
-    
-    
-
+    * Writes a reference from an identifier and hierarchy of property names.
     * @param output The stream to which the value will be written.
     * @param identifier The identifier of the referenced object.
     * @param propertyNames The hierarchy of property names, where each name is a subproperty of the previous item.
@@ -1188,12 +890,7 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes a list of values.
-    
-    
-    
-
+    * Writes a list of values.
     * @param output The stream to which the value will be written.
     * @param references The list of values.
     */
@@ -1207,12 +904,7 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes a list of values.
-    
-    
-    
-
+    * Writes a list of values.
     * @param output The stream to which the value will be written.
     * @param values The list of lists of values.
     */
@@ -1231,12 +923,7 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes a list of {@link UnitCartesian} values as an array in X, Y, Z order.
-    
-    
-    
-
+    * Writes a list of {@link UnitCartesian} values as an array in X, Y, Z order.
     * @param output The stream to which the value will be written.
     * @param values The values to write.
     */
@@ -1252,12 +939,7 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes a list of {@link Spherical} values as an array in Clock, Cone, Magnitude order.
-    
-    
-    
-
+    * Writes a list of {@link Spherical} values as an array in Clock, Cone, Magnitude order.
     * @param output The stream to which the value will be written.
     * @param values The values to write.
     */
@@ -1273,12 +955,7 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Writes a list of {@link UnitSpherical} values as an array in Clock, Cone order.
-    
-    
-    
-
+    * Writes a list of {@link UnitSpherical} values as an array in Clock, Cone order.
     * @param output The stream to which the value will be written.
     * @param values The values to write.
     */
@@ -1293,18 +970,10 @@ public final class CesiumWritingHelper {
     }
 
     /**
-    *  
-    Gets an appropriate epoch from a list of dates and writes it to the {@link CesiumOutputStream}
+    * Gets an appropriate epoch from a list of dates and writes it to the {@link CesiumOutputStream}
     as the "epoch" property.  If the {@code dates} collection is empty, the {@code startIndex}
     is past the end of the collection, or the {@code length} is zero, this method does not write
     the "epoch" property and returns {@code MinValue} ({@link JulianDate#getMinValue get}).
-    
-    
-    
-    
-    
-    
-
     * @param output The stream to which to write the epoch.
     * @param dates The collection of dates from which to determine the epoch.
     * @param startIndex The first index in the collection to use.

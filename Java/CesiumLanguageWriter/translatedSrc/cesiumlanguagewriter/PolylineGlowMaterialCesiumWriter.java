@@ -13,10 +13,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Writes a {@code PolylineGlowMaterial} to a {@link CesiumOutputStream}. A {@code PolylineGlowMaterial} is a material that fills the surface of a line with a glowing color.
- 
-
+ * Writes a {@code PolylineGlowMaterial} to a {@link CesiumOutputStream}. A {@code PolylineGlowMaterial} is a material that fills the surface of a line with a glowing color.
  */
 @SuppressWarnings( {
         "unused",
@@ -25,24 +22,15 @@ import javax.annotation.Nonnull;
 })
 public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<PolylineGlowMaterialCesiumWriter> {
     /**
-    *  
-    The name of the {@code color} property.
-    
-
+    * The name of the {@code color} property.
     */
     public static final String ColorPropertyName = "color";
     /**
-    *  
-    The name of the {@code glowPower} property.
-    
-
+    * The name of the {@code glowPower} property.
     */
     public static final String GlowPowerPropertyName = "glowPower";
     /**
-    *  
-    The name of the {@code taperPower} property.
-    
-
+    * The name of the {@code taperPower} property.
     */
     public static final String TaperPowerPropertyName = "taperPower";
     private Lazy<ColorCesiumWriter> m_color = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
@@ -62,11 +50,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }, false);
 
     /**
-    *  
-    Initializes a new instance.
-    
-    
-
+    * Initializes a new instance.
     * @param propertyName The name of the property.
     */
     public PolylineGlowMaterialCesiumWriter(@Nonnull String propertyName) {
@@ -74,11 +58,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  
-    Initializes a new instance as a copy of an existing instance.
-    
-    
-
+    * Initializes a new instance as a copy of an existing instance.
     * @param existingInstance The existing instance to copy.
     */
     protected PolylineGlowMaterialCesiumWriter(@Nonnull PolylineGlowMaterialCesiumWriter existingInstance) {
@@ -86,12 +66,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  
-    
-    Copies this instance and returns the copy.
-    
-    
-
+    * Copies this instance and returns the copy.
     * @return The copy.
     */
     @Override
@@ -100,9 +75,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  Gets the writer for the {@code color} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code color} property defines the color of the surface. If not specified, the default value is white.
-    
-
+    * Gets the writer for the {@code color} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code color} property defines the color of the surface. If not specified, the default value is white.
     */
     @Nonnull
     public final ColorCesiumWriter getColorWriter() {
@@ -110,10 +83,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code color} property. The {@code color} property defines the color of the surface. If not specified, the default value is white.
-    
-
+    * Opens and returns the writer for the {@code color} property. The {@code color} property defines the color of the surface. If not specified, the default value is white.
     */
     @Nonnull
     public final ColorCesiumWriter openColorProperty() {
@@ -122,11 +92,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the surface. If not specified, the default value is white.
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     * @param color The color.
     */
     public final void writeColorProperty(@Nonnull Color color) {
@@ -141,14 +107,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the surface. If not specified, the default value is white.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     * @param red The red component in the range 0 to 255.
     * @param green The green component in the range 0 to 255.
     * @param blue The blue component in the range 0 to 255.
@@ -166,12 +125,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the surface. If not specified, the default value is white.
-    
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -187,14 +141,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the surface. If not specified, the default value is white.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code rgba} value. The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     * @param dates The dates at which the value is specified.
     * @param colors The color corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -212,11 +159,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the surface. If not specified, the default value is white.
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     * @param color The color.
     */
     public final void writeColorPropertyRgbaf(@Nonnull Color color) {
@@ -231,14 +174,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the surface. If not specified, the default value is white.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     * @param red The red component in the range 0 to 1.0.
     * @param green The green component in the range 0 to 1.0.
     * @param blue The blue component in the range 0 to 1.0.
@@ -256,12 +192,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the surface. If not specified, the default value is white.
-    
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -277,14 +208,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the surface. If not specified, the default value is white.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code rgbaf} value. The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     * @param dates The dates at which the value is specified.
     * @param colors The color corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -302,11 +226,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the surface. If not specified, the default value is white.
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     * @param value The reference.
     */
     public final void writeColorPropertyReference(Reference value) {
@@ -321,11 +241,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the surface. If not specified, the default value is white.
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     * @param value The reference.
     */
     public final void writeColorPropertyReference(String value) {
@@ -340,12 +256,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the surface. If not specified, the default value is white.
-    
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -361,12 +272,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  
-    Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the surface. If not specified, the default value is white.
-    
-    
-    
-
+    * Writes a value for the {@code color} property as a {@code reference} value. The {@code color} property specifies the color of the surface. If not specified, the default value is white.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -382,9 +288,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  Gets the writer for the {@code glowPower} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code glowPower} property defines the strength of the glow. If not specified, the default value is 0.25.
-    
-
+    * Gets the writer for the {@code glowPower} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code glowPower} property defines the strength of the glow. If not specified, the default value is 0.25.
     */
     @Nonnull
     public final DoubleCesiumWriter getGlowPowerWriter() {
@@ -392,10 +296,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code glowPower} property. The {@code glowPower} property defines the strength of the glow. If not specified, the default value is 0.25.
-    
-
+    * Opens and returns the writer for the {@code glowPower} property. The {@code glowPower} property defines the strength of the glow. If not specified, the default value is 0.25.
     */
     @Nonnull
     public final DoubleCesiumWriter openGlowPowerProperty() {
@@ -404,11 +305,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  
-    Writes a value for the {@code glowPower} property as a {@code number} value. The {@code glowPower} property specifies the strength of the glow. If not specified, the default value is 0.25.
-    
-    
-
+    * Writes a value for the {@code glowPower} property as a {@code number} value. The {@code glowPower} property specifies the strength of the glow. If not specified, the default value is 0.25.
     * @param value The value.
     */
     public final void writeGlowPowerProperty(double value) {
@@ -423,12 +320,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  
-    Writes a value for the {@code glowPower} property as a {@code number} value. The {@code glowPower} property specifies the strength of the glow. If not specified, the default value is 0.25.
-    
-    
-    
-
+    * Writes a value for the {@code glowPower} property as a {@code number} value. The {@code glowPower} property specifies the strength of the glow. If not specified, the default value is 0.25.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -444,14 +336,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  
-    Writes a value for the {@code glowPower} property as a {@code number} value. The {@code glowPower} property specifies the strength of the glow. If not specified, the default value is 0.25.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code glowPower} property as a {@code number} value. The {@code glowPower} property specifies the strength of the glow. If not specified, the default value is 0.25.
     * @param dates The dates at which the value is specified.
     * @param values The value corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -469,11 +354,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  
-    Writes a value for the {@code glowPower} property as a {@code reference} value. The {@code glowPower} property specifies the strength of the glow. If not specified, the default value is 0.25.
-    
-    
-
+    * Writes a value for the {@code glowPower} property as a {@code reference} value. The {@code glowPower} property specifies the strength of the glow. If not specified, the default value is 0.25.
     * @param value The reference.
     */
     public final void writeGlowPowerPropertyReference(Reference value) {
@@ -488,11 +369,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  
-    Writes a value for the {@code glowPower} property as a {@code reference} value. The {@code glowPower} property specifies the strength of the glow. If not specified, the default value is 0.25.
-    
-    
-
+    * Writes a value for the {@code glowPower} property as a {@code reference} value. The {@code glowPower} property specifies the strength of the glow. If not specified, the default value is 0.25.
     * @param value The reference.
     */
     public final void writeGlowPowerPropertyReference(String value) {
@@ -507,12 +384,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  
-    Writes a value for the {@code glowPower} property as a {@code reference} value. The {@code glowPower} property specifies the strength of the glow. If not specified, the default value is 0.25.
-    
-    
-    
-
+    * Writes a value for the {@code glowPower} property as a {@code reference} value. The {@code glowPower} property specifies the strength of the glow. If not specified, the default value is 0.25.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -528,12 +400,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  
-    Writes a value for the {@code glowPower} property as a {@code reference} value. The {@code glowPower} property specifies the strength of the glow. If not specified, the default value is 0.25.
-    
-    
-    
-
+    * Writes a value for the {@code glowPower} property as a {@code reference} value. The {@code glowPower} property specifies the strength of the glow. If not specified, the default value is 0.25.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -549,9 +416,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  Gets the writer for the {@code taperPower} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code taperPower} property defines the strength of the tapering effect.  1.0 and higher means no tapering. If not specified, the default value is 1.0.
-    
-
+    * Gets the writer for the {@code taperPower} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code taperPower} property defines the strength of the tapering effect.  1.0 and higher means no tapering. If not specified, the default value is 1.0.
     */
     @Nonnull
     public final DoubleCesiumWriter getTaperPowerWriter() {
@@ -559,10 +424,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  
-    Opens and returns the writer for the {@code taperPower} property. The {@code taperPower} property defines the strength of the tapering effect.  1.0 and higher means no tapering. If not specified, the default value is 1.0.
-    
-
+    * Opens and returns the writer for the {@code taperPower} property. The {@code taperPower} property defines the strength of the tapering effect.  1.0 and higher means no tapering. If not specified, the default value is 1.0.
     */
     @Nonnull
     public final DoubleCesiumWriter openTaperPowerProperty() {
@@ -571,11 +433,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  
-    Writes a value for the {@code taperPower} property as a {@code number} value. The {@code taperPower} property specifies the strength of the tapering effect.  1.0 and higher means no tapering. If not specified, the default value is 1.0.
-    
-    
-
+    * Writes a value for the {@code taperPower} property as a {@code number} value. The {@code taperPower} property specifies the strength of the tapering effect.  1.0 and higher means no tapering. If not specified, the default value is 1.0.
     * @param value The value.
     */
     public final void writeTaperPowerProperty(double value) {
@@ -590,12 +448,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  
-    Writes a value for the {@code taperPower} property as a {@code number} value. The {@code taperPower} property specifies the strength of the tapering effect.  1.0 and higher means no tapering. If not specified, the default value is 1.0.
-    
-    
-    
-
+    * Writes a value for the {@code taperPower} property as a {@code number} value. The {@code taperPower} property specifies the strength of the tapering effect.  1.0 and higher means no tapering. If not specified, the default value is 1.0.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -611,14 +464,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  
-    Writes a value for the {@code taperPower} property as a {@code number} value. The {@code taperPower} property specifies the strength of the tapering effect.  1.0 and higher means no tapering. If not specified, the default value is 1.0.
-    
-    
-    
-    
-    
-
+    * Writes a value for the {@code taperPower} property as a {@code number} value. The {@code taperPower} property specifies the strength of the tapering effect.  1.0 and higher means no tapering. If not specified, the default value is 1.0.
     * @param dates The dates at which the value is specified.
     * @param values The value corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -636,11 +482,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  
-    Writes a value for the {@code taperPower} property as a {@code reference} value. The {@code taperPower} property specifies the strength of the tapering effect.  1.0 and higher means no tapering. If not specified, the default value is 1.0.
-    
-    
-
+    * Writes a value for the {@code taperPower} property as a {@code reference} value. The {@code taperPower} property specifies the strength of the tapering effect.  1.0 and higher means no tapering. If not specified, the default value is 1.0.
     * @param value The reference.
     */
     public final void writeTaperPowerPropertyReference(Reference value) {
@@ -655,11 +497,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  
-    Writes a value for the {@code taperPower} property as a {@code reference} value. The {@code taperPower} property specifies the strength of the tapering effect.  1.0 and higher means no tapering. If not specified, the default value is 1.0.
-    
-    
-
+    * Writes a value for the {@code taperPower} property as a {@code reference} value. The {@code taperPower} property specifies the strength of the tapering effect.  1.0 and higher means no tapering. If not specified, the default value is 1.0.
     * @param value The reference.
     */
     public final void writeTaperPowerPropertyReference(String value) {
@@ -674,12 +512,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  
-    Writes a value for the {@code taperPower} property as a {@code reference} value. The {@code taperPower} property specifies the strength of the tapering effect.  1.0 and higher means no tapering. If not specified, the default value is 1.0.
-    
-    
-    
-
+    * Writes a value for the {@code taperPower} property as a {@code reference} value. The {@code taperPower} property specifies the strength of the tapering effect.  1.0 and higher means no tapering. If not specified, the default value is 1.0.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -695,12 +528,7 @@ public class PolylineGlowMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     }
 
     /**
-    *  
-    Writes a value for the {@code taperPower} property as a {@code reference} value. The {@code taperPower} property specifies the strength of the tapering effect.  1.0 and higher means no tapering. If not specified, the default value is 1.0.
-    
-    
-    
-
+    * Writes a value for the {@code taperPower} property as a {@code reference} value. The {@code taperPower} property specifies the strength of the tapering effect.  1.0 and higher means no tapering. If not specified, the default value is 1.0.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */

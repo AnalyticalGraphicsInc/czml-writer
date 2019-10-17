@@ -12,21 +12,15 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
- *  
- A set of 4-dimensional coordinates used to represent rotation in 3-dimensional space.  This
+ * A set of 4-dimensional coordinates used to represent rotation in 3-dimensional space.  This
  represents an 'alias' rotation which transforms coordinates by modifying the underlying coordinate
  basis rather than modifying the coordinates themselves. To transform a {@link Cartesian} 
  with this rotation, see {@link Cartesian#rotate(UnitQuaternion)}.
- 
- 
- 
-
  * <p>
  <p>
  The normalization of the quaternion is accomplished in the usual way.
  It should be noted that this does not guarantee a result whose magnitude will be 1.0 in cases where an individual component underflows upon squaring.
  </p>
- 
  * @see Matrix3By3
  */
 @SuppressWarnings( {
@@ -42,28 +36,14 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     public UnitQuaternion() {}
 
     /**
-    *  
-    Initializes a set of {@link UnitQuaternion} coordinates from the provided values.
-    
-    
-    
-    
-    
-    
-    
-    
-
+    * Initializes a set of {@link UnitQuaternion} coordinates from the provided values.
     * <p>The given values will be normalized to ensure a unit magnitude.
     * @param w The W coordinate.
     * @param x The X coordinate.
     * @param y The Y coordinate.
     * @param z The Z coordinate.
-    * @exception ArithmeticException 
-    The magnitude of the provided coordinates must not be zero.
-    
-    * @exception ArithmeticException 
-    The magnitude of the provided coordinates must not be infinite.
-    
+    * @exception ArithmeticException The magnitude of the provided coordinates must not be zero.
+    * @exception ArithmeticException The magnitude of the provided coordinates must not be infinite.
     */
     @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     public UnitQuaternion(double w, double x, double y, double z) {
@@ -71,34 +51,17 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     }
 
     /**
-    *  
-    Initializes a set of {@link UnitQuaternion} coordinates from the provided values.
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
+    * Initializes a set of {@link UnitQuaternion} coordinates from the provided values.
     * <p>The given values will be normalized to ensure a unit magnitude.
     * @param w The W coordinate.
     * @param x The X coordinate.
     * @param y The Y coordinate.
     * @param z The Z coordinate.
-    * @param magnitude 
-    On input, an array with one element.  On return, the array is populated with
+    * @param magnitude On input, an array with one element.  On return, the array is populated with
     
     the magnitude of the original set of coordinates.
-    
-    * @exception ArithmeticException 
-    The magnitude of the provided coordinates must not be zero.
-    
-    * @exception ArithmeticException 
-    The magnitude of the provided coordinates must not be infinite.
-    
+    * @exception ArithmeticException The magnitude of the provided coordinates must not be zero.
+    * @exception ArithmeticException The magnitude of the provided coordinates must not be infinite.
     */
     @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     public UnitQuaternion(double w, double x, double y, double z, @Nonnull double[] magnitude) {
@@ -126,14 +89,9 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     }
 
     /**
-    *  
-    Initializes a set of {@link UnitQuaternion} coordinates from the provided rotation matrix ({@link Matrix3By3}).
+    * Initializes a set of {@link UnitQuaternion} coordinates from the provided rotation matrix ({@link Matrix3By3}).
     Note that if the given {@code matrix} is not an orthogonal rotation matrix,
     it will create a non-unit {@link UnitQuaternion} and could cause problems in code which assumes that the {@link UnitQuaternion} represents a rotation.
-    
-    
-    
-
     * <p>For performance reasons, there is no check to ensure that the {@code matrix} is a unit rotation prior
     to converting to a unit quaternion.  If necessary, the surrounding code is responsible for ensuring that the given
     {@code matrix} is a valid orthogonal rotation matrix.
@@ -197,15 +155,11 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     }
 
     /**
-    *  Gets a set of {@link UnitQuaternion} coordinates with values of {@link Double#NaN}.
-    
-    
-
+    * Gets a set of {@link UnitQuaternion} coordinates with values of {@link Double#NaN}.
     * <p>
     Use {@code IsUndefined} ({@link UnitQuaternion#getIsUndefined get}) to test whether a {@link UnitQuaternion} instance
     is undefined since it will return {@code true} if any of the coordinate values
     are {@link Double#NaN}.
-    
     */
     @Nonnull
     public static UnitQuaternion getUndefined() {
@@ -213,9 +167,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     }
 
     /**
-    *  Gets a set of {@link UnitQuaternion} coordinates representing the identity vector.
-    
-
+    * Gets a set of {@link UnitQuaternion} coordinates representing the identity vector.
     */
     @Nonnull
     public static UnitQuaternion getIdentity() {
@@ -223,47 +175,35 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     }
 
     /**
-    *  Gets the W coordinate.
-    
-
+    * Gets the W coordinate.
     */
     public final double getW() {
         return m_w;
     }
 
     /**
-    *  Gets the X coordinate.
-    
-
+    * Gets the X coordinate.
     */
     public final double getX() {
         return m_x;
     }
 
     /**
-    *  Gets the Y coordinate.
-    
-
+    * Gets the Y coordinate.
     */
     public final double getY() {
         return m_y;
     }
 
     /**
-    *  Gets the Z coordinate.
-    
-
+    * Gets the Z coordinate.
     */
     public final double getZ() {
         return m_z;
     }
 
     /**
-    *  
-    Forms the conjugate of this instance.
-    
-    
-
+    * Forms the conjugate of this instance.
     * @return A set of {@link UnitQuaternion} coordinates that represents the conjugate of this instance.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
@@ -273,12 +213,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     }
 
     /**
-    *  
-    Multiplies this instance by the specified {@link UnitQuaternion}, yielding a new {@link UnitQuaternion}.
-    
-    
-    
-
+    * Multiplies this instance by the specified {@link UnitQuaternion}, yielding a new {@link UnitQuaternion}.
     * @param quaternion The quaternion by which to multiply this quaternion.
     * @return The result of the multiplication.
     */
@@ -291,13 +226,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     }
 
     /**
-    *  
-    Multiplies a specified {@link UnitQuaternion} by another specified {@link UnitQuaternion}, yielding a new {@link UnitQuaternion}.
-    
-    
-    
-    
-
+    * Multiplies a specified {@link UnitQuaternion} by another specified {@link UnitQuaternion}, yielding a new {@link UnitQuaternion}.
     * @param left The first unit quaternion.
     * @param right The second unit quaternion.
     * @return The result of the multiplication.
@@ -309,12 +238,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     }
 
     /**
-    *  
-    Negates the specified {@link UnitQuaternion}, yielding a new {@link UnitQuaternion}.
-    
-    
-    
-
+    * Negates the specified {@link UnitQuaternion}, yielding a new {@link UnitQuaternion}.
     * @param coordinates The set of coordinates.
     * @return The result of negating the elements of the original {@link UnitQuaternion}.
     */
@@ -325,12 +249,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     }
 
     /**
-    *  
-    Indicates whether another object is exactly equal to this instance.
-    
-    
-    
-
+    * Indicates whether another object is exactly equal to this instance.
     * @param obj The object to compare to this instance.
     * @return {@code true} if {@code obj} is an instance of this type and represents the same value as this instance; otherwise, {@code false}.
     */
@@ -340,12 +259,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     }
 
     /**
-    *  
-    Indicates whether another instance of this type is exactly equal to this instance.
-    
-    
-    
-
+    * Indicates whether another instance of this type is exactly equal to this instance.
     * @param other The instance to compare to this instance.
     * @return {@code true} if {@code other} represents the same value as this instance; otherwise, {@code false}.
     */
@@ -355,19 +269,11 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     }
 
     /**
-    *  
-    Indicates whether each coordinate value of another instance of this type
+    * Indicates whether each coordinate value of another instance of this type
     is within the required tolerance of the corresponding coordinate value of this instance.
-    
-    
-    
-    
-
     * @param other The set of {@link UnitQuaternion} coordinates to compare to this instance.
     * @param epsilon The limit at which the absolute differences between the coordinate values will not be considered equal.
-    * @return 
-    {@code true} if the absolute differences are less than or equal to {@code epsilon}; otherwise, {@code false}.
-    
+    * @return {@code true} if the absolute differences are less than or equal to {@code epsilon}; otherwise, {@code false}.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final boolean equalsEpsilon(@Nonnull UnitQuaternion other, double epsilon) {
@@ -375,11 +281,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     }
 
     /**
-    *  
-    Returns a hash code for this instance, which is suitable for use in hashing algorithms and data structures like a hash table.
-    
-    
-
+    * Returns a hash code for this instance, which is suitable for use in hashing algorithms and data structures like a hash table.
     * @return A hash code for the current object.
     */
     @Override
@@ -388,15 +290,9 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     }
 
     /**
-    *  
-    Returns the string representation of the value of this instance.
-    
-    
-
-    * @return 
-    A string that represents the value of this instance in the form
+    * Returns the string representation of the value of this instance.
+    * @return A string that represents the value of this instance in the form
     "W, X, Y, Z".
-    
     */
     @Override
     public String toString() {
@@ -404,18 +300,10 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     }
 
     /**
-    *  
-    Returns {@code true} if the two instances are exactly equal.
-    
-    
-    
-    
-
+    * Returns {@code true} if the two instances are exactly equal.
     * @param left The instance to compare to {@code right}.
     * @param right The instance to compare to {@code left}.
-    * @return 
-    {@code true} if {@code left} represents the same value as {@code right}; otherwise, {@code false}.
-    
+    * @return {@code true} if {@code left} represents the same value as {@code right}; otherwise, {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(UnitQuaternion,UnitQuaternion)'")
     public static boolean equals(@Nonnull UnitQuaternion left, @Nonnull UnitQuaternion right) {
@@ -423,18 +311,10 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     }
 
     /**
-    *  
-    Returns {@code true} if the two instances are not exactly equal.
-    
-    
-    
-    
-
+    * Returns {@code true} if the two instances are not exactly equal.
     * @param left The instance to compare to {@code right}.
     * @param right The instance to compare to {@code left}.
-    * @return 
-    {@code true} if {@code left} does not represent the same value as {@code right}; otherwise, {@code false}.
-    
+    * @return {@code true} if {@code left} does not represent the same value as {@code right}; otherwise, {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(UnitQuaternion,UnitQuaternion)'")
     public static boolean notEquals(@Nonnull UnitQuaternion left, @Nonnull UnitQuaternion right) {
@@ -442,9 +322,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     }
 
     /**
-    *  Gets a value indicating whether or not any of the coordinates for this instance have the value {@link Double#NaN}.
-    
-
+    * Gets a value indicating whether or not any of the coordinates for this instance have the value {@link Double#NaN}.
     */
     public final boolean getIsUndefined() {
         return Double.isNaN(m_w) || Double.isNaN(m_x) || Double.isNaN(m_y) || Double.isNaN(m_z);

@@ -8,10 +8,7 @@ import cesiumlanguagewriter.advanced.*;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Writes a {@code PositionList} to a {@link CesiumOutputStream}. A {@code PositionList} is a list of positions.
- 
-
+ * Writes a {@code PositionList} to a {@link CesiumOutputStream}. A {@code PositionList} is a list of positions.
  */
 @SuppressWarnings( {
         "unused",
@@ -21,45 +18,27 @@ import javax.annotation.Nonnull;
 public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumCartesian3ListValuePropertyWriter,
         ICesiumCartographicRadiansListValuePropertyWriter, ICesiumCartographicDegreesListValuePropertyWriter, ICesiumReferenceListValuePropertyWriter {
     /**
-    *  
-    The name of the {@code referenceFrame} property.
-    
-
+    * The name of the {@code referenceFrame} property.
     */
     public static final String ReferenceFramePropertyName = "referenceFrame";
     /**
-    *  
-    The name of the {@code cartesian} property.
-    
-
+    * The name of the {@code cartesian} property.
     */
     public static final String CartesianPropertyName = "cartesian";
     /**
-    *  
-    The name of the {@code cartographicRadians} property.
-    
-
+    * The name of the {@code cartographicRadians} property.
     */
     public static final String CartographicRadiansPropertyName = "cartographicRadians";
     /**
-    *  
-    The name of the {@code cartographicDegrees} property.
-    
-
+    * The name of the {@code cartographicDegrees} property.
     */
     public static final String CartographicDegreesPropertyName = "cartographicDegrees";
     /**
-    *  
-    The name of the {@code references} property.
-    
-
+    * The name of the {@code references} property.
     */
     public static final String ReferencesPropertyName = "references";
     /**
-    *  
-    The name of the {@code delete} property.
-    
-
+    * The name of the {@code delete} property.
     */
     public static final String DeletePropertyName = "delete";
     private Lazy<CesiumCartesian3ListValuePropertyAdaptor<PositionListCesiumWriter>> m_asCartesian;
@@ -68,11 +47,7 @@ public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListC
     private Lazy<CesiumReferenceListValuePropertyAdaptor<PositionListCesiumWriter>> m_asReferences;
 
     /**
-    *  
-    Initializes a new instance.
-    
-    
-
+    * Initializes a new instance.
     * @param propertyName The name of the property.
     */
     public PositionListCesiumWriter(@Nonnull String propertyName) {
@@ -84,11 +59,7 @@ public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListC
     }
 
     /**
-    *  
-    Initializes a new instance as a copy of an existing instance.
-    
-    
-
+    * Initializes a new instance as a copy of an existing instance.
     * @param existingInstance The existing instance to copy.
     */
     protected PositionListCesiumWriter(@Nonnull PositionListCesiumWriter existingInstance) {
@@ -100,12 +71,7 @@ public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListC
     }
 
     /**
-    *  
-    
-    Copies this instance and returns the copy.
-    
-    
-
+    * Copies this instance and returns the copy.
     * @return The copy.
     */
     @Override
@@ -114,11 +80,7 @@ public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListC
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code referenceFrame}, which is the reference frame in which cartesian positions are specified. Possible values are "FIXED" and "INERTIAL". If not specified, the default value is FIXED.
-    
-    
-
+    * Writes the value expressed as a {@code referenceFrame}, which is the reference frame in which cartesian positions are specified. Possible values are "FIXED" and "INERTIAL". If not specified, the default value is FIXED.
     * @param value The value.
     */
     public final void writeReferenceFrame(String value) {
@@ -129,11 +91,7 @@ public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListC
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartesian}, which is the list of positions specified as three-dimensional Cartesian values, {@code [X, Y, Z, X, Y, Z, ...]}, in meters relative to the {@code referenceFrame}.
-    
-    
-
+    * Writes the value expressed as a {@code cartesian}, which is the list of positions specified as three-dimensional Cartesian values, {@code [X, Y, Z, X, Y, Z, ...]}, in meters relative to the {@code referenceFrame}.
     * @param values The values.
     */
     public final void writeCartesian(Iterable<Cartesian> values) {
@@ -144,11 +102,7 @@ public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListC
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartographicRadians}, which is the list of positions specified in Cartographic WGS84 coordinates, {@code [Longitude, Latitude, Height, Longitude, Latitude, Height, ...]}, where Longitude and Latitude are in radians and Height is in meters.
-    
-    
-
+    * Writes the value expressed as a {@code cartographicRadians}, which is the list of positions specified in Cartographic WGS84 coordinates, {@code [Longitude, Latitude, Height, Longitude, Latitude, Height, ...]}, where Longitude and Latitude are in radians and Height is in meters.
     * @param values The values.
     */
     public final void writeCartographicRadians(Iterable<Cartographic> values) {
@@ -159,11 +113,7 @@ public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListC
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code cartographicDegrees}, which is the list of positions specified in Cartographic WGS84 coordinates, {@code [Longitude, Latitude, Height, Longitude, Latitude, Height, ...]}, where Longitude and Latitude are in degrees and Height is in meters.
-    
-    
-
+    * Writes the value expressed as a {@code cartographicDegrees}, which is the list of positions specified in Cartographic WGS84 coordinates, {@code [Longitude, Latitude, Height, Longitude, Latitude, Height, ...]}, where Longitude and Latitude are in degrees and Height is in meters.
     * @param values The values.
     */
     public final void writeCartographicDegrees(Iterable<Cartographic> values) {
@@ -174,11 +124,7 @@ public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListC
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code references}, which is the list of positions specified as references. Each reference is to a property that defines a single position, which may change with time.
-    
-    
-
+    * Writes the value expressed as a {@code references}, which is the list of positions specified as references. Each reference is to a property that defines a single position, which may change with time.
     * @param references The list of references.
     */
     public final void writeReferences(Iterable<Reference> references) {
@@ -189,11 +135,7 @@ public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListC
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
-    
-    
-
+    * Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
     * @param value The value.
     */
     public final void writeDelete(boolean value) {
@@ -204,11 +146,7 @@ public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListC
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumCartesian3ListValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumCartesian3ListValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumCartesian3ListValuePropertyAdaptor<PositionListCesiumWriter> asCartesian() {
@@ -229,11 +167,7 @@ public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListC
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumCartographicRadiansListValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumCartographicRadiansListValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumCartographicRadiansListValuePropertyAdaptor<PositionListCesiumWriter> asCartographicRadians() {
@@ -254,11 +188,7 @@ public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListC
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumCartographicDegreesListValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumCartographicDegreesListValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumCartographicDegreesListValuePropertyAdaptor<PositionListCesiumWriter> asCartographicDegrees() {
@@ -279,11 +209,7 @@ public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListC
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumReferenceListValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumReferenceListValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumReferenceListValuePropertyAdaptor<PositionListCesiumWriter> asReferences() {

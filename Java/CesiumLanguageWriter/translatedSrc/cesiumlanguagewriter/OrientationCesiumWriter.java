@@ -9,10 +9,7 @@ import java.util.List;
 import javax.annotation.Nonnull;
 
 /**
- *  
- Writes a {@code Orientation} to a {@link CesiumOutputStream}. A {@code Orientation} is defines an orientation. An orientation is a rotation that takes a vector expressed in the "body" axes of the object and transforms it to the Earth fixed axes.
- 
-
+ * Writes a {@code Orientation} to a {@link CesiumOutputStream}. A {@code Orientation} is defines an orientation. An orientation is a rotation that takes a vector expressed in the "body" axes of the object and transforms it to the Earth fixed axes.
  */
 @SuppressWarnings( {
         "unused",
@@ -22,31 +19,19 @@ import javax.annotation.Nonnull;
 public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<OrientationCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumUnitQuaternionValuePropertyWriter,
         ICesiumReferenceValuePropertyWriter, ICesiumVelocityReferenceValuePropertyWriter {
     /**
-    *  
-    The name of the {@code unitQuaternion} property.
-    
-
+    * The name of the {@code unitQuaternion} property.
     */
     public static final String UnitQuaternionPropertyName = "unitQuaternion";
     /**
-    *  
-    The name of the {@code reference} property.
-    
-
+    * The name of the {@code reference} property.
     */
     public static final String ReferencePropertyName = "reference";
     /**
-    *  
-    The name of the {@code velocityReference} property.
-    
-
+    * The name of the {@code velocityReference} property.
     */
     public static final String VelocityReferencePropertyName = "velocityReference";
     /**
-    *  
-    The name of the {@code delete} property.
-    
-
+    * The name of the {@code delete} property.
     */
     public static final String DeletePropertyName = "delete";
     private Lazy<CesiumUnitQuaternionValuePropertyAdaptor<OrientationCesiumWriter>> m_asUnitQuaternion;
@@ -54,11 +39,7 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
     private Lazy<CesiumVelocityReferenceValuePropertyAdaptor<OrientationCesiumWriter>> m_asVelocityReference;
 
     /**
-    *  
-    Initializes a new instance.
-    
-    
-
+    * Initializes a new instance.
     * @param propertyName The name of the property.
     */
     public OrientationCesiumWriter(@Nonnull String propertyName) {
@@ -69,11 +50,7 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
     }
 
     /**
-    *  
-    Initializes a new instance as a copy of an existing instance.
-    
-    
-
+    * Initializes a new instance as a copy of an existing instance.
     * @param existingInstance The existing instance to copy.
     */
     protected OrientationCesiumWriter(@Nonnull OrientationCesiumWriter existingInstance) {
@@ -84,12 +61,7 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
     }
 
     /**
-    *  
-    
-    Copies this instance and returns the copy.
-    
-    
-
+    * Copies this instance and returns the copy.
     * @return The copy.
     */
     @Override
@@ -98,11 +70,7 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code unitQuaternion}, which is the orientation specified as a 4-dimensional unit magnitude quaternion, specified as {@code [X, Y, Z, W]}.
-    
-    
-
+    * Writes the value expressed as a {@code unitQuaternion}, which is the orientation specified as a 4-dimensional unit magnitude quaternion, specified as {@code [X, Y, Z, W]}.
     * @param value The value.
     */
     public final void writeUnitQuaternion(@Nonnull UnitQuaternion value) {
@@ -113,12 +81,7 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code unitQuaternion}, which is the orientation specified as a 4-dimensional unit magnitude quaternion, specified as {@code [X, Y, Z, W]}.
-    
-    
-    
-
+    * Writes the value expressed as a {@code unitQuaternion}, which is the orientation specified as a 4-dimensional unit magnitude quaternion, specified as {@code [X, Y, Z, W]}.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
@@ -127,14 +90,7 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code unitQuaternion}, which is the orientation specified as a 4-dimensional unit magnitude quaternion, specified as {@code [X, Y, Z, W]}.
-    
-    
-    
-    
-    
-
+    * Writes the value expressed as a {@code unitQuaternion}, which is the orientation specified as a 4-dimensional unit magnitude quaternion, specified as {@code [X, Y, Z, W]}.
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     * @param startIndex The index of the first element to write.
@@ -147,11 +103,7 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the orientation specified as a reference to another property.
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the orientation specified as a reference to another property.
     * @param value The reference.
     */
     public final void writeReference(Reference value) {
@@ -162,11 +114,7 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the orientation specified as a reference to another property.
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the orientation specified as a reference to another property.
     * @param value The reference.
     */
     public final void writeReference(String value) {
@@ -177,12 +125,7 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the orientation specified as a reference to another property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the orientation specified as a reference to another property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -194,12 +137,7 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code reference}, which is the orientation specified as a reference to another property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code reference}, which is the orientation specified as a reference to another property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -211,11 +149,7 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code velocityReference}, which is the orientation specified as the normalized velocity vector of a position property. The reference must be to a {@code position} property.
-    
-    
-
+    * Writes the value expressed as a {@code velocityReference}, which is the orientation specified as the normalized velocity vector of a position property. The reference must be to a {@code position} property.
     * @param value The reference.
     */
     public final void writeVelocityReference(Reference value) {
@@ -226,11 +160,7 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code velocityReference}, which is the orientation specified as the normalized velocity vector of a position property. The reference must be to a {@code position} property.
-    
-    
-
+    * Writes the value expressed as a {@code velocityReference}, which is the orientation specified as the normalized velocity vector of a position property. The reference must be to a {@code position} property.
     * @param value The reference.
     */
     public final void writeVelocityReference(String value) {
@@ -241,12 +171,7 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code velocityReference}, which is the orientation specified as the normalized velocity vector of a position property. The reference must be to a {@code position} property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code velocityReference}, which is the orientation specified as the normalized velocity vector of a position property. The reference must be to a {@code position} property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -258,12 +183,7 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code velocityReference}, which is the orientation specified as the normalized velocity vector of a position property. The reference must be to a {@code position} property.
-    
-    
-    
-
+    * Writes the value expressed as a {@code velocityReference}, which is the orientation specified as the normalized velocity vector of a position property. The reference must be to a {@code position} property.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -275,11 +195,7 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
     }
 
     /**
-    *  
-    Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
-    
-    
-
+    * Writes the value expressed as a {@code delete}, which is whether the client should delete existing samples or interval data for this property. Data will be deleted for the containing interval, or if there is no containing interval, then all data. If true, all other properties in this property will be ignored.
     * @param value The value.
     */
     public final void writeDelete(boolean value) {
@@ -290,11 +206,7 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumUnitQuaternionValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumUnitQuaternionValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumUnitQuaternionValuePropertyAdaptor<OrientationCesiumWriter> asUnitQuaternion() {
@@ -315,11 +227,7 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumReferenceValuePropertyAdaptor<OrientationCesiumWriter> asReference() {
@@ -340,11 +248,7 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
     }
 
     /**
-    *  
-    Returns a wrapper for this instance that implements {@link ICesiumVelocityReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
-    
-    
-
+    * Returns a wrapper for this instance that implements {@link ICesiumVelocityReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
     public final CesiumVelocityReferenceValuePropertyAdaptor<OrientationCesiumWriter> asVelocityReference() {

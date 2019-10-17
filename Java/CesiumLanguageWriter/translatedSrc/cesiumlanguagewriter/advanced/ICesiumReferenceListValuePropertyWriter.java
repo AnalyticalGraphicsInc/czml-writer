@@ -5,10 +5,7 @@ import agi.foundation.compatibility.*;
 import cesiumlanguagewriter.*;
 
 /**
- *  
- A writer that can write a value as a list of references to other properties.
- 
-
+ * A writer that can write a value as a list of references to other properties.
  */
 @SuppressWarnings( {
         "unused",
@@ -17,11 +14,7 @@ import cesiumlanguagewriter.*;
 })
 public interface ICesiumReferenceListValuePropertyWriter extends ICesiumPropertyWriter {
     /**
-    *  
-    Writes the value as a list of references.
-    
-    
-
+    * Writes the value as a list of references.
     * @param references The list of references.
     */
     void writeReferences(Iterable<Reference> references);

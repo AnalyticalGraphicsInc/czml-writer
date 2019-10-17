@@ -9,10 +9,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
- *  
- The base class for types that write CZML data to a stream.
- 
-
+ * The base class for types that write CZML data to a stream.
  */
 @SuppressWarnings( {
         "unused",
@@ -25,13 +22,8 @@ public abstract class CesiumElementWriter implements ICesiumElementWriter {
     }
 
     /**
-    *  
-    Opens this writer on a given {@link CesiumOutputStream}.  A single writer can write to multiple
+    * Opens this writer on a given {@link CesiumOutputStream}.  A single writer can write to multiple
     streams over its lifetime.  Opening a writer on a stream may cause data to be written to the stream.
-    
-    
-    
-
     * @param output The stream to write to.
     * @exception IllegalStateException The writer is already open on a stream.
     */
@@ -47,12 +39,8 @@ public abstract class CesiumElementWriter implements ICesiumElementWriter {
     }
 
     /**
-    *  
-    Closes this writer on a given stream, but does not close the underlying stream.  Closing a writer
+    * Closes this writer on a given stream, but does not close the underlying stream.  Closing a writer
     on a stream may cause data to be written to the stream.
-    
-    
-
     * @exception IllegalStateException The writer is not open on a stream.
     */
     public final void close() {
@@ -64,21 +52,15 @@ public abstract class CesiumElementWriter implements ICesiumElementWriter {
     }
 
     /**
-    *  Gets a value indicating whether the writer is open.
-    
-
+    * Gets a value indicating whether the writer is open.
     */
     public final boolean getIsOpen() {
         return m_output != null;
     }
 
     /**
-    *  Gets the {@link CesiumOutputStream} on which this writer is currently open.  If the writer is
+    * Gets the {@link CesiumOutputStream} on which this writer is currently open.  If the writer is
     not open, accessing this property will throw an exception.
-    
-    
-    
-
     * @exception IllegalStateException The writer is not currently open on a stream.
     * @see #getOutputOrNull
     */
@@ -90,11 +72,8 @@ public abstract class CesiumElementWriter implements ICesiumElementWriter {
     }
 
     /**
-    *  Gets the {@link CesiumOutputStream} on which this writer is currently open, or
+    * Gets the {@link CesiumOutputStream} on which this writer is currently open, or
     {@code null} if the writer is not open.
-    
-    
-
     * @see #getOutput
     */
     @Nullable
@@ -103,30 +82,18 @@ public abstract class CesiumElementWriter implements ICesiumElementWriter {
     }
 
     /**
-    *  
-    When overridden in a derived class, writes content to the stream immediately after opening the writer on it.
-    
-
+    * When overridden in a derived class, writes content to the stream immediately after opening the writer on it.
     */
     protected void onOpen() {}
 
     /**
-    *  
-    When overridden in a derived class, writes content to the stream immediately before closing the writer on it.
-    
-
+    * When overridden in a derived class, writes content to the stream immediately before closing the writer on it.
     */
     protected void onClose() {}
 
     /**
-    *  
-    Opens a {@link CesiumElementWriter} on the same stream on which this one is currently open.
+    * Opens a {@link CesiumElementWriter} on the same stream on which this one is currently open.
     For convenience, this method returns a reference to the same writer passed to it.
-    
-    
-    
-    
-
     * @param <T> The type of the writer to open.
     * @param writer The writer.
     * @return The same writer, now opened on the stream.
