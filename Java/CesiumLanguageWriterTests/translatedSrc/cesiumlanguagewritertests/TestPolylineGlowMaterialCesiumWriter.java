@@ -3,13 +3,14 @@ package cesiumlanguagewritertests;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.DisposeHelper;
+import agi.foundation.compatibility.MapHelper;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.awt.Color;
-import java.io.StringWriter;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import javax.annotation.Nonnull;
-import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
 import org.junit.runners.MethodSorters;
@@ -24,6 +25,9 @@ import org.junit.Test;
 public class TestPolylineGlowMaterialCesiumWriter extends TestCesiumPropertyWriter<PolylineGlowMaterialCesiumWriter> {
     @Test
     public final void testWritePolylineGlowMaterial() {
+        Color expectedColor = Color.RED;
+        final double expectedGlowPower = 0.7;
+        final double expectedTaperPower = 0.2;
         {
             final PacketCesiumWriter usingExpression_0 = (getPacket());
             try {
@@ -36,9 +40,9 @@ public class TestPolylineGlowMaterialCesiumWriter extends TestCesiumPropertyWrit
                                 {
                                     PolylineGlowMaterialCesiumWriter polylineGlowMaterial = material.openPolylineGlowProperty();
                                     try {
-                                        polylineGlowMaterial.writeColorProperty(Color.RED);
-                                        polylineGlowMaterial.writeGlowPowerProperty(0.7);
-                                        polylineGlowMaterial.writeTaperPowerProperty(0.2);
+                                        polylineGlowMaterial.writeColorProperty(expectedColor);
+                                        polylineGlowMaterial.writeGlowPowerProperty(expectedGlowPower);
+                                        polylineGlowMaterial.writeTaperPowerProperty(expectedTaperPower);
                                     } finally {
                                         DisposeHelper.dispose(polylineGlowMaterial);
                                     }
@@ -55,7 +59,15 @@ public class TestPolylineGlowMaterialCesiumWriter extends TestCesiumPropertyWrit
                 DisposeHelper.dispose(usingExpression_0);
             }
         }
-        Assert.assertEquals("{\"polyline\":{\"material\":{\"polylineGlow\":{\"color\":{\"rgba\":[255,0,0,255]},\"glowPower\":0.7,\"taperPower\":0.2}}}}", getStringWriter().toString());
+        final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$2, PolylineGlowMaterialCesiumWriter.ColorPropertyName, expectedColor);
+        MapHelper.add(tempCollection$2, PolylineGlowMaterialCesiumWriter.GlowPowerPropertyName, expectedGlowPower);
+        MapHelper.add(tempCollection$2, PolylineGlowMaterialCesiumWriter.TaperPowerPropertyName, expectedTaperPower);
+        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$1, PolylineMaterialCesiumWriter.PolylineGlowPropertyName, tempCollection$2);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, PolylineCesiumWriter.MaterialPropertyName, tempCollection$1);
+        assertExpectedJson(PacketCesiumWriter.PolylinePropertyName, tempCollection$0);
     }
 
     @Override

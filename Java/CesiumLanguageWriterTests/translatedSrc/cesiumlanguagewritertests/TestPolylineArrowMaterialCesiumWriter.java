@@ -3,13 +3,14 @@ package cesiumlanguagewritertests;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.DisposeHelper;
+import agi.foundation.compatibility.MapHelper;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.awt.Color;
-import java.io.StringWriter;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import javax.annotation.Nonnull;
-import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
 import org.junit.runners.MethodSorters;
@@ -24,6 +25,7 @@ import org.junit.Test;
 public class TestPolylineArrowMaterialCesiumWriter extends TestCesiumPropertyWriter<PolylineArrowMaterialCesiumWriter> {
     @Test
     public final void testWritePolylineArrowMaterial() {
+        Color expectedColor = Color.RED;
         {
             final PacketCesiumWriter usingExpression_0 = (getPacket());
             try {
@@ -36,7 +38,7 @@ public class TestPolylineArrowMaterialCesiumWriter extends TestCesiumPropertyWri
                                 {
                                     PolylineArrowMaterialCesiumWriter polylineArrowMaterial = material.openPolylineArrowProperty();
                                     try {
-                                        polylineArrowMaterial.writeColorProperty(Color.RED);
+                                        polylineArrowMaterial.writeColorProperty(expectedColor);
                                     } finally {
                                         DisposeHelper.dispose(polylineArrowMaterial);
                                     }
@@ -53,7 +55,13 @@ public class TestPolylineArrowMaterialCesiumWriter extends TestCesiumPropertyWri
                 DisposeHelper.dispose(usingExpression_0);
             }
         }
-        Assert.assertEquals("{\"polyline\":{\"material\":{\"polylineArrow\":{\"color\":{\"rgba\":[255,0,0,255]}}}}}", getStringWriter().toString());
+        final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$2, PolylineArrowMaterialCesiumWriter.ColorPropertyName, expectedColor);
+        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$1, PolylineMaterialCesiumWriter.PolylineArrowPropertyName, tempCollection$2);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, PolylineCesiumWriter.MaterialPropertyName, tempCollection$1);
+        assertExpectedJson(PacketCesiumWriter.PolylinePropertyName, tempCollection$0);
     }
 
     @Override

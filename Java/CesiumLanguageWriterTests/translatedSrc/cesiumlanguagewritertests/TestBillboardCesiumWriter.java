@@ -3,12 +3,15 @@ package cesiumlanguagewritertests;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.DisposeHelper;
+import agi.foundation.compatibility.MapHelper;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import javax.annotation.Nonnull;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
@@ -25,6 +28,7 @@ import org.junit.Test;
 public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<BillboardCesiumWriter> {
     @Test
     public final void testShowProperty() {
+        final boolean expectedShow = true;
         {
             final PacketCesiumWriter usingExpression_0 = (getPacket());
             try {
@@ -34,7 +38,7 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
                         {
                             BillboardCesiumWriter interval = billboard.openInterval();
                             try {
-                                interval.writeShowProperty(true);
+                                interval.writeShowProperty(expectedShow);
                             } finally {
                                 DisposeHelper.dispose(interval);
                             }
@@ -47,13 +51,24 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
                 DisposeHelper.dispose(usingExpression_0);
             }
         }
-        Assert.assertEquals("{\"billboard\":{\"show\":true}}", getStringWriter().toString());
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, BillboardCesiumWriter.ShowPropertyName, expectedShow);
+        assertExpectedJson(PacketCesiumWriter.BillboardPropertyName, tempCollection$0);
     }
 
     @Test
     public final void testShowPropertyInterval() {
-        JulianDate startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0D));
-        JulianDate stopDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 1, 0D));
+        JulianDate startDate = new GregorianDate(2012, 4, 2, 12, 0, 0D).toJulianDate();
+        JulianDate stopDate = new GregorianDate(2012, 4, 2, 12, 1, 0D).toJulianDate();
+        JulianDate interval1Start = startDate;
+        JulianDate interval1Stop = startDate.addSeconds(1D);
+        JulianDate interval2Start = interval1Stop;
+        JulianDate interval2Stop = startDate.addSeconds(2D);
+        JulianDate interval3Start = interval2Stop;
+        JulianDate interval3Stop = stopDate;
+        final boolean interval1Value = true;
+        final boolean interval2Value = false;
+        final boolean interval3Value = true;
         {
             final PacketCesiumWriter usingExpression_1 = (getPacket());
             try {
@@ -67,25 +82,25 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
                                     CesiumIntervalListWriter<cesiumlanguagewriter.BooleanCesiumWriter> showIntervals = show.openMultipleIntervals();
                                     try {
                                         {
-                                            BooleanCesiumWriter interval = showIntervals.openInterval(startDate, startDate.addSeconds(1D));
+                                            BooleanCesiumWriter interval = showIntervals.openInterval(interval1Start, interval1Stop);
                                             try {
-                                                interval.writeBoolean(true);
+                                                interval.writeBoolean(interval1Value);
                                             } finally {
                                                 DisposeHelper.dispose(interval);
                                             }
                                         }
                                         {
-                                            BooleanCesiumWriter interval = showIntervals.openInterval(startDate.addSeconds(1D), startDate.addSeconds(2D));
+                                            BooleanCesiumWriter interval = showIntervals.openInterval(interval2Start, interval2Stop);
                                             try {
-                                                interval.writeBoolean(false);
+                                                interval.writeBoolean(interval2Value);
                                             } finally {
                                                 DisposeHelper.dispose(interval);
                                             }
                                         }
                                         {
-                                            BooleanCesiumWriter interval = showIntervals.openInterval(startDate.addSeconds(2D), stopDate);
+                                            BooleanCesiumWriter interval = showIntervals.openInterval(interval3Start, interval3Stop);
                                             try {
-                                                interval.writeBoolean(true);
+                                                interval.writeBoolean(interval3Value);
                                             } finally {
                                                 DisposeHelper.dispose(interval);
                                             }
@@ -106,15 +121,27 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
                 DisposeHelper.dispose(usingExpression_1);
             }
         }
-        String interval1String = CesiumFormattingHelper.toIso8601Interval(startDate, startDate.addSeconds(1D), Iso8601Format.COMPACT);
-        String interval2String = CesiumFormattingHelper.toIso8601Interval(startDate.addSeconds(1D), startDate.addSeconds(2D), Iso8601Format.COMPACT);
-        String interval3String = CesiumFormattingHelper.toIso8601Interval(startDate.addSeconds(2D), stopDate, Iso8601Format.COMPACT);
-        Assert.assertEquals("{\"billboard\":{\"show\":[{\"interval\":\"" + interval1String + "\",\"boolean\":true}," + "{\"interval\":\"" + interval2String + "\",\"boolean\":false},"
-                + "{\"interval\":\"" + interval3String + "\",\"boolean\":true}" + "]}}", getStringWriter().toString());
+        final Map<String, Object> tempCollection$3 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$3, "interval", CesiumFormattingHelper.toIso8601Interval(interval1Start, interval1Stop, Iso8601Format.COMPACT));
+        MapHelper.add(tempCollection$3, "boolean", interval1Value);
+        final Map<String, Object> tempCollection$4 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$4, "interval", CesiumFormattingHelper.toIso8601Interval(interval2Start, interval2Stop, Iso8601Format.COMPACT));
+        MapHelper.add(tempCollection$4, "boolean", interval2Value);
+        final Map<String, Object> tempCollection$5 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$5, "interval", CesiumFormattingHelper.toIso8601Interval(interval3Start, interval3Stop, Iso8601Format.COMPACT));
+        MapHelper.add(tempCollection$5, "boolean", interval3Value);
+        final ArrayList<Map<String, Object>> tempCollection$2 = new ArrayList<Map<String, Object>>();
+        tempCollection$2.add(tempCollection$3);
+        tempCollection$2.add(tempCollection$4);
+        tempCollection$2.add(tempCollection$5);
+        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$1, BillboardCesiumWriter.ShowPropertyName, tempCollection$2);
+        assertExpectedJson(PacketCesiumWriter.BillboardPropertyName, tempCollection$1);
     }
 
     @Test
     public final void testScaleByDistanceProperty() {
+        NearFarScalar expectedScaleByDistance = new NearFarScalar(100.5, 1.5, 200.5, 2.5);
         {
             final PacketCesiumWriter usingExpression_2 = (getPacket());
             try {
@@ -124,7 +151,7 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
                         {
                             BillboardCesiumWriter interval = billboard.openInterval();
                             try {
-                                interval.writeScaleByDistanceProperty(new NearFarScalar(100.0, 1.0, 200.0, 2.0));
+                                interval.writeScaleByDistanceProperty(expectedScaleByDistance);
                             } finally {
                                 DisposeHelper.dispose(interval);
                             }
@@ -137,12 +164,14 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
                 DisposeHelper.dispose(usingExpression_2);
             }
         }
-        Assert.assertEquals("{\"billboard\":{\"scaleByDistance\":{\"nearFarScalar\":[100,1,200,2]}}}", getStringWriter().toString());
+        final Map<String, Object> tempCollection$6 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$6, BillboardCesiumWriter.ScaleByDistancePropertyName, expectedScaleByDistance);
+        assertExpectedJson(PacketCesiumWriter.BillboardPropertyName, tempCollection$6);
     }
 
     @Test
     public final void testScaleByDistancePropertySamples() {
-        JulianDate startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0D));
+        JulianDate epoch = new GregorianDate(2012, 4, 2, 12, 0, 0D).toJulianDate();
         {
             final PacketCesiumWriter usingExpression_3 = (getPacket());
             try {
@@ -157,9 +186,9 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
                                     try {
                                         ArrayList<cesiumlanguagewriter.JulianDate> dates = new ArrayList<cesiumlanguagewriter.JulianDate>();
                                         ArrayList<cesiumlanguagewriter.NearFarScalar> values = new ArrayList<cesiumlanguagewriter.NearFarScalar>();
-                                        dates.add(startDate);
+                                        dates.add(epoch);
                                         values.add(new NearFarScalar(100.0, 1.0, 200.0, 2.0));
-                                        dates.add(startDate.addSeconds(60.0));
+                                        dates.add(epoch.addSeconds(60.0));
                                         values.add(new NearFarScalar(200.0, 1.0, 300.0, 2.0));
                                         scaleByDistance.writeNearFarScalar(dates, values);
                                     } finally {
@@ -205,7 +234,11 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
                 DisposeHelper.dispose(usingExpression_4);
             }
         }
-        Assert.assertEquals("{\"billboard\":{\"alignedAxis\":{\"delete\":true}}}", getStringWriter().toString());
+        final Map<String, Object> tempCollection$8 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$8, "delete", true);
+        final Map<String, Object> tempCollection$7 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$7, BillboardCesiumWriter.AlignedAxisPropertyName, tempCollection$8);
+        assertExpectedJson(PacketCesiumWriter.BillboardPropertyName, tempCollection$7);
     }
 
     @Test
@@ -232,7 +265,11 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
                 DisposeHelper.dispose(usingExpression_5);
             }
         }
-        Assert.assertEquals("{\"billboard\":{\"scale\":{\"delete\":true}}}", getStringWriter().toString());
+        final Map<String, Object> tempCollection$10 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$10, "delete", true);
+        final Map<String, Object> tempCollection$9 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$9, BillboardCesiumWriter.ScalePropertyName, tempCollection$10);
+        assertExpectedJson(PacketCesiumWriter.BillboardPropertyName, tempCollection$9);
     }
 
     @Override

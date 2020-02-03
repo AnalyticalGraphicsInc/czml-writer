@@ -3,12 +3,13 @@ package cesiumlanguagewritertests;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.DisposeHelper;
+import agi.foundation.compatibility.MapHelper;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
-import java.io.StringWriter;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import javax.annotation.Nonnull;
-import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
 import org.junit.runners.MethodSorters;
@@ -23,6 +24,8 @@ import org.junit.Test;
 public class TestRectangleCesiumWriter extends TestCesiumPropertyWriter<RectangleCesiumWriter> {
     @Test
     public final void testHeightReferenceProperties() {
+        final double expectedExtrudedHeight = 10.0;
+        final CesiumHeightReference expectedExtrudedHeightReference = CesiumHeightReference.RELATIVE_TO_GROUND;
         {
             final PacketCesiumWriter usingExpression_0 = (getPacket());
             try {
@@ -32,8 +35,8 @@ public class TestRectangleCesiumWriter extends TestCesiumPropertyWriter<Rectangl
                         {
                             RectangleCesiumWriter interval = rectangle.openInterval();
                             try {
-                                interval.writeExtrudedHeightProperty(10.0);
-                                interval.writeExtrudedHeightReferenceProperty(CesiumHeightReference.RELATIVE_TO_GROUND);
+                                interval.writeExtrudedHeightProperty(expectedExtrudedHeight);
+                                interval.writeExtrudedHeightReferenceProperty(expectedExtrudedHeightReference);
                             } finally {
                                 DisposeHelper.dispose(interval);
                             }
@@ -46,7 +49,10 @@ public class TestRectangleCesiumWriter extends TestCesiumPropertyWriter<Rectangl
                 DisposeHelper.dispose(usingExpression_0);
             }
         }
-        Assert.assertEquals("{\"rectangle\":{\"extrudedHeight\":10,\"extrudedHeightReference\":\"RELATIVE_TO_GROUND\"}}", getStringWriter().toString());
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, RectangleCesiumWriter.ExtrudedHeightPropertyName, expectedExtrudedHeight);
+        MapHelper.add(tempCollection$0, RectangleCesiumWriter.ExtrudedHeightReferencePropertyName, CesiumFormattingHelper.heightReferenceToString(expectedExtrudedHeightReference));
+        assertExpectedJson(PacketCesiumWriter.RectanglePropertyName, tempCollection$0);
     }
 
     @Override

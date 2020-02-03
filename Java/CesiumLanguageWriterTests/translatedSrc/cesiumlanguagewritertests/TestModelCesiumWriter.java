@@ -3,13 +3,14 @@ package cesiumlanguagewritertests;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.DisposeHelper;
+import agi.foundation.compatibility.MapHelper;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.awt.Color;
-import java.io.StringWriter;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import javax.annotation.Nonnull;
-import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
 import org.junit.runners.MethodSorters;
@@ -24,6 +25,7 @@ import org.junit.Test;
 public class TestModelCesiumWriter extends TestCesiumPropertyWriter<ModelCesiumWriter> {
     @Test
     public final void testShowProperty() {
+        final boolean expectedShow = true;
         {
             final PacketCesiumWriter usingExpression_0 = (getPacket());
             try {
@@ -33,7 +35,7 @@ public class TestModelCesiumWriter extends TestCesiumPropertyWriter<ModelCesiumW
                         {
                             ModelCesiumWriter interval = model.openInterval();
                             try {
-                                interval.writeShowProperty(true);
+                                interval.writeShowProperty(expectedShow);
                             } finally {
                                 DisposeHelper.dispose(interval);
                             }
@@ -46,11 +48,14 @@ public class TestModelCesiumWriter extends TestCesiumPropertyWriter<ModelCesiumW
                 DisposeHelper.dispose(usingExpression_0);
             }
         }
-        Assert.assertEquals("{\"model\":{\"show\":true}}", getStringWriter().toString());
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, ModelCesiumWriter.ShowPropertyName, expectedShow);
+        assertExpectedJson(PacketCesiumWriter.ModelPropertyName, tempCollection$0);
     }
 
     @Test
     public final void testGltfProperty() {
+        final String expectedGltf = "test.gltf";
         {
             final PacketCesiumWriter usingExpression_1 = (getPacket());
             try {
@@ -60,7 +65,7 @@ public class TestModelCesiumWriter extends TestCesiumPropertyWriter<ModelCesiumW
                         {
                             ModelCesiumWriter interval = model.openInterval();
                             try {
-                                interval.writeGltfProperty("test.gltf", CesiumResourceBehavior.LINK_TO);
+                                interval.writeGltfProperty(expectedGltf, CesiumResourceBehavior.LINK_TO);
                             } finally {
                                 DisposeHelper.dispose(interval);
                             }
@@ -73,11 +78,14 @@ public class TestModelCesiumWriter extends TestCesiumPropertyWriter<ModelCesiumW
                 DisposeHelper.dispose(usingExpression_1);
             }
         }
-        Assert.assertEquals("{\"model\":{\"gltf\":\"test.gltf\"}}", getStringWriter().toString());
+        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$1, ModelCesiumWriter.GltfPropertyName, expectedGltf);
+        assertExpectedJson(PacketCesiumWriter.ModelPropertyName, tempCollection$1);
     }
 
     @Test
     public final void testSilhouetteColorProperty() {
+        Color expectedSilhouetteColor = Color.BLUE;
         {
             final PacketCesiumWriter usingExpression_2 = (getPacket());
             try {
@@ -87,7 +95,7 @@ public class TestModelCesiumWriter extends TestCesiumPropertyWriter<ModelCesiumW
                         {
                             ModelCesiumWriter interval = model.openInterval();
                             try {
-                                interval.writeSilhouetteColorProperty(Color.BLUE);
+                                interval.writeSilhouetteColorProperty(expectedSilhouetteColor);
                             } finally {
                                 DisposeHelper.dispose(interval);
                             }
@@ -100,11 +108,14 @@ public class TestModelCesiumWriter extends TestCesiumPropertyWriter<ModelCesiumW
                 DisposeHelper.dispose(usingExpression_2);
             }
         }
-        Assert.assertEquals("{\"model\":{\"silhouetteColor\":{\"rgba\":[0,0,255,255]}}}", getStringWriter().toString());
+        final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$2, ModelCesiumWriter.SilhouetteColorPropertyName, expectedSilhouetteColor);
+        assertExpectedJson(PacketCesiumWriter.ModelPropertyName, tempCollection$2);
     }
 
     @Test
     public final void testSilhouetteSizeProperty() {
+        final double expectedSilhouetteSize = 0.75;
         {
             final PacketCesiumWriter usingExpression_3 = (getPacket());
             try {
@@ -114,7 +125,7 @@ public class TestModelCesiumWriter extends TestCesiumPropertyWriter<ModelCesiumW
                         {
                             ModelCesiumWriter interval = model.openInterval();
                             try {
-                                interval.writeSilhouetteSizeProperty(0.75);
+                                interval.writeSilhouetteSizeProperty(expectedSilhouetteSize);
                             } finally {
                                 DisposeHelper.dispose(interval);
                             }
@@ -127,11 +138,14 @@ public class TestModelCesiumWriter extends TestCesiumPropertyWriter<ModelCesiumW
                 DisposeHelper.dispose(usingExpression_3);
             }
         }
-        Assert.assertEquals("{\"model\":{\"silhouetteSize\":0.75}}", getStringWriter().toString());
+        final Map<String, Object> tempCollection$3 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$3, ModelCesiumWriter.SilhouetteSizePropertyName, expectedSilhouetteSize);
+        assertExpectedJson(PacketCesiumWriter.ModelPropertyName, tempCollection$3);
     }
 
     @Test
     public final void testColorProperty() {
+        Color expectedColor = Color.RED;
         {
             final PacketCesiumWriter usingExpression_4 = (getPacket());
             try {
@@ -141,7 +155,7 @@ public class TestModelCesiumWriter extends TestCesiumPropertyWriter<ModelCesiumW
                         {
                             ModelCesiumWriter interval = model.openInterval();
                             try {
-                                interval.writeColorProperty(Color.RED);
+                                interval.writeColorProperty(expectedColor);
                             } finally {
                                 DisposeHelper.dispose(interval);
                             }
@@ -154,11 +168,14 @@ public class TestModelCesiumWriter extends TestCesiumPropertyWriter<ModelCesiumW
                 DisposeHelper.dispose(usingExpression_4);
             }
         }
-        Assert.assertEquals("{\"model\":{\"color\":{\"rgba\":[255,0,0,255]}}}", getStringWriter().toString());
+        final Map<String, Object> tempCollection$4 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$4, ModelCesiumWriter.ColorPropertyName, expectedColor);
+        assertExpectedJson(PacketCesiumWriter.ModelPropertyName, tempCollection$4);
     }
 
     @Test
     public final void testColorBlendModeProperty() {
+        final CesiumColorBlendMode expectedColorBlendMode = CesiumColorBlendMode.REPLACE;
         {
             final PacketCesiumWriter usingExpression_5 = (getPacket());
             try {
@@ -168,7 +185,7 @@ public class TestModelCesiumWriter extends TestCesiumPropertyWriter<ModelCesiumW
                         {
                             ModelCesiumWriter interval = model.openInterval();
                             try {
-                                interval.writeColorBlendModeProperty(CesiumColorBlendMode.REPLACE);
+                                interval.writeColorBlendModeProperty(expectedColorBlendMode);
                             } finally {
                                 DisposeHelper.dispose(interval);
                             }
@@ -181,11 +198,14 @@ public class TestModelCesiumWriter extends TestCesiumPropertyWriter<ModelCesiumW
                 DisposeHelper.dispose(usingExpression_5);
             }
         }
-        Assert.assertEquals("{\"model\":{\"colorBlendMode\":\"REPLACE\"}}", getStringWriter().toString());
+        final Map<String, Object> tempCollection$5 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$5, ModelCesiumWriter.ColorBlendModePropertyName, CesiumFormattingHelper.colorBlendModeToString(expectedColorBlendMode));
+        assertExpectedJson(PacketCesiumWriter.ModelPropertyName, tempCollection$5);
     }
 
     @Test
     public final void testColorBlendAmountProperty() {
+        final double expectedColorBlendAmount = 0.75;
         {
             final PacketCesiumWriter usingExpression_6 = (getPacket());
             try {
@@ -195,7 +215,7 @@ public class TestModelCesiumWriter extends TestCesiumPropertyWriter<ModelCesiumW
                         {
                             ModelCesiumWriter interval = model.openInterval();
                             try {
-                                interval.writeColorBlendAmountProperty(0.75);
+                                interval.writeColorBlendAmountProperty(expectedColorBlendAmount);
                             } finally {
                                 DisposeHelper.dispose(interval);
                             }
@@ -208,7 +228,9 @@ public class TestModelCesiumWriter extends TestCesiumPropertyWriter<ModelCesiumW
                 DisposeHelper.dispose(usingExpression_6);
             }
         }
-        Assert.assertEquals("{\"model\":{\"colorBlendAmount\":0.75}}", getStringWriter().toString());
+        final Map<String, Object> tempCollection$6 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$6, ModelCesiumWriter.ColorBlendAmountPropertyName, expectedColorBlendAmount);
+        assertExpectedJson(PacketCesiumWriter.ModelPropertyName, tempCollection$6);
     }
 
     @Override

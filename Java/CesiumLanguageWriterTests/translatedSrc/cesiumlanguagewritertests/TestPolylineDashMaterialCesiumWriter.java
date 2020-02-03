@@ -4,13 +4,14 @@ package cesiumlanguagewritertests;
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.ConvertHelper;
 import agi.foundation.compatibility.DisposeHelper;
+import agi.foundation.compatibility.MapHelper;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.awt.Color;
-import java.io.StringWriter;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import javax.annotation.Nonnull;
-import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
 import org.junit.runners.MethodSorters;
@@ -25,6 +26,10 @@ import org.junit.Test;
 public class TestPolylineDashMaterialCesiumWriter extends TestCesiumPropertyWriter<PolylineDashMaterialCesiumWriter> {
     @Test
     public final void testWritePolylineDashMaterial() {
+        Color expectedColor = Color.RED;
+        int expectedDashPattern = ConvertHelper.toInt32("0011001100110011", 2);
+        Color expectedGapColor = Color.BLUE;
+        final double expectedDashLength = 25D;
         {
             final PacketCesiumWriter usingExpression_0 = (getPacket());
             try {
@@ -37,10 +42,10 @@ public class TestPolylineDashMaterialCesiumWriter extends TestCesiumPropertyWrit
                                 {
                                     PolylineDashMaterialCesiumWriter polylineDashMaterial = material.openPolylineDashProperty();
                                     try {
-                                        polylineDashMaterial.writeColorProperty(Color.RED);
-                                        polylineDashMaterial.writeDashPatternProperty(ConvertHelper.toInt32("0011001100110011", 2));
-                                        polylineDashMaterial.writeGapColorProperty(Color.BLUE);
-                                        polylineDashMaterial.writeDashLengthProperty(25D);
+                                        polylineDashMaterial.writeColorProperty(expectedColor);
+                                        polylineDashMaterial.writeDashPatternProperty(expectedDashPattern);
+                                        polylineDashMaterial.writeGapColorProperty(expectedGapColor);
+                                        polylineDashMaterial.writeDashLengthProperty(expectedDashLength);
                                     } finally {
                                         DisposeHelper.dispose(polylineDashMaterial);
                                     }
@@ -57,8 +62,16 @@ public class TestPolylineDashMaterialCesiumWriter extends TestCesiumPropertyWrit
                 DisposeHelper.dispose(usingExpression_0);
             }
         }
-        Assert.assertEquals("{\"polyline\":{\"material\":{\"polylineDash\":{\"color\":{\"rgba\":[255,0,0,255]},\"dashPattern\":13107,\"gapColor\":{\"rgba\":[0,0,255,255]},\"dashLength\":25}}}}",
-                getStringWriter().toString());
+        final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$2, PolylineDashMaterialCesiumWriter.ColorPropertyName, expectedColor);
+        MapHelper.add(tempCollection$2, PolylineDashMaterialCesiumWriter.DashPatternPropertyName, expectedDashPattern);
+        MapHelper.add(tempCollection$2, PolylineDashMaterialCesiumWriter.GapColorPropertyName, expectedGapColor);
+        MapHelper.add(tempCollection$2, PolylineDashMaterialCesiumWriter.DashLengthPropertyName, expectedDashLength);
+        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$1, PolylineMaterialCesiumWriter.PolylineDashPropertyName, tempCollection$2);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, PolylineCesiumWriter.MaterialPropertyName, tempCollection$1);
+        assertExpectedJson(PacketCesiumWriter.PolylinePropertyName, tempCollection$0);
     }
 
     @Override

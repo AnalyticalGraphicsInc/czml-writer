@@ -73,7 +73,7 @@ public class TestLeapSeconds {
     @Test
     public final void testLeapSecondCount() {
         LeapSeconds leapSeconds = new LeapSeconds();
-        JulianDate utc = new JulianDate(new GregorianDate(1998, 4, 1, 12, 0, 0D));
+        JulianDate utc = new GregorianDate(1998, 4, 1, 12, 0, 0D).toJulianDate();
         JulianDate tai = utc.toTimeStandard(TimeStandard.INTERNATIONAL_ATOMIC_TIME);
         Assert.assertEquals(31, leapSeconds.getTaiMinusUtc(utc), 0d);
         Assert.assertEquals(31, leapSeconds.getTaiMinusUtc(tai), 0d);

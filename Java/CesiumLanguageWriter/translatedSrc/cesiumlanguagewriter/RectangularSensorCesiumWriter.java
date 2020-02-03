@@ -112,6 +112,10 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     * The name of the {@code environmentIntersectionWidth} property.
     */
     public static final String EnvironmentIntersectionWidthPropertyName = "environmentIntersectionWidth";
+    /**
+    * The name of the {@code showThroughEllipsoid} property.
+    */
+    public static final String ShowThroughEllipsoidPropertyName = "showThroughEllipsoid";
     private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
         public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
             return new BooleanCesiumWriter(ShowPropertyName);
@@ -221,6 +225,11 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     private Lazy<DoubleCesiumWriter> m_environmentIntersectionWidth = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
         public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
             return new DoubleCesiumWriter(EnvironmentIntersectionWidthPropertyName);
+        }
+    }, false);
+    private Lazy<BooleanCesiumWriter> m_showThroughEllipsoid = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+        public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
+            return new BooleanCesiumWriter(ShowThroughEllipsoidPropertyName);
         }
     }, false);
 
@@ -2332,6 +2341,100 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     public final void writeEnvironmentIntersectionWidthPropertyReference(String identifier, String[] propertyNames) {
         {
             DoubleCesiumWriter writer = openEnvironmentIntersectionWidthProperty();
+            try {
+                writer.writeReference(identifier, propertyNames);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Gets the writer for the {@code showThroughEllipsoid} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code showThroughEllipsoid} property defines whether or not a sensor intersecting the ellipsoid is drawn through the ellipsoid and potentially out to the other side. If not specified, the default value is {@code false}.
+    */
+    @Nonnull
+    public final BooleanCesiumWriter getShowThroughEllipsoidWriter() {
+        return m_showThroughEllipsoid.getValue();
+    }
+
+    /**
+    * Opens and returns the writer for the {@code showThroughEllipsoid} property. The {@code showThroughEllipsoid} property defines whether or not a sensor intersecting the ellipsoid is drawn through the ellipsoid and potentially out to the other side. If not specified, the default value is {@code false}.
+    */
+    @Nonnull
+    public final BooleanCesiumWriter openShowThroughEllipsoidProperty() {
+        openIntervalIfNecessary();
+        return this.<BooleanCesiumWriter> openAndReturn(getShowThroughEllipsoidWriter());
+    }
+
+    /**
+    * Writes a value for the {@code showThroughEllipsoid} property as a {@code boolean} value. The {@code showThroughEllipsoid} property specifies whether or not a sensor intersecting the ellipsoid is drawn through the ellipsoid and potentially out to the other side. If not specified, the default value is {@code false}.
+    * @param value The value.
+    */
+    public final void writeShowThroughEllipsoidProperty(boolean value) {
+        {
+            BooleanCesiumWriter writer = openShowThroughEllipsoidProperty();
+            try {
+                writer.writeBoolean(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Writes a value for the {@code showThroughEllipsoid} property as a {@code reference} value. The {@code showThroughEllipsoid} property specifies whether or not a sensor intersecting the ellipsoid is drawn through the ellipsoid and potentially out to the other side. If not specified, the default value is {@code false}.
+    * @param value The reference.
+    */
+    public final void writeShowThroughEllipsoidPropertyReference(Reference value) {
+        {
+            BooleanCesiumWriter writer = openShowThroughEllipsoidProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Writes a value for the {@code showThroughEllipsoid} property as a {@code reference} value. The {@code showThroughEllipsoid} property specifies whether or not a sensor intersecting the ellipsoid is drawn through the ellipsoid and potentially out to the other side. If not specified, the default value is {@code false}.
+    * @param value The reference.
+    */
+    public final void writeShowThroughEllipsoidPropertyReference(String value) {
+        {
+            BooleanCesiumWriter writer = openShowThroughEllipsoidProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Writes a value for the {@code showThroughEllipsoid} property as a {@code reference} value. The {@code showThroughEllipsoid} property specifies whether or not a sensor intersecting the ellipsoid is drawn through the ellipsoid and potentially out to the other side. If not specified, the default value is {@code false}.
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyName The property on the referenced object.
+    */
+    public final void writeShowThroughEllipsoidPropertyReference(String identifier, String propertyName) {
+        {
+            BooleanCesiumWriter writer = openShowThroughEllipsoidProperty();
+            try {
+                writer.writeReference(identifier, propertyName);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Writes a value for the {@code showThroughEllipsoid} property as a {@code reference} value. The {@code showThroughEllipsoid} property specifies whether or not a sensor intersecting the ellipsoid is drawn through the ellipsoid and potentially out to the other side. If not specified, the default value is {@code false}.
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+    */
+    public final void writeShowThroughEllipsoidPropertyReference(String identifier, String[] propertyNames) {
+        {
+            BooleanCesiumWriter writer = openShowThroughEllipsoidProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
