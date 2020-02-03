@@ -23,7 +23,7 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void NewPacketWritesObjectLiteral()
         {
-            PacketCesiumWriter packet = m_writer.OpenPacket(m_outputStream);
+            var packet = m_writer.OpenPacket(m_outputStream);
             packet.Close();
 
             Assert.AreEqual("{}", m_stringWriter.ToString());
@@ -33,9 +33,9 @@ namespace CesiumLanguageWriterTests
         public void SuccessiveCallsToNewPacketReturnSameInstance()
         {
             m_outputStream.WriteStartSequence();
-            PacketCesiumWriter packet1 = m_writer.OpenPacket(m_outputStream);
+            var packet1 = m_writer.OpenPacket(m_outputStream);
             packet1.Close();
-            PacketCesiumWriter packet2 = m_writer.OpenPacket(m_outputStream);
+            var packet2 = m_writer.OpenPacket(m_outputStream);
             packet2.Close();
             m_outputStream.WriteEndSequence();
             Assert.AreSame(packet1, packet2);
@@ -44,7 +44,7 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void MultipleCallsToNewPacketWithoutCloseThrowInvalidOperationException()
         {
-            PacketCesiumWriter unused = m_writer.OpenPacket(m_outputStream);
+            var unused = m_writer.OpenPacket(m_outputStream);
             var exception = Assert.Throws<InvalidOperationException>(() => m_writer.OpenPacket(m_outputStream));
             StringAssert.Contains("already opened", exception.Message);
         }

@@ -18,50 +18,76 @@ namespace CesiumLanguageWriterTests
         [SetUp]
         public void SetUp()
         {
-            m_startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0));
+            m_startDate = new GregorianDate(2012, 4, 2, 12, 0, 0).ToJulianDate();
             m_isoStartString = CesiumFormattingHelper.ToIso8601(m_startDate, Iso8601Format.Compact);
-            m_stopDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 1, 0));
+            m_stopDate = new GregorianDate(2012, 4, 2, 12, 1, 0).ToJulianDate();
             m_isoIntervalString = CesiumFormattingHelper.ToIso8601Interval(m_startDate, m_stopDate, Iso8601Format.Compact);
         }
 
         [Test]
         public void CustomPropertyBooleanConstant()
         {
+            const string expectedName = "custom_property";
+            const bool expectedValue = true;
+
             using (Packet)
             using (var customPropertiesWriter = Packet.OpenPropertiesProperty())
-            using (var customPropertyWriter = customPropertiesWriter.OpenCustomPropertyProperty("custom_property"))
             {
-                customPropertyWriter.WriteBoolean(true);
+                using (var customPropertyWriter = customPropertiesWriter.OpenCustomPropertyProperty(expectedName))
+                {
+                    customPropertyWriter.WriteBoolean(expectedValue);
+                }
             }
 
-            Assert.AreEqual("{\"properties\":{\"custom_property\":true}}", StringWriter.ToString());
+            AssertExpectedJson(PacketCesiumWriter.PropertiesPropertyName, new Dictionary<string, object>
+            {
+                { expectedName, expectedValue },
+            });
         }
 
         [Test]
         public void CustomPropertyBooleanInterval()
         {
+            const string expectedName = "custom_property";
+            const bool expectedValue = true;
+
             using (Packet)
             using (var customPropertiesWriter = Packet.OpenPropertiesProperty())
-            using (var customPropertyWriter = customPropertiesWriter.OpenCustomPropertyProperty("custom_property"))
+            using (var customPropertyWriter = customPropertiesWriter.OpenCustomPropertyProperty(expectedName))
             using (var intervalWriter = customPropertyWriter.OpenInterval(m_startDate, m_stopDate))
             {
-                intervalWriter.WriteBoolean(true);
+                intervalWriter.WriteBoolean(expectedValue);
             }
 
-            Assert.AreEqual("{\"properties\":{\"custom_property\":{\"interval\":\"" + m_isoIntervalString + "\",\"boolean\":true}}}", StringWriter.ToString());
+            AssertExpectedJson(PacketCesiumWriter.PropertiesPropertyName, new Dictionary<string, object>
+            {
+                {
+                    expectedName, new Dictionary<string, object>
+                    {
+                        { "interval", m_isoIntervalString },
+                        { CustomPropertyCesiumWriter.BooleanPropertyName, expectedValue },
+                    }
+                },
+            });
         }
 
         [Test]
         public void CustomPropertyCartesianConstant()
         {
+            const string expectedName = "custom_property";
+            var expectedValue = new Cartesian(1.1, 2.2, 3.3);
+
             using (Packet)
             using (var customPropertiesWriter = Packet.OpenPropertiesProperty())
-            using (var customPropertyWriter = customPropertiesWriter.OpenCustomPropertyProperty("custom_property"))
+            using (var customPropertyWriter = customPropertiesWriter.OpenCustomPropertyProperty(expectedName))
             {
-                customPropertyWriter.WriteCartesian(new Cartesian(1, 2, 3));
+                customPropertyWriter.WriteCartesian(expectedValue);
             }
 
-            Assert.AreEqual("{\"properties\":{\"custom_property\":{\"cartesian\":[1,2,3]}}}", StringWriter.ToString());
+            AssertExpectedJson(PacketCesiumWriter.PropertiesPropertyName, new Dictionary<string, object>
+            {
+                { expectedName, expectedValue },
+            });
         }
 
         [Test]
@@ -119,21 +145,30 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestMultipleProperties()
         {
+            const string expectedName1 = "custom_boolean";
+            const bool expectedValue1 = true;
+            const string expectedName2 = "custom_cartesian";
+            var expectedValue2 = new Cartesian(1.1, 2.2, 3.3);
+
             using (Packet)
             using (var customPropertiesWriter = Packet.OpenPropertiesProperty())
             {
-                using (var customPropertyWriter = customPropertiesWriter.OpenCustomPropertyProperty("custom_boolean"))
+                using (var customPropertyWriter = customPropertiesWriter.OpenCustomPropertyProperty(expectedName1))
                 {
-                    customPropertyWriter.WriteBoolean(true);
+                    customPropertyWriter.WriteBoolean(expectedValue1);
                 }
 
-                using (var customPropertyWriter = customPropertiesWriter.OpenCustomPropertyProperty("custom_cartesian"))
+                using (var customPropertyWriter = customPropertiesWriter.OpenCustomPropertyProperty(expectedName2))
                 {
-                    customPropertyWriter.WriteCartesian(new Cartesian(1, 2, 3));
+                    customPropertyWriter.WriteCartesian(expectedValue2);
                 }
             }
 
-            Assert.AreEqual("{\"properties\":{\"custom_boolean\":true,\"custom_cartesian\":{\"cartesian\":[1,2,3]}}}", StringWriter.ToString());
+            AssertExpectedJson(PacketCesiumWriter.PropertiesPropertyName, new Dictionary<string, object>
+            {
+                { expectedName1, expectedValue1 },
+                { expectedName2, expectedValue2 },
+            });
         }
 
         [Test]

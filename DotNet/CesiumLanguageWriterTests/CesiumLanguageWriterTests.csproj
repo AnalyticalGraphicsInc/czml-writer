@@ -67,7 +67,9 @@
     <Compile Include="TestCesiumInterpolatablePropertyWriter.cs" />
     <Compile Include="TestCesiumResource.cs" />
     <Compile Include="TestCheckerboardMaterialCesiumWriter.cs" />
+    <Compile Include="TestConicSensorCesiumWriter.cs" />
     <Compile Include="TestCustomPropertiesCesiumWriter.cs" />
+    <Compile Include="TestCustomSensorCesiumWriter.cs" />
     <Compile Include="TestDoubleCesiumWriter.cs" />
     <Compile Include="TestGenerateValidationDocument.cs" />
     <Compile Include="TestGridMaterialCesiumWriter.cs" />
@@ -95,8 +97,8 @@
     <Compile Include="TestPolylineGlowMaterialCesiumWriter.cs" />
     <Compile Include="TestPolylineOutlineMaterialCesiumWriter.cs" />
     <Compile Include="TestPositionCesiumWriter.cs" />
-    <Compile Include="TestPropertiesOfSimpleJsonTypes.cs" />
     <Compile Include="TestRectangleCesiumWriter.cs" />
+    <Compile Include="TestRectangularSensorCesiumWriter.cs" />
     <Compile Include="TestReference.cs" />
     <Compile Include="TestSolidColorMaterialCesiumWriter.cs" />
     <Compile Include="TestStringCesiumWriter.cs" />

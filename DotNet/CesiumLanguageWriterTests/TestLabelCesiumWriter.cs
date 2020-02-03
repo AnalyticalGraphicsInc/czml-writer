@@ -12,98 +12,128 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestShowProperty()
         {
+            const bool expectedShow = true;
+
             using (Packet)
-            using (LabelCesiumWriter label = Packet.OpenLabelProperty())
-            using (LabelCesiumWriter interval = label.OpenInterval())
+            using (var label = Packet.OpenLabelProperty())
+            using (var interval = label.OpenInterval())
             {
-                interval.WriteShowProperty(true);
+                interval.WriteShowProperty(expectedShow);
             }
 
-            Assert.AreEqual("{\"label\":{\"show\":true}}", StringWriter.ToString());
+            AssertExpectedJson(PacketCesiumWriter.LabelPropertyName, new Dictionary<string, object>
+            {
+                { LabelCesiumWriter.ShowPropertyName, expectedShow },
+            });
         }
 
         [Test]
         public void TestTextProperty()
         {
+            const string expectedText = "asdf";
+
             using (Packet)
-            using (LabelCesiumWriter label = Packet.OpenLabelProperty())
-            using (LabelCesiumWriter interval = label.OpenInterval())
+            using (var label = Packet.OpenLabelProperty())
+            using (var interval = label.OpenInterval())
             {
-                interval.WriteTextProperty("asdf");
+                interval.WriteTextProperty(expectedText);
             }
 
-            Assert.AreEqual("{\"label\":{\"text\":\"asdf\"}}", StringWriter.ToString());
+            AssertExpectedJson(PacketCesiumWriter.LabelPropertyName, new Dictionary<string, object>
+            {
+                { LabelCesiumWriter.TextPropertyName, expectedText },
+            });
         }
 
         [Test]
         public void TestShowBackgroundProperty()
         {
+            const bool expectedShowBackground = true;
+
             using (Packet)
-            using (LabelCesiumWriter label = Packet.OpenLabelProperty())
-            using (LabelCesiumWriter interval = label.OpenInterval())
+            using (var label = Packet.OpenLabelProperty())
+            using (var interval = label.OpenInterval())
             {
-                interval.WriteShowBackgroundProperty(true);
+                interval.WriteShowBackgroundProperty(expectedShowBackground);
             }
 
-            Assert.AreEqual("{\"label\":{\"showBackground\":true}}", StringWriter.ToString());
+            AssertExpectedJson(PacketCesiumWriter.LabelPropertyName, new Dictionary<string, object>
+            {
+                { LabelCesiumWriter.ShowBackgroundPropertyName, expectedShowBackground },
+            });
         }
 
         [Test]
         public void TestBackgroundColorProperty()
         {
+            var expectedBackgroundColor = Color.Red;
+
             using (Packet)
-            using (LabelCesiumWriter label = Packet.OpenLabelProperty())
-            using (LabelCesiumWriter interval = label.OpenInterval())
+            using (var label = Packet.OpenLabelProperty())
+            using (var interval = label.OpenInterval())
             {
-                interval.WriteBackgroundColorProperty(Color.Red);
+                interval.WriteBackgroundColorProperty(expectedBackgroundColor);
             }
 
-            Assert.AreEqual("{\"label\":{\"backgroundColor\":{\"rgba\":[255,0,0,255]}}}", StringWriter.ToString());
+            AssertExpectedJson(PacketCesiumWriter.LabelPropertyName, new Dictionary<string, object>
+            {
+                { LabelCesiumWriter.BackgroundColorPropertyName, expectedBackgroundColor },
+            });
         }
 
         [Test]
         public void TestBackgroundPaddingProperty()
         {
+            var expectedBackgroundPadding = new Rectangular(3, 4);
+
             using (Packet)
-            using (LabelCesiumWriter label = Packet.OpenLabelProperty())
-            using (LabelCesiumWriter interval = label.OpenInterval())
+            using (var label = Packet.OpenLabelProperty())
+            using (var interval = label.OpenInterval())
             {
-                interval.WriteBackgroundPaddingProperty(new Rectangular(3, 4));
+                interval.WriteBackgroundPaddingProperty(expectedBackgroundPadding);
             }
 
-            Assert.AreEqual("{\"label\":{\"backgroundPadding\":{\"cartesian2\":[3,4]}}}", StringWriter.ToString());
+            AssertExpectedJson(PacketCesiumWriter.LabelPropertyName, new Dictionary<string, object>
+            {
+                { LabelCesiumWriter.BackgroundPaddingPropertyName, expectedBackgroundPadding },
+            });
         }
 
         [Test]
         public void TestTranslucencyByDistanceProperty()
         {
+            var expectedTranslucencyByDistance = new NearFarScalar(100.0, 1.0, 200.0, 2.0);
+
             using (Packet)
-            using (LabelCesiumWriter label = Packet.OpenLabelProperty())
-            using (LabelCesiumWriter interval = label.OpenInterval())
+            using (var label = Packet.OpenLabelProperty())
+            using (var interval = label.OpenInterval())
             {
-                interval.WriteTranslucencyByDistanceProperty(new NearFarScalar(100.0, 1.0, 200.0, 2.0));
+                interval.WriteTranslucencyByDistanceProperty(expectedTranslucencyByDistance);
             }
 
-            Assert.AreEqual("{\"label\":{\"translucencyByDistance\":{\"nearFarScalar\":[100,1,200,2]}}}", StringWriter.ToString());
+            AssertExpectedJson(PacketCesiumWriter.LabelPropertyName, new Dictionary<string, object>
+            {
+                { LabelCesiumWriter.TranslucencyByDistancePropertyName, expectedTranslucencyByDistance },
+            });
         }
 
         [Test]
         public void TestTranslucencyByDistancePropertySamples()
         {
-            JulianDate startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0));
+            var epoch = new GregorianDate(2012, 4, 2, 12, 0, 0).ToJulianDate();
 
             using (Packet)
-            using (LabelCesiumWriter label = Packet.OpenLabelProperty())
-            using (LabelCesiumWriter interval = label.OpenInterval())
-            using (NearFarScalarCesiumWriter scaleByDistance = interval.OpenTranslucencyByDistanceProperty())
+            using (var label = Packet.OpenLabelProperty())
+            using (var interval = label.OpenInterval())
+            using (var scaleByDistance = interval.OpenTranslucencyByDistanceProperty())
             {
                 var dates = new List<JulianDate>();
                 var values = new List<NearFarScalar>();
 
-                dates.Add(startDate);
+                dates.Add(epoch);
                 values.Add(new NearFarScalar(100.0, 1.0, 200.0, 2.0));
 
-                dates.Add(startDate.AddSeconds(60.0));
+                dates.Add(epoch.AddSeconds(60.0));
                 values.Add(new NearFarScalar(200.0, 1.0, 300.0, 2.0));
 
                 scaleByDistance.WriteNearFarScalar(dates, values);

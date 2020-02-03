@@ -1,4 +1,5 @@
-﻿using CesiumLanguageWriter;
+﻿using System.Collections.Generic;
+using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
 using NUnit.Framework;
 
@@ -10,15 +11,22 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestHeightReferenceProperties()
         {
+            const double expectedExtrudedHeight = 10.0;
+            const CesiumHeightReference expectedExtrudedHeightReference = CesiumHeightReference.RelativeToGround;
+
             using (Packet)
             using (var rectangle = Packet.OpenRectangleProperty())
             using (var interval = rectangle.OpenInterval())
             {
-                interval.WriteExtrudedHeightProperty(10.0);
-                interval.WriteExtrudedHeightReferenceProperty(CesiumHeightReference.RelativeToGround);
+                interval.WriteExtrudedHeightProperty(expectedExtrudedHeight);
+                interval.WriteExtrudedHeightReferenceProperty(expectedExtrudedHeightReference);
             }
 
-            Assert.AreEqual("{\"rectangle\":{\"extrudedHeight\":10,\"extrudedHeightReference\":\"RELATIVE_TO_GROUND\"}}", StringWriter.ToString());
+            AssertExpectedJson(PacketCesiumWriter.RectanglePropertyName, new Dictionary<string, object>
+            {
+                { RectangleCesiumWriter.ExtrudedHeightPropertyName, expectedExtrudedHeight },
+                { RectangleCesiumWriter.ExtrudedHeightReferencePropertyName, CesiumFormattingHelper.HeightReferenceToString(expectedExtrudedHeightReference) },
+            });
         }
 
         protected override CesiumPropertyWriter<RectangleCesiumWriter> CreatePropertyWriter(string propertyName)

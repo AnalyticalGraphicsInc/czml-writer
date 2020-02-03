@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
 using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
 using NUnit.Framework;
@@ -11,15 +12,30 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestWritePolylineArrowMaterial()
         {
+            var expectedColor = Color.Red;
+
             using (Packet)
             using (var polyline = Packet.OpenPolylineProperty())
             using (var material = polyline.OpenMaterialProperty())
             using (var polylineArrowMaterial = material.OpenPolylineArrowProperty())
             {
-                polylineArrowMaterial.WriteColorProperty(Color.Red);
+                polylineArrowMaterial.WriteColorProperty(expectedColor);
             }
 
-            Assert.AreEqual("{\"polyline\":{\"material\":{\"polylineArrow\":{\"color\":{\"rgba\":[255,0,0,255]}}}}}", StringWriter.ToString());
+            AssertExpectedJson(PacketCesiumWriter.PolylinePropertyName, new Dictionary<string, object>
+            {
+                {
+                    PolylineCesiumWriter.MaterialPropertyName, new Dictionary<string, object>
+                    {
+                        {
+                            PolylineMaterialCesiumWriter.PolylineArrowPropertyName, new Dictionary<string, object>
+                            {
+                                { PolylineArrowMaterialCesiumWriter.ColorPropertyName, expectedColor },
+                            }
+                        },
+                    }
+                }
+            });
         }
 
         protected override CesiumPropertyWriter<PolylineArrowMaterialCesiumWriter> CreatePropertyWriter(string propertyName)

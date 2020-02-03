@@ -44,7 +44,7 @@ namespace CesiumLanguageWriterTests
                 interval.WriteForwardExtrapolationType(CesiumExtrapolationType.Extrapolate);
             }
 
-            Assert.AreEqual(@"{""foo"":{""forwardExtrapolationType"":""EXTRAPOLATE""}", StringWriter.ToString());
+            Assert.AreEqual("{\"foo\":{\"forwardExtrapolationType\":\"EXTRAPOLATE\"}", StringWriter.ToString());
         }
 
         [Test]
@@ -57,7 +57,7 @@ namespace CesiumLanguageWriterTests
                 interval.WriteBackwardExtrapolationType(CesiumExtrapolationType.Extrapolate);
             }
 
-            Assert.AreEqual(@"{""foo"":{""backwardExtrapolationType"":""EXTRAPOLATE""}", StringWriter.ToString());
+            Assert.AreEqual("{\"foo\":{\"backwardExtrapolationType\":\"EXTRAPOLATE\"}", StringWriter.ToString());
         }
 
         [Test]
@@ -70,7 +70,7 @@ namespace CesiumLanguageWriterTests
                 interval.WriteForwardExtrapolationDuration(Duration.FromSeconds(12));
             }
 
-            Assert.AreEqual(@"{""foo"":{""forwardExtrapolationDuration"":12}", StringWriter.ToString());
+            Assert.AreEqual("{\"foo\":{\"forwardExtrapolationDuration\":12}", StringWriter.ToString());
         }
 
         [Test]
@@ -83,7 +83,7 @@ namespace CesiumLanguageWriterTests
                 interval.WriteBackwardExtrapolationDuration(Duration.FromSeconds(12));
             }
 
-            Assert.AreEqual(@"{""foo"":{""backwardExtrapolationDuration"":12}", StringWriter.ToString());
+            Assert.AreEqual("{\"foo\":{\"backwardExtrapolationDuration\":12}", StringWriter.ToString());
         }
     }
 }

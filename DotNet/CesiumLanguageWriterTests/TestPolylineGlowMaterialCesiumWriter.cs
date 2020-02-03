@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
 using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
 using NUnit.Framework;
@@ -11,17 +12,36 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestWritePolylineGlowMaterial()
         {
+            var expectedColor = Color.Red;
+            const double expectedGlowPower = 0.7;
+            const double expectedTaperPower = 0.2;
+
             using (Packet)
             using (var polyline = Packet.OpenPolylineProperty())
             using (var material = polyline.OpenMaterialProperty())
             using (var polylineGlowMaterial = material.OpenPolylineGlowProperty())
             {
-                polylineGlowMaterial.WriteColorProperty(Color.Red);
-                polylineGlowMaterial.WriteGlowPowerProperty(0.7);
-                polylineGlowMaterial.WriteTaperPowerProperty(0.2);
+                polylineGlowMaterial.WriteColorProperty(expectedColor);
+                polylineGlowMaterial.WriteGlowPowerProperty(expectedGlowPower);
+                polylineGlowMaterial.WriteTaperPowerProperty(expectedTaperPower);
             }
 
-            Assert.AreEqual("{\"polyline\":{\"material\":{\"polylineGlow\":{\"color\":{\"rgba\":[255,0,0,255]},\"glowPower\":0.7,\"taperPower\":0.2}}}}", StringWriter.ToString());
+            AssertExpectedJson(PacketCesiumWriter.PolylinePropertyName, new Dictionary<string, object>
+            {
+                {
+                    PolylineCesiumWriter.MaterialPropertyName, new Dictionary<string, object>
+                    {
+                        {
+                            PolylineMaterialCesiumWriter.PolylineGlowPropertyName, new Dictionary<string, object>
+                            {
+                                { PolylineGlowMaterialCesiumWriter.ColorPropertyName, expectedColor },
+                                { PolylineGlowMaterialCesiumWriter.GlowPowerPropertyName, expectedGlowPower },
+                                { PolylineGlowMaterialCesiumWriter.TaperPowerPropertyName, expectedTaperPower },
+                            }
+                        },
+                    }
+                }
+            });
         }
 
         protected override CesiumPropertyWriter<PolylineGlowMaterialCesiumWriter> CreatePropertyWriter(string propertyName)

@@ -1,4 +1,5 @@
-﻿using CesiumLanguageWriter;
+﻿using System.Collections.Generic;
+using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
 using NUnit.Framework;
 
@@ -10,68 +11,107 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void StringCanBeWrittenAsSimpleString()
         {
+            const string expectedPropertyName = "foo";
+            const string expectedValue = "bar";
+
             using (Packet)
-            using (var writer = new StringCesiumWriter("foo"))
+            using (var writer = new StringCesiumWriter(expectedPropertyName))
             {
                 writer.Open(OutputStream);
-                writer.WriteString("bar");
+                writer.WriteString(expectedValue);
             }
 
-            Assert.AreEqual("{\"foo\":\"bar\"}", StringWriter.ToString());
+            AssertExpectedJson(new Dictionary<string, object>
+            {
+                { expectedPropertyName, expectedValue },
+            });
         }
 
         [Test]
         public void StringCanBeWrittenInsideInterval()
         {
-            var startDate = new GregorianDate(2012, 6, 7, 12, 0, 0).ToJulianDate();
+            var start = new GregorianDate(2012, 6, 7, 12, 0, 0).ToJulianDate();
+            var stop = start.AddSeconds(100.0);
+            const string expectedPropertyName = "foo";
+            const string expectedValue = "bar";
 
             using (Packet)
             using (var writer = new StringCesiumWriter("foo"))
             {
                 writer.Open(OutputStream);
-                writer.WriteInterval(startDate, startDate.AddSeconds(100.0));
-                writer.WriteString("bar");
+                writer.WriteInterval(start, stop);
+                writer.WriteString(expectedValue);
             }
 
-            Assert.AreEqual("{\"foo\":{\"interval\":\"20120607T12Z/20120607T120140Z\",\"string\":\"bar\"}}", StringWriter.ToString());
+            AssertExpectedJson(expectedPropertyName, new Dictionary<string, object>
+            {
+                { "interval", CesiumFormattingHelper.ToIso8601Interval(start, stop, Iso8601Format.Compact) },
+                { StringCesiumWriter.StringPropertyName, expectedValue },
+            });
         }
 
         [Test]
         public void TestDeletePropertyWithStartAndStop()
         {
-            var start = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0));
+            var start = new GregorianDate(2012, 4, 2, 12, 0, 0).ToJulianDate();
             var stop = start.AddDays(1.0);
+            const string expectedId = "id";
+            const string expectedPropertyName = "foo";
+            const bool expectedDelete = true;
 
             using (Packet)
             {
-                Packet.WriteId("id");
+                Packet.WriteId(expectedId);
 
-                using (var writer = new StringCesiumWriter("foo"))
+                using (var writer = new StringCesiumWriter(expectedPropertyName))
                 {
                     writer.Open(OutputStream);
                     writer.WriteInterval(start, stop);
-                    writer.WriteDelete(true);
+                    writer.WriteDelete(expectedDelete);
                 }
             }
 
-            Assert.AreEqual("{\"id\":\"id\",\"foo\":{\"interval\":\"20120402T12Z/20120403T12Z\",\"delete\":true}}", StringWriter.ToString());
+            AssertExpectedJson(new Dictionary<string, object>
+            {
+                { PacketCesiumWriter.IdPropertyName, expectedId },
+                {
+                    expectedPropertyName, new Dictionary<string, object>
+                    {
+                        { "interval", CesiumFormattingHelper.ToIso8601Interval(start, stop, Iso8601Format.Compact) },
+                        { StringCesiumWriter.DeletePropertyName, expectedDelete },
+                    }
+                },
+            });
         }
 
         [Test]
         public void TestDeletePropertyWithNoInterval()
         {
+            const string expectedId = "id";
+            const string expectedPropertyName = "foo";
+            const bool expectedDelete = true;
+
             using (Packet)
             {
-                Packet.WriteId("id");
+                Packet.WriteId(expectedId);
 
-                using (var writer = new StringCesiumWriter("foo"))
+                using (var writer = new StringCesiumWriter(expectedPropertyName))
                 {
                     writer.Open(OutputStream);
-                    writer.WriteDelete(true);
+                    writer.WriteDelete(expectedDelete);
                 }
             }
 
-            Assert.AreEqual("{\"id\":\"id\",\"foo\":{\"delete\":true}}", StringWriter.ToString());
+            AssertExpectedJson(new Dictionary<string, object>
+            {
+                { PacketCesiumWriter.IdPropertyName, expectedId },
+                {
+                    expectedPropertyName, new Dictionary<string, object>
+                    {
+                        { StringCesiumWriter.DeletePropertyName, expectedDelete },
+                    }
+                },
+            });
         }
 
         protected override CesiumPropertyWriter<StringCesiumWriter> CreatePropertyWriter(string propertyName)

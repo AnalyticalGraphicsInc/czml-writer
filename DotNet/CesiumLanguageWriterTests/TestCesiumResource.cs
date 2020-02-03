@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using CesiumLanguageWriter;
 using CesiumLanguageWriterTests.Data;
+using JetBrains.Annotations;
 using NUnit.Framework;
 
 namespace CesiumLanguageWriterTests
@@ -36,6 +37,7 @@ namespace CesiumLanguageWriterTests
             StringAssert.Contains(";base64,", resource.Uri);
         }
 
+        [NotNull]
         public static IEnumerable<CesiumImageFormat> ImageFormatValues
         {
             get { return (CesiumImageFormat[])Enum.GetValues(typeof(CesiumImageFormat)); }

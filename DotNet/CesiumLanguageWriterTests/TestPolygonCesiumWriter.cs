@@ -13,51 +13,82 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestShowProperty()
         {
+            const bool expectedShow = true;
+
             using (Packet)
             using (var polygon = Packet.OpenPolygonProperty())
             using (var interval = polygon.OpenInterval())
             {
-                interval.WriteShowProperty(true);
+                interval.WriteShowProperty(expectedShow);
             }
 
-            Assert.AreEqual("{\"polygon\":{\"show\":true}}", StringWriter.ToString());
+            AssertExpectedJson(PacketCesiumWriter.PolygonPropertyName, new Dictionary<string, object>
+            {
+                { PolygonCesiumWriter.ShowPropertyName, expectedShow },
+            });
         }
 
         [Test]
         public void TestShowPropertyInterval()
         {
-            var startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0));
-            var stopDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 1, 0));
+            var startDate = new GregorianDate(2012, 4, 2, 12, 0, 0).ToJulianDate();
+            var stopDate = new GregorianDate(2012, 4, 2, 12, 1, 0).ToJulianDate();
+
+            var interval1Start = startDate;
+            var interval1Stop = startDate.AddSeconds(1);
+            var interval2Start = interval1Stop;
+            var interval2Stop = startDate.AddSeconds(2);
+            var interval3Start = interval2Stop;
+            var interval3Stop = stopDate;
+
+            const bool interval1Value = true;
+            const bool interval2Value = false;
+            const bool interval3Value = true;
 
             using (Packet)
             using (var polygon = Packet.OpenPolygonProperty())
             using (var show = polygon.OpenShowProperty())
             using (var showIntervals = show.OpenMultipleIntervals())
             {
-                using (var interval = showIntervals.OpenInterval(startDate, startDate.AddSeconds(1)))
+                using (var interval = showIntervals.OpenInterval(interval1Start, interval1Stop))
                 {
-                    interval.WriteBoolean(true);
+                    interval.WriteBoolean(interval1Value);
                 }
 
-                using (var interval = showIntervals.OpenInterval(startDate.AddSeconds(1), startDate.AddSeconds(2)))
+                using (var interval = showIntervals.OpenInterval(interval2Start, interval2Stop))
                 {
-                    interval.WriteBoolean(false);
+                    interval.WriteBoolean(interval2Value);
                 }
 
-                using (var interval = showIntervals.OpenInterval(startDate.AddSeconds(2), stopDate))
+                using (var interval = showIntervals.OpenInterval(interval3Start, interval3Stop))
                 {
-                    interval.WriteBoolean(true);
+                    interval.WriteBoolean(interval3Value);
                 }
             }
 
-            string interval1String = CesiumFormattingHelper.ToIso8601Interval(startDate, startDate.AddSeconds(1), Iso8601Format.Compact);
-            string interval2String = CesiumFormattingHelper.ToIso8601Interval(startDate.AddSeconds(1), startDate.AddSeconds(2), Iso8601Format.Compact);
-            string interval3String = CesiumFormattingHelper.ToIso8601Interval(startDate.AddSeconds(2), stopDate, Iso8601Format.Compact);
-
-            Assert.AreEqual("{\"polygon\":{\"show\":[{\"interval\":\"" + interval1String + "\",\"boolean\":true}," +
-                            "{\"interval\":\"" + interval2String + "\",\"boolean\":false}," +
-                            "{\"interval\":\"" + interval3String + "\",\"boolean\":true}" +
-                            "]}}", StringWriter.ToString());
+            AssertExpectedJson(PacketCesiumWriter.PolygonPropertyName, new Dictionary<string, object>
+            {
+                {
+                    PolygonCesiumWriter.ShowPropertyName, new List<Dictionary<string, object>>
+                    {
+                        new Dictionary<string, object>
+                        {
+                            { "interval", CesiumFormattingHelper.ToIso8601Interval(interval1Start, interval1Stop, Iso8601Format.Compact) },
+                            { "boolean", interval1Value }
+                        },
+                        new Dictionary<string, object>
+                        {
+                            { "interval", CesiumFormattingHelper.ToIso8601Interval(interval2Start, interval2Stop, Iso8601Format.Compact) },
+                            { "boolean", interval2Value }
+                        },
+                        new Dictionary<string, object>
+                        {
+                            { "interval", CesiumFormattingHelper.ToIso8601Interval(interval3Start, interval3Stop, Iso8601Format.Compact) },
+                            { "boolean", interval3Value }
+                        },
+                    }
+                },
+            });
         }
 
         [Test]
@@ -81,8 +112,8 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestHolesIntervals()
         {
-            var startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0));
-            var stopDate = new JulianDate(new GregorianDate(2012, 4, 2, 13, 0, 0));
+            var startDate = new GregorianDate(2012, 4, 2, 12, 0, 0).ToJulianDate();
+            var stopDate = new GregorianDate(2012, 4, 2, 13, 0, 0).ToJulianDate();
 
             using (Packet)
             using (var polygon = Packet.OpenPolygonProperty())

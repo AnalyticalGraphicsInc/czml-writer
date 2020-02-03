@@ -1,4 +1,5 @@
-﻿using CesiumLanguageWriter;
+﻿using System.Collections.Generic;
+using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
 using NUnit.Framework;
 
@@ -10,30 +11,43 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void LabelStyleCanBeWrittenAsSimpleString()
         {
+            const string expectedPropertyName = "foo";
+            const CesiumLabelStyle expectedValue = CesiumLabelStyle.FillAndOutline;
+
             using (Packet)
-            using (LabelStyleCesiumWriter writer = new LabelStyleCesiumWriter("foo"))
+            using (var writer = new LabelStyleCesiumWriter(expectedPropertyName))
             {
                 writer.Open(OutputStream);
-                writer.WriteLabelStyle(CesiumLabelStyle.FillAndOutline);
+                writer.WriteLabelStyle(expectedValue);
             }
 
-            Assert.AreEqual("{\"foo\":\"FILL_AND_OUTLINE\"}", StringWriter.ToString());
+            AssertExpectedJson(new Dictionary<string, object>
+            {
+                { expectedPropertyName, CesiumFormattingHelper.LabelStyleToString(expectedValue) },
+            });
         }
 
         [Test]
         public void LabelStyleCanBeWrittenInsideInterval()
         {
-            JulianDate startDate = new GregorianDate(2012, 6, 7, 12, 0, 0).ToJulianDate();
+            var start = new GregorianDate(2012, 6, 7, 12, 0, 0).ToJulianDate();
+            var stop = start.AddSeconds(100.0);
+            const string expectedPropertyName = "foo";
+            const CesiumLabelStyle expectedValue = CesiumLabelStyle.FillAndOutline;
 
             using (Packet)
-            using (LabelStyleCesiumWriter writer = new LabelStyleCesiumWriter("foo"))
+            using (var writer = new LabelStyleCesiumWriter(expectedPropertyName))
             {
                 writer.Open(OutputStream);
-                writer.WriteInterval(startDate, startDate.AddSeconds(100.0));
-                writer.WriteLabelStyle(CesiumLabelStyle.FillAndOutline);
+                writer.WriteInterval(start, stop);
+                writer.WriteLabelStyle(expectedValue);
             }
 
-            Assert.AreEqual("{\"foo\":{\"interval\":\"20120607T12Z/20120607T120140Z\",\"labelStyle\":\"FILL_AND_OUTLINE\"}}", StringWriter.ToString());
+            AssertExpectedJson(expectedPropertyName, new Dictionary<string, object>
+            {
+                { "interval", CesiumFormattingHelper.ToIso8601Interval(start, stop, Iso8601Format.Compact) },
+                { LabelStyleCesiumWriter.LabelStylePropertyName, CesiumFormattingHelper.LabelStyleToString(expectedValue) },
+            });
         }
 
         protected override CesiumPropertyWriter<LabelStyleCesiumWriter> CreatePropertyWriter(string propertyName)
