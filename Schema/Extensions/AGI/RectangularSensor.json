@@ -115,6 +115,11 @@
             "$ref": "../../Double.json",
             "description": "The width in meters of the intersection line between the sensor and the environment.",
             "default": 5.0
+        },
+        "showThroughEllipsoid": {
+            "$ref": "../../Boolean.json",
+            "description": "Whether or not a sensor intersecting the ellipsoid is drawn through the ellipsoid and potentially out to the other side.",
+            "default": false
         }
     }
 }
