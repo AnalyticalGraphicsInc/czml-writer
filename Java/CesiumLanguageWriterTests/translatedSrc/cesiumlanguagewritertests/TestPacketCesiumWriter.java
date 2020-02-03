@@ -81,8 +81,8 @@ public class TestPacketCesiumWriter {
 
     @Test
     public final void testAvailabilityProperty() {
-        JulianDate start = new JulianDate(new GregorianDate(2012, 4, 2, 1, 2, 3D));
-        JulianDate stop = new JulianDate(new GregorianDate(2012, 4, 3, 1, 2, 3D));
+        JulianDate start = new GregorianDate(2012, 4, 2, 1, 2, 3D).toJulianDate();
+        JulianDate stop = new GregorianDate(2012, 4, 3, 1, 2, 3D).toJulianDate();
         m_outputStream.writeStartSequence();
         {
             PacketCesiumWriter packet = m_writer.openPacket(m_outputStream);

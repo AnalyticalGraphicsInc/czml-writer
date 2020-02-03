@@ -4,14 +4,16 @@ package cesiumlanguagewritertests;
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.ConsoleHelper;
 import agi.foundation.compatibility.DisposeHelper;
+import agi.foundation.compatibility.MapHelper;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import javax.annotation.Nonnull;
-import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
 import org.junit.runners.MethodSorters;
@@ -132,19 +134,21 @@ public class TestOrientationCesiumWriter extends TestCesiumInterpolatablePropert
 
     @Test
     public final void testDeletePropertyWithStartAndStop() {
-        JulianDate start = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0D));
+        JulianDate start = new GregorianDate(2012, 4, 2, 12, 0, 0D).toJulianDate();
         JulianDate stop = start.addDays(1.0);
+        final String expectedId = "id";
+        final boolean expectedDelete = true;
         {
             final PacketCesiumWriter usingExpression_0 = (getPacket());
             try {
-                getPacket().writeId("id");
+                getPacket().writeId(expectedId);
                 {
                     OrientationCesiumWriter orientation = getPacket().openOrientationProperty();
                     try {
                         {
                             OrientationCesiumWriter interval = orientation.openInterval(start, stop);
                             try {
-                                interval.writeDelete(true);
+                                interval.writeDelete(expectedDelete);
                             } finally {
                                 DisposeHelper.dispose(interval);
                             }
@@ -157,22 +161,30 @@ public class TestOrientationCesiumWriter extends TestCesiumInterpolatablePropert
                 DisposeHelper.dispose(usingExpression_0);
             }
         }
-        Assert.assertEquals("{\"id\":\"id\",\"orientation\":{\"interval\":\"20120402T12Z/20120403T12Z\",\"delete\":true}}", getStringWriter().toString());
+        final Map<String, Object> tempCollection$4 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$4, "interval", CesiumFormattingHelper.toIso8601Interval(start, stop, Iso8601Format.COMPACT));
+        MapHelper.add(tempCollection$4, OrientationCesiumWriter.DeletePropertyName, expectedDelete);
+        final Map<String, Object> tempCollection$3 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$3, PacketCesiumWriter.IdPropertyName, expectedId);
+        MapHelper.add(tempCollection$3, PacketCesiumWriter.OrientationPropertyName, tempCollection$4);
+        assertExpectedJson(tempCollection$3);
     }
 
     @Test
     public final void testDeletePropertyWithNoInterval() {
+        final String expectedId = "id";
+        final boolean expectedDelete = true;
         {
             final PacketCesiumWriter usingExpression_1 = (getPacket());
             try {
-                getPacket().writeId("id");
+                getPacket().writeId(expectedId);
                 {
                     OrientationCesiumWriter orientation = getPacket().openOrientationProperty();
                     try {
                         {
                             OrientationCesiumWriter interval = orientation.openInterval();
                             try {
-                                interval.writeDelete(true);
+                                interval.writeDelete(expectedDelete);
                             } finally {
                                 DisposeHelper.dispose(interval);
                             }
@@ -185,7 +197,12 @@ public class TestOrientationCesiumWriter extends TestCesiumInterpolatablePropert
                 DisposeHelper.dispose(usingExpression_1);
             }
         }
-        Assert.assertEquals("{\"id\":\"id\",\"orientation\":{\"delete\":true}}", getStringWriter().toString());
+        final Map<String, Object> tempCollection$6 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$6, OrientationCesiumWriter.DeletePropertyName, expectedDelete);
+        final Map<String, Object> tempCollection$5 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$5, PacketCesiumWriter.IdPropertyName, expectedId);
+        MapHelper.add(tempCollection$5, PacketCesiumWriter.OrientationPropertyName, tempCollection$6);
+        assertExpectedJson(tempCollection$5);
     }
 
     @Override

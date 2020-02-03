@@ -67,7 +67,7 @@ namespace CesiumLanguageWriterTests
         {
             LeapSeconds leapSeconds = new LeapSeconds();
 
-            JulianDate utc = new JulianDate(new GregorianDate(1998, 4, 1, 12, 0, 0));
+            JulianDate utc = new GregorianDate(1998, 4, 1, 12, 0, 0).ToJulianDate();
             JulianDate tai = utc.ToTimeStandard(TimeStandard.InternationalAtomicTime);
             Assert.AreEqual(31, leapSeconds.GetTaiMinusUtc(utc));
             Assert.AreEqual(31, leapSeconds.GetTaiMinusUtc(tai));

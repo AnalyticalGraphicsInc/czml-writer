@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using CesiumLanguageWriter;
 using NUnit.Framework;
@@ -36,7 +35,7 @@ namespace CesiumLanguageWriterTests
             // Make sure to check each month to ensure we have it right
             const string first = "1986-";
             const string last = "T02:01:04Z";
-            JulianDate baseDate = new JulianDate(new GregorianDate(1986, 1, 12, 02, 01, 4));
+            JulianDate baseDate = new GregorianDate(1986, 1, 12, 02, 01, 4).ToJulianDate();
             for (int i = 1; i < 12; i++)
             {
                 string testString = string.Format(first + "{0:000}" + last, 12 + i * 30);

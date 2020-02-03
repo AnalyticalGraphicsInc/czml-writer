@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
 using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
 using NUnit.Framework;
@@ -11,19 +12,42 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestWriteStripeMaterial()
         {
+            var expectedEvenColor = Color.Red;
+            var expectedOddColor = Color.Blue;
+            const double expectedOffset = 1.5;
+            const CesiumStripeOrientation expectedOrientation = CesiumStripeOrientation.Vertical;
+            const double expectedRepeat = 3.5;
+
             using (Packet)
             using (var polyline = Packet.OpenPolylineProperty())
             using (var material = polyline.OpenMaterialProperty())
             using (var stripeMaterial = material.OpenStripeProperty())
             {
-                stripeMaterial.WriteEvenColorProperty(Color.Red);
-                stripeMaterial.WriteOddColorProperty(Color.Blue);
-                stripeMaterial.WriteOffsetProperty(1.5);
-                stripeMaterial.WriteOrientationProperty(CesiumStripeOrientation.Vertical);
-                stripeMaterial.WriteRepeatProperty(3.5);
+                stripeMaterial.WriteEvenColorProperty(expectedEvenColor);
+                stripeMaterial.WriteOddColorProperty(expectedOddColor);
+                stripeMaterial.WriteOffsetProperty(expectedOffset);
+                stripeMaterial.WriteOrientationProperty(expectedOrientation);
+                stripeMaterial.WriteRepeatProperty(expectedRepeat);
             }
 
-            Assert.AreEqual("{\"polyline\":{\"material\":{\"stripe\":{\"evenColor\":{\"rgba\":[255,0,0,255]},\"oddColor\":{\"rgba\":[0,0,255,255]},\"offset\":1.5,\"orientation\":\"VERTICAL\",\"repeat\":3.5}}}}", StringWriter.ToString());
+            AssertExpectedJson(PacketCesiumWriter.PolylinePropertyName, new Dictionary<string, object>
+            {
+                {
+                    PolylineCesiumWriter.MaterialPropertyName, new Dictionary<string, object>
+                    {
+                        {
+                            PolylineMaterialCesiumWriter.StripePropertyName, new Dictionary<string, object>
+                            {
+                                { StripeMaterialCesiumWriter.EvenColorPropertyName, expectedEvenColor },
+                                { StripeMaterialCesiumWriter.OddColorPropertyName, expectedOddColor },
+                                { StripeMaterialCesiumWriter.OffsetPropertyName, expectedOffset },
+                                { StripeMaterialCesiumWriter.OrientationPropertyName, CesiumFormattingHelper.StripeOrientationToString(expectedOrientation) },
+                                { StripeMaterialCesiumWriter.RepeatPropertyName, expectedRepeat },
+                            }
+                        },
+                    }
+                }
+            });
         }
 
         protected override CesiumPropertyWriter<StripeMaterialCesiumWriter> CreatePropertyWriter(string propertyName)

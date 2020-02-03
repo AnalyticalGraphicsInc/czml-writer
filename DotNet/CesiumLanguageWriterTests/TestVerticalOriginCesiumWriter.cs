@@ -1,4 +1,5 @@
-﻿using CesiumLanguageWriter;
+﻿using System.Collections.Generic;
+using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
 using NUnit.Framework;
 
@@ -10,30 +11,42 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void VerticalOriginCanBeWrittenAsSimpleString()
         {
+            const string expectedPropertyName = "foo";
+            const CesiumVerticalOrigin expectedValue = CesiumVerticalOrigin.Center;
+
             using (Packet)
-            using (VerticalOriginCesiumWriter writer = new VerticalOriginCesiumWriter("foo"))
+            using (var writer = new VerticalOriginCesiumWriter(expectedPropertyName))
             {
                 writer.Open(OutputStream);
-                writer.WriteVerticalOrigin(CesiumVerticalOrigin.Center);
+                writer.WriteVerticalOrigin(expectedValue);
             }
 
-            Assert.AreEqual("{\"foo\":\"CENTER\"}", StringWriter.ToString());
+            AssertExpectedJson(new Dictionary<string, object>
+            {
+                { expectedPropertyName, CesiumFormattingHelper.VerticalOriginToString(expectedValue) },
+            });
         }
 
         [Test]
         public void VerticalOriginCanBeWrittenInsideInterval()
         {
-            JulianDate startDate = new GregorianDate(2012, 6, 7, 12, 0, 0).ToJulianDate();
+            var start = new GregorianDate(2012, 6, 7, 12, 0, 0).ToJulianDate();
+            var stop = start.AddSeconds(100.0);
+            const string expectedPropertyName = "foo";
+            const CesiumVerticalOrigin expectedValue = CesiumVerticalOrigin.Center;
 
             using (Packet)
-            using (VerticalOriginCesiumWriter writer = new VerticalOriginCesiumWriter("foo"))
+            using (var writer = new VerticalOriginCesiumWriter(expectedPropertyName))
             {
                 writer.Open(OutputStream);
-                writer.WriteInterval(startDate, startDate.AddSeconds(100.0));
-                writer.WriteVerticalOrigin(CesiumVerticalOrigin.Center);
+                writer.WriteInterval(start, stop);
+                writer.WriteVerticalOrigin(expectedValue);
             }
-
-            Assert.AreEqual("{\"foo\":{\"interval\":\"20120607T12Z/20120607T120140Z\",\"verticalOrigin\":\"CENTER\"}}", StringWriter.ToString());
+            AssertExpectedJson(expectedPropertyName, new Dictionary<string, object>
+            {
+                { "interval", CesiumFormattingHelper.ToIso8601Interval(start, stop, Iso8601Format.Compact) },
+                { VerticalOriginCesiumWriter.VerticalOriginPropertyName, CesiumFormattingHelper.VerticalOriginToString(expectedValue) },
+            });
         }
 
         protected override CesiumPropertyWriter<VerticalOriginCesiumWriter> CreatePropertyWriter(string propertyName)

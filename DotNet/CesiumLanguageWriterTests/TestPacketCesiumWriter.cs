@@ -71,8 +71,8 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestAvailabilityProperty()
         {
-            JulianDate start = new JulianDate(new GregorianDate(2012, 4, 2, 1, 2, 3));
-            JulianDate stop = new JulianDate(new GregorianDate(2012, 4, 3, 1, 2, 3));
+            JulianDate start = new GregorianDate(2012, 4, 2, 1, 2, 3).ToJulianDate();
+            JulianDate stop = new GregorianDate(2012, 4, 3, 1, 2, 3).ToJulianDate();
 
             m_outputStream.WriteStartSequence();
             using (PacketCesiumWriter packet = m_writer.OpenPacket(m_outputStream))

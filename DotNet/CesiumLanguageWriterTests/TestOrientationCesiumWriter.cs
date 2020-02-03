@@ -98,38 +98,62 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestDeletePropertyWithStartAndStop()
         {
-            var start = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0));
+            var start = new GregorianDate(2012, 4, 2, 12, 0, 0).ToJulianDate();
             var stop = start.AddDays(1.0);
+            const string expectedId = "id";
+            const bool expectedDelete = true;
 
             using (Packet)
             {
-                Packet.WriteId("id");
+                Packet.WriteId(expectedId);
 
                 using (var orientation = Packet.OpenOrientationProperty())
                 using (var interval = orientation.OpenInterval(start, stop))
                 {
-                    interval.WriteDelete(true);
+                    interval.WriteDelete(expectedDelete);
                 }
             }
 
-            Assert.AreEqual("{\"id\":\"id\",\"orientation\":{\"interval\":\"20120402T12Z/20120403T12Z\",\"delete\":true}}", StringWriter.ToString());
+            AssertExpectedJson(new Dictionary<string, object>
+            {
+                { PacketCesiumWriter.IdPropertyName, expectedId },
+                {
+                    PacketCesiumWriter.OrientationPropertyName, new Dictionary<string, object>
+                    {
+                        { "interval", CesiumFormattingHelper.ToIso8601Interval(start, stop, Iso8601Format.Compact) },
+                        { OrientationCesiumWriter.DeletePropertyName, expectedDelete },
+                    }
+                },
+            });
         }
 
         [Test]
         public void TestDeletePropertyWithNoInterval()
         {
+            const string expectedId = "id";
+            const bool expectedDelete = true;
+
             using (Packet)
             {
-                Packet.WriteId("id");
+                Packet.WriteId(expectedId);
 
                 using (var orientation = Packet.OpenOrientationProperty())
                 using (var interval = orientation.OpenInterval())
                 {
-                    interval.WriteDelete(true);
+                    interval.WriteDelete(expectedDelete);
                 }
             }
 
-            Assert.AreEqual("{\"id\":\"id\",\"orientation\":{\"delete\":true}}", StringWriter.ToString());
+            AssertExpectedJson(new Dictionary<string, object>
+            {
+                { PacketCesiumWriter.IdPropertyName, expectedId },
+                {
+                    PacketCesiumWriter.OrientationPropertyName, new Dictionary<string, object>
+                    {
+                        { OrientationCesiumWriter.DeletePropertyName, expectedDelete },
+                    }
+                },
+            });
         }
 
         protected override CesiumPropertyWriter<OrientationCesiumWriter> CreatePropertyWriter(string propertyName)

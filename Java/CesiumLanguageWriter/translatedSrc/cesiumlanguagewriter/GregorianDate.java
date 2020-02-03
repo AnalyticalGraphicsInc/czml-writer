@@ -149,7 +149,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                     final boolean temp$7 = coreParse(s, provider, result, false, ref$exception$8);
                     exception = ref$exception$8[0];
                     return temp$7;
-                } catch (RuntimeException _ex) {}
+                } catch (Throwable $exception) {}
             }
             result[0] = MinValue;
             return false;
@@ -1046,13 +1046,15 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
             }
             if (pos + 1 < len && chars.charAt(pos) == '.' && chars.charAt(pos + 1) == 'F') {
                 pos++;
-                // '.FFF....' can be mapped to nothing. See bug #444103
-                while (pos < len && chars.charAt(pos) == 'F')
+                while (pos < len && chars.charAt(pos) == 'F') {
+                    // '.FFF....' can be mapped to nothing. See bug #444103
                     pos++;
+                }
             }
-            // 'K' can be mapped to nothing
-            while (pos < len && chars.charAt(pos) == 'K')
+            while (pos < len && chars.charAt(pos) == 'K') {
+                // 'K' can be mapped to nothing
                 pos++;
+            }
             if (pos < len) {
                 return false;
             }
@@ -1105,7 +1107,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
             }
             try {
                 result[0] = new GregorianDate(year, month, day, hour, minute, second + fractionalSeconds);
-            } catch (ArgumentException _ex) {
+            } catch (ArgumentException $exception) {
                 return false;
             }
             return true;
@@ -1188,8 +1190,9 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
         private static int countRepeat(String fmt, int p, char c) {
             int l = fmt.length();
             int i = p + 1;
-            while ((i < l) && (fmt.charAt(i) == c))
+            while ((i < l) && (fmt.charAt(i) == c)) {
                 i++;
+            }
             return i - p;
         }
 
@@ -1202,8 +1205,9 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                 digits /= 10L;
                 len--;
             } while (digits > 0);
-            while (len-- > 0)
+            while (len-- > 0) {
                 buffer[--pos] = '0';
+            }
             output.append(new String(buffer, pos, 16 - pos));
         }
 
@@ -1386,8 +1390,9 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                     StringHelper.append(result, formattedSeconds, indexOfDecimalPoint + nfi.getNumberDecimalSeparator().length(), formattedSeconds.length() - indexOfDecimalPoint
                             - nfi.getNumberDecimalSeparator().length());
                     if (ch == 'F') {
-                        while (result.length() > startLen && result.charAt(result.length() - 1) == '0')
+                        while (result.length() > startLen && result.charAt(result.length() - 1) == '0') {
                             result.setLength(result.length() - 1);
+                        }
                         // when the value was 0, then trim even preceding '.' (!) It is fixed character.
                         if (result.length() == startLen && startLen >= nfi.getNumberDecimalSeparator().length()) {
                             boolean matchesSeparator = true;

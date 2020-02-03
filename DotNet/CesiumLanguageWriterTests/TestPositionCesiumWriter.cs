@@ -11,46 +11,61 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void ReferenceFrameValueWritesReferenceFrameProperty()
         {
+            const string expectedReferenceFrame = "myReferenceFrame";
+
             using (Packet)
             using (var position = Packet.OpenPositionProperty())
             using (var interval = position.OpenInterval())
             {
-                interval.WriteReferenceFrame("myReferenceFrame");
+                interval.WriteReferenceFrame(expectedReferenceFrame);
             }
 
-            Assert.AreEqual("{\"position\":{\"referenceFrame\":\"myReferenceFrame\"}}", StringWriter.ToString());
+            AssertExpectedJson(PacketCesiumWriter.PositionPropertyName, new Dictionary<string, object>
+            {
+                { PositionCesiumWriter.ReferenceFramePropertyName, expectedReferenceFrame },
+            });
         }
 
         [Test]
         public void CartesianValueWritesSingleCartesianProperty()
         {
+            var expectedValue = new Cartesian(1.0, 2.0, 3.0);
+
             using (Packet)
             using (var position = Packet.OpenPositionProperty())
             using (var interval = position.OpenInterval())
             {
-                interval.WriteCartesian(new Cartesian(1.0, 2.0, 3.0));
+                interval.WriteCartesian(expectedValue);
             }
 
-            Assert.AreEqual("{\"position\":{\"cartesian\":[1,2,3]}}", StringWriter.ToString());
+            AssertExpectedJson(new Dictionary<string, object>
+            {
+                { PacketCesiumWriter.PositionPropertyName, expectedValue },
+            });
         }
 
         [Test]
         public void CartographicRadiansValueWritesSingleCartographicRadiansProperty()
         {
+            var expectedValue = new Cartographic(1100.0, 2200.0, 3.0);
+
             using (Packet)
             using (var position = Packet.OpenPositionProperty())
             using (var interval = position.OpenInterval())
             {
-                interval.WriteCartographicRadians(new Cartographic(1100.0, 2200.0, 3.0));
+                interval.WriteCartographicRadians(expectedValue);
             }
 
-            Assert.AreEqual("{\"position\":{\"cartographicRadians\":[1100,2200,3]}}", StringWriter.ToString());
+            AssertExpectedJson(new Dictionary<string, object>
+            {
+                { PacketCesiumWriter.PositionPropertyName, expectedValue },
+            });
         }
 
         [Test]
         public void CartesianValueWritesMultipleCartesianProperty()
         {
-            var startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0));
+            var epoch = new GregorianDate(2012, 4, 2, 12, 0, 0).ToJulianDate();
 
             using (Packet)
             using (var position = Packet.OpenPositionProperty())
@@ -59,10 +74,10 @@ namespace CesiumLanguageWriterTests
                 var dates = new List<JulianDate>();
                 var positions = new List<Cartesian>();
 
-                dates.Add(startDate);
+                dates.Add(epoch);
                 positions.Add(new Cartesian(1.1, 2.2, 3.3));
 
-                dates.Add(startDate.AddSeconds(60.0));
+                dates.Add(epoch.AddSeconds(60.0));
                 positions.Add(new Cartesian(4.4, 5.5, 6.6));
 
                 interval.WriteCartesian(dates, positions);
@@ -74,7 +89,7 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void CartesianValueSubsetWritesMultipleCartesianProperty()
         {
-            var startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0));
+            var startDate = new GregorianDate(2012, 4, 2, 12, 0, 0).ToJulianDate();
 
             using (Packet)
             using (var position = Packet.OpenPositionProperty())
@@ -101,7 +116,7 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void CartographicRadiansValueWritesMultipleCartographicRadiansProperty()
         {
-            var startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0));
+            var startDate = new GregorianDate(2012, 4, 2, 12, 0, 0).ToJulianDate();
 
             using (Packet)
             using (var position = Packet.OpenPositionProperty())
@@ -125,7 +140,7 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void CartographicRadiansValueSubsetWritesMultipleCartographicRadiansProperty()
         {
-            var startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0));
+            var startDate = new GregorianDate(2012, 4, 2, 12, 0, 0).ToJulianDate();
 
             using (Packet)
             using (var position = Packet.OpenPositionProperty())
@@ -182,38 +197,62 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestDeletePropertyWithStartAndStop()
         {
-            var start = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0));
+            var start = new GregorianDate(2012, 4, 2, 12, 0, 0).ToJulianDate();
             var stop = start.AddDays(1.0);
+            const string expectedId = "id";
+            const bool expectedDelete = true;
 
             using (Packet)
             {
-                Packet.WriteId("id");
+                Packet.WriteId(expectedId);
 
                 using (var position = Packet.OpenPositionProperty())
                 using (var interval = position.OpenInterval(start, stop))
                 {
-                    interval.WriteDelete(true);
+                    interval.WriteDelete(expectedDelete);
                 }
             }
 
-            Assert.AreEqual("{\"id\":\"id\",\"position\":{\"interval\":\"20120402T12Z/20120403T12Z\",\"delete\":true}}", StringWriter.ToString());
+            AssertExpectedJson(new Dictionary<string, object>
+            {
+                { PacketCesiumWriter.IdPropertyName, expectedId },
+                {
+                    PacketCesiumWriter.PositionPropertyName, new Dictionary<string, object>
+                    {
+                        { "interval", CesiumFormattingHelper.ToIso8601Interval(start, stop, Iso8601Format.Compact) },
+                        { PositionCesiumWriter.DeletePropertyName, expectedDelete },
+                    }
+                },
+            });
         }
 
         [Test]
         public void TestDeletePropertyWithNoInterval()
         {
+            const string expectedId = "id";
+            const bool expectedDelete = true;
+
             using (Packet)
             {
-                Packet.WriteId("id");
+                Packet.WriteId(expectedId);
 
                 using (var position = Packet.OpenPositionProperty())
                 using (var interval = position.OpenInterval())
                 {
-                    interval.WriteDelete(true);
+                    interval.WriteDelete(expectedDelete);
                 }
             }
 
-            Assert.AreEqual("{\"id\":\"id\",\"position\":{\"delete\":true}}", StringWriter.ToString());
+            AssertExpectedJson(new Dictionary<string, object>
+            {
+                { PacketCesiumWriter.IdPropertyName, expectedId },
+                {
+                    PacketCesiumWriter.PositionPropertyName, new Dictionary<string, object>
+                    {
+                        { PositionCesiumWriter.DeletePropertyName, expectedDelete },
+                    }
+                },
+            });
         }
 
         protected override CesiumPropertyWriter<PositionCesiumWriter> CreatePropertyWriter(string propertyName)

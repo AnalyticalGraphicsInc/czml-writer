@@ -3,12 +3,13 @@ package cesiumlanguagewritertests;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.DisposeHelper;
+import agi.foundation.compatibility.MapHelper;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
-import java.io.StringWriter;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import javax.annotation.Nonnull;
-import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
 import org.junit.runners.MethodSorters;
@@ -23,14 +24,16 @@ import org.junit.Test;
 public class TestVerticalOriginCesiumWriter extends TestCesiumPropertyWriter<VerticalOriginCesiumWriter> {
     @Test
     public final void verticalOriginCanBeWrittenAsSimpleString() {
+        final String expectedPropertyName = "foo";
+        final CesiumVerticalOrigin expectedValue = CesiumVerticalOrigin.CENTER;
         {
             final PacketCesiumWriter usingExpression_0 = (getPacket());
             try {
                 {
-                    VerticalOriginCesiumWriter writer = new VerticalOriginCesiumWriter("foo");
+                    VerticalOriginCesiumWriter writer = new VerticalOriginCesiumWriter(expectedPropertyName);
                     try {
                         writer.open(getOutputStream());
-                        writer.writeVerticalOrigin(CesiumVerticalOrigin.CENTER);
+                        writer.writeVerticalOrigin(expectedValue);
                     } finally {
                         DisposeHelper.dispose(writer);
                     }
@@ -39,21 +42,26 @@ public class TestVerticalOriginCesiumWriter extends TestCesiumPropertyWriter<Ver
                 DisposeHelper.dispose(usingExpression_0);
             }
         }
-        Assert.assertEquals("{\"foo\":\"CENTER\"}", getStringWriter().toString());
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, expectedPropertyName, CesiumFormattingHelper.verticalOriginToString(expectedValue));
+        assertExpectedJson(tempCollection$0);
     }
 
     @Test
     public final void verticalOriginCanBeWrittenInsideInterval() {
-        JulianDate startDate = new GregorianDate(2012, 6, 7, 12, 0, 0D).toJulianDate();
+        JulianDate start = new GregorianDate(2012, 6, 7, 12, 0, 0D).toJulianDate();
+        JulianDate stop = start.addSeconds(100.0);
+        final String expectedPropertyName = "foo";
+        final CesiumVerticalOrigin expectedValue = CesiumVerticalOrigin.CENTER;
         {
             final PacketCesiumWriter usingExpression_1 = (getPacket());
             try {
                 {
-                    VerticalOriginCesiumWriter writer = new VerticalOriginCesiumWriter("foo");
+                    VerticalOriginCesiumWriter writer = new VerticalOriginCesiumWriter(expectedPropertyName);
                     try {
                         writer.open(getOutputStream());
-                        writer.writeInterval(startDate, startDate.addSeconds(100.0));
-                        writer.writeVerticalOrigin(CesiumVerticalOrigin.CENTER);
+                        writer.writeInterval(start, stop);
+                        writer.writeVerticalOrigin(expectedValue);
                     } finally {
                         DisposeHelper.dispose(writer);
                     }
@@ -62,7 +70,10 @@ public class TestVerticalOriginCesiumWriter extends TestCesiumPropertyWriter<Ver
                 DisposeHelper.dispose(usingExpression_1);
             }
         }
-        Assert.assertEquals("{\"foo\":{\"interval\":\"20120607T12Z/20120607T120140Z\",\"verticalOrigin\":\"CENTER\"}}", getStringWriter().toString());
+        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$1, "interval", CesiumFormattingHelper.toIso8601Interval(start, stop, Iso8601Format.COMPACT));
+        MapHelper.add(tempCollection$1, VerticalOriginCesiumWriter.VerticalOriginPropertyName, CesiumFormattingHelper.verticalOriginToString(expectedValue));
+        assertExpectedJson(expectedPropertyName, tempCollection$1);
     }
 
     @Override

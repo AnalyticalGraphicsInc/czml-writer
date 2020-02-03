@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
 using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
 using NUnit.Framework;
@@ -11,92 +12,126 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestShowProperty()
         {
+            const bool expectedShow = true;
+
             using (Packet)
-            using (ModelCesiumWriter model = Packet.OpenModelProperty())
-            using (ModelCesiumWriter interval = model.OpenInterval())
+            using (var model = Packet.OpenModelProperty())
+            using (var interval = model.OpenInterval())
             {
-                interval.WriteShowProperty(true);
+                interval.WriteShowProperty(expectedShow);
             }
 
-            Assert.AreEqual("{\"model\":{\"show\":true}}", StringWriter.ToString());
+            AssertExpectedJson(PacketCesiumWriter.ModelPropertyName, new Dictionary<string, object>
+            {
+                { ModelCesiumWriter.ShowPropertyName, expectedShow },
+            });
         }
 
         [Test]
         public void TestGltfProperty()
         {
-            using (Packet)
-            using (ModelCesiumWriter model = Packet.OpenModelProperty())
-            using (ModelCesiumWriter interval = model.OpenInterval())
-            {
-                interval.WriteGltfProperty("test.gltf", CesiumResourceBehavior.LinkTo);
-            }
+            const string expectedGltf = "test.gltf";
 
-            Assert.AreEqual("{\"model\":{\"gltf\":\"test.gltf\"}}", StringWriter.ToString());
+            using (Packet)
+            using (var model = Packet.OpenModelProperty())
+            using (var interval = model.OpenInterval())
+            {
+                interval.WriteGltfProperty(expectedGltf, CesiumResourceBehavior.LinkTo);
+            }
+            AssertExpectedJson(PacketCesiumWriter.ModelPropertyName, new Dictionary<string, object>
+            {
+                { ModelCesiumWriter.GltfPropertyName, expectedGltf },
+            });
         }
 
         [Test]
         public void TestSilhouetteColorProperty()
         {
+            var expectedSilhouetteColor = Color.Blue;
+
             using (Packet)
-            using (ModelCesiumWriter model = Packet.OpenModelProperty())
-            using (ModelCesiumWriter interval = model.OpenInterval())
+            using (var model = Packet.OpenModelProperty())
+            using (var interval = model.OpenInterval())
             {
-                interval.WriteSilhouetteColorProperty(Color.Blue);
+                interval.WriteSilhouetteColorProperty(expectedSilhouetteColor);
             }
 
-            Assert.AreEqual("{\"model\":{\"silhouetteColor\":{\"rgba\":[0,0,255,255]}}}", StringWriter.ToString());
+            AssertExpectedJson(PacketCesiumWriter.ModelPropertyName, new Dictionary<string, object>
+            {
+                { ModelCesiumWriter.SilhouetteColorPropertyName, expectedSilhouetteColor },
+            });
         }
 
         [Test]
         public void TestSilhouetteSizeProperty()
         {
+            const double expectedSilhouetteSize = 0.75;
+
             using (Packet)
-            using (ModelCesiumWriter model = Packet.OpenModelProperty())
-            using (ModelCesiumWriter interval = model.OpenInterval())
+            using (var model = Packet.OpenModelProperty())
+            using (var interval = model.OpenInterval())
             {
-                interval.WriteSilhouetteSizeProperty(0.75);
+                interval.WriteSilhouetteSizeProperty(expectedSilhouetteSize);
             }
 
-            Assert.AreEqual("{\"model\":{\"silhouetteSize\":0.75}}", StringWriter.ToString());
+            AssertExpectedJson(PacketCesiumWriter.ModelPropertyName, new Dictionary<string, object>
+            {
+                { ModelCesiumWriter.SilhouetteSizePropertyName, expectedSilhouetteSize },
+            });
         }
 
         [Test]
         public void TestColorProperty()
         {
+            var expectedColor = Color.Red;
+
             using (Packet)
-            using (ModelCesiumWriter model = Packet.OpenModelProperty())
-            using (ModelCesiumWriter interval = model.OpenInterval())
+            using (var model = Packet.OpenModelProperty())
+            using (var interval = model.OpenInterval())
             {
-                interval.WriteColorProperty(Color.Red);
+                interval.WriteColorProperty(expectedColor);
             }
 
-            Assert.AreEqual("{\"model\":{\"color\":{\"rgba\":[255,0,0,255]}}}", StringWriter.ToString());
+            AssertExpectedJson(PacketCesiumWriter.ModelPropertyName, new Dictionary<string, object>
+            {
+                { ModelCesiumWriter.ColorPropertyName, expectedColor },
+            });
         }
 
         [Test]
         public void TestColorBlendModeProperty()
         {
+            const CesiumColorBlendMode expectedColorBlendMode = CesiumColorBlendMode.Replace;
+
             using (Packet)
-            using (ModelCesiumWriter model = Packet.OpenModelProperty())
-            using (ModelCesiumWriter interval = model.OpenInterval())
+            using (var model = Packet.OpenModelProperty())
+            using (var interval = model.OpenInterval())
             {
-                interval.WriteColorBlendModeProperty(CesiumColorBlendMode.Replace);
+                interval.WriteColorBlendModeProperty(expectedColorBlendMode);
             }
 
-            Assert.AreEqual("{\"model\":{\"colorBlendMode\":\"REPLACE\"}}", StringWriter.ToString());
+            AssertExpectedJson(PacketCesiumWriter.ModelPropertyName, new Dictionary<string, object>
+            {
+                { ModelCesiumWriter.ColorBlendModePropertyName, CesiumFormattingHelper.ColorBlendModeToString(expectedColorBlendMode) },
+            });
         }
 
         [Test]
         public void TestColorBlendAmountProperty()
         {
+            const double expectedColorBlendAmount = 0.75;
+
             using (Packet)
-            using (ModelCesiumWriter model = Packet.OpenModelProperty())
-            using (ModelCesiumWriter interval = model.OpenInterval())
+            using (var model = Packet.OpenModelProperty())
+            using (var interval = model.OpenInterval())
             {
-                interval.WriteColorBlendAmountProperty(0.75);
+                interval.WriteColorBlendAmountProperty(expectedColorBlendAmount);
             }
 
-            Assert.AreEqual("{\"model\":{\"colorBlendAmount\":0.75}}", StringWriter.ToString());
+            AssertExpectedJson(PacketCesiumWriter.ModelPropertyName, new Dictionary<string, object>
+            {
+                { ModelCesiumWriter.ColorBlendAmountPropertyName, expectedColorBlendAmount },
+            });
         }
 
         protected override CesiumPropertyWriter<ModelCesiumWriter> CreatePropertyWriter(string propertyName)

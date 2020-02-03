@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
 using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
 using NUnit.Framework;
@@ -11,16 +12,33 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestWritePolylineOutlineMaterial()
         {
+            var expectedColor = Color.Red;
+            var expectedOutlineColor = Color.Blue;
+
             using (Packet)
             using (var polyline = Packet.OpenPolylineProperty())
             using (var material = polyline.OpenMaterialProperty())
             using (var polylineOutlineMaterial = material.OpenPolylineOutlineProperty())
             {
-                polylineOutlineMaterial.WriteColorProperty(Color.Red);
-                polylineOutlineMaterial.WriteOutlineColorProperty(Color.Blue);
+                polylineOutlineMaterial.WriteColorProperty(expectedColor);
+                polylineOutlineMaterial.WriteOutlineColorProperty(expectedOutlineColor);
             }
 
-            Assert.AreEqual("{\"polyline\":{\"material\":{\"polylineOutline\":{\"color\":{\"rgba\":[255,0,0,255]},\"outlineColor\":{\"rgba\":[0,0,255,255]}}}}}", StringWriter.ToString());
+            AssertExpectedJson(PacketCesiumWriter.PolylinePropertyName, new Dictionary<string, object>
+            {
+                {
+                    PolylineCesiumWriter.MaterialPropertyName, new Dictionary<string, object>
+                    {
+                        {
+                            PolylineMaterialCesiumWriter.PolylineOutlinePropertyName, new Dictionary<string, object>
+                            {
+                                { PolylineOutlineMaterialCesiumWriter.ColorPropertyName, expectedColor },
+                                { PolylineOutlineMaterialCesiumWriter.OutlineColorPropertyName, expectedOutlineColor },
+                            }
+                        },
+                    }
+                }
+            });
         }
 
         protected override CesiumPropertyWriter<PolylineOutlineMaterialCesiumWriter> CreatePropertyWriter(string propertyName)

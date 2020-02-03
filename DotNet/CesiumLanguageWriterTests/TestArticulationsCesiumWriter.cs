@@ -13,38 +13,62 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void SingleArticulation()
         {
+            const string expectedName = "articulation1 stage1";
+            const double expectedValue = 3.5;
+
             using (Packet)
             using (var modelWriter = Packet.OpenModelProperty())
             using (var articulationsWriter = modelWriter.OpenArticulationsProperty())
-            using (var articulationWriter = articulationsWriter.OpenArticulationProperty("articulation1 stage1"))
+            using (var articulationWriter = articulationsWriter.OpenArticulationProperty(expectedName))
             {
-                articulationWriter.WriteNumber(3.5);
+                articulationWriter.WriteNumber(expectedValue);
             }
 
-            const string expected = "{\"model\":{\"articulations\":{\"articulation1 stage1\":3.5}}}";
-            Assert.AreEqual(expected, StringWriter.ToString());
+            AssertExpectedJson(PacketCesiumWriter.ModelPropertyName, new Dictionary<string, object>
+            {
+                {
+                    ModelCesiumWriter.ArticulationsPropertyName, new Dictionary<string, object>
+                    {
+                        { expectedName, expectedValue },
+                    }
+                },
+            });
         }
 
         [Test]
         public void MultipleArticulations()
         {
+            const string expectedName1 = "articulation1 stage1";
+            const double expectedValue1 = 4.5;
+
+            const string expectedName2 = "articulation1 stage2";
+            const double expectedValue2 = 5.5;
+
             using (Packet)
             using (var modelWriter = Packet.OpenModelProperty())
             using (var articulationsWriter = modelWriter.OpenArticulationsProperty())
             {
-                using (var articulationWriter = articulationsWriter.OpenArticulationProperty("articulation1 stage1"))
+                using (var articulationWriter = articulationsWriter.OpenArticulationProperty(expectedName1))
                 {
-                    articulationWriter.WriteNumber(4.0);
+                    articulationWriter.WriteNumber(expectedValue1);
                 }
 
-                using (var articulationWriter = articulationsWriter.OpenArticulationProperty("articulation1 stage2"))
+                using (var articulationWriter = articulationsWriter.OpenArticulationProperty(expectedName2))
                 {
-                    articulationWriter.WriteNumber(5.0);
+                    articulationWriter.WriteNumber(expectedValue2);
                 }
             }
 
-            const string expected = "{\"model\":{\"articulations\":{\"articulation1 stage1\":4,\"articulation1 stage2\":5}}}";
-            Assert.AreEqual(expected, StringWriter.ToString());
+            AssertExpectedJson(PacketCesiumWriter.ModelPropertyName, new Dictionary<string, object>
+            {
+                {
+                    ModelCesiumWriter.ArticulationsPropertyName, new Dictionary<string, object>
+                    {
+                        { expectedName1, expectedValue1 },
+                        { expectedName2, expectedValue2 },
+                    }
+                },
+            });
         }
 
         [Test]
@@ -59,8 +83,8 @@ namespace CesiumLanguageWriterTests
                 {
                     packet.WriteId("MyID");
 
-                    var startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0));
-                    var stopDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 1, 0));
+                    var startDate = new GregorianDate(2012, 4, 2, 12, 0, 0).ToJulianDate();
+                    var stopDate = new GregorianDate(2012, 4, 2, 12, 1, 0).ToJulianDate();
 
                     using (var clockWriter = packet.OpenClockProperty())
                     {

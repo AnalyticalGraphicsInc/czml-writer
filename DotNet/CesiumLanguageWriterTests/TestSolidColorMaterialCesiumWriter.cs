@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
 using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
 using NUnit.Framework;
@@ -11,15 +12,30 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestWriteSolidColorMaterial()
         {
+            var expectedColor = Color.Red;
+
             using (Packet)
             using (var polyline = Packet.OpenPolylineProperty())
             using (var material = polyline.OpenMaterialProperty())
             using (var solidColorMaterial = material.OpenSolidColorProperty())
             {
-                solidColorMaterial.WriteColorProperty(Color.Red);
+                solidColorMaterial.WriteColorProperty(expectedColor);
             }
 
-            Assert.AreEqual("{\"polyline\":{\"material\":{\"solidColor\":{\"color\":{\"rgba\":[255,0,0,255]}}}}}", StringWriter.ToString());
+            AssertExpectedJson(PacketCesiumWriter.PolylinePropertyName, new Dictionary<string, object>
+            {
+                {
+                    PolylineCesiumWriter.MaterialPropertyName, new Dictionary<string, object>
+                    {
+                        {
+                            PolylineMaterialCesiumWriter.SolidColorPropertyName, new Dictionary<string, object>
+                            {
+                                { SolidColorMaterialCesiumWriter.ColorPropertyName, expectedColor },
+                            }
+                        },
+                    }
+                }
+            });
         }
 
         protected override CesiumPropertyWriter<SolidColorMaterialCesiumWriter> CreatePropertyWriter(string propertyName)

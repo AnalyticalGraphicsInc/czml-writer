@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
 using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
 using NUnit.Framework;
@@ -11,19 +12,42 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestWriteGridMaterial()
         {
+            var expectedColor = Color.Red;
+            const double expectedCellAlpha = 0.7;
+            var expectedLineCount = new Rectangular(6, 3);
+            var expectedLineThickness = new Rectangular(3, 4);
+            var expectedLineOffset = new Rectangular(5, 9);
+
             using (Packet)
             using (var polyline = Packet.OpenPolylineProperty())
             using (var material = polyline.OpenMaterialProperty())
             using (var gridMaterial = material.OpenGridProperty())
             {
-                gridMaterial.WriteColorProperty(Color.Red);
-                gridMaterial.WriteCellAlphaProperty(0.7);
-                gridMaterial.WriteLineCountProperty(6, 3);
-                gridMaterial.WriteLineThicknessProperty(3, 4);
-                gridMaterial.WriteLineOffsetProperty(5, 9);
+                gridMaterial.WriteColorProperty(expectedColor);
+                gridMaterial.WriteCellAlphaProperty(expectedCellAlpha);
+                gridMaterial.WriteLineCountProperty(expectedLineCount);
+                gridMaterial.WriteLineThicknessProperty(expectedLineThickness);
+                gridMaterial.WriteLineOffsetProperty(expectedLineOffset);
             }
 
-            Assert.AreEqual("{\"polyline\":{\"material\":{\"grid\":{\"color\":{\"rgba\":[255,0,0,255]},\"cellAlpha\":0.7,\"lineCount\":{\"cartesian2\":[6,3]},\"lineThickness\":{\"cartesian2\":[3,4]},\"lineOffset\":{\"cartesian2\":[5,9]}}}}}", StringWriter.ToString());
+            AssertExpectedJson(PacketCesiumWriter.PolylinePropertyName, new Dictionary<string, object>
+            {
+                {
+                    PolylineCesiumWriter.MaterialPropertyName, new Dictionary<string, object>
+                    {
+                        {
+                            PolylineMaterialCesiumWriter.GridPropertyName, new Dictionary<string, object>
+                            {
+                                { GridMaterialCesiumWriter.ColorPropertyName, expectedColor },
+                                { GridMaterialCesiumWriter.CellAlphaPropertyName, expectedCellAlpha },
+                                { GridMaterialCesiumWriter.LineCountPropertyName, expectedLineCount },
+                                { GridMaterialCesiumWriter.LineThicknessPropertyName, expectedLineThickness },
+                                { GridMaterialCesiumWriter.LineOffsetPropertyName, expectedLineOffset },
+                            }
+                        },
+                    }
+                }
+            });
         }
 
         protected override CesiumPropertyWriter<GridMaterialCesiumWriter> CreatePropertyWriter(string propertyName)

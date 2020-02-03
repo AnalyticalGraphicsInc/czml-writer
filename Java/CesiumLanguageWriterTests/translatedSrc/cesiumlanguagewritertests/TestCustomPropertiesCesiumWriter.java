@@ -5,12 +5,15 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.annotations.CS2JInfo;
 import agi.foundation.compatibility.ConsoleHelper;
 import agi.foundation.compatibility.DisposeHelper;
+import agi.foundation.compatibility.MapHelper;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import javax.annotation.Nonnull;
 import org.junit.Assert;
 import org.junit.Before;
@@ -37,14 +40,16 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
 
     @Before
     public final void setUp() {
-        m_startDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0D));
+        m_startDate = new GregorianDate(2012, 4, 2, 12, 0, 0D).toJulianDate();
         m_isoStartString = CesiumFormattingHelper.toIso8601(m_startDate, Iso8601Format.COMPACT);
-        m_stopDate = new JulianDate(new GregorianDate(2012, 4, 2, 12, 1, 0D));
+        m_stopDate = new GregorianDate(2012, 4, 2, 12, 1, 0D).toJulianDate();
         m_isoIntervalString = CesiumFormattingHelper.toIso8601Interval(m_startDate, m_stopDate, Iso8601Format.COMPACT);
     }
 
     @Test
     public final void customPropertyBooleanConstant() {
+        final String expectedName = "custom_property";
+        final boolean expectedValue = true;
         {
             final PacketCesiumWriter usingExpression_0 = (getPacket());
             try {
@@ -52,9 +57,9 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
                     CustomPropertiesCesiumWriter customPropertiesWriter = getPacket().openPropertiesProperty();
                     try {
                         {
-                            CustomPropertyCesiumWriter customPropertyWriter = customPropertiesWriter.openCustomPropertyProperty("custom_property");
+                            CustomPropertyCesiumWriter customPropertyWriter = customPropertiesWriter.openCustomPropertyProperty(expectedName);
                             try {
-                                customPropertyWriter.writeBoolean(true);
+                                customPropertyWriter.writeBoolean(expectedValue);
                             } finally {
                                 DisposeHelper.dispose(customPropertyWriter);
                             }
@@ -67,11 +72,15 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
                 DisposeHelper.dispose(usingExpression_0);
             }
         }
-        Assert.assertEquals("{\"properties\":{\"custom_property\":true}}", getStringWriter().toString());
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, expectedName, expectedValue);
+        assertExpectedJson(PacketCesiumWriter.PropertiesPropertyName, tempCollection$0);
     }
 
     @Test
     public final void customPropertyBooleanInterval() {
+        final String expectedName = "custom_property";
+        final boolean expectedValue = true;
         {
             final PacketCesiumWriter usingExpression_1 = (getPacket());
             try {
@@ -79,12 +88,12 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
                     CustomPropertiesCesiumWriter customPropertiesWriter = getPacket().openPropertiesProperty();
                     try {
                         {
-                            CustomPropertyCesiumWriter customPropertyWriter = customPropertiesWriter.openCustomPropertyProperty("custom_property");
+                            CustomPropertyCesiumWriter customPropertyWriter = customPropertiesWriter.openCustomPropertyProperty(expectedName);
                             try {
                                 {
                                     CustomPropertyCesiumWriter intervalWriter = customPropertyWriter.openInterval(m_startDate, m_stopDate);
                                     try {
-                                        intervalWriter.writeBoolean(true);
+                                        intervalWriter.writeBoolean(expectedValue);
                                     } finally {
                                         DisposeHelper.dispose(intervalWriter);
                                     }
@@ -101,11 +110,18 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
                 DisposeHelper.dispose(usingExpression_1);
             }
         }
-        Assert.assertEquals("{\"properties\":{\"custom_property\":{\"interval\":\"" + m_isoIntervalString + "\",\"boolean\":true}}}", getStringWriter().toString());
+        final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$2, "interval", m_isoIntervalString);
+        MapHelper.add(tempCollection$2, CustomPropertyCesiumWriter.BooleanPropertyName, expectedValue);
+        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$1, expectedName, tempCollection$2);
+        assertExpectedJson(PacketCesiumWriter.PropertiesPropertyName, tempCollection$1);
     }
 
     @Test
     public final void customPropertyCartesianConstant() {
+        final String expectedName = "custom_property";
+        Cartesian expectedValue = new Cartesian(1.1, 2.2, 3.3);
         {
             final PacketCesiumWriter usingExpression_2 = (getPacket());
             try {
@@ -113,9 +129,9 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
                     CustomPropertiesCesiumWriter customPropertiesWriter = getPacket().openPropertiesProperty();
                     try {
                         {
-                            CustomPropertyCesiumWriter customPropertyWriter = customPropertiesWriter.openCustomPropertyProperty("custom_property");
+                            CustomPropertyCesiumWriter customPropertyWriter = customPropertiesWriter.openCustomPropertyProperty(expectedName);
                             try {
-                                customPropertyWriter.writeCartesian(new Cartesian(1D, 2D, 3D));
+                                customPropertyWriter.writeCartesian(expectedValue);
                             } finally {
                                 DisposeHelper.dispose(customPropertyWriter);
                             }
@@ -128,7 +144,9 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
                 DisposeHelper.dispose(usingExpression_2);
             }
         }
-        Assert.assertEquals("{\"properties\":{\"custom_property\":{\"cartesian\":[1,2,3]}}}", getStringWriter().toString());
+        final Map<String, Object> tempCollection$3 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$3, expectedName, expectedValue);
+        assertExpectedJson(PacketCesiumWriter.PropertiesPropertyName, tempCollection$3);
     }
 
     @Test
@@ -205,6 +223,10 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
 
     @Test
     public final void testMultipleProperties() {
+        final String expectedName1 = "custom_boolean";
+        final boolean expectedValue1 = true;
+        final String expectedName2 = "custom_cartesian";
+        Cartesian expectedValue2 = new Cartesian(1.1, 2.2, 3.3);
         {
             final PacketCesiumWriter usingExpression_5 = (getPacket());
             try {
@@ -212,17 +234,17 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
                     CustomPropertiesCesiumWriter customPropertiesWriter = getPacket().openPropertiesProperty();
                     try {
                         {
-                            CustomPropertyCesiumWriter customPropertyWriter = customPropertiesWriter.openCustomPropertyProperty("custom_boolean");
+                            CustomPropertyCesiumWriter customPropertyWriter = customPropertiesWriter.openCustomPropertyProperty(expectedName1);
                             try {
-                                customPropertyWriter.writeBoolean(true);
+                                customPropertyWriter.writeBoolean(expectedValue1);
                             } finally {
                                 DisposeHelper.dispose(customPropertyWriter);
                             }
                         }
                         {
-                            CustomPropertyCesiumWriter customPropertyWriter = customPropertiesWriter.openCustomPropertyProperty("custom_cartesian");
+                            CustomPropertyCesiumWriter customPropertyWriter = customPropertiesWriter.openCustomPropertyProperty(expectedName2);
                             try {
-                                customPropertyWriter.writeCartesian(new Cartesian(1D, 2D, 3D));
+                                customPropertyWriter.writeCartesian(expectedValue2);
                             } finally {
                                 DisposeHelper.dispose(customPropertyWriter);
                             }
@@ -235,7 +257,10 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
                 DisposeHelper.dispose(usingExpression_5);
             }
         }
-        Assert.assertEquals("{\"properties\":{\"custom_boolean\":true,\"custom_cartesian\":{\"cartesian\":[1,2,3]}}}", getStringWriter().toString());
+        final Map<String, Object> tempCollection$4 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$4, expectedName1, expectedValue1);
+        MapHelper.add(tempCollection$4, expectedName2, expectedValue2);
+        assertExpectedJson(PacketCesiumWriter.PropertiesPropertyName, tempCollection$4);
     }
 
     @Test

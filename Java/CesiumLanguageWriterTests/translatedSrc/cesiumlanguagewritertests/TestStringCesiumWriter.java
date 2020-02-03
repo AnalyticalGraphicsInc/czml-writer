@@ -3,12 +3,13 @@ package cesiumlanguagewritertests;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.DisposeHelper;
+import agi.foundation.compatibility.MapHelper;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
-import java.io.StringWriter;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import javax.annotation.Nonnull;
-import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
 import org.junit.runners.MethodSorters;
@@ -23,14 +24,16 @@ import org.junit.Test;
 public class TestStringCesiumWriter extends TestCesiumPropertyWriter<StringCesiumWriter> {
     @Test
     public final void stringCanBeWrittenAsSimpleString() {
+        final String expectedPropertyName = "foo";
+        final String expectedValue = "bar";
         {
             final PacketCesiumWriter usingExpression_0 = (getPacket());
             try {
                 {
-                    StringCesiumWriter writer = new StringCesiumWriter("foo");
+                    StringCesiumWriter writer = new StringCesiumWriter(expectedPropertyName);
                     try {
                         writer.open(getOutputStream());
-                        writer.writeString("bar");
+                        writer.writeString(expectedValue);
                     } finally {
                         DisposeHelper.dispose(writer);
                     }
@@ -39,12 +42,17 @@ public class TestStringCesiumWriter extends TestCesiumPropertyWriter<StringCesiu
                 DisposeHelper.dispose(usingExpression_0);
             }
         }
-        Assert.assertEquals("{\"foo\":\"bar\"}", getStringWriter().toString());
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, expectedPropertyName, expectedValue);
+        assertExpectedJson(tempCollection$0);
     }
 
     @Test
     public final void stringCanBeWrittenInsideInterval() {
-        JulianDate startDate = new GregorianDate(2012, 6, 7, 12, 0, 0D).toJulianDate();
+        JulianDate start = new GregorianDate(2012, 6, 7, 12, 0, 0D).toJulianDate();
+        JulianDate stop = start.addSeconds(100.0);
+        final String expectedPropertyName = "foo";
+        final String expectedValue = "bar";
         {
             final PacketCesiumWriter usingExpression_1 = (getPacket());
             try {
@@ -52,8 +60,8 @@ public class TestStringCesiumWriter extends TestCesiumPropertyWriter<StringCesiu
                     StringCesiumWriter writer = new StringCesiumWriter("foo");
                     try {
                         writer.open(getOutputStream());
-                        writer.writeInterval(startDate, startDate.addSeconds(100.0));
-                        writer.writeString("bar");
+                        writer.writeInterval(start, stop);
+                        writer.writeString(expectedValue);
                     } finally {
                         DisposeHelper.dispose(writer);
                     }
@@ -62,23 +70,29 @@ public class TestStringCesiumWriter extends TestCesiumPropertyWriter<StringCesiu
                 DisposeHelper.dispose(usingExpression_1);
             }
         }
-        Assert.assertEquals("{\"foo\":{\"interval\":\"20120607T12Z/20120607T120140Z\",\"string\":\"bar\"}}", getStringWriter().toString());
+        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$1, "interval", CesiumFormattingHelper.toIso8601Interval(start, stop, Iso8601Format.COMPACT));
+        MapHelper.add(tempCollection$1, StringCesiumWriter.StringPropertyName, expectedValue);
+        assertExpectedJson(expectedPropertyName, tempCollection$1);
     }
 
     @Test
     public final void testDeletePropertyWithStartAndStop() {
-        JulianDate start = new JulianDate(new GregorianDate(2012, 4, 2, 12, 0, 0D));
+        JulianDate start = new GregorianDate(2012, 4, 2, 12, 0, 0D).toJulianDate();
         JulianDate stop = start.addDays(1.0);
+        final String expectedId = "id";
+        final String expectedPropertyName = "foo";
+        final boolean expectedDelete = true;
         {
             final PacketCesiumWriter usingExpression_2 = (getPacket());
             try {
-                getPacket().writeId("id");
+                getPacket().writeId(expectedId);
                 {
-                    StringCesiumWriter writer = new StringCesiumWriter("foo");
+                    StringCesiumWriter writer = new StringCesiumWriter(expectedPropertyName);
                     try {
                         writer.open(getOutputStream());
                         writer.writeInterval(start, stop);
-                        writer.writeDelete(true);
+                        writer.writeDelete(expectedDelete);
                     } finally {
                         DisposeHelper.dispose(writer);
                     }
@@ -87,20 +101,29 @@ public class TestStringCesiumWriter extends TestCesiumPropertyWriter<StringCesiu
                 DisposeHelper.dispose(usingExpression_2);
             }
         }
-        Assert.assertEquals("{\"id\":\"id\",\"foo\":{\"interval\":\"20120402T12Z/20120403T12Z\",\"delete\":true}}", getStringWriter().toString());
+        final Map<String, Object> tempCollection$3 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$3, "interval", CesiumFormattingHelper.toIso8601Interval(start, stop, Iso8601Format.COMPACT));
+        MapHelper.add(tempCollection$3, StringCesiumWriter.DeletePropertyName, expectedDelete);
+        final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$2, PacketCesiumWriter.IdPropertyName, expectedId);
+        MapHelper.add(tempCollection$2, expectedPropertyName, tempCollection$3);
+        assertExpectedJson(tempCollection$2);
     }
 
     @Test
     public final void testDeletePropertyWithNoInterval() {
+        final String expectedId = "id";
+        final String expectedPropertyName = "foo";
+        final boolean expectedDelete = true;
         {
             final PacketCesiumWriter usingExpression_3 = (getPacket());
             try {
-                getPacket().writeId("id");
+                getPacket().writeId(expectedId);
                 {
-                    StringCesiumWriter writer = new StringCesiumWriter("foo");
+                    StringCesiumWriter writer = new StringCesiumWriter(expectedPropertyName);
                     try {
                         writer.open(getOutputStream());
-                        writer.writeDelete(true);
+                        writer.writeDelete(expectedDelete);
                     } finally {
                         DisposeHelper.dispose(writer);
                     }
@@ -109,7 +132,12 @@ public class TestStringCesiumWriter extends TestCesiumPropertyWriter<StringCesiu
                 DisposeHelper.dispose(usingExpression_3);
             }
         }
-        Assert.assertEquals("{\"id\":\"id\",\"foo\":{\"delete\":true}}", getStringWriter().toString());
+        final Map<String, Object> tempCollection$5 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$5, StringCesiumWriter.DeletePropertyName, expectedDelete);
+        final Map<String, Object> tempCollection$4 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$4, PacketCesiumWriter.IdPropertyName, expectedId);
+        MapHelper.add(tempCollection$4, expectedPropertyName, tempCollection$5);
+        assertExpectedJson(tempCollection$4);
     }
 
     @Override

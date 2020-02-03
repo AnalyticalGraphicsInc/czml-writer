@@ -121,6 +121,11 @@ namespace CesiumLanguageWriter
         /// </summary>
         public const string EnvironmentIntersectionWidthPropertyName = "environmentIntersectionWidth";
 
+        /// <summary>
+        /// The name of the <c>showThroughEllipsoid</c> property.
+        /// </summary>
+        public const string ShowThroughEllipsoidPropertyName = "showThroughEllipsoid";
+
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
         private readonly Lazy<DirectionListCesiumWriter> m_directions = new Lazy<DirectionListCesiumWriter>(() => new DirectionListCesiumWriter(DirectionsPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_radius = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(RadiusPropertyName), false);
@@ -142,6 +147,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<BooleanCesiumWriter> m_showEnvironmentIntersection = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowEnvironmentIntersectionPropertyName), false);
         private readonly Lazy<ColorCesiumWriter> m_environmentIntersectionColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(EnvironmentIntersectionColorPropertyName), false);
         private readonly Lazy<DoubleCesiumWriter> m_environmentIntersectionWidth = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(EnvironmentIntersectionWidthPropertyName), false);
+        private readonly Lazy<BooleanCesiumWriter> m_showThroughEllipsoid = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowThroughEllipsoidPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -1819,6 +1825,87 @@ namespace CesiumLanguageWriter
         public void WriteEnvironmentIntersectionWidthPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenEnvironmentIntersectionWidthProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <c>showThroughEllipsoid</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>showThroughEllipsoid</c> property defines whether or not a sensor intersecting the ellipsoid is drawn through the ellipsoid and potentially out to the other side. If not specified, the default value is <see langword="false"/>.
+        /// </summary>
+        [NotNull]
+        public BooleanCesiumWriter ShowThroughEllipsoidWriter
+        {
+            get { return m_showThroughEllipsoid.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>showThroughEllipsoid</c> property. The <c>showThroughEllipsoid</c> property defines whether or not a sensor intersecting the ellipsoid is drawn through the ellipsoid and potentially out to the other side. If not specified, the default value is <see langword="false"/>.
+        /// </summary>
+        [NotNull]
+        public BooleanCesiumWriter OpenShowThroughEllipsoidProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(ShowThroughEllipsoidWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>showThroughEllipsoid</c> property as a <c>boolean</c> value. The <c>showThroughEllipsoid</c> property specifies whether or not a sensor intersecting the ellipsoid is drawn through the ellipsoid and potentially out to the other side. If not specified, the default value is <see langword="false"/>.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteShowThroughEllipsoidProperty(bool value)
+        {
+            using (var writer = OpenShowThroughEllipsoidProperty())
+            {
+                writer.WriteBoolean(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>showThroughEllipsoid</c> property as a <c>reference</c> value. The <c>showThroughEllipsoid</c> property specifies whether or not a sensor intersecting the ellipsoid is drawn through the ellipsoid and potentially out to the other side. If not specified, the default value is <see langword="false"/>.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteShowThroughEllipsoidPropertyReference(Reference value)
+        {
+            using (var writer = OpenShowThroughEllipsoidProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>showThroughEllipsoid</c> property as a <c>reference</c> value. The <c>showThroughEllipsoid</c> property specifies whether or not a sensor intersecting the ellipsoid is drawn through the ellipsoid and potentially out to the other side. If not specified, the default value is <see langword="false"/>.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteShowThroughEllipsoidPropertyReference(string value)
+        {
+            using (var writer = OpenShowThroughEllipsoidProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>showThroughEllipsoid</c> property as a <c>reference</c> value. The <c>showThroughEllipsoid</c> property specifies whether or not a sensor intersecting the ellipsoid is drawn through the ellipsoid and potentially out to the other side. If not specified, the default value is <see langword="false"/>.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteShowThroughEllipsoidPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenShowThroughEllipsoidProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>showThroughEllipsoid</c> property as a <c>reference</c> value. The <c>showThroughEllipsoid</c> property specifies whether or not a sensor intersecting the ellipsoid is drawn through the ellipsoid and potentially out to the other side. If not specified, the default value is <see langword="false"/>.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteShowThroughEllipsoidPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenShowThroughEllipsoidProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }

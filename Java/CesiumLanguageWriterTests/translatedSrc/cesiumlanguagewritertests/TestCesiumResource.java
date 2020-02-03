@@ -48,6 +48,7 @@ public class TestCesiumResource {
         }
     }
 
+    @Nonnull
     public static Iterable<CesiumImageFormat> getImageFormatValues() {
         return ArrayHelper.arrayAsList((CesiumImageFormat[]) EnumHelper.getValues(CesiumImageFormat.class));
     }

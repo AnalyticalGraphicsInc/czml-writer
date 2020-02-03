@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
 using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
 using NUnit.Framework;
@@ -11,17 +12,36 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestWriteCheckerboardMaterial()
         {
+            var expectedEvenColor = Color.Red;
+            var expectedOddColor = Color.Blue;
+            var expectedRepeat = new Rectangular(3.5, 4.5);
+
             using (Packet)
             using (var polyline = Packet.OpenPolylineProperty())
             using (var material = polyline.OpenMaterialProperty())
             using (var checkerboardMaterial = material.OpenCheckerboardProperty())
             {
-                checkerboardMaterial.WriteEvenColorProperty(Color.Red);
-                checkerboardMaterial.WriteOddColorProperty(Color.Blue);
-                checkerboardMaterial.WriteRepeatProperty(3.5, 4.5);
+                checkerboardMaterial.WriteEvenColorProperty(expectedEvenColor);
+                checkerboardMaterial.WriteOddColorProperty(expectedOddColor);
+                checkerboardMaterial.WriteRepeatProperty(expectedRepeat);
             }
 
-            Assert.AreEqual("{\"polyline\":{\"material\":{\"checkerboard\":{\"evenColor\":{\"rgba\":[255,0,0,255]},\"oddColor\":{\"rgba\":[0,0,255,255]},\"repeat\":{\"cartesian2\":[3.5,4.5]}}}}}", StringWriter.ToString());
+            AssertExpectedJson(PacketCesiumWriter.PolylinePropertyName, new Dictionary<string, object>
+            {
+                {
+                    PolylineCesiumWriter.MaterialPropertyName, new Dictionary<string, object>
+                    {
+                        {
+                            PolylineMaterialCesiumWriter.CheckerboardPropertyName, new Dictionary<string, object>
+                            {
+                                { CheckerboardMaterialCesiumWriter.EvenColorPropertyName, expectedEvenColor },
+                                { CheckerboardMaterialCesiumWriter.OddColorPropertyName, expectedOddColor },
+                                { CheckerboardMaterialCesiumWriter.RepeatPropertyName, expectedRepeat },
+                            }
+                        },
+                    }
+                }
+            });
         }
 
         protected override CesiumPropertyWriter<CheckerboardMaterialCesiumWriter> CreatePropertyWriter(string propertyName)

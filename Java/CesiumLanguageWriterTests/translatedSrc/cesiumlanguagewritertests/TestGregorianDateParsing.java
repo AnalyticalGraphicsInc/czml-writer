@@ -54,7 +54,7 @@ public class TestGregorianDateParsing {
         // Make sure to check each month to ensure we have it right
         final String first = "1986-";
         final String last = "T02:01:04Z";
-        JulianDate baseDate = new JulianDate(new GregorianDate(1986, 1, 12, 2, 1, 4D));
+        JulianDate baseDate = new GregorianDate(1986, 1, 12, 2, 1, 4D).toJulianDate();
         for (int i = 1; i < 12; i++) {
             String testString = StringHelper.format(first + "{0:000}" + last, 12 + i * 30);
             GregorianDate expected = baseDate.addDays(i * 30).toGregorianDate();
