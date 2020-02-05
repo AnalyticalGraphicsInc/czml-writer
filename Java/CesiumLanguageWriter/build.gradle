@@ -1,7 +1,9 @@
-apply plugin: 'java-library'
+plugins {
+    id 'java-library'
+}
 
 dependencies {
-    implementation 'com.google.code.findbugs:jsr305:3.0.2'
+    compileOnly 'com.google.code.findbugs:jsr305:3.0.2'
 }
 
 sourceSets {
@@ -21,8 +23,9 @@ jar {
         attributes(
                 'Implementation-Title': 'CesiumLanguageWriter',
                 'Implementation-Vendor': 'Analytical Graphics, Inc.',
-                'Implementation-Version': version)
+                'Implementation-Version': archiveVersion)
     }
+    excludes = ['**/annotations/CS2J*']
 }
 
 test {
@@ -34,4 +37,5 @@ javadoc {
     options.encoding = "UTF-8"
     options.docEncoding = "UTF-8"
     options.charSet = "UTF-8"
+    excludes = ['**/annotations/CS2J*']
 }
