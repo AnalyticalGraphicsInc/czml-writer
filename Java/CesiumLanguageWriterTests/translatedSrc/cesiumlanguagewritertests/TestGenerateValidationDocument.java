@@ -2750,6 +2750,15 @@ public class TestGenerateValidationDocument {
                                 DisposeHelper.dispose(w2);
                             }
                         }
+                        {
+                            BooleanCesiumWriter w2 = w.openShowThroughEllipsoidProperty();
+                            try {
+                                w2.writeBoolean(true);
+                                TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.showThroughEllipsoid.getValue(date)).toEqual(true);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
                     } finally {
                         DisposeHelper.dispose(w);
                     }
@@ -3021,6 +3030,15 @@ public class TestGenerateValidationDocument {
                             try {
                                 w2.writeNumber(53576.0);
                                 TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.environmentIntersectionWidth.getValue(date)).toEqual(53576.0);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            BooleanCesiumWriter w2 = w.openShowThroughEllipsoidProperty();
+                            try {
+                                w2.writeBoolean(true);
+                                TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.showThroughEllipsoid.getValue(date)).toEqual(true);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -3304,6 +3322,15 @@ public class TestGenerateValidationDocument {
                             try {
                                 w2.writeNumber(64839.0);
                                 TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.environmentIntersectionWidth.getValue(date)).toEqual(64839.0);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            BooleanCesiumWriter w2 = w.openShowThroughEllipsoidProperty();
+                            try {
+                                w2.writeBoolean(true);
+                                TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.showThroughEllipsoid.getValue(date)).toEqual(true);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -24716,6 +24743,16 @@ public class TestGenerateValidationDocument {
                                 DisposeHelper.dispose(w2);
                             }
                         }
+                        {
+                            BooleanCesiumWriter w2 = w.openShowThroughEllipsoidProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("conicSensor", "showThroughEllipsoid")));
+                                TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
+                                        "    expect(e.conicSensor.showThroughEllipsoid.getValue(date)).toEqual(constant.conicSensor.showThroughEllipsoid.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
                     } finally {
                         DisposeHelper.dispose(w);
                     }
@@ -24998,6 +25035,16 @@ public class TestGenerateValidationDocument {
                                 TextWriterHelper
                                         .writeLine(m_extensionsAssertionsWriter,
                                                 "    expect(e.customPatternSensor.environmentIntersectionWidth.getValue(date)).toEqual(constant.customPatternSensor.environmentIntersectionWidth.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            BooleanCesiumWriter w2 = w.openShowThroughEllipsoidProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("customPatternSensor", "showThroughEllipsoid")));
+                                TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
+                                        "    expect(e.customPatternSensor.showThroughEllipsoid.getValue(date)).toEqual(constant.customPatternSensor.showThroughEllipsoid.getValue(date));");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -25300,6 +25347,16 @@ public class TestGenerateValidationDocument {
                                 w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangularSensor", "environmentIntersectionWidth")));
                                 TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                         "    expect(e.rectangularSensor.environmentIntersectionWidth.getValue(date)).toEqual(constant.rectangularSensor.environmentIntersectionWidth.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            BooleanCesiumWriter w2 = w.openShowThroughEllipsoidProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangularSensor", "showThroughEllipsoid")));
+                                TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
+                                        "    expect(e.rectangularSensor.showThroughEllipsoid.getValue(date)).toEqual(constant.rectangularSensor.showThroughEllipsoid.getValue(date));");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }

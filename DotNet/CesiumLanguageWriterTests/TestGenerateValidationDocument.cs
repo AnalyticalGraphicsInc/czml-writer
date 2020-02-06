@@ -1489,6 +1489,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteNumber(13317.0);
                         m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.environmentIntersectionWidth.getValue(date)).toEqual(13317.0);");
                     }
+                    using (var w2 = w.OpenShowThroughEllipsoidProperty())
+                    {
+                        w2.WriteBoolean(true);
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.showThroughEllipsoid.getValue(date)).toEqual(true);");
+                    }
                 }
                 using (var w = packet.OpenCustomPatternSensorProperty())
                 {
@@ -1626,6 +1631,11 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteNumber(53576.0);
                         m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.environmentIntersectionWidth.getValue(date)).toEqual(53576.0);");
+                    }
+                    using (var w2 = w.OpenShowThroughEllipsoidProperty())
+                    {
+                        w2.WriteBoolean(true);
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.showThroughEllipsoid.getValue(date)).toEqual(true);");
                     }
                 }
                 using (var w = packet.OpenRectangularSensorProperty())
@@ -1769,6 +1779,11 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteNumber(64839.0);
                         m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.environmentIntersectionWidth.getValue(date)).toEqual(64839.0);");
+                    }
+                    using (var w2 = w.OpenShowThroughEllipsoidProperty())
+                    {
+                        w2.WriteBoolean(true);
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.showThroughEllipsoid.getValue(date)).toEqual(true);");
                     }
                 }
                 using (var w = packet.OpenFanProperty())
@@ -10401,6 +10416,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteReference(new Reference("Constant", CreateList("conicSensor", "environmentIntersectionWidth")));
                         m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.environmentIntersectionWidth.getValue(date)).toEqual(constant.conicSensor.environmentIntersectionWidth.getValue(date));");
                     }
+                    using (var w2 = w.OpenShowThroughEllipsoidProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("conicSensor", "showThroughEllipsoid")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.showThroughEllipsoid.getValue(date)).toEqual(constant.conicSensor.showThroughEllipsoid.getValue(date));");
+                    }
                 }
                 using (var w = packet.OpenCustomPatternSensorProperty())
                 {
@@ -10523,6 +10543,11 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("customPatternSensor", "environmentIntersectionWidth")));
                         m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.environmentIntersectionWidth.getValue(date)).toEqual(constant.customPatternSensor.environmentIntersectionWidth.getValue(date));");
+                    }
+                    using (var w2 = w.OpenShowThroughEllipsoidProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("customPatternSensor", "showThroughEllipsoid")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.showThroughEllipsoid.getValue(date)).toEqual(constant.customPatternSensor.showThroughEllipsoid.getValue(date));");
                     }
                 }
                 using (var w = packet.OpenRectangularSensorProperty())
@@ -10656,6 +10681,11 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("rectangularSensor", "environmentIntersectionWidth")));
                         m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.environmentIntersectionWidth.getValue(date)).toEqual(constant.rectangularSensor.environmentIntersectionWidth.getValue(date));");
+                    }
+                    using (var w2 = w.OpenShowThroughEllipsoidProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("rectangularSensor", "showThroughEllipsoid")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.showThroughEllipsoid.getValue(date)).toEqual(constant.rectangularSensor.showThroughEllipsoid.getValue(date));");
                     }
                 }
                 using (var w = packet.OpenFanProperty())
