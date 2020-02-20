@@ -103,6 +103,7 @@
     <Compile Include="TestSolidColorMaterialCesiumWriter.cs" />
     <Compile Include="TestStringCesiumWriter.cs" />
     <Compile Include="TestStripeMaterialCesiumWriter.cs" />
+    <Compile Include="TestTilesetCesiumWriter.cs" />
     <Compile Include="TestTimeInterval.cs" />
     <Compile Include="TestUnitCartesian.cs" />
     <Compile Include="TestUnitQuaternion.cs" />

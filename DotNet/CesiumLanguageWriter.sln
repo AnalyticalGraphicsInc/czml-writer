@@ -83,6 +83,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Schema", "Schema", "{04E49F
 		..\Schema\String.json = ..\Schema\String.json
 		..\Schema\StripeMaterial.json = ..\Schema\StripeMaterial.json
 		..\Schema\StripeOrientation.json = ..\Schema\StripeOrientation.json
+		..\Schema\Tileset.json = ..\Schema\Tileset.json
 		..\Schema\Translation.json = ..\Schema\Translation.json
 		..\Schema\Uri.json = ..\Schema\Uri.json
 		..\Schema\validate.html = ..\Schema\validate.html

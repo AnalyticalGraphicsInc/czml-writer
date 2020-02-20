@@ -395,6 +395,7 @@
     <Compile Include="Generated\StripeOrientationCesiumWriter.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\TilesetCesiumWriter.cs" />
     <Compile Include="Generated\TranslationCesiumWriter.cs">
       <SubType>Code</SubType>
     </Compile>
