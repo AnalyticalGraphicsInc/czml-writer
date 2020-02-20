@@ -1268,6 +1268,24 @@ namespace CesiumLanguageWriterTests
                         m_assertionsWriter.WriteLine("    expect(e.rectangle.zIndex.getValue(date)).toEqual(445);");
                     }
                 }
+                using (var w = packet.OpenTilesetProperty())
+                {
+                    using (var w2 = w.OpenShowProperty())
+                    {
+                        w2.WriteBoolean(true);
+                        m_assertionsWriter.WriteLine("    expect(e.tileset.show.getValue(date)).toEqual(true);");
+                    }
+                    using (var w2 = w.OpenUriProperty())
+                    {
+                        w2.WriteUri("http://example.com/6864", CesiumResourceBehavior.LinkTo);
+                        m_assertionsWriter.WriteLine("    expect(e.tileset.uri.getValue(date).url).toEqual('http://example.com/6864');");
+                    }
+                    using (var w2 = w.OpenMaximumScreenSpaceErrorProperty())
+                    {
+                        w2.WriteNumber(51767.0);
+                        m_assertionsWriter.WriteLine("    expect(e.tileset.maximumScreenSpaceError.getValue(date)).toEqual(51767.0);");
+                    }
+                }
                 using (var w = packet.OpenWallProperty())
                 {
                     using (var w2 = w.OpenShowProperty())
@@ -1896,6 +1914,7 @@ namespace CesiumLanguageWriterTests
             WriteConstantValuesIndividualPolygon();
             WriteConstantValuesIndividualPolyline();
             WriteConstantValuesIndividualRectangle();
+            WriteConstantValuesIndividualTileset();
             WriteConstantValuesIndividualWall();
             WriteConstantValuesIndividualConicSensor();
             WriteConstantValuesIndividualCustomPatternSensor();
@@ -4937,6 +4956,9 @@ namespace CesiumLanguageWriterTests
                     m_assertionsWriter.WriteLine("    expect(e.rectangle.outlineColor.getValue(date)).toEqualEpsilon(new Color(0.301960784313725, 0.0352941176470588, 0.917647058823529, 0.207843137254902), 1e-14);");
                 }
             }
+        }
+        private void WriteConstantValuesIndividualTileset()
+        {
         }
         private void WriteConstantValuesIndividualWall()
         {
@@ -10207,6 +10229,24 @@ namespace CesiumLanguageWriterTests
                         m_assertionsWriter.WriteLine("    expect(e.rectangle.zIndex.getValue(date)).toEqual(constant.rectangle.zIndex.getValue(date));");
                     }
                 }
+                using (var w = packet.OpenTilesetProperty())
+                {
+                    using (var w2 = w.OpenShowProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("tileset", "show")));
+                        m_assertionsWriter.WriteLine("    expect(e.tileset.show.getValue(date)).toEqual(constant.tileset.show.getValue(date));");
+                    }
+                    using (var w2 = w.OpenUriProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("tileset", "uri")));
+                        m_assertionsWriter.WriteLine("    expect(e.tileset.uri.getValue(date)).toEqual(constant.tileset.uri.getValue(date));");
+                    }
+                    using (var w2 = w.OpenMaximumScreenSpaceErrorProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("tileset", "maximumScreenSpaceError")));
+                        m_assertionsWriter.WriteLine("    expect(e.tileset.maximumScreenSpaceError.getValue(date)).toEqual(constant.tileset.maximumScreenSpaceError.getValue(date));");
+                    }
+                }
                 using (var w = packet.OpenWallProperty())
                 {
                     using (var w2 = w.OpenShowProperty())
@@ -10790,6 +10830,7 @@ namespace CesiumLanguageWriterTests
             WriteReferenceValuesIndividualPolygon();
             WriteReferenceValuesIndividualPolyline();
             WriteReferenceValuesIndividualRectangle();
+            WriteReferenceValuesIndividualTileset();
             WriteReferenceValuesIndividualWall();
             WriteReferenceValuesIndividualConicSensor();
             WriteReferenceValuesIndividualCustomPatternSensor();
@@ -12404,6 +12445,9 @@ namespace CesiumLanguageWriterTests
                     }
                 }
             }
+        }
+        private void WriteReferenceValuesIndividualTileset()
+        {
         }
         private void WriteReferenceValuesIndividualWall()
         {
@@ -15415,6 +15459,15 @@ namespace CesiumLanguageWriterTests
                         m_assertionsWriter.WriteLine("    expect(e.rectangle.zIndex.getValue(documentStopDate)).toEqual(53581);");
                     }
                 }
+                using (var w = packet.OpenTilesetProperty())
+                {
+                    using (var w2 = w.OpenMaximumScreenSpaceErrorProperty())
+                    {
+                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(17401.0, 7930.0));
+                        m_assertionsWriter.WriteLine("    expect(e.tileset.maximumScreenSpaceError.getValue(documentStartDate)).toEqual(17401.0);");
+                        m_assertionsWriter.WriteLine("    expect(e.tileset.maximumScreenSpaceError.getValue(documentStopDate)).toEqual(7930.0);");
+                    }
+                }
                 using (var w = packet.OpenWallProperty())
                 {
                     using (var w2 = w.OpenGranularityProperty())
@@ -15858,6 +15911,7 @@ namespace CesiumLanguageWriterTests
             WriteSampledValuesIndividualPolygon();
             WriteSampledValuesIndividualPolyline();
             WriteSampledValuesIndividualRectangle();
+            WriteSampledValuesIndividualTileset();
             WriteSampledValuesIndividualWall();
             WriteSampledValuesIndividualConicSensor();
             WriteSampledValuesIndividualCustomPatternSensor();
@@ -18942,6 +18996,9 @@ namespace CesiumLanguageWriterTests
                     m_assertionsWriter.WriteLine("    expect(e.rectangle.outlineColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.549019607843137, 0.949019607843137, 0.545098039215686, 0.380392156862745), 1e-14);");
                 }
             }
+        }
+        private void WriteSampledValuesIndividualTileset()
+        {
         }
         private void WriteSampledValuesIndividualWall()
         {

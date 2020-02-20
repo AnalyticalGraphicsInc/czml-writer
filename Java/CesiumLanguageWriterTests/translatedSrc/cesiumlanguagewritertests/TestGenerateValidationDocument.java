@@ -2325,6 +2325,40 @@ public class TestGenerateValidationDocument {
                     }
                 }
                 {
+                    TilesetCesiumWriter w = packet.openTilesetProperty();
+                    try {
+                        {
+                            BooleanCesiumWriter w2 = w.openShowProperty();
+                            try {
+                                w2.writeBoolean(true);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.tileset.show.getValue(date)).toEqual(true);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            UriCesiumWriter w2 = w.openUriProperty();
+                            try {
+                                w2.writeUri("http://example.com/6864", CesiumResourceBehavior.LINK_TO);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.tileset.uri.getValue(date).url).toEqual('http://example.com/6864');");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            DoubleCesiumWriter w2 = w.openMaximumScreenSpaceErrorProperty();
+                            try {
+                                w2.writeNumber(51767.0);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.tileset.maximumScreenSpaceError.getValue(date)).toEqual(51767.0);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+                {
                     WallCesiumWriter w = packet.openWallProperty();
                     try {
                         {
@@ -3531,6 +3565,7 @@ public class TestGenerateValidationDocument {
         writeConstantValuesIndividualPolygon();
         writeConstantValuesIndividualPolyline();
         writeConstantValuesIndividualRectangle();
+        writeConstantValuesIndividualTileset();
         writeConstantValuesIndividualWall();
         writeConstantValuesIndividualConicSensor();
         writeConstantValuesIndividualCustomPatternSensor();
@@ -11326,6 +11361,8 @@ public class TestGenerateValidationDocument {
             }
         }
     }
+
+    private final void writeConstantValuesIndividualTileset() {}
 
     private final void writeConstantValuesIndividualWall() {
         {
@@ -24286,6 +24323,41 @@ public class TestGenerateValidationDocument {
                     }
                 }
                 {
+                    TilesetCesiumWriter w = packet.openTilesetProperty();
+                    try {
+                        {
+                            BooleanCesiumWriter w2 = w.openShowProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("tileset", "show")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.tileset.show.getValue(date)).toEqual(constant.tileset.show.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            UriCesiumWriter w2 = w.openUriProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("tileset", "uri")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.tileset.uri.getValue(date)).toEqual(constant.tileset.uri.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            DoubleCesiumWriter w2 = w.openMaximumScreenSpaceErrorProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("tileset", "maximumScreenSpaceError")));
+                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                        "    expect(e.tileset.maximumScreenSpaceError.getValue(date)).toEqual(constant.tileset.maximumScreenSpaceError.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+                {
                     WallCesiumWriter w = packet.openWallProperty();
                     try {
                         {
@@ -25547,6 +25619,7 @@ public class TestGenerateValidationDocument {
         writeReferenceValuesIndividualPolygon();
         writeReferenceValuesIndividualPolyline();
         writeReferenceValuesIndividualRectangle();
+        writeReferenceValuesIndividualTileset();
         writeReferenceValuesIndividualWall();
         writeReferenceValuesIndividualConicSensor();
         writeReferenceValuesIndividualCustomPatternSensor();
@@ -29461,6 +29534,8 @@ public class TestGenerateValidationDocument {
             }
         }
     }
+
+    private final void writeReferenceValuesIndividualTileset() {}
 
     private final void writeReferenceValuesIndividualWall() {
         {
@@ -36903,6 +36978,24 @@ public class TestGenerateValidationDocument {
                     }
                 }
                 {
+                    TilesetCesiumWriter w = packet.openTilesetProperty();
+                    try {
+                        {
+                            DoubleCesiumWriter w2 = w.openMaximumScreenSpaceErrorProperty();
+                            try {
+                                w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Double> createList(
+                                        17401.0, 7930.0));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.tileset.maximumScreenSpaceError.getValue(documentStartDate)).toEqual(17401.0);");
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.tileset.maximumScreenSpaceError.getValue(documentStopDate)).toEqual(7930.0);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+                {
                     WallCesiumWriter w = packet.openWallProperty();
                     try {
                         {
@@ -37812,6 +37905,7 @@ public class TestGenerateValidationDocument {
         writeSampledValuesIndividualPolygon();
         writeSampledValuesIndividualPolyline();
         writeSampledValuesIndividualRectangle();
+        writeSampledValuesIndividualTileset();
         writeSampledValuesIndividualWall();
         writeSampledValuesIndividualConicSensor();
         writeSampledValuesIndividualCustomPatternSensor();
@@ -46121,6 +46215,8 @@ public class TestGenerateValidationDocument {
             }
         }
     }
+
+    private final void writeSampledValuesIndividualTileset() {}
 
     private final void writeSampledValuesIndividualWall() {
         {

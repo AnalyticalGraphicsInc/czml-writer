@@ -115,6 +115,10 @@
             "$ref": "Rectangle.json",
             "description": "A cartographic rectangle, which conforms to the curvature of the globe and can be placed along the surface or at altitude."
         },
+        "tileset": {
+            "$ref": "Tileset.json",
+            "description": "A 3D Tiles tileset."
+        },
         "wall": {
             "$ref": "Wall.json",
             "description": "A two-dimensional wall which conforms to the curvature of the globe and can be placed along the surface or at altitude."

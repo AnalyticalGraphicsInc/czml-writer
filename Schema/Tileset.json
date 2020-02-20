@@ -1,0 +1,23 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Tileset.json",
+    "title": "Tileset",
+    "description": "A 3D Tiles tileset.",
+    "type": "object",
+    "properties": {
+        "show": {
+            "$ref": "Boolean.json",
+            "description": "Whether or not the tileset is shown.",
+            "default": true
+        },
+        "uri": {
+            "$ref": "Uri.json",
+            "description": "The URI of a 3D tiles tileset. For broadest client compatibility, the URI should be accessible via Cross-Origin Resource Sharing (CORS).",
+            "czmlRequiredForDisplay": true
+        },
+        "maximumScreenSpaceError": {
+            "$ref": "Double.json",
+            "description": "The maximum screen space error used to drive level of detail refinement."
+        }
+    }
+}

@@ -28,6 +28,7 @@ import cesiumlanguagewriter.PositionCesiumWriter;
 import cesiumlanguagewriter.RectangleCesiumWriter;
 import cesiumlanguagewriter.RectangularSensorCesiumWriter;
 import cesiumlanguagewriter.StringCesiumWriter;
+import cesiumlanguagewriter.TilesetCesiumWriter;
 import cesiumlanguagewriter.VectorCesiumWriter;
 import cesiumlanguagewriter.ViewFromCesiumWriter;
 import cesiumlanguagewriter.WallCesiumWriter;
@@ -143,6 +144,10 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * The name of the {@code rectangle} property.
     */
     public static final String RectanglePropertyName = "rectangle";
+    /**
+    * The name of the {@code tileset} property.
+    */
+    public static final String TilesetPropertyName = "tileset";
     /**
     * The name of the {@code wall} property.
     */
@@ -260,6 +265,11 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     private Lazy<RectangleCesiumWriter> m_rectangle = new Lazy<cesiumlanguagewriter.RectangleCesiumWriter>(new Func1<cesiumlanguagewriter.RectangleCesiumWriter>() {
         public cesiumlanguagewriter.RectangleCesiumWriter invoke() {
             return new RectangleCesiumWriter(RectanglePropertyName);
+        }
+    }, false);
+    private Lazy<TilesetCesiumWriter> m_tileset = new Lazy<cesiumlanguagewriter.TilesetCesiumWriter>(new Func1<cesiumlanguagewriter.TilesetCesiumWriter>() {
+        public cesiumlanguagewriter.TilesetCesiumWriter invoke() {
+            return new TilesetCesiumWriter(TilesetPropertyName);
         }
     }, false);
     private Lazy<WallCesiumWriter> m_wall = new Lazy<cesiumlanguagewriter.WallCesiumWriter>(new Func1<cesiumlanguagewriter.WallCesiumWriter>() {
@@ -1310,6 +1320,22 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     @Nonnull
     public final RectangleCesiumWriter openRectangleProperty() {
         return this.<RectangleCesiumWriter> openAndReturn(getRectangleWriter());
+    }
+
+    /**
+    * Gets the writer for the {@code tileset} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code tileset} property defines a 3D Tiles tileset.
+    */
+    @Nonnull
+    public final TilesetCesiumWriter getTilesetWriter() {
+        return m_tileset.getValue();
+    }
+
+    /**
+    * Opens and returns the writer for the {@code tileset} property. The {@code tileset} property defines a 3D Tiles tileset.
+    */
+    @Nonnull
+    public final TilesetCesiumWriter openTilesetProperty() {
+        return this.<TilesetCesiumWriter> openAndReturn(getTilesetWriter());
     }
 
     /**
