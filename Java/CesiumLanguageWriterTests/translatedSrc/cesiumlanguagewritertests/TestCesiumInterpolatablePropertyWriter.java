@@ -3,12 +3,13 @@ package cesiumlanguagewritertests;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.DisposeHelper;
+import agi.foundation.compatibility.MapHelper;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
-import java.io.StringWriter;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import javax.annotation.Nonnull;
-import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
 import org.junit.runners.MethodSorters;
@@ -23,92 +24,194 @@ import org.junit.Test;
 public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends CesiumInterpolatablePropertyWriter<TDerived>> extends TestCesiumPropertyWriter<TDerived> {
     @Test
     public final void interpolationAlgorithmValueWritesInterpolationAlgorithmProperty() {
-        CesiumPropertyWriter<TDerived> property = createPropertyWriter("foo");
-        property.open(getOutputStream());
+        final String expectedPropertyName = "foo";
+        final CesiumInterpolationAlgorithm expectedInterpolationAlgorithm = CesiumInterpolationAlgorithm.HERMITE;
         {
-            TDerived interval = property.openInterval();
+            final PacketCesiumWriter usingExpression_0 = (getPacket());
             try {
-                interval.writeInterpolationAlgorithm(CesiumInterpolationAlgorithm.HERMITE);
+                {
+                    CesiumPropertyWriter<TDerived> propertyWriter = createPropertyWriter(expectedPropertyName);
+                    try {
+                        propertyWriter.open(getOutputStream());
+                        {
+                            TDerived intervalWriter = propertyWriter.openInterval();
+                            try {
+                                intervalWriter.writeInterpolationAlgorithm(expectedInterpolationAlgorithm);
+                            } finally {
+                                DisposeHelper.dispose(intervalWriter);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(propertyWriter);
+                    }
+                }
             } finally {
-                DisposeHelper.dispose(interval);
+                DisposeHelper.dispose(usingExpression_0);
             }
         }
-        Assert.assertEquals("{\"foo\":{\"interpolationAlgorithm\":\"HERMITE\"}", getStringWriter().toString());
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, "interpolationAlgorithm", CesiumFormattingHelper.interpolationAlgorithmToString(expectedInterpolationAlgorithm));
+        assertExpectedJson(expectedPropertyName, tempCollection$0);
     }
 
     @Test
     public final void interpolationDegreeValueWritesInterpolationDegreeProperty() {
-        CesiumPropertyWriter<TDerived> property = createPropertyWriter("foo");
-        property.open(getOutputStream());
+        final String expectedPropertyName = "foo";
+        final int expectedInterpolationDegree = 3;
         {
-            TDerived interval = property.openInterval();
+            final PacketCesiumWriter usingExpression_1 = (getPacket());
             try {
-                interval.writeInterpolationDegree(3);
+                {
+                    CesiumPropertyWriter<TDerived> propertyWriter = createPropertyWriter(expectedPropertyName);
+                    try {
+                        propertyWriter.open(getOutputStream());
+                        {
+                            TDerived intervalWriter = propertyWriter.openInterval();
+                            try {
+                                intervalWriter.writeInterpolationDegree(expectedInterpolationDegree);
+                            } finally {
+                                DisposeHelper.dispose(intervalWriter);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(propertyWriter);
+                    }
+                }
             } finally {
-                DisposeHelper.dispose(interval);
+                DisposeHelper.dispose(usingExpression_1);
             }
         }
-        Assert.assertEquals("{\"foo\":{\"interpolationDegree\":3}", getStringWriter().toString());
+        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$1, "interpolationDegree", expectedInterpolationDegree);
+        assertExpectedJson(expectedPropertyName, tempCollection$1);
     }
 
     @Test
     public final void writesForwardExtrapolationType() {
-        CesiumPropertyWriter<TDerived> property = createPropertyWriter("foo");
-        property.open(getOutputStream());
+        final String expectedPropertyName = "foo";
+        final CesiumExtrapolationType expectedForwardExtrapolationType = CesiumExtrapolationType.EXTRAPOLATE;
         {
-            TDerived interval = property.openInterval();
+            final PacketCesiumWriter usingExpression_2 = (getPacket());
             try {
-                interval.writeForwardExtrapolationType(CesiumExtrapolationType.EXTRAPOLATE);
+                {
+                    CesiumPropertyWriter<TDerived> propertyWriter = createPropertyWriter(expectedPropertyName);
+                    try {
+                        propertyWriter.open(getOutputStream());
+                        {
+                            TDerived intervalWriter = propertyWriter.openInterval();
+                            try {
+                                intervalWriter.writeForwardExtrapolationType(expectedForwardExtrapolationType);
+                            } finally {
+                                DisposeHelper.dispose(intervalWriter);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(propertyWriter);
+                    }
+                }
             } finally {
-                DisposeHelper.dispose(interval);
+                DisposeHelper.dispose(usingExpression_2);
             }
         }
-        Assert.assertEquals("{\"foo\":{\"forwardExtrapolationType\":\"EXTRAPOLATE\"}", getStringWriter().toString());
+        final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$2, "forwardExtrapolationType", CesiumFormattingHelper.extrapolationTypeToString(expectedForwardExtrapolationType));
+        assertExpectedJson(expectedPropertyName, tempCollection$2);
     }
 
     @Test
     public final void writesBackwardExtrapolationType() {
-        CesiumPropertyWriter<TDerived> property = createPropertyWriter("foo");
-        property.open(getOutputStream());
+        final String expectedPropertyName = "foo";
+        final CesiumExtrapolationType expectedBackwardExtrapolationType = CesiumExtrapolationType.EXTRAPOLATE;
         {
-            TDerived interval = property.openInterval();
+            final PacketCesiumWriter usingExpression_3 = (getPacket());
             try {
-                interval.writeBackwardExtrapolationType(CesiumExtrapolationType.EXTRAPOLATE);
+                {
+                    CesiumPropertyWriter<TDerived> propertyWriter = createPropertyWriter(expectedPropertyName);
+                    try {
+                        propertyWriter.open(getOutputStream());
+                        {
+                            TDerived intervalWriter = propertyWriter.openInterval();
+                            try {
+                                intervalWriter.writeBackwardExtrapolationType(expectedBackwardExtrapolationType);
+                            } finally {
+                                DisposeHelper.dispose(intervalWriter);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(propertyWriter);
+                    }
+                }
             } finally {
-                DisposeHelper.dispose(interval);
+                DisposeHelper.dispose(usingExpression_3);
             }
         }
-        Assert.assertEquals("{\"foo\":{\"backwardExtrapolationType\":\"EXTRAPOLATE\"}", getStringWriter().toString());
+        final Map<String, Object> tempCollection$3 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$3, "backwardExtrapolationType", CesiumFormattingHelper.extrapolationTypeToString(expectedBackwardExtrapolationType));
+        assertExpectedJson(expectedPropertyName, tempCollection$3);
     }
 
     @Test
     public final void writesForwardExtrapolationDuration() {
-        CesiumPropertyWriter<TDerived> property = createPropertyWriter("foo");
-        property.open(getOutputStream());
+        final String expectedPropertyName = "foo";
+        Duration expectedForwardExtrapolationDuration = Duration.fromSeconds(12D);
         {
-            TDerived interval = property.openInterval();
+            final PacketCesiumWriter usingExpression_4 = (getPacket());
             try {
-                interval.writeForwardExtrapolationDuration(Duration.fromSeconds(12D));
+                {
+                    CesiumPropertyWriter<TDerived> propertyWriter = createPropertyWriter(expectedPropertyName);
+                    try {
+                        propertyWriter.open(getOutputStream());
+                        {
+                            TDerived intervalWriter = propertyWriter.openInterval();
+                            try {
+                                intervalWriter.writeForwardExtrapolationDuration(expectedForwardExtrapolationDuration);
+                            } finally {
+                                DisposeHelper.dispose(intervalWriter);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(propertyWriter);
+                    }
+                }
             } finally {
-                DisposeHelper.dispose(interval);
+                DisposeHelper.dispose(usingExpression_4);
             }
         }
-        Assert.assertEquals("{\"foo\":{\"forwardExtrapolationDuration\":12}", getStringWriter().toString());
+        final Map<String, Object> tempCollection$4 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$4, "forwardExtrapolationDuration", expectedForwardExtrapolationDuration);
+        assertExpectedJson(expectedPropertyName, tempCollection$4);
     }
 
     @Test
     public final void writesBackwardExtrapolationDuration() {
-        CesiumPropertyWriter<TDerived> property = createPropertyWriter("foo");
-        property.open(getOutputStream());
+        final String expectedPropertyName = "foo";
+        Duration expectedBackwardExtrapolationDuration = Duration.fromSeconds(12D);
         {
-            TDerived interval = property.openInterval();
+            final PacketCesiumWriter usingExpression_5 = (getPacket());
             try {
-                interval.writeBackwardExtrapolationDuration(Duration.fromSeconds(12D));
+                {
+                    CesiumPropertyWriter<TDerived> propertyWriter = createPropertyWriter(expectedPropertyName);
+                    try {
+                        propertyWriter.open(getOutputStream());
+                        {
+                            TDerived intervalWriter = propertyWriter.openInterval();
+                            try {
+                                intervalWriter.writeBackwardExtrapolationDuration(expectedBackwardExtrapolationDuration);
+                            } finally {
+                                DisposeHelper.dispose(intervalWriter);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(propertyWriter);
+                    }
+                }
             } finally {
-                DisposeHelper.dispose(interval);
+                DisposeHelper.dispose(usingExpression_5);
             }
         }
-        Assert.assertEquals("{\"foo\":{\"backwardExtrapolationDuration\":12}", getStringWriter().toString());
+        final Map<String, Object> tempCollection$5 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$5, "backwardExtrapolationDuration", expectedBackwardExtrapolationDuration);
+        assertExpectedJson(expectedPropertyName, tempCollection$5);
     }
 
     @Nonnull

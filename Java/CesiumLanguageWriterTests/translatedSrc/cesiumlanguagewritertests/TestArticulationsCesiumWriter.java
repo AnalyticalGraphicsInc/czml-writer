@@ -124,9 +124,7 @@ public class TestArticulationsCesiumWriter extends TestCesiumPropertyWriter<Arti
         {
             StringWriter stringWriter = new StringWriter();
             try {
-                final CesiumOutputStream tempObj$0 = new CesiumOutputStream(stringWriter);
-                tempObj$0.setPrettyFormatting(true);
-                CesiumOutputStream output = tempObj$0;
+                CesiumOutputStream output = new CesiumOutputStream(stringWriter, true);
                 CesiumStreamWriter writer = new CesiumStreamWriter();
                 {
                     PacketCesiumWriter packet = writer.openPacket(output);

@@ -76,7 +76,7 @@ namespace CesiumLanguageWriterTests
         {
             using (var stringWriter = new StringWriter())
             {
-                var output = new CesiumOutputStream(stringWriter) { PrettyFormatting = true };
+                var output = new CesiumOutputStream(stringWriter, true);
                 var writer = new CesiumStreamWriter();
 
                 using (var packet = writer.OpenPacket(output))
@@ -107,16 +107,8 @@ namespace CesiumLanguageWriterTests
 
                             using (var articulationWriter = articulationsWriter.OpenArticulationProperty("articulation1 stage2"))
                             {
-                                var dates = new List<JulianDate>
-                                {
-                                    startDate,
-                                    stopDate
-                                };
-                                var values = new List<double>
-                                {
-                                    1.0,
-                                    10.0
-                                };
+                                var dates = new List<JulianDate> { startDate, stopDate, };
+                                var values = new List<double> { 1.0, 10.0, };
                                 articulationWriter.WriteNumber(dates, values);
                             }
                         }

@@ -46,7 +46,7 @@ namespace CesiumLanguageWriterTests
                             }
                         },
                     }
-                }
+                },
             });
         }
 

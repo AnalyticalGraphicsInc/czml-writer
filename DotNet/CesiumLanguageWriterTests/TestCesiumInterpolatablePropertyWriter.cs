@@ -1,4 +1,5 @@
-﻿using CesiumLanguageWriter;
+﻿using System.Collections.Generic;
+using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
 using NUnit.Framework;
 
@@ -11,79 +12,133 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void InterpolationAlgorithmValueWritesInterpolationAlgorithmProperty()
         {
-            CesiumPropertyWriter<TDerived> property = CreatePropertyWriter("foo");
-            property.Open(OutputStream);
-            using (TDerived interval = property.OpenInterval())
+            const string expectedPropertyName = "foo";
+            const CesiumInterpolationAlgorithm expectedInterpolationAlgorithm = CesiumInterpolationAlgorithm.Hermite;
+
+            using (Packet)
+            using (var propertyWriter = CreatePropertyWriter(expectedPropertyName))
             {
-                interval.WriteInterpolationAlgorithm(CesiumInterpolationAlgorithm.Hermite);
+                propertyWriter.Open(OutputStream);
+                using (TDerived intervalWriter = propertyWriter.OpenInterval())
+                {
+                    intervalWriter.WriteInterpolationAlgorithm(expectedInterpolationAlgorithm);
+                }
             }
 
-            Assert.AreEqual("{\"foo\":{\"interpolationAlgorithm\":\"HERMITE\"}", StringWriter.ToString());
+            AssertExpectedJson(expectedPropertyName, new Dictionary<string, object>
+            {
+                { "interpolationAlgorithm", CesiumFormattingHelper.InterpolationAlgorithmToString(expectedInterpolationAlgorithm) },
+            });
         }
 
         [Test]
         public void InterpolationDegreeValueWritesInterpolationDegreeProperty()
         {
-            CesiumPropertyWriter<TDerived> property = CreatePropertyWriter("foo");
-            property.Open(OutputStream);
-            using (TDerived interval = property.OpenInterval())
+            const string expectedPropertyName = "foo";
+            const int expectedInterpolationDegree = 3;
+
+            using (Packet)
+            using (var propertyWriter = CreatePropertyWriter(expectedPropertyName))
             {
-                interval.WriteInterpolationDegree(3);
+                propertyWriter.Open(OutputStream);
+                using (TDerived intervalWriter = propertyWriter.OpenInterval())
+                {
+                    intervalWriter.WriteInterpolationDegree(expectedInterpolationDegree);
+                }
             }
 
-            Assert.AreEqual("{\"foo\":{\"interpolationDegree\":3}", StringWriter.ToString());
+            AssertExpectedJson(expectedPropertyName, new Dictionary<string, object>
+            {
+                { "interpolationDegree", expectedInterpolationDegree },
+            });
         }
 
         [Test]
         public void WritesForwardExtrapolationType()
         {
-            CesiumPropertyWriter<TDerived> property = CreatePropertyWriter("foo");
-            property.Open(OutputStream);
-            using (TDerived interval = property.OpenInterval())
+            const string expectedPropertyName = "foo";
+            const CesiumExtrapolationType expectedForwardExtrapolationType = CesiumExtrapolationType.Extrapolate;
+
+            using (Packet)
+            using (var propertyWriter = CreatePropertyWriter(expectedPropertyName))
             {
-                interval.WriteForwardExtrapolationType(CesiumExtrapolationType.Extrapolate);
+                propertyWriter.Open(OutputStream);
+                using (TDerived intervalWriter = propertyWriter.OpenInterval())
+                {
+                    intervalWriter.WriteForwardExtrapolationType(expectedForwardExtrapolationType);
+                }
             }
 
-            Assert.AreEqual("{\"foo\":{\"forwardExtrapolationType\":\"EXTRAPOLATE\"}", StringWriter.ToString());
+            AssertExpectedJson(expectedPropertyName, new Dictionary<string, object>
+            {
+                { "forwardExtrapolationType", CesiumFormattingHelper.ExtrapolationTypeToString(expectedForwardExtrapolationType) },
+            });
         }
 
         [Test]
         public void WritesBackwardExtrapolationType()
         {
-            CesiumPropertyWriter<TDerived> property = CreatePropertyWriter("foo");
-            property.Open(OutputStream);
-            using (TDerived interval = property.OpenInterval())
+            const string expectedPropertyName = "foo";
+            const CesiumExtrapolationType expectedBackwardExtrapolationType = CesiumExtrapolationType.Extrapolate;
+
+            using (Packet)
+            using (var propertyWriter = CreatePropertyWriter(expectedPropertyName))
             {
-                interval.WriteBackwardExtrapolationType(CesiumExtrapolationType.Extrapolate);
+                propertyWriter.Open(OutputStream);
+                using (TDerived intervalWriter = propertyWriter.OpenInterval())
+                {
+                    intervalWriter.WriteBackwardExtrapolationType(expectedBackwardExtrapolationType);
+                }
             }
 
-            Assert.AreEqual("{\"foo\":{\"backwardExtrapolationType\":\"EXTRAPOLATE\"}", StringWriter.ToString());
+            AssertExpectedJson(expectedPropertyName, new Dictionary<string, object>
+            {
+                { "backwardExtrapolationType", CesiumFormattingHelper.ExtrapolationTypeToString(expectedBackwardExtrapolationType) },
+            });
         }
 
         [Test]
         public void WritesForwardExtrapolationDuration()
         {
-            CesiumPropertyWriter<TDerived> property = CreatePropertyWriter("foo");
-            property.Open(OutputStream);
-            using (TDerived interval = property.OpenInterval())
+            const string expectedPropertyName = "foo";
+            var expectedForwardExtrapolationDuration = Duration.FromSeconds(12);
+
+            using (Packet)
+            using (var propertyWriter = CreatePropertyWriter(expectedPropertyName))
             {
-                interval.WriteForwardExtrapolationDuration(Duration.FromSeconds(12));
+                propertyWriter.Open(OutputStream);
+                using (TDerived intervalWriter = propertyWriter.OpenInterval())
+                {
+                    intervalWriter.WriteForwardExtrapolationDuration(expectedForwardExtrapolationDuration);
+                }
             }
 
-            Assert.AreEqual("{\"foo\":{\"forwardExtrapolationDuration\":12}", StringWriter.ToString());
+            AssertExpectedJson(expectedPropertyName, new Dictionary<string, object>
+            {
+                { "forwardExtrapolationDuration", expectedForwardExtrapolationDuration },
+            });
         }
 
         [Test]
         public void WritesBackwardExtrapolationDuration()
         {
-            CesiumPropertyWriter<TDerived> property = CreatePropertyWriter("foo");
-            property.Open(OutputStream);
-            using (TDerived interval = property.OpenInterval())
+            const string expectedPropertyName = "foo";
+            var expectedBackwardExtrapolationDuration = Duration.FromSeconds(12);
+
+            using (Packet)
+            using (var propertyWriter = CreatePropertyWriter(expectedPropertyName))
             {
-                interval.WriteBackwardExtrapolationDuration(Duration.FromSeconds(12));
+                propertyWriter.Open(OutputStream);
+                using (TDerived intervalWriter = propertyWriter.OpenInterval())
+                {
+                    intervalWriter.WriteBackwardExtrapolationDuration(expectedBackwardExtrapolationDuration);
+                }
             }
 
-            Assert.AreEqual("{\"foo\":{\"backwardExtrapolationDuration\":12}", StringWriter.ToString());
+            AssertExpectedJson(expectedPropertyName, new Dictionary<string, object>
+            {
+                { "backwardExtrapolationDuration", expectedBackwardExtrapolationDuration },
+            });
         }
     }
 }

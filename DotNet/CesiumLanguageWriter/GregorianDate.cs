@@ -831,6 +831,7 @@ namespace CesiumLanguageWriter
                     {
                         switch (chars[pos])
                         {
+                            case 'H':
                             case 'm':
                             case 's':
                             case 'F':
@@ -1339,7 +1340,9 @@ namespace CesiumLanguageWriter
                 "yyyy-M-dTHH:mm:ss.f*",
                 "M-yyyy-dTH:mm:ss.f*",
                 "M-yyyy-d H:mm:ss.f*",
-                "yyyyMMddTHHmmss.f*"
+                "yyyyMMddTHHmmss.f*",
+                "yyyyMMddTHHmm.f*",
+                "yyyyMMddTHH.f*",
             };
 
             // DateTime.Parse patterns
@@ -2456,7 +2459,7 @@ namespace CesiumLanguageWriter
         /// </para>
         /// <para>
         /// Note: <see cref="GregorianDate"/> is always assumed to be in UTC.  You cannot
-        /// parse strings containing time zone information. However, this will handle
+        /// parse strings containing time zone information. However, this method handles
         /// three common ISO8601 formats:
         /// </para>
         /// <list type="bullet">
@@ -2471,19 +2474,18 @@ namespace CesiumLanguageWriter
         /// </item>
         /// </list>
         /// </summary>
-        /// <returns>
-        /// true if the <paramref name="s"/> parameter was converted successfully; otherwise, false.
-        /// </returns>
         /// <param name="s">A string containing a date and time to convert.</param>
         /// <param name="result">
         /// <filter name="Java">On input, an array with one element.  On return, the array is populated with</filter>
         /// <filter name="DotNet">On return,</filter>
-        /// the <see cref="GregorianDate" /> value equivalent to the date and time contained in
-        /// <paramref name="s"/>, if the conversion succeeded, or
-        /// <see cref="GregorianDate.MinValue" /> if the conversion failed. The conversion
+        /// the <see cref="GregorianDate" /> value equivalent to the date and time contained in <paramref name="s"/>,
+        /// if the conversion succeeded, or <see cref="MinValue" /> if the conversion failed. The conversion
         /// fails if the <paramref name="s"/> parameter is <see langword="null"/>, or does not contain a
         /// valid string representation of a date and time.
         /// </param>
+        /// <returns>
+        /// <see langword="true"/> if <paramref name="s"/> was parsed successfully; otherwise <see langword="false"/>.
+        /// </returns>
         [ContractAnnotation("s:null => false")]
         public static bool TryParse(string s, out GregorianDate result)
         {
@@ -2493,12 +2495,12 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// <para>
         /// Converts the specified string representation of a date and time to its
-        /// <see cref="GregorianDate" /> equivalent using the specified culture-specific
+        /// <see cref="GregorianDate"/> equivalent using the specified culture-specific
         /// format information.
         /// </para>
         /// <para>
         /// Note: <see cref="GregorianDate"/> is always assumed to be in UTC.  You cannot
-        /// parse strings containing time zone information. However, this will handle
+        /// parse strings containing time zone information. However, this method handles
         /// three common ISO8601 formats:
         /// </para>
         /// <list type="bullet">
@@ -2513,20 +2515,19 @@ namespace CesiumLanguageWriter
         /// </item>
         /// </list>
         /// </summary>
-        /// <returns>
-        /// true if the <paramref name="s"/> parameter was converted successfully; otherwise, false.
-        /// </returns>
         /// <param name="s">A string containing a date and time to convert.</param>
         /// <param name="provider">An <see cref="IFormatProvider" /> that supplies culture-specific format information about <paramref name="s"/>. </param>
         /// <param name="result">
         /// <filter name="Java">On input, an array with one element.  On return, the array is populated with</filter>
         /// <filter name="DotNet">On return,</filter>
-        /// the <see cref="GregorianDate" /> value equivalent to the date and time contained in
-        /// <paramref name="s"/>, if the conversion succeeded, or
-        /// <see cref="GregorianDate.MinValue" /> if the conversion failed. The conversion
+        /// the <see cref="GregorianDate" /> value equivalent to the date and time contained in <paramref name="s"/>,
+        /// if the conversion succeeded, or <see cref="MinValue" /> if the conversion failed. The conversion
         /// fails if the <paramref name="s"/> parameter is <see langword="null"/>, or does not contain a
         /// valid string representation of a date and time.
         /// </param>
+        /// <returns>
+        /// <see langword="true"/> if <paramref name="s"/> was parsed successfully; otherwise <see langword="false"/>.
+        /// </returns>
         [ContractAnnotation("s:null => false")]
         public static bool TryParse(string s, IFormatProvider provider, out GregorianDate result)
         {

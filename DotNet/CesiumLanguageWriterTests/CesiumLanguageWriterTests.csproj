@@ -69,7 +69,7 @@
     <Compile Include="TestCheckerboardMaterialCesiumWriter.cs" />
     <Compile Include="TestConicSensorCesiumWriter.cs" />
     <Compile Include="TestCustomPropertiesCesiumWriter.cs" />
-    <Compile Include="TestCustomSensorCesiumWriter.cs" />
+    <Compile Include="TestCustomPatternSensorCesiumWriter.cs" />
     <Compile Include="TestDoubleCesiumWriter.cs" />
     <Compile Include="TestGenerateValidationDocument.cs" />
     <Compile Include="TestGridMaterialCesiumWriter.cs" />

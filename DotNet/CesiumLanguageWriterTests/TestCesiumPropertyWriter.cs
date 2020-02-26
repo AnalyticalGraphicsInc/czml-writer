@@ -38,6 +38,7 @@ namespace CesiumLanguageWriterTests
         /// <summary>
         /// Helper method for creating expected JSON output from key-value pairs.
         /// </summary>
+        [NotNull]
         public static string CreateExpectedJson([NotNull] string topLevelPropertyName, [NotNull] IDictionary<string, object> dictionary)
         {
             return CreateExpectedJson(new Dictionary<string, object>
@@ -49,6 +50,7 @@ namespace CesiumLanguageWriterTests
         /// <summary>
         /// Helper method for creating expected JSON output from key-value pairs.
         /// </summary>
+        [NotNull]
         public static string CreateExpectedJson([NotNull] IDictionary<string, object> dictionary)
         {
             var builder = new StringBuilder();
@@ -62,10 +64,12 @@ namespace CesiumLanguageWriterTests
                        .Append(FormatValue(pair.Value))
                        .Append(',');
             }
+
             builder[builder.Length - 1] = '}';
             return builder.ToString();
         }
 
+        [NotNull]
         private static string FormatValue([NotNull] object value)
         {
             if (value is bool)
@@ -73,11 +77,19 @@ namespace CesiumLanguageWriterTests
                 // in C#, booleans format with a capital first letter
                 return value.ToString().ToLowerInvariant();
             }
+
+            if (value is Duration)
+            {
+                var duration = (Duration)value;
+                value = duration.TotalSeconds;
+            }
+
             if (value is double)
             {
                 double d = (double)value;
                 return d.ToString(CultureInfo.InvariantCulture);
             }
+
             if (value is string)
             {
                 return string.Format("\"{0}\"", value);
@@ -85,7 +97,7 @@ namespace CesiumLanguageWriterTests
 
             if (value is Color)
             {
-                Color color = (Color)value;
+                var color = (Color)value;
                 return CreateExpectedJson(new Dictionary<string, object>
                 {
                     { "rgba", new List<object> { color.R, color.G, color.B, color.A } },
@@ -94,7 +106,7 @@ namespace CesiumLanguageWriterTests
 
             if (value is NearFarScalar)
             {
-                NearFarScalar nearFarScalar = (NearFarScalar)value;
+                var nearFarScalar = (NearFarScalar)value;
                 return CreateExpectedJson(new Dictionary<string, object>
                 {
                     { "nearFarScalar", new List<object> { nearFarScalar.NearDistance, nearFarScalar.NearValue, nearFarScalar.FarDistance, nearFarScalar.FarValue } },
@@ -103,7 +115,7 @@ namespace CesiumLanguageWriterTests
 
             if (value is Rectangular)
             {
-                Rectangular rectangular = (Rectangular)value;
+                var rectangular = (Rectangular)value;
                 return CreateExpectedJson(new Dictionary<string, object>
                 {
                     { "cartesian2", new List<object> { rectangular.X, rectangular.Y } },
@@ -112,15 +124,16 @@ namespace CesiumLanguageWriterTests
 
             if (value is Cartesian)
             {
-                Cartesian cartesian = (Cartesian)value;
+                var cartesian = (Cartesian)value;
                 return CreateExpectedJson(new Dictionary<string, object>
                 {
                     { "cartesian", new List<object> { cartesian.X, cartesian.Y, cartesian.Z } },
                 });
             }
+
             if (value is Cartographic)
             {
-                Cartographic cartographic = (Cartographic)value;
+                var cartographic = (Cartographic)value;
                 return CreateExpectedJson(new Dictionary<string, object>
                 {
                     { "cartographicRadians", new List<object> { cartographic.Longitude, cartographic.Latitude, cartographic.Height } },
@@ -129,7 +142,7 @@ namespace CesiumLanguageWriterTests
 
             if (value is UnitQuaternion)
             {
-                UnitQuaternion unitQuaternion = (UnitQuaternion)value;
+                var unitQuaternion = (UnitQuaternion)value;
                 return CreateExpectedJson(new Dictionary<string, object>
                 {
                     { "unitQuaternion", new List<object> { unitQuaternion.X, unitQuaternion.Y, unitQuaternion.Z, unitQuaternion.W } },
@@ -147,11 +160,12 @@ namespace CesiumLanguageWriterTests
             {
                 var builder = new StringBuilder();
                 builder.Append('[');
-                foreach (object o in list)
+                foreach (var o in list)
                 {
                     builder.Append(FormatValue(o))
                            .Append(',');
                 }
+
                 builder[builder.Length - 1] = ']';
                 return builder.ToString();
             }
@@ -176,83 +190,98 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void WritesPropertyNameOnOpenAndNothingOnClose()
         {
-            CesiumPropertyWriter<TDerived> property = CreatePropertyWriter("foobar");
-            property.Open(OutputStream);
+            var propertyWriter = CreatePropertyWriter("foobar");
+            propertyWriter.Open(OutputStream);
             Assert.AreEqual("{\"foobar\":", StringWriter.ToString());
-            property.Close();
+            propertyWriter.Close();
             Assert.AreEqual("{\"foobar\":", StringWriter.ToString());
         }
 
         [Test]
         public void SingleIntervalWritesOpenObjectLiteral()
         {
-            CesiumPropertyWriter<TDerived> property = CreatePropertyWriter("woot");
-            property.Open(OutputStream);
-            TDerived interval = property.OpenInterval();
-            Assert.IsNotNull(interval);
+            var propertyWriter = CreatePropertyWriter("woot");
+            propertyWriter.Open(OutputStream);
+            TDerived intervalWriter = propertyWriter.OpenInterval();
+            Assert.IsNotNull(intervalWriter);
             Assert.AreEqual("{\"woot\":{", StringWriter.ToString());
         }
 
         [Test]
         public void MultipleIntervalsWritesOpenArray()
         {
-            CesiumPropertyWriter<TDerived> property = CreatePropertyWriter("woot");
-            property.Open(OutputStream);
-            CesiumIntervalListWriter<TDerived> intervalList = property.OpenMultipleIntervals();
-            Assert.IsNotNull(intervalList);
+            var propertyWriter = CreatePropertyWriter("woot");
+            propertyWriter.Open(OutputStream);
+            var intervalListWriter = propertyWriter.OpenMultipleIntervals();
+            Assert.IsNotNull(intervalListWriter);
             Assert.AreEqual("{\"woot\":[", StringWriter.ToString());
         }
 
         [Test]
         public void ClosingMultipleIntervalsWritesCloseArray()
         {
-            CesiumPropertyWriter<TDerived> property = CreatePropertyWriter("woot");
-            property.Open(OutputStream);
-            CesiumIntervalListWriter<TDerived> intervalList = property.OpenMultipleIntervals();
-            intervalList.Close();
+            var propertyWriter = CreatePropertyWriter("woot");
+            propertyWriter.Open(OutputStream);
+            var intervalListWriter = propertyWriter.OpenMultipleIntervals();
+            intervalListWriter.Close();
             Assert.AreEqual("{\"woot\":[]", StringWriter.ToString());
         }
 
         [Test]
         public void MultipleIntervalsAllowsWritingMultipleIntervals()
         {
+            const string expectedPropertyName = "woot";
+
             JulianDate start = new GregorianDate(2012, 4, 2, 12, 0, 0).ToJulianDate();
             JulianDate stop = new GregorianDate(2012, 4, 2, 13, 0, 0).ToJulianDate();
 
-            CesiumPropertyWriter<TDerived> property = CreatePropertyWriter("woot");
-            property.Open(OutputStream);
-            CesiumIntervalListWriter<TDerived> intervalList = property.OpenMultipleIntervals();
-            using (TDerived interval = intervalList.OpenInterval())
+            using (Packet)
+            using (var propertyWriter = CreatePropertyWriter(expectedPropertyName))
             {
-                interval.WriteInterval(start, stop);
+                propertyWriter.Open(OutputStream);
+                using (var intervalListWriter = propertyWriter.OpenMultipleIntervals())
+                {
+                    using (TDerived intervalWriter = intervalListWriter.OpenInterval())
+                    {
+                        intervalWriter.WriteInterval(start, stop);
+                    }
+
+                    using (TDerived intervalWriter = intervalListWriter.OpenInterval())
+                    {
+                        intervalWriter.WriteInterval(new TimeInterval(start, stop));
+                    }
+                }
             }
 
-            using (TDerived interval = intervalList.OpenInterval())
+            AssertExpectedJson(new Dictionary<string, object>
             {
-                interval.WriteInterval(new TimeInterval(start, stop));
-            }
-
-            intervalList.Close();
-            Assert.AreEqual("{\"woot\":[{\"interval\":\"20120402T12Z/20120402T13Z\"},{\"interval\":\"20120402T12Z/20120402T13Z\"}]", StringWriter.ToString());
+                {
+                    expectedPropertyName, new List<object>
+                    {
+                        new Dictionary<string, object> { { "interval", CesiumFormattingHelper.ToIso8601Interval(start, stop, Iso8601Format.Compact) } },
+                        new Dictionary<string, object> { { "interval", CesiumFormattingHelper.ToIso8601Interval(start, stop, Iso8601Format.Compact) } },
+                    }
+                },
+            });
         }
 
         [Test]
         public void ThrowsWhenWritingToBeforeOpening()
         {
-            CesiumPropertyWriter<TDerived> property = CreatePropertyWriter("woot");
+            var propertyWriter = CreatePropertyWriter("woot");
 
-            var exception = Assert.Throws<InvalidOperationException>(() => property.OpenInterval());
+            var exception = Assert.Throws<InvalidOperationException>(() => propertyWriter.OpenInterval());
             StringAssert.Contains("not currently open", exception.Message);
         }
 
         [Test]
         public void ThrowsWhenWritingToAfterClosed()
         {
-            CesiumPropertyWriter<TDerived> property = CreatePropertyWriter("woot");
-            property.Open(OutputStream);
-            property.Close();
+            var propertyWriter = CreatePropertyWriter("woot");
+            propertyWriter.Open(OutputStream);
+            propertyWriter.Close();
 
-            var exception = Assert.Throws<InvalidOperationException>(() => property.OpenInterval());
+            var exception = Assert.Throws<InvalidOperationException>(() => propertyWriter.OpenInterval());
             StringAssert.Contains("not currently open", exception.Message);
         }
     }

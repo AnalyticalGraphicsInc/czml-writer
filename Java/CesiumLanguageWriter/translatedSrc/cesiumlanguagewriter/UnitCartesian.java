@@ -25,7 +25,6 @@ import javax.annotation.Nullable;
         "deprecation",
         "serial"
 })
-@CS2JWarning("Unhandled attribute removed: SuppressMessage")
 public final class UnitCartesian implements IEquatable<UnitCartesian>, ImmutableValueType {
     /**
     * Initializes a new instance.
@@ -40,7 +39,6 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     * @exception ArithmeticException The magnitude of the provided coordinates must not be zero.
     * @exception ArithmeticException The magnitude of the provided coordinates must not be infinite.
     */
-    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     public UnitCartesian(double x, double y, double z) {
         this(x, y, z, Normalization.UNNORMALIZED);
     }
@@ -56,7 +54,6 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     * @exception ArithmeticException The magnitude of the provided coordinates must not be zero.
     * @exception ArithmeticException The magnitude of the provided coordinates must not be infinite.
     */
-    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     public UnitCartesian(double x, double y, double z, @Nonnull double[] magnitude) {
         final double[] ref$x$0 = {
             x
@@ -95,7 +92,6 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     * @exception ArithmeticException The magnitude of the provided coordinates must not be zero.
     * @exception ArithmeticException The magnitude of the provided coordinates must not be infinite.
     */
-    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     public UnitCartesian(@Nonnull Cartesian coordinates, @Nonnull double[] magnitude) {
         this(coordinates.getX(), coordinates.getY(), coordinates.getZ(), magnitude);
     }
@@ -473,7 +469,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     is within the required tolerance of the corresponding coordinate value of this instance.
     * @param other The set of {@link UnitCartesian} coordinates to compare to this instance.
     * @param epsilon The limit at which the absolute differences between the coordinate values will not be considered equal.
-    * @return {@code true} if the absolute differences are less than or equal to {@code epsilon}; otherwise, {@code false}.
+    * @return {@code true} if the absolute differences are less than or equal to {@code epsilon}; otherwise {@code false}.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final boolean equalsEpsilon(@Nonnull UnitCartesian other, double epsilon) {

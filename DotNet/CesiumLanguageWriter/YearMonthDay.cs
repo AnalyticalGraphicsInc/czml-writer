@@ -69,7 +69,6 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="astronomicalJulianDayNumber">The astronomical Julian day number.
         /// </param>
-        [SuppressMessage("Microsoft.Usage", "CA2233:OperationsShouldNotOverflow", MessageId = "astronomicalJulianDayNumber+68569", Justification = "In order for this to overflow you would need to pass in a Julian day number above 2 billion, which is safely 54 million years away or so.")]
         public YearMonthDay(int astronomicalJulianDayNumber)
         {
             // Algorithm from page 604 of the Explanatory Supplement to the
@@ -91,7 +90,7 @@ namespace CesiumLanguageWriter
             m_day--;
 
             if (!IsValidDate(m_year + 1, m_month + 1, m_day + 1))
-                throw new ArgumentOutOfRangeException(CesiumLocalization.YearMonthDayInvalidArgument);
+                throw new ArgumentException(CesiumLocalization.YearMonthDayInvalidArgument);
         }
 
         /// <summary>

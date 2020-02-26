@@ -153,7 +153,7 @@ public class TestUnitCartesian {
     }
 
     /**
-    * Tests thats the {@link UnitCartesian#equalsEpsilon} method returns true
+    * Tests that the {@link UnitCartesian#equalsEpsilon} method returns true
     when the difference is exactly epsilon.
     */
     @Test

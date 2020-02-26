@@ -7,7 +7,7 @@ namespace CesiumLanguageWriter
 {
     /// <summary>
     /// Represents a span of time.
-    /// <filter name="DotNet">This is different from the .NET <see cref="System.TimeSpan"/> class in that it</filter>
+    /// <filter name="DotNet">This is different from the .NET <see cref="TimeSpan"/> class in that it</filter>
     /// <filter name="Java">This class</filter>
     /// offers the same precision as the <see cref="JulianDate"/> type.  It stores a
     /// number of days as an <see cref="int"/> and a number of seconds as a <see cref="double"/>.
@@ -439,7 +439,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="left">The left <see cref="Duration"/>.</param>
         /// <param name="right">The right <see cref="Duration"/>.</param>
-        /// <returns><see langword="true"/> if left is less than right, otherwise <see langword="false"/>.</returns>
+        /// <returns><see langword="true"/> if left is less than right; otherwise <see langword="false"/>.</returns>
         public static bool operator <(Duration left, Duration right)
         {
             return left.CompareTo(right) < 0;
@@ -450,7 +450,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="left">The left <see cref="Duration"/>.</param>
         /// <param name="right">The right <see cref="Duration"/>.</param>
-        /// <returns><see langword="true"/> if left is greater than right, otherwise <see langword="false"/>.</returns>
+        /// <returns><see langword="true"/> if left is greater than right; otherwise <see langword="false"/>.</returns>
         public static bool operator >(Duration left, Duration right)
         {
             return left.CompareTo(right) > 0;
@@ -461,7 +461,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="left">The left <see cref="Duration"/>.</param>
         /// <param name="right">The right <see cref="Duration"/>.</param>
-        /// <returns><see langword="true"/> if left is less than or equal to right, otherwise <see langword="false"/>.</returns>
+        /// <returns><see langword="true"/> if left is less than or equal to right; otherwise <see langword="false"/>.</returns>
         public static bool operator <=(Duration left, Duration right)
         {
             return left.CompareTo(right) <= 0;
@@ -472,7 +472,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="left">The left <see cref="Duration"/>.</param>
         /// <param name="right">The right <see cref="Duration"/>.</param>
-        /// <returns><see langword="true"/> if left is greater than or equal to right, otherwise <see langword="false"/>.</returns>
+        /// <returns><see langword="true"/> if left is greater than or equal to right; otherwise <see langword="false"/>.</returns>
         public static bool operator >=(Duration left, Duration right)
         {
             return left.CompareTo(right) >= 0;

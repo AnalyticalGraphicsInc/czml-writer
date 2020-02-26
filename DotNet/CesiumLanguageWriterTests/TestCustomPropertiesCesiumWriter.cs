@@ -176,7 +176,7 @@ namespace CesiumLanguageWriterTests
         {
             using (var stringWriter = new StringWriter())
             {
-                var output = new CesiumOutputStream(stringWriter) { PrettyFormatting = true };
+                var output = new CesiumOutputStream(stringWriter, true);
                 var writer = new CesiumStreamWriter();
 
                 output.WriteStartSequence();

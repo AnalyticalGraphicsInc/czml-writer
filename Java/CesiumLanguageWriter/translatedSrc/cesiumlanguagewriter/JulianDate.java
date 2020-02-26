@@ -227,11 +227,9 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     * @param timeStandard The requested time standard.
     * @param result On input, an array with one element.  On return, the array is populated with
     
-    an equivalent
-    {@link JulianDate} using the requested {@link TimeStandard}, if it
-    is capable of representing this time, otherwise {@code MinValue} ({@link #getMinValue get}).
-    * @return {@code true} if this date could be converted to the
-    requested {@link TimeStandard}, otherwise false.
+    an equivalent {@link JulianDate} using the requested {@link TimeStandard}, if it
+    is capable of representing this time; otherwise {@code MinValue} ({@link #getMinValue get}).
+    * @return {@code true} if this date could be converted to the requested {@link TimeStandard}; otherwise {@code false}.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final boolean tryConvertTimeStandard(@Nonnull TimeStandard timeStandard, @Nonnull JulianDate[] result) {
@@ -499,7 +497,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     instead of this method.
     * @param left The date on the left side.
     * @param right The date on the right side.
-    * @return {@code true} if the dates are equal, otherwise {@code false}.
+    * @return {@code true} if the dates are equal; otherwise {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(JulianDate,JulianDate)'")
     public static boolean equals(@Nonnull JulianDate left, @Nonnull JulianDate right) {
@@ -513,7 +511,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     instead of this method.
     * @param left The date on the left side.
     * @param right The date on the right side.
-    * @return {@code true} if the dates are not equal, otherwise {@code false}.
+    * @return {@code true} if the dates are not equal; otherwise {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(JulianDate,JulianDate)'")
     public static boolean notEquals(@Nonnull JulianDate left, @Nonnull JulianDate right) {
@@ -524,7 +522,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     * Returns true if {@code left} occurs before {@code right}.
     * @param left The date on the left side.
     * @param right The date on the right side.
-    * @return {@code true} if the {@code left} is less than {@code right}, otherwise {@code false}.
+    * @return {@code true} if the {@code left} is less than {@code right}; otherwise {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean <(JulianDate,JulianDate)'")
     public static boolean lessThan(@Nonnull JulianDate left, @Nonnull JulianDate right) {
@@ -535,7 +533,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     * Returns true if {@code left} occurs after {@code right}.
     * @param left The date on the left side.
     * @param right The date on the right side.
-    * @return {@code true} if the {@code left} is greater than {@code right}, otherwise {@code false}.
+    * @return {@code true} if the {@code left} is greater than {@code right}; otherwise {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean >(JulianDate,JulianDate)'")
     public static boolean greaterThan(@Nonnull JulianDate left, @Nonnull JulianDate right) {
@@ -546,7 +544,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     * Returns true if {@code left} occurs before or at the same time as {@code right}.
     * @param left The date on the left side.
     * @param right The date on the right side.
-    * @return {@code true} if the {@code left} is less than or equal to {@code right}, otherwise {@code false}.
+    * @return {@code true} if the {@code left} is less than or equal to {@code right}; otherwise {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean <=(JulianDate,JulianDate)'")
     public static boolean lessThanOrEqual(@Nonnull JulianDate left, @Nonnull JulianDate right) {
@@ -557,7 +555,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     * Returns true if {@code left} occurs after or at the same time as {@code right}.
     * @param left The date on the left side.
     * @param right The date on the right side.
-    * @return {@code true} if the {@code left} is greater than or equal to {@code right}, otherwise {@code false}.
+    * @return {@code true} if the {@code left} is greater than or equal to {@code right}; otherwise {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean >=(JulianDate,JulianDate)'")
     public static boolean greaterThanOrEqual(@Nonnull JulianDate left, @Nonnull JulianDate right) {
@@ -570,7 +568,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     It is highly recommended that you use {@link #equalsEpsilon} or {@link #isIdentical}
     instead of this method.
     * @param obj The object to compare to this instance.
-    * @return {@code true} if {@code obj} represents the same value as this instance; otherwise, {@code false}.
+    * @return {@code true} if {@code obj} represents the same value as this instance; otherwise {@code false}.
     */
     @Override
     public boolean equals(Object obj) {
@@ -583,7 +581,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     It is highly recommended that you use {@link #equalsEpsilon} or {@link #isIdentical}
     instead of this method.
     * @param other The date to compare to this instance.
-    * @return {@code true} if {@code other} represents the same value as this instance; otherwise, {@code false}.
+    * @return {@code true} if {@code other} represents the same value as this instance; otherwise {@code false}.
     */
     public final boolean equalsType(@Nonnull JulianDate other) {
         return compareTo(other) == 0;
@@ -594,7 +592,7 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     consider two dates with different time standards to be different even if the dates represent the same
     moment when expressed in the same time standard.
     * @param other The date to compare to this instance.
-    * @return {@code true} if {@code other} is identical to this instance; otherwise, {@code false}.
+    * @return {@code true} if {@code other} is identical to this instance; otherwise {@code false}.
     */
     @CS2JWarning( {
             "Unhandled attribute removed: Pure",

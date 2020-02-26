@@ -65,7 +65,6 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     * @param m32 3,2
     * @param m33 3,3
     */
-    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     public Matrix3By3(double m11, double m12, double m13, double m21, double m22, double m23, double m31, double m32, double m33) {
         m_m11 = m11;
         m_m12 = m12;
@@ -115,7 +114,6 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     * @param m33 3,3
     * @return The diagonal matrix.
     */
-    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     @Nonnull
     public static Matrix3By3 diagonalMatrix(double m11, double m22, double m33) {
         return new Matrix3By3(m11, 0.0, 0.0, 0.0, m22, 0.0, 0.0, 0.0, m33);

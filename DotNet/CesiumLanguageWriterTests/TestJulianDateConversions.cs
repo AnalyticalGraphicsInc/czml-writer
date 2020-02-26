@@ -141,7 +141,7 @@ namespace CesiumLanguageWriterTests
         {
             JulianDate date = JulianDate.MinValue;
 
-            Assert.Throws<ArgumentOutOfRangeException>(() =>
+            Assert.Throws<ArgumentException>(() =>
             {
                 DateTime unused = date.ToDateTime();
             });

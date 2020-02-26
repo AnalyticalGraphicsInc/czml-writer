@@ -295,7 +295,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     is within the required tolerance of the corresponding coordinate value of this instance.
     * @param other The set of {@link Cartesian} coordinates to compare to this instance.
     * @param epsilon The limit at which the absolute differences between the coordinate values will not be considered equal.
-    * @return {@code true} if the absolute differences are less than or equal to {@code epsilon}; otherwise, {@code false}.
+    * @return {@code true} if the absolute differences are less than or equal to {@code epsilon}; otherwise {@code false}.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final boolean equalsEpsilon(@Nonnull Cartesian other, double epsilon) {

@@ -3,7 +3,7 @@ package cesiumlanguagewritertests;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Action;
-import agi.foundation.compatibility.ArgumentOutOfRangeException;
+import agi.foundation.compatibility.ArgumentException;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.DateTimeHelper;
 import agi.foundation.compatibility.TestContextRule;
@@ -112,7 +112,7 @@ public class TestJulianDateConversions {
     @Test
     public final void testJulianDateMinimumToDateTime() {
         final JulianDate date = JulianDate.getMinValue();
-        AssertHelper.<ArgumentOutOfRangeException> assertThrows(new TypeLiteral<ArgumentOutOfRangeException>() {}, new Action() {
+        AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, new Action() {
             public void invoke() {
                 ZonedDateTime unused = date.toDateTime();
             }

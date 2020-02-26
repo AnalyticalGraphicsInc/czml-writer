@@ -123,13 +123,13 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
         }
         final Map<String, Object> tempCollection$3 = new LinkedHashMap<String, Object>();
         MapHelper.add(tempCollection$3, "interval", CesiumFormattingHelper.toIso8601Interval(interval1Start, interval1Stop, Iso8601Format.COMPACT));
-        MapHelper.add(tempCollection$3, "boolean", interval1Value);
+        MapHelper.add(tempCollection$3, BooleanCesiumWriter.BooleanPropertyName, interval1Value);
         final Map<String, Object> tempCollection$4 = new LinkedHashMap<String, Object>();
         MapHelper.add(tempCollection$4, "interval", CesiumFormattingHelper.toIso8601Interval(interval2Start, interval2Stop, Iso8601Format.COMPACT));
-        MapHelper.add(tempCollection$4, "boolean", interval2Value);
+        MapHelper.add(tempCollection$4, BooleanCesiumWriter.BooleanPropertyName, interval2Value);
         final Map<String, Object> tempCollection$5 = new LinkedHashMap<String, Object>();
         MapHelper.add(tempCollection$5, "interval", CesiumFormattingHelper.toIso8601Interval(interval3Start, interval3Stop, Iso8601Format.COMPACT));
-        MapHelper.add(tempCollection$5, "boolean", interval3Value);
+        MapHelper.add(tempCollection$5, BooleanCesiumWriter.BooleanPropertyName, interval3Value);
         final ArrayList<Map<String, Object>> tempCollection$2 = new ArrayList<Map<String, Object>>();
         tempCollection$2.add(tempCollection$3);
         tempCollection$2.add(tempCollection$4);

@@ -55,8 +55,6 @@ namespace CesiumLanguageWriter
         /// <param name="m31">3,1</param>
         /// <param name="m32">3,2</param>
         /// <param name="m33">3,3</param>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "m")]
-        [SuppressMessage("Microsoft.Design", "CA1025:ReplaceRepetitiveArgumentsWithParamsArray")]
         public Matrix3By3(double m11, double m12, double m13,
                           double m21, double m22, double m23,
                           double m31, double m32, double m33)
@@ -111,7 +109,6 @@ namespace CesiumLanguageWriter
         /// <param name="m22">2,2</param>
         /// <param name="m33">3,3</param>
         /// <returns>The diagonal matrix.</returns>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "m")]
         public static Matrix3By3 DiagonalMatrix(double m11, double m22, double m33)
         {
             return new Matrix3By3(m11, 0.0, 0.0, 0.0, m22, 0.0, 0.0, 0.0, m33);

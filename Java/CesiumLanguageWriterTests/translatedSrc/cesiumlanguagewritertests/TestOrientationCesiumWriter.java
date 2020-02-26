@@ -52,9 +52,8 @@ public class TestOrientationCesiumWriter extends TestCesiumInterpolatablePropert
         ArrayList<cesiumlanguagewriter.UnitQuaternion> interval2SampleOrientations = tempCollection$2;
         final CesiumInterpolationAlgorithm orientationInterpolationAlgorithm = CesiumInterpolationAlgorithm.LINEAR;
         final int orientationInterpolationDegree = 1;
-        final CesiumOutputStream tempObj$0 = new CesiumOutputStream(getStringWriter());
-        tempObj$0.setPrettyFormatting(true);
-        CesiumOutputStream outputStream = tempObj$0;
+        StringWriter stringWriter = new StringWriter();
+        CesiumOutputStream outputStream = new CesiumOutputStream(stringWriter, true);
         CesiumStreamWriter writer = new CesiumStreamWriter();
         {
             PacketCesiumWriter packet = writer.openPacket(outputStream);
@@ -129,7 +128,7 @@ public class TestOrientationCesiumWriter extends TestCesiumInterpolatablePropert
                 DisposeHelper.dispose(packet);
             }
         }
-        ConsoleHelper.writeLine(getStringWriter().toString());
+        ConsoleHelper.writeLine(stringWriter.toString());
     }
 
     @Test

@@ -20,6 +20,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
+import org.junit.rules.ExpectedException;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
@@ -139,6 +140,32 @@ public class TestGregorianDateParsing {
             }
         });
         AssertHelper.assertStringContains("was not recognized as a valid GregorianDate", exception.getMessage());
+    }
+
+    public final void testParseIso8601Formats(@Nonnull Iso8601Format format) {
+        GregorianDate expected = new GregorianDate(1985, 4, 12, 10, 15, 30D);
+        AssertHelper.assertEquals(expected, GregorianDate.parse(expected.toIso8601String(format)));
+        expected = new GregorianDate(1985, 4, 12, 10, 15, 0D);
+        AssertHelper.assertEquals(expected, GregorianDate.parse(expected.toIso8601String(format)));
+        expected = new GregorianDate(1985, 4, 12, 10, 0, 0D);
+        AssertHelper.assertEquals(expected, GregorianDate.parse(expected.toIso8601String(format)));
+        expected = new GregorianDate(1985, 4, 12, 0, 0, 0D);
+        AssertHelper.assertEquals(expected, GregorianDate.parse(expected.toIso8601String(format)));
+    }
+
+    @Test
+    public final void testParseIso8601Formats$TestCase1() {
+        testParseIso8601Formats(Iso8601Format.BASIC);
+    }
+
+    @Test
+    public final void testParseIso8601Formats$TestCase2() {
+        testParseIso8601Formats(Iso8601Format.COMPACT);
+    }
+
+    @Test
+    public final void testParseIso8601Formats$TestCase3() {
+        testParseIso8601Formats(Iso8601Format.EXTENDED);
     }
 
     @Test
@@ -440,5 +467,14 @@ public class TestGregorianDateParsing {
     @Rule
     public TestContextRule getRule$testContext() {
         return rule$testContext;
+    }
+
+    @Nonnull
+    private final ExpectedException rule$expectedException = ExpectedException.none();
+
+    @Nonnull
+    @Rule
+    public ExpectedException getRule$expectedException() {
+        return rule$expectedException;
     }
 }

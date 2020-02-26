@@ -88,7 +88,7 @@ public class TestUnitSpherical {
     }
 
     /**
-    * Tests thats the {@link UnitSpherical#equalsEpsilon} method returns true
+    * Tests that the {@link UnitSpherical#equalsEpsilon} method returns true
     when the difference is exactly epsilon.
     */
     @Test

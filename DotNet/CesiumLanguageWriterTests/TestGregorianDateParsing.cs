@@ -99,6 +99,24 @@ namespace CesiumLanguageWriterTests
             StringAssert.Contains("was not recognized as a valid GregorianDate", exception.Message);
         }
 
+        [TestCase(Iso8601Format.Basic)]
+        [TestCase(Iso8601Format.Compact)]
+        [TestCase(Iso8601Format.Extended)]
+        public void TestParseIso8601Formats(Iso8601Format format)
+        {
+            GregorianDate expected = new GregorianDate(1985, 4, 12, 10, 15, 30);
+            Assert.AreEqual(expected, GregorianDate.Parse(expected.ToIso8601String(format)));
+
+            expected = new GregorianDate(1985, 4, 12, 10, 15, 0);
+            Assert.AreEqual(expected, GregorianDate.Parse(expected.ToIso8601String(format)));
+
+            expected = new GregorianDate(1985, 4, 12, 10, 0, 0);
+            Assert.AreEqual(expected, GregorianDate.Parse(expected.ToIso8601String(format)));
+
+            expected = new GregorianDate(1985, 4, 12, 0, 0, 0);
+            Assert.AreEqual(expected, GregorianDate.Parse(expected.ToIso8601String(format)));
+        }
+
         [Test]
         public void TestToIso8601String()
         {

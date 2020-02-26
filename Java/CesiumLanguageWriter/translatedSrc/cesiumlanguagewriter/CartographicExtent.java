@@ -4,9 +4,11 @@ package cesiumlanguagewriter;
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.annotations.CS2JInfo;
 import agi.foundation.compatibility.annotations.CS2JWarning;
+import agi.foundation.compatibility.ArgumentNullException;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ObjectHelper;
 import agi.foundation.compatibility.StringHelper;
+import javax.annotation.Nonnull;
 
 /**
  * A two dimensional region specified as longitude and latitude coordinates.
@@ -60,11 +62,10 @@ public class CartographicExtent implements IEquatable<CartographicExtent> {
     }
 
     /**
-    * Returns true if the specified location is inside the extent, otherwise false.
+    * Determines if the specified location is inside the extent.
     * @param longitude The longitude.
     * @param latitude The latitude.
-    * @return {@code true} if the specified location is inside the extent (or on the border),
-    otherwise {@code false}.
+    * @return {@code true} if the specified location is inside the extent, or on the border; otherwise {@code false}.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final boolean isInsideExtent(double longitude, double latitude) {
@@ -78,7 +79,11 @@ public class CartographicExtent implements IEquatable<CartographicExtent> {
     * @return The union of the two extents.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final CartographicExtent union(CartographicExtent other) {
+    @Nonnull
+    public final CartographicExtent union(@Nonnull CartographicExtent other) {
+        if (other == null) {
+            throw new ArgumentNullException("other");
+        }
         return new CartographicExtent(Math.min(m_west, other.m_west), Math.min(m_south, other.m_south), Math.max(m_east, other.m_east), Math.max(m_north, other.m_north));
     }
 
@@ -113,10 +118,13 @@ public class CartographicExtent implements IEquatable<CartographicExtent> {
     is within the required tolerance of the corresponding coordinate value of this instance.
     * @param other The set of {@link CartographicExtent} to compare to this instance.
     * @param epsilon The limit at which the absolute differences between the coordinate values will not be considered equal.
-    * @return {@code true} if the absolute differences are less than or equal to {@code epsilon}; otherwise, {@code false}.
+    * @return {@code true} if the absolute differences are less than or equal to {@code epsilon}; otherwise {@code false}.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final boolean equalsEpsilon(CartographicExtent other, double epsilon) {
+        if (ObjectHelper.referenceEquals(other, null)) {
+            return false;
+        }
         return Math.abs(m_north - other.m_north) <= epsilon && Math.abs(m_south - other.m_south) <= epsilon && Math.abs(m_east - other.m_east) <= epsilon && Math.abs(m_west - other.m_west) <= epsilon;
     }
 

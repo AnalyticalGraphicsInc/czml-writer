@@ -183,13 +183,7 @@ namespace CesiumLanguageWriter.Advanced
 
             using (var memoryStream = new MemoryStream())
             {
-                byte[] buffer = new byte[8192];
-                int bytesRead;
-                while ((bytesRead = stream.Read(buffer, 0, buffer.Length)) > 0)
-                {
-                    memoryStream.Write(buffer, 0, bytesRead);
-                }
-
+                stream.CopyTo(memoryStream, 8 * 1024);
                 builder.Append(Convert.ToBase64String(memoryStream.GetBuffer(), 0, (int)memoryStream.Length));
             }
 

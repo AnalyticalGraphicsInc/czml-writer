@@ -4,9 +4,9 @@ using JetBrains.Annotations;
 
 namespace CesiumLanguageWriter
 {
-    ///<summary>
+    /// <summary>
     /// A bounding rectangle in a two-dimensional plane given by two corner points.
-    ///</summary>
+    /// </summary>
     [CSToJavaImmutableValueType]
     public struct BoundingRectangle : IEquatable<BoundingRectangle>
     {
@@ -133,7 +133,7 @@ namespace CesiumLanguageWriter
         /// <param name="other">The set of <see cref="BoundingRectangle"/> coordinates to compare to this instance.</param>
         /// <param name="epsilon">The limit at which the absolute differences between the coordinate values will not be considered equal.</param>
         /// <returns>
-        /// <see langword="true"/> if the absolute differences are less than or equal to <paramref name="epsilon"/>; otherwise, <see langword="false"/>.
+        /// <see langword="true"/> if the absolute differences are less than or equal to <paramref name="epsilon"/>; otherwise <see langword="false"/>.
         /// </returns>
         [Pure]
         public bool EqualsEpsilon(BoundingRectangle other, double epsilon)

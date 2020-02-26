@@ -9,6 +9,7 @@ import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ObjectHelper;
 import agi.foundation.compatibility.StringHelper;
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * An interval defined by a start date and a stop date.  The end points are optionally included
@@ -83,7 +84,7 @@ public final class TimeInterval implements IEquatable<TimeInterval> {
     /**
     * Determines if the interval contains a specified date.
     * @param date The date to test.
-    * @return true if the interval contains the date, otherwise false.
+    * @return {@code true} if the interval contains the date; otherwise {@code false}.
     */
     public final boolean contains(@Nonnull JulianDate date) {
         if (getIsEmpty()) {
@@ -105,7 +106,7 @@ public final class TimeInterval implements IEquatable<TimeInterval> {
     * @return true if the {@code Start} ({@link #getStart get}) and {@code Stop} ({@link #getStop get}) dates of the intervals are equal as defined by the epsilon value and all other properties are identical.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
-    public final boolean equalsEpsilon(TimeInterval other, double epsilon) {
+    public final boolean equalsEpsilon(@Nullable TimeInterval other, double epsilon) {
         if (ObjectHelper.referenceEquals(null, other)) {
             return false;
         }

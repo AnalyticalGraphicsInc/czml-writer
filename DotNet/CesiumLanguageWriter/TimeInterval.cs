@@ -80,7 +80,7 @@ namespace CesiumLanguageWriter
         /// Determines if the interval contains a specified date.
         /// </summary>
         /// <param name="date">The date to test.</param>
-        /// <returns>true if the interval contains the date, otherwise false.</returns>
+        /// <returns><see langword="true"/> if the interval contains the date; otherwise <see langword="false"/>.</returns>
         public bool Contains(JulianDate date)
         {
             if (IsEmpty)
@@ -103,7 +103,7 @@ namespace CesiumLanguageWriter
         /// <param name="epsilon">The largest difference between the <see cref="Start"/> and <see cref="Stop"/> dates, in seconds, such that they will be considered equal.</param>
         /// <returns>true if the <see cref="Start"/> and <see cref="Stop"/> dates of the intervals are equal as defined by the epsilon value and all other properties are identical.</returns>
         [Pure]
-        public bool EqualsEpsilon(TimeInterval other, double epsilon)
+        public bool EqualsEpsilon([CanBeNull] TimeInterval other, double epsilon)
         {
             if (ReferenceEquals(null, other))
                 return false;

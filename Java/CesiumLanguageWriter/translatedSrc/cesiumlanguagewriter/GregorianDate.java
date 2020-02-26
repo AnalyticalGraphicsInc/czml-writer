@@ -1029,6 +1029,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                 valuePos += numParsed;
                 if (!exact && !flexibleTwoPartsParsing) {
                     switch (chars.charAt(pos)) {
+                    case 'H':
                     case 'm':
                     case 's':
                     case 'F':
@@ -1515,7 +1516,9 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                 "yyyy-M-dTHH:mm:ss.f*",
                 "M-yyyy-dTH:mm:ss.f*",
                 "M-yyyy-d H:mm:ss.f*",
-                "yyyyMMddTHHmmss.f*"
+                "yyyyMMddTHHmmss.f*",
+                "yyyyMMddTHHmm.f*",
+                "yyyyMMddTHH.f*"
         };
         // DateTime.Parse patterns
         // Patterns are divided to date and time patterns. The algorithm will
@@ -2436,7 +2439,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     </p>
     <p>
     Note: {@link GregorianDate} is always assumed to be in UTC.  You cannot
-    parse strings containing time zone information. However, this will handle
+    parse strings containing time zone information. However, this method handles
     three common ISO8601 formats:
     </p>
     <ul>
@@ -2453,12 +2456,11 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     * @param s A string containing a date and time to convert.
     * @param result On input, an array with one element.  On return, the array is populated with
     
-    the {@link GregorianDate} value equivalent to the date and time contained in
-    {@code s}, if the conversion succeeded, or
-    {@link GregorianDate#MinValue} if the conversion failed. The conversion
+    the {@link GregorianDate} value equivalent to the date and time contained in {@code s},
+    if the conversion succeeded, or {@link #MinValue} if the conversion failed. The conversion
     fails if the {@code s} parameter is {@code null}, or does not contain a
     valid string representation of a date and time.
-    * @return true if the {@code s} parameter was converted successfully; otherwise, false.
+    * @return {@code true} if {@code s} was parsed successfully; otherwise {@code false}.
     */
     @CS2JWarning("Unhandled attribute removed: ContractAnnotation")
     public static boolean tryParse(String s, @Nonnull GregorianDate[] result) {
@@ -2473,7 +2475,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     </p>
     <p>
     Note: {@link GregorianDate} is always assumed to be in UTC.  You cannot
-    parse strings containing time zone information. However, this will handle
+    parse strings containing time zone information. However, this method handles
     three common ISO8601 formats:
     </p>
     <ul>
@@ -2491,12 +2493,11 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     * @param provider An {@link Locale} that supplies culture-specific format information about {@code s}.
     * @param result On input, an array with one element.  On return, the array is populated with
     
-    the {@link GregorianDate} value equivalent to the date and time contained in
-    {@code s}, if the conversion succeeded, or
-    {@link GregorianDate#MinValue} if the conversion failed. The conversion
+    the {@link GregorianDate} value equivalent to the date and time contained in {@code s},
+    if the conversion succeeded, or {@link #MinValue} if the conversion failed. The conversion
     fails if the {@code s} parameter is {@code null}, or does not contain a
     valid string representation of a date and time.
-    * @return true if the {@code s} parameter was converted successfully; otherwise, false.
+    * @return {@code true} if {@code s} was parsed successfully; otherwise {@code false}.
     */
     @CS2JWarning("Unhandled attribute removed: ContractAnnotation")
     public static boolean tryParse(String s, Locale provider, @Nonnull GregorianDate[] result) {

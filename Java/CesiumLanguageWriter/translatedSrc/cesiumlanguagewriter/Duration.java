@@ -357,7 +357,7 @@ public final class Duration implements Comparable<Duration>, IEquatable<Duration
     * Returns {@code true} if {@code left} is shorter than {@code right}.
     * @param left The left {@link Duration}.
     * @param right The right {@link Duration}.
-    * @return {@code true} if left is less than right, otherwise {@code false}.
+    * @return {@code true} if left is less than right; otherwise {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean <(Duration,Duration)'")
     public static boolean lessThan(@Nonnull Duration left, @Nonnull Duration right) {
@@ -368,7 +368,7 @@ public final class Duration implements Comparable<Duration>, IEquatable<Duration
     * Returns {@code true} if {@code left} is longer than {@code right}.
     * @param left The left {@link Duration}.
     * @param right The right {@link Duration}.
-    * @return {@code true} if left is greater than right, otherwise {@code false}.
+    * @return {@code true} if left is greater than right; otherwise {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean >(Duration,Duration)'")
     public static boolean greaterThan(@Nonnull Duration left, @Nonnull Duration right) {
@@ -379,7 +379,7 @@ public final class Duration implements Comparable<Duration>, IEquatable<Duration
     * Returns {@code true} if {@code left} is shorter than or exactly equal to {@code right}.
     * @param left The left {@link Duration}.
     * @param right The right {@link Duration}.
-    * @return {@code true} if left is less than or equal to right, otherwise {@code false}.
+    * @return {@code true} if left is less than or equal to right; otherwise {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean <=(Duration,Duration)'")
     public static boolean lessThanOrEqual(@Nonnull Duration left, @Nonnull Duration right) {
@@ -390,7 +390,7 @@ public final class Duration implements Comparable<Duration>, IEquatable<Duration
     * Returns {@code true} if {@code left} is longer than or exactly equal to {@code right}.
     * @param left The left {@link Duration}.
     * @param right The right {@link Duration}.
-    * @return {@code true} if left is greater than or equal to right, otherwise {@code false}.
+    * @return {@code true} if left is greater than or equal to right; otherwise {@code false}.
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean >=(Duration,Duration)'")
     public static boolean greaterThanOrEqual(@Nonnull Duration left, @Nonnull Duration right) {

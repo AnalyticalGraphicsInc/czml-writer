@@ -77,7 +77,7 @@ public class TestCartographic {
     }
 
     /**
-    * Tests thats the {@link Cartographic#equalsEpsilon} method returns true
+    * Tests that the {@link Cartographic#equalsEpsilon} method returns true
     when the difference is exactly epsilon.
     */
     @Test

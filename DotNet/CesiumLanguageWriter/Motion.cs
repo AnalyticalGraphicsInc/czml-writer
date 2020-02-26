@@ -32,6 +32,7 @@ namespace CesiumLanguageWriter
 
             if (motion.Length < 1)
                 throw new InvalidOperationException(CesiumLocalization.MotionMustContainValue);
+
             m_motion = motion;
         }
 

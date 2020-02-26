@@ -57,13 +57,12 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns true if the specified location is inside the extent, otherwise false.
+        /// Determines if the specified location is inside the extent.
         /// </summary>
         /// <param name="longitude">The longitude.</param>
         /// <param name="latitude">The latitude.</param>
         /// <returns>
-        /// <see langword="true"/> if the specified location is inside the extent (or on the border),
-        /// otherwise <see langword="false"/>.
+        /// <see langword="true"/> if the specified location is inside the extent, or on the border; otherwise <see langword="false"/>.
         /// </returns>
         [Pure]
         public bool IsInsideExtent(double longitude, double latitude)
@@ -80,9 +79,13 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="other">The other extent.</param>
         /// <returns>The union of the two extents.</returns>
+        [NotNull]
         [Pure]
-        public CartographicExtent Union(CartographicExtent other)
+        public CartographicExtent Union([NotNull] CartographicExtent other)
         {
+            if (other == null)
+                throw new ArgumentNullException("other");
+
             return new CartographicExtent(Math.Min(m_west, other.m_west),
                                           Math.Min(m_south, other.m_south),
                                           Math.Max(m_east, other.m_east),
@@ -125,11 +128,14 @@ namespace CesiumLanguageWriter
         /// <param name="other">The set of <see cref="CartographicExtent"/> to compare to this instance.</param>
         /// <param name="epsilon">The limit at which the absolute differences between the coordinate values will not be considered equal.</param>
         /// <returns>
-        /// <see langword="true"/> if the absolute differences are less than or equal to <paramref name="epsilon"/>; otherwise, <see langword="false"/>.
+        /// <see langword="true"/> if the absolute differences are less than or equal to <paramref name="epsilon"/>; otherwise <see langword="false"/>.
         /// </returns>
         [Pure]
         public bool EqualsEpsilon(CartographicExtent other, double epsilon)
         {
+            if (ReferenceEquals(other, null))
+                return false;
+
             return Math.Abs(m_north - other.m_north) <= epsilon &&
                    Math.Abs(m_south - other.m_south) <= epsilon &&
                    Math.Abs(m_east - other.m_east) <= epsilon &&

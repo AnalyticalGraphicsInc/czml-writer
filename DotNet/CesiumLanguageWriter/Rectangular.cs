@@ -18,8 +18,6 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="x">The linear coordinate along the positive x-axis.</param>
         /// <param name="y">The linear coordinate along the positive y-axis.</param>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "0#x")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "1#y")]
         public Rectangular(double x, double y)
         {
             m_x = x;
@@ -50,7 +48,6 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the linear coordinate along the positive x-axis.
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "X")]
         public double X
         {
             get { return m_x; }
@@ -59,7 +56,6 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the linear coordinate along the positive y-axis.
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Y")]
         public double Y
         {
             get { return m_y; }
@@ -241,7 +237,7 @@ namespace CesiumLanguageWriter
         /// <param name="other">The set of <see cref="Rectangular"/> coordinates to compare to this instance.</param>
         /// <param name="epsilon">The limit at which the absolute differences between the coordinate values will not be considered equal.</param>
         /// <returns>
-        /// <see langword="true"/> if the absolute differences are less than or equal to <paramref name="epsilon"/>; otherwise, <see langword="false"/>.
+        /// <see langword="true"/> if the absolute differences are less than or equal to <paramref name="epsilon"/>; otherwise <see langword="false"/>.
         /// </returns>
         public bool EqualsEpsilon(Rectangular other, double epsilon)
         {

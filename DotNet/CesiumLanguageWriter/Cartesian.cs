@@ -302,7 +302,7 @@ namespace CesiumLanguageWriter
         /// <param name="other">The set of <see cref="Cartesian"/> coordinates to compare to this instance.</param>
         /// <param name="epsilon">The limit at which the absolute differences between the coordinate values will not be considered equal.</param>
         /// <returns>
-        /// <see langword="true"/> if the absolute differences are less than or equal to <paramref name="epsilon"/>; otherwise, <see langword="false"/>.
+        /// <see langword="true"/> if the absolute differences are less than or equal to <paramref name="epsilon"/>; otherwise <see langword="false"/>.
         /// </returns>
         [Pure]
         public bool EqualsEpsilon(Cartesian other, double epsilon)

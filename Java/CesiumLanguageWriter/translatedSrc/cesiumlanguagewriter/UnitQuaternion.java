@@ -28,7 +28,6 @@ import javax.annotation.Nullable;
         "deprecation",
         "serial"
 })
-@CS2JWarning("Unhandled attribute removed: SuppressMessage")
 public final class UnitQuaternion implements IEquatable<UnitQuaternion>, ImmutableValueType {
     /**
     * Initializes a new instance.
@@ -45,7 +44,6 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     * @exception ArithmeticException The magnitude of the provided coordinates must not be zero.
     * @exception ArithmeticException The magnitude of the provided coordinates must not be infinite.
     */
-    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     public UnitQuaternion(double w, double x, double y, double z) {
         this(w, x, y, z, Normalization.UNNORMALIZED);
     }
@@ -63,7 +61,6 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     * @exception ArithmeticException The magnitude of the provided coordinates must not be zero.
     * @exception ArithmeticException The magnitude of the provided coordinates must not be infinite.
     */
-    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     public UnitQuaternion(double w, double x, double y, double z, @Nonnull double[] magnitude) {
         final double[] ref$w$0 = {
             w
@@ -152,6 +149,37 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
             m_y = factor * (matrix.getM31() - matrix.getM13());
             m_z = factor * (matrix.getM12() - matrix.getM21());
         }
+    }
+
+    private UnitQuaternion(double w, double x, double y, double z, @Nonnull Normalization normalization) {
+        if (normalization != Normalization.NORMALIZED) {
+            double magnitude = 0D;
+            final double[] ref$w$4 = {
+                w
+            };
+            final double[] ref$x$5 = {
+                x
+            };
+            final double[] ref$y$6 = {
+                y
+            };
+            final double[] ref$z$7 = {
+                z
+            };
+            final double[] out$magnitude$8 = {
+                0D
+            };
+            normalizeCoordinates(ref$w$4, ref$x$5, ref$y$6, ref$z$7, out$magnitude$8);
+            magnitude = out$magnitude$8[0];
+            z = ref$z$7[0];
+            y = ref$y$6[0];
+            x = ref$x$5[0];
+            w = ref$w$4[0];
+        }
+        m_w = w;
+        m_x = x;
+        m_y = y;
+        m_z = z;
     }
 
     /**
@@ -273,7 +301,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     is within the required tolerance of the corresponding coordinate value of this instance.
     * @param other The set of {@link UnitQuaternion} coordinates to compare to this instance.
     * @param epsilon The limit at which the absolute differences between the coordinate values will not be considered equal.
-    * @return {@code true} if the absolute differences are less than or equal to {@code epsilon}; otherwise, {@code false}.
+    * @return {@code true} if the absolute differences are less than or equal to {@code epsilon}; otherwise {@code false}.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     public final boolean equalsEpsilon(@Nonnull UnitQuaternion other, double epsilon) {
@@ -326,42 +354,6 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     */
     public final boolean getIsUndefined() {
         return Double.isNaN(m_w) || Double.isNaN(m_x) || Double.isNaN(m_y) || Double.isNaN(m_z);
-    }
-
-    private UnitQuaternion(double w, double x, double y, double z, @Nonnull Normalization normalization) {
-        if (normalization == Normalization.NORMALIZED) {
-            m_w = w;
-            m_x = x;
-            m_y = y;
-            m_z = z;
-        } else {
-            double magnitude = 0D;
-            final double[] ref$w$4 = {
-                w
-            };
-            final double[] ref$x$5 = {
-                x
-            };
-            final double[] ref$y$6 = {
-                y
-            };
-            final double[] ref$z$7 = {
-                z
-            };
-            final double[] out$magnitude$8 = {
-                0D
-            };
-            normalizeCoordinates(ref$w$4, ref$x$5, ref$y$6, ref$z$7, out$magnitude$8);
-            magnitude = out$magnitude$8[0];
-            z = ref$z$7[0];
-            y = ref$y$6[0];
-            x = ref$x$5[0];
-            w = ref$w$4[0];
-            m_w = w;
-            m_x = x;
-            m_y = y;
-            m_z = z;
-        }
     }
 
     private static void normalizeCoordinates(@Nonnull double[] w, @Nonnull double[] x, @Nonnull double[] y, @Nonnull double[] z, @Nonnull double[] magnitude) {

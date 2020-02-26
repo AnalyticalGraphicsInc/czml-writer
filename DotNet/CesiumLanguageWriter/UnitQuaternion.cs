@@ -34,10 +34,6 @@ namespace CesiumLanguageWriter
         /// The magnitude of the provided coordinates must not be infinite.
         /// </exception>
         /// <remarks>The given values will be normalized to ensure a unit magnitude.</remarks>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "w")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "3#z")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "2#y")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "1#x")]
         public UnitQuaternion(double w, double x, double y, double z)
             : this(w, x, y, z, Normalization.Unnormalized)
         {
@@ -62,11 +58,6 @@ namespace CesiumLanguageWriter
         /// The magnitude of the provided coordinates must not be infinite.
         /// </exception>
         /// <remarks>The given values will be normalized to ensure a unit magnitude.</remarks>
-        [SuppressMessage("Microsoft.Design", "CA1021:AvoidOutParameters", MessageId = "4#")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "w")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "3#z")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "2#y")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "1#x")]
         public UnitQuaternion(double w, double x, double y, double z, out double magnitude)
         {
             NormalizeCoordinates(ref w, ref x, ref y, ref z, out magnitude);
@@ -170,6 +161,20 @@ namespace CesiumLanguageWriter
             }
         }
 
+        private UnitQuaternion(double w, double x, double y, double z, Normalization normalization)
+        {
+            if (normalization != Normalization.Normalized)
+            {
+                double magnitude;
+                NormalizeCoordinates(ref w, ref x, ref y, ref z, out magnitude);
+            }
+
+            m_w = w;
+            m_x = x;
+            m_y = y;
+            m_z = z;
+        }
+
         /// <summary>
         /// Gets a set of <see cref="UnitQuaternion"/> coordinates with values of <see cref="double.NaN"/>.
         /// </summary>
@@ -194,7 +199,6 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the W coordinate.
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "W")]
         public double W
         {
             get { return m_w; }
@@ -203,7 +207,6 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the X coordinate.
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "X")]
         public double X
         {
             get { return m_x; }
@@ -212,7 +215,6 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the Y coordinate.
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Y")]
         public double Y
         {
             get { return m_y; }
@@ -221,7 +223,6 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the Z coordinate.
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Z")]
         public double Z
         {
             get { return m_z; }
@@ -303,7 +304,7 @@ namespace CesiumLanguageWriter
         /// <param name="other">The set of <see cref="UnitQuaternion"/> coordinates to compare to this instance.</param>
         /// <param name="epsilon">The limit at which the absolute differences between the coordinate values will not be considered equal.</param>
         /// <returns>
-        /// <see langword="true"/> if the absolute differences are less than or equal to <paramref name="epsilon"/>; otherwise, <see langword="false"/>.
+        /// <see langword="true"/> if the absolute differences are less than or equal to <paramref name="epsilon"/>; otherwise <see langword="false"/>.
         /// </returns>
         [Pure]
         public bool EqualsEpsilon(UnitQuaternion other, double epsilon)
@@ -372,27 +373,6 @@ namespace CesiumLanguageWriter
             get { return double.IsNaN(m_w) || double.IsNaN(m_x) || double.IsNaN(m_y) || double.IsNaN(m_z); }
         }
 
-        private UnitQuaternion(double w, double x, double y, double z, Normalization normalization)
-        {
-            if (normalization == Normalization.Normalized)
-            {
-                m_w = w;
-                m_x = x;
-                m_y = y;
-                m_z = z;
-            }
-            else
-            {
-                double magnitude;
-                NormalizeCoordinates(ref w, ref x, ref y, ref z, out magnitude);
-
-                m_w = w;
-                m_x = x;
-                m_y = y;
-                m_z = z;
-            }
-        }
-
         private static void NormalizeCoordinates(ref double w, ref double x, ref double y, ref double z, out double magnitude)
         {
             magnitude = Math.Sqrt(w * w + x * x + y * y + z * z);
@@ -402,6 +382,7 @@ namespace CesiumLanguageWriter
                 throw new DivideByZeroException(CesiumLocalization.MagnitudeMustNotBeZero);
             if (double.IsInfinity(magnitude))
                 throw new NotFiniteNumberException(CesiumLocalization.MagnitudeMustNotBeInfinite);
+
             w /= magnitude;
             x /= magnitude;
             y /= magnitude;

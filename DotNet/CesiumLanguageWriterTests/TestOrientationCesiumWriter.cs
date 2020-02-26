@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
 using NUnit.Framework;
@@ -47,10 +48,8 @@ namespace CesiumLanguageWriterTests
             const CesiumInterpolationAlgorithm orientationInterpolationAlgorithm = CesiumInterpolationAlgorithm.Linear;
             const int orientationInterpolationDegree = 1;
 
-            var outputStream = new CesiumOutputStream(StringWriter)
-            {
-                PrettyFormatting = true
-            };
+            var stringWriter = new StringWriter();
+            var outputStream = new CesiumOutputStream(stringWriter, true);
             var writer = new CesiumStreamWriter();
 
             using (var packet = writer.OpenPacket(outputStream))
@@ -92,7 +91,7 @@ namespace CesiumLanguageWriterTests
                 }
             }
 
-            Console.WriteLine(StringWriter.ToString());
+            Console.WriteLine(stringWriter.ToString());
         }
 
         [Test]

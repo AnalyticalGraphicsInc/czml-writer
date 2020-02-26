@@ -100,7 +100,7 @@ namespace CesiumLanguageWriterTests
         }
 
         /// <summary>
-        /// Tests thats the <see cref="Cartesian.EqualsEpsilon"/> method returns true
+        /// Tests that the <see cref="Cartesian.EqualsEpsilon"/> method returns true
         /// when the difference is exactly epsilon.
         /// </summary>
         [Test]

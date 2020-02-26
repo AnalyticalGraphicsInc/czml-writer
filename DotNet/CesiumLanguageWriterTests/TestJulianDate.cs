@@ -419,9 +419,6 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(expected, Convert.ToDateTime(julianDate));
         }
 
-        /// <summary>
-        /// Tests the <see cref="IConvertible.ToDouble"/>method.
-        /// </summary>
         [Test]
         [CSToJavaExclude]
         public void TestToDouble()

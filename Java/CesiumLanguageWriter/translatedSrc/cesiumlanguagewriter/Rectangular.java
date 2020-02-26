@@ -19,7 +19,6 @@ import javax.annotation.Nonnull;
         "deprecation",
         "serial"
 })
-@CS2JWarning("Unhandled attribute removed: SuppressMessage")
 public final class Rectangular implements IEquatable<Rectangular>, ImmutableValueType {
     /**
     * Initializes a new instance.
@@ -31,7 +30,6 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     * @param x The linear coordinate along the positive x-axis.
     * @param y The linear coordinate along the positive y-axis.
     */
-    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     public Rectangular(double x, double y) {
         m_x = x;
         m_y = y;
@@ -247,7 +245,7 @@ public final class Rectangular implements IEquatable<Rectangular>, ImmutableValu
     is within the required tolerance of the corresponding coordinate value of this instance.
     * @param other The set of {@link Rectangular} coordinates to compare to this instance.
     * @param epsilon The limit at which the absolute differences between the coordinate values will not be considered equal.
-    * @return {@code true} if the absolute differences are less than or equal to {@code epsilon}; otherwise, {@code false}.
+    * @return {@code true} if the absolute differences are less than or equal to {@code epsilon}; otherwise {@code false}.
     */
     public final boolean equalsEpsilon(@Nonnull Rectangular other, double epsilon) {
         return Math.abs(m_x - other.m_x) <= epsilon && Math.abs(m_y - other.m_y) <= epsilon;

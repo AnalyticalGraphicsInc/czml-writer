@@ -72,17 +72,17 @@ namespace CesiumLanguageWriterTests
                         new Dictionary<string, object>
                         {
                             { "interval", CesiumFormattingHelper.ToIso8601Interval(interval1Start, interval1Stop, Iso8601Format.Compact) },
-                            { "boolean", interval1Value }
+                            { BooleanCesiumWriter.BooleanPropertyName, interval1Value },
                         },
                         new Dictionary<string, object>
                         {
                             { "interval", CesiumFormattingHelper.ToIso8601Interval(interval2Start, interval2Stop, Iso8601Format.Compact) },
-                            { "boolean", interval2Value }
+                            { BooleanCesiumWriter.BooleanPropertyName, interval2Value },
                         },
                         new Dictionary<string, object>
                         {
                             { "interval", CesiumFormattingHelper.ToIso8601Interval(interval3Start, interval3Stop, Iso8601Format.Compact) },
-                            { "boolean", interval3Value }
+                            { BooleanCesiumWriter.BooleanPropertyName, interval3Value },
                         },
                     }
                 },
@@ -149,7 +149,7 @@ namespace CesiumLanguageWriterTests
                     {
                         { "delete", true },
                     }
-                }
+                },
             });
         }
 
@@ -170,7 +170,7 @@ namespace CesiumLanguageWriterTests
                     {
                         { "delete", true },
                     }
-                }
+                },
             });
         }
 

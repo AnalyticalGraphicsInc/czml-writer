@@ -245,12 +245,12 @@ namespace CesiumLanguageWriter
         /// <param name="result">
         /// <filter name="Java">On input, an array with one element.  On return, the array is populated with</filter>
         /// <filter name="DotNet">On return,</filter>
-        /// an equivalent
-        /// <see cref="JulianDate"/> using the requested <see cref="TimeStandard"/>, if it
-        /// is capable of representing this time, otherwise <see cref="MinValue"/>.
+        /// an equivalent <see cref="JulianDate"/> using the requested <see cref="TimeStandard"/>, if it
+        /// is capable of representing this time; otherwise <see cref="MinValue"/>.
         /// </param>
-        /// <returns><see langword="true"/> if this date could be converted to the
-        /// requested <see cref="TimeStandard"/>, otherwise false.</returns>
+        /// <returns>
+        /// <see langword="true"/> if this date could be converted to the requested <see cref="TimeStandard"/>; otherwise <see langword="false"/>.
+        /// </returns>
         [Pure]
         public bool TryConvertTimeStandard(TimeStandard timeStandard, out JulianDate result)
         {
@@ -544,7 +544,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="left">The date on the left side.</param>
         /// <param name="right">The date on the right side.</param>
-        /// <returns><see langword="true"/> if the dates are equal, otherwise <see langword="false"/>.</returns>
+        /// <returns><see langword="true"/> if the dates are equal; otherwise <see langword="false"/>.</returns>
         public static bool operator ==(JulianDate left, JulianDate right)
         {
             return left.Equals(right);
@@ -558,7 +558,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="left">The date on the left side.</param>
         /// <param name="right">The date on the right side.</param>
-        /// <returns><see langword="true"/> if the dates are not equal, otherwise <see langword="false"/>.</returns>
+        /// <returns><see langword="true"/> if the dates are not equal; otherwise <see langword="false"/>.</returns>
         public static bool operator !=(JulianDate left, JulianDate right)
         {
             return !left.Equals(right);
@@ -569,7 +569,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="left">The date on the left side.</param>
         /// <param name="right">The date on the right side.</param>
-        /// <returns><see langword="true"/> if the <paramref name="left"/> is less than <paramref name="right"/>, otherwise <see langword="false"/>.</returns>
+        /// <returns><see langword="true"/> if the <paramref name="left"/> is less than <paramref name="right"/>; otherwise <see langword="false"/>.</returns>
         public static bool operator <(JulianDate left, JulianDate right)
         {
             return left.CompareTo(right) < 0;
@@ -580,7 +580,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="left">The date on the left side.</param>
         /// <param name="right">The date on the right side.</param>
-        /// <returns><see langword="true"/> if the <paramref name="left"/> is greater than <paramref name="right"/>, otherwise <see langword="false"/>.</returns>
+        /// <returns><see langword="true"/> if the <paramref name="left"/> is greater than <paramref name="right"/>; otherwise <see langword="false"/>.</returns>
         public static bool operator >(JulianDate left, JulianDate right)
         {
             return left.CompareTo(right) > 0;
@@ -591,7 +591,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="left">The date on the left side.</param>
         /// <param name="right">The date on the right side.</param>
-        /// <returns><see langword="true"/> if the <paramref name="left"/> is less than or equal to <paramref name="right"/>, otherwise <see langword="false"/>.</returns>
+        /// <returns><see langword="true"/> if the <paramref name="left"/> is less than or equal to <paramref name="right"/>; otherwise <see langword="false"/>.</returns>
         public static bool operator <=(JulianDate left, JulianDate right)
         {
             return left.CompareTo(right) <= 0;
@@ -602,7 +602,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="left">The date on the left side.</param>
         /// <param name="right">The date on the right side.</param>
-        /// <returns><see langword="true"/> if the <paramref name="left"/> is greater than or equal to <paramref name="right"/>, otherwise <see langword="false"/>.</returns>
+        /// <returns><see langword="true"/> if the <paramref name="left"/> is greater than or equal to <paramref name="right"/>; otherwise <see langword="false"/>.</returns>
         public static bool operator >=(JulianDate left, JulianDate right)
         {
             return left.CompareTo(right) >= 0;
@@ -615,7 +615,7 @@ namespace CesiumLanguageWriter
         /// instead of this method.
         /// </summary>
         /// <param name="obj">The object to compare to this instance.</param>
-        /// <returns><see langword="true"/> if <paramref name="obj"/> represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
+        /// <returns><see langword="true"/> if <paramref name="obj"/> represents the same value as this instance; otherwise <see langword="false"/>.</returns>
         public override bool Equals(object obj)
         {
             return obj is JulianDate && Equals((JulianDate)obj);
@@ -628,7 +628,7 @@ namespace CesiumLanguageWriter
         /// instead of this method.
         /// </summary>
         /// <param name="other">The date to compare to this instance.</param>
-        /// <returns><see langword="true"/> if <paramref name="other"/> represents the same value as this instance; otherwise, <see langword="false"/>.</returns>
+        /// <returns><see langword="true"/> if <paramref name="other"/> represents the same value as this instance; otherwise <see langword="false"/>.</returns>
         public bool Equals(JulianDate other)
         {
             return CompareTo(other) == 0;
@@ -640,7 +640,7 @@ namespace CesiumLanguageWriter
         /// moment when expressed in the same time standard.
         /// </summary>
         /// <param name="other">The date to compare to this instance.</param>
-        /// <returns><see langword="true"/> if <paramref name="other"/> is identical to this instance; otherwise, <see langword="false"/>.</returns>
+        /// <returns><see langword="true"/> if <paramref name="other"/> is identical to this instance; otherwise <see langword="false"/>.</returns>
         [Pure]
         [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
         public bool IsIdentical(JulianDate other)
@@ -801,14 +801,9 @@ namespace CesiumLanguageWriter
         public int CompareTo(object obj)
         {
             if (obj == null)
-            {
                 return 1;
-            }
-
             if (!(obj is JulianDate))
-            {
                 throw new ArgumentException(CesiumLocalization.ArgumentTypeInvalid, "obj");
-            }
 
             return CompareTo((JulianDate)obj);
         }
@@ -866,6 +861,7 @@ namespace CesiumLanguageWriter
         /// Implements <see cref="IConvertible"/> interface. Converts a
         /// <see cref="JulianDate"/> to a <see cref="DateTime"/> object.
         /// </summary>
+        /// <param name="provider">An <see cref="IFormatProvider" /> interface implementation that supplies culture-specific formatting information.</param>
         /// <returns>A <see cref="DateTime"/> representation of a <see cref="JulianDate"/>
         /// </returns>
         [CSToJavaExclude("No IConvertible interface in Java.")]
@@ -890,6 +886,7 @@ namespace CesiumLanguageWriter
         /// <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be
         /// converted to this type of object.
         /// </summary>
+        /// <param name="provider">An <see cref="IFormatProvider" /> interface implementation that supplies culture-specific formatting information.</param>
         [CSToJavaExclude("No IConvertible interface in Java.")]
         bool IConvertible.ToBoolean(IFormatProvider provider)
         {
@@ -901,6 +898,7 @@ namespace CesiumLanguageWriter
         /// <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be
         /// converted to this type of object.
         /// </summary>
+        /// <param name="provider">An <see cref="IFormatProvider" /> interface implementation that supplies culture-specific formatting information.</param>
         [CSToJavaExclude("No IConvertible interface in Java.")]
         byte IConvertible.ToByte(IFormatProvider provider)
         {
@@ -912,6 +910,7 @@ namespace CesiumLanguageWriter
         /// <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be
         /// converted to this type of object.
         /// </summary>
+        /// <param name="provider">An <see cref="IFormatProvider" /> interface implementation that supplies culture-specific formatting information.</param>
         [CSToJavaExclude("No IConvertible interface in Java.")]
         char IConvertible.ToChar(IFormatProvider provider)
         {
@@ -923,6 +922,7 @@ namespace CesiumLanguageWriter
         /// <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be
         /// converted to this type of object.
         /// </summary>
+        /// <param name="provider">An <see cref="IFormatProvider" /> interface implementation that supplies culture-specific formatting information.</param>
         [CSToJavaExclude("No IConvertible interface in Java.")]
         decimal IConvertible.ToDecimal(IFormatProvider provider)
         {
@@ -933,8 +933,8 @@ namespace CesiumLanguageWriter
         /// Implements <see cref="IConvertible"/> interface. Converts
         /// <see cref="JulianDate"/> to its decimal representation.
         /// </summary>
-        /// <returns>The total number of whole and fractional days represented by this astronomical
-        /// Julian date.</returns>
+        /// <param name="provider">An <see cref="IFormatProvider" /> interface implementation that supplies culture-specific formatting information.</param>
+        /// <returns>The total number of whole and fractional days represented by this astronomical Julian date.</returns>
         [CSToJavaExclude("No IConvertible interface in Java.")]
         double IConvertible.ToDouble(IFormatProvider provider)
         {
@@ -946,6 +946,7 @@ namespace CesiumLanguageWriter
         /// <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be
         /// converted to this type of object.
         /// </summary>
+        /// <param name="provider">An <see cref="IFormatProvider" /> interface implementation that supplies culture-specific formatting information.</param>
         [CSToJavaExclude("No IConvertible interface in Java.")]
         short IConvertible.ToInt16(IFormatProvider provider)
         {
@@ -957,6 +958,7 @@ namespace CesiumLanguageWriter
         /// <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be
         /// converted to this type of object.
         /// </summary>
+        /// <param name="provider">An <see cref="IFormatProvider" /> interface implementation that supplies culture-specific formatting information.</param>
         [CSToJavaExclude("No IConvertible interface in Java.")]
         int IConvertible.ToInt32(IFormatProvider provider)
         {
@@ -968,6 +970,7 @@ namespace CesiumLanguageWriter
         /// <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be
         /// converted to this type of object.
         /// </summary>
+        /// <param name="provider">An <see cref="IFormatProvider" /> interface implementation that supplies culture-specific formatting information.</param>
         [CSToJavaExclude("No IConvertible interface in Java.")]
         long IConvertible.ToInt64(IFormatProvider provider)
         {
@@ -979,6 +982,7 @@ namespace CesiumLanguageWriter
         /// <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be
         /// converted to this type of object.
         /// </summary>
+        /// <param name="provider">An <see cref="IFormatProvider" /> interface implementation that supplies culture-specific formatting information.</param>
         [CSToJavaExclude("No IConvertible interface in Java.")]
         sbyte IConvertible.ToSByte(IFormatProvider provider)
         {
@@ -990,6 +994,7 @@ namespace CesiumLanguageWriter
         /// <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be
         /// converted to this type of object.
         /// </summary>
+        /// <param name="provider">An <see cref="IFormatProvider" /> interface implementation that supplies culture-specific formatting information.</param>
         [CSToJavaExclude("No IConvertible interface in Java.")]
         float IConvertible.ToSingle(IFormatProvider provider)
         {
@@ -1000,6 +1005,7 @@ namespace CesiumLanguageWriter
         /// Implements <see cref="IConvertible"/> interface. Converts the
         /// <see cref="JulianDate"/> to a string representation.
         /// </summary>
+        /// <param name="provider">An <see cref="IFormatProvider" /> interface implementation that supplies culture-specific formatting information.</param>
         /// <returns>The string representation of this <see cref="JulianDate"/>.</returns>
         [CSToJavaExclude("No IConvertible interface in Java.")]
         string IConvertible.ToString(IFormatProvider provider)
@@ -1012,6 +1018,8 @@ namespace CesiumLanguageWriter
         /// <see cref="JulianDate"/> to the  type given by
         /// <paramref name="conversionType"/>.
         /// </summary>
+        /// <param name="conversionType">The <see cref="Type" /> to which the value of this instance is converted.</param>
+        /// <param name="provider">An <see cref="IFormatProvider" /> interface implementation that supplies culture-specific formatting information.</param>
         /// <returns>A <see cref="JulianDate"/> converted to the type specified by
         /// <paramref name="conversionType"/>.</returns>
         [CSToJavaExclude("No IConvertible interface in Java.")]
@@ -1025,6 +1033,7 @@ namespace CesiumLanguageWriter
         /// <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be
         /// converted to this type of object.
         /// </summary>
+        /// <param name="provider">An <see cref="IFormatProvider" /> interface implementation that supplies culture-specific formatting information.</param>
         [CSToJavaExclude("No IConvertible interface in Java.")]
         ushort IConvertible.ToUInt16(IFormatProvider provider)
         {
@@ -1036,6 +1045,7 @@ namespace CesiumLanguageWriter
         /// <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be
         /// converted to this type of object.
         /// </summary>
+        /// <param name="provider">An <see cref="IFormatProvider" /> interface implementation that supplies culture-specific formatting information.</param>
         [CSToJavaExclude("No IConvertible interface in Java.")]
         uint IConvertible.ToUInt32(IFormatProvider provider)
         {
@@ -1047,6 +1057,7 @@ namespace CesiumLanguageWriter
         /// <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be
         /// converted to this type of object.
         /// </summary>
+        /// <param name="provider">An <see cref="IFormatProvider" /> interface implementation that supplies culture-specific formatting information.</param>
         [CSToJavaExclude("No IConvertible interface in Java.")]
         ulong IConvertible.ToUInt64(IFormatProvider provider)
         {

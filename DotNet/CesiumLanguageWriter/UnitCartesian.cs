@@ -28,9 +28,6 @@ namespace CesiumLanguageWriter
         /// <exception cref="NotFiniteNumberException">
         /// The magnitude of the provided coordinates must not be infinite.
         /// </exception>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "2#z")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "1#y")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "0#x")]
         public UnitCartesian(double x, double y, double z)
             : this(x, y, z, Normalization.Unnormalized)
         {
@@ -53,10 +50,6 @@ namespace CesiumLanguageWriter
         /// <exception cref="NotFiniteNumberException">
         /// The magnitude of the provided coordinates must not be infinite.
         /// </exception>
-        [SuppressMessage("Microsoft.Design", "CA1021:AvoidOutParameters", MessageId = "3#")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "2#z")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "1#y")]
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "0#x")]
         public UnitCartesian(double x, double y, double z, out double magnitude)
         {
             NormalizeCoordinates(ref x, ref y, ref z, out magnitude);
@@ -95,7 +88,6 @@ namespace CesiumLanguageWriter
         /// <exception cref="NotFiniteNumberException">
         /// The magnitude of the provided coordinates must not be infinite.
         /// </exception>
-        [SuppressMessage("Microsoft.Design", "CA1021:AvoidOutParameters", MessageId = "1#")]
         public UnitCartesian(Cartesian coordinates, out double magnitude)
             : this(coordinates.X, coordinates.Y, coordinates.Z, out magnitude)
         {
@@ -177,7 +169,6 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the linear coordinate along the positive x-axis.
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "X")]
         public double X
         {
             get { return m_x; }
@@ -186,7 +177,6 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the linear coordinate along the positive y-axis.
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Y")]
         public double Y
         {
             get { return m_y; }
@@ -195,7 +185,6 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the linear coordinate along the positive z-axis.
         /// </summary>
-        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Z")]
         public double Z
         {
             get { return m_z; }
@@ -468,7 +457,7 @@ namespace CesiumLanguageWriter
         /// <param name="other">The set of <see cref="UnitCartesian"/> coordinates to compare to this instance.</param>
         /// <param name="epsilon">The limit at which the absolute differences between the coordinate values will not be considered equal.</param>
         /// <returns>
-        /// <see langword="true"/> if the absolute differences are less than or equal to <paramref name="epsilon"/>; otherwise, <see langword="false"/>.
+        /// <see langword="true"/> if the absolute differences are less than or equal to <paramref name="epsilon"/>; otherwise <see langword="false"/>.
         /// </returns>
         [Pure]
         public bool EqualsEpsilon(UnitCartesian other, double epsilon)
