@@ -397,7 +397,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
         }
 
         private static long parseNumber(String s, int valuePos, int minDigits, int digits, boolean leadingzero, @Nonnull int[] numParsed) {
-            long number = 0;
+            long number = 0L;
             int i;
             if (!leadingzero) {
                 int realDigits = 0;
