@@ -310,9 +310,16 @@ public final class FormatHelper {
      */
     @Nonnull
     public static Format buildFormat(@Nullable Locale locale, @Nullable String pattern, int width) {
-        Format format = formatCache.get().computeIfAbsent(new FormatCacheKey(locale, pattern, width), FormatHelper::createFormat);
+        Format format = getFormatCache().computeIfAbsent(new FormatCacheKey(locale, pattern, width), FormatHelper::createFormat);
         assert format != null;
         return format;
+    }
+
+    @Nonnull
+    private static HashMap<FormatCacheKey, Format> getFormatCache() {
+        HashMap<FormatCacheKey, Format> cache = formatCache.get();
+        assert cache != null;
+        return cache;
     }
 
     private static final class FormatCacheKey {

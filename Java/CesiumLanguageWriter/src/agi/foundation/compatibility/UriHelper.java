@@ -5,6 +5,7 @@ import agi.foundation.compatibility.annotations.Internal;
 import java.io.File;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,6 +24,15 @@ public final class UriHelper {
     private static final Pattern opaqueUriRegex = Pattern.compile("^(?:([^:/?#]+):)([^/][^#]*)(?:#(.*))?");
 
     private UriHelper() {}
+
+    @Nonnull
+    static URI toURI(URL url) {
+        try {
+            return url.toURI();
+        } catch (URISyntaxException e) {
+            throw new RuntimeURISyntaxException(e);
+        }
+    }
 
     /**
      * Initializes a new instance of the URI class with the specified URI.

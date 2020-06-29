@@ -10,6 +10,7 @@ import cesiumlanguagewriter.advanced.*;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import javax.annotation.Nonnull;
+import org.junit.ClassRule;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
 import org.junit.runners.MethodSorters;
@@ -215,11 +216,12 @@ public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends Ce
     }
 
     @Nonnull
-    private final TestContextRule rule$testContext = new TestContextRule();
+    private static final TestContextRule rule$testContext = new TestContextRule();
 
     @Nonnull
     @Rule
-    public TestContextRule getRule$testContext() {
+    @ClassRule
+    public static TestContextRule getRule$testContext() {
         return rule$testContext;
     }
 }

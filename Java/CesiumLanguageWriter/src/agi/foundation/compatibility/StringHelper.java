@@ -21,25 +21,15 @@ import javax.annotation.Nullable;
 @Internal
 @Deprecated
 public final class StringHelper {
-    private enum PaddingType {
-        LEFT,
-        RIGHT,
-    }
-
+    @Nonnull
+    static final String[] emptyStringArray = new String[0];
     @Nonnull
     private static final Pattern splitWhitespacePattern;
-    @Nonnull
-    private static final char[] trimWhitespaceChars;
-    /**
-     * Represents the empty string.
-     */
-    @Nonnull
-    public static final String empty = "";
 
     static {
         // this set of characters is taken from the .NET documentation for
         // String.Split.
-        char[] splitWhitespaceChars = new char[] {
+        final char[] splitWhitespaceChars = {
                 '\u0009',
                 '\n',
                 '\u000b',
@@ -68,44 +58,50 @@ public final class StringHelper {
 
         // create a pattern matching any character in the above set
         StringBuilder pattern = new StringBuilder(2 + splitWhitespaceChars.length);
-        pattern.append("[");
-        for (char c : splitWhitespaceChars) {
-            pattern.append(c);
-        }
-        pattern.append("]");
-        splitWhitespacePattern = Pattern.compile(pattern.toString());
+        pattern.append('[').append(splitWhitespaceChars, 0, splitWhitespaceChars.length).append(']');
 
-        // This set of characters is taken from the .NET documentation for
-        // String.Trim and has one extra character in it (the last one) than the
-        // above set for String.Split. The .NET doc makes special note of this.
-        trimWhitespaceChars = new char[] {
-                '\u0009',
-                '\n',
-                '\u000b',
-                '\u000c',
-                '\r',
-                '\u0020',
-                '\u0085',
-                '\u00a0',
-                '\u1680',
-                '\u2000',
-                '\u2001',
-                '\u2002',
-                '\u2003',
-                '\u2004',
-                '\u2005',
-                '\u2006',
-                '\u2007',
-                '\u2008',
-                '\u2009',
-                '\u200a',
-                '\u200b',
-                '\u2028',
-                '\u2029',
-                '\u3000',
-                '\ufeff',
-        };
+        splitWhitespacePattern = Pattern.compile(pattern.toString());
     }
+
+    /**
+     * This set of characters is taken from the .NET documentation for String.Trim and has
+     * one extra character in it (the last one) than the above set for String.Split. The
+     * .NET doc makes special note of this.
+     */
+    @Nonnull
+    private static final char[] trimWhitespaceChars = {
+            '\u0009',
+            '\n',
+            '\u000b',
+            '\u000c',
+            '\r',
+            '\u0020',
+            '\u0085',
+            '\u00a0',
+            '\u1680',
+            '\u2000',
+            '\u2001',
+            '\u2002',
+            '\u2003',
+            '\u2004',
+            '\u2005',
+            '\u2006',
+            '\u2007',
+            '\u2008',
+            '\u2009',
+            '\u200a',
+            '\u200b',
+            '\u2028',
+            '\u2029',
+            '\u3000',
+            '\ufeff',
+    };
+
+    /**
+     * Represents the empty string.
+     */
+    @Nonnull
+    public static final String empty = "";
 
     private StringHelper() {}
 
@@ -124,6 +120,18 @@ public final class StringHelper {
         char[] array = new char[count];
         Arrays.fill(array, c);
         return new String(array);
+    }
+
+    /**
+     * Initializes a new instance of the StringBuilder class using the specified capacity.
+     *
+     * @param capacity
+     *            The suggested starting size of this instance.
+     * @return the new StringBuilder
+     */
+    @Nonnull
+    public static StringBuilder createStringBuilder(int capacity) {
+        return new StringBuilder(capacity);
     }
 
     public static boolean isEmpty(@Nullable String str) {
@@ -203,16 +211,16 @@ public final class StringHelper {
     public static String[] split(@Nonnull String s, @Nullable char[] separator, int count, @Nonnull StringSplitOptions options) {
         String regex = null;
         if (separator != null && separator.length > 0) {
-            StringBuilder builder = new StringBuilder("[");
+            StringBuilder builder = new StringBuilder(2 + 6 * separator.length);
+            builder.append('[');
             for (char separatorChar : separator) {
                 // Encode the characters with \\uhhhh where hhhh is the hex
                 // representation of the value of the character. Alternatively,
                 // we could just escape the characters that have special meaning
                 // in a regular expression, but that approach is more error prone.
-                builder.append("\\u");
-                builder.append(StringHelper.padLeft(Integer.toHexString(separatorChar), 4, '0'));
+                builder.append("\\u").append(StringHelper.padLeft(Integer.toHexString(separatorChar), 4, '0'));
             }
-            builder.append("]");
+            builder.append(']');
             regex = builder.toString();
         }
 
@@ -228,7 +236,8 @@ public final class StringHelper {
 
         boolean removeEmptyEntries = options == StringSplitOptions.REMOVE_EMPTY_ENTRIES;
         if (count == 0 || removeEmptyEntries && s.length() == 0)
-            return new String[0];
+            return emptyStringArray;
+
         if (count == 1 || s.length() == 0) {
             return new String[] {
                     s
@@ -237,51 +246,50 @@ public final class StringHelper {
 
         Pattern pattern = regex == null ? splitWhitespacePattern : Pattern.compile(regex);
 
-        Scanner scanner = new Scanner(s);
-        scanner.useDelimiter(pattern);
-
         ArrayList<String> result = new ArrayList<>();
-
         boolean firstToken = true;
         int lastMatchEnd = 0;
-        while (scanner.hasNext()) {
-            // grab next token
-            String next = scanner.next();
 
-            MatchResult match = scanner.match();
-            if (firstToken && match.start() > 0 && !removeEmptyEntries) {
-                // if A) this is the first token, B) the token doesn't start at
-                // index 0, and C) we're not supposed to remove empty entries,
-                // then we've already skipped past one delimiter, and so we
-                // should add an empty result to represent the zero-length
-                // "match" before the first delimiter.
-                result.add(empty);
+        try (Scanner scanner = new Scanner(s)) {
+            scanner.useDelimiter(pattern);
+
+            while (scanner.hasNext()) {
+                // grab next token
+                String next = scanner.next();
+
+                MatchResult match = scanner.match();
+                if (firstToken && match.start() > 0 && !removeEmptyEntries) {
+                    // if A) this is the first token, B) the token doesn't start at
+                    // index 0, and C) we're not supposed to remove empty entries,
+                    // then we've already skipped past one delimiter, and so we
+                    // should add an empty result to represent the zero-length
+                    // "match" before the first delimiter.
+                    result.add(empty);
+                }
+
+                firstToken = false;
+
+                if (removeEmptyEntries && next.length() == 0) {
+                    // if the token is empty, and we are being asked to remove empty
+                    // entries, then skip it
+                    continue;
+                }
+
+                if (count > 0 && result.size() >= count - 1) {
+                    // if we've exceeded our maximum result count, just use the
+                    // end of the input string, starting from the current
+                    // token's start, as the final token, then break
+                    result.add(s.substring(match.start()));
+                    lastMatchEnd = s.length();
+                    break;
+                }
+
+                // otherwise, this token is good
+                result.add(next);
+
+                lastMatchEnd = match.end();
             }
-
-            firstToken = false;
-
-            if (removeEmptyEntries && next.length() == 0) {
-                // if the token is empty, and we are being asked to remove empty
-                // entries, then skip it
-                continue;
-            }
-
-            if (count > 0 && result.size() >= count - 1) {
-                // if we've exceeded our maximum result count, just use the
-                // end of the input string, starting from the current
-                // token's start, as the final token, then break
-                result.add(s.substring(match.start()));
-                lastMatchEnd = s.length();
-                break;
-            }
-
-            // otherwise, this token is good
-            result.add(next);
-
-            lastMatchEnd = match.end();
         }
-
-        scanner.close();
 
         if (lastMatchEnd < s.length() && !removeEmptyEntries) {
             // if the end of the last match is not at the end of the string,
@@ -292,7 +300,7 @@ public final class StringHelper {
             result.add(empty);
         }
 
-        return result.toArray(new String[0]);
+        return result.toArray(emptyStringArray);
     }
 
     /**
@@ -324,6 +332,11 @@ public final class StringHelper {
         result.append(s, 0, startIndex);
         result.append(s, startIndex + count, strLength);
         return result.toString();
+    }
+
+    private enum PaddingType {
+        LEFT,
+        RIGHT,
     }
 
     /**

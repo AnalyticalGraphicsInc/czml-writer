@@ -10,6 +10,7 @@ import agi.foundation.TypeLiteral;
 import cesiumlanguagewriter.*;
 import javax.annotation.Nonnull;
 import org.junit.Assert;
+import org.junit.ClassRule;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
 import org.junit.runners.MethodSorters;
@@ -382,11 +383,12 @@ public class TestUnitCartesian {
     }
 
     @Nonnull
-    private final TestContextRule rule$testContext = new TestContextRule();
+    private static final TestContextRule rule$testContext = new TestContextRule();
 
     @Nonnull
     @Rule
-    public TestContextRule getRule$testContext() {
+    @ClassRule
+    public static TestContextRule getRule$testContext() {
         return rule$testContext;
     }
 }

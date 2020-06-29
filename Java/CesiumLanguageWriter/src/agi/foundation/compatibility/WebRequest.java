@@ -134,11 +134,7 @@ public abstract class WebRequest {
 
     @Nonnull
     public URI getRequestUri() {
-        try {
-            return url.toURI();
-        } catch (URISyntaxException e) {
-            throw new RuntimeURISyntaxException(e);
-        }
+        return UriHelper.toURI(url);
     }
 
     @Nonnull

@@ -6,6 +6,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Arrays;
 
+import javax.annotation.Nonnull;
+
 /**
  * Creates a stream whose backing store is memory.
  *
@@ -14,6 +16,7 @@ import java.util.Arrays;
 @Internal
 @Deprecated
 public class MemoryStream extends InputStream implements IDisposable, ISeekableStream {
+    @Nonnull
     private byte[] buffer;
     private int capacity;
     private int length;
@@ -59,7 +62,7 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
      * @param buffer
      *            The array of unsigned bytes from which to create the current stream.
      */
-    public MemoryStream(byte[] buffer) {
+    public MemoryStream(@Nonnull byte[] buffer) {
         this(buffer, true);
     }
 
@@ -72,7 +75,9 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
      * @param writable
      *            True if the stream supports writing, false otherwise.
      */
-    public MemoryStream(byte[] buffer, boolean writable) {
+    public MemoryStream(@Nonnull byte[] buffer, boolean writable) {
+        ArgumentNullException.assertNonNull(buffer, "buffer");
+
         this.buffer = buffer;
 
         this.capacity = buffer.length;
@@ -81,7 +86,7 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
         this.position = 0;
 
         this.writable = writable;
-        this.expandable = true;
+        this.expandable = false;
         this.bufferVisible = false;
     }
 
@@ -96,7 +101,7 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
      * @param count
      *            The length of the stream in bytes.
      */
-    public MemoryStream(byte[] buffer, int index, int count) {
+    public MemoryStream(@Nonnull byte[] buffer, int index, int count) {
         this(buffer, index, count, true, false);
     }
 
@@ -113,7 +118,7 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
      * @param writable
      *            True if the stream supports writing, false otherwise.
      */
-    public MemoryStream(byte[] buffer, int index, int count, boolean writable) {
+    public MemoryStream(@Nonnull byte[] buffer, int index, int count, boolean writable) {
         this(buffer, index, count, writable, false);
     }
 
@@ -133,7 +138,9 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
      * @param publiclyVisible
      *            Whether the stream allows direct access to the underlying buffer.
      */
-    public MemoryStream(byte[] buffer, int index, int count, boolean writable, boolean publiclyVisible) {
+    public MemoryStream(@Nonnull byte[] buffer, int index, int count, boolean writable, boolean publiclyVisible) {
+        ArgumentNullException.assertNonNull(buffer, "buffer");
+
         this.buffer = buffer;
 
         this.capacity = index + count;
@@ -211,6 +218,7 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
      *         array if a byte array was not provided to the MemoryStream constructor
      *         during construction of the current instance.
      */
+    @Nonnull
     public byte[] getBuffer() {
         if (!bufferVisible)
             throw new RuntimeIllegalAccessException("Cannot call getBuffer().");
@@ -234,21 +242,15 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
      *            The new length of the usable portion of the buffer for the stream.
      */
     public void setCapacity(int value) {
-        if (!expandable)
+        if (!expandable && value != getCapacity())
             throw new UnsupportedOperationException("Cannot expand this MemoryStream");
 
-        if (buffer != null && value == buffer.length)
-            return;
-
-        byte[] newBuffer = null;
-        if (value > 0) {
-            newBuffer = new byte[value];
-            if (buffer != null)
-                System.arraycopy(buffer, 0, newBuffer, 0, length);
+        if (expandable && value != capacity) {
+            byte[] newBuffer = new byte[value];
+            System.arraycopy(buffer, 0, newBuffer, 0, length);
+            buffer = newBuffer;
+            capacity = value;
         }
-
-        buffer = newBuffer;
-        capacity = value;
     }
 
     /**
@@ -275,7 +277,6 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
             throw new UnsupportedOperationException("Cannot write to this stream.");
 
         int newLength = (int) value + origin;
-
         boolean newArray = expand(newLength);
         if (!newArray && newLength > length) {
             clearBuffer(length, newLength);
@@ -319,23 +320,21 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
      *         reference point and the offset.
      */
     public long seek(long offset, SeekOrigin loc) {
-        int reference;
+        position = getReference(loc) + (int) offset;
+        return position;
+    }
+
+    private int getReference(SeekOrigin loc) {
         switch (loc) {
         case BEGIN:
-            reference = origin;
-            break;
+            return origin;
         case CURRENT:
-            reference = position;
-            break;
+            return position;
         case END:
-            reference = length;
-            break;
+            return length;
         default:
-            throw new ArgumentException("loc");
+            throw new ArgumentException("Invalid SeekOrigin", "loc");
         }
-
-        position = reference + (int) offset;
-        return position;
     }
 
     /**

@@ -72,7 +72,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
             for (final String s : patterns) {
                 if (StringHelper.endsWith(s, ".f*", StringComparison.ORDINAL)) {
                     result.add(StringHelper.replace(s, ".f*", ""));
-                    StringBuilder newStr = new StringBuilder(maximumFractionalSeconds);
+                    StringBuilder newStr = StringHelper.createStringBuilder(maximumFractionalSeconds);
                     for (int i = 1; i <= maximumFractionalSeconds; i++) {
                         newStr.append("f");
                         result.add(StringHelper.replace(s, "f*", newStr.toString()));
@@ -1333,7 +1333,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
             // the length of the format is usually a good guess of the number
             // of chars in the result. Might save us a few bytes sometimes
             // Add + 10 for cases like mmmm dddd
-            StringBuilder result = new StringBuilder(format.length() + 10);
+            StringBuilder result = StringHelper.createStringBuilder(format.length() + 10);
             // For some cases, the output should not use culture dependent calendar
             if (useInvariant) {
                 dfi = DateTimeFormatInfo.getInvariantInfo();
@@ -2155,7 +2155,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     })
     @Nonnull
     private final String buildIso8601FormatString(@Nonnull Iso8601Format format, int digitsOfFractionalSeconds, boolean requireFractionalSeconds) {
-        StringBuilder formatStringBuilder = new StringBuilder(50);
+        StringBuilder formatStringBuilder = StringHelper.createStringBuilder(50);
         switch (format) {
         case BASIC: {
             formatStringBuilder.append("yyyyMMdd'T'HHmmss");

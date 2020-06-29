@@ -18,6 +18,7 @@ import java.util.Locale;
 import javax.annotation.Nonnull;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.ClassRule;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
 import org.junit.rules.ExpectedException;
@@ -461,11 +462,12 @@ public class TestGregorianDateParsing {
     }
 
     @Nonnull
-    private final TestContextRule rule$testContext = new TestContextRule();
+    private static final TestContextRule rule$testContext = new TestContextRule();
 
     @Nonnull
     @Rule
-    public TestContextRule getRule$testContext() {
+    @ClassRule
+    public static TestContextRule getRule$testContext() {
         return rule$testContext;
     }
 
