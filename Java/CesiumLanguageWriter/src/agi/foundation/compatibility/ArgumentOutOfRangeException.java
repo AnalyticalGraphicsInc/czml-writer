@@ -79,7 +79,7 @@ public class ArgumentOutOfRangeException extends ArgumentException {
         String message = super.getMessage();
         if (actualValue == null)
             return message;
-        return message + EnvironmentHelper.newLine() + "Actual value was " + actualValue;
+        return message + EnvironmentHelper.newLine() + "Actual value was " + actualValue + ".";
     }
 
     /**
