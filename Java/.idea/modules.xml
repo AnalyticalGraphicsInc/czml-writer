@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CesiumLanguageWriterTests/CesiumLanguageWriterTests.iml" filepath="$PROJECT_DIR$/CesiumLanguageWriterTests/CesiumLanguageWriterTests.iml" group="czml-writer/CesiumLanguageWriterTests" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CesiumLanguageWriter/cesiumlanguagewriter.iml" filepath="$PROJECT_DIR$/.idea/modules/CesiumLanguageWriter/cesiumlanguagewriter.iml" group="czml-writer/cesiumlanguagewriter" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/czml-writer.iml" filepath="$PROJECT_DIR$/.idea/modules/czml-writer.iml" group="czml-writer" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/czml-writer.iml" filepath="$PROJECT_DIR$/.idea/modules/czml-writer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CesiumLanguageWriterTests/czml-writer.CesiumLanguageWriterTests.iml" filepath="$PROJECT_DIR$/.idea/modules/CesiumLanguageWriterTests/czml-writer.CesiumLanguageWriterTests.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CesiumLanguageWriter/czml-writer.cesiumlanguagewriter.iml" filepath="$PROJECT_DIR$/.idea/modules/CesiumLanguageWriter/czml-writer.cesiumlanguagewriter.iml" />
     </modules>
   </component>
 </project>
