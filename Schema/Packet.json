@@ -111,6 +111,10 @@
             "$ref": "Polyline.json",
             "description": "A polyline, which is a line in the scene composed of multiple segments."
         },
+        "polylineVolume": {
+            "$ref": "PolylineVolume.json",
+            "description": "A polyline with a volume, defined as a 2D shape extruded along a polyline."
+        },
         "rectangle": {
             "$ref": "Rectangle.json",
             "description": "A cartographic rectangle, which conforms to the curvature of the globe and can be placed along the surface or at altitude."

@@ -1,0 +1,23 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Shape.json",
+    "title": "Shape",
+    "description": "A list of two-dimensional positions defining a shape.",
+    "allOf": [
+        { "$ref": "DeletableProperty.json" },
+        { "$ref": "ValueProperties/Cartesian2ListValueProperty.json" }
+    ],
+    "type": [
+        "array",
+        "object"
+    ],
+    "items": {
+        "$ref": "#"
+    },
+    "properties": {
+        "cartesian2": {
+            "$ref": "Values/Cartesian2ListValue.json",
+            "description": "The list of positions specified as two-dimensional Cartesian values `[X, Y, X, Y, ...]`."
+        }
+    }
+}

@@ -49,6 +49,7 @@
     <Compile Include="Advanced\CesiumArcTypeValuePropertyAdaptor.cs" />
     <Compile Include="Advanced\CesiumBooleanValuePropertyAdaptor.cs" />
     <Compile Include="Advanced\CesiumBoundingRectangleValuePropertyAdaptor.cs" />
+    <Compile Include="Advanced\CesiumCartesian2ListValuePropertyAdaptor.cs" />
     <Compile Include="Advanced\CesiumCartesian2ValuePropertyAdaptor.cs" />
     <Compile Include="Advanced\CesiumCartesian3ListOfListsValuePropertyAdaptor.cs" />
     <Compile Include="Advanced\CesiumCartesian3ListValuePropertyAdaptor.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="Advanced\ICesiumArcTypeValuePropertyWriter.cs" />
     <Compile Include="Advanced\ICesiumBooleanValuePropertyWriter.cs" />
     <Compile Include="Advanced\ICesiumBoundingRectangleValuePropertyWriter.cs" />
+    <Compile Include="Advanced\ICesiumCartesian2ListValuePropertyWriter.cs" />
     <Compile Include="Advanced\ICesiumCartesian2ValuePropertyWriter.cs" />
     <Compile Include="Advanced\ICesiumCartesian3ListOfListsValuePropertyWriter.cs" />
     <Compile Include="Advanced\ICesiumCartesian3ListValuePropertyWriter.cs" />
@@ -354,6 +356,7 @@
     <Compile Include="Generated\PolylineOutlineMaterialCesiumWriter.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Generated\PolylineVolumeCesiumWriter.cs" />
     <Compile Include="Generated\PositionCesiumWriter.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -383,6 +386,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Generated\ShadowModeCesiumWriter.cs" />
+    <Compile Include="Generated\ShapeCesiumWriter.cs" />
     <Compile Include="Generated\SolidColorMaterialCesiumWriter.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -1,0 +1,11 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Values/Cartesian2ListValue.json",
+    "title": "Cartesian2List",
+    "description": "A list of two-dimensional Cartesian values specified as `[X, Y, X, Y, ...]`.",
+    "type": "array",
+    "czmlValue": true,
+    "items": {
+        "type": "number"
+    }
+}

@@ -94,6 +94,19 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
+        /// Create an adaptor for lists of <see cref="Rectangular"/> values.
+        /// </summary>
+        /// <typeparam name="TFrom">The class that implements <see cref="ICesiumCartesian3ListValuePropertyWriter"/> to adapt.</typeparam>
+        /// <param name="parent">The instance to wrap.</param>
+        /// <returns>The new adaptor.</returns>
+        [NotNull]
+        public static CesiumCartesian2ListValuePropertyAdaptor<TFrom> CreateCartesian2List<TFrom>([NotNull] TFrom parent)
+            where TFrom : class, ICesiumCartesian2ListValuePropertyWriter, ICesiumDeletablePropertyWriter
+        {
+            return new CesiumCartesian2ListValuePropertyAdaptor<TFrom>(parent, (writer, value) => writer.WriteCartesian2(value), CreateWriteDeleteCallback<TFrom>());
+        }
+
+        /// <summary>
         /// Create an adaptor for lists of <see cref="Cartesian"/> values.
         /// </summary>
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumCartesian3ListValuePropertyWriter"/> to adapt.</typeparam>

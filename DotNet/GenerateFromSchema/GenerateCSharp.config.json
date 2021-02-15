@@ -542,6 +542,19 @@
                 "writeValue": "CesiumWritingHelper.WriteDoubleList(Output, values);"
             }
         ],
+        "Cartesian2List": [
+            {
+                "usingNamespaces": [ "System.Collections.Generic" ],
+                "parameters": [
+                    {
+                        "type": "IEnumerable<Rectangular>",
+                        "name": "values",
+                        "description": "The values."
+                    }
+                ],
+                "writeValue": "CesiumWritingHelper.WriteCartesian2List(Output, values);"
+            }
+        ],
         "Cartesian3List": [
             {
                 "usingNamespaces": [ "System.Collections.Generic" ],
