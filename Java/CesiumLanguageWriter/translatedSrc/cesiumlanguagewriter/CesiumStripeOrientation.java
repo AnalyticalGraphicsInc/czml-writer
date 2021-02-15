@@ -18,9 +18,10 @@ public enum CesiumStripeOrientation implements Enumeration {
     /**
     * The stripes are oriented horizontally along the X axis.
     */
-    HORIZONTAL(0), /**
-                   * The stripes are oriented vertically along the Y axis.
-                   */
+    HORIZONTAL(0),
+    /**
+    * The stripes are oriented vertically along the Y axis.
+    */
     VERTICAL(1);
     private final int value;
 

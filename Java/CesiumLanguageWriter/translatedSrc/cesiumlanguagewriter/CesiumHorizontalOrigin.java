@@ -18,12 +18,14 @@ public enum CesiumHorizontalOrigin implements Enumeration {
     /**
     * The left side of the item is located at the position.
     */
-    LEFT(0), /**
-             * The item is horizontally centered on the position.
-             */
-    CENTER(1), /**
-               * The right side of the item is located at the position.
-               */
+    LEFT(0),
+    /**
+    * The item is horizontally centered on the position.
+    */
+    CENTER(1),
+    /**
+    * The right side of the item is located at the position.
+    */
     RIGHT(2);
     private final int value;
 

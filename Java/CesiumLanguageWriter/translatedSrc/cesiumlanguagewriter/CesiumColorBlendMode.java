@@ -18,12 +18,14 @@ public enum CesiumColorBlendMode implements Enumeration {
     /**
     * Multiplies the source color by the target color.
     */
-    HIGHLIGHT(0), /**
-                  * Replaces the source color with the target color.
-                  */
-    REPLACE(1), /**
-                * Blends the source color and target color together.
-                */
+    HIGHLIGHT(0),
+    /**
+    * Replaces the source color with the target color.
+    */
+    REPLACE(1),
+    /**
+    * Blends the source color and target color together.
+    */
     MIX(2);
     private final int value;
 

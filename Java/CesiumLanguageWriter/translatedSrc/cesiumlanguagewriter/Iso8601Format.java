@@ -18,12 +18,14 @@ public enum Iso8601Format implements Enumeration {
     /**
     * A complete ISO8601 date and time in the basic format, which omits the dash and colon separators used between time and date components.
     */
-    BASIC(0), /**
-              * A complete ISO8601 date and time in the extended format, which uses dash and colon separators between time and date components.
-              */
-    EXTENDED(1), /**
-                 * The shortest possible way to accurately represent an ISO8601 date and time.
-                 */
+    BASIC(0),
+    /**
+    * A complete ISO8601 date and time in the extended format, which uses dash and colon separators between time and date components.
+    */
+    EXTENDED(1),
+    /**
+    * The shortest possible way to accurately represent an ISO8601 date and time.
+    */
     COMPACT(2);
     private final int value;
 

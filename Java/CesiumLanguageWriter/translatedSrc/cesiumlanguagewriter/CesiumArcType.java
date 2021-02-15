@@ -18,12 +18,14 @@ public enum CesiumArcType implements Enumeration {
     /**
     * The arc is a straight line that does not conform to the surface of an ellipsoid.
     */
-    NONE(0), /**
-             * The arc is a geodesic, which is the shortest path conforming to the surface of an ellipsoid.
-             */
-    GEODESIC(1), /**
-                 * The arc is a rhumb line, or loxodrome, which is the path of constant heading conforming to the surface of an ellipsoid.
-                 */
+    NONE(0),
+    /**
+    * The arc is a geodesic, which is the shortest path conforming to the surface of an ellipsoid.
+    */
+    GEODESIC(1),
+    /**
+    * The arc is a rhumb line, or loxodrome, which is the path of constant heading conforming to the surface of an ellipsoid.
+    */
     RHUMB(2);
     private final int value;
 

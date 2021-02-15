@@ -18,12 +18,14 @@ public enum ClockStep implements Enumeration {
     /**
     * The clock always matches the system clock.
     */
-    SYSTEM_CLOCK(0), /**
-                     * The clock advances by the elapsed system time between ticks, multiplied by a user specified value.
-                     */
-    SYSTEM_CLOCK_MULTIPLIER(1), /**
-                                * The clock advances by a fixed step each tick.
-                                */
+    SYSTEM_CLOCK(0),
+    /**
+    * The clock advances by the elapsed system time between ticks, multiplied by a user specified value.
+    */
+    SYSTEM_CLOCK_MULTIPLIER(1),
+    /**
+    * The clock advances by a fixed step each tick.
+    */
     TICK_DEPENDENT(2);
     private final int value;
 

@@ -18,15 +18,18 @@ public enum CesiumShadowMode implements Enumeration {
     /**
     * The object does not cast or receive shadows.
     */
-    DISABLED(0), /**
-                 * The object casts and receives shadows.
-                 */
-    ENABLED(1), /**
-                * The object casts shadows only.
-                */
-    CAST_ONLY(2), /**
-                  * The object receives shadows only.
-                  */
+    DISABLED(0),
+    /**
+    * The object casts and receives shadows.
+    */
+    ENABLED(1),
+    /**
+    * The object casts shadows only.
+    */
+    CAST_ONLY(2),
+    /**
+    * The object receives shadows only.
+    */
     RECEIVE_ONLY(3);
     private final int value;
 

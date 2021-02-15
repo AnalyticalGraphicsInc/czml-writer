@@ -18,15 +18,18 @@ public enum CesiumImageFormat implements Enumeration {
     /**
     * The image is in Portable Network Graphics (PNG) format.
     */
-    PNG(0), /**
-            * The image is in Joint Photographic Experts Group (JPEG) format.
-            */
-    JPEG(1), /**
-             * The image is in Graphics Interchange Format (GIF) format.
-             */
-    GIF(2), /**
-            * The image is in bitmap (BMP) format.
-            */
+    PNG(0),
+    /**
+    * The image is in Joint Photographic Experts Group (JPEG) format.
+    */
+    JPEG(1),
+    /**
+    * The image is in Graphics Interchange Format (GIF) format.
+    */
+    GIF(2),
+    /**
+    * The image is in bitmap (BMP) format.
+    */
     BMP(3);
     private final int value;
 

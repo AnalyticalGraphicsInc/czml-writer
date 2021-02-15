@@ -36,7 +36,7 @@ public final class StreamHelper {
         byte[] buffer = new byte[bufferSize];
         int count;
         try {
-            while ((count = stream.read(buffer, 0, buffer.length)) > 0) {
+            while ((count = stream.read(buffer)) > 0) {
                 destination.write(buffer, 0, count);
             }
         } catch (IOException e) {

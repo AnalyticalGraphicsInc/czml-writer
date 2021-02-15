@@ -18,12 +18,14 @@ public enum CesiumSensorVolumePortionToDisplay implements Enumeration {
     /**
     * The entire sensor projection is shown.
     */
-    COMPLETE(0), /**
-                 * Only the part of the sensor projection below the ellipsoid horizon is shown.
-                 */
-    BELOW_ELLIPSOID_HORIZON(1), /**
-                                * Only the part of the sensor projection above the ellipsoid horizon is shown.
-                                */
+    COMPLETE(0),
+    /**
+    * Only the part of the sensor projection below the ellipsoid horizon is shown.
+    */
+    BELOW_ELLIPSOID_HORIZON(1),
+    /**
+    * Only the part of the sensor projection above the ellipsoid horizon is shown.
+    */
     ABOVE_ELLIPSOID_HORIZON(2);
     private final int value;
 

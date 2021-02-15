@@ -18,12 +18,14 @@ public enum CesiumLabelStyle implements Enumeration {
     /**
     * The text of the label is filled, but not outlined.
     */
-    FILL(0), /**
-             * The text of the label is outlined, but not filled.
-             */
-    OUTLINE(1), /**
-                * The text of the label is both filled and outlined.
-                */
+    FILL(0),
+    /**
+    * The text of the label is outlined, but not filled.
+    */
+    OUTLINE(1),
+    /**
+    * The text of the label is both filled and outlined.
+    */
     FILL_AND_OUTLINE(2);
     private final int value;
 

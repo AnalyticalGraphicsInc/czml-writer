@@ -215,7 +215,9 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
     private ElementType m_elementType = ElementType.PROPERTY;
 
     private static enum ElementType implements Enumeration {
-        PROPERTY(0), INTERVAL(1), PROPERTY_CONVERTED_TO_INTERVAL(2);
+        PROPERTY(0),
+        INTERVAL(1),
+        PROPERTY_CONVERTED_TO_INTERVAL(2);
         private final int value;
 
         ElementType(int value) {

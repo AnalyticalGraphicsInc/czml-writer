@@ -18,12 +18,14 @@ public enum CesiumExtrapolationType implements Enumeration {
     /**
     * No extrapolation is performed; the property is undefined.
     */
-    NONE(0), /**
-             * Return the first or last sample value.
-             */
-    HOLD(1), /**
-             * Extrapolate the value.
-             */
+    NONE(0),
+    /**
+    * Return the first or last sample value.
+    */
+    HOLD(1),
+    /**
+    * Extrapolate the value.
+    */
     EXTRAPOLATE(2);
     private final int value;
 

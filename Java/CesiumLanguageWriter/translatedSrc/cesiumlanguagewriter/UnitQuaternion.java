@@ -381,7 +381,8 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     private double m_z;
 
     private static enum Normalization implements Enumeration {
-        UNNORMALIZED(0), NORMALIZED(1);
+        UNNORMALIZED(0),
+        NORMALIZED(1);
         private final int value;
 
         Normalization(int value) {

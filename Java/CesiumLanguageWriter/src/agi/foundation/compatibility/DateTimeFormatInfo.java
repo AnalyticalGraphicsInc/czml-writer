@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
 @Deprecated
 public final class DateTimeFormatInfo {
     @Nonnull
+    private static final DateFormats invariantDateFormats;
+    @Nonnull
     private static final Map<Locale, DateFormats> s_dateFormatsByLocale;
     @Nonnull
     private final DateFormats m_dateFormats;
@@ -31,22 +33,12 @@ public final class DateTimeFormatInfo {
     private final String[] m_months;
 
     static {
+        invariantDateFormats = new DateFormatsInvariant();
+
         s_dateFormatsByLocale = new HashMap<>();
+        s_dateFormatsByLocale.put(CultureInfoHelper.getInvariantCulture(), invariantDateFormats);
 
-        DateFormats invariant = new DateFormats();
-        invariant.setShortDatePattern("MM/dd/yyyy");
-        invariant.setLongDatePattern("dddd, dd MMMM yyyy");
-        invariant.setFullDateTimePattern("dddd, dd MMMM yyyy HH:mm:ss");
-        invariant.setMonthDayPattern("MMMM dd");
-        invariant.setRFC1123Pattern("ddd, dd MMM yyyy HH':'mm':'ss 'GMT'");
-        invariant.setSortableDateTimePattern("yyyy'-'MM'-'dd'T'HH':'mm':'ss");
-        invariant.setShortTimePattern("HH:mm");
-        invariant.setLongTimePattern("HH:mm:ss");
-        invariant.setUniversalSortableDateTimePattern("yyyy'-'MM'-'dd HH':'mm':'ss'Z'");
-        invariant.setYearMonthPattern("yyyy MMMM");
-        s_dateFormatsByLocale.put(CultureInfoHelper.getInvariantCulture(), invariant);
-
-        DateFormats enUS = new DateFormats(invariant);
+        DateFormatsForLocale enUS = new DateFormatsForLocale(invariantDateFormats);
         enUS.setShortDatePattern("M/d/yyyy");
         enUS.setLongDatePattern("dddd, MMMM d, yyyy");
         enUS.setFullDateTimePattern("dddd, MMMM d, yyyy h:mm:ss tt");
@@ -60,7 +52,7 @@ public final class DateTimeFormatInfo {
     private DateTimeFormatInfo(Locale locale, DateFormatSymbols dateFormatSymbols) {
         DateFormats dateFormats = s_dateFormatsByLocale.get(locale);
         if (dateFormats == null)
-            dateFormats = s_dateFormatsByLocale.get(CultureInfoHelper.getInvariantCulture());
+            dateFormats = invariantDateFormats;
 
         assert dateFormats != null;
         m_dateFormats = dateFormats;
@@ -71,72 +63,122 @@ public final class DateTimeFormatInfo {
         m_months = dateFormatSymbols.getMonths();
     }
 
-    private static final class DateFormats {
+    private interface DateFormats {
+        @Nonnull
+        public String getFullDateTimePattern();
+
+        @Nonnull
+        public String getLongDatePattern();
+
+        @Nonnull
+        public String getLongTimePattern();
+
+        @Nonnull
+        public String getMonthDayPattern();
+
+        @Nonnull
+        public String getRFC1123Pattern();
+
+        @Nonnull
+        public String getShortDatePattern();
+
+        @Nonnull
+        public String getShortTimePattern();
+
+        @Nonnull
+        public String getSortableDateTimePattern();
+
+        @Nonnull
+        public String getUniversalSortableDateTimePattern();
+
+        @Nonnull
+        public String getYearMonthPattern();
+    }
+
+    @SuppressWarnings("unused")
+    private static final class DateFormatsForLocale implements DateFormats {
+        @Nullable
         private String shortDate;
+        @Nullable
         private String longDate;
+        @Nullable
         private String fullDateTime;
+        @Nullable
         private String monthDay;
+        @Nullable
         private String rfc1123;
+        @Nullable
         private String sortableDateTime;
+        @Nullable
         private String shortTime;
+        @Nullable
         private String longTime;
+        @Nullable
         private String universalSortableDateTime;
+        @Nullable
         private String yearMonth;
+        @Nonnull
         private final DateFormats defaults;
 
-        public DateFormats() {
-            defaults = null;
-        }
-
-        public DateFormats(DateFormats defaults) {
+        public DateFormatsForLocale(@Nonnull DateFormats defaults) {
             this.defaults = defaults;
         }
 
+        @Override
         @Nonnull
         public String getFullDateTimePattern() {
             return fullDateTime != null ? fullDateTime : defaults.getFullDateTimePattern();
         }
 
+        @Override
         @Nonnull
         public String getLongDatePattern() {
             return longDate != null ? longDate : defaults.getLongDatePattern();
         }
 
+        @Override
         @Nonnull
         public String getLongTimePattern() {
             return longTime != null ? longTime : defaults.getLongTimePattern();
         }
 
+        @Override
         @Nonnull
         public String getMonthDayPattern() {
             return monthDay != null ? monthDay : defaults.getMonthDayPattern();
         }
 
+        @Override
         @Nonnull
         public String getRFC1123Pattern() {
             return rfc1123 != null ? rfc1123 : defaults.getRFC1123Pattern();
         }
 
+        @Override
         @Nonnull
         public String getShortDatePattern() {
             return shortDate != null ? shortDate : defaults.getShortDatePattern();
         }
 
+        @Override
         @Nonnull
         public String getShortTimePattern() {
             return shortTime != null ? shortTime : defaults.getShortTimePattern();
         }
 
+        @Override
         @Nonnull
         public String getSortableDateTimePattern() {
             return sortableDateTime != null ? sortableDateTime : defaults.getSortableDateTimePattern();
         }
 
+        @Override
         @Nonnull
         public String getUniversalSortableDateTimePattern() {
             return universalSortableDateTime != null ? universalSortableDateTime : defaults.getUniversalSortableDateTimePattern();
         }
 
+        @Override
         @Nonnull
         public String getYearMonthPattern() {
             return yearMonth != null ? yearMonth : defaults.getYearMonthPattern();
@@ -180,6 +222,58 @@ public final class DateTimeFormatInfo {
 
         public void setYearMonthPattern(@Nonnull String yearMonthPattern) {
             yearMonth = yearMonthPattern;
+        }
+    }
+
+    private static final class DateFormatsInvariant implements DateFormats {
+        @Override
+        public String getFullDateTimePattern() {
+            return "dddd, dd MMMM yyyy HH:mm:ss";
+        }
+
+        @Override
+        public String getLongDatePattern() {
+            return "dddd, dd MMMM yyyy";
+        }
+
+        @Override
+        public String getLongTimePattern() {
+            return "HH:mm:ss";
+        }
+
+        @Override
+        public String getMonthDayPattern() {
+            return "MMMM dd";
+        }
+
+        @Override
+        public String getRFC1123Pattern() {
+            return "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'";
+        }
+
+        @Override
+        public String getShortDatePattern() {
+            return "MM/dd/yyyy";
+        }
+
+        @Override
+        public String getShortTimePattern() {
+            return "HH:mm";
+        }
+
+        @Override
+        public String getSortableDateTimePattern() {
+            return "yyyy'-'MM'-'dd'T'HH':'mm':'ss";
+        }
+
+        @Override
+        public String getUniversalSortableDateTimePattern() {
+            return "yyyy'-'MM'-'dd HH':'mm':'ss'Z'";
+        }
+
+        @Override
+        public String getYearMonthPattern() {
+            return "yyyy MMMM";
         }
     }
 

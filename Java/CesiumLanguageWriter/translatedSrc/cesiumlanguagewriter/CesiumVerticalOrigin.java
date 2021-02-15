@@ -18,15 +18,18 @@ public enum CesiumVerticalOrigin implements Enumeration {
     /**
     * The bottom of the item is located at the position.
     */
-    BOTTOM(0), /**
-               * The item is at the vertical center between {@link #BASELINE} and {@link #TOP}.
-               */
-    CENTER(1), /**
-               * The top of the item is located at the position.
-               */
-    TOP(2), /**
-            * If the object contains text, the origin is at the baseline of the text, otherwise the origin is at the bottom of the object.
-            */
+    BOTTOM(0),
+    /**
+    * The item is at the vertical center between {@link #BASELINE} and {@link #TOP}.
+    */
+    CENTER(1),
+    /**
+    * The top of the item is located at the position.
+    */
+    TOP(2),
+    /**
+    * If the object contains text, the origin is at the baseline of the text, otherwise the origin is at the bottom of the object.
+    */
     BASELINE(3);
     private final int value;
 

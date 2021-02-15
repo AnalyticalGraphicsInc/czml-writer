@@ -18,12 +18,14 @@ public enum ClockRange implements Enumeration {
     /**
     * The clock can continue forever in either direction.
     */
-    UNBOUNDED(0), /**
-                  * The clock stops when either its start or end time is reached.
-                  */
-    CLAMPED(1), /**
-                * The clock stops when its start time is reached, but loops back to start when its end time is reached.
-                */
+    UNBOUNDED(0),
+    /**
+    * The clock stops when either its start or end time is reached.
+    */
+    CLAMPED(1),
+    /**
+    * The clock stops when its start time is reached, but loops back to start when its end time is reached.
+    */
     LOOP_STOP(2);
     private final int value;
 

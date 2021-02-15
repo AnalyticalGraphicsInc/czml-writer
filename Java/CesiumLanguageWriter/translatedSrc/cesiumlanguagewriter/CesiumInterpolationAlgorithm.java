@@ -18,12 +18,14 @@ public enum CesiumInterpolationAlgorithm implements Enumeration {
     /**
     * Simple linear interpolation between two samples.
     */
-    LINEAR(0), /**
-               * Lagrange polynomial approximation.
-               */
-    LAGRANGE(1), /**
-                 * Hermite polynomial approximation.
-                 */
+    LINEAR(0),
+    /**
+    * Lagrange polynomial approximation.
+    */
+    LAGRANGE(1),
+    /**
+    * Hermite polynomial approximation.
+    */
     HERMITE(2);
     private final int value;
 
