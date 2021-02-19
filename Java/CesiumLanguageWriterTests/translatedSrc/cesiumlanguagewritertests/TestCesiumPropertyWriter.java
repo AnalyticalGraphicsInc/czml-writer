@@ -131,56 +131,65 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
             MapHelper.add(tempCollection$1, "rgba", tempCollection$2);
             return createExpectedJson(tempCollection$1);
         }
+        if (value instanceof Bounds) {
+            Bounds bounds = (Bounds) value;
+            final ArrayList<Object> tempCollection$4 = new ArrayList<Object>();
+            tempCollection$4.add(bounds.getLowerBound());
+            tempCollection$4.add(bounds.getUpperBound());
+            final Map<String, Object> tempCollection$3 = new LinkedHashMap<String, Object>();
+            MapHelper.add(tempCollection$3, "distanceDisplayCondition", tempCollection$4);
+            return createExpectedJson(tempCollection$3);
+        }
         if (value instanceof NearFarScalar) {
             NearFarScalar nearFarScalar = (NearFarScalar) value;
-            final ArrayList<Object> tempCollection$4 = new ArrayList<Object>();
-            tempCollection$4.add(nearFarScalar.getNearDistance());
-            tempCollection$4.add(nearFarScalar.getNearValue());
-            tempCollection$4.add(nearFarScalar.getFarDistance());
-            tempCollection$4.add(nearFarScalar.getFarValue());
-            final Map<String, Object> tempCollection$3 = new LinkedHashMap<String, Object>();
-            MapHelper.add(tempCollection$3, "nearFarScalar", tempCollection$4);
-            return createExpectedJson(tempCollection$3);
+            final ArrayList<Object> tempCollection$6 = new ArrayList<Object>();
+            tempCollection$6.add(nearFarScalar.getNearDistance());
+            tempCollection$6.add(nearFarScalar.getNearValue());
+            tempCollection$6.add(nearFarScalar.getFarDistance());
+            tempCollection$6.add(nearFarScalar.getFarValue());
+            final Map<String, Object> tempCollection$5 = new LinkedHashMap<String, Object>();
+            MapHelper.add(tempCollection$5, "nearFarScalar", tempCollection$6);
+            return createExpectedJson(tempCollection$5);
         }
         if (value instanceof Rectangular) {
             Rectangular rectangular = (Rectangular) value;
-            final ArrayList<Object> tempCollection$6 = new ArrayList<Object>();
-            tempCollection$6.add(rectangular.getX());
-            tempCollection$6.add(rectangular.getY());
-            final Map<String, Object> tempCollection$5 = new LinkedHashMap<String, Object>();
-            MapHelper.add(tempCollection$5, "cartesian2", tempCollection$6);
-            return createExpectedJson(tempCollection$5);
+            final ArrayList<Object> tempCollection$8 = new ArrayList<Object>();
+            tempCollection$8.add(rectangular.getX());
+            tempCollection$8.add(rectangular.getY());
+            final Map<String, Object> tempCollection$7 = new LinkedHashMap<String, Object>();
+            MapHelper.add(tempCollection$7, "cartesian2", tempCollection$8);
+            return createExpectedJson(tempCollection$7);
         }
         if (value instanceof Cartesian) {
             Cartesian cartesian = (Cartesian) value;
-            final ArrayList<Object> tempCollection$8 = new ArrayList<Object>();
-            tempCollection$8.add(cartesian.getX());
-            tempCollection$8.add(cartesian.getY());
-            tempCollection$8.add(cartesian.getZ());
-            final Map<String, Object> tempCollection$7 = new LinkedHashMap<String, Object>();
-            MapHelper.add(tempCollection$7, "cartesian", tempCollection$8);
-            return createExpectedJson(tempCollection$7);
+            final ArrayList<Object> tempCollection$10 = new ArrayList<Object>();
+            tempCollection$10.add(cartesian.getX());
+            tempCollection$10.add(cartesian.getY());
+            tempCollection$10.add(cartesian.getZ());
+            final Map<String, Object> tempCollection$9 = new LinkedHashMap<String, Object>();
+            MapHelper.add(tempCollection$9, "cartesian", tempCollection$10);
+            return createExpectedJson(tempCollection$9);
         }
         if (value instanceof Cartographic) {
             Cartographic cartographic = (Cartographic) value;
-            final ArrayList<Object> tempCollection$10 = new ArrayList<Object>();
-            tempCollection$10.add(cartographic.getLongitude());
-            tempCollection$10.add(cartographic.getLatitude());
-            tempCollection$10.add(cartographic.getHeight());
-            final Map<String, Object> tempCollection$9 = new LinkedHashMap<String, Object>();
-            MapHelper.add(tempCollection$9, "cartographicRadians", tempCollection$10);
-            return createExpectedJson(tempCollection$9);
+            final ArrayList<Object> tempCollection$12 = new ArrayList<Object>();
+            tempCollection$12.add(cartographic.getLongitude());
+            tempCollection$12.add(cartographic.getLatitude());
+            tempCollection$12.add(cartographic.getHeight());
+            final Map<String, Object> tempCollection$11 = new LinkedHashMap<String, Object>();
+            MapHelper.add(tempCollection$11, "cartographicRadians", tempCollection$12);
+            return createExpectedJson(tempCollection$11);
         }
         if (value instanceof UnitQuaternion) {
             UnitQuaternion unitQuaternion = (UnitQuaternion) value;
-            final ArrayList<Object> tempCollection$12 = new ArrayList<Object>();
-            tempCollection$12.add(unitQuaternion.getX());
-            tempCollection$12.add(unitQuaternion.getY());
-            tempCollection$12.add(unitQuaternion.getZ());
-            tempCollection$12.add(unitQuaternion.getW());
-            final Map<String, Object> tempCollection$11 = new LinkedHashMap<String, Object>();
-            MapHelper.add(tempCollection$11, "unitQuaternion", tempCollection$12);
-            return createExpectedJson(tempCollection$11);
+            final ArrayList<Object> tempCollection$14 = new ArrayList<Object>();
+            tempCollection$14.add(unitQuaternion.getX());
+            tempCollection$14.add(unitQuaternion.getY());
+            tempCollection$14.add(unitQuaternion.getZ());
+            tempCollection$14.add(unitQuaternion.getW());
+            final Map<String, Object> tempCollection$13 = new LinkedHashMap<String, Object>();
+            MapHelper.add(tempCollection$13, "unitQuaternion", tempCollection$14);
+            return createExpectedJson(tempCollection$13);
         }
         Map<String, Object> dictionary = (value instanceof Map) ? (Map<String, Object>) value : null;
         if (dictionary != null) {
@@ -290,16 +299,16 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
                 DisposeHelper.dispose(usingExpression_0);
             }
         }
+        final Map<String, Object> tempCollection$17 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$17, "interval", CesiumFormattingHelper.toIso8601Interval(start, stop, Iso8601Format.COMPACT));
+        final Map<String, Object> tempCollection$18 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$18, "interval", CesiumFormattingHelper.toIso8601Interval(start, stop, Iso8601Format.COMPACT));
+        final ArrayList<Object> tempCollection$16 = new ArrayList<Object>();
+        tempCollection$16.add(tempCollection$17);
+        tempCollection$16.add(tempCollection$18);
         final Map<String, Object> tempCollection$15 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$15, "interval", CesiumFormattingHelper.toIso8601Interval(start, stop, Iso8601Format.COMPACT));
-        final Map<String, Object> tempCollection$16 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$16, "interval", CesiumFormattingHelper.toIso8601Interval(start, stop, Iso8601Format.COMPACT));
-        final ArrayList<Object> tempCollection$14 = new ArrayList<Object>();
-        tempCollection$14.add(tempCollection$15);
-        tempCollection$14.add(tempCollection$16);
-        final Map<String, Object> tempCollection$13 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$13, expectedPropertyName, tempCollection$14);
-        assertExpectedJson(tempCollection$13);
+        MapHelper.add(tempCollection$15, expectedPropertyName, tempCollection$16);
+        assertExpectedJson(tempCollection$15);
     }
 
     @Test

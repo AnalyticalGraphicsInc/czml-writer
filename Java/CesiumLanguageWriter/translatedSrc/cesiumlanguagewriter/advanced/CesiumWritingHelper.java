@@ -521,6 +521,21 @@ public final class CesiumWritingHelper {
     }
 
     /**
+    * Writes a list of {@link Rectangular} values as an array in X, Y order.
+    * @param output The stream to which the value will be written.
+    * @param values The values to write.
+    */
+    public static void writeCartesian2List(CesiumOutputStream output, Iterable<Rectangular> values) {
+        output.writeStartSequence();
+        for (final Rectangular value : values) {
+            output.writeValue(value.getX());
+            output.writeValue(value.getY());
+            output.writeLineBreak();
+        }
+        output.writeEndSequence();
+    }
+
+    /**
     * Writes a list of {@link Cartesian} values as an array in X, Y, Z order.
     * @param output The stream to which the value will be written.
     * @param values The values to write.
