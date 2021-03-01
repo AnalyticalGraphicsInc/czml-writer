@@ -88,7 +88,7 @@
         },
         "environmentConstraint": {
             "$ref": "../../Boolean.json",
-            "description": "Whether or not the sensor will intersect the environment, e.g. terrain or models.",
+            "description": "Whether or not the sensor will be occluded by objects in the current view of the environment, e.g. visible terrain or models.",
             "default": false
         },
         "showEnvironmentOcclusion": {
@@ -120,6 +120,26 @@
             "$ref": "../../Boolean.json",
             "description": "Whether or not a sensor intersecting the ellipsoid is drawn through the ellipsoid and potentially out to the other side.",
             "default": false
+        },
+        "showViewshed": {
+            "$ref": "../../Boolean.json",
+            "description": "Whether or not the viewshed of the sensor will be drawn.",
+            "default": false
+        },
+        "viewshedVisibleColor": {
+            "$ref": "../../Color.json",
+            "description": "The color of the scene geometry that is visible to the sensor.",
+            "default": "lime, 50% transparent"
+        },
+        "viewshedOccludedColor": {
+            "$ref": "../../Color.json",
+            "description": "The color of the scene geometry that is not visible to the sensor.",
+            "default": "red, 50% transparent"
+        },
+        "viewshedResolution": {
+            "$ref": "../../Double.json",
+            "description": "The resolution in pixels of the viewshed.",
+            "default": 2048
         }
     }
 }

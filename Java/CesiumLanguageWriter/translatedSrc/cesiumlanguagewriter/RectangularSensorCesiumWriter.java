@@ -116,6 +116,22 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     * The name of the {@code showThroughEllipsoid} property.
     */
     public static final String ShowThroughEllipsoidPropertyName = "showThroughEllipsoid";
+    /**
+    * The name of the {@code showViewshed} property.
+    */
+    public static final String ShowViewshedPropertyName = "showViewshed";
+    /**
+    * The name of the {@code viewshedVisibleColor} property.
+    */
+    public static final String ViewshedVisibleColorPropertyName = "viewshedVisibleColor";
+    /**
+    * The name of the {@code viewshedOccludedColor} property.
+    */
+    public static final String ViewshedOccludedColorPropertyName = "viewshedOccludedColor";
+    /**
+    * The name of the {@code viewshedResolution} property.
+    */
+    public static final String ViewshedResolutionPropertyName = "viewshedResolution";
     private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
         public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
             return new BooleanCesiumWriter(ShowPropertyName);
@@ -230,6 +246,26 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     private Lazy<BooleanCesiumWriter> m_showThroughEllipsoid = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
         public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
             return new BooleanCesiumWriter(ShowThroughEllipsoidPropertyName);
+        }
+    }, false);
+    private Lazy<BooleanCesiumWriter> m_showViewshed = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+        public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
+            return new BooleanCesiumWriter(ShowViewshedPropertyName);
+        }
+    }, false);
+    private Lazy<ColorCesiumWriter> m_viewshedVisibleColor = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
+        public cesiumlanguagewriter.ColorCesiumWriter invoke() {
+            return new ColorCesiumWriter(ViewshedVisibleColorPropertyName);
+        }
+    }, false);
+    private Lazy<ColorCesiumWriter> m_viewshedOccludedColor = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
+        public cesiumlanguagewriter.ColorCesiumWriter invoke() {
+            return new ColorCesiumWriter(ViewshedOccludedColorPropertyName);
+        }
+    }, false);
+    private Lazy<DoubleCesiumWriter> m_viewshedResolution = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+        public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+            return new DoubleCesiumWriter(ViewshedResolutionPropertyName);
         }
     }, false);
 
@@ -1710,7 +1746,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    * Gets the writer for the {@code environmentConstraint} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code environmentConstraint} property defines whether or not the sensor will intersect the environment, e.g. terrain or models. If not specified, the default value is {@code false}.
+    * Gets the writer for the {@code environmentConstraint} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code environmentConstraint} property defines whether or not the sensor will be occluded by objects in the current view of the environment, e.g. visible terrain or models. If not specified, the default value is {@code false}.
     */
     @Nonnull
     public final BooleanCesiumWriter getEnvironmentConstraintWriter() {
@@ -1718,7 +1754,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    * Opens and returns the writer for the {@code environmentConstraint} property. The {@code environmentConstraint} property defines whether or not the sensor will intersect the environment, e.g. terrain or models. If not specified, the default value is {@code false}.
+    * Opens and returns the writer for the {@code environmentConstraint} property. The {@code environmentConstraint} property defines whether or not the sensor will be occluded by objects in the current view of the environment, e.g. visible terrain or models. If not specified, the default value is {@code false}.
     */
     @Nonnull
     public final BooleanCesiumWriter openEnvironmentConstraintProperty() {
@@ -1727,7 +1763,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    * Writes a value for the {@code environmentConstraint} property as a {@code boolean} value. The {@code environmentConstraint} property specifies whether or not the sensor will intersect the environment, e.g. terrain or models. If not specified, the default value is {@code false}.
+    * Writes a value for the {@code environmentConstraint} property as a {@code boolean} value. The {@code environmentConstraint} property specifies whether or not the sensor will be occluded by objects in the current view of the environment, e.g. visible terrain or models. If not specified, the default value is {@code false}.
     * @param value The value.
     */
     public final void writeEnvironmentConstraintProperty(boolean value) {
@@ -1742,7 +1778,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    * Writes a value for the {@code environmentConstraint} property as a {@code reference} value. The {@code environmentConstraint} property specifies whether or not the sensor will intersect the environment, e.g. terrain or models. If not specified, the default value is {@code false}.
+    * Writes a value for the {@code environmentConstraint} property as a {@code reference} value. The {@code environmentConstraint} property specifies whether or not the sensor will be occluded by objects in the current view of the environment, e.g. visible terrain or models. If not specified, the default value is {@code false}.
     * @param value The reference.
     */
     public final void writeEnvironmentConstraintPropertyReference(Reference value) {
@@ -1757,7 +1793,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    * Writes a value for the {@code environmentConstraint} property as a {@code reference} value. The {@code environmentConstraint} property specifies whether or not the sensor will intersect the environment, e.g. terrain or models. If not specified, the default value is {@code false}.
+    * Writes a value for the {@code environmentConstraint} property as a {@code reference} value. The {@code environmentConstraint} property specifies whether or not the sensor will be occluded by objects in the current view of the environment, e.g. visible terrain or models. If not specified, the default value is {@code false}.
     * @param value The reference.
     */
     public final void writeEnvironmentConstraintPropertyReference(String value) {
@@ -1772,7 +1808,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    * Writes a value for the {@code environmentConstraint} property as a {@code reference} value. The {@code environmentConstraint} property specifies whether or not the sensor will intersect the environment, e.g. terrain or models. If not specified, the default value is {@code false}.
+    * Writes a value for the {@code environmentConstraint} property as a {@code reference} value. The {@code environmentConstraint} property specifies whether or not the sensor will be occluded by objects in the current view of the environment, e.g. visible terrain or models. If not specified, the default value is {@code false}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyName The property on the referenced object.
     */
@@ -1788,7 +1824,7 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     }
 
     /**
-    * Writes a value for the {@code environmentConstraint} property as a {@code reference} value. The {@code environmentConstraint} property specifies whether or not the sensor will intersect the environment, e.g. terrain or models. If not specified, the default value is {@code false}.
+    * Writes a value for the {@code environmentConstraint} property as a {@code reference} value. The {@code environmentConstraint} property specifies whether or not the sensor will be occluded by objects in the current view of the environment, e.g. visible terrain or models. If not specified, the default value is {@code false}.
     * @param identifier The identifier of the object which contains the referenced property.
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
@@ -2435,6 +2471,654 @@ public class RectangularSensorCesiumWriter extends CesiumPropertyWriter<Rectangu
     public final void writeShowThroughEllipsoidPropertyReference(String identifier, String[] propertyNames) {
         {
             BooleanCesiumWriter writer = openShowThroughEllipsoidProperty();
+            try {
+                writer.writeReference(identifier, propertyNames);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Gets the writer for the {@code showViewshed} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code showViewshed} property defines whether or not the viewshed of the sensor will be drawn. If not specified, the default value is {@code false}.
+    */
+    @Nonnull
+    public final BooleanCesiumWriter getShowViewshedWriter() {
+        return m_showViewshed.getValue();
+    }
+
+    /**
+    * Opens and returns the writer for the {@code showViewshed} property. The {@code showViewshed} property defines whether or not the viewshed of the sensor will be drawn. If not specified, the default value is {@code false}.
+    */
+    @Nonnull
+    public final BooleanCesiumWriter openShowViewshedProperty() {
+        openIntervalIfNecessary();
+        return this.<BooleanCesiumWriter> openAndReturn(getShowViewshedWriter());
+    }
+
+    /**
+    * Writes a value for the {@code showViewshed} property as a {@code boolean} value. The {@code showViewshed} property specifies whether or not the viewshed of the sensor will be drawn. If not specified, the default value is {@code false}.
+    * @param value The value.
+    */
+    public final void writeShowViewshedProperty(boolean value) {
+        {
+            BooleanCesiumWriter writer = openShowViewshedProperty();
+            try {
+                writer.writeBoolean(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Writes a value for the {@code showViewshed} property as a {@code reference} value. The {@code showViewshed} property specifies whether or not the viewshed of the sensor will be drawn. If not specified, the default value is {@code false}.
+    * @param value The reference.
+    */
+    public final void writeShowViewshedPropertyReference(Reference value) {
+        {
+            BooleanCesiumWriter writer = openShowViewshedProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Writes a value for the {@code showViewshed} property as a {@code reference} value. The {@code showViewshed} property specifies whether or not the viewshed of the sensor will be drawn. If not specified, the default value is {@code false}.
+    * @param value The reference.
+    */
+    public final void writeShowViewshedPropertyReference(String value) {
+        {
+            BooleanCesiumWriter writer = openShowViewshedProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Writes a value for the {@code showViewshed} property as a {@code reference} value. The {@code showViewshed} property specifies whether or not the viewshed of the sensor will be drawn. If not specified, the default value is {@code false}.
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyName The property on the referenced object.
+    */
+    public final void writeShowViewshedPropertyReference(String identifier, String propertyName) {
+        {
+            BooleanCesiumWriter writer = openShowViewshedProperty();
+            try {
+                writer.writeReference(identifier, propertyName);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Writes a value for the {@code showViewshed} property as a {@code reference} value. The {@code showViewshed} property specifies whether or not the viewshed of the sensor will be drawn. If not specified, the default value is {@code false}.
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+    */
+    public final void writeShowViewshedPropertyReference(String identifier, String[] propertyNames) {
+        {
+            BooleanCesiumWriter writer = openShowViewshedProperty();
+            try {
+                writer.writeReference(identifier, propertyNames);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Gets the writer for the {@code viewshedVisibleColor} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code viewshedVisibleColor} property defines the color of the scene geometry that is visible to the sensor. If not specified, the default value is lime, 50% transparent.
+    */
+    @Nonnull
+    public final ColorCesiumWriter getViewshedVisibleColorWriter() {
+        return m_viewshedVisibleColor.getValue();
+    }
+
+    /**
+    * Opens and returns the writer for the {@code viewshedVisibleColor} property. The {@code viewshedVisibleColor} property defines the color of the scene geometry that is visible to the sensor. If not specified, the default value is lime, 50% transparent.
+    */
+    @Nonnull
+    public final ColorCesiumWriter openViewshedVisibleColorProperty() {
+        openIntervalIfNecessary();
+        return this.<ColorCesiumWriter> openAndReturn(getViewshedVisibleColorWriter());
+    }
+
+    /**
+    * Writes a value for the {@code viewshedVisibleColor} property as a {@code rgba} value. The {@code viewshedVisibleColor} property specifies the color of the scene geometry that is visible to the sensor. If not specified, the default value is lime, 50% transparent.
+    * @param color The color.
+    */
+    public final void writeViewshedVisibleColorProperty(@Nonnull Color color) {
+        {
+            ColorCesiumWriter writer = openViewshedVisibleColorProperty();
+            try {
+                writer.writeRgba(color);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Writes a value for the {@code viewshedVisibleColor} property as a {@code rgba} value. The {@code viewshedVisibleColor} property specifies the color of the scene geometry that is visible to the sensor. If not specified, the default value is lime, 50% transparent.
+    * @param red The red component in the range 0 to 255.
+    * @param green The green component in the range 0 to 255.
+    * @param blue The blue component in the range 0 to 255.
+    * @param alpha The alpha component in the range 0 to 255.
+    */
+    public final void writeViewshedVisibleColorProperty(int red, int green, int blue, int alpha) {
+        {
+            ColorCesiumWriter writer = openViewshedVisibleColorProperty();
+            try {
+                writer.writeRgba(red, green, blue, alpha);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Writes a value for the {@code viewshedVisibleColor} property as a {@code rgba} value. The {@code viewshedVisibleColor} property specifies the color of the scene geometry that is visible to the sensor. If not specified, the default value is lime, 50% transparent.
+    * @param dates The dates at which the value is specified.
+    * @param values The values corresponding to each date.
+    */
+    public final void writeViewshedVisibleColorProperty(List<JulianDate> dates, List<Color> values) {
+        {
+            ColorCesiumWriter writer = openViewshedVisibleColorProperty();
+            try {
+                writer.writeRgba(dates, values);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Writes a value for the {@code viewshedVisibleColor} property as a {@code rgba} value. The {@code viewshedVisibleColor} property specifies the color of the scene geometry that is visible to the sensor. If not specified, the default value is lime, 50% transparent.
+    * @param dates The dates at which the value is specified.
+    * @param colors The color corresponding to each date.
+    * @param startIndex The index of the first element to write.
+    * @param length The number of elements to write.
+    */
+    public final void writeViewshedVisibleColorProperty(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
+        {
+            ColorCesiumWriter writer = openViewshedVisibleColorProperty();
+            try {
+                writer.writeRgba(dates, colors, startIndex, length);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Writes a value for the {@code viewshedVisibleColor} property as a {@code rgbaf} value. The {@code viewshedVisibleColor} property specifies the color of the scene geometry that is visible to the sensor. If not specified, the default value is lime, 50% transparent.
+    * @param color The color.
+    */
+    public final void writeViewshedVisibleColorPropertyRgbaf(@Nonnull Color color) {
+        {
+            ColorCesiumWriter writer = openViewshedVisibleColorProperty();
+            try {
+                writer.writeRgbaf(color);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Writes a value for the {@code viewshedVisibleColor} property as a {@code rgbaf} value. The {@code viewshedVisibleColor} property specifies the color of the scene geometry that is visible to the sensor. If not specified, the default value is lime, 50% transparent.
+    * @param red The red component in the range 0 to 1.0.
+    * @param green The green component in the range 0 to 1.0.
+    * @param blue The blue component in the range 0 to 1.0.
+    * @param alpha The alpha component in the range 0 to 1.0.
+    */
+    public final void writeViewshedVisibleColorPropertyRgbaf(float red, float green, float blue, float alpha) {
+        {
+            ColorCesiumWriter writer = openViewshedVisibleColorProperty();
+            try {
+                writer.writeRgbaf(red, green, blue, alpha);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Writes a value for the {@code viewshedVisibleColor} property as a {@code rgbaf} value. The {@code viewshedVisibleColor} property specifies the color of the scene geometry that is visible to the sensor. If not specified, the default value is lime, 50% transparent.
+    * @param dates The dates at which the value is specified.
+    * @param values The values corresponding to each date.
+    */
+    public final void writeViewshedVisibleColorPropertyRgbaf(List<JulianDate> dates, List<Color> values) {
+        {
+            ColorCesiumWriter writer = openViewshedVisibleColorProperty();
+            try {
+                writer.writeRgbaf(dates, values);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Writes a value for the {@code viewshedVisibleColor} property as a {@code rgbaf} value. The {@code viewshedVisibleColor} property specifies the color of the scene geometry that is visible to the sensor. If not specified, the default value is lime, 50% transparent.
+    * @param dates The dates at which the value is specified.
+    * @param colors The color corresponding to each date.
+    * @param startIndex The index of the first element to write.
+    * @param length The number of elements to write.
+    */
+    public final void writeViewshedVisibleColorPropertyRgbaf(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
+        {
+            ColorCesiumWriter writer = openViewshedVisibleColorProperty();
+            try {
+                writer.writeRgbaf(dates, colors, startIndex, length);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Writes a value for the {@code viewshedVisibleColor} property as a {@code reference} value. The {@code viewshedVisibleColor} property specifies the color of the scene geometry that is visible to the sensor. If not specified, the default value is lime, 50% transparent.
+    * @param value The reference.
+    */
+    public final void writeViewshedVisibleColorPropertyReference(Reference value) {
+        {
+            ColorCesiumWriter writer = openViewshedVisibleColorProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Writes a value for the {@code viewshedVisibleColor} property as a {@code reference} value. The {@code viewshedVisibleColor} property specifies the color of the scene geometry that is visible to the sensor. If not specified, the default value is lime, 50% transparent.
+    * @param value The reference.
+    */
+    public final void writeViewshedVisibleColorPropertyReference(String value) {
+        {
+            ColorCesiumWriter writer = openViewshedVisibleColorProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Writes a value for the {@code viewshedVisibleColor} property as a {@code reference} value. The {@code viewshedVisibleColor} property specifies the color of the scene geometry that is visible to the sensor. If not specified, the default value is lime, 50% transparent.
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyName The property on the referenced object.
+    */
+    public final void writeViewshedVisibleColorPropertyReference(String identifier, String propertyName) {
+        {
+            ColorCesiumWriter writer = openViewshedVisibleColorProperty();
+            try {
+                writer.writeReference(identifier, propertyName);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Writes a value for the {@code viewshedVisibleColor} property as a {@code reference} value. The {@code viewshedVisibleColor} property specifies the color of the scene geometry that is visible to the sensor. If not specified, the default value is lime, 50% transparent.
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+    */
+    public final void writeViewshedVisibleColorPropertyReference(String identifier, String[] propertyNames) {
+        {
+            ColorCesiumWriter writer = openViewshedVisibleColorProperty();
+            try {
+                writer.writeReference(identifier, propertyNames);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Gets the writer for the {@code viewshedOccludedColor} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code viewshedOccludedColor} property defines the color of the scene geometry that is not visible to the sensor. If not specified, the default value is red, 50% transparent.
+    */
+    @Nonnull
+    public final ColorCesiumWriter getViewshedOccludedColorWriter() {
+        return m_viewshedOccludedColor.getValue();
+    }
+
+    /**
+    * Opens and returns the writer for the {@code viewshedOccludedColor} property. The {@code viewshedOccludedColor} property defines the color of the scene geometry that is not visible to the sensor. If not specified, the default value is red, 50% transparent.
+    */
+    @Nonnull
+    public final ColorCesiumWriter openViewshedOccludedColorProperty() {
+        openIntervalIfNecessary();
+        return this.<ColorCesiumWriter> openAndReturn(getViewshedOccludedColorWriter());
+    }
+
+    /**
+    * Writes a value for the {@code viewshedOccludedColor} property as a {@code rgba} value. The {@code viewshedOccludedColor} property specifies the color of the scene geometry that is not visible to the sensor. If not specified, the default value is red, 50% transparent.
+    * @param color The color.
+    */
+    public final void writeViewshedOccludedColorProperty(@Nonnull Color color) {
+        {
+            ColorCesiumWriter writer = openViewshedOccludedColorProperty();
+            try {
+                writer.writeRgba(color);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Writes a value for the {@code viewshedOccludedColor} property as a {@code rgba} value. The {@code viewshedOccludedColor} property specifies the color of the scene geometry that is not visible to the sensor. If not specified, the default value is red, 50% transparent.
+    * @param red The red component in the range 0 to 255.
+    * @param green The green component in the range 0 to 255.
+    * @param blue The blue component in the range 0 to 255.
+    * @param alpha The alpha component in the range 0 to 255.
+    */
+    public final void writeViewshedOccludedColorProperty(int red, int green, int blue, int alpha) {
+        {
+            ColorCesiumWriter writer = openViewshedOccludedColorProperty();
+            try {
+                writer.writeRgba(red, green, blue, alpha);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Writes a value for the {@code viewshedOccludedColor} property as a {@code rgba} value. The {@code viewshedOccludedColor} property specifies the color of the scene geometry that is not visible to the sensor. If not specified, the default value is red, 50% transparent.
+    * @param dates The dates at which the value is specified.
+    * @param values The values corresponding to each date.
+    */
+    public final void writeViewshedOccludedColorProperty(List<JulianDate> dates, List<Color> values) {
+        {
+            ColorCesiumWriter writer = openViewshedOccludedColorProperty();
+            try {
+                writer.writeRgba(dates, values);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Writes a value for the {@code viewshedOccludedColor} property as a {@code rgba} value. The {@code viewshedOccludedColor} property specifies the color of the scene geometry that is not visible to the sensor. If not specified, the default value is red, 50% transparent.
+    * @param dates The dates at which the value is specified.
+    * @param colors The color corresponding to each date.
+    * @param startIndex The index of the first element to write.
+    * @param length The number of elements to write.
+    */
+    public final void writeViewshedOccludedColorProperty(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
+        {
+            ColorCesiumWriter writer = openViewshedOccludedColorProperty();
+            try {
+                writer.writeRgba(dates, colors, startIndex, length);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Writes a value for the {@code viewshedOccludedColor} property as a {@code rgbaf} value. The {@code viewshedOccludedColor} property specifies the color of the scene geometry that is not visible to the sensor. If not specified, the default value is red, 50% transparent.
+    * @param color The color.
+    */
+    public final void writeViewshedOccludedColorPropertyRgbaf(@Nonnull Color color) {
+        {
+            ColorCesiumWriter writer = openViewshedOccludedColorProperty();
+            try {
+                writer.writeRgbaf(color);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Writes a value for the {@code viewshedOccludedColor} property as a {@code rgbaf} value. The {@code viewshedOccludedColor} property specifies the color of the scene geometry that is not visible to the sensor. If not specified, the default value is red, 50% transparent.
+    * @param red The red component in the range 0 to 1.0.
+    * @param green The green component in the range 0 to 1.0.
+    * @param blue The blue component in the range 0 to 1.0.
+    * @param alpha The alpha component in the range 0 to 1.0.
+    */
+    public final void writeViewshedOccludedColorPropertyRgbaf(float red, float green, float blue, float alpha) {
+        {
+            ColorCesiumWriter writer = openViewshedOccludedColorProperty();
+            try {
+                writer.writeRgbaf(red, green, blue, alpha);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Writes a value for the {@code viewshedOccludedColor} property as a {@code rgbaf} value. The {@code viewshedOccludedColor} property specifies the color of the scene geometry that is not visible to the sensor. If not specified, the default value is red, 50% transparent.
+    * @param dates The dates at which the value is specified.
+    * @param values The values corresponding to each date.
+    */
+    public final void writeViewshedOccludedColorPropertyRgbaf(List<JulianDate> dates, List<Color> values) {
+        {
+            ColorCesiumWriter writer = openViewshedOccludedColorProperty();
+            try {
+                writer.writeRgbaf(dates, values);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Writes a value for the {@code viewshedOccludedColor} property as a {@code rgbaf} value. The {@code viewshedOccludedColor} property specifies the color of the scene geometry that is not visible to the sensor. If not specified, the default value is red, 50% transparent.
+    * @param dates The dates at which the value is specified.
+    * @param colors The color corresponding to each date.
+    * @param startIndex The index of the first element to write.
+    * @param length The number of elements to write.
+    */
+    public final void writeViewshedOccludedColorPropertyRgbaf(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
+        {
+            ColorCesiumWriter writer = openViewshedOccludedColorProperty();
+            try {
+                writer.writeRgbaf(dates, colors, startIndex, length);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Writes a value for the {@code viewshedOccludedColor} property as a {@code reference} value. The {@code viewshedOccludedColor} property specifies the color of the scene geometry that is not visible to the sensor. If not specified, the default value is red, 50% transparent.
+    * @param value The reference.
+    */
+    public final void writeViewshedOccludedColorPropertyReference(Reference value) {
+        {
+            ColorCesiumWriter writer = openViewshedOccludedColorProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Writes a value for the {@code viewshedOccludedColor} property as a {@code reference} value. The {@code viewshedOccludedColor} property specifies the color of the scene geometry that is not visible to the sensor. If not specified, the default value is red, 50% transparent.
+    * @param value The reference.
+    */
+    public final void writeViewshedOccludedColorPropertyReference(String value) {
+        {
+            ColorCesiumWriter writer = openViewshedOccludedColorProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Writes a value for the {@code viewshedOccludedColor} property as a {@code reference} value. The {@code viewshedOccludedColor} property specifies the color of the scene geometry that is not visible to the sensor. If not specified, the default value is red, 50% transparent.
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyName The property on the referenced object.
+    */
+    public final void writeViewshedOccludedColorPropertyReference(String identifier, String propertyName) {
+        {
+            ColorCesiumWriter writer = openViewshedOccludedColorProperty();
+            try {
+                writer.writeReference(identifier, propertyName);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Writes a value for the {@code viewshedOccludedColor} property as a {@code reference} value. The {@code viewshedOccludedColor} property specifies the color of the scene geometry that is not visible to the sensor. If not specified, the default value is red, 50% transparent.
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+    */
+    public final void writeViewshedOccludedColorPropertyReference(String identifier, String[] propertyNames) {
+        {
+            ColorCesiumWriter writer = openViewshedOccludedColorProperty();
+            try {
+                writer.writeReference(identifier, propertyNames);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Gets the writer for the {@code viewshedResolution} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code viewshedResolution} property defines the resolution in pixels of the viewshed. If not specified, the default value is 2048.
+    */
+    @Nonnull
+    public final DoubleCesiumWriter getViewshedResolutionWriter() {
+        return m_viewshedResolution.getValue();
+    }
+
+    /**
+    * Opens and returns the writer for the {@code viewshedResolution} property. The {@code viewshedResolution} property defines the resolution in pixels of the viewshed. If not specified, the default value is 2048.
+    */
+    @Nonnull
+    public final DoubleCesiumWriter openViewshedResolutionProperty() {
+        openIntervalIfNecessary();
+        return this.<DoubleCesiumWriter> openAndReturn(getViewshedResolutionWriter());
+    }
+
+    /**
+    * Writes a value for the {@code viewshedResolution} property as a {@code number} value. The {@code viewshedResolution} property specifies the resolution in pixels of the viewshed. If not specified, the default value is 2048.
+    * @param value The value.
+    */
+    public final void writeViewshedResolutionProperty(double value) {
+        {
+            DoubleCesiumWriter writer = openViewshedResolutionProperty();
+            try {
+                writer.writeNumber(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Writes a value for the {@code viewshedResolution} property as a {@code number} value. The {@code viewshedResolution} property specifies the resolution in pixels of the viewshed. If not specified, the default value is 2048.
+    * @param dates The dates at which the value is specified.
+    * @param values The values corresponding to each date.
+    */
+    public final void writeViewshedResolutionProperty(List<JulianDate> dates, List<Double> values) {
+        {
+            DoubleCesiumWriter writer = openViewshedResolutionProperty();
+            try {
+                writer.writeNumber(dates, values);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Writes a value for the {@code viewshedResolution} property as a {@code number} value. The {@code viewshedResolution} property specifies the resolution in pixels of the viewshed. If not specified, the default value is 2048.
+    * @param dates The dates at which the value is specified.
+    * @param values The value corresponding to each date.
+    * @param startIndex The index of the first element to write.
+    * @param length The number of elements to write.
+    */
+    public final void writeViewshedResolutionProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+        {
+            DoubleCesiumWriter writer = openViewshedResolutionProperty();
+            try {
+                writer.writeNumber(dates, values, startIndex, length);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Writes a value for the {@code viewshedResolution} property as a {@code reference} value. The {@code viewshedResolution} property specifies the resolution in pixels of the viewshed. If not specified, the default value is 2048.
+    * @param value The reference.
+    */
+    public final void writeViewshedResolutionPropertyReference(Reference value) {
+        {
+            DoubleCesiumWriter writer = openViewshedResolutionProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Writes a value for the {@code viewshedResolution} property as a {@code reference} value. The {@code viewshedResolution} property specifies the resolution in pixels of the viewshed. If not specified, the default value is 2048.
+    * @param value The reference.
+    */
+    public final void writeViewshedResolutionPropertyReference(String value) {
+        {
+            DoubleCesiumWriter writer = openViewshedResolutionProperty();
+            try {
+                writer.writeReference(value);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Writes a value for the {@code viewshedResolution} property as a {@code reference} value. The {@code viewshedResolution} property specifies the resolution in pixels of the viewshed. If not specified, the default value is 2048.
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyName The property on the referenced object.
+    */
+    public final void writeViewshedResolutionPropertyReference(String identifier, String propertyName) {
+        {
+            DoubleCesiumWriter writer = openViewshedResolutionProperty();
+            try {
+                writer.writeReference(identifier, propertyName);
+            } finally {
+                DisposeHelper.dispose(writer);
+            }
+        }
+    }
+
+    /**
+    * Writes a value for the {@code viewshedResolution} property as a {@code reference} value. The {@code viewshedResolution} property specifies the resolution in pixels of the viewshed. If not specified, the default value is 2048.
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+    */
+    public final void writeViewshedResolutionPropertyReference(String identifier, String[] propertyNames) {
+        {
+            DoubleCesiumWriter writer = openViewshedResolutionProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
