@@ -1581,6 +1581,26 @@ namespace CesiumLanguageWriterTests
                         w2.WriteBoolean(true);
                         m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.showThroughEllipsoid.getValue(date)).toEqual(true);");
                     }
+                    using (var w2 = w.OpenShowViewshedProperty())
+                    {
+                        w2.WriteBoolean(true);
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.showViewshed.getValue(date)).toEqual(true);");
+                    }
+                    using (var w2 = w.OpenViewshedVisibleColorProperty())
+                    {
+                        w2.WriteRgba(Color.FromArgb(57, 80, 142, 248));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.viewshedVisibleColor.getValue(date)).toEqual(Color.fromBytes(80, 142, 248, 57));");
+                    }
+                    using (var w2 = w.OpenViewshedOccludedColorProperty())
+                    {
+                        w2.WriteRgba(Color.FromArgb(110, 166, 20, 225));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.viewshedOccludedColor.getValue(date)).toEqual(Color.fromBytes(166, 20, 225, 110));");
+                    }
+                    using (var w2 = w.OpenViewshedResolutionProperty())
+                    {
+                        w2.WriteNumber(9164.0);
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.viewshedResolution.getValue(date)).toEqual(9164.0);");
+                    }
                 }
                 using (var w = packet.OpenCustomPatternSensorProperty())
                 {
@@ -1723,6 +1743,26 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteBoolean(true);
                         m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.showThroughEllipsoid.getValue(date)).toEqual(true);");
+                    }
+                    using (var w2 = w.OpenShowViewshedProperty())
+                    {
+                        w2.WriteBoolean(true);
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.showViewshed.getValue(date)).toEqual(true);");
+                    }
+                    using (var w2 = w.OpenViewshedVisibleColorProperty())
+                    {
+                        w2.WriteRgba(Color.FromArgb(91, 38, 54, 223));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.viewshedVisibleColor.getValue(date)).toEqual(Color.fromBytes(38, 54, 223, 91));");
+                    }
+                    using (var w2 = w.OpenViewshedOccludedColorProperty())
+                    {
+                        w2.WriteRgba(Color.FromArgb(99, 229, 38, 249));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.viewshedOccludedColor.getValue(date)).toEqual(Color.fromBytes(229, 38, 249, 99));");
+                    }
+                    using (var w2 = w.OpenViewshedResolutionProperty())
+                    {
+                        w2.WriteNumber(25862.0);
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.viewshedResolution.getValue(date)).toEqual(25862.0);");
                     }
                 }
                 using (var w = packet.OpenRectangularSensorProperty())
@@ -1871,6 +1911,26 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteBoolean(true);
                         m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.showThroughEllipsoid.getValue(date)).toEqual(true);");
+                    }
+                    using (var w2 = w.OpenShowViewshedProperty())
+                    {
+                        w2.WriteBoolean(true);
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.showViewshed.getValue(date)).toEqual(true);");
+                    }
+                    using (var w2 = w.OpenViewshedVisibleColorProperty())
+                    {
+                        w2.WriteRgba(Color.FromArgb(93, 239, 86, 8));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.viewshedVisibleColor.getValue(date)).toEqual(Color.fromBytes(239, 86, 8, 93));");
+                    }
+                    using (var w2 = w.OpenViewshedOccludedColorProperty())
+                    {
+                        w2.WriteRgba(Color.FromArgb(26, 20, 22, 45));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.viewshedOccludedColor.getValue(date)).toEqual(Color.fromBytes(20, 22, 45, 26));");
+                    }
+                    using (var w2 = w.OpenViewshedResolutionProperty())
+                    {
+                        w2.WriteNumber(33690.0);
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.viewshedResolution.getValue(date)).toEqual(33690.0);");
                     }
                 }
                 using (var w = packet.OpenFanProperty())
@@ -6638,6 +6698,28 @@ namespace CesiumLanguageWriterTests
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.environmentIntersectionColor.getValue(date)).toEqualEpsilon(new Color(0.937254901960784, 0.509803921568627, 0.235294117647059, 0.388235294117647), 1e-14);");
                 }
             }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_agi_conicSensor_viewshedVisibleColor_rgbaf");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_agi_conicSensor_viewshedVisibleColor_rgbaf')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenViewshedVisibleColorProperty())
+                {
+                    w2.WriteRgbaf(Color.FromArgb(52, 140, 60, 88));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.viewshedVisibleColor.getValue(date)).toEqualEpsilon(new Color(0.549019607843137, 0.235294117647059, 0.345098039215686, 0.203921568627451), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_agi_conicSensor_viewshedOccludedColor_rgbaf");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_agi_conicSensor_viewshedOccludedColor_rgbaf')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenViewshedOccludedColorProperty())
+                {
+                    w2.WriteRgbaf(Color.FromArgb(2, 243, 98, 227));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.viewshedOccludedColor.getValue(date)).toEqualEpsilon(new Color(0.952941176470588, 0.384313725490196, 0.890196078431372, 0.00784313725490196), 1e-14);");
+                }
+            }
         }
         private void WriteConstantValuesIndividualCustomPatternSensor()
         {
@@ -7776,6 +7858,28 @@ namespace CesiumLanguageWriterTests
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.environmentIntersectionColor.getValue(date)).toEqualEpsilon(new Color(0.364705882352941, 0.882352941176471, 0.466666666666667, 0.913725490196078), 1e-14);");
                 }
             }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_agi_customPatternSensor_viewshedVisibleColor_rgbaf");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_agi_customPatternSensor_viewshedVisibleColor_rgbaf')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenViewshedVisibleColorProperty())
+                {
+                    w2.WriteRgbaf(Color.FromArgb(242, 3, 78, 23));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.viewshedVisibleColor.getValue(date)).toEqualEpsilon(new Color(0.0117647058823529, 0.305882352941176, 0.0901960784313725, 0.949019607843137), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_agi_customPatternSensor_viewshedOccludedColor_rgbaf");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_agi_customPatternSensor_viewshedOccludedColor_rgbaf')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenViewshedOccludedColorProperty())
+                {
+                    w2.WriteRgbaf(Color.FromArgb(65, 158, 22, 122));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.viewshedOccludedColor.getValue(date)).toEqualEpsilon(new Color(0.619607843137255, 0.0862745098039216, 0.47843137254902, 0.254901960784314), 1e-14);");
+                }
+            }
         }
         private void WriteConstantValuesIndividualRectangularSensor()
         {
@@ -8879,6 +8983,28 @@ namespace CesiumLanguageWriterTests
                 {
                     w2.WriteRgbaf(Color.FromArgb(30, 41, 43, 77));
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.environmentIntersectionColor.getValue(date)).toEqualEpsilon(new Color(0.16078431372549, 0.168627450980392, 0.301960784313725, 0.117647058823529), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_agi_rectangularSensor_viewshedVisibleColor_rgbaf");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_agi_rectangularSensor_viewshedVisibleColor_rgbaf')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenViewshedVisibleColorProperty())
+                {
+                    w2.WriteRgbaf(Color.FromArgb(14, 235, 87, 42));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.viewshedVisibleColor.getValue(date)).toEqualEpsilon(new Color(0.92156862745098, 0.341176470588235, 0.164705882352941, 0.0549019607843137), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("constant_agi_rectangularSensor_viewshedOccludedColor_rgbaf");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('constant_agi_rectangularSensor_viewshedOccludedColor_rgbaf')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenViewshedOccludedColorProperty())
+                {
+                    w2.WriteRgbaf(Color.FromArgb(142, 47, 163, 170));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.viewshedOccludedColor.getValue(date)).toEqualEpsilon(new Color(0.184313725490196, 0.63921568627451, 0.666666666666667, 0.556862745098039), 1e-14);");
                 }
             }
         }
@@ -10845,6 +10971,26 @@ namespace CesiumLanguageWriterTests
                         w2.WriteReference(new Reference("Constant", CreateList("conicSensor", "showThroughEllipsoid")));
                         m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.showThroughEllipsoid.getValue(date)).toEqual(constant.conicSensor.showThroughEllipsoid.getValue(date));");
                     }
+                    using (var w2 = w.OpenShowViewshedProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("conicSensor", "showViewshed")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.showViewshed.getValue(date)).toEqual(constant.conicSensor.showViewshed.getValue(date));");
+                    }
+                    using (var w2 = w.OpenViewshedVisibleColorProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("conicSensor", "viewshedVisibleColor")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.viewshedVisibleColor.getValue(date)).toEqual(constant.conicSensor.viewshedVisibleColor.getValue(date));");
+                    }
+                    using (var w2 = w.OpenViewshedOccludedColorProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("conicSensor", "viewshedOccludedColor")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.viewshedOccludedColor.getValue(date)).toEqual(constant.conicSensor.viewshedOccludedColor.getValue(date));");
+                    }
+                    using (var w2 = w.OpenViewshedResolutionProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("conicSensor", "viewshedResolution")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.viewshedResolution.getValue(date)).toEqual(constant.conicSensor.viewshedResolution.getValue(date));");
+                    }
                 }
                 using (var w = packet.OpenCustomPatternSensorProperty())
                 {
@@ -10972,6 +11118,26 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("customPatternSensor", "showThroughEllipsoid")));
                         m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.showThroughEllipsoid.getValue(date)).toEqual(constant.customPatternSensor.showThroughEllipsoid.getValue(date));");
+                    }
+                    using (var w2 = w.OpenShowViewshedProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("customPatternSensor", "showViewshed")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.showViewshed.getValue(date)).toEqual(constant.customPatternSensor.showViewshed.getValue(date));");
+                    }
+                    using (var w2 = w.OpenViewshedVisibleColorProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("customPatternSensor", "viewshedVisibleColor")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.viewshedVisibleColor.getValue(date)).toEqual(constant.customPatternSensor.viewshedVisibleColor.getValue(date));");
+                    }
+                    using (var w2 = w.OpenViewshedOccludedColorProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("customPatternSensor", "viewshedOccludedColor")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.viewshedOccludedColor.getValue(date)).toEqual(constant.customPatternSensor.viewshedOccludedColor.getValue(date));");
+                    }
+                    using (var w2 = w.OpenViewshedResolutionProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("customPatternSensor", "viewshedResolution")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.viewshedResolution.getValue(date)).toEqual(constant.customPatternSensor.viewshedResolution.getValue(date));");
                     }
                 }
                 using (var w = packet.OpenRectangularSensorProperty())
@@ -11110,6 +11276,26 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("rectangularSensor", "showThroughEllipsoid")));
                         m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.showThroughEllipsoid.getValue(date)).toEqual(constant.rectangularSensor.showThroughEllipsoid.getValue(date));");
+                    }
+                    using (var w2 = w.OpenShowViewshedProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("rectangularSensor", "showViewshed")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.showViewshed.getValue(date)).toEqual(constant.rectangularSensor.showViewshed.getValue(date));");
+                    }
+                    using (var w2 = w.OpenViewshedVisibleColorProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("rectangularSensor", "viewshedVisibleColor")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.viewshedVisibleColor.getValue(date)).toEqual(constant.rectangularSensor.viewshedVisibleColor.getValue(date));");
+                    }
+                    using (var w2 = w.OpenViewshedOccludedColorProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("rectangularSensor", "viewshedOccludedColor")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.viewshedOccludedColor.getValue(date)).toEqual(constant.rectangularSensor.viewshedOccludedColor.getValue(date));");
+                    }
+                    using (var w2 = w.OpenViewshedResolutionProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("rectangularSensor", "viewshedResolution")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.viewshedResolution.getValue(date)).toEqual(constant.rectangularSensor.viewshedResolution.getValue(date));");
                     }
                 }
                 using (var w = packet.OpenFanProperty())
@@ -16175,6 +16361,24 @@ namespace CesiumLanguageWriterTests
                         m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.environmentIntersectionWidth.getValue(documentStartDate)).toEqual(54383.0);");
                         m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.environmentIntersectionWidth.getValue(documentStopDate)).toEqual(48814.0);");
                     }
+                    using (var w2 = w.OpenViewshedVisibleColorProperty())
+                    {
+                        w2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(208, 219, 102, 126), Color.FromArgb(3, 165, 12, 88)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.viewshedVisibleColor.getValue(documentStartDate)).toEqual(Color.fromBytes(219, 102, 126, 208));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.viewshedVisibleColor.getValue(documentStopDate)).toEqual(Color.fromBytes(165, 12, 88, 3));");
+                    }
+                    using (var w2 = w.OpenViewshedOccludedColorProperty())
+                    {
+                        w2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(105, 47, 229, 96), Color.FromArgb(64, 65, 153, 9)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.viewshedOccludedColor.getValue(documentStartDate)).toEqual(Color.fromBytes(47, 229, 96, 105));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.viewshedOccludedColor.getValue(documentStopDate)).toEqual(Color.fromBytes(65, 153, 9, 64));");
+                    }
+                    using (var w2 = w.OpenViewshedResolutionProperty())
+                    {
+                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(38357.0, 30316.0));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.viewshedResolution.getValue(documentStartDate)).toEqual(38357.0);");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.viewshedResolution.getValue(documentStopDate)).toEqual(30316.0);");
+                    }
                 }
                 using (var w = packet.OpenCustomPatternSensorProperty())
                 {
@@ -16267,6 +16471,24 @@ namespace CesiumLanguageWriterTests
                         w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(15461.0, 8000.0));
                         m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.environmentIntersectionWidth.getValue(documentStartDate)).toEqual(15461.0);");
                         m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.environmentIntersectionWidth.getValue(documentStopDate)).toEqual(8000.0);");
+                    }
+                    using (var w2 = w.OpenViewshedVisibleColorProperty())
+                    {
+                        w2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(117, 221, 155, 36), Color.FromArgb(129, 249, 126, 78)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.viewshedVisibleColor.getValue(documentStartDate)).toEqual(Color.fromBytes(221, 155, 36, 117));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.viewshedVisibleColor.getValue(documentStopDate)).toEqual(Color.fromBytes(249, 126, 78, 129));");
+                    }
+                    using (var w2 = w.OpenViewshedOccludedColorProperty())
+                    {
+                        w2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(134, 228, 27, 237), Color.FromArgb(84, 254, 162, 80)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.viewshedOccludedColor.getValue(documentStartDate)).toEqual(Color.fromBytes(228, 27, 237, 134));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.viewshedOccludedColor.getValue(documentStopDate)).toEqual(Color.fromBytes(254, 162, 80, 84));");
+                    }
+                    using (var w2 = w.OpenViewshedResolutionProperty())
+                    {
+                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(44590.0, 31959.0));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.viewshedResolution.getValue(documentStartDate)).toEqual(44590.0);");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.viewshedResolution.getValue(documentStopDate)).toEqual(31959.0);");
                     }
                 }
                 using (var w = packet.OpenRectangularSensorProperty())
@@ -16372,6 +16594,24 @@ namespace CesiumLanguageWriterTests
                         w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(637.0, 10677.0));
                         m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.environmentIntersectionWidth.getValue(documentStartDate)).toEqual(637.0);");
                         m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.environmentIntersectionWidth.getValue(documentStopDate)).toEqual(10677.0);");
+                    }
+                    using (var w2 = w.OpenViewshedVisibleColorProperty())
+                    {
+                        w2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(92, 220, 157, 178), Color.FromArgb(26, 213, 65, 75)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.viewshedVisibleColor.getValue(documentStartDate)).toEqual(Color.fromBytes(220, 157, 178, 92));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.viewshedVisibleColor.getValue(documentStopDate)).toEqual(Color.fromBytes(213, 65, 75, 26));");
+                    }
+                    using (var w2 = w.OpenViewshedOccludedColorProperty())
+                    {
+                        w2.WriteRgba(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(10, 202, 44, 192), Color.FromArgb(207, 107, 226, 246)));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.viewshedOccludedColor.getValue(documentStartDate)).toEqual(Color.fromBytes(202, 44, 192, 10));");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.viewshedOccludedColor.getValue(documentStopDate)).toEqual(Color.fromBytes(107, 226, 246, 207));");
+                    }
+                    using (var w2 = w.OpenViewshedResolutionProperty())
+                    {
+                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(24619.0, 54818.0));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.viewshedResolution.getValue(documentStartDate)).toEqual(24619.0);");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.viewshedResolution.getValue(documentStopDate)).toEqual(54818.0);");
                     }
                 }
                 using (var w = packet.OpenFanProperty())
@@ -21163,6 +21403,30 @@ namespace CesiumLanguageWriterTests
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.environmentIntersectionColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.670588235294118, 0.701960784313725, 0.717647058823529, 0.482352941176471), 1e-14);");
                 }
             }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_conicSensor_viewshedVisibleColor_rgbaf");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_conicSensor_viewshedVisibleColor_rgbaf')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenViewshedVisibleColorProperty())
+                {
+                    w2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(65, 170, 34, 71), Color.FromArgb(181, 29, 137, 119)));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.viewshedVisibleColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.666666666666667, 0.133333333333333, 0.27843137254902, 0.254901960784314), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.viewshedVisibleColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.113725490196078, 0.537254901960784, 0.466666666666667, 0.709803921568627), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_conicSensor_viewshedOccludedColor_rgbaf");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_conicSensor_viewshedOccludedColor_rgbaf')).toBeDefined();");
+                using (var w = packet.OpenConicSensorProperty())
+                using (var w2 = w.OpenViewshedOccludedColorProperty())
+                {
+                    w2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(2, 84, 75, 119), Color.FromArgb(150, 74, 134, 153)));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.viewshedOccludedColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.329411764705882, 0.294117647058824, 0.466666666666667, 0.00784313725490196), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.viewshedOccludedColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.290196078431373, 0.525490196078431, 0.6, 0.588235294117647), 1e-14);");
+                }
+            }
         }
         private void WriteSampledValuesIndividualCustomPatternSensor()
         {
@@ -22300,6 +22564,30 @@ namespace CesiumLanguageWriterTests
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.environmentIntersectionColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.196078431372549, 0.0313725490196078, 0.458823529411765, 0.129411764705882), 1e-14);");
                 }
             }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_customPatternSensor_viewshedVisibleColor_rgbaf");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_customPatternSensor_viewshedVisibleColor_rgbaf')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenViewshedVisibleColorProperty())
+                {
+                    w2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(166, 26, 60, 137), Color.FromArgb(190, 241, 12, 94)));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.viewshedVisibleColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.101960784313725, 0.235294117647059, 0.537254901960784, 0.650980392156863), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.viewshedVisibleColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.945098039215686, 0.0470588235294118, 0.368627450980392, 0.745098039215686), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_customPatternSensor_viewshedOccludedColor_rgbaf");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_customPatternSensor_viewshedOccludedColor_rgbaf')).toBeDefined();");
+                using (var w = packet.OpenCustomPatternSensorProperty())
+                using (var w2 = w.OpenViewshedOccludedColorProperty())
+                {
+                    w2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(155, 168, 180, 123), Color.FromArgb(188, 234, 142, 152)));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.viewshedOccludedColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.658823529411765, 0.705882352941177, 0.482352941176471, 0.607843137254902), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.viewshedOccludedColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.917647058823529, 0.556862745098039, 0.596078431372549, 0.737254901960784), 1e-14);");
+                }
+            }
         }
         private void WriteSampledValuesIndividualRectangularSensor()
         {
@@ -23435,6 +23723,30 @@ namespace CesiumLanguageWriterTests
                     w2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(21, 201, 208, 91), Color.FromArgb(140, 130, 126, 251)));
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.environmentIntersectionColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.788235294117647, 0.815686274509804, 0.356862745098039, 0.0823529411764706), 1e-14);");
                     m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.environmentIntersectionColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.509803921568627, 0.494117647058824, 0.984313725490196, 0.549019607843137), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_rectangularSensor_viewshedVisibleColor_rgbaf");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_rectangularSensor_viewshedVisibleColor_rgbaf')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenViewshedVisibleColorProperty())
+                {
+                    w2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(21, 68, 39, 209), Color.FromArgb(16, 49, 16, 119)));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.viewshedVisibleColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.266666666666667, 0.152941176470588, 0.819607843137255, 0.0823529411764706), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.viewshedVisibleColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.192156862745098, 0.0627450980392157, 0.466666666666667, 0.0627450980392157), 1e-14);");
+                }
+            }
+            using (var packet = m_writer.OpenPacket(m_output))
+            {
+                packet.WriteId("sampled_rectangularSensor_viewshedOccludedColor_rgbaf");
+                WriteAssertionBoth("    expect(e = dataSource.entities.getById('sampled_rectangularSensor_viewshedOccludedColor_rgbaf')).toBeDefined();");
+                using (var w = packet.OpenRectangularSensorProperty())
+                using (var w2 = w.OpenViewshedOccludedColorProperty())
+                {
+                    w2.WriteRgbaf(CreateList(m_documentStartDate, m_documentStopDate), CreateList(Color.FromArgb(47, 90, 84, 13), Color.FromArgb(70, 185, 42, 17)));
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.viewshedOccludedColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.352941176470588, 0.329411764705882, 0.0509803921568627, 0.184313725490196), 1e-14);");
+                    m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.viewshedOccludedColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.725490196078431, 0.164705882352941, 0.0666666666666667, 0.274509803921569), 1e-14);");
                 }
             }
         }
