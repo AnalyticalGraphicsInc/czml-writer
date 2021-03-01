@@ -104,6 +104,15 @@ namespace CesiumLanguageWriterTests
                 });
             }
 
+            if (value is Bounds)
+            {
+                var bounds = (Bounds)value;
+                return CreateExpectedJson(new Dictionary<string, object>
+                {
+                    { "distanceDisplayCondition", new List<object> { bounds.LowerBound, bounds.UpperBound } },
+                });
+            }
+
             if (value is NearFarScalar)
             {
                 var nearFarScalar = (NearFarScalar)value;

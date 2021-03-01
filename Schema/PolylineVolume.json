@@ -1,0 +1,68 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/PolylineVolume.json",
+    "title": "PolylineVolume",
+    "description": "A polyline with a volume, defined as a 2D shape extruded along a polyline that conforms to the curvature of the globe.",
+    "type": "object",
+    "properties": {
+        "show": {
+            "$ref": "Boolean.json",
+            "description": "Whether or not the volume is shown.",
+            "default": true
+        },
+        "positions": {
+            "$ref": "PositionList.json",
+            "description": "The array of positions defining the center of the polyline volume.",
+            "czmlRequiredForDisplay": true
+        },
+        "shape": {
+            "$ref": "Shape.json",
+            "description": "The array of positions defining the shape of the volume to be extruded.",
+            "czmlRequiredForDisplay": true
+        },
+        "cornerType": {
+            "$ref": "CornerType.json",
+            "description": "The style of the corners of the volume.",
+            "default": "ROUNDED"
+        },
+        "granularity": {
+            "$ref": "Double.json",
+            "description": "The sampling distance, in radians.",
+            "default": "π / 180.0"
+        },
+        "fill": {
+            "$ref": "Boolean.json",
+            "description": "Whether or not the volume is filled.",
+            "default": true
+        },
+        "material": {
+            "$ref": "Material.json",
+            "description": "The material to use to fill the volume.",
+            "default": "solid white"
+        },
+        "outline": {
+            "$ref": "Boolean.json",
+            "description": "Whether or not the volume is outlined.",
+            "default": false
+        },
+        "outlineColor": {
+            "$ref": "Color.json",
+            "description": "The color of the volume outline.",
+            "default": "black"
+        },
+        "outlineWidth": {
+            "$ref": "Double.json",
+            "description": "The width of the volume outline.",
+            "default": 1.0
+        },
+        "shadows": {
+            "$ref": "ShadowMode.json",
+            "description": "Whether or not the volume casts or receives shadows.",
+            "default": "DISABLED"
+        },
+        "distanceDisplayCondition": {
+            "$ref": "DistanceDisplayCondition.json",
+            "description": "The display condition specifying the distance from the camera at which this volume will be displayed."
+        }
+    }
+}

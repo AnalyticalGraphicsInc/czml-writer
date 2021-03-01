@@ -24,6 +24,7 @@ import cesiumlanguagewriter.PathCesiumWriter;
 import cesiumlanguagewriter.PointCesiumWriter;
 import cesiumlanguagewriter.PolygonCesiumWriter;
 import cesiumlanguagewriter.PolylineCesiumWriter;
+import cesiumlanguagewriter.PolylineVolumeCesiumWriter;
 import cesiumlanguagewriter.PositionCesiumWriter;
 import cesiumlanguagewriter.RectangleCesiumWriter;
 import cesiumlanguagewriter.RectangularSensorCesiumWriter;
@@ -140,6 +141,10 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * The name of the {@code polyline} property.
     */
     public static final String PolylinePropertyName = "polyline";
+    /**
+    * The name of the {@code polylineVolume} property.
+    */
+    public static final String PolylineVolumePropertyName = "polylineVolume";
     /**
     * The name of the {@code rectangle} property.
     */
@@ -260,6 +265,11 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     private Lazy<PolylineCesiumWriter> m_polyline = new Lazy<cesiumlanguagewriter.PolylineCesiumWriter>(new Func1<cesiumlanguagewriter.PolylineCesiumWriter>() {
         public cesiumlanguagewriter.PolylineCesiumWriter invoke() {
             return new PolylineCesiumWriter(PolylinePropertyName);
+        }
+    }, false);
+    private Lazy<PolylineVolumeCesiumWriter> m_polylineVolume = new Lazy<cesiumlanguagewriter.PolylineVolumeCesiumWriter>(new Func1<cesiumlanguagewriter.PolylineVolumeCesiumWriter>() {
+        public cesiumlanguagewriter.PolylineVolumeCesiumWriter invoke() {
+            return new PolylineVolumeCesiumWriter(PolylineVolumePropertyName);
         }
     }, false);
     private Lazy<RectangleCesiumWriter> m_rectangle = new Lazy<cesiumlanguagewriter.RectangleCesiumWriter>(new Func1<cesiumlanguagewriter.RectangleCesiumWriter>() {
@@ -1304,6 +1314,22 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     @Nonnull
     public final PolylineCesiumWriter openPolylineProperty() {
         return this.<PolylineCesiumWriter> openAndReturn(getPolylineWriter());
+    }
+
+    /**
+    * Gets the writer for the {@code polylineVolume} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code polylineVolume} property defines a polyline with a volume, defined as a 2D shape extruded along a polyline.
+    */
+    @Nonnull
+    public final PolylineVolumeCesiumWriter getPolylineVolumeWriter() {
+        return m_polylineVolume.getValue();
+    }
+
+    /**
+    * Opens and returns the writer for the {@code polylineVolume} property. The {@code polylineVolume} property defines a polyline with a volume, defined as a 2D shape extruded along a polyline.
+    */
+    @Nonnull
+    public final PolylineVolumeCesiumWriter openPolylineVolumeProperty() {
+        return this.<PolylineVolumeCesiumWriter> openAndReturn(getPolylineVolumeWriter());
     }
 
     /**

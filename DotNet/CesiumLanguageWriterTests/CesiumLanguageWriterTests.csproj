@@ -96,10 +96,12 @@
     <Compile Include="TestPolylineDashMaterialCesiumWriter.cs" />
     <Compile Include="TestPolylineGlowMaterialCesiumWriter.cs" />
     <Compile Include="TestPolylineOutlineMaterialCesiumWriter.cs" />
+    <Compile Include="TestPolylineVolumeCesiumWriter.cs" />
     <Compile Include="TestPositionCesiumWriter.cs" />
     <Compile Include="TestRectangleCesiumWriter.cs" />
     <Compile Include="TestRectangularSensorCesiumWriter.cs" />
     <Compile Include="TestReference.cs" />
+    <Compile Include="TestShapeCesiumWriter.cs" />
     <Compile Include="TestSolidColorMaterialCesiumWriter.cs" />
     <Compile Include="TestStringCesiumWriter.cs" />
     <Compile Include="TestStripeMaterialCesiumWriter.cs" />

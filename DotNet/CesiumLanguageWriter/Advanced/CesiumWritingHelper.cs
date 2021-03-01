@@ -572,6 +572,24 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
+        /// Writes a list of <see cref="Rectangular"/> values as an array in X, Y order.
+        /// </summary>
+        /// <param name="output">The stream to which the value will be written.</param>
+        /// <param name="values">The values to write.</param>
+        public static void WriteCartesian2List(CesiumOutputStream output, IEnumerable<Rectangular> values)
+        {
+            output.WriteStartSequence();
+            foreach (Rectangular value in values)
+            {
+                output.WriteValue(value.X);
+                output.WriteValue(value.Y);
+                output.WriteLineBreak();
+            }
+
+            output.WriteEndSequence();
+        }
+
+        /// <summary>
         /// Writes a list of <see cref="Cartesian"/> values as an array in X, Y, Z order.
         /// </summary>
         /// <param name="output">The stream to which the value will be written.</param>

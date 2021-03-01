@@ -139,6 +139,21 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
+    * Create an adaptor for lists of {@link Rectangular} values.
+    * @param <TFrom> The class that implements {@link ICesiumCartesian3ListValuePropertyWriter} to adapt.
+    * @param parent The instance to wrap.
+    * @return The new adaptor.
+    */
+    @Nonnull
+    public static <TFrom extends ICesiumCartesian2ListValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumCartesian2ListValuePropertyAdaptor<TFrom> createCartesian2List(@Nonnull TFrom parent) {
+        return new CesiumCartesian2ListValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Iterable<Rectangular>>() {
+            public void invoke(TFrom writer, Iterable<cesiumlanguagewriter.Rectangular> value) {
+                writer.writeCartesian2(value);
+            }
+        }, CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());
+    }
+
+    /**
     * Create an adaptor for lists of {@link Cartesian} values.
     * @param <TFrom> The class that implements {@link ICesiumCartesian3ListValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.

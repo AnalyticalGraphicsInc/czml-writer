@@ -137,6 +137,11 @@ namespace CesiumLanguageWriter
         public const string PolylinePropertyName = "polyline";
 
         /// <summary>
+        /// The name of the <c>polylineVolume</c> property.
+        /// </summary>
+        public const string PolylineVolumePropertyName = "polylineVolume";
+
+        /// <summary>
         /// The name of the <c>rectangle</c> property.
         /// </summary>
         public const string RectanglePropertyName = "rectangle";
@@ -194,6 +199,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<PointCesiumWriter> m_point = new Lazy<PointCesiumWriter>(() => new PointCesiumWriter(PointPropertyName), false);
         private readonly Lazy<PolygonCesiumWriter> m_polygon = new Lazy<PolygonCesiumWriter>(() => new PolygonCesiumWriter(PolygonPropertyName), false);
         private readonly Lazy<PolylineCesiumWriter> m_polyline = new Lazy<PolylineCesiumWriter>(() => new PolylineCesiumWriter(PolylinePropertyName), false);
+        private readonly Lazy<PolylineVolumeCesiumWriter> m_polylineVolume = new Lazy<PolylineVolumeCesiumWriter>(() => new PolylineVolumeCesiumWriter(PolylineVolumePropertyName), false);
         private readonly Lazy<RectangleCesiumWriter> m_rectangle = new Lazy<RectangleCesiumWriter>(() => new RectangleCesiumWriter(RectanglePropertyName), false);
         private readonly Lazy<TilesetCesiumWriter> m_tileset = new Lazy<TilesetCesiumWriter>(() => new TilesetCesiumWriter(TilesetPropertyName), false);
         private readonly Lazy<WallCesiumWriter> m_wall = new Lazy<WallCesiumWriter>(() => new WallCesiumWriter(WallPropertyName), false);
@@ -1130,6 +1136,24 @@ namespace CesiumLanguageWriter
         public PolylineCesiumWriter OpenPolylineProperty()
         {
             return OpenAndReturn(PolylineWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <c>polylineVolume</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>polylineVolume</c> property defines a polyline with a volume, defined as a 2D shape extruded along a polyline.
+        /// </summary>
+        [NotNull]
+        public PolylineVolumeCesiumWriter PolylineVolumeWriter
+        {
+            get { return m_polylineVolume.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>polylineVolume</c> property. The <c>polylineVolume</c> property defines a polyline with a volume, defined as a 2D shape extruded along a polyline.
+        /// </summary>
+        [NotNull]
+        public PolylineVolumeCesiumWriter OpenPolylineVolumeProperty()
+        {
+            return OpenAndReturn(PolylineVolumeWriter);
         }
 
         /// <summary>

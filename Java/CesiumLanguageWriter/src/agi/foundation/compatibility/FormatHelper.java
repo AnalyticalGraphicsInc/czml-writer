@@ -15,6 +15,10 @@ import java.util.Objects;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import static java.lang.Math.abs;
+import static java.lang.Math.floor;
+import static java.lang.Math.log10;
+
 /**
  * Helper methods related to Formats.
  *
@@ -277,7 +281,7 @@ public final class FormatHelper {
 
         @Override
         public StringBuffer format(double number, StringBuffer toAppendTo, FieldPosition pos) {
-            double exponentDigits = number == 0.0 ? 0.0 : Math.floor(Math.log10(number));
+            double exponentDigits = number == 0.0 ? 0.0 : floor(log10(abs(number)));
 
             if (exponentDigits > -5 && exponentDigits < 17) {
                 return format.format(number, toAppendTo, pos);

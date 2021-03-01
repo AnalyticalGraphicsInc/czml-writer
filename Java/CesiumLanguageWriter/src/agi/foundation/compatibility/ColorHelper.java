@@ -36,6 +36,22 @@ public final class ColorHelper {
         return new Color(red, green, blue, alpha);
     }
 
+    /**
+     * Creates a Color from the specified Color, but with the new specified alpha value.
+     * Although this method allows a 32-bit value to be passed for the alpha value, the
+     * value is limited to 8 bits.
+     *
+     * @param alpha
+     *            The alpha value for the new Color. Valid values are 0 through 255.
+     * @param baseColor
+     *            The Color from which to create the new Color.
+     * @return The Color that this method creates.
+     */
+    @Nonnull
+    public static Color fromArgb(int alpha, @Nonnull Color baseColor) {
+        return new Color(baseColor.getRed(), baseColor.getGreen(), baseColor.getBlue(), alpha);
+    }
+
     @Nonnull
     public static final Color LIME = new Color(0x00FF00);
 }

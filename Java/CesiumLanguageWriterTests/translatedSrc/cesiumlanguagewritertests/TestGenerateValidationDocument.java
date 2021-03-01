@@ -2142,6 +2142,138 @@ public class TestGenerateValidationDocument {
                     }
                 }
                 {
+                    PolylineVolumeCesiumWriter w = packet.openPolylineVolumeProperty();
+                    try {
+                        {
+                            BooleanCesiumWriter w2 = w.openShowProperty();
+                            try {
+                                w2.writeBoolean(true);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.show.getValue(date)).toEqual(true);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            PositionListCesiumWriter w2 = w.openPositionsProperty();
+                            try {
+                                w2.writeCartesian(TestGenerateValidationDocument.<Cartesian> createList(new Cartesian(62250D, 34803D, 52359D), new Cartesian(59852D, 58857D, 24549D)));
+                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                        "    expect(e.polylineVolume.positions.getValue(date)).toEqual([ new Cartesian3(62250, 34803, 52359), new Cartesian3(59852, 58857, 24549) ]);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            ShapeCesiumWriter w2 = w.openShapeProperty();
+                            try {
+                                w2.writeCartesian2(TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(45301D, 43952D), new Rectangular(34475D, 28294D)));
+                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                        "    expect(e.polylineVolume.shape.getValue(date)).toEqual([ new Cartesian2(45301, 43952), new Cartesian2(34475, 28294) ]);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            CornerTypeCesiumWriter w2 = w.openCornerTypeProperty();
+                            try {
+                                w2.writeCornerType(CesiumCornerType.BEVELED);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.cornerType.getValue(date)).toEqual(CornerType.BEVELED);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            DoubleCesiumWriter w2 = w.openGranularityProperty();
+                            try {
+                                w2.writeNumber(12007.0);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.granularity.getValue(date)).toEqual(12007.0);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            BooleanCesiumWriter w2 = w.openFillProperty();
+                            try {
+                                w2.writeBoolean(true);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.fill.getValue(date)).toEqual(true);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            MaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    SolidColorMaterialCesiumWriter m = w2.openSolidColorProperty();
+                                    try {
+                                        {
+                                            ColorCesiumWriter m2 = m.openColorProperty();
+                                            try {
+                                                m2.writeRgba(ColorHelper.fromArgb(154, 232, 0, 34));
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.material.color.getValue(date)).toEqual(Color.fromBytes(232, 0, 34, 154));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            BooleanCesiumWriter w2 = w.openOutlineProperty();
+                            try {
+                                w2.writeBoolean(true);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.outline.getValue(date)).toEqual(true);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            ColorCesiumWriter w2 = w.openOutlineColorProperty();
+                            try {
+                                w2.writeRgba(ColorHelper.fromArgb(42, 179, 137, 151));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.outlineColor.getValue(date)).toEqual(Color.fromBytes(179, 137, 151, 42));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            DoubleCesiumWriter w2 = w.openOutlineWidthProperty();
+                            try {
+                                w2.writeNumber(23162.0);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.outlineWidth.getValue(date)).toEqual(23162.0);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            ShadowModeCesiumWriter w2 = w.openShadowsProperty();
+                            try {
+                                w2.writeShadowMode(CesiumShadowMode.CAST_ONLY);
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.shadows.getValue(date)).toEqual(ShadowMode.CAST_ONLY);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            DistanceDisplayConditionCesiumWriter w2 = w.openDistanceDisplayConditionProperty();
+                            try {
+                                w2.writeDistanceDisplayCondition(new Bounds(49375D, 57097D));
+                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                        "    expect(e.polylineVolume.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(49375, 57097));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+                {
                     RectangleCesiumWriter w = packet.openRectangleProperty();
                     try {
                         {
@@ -3565,6 +3697,7 @@ public class TestGenerateValidationDocument {
         writeConstantValuesIndividualPoint();
         writeConstantValuesIndividualPolygon();
         writeConstantValuesIndividualPolyline();
+        writeConstantValuesIndividualPolylineVolume();
         writeConstantValuesIndividualRectangle();
         writeConstantValuesIndividualTileset();
         writeConstantValuesIndividualWall();
@@ -10733,6 +10866,657 @@ public class TestGenerateValidationDocument {
                                         DisposeHelper.dispose(m);
                                     }
                                 }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+    }
+
+    private final void writeConstantValuesIndividualPolylineVolume() {
+        {
+            PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("constant_polylineVolume_positions_cartographicRadians");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('constant_polylineVolume_positions_cartographicRadians')).toBeDefined();");
+                {
+                    PolylineVolumeCesiumWriter w = packet.openPolylineVolumeProperty();
+                    try {
+                        {
+                            PositionListCesiumWriter w2 = w.openPositionsProperty();
+                            try {
+                                w2.writeCartographicRadians(TestGenerateValidationDocument.<Cartographic> createList(new Cartographic(0.0883087457516627, 0.924587529983249, 8130D), new Cartographic(
+                                        0.613491452287313, 1.45657735287148, 19697D)));
+                                TextWriterHelper
+                                        .writeLine(
+                                                m_assertionsWriter,
+                                                "    expect(e.polylineVolume.positions.getValue(date)).toEqual([ Cartesian3.fromRadians(0.0883087457516627, 0.924587529983249, 8130), Cartesian3.fromRadians(0.613491452287313, 1.45657735287148, 19697) ]);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("constant_polylineVolume_positions_cartographicDegrees");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('constant_polylineVolume_positions_cartographicDegrees')).toBeDefined();");
+                {
+                    PolylineVolumeCesiumWriter w = packet.openPolylineVolumeProperty();
+                    try {
+                        {
+                            PositionListCesiumWriter w2 = w.openPositionsProperty();
+                            try {
+                                w2.writeCartographicDegrees(TestGenerateValidationDocument.<Cartographic> createList(new Cartographic(7D, 43D, 57136D), new Cartographic(44D, 37D, 65346D)));
+                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                        "    expect(e.polylineVolume.positions.getValue(date)).toEqual([ Cartesian3.fromDegrees(7, 43, 57136), Cartesian3.fromDegrees(44, 37, 65346) ]);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("constant_polylineVolume_material_solidColor_color");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('constant_polylineVolume_material_solidColor_color')).toBeDefined();");
+                {
+                    PolylineVolumeCesiumWriter w = packet.openPolylineVolumeProperty();
+                    try {
+                        {
+                            MaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    SolidColorMaterialCesiumWriter m = w2.openSolidColorProperty();
+                                    try {
+                                        {
+                                            ColorCesiumWriter m2 = m.openColorProperty();
+                                            try {
+                                                m2.writeRgbaf(ColorHelper.fromArgb(164, 221, 33, 34));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polylineVolume.material.color.getValue(date)).toEqualEpsilon(new Color(0.866666666666667, 0.129411764705882, 0.133333333333333, 0.643137254901961), 1e-14);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("material_polylineVolume_material_image");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('material_polylineVolume_material_image')).toBeDefined();");
+                {
+                    PolylineVolumeCesiumWriter w = packet.openPolylineVolumeProperty();
+                    try {
+                        {
+                            MaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    ImageMaterialCesiumWriter m = w2.openImageProperty();
+                                    try {
+                                        {
+                                            UriCesiumWriter m2 = m.openImageProperty();
+                                            try {
+                                                m2.writeUri("http://example.com/25029", CesiumResourceBehavior.LINK_TO);
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.material.image.getValue(date).url).toEqual('http://example.com/25029');");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            RepeatCesiumWriter m2 = m.openRepeatProperty();
+                                            try {
+                                                m2.writeCartesian2(new Rectangular(16806D, 36161D));
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.material.repeat.getValue(date)).toEqual(new Cartesian2(16806, 36161));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            ColorCesiumWriter m2 = m.openColorProperty();
+                                            try {
+                                                m2.writeRgba(ColorHelper.fromArgb(0, 29, 171, 22));
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.material.color.getValue(date)).toEqual(Color.fromBytes(29, 171, 22, 0));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            BooleanCesiumWriter m2 = m.openTransparentProperty();
+                                            try {
+                                                m2.writeBoolean(true);
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.material.transparent.getValue(date)).toEqual(true);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("material_polylineVolume_material_grid");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('material_polylineVolume_material_grid')).toBeDefined();");
+                {
+                    PolylineVolumeCesiumWriter w = packet.openPolylineVolumeProperty();
+                    try {
+                        {
+                            MaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    GridMaterialCesiumWriter m = w2.openGridProperty();
+                                    try {
+                                        {
+                                            ColorCesiumWriter m2 = m.openColorProperty();
+                                            try {
+                                                m2.writeRgba(ColorHelper.fromArgb(240, 180, 62, 202));
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.polylineVolume.material.color.getValue(date)).toEqual(Color.fromBytes(180, 62, 202, 240));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            DoubleCesiumWriter m2 = m.openCellAlphaProperty();
+                                            try {
+                                                m2.writeNumber(58563.0);
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.material.cellAlpha.getValue(date)).toEqual(58563.0);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            LineCountCesiumWriter m2 = m.openLineCountProperty();
+                                            try {
+                                                m2.writeCartesian2(new Rectangular(13158D, 59443D));
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.material.lineCount.getValue(date)).toEqual(new Cartesian2(13158, 59443));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            LineThicknessCesiumWriter m2 = m.openLineThicknessProperty();
+                                            try {
+                                                m2.writeCartesian2(new Rectangular(11642D, 8493D));
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.polylineVolume.material.lineThickness.getValue(date)).toEqual(new Cartesian2(11642, 8493));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            LineOffsetCesiumWriter m2 = m.openLineOffsetProperty();
+                                            try {
+                                                m2.writeCartesian2(new Rectangular(2361D, 14345D));
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.material.lineOffset.getValue(date)).toEqual(new Cartesian2(2361, 14345));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("material_polylineVolume_material_stripe");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('material_polylineVolume_material_stripe')).toBeDefined();");
+                {
+                    PolylineVolumeCesiumWriter w = packet.openPolylineVolumeProperty();
+                    try {
+                        {
+                            MaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    StripeMaterialCesiumWriter m = w2.openStripeProperty();
+                                    try {
+                                        {
+                                            StripeOrientationCesiumWriter m2 = m.openOrientationProperty();
+                                            try {
+                                                m2.writeStripeOrientation(CesiumStripeOrientation.VERTICAL);
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.material.orientation.getValue(date)).toEqual(StripeOrientation.VERTICAL);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            ColorCesiumWriter m2 = m.openEvenColorProperty();
+                                            try {
+                                                m2.writeRgba(ColorHelper.fromArgb(254, 100, 38, 210));
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.polylineVolume.material.evenColor.getValue(date)).toEqual(Color.fromBytes(100, 38, 210, 254));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            ColorCesiumWriter m2 = m.openOddColorProperty();
+                                            try {
+                                                m2.writeRgba(ColorHelper.fromArgb(159, 27, 12, 194));
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.polylineVolume.material.oddColor.getValue(date)).toEqual(Color.fromBytes(27, 12, 194, 159));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            DoubleCesiumWriter m2 = m.openOffsetProperty();
+                                            try {
+                                                m2.writeNumber(38819.0);
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.material.offset.getValue(date)).toEqual(38819.0);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            DoubleCesiumWriter m2 = m.openRepeatProperty();
+                                            try {
+                                                m2.writeNumber(1822.0);
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.material.repeat.getValue(date)).toEqual(1822.0);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("material_polylineVolume_material_checkerboard");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('material_polylineVolume_material_checkerboard')).toBeDefined();");
+                {
+                    PolylineVolumeCesiumWriter w = packet.openPolylineVolumeProperty();
+                    try {
+                        {
+                            MaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    CheckerboardMaterialCesiumWriter m = w2.openCheckerboardProperty();
+                                    try {
+                                        {
+                                            ColorCesiumWriter m2 = m.openEvenColorProperty();
+                                            try {
+                                                m2.writeRgba(ColorHelper.fromArgb(246, 146, 199, 90));
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.polylineVolume.material.evenColor.getValue(date)).toEqual(Color.fromBytes(146, 199, 90, 246));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            ColorCesiumWriter m2 = m.openOddColorProperty();
+                                            try {
+                                                m2.writeRgba(ColorHelper.fromArgb(60, 74, 232, 2));
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.polylineVolume.material.oddColor.getValue(date)).toEqual(Color.fromBytes(74, 232, 2, 60));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            RepeatCesiumWriter m2 = m.openRepeatProperty();
+                                            try {
+                                                m2.writeCartesian2(new Rectangular(13666D, 60213D));
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.material.repeat.getValue(date)).toEqual(new Cartesian2(13666, 60213));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("constant_polylineVolume_material_image_color");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('constant_polylineVolume_material_image_color')).toBeDefined();");
+                {
+                    PolylineVolumeCesiumWriter w = packet.openPolylineVolumeProperty();
+                    try {
+                        {
+                            MaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    ImageMaterialCesiumWriter m = w2.openImageProperty();
+                                    try {
+                                        {
+                                            ColorCesiumWriter m2 = m.openColorProperty();
+                                            try {
+                                                m2.writeRgbaf(ColorHelper.fromArgb(179, 113, 39, 118));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polylineVolume.material.color.getValue(date)).toEqualEpsilon(new Color(0.443137254901961, 0.152941176470588, 0.462745098039216, 0.701960784313725), 1e-14);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("constant_polylineVolume_material_grid_color");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('constant_polylineVolume_material_grid_color')).toBeDefined();");
+                {
+                    PolylineVolumeCesiumWriter w = packet.openPolylineVolumeProperty();
+                    try {
+                        {
+                            MaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    GridMaterialCesiumWriter m = w2.openGridProperty();
+                                    try {
+                                        {
+                                            ColorCesiumWriter m2 = m.openColorProperty();
+                                            try {
+                                                m2.writeRgbaf(ColorHelper.fromArgb(28, 91, 193, 247));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polylineVolume.material.color.getValue(date)).toEqualEpsilon(new Color(0.356862745098039, 0.756862745098039, 0.968627450980392, 0.109803921568627), 1e-14);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("constant_polylineVolume_material_stripe_evenColor");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('constant_polylineVolume_material_stripe_evenColor')).toBeDefined();");
+                {
+                    PolylineVolumeCesiumWriter w = packet.openPolylineVolumeProperty();
+                    try {
+                        {
+                            MaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    StripeMaterialCesiumWriter m = w2.openStripeProperty();
+                                    try {
+                                        {
+                                            ColorCesiumWriter m2 = m.openEvenColorProperty();
+                                            try {
+                                                m2.writeRgbaf(ColorHelper.fromArgb(68, 23, 108, 147));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polylineVolume.material.evenColor.getValue(date)).toEqualEpsilon(new Color(0.0901960784313725, 0.423529411764706, 0.576470588235294, 0.266666666666667), 1e-14);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("constant_polylineVolume_material_stripe_oddColor");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('constant_polylineVolume_material_stripe_oddColor')).toBeDefined();");
+                {
+                    PolylineVolumeCesiumWriter w = packet.openPolylineVolumeProperty();
+                    try {
+                        {
+                            MaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    StripeMaterialCesiumWriter m = w2.openStripeProperty();
+                                    try {
+                                        {
+                                            ColorCesiumWriter m2 = m.openOddColorProperty();
+                                            try {
+                                                m2.writeRgbaf(ColorHelper.fromArgb(238, 174, 237, 86));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polylineVolume.material.oddColor.getValue(date)).toEqualEpsilon(new Color(0.682352941176471, 0.929411764705882, 0.337254901960784, 0.933333333333333), 1e-14);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("constant_polylineVolume_material_checkerboard_evenColor");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('constant_polylineVolume_material_checkerboard_evenColor')).toBeDefined();");
+                {
+                    PolylineVolumeCesiumWriter w = packet.openPolylineVolumeProperty();
+                    try {
+                        {
+                            MaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    CheckerboardMaterialCesiumWriter m = w2.openCheckerboardProperty();
+                                    try {
+                                        {
+                                            ColorCesiumWriter m2 = m.openEvenColorProperty();
+                                            try {
+                                                m2.writeRgbaf(ColorHelper.fromArgb(62, 218, 160, 86));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polylineVolume.material.evenColor.getValue(date)).toEqualEpsilon(new Color(0.854901960784314, 0.627450980392157, 0.337254901960784, 0.243137254901961), 1e-14);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("constant_polylineVolume_material_checkerboard_oddColor");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('constant_polylineVolume_material_checkerboard_oddColor')).toBeDefined();");
+                {
+                    PolylineVolumeCesiumWriter w = packet.openPolylineVolumeProperty();
+                    try {
+                        {
+                            MaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    CheckerboardMaterialCesiumWriter m = w2.openCheckerboardProperty();
+                                    try {
+                                        {
+                                            ColorCesiumWriter m2 = m.openOddColorProperty();
+                                            try {
+                                                m2.writeRgbaf(ColorHelper.fromArgb(227, 215, 9, 129));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polylineVolume.material.oddColor.getValue(date)).toEqualEpsilon(new Color(0.843137254901961, 0.0352941176470588, 0.505882352941176, 0.890196078431372), 1e-14);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("constant_polylineVolume_outlineColor_rgbaf");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('constant_polylineVolume_outlineColor_rgbaf')).toBeDefined();");
+                {
+                    PolylineVolumeCesiumWriter w = packet.openPolylineVolumeProperty();
+                    try {
+                        {
+                            ColorCesiumWriter w2 = w.openOutlineColorProperty();
+                            try {
+                                w2.writeRgbaf(ColorHelper.fromArgb(108, 140, 104, 119));
+                                TextWriterHelper
+                                        .writeLine(m_assertionsWriter,
+                                                "    expect(e.polylineVolume.outlineColor.getValue(date)).toEqualEpsilon(new Color(0.549019607843137, 0.407843137254902, 0.466666666666667, 0.423529411764706), 1e-14);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -24137,6 +24921,134 @@ public class TestGenerateValidationDocument {
                     }
                 }
                 {
+                    PolylineVolumeCesiumWriter w = packet.openPolylineVolumeProperty();
+                    try {
+                        {
+                            BooleanCesiumWriter w2 = w.openShowProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("polylineVolume", "show")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.show.getValue(date)).toEqual(constant.polylineVolume.show.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            PositionListCesiumWriter w2 = w.openPositionsProperty();
+                            try {
+                                w2.writeReferences(TestGenerateValidationDocument.<Reference> createList(new Reference("ConstantPosition1", createList("position")), new Reference("ConstantPosition2",
+                                        createList("position"))));
+                                TextWriterHelper
+                                        .writeLine(
+                                                m_assertionsWriter,
+                                                "    expect(e.polylineVolume.positions.getValue(date)).toEqual([dataSource.entities.getById('ConstantPosition1').position.getValue(date), dataSource.entities.getById('ConstantPosition2').position.getValue(date)]);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            CornerTypeCesiumWriter w2 = w.openCornerTypeProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("polylineVolume", "cornerType")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.cornerType.getValue(date)).toEqual(constant.polylineVolume.cornerType.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            DoubleCesiumWriter w2 = w.openGranularityProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("polylineVolume", "granularity")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.granularity.getValue(date)).toEqual(constant.polylineVolume.granularity.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            BooleanCesiumWriter w2 = w.openFillProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("polylineVolume", "fill")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.fill.getValue(date)).toEqual(constant.polylineVolume.fill.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            MaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    SolidColorMaterialCesiumWriter m = w2.openSolidColorProperty();
+                                    try {
+                                        {
+                                            ColorCesiumWriter m2 = m.openColorProperty();
+                                            try {
+                                                m2.writeReference(new Reference("Constant", createList("polylineVolume", "material", "color")));
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.polylineVolume.material.color.getValue(date)).toEqual(constant.polylineVolume.material.color.getValue(date));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            BooleanCesiumWriter w2 = w.openOutlineProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("polylineVolume", "outline")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.outline.getValue(date)).toEqual(constant.polylineVolume.outline.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            ColorCesiumWriter w2 = w.openOutlineColorProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("polylineVolume", "outlineColor")));
+                                TextWriterHelper
+                                        .writeLine(m_assertionsWriter, "    expect(e.polylineVolume.outlineColor.getValue(date)).toEqual(constant.polylineVolume.outlineColor.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            DoubleCesiumWriter w2 = w.openOutlineWidthProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("polylineVolume", "outlineWidth")));
+                                TextWriterHelper
+                                        .writeLine(m_assertionsWriter, "    expect(e.polylineVolume.outlineWidth.getValue(date)).toEqual(constant.polylineVolume.outlineWidth.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            ShadowModeCesiumWriter w2 = w.openShadowsProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("polylineVolume", "shadows")));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.shadows.getValue(date)).toEqual(constant.polylineVolume.shadows.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            DistanceDisplayConditionCesiumWriter w2 = w.openDistanceDisplayConditionProperty();
+                            try {
+                                w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("polylineVolume", "distanceDisplayCondition")));
+                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                        "    expect(e.polylineVolume.distanceDisplayCondition.getValue(date)).toEqual(constant.polylineVolume.distanceDisplayCondition.getValue(date));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+                {
                     RectangleCesiumWriter w = packet.openRectangleProperty();
                     try {
                         {
@@ -25619,6 +26531,7 @@ public class TestGenerateValidationDocument {
         writeReferenceValuesIndividualPoint();
         writeReferenceValuesIndividualPolygon();
         writeReferenceValuesIndividualPolyline();
+        writeReferenceValuesIndividualPolylineVolume();
         writeReferenceValuesIndividualRectangle();
         writeReferenceValuesIndividualTileset();
         writeReferenceValuesIndividualWall();
@@ -29204,6 +30117,318 @@ public class TestGenerateValidationDocument {
                                                         .writeLine(
                                                                 m_assertionsWriter,
                                                                 "    expect(e.polyline.depthFailMaterial.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_polyline_depthFailMaterial_checkerboard').polyline.depthFailMaterial.repeat.getValue(date));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+    }
+
+    private final void writeReferenceValuesIndividualPolylineVolume() {
+        {
+            PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("reference_polylineVolume_material_image");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('reference_polylineVolume_material_image')).toBeDefined();");
+                {
+                    PolylineVolumeCesiumWriter w = packet.openPolylineVolumeProperty();
+                    try {
+                        {
+                            MaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    ImageMaterialCesiumWriter m = w2.openImageProperty();
+                                    try {
+                                        {
+                                            UriCesiumWriter m2 = m.openImageProperty();
+                                            try {
+                                                m2.writeReference(new Reference("material_polylineVolume_material_image", createList("polylineVolume", "material", "image")));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polylineVolume.material.image.getValue(date)).toEqual(dataSource.entities.getById('material_polylineVolume_material_image').polylineVolume.material.image.getValue(date));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            RepeatCesiumWriter m2 = m.openRepeatProperty();
+                                            try {
+                                                m2.writeReference(new Reference("material_polylineVolume_material_image", createList("polylineVolume", "material", "repeat")));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polylineVolume.material.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_polylineVolume_material_image').polylineVolume.material.repeat.getValue(date));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            ColorCesiumWriter m2 = m.openColorProperty();
+                                            try {
+                                                m2.writeReference(new Reference("material_polylineVolume_material_image", createList("polylineVolume", "material", "color")));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polylineVolume.material.color.getValue(date)).toEqual(dataSource.entities.getById('material_polylineVolume_material_image').polylineVolume.material.color.getValue(date));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            BooleanCesiumWriter m2 = m.openTransparentProperty();
+                                            try {
+                                                m2.writeReference(new Reference("material_polylineVolume_material_image", createList("polylineVolume", "material", "transparent")));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polylineVolume.material.transparent.getValue(date)).toEqual(dataSource.entities.getById('material_polylineVolume_material_image').polylineVolume.material.transparent.getValue(date));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("reference_polylineVolume_material_grid");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('reference_polylineVolume_material_grid')).toBeDefined();");
+                {
+                    PolylineVolumeCesiumWriter w = packet.openPolylineVolumeProperty();
+                    try {
+                        {
+                            MaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    GridMaterialCesiumWriter m = w2.openGridProperty();
+                                    try {
+                                        {
+                                            ColorCesiumWriter m2 = m.openColorProperty();
+                                            try {
+                                                m2.writeReference(new Reference("material_polylineVolume_material_grid", createList("polylineVolume", "material", "color")));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polylineVolume.material.color.getValue(date)).toEqual(dataSource.entities.getById('material_polylineVolume_material_grid').polylineVolume.material.color.getValue(date));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            DoubleCesiumWriter m2 = m.openCellAlphaProperty();
+                                            try {
+                                                m2.writeReference(new Reference("material_polylineVolume_material_grid", createList("polylineVolume", "material", "cellAlpha")));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polylineVolume.material.cellAlpha.getValue(date)).toEqual(dataSource.entities.getById('material_polylineVolume_material_grid').polylineVolume.material.cellAlpha.getValue(date));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            LineCountCesiumWriter m2 = m.openLineCountProperty();
+                                            try {
+                                                m2.writeReference(new Reference("material_polylineVolume_material_grid", createList("polylineVolume", "material", "lineCount")));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polylineVolume.material.lineCount.getValue(date)).toEqual(dataSource.entities.getById('material_polylineVolume_material_grid').polylineVolume.material.lineCount.getValue(date));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            LineThicknessCesiumWriter m2 = m.openLineThicknessProperty();
+                                            try {
+                                                m2.writeReference(new Reference("material_polylineVolume_material_grid", createList("polylineVolume", "material", "lineThickness")));
+                                                TextWriterHelper
+                                                        .writeLine(
+                                                                m_assertionsWriter,
+                                                                "    expect(e.polylineVolume.material.lineThickness.getValue(date)).toEqual(dataSource.entities.getById('material_polylineVolume_material_grid').polylineVolume.material.lineThickness.getValue(date));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            LineOffsetCesiumWriter m2 = m.openLineOffsetProperty();
+                                            try {
+                                                m2.writeReference(new Reference("material_polylineVolume_material_grid", createList("polylineVolume", "material", "lineOffset")));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polylineVolume.material.lineOffset.getValue(date)).toEqual(dataSource.entities.getById('material_polylineVolume_material_grid').polylineVolume.material.lineOffset.getValue(date));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("reference_polylineVolume_material_stripe");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('reference_polylineVolume_material_stripe')).toBeDefined();");
+                {
+                    PolylineVolumeCesiumWriter w = packet.openPolylineVolumeProperty();
+                    try {
+                        {
+                            MaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    StripeMaterialCesiumWriter m = w2.openStripeProperty();
+                                    try {
+                                        {
+                                            StripeOrientationCesiumWriter m2 = m.openOrientationProperty();
+                                            try {
+                                                m2.writeReference(new Reference("material_polylineVolume_material_stripe", createList("polylineVolume", "material", "orientation")));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polylineVolume.material.orientation.getValue(date)).toEqual(dataSource.entities.getById('material_polylineVolume_material_stripe').polylineVolume.material.orientation.getValue(date));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            ColorCesiumWriter m2 = m.openEvenColorProperty();
+                                            try {
+                                                m2.writeReference(new Reference("material_polylineVolume_material_stripe", createList("polylineVolume", "material", "evenColor")));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polylineVolume.material.evenColor.getValue(date)).toEqual(dataSource.entities.getById('material_polylineVolume_material_stripe').polylineVolume.material.evenColor.getValue(date));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            ColorCesiumWriter m2 = m.openOddColorProperty();
+                                            try {
+                                                m2.writeReference(new Reference("material_polylineVolume_material_stripe", createList("polylineVolume", "material", "oddColor")));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polylineVolume.material.oddColor.getValue(date)).toEqual(dataSource.entities.getById('material_polylineVolume_material_stripe').polylineVolume.material.oddColor.getValue(date));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            DoubleCesiumWriter m2 = m.openOffsetProperty();
+                                            try {
+                                                m2.writeReference(new Reference("material_polylineVolume_material_stripe", createList("polylineVolume", "material", "offset")));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polylineVolume.material.offset.getValue(date)).toEqual(dataSource.entities.getById('material_polylineVolume_material_stripe').polylineVolume.material.offset.getValue(date));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            DoubleCesiumWriter m2 = m.openRepeatProperty();
+                                            try {
+                                                m2.writeReference(new Reference("material_polylineVolume_material_stripe", createList("polylineVolume", "material", "repeat")));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polylineVolume.material.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_polylineVolume_material_stripe').polylineVolume.material.repeat.getValue(date));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("reference_polylineVolume_material_checkerboard");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('reference_polylineVolume_material_checkerboard')).toBeDefined();");
+                {
+                    PolylineVolumeCesiumWriter w = packet.openPolylineVolumeProperty();
+                    try {
+                        {
+                            MaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    CheckerboardMaterialCesiumWriter m = w2.openCheckerboardProperty();
+                                    try {
+                                        {
+                                            ColorCesiumWriter m2 = m.openEvenColorProperty();
+                                            try {
+                                                m2.writeReference(new Reference("material_polylineVolume_material_checkerboard", createList("polylineVolume", "material", "evenColor")));
+                                                TextWriterHelper
+                                                        .writeLine(
+                                                                m_assertionsWriter,
+                                                                "    expect(e.polylineVolume.material.evenColor.getValue(date)).toEqual(dataSource.entities.getById('material_polylineVolume_material_checkerboard').polylineVolume.material.evenColor.getValue(date));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            ColorCesiumWriter m2 = m.openOddColorProperty();
+                                            try {
+                                                m2.writeReference(new Reference("material_polylineVolume_material_checkerboard", createList("polylineVolume", "material", "oddColor")));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polylineVolume.material.oddColor.getValue(date)).toEqual(dataSource.entities.getById('material_polylineVolume_material_checkerboard').polylineVolume.material.oddColor.getValue(date));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            RepeatCesiumWriter m2 = m.openRepeatProperty();
+                                            try {
+                                                m2.writeReference(new Reference("material_polylineVolume_material_checkerboard", createList("polylineVolume", "material", "repeat")));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polylineVolume.material.repeat.getValue(date)).toEqual(dataSource.entities.getById('material_polylineVolume_material_checkerboard').polylineVolume.material.repeat.getValue(date));");
                                             } finally {
                                                 DisposeHelper.dispose(m2);
                                             }
@@ -36828,6 +38053,86 @@ public class TestGenerateValidationDocument {
                     }
                 }
                 {
+                    PolylineVolumeCesiumWriter w = packet.openPolylineVolumeProperty();
+                    try {
+                        {
+                            DoubleCesiumWriter w2 = w.openGranularityProperty();
+                            try {
+                                w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Double> createList(
+                                        9144.0, 5282.0));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.granularity.getValue(documentStartDate)).toEqual(9144.0);");
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.granularity.getValue(documentStopDate)).toEqual(5282.0);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            MaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    SolidColorMaterialCesiumWriter m = w2.openSolidColorProperty();
+                                    try {
+                                        {
+                                            ColorCesiumWriter m2 = m.openColorProperty();
+                                            try {
+                                                m2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                                        .<Color> createList(ColorHelper.fromArgb(193, 3, 0, 198), ColorHelper.fromArgb(16, 210, 44, 29)));
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.polylineVolume.material.color.getValue(documentStartDate)).toEqual(Color.fromBytes(3, 0, 198, 193));");
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.polylineVolume.material.color.getValue(documentStopDate)).toEqual(Color.fromBytes(210, 44, 29, 16));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            ColorCesiumWriter w2 = w.openOutlineColorProperty();
+                            try {
+                                w2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Color> createList(
+                                        ColorHelper.fromArgb(115, 248, 163, 212), ColorHelper.fromArgb(98, 22, 27, 199)));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.outlineColor.getValue(documentStartDate)).toEqual(Color.fromBytes(248, 163, 212, 115));");
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.outlineColor.getValue(documentStopDate)).toEqual(Color.fromBytes(22, 27, 199, 98));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            DoubleCesiumWriter w2 = w.openOutlineWidthProperty();
+                            try {
+                                w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Double> createList(
+                                        17507.0, 55396.0));
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.outlineWidth.getValue(documentStartDate)).toEqual(17507.0);");
+                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.outlineWidth.getValue(documentStopDate)).toEqual(55396.0);");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                        {
+                            DistanceDisplayConditionCesiumWriter w2 = w.openDistanceDisplayConditionProperty();
+                            try {
+                                w2.writeDistanceDisplayCondition(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                        .<Bounds> createList(new Bounds(20986D, 34897D), new Bounds(14877D, 46650D)));
+                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                        "    expect(e.polylineVolume.distanceDisplayCondition.getValue(documentStartDate)).toEqual(new DistanceDisplayCondition(20986, 34897));");
+                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                        "    expect(e.polylineVolume.distanceDisplayCondition.getValue(documentStopDate)).toEqual(new DistanceDisplayCondition(14877, 46650));");
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+                {
                     RectangleCesiumWriter w = packet.openRectangleProperty();
                     try {
                         {
@@ -37905,6 +39210,7 @@ public class TestGenerateValidationDocument {
         writeSampledValuesIndividualPoint();
         writeSampledValuesIndividualPolygon();
         writeSampledValuesIndividualPolyline();
+        writeSampledValuesIndividualPolylineVolume();
         writeSampledValuesIndividualRectangle();
         writeSampledValuesIndividualTileset();
         writeSampledValuesIndividualWall();
@@ -45531,6 +46837,651 @@ public class TestGenerateValidationDocument {
                                         DisposeHelper.dispose(m);
                                     }
                                 }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+    }
+
+    private final void writeSampledValuesIndividualPolylineVolume() {
+        {
+            PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("sampled_polylineVolume_material_solidColor_color");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polylineVolume_material_solidColor_color')).toBeDefined();");
+                {
+                    PolylineVolumeCesiumWriter w = packet.openPolylineVolumeProperty();
+                    try {
+                        {
+                            MaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    SolidColorMaterialCesiumWriter m = w2.openSolidColorProperty();
+                                    try {
+                                        {
+                                            ColorCesiumWriter m2 = m.openColorProperty();
+                                            try {
+                                                m2.writeRgbaf(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                                        .<Color> createList(ColorHelper.fromArgb(194, 6, 224, 14), ColorHelper.fromArgb(179, 104, 201, 148)));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polylineVolume.material.color.getValue(documentStartDate)).toEqualEpsilon(new Color(0.0235294117647059, 0.87843137254902, 0.0549019607843137, 0.76078431372549), 1e-14);");
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polylineVolume.material.color.getValue(documentStopDate)).toEqualEpsilon(new Color(0.407843137254902, 0.788235294117647, 0.580392156862745, 0.701960784313725), 1e-14);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("sampled_polylineVolume_material_image");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polylineVolume_material_image')).toBeDefined();");
+                {
+                    PolylineVolumeCesiumWriter w = packet.openPolylineVolumeProperty();
+                    try {
+                        {
+                            MaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    ImageMaterialCesiumWriter m = w2.openImageProperty();
+                                    try {
+                                        {
+                                            RepeatCesiumWriter m2 = m.openRepeatProperty();
+                                            try {
+                                                m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                                        .<Rectangular> createList(new Rectangular(54883D, 39382D), new Rectangular(42188D, 27300D)));
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.polylineVolume.material.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(54883, 39382));");
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.polylineVolume.material.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(42188, 27300));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            ColorCesiumWriter m2 = m.openColorProperty();
+                                            try {
+                                                m2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                                        .<Color> createList(ColorHelper.fromArgb(141, 145, 236, 4), ColorHelper.fromArgb(191, 126, 69, 220)));
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.polylineVolume.material.color.getValue(documentStartDate)).toEqual(Color.fromBytes(145, 236, 4, 141));");
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.polylineVolume.material.color.getValue(documentStopDate)).toEqual(Color.fromBytes(126, 69, 220, 191));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("sampled_polylineVolume_material_grid");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polylineVolume_material_grid')).toBeDefined();");
+                {
+                    PolylineVolumeCesiumWriter w = packet.openPolylineVolumeProperty();
+                    try {
+                        {
+                            MaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    GridMaterialCesiumWriter m = w2.openGridProperty();
+                                    try {
+                                        {
+                                            ColorCesiumWriter m2 = m.openColorProperty();
+                                            try {
+                                                m2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                                        .<Color> createList(ColorHelper.fromArgb(46, 98, 87, 231), ColorHelper.fromArgb(105, 222, 91, 113)));
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.polylineVolume.material.color.getValue(documentStartDate)).toEqual(Color.fromBytes(98, 87, 231, 46));");
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.polylineVolume.material.color.getValue(documentStopDate)).toEqual(Color.fromBytes(222, 91, 113, 105));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            DoubleCesiumWriter m2 = m.openCellAlphaProperty();
+                                            try {
+                                                m2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                                        .<Double> createList(32451.0, 49677.0));
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.material.cellAlpha.getValue(documentStartDate)).toEqual(32451.0);");
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.material.cellAlpha.getValue(documentStopDate)).toEqual(49677.0);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            LineCountCesiumWriter m2 = m.openLineCountProperty();
+                                            try {
+                                                m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                                        .<Rectangular> createList(new Rectangular(14089D, 52279D), new Rectangular(59996D, 36842D)));
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.polylineVolume.material.lineCount.getValue(documentStartDate)).toEqual(new Cartesian2(14089, 52279));");
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.polylineVolume.material.lineCount.getValue(documentStopDate)).toEqual(new Cartesian2(59996, 36842));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            LineThicknessCesiumWriter m2 = m.openLineThicknessProperty();
+                                            try {
+                                                m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                                        .<Rectangular> createList(new Rectangular(49037D, 8639D), new Rectangular(59785D, 47337D)));
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.polylineVolume.material.lineThickness.getValue(documentStartDate)).toEqual(new Cartesian2(49037, 8639));");
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.polylineVolume.material.lineThickness.getValue(documentStopDate)).toEqual(new Cartesian2(59785, 47337));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            LineOffsetCesiumWriter m2 = m.openLineOffsetProperty();
+                                            try {
+                                                m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                                        .<Rectangular> createList(new Rectangular(40768D, 50335D), new Rectangular(6098D, 48919D)));
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.polylineVolume.material.lineOffset.getValue(documentStartDate)).toEqual(new Cartesian2(40768, 50335));");
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.polylineVolume.material.lineOffset.getValue(documentStopDate)).toEqual(new Cartesian2(6098, 48919));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("sampled_polylineVolume_material_stripe");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polylineVolume_material_stripe')).toBeDefined();");
+                {
+                    PolylineVolumeCesiumWriter w = packet.openPolylineVolumeProperty();
+                    try {
+                        {
+                            MaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    StripeMaterialCesiumWriter m = w2.openStripeProperty();
+                                    try {
+                                        {
+                                            ColorCesiumWriter m2 = m.openEvenColorProperty();
+                                            try {
+                                                m2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                                        .<Color> createList(ColorHelper.fromArgb(54, 206, 34, 152), ColorHelper.fromArgb(39, 182, 38, 96)));
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.polylineVolume.material.evenColor.getValue(documentStartDate)).toEqual(Color.fromBytes(206, 34, 152, 54));");
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.polylineVolume.material.evenColor.getValue(documentStopDate)).toEqual(Color.fromBytes(182, 38, 96, 39));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            ColorCesiumWriter m2 = m.openOddColorProperty();
+                                            try {
+                                                m2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                                        .<Color> createList(ColorHelper.fromArgb(107, 84, 117, 45), ColorHelper.fromArgb(177, 79, 76, 73)));
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.polylineVolume.material.oddColor.getValue(documentStartDate)).toEqual(Color.fromBytes(84, 117, 45, 107));");
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.polylineVolume.material.oddColor.getValue(documentStopDate)).toEqual(Color.fromBytes(79, 76, 73, 177));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            DoubleCesiumWriter m2 = m.openOffsetProperty();
+                                            try {
+                                                m2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                                        .<Double> createList(18479.0, 19855.0));
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.material.offset.getValue(documentStartDate)).toEqual(18479.0);");
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.material.offset.getValue(documentStopDate)).toEqual(19855.0);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            DoubleCesiumWriter m2 = m.openRepeatProperty();
+                                            try {
+                                                m2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                                        .<Double> createList(36294.0, 34071.0));
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.material.repeat.getValue(documentStartDate)).toEqual(36294.0);");
+                                                TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.material.repeat.getValue(documentStopDate)).toEqual(34071.0);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("sampled_polylineVolume_material_checkerboard");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polylineVolume_material_checkerboard')).toBeDefined();");
+                {
+                    PolylineVolumeCesiumWriter w = packet.openPolylineVolumeProperty();
+                    try {
+                        {
+                            MaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    CheckerboardMaterialCesiumWriter m = w2.openCheckerboardProperty();
+                                    try {
+                                        {
+                                            ColorCesiumWriter m2 = m.openEvenColorProperty();
+                                            try {
+                                                m2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                                        .<Color> createList(ColorHelper.fromArgb(241, 185, 168, 171), ColorHelper.fromArgb(164, 111, 194, 153)));
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.polylineVolume.material.evenColor.getValue(documentStartDate)).toEqual(Color.fromBytes(185, 168, 171, 241));");
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.polylineVolume.material.evenColor.getValue(documentStopDate)).toEqual(Color.fromBytes(111, 194, 153, 164));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            ColorCesiumWriter m2 = m.openOddColorProperty();
+                                            try {
+                                                m2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                                        .<Color> createList(ColorHelper.fromArgb(117, 84, 96, 248), ColorHelper.fromArgb(196, 129, 55, 81)));
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.polylineVolume.material.oddColor.getValue(documentStartDate)).toEqual(Color.fromBytes(84, 96, 248, 117));");
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.polylineVolume.material.oddColor.getValue(documentStopDate)).toEqual(Color.fromBytes(129, 55, 81, 196));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                        {
+                                            RepeatCesiumWriter m2 = m.openRepeatProperty();
+                                            try {
+                                                m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                                        .<Rectangular> createList(new Rectangular(45209D, 63152D), new Rectangular(42552D, 3238D)));
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.polylineVolume.material.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(45209, 63152));");
+                                                TextWriterHelper.writeLine(m_assertionsWriter,
+                                                        "    expect(e.polylineVolume.material.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(42552, 3238));");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("sampled_polylineVolume_material_image_color");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polylineVolume_material_image_color')).toBeDefined();");
+                {
+                    PolylineVolumeCesiumWriter w = packet.openPolylineVolumeProperty();
+                    try {
+                        {
+                            MaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    ImageMaterialCesiumWriter m = w2.openImageProperty();
+                                    try {
+                                        {
+                                            ColorCesiumWriter m2 = m.openColorProperty();
+                                            try {
+                                                m2.writeRgbaf(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                                        .<Color> createList(ColorHelper.fromArgb(58, 133, 190, 137), ColorHelper.fromArgb(18, 202, 49, 144)));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polylineVolume.material.color.getValue(documentStartDate)).toEqualEpsilon(new Color(0.52156862745098, 0.745098039215686, 0.537254901960784, 0.227450980392157), 1e-14);");
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polylineVolume.material.color.getValue(documentStopDate)).toEqualEpsilon(new Color(0.792156862745098, 0.192156862745098, 0.564705882352941, 0.0705882352941176), 1e-14);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("sampled_polylineVolume_material_grid_color");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polylineVolume_material_grid_color')).toBeDefined();");
+                {
+                    PolylineVolumeCesiumWriter w = packet.openPolylineVolumeProperty();
+                    try {
+                        {
+                            MaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    GridMaterialCesiumWriter m = w2.openGridProperty();
+                                    try {
+                                        {
+                                            ColorCesiumWriter m2 = m.openColorProperty();
+                                            try {
+                                                m2.writeRgbaf(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                                        .<Color> createList(ColorHelper.fromArgb(166, 70, 139, 52), ColorHelper.fromArgb(92, 98, 98, 171)));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polylineVolume.material.color.getValue(documentStartDate)).toEqualEpsilon(new Color(0.274509803921569, 0.545098039215686, 0.203921568627451, 0.650980392156863), 1e-14);");
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polylineVolume.material.color.getValue(documentStopDate)).toEqualEpsilon(new Color(0.384313725490196, 0.384313725490196, 0.670588235294118, 0.36078431372549), 1e-14);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("sampled_polylineVolume_material_stripe_evenColor");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polylineVolume_material_stripe_evenColor')).toBeDefined();");
+                {
+                    PolylineVolumeCesiumWriter w = packet.openPolylineVolumeProperty();
+                    try {
+                        {
+                            MaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    StripeMaterialCesiumWriter m = w2.openStripeProperty();
+                                    try {
+                                        {
+                                            ColorCesiumWriter m2 = m.openEvenColorProperty();
+                                            try {
+                                                m2.writeRgbaf(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                                        .<Color> createList(ColorHelper.fromArgb(210, 15, 87, 214), ColorHelper.fromArgb(231, 214, 63, 145)));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polylineVolume.material.evenColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.0588235294117647, 0.341176470588235, 0.83921568627451, 0.823529411764706), 1e-14);");
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polylineVolume.material.evenColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.83921568627451, 0.247058823529412, 0.568627450980392, 0.905882352941176), 1e-14);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("sampled_polylineVolume_material_stripe_oddColor");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polylineVolume_material_stripe_oddColor')).toBeDefined();");
+                {
+                    PolylineVolumeCesiumWriter w = packet.openPolylineVolumeProperty();
+                    try {
+                        {
+                            MaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    StripeMaterialCesiumWriter m = w2.openStripeProperty();
+                                    try {
+                                        {
+                                            ColorCesiumWriter m2 = m.openOddColorProperty();
+                                            try {
+                                                m2.writeRgbaf(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                                        .<Color> createList(ColorHelper.fromArgb(31, 217, 79, 210), ColorHelper.fromArgb(155, 249, 144, 198)));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polylineVolume.material.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.850980392156863, 0.309803921568627, 0.823529411764706, 0.12156862745098), 1e-14);");
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polylineVolume.material.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.976470588235294, 0.564705882352941, 0.776470588235294, 0.607843137254902), 1e-14);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("sampled_polylineVolume_material_checkerboard_evenColor");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polylineVolume_material_checkerboard_evenColor')).toBeDefined();");
+                {
+                    PolylineVolumeCesiumWriter w = packet.openPolylineVolumeProperty();
+                    try {
+                        {
+                            MaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    CheckerboardMaterialCesiumWriter m = w2.openCheckerboardProperty();
+                                    try {
+                                        {
+                                            ColorCesiumWriter m2 = m.openEvenColorProperty();
+                                            try {
+                                                m2.writeRgbaf(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                                        .<Color> createList(ColorHelper.fromArgb(144, 101, 183, 249), ColorHelper.fromArgb(206, 99, 145, 6)));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polylineVolume.material.evenColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.396078431372549, 0.717647058823529, 0.976470588235294, 0.564705882352941), 1e-14);");
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polylineVolume.material.evenColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.388235294117647, 0.568627450980392, 0.0235294117647059, 0.807843137254902), 1e-14);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("sampled_polylineVolume_material_checkerboard_oddColor");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polylineVolume_material_checkerboard_oddColor')).toBeDefined();");
+                {
+                    PolylineVolumeCesiumWriter w = packet.openPolylineVolumeProperty();
+                    try {
+                        {
+                            MaterialCesiumWriter w2 = w.openMaterialProperty();
+                            try {
+                                {
+                                    CheckerboardMaterialCesiumWriter m = w2.openCheckerboardProperty();
+                                    try {
+                                        {
+                                            ColorCesiumWriter m2 = m.openOddColorProperty();
+                                            try {
+                                                m2.writeRgbaf(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
+                                                        .<Color> createList(ColorHelper.fromArgb(46, 17, 203, 147), ColorHelper.fromArgb(98, 147, 133, 159)));
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polylineVolume.material.oddColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.0666666666666667, 0.796078431372549, 0.576470588235294, 0.180392156862745), 1e-14);");
+                                                TextWriterHelper
+                                                        .writeLine(m_assertionsWriter,
+                                                                "    expect(e.polylineVolume.material.oddColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.576470588235294, 0.52156862745098, 0.623529411764706, 0.384313725490196), 1e-14);");
+                                            } finally {
+                                                DisposeHelper.dispose(m2);
+                                            }
+                                        }
+                                    } finally {
+                                        DisposeHelper.dispose(m);
+                                    }
+                                }
+                            } finally {
+                                DisposeHelper.dispose(w2);
+                            }
+                        }
+                    } finally {
+                        DisposeHelper.dispose(w);
+                    }
+                }
+            } finally {
+                DisposeHelper.dispose(packet);
+            }
+        }
+        {
+            PacketCesiumWriter packet = m_writer.openPacket(m_output);
+            try {
+                packet.writeId("sampled_polylineVolume_outlineColor_rgbaf");
+                writeAssertionBoth("    expect(e = dataSource.entities.getById('sampled_polylineVolume_outlineColor_rgbaf')).toBeDefined();");
+                {
+                    PolylineVolumeCesiumWriter w = packet.openPolylineVolumeProperty();
+                    try {
+                        {
+                            ColorCesiumWriter w2 = w.openOutlineColorProperty();
+                            try {
+                                w2.writeRgbaf(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Color> createList(
+                                        ColorHelper.fromArgb(217, 116, 172, 94), ColorHelper.fromArgb(242, 61, 134, 34)));
+                                TextWriterHelper
+                                        .writeLine(m_assertionsWriter,
+                                                "    expect(e.polylineVolume.outlineColor.getValue(documentStartDate)).toEqualEpsilon(new Color(0.454901960784314, 0.674509803921569, 0.368627450980392, 0.850980392156863), 1e-14);");
+                                TextWriterHelper
+                                        .writeLine(m_assertionsWriter,
+                                                "    expect(e.polylineVolume.outlineColor.getValue(documentStopDate)).toEqualEpsilon(new Color(0.23921568627451, 0.525490196078431, 0.133333333333333, 0.949019607843137), 1e-14);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
