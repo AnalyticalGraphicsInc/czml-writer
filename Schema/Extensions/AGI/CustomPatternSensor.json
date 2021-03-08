@@ -132,7 +132,7 @@
             "default": "red, 50% transparent"
         },
         "viewshedResolution": {
-            "$ref": "../../Double.json",
+            "$ref": "../../Integer.json",
             "description": "The resolution in pixels of the viewshed.",
             "default": 2048
         }

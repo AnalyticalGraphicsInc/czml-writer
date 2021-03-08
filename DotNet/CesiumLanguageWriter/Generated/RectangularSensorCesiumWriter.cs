@@ -177,7 +177,7 @@ namespace CesiumLanguageWriter
         private readonly Lazy<BooleanCesiumWriter> m_showViewshed = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowViewshedPropertyName), false);
         private readonly Lazy<ColorCesiumWriter> m_viewshedVisibleColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(ViewshedVisibleColorPropertyName), false);
         private readonly Lazy<ColorCesiumWriter> m_viewshedOccludedColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(ViewshedOccludedColorPropertyName), false);
-        private readonly Lazy<DoubleCesiumWriter> m_viewshedResolution = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(ViewshedResolutionPropertyName), false);
+        private readonly Lazy<IntegerCesiumWriter> m_viewshedResolution = new Lazy<IntegerCesiumWriter>(() => new IntegerCesiumWriter(ViewshedResolutionPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -2535,7 +2535,7 @@ namespace CesiumLanguageWriter
         /// Gets the writer for the <c>viewshedResolution</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>viewshedResolution</c> property defines the resolution in pixels of the viewshed. If not specified, the default value is 2048.
         /// </summary>
         [NotNull]
-        public DoubleCesiumWriter ViewshedResolutionWriter
+        public IntegerCesiumWriter ViewshedResolutionWriter
         {
             get { return m_viewshedResolution.Value; }
         }
@@ -2544,7 +2544,7 @@ namespace CesiumLanguageWriter
         /// Opens and returns the writer for the <c>viewshedResolution</c> property. The <c>viewshedResolution</c> property defines the resolution in pixels of the viewshed. If not specified, the default value is 2048.
         /// </summary>
         [NotNull]
-        public DoubleCesiumWriter OpenViewshedResolutionProperty()
+        public IntegerCesiumWriter OpenViewshedResolutionProperty()
         {
             OpenIntervalIfNecessary();
             return OpenAndReturn(ViewshedResolutionWriter);
@@ -2554,7 +2554,7 @@ namespace CesiumLanguageWriter
         /// Writes a value for the <c>viewshedResolution</c> property as a <c>number</c> value. The <c>viewshedResolution</c> property specifies the resolution in pixels of the viewshed. If not specified, the default value is 2048.
         /// </summary>
         /// <param name="value">The value.</param>
-        public void WriteViewshedResolutionProperty(double value)
+        public void WriteViewshedResolutionProperty(int value)
         {
             using (var writer = OpenViewshedResolutionProperty())
             {
@@ -2567,7 +2567,7 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dates">The dates at which the value is specified.</param>
         /// <param name="values">The values corresponding to each date.</param>
-        public void WriteViewshedResolutionProperty(IList<JulianDate> dates, IList<double> values)
+        public void WriteViewshedResolutionProperty(IList<JulianDate> dates, IList<int> values)
         {
             using (var writer = OpenViewshedResolutionProperty())
             {
@@ -2582,7 +2582,7 @@ namespace CesiumLanguageWriter
         /// <param name="values">The value corresponding to each date.</param>
         /// <param name="startIndex">The index of the first element to write.</param>
         /// <param name="length">The number of elements to write.</param>
-        public void WriteViewshedResolutionProperty(IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        public void WriteViewshedResolutionProperty(IList<JulianDate> dates, IList<int> values, int startIndex, int length)
         {
             using (var writer = OpenViewshedResolutionProperty())
             {

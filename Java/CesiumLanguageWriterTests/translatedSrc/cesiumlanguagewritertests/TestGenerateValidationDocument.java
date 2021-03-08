@@ -2954,10 +2954,10 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
-                            DoubleCesiumWriter w2 = w.openViewshedResolutionProperty();
+                            IntegerCesiumWriter w2 = w.openViewshedResolutionProperty();
                             try {
-                                w2.writeNumber(9164.0);
-                                TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.viewshedResolution.getValue(date)).toEqual(9164.0);");
+                                w2.writeNumber(9164);
+                                TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.viewshedResolution.getValue(date)).toEqual(9164);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -3276,10 +3276,10 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
-                            DoubleCesiumWriter w2 = w.openViewshedResolutionProperty();
+                            IntegerCesiumWriter w2 = w.openViewshedResolutionProperty();
                             try {
-                                w2.writeNumber(25862.0);
-                                TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.viewshedResolution.getValue(date)).toEqual(25862.0);");
+                                w2.writeNumber(25862);
+                                TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.viewshedResolution.getValue(date)).toEqual(25862);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -3606,10 +3606,10 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
-                            DoubleCesiumWriter w2 = w.openViewshedResolutionProperty();
+                            IntegerCesiumWriter w2 = w.openViewshedResolutionProperty();
                             try {
-                                w2.writeNumber(33690.0);
-                                TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.viewshedResolution.getValue(date)).toEqual(33690.0);");
+                                w2.writeNumber(33690);
+                                TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.viewshedResolution.getValue(date)).toEqual(33690);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -26043,7 +26043,7 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
-                            DoubleCesiumWriter w2 = w.openViewshedResolutionProperty();
+                            IntegerCesiumWriter w2 = w.openViewshedResolutionProperty();
                             try {
                                 w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("conicSensor", "viewshedResolution")));
                                 TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -26379,7 +26379,7 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
-                            DoubleCesiumWriter w2 = w.openViewshedResolutionProperty();
+                            IntegerCesiumWriter w2 = w.openViewshedResolutionProperty();
                             try {
                                 w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("customPatternSensor", "viewshedResolution")));
                                 TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -26731,7 +26731,7 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
-                            DoubleCesiumWriter w2 = w.openViewshedResolutionProperty();
+                            IntegerCesiumWriter w2 = w.openViewshedResolutionProperty();
                             try {
                                 w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangularSensor", "viewshedResolution")));
                                 TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -39043,12 +39043,12 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
-                            DoubleCesiumWriter w2 = w.openViewshedResolutionProperty();
+                            IntegerCesiumWriter w2 = w.openViewshedResolutionProperty();
                             try {
-                                w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Double> createList(
-                                        38357.0, 30316.0));
-                                TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.viewshedResolution.getValue(documentStartDate)).toEqual(38357.0);");
-                                TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.viewshedResolution.getValue(documentStopDate)).toEqual(30316.0);");
+                                w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Integer> createList(
+                                        38357, 30316));
+                                TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.viewshedResolution.getValue(documentStartDate)).toEqual(38357);");
+                                TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.viewshedResolution.getValue(documentStopDate)).toEqual(30316);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -39284,12 +39284,12 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
-                            DoubleCesiumWriter w2 = w.openViewshedResolutionProperty();
+                            IntegerCesiumWriter w2 = w.openViewshedResolutionProperty();
                             try {
-                                w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Double> createList(
-                                        44590.0, 31959.0));
-                                TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.viewshedResolution.getValue(documentStartDate)).toEqual(44590.0);");
-                                TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.viewshedResolution.getValue(documentStopDate)).toEqual(31959.0);");
+                                w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Integer> createList(
+                                        44590, 31959));
+                                TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.viewshedResolution.getValue(documentStartDate)).toEqual(44590);");
+                                TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.viewshedResolution.getValue(documentStopDate)).toEqual(31959);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }
@@ -39545,12 +39545,12 @@ public class TestGenerateValidationDocument {
                             }
                         }
                         {
-                            DoubleCesiumWriter w2 = w.openViewshedResolutionProperty();
+                            IntegerCesiumWriter w2 = w.openViewshedResolutionProperty();
                             try {
-                                w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Double> createList(
-                                        24619.0, 54818.0));
-                                TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.viewshedResolution.getValue(documentStartDate)).toEqual(24619.0);");
-                                TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.viewshedResolution.getValue(documentStopDate)).toEqual(54818.0);");
+                                w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Integer> createList(
+                                        24619, 54818));
+                                TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.viewshedResolution.getValue(documentStartDate)).toEqual(24619);");
+                                TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.viewshedResolution.getValue(documentStopDate)).toEqual(54818);");
                             } finally {
                                 DisposeHelper.dispose(w2);
                             }

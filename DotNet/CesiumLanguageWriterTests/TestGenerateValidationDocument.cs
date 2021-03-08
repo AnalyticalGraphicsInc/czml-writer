@@ -1598,8 +1598,8 @@ namespace CesiumLanguageWriterTests
                     }
                     using (var w2 = w.OpenViewshedResolutionProperty())
                     {
-                        w2.WriteNumber(9164.0);
-                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.viewshedResolution.getValue(date)).toEqual(9164.0);");
+                        w2.WriteNumber(9164);
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.viewshedResolution.getValue(date)).toEqual(9164);");
                     }
                 }
                 using (var w = packet.OpenCustomPatternSensorProperty())
@@ -1761,8 +1761,8 @@ namespace CesiumLanguageWriterTests
                     }
                     using (var w2 = w.OpenViewshedResolutionProperty())
                     {
-                        w2.WriteNumber(25862.0);
-                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.viewshedResolution.getValue(date)).toEqual(25862.0);");
+                        w2.WriteNumber(25862);
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.viewshedResolution.getValue(date)).toEqual(25862);");
                     }
                 }
                 using (var w = packet.OpenRectangularSensorProperty())
@@ -1929,8 +1929,8 @@ namespace CesiumLanguageWriterTests
                     }
                     using (var w2 = w.OpenViewshedResolutionProperty())
                     {
-                        w2.WriteNumber(33690.0);
-                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.viewshedResolution.getValue(date)).toEqual(33690.0);");
+                        w2.WriteNumber(33690);
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.viewshedResolution.getValue(date)).toEqual(33690);");
                     }
                 }
                 using (var w = packet.OpenFanProperty())
@@ -16375,9 +16375,9 @@ namespace CesiumLanguageWriterTests
                     }
                     using (var w2 = w.OpenViewshedResolutionProperty())
                     {
-                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(38357.0, 30316.0));
-                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.viewshedResolution.getValue(documentStartDate)).toEqual(38357.0);");
-                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.viewshedResolution.getValue(documentStopDate)).toEqual(30316.0);");
+                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(38357, 30316));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.viewshedResolution.getValue(documentStartDate)).toEqual(38357);");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.viewshedResolution.getValue(documentStopDate)).toEqual(30316);");
                     }
                 }
                 using (var w = packet.OpenCustomPatternSensorProperty())
@@ -16486,9 +16486,9 @@ namespace CesiumLanguageWriterTests
                     }
                     using (var w2 = w.OpenViewshedResolutionProperty())
                     {
-                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(44590.0, 31959.0));
-                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.viewshedResolution.getValue(documentStartDate)).toEqual(44590.0);");
-                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.viewshedResolution.getValue(documentStopDate)).toEqual(31959.0);");
+                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(44590, 31959));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.viewshedResolution.getValue(documentStartDate)).toEqual(44590);");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.viewshedResolution.getValue(documentStopDate)).toEqual(31959);");
                     }
                 }
                 using (var w = packet.OpenRectangularSensorProperty())
@@ -16609,9 +16609,9 @@ namespace CesiumLanguageWriterTests
                     }
                     using (var w2 = w.OpenViewshedResolutionProperty())
                     {
-                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(24619.0, 54818.0));
-                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.viewshedResolution.getValue(documentStartDate)).toEqual(24619.0);");
-                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.viewshedResolution.getValue(documentStopDate)).toEqual(54818.0);");
+                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(24619, 54818));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.viewshedResolution.getValue(documentStartDate)).toEqual(24619);");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.viewshedResolution.getValue(documentStopDate)).toEqual(54818);");
                     }
                 }
                 using (var w = packet.OpenFanProperty())

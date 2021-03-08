@@ -9,6 +9,7 @@ import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.BooleanCesiumWriter;
 import cesiumlanguagewriter.ColorCesiumWriter;
 import cesiumlanguagewriter.DoubleCesiumWriter;
+import cesiumlanguagewriter.IntegerCesiumWriter;
 import cesiumlanguagewriter.MaterialCesiumWriter;
 import cesiumlanguagewriter.SensorVolumePortionToDisplayCesiumWriter;
 import java.awt.Color;
@@ -281,9 +282,9 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
             return new ColorCesiumWriter(ViewshedOccludedColorPropertyName);
         }
     }, false);
-    private Lazy<DoubleCesiumWriter> m_viewshedResolution = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
-        public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
-            return new DoubleCesiumWriter(ViewshedResolutionPropertyName);
+    private Lazy<IntegerCesiumWriter> m_viewshedResolution = new Lazy<cesiumlanguagewriter.IntegerCesiumWriter>(new Func1<cesiumlanguagewriter.IntegerCesiumWriter>() {
+        public cesiumlanguagewriter.IntegerCesiumWriter invoke() {
+            return new IntegerCesiumWriter(ViewshedResolutionPropertyName);
         }
     }, false);
 
@@ -3277,7 +3278,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     * Gets the writer for the {@code viewshedResolution} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code viewshedResolution} property defines the resolution in pixels of the viewshed. If not specified, the default value is 2048.
     */
     @Nonnull
-    public final DoubleCesiumWriter getViewshedResolutionWriter() {
+    public final IntegerCesiumWriter getViewshedResolutionWriter() {
         return m_viewshedResolution.getValue();
     }
 
@@ -3285,18 +3286,18 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     * Opens and returns the writer for the {@code viewshedResolution} property. The {@code viewshedResolution} property defines the resolution in pixels of the viewshed. If not specified, the default value is 2048.
     */
     @Nonnull
-    public final DoubleCesiumWriter openViewshedResolutionProperty() {
+    public final IntegerCesiumWriter openViewshedResolutionProperty() {
         openIntervalIfNecessary();
-        return this.<DoubleCesiumWriter> openAndReturn(getViewshedResolutionWriter());
+        return this.<IntegerCesiumWriter> openAndReturn(getViewshedResolutionWriter());
     }
 
     /**
     * Writes a value for the {@code viewshedResolution} property as a {@code number} value. The {@code viewshedResolution} property specifies the resolution in pixels of the viewshed. If not specified, the default value is 2048.
     * @param value The value.
     */
-    public final void writeViewshedResolutionProperty(double value) {
+    public final void writeViewshedResolutionProperty(int value) {
         {
-            DoubleCesiumWriter writer = openViewshedResolutionProperty();
+            IntegerCesiumWriter writer = openViewshedResolutionProperty();
             try {
                 writer.writeNumber(value);
             } finally {
@@ -3310,9 +3311,9 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     * @param dates The dates at which the value is specified.
     * @param values The values corresponding to each date.
     */
-    public final void writeViewshedResolutionProperty(List<JulianDate> dates, List<Double> values) {
+    public final void writeViewshedResolutionProperty(List<JulianDate> dates, List<Integer> values) {
         {
-            DoubleCesiumWriter writer = openViewshedResolutionProperty();
+            IntegerCesiumWriter writer = openViewshedResolutionProperty();
             try {
                 writer.writeNumber(dates, values);
             } finally {
@@ -3328,9 +3329,9 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     * @param startIndex The index of the first element to write.
     * @param length The number of elements to write.
     */
-    public final void writeViewshedResolutionProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
+    public final void writeViewshedResolutionProperty(List<JulianDate> dates, List<Integer> values, int startIndex, int length) {
         {
-            DoubleCesiumWriter writer = openViewshedResolutionProperty();
+            IntegerCesiumWriter writer = openViewshedResolutionProperty();
             try {
                 writer.writeNumber(dates, values, startIndex, length);
             } finally {
@@ -3345,7 +3346,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     */
     public final void writeViewshedResolutionPropertyReference(Reference value) {
         {
-            DoubleCesiumWriter writer = openViewshedResolutionProperty();
+            IntegerCesiumWriter writer = openViewshedResolutionProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -3360,7 +3361,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     */
     public final void writeViewshedResolutionPropertyReference(String value) {
         {
-            DoubleCesiumWriter writer = openViewshedResolutionProperty();
+            IntegerCesiumWriter writer = openViewshedResolutionProperty();
             try {
                 writer.writeReference(value);
             } finally {
@@ -3376,7 +3377,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     */
     public final void writeViewshedResolutionPropertyReference(String identifier, String propertyName) {
         {
-            DoubleCesiumWriter writer = openViewshedResolutionProperty();
+            IntegerCesiumWriter writer = openViewshedResolutionProperty();
             try {
                 writer.writeReference(identifier, propertyName);
             } finally {
@@ -3392,7 +3393,7 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     */
     public final void writeViewshedResolutionPropertyReference(String identifier, String[] propertyNames) {
         {
-            DoubleCesiumWriter writer = openViewshedResolutionProperty();
+            IntegerCesiumWriter writer = openViewshedResolutionProperty();
             try {
                 writer.writeReference(identifier, propertyNames);
             } finally {
