@@ -30,13 +30,11 @@ test:
     - DotNet\CesiumLanguageWriterTests\bin\$(configuration)\CesiumLanguageWriterTests.dll
 after_test:
   - ps: |
-      7z a ValidationDotNet.zip $env:APPVEYOR_BUILD_FOLDER\DotNet\CesiumLanguageWriterTests\bin\$env:CONFIGURATION\ValidationDocument*.*
+      gci DotNet -Recurse -Include ValidationDocument.czml,ValidationDocument*.js | % { 7z a ValidationDotNet.zip $_.FullName }
       Push-AppveyorArtifact ValidationDotNet.zip
       .\Java\gradlew.bat -p Java check
       $wc = New-Object System.Net.WebClient
       $url = "https://ci.appveyor.com/api/testresults/junit/$env:APPVEYOR_JOB_ID"
       gci Java\CesiumLanguageWriterTests\build\test-results\test\*.xml | % { $wc.UploadFile($url, $_) }
-      7z a ValidationJava.zip $env:APPVEYOR_BUILD_FOLDER\Java\CesiumLanguageWriterTests\out\test\classes\ValidationDocument*.*
+      gci Java -Recurse -Include ValidationDocument.czml,ValidationDocument*.js | % { 7z a ValidationJava.zip $_.FullName }
       Push-AppveyorArtifact ValidationJava.zip
-artifacts:
-   - path: '**\ValidationDocument*.*'
