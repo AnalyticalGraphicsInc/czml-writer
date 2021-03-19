@@ -3,6 +3,7 @@ configuration: Release
 platform: Any CPU
 environment:
   JAVA_HOME: '%ProgramFiles%\Java\jdk1.8.0'
+  GRADLE_OPTS: '-Dorg.gradle.internal.launcher.welcomeMessageEnabled=false -Dorg.gradle.daemon=false'
 cache:
   - '%ProgramData%\chocolatey\bin -> .appveyor.yml'
   - '%ProgramData%\chocolatey\lib -> .appveyor.yml'
@@ -22,16 +23,16 @@ build:
 after_build:
   - ps: |
       (gc Java\gradle.properties) | % { $_ -replace "^version = .*$", "version = $env:GitVersion_NuGetVersion" } | sc Java\gradle.properties
-      .\Java\gradlew.bat --no-daemon -p Java assemble
+      .\Java\gradlew.bat -p Java assemble
       gci Java\CesiumLanguageWriter\build\libs\*.jar | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name }
 test:
   assemblies:
     - DotNet\CesiumLanguageWriterTests\bin\$(configuration)\CesiumLanguageWriterTests.dll
 after_test:
   - ps: |
-      7z a DotNetValidation.zip %APPVEYOR_BUILD_FOLDER%\DotNet\CesiumLanguageWriterTests\bin\$env:CONFIGURATION\ValidationDocument*.*
+      7z a DotNetValidation.zip $env:APPVEYOR_BUILD_FOLDER\DotNet\CesiumLanguageWriterTests\bin\$env:CONFIGURATION\ValidationDocument*.*
       Push-AppveyorArtifact DotNetValidation.zip
-      .\Java\gradlew.bat --no-daemon -p Java check
+      .\Java\gradlew.bat -p Java check
       $wc = New-Object System.Net.WebClient
       $url = "https://ci.appveyor.com/api/testresults/junit/$env:APPVEYOR_JOB_ID"
       gci Java\CesiumLanguageWriterTests\build\test-results\test\*.xml | % { $wc.UploadFile($url, $_) }
