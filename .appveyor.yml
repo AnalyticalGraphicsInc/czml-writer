@@ -29,7 +29,7 @@ test:
     - DotNet\CesiumLanguageWriterTests\bin\$(configuration)\CesiumLanguageWriterTests.dll
 after_test:
   - ps: |
-      7z a DotNetValidation.zip %APPVEYOR_BUILD_FOLDER%\DotNet\CesiumLanguageWriterTests\bin\$(configuration)\ValidationDocument*.*
+      7z a DotNetValidation.zip %APPVEYOR_BUILD_FOLDER%\DotNet\CesiumLanguageWriterTests\bin\$env:CONFIGURATION\ValidationDocument*.*
       Push-AppveyorArtifact DotNetValidation.zip
       .\Java\gradlew.bat --no-daemon -p Java check
       $wc = New-Object System.Net.WebClient
