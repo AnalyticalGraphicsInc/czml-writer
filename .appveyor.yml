@@ -29,6 +29,8 @@ test:
     - DotNet\CesiumLanguageWriterTests\bin\$(configuration)\CesiumLanguageWriterTests.dll
 after_test:
   - ps: |
+      7z a DotNetValidation.zip %APPVEYOR_BUILD_FOLDER%\DotNet\CesiumLanguageWriterTests\bin\$(configuration)\ValidationDocument*.*
+      Push-AppveyorArtifact DotNetValidation.zip
       .\Java\gradlew.bat --no-daemon -p Java check
       $wc = New-Object System.Net.WebClient
       $url = "https://ci.appveyor.com/api/testresults/junit/$env:APPVEYOR_JOB_ID"
