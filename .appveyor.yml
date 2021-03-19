@@ -38,3 +38,5 @@ after_test:
       gci Java\CesiumLanguageWriterTests\build\test-results\test\*.xml | % { $wc.UploadFile($url, $_) }
       7z a ValidationJava.zip $env:APPVEYOR_BUILD_FOLDER\Java\CesiumLanguageWriterTests\out\test\classes\ValidationDocument*.*
       Push-AppveyorArtifact ValidationJava.zip
+artifacts:
+   - path: '**\ValidationDocument*.*'
