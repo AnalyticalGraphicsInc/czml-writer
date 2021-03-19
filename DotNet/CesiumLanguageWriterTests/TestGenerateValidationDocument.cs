@@ -39,11 +39,7 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void GenerateValidationDocument()
         {
-            #if CSToJava
-            string dir = Environment.CurrentDirectory;
-            #else
             string dir = TestContext.CurrentContext.TestDirectory;
-            #endif
             using (m_streamWriter = File.CreateText(Path.Combine(dir, "ValidationDocument.czml")))
             using (m_assertionsWriter = File.CreateText(Path.Combine(dir, "ValidationDocumentAssertions.js")))
             using (m_extensionsAssertionsWriter = File.CreateText(Path.Combine(dir, "ValidationDocumentExtensionAssertions.js")))

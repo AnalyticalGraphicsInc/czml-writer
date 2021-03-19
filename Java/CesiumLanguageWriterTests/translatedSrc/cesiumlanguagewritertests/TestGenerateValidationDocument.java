@@ -6,9 +6,9 @@ import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.ArrayHelper;
 import agi.foundation.compatibility.ColorHelper;
 import agi.foundation.compatibility.DisposeHelper;
-import agi.foundation.compatibility.EnvironmentHelper;
 import agi.foundation.compatibility.PathHelper;
 import agi.foundation.compatibility.StreamWriterHelper;
+import agi.foundation.compatibility.TestContext;
 import agi.foundation.compatibility.TestContextRule;
 import agi.foundation.compatibility.TextWriterHelper;
 import cesiumlanguagewriter.*;
@@ -60,7 +60,7 @@ public class TestGenerateValidationDocument {
 
     @Test
     public final void generateValidationDocument() {
-        String dir = EnvironmentHelper.getCurrentDirectory();
+        String dir = TestContext.getCurrentContext().getTestDirectory();
         {
             final Writer usingExpression_0 = (m_streamWriter = StreamWriterHelper.create(PathHelper.combine(dir, "ValidationDocument.czml")));
             try {

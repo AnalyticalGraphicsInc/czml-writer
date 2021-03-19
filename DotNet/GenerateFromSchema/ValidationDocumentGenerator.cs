@@ -83,11 +83,7 @@ namespace GenerateFromSchema
 
                         using (writer.OpenScope())
                         {
-                            writer.WriteLine("#if CSToJava");
-                            writer.WriteLine("string dir = Environment.CurrentDirectory;");
-                            writer.WriteLine("#else");
                             writer.WriteLine("string dir = TestContext.CurrentContext.TestDirectory;");
-                            writer.WriteLine("#endif");
                             writer.WriteLine("using (m_streamWriter = File.CreateText(Path.Combine(dir, \"ValidationDocument.czml\")))");
                             writer.WriteLine("using (m_assertionsWriter = File.CreateText(Path.Combine(dir, \"ValidationDocumentAssertions.js\")))");
                             writer.WriteLine("using (m_extensionsAssertionsWriter = File.CreateText(Path.Combine(dir, \"ValidationDocumentExtensionAssertions.js\")))");

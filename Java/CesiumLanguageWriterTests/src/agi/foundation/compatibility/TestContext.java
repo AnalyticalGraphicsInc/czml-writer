@@ -20,6 +20,24 @@ public final class TestContext {
         return test;
     }
 
+    public String getTestDirectory() {
+        Assembly assembly = null;
+
+        if (test != null) {
+            Class<?> testClass = test.getTestClass();
+            if (testClass != null) {
+                assembly = new Assembly(testClass);
+            }
+        }
+
+        if (assembly == null) {
+            assembly = Assembly.getCallingAssembly();
+        }
+
+        File file = new File(assembly.getLocation());
+        return file.isDirectory() ? file.getPath() : file.getParent();
+    }
+
     public static final class TestAdapter {
         private String name;
         private String fullName;
