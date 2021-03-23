@@ -23,6 +23,7 @@ public final class CesiumWritingHelper {
     /**
     * The maximum interval of time that can be specified.
     */
+    @Nonnull
     public static final TimeInterval MaximumInterval = new TimeInterval(GregorianDate.MinValue.toJulianDate(), GregorianDate.MaxValue.toJulianDate());
 
     @Nonnull

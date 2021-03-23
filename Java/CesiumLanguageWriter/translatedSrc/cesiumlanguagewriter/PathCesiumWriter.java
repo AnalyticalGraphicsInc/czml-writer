@@ -25,62 +25,76 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     /**
     * The name of the {@code show} property.
     */
+    @Nonnull
     public static final String ShowPropertyName = "show";
     /**
     * The name of the {@code leadTime} property.
     */
+    @Nonnull
     public static final String LeadTimePropertyName = "leadTime";
     /**
     * The name of the {@code trailTime} property.
     */
+    @Nonnull
     public static final String TrailTimePropertyName = "trailTime";
     /**
     * The name of the {@code width} property.
     */
+    @Nonnull
     public static final String WidthPropertyName = "width";
     /**
     * The name of the {@code resolution} property.
     */
+    @Nonnull
     public static final String ResolutionPropertyName = "resolution";
     /**
     * The name of the {@code material} property.
     */
+    @Nonnull
     public static final String MaterialPropertyName = "material";
     /**
     * The name of the {@code distanceDisplayCondition} property.
     */
+    @Nonnull
     public static final String DistanceDisplayConditionPropertyName = "distanceDisplayCondition";
-    private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+    @Nonnull
+    private final Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
         public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
             return new BooleanCesiumWriter(ShowPropertyName);
         }
     }, false);
-    private Lazy<DoubleCesiumWriter> m_leadTime = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+    @Nonnull
+    private final Lazy<DoubleCesiumWriter> m_leadTime = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
         public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
             return new DoubleCesiumWriter(LeadTimePropertyName);
         }
     }, false);
-    private Lazy<DoubleCesiumWriter> m_trailTime = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+    @Nonnull
+    private final Lazy<DoubleCesiumWriter> m_trailTime = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
         public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
             return new DoubleCesiumWriter(TrailTimePropertyName);
         }
     }, false);
-    private Lazy<DoubleCesiumWriter> m_width = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+    @Nonnull
+    private final Lazy<DoubleCesiumWriter> m_width = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
         public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
             return new DoubleCesiumWriter(WidthPropertyName);
         }
     }, false);
-    private Lazy<DoubleCesiumWriter> m_resolution = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+    @Nonnull
+    private final Lazy<DoubleCesiumWriter> m_resolution = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
         public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
             return new DoubleCesiumWriter(ResolutionPropertyName);
         }
     }, false);
-    private Lazy<PolylineMaterialCesiumWriter> m_material = new Lazy<cesiumlanguagewriter.PolylineMaterialCesiumWriter>(new Func1<cesiumlanguagewriter.PolylineMaterialCesiumWriter>() {
+    @Nonnull
+    private final Lazy<PolylineMaterialCesiumWriter> m_material = new Lazy<cesiumlanguagewriter.PolylineMaterialCesiumWriter>(new Func1<cesiumlanguagewriter.PolylineMaterialCesiumWriter>() {
         public cesiumlanguagewriter.PolylineMaterialCesiumWriter invoke() {
             return new PolylineMaterialCesiumWriter(MaterialPropertyName);
         }
     }, false);
-    private Lazy<DistanceDisplayConditionCesiumWriter> m_distanceDisplayCondition = new Lazy<cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter>(
+    @Nonnull
+    private final Lazy<DistanceDisplayConditionCesiumWriter> m_distanceDisplayCondition = new Lazy<cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter>(
             new Func1<cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter>() {
                 public cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter invoke() {
                     return new DistanceDisplayConditionCesiumWriter(DistanceDisplayConditionPropertyName);

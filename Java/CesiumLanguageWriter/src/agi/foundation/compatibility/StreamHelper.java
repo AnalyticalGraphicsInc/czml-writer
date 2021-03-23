@@ -16,17 +16,6 @@ import javax.annotation.Nonnull;
 public final class StreamHelper {
     private StreamHelper() {}
 
-    public static int read(@Nonnull InputStream stream, @Nonnull byte[] b, int off, int len) {
-        ArgumentNullException.assertNonNull(stream, "stream");
-        ArgumentNullException.assertNonNull(b, "b");
-
-        try {
-            return stream.read(b, off, len);
-        } catch (IOException e) {
-            throw new UncheckedIOException(e);
-        }
-    }
-
     public static void copyTo(@Nonnull InputStream stream, @Nonnull MemoryStream destination, int bufferSize) {
         ArgumentNullException.assertNonNull(stream, "stream");
         ArgumentNullException.assertNonNull(destination, "destination");

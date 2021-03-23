@@ -28,35 +28,43 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     /**
     * The name of the {@code image} property.
     */
+    @Nonnull
     public static final String ImagePropertyName = "image";
     /**
     * The name of the {@code repeat} property.
     */
+    @Nonnull
     public static final String RepeatPropertyName = "repeat";
     /**
     * The name of the {@code color} property.
     */
+    @Nonnull
     public static final String ColorPropertyName = "color";
     /**
     * The name of the {@code transparent} property.
     */
+    @Nonnull
     public static final String TransparentPropertyName = "transparent";
-    private Lazy<UriCesiumWriter> m_image = new Lazy<cesiumlanguagewriter.UriCesiumWriter>(new Func1<cesiumlanguagewriter.UriCesiumWriter>() {
+    @Nonnull
+    private final Lazy<UriCesiumWriter> m_image = new Lazy<cesiumlanguagewriter.UriCesiumWriter>(new Func1<cesiumlanguagewriter.UriCesiumWriter>() {
         public cesiumlanguagewriter.UriCesiumWriter invoke() {
             return new UriCesiumWriter(ImagePropertyName);
         }
     }, false);
-    private Lazy<RepeatCesiumWriter> m_repeat = new Lazy<cesiumlanguagewriter.RepeatCesiumWriter>(new Func1<cesiumlanguagewriter.RepeatCesiumWriter>() {
+    @Nonnull
+    private final Lazy<RepeatCesiumWriter> m_repeat = new Lazy<cesiumlanguagewriter.RepeatCesiumWriter>(new Func1<cesiumlanguagewriter.RepeatCesiumWriter>() {
         public cesiumlanguagewriter.RepeatCesiumWriter invoke() {
             return new RepeatCesiumWriter(RepeatPropertyName);
         }
     }, false);
-    private Lazy<ColorCesiumWriter> m_color = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
+    @Nonnull
+    private final Lazy<ColorCesiumWriter> m_color = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
         public cesiumlanguagewriter.ColorCesiumWriter invoke() {
             return new ColorCesiumWriter(ColorPropertyName);
         }
     }, false);
-    private Lazy<BooleanCesiumWriter> m_transparent = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+    @Nonnull
+    private final Lazy<BooleanCesiumWriter> m_transparent = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
         public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
             return new BooleanCesiumWriter(TransparentPropertyName);
         }

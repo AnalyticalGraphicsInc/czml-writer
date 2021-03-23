@@ -24,26 +24,32 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     /**
     * The name of the {@code evenColor} property.
     */
+    @Nonnull
     public static final String EvenColorPropertyName = "evenColor";
     /**
     * The name of the {@code oddColor} property.
     */
+    @Nonnull
     public static final String OddColorPropertyName = "oddColor";
     /**
     * The name of the {@code repeat} property.
     */
+    @Nonnull
     public static final String RepeatPropertyName = "repeat";
-    private Lazy<ColorCesiumWriter> m_evenColor = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
+    @Nonnull
+    private final Lazy<ColorCesiumWriter> m_evenColor = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
         public cesiumlanguagewriter.ColorCesiumWriter invoke() {
             return new ColorCesiumWriter(EvenColorPropertyName);
         }
     }, false);
-    private Lazy<ColorCesiumWriter> m_oddColor = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
+    @Nonnull
+    private final Lazy<ColorCesiumWriter> m_oddColor = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
         public cesiumlanguagewriter.ColorCesiumWriter invoke() {
             return new ColorCesiumWriter(OddColorPropertyName);
         }
     }, false);
-    private Lazy<RepeatCesiumWriter> m_repeat = new Lazy<cesiumlanguagewriter.RepeatCesiumWriter>(new Func1<cesiumlanguagewriter.RepeatCesiumWriter>() {
+    @Nonnull
+    private final Lazy<RepeatCesiumWriter> m_repeat = new Lazy<cesiumlanguagewriter.RepeatCesiumWriter>(new Func1<cesiumlanguagewriter.RepeatCesiumWriter>() {
         public cesiumlanguagewriter.RepeatCesiumWriter invoke() {
             return new RepeatCesiumWriter(RepeatPropertyName);
         }

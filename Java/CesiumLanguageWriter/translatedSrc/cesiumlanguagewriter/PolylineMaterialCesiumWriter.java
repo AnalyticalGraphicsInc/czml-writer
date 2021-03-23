@@ -28,86 +28,107 @@ public class PolylineMaterialCesiumWriter extends CesiumPropertyWriter<PolylineM
     /**
     * The name of the {@code solidColor} property.
     */
+    @Nonnull
     public static final String SolidColorPropertyName = "solidColor";
     /**
     * The name of the {@code polylineOutline} property.
     */
+    @Nonnull
     public static final String PolylineOutlinePropertyName = "polylineOutline";
     /**
     * The name of the {@code polylineArrow} property.
     */
+    @Nonnull
     public static final String PolylineArrowPropertyName = "polylineArrow";
     /**
     * The name of the {@code polylineDash} property.
     */
+    @Nonnull
     public static final String PolylineDashPropertyName = "polylineDash";
     /**
     * The name of the {@code polylineGlow} property.
     */
+    @Nonnull
     public static final String PolylineGlowPropertyName = "polylineGlow";
     /**
     * The name of the {@code image} property.
     */
+    @Nonnull
     public static final String ImagePropertyName = "image";
     /**
     * The name of the {@code grid} property.
     */
+    @Nonnull
     public static final String GridPropertyName = "grid";
     /**
     * The name of the {@code stripe} property.
     */
+    @Nonnull
     public static final String StripePropertyName = "stripe";
     /**
     * The name of the {@code checkerboard} property.
     */
+    @Nonnull
     public static final String CheckerboardPropertyName = "checkerboard";
-    private Lazy<SolidColorMaterialCesiumWriter> m_solidColor = new Lazy<cesiumlanguagewriter.SolidColorMaterialCesiumWriter>(new Func1<cesiumlanguagewriter.SolidColorMaterialCesiumWriter>() {
+    @Nonnull
+    private final Lazy<SolidColorMaterialCesiumWriter> m_solidColor = new Lazy<cesiumlanguagewriter.SolidColorMaterialCesiumWriter>(new Func1<cesiumlanguagewriter.SolidColorMaterialCesiumWriter>() {
         public cesiumlanguagewriter.SolidColorMaterialCesiumWriter invoke() {
             return new SolidColorMaterialCesiumWriter(SolidColorPropertyName);
         }
     }, false);
-    private Lazy<PolylineOutlineMaterialCesiumWriter> m_polylineOutline = new Lazy<cesiumlanguagewriter.PolylineOutlineMaterialCesiumWriter>(
+    @Nonnull
+    private final Lazy<PolylineOutlineMaterialCesiumWriter> m_polylineOutline = new Lazy<cesiumlanguagewriter.PolylineOutlineMaterialCesiumWriter>(
             new Func1<cesiumlanguagewriter.PolylineOutlineMaterialCesiumWriter>() {
                 public cesiumlanguagewriter.PolylineOutlineMaterialCesiumWriter invoke() {
                     return new PolylineOutlineMaterialCesiumWriter(PolylineOutlinePropertyName);
                 }
             }, false);
-    private Lazy<PolylineArrowMaterialCesiumWriter> m_polylineArrow = new Lazy<cesiumlanguagewriter.PolylineArrowMaterialCesiumWriter>(
+    @Nonnull
+    private final Lazy<PolylineArrowMaterialCesiumWriter> m_polylineArrow = new Lazy<cesiumlanguagewriter.PolylineArrowMaterialCesiumWriter>(
             new Func1<cesiumlanguagewriter.PolylineArrowMaterialCesiumWriter>() {
                 public cesiumlanguagewriter.PolylineArrowMaterialCesiumWriter invoke() {
                     return new PolylineArrowMaterialCesiumWriter(PolylineArrowPropertyName);
                 }
             }, false);
-    private Lazy<PolylineDashMaterialCesiumWriter> m_polylineDash = new Lazy<cesiumlanguagewriter.PolylineDashMaterialCesiumWriter>(new Func1<cesiumlanguagewriter.PolylineDashMaterialCesiumWriter>() {
-        public cesiumlanguagewriter.PolylineDashMaterialCesiumWriter invoke() {
-            return new PolylineDashMaterialCesiumWriter(PolylineDashPropertyName);
-        }
-    }, false);
-    private Lazy<PolylineGlowMaterialCesiumWriter> m_polylineGlow = new Lazy<cesiumlanguagewriter.PolylineGlowMaterialCesiumWriter>(new Func1<cesiumlanguagewriter.PolylineGlowMaterialCesiumWriter>() {
-        public cesiumlanguagewriter.PolylineGlowMaterialCesiumWriter invoke() {
-            return new PolylineGlowMaterialCesiumWriter(PolylineGlowPropertyName);
-        }
-    }, false);
-    private Lazy<ImageMaterialCesiumWriter> m_image = new Lazy<cesiumlanguagewriter.ImageMaterialCesiumWriter>(new Func1<cesiumlanguagewriter.ImageMaterialCesiumWriter>() {
+    @Nonnull
+    private final Lazy<PolylineDashMaterialCesiumWriter> m_polylineDash = new Lazy<cesiumlanguagewriter.PolylineDashMaterialCesiumWriter>(
+            new Func1<cesiumlanguagewriter.PolylineDashMaterialCesiumWriter>() {
+                public cesiumlanguagewriter.PolylineDashMaterialCesiumWriter invoke() {
+                    return new PolylineDashMaterialCesiumWriter(PolylineDashPropertyName);
+                }
+            }, false);
+    @Nonnull
+    private final Lazy<PolylineGlowMaterialCesiumWriter> m_polylineGlow = new Lazy<cesiumlanguagewriter.PolylineGlowMaterialCesiumWriter>(
+            new Func1<cesiumlanguagewriter.PolylineGlowMaterialCesiumWriter>() {
+                public cesiumlanguagewriter.PolylineGlowMaterialCesiumWriter invoke() {
+                    return new PolylineGlowMaterialCesiumWriter(PolylineGlowPropertyName);
+                }
+            }, false);
+    @Nonnull
+    private final Lazy<ImageMaterialCesiumWriter> m_image = new Lazy<cesiumlanguagewriter.ImageMaterialCesiumWriter>(new Func1<cesiumlanguagewriter.ImageMaterialCesiumWriter>() {
         public cesiumlanguagewriter.ImageMaterialCesiumWriter invoke() {
             return new ImageMaterialCesiumWriter(ImagePropertyName);
         }
     }, false);
-    private Lazy<GridMaterialCesiumWriter> m_grid = new Lazy<cesiumlanguagewriter.GridMaterialCesiumWriter>(new Func1<cesiumlanguagewriter.GridMaterialCesiumWriter>() {
+    @Nonnull
+    private final Lazy<GridMaterialCesiumWriter> m_grid = new Lazy<cesiumlanguagewriter.GridMaterialCesiumWriter>(new Func1<cesiumlanguagewriter.GridMaterialCesiumWriter>() {
         public cesiumlanguagewriter.GridMaterialCesiumWriter invoke() {
             return new GridMaterialCesiumWriter(GridPropertyName);
         }
     }, false);
-    private Lazy<StripeMaterialCesiumWriter> m_stripe = new Lazy<cesiumlanguagewriter.StripeMaterialCesiumWriter>(new Func1<cesiumlanguagewriter.StripeMaterialCesiumWriter>() {
+    @Nonnull
+    private final Lazy<StripeMaterialCesiumWriter> m_stripe = new Lazy<cesiumlanguagewriter.StripeMaterialCesiumWriter>(new Func1<cesiumlanguagewriter.StripeMaterialCesiumWriter>() {
         public cesiumlanguagewriter.StripeMaterialCesiumWriter invoke() {
             return new StripeMaterialCesiumWriter(StripePropertyName);
         }
     }, false);
-    private Lazy<CheckerboardMaterialCesiumWriter> m_checkerboard = new Lazy<cesiumlanguagewriter.CheckerboardMaterialCesiumWriter>(new Func1<cesiumlanguagewriter.CheckerboardMaterialCesiumWriter>() {
-        public cesiumlanguagewriter.CheckerboardMaterialCesiumWriter invoke() {
-            return new CheckerboardMaterialCesiumWriter(CheckerboardPropertyName);
-        }
-    }, false);
+    @Nonnull
+    private final Lazy<CheckerboardMaterialCesiumWriter> m_checkerboard = new Lazy<cesiumlanguagewriter.CheckerboardMaterialCesiumWriter>(
+            new Func1<cesiumlanguagewriter.CheckerboardMaterialCesiumWriter>() {
+                public cesiumlanguagewriter.CheckerboardMaterialCesiumWriter invoke() {
+                    return new CheckerboardMaterialCesiumWriter(CheckerboardPropertyName);
+                }
+            }, false);
 
     /**
     * Initializes a new instance.

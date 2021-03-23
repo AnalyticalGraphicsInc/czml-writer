@@ -17,18 +17,22 @@ public class ClockCesiumWriter extends CesiumPropertyWriter<ClockCesiumWriter> {
     /**
     * The name of the {@code currentTime} property.
     */
+    @Nonnull
     public static final String CurrentTimePropertyName = "currentTime";
     /**
     * The name of the {@code multiplier} property.
     */
+    @Nonnull
     public static final String MultiplierPropertyName = "multiplier";
     /**
     * The name of the {@code range} property.
     */
+    @Nonnull
     public static final String RangePropertyName = "range";
     /**
     * The name of the {@code step} property.
     */
+    @Nonnull
     public static final String StepPropertyName = "step";
 
     /**

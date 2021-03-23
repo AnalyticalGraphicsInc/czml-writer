@@ -24,26 +24,32 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     /**
     * The name of the {@code translation} property.
     */
+    @Nonnull
     public static final String TranslationPropertyName = "translation";
     /**
     * The name of the {@code rotation} property.
     */
+    @Nonnull
     public static final String RotationPropertyName = "rotation";
     /**
     * The name of the {@code scale} property.
     */
+    @Nonnull
     public static final String ScalePropertyName = "scale";
-    private Lazy<TranslationCesiumWriter> m_translation = new Lazy<cesiumlanguagewriter.TranslationCesiumWriter>(new Func1<cesiumlanguagewriter.TranslationCesiumWriter>() {
+    @Nonnull
+    private final Lazy<TranslationCesiumWriter> m_translation = new Lazy<cesiumlanguagewriter.TranslationCesiumWriter>(new Func1<cesiumlanguagewriter.TranslationCesiumWriter>() {
         public cesiumlanguagewriter.TranslationCesiumWriter invoke() {
             return new TranslationCesiumWriter(TranslationPropertyName);
         }
     }, false);
-    private Lazy<RotationCesiumWriter> m_rotation = new Lazy<cesiumlanguagewriter.RotationCesiumWriter>(new Func1<cesiumlanguagewriter.RotationCesiumWriter>() {
+    @Nonnull
+    private final Lazy<RotationCesiumWriter> m_rotation = new Lazy<cesiumlanguagewriter.RotationCesiumWriter>(new Func1<cesiumlanguagewriter.RotationCesiumWriter>() {
         public cesiumlanguagewriter.RotationCesiumWriter invoke() {
             return new RotationCesiumWriter(RotationPropertyName);
         }
     }, false);
-    private Lazy<ScaleCesiumWriter> m_scale = new Lazy<cesiumlanguagewriter.ScaleCesiumWriter>(new Func1<cesiumlanguagewriter.ScaleCesiumWriter>() {
+    @Nonnull
+    private final Lazy<ScaleCesiumWriter> m_scale = new Lazy<cesiumlanguagewriter.ScaleCesiumWriter>(new Func1<cesiumlanguagewriter.ScaleCesiumWriter>() {
         public cesiumlanguagewriter.ScaleCesiumWriter invoke() {
             return new ScaleCesiumWriter(ScalePropertyName);
         }

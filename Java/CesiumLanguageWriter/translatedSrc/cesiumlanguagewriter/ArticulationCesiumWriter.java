@@ -21,17 +21,22 @@ public class ArticulationCesiumWriter extends CesiumInterpolatablePropertyWriter
     /**
     * The name of the {@code number} property.
     */
+    @Nonnull
     public static final String NumberPropertyName = "number";
     /**
     * The name of the {@code reference} property.
     */
+    @Nonnull
     public static final String ReferencePropertyName = "reference";
     /**
     * The name of the {@code delete} property.
     */
+    @Nonnull
     public static final String DeletePropertyName = "delete";
-    private Lazy<CesiumDoubleValuePropertyAdaptor<ArticulationCesiumWriter>> m_asNumber;
-    private Lazy<CesiumReferenceValuePropertyAdaptor<ArticulationCesiumWriter>> m_asReference;
+    @Nonnull
+    private final Lazy<CesiumDoubleValuePropertyAdaptor<ArticulationCesiumWriter>> m_asNumber;
+    @Nonnull
+    private final Lazy<CesiumReferenceValuePropertyAdaptor<ArticulationCesiumWriter>> m_asReference;
 
     /**
     * Initializes a new instance.
@@ -160,10 +165,12 @@ public class ArticulationCesiumWriter extends CesiumInterpolatablePropertyWriter
     * Returns a wrapper for this instance that implements {@link ICesiumDoubleValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumDoubleValuePropertyAdaptor<ArticulationCesiumWriter> asNumber() {
         return m_asNumber.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumDoubleValuePropertyAdaptor<ArticulationCesiumWriter>> createAsNumber() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumDoubleValuePropertyAdaptor<ArticulationCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumDoubleValuePropertyAdaptor<ArticulationCesiumWriter>>(this, "createDouble") {
@@ -173,6 +180,7 @@ public class ArticulationCesiumWriter extends CesiumInterpolatablePropertyWriter
                 }, false);
     }
 
+    @Nonnull
     private final CesiumDoubleValuePropertyAdaptor<ArticulationCesiumWriter> createDouble() {
         return CesiumValuePropertyAdaptors.<ArticulationCesiumWriter> createDouble(this);
     }
@@ -181,10 +189,12 @@ public class ArticulationCesiumWriter extends CesiumInterpolatablePropertyWriter
     * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumReferenceValuePropertyAdaptor<ArticulationCesiumWriter> asReference() {
         return m_asReference.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<ArticulationCesiumWriter>> createAsReference() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<ArticulationCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<ArticulationCesiumWriter>>(this, "createReference") {
@@ -194,6 +204,7 @@ public class ArticulationCesiumWriter extends CesiumInterpolatablePropertyWriter
                 }, false);
     }
 
+    @Nonnull
     private final CesiumReferenceValuePropertyAdaptor<ArticulationCesiumWriter> createReference() {
         return CesiumValuePropertyAdaptors.<ArticulationCesiumWriter> createReference(this);
     }

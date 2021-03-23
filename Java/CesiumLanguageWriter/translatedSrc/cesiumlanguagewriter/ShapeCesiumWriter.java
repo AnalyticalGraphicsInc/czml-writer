@@ -19,12 +19,15 @@ public class ShapeCesiumWriter extends CesiumPropertyWriter<ShapeCesiumWriter> i
     /**
     * The name of the {@code cartesian2} property.
     */
+    @Nonnull
     public static final String Cartesian2PropertyName = "cartesian2";
     /**
     * The name of the {@code delete} property.
     */
+    @Nonnull
     public static final String DeletePropertyName = "delete";
-    private Lazy<CesiumCartesian2ListValuePropertyAdaptor<ShapeCesiumWriter>> m_asCartesian2;
+    @Nonnull
+    private final Lazy<CesiumCartesian2ListValuePropertyAdaptor<ShapeCesiumWriter>> m_asCartesian2;
 
     /**
     * Initializes a new instance.
@@ -79,10 +82,12 @@ public class ShapeCesiumWriter extends CesiumPropertyWriter<ShapeCesiumWriter> i
     * Returns a wrapper for this instance that implements {@link ICesiumCartesian2ListValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumCartesian2ListValuePropertyAdaptor<ShapeCesiumWriter> asCartesian2() {
         return m_asCartesian2.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumCartesian2ListValuePropertyAdaptor<ShapeCesiumWriter>> createAsCartesian2() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumCartesian2ListValuePropertyAdaptor<ShapeCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumCartesian2ListValuePropertyAdaptor<ShapeCesiumWriter>>(this, "createCartesian2List") {
@@ -92,6 +97,7 @@ public class ShapeCesiumWriter extends CesiumPropertyWriter<ShapeCesiumWriter> i
                 }, false);
     }
 
+    @Nonnull
     private final CesiumCartesian2ListValuePropertyAdaptor<ShapeCesiumWriter> createCartesian2List() {
         return CesiumValuePropertyAdaptors.<ShapeCesiumWriter> createCartesian2List(this);
     }

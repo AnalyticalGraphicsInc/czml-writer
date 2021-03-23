@@ -21,17 +21,22 @@ public class LineThicknessCesiumWriter extends CesiumInterpolatablePropertyWrite
     /**
     * The name of the {@code cartesian2} property.
     */
+    @Nonnull
     public static final String Cartesian2PropertyName = "cartesian2";
     /**
     * The name of the {@code reference} property.
     */
+    @Nonnull
     public static final String ReferencePropertyName = "reference";
     /**
     * The name of the {@code delete} property.
     */
+    @Nonnull
     public static final String DeletePropertyName = "delete";
-    private Lazy<CesiumCartesian2ValuePropertyAdaptor<LineThicknessCesiumWriter>> m_asCartesian2;
-    private Lazy<CesiumReferenceValuePropertyAdaptor<LineThicknessCesiumWriter>> m_asReference;
+    @Nonnull
+    private final Lazy<CesiumCartesian2ValuePropertyAdaptor<LineThicknessCesiumWriter>> m_asCartesian2;
+    @Nonnull
+    private final Lazy<CesiumReferenceValuePropertyAdaptor<LineThicknessCesiumWriter>> m_asReference;
 
     /**
     * Initializes a new instance.
@@ -165,10 +170,12 @@ public class LineThicknessCesiumWriter extends CesiumInterpolatablePropertyWrite
     * Returns a wrapper for this instance that implements {@link ICesiumCartesian2ValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumCartesian2ValuePropertyAdaptor<LineThicknessCesiumWriter> asCartesian2() {
         return m_asCartesian2.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumCartesian2ValuePropertyAdaptor<LineThicknessCesiumWriter>> createAsCartesian2() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumCartesian2ValuePropertyAdaptor<LineThicknessCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumCartesian2ValuePropertyAdaptor<LineThicknessCesiumWriter>>(this, "createCartesian2") {
@@ -178,6 +185,7 @@ public class LineThicknessCesiumWriter extends CesiumInterpolatablePropertyWrite
                 }, false);
     }
 
+    @Nonnull
     private final CesiumCartesian2ValuePropertyAdaptor<LineThicknessCesiumWriter> createCartesian2() {
         return CesiumValuePropertyAdaptors.<LineThicknessCesiumWriter> createCartesian2(this);
     }
@@ -186,10 +194,12 @@ public class LineThicknessCesiumWriter extends CesiumInterpolatablePropertyWrite
     * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumReferenceValuePropertyAdaptor<LineThicknessCesiumWriter> asReference() {
         return m_asReference.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<LineThicknessCesiumWriter>> createAsReference() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<LineThicknessCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<LineThicknessCesiumWriter>>(this, "createReference") {
@@ -199,6 +209,7 @@ public class LineThicknessCesiumWriter extends CesiumInterpolatablePropertyWrite
                 }, false);
     }
 
+    @Nonnull
     private final CesiumReferenceValuePropertyAdaptor<LineThicknessCesiumWriter> createReference() {
         return CesiumValuePropertyAdaptors.<LineThicknessCesiumWriter> createReference(this);
     }

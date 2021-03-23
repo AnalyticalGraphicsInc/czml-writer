@@ -21,17 +21,22 @@ public class PixelOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<
     /**
     * The name of the {@code cartesian2} property.
     */
+    @Nonnull
     public static final String Cartesian2PropertyName = "cartesian2";
     /**
     * The name of the {@code reference} property.
     */
+    @Nonnull
     public static final String ReferencePropertyName = "reference";
     /**
     * The name of the {@code delete} property.
     */
+    @Nonnull
     public static final String DeletePropertyName = "delete";
-    private Lazy<CesiumCartesian2ValuePropertyAdaptor<PixelOffsetCesiumWriter>> m_asCartesian2;
-    private Lazy<CesiumReferenceValuePropertyAdaptor<PixelOffsetCesiumWriter>> m_asReference;
+    @Nonnull
+    private final Lazy<CesiumCartesian2ValuePropertyAdaptor<PixelOffsetCesiumWriter>> m_asCartesian2;
+    @Nonnull
+    private final Lazy<CesiumReferenceValuePropertyAdaptor<PixelOffsetCesiumWriter>> m_asReference;
 
     /**
     * Initializes a new instance.
@@ -165,10 +170,12 @@ public class PixelOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<
     * Returns a wrapper for this instance that implements {@link ICesiumCartesian2ValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumCartesian2ValuePropertyAdaptor<PixelOffsetCesiumWriter> asCartesian2() {
         return m_asCartesian2.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumCartesian2ValuePropertyAdaptor<PixelOffsetCesiumWriter>> createAsCartesian2() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumCartesian2ValuePropertyAdaptor<PixelOffsetCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumCartesian2ValuePropertyAdaptor<PixelOffsetCesiumWriter>>(this, "createCartesian2") {
@@ -178,6 +185,7 @@ public class PixelOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<
                 }, false);
     }
 
+    @Nonnull
     private final CesiumCartesian2ValuePropertyAdaptor<PixelOffsetCesiumWriter> createCartesian2() {
         return CesiumValuePropertyAdaptors.<PixelOffsetCesiumWriter> createCartesian2(this);
     }
@@ -186,10 +194,12 @@ public class PixelOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<
     * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumReferenceValuePropertyAdaptor<PixelOffsetCesiumWriter> asReference() {
         return m_asReference.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<PixelOffsetCesiumWriter>> createAsReference() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<PixelOffsetCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<PixelOffsetCesiumWriter>>(this, "createReference") {
@@ -199,6 +209,7 @@ public class PixelOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<
                 }, false);
     }
 
+    @Nonnull
     private final CesiumReferenceValuePropertyAdaptor<PixelOffsetCesiumWriter> createReference() {
         return CesiumValuePropertyAdaptors.<PixelOffsetCesiumWriter> createReference(this);
     }

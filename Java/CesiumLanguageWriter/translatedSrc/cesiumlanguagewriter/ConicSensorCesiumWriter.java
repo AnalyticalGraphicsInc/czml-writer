@@ -28,261 +28,319 @@ public class ConicSensorCesiumWriter extends CesiumPropertyWriter<ConicSensorCes
     /**
     * The name of the {@code show} property.
     */
+    @Nonnull
     public static final String ShowPropertyName = "show";
     /**
     * The name of the {@code innerHalfAngle} property.
     */
+    @Nonnull
     public static final String InnerHalfAnglePropertyName = "innerHalfAngle";
     /**
     * The name of the {@code outerHalfAngle} property.
     */
+    @Nonnull
     public static final String OuterHalfAnglePropertyName = "outerHalfAngle";
     /**
     * The name of the {@code minimumClockAngle} property.
     */
+    @Nonnull
     public static final String MinimumClockAnglePropertyName = "minimumClockAngle";
     /**
     * The name of the {@code maximumClockAngle} property.
     */
+    @Nonnull
     public static final String MaximumClockAnglePropertyName = "maximumClockAngle";
     /**
     * The name of the {@code radius} property.
     */
+    @Nonnull
     public static final String RadiusPropertyName = "radius";
     /**
     * The name of the {@code showIntersection} property.
     */
+    @Nonnull
     public static final String ShowIntersectionPropertyName = "showIntersection";
     /**
     * The name of the {@code intersectionColor} property.
     */
+    @Nonnull
     public static final String IntersectionColorPropertyName = "intersectionColor";
     /**
     * The name of the {@code intersectionWidth} property.
     */
+    @Nonnull
     public static final String IntersectionWidthPropertyName = "intersectionWidth";
     /**
     * The name of the {@code showLateralSurfaces} property.
     */
+    @Nonnull
     public static final String ShowLateralSurfacesPropertyName = "showLateralSurfaces";
     /**
     * The name of the {@code lateralSurfaceMaterial} property.
     */
+    @Nonnull
     public static final String LateralSurfaceMaterialPropertyName = "lateralSurfaceMaterial";
     /**
     * The name of the {@code showEllipsoidSurfaces} property.
     */
+    @Nonnull
     public static final String ShowEllipsoidSurfacesPropertyName = "showEllipsoidSurfaces";
     /**
     * The name of the {@code ellipsoidSurfaceMaterial} property.
     */
+    @Nonnull
     public static final String EllipsoidSurfaceMaterialPropertyName = "ellipsoidSurfaceMaterial";
     /**
     * The name of the {@code showEllipsoidHorizonSurfaces} property.
     */
+    @Nonnull
     public static final String ShowEllipsoidHorizonSurfacesPropertyName = "showEllipsoidHorizonSurfaces";
     /**
     * The name of the {@code ellipsoidHorizonSurfaceMaterial} property.
     */
+    @Nonnull
     public static final String EllipsoidHorizonSurfaceMaterialPropertyName = "ellipsoidHorizonSurfaceMaterial";
     /**
     * The name of the {@code showDomeSurfaces} property.
     */
+    @Nonnull
     public static final String ShowDomeSurfacesPropertyName = "showDomeSurfaces";
     /**
     * The name of the {@code domeSurfaceMaterial} property.
     */
+    @Nonnull
     public static final String DomeSurfaceMaterialPropertyName = "domeSurfaceMaterial";
     /**
     * The name of the {@code portionToDisplay} property.
     */
+    @Nonnull
     public static final String PortionToDisplayPropertyName = "portionToDisplay";
     /**
     * The name of the {@code environmentConstraint} property.
     */
+    @Nonnull
     public static final String EnvironmentConstraintPropertyName = "environmentConstraint";
     /**
     * The name of the {@code showEnvironmentOcclusion} property.
     */
+    @Nonnull
     public static final String ShowEnvironmentOcclusionPropertyName = "showEnvironmentOcclusion";
     /**
     * The name of the {@code environmentOcclusionMaterial} property.
     */
+    @Nonnull
     public static final String EnvironmentOcclusionMaterialPropertyName = "environmentOcclusionMaterial";
     /**
     * The name of the {@code showEnvironmentIntersection} property.
     */
+    @Nonnull
     public static final String ShowEnvironmentIntersectionPropertyName = "showEnvironmentIntersection";
     /**
     * The name of the {@code environmentIntersectionColor} property.
     */
+    @Nonnull
     public static final String EnvironmentIntersectionColorPropertyName = "environmentIntersectionColor";
     /**
     * The name of the {@code environmentIntersectionWidth} property.
     */
+    @Nonnull
     public static final String EnvironmentIntersectionWidthPropertyName = "environmentIntersectionWidth";
     /**
     * The name of the {@code showThroughEllipsoid} property.
     */
+    @Nonnull
     public static final String ShowThroughEllipsoidPropertyName = "showThroughEllipsoid";
     /**
     * The name of the {@code showViewshed} property.
     */
+    @Nonnull
     public static final String ShowViewshedPropertyName = "showViewshed";
     /**
     * The name of the {@code viewshedVisibleColor} property.
     */
+    @Nonnull
     public static final String ViewshedVisibleColorPropertyName = "viewshedVisibleColor";
     /**
     * The name of the {@code viewshedOccludedColor} property.
     */
+    @Nonnull
     public static final String ViewshedOccludedColorPropertyName = "viewshedOccludedColor";
     /**
     * The name of the {@code viewshedResolution} property.
     */
+    @Nonnull
     public static final String ViewshedResolutionPropertyName = "viewshedResolution";
-    private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+    @Nonnull
+    private final Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
         public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
             return new BooleanCesiumWriter(ShowPropertyName);
         }
     }, false);
-    private Lazy<DoubleCesiumWriter> m_innerHalfAngle = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+    @Nonnull
+    private final Lazy<DoubleCesiumWriter> m_innerHalfAngle = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
         public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
             return new DoubleCesiumWriter(InnerHalfAnglePropertyName);
         }
     }, false);
-    private Lazy<DoubleCesiumWriter> m_outerHalfAngle = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+    @Nonnull
+    private final Lazy<DoubleCesiumWriter> m_outerHalfAngle = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
         public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
             return new DoubleCesiumWriter(OuterHalfAnglePropertyName);
         }
     }, false);
-    private Lazy<DoubleCesiumWriter> m_minimumClockAngle = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+    @Nonnull
+    private final Lazy<DoubleCesiumWriter> m_minimumClockAngle = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
         public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
             return new DoubleCesiumWriter(MinimumClockAnglePropertyName);
         }
     }, false);
-    private Lazy<DoubleCesiumWriter> m_maximumClockAngle = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+    @Nonnull
+    private final Lazy<DoubleCesiumWriter> m_maximumClockAngle = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
         public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
             return new DoubleCesiumWriter(MaximumClockAnglePropertyName);
         }
     }, false);
-    private Lazy<DoubleCesiumWriter> m_radius = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+    @Nonnull
+    private final Lazy<DoubleCesiumWriter> m_radius = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
         public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
             return new DoubleCesiumWriter(RadiusPropertyName);
         }
     }, false);
-    private Lazy<BooleanCesiumWriter> m_showIntersection = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+    @Nonnull
+    private final Lazy<BooleanCesiumWriter> m_showIntersection = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
         public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
             return new BooleanCesiumWriter(ShowIntersectionPropertyName);
         }
     }, false);
-    private Lazy<ColorCesiumWriter> m_intersectionColor = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
+    @Nonnull
+    private final Lazy<ColorCesiumWriter> m_intersectionColor = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
         public cesiumlanguagewriter.ColorCesiumWriter invoke() {
             return new ColorCesiumWriter(IntersectionColorPropertyName);
         }
     }, false);
-    private Lazy<DoubleCesiumWriter> m_intersectionWidth = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+    @Nonnull
+    private final Lazy<DoubleCesiumWriter> m_intersectionWidth = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
         public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
             return new DoubleCesiumWriter(IntersectionWidthPropertyName);
         }
     }, false);
-    private Lazy<BooleanCesiumWriter> m_showLateralSurfaces = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+    @Nonnull
+    private final Lazy<BooleanCesiumWriter> m_showLateralSurfaces = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
         public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
             return new BooleanCesiumWriter(ShowLateralSurfacesPropertyName);
         }
     }, false);
-    private Lazy<MaterialCesiumWriter> m_lateralSurfaceMaterial = new Lazy<cesiumlanguagewriter.MaterialCesiumWriter>(new Func1<cesiumlanguagewriter.MaterialCesiumWriter>() {
+    @Nonnull
+    private final Lazy<MaterialCesiumWriter> m_lateralSurfaceMaterial = new Lazy<cesiumlanguagewriter.MaterialCesiumWriter>(new Func1<cesiumlanguagewriter.MaterialCesiumWriter>() {
         public cesiumlanguagewriter.MaterialCesiumWriter invoke() {
             return new MaterialCesiumWriter(LateralSurfaceMaterialPropertyName);
         }
     }, false);
-    private Lazy<BooleanCesiumWriter> m_showEllipsoidSurfaces = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+    @Nonnull
+    private final Lazy<BooleanCesiumWriter> m_showEllipsoidSurfaces = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
         public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
             return new BooleanCesiumWriter(ShowEllipsoidSurfacesPropertyName);
         }
     }, false);
-    private Lazy<MaterialCesiumWriter> m_ellipsoidSurfaceMaterial = new Lazy<cesiumlanguagewriter.MaterialCesiumWriter>(new Func1<cesiumlanguagewriter.MaterialCesiumWriter>() {
+    @Nonnull
+    private final Lazy<MaterialCesiumWriter> m_ellipsoidSurfaceMaterial = new Lazy<cesiumlanguagewriter.MaterialCesiumWriter>(new Func1<cesiumlanguagewriter.MaterialCesiumWriter>() {
         public cesiumlanguagewriter.MaterialCesiumWriter invoke() {
             return new MaterialCesiumWriter(EllipsoidSurfaceMaterialPropertyName);
         }
     }, false);
-    private Lazy<BooleanCesiumWriter> m_showEllipsoidHorizonSurfaces = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+    @Nonnull
+    private final Lazy<BooleanCesiumWriter> m_showEllipsoidHorizonSurfaces = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
         public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
             return new BooleanCesiumWriter(ShowEllipsoidHorizonSurfacesPropertyName);
         }
     }, false);
-    private Lazy<MaterialCesiumWriter> m_ellipsoidHorizonSurfaceMaterial = new Lazy<cesiumlanguagewriter.MaterialCesiumWriter>(new Func1<cesiumlanguagewriter.MaterialCesiumWriter>() {
+    @Nonnull
+    private final Lazy<MaterialCesiumWriter> m_ellipsoidHorizonSurfaceMaterial = new Lazy<cesiumlanguagewriter.MaterialCesiumWriter>(new Func1<cesiumlanguagewriter.MaterialCesiumWriter>() {
         public cesiumlanguagewriter.MaterialCesiumWriter invoke() {
             return new MaterialCesiumWriter(EllipsoidHorizonSurfaceMaterialPropertyName);
         }
     }, false);
-    private Lazy<BooleanCesiumWriter> m_showDomeSurfaces = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+    @Nonnull
+    private final Lazy<BooleanCesiumWriter> m_showDomeSurfaces = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
         public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
             return new BooleanCesiumWriter(ShowDomeSurfacesPropertyName);
         }
     }, false);
-    private Lazy<MaterialCesiumWriter> m_domeSurfaceMaterial = new Lazy<cesiumlanguagewriter.MaterialCesiumWriter>(new Func1<cesiumlanguagewriter.MaterialCesiumWriter>() {
+    @Nonnull
+    private final Lazy<MaterialCesiumWriter> m_domeSurfaceMaterial = new Lazy<cesiumlanguagewriter.MaterialCesiumWriter>(new Func1<cesiumlanguagewriter.MaterialCesiumWriter>() {
         public cesiumlanguagewriter.MaterialCesiumWriter invoke() {
             return new MaterialCesiumWriter(DomeSurfaceMaterialPropertyName);
         }
     }, false);
-    private Lazy<SensorVolumePortionToDisplayCesiumWriter> m_portionToDisplay = new Lazy<cesiumlanguagewriter.SensorVolumePortionToDisplayCesiumWriter>(
+    @Nonnull
+    private final Lazy<SensorVolumePortionToDisplayCesiumWriter> m_portionToDisplay = new Lazy<cesiumlanguagewriter.SensorVolumePortionToDisplayCesiumWriter>(
             new Func1<cesiumlanguagewriter.SensorVolumePortionToDisplayCesiumWriter>() {
                 public cesiumlanguagewriter.SensorVolumePortionToDisplayCesiumWriter invoke() {
                     return new SensorVolumePortionToDisplayCesiumWriter(PortionToDisplayPropertyName);
                 }
             }, false);
-    private Lazy<BooleanCesiumWriter> m_environmentConstraint = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+    @Nonnull
+    private final Lazy<BooleanCesiumWriter> m_environmentConstraint = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
         public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
             return new BooleanCesiumWriter(EnvironmentConstraintPropertyName);
         }
     }, false);
-    private Lazy<BooleanCesiumWriter> m_showEnvironmentOcclusion = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+    @Nonnull
+    private final Lazy<BooleanCesiumWriter> m_showEnvironmentOcclusion = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
         public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
             return new BooleanCesiumWriter(ShowEnvironmentOcclusionPropertyName);
         }
     }, false);
-    private Lazy<MaterialCesiumWriter> m_environmentOcclusionMaterial = new Lazy<cesiumlanguagewriter.MaterialCesiumWriter>(new Func1<cesiumlanguagewriter.MaterialCesiumWriter>() {
+    @Nonnull
+    private final Lazy<MaterialCesiumWriter> m_environmentOcclusionMaterial = new Lazy<cesiumlanguagewriter.MaterialCesiumWriter>(new Func1<cesiumlanguagewriter.MaterialCesiumWriter>() {
         public cesiumlanguagewriter.MaterialCesiumWriter invoke() {
             return new MaterialCesiumWriter(EnvironmentOcclusionMaterialPropertyName);
         }
     }, false);
-    private Lazy<BooleanCesiumWriter> m_showEnvironmentIntersection = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+    @Nonnull
+    private final Lazy<BooleanCesiumWriter> m_showEnvironmentIntersection = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
         public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
             return new BooleanCesiumWriter(ShowEnvironmentIntersectionPropertyName);
         }
     }, false);
-    private Lazy<ColorCesiumWriter> m_environmentIntersectionColor = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
+    @Nonnull
+    private final Lazy<ColorCesiumWriter> m_environmentIntersectionColor = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
         public cesiumlanguagewriter.ColorCesiumWriter invoke() {
             return new ColorCesiumWriter(EnvironmentIntersectionColorPropertyName);
         }
     }, false);
-    private Lazy<DoubleCesiumWriter> m_environmentIntersectionWidth = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+    @Nonnull
+    private final Lazy<DoubleCesiumWriter> m_environmentIntersectionWidth = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
         public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
             return new DoubleCesiumWriter(EnvironmentIntersectionWidthPropertyName);
         }
     }, false);
-    private Lazy<BooleanCesiumWriter> m_showThroughEllipsoid = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+    @Nonnull
+    private final Lazy<BooleanCesiumWriter> m_showThroughEllipsoid = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
         public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
             return new BooleanCesiumWriter(ShowThroughEllipsoidPropertyName);
         }
     }, false);
-    private Lazy<BooleanCesiumWriter> m_showViewshed = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+    @Nonnull
+    private final Lazy<BooleanCesiumWriter> m_showViewshed = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
         public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
             return new BooleanCesiumWriter(ShowViewshedPropertyName);
         }
     }, false);
-    private Lazy<ColorCesiumWriter> m_viewshedVisibleColor = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
+    @Nonnull
+    private final Lazy<ColorCesiumWriter> m_viewshedVisibleColor = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
         public cesiumlanguagewriter.ColorCesiumWriter invoke() {
             return new ColorCesiumWriter(ViewshedVisibleColorPropertyName);
         }
     }, false);
-    private Lazy<ColorCesiumWriter> m_viewshedOccludedColor = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
+    @Nonnull
+    private final Lazy<ColorCesiumWriter> m_viewshedOccludedColor = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
         public cesiumlanguagewriter.ColorCesiumWriter invoke() {
             return new ColorCesiumWriter(ViewshedOccludedColorPropertyName);
         }
     }, false);
-    private Lazy<IntegerCesiumWriter> m_viewshedResolution = new Lazy<cesiumlanguagewriter.IntegerCesiumWriter>(new Func1<cesiumlanguagewriter.IntegerCesiumWriter>() {
+    @Nonnull
+    private final Lazy<IntegerCesiumWriter> m_viewshedResolution = new Lazy<cesiumlanguagewriter.IntegerCesiumWriter>(new Func1<cesiumlanguagewriter.IntegerCesiumWriter>() {
         public cesiumlanguagewriter.IntegerCesiumWriter invoke() {
             return new IntegerCesiumWriter(ViewshedResolutionPropertyName);
         }

@@ -30,117 +30,144 @@ public class PolylineCesiumWriter extends CesiumPropertyWriter<PolylineCesiumWri
     /**
     * The name of the {@code show} property.
     */
+    @Nonnull
     public static final String ShowPropertyName = "show";
     /**
     * The name of the {@code positions} property.
     */
+    @Nonnull
     public static final String PositionsPropertyName = "positions";
     /**
     * The name of the {@code arcType} property.
     */
+    @Nonnull
     public static final String ArcTypePropertyName = "arcType";
     /**
     * The name of the {@code width} property.
     */
+    @Nonnull
     public static final String WidthPropertyName = "width";
     /**
     * The name of the {@code granularity} property.
     */
+    @Nonnull
     public static final String GranularityPropertyName = "granularity";
     /**
     * The name of the {@code material} property.
     */
+    @Nonnull
     public static final String MaterialPropertyName = "material";
     /**
     * The name of the {@code followSurface} property.
     */
+    @Nonnull
     public static final String FollowSurfacePropertyName = "followSurface";
     /**
     * The name of the {@code shadows} property.
     */
+    @Nonnull
     public static final String ShadowsPropertyName = "shadows";
     /**
     * The name of the {@code depthFailMaterial} property.
     */
+    @Nonnull
     public static final String DepthFailMaterialPropertyName = "depthFailMaterial";
     /**
     * The name of the {@code distanceDisplayCondition} property.
     */
+    @Nonnull
     public static final String DistanceDisplayConditionPropertyName = "distanceDisplayCondition";
     /**
     * The name of the {@code clampToGround} property.
     */
+    @Nonnull
     public static final String ClampToGroundPropertyName = "clampToGround";
     /**
     * The name of the {@code classificationType} property.
     */
+    @Nonnull
     public static final String ClassificationTypePropertyName = "classificationType";
     /**
     * The name of the {@code zIndex} property.
     */
+    @Nonnull
     public static final String ZIndexPropertyName = "zIndex";
-    private Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+    @Nonnull
+    private final Lazy<BooleanCesiumWriter> m_show = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
         public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
             return new BooleanCesiumWriter(ShowPropertyName);
         }
     }, false);
-    private Lazy<PositionListCesiumWriter> m_positions = new Lazy<cesiumlanguagewriter.PositionListCesiumWriter>(new Func1<cesiumlanguagewriter.PositionListCesiumWriter>() {
+    @Nonnull
+    private final Lazy<PositionListCesiumWriter> m_positions = new Lazy<cesiumlanguagewriter.PositionListCesiumWriter>(new Func1<cesiumlanguagewriter.PositionListCesiumWriter>() {
         public cesiumlanguagewriter.PositionListCesiumWriter invoke() {
             return new PositionListCesiumWriter(PositionsPropertyName);
         }
     }, false);
-    private Lazy<ArcTypeCesiumWriter> m_arcType = new Lazy<cesiumlanguagewriter.ArcTypeCesiumWriter>(new Func1<cesiumlanguagewriter.ArcTypeCesiumWriter>() {
+    @Nonnull
+    private final Lazy<ArcTypeCesiumWriter> m_arcType = new Lazy<cesiumlanguagewriter.ArcTypeCesiumWriter>(new Func1<cesiumlanguagewriter.ArcTypeCesiumWriter>() {
         public cesiumlanguagewriter.ArcTypeCesiumWriter invoke() {
             return new ArcTypeCesiumWriter(ArcTypePropertyName);
         }
     }, false);
-    private Lazy<DoubleCesiumWriter> m_width = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+    @Nonnull
+    private final Lazy<DoubleCesiumWriter> m_width = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
         public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
             return new DoubleCesiumWriter(WidthPropertyName);
         }
     }, false);
-    private Lazy<DoubleCesiumWriter> m_granularity = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+    @Nonnull
+    private final Lazy<DoubleCesiumWriter> m_granularity = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
         public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
             return new DoubleCesiumWriter(GranularityPropertyName);
         }
     }, false);
-    private Lazy<PolylineMaterialCesiumWriter> m_material = new Lazy<cesiumlanguagewriter.PolylineMaterialCesiumWriter>(new Func1<cesiumlanguagewriter.PolylineMaterialCesiumWriter>() {
+    @Nonnull
+    private final Lazy<PolylineMaterialCesiumWriter> m_material = new Lazy<cesiumlanguagewriter.PolylineMaterialCesiumWriter>(new Func1<cesiumlanguagewriter.PolylineMaterialCesiumWriter>() {
         public cesiumlanguagewriter.PolylineMaterialCesiumWriter invoke() {
             return new PolylineMaterialCesiumWriter(MaterialPropertyName);
         }
     }, false);
-    private Lazy<BooleanCesiumWriter> m_followSurface = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+    @Nonnull
+    private final Lazy<BooleanCesiumWriter> m_followSurface = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
         public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
             return new BooleanCesiumWriter(FollowSurfacePropertyName);
         }
     }, false);
-    private Lazy<ShadowModeCesiumWriter> m_shadows = new Lazy<cesiumlanguagewriter.ShadowModeCesiumWriter>(new Func1<cesiumlanguagewriter.ShadowModeCesiumWriter>() {
+    @Nonnull
+    private final Lazy<ShadowModeCesiumWriter> m_shadows = new Lazy<cesiumlanguagewriter.ShadowModeCesiumWriter>(new Func1<cesiumlanguagewriter.ShadowModeCesiumWriter>() {
         public cesiumlanguagewriter.ShadowModeCesiumWriter invoke() {
             return new ShadowModeCesiumWriter(ShadowsPropertyName);
         }
     }, false);
-    private Lazy<PolylineMaterialCesiumWriter> m_depthFailMaterial = new Lazy<cesiumlanguagewriter.PolylineMaterialCesiumWriter>(new Func1<cesiumlanguagewriter.PolylineMaterialCesiumWriter>() {
+    @Nonnull
+    private final Lazy<PolylineMaterialCesiumWriter> m_depthFailMaterial = new Lazy<cesiumlanguagewriter.PolylineMaterialCesiumWriter>(new Func1<cesiumlanguagewriter.PolylineMaterialCesiumWriter>() {
         public cesiumlanguagewriter.PolylineMaterialCesiumWriter invoke() {
             return new PolylineMaterialCesiumWriter(DepthFailMaterialPropertyName);
         }
     }, false);
-    private Lazy<DistanceDisplayConditionCesiumWriter> m_distanceDisplayCondition = new Lazy<cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter>(
+    @Nonnull
+    private final Lazy<DistanceDisplayConditionCesiumWriter> m_distanceDisplayCondition = new Lazy<cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter>(
             new Func1<cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter>() {
                 public cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter invoke() {
                     return new DistanceDisplayConditionCesiumWriter(DistanceDisplayConditionPropertyName);
                 }
             }, false);
-    private Lazy<BooleanCesiumWriter> m_clampToGround = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
+    @Nonnull
+    private final Lazy<BooleanCesiumWriter> m_clampToGround = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
         public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
             return new BooleanCesiumWriter(ClampToGroundPropertyName);
         }
     }, false);
-    private Lazy<ClassificationTypeCesiumWriter> m_classificationType = new Lazy<cesiumlanguagewriter.ClassificationTypeCesiumWriter>(new Func1<cesiumlanguagewriter.ClassificationTypeCesiumWriter>() {
-        public cesiumlanguagewriter.ClassificationTypeCesiumWriter invoke() {
-            return new ClassificationTypeCesiumWriter(ClassificationTypePropertyName);
-        }
-    }, false);
-    private Lazy<IntegerCesiumWriter> m_zIndex = new Lazy<cesiumlanguagewriter.IntegerCesiumWriter>(new Func1<cesiumlanguagewriter.IntegerCesiumWriter>() {
+    @Nonnull
+    private final Lazy<ClassificationTypeCesiumWriter> m_classificationType = new Lazy<cesiumlanguagewriter.ClassificationTypeCesiumWriter>(
+            new Func1<cesiumlanguagewriter.ClassificationTypeCesiumWriter>() {
+                public cesiumlanguagewriter.ClassificationTypeCesiumWriter invoke() {
+                    return new ClassificationTypeCesiumWriter(ClassificationTypePropertyName);
+                }
+            }, false);
+    @Nonnull
+    private final Lazy<IntegerCesiumWriter> m_zIndex = new Lazy<cesiumlanguagewriter.IntegerCesiumWriter>(new Func1<cesiumlanguagewriter.IntegerCesiumWriter>() {
         public cesiumlanguagewriter.IntegerCesiumWriter invoke() {
             return new IntegerCesiumWriter(ZIndexPropertyName);
         }

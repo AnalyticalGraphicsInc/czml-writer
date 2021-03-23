@@ -819,22 +819,6 @@ public final class StringHelper {
     }
 
     /**
-     * Determines whether the end of this string instance matches the specified string.
-     *
-     * @param s
-     *            The string.
-     * @param value
-     *            The string to compare.
-     * @return true if value matches the end of this string; otherwise, false.
-     */
-    public static boolean endsWith(@Nonnull String s, @Nonnull String value) {
-        ArgumentNullException.assertNonNull(s, "s");
-        ArgumentNullException.assertNonNull(value, "value");
-
-        return s.endsWith(value);
-    }
-
-    /**
      * Determines whether the end of this string matches the specified string when
      * compared using the specified comparison option.
      *

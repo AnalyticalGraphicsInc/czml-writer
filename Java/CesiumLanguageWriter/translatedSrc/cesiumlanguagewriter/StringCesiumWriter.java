@@ -19,17 +19,22 @@ public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter>
     /**
     * The name of the {@code string} property.
     */
+    @Nonnull
     public static final String StringPropertyName = "string";
     /**
     * The name of the {@code reference} property.
     */
+    @Nonnull
     public static final String ReferencePropertyName = "reference";
     /**
     * The name of the {@code delete} property.
     */
+    @Nonnull
     public static final String DeletePropertyName = "delete";
-    private Lazy<CesiumStringValuePropertyAdaptor<StringCesiumWriter>> m_asString;
-    private Lazy<CesiumReferenceValuePropertyAdaptor<StringCesiumWriter>> m_asReference;
+    @Nonnull
+    private final Lazy<CesiumStringValuePropertyAdaptor<StringCesiumWriter>> m_asString;
+    @Nonnull
+    private final Lazy<CesiumReferenceValuePropertyAdaptor<StringCesiumWriter>> m_asReference;
 
     /**
     * Initializes a new instance.
@@ -136,10 +141,12 @@ public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter>
     * Returns a wrapper for this instance that implements {@link ICesiumStringValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumStringValuePropertyAdaptor<StringCesiumWriter> asString() {
         return m_asString.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumStringValuePropertyAdaptor<StringCesiumWriter>> createAsString() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumStringValuePropertyAdaptor<StringCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumStringValuePropertyAdaptor<StringCesiumWriter>>(this, "createString") {
@@ -149,6 +156,7 @@ public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter>
                 }, false);
     }
 
+    @Nonnull
     private final CesiumStringValuePropertyAdaptor<StringCesiumWriter> createString() {
         return CesiumValuePropertyAdaptors.<StringCesiumWriter> createString(this);
     }
@@ -157,10 +165,12 @@ public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter>
     * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumReferenceValuePropertyAdaptor<StringCesiumWriter> asReference() {
         return m_asReference.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<StringCesiumWriter>> createAsReference() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<StringCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<StringCesiumWriter>>(this, "createReference") {
@@ -170,6 +180,7 @@ public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter>
                 }, false);
     }
 
+    @Nonnull
     private final CesiumReferenceValuePropertyAdaptor<StringCesiumWriter> createReference() {
         return CesiumValuePropertyAdaptors.<StringCesiumWriter> createReference(this);
     }

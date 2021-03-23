@@ -20,17 +20,22 @@ public class LabelStyleCesiumWriter extends CesiumPropertyWriter<LabelStyleCesiu
     /**
     * The name of the {@code labelStyle} property.
     */
+    @Nonnull
     public static final String LabelStylePropertyName = "labelStyle";
     /**
     * The name of the {@code reference} property.
     */
+    @Nonnull
     public static final String ReferencePropertyName = "reference";
     /**
     * The name of the {@code delete} property.
     */
+    @Nonnull
     public static final String DeletePropertyName = "delete";
-    private Lazy<CesiumLabelStyleValuePropertyAdaptor<LabelStyleCesiumWriter>> m_asLabelStyle;
-    private Lazy<CesiumReferenceValuePropertyAdaptor<LabelStyleCesiumWriter>> m_asReference;
+    @Nonnull
+    private final Lazy<CesiumLabelStyleValuePropertyAdaptor<LabelStyleCesiumWriter>> m_asLabelStyle;
+    @Nonnull
+    private final Lazy<CesiumReferenceValuePropertyAdaptor<LabelStyleCesiumWriter>> m_asReference;
 
     /**
     * Initializes a new instance.
@@ -137,10 +142,12 @@ public class LabelStyleCesiumWriter extends CesiumPropertyWriter<LabelStyleCesiu
     * Returns a wrapper for this instance that implements {@link ICesiumLabelStyleValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumLabelStyleValuePropertyAdaptor<LabelStyleCesiumWriter> asLabelStyle() {
         return m_asLabelStyle.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumLabelStyleValuePropertyAdaptor<LabelStyleCesiumWriter>> createAsLabelStyle() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumLabelStyleValuePropertyAdaptor<LabelStyleCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumLabelStyleValuePropertyAdaptor<LabelStyleCesiumWriter>>(this, "createLabelStyle") {
@@ -150,6 +157,7 @@ public class LabelStyleCesiumWriter extends CesiumPropertyWriter<LabelStyleCesiu
                 }, false);
     }
 
+    @Nonnull
     private final CesiumLabelStyleValuePropertyAdaptor<LabelStyleCesiumWriter> createLabelStyle() {
         return CesiumValuePropertyAdaptors.<LabelStyleCesiumWriter> createLabelStyle(this);
     }
@@ -158,10 +166,12 @@ public class LabelStyleCesiumWriter extends CesiumPropertyWriter<LabelStyleCesiu
     * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumReferenceValuePropertyAdaptor<LabelStyleCesiumWriter> asReference() {
         return m_asReference.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<LabelStyleCesiumWriter>> createAsReference() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<LabelStyleCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<LabelStyleCesiumWriter>>(this, "createReference") {
@@ -171,6 +181,7 @@ public class LabelStyleCesiumWriter extends CesiumPropertyWriter<LabelStyleCesiu
                 }, false);
     }
 
+    @Nonnull
     private final CesiumReferenceValuePropertyAdaptor<LabelStyleCesiumWriter> createReference() {
         return CesiumValuePropertyAdaptors.<LabelStyleCesiumWriter> createReference(this);
     }

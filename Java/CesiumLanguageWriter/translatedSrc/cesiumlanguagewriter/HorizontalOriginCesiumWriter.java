@@ -20,17 +20,22 @@ public class HorizontalOriginCesiumWriter extends CesiumPropertyWriter<Horizonta
     /**
     * The name of the {@code horizontalOrigin} property.
     */
+    @Nonnull
     public static final String HorizontalOriginPropertyName = "horizontalOrigin";
     /**
     * The name of the {@code reference} property.
     */
+    @Nonnull
     public static final String ReferencePropertyName = "reference";
     /**
     * The name of the {@code delete} property.
     */
+    @Nonnull
     public static final String DeletePropertyName = "delete";
-    private Lazy<CesiumHorizontalOriginValuePropertyAdaptor<HorizontalOriginCesiumWriter>> m_asHorizontalOrigin;
-    private Lazy<CesiumReferenceValuePropertyAdaptor<HorizontalOriginCesiumWriter>> m_asReference;
+    @Nonnull
+    private final Lazy<CesiumHorizontalOriginValuePropertyAdaptor<HorizontalOriginCesiumWriter>> m_asHorizontalOrigin;
+    @Nonnull
+    private final Lazy<CesiumReferenceValuePropertyAdaptor<HorizontalOriginCesiumWriter>> m_asReference;
 
     /**
     * Initializes a new instance.
@@ -137,10 +142,12 @@ public class HorizontalOriginCesiumWriter extends CesiumPropertyWriter<Horizonta
     * Returns a wrapper for this instance that implements {@link ICesiumHorizontalOriginValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumHorizontalOriginValuePropertyAdaptor<HorizontalOriginCesiumWriter> asHorizontalOrigin() {
         return m_asHorizontalOrigin.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumHorizontalOriginValuePropertyAdaptor<HorizontalOriginCesiumWriter>> createAsHorizontalOrigin() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumHorizontalOriginValuePropertyAdaptor<HorizontalOriginCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumHorizontalOriginValuePropertyAdaptor<HorizontalOriginCesiumWriter>>(this, "createHorizontalOrigin") {
@@ -150,6 +157,7 @@ public class HorizontalOriginCesiumWriter extends CesiumPropertyWriter<Horizonta
                 }, false);
     }
 
+    @Nonnull
     private final CesiumHorizontalOriginValuePropertyAdaptor<HorizontalOriginCesiumWriter> createHorizontalOrigin() {
         return CesiumValuePropertyAdaptors.<HorizontalOriginCesiumWriter> createHorizontalOrigin(this);
     }
@@ -158,10 +166,12 @@ public class HorizontalOriginCesiumWriter extends CesiumPropertyWriter<Horizonta
     * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumReferenceValuePropertyAdaptor<HorizontalOriginCesiumWriter> asReference() {
         return m_asReference.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<HorizontalOriginCesiumWriter>> createAsReference() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<HorizontalOriginCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<HorizontalOriginCesiumWriter>>(this, "createReference") {
@@ -171,6 +181,7 @@ public class HorizontalOriginCesiumWriter extends CesiumPropertyWriter<Horizonta
                 }, false);
     }
 
+    @Nonnull
     private final CesiumReferenceValuePropertyAdaptor<HorizontalOriginCesiumWriter> createReference() {
         return CesiumValuePropertyAdaptors.<HorizontalOriginCesiumWriter> createReference(this);
     }

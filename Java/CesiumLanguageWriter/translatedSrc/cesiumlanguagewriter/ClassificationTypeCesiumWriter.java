@@ -20,17 +20,22 @@ public class ClassificationTypeCesiumWriter extends CesiumPropertyWriter<Classif
     /**
     * The name of the {@code classificationType} property.
     */
+    @Nonnull
     public static final String ClassificationTypePropertyName = "classificationType";
     /**
     * The name of the {@code reference} property.
     */
+    @Nonnull
     public static final String ReferencePropertyName = "reference";
     /**
     * The name of the {@code delete} property.
     */
+    @Nonnull
     public static final String DeletePropertyName = "delete";
-    private Lazy<CesiumClassificationTypeValuePropertyAdaptor<ClassificationTypeCesiumWriter>> m_asClassificationType;
-    private Lazy<CesiumReferenceValuePropertyAdaptor<ClassificationTypeCesiumWriter>> m_asReference;
+    @Nonnull
+    private final Lazy<CesiumClassificationTypeValuePropertyAdaptor<ClassificationTypeCesiumWriter>> m_asClassificationType;
+    @Nonnull
+    private final Lazy<CesiumReferenceValuePropertyAdaptor<ClassificationTypeCesiumWriter>> m_asReference;
 
     /**
     * Initializes a new instance.
@@ -137,10 +142,12 @@ public class ClassificationTypeCesiumWriter extends CesiumPropertyWriter<Classif
     * Returns a wrapper for this instance that implements {@link ICesiumClassificationTypeValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumClassificationTypeValuePropertyAdaptor<ClassificationTypeCesiumWriter> asClassificationType() {
         return m_asClassificationType.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumClassificationTypeValuePropertyAdaptor<ClassificationTypeCesiumWriter>> createAsClassificationType() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumClassificationTypeValuePropertyAdaptor<ClassificationTypeCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumClassificationTypeValuePropertyAdaptor<ClassificationTypeCesiumWriter>>(this, "createClassificationType") {
@@ -150,6 +157,7 @@ public class ClassificationTypeCesiumWriter extends CesiumPropertyWriter<Classif
                 }, false);
     }
 
+    @Nonnull
     private final CesiumClassificationTypeValuePropertyAdaptor<ClassificationTypeCesiumWriter> createClassificationType() {
         return CesiumValuePropertyAdaptors.<ClassificationTypeCesiumWriter> createClassificationType(this);
     }
@@ -158,10 +166,12 @@ public class ClassificationTypeCesiumWriter extends CesiumPropertyWriter<Classif
     * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumReferenceValuePropertyAdaptor<ClassificationTypeCesiumWriter> asReference() {
         return m_asReference.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<ClassificationTypeCesiumWriter>> createAsReference() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<ClassificationTypeCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<ClassificationTypeCesiumWriter>>(this, "createReference") {
@@ -171,6 +181,7 @@ public class ClassificationTypeCesiumWriter extends CesiumPropertyWriter<Classif
                 }, false);
     }
 
+    @Nonnull
     private final CesiumReferenceValuePropertyAdaptor<ClassificationTypeCesiumWriter> createReference() {
         return CesiumValuePropertyAdaptors.<ClassificationTypeCesiumWriter> createReference(this);
     }

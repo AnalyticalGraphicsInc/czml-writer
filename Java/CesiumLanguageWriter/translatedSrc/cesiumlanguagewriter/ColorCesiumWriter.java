@@ -22,22 +22,29 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
     /**
     * The name of the {@code rgba} property.
     */
+    @Nonnull
     public static final String RgbaPropertyName = "rgba";
     /**
     * The name of the {@code rgbaf} property.
     */
+    @Nonnull
     public static final String RgbafPropertyName = "rgbaf";
     /**
     * The name of the {@code reference} property.
     */
+    @Nonnull
     public static final String ReferencePropertyName = "reference";
     /**
     * The name of the {@code delete} property.
     */
+    @Nonnull
     public static final String DeletePropertyName = "delete";
-    private Lazy<CesiumRgbaValuePropertyAdaptor<ColorCesiumWriter>> m_asRgba;
-    private Lazy<CesiumRgbafValuePropertyAdaptor<ColorCesiumWriter>> m_asRgbaf;
-    private Lazy<CesiumReferenceValuePropertyAdaptor<ColorCesiumWriter>> m_asReference;
+    @Nonnull
+    private final Lazy<CesiumRgbaValuePropertyAdaptor<ColorCesiumWriter>> m_asRgba;
+    @Nonnull
+    private final Lazy<CesiumRgbafValuePropertyAdaptor<ColorCesiumWriter>> m_asRgbaf;
+    @Nonnull
+    private final Lazy<CesiumReferenceValuePropertyAdaptor<ColorCesiumWriter>> m_asReference;
 
     /**
     * Initializes a new instance.
@@ -225,10 +232,12 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
     * Returns a wrapper for this instance that implements {@link ICesiumRgbaValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumRgbaValuePropertyAdaptor<ColorCesiumWriter> asRgba() {
         return m_asRgba.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumRgbaValuePropertyAdaptor<ColorCesiumWriter>> createAsRgba() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumRgbaValuePropertyAdaptor<ColorCesiumWriter>>(new Func1<cesiumlanguagewriter.advanced.CesiumRgbaValuePropertyAdaptor<ColorCesiumWriter>>(
                 this, "createRgba") {
@@ -238,6 +247,7 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
         }, false);
     }
 
+    @Nonnull
     private final CesiumRgbaValuePropertyAdaptor<ColorCesiumWriter> createRgba() {
         return CesiumValuePropertyAdaptors.<ColorCesiumWriter> createRgba(this);
     }
@@ -246,10 +256,12 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
     * Returns a wrapper for this instance that implements {@link ICesiumRgbafValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumRgbafValuePropertyAdaptor<ColorCesiumWriter> asRgbaf() {
         return m_asRgbaf.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumRgbafValuePropertyAdaptor<ColorCesiumWriter>> createAsRgbaf() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumRgbafValuePropertyAdaptor<ColorCesiumWriter>>(new Func1<cesiumlanguagewriter.advanced.CesiumRgbafValuePropertyAdaptor<ColorCesiumWriter>>(
                 this, "createRgbaf") {
@@ -259,6 +271,7 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
         }, false);
     }
 
+    @Nonnull
     private final CesiumRgbafValuePropertyAdaptor<ColorCesiumWriter> createRgbaf() {
         return CesiumValuePropertyAdaptors.<ColorCesiumWriter> createRgbaf(this);
     }
@@ -267,10 +280,12 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
     * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumReferenceValuePropertyAdaptor<ColorCesiumWriter> asReference() {
         return m_asReference.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<ColorCesiumWriter>> createAsReference() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<ColorCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<ColorCesiumWriter>>(this, "createReference") {
@@ -280,6 +295,7 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
                 }, false);
     }
 
+    @Nonnull
     private final CesiumReferenceValuePropertyAdaptor<ColorCesiumWriter> createReference() {
         return CesiumValuePropertyAdaptors.<ColorCesiumWriter> createReference(this);
     }

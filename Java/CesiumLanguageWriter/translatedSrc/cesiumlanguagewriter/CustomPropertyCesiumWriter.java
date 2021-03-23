@@ -29,137 +29,190 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     /**
     * The name of the {@code boolean} property.
     */
+    @Nonnull
     public static final String BooleanPropertyName = "boolean";
     /**
     * The name of the {@code boundingRectangle} property.
     */
+    @Nonnull
     public static final String BoundingRectanglePropertyName = "boundingRectangle";
     /**
     * The name of the {@code cartesian} property.
     */
+    @Nonnull
     public static final String CartesianPropertyName = "cartesian";
     /**
     * The name of the {@code cartographicRadians} property.
     */
+    @Nonnull
     public static final String CartographicRadiansPropertyName = "cartographicRadians";
     /**
     * The name of the {@code cartographicDegrees} property.
     */
+    @Nonnull
     public static final String CartographicDegreesPropertyName = "cartographicDegrees";
     /**
     * The name of the {@code cartesian2} property.
     */
+    @Nonnull
     public static final String Cartesian2PropertyName = "cartesian2";
     /**
     * The name of the {@code unitCartesian} property.
     */
+    @Nonnull
     public static final String UnitCartesianPropertyName = "unitCartesian";
     /**
     * The name of the {@code spherical} property.
     */
+    @Nonnull
     public static final String SphericalPropertyName = "spherical";
     /**
     * The name of the {@code unitSpherical} property.
     */
+    @Nonnull
     public static final String UnitSphericalPropertyName = "unitSpherical";
     /**
     * The name of the {@code rgba} property.
     */
+    @Nonnull
     public static final String RgbaPropertyName = "rgba";
     /**
     * The name of the {@code rgbaf} property.
     */
+    @Nonnull
     public static final String RgbafPropertyName = "rgbaf";
     /**
     * The name of the {@code colorBlendMode} property.
     */
+    @Nonnull
     public static final String ColorBlendModePropertyName = "colorBlendMode";
     /**
     * The name of the {@code cornerType} property.
     */
+    @Nonnull
     public static final String CornerTypePropertyName = "cornerType";
     /**
     * The name of the {@code heightReference} property.
     */
+    @Nonnull
     public static final String HeightReferencePropertyName = "heightReference";
     /**
     * The name of the {@code horizontalOrigin} property.
     */
+    @Nonnull
     public static final String HorizontalOriginPropertyName = "horizontalOrigin";
     /**
     * The name of the {@code labelStyle} property.
     */
+    @Nonnull
     public static final String LabelStylePropertyName = "labelStyle";
     /**
     * The name of the {@code number} property.
     */
+    @Nonnull
     public static final String NumberPropertyName = "number";
     /**
     * The name of the {@code nearFarScalar} property.
     */
+    @Nonnull
     public static final String NearFarScalarPropertyName = "nearFarScalar";
     /**
     * The name of the {@code unitQuaternion} property.
     */
+    @Nonnull
     public static final String UnitQuaternionPropertyName = "unitQuaternion";
     /**
     * The name of the {@code shadowMode} property.
     */
+    @Nonnull
     public static final String ShadowModePropertyName = "shadowMode";
     /**
     * The name of the {@code string} property.
     */
+    @Nonnull
     public static final String StringPropertyName = "string";
     /**
     * The name of the {@code stripeOrientation} property.
     */
+    @Nonnull
     public static final String StripeOrientationPropertyName = "stripeOrientation";
     /**
     * The name of the {@code wsen} property.
     */
+    @Nonnull
     public static final String WsenPropertyName = "wsen";
     /**
     * The name of the {@code wsenDegrees} property.
     */
+    @Nonnull
     public static final String WsenDegreesPropertyName = "wsenDegrees";
     /**
     * The name of the {@code uri} property.
     */
+    @Nonnull
     public static final String UriPropertyName = "uri";
     /**
     * The name of the {@code verticalOrigin} property.
     */
+    @Nonnull
     public static final String VerticalOriginPropertyName = "verticalOrigin";
     /**
     * The name of the {@code delete} property.
     */
+    @Nonnull
     public static final String DeletePropertyName = "delete";
-    private Lazy<CesiumBooleanValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asBoolean;
-    private Lazy<CesiumBoundingRectangleValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asBoundingRectangle;
-    private Lazy<CesiumCartesian3ValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asCartesian;
-    private Lazy<CesiumCartographicRadiansValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asCartographicRadians;
-    private Lazy<CesiumCartographicDegreesValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asCartographicDegrees;
-    private Lazy<CesiumCartesian2ValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asCartesian2;
-    private Lazy<CesiumUnitCartesian3ValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asUnitCartesian;
-    private Lazy<CesiumSphericalValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asSpherical;
-    private Lazy<CesiumUnitSphericalValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asUnitSpherical;
-    private Lazy<CesiumRgbaValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asRgba;
-    private Lazy<CesiumRgbafValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asRgbaf;
-    private Lazy<CesiumColorBlendModeValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asColorBlendMode;
-    private Lazy<CesiumCornerTypeValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asCornerType;
-    private Lazy<CesiumHeightReferenceValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asHeightReference;
-    private Lazy<CesiumHorizontalOriginValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asHorizontalOrigin;
-    private Lazy<CesiumLabelStyleValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asLabelStyle;
-    private Lazy<CesiumDoubleValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asNumber;
-    private Lazy<CesiumNearFarScalarValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asNearFarScalar;
-    private Lazy<CesiumUnitQuaternionValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asUnitQuaternion;
-    private Lazy<CesiumShadowModeValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asShadowMode;
-    private Lazy<CesiumStringValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asString;
-    private Lazy<CesiumStripeOrientationValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asStripeOrientation;
-    private Lazy<CesiumCartographicRectangleRadiansValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asWsen;
-    private Lazy<CesiumCartographicRectangleDegreesValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asWsenDegrees;
-    private Lazy<CesiumUriValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asUri;
-    private Lazy<CesiumVerticalOriginValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asVerticalOrigin;
+    @Nonnull
+    private final Lazy<CesiumBooleanValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asBoolean;
+    @Nonnull
+    private final Lazy<CesiumBoundingRectangleValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asBoundingRectangle;
+    @Nonnull
+    private final Lazy<CesiumCartesian3ValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asCartesian;
+    @Nonnull
+    private final Lazy<CesiumCartographicRadiansValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asCartographicRadians;
+    @Nonnull
+    private final Lazy<CesiumCartographicDegreesValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asCartographicDegrees;
+    @Nonnull
+    private final Lazy<CesiumCartesian2ValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asCartesian2;
+    @Nonnull
+    private final Lazy<CesiumUnitCartesian3ValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asUnitCartesian;
+    @Nonnull
+    private final Lazy<CesiumSphericalValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asSpherical;
+    @Nonnull
+    private final Lazy<CesiumUnitSphericalValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asUnitSpherical;
+    @Nonnull
+    private final Lazy<CesiumRgbaValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asRgba;
+    @Nonnull
+    private final Lazy<CesiumRgbafValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asRgbaf;
+    @Nonnull
+    private final Lazy<CesiumColorBlendModeValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asColorBlendMode;
+    @Nonnull
+    private final Lazy<CesiumCornerTypeValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asCornerType;
+    @Nonnull
+    private final Lazy<CesiumHeightReferenceValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asHeightReference;
+    @Nonnull
+    private final Lazy<CesiumHorizontalOriginValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asHorizontalOrigin;
+    @Nonnull
+    private final Lazy<CesiumLabelStyleValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asLabelStyle;
+    @Nonnull
+    private final Lazy<CesiumDoubleValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asNumber;
+    @Nonnull
+    private final Lazy<CesiumNearFarScalarValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asNearFarScalar;
+    @Nonnull
+    private final Lazy<CesiumUnitQuaternionValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asUnitQuaternion;
+    @Nonnull
+    private final Lazy<CesiumShadowModeValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asShadowMode;
+    @Nonnull
+    private final Lazy<CesiumStringValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asString;
+    @Nonnull
+    private final Lazy<CesiumStripeOrientationValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asStripeOrientation;
+    @Nonnull
+    private final Lazy<CesiumCartographicRectangleRadiansValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asWsen;
+    @Nonnull
+    private final Lazy<CesiumCartographicRectangleDegreesValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asWsenDegrees;
+    @Nonnull
+    private final Lazy<CesiumUriValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asUri;
+    @Nonnull
+    private final Lazy<CesiumVerticalOriginValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asVerticalOrigin;
 
     /**
     * Initializes a new instance.
@@ -1002,10 +1055,12 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     * Returns a wrapper for this instance that implements {@link ICesiumBooleanValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumBooleanValuePropertyAdaptor<CustomPropertyCesiumWriter> asBoolean() {
         return m_asBoolean.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumBooleanValuePropertyAdaptor<CustomPropertyCesiumWriter>> createAsBoolean() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumBooleanValuePropertyAdaptor<CustomPropertyCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumBooleanValuePropertyAdaptor<CustomPropertyCesiumWriter>>(this, "createBoolean") {
@@ -1015,6 +1070,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
                 }, false);
     }
 
+    @Nonnull
     private final CesiumBooleanValuePropertyAdaptor<CustomPropertyCesiumWriter> createBoolean() {
         return CesiumValuePropertyAdaptors.<CustomPropertyCesiumWriter> createBoolean(this);
     }
@@ -1023,10 +1079,12 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     * Returns a wrapper for this instance that implements {@link ICesiumBoundingRectangleValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumBoundingRectangleValuePropertyAdaptor<CustomPropertyCesiumWriter> asBoundingRectangle() {
         return m_asBoundingRectangle.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumBoundingRectangleValuePropertyAdaptor<CustomPropertyCesiumWriter>> createAsBoundingRectangle() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumBoundingRectangleValuePropertyAdaptor<CustomPropertyCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumBoundingRectangleValuePropertyAdaptor<CustomPropertyCesiumWriter>>(this, "createBoundingRectangle") {
@@ -1036,6 +1094,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
                 }, false);
     }
 
+    @Nonnull
     private final CesiumBoundingRectangleValuePropertyAdaptor<CustomPropertyCesiumWriter> createBoundingRectangle() {
         return CesiumValuePropertyAdaptors.<CustomPropertyCesiumWriter> createBoundingRectangle(this);
     }
@@ -1044,10 +1103,12 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     * Returns a wrapper for this instance that implements {@link ICesiumCartesian3ValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumCartesian3ValuePropertyAdaptor<CustomPropertyCesiumWriter> asCartesian() {
         return m_asCartesian.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumCartesian3ValuePropertyAdaptor<CustomPropertyCesiumWriter>> createAsCartesian() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumCartesian3ValuePropertyAdaptor<CustomPropertyCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumCartesian3ValuePropertyAdaptor<CustomPropertyCesiumWriter>>(this, "createCartesian3") {
@@ -1057,6 +1118,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
                 }, false);
     }
 
+    @Nonnull
     private final CesiumCartesian3ValuePropertyAdaptor<CustomPropertyCesiumWriter> createCartesian3() {
         return CesiumValuePropertyAdaptors.<CustomPropertyCesiumWriter> createCartesian3(this);
     }
@@ -1065,10 +1127,12 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     * Returns a wrapper for this instance that implements {@link ICesiumCartographicRadiansValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumCartographicRadiansValuePropertyAdaptor<CustomPropertyCesiumWriter> asCartographicRadians() {
         return m_asCartographicRadians.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumCartographicRadiansValuePropertyAdaptor<CustomPropertyCesiumWriter>> createAsCartographicRadians() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumCartographicRadiansValuePropertyAdaptor<CustomPropertyCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumCartographicRadiansValuePropertyAdaptor<CustomPropertyCesiumWriter>>(this, "createCartographicRadians") {
@@ -1078,6 +1142,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
                 }, false);
     }
 
+    @Nonnull
     private final CesiumCartographicRadiansValuePropertyAdaptor<CustomPropertyCesiumWriter> createCartographicRadians() {
         return CesiumValuePropertyAdaptors.<CustomPropertyCesiumWriter> createCartographicRadians(this);
     }
@@ -1086,10 +1151,12 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     * Returns a wrapper for this instance that implements {@link ICesiumCartographicDegreesValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumCartographicDegreesValuePropertyAdaptor<CustomPropertyCesiumWriter> asCartographicDegrees() {
         return m_asCartographicDegrees.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumCartographicDegreesValuePropertyAdaptor<CustomPropertyCesiumWriter>> createAsCartographicDegrees() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumCartographicDegreesValuePropertyAdaptor<CustomPropertyCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumCartographicDegreesValuePropertyAdaptor<CustomPropertyCesiumWriter>>(this, "createCartographicDegrees") {
@@ -1099,6 +1166,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
                 }, false);
     }
 
+    @Nonnull
     private final CesiumCartographicDegreesValuePropertyAdaptor<CustomPropertyCesiumWriter> createCartographicDegrees() {
         return CesiumValuePropertyAdaptors.<CustomPropertyCesiumWriter> createCartographicDegrees(this);
     }
@@ -1107,10 +1175,12 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     * Returns a wrapper for this instance that implements {@link ICesiumCartesian2ValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumCartesian2ValuePropertyAdaptor<CustomPropertyCesiumWriter> asCartesian2() {
         return m_asCartesian2.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumCartesian2ValuePropertyAdaptor<CustomPropertyCesiumWriter>> createAsCartesian2() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumCartesian2ValuePropertyAdaptor<CustomPropertyCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumCartesian2ValuePropertyAdaptor<CustomPropertyCesiumWriter>>(this, "createCartesian2") {
@@ -1120,6 +1190,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
                 }, false);
     }
 
+    @Nonnull
     private final CesiumCartesian2ValuePropertyAdaptor<CustomPropertyCesiumWriter> createCartesian2() {
         return CesiumValuePropertyAdaptors.<CustomPropertyCesiumWriter> createCartesian2(this);
     }
@@ -1128,10 +1199,12 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     * Returns a wrapper for this instance that implements {@link ICesiumUnitCartesian3ValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumUnitCartesian3ValuePropertyAdaptor<CustomPropertyCesiumWriter> asUnitCartesian() {
         return m_asUnitCartesian.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumUnitCartesian3ValuePropertyAdaptor<CustomPropertyCesiumWriter>> createAsUnitCartesian() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumUnitCartesian3ValuePropertyAdaptor<CustomPropertyCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumUnitCartesian3ValuePropertyAdaptor<CustomPropertyCesiumWriter>>(this, "createUnitCartesian3") {
@@ -1141,6 +1214,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
                 }, false);
     }
 
+    @Nonnull
     private final CesiumUnitCartesian3ValuePropertyAdaptor<CustomPropertyCesiumWriter> createUnitCartesian3() {
         return CesiumValuePropertyAdaptors.<CustomPropertyCesiumWriter> createUnitCartesian3(this);
     }
@@ -1149,10 +1223,12 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     * Returns a wrapper for this instance that implements {@link ICesiumSphericalValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumSphericalValuePropertyAdaptor<CustomPropertyCesiumWriter> asSpherical() {
         return m_asSpherical.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumSphericalValuePropertyAdaptor<CustomPropertyCesiumWriter>> createAsSpherical() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumSphericalValuePropertyAdaptor<CustomPropertyCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumSphericalValuePropertyAdaptor<CustomPropertyCesiumWriter>>(this, "createSpherical") {
@@ -1162,6 +1238,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
                 }, false);
     }
 
+    @Nonnull
     private final CesiumSphericalValuePropertyAdaptor<CustomPropertyCesiumWriter> createSpherical() {
         return CesiumValuePropertyAdaptors.<CustomPropertyCesiumWriter> createSpherical(this);
     }
@@ -1170,10 +1247,12 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     * Returns a wrapper for this instance that implements {@link ICesiumUnitSphericalValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumUnitSphericalValuePropertyAdaptor<CustomPropertyCesiumWriter> asUnitSpherical() {
         return m_asUnitSpherical.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumUnitSphericalValuePropertyAdaptor<CustomPropertyCesiumWriter>> createAsUnitSpherical() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumUnitSphericalValuePropertyAdaptor<CustomPropertyCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumUnitSphericalValuePropertyAdaptor<CustomPropertyCesiumWriter>>(this, "createUnitSpherical") {
@@ -1183,6 +1262,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
                 }, false);
     }
 
+    @Nonnull
     private final CesiumUnitSphericalValuePropertyAdaptor<CustomPropertyCesiumWriter> createUnitSpherical() {
         return CesiumValuePropertyAdaptors.<CustomPropertyCesiumWriter> createUnitSpherical(this);
     }
@@ -1191,10 +1271,12 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     * Returns a wrapper for this instance that implements {@link ICesiumRgbaValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumRgbaValuePropertyAdaptor<CustomPropertyCesiumWriter> asRgba() {
         return m_asRgba.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumRgbaValuePropertyAdaptor<CustomPropertyCesiumWriter>> createAsRgba() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumRgbaValuePropertyAdaptor<CustomPropertyCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumRgbaValuePropertyAdaptor<CustomPropertyCesiumWriter>>(this, "createRgba") {
@@ -1204,6 +1286,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
                 }, false);
     }
 
+    @Nonnull
     private final CesiumRgbaValuePropertyAdaptor<CustomPropertyCesiumWriter> createRgba() {
         return CesiumValuePropertyAdaptors.<CustomPropertyCesiumWriter> createRgba(this);
     }
@@ -1212,10 +1295,12 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     * Returns a wrapper for this instance that implements {@link ICesiumRgbafValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumRgbafValuePropertyAdaptor<CustomPropertyCesiumWriter> asRgbaf() {
         return m_asRgbaf.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumRgbafValuePropertyAdaptor<CustomPropertyCesiumWriter>> createAsRgbaf() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumRgbafValuePropertyAdaptor<CustomPropertyCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumRgbafValuePropertyAdaptor<CustomPropertyCesiumWriter>>(this, "createRgbaf") {
@@ -1225,6 +1310,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
                 }, false);
     }
 
+    @Nonnull
     private final CesiumRgbafValuePropertyAdaptor<CustomPropertyCesiumWriter> createRgbaf() {
         return CesiumValuePropertyAdaptors.<CustomPropertyCesiumWriter> createRgbaf(this);
     }
@@ -1233,10 +1319,12 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     * Returns a wrapper for this instance that implements {@link ICesiumColorBlendModeValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumColorBlendModeValuePropertyAdaptor<CustomPropertyCesiumWriter> asColorBlendMode() {
         return m_asColorBlendMode.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumColorBlendModeValuePropertyAdaptor<CustomPropertyCesiumWriter>> createAsColorBlendMode() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumColorBlendModeValuePropertyAdaptor<CustomPropertyCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumColorBlendModeValuePropertyAdaptor<CustomPropertyCesiumWriter>>(this, "createColorBlendMode") {
@@ -1246,6 +1334,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
                 }, false);
     }
 
+    @Nonnull
     private final CesiumColorBlendModeValuePropertyAdaptor<CustomPropertyCesiumWriter> createColorBlendMode() {
         return CesiumValuePropertyAdaptors.<CustomPropertyCesiumWriter> createColorBlendMode(this);
     }
@@ -1254,10 +1343,12 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     * Returns a wrapper for this instance that implements {@link ICesiumCornerTypeValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumCornerTypeValuePropertyAdaptor<CustomPropertyCesiumWriter> asCornerType() {
         return m_asCornerType.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumCornerTypeValuePropertyAdaptor<CustomPropertyCesiumWriter>> createAsCornerType() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumCornerTypeValuePropertyAdaptor<CustomPropertyCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumCornerTypeValuePropertyAdaptor<CustomPropertyCesiumWriter>>(this, "createCornerType") {
@@ -1267,6 +1358,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
                 }, false);
     }
 
+    @Nonnull
     private final CesiumCornerTypeValuePropertyAdaptor<CustomPropertyCesiumWriter> createCornerType() {
         return CesiumValuePropertyAdaptors.<CustomPropertyCesiumWriter> createCornerType(this);
     }
@@ -1275,10 +1367,12 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     * Returns a wrapper for this instance that implements {@link ICesiumHeightReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumHeightReferenceValuePropertyAdaptor<CustomPropertyCesiumWriter> asHeightReference() {
         return m_asHeightReference.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumHeightReferenceValuePropertyAdaptor<CustomPropertyCesiumWriter>> createAsHeightReference() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumHeightReferenceValuePropertyAdaptor<CustomPropertyCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumHeightReferenceValuePropertyAdaptor<CustomPropertyCesiumWriter>>(this, "createHeightReference") {
@@ -1288,6 +1382,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
                 }, false);
     }
 
+    @Nonnull
     private final CesiumHeightReferenceValuePropertyAdaptor<CustomPropertyCesiumWriter> createHeightReference() {
         return CesiumValuePropertyAdaptors.<CustomPropertyCesiumWriter> createHeightReference(this);
     }
@@ -1296,10 +1391,12 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     * Returns a wrapper for this instance that implements {@link ICesiumHorizontalOriginValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumHorizontalOriginValuePropertyAdaptor<CustomPropertyCesiumWriter> asHorizontalOrigin() {
         return m_asHorizontalOrigin.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumHorizontalOriginValuePropertyAdaptor<CustomPropertyCesiumWriter>> createAsHorizontalOrigin() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumHorizontalOriginValuePropertyAdaptor<CustomPropertyCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumHorizontalOriginValuePropertyAdaptor<CustomPropertyCesiumWriter>>(this, "createHorizontalOrigin") {
@@ -1309,6 +1406,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
                 }, false);
     }
 
+    @Nonnull
     private final CesiumHorizontalOriginValuePropertyAdaptor<CustomPropertyCesiumWriter> createHorizontalOrigin() {
         return CesiumValuePropertyAdaptors.<CustomPropertyCesiumWriter> createHorizontalOrigin(this);
     }
@@ -1317,10 +1415,12 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     * Returns a wrapper for this instance that implements {@link ICesiumLabelStyleValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumLabelStyleValuePropertyAdaptor<CustomPropertyCesiumWriter> asLabelStyle() {
         return m_asLabelStyle.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumLabelStyleValuePropertyAdaptor<CustomPropertyCesiumWriter>> createAsLabelStyle() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumLabelStyleValuePropertyAdaptor<CustomPropertyCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumLabelStyleValuePropertyAdaptor<CustomPropertyCesiumWriter>>(this, "createLabelStyle") {
@@ -1330,6 +1430,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
                 }, false);
     }
 
+    @Nonnull
     private final CesiumLabelStyleValuePropertyAdaptor<CustomPropertyCesiumWriter> createLabelStyle() {
         return CesiumValuePropertyAdaptors.<CustomPropertyCesiumWriter> createLabelStyle(this);
     }
@@ -1338,10 +1439,12 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     * Returns a wrapper for this instance that implements {@link ICesiumDoubleValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumDoubleValuePropertyAdaptor<CustomPropertyCesiumWriter> asNumber() {
         return m_asNumber.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumDoubleValuePropertyAdaptor<CustomPropertyCesiumWriter>> createAsNumber() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumDoubleValuePropertyAdaptor<CustomPropertyCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumDoubleValuePropertyAdaptor<CustomPropertyCesiumWriter>>(this, "createDouble") {
@@ -1351,6 +1454,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
                 }, false);
     }
 
+    @Nonnull
     private final CesiumDoubleValuePropertyAdaptor<CustomPropertyCesiumWriter> createDouble() {
         return CesiumValuePropertyAdaptors.<CustomPropertyCesiumWriter> createDouble(this);
     }
@@ -1359,10 +1463,12 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     * Returns a wrapper for this instance that implements {@link ICesiumNearFarScalarValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumNearFarScalarValuePropertyAdaptor<CustomPropertyCesiumWriter> asNearFarScalar() {
         return m_asNearFarScalar.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumNearFarScalarValuePropertyAdaptor<CustomPropertyCesiumWriter>> createAsNearFarScalar() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumNearFarScalarValuePropertyAdaptor<CustomPropertyCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumNearFarScalarValuePropertyAdaptor<CustomPropertyCesiumWriter>>(this, "createNearFarScalar") {
@@ -1372,6 +1478,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
                 }, false);
     }
 
+    @Nonnull
     private final CesiumNearFarScalarValuePropertyAdaptor<CustomPropertyCesiumWriter> createNearFarScalar() {
         return CesiumValuePropertyAdaptors.<CustomPropertyCesiumWriter> createNearFarScalar(this);
     }
@@ -1380,10 +1487,12 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     * Returns a wrapper for this instance that implements {@link ICesiumUnitQuaternionValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumUnitQuaternionValuePropertyAdaptor<CustomPropertyCesiumWriter> asUnitQuaternion() {
         return m_asUnitQuaternion.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumUnitQuaternionValuePropertyAdaptor<CustomPropertyCesiumWriter>> createAsUnitQuaternion() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumUnitQuaternionValuePropertyAdaptor<CustomPropertyCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumUnitQuaternionValuePropertyAdaptor<CustomPropertyCesiumWriter>>(this, "createUnitQuaternion") {
@@ -1393,6 +1502,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
                 }, false);
     }
 
+    @Nonnull
     private final CesiumUnitQuaternionValuePropertyAdaptor<CustomPropertyCesiumWriter> createUnitQuaternion() {
         return CesiumValuePropertyAdaptors.<CustomPropertyCesiumWriter> createUnitQuaternion(this);
     }
@@ -1401,10 +1511,12 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     * Returns a wrapper for this instance that implements {@link ICesiumShadowModeValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumShadowModeValuePropertyAdaptor<CustomPropertyCesiumWriter> asShadowMode() {
         return m_asShadowMode.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumShadowModeValuePropertyAdaptor<CustomPropertyCesiumWriter>> createAsShadowMode() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumShadowModeValuePropertyAdaptor<CustomPropertyCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumShadowModeValuePropertyAdaptor<CustomPropertyCesiumWriter>>(this, "createShadowMode") {
@@ -1414,6 +1526,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
                 }, false);
     }
 
+    @Nonnull
     private final CesiumShadowModeValuePropertyAdaptor<CustomPropertyCesiumWriter> createShadowMode() {
         return CesiumValuePropertyAdaptors.<CustomPropertyCesiumWriter> createShadowMode(this);
     }
@@ -1422,10 +1535,12 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     * Returns a wrapper for this instance that implements {@link ICesiumStringValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumStringValuePropertyAdaptor<CustomPropertyCesiumWriter> asString() {
         return m_asString.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumStringValuePropertyAdaptor<CustomPropertyCesiumWriter>> createAsString() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumStringValuePropertyAdaptor<CustomPropertyCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumStringValuePropertyAdaptor<CustomPropertyCesiumWriter>>(this, "createString") {
@@ -1435,6 +1550,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
                 }, false);
     }
 
+    @Nonnull
     private final CesiumStringValuePropertyAdaptor<CustomPropertyCesiumWriter> createString() {
         return CesiumValuePropertyAdaptors.<CustomPropertyCesiumWriter> createString(this);
     }
@@ -1443,10 +1559,12 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     * Returns a wrapper for this instance that implements {@link ICesiumStripeOrientationValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumStripeOrientationValuePropertyAdaptor<CustomPropertyCesiumWriter> asStripeOrientation() {
         return m_asStripeOrientation.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumStripeOrientationValuePropertyAdaptor<CustomPropertyCesiumWriter>> createAsStripeOrientation() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumStripeOrientationValuePropertyAdaptor<CustomPropertyCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumStripeOrientationValuePropertyAdaptor<CustomPropertyCesiumWriter>>(this, "createStripeOrientation") {
@@ -1456,6 +1574,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
                 }, false);
     }
 
+    @Nonnull
     private final CesiumStripeOrientationValuePropertyAdaptor<CustomPropertyCesiumWriter> createStripeOrientation() {
         return CesiumValuePropertyAdaptors.<CustomPropertyCesiumWriter> createStripeOrientation(this);
     }
@@ -1464,10 +1583,12 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     * Returns a wrapper for this instance that implements {@link ICesiumCartographicRectangleRadiansValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumCartographicRectangleRadiansValuePropertyAdaptor<CustomPropertyCesiumWriter> asWsen() {
         return m_asWsen.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumCartographicRectangleRadiansValuePropertyAdaptor<CustomPropertyCesiumWriter>> createAsWsen() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumCartographicRectangleRadiansValuePropertyAdaptor<CustomPropertyCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumCartographicRectangleRadiansValuePropertyAdaptor<CustomPropertyCesiumWriter>>(this, "createCartographicRectangleRadians") {
@@ -1477,6 +1598,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
                 }, false);
     }
 
+    @Nonnull
     private final CesiumCartographicRectangleRadiansValuePropertyAdaptor<CustomPropertyCesiumWriter> createCartographicRectangleRadians() {
         return CesiumValuePropertyAdaptors.<CustomPropertyCesiumWriter> createCartographicRectangleRadians(this);
     }
@@ -1485,10 +1607,12 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     * Returns a wrapper for this instance that implements {@link ICesiumCartographicRectangleDegreesValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumCartographicRectangleDegreesValuePropertyAdaptor<CustomPropertyCesiumWriter> asWsenDegrees() {
         return m_asWsenDegrees.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumCartographicRectangleDegreesValuePropertyAdaptor<CustomPropertyCesiumWriter>> createAsWsenDegrees() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumCartographicRectangleDegreesValuePropertyAdaptor<CustomPropertyCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumCartographicRectangleDegreesValuePropertyAdaptor<CustomPropertyCesiumWriter>>(this, "createCartographicRectangleDegrees") {
@@ -1498,6 +1622,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
                 }, false);
     }
 
+    @Nonnull
     private final CesiumCartographicRectangleDegreesValuePropertyAdaptor<CustomPropertyCesiumWriter> createCartographicRectangleDegrees() {
         return CesiumValuePropertyAdaptors.<CustomPropertyCesiumWriter> createCartographicRectangleDegrees(this);
     }
@@ -1506,10 +1631,12 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     * Returns a wrapper for this instance that implements {@link ICesiumUriValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumUriValuePropertyAdaptor<CustomPropertyCesiumWriter> asUri() {
         return m_asUri.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumUriValuePropertyAdaptor<CustomPropertyCesiumWriter>> createAsUri() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumUriValuePropertyAdaptor<CustomPropertyCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumUriValuePropertyAdaptor<CustomPropertyCesiumWriter>>(this, "createUri") {
@@ -1519,6 +1646,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
                 }, false);
     }
 
+    @Nonnull
     private final CesiumUriValuePropertyAdaptor<CustomPropertyCesiumWriter> createUri() {
         return CesiumValuePropertyAdaptors.<CustomPropertyCesiumWriter> createUri(this);
     }
@@ -1527,10 +1655,12 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     * Returns a wrapper for this instance that implements {@link ICesiumVerticalOriginValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumVerticalOriginValuePropertyAdaptor<CustomPropertyCesiumWriter> asVerticalOrigin() {
         return m_asVerticalOrigin.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumVerticalOriginValuePropertyAdaptor<CustomPropertyCesiumWriter>> createAsVerticalOrigin() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumVerticalOriginValuePropertyAdaptor<CustomPropertyCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumVerticalOriginValuePropertyAdaptor<CustomPropertyCesiumWriter>>(this, "createVerticalOrigin") {
@@ -1540,6 +1670,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
                 }, false);
     }
 
+    @Nonnull
     private final CesiumVerticalOriginValuePropertyAdaptor<CustomPropertyCesiumWriter> createVerticalOrigin() {
         return CesiumValuePropertyAdaptors.<CustomPropertyCesiumWriter> createVerticalOrigin(this);
     }

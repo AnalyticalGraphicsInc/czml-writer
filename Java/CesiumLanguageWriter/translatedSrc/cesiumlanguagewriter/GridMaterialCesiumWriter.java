@@ -27,44 +27,54 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     /**
     * The name of the {@code color} property.
     */
+    @Nonnull
     public static final String ColorPropertyName = "color";
     /**
     * The name of the {@code cellAlpha} property.
     */
+    @Nonnull
     public static final String CellAlphaPropertyName = "cellAlpha";
     /**
     * The name of the {@code lineCount} property.
     */
+    @Nonnull
     public static final String LineCountPropertyName = "lineCount";
     /**
     * The name of the {@code lineThickness} property.
     */
+    @Nonnull
     public static final String LineThicknessPropertyName = "lineThickness";
     /**
     * The name of the {@code lineOffset} property.
     */
+    @Nonnull
     public static final String LineOffsetPropertyName = "lineOffset";
-    private Lazy<ColorCesiumWriter> m_color = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
+    @Nonnull
+    private final Lazy<ColorCesiumWriter> m_color = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
         public cesiumlanguagewriter.ColorCesiumWriter invoke() {
             return new ColorCesiumWriter(ColorPropertyName);
         }
     }, false);
-    private Lazy<DoubleCesiumWriter> m_cellAlpha = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
+    @Nonnull
+    private final Lazy<DoubleCesiumWriter> m_cellAlpha = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
         public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
             return new DoubleCesiumWriter(CellAlphaPropertyName);
         }
     }, false);
-    private Lazy<LineCountCesiumWriter> m_lineCount = new Lazy<cesiumlanguagewriter.LineCountCesiumWriter>(new Func1<cesiumlanguagewriter.LineCountCesiumWriter>() {
+    @Nonnull
+    private final Lazy<LineCountCesiumWriter> m_lineCount = new Lazy<cesiumlanguagewriter.LineCountCesiumWriter>(new Func1<cesiumlanguagewriter.LineCountCesiumWriter>() {
         public cesiumlanguagewriter.LineCountCesiumWriter invoke() {
             return new LineCountCesiumWriter(LineCountPropertyName);
         }
     }, false);
-    private Lazy<LineThicknessCesiumWriter> m_lineThickness = new Lazy<cesiumlanguagewriter.LineThicknessCesiumWriter>(new Func1<cesiumlanguagewriter.LineThicknessCesiumWriter>() {
+    @Nonnull
+    private final Lazy<LineThicknessCesiumWriter> m_lineThickness = new Lazy<cesiumlanguagewriter.LineThicknessCesiumWriter>(new Func1<cesiumlanguagewriter.LineThicknessCesiumWriter>() {
         public cesiumlanguagewriter.LineThicknessCesiumWriter invoke() {
             return new LineThicknessCesiumWriter(LineThicknessPropertyName);
         }
     }, false);
-    private Lazy<LineOffsetCesiumWriter> m_lineOffset = new Lazy<cesiumlanguagewriter.LineOffsetCesiumWriter>(new Func1<cesiumlanguagewriter.LineOffsetCesiumWriter>() {
+    @Nonnull
+    private final Lazy<LineOffsetCesiumWriter> m_lineOffset = new Lazy<cesiumlanguagewriter.LineOffsetCesiumWriter>(new Func1<cesiumlanguagewriter.LineOffsetCesiumWriter>() {
         public cesiumlanguagewriter.LineOffsetCesiumWriter invoke() {
             return new LineOffsetCesiumWriter(LineOffsetPropertyName);
         }

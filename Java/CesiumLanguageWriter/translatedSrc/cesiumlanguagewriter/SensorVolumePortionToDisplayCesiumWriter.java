@@ -20,17 +20,22 @@ public class SensorVolumePortionToDisplayCesiumWriter extends CesiumPropertyWrit
     /**
     * The name of the {@code portionToDisplay} property.
     */
+    @Nonnull
     public static final String PortionToDisplayPropertyName = "portionToDisplay";
     /**
     * The name of the {@code reference} property.
     */
+    @Nonnull
     public static final String ReferencePropertyName = "reference";
     /**
     * The name of the {@code delete} property.
     */
+    @Nonnull
     public static final String DeletePropertyName = "delete";
-    private Lazy<CesiumSensorVolumePortionToDisplayValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter>> m_asPortionToDisplay;
-    private Lazy<CesiumReferenceValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter>> m_asReference;
+    @Nonnull
+    private final Lazy<CesiumSensorVolumePortionToDisplayValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter>> m_asPortionToDisplay;
+    @Nonnull
+    private final Lazy<CesiumReferenceValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter>> m_asReference;
 
     /**
     * Initializes a new instance.
@@ -137,10 +142,12 @@ public class SensorVolumePortionToDisplayCesiumWriter extends CesiumPropertyWrit
     * Returns a wrapper for this instance that implements {@link ICesiumSensorVolumePortionToDisplayValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumSensorVolumePortionToDisplayValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter> asPortionToDisplay() {
         return m_asPortionToDisplay.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumSensorVolumePortionToDisplayValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter>> createAsPortionToDisplay() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumSensorVolumePortionToDisplayValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumSensorVolumePortionToDisplayValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter>>(this, "createSensorVolumePortionToDisplay") {
@@ -150,6 +157,7 @@ public class SensorVolumePortionToDisplayCesiumWriter extends CesiumPropertyWrit
                 }, false);
     }
 
+    @Nonnull
     private final CesiumSensorVolumePortionToDisplayValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter> createSensorVolumePortionToDisplay() {
         return CesiumValuePropertyAdaptors.<SensorVolumePortionToDisplayCesiumWriter> createSensorVolumePortionToDisplay(this);
     }
@@ -158,10 +166,12 @@ public class SensorVolumePortionToDisplayCesiumWriter extends CesiumPropertyWrit
     * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumReferenceValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter> asReference() {
         return m_asReference.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter>> createAsReference() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter>>(this, "createReference") {
@@ -171,6 +181,7 @@ public class SensorVolumePortionToDisplayCesiumWriter extends CesiumPropertyWrit
                 }, false);
     }
 
+    @Nonnull
     private final CesiumReferenceValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter> createReference() {
         return CesiumValuePropertyAdaptors.<SensorVolumePortionToDisplayCesiumWriter> createReference(this);
     }

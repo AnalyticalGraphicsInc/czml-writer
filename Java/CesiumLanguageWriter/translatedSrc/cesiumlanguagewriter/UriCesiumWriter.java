@@ -21,17 +21,22 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> imple
     /**
     * The name of the {@code uri} property.
     */
+    @Nonnull
     public static final String UriPropertyName = "uri";
     /**
     * The name of the {@code reference} property.
     */
+    @Nonnull
     public static final String ReferencePropertyName = "reference";
     /**
     * The name of the {@code delete} property.
     */
+    @Nonnull
     public static final String DeletePropertyName = "delete";
-    private Lazy<CesiumUriValuePropertyAdaptor<UriCesiumWriter>> m_asUri;
-    private Lazy<CesiumReferenceValuePropertyAdaptor<UriCesiumWriter>> m_asReference;
+    @Nonnull
+    private final Lazy<CesiumUriValuePropertyAdaptor<UriCesiumWriter>> m_asUri;
+    @Nonnull
+    private final Lazy<CesiumReferenceValuePropertyAdaptor<UriCesiumWriter>> m_asReference;
 
     /**
     * Initializes a new instance.
@@ -205,10 +210,12 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> imple
     * Returns a wrapper for this instance that implements {@link ICesiumUriValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumUriValuePropertyAdaptor<UriCesiumWriter> asUri() {
         return m_asUri.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumUriValuePropertyAdaptor<UriCesiumWriter>> createAsUri() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumUriValuePropertyAdaptor<UriCesiumWriter>>(new Func1<cesiumlanguagewriter.advanced.CesiumUriValuePropertyAdaptor<UriCesiumWriter>>(this,
                 "createUri") {
@@ -218,6 +225,7 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> imple
         }, false);
     }
 
+    @Nonnull
     private final CesiumUriValuePropertyAdaptor<UriCesiumWriter> createUri() {
         return CesiumValuePropertyAdaptors.<UriCesiumWriter> createUri(this);
     }
@@ -226,10 +234,12 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> imple
     * Returns a wrapper for this instance that implements {@link ICesiumReferenceValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
     * @return The wrapper.
     */
+    @Nonnull
     public final CesiumReferenceValuePropertyAdaptor<UriCesiumWriter> asReference() {
         return m_asReference.getValue();
     }
 
+    @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<UriCesiumWriter>> createAsReference() {
         return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<UriCesiumWriter>>(
                 new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<UriCesiumWriter>>(this, "createReference") {
@@ -239,6 +249,7 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> imple
                 }, false);
     }
 
+    @Nonnull
     private final CesiumReferenceValuePropertyAdaptor<UriCesiumWriter> createReference() {
         return CesiumValuePropertyAdaptors.<UriCesiumWriter> createReference(this);
     }
