@@ -19,71 +19,85 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>show</c> property.
         /// </summary>
+        [NotNull]
         public const string ShowPropertyName = "show";
 
         /// <summary>
         /// The name of the <c>length</c> property.
         /// </summary>
+        [NotNull]
         public const string LengthPropertyName = "length";
 
         /// <summary>
         /// The name of the <c>topRadius</c> property.
         /// </summary>
+        [NotNull]
         public const string TopRadiusPropertyName = "topRadius";
 
         /// <summary>
         /// The name of the <c>bottomRadius</c> property.
         /// </summary>
+        [NotNull]
         public const string BottomRadiusPropertyName = "bottomRadius";
 
         /// <summary>
         /// The name of the <c>heightReference</c> property.
         /// </summary>
+        [NotNull]
         public const string HeightReferencePropertyName = "heightReference";
 
         /// <summary>
         /// The name of the <c>fill</c> property.
         /// </summary>
+        [NotNull]
         public const string FillPropertyName = "fill";
 
         /// <summary>
         /// The name of the <c>material</c> property.
         /// </summary>
+        [NotNull]
         public const string MaterialPropertyName = "material";
 
         /// <summary>
         /// The name of the <c>outline</c> property.
         /// </summary>
+        [NotNull]
         public const string OutlinePropertyName = "outline";
 
         /// <summary>
         /// The name of the <c>outlineColor</c> property.
         /// </summary>
+        [NotNull]
         public const string OutlineColorPropertyName = "outlineColor";
 
         /// <summary>
         /// The name of the <c>outlineWidth</c> property.
         /// </summary>
+        [NotNull]
         public const string OutlineWidthPropertyName = "outlineWidth";
 
         /// <summary>
         /// The name of the <c>numberOfVerticalLines</c> property.
         /// </summary>
+        [NotNull]
         public const string NumberOfVerticalLinesPropertyName = "numberOfVerticalLines";
 
         /// <summary>
         /// The name of the <c>slices</c> property.
         /// </summary>
+        [NotNull]
         public const string SlicesPropertyName = "slices";
 
         /// <summary>
         /// The name of the <c>shadows</c> property.
         /// </summary>
+        [NotNull]
         public const string ShadowsPropertyName = "shadows";
 
         /// <summary>
         /// The name of the <c>distanceDisplayCondition</c> property.
         /// </summary>
+        [NotNull]
         public const string DistanceDisplayConditionPropertyName = "distanceDisplayCondition";
 
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);

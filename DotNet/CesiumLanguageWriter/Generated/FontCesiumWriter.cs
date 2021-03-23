@@ -17,19 +17,26 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>font</c> property.
         /// </summary>
+        [NotNull]
         public const string FontPropertyName = "font";
 
         /// <summary>
         /// The name of the <c>reference</c> property.
         /// </summary>
+        [NotNull]
         public const string ReferencePropertyName = "reference";
 
         /// <summary>
         /// The name of the <c>delete</c> property.
         /// </summary>
+        [NotNull]
         public const string DeletePropertyName = "delete";
 
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumFontValuePropertyAdaptor<FontCesiumWriter>> m_asFont;
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumReferenceValuePropertyAdaptor<FontCesiumWriter>> m_asReference;
 
         /// <summary>
@@ -144,16 +151,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumFontValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumFontValuePropertyAdaptor<FontCesiumWriter> AsFont()
         {
             return m_asFont.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumFontValuePropertyAdaptor<FontCesiumWriter>> CreateAsFont()
         {
             return new Lazy<CesiumFontValuePropertyAdaptor<FontCesiumWriter>>(CreateFont, false);
         }
 
+        [NotNull]
         private CesiumFontValuePropertyAdaptor<FontCesiumWriter> CreateFont()
         {
             return CesiumValuePropertyAdaptors.CreateFont(this);
@@ -163,16 +173,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumReferenceValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumReferenceValuePropertyAdaptor<FontCesiumWriter> AsReference()
         {
             return m_asReference.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumReferenceValuePropertyAdaptor<FontCesiumWriter>> CreateAsReference()
         {
             return new Lazy<CesiumReferenceValuePropertyAdaptor<FontCesiumWriter>>(CreateReference, false);
         }
 
+        [NotNull]
         private CesiumReferenceValuePropertyAdaptor<FontCesiumWriter> CreateReference()
         {
             return CesiumValuePropertyAdaptors.CreateReference(this);

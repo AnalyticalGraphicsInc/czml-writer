@@ -19,26 +19,31 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>show</c> property.
         /// </summary>
+        [NotNull]
         public const string ShowPropertyName = "show";
 
         /// <summary>
         /// The name of the <c>color</c> property.
         /// </summary>
+        [NotNull]
         public const string ColorPropertyName = "color";
 
         /// <summary>
         /// The name of the <c>direction</c> property.
         /// </summary>
+        [NotNull]
         public const string DirectionPropertyName = "direction";
 
         /// <summary>
         /// The name of the <c>length</c> property.
         /// </summary>
+        [NotNull]
         public const string LengthPropertyName = "length";
 
         /// <summary>
         /// The name of the <c>minimumLengthInPixels</c> property.
         /// </summary>
+        [NotNull]
         public const string MinimumLengthInPixelsPropertyName = "minimumLengthInPixels";
 
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);

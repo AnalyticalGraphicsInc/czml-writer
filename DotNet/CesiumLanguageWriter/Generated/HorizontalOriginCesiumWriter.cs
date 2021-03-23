@@ -17,19 +17,26 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>horizontalOrigin</c> property.
         /// </summary>
+        [NotNull]
         public const string HorizontalOriginPropertyName = "horizontalOrigin";
 
         /// <summary>
         /// The name of the <c>reference</c> property.
         /// </summary>
+        [NotNull]
         public const string ReferencePropertyName = "reference";
 
         /// <summary>
         /// The name of the <c>delete</c> property.
         /// </summary>
+        [NotNull]
         public const string DeletePropertyName = "delete";
 
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumHorizontalOriginValuePropertyAdaptor<HorizontalOriginCesiumWriter>> m_asHorizontalOrigin;
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumReferenceValuePropertyAdaptor<HorizontalOriginCesiumWriter>> m_asReference;
 
         /// <summary>
@@ -144,16 +151,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumHorizontalOriginValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumHorizontalOriginValuePropertyAdaptor<HorizontalOriginCesiumWriter> AsHorizontalOrigin()
         {
             return m_asHorizontalOrigin.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumHorizontalOriginValuePropertyAdaptor<HorizontalOriginCesiumWriter>> CreateAsHorizontalOrigin()
         {
             return new Lazy<CesiumHorizontalOriginValuePropertyAdaptor<HorizontalOriginCesiumWriter>>(CreateHorizontalOrigin, false);
         }
 
+        [NotNull]
         private CesiumHorizontalOriginValuePropertyAdaptor<HorizontalOriginCesiumWriter> CreateHorizontalOrigin()
         {
             return CesiumValuePropertyAdaptors.CreateHorizontalOrigin(this);
@@ -163,16 +173,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumReferenceValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumReferenceValuePropertyAdaptor<HorizontalOriginCesiumWriter> AsReference()
         {
             return m_asReference.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumReferenceValuePropertyAdaptor<HorizontalOriginCesiumWriter>> CreateAsReference()
         {
             return new Lazy<CesiumReferenceValuePropertyAdaptor<HorizontalOriginCesiumWriter>>(CreateReference, false);
         }
 
+        [NotNull]
         private CesiumReferenceValuePropertyAdaptor<HorizontalOriginCesiumWriter> CreateReference()
         {
             return CesiumValuePropertyAdaptors.CreateReference(this);

@@ -13,6 +13,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <summary>
         /// The maximum interval of time that can be specified.
         /// </summary>
+        [NotNull]
         public static readonly TimeInterval MaximumInterval = new TimeInterval(GregorianDate.MinValue.ToJulianDate(), GregorianDate.MaxValue.ToJulianDate());
 
         private static Iso8601Format GetIso8601Format(CesiumOutputStream output)

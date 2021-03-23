@@ -17,19 +17,26 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>colorBlendMode</c> property.
         /// </summary>
+        [NotNull]
         public const string ColorBlendModePropertyName = "colorBlendMode";
 
         /// <summary>
         /// The name of the <c>reference</c> property.
         /// </summary>
+        [NotNull]
         public const string ReferencePropertyName = "reference";
 
         /// <summary>
         /// The name of the <c>delete</c> property.
         /// </summary>
+        [NotNull]
         public const string DeletePropertyName = "delete";
 
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumColorBlendModeValuePropertyAdaptor<ColorBlendModeCesiumWriter>> m_asColorBlendMode;
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumReferenceValuePropertyAdaptor<ColorBlendModeCesiumWriter>> m_asReference;
 
         /// <summary>
@@ -144,16 +151,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumColorBlendModeValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumColorBlendModeValuePropertyAdaptor<ColorBlendModeCesiumWriter> AsColorBlendMode()
         {
             return m_asColorBlendMode.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumColorBlendModeValuePropertyAdaptor<ColorBlendModeCesiumWriter>> CreateAsColorBlendMode()
         {
             return new Lazy<CesiumColorBlendModeValuePropertyAdaptor<ColorBlendModeCesiumWriter>>(CreateColorBlendMode, false);
         }
 
+        [NotNull]
         private CesiumColorBlendModeValuePropertyAdaptor<ColorBlendModeCesiumWriter> CreateColorBlendMode()
         {
             return CesiumValuePropertyAdaptors.CreateColorBlendMode(this);
@@ -163,16 +173,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumReferenceValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumReferenceValuePropertyAdaptor<ColorBlendModeCesiumWriter> AsReference()
         {
             return m_asReference.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumReferenceValuePropertyAdaptor<ColorBlendModeCesiumWriter>> CreateAsReference()
         {
             return new Lazy<CesiumReferenceValuePropertyAdaptor<ColorBlendModeCesiumWriter>>(CreateReference, false);
         }
 
+        [NotNull]
         private CesiumReferenceValuePropertyAdaptor<ColorBlendModeCesiumWriter> CreateReference()
         {
             return CesiumValuePropertyAdaptors.CreateReference(this);

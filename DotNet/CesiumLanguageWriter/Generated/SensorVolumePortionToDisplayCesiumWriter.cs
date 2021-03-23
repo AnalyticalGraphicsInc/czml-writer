@@ -17,19 +17,26 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>portionToDisplay</c> property.
         /// </summary>
+        [NotNull]
         public const string PortionToDisplayPropertyName = "portionToDisplay";
 
         /// <summary>
         /// The name of the <c>reference</c> property.
         /// </summary>
+        [NotNull]
         public const string ReferencePropertyName = "reference";
 
         /// <summary>
         /// The name of the <c>delete</c> property.
         /// </summary>
+        [NotNull]
         public const string DeletePropertyName = "delete";
 
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumSensorVolumePortionToDisplayValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter>> m_asPortionToDisplay;
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumReferenceValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter>> m_asReference;
 
         /// <summary>
@@ -144,16 +151,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumSensorVolumePortionToDisplayValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumSensorVolumePortionToDisplayValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter> AsPortionToDisplay()
         {
             return m_asPortionToDisplay.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumSensorVolumePortionToDisplayValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter>> CreateAsPortionToDisplay()
         {
             return new Lazy<CesiumSensorVolumePortionToDisplayValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter>>(CreateSensorVolumePortionToDisplay, false);
         }
 
+        [NotNull]
         private CesiumSensorVolumePortionToDisplayValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter> CreateSensorVolumePortionToDisplay()
         {
             return CesiumValuePropertyAdaptors.CreateSensorVolumePortionToDisplay(this);
@@ -163,16 +173,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumReferenceValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumReferenceValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter> AsReference()
         {
             return m_asReference.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumReferenceValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter>> CreateAsReference()
         {
             return new Lazy<CesiumReferenceValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter>>(CreateReference, false);
         }
 
+        [NotNull]
         private CesiumReferenceValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter> CreateReference()
         {
             return CesiumValuePropertyAdaptors.CreateReference(this);

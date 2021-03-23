@@ -19,26 +19,31 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>orientation</c> property.
         /// </summary>
+        [NotNull]
         public const string OrientationPropertyName = "orientation";
 
         /// <summary>
         /// The name of the <c>evenColor</c> property.
         /// </summary>
+        [NotNull]
         public const string EvenColorPropertyName = "evenColor";
 
         /// <summary>
         /// The name of the <c>oddColor</c> property.
         /// </summary>
+        [NotNull]
         public const string OddColorPropertyName = "oddColor";
 
         /// <summary>
         /// The name of the <c>offset</c> property.
         /// </summary>
+        [NotNull]
         public const string OffsetPropertyName = "offset";
 
         /// <summary>
         /// The name of the <c>repeat</c> property.
         /// </summary>
+        [NotNull]
         public const string RepeatPropertyName = "repeat";
 
         private readonly Lazy<StripeOrientationCesiumWriter> m_orientation = new Lazy<StripeOrientationCesiumWriter>(() => new StripeOrientationCesiumWriter(OrientationPropertyName), false);

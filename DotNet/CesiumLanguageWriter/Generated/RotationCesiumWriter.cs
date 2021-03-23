@@ -18,19 +18,26 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>unitQuaternion</c> property.
         /// </summary>
+        [NotNull]
         public const string UnitQuaternionPropertyName = "unitQuaternion";
 
         /// <summary>
         /// The name of the <c>reference</c> property.
         /// </summary>
+        [NotNull]
         public const string ReferencePropertyName = "reference";
 
         /// <summary>
         /// The name of the <c>delete</c> property.
         /// </summary>
+        [NotNull]
         public const string DeletePropertyName = "delete";
 
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumUnitQuaternionValuePropertyAdaptor<RotationCesiumWriter>> m_asUnitQuaternion;
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumReferenceValuePropertyAdaptor<RotationCesiumWriter>> m_asReference;
 
         /// <summary>
@@ -163,16 +170,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumUnitQuaternionValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumUnitQuaternionValuePropertyAdaptor<RotationCesiumWriter> AsUnitQuaternion()
         {
             return m_asUnitQuaternion.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumUnitQuaternionValuePropertyAdaptor<RotationCesiumWriter>> CreateAsUnitQuaternion()
         {
             return new Lazy<CesiumUnitQuaternionValuePropertyAdaptor<RotationCesiumWriter>>(CreateUnitQuaternion, false);
         }
 
+        [NotNull]
         private CesiumUnitQuaternionValuePropertyAdaptor<RotationCesiumWriter> CreateUnitQuaternion()
         {
             return CesiumValuePropertyAdaptors.CreateUnitQuaternion(this);
@@ -182,16 +192,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumReferenceValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumReferenceValuePropertyAdaptor<RotationCesiumWriter> AsReference()
         {
             return m_asReference.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumReferenceValuePropertyAdaptor<RotationCesiumWriter>> CreateAsReference()
         {
             return new Lazy<CesiumReferenceValuePropertyAdaptor<RotationCesiumWriter>>(CreateReference, false);
         }
 
+        [NotNull]
         private CesiumReferenceValuePropertyAdaptor<RotationCesiumWriter> CreateReference()
         {
             return CesiumValuePropertyAdaptors.CreateReference(this);

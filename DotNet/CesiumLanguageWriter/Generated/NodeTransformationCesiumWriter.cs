@@ -18,16 +18,19 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>translation</c> property.
         /// </summary>
+        [NotNull]
         public const string TranslationPropertyName = "translation";
 
         /// <summary>
         /// The name of the <c>rotation</c> property.
         /// </summary>
+        [NotNull]
         public const string RotationPropertyName = "rotation";
 
         /// <summary>
         /// The name of the <c>scale</c> property.
         /// </summary>
+        [NotNull]
         public const string ScalePropertyName = "scale";
 
         private readonly Lazy<TranslationCesiumWriter> m_translation = new Lazy<TranslationCesiumWriter>(() => new TranslationCesiumWriter(TranslationPropertyName), false);

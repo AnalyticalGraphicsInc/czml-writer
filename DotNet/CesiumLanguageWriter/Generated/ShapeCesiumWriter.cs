@@ -18,13 +18,17 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>cartesian2</c> property.
         /// </summary>
+        [NotNull]
         public const string Cartesian2PropertyName = "cartesian2";
 
         /// <summary>
         /// The name of the <c>delete</c> property.
         /// </summary>
+        [NotNull]
         public const string DeletePropertyName = "delete";
 
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumCartesian2ListValuePropertyAdaptor<ShapeCesiumWriter>> m_asCartesian2;
 
         /// <summary>
@@ -81,16 +85,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumCartesian2ListValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumCartesian2ListValuePropertyAdaptor<ShapeCesiumWriter> AsCartesian2()
         {
             return m_asCartesian2.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumCartesian2ListValuePropertyAdaptor<ShapeCesiumWriter>> CreateAsCartesian2()
         {
             return new Lazy<CesiumCartesian2ListValuePropertyAdaptor<ShapeCesiumWriter>>(CreateCartesian2List, false);
         }
 
+        [NotNull]
         private CesiumCartesian2ListValuePropertyAdaptor<ShapeCesiumWriter> CreateCartesian2List()
         {
             return CesiumValuePropertyAdaptors.CreateCartesian2List(this);

@@ -19,51 +19,61 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>show</c> property.
         /// </summary>
+        [NotNull]
         public const string ShowPropertyName = "show";
 
         /// <summary>
         /// The name of the <c>pixelSize</c> property.
         /// </summary>
+        [NotNull]
         public const string PixelSizePropertyName = "pixelSize";
 
         /// <summary>
         /// The name of the <c>heightReference</c> property.
         /// </summary>
+        [NotNull]
         public const string HeightReferencePropertyName = "heightReference";
 
         /// <summary>
         /// The name of the <c>color</c> property.
         /// </summary>
+        [NotNull]
         public const string ColorPropertyName = "color";
 
         /// <summary>
         /// The name of the <c>outlineColor</c> property.
         /// </summary>
+        [NotNull]
         public const string OutlineColorPropertyName = "outlineColor";
 
         /// <summary>
         /// The name of the <c>outlineWidth</c> property.
         /// </summary>
+        [NotNull]
         public const string OutlineWidthPropertyName = "outlineWidth";
 
         /// <summary>
         /// The name of the <c>scaleByDistance</c> property.
         /// </summary>
+        [NotNull]
         public const string ScaleByDistancePropertyName = "scaleByDistance";
 
         /// <summary>
         /// The name of the <c>translucencyByDistance</c> property.
         /// </summary>
+        [NotNull]
         public const string TranslucencyByDistancePropertyName = "translucencyByDistance";
 
         /// <summary>
         /// The name of the <c>distanceDisplayCondition</c> property.
         /// </summary>
+        [NotNull]
         public const string DistanceDisplayConditionPropertyName = "distanceDisplayCondition";
 
         /// <summary>
         /// The name of the <c>disableDepthTestDistance</c> property.
         /// </summary>
+        [NotNull]
         public const string DisableDepthTestDistancePropertyName = "disableDepthTestDistance";
 
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);

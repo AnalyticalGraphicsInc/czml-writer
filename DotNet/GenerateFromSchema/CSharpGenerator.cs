@@ -184,6 +184,7 @@ namespace GenerateFromSchema
             foreach (var property in schema.AllProperties)
             {
                 WriteSummaryText(writer, "The name of the <c>{0}</c> property.", property.Name);
+                writer.WriteLine("[NotNull]");
                 writer.WriteLine("public const string {0}PropertyName = \"{1}\";", property.NameWithPascalCase, property.Name);
                 writer.WriteLine();
             }
@@ -205,6 +206,8 @@ namespace GenerateFromSchema
 
                         string adaptorType = GetAdaptorType(schema, property);
 
+                        writer.WriteLine("[NotNull]");
+                        writer.WriteLine("[CSToJavaFinalField]");
                         writer.WriteLine("private readonly Lazy<{0}> m_as{1};", adaptorType, property.NameWithPascalCase);
                     }
                 }
@@ -491,6 +494,7 @@ namespace GenerateFromSchema
 
                 string adaptorType = GetAdaptorType(schema, property);
 
+                writer.WriteLine("[NotNull]");
                 writer.WriteLine("public {0} As{1}()", adaptorType, property.NameWithPascalCase);
                 using (writer.OpenScope())
                 {
@@ -498,6 +502,7 @@ namespace GenerateFromSchema
                 }
                 writer.WriteLine();
 
+                writer.WriteLine("[NotNull]");
                 writer.WriteLine("private Lazy<{0}> CreateAs{1}()", adaptorType, property.NameWithPascalCase);
                 using (writer.OpenScope())
                 {
@@ -505,6 +510,7 @@ namespace GenerateFromSchema
                 }
                 writer.WriteLine();
 
+                writer.WriteLine("[NotNull]");
                 writer.WriteLine("private {0} Create{1}()", adaptorType, property.ValueType.NameWithPascalCase);
                 using (writer.OpenScope())
                 {

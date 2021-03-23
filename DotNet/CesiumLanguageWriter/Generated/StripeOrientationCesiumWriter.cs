@@ -17,19 +17,26 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>stripeOrientation</c> property.
         /// </summary>
+        [NotNull]
         public const string StripeOrientationPropertyName = "stripeOrientation";
 
         /// <summary>
         /// The name of the <c>reference</c> property.
         /// </summary>
+        [NotNull]
         public const string ReferencePropertyName = "reference";
 
         /// <summary>
         /// The name of the <c>delete</c> property.
         /// </summary>
+        [NotNull]
         public const string DeletePropertyName = "delete";
 
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumStripeOrientationValuePropertyAdaptor<StripeOrientationCesiumWriter>> m_asStripeOrientation;
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumReferenceValuePropertyAdaptor<StripeOrientationCesiumWriter>> m_asReference;
 
         /// <summary>
@@ -144,16 +151,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumStripeOrientationValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumStripeOrientationValuePropertyAdaptor<StripeOrientationCesiumWriter> AsStripeOrientation()
         {
             return m_asStripeOrientation.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumStripeOrientationValuePropertyAdaptor<StripeOrientationCesiumWriter>> CreateAsStripeOrientation()
         {
             return new Lazy<CesiumStripeOrientationValuePropertyAdaptor<StripeOrientationCesiumWriter>>(CreateStripeOrientation, false);
         }
 
+        [NotNull]
         private CesiumStripeOrientationValuePropertyAdaptor<StripeOrientationCesiumWriter> CreateStripeOrientation()
         {
             return CesiumValuePropertyAdaptors.CreateStripeOrientation(this);
@@ -163,16 +173,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumReferenceValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumReferenceValuePropertyAdaptor<StripeOrientationCesiumWriter> AsReference()
         {
             return m_asReference.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumReferenceValuePropertyAdaptor<StripeOrientationCesiumWriter>> CreateAsReference()
         {
             return new Lazy<CesiumReferenceValuePropertyAdaptor<StripeOrientationCesiumWriter>>(CreateReference, false);
         }
 
+        [NotNull]
         private CesiumReferenceValuePropertyAdaptor<StripeOrientationCesiumWriter> CreateReference()
         {
             return CesiumValuePropertyAdaptors.CreateReference(this);

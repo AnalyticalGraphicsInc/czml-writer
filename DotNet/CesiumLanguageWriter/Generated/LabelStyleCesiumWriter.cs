@@ -17,19 +17,26 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>labelStyle</c> property.
         /// </summary>
+        [NotNull]
         public const string LabelStylePropertyName = "labelStyle";
 
         /// <summary>
         /// The name of the <c>reference</c> property.
         /// </summary>
+        [NotNull]
         public const string ReferencePropertyName = "reference";
 
         /// <summary>
         /// The name of the <c>delete</c> property.
         /// </summary>
+        [NotNull]
         public const string DeletePropertyName = "delete";
 
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumLabelStyleValuePropertyAdaptor<LabelStyleCesiumWriter>> m_asLabelStyle;
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumReferenceValuePropertyAdaptor<LabelStyleCesiumWriter>> m_asReference;
 
         /// <summary>
@@ -144,16 +151,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumLabelStyleValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumLabelStyleValuePropertyAdaptor<LabelStyleCesiumWriter> AsLabelStyle()
         {
             return m_asLabelStyle.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumLabelStyleValuePropertyAdaptor<LabelStyleCesiumWriter>> CreateAsLabelStyle()
         {
             return new Lazy<CesiumLabelStyleValuePropertyAdaptor<LabelStyleCesiumWriter>>(CreateLabelStyle, false);
         }
 
+        [NotNull]
         private CesiumLabelStyleValuePropertyAdaptor<LabelStyleCesiumWriter> CreateLabelStyle()
         {
             return CesiumValuePropertyAdaptors.CreateLabelStyle(this);
@@ -163,16 +173,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumReferenceValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumReferenceValuePropertyAdaptor<LabelStyleCesiumWriter> AsReference()
         {
             return m_asReference.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumReferenceValuePropertyAdaptor<LabelStyleCesiumWriter>> CreateAsReference()
         {
             return new Lazy<CesiumReferenceValuePropertyAdaptor<LabelStyleCesiumWriter>>(CreateReference, false);
         }
 
+        [NotNull]
         private CesiumReferenceValuePropertyAdaptor<LabelStyleCesiumWriter> CreateReference()
         {
             return CesiumValuePropertyAdaptors.CreateReference(this);

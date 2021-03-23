@@ -19,46 +19,55 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>solidColor</c> property.
         /// </summary>
+        [NotNull]
         public const string SolidColorPropertyName = "solidColor";
 
         /// <summary>
         /// The name of the <c>polylineOutline</c> property.
         /// </summary>
+        [NotNull]
         public const string PolylineOutlinePropertyName = "polylineOutline";
 
         /// <summary>
         /// The name of the <c>polylineArrow</c> property.
         /// </summary>
+        [NotNull]
         public const string PolylineArrowPropertyName = "polylineArrow";
 
         /// <summary>
         /// The name of the <c>polylineDash</c> property.
         /// </summary>
+        [NotNull]
         public const string PolylineDashPropertyName = "polylineDash";
 
         /// <summary>
         /// The name of the <c>polylineGlow</c> property.
         /// </summary>
+        [NotNull]
         public const string PolylineGlowPropertyName = "polylineGlow";
 
         /// <summary>
         /// The name of the <c>image</c> property.
         /// </summary>
+        [NotNull]
         public const string ImagePropertyName = "image";
 
         /// <summary>
         /// The name of the <c>grid</c> property.
         /// </summary>
+        [NotNull]
         public const string GridPropertyName = "grid";
 
         /// <summary>
         /// The name of the <c>stripe</c> property.
         /// </summary>
+        [NotNull]
         public const string StripePropertyName = "stripe";
 
         /// <summary>
         /// The name of the <c>checkerboard</c> property.
         /// </summary>
+        [NotNull]
         public const string CheckerboardPropertyName = "checkerboard";
 
         private readonly Lazy<SolidColorMaterialCesiumWriter> m_solidColor = new Lazy<SolidColorMaterialCesiumWriter>(() => new SolidColorMaterialCesiumWriter(SolidColorPropertyName), false);

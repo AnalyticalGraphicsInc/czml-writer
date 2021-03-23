@@ -17,21 +17,25 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>currentTime</c> property.
         /// </summary>
+        [NotNull]
         public const string CurrentTimePropertyName = "currentTime";
 
         /// <summary>
         /// The name of the <c>multiplier</c> property.
         /// </summary>
+        [NotNull]
         public const string MultiplierPropertyName = "multiplier";
 
         /// <summary>
         /// The name of the <c>range</c> property.
         /// </summary>
+        [NotNull]
         public const string RangePropertyName = "range";
 
         /// <summary>
         /// The name of the <c>step</c> property.
         /// </summary>
+        [NotNull]
         public const string StepPropertyName = "step";
 
 

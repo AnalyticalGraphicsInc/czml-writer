@@ -19,21 +19,25 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>color</c> property.
         /// </summary>
+        [NotNull]
         public const string ColorPropertyName = "color";
 
         /// <summary>
         /// The name of the <c>gapColor</c> property.
         /// </summary>
+        [NotNull]
         public const string GapColorPropertyName = "gapColor";
 
         /// <summary>
         /// The name of the <c>dashLength</c> property.
         /// </summary>
+        [NotNull]
         public const string DashLengthPropertyName = "dashLength";
 
         /// <summary>
         /// The name of the <c>dashPattern</c> property.
         /// </summary>
+        [NotNull]
         public const string DashPatternPropertyName = "dashPattern";
 
         private readonly Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(ColorPropertyName), false);

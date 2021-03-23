@@ -19,166 +19,199 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>id</c> property.
         /// </summary>
+        [NotNull]
         public const string IdPropertyName = "id";
 
         /// <summary>
         /// The name of the <c>delete</c> property.
         /// </summary>
+        [NotNull]
         public const string DeletePropertyName = "delete";
 
         /// <summary>
         /// The name of the <c>name</c> property.
         /// </summary>
+        [NotNull]
         public const string NamePropertyName = "name";
 
         /// <summary>
         /// The name of the <c>parent</c> property.
         /// </summary>
+        [NotNull]
         public const string ParentPropertyName = "parent";
 
         /// <summary>
         /// The name of the <c>description</c> property.
         /// </summary>
+        [NotNull]
         public const string DescriptionPropertyName = "description";
 
         /// <summary>
         /// The name of the <c>clock</c> property.
         /// </summary>
+        [NotNull]
         public const string ClockPropertyName = "clock";
 
         /// <summary>
         /// The name of the <c>version</c> property.
         /// </summary>
+        [NotNull]
         public const string VersionPropertyName = "version";
 
         /// <summary>
         /// The name of the <c>availability</c> property.
         /// </summary>
+        [NotNull]
         public const string AvailabilityPropertyName = "availability";
 
         /// <summary>
         /// The name of the <c>properties</c> property.
         /// </summary>
+        [NotNull]
         public const string PropertiesPropertyName = "properties";
 
         /// <summary>
         /// The name of the <c>position</c> property.
         /// </summary>
+        [NotNull]
         public const string PositionPropertyName = "position";
 
         /// <summary>
         /// The name of the <c>orientation</c> property.
         /// </summary>
+        [NotNull]
         public const string OrientationPropertyName = "orientation";
 
         /// <summary>
         /// The name of the <c>viewFrom</c> property.
         /// </summary>
+        [NotNull]
         public const string ViewFromPropertyName = "viewFrom";
 
         /// <summary>
         /// The name of the <c>billboard</c> property.
         /// </summary>
+        [NotNull]
         public const string BillboardPropertyName = "billboard";
 
         /// <summary>
         /// The name of the <c>box</c> property.
         /// </summary>
+        [NotNull]
         public const string BoxPropertyName = "box";
 
         /// <summary>
         /// The name of the <c>corridor</c> property.
         /// </summary>
+        [NotNull]
         public const string CorridorPropertyName = "corridor";
 
         /// <summary>
         /// The name of the <c>cylinder</c> property.
         /// </summary>
+        [NotNull]
         public const string CylinderPropertyName = "cylinder";
 
         /// <summary>
         /// The name of the <c>ellipse</c> property.
         /// </summary>
+        [NotNull]
         public const string EllipsePropertyName = "ellipse";
 
         /// <summary>
         /// The name of the <c>ellipsoid</c> property.
         /// </summary>
+        [NotNull]
         public const string EllipsoidPropertyName = "ellipsoid";
 
         /// <summary>
         /// The name of the <c>label</c> property.
         /// </summary>
+        [NotNull]
         public const string LabelPropertyName = "label";
 
         /// <summary>
         /// The name of the <c>model</c> property.
         /// </summary>
+        [NotNull]
         public const string ModelPropertyName = "model";
 
         /// <summary>
         /// The name of the <c>path</c> property.
         /// </summary>
+        [NotNull]
         public const string PathPropertyName = "path";
 
         /// <summary>
         /// The name of the <c>point</c> property.
         /// </summary>
+        [NotNull]
         public const string PointPropertyName = "point";
 
         /// <summary>
         /// The name of the <c>polygon</c> property.
         /// </summary>
+        [NotNull]
         public const string PolygonPropertyName = "polygon";
 
         /// <summary>
         /// The name of the <c>polyline</c> property.
         /// </summary>
+        [NotNull]
         public const string PolylinePropertyName = "polyline";
 
         /// <summary>
         /// The name of the <c>polylineVolume</c> property.
         /// </summary>
+        [NotNull]
         public const string PolylineVolumePropertyName = "polylineVolume";
 
         /// <summary>
         /// The name of the <c>rectangle</c> property.
         /// </summary>
+        [NotNull]
         public const string RectanglePropertyName = "rectangle";
 
         /// <summary>
         /// The name of the <c>tileset</c> property.
         /// </summary>
+        [NotNull]
         public const string TilesetPropertyName = "tileset";
 
         /// <summary>
         /// The name of the <c>wall</c> property.
         /// </summary>
+        [NotNull]
         public const string WallPropertyName = "wall";
 
         /// <summary>
         /// The name of the <c>agi_conicSensor</c> property.
         /// </summary>
+        [NotNull]
         public const string ConicSensorPropertyName = "agi_conicSensor";
 
         /// <summary>
         /// The name of the <c>agi_customPatternSensor</c> property.
         /// </summary>
+        [NotNull]
         public const string CustomPatternSensorPropertyName = "agi_customPatternSensor";
 
         /// <summary>
         /// The name of the <c>agi_rectangularSensor</c> property.
         /// </summary>
+        [NotNull]
         public const string RectangularSensorPropertyName = "agi_rectangularSensor";
 
         /// <summary>
         /// The name of the <c>agi_fan</c> property.
         /// </summary>
+        [NotNull]
         public const string FanPropertyName = "agi_fan";
 
         /// <summary>
         /// The name of the <c>agi_vector</c> property.
         /// </summary>
+        [NotNull]
         public const string VectorPropertyName = "agi_vector";
 
         private readonly Lazy<StringCesiumWriter> m_description = new Lazy<StringCesiumWriter>(() => new StringCesiumWriter(DescriptionPropertyName), false);

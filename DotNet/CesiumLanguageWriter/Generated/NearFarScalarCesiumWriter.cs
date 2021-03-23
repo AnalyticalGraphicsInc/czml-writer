@@ -18,19 +18,26 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>nearFarScalar</c> property.
         /// </summary>
+        [NotNull]
         public const string NearFarScalarPropertyName = "nearFarScalar";
 
         /// <summary>
         /// The name of the <c>reference</c> property.
         /// </summary>
+        [NotNull]
         public const string ReferencePropertyName = "reference";
 
         /// <summary>
         /// The name of the <c>delete</c> property.
         /// </summary>
+        [NotNull]
         public const string DeletePropertyName = "delete";
 
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumNearFarScalarValuePropertyAdaptor<NearFarScalarCesiumWriter>> m_asNearFarScalar;
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumReferenceValuePropertyAdaptor<NearFarScalarCesiumWriter>> m_asReference;
 
         /// <summary>
@@ -175,16 +182,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumNearFarScalarValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumNearFarScalarValuePropertyAdaptor<NearFarScalarCesiumWriter> AsNearFarScalar()
         {
             return m_asNearFarScalar.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumNearFarScalarValuePropertyAdaptor<NearFarScalarCesiumWriter>> CreateAsNearFarScalar()
         {
             return new Lazy<CesiumNearFarScalarValuePropertyAdaptor<NearFarScalarCesiumWriter>>(CreateNearFarScalar, false);
         }
 
+        [NotNull]
         private CesiumNearFarScalarValuePropertyAdaptor<NearFarScalarCesiumWriter> CreateNearFarScalar()
         {
             return CesiumValuePropertyAdaptors.CreateNearFarScalar(this);
@@ -194,16 +204,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumReferenceValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumReferenceValuePropertyAdaptor<NearFarScalarCesiumWriter> AsReference()
         {
             return m_asReference.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumReferenceValuePropertyAdaptor<NearFarScalarCesiumWriter>> CreateAsReference()
         {
             return new Lazy<CesiumReferenceValuePropertyAdaptor<NearFarScalarCesiumWriter>>(CreateReference, false);
         }
 
+        [NotNull]
         private CesiumReferenceValuePropertyAdaptor<NearFarScalarCesiumWriter> CreateReference()
         {
             return CesiumValuePropertyAdaptors.CreateReference(this);

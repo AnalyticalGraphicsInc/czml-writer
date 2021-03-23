@@ -19,26 +19,31 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>color</c> property.
         /// </summary>
+        [NotNull]
         public const string ColorPropertyName = "color";
 
         /// <summary>
         /// The name of the <c>cellAlpha</c> property.
         /// </summary>
+        [NotNull]
         public const string CellAlphaPropertyName = "cellAlpha";
 
         /// <summary>
         /// The name of the <c>lineCount</c> property.
         /// </summary>
+        [NotNull]
         public const string LineCountPropertyName = "lineCount";
 
         /// <summary>
         /// The name of the <c>lineThickness</c> property.
         /// </summary>
+        [NotNull]
         public const string LineThicknessPropertyName = "lineThickness";
 
         /// <summary>
         /// The name of the <c>lineOffset</c> property.
         /// </summary>
+        [NotNull]
         public const string LineOffsetPropertyName = "lineOffset";
 
         private readonly Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(ColorPropertyName), false);

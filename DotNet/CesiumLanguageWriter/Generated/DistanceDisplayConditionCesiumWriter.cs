@@ -18,19 +18,26 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>distanceDisplayCondition</c> property.
         /// </summary>
+        [NotNull]
         public const string DistanceDisplayConditionPropertyName = "distanceDisplayCondition";
 
         /// <summary>
         /// The name of the <c>reference</c> property.
         /// </summary>
+        [NotNull]
         public const string ReferencePropertyName = "reference";
 
         /// <summary>
         /// The name of the <c>delete</c> property.
         /// </summary>
+        [NotNull]
         public const string DeletePropertyName = "delete";
 
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumDistanceDisplayConditionValuePropertyAdaptor<DistanceDisplayConditionCesiumWriter>> m_asDistanceDisplayCondition;
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumReferenceValuePropertyAdaptor<DistanceDisplayConditionCesiumWriter>> m_asReference;
 
         /// <summary>
@@ -173,16 +180,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumDistanceDisplayConditionValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumDistanceDisplayConditionValuePropertyAdaptor<DistanceDisplayConditionCesiumWriter> AsDistanceDisplayCondition()
         {
             return m_asDistanceDisplayCondition.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumDistanceDisplayConditionValuePropertyAdaptor<DistanceDisplayConditionCesiumWriter>> CreateAsDistanceDisplayCondition()
         {
             return new Lazy<CesiumDistanceDisplayConditionValuePropertyAdaptor<DistanceDisplayConditionCesiumWriter>>(CreateDistanceDisplayCondition, false);
         }
 
+        [NotNull]
         private CesiumDistanceDisplayConditionValuePropertyAdaptor<DistanceDisplayConditionCesiumWriter> CreateDistanceDisplayCondition()
         {
             return CesiumValuePropertyAdaptors.CreateDistanceDisplayCondition(this);
@@ -192,16 +202,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumReferenceValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumReferenceValuePropertyAdaptor<DistanceDisplayConditionCesiumWriter> AsReference()
         {
             return m_asReference.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumReferenceValuePropertyAdaptor<DistanceDisplayConditionCesiumWriter>> CreateAsReference()
         {
             return new Lazy<CesiumReferenceValuePropertyAdaptor<DistanceDisplayConditionCesiumWriter>>(CreateReference, false);
         }
 
+        [NotNull]
         private CesiumReferenceValuePropertyAdaptor<DistanceDisplayConditionCesiumWriter> CreateReference()
         {
             return CesiumValuePropertyAdaptors.CreateReference(this);

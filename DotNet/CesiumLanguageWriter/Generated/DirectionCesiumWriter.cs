@@ -18,37 +18,53 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>spherical</c> property.
         /// </summary>
+        [NotNull]
         public const string SphericalPropertyName = "spherical";
 
         /// <summary>
         /// The name of the <c>unitSpherical</c> property.
         /// </summary>
+        [NotNull]
         public const string UnitSphericalPropertyName = "unitSpherical";
 
         /// <summary>
         /// The name of the <c>cartesian</c> property.
         /// </summary>
+        [NotNull]
         public const string CartesianPropertyName = "cartesian";
 
         /// <summary>
         /// The name of the <c>unitCartesian</c> property.
         /// </summary>
+        [NotNull]
         public const string UnitCartesianPropertyName = "unitCartesian";
 
         /// <summary>
         /// The name of the <c>reference</c> property.
         /// </summary>
+        [NotNull]
         public const string ReferencePropertyName = "reference";
 
         /// <summary>
         /// The name of the <c>delete</c> property.
         /// </summary>
+        [NotNull]
         public const string DeletePropertyName = "delete";
 
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumSphericalValuePropertyAdaptor<DirectionCesiumWriter>> m_asSpherical;
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumUnitSphericalValuePropertyAdaptor<DirectionCesiumWriter>> m_asUnitSpherical;
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumCartesian3ValuePropertyAdaptor<DirectionCesiumWriter>> m_asCartesian;
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumUnitCartesian3ValuePropertyAdaptor<DirectionCesiumWriter>> m_asUnitCartesian;
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumReferenceValuePropertyAdaptor<DirectionCesiumWriter>> m_asReference;
 
         /// <summary>
@@ -295,16 +311,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumSphericalValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumSphericalValuePropertyAdaptor<DirectionCesiumWriter> AsSpherical()
         {
             return m_asSpherical.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumSphericalValuePropertyAdaptor<DirectionCesiumWriter>> CreateAsSpherical()
         {
             return new Lazy<CesiumSphericalValuePropertyAdaptor<DirectionCesiumWriter>>(CreateSpherical, false);
         }
 
+        [NotNull]
         private CesiumSphericalValuePropertyAdaptor<DirectionCesiumWriter> CreateSpherical()
         {
             return CesiumValuePropertyAdaptors.CreateSpherical(this);
@@ -314,16 +333,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumUnitSphericalValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumUnitSphericalValuePropertyAdaptor<DirectionCesiumWriter> AsUnitSpherical()
         {
             return m_asUnitSpherical.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumUnitSphericalValuePropertyAdaptor<DirectionCesiumWriter>> CreateAsUnitSpherical()
         {
             return new Lazy<CesiumUnitSphericalValuePropertyAdaptor<DirectionCesiumWriter>>(CreateUnitSpherical, false);
         }
 
+        [NotNull]
         private CesiumUnitSphericalValuePropertyAdaptor<DirectionCesiumWriter> CreateUnitSpherical()
         {
             return CesiumValuePropertyAdaptors.CreateUnitSpherical(this);
@@ -333,16 +355,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumCartesian3ValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumCartesian3ValuePropertyAdaptor<DirectionCesiumWriter> AsCartesian()
         {
             return m_asCartesian.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumCartesian3ValuePropertyAdaptor<DirectionCesiumWriter>> CreateAsCartesian()
         {
             return new Lazy<CesiumCartesian3ValuePropertyAdaptor<DirectionCesiumWriter>>(CreateCartesian3, false);
         }
 
+        [NotNull]
         private CesiumCartesian3ValuePropertyAdaptor<DirectionCesiumWriter> CreateCartesian3()
         {
             return CesiumValuePropertyAdaptors.CreateCartesian3(this);
@@ -352,16 +377,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumUnitCartesian3ValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumUnitCartesian3ValuePropertyAdaptor<DirectionCesiumWriter> AsUnitCartesian()
         {
             return m_asUnitCartesian.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumUnitCartesian3ValuePropertyAdaptor<DirectionCesiumWriter>> CreateAsUnitCartesian()
         {
             return new Lazy<CesiumUnitCartesian3ValuePropertyAdaptor<DirectionCesiumWriter>>(CreateUnitCartesian3, false);
         }
 
+        [NotNull]
         private CesiumUnitCartesian3ValuePropertyAdaptor<DirectionCesiumWriter> CreateUnitCartesian3()
         {
             return CesiumValuePropertyAdaptors.CreateUnitCartesian3(this);
@@ -371,16 +399,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumReferenceValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumReferenceValuePropertyAdaptor<DirectionCesiumWriter> AsReference()
         {
             return m_asReference.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumReferenceValuePropertyAdaptor<DirectionCesiumWriter>> CreateAsReference()
         {
             return new Lazy<CesiumReferenceValuePropertyAdaptor<DirectionCesiumWriter>>(CreateReference, false);
         }
 
+        [NotNull]
         private CesiumReferenceValuePropertyAdaptor<DirectionCesiumWriter> CreateReference()
         {
             return CesiumValuePropertyAdaptors.CreateReference(this);

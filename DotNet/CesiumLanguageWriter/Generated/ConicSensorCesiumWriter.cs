@@ -19,146 +19,175 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>show</c> property.
         /// </summary>
+        [NotNull]
         public const string ShowPropertyName = "show";
 
         /// <summary>
         /// The name of the <c>innerHalfAngle</c> property.
         /// </summary>
+        [NotNull]
         public const string InnerHalfAnglePropertyName = "innerHalfAngle";
 
         /// <summary>
         /// The name of the <c>outerHalfAngle</c> property.
         /// </summary>
+        [NotNull]
         public const string OuterHalfAnglePropertyName = "outerHalfAngle";
 
         /// <summary>
         /// The name of the <c>minimumClockAngle</c> property.
         /// </summary>
+        [NotNull]
         public const string MinimumClockAnglePropertyName = "minimumClockAngle";
 
         /// <summary>
         /// The name of the <c>maximumClockAngle</c> property.
         /// </summary>
+        [NotNull]
         public const string MaximumClockAnglePropertyName = "maximumClockAngle";
 
         /// <summary>
         /// The name of the <c>radius</c> property.
         /// </summary>
+        [NotNull]
         public const string RadiusPropertyName = "radius";
 
         /// <summary>
         /// The name of the <c>showIntersection</c> property.
         /// </summary>
+        [NotNull]
         public const string ShowIntersectionPropertyName = "showIntersection";
 
         /// <summary>
         /// The name of the <c>intersectionColor</c> property.
         /// </summary>
+        [NotNull]
         public const string IntersectionColorPropertyName = "intersectionColor";
 
         /// <summary>
         /// The name of the <c>intersectionWidth</c> property.
         /// </summary>
+        [NotNull]
         public const string IntersectionWidthPropertyName = "intersectionWidth";
 
         /// <summary>
         /// The name of the <c>showLateralSurfaces</c> property.
         /// </summary>
+        [NotNull]
         public const string ShowLateralSurfacesPropertyName = "showLateralSurfaces";
 
         /// <summary>
         /// The name of the <c>lateralSurfaceMaterial</c> property.
         /// </summary>
+        [NotNull]
         public const string LateralSurfaceMaterialPropertyName = "lateralSurfaceMaterial";
 
         /// <summary>
         /// The name of the <c>showEllipsoidSurfaces</c> property.
         /// </summary>
+        [NotNull]
         public const string ShowEllipsoidSurfacesPropertyName = "showEllipsoidSurfaces";
 
         /// <summary>
         /// The name of the <c>ellipsoidSurfaceMaterial</c> property.
         /// </summary>
+        [NotNull]
         public const string EllipsoidSurfaceMaterialPropertyName = "ellipsoidSurfaceMaterial";
 
         /// <summary>
         /// The name of the <c>showEllipsoidHorizonSurfaces</c> property.
         /// </summary>
+        [NotNull]
         public const string ShowEllipsoidHorizonSurfacesPropertyName = "showEllipsoidHorizonSurfaces";
 
         /// <summary>
         /// The name of the <c>ellipsoidHorizonSurfaceMaterial</c> property.
         /// </summary>
+        [NotNull]
         public const string EllipsoidHorizonSurfaceMaterialPropertyName = "ellipsoidHorizonSurfaceMaterial";
 
         /// <summary>
         /// The name of the <c>showDomeSurfaces</c> property.
         /// </summary>
+        [NotNull]
         public const string ShowDomeSurfacesPropertyName = "showDomeSurfaces";
 
         /// <summary>
         /// The name of the <c>domeSurfaceMaterial</c> property.
         /// </summary>
+        [NotNull]
         public const string DomeSurfaceMaterialPropertyName = "domeSurfaceMaterial";
 
         /// <summary>
         /// The name of the <c>portionToDisplay</c> property.
         /// </summary>
+        [NotNull]
         public const string PortionToDisplayPropertyName = "portionToDisplay";
 
         /// <summary>
         /// The name of the <c>environmentConstraint</c> property.
         /// </summary>
+        [NotNull]
         public const string EnvironmentConstraintPropertyName = "environmentConstraint";
 
         /// <summary>
         /// The name of the <c>showEnvironmentOcclusion</c> property.
         /// </summary>
+        [NotNull]
         public const string ShowEnvironmentOcclusionPropertyName = "showEnvironmentOcclusion";
 
         /// <summary>
         /// The name of the <c>environmentOcclusionMaterial</c> property.
         /// </summary>
+        [NotNull]
         public const string EnvironmentOcclusionMaterialPropertyName = "environmentOcclusionMaterial";
 
         /// <summary>
         /// The name of the <c>showEnvironmentIntersection</c> property.
         /// </summary>
+        [NotNull]
         public const string ShowEnvironmentIntersectionPropertyName = "showEnvironmentIntersection";
 
         /// <summary>
         /// The name of the <c>environmentIntersectionColor</c> property.
         /// </summary>
+        [NotNull]
         public const string EnvironmentIntersectionColorPropertyName = "environmentIntersectionColor";
 
         /// <summary>
         /// The name of the <c>environmentIntersectionWidth</c> property.
         /// </summary>
+        [NotNull]
         public const string EnvironmentIntersectionWidthPropertyName = "environmentIntersectionWidth";
 
         /// <summary>
         /// The name of the <c>showThroughEllipsoid</c> property.
         /// </summary>
+        [NotNull]
         public const string ShowThroughEllipsoidPropertyName = "showThroughEllipsoid";
 
         /// <summary>
         /// The name of the <c>showViewshed</c> property.
         /// </summary>
+        [NotNull]
         public const string ShowViewshedPropertyName = "showViewshed";
 
         /// <summary>
         /// The name of the <c>viewshedVisibleColor</c> property.
         /// </summary>
+        [NotNull]
         public const string ViewshedVisibleColorPropertyName = "viewshedVisibleColor";
 
         /// <summary>
         /// The name of the <c>viewshedOccludedColor</c> property.
         /// </summary>
+        [NotNull]
         public const string ViewshedOccludedColorPropertyName = "viewshedOccludedColor";
 
         /// <summary>
         /// The name of the <c>viewshedResolution</c> property.
         /// </summary>
+        [NotNull]
         public const string ViewshedResolutionPropertyName = "viewshedResolution";
 
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);

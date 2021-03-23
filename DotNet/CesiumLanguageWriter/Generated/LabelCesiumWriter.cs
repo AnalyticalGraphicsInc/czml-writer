@@ -19,106 +19,127 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>show</c> property.
         /// </summary>
+        [NotNull]
         public const string ShowPropertyName = "show";
 
         /// <summary>
         /// The name of the <c>text</c> property.
         /// </summary>
+        [NotNull]
         public const string TextPropertyName = "text";
 
         /// <summary>
         /// The name of the <c>font</c> property.
         /// </summary>
+        [NotNull]
         public const string FontPropertyName = "font";
 
         /// <summary>
         /// The name of the <c>style</c> property.
         /// </summary>
+        [NotNull]
         public const string StylePropertyName = "style";
 
         /// <summary>
         /// The name of the <c>scale</c> property.
         /// </summary>
+        [NotNull]
         public const string ScalePropertyName = "scale";
 
         /// <summary>
         /// The name of the <c>showBackground</c> property.
         /// </summary>
+        [NotNull]
         public const string ShowBackgroundPropertyName = "showBackground";
 
         /// <summary>
         /// The name of the <c>backgroundColor</c> property.
         /// </summary>
+        [NotNull]
         public const string BackgroundColorPropertyName = "backgroundColor";
 
         /// <summary>
         /// The name of the <c>backgroundPadding</c> property.
         /// </summary>
+        [NotNull]
         public const string BackgroundPaddingPropertyName = "backgroundPadding";
 
         /// <summary>
         /// The name of the <c>pixelOffset</c> property.
         /// </summary>
+        [NotNull]
         public const string PixelOffsetPropertyName = "pixelOffset";
 
         /// <summary>
         /// The name of the <c>eyeOffset</c> property.
         /// </summary>
+        [NotNull]
         public const string EyeOffsetPropertyName = "eyeOffset";
 
         /// <summary>
         /// The name of the <c>horizontalOrigin</c> property.
         /// </summary>
+        [NotNull]
         public const string HorizontalOriginPropertyName = "horizontalOrigin";
 
         /// <summary>
         /// The name of the <c>verticalOrigin</c> property.
         /// </summary>
+        [NotNull]
         public const string VerticalOriginPropertyName = "verticalOrigin";
 
         /// <summary>
         /// The name of the <c>heightReference</c> property.
         /// </summary>
+        [NotNull]
         public const string HeightReferencePropertyName = "heightReference";
 
         /// <summary>
         /// The name of the <c>fillColor</c> property.
         /// </summary>
+        [NotNull]
         public const string FillColorPropertyName = "fillColor";
 
         /// <summary>
         /// The name of the <c>outlineColor</c> property.
         /// </summary>
+        [NotNull]
         public const string OutlineColorPropertyName = "outlineColor";
 
         /// <summary>
         /// The name of the <c>outlineWidth</c> property.
         /// </summary>
+        [NotNull]
         public const string OutlineWidthPropertyName = "outlineWidth";
 
         /// <summary>
         /// The name of the <c>translucencyByDistance</c> property.
         /// </summary>
+        [NotNull]
         public const string TranslucencyByDistancePropertyName = "translucencyByDistance";
 
         /// <summary>
         /// The name of the <c>pixelOffsetScaleByDistance</c> property.
         /// </summary>
+        [NotNull]
         public const string PixelOffsetScaleByDistancePropertyName = "pixelOffsetScaleByDistance";
 
         /// <summary>
         /// The name of the <c>scaleByDistance</c> property.
         /// </summary>
+        [NotNull]
         public const string ScaleByDistancePropertyName = "scaleByDistance";
 
         /// <summary>
         /// The name of the <c>distanceDisplayCondition</c> property.
         /// </summary>
+        [NotNull]
         public const string DistanceDisplayConditionPropertyName = "distanceDisplayCondition";
 
         /// <summary>
         /// The name of the <c>disableDepthTestDistance</c> property.
         /// </summary>
+        [NotNull]
         public const string DisableDepthTestDistancePropertyName = "disableDepthTestDistance";
 
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);

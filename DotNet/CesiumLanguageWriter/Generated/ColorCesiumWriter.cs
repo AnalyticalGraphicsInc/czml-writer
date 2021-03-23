@@ -19,25 +19,35 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>rgba</c> property.
         /// </summary>
+        [NotNull]
         public const string RgbaPropertyName = "rgba";
 
         /// <summary>
         /// The name of the <c>rgbaf</c> property.
         /// </summary>
+        [NotNull]
         public const string RgbafPropertyName = "rgbaf";
 
         /// <summary>
         /// The name of the <c>reference</c> property.
         /// </summary>
+        [NotNull]
         public const string ReferencePropertyName = "reference";
 
         /// <summary>
         /// The name of the <c>delete</c> property.
         /// </summary>
+        [NotNull]
         public const string DeletePropertyName = "delete";
 
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumRgbaValuePropertyAdaptor<ColorCesiumWriter>> m_asRgba;
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumRgbafValuePropertyAdaptor<ColorCesiumWriter>> m_asRgbaf;
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumReferenceValuePropertyAdaptor<ColorCesiumWriter>> m_asReference;
 
         /// <summary>
@@ -238,16 +248,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumRgbaValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumRgbaValuePropertyAdaptor<ColorCesiumWriter> AsRgba()
         {
             return m_asRgba.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumRgbaValuePropertyAdaptor<ColorCesiumWriter>> CreateAsRgba()
         {
             return new Lazy<CesiumRgbaValuePropertyAdaptor<ColorCesiumWriter>>(CreateRgba, false);
         }
 
+        [NotNull]
         private CesiumRgbaValuePropertyAdaptor<ColorCesiumWriter> CreateRgba()
         {
             return CesiumValuePropertyAdaptors.CreateRgba(this);
@@ -257,16 +270,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumRgbafValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumRgbafValuePropertyAdaptor<ColorCesiumWriter> AsRgbaf()
         {
             return m_asRgbaf.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumRgbafValuePropertyAdaptor<ColorCesiumWriter>> CreateAsRgbaf()
         {
             return new Lazy<CesiumRgbafValuePropertyAdaptor<ColorCesiumWriter>>(CreateRgbaf, false);
         }
 
+        [NotNull]
         private CesiumRgbafValuePropertyAdaptor<ColorCesiumWriter> CreateRgbaf()
         {
             return CesiumValuePropertyAdaptors.CreateRgbaf(this);
@@ -276,16 +292,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumReferenceValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumReferenceValuePropertyAdaptor<ColorCesiumWriter> AsReference()
         {
             return m_asReference.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumReferenceValuePropertyAdaptor<ColorCesiumWriter>> CreateAsReference()
         {
             return new Lazy<CesiumReferenceValuePropertyAdaptor<ColorCesiumWriter>>(CreateReference, false);
         }
 
+        [NotNull]
         private CesiumReferenceValuePropertyAdaptor<ColorCesiumWriter> CreateReference()
         {
             return CesiumValuePropertyAdaptors.CreateReference(this);

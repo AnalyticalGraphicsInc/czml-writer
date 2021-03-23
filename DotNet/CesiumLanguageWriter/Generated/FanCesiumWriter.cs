@@ -19,51 +19,61 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>show</c> property.
         /// </summary>
+        [NotNull]
         public const string ShowPropertyName = "show";
 
         /// <summary>
         /// The name of the <c>directions</c> property.
         /// </summary>
+        [NotNull]
         public const string DirectionsPropertyName = "directions";
 
         /// <summary>
         /// The name of the <c>radius</c> property.
         /// </summary>
+        [NotNull]
         public const string RadiusPropertyName = "radius";
 
         /// <summary>
         /// The name of the <c>perDirectionRadius</c> property.
         /// </summary>
+        [NotNull]
         public const string PerDirectionRadiusPropertyName = "perDirectionRadius";
 
         /// <summary>
         /// The name of the <c>material</c> property.
         /// </summary>
+        [NotNull]
         public const string MaterialPropertyName = "material";
 
         /// <summary>
         /// The name of the <c>fill</c> property.
         /// </summary>
+        [NotNull]
         public const string FillPropertyName = "fill";
 
         /// <summary>
         /// The name of the <c>outline</c> property.
         /// </summary>
+        [NotNull]
         public const string OutlinePropertyName = "outline";
 
         /// <summary>
         /// The name of the <c>outlineColor</c> property.
         /// </summary>
+        [NotNull]
         public const string OutlineColorPropertyName = "outlineColor";
 
         /// <summary>
         /// The name of the <c>outlineWidth</c> property.
         /// </summary>
+        [NotNull]
         public const string OutlineWidthPropertyName = "outlineWidth";
 
         /// <summary>
         /// The name of the <c>numberOfRings</c> property.
         /// </summary>
+        [NotNull]
         public const string NumberOfRingsPropertyName = "numberOfRings";
 
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);

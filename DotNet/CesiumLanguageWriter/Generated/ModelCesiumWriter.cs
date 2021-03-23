@@ -19,86 +19,103 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>show</c> property.
         /// </summary>
+        [NotNull]
         public const string ShowPropertyName = "show";
 
         /// <summary>
         /// The name of the <c>gltf</c> property.
         /// </summary>
+        [NotNull]
         public const string GltfPropertyName = "gltf";
 
         /// <summary>
         /// The name of the <c>scale</c> property.
         /// </summary>
+        [NotNull]
         public const string ScalePropertyName = "scale";
 
         /// <summary>
         /// The name of the <c>minimumPixelSize</c> property.
         /// </summary>
+        [NotNull]
         public const string MinimumPixelSizePropertyName = "minimumPixelSize";
 
         /// <summary>
         /// The name of the <c>maximumScale</c> property.
         /// </summary>
+        [NotNull]
         public const string MaximumScalePropertyName = "maximumScale";
 
         /// <summary>
         /// The name of the <c>incrementallyLoadTextures</c> property.
         /// </summary>
+        [NotNull]
         public const string IncrementallyLoadTexturesPropertyName = "incrementallyLoadTextures";
 
         /// <summary>
         /// The name of the <c>runAnimations</c> property.
         /// </summary>
+        [NotNull]
         public const string RunAnimationsPropertyName = "runAnimations";
 
         /// <summary>
         /// The name of the <c>shadows</c> property.
         /// </summary>
+        [NotNull]
         public const string ShadowsPropertyName = "shadows";
 
         /// <summary>
         /// The name of the <c>heightReference</c> property.
         /// </summary>
+        [NotNull]
         public const string HeightReferencePropertyName = "heightReference";
 
         /// <summary>
         /// The name of the <c>silhouetteColor</c> property.
         /// </summary>
+        [NotNull]
         public const string SilhouetteColorPropertyName = "silhouetteColor";
 
         /// <summary>
         /// The name of the <c>silhouetteSize</c> property.
         /// </summary>
+        [NotNull]
         public const string SilhouetteSizePropertyName = "silhouetteSize";
 
         /// <summary>
         /// The name of the <c>color</c> property.
         /// </summary>
+        [NotNull]
         public const string ColorPropertyName = "color";
 
         /// <summary>
         /// The name of the <c>colorBlendMode</c> property.
         /// </summary>
+        [NotNull]
         public const string ColorBlendModePropertyName = "colorBlendMode";
 
         /// <summary>
         /// The name of the <c>colorBlendAmount</c> property.
         /// </summary>
+        [NotNull]
         public const string ColorBlendAmountPropertyName = "colorBlendAmount";
 
         /// <summary>
         /// The name of the <c>distanceDisplayCondition</c> property.
         /// </summary>
+        [NotNull]
         public const string DistanceDisplayConditionPropertyName = "distanceDisplayCondition";
 
         /// <summary>
         /// The name of the <c>nodeTransformations</c> property.
         /// </summary>
+        [NotNull]
         public const string NodeTransformationsPropertyName = "nodeTransformations";
 
         /// <summary>
         /// The name of the <c>articulations</c> property.
         /// </summary>
+        [NotNull]
         public const string ArticulationsPropertyName = "articulations";
 
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);

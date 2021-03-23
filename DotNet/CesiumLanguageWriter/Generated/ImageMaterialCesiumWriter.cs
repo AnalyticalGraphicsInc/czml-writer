@@ -19,21 +19,25 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>image</c> property.
         /// </summary>
+        [NotNull]
         public const string ImagePropertyName = "image";
 
         /// <summary>
         /// The name of the <c>repeat</c> property.
         /// </summary>
+        [NotNull]
         public const string RepeatPropertyName = "repeat";
 
         /// <summary>
         /// The name of the <c>color</c> property.
         /// </summary>
+        [NotNull]
         public const string ColorPropertyName = "color";
 
         /// <summary>
         /// The name of the <c>transparent</c> property.
         /// </summary>
+        [NotNull]
         public const string TransparentPropertyName = "transparent";
 
         private readonly Lazy<UriCesiumWriter> m_image = new Lazy<UriCesiumWriter>(() => new UriCesiumWriter(ImagePropertyName), false);

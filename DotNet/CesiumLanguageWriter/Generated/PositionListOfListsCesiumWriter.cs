@@ -18,31 +18,44 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>cartesian</c> property.
         /// </summary>
+        [NotNull]
         public const string CartesianPropertyName = "cartesian";
 
         /// <summary>
         /// The name of the <c>cartographicRadians</c> property.
         /// </summary>
+        [NotNull]
         public const string CartographicRadiansPropertyName = "cartographicRadians";
 
         /// <summary>
         /// The name of the <c>cartographicDegrees</c> property.
         /// </summary>
+        [NotNull]
         public const string CartographicDegreesPropertyName = "cartographicDegrees";
 
         /// <summary>
         /// The name of the <c>references</c> property.
         /// </summary>
+        [NotNull]
         public const string ReferencesPropertyName = "references";
 
         /// <summary>
         /// The name of the <c>delete</c> property.
         /// </summary>
+        [NotNull]
         public const string DeletePropertyName = "delete";
 
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumCartesian3ListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>> m_asCartesian;
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumCartographicRadiansListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>> m_asCartographicRadians;
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumCartographicDegreesListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>> m_asCartographicDegrees;
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumReferenceListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>> m_asReferences;
 
         /// <summary>
@@ -141,16 +154,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumCartesian3ListOfListsValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumCartesian3ListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter> AsCartesian()
         {
             return m_asCartesian.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumCartesian3ListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>> CreateAsCartesian()
         {
             return new Lazy<CesiumCartesian3ListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>>(CreateCartesian3ListOfLists, false);
         }
 
+        [NotNull]
         private CesiumCartesian3ListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter> CreateCartesian3ListOfLists()
         {
             return CesiumValuePropertyAdaptors.CreateCartesian3ListOfLists(this);
@@ -160,16 +176,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumCartographicRadiansListOfListsValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumCartographicRadiansListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter> AsCartographicRadians()
         {
             return m_asCartographicRadians.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumCartographicRadiansListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>> CreateAsCartographicRadians()
         {
             return new Lazy<CesiumCartographicRadiansListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>>(CreateCartographicRadiansListOfLists, false);
         }
 
+        [NotNull]
         private CesiumCartographicRadiansListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter> CreateCartographicRadiansListOfLists()
         {
             return CesiumValuePropertyAdaptors.CreateCartographicRadiansListOfLists(this);
@@ -179,16 +198,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumCartographicDegreesListOfListsValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumCartographicDegreesListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter> AsCartographicDegrees()
         {
             return m_asCartographicDegrees.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumCartographicDegreesListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>> CreateAsCartographicDegrees()
         {
             return new Lazy<CesiumCartographicDegreesListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>>(CreateCartographicDegreesListOfLists, false);
         }
 
+        [NotNull]
         private CesiumCartographicDegreesListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter> CreateCartographicDegreesListOfLists()
         {
             return CesiumValuePropertyAdaptors.CreateCartographicDegreesListOfLists(this);
@@ -198,16 +220,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumReferenceListOfListsValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumReferenceListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter> AsReferences()
         {
             return m_asReferences.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumReferenceListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>> CreateAsReferences()
         {
             return new Lazy<CesiumReferenceListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>>(CreateReferenceListOfLists, false);
         }
 
+        [NotNull]
         private CesiumReferenceListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter> CreateReferenceListOfLists()
         {
             return CesiumValuePropertyAdaptors.CreateReferenceListOfLists(this);

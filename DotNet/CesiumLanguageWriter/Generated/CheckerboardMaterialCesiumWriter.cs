@@ -19,16 +19,19 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>evenColor</c> property.
         /// </summary>
+        [NotNull]
         public const string EvenColorPropertyName = "evenColor";
 
         /// <summary>
         /// The name of the <c>oddColor</c> property.
         /// </summary>
+        [NotNull]
         public const string OddColorPropertyName = "oddColor";
 
         /// <summary>
         /// The name of the <c>repeat</c> property.
         /// </summary>
+        [NotNull]
         public const string RepeatPropertyName = "repeat";
 
         private readonly Lazy<ColorCesiumWriter> m_evenColor = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(EvenColorPropertyName), false);

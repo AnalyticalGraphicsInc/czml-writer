@@ -18,19 +18,26 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>boundingRectangle</c> property.
         /// </summary>
+        [NotNull]
         public const string BoundingRectanglePropertyName = "boundingRectangle";
 
         /// <summary>
         /// The name of the <c>reference</c> property.
         /// </summary>
+        [NotNull]
         public const string ReferencePropertyName = "reference";
 
         /// <summary>
         /// The name of the <c>delete</c> property.
         /// </summary>
+        [NotNull]
         public const string DeletePropertyName = "delete";
 
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumBoundingRectangleValuePropertyAdaptor<BoundingRectangleCesiumWriter>> m_asBoundingRectangle;
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumReferenceValuePropertyAdaptor<BoundingRectangleCesiumWriter>> m_asReference;
 
         /// <summary>
@@ -163,16 +170,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumBoundingRectangleValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumBoundingRectangleValuePropertyAdaptor<BoundingRectangleCesiumWriter> AsBoundingRectangle()
         {
             return m_asBoundingRectangle.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumBoundingRectangleValuePropertyAdaptor<BoundingRectangleCesiumWriter>> CreateAsBoundingRectangle()
         {
             return new Lazy<CesiumBoundingRectangleValuePropertyAdaptor<BoundingRectangleCesiumWriter>>(CreateBoundingRectangle, false);
         }
 
+        [NotNull]
         private CesiumBoundingRectangleValuePropertyAdaptor<BoundingRectangleCesiumWriter> CreateBoundingRectangle()
         {
             return CesiumValuePropertyAdaptors.CreateBoundingRectangle(this);
@@ -182,16 +192,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumReferenceValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumReferenceValuePropertyAdaptor<BoundingRectangleCesiumWriter> AsReference()
         {
             return m_asReference.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumReferenceValuePropertyAdaptor<BoundingRectangleCesiumWriter>> CreateAsReference()
         {
             return new Lazy<CesiumReferenceValuePropertyAdaptor<BoundingRectangleCesiumWriter>>(CreateReference, false);
         }
 
+        [NotNull]
         private CesiumReferenceValuePropertyAdaptor<BoundingRectangleCesiumWriter> CreateReference()
         {
             return CesiumValuePropertyAdaptors.CreateReference(this);

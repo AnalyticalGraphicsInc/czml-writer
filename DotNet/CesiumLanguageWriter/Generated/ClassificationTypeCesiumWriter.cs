@@ -17,19 +17,26 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>classificationType</c> property.
         /// </summary>
+        [NotNull]
         public const string ClassificationTypePropertyName = "classificationType";
 
         /// <summary>
         /// The name of the <c>reference</c> property.
         /// </summary>
+        [NotNull]
         public const string ReferencePropertyName = "reference";
 
         /// <summary>
         /// The name of the <c>delete</c> property.
         /// </summary>
+        [NotNull]
         public const string DeletePropertyName = "delete";
 
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumClassificationTypeValuePropertyAdaptor<ClassificationTypeCesiumWriter>> m_asClassificationType;
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumReferenceValuePropertyAdaptor<ClassificationTypeCesiumWriter>> m_asReference;
 
         /// <summary>
@@ -144,16 +151,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumClassificationTypeValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumClassificationTypeValuePropertyAdaptor<ClassificationTypeCesiumWriter> AsClassificationType()
         {
             return m_asClassificationType.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumClassificationTypeValuePropertyAdaptor<ClassificationTypeCesiumWriter>> CreateAsClassificationType()
         {
             return new Lazy<CesiumClassificationTypeValuePropertyAdaptor<ClassificationTypeCesiumWriter>>(CreateClassificationType, false);
         }
 
+        [NotNull]
         private CesiumClassificationTypeValuePropertyAdaptor<ClassificationTypeCesiumWriter> CreateClassificationType()
         {
             return CesiumValuePropertyAdaptors.CreateClassificationType(this);
@@ -163,16 +173,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumReferenceValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumReferenceValuePropertyAdaptor<ClassificationTypeCesiumWriter> AsReference()
         {
             return m_asReference.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumReferenceValuePropertyAdaptor<ClassificationTypeCesiumWriter>> CreateAsReference()
         {
             return new Lazy<CesiumReferenceValuePropertyAdaptor<ClassificationTypeCesiumWriter>>(CreateReference, false);
         }
 
+        [NotNull]
         private CesiumReferenceValuePropertyAdaptor<ClassificationTypeCesiumWriter> CreateReference()
         {
             return CesiumValuePropertyAdaptors.CreateReference(this);

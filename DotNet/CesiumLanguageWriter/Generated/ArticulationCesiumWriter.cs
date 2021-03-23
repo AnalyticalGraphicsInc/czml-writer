@@ -18,19 +18,26 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>number</c> property.
         /// </summary>
+        [NotNull]
         public const string NumberPropertyName = "number";
 
         /// <summary>
         /// The name of the <c>reference</c> property.
         /// </summary>
+        [NotNull]
         public const string ReferencePropertyName = "reference";
 
         /// <summary>
         /// The name of the <c>delete</c> property.
         /// </summary>
+        [NotNull]
         public const string DeletePropertyName = "delete";
 
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumDoubleValuePropertyAdaptor<ArticulationCesiumWriter>> m_asNumber;
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumReferenceValuePropertyAdaptor<ArticulationCesiumWriter>> m_asReference;
 
         /// <summary>
@@ -169,16 +176,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumDoubleValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumDoubleValuePropertyAdaptor<ArticulationCesiumWriter> AsNumber()
         {
             return m_asNumber.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumDoubleValuePropertyAdaptor<ArticulationCesiumWriter>> CreateAsNumber()
         {
             return new Lazy<CesiumDoubleValuePropertyAdaptor<ArticulationCesiumWriter>>(CreateDouble, false);
         }
 
+        [NotNull]
         private CesiumDoubleValuePropertyAdaptor<ArticulationCesiumWriter> CreateDouble()
         {
             return CesiumValuePropertyAdaptors.CreateDouble(this);
@@ -188,16 +198,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumReferenceValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumReferenceValuePropertyAdaptor<ArticulationCesiumWriter> AsReference()
         {
             return m_asReference.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumReferenceValuePropertyAdaptor<ArticulationCesiumWriter>> CreateAsReference()
         {
             return new Lazy<CesiumReferenceValuePropertyAdaptor<ArticulationCesiumWriter>>(CreateReference, false);
         }
 
+        [NotNull]
         private CesiumReferenceValuePropertyAdaptor<ArticulationCesiumWriter> CreateReference()
         {
             return CesiumValuePropertyAdaptors.CreateReference(this);

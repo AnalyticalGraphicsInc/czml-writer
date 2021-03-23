@@ -18,25 +18,35 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>wsen</c> property.
         /// </summary>
+        [NotNull]
         public const string WsenPropertyName = "wsen";
 
         /// <summary>
         /// The name of the <c>wsenDegrees</c> property.
         /// </summary>
+        [NotNull]
         public const string WsenDegreesPropertyName = "wsenDegrees";
 
         /// <summary>
         /// The name of the <c>reference</c> property.
         /// </summary>
+        [NotNull]
         public const string ReferencePropertyName = "reference";
 
         /// <summary>
         /// The name of the <c>delete</c> property.
         /// </summary>
+        [NotNull]
         public const string DeletePropertyName = "delete";
 
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumCartographicRectangleRadiansValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>> m_asWsen;
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumCartographicRectangleDegreesValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>> m_asWsenDegrees;
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumReferenceValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>> m_asReference;
 
         /// <summary>
@@ -231,16 +241,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumCartographicRectangleRadiansValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumCartographicRectangleRadiansValuePropertyAdaptor<RectangleCoordinatesCesiumWriter> AsWsen()
         {
             return m_asWsen.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumCartographicRectangleRadiansValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>> CreateAsWsen()
         {
             return new Lazy<CesiumCartographicRectangleRadiansValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>>(CreateCartographicRectangleRadians, false);
         }
 
+        [NotNull]
         private CesiumCartographicRectangleRadiansValuePropertyAdaptor<RectangleCoordinatesCesiumWriter> CreateCartographicRectangleRadians()
         {
             return CesiumValuePropertyAdaptors.CreateCartographicRectangleRadians(this);
@@ -250,16 +263,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumCartographicRectangleDegreesValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumCartographicRectangleDegreesValuePropertyAdaptor<RectangleCoordinatesCesiumWriter> AsWsenDegrees()
         {
             return m_asWsenDegrees.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumCartographicRectangleDegreesValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>> CreateAsWsenDegrees()
         {
             return new Lazy<CesiumCartographicRectangleDegreesValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>>(CreateCartographicRectangleDegrees, false);
         }
 
+        [NotNull]
         private CesiumCartographicRectangleDegreesValuePropertyAdaptor<RectangleCoordinatesCesiumWriter> CreateCartographicRectangleDegrees()
         {
             return CesiumValuePropertyAdaptors.CreateCartographicRectangleDegrees(this);
@@ -269,16 +285,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumReferenceValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumReferenceValuePropertyAdaptor<RectangleCoordinatesCesiumWriter> AsReference()
         {
             return m_asReference.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumReferenceValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>> CreateAsReference()
         {
             return new Lazy<CesiumReferenceValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>>(CreateReference, false);
         }
 
+        [NotNull]
         private CesiumReferenceValuePropertyAdaptor<RectangleCoordinatesCesiumWriter> CreateReference()
         {
             return CesiumValuePropertyAdaptors.CreateReference(this);

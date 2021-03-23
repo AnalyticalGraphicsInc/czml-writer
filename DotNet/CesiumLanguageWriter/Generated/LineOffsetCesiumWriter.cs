@@ -18,19 +18,26 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// The name of the <c>cartesian2</c> property.
         /// </summary>
+        [NotNull]
         public const string Cartesian2PropertyName = "cartesian2";
 
         /// <summary>
         /// The name of the <c>reference</c> property.
         /// </summary>
+        [NotNull]
         public const string ReferencePropertyName = "reference";
 
         /// <summary>
         /// The name of the <c>delete</c> property.
         /// </summary>
+        [NotNull]
         public const string DeletePropertyName = "delete";
 
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumCartesian2ValuePropertyAdaptor<LineOffsetCesiumWriter>> m_asCartesian2;
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CesiumReferenceValuePropertyAdaptor<LineOffsetCesiumWriter>> m_asReference;
 
         /// <summary>
@@ -173,16 +180,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumCartesian2ValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumCartesian2ValuePropertyAdaptor<LineOffsetCesiumWriter> AsCartesian2()
         {
             return m_asCartesian2.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumCartesian2ValuePropertyAdaptor<LineOffsetCesiumWriter>> CreateAsCartesian2()
         {
             return new Lazy<CesiumCartesian2ValuePropertyAdaptor<LineOffsetCesiumWriter>>(CreateCartesian2, false);
         }
 
+        [NotNull]
         private CesiumCartesian2ValuePropertyAdaptor<LineOffsetCesiumWriter> CreateCartesian2()
         {
             return CesiumValuePropertyAdaptors.CreateCartesian2(this);
@@ -192,16 +202,19 @@ namespace CesiumLanguageWriter
         /// Returns a wrapper for this instance that implements <see cref="ICesiumReferenceValuePropertyWriter"/>. Because the returned instance is a wrapper for this instance, you may call <see cref="ICesiumElementWriter.Close"/> on either this instance or the wrapper, but you must not call it on both.
         /// </summary>
         /// <returns>The wrapper.</returns>
+        [NotNull]
         public CesiumReferenceValuePropertyAdaptor<LineOffsetCesiumWriter> AsReference()
         {
             return m_asReference.Value;
         }
 
+        [NotNull]
         private Lazy<CesiumReferenceValuePropertyAdaptor<LineOffsetCesiumWriter>> CreateAsReference()
         {
             return new Lazy<CesiumReferenceValuePropertyAdaptor<LineOffsetCesiumWriter>>(CreateReference, false);
         }
 
+        [NotNull]
         private CesiumReferenceValuePropertyAdaptor<LineOffsetCesiumWriter> CreateReference()
         {
             return CesiumValuePropertyAdaptors.CreateReference(this);
