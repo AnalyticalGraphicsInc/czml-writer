@@ -70,14 +70,15 @@ public final class IterableHelper {
         return concat(select(source, selector));
     }
 
-    private static interface ResultYielder<T> {
-        void yield(T t);
+    private interface ResultYielder<T> {
+        void yield(T item);
 
         void end();
     }
 
     private static abstract class BaseIterator<T> implements Iterator<T>, ResultYielder<T> {
         private T next;
+        @Nonnull
         private State state = State.NEED_NEXT;
 
         private enum State {
@@ -93,9 +94,11 @@ public final class IterableHelper {
                 return false;
             case HAVE_NEXT:
                 return true;
-            default:
+            case NEED_NEXT:
                 yieldNext(this);
                 return state != State.END;
+            default:
+                throw new UnsupportedOperationException();
             }
         }
 
@@ -110,9 +113,9 @@ public final class IterableHelper {
         }
 
         @Override
-        public void yield(T t) {
+        public void yield(T item) {
             state = State.HAVE_NEXT;
-            next = t;
+            next = item;
         }
 
         @Override
@@ -157,18 +160,18 @@ public final class IterableHelper {
 
             @Override
             protected void yieldNext(ResultYielder<T> yielder) {
-                if (current == null || !current.hasNext()) {
-                    if (iterators.hasNext()) {
-                        current = iterators.next();
-                        yieldNext(yielder);
-                        return;
-                    }
-
-                    yielder.end();
+                if (current != null && current.hasNext()) {
+                    yielder.yield(current.next());
                     return;
                 }
 
-                yielder.yield(current.next());
+                if (iterators.hasNext()) {
+                    current = iterators.next();
+                    yieldNext(yielder);
+                    return;
+                }
+
+                yielder.end();
             }
         }
     }

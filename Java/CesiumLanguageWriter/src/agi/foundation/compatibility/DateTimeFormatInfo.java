@@ -65,34 +65,34 @@ public final class DateTimeFormatInfo {
 
     private interface DateFormats {
         @Nonnull
-        public String getFullDateTimePattern();
+        String getFullDateTimePattern();
 
         @Nonnull
-        public String getLongDatePattern();
+        String getLongDatePattern();
 
         @Nonnull
-        public String getLongTimePattern();
+        String getLongTimePattern();
 
         @Nonnull
-        public String getMonthDayPattern();
+        String getMonthDayPattern();
 
         @Nonnull
-        public String getRFC1123Pattern();
+        String getRFC1123Pattern();
 
         @Nonnull
-        public String getShortDatePattern();
+        String getShortDatePattern();
 
         @Nonnull
-        public String getShortTimePattern();
+        String getShortTimePattern();
 
         @Nonnull
-        public String getSortableDateTimePattern();
+        String getSortableDateTimePattern();
 
         @Nonnull
-        public String getUniversalSortableDateTimePattern();
+        String getUniversalSortableDateTimePattern();
 
         @Nonnull
-        public String getYearMonthPattern();
+        String getYearMonthPattern();
     }
 
     @SuppressWarnings("unused")
