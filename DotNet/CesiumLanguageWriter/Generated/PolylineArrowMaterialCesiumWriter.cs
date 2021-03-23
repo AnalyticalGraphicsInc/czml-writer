@@ -22,6 +22,8 @@ namespace CesiumLanguageWriter
         [NotNull]
         public const string ColorPropertyName = "color";
 
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(ColorPropertyName), false);
 
         /// <summary>

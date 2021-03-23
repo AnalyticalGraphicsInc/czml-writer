@@ -40,9 +40,17 @@ namespace CesiumLanguageWriter
         [NotNull]
         public const string TransparentPropertyName = "transparent";
 
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<UriCesiumWriter> m_image = new Lazy<UriCesiumWriter>(() => new UriCesiumWriter(ImagePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<RepeatCesiumWriter> m_repeat = new Lazy<RepeatCesiumWriter>(() => new RepeatCesiumWriter(RepeatPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(() => new ColorCesiumWriter(ColorPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<BooleanCesiumWriter> m_transparent = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(TransparentPropertyName), false);
 
         /// <summary>

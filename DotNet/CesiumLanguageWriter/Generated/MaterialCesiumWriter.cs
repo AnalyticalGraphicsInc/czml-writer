@@ -46,10 +46,20 @@ namespace CesiumLanguageWriter
         [NotNull]
         public const string CheckerboardPropertyName = "checkerboard";
 
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<SolidColorMaterialCesiumWriter> m_solidColor = new Lazy<SolidColorMaterialCesiumWriter>(() => new SolidColorMaterialCesiumWriter(SolidColorPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<ImageMaterialCesiumWriter> m_image = new Lazy<ImageMaterialCesiumWriter>(() => new ImageMaterialCesiumWriter(ImagePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<GridMaterialCesiumWriter> m_grid = new Lazy<GridMaterialCesiumWriter>(() => new GridMaterialCesiumWriter(GridPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<StripeMaterialCesiumWriter> m_stripe = new Lazy<StripeMaterialCesiumWriter>(() => new StripeMaterialCesiumWriter(StripePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CheckerboardMaterialCesiumWriter> m_checkerboard = new Lazy<CheckerboardMaterialCesiumWriter>(() => new CheckerboardMaterialCesiumWriter(CheckerboardPropertyName), false);
 
         /// <summary>

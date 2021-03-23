@@ -34,8 +34,14 @@ namespace CesiumLanguageWriter
         [NotNull]
         public const string MaximumScreenSpaceErrorPropertyName = "maximumScreenSpaceError";
 
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<UriCesiumWriter> m_uri = new Lazy<UriCesiumWriter>(() => new UriCesiumWriter(UriPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<DoubleCesiumWriter> m_maximumScreenSpaceError = new Lazy<DoubleCesiumWriter>(() => new DoubleCesiumWriter(MaximumScreenSpaceErrorPropertyName), false);
 
         /// <summary>

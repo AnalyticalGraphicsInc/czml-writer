@@ -213,6 +213,8 @@ namespace GenerateFromSchema
                 }
                 else
                 {
+                    writer.WriteLine("[NotNull]");
+                    writer.WriteLine("[CSToJavaFinalField]");
                     writer.WriteLine("private readonly Lazy<{0}> m_{1} = new Lazy<{0}>(() => new {0}({2}PropertyName), false);",
                                      GetWriterType(property.ValueType),
                                      property.Name,

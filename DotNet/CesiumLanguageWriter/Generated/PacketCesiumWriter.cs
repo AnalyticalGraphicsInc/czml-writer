@@ -214,32 +214,86 @@ namespace CesiumLanguageWriter
         [NotNull]
         public const string VectorPropertyName = "agi_vector";
 
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<StringCesiumWriter> m_description = new Lazy<StringCesiumWriter>(() => new StringCesiumWriter(DescriptionPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<ClockCesiumWriter> m_clock = new Lazy<ClockCesiumWriter>(() => new ClockCesiumWriter(ClockPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CustomPropertiesCesiumWriter> m_properties = new Lazy<CustomPropertiesCesiumWriter>(() => new CustomPropertiesCesiumWriter(PropertiesPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<PositionCesiumWriter> m_position = new Lazy<PositionCesiumWriter>(() => new PositionCesiumWriter(PositionPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<OrientationCesiumWriter> m_orientation = new Lazy<OrientationCesiumWriter>(() => new OrientationCesiumWriter(OrientationPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<ViewFromCesiumWriter> m_viewFrom = new Lazy<ViewFromCesiumWriter>(() => new ViewFromCesiumWriter(ViewFromPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<BillboardCesiumWriter> m_billboard = new Lazy<BillboardCesiumWriter>(() => new BillboardCesiumWriter(BillboardPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<BoxCesiumWriter> m_box = new Lazy<BoxCesiumWriter>(() => new BoxCesiumWriter(BoxPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CorridorCesiumWriter> m_corridor = new Lazy<CorridorCesiumWriter>(() => new CorridorCesiumWriter(CorridorPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CylinderCesiumWriter> m_cylinder = new Lazy<CylinderCesiumWriter>(() => new CylinderCesiumWriter(CylinderPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<EllipseCesiumWriter> m_ellipse = new Lazy<EllipseCesiumWriter>(() => new EllipseCesiumWriter(EllipsePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<EllipsoidCesiumWriter> m_ellipsoid = new Lazy<EllipsoidCesiumWriter>(() => new EllipsoidCesiumWriter(EllipsoidPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<LabelCesiumWriter> m_label = new Lazy<LabelCesiumWriter>(() => new LabelCesiumWriter(LabelPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<ModelCesiumWriter> m_model = new Lazy<ModelCesiumWriter>(() => new ModelCesiumWriter(ModelPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<PathCesiumWriter> m_path = new Lazy<PathCesiumWriter>(() => new PathCesiumWriter(PathPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<PointCesiumWriter> m_point = new Lazy<PointCesiumWriter>(() => new PointCesiumWriter(PointPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<PolygonCesiumWriter> m_polygon = new Lazy<PolygonCesiumWriter>(() => new PolygonCesiumWriter(PolygonPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<PolylineCesiumWriter> m_polyline = new Lazy<PolylineCesiumWriter>(() => new PolylineCesiumWriter(PolylinePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<PolylineVolumeCesiumWriter> m_polylineVolume = new Lazy<PolylineVolumeCesiumWriter>(() => new PolylineVolumeCesiumWriter(PolylineVolumePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<RectangleCesiumWriter> m_rectangle = new Lazy<RectangleCesiumWriter>(() => new RectangleCesiumWriter(RectanglePropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<TilesetCesiumWriter> m_tileset = new Lazy<TilesetCesiumWriter>(() => new TilesetCesiumWriter(TilesetPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<WallCesiumWriter> m_wall = new Lazy<WallCesiumWriter>(() => new WallCesiumWriter(WallPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<ConicSensorCesiumWriter> m_agi_conicSensor = new Lazy<ConicSensorCesiumWriter>(() => new ConicSensorCesiumWriter(ConicSensorPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<CustomPatternSensorCesiumWriter> m_agi_customPatternSensor = new Lazy<CustomPatternSensorCesiumWriter>(() => new CustomPatternSensorCesiumWriter(CustomPatternSensorPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<RectangularSensorCesiumWriter> m_agi_rectangularSensor = new Lazy<RectangularSensorCesiumWriter>(() => new RectangularSensorCesiumWriter(RectangularSensorPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<FanCesiumWriter> m_agi_fan = new Lazy<FanCesiumWriter>(() => new FanCesiumWriter(FanPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
         private readonly Lazy<VectorCesiumWriter> m_agi_vector = new Lazy<VectorCesiumWriter>(() => new VectorCesiumWriter(VectorPropertyName), false);
 
         /// <summary>
