@@ -16,7 +16,7 @@ namespace CesiumLanguageWriter.Advanced
         [NotNull]
         public static readonly TimeInterval MaximumInterval = new TimeInterval(GregorianDate.MinValue.ToJulianDate(), GregorianDate.MaxValue.ToJulianDate());
 
-        private static Iso8601Format GetIso8601Format(CesiumOutputStream output)
+        private static Iso8601Format GetIso8601Format([NotNull] CesiumOutputStream output)
         {
             return output.PrettyFormatting ? Iso8601Format.Extended : Iso8601Format.Compact;
         }
@@ -26,7 +26,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="date">The date to write.</param>
-        public static void WriteDate(CesiumOutputStream output, JulianDate date)
+        public static void WriteDate([NotNull] CesiumOutputStream output, JulianDate date)
         {
             output.WriteValue(CesiumFormattingHelper.ToIso8601(date, GetIso8601Format(output)));
         }
@@ -36,7 +36,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="interval">The interval to write.</param>
-        public static void WriteTimeInterval(CesiumOutputStream output, TimeInterval interval)
+        public static void WriteTimeInterval([NotNull] CesiumOutputStream output, [NotNull] TimeInterval interval)
         {
             output.WriteValue(CesiumFormattingHelper.ToIso8601Interval(interval.Start, interval.Stop, GetIso8601Format(output)));
         }
@@ -48,7 +48,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="intervals">The intervals to write.</param>
-        public static void WriteTimeIntervalCollection(CesiumOutputStream output, IList<TimeInterval> intervals)
+        public static void WriteTimeIntervalCollection([NotNull] CesiumOutputStream output, [NotNull] IList<TimeInterval> intervals)
         {
             if (intervals.Count == 1)
             {
@@ -73,7 +73,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="value">The value to write.</param>
-        public static void WriteCartesian2(CesiumOutputStream output, Rectangular value)
+        public static void WriteCartesian2([NotNull] CesiumOutputStream output, Rectangular value)
         {
             output.WriteStartSequence();
             output.WriteValue(value.X);
@@ -92,7 +92,12 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="values">The corresponding value for each date.</param>
         /// <param name="startIndex">The index of the first element to use in the <paramref name="values"/> collection.</param>
         /// <param name="length">The number of elements to use from the <paramref name="values"/> collection.</param>
-        public static void WriteCartesian2(CesiumOutputStream output, string propertyName, IList<JulianDate> dates, IList<Rectangular> values, int startIndex, int length)
+        public static void WriteCartesian2([NotNull] CesiumOutputStream output,
+                                           [NotNull] string propertyName,
+                                           [NotNull] IList<JulianDate> dates,
+                                           [NotNull] IList<Rectangular> values,
+                                           int startIndex,
+                                           int length)
         {
             if (dates.Count != values.Count)
                 throw new ArgumentException(CesiumLocalization.MismatchedNumberOfDatesAndValues, "values");
@@ -119,7 +124,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="value">The value to write.</param>
-        public static void WriteCartographicExtent(CesiumOutputStream output, CartographicExtent value)
+        public static void WriteCartographicExtent([NotNull] CesiumOutputStream output, [NotNull] CartographicExtent value)
         {
             output.WriteStartSequence();
             output.WriteValue(value.WestLongitude);
@@ -140,7 +145,12 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="values">The corresponding value for each date.</param>
         /// <param name="startIndex">The index of the first element to use in the <paramref name="values"/> collection.</param>
         /// <param name="length">The number of elements to use from the <paramref name="values"/> collection.</param>
-        public static void WriteCartographicExtent(CesiumOutputStream output, string propertyName, IList<JulianDate> dates, IList<CartographicExtent> values, int startIndex, int length)
+        public static void WriteCartographicExtent([NotNull] CesiumOutputStream output,
+                                                   [NotNull] string propertyName,
+                                                   [NotNull] IList<JulianDate> dates,
+                                                   [NotNull] IList<CartographicExtent> values,
+                                                   int startIndex,
+                                                   int length)
         {
             if (dates.Count != values.Count)
                 throw new ArgumentException(CesiumLocalization.MismatchedNumberOfDatesAndValues, "values");
@@ -169,7 +179,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="value">The value to write.</param>
-        public static void WriteCartesian3(CesiumOutputStream output, Cartesian value)
+        public static void WriteCartesian3([NotNull] CesiumOutputStream output, Cartesian value)
         {
             output.WriteStartSequence();
             output.WriteValue(value.X);
@@ -189,7 +199,12 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="values">The corresponding value for each date.</param>
         /// <param name="startIndex">The index of the first element to use in the <paramref name="values"/> collection.</param>
         /// <param name="length">The number of elements to use from the <paramref name="values"/> collection.</param>
-        public static void WriteCartesian3(CesiumOutputStream output, string propertyName, IList<JulianDate> dates, IList<Cartesian> values, int startIndex, int length)
+        public static void WriteCartesian3([NotNull] CesiumOutputStream output,
+                                           [NotNull] string propertyName,
+                                           [NotNull] IList<JulianDate> dates,
+                                           [NotNull] IList<Cartesian> values,
+                                           int startIndex,
+                                           int length)
         {
             if (dates.Count != values.Count)
                 throw new ArgumentException(CesiumLocalization.MismatchedNumberOfDatesAndValues, "values");
@@ -217,7 +232,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="value">The value to write.</param>
-        public static void WriteCartesian3Velocity(CesiumOutputStream output, Motion<Cartesian> value)
+        public static void WriteCartesian3Velocity([NotNull] CesiumOutputStream output, Motion<Cartesian> value)
         {
             output.WriteStartSequence();
             output.WriteValue(value.Value.X);
@@ -240,7 +255,12 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="values">The corresponding value for each date.</param>
         /// <param name="startIndex">The index of the first element to use in the <paramref name="values"/> collection.</param>
         /// <param name="length">The number of elements to use from the <paramref name="values"/> collection.</param>
-        public static void WriteCartesian3Velocity(CesiumOutputStream output, string propertyName, IList<JulianDate> dates, IList<Motion<Cartesian>> values, int startIndex, int length)
+        public static void WriteCartesian3Velocity([NotNull] CesiumOutputStream output,
+                                                   [NotNull] string propertyName,
+                                                   [NotNull] IList<JulianDate> dates,
+                                                   [NotNull] IList<Motion<Cartesian>> values,
+                                                   int startIndex,
+                                                   int length)
         {
             if (dates.Count != values.Count)
                 throw new ArgumentException(CesiumLocalization.MismatchedNumberOfDatesAndValues, "values");
@@ -272,7 +292,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="value">The value to write.</param>
-        public static void WriteUnitCartesian3(CesiumOutputStream output, UnitCartesian value)
+        public static void WriteUnitCartesian3([NotNull] CesiumOutputStream output, UnitCartesian value)
         {
             output.WriteStartSequence();
             output.WriteValue(value.X);
@@ -292,7 +312,12 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="values">The corresponding value for each date.</param>
         /// <param name="startIndex">The index of the first element to use in the <paramref name="values"/> collection.</param>
         /// <param name="length">The number of elements to use from the <paramref name="values"/> collection.</param>
-        public static void WriteUnitCartesian3(CesiumOutputStream output, string propertyName, IList<JulianDate> dates, IList<UnitCartesian> values, int startIndex, int length)
+        public static void WriteUnitCartesian3([NotNull] CesiumOutputStream output,
+                                               [NotNull] string propertyName,
+                                               [NotNull] IList<JulianDate> dates,
+                                               [NotNull] IList<UnitCartesian> values,
+                                               int startIndex,
+                                               int length)
         {
             if (dates.Count != values.Count)
                 throw new ArgumentException(CesiumLocalization.MismatchedNumberOfDatesAndValues, "values");
@@ -320,7 +345,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="value">The value to write.</param>
-        public static void WriteSpherical(CesiumOutputStream output, Spherical value)
+        public static void WriteSpherical([NotNull] CesiumOutputStream output, Spherical value)
         {
             output.WriteStartSequence();
             output.WriteValue(value.Clock);
@@ -340,7 +365,12 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="values">The corresponding value for each date.</param>
         /// <param name="startIndex">The index of the first element to use in the <paramref name="values"/> collection.</param>
         /// <param name="length">The number of elements to use from the <paramref name="values"/> collection.</param>
-        public static void WriteSpherical(CesiumOutputStream output, string propertyName, IList<JulianDate> dates, IList<Spherical> values, int startIndex, int length)
+        public static void WriteSpherical([NotNull] CesiumOutputStream output,
+                                          [NotNull] string propertyName,
+                                          [NotNull] IList<JulianDate> dates,
+                                          [NotNull] IList<Spherical> values,
+                                          int startIndex,
+                                          int length)
         {
             if (dates.Count != values.Count)
                 throw new ArgumentException(CesiumLocalization.MismatchedNumberOfDatesAndValues, "values");
@@ -368,7 +398,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="value">The value to write.</param>
-        public static void WriteBoundingRectangle(CesiumOutputStream output, BoundingRectangle value)
+        public static void WriteBoundingRectangle([NotNull] CesiumOutputStream output, BoundingRectangle value)
         {
             output.WriteStartSequence();
             output.WriteValue(value.Left);
@@ -389,7 +419,12 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="values">The corresponding value for each date.</param>
         /// <param name="startIndex">The index of the first element to use in the <paramref name="values"/> collection.</param>
         /// <param name="length">The number of elements to use from the <paramref name="values"/> collection.</param>
-        public static void WriteBoundingRectangle(CesiumOutputStream output, string propertyName, IList<JulianDate> dates, IList<BoundingRectangle> values, int startIndex, int length)
+        public static void WriteBoundingRectangle([NotNull] CesiumOutputStream output,
+                                                  [NotNull] string propertyName,
+                                                  [NotNull] IList<JulianDate> dates,
+                                                  [NotNull] IList<BoundingRectangle> values,
+                                                  int startIndex,
+                                                  int length)
         {
             if (dates.Count != values.Count)
                 throw new ArgumentException(CesiumLocalization.MismatchedNumberOfDatesAndValues, "values");
@@ -418,7 +453,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="value">The value to write.</param>
-        public static void WriteNearFarScalar(CesiumOutputStream output, NearFarScalar value)
+        public static void WriteNearFarScalar([NotNull] CesiumOutputStream output, NearFarScalar value)
         {
             output.WriteStartSequence();
             output.WriteValue(value.NearDistance);
@@ -439,7 +474,12 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="values">The corresponding value for each date.</param>
         /// <param name="startIndex">The index of the first element to use in the <paramref name="values"/> collection.</param>
         /// <param name="length">The number of elements to use from the <paramref name="values"/> collection.</param>
-        public static void WriteNearFarScalar(CesiumOutputStream output, string propertyName, IList<JulianDate> dates, IList<NearFarScalar> values, int startIndex, int length)
+        public static void WriteNearFarScalar([NotNull] CesiumOutputStream output,
+                                              [NotNull] string propertyName,
+                                              [NotNull] IList<JulianDate> dates,
+                                              [NotNull] IList<NearFarScalar> values,
+                                              int startIndex,
+                                              int length)
         {
             if (dates.Count != values.Count)
                 throw new ArgumentException(CesiumLocalization.MismatchedNumberOfDatesAndValues, "values");
@@ -468,7 +508,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="value">The value to write.</param>
-        public static void WriteBounds(CesiumOutputStream output, Bounds value)
+        public static void WriteBounds([NotNull] CesiumOutputStream output, Bounds value)
         {
             output.WriteStartSequence();
             output.WriteValue(value.LowerBound);
@@ -487,7 +527,12 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="values">The corresponding value for each date.</param>
         /// <param name="startIndex">The index of the first element to use in the <paramref name="values"/> collection.</param>
         /// <param name="length">The number of elements to use from the <paramref name="values"/> collection.</param>
-        public static void WriteBounds(CesiumOutputStream output, string propertyName, IList<JulianDate> dates, IList<Bounds> values, int startIndex, int length)
+        public static void WriteBounds([NotNull] CesiumOutputStream output,
+                                       [NotNull] string propertyName,
+                                       [NotNull] IList<JulianDate> dates,
+                                       [NotNull] IList<Bounds> values,
+                                       int startIndex,
+                                       int length)
         {
             if (dates.Count != values.Count)
                 throw new ArgumentException(CesiumLocalization.MismatchedNumberOfDatesAndValues, "values");
@@ -514,7 +559,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="value">The value to write.</param>
-        public static void WriteUnitSpherical(CesiumOutputStream output, UnitSpherical value)
+        public static void WriteUnitSpherical([NotNull] CesiumOutputStream output, UnitSpherical value)
         {
             output.WriteStartSequence();
             output.WriteValue(value.Clock);
@@ -533,7 +578,12 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="values">The corresponding value for each date.</param>
         /// <param name="startIndex">The index of the first element to use in the <paramref name="values"/> collection.</param>
         /// <param name="length">The number of elements to use from the <paramref name="values"/> collection.</param>
-        public static void WriteUnitSpherical(CesiumOutputStream output, string propertyName, IList<JulianDate> dates, IList<UnitSpherical> values, int startIndex, int length)
+        public static void WriteUnitSpherical([NotNull] CesiumOutputStream output,
+                                              [NotNull] string propertyName,
+                                              [NotNull] IList<JulianDate> dates,
+                                              [NotNull] IList<UnitSpherical> values,
+                                              int startIndex,
+                                              int length)
         {
             if (dates.Count != values.Count)
                 throw new ArgumentException(CesiumLocalization.MismatchedNumberOfDatesAndValues, "values");
@@ -560,7 +610,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="values">The values to write.</param>
-        public static void WriteDoubleList(CesiumOutputStream output, IEnumerable<double> values)
+        public static void WriteDoubleList([NotNull] CesiumOutputStream output, [NotNull] IEnumerable<double> values)
         {
             output.WriteStartSequence();
             foreach (double value in values)
@@ -577,7 +627,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="values">The values to write.</param>
-        public static void WriteCartesian2List(CesiumOutputStream output, IEnumerable<Rectangular> values)
+        public static void WriteCartesian2List([NotNull] CesiumOutputStream output, [NotNull] IEnumerable<Rectangular> values)
         {
             output.WriteStartSequence();
             foreach (Rectangular value in values)
@@ -595,7 +645,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="values">The values to write.</param>
-        public static void WriteCartesian3List(CesiumOutputStream output, IEnumerable<Cartesian> values)
+        public static void WriteCartesian3List([NotNull] CesiumOutputStream output, [NotNull] IEnumerable<Cartesian> values)
         {
             output.WriteStartSequence();
             foreach (Cartesian value in values)
@@ -615,7 +665,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="values">The values to write.</param>
         [CSToJavaUseWildcardGenerics]
-        public static void WriteCartesian3ListOfLists(CesiumOutputStream output, IEnumerable<IEnumerable<Cartesian>> values)
+        public static void WriteCartesian3ListOfLists([NotNull] CesiumOutputStream output, [NotNull] IEnumerable<IEnumerable<Cartesian>> values)
         {
             output.WriteStartSequence();
             foreach (IEnumerable<Cartesian> list in values)
@@ -629,6 +679,7 @@ namespace CesiumLanguageWriter.Advanced
                     output.WriteValue(value.Z);
                     output.WriteLineBreak();
                 }
+
                 output.WriteEndSequence();
             }
 
@@ -640,7 +691,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="value">The value to write.</param>
-        public static void WriteCartographic(CesiumOutputStream output, Cartographic value)
+        public static void WriteCartographic([NotNull] CesiumOutputStream output, Cartographic value)
         {
             output.WriteStartSequence();
             output.WriteValue(value.Longitude);
@@ -660,7 +711,12 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="values">The corresponding value for each date.</param>
         /// <param name="startIndex">The index of the first element to use in the <paramref name="values"/> collection.</param>
         /// <param name="length">The number of elements to use from the <paramref name="values"/> collection.</param>
-        public static void WriteCartographic(CesiumOutputStream output, string propertyName, IList<JulianDate> dates, IList<Cartographic> values, int startIndex, int length)
+        public static void WriteCartographic([NotNull] CesiumOutputStream output,
+                                             [NotNull] string propertyName,
+                                             [NotNull] IList<JulianDate> dates,
+                                             [NotNull] IList<Cartographic> values,
+                                             int startIndex,
+                                             int length)
         {
             if (dates.Count != values.Count)
                 throw new ArgumentException(CesiumLocalization.MismatchedNumberOfDatesAndValues, "values");
@@ -688,7 +744,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="values">The values to write.</param>
-        public static void WriteCartographicList(CesiumOutputStream output, IEnumerable<Cartographic> values)
+        public static void WriteCartographicList([NotNull] CesiumOutputStream output, [NotNull] IEnumerable<Cartographic> values)
         {
             output.WriteStartSequence();
             foreach (Cartographic value in values)
@@ -708,7 +764,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="values">The values to write.</param>
         [CSToJavaUseWildcardGenerics]
-        public static void WriteCartographicListOfLists(CesiumOutputStream output, IEnumerable<IEnumerable<Cartographic>> values)
+        public static void WriteCartographicListOfLists([NotNull] CesiumOutputStream output, [NotNull] IEnumerable<IEnumerable<Cartographic>> values)
         {
             output.WriteStartSequence();
             foreach (IEnumerable<Cartographic> list in values)
@@ -722,6 +778,7 @@ namespace CesiumLanguageWriter.Advanced
                     output.WriteValue(value.Height);
                     output.WriteLineBreak();
                 }
+
                 output.WriteEndSequence();
             }
 
@@ -733,7 +790,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="output">The stream to which to write the color.</param>
         /// <param name="value">The value to write.</param>
-        public static void WriteRgba(CesiumOutputStream output, Color value)
+        public static void WriteRgba([NotNull] CesiumOutputStream output, Color value)
         {
             WriteRgba(output, value.R, value.G, value.B, value.A);
         }
@@ -746,7 +803,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="green">The green component in the range 0-255.</param>
         /// <param name="blue">The blue component in the range 0-255.</param>
         /// <param name="alpha">The alpha component in the range 0-255.</param>
-        public static void WriteRgba(CesiumOutputStream output, int red, int green, int blue, int alpha)
+        public static void WriteRgba([NotNull] CesiumOutputStream output, int red, int green, int blue, int alpha)
         {
             output.WriteStartSequence();
             output.WriteValue(red);
@@ -767,7 +824,12 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="values">The corresponding value for each date.</param>
         /// <param name="startIndex">The index of the first element to use in the <paramref name="values"/> collection.</param>
         /// <param name="length">The number of elements to use from the <paramref name="values"/> collection.</param>
-        public static void WriteRgba(CesiumOutputStream output, string propertyName, IList<JulianDate> dates, IList<Color> values, int startIndex, int length)
+        public static void WriteRgba([NotNull] CesiumOutputStream output,
+                                     [NotNull] string propertyName,
+                                     [NotNull] IList<JulianDate> dates,
+                                     [NotNull] IList<Color> values,
+                                     int startIndex,
+                                     int length)
         {
             if (dates.Count != values.Count)
                 throw new ArgumentException(CesiumLocalization.MismatchedNumberOfDatesAndValues, "values");
@@ -796,7 +858,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="output">The stream to which to write the color.</param>
         /// <param name="value">The value to write.</param>
-        public static void WriteRgbaf(CesiumOutputStream output, Color value)
+        public static void WriteRgbaf([NotNull] CesiumOutputStream output, Color value)
         {
             WriteRgbaf(output, value.R / 255.0, value.G / 255.0, value.B / 255.0, value.A / 255.0);
         }
@@ -809,7 +871,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="green">The green component in the range 0.0-1.0.</param>
         /// <param name="blue">The blue component in the range 0.0-1.0.</param>
         /// <param name="alpha">The alpha component in the range 0.0-1.0.</param>
-        public static void WriteRgbaf(CesiumOutputStream output, double red, double green, double blue, double alpha)
+        public static void WriteRgbaf([NotNull] CesiumOutputStream output, double red, double green, double blue, double alpha)
         {
             output.WriteStartSequence();
             output.WriteValue(red);
@@ -830,7 +892,12 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="values">The corresponding value for each date.</param>
         /// <param name="startIndex">The index of the first element to use in the <paramref name="values"/> collection.</param>
         /// <param name="length">The number of elements to use from the <paramref name="values"/> collection.</param>
-        public static void WriteRgbaf(CesiumOutputStream output, string propertyName, IList<JulianDate> dates, IList<Color> values, int startIndex, int length)
+        public static void WriteRgbaf([NotNull] CesiumOutputStream output,
+                                      [NotNull] string propertyName,
+                                      [NotNull] IList<JulianDate> dates,
+                                      [NotNull] IList<Color> values,
+                                      int startIndex,
+                                      int length)
         {
             if (dates.Count != values.Count)
                 throw new ArgumentException(CesiumLocalization.MismatchedNumberOfDatesAndValues, "values");
@@ -865,7 +932,12 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="values">The corresponding value for each date.</param>
         /// <param name="startIndex">The index of the first element to use in the <paramref name="values"/> collection.</param>
         /// <param name="length">The number of elements to use from the <paramref name="values"/> collection.</param>
-        public static void WriteDouble(CesiumOutputStream output, string propertyName, IList<JulianDate> dates, IList<double> values, int startIndex, int length)
+        public static void WriteDouble([NotNull] CesiumOutputStream output,
+                                       [NotNull] string propertyName,
+                                       [NotNull] IList<JulianDate> dates,
+                                       [NotNull] IList<double> values,
+                                       int startIndex,
+                                       int length)
         {
             if (dates.Count != values.Count)
                 throw new ArgumentException(CesiumLocalization.MismatchedNumberOfDatesAndValues, "values");
@@ -896,7 +968,12 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="values">The corresponding value for each date.</param>
         /// <param name="startIndex">The index of the first element to use in the <paramref name="values"/> collection.</param>
         /// <param name="length">The number of elements to use from the <paramref name="values"/> collection.</param>
-        public static void WriteInteger(CesiumOutputStream output, string propertyName, IList<JulianDate> dates, IList<int> values, int startIndex, int length)
+        public static void WriteInteger([NotNull] CesiumOutputStream output,
+                                        [NotNull] string propertyName,
+                                        [NotNull] IList<JulianDate> dates,
+                                        [NotNull] IList<int> values,
+                                        int startIndex,
+                                        int length)
         {
             if (dates.Count != values.Count)
                 throw new ArgumentException(CesiumLocalization.MismatchedNumberOfDatesAndValues, "values");
@@ -921,7 +998,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="value">The value to write.</param>
-        public static void WriteUnitQuaternion(CesiumOutputStream output, UnitQuaternion value)
+        public static void WriteUnitQuaternion([NotNull] CesiumOutputStream output, UnitQuaternion value)
         {
             output.WriteStartSequence();
             output.WriteValue(value.X);
@@ -943,7 +1020,12 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="values">The corresponding value for each date.</param>
         /// <param name="startIndex">The index of the first element to use in the <paramref name="values"/> collection.</param>
         /// <param name="length">The number of elements to use from the <paramref name="values"/> collection.</param>
-        public static void WriteUnitQuaternion(CesiumOutputStream output, string propertyName, IList<JulianDate> dates, IList<UnitQuaternion> values, int startIndex, int length)
+        public static void WriteUnitQuaternion([NotNull] CesiumOutputStream output,
+                                               [NotNull] string propertyName,
+                                               [NotNull] IList<JulianDate> dates,
+                                               [NotNull] IList<UnitQuaternion> values,
+                                               int startIndex,
+                                               int length)
         {
             if (dates.Count != values.Count)
                 throw new ArgumentException(CesiumLocalization.MismatchedNumberOfDatesAndValues, "values");
@@ -982,7 +1064,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="value">The value to write.</param>
-        public static void WriteReference(CesiumOutputStream output, Reference value)
+        public static void WriteReference([NotNull] CesiumOutputStream output, [NotNull] Reference value)
         {
             WriteReference(output, value.Value);
         }
@@ -993,7 +1075,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="identifier">The identifier of the referenced object.</param>
         /// <param name="propertyName">The property name.</param>
-        public static void WriteReference(CesiumOutputStream output, string identifier, string propertyName)
+        public static void WriteReference([NotNull] CesiumOutputStream output, string identifier, string propertyName)
         {
             WriteReference(output, new Reference(identifier, propertyName));
         }
@@ -1004,7 +1086,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="identifier">The identifier of the referenced object.</param>
         /// <param name="propertyNames">The hierarchy of property names, where each name is a subproperty of the previous item.</param>
-        public static void WriteReference(CesiumOutputStream output, string identifier, string[] propertyNames)
+        public static void WriteReference([NotNull] CesiumOutputStream output, string identifier, string[] propertyNames)
         {
             WriteReference(output, new Reference(identifier, propertyNames));
         }
@@ -1014,7 +1096,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="references">The list of values.</param>
-        public static void WriteReferences(CesiumOutputStream output, IEnumerable<Reference> references)
+        public static void WriteReferences([NotNull] CesiumOutputStream output, [NotNull] IEnumerable<Reference> references)
         {
             output.WriteStartSequence();
             foreach (var reference in references)
@@ -1032,7 +1114,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="values">The list of lists of values.</param>
         [CSToJavaUseWildcardGenerics]
-        public static void WriteReferenceListOfLists(CesiumOutputStream output, IEnumerable<IEnumerable<Reference>> values)
+        public static void WriteReferenceListOfLists([NotNull] CesiumOutputStream output, [NotNull] IEnumerable<IEnumerable<Reference>> values)
         {
             output.WriteStartSequence();
             foreach (var list in values)
@@ -1044,8 +1126,10 @@ namespace CesiumLanguageWriter.Advanced
                     output.WriteValue(reference.Value);
                     output.WriteLineBreak();
                 }
+
                 output.WriteEndSequence();
             }
+
             output.WriteEndSequence();
         }
 
@@ -1054,7 +1138,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="values">The values to write.</param>
-        public static void WriteUnitCartesian3List(CesiumOutputStream output, IEnumerable<UnitCartesian> values)
+        public static void WriteUnitCartesian3List([NotNull] CesiumOutputStream output, [NotNull] IEnumerable<UnitCartesian> values)
         {
             output.WriteStartSequence();
             foreach (UnitCartesian value in values)
@@ -1073,7 +1157,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="values">The values to write.</param>
-        public static void WriteSphericalList(CesiumOutputStream output, IEnumerable<Spherical> values)
+        public static void WriteSphericalList([NotNull] CesiumOutputStream output, [NotNull] IEnumerable<Spherical> values)
         {
             output.WriteStartSequence();
             foreach (Spherical value in values)
@@ -1092,7 +1176,7 @@ namespace CesiumLanguageWriter.Advanced
         /// </summary>
         /// <param name="output">The stream to which the value will be written.</param>
         /// <param name="values">The values to write.</param>
-        public static void WriteUnitSphericalList(CesiumOutputStream output, IEnumerable<UnitSpherical> values)
+        public static void WriteUnitSphericalList([NotNull] CesiumOutputStream output, [NotNull] IEnumerable<UnitSpherical> values)
         {
             output.WriteStartSequence();
             foreach (UnitSpherical value in values)
@@ -1116,7 +1200,7 @@ namespace CesiumLanguageWriter.Advanced
         /// <param name="startIndex">The first index in the collection to use.</param>
         /// <param name="length">The number of items from the collection to use.</param>
         /// <returns>A suitable epoch determined from the collection.</returns>
-        private static JulianDate GetAndWriteEpoch(CesiumOutputStream output, IList<JulianDate> dates, int startIndex, int length)
+        private static JulianDate GetAndWriteEpoch([NotNull] CesiumOutputStream output, [NotNull] IList<JulianDate> dates, int startIndex, int length)
         {
             if (startIndex >= dates.Count)
                 return JulianDate.MinValue;
