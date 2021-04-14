@@ -35,7 +35,6 @@ namespace GrisuDotNet
     [CSToJavaExclude]
     internal struct GrisuDouble
     {
-        const ulong kSignMask = 0x8000000000000000;
         const ulong kExponentMask = 0x7FF0000000000000;
         const ulong kSignificandMask = 0x000FFFFFFFFFFFFF;
         const ulong kHiddenBit = 0x0010000000000000;
@@ -44,34 +43,11 @@ namespace GrisuDotNet
 
         const int kExponentBias = 0x3FF + kPhysicalSignificandSize;
         const int kDenormalExponent = -kExponentBias + 1;
-        const int kMaxExponent = 0x7FF - kExponentBias;
-        const ulong kInfinity = 0x7FF0000000000000;
 
         public GrisuDouble(double d)
         {
             value_ = d;
             d64_ = (ulong)BitConverter.DoubleToInt64Bits(d);
-        }
-
-        public GrisuDouble(ulong d64)
-        {
-            d64_ = d64;
-            value_ = BitConverter.Int64BitsToDouble((long)d64);
-        }
-
-        public GrisuDouble(DiyFp diy_fp)
-        {
-            d64_ = DiyFpToUInt64(diy_fp);
-            value_ = BitConverter.Int64BitsToDouble((long)d64_);
-        }
-
-        // The value encoded by this Double must be greater or equal to +0.0.
-        // It must not be special (infinity, or NaN).
-        public DiyFp AsDiyFp()
-        {
-            Debug.Assert(Sign > 0);
-            Debug.Assert(!IsSpecial);
-            return new DiyFp(Significand, Exponent);
         }
 
         // The value encoded by this Double must be strictly greater than 0.
@@ -103,41 +79,6 @@ namespace GrisuDotNet
             f <<= DiyFp.kSignificandSize - kSignificandSize;
             e -= DiyFp.kSignificandSize - kSignificandSize;
             return new DiyFp(f, e);
-        }
-
-        // Returns the double's bit as UInt64.
-        public ulong AsUInt64()
-        {
-            return d64_;
-        }
-
-        public int Exponent
-        {
-            get
-            {
-                if (IsDenormal) return kDenormalExponent;
-
-                int biased_e =
-                    (int)((d64_ & kExponentMask) >> kPhysicalSignificandSize);
-                return biased_e - kExponentBias;
-            }
-        }
-
-        public ulong Significand
-        {
-            get
-            {
-                ulong significand = d64_ & kSignificandMask;
-                if (IsDenormal)
-                {
-                    return significand;
-                    
-                }
-                else
-                {
-                    return significand + kHiddenBit;
-                }
-            }
         }
 
         // Returns true if the double is a denormal.
@@ -175,22 +116,6 @@ namespace GrisuDotNet
                 return ((d64_ & kExponentMask) == kExponentMask) &&
                     ((d64_ & kSignificandMask) == 0);
             }
-        }
-
-        public int Sign
-        {
-            get
-            {
-                return (d64_ & kSignMask) == 0 ? 1 : -1;
-            }
-        }
-
-        // Precondition: the value encoded by this Double must be greater or equal
-        // than +0.0.
-        public DiyFp UpperBoundary()
-        {
-            Debug.Assert(Sign > 0);
-            return new DiyFp(Significand * 2 + 1, Exponent - 1);
         }
 
         // Computes the two boundaries of this.
@@ -260,73 +185,6 @@ namespace GrisuDotNet
         public double Value
         {
             get { return value_; }
-        }
-
-        // Returns the significand size for a given order of magnitude.
-        // If v = f*2^e with 2^p-1 <= f <= 2^p then p+e is v's order of magnitude.
-        // This function returns the number of significant binary digits v will have
-        // once it's encoded into a double. In almost all cases this is equal to
-        // kSignificandSize. The only exceptions are denormals. They start with
-        // leading zeroes and their effective significand-size is hence smaller.
-        public static int SignificandSizeForOrderOfMagnitude(int order)
-        {
-            if (order >= (kDenormalExponent + kSignificandSize))
-            {
-                return kSignificandSize;
-            }
-            if (order <= kDenormalExponent) return 0;
-            return order - kDenormalExponent;
-        }
-
-        public static double Infinity
-        {
-            get
-            {
-                return double.PositiveInfinity;
-            }
-        }
-
-        public static double NaN
-        {
-            get
-            {
-                return double.NaN;
-            }
-        }
-
-        private static ulong DiyFpToUInt64(DiyFp diy_fp)
-        {
-            ulong significand = diy_fp.F;
-            int exponent = diy_fp.E;
-            while (significand > kHiddenBit + kSignificandMask)
-            {
-                significand >>= 1;
-                exponent++;
-            }
-            if (exponent >= kMaxExponent)
-            {
-                return kInfinity;
-            }
-            if (exponent < kDenormalExponent)
-            {
-                return 0;
-            }
-            while (exponent > kDenormalExponent && (significand & kHiddenBit) == 0)
-            {
-                significand <<= 1;
-                exponent--;
-            }
-            ulong biased_exponent;
-            if (exponent == kDenormalExponent && (significand & kHiddenBit) == 0)
-            {
-                biased_exponent = 0;
-            }
-            else
-            {
-                biased_exponent = (ulong)(exponent + kExponentBias);
-            }
-            return (significand & kSignificandMask) |
-                (biased_exponent << kPhysicalSignificandSize);
         }
 
         private ulong d64_;

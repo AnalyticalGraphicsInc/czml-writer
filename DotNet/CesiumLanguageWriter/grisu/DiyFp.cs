@@ -94,44 +94,6 @@ namespace GrisuDotNet
             f_ = result_f;
         }
 
-        // returns a * b;
-        public static DiyFp Times(ref DiyFp a, ref DiyFp b)
-        {
-            DiyFp result = a;
-            result.Multiply(ref b);
-            return result;
-        }
-
-        public void Normalize()
-        {
-            Debug.Assert(f_ != 0);
-            ulong f = f_;
-            int e = e_;
-
-            // This method is mainly called for normalizing boundaries. In general
-            // boundaries need to be shifted by 10 bits. We thus optimize for this case.
-            const ulong k10MSBits = 0xFFC0000000000000;
-            while ((f & k10MSBits) == 0)
-            {
-                f <<= 10;
-                e -= 10;
-            }
-            while ((f & kUint64MSB) == 0)
-            {
-                f <<= 1;
-                e--;
-            }
-            f_ = f;
-            e_ = e;
-        }
-
-        public static DiyFp Normalize(ref DiyFp a)
-        {
-            DiyFp result = a;
-            result.Normalize();
-            return result;
-        }
-
         public ulong F
         {
             get { return f_; }

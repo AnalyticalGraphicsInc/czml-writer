@@ -62,26 +62,6 @@ namespace GrisuDotNet
             power = new DiyFp(cached_power.significand, cached_power.binary_exponent);
         }
 
-        // Returns a cached power of ten x ~= 10^k such that
-        //   k <= decimal_exponent < k + kCachedPowersDecimalDistance.
-        // The given decimal_exponent must satisfy
-        //   kMinDecimalExponent <= requested_exponent, and
-        //   requested_exponent < kMaxDecimalExponent + kDecimalExponentDistance.
-        public static void GetCachedPowerForDecimalExponent(int requested_exponent,
-                                                     out DiyFp power,
-                                                     out int found_exponent)
-        {
-            Debug.Assert(kMinDecimalExponent <= requested_exponent);
-            Debug.Assert(requested_exponent < kMaxDecimalExponent + kDecimalExponentDistance);
-            int index =
-                (requested_exponent + kCachedPowersOffset) / kDecimalExponentDistance;
-            CachedPower cached_power = kCachedPowers[index];
-            power = new DiyFp(cached_power.significand, cached_power.binary_exponent);
-            found_exponent = cached_power.decimal_exponent;
-            Debug.Assert(found_exponent <= requested_exponent);
-            Debug.Assert(requested_exponent < found_exponent + kDecimalExponentDistance);
-        }
-
         struct CachedPower
         {
             public ulong significand;
