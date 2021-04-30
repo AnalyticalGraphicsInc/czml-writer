@@ -363,7 +363,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian +(UnitCartesian,UnitCartesian)'")
     @Nonnull
     public static Cartesian add(@Nonnull UnitCartesian left, @Nonnull UnitCartesian right) {
-        return left.add(Cartesian.toCartesian(right));
+        return left.add(right);
     }
 
     /**
@@ -399,7 +399,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'Cartesian -(UnitCartesian,UnitCartesian)'")
     @Nonnull
     public static Cartesian subtract(@Nonnull UnitCartesian left, @Nonnull UnitCartesian right) {
-        return left.subtract(Cartesian.toCartesian(right));
+        return left.subtract(right);
     }
 
     /**

@@ -58,7 +58,7 @@ public final class AssertHelper {
 
     public static void assertEquals(String message, Object expected, Object actual) {
         if (expected instanceof Number && actual instanceof Number) {
-            assertNumbersAreEqual(message, expected, actual);
+            assertNumbersAreEqual(message, (Number) expected, (Number) actual);
         } else if (isArray(expected) && isArray(actual)) {
             assertArraysAreEqual(message, expected, actual);
         } else {
@@ -113,7 +113,7 @@ public final class AssertHelper {
         }
     }
 
-    private static void assertNumbersAreEqual(String message, Object expected, Object actual) {
+    private static void assertNumbersAreEqual(String message, Number expected, Number actual) {
         // based on the logic in NUnit
         if (expected instanceof Double || actual instanceof Double) {
             Assert.assertEquals(message, ConvertHelper.toDouble(expected), ConvertHelper.toDouble(actual), 0D);

@@ -323,8 +323,8 @@ public class TestUnitCartesian {
     public final void testDotProduct() {
         UnitCartesian first = new UnitCartesian(1.0, 3.0, -2.0);
         UnitCartesian second = new UnitCartesian(4.0, -2.0, -1.0);
-        Assert.assertEquals(0D, first.dot(Cartesian.toCartesian(second)), Constants.Epsilon15);
-        Assert.assertEquals(0D, second.dot(Cartesian.toCartesian(first)), Constants.Epsilon15);
+        Assert.assertEquals(0D, first.dot(second), Constants.Epsilon15);
+        Assert.assertEquals(0D, second.dot(first), Constants.Epsilon15);
         Cartesian result = new Cartesian(4.0, -2.0, -1.0);
         Assert.assertEquals(0, first.dot(result), 0d);
     }
@@ -346,7 +346,7 @@ public class TestUnitCartesian {
         UnitCartesian first = new UnitCartesian(a, b, c);
         UnitCartesian second = new UnitCartesian(c, a, b);
         UnitCartesian third = new UnitCartesian(b, c, a);
-        Cartesian result = first.cross(Cartesian.toCartesian(second));
+        Cartesian result = first.cross(second);
         Assert.assertEquals(third.getX(), result.getX(), Constants.Epsilon14);
         Assert.assertEquals(third.getY(), result.getY(), Constants.Epsilon14);
         Assert.assertEquals(third.getZ(), result.getZ(), Constants.Epsilon14);
