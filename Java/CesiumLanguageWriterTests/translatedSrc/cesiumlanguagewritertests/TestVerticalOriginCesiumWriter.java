@@ -28,7 +28,7 @@ public class TestVerticalOriginCesiumWriter extends TestCesiumPropertyWriter<Ver
         final String expectedPropertyName = "foo";
         final CesiumVerticalOrigin expectedValue = CesiumVerticalOrigin.CENTER;
         {
-            final PacketCesiumWriter usingExpression_0 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     VerticalOriginCesiumWriter writer = new VerticalOriginCesiumWriter(expectedPropertyName);
@@ -40,7 +40,7 @@ public class TestVerticalOriginCesiumWriter extends TestCesiumPropertyWriter<Ver
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_0);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
@@ -55,7 +55,7 @@ public class TestVerticalOriginCesiumWriter extends TestCesiumPropertyWriter<Ver
         final String expectedPropertyName = "foo";
         final CesiumVerticalOrigin expectedValue = CesiumVerticalOrigin.CENTER;
         {
-            final PacketCesiumWriter usingExpression_1 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     VerticalOriginCesiumWriter writer = new VerticalOriginCesiumWriter(expectedPropertyName);
@@ -68,13 +68,13 @@ public class TestVerticalOriginCesiumWriter extends TestCesiumPropertyWriter<Ver
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_1);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
-        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$1, "interval", CesiumFormattingHelper.toIso8601Interval(start, stop, Iso8601Format.COMPACT));
-        MapHelper.add(tempCollection$1, VerticalOriginCesiumWriter.VerticalOriginPropertyName, CesiumFormattingHelper.verticalOriginToString(expectedValue));
-        assertExpectedJson(expectedPropertyName, tempCollection$1);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, "interval", CesiumFormattingHelper.toIso8601Interval(start, stop, Iso8601Format.COMPACT));
+        MapHelper.add(tempCollection$0, VerticalOriginCesiumWriter.VerticalOriginPropertyName, CesiumFormattingHelper.verticalOriginToString(expectedValue));
+        assertExpectedJson(expectedPropertyName, tempCollection$0);
     }
 
     @Override

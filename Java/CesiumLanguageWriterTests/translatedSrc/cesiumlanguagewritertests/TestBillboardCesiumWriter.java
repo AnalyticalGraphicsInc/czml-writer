@@ -31,7 +31,7 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
     public final void testShowProperty() {
         final boolean expectedShow = true;
         {
-            final PacketCesiumWriter usingExpression_0 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     BillboardCesiumWriter billboard = getPacket().openBillboardProperty();
@@ -49,7 +49,7 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_0);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
@@ -71,7 +71,7 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
         final boolean interval2Value = false;
         final boolean interval3Value = true;
         {
-            final PacketCesiumWriter usingExpression_1 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     BillboardCesiumWriter billboard = getPacket().openBillboardProperty();
@@ -119,32 +119,32 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_1);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
+        final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$2, "interval", CesiumFormattingHelper.toIso8601Interval(interval1Start, interval1Stop, Iso8601Format.COMPACT));
+        MapHelper.add(tempCollection$2, BooleanCesiumWriter.BooleanPropertyName, interval1Value);
         final Map<String, Object> tempCollection$3 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$3, "interval", CesiumFormattingHelper.toIso8601Interval(interval1Start, interval1Stop, Iso8601Format.COMPACT));
-        MapHelper.add(tempCollection$3, BooleanCesiumWriter.BooleanPropertyName, interval1Value);
+        MapHelper.add(tempCollection$3, "interval", CesiumFormattingHelper.toIso8601Interval(interval2Start, interval2Stop, Iso8601Format.COMPACT));
+        MapHelper.add(tempCollection$3, BooleanCesiumWriter.BooleanPropertyName, interval2Value);
         final Map<String, Object> tempCollection$4 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$4, "interval", CesiumFormattingHelper.toIso8601Interval(interval2Start, interval2Stop, Iso8601Format.COMPACT));
-        MapHelper.add(tempCollection$4, BooleanCesiumWriter.BooleanPropertyName, interval2Value);
-        final Map<String, Object> tempCollection$5 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$5, "interval", CesiumFormattingHelper.toIso8601Interval(interval3Start, interval3Stop, Iso8601Format.COMPACT));
-        MapHelper.add(tempCollection$5, BooleanCesiumWriter.BooleanPropertyName, interval3Value);
-        final ArrayList<Map<String, Object>> tempCollection$2 = new ArrayList<Map<String, Object>>();
-        tempCollection$2.add(tempCollection$3);
-        tempCollection$2.add(tempCollection$4);
-        tempCollection$2.add(tempCollection$5);
-        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$1, BillboardCesiumWriter.ShowPropertyName, tempCollection$2);
-        assertExpectedJson(PacketCesiumWriter.BillboardPropertyName, tempCollection$1);
+        MapHelper.add(tempCollection$4, "interval", CesiumFormattingHelper.toIso8601Interval(interval3Start, interval3Stop, Iso8601Format.COMPACT));
+        MapHelper.add(tempCollection$4, BooleanCesiumWriter.BooleanPropertyName, interval3Value);
+        final ArrayList<Map<String, Object>> tempCollection$1 = new ArrayList<Map<String, Object>>();
+        tempCollection$1.add(tempCollection$2);
+        tempCollection$1.add(tempCollection$3);
+        tempCollection$1.add(tempCollection$4);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, BillboardCesiumWriter.ShowPropertyName, tempCollection$1);
+        assertExpectedJson(PacketCesiumWriter.BillboardPropertyName, tempCollection$0);
     }
 
     @Test
     public final void testScaleByDistanceProperty() {
         NearFarScalar expectedScaleByDistance = new NearFarScalar(100.5, 1.5, 200.5, 2.5);
         {
-            final PacketCesiumWriter usingExpression_2 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     BillboardCesiumWriter billboard = getPacket().openBillboardProperty();
@@ -162,19 +162,19 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_2);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
-        final Map<String, Object> tempCollection$6 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$6, BillboardCesiumWriter.ScaleByDistancePropertyName, expectedScaleByDistance);
-        assertExpectedJson(PacketCesiumWriter.BillboardPropertyName, tempCollection$6);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, BillboardCesiumWriter.ScaleByDistancePropertyName, expectedScaleByDistance);
+        assertExpectedJson(PacketCesiumWriter.BillboardPropertyName, tempCollection$0);
     }
 
     @Test
     public final void testScaleByDistancePropertySamples() {
         JulianDate epoch = new GregorianDate(2012, 4, 2, 12, 0, 0D).toJulianDate();
         {
-            final PacketCesiumWriter usingExpression_3 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     BillboardCesiumWriter billboard = getPacket().openBillboardProperty();
@@ -205,7 +205,7 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_3);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
         Assert.assertEquals("{\"billboard\":{\"scaleByDistance\":{\"epoch\":\"20120402T12Z\",\"nearFarScalar\":[0,100,1,200,2,60,200,1,300,2]}}}", getStringWriter().toString());
@@ -214,7 +214,7 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
     @Test
     public final void testDeleteAlignedAxis() {
         {
-            final PacketCesiumWriter usingExpression_4 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     BillboardCesiumWriter billboard = getPacket().openBillboardProperty();
@@ -232,20 +232,20 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_4);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
-        final Map<String, Object> tempCollection$8 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$8, "delete", true);
-        final Map<String, Object> tempCollection$7 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$7, BillboardCesiumWriter.AlignedAxisPropertyName, tempCollection$8);
-        assertExpectedJson(PacketCesiumWriter.BillboardPropertyName, tempCollection$7);
+        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$1, "delete", true);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, BillboardCesiumWriter.AlignedAxisPropertyName, tempCollection$1);
+        assertExpectedJson(PacketCesiumWriter.BillboardPropertyName, tempCollection$0);
     }
 
     @Test
     public final void testDeleteScale() {
         {
-            final PacketCesiumWriter usingExpression_5 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     BillboardCesiumWriter billboard = getPacket().openBillboardProperty();
@@ -263,14 +263,14 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_5);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
-        final Map<String, Object> tempCollection$10 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$10, "delete", true);
-        final Map<String, Object> tempCollection$9 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$9, BillboardCesiumWriter.ScalePropertyName, tempCollection$10);
-        assertExpectedJson(PacketCesiumWriter.BillboardPropertyName, tempCollection$9);
+        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$1, "delete", true);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, BillboardCesiumWriter.ScalePropertyName, tempCollection$1);
+        assertExpectedJson(PacketCesiumWriter.BillboardPropertyName, tempCollection$0);
     }
 
     @Override

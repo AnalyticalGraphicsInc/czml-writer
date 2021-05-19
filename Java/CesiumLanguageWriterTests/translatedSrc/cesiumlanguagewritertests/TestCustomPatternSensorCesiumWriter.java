@@ -29,7 +29,7 @@ public class TestCustomPatternSensorCesiumWriter extends TestCesiumPropertyWrite
         final boolean expectedShow = true;
         final double expectedRadius = 1234.5;
         {
-            final PacketCesiumWriter usingExpression_0 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     CustomPatternSensorCesiumWriter rectangle = getPacket().openCustomPatternSensorProperty();
@@ -48,7 +48,7 @@ public class TestCustomPatternSensorCesiumWriter extends TestCesiumPropertyWrite
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_0);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
@@ -65,7 +65,7 @@ public class TestCustomPatternSensorCesiumWriter extends TestCesiumPropertyWrite
         final boolean expectedShowEnvironmentIntersection = true;
         Color expectedEnvironmentIntersectionColor = Color.RED;
         {
-            final PacketCesiumWriter usingExpression_1 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     CustomPatternSensorCesiumWriter rectangle = getPacket().openCustomPatternSensorProperty();
@@ -87,23 +87,23 @@ public class TestCustomPatternSensorCesiumWriter extends TestCesiumPropertyWrite
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_1);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
-        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$1, CustomPatternSensorCesiumWriter.ShowIntersectionPropertyName, expectedShowIntersection);
-        MapHelper.add(tempCollection$1, CustomPatternSensorCesiumWriter.IntersectionColorPropertyName, expectedIntersectionColor);
-        MapHelper.add(tempCollection$1, CustomPatternSensorCesiumWriter.IntersectionWidthPropertyName, expectedIntersectionWidth);
-        MapHelper.add(tempCollection$1, CustomPatternSensorCesiumWriter.ShowEnvironmentIntersectionPropertyName, expectedShowEnvironmentIntersection);
-        MapHelper.add(tempCollection$1, CustomPatternSensorCesiumWriter.EnvironmentIntersectionColorPropertyName, expectedEnvironmentIntersectionColor);
-        assertExpectedJson(PacketCesiumWriter.CustomPatternSensorPropertyName, tempCollection$1);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, CustomPatternSensorCesiumWriter.ShowIntersectionPropertyName, expectedShowIntersection);
+        MapHelper.add(tempCollection$0, CustomPatternSensorCesiumWriter.IntersectionColorPropertyName, expectedIntersectionColor);
+        MapHelper.add(tempCollection$0, CustomPatternSensorCesiumWriter.IntersectionWidthPropertyName, expectedIntersectionWidth);
+        MapHelper.add(tempCollection$0, CustomPatternSensorCesiumWriter.ShowEnvironmentIntersectionPropertyName, expectedShowEnvironmentIntersection);
+        MapHelper.add(tempCollection$0, CustomPatternSensorCesiumWriter.EnvironmentIntersectionColorPropertyName, expectedEnvironmentIntersectionColor);
+        assertExpectedJson(PacketCesiumWriter.CustomPatternSensorPropertyName, tempCollection$0);
     }
 
     @Test
     public final void testShowThroughEllipsoid() {
         final boolean expectedShowThroughEllipsoid = true;
         {
-            final PacketCesiumWriter usingExpression_2 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     CustomPatternSensorCesiumWriter rectangle = getPacket().openCustomPatternSensorProperty();
@@ -121,12 +121,12 @@ public class TestCustomPatternSensorCesiumWriter extends TestCesiumPropertyWrite
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_2);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
-        final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$2, CustomPatternSensorCesiumWriter.ShowThroughEllipsoidPropertyName, expectedShowThroughEllipsoid);
-        assertExpectedJson(PacketCesiumWriter.CustomPatternSensorPropertyName, tempCollection$2);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, CustomPatternSensorCesiumWriter.ShowThroughEllipsoidPropertyName, expectedShowThroughEllipsoid);
+        assertExpectedJson(PacketCesiumWriter.CustomPatternSensorPropertyName, tempCollection$0);
     }
 
     @Override

@@ -30,7 +30,7 @@ public class TestCheckerboardMaterialCesiumWriter extends TestCesiumPropertyWrit
         Color expectedOddColor = Color.BLUE;
         Rectangular expectedRepeat = new Rectangular(3.5, 4.5);
         {
-            final PacketCesiumWriter usingExpression_0 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     PolylineCesiumWriter polyline = getPacket().openPolylineProperty();
@@ -57,7 +57,7 @@ public class TestCheckerboardMaterialCesiumWriter extends TestCesiumPropertyWrit
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_0);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();

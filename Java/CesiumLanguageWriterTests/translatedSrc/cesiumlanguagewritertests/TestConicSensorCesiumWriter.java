@@ -33,7 +33,7 @@ public class TestConicSensorCesiumWriter extends TestCesiumPropertyWriter<ConicS
         final double expectedMaximumClockAngle = 1.4;
         final double expectedRadius = 1234.5;
         {
-            final PacketCesiumWriter usingExpression_0 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     ConicSensorCesiumWriter rectangle = getPacket().openConicSensorProperty();
@@ -56,7 +56,7 @@ public class TestConicSensorCesiumWriter extends TestCesiumPropertyWriter<ConicS
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_0);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
@@ -77,7 +77,7 @@ public class TestConicSensorCesiumWriter extends TestCesiumPropertyWriter<ConicS
         final boolean expectedShowEnvironmentIntersection = true;
         Color expectedEnvironmentIntersectionColor = Color.RED;
         {
-            final PacketCesiumWriter usingExpression_1 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     ConicSensorCesiumWriter rectangle = getPacket().openConicSensorProperty();
@@ -99,23 +99,23 @@ public class TestConicSensorCesiumWriter extends TestCesiumPropertyWriter<ConicS
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_1);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
-        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$1, ConicSensorCesiumWriter.ShowIntersectionPropertyName, expectedShowIntersection);
-        MapHelper.add(tempCollection$1, ConicSensorCesiumWriter.IntersectionColorPropertyName, expectedIntersectionColor);
-        MapHelper.add(tempCollection$1, ConicSensorCesiumWriter.IntersectionWidthPropertyName, expectedIntersectionWidth);
-        MapHelper.add(tempCollection$1, ConicSensorCesiumWriter.ShowEnvironmentIntersectionPropertyName, expectedShowEnvironmentIntersection);
-        MapHelper.add(tempCollection$1, ConicSensorCesiumWriter.EnvironmentIntersectionColorPropertyName, expectedEnvironmentIntersectionColor);
-        assertExpectedJson(PacketCesiumWriter.ConicSensorPropertyName, tempCollection$1);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, ConicSensorCesiumWriter.ShowIntersectionPropertyName, expectedShowIntersection);
+        MapHelper.add(tempCollection$0, ConicSensorCesiumWriter.IntersectionColorPropertyName, expectedIntersectionColor);
+        MapHelper.add(tempCollection$0, ConicSensorCesiumWriter.IntersectionWidthPropertyName, expectedIntersectionWidth);
+        MapHelper.add(tempCollection$0, ConicSensorCesiumWriter.ShowEnvironmentIntersectionPropertyName, expectedShowEnvironmentIntersection);
+        MapHelper.add(tempCollection$0, ConicSensorCesiumWriter.EnvironmentIntersectionColorPropertyName, expectedEnvironmentIntersectionColor);
+        assertExpectedJson(PacketCesiumWriter.ConicSensorPropertyName, tempCollection$0);
     }
 
     @Test
     public final void testShowThroughEllipsoid() {
         final boolean expectedShowThroughEllipsoid = true;
         {
-            final PacketCesiumWriter usingExpression_2 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     ConicSensorCesiumWriter rectangle = getPacket().openConicSensorProperty();
@@ -133,12 +133,12 @@ public class TestConicSensorCesiumWriter extends TestCesiumPropertyWriter<ConicS
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_2);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
-        final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$2, ConicSensorCesiumWriter.ShowThroughEllipsoidPropertyName, expectedShowThroughEllipsoid);
-        assertExpectedJson(PacketCesiumWriter.ConicSensorPropertyName, tempCollection$2);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, ConicSensorCesiumWriter.ShowThroughEllipsoidPropertyName, expectedShowThroughEllipsoid);
+        assertExpectedJson(PacketCesiumWriter.ConicSensorPropertyName, tempCollection$0);
     }
 
     @Override

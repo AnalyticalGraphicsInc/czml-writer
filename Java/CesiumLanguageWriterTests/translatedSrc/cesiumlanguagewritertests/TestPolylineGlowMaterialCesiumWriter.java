@@ -30,7 +30,7 @@ public class TestPolylineGlowMaterialCesiumWriter extends TestCesiumPropertyWrit
         final double expectedGlowPower = 0.7;
         final double expectedTaperPower = 0.2;
         {
-            final PacketCesiumWriter usingExpression_0 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     PolylineCesiumWriter polyline = getPacket().openPolylineProperty();
@@ -57,7 +57,7 @@ public class TestPolylineGlowMaterialCesiumWriter extends TestCesiumPropertyWrit
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_0);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();

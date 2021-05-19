@@ -33,7 +33,7 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
     public final void testShowProperty() {
         final boolean expectedShow = true;
         {
-            final PacketCesiumWriter usingExpression_0 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     PolygonCesiumWriter polygon = getPacket().openPolygonProperty();
@@ -51,7 +51,7 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_0);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
@@ -73,7 +73,7 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
         final boolean interval2Value = false;
         final boolean interval3Value = true;
         {
-            final PacketCesiumWriter usingExpression_1 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     PolygonCesiumWriter polygon = getPacket().openPolygonProperty();
@@ -121,31 +121,31 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_1);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
+        final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$2, "interval", CesiumFormattingHelper.toIso8601Interval(interval1Start, interval1Stop, Iso8601Format.COMPACT));
+        MapHelper.add(tempCollection$2, BooleanCesiumWriter.BooleanPropertyName, interval1Value);
         final Map<String, Object> tempCollection$3 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$3, "interval", CesiumFormattingHelper.toIso8601Interval(interval1Start, interval1Stop, Iso8601Format.COMPACT));
-        MapHelper.add(tempCollection$3, BooleanCesiumWriter.BooleanPropertyName, interval1Value);
+        MapHelper.add(tempCollection$3, "interval", CesiumFormattingHelper.toIso8601Interval(interval2Start, interval2Stop, Iso8601Format.COMPACT));
+        MapHelper.add(tempCollection$3, BooleanCesiumWriter.BooleanPropertyName, interval2Value);
         final Map<String, Object> tempCollection$4 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$4, "interval", CesiumFormattingHelper.toIso8601Interval(interval2Start, interval2Stop, Iso8601Format.COMPACT));
-        MapHelper.add(tempCollection$4, BooleanCesiumWriter.BooleanPropertyName, interval2Value);
-        final Map<String, Object> tempCollection$5 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$5, "interval", CesiumFormattingHelper.toIso8601Interval(interval3Start, interval3Stop, Iso8601Format.COMPACT));
-        MapHelper.add(tempCollection$5, BooleanCesiumWriter.BooleanPropertyName, interval3Value);
-        final ArrayList<Map<String, Object>> tempCollection$2 = new ArrayList<Map<String, Object>>();
-        tempCollection$2.add(tempCollection$3);
-        tempCollection$2.add(tempCollection$4);
-        tempCollection$2.add(tempCollection$5);
-        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$1, PolygonCesiumWriter.ShowPropertyName, tempCollection$2);
-        assertExpectedJson(PacketCesiumWriter.PolygonPropertyName, tempCollection$1);
+        MapHelper.add(tempCollection$4, "interval", CesiumFormattingHelper.toIso8601Interval(interval3Start, interval3Stop, Iso8601Format.COMPACT));
+        MapHelper.add(tempCollection$4, BooleanCesiumWriter.BooleanPropertyName, interval3Value);
+        final ArrayList<Map<String, Object>> tempCollection$1 = new ArrayList<Map<String, Object>>();
+        tempCollection$1.add(tempCollection$2);
+        tempCollection$1.add(tempCollection$3);
+        tempCollection$1.add(tempCollection$4);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, PolygonCesiumWriter.ShowPropertyName, tempCollection$1);
+        assertExpectedJson(PacketCesiumWriter.PolygonPropertyName, tempCollection$0);
     }
 
     @Test
     public final void testHoles() {
         {
-            final PacketCesiumWriter usingExpression_2 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     PolygonCesiumWriter polygon = getPacket().openPolygonProperty();
@@ -153,19 +153,19 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
                         {
                             PositionListOfListsCesiumWriter holes = polygon.openHolesProperty();
                             try {
-                                final ArrayList<cesiumlanguagewriter.Cartographic> tempCollection$7 = new ArrayList<cesiumlanguagewriter.Cartographic>();
-                                tempCollection$7.add(new Cartographic(1D, 1D, 0D));
-                                tempCollection$7.add(new Cartographic(1D, 2D, 0D));
-                                tempCollection$7.add(new Cartographic(2D, 2D, 0D));
-                                final ArrayList<cesiumlanguagewriter.Cartographic> tempCollection$8 = new ArrayList<cesiumlanguagewriter.Cartographic>();
-                                tempCollection$8.add(new Cartographic(4D, 4D, 0D));
-                                tempCollection$8.add(new Cartographic(4D, 5D, 0D));
-                                tempCollection$8.add(new Cartographic(5D, 5D, 0D));
-                                tempCollection$8.add(new Cartographic(5D, 4D, 0D));
-                                final ArrayList<ArrayList<Cartographic>> tempCollection$6 = new ArrayList<ArrayList<Cartographic>>();
-                                tempCollection$6.add(tempCollection$7);
-                                tempCollection$6.add(tempCollection$8);
-                                ArrayList<ArrayList<Cartographic>> listOfHoles = tempCollection$6;
+                                final ArrayList<cesiumlanguagewriter.Cartographic> tempCollection$1 = new ArrayList<cesiumlanguagewriter.Cartographic>();
+                                tempCollection$1.add(new Cartographic(1D, 1D, 0D));
+                                tempCollection$1.add(new Cartographic(1D, 2D, 0D));
+                                tempCollection$1.add(new Cartographic(2D, 2D, 0D));
+                                final ArrayList<cesiumlanguagewriter.Cartographic> tempCollection$2 = new ArrayList<cesiumlanguagewriter.Cartographic>();
+                                tempCollection$2.add(new Cartographic(4D, 4D, 0D));
+                                tempCollection$2.add(new Cartographic(4D, 5D, 0D));
+                                tempCollection$2.add(new Cartographic(5D, 5D, 0D));
+                                tempCollection$2.add(new Cartographic(5D, 4D, 0D));
+                                final ArrayList<ArrayList<Cartographic>> tempCollection$0 = new ArrayList<ArrayList<Cartographic>>();
+                                tempCollection$0.add(tempCollection$1);
+                                tempCollection$0.add(tempCollection$2);
+                                ArrayList<ArrayList<Cartographic>> listOfHoles = tempCollection$0;
                                 holes.writeCartographicDegrees(listOfHoles);
                             } finally {
                                 DisposeHelper.dispose(holes);
@@ -176,7 +176,7 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_2);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
         Assert.assertEquals("{\"polygon\":{\"holes\":{\"cartographicDegrees\":[[1,1,0,1,2,0,2,2,0],[4,4,0,4,5,0,5,5,0,5,4,0]]}}}", getStringWriter().toString());
@@ -187,7 +187,7 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
         JulianDate startDate = new GregorianDate(2012, 4, 2, 12, 0, 0D).toJulianDate();
         JulianDate stopDate = new GregorianDate(2012, 4, 2, 13, 0, 0D).toJulianDate();
         {
-            final PacketCesiumWriter usingExpression_3 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     PolygonCesiumWriter polygon = getPacket().openPolygonProperty();
@@ -201,19 +201,19 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
                                         {
                                             PositionListOfListsCesiumWriter interval = holesIntervals.openInterval(startDate, startDate.addSeconds(60 * 30));
                                             try {
-                                                final ArrayList<cesiumlanguagewriter.Cartographic> tempCollection$10 = new ArrayList<cesiumlanguagewriter.Cartographic>();
-                                                tempCollection$10.add(new Cartographic(1D, 1D, 0D));
-                                                tempCollection$10.add(new Cartographic(1D, 2D, 0D));
-                                                tempCollection$10.add(new Cartographic(2D, 2D, 0D));
-                                                final ArrayList<cesiumlanguagewriter.Cartographic> tempCollection$11 = new ArrayList<cesiumlanguagewriter.Cartographic>();
-                                                tempCollection$11.add(new Cartographic(4D, 4D, 0D));
-                                                tempCollection$11.add(new Cartographic(4D, 5D, 0D));
-                                                tempCollection$11.add(new Cartographic(5D, 5D, 0D));
-                                                tempCollection$11.add(new Cartographic(5D, 4D, 0D));
-                                                final ArrayList<ArrayList<Cartographic>> tempCollection$9 = new ArrayList<ArrayList<Cartographic>>();
-                                                tempCollection$9.add(tempCollection$10);
-                                                tempCollection$9.add(tempCollection$11);
-                                                ArrayList<ArrayList<Cartographic>> listOfHoles = tempCollection$9;
+                                                final ArrayList<cesiumlanguagewriter.Cartographic> tempCollection$1 = new ArrayList<cesiumlanguagewriter.Cartographic>();
+                                                tempCollection$1.add(new Cartographic(1D, 1D, 0D));
+                                                tempCollection$1.add(new Cartographic(1D, 2D, 0D));
+                                                tempCollection$1.add(new Cartographic(2D, 2D, 0D));
+                                                final ArrayList<cesiumlanguagewriter.Cartographic> tempCollection$2 = new ArrayList<cesiumlanguagewriter.Cartographic>();
+                                                tempCollection$2.add(new Cartographic(4D, 4D, 0D));
+                                                tempCollection$2.add(new Cartographic(4D, 5D, 0D));
+                                                tempCollection$2.add(new Cartographic(5D, 5D, 0D));
+                                                tempCollection$2.add(new Cartographic(5D, 4D, 0D));
+                                                final ArrayList<ArrayList<Cartographic>> tempCollection$0 = new ArrayList<ArrayList<Cartographic>>();
+                                                tempCollection$0.add(tempCollection$1);
+                                                tempCollection$0.add(tempCollection$2);
+                                                ArrayList<ArrayList<Cartographic>> listOfHoles = tempCollection$0;
                                                 interval.writeCartographicDegrees(listOfHoles);
                                             } finally {
                                                 DisposeHelper.dispose(interval);
@@ -222,19 +222,19 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
                                         {
                                             PositionListOfListsCesiumWriter interval = holesIntervals.openInterval(startDate.addSeconds(60 * 30), stopDate);
                                             try {
-                                                final ArrayList<cesiumlanguagewriter.Cartographic> tempCollection$13 = new ArrayList<cesiumlanguagewriter.Cartographic>();
-                                                tempCollection$13.add(new Cartographic(11D, 1D, 0D));
-                                                tempCollection$13.add(new Cartographic(11D, 2D, 0D));
-                                                tempCollection$13.add(new Cartographic(12D, 2D, 0D));
-                                                final ArrayList<cesiumlanguagewriter.Cartographic> tempCollection$14 = new ArrayList<cesiumlanguagewriter.Cartographic>();
-                                                tempCollection$14.add(new Cartographic(14D, 4D, 0D));
-                                                tempCollection$14.add(new Cartographic(14D, 5D, 0D));
-                                                tempCollection$14.add(new Cartographic(15D, 5D, 0D));
-                                                tempCollection$14.add(new Cartographic(15D, 4D, 0D));
-                                                final ArrayList<ArrayList<Cartographic>> tempCollection$12 = new ArrayList<ArrayList<Cartographic>>();
-                                                tempCollection$12.add(tempCollection$13);
-                                                tempCollection$12.add(tempCollection$14);
-                                                ArrayList<ArrayList<Cartographic>> listOfHoles = tempCollection$12;
+                                                final ArrayList<cesiumlanguagewriter.Cartographic> tempCollection$4 = new ArrayList<cesiumlanguagewriter.Cartographic>();
+                                                tempCollection$4.add(new Cartographic(11D, 1D, 0D));
+                                                tempCollection$4.add(new Cartographic(11D, 2D, 0D));
+                                                tempCollection$4.add(new Cartographic(12D, 2D, 0D));
+                                                final ArrayList<cesiumlanguagewriter.Cartographic> tempCollection$5 = new ArrayList<cesiumlanguagewriter.Cartographic>();
+                                                tempCollection$5.add(new Cartographic(14D, 4D, 0D));
+                                                tempCollection$5.add(new Cartographic(14D, 5D, 0D));
+                                                tempCollection$5.add(new Cartographic(15D, 5D, 0D));
+                                                tempCollection$5.add(new Cartographic(15D, 4D, 0D));
+                                                final ArrayList<ArrayList<Cartographic>> tempCollection$3 = new ArrayList<ArrayList<Cartographic>>();
+                                                tempCollection$3.add(tempCollection$4);
+                                                tempCollection$3.add(tempCollection$5);
+                                                ArrayList<ArrayList<Cartographic>> listOfHoles = tempCollection$3;
                                                 interval.writeCartographicDegrees(listOfHoles);
                                             } finally {
                                                 DisposeHelper.dispose(interval);
@@ -253,7 +253,7 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_3);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
         Assert.assertEquals("{\"polygon\":{\"holes\":[" + "{\"interval\":\"20120402T12Z/20120402T1230Z\",\"cartographicDegrees\":[[1,1,0,1,2,0,2,2,0],[4,4,0,4,5,0,5,5,0,5,4,0]]},"
@@ -276,12 +276,12 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
                         {
                             PositionListCesiumWriter positions = polygon.openPositionsProperty();
                             try {
-                                final ArrayList<cesiumlanguagewriter.Cartographic> tempCollection$15 = new ArrayList<cesiumlanguagewriter.Cartographic>();
-                                tempCollection$15.add(new Cartographic(0D, 0D, 0D));
-                                tempCollection$15.add(new Cartographic(0D, 10D, 0D));
-                                tempCollection$15.add(new Cartographic(10D, 10D, 0D));
-                                tempCollection$15.add(new Cartographic(10D, 0D, 0D));
-                                ArrayList<cesiumlanguagewriter.Cartographic> listOfPositions = tempCollection$15;
+                                final ArrayList<cesiumlanguagewriter.Cartographic> tempCollection$0 = new ArrayList<cesiumlanguagewriter.Cartographic>();
+                                tempCollection$0.add(new Cartographic(0D, 0D, 0D));
+                                tempCollection$0.add(new Cartographic(0D, 10D, 0D));
+                                tempCollection$0.add(new Cartographic(10D, 10D, 0D));
+                                tempCollection$0.add(new Cartographic(10D, 0D, 0D));
+                                ArrayList<cesiumlanguagewriter.Cartographic> listOfPositions = tempCollection$0;
                                 positions.writeCartographicDegrees(listOfPositions);
                             } finally {
                                 DisposeHelper.dispose(positions);
@@ -290,19 +290,19 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
                         {
                             PositionListOfListsCesiumWriter holes = polygon.openHolesProperty();
                             try {
-                                final ArrayList<cesiumlanguagewriter.Cartographic> tempCollection$17 = new ArrayList<cesiumlanguagewriter.Cartographic>();
-                                tempCollection$17.add(new Cartographic(1D, 1D, 0D));
-                                tempCollection$17.add(new Cartographic(1D, 2D, 0D));
-                                tempCollection$17.add(new Cartographic(2D, 2D, 0D));
-                                final ArrayList<cesiumlanguagewriter.Cartographic> tempCollection$18 = new ArrayList<cesiumlanguagewriter.Cartographic>();
-                                tempCollection$18.add(new Cartographic(4D, 4D, 0D));
-                                tempCollection$18.add(new Cartographic(4D, 5D, 0D));
-                                tempCollection$18.add(new Cartographic(5D, 5D, 0D));
-                                tempCollection$18.add(new Cartographic(5D, 4D, 0D));
-                                final ArrayList<ArrayList<Cartographic>> tempCollection$16 = new ArrayList<ArrayList<Cartographic>>();
-                                tempCollection$16.add(tempCollection$17);
-                                tempCollection$16.add(tempCollection$18);
-                                ArrayList<ArrayList<Cartographic>> listOfHoles = tempCollection$16;
+                                final ArrayList<cesiumlanguagewriter.Cartographic> tempCollection$2 = new ArrayList<cesiumlanguagewriter.Cartographic>();
+                                tempCollection$2.add(new Cartographic(1D, 1D, 0D));
+                                tempCollection$2.add(new Cartographic(1D, 2D, 0D));
+                                tempCollection$2.add(new Cartographic(2D, 2D, 0D));
+                                final ArrayList<cesiumlanguagewriter.Cartographic> tempCollection$3 = new ArrayList<cesiumlanguagewriter.Cartographic>();
+                                tempCollection$3.add(new Cartographic(4D, 4D, 0D));
+                                tempCollection$3.add(new Cartographic(4D, 5D, 0D));
+                                tempCollection$3.add(new Cartographic(5D, 5D, 0D));
+                                tempCollection$3.add(new Cartographic(5D, 4D, 0D));
+                                final ArrayList<ArrayList<Cartographic>> tempCollection$1 = new ArrayList<ArrayList<Cartographic>>();
+                                tempCollection$1.add(tempCollection$2);
+                                tempCollection$1.add(tempCollection$3);
+                                ArrayList<ArrayList<Cartographic>> listOfHoles = tempCollection$1;
                                 holes.writeCartographicDegrees(listOfHoles);
                             } finally {
                                 DisposeHelper.dispose(holes);

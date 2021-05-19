@@ -36,7 +36,7 @@ public class TestShapeCesiumWriter extends TestCesiumPropertyWriter<ShapeCesiumW
         tempCollection$0.add(new Rectangular(30D, 40D));
         Iterable<cesiumlanguagewriter.Rectangular> expectedValue = tempCollection$0;
         {
-            final PacketCesiumWriter usingExpression_0 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     ShapeCesiumWriter writer = new ShapeCesiumWriter(expectedPropertyName);
@@ -48,7 +48,7 @@ public class TestShapeCesiumWriter extends TestCesiumPropertyWriter<ShapeCesiumW
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_0);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
         Iterable<Object> expectedValueJson = IterableHelper.selectMany(expectedValue, new Func2<cesiumlanguagewriter.Rectangular, Iterable<Object>>() {

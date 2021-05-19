@@ -36,7 +36,7 @@ public class TestNodeTransformationsCesiumWriter extends TestCesiumPropertyWrite
         UnitQuaternion expectedRotation = UnitQuaternion.getIdentity();
         Cartesian expectedTranslation = new Cartesian(3.0, 3.0, 3.0);
         {
-            final PacketCesiumWriter usingExpression_0 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     ModelCesiumWriter modelWriter = getPacket().openModelProperty();
@@ -63,7 +63,7 @@ public class TestNodeTransformationsCesiumWriter extends TestCesiumPropertyWrite
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_0);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();
@@ -88,7 +88,7 @@ public class TestNodeTransformationsCesiumWriter extends TestCesiumPropertyWrite
         UnitQuaternion expectedRotation2 = new UnitQuaternion(0.0, 0.0, 0.0, 1.0);
         Cartesian expectedTranslation2 = new Cartesian(7.0, 8.0, 9.0);
         {
-            final PacketCesiumWriter usingExpression_1 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     ModelCesiumWriter modelWriter = getPacket().openModelProperty();
@@ -125,23 +125,23 @@ public class TestNodeTransformationsCesiumWriter extends TestCesiumPropertyWrite
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_1);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
-        final Map<String, Object> tempCollection$5 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$5, NodeTransformationCesiumWriter.ScalePropertyName, expectedScale1);
-        MapHelper.add(tempCollection$5, NodeTransformationCesiumWriter.RotationPropertyName, expectedRotation1);
-        MapHelper.add(tempCollection$5, NodeTransformationCesiumWriter.TranslationPropertyName, expectedTranslation1);
-        final Map<String, Object> tempCollection$6 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$6, NodeTransformationCesiumWriter.ScalePropertyName, expectedScale2);
-        MapHelper.add(tempCollection$6, NodeTransformationCesiumWriter.RotationPropertyName, expectedRotation2);
-        MapHelper.add(tempCollection$6, NodeTransformationCesiumWriter.TranslationPropertyName, expectedTranslation2);
-        final Map<String, Object> tempCollection$4 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$4, expectedNodeName1, tempCollection$5);
-        MapHelper.add(tempCollection$4, expectedNodeName2, tempCollection$6);
+        final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$2, NodeTransformationCesiumWriter.ScalePropertyName, expectedScale1);
+        MapHelper.add(tempCollection$2, NodeTransformationCesiumWriter.RotationPropertyName, expectedRotation1);
+        MapHelper.add(tempCollection$2, NodeTransformationCesiumWriter.TranslationPropertyName, expectedTranslation1);
         final Map<String, Object> tempCollection$3 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$3, ModelCesiumWriter.NodeTransformationsPropertyName, tempCollection$4);
-        assertExpectedJson(PacketCesiumWriter.ModelPropertyName, tempCollection$3);
+        MapHelper.add(tempCollection$3, NodeTransformationCesiumWriter.ScalePropertyName, expectedScale2);
+        MapHelper.add(tempCollection$3, NodeTransformationCesiumWriter.RotationPropertyName, expectedRotation2);
+        MapHelper.add(tempCollection$3, NodeTransformationCesiumWriter.TranslationPropertyName, expectedTranslation2);
+        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$1, expectedNodeName1, tempCollection$2);
+        MapHelper.add(tempCollection$1, expectedNodeName2, tempCollection$3);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, ModelCesiumWriter.NodeTransformationsPropertyName, tempCollection$1);
+        assertExpectedJson(PacketCesiumWriter.ModelPropertyName, tempCollection$0);
     }
 
     @Test
@@ -192,14 +192,14 @@ public class TestNodeTransformationsCesiumWriter extends TestCesiumPropertyWrite
                                         {
                                             NodeTransformationCesiumWriter nodeTransformationWriter = nodeTransformationsWriter.openNodeTransformationProperty("node2");
                                             try {
-                                                final ArrayList<cesiumlanguagewriter.JulianDate> tempCollection$7 = new ArrayList<cesiumlanguagewriter.JulianDate>();
-                                                tempCollection$7.add(startDate);
-                                                tempCollection$7.add(stopDate);
-                                                ArrayList<cesiumlanguagewriter.JulianDate> dates = tempCollection$7;
-                                                final ArrayList<cesiumlanguagewriter.Cartesian> tempCollection$8 = new ArrayList<cesiumlanguagewriter.Cartesian>();
-                                                tempCollection$8.add(new Cartesian(1.0, 2.0, 3.0));
-                                                tempCollection$8.add(new Cartesian(10.0, 12.0, 14.0));
-                                                ArrayList<cesiumlanguagewriter.Cartesian> values = tempCollection$8;
+                                                final ArrayList<cesiumlanguagewriter.JulianDate> tempCollection$0 = new ArrayList<cesiumlanguagewriter.JulianDate>();
+                                                tempCollection$0.add(startDate);
+                                                tempCollection$0.add(stopDate);
+                                                ArrayList<cesiumlanguagewriter.JulianDate> dates = tempCollection$0;
+                                                final ArrayList<cesiumlanguagewriter.Cartesian> tempCollection$1 = new ArrayList<cesiumlanguagewriter.Cartesian>();
+                                                tempCollection$1.add(new Cartesian(1.0, 2.0, 3.0));
+                                                tempCollection$1.add(new Cartesian(10.0, 12.0, 14.0));
+                                                ArrayList<cesiumlanguagewriter.Cartesian> values = tempCollection$1;
                                                 nodeTransformationWriter.writeScaleProperty(dates, values);
                                             } finally {
                                                 DisposeHelper.dispose(nodeTransformationWriter);

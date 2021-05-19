@@ -62,13 +62,13 @@ public class TestGenerateValidationDocument {
     public final void generateValidationDocument() {
         String dir = TestContext.getCurrentContext().getTestDirectory();
         {
-            final Writer usingExpression_0 = (m_streamWriter = StreamWriterHelper.create(PathHelper.combine(dir, "ValidationDocument.czml")));
+            final Writer usingExpression$0 = (m_streamWriter = StreamWriterHelper.create(PathHelper.combine(dir, "ValidationDocument.czml")));
             try {
                 {
-                    final Writer usingExpression_1 = (m_assertionsWriter = StreamWriterHelper.create(PathHelper.combine(dir, "ValidationDocumentAssertions.js")));
+                    final Writer usingExpression$1 = (m_assertionsWriter = StreamWriterHelper.create(PathHelper.combine(dir, "ValidationDocumentAssertions.js")));
                     try {
                         {
-                            final Writer usingExpression_2 = (m_extensionsAssertionsWriter = StreamWriterHelper.create(PathHelper.combine(dir, "ValidationDocumentExtensionAssertions.js")));
+                            final Writer usingExpression$2 = (m_extensionsAssertionsWriter = StreamWriterHelper.create(PathHelper.combine(dir, "ValidationDocumentExtensionAssertions.js")));
                             try {
                                 writeAssertionBoth("return CzmlDataSource.load('Data/CZML/ValidationDocument.czml').then(function(dataSource) {");
                                 writeAssertionBoth("    var e;");
@@ -87,15 +87,15 @@ public class TestGenerateValidationDocument {
                                 m_output.writeEndSequence();
                                 writeAssertionBoth("});");
                             } finally {
-                                DisposeHelper.dispose(usingExpression_2);
+                                DisposeHelper.dispose(usingExpression$2);
                             }
                         }
                     } finally {
-                        DisposeHelper.dispose(usingExpression_1);
+                        DisposeHelper.dispose(usingExpression$1);
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_0);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
     }

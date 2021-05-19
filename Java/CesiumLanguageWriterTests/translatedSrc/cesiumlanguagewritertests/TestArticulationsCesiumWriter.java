@@ -34,7 +34,7 @@ public class TestArticulationsCesiumWriter extends TestCesiumPropertyWriter<Arti
         final String expectedName = "articulation1 stage1";
         final double expectedValue = 3.5;
         {
-            final PacketCesiumWriter usingExpression_0 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     ModelCesiumWriter modelWriter = getPacket().openModelProperty();
@@ -59,7 +59,7 @@ public class TestArticulationsCesiumWriter extends TestCesiumPropertyWriter<Arti
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_0);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
@@ -76,7 +76,7 @@ public class TestArticulationsCesiumWriter extends TestCesiumPropertyWriter<Arti
         final String expectedName2 = "articulation1 stage2";
         final double expectedValue2 = 5.5;
         {
-            final PacketCesiumWriter usingExpression_1 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     ModelCesiumWriter modelWriter = getPacket().openModelProperty();
@@ -109,15 +109,15 @@ public class TestArticulationsCesiumWriter extends TestCesiumPropertyWriter<Arti
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_1);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
-        final Map<String, Object> tempCollection$3 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$3, expectedName1, expectedValue1);
-        MapHelper.add(tempCollection$3, expectedName2, expectedValue2);
-        final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$2, ModelCesiumWriter.ArticulationsPropertyName, tempCollection$3);
-        assertExpectedJson(PacketCesiumWriter.ModelPropertyName, tempCollection$2);
+        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$1, expectedName1, expectedValue1);
+        MapHelper.add(tempCollection$1, expectedName2, expectedValue2);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, ModelCesiumWriter.ArticulationsPropertyName, tempCollection$1);
+        assertExpectedJson(PacketCesiumWriter.ModelPropertyName, tempCollection$0);
     }
 
     @Test
@@ -166,14 +166,14 @@ public class TestArticulationsCesiumWriter extends TestCesiumPropertyWriter<Arti
                                         {
                                             ArticulationCesiumWriter articulationWriter = articulationsWriter.openArticulationProperty("articulation1 stage2");
                                             try {
-                                                final ArrayList<cesiumlanguagewriter.JulianDate> tempCollection$4 = new ArrayList<cesiumlanguagewriter.JulianDate>();
-                                                tempCollection$4.add(startDate);
-                                                tempCollection$4.add(stopDate);
-                                                ArrayList<cesiumlanguagewriter.JulianDate> dates = tempCollection$4;
-                                                final ArrayList<Double> tempCollection$5 = new ArrayList<Double>();
-                                                tempCollection$5.add(1.0);
-                                                tempCollection$5.add(10.0);
-                                                ArrayList<Double> values = tempCollection$5;
+                                                final ArrayList<cesiumlanguagewriter.JulianDate> tempCollection$0 = new ArrayList<cesiumlanguagewriter.JulianDate>();
+                                                tempCollection$0.add(startDate);
+                                                tempCollection$0.add(stopDate);
+                                                ArrayList<cesiumlanguagewriter.JulianDate> dates = tempCollection$0;
+                                                final ArrayList<Double> tempCollection$1 = new ArrayList<Double>();
+                                                tempCollection$1.add(1.0);
+                                                tempCollection$1.add(10.0);
+                                                ArrayList<Double> values = tempCollection$1;
                                                 articulationWriter.writeNumber(dates, values);
                                             } finally {
                                                 DisposeHelper.dispose(articulationWriter);

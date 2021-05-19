@@ -31,7 +31,7 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
     public final void referenceFrameValueWritesReferenceFrameProperty() {
         final String expectedReferenceFrame = "myReferenceFrame";
         {
-            final PacketCesiumWriter usingExpression_0 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     PositionCesiumWriter position = getPacket().openPositionProperty();
@@ -49,7 +49,7 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_0);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
@@ -61,7 +61,7 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
     public final void cartesianValueWritesSingleCartesianProperty() {
         Cartesian expectedValue = new Cartesian(1.0, 2.0, 3.0);
         {
-            final PacketCesiumWriter usingExpression_1 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     PositionCesiumWriter position = getPacket().openPositionProperty();
@@ -79,19 +79,19 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_1);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
-        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$1, PacketCesiumWriter.PositionPropertyName, expectedValue);
-        assertExpectedJson(tempCollection$1);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, PacketCesiumWriter.PositionPropertyName, expectedValue);
+        assertExpectedJson(tempCollection$0);
     }
 
     @Test
     public final void cartographicRadiansValueWritesSingleCartographicRadiansProperty() {
         Cartographic expectedValue = new Cartographic(1100.0, 2200.0, 3.0);
         {
-            final PacketCesiumWriter usingExpression_2 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     PositionCesiumWriter position = getPacket().openPositionProperty();
@@ -109,19 +109,19 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_2);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
-        final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$2, PacketCesiumWriter.PositionPropertyName, expectedValue);
-        assertExpectedJson(tempCollection$2);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, PacketCesiumWriter.PositionPropertyName, expectedValue);
+        assertExpectedJson(tempCollection$0);
     }
 
     @Test
     public final void cartesianValueWritesMultipleCartesianProperty() {
         JulianDate epoch = new GregorianDate(2012, 4, 2, 12, 0, 0D).toJulianDate();
         {
-            final PacketCesiumWriter usingExpression_3 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     PositionCesiumWriter position = getPacket().openPositionProperty();
@@ -145,7 +145,7 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_3);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
         Assert.assertEquals("{\"position\":{\"epoch\":\"20120402T12Z\",\"cartesian\":[0,1.1,2.2,3.3,60,4.4,5.5,6.6]}}", getStringWriter().toString());
@@ -155,7 +155,7 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
     public final void cartesianValueSubsetWritesMultipleCartesianProperty() {
         JulianDate startDate = new GregorianDate(2012, 4, 2, 12, 0, 0D).toJulianDate();
         {
-            final PacketCesiumWriter usingExpression_4 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     PositionCesiumWriter position = getPacket().openPositionProperty();
@@ -181,7 +181,7 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_4);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
         Assert.assertEquals("{\"position\":{\"epoch\":\"20120402T1201Z\",\"cartesian\":[0,4,5,6]}}", getStringWriter().toString());
@@ -191,7 +191,7 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
     public final void cartographicRadiansValueWritesMultipleCartographicRadiansProperty() {
         JulianDate startDate = new GregorianDate(2012, 4, 2, 12, 0, 0D).toJulianDate();
         {
-            final PacketCesiumWriter usingExpression_5 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     PositionCesiumWriter position = getPacket().openPositionProperty();
@@ -215,7 +215,7 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_5);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
         Assert.assertEquals("{\"position\":{\"epoch\":\"20120402T12Z\",\"cartographicRadians\":[0,1.1,2.2,3.3,60,4.4,5.5,6.6]}}", getStringWriter().toString());
@@ -225,7 +225,7 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
     public final void cartographicRadiansValueSubsetWritesMultipleCartographicRadiansProperty() {
         JulianDate startDate = new GregorianDate(2012, 4, 2, 12, 0, 0D).toJulianDate();
         {
-            final PacketCesiumWriter usingExpression_6 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     PositionCesiumWriter position = getPacket().openPositionProperty();
@@ -251,7 +251,7 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_6);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
         Assert.assertEquals("{\"position\":{\"epoch\":\"20120402T1201Z\",\"cartographicRadians\":[0,4,5,6]}}", getStringWriter().toString());
@@ -260,7 +260,7 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
     @Test
     public final void cartesianValueWritesEmptyArrayAndDoesNotWriteEpochWhenGivenAnEmptyCollection() {
         {
-            final PacketCesiumWriter usingExpression_7 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     PositionCesiumWriter position = getPacket().openPositionProperty();
@@ -280,7 +280,7 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_7);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
         Assert.assertEquals("{\"position\":{\"cartesian\":[]}}", getStringWriter().toString());
@@ -289,7 +289,7 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
     @Test
     public final void cartographicRadiansValueWritesEmptyArrayAndDoesNotWriteEpochWhenGivenAnEmptyCollection() {
         {
-            final PacketCesiumWriter usingExpression_8 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     PositionCesiumWriter position = getPacket().openPositionProperty();
@@ -309,7 +309,7 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_8);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
         Assert.assertEquals("{\"position\":{\"cartographicRadians\":[]}}", getStringWriter().toString());
@@ -322,7 +322,7 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
         final String expectedId = "id";
         final boolean expectedDelete = true;
         {
-            final PacketCesiumWriter usingExpression_9 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 getPacket().writeId(expectedId);
                 {
@@ -341,16 +341,16 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_9);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
-        final Map<String, Object> tempCollection$4 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$4, "interval", CesiumFormattingHelper.toIso8601Interval(start, stop, Iso8601Format.COMPACT));
-        MapHelper.add(tempCollection$4, PositionCesiumWriter.DeletePropertyName, expectedDelete);
-        final Map<String, Object> tempCollection$3 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$3, PacketCesiumWriter.IdPropertyName, expectedId);
-        MapHelper.add(tempCollection$3, PacketCesiumWriter.PositionPropertyName, tempCollection$4);
-        assertExpectedJson(tempCollection$3);
+        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$1, "interval", CesiumFormattingHelper.toIso8601Interval(start, stop, Iso8601Format.COMPACT));
+        MapHelper.add(tempCollection$1, PositionCesiumWriter.DeletePropertyName, expectedDelete);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, PacketCesiumWriter.IdPropertyName, expectedId);
+        MapHelper.add(tempCollection$0, PacketCesiumWriter.PositionPropertyName, tempCollection$1);
+        assertExpectedJson(tempCollection$0);
     }
 
     @Test
@@ -358,7 +358,7 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
         final String expectedId = "id";
         final boolean expectedDelete = true;
         {
-            final PacketCesiumWriter usingExpression_10 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 getPacket().writeId(expectedId);
                 {
@@ -377,15 +377,15 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_10);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
-        final Map<String, Object> tempCollection$6 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$6, PositionCesiumWriter.DeletePropertyName, expectedDelete);
-        final Map<String, Object> tempCollection$5 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$5, PacketCesiumWriter.IdPropertyName, expectedId);
-        MapHelper.add(tempCollection$5, PacketCesiumWriter.PositionPropertyName, tempCollection$6);
-        assertExpectedJson(tempCollection$5);
+        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$1, PositionCesiumWriter.DeletePropertyName, expectedDelete);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, PacketCesiumWriter.IdPropertyName, expectedId);
+        MapHelper.add(tempCollection$0, PacketCesiumWriter.PositionPropertyName, tempCollection$1);
+        assertExpectedJson(tempCollection$0);
     }
 
     @Override

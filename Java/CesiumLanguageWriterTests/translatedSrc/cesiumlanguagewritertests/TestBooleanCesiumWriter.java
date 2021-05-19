@@ -28,7 +28,7 @@ public class TestBooleanCesiumWriter extends TestCesiumPropertyWriter<BooleanCes
         final String expectedPropertyName = "foo";
         final boolean expectedValue = false;
         {
-            final PacketCesiumWriter usingExpression_0 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     BooleanCesiumWriter writer = new BooleanCesiumWriter(expectedPropertyName);
@@ -40,7 +40,7 @@ public class TestBooleanCesiumWriter extends TestCesiumPropertyWriter<BooleanCes
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_0);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
@@ -55,7 +55,7 @@ public class TestBooleanCesiumWriter extends TestCesiumPropertyWriter<BooleanCes
         final String expectedPropertyName = "foo";
         final boolean expectedValue = false;
         {
-            final PacketCesiumWriter usingExpression_1 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     BooleanCesiumWriter writer = new BooleanCesiumWriter(expectedPropertyName);
@@ -68,13 +68,13 @@ public class TestBooleanCesiumWriter extends TestCesiumPropertyWriter<BooleanCes
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_1);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
-        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$1, "interval", CesiumFormattingHelper.toIso8601Interval(start, stop, Iso8601Format.COMPACT));
-        MapHelper.add(tempCollection$1, BooleanCesiumWriter.BooleanPropertyName, expectedValue);
-        assertExpectedJson(expectedPropertyName, tempCollection$1);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, "interval", CesiumFormattingHelper.toIso8601Interval(start, stop, Iso8601Format.COMPACT));
+        MapHelper.add(tempCollection$0, BooleanCesiumWriter.BooleanPropertyName, expectedValue);
+        assertExpectedJson(expectedPropertyName, tempCollection$0);
     }
 
     @Test
@@ -85,7 +85,7 @@ public class TestBooleanCesiumWriter extends TestCesiumPropertyWriter<BooleanCes
         final String expectedPropertyName = "foo";
         final boolean expectedDelete = true;
         {
-            final PacketCesiumWriter usingExpression_2 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 getPacket().writeId(expectedId);
                 {
@@ -99,16 +99,16 @@ public class TestBooleanCesiumWriter extends TestCesiumPropertyWriter<BooleanCes
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_2);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
-        final Map<String, Object> tempCollection$3 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$3, "interval", CesiumFormattingHelper.toIso8601Interval(start, stop, Iso8601Format.COMPACT));
-        MapHelper.add(tempCollection$3, BooleanCesiumWriter.DeletePropertyName, expectedDelete);
-        final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$2, PacketCesiumWriter.IdPropertyName, expectedId);
-        MapHelper.add(tempCollection$2, expectedPropertyName, tempCollection$3);
-        assertExpectedJson(tempCollection$2);
+        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$1, "interval", CesiumFormattingHelper.toIso8601Interval(start, stop, Iso8601Format.COMPACT));
+        MapHelper.add(tempCollection$1, BooleanCesiumWriter.DeletePropertyName, expectedDelete);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, PacketCesiumWriter.IdPropertyName, expectedId);
+        MapHelper.add(tempCollection$0, expectedPropertyName, tempCollection$1);
+        assertExpectedJson(tempCollection$0);
     }
 
     @Test
@@ -117,7 +117,7 @@ public class TestBooleanCesiumWriter extends TestCesiumPropertyWriter<BooleanCes
         final String expectedPropertyName = "foo";
         final boolean expectedDelete = true;
         {
-            final PacketCesiumWriter usingExpression_3 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 getPacket().writeId(expectedId);
                 {
@@ -130,15 +130,15 @@ public class TestBooleanCesiumWriter extends TestCesiumPropertyWriter<BooleanCes
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_3);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
-        final Map<String, Object> tempCollection$5 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$5, BooleanCesiumWriter.DeletePropertyName, expectedDelete);
-        final Map<String, Object> tempCollection$4 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$4, PacketCesiumWriter.IdPropertyName, expectedId);
-        MapHelper.add(tempCollection$4, expectedPropertyName, tempCollection$5);
-        assertExpectedJson(tempCollection$4);
+        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$1, BooleanCesiumWriter.DeletePropertyName, expectedDelete);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, PacketCesiumWriter.IdPropertyName, expectedId);
+        MapHelper.add(tempCollection$0, expectedPropertyName, tempCollection$1);
+        assertExpectedJson(tempCollection$0);
     }
 
     @Override

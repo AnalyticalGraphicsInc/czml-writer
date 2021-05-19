@@ -27,7 +27,7 @@ public class TestTilesetCesiumWriter extends TestCesiumPropertyWriter<TilesetCes
     public final void testShowProperty() {
         final boolean expectedShow = true;
         {
-            final PacketCesiumWriter usingExpression_0 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     TilesetCesiumWriter tileset = getPacket().openTilesetProperty();
@@ -45,7 +45,7 @@ public class TestTilesetCesiumWriter extends TestCesiumPropertyWriter<TilesetCes
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_0);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
@@ -57,7 +57,7 @@ public class TestTilesetCesiumWriter extends TestCesiumPropertyWriter<TilesetCes
     public final void testUriProperty() {
         final String expectedUri = "test.tileset";
         {
-            final PacketCesiumWriter usingExpression_1 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     TilesetCesiumWriter tileset = getPacket().openTilesetProperty();
@@ -75,19 +75,19 @@ public class TestTilesetCesiumWriter extends TestCesiumPropertyWriter<TilesetCes
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_1);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
-        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$1, TilesetCesiumWriter.UriPropertyName, expectedUri);
-        assertExpectedJson(PacketCesiumWriter.TilesetPropertyName, tempCollection$1);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, TilesetCesiumWriter.UriPropertyName, expectedUri);
+        assertExpectedJson(PacketCesiumWriter.TilesetPropertyName, tempCollection$0);
     }
 
     @Test
     public final void testMaximumScreenSpaceErrorProperty() {
         final double expectedMaximumScreenSpaceError = 0.75;
         {
-            final PacketCesiumWriter usingExpression_2 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     TilesetCesiumWriter tileset = getPacket().openTilesetProperty();
@@ -105,12 +105,12 @@ public class TestTilesetCesiumWriter extends TestCesiumPropertyWriter<TilesetCes
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_2);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
-        final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$2, TilesetCesiumWriter.MaximumScreenSpaceErrorPropertyName, expectedMaximumScreenSpaceError);
-        assertExpectedJson(PacketCesiumWriter.TilesetPropertyName, tempCollection$2);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, TilesetCesiumWriter.MaximumScreenSpaceErrorPropertyName, expectedMaximumScreenSpaceError);
+        assertExpectedJson(PacketCesiumWriter.TilesetPropertyName, tempCollection$0);
     }
 
     @Override

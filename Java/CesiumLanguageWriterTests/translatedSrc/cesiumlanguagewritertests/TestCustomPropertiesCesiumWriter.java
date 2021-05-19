@@ -52,7 +52,7 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
         final String expectedName = "custom_property";
         final boolean expectedValue = true;
         {
-            final PacketCesiumWriter usingExpression_0 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     CustomPropertiesCesiumWriter customPropertiesWriter = getPacket().openPropertiesProperty();
@@ -70,7 +70,7 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_0);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
@@ -83,7 +83,7 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
         final String expectedName = "custom_property";
         final boolean expectedValue = true;
         {
-            final PacketCesiumWriter usingExpression_1 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     CustomPropertiesCesiumWriter customPropertiesWriter = getPacket().openPropertiesProperty();
@@ -108,15 +108,15 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_1);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
-        final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$2, "interval", m_isoIntervalString);
-        MapHelper.add(tempCollection$2, CustomPropertyCesiumWriter.BooleanPropertyName, expectedValue);
         final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$1, expectedName, tempCollection$2);
-        assertExpectedJson(PacketCesiumWriter.PropertiesPropertyName, tempCollection$1);
+        MapHelper.add(tempCollection$1, "interval", m_isoIntervalString);
+        MapHelper.add(tempCollection$1, CustomPropertyCesiumWriter.BooleanPropertyName, expectedValue);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, expectedName, tempCollection$1);
+        assertExpectedJson(PacketCesiumWriter.PropertiesPropertyName, tempCollection$0);
     }
 
     @Test
@@ -124,7 +124,7 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
         final String expectedName = "custom_property";
         Cartesian expectedValue = new Cartesian(1.1, 2.2, 3.3);
         {
-            final PacketCesiumWriter usingExpression_2 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     CustomPropertiesCesiumWriter customPropertiesWriter = getPacket().openPropertiesProperty();
@@ -142,18 +142,18 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_2);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
-        final Map<String, Object> tempCollection$3 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$3, expectedName, expectedValue);
-        assertExpectedJson(PacketCesiumWriter.PropertiesPropertyName, tempCollection$3);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, expectedName, expectedValue);
+        assertExpectedJson(PacketCesiumWriter.PropertiesPropertyName, tempCollection$0);
     }
 
     @Test
     public final void customPropertyCartesianSampled() {
         {
-            final PacketCesiumWriter usingExpression_3 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     CustomPropertiesCesiumWriter customPropertiesWriter = getPacket().openPropertiesProperty();
@@ -179,7 +179,7 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_3);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
         Assert.assertEquals("{\"properties\":{\"custom_property\":{\"epoch\":\"" + m_isoStartString + "\",\"cartesian\":[0,1,2,3,60,4,5,6,120,7,8,9]}}}", getStringWriter().toString());
@@ -188,7 +188,7 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
     @Test
     public final void customPropertyCartesianSampledInterpolationSettings() {
         {
-            final PacketCesiumWriter usingExpression_4 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     CustomPropertiesCesiumWriter customPropertiesWriter = getPacket().openPropertiesProperty();
@@ -215,7 +215,7 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_4);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
         Assert.assertEquals("{\"properties\":{\"custom_property\":{\"interpolationAlgorithm\":\"HERMITE\",\"epoch\":\"" + m_isoStartString + "\",\"cartesian\":[0,1,2,3,60,4,5,6,120,7,8,9]}}}",
@@ -229,7 +229,7 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
         final String expectedName2 = "custom_cartesian";
         Cartesian expectedValue2 = new Cartesian(1.1, 2.2, 3.3);
         {
-            final PacketCesiumWriter usingExpression_5 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     CustomPropertiesCesiumWriter customPropertiesWriter = getPacket().openPropertiesProperty();
@@ -255,13 +255,13 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_5);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
-        final Map<String, Object> tempCollection$4 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$4, expectedName1, expectedValue1);
-        MapHelper.add(tempCollection$4, expectedName2, expectedValue2);
-        assertExpectedJson(PacketCesiumWriter.PropertiesPropertyName, tempCollection$4);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, expectedName1, expectedValue1);
+        MapHelper.add(tempCollection$0, expectedName2, expectedValue2);
+        assertExpectedJson(PacketCesiumWriter.PropertiesPropertyName, tempCollection$0);
     }
 
     @Test

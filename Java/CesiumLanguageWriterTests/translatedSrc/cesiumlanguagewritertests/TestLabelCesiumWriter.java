@@ -32,7 +32,7 @@ public class TestLabelCesiumWriter extends TestCesiumPropertyWriter<LabelCesiumW
     public final void testShowProperty() {
         final boolean expectedShow = true;
         {
-            final PacketCesiumWriter usingExpression_0 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     LabelCesiumWriter label = getPacket().openLabelProperty();
@@ -50,7 +50,7 @@ public class TestLabelCesiumWriter extends TestCesiumPropertyWriter<LabelCesiumW
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_0);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
@@ -62,7 +62,7 @@ public class TestLabelCesiumWriter extends TestCesiumPropertyWriter<LabelCesiumW
     public final void testTextProperty() {
         final String expectedText = "asdf";
         {
-            final PacketCesiumWriter usingExpression_1 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     LabelCesiumWriter label = getPacket().openLabelProperty();
@@ -80,19 +80,19 @@ public class TestLabelCesiumWriter extends TestCesiumPropertyWriter<LabelCesiumW
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_1);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
-        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$1, LabelCesiumWriter.TextPropertyName, expectedText);
-        assertExpectedJson(PacketCesiumWriter.LabelPropertyName, tempCollection$1);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, LabelCesiumWriter.TextPropertyName, expectedText);
+        assertExpectedJson(PacketCesiumWriter.LabelPropertyName, tempCollection$0);
     }
 
     @Test
     public final void testShowBackgroundProperty() {
         final boolean expectedShowBackground = true;
         {
-            final PacketCesiumWriter usingExpression_2 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     LabelCesiumWriter label = getPacket().openLabelProperty();
@@ -110,19 +110,19 @@ public class TestLabelCesiumWriter extends TestCesiumPropertyWriter<LabelCesiumW
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_2);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
-        final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$2, LabelCesiumWriter.ShowBackgroundPropertyName, expectedShowBackground);
-        assertExpectedJson(PacketCesiumWriter.LabelPropertyName, tempCollection$2);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, LabelCesiumWriter.ShowBackgroundPropertyName, expectedShowBackground);
+        assertExpectedJson(PacketCesiumWriter.LabelPropertyName, tempCollection$0);
     }
 
     @Test
     public final void testBackgroundColorProperty() {
         Color expectedBackgroundColor = Color.RED;
         {
-            final PacketCesiumWriter usingExpression_3 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     LabelCesiumWriter label = getPacket().openLabelProperty();
@@ -140,19 +140,19 @@ public class TestLabelCesiumWriter extends TestCesiumPropertyWriter<LabelCesiumW
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_3);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
-        final Map<String, Object> tempCollection$3 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$3, LabelCesiumWriter.BackgroundColorPropertyName, expectedBackgroundColor);
-        assertExpectedJson(PacketCesiumWriter.LabelPropertyName, tempCollection$3);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, LabelCesiumWriter.BackgroundColorPropertyName, expectedBackgroundColor);
+        assertExpectedJson(PacketCesiumWriter.LabelPropertyName, tempCollection$0);
     }
 
     @Test
     public final void testBackgroundPaddingProperty() {
         Rectangular expectedBackgroundPadding = new Rectangular(3D, 4D);
         {
-            final PacketCesiumWriter usingExpression_4 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     LabelCesiumWriter label = getPacket().openLabelProperty();
@@ -170,19 +170,19 @@ public class TestLabelCesiumWriter extends TestCesiumPropertyWriter<LabelCesiumW
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_4);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
-        final Map<String, Object> tempCollection$4 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$4, LabelCesiumWriter.BackgroundPaddingPropertyName, expectedBackgroundPadding);
-        assertExpectedJson(PacketCesiumWriter.LabelPropertyName, tempCollection$4);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, LabelCesiumWriter.BackgroundPaddingPropertyName, expectedBackgroundPadding);
+        assertExpectedJson(PacketCesiumWriter.LabelPropertyName, tempCollection$0);
     }
 
     @Test
     public final void testTranslucencyByDistanceProperty() {
         NearFarScalar expectedTranslucencyByDistance = new NearFarScalar(100.0, 1.0, 200.0, 2.0);
         {
-            final PacketCesiumWriter usingExpression_5 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     LabelCesiumWriter label = getPacket().openLabelProperty();
@@ -200,19 +200,19 @@ public class TestLabelCesiumWriter extends TestCesiumPropertyWriter<LabelCesiumW
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_5);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
-        final Map<String, Object> tempCollection$5 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$5, LabelCesiumWriter.TranslucencyByDistancePropertyName, expectedTranslucencyByDistance);
-        assertExpectedJson(PacketCesiumWriter.LabelPropertyName, tempCollection$5);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, LabelCesiumWriter.TranslucencyByDistancePropertyName, expectedTranslucencyByDistance);
+        assertExpectedJson(PacketCesiumWriter.LabelPropertyName, tempCollection$0);
     }
 
     @Test
     public final void testTranslucencyByDistancePropertySamples() {
         JulianDate epoch = new GregorianDate(2012, 4, 2, 12, 0, 0D).toJulianDate();
         {
-            final PacketCesiumWriter usingExpression_6 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     LabelCesiumWriter label = getPacket().openLabelProperty();
@@ -243,7 +243,7 @@ public class TestLabelCesiumWriter extends TestCesiumPropertyWriter<LabelCesiumW
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_6);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
         Assert.assertEquals("{\"label\":{\"translucencyByDistance\":{\"epoch\":\"20120402T12Z\",\"nearFarScalar\":[0,100,1,200,2,60,200,1,300,2]}}}", getStringWriter().toString());

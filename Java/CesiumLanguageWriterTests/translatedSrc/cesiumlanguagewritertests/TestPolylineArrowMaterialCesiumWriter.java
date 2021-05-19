@@ -28,7 +28,7 @@ public class TestPolylineArrowMaterialCesiumWriter extends TestCesiumPropertyWri
     public final void testWritePolylineArrowMaterial() {
         Color expectedColor = Color.RED;
         {
-            final PacketCesiumWriter usingExpression_0 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     PolylineCesiumWriter polyline = getPacket().openPolylineProperty();
@@ -53,7 +53,7 @@ public class TestPolylineArrowMaterialCesiumWriter extends TestCesiumPropertyWri
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_0);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();

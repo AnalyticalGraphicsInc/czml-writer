@@ -32,7 +32,7 @@ public class TestGridMaterialCesiumWriter extends TestCesiumPropertyWriter<GridM
         Rectangular expectedLineThickness = new Rectangular(3D, 4D);
         Rectangular expectedLineOffset = new Rectangular(5D, 9D);
         {
-            final PacketCesiumWriter usingExpression_0 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     PolylineCesiumWriter polyline = getPacket().openPolylineProperty();
@@ -61,7 +61,7 @@ public class TestGridMaterialCesiumWriter extends TestCesiumPropertyWriter<GridM
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_0);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();

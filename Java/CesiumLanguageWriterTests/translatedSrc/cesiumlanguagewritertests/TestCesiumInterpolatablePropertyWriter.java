@@ -28,7 +28,7 @@ public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends Ce
         final String expectedPropertyName = "foo";
         final CesiumInterpolationAlgorithm expectedInterpolationAlgorithm = CesiumInterpolationAlgorithm.HERMITE;
         {
-            final PacketCesiumWriter usingExpression_0 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     CesiumPropertyWriter<TDerived> propertyWriter = createPropertyWriter(expectedPropertyName);
@@ -47,7 +47,7 @@ public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends Ce
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_0);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
@@ -60,7 +60,7 @@ public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends Ce
         final String expectedPropertyName = "foo";
         final int expectedInterpolationDegree = 3;
         {
-            final PacketCesiumWriter usingExpression_1 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     CesiumPropertyWriter<TDerived> propertyWriter = createPropertyWriter(expectedPropertyName);
@@ -79,12 +79,12 @@ public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends Ce
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_1);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
-        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$1, "interpolationDegree", expectedInterpolationDegree);
-        assertExpectedJson(expectedPropertyName, tempCollection$1);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, "interpolationDegree", expectedInterpolationDegree);
+        assertExpectedJson(expectedPropertyName, tempCollection$0);
     }
 
     @Test
@@ -92,7 +92,7 @@ public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends Ce
         final String expectedPropertyName = "foo";
         final CesiumExtrapolationType expectedForwardExtrapolationType = CesiumExtrapolationType.EXTRAPOLATE;
         {
-            final PacketCesiumWriter usingExpression_2 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     CesiumPropertyWriter<TDerived> propertyWriter = createPropertyWriter(expectedPropertyName);
@@ -111,12 +111,12 @@ public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends Ce
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_2);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
-        final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$2, "forwardExtrapolationType", CesiumFormattingHelper.extrapolationTypeToString(expectedForwardExtrapolationType));
-        assertExpectedJson(expectedPropertyName, tempCollection$2);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, "forwardExtrapolationType", CesiumFormattingHelper.extrapolationTypeToString(expectedForwardExtrapolationType));
+        assertExpectedJson(expectedPropertyName, tempCollection$0);
     }
 
     @Test
@@ -124,7 +124,7 @@ public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends Ce
         final String expectedPropertyName = "foo";
         final CesiumExtrapolationType expectedBackwardExtrapolationType = CesiumExtrapolationType.EXTRAPOLATE;
         {
-            final PacketCesiumWriter usingExpression_3 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     CesiumPropertyWriter<TDerived> propertyWriter = createPropertyWriter(expectedPropertyName);
@@ -143,12 +143,12 @@ public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends Ce
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_3);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
-        final Map<String, Object> tempCollection$3 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$3, "backwardExtrapolationType", CesiumFormattingHelper.extrapolationTypeToString(expectedBackwardExtrapolationType));
-        assertExpectedJson(expectedPropertyName, tempCollection$3);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, "backwardExtrapolationType", CesiumFormattingHelper.extrapolationTypeToString(expectedBackwardExtrapolationType));
+        assertExpectedJson(expectedPropertyName, tempCollection$0);
     }
 
     @Test
@@ -156,7 +156,7 @@ public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends Ce
         final String expectedPropertyName = "foo";
         Duration expectedForwardExtrapolationDuration = Duration.fromSeconds(12D);
         {
-            final PacketCesiumWriter usingExpression_4 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     CesiumPropertyWriter<TDerived> propertyWriter = createPropertyWriter(expectedPropertyName);
@@ -175,12 +175,12 @@ public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends Ce
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_4);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
-        final Map<String, Object> tempCollection$4 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$4, "forwardExtrapolationDuration", expectedForwardExtrapolationDuration);
-        assertExpectedJson(expectedPropertyName, tempCollection$4);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, "forwardExtrapolationDuration", expectedForwardExtrapolationDuration);
+        assertExpectedJson(expectedPropertyName, tempCollection$0);
     }
 
     @Test
@@ -188,7 +188,7 @@ public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends Ce
         final String expectedPropertyName = "foo";
         Duration expectedBackwardExtrapolationDuration = Duration.fromSeconds(12D);
         {
-            final PacketCesiumWriter usingExpression_5 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     CesiumPropertyWriter<TDerived> propertyWriter = createPropertyWriter(expectedPropertyName);
@@ -207,12 +207,12 @@ public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends Ce
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_5);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
-        final Map<String, Object> tempCollection$5 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$5, "backwardExtrapolationDuration", expectedBackwardExtrapolationDuration);
-        assertExpectedJson(expectedPropertyName, tempCollection$5);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, "backwardExtrapolationDuration", expectedBackwardExtrapolationDuration);
+        assertExpectedJson(expectedPropertyName, tempCollection$0);
     }
 
     @Nonnull

@@ -31,7 +31,7 @@ public class TestRectangularSensorCesiumWriter extends TestCesiumPropertyWriter<
         final double expectedYHalfAngle = 1.2;
         final double expectedRadius = 1234.5;
         {
-            final PacketCesiumWriter usingExpression_0 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     RectangularSensorCesiumWriter rectangle = getPacket().openRectangularSensorProperty();
@@ -52,7 +52,7 @@ public class TestRectangularSensorCesiumWriter extends TestCesiumPropertyWriter<
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_0);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
@@ -71,7 +71,7 @@ public class TestRectangularSensorCesiumWriter extends TestCesiumPropertyWriter<
         final boolean expectedShowEnvironmentIntersection = true;
         Color expectedEnvironmentIntersectionColor = Color.RED;
         {
-            final PacketCesiumWriter usingExpression_1 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     RectangularSensorCesiumWriter rectangle = getPacket().openRectangularSensorProperty();
@@ -93,23 +93,23 @@ public class TestRectangularSensorCesiumWriter extends TestCesiumPropertyWriter<
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_1);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
-        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$1, RectangularSensorCesiumWriter.ShowIntersectionPropertyName, expectedShowIntersection);
-        MapHelper.add(tempCollection$1, RectangularSensorCesiumWriter.IntersectionColorPropertyName, expectedIntersectionColor);
-        MapHelper.add(tempCollection$1, RectangularSensorCesiumWriter.IntersectionWidthPropertyName, expectedIntersectionWidth);
-        MapHelper.add(tempCollection$1, RectangularSensorCesiumWriter.ShowEnvironmentIntersectionPropertyName, expectedShowEnvironmentIntersection);
-        MapHelper.add(tempCollection$1, RectangularSensorCesiumWriter.EnvironmentIntersectionColorPropertyName, expectedEnvironmentIntersectionColor);
-        assertExpectedJson(PacketCesiumWriter.RectangularSensorPropertyName, tempCollection$1);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, RectangularSensorCesiumWriter.ShowIntersectionPropertyName, expectedShowIntersection);
+        MapHelper.add(tempCollection$0, RectangularSensorCesiumWriter.IntersectionColorPropertyName, expectedIntersectionColor);
+        MapHelper.add(tempCollection$0, RectangularSensorCesiumWriter.IntersectionWidthPropertyName, expectedIntersectionWidth);
+        MapHelper.add(tempCollection$0, RectangularSensorCesiumWriter.ShowEnvironmentIntersectionPropertyName, expectedShowEnvironmentIntersection);
+        MapHelper.add(tempCollection$0, RectangularSensorCesiumWriter.EnvironmentIntersectionColorPropertyName, expectedEnvironmentIntersectionColor);
+        assertExpectedJson(PacketCesiumWriter.RectangularSensorPropertyName, tempCollection$0);
     }
 
     @Test
     public final void testShowThroughEllipsoid() {
         final boolean expectedShowThroughEllipsoid = true;
         {
-            final PacketCesiumWriter usingExpression_2 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     RectangularSensorCesiumWriter rectangle = getPacket().openRectangularSensorProperty();
@@ -127,12 +127,12 @@ public class TestRectangularSensorCesiumWriter extends TestCesiumPropertyWriter<
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_2);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
-        final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$2, RectangularSensorCesiumWriter.ShowThroughEllipsoidPropertyName, expectedShowThroughEllipsoid);
-        assertExpectedJson(PacketCesiumWriter.RectangularSensorPropertyName, tempCollection$2);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, RectangularSensorCesiumWriter.ShowThroughEllipsoidPropertyName, expectedShowThroughEllipsoid);
+        assertExpectedJson(PacketCesiumWriter.RectangularSensorPropertyName, tempCollection$0);
     }
 
     @Override

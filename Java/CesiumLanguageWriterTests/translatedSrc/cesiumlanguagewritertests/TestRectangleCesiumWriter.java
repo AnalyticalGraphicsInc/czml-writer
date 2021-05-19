@@ -28,7 +28,7 @@ public class TestRectangleCesiumWriter extends TestCesiumPropertyWriter<Rectangl
         final double expectedExtrudedHeight = 10.0;
         final CesiumHeightReference expectedExtrudedHeightReference = CesiumHeightReference.RELATIVE_TO_GROUND;
         {
-            final PacketCesiumWriter usingExpression_0 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     RectangleCesiumWriter rectangle = getPacket().openRectangleProperty();
@@ -47,7 +47,7 @@ public class TestRectangleCesiumWriter extends TestCesiumPropertyWriter<Rectangl
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_0);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();

@@ -139,7 +139,7 @@ public class TestOrientationCesiumWriter extends TestCesiumInterpolatablePropert
         final String expectedId = "id";
         final boolean expectedDelete = true;
         {
-            final PacketCesiumWriter usingExpression_0 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 getPacket().writeId(expectedId);
                 {
@@ -158,16 +158,16 @@ public class TestOrientationCesiumWriter extends TestCesiumInterpolatablePropert
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_0);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
-        final Map<String, Object> tempCollection$4 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$4, "interval", CesiumFormattingHelper.toIso8601Interval(start, stop, Iso8601Format.COMPACT));
-        MapHelper.add(tempCollection$4, OrientationCesiumWriter.DeletePropertyName, expectedDelete);
-        final Map<String, Object> tempCollection$3 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$3, PacketCesiumWriter.IdPropertyName, expectedId);
-        MapHelper.add(tempCollection$3, PacketCesiumWriter.OrientationPropertyName, tempCollection$4);
-        assertExpectedJson(tempCollection$3);
+        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$1, "interval", CesiumFormattingHelper.toIso8601Interval(start, stop, Iso8601Format.COMPACT));
+        MapHelper.add(tempCollection$1, OrientationCesiumWriter.DeletePropertyName, expectedDelete);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, PacketCesiumWriter.IdPropertyName, expectedId);
+        MapHelper.add(tempCollection$0, PacketCesiumWriter.OrientationPropertyName, tempCollection$1);
+        assertExpectedJson(tempCollection$0);
     }
 
     @Test
@@ -175,7 +175,7 @@ public class TestOrientationCesiumWriter extends TestCesiumInterpolatablePropert
         final String expectedId = "id";
         final boolean expectedDelete = true;
         {
-            final PacketCesiumWriter usingExpression_1 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 getPacket().writeId(expectedId);
                 {
@@ -194,15 +194,15 @@ public class TestOrientationCesiumWriter extends TestCesiumInterpolatablePropert
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_1);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
-        final Map<String, Object> tempCollection$6 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$6, OrientationCesiumWriter.DeletePropertyName, expectedDelete);
-        final Map<String, Object> tempCollection$5 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$5, PacketCesiumWriter.IdPropertyName, expectedId);
-        MapHelper.add(tempCollection$5, PacketCesiumWriter.OrientationPropertyName, tempCollection$6);
-        assertExpectedJson(tempCollection$5);
+        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$1, OrientationCesiumWriter.DeletePropertyName, expectedDelete);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, PacketCesiumWriter.IdPropertyName, expectedId);
+        MapHelper.add(tempCollection$0, PacketCesiumWriter.OrientationPropertyName, tempCollection$1);
+        assertExpectedJson(tempCollection$0);
     }
 
     @Override

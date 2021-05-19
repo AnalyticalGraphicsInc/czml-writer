@@ -34,7 +34,7 @@ public class TestPolylineVolumeCesiumWriter extends TestCesiumPropertyWriter<Pol
     public final void testShowProperty() {
         final boolean expectedShow = true;
         {
-            final PacketCesiumWriter usingExpression_0 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     PolylineVolumeCesiumWriter polylineVolume = getPacket().openPolylineVolumeProperty();
@@ -52,7 +52,7 @@ public class TestPolylineVolumeCesiumWriter extends TestCesiumPropertyWriter<Pol
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_0);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
@@ -74,7 +74,7 @@ public class TestPolylineVolumeCesiumWriter extends TestCesiumPropertyWriter<Pol
         final boolean interval2Value = false;
         final boolean interval3Value = true;
         {
-            final PacketCesiumWriter usingExpression_1 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     PolylineVolumeCesiumWriter polylineVolume = getPacket().openPolylineVolumeProperty();
@@ -122,48 +122,48 @@ public class TestPolylineVolumeCesiumWriter extends TestCesiumPropertyWriter<Pol
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_1);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
+        final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$2, "interval", CesiumFormattingHelper.toIso8601Interval(interval1Start, interval1Stop, Iso8601Format.COMPACT));
+        MapHelper.add(tempCollection$2, BooleanCesiumWriter.BooleanPropertyName, interval1Value);
         final Map<String, Object> tempCollection$3 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$3, "interval", CesiumFormattingHelper.toIso8601Interval(interval1Start, interval1Stop, Iso8601Format.COMPACT));
-        MapHelper.add(tempCollection$3, BooleanCesiumWriter.BooleanPropertyName, interval1Value);
+        MapHelper.add(tempCollection$3, "interval", CesiumFormattingHelper.toIso8601Interval(interval2Start, interval2Stop, Iso8601Format.COMPACT));
+        MapHelper.add(tempCollection$3, BooleanCesiumWriter.BooleanPropertyName, interval2Value);
         final Map<String, Object> tempCollection$4 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$4, "interval", CesiumFormattingHelper.toIso8601Interval(interval2Start, interval2Stop, Iso8601Format.COMPACT));
-        MapHelper.add(tempCollection$4, BooleanCesiumWriter.BooleanPropertyName, interval2Value);
-        final Map<String, Object> tempCollection$5 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$5, "interval", CesiumFormattingHelper.toIso8601Interval(interval3Start, interval3Stop, Iso8601Format.COMPACT));
-        MapHelper.add(tempCollection$5, BooleanCesiumWriter.BooleanPropertyName, interval3Value);
-        final ArrayList<Map<String, Object>> tempCollection$2 = new ArrayList<Map<String, Object>>();
-        tempCollection$2.add(tempCollection$3);
-        tempCollection$2.add(tempCollection$4);
-        tempCollection$2.add(tempCollection$5);
-        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$1, PolylineVolumeCesiumWriter.ShowPropertyName, tempCollection$2);
-        assertExpectedJson(PacketCesiumWriter.PolylineVolumePropertyName, tempCollection$1);
+        MapHelper.add(tempCollection$4, "interval", CesiumFormattingHelper.toIso8601Interval(interval3Start, interval3Stop, Iso8601Format.COMPACT));
+        MapHelper.add(tempCollection$4, BooleanCesiumWriter.BooleanPropertyName, interval3Value);
+        final ArrayList<Map<String, Object>> tempCollection$1 = new ArrayList<Map<String, Object>>();
+        tempCollection$1.add(tempCollection$2);
+        tempCollection$1.add(tempCollection$3);
+        tempCollection$1.add(tempCollection$4);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, PolylineVolumeCesiumWriter.ShowPropertyName, tempCollection$1);
+        assertExpectedJson(PacketCesiumWriter.PolylineVolumePropertyName, tempCollection$0);
     }
 
     @Test
     public final void testShape() {
         {
-            final PacketCesiumWriter usingExpression_2 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     PolylineVolumeCesiumWriter polylineVolume = getPacket().openPolylineVolumeProperty();
                     try {
-                        final ArrayList<cesiumlanguagewriter.Rectangular> tempCollection$6 = new ArrayList<cesiumlanguagewriter.Rectangular>();
-                        tempCollection$6.add(new Rectangular(-5D, -5D));
-                        tempCollection$6.add(new Rectangular(6D, -6D));
-                        tempCollection$6.add(new Rectangular(7D, 7D));
-                        tempCollection$6.add(new Rectangular(-8D, 8D));
-                        ArrayList<cesiumlanguagewriter.Rectangular> shape = tempCollection$6;
+                        final ArrayList<cesiumlanguagewriter.Rectangular> tempCollection$0 = new ArrayList<cesiumlanguagewriter.Rectangular>();
+                        tempCollection$0.add(new Rectangular(-5D, -5D));
+                        tempCollection$0.add(new Rectangular(6D, -6D));
+                        tempCollection$0.add(new Rectangular(7D, 7D));
+                        tempCollection$0.add(new Rectangular(-8D, 8D));
+                        ArrayList<cesiumlanguagewriter.Rectangular> shape = tempCollection$0;
                         polylineVolume.writeShapeProperty(shape);
                     } finally {
                         DisposeHelper.dispose(polylineVolume);
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_2);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
         Assert.assertEquals("{\"polylineVolume\":{\"shape\":{\"cartesian2\":[-5,-5,6,-6,7,7,-8,8]}}}", getStringWriter().toString());
@@ -173,7 +173,7 @@ public class TestPolylineVolumeCesiumWriter extends TestCesiumPropertyWriter<Pol
     public final void testDistanceDisplayCondition() {
         Bounds expectedBounds = new Bounds(10D, 1234D);
         {
-            final PacketCesiumWriter usingExpression_3 = (getPacket());
+            final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
                 {
                     PolylineVolumeCesiumWriter polylineVolume = getPacket().openPolylineVolumeProperty();
@@ -191,12 +191,12 @@ public class TestPolylineVolumeCesiumWriter extends TestCesiumPropertyWriter<Pol
                     }
                 }
             } finally {
-                DisposeHelper.dispose(usingExpression_3);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
-        final Map<String, Object> tempCollection$7 = new LinkedHashMap<String, Object>();
-        MapHelper.add(tempCollection$7, PolylineVolumeCesiumWriter.DistanceDisplayConditionPropertyName, expectedBounds);
-        assertExpectedJson(PacketCesiumWriter.PolylineVolumePropertyName, tempCollection$7);
+        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        MapHelper.add(tempCollection$0, PolylineVolumeCesiumWriter.DistanceDisplayConditionPropertyName, expectedBounds);
+        assertExpectedJson(PacketCesiumWriter.PolylineVolumePropertyName, tempCollection$0);
     }
 
     /**
@@ -231,11 +231,11 @@ public class TestPolylineVolumeCesiumWriter extends TestCesiumPropertyWriter<Pol
                         {
                             PositionListCesiumWriter positions = polylineVolume.openPositionsProperty();
                             try {
-                                final ArrayList<cesiumlanguagewriter.Cartographic> tempCollection$8 = new ArrayList<cesiumlanguagewriter.Cartographic>();
-                                tempCollection$8.add(new Cartographic(-90.0, 32.0, 0D));
-                                tempCollection$8.add(new Cartographic(-90.0, 36.0, 100000D));
-                                tempCollection$8.add(new Cartographic(-94.0, 36.0, 0D));
-                                positions.writeCartographicDegrees(tempCollection$8);
+                                final ArrayList<cesiumlanguagewriter.Cartographic> tempCollection$0 = new ArrayList<cesiumlanguagewriter.Cartographic>();
+                                tempCollection$0.add(new Cartographic(-90.0, 32.0, 0D));
+                                tempCollection$0.add(new Cartographic(-90.0, 36.0, 100000D));
+                                tempCollection$0.add(new Cartographic(-94.0, 36.0, 0D));
+                                positions.writeCartographicDegrees(tempCollection$0);
                             } finally {
                                 DisposeHelper.dispose(positions);
                             }
@@ -243,12 +243,12 @@ public class TestPolylineVolumeCesiumWriter extends TestCesiumPropertyWriter<Pol
                         {
                             ShapeCesiumWriter shape = polylineVolume.openShapeProperty();
                             try {
-                                final ArrayList<cesiumlanguagewriter.Rectangular> tempCollection$9 = new ArrayList<cesiumlanguagewriter.Rectangular>();
-                                tempCollection$9.add(new Rectangular(-50000D, -50000D));
-                                tempCollection$9.add(new Rectangular(50000D, -50000D));
-                                tempCollection$9.add(new Rectangular(50000D, 50000D));
-                                tempCollection$9.add(new Rectangular(-50000D, 50000D));
-                                shape.writeCartesian2(tempCollection$9);
+                                final ArrayList<cesiumlanguagewriter.Rectangular> tempCollection$1 = new ArrayList<cesiumlanguagewriter.Rectangular>();
+                                tempCollection$1.add(new Rectangular(-50000D, -50000D));
+                                tempCollection$1.add(new Rectangular(50000D, -50000D));
+                                tempCollection$1.add(new Rectangular(50000D, 50000D));
+                                tempCollection$1.add(new Rectangular(-50000D, 50000D));
+                                shape.writeCartesian2(tempCollection$1);
                             } finally {
                                 DisposeHelper.dispose(shape);
                             }
@@ -290,11 +290,11 @@ public class TestPolylineVolumeCesiumWriter extends TestCesiumPropertyWriter<Pol
                         {
                             PositionListCesiumWriter positions = polylineVolume.openPositionsProperty();
                             try {
-                                final ArrayList<cesiumlanguagewriter.Cartographic> tempCollection$10 = new ArrayList<cesiumlanguagewriter.Cartographic>();
-                                tempCollection$10.add(new Cartographic(-95.0, 32.0, 0D));
-                                tempCollection$10.add(new Cartographic(-95.0, 36.0, 100000D));
-                                tempCollection$10.add(new Cartographic(-99.0, 36.0, 200000D));
-                                positions.writeCartographicDegrees(tempCollection$10);
+                                final ArrayList<cesiumlanguagewriter.Cartographic> tempCollection$2 = new ArrayList<cesiumlanguagewriter.Cartographic>();
+                                tempCollection$2.add(new Cartographic(-95.0, 32.0, 0D));
+                                tempCollection$2.add(new Cartographic(-95.0, 36.0, 100000D));
+                                tempCollection$2.add(new Cartographic(-99.0, 36.0, 200000D));
+                                positions.writeCartographicDegrees(tempCollection$2);
                             } finally {
                                 DisposeHelper.dispose(positions);
                             }

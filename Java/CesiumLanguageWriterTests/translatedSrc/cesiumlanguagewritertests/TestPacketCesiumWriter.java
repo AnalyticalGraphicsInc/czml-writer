@@ -47,9 +47,9 @@ public class TestPacketCesiumWriter {
     @Test
     public final void disposeClosesPacket() {
         {
-            final PacketCesiumWriter usingExpression_0 = (m_writer.openPacket(m_outputStream));
+            final PacketCesiumWriter usingExpression$0 = (m_writer.openPacket(m_outputStream));
             try {} finally {
-                DisposeHelper.dispose(usingExpression_0);
+                DisposeHelper.dispose(usingExpression$0);
             }
         }
         Assert.assertEquals("{}", m_stringWriter.toString());
