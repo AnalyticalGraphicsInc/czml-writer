@@ -48,32 +48,32 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     @Nonnull
     public static final String RepeatPropertyName = "repeat";
     @Nonnull
-    private final Lazy<StripeOrientationCesiumWriter> m_orientation = new Lazy<cesiumlanguagewriter.StripeOrientationCesiumWriter>(new Func1<cesiumlanguagewriter.StripeOrientationCesiumWriter>() {
-        public cesiumlanguagewriter.StripeOrientationCesiumWriter invoke() {
+    private final Lazy<StripeOrientationCesiumWriter> m_orientation = new Lazy<StripeOrientationCesiumWriter>(new Func1<StripeOrientationCesiumWriter>() {
+        public StripeOrientationCesiumWriter invoke() {
             return new StripeOrientationCesiumWriter(OrientationPropertyName);
         }
     }, false);
     @Nonnull
-    private final Lazy<ColorCesiumWriter> m_evenColor = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
-        public cesiumlanguagewriter.ColorCesiumWriter invoke() {
+    private final Lazy<ColorCesiumWriter> m_evenColor = new Lazy<ColorCesiumWriter>(new Func1<ColorCesiumWriter>() {
+        public ColorCesiumWriter invoke() {
             return new ColorCesiumWriter(EvenColorPropertyName);
         }
     }, false);
     @Nonnull
-    private final Lazy<ColorCesiumWriter> m_oddColor = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
-        public cesiumlanguagewriter.ColorCesiumWriter invoke() {
+    private final Lazy<ColorCesiumWriter> m_oddColor = new Lazy<ColorCesiumWriter>(new Func1<ColorCesiumWriter>() {
+        public ColorCesiumWriter invoke() {
             return new ColorCesiumWriter(OddColorPropertyName);
         }
     }, false);
     @Nonnull
-    private final Lazy<DoubleCesiumWriter> m_offset = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
-        public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+    private final Lazy<DoubleCesiumWriter> m_offset = new Lazy<DoubleCesiumWriter>(new Func1<DoubleCesiumWriter>() {
+        public DoubleCesiumWriter invoke() {
             return new DoubleCesiumWriter(OffsetPropertyName);
         }
     }, false);
     @Nonnull
-    private final Lazy<DoubleCesiumWriter> m_repeat = new Lazy<cesiumlanguagewriter.DoubleCesiumWriter>(new Func1<cesiumlanguagewriter.DoubleCesiumWriter>() {
-        public cesiumlanguagewriter.DoubleCesiumWriter invoke() {
+    private final Lazy<DoubleCesiumWriter> m_repeat = new Lazy<DoubleCesiumWriter>(new Func1<DoubleCesiumWriter>() {
+        public DoubleCesiumWriter invoke() {
             return new DoubleCesiumWriter(RepeatPropertyName);
         }
     }, false);

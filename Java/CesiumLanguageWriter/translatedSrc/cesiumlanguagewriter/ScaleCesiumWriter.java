@@ -168,12 +168,11 @@ public class ScaleCesiumWriter extends CesiumInterpolatablePropertyWriter<ScaleC
 
     @Nonnull
     private final Lazy<CesiumCartesian3ValuePropertyAdaptor<ScaleCesiumWriter>> createAsCartesian() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumCartesian3ValuePropertyAdaptor<ScaleCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumCartesian3ValuePropertyAdaptor<ScaleCesiumWriter>>(this, "createCartesian3") {
-                    public cesiumlanguagewriter.advanced.CesiumCartesian3ValuePropertyAdaptor<ScaleCesiumWriter> invoke() {
-                        return createCartesian3();
-                    }
-                }, false);
+        return new Lazy<CesiumCartesian3ValuePropertyAdaptor<ScaleCesiumWriter>>(new Func1<CesiumCartesian3ValuePropertyAdaptor<ScaleCesiumWriter>>(this, "createCartesian3") {
+            public CesiumCartesian3ValuePropertyAdaptor<ScaleCesiumWriter> invoke() {
+                return createCartesian3();
+            }
+        }, false);
     }
 
     @Nonnull
@@ -192,12 +191,11 @@ public class ScaleCesiumWriter extends CesiumInterpolatablePropertyWriter<ScaleC
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<ScaleCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<ScaleCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<ScaleCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<ScaleCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<ScaleCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<ScaleCesiumWriter>>(this, "createReference") {
+            public CesiumReferenceValuePropertyAdaptor<ScaleCesiumWriter> invoke() {
+                return createReference();
+            }
+        }, false);
     }
 
     @Nonnull

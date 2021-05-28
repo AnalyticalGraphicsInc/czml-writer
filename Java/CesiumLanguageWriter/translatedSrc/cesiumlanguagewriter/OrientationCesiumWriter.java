@@ -223,12 +223,11 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
     @Nonnull
     private final Lazy<CesiumUnitQuaternionValuePropertyAdaptor<OrientationCesiumWriter>> createAsUnitQuaternion() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumUnitQuaternionValuePropertyAdaptor<OrientationCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumUnitQuaternionValuePropertyAdaptor<OrientationCesiumWriter>>(this, "createUnitQuaternion") {
-                    public cesiumlanguagewriter.advanced.CesiumUnitQuaternionValuePropertyAdaptor<OrientationCesiumWriter> invoke() {
-                        return createUnitQuaternion();
-                    }
-                }, false);
+        return new Lazy<CesiumUnitQuaternionValuePropertyAdaptor<OrientationCesiumWriter>>(new Func1<CesiumUnitQuaternionValuePropertyAdaptor<OrientationCesiumWriter>>(this, "createUnitQuaternion") {
+            public CesiumUnitQuaternionValuePropertyAdaptor<OrientationCesiumWriter> invoke() {
+                return createUnitQuaternion();
+            }
+        }, false);
     }
 
     @Nonnull
@@ -247,12 +246,11 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<OrientationCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<OrientationCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<OrientationCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<OrientationCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<OrientationCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<OrientationCesiumWriter>>(this, "createReference") {
+            public CesiumReferenceValuePropertyAdaptor<OrientationCesiumWriter> invoke() {
+                return createReference();
+            }
+        }, false);
     }
 
     @Nonnull
@@ -271,12 +269,12 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
     @Nonnull
     private final Lazy<CesiumVelocityReferenceValuePropertyAdaptor<OrientationCesiumWriter>> createAsVelocityReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumVelocityReferenceValuePropertyAdaptor<OrientationCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumVelocityReferenceValuePropertyAdaptor<OrientationCesiumWriter>>(this, "createVelocityReference") {
-                    public cesiumlanguagewriter.advanced.CesiumVelocityReferenceValuePropertyAdaptor<OrientationCesiumWriter> invoke() {
-                        return createVelocityReference();
-                    }
-                }, false);
+        return new Lazy<CesiumVelocityReferenceValuePropertyAdaptor<OrientationCesiumWriter>>(new Func1<CesiumVelocityReferenceValuePropertyAdaptor<OrientationCesiumWriter>>(this,
+                "createVelocityReference") {
+            public CesiumVelocityReferenceValuePropertyAdaptor<OrientationCesiumWriter> invoke() {
+                return createVelocityReference();
+            }
+        }, false);
     }
 
     @Nonnull

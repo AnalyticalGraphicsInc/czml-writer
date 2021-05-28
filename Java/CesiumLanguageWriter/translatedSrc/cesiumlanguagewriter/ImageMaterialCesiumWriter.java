@@ -46,26 +46,26 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     @Nonnull
     public static final String TransparentPropertyName = "transparent";
     @Nonnull
-    private final Lazy<UriCesiumWriter> m_image = new Lazy<cesiumlanguagewriter.UriCesiumWriter>(new Func1<cesiumlanguagewriter.UriCesiumWriter>() {
-        public cesiumlanguagewriter.UriCesiumWriter invoke() {
+    private final Lazy<UriCesiumWriter> m_image = new Lazy<UriCesiumWriter>(new Func1<UriCesiumWriter>() {
+        public UriCesiumWriter invoke() {
             return new UriCesiumWriter(ImagePropertyName);
         }
     }, false);
     @Nonnull
-    private final Lazy<RepeatCesiumWriter> m_repeat = new Lazy<cesiumlanguagewriter.RepeatCesiumWriter>(new Func1<cesiumlanguagewriter.RepeatCesiumWriter>() {
-        public cesiumlanguagewriter.RepeatCesiumWriter invoke() {
+    private final Lazy<RepeatCesiumWriter> m_repeat = new Lazy<RepeatCesiumWriter>(new Func1<RepeatCesiumWriter>() {
+        public RepeatCesiumWriter invoke() {
             return new RepeatCesiumWriter(RepeatPropertyName);
         }
     }, false);
     @Nonnull
-    private final Lazy<ColorCesiumWriter> m_color = new Lazy<cesiumlanguagewriter.ColorCesiumWriter>(new Func1<cesiumlanguagewriter.ColorCesiumWriter>() {
-        public cesiumlanguagewriter.ColorCesiumWriter invoke() {
+    private final Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(new Func1<ColorCesiumWriter>() {
+        public ColorCesiumWriter invoke() {
             return new ColorCesiumWriter(ColorPropertyName);
         }
     }, false);
     @Nonnull
-    private final Lazy<BooleanCesiumWriter> m_transparent = new Lazy<cesiumlanguagewriter.BooleanCesiumWriter>(new Func1<cesiumlanguagewriter.BooleanCesiumWriter>() {
-        public cesiumlanguagewriter.BooleanCesiumWriter invoke() {
+    private final Lazy<BooleanCesiumWriter> m_transparent = new Lazy<BooleanCesiumWriter>(new Func1<BooleanCesiumWriter>() {
+        public BooleanCesiumWriter invoke() {
             return new BooleanCesiumWriter(TransparentPropertyName);
         }
     }, false);

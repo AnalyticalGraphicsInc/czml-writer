@@ -49,17 +49,6 @@ public abstract class CesiumWriterAdaptorWriteDeleteCallback<TWrappedWriter exte
     */
     public abstract void invoke(@Nonnull TWrappedWriter wrappedWriter);
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == this) {
-            return true;
-        }
-        if (!(obj instanceof CesiumWriterAdaptorWriteDeleteCallback)) {
-            return false;
-        }
-        return super.equals(obj);
-    }
-
     /**
     * Create a delegate for the given interface. This can be used to create a delegate from a lambda expression.
     * @param f The function which will be invoked.

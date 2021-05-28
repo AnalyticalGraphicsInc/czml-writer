@@ -3867,7 +3867,7 @@ public class TestGenerateValidationDocument {
                 {
                     PositionCesiumWriter w = packet.openPositionProperty();
                     try {
-                        w.writeCartesianVelocity(new Motion1<cesiumlanguagewriter.Cartesian>(new Cartesian(15776D, 23613D, 14940D), new Cartesian(35130D, 14217D, 19511D)));
+                        w.writeCartesianVelocity(new Motion1<Cartesian>(new Cartesian(15776D, 23613D, 14940D), new Cartesian(35130D, 14217D, 19511D)));
                         TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.position.getValue(date)).toEqual(new Cartesian3(15776, 23613, 14940));");
                     } finally {
                         DisposeHelper.dispose(w);
@@ -39780,8 +39780,8 @@ public class TestGenerateValidationDocument {
                     PositionCesiumWriter w = packet.openPositionProperty();
                     try {
                         w.writeCartesianVelocity(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
-                                .<Motion1<Cartesian>> createList(new Motion1<cesiumlanguagewriter.Cartesian>(new Cartesian(40342D, 23709D, 14940D), new Cartesian(12602D, 34609D, 44423D)),
-                                        new Motion1<cesiumlanguagewriter.Cartesian>(new Cartesian(25648D, 55396D, 53208D), new Cartesian(60367D, 62699D, 54004D))));
+                                .<Motion1<Cartesian>> createList(new Motion1<Cartesian>(new Cartesian(40342D, 23709D, 14940D), new Cartesian(12602D, 34609D, 44423D)), new Motion1<Cartesian>(
+                                        new Cartesian(25648D, 55396D, 53208D), new Cartesian(60367D, 62699D, 54004D))));
                         TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.position.getValue(documentStartDate)).toEqual(new Cartesian3(40342, 23709, 14940));");
                         TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.position.getValue(documentStopDate)).toEqual(new Cartesian3(25648, 55396, 53208));");
                     } finally {

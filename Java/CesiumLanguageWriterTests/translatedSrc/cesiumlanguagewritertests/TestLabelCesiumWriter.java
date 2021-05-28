@@ -223,8 +223,8 @@ public class TestLabelCesiumWriter extends TestCesiumPropertyWriter<LabelCesiumW
                                 {
                                     NearFarScalarCesiumWriter scaleByDistance = interval.openTranslucencyByDistanceProperty();
                                     try {
-                                        ArrayList<cesiumlanguagewriter.JulianDate> dates = new ArrayList<cesiumlanguagewriter.JulianDate>();
-                                        ArrayList<cesiumlanguagewriter.NearFarScalar> values = new ArrayList<cesiumlanguagewriter.NearFarScalar>();
+                                        ArrayList<JulianDate> dates = new ArrayList<JulianDate>();
+                                        ArrayList<NearFarScalar> values = new ArrayList<NearFarScalar>();
                                         dates.add(epoch);
                                         values.add(new NearFarScalar(100.0, 1.0, 200.0, 2.0));
                                         dates.add(epoch.addSeconds(60.0));

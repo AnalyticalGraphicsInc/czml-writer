@@ -168,12 +168,11 @@ public class ViewFromCesiumWriter extends CesiumInterpolatablePropertyWriter<Vie
 
     @Nonnull
     private final Lazy<CesiumCartesian3ValuePropertyAdaptor<ViewFromCesiumWriter>> createAsCartesian() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumCartesian3ValuePropertyAdaptor<ViewFromCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumCartesian3ValuePropertyAdaptor<ViewFromCesiumWriter>>(this, "createCartesian3") {
-                    public cesiumlanguagewriter.advanced.CesiumCartesian3ValuePropertyAdaptor<ViewFromCesiumWriter> invoke() {
-                        return createCartesian3();
-                    }
-                }, false);
+        return new Lazy<CesiumCartesian3ValuePropertyAdaptor<ViewFromCesiumWriter>>(new Func1<CesiumCartesian3ValuePropertyAdaptor<ViewFromCesiumWriter>>(this, "createCartesian3") {
+            public CesiumCartesian3ValuePropertyAdaptor<ViewFromCesiumWriter> invoke() {
+                return createCartesian3();
+            }
+        }, false);
     }
 
     @Nonnull
@@ -192,12 +191,11 @@ public class ViewFromCesiumWriter extends CesiumInterpolatablePropertyWriter<Vie
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<ViewFromCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<ViewFromCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<ViewFromCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<ViewFromCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<ViewFromCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<ViewFromCesiumWriter>>(this, "createReference") {
+            public CesiumReferenceValuePropertyAdaptor<ViewFromCesiumWriter> invoke() {
+                return createReference();
+            }
+        }, false);
     }
 
     @Nonnull

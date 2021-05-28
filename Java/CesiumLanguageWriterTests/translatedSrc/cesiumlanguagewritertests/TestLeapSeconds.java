@@ -85,12 +85,12 @@ public class TestLeapSeconds {
     */
     @Test
     public final void testNegativeLeapSecond() {
-        final ArrayList<cesiumlanguagewriter.LeapSecond> tempCollection$0 = new ArrayList<cesiumlanguagewriter.LeapSecond>();
+        final ArrayList<LeapSecond> tempCollection$0 = new ArrayList<LeapSecond>();
         tempCollection$0.add(new LeapSecond(2451545.0, 11D));
         tempCollection$0.add(new LeapSecond(2451555.0, 12D));
         tempCollection$0.add(new LeapSecond(2451565.0, 11D));
         tempCollection$0.add(new LeapSecond(2451575.0, 10D));
-        ArrayList<cesiumlanguagewriter.LeapSecond> newList = tempCollection$0;
+        ArrayList<LeapSecond> newList = tempCollection$0;
         LeapSeconds leapSeconds = new LeapSeconds(newList);
         Assert.assertEquals(11, leapSeconds.getTaiMinusUtc(new JulianDate(2451545.5, TimeStandard.COORDINATED_UNIVERSAL_TIME)), 0d);
         Assert.assertEquals(12, leapSeconds.getTaiMinusUtc(new JulianDate(2451555.5, TimeStandard.COORDINATED_UNIVERSAL_TIME)), 0d);

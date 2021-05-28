@@ -168,12 +168,11 @@ public class RotationCesiumWriter extends CesiumInterpolatablePropertyWriter<Rot
 
     @Nonnull
     private final Lazy<CesiumUnitQuaternionValuePropertyAdaptor<RotationCesiumWriter>> createAsUnitQuaternion() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumUnitQuaternionValuePropertyAdaptor<RotationCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumUnitQuaternionValuePropertyAdaptor<RotationCesiumWriter>>(this, "createUnitQuaternion") {
-                    public cesiumlanguagewriter.advanced.CesiumUnitQuaternionValuePropertyAdaptor<RotationCesiumWriter> invoke() {
-                        return createUnitQuaternion();
-                    }
-                }, false);
+        return new Lazy<CesiumUnitQuaternionValuePropertyAdaptor<RotationCesiumWriter>>(new Func1<CesiumUnitQuaternionValuePropertyAdaptor<RotationCesiumWriter>>(this, "createUnitQuaternion") {
+            public CesiumUnitQuaternionValuePropertyAdaptor<RotationCesiumWriter> invoke() {
+                return createUnitQuaternion();
+            }
+        }, false);
     }
 
     @Nonnull
@@ -192,12 +191,11 @@ public class RotationCesiumWriter extends CesiumInterpolatablePropertyWriter<Rot
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<RotationCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<RotationCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<RotationCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<RotationCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<RotationCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<RotationCesiumWriter>>(this, "createReference") {
+            public CesiumReferenceValuePropertyAdaptor<RotationCesiumWriter> invoke() {
+                return createReference();
+            }
+        }, false);
     }
 
     @Nonnull

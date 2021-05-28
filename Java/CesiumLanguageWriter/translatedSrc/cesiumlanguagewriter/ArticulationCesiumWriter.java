@@ -172,12 +172,11 @@ public class ArticulationCesiumWriter extends CesiumInterpolatablePropertyWriter
 
     @Nonnull
     private final Lazy<CesiumDoubleValuePropertyAdaptor<ArticulationCesiumWriter>> createAsNumber() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumDoubleValuePropertyAdaptor<ArticulationCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumDoubleValuePropertyAdaptor<ArticulationCesiumWriter>>(this, "createDouble") {
-                    public cesiumlanguagewriter.advanced.CesiumDoubleValuePropertyAdaptor<ArticulationCesiumWriter> invoke() {
-                        return createDouble();
-                    }
-                }, false);
+        return new Lazy<CesiumDoubleValuePropertyAdaptor<ArticulationCesiumWriter>>(new Func1<CesiumDoubleValuePropertyAdaptor<ArticulationCesiumWriter>>(this, "createDouble") {
+            public CesiumDoubleValuePropertyAdaptor<ArticulationCesiumWriter> invoke() {
+                return createDouble();
+            }
+        }, false);
     }
 
     @Nonnull
@@ -196,12 +195,11 @@ public class ArticulationCesiumWriter extends CesiumInterpolatablePropertyWriter
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<ArticulationCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<ArticulationCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<ArticulationCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<ArticulationCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<ArticulationCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<ArticulationCesiumWriter>>(this, "createReference") {
+            public CesiumReferenceValuePropertyAdaptor<ArticulationCesiumWriter> invoke() {
+                return createReference();
+            }
+        }, false);
     }
 
     @Nonnull

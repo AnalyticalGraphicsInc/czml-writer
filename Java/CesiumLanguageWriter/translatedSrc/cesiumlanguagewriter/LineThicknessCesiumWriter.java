@@ -177,12 +177,11 @@ public class LineThicknessCesiumWriter extends CesiumInterpolatablePropertyWrite
 
     @Nonnull
     private final Lazy<CesiumCartesian2ValuePropertyAdaptor<LineThicknessCesiumWriter>> createAsCartesian2() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumCartesian2ValuePropertyAdaptor<LineThicknessCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumCartesian2ValuePropertyAdaptor<LineThicknessCesiumWriter>>(this, "createCartesian2") {
-                    public cesiumlanguagewriter.advanced.CesiumCartesian2ValuePropertyAdaptor<LineThicknessCesiumWriter> invoke() {
-                        return createCartesian2();
-                    }
-                }, false);
+        return new Lazy<CesiumCartesian2ValuePropertyAdaptor<LineThicknessCesiumWriter>>(new Func1<CesiumCartesian2ValuePropertyAdaptor<LineThicknessCesiumWriter>>(this, "createCartesian2") {
+            public CesiumCartesian2ValuePropertyAdaptor<LineThicknessCesiumWriter> invoke() {
+                return createCartesian2();
+            }
+        }, false);
     }
 
     @Nonnull
@@ -201,12 +200,11 @@ public class LineThicknessCesiumWriter extends CesiumInterpolatablePropertyWrite
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<LineThicknessCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<LineThicknessCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<LineThicknessCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<LineThicknessCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<LineThicknessCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<LineThicknessCesiumWriter>>(this, "createReference") {
+            public CesiumReferenceValuePropertyAdaptor<LineThicknessCesiumWriter> invoke() {
+                return createReference();
+            }
+        }, false);
     }
 
     @Nonnull

@@ -62,17 +62,6 @@ public abstract class Func2<T, TResult> extends Delegate implements java.util.fu
         return invoke(t);
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == this) {
-            return true;
-        }
-        if (!(obj instanceof Func2<?, ?>)) {
-            return false;
-        }
-        return super.equals(obj);
-    }
-
     /**
      * Create a delegate for the given interface. This can be used to create a delegate
      * from a lambda expression.

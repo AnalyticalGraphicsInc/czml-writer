@@ -239,9 +239,8 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
 
     @Nonnull
     private final Lazy<CesiumRgbaValuePropertyAdaptor<ColorCesiumWriter>> createAsRgba() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumRgbaValuePropertyAdaptor<ColorCesiumWriter>>(new Func1<cesiumlanguagewriter.advanced.CesiumRgbaValuePropertyAdaptor<ColorCesiumWriter>>(
-                this, "createRgba") {
-            public cesiumlanguagewriter.advanced.CesiumRgbaValuePropertyAdaptor<ColorCesiumWriter> invoke() {
+        return new Lazy<CesiumRgbaValuePropertyAdaptor<ColorCesiumWriter>>(new Func1<CesiumRgbaValuePropertyAdaptor<ColorCesiumWriter>>(this, "createRgba") {
+            public CesiumRgbaValuePropertyAdaptor<ColorCesiumWriter> invoke() {
                 return createRgba();
             }
         }, false);
@@ -263,9 +262,8 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
 
     @Nonnull
     private final Lazy<CesiumRgbafValuePropertyAdaptor<ColorCesiumWriter>> createAsRgbaf() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumRgbafValuePropertyAdaptor<ColorCesiumWriter>>(new Func1<cesiumlanguagewriter.advanced.CesiumRgbafValuePropertyAdaptor<ColorCesiumWriter>>(
-                this, "createRgbaf") {
-            public cesiumlanguagewriter.advanced.CesiumRgbafValuePropertyAdaptor<ColorCesiumWriter> invoke() {
+        return new Lazy<CesiumRgbafValuePropertyAdaptor<ColorCesiumWriter>>(new Func1<CesiumRgbafValuePropertyAdaptor<ColorCesiumWriter>>(this, "createRgbaf") {
+            public CesiumRgbafValuePropertyAdaptor<ColorCesiumWriter> invoke() {
                 return createRgbaf();
             }
         }, false);
@@ -287,12 +285,11 @@ public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorC
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<ColorCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<ColorCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<ColorCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<ColorCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<ColorCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<ColorCesiumWriter>>(this, "createReference") {
+            public CesiumReferenceValuePropertyAdaptor<ColorCesiumWriter> invoke() {
+                return createReference();
+            }
+        }, false);
     }
 
     @Nonnull

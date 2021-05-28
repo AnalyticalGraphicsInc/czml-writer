@@ -71,7 +71,7 @@ public final class MapHelper {
         ArgumentNullException.assertNonNull(key, "key");
 
         if (map.containsKey(key))
-            throw new ArgumentException("An entry with the same key already exists.");
+            throw new ArgumentException("An item with the same key has already been added.");
 
         map.put(key, value);
     }

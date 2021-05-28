@@ -150,12 +150,11 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
 
     @Nonnull
     private final Lazy<CesiumSphericalListValuePropertyAdaptor<DirectionListCesiumWriter>> createAsSpherical() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumSphericalListValuePropertyAdaptor<DirectionListCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumSphericalListValuePropertyAdaptor<DirectionListCesiumWriter>>(this, "createSphericalList") {
-                    public cesiumlanguagewriter.advanced.CesiumSphericalListValuePropertyAdaptor<DirectionListCesiumWriter> invoke() {
-                        return createSphericalList();
-                    }
-                }, false);
+        return new Lazy<CesiumSphericalListValuePropertyAdaptor<DirectionListCesiumWriter>>(new Func1<CesiumSphericalListValuePropertyAdaptor<DirectionListCesiumWriter>>(this, "createSphericalList") {
+            public CesiumSphericalListValuePropertyAdaptor<DirectionListCesiumWriter> invoke() {
+                return createSphericalList();
+            }
+        }, false);
     }
 
     @Nonnull
@@ -174,12 +173,12 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
 
     @Nonnull
     private final Lazy<CesiumUnitSphericalListValuePropertyAdaptor<DirectionListCesiumWriter>> createAsUnitSpherical() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumUnitSphericalListValuePropertyAdaptor<DirectionListCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumUnitSphericalListValuePropertyAdaptor<DirectionListCesiumWriter>>(this, "createUnitSphericalList") {
-                    public cesiumlanguagewriter.advanced.CesiumUnitSphericalListValuePropertyAdaptor<DirectionListCesiumWriter> invoke() {
-                        return createUnitSphericalList();
-                    }
-                }, false);
+        return new Lazy<CesiumUnitSphericalListValuePropertyAdaptor<DirectionListCesiumWriter>>(new Func1<CesiumUnitSphericalListValuePropertyAdaptor<DirectionListCesiumWriter>>(this,
+                "createUnitSphericalList") {
+            public CesiumUnitSphericalListValuePropertyAdaptor<DirectionListCesiumWriter> invoke() {
+                return createUnitSphericalList();
+            }
+        }, false);
     }
 
     @Nonnull
@@ -198,12 +197,12 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
 
     @Nonnull
     private final Lazy<CesiumCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter>> createAsCartesian() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter>>(this, "createCartesian3List") {
-                    public cesiumlanguagewriter.advanced.CesiumCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter> invoke() {
-                        return createCartesian3List();
-                    }
-                }, false);
+        return new Lazy<CesiumCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter>>(new Func1<CesiumCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter>>(this,
+                "createCartesian3List") {
+            public CesiumCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter> invoke() {
+                return createCartesian3List();
+            }
+        }, false);
     }
 
     @Nonnull
@@ -222,12 +221,12 @@ public class DirectionListCesiumWriter extends CesiumPropertyWriter<DirectionLis
 
     @Nonnull
     private final Lazy<CesiumUnitCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter>> createAsUnitCartesian() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumUnitCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumUnitCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter>>(this, "createUnitCartesian3List") {
-                    public cesiumlanguagewriter.advanced.CesiumUnitCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter> invoke() {
-                        return createUnitCartesian3List();
-                    }
-                }, false);
+        return new Lazy<CesiumUnitCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter>>(new Func1<CesiumUnitCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter>>(this,
+                "createUnitCartesian3List") {
+            public CesiumUnitCartesian3ListValuePropertyAdaptor<DirectionListCesiumWriter> invoke() {
+                return createUnitCartesian3List();
+            }
+        }, false);
     }
 
     @Nonnull

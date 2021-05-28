@@ -168,12 +168,11 @@ public class EyeOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<Ey
 
     @Nonnull
     private final Lazy<CesiumCartesian3ValuePropertyAdaptor<EyeOffsetCesiumWriter>> createAsCartesian() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumCartesian3ValuePropertyAdaptor<EyeOffsetCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumCartesian3ValuePropertyAdaptor<EyeOffsetCesiumWriter>>(this, "createCartesian3") {
-                    public cesiumlanguagewriter.advanced.CesiumCartesian3ValuePropertyAdaptor<EyeOffsetCesiumWriter> invoke() {
-                        return createCartesian3();
-                    }
-                }, false);
+        return new Lazy<CesiumCartesian3ValuePropertyAdaptor<EyeOffsetCesiumWriter>>(new Func1<CesiumCartesian3ValuePropertyAdaptor<EyeOffsetCesiumWriter>>(this, "createCartesian3") {
+            public CesiumCartesian3ValuePropertyAdaptor<EyeOffsetCesiumWriter> invoke() {
+                return createCartesian3();
+            }
+        }, false);
     }
 
     @Nonnull
@@ -192,12 +191,11 @@ public class EyeOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<Ey
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<EyeOffsetCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<EyeOffsetCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<EyeOffsetCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<EyeOffsetCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<EyeOffsetCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<EyeOffsetCesiumWriter>>(this, "createReference") {
+            public CesiumReferenceValuePropertyAdaptor<EyeOffsetCesiumWriter> invoke() {
+                return createReference();
+            }
+        }, false);
     }
 
     @Nonnull

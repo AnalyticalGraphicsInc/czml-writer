@@ -166,10 +166,10 @@ public class TestArticulationsCesiumWriter extends TestCesiumPropertyWriter<Arti
                                         {
                                             ArticulationCesiumWriter articulationWriter = articulationsWriter.openArticulationProperty("articulation1 stage2");
                                             try {
-                                                final ArrayList<cesiumlanguagewriter.JulianDate> tempCollection$0 = new ArrayList<cesiumlanguagewriter.JulianDate>();
+                                                final ArrayList<JulianDate> tempCollection$0 = new ArrayList<JulianDate>();
                                                 tempCollection$0.add(startDate);
                                                 tempCollection$0.add(stopDate);
-                                                ArrayList<cesiumlanguagewriter.JulianDate> dates = tempCollection$0;
+                                                ArrayList<JulianDate> dates = tempCollection$0;
                                                 final ArrayList<Double> tempCollection$1 = new ArrayList<Double>();
                                                 tempCollection$1.add(1.0);
                                                 tempCollection$1.add(10.0);

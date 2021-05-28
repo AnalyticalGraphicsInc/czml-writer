@@ -148,12 +148,11 @@ public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter>
 
     @Nonnull
     private final Lazy<CesiumStringValuePropertyAdaptor<StringCesiumWriter>> createAsString() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumStringValuePropertyAdaptor<StringCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumStringValuePropertyAdaptor<StringCesiumWriter>>(this, "createString") {
-                    public cesiumlanguagewriter.advanced.CesiumStringValuePropertyAdaptor<StringCesiumWriter> invoke() {
-                        return createString();
-                    }
-                }, false);
+        return new Lazy<CesiumStringValuePropertyAdaptor<StringCesiumWriter>>(new Func1<CesiumStringValuePropertyAdaptor<StringCesiumWriter>>(this, "createString") {
+            public CesiumStringValuePropertyAdaptor<StringCesiumWriter> invoke() {
+                return createString();
+            }
+        }, false);
     }
 
     @Nonnull
@@ -172,12 +171,11 @@ public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter>
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<StringCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<StringCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<StringCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<StringCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<StringCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<StringCesiumWriter>>(this, "createReference") {
+            public CesiumReferenceValuePropertyAdaptor<StringCesiumWriter> invoke() {
+                return createReference();
+            }
+        }, false);
     }
 
     @Nonnull

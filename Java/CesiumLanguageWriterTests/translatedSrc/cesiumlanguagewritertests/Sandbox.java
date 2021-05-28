@@ -59,7 +59,7 @@ public class Sandbox {
                             ColorCesiumWriter color = model.openColorProperty();
                             try {
                                 {
-                                    CesiumIntervalListWriter<cesiumlanguagewriter.ColorCesiumWriter> intervals = color.openMultipleIntervals();
+                                    CesiumIntervalListWriter<ColorCesiumWriter> intervals = color.openMultipleIntervals();
                                     try {
                                         JulianDate start = new GregorianDate(2012, 8, 4, 16, 0, 0D).toJulianDate();
                                         JulianDate stop = new GregorianDate(2012, 8, 4, 16, 1, 0D).toJulianDate();

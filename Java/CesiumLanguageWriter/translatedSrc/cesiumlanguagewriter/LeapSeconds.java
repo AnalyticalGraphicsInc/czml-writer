@@ -27,7 +27,7 @@ public class LeapSeconds {
     when the library was released.
     */
     public LeapSeconds() {
-        final ArrayList<cesiumlanguagewriter.LeapSecond> tempCollection$0 = new ArrayList<LeapSecond>();
+        final ArrayList<LeapSecond> tempCollection$0 = new ArrayList<LeapSecond>();
         tempCollection$0.add(new LeapSecond(2441317.5, 10D));
         tempCollection$0.add(new LeapSecond(2441499.5, 11D));
         tempCollection$0.add(new LeapSecond(2441683.5, 12D));

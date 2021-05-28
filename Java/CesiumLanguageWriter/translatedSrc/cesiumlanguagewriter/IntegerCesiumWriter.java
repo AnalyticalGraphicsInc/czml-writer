@@ -172,12 +172,11 @@ public class IntegerCesiumWriter extends CesiumInterpolatablePropertyWriter<Inte
 
     @Nonnull
     private final Lazy<CesiumIntegerValuePropertyAdaptor<IntegerCesiumWriter>> createAsNumber() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumIntegerValuePropertyAdaptor<IntegerCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumIntegerValuePropertyAdaptor<IntegerCesiumWriter>>(this, "createInteger") {
-                    public cesiumlanguagewriter.advanced.CesiumIntegerValuePropertyAdaptor<IntegerCesiumWriter> invoke() {
-                        return createInteger();
-                    }
-                }, false);
+        return new Lazy<CesiumIntegerValuePropertyAdaptor<IntegerCesiumWriter>>(new Func1<CesiumIntegerValuePropertyAdaptor<IntegerCesiumWriter>>(this, "createInteger") {
+            public CesiumIntegerValuePropertyAdaptor<IntegerCesiumWriter> invoke() {
+                return createInteger();
+            }
+        }, false);
     }
 
     @Nonnull
@@ -196,12 +195,11 @@ public class IntegerCesiumWriter extends CesiumInterpolatablePropertyWriter<Inte
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<IntegerCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<IntegerCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<IntegerCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<IntegerCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<IntegerCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<IntegerCesiumWriter>>(this, "createReference") {
+            public CesiumReferenceValuePropertyAdaptor<IntegerCesiumWriter> invoke() {
+                return createReference();
+            }
+        }, false);
     }
 
     @Nonnull

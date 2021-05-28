@@ -177,12 +177,11 @@ public class LineOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<L
 
     @Nonnull
     private final Lazy<CesiumCartesian2ValuePropertyAdaptor<LineOffsetCesiumWriter>> createAsCartesian2() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumCartesian2ValuePropertyAdaptor<LineOffsetCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumCartesian2ValuePropertyAdaptor<LineOffsetCesiumWriter>>(this, "createCartesian2") {
-                    public cesiumlanguagewriter.advanced.CesiumCartesian2ValuePropertyAdaptor<LineOffsetCesiumWriter> invoke() {
-                        return createCartesian2();
-                    }
-                }, false);
+        return new Lazy<CesiumCartesian2ValuePropertyAdaptor<LineOffsetCesiumWriter>>(new Func1<CesiumCartesian2ValuePropertyAdaptor<LineOffsetCesiumWriter>>(this, "createCartesian2") {
+            public CesiumCartesian2ValuePropertyAdaptor<LineOffsetCesiumWriter> invoke() {
+                return createCartesian2();
+            }
+        }, false);
     }
 
     @Nonnull
@@ -201,12 +200,11 @@ public class LineOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<L
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<LineOffsetCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<LineOffsetCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<LineOffsetCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<LineOffsetCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<LineOffsetCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<LineOffsetCesiumWriter>>(this, "createReference") {
+            public CesiumReferenceValuePropertyAdaptor<LineOffsetCesiumWriter> invoke() {
+                return createReference();
+            }
+        }, false);
     }
 
     @Nonnull

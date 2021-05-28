@@ -217,9 +217,8 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> imple
 
     @Nonnull
     private final Lazy<CesiumUriValuePropertyAdaptor<UriCesiumWriter>> createAsUri() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumUriValuePropertyAdaptor<UriCesiumWriter>>(new Func1<cesiumlanguagewriter.advanced.CesiumUriValuePropertyAdaptor<UriCesiumWriter>>(this,
-                "createUri") {
-            public cesiumlanguagewriter.advanced.CesiumUriValuePropertyAdaptor<UriCesiumWriter> invoke() {
+        return new Lazy<CesiumUriValuePropertyAdaptor<UriCesiumWriter>>(new Func1<CesiumUriValuePropertyAdaptor<UriCesiumWriter>>(this, "createUri") {
+            public CesiumUriValuePropertyAdaptor<UriCesiumWriter> invoke() {
                 return createUri();
             }
         }, false);
@@ -241,12 +240,11 @@ public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> imple
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<UriCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<UriCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<UriCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<UriCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<UriCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<UriCesiumWriter>>(this, "createReference") {
+            public CesiumReferenceValuePropertyAdaptor<UriCesiumWriter> invoke() {
+                return createReference();
+            }
+        }, false);
     }
 
     @Nonnull

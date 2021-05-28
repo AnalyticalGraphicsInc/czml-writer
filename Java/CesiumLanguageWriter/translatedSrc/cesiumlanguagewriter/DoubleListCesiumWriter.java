@@ -110,12 +110,11 @@ public class DoubleListCesiumWriter extends CesiumPropertyWriter<DoubleListCesiu
 
     @Nonnull
     private final Lazy<CesiumDoubleListValuePropertyAdaptor<DoubleListCesiumWriter>> createAsArray() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumDoubleListValuePropertyAdaptor<DoubleListCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumDoubleListValuePropertyAdaptor<DoubleListCesiumWriter>>(this, "createDoubleList") {
-                    public cesiumlanguagewriter.advanced.CesiumDoubleListValuePropertyAdaptor<DoubleListCesiumWriter> invoke() {
-                        return createDoubleList();
-                    }
-                }, false);
+        return new Lazy<CesiumDoubleListValuePropertyAdaptor<DoubleListCesiumWriter>>(new Func1<CesiumDoubleListValuePropertyAdaptor<DoubleListCesiumWriter>>(this, "createDoubleList") {
+            public CesiumDoubleListValuePropertyAdaptor<DoubleListCesiumWriter> invoke() {
+                return createDoubleList();
+            }
+        }, false);
     }
 
     @Nonnull
@@ -134,12 +133,11 @@ public class DoubleListCesiumWriter extends CesiumPropertyWriter<DoubleListCesiu
 
     @Nonnull
     private final Lazy<CesiumReferenceListValuePropertyAdaptor<DoubleListCesiumWriter>> createAsReferences() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceListValuePropertyAdaptor<DoubleListCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceListValuePropertyAdaptor<DoubleListCesiumWriter>>(this, "createReferenceList") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceListValuePropertyAdaptor<DoubleListCesiumWriter> invoke() {
-                        return createReferenceList();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceListValuePropertyAdaptor<DoubleListCesiumWriter>>(new Func1<CesiumReferenceListValuePropertyAdaptor<DoubleListCesiumWriter>>(this, "createReferenceList") {
+            public CesiumReferenceListValuePropertyAdaptor<DoubleListCesiumWriter> invoke() {
+                return createReferenceList();
+            }
+        }, false);
     }
 
     @Nonnull

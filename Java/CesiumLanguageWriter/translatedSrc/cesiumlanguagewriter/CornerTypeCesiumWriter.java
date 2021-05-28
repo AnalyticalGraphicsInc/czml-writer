@@ -149,12 +149,11 @@ public class CornerTypeCesiumWriter extends CesiumPropertyWriter<CornerTypeCesiu
 
     @Nonnull
     private final Lazy<CesiumCornerTypeValuePropertyAdaptor<CornerTypeCesiumWriter>> createAsCornerType() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumCornerTypeValuePropertyAdaptor<CornerTypeCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumCornerTypeValuePropertyAdaptor<CornerTypeCesiumWriter>>(this, "createCornerType") {
-                    public cesiumlanguagewriter.advanced.CesiumCornerTypeValuePropertyAdaptor<CornerTypeCesiumWriter> invoke() {
-                        return createCornerType();
-                    }
-                }, false);
+        return new Lazy<CesiumCornerTypeValuePropertyAdaptor<CornerTypeCesiumWriter>>(new Func1<CesiumCornerTypeValuePropertyAdaptor<CornerTypeCesiumWriter>>(this, "createCornerType") {
+            public CesiumCornerTypeValuePropertyAdaptor<CornerTypeCesiumWriter> invoke() {
+                return createCornerType();
+            }
+        }, false);
     }
 
     @Nonnull
@@ -173,12 +172,11 @@ public class CornerTypeCesiumWriter extends CesiumPropertyWriter<CornerTypeCesiu
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<CornerTypeCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<CornerTypeCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<CornerTypeCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<CornerTypeCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<CornerTypeCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<CornerTypeCesiumWriter>>(this, "createReference") {
+            public CesiumReferenceValuePropertyAdaptor<CornerTypeCesiumWriter> invoke() {
+                return createReference();
+            }
+        }, false);
     }
 
     @Nonnull

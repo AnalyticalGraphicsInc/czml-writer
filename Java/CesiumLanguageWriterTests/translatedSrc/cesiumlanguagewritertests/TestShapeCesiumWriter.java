@@ -31,10 +31,10 @@ public class TestShapeCesiumWriter extends TestCesiumPropertyWriter<ShapeCesiumW
     @Test
     public final void writeListOfCartesian2() {
         final String expectedPropertyName = "foo";
-        final ArrayList<cesiumlanguagewriter.Rectangular> tempCollection$0 = new ArrayList<cesiumlanguagewriter.Rectangular>();
+        final ArrayList<Rectangular> tempCollection$0 = new ArrayList<Rectangular>();
         tempCollection$0.add(new Rectangular(10D, 20D));
         tempCollection$0.add(new Rectangular(30D, 40D));
-        Iterable<cesiumlanguagewriter.Rectangular> expectedValue = tempCollection$0;
+        Iterable<Rectangular> expectedValue = tempCollection$0;
         {
             final PacketCesiumWriter usingExpression$0 = (getPacket());
             try {
@@ -51,7 +51,7 @@ public class TestShapeCesiumWriter extends TestCesiumPropertyWriter<ShapeCesiumW
                 DisposeHelper.dispose(usingExpression$0);
             }
         }
-        Iterable<Object> expectedValueJson = IterableHelper.selectMany(expectedValue, new Func2<cesiumlanguagewriter.Rectangular, Iterable<Object>>() {
+        Iterable<Object> expectedValueJson = IterableHelper.selectMany(expectedValue, new Func2<Rectangular, Iterable<Object>>() {
             public Iterable<Object> invoke(Rectangular r) {
                 return ArrayHelper.arrayAsList(new Object[] {
                         r.getX(),

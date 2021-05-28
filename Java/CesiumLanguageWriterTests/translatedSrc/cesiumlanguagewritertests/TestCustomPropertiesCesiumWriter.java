@@ -161,8 +161,8 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
                         {
                             CustomPropertyCesiumWriter customPropertyWriter = customPropertiesWriter.openCustomPropertyProperty("custom_property");
                             try {
-                                ArrayList<cesiumlanguagewriter.JulianDate> dates = new ArrayList<cesiumlanguagewriter.JulianDate>();
-                                ArrayList<cesiumlanguagewriter.Cartesian> values = new ArrayList<cesiumlanguagewriter.Cartesian>();
+                                ArrayList<JulianDate> dates = new ArrayList<JulianDate>();
+                                ArrayList<Cartesian> values = new ArrayList<Cartesian>();
                                 dates.add(m_startDate);
                                 values.add(new Cartesian(1.0, 2.0, 3.0));
                                 dates.add(m_startDate.addSeconds(60.0));
@@ -197,8 +197,8 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
                             CustomPropertyCesiumWriter customPropertyWriter = customPropertiesWriter.openCustomPropertyProperty("custom_property");
                             try {
                                 customPropertyWriter.writeInterpolationAlgorithm(CesiumInterpolationAlgorithm.HERMITE);
-                                ArrayList<cesiumlanguagewriter.JulianDate> dates = new ArrayList<cesiumlanguagewriter.JulianDate>();
-                                ArrayList<cesiumlanguagewriter.Cartesian> values = new ArrayList<cesiumlanguagewriter.Cartesian>();
+                                ArrayList<JulianDate> dates = new ArrayList<JulianDate>();
+                                ArrayList<Cartesian> values = new ArrayList<Cartesian>();
                                 dates.add(m_startDate);
                                 values.add(new Cartesian(1.0, 2.0, 3.0));
                                 dates.add(m_startDate.addSeconds(60.0));
@@ -307,7 +307,7 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
                                     CustomPropertyCesiumWriter customPropertyWriter = customPropertiesWriter.openCustomPropertyProperty("custom_boolean");
                                     try {
                                         {
-                                            CesiumIntervalListWriter<cesiumlanguagewriter.CustomPropertyCesiumWriter> intervalListWriter = customPropertyWriter.openMultipleIntervals();
+                                            CesiumIntervalListWriter<CustomPropertyCesiumWriter> intervalListWriter = customPropertyWriter.openMultipleIntervals();
                                             try {
                                                 {
                                                     CustomPropertyCesiumWriter intervalWriter = intervalListWriter.openInterval(m_startDate, m_startDate.addSeconds(1D));
@@ -344,8 +344,8 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
                                 {
                                     CustomPropertyCesiumWriter customPropertyWriter = customPropertiesWriter.openCustomPropertyProperty("custom_cartesian");
                                     try {
-                                        ArrayList<cesiumlanguagewriter.JulianDate> dates = new ArrayList<cesiumlanguagewriter.JulianDate>();
-                                        ArrayList<cesiumlanguagewriter.Cartesian> values = new ArrayList<cesiumlanguagewriter.Cartesian>();
+                                        ArrayList<JulianDate> dates = new ArrayList<JulianDate>();
+                                        ArrayList<Cartesian> values = new ArrayList<Cartesian>();
                                         dates.add(m_startDate);
                                         values.add(new Cartesian(1.0, 2.0, 3.0));
                                         dates.add(m_startDate.addSeconds(60.0));

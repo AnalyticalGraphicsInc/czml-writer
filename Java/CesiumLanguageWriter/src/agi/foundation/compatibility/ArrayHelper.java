@@ -154,8 +154,7 @@ public final class ArrayHelper {
      *            A 32-bit integer that represents the number of elements to copy.
      */
     public static void copy(Object sourceArray, int sourceIndex, Object destinationArray, int destinationIndex, int length) {
-        Class<?> sourceArrayComponentType = sourceArray.getClass().getComponentType();
-        if (ValueType.class.isAssignableFrom(sourceArrayComponentType) && !ImmutableValueType.class.isAssignableFrom(sourceArrayComponentType)) {
+        if (isMutableValueType(sourceArray.getClass().getComponentType())) {
             // if it's a non-immutable value type, we can't rely on System.arrayCopy, and
             // must do a deep copy to preserve value type semantics.
             for (int endSourceIndex = sourceIndex + length; sourceIndex < endSourceIndex; ++sourceIndex, ++destinationIndex) {
@@ -165,5 +164,9 @@ public final class ArrayHelper {
         } else {
             System.arraycopy(sourceArray, sourceIndex, destinationArray, destinationIndex, length);
         }
+    }
+
+    private static boolean isMutableValueType(Class<?> type) {
+        return ValueType.class.isAssignableFrom(type) && !ImmutableValueType.class.isAssignableFrom(type);
     }
 }

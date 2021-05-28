@@ -168,12 +168,11 @@ public class EllipsoidRadiiCesiumWriter extends CesiumInterpolatablePropertyWrit
 
     @Nonnull
     private final Lazy<CesiumCartesian3ValuePropertyAdaptor<EllipsoidRadiiCesiumWriter>> createAsCartesian() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumCartesian3ValuePropertyAdaptor<EllipsoidRadiiCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumCartesian3ValuePropertyAdaptor<EllipsoidRadiiCesiumWriter>>(this, "createCartesian3") {
-                    public cesiumlanguagewriter.advanced.CesiumCartesian3ValuePropertyAdaptor<EllipsoidRadiiCesiumWriter> invoke() {
-                        return createCartesian3();
-                    }
-                }, false);
+        return new Lazy<CesiumCartesian3ValuePropertyAdaptor<EllipsoidRadiiCesiumWriter>>(new Func1<CesiumCartesian3ValuePropertyAdaptor<EllipsoidRadiiCesiumWriter>>(this, "createCartesian3") {
+            public CesiumCartesian3ValuePropertyAdaptor<EllipsoidRadiiCesiumWriter> invoke() {
+                return createCartesian3();
+            }
+        }, false);
     }
 
     @Nonnull
@@ -192,12 +191,11 @@ public class EllipsoidRadiiCesiumWriter extends CesiumInterpolatablePropertyWrit
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<EllipsoidRadiiCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<EllipsoidRadiiCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<EllipsoidRadiiCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<EllipsoidRadiiCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<EllipsoidRadiiCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<EllipsoidRadiiCesiumWriter>>(this, "createReference") {
+            public CesiumReferenceValuePropertyAdaptor<EllipsoidRadiiCesiumWriter> invoke() {
+                return createReference();
+            }
+        }, false);
     }
 
     @Nonnull

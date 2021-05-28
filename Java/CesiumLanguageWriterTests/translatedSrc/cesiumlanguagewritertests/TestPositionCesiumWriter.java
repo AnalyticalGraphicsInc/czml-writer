@@ -129,8 +129,8 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
                         {
                             PositionCesiumWriter interval = position.openInterval();
                             try {
-                                ArrayList<cesiumlanguagewriter.JulianDate> dates = new ArrayList<cesiumlanguagewriter.JulianDate>();
-                                ArrayList<cesiumlanguagewriter.Cartesian> positions = new ArrayList<cesiumlanguagewriter.Cartesian>();
+                                ArrayList<JulianDate> dates = new ArrayList<JulianDate>();
+                                ArrayList<Cartesian> positions = new ArrayList<Cartesian>();
                                 dates.add(epoch);
                                 positions.add(new Cartesian(1.1, 2.2, 3.3));
                                 dates.add(epoch.addSeconds(60.0));
@@ -163,8 +163,8 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
                         {
                             PositionCesiumWriter interval = position.openInterval();
                             try {
-                                ArrayList<cesiumlanguagewriter.JulianDate> dates = new ArrayList<cesiumlanguagewriter.JulianDate>();
-                                ArrayList<cesiumlanguagewriter.Cartesian> positions = new ArrayList<cesiumlanguagewriter.Cartesian>();
+                                ArrayList<JulianDate> dates = new ArrayList<JulianDate>();
+                                ArrayList<Cartesian> positions = new ArrayList<Cartesian>();
                                 dates.add(startDate);
                                 positions.add(new Cartesian(1.0, 2.0, 3.0));
                                 dates.add(startDate.addSeconds(60.0));
@@ -199,8 +199,8 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
                         {
                             PositionCesiumWriter interval = position.openInterval();
                             try {
-                                ArrayList<cesiumlanguagewriter.JulianDate> dates = new ArrayList<cesiumlanguagewriter.JulianDate>();
-                                ArrayList<cesiumlanguagewriter.Cartographic> positions = new ArrayList<cesiumlanguagewriter.Cartographic>();
+                                ArrayList<JulianDate> dates = new ArrayList<JulianDate>();
+                                ArrayList<Cartographic> positions = new ArrayList<Cartographic>();
                                 dates.add(startDate);
                                 positions.add(new Cartographic(1.1, 2.2, 3.3));
                                 dates.add(startDate.addSeconds(60.0));
@@ -233,8 +233,8 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
                         {
                             PositionCesiumWriter interval = position.openInterval();
                             try {
-                                ArrayList<cesiumlanguagewriter.JulianDate> dates = new ArrayList<cesiumlanguagewriter.JulianDate>();
-                                ArrayList<cesiumlanguagewriter.Cartographic> positions = new ArrayList<cesiumlanguagewriter.Cartographic>();
+                                ArrayList<JulianDate> dates = new ArrayList<JulianDate>();
+                                ArrayList<Cartographic> positions = new ArrayList<Cartographic>();
                                 dates.add(startDate);
                                 positions.add(new Cartographic(1.0, 2.0, 3.0));
                                 dates.add(startDate.addSeconds(60.0));
@@ -268,8 +268,8 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
                         {
                             PositionCesiumWriter interval = position.openInterval();
                             try {
-                                ArrayList<cesiumlanguagewriter.JulianDate> dates = new ArrayList<cesiumlanguagewriter.JulianDate>();
-                                ArrayList<cesiumlanguagewriter.Cartesian> positions = new ArrayList<cesiumlanguagewriter.Cartesian>();
+                                ArrayList<JulianDate> dates = new ArrayList<JulianDate>();
+                                ArrayList<Cartesian> positions = new ArrayList<Cartesian>();
                                 interval.writeCartesian(dates, positions);
                             } finally {
                                 DisposeHelper.dispose(interval);
@@ -297,8 +297,8 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
                         {
                             PositionCesiumWriter interval = position.openInterval();
                             try {
-                                ArrayList<cesiumlanguagewriter.JulianDate> dates = new ArrayList<cesiumlanguagewriter.JulianDate>();
-                                ArrayList<cesiumlanguagewriter.Cartographic> positions = new ArrayList<cesiumlanguagewriter.Cartographic>();
+                                ArrayList<JulianDate> dates = new ArrayList<JulianDate>();
+                                ArrayList<Cartographic> positions = new ArrayList<Cartographic>();
                                 interval.writeCartographicRadians(dates, positions);
                             } finally {
                                 DisposeHelper.dispose(interval);

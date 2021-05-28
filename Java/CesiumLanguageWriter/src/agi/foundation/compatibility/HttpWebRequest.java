@@ -17,13 +17,11 @@ import javax.annotation.Nullable;
 public class HttpWebRequest extends WebRequest {
     @Nullable
     private String userAgent;
+    @Nonnull
+    private static final String USER_AGENT_HEADER = "User-Agent";
 
     HttpWebRequest(@Nonnull URL url) {
         super(url);
-    }
-
-    public String getUserAgent() {
-        return userAgent;
     }
 
     public void setUserAgent(String value) {
@@ -32,10 +30,8 @@ public class HttpWebRequest extends WebRequest {
 
     @Override
     protected void configureConnection(URLConnection connection) {
-        HttpURLConnection httpConnection = (HttpURLConnection) connection;
-
         if (userAgent != null) {
-            connection.setRequestProperty("User-Agent", userAgent);
+            connection.setRequestProperty(USER_AGENT_HEADER, userAgent);
         }
     }
 

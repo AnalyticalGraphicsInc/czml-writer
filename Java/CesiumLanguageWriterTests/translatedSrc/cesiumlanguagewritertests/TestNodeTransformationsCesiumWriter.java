@@ -192,14 +192,14 @@ public class TestNodeTransformationsCesiumWriter extends TestCesiumPropertyWrite
                                         {
                                             NodeTransformationCesiumWriter nodeTransformationWriter = nodeTransformationsWriter.openNodeTransformationProperty("node2");
                                             try {
-                                                final ArrayList<cesiumlanguagewriter.JulianDate> tempCollection$0 = new ArrayList<cesiumlanguagewriter.JulianDate>();
+                                                final ArrayList<JulianDate> tempCollection$0 = new ArrayList<JulianDate>();
                                                 tempCollection$0.add(startDate);
                                                 tempCollection$0.add(stopDate);
-                                                ArrayList<cesiumlanguagewriter.JulianDate> dates = tempCollection$0;
-                                                final ArrayList<cesiumlanguagewriter.Cartesian> tempCollection$1 = new ArrayList<cesiumlanguagewriter.Cartesian>();
+                                                ArrayList<JulianDate> dates = tempCollection$0;
+                                                final ArrayList<Cartesian> tempCollection$1 = new ArrayList<Cartesian>();
                                                 tempCollection$1.add(new Cartesian(1.0, 2.0, 3.0));
                                                 tempCollection$1.add(new Cartesian(10.0, 12.0, 14.0));
-                                                ArrayList<cesiumlanguagewriter.Cartesian> values = tempCollection$1;
+                                                ArrayList<Cartesian> values = tempCollection$1;
                                                 nodeTransformationWriter.writeScaleProperty(dates, values);
                                             } finally {
                                                 DisposeHelper.dispose(nodeTransformationWriter);

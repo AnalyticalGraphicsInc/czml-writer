@@ -149,12 +149,12 @@ public class ClassificationTypeCesiumWriter extends CesiumPropertyWriter<Classif
 
     @Nonnull
     private final Lazy<CesiumClassificationTypeValuePropertyAdaptor<ClassificationTypeCesiumWriter>> createAsClassificationType() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumClassificationTypeValuePropertyAdaptor<ClassificationTypeCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumClassificationTypeValuePropertyAdaptor<ClassificationTypeCesiumWriter>>(this, "createClassificationType") {
-                    public cesiumlanguagewriter.advanced.CesiumClassificationTypeValuePropertyAdaptor<ClassificationTypeCesiumWriter> invoke() {
-                        return createClassificationType();
-                    }
-                }, false);
+        return new Lazy<CesiumClassificationTypeValuePropertyAdaptor<ClassificationTypeCesiumWriter>>(new Func1<CesiumClassificationTypeValuePropertyAdaptor<ClassificationTypeCesiumWriter>>(this,
+                "createClassificationType") {
+            public CesiumClassificationTypeValuePropertyAdaptor<ClassificationTypeCesiumWriter> invoke() {
+                return createClassificationType();
+            }
+        }, false);
     }
 
     @Nonnull
@@ -173,12 +173,11 @@ public class ClassificationTypeCesiumWriter extends CesiumPropertyWriter<Classif
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<ClassificationTypeCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<ClassificationTypeCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<ClassificationTypeCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<ClassificationTypeCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<ClassificationTypeCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<ClassificationTypeCesiumWriter>>(this, "createReference") {
+            public CesiumReferenceValuePropertyAdaptor<ClassificationTypeCesiumWriter> invoke() {
+                return createReference();
+            }
+        }, false);
     }
 
     @Nonnull

@@ -148,12 +148,11 @@ public class BooleanCesiumWriter extends CesiumPropertyWriter<BooleanCesiumWrite
 
     @Nonnull
     private final Lazy<CesiumBooleanValuePropertyAdaptor<BooleanCesiumWriter>> createAsBoolean() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumBooleanValuePropertyAdaptor<BooleanCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumBooleanValuePropertyAdaptor<BooleanCesiumWriter>>(this, "createBoolean") {
-                    public cesiumlanguagewriter.advanced.CesiumBooleanValuePropertyAdaptor<BooleanCesiumWriter> invoke() {
-                        return createBoolean();
-                    }
-                }, false);
+        return new Lazy<CesiumBooleanValuePropertyAdaptor<BooleanCesiumWriter>>(new Func1<CesiumBooleanValuePropertyAdaptor<BooleanCesiumWriter>>(this, "createBoolean") {
+            public CesiumBooleanValuePropertyAdaptor<BooleanCesiumWriter> invoke() {
+                return createBoolean();
+            }
+        }, false);
     }
 
     @Nonnull
@@ -172,12 +171,11 @@ public class BooleanCesiumWriter extends CesiumPropertyWriter<BooleanCesiumWrite
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<BooleanCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<BooleanCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<BooleanCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<BooleanCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<BooleanCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<BooleanCesiumWriter>>(this, "createReference") {
+            public CesiumReferenceValuePropertyAdaptor<BooleanCesiumWriter> invoke() {
+                return createReference();
+            }
+        }, false);
     }
 
     @Nonnull

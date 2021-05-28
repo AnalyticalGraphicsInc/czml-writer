@@ -41,8 +41,8 @@ public class CachingCesiumUriResolver implements ICesiumUriResolver {
         if (uri == null) {
             throw new ArgumentNullException("uri");
         }
-        LinkedListNode<cesiumlanguagewriter.advanced.CachingCesiumUriResolver.CacheItem> node = null;
-        final LinkedListNode<cesiumlanguagewriter.advanced.CachingCesiumUriResolver.CacheItem>[] out$node$1 = new LinkedListNode[] {
+        LinkedListNode<CacheItem> node = null;
+        final LinkedListNode<CacheItem>[] out$node$1 = new LinkedListNode[] {
             null
         };
         final boolean temp$0 = MapHelper.tryGetValue(m_dictionary, uri, out$node$1);
@@ -73,7 +73,7 @@ public class CachingCesiumUriResolver implements ICesiumUriResolver {
         if (resolvedUri == null) {
             throw new ArgumentNullException("resolvedUri");
         }
-        LinkedListNode<cesiumlanguagewriter.advanced.CachingCesiumUriResolver.CacheItem> newNode = m_lruList.addFirst(new CacheItem(sourceUri, resolvedUri));
+        LinkedListNode<CacheItem> newNode = m_lruList.addFirst(new CacheItem(sourceUri, resolvedUri));
         MapHelper.add(m_dictionary, sourceUri, newNode);
         if (m_lruList.size() > m_max) {
             //trim least recently used

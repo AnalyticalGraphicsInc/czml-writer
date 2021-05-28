@@ -46,8 +46,8 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
     }
 
     private CesiumPropertyWriter() {
-        m_multipleIntervals = new Lazy<cesiumlanguagewriter.CesiumIntervalListWriter<TDerived>>(new Func1<cesiumlanguagewriter.CesiumIntervalListWriter<TDerived>>(this, "createIntervalListWriter") {
-            public cesiumlanguagewriter.CesiumIntervalListWriter<TDerived> invoke() {
+        m_multipleIntervals = new Lazy<CesiumIntervalListWriter<TDerived>>(new Func1<CesiumIntervalListWriter<TDerived>>(this, "createIntervalListWriter") {
+            public CesiumIntervalListWriter<TDerived> invoke() {
                 return createIntervalListWriter();
             }
         }, false);

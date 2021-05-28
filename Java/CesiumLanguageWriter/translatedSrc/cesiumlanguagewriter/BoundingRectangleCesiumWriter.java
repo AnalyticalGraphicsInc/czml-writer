@@ -168,12 +168,12 @@ public class BoundingRectangleCesiumWriter extends CesiumInterpolatablePropertyW
 
     @Nonnull
     private final Lazy<CesiumBoundingRectangleValuePropertyAdaptor<BoundingRectangleCesiumWriter>> createAsBoundingRectangle() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumBoundingRectangleValuePropertyAdaptor<BoundingRectangleCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumBoundingRectangleValuePropertyAdaptor<BoundingRectangleCesiumWriter>>(this, "createBoundingRectangle") {
-                    public cesiumlanguagewriter.advanced.CesiumBoundingRectangleValuePropertyAdaptor<BoundingRectangleCesiumWriter> invoke() {
-                        return createBoundingRectangle();
-                    }
-                }, false);
+        return new Lazy<CesiumBoundingRectangleValuePropertyAdaptor<BoundingRectangleCesiumWriter>>(new Func1<CesiumBoundingRectangleValuePropertyAdaptor<BoundingRectangleCesiumWriter>>(this,
+                "createBoundingRectangle") {
+            public CesiumBoundingRectangleValuePropertyAdaptor<BoundingRectangleCesiumWriter> invoke() {
+                return createBoundingRectangle();
+            }
+        }, false);
     }
 
     @Nonnull
@@ -192,12 +192,11 @@ public class BoundingRectangleCesiumWriter extends CesiumInterpolatablePropertyW
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<BoundingRectangleCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<BoundingRectangleCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<BoundingRectangleCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<BoundingRectangleCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<BoundingRectangleCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<BoundingRectangleCesiumWriter>>(this, "createReference") {
+            public CesiumReferenceValuePropertyAdaptor<BoundingRectangleCesiumWriter> invoke() {
+                return createReference();
+            }
+        }, false);
     }
 
     @Nonnull

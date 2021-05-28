@@ -104,10 +104,10 @@ public class TestPacketCesiumWriter {
         {
             PacketCesiumWriter packet = m_writer.openPacket(m_outputStream);
             try {
-                final ArrayList<cesiumlanguagewriter.TimeInterval> tempCollection$0 = new ArrayList<cesiumlanguagewriter.TimeInterval>();
+                final ArrayList<TimeInterval> tempCollection$0 = new ArrayList<TimeInterval>();
                 tempCollection$0.add(new TimeInterval(start, stop));
                 tempCollection$0.add(new TimeInterval(start.addDays(2.0), stop.addDays(2.0)));
-                ArrayList<cesiumlanguagewriter.TimeInterval> intervals = tempCollection$0;
+                ArrayList<TimeInterval> intervals = tempCollection$0;
                 packet.writeAvailability(intervals);
             } finally {
                 DisposeHelper.dispose(packet);

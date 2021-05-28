@@ -177,12 +177,11 @@ public class RepeatCesiumWriter extends CesiumInterpolatablePropertyWriter<Repea
 
     @Nonnull
     private final Lazy<CesiumCartesian2ValuePropertyAdaptor<RepeatCesiumWriter>> createAsCartesian2() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumCartesian2ValuePropertyAdaptor<RepeatCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumCartesian2ValuePropertyAdaptor<RepeatCesiumWriter>>(this, "createCartesian2") {
-                    public cesiumlanguagewriter.advanced.CesiumCartesian2ValuePropertyAdaptor<RepeatCesiumWriter> invoke() {
-                        return createCartesian2();
-                    }
-                }, false);
+        return new Lazy<CesiumCartesian2ValuePropertyAdaptor<RepeatCesiumWriter>>(new Func1<CesiumCartesian2ValuePropertyAdaptor<RepeatCesiumWriter>>(this, "createCartesian2") {
+            public CesiumCartesian2ValuePropertyAdaptor<RepeatCesiumWriter> invoke() {
+                return createCartesian2();
+            }
+        }, false);
     }
 
     @Nonnull
@@ -201,12 +200,11 @@ public class RepeatCesiumWriter extends CesiumInterpolatablePropertyWriter<Repea
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<RepeatCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<RepeatCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<RepeatCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<RepeatCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<RepeatCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<RepeatCesiumWriter>>(this, "createReference") {
+            public CesiumReferenceValuePropertyAdaptor<RepeatCesiumWriter> invoke() {
+                return createReference();
+            }
+        }, false);
     }
 
     @Nonnull

@@ -38,7 +38,7 @@ public final class CesiumValuePropertyAdaptors {
     */
     @Nonnull
     public static <TFrom extends ICesiumArcTypeValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumArcTypeValuePropertyAdaptor<TFrom> createArcType(@Nonnull TFrom parent) {
-        return new CesiumArcTypeValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.CesiumArcType>() {
+        return new CesiumArcTypeValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, CesiumArcType>() {
             public void invoke(TFrom writer, @Nonnull CesiumArcType value) {
                 writer.writeArcType(value);
             }
@@ -69,11 +69,11 @@ public final class CesiumValuePropertyAdaptors {
     @Nonnull
     public static <TFrom extends ICesiumBoundingRectangleValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumBoundingRectangleValuePropertyAdaptor<TFrom> createBoundingRectangle(
             @Nonnull TFrom parent) {
-        return new CesiumBoundingRectangleValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.BoundingRectangle>() {
+        return new CesiumBoundingRectangleValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, BoundingRectangle>() {
             public void invoke(TFrom writer, BoundingRectangle value) {
                 writer.writeBoundingRectangle(value);
             }
-        }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, cesiumlanguagewriter.BoundingRectangle>() {
+        }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, BoundingRectangle>() {
             public void invoke(TFrom writer, List<cesiumlanguagewriter.JulianDate> dates, List<cesiumlanguagewriter.BoundingRectangle> values, int startIndex, int length) {
                 writer.writeBoundingRectangle(dates, values, startIndex, length);
             }
@@ -88,11 +88,11 @@ public final class CesiumValuePropertyAdaptors {
     */
     @Nonnull
     public static <TFrom extends ICesiumCartesian2ValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumCartesian2ValuePropertyAdaptor<TFrom> createCartesian2(@Nonnull TFrom parent) {
-        return new CesiumCartesian2ValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.Rectangular>() {
+        return new CesiumCartesian2ValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Rectangular>() {
             public void invoke(TFrom writer, Rectangular value) {
                 writer.writeCartesian2(value);
             }
-        }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, cesiumlanguagewriter.Rectangular>() {
+        }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, Rectangular>() {
             public void invoke(TFrom writer, List<cesiumlanguagewriter.JulianDate> dates, List<cesiumlanguagewriter.Rectangular> values, int startIndex, int length) {
                 writer.writeCartesian2(dates, values, startIndex, length);
             }
@@ -107,11 +107,11 @@ public final class CesiumValuePropertyAdaptors {
     */
     @Nonnull
     public static <TFrom extends ICesiumCartesian3ValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumCartesian3ValuePropertyAdaptor<TFrom> createCartesian3(@Nonnull TFrom parent) {
-        return new CesiumCartesian3ValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.Cartesian>() {
+        return new CesiumCartesian3ValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Cartesian>() {
             public void invoke(TFrom writer, Cartesian value) {
                 writer.writeCartesian(value);
             }
-        }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, cesiumlanguagewriter.Cartesian>() {
+        }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, Cartesian>() {
             public void invoke(TFrom writer, List<cesiumlanguagewriter.JulianDate> dates, List<cesiumlanguagewriter.Cartesian> values, int startIndex, int length) {
                 writer.writeCartesian(dates, values, startIndex, length);
             }
@@ -127,11 +127,11 @@ public final class CesiumValuePropertyAdaptors {
     @Nonnull
     public static <TFrom extends ICesiumCartesian3VelocityValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumCartesian3VelocityValuePropertyAdaptor<TFrom> createCartesian3Velocity(
             @Nonnull TFrom parent) {
-        return new CesiumCartesian3VelocityValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.Motion1<Cartesian>>() {
+        return new CesiumCartesian3VelocityValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Motion1<Cartesian>>() {
             public void invoke(TFrom writer, Motion1<Cartesian> value) {
                 writer.writeCartesianVelocity(value);
             }
-        }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, cesiumlanguagewriter.Motion1<Cartesian>>() {
+        }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, Motion1<Cartesian>>() {
             public void invoke(TFrom writer, List<cesiumlanguagewriter.JulianDate> dates, List<cesiumlanguagewriter.Motion1<cesiumlanguagewriter.Cartesian>> values, int startIndex, int length) {
                 writer.writeCartesianVelocity(dates, values, startIndex, length);
             }
@@ -192,11 +192,11 @@ public final class CesiumValuePropertyAdaptors {
     @Nonnull
     public static <TFrom extends ICesiumCartographicRadiansValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumCartographicRadiansValuePropertyAdaptor<TFrom> createCartographicRadians(
             @Nonnull TFrom parent) {
-        return new CesiumCartographicRadiansValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.Cartographic>() {
+        return new CesiumCartographicRadiansValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Cartographic>() {
             public void invoke(TFrom writer, Cartographic value) {
                 writer.writeCartographicRadians(value);
             }
-        }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, cesiumlanguagewriter.Cartographic>() {
+        }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, Cartographic>() {
             public void invoke(TFrom writer, List<cesiumlanguagewriter.JulianDate> dates, List<cesiumlanguagewriter.Cartographic> values, int startIndex, int length) {
                 writer.writeCartographicRadians(dates, values, startIndex, length);
             }
@@ -243,11 +243,11 @@ public final class CesiumValuePropertyAdaptors {
     @Nonnull
     public static <TFrom extends ICesiumCartographicDegreesValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumCartographicDegreesValuePropertyAdaptor<TFrom> createCartographicDegrees(
             @Nonnull TFrom parent) {
-        return new CesiumCartographicDegreesValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.Cartographic>() {
+        return new CesiumCartographicDegreesValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Cartographic>() {
             public void invoke(TFrom writer, Cartographic value) {
                 writer.writeCartographicDegrees(value);
             }
-        }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, cesiumlanguagewriter.Cartographic>() {
+        }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, Cartographic>() {
             public void invoke(TFrom writer, List<cesiumlanguagewriter.JulianDate> dates, List<cesiumlanguagewriter.Cartographic> values, int startIndex, int length) {
                 writer.writeCartographicDegrees(dates, values, startIndex, length);
             }
@@ -294,11 +294,11 @@ public final class CesiumValuePropertyAdaptors {
     @Nonnull
     public static <TFrom extends ICesiumCartographicRectangleRadiansValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumCartographicRectangleRadiansValuePropertyAdaptor<TFrom> createCartographicRectangleRadians(
             @Nonnull TFrom parent) {
-        return new CesiumCartographicRectangleRadiansValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.CartographicExtent>() {
+        return new CesiumCartographicRectangleRadiansValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, CartographicExtent>() {
             public void invoke(TFrom writer, CartographicExtent value) {
                 writer.writeWsen(value);
             }
-        }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, cesiumlanguagewriter.CartographicExtent>() {
+        }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, CartographicExtent>() {
             public void invoke(TFrom writer, List<cesiumlanguagewriter.JulianDate> dates, List<cesiumlanguagewriter.CartographicExtent> values, int startIndex, int length) {
                 writer.writeWsen(dates, values, startIndex, length);
             }
@@ -314,11 +314,11 @@ public final class CesiumValuePropertyAdaptors {
     @Nonnull
     public static <TFrom extends ICesiumCartographicRectangleDegreesValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumCartographicRectangleDegreesValuePropertyAdaptor<TFrom> createCartographicRectangleDegrees(
             @Nonnull TFrom parent) {
-        return new CesiumCartographicRectangleDegreesValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.CartographicExtent>() {
+        return new CesiumCartographicRectangleDegreesValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, CartographicExtent>() {
             public void invoke(TFrom writer, CartographicExtent value) {
                 writer.writeWsenDegrees(value);
             }
-        }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, cesiumlanguagewriter.CartographicExtent>() {
+        }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, CartographicExtent>() {
             public void invoke(TFrom writer, List<cesiumlanguagewriter.JulianDate> dates, List<cesiumlanguagewriter.CartographicExtent> values, int startIndex, int length) {
                 writer.writeWsenDegrees(dates, values, startIndex, length);
             }
@@ -333,7 +333,7 @@ public final class CesiumValuePropertyAdaptors {
     */
     public static <TFrom extends ICesiumClassificationTypeValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumClassificationTypeValuePropertyAdaptor<TFrom> createClassificationType(
             @Nonnull TFrom parent) {
-        return new CesiumClassificationTypeValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.CesiumClassificationType>() {
+        return new CesiumClassificationTypeValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, CesiumClassificationType>() {
             public void invoke(TFrom writer, @Nonnull CesiumClassificationType value) {
                 writer.writeClassificationType(value);
             }
@@ -348,7 +348,7 @@ public final class CesiumValuePropertyAdaptors {
     */
     @Nonnull
     public static <TFrom extends ICesiumColorBlendModeValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumColorBlendModeValuePropertyAdaptor<TFrom> createColorBlendMode(@Nonnull TFrom parent) {
-        return new CesiumColorBlendModeValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.CesiumColorBlendMode>() {
+        return new CesiumColorBlendModeValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, CesiumColorBlendMode>() {
             public void invoke(TFrom writer, @Nonnull CesiumColorBlendMode value) {
                 writer.writeColorBlendMode(value);
             }
@@ -363,7 +363,7 @@ public final class CesiumValuePropertyAdaptors {
     */
     @Nonnull
     public static <TFrom extends ICesiumCornerTypeValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumCornerTypeValuePropertyAdaptor<TFrom> createCornerType(@Nonnull TFrom parent) {
-        return new CesiumCornerTypeValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.CesiumCornerType>() {
+        return new CesiumCornerTypeValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, CesiumCornerType>() {
             public void invoke(TFrom writer, @Nonnull CesiumCornerType value) {
                 writer.writeCornerType(value);
             }
@@ -379,11 +379,11 @@ public final class CesiumValuePropertyAdaptors {
     @Nonnull
     public static <TFrom extends ICesiumDistanceDisplayConditionValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumDistanceDisplayConditionValuePropertyAdaptor<TFrom> createDistanceDisplayCondition(
             @Nonnull TFrom parent) {
-        return new CesiumDistanceDisplayConditionValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.Bounds>() {
+        return new CesiumDistanceDisplayConditionValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Bounds>() {
             public void invoke(TFrom writer, Bounds value) {
                 writer.writeDistanceDisplayCondition(value);
             }
-        }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, cesiumlanguagewriter.Bounds>() {
+        }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, Bounds>() {
             public void invoke(TFrom writer, List<cesiumlanguagewriter.JulianDate> dates, List<cesiumlanguagewriter.Bounds> values, int startIndex, int length) {
                 writer.writeDistanceDisplayCondition(dates, values, startIndex, length);
             }
@@ -433,7 +433,7 @@ public final class CesiumValuePropertyAdaptors {
     @Nonnull
     public static <TFrom extends ICesiumHeightReferenceValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumHeightReferenceValuePropertyAdaptor<TFrom> createHeightReference(
             @Nonnull TFrom parent) {
-        return new CesiumHeightReferenceValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.CesiumHeightReference>() {
+        return new CesiumHeightReferenceValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, CesiumHeightReference>() {
             public void invoke(TFrom writer, @Nonnull CesiumHeightReference value) {
                 writer.writeHeightReference(value);
             }
@@ -449,7 +449,7 @@ public final class CesiumValuePropertyAdaptors {
     @Nonnull
     public static <TFrom extends ICesiumHorizontalOriginValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumHorizontalOriginValuePropertyAdaptor<TFrom> createHorizontalOrigin(
             @Nonnull TFrom parent) {
-        return new CesiumHorizontalOriginValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.CesiumHorizontalOrigin>() {
+        return new CesiumHorizontalOriginValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, CesiumHorizontalOrigin>() {
             public void invoke(TFrom writer, @Nonnull CesiumHorizontalOrigin value) {
                 writer.writeHorizontalOrigin(value);
             }
@@ -483,7 +483,7 @@ public final class CesiumValuePropertyAdaptors {
     */
     @Nonnull
     public static <TFrom extends ICesiumLabelStyleValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumLabelStyleValuePropertyAdaptor<TFrom> createLabelStyle(@Nonnull TFrom parent) {
-        return new CesiumLabelStyleValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.CesiumLabelStyle>() {
+        return new CesiumLabelStyleValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, CesiumLabelStyle>() {
             public void invoke(TFrom writer, @Nonnull CesiumLabelStyle value) {
                 writer.writeLabelStyle(value);
             }
@@ -498,11 +498,11 @@ public final class CesiumValuePropertyAdaptors {
     */
     @Nonnull
     public static <TFrom extends ICesiumNearFarScalarValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumNearFarScalarValuePropertyAdaptor<TFrom> createNearFarScalar(@Nonnull TFrom parent) {
-        return new CesiumNearFarScalarValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.NearFarScalar>() {
+        return new CesiumNearFarScalarValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, NearFarScalar>() {
             public void invoke(TFrom writer, NearFarScalar value) {
                 writer.writeNearFarScalar(value);
             }
-        }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, cesiumlanguagewriter.NearFarScalar>() {
+        }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, NearFarScalar>() {
             public void invoke(TFrom writer, List<cesiumlanguagewriter.JulianDate> dates, List<cesiumlanguagewriter.NearFarScalar> values, int startIndex, int length) {
                 writer.writeNearFarScalar(dates, values, startIndex, length);
             }
@@ -517,7 +517,7 @@ public final class CesiumValuePropertyAdaptors {
     */
     @Nonnull
     public static <TFrom extends ICesiumReferenceValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumReferenceValuePropertyAdaptor<TFrom> createReference(@Nonnull TFrom parent) {
-        return new CesiumReferenceValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.Reference>() {
+        return new CesiumReferenceValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Reference>() {
             public void invoke(TFrom writer, Reference value) {
                 writer.writeReference(value);
             }
@@ -601,7 +601,7 @@ public final class CesiumValuePropertyAdaptors {
     @Nonnull
     public static <TFrom extends ICesiumSensorVolumePortionToDisplayValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumSensorVolumePortionToDisplayValuePropertyAdaptor<TFrom> createSensorVolumePortionToDisplay(
             @Nonnull TFrom parent) {
-        return new CesiumSensorVolumePortionToDisplayValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.CesiumSensorVolumePortionToDisplay>() {
+        return new CesiumSensorVolumePortionToDisplayValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, CesiumSensorVolumePortionToDisplay>() {
             public void invoke(TFrom writer, @Nonnull CesiumSensorVolumePortionToDisplay value) {
                 writer.writePortionToDisplay(value);
             }
@@ -616,7 +616,7 @@ public final class CesiumValuePropertyAdaptors {
     */
     @Nonnull
     public static <TFrom extends ICesiumShadowModeValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumShadowModeValuePropertyAdaptor<TFrom> createShadowMode(@Nonnull TFrom parent) {
-        return new CesiumShadowModeValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.CesiumShadowMode>() {
+        return new CesiumShadowModeValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, CesiumShadowMode>() {
             public void invoke(TFrom writer, @Nonnull CesiumShadowMode value) {
                 writer.writeShadowMode(value);
             }
@@ -631,11 +631,11 @@ public final class CesiumValuePropertyAdaptors {
     */
     @Nonnull
     public static <TFrom extends ICesiumSphericalValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumSphericalValuePropertyAdaptor<TFrom> createSpherical(@Nonnull TFrom parent) {
-        return new CesiumSphericalValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.Spherical>() {
+        return new CesiumSphericalValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Spherical>() {
             public void invoke(TFrom writer, Spherical value) {
                 writer.writeSpherical(value);
             }
-        }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, cesiumlanguagewriter.Spherical>() {
+        }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, Spherical>() {
             public void invoke(TFrom writer, List<cesiumlanguagewriter.JulianDate> dates, List<cesiumlanguagewriter.Spherical> values, int startIndex, int length) {
                 writer.writeSpherical(dates, values, startIndex, length);
             }
@@ -696,7 +696,7 @@ public final class CesiumValuePropertyAdaptors {
     @Nonnull
     public static <TFrom extends ICesiumStripeOrientationValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumStripeOrientationValuePropertyAdaptor<TFrom> createStripeOrientation(
             @Nonnull TFrom parent) {
-        return new CesiumStripeOrientationValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.CesiumStripeOrientation>() {
+        return new CesiumStripeOrientationValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, CesiumStripeOrientation>() {
             public void invoke(TFrom writer, @Nonnull CesiumStripeOrientation value) {
                 writer.writeStripeOrientation(value);
             }
@@ -711,11 +711,11 @@ public final class CesiumValuePropertyAdaptors {
     */
     @Nonnull
     public static <TFrom extends ICesiumUnitCartesian3ValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumUnitCartesian3ValuePropertyAdaptor<TFrom> createUnitCartesian3(@Nonnull TFrom parent) {
-        return new CesiumUnitCartesian3ValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.UnitCartesian>() {
+        return new CesiumUnitCartesian3ValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, UnitCartesian>() {
             public void invoke(TFrom writer, UnitCartesian value) {
                 writer.writeUnitCartesian(value);
             }
-        }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, cesiumlanguagewriter.UnitCartesian>() {
+        }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, UnitCartesian>() {
             public void invoke(TFrom writer, List<cesiumlanguagewriter.JulianDate> dates, List<cesiumlanguagewriter.UnitCartesian> values, int startIndex, int length) {
                 writer.writeUnitCartesian(dates, values, startIndex, length);
             }
@@ -746,11 +746,11 @@ public final class CesiumValuePropertyAdaptors {
     */
     @Nonnull
     public static <TFrom extends ICesiumUnitQuaternionValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumUnitQuaternionValuePropertyAdaptor<TFrom> createUnitQuaternion(@Nonnull TFrom parent) {
-        return new CesiumUnitQuaternionValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.UnitQuaternion>() {
+        return new CesiumUnitQuaternionValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, UnitQuaternion>() {
             public void invoke(TFrom writer, UnitQuaternion value) {
                 writer.writeUnitQuaternion(value);
             }
-        }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, cesiumlanguagewriter.UnitQuaternion>() {
+        }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, UnitQuaternion>() {
             public void invoke(TFrom writer, List<cesiumlanguagewriter.JulianDate> dates, List<cesiumlanguagewriter.UnitQuaternion> values, int startIndex, int length) {
                 writer.writeUnitQuaternion(dates, values, startIndex, length);
             }
@@ -765,11 +765,11 @@ public final class CesiumValuePropertyAdaptors {
     */
     @Nonnull
     public static <TFrom extends ICesiumUnitSphericalValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumUnitSphericalValuePropertyAdaptor<TFrom> createUnitSpherical(@Nonnull TFrom parent) {
-        return new CesiumUnitSphericalValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.UnitSpherical>() {
+        return new CesiumUnitSphericalValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, UnitSpherical>() {
             public void invoke(TFrom writer, UnitSpherical value) {
                 writer.writeUnitSpherical(value);
             }
-        }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, cesiumlanguagewriter.UnitSpherical>() {
+        }, new CesiumWriterAdaptorWriteSamplesCallback<TFrom, UnitSpherical>() {
             public void invoke(TFrom writer, List<cesiumlanguagewriter.JulianDate> dates, List<cesiumlanguagewriter.UnitSpherical> values, int startIndex, int length) {
                 writer.writeUnitSpherical(dates, values, startIndex, length);
             }
@@ -800,7 +800,7 @@ public final class CesiumValuePropertyAdaptors {
     */
     @Nonnull
     public static <TFrom extends ICesiumUriValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumUriValuePropertyAdaptor<TFrom> createUri(@Nonnull TFrom parent) {
-        return new CesiumUriValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.CesiumResource>() {
+        return new CesiumUriValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, CesiumResource>() {
             public void invoke(TFrom writer, CesiumResource value) {
                 writer.writeUri(value);
             }
@@ -815,7 +815,7 @@ public final class CesiumValuePropertyAdaptors {
     */
     @Nonnull
     public static <TFrom extends ICesiumVerticalOriginValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumVerticalOriginValuePropertyAdaptor<TFrom> createVerticalOrigin(@Nonnull TFrom parent) {
-        return new CesiumVerticalOriginValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.CesiumVerticalOrigin>() {
+        return new CesiumVerticalOriginValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, CesiumVerticalOrigin>() {
             public void invoke(TFrom writer, @Nonnull CesiumVerticalOrigin value) {
                 writer.writeVerticalOrigin(value);
             }
@@ -831,7 +831,7 @@ public final class CesiumValuePropertyAdaptors {
     @Nonnull
     public static <TFrom extends ICesiumVelocityReferenceValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumVelocityReferenceValuePropertyAdaptor<TFrom> createVelocityReference(
             @Nonnull TFrom parent) {
-        return new CesiumVelocityReferenceValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, cesiumlanguagewriter.Reference>() {
+        return new CesiumVelocityReferenceValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Reference>() {
             public void invoke(TFrom writer, Reference value) {
                 writer.writeVelocityReference(value);
             }

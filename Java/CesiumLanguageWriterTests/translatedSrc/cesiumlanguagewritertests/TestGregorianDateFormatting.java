@@ -431,7 +431,7 @@ public class TestGregorianDateFormatting {
     }
 
     public static Iterable<GregorianDate> getToIso8601ValidationValues() {
-        final ArrayList<cesiumlanguagewriter.GregorianDate> tempCollection$0 = new ArrayList<cesiumlanguagewriter.GregorianDate>();
+        final ArrayList<GregorianDate> tempCollection$0 = new ArrayList<GregorianDate>();
         tempCollection$0.add(new GregorianDate(2012, 4, 2, 1, 2, 3.12345));
         tempCollection$0.add(new GregorianDate(2012, 4, 2, 1, 2, 0.12345));
         tempCollection$0.add(new GregorianDate(2012, 4, 2, 1, 0, 0.12345));

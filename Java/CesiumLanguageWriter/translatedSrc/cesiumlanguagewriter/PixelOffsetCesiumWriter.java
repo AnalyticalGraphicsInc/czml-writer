@@ -177,12 +177,11 @@ public class PixelOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
     @Nonnull
     private final Lazy<CesiumCartesian2ValuePropertyAdaptor<PixelOffsetCesiumWriter>> createAsCartesian2() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumCartesian2ValuePropertyAdaptor<PixelOffsetCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumCartesian2ValuePropertyAdaptor<PixelOffsetCesiumWriter>>(this, "createCartesian2") {
-                    public cesiumlanguagewriter.advanced.CesiumCartesian2ValuePropertyAdaptor<PixelOffsetCesiumWriter> invoke() {
-                        return createCartesian2();
-                    }
-                }, false);
+        return new Lazy<CesiumCartesian2ValuePropertyAdaptor<PixelOffsetCesiumWriter>>(new Func1<CesiumCartesian2ValuePropertyAdaptor<PixelOffsetCesiumWriter>>(this, "createCartesian2") {
+            public CesiumCartesian2ValuePropertyAdaptor<PixelOffsetCesiumWriter> invoke() {
+                return createCartesian2();
+            }
+        }, false);
     }
 
     @Nonnull
@@ -201,12 +200,11 @@ public class PixelOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<PixelOffsetCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<PixelOffsetCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<PixelOffsetCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<PixelOffsetCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<PixelOffsetCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<PixelOffsetCesiumWriter>>(this, "createReference") {
+            public CesiumReferenceValuePropertyAdaptor<PixelOffsetCesiumWriter> invoke() {
+                return createReference();
+            }
+        }, false);
     }
 
     @Nonnull

@@ -42,7 +42,7 @@ public class TestCesiumWritingHelper {
 
     @Test
     public final void canWriteReferences() {
-        final ArrayList<cesiumlanguagewriter.Reference> tempCollection$0 = new ArrayList<cesiumlanguagewriter.Reference>();
+        final ArrayList<Reference> tempCollection$0 = new ArrayList<Reference>();
         tempCollection$0.add(new Reference("bar", "color"));
         tempCollection$0.add(new Reference("foo", "color2"));
         CesiumWritingHelper.writeReferences(m_outputStream, tempCollection$0);

@@ -10,6 +10,7 @@ import java.util.EnumSet;
 import java.util.Objects;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import agi.foundation.TypeLiteral;
 
@@ -18,64 +19,38 @@ import agi.foundation.TypeLiteral;
  * reflection and cache the result.
  */
 class CachingMethodFinder {
-    private enum SearchCriteria {
-        STATIC_METHODS_ONLY,
-        INSTANCE_METHODS_ONLY,
-        CHECK_PARAMETER_TYPES
-    }
-
+    /**
+     * Encapsulates the required information and mechanism for actually finding the
+     * method.
+     */
     @Nonnull
-    private static final EnumSet<SearchCriteria> delegateObjectSearchCriteria;
-    @Nonnull
-    private static final EnumSet<SearchCriteria> instanceMethodSearchCriteria;
-    @Nonnull
-    private static final EnumSet<SearchCriteria> staticMethodSearchCriteria;
-
-    static {
-        delegateObjectSearchCriteria = EnumSet.of(SearchCriteria.INSTANCE_METHODS_ONLY);
-        instanceMethodSearchCriteria = EnumSet.of(SearchCriteria.INSTANCE_METHODS_ONLY, SearchCriteria.CHECK_PARAMETER_TYPES);
-        staticMethodSearchCriteria = EnumSet.of(SearchCriteria.STATIC_METHODS_ONLY, SearchCriteria.CHECK_PARAMETER_TYPES);
-    }
-
-    private final Object delegateObject;
-    private final Object targetObject;
-    private final Class<?> targetClass;
-    private final String methodName;
-    private final Class<?>[] methodParameterClasses;
-    private Method cachedMethod;
+    private final Strategy strategy;
+    /**
+     * The cached method after finding it.
+     */
+    @Nullable
+    private Method method;
 
     /**
-     * finds an "invoke" method directly on a delegate-like object (either Delegate or
-     * DelegateInvocation)
+     * Finds an method named "invoke" directly on a delegate-like object (which is a
+     * subclass of {@link Delegate}).
      */
     public CachingMethodFinder(@Nonnull Object delegateObject) {
-        this.delegateObject = delegateObject;
-        this.targetObject = null;
-        this.targetClass = null;
-        this.methodName = null;
-        this.methodParameterClasses = null;
+        strategy = new DelegateInvokeStrategy(delegateObject);
     }
 
     /**
-     * Find a static method on a target class.
+     * Finds a static method on a target class.
      */
     public CachingMethodFinder(@Nonnull Class<?> targetClass, @Nonnull String methodName, @Nonnull Class<?>[] methodParameterClasses) {
-        this.delegateObject = null;
-        this.targetObject = null;
-        this.targetClass = targetClass;
-        this.methodName = methodName;
-        this.methodParameterClasses = methodParameterClasses;
+        strategy = new StaticMethodStrategy(targetClass, methodName, methodParameterClasses);
     }
 
     /**
-     * Find an instance method on a target object.
+     * Finds an instance method on a target object.
      */
     public CachingMethodFinder(@Nonnull Object targetObject, @Nonnull String methodName, @Nonnull Class<?>[] methodParameterClasses) {
-        this.delegateObject = null;
-        this.targetObject = targetObject;
-        this.targetClass = null;
-        this.methodName = methodName;
-        this.methodParameterClasses = methodParameterClasses;
+        strategy = new InstanceMethodStrategy(targetObject, methodName, methodParameterClasses);
     }
 
     /**
@@ -83,33 +58,26 @@ class CachingMethodFinder {
      */
     @Nonnull
     public Method findMethod() {
-        if (cachedMethod != null) {
-            return cachedMethod;
-        }
+        if (method != null)
+            return method;
 
-        if (delegateObject != null) {
-            cacheMethod("invoke", delegateObject.getClass(), delegateObjectSearchCriteria);
-        } else if (targetObject != null) {
-            // if we have a target object, then we are a delegate to an
-            // instance method on that object
-            cacheMethod(methodName, targetObject.getClass(), instanceMethodSearchCriteria);
-        } else if (targetClass != null) {
-            // if we have a target class, then we are a delegate to an
-            // static method on that class
-            cacheMethod(methodName, targetClass, staticMethodSearchCriteria);
-        }
+        method = strategy.findMethod();
 
-        if (cachedMethod != null) {
-            return cachedMethod;
-        }
+        if (method != null)
+            return method;
 
-        throw new RuntimeException("Unable to find method for delegate: " + methodName);
+        throw new RuntimeException("Unable to find method for delegate: " + strategy.getMethodName());
     }
 
-    private void cacheMethod(String name, Class<?> classToSearch, EnumSet<SearchCriteria> searchCriteria) {
+    /**
+     * The actual search algorithm, called by the strategy.
+     */
+    private static Method searchForMethod(@Nonnull String methodName, @Nonnull Class<?> classToSearch, @Nonnull EnumSet<SearchCriteria> searchCriteria,
+                                          @Nonnull Class<?>... methodParameterClasses) {
         for (Method method : classToSearch.getDeclaredMethods()) {
             int modifers = method.getModifiers();
 
+            // check that method is correctly static/instance as asked.
             boolean isStatic = Modifier.isStatic(modifers);
             if (isStatic && searchCriteria.contains(SearchCriteria.INSTANCE_METHODS_ONLY))
                 continue;
@@ -117,59 +85,68 @@ class CachingMethodFinder {
             if (!isStatic && searchCriteria.contains(SearchCriteria.STATIC_METHODS_ONLY))
                 continue;
 
-            if (name.equals(method.getName())) {
-                if (searchCriteria.contains(SearchCriteria.CHECK_PARAMETER_TYPES)) {
-                    if (!parametersMatch(method))
-                        continue;
-                }
+            // Always check the method name.
+            if (!methodName.equals(method.getName()))
+                continue;
 
-                // at this point, name and types (if checked) matched
-                cachedMethod = method;
-                return;
-            }
+            // Only check the parameter types if we are asked to.
+            if (searchCriteria.contains(SearchCriteria.CHECK_PARAMETER_TYPES) && !parametersMatch(method, methodParameterClasses))
+                continue;
+
+            // at this point, name and types (if checked) matched, so we have
+            // found the method and we're done.
+            return method;
         }
 
         // if method was not found to be declared on the specified class,
-        // then try superclasses
+        // then search superclasses recursively.
         Class<?> superclass = classToSearch.getSuperclass();
-        if (superclass != null)
-            cacheMethod(name, superclass, searchCriteria);
+        if (superclass != null) {
+            return searchForMethod(methodName, superclass, searchCriteria, methodParameterClasses);
+        }
+
+        // otherwise, not found.
+        return null;
     }
 
-    private boolean parametersMatch(Method method) {
+    /**
+     * Determine if a candidate method's parameters have the the required classes.
+     */
+    private static boolean parametersMatch(@Nonnull Method method, @Nonnull Class<?>[] methodParameterClasses) {
         Type[] parameterTypes = method.getGenericParameterTypes();
 
-        int numberOfParameters = parameterTypes.length;
         int index = 0;
-        while (index < numberOfParameters) {
+        while (index < parameterTypes.length) {
             // skip any TypeLiteral parameters that are at the start.
             Type type = parameterTypes[index];
             if (type instanceof ParameterizedType) {
-                ParameterizedType c = (ParameterizedType) type;
-                if (TypeLiteral.class.equals(c.getRawType()))
+                if (TypeLiteral.class.equals(((ParameterizedType) type).getRawType())) {
                     ++index;
-                else
+                } else {
                     break;
+                }
             } else {
                 break;
             }
         }
 
-        if ((numberOfParameters - index) != methodParameterClasses.length)
+        if ((parameterTypes.length - index) != methodParameterClasses.length)
             return false;
 
         for (int i = index, j = 0; i < parameterTypes.length && j < methodParameterClasses.length; ++i, ++j) {
-            Type type = parameterTypes[i];
-            if (type instanceof TypeVariable<?>)
-                // don't compare type variables, i.e. parameters of type T.
+            Type parameterType = parameterTypes[i];
+
+            // don't compare type variables, i.e. parameters of type T.
+            if (parameterType instanceof TypeVariable<?>)
                 continue;
 
-            // the Class object in methodParams will be the raw type, so extract
-            // it from the Type as well.
-            if (type instanceof ParameterizedType)
-                type = ((ParameterizedType) type).getRawType();
+            // The Class object in methodParameterClasses will be the raw type, so
+            // get the raw type from parameterType as well.
+            if (parameterType instanceof ParameterizedType) {
+                parameterType = ((ParameterizedType) parameterType).getRawType();
+            }
 
-            if (!type.equals(methodParameterClasses[j]))
+            if (!parameterType.equals(methodParameterClasses[j]))
                 return false;
         }
 
@@ -177,46 +154,34 @@ class CachingMethodFinder {
     }
 
     public Object getTargetObject() {
-        return targetObject;
+        return strategy.getTargetObject();
     }
 
     @Override
     public boolean equals(Object obj) {
         if (obj == this)
             return true;
-
         if (!(obj instanceof CachingMethodFinder))
             return false;
 
         CachingMethodFinder that = (CachingMethodFinder) obj;
 
         // C# spec:
+
         // The following rules govern the equality of invocation list entries:
-        // * If two invocation list entries both refer to the same static method then the
+
+        // If two invocation list entries both refer to the same static method then the
         // entries are equal.
-        // * If two invocation list entries both refer to the same non-static method on
+
+        // If two invocation list entries both refer to the same non-static method on
         // the same target object (as defined by the reference equality operators) then
         // the entries are equal.
-        // * Invocation list entries produced from evaluation of semantically identical
+
+        // Invocation list entries produced from evaluation of semantically identical
         // anonymous-function-expressions with the same (possibly empty) set of captured
         // outer variable instances are permitted (but not required) to be equal.
 
-        if (!Objects.equals(targetClass, that.targetClass)) {
-            // static method and classes don't match.
-            return false;
-        }
-
-        if (targetObject != that.targetObject) {
-            // non-static method and target objects don't match
-            return false;
-        }
-
-        if (methodName != null) {
-            // refers to a named method, check method name and parameters
-            return methodName.equals(that.methodName) && Arrays.equals(methodParameterClasses, that.methodParameterClasses);
-        }
-
-        // refers to an anonymous function expression.
+        // (end C# spec)
 
         // C# treats anonymous function expressions with the same body as equal only if
         // they do not close over any variables, though this is not strictly required by
@@ -253,12 +218,209 @@ class CachingMethodFinder {
 
         // @formatter:on
 
-        return false;
+        return strategy.equals(that.strategy);
     }
 
     @Override
     public int hashCode() {
-        return HashCodeHelper.combine(methodName == null ? getClass().hashCode() : methodName.hashCode(), Objects.hashCode(targetClass), Objects.hashCode(targetObject),
-                Arrays.hashCode(methodParameterClasses));
+        return strategy.hashCode();
+    }
+
+    private enum SearchCriteria {
+        STATIC_METHODS_ONLY,
+        INSTANCE_METHODS_ONLY,
+        CHECK_PARAMETER_TYPES,
+    }
+
+    /**
+     * Encapsulates the required information and mechanism for actually finding the
+     * method.
+     */
+    private interface Strategy {
+        Method findMethod();
+
+        String getMethodName();
+
+        Object getTargetObject();
+
+        @Override
+        boolean equals(Object obj);
+
+        @Override
+        int hashCode();
+    }
+
+    /**
+     * Finds an method named "invoke" directly on a delegate-like object (which is a
+     * subclass of {@link Delegate}).
+     */
+    private static final class DelegateInvokeStrategy implements Strategy {
+        @Nonnull
+        private static final EnumSet<SearchCriteria> searchCriteria = EnumSet.of(SearchCriteria.INSTANCE_METHODS_ONLY);
+        @Nonnull
+        private static final String invokeMethodName = "invoke";
+        @Nonnull
+        private final Object delegateObject;
+
+        public DelegateInvokeStrategy(@Nonnull Object delegateObject) {
+            this.delegateObject = delegateObject;
+        }
+
+        @Override
+        public Method findMethod() {
+            return searchForMethod(invokeMethodName, delegateObject.getClass(), searchCriteria);
+        }
+
+        @Override
+        public String getMethodName() {
+            return invokeMethodName;
+        }
+
+        @Override
+        public Object getTargetObject() {
+            return null;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (obj == this)
+                return true;
+
+            // see commentary in CachingMethodFinder.equals
+            return false;
+        }
+
+        @Override
+        public int hashCode() {
+            return System.identityHashCode(this);
+        }
+    }
+
+    /**
+     * Finds a static method on a target class.
+     */
+    private static final class StaticMethodStrategy implements Strategy {
+        @Nonnull
+        private static final EnumSet<SearchCriteria> searchCriteria = EnumSet.of(SearchCriteria.STATIC_METHODS_ONLY, SearchCriteria.CHECK_PARAMETER_TYPES);
+        /**
+         * The class that defines the static method.
+         */
+        @Nonnull
+        private final Class<?> targetClass;
+        /**
+         * The name of the method to find.
+         */
+        @Nonnull
+        private final String methodName;
+        /**
+         * The classes of all method parameters, in order.
+         */
+        @Nonnull
+        private final Class<?>[] methodParameterClasses;
+
+        public StaticMethodStrategy(@Nonnull Class<?> targetClass, @Nonnull String methodName, @Nonnull Class<?>[] methodParameterClasses) {
+            this.targetClass = targetClass;
+            this.methodName = methodName;
+            this.methodParameterClasses = methodParameterClasses;
+        }
+
+        @Override
+        public Method findMethod() {
+            return searchForMethod(methodName, targetClass, searchCriteria, methodParameterClasses);
+        }
+
+        @Override
+        public String getMethodName() {
+            return methodName;
+        }
+
+        @Override
+        public Object getTargetObject() {
+            return null;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (obj == this)
+                return true;
+            if (!(obj instanceof StaticMethodStrategy))
+                return false;
+
+            StaticMethodStrategy that = (StaticMethodStrategy) obj;
+
+            // see commentary in CachingMethodFinder.equals
+            return Objects.equals(targetClass, that.targetClass) && //
+                    Objects.equals(methodName, that.methodName) && //
+                    Arrays.equals(methodParameterClasses, that.methodParameterClasses);
+        }
+
+        @Override
+        public int hashCode() {
+            return HashCodeHelper.combine(Objects.hashCode(targetClass), Objects.hashCode(methodName), Arrays.hashCode(methodParameterClasses));
+        }
+    }
+
+    /**
+     * Finds an instance method on a target object.
+     */
+    private static final class InstanceMethodStrategy implements Strategy {
+        @Nonnull
+        private static final EnumSet<SearchCriteria> searchCriteria = EnumSet.of(SearchCriteria.INSTANCE_METHODS_ONLY, SearchCriteria.CHECK_PARAMETER_TYPES);
+        /**
+         * The object on which to find the instance method.
+         */
+        @Nonnull
+        private final Object targetObject;
+        /**
+         * The name of the method to find.
+         */
+        @Nonnull
+        private final String methodName;
+        /**
+         * The classes of all method parameters, in order.
+         */
+        @Nonnull
+        private final Class<?>[] methodParameterClasses;
+
+        public InstanceMethodStrategy(@Nonnull Object targetObject, @Nonnull String methodName, @Nonnull Class<?>[] methodParameterClasses) {
+            this.targetObject = targetObject;
+            this.methodName = methodName;
+            this.methodParameterClasses = methodParameterClasses;
+        }
+
+        @Override
+        public Method findMethod() {
+            return searchForMethod(methodName, targetObject.getClass(), searchCriteria, methodParameterClasses);
+        }
+
+        @Override
+        public String getMethodName() {
+            return methodName;
+        }
+
+        @Override
+        public Object getTargetObject() {
+            return targetObject;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (obj == this)
+                return true;
+            if (!(obj instanceof InstanceMethodStrategy))
+                return false;
+
+            InstanceMethodStrategy that = (InstanceMethodStrategy) obj;
+
+            // see commentary in CachingMethodFinder.equals
+            return ObjectHelper.referenceEquals(targetObject, that.targetObject) && //
+                    Objects.equals(methodName, that.methodName) && //
+                    Arrays.equals(methodParameterClasses, that.methodParameterClasses);
+        }
+
+        @Override
+        public int hashCode() {
+            return HashCodeHelper.combine(System.identityHashCode(targetObject), Objects.hashCode(methodName), Arrays.hashCode(methodParameterClasses));
+        }
     }
 }

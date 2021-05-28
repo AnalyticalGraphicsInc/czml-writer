@@ -6,7 +6,7 @@ import javax.annotation.Nullable;
 /**
  * Represents a method that takes no parameters and does not return a value.
  */
-public abstract class Action extends Delegate {
+public abstract class Action extends Delegate implements Runnable {
     /**
      * Creates a new instance of this delegate.
      */
@@ -46,6 +46,11 @@ public abstract class Action extends Delegate {
      * Represents a method that takes no parameters and does not return a value.
      */
     public abstract void invoke();
+
+    @Override
+    public final void run() {
+        invoke();
+    }
 
     /**
      * Combines two delegate instances, forming a new delegate that will invoke both
@@ -96,17 +101,6 @@ public abstract class Action extends Delegate {
             return null;
         }
         return this;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == this) {
-            return true;
-        }
-        if (!(obj instanceof Action)) {
-            return false;
-        }
-        return super.equals(obj);
     }
 
     /**
@@ -193,23 +187,6 @@ public abstract class Action extends Delegate {
         @Nonnull
         public MulticastList<Action> list() {
             return delegates;
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (obj == this) {
-                return true;
-            }
-            if (!(obj instanceof Multicast)) {
-                return false;
-            }
-            final Multicast that = (Multicast) obj;
-            return delegates.equals(that.delegates);
-        }
-
-        @Override
-        public int hashCode() {
-            return delegates.hashCode();
         }
 
         @Override

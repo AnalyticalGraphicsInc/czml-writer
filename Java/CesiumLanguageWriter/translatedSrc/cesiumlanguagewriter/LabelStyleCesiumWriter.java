@@ -149,12 +149,11 @@ public class LabelStyleCesiumWriter extends CesiumPropertyWriter<LabelStyleCesiu
 
     @Nonnull
     private final Lazy<CesiumLabelStyleValuePropertyAdaptor<LabelStyleCesiumWriter>> createAsLabelStyle() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumLabelStyleValuePropertyAdaptor<LabelStyleCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumLabelStyleValuePropertyAdaptor<LabelStyleCesiumWriter>>(this, "createLabelStyle") {
-                    public cesiumlanguagewriter.advanced.CesiumLabelStyleValuePropertyAdaptor<LabelStyleCesiumWriter> invoke() {
-                        return createLabelStyle();
-                    }
-                }, false);
+        return new Lazy<CesiumLabelStyleValuePropertyAdaptor<LabelStyleCesiumWriter>>(new Func1<CesiumLabelStyleValuePropertyAdaptor<LabelStyleCesiumWriter>>(this, "createLabelStyle") {
+            public CesiumLabelStyleValuePropertyAdaptor<LabelStyleCesiumWriter> invoke() {
+                return createLabelStyle();
+            }
+        }, false);
     }
 
     @Nonnull
@@ -173,12 +172,11 @@ public class LabelStyleCesiumWriter extends CesiumPropertyWriter<LabelStyleCesiu
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<LabelStyleCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<LabelStyleCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<LabelStyleCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<LabelStyleCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<LabelStyleCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<LabelStyleCesiumWriter>>(this, "createReference") {
+            public CesiumReferenceValuePropertyAdaptor<LabelStyleCesiumWriter> invoke() {
+                return createReference();
+            }
+        }, false);
     }
 
     @Nonnull

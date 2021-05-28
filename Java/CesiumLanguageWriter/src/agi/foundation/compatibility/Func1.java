@@ -60,17 +60,6 @@ public abstract class Func1<TResult> extends Delegate implements Supplier<TResul
         return invoke();
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == this) {
-            return true;
-        }
-        if (!(obj instanceof Func1<?>)) {
-            return false;
-        }
-        return super.equals(obj);
-    }
-
     /**
      * Create a delegate for the given interface. This can be used to create a delegate
      * from a lambda expression.

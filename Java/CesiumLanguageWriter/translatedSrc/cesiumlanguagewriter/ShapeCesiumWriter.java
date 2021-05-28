@@ -89,12 +89,11 @@ public class ShapeCesiumWriter extends CesiumPropertyWriter<ShapeCesiumWriter> i
 
     @Nonnull
     private final Lazy<CesiumCartesian2ListValuePropertyAdaptor<ShapeCesiumWriter>> createAsCartesian2() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumCartesian2ListValuePropertyAdaptor<ShapeCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumCartesian2ListValuePropertyAdaptor<ShapeCesiumWriter>>(this, "createCartesian2List") {
-                    public cesiumlanguagewriter.advanced.CesiumCartesian2ListValuePropertyAdaptor<ShapeCesiumWriter> invoke() {
-                        return createCartesian2List();
-                    }
-                }, false);
+        return new Lazy<CesiumCartesian2ListValuePropertyAdaptor<ShapeCesiumWriter>>(new Func1<CesiumCartesian2ListValuePropertyAdaptor<ShapeCesiumWriter>>(this, "createCartesian2List") {
+            public CesiumCartesian2ListValuePropertyAdaptor<ShapeCesiumWriter> invoke() {
+                return createCartesian2List();
+            }
+        }, false);
     }
 
     @Nonnull

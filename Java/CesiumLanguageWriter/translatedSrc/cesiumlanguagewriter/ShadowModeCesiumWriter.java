@@ -149,12 +149,11 @@ public class ShadowModeCesiumWriter extends CesiumPropertyWriter<ShadowModeCesiu
 
     @Nonnull
     private final Lazy<CesiumShadowModeValuePropertyAdaptor<ShadowModeCesiumWriter>> createAsShadowMode() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumShadowModeValuePropertyAdaptor<ShadowModeCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumShadowModeValuePropertyAdaptor<ShadowModeCesiumWriter>>(this, "createShadowMode") {
-                    public cesiumlanguagewriter.advanced.CesiumShadowModeValuePropertyAdaptor<ShadowModeCesiumWriter> invoke() {
-                        return createShadowMode();
-                    }
-                }, false);
+        return new Lazy<CesiumShadowModeValuePropertyAdaptor<ShadowModeCesiumWriter>>(new Func1<CesiumShadowModeValuePropertyAdaptor<ShadowModeCesiumWriter>>(this, "createShadowMode") {
+            public CesiumShadowModeValuePropertyAdaptor<ShadowModeCesiumWriter> invoke() {
+                return createShadowMode();
+            }
+        }, false);
     }
 
     @Nonnull
@@ -173,12 +172,11 @@ public class ShadowModeCesiumWriter extends CesiumPropertyWriter<ShadowModeCesiu
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<ShadowModeCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<ShadowModeCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<ShadowModeCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<ShadowModeCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<ShadowModeCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<ShadowModeCesiumWriter>>(this, "createReference") {
+            public CesiumReferenceValuePropertyAdaptor<ShadowModeCesiumWriter> invoke() {
+                return createReference();
+            }
+        }, false);
     }
 
     @Nonnull

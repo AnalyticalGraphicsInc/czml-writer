@@ -149,12 +149,12 @@ public class HorizontalOriginCesiumWriter extends CesiumPropertyWriter<Horizonta
 
     @Nonnull
     private final Lazy<CesiumHorizontalOriginValuePropertyAdaptor<HorizontalOriginCesiumWriter>> createAsHorizontalOrigin() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumHorizontalOriginValuePropertyAdaptor<HorizontalOriginCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumHorizontalOriginValuePropertyAdaptor<HorizontalOriginCesiumWriter>>(this, "createHorizontalOrigin") {
-                    public cesiumlanguagewriter.advanced.CesiumHorizontalOriginValuePropertyAdaptor<HorizontalOriginCesiumWriter> invoke() {
-                        return createHorizontalOrigin();
-                    }
-                }, false);
+        return new Lazy<CesiumHorizontalOriginValuePropertyAdaptor<HorizontalOriginCesiumWriter>>(new Func1<CesiumHorizontalOriginValuePropertyAdaptor<HorizontalOriginCesiumWriter>>(this,
+                "createHorizontalOrigin") {
+            public CesiumHorizontalOriginValuePropertyAdaptor<HorizontalOriginCesiumWriter> invoke() {
+                return createHorizontalOrigin();
+            }
+        }, false);
     }
 
     @Nonnull
@@ -173,12 +173,11 @@ public class HorizontalOriginCesiumWriter extends CesiumPropertyWriter<Horizonta
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<HorizontalOriginCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<HorizontalOriginCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<HorizontalOriginCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<HorizontalOriginCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<HorizontalOriginCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<HorizontalOriginCesiumWriter>>(this, "createReference") {
+            public CesiumReferenceValuePropertyAdaptor<HorizontalOriginCesiumWriter> invoke() {
+                return createReference();
+            }
+        }, false);
     }
 
     @Nonnull

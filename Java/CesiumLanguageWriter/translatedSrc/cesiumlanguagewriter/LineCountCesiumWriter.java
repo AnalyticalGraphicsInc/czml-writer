@@ -177,12 +177,11 @@ public class LineCountCesiumWriter extends CesiumInterpolatablePropertyWriter<Li
 
     @Nonnull
     private final Lazy<CesiumCartesian2ValuePropertyAdaptor<LineCountCesiumWriter>> createAsCartesian2() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumCartesian2ValuePropertyAdaptor<LineCountCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumCartesian2ValuePropertyAdaptor<LineCountCesiumWriter>>(this, "createCartesian2") {
-                    public cesiumlanguagewriter.advanced.CesiumCartesian2ValuePropertyAdaptor<LineCountCesiumWriter> invoke() {
-                        return createCartesian2();
-                    }
-                }, false);
+        return new Lazy<CesiumCartesian2ValuePropertyAdaptor<LineCountCesiumWriter>>(new Func1<CesiumCartesian2ValuePropertyAdaptor<LineCountCesiumWriter>>(this, "createCartesian2") {
+            public CesiumCartesian2ValuePropertyAdaptor<LineCountCesiumWriter> invoke() {
+                return createCartesian2();
+            }
+        }, false);
     }
 
     @Nonnull
@@ -201,12 +200,11 @@ public class LineCountCesiumWriter extends CesiumInterpolatablePropertyWriter<Li
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<LineCountCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<LineCountCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<LineCountCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<LineCountCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<LineCountCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<LineCountCesiumWriter>>(this, "createReference") {
+            public CesiumReferenceValuePropertyAdaptor<LineCountCesiumWriter> invoke() {
+                return createReference();
+            }
+        }, false);
     }
 
     @Nonnull

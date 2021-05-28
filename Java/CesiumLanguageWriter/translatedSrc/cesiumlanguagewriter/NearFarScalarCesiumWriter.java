@@ -179,12 +179,11 @@ public class NearFarScalarCesiumWriter extends CesiumInterpolatablePropertyWrite
 
     @Nonnull
     private final Lazy<CesiumNearFarScalarValuePropertyAdaptor<NearFarScalarCesiumWriter>> createAsNearFarScalar() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumNearFarScalarValuePropertyAdaptor<NearFarScalarCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumNearFarScalarValuePropertyAdaptor<NearFarScalarCesiumWriter>>(this, "createNearFarScalar") {
-                    public cesiumlanguagewriter.advanced.CesiumNearFarScalarValuePropertyAdaptor<NearFarScalarCesiumWriter> invoke() {
-                        return createNearFarScalar();
-                    }
-                }, false);
+        return new Lazy<CesiumNearFarScalarValuePropertyAdaptor<NearFarScalarCesiumWriter>>(new Func1<CesiumNearFarScalarValuePropertyAdaptor<NearFarScalarCesiumWriter>>(this, "createNearFarScalar") {
+            public CesiumNearFarScalarValuePropertyAdaptor<NearFarScalarCesiumWriter> invoke() {
+                return createNearFarScalar();
+            }
+        }, false);
     }
 
     @Nonnull
@@ -203,12 +202,11 @@ public class NearFarScalarCesiumWriter extends CesiumInterpolatablePropertyWrite
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<NearFarScalarCesiumWriter>> createAsReference() {
-        return new Lazy<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<NearFarScalarCesiumWriter>>(
-                new Func1<cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<NearFarScalarCesiumWriter>>(this, "createReference") {
-                    public cesiumlanguagewriter.advanced.CesiumReferenceValuePropertyAdaptor<NearFarScalarCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<NearFarScalarCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<NearFarScalarCesiumWriter>>(this, "createReference") {
+            public CesiumReferenceValuePropertyAdaptor<NearFarScalarCesiumWriter> invoke() {
+                return createReference();
+            }
+        }, false);
     }
 
     @Nonnull
