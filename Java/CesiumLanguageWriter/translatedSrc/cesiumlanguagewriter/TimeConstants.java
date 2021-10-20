@@ -6,10 +6,10 @@ import agi.foundation.compatibility.*;
 /**
  * Contains time-related constants.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public final class TimeConstants {
     private TimeConstants() {}

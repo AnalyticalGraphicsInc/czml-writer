@@ -11,13 +11,13 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code LineCount} to a {@link CesiumOutputStream}. A {@code LineCount} is the number of grid lines along each axis.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class LineCountCesiumWriter extends CesiumInterpolatablePropertyWriter<LineCountCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumCartesian2ValuePropertyWriter,
-        ICesiumReferenceValuePropertyWriter {
+public class LineCountCesiumWriter extends CesiumInterpolatablePropertyWriter<LineCountCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumCartesian2ValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code cartesian2} property.
     */

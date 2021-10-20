@@ -9,10 +9,10 @@ import javax.annotation.Nullable;
 /**
  * Specifies the style of a corner.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public enum CesiumCornerType implements Enumeration {
     /**
@@ -27,6 +27,7 @@ public enum CesiumCornerType implements Enumeration {
     * The corner is clipped.
     */
     BEVELED(2);
+
     private final int value;
 
     CesiumCornerType(int value) {

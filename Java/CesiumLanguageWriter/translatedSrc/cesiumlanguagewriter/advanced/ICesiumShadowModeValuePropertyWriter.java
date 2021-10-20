@@ -8,10 +8,10 @@ import javax.annotation.Nonnull;
 /**
  * A writer that can write a value as a shadow mode.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public interface ICesiumShadowModeValuePropertyWriter extends ICesiumPropertyWriter {
     /**

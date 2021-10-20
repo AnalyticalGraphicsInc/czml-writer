@@ -19,10 +19,10 @@ import org.junit.Test;
 /**
  * Tests the {@link Cartographic} type.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCartographic {

@@ -15,10 +15,10 @@ import javax.annotation.Nullable;
  * An interval defined by a start date and a stop date.  The end points are optionally included
  in the interval.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public final class TimeInterval implements IEquatable<TimeInterval> {
     /**
@@ -144,7 +144,7 @@ public final class TimeInterval implements IEquatable<TimeInterval> {
     */
     @Override
     public boolean equals(Object obj) {
-        return equalsType((obj instanceof TimeInterval) ? (TimeInterval) obj : null);
+        return equalsType(obj instanceof TimeInterval ? (TimeInterval) obj : null);
     }
 
     /**

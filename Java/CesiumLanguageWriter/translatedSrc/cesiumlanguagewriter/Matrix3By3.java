@@ -15,10 +15,10 @@ import javax.annotation.Nonnull;
  basis rather than modifying the coordinates themselves.
  * @see UnitQuaternion
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 @CS2JWarning("Unhandled attribute removed: SuppressMessage")
 public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueType {
@@ -291,8 +291,8 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     @CS2JWarning("Unhandled attribute removed: Pure")
     @Nonnull
     public final Matrix3By3 add(@Nonnull Matrix3By3 matrix) {
-        return new Matrix3By3(m_m11 + matrix.m_m11, m_m12 + matrix.m_m12, m_m13 + matrix.m_m13, m_m21 + matrix.m_m21, m_m22 + matrix.m_m22, m_m23 + matrix.m_m23, m_m31 + matrix.m_m31, m_m32
-                + matrix.m_m32, m_m33 + matrix.m_m33);
+        return new Matrix3By3(m_m11 + matrix.m_m11, m_m12 + matrix.m_m12, m_m13 + matrix.m_m13, m_m21 + matrix.m_m21, m_m22 + matrix.m_m22, m_m23 + matrix.m_m23, m_m31 + matrix.m_m31,
+                m_m32 + matrix.m_m32, m_m33 + matrix.m_m33);
     }
 
     /**
@@ -303,8 +303,8 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     @CS2JWarning("Unhandled attribute removed: Pure")
     @Nonnull
     public final Matrix3By3 subtract(@Nonnull Matrix3By3 matrix) {
-        return new Matrix3By3(m_m11 - matrix.m_m11, m_m12 - matrix.m_m12, m_m13 - matrix.m_m13, m_m21 - matrix.m_m21, m_m22 - matrix.m_m22, m_m23 - matrix.m_m23, m_m31 - matrix.m_m31, m_m32
-                - matrix.m_m32, m_m33 - matrix.m_m33);
+        return new Matrix3By3(m_m11 - matrix.m_m11, m_m12 - matrix.m_m12, m_m13 - matrix.m_m13, m_m21 - matrix.m_m21, m_m22 - matrix.m_m22, m_m23 - matrix.m_m23, m_m31 - matrix.m_m31,
+                m_m32 - matrix.m_m32, m_m33 - matrix.m_m33);
     }
 
     /**
@@ -326,10 +326,11 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     @CS2JWarning("Unhandled attribute removed: Pure")
     @Nonnull
     public final Matrix3By3 multiply(@Nonnull Matrix3By3 matrix) {
-        return new Matrix3By3(m_m11 * matrix.m_m11 + m_m12 * matrix.m_m21 + m_m13 * matrix.m_m31, m_m11 * matrix.m_m12 + m_m12 * matrix.m_m22 + m_m13 * matrix.m_m32, m_m11 * matrix.m_m13 + m_m12
-                * matrix.m_m23 + m_m13 * matrix.m_m33, m_m21 * matrix.m_m11 + m_m22 * matrix.m_m21 + m_m23 * matrix.m_m31, m_m21 * matrix.m_m12 + m_m22 * matrix.m_m22 + m_m23 * matrix.m_m32, m_m21
-                * matrix.m_m13 + m_m22 * matrix.m_m23 + m_m23 * matrix.m_m33, m_m31 * matrix.m_m11 + m_m32 * matrix.m_m21 + m_m33 * matrix.m_m31, m_m31 * matrix.m_m12 + m_m32 * matrix.m_m22 + m_m33
-                * matrix.m_m32, m_m31 * matrix.m_m13 + m_m32 * matrix.m_m23 + m_m33 * matrix.m_m33);
+        return new Matrix3By3(m_m11 * matrix.m_m11 + m_m12 * matrix.m_m21 + m_m13 * matrix.m_m31, m_m11 * matrix.m_m12 + m_m12 * matrix.m_m22 + m_m13 * matrix.m_m32,
+                m_m11 * matrix.m_m13 + m_m12 * matrix.m_m23 + m_m13 * matrix.m_m33, m_m21 * matrix.m_m11 + m_m22 * matrix.m_m21 + m_m23 * matrix.m_m31,
+                m_m21 * matrix.m_m12 + m_m22 * matrix.m_m22 + m_m23 * matrix.m_m32, m_m21 * matrix.m_m13 + m_m22 * matrix.m_m23 + m_m23 * matrix.m_m33,
+                m_m31 * matrix.m_m11 + m_m32 * matrix.m_m21 + m_m33 * matrix.m_m31, m_m31 * matrix.m_m12 + m_m32 * matrix.m_m22 + m_m33 * matrix.m_m32,
+                m_m31 * matrix.m_m13 + m_m32 * matrix.m_m23 + m_m33 * matrix.m_m33);
     }
 
     /**
@@ -340,8 +341,8 @@ public final class Matrix3By3 implements IEquatable<Matrix3By3>, ImmutableValueT
     @CS2JWarning("Unhandled attribute removed: Pure")
     @Nonnull
     public final Cartesian multiply(@Nonnull Cartesian vector) {
-        return new Cartesian(m_m11 * vector.getX() + m_m12 * vector.getY() + m_m13 * vector.getZ(), m_m21 * vector.getX() + m_m22 * vector.getY() + m_m23 * vector.getZ(), m_m31 * vector.getX()
-                + m_m32 * vector.getY() + m_m33 * vector.getZ());
+        return new Cartesian(m_m11 * vector.getX() + m_m12 * vector.getY() + m_m13 * vector.getZ(), m_m21 * vector.getX() + m_m22 * vector.getY() + m_m23 * vector.getZ(),
+                m_m31 * vector.getX() + m_m32 * vector.getY() + m_m33 * vector.getZ());
     }
 
     /**

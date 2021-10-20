@@ -10,13 +10,13 @@ import javax.annotation.Nonnull;
  {@link ICesiumPropertyWriter} for {@link CesiumSensorVolumePortionToDisplay} values.
  * @param <TFrom> The class that implements {@link ICesiumSensorVolumePortionToDisplayValuePropertyWriter} to adapt.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class CesiumSensorVolumePortionToDisplayValuePropertyAdaptor<TFrom extends ICesiumSensorVolumePortionToDisplayValuePropertyWriter> extends
-        CesiumWriterAdaptor<TFrom, CesiumSensorVolumePortionToDisplay> {
+public class CesiumSensorVolumePortionToDisplayValuePropertyAdaptor<TFrom extends ICesiumSensorVolumePortionToDisplayValuePropertyWriter>
+        extends CesiumWriterAdaptor<TFrom, CesiumSensorVolumePortionToDisplay> {
     /**
     * Initializes a new instance.
     * @param parent The instance to wrap.

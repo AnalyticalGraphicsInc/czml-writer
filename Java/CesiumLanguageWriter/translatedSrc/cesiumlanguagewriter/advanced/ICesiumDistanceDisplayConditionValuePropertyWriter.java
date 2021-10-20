@@ -9,10 +9,10 @@ import javax.annotation.Nonnull;
 /**
  * A writer that can write a value as two values {@code [NearDistance, FarDistance]}.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public interface ICesiumDistanceDisplayConditionValuePropertyWriter extends ICesiumInterpolatablePropertyWriter {
     /**

@@ -10,13 +10,13 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code ClassificationType} to a {@link CesiumOutputStream}. A {@code ClassificationType} is whether a classification affects terrain, 3D Tiles, or both.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class ClassificationTypeCesiumWriter extends CesiumPropertyWriter<ClassificationTypeCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumClassificationTypeValuePropertyWriter,
-        ICesiumReferenceValuePropertyWriter {
+public class ClassificationTypeCesiumWriter extends CesiumPropertyWriter<ClassificationTypeCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumClassificationTypeValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code classificationType} property.
     */
@@ -149,12 +149,12 @@ public class ClassificationTypeCesiumWriter extends CesiumPropertyWriter<Classif
 
     @Nonnull
     private final Lazy<CesiumClassificationTypeValuePropertyAdaptor<ClassificationTypeCesiumWriter>> createAsClassificationType() {
-        return new Lazy<CesiumClassificationTypeValuePropertyAdaptor<ClassificationTypeCesiumWriter>>(new Func1<CesiumClassificationTypeValuePropertyAdaptor<ClassificationTypeCesiumWriter>>(this,
-                "createClassificationType") {
-            public CesiumClassificationTypeValuePropertyAdaptor<ClassificationTypeCesiumWriter> invoke() {
-                return createClassificationType();
-            }
-        }, false);
+        return new Lazy<CesiumClassificationTypeValuePropertyAdaptor<ClassificationTypeCesiumWriter>>(
+                new Func1<CesiumClassificationTypeValuePropertyAdaptor<ClassificationTypeCesiumWriter>>(this, "createClassificationType") {
+                    public CesiumClassificationTypeValuePropertyAdaptor<ClassificationTypeCesiumWriter> invoke() {
+                        return createClassificationType();
+                    }
+                }, false);
     }
 
     @Nonnull

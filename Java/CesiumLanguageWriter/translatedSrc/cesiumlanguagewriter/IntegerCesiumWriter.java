@@ -11,13 +11,13 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code Integer} to a {@link CesiumOutputStream}. A {@code Integer} is an integer number.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class IntegerCesiumWriter extends CesiumInterpolatablePropertyWriter<IntegerCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumIntegerValuePropertyWriter,
-        ICesiumReferenceValuePropertyWriter {
+public class IntegerCesiumWriter extends CesiumInterpolatablePropertyWriter<IntegerCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumIntegerValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code number} property.
     */

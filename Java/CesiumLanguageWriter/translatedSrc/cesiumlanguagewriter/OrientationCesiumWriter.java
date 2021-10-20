@@ -11,13 +11,13 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code Orientation} to a {@link CesiumOutputStream}. A {@code Orientation} is defines an orientation. An orientation is a rotation that takes a vector expressed in the "body" axes of the object and transforms it to the Earth fixed axes.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<OrientationCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumUnitQuaternionValuePropertyWriter,
-        ICesiumReferenceValuePropertyWriter, ICesiumVelocityReferenceValuePropertyWriter {
+public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<OrientationCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumUnitQuaternionValuePropertyWriter, ICesiumReferenceValuePropertyWriter, ICesiumVelocityReferenceValuePropertyWriter {
     /**
     * The name of the {@code unitQuaternion} property.
     */
@@ -269,12 +269,12 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
     @Nonnull
     private final Lazy<CesiumVelocityReferenceValuePropertyAdaptor<OrientationCesiumWriter>> createAsVelocityReference() {
-        return new Lazy<CesiumVelocityReferenceValuePropertyAdaptor<OrientationCesiumWriter>>(new Func1<CesiumVelocityReferenceValuePropertyAdaptor<OrientationCesiumWriter>>(this,
-                "createVelocityReference") {
-            public CesiumVelocityReferenceValuePropertyAdaptor<OrientationCesiumWriter> invoke() {
-                return createVelocityReference();
-            }
-        }, false);
+        return new Lazy<CesiumVelocityReferenceValuePropertyAdaptor<OrientationCesiumWriter>>(
+                new Func1<CesiumVelocityReferenceValuePropertyAdaptor<OrientationCesiumWriter>>(this, "createVelocityReference") {
+                    public CesiumVelocityReferenceValuePropertyAdaptor<OrientationCesiumWriter> invoke() {
+                        return createVelocityReference();
+                    }
+                }, false);
     }
 
     @Nonnull

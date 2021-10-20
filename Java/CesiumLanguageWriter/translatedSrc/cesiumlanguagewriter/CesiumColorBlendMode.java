@@ -9,10 +9,10 @@ import javax.annotation.Nullable;
 /**
  * The mode to use when blending between a target color and an entity's source color.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public enum CesiumColorBlendMode implements Enumeration {
     /**
@@ -27,6 +27,7 @@ public enum CesiumColorBlendMode implements Enumeration {
     * Blends the source color and target color together.
     */
     MIX(2);
+
     private final int value;
 
     CesiumColorBlendMode(int value) {

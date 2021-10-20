@@ -9,10 +9,10 @@ import javax.annotation.Nullable;
 /**
  * The vertical origin of an item relative to its position.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public enum CesiumVerticalOrigin implements Enumeration {
     /**
@@ -31,6 +31,7 @@ public enum CesiumVerticalOrigin implements Enumeration {
     * If the object contains text, the origin is at the baseline of the text, otherwise the origin is at the bottom of the object.
     */
     BASELINE(3);
+
     private final int value;
 
     CesiumVerticalOrigin(int value) {

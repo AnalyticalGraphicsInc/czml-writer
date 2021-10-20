@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
  {@link ICesiumInterpolatableValuePropertyWriter} for {@link BoundingRectangle} values.
  * @param <TFrom> The class that implements {@link ICesiumBoundingRectangleValuePropertyWriter} to adapt.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class CesiumBoundingRectangleValuePropertyAdaptor<TFrom extends ICesiumBoundingRectangleValuePropertyWriter> extends CesiumInterpolatableWriterAdaptor<TFrom, BoundingRectangle> {
     /**

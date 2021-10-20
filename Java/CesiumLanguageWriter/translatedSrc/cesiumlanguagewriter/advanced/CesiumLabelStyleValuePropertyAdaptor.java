@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
  {@link ICesiumPropertyWriter} for {@link CesiumLabelStyle} values.
  * @param <TFrom> The class that implements {@link ICesiumLabelStyleValuePropertyWriter} to adapt.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class CesiumLabelStyleValuePropertyAdaptor<TFrom extends ICesiumLabelStyleValuePropertyWriter> extends CesiumWriterAdaptor<TFrom, CesiumLabelStyle> {
     /**

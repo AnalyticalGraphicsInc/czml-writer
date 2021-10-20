@@ -25,10 +25,10 @@ import javax.annotation.Nonnull;
  leap second in {@link TimeStandard#INTERNATIONAL_ATOMIC_TIME} (TAI), however.  Also, subtracting two
  UTC dates that are on opposite sides of a leap second will correctly take the leap second into account.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public final class JulianDate implements Comparable<JulianDate>, IEquatable<JulianDate>, ImmutableValueType {
     /**
@@ -594,9 +594,9 @@ public final class JulianDate implements Comparable<JulianDate>, IEquatable<Juli
     * @param other The date to compare to this instance.
     * @return {@code true} if {@code other} is identical to this instance; otherwise {@code false}.
     */
-    @CS2JWarning( {
-            "Unhandled attribute removed: Pure",
-            "Unhandled attribute removed: SuppressMessage"
+    @CS2JWarning({
+        "Unhandled attribute removed: Pure",
+        "Unhandled attribute removed: SuppressMessage"
     })
     public final boolean isIdentical(@Nonnull JulianDate other) {
         return m_day == other.m_day && m_secondsOfDay == other.m_secondsOfDay && m_timeStandard == other.m_timeStandard;

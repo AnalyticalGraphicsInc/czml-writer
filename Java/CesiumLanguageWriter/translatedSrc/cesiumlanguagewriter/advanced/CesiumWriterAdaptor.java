@@ -16,10 +16,10 @@ import javax.annotation.Nonnull;
  * @param <TFrom> The class derived from {@link CesiumPropertyWriter} to adapt.
  * @param <TValue> The type of value to which to adapt the class to write.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class CesiumWriterAdaptor<TFrom extends ICesiumPropertyWriter, TValue> implements ICesiumWriterAdaptor<TFrom>, ICesiumValuePropertyWriter<TValue>, ICesiumDeletablePropertyWriter {
     /**

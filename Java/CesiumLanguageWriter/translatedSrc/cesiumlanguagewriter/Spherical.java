@@ -12,10 +12,10 @@ import javax.annotation.Nonnull;
 /**
  * A set of curvilinear 3-dimensional coordinates.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public final class Spherical implements IEquatable<Spherical>, ImmutableValueType {
     /**

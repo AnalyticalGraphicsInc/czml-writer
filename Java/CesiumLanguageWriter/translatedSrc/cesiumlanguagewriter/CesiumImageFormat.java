@@ -9,10 +9,10 @@ import javax.annotation.Nullable;
 /**
  * The format of an image to be embedded in a CZML stream.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public enum CesiumImageFormat implements Enumeration {
     /**
@@ -31,6 +31,7 @@ public enum CesiumImageFormat implements Enumeration {
     * The image is in bitmap (BMP) format.
     */
     BMP(3);
+
     private final int value;
 
     CesiumImageFormat(int value) {

@@ -9,10 +9,10 @@ import javax.annotation.Nullable;
 /**
  * Defines how a simulated clock advances in time.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public enum ClockStep implements Enumeration {
     /**
@@ -27,6 +27,7 @@ public enum ClockStep implements Enumeration {
     * The clock advances by a fixed step each tick.
     */
     TICK_DEPENDENT(2);
+
     private final int value;
 
     ClockStep(int value) {

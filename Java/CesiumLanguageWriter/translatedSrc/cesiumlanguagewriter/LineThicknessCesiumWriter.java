@@ -11,13 +11,13 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code LineThickness} to a {@link CesiumOutputStream}. A {@code LineThickness} is the thickness of grid lines along each axis, in pixels.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class LineThicknessCesiumWriter extends CesiumInterpolatablePropertyWriter<LineThicknessCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumCartesian2ValuePropertyWriter,
-        ICesiumReferenceValuePropertyWriter {
+public class LineThicknessCesiumWriter extends CesiumInterpolatablePropertyWriter<LineThicknessCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumCartesian2ValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code cartesian2} property.
     */

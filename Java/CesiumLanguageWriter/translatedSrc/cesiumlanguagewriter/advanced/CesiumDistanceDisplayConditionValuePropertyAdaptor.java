@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
  {@link ICesiumInterpolatableValuePropertyWriter} for {@link Bounds} values.
  * @param <TFrom> The class that implements {@link ICesiumDistanceDisplayConditionValuePropertyWriter} to adapt.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class CesiumDistanceDisplayConditionValuePropertyAdaptor<TFrom extends ICesiumDistanceDisplayConditionValuePropertyWriter> extends CesiumInterpolatableWriterAdaptor<TFrom, Bounds> {
     /**

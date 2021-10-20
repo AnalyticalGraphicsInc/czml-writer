@@ -11,10 +11,10 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code Direction} to a {@link CesiumOutputStream}. A {@code Direction} is a unit vector, in world coordinates, that defines a direction.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<DirectionCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumSphericalValuePropertyWriter,
         ICesiumUnitSphericalValuePropertyWriter, ICesiumCartesian3ValuePropertyWriter, ICesiumUnitCartesian3ValuePropertyWriter, ICesiumReferenceValuePropertyWriter {

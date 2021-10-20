@@ -9,10 +9,10 @@ import javax.annotation.Nullable;
 /**
  * The horizontal origin of an item relative to its position.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public enum CesiumHorizontalOrigin implements Enumeration {
     /**
@@ -27,6 +27,7 @@ public enum CesiumHorizontalOrigin implements Enumeration {
     * The right side of the item is located at the position.
     */
     RIGHT(2);
+
     private final int value;
 
     CesiumHorizontalOrigin(int value) {

@@ -11,13 +11,13 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code Articulation} to a {@link CesiumOutputStream}. A {@code Articulation} is an articulation value.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class ArticulationCesiumWriter extends CesiumInterpolatablePropertyWriter<ArticulationCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumDoubleValuePropertyWriter,
-        ICesiumReferenceValuePropertyWriter {
+public class ArticulationCesiumWriter extends CesiumInterpolatablePropertyWriter<ArticulationCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumDoubleValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code number} property.
     */

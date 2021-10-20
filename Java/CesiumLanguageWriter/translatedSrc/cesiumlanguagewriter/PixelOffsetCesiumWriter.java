@@ -11,13 +11,13 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code PixelOffset} to a {@link CesiumOutputStream}. A {@code PixelOffset} is a pixel offset in viewport coordinates. A pixel offset is the number of pixels up and to the right to place an element relative to an origin.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class PixelOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<PixelOffsetCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumCartesian2ValuePropertyWriter,
-        ICesiumReferenceValuePropertyWriter {
+public class PixelOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<PixelOffsetCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumCartesian2ValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code cartesian2} property.
     */

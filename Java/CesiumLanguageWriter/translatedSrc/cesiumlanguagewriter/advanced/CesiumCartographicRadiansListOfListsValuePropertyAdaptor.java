@@ -10,13 +10,13 @@ import javax.annotation.Nonnull;
  {@link ICesiumPropertyWriter} for a list of lists of {@link Cartographic} values.
  * @param <TFrom> The class that implements {@link ICesiumCartographicRadiansListOfListsValuePropertyWriter} to adapt.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class CesiumCartographicRadiansListOfListsValuePropertyAdaptor<TFrom extends ICesiumCartographicRadiansListOfListsValuePropertyWriter> extends
-        CesiumWriterAdaptor<TFrom, Iterable<? extends Iterable<Cartographic>>> {
+public class CesiumCartographicRadiansListOfListsValuePropertyAdaptor<TFrom extends ICesiumCartographicRadiansListOfListsValuePropertyWriter>
+        extends CesiumWriterAdaptor<TFrom, Iterable<? extends Iterable<Cartographic>>> {
     /**
     * Initializes a new instance.
     * @param parent The instance to wrap.

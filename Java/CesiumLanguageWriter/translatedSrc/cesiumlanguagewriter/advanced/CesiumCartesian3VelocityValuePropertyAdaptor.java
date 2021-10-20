@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
  {@link ICesiumInterpolatableValuePropertyWriter} for {@link Motion1} values.
  * @param <TFrom> The class that implements {@link ICesiumCartesian3VelocityValuePropertyWriter} to adapt.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class CesiumCartesian3VelocityValuePropertyAdaptor<TFrom extends ICesiumCartesian3VelocityValuePropertyWriter> extends CesiumInterpolatableWriterAdaptor<TFrom, Motion1<Cartesian>> {
     /**

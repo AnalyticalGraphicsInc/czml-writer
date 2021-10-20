@@ -9,10 +9,10 @@ import javax.annotation.Nonnull;
 /**
  * An interface to an instance that can write elements of CZML.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public interface ICesiumElementWriter extends IDisposable {
     /**

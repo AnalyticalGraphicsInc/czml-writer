@@ -2,9 +2,9 @@ package cesiumlanguagewriter;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
+import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.BillboardCesiumWriter;
 import cesiumlanguagewriter.BoxCesiumWriter;
@@ -39,10 +39,10 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code Packet} to a {@link CesiumOutputStream}. A {@code Packet} is describes the graphical properties of a single object in a scene, such as a single aircraft.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class PacketCesiumWriter extends CesiumElementWriter {
     /**
@@ -450,13 +450,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param value The value.
     */
     public final void writeDescriptionProperty(String value) {
-        {
-            StringCesiumWriter writer = openDescriptionProperty();
-            try {
-                writer.writeString(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<StringCesiumWriter> using$0 = new Using<StringCesiumWriter>(openDescriptionProperty())) {
+            final StringCesiumWriter writer = using$0.resource;
+            writer.writeString(value);
         }
     }
 
@@ -465,13 +461,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param value The reference.
     */
     public final void writeDescriptionPropertyReference(Reference value) {
-        {
-            StringCesiumWriter writer = openDescriptionProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<StringCesiumWriter> using$0 = new Using<StringCesiumWriter>(openDescriptionProperty())) {
+            final StringCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -480,13 +472,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param value The reference.
     */
     public final void writeDescriptionPropertyReference(String value) {
-        {
-            StringCesiumWriter writer = openDescriptionProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<StringCesiumWriter> using$0 = new Using<StringCesiumWriter>(openDescriptionProperty())) {
+            final StringCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -496,13 +484,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param propertyName The property on the referenced object.
     */
     public final void writeDescriptionPropertyReference(String identifier, String propertyName) {
-        {
-            StringCesiumWriter writer = openDescriptionProperty();
-            try {
-                writer.writeReference(identifier, propertyName);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<StringCesiumWriter> using$0 = new Using<StringCesiumWriter>(openDescriptionProperty())) {
+            final StringCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyName);
         }
     }
 
@@ -512,13 +496,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
     public final void writeDescriptionPropertyReference(String identifier, String[] propertyNames) {
-        {
-            StringCesiumWriter writer = openDescriptionProperty();
-            try {
-                writer.writeReference(identifier, propertyNames);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<StringCesiumWriter> using$0 = new Using<StringCesiumWriter>(openDescriptionProperty())) {
+            final StringCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyNames);
         }
     }
 
@@ -614,13 +594,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param value The value.
     */
     public final void writePositionProperty(@Nonnull Cartesian value) {
-        {
-            PositionCesiumWriter writer = openPositionProperty();
-            try {
-                writer.writeCartesian(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<PositionCesiumWriter> using$0 = new Using<PositionCesiumWriter>(openPositionProperty())) {
+            final PositionCesiumWriter writer = using$0.resource;
+            writer.writeCartesian(value);
         }
     }
 
@@ -630,13 +606,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param values The values corresponding to each date.
     */
     public final void writePositionProperty(List<JulianDate> dates, List<Cartesian> values) {
-        {
-            PositionCesiumWriter writer = openPositionProperty();
-            try {
-                writer.writeCartesian(dates, values);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<PositionCesiumWriter> using$0 = new Using<PositionCesiumWriter>(openPositionProperty())) {
+            final PositionCesiumWriter writer = using$0.resource;
+            writer.writeCartesian(dates, values);
         }
     }
 
@@ -648,13 +620,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param length The number of elements to write.
     */
     public final void writePositionProperty(List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
-        {
-            PositionCesiumWriter writer = openPositionProperty();
-            try {
-                writer.writeCartesian(dates, values, startIndex, length);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<PositionCesiumWriter> using$0 = new Using<PositionCesiumWriter>(openPositionProperty())) {
+            final PositionCesiumWriter writer = using$0.resource;
+            writer.writeCartesian(dates, values, startIndex, length);
         }
     }
 
@@ -663,13 +631,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param value The interval.
     */
     public final void writePositionPropertyCartographicRadians(@Nonnull Cartographic value) {
-        {
-            PositionCesiumWriter writer = openPositionProperty();
-            try {
-                writer.writeCartographicRadians(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<PositionCesiumWriter> using$0 = new Using<PositionCesiumWriter>(openPositionProperty())) {
+            final PositionCesiumWriter writer = using$0.resource;
+            writer.writeCartographicRadians(value);
         }
     }
 
@@ -679,13 +643,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param values The values corresponding to each date.
     */
     public final void writePositionPropertyCartographicRadians(List<JulianDate> dates, List<Cartographic> values) {
-        {
-            PositionCesiumWriter writer = openPositionProperty();
-            try {
-                writer.writeCartographicRadians(dates, values);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<PositionCesiumWriter> using$0 = new Using<PositionCesiumWriter>(openPositionProperty())) {
+            final PositionCesiumWriter writer = using$0.resource;
+            writer.writeCartographicRadians(dates, values);
         }
     }
 
@@ -697,13 +657,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param length The number of elements to write.
     */
     public final void writePositionPropertyCartographicRadians(List<JulianDate> dates, List<Cartographic> values, int startIndex, int length) {
-        {
-            PositionCesiumWriter writer = openPositionProperty();
-            try {
-                writer.writeCartographicRadians(dates, values, startIndex, length);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<PositionCesiumWriter> using$0 = new Using<PositionCesiumWriter>(openPositionProperty())) {
+            final PositionCesiumWriter writer = using$0.resource;
+            writer.writeCartographicRadians(dates, values, startIndex, length);
         }
     }
 
@@ -712,13 +668,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param value The interval.
     */
     public final void writePositionPropertyCartographicDegrees(@Nonnull Cartographic value) {
-        {
-            PositionCesiumWriter writer = openPositionProperty();
-            try {
-                writer.writeCartographicDegrees(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<PositionCesiumWriter> using$0 = new Using<PositionCesiumWriter>(openPositionProperty())) {
+            final PositionCesiumWriter writer = using$0.resource;
+            writer.writeCartographicDegrees(value);
         }
     }
 
@@ -728,13 +680,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param values The values corresponding to each date.
     */
     public final void writePositionPropertyCartographicDegrees(List<JulianDate> dates, List<Cartographic> values) {
-        {
-            PositionCesiumWriter writer = openPositionProperty();
-            try {
-                writer.writeCartographicDegrees(dates, values);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<PositionCesiumWriter> using$0 = new Using<PositionCesiumWriter>(openPositionProperty())) {
+            final PositionCesiumWriter writer = using$0.resource;
+            writer.writeCartographicDegrees(dates, values);
         }
     }
 
@@ -746,13 +694,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param length The number of elements to write.
     */
     public final void writePositionPropertyCartographicDegrees(List<JulianDate> dates, List<Cartographic> values, int startIndex, int length) {
-        {
-            PositionCesiumWriter writer = openPositionProperty();
-            try {
-                writer.writeCartographicDegrees(dates, values, startIndex, length);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<PositionCesiumWriter> using$0 = new Using<PositionCesiumWriter>(openPositionProperty())) {
+            final PositionCesiumWriter writer = using$0.resource;
+            writer.writeCartographicDegrees(dates, values, startIndex, length);
         }
     }
 
@@ -761,13 +705,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param value The value.
     */
     public final void writePositionPropertyCartesianVelocity(@Nonnull Motion1<Cartesian> value) {
-        {
-            PositionCesiumWriter writer = openPositionProperty();
-            try {
-                writer.writeCartesianVelocity(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<PositionCesiumWriter> using$0 = new Using<PositionCesiumWriter>(openPositionProperty())) {
+            final PositionCesiumWriter writer = using$0.resource;
+            writer.writeCartesianVelocity(value);
         }
     }
 
@@ -777,13 +717,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param values The values corresponding to each date.
     */
     public final void writePositionPropertyCartesianVelocity(List<JulianDate> dates, List<Motion1<Cartesian>> values) {
-        {
-            PositionCesiumWriter writer = openPositionProperty();
-            try {
-                writer.writeCartesianVelocity(dates, values);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<PositionCesiumWriter> using$0 = new Using<PositionCesiumWriter>(openPositionProperty())) {
+            final PositionCesiumWriter writer = using$0.resource;
+            writer.writeCartesianVelocity(dates, values);
         }
     }
 
@@ -795,13 +731,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param length The number of elements to write.
     */
     public final void writePositionPropertyCartesianVelocity(List<JulianDate> dates, List<Motion1<Cartesian>> values, int startIndex, int length) {
-        {
-            PositionCesiumWriter writer = openPositionProperty();
-            try {
-                writer.writeCartesianVelocity(dates, values, startIndex, length);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<PositionCesiumWriter> using$0 = new Using<PositionCesiumWriter>(openPositionProperty())) {
+            final PositionCesiumWriter writer = using$0.resource;
+            writer.writeCartesianVelocity(dates, values, startIndex, length);
         }
     }
 
@@ -810,13 +742,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param value The reference.
     */
     public final void writePositionPropertyReference(Reference value) {
-        {
-            PositionCesiumWriter writer = openPositionProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<PositionCesiumWriter> using$0 = new Using<PositionCesiumWriter>(openPositionProperty())) {
+            final PositionCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -825,13 +753,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param value The reference.
     */
     public final void writePositionPropertyReference(String value) {
-        {
-            PositionCesiumWriter writer = openPositionProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<PositionCesiumWriter> using$0 = new Using<PositionCesiumWriter>(openPositionProperty())) {
+            final PositionCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -841,13 +765,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param propertyName The property on the referenced object.
     */
     public final void writePositionPropertyReference(String identifier, String propertyName) {
-        {
-            PositionCesiumWriter writer = openPositionProperty();
-            try {
-                writer.writeReference(identifier, propertyName);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<PositionCesiumWriter> using$0 = new Using<PositionCesiumWriter>(openPositionProperty())) {
+            final PositionCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyName);
         }
     }
 
@@ -857,13 +777,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
     public final void writePositionPropertyReference(String identifier, String[] propertyNames) {
-        {
-            PositionCesiumWriter writer = openPositionProperty();
-            try {
-                writer.writeReference(identifier, propertyNames);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<PositionCesiumWriter> using$0 = new Using<PositionCesiumWriter>(openPositionProperty())) {
+            final PositionCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyNames);
         }
     }
 
@@ -888,13 +804,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param value The value.
     */
     public final void writeOrientationProperty(@Nonnull UnitQuaternion value) {
-        {
-            OrientationCesiumWriter writer = openOrientationProperty();
-            try {
-                writer.writeUnitQuaternion(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<OrientationCesiumWriter> using$0 = new Using<OrientationCesiumWriter>(openOrientationProperty())) {
+            final OrientationCesiumWriter writer = using$0.resource;
+            writer.writeUnitQuaternion(value);
         }
     }
 
@@ -904,13 +816,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param values The values corresponding to each date.
     */
     public final void writeOrientationProperty(List<JulianDate> dates, List<UnitQuaternion> values) {
-        {
-            OrientationCesiumWriter writer = openOrientationProperty();
-            try {
-                writer.writeUnitQuaternion(dates, values);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<OrientationCesiumWriter> using$0 = new Using<OrientationCesiumWriter>(openOrientationProperty())) {
+            final OrientationCesiumWriter writer = using$0.resource;
+            writer.writeUnitQuaternion(dates, values);
         }
     }
 
@@ -922,13 +830,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param length The number of elements to write.
     */
     public final void writeOrientationProperty(List<JulianDate> dates, List<UnitQuaternion> values, int startIndex, int length) {
-        {
-            OrientationCesiumWriter writer = openOrientationProperty();
-            try {
-                writer.writeUnitQuaternion(dates, values, startIndex, length);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<OrientationCesiumWriter> using$0 = new Using<OrientationCesiumWriter>(openOrientationProperty())) {
+            final OrientationCesiumWriter writer = using$0.resource;
+            writer.writeUnitQuaternion(dates, values, startIndex, length);
         }
     }
 
@@ -937,13 +841,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param value The reference.
     */
     public final void writeOrientationPropertyReference(Reference value) {
-        {
-            OrientationCesiumWriter writer = openOrientationProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<OrientationCesiumWriter> using$0 = new Using<OrientationCesiumWriter>(openOrientationProperty())) {
+            final OrientationCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -952,13 +852,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param value The reference.
     */
     public final void writeOrientationPropertyReference(String value) {
-        {
-            OrientationCesiumWriter writer = openOrientationProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<OrientationCesiumWriter> using$0 = new Using<OrientationCesiumWriter>(openOrientationProperty())) {
+            final OrientationCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -968,13 +864,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param propertyName The property on the referenced object.
     */
     public final void writeOrientationPropertyReference(String identifier, String propertyName) {
-        {
-            OrientationCesiumWriter writer = openOrientationProperty();
-            try {
-                writer.writeReference(identifier, propertyName);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<OrientationCesiumWriter> using$0 = new Using<OrientationCesiumWriter>(openOrientationProperty())) {
+            final OrientationCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyName);
         }
     }
 
@@ -984,13 +876,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
     public final void writeOrientationPropertyReference(String identifier, String[] propertyNames) {
-        {
-            OrientationCesiumWriter writer = openOrientationProperty();
-            try {
-                writer.writeReference(identifier, propertyNames);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<OrientationCesiumWriter> using$0 = new Using<OrientationCesiumWriter>(openOrientationProperty())) {
+            final OrientationCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyNames);
         }
     }
 
@@ -999,13 +887,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param value The reference.
     */
     public final void writeOrientationPropertyVelocityReference(Reference value) {
-        {
-            OrientationCesiumWriter writer = openOrientationProperty();
-            try {
-                writer.writeVelocityReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<OrientationCesiumWriter> using$0 = new Using<OrientationCesiumWriter>(openOrientationProperty())) {
+            final OrientationCesiumWriter writer = using$0.resource;
+            writer.writeVelocityReference(value);
         }
     }
 
@@ -1014,13 +898,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param value The reference.
     */
     public final void writeOrientationPropertyVelocityReference(String value) {
-        {
-            OrientationCesiumWriter writer = openOrientationProperty();
-            try {
-                writer.writeVelocityReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<OrientationCesiumWriter> using$0 = new Using<OrientationCesiumWriter>(openOrientationProperty())) {
+            final OrientationCesiumWriter writer = using$0.resource;
+            writer.writeVelocityReference(value);
         }
     }
 
@@ -1030,13 +910,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param propertyName The property on the referenced object.
     */
     public final void writeOrientationPropertyVelocityReference(String identifier, String propertyName) {
-        {
-            OrientationCesiumWriter writer = openOrientationProperty();
-            try {
-                writer.writeVelocityReference(identifier, propertyName);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<OrientationCesiumWriter> using$0 = new Using<OrientationCesiumWriter>(openOrientationProperty())) {
+            final OrientationCesiumWriter writer = using$0.resource;
+            writer.writeVelocityReference(identifier, propertyName);
         }
     }
 
@@ -1046,13 +922,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
     public final void writeOrientationPropertyVelocityReference(String identifier, String[] propertyNames) {
-        {
-            OrientationCesiumWriter writer = openOrientationProperty();
-            try {
-                writer.writeVelocityReference(identifier, propertyNames);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<OrientationCesiumWriter> using$0 = new Using<OrientationCesiumWriter>(openOrientationProperty())) {
+            final OrientationCesiumWriter writer = using$0.resource;
+            writer.writeVelocityReference(identifier, propertyNames);
         }
     }
 
@@ -1077,13 +949,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param value The value.
     */
     public final void writeViewFromProperty(@Nonnull Cartesian value) {
-        {
-            ViewFromCesiumWriter writer = openViewFromProperty();
-            try {
-                writer.writeCartesian(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ViewFromCesiumWriter> using$0 = new Using<ViewFromCesiumWriter>(openViewFromProperty())) {
+            final ViewFromCesiumWriter writer = using$0.resource;
+            writer.writeCartesian(value);
         }
     }
 
@@ -1093,13 +961,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param values The values corresponding to each date.
     */
     public final void writeViewFromProperty(List<JulianDate> dates, List<Cartesian> values) {
-        {
-            ViewFromCesiumWriter writer = openViewFromProperty();
-            try {
-                writer.writeCartesian(dates, values);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ViewFromCesiumWriter> using$0 = new Using<ViewFromCesiumWriter>(openViewFromProperty())) {
+            final ViewFromCesiumWriter writer = using$0.resource;
+            writer.writeCartesian(dates, values);
         }
     }
 
@@ -1111,13 +975,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param length The number of elements to write.
     */
     public final void writeViewFromProperty(List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
-        {
-            ViewFromCesiumWriter writer = openViewFromProperty();
-            try {
-                writer.writeCartesian(dates, values, startIndex, length);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ViewFromCesiumWriter> using$0 = new Using<ViewFromCesiumWriter>(openViewFromProperty())) {
+            final ViewFromCesiumWriter writer = using$0.resource;
+            writer.writeCartesian(dates, values, startIndex, length);
         }
     }
 
@@ -1126,13 +986,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param value The reference.
     */
     public final void writeViewFromPropertyReference(Reference value) {
-        {
-            ViewFromCesiumWriter writer = openViewFromProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ViewFromCesiumWriter> using$0 = new Using<ViewFromCesiumWriter>(openViewFromProperty())) {
+            final ViewFromCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -1141,13 +997,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param value The reference.
     */
     public final void writeViewFromPropertyReference(String value) {
-        {
-            ViewFromCesiumWriter writer = openViewFromProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ViewFromCesiumWriter> using$0 = new Using<ViewFromCesiumWriter>(openViewFromProperty())) {
+            final ViewFromCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -1157,13 +1009,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param propertyName The property on the referenced object.
     */
     public final void writeViewFromPropertyReference(String identifier, String propertyName) {
-        {
-            ViewFromCesiumWriter writer = openViewFromProperty();
-            try {
-                writer.writeReference(identifier, propertyName);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ViewFromCesiumWriter> using$0 = new Using<ViewFromCesiumWriter>(openViewFromProperty())) {
+            final ViewFromCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyName);
         }
     }
 
@@ -1173,13 +1021,9 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
     public final void writeViewFromPropertyReference(String identifier, String[] propertyNames) {
-        {
-            ViewFromCesiumWriter writer = openViewFromProperty();
-            try {
-                writer.writeReference(identifier, propertyNames);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ViewFromCesiumWriter> using$0 = new Using<ViewFromCesiumWriter>(openViewFromProperty())) {
+            final ViewFromCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyNames);
         }
     }
 

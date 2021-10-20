@@ -7,10 +7,10 @@ import cesiumlanguagewriter.*;
 /**
  * A writer that can write an indication that the client should delete existing samples or interval data for this property.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public interface ICesiumDeletablePropertyWriter extends ICesiumPropertyWriter {
     /**

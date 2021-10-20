@@ -1,5 +1,7 @@
 package agi.foundation.compatibility;
 
+import static agi.foundation.compatibility.ObjectHelper.notEquals;
+
 import java.io.InputStream;
 import java.nio.file.Paths;
 import java.security.CodeSource;
@@ -59,10 +61,10 @@ public class Assembly {
             int index = 0;
             for (; index < stackTrace.length; ++index) {
                 StackTraceElement element = stackTrace[index];
-                if (ObjectHelper.notEquals(element.getClassName(), assemblyClassName)) {
+                if (notEquals(element.getClassName(), assemblyClassName)) {
                     break;
                 }
-                if (ObjectHelper.notEquals(element.getMethodName(), assemblyMethodName)) {
+                if (notEquals(element.getMethodName(), assemblyMethodName)) {
                     break;
                 }
             }

@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
  {@link ICesiumInterpolatableValuePropertyWriter} for {@link Cartographic} values.
  * @param <TFrom> The class that implements {@link ICesiumCartographicDegreesValuePropertyWriter} to adapt.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class CesiumCartographicDegreesValuePropertyAdaptor<TFrom extends ICesiumCartographicDegreesValuePropertyWriter> extends CesiumInterpolatableWriterAdaptor<TFrom, Cartographic> {
     /**

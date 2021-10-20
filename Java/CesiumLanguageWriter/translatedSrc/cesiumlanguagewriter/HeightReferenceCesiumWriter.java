@@ -10,13 +10,13 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code HeightReference} to a {@link CesiumOutputStream}. A {@code HeightReference} is the height reference of an object, which indicates if the object's position is relative to terrain or not.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class HeightReferenceCesiumWriter extends CesiumPropertyWriter<HeightReferenceCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumHeightReferenceValuePropertyWriter,
-        ICesiumReferenceValuePropertyWriter {
+public class HeightReferenceCesiumWriter extends CesiumPropertyWriter<HeightReferenceCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumHeightReferenceValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code heightReference} property.
     */
@@ -149,12 +149,12 @@ public class HeightReferenceCesiumWriter extends CesiumPropertyWriter<HeightRefe
 
     @Nonnull
     private final Lazy<CesiumHeightReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter>> createAsHeightReference() {
-        return new Lazy<CesiumHeightReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter>>(new Func1<CesiumHeightReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter>>(this,
-                "createHeightReference") {
-            public CesiumHeightReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter> invoke() {
-                return createHeightReference();
-            }
-        }, false);
+        return new Lazy<CesiumHeightReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter>>(
+                new Func1<CesiumHeightReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter>>(this, "createHeightReference") {
+                    public CesiumHeightReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter> invoke() {
+                        return createHeightReference();
+                    }
+                }, false);
     }
 
     @Nonnull

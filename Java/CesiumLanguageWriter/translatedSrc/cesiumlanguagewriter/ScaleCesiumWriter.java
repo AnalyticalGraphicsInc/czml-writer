@@ -11,13 +11,13 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code Scale} to a {@link CesiumOutputStream}. A {@code Scale} is a scaling factor which can optionally vary over time.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class ScaleCesiumWriter extends CesiumInterpolatablePropertyWriter<ScaleCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumCartesian3ValuePropertyWriter,
-        ICesiumReferenceValuePropertyWriter {
+public class ScaleCesiumWriter extends CesiumInterpolatablePropertyWriter<ScaleCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumCartesian3ValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code cartesian} property.
     */

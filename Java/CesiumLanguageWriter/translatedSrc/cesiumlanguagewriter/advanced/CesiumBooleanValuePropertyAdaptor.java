@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
  {@link ICesiumPropertyWriter} for {@code boolean} values.
  * @param <TFrom> The class that implements {@link ICesiumBooleanValuePropertyWriter} to adapt.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class CesiumBooleanValuePropertyAdaptor<TFrom extends ICesiumBooleanValuePropertyWriter> extends CesiumWriterAdaptor<TFrom, Boolean> {
     /**

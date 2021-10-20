@@ -9,10 +9,10 @@ import javax.annotation.Nullable;
 /**
  * Specifies the type of an arc.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public enum CesiumArcType implements Enumeration {
     /**
@@ -27,6 +27,7 @@ public enum CesiumArcType implements Enumeration {
     * The arc is a rhumb line, or loxodrome, which is the path of constant heading conforming to the surface of an ellipsoid.
     */
     RHUMB(2);
+
     private final int value;
 
     CesiumArcType(int value) {

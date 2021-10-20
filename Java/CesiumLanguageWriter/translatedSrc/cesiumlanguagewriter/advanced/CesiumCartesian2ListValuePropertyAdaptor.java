@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
  {@link ICesiumPropertyWriter} for a list of {@link Rectangular} values.
  * @param <TFrom> The class that implements {@link ICesiumCartesian2ListValuePropertyWriter} to adapt.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class CesiumCartesian2ListValuePropertyAdaptor<TFrom extends ICesiumCartesian2ListValuePropertyWriter> extends CesiumWriterAdaptor<TFrom, Iterable<Rectangular>> {
     /**

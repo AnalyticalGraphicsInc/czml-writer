@@ -2,9 +2,9 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.MapHelper;
 import agi.foundation.compatibility.TestContextRule;
+import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.util.LinkedHashMap;
@@ -16,10 +16,10 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestRectangleCesiumWriter extends TestCesiumPropertyWriter<RectangleCesiumWriter> {
@@ -27,27 +27,14 @@ public class TestRectangleCesiumWriter extends TestCesiumPropertyWriter<Rectangl
     public final void testHeightReferenceProperties() {
         final double expectedExtrudedHeight = 10.0;
         final CesiumHeightReference expectedExtrudedHeightReference = CesiumHeightReference.RELATIVE_TO_GROUND;
-        {
-            final PacketCesiumWriter usingExpression$0 = (getPacket());
-            try {
-                {
-                    RectangleCesiumWriter rectangle = getPacket().openRectangleProperty();
-                    try {
-                        {
-                            RectangleCesiumWriter interval = rectangle.openInterval();
-                            try {
-                                interval.writeExtrudedHeightProperty(expectedExtrudedHeight);
-                                interval.writeExtrudedHeightReferenceProperty(expectedExtrudedHeightReference);
-                            } finally {
-                                DisposeHelper.dispose(interval);
-                            }
-                        }
-                    } finally {
-                        DisposeHelper.dispose(rectangle);
-                    }
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            try (Using<RectangleCesiumWriter> using$1 = new Using<RectangleCesiumWriter>(getPacket().openRectangleProperty())) {
+                final RectangleCesiumWriter rectangle = using$1.resource;
+                try (Using<RectangleCesiumWriter> using$2 = new Using<RectangleCesiumWriter>(rectangle.openInterval())) {
+                    final RectangleCesiumWriter interval = using$2.resource;
+                    interval.writeExtrudedHeightProperty(expectedExtrudedHeight);
+                    interval.writeExtrudedHeightReferenceProperty(expectedExtrudedHeightReference);
                 }
-            } finally {
-                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();

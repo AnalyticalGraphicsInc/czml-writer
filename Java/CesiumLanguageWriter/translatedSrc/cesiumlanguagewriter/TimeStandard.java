@@ -9,10 +9,10 @@ import javax.annotation.Nullable;
 /**
  * Provides a means for measuring time by specifying the rate at which time passes and/or points in time.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public enum TimeStandard implements Enumeration {
     /**
@@ -29,6 +29,7 @@ public enum TimeStandard implements Enumeration {
     </p>
     */
     COORDINATED_UNIVERSAL_TIME(1);
+
     private final int value;
 
     TimeStandard(int value) {

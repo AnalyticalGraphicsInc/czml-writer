@@ -11,10 +11,10 @@ import agi.foundation.compatibility.StringHelper;
 /**
  * @deprecated Internal use only.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 @Deprecated
 @Internal

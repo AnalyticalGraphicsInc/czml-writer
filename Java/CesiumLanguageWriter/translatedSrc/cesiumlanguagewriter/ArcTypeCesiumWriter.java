@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code ArcType} to a {@link CesiumOutputStream}. A {@code ArcType} is the type of an arc.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class ArcTypeCesiumWriter extends CesiumPropertyWriter<ArcTypeCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumArcTypeValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**

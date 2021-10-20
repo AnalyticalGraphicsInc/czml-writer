@@ -2,9 +2,9 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.MapHelper;
 import agi.foundation.compatibility.TestContextRule;
+import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.awt.Color;
@@ -17,10 +17,10 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestConicSensorCesiumWriter extends TestCesiumPropertyWriter<ConicSensorCesiumWriter> {
@@ -32,31 +32,18 @@ public class TestConicSensorCesiumWriter extends TestCesiumPropertyWriter<ConicS
         final double expectedMinimumClockAngle = 1.3;
         final double expectedMaximumClockAngle = 1.4;
         final double expectedRadius = 1234.5;
-        {
-            final PacketCesiumWriter usingExpression$0 = (getPacket());
-            try {
-                {
-                    ConicSensorCesiumWriter rectangle = getPacket().openConicSensorProperty();
-                    try {
-                        {
-                            ConicSensorCesiumWriter interval = rectangle.openInterval();
-                            try {
-                                interval.writeShowProperty(expectedShow);
-                                interval.writeInnerHalfAngleProperty(expectedInnerHalfAngle);
-                                interval.writeOuterHalfAngleProperty(expectedOuterHalfAngle);
-                                interval.writeMinimumClockAngleProperty(expectedMinimumClockAngle);
-                                interval.writeMaximumClockAngleProperty(expectedMaximumClockAngle);
-                                interval.writeRadiusProperty(expectedRadius);
-                            } finally {
-                                DisposeHelper.dispose(interval);
-                            }
-                        }
-                    } finally {
-                        DisposeHelper.dispose(rectangle);
-                    }
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            try (Using<ConicSensorCesiumWriter> using$1 = new Using<ConicSensorCesiumWriter>(getPacket().openConicSensorProperty())) {
+                final ConicSensorCesiumWriter rectangle = using$1.resource;
+                try (Using<ConicSensorCesiumWriter> using$2 = new Using<ConicSensorCesiumWriter>(rectangle.openInterval())) {
+                    final ConicSensorCesiumWriter interval = using$2.resource;
+                    interval.writeShowProperty(expectedShow);
+                    interval.writeInnerHalfAngleProperty(expectedInnerHalfAngle);
+                    interval.writeOuterHalfAngleProperty(expectedOuterHalfAngle);
+                    interval.writeMinimumClockAngleProperty(expectedMinimumClockAngle);
+                    interval.writeMaximumClockAngleProperty(expectedMaximumClockAngle);
+                    interval.writeRadiusProperty(expectedRadius);
                 }
-            } finally {
-                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
@@ -76,30 +63,17 @@ public class TestConicSensorCesiumWriter extends TestCesiumPropertyWriter<ConicS
         final double expectedIntersectionWidth = 2.1;
         final boolean expectedShowEnvironmentIntersection = true;
         Color expectedEnvironmentIntersectionColor = Color.RED;
-        {
-            final PacketCesiumWriter usingExpression$0 = (getPacket());
-            try {
-                {
-                    ConicSensorCesiumWriter rectangle = getPacket().openConicSensorProperty();
-                    try {
-                        {
-                            ConicSensorCesiumWriter interval = rectangle.openInterval();
-                            try {
-                                interval.writeShowIntersectionProperty(expectedShowIntersection);
-                                interval.writeIntersectionColorProperty(expectedIntersectionColor);
-                                interval.writeIntersectionWidthProperty(expectedIntersectionWidth);
-                                interval.writeShowEnvironmentIntersectionProperty(expectedShowEnvironmentIntersection);
-                                interval.writeEnvironmentIntersectionColorProperty(expectedEnvironmentIntersectionColor);
-                            } finally {
-                                DisposeHelper.dispose(interval);
-                            }
-                        }
-                    } finally {
-                        DisposeHelper.dispose(rectangle);
-                    }
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            try (Using<ConicSensorCesiumWriter> using$1 = new Using<ConicSensorCesiumWriter>(getPacket().openConicSensorProperty())) {
+                final ConicSensorCesiumWriter rectangle = using$1.resource;
+                try (Using<ConicSensorCesiumWriter> using$2 = new Using<ConicSensorCesiumWriter>(rectangle.openInterval())) {
+                    final ConicSensorCesiumWriter interval = using$2.resource;
+                    interval.writeShowIntersectionProperty(expectedShowIntersection);
+                    interval.writeIntersectionColorProperty(expectedIntersectionColor);
+                    interval.writeIntersectionWidthProperty(expectedIntersectionWidth);
+                    interval.writeShowEnvironmentIntersectionProperty(expectedShowEnvironmentIntersection);
+                    interval.writeEnvironmentIntersectionColorProperty(expectedEnvironmentIntersectionColor);
                 }
-            } finally {
-                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
@@ -114,26 +88,13 @@ public class TestConicSensorCesiumWriter extends TestCesiumPropertyWriter<ConicS
     @Test
     public final void testShowThroughEllipsoid() {
         final boolean expectedShowThroughEllipsoid = true;
-        {
-            final PacketCesiumWriter usingExpression$0 = (getPacket());
-            try {
-                {
-                    ConicSensorCesiumWriter rectangle = getPacket().openConicSensorProperty();
-                    try {
-                        {
-                            ConicSensorCesiumWriter interval = rectangle.openInterval();
-                            try {
-                                interval.writeShowThroughEllipsoidProperty(expectedShowThroughEllipsoid);
-                            } finally {
-                                DisposeHelper.dispose(interval);
-                            }
-                        }
-                    } finally {
-                        DisposeHelper.dispose(rectangle);
-                    }
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            try (Using<ConicSensorCesiumWriter> using$1 = new Using<ConicSensorCesiumWriter>(getPacket().openConicSensorProperty())) {
+                final ConicSensorCesiumWriter rectangle = using$1.resource;
+                try (Using<ConicSensorCesiumWriter> using$2 = new Using<ConicSensorCesiumWriter>(rectangle.openInterval())) {
+                    final ConicSensorCesiumWriter interval = using$2.resource;
+                    interval.writeShowThroughEllipsoidProperty(expectedShowThroughEllipsoid);
                 }
-            } finally {
-                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();

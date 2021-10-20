@@ -6,11 +6,11 @@ import agi.foundation.compatibility.Action;
 import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.CultureInfoHelper;
-import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.DoubleHelper;
 import agi.foundation.compatibility.MapHelper;
 import agi.foundation.compatibility.StringHelper;
 import agi.foundation.compatibility.TestContextRule;
+import agi.foundation.compatibility.Using;
 import agi.foundation.TypeLiteral;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
@@ -29,10 +29,10 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWriter<TDerived>> {
@@ -191,11 +191,11 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
             MapHelper.add(tempCollection$12, "unitQuaternion", tempCollection$13);
             return createExpectedJson(tempCollection$12);
         }
-        Map<String, Object> dictionary = (value instanceof Map) ? (Map<String, Object>) value : null;
+        Map<String, Object> dictionary = value instanceof Map ? (Map<String, Object>) value : null;
         if (dictionary != null) {
             return createExpectedJson(dictionary);
         }
-        Iterable<Object> list = (value instanceof Iterable) ? (Iterable<Object>) value : null;
+        Iterable<Object> list = value instanceof Iterable ? (Iterable<Object>) value : null;
         if (list != null) {
             StringBuilder builder = new StringBuilder();
             builder.append('[');
@@ -261,42 +261,21 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
         final String expectedPropertyName = "woot";
         JulianDate start = new GregorianDate(2012, 4, 2, 12, 0, 0D).toJulianDate();
         JulianDate stop = new GregorianDate(2012, 4, 2, 13, 0, 0D).toJulianDate();
-        {
-            final PacketCesiumWriter usingExpression$0 = (getPacket());
-            try {
-                {
-                    CesiumPropertyWriter<TDerived> propertyWriter = createPropertyWriter(expectedPropertyName);
-                    try {
-                        propertyWriter.open(getOutputStream());
-                        {
-                            CesiumIntervalListWriter<TDerived> intervalListWriter = propertyWriter.openMultipleIntervals();
-                            try {
-                                {
-                                    TDerived intervalWriter = intervalListWriter.openInterval();
-                                    try {
-                                        intervalWriter.writeInterval(start, stop);
-                                    } finally {
-                                        DisposeHelper.dispose(intervalWriter);
-                                    }
-                                }
-                                {
-                                    TDerived intervalWriter = intervalListWriter.openInterval();
-                                    try {
-                                        intervalWriter.writeInterval(new TimeInterval(start, stop));
-                                    } finally {
-                                        DisposeHelper.dispose(intervalWriter);
-                                    }
-                                }
-                            } finally {
-                                DisposeHelper.dispose(intervalListWriter);
-                            }
-                        }
-                    } finally {
-                        DisposeHelper.dispose(propertyWriter);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            try (Using<CesiumPropertyWriter<TDerived>> using$1 = new Using<CesiumPropertyWriter<TDerived>>(createPropertyWriter(expectedPropertyName))) {
+                final CesiumPropertyWriter<TDerived> propertyWriter = using$1.resource;
+                propertyWriter.open(getOutputStream());
+                try (Using<CesiumIntervalListWriter<TDerived>> using$2 = new Using<CesiumIntervalListWriter<TDerived>>(propertyWriter.openMultipleIntervals())) {
+                    final CesiumIntervalListWriter<TDerived> intervalListWriter = using$2.resource;
+                    try (Using<TDerived> using$3 = new Using<TDerived>(intervalListWriter.openInterval())) {
+                        final TDerived intervalWriter = using$3.resource;
+                        intervalWriter.writeInterval(start, stop);
+                    }
+                    try (Using<TDerived> using$4 = new Using<TDerived>(intervalListWriter.openInterval())) {
+                        final TDerived intervalWriter = using$4.resource;
+                        intervalWriter.writeInterval(new TimeInterval(start, stop));
                     }
                 }
-            } finally {
-                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();

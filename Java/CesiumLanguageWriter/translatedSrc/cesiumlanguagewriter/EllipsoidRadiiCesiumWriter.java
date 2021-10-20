@@ -11,13 +11,13 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code EllipsoidRadii} to a {@link CesiumOutputStream}. A {@code EllipsoidRadii} is the radii of an ellipsoid.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class EllipsoidRadiiCesiumWriter extends CesiumInterpolatablePropertyWriter<EllipsoidRadiiCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumCartesian3ValuePropertyWriter,
-        ICesiumReferenceValuePropertyWriter {
+public class EllipsoidRadiiCesiumWriter extends CesiumInterpolatablePropertyWriter<EllipsoidRadiiCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumCartesian3ValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code cartesian} property.
     */

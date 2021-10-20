@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code PositionListOfLists} to a {@link CesiumOutputStream}. A {@code PositionListOfLists} is a list of lists of positions.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class PositionListOfListsCesiumWriter extends CesiumPropertyWriter<PositionListOfListsCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumCartesian3ListOfListsValuePropertyWriter,
         ICesiumCartographicRadiansListOfListsValuePropertyWriter, ICesiumCartographicDegreesListOfListsValuePropertyWriter, ICesiumReferenceListOfListsValuePropertyWriter {
@@ -150,12 +150,12 @@ public class PositionListOfListsCesiumWriter extends CesiumPropertyWriter<Positi
 
     @Nonnull
     private final Lazy<CesiumCartesian3ListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>> createAsCartesian() {
-        return new Lazy<CesiumCartesian3ListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>>(new Func1<CesiumCartesian3ListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>>(
-                this, "createCartesian3ListOfLists") {
-            public CesiumCartesian3ListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter> invoke() {
-                return createCartesian3ListOfLists();
-            }
-        }, false);
+        return new Lazy<CesiumCartesian3ListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>>(
+                new Func1<CesiumCartesian3ListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>>(this, "createCartesian3ListOfLists") {
+                    public CesiumCartesian3ListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter> invoke() {
+                        return createCartesian3ListOfLists();
+                    }
+                }, false);
     }
 
     @Nonnull
@@ -222,12 +222,12 @@ public class PositionListOfListsCesiumWriter extends CesiumPropertyWriter<Positi
 
     @Nonnull
     private final Lazy<CesiumReferenceListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>> createAsReferences() {
-        return new Lazy<CesiumReferenceListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>>(new Func1<CesiumReferenceListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>>(
-                this, "createReferenceListOfLists") {
-            public CesiumReferenceListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter> invoke() {
-                return createReferenceListOfLists();
-            }
-        }, false);
+        return new Lazy<CesiumReferenceListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>>(
+                new Func1<CesiumReferenceListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>>(this, "createReferenceListOfLists") {
+                    public CesiumReferenceListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter> invoke() {
+                        return createReferenceListOfLists();
+                    }
+                }, false);
     }
 
     @Nonnull

@@ -10,10 +10,10 @@ import cesiumlanguagewriter.advanced.*;
  and with the desired property name.  Then, after opening this {@link CustomCesiumWriter},
  {@link CesiumElementWriter#open} the sub-property writers and use them to write values.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class CustomCesiumWriter extends CesiumPropertyWriter<CustomCesiumWriter> {
     /**

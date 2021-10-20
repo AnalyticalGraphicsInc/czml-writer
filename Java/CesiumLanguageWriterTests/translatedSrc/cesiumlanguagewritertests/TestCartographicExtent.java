@@ -15,10 +15,10 @@ import org.junit.Test;
 /**
  * A simple test making sure the CartographicExtent class works
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCartographicExtent {

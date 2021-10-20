@@ -2,9 +2,9 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.MapHelper;
 import agi.foundation.compatibility.TestContextRule;
+import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.util.LinkedHashMap;
@@ -16,10 +16,10 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestLabelStyleCesiumWriter extends TestCesiumPropertyWriter<LabelStyleCesiumWriter> {
@@ -27,20 +27,11 @@ public class TestLabelStyleCesiumWriter extends TestCesiumPropertyWriter<LabelSt
     public final void labelStyleCanBeWrittenAsSimpleString() {
         final String expectedPropertyName = "foo";
         final CesiumLabelStyle expectedValue = CesiumLabelStyle.FILL_AND_OUTLINE;
-        {
-            final PacketCesiumWriter usingExpression$0 = (getPacket());
-            try {
-                {
-                    LabelStyleCesiumWriter writer = new LabelStyleCesiumWriter(expectedPropertyName);
-                    try {
-                        writer.open(getOutputStream());
-                        writer.writeLabelStyle(expectedValue);
-                    } finally {
-                        DisposeHelper.dispose(writer);
-                    }
-                }
-            } finally {
-                DisposeHelper.dispose(usingExpression$0);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            try (Using<LabelStyleCesiumWriter> using$1 = new Using<LabelStyleCesiumWriter>(new LabelStyleCesiumWriter(expectedPropertyName))) {
+                final LabelStyleCesiumWriter writer = using$1.resource;
+                writer.open(getOutputStream());
+                writer.writeLabelStyle(expectedValue);
             }
         }
         final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
@@ -54,21 +45,12 @@ public class TestLabelStyleCesiumWriter extends TestCesiumPropertyWriter<LabelSt
         JulianDate stop = start.addSeconds(100.0);
         final String expectedPropertyName = "foo";
         final CesiumLabelStyle expectedValue = CesiumLabelStyle.FILL_AND_OUTLINE;
-        {
-            final PacketCesiumWriter usingExpression$0 = (getPacket());
-            try {
-                {
-                    LabelStyleCesiumWriter writer = new LabelStyleCesiumWriter(expectedPropertyName);
-                    try {
-                        writer.open(getOutputStream());
-                        writer.writeInterval(start, stop);
-                        writer.writeLabelStyle(expectedValue);
-                    } finally {
-                        DisposeHelper.dispose(writer);
-                    }
-                }
-            } finally {
-                DisposeHelper.dispose(usingExpression$0);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            try (Using<LabelStyleCesiumWriter> using$1 = new Using<LabelStyleCesiumWriter>(new LabelStyleCesiumWriter(expectedPropertyName))) {
+                final LabelStyleCesiumWriter writer = using$1.resource;
+                writer.open(getOutputStream());
+                writer.writeInterval(start, stop);
+                writer.writeLabelStyle(expectedValue);
             }
         }
         final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();

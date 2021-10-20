@@ -10,13 +10,13 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code StripeOrientation} to a {@link CesiumOutputStream}. A {@code StripeOrientation} is the orientation of stripes in a stripe material.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class StripeOrientationCesiumWriter extends CesiumPropertyWriter<StripeOrientationCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumStripeOrientationValuePropertyWriter,
-        ICesiumReferenceValuePropertyWriter {
+public class StripeOrientationCesiumWriter extends CesiumPropertyWriter<StripeOrientationCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumStripeOrientationValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code stripeOrientation} property.
     */
@@ -149,12 +149,12 @@ public class StripeOrientationCesiumWriter extends CesiumPropertyWriter<StripeOr
 
     @Nonnull
     private final Lazy<CesiumStripeOrientationValuePropertyAdaptor<StripeOrientationCesiumWriter>> createAsStripeOrientation() {
-        return new Lazy<CesiumStripeOrientationValuePropertyAdaptor<StripeOrientationCesiumWriter>>(new Func1<CesiumStripeOrientationValuePropertyAdaptor<StripeOrientationCesiumWriter>>(this,
-                "createStripeOrientation") {
-            public CesiumStripeOrientationValuePropertyAdaptor<StripeOrientationCesiumWriter> invoke() {
-                return createStripeOrientation();
-            }
-        }, false);
+        return new Lazy<CesiumStripeOrientationValuePropertyAdaptor<StripeOrientationCesiumWriter>>(
+                new Func1<CesiumStripeOrientationValuePropertyAdaptor<StripeOrientationCesiumWriter>>(this, "createStripeOrientation") {
+                    public CesiumStripeOrientationValuePropertyAdaptor<StripeOrientationCesiumWriter> invoke() {
+                        return createStripeOrientation();
+                    }
+                }, false);
     }
 
     @Nonnull

@@ -13,10 +13,10 @@ import javax.annotation.Nonnull;
 /**
  * A two dimensional region specified as longitude and latitude coordinates.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class CartographicExtent implements IEquatable<CartographicExtent> {
     /**
@@ -94,7 +94,7 @@ public class CartographicExtent implements IEquatable<CartographicExtent> {
     */
     @Override
     public boolean equals(Object obj) {
-        return equalsType((obj instanceof CartographicExtent) ? (CartographicExtent) obj : null);
+        return equalsType(obj instanceof CartographicExtent ? (CartographicExtent) obj : null);
     }
 
     /**

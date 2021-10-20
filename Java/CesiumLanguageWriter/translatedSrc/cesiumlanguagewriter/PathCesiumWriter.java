@@ -2,9 +2,9 @@ package cesiumlanguagewriter;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
+import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.BooleanCesiumWriter;
 import cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter;
@@ -16,10 +16,10 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code Path} to a {@link CesiumOutputStream}. A {@code Path} is a path, which is a polyline defined by the motion of an object over time. The possible vertices of the path are specified by the {@code position} property. Note that because clients cannot render a truly infinite path, the path must be limited, either by defining availability for this object, or by using the {@code leadTime} and {@code trailTime} properties.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     /**
@@ -147,13 +147,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param value The value.
     */
     public final void writeShowProperty(boolean value) {
-        {
-            BooleanCesiumWriter writer = openShowProperty();
-            try {
-                writer.writeBoolean(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<BooleanCesiumWriter> using$0 = new Using<BooleanCesiumWriter>(openShowProperty())) {
+            final BooleanCesiumWriter writer = using$0.resource;
+            writer.writeBoolean(value);
         }
     }
 
@@ -162,13 +158,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param value The reference.
     */
     public final void writeShowPropertyReference(Reference value) {
-        {
-            BooleanCesiumWriter writer = openShowProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<BooleanCesiumWriter> using$0 = new Using<BooleanCesiumWriter>(openShowProperty())) {
+            final BooleanCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -177,13 +169,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param value The reference.
     */
     public final void writeShowPropertyReference(String value) {
-        {
-            BooleanCesiumWriter writer = openShowProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<BooleanCesiumWriter> using$0 = new Using<BooleanCesiumWriter>(openShowProperty())) {
+            final BooleanCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -193,13 +181,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param propertyName The property on the referenced object.
     */
     public final void writeShowPropertyReference(String identifier, String propertyName) {
-        {
-            BooleanCesiumWriter writer = openShowProperty();
-            try {
-                writer.writeReference(identifier, propertyName);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<BooleanCesiumWriter> using$0 = new Using<BooleanCesiumWriter>(openShowProperty())) {
+            final BooleanCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyName);
         }
     }
 
@@ -209,13 +193,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
     public final void writeShowPropertyReference(String identifier, String[] propertyNames) {
-        {
-            BooleanCesiumWriter writer = openShowProperty();
-            try {
-                writer.writeReference(identifier, propertyNames);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<BooleanCesiumWriter> using$0 = new Using<BooleanCesiumWriter>(openShowProperty())) {
+            final BooleanCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyNames);
         }
     }
 
@@ -241,13 +221,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param value The value.
     */
     public final void writeLeadTimeProperty(double value) {
-        {
-            DoubleCesiumWriter writer = openLeadTimeProperty();
-            try {
-                writer.writeNumber(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openLeadTimeProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeNumber(value);
         }
     }
 
@@ -257,13 +233,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param values The values corresponding to each date.
     */
     public final void writeLeadTimeProperty(List<JulianDate> dates, List<Double> values) {
-        {
-            DoubleCesiumWriter writer = openLeadTimeProperty();
-            try {
-                writer.writeNumber(dates, values);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openLeadTimeProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeNumber(dates, values);
         }
     }
 
@@ -275,13 +247,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param length The number of elements to write.
     */
     public final void writeLeadTimeProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
-        {
-            DoubleCesiumWriter writer = openLeadTimeProperty();
-            try {
-                writer.writeNumber(dates, values, startIndex, length);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openLeadTimeProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeNumber(dates, values, startIndex, length);
         }
     }
 
@@ -290,13 +258,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param value The reference.
     */
     public final void writeLeadTimePropertyReference(Reference value) {
-        {
-            DoubleCesiumWriter writer = openLeadTimeProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openLeadTimeProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -305,13 +269,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param value The reference.
     */
     public final void writeLeadTimePropertyReference(String value) {
-        {
-            DoubleCesiumWriter writer = openLeadTimeProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openLeadTimeProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -321,13 +281,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param propertyName The property on the referenced object.
     */
     public final void writeLeadTimePropertyReference(String identifier, String propertyName) {
-        {
-            DoubleCesiumWriter writer = openLeadTimeProperty();
-            try {
-                writer.writeReference(identifier, propertyName);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openLeadTimeProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyName);
         }
     }
 
@@ -337,13 +293,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
     public final void writeLeadTimePropertyReference(String identifier, String[] propertyNames) {
-        {
-            DoubleCesiumWriter writer = openLeadTimeProperty();
-            try {
-                writer.writeReference(identifier, propertyNames);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openLeadTimeProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyNames);
         }
     }
 
@@ -369,13 +321,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param value The value.
     */
     public final void writeTrailTimeProperty(double value) {
-        {
-            DoubleCesiumWriter writer = openTrailTimeProperty();
-            try {
-                writer.writeNumber(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openTrailTimeProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeNumber(value);
         }
     }
 
@@ -385,13 +333,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param values The values corresponding to each date.
     */
     public final void writeTrailTimeProperty(List<JulianDate> dates, List<Double> values) {
-        {
-            DoubleCesiumWriter writer = openTrailTimeProperty();
-            try {
-                writer.writeNumber(dates, values);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openTrailTimeProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeNumber(dates, values);
         }
     }
 
@@ -403,13 +347,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param length The number of elements to write.
     */
     public final void writeTrailTimeProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
-        {
-            DoubleCesiumWriter writer = openTrailTimeProperty();
-            try {
-                writer.writeNumber(dates, values, startIndex, length);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openTrailTimeProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeNumber(dates, values, startIndex, length);
         }
     }
 
@@ -418,13 +358,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param value The reference.
     */
     public final void writeTrailTimePropertyReference(Reference value) {
-        {
-            DoubleCesiumWriter writer = openTrailTimeProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openTrailTimeProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -433,13 +369,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param value The reference.
     */
     public final void writeTrailTimePropertyReference(String value) {
-        {
-            DoubleCesiumWriter writer = openTrailTimeProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openTrailTimeProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -449,13 +381,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param propertyName The property on the referenced object.
     */
     public final void writeTrailTimePropertyReference(String identifier, String propertyName) {
-        {
-            DoubleCesiumWriter writer = openTrailTimeProperty();
-            try {
-                writer.writeReference(identifier, propertyName);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openTrailTimeProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyName);
         }
     }
 
@@ -465,13 +393,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
     public final void writeTrailTimePropertyReference(String identifier, String[] propertyNames) {
-        {
-            DoubleCesiumWriter writer = openTrailTimeProperty();
-            try {
-                writer.writeReference(identifier, propertyNames);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openTrailTimeProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyNames);
         }
     }
 
@@ -497,13 +421,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param value The value.
     */
     public final void writeWidthProperty(double value) {
-        {
-            DoubleCesiumWriter writer = openWidthProperty();
-            try {
-                writer.writeNumber(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openWidthProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeNumber(value);
         }
     }
 
@@ -513,13 +433,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param values The values corresponding to each date.
     */
     public final void writeWidthProperty(List<JulianDate> dates, List<Double> values) {
-        {
-            DoubleCesiumWriter writer = openWidthProperty();
-            try {
-                writer.writeNumber(dates, values);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openWidthProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeNumber(dates, values);
         }
     }
 
@@ -531,13 +447,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param length The number of elements to write.
     */
     public final void writeWidthProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
-        {
-            DoubleCesiumWriter writer = openWidthProperty();
-            try {
-                writer.writeNumber(dates, values, startIndex, length);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openWidthProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeNumber(dates, values, startIndex, length);
         }
     }
 
@@ -546,13 +458,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param value The reference.
     */
     public final void writeWidthPropertyReference(Reference value) {
-        {
-            DoubleCesiumWriter writer = openWidthProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openWidthProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -561,13 +469,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param value The reference.
     */
     public final void writeWidthPropertyReference(String value) {
-        {
-            DoubleCesiumWriter writer = openWidthProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openWidthProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -577,13 +481,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param propertyName The property on the referenced object.
     */
     public final void writeWidthPropertyReference(String identifier, String propertyName) {
-        {
-            DoubleCesiumWriter writer = openWidthProperty();
-            try {
-                writer.writeReference(identifier, propertyName);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openWidthProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyName);
         }
     }
 
@@ -593,13 +493,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
     public final void writeWidthPropertyReference(String identifier, String[] propertyNames) {
-        {
-            DoubleCesiumWriter writer = openWidthProperty();
-            try {
-                writer.writeReference(identifier, propertyNames);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openWidthProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyNames);
         }
     }
 
@@ -625,13 +521,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param value The value.
     */
     public final void writeResolutionProperty(double value) {
-        {
-            DoubleCesiumWriter writer = openResolutionProperty();
-            try {
-                writer.writeNumber(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openResolutionProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeNumber(value);
         }
     }
 
@@ -641,13 +533,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param values The values corresponding to each date.
     */
     public final void writeResolutionProperty(List<JulianDate> dates, List<Double> values) {
-        {
-            DoubleCesiumWriter writer = openResolutionProperty();
-            try {
-                writer.writeNumber(dates, values);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openResolutionProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeNumber(dates, values);
         }
     }
 
@@ -659,13 +547,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param length The number of elements to write.
     */
     public final void writeResolutionProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
-        {
-            DoubleCesiumWriter writer = openResolutionProperty();
-            try {
-                writer.writeNumber(dates, values, startIndex, length);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openResolutionProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeNumber(dates, values, startIndex, length);
         }
     }
 
@@ -674,13 +558,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param value The reference.
     */
     public final void writeResolutionPropertyReference(Reference value) {
-        {
-            DoubleCesiumWriter writer = openResolutionProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openResolutionProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -689,13 +569,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param value The reference.
     */
     public final void writeResolutionPropertyReference(String value) {
-        {
-            DoubleCesiumWriter writer = openResolutionProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openResolutionProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -705,13 +581,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param propertyName The property on the referenced object.
     */
     public final void writeResolutionPropertyReference(String identifier, String propertyName) {
-        {
-            DoubleCesiumWriter writer = openResolutionProperty();
-            try {
-                writer.writeReference(identifier, propertyName);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openResolutionProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyName);
         }
     }
 
@@ -721,13 +593,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
     public final void writeResolutionPropertyReference(String identifier, String[] propertyNames) {
-        {
-            DoubleCesiumWriter writer = openResolutionProperty();
-            try {
-                writer.writeReference(identifier, propertyNames);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openResolutionProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyNames);
         }
     }
 
@@ -770,13 +638,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param value The value.
     */
     public final void writeDistanceDisplayConditionProperty(@Nonnull Bounds value) {
-        {
-            DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
-            try {
-                writer.writeDistanceDisplayCondition(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DistanceDisplayConditionCesiumWriter> using$0 = new Using<DistanceDisplayConditionCesiumWriter>(openDistanceDisplayConditionProperty())) {
+            final DistanceDisplayConditionCesiumWriter writer = using$0.resource;
+            writer.writeDistanceDisplayCondition(value);
         }
     }
 
@@ -786,13 +650,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param upperBound The upper bound.
     */
     public final void writeDistanceDisplayConditionProperty(double lowerBound, double upperBound) {
-        {
-            DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
-            try {
-                writer.writeDistanceDisplayCondition(lowerBound, upperBound);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DistanceDisplayConditionCesiumWriter> using$0 = new Using<DistanceDisplayConditionCesiumWriter>(openDistanceDisplayConditionProperty())) {
+            final DistanceDisplayConditionCesiumWriter writer = using$0.resource;
+            writer.writeDistanceDisplayCondition(lowerBound, upperBound);
         }
     }
 
@@ -802,13 +662,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param values The values corresponding to each date.
     */
     public final void writeDistanceDisplayConditionProperty(List<JulianDate> dates, List<Bounds> values) {
-        {
-            DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
-            try {
-                writer.writeDistanceDisplayCondition(dates, values);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DistanceDisplayConditionCesiumWriter> using$0 = new Using<DistanceDisplayConditionCesiumWriter>(openDistanceDisplayConditionProperty())) {
+            final DistanceDisplayConditionCesiumWriter writer = using$0.resource;
+            writer.writeDistanceDisplayCondition(dates, values);
         }
     }
 
@@ -820,13 +676,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param length The number of elements to write.
     */
     public final void writeDistanceDisplayConditionProperty(List<JulianDate> dates, List<Bounds> values, int startIndex, int length) {
-        {
-            DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
-            try {
-                writer.writeDistanceDisplayCondition(dates, values, startIndex, length);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DistanceDisplayConditionCesiumWriter> using$0 = new Using<DistanceDisplayConditionCesiumWriter>(openDistanceDisplayConditionProperty())) {
+            final DistanceDisplayConditionCesiumWriter writer = using$0.resource;
+            writer.writeDistanceDisplayCondition(dates, values, startIndex, length);
         }
     }
 
@@ -835,13 +687,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param value The reference.
     */
     public final void writeDistanceDisplayConditionPropertyReference(Reference value) {
-        {
-            DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DistanceDisplayConditionCesiumWriter> using$0 = new Using<DistanceDisplayConditionCesiumWriter>(openDistanceDisplayConditionProperty())) {
+            final DistanceDisplayConditionCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -850,13 +698,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param value The reference.
     */
     public final void writeDistanceDisplayConditionPropertyReference(String value) {
-        {
-            DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DistanceDisplayConditionCesiumWriter> using$0 = new Using<DistanceDisplayConditionCesiumWriter>(openDistanceDisplayConditionProperty())) {
+            final DistanceDisplayConditionCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -866,13 +710,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param propertyName The property on the referenced object.
     */
     public final void writeDistanceDisplayConditionPropertyReference(String identifier, String propertyName) {
-        {
-            DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
-            try {
-                writer.writeReference(identifier, propertyName);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DistanceDisplayConditionCesiumWriter> using$0 = new Using<DistanceDisplayConditionCesiumWriter>(openDistanceDisplayConditionProperty())) {
+            final DistanceDisplayConditionCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyName);
         }
     }
 
@@ -882,13 +722,9 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
     public final void writeDistanceDisplayConditionPropertyReference(String identifier, String[] propertyNames) {
-        {
-            DistanceDisplayConditionCesiumWriter writer = openDistanceDisplayConditionProperty();
-            try {
-                writer.writeReference(identifier, propertyNames);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DistanceDisplayConditionCesiumWriter> using$0 = new Using<DistanceDisplayConditionCesiumWriter>(openDistanceDisplayConditionProperty())) {
+            final DistanceDisplayConditionCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyNames);
         }
     }
 }

@@ -19,18 +19,18 @@ import java.util.ResourceBundle;
  * A strongly-typed resource class, for looking up localized strings, etc.
  * @deprecated Internal use only.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 @Deprecated
 @Internal
-@CS2JWarning( {
-        "Unhandled attribute removed: System.CodeDom.Compiler.GeneratedCodeAttribute",
-        "Unhandled attribute removed: System.Diagnostics.DebuggerNonUserCodeAttribute",
-        "Unhandled attribute removed: System.Runtime.CompilerServices.CompilerGeneratedAttribute",
-        "Unhandled attribute removed: System.ComponentModel.EditorBrowsableAttribute"
+@CS2JWarning({
+    "Unhandled attribute removed: System.CodeDom.Compiler.GeneratedCodeAttribute",
+    "Unhandled attribute removed: System.Diagnostics.DebuggerNonUserCodeAttribute",
+    "Unhandled attribute removed: System.Runtime.CompilerServices.CompilerGeneratedAttribute",
+    "Unhandled attribute removed: System.ComponentModel.EditorBrowsableAttribute"
 })
 public class CesiumLocalization {
     private static ResourceBundle resourceMan;

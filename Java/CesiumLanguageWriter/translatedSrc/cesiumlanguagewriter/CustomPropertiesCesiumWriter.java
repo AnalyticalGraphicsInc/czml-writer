@@ -9,10 +9,10 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code CustomProperties} to a {@link CesiumOutputStream}. A {@code CustomProperties} is a set of custom properties.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class CustomPropertiesCesiumWriter extends CesiumPropertyWriter<CustomPropertiesCesiumWriter> {
     /**

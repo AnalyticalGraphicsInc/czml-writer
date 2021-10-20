@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
  {@link ICesiumInterpolatableValuePropertyWriter} for {@link UnitSpherical} values.
  * @param <TFrom> The class that implements {@link ICesiumUnitSphericalValuePropertyWriter} to adapt.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class CesiumUnitSphericalValuePropertyAdaptor<TFrom extends ICesiumUnitSphericalValuePropertyWriter> extends CesiumInterpolatableWriterAdaptor<TFrom, UnitSpherical> {
     /**

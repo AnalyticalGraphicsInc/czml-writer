@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
  {@link ICesiumInterpolatableValuePropertyWriter} for {@link CesiumResource} values.
  * @param <TFrom> The class that implements {@link ICesiumUriValuePropertyWriter} to adapt.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class CesiumUriValuePropertyAdaptor<TFrom extends ICesiumUriValuePropertyWriter> extends CesiumWriterAdaptor<TFrom, CesiumResource> {
     /**

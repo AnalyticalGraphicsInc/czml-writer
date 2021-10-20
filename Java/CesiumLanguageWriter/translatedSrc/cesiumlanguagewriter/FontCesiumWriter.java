@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code Font} to a {@link CesiumOutputStream}. A {@code Font} is a font used to draw text. Fonts are specified using the same syntax as the CSS "font" property.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class FontCesiumWriter extends CesiumPropertyWriter<FontCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumFontValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**

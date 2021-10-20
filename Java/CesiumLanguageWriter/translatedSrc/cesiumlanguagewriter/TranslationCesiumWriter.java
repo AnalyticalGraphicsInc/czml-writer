@@ -11,13 +11,13 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code Translation} to a {@link CesiumOutputStream}. A {@code Translation} is a translational offset which can optionally vary over time.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class TranslationCesiumWriter extends CesiumInterpolatablePropertyWriter<TranslationCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumCartesian3ValuePropertyWriter,
-        ICesiumReferenceValuePropertyWriter {
+public class TranslationCesiumWriter extends CesiumInterpolatablePropertyWriter<TranslationCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumCartesian3ValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code cartesian} property.
     */

@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
  {@link ICesiumInterpolatableValuePropertyWriter} for {@code int} values.
  * @param <TFrom> The class that implements {@link ICesiumIntegerValuePropertyWriter} to adapt.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class CesiumIntegerValuePropertyAdaptor<TFrom extends ICesiumIntegerValuePropertyWriter> extends CesiumInterpolatableWriterAdaptor<TFrom, Integer> {
     /**

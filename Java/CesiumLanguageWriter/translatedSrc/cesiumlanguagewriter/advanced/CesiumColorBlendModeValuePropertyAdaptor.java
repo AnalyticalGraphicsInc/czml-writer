@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
  {@link ICesiumPropertyWriter} for {@link CesiumColorBlendMode} values.
  * @param <TFrom> The class that implements {@link ICesiumColorBlendModeValuePropertyWriter} to adapt.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class CesiumColorBlendModeValuePropertyAdaptor<TFrom extends ICesiumColorBlendModeValuePropertyWriter> extends CesiumWriterAdaptor<TFrom, CesiumColorBlendMode> {
     /**

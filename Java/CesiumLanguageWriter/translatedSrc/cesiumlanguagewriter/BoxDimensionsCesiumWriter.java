@@ -11,13 +11,13 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code BoxDimensions} to a {@link CesiumOutputStream}. A {@code BoxDimensions} is the width, depth, and height of a box.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class BoxDimensionsCesiumWriter extends CesiumInterpolatablePropertyWriter<BoxDimensionsCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumCartesian3ValuePropertyWriter,
-        ICesiumReferenceValuePropertyWriter {
+public class BoxDimensionsCesiumWriter extends CesiumInterpolatablePropertyWriter<BoxDimensionsCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumCartesian3ValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code cartesian} property.
     */

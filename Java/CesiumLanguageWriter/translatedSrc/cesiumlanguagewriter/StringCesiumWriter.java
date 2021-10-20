@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code String} to a {@link CesiumOutputStream}. A {@code String} is a string value. The string can optionally vary with time.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumStringValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**

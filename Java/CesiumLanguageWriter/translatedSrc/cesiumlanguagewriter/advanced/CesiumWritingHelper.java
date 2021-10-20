@@ -12,10 +12,10 @@ import javax.annotation.Nonnull;
 /**
  * Contains helper methods for writing CZML values.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public final class CesiumWritingHelper {
     private CesiumWritingHelper() {}
@@ -93,7 +93,8 @@ public final class CesiumWritingHelper {
     * @param startIndex The index of the first element to use in the {@code values} collection.
     * @param length The number of elements to use from the {@code values} collection.
     */
-    public static void writeCartesian2(@Nonnull CesiumOutputStream output, @Nonnull String propertyName, @Nonnull List<JulianDate> dates, @Nonnull List<Rectangular> values, int startIndex, int length) {
+    public static void writeCartesian2(@Nonnull CesiumOutputStream output, @Nonnull String propertyName, @Nonnull List<JulianDate> dates, @Nonnull List<Rectangular> values, int startIndex,
+            int length) {
         if (dates.size() != values.size()) {
             throw new ArgumentException(CesiumLocalization.getMismatchedNumberOfDatesAndValues(), "values");
         }

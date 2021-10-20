@@ -11,13 +11,13 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code LineOffset} to a {@link CesiumOutputStream}. A {@code LineOffset} is the offset of grid lines along each axis, as a percentage from 0 to 1.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class LineOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<LineOffsetCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumCartesian2ValuePropertyWriter,
-        ICesiumReferenceValuePropertyWriter {
+public class LineOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<LineOffsetCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumCartesian2ValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code cartesian2} property.
     */

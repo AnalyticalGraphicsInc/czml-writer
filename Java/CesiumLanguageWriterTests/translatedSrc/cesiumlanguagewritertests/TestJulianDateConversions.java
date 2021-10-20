@@ -25,10 +25,10 @@ import org.junit.Test;
 /**
  * A series of tests to exercise the various date and time types.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestJulianDateConversions {

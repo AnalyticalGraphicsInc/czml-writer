@@ -9,10 +9,10 @@ import javax.annotation.Nullable;
 /**
  * Whether or not an object casts or receives shadows from each light source when shadows are enabled.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public enum CesiumShadowMode implements Enumeration {
     /**
@@ -31,6 +31,7 @@ public enum CesiumShadowMode implements Enumeration {
     * The object receives shadows only.
     */
     RECEIVE_ONLY(3);
+
     private final int value;
 
     CesiumShadowMode(int value) {

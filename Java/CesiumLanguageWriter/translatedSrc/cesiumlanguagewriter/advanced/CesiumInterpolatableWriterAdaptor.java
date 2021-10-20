@@ -18,13 +18,13 @@ import javax.annotation.Nonnull;
  * @param <TFrom> The class that implements {@link ICesiumInterpolatablePropertyWriter} to adapt.
  * @param <TValue> The type of value to which to adapt the class to write.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class CesiumInterpolatableWriterAdaptor<TFrom extends ICesiumPropertyWriter & ICesiumInterpolatablePropertyWriter, TValue> implements ICesiumWriterAdaptor<TFrom>,
-        ICesiumInterpolatableValuePropertyWriter<TValue>, ICesiumDeletablePropertyWriter {
+public class CesiumInterpolatableWriterAdaptor<TFrom extends ICesiumPropertyWriter & ICesiumInterpolatablePropertyWriter, TValue>
+        implements ICesiumWriterAdaptor<TFrom>, ICesiumInterpolatableValuePropertyWriter<TValue>, ICesiumDeletablePropertyWriter {
     /**
     * Initializes a new instance.
     * @param parent The instance to wrap.

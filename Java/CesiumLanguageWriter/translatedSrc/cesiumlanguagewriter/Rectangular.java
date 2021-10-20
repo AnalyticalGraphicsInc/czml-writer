@@ -14,10 +14,10 @@ import javax.annotation.Nonnull;
  * <p>
  The corresponding 3-dimensional coordinates are {@link Cartesian} coordinates.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public final class Rectangular implements IEquatable<Rectangular>, ImmutableValueType {
     /**

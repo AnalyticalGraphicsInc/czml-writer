@@ -34,17 +34,26 @@ public abstract class WebRequest {
     }
 
     public static WebRequest create(@Nonnull URI requestUri) {
-        ArgumentNullException.assertNonNull(requestUri, "requestUriString");
+        ArgumentNullException.assertNonNull(requestUri, "requestUri");
 
+        return create(toURL(requestUri));
+    }
+
+    @Nonnull
+    private static URL toURL(@Nonnull URI requestUri) {
         try {
-            return create(requestUri.toURL());
+            return requestUri.toURL();
         } catch (MalformedURLException e) {
-            throw new RuntimeMalformedURLException(e);
+            throw new RuntimeURISyntaxException(e);
         }
     }
 
     private static WebRequest create(@Nonnull URL url) {
-        switch (url.getProtocol()) {
+        return create(url, url.getProtocol());
+    }
+
+    private static WebRequest create(@Nonnull URL url, String protocol) {
+        switch (protocol) {
         case "http":
         case "https":
             return new HttpWebRequest(url);

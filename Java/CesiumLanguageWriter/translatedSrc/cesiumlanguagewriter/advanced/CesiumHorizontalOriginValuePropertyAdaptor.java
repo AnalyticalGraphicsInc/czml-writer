@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
  {@link ICesiumPropertyWriter} for {@link CesiumHorizontalOrigin} values.
  * @param <TFrom> The class that implements {@link ICesiumHorizontalOriginValuePropertyWriter} to adapt.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class CesiumHorizontalOriginValuePropertyAdaptor<TFrom extends ICesiumHorizontalOriginValuePropertyWriter> extends CesiumWriterAdaptor<TFrom, CesiumHorizontalOrigin> {
     /**

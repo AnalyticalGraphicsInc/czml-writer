@@ -8,10 +8,10 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code Clock} to a {@link CesiumOutputStream}. A {@code Clock} is initial settings for a simulated clock when a document is loaded. The start and stop time are configured using the interval property.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class ClockCesiumWriter extends CesiumPropertyWriter<ClockCesiumWriter> {
     /**

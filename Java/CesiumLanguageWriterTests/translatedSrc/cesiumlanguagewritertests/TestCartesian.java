@@ -21,10 +21,10 @@ import org.junit.Test;
 /**
  * Tests the {@link Cartesian} type.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCartesian {

@@ -9,10 +9,10 @@ import javax.annotation.Nonnull;
 /**
  * A writer that can write a value as a unit spherical.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public interface ICesiumUnitSphericalValuePropertyWriter extends ICesiumInterpolatablePropertyWriter {
     /**

@@ -10,13 +10,13 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code ShadowMode} to a {@link CesiumOutputStream}. A {@code ShadowMode} is whether or not an object casts or receives shadows from each light source when shadows are enabled.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class ShadowModeCesiumWriter extends CesiumPropertyWriter<ShadowModeCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumShadowModeValuePropertyWriter,
-        ICesiumReferenceValuePropertyWriter {
+public class ShadowModeCesiumWriter extends CesiumPropertyWriter<ShadowModeCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumShadowModeValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code shadowMode} property.
     */

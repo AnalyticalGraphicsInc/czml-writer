@@ -9,10 +9,10 @@ import javax.annotation.Nullable;
 /**
  * Specifies whether to embed a resource into a CZML stream or simply link to them.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public enum CesiumResourceBehavior implements Enumeration {
     /**
@@ -27,6 +27,7 @@ public enum CesiumResourceBehavior implements Enumeration {
     <a href="http://enable-cors.org/">http://enable-cors.org/</a>.
     */
     LINK_TO(1);
+
     private final int value;
 
     CesiumResourceBehavior(int value) {

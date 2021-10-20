@@ -12,10 +12,10 @@ import javax.annotation.Nonnull;
  * @param <TWrappedWriter> The type of the wrapped writer.
  * @param <TValue> The type of the value to write.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public abstract class CesiumWriterAdaptorWriteCallback<TWrappedWriter extends ICesiumPropertyWriter, TValue> extends Delegate {
     /**

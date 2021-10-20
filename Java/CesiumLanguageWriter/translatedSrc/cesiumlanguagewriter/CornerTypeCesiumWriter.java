@@ -10,13 +10,13 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code CornerType} to a {@link CesiumOutputStream}. A {@code CornerType} is the style of a corner.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class CornerTypeCesiumWriter extends CesiumPropertyWriter<CornerTypeCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumCornerTypeValuePropertyWriter,
-        ICesiumReferenceValuePropertyWriter {
+public class CornerTypeCesiumWriter extends CesiumPropertyWriter<CornerTypeCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumCornerTypeValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code cornerType} property.
     */

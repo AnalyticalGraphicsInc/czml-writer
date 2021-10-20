@@ -9,10 +9,10 @@ import javax.annotation.Nonnull;
 /**
  * A writer that can write a value as Cartographic WGS84 coordinates, where Longitude and Latitude are in radians and Height is in meters.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public interface ICesiumCartographicRadiansValuePropertyWriter extends ICesiumInterpolatablePropertyWriter {
     /**

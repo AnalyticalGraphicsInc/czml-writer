@@ -13,10 +13,10 @@ import javax.annotation.Nonnull;
 /**
  * A bounding rectangle in a two-dimensional plane given by two corner points.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public final class BoundingRectangle implements IEquatable<BoundingRectangle>, ImmutableValueType {
     /**

@@ -11,13 +11,13 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code EyeOffset} to a {@link CesiumOutputStream}. A {@code EyeOffset} is an offset in eye coordinates which can optionally vary over time. Eye coordinates are a left-handed coordinate system where the X-axis points toward the viewer's right, the Y-axis poitns up, and the Z-axis points into the screen.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class EyeOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<EyeOffsetCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumCartesian3ValuePropertyWriter,
-        ICesiumReferenceValuePropertyWriter {
+public class EyeOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<EyeOffsetCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumCartesian3ValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code cartesian} property.
     */

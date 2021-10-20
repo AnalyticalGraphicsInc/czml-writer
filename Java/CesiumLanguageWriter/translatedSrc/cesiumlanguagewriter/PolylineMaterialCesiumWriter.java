@@ -19,10 +19,10 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code PolylineMaterial} to a {@link CesiumOutputStream}. A {@code PolylineMaterial} is a definition of how a polyline is colored or shaded.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class PolylineMaterialCesiumWriter extends CesiumPropertyWriter<PolylineMaterialCesiumWriter> {
     /**

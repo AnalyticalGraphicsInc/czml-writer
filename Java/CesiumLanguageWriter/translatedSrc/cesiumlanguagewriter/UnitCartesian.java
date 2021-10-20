@@ -20,10 +20,10 @@ import javax.annotation.Nullable;
  It should be noted that this does not guarantee a result whose magnitude will be 1.0 in cases where an individual component underflows upon squaring.
  </p>
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public final class UnitCartesian implements IEquatable<UnitCartesian>, ImmutableValueType {
     /**
@@ -546,6 +546,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     private static enum Normalization implements Enumeration {
         UNNORMALIZED(0),
         NORMALIZED(1);
+
         private final int value;
 
         Normalization(int value) {

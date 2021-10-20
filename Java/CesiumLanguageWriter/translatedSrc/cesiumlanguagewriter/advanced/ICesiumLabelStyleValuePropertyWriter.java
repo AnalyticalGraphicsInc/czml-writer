@@ -8,10 +8,10 @@ import javax.annotation.Nonnull;
 /**
  * A writer that can write a value as a label style.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public interface ICesiumLabelStyleValuePropertyWriter extends ICesiumPropertyWriter {
     /**

@@ -7,10 +7,10 @@ import cesiumlanguagewriter.*;
 /**
  * A writer that can write a value as the normalized velocity vector of a position property.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public interface ICesiumVelocityReferenceValuePropertyWriter extends ICesiumPropertyWriter {
     /**

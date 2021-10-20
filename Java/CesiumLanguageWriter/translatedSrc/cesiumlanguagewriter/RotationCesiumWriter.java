@@ -11,13 +11,13 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code Rotation} to a {@link CesiumOutputStream}. A {@code Rotation} is defines a rotation that transforms a vector expressed in one axes and transforms it to another.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class RotationCesiumWriter extends CesiumInterpolatablePropertyWriter<RotationCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumUnitQuaternionValuePropertyWriter,
-        ICesiumReferenceValuePropertyWriter {
+public class RotationCesiumWriter extends CesiumInterpolatablePropertyWriter<RotationCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumUnitQuaternionValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code unitQuaternion} property.
     */

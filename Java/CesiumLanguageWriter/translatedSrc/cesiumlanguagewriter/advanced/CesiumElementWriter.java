@@ -11,10 +11,10 @@ import javax.annotation.Nullable;
 /**
  * The base class for types that write CZML data to a stream.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public abstract class CesiumElementWriter implements ICesiumElementWriter {
     public final void dispose() {

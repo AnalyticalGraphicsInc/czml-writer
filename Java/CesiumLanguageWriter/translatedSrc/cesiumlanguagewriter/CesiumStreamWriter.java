@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
 /**
  * Writes data to a {@link CesiumOutputStream}.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class CesiumStreamWriter {
     /**

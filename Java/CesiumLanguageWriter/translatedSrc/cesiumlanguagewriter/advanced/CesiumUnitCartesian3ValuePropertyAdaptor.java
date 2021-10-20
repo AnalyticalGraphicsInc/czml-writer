@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
  {@link ICesiumInterpolatableValuePropertyWriter} for {@link UnitCartesian} values.
  * @param <TFrom> The class that implements {@link ICesiumUnitCartesian3ValuePropertyWriter} to adapt.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class CesiumUnitCartesian3ValuePropertyAdaptor<TFrom extends ICesiumUnitCartesian3ValuePropertyWriter> extends CesiumInterpolatableWriterAdaptor<TFrom, UnitCartesian> {
     /**

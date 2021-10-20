@@ -8,10 +8,10 @@ import java.util.List;
 /**
  * A writer that can write a value as a floating-point number.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public interface ICesiumDoubleValuePropertyWriter extends ICesiumInterpolatablePropertyWriter {
     /**

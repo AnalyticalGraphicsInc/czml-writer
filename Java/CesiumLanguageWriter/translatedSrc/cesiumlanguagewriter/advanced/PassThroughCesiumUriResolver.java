@@ -8,10 +8,10 @@ import javax.annotation.Nonnull;
 /**
  * A URI resolver that leaves URIs unchanged.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class PassThroughCesiumUriResolver implements ICesiumUriResolver {
     /**

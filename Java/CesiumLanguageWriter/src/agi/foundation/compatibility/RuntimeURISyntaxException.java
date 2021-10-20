@@ -1,5 +1,6 @@
 package agi.foundation.compatibility;
 
+import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 
 /**
@@ -10,5 +11,13 @@ public class RuntimeURISyntaxException extends WrappedRuntimeException {
 
     public RuntimeURISyntaxException(URISyntaxException e) {
         super(e);
+    }
+
+    public RuntimeURISyntaxException(MalformedURLException e) {
+        super(e);
+    }
+
+    public RuntimeURISyntaxException(String input, String msg) {
+        this(new URISyntaxException(input, msg));
     }
 }

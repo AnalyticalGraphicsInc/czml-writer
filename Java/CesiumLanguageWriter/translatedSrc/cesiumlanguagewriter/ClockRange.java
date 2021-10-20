@@ -9,10 +9,10 @@ import javax.annotation.Nullable;
 /**
  * Defines the behavior of a clock when its current time reaches its start or end point.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public enum ClockRange implements Enumeration {
     /**
@@ -27,6 +27,7 @@ public enum ClockRange implements Enumeration {
     * The clock stops when its start time is reached, but loops back to start when its end time is reached.
     */
     LOOP_STOP(2);
+
     private final int value;
 
     ClockRange(int value) {

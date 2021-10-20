@@ -2,9 +2,9 @@ package cesiumlanguagewriter;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
+import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.RotationCesiumWriter;
 import cesiumlanguagewriter.ScaleCesiumWriter;
@@ -15,10 +15,10 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code NodeTransformation} to a {@link CesiumOutputStream}. A {@code NodeTransformation} is a set of transformations to apply to a particular node in a 3D model.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTransformationCesiumWriter> {
     /**
@@ -102,13 +102,9 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     * @param value The value.
     */
     public final void writeTranslationProperty(@Nonnull Cartesian value) {
-        {
-            TranslationCesiumWriter writer = openTranslationProperty();
-            try {
-                writer.writeCartesian(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<TranslationCesiumWriter> using$0 = new Using<TranslationCesiumWriter>(openTranslationProperty())) {
+            final TranslationCesiumWriter writer = using$0.resource;
+            writer.writeCartesian(value);
         }
     }
 
@@ -118,13 +114,9 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     * @param values The values corresponding to each date.
     */
     public final void writeTranslationProperty(List<JulianDate> dates, List<Cartesian> values) {
-        {
-            TranslationCesiumWriter writer = openTranslationProperty();
-            try {
-                writer.writeCartesian(dates, values);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<TranslationCesiumWriter> using$0 = new Using<TranslationCesiumWriter>(openTranslationProperty())) {
+            final TranslationCesiumWriter writer = using$0.resource;
+            writer.writeCartesian(dates, values);
         }
     }
 
@@ -136,13 +128,9 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     * @param length The number of elements to write.
     */
     public final void writeTranslationProperty(List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
-        {
-            TranslationCesiumWriter writer = openTranslationProperty();
-            try {
-                writer.writeCartesian(dates, values, startIndex, length);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<TranslationCesiumWriter> using$0 = new Using<TranslationCesiumWriter>(openTranslationProperty())) {
+            final TranslationCesiumWriter writer = using$0.resource;
+            writer.writeCartesian(dates, values, startIndex, length);
         }
     }
 
@@ -151,13 +139,9 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     * @param value The reference.
     */
     public final void writeTranslationPropertyReference(Reference value) {
-        {
-            TranslationCesiumWriter writer = openTranslationProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<TranslationCesiumWriter> using$0 = new Using<TranslationCesiumWriter>(openTranslationProperty())) {
+            final TranslationCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -166,13 +150,9 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     * @param value The reference.
     */
     public final void writeTranslationPropertyReference(String value) {
-        {
-            TranslationCesiumWriter writer = openTranslationProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<TranslationCesiumWriter> using$0 = new Using<TranslationCesiumWriter>(openTranslationProperty())) {
+            final TranslationCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -182,13 +162,9 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     * @param propertyName The property on the referenced object.
     */
     public final void writeTranslationPropertyReference(String identifier, String propertyName) {
-        {
-            TranslationCesiumWriter writer = openTranslationProperty();
-            try {
-                writer.writeReference(identifier, propertyName);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<TranslationCesiumWriter> using$0 = new Using<TranslationCesiumWriter>(openTranslationProperty())) {
+            final TranslationCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyName);
         }
     }
 
@@ -198,13 +174,9 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
     public final void writeTranslationPropertyReference(String identifier, String[] propertyNames) {
-        {
-            TranslationCesiumWriter writer = openTranslationProperty();
-            try {
-                writer.writeReference(identifier, propertyNames);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<TranslationCesiumWriter> using$0 = new Using<TranslationCesiumWriter>(openTranslationProperty())) {
+            final TranslationCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyNames);
         }
     }
 
@@ -230,13 +202,9 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     * @param value The value.
     */
     public final void writeRotationProperty(@Nonnull UnitQuaternion value) {
-        {
-            RotationCesiumWriter writer = openRotationProperty();
-            try {
-                writer.writeUnitQuaternion(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<RotationCesiumWriter> using$0 = new Using<RotationCesiumWriter>(openRotationProperty())) {
+            final RotationCesiumWriter writer = using$0.resource;
+            writer.writeUnitQuaternion(value);
         }
     }
 
@@ -246,13 +214,9 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     * @param values The values corresponding to each date.
     */
     public final void writeRotationProperty(List<JulianDate> dates, List<UnitQuaternion> values) {
-        {
-            RotationCesiumWriter writer = openRotationProperty();
-            try {
-                writer.writeUnitQuaternion(dates, values);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<RotationCesiumWriter> using$0 = new Using<RotationCesiumWriter>(openRotationProperty())) {
+            final RotationCesiumWriter writer = using$0.resource;
+            writer.writeUnitQuaternion(dates, values);
         }
     }
 
@@ -264,13 +228,9 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     * @param length The number of elements to write.
     */
     public final void writeRotationProperty(List<JulianDate> dates, List<UnitQuaternion> values, int startIndex, int length) {
-        {
-            RotationCesiumWriter writer = openRotationProperty();
-            try {
-                writer.writeUnitQuaternion(dates, values, startIndex, length);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<RotationCesiumWriter> using$0 = new Using<RotationCesiumWriter>(openRotationProperty())) {
+            final RotationCesiumWriter writer = using$0.resource;
+            writer.writeUnitQuaternion(dates, values, startIndex, length);
         }
     }
 
@@ -279,13 +239,9 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     * @param value The reference.
     */
     public final void writeRotationPropertyReference(Reference value) {
-        {
-            RotationCesiumWriter writer = openRotationProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<RotationCesiumWriter> using$0 = new Using<RotationCesiumWriter>(openRotationProperty())) {
+            final RotationCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -294,13 +250,9 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     * @param value The reference.
     */
     public final void writeRotationPropertyReference(String value) {
-        {
-            RotationCesiumWriter writer = openRotationProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<RotationCesiumWriter> using$0 = new Using<RotationCesiumWriter>(openRotationProperty())) {
+            final RotationCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -310,13 +262,9 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     * @param propertyName The property on the referenced object.
     */
     public final void writeRotationPropertyReference(String identifier, String propertyName) {
-        {
-            RotationCesiumWriter writer = openRotationProperty();
-            try {
-                writer.writeReference(identifier, propertyName);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<RotationCesiumWriter> using$0 = new Using<RotationCesiumWriter>(openRotationProperty())) {
+            final RotationCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyName);
         }
     }
 
@@ -326,13 +274,9 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
     public final void writeRotationPropertyReference(String identifier, String[] propertyNames) {
-        {
-            RotationCesiumWriter writer = openRotationProperty();
-            try {
-                writer.writeReference(identifier, propertyNames);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<RotationCesiumWriter> using$0 = new Using<RotationCesiumWriter>(openRotationProperty())) {
+            final RotationCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyNames);
         }
     }
 
@@ -358,13 +302,9 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     * @param value The value.
     */
     public final void writeScaleProperty(@Nonnull Cartesian value) {
-        {
-            ScaleCesiumWriter writer = openScaleProperty();
-            try {
-                writer.writeCartesian(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ScaleCesiumWriter> using$0 = new Using<ScaleCesiumWriter>(openScaleProperty())) {
+            final ScaleCesiumWriter writer = using$0.resource;
+            writer.writeCartesian(value);
         }
     }
 
@@ -374,13 +314,9 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     * @param values The values corresponding to each date.
     */
     public final void writeScaleProperty(List<JulianDate> dates, List<Cartesian> values) {
-        {
-            ScaleCesiumWriter writer = openScaleProperty();
-            try {
-                writer.writeCartesian(dates, values);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ScaleCesiumWriter> using$0 = new Using<ScaleCesiumWriter>(openScaleProperty())) {
+            final ScaleCesiumWriter writer = using$0.resource;
+            writer.writeCartesian(dates, values);
         }
     }
 
@@ -392,13 +328,9 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     * @param length The number of elements to write.
     */
     public final void writeScaleProperty(List<JulianDate> dates, List<Cartesian> values, int startIndex, int length) {
-        {
-            ScaleCesiumWriter writer = openScaleProperty();
-            try {
-                writer.writeCartesian(dates, values, startIndex, length);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ScaleCesiumWriter> using$0 = new Using<ScaleCesiumWriter>(openScaleProperty())) {
+            final ScaleCesiumWriter writer = using$0.resource;
+            writer.writeCartesian(dates, values, startIndex, length);
         }
     }
 
@@ -407,13 +339,9 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     * @param value The reference.
     */
     public final void writeScalePropertyReference(Reference value) {
-        {
-            ScaleCesiumWriter writer = openScaleProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ScaleCesiumWriter> using$0 = new Using<ScaleCesiumWriter>(openScaleProperty())) {
+            final ScaleCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -422,13 +350,9 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     * @param value The reference.
     */
     public final void writeScalePropertyReference(String value) {
-        {
-            ScaleCesiumWriter writer = openScaleProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ScaleCesiumWriter> using$0 = new Using<ScaleCesiumWriter>(openScaleProperty())) {
+            final ScaleCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -438,13 +362,9 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     * @param propertyName The property on the referenced object.
     */
     public final void writeScalePropertyReference(String identifier, String propertyName) {
-        {
-            ScaleCesiumWriter writer = openScaleProperty();
-            try {
-                writer.writeReference(identifier, propertyName);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ScaleCesiumWriter> using$0 = new Using<ScaleCesiumWriter>(openScaleProperty())) {
+            final ScaleCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyName);
         }
     }
 
@@ -454,13 +374,9 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
     public final void writeScalePropertyReference(String identifier, String[] propertyNames) {
-        {
-            ScaleCesiumWriter writer = openScaleProperty();
-            try {
-                writer.writeReference(identifier, propertyNames);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ScaleCesiumWriter> using$0 = new Using<ScaleCesiumWriter>(openScaleProperty())) {
+            final ScaleCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyNames);
         }
     }
 }

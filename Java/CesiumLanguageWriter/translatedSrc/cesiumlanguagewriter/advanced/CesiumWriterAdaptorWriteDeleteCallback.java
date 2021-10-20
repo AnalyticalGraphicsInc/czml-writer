@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
  * A callback to write an indication that the client should delete existing samples for a given wrapped property writer.
  * @param <TWrappedWriter> The type of the wrapped writer.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public abstract class CesiumWriterAdaptorWriteDeleteCallback<TWrappedWriter extends ICesiumPropertyWriter> extends Delegate {
     /**

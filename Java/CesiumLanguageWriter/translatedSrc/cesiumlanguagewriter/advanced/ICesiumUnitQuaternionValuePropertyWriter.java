@@ -9,10 +9,10 @@ import javax.annotation.Nonnull;
 /**
  * A writer that can write a value as a 4-dimensional unit magnitude quaternion, specified as {@code [X, Y, Z, W]}.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public interface ICesiumUnitQuaternionValuePropertyWriter extends ICesiumInterpolatablePropertyWriter {
     /**

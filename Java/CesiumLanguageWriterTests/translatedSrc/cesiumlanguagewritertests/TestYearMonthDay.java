@@ -23,10 +23,10 @@ import org.junit.Test;
 /**
  * A series of tests to exercise this type.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestYearMonthDay {
@@ -272,8 +272,8 @@ public class TestYearMonthDay {
     @Test
     public final void testConstructFromDayOfYear() {
         int[] years = {
-                2000,
-                2001
+            2000,
+            2001
         };
         Assert.assertTrue(YearMonthDay.isLeapYear(years[0]));
         Assert.assertFalse(YearMonthDay.isLeapYear(years[1]));

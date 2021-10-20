@@ -11,10 +11,10 @@ import javax.annotation.Nonnull;
 /**
  * A resource to be linked from or embedded into a CZML document.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class CesiumResource {
     private String m_uri;

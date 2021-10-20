@@ -16,10 +16,10 @@ import javax.annotation.Nonnull;
 /**
  * Manages Leap Seconds.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class LeapSeconds {
     /**

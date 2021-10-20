@@ -9,10 +9,10 @@ import javax.annotation.Nonnull;
  * An interface to an object that writes a list of intervals for a CZML
  property.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public interface ICesiumIntervalListWriter extends ICesiumElementWriter {
     /**

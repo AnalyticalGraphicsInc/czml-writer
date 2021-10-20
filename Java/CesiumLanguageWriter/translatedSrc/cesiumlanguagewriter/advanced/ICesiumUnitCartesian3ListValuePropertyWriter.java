@@ -7,10 +7,10 @@ import cesiumlanguagewriter.*;
 /**
  * A writer that can write a value as a list of three-dimensional unit magnitude Cartesian values.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public interface ICesiumUnitCartesian3ListValuePropertyWriter extends ICesiumPropertyWriter {
     /**

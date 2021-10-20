@@ -11,13 +11,13 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code BackgroundPadding} to a {@link CesiumOutputStream}. A {@code BackgroundPadding} is the amount of horizontal and vertical padding, in pixels, between a label's text and its background.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class BackgroundPaddingCesiumWriter extends CesiumInterpolatablePropertyWriter<BackgroundPaddingCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumCartesian2ValuePropertyWriter,
-        ICesiumReferenceValuePropertyWriter {
+public class BackgroundPaddingCesiumWriter extends CesiumInterpolatablePropertyWriter<BackgroundPaddingCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumCartesian2ValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code cartesian2} property.
     */

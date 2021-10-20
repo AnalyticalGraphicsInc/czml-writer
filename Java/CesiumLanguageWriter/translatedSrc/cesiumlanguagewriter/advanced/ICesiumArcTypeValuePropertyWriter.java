@@ -8,10 +8,10 @@ import javax.annotation.Nonnull;
 /**
  * A writer that can write a value as a type of an arc.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public interface ICesiumArcTypeValuePropertyWriter extends ICesiumPropertyWriter {
     /**

@@ -8,10 +8,10 @@ import javax.annotation.Nonnull;
 /**
  * A writer that can write a value as a part of a sensor to display.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public interface ICesiumSensorVolumePortionToDisplayValuePropertyWriter extends ICesiumPropertyWriter {
     /**

@@ -5,7 +5,6 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.ArgumentException;
 import agi.foundation.compatibility.ArgumentNullException;
 import agi.foundation.compatibility.ConvertHelper;
-import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.HttpWebRequest;
 import agi.foundation.compatibility.ImageFormat;
 import agi.foundation.compatibility.ImageHelper;
@@ -13,6 +12,7 @@ import agi.foundation.compatibility.MemoryStream;
 import agi.foundation.compatibility.StreamHelper;
 import agi.foundation.compatibility.StringComparison;
 import agi.foundation.compatibility.StringHelper;
+import agi.foundation.compatibility.Using;
 import agi.foundation.compatibility.WebRequest;
 import agi.foundation.compatibility.WebResponse;
 import cesiumlanguagewriter.*;
@@ -23,10 +23,10 @@ import javax.annotation.Nonnull;
 /**
  * Contains static methods for formatting data for writing to a CZML stream.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public final class CesiumFormattingHelper {
     private CesiumFormattingHelper() {}
@@ -98,27 +98,19 @@ public final class CesiumFormattingHelper {
             return uri;
         }
         WebRequest webRequest = WebRequest.create(uri);
-        HttpWebRequest httpWebRequest = (webRequest instanceof HttpWebRequest) ? (HttpWebRequest) webRequest : null;
+        HttpWebRequest httpWebRequest = webRequest instanceof HttpWebRequest ? (HttpWebRequest) webRequest : null;
         if (httpWebRequest != null) {
             httpWebRequest.setUserAgent("CesiumWriter");
         }
-        {
-            WebResponse webResponse = webRequest.getResponse();
-            try {
-                {
-                    InputStream stream = webResponse.getResponseStream();
-                    try {
-                        if (stream == null) {
-                            throw new IllegalStateException(CesiumLocalization.getDataDownloadFailed());
-                        }
-                        String mimeType = webResponse.getContentType();
-                        return streamToDataUri(stream, mimeType);
-                    } finally {
-                        DisposeHelper.dispose(stream);
-                    }
+        try (Using<WebResponse> using$0 = new Using<WebResponse>(webRequest.getResponse())) {
+            final WebResponse webResponse = using$0.resource;
+            try (Using<InputStream> using$1 = new Using<InputStream>(webResponse.getResponseStream())) {
+                final InputStream stream = using$1.resource;
+                if (stream == null) {
+                    throw new IllegalStateException(CesiumLocalization.getDataDownloadFailed());
                 }
-            } finally {
-                DisposeHelper.dispose(webResponse);
+                String mimeType = webResponse.getContentType();
+                return streamToDataUri(stream, mimeType);
             }
         }
     }
@@ -151,15 +143,11 @@ public final class CesiumFormattingHelper {
     @Nonnull
     public static String imageToDataUri(@Nonnull RenderedImage image, @Nonnull CesiumImageFormat imageFormat) {
         String mimeType = getMimeTypeFromCesiumImageFormat(imageFormat);
-        {
-            MemoryStream stream = new MemoryStream();
-            try {
-                ImageHelper.save(image, stream, cesiumImageFormatToImageFormat(imageFormat));
-                stream.setPosition(0L);
-                return streamToDataUri(stream, mimeType);
-            } finally {
-                DisposeHelper.dispose(stream);
-            }
+        try (Using<MemoryStream> using$0 = new Using<MemoryStream>(new MemoryStream())) {
+            final MemoryStream stream = using$0.resource;
+            ImageHelper.save(image, stream, cesiumImageFormatToImageFormat(imageFormat));
+            stream.setPosition(0L);
+            return streamToDataUri(stream, mimeType);
         }
     }
 
@@ -205,14 +193,10 @@ public final class CesiumFormattingHelper {
         builder.append("data:");
         builder.append(mimeType);
         builder.append(";base64,");
-        {
-            MemoryStream memoryStream = new MemoryStream();
-            try {
-                StreamHelper.copyTo(stream, memoryStream, 8 * 1024);
-                builder.append(ConvertHelper.toBase64String(memoryStream.getBuffer(), 0, (int) memoryStream.getLength()));
-            } finally {
-                DisposeHelper.dispose(memoryStream);
-            }
+        try (Using<MemoryStream> using$0 = new Using<MemoryStream>(new MemoryStream())) {
+            final MemoryStream memoryStream = using$0.resource;
+            StreamHelper.copyTo(stream, memoryStream, 8 * 1024);
+            builder.append(ConvertHelper.toBase64String(memoryStream.getBuffer(), 0, (int) memoryStream.getLength()));
         }
         return builder.toString();
     }

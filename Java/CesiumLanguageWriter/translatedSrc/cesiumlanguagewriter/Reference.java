@@ -22,10 +22,10 @@ import javax.annotation.Nonnull;
  Any hash symbols or periods that exist in the reference identifier or property must
  be properly escaped with a backslash (\\) in order for the reference to be valid.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class Reference implements IEquatable<Reference> {
     /**
@@ -106,7 +106,7 @@ public class Reference implements IEquatable<Reference> {
     */
     @Override
     public boolean equals(Object obj) {
-        Reference reference = (obj instanceof Reference) ? (Reference) obj : null;
+        Reference reference = obj instanceof Reference ? (Reference) obj : null;
         return reference != null && equalsType(reference);
     }
 

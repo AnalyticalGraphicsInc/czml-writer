@@ -10,13 +10,13 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code ColorBlendMode} to a {@link CesiumOutputStream}. A {@code ColorBlendMode} is the mode of blending between a target color and an entity's source color.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class ColorBlendModeCesiumWriter extends CesiumPropertyWriter<ColorBlendModeCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumColorBlendModeValuePropertyWriter,
-        ICesiumReferenceValuePropertyWriter {
+public class ColorBlendModeCesiumWriter extends CesiumPropertyWriter<ColorBlendModeCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumColorBlendModeValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code colorBlendMode} property.
     */
@@ -149,12 +149,12 @@ public class ColorBlendModeCesiumWriter extends CesiumPropertyWriter<ColorBlendM
 
     @Nonnull
     private final Lazy<CesiumColorBlendModeValuePropertyAdaptor<ColorBlendModeCesiumWriter>> createAsColorBlendMode() {
-        return new Lazy<CesiumColorBlendModeValuePropertyAdaptor<ColorBlendModeCesiumWriter>>(new Func1<CesiumColorBlendModeValuePropertyAdaptor<ColorBlendModeCesiumWriter>>(this,
-                "createColorBlendMode") {
-            public CesiumColorBlendModeValuePropertyAdaptor<ColorBlendModeCesiumWriter> invoke() {
-                return createColorBlendMode();
-            }
-        }, false);
+        return new Lazy<CesiumColorBlendModeValuePropertyAdaptor<ColorBlendModeCesiumWriter>>(
+                new Func1<CesiumColorBlendModeValuePropertyAdaptor<ColorBlendModeCesiumWriter>>(this, "createColorBlendMode") {
+                    public CesiumColorBlendModeValuePropertyAdaptor<ColorBlendModeCesiumWriter> invoke() {
+                        return createColorBlendMode();
+                    }
+                }, false);
     }
 
     @Nonnull

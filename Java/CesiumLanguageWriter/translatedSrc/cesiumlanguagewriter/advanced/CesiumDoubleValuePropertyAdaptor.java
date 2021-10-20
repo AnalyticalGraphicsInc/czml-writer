@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
  {@link ICesiumInterpolatableValuePropertyWriter} for {@code double} values.
  * @param <TFrom> The class that implements {@link ICesiumDoubleValuePropertyWriter} to adapt.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class CesiumDoubleValuePropertyAdaptor<TFrom extends ICesiumDoubleValuePropertyWriter> extends CesiumInterpolatableWriterAdaptor<TFrom, Double> {
     /**

@@ -9,10 +9,10 @@ import cesiumlanguagewriter.*;
  property with values over one or more intervals.
  * @param <T> The type written by the property writer.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public interface ICesiumValuePropertyWriter<T> extends ICesiumPropertyWriter {
     /**

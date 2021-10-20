@@ -11,13 +11,13 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code NearFarScalar} to a {@link CesiumOutputStream}. A {@code NearFarScalar} is a numeric value which will be linearly interpolated between two values based on an object's distance from the camera, in eye coordinates. The computed value will interpolate between the near value and the far value while the camera distance falls between the near distance and the far distance, and will be clamped to the near or far value while the distance is less than the near distance or greater than the far distance, respectively.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class NearFarScalarCesiumWriter extends CesiumInterpolatablePropertyWriter<NearFarScalarCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumNearFarScalarValuePropertyWriter,
-        ICesiumReferenceValuePropertyWriter {
+public class NearFarScalarCesiumWriter extends CesiumInterpolatablePropertyWriter<NearFarScalarCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumNearFarScalarValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code nearFarScalar} property.
     */

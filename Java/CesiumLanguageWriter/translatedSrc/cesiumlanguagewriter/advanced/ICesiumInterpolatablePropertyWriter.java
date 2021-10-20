@@ -8,10 +8,10 @@ import javax.annotation.Nonnull;
 /**
  * An interface to a writer that writes information about how to interpolate sampled values.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public interface ICesiumInterpolatablePropertyWriter extends ICesiumPropertyWriter {
     /**

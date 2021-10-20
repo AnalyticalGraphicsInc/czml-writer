@@ -16,10 +16,10 @@ import javax.annotation.Nonnull;
 /**
  * Represents a calendar year, month, and day.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<YearMonthDay>, ImmutableValueType {
     /**
@@ -113,7 +113,7 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     the beginning of the provided Julian day number. If the
     {@link JulianDate} is more than one half day later than that, the
     calculation will be wrong.
-
+    
     So, if {@code date} is more than 12 hours past the start of the
     Julian day, we instead use the  Julian date number of tomorrow.
     * @param date The date.
@@ -382,31 +382,31 @@ public final class YearMonthDay implements Comparable<YearMonthDay>, IEquatable<
     private int m_day;
     // these tables contain the cumulative days of year at the start of each of the zero-indexed months of the year.
     private static int[] s_commonYearCumulativeMonthTable = {
-            0,
-            31,
-            59,
-            90,
-            120,
-            151,
-            181,
-            212,
-            243,
-            273,
-            304,
-            334
+        0,
+        31,
+        59,
+        90,
+        120,
+        151,
+        181,
+        212,
+        243,
+        273,
+        304,
+        334
     };
     private static int[] s_leapYearCumulativeMonthTable = {
-            0,
-            31,
-            60,
-            91,
-            121,
-            152,
-            182,
-            213,
-            244,
-            274,
-            305,
-            335
+        0,
+        31,
+        60,
+        91,
+        121,
+        152,
+        182,
+        213,
+        244,
+        274,
+        305,
+        335
     };
 }

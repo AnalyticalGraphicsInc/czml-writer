@@ -2,9 +2,9 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.MapHelper;
 import agi.foundation.compatibility.TestContextRule;
+import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.util.LinkedHashMap;
@@ -16,10 +16,10 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestStringCesiumWriter extends TestCesiumPropertyWriter<StringCesiumWriter> {
@@ -27,20 +27,11 @@ public class TestStringCesiumWriter extends TestCesiumPropertyWriter<StringCesiu
     public final void stringCanBeWrittenAsSimpleString() {
         final String expectedPropertyName = "foo";
         final String expectedValue = "bar";
-        {
-            final PacketCesiumWriter usingExpression$0 = (getPacket());
-            try {
-                {
-                    StringCesiumWriter writer = new StringCesiumWriter(expectedPropertyName);
-                    try {
-                        writer.open(getOutputStream());
-                        writer.writeString(expectedValue);
-                    } finally {
-                        DisposeHelper.dispose(writer);
-                    }
-                }
-            } finally {
-                DisposeHelper.dispose(usingExpression$0);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            try (Using<StringCesiumWriter> using$1 = new Using<StringCesiumWriter>(new StringCesiumWriter(expectedPropertyName))) {
+                final StringCesiumWriter writer = using$1.resource;
+                writer.open(getOutputStream());
+                writer.writeString(expectedValue);
             }
         }
         final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
@@ -54,21 +45,12 @@ public class TestStringCesiumWriter extends TestCesiumPropertyWriter<StringCesiu
         JulianDate stop = start.addSeconds(100.0);
         final String expectedPropertyName = "foo";
         final String expectedValue = "bar";
-        {
-            final PacketCesiumWriter usingExpression$0 = (getPacket());
-            try {
-                {
-                    StringCesiumWriter writer = new StringCesiumWriter("foo");
-                    try {
-                        writer.open(getOutputStream());
-                        writer.writeInterval(start, stop);
-                        writer.writeString(expectedValue);
-                    } finally {
-                        DisposeHelper.dispose(writer);
-                    }
-                }
-            } finally {
-                DisposeHelper.dispose(usingExpression$0);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            try (Using<StringCesiumWriter> using$1 = new Using<StringCesiumWriter>(new StringCesiumWriter("foo"))) {
+                final StringCesiumWriter writer = using$1.resource;
+                writer.open(getOutputStream());
+                writer.writeInterval(start, stop);
+                writer.writeString(expectedValue);
             }
         }
         final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
@@ -84,22 +66,13 @@ public class TestStringCesiumWriter extends TestCesiumPropertyWriter<StringCesiu
         final String expectedId = "id";
         final String expectedPropertyName = "foo";
         final boolean expectedDelete = true;
-        {
-            final PacketCesiumWriter usingExpression$0 = (getPacket());
-            try {
-                getPacket().writeId(expectedId);
-                {
-                    StringCesiumWriter writer = new StringCesiumWriter(expectedPropertyName);
-                    try {
-                        writer.open(getOutputStream());
-                        writer.writeInterval(start, stop);
-                        writer.writeDelete(expectedDelete);
-                    } finally {
-                        DisposeHelper.dispose(writer);
-                    }
-                }
-            } finally {
-                DisposeHelper.dispose(usingExpression$0);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            getPacket().writeId(expectedId);
+            try (Using<StringCesiumWriter> using$1 = new Using<StringCesiumWriter>(new StringCesiumWriter(expectedPropertyName))) {
+                final StringCesiumWriter writer = using$1.resource;
+                writer.open(getOutputStream());
+                writer.writeInterval(start, stop);
+                writer.writeDelete(expectedDelete);
             }
         }
         final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
@@ -116,21 +89,12 @@ public class TestStringCesiumWriter extends TestCesiumPropertyWriter<StringCesiu
         final String expectedId = "id";
         final String expectedPropertyName = "foo";
         final boolean expectedDelete = true;
-        {
-            final PacketCesiumWriter usingExpression$0 = (getPacket());
-            try {
-                getPacket().writeId(expectedId);
-                {
-                    StringCesiumWriter writer = new StringCesiumWriter(expectedPropertyName);
-                    try {
-                        writer.open(getOutputStream());
-                        writer.writeDelete(expectedDelete);
-                    } finally {
-                        DisposeHelper.dispose(writer);
-                    }
-                }
-            } finally {
-                DisposeHelper.dispose(usingExpression$0);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            getPacket().writeId(expectedId);
+            try (Using<StringCesiumWriter> using$1 = new Using<StringCesiumWriter>(new StringCesiumWriter(expectedPropertyName))) {
+                final StringCesiumWriter writer = using$1.resource;
+                writer.open(getOutputStream());
+                writer.writeDelete(expectedDelete);
             }
         }
         final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();

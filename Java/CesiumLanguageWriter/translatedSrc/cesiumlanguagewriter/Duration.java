@@ -17,10 +17,10 @@ import javax.annotation.Nonnull;
  offers the same precision as the {@link JulianDate} type.  It stores a
  number of days as an {@code int} and a number of seconds as a {@code double}.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public final class Duration implements Comparable<Duration>, IEquatable<Duration>, ImmutableValueType {
     /**

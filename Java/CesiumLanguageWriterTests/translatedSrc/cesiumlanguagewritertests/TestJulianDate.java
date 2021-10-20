@@ -20,10 +20,10 @@ import org.junit.Test;
 /**
  * A series of tests to exercise this type.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestJulianDate {

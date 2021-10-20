@@ -46,7 +46,7 @@ public final class UriHelper {
 
         int pos = uri.indexOf(':');
         if (pos == 0)
-            throw new RuntimeMalformedURLException("Invalid URI: The format of the URI could not be determined.");
+            throw new RuntimeURISyntaxException(uri, "Invalid URI: The format of the URI could not be determined.");
 
         char firstChar = uri.charAt(0);
 
@@ -87,10 +87,10 @@ public final class UriHelper {
             } else if (pos == 1) {
                 // ParseAsWindowsAbsoluteFilePath
                 if (!Character.isLetter(firstChar))
-                    throw new RuntimeMalformedURLException("URI scheme must start with a letter.");
+                    throw new RuntimeURISyntaxException(uri, "URI scheme must start with a letter.");
 
                 if (uri.length() > 2 && uri.charAt(2) != '\\' && uri.charAt(2) != '/')
-                    throw new RuntimeMalformedURLException("Relative file path is not allowed.");
+                    throw new RuntimeURISyntaxException(uri, "Relative file path is not allowed.");
 
                 String path = StringHelper.replace(uri, "\\", "/");
 
@@ -114,7 +114,7 @@ public final class UriHelper {
             matcher = uriRegex.matcher(uri);
 
             if (!matcher.matches())
-                throw new RuntimeMalformedURLException("Invalid URI.");
+                throw new RuntimeURISyntaxException(uri, "Invalid URI.");
 
             // group number to piece mapping also from rfc2396, appendix B
             String scheme = matcher.group(1);

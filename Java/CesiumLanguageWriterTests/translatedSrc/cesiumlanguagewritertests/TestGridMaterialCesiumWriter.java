@@ -2,9 +2,9 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.MapHelper;
 import agi.foundation.compatibility.TestContextRule;
+import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.awt.Color;
@@ -17,10 +17,10 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestGridMaterialCesiumWriter extends TestCesiumPropertyWriter<GridMaterialCesiumWriter> {
@@ -31,37 +31,20 @@ public class TestGridMaterialCesiumWriter extends TestCesiumPropertyWriter<GridM
         Rectangular expectedLineCount = new Rectangular(6D, 3D);
         Rectangular expectedLineThickness = new Rectangular(3D, 4D);
         Rectangular expectedLineOffset = new Rectangular(5D, 9D);
-        {
-            final PacketCesiumWriter usingExpression$0 = (getPacket());
-            try {
-                {
-                    PolylineCesiumWriter polyline = getPacket().openPolylineProperty();
-                    try {
-                        {
-                            PolylineMaterialCesiumWriter material = polyline.openMaterialProperty();
-                            try {
-                                {
-                                    GridMaterialCesiumWriter gridMaterial = material.openGridProperty();
-                                    try {
-                                        gridMaterial.writeColorProperty(expectedColor);
-                                        gridMaterial.writeCellAlphaProperty(expectedCellAlpha);
-                                        gridMaterial.writeLineCountProperty(expectedLineCount);
-                                        gridMaterial.writeLineThicknessProperty(expectedLineThickness);
-                                        gridMaterial.writeLineOffsetProperty(expectedLineOffset);
-                                    } finally {
-                                        DisposeHelper.dispose(gridMaterial);
-                                    }
-                                }
-                            } finally {
-                                DisposeHelper.dispose(material);
-                            }
-                        }
-                    } finally {
-                        DisposeHelper.dispose(polyline);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            try (Using<PolylineCesiumWriter> using$1 = new Using<PolylineCesiumWriter>(getPacket().openPolylineProperty())) {
+                final PolylineCesiumWriter polyline = using$1.resource;
+                try (Using<PolylineMaterialCesiumWriter> using$2 = new Using<PolylineMaterialCesiumWriter>(polyline.openMaterialProperty())) {
+                    final PolylineMaterialCesiumWriter material = using$2.resource;
+                    try (Using<GridMaterialCesiumWriter> using$3 = new Using<GridMaterialCesiumWriter>(material.openGridProperty())) {
+                        final GridMaterialCesiumWriter gridMaterial = using$3.resource;
+                        gridMaterial.writeColorProperty(expectedColor);
+                        gridMaterial.writeCellAlphaProperty(expectedCellAlpha);
+                        gridMaterial.writeLineCountProperty(expectedLineCount);
+                        gridMaterial.writeLineThicknessProperty(expectedLineThickness);
+                        gridMaterial.writeLineOffsetProperty(expectedLineOffset);
                     }
                 }
-            } finally {
-                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();

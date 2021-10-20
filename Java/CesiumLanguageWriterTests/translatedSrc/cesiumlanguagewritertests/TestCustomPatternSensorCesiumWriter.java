@@ -2,9 +2,9 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.MapHelper;
 import agi.foundation.compatibility.TestContextRule;
+import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.awt.Color;
@@ -17,10 +17,10 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCustomPatternSensorCesiumWriter extends TestCesiumPropertyWriter<CustomPatternSensorCesiumWriter> {
@@ -28,27 +28,14 @@ public class TestCustomPatternSensorCesiumWriter extends TestCesiumPropertyWrite
     public final void testBasicProperties() {
         final boolean expectedShow = true;
         final double expectedRadius = 1234.5;
-        {
-            final PacketCesiumWriter usingExpression$0 = (getPacket());
-            try {
-                {
-                    CustomPatternSensorCesiumWriter rectangle = getPacket().openCustomPatternSensorProperty();
-                    try {
-                        {
-                            CustomPatternSensorCesiumWriter interval = rectangle.openInterval();
-                            try {
-                                interval.writeShowProperty(expectedShow);
-                                interval.writeRadiusProperty(expectedRadius);
-                            } finally {
-                                DisposeHelper.dispose(interval);
-                            }
-                        }
-                    } finally {
-                        DisposeHelper.dispose(rectangle);
-                    }
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            try (Using<CustomPatternSensorCesiumWriter> using$1 = new Using<CustomPatternSensorCesiumWriter>(getPacket().openCustomPatternSensorProperty())) {
+                final CustomPatternSensorCesiumWriter rectangle = using$1.resource;
+                try (Using<CustomPatternSensorCesiumWriter> using$2 = new Using<CustomPatternSensorCesiumWriter>(rectangle.openInterval())) {
+                    final CustomPatternSensorCesiumWriter interval = using$2.resource;
+                    interval.writeShowProperty(expectedShow);
+                    interval.writeRadiusProperty(expectedRadius);
                 }
-            } finally {
-                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
@@ -64,30 +51,17 @@ public class TestCustomPatternSensorCesiumWriter extends TestCesiumPropertyWrite
         final double expectedIntersectionWidth = 2.1;
         final boolean expectedShowEnvironmentIntersection = true;
         Color expectedEnvironmentIntersectionColor = Color.RED;
-        {
-            final PacketCesiumWriter usingExpression$0 = (getPacket());
-            try {
-                {
-                    CustomPatternSensorCesiumWriter rectangle = getPacket().openCustomPatternSensorProperty();
-                    try {
-                        {
-                            CustomPatternSensorCesiumWriter interval = rectangle.openInterval();
-                            try {
-                                interval.writeShowIntersectionProperty(expectedShowIntersection);
-                                interval.writeIntersectionColorProperty(expectedIntersectionColor);
-                                interval.writeIntersectionWidthProperty(expectedIntersectionWidth);
-                                interval.writeShowEnvironmentIntersectionProperty(expectedShowEnvironmentIntersection);
-                                interval.writeEnvironmentIntersectionColorProperty(expectedEnvironmentIntersectionColor);
-                            } finally {
-                                DisposeHelper.dispose(interval);
-                            }
-                        }
-                    } finally {
-                        DisposeHelper.dispose(rectangle);
-                    }
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            try (Using<CustomPatternSensorCesiumWriter> using$1 = new Using<CustomPatternSensorCesiumWriter>(getPacket().openCustomPatternSensorProperty())) {
+                final CustomPatternSensorCesiumWriter rectangle = using$1.resource;
+                try (Using<CustomPatternSensorCesiumWriter> using$2 = new Using<CustomPatternSensorCesiumWriter>(rectangle.openInterval())) {
+                    final CustomPatternSensorCesiumWriter interval = using$2.resource;
+                    interval.writeShowIntersectionProperty(expectedShowIntersection);
+                    interval.writeIntersectionColorProperty(expectedIntersectionColor);
+                    interval.writeIntersectionWidthProperty(expectedIntersectionWidth);
+                    interval.writeShowEnvironmentIntersectionProperty(expectedShowEnvironmentIntersection);
+                    interval.writeEnvironmentIntersectionColorProperty(expectedEnvironmentIntersectionColor);
                 }
-            } finally {
-                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
@@ -102,26 +76,13 @@ public class TestCustomPatternSensorCesiumWriter extends TestCesiumPropertyWrite
     @Test
     public final void testShowThroughEllipsoid() {
         final boolean expectedShowThroughEllipsoid = true;
-        {
-            final PacketCesiumWriter usingExpression$0 = (getPacket());
-            try {
-                {
-                    CustomPatternSensorCesiumWriter rectangle = getPacket().openCustomPatternSensorProperty();
-                    try {
-                        {
-                            CustomPatternSensorCesiumWriter interval = rectangle.openInterval();
-                            try {
-                                interval.writeShowThroughEllipsoidProperty(expectedShowThroughEllipsoid);
-                            } finally {
-                                DisposeHelper.dispose(interval);
-                            }
-                        }
-                    } finally {
-                        DisposeHelper.dispose(rectangle);
-                    }
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            try (Using<CustomPatternSensorCesiumWriter> using$1 = new Using<CustomPatternSensorCesiumWriter>(getPacket().openCustomPatternSensorProperty())) {
+                final CustomPatternSensorCesiumWriter rectangle = using$1.resource;
+                try (Using<CustomPatternSensorCesiumWriter> using$2 = new Using<CustomPatternSensorCesiumWriter>(rectangle.openInterval())) {
+                    final CustomPatternSensorCesiumWriter interval = using$2.resource;
+                    interval.writeShowThroughEllipsoidProperty(expectedShowThroughEllipsoid);
                 }
-            } finally {
-                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();

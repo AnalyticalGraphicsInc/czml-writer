@@ -2,9 +2,9 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.MapHelper;
 import agi.foundation.compatibility.TestContextRule;
+import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.awt.Color;
@@ -17,10 +17,10 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestPolylineGlowMaterialCesiumWriter extends TestCesiumPropertyWriter<PolylineGlowMaterialCesiumWriter> {
@@ -29,35 +29,18 @@ public class TestPolylineGlowMaterialCesiumWriter extends TestCesiumPropertyWrit
         Color expectedColor = Color.RED;
         final double expectedGlowPower = 0.7;
         final double expectedTaperPower = 0.2;
-        {
-            final PacketCesiumWriter usingExpression$0 = (getPacket());
-            try {
-                {
-                    PolylineCesiumWriter polyline = getPacket().openPolylineProperty();
-                    try {
-                        {
-                            PolylineMaterialCesiumWriter material = polyline.openMaterialProperty();
-                            try {
-                                {
-                                    PolylineGlowMaterialCesiumWriter polylineGlowMaterial = material.openPolylineGlowProperty();
-                                    try {
-                                        polylineGlowMaterial.writeColorProperty(expectedColor);
-                                        polylineGlowMaterial.writeGlowPowerProperty(expectedGlowPower);
-                                        polylineGlowMaterial.writeTaperPowerProperty(expectedTaperPower);
-                                    } finally {
-                                        DisposeHelper.dispose(polylineGlowMaterial);
-                                    }
-                                }
-                            } finally {
-                                DisposeHelper.dispose(material);
-                            }
-                        }
-                    } finally {
-                        DisposeHelper.dispose(polyline);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            try (Using<PolylineCesiumWriter> using$1 = new Using<PolylineCesiumWriter>(getPacket().openPolylineProperty())) {
+                final PolylineCesiumWriter polyline = using$1.resource;
+                try (Using<PolylineMaterialCesiumWriter> using$2 = new Using<PolylineMaterialCesiumWriter>(polyline.openMaterialProperty())) {
+                    final PolylineMaterialCesiumWriter material = using$2.resource;
+                    try (Using<PolylineGlowMaterialCesiumWriter> using$3 = new Using<PolylineGlowMaterialCesiumWriter>(material.openPolylineGlowProperty())) {
+                        final PolylineGlowMaterialCesiumWriter polylineGlowMaterial = using$3.resource;
+                        polylineGlowMaterial.writeColorProperty(expectedColor);
+                        polylineGlowMaterial.writeGlowPowerProperty(expectedGlowPower);
+                        polylineGlowMaterial.writeTaperPowerProperty(expectedTaperPower);
                     }
                 }
-            } finally {
-                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();

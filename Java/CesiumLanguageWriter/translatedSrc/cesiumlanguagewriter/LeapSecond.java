@@ -21,10 +21,10 @@ import javax.annotation.Nonnull;
  performed either at the end of 30 June or 31 December UTC though a leap second could, by rule,
  be applied at the end of any month.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public final class LeapSecond implements IEquatable<LeapSecond>, ImmutableValueType {
     /**

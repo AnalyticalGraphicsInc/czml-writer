@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
  {@link ICesiumInterpolatableValuePropertyWriter} for {@link CesiumStripeOrientation} values.
  * @param <TFrom> The class that implements {@link ICesiumStripeOrientationValuePropertyWriter} to adapt.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class CesiumStripeOrientationValuePropertyAdaptor<TFrom extends ICesiumStripeOrientationValuePropertyWriter> extends CesiumWriterAdaptor<TFrom, CesiumStripeOrientation> {
     /**

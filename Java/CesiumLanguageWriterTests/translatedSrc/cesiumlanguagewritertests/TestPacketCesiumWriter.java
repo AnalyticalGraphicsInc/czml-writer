@@ -2,8 +2,8 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.TestContextRule;
+import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.*;
 import java.io.StringWriter;
 import java.util.ArrayList;
@@ -17,10 +17,10 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestPacketCesiumWriter {
@@ -46,12 +46,7 @@ public class TestPacketCesiumWriter {
 
     @Test
     public final void disposeClosesPacket() {
-        {
-            final PacketCesiumWriter usingExpression$0 = (m_writer.openPacket(m_outputStream));
-            try {} finally {
-                DisposeHelper.dispose(usingExpression$0);
-            }
-        }
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(m_writer.openPacket(m_outputStream))) {}
         Assert.assertEquals("{}", m_stringWriter.toString());
     }
 
@@ -85,33 +80,21 @@ public class TestPacketCesiumWriter {
         JulianDate start = new GregorianDate(2012, 4, 2, 1, 2, 3D).toJulianDate();
         JulianDate stop = new GregorianDate(2012, 4, 3, 1, 2, 3D).toJulianDate();
         m_outputStream.writeStartSequence();
-        {
-            PacketCesiumWriter packet = m_writer.openPacket(m_outputStream);
-            try {
-                packet.writeAvailability(start, stop);
-            } finally {
-                DisposeHelper.dispose(packet);
-            }
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(m_writer.openPacket(m_outputStream))) {
+            final PacketCesiumWriter packet = using$0.resource;
+            packet.writeAvailability(start, stop);
         }
-        {
-            PacketCesiumWriter packet = m_writer.openPacket(m_outputStream);
-            try {
-                packet.writeAvailability(new TimeInterval(start, stop));
-            } finally {
-                DisposeHelper.dispose(packet);
-            }
+        try (Using<PacketCesiumWriter> using$1 = new Using<PacketCesiumWriter>(m_writer.openPacket(m_outputStream))) {
+            final PacketCesiumWriter packet = using$1.resource;
+            packet.writeAvailability(new TimeInterval(start, stop));
         }
-        {
-            PacketCesiumWriter packet = m_writer.openPacket(m_outputStream);
-            try {
-                final ArrayList<TimeInterval> tempCollection$0 = new ArrayList<TimeInterval>();
-                tempCollection$0.add(new TimeInterval(start, stop));
-                tempCollection$0.add(new TimeInterval(start.addDays(2.0), stop.addDays(2.0)));
-                ArrayList<TimeInterval> intervals = tempCollection$0;
-                packet.writeAvailability(intervals);
-            } finally {
-                DisposeHelper.dispose(packet);
-            }
+        try (Using<PacketCesiumWriter> using$2 = new Using<PacketCesiumWriter>(m_writer.openPacket(m_outputStream))) {
+            final PacketCesiumWriter packet = using$2.resource;
+            final ArrayList<TimeInterval> tempCollection$0 = new ArrayList<TimeInterval>();
+            tempCollection$0.add(new TimeInterval(start, stop));
+            tempCollection$0.add(new TimeInterval(start.addDays(2.0), stop.addDays(2.0)));
+            ArrayList<TimeInterval> intervals = tempCollection$0;
+            packet.writeAvailability(intervals);
         }
         m_outputStream.writeEndSequence();
         final String expected = "[" + "{\"availability\":\"20120402T010203Z/20120403T010203Z\"}," + "{\"availability\":\"20120402T010203Z/20120403T010203Z\"},"
@@ -130,13 +113,9 @@ public class TestPacketCesiumWriter {
     @Test
     public final void testBillboardProperty() {
         PacketCesiumWriter packet = m_writer.openPacket(m_outputStream);
-        {
-            BillboardCesiumWriter billboard = packet.openBillboardProperty();
-            try {
-                Assert.assertNotNull(billboard);
-            } finally {
-                DisposeHelper.dispose(billboard);
-            }
+        try (Using<BillboardCesiumWriter> using$0 = new Using<BillboardCesiumWriter>(packet.openBillboardProperty())) {
+            final BillboardCesiumWriter billboard = using$0.resource;
+            Assert.assertNotNull(billboard);
         }
         Assert.assertEquals("{\"billboard\":", m_stringWriter.toString());
     }

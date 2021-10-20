@@ -8,10 +8,10 @@ import javax.annotation.Nonnull;
 /**
  * A writer that can write a value as a type of a corner.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public interface ICesiumCornerTypeValuePropertyWriter extends ICesiumPropertyWriter {
     /**

@@ -7,10 +7,10 @@ import cesiumlanguagewriter.*;
 /**
  * A writer that can write a value as a list of Cartographic WGS84 coordinates, where Longitude and Latitude are in radians and Height is in meters.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public interface ICesiumCartographicRadiansListValuePropertyWriter extends ICesiumPropertyWriter {
     /**

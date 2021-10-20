@@ -15,10 +15,10 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code Material} to a {@link CesiumOutputStream}. A {@code Material} is a definition of how a surface is colored or shaded.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class MaterialCesiumWriter extends CesiumPropertyWriter<MaterialCesiumWriter> {
     /**

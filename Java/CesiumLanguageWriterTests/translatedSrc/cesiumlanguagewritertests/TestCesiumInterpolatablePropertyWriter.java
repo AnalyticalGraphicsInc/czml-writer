@@ -2,9 +2,9 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.MapHelper;
 import agi.foundation.compatibility.TestContextRule;
+import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.util.LinkedHashMap;
@@ -16,10 +16,10 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends CesiumInterpolatablePropertyWriter<TDerived>> extends TestCesiumPropertyWriter<TDerived> {
@@ -27,27 +27,14 @@ public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends Ce
     public final void interpolationAlgorithmValueWritesInterpolationAlgorithmProperty() {
         final String expectedPropertyName = "foo";
         final CesiumInterpolationAlgorithm expectedInterpolationAlgorithm = CesiumInterpolationAlgorithm.HERMITE;
-        {
-            final PacketCesiumWriter usingExpression$0 = (getPacket());
-            try {
-                {
-                    CesiumPropertyWriter<TDerived> propertyWriter = createPropertyWriter(expectedPropertyName);
-                    try {
-                        propertyWriter.open(getOutputStream());
-                        {
-                            TDerived intervalWriter = propertyWriter.openInterval();
-                            try {
-                                intervalWriter.writeInterpolationAlgorithm(expectedInterpolationAlgorithm);
-                            } finally {
-                                DisposeHelper.dispose(intervalWriter);
-                            }
-                        }
-                    } finally {
-                        DisposeHelper.dispose(propertyWriter);
-                    }
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            try (Using<CesiumPropertyWriter<TDerived>> using$1 = new Using<CesiumPropertyWriter<TDerived>>(createPropertyWriter(expectedPropertyName))) {
+                final CesiumPropertyWriter<TDerived> propertyWriter = using$1.resource;
+                propertyWriter.open(getOutputStream());
+                try (Using<TDerived> using$2 = new Using<TDerived>(propertyWriter.openInterval())) {
+                    final TDerived intervalWriter = using$2.resource;
+                    intervalWriter.writeInterpolationAlgorithm(expectedInterpolationAlgorithm);
                 }
-            } finally {
-                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
@@ -59,27 +46,14 @@ public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends Ce
     public final void interpolationDegreeValueWritesInterpolationDegreeProperty() {
         final String expectedPropertyName = "foo";
         final int expectedInterpolationDegree = 3;
-        {
-            final PacketCesiumWriter usingExpression$0 = (getPacket());
-            try {
-                {
-                    CesiumPropertyWriter<TDerived> propertyWriter = createPropertyWriter(expectedPropertyName);
-                    try {
-                        propertyWriter.open(getOutputStream());
-                        {
-                            TDerived intervalWriter = propertyWriter.openInterval();
-                            try {
-                                intervalWriter.writeInterpolationDegree(expectedInterpolationDegree);
-                            } finally {
-                                DisposeHelper.dispose(intervalWriter);
-                            }
-                        }
-                    } finally {
-                        DisposeHelper.dispose(propertyWriter);
-                    }
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            try (Using<CesiumPropertyWriter<TDerived>> using$1 = new Using<CesiumPropertyWriter<TDerived>>(createPropertyWriter(expectedPropertyName))) {
+                final CesiumPropertyWriter<TDerived> propertyWriter = using$1.resource;
+                propertyWriter.open(getOutputStream());
+                try (Using<TDerived> using$2 = new Using<TDerived>(propertyWriter.openInterval())) {
+                    final TDerived intervalWriter = using$2.resource;
+                    intervalWriter.writeInterpolationDegree(expectedInterpolationDegree);
                 }
-            } finally {
-                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
@@ -91,27 +65,14 @@ public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends Ce
     public final void writesForwardExtrapolationType() {
         final String expectedPropertyName = "foo";
         final CesiumExtrapolationType expectedForwardExtrapolationType = CesiumExtrapolationType.EXTRAPOLATE;
-        {
-            final PacketCesiumWriter usingExpression$0 = (getPacket());
-            try {
-                {
-                    CesiumPropertyWriter<TDerived> propertyWriter = createPropertyWriter(expectedPropertyName);
-                    try {
-                        propertyWriter.open(getOutputStream());
-                        {
-                            TDerived intervalWriter = propertyWriter.openInterval();
-                            try {
-                                intervalWriter.writeForwardExtrapolationType(expectedForwardExtrapolationType);
-                            } finally {
-                                DisposeHelper.dispose(intervalWriter);
-                            }
-                        }
-                    } finally {
-                        DisposeHelper.dispose(propertyWriter);
-                    }
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            try (Using<CesiumPropertyWriter<TDerived>> using$1 = new Using<CesiumPropertyWriter<TDerived>>(createPropertyWriter(expectedPropertyName))) {
+                final CesiumPropertyWriter<TDerived> propertyWriter = using$1.resource;
+                propertyWriter.open(getOutputStream());
+                try (Using<TDerived> using$2 = new Using<TDerived>(propertyWriter.openInterval())) {
+                    final TDerived intervalWriter = using$2.resource;
+                    intervalWriter.writeForwardExtrapolationType(expectedForwardExtrapolationType);
                 }
-            } finally {
-                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
@@ -123,27 +84,14 @@ public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends Ce
     public final void writesBackwardExtrapolationType() {
         final String expectedPropertyName = "foo";
         final CesiumExtrapolationType expectedBackwardExtrapolationType = CesiumExtrapolationType.EXTRAPOLATE;
-        {
-            final PacketCesiumWriter usingExpression$0 = (getPacket());
-            try {
-                {
-                    CesiumPropertyWriter<TDerived> propertyWriter = createPropertyWriter(expectedPropertyName);
-                    try {
-                        propertyWriter.open(getOutputStream());
-                        {
-                            TDerived intervalWriter = propertyWriter.openInterval();
-                            try {
-                                intervalWriter.writeBackwardExtrapolationType(expectedBackwardExtrapolationType);
-                            } finally {
-                                DisposeHelper.dispose(intervalWriter);
-                            }
-                        }
-                    } finally {
-                        DisposeHelper.dispose(propertyWriter);
-                    }
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            try (Using<CesiumPropertyWriter<TDerived>> using$1 = new Using<CesiumPropertyWriter<TDerived>>(createPropertyWriter(expectedPropertyName))) {
+                final CesiumPropertyWriter<TDerived> propertyWriter = using$1.resource;
+                propertyWriter.open(getOutputStream());
+                try (Using<TDerived> using$2 = new Using<TDerived>(propertyWriter.openInterval())) {
+                    final TDerived intervalWriter = using$2.resource;
+                    intervalWriter.writeBackwardExtrapolationType(expectedBackwardExtrapolationType);
                 }
-            } finally {
-                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
@@ -155,27 +103,14 @@ public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends Ce
     public final void writesForwardExtrapolationDuration() {
         final String expectedPropertyName = "foo";
         Duration expectedForwardExtrapolationDuration = Duration.fromSeconds(12D);
-        {
-            final PacketCesiumWriter usingExpression$0 = (getPacket());
-            try {
-                {
-                    CesiumPropertyWriter<TDerived> propertyWriter = createPropertyWriter(expectedPropertyName);
-                    try {
-                        propertyWriter.open(getOutputStream());
-                        {
-                            TDerived intervalWriter = propertyWriter.openInterval();
-                            try {
-                                intervalWriter.writeForwardExtrapolationDuration(expectedForwardExtrapolationDuration);
-                            } finally {
-                                DisposeHelper.dispose(intervalWriter);
-                            }
-                        }
-                    } finally {
-                        DisposeHelper.dispose(propertyWriter);
-                    }
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            try (Using<CesiumPropertyWriter<TDerived>> using$1 = new Using<CesiumPropertyWriter<TDerived>>(createPropertyWriter(expectedPropertyName))) {
+                final CesiumPropertyWriter<TDerived> propertyWriter = using$1.resource;
+                propertyWriter.open(getOutputStream());
+                try (Using<TDerived> using$2 = new Using<TDerived>(propertyWriter.openInterval())) {
+                    final TDerived intervalWriter = using$2.resource;
+                    intervalWriter.writeForwardExtrapolationDuration(expectedForwardExtrapolationDuration);
                 }
-            } finally {
-                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
@@ -187,27 +122,14 @@ public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends Ce
     public final void writesBackwardExtrapolationDuration() {
         final String expectedPropertyName = "foo";
         Duration expectedBackwardExtrapolationDuration = Duration.fromSeconds(12D);
-        {
-            final PacketCesiumWriter usingExpression$0 = (getPacket());
-            try {
-                {
-                    CesiumPropertyWriter<TDerived> propertyWriter = createPropertyWriter(expectedPropertyName);
-                    try {
-                        propertyWriter.open(getOutputStream());
-                        {
-                            TDerived intervalWriter = propertyWriter.openInterval();
-                            try {
-                                intervalWriter.writeBackwardExtrapolationDuration(expectedBackwardExtrapolationDuration);
-                            } finally {
-                                DisposeHelper.dispose(intervalWriter);
-                            }
-                        }
-                    } finally {
-                        DisposeHelper.dispose(propertyWriter);
-                    }
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            try (Using<CesiumPropertyWriter<TDerived>> using$1 = new Using<CesiumPropertyWriter<TDerived>>(createPropertyWriter(expectedPropertyName))) {
+                final CesiumPropertyWriter<TDerived> propertyWriter = using$1.resource;
+                propertyWriter.open(getOutputStream());
+                try (Using<TDerived> using$2 = new Using<TDerived>(propertyWriter.openInterval())) {
+                    final TDerived intervalWriter = using$2.resource;
+                    intervalWriter.writeBackwardExtrapolationDuration(expectedBackwardExtrapolationDuration);
                 }
-            } finally {
-                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();

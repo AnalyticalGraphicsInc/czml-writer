@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
  {@link ICesiumPropertyWriter} for {@link CesiumHeightReference} values.
  * @param <TFrom> The class that implements {@link ICesiumHeightReferenceValuePropertyWriter} to adapt.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class CesiumHeightReferenceValuePropertyAdaptor<TFrom extends ICesiumHeightReferenceValuePropertyWriter> extends CesiumWriterAdaptor<TFrom, CesiumHeightReference> {
     /**

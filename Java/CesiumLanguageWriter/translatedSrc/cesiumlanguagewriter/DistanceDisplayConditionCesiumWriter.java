@@ -11,13 +11,13 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code DistanceDisplayCondition} to a {@link CesiumOutputStream}. A {@code DistanceDisplayCondition} is indicates the visibility of an object based on the distance to the camera.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class DistanceDisplayConditionCesiumWriter extends CesiumInterpolatablePropertyWriter<DistanceDisplayConditionCesiumWriter> implements ICesiumDeletablePropertyWriter,
-        ICesiumDistanceDisplayConditionValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
+public class DistanceDisplayConditionCesiumWriter extends CesiumInterpolatablePropertyWriter<DistanceDisplayConditionCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumDistanceDisplayConditionValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code distanceDisplayCondition} property.
     */
@@ -201,12 +201,12 @@ public class DistanceDisplayConditionCesiumWriter extends CesiumInterpolatablePr
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<DistanceDisplayConditionCesiumWriter>> createAsReference() {
-        return new Lazy<CesiumReferenceValuePropertyAdaptor<DistanceDisplayConditionCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<DistanceDisplayConditionCesiumWriter>>(this,
-                "createReference") {
-            public CesiumReferenceValuePropertyAdaptor<DistanceDisplayConditionCesiumWriter> invoke() {
-                return createReference();
-            }
-        }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<DistanceDisplayConditionCesiumWriter>>(
+                new Func1<CesiumReferenceValuePropertyAdaptor<DistanceDisplayConditionCesiumWriter>>(this, "createReference") {
+                    public CesiumReferenceValuePropertyAdaptor<DistanceDisplayConditionCesiumWriter> invoke() {
+                        return createReference();
+                    }
+                }, false);
     }
 
     @Nonnull

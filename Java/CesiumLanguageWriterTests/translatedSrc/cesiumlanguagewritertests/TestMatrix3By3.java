@@ -21,10 +21,10 @@ import org.junit.Test;
 /**
  * Tests the {@link Matrix3By3} type.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestMatrix3By3 {
@@ -77,15 +77,15 @@ public class TestMatrix3By3 {
         Assert.assertTrue(second.equalsType(first));
         for (int i = 0; i < 9; ++i) {
             double[] values = {
-                    1.0,
-                    2.0,
-                    3.0,
-                    4.0,
-                    5.0,
-                    6.0,
-                    7.0,
-                    8.0,
-                    9.0
+                1.0,
+                2.0,
+                3.0,
+                4.0,
+                5.0,
+                6.0,
+                7.0,
+                8.0,
+                9.0
             };
             values[i] = 0.0;
             second = new Matrix3By3(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7], values[8]);
@@ -180,15 +180,15 @@ public class TestMatrix3By3 {
         // Check what happens if any of the elements are NaN
         for (int i = 0; i < 9; i++) {
             double[] values = {
-                    1.0,
-                    1.0,
-                    1.0,
-                    1.0,
-                    1.0,
-                    1.0,
-                    1.0,
-                    1.0,
-                    1.0
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0
             };
             values[i] = Double.NaN;
             Matrix3By3 matrix = new Matrix3By3(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7], values[8]);
@@ -272,8 +272,8 @@ public class TestMatrix3By3 {
     @Test
     public final void indexerThrowsWithRowOutOfRange$Test() {
         for (final int row : new int[] {
-                -1,
-                3
+            -1,
+            3
         }) {
             for (int column = 0; column <= 2; column += 1) {
                 indexerThrowsWithRowOutOfRange(row, column);
@@ -298,8 +298,8 @@ public class TestMatrix3By3 {
     public final void indexerThrowsWithColumnOutOfRange$Test() {
         for (int row = 0; row <= 2; row += 1) {
             for (final int column : new int[] {
-                    -1,
-                    3
+                -1,
+                3
             }) {
                 indexerThrowsWithColumnOutOfRange(row, column);
             }

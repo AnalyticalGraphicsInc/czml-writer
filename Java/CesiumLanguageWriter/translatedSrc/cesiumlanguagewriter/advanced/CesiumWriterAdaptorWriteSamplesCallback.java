@@ -13,10 +13,10 @@ import javax.annotation.Nonnull;
  * @param <TWrappedWriter> The type of the wrapped writer.
  * @param <TValue> The type of the value to write.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public abstract class CesiumWriterAdaptorWriteSamplesCallback<TWrappedWriter extends ICesiumPropertyWriter & ICesiumInterpolatablePropertyWriter, TValue> extends Delegate {
     /**
@@ -115,8 +115,8 @@ public abstract class CesiumWriterAdaptorWriteSamplesCallback<TWrappedWriter ext
         void invoke(TWrappedWriter wrappedWriter, List<JulianDate> dates, List<TValue> values, int startIndex, int length);
     }
 
-    private static final class FunctionImpl<TWrappedWriter extends ICesiumPropertyWriter & ICesiumInterpolatablePropertyWriter, TValue> extends
-            CesiumWriterAdaptorWriteSamplesCallback<TWrappedWriter, TValue> {
+    private static final class FunctionImpl<TWrappedWriter extends ICesiumPropertyWriter & ICesiumInterpolatablePropertyWriter, TValue>
+            extends CesiumWriterAdaptorWriteSamplesCallback<TWrappedWriter, TValue> {
         @Nonnull
         private final Function<TWrappedWriter, TValue> f;
 

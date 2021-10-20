@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
  For example, {@link CachingCesiumUriResolver} downloads files and converts them to data URIs,
  while {@link PassThroughCesiumUriResolver} leaves URIs unchanged.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public interface ICesiumUriResolver {
     /**

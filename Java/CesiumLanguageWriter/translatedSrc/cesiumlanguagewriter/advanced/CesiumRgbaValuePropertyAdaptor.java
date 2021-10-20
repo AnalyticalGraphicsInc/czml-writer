@@ -11,10 +11,10 @@ import javax.annotation.Nonnull;
  {@link ICesiumInterpolatableValuePropertyWriter} for {@link Color} values.
  * @param <TFrom> The class that implements {@link ICesiumRgbaValuePropertyWriter} to adapt.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class CesiumRgbaValuePropertyAdaptor<TFrom extends ICesiumRgbaValuePropertyWriter> extends CesiumInterpolatableWriterAdaptor<TFrom, Color> {
     /**

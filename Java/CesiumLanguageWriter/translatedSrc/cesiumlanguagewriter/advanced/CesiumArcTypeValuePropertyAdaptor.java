@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
  {@link ICesiumPropertyWriter} for {@link CesiumArcType} values.
  * @param <TFrom> The class that implements {@link ICesiumArcTypeValuePropertyWriter} to adapt.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class CesiumArcTypeValuePropertyAdaptor<TFrom extends ICesiumArcTypeValuePropertyWriter> extends CesiumWriterAdaptor<TFrom, CesiumArcType> {
     /**

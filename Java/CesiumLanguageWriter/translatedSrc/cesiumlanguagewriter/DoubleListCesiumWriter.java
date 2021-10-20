@@ -10,13 +10,13 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code DoubleList} to a {@link CesiumOutputStream}. A {@code DoubleList} is a list of floating-point numbers.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class DoubleListCesiumWriter extends CesiumPropertyWriter<DoubleListCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumDoubleListValuePropertyWriter,
-        ICesiumReferenceListValuePropertyWriter {
+public class DoubleListCesiumWriter extends CesiumPropertyWriter<DoubleListCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumDoubleListValuePropertyWriter, ICesiumReferenceListValuePropertyWriter {
     /**
     * The name of the {@code array} property.
     */

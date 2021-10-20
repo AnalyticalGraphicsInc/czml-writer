@@ -8,10 +8,10 @@ import javax.annotation.Nullable;
 /**
  * Contains static methods for working with hash codes.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public final class HashCode {
     private HashCode() {}

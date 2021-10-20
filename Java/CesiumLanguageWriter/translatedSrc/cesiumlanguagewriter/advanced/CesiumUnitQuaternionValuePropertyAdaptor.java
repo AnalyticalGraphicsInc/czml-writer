@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
  {@link ICesiumInterpolatableValuePropertyWriter} for {@link UnitQuaternion} values.
  * @param <TFrom> The class that implements {@link ICesiumUnitQuaternionValuePropertyWriter} to adapt.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class CesiumUnitQuaternionValuePropertyAdaptor<TFrom extends ICesiumUnitQuaternionValuePropertyWriter> extends CesiumInterpolatableWriterAdaptor<TFrom, UnitQuaternion> {
     /**

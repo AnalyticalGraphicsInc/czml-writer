@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
  {@link ICesiumInterpolatableValuePropertyWriter} for {@link CesiumShadowMode} values.
  * @param <TFrom> The class that implements {@link ICesiumShadowModeValuePropertyWriter} to adapt.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class CesiumShadowModeValuePropertyAdaptor<TFrom extends ICesiumShadowModeValuePropertyWriter> extends CesiumWriterAdaptor<TFrom, CesiumShadowMode> {
     /**

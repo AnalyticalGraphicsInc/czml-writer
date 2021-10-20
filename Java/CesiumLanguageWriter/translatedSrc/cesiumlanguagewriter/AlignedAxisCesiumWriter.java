@@ -11,10 +11,10 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code AlignedAxis} to a {@link CesiumOutputStream}. A {@code AlignedAxis} is an aligned axis represented by a unit vector which can optionally vary over time.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<AlignedAxisCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumUnitCartesian3ValuePropertyWriter,
         ICesiumUnitSphericalValuePropertyWriter, ICesiumReferenceValuePropertyWriter, ICesiumVelocityReferenceValuePropertyWriter {
@@ -334,12 +334,12 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
     @Nonnull
     private final Lazy<CesiumVelocityReferenceValuePropertyAdaptor<AlignedAxisCesiumWriter>> createAsVelocityReference() {
-        return new Lazy<CesiumVelocityReferenceValuePropertyAdaptor<AlignedAxisCesiumWriter>>(new Func1<CesiumVelocityReferenceValuePropertyAdaptor<AlignedAxisCesiumWriter>>(this,
-                "createVelocityReference") {
-            public CesiumVelocityReferenceValuePropertyAdaptor<AlignedAxisCesiumWriter> invoke() {
-                return createVelocityReference();
-            }
-        }, false);
+        return new Lazy<CesiumVelocityReferenceValuePropertyAdaptor<AlignedAxisCesiumWriter>>(
+                new Func1<CesiumVelocityReferenceValuePropertyAdaptor<AlignedAxisCesiumWriter>>(this, "createVelocityReference") {
+                    public CesiumVelocityReferenceValuePropertyAdaptor<AlignedAxisCesiumWriter> invoke() {
+                        return createVelocityReference();
+                    }
+                }, false);
     }
 
     @Nonnull

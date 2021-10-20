@@ -13,10 +13,10 @@ import javax.annotation.Nonnull;
 /**
  * Creation methods for {@link CesiumWriterAdaptor} objects.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public final class CesiumValuePropertyAdaptors {
     private CesiumValuePropertyAdaptors() {}
@@ -145,7 +145,8 @@ public final class CesiumValuePropertyAdaptors {
     * @return The new adaptor.
     */
     @Nonnull
-    public static <TFrom extends ICesiumCartesian2ListValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumCartesian2ListValuePropertyAdaptor<TFrom> createCartesian2List(@Nonnull TFrom parent) {
+    public static <TFrom extends ICesiumCartesian2ListValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumCartesian2ListValuePropertyAdaptor<TFrom> createCartesian2List(
+            @Nonnull TFrom parent) {
         return new CesiumCartesian2ListValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Iterable<Rectangular>>() {
             public void invoke(TFrom writer, Iterable<cesiumlanguagewriter.Rectangular> value) {
                 writer.writeCartesian2(value);
@@ -160,7 +161,8 @@ public final class CesiumValuePropertyAdaptors {
     * @return The new adaptor.
     */
     @Nonnull
-    public static <TFrom extends ICesiumCartesian3ListValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumCartesian3ListValuePropertyAdaptor<TFrom> createCartesian3List(@Nonnull TFrom parent) {
+    public static <TFrom extends ICesiumCartesian3ListValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumCartesian3ListValuePropertyAdaptor<TFrom> createCartesian3List(
+            @Nonnull TFrom parent) {
         return new CesiumCartesian3ListValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, Iterable<Cartesian>>() {
             public void invoke(TFrom writer, Iterable<cesiumlanguagewriter.Cartesian> value) {
                 writer.writeCartesian(value);
@@ -347,7 +349,8 @@ public final class CesiumValuePropertyAdaptors {
     * @return The new adaptor.
     */
     @Nonnull
-    public static <TFrom extends ICesiumColorBlendModeValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumColorBlendModeValuePropertyAdaptor<TFrom> createColorBlendMode(@Nonnull TFrom parent) {
+    public static <TFrom extends ICesiumColorBlendModeValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumColorBlendModeValuePropertyAdaptor<TFrom> createColorBlendMode(
+            @Nonnull TFrom parent) {
         return new CesiumColorBlendModeValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, CesiumColorBlendMode>() {
             public void invoke(TFrom writer, @Nonnull CesiumColorBlendMode value) {
                 writer.writeColorBlendMode(value);
@@ -710,7 +713,8 @@ public final class CesiumValuePropertyAdaptors {
     * @return The new adaptor.
     */
     @Nonnull
-    public static <TFrom extends ICesiumUnitCartesian3ValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumUnitCartesian3ValuePropertyAdaptor<TFrom> createUnitCartesian3(@Nonnull TFrom parent) {
+    public static <TFrom extends ICesiumUnitCartesian3ValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumUnitCartesian3ValuePropertyAdaptor<TFrom> createUnitCartesian3(
+            @Nonnull TFrom parent) {
         return new CesiumUnitCartesian3ValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, UnitCartesian>() {
             public void invoke(TFrom writer, UnitCartesian value) {
                 writer.writeUnitCartesian(value);
@@ -745,7 +749,8 @@ public final class CesiumValuePropertyAdaptors {
     * @return The new adaptor.
     */
     @Nonnull
-    public static <TFrom extends ICesiumUnitQuaternionValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumUnitQuaternionValuePropertyAdaptor<TFrom> createUnitQuaternion(@Nonnull TFrom parent) {
+    public static <TFrom extends ICesiumUnitQuaternionValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumUnitQuaternionValuePropertyAdaptor<TFrom> createUnitQuaternion(
+            @Nonnull TFrom parent) {
         return new CesiumUnitQuaternionValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, UnitQuaternion>() {
             public void invoke(TFrom writer, UnitQuaternion value) {
                 writer.writeUnitQuaternion(value);
@@ -814,7 +819,8 @@ public final class CesiumValuePropertyAdaptors {
     * @return The new adaptor.
     */
     @Nonnull
-    public static <TFrom extends ICesiumVerticalOriginValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumVerticalOriginValuePropertyAdaptor<TFrom> createVerticalOrigin(@Nonnull TFrom parent) {
+    public static <TFrom extends ICesiumVerticalOriginValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumVerticalOriginValuePropertyAdaptor<TFrom> createVerticalOrigin(
+            @Nonnull TFrom parent) {
         return new CesiumVerticalOriginValuePropertyAdaptor<TFrom>(parent, new CesiumWriterAdaptorWriteCallback<TFrom, CesiumVerticalOrigin>() {
             public void invoke(TFrom writer, @Nonnull CesiumVerticalOrigin value) {
                 writer.writeVerticalOrigin(value);

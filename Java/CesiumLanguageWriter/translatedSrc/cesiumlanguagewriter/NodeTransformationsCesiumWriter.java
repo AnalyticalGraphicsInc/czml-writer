@@ -9,10 +9,10 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code NodeTransformations} to a {@link CesiumOutputStream}. A {@code NodeTransformations} is a mapping of node names to node transformations.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class NodeTransformationsCesiumWriter extends CesiumPropertyWriter<NodeTransformationsCesiumWriter> {
     /**

@@ -35,10 +35,10 @@ import javax.annotation.Nullable;
  the {@link GregorianDate} is assumed to be the {@link TimeStandard#COORDINATED_UNIVERSAL_TIME} represented
  in {@link TimeStandard#INTERNATIONAL_ATOMIC_TIME} which can represent leap seconds exactly.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public final class GregorianDate implements Comparable<GregorianDate>, IEquatable<GregorianDate>, ImmutableValueType {
     /**
@@ -52,7 +52,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
     assumes UTC, so all time-zone handling was ripped out.  The "f" parsing was
     also changed to allow more precision than the 7 digits that
     {@link ZonedDateTime} mandates.
-
+    
     Note: any comment from here on is taken from the Mono source, so any references
     to bug numbers refer to their bugs.
     */
@@ -487,7 +487,8 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                 return true;
             }
             DateTimeFormatInfo invInfo = DateTimeFormatInfo.getInvariantInfo();
-            if (!exact && parseString(s, valuePos, num, invInfo.getPMDesignator(), numParsed) || dfi.getPMDesignator().length() != 0 && parseString(s, valuePos, num, dfi.getPMDesignator(), numParsed)) {
+            if (!exact && parseString(s, valuePos, num, invInfo.getPMDesignator(), numParsed)
+                    || dfi.getPMDesignator().length() != 0 && parseString(s, valuePos, num, dfi.getPMDesignator(), numParsed)) {
                 ampm[0] = 1;
             } else if (!exact && parseString(s, valuePos, num, invInfo.getAMDesignator(), numParsed) || parseString(s, valuePos, num, dfi.getAMDesignator(), numParsed)) {
                 if (exact || numParsed[0] != 0) {
@@ -1237,9 +1238,10 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
 
         // This is intended as a last resort when all the other formats fail to parse a "day of year" format
         // This will throw exceptions if it cannot parse the string
-        private static boolean parseIso8601DayOfYear(String isoString, DateTimeFormatInfo dfi, @Nonnull GregorianDate[] result, boolean setExceptionOnError, @Nonnull NumberFormatException[] exception) {
+        private static boolean parseIso8601DayOfYear(String isoString, DateTimeFormatInfo dfi, @Nonnull GregorianDate[] result, boolean setExceptionOnError,
+                @Nonnull NumberFormatException[] exception) {
             // This is a last resort case to handle the ISO8601 "day of year" format supported by STK
-            // Format: yyyy-dddTHH:mm:ss.f*
+                    // Format: yyyy-dddTHH:mm:ss.f*
             result[0] = new GregorianDate();
             String[] tokens = StringHelper.split(isoString, '-');
             if (tokens.length != 2) {
@@ -1388,8 +1390,8 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                     } else if (digitsAfterDecimalPoint < tokLen) {
                         formattedSeconds = StringHelper.padRight(formattedSeconds, tokLen + indexOfDecimalPoint + 1, '0');
                     }
-                    StringHelper.append(result, formattedSeconds, indexOfDecimalPoint + nfi.getNumberDecimalSeparator().length(), formattedSeconds.length() - indexOfDecimalPoint
-                            - nfi.getNumberDecimalSeparator().length());
+                    StringHelper.append(result, formattedSeconds, indexOfDecimalPoint + nfi.getNumberDecimalSeparator().length(),
+                            formattedSeconds.length() - indexOfDecimalPoint - nfi.getNumberDecimalSeparator().length());
                     if (ch == 'F') {
                         while (result.length() > startLen && result.charAt(result.length() - 1) == '0') {
                             result.setLength(result.length() - 1);
@@ -1511,25 +1513,25 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
         {@link #buildDateTimePatterns}.
         */
         private static String[] s_extraDateTimePatternTemplates = {
-                "M/d/yyyy H:mm:ss.f*",
-                "d MMM yyyy H:mm:ss.f*",
-                "yyyy-M-dTHH:mm:ss.f*",
-                "M-yyyy-dTH:mm:ss.f*",
-                "M-yyyy-d H:mm:ss.f*",
-                "yyyyMMddTHHmmss.f*",
-                "yyyyMMddTHHmm.f*",
-                "yyyyMMddTHH.f*"
+            "M/d/yyyy H:mm:ss.f*",
+            "d MMM yyyy H:mm:ss.f*",
+            "yyyy-M-dTHH:mm:ss.f*",
+            "M-yyyy-dTH:mm:ss.f*",
+            "M-yyyy-d H:mm:ss.f*",
+            "yyyyMMddTHHmmss.f*",
+            "yyyyMMddTHHmm.f*",
+            "yyyyMMddTHH.f*"
         };
         // DateTime.Parse patterns
         // Patterns are divided to date and time patterns. The algorithm will
         // try combinations of these patterns. The algorithm also looks for
         // day of the week, AM/PM GMT and Z independently of the patterns.
         private static String[] s_parseTimeFormatsTemplate = {
-                "H:m:s.f*",
-                "H:m:s",
-                "H:m",
-                "H tt",
-                "H'\u6642'm'\u5206's'\u79d2'"
+            "H:m:s.f*",
+            "H:m:s",
+            "H:m",
+            "H tt",
+            "H'\u6642'm'\u5206's'\u79d2'"
         };
         // Specifies AM to disallow '8'.
         private static String[] s_extraDateTimePatterns = buildDateTimePatterns(s_extraDateTimePatternTemplates, 17);
@@ -1542,76 +1544,76 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
         // different orders of day, month and year in ShortDatePattern.
         // Note that the year cannot go between the day and the month.
         private static String[] s_parseYearDayMonthFormats = {
-                "yyyy/M/dT",
-                "M/yyyy/dT",
-                "yyyy'\u5e74'M'\u6708'd'\u65e5",
-                "yyyy/d/MMMM",
-                "yyyy/MMM/d",
-                "d/MMMM/yyyy",
-                "MMM/d/yyyy",
-                "d/yyyy/MMMM",
-                "MMM/yyyy/d",
-                "yy/d/M"
+            "yyyy/M/dT",
+            "M/yyyy/dT",
+            "yyyy'\u5e74'M'\u6708'd'\u65e5",
+            "yyyy/d/MMMM",
+            "yyyy/MMM/d",
+            "d/MMMM/yyyy",
+            "MMM/d/yyyy",
+            "d/yyyy/MMMM",
+            "MMM/yyyy/d",
+            "yy/d/M"
         };
         private static String[] s_parseYearMonthDayFormats = {
-                "yyyy/M/dT",
-                "M/yyyy/dT",
-                "yyyy'\u5e74'M'\u6708'd'\u65e5",
-                "yyyy/MMMM/d",
-                "yyyy/d/MMM",
-                "MMMM/d/yyyy",
-                "d/MMM/yyyy",
-                "MMMM/yyyy/d",
-                "d/yyyy/MMM",
-                "yy/MMMM/d",
-                "yy/d/MMM",
-                "MMM/yy/d"
+            "yyyy/M/dT",
+            "M/yyyy/dT",
+            "yyyy'\u5e74'M'\u6708'd'\u65e5",
+            "yyyy/MMMM/d",
+            "yyyy/d/MMM",
+            "MMMM/d/yyyy",
+            "d/MMM/yyyy",
+            "MMMM/yyyy/d",
+            "d/yyyy/MMM",
+            "yy/MMMM/d",
+            "yy/d/MMM",
+            "MMM/yy/d"
         };
         private static String[] s_parseDayMonthYearFormats = {
-                "yyyy/M/dT",
-                "M/yyyy/dT",
-                "yyyy'\u5e74'M'\u6708'd'\u65e5",
-                "yyyy/MMMM/d",
-                "yyyy/d/MMM",
-                "d/MMMM/yyyy",
-                "MMM/d/yyyy",
-                "MMMM/yyyy/d",
-                "d/yyyy/MMM",
-                "d/MMMM/yy",
-                "yy/MMM/d",
-                "d/yy/MMM",
-                "yy/d/MMM",
-                "MMM/d/yy",
-                "MMM/yy/d"
+            "yyyy/M/dT",
+            "M/yyyy/dT",
+            "yyyy'\u5e74'M'\u6708'd'\u65e5",
+            "yyyy/MMMM/d",
+            "yyyy/d/MMM",
+            "d/MMMM/yyyy",
+            "MMM/d/yyyy",
+            "MMMM/yyyy/d",
+            "d/yyyy/MMM",
+            "d/MMMM/yy",
+            "yy/MMM/d",
+            "d/yy/MMM",
+            "yy/d/MMM",
+            "MMM/d/yy",
+            "MMM/yy/d"
         };
         private static String[] s_parseMonthDayYearFormats = {
-                "yyyy/M/dT",
-                "M/yyyy/dT",
-                "yyyy'\u5e74'M'\u6708'd'\u65e5",
-                "yyyy/MMMM/d",
-                "yyyy/d/MMM",
-                "MMMM/d/yyyy",
-                "d/MMM/yyyy",
-                "MMMM/yyyy/d",
-                "d/yyyy/MMM",
-                "MMMM/d/yy",
-                "MMM/yy/d",
-                "d/MMM/yy",
-                "yy/MMM/d",
-                "d/yy/MMM",
-                "yy/d/MMM"
+            "yyyy/M/dT",
+            "M/yyyy/dT",
+            "yyyy'\u5e74'M'\u6708'd'\u65e5",
+            "yyyy/MMMM/d",
+            "yyyy/d/MMM",
+            "MMMM/d/yyyy",
+            "d/MMM/yyyy",
+            "MMMM/yyyy/d",
+            "d/yyyy/MMM",
+            "MMMM/d/yy",
+            "MMM/yy/d",
+            "d/MMM/yy",
+            "yy/MMM/d",
+            "d/yy/MMM",
+            "yy/d/MMM"
         };
         // Patterns influenced by the MonthDayPattern in DateTimeFormatInfo.
         // Note that these patterns cannot be followed by the time.
         private static String[] s_monthDayShortFormats = {
-                "MMMM/d",
-                "d/MMM",
-                "yyyy/MMMM"
+            "MMMM/d",
+            "d/MMM",
+            "yyyy/MMMM"
         };
         private static String[] s_dayMonthShortFormats = {
-                "d/MMMM",
-                "MMM/yy",
-                "yyyy/MMMM"
+            "d/MMMM",
+            "MMM/yy",
+            "yyyy/MMMM"
         };
     }
 
@@ -2149,9 +2151,9 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
         return Parser.toString(this, formatString, CultureInfoHelper.getInvariantCulture());
     }
 
-    @CS2JWarning( {
-            "Unhandled attribute removed: Pure",
-            "Unhandled attribute removed: SuppressMessage"
+    @CS2JWarning({
+        "Unhandled attribute removed: Pure",
+        "Unhandled attribute removed: SuppressMessage"
     })
     @Nonnull
     private final String buildIso8601FormatString(@Nonnull Iso8601Format format, int digitsOfFractionalSeconds, boolean requireFractionalSeconds) {

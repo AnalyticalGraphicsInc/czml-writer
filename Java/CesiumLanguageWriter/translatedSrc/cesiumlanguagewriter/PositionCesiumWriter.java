@@ -11,10 +11,10 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code Position} to a {@link CesiumOutputStream}. A {@code Position} is defines a position. The position can optionally vary over time.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<PositionCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumCartesian3ValuePropertyWriter,
         ICesiumCartographicRadiansValuePropertyWriter, ICesiumCartographicDegreesValuePropertyWriter, ICesiumCartesian3VelocityValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
@@ -333,12 +333,12 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
 
     @Nonnull
     private final Lazy<CesiumCartographicRadiansValuePropertyAdaptor<PositionCesiumWriter>> createAsCartographicRadians() {
-        return new Lazy<CesiumCartographicRadiansValuePropertyAdaptor<PositionCesiumWriter>>(new Func1<CesiumCartographicRadiansValuePropertyAdaptor<PositionCesiumWriter>>(this,
-                "createCartographicRadians") {
-            public CesiumCartographicRadiansValuePropertyAdaptor<PositionCesiumWriter> invoke() {
-                return createCartographicRadians();
-            }
-        }, false);
+        return new Lazy<CesiumCartographicRadiansValuePropertyAdaptor<PositionCesiumWriter>>(
+                new Func1<CesiumCartographicRadiansValuePropertyAdaptor<PositionCesiumWriter>>(this, "createCartographicRadians") {
+                    public CesiumCartographicRadiansValuePropertyAdaptor<PositionCesiumWriter> invoke() {
+                        return createCartographicRadians();
+                    }
+                }, false);
     }
 
     @Nonnull
@@ -357,12 +357,12 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
 
     @Nonnull
     private final Lazy<CesiumCartographicDegreesValuePropertyAdaptor<PositionCesiumWriter>> createAsCartographicDegrees() {
-        return new Lazy<CesiumCartographicDegreesValuePropertyAdaptor<PositionCesiumWriter>>(new Func1<CesiumCartographicDegreesValuePropertyAdaptor<PositionCesiumWriter>>(this,
-                "createCartographicDegrees") {
-            public CesiumCartographicDegreesValuePropertyAdaptor<PositionCesiumWriter> invoke() {
-                return createCartographicDegrees();
-            }
-        }, false);
+        return new Lazy<CesiumCartographicDegreesValuePropertyAdaptor<PositionCesiumWriter>>(
+                new Func1<CesiumCartographicDegreesValuePropertyAdaptor<PositionCesiumWriter>>(this, "createCartographicDegrees") {
+                    public CesiumCartographicDegreesValuePropertyAdaptor<PositionCesiumWriter> invoke() {
+                        return createCartographicDegrees();
+                    }
+                }, false);
     }
 
     @Nonnull
@@ -381,12 +381,12 @@ public class PositionCesiumWriter extends CesiumInterpolatablePropertyWriter<Pos
 
     @Nonnull
     private final Lazy<CesiumCartesian3VelocityValuePropertyAdaptor<PositionCesiumWriter>> createAsCartesianVelocity() {
-        return new Lazy<CesiumCartesian3VelocityValuePropertyAdaptor<PositionCesiumWriter>>(new Func1<CesiumCartesian3VelocityValuePropertyAdaptor<PositionCesiumWriter>>(this,
-                "createCartesian3Velocity") {
-            public CesiumCartesian3VelocityValuePropertyAdaptor<PositionCesiumWriter> invoke() {
-                return createCartesian3Velocity();
-            }
-        }, false);
+        return new Lazy<CesiumCartesian3VelocityValuePropertyAdaptor<PositionCesiumWriter>>(
+                new Func1<CesiumCartesian3VelocityValuePropertyAdaptor<PositionCesiumWriter>>(this, "createCartesian3Velocity") {
+                    public CesiumCartesian3VelocityValuePropertyAdaptor<PositionCesiumWriter> invoke() {
+                        return createCartesian3Velocity();
+                    }
+                }, false);
     }
 
     @Nonnull

@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
 /**
  * A writer that can write a value as an array of color components {@code [Red, Green, Blue, Alpha]} where each component is a double in the range 0.0-1.0.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public interface ICesiumRgbafValuePropertyWriter extends ICesiumInterpolatablePropertyWriter {
     /**

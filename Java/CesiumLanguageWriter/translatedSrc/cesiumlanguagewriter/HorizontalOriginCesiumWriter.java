@@ -10,13 +10,13 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code HorizontalOrigin} to a {@link CesiumOutputStream}. A {@code HorizontalOrigin} is the horizontal origin of an element, which can optionally vary over time. It controls whether the element is left-, center-, or right-aligned with the {@code position}.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class HorizontalOriginCesiumWriter extends CesiumPropertyWriter<HorizontalOriginCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumHorizontalOriginValuePropertyWriter,
-        ICesiumReferenceValuePropertyWriter {
+public class HorizontalOriginCesiumWriter extends CesiumPropertyWriter<HorizontalOriginCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumHorizontalOriginValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code horizontalOrigin} property.
     */
@@ -149,12 +149,12 @@ public class HorizontalOriginCesiumWriter extends CesiumPropertyWriter<Horizonta
 
     @Nonnull
     private final Lazy<CesiumHorizontalOriginValuePropertyAdaptor<HorizontalOriginCesiumWriter>> createAsHorizontalOrigin() {
-        return new Lazy<CesiumHorizontalOriginValuePropertyAdaptor<HorizontalOriginCesiumWriter>>(new Func1<CesiumHorizontalOriginValuePropertyAdaptor<HorizontalOriginCesiumWriter>>(this,
-                "createHorizontalOrigin") {
-            public CesiumHorizontalOriginValuePropertyAdaptor<HorizontalOriginCesiumWriter> invoke() {
-                return createHorizontalOrigin();
-            }
-        }, false);
+        return new Lazy<CesiumHorizontalOriginValuePropertyAdaptor<HorizontalOriginCesiumWriter>>(
+                new Func1<CesiumHorizontalOriginValuePropertyAdaptor<HorizontalOriginCesiumWriter>>(this, "createHorizontalOrigin") {
+                    public CesiumHorizontalOriginValuePropertyAdaptor<HorizontalOriginCesiumWriter> invoke() {
+                        return createHorizontalOrigin();
+                    }
+                }, false);
     }
 
     @Nonnull

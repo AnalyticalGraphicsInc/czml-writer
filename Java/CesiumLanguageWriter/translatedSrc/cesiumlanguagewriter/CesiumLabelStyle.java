@@ -9,10 +9,10 @@ import javax.annotation.Nullable;
 /**
  * Specifies how the text of a label is drawn.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public enum CesiumLabelStyle implements Enumeration {
     /**
@@ -27,6 +27,7 @@ public enum CesiumLabelStyle implements Enumeration {
     * The text of the label is both filled and outlined.
     */
     FILL_AND_OUTLINE(2);
+
     private final int value;
 
     CesiumLabelStyle(int value) {

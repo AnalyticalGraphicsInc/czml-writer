@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
  {@link ICesiumPropertyWriter} for {@link CesiumCornerType} values.
  * @param <TFrom> The class that implements {@link ICesiumCornerTypeValuePropertyWriter} to adapt.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class CesiumCornerTypeValuePropertyAdaptor<TFrom extends ICesiumCornerTypeValuePropertyWriter> extends CesiumWriterAdaptor<TFrom, CesiumCornerType> {
     /**

@@ -10,13 +10,13 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code LabelStyle} to a {@link CesiumOutputStream}. A {@code LabelStyle} is the style of a label.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class LabelStyleCesiumWriter extends CesiumPropertyWriter<LabelStyleCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumLabelStyleValuePropertyWriter,
-        ICesiumReferenceValuePropertyWriter {
+public class LabelStyleCesiumWriter extends CesiumPropertyWriter<LabelStyleCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumLabelStyleValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code labelStyle} property.
     */

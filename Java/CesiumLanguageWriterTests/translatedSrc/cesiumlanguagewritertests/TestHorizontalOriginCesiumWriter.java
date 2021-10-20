@@ -2,9 +2,9 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.MapHelper;
 import agi.foundation.compatibility.TestContextRule;
+import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.util.LinkedHashMap;
@@ -16,10 +16,10 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestHorizontalOriginCesiumWriter extends TestCesiumPropertyWriter<HorizontalOriginCesiumWriter> {
@@ -27,20 +27,11 @@ public class TestHorizontalOriginCesiumWriter extends TestCesiumPropertyWriter<H
     public final void horizontalOriginCanBeWrittenAsSimpleString() {
         final String expectedPropertyName = "foo";
         final CesiumHorizontalOrigin expectedValue = CesiumHorizontalOrigin.CENTER;
-        {
-            final PacketCesiumWriter usingExpression$0 = (getPacket());
-            try {
-                {
-                    HorizontalOriginCesiumWriter writer = new HorizontalOriginCesiumWriter(expectedPropertyName);
-                    try {
-                        writer.open(getOutputStream());
-                        writer.writeHorizontalOrigin(expectedValue);
-                    } finally {
-                        DisposeHelper.dispose(writer);
-                    }
-                }
-            } finally {
-                DisposeHelper.dispose(usingExpression$0);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            try (Using<HorizontalOriginCesiumWriter> using$1 = new Using<HorizontalOriginCesiumWriter>(new HorizontalOriginCesiumWriter(expectedPropertyName))) {
+                final HorizontalOriginCesiumWriter writer = using$1.resource;
+                writer.open(getOutputStream());
+                writer.writeHorizontalOrigin(expectedValue);
             }
         }
         final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
@@ -54,21 +45,12 @@ public class TestHorizontalOriginCesiumWriter extends TestCesiumPropertyWriter<H
         JulianDate stop = start.addSeconds(100.0);
         final String expectedPropertyName = "foo";
         final CesiumHorizontalOrigin expectedValue = CesiumHorizontalOrigin.CENTER;
-        {
-            final PacketCesiumWriter usingExpression$0 = (getPacket());
-            try {
-                {
-                    HorizontalOriginCesiumWriter writer = new HorizontalOriginCesiumWriter(expectedPropertyName);
-                    try {
-                        writer.open(getOutputStream());
-                        writer.writeInterval(start, stop);
-                        writer.writeHorizontalOrigin(expectedValue);
-                    } finally {
-                        DisposeHelper.dispose(writer);
-                    }
-                }
-            } finally {
-                DisposeHelper.dispose(usingExpression$0);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            try (Using<HorizontalOriginCesiumWriter> using$1 = new Using<HorizontalOriginCesiumWriter>(new HorizontalOriginCesiumWriter(expectedPropertyName))) {
+                final HorizontalOriginCesiumWriter writer = using$1.resource;
+                writer.open(getOutputStream());
+                writer.writeInterval(start, stop);
+                writer.writeHorizontalOrigin(expectedValue);
             }
         }
         final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();

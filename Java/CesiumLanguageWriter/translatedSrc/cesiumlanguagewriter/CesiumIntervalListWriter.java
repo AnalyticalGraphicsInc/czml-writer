@@ -9,10 +9,10 @@ import javax.annotation.Nonnull;
  * Writes a list of intervals for which a property is defined.
  * @param <TPropertyWriter> The type used to represent the value of this property for a single interval.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class CesiumIntervalListWriter<TPropertyWriter extends CesiumPropertyWriter<TPropertyWriter>> extends CesiumElementWriter implements ICesiumIntervalListWriter {
     private TPropertyWriter m_propertyWriter;

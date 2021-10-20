@@ -10,13 +10,13 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code SensorVolumePortionToDisplay} to a {@link CesiumOutputStream}. A {@code SensorVolumePortionToDisplay} is the part of a sensor that should be displayed.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class SensorVolumePortionToDisplayCesiumWriter extends CesiumPropertyWriter<SensorVolumePortionToDisplayCesiumWriter> implements ICesiumDeletablePropertyWriter,
-        ICesiumSensorVolumePortionToDisplayValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
+public class SensorVolumePortionToDisplayCesiumWriter extends CesiumPropertyWriter<SensorVolumePortionToDisplayCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumSensorVolumePortionToDisplayValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code portionToDisplay} property.
     */
@@ -173,12 +173,12 @@ public class SensorVolumePortionToDisplayCesiumWriter extends CesiumPropertyWrit
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter>> createAsReference() {
-        return new Lazy<CesiumReferenceValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter>>(this,
-                "createReference") {
-            public CesiumReferenceValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter> invoke() {
-                return createReference();
-            }
-        }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter>>(
+                new Func1<CesiumReferenceValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter>>(this, "createReference") {
+                    public CesiumReferenceValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter> invoke() {
+                        return createReference();
+                    }
+                }, false);
     }
 
     @Nonnull

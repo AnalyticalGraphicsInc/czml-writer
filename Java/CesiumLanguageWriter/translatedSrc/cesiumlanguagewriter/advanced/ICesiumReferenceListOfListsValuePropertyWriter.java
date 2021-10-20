@@ -7,10 +7,10 @@ import cesiumlanguagewriter.*;
 /**
  * A writer that can write a value as a list of lists of references to other properties.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public interface ICesiumReferenceListOfListsValuePropertyWriter extends ICesiumPropertyWriter {
     /**

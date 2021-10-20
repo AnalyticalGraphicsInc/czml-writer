@@ -11,13 +11,13 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code BoundingRectangle} to a {@link CesiumOutputStream}. A {@code BoundingRectangle} is a bounding rectangle specified by a corner, width and height.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class BoundingRectangleCesiumWriter extends CesiumInterpolatablePropertyWriter<BoundingRectangleCesiumWriter> implements ICesiumDeletablePropertyWriter,
-        ICesiumBoundingRectangleValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
+public class BoundingRectangleCesiumWriter extends CesiumInterpolatablePropertyWriter<BoundingRectangleCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumBoundingRectangleValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code boundingRectangle} property.
     */
@@ -168,12 +168,12 @@ public class BoundingRectangleCesiumWriter extends CesiumInterpolatablePropertyW
 
     @Nonnull
     private final Lazy<CesiumBoundingRectangleValuePropertyAdaptor<BoundingRectangleCesiumWriter>> createAsBoundingRectangle() {
-        return new Lazy<CesiumBoundingRectangleValuePropertyAdaptor<BoundingRectangleCesiumWriter>>(new Func1<CesiumBoundingRectangleValuePropertyAdaptor<BoundingRectangleCesiumWriter>>(this,
-                "createBoundingRectangle") {
-            public CesiumBoundingRectangleValuePropertyAdaptor<BoundingRectangleCesiumWriter> invoke() {
-                return createBoundingRectangle();
-            }
-        }, false);
+        return new Lazy<CesiumBoundingRectangleValuePropertyAdaptor<BoundingRectangleCesiumWriter>>(
+                new Func1<CesiumBoundingRectangleValuePropertyAdaptor<BoundingRectangleCesiumWriter>>(this, "createBoundingRectangle") {
+                    public CesiumBoundingRectangleValuePropertyAdaptor<BoundingRectangleCesiumWriter> invoke() {
+                        return createBoundingRectangle();
+                    }
+                }, false);
     }
 
     @Nonnull

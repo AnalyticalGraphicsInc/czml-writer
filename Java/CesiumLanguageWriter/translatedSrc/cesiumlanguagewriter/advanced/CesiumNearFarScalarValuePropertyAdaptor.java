@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
  {@link ICesiumInterpolatableValuePropertyWriter} for {@link NearFarScalar} values.
  * @param <TFrom> The class that implements {@link ICesiumNearFarScalarValuePropertyWriter} to adapt.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class CesiumNearFarScalarValuePropertyAdaptor<TFrom extends ICesiumNearFarScalarValuePropertyWriter> extends CesiumInterpolatableWriterAdaptor<TFrom, NearFarScalar> {
     /**

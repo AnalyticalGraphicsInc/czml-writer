@@ -15,10 +15,10 @@ import javax.annotation.Nullable;
  single interval or over multiple intervals.
  * @param <TDerived> The type of the class derived from this one.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter<TDerived>> extends CesiumElementWriter implements ICesiumPropertyWriter {
     /**
@@ -218,6 +218,7 @@ public abstract class CesiumPropertyWriter<TDerived extends CesiumPropertyWriter
         PROPERTY(0),
         INTERVAL(1),
         PROPERTY_CONVERTED_TO_INTERVAL(2);
+
         private final int value;
 
         ElementType(int value) {

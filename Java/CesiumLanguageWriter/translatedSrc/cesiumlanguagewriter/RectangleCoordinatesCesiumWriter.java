@@ -11,13 +11,13 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code RectangleCoordinates} to a {@link CesiumOutputStream}. A {@code RectangleCoordinates} is a set of coordinates describing a cartographic rectangle on the surface of the ellipsoid.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class RectangleCoordinatesCesiumWriter extends CesiumInterpolatablePropertyWriter<RectangleCoordinatesCesiumWriter> implements ICesiumDeletablePropertyWriter,
-        ICesiumCartographicRectangleRadiansValuePropertyWriter, ICesiumCartographicRectangleDegreesValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
+public class RectangleCoordinatesCesiumWriter extends CesiumInterpolatablePropertyWriter<RectangleCoordinatesCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumCartographicRectangleRadiansValuePropertyWriter, ICesiumCartographicRectangleDegreesValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code wsen} property.
     */

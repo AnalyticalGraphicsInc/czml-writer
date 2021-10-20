@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code Shape} to a {@link CesiumOutputStream}. A {@code Shape} is a list of two-dimensional positions defining a shape.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class ShapeCesiumWriter extends CesiumPropertyWriter<ShapeCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumCartesian2ListValuePropertyWriter {
     /**

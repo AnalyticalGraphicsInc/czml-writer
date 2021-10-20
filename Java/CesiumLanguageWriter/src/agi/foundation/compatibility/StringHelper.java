@@ -536,6 +536,7 @@ public final class StringHelper {
      * @return A copy of format in which the format items have been replaced by the string
      *         representation of the corresponding objects in args.
      */
+    @Nonnull
     public static String format(@Nonnull String format, @Nonnull Object... args) {
         return format(null, format, args);
     }
@@ -554,6 +555,7 @@ public final class StringHelper {
      * @return A copy of format in which the format items have been replaced by the string
      *         representation of the corresponding objects in args.
      */
+    @Nonnull
     public static String format(@Nullable Locale locale, @Nonnull String format, @Nonnull Object... args) {
         ArgumentNullException.assertNonNull(format, "format");
         ArgumentNullException.assertNonNull(args, "args");
@@ -584,6 +586,7 @@ public final class StringHelper {
             this.result = new StringBuilder();
         }
 
+        @Nonnull
         public String format() {
             if (length == 0)
                 return empty;

@@ -9,10 +9,10 @@ import javax.annotation.Nullable;
 /**
  * Specifies which parts of a sensor are to be displayed.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public enum CesiumSensorVolumePortionToDisplay implements Enumeration {
     /**
@@ -27,6 +27,7 @@ public enum CesiumSensorVolumePortionToDisplay implements Enumeration {
     * Only the part of the sensor projection above the ellipsoid horizon is shown.
     */
     ABOVE_ELLIPSOID_HORIZON(2);
+
     private final int value;
 
     CesiumSensorVolumePortionToDisplay(int value) {

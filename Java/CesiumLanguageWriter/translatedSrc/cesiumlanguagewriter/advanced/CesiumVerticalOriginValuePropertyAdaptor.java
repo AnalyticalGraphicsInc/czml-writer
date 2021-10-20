@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
  {@link ICesiumInterpolatableValuePropertyWriter} for {@link CesiumVerticalOrigin} values.
  * @param <TFrom> The class that implements {@link ICesiumVerticalOriginValuePropertyWriter} to adapt.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class CesiumVerticalOriginValuePropertyAdaptor<TFrom extends ICesiumVerticalOriginValuePropertyWriter> extends CesiumWriterAdaptor<TFrom, CesiumVerticalOrigin> {
     /**

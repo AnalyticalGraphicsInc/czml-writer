@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
  {@link ICesiumPropertyWriter} for a list of {@link Reference} values.
  * @param <TFrom> The class that implements {@link ICesiumReferenceListValuePropertyWriter} to adapt.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class CesiumReferenceListValuePropertyAdaptor<TFrom extends ICesiumReferenceListValuePropertyWriter> extends CesiumWriterAdaptor<TFrom, Iterable<Reference>> {
     /**

@@ -9,10 +9,10 @@ import javax.annotation.Nonnull;
 /**
  * A writer that can write a value as a three-dimensional unit magnitude Cartesian.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public interface ICesiumUnitCartesian3ValuePropertyWriter extends ICesiumInterpolatablePropertyWriter {
     /**

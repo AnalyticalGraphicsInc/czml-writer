@@ -14,10 +14,10 @@ import javax.annotation.Nonnull;
 /**
  * Holds two values which form the bounds of a range of real numbers.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public final class Bounds implements IEquatable<Bounds>, ImmutableValueType {
     /**

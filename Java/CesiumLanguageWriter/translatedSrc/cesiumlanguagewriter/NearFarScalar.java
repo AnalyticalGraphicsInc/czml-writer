@@ -17,10 +17,10 @@ import javax.annotation.Nonnull;
  near or far value while the distance is less than the near distance or greater 
  than the far distance, respectively.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public final class NearFarScalar implements IEquatable<NearFarScalar>, ImmutableValueType {
     /**

@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code PositionList} to a {@link CesiumOutputStream}. A {@code PositionList} is a list of positions.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumCartesian3ListValuePropertyWriter,
         ICesiumCartographicRadiansListValuePropertyWriter, ICesiumCartographicDegreesListValuePropertyWriter, ICesiumReferenceListValuePropertyWriter {
@@ -190,12 +190,12 @@ public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListC
 
     @Nonnull
     private final Lazy<CesiumCartographicRadiansListValuePropertyAdaptor<PositionListCesiumWriter>> createAsCartographicRadians() {
-        return new Lazy<CesiumCartographicRadiansListValuePropertyAdaptor<PositionListCesiumWriter>>(new Func1<CesiumCartographicRadiansListValuePropertyAdaptor<PositionListCesiumWriter>>(this,
-                "createCartographicRadiansList") {
-            public CesiumCartographicRadiansListValuePropertyAdaptor<PositionListCesiumWriter> invoke() {
-                return createCartographicRadiansList();
-            }
-        }, false);
+        return new Lazy<CesiumCartographicRadiansListValuePropertyAdaptor<PositionListCesiumWriter>>(
+                new Func1<CesiumCartographicRadiansListValuePropertyAdaptor<PositionListCesiumWriter>>(this, "createCartographicRadiansList") {
+                    public CesiumCartographicRadiansListValuePropertyAdaptor<PositionListCesiumWriter> invoke() {
+                        return createCartographicRadiansList();
+                    }
+                }, false);
     }
 
     @Nonnull
@@ -214,12 +214,12 @@ public class PositionListCesiumWriter extends CesiumPropertyWriter<PositionListC
 
     @Nonnull
     private final Lazy<CesiumCartographicDegreesListValuePropertyAdaptor<PositionListCesiumWriter>> createAsCartographicDegrees() {
-        return new Lazy<CesiumCartographicDegreesListValuePropertyAdaptor<PositionListCesiumWriter>>(new Func1<CesiumCartographicDegreesListValuePropertyAdaptor<PositionListCesiumWriter>>(this,
-                "createCartographicDegreesList") {
-            public CesiumCartographicDegreesListValuePropertyAdaptor<PositionListCesiumWriter> invoke() {
-                return createCartographicDegreesList();
-            }
-        }, false);
+        return new Lazy<CesiumCartographicDegreesListValuePropertyAdaptor<PositionListCesiumWriter>>(
+                new Func1<CesiumCartographicDegreesListValuePropertyAdaptor<PositionListCesiumWriter>>(this, "createCartographicDegreesList") {
+                    public CesiumCartographicDegreesListValuePropertyAdaptor<PositionListCesiumWriter> invoke() {
+                        return createCartographicDegreesList();
+                    }
+                }, false);
     }
 
     @Nonnull

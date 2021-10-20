@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
  {@link ICesiumPropertyWriter} for a list of {@link Spherical} values.
  * @param <TFrom> The class that implements {@link ICesiumSphericalListValuePropertyWriter} to adapt.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class CesiumSphericalListValuePropertyAdaptor<TFrom extends ICesiumSphericalListValuePropertyWriter> extends CesiumWriterAdaptor<TFrom, Iterable<Spherical>> {
     /**

@@ -10,13 +10,13 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code VerticalOrigin} to a {@link CesiumOutputStream}. A {@code VerticalOrigin} is the vertical origin of an element, which can optionally vary over time. It controls whether the element is bottom-, center-, or top-aligned with the {@code position}.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class VerticalOriginCesiumWriter extends CesiumPropertyWriter<VerticalOriginCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumVerticalOriginValuePropertyWriter,
-        ICesiumReferenceValuePropertyWriter {
+public class VerticalOriginCesiumWriter extends CesiumPropertyWriter<VerticalOriginCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumVerticalOriginValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code verticalOrigin} property.
     */
@@ -149,12 +149,12 @@ public class VerticalOriginCesiumWriter extends CesiumPropertyWriter<VerticalOri
 
     @Nonnull
     private final Lazy<CesiumVerticalOriginValuePropertyAdaptor<VerticalOriginCesiumWriter>> createAsVerticalOrigin() {
-        return new Lazy<CesiumVerticalOriginValuePropertyAdaptor<VerticalOriginCesiumWriter>>(new Func1<CesiumVerticalOriginValuePropertyAdaptor<VerticalOriginCesiumWriter>>(this,
-                "createVerticalOrigin") {
-            public CesiumVerticalOriginValuePropertyAdaptor<VerticalOriginCesiumWriter> invoke() {
-                return createVerticalOrigin();
-            }
-        }, false);
+        return new Lazy<CesiumVerticalOriginValuePropertyAdaptor<VerticalOriginCesiumWriter>>(
+                new Func1<CesiumVerticalOriginValuePropertyAdaptor<VerticalOriginCesiumWriter>>(this, "createVerticalOrigin") {
+                    public CesiumVerticalOriginValuePropertyAdaptor<VerticalOriginCesiumWriter> invoke() {
+                        return createVerticalOrigin();
+                    }
+                }, false);
     }
 
     @Nonnull

@@ -12,10 +12,10 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code Uri} to a {@link CesiumOutputStream}. A {@code Uri} is a URI value. The URI can optionally vary with time.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class UriCesiumWriter extends CesiumPropertyWriter<UriCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumUriValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**

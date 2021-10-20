@@ -14,10 +14,10 @@ import javax.annotation.Nonnull;
  * <p>
  The corresponding 2-dimensional coordinates are {@link Rectangular} coordinates.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 @CS2JWarning("Unhandled attribute removed: SuppressMessage")
 public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueType {
@@ -226,9 +226,8 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     @CS2JWarning("Unhandled attribute removed: Pure")
     @Nonnull
     public final Cartesian rotate(@Nonnull Matrix3By3 rotation) {
-        return new Cartesian(rotation.getM11() * m_x + rotation.getM12() * m_y + rotation.getM13() * m_z, rotation.getM21() * m_x + rotation.getM22() * m_y + rotation.getM23() * m_z, rotation
-                .getM31()
-                * m_x + rotation.getM32() * m_y + rotation.getM33() * m_z);
+        return new Cartesian(rotation.getM11() * m_x + rotation.getM12() * m_y + rotation.getM13() * m_z, rotation.getM21() * m_x + rotation.getM22() * m_y + rotation.getM23() * m_z,
+                rotation.getM31() * m_x + rotation.getM32() * m_y + rotation.getM33() * m_z);
     }
 
     /**
@@ -244,8 +243,9 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
         double w = rotation.getW();
         double difference = w * w - rotation.getX() * rotation.getX() - rotation.getY() * rotation.getY() - rotation.getZ() * rotation.getZ();
         double dot = m_x * rotation.getX() + m_y * rotation.getY() + m_z * rotation.getZ();
-        return new Cartesian(difference * m_x + 2.0 * (w * (m_y * rotation.getZ() - m_z * rotation.getY()) + dot * rotation.getX()), difference * m_y + 2.0
-                * (w * (m_z * rotation.getX() - m_x * rotation.getZ()) + dot * rotation.getY()), difference * m_z + 2.0 * (w * (m_x * rotation.getY() - m_y * rotation.getX()) + dot * rotation.getZ()));
+        return new Cartesian(difference * m_x + 2.0 * (w * (m_y * rotation.getZ() - m_z * rotation.getY()) + dot * rotation.getX()),
+                difference * m_y + 2.0 * (w * (m_z * rotation.getX() - m_x * rotation.getZ()) + dot * rotation.getY()),
+                difference * m_z + 2.0 * (w * (m_x * rotation.getY() - m_y * rotation.getX()) + dot * rotation.getZ()));
     }
 
     /**
@@ -391,9 +391,9 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     * @exception ArithmeticException The magnitude of the provided coordinates must not be zero.
     * @exception ArithmeticException The magnitude of the provided coordinates must not be infinite.
     */
-    @CS2JWarning( {
-            "Unhandled attribute removed: Pure",
-            "Unhandled attribute removed: SuppressMessage"
+    @CS2JWarning({
+        "Unhandled attribute removed: Pure",
+        "Unhandled attribute removed: SuppressMessage"
     })
     @Nonnull
     public final UnitCartesian normalize(@Nonnull double[] magnitude) {

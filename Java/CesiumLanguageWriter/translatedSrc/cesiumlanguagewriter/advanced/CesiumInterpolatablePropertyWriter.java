@@ -10,13 +10,13 @@ import javax.annotation.Nonnull;
  and interpolated.  The property may be defined over a single interval or over multiple intervals.
  * @param <TDerived> The type of the class derived from this one.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public abstract class CesiumInterpolatablePropertyWriter<TDerived extends CesiumInterpolatablePropertyWriter<TDerived>> extends CesiumPropertyWriter<TDerived> implements
-        ICesiumInterpolatablePropertyWriter {
+public abstract class CesiumInterpolatablePropertyWriter<TDerived extends CesiumInterpolatablePropertyWriter<TDerived>> extends CesiumPropertyWriter<TDerived>
+        implements ICesiumInterpolatablePropertyWriter {
     /**
     * Initializes a new instance.
     * @param propertyName The name of the property.

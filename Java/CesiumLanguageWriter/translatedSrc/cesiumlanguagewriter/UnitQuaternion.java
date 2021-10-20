@@ -23,10 +23,10 @@ import javax.annotation.Nullable;
  </p>
  * @see Matrix3By3
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public final class UnitQuaternion implements IEquatable<UnitQuaternion>, ImmutableValueType {
     /**
@@ -248,9 +248,9 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     @CS2JWarning("Unhandled attribute removed: Pure")
     @Nonnull
     public final UnitQuaternion multiply(@Nonnull UnitQuaternion quaternion) {
-        return new UnitQuaternion(m_w * quaternion.m_w - m_x * quaternion.m_x - m_y * quaternion.m_y - m_z * quaternion.m_z, m_w * quaternion.m_x + m_x * quaternion.m_w - m_y * quaternion.m_z + m_z
-                * quaternion.m_y, m_w * quaternion.m_y + m_x * quaternion.m_z + m_y * quaternion.m_w - m_z * quaternion.m_x, m_w * quaternion.m_z - m_x * quaternion.m_y + m_y * quaternion.m_x + m_z
-                * quaternion.m_w);
+        return new UnitQuaternion(m_w * quaternion.m_w - m_x * quaternion.m_x - m_y * quaternion.m_y - m_z * quaternion.m_z,
+                m_w * quaternion.m_x + m_x * quaternion.m_w - m_y * quaternion.m_z + m_z * quaternion.m_y, m_w * quaternion.m_y + m_x * quaternion.m_z + m_y * quaternion.m_w - m_z * quaternion.m_x,
+                m_w * quaternion.m_z - m_x * quaternion.m_y + m_y * quaternion.m_x + m_z * quaternion.m_w);
     }
 
     /**
@@ -383,6 +383,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     private static enum Normalization implements Enumeration {
         UNNORMALIZED(0),
         NORMALIZED(1);
+
         private final int value;
 
         Normalization(int value) {

@@ -16,10 +16,10 @@ import javax.annotation.Nonnull;
  * A URI resolver that downloads files and converts them to data URIs.  Downloaded files are cached
  using a least-recently used cache.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class CachingCesiumUriResolver implements ICesiumUriResolver {
     /**

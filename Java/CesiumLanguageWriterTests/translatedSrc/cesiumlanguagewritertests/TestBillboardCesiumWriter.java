@@ -2,9 +2,9 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.MapHelper;
 import agi.foundation.compatibility.TestContextRule;
+import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.io.StringWriter;
@@ -20,36 +20,23 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<BillboardCesiumWriter> {
     @Test
     public final void testShowProperty() {
         final boolean expectedShow = true;
-        {
-            final PacketCesiumWriter usingExpression$0 = (getPacket());
-            try {
-                {
-                    BillboardCesiumWriter billboard = getPacket().openBillboardProperty();
-                    try {
-                        {
-                            BillboardCesiumWriter interval = billboard.openInterval();
-                            try {
-                                interval.writeShowProperty(expectedShow);
-                            } finally {
-                                DisposeHelper.dispose(interval);
-                            }
-                        }
-                    } finally {
-                        DisposeHelper.dispose(billboard);
-                    }
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            try (Using<BillboardCesiumWriter> using$1 = new Using<BillboardCesiumWriter>(getPacket().openBillboardProperty())) {
+                final BillboardCesiumWriter billboard = using$1.resource;
+                try (Using<BillboardCesiumWriter> using$2 = new Using<BillboardCesiumWriter>(billboard.openInterval())) {
+                    final BillboardCesiumWriter interval = using$2.resource;
+                    interval.writeShowProperty(expectedShow);
                 }
-            } finally {
-                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
@@ -70,56 +57,27 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
         final boolean interval1Value = true;
         final boolean interval2Value = false;
         final boolean interval3Value = true;
-        {
-            final PacketCesiumWriter usingExpression$0 = (getPacket());
-            try {
-                {
-                    BillboardCesiumWriter billboard = getPacket().openBillboardProperty();
-                    try {
-                        {
-                            BooleanCesiumWriter show = billboard.openShowProperty();
-                            try {
-                                {
-                                    CesiumIntervalListWriter<BooleanCesiumWriter> showIntervals = show.openMultipleIntervals();
-                                    try {
-                                        {
-                                            BooleanCesiumWriter interval = showIntervals.openInterval(interval1Start, interval1Stop);
-                                            try {
-                                                interval.writeBoolean(interval1Value);
-                                            } finally {
-                                                DisposeHelper.dispose(interval);
-                                            }
-                                        }
-                                        {
-                                            BooleanCesiumWriter interval = showIntervals.openInterval(interval2Start, interval2Stop);
-                                            try {
-                                                interval.writeBoolean(interval2Value);
-                                            } finally {
-                                                DisposeHelper.dispose(interval);
-                                            }
-                                        }
-                                        {
-                                            BooleanCesiumWriter interval = showIntervals.openInterval(interval3Start, interval3Stop);
-                                            try {
-                                                interval.writeBoolean(interval3Value);
-                                            } finally {
-                                                DisposeHelper.dispose(interval);
-                                            }
-                                        }
-                                    } finally {
-                                        DisposeHelper.dispose(showIntervals);
-                                    }
-                                }
-                            } finally {
-                                DisposeHelper.dispose(show);
-                            }
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            try (Using<BillboardCesiumWriter> using$1 = new Using<BillboardCesiumWriter>(getPacket().openBillboardProperty())) {
+                final BillboardCesiumWriter billboard = using$1.resource;
+                try (Using<BooleanCesiumWriter> using$2 = new Using<BooleanCesiumWriter>(billboard.openShowProperty())) {
+                    final BooleanCesiumWriter show = using$2.resource;
+                    try (Using<CesiumIntervalListWriter<BooleanCesiumWriter>> using$3 = new Using<CesiumIntervalListWriter<BooleanCesiumWriter>>(show.openMultipleIntervals())) {
+                        final CesiumIntervalListWriter<BooleanCesiumWriter> showIntervals = using$3.resource;
+                        try (Using<BooleanCesiumWriter> using$4 = new Using<BooleanCesiumWriter>(showIntervals.openInterval(interval1Start, interval1Stop))) {
+                            final BooleanCesiumWriter interval = using$4.resource;
+                            interval.writeBoolean(interval1Value);
                         }
-                    } finally {
-                        DisposeHelper.dispose(billboard);
+                        try (Using<BooleanCesiumWriter> using$5 = new Using<BooleanCesiumWriter>(showIntervals.openInterval(interval2Start, interval2Stop))) {
+                            final BooleanCesiumWriter interval = using$5.resource;
+                            interval.writeBoolean(interval2Value);
+                        }
+                        try (Using<BooleanCesiumWriter> using$6 = new Using<BooleanCesiumWriter>(showIntervals.openInterval(interval3Start, interval3Stop))) {
+                            final BooleanCesiumWriter interval = using$6.resource;
+                            interval.writeBoolean(interval3Value);
+                        }
                     }
                 }
-            } finally {
-                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();
@@ -143,26 +101,13 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
     @Test
     public final void testScaleByDistanceProperty() {
         NearFarScalar expectedScaleByDistance = new NearFarScalar(100.5, 1.5, 200.5, 2.5);
-        {
-            final PacketCesiumWriter usingExpression$0 = (getPacket());
-            try {
-                {
-                    BillboardCesiumWriter billboard = getPacket().openBillboardProperty();
-                    try {
-                        {
-                            BillboardCesiumWriter interval = billboard.openInterval();
-                            try {
-                                interval.writeScaleByDistanceProperty(expectedScaleByDistance);
-                            } finally {
-                                DisposeHelper.dispose(interval);
-                            }
-                        }
-                    } finally {
-                        DisposeHelper.dispose(billboard);
-                    }
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            try (Using<BillboardCesiumWriter> using$1 = new Using<BillboardCesiumWriter>(getPacket().openBillboardProperty())) {
+                final BillboardCesiumWriter billboard = using$1.resource;
+                try (Using<BillboardCesiumWriter> using$2 = new Using<BillboardCesiumWriter>(billboard.openInterval())) {
+                    final BillboardCesiumWriter interval = using$2.resource;
+                    interval.writeScaleByDistanceProperty(expectedScaleByDistance);
                 }
-            } finally {
-                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
@@ -173,39 +118,22 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
     @Test
     public final void testScaleByDistancePropertySamples() {
         JulianDate epoch = new GregorianDate(2012, 4, 2, 12, 0, 0D).toJulianDate();
-        {
-            final PacketCesiumWriter usingExpression$0 = (getPacket());
-            try {
-                {
-                    BillboardCesiumWriter billboard = getPacket().openBillboardProperty();
-                    try {
-                        {
-                            BillboardCesiumWriter interval = billboard.openInterval();
-                            try {
-                                {
-                                    NearFarScalarCesiumWriter scaleByDistance = interval.openScaleByDistanceProperty();
-                                    try {
-                                        ArrayList<JulianDate> dates = new ArrayList<JulianDate>();
-                                        ArrayList<NearFarScalar> values = new ArrayList<NearFarScalar>();
-                                        dates.add(epoch);
-                                        values.add(new NearFarScalar(100.0, 1.0, 200.0, 2.0));
-                                        dates.add(epoch.addSeconds(60.0));
-                                        values.add(new NearFarScalar(200.0, 1.0, 300.0, 2.0));
-                                        scaleByDistance.writeNearFarScalar(dates, values);
-                                    } finally {
-                                        DisposeHelper.dispose(scaleByDistance);
-                                    }
-                                }
-                            } finally {
-                                DisposeHelper.dispose(interval);
-                            }
-                        }
-                    } finally {
-                        DisposeHelper.dispose(billboard);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            try (Using<BillboardCesiumWriter> using$1 = new Using<BillboardCesiumWriter>(getPacket().openBillboardProperty())) {
+                final BillboardCesiumWriter billboard = using$1.resource;
+                try (Using<BillboardCesiumWriter> using$2 = new Using<BillboardCesiumWriter>(billboard.openInterval())) {
+                    final BillboardCesiumWriter interval = using$2.resource;
+                    try (Using<NearFarScalarCesiumWriter> using$3 = new Using<NearFarScalarCesiumWriter>(interval.openScaleByDistanceProperty())) {
+                        final NearFarScalarCesiumWriter scaleByDistance = using$3.resource;
+                        ArrayList<JulianDate> dates = new ArrayList<JulianDate>();
+                        ArrayList<NearFarScalar> values = new ArrayList<NearFarScalar>();
+                        dates.add(epoch);
+                        values.add(new NearFarScalar(100.0, 1.0, 200.0, 2.0));
+                        dates.add(epoch.addSeconds(60.0));
+                        values.add(new NearFarScalar(200.0, 1.0, 300.0, 2.0));
+                        scaleByDistance.writeNearFarScalar(dates, values);
                     }
                 }
-            } finally {
-                DisposeHelper.dispose(usingExpression$0);
             }
         }
         Assert.assertEquals("{\"billboard\":{\"scaleByDistance\":{\"epoch\":\"20120402T12Z\",\"nearFarScalar\":[0,100,1,200,2,60,200,1,300,2]}}}", getStringWriter().toString());
@@ -213,26 +141,13 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
 
     @Test
     public final void testDeleteAlignedAxis() {
-        {
-            final PacketCesiumWriter usingExpression$0 = (getPacket());
-            try {
-                {
-                    BillboardCesiumWriter billboard = getPacket().openBillboardProperty();
-                    try {
-                        {
-                            AlignedAxisCesiumWriter alignedAxis = billboard.openAlignedAxisProperty();
-                            try {
-                                alignedAxis.writeDelete(true);
-                            } finally {
-                                DisposeHelper.dispose(alignedAxis);
-                            }
-                        }
-                    } finally {
-                        DisposeHelper.dispose(billboard);
-                    }
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            try (Using<BillboardCesiumWriter> using$1 = new Using<BillboardCesiumWriter>(getPacket().openBillboardProperty())) {
+                final BillboardCesiumWriter billboard = using$1.resource;
+                try (Using<AlignedAxisCesiumWriter> using$2 = new Using<AlignedAxisCesiumWriter>(billboard.openAlignedAxisProperty())) {
+                    final AlignedAxisCesiumWriter alignedAxis = using$2.resource;
+                    alignedAxis.writeDelete(true);
                 }
-            } finally {
-                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
@@ -244,26 +159,13 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
 
     @Test
     public final void testDeleteScale() {
-        {
-            final PacketCesiumWriter usingExpression$0 = (getPacket());
-            try {
-                {
-                    BillboardCesiumWriter billboard = getPacket().openBillboardProperty();
-                    try {
-                        {
-                            DoubleCesiumWriter scale = billboard.openScaleProperty();
-                            try {
-                                scale.writeDelete(true);
-                            } finally {
-                                DisposeHelper.dispose(scale);
-                            }
-                        }
-                    } finally {
-                        DisposeHelper.dispose(billboard);
-                    }
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            try (Using<BillboardCesiumWriter> using$1 = new Using<BillboardCesiumWriter>(getPacket().openBillboardProperty())) {
+                final BillboardCesiumWriter billboard = using$1.resource;
+                try (Using<DoubleCesiumWriter> using$2 = new Using<DoubleCesiumWriter>(billboard.openScaleProperty())) {
+                    final DoubleCesiumWriter scale = using$2.resource;
+                    scale.writeDelete(true);
                 }
-            } finally {
-                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();

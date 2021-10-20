@@ -11,13 +11,13 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code Double} to a {@link CesiumOutputStream}. A {@code Double} is a floating-point number.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class DoubleCesiumWriter extends CesiumInterpolatablePropertyWriter<DoubleCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumDoubleValuePropertyWriter,
-        ICesiumReferenceValuePropertyWriter {
+public class DoubleCesiumWriter extends CesiumInterpolatablePropertyWriter<DoubleCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumDoubleValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code number} property.
     */

@@ -19,10 +19,10 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCesiumResource {
@@ -58,11 +58,11 @@ public class TestCesiumResource {
     public final void testFromStream() {
         // arbitrary bytes
         byte[] contents = {
-                0,
-                1,
-                2,
-                3,
-                4
+            0,
+            1,
+            2,
+            3,
+            4
         };
         MemoryStream stream = new MemoryStream(contents);
         CesiumResource resource = CesiumResource.fromStream(stream, CesiumImageFormat.PNG);
@@ -75,11 +75,11 @@ public class TestCesiumResource {
     public final void testFromStreamMimeType() {
         // arbitrary bytes
         byte[] contents = {
-                0,
-                1,
-                2,
-                3,
-                4
+            0,
+            1,
+            2,
+            3,
+            4
         };
         MemoryStream stream = new MemoryStream(contents);
         CesiumResource resource = CesiumResource.fromStream(stream, "application/octet-stream");

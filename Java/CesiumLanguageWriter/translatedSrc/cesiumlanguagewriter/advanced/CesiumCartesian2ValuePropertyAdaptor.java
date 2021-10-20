@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
  {@link ICesiumInterpolatableValuePropertyWriter} for {@link Rectangular} values.
  * @param <TFrom> The class that implements {@link ICesiumCartesian2ValuePropertyWriter} to adapt.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class CesiumCartesian2ValuePropertyAdaptor<TFrom extends ICesiumCartesian2ValuePropertyWriter> extends CesiumInterpolatableWriterAdaptor<TFrom, Rectangular> {
     /**

@@ -8,10 +8,10 @@ import java.util.List;
 /**
  * A writer that can write a value as a Cartographic rectangle {@code [WestLongitude, SouthLatitude, EastLongitude, NorthLatitude]}, with values in degrees.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public interface ICesiumCartographicRectangleDegreesValuePropertyWriter extends ICesiumInterpolatablePropertyWriter {
     /**

@@ -6,10 +6,10 @@ import agi.foundation.compatibility.*;
 /**
  * A collection of constants.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public final class Constants {
     private Constants() {}

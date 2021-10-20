@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
  {@link ICesiumPropertyWriter} for a list of {@link Cartesian} values.
  * @param <TFrom> The class that implements {@link ICesiumCartesian3ListValuePropertyWriter} to adapt.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class CesiumCartesian3ListValuePropertyAdaptor<TFrom extends ICesiumCartesian3ListValuePropertyWriter> extends CesiumWriterAdaptor<TFrom, Iterable<Cartesian>> {
     /**

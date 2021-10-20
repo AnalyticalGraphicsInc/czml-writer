@@ -2,9 +2,9 @@ package cesiumlanguagewriter;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.Func1;
 import agi.foundation.compatibility.Lazy;
+import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.ColorCesiumWriter;
 import cesiumlanguagewriter.DoubleCesiumWriter;
@@ -16,10 +16,10 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code StripeMaterial} to a {@link CesiumOutputStream}. A {@code StripeMaterial} is a material that fills the surface with alternating colors.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMaterialCesiumWriter> {
     /**
@@ -125,13 +125,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param value The orientation.
     */
     public final void writeOrientationProperty(@Nonnull CesiumStripeOrientation value) {
-        {
-            StripeOrientationCesiumWriter writer = openOrientationProperty();
-            try {
-                writer.writeStripeOrientation(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<StripeOrientationCesiumWriter> using$0 = new Using<StripeOrientationCesiumWriter>(openOrientationProperty())) {
+            final StripeOrientationCesiumWriter writer = using$0.resource;
+            writer.writeStripeOrientation(value);
         }
     }
 
@@ -140,13 +136,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param value The reference.
     */
     public final void writeOrientationPropertyReference(Reference value) {
-        {
-            StripeOrientationCesiumWriter writer = openOrientationProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<StripeOrientationCesiumWriter> using$0 = new Using<StripeOrientationCesiumWriter>(openOrientationProperty())) {
+            final StripeOrientationCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -155,13 +147,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param value The reference.
     */
     public final void writeOrientationPropertyReference(String value) {
-        {
-            StripeOrientationCesiumWriter writer = openOrientationProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<StripeOrientationCesiumWriter> using$0 = new Using<StripeOrientationCesiumWriter>(openOrientationProperty())) {
+            final StripeOrientationCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -171,13 +159,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param propertyName The property on the referenced object.
     */
     public final void writeOrientationPropertyReference(String identifier, String propertyName) {
-        {
-            StripeOrientationCesiumWriter writer = openOrientationProperty();
-            try {
-                writer.writeReference(identifier, propertyName);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<StripeOrientationCesiumWriter> using$0 = new Using<StripeOrientationCesiumWriter>(openOrientationProperty())) {
+            final StripeOrientationCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyName);
         }
     }
 
@@ -187,13 +171,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
     public final void writeOrientationPropertyReference(String identifier, String[] propertyNames) {
-        {
-            StripeOrientationCesiumWriter writer = openOrientationProperty();
-            try {
-                writer.writeReference(identifier, propertyNames);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<StripeOrientationCesiumWriter> using$0 = new Using<StripeOrientationCesiumWriter>(openOrientationProperty())) {
+            final StripeOrientationCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyNames);
         }
     }
 
@@ -219,13 +199,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param color The color.
     */
     public final void writeEvenColorProperty(@Nonnull Color color) {
-        {
-            ColorCesiumWriter writer = openEvenColorProperty();
-            try {
-                writer.writeRgba(color);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openEvenColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeRgba(color);
         }
     }
 
@@ -237,13 +213,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param alpha The alpha component in the range 0 to 255.
     */
     public final void writeEvenColorProperty(int red, int green, int blue, int alpha) {
-        {
-            ColorCesiumWriter writer = openEvenColorProperty();
-            try {
-                writer.writeRgba(red, green, blue, alpha);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openEvenColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeRgba(red, green, blue, alpha);
         }
     }
 
@@ -253,13 +225,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param values The values corresponding to each date.
     */
     public final void writeEvenColorProperty(List<JulianDate> dates, List<Color> values) {
-        {
-            ColorCesiumWriter writer = openEvenColorProperty();
-            try {
-                writer.writeRgba(dates, values);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openEvenColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeRgba(dates, values);
         }
     }
 
@@ -271,13 +239,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param length The number of elements to write.
     */
     public final void writeEvenColorProperty(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
-        {
-            ColorCesiumWriter writer = openEvenColorProperty();
-            try {
-                writer.writeRgba(dates, colors, startIndex, length);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openEvenColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeRgba(dates, colors, startIndex, length);
         }
     }
 
@@ -286,13 +250,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param color The color.
     */
     public final void writeEvenColorPropertyRgbaf(@Nonnull Color color) {
-        {
-            ColorCesiumWriter writer = openEvenColorProperty();
-            try {
-                writer.writeRgbaf(color);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openEvenColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeRgbaf(color);
         }
     }
 
@@ -304,13 +264,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param alpha The alpha component in the range 0 to 1.0.
     */
     public final void writeEvenColorPropertyRgbaf(float red, float green, float blue, float alpha) {
-        {
-            ColorCesiumWriter writer = openEvenColorProperty();
-            try {
-                writer.writeRgbaf(red, green, blue, alpha);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openEvenColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeRgbaf(red, green, blue, alpha);
         }
     }
 
@@ -320,13 +276,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param values The values corresponding to each date.
     */
     public final void writeEvenColorPropertyRgbaf(List<JulianDate> dates, List<Color> values) {
-        {
-            ColorCesiumWriter writer = openEvenColorProperty();
-            try {
-                writer.writeRgbaf(dates, values);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openEvenColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeRgbaf(dates, values);
         }
     }
 
@@ -338,13 +290,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param length The number of elements to write.
     */
     public final void writeEvenColorPropertyRgbaf(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
-        {
-            ColorCesiumWriter writer = openEvenColorProperty();
-            try {
-                writer.writeRgbaf(dates, colors, startIndex, length);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openEvenColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeRgbaf(dates, colors, startIndex, length);
         }
     }
 
@@ -353,13 +301,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param value The reference.
     */
     public final void writeEvenColorPropertyReference(Reference value) {
-        {
-            ColorCesiumWriter writer = openEvenColorProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openEvenColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -368,13 +312,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param value The reference.
     */
     public final void writeEvenColorPropertyReference(String value) {
-        {
-            ColorCesiumWriter writer = openEvenColorProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openEvenColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -384,13 +324,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param propertyName The property on the referenced object.
     */
     public final void writeEvenColorPropertyReference(String identifier, String propertyName) {
-        {
-            ColorCesiumWriter writer = openEvenColorProperty();
-            try {
-                writer.writeReference(identifier, propertyName);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openEvenColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyName);
         }
     }
 
@@ -400,13 +336,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
     public final void writeEvenColorPropertyReference(String identifier, String[] propertyNames) {
-        {
-            ColorCesiumWriter writer = openEvenColorProperty();
-            try {
-                writer.writeReference(identifier, propertyNames);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openEvenColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyNames);
         }
     }
 
@@ -432,13 +364,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param color The color.
     */
     public final void writeOddColorProperty(@Nonnull Color color) {
-        {
-            ColorCesiumWriter writer = openOddColorProperty();
-            try {
-                writer.writeRgba(color);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openOddColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeRgba(color);
         }
     }
 
@@ -450,13 +378,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param alpha The alpha component in the range 0 to 255.
     */
     public final void writeOddColorProperty(int red, int green, int blue, int alpha) {
-        {
-            ColorCesiumWriter writer = openOddColorProperty();
-            try {
-                writer.writeRgba(red, green, blue, alpha);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openOddColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeRgba(red, green, blue, alpha);
         }
     }
 
@@ -466,13 +390,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param values The values corresponding to each date.
     */
     public final void writeOddColorProperty(List<JulianDate> dates, List<Color> values) {
-        {
-            ColorCesiumWriter writer = openOddColorProperty();
-            try {
-                writer.writeRgba(dates, values);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openOddColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeRgba(dates, values);
         }
     }
 
@@ -484,13 +404,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param length The number of elements to write.
     */
     public final void writeOddColorProperty(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
-        {
-            ColorCesiumWriter writer = openOddColorProperty();
-            try {
-                writer.writeRgba(dates, colors, startIndex, length);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openOddColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeRgba(dates, colors, startIndex, length);
         }
     }
 
@@ -499,13 +415,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param color The color.
     */
     public final void writeOddColorPropertyRgbaf(@Nonnull Color color) {
-        {
-            ColorCesiumWriter writer = openOddColorProperty();
-            try {
-                writer.writeRgbaf(color);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openOddColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeRgbaf(color);
         }
     }
 
@@ -517,13 +429,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param alpha The alpha component in the range 0 to 1.0.
     */
     public final void writeOddColorPropertyRgbaf(float red, float green, float blue, float alpha) {
-        {
-            ColorCesiumWriter writer = openOddColorProperty();
-            try {
-                writer.writeRgbaf(red, green, blue, alpha);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openOddColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeRgbaf(red, green, blue, alpha);
         }
     }
 
@@ -533,13 +441,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param values The values corresponding to each date.
     */
     public final void writeOddColorPropertyRgbaf(List<JulianDate> dates, List<Color> values) {
-        {
-            ColorCesiumWriter writer = openOddColorProperty();
-            try {
-                writer.writeRgbaf(dates, values);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openOddColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeRgbaf(dates, values);
         }
     }
 
@@ -551,13 +455,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param length The number of elements to write.
     */
     public final void writeOddColorPropertyRgbaf(List<JulianDate> dates, List<Color> colors, int startIndex, int length) {
-        {
-            ColorCesiumWriter writer = openOddColorProperty();
-            try {
-                writer.writeRgbaf(dates, colors, startIndex, length);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openOddColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeRgbaf(dates, colors, startIndex, length);
         }
     }
 
@@ -566,13 +466,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param value The reference.
     */
     public final void writeOddColorPropertyReference(Reference value) {
-        {
-            ColorCesiumWriter writer = openOddColorProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openOddColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -581,13 +477,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param value The reference.
     */
     public final void writeOddColorPropertyReference(String value) {
-        {
-            ColorCesiumWriter writer = openOddColorProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openOddColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -597,13 +489,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param propertyName The property on the referenced object.
     */
     public final void writeOddColorPropertyReference(String identifier, String propertyName) {
-        {
-            ColorCesiumWriter writer = openOddColorProperty();
-            try {
-                writer.writeReference(identifier, propertyName);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openOddColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyName);
         }
     }
 
@@ -613,13 +501,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
     public final void writeOddColorPropertyReference(String identifier, String[] propertyNames) {
-        {
-            ColorCesiumWriter writer = openOddColorProperty();
-            try {
-                writer.writeReference(identifier, propertyNames);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<ColorCesiumWriter> using$0 = new Using<ColorCesiumWriter>(openOddColorProperty())) {
+            final ColorCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyNames);
         }
     }
 
@@ -645,13 +529,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param value The value.
     */
     public final void writeOffsetProperty(double value) {
-        {
-            DoubleCesiumWriter writer = openOffsetProperty();
-            try {
-                writer.writeNumber(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openOffsetProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeNumber(value);
         }
     }
 
@@ -661,13 +541,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param values The values corresponding to each date.
     */
     public final void writeOffsetProperty(List<JulianDate> dates, List<Double> values) {
-        {
-            DoubleCesiumWriter writer = openOffsetProperty();
-            try {
-                writer.writeNumber(dates, values);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openOffsetProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeNumber(dates, values);
         }
     }
 
@@ -679,13 +555,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param length The number of elements to write.
     */
     public final void writeOffsetProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
-        {
-            DoubleCesiumWriter writer = openOffsetProperty();
-            try {
-                writer.writeNumber(dates, values, startIndex, length);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openOffsetProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeNumber(dates, values, startIndex, length);
         }
     }
 
@@ -694,13 +566,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param value The reference.
     */
     public final void writeOffsetPropertyReference(Reference value) {
-        {
-            DoubleCesiumWriter writer = openOffsetProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openOffsetProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -709,13 +577,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param value The reference.
     */
     public final void writeOffsetPropertyReference(String value) {
-        {
-            DoubleCesiumWriter writer = openOffsetProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openOffsetProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -725,13 +589,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param propertyName The property on the referenced object.
     */
     public final void writeOffsetPropertyReference(String identifier, String propertyName) {
-        {
-            DoubleCesiumWriter writer = openOffsetProperty();
-            try {
-                writer.writeReference(identifier, propertyName);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openOffsetProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyName);
         }
     }
 
@@ -741,13 +601,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
     public final void writeOffsetPropertyReference(String identifier, String[] propertyNames) {
-        {
-            DoubleCesiumWriter writer = openOffsetProperty();
-            try {
-                writer.writeReference(identifier, propertyNames);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openOffsetProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyNames);
         }
     }
 
@@ -773,13 +629,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param value The value.
     */
     public final void writeRepeatProperty(double value) {
-        {
-            DoubleCesiumWriter writer = openRepeatProperty();
-            try {
-                writer.writeNumber(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openRepeatProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeNumber(value);
         }
     }
 
@@ -789,13 +641,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param values The values corresponding to each date.
     */
     public final void writeRepeatProperty(List<JulianDate> dates, List<Double> values) {
-        {
-            DoubleCesiumWriter writer = openRepeatProperty();
-            try {
-                writer.writeNumber(dates, values);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openRepeatProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeNumber(dates, values);
         }
     }
 
@@ -807,13 +655,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param length The number of elements to write.
     */
     public final void writeRepeatProperty(List<JulianDate> dates, List<Double> values, int startIndex, int length) {
-        {
-            DoubleCesiumWriter writer = openRepeatProperty();
-            try {
-                writer.writeNumber(dates, values, startIndex, length);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openRepeatProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeNumber(dates, values, startIndex, length);
         }
     }
 
@@ -822,13 +666,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param value The reference.
     */
     public final void writeRepeatPropertyReference(Reference value) {
-        {
-            DoubleCesiumWriter writer = openRepeatProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openRepeatProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -837,13 +677,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param value The reference.
     */
     public final void writeRepeatPropertyReference(String value) {
-        {
-            DoubleCesiumWriter writer = openRepeatProperty();
-            try {
-                writer.writeReference(value);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openRepeatProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
         }
     }
 
@@ -853,13 +689,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param propertyName The property on the referenced object.
     */
     public final void writeRepeatPropertyReference(String identifier, String propertyName) {
-        {
-            DoubleCesiumWriter writer = openRepeatProperty();
-            try {
-                writer.writeReference(identifier, propertyName);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openRepeatProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyName);
         }
     }
 
@@ -869,13 +701,9 @@ public class StripeMaterialCesiumWriter extends CesiumPropertyWriter<StripeMater
     * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
     */
     public final void writeRepeatPropertyReference(String identifier, String[] propertyNames) {
-        {
-            DoubleCesiumWriter writer = openRepeatProperty();
-            try {
-                writer.writeReference(identifier, propertyNames);
-            } finally {
-                DisposeHelper.dispose(writer);
-            }
+        try (Using<DoubleCesiumWriter> using$0 = new Using<DoubleCesiumWriter>(openRepeatProperty())) {
+            final DoubleCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyNames);
         }
     }
 }

@@ -12,13 +12,13 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code Color} to a {@link CesiumOutputStream}. A {@code Color} is a color. The color can optionally vary over time.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
-public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumRgbaValuePropertyWriter,
-        ICesiumRgbafValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
+public class ColorCesiumWriter extends CesiumInterpolatablePropertyWriter<ColorCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumRgbaValuePropertyWriter, ICesiumRgbafValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**
     * The name of the {@code rgba} property.
     */

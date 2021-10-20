@@ -9,10 +9,10 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code Articulations} to a {@link CesiumOutputStream}. A {@code Articulations} is a mapping of keys to articulation values, where the keys are the name of the articulation, a single space, and the name of the stage.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class ArticulationsCesiumWriter extends CesiumPropertyWriter<ArticulationsCesiumWriter> {
     /**

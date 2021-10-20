@@ -10,10 +10,10 @@ import javax.annotation.Nonnull;
 /**
  * Writes a {@code Boolean} to a {@link CesiumOutputStream}. A {@code Boolean} is a boolean value.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class BooleanCesiumWriter extends CesiumPropertyWriter<BooleanCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumBooleanValuePropertyWriter, ICesiumReferenceValuePropertyWriter {
     /**

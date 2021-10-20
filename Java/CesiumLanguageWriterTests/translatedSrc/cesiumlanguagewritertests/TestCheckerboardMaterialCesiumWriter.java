@@ -2,9 +2,9 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.DisposeHelper;
 import agi.foundation.compatibility.MapHelper;
 import agi.foundation.compatibility.TestContextRule;
+import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.awt.Color;
@@ -17,10 +17,10 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestCheckerboardMaterialCesiumWriter extends TestCesiumPropertyWriter<CheckerboardMaterialCesiumWriter> {
@@ -29,35 +29,18 @@ public class TestCheckerboardMaterialCesiumWriter extends TestCesiumPropertyWrit
         Color expectedEvenColor = Color.RED;
         Color expectedOddColor = Color.BLUE;
         Rectangular expectedRepeat = new Rectangular(3.5, 4.5);
-        {
-            final PacketCesiumWriter usingExpression$0 = (getPacket());
-            try {
-                {
-                    PolylineCesiumWriter polyline = getPacket().openPolylineProperty();
-                    try {
-                        {
-                            PolylineMaterialCesiumWriter material = polyline.openMaterialProperty();
-                            try {
-                                {
-                                    CheckerboardMaterialCesiumWriter checkerboardMaterial = material.openCheckerboardProperty();
-                                    try {
-                                        checkerboardMaterial.writeEvenColorProperty(expectedEvenColor);
-                                        checkerboardMaterial.writeOddColorProperty(expectedOddColor);
-                                        checkerboardMaterial.writeRepeatProperty(expectedRepeat);
-                                    } finally {
-                                        DisposeHelper.dispose(checkerboardMaterial);
-                                    }
-                                }
-                            } finally {
-                                DisposeHelper.dispose(material);
-                            }
-                        }
-                    } finally {
-                        DisposeHelper.dispose(polyline);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            try (Using<PolylineCesiumWriter> using$1 = new Using<PolylineCesiumWriter>(getPacket().openPolylineProperty())) {
+                final PolylineCesiumWriter polyline = using$1.resource;
+                try (Using<PolylineMaterialCesiumWriter> using$2 = new Using<PolylineMaterialCesiumWriter>(polyline.openMaterialProperty())) {
+                    final PolylineMaterialCesiumWriter material = using$2.resource;
+                    try (Using<CheckerboardMaterialCesiumWriter> using$3 = new Using<CheckerboardMaterialCesiumWriter>(material.openCheckerboardProperty())) {
+                        final CheckerboardMaterialCesiumWriter checkerboardMaterial = using$3.resource;
+                        checkerboardMaterial.writeEvenColorProperty(expectedEvenColor);
+                        checkerboardMaterial.writeOddColorProperty(expectedOddColor);
+                        checkerboardMaterial.writeRepeatProperty(expectedRepeat);
                     }
                 }
-            } finally {
-                DisposeHelper.dispose(usingExpression$0);
             }
         }
         final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();

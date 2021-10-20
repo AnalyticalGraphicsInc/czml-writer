@@ -13,10 +13,10 @@ import javax.annotation.Nonnull;
  * Describes motion, including a coordinate and optionally one or more derivatives.
  * @param <T> The coordinate type used to describe the motion.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public final class Motion1<T> implements IEquatable<Motion1<T>>, ImmutableValueType {
     /**

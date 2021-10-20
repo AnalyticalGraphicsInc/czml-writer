@@ -9,10 +9,10 @@ import java.util.List;
  * An interface to a property that writes a sampled, interpolatable value.
  * @param <TValue> The type of the value.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public interface ICesiumInterpolatableValuePropertyWriter<TValue> extends ICesiumValuePropertyWriter<TValue>, ICesiumInterpolatablePropertyWriter {
     /**

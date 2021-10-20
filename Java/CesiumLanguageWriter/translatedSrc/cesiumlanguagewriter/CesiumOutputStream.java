@@ -18,10 +18,10 @@ import javax.annotation.Nullable;
  does not extensively validate that methods are called in a valid order,
  so it can be used to generate invalid JSON.
  */
-@SuppressWarnings( {
-        "unused",
-        "deprecation",
-        "serial"
+@SuppressWarnings({
+    "unused",
+    "deprecation",
+    "serial"
 })
 public class CesiumOutputStream {
     /**
@@ -294,12 +294,12 @@ public class CesiumOutputStream {
         char h3 = intToHex((c >>> 4) & '\u000f');
         char h4 = intToHex(c & '\u000f');
         return new String(new char[] {
-                '\\',
-                'u',
-                h1,
-                h2,
-                h3,
-                h4
+            '\\',
+            'u',
+            h1,
+            h2,
+            h3,
+            h4
         });
     }
 
