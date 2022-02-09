@@ -1,13 +1,13 @@
 package agi.foundation.compatibility;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.emptyString;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.isEmptyString;
 import static org.hamcrest.Matchers.lessThan;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.startsWith;
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
 import java.lang.reflect.Array;
@@ -32,7 +32,7 @@ public final class AssertHelper {
     }
 
     public static void assertIsEmpty(String actual) {
-        assertThat(actual, isEmptyString());
+        assertThat(actual, emptyString());
     }
 
     public static <T extends Comparable<T>> void assertLess(T a, T b) {
@@ -127,9 +127,9 @@ public final class AssertHelper {
     }
 
     /**
-     * An assertThrows method is built-in in JUnit 4.13 (not yet released). However, NUnit
-     * requires "Assert.Throws" to match the exception type exactly while "Assert.Catch"
-     * allows derived exception types.
+     * An assertThrows method is built-in to JUnit, however, NUnit requires
+     * "Assert.Throws" to match the exception type exactly, while "Assert.Catch" allows
+     * derived exception types.
      */
     public static <T extends Throwable> T assertThrows(TypeLiteral<T> typeLiteralT, Action action) {
         return assertThrows(typeLiteralT.asClass(), action);

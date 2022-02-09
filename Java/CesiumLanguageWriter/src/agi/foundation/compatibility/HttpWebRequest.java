@@ -23,6 +23,10 @@ public class HttpWebRequest extends WebRequest {
         super(url);
     }
 
+    public String getUserAgent() {
+        return userAgent;
+    }
+
     public void setUserAgent(String value) {
         userAgent = value;
     }

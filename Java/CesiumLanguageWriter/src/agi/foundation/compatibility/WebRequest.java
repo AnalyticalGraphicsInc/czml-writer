@@ -11,6 +11,7 @@ import java.net.URL;
 import java.net.URLConnection;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * @deprecated Internal use only.
@@ -20,8 +21,11 @@ import javax.annotation.Nonnull;
 public abstract class WebRequest {
     @Nonnull
     protected final URL url;
+    @Nullable
     protected Proxy proxy;
     protected int timeout;
+    @Nullable
+    private URLConnection connection;
 
     protected WebRequest(@Nonnull URL url) {
         this.url = url;
@@ -81,7 +85,7 @@ public abstract class WebRequest {
     /**
      * Gets the network proxy to use to access this Internet resource.
      *
-     * @return The Proxy to use to access the Internet resource.
+     * @return The proxy.
      */
     public Proxy getProxy() {
         return proxy;
@@ -90,17 +94,17 @@ public abstract class WebRequest {
     /**
      * Sets the network proxy to use to access this Internet resource.
      *
-     * @param proxy
-     *            The Proxy to use to access the Internet resource.
+     * @param value
+     *            The proxy.
      */
-    public void setProxy(Proxy proxy) {
-        this.proxy = proxy;
+    public void setProxy(Proxy value) {
+        proxy = value;
     }
 
     /**
      * Gets the length of time, in milliseconds, before the request times out.
      *
-     * @return The length of time, in milliseconds, until the request times out.
+     * @return The timeout.
      */
     public int getTimeout() {
         return timeout;
@@ -109,35 +113,53 @@ public abstract class WebRequest {
     /**
      * Sets the length of time, in milliseconds, before the request times out.
      *
-     * @param timeout
-     *            The length of time, in milliseconds, until the request times out.
+     * @param value
+     *            The timeout.
      */
-    public void setTimeout(int timeout) {
-        this.timeout = timeout;
+    public void setTimeout(int value) {
+        timeout = value;
     }
 
+    /**
+     * Returns a response to this request.
+     *
+     * @return The response.
+     */
     public WebResponse getResponse() {
+        return createResponse(getConnection());
+    }
+
+    @Nonnull
+    private URLConnection getConnection() {
+        if (connection != null)
+            return connection;
+
+        connection = createConnection();
+        return connection;
+    }
+
+    @Nonnull
+    private URLConnection createConnection() {
+        URLConnection connection;
         try {
-            @Nonnull
-            URLConnection connection;
-            if (proxy == null) {
-                connection = url.openConnection();
-            } else {
-                connection = url.openConnection(proxy);
-            }
-
-            if (timeout != 0) {
-                connection.setConnectTimeout(timeout);
-            }
-
-            configureConnection(connection);
-
-            connection.connect();
-
-            return createResponse(connection);
+            connection = proxy != null ? url.openConnection(proxy) : url.openConnection();
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
+
+        if (timeout != 0) {
+            connection.setConnectTimeout(timeout);
+        }
+
+        configureConnection(connection);
+
+        try {
+            connection.connect();
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
+        }
+
+        return connection;
     }
 
     @Nonnull
