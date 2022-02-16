@@ -12,7 +12,6 @@ import cesiumlanguagewriter.advanced.*;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import javax.annotation.Nonnull;
 import org.junit.Assert;
@@ -60,7 +59,7 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, expectedName, expectedValue);
         assertExpectedJson(PacketCesiumWriter.PropertiesPropertyName, tempCollection$0);
     }
@@ -81,10 +80,10 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
                 }
             }
         }
-        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$1 = MapHelper.create();
         MapHelper.add(tempCollection$1, "interval", m_isoIntervalString);
         MapHelper.add(tempCollection$1, CustomPropertyCesiumWriter.BooleanPropertyName, expectedValue);
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, expectedName, tempCollection$1);
         assertExpectedJson(PacketCesiumWriter.PropertiesPropertyName, tempCollection$0);
     }
@@ -102,7 +101,7 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, expectedName, expectedValue);
         assertExpectedJson(PacketCesiumWriter.PropertiesPropertyName, tempCollection$0);
     }
@@ -172,7 +171,7 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, expectedName1, expectedValue1);
         MapHelper.add(tempCollection$0, expectedName2, expectedValue2);
         assertExpectedJson(PacketCesiumWriter.PropertiesPropertyName, tempCollection$0);

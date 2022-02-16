@@ -8,7 +8,6 @@ import agi.foundation.compatibility.LinkedListNode;
 import agi.foundation.compatibility.MapHelper;
 import cesiumlanguagewriter.*;
 import java.util.Collection;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import javax.annotation.Nonnull;
 
@@ -28,7 +27,7 @@ public class CachingCesiumUriResolver implements ICesiumUriResolver {
     */
     public CachingCesiumUriResolver(int max) {
         m_max = max;
-        m_dictionary = new LinkedHashMap<String, LinkedListNode<CacheItem>>();
+        m_dictionary = MapHelper.create();
         m_lruList = new LinkedList<CacheItem>();
     }
 

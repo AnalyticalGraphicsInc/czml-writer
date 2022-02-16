@@ -8,7 +8,6 @@ import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.awt.Color;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import javax.annotation.Nonnull;
 import org.junit.ClassRule;
@@ -47,15 +46,15 @@ public class TestStripeMaterialCesiumWriter extends TestCesiumPropertyWriter<Str
                 }
             }
         }
-        final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$2 = MapHelper.create();
         MapHelper.add(tempCollection$2, StripeMaterialCesiumWriter.EvenColorPropertyName, expectedEvenColor);
         MapHelper.add(tempCollection$2, StripeMaterialCesiumWriter.OddColorPropertyName, expectedOddColor);
         MapHelper.add(tempCollection$2, StripeMaterialCesiumWriter.OffsetPropertyName, expectedOffset);
         MapHelper.add(tempCollection$2, StripeMaterialCesiumWriter.OrientationPropertyName, CesiumFormattingHelper.stripeOrientationToString(expectedOrientation));
         MapHelper.add(tempCollection$2, StripeMaterialCesiumWriter.RepeatPropertyName, expectedRepeat);
-        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$1 = MapHelper.create();
         MapHelper.add(tempCollection$1, PolylineMaterialCesiumWriter.StripePropertyName, tempCollection$2);
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, PolylineCesiumWriter.MaterialPropertyName, tempCollection$1);
         assertExpectedJson(PacketCesiumWriter.PolylinePropertyName, tempCollection$0);
     }

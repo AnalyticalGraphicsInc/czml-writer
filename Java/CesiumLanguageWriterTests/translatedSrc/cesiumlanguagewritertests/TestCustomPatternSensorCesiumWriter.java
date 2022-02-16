@@ -8,7 +8,6 @@ import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.awt.Color;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import javax.annotation.Nonnull;
 import org.junit.ClassRule;
@@ -38,7 +37,7 @@ public class TestCustomPatternSensorCesiumWriter extends TestCesiumPropertyWrite
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, CustomPatternSensorCesiumWriter.ShowPropertyName, expectedShow);
         MapHelper.add(tempCollection$0, CustomPatternSensorCesiumWriter.RadiusPropertyName, expectedRadius);
         assertExpectedJson(PacketCesiumWriter.CustomPatternSensorPropertyName, tempCollection$0);
@@ -64,7 +63,7 @@ public class TestCustomPatternSensorCesiumWriter extends TestCesiumPropertyWrite
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, CustomPatternSensorCesiumWriter.ShowIntersectionPropertyName, expectedShowIntersection);
         MapHelper.add(tempCollection$0, CustomPatternSensorCesiumWriter.IntersectionColorPropertyName, expectedIntersectionColor);
         MapHelper.add(tempCollection$0, CustomPatternSensorCesiumWriter.IntersectionWidthPropertyName, expectedIntersectionWidth);
@@ -85,7 +84,7 @@ public class TestCustomPatternSensorCesiumWriter extends TestCesiumPropertyWrite
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, CustomPatternSensorCesiumWriter.ShowThroughEllipsoidPropertyName, expectedShowThroughEllipsoid);
         assertExpectedJson(PacketCesiumWriter.CustomPatternSensorPropertyName, tempCollection$0);
     }

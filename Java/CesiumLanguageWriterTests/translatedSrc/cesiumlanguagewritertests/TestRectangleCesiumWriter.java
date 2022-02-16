@@ -7,7 +7,6 @@ import agi.foundation.compatibility.TestContextRule;
 import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import javax.annotation.Nonnull;
 import org.junit.ClassRule;
@@ -37,7 +36,7 @@ public class TestRectangleCesiumWriter extends TestCesiumPropertyWriter<Rectangl
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, RectangleCesiumWriter.ExtrudedHeightPropertyName, expectedExtrudedHeight);
         MapHelper.add(tempCollection$0, RectangleCesiumWriter.ExtrudedHeightReferencePropertyName, CesiumFormattingHelper.heightReferenceToString(expectedExtrudedHeightReference));
         assertExpectedJson(PacketCesiumWriter.RectanglePropertyName, tempCollection$0);

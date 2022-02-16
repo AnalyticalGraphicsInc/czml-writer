@@ -7,7 +7,6 @@ import agi.foundation.compatibility.TestContextRule;
 import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import javax.annotation.Nonnull;
 import org.junit.ClassRule;
@@ -37,7 +36,7 @@ public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends Ce
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, "interpolationAlgorithm", CesiumFormattingHelper.interpolationAlgorithmToString(expectedInterpolationAlgorithm));
         assertExpectedJson(expectedPropertyName, tempCollection$0);
     }
@@ -56,7 +55,7 @@ public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends Ce
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, "interpolationDegree", expectedInterpolationDegree);
         assertExpectedJson(expectedPropertyName, tempCollection$0);
     }
@@ -75,7 +74,7 @@ public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends Ce
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, "forwardExtrapolationType", CesiumFormattingHelper.extrapolationTypeToString(expectedForwardExtrapolationType));
         assertExpectedJson(expectedPropertyName, tempCollection$0);
     }
@@ -94,7 +93,7 @@ public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends Ce
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, "backwardExtrapolationType", CesiumFormattingHelper.extrapolationTypeToString(expectedBackwardExtrapolationType));
         assertExpectedJson(expectedPropertyName, tempCollection$0);
     }
@@ -113,7 +112,7 @@ public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends Ce
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, "forwardExtrapolationDuration", expectedForwardExtrapolationDuration);
         assertExpectedJson(expectedPropertyName, tempCollection$0);
     }
@@ -132,7 +131,7 @@ public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends Ce
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, "backwardExtrapolationDuration", expectedBackwardExtrapolationDuration);
         assertExpectedJson(expectedPropertyName, tempCollection$0);
     }

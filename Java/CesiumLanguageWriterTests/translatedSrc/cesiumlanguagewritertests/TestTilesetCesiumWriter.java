@@ -7,7 +7,6 @@ import agi.foundation.compatibility.TestContextRule;
 import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import javax.annotation.Nonnull;
 import org.junit.ClassRule;
@@ -35,7 +34,7 @@ public class TestTilesetCesiumWriter extends TestCesiumPropertyWriter<TilesetCes
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, TilesetCesiumWriter.ShowPropertyName, expectedShow);
         assertExpectedJson(PacketCesiumWriter.TilesetPropertyName, tempCollection$0);
     }
@@ -52,7 +51,7 @@ public class TestTilesetCesiumWriter extends TestCesiumPropertyWriter<TilesetCes
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, TilesetCesiumWriter.UriPropertyName, expectedUri);
         assertExpectedJson(PacketCesiumWriter.TilesetPropertyName, tempCollection$0);
     }
@@ -69,7 +68,7 @@ public class TestTilesetCesiumWriter extends TestCesiumPropertyWriter<TilesetCes
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, TilesetCesiumWriter.MaximumScreenSpaceErrorPropertyName, expectedMaximumScreenSpaceError);
         assertExpectedJson(PacketCesiumWriter.TilesetPropertyName, tempCollection$0);
     }

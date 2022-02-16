@@ -8,7 +8,6 @@ import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.awt.Color;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import javax.annotation.Nonnull;
 import org.junit.ClassRule;
@@ -36,7 +35,7 @@ public class TestModelCesiumWriter extends TestCesiumPropertyWriter<ModelCesiumW
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, ModelCesiumWriter.ShowPropertyName, expectedShow);
         assertExpectedJson(PacketCesiumWriter.ModelPropertyName, tempCollection$0);
     }
@@ -53,7 +52,7 @@ public class TestModelCesiumWriter extends TestCesiumPropertyWriter<ModelCesiumW
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, ModelCesiumWriter.GltfPropertyName, expectedGltf);
         assertExpectedJson(PacketCesiumWriter.ModelPropertyName, tempCollection$0);
     }
@@ -70,7 +69,7 @@ public class TestModelCesiumWriter extends TestCesiumPropertyWriter<ModelCesiumW
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, ModelCesiumWriter.SilhouetteColorPropertyName, expectedSilhouetteColor);
         assertExpectedJson(PacketCesiumWriter.ModelPropertyName, tempCollection$0);
     }
@@ -87,7 +86,7 @@ public class TestModelCesiumWriter extends TestCesiumPropertyWriter<ModelCesiumW
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, ModelCesiumWriter.SilhouetteSizePropertyName, expectedSilhouetteSize);
         assertExpectedJson(PacketCesiumWriter.ModelPropertyName, tempCollection$0);
     }
@@ -104,7 +103,7 @@ public class TestModelCesiumWriter extends TestCesiumPropertyWriter<ModelCesiumW
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, ModelCesiumWriter.ColorPropertyName, expectedColor);
         assertExpectedJson(PacketCesiumWriter.ModelPropertyName, tempCollection$0);
     }
@@ -121,7 +120,7 @@ public class TestModelCesiumWriter extends TestCesiumPropertyWriter<ModelCesiumW
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, ModelCesiumWriter.ColorBlendModePropertyName, CesiumFormattingHelper.colorBlendModeToString(expectedColorBlendMode));
         assertExpectedJson(PacketCesiumWriter.ModelPropertyName, tempCollection$0);
     }
@@ -138,7 +137,7 @@ public class TestModelCesiumWriter extends TestCesiumPropertyWriter<ModelCesiumW
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, ModelCesiumWriter.ColorBlendAmountPropertyName, expectedColorBlendAmount);
         assertExpectedJson(PacketCesiumWriter.ModelPropertyName, tempCollection$0);
     }

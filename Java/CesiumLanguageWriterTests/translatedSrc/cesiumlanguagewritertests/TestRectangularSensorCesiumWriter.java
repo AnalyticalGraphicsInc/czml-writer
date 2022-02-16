@@ -8,7 +8,6 @@ import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.awt.Color;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import javax.annotation.Nonnull;
 import org.junit.ClassRule;
@@ -42,7 +41,7 @@ public class TestRectangularSensorCesiumWriter extends TestCesiumPropertyWriter<
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, RectangularSensorCesiumWriter.ShowPropertyName, expectedShow);
         MapHelper.add(tempCollection$0, RectangularSensorCesiumWriter.XHalfAnglePropertyName, expectedXHalfAngle);
         MapHelper.add(tempCollection$0, RectangularSensorCesiumWriter.YHalfAnglePropertyName, expectedYHalfAngle);
@@ -70,7 +69,7 @@ public class TestRectangularSensorCesiumWriter extends TestCesiumPropertyWriter<
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, RectangularSensorCesiumWriter.ShowIntersectionPropertyName, expectedShowIntersection);
         MapHelper.add(tempCollection$0, RectangularSensorCesiumWriter.IntersectionColorPropertyName, expectedIntersectionColor);
         MapHelper.add(tempCollection$0, RectangularSensorCesiumWriter.IntersectionWidthPropertyName, expectedIntersectionWidth);
@@ -91,7 +90,7 @@ public class TestRectangularSensorCesiumWriter extends TestCesiumPropertyWriter<
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, RectangularSensorCesiumWriter.ShowThroughEllipsoidPropertyName, expectedShowThroughEllipsoid);
         assertExpectedJson(PacketCesiumWriter.RectangularSensorPropertyName, tempCollection$0);
     }

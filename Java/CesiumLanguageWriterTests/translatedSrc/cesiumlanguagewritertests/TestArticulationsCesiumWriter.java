@@ -13,7 +13,6 @@ import cesiumlanguagewriter.advanced.*;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import javax.annotation.Nonnull;
 import org.junit.ClassRule;
@@ -45,9 +44,9 @@ public class TestArticulationsCesiumWriter extends TestCesiumPropertyWriter<Arti
                 }
             }
         }
-        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$1 = MapHelper.create();
         MapHelper.add(tempCollection$1, expectedName, expectedValue);
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, ModelCesiumWriter.ArticulationsPropertyName, tempCollection$1);
         assertExpectedJson(PacketCesiumWriter.ModelPropertyName, tempCollection$0);
     }
@@ -74,10 +73,10 @@ public class TestArticulationsCesiumWriter extends TestCesiumPropertyWriter<Arti
                 }
             }
         }
-        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$1 = MapHelper.create();
         MapHelper.add(tempCollection$1, expectedName1, expectedValue1);
         MapHelper.add(tempCollection$1, expectedName2, expectedValue2);
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, ModelCesiumWriter.ArticulationsPropertyName, tempCollection$1);
         assertExpectedJson(PacketCesiumWriter.ModelPropertyName, tempCollection$0);
     }

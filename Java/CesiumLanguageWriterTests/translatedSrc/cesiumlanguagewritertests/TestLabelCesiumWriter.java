@@ -11,7 +11,6 @@ import java.awt.Color;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import javax.annotation.Nonnull;
 import org.junit.Assert;
@@ -40,7 +39,7 @@ public class TestLabelCesiumWriter extends TestCesiumPropertyWriter<LabelCesiumW
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, LabelCesiumWriter.ShowPropertyName, expectedShow);
         assertExpectedJson(PacketCesiumWriter.LabelPropertyName, tempCollection$0);
     }
@@ -57,7 +56,7 @@ public class TestLabelCesiumWriter extends TestCesiumPropertyWriter<LabelCesiumW
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, LabelCesiumWriter.TextPropertyName, expectedText);
         assertExpectedJson(PacketCesiumWriter.LabelPropertyName, tempCollection$0);
     }
@@ -74,7 +73,7 @@ public class TestLabelCesiumWriter extends TestCesiumPropertyWriter<LabelCesiumW
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, LabelCesiumWriter.ShowBackgroundPropertyName, expectedShowBackground);
         assertExpectedJson(PacketCesiumWriter.LabelPropertyName, tempCollection$0);
     }
@@ -91,7 +90,7 @@ public class TestLabelCesiumWriter extends TestCesiumPropertyWriter<LabelCesiumW
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, LabelCesiumWriter.BackgroundColorPropertyName, expectedBackgroundColor);
         assertExpectedJson(PacketCesiumWriter.LabelPropertyName, tempCollection$0);
     }
@@ -108,7 +107,7 @@ public class TestLabelCesiumWriter extends TestCesiumPropertyWriter<LabelCesiumW
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, LabelCesiumWriter.BackgroundPaddingPropertyName, expectedBackgroundPadding);
         assertExpectedJson(PacketCesiumWriter.LabelPropertyName, tempCollection$0);
     }
@@ -125,7 +124,7 @@ public class TestLabelCesiumWriter extends TestCesiumPropertyWriter<LabelCesiumW
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, LabelCesiumWriter.TranslucencyByDistancePropertyName, expectedTranslucencyByDistance);
         assertExpectedJson(PacketCesiumWriter.LabelPropertyName, tempCollection$0);
     }

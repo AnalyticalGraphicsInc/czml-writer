@@ -8,7 +8,6 @@ import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.awt.Color;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import javax.annotation.Nonnull;
 import org.junit.ClassRule;
@@ -39,11 +38,11 @@ public class TestSolidColorMaterialCesiumWriter extends TestCesiumPropertyWriter
                 }
             }
         }
-        final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$2 = MapHelper.create();
         MapHelper.add(tempCollection$2, SolidColorMaterialCesiumWriter.ColorPropertyName, expectedColor);
-        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$1 = MapHelper.create();
         MapHelper.add(tempCollection$1, PolylineMaterialCesiumWriter.SolidColorPropertyName, tempCollection$2);
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, PolylineCesiumWriter.MaterialPropertyName, tempCollection$1);
         assertExpectedJson(PacketCesiumWriter.PolylinePropertyName, tempCollection$0);
     }

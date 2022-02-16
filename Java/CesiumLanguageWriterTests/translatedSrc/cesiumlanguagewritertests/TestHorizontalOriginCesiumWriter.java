@@ -7,7 +7,6 @@ import agi.foundation.compatibility.TestContextRule;
 import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import javax.annotation.Nonnull;
 import org.junit.ClassRule;
@@ -34,7 +33,7 @@ public class TestHorizontalOriginCesiumWriter extends TestCesiumPropertyWriter<H
                 writer.writeHorizontalOrigin(expectedValue);
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, expectedPropertyName, CesiumFormattingHelper.horizontalOriginToString(expectedValue));
         assertExpectedJson(tempCollection$0);
     }
@@ -53,7 +52,7 @@ public class TestHorizontalOriginCesiumWriter extends TestCesiumPropertyWriter<H
                 writer.writeHorizontalOrigin(expectedValue);
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, "interval", CesiumFormattingHelper.toIso8601Interval(start, stop, Iso8601Format.COMPACT));
         MapHelper.add(tempCollection$0, HorizontalOriginCesiumWriter.HorizontalOriginPropertyName, CesiumFormattingHelper.horizontalOriginToString(expectedValue));
         assertExpectedJson(expectedPropertyName, tempCollection$0);

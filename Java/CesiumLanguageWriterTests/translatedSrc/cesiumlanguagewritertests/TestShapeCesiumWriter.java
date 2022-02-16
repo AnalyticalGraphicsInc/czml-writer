@@ -12,7 +12,6 @@ import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import javax.annotation.Nonnull;
 import org.junit.ClassRule;
@@ -50,9 +49,9 @@ public class TestShapeCesiumWriter extends TestCesiumPropertyWriter<ShapeCesiumW
                 });
             }
         });
-        final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$2 = MapHelper.create();
         MapHelper.add(tempCollection$2, "cartesian2", expectedValueJson);
-        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$1 = MapHelper.create();
         MapHelper.add(tempCollection$1, expectedPropertyName, tempCollection$2);
         assertExpectedJson(tempCollection$1);
     }

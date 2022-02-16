@@ -1,5 +1,8 @@
 package agi.foundation.compatibility;
 
+import static agi.foundation.compatibility.ArgumentNullException.assertNonNull;
+import static agi.foundation.compatibility.DisposeHelper.dispose;
+
 import agi.foundation.compatibility.annotations.Internal;
 
 import java.io.IOException;
@@ -20,7 +23,7 @@ public final class TextWriterHelper {
     private TextWriterHelper() {}
 
     public static void write(@Nonnull Writer writer, char value) {
-        ArgumentNullException.assertNonNull(writer, "writer");
+        assertNonNull(writer, "writer");
 
         try {
             writer.write(value);
@@ -30,8 +33,8 @@ public final class TextWriterHelper {
     }
 
     public static void write(@Nonnull Writer writer, @Nonnull char[] buffer, int index, int count) {
-        ArgumentNullException.assertNonNull(writer, "writer");
-        ArgumentNullException.assertNonNull(buffer, "buffer");
+        assertNonNull(writer, "writer");
+        assertNonNull(buffer, "buffer");
 
         try {
             writer.write(buffer, index, count);
@@ -41,7 +44,7 @@ public final class TextWriterHelper {
     }
 
     public static void write(@Nonnull Writer writer, @Nullable String value) {
-        ArgumentNullException.assertNonNull(writer, "writer");
+        assertNonNull(writer, "writer");
 
         if (value == null)
             return;

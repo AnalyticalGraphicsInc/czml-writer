@@ -8,7 +8,6 @@ import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.awt.Color;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import javax.annotation.Nonnull;
 import org.junit.ClassRule;
@@ -46,7 +45,7 @@ public class TestConicSensorCesiumWriter extends TestCesiumPropertyWriter<ConicS
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, ConicSensorCesiumWriter.ShowPropertyName, expectedShow);
         MapHelper.add(tempCollection$0, ConicSensorCesiumWriter.InnerHalfAnglePropertyName, expectedInnerHalfAngle);
         MapHelper.add(tempCollection$0, ConicSensorCesiumWriter.OuterHalfAnglePropertyName, expectedOuterHalfAngle);
@@ -76,7 +75,7 @@ public class TestConicSensorCesiumWriter extends TestCesiumPropertyWriter<ConicS
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, ConicSensorCesiumWriter.ShowIntersectionPropertyName, expectedShowIntersection);
         MapHelper.add(tempCollection$0, ConicSensorCesiumWriter.IntersectionColorPropertyName, expectedIntersectionColor);
         MapHelper.add(tempCollection$0, ConicSensorCesiumWriter.IntersectionWidthPropertyName, expectedIntersectionWidth);
@@ -97,7 +96,7 @@ public class TestConicSensorCesiumWriter extends TestCesiumPropertyWriter<ConicS
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, ConicSensorCesiumWriter.ShowThroughEllipsoidPropertyName, expectedShowThroughEllipsoid);
         assertExpectedJson(PacketCesiumWriter.ConicSensorPropertyName, tempCollection$0);
     }

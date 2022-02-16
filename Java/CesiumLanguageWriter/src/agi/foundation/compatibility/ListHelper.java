@@ -1,5 +1,7 @@
 package agi.foundation.compatibility;
 
+import static agi.foundation.compatibility.ArgumentNullException.assertNonNull;
+
 import agi.foundation.compatibility.annotations.Internal;
 
 import java.util.ArrayList;
@@ -27,7 +29,7 @@ public final class ListHelper {
      */
     @Nonnull
     public static <T> ArrayList<T> create(@Nonnull Iterable<? extends T> iterable) {
-        ArgumentNullException.assertNonNull(iterable, "iterable");
+        assertNonNull(iterable, "iterable");
 
         if (iterable instanceof Collection<?>) {
             return new ArrayList<>((Collection<? extends T>) iterable);

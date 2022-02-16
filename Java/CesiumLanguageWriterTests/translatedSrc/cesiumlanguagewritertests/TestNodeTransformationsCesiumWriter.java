@@ -13,7 +13,6 @@ import cesiumlanguagewriter.advanced.*;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import javax.annotation.Nonnull;
 import org.junit.ClassRule;
@@ -49,13 +48,13 @@ public class TestNodeTransformationsCesiumWriter extends TestCesiumPropertyWrite
                 }
             }
         }
-        final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$2 = MapHelper.create();
         MapHelper.add(tempCollection$2, NodeTransformationCesiumWriter.ScalePropertyName, expectedScale);
         MapHelper.add(tempCollection$2, NodeTransformationCesiumWriter.RotationPropertyName, expectedRotation);
         MapHelper.add(tempCollection$2, NodeTransformationCesiumWriter.TranslationPropertyName, expectedTranslation);
-        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$1 = MapHelper.create();
         MapHelper.add(tempCollection$1, expectedNodeName, tempCollection$2);
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, ModelCesiumWriter.NodeTransformationsPropertyName, tempCollection$1);
         assertExpectedJson(PacketCesiumWriter.ModelPropertyName, tempCollection$0);
     }
@@ -90,18 +89,18 @@ public class TestNodeTransformationsCesiumWriter extends TestCesiumPropertyWrite
                 }
             }
         }
-        final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$2 = MapHelper.create();
         MapHelper.add(tempCollection$2, NodeTransformationCesiumWriter.ScalePropertyName, expectedScale1);
         MapHelper.add(tempCollection$2, NodeTransformationCesiumWriter.RotationPropertyName, expectedRotation1);
         MapHelper.add(tempCollection$2, NodeTransformationCesiumWriter.TranslationPropertyName, expectedTranslation1);
-        final Map<String, Object> tempCollection$3 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$3 = MapHelper.create();
         MapHelper.add(tempCollection$3, NodeTransformationCesiumWriter.ScalePropertyName, expectedScale2);
         MapHelper.add(tempCollection$3, NodeTransformationCesiumWriter.RotationPropertyName, expectedRotation2);
         MapHelper.add(tempCollection$3, NodeTransformationCesiumWriter.TranslationPropertyName, expectedTranslation2);
-        final Map<String, Object> tempCollection$1 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$1 = MapHelper.create();
         MapHelper.add(tempCollection$1, expectedNodeName1, tempCollection$2);
         MapHelper.add(tempCollection$1, expectedNodeName2, tempCollection$3);
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, ModelCesiumWriter.NodeTransformationsPropertyName, tempCollection$1);
         assertExpectedJson(PacketCesiumWriter.ModelPropertyName, tempCollection$0);
     }

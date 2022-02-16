@@ -18,7 +18,6 @@ import java.awt.Color;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import javax.annotation.Nonnull;
 import org.junit.Assert;
@@ -84,7 +83,7 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
     */
     @Nonnull
     public static String createExpectedJson(@Nonnull String topLevelPropertyName, @Nonnull Map<String, Object> dictionary) {
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, topLevelPropertyName, dictionary);
         return createExpectedJson(tempCollection$0);
     }
@@ -127,7 +126,7 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
             tempCollection$1.add(color.getGreen());
             tempCollection$1.add(color.getBlue());
             tempCollection$1.add(color.getAlpha());
-            final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+            final Map<String, Object> tempCollection$0 = MapHelper.create();
             MapHelper.add(tempCollection$0, "rgba", tempCollection$1);
             return createExpectedJson(tempCollection$0);
         }
@@ -136,7 +135,7 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
             final ArrayList<Object> tempCollection$3 = new ArrayList<Object>();
             tempCollection$3.add(bounds.getLowerBound());
             tempCollection$3.add(bounds.getUpperBound());
-            final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();
+            final Map<String, Object> tempCollection$2 = MapHelper.create();
             MapHelper.add(tempCollection$2, "distanceDisplayCondition", tempCollection$3);
             return createExpectedJson(tempCollection$2);
         }
@@ -147,7 +146,7 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
             tempCollection$5.add(nearFarScalar.getNearValue());
             tempCollection$5.add(nearFarScalar.getFarDistance());
             tempCollection$5.add(nearFarScalar.getFarValue());
-            final Map<String, Object> tempCollection$4 = new LinkedHashMap<String, Object>();
+            final Map<String, Object> tempCollection$4 = MapHelper.create();
             MapHelper.add(tempCollection$4, "nearFarScalar", tempCollection$5);
             return createExpectedJson(tempCollection$4);
         }
@@ -156,7 +155,7 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
             final ArrayList<Object> tempCollection$7 = new ArrayList<Object>();
             tempCollection$7.add(rectangular.getX());
             tempCollection$7.add(rectangular.getY());
-            final Map<String, Object> tempCollection$6 = new LinkedHashMap<String, Object>();
+            final Map<String, Object> tempCollection$6 = MapHelper.create();
             MapHelper.add(tempCollection$6, "cartesian2", tempCollection$7);
             return createExpectedJson(tempCollection$6);
         }
@@ -166,7 +165,7 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
             tempCollection$9.add(cartesian.getX());
             tempCollection$9.add(cartesian.getY());
             tempCollection$9.add(cartesian.getZ());
-            final Map<String, Object> tempCollection$8 = new LinkedHashMap<String, Object>();
+            final Map<String, Object> tempCollection$8 = MapHelper.create();
             MapHelper.add(tempCollection$8, "cartesian", tempCollection$9);
             return createExpectedJson(tempCollection$8);
         }
@@ -176,7 +175,7 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
             tempCollection$11.add(cartographic.getLongitude());
             tempCollection$11.add(cartographic.getLatitude());
             tempCollection$11.add(cartographic.getHeight());
-            final Map<String, Object> tempCollection$10 = new LinkedHashMap<String, Object>();
+            final Map<String, Object> tempCollection$10 = MapHelper.create();
             MapHelper.add(tempCollection$10, "cartographicRadians", tempCollection$11);
             return createExpectedJson(tempCollection$10);
         }
@@ -187,7 +186,7 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
             tempCollection$13.add(unitQuaternion.getY());
             tempCollection$13.add(unitQuaternion.getZ());
             tempCollection$13.add(unitQuaternion.getW());
-            final Map<String, Object> tempCollection$12 = new LinkedHashMap<String, Object>();
+            final Map<String, Object> tempCollection$12 = MapHelper.create();
             MapHelper.add(tempCollection$12, "unitQuaternion", tempCollection$13);
             return createExpectedJson(tempCollection$12);
         }
@@ -278,14 +277,14 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
                 }
             }
         }
-        final Map<String, Object> tempCollection$2 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$2 = MapHelper.create();
         MapHelper.add(tempCollection$2, "interval", CesiumFormattingHelper.toIso8601Interval(start, stop, Iso8601Format.COMPACT));
-        final Map<String, Object> tempCollection$3 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$3 = MapHelper.create();
         MapHelper.add(tempCollection$3, "interval", CesiumFormattingHelper.toIso8601Interval(start, stop, Iso8601Format.COMPACT));
         final ArrayList<Object> tempCollection$1 = new ArrayList<Object>();
         tempCollection$1.add(tempCollection$2);
         tempCollection$1.add(tempCollection$3);
-        final Map<String, Object> tempCollection$0 = new LinkedHashMap<String, Object>();
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, expectedPropertyName, tempCollection$1);
         assertExpectedJson(tempCollection$0);
     }
