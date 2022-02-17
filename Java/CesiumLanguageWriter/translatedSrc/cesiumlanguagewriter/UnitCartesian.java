@@ -129,9 +129,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
             final double[] ref$z$5 = {
                 z
             };
-            final double[] out$magnitude$6 = {
-                0D
-            };
+            final double[] out$magnitude$6 = new double[1];
             normalizeCoordinates(ref$x$3, ref$y$4, ref$z$5, out$magnitude$6);
             magnitude = out$magnitude$6[0];
             z = ref$z$5[0];

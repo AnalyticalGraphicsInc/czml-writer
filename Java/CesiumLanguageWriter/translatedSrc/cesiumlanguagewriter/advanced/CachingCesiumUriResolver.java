@@ -41,9 +41,7 @@ public class CachingCesiumUriResolver implements ICesiumUriResolver {
             throw new ArgumentNullException("uri");
         }
         LinkedListNode<CacheItem> node = null;
-        final LinkedListNode<CacheItem>[] out$node$1 = new LinkedListNode[] {
-            null
-        };
+        final LinkedListNode<CacheItem>[] out$node$1 = new LinkedListNode[1];
         final boolean temp$0 = MapHelper.tryGetValue(m_dictionary, uri, out$node$1);
         node = out$node$1[0];
         if (temp$0) {

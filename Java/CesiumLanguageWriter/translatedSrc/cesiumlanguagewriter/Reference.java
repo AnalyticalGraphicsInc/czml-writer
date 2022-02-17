@@ -34,12 +34,8 @@ public class Reference implements IEquatable<Reference> {
     */
     public Reference(String value) {
         m_value = value;
-        final String[] out$m_identifier$0 = {
-            null
-        };
-        final ArrayList<String>[] out$m_properties$1 = new ArrayList[] {
-            null
-        };
+        final String[] out$m_identifier$0 = new String[1];
+        final ArrayList<String>[] out$m_properties$1 = new ArrayList[1];
         parse(value, out$m_identifier$0, out$m_properties$1);
         m_properties = out$m_properties$1[0];
         m_identifier = out$m_identifier$0[0];

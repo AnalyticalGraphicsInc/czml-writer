@@ -166,9 +166,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
             final double[] ref$z$7 = {
                 z
             };
-            final double[] out$magnitude$8 = {
-                0D
-            };
+            final double[] out$magnitude$8 = new double[1];
             normalizeCoordinates(ref$w$4, ref$x$5, ref$y$6, ref$z$7, out$magnitude$8);
             magnitude = out$magnitude$8[0];
             z = ref$z$7[0];

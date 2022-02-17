@@ -69,46 +69,32 @@ public class TestGregorianDateParsing {
         GregorianDate iso = new GregorianDate(1985, 2, 11, 2, 0, 5.2134);
         @CS2JInfo("Initialization of C# struct variable 'result' added by translator.")
         GregorianDate result = new GregorianDate();
-        final GregorianDate[] out$result$0 = {
-            null
-        };
+        final GregorianDate[] out$result$0 = new GregorianDate[1];
         Assert.assertTrue(GregorianDate.tryParse("1985-042T02:00:05.2134", out$result$0));
         result = out$result$0[0];
         AssertHelper.assertEquals(iso, result);
         iso = new GregorianDate(1985, 2, 11, 2, 0, 5.21345);
-        final GregorianDate[] out$result$1 = {
-            null
-        };
+        final GregorianDate[] out$result$1 = new GregorianDate[1];
         Assert.assertTrue(GregorianDate.tryParse("1985-042T02:00:05.21345Z", out$result$1));
         result = out$result$1[0];
         AssertHelper.assertEquals(iso, result);
         iso = new GregorianDate(1985, 2, 11, 2, 0, 5D);
-        final GregorianDate[] out$result$2 = {
-            null
-        };
+        final GregorianDate[] out$result$2 = new GregorianDate[1];
         Assert.assertTrue(GregorianDate.tryParse("1985-042T02:00:05", out$result$2));
         result = out$result$2[0];
         AssertHelper.assertEquals(iso, result);
         iso = new GregorianDate(1985, 2, 11);
-        final GregorianDate[] out$result$3 = {
-            null
-        };
+        final GregorianDate[] out$result$3 = new GregorianDate[1];
         Assert.assertTrue(GregorianDate.tryParse("1985-042", out$result$3));
         result = out$result$3[0];
         AssertHelper.assertEquals(iso, result);
-        final GregorianDate[] out$result$4 = {
-            null
-        };
+        final GregorianDate[] out$result$4 = new GregorianDate[1];
         Assert.assertFalse(GregorianDate.tryParse("1985-367T02:00:05.2134", out$result$4));
         result = out$result$4[0];
-        final GregorianDate[] out$result$5 = {
-            null
-        };
+        final GregorianDate[] out$result$5 = new GregorianDate[1];
         Assert.assertFalse(GregorianDate.tryParse("1985-12#T02:00:05.2134", out$result$5));
         result = out$result$5[0];
-        final GregorianDate[] out$result$6 = {
-            null
-        };
+        final GregorianDate[] out$result$6 = new GregorianDate[1];
         Assert.assertFalse(GregorianDate.tryParse("21985-167T02:00:05.2134", out$result$6));
         result = out$result$6[0];
     }
@@ -364,9 +350,7 @@ public class TestGregorianDateParsing {
         expected = new GregorianDate(2009, 6, 30, 5, 25, 0.1234567890123456);
         @CS2JInfo("Initialization of C# struct variable 'parsed' added by translator.")
         GregorianDate parsed = new GregorianDate();
-        final GregorianDate[] out$parsed$7 = {
-            null
-        };
+        final GregorianDate[] out$parsed$7 = new GregorianDate[1];
         GregorianDate.tryParse("06/30/2009 05:25:00.1234567890123456", out$parsed$7);
         parsed = out$parsed$7[0];
         AssertHelper.assertEquals(expected, parsed);
@@ -409,21 +393,15 @@ public class TestGregorianDateParsing {
         GregorianDate expected = new GregorianDate(2002, 2, 25);
         @CS2JInfo("Initialization of C# struct variable 'result' added by translator.")
         GregorianDate result = new GregorianDate();
-        final GregorianDate[] out$result$8 = {
-            null
-        };
+        final GregorianDate[] out$result$8 = new GregorianDate[1];
         Assert.assertTrue(GregorianDate.tryParse("02/25/2002", m_cultureInfo, out$result$8));
         result = out$result$8[0];
         AssertHelper.assertEquals(expected, result);
-        final GregorianDate[] out$result$9 = {
-            null
-        };
+        final GregorianDate[] out$result$9 = new GregorianDate[1];
         Assert.assertFalse(GregorianDate.tryParse("02/q/2002", m_cultureInfo, out$result$9));
         result = out$result$9[0];
         AssertHelper.assertEquals(GregorianDate.MinValue, result);
-        final GregorianDate[] out$result$10 = {
-            null
-        };
+        final GregorianDate[] out$result$10 = new GregorianDate[1];
         // ReSharper disable once ConditionIsAlwaysTrueOrFalse
         Assert.assertFalse(GregorianDate.tryParse(null, m_cultureInfo, out$result$10));
         result = out$result$10[0];
@@ -440,15 +418,11 @@ public class TestGregorianDateParsing {
     public final void cannotParseInvalidDates() {
         @CS2JInfo("Initialization of C# struct variable 'result' added by translator.")
         GregorianDate result = new GregorianDate();
-        final GregorianDate[] out$result$11 = {
-            null
-        };
+        final GregorianDate[] out$result$11 = new GregorianDate[1];
         Assert.assertFalse(GregorianDate.tryParse("02/29/2002", m_cultureInfo, out$result$11));
         result = out$result$11[0];
         AssertHelper.assertEquals(GregorianDate.MinValue, result);
-        final GregorianDate[] out$result$12 = {
-            null
-        };
+        final GregorianDate[] out$result$12 = new GregorianDate[1];
         Assert.assertFalse(GregorianDate.tryParse("13/01/2002", m_cultureInfo, out$result$12));
         result = out$result$12[0];
     }

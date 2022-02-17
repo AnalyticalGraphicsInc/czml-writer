@@ -370,9 +370,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     @Nonnull
     public final UnitCartesian normalize() {
         double magnitude = 0D;
-        final double[] out$magnitude$1 = {
-            0D
-        };
+        final double[] out$magnitude$1 = new double[1];
         final UnitCartesian temp$0 = normalize(out$magnitude$1);
         magnitude = out$magnitude$1[0];
         return temp$0;

@@ -389,14 +389,10 @@ public class TestJulianDate {
         JulianDate afterLeapSecond = new JulianDate(2453736, 43233D, TimeStandard.INTERNATIONAL_ATOMIC_TIME);
         @CS2JInfo("Initialization of C# struct variable 'outDate' added by translator.")
         JulianDate outDate = new JulianDate();
-        final JulianDate[] out$outDate$0 = {
-            null
-        };
+        final JulianDate[] out$outDate$0 = new JulianDate[1];
         Assert.assertFalse(leapSecond.tryConvertTimeStandard(TimeStandard.COORDINATED_UNIVERSAL_TIME, out$outDate$0));
         outDate = out$outDate$0[0];
-        final JulianDate[] out$outDate$1 = {
-            null
-        };
+        final JulianDate[] out$outDate$1 = new JulianDate[1];
         Assert.assertTrue(afterLeapSecond.tryConvertTimeStandard(TimeStandard.COORDINATED_UNIVERSAL_TIME, out$outDate$1));
         outDate = out$outDate$1[0];
         AssertHelper.assertEquals(outDate.getStandard(), TimeStandard.COORDINATED_UNIVERSAL_TIME);

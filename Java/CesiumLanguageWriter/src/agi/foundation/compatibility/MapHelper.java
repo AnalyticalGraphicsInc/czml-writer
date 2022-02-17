@@ -50,7 +50,7 @@ public final class MapHelper {
 
         value[0] = map.get(key);
 
-        return value[0] != null;
+        return value[0] != null || map.containsKey(key);
     }
 
     /**

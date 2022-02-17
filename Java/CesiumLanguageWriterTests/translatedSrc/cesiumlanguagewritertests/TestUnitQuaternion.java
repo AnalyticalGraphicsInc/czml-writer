@@ -45,9 +45,7 @@ public class TestUnitQuaternion {
     @Test
     public final void testInitializeAndReturnMagnitude() {
         double magnitude = 0D;
-        final double[] out$magnitude$0 = {
-            0D
-        };
+        final double[] out$magnitude$0 = new double[1];
         UnitQuaternion test = new UnitQuaternion(2.0, 4.0, 7.0, 10.0, out$magnitude$0);
         magnitude = out$magnitude$0[0];
         Assert.assertEquals(2.0 / 13.0, test.getW(), Constants.Epsilon15);

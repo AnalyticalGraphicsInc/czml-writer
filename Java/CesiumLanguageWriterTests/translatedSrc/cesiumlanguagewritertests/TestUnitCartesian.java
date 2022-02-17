@@ -54,9 +54,7 @@ public class TestUnitCartesian {
     @Test
     public final void testFromCartesianAndReturnMagnitude() {
         double magnitude = 0D;
-        final double[] out$magnitude$0 = {
-            0D
-        };
+        final double[] out$magnitude$0 = new double[1];
         UnitCartesian test = new UnitCartesian(new Cartesian(2.0, 3.0, 6.0), out$magnitude$0);
         magnitude = out$magnitude$0[0];
         Assert.assertEquals(2.0 / 7.0, test.getX(), Constants.Epsilon15);
@@ -71,9 +69,7 @@ public class TestUnitCartesian {
     @Test
     public final void testInitializeAndReturnMagnitude() {
         double magnitude = 0D;
-        final double[] out$magnitude$1 = {
-            0D
-        };
+        final double[] out$magnitude$1 = new double[1];
         UnitCartesian test = new UnitCartesian(2.0, 3.0, 6.0, out$magnitude$1);
         magnitude = out$magnitude$1[0];
         Assert.assertEquals(2.0 / 7.0, test.getX(), Constants.Epsilon15);

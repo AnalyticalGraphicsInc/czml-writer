@@ -92,9 +92,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
             @CS2JInfo("Initialization of C# struct variable 'res' added by translator.")
             GregorianDate res = new GregorianDate();
             NumberFormatException exception = null;
-            final GregorianDate[] out$res$1 = {
-                null
-            };
+            final GregorianDate[] out$res$1 = new GregorianDate[1];
             final NumberFormatException[] ref$exception$2 = {
                 exception
             };
@@ -120,9 +118,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
             GregorianDate result = new GregorianDate();
             boolean longYear = false;
             NumberFormatException e = null;
-            final GregorianDate[] out$result$4 = {
-                null
-            };
+            final GregorianDate[] out$result$4 = new GregorianDate[1];
             final boolean[] ref$longYear$5 = {
                 longYear
             };
@@ -166,9 +162,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                 if (StringHelper.isNullOrEmpty(format)) {
                     break;
                 }
-                final GregorianDate[] out$result$10 = {
-                    null
-                };
+                final GregorianDate[] out$result$10 = new GregorianDate[1];
                 final boolean[] ref$incompleteFormat$11 = {
                     incompleteFormat
                 };
@@ -524,9 +518,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
             boolean afterTFormat = false;
             DateTimeFormatInfo invInfo = DateTimeFormatInfo.getInvariantInfo();
             if (format.length() == 1) {
-                final boolean[] out$useInvariant$35 = {
-                    false
-                };
+                final boolean[] out$useInvariant$35 = new boolean[1];
                 final String temp$34 = getStandardPattern(format.charAt(0), dfi, out$useInvariant$35);
                 useInvariant = out$useInvariant$35[0];
                 format = temp$34;
@@ -559,9 +551,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                         if (s.charAt(valuePos) == 'Z') {
                             numParsed = 1;
                         } else {
-                            final int[] out$numParsed$36 = {
-                                0
-                            };
+                            final int[] out$numParsed$36 = new int[1];
                             parseString(s, valuePos, 0, "GMT", out$numParsed$36);
                             numParsed = out$numParsed$36[0];
                         }
@@ -572,9 +562,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                     }
                     boolean temp$37 = !afterTFormat;
                     if (temp$37) {
-                        final int[] out$numParsed$38 = {
-                            0
-                        };
+                        final int[] out$numParsed$38 = new int[1];
                         final int[] ref$ampm$39 = {
                             ampm
                         };
@@ -591,16 +579,12 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                         }
                     }
                     if (!afterTFormat && dayofweek == -1 && isLetter) {
-                        final int[] out$numParsed$41 = {
-                            0
-                        };
+                        final int[] out$numParsed$41 = new int[1];
                         final int temp$40 = parseEnum(s, valuePos, dfi.getDayNames(), invInfo.getDayNames(), false, out$numParsed$41);
                         numParsed = out$numParsed$41[0];
                         dayofweek = temp$40;
                         if (dayofweek == -1) {
-                            final int[] out$numParsed$43 = {
-                                0
-                            };
+                            final int[] out$numParsed$43 = new int[1];
                             final int temp$42 = parseEnum(s, valuePos, dfi.getAbbreviatedDayNames(), invInfo.getAbbreviatedDayNames(), false, out$numParsed$43);
                             numParsed = out$numParsed$43[0];
                             dayofweek = temp$42;
@@ -707,9 +691,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                     pos = ws;
                     // A whitespace may match a '/' in the pattern.
                     if (!exact && pos < chars.length() && chars.charAt(pos) == '/') {
-                        final int[] out$numParsed$45 = {
-                            0
-                        };
+                        final int[] out$numParsed$45 = new int[1];
                         final boolean temp$44 = parseDateSeparator(s, valuePos, dfi, false, out$numParsed$45);
                         numParsed = out$numParsed$45[0];
                         if (!temp$44) {
@@ -728,30 +710,22 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                         return false;
                     }
                     if (num == 0) {
-                        final int[] out$numParsed$47 = {
-                            0
-                        };
+                        final int[] out$numParsed$47 = new int[1];
                         final long temp$46 = parseNumber(s, valuePos, 1, 2, false, out$numParsed$47);
                         numParsed = out$numParsed$47[0];
                         day = (int) temp$46;
                     } else if (num == 1) {
-                        final int[] out$numParsed$51 = {
-                            0
-                        };
+                        final int[] out$numParsed$51 = new int[1];
                         final long temp$50 = parseNumber(s, valuePos, 1, 2, true, out$numParsed$51);
                         numParsed = out$numParsed$51[0];
                         day = (int) temp$50;
                     } else if (num == 2) {
-                        final int[] out$numParsed$53 = {
-                            0
-                        };
+                        final int[] out$numParsed$53 = new int[1];
                         final int temp$52 = parseEnum(s, valuePos, dfi.getAbbreviatedDayNames(), invInfo.getAbbreviatedDayNames(), exact, out$numParsed$53);
                         numParsed = out$numParsed$53[0];
                         dayofweek = temp$52;
                     } else {
-                        final int[] out$numParsed$49 = {
-                            0
-                        };
+                        final int[] out$numParsed$49 = new int[1];
                         final int temp$48 = parseEnum(s, valuePos, dfi.getDayNames(), invInfo.getDayNames(), exact, out$numParsed$49);
                         numParsed = out$numParsed$49[0];
                         dayofweek = temp$48;
@@ -765,25 +739,19 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                     if (flexibleTwoPartsParsing) {
                         numParsed = -1;
                         if (num == 0 || num == 3) {
-                            final int[] out$numParsed$55 = {
-                                0
-                            };
+                            final int[] out$numParsed$55 = new int[1];
                             final long temp$54 = parseNumber(s, valuePos, 1, 2, false, out$numParsed$55);
                             numParsed = out$numParsed$55[0];
                             month = (int) temp$54;
                         }
                         if (num > 1 && numParsed == -1) {
-                            final int[] out$numParsed$57 = {
-                                0
-                            };
+                            final int[] out$numParsed$57 = new int[1];
                             final int temp$56 = parseEnum(s, valuePos, dfi.getMonthNames(), invInfo.getMonthNames(), false, out$numParsed$57);
                             numParsed = out$numParsed$57[0];
                             month = temp$56 + 1;
                         }
                         if (num > 1 && numParsed == -1) {
-                            final int[] out$numParsed$59 = {
-                                0
-                            };
+                            final int[] out$numParsed$59 = new int[1];
                             final int temp$58 = parseEnum(s, valuePos, dfi.getAbbreviatedMonthNames(), invInfo.getAbbreviatedMonthNames(), false, out$numParsed$59);
                             numParsed = out$numParsed$59[0];
                             month = temp$58 + 1;
@@ -791,30 +759,22 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                         break;
                     }
                     if (num == 0) {
-                        final int[] out$numParsed$61 = {
-                            0
-                        };
+                        final int[] out$numParsed$61 = new int[1];
                         final long temp$60 = parseNumber(s, valuePos, 1, 2, false, out$numParsed$61);
                         numParsed = out$numParsed$61[0];
                         month = (int) temp$60;
                     } else if (num == 1) {
-                        final int[] out$numParsed$65 = {
-                            0
-                        };
+                        final int[] out$numParsed$65 = new int[1];
                         final long temp$64 = parseNumber(s, valuePos, 1, 2, true, out$numParsed$65);
                         numParsed = out$numParsed$65[0];
                         month = (int) temp$64;
                     } else if (num == 2) {
-                        final int[] out$numParsed$67 = {
-                            0
-                        };
+                        final int[] out$numParsed$67 = new int[1];
                         final int temp$66 = parseEnum(s, valuePos, dfi.getAbbreviatedMonthNames(), invInfo.getAbbreviatedMonthNames(), exact, out$numParsed$67);
                         numParsed = out$numParsed$67[0];
                         month = temp$66 + 1;
                     } else {
-                        final int[] out$numParsed$63 = {
-                            0
-                        };
+                        final int[] out$numParsed$63 = new int[1];
                         final int temp$62 = parseEnum(s, valuePos, dfi.getMonthNames(), invInfo.getMonthNames(), exact, out$numParsed$63);
                         numParsed = out$numParsed$63[0];
                         month = temp$62 + 1;
@@ -826,31 +786,23 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                         return false;
                     }
                     if (num == 0) {
-                        final int[] out$numParsed$69 = {
-                            0
-                        };
+                        final int[] out$numParsed$69 = new int[1];
                         final long temp$68 = parseNumber(s, valuePos, 1, 2, false, out$numParsed$69);
                         numParsed = out$numParsed$69[0];
                         year = (int) temp$68;
                     } else if (num < 3) {
-                        final int[] out$numParsed$75 = {
-                            0
-                        };
+                        final int[] out$numParsed$75 = new int[1];
                         final long temp$74 = parseNumber(s, valuePos, 1, 2, true, out$numParsed$75);
                         numParsed = out$numParsed$75[0];
                         year = (int) temp$74;
                     } else {
-                        final int[] out$numParsed$71 = {
-                            0
-                        };
+                        final int[] out$numParsed$71 = new int[1];
                         final long temp$70 = parseNumber(s, valuePos, exact ? 4 : 3, 4, false, out$numParsed$71);
                         numParsed = out$numParsed$71[0];
                         year = (int) temp$70;
                         if ((year >= 1000) && (numParsed == 4) && !longYear[0] && (s.length() > 4 + valuePos)) {
                             int np = 0;
-                            final int[] out$np$73 = {
-                                0
-                            };
+                            final int[] out$np$73 = new int[1];
                             final long temp$72 = parseNumber(s, valuePos, 5, 5, false, out$np$73);
                             np = out$np$73[0];
                             int ly = (int) temp$72;
@@ -869,16 +821,12 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                         return false;
                     }
                     if (num == 0) {
-                        final int[] out$numParsed$77 = {
-                            0
-                        };
+                        final int[] out$numParsed$77 = new int[1];
                         final long temp$76 = parseNumber(s, valuePos, 1, 2, false, out$numParsed$77);
                         numParsed = out$numParsed$77[0];
                         hour = (int) temp$76;
                     } else {
-                        final int[] out$numParsed$79 = {
-                            0
-                        };
+                        final int[] out$numParsed$79 = new int[1];
                         final long temp$78 = parseNumber(s, valuePos, 1, 2, true, out$numParsed$79);
                         numParsed = out$numParsed$79[0];
                         hour = (int) temp$78;
@@ -896,16 +844,12 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                         return false;
                     }
                     if (num == 0) {
-                        final int[] out$numParsed$81 = {
-                            0
-                        };
+                        final int[] out$numParsed$81 = new int[1];
                         final long temp$80 = parseNumber(s, valuePos, 1, 2, false, out$numParsed$81);
                         numParsed = out$numParsed$81[0];
                         hour = (int) temp$80;
                     } else {
-                        final int[] out$numParsed$83 = {
-                            0
-                        };
+                        final int[] out$numParsed$83 = new int[1];
                         final long temp$82 = parseNumber(s, valuePos, 1, 2, true, out$numParsed$83);
                         numParsed = out$numParsed$83[0];
                         hour = (int) temp$82;
@@ -920,16 +864,12 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                         return false;
                     }
                     if (num == 0) {
-                        final int[] out$numParsed$85 = {
-                            0
-                        };
+                        final int[] out$numParsed$85 = new int[1];
                         final long temp$84 = parseNumber(s, valuePos, 1, 2, false, out$numParsed$85);
                         numParsed = out$numParsed$85[0];
                         minute = (int) temp$84;
                     } else {
-                        final int[] out$numParsed$87 = {
-                            0
-                        };
+                        final int[] out$numParsed$87 = new int[1];
                         final long temp$86 = parseNumber(s, valuePos, 1, 2, true, out$numParsed$87);
                         numParsed = out$numParsed$87[0];
                         minute = (int) temp$86;
@@ -944,16 +884,12 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                         return false;
                     }
                     if (num == 0) {
-                        final int[] out$numParsed$89 = {
-                            0
-                        };
+                        final int[] out$numParsed$89 = new int[1];
                         final long temp$88 = parseNumber(s, valuePos, 1, 2, false, out$numParsed$89);
                         numParsed = out$numParsed$89[0];
                         second = (int) temp$88;
                     } else {
-                        final int[] out$numParsed$91 = {
-                            0
-                        };
+                        final int[] out$numParsed$91 = new int[1];
                         final long temp$90 = parseNumber(s, valuePos, 1, 2, true, out$numParsed$91);
                         numParsed = out$numParsed$91[0];
                         second = (int) temp$90;
@@ -966,9 +902,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                     if (fractionalSeconds != -1) {
                         return false;
                     }
-                    final int[] out$numParsed$92 = {
-                        0
-                    };
+                    final int[] out$numParsed$92 = new int[1];
                     double decimalNumber = parseNumber(s, valuePos, 0, num + 1, leadingZeros, out$numParsed$92);
                     numParsed = out$numParsed$92[0];
                     if (numParsed == -1) {
@@ -978,9 +912,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                     break;
                 }
                 case 't': {
-                    final int[] out$numParsed$94 = {
-                        0
-                    };
+                    final int[] out$numParsed$94 = new int[1];
                     final int[] ref$ampm$95 = {
                         ampm
                     };
@@ -993,9 +925,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                     break;
                 }
                 case ':': {
-                    final int[] out$numParsed$97 = {
-                        0
-                    };
+                    final int[] out$numParsed$97 = new int[1];
                     final boolean temp$96 = parseTimeSeparator(s, valuePos, dfi, exact, out$numParsed$97);
                     numParsed = out$numParsed$97[0];
                     if (!temp$96) {
@@ -1004,9 +934,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                     break;
                 }
                 case '/': {
-                    final int[] out$numParsed$99 = {
-                        0
-                    };
+                    final int[] out$numParsed$99 = new int[1];
                     final boolean temp$98 = parseDateSeparator(s, valuePos, dfi, exact, out$numParsed$99);
                     numParsed = out$numParsed$99[0];
                     if (!temp$98) {
@@ -1252,9 +1180,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
             int yr4 = 0;
             boolean temp$100 = tokens[0].length() != 4;
             if (!temp$100) {
-                final int[] out$yr4$101 = {
-                    0
-                };
+                final int[] out$yr4$101 = new int[1];
                 temp$100 = !IntHelper.tryParse(tokens[0], out$yr4$101);
                 yr4 = out$yr4$101[0];
             }
@@ -1268,9 +1194,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
             }
             tokens = StringHelper.split(tokens[1], 'T');
             int doy = 0;
-            final int[] out$doy$103 = {
-                0
-            };
+            final int[] out$doy$103 = new int[1];
             final boolean temp$102 = IntHelper.tryParse(tokens[0], out$doy$103);
             doy = out$doy$103[0];
             // The 366 out-of-range check below will handle cases where there are 4 or more digits
@@ -1322,9 +1246,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
             boolean useInvariant = false;
             if (format.length() == 1) {
                 char fchar = format.charAt(0);
-                final boolean[] out$useInvariant$108 = {
-                    false
-                };
+                final boolean[] out$useInvariant$108 = new boolean[1];
                 final String temp$107 = getStandardPattern(fchar, dfi, out$useInvariant$108);
                 useInvariant = out$useInvariant$108[0];
                 format = temp$107;
@@ -1719,9 +1641,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
         boolean isLeapSecond = false;
         @CS2JInfo("Initialization of C# struct variable 'convertedJulianDate' added by translator.")
         JulianDate convertedJulianDate = new JulianDate();
-        final JulianDate[] out$convertedJulianDate$110 = {
-            null
-        };
+        final JulianDate[] out$convertedJulianDate$110 = new JulianDate[1];
         final boolean temp$109 = julianDate.tryConvertTimeStandard(timeStandard, out$convertedJulianDate$110);
         convertedJulianDate = out$convertedJulianDate$110[0];
         if (!temp$109) {
