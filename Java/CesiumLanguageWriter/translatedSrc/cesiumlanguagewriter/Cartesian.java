@@ -6,6 +6,7 @@ import agi.foundation.compatibility.annotations.CS2JInfo;
 import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
+import agi.foundation.compatibility.NotFiniteNumberException;
 import agi.foundation.compatibility.StringHelper;
 import javax.annotation.Nonnull;
 
@@ -364,7 +365,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     It should be noted that this does not guarantee a result whose magnitude will be 1.0 in cases where an individual component underflows upon squaring.
     * @return The resulting set of {@link UnitCartesian} coordinates.
     * @exception ArithmeticException The magnitude of the provided coordinates must not be zero.
-    * @exception ArithmeticException The magnitude of the provided coordinates must not be infinite.
+    * @exception NotFiniteNumberException The magnitude of the provided coordinates must not be infinite.
     */
     @CS2JWarning("Unhandled attribute removed: Pure")
     @Nonnull
@@ -387,7 +388,7 @@ public final class Cartesian implements IEquatable<Cartesian>, ImmutableValueTyp
     the magnitude of the original set of {@link Cartesian} coordinates.
     * @return The resulting set of {@link UnitCartesian} coordinates.
     * @exception ArithmeticException The magnitude of the provided coordinates must not be zero.
-    * @exception ArithmeticException The magnitude of the provided coordinates must not be infinite.
+    * @exception NotFiniteNumberException The magnitude of the provided coordinates must not be infinite.
     */
     @CS2JWarning({
         "Unhandled attribute removed: Pure",

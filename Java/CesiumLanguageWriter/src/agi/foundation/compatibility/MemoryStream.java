@@ -1,5 +1,7 @@
 package agi.foundation.compatibility;
 
+import static agi.foundation.compatibility.ArgumentNullException.assertNonNull;
+
 import agi.foundation.compatibility.annotations.Internal;
 
 import java.io.InputStream;
@@ -76,7 +78,7 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
      *            True if the stream supports writing, false otherwise.
      */
     public MemoryStream(@Nonnull byte[] buffer, boolean writable) {
-        ArgumentNullException.assertNonNull(buffer, "buffer");
+        assertNonNull(buffer, "buffer");
 
         this.buffer = buffer;
 
@@ -139,7 +141,7 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
      *            Whether the stream allows direct access to the underlying buffer.
      */
     public MemoryStream(@Nonnull byte[] buffer, int index, int count, boolean writable, boolean publiclyVisible) {
-        ArgumentNullException.assertNonNull(buffer, "buffer");
+        assertNonNull(buffer, "buffer");
 
         this.buffer = buffer;
 
@@ -162,9 +164,7 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
     public void close() {}
 
     @Override
-    public void dispose() {
-        close();
-    }
+    public void dispose() {}
 
     @Override
     public void mark(int readAheadLimit) {

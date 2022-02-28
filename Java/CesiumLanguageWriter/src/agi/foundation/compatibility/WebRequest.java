@@ -1,5 +1,7 @@
 package agi.foundation.compatibility;
 
+import static agi.foundation.compatibility.ArgumentNullException.assertNonNull;
+
 import agi.foundation.compatibility.annotations.Internal;
 
 import java.io.IOException;
@@ -32,13 +34,13 @@ public abstract class WebRequest {
     }
 
     public static WebRequest create(@Nonnull String requestUriString) {
-        ArgumentNullException.assertNonNull(requestUriString, "requestUriString");
+        assertNonNull(requestUriString, "requestUriString");
 
         return create(UriHelper.create(requestUriString));
     }
 
     public static WebRequest create(@Nonnull URI requestUri) {
-        ArgumentNullException.assertNonNull(requestUri, "requestUri");
+        assertNonNull(requestUri, "requestUri");
 
         return create(toURL(requestUri));
     }

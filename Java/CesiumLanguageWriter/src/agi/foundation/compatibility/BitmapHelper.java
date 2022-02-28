@@ -1,5 +1,7 @@
 package agi.foundation.compatibility;
 
+import static agi.foundation.compatibility.ArgumentNullException.assertNonNull;
+
 import agi.foundation.compatibility.annotations.Internal;
 
 import java.awt.image.BufferedImage;
@@ -29,7 +31,7 @@ public final class BitmapHelper {
      */
     @Nonnull
     public static BufferedImage create(@Nonnull InputStream stream) {
-        ArgumentNullException.assertNonNull(stream, "stream");
+        assertNonNull(stream, "stream");
 
         BufferedImage image;
         try {

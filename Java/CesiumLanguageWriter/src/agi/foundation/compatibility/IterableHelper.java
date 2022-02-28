@@ -1,5 +1,7 @@
 package agi.foundation.compatibility;
 
+import static agi.foundation.compatibility.ArgumentNullException.assertNonNull;
+
 import agi.foundation.compatibility.annotations.Internal;
 
 import java.util.Arrays;
@@ -39,8 +41,8 @@ public final class IterableHelper {
      */
     @Nonnull
     public static <TSource, TResult> Iterable<TResult> select(@Nonnull Iterable<? extends TSource> source, @Nonnull Function<? super TSource, ? extends TResult> selector) {
-        ArgumentNullException.assertNonNull(source, "source");
-        ArgumentNullException.assertNonNull(selector, "selector");
+        assertNonNull(source, "source");
+        assertNonNull(selector, "selector");
 
         return new SelectIterable<>(source, selector);
     }
@@ -64,8 +66,8 @@ public final class IterableHelper {
     @Nonnull
     public static <TSource, TResult> Iterable<TResult> selectMany(@Nonnull Iterable<? extends TSource> source,
                                                                   @Nonnull Function<? super TSource, ? extends Iterable<? extends TResult>> selector) {
-        ArgumentNullException.assertNonNull(source, "source");
-        ArgumentNullException.assertNonNull(selector, "selector");
+        assertNonNull(source, "source");
+        assertNonNull(selector, "selector");
 
         return concat(select(source, selector));
     }

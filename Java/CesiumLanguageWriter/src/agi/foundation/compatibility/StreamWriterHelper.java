@@ -1,5 +1,7 @@
 package agi.foundation.compatibility;
 
+import static agi.foundation.compatibility.ArgumentNullException.assertNonNull;
+
 import agi.foundation.compatibility.annotations.Internal;
 
 import java.io.FileOutputStream;
@@ -52,8 +54,8 @@ public final class StreamWriterHelper {
      */
     @Nonnull
     public static OutputStreamWriter create(@Nonnull String path, boolean append, @Nonnull Charset charset) {
-        ArgumentNullException.assertNonNull(path, "path");
-        ArgumentNullException.assertNonNull(charset, "charset");
+        assertNonNull(path, "path");
+        assertNonNull(charset, "charset");
         try {
             return new OutputStreamWriter(new FileOutputStream(path, append), charset);
         } catch (IOException e) {

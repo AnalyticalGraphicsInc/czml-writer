@@ -1,5 +1,7 @@
 package agi.foundation.compatibility;
 
+import static agi.foundation.compatibility.ArgumentNullException.assertNonNull;
+
 import java.util.regex.Pattern;
 
 import javax.annotation.Nonnull;
@@ -16,7 +18,7 @@ public final class RegexHelper {
      */
     @Nonnull
     public static Pattern create(@Nonnull String pattern) {
-        ArgumentNullException.assertNonNull(pattern, "pattern");
+        assertNonNull(pattern, "pattern");
         return Pattern.compile(pattern);
     }
 
@@ -31,8 +33,8 @@ public final class RegexHelper {
      * @return true if the regular expression finds a match; otherwise, false.
      */
     public static boolean isMatch(@Nonnull Pattern pattern, @Nonnull String input) {
-        ArgumentNullException.assertNonNull(pattern, "pattern");
-        ArgumentNullException.assertNonNull(input, "input");
+        assertNonNull(pattern, "pattern");
+        assertNonNull(input, "input");
 
         return pattern.matcher(input).find();
     }

@@ -5,6 +5,7 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Action;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.IEquatable;
+import agi.foundation.compatibility.NotFiniteNumberException;
 import agi.foundation.compatibility.TestContextRule;
 import agi.foundation.TypeLiteral;
 import cesiumlanguagewriter.*;
@@ -176,11 +177,11 @@ public class TestUnitQuaternion {
 
     /**
     * Tests that rotation by an invalid value produces an
-    {@link ArithmeticException}.
+    {@link NotFiniteNumberException}.
     */
     @Test
     public final void testFromInfinity() {
-        AssertHelper.<ArithmeticException> assertThrows(new TypeLiteral<ArithmeticException>() {}, new Action() {
+        AssertHelper.<NotFiniteNumberException> assertThrows(new TypeLiteral<NotFiniteNumberException>() {}, new Action() {
             public void invoke() {
                 UnitQuaternion unused = new UnitQuaternion(Double.POSITIVE_INFINITY, 0.0, 0.0, 0.0);
             }

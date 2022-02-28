@@ -1,5 +1,7 @@
 package agi.foundation.compatibility;
 
+import static agi.foundation.compatibility.ArgumentNullException.assertNonNull;
+
 import agi.foundation.compatibility.annotations.Internal;
 
 import java.text.NumberFormat;
@@ -79,7 +81,7 @@ public final class IntHelper {
      * @return A 32-bit signed integer equivalent to the number contained in s.
      */
     public static int parse(@Nonnull String s, @Nonnull NumberStyles style, @Nullable Locale locale) {
-        ArgumentNullException.assertNonNull(s, "s");
+        assertNonNull(s, "s");
 
         if (locale == null)
             locale = CultureInfoHelper.getCurrentCulture();

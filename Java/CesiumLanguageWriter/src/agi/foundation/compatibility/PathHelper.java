@@ -1,5 +1,7 @@
 package agi.foundation.compatibility;
 
+import static agi.foundation.compatibility.ArgumentNullException.assertNonNull;
+
 import agi.foundation.compatibility.annotations.Internal;
 
 import javax.annotation.Nonnull;
@@ -28,8 +30,8 @@ public final class PathHelper {
      */
     @Nonnull
     public static String combine(@Nonnull String path1, @Nonnull String path2) {
-        ArgumentNullException.assertNonNull(path1, "path1");
-        ArgumentNullException.assertNonNull(path2, "path2");
+        assertNonNull(path1, "path1");
+        assertNonNull(path2, "path2");
 
         if (path2.length() == 0)
             return path1;

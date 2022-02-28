@@ -1,5 +1,7 @@
 package agi.foundation.compatibility;
 
+import static agi.foundation.compatibility.ArgumentNullException.assertNonNull;
+
 import agi.foundation.compatibility.annotations.Internal;
 
 import java.text.Collator;
@@ -231,8 +233,8 @@ public final class StringHelper {
      * Do the work of splitting the string according to the specified regex and options.
      */
     private static String[] split(@Nonnull String s, @Nullable String regex, @Nonnull StringSplitOptions options, int count) {
-        ArgumentNullException.assertNonNull(s, "s");
-        ArgumentNullException.assertNonNull(options, "options");
+        assertNonNull(s, "s");
+        assertNonNull(options, "options");
 
         boolean removeEmptyEntries = options == StringSplitOptions.REMOVE_EMPTY_ENTRIES;
         if (count == 0 || removeEmptyEntries && s.length() == 0)
@@ -318,7 +320,7 @@ public final class StringHelper {
      */
     @Nonnull
     public static String remove(String s, int startIndex, int count) {
-        ArgumentNullException.assertNonNull(s, "s");
+        assertNonNull(s, "s");
         if (startIndex < 0)
             throw new ArgumentOutOfRangeException("startIndex", "startIndex cannot be less than zero.");
         if (count < 0)
@@ -383,7 +385,7 @@ public final class StringHelper {
 
     @Nonnull
     private static String pad(@Nonnull String s, int totalWidth, char paddingChar, @Nonnull PaddingType paddingType) {
-        ArgumentNullException.assertNonNull(s, "s");
+        assertNonNull(s, "s");
         if (totalWidth < 0)
             throw new ArgumentOutOfRangeException("totalWidth", "Non-negative number required.");
 
@@ -557,8 +559,8 @@ public final class StringHelper {
      */
     @Nonnull
     public static String format(@Nullable Locale locale, @Nonnull String format, @Nonnull Object... args) {
-        ArgumentNullException.assertNonNull(format, "format");
-        ArgumentNullException.assertNonNull(args, "args");
+        assertNonNull(format, "format");
+        assertNonNull(args, "args");
 
         return new Helper(locale, format, args).format();
     }
@@ -787,8 +789,8 @@ public final class StringHelper {
      * @return true if value matches the beginning of this string; otherwise, false.
      */
     public static boolean startsWith(@Nonnull String s, @Nonnull String value) {
-        ArgumentNullException.assertNonNull(s, "s");
-        ArgumentNullException.assertNonNull(value, "value");
+        assertNonNull(s, "s");
+        assertNonNull(value, "value");
 
         return s.startsWith(value);
     }
@@ -808,8 +810,8 @@ public final class StringHelper {
      *         otherwise, false.
      */
     public static boolean startsWith(@Nonnull String s, @Nonnull String value, @Nonnull StringComparison comparisonType) {
-        ArgumentNullException.assertNonNull(s, "s");
-        ArgumentNullException.assertNonNull(value, "value");
+        assertNonNull(s, "s");
+        assertNonNull(value, "value");
 
         if (getIgnoreCase(comparisonType)) {
             Locale locale = getLocale(comparisonType);
@@ -836,8 +838,8 @@ public final class StringHelper {
      *         false.
      */
     public static boolean endsWith(@Nonnull String s, @Nonnull String value, @Nonnull StringComparison comparisonType) {
-        ArgumentNullException.assertNonNull(s, "s");
-        ArgumentNullException.assertNonNull(value, "value");
+        assertNonNull(s, "s");
+        assertNonNull(value, "value");
 
         if (getIgnoreCase(comparisonType)) {
             Locale locale = getLocale(comparisonType);
@@ -864,8 +866,8 @@ public final class StringHelper {
      *         it is not. If value is Empty, the return value is 0.
      */
     public static int indexOf(@Nonnull String s, @Nonnull String value, @Nonnull StringComparison comparisonType) {
-        ArgumentNullException.assertNonNull(s, "s");
-        ArgumentNullException.assertNonNull(value, "value");
+        assertNonNull(s, "s");
+        assertNonNull(value, "value");
 
         if (getIgnoreCase(comparisonType)) {
             Locale locale = getLocale(comparisonType);
@@ -887,7 +889,7 @@ public final class StringHelper {
      */
     @Nonnull
     public static String toLowerInvariant(@Nonnull String s) {
-        ArgumentNullException.assertNonNull(s, "s");
+        assertNonNull(s, "s");
         return s.toLowerCase(CultureInfoHelper.getInvariantCulture());
     }
 
@@ -925,7 +927,7 @@ public final class StringHelper {
      */
     @Nonnull
     public static String substring(@Nonnull String s, int startIndex, int length) {
-        ArgumentNullException.assertNonNull(s, "s");
+        assertNonNull(s, "s");
         if (startIndex < 0)
             throw new ArgumentOutOfRangeException("startIndex", "startIndex cannot be less than zero.");
 
@@ -961,8 +963,8 @@ public final class StringHelper {
      */
     @Nonnull
     public static String replace(@Nonnull String s, @Nonnull String oldValue, @Nullable String newValue) {
-        ArgumentNullException.assertNonNull(s, "s");
-        ArgumentNullException.assertNonNull(oldValue, "oldValue");
+        assertNonNull(s, "s");
+        assertNonNull(oldValue, "oldValue");
 
         if (empty.equals(oldValue))
             throw new ArgumentException("String cannot be of zero length.", "oldValue");
@@ -1028,9 +1030,9 @@ public final class StringHelper {
      */
     @Nonnull
     public static StringBuilder appendFormat(@Nonnull StringBuilder builder, @Nullable Locale locale, @Nonnull String format, @Nonnull Object... args) {
-        ArgumentNullException.assertNonNull(builder, "builder");
-        ArgumentNullException.assertNonNull(format, "format");
-        ArgumentNullException.assertNonNull(args, "args");
+        assertNonNull(builder, "builder");
+        assertNonNull(format, "format");
+        assertNonNull(args, "args");
 
         return builder.append(format(locale, format, args));
     }

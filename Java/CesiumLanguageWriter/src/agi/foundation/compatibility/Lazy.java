@@ -1,5 +1,7 @@
 package agi.foundation.compatibility;
 
+import static agi.foundation.compatibility.ArgumentNullException.assertNonNull;
+
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Supplier;
 
@@ -141,7 +143,7 @@ public final class Lazy<T> {
      *            The thread safety mode.
      */
     public Lazy(@Nonnull Supplier<? extends T> valueFactory, @Nonnull LazyThreadSafetyMode mode) {
-        ArgumentNullException.assertNonNull(valueFactory, "valueFactory");
+        assertNonNull(valueFactory, "valueFactory");
 
         m_valueFactory = valueFactory;
 

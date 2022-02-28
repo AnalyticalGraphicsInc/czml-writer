@@ -7,6 +7,7 @@ import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.CultureInfoHelper;
 import agi.foundation.compatibility.DoubleHelper;
 import agi.foundation.compatibility.IEquatable;
+import agi.foundation.compatibility.NotFiniteNumberException;
 import agi.foundation.compatibility.TestContextRule;
 import agi.foundation.TypeLiteral;
 import cesiumlanguagewriter.*;
@@ -168,12 +169,12 @@ public class TestCartesian {
 
     /**
     * Tests that normalization of a {@link Cartesian} with infinite magnitude
-    produces an {@link ArithmeticException}.
+    produces an {@link NotFiniteNumberException}.
     */
     @Test
     public final void testNormalizeOfInfiniteMagnitude() {
         final Cartesian test = new Cartesian(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
-        AssertHelper.<ArithmeticException> assertThrows(new TypeLiteral<ArithmeticException>() {}, new Action() {
+        AssertHelper.<NotFiniteNumberException> assertThrows(new TypeLiteral<NotFiniteNumberException>() {}, new Action() {
             public void invoke() {
                 UnitCartesian unused = test.normalize();
             }

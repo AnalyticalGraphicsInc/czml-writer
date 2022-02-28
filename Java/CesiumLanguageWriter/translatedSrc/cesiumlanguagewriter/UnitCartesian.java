@@ -7,6 +7,7 @@ import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.Enumeration;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
+import agi.foundation.compatibility.NotFiniteNumberException;
 import agi.foundation.compatibility.StringHelper;
 import cesiumlanguagewriter.Cartesian;
 import javax.annotation.Nonnull;
@@ -37,7 +38,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     * @param y The linear coordinate along the positive y-axis.
     * @param z The linear coordinate along the positive z-axis.
     * @exception ArithmeticException The magnitude of the provided coordinates must not be zero.
-    * @exception ArithmeticException The magnitude of the provided coordinates must not be infinite.
+    * @exception NotFiniteNumberException The magnitude of the provided coordinates must not be infinite.
     */
     public UnitCartesian(double x, double y, double z) {
         this(x, y, z, Normalization.UNNORMALIZED);
@@ -52,7 +53,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     
     the magnitude of the original set of coordinates.
     * @exception ArithmeticException The magnitude of the provided coordinates must not be zero.
-    * @exception ArithmeticException The magnitude of the provided coordinates must not be infinite.
+    * @exception NotFiniteNumberException The magnitude of the provided coordinates must not be infinite.
     */
     public UnitCartesian(double x, double y, double z, @Nonnull double[] magnitude) {
         final double[] ref$x$0 = {
@@ -77,7 +78,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     * Initializes a set of {@link UnitCartesian} coordinates from the provided set of {@link Cartesian} coordinates.
     * @param coordinates The set of {@link Cartesian} coordinates.
     * @exception ArithmeticException The magnitude of the provided coordinates must not be zero.
-    * @exception ArithmeticException The magnitude of the provided coordinates must not be infinite.
+    * @exception NotFiniteNumberException The magnitude of the provided coordinates must not be infinite.
     */
     public UnitCartesian(@Nonnull Cartesian coordinates) {
         this(coordinates.getX(), coordinates.getY(), coordinates.getZ(), Normalization.UNNORMALIZED);
@@ -90,7 +91,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
     
     the magnitude of the original set of coordinates.
     * @exception ArithmeticException The magnitude of the provided coordinates must not be zero.
-    * @exception ArithmeticException The magnitude of the provided coordinates must not be infinite.
+    * @exception NotFiniteNumberException The magnitude of the provided coordinates must not be infinite.
     */
     public UnitCartesian(@Nonnull Cartesian coordinates, @Nonnull double[] magnitude) {
         this(coordinates.getX(), coordinates.getY(), coordinates.getZ(), magnitude);
@@ -522,7 +523,7 @@ public final class UnitCartesian implements IEquatable<UnitCartesian>, Immutable
             throw new ArithmeticException(CesiumLocalization.getMagnitudeMustNotBeZero());
         }
         if (Double.isInfinite(magnitude[0])) {
-            throw new ArithmeticException(CesiumLocalization.getMagnitudeMustNotBeInfinite());
+            throw new NotFiniteNumberException(CesiumLocalization.getMagnitudeMustNotBeInfinite());
         }
         x[0] /= magnitude[0];
         y[0] /= magnitude[0];

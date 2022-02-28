@@ -35,7 +35,6 @@ package agi.foundation.compatibility;
 
 import agi.foundation.compatibility.annotations.Internal;
 
-import java.lang.reflect.Array;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -328,41 +327,22 @@ public class LinkedList<E> implements Collection<E> {
 
     @Override
     public final boolean isEmpty() {
-        return count == 0;
+        return CollectionsHelper.isEmpty(this);
     }
 
     @Override
     public final boolean containsAll(Collection<?> c) {
-        for (Object e : c) {
-            if (!contains(e)) {
-                return false;
-            }
-        }
-        return true;
+        return CollectionsHelper.containsAll(this, c);
     }
 
     @Override
     public final Object[] toArray() {
-        Object[] r = new Object[count];
-        int i = 0;
-        for (E item : this) {
-            r[i++] = item;
-        }
-        return r;
+        return CollectionsHelper.toArray(this);
     }
 
     @Override
-    @SuppressWarnings({
-            "unchecked",
-            "hiding"
-    })
     public final <T> T[] toArray(T[] a) {
-        T[] r = a.length >= count ? a : (T[]) Array.newInstance(a.getClass().getComponentType(), count);
-        int i = 0;
-        for (E item : this) {
-            r[i++] = (T) item;
-        }
-        return r;
+        return CollectionsHelper.toArray(this, a);
     }
 
     @Override

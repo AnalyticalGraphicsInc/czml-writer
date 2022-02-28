@@ -7,6 +7,7 @@ import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.Enumeration;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ImmutableValueType;
+import agi.foundation.compatibility.NotFiniteNumberException;
 import agi.foundation.compatibility.StringHelper;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -42,7 +43,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     * @param y The Y coordinate.
     * @param z The Z coordinate.
     * @exception ArithmeticException The magnitude of the provided coordinates must not be zero.
-    * @exception ArithmeticException The magnitude of the provided coordinates must not be infinite.
+    * @exception NotFiniteNumberException The magnitude of the provided coordinates must not be infinite.
     */
     public UnitQuaternion(double w, double x, double y, double z) {
         this(w, x, y, z, Normalization.UNNORMALIZED);
@@ -59,7 +60,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
     
     the magnitude of the original set of coordinates.
     * @exception ArithmeticException The magnitude of the provided coordinates must not be zero.
-    * @exception ArithmeticException The magnitude of the provided coordinates must not be infinite.
+    * @exception NotFiniteNumberException The magnitude of the provided coordinates must not be infinite.
     */
     public UnitQuaternion(double w, double x, double y, double z, @Nonnull double[] magnitude) {
         final double[] ref$w$0 = {
@@ -361,7 +362,7 @@ public final class UnitQuaternion implements IEquatable<UnitQuaternion>, Immutab
             throw new ArithmeticException(CesiumLocalization.getMagnitudeMustNotBeZero());
         }
         if (Double.isInfinite(magnitude[0])) {
-            throw new ArithmeticException(CesiumLocalization.getMagnitudeMustNotBeInfinite());
+            throw new NotFiniteNumberException(CesiumLocalization.getMagnitudeMustNotBeInfinite());
         }
         w[0] /= magnitude[0];
         x[0] /= magnitude[0];

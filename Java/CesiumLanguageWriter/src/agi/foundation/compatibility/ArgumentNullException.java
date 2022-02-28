@@ -53,6 +53,19 @@ public class ArgumentNullException extends ArgumentException {
         super(message, paramName);
     }
 
+    /**
+     * Checks that the specified object reference is not {@code null} and throws a
+     * {@link ArgumentNullException} with the specified {@code paramName} if it is.
+     *
+     * @param <T>
+     *            The type of {@code value}.
+     * @param value
+     *            The object to check.
+     * @param paramName
+     *            The name of the parameter that is being checked.
+     * @throws ArgumentNullException
+     *             Thrown when {@code value} is {@code null}.
+     */
     public static <T> void assertNonNull(T value, String paramName) {
         if (value == null)
             throw new ArgumentNullException(paramName);

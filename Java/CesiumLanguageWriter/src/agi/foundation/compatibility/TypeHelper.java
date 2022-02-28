@@ -24,7 +24,7 @@ public final class TypeHelper {
         try {
             return Class.forName(className);
         } catch (ClassNotFoundException e) {
-            throw new RuntimeException("Unable to find class", e);
+            throw new RuntimeClassNotFoundException(e);
         }
     }
 }

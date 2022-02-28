@@ -6,6 +6,7 @@ import agi.foundation.compatibility.ArgumentNullException;
 import agi.foundation.compatibility.LinkedList;
 import agi.foundation.compatibility.LinkedListNode;
 import agi.foundation.compatibility.MapHelper;
+import agi.foundation.compatibility.ThreadHelper;
 import cesiumlanguagewriter.*;
 import java.util.Collection;
 import java.util.Map;
@@ -102,7 +103,7 @@ public class CachingCesiumUriResolver implements ICesiumUriResolver {
         return s_threadLocalInstance.get();
     }
 
-    private static ThreadLocal_0 s_threadLocalInstance = new ThreadLocal_0();
+    private static final ThreadLocal<CachingCesiumUriResolver> s_threadLocalInstance = ThreadHelper.createThreadLocal(null);
     private int m_max;
     @Nonnull
     private Map<String, LinkedListNode<CacheItem>> m_dictionary;
@@ -119,12 +120,5 @@ public class CachingCesiumUriResolver implements ICesiumUriResolver {
         public final String SourceUri;
         @Nonnull
         public final String ResolvedUri;
-    }
-
-    private static final class ThreadLocal_0 extends ThreadLocal<CachingCesiumUriResolver> {
-        @Override
-        protected CachingCesiumUriResolver initialValue() {
-            return (CachingCesiumUriResolver) null;
-        }
     }
 }

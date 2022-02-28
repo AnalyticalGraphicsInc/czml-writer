@@ -1,5 +1,7 @@
 package agi.foundation.compatibility;
 
+import static agi.foundation.compatibility.ArgumentNullException.assertNonNull;
+
 import agi.foundation.compatibility.annotations.Internal;
 
 import java.util.Locale;
@@ -43,7 +45,7 @@ public final class CultureInfoHelper {
      */
     @Nonnull
     public static Locale create(@Nonnull String name) {
-        ArgumentNullException.assertNonNull(name, "name");
+        assertNonNull(name, "name");
 
         if (StringHelper.isEmpty(name)) {
             return getInvariantCulture();

@@ -1,5 +1,7 @@
 package agi.foundation.compatibility;
 
+import static agi.foundation.compatibility.ArgumentNullException.assertNonNull;
+
 import agi.foundation.compatibility.annotations.Internal;
 
 import java.awt.image.RenderedImage;
@@ -28,9 +30,9 @@ public final class ImageHelper {
      *            An ImageFormat that specifies the format of the saved image.
      */
     public static void save(@Nonnull RenderedImage image, @Nonnull MemoryStream stream, @Nonnull ImageFormat format) {
-        ArgumentNullException.assertNonNull(image, "image");
-        ArgumentNullException.assertNonNull(stream, "stream");
-        ArgumentNullException.assertNonNull(format, "format");
+        assertNonNull(image, "image");
+        assertNonNull(stream, "stream");
+        assertNonNull(format, "format");
 
         try {
             ImageIO.write(image, format.getFormatName(), stream.asOutputStream());

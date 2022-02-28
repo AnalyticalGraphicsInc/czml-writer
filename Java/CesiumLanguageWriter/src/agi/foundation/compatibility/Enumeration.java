@@ -7,5 +7,10 @@ package agi.foundation.compatibility;
  * enumeration.
  */
 public interface Enumeration {
+    /**
+     * Gets the integer value for this enumeration value.
+     *
+     * @return The integer representation of this enumeration value.
+     */
     int getValue();
 }

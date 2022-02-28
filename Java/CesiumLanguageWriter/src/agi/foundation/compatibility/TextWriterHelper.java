@@ -1,7 +1,6 @@
 package agi.foundation.compatibility;
 
 import static agi.foundation.compatibility.ArgumentNullException.assertNonNull;
-import static agi.foundation.compatibility.DisposeHelper.dispose;
 
 import agi.foundation.compatibility.annotations.Internal;
 
