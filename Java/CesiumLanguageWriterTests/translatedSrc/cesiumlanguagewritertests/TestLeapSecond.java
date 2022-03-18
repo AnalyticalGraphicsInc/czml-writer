@@ -30,8 +30,8 @@ public class TestLeapSecond {
     @Test
     public final void testConstructor() {
         LeapSecond leapSecond = new LeapSecond(2451545.0, 100.0);
-        Assert.assertEquals(2451545.0, leapSecond.getDate().getTotalDays(), 0d);
-        Assert.assertEquals(100.0, leapSecond.getTotalTaiOffsetFromUtc(), 0d);
+        AssertHelper.assertEquals(2451545.0, leapSecond.getDate().getTotalDays());
+        AssertHelper.assertEquals(100.0, leapSecond.getTotalTaiOffsetFromUtc());
         AssertHelper.assertEquals(TimeStandard.COORDINATED_UNIVERSAL_TIME, leapSecond.getDate().getStandard());
     }
 
@@ -70,7 +70,7 @@ public class TestLeapSecond {
         LeapSecond leapSecond1 = new LeapSecond(2451545.0, 100.0);
         LeapSecond leapSecond2 = new LeapSecond(2451545.0, 100.0);
         LeapSecond leapSecond3 = new LeapSecond(2451545.0, 101.0);
-        Assert.assertEquals((int) leapSecond1.hashCode(), (int) leapSecond2.hashCode());
+        AssertHelper.assertEquals(leapSecond1.hashCode(), leapSecond2.hashCode());
         AssertHelper.assertNotEqual(leapSecond1.hashCode(), leapSecond3.hashCode());
     }
 
@@ -81,7 +81,7 @@ public class TestLeapSecond {
     public final void testToString() {
         LeapSecond leapSecond = new LeapSecond(2451545.0, 100.0);
         String expected = StringHelper.format("2451545:0 UTC ({0}), 100", new GregorianDate(new JulianDate(2451545.0, TimeStandard.COORDINATED_UNIVERSAL_TIME)));
-        Assert.assertEquals(expected, leapSecond.toString());
+        AssertHelper.assertEquals(expected, leapSecond.toString());
     }
 
     @Nonnull

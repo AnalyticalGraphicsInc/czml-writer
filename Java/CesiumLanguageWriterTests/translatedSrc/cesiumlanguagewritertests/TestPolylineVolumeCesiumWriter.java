@@ -2,6 +2,7 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
+import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.ColorHelper;
 import agi.foundation.compatibility.ConsoleHelper;
 import agi.foundation.compatibility.MapHelper;
@@ -15,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 import javax.annotation.Nonnull;
-import org.junit.Assert;
 import org.junit.ClassRule;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
@@ -114,7 +114,7 @@ public class TestPolylineVolumeCesiumWriter extends TestCesiumPropertyWriter<Pol
                 polylineVolume.writeShapeProperty(shape);
             }
         }
-        Assert.assertEquals("{\"polylineVolume\":{\"shape\":{\"cartesian2\":[-5,-5,6,-6,7,7,-8,8]}}}", getStringWriter().toString());
+        AssertHelper.assertEquals("{\"polylineVolume\":{\"shape\":{\"cartesian2\":[-5,-5,6,-6,7,7,-8,8]}}}", getStringWriter().toString());
     }
 
     @Test

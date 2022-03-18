@@ -30,14 +30,14 @@ public class TestDuration {
     @Test
     public final void testMinValueMaxValueZeroValue() {
         Duration min = Duration.fromSeconds(Duration.getMinValue().getTotalSeconds());
-        Assert.assertEquals((int) Integer.MIN_VALUE, (int) min.getDays());
-        Assert.assertEquals(0.0, min.getSeconds(), 0d);
+        AssertHelper.assertEquals(Integer.MIN_VALUE, min.getDays());
+        AssertHelper.assertEquals(0.0, min.getSeconds());
         Duration max = Duration.fromSeconds(Duration.getMaxValue().getTotalSeconds());
-        Assert.assertEquals((int) Integer.MAX_VALUE, (int) max.getDays());
-        Assert.assertEquals(0.0, max.getSeconds(), 0d);
+        AssertHelper.assertEquals(Integer.MAX_VALUE, max.getDays());
+        AssertHelper.assertEquals(0.0, max.getSeconds());
         Duration zero = Duration.fromSeconds(Duration.getZero().getTotalSeconds());
-        Assert.assertEquals(0.0, zero.getDays(), 0d);
-        Assert.assertEquals(0.0, zero.getSeconds(), 0d);
+        AssertHelper.assertEquals(0.0, zero.getDays());
+        AssertHelper.assertEquals(0.0, zero.getSeconds());
     }
 
     /**
@@ -46,8 +46,8 @@ public class TestDuration {
     @Test
     public final void testDaysHoursMinutesSecondsConstructors() {
         Duration duration = new Duration(1, 1, 1, 1.0);
-        Assert.assertEquals((int) 1, (int) duration.getDays());
-        Assert.assertEquals(3661, duration.getSeconds(), 0d);
+        AssertHelper.assertEquals(1, duration.getDays());
+        AssertHelper.assertEquals(3661, duration.getSeconds());
     }
 
     /**
@@ -58,17 +58,17 @@ public class TestDuration {
     public final void testNormalization() {
         // A duration's day and time should either be both negative or both positive
         Duration duration = new Duration(1, 100.0);
-        Assert.assertEquals((int) 1, (int) duration.getDays());
-        Assert.assertEquals(100.0, duration.getSeconds(), 0d);
+        AssertHelper.assertEquals(1, duration.getDays());
+        AssertHelper.assertEquals(100.0, duration.getSeconds());
         duration = new Duration(-1, -100.0);
-        Assert.assertEquals((int) -1, (int) duration.getDays());
-        Assert.assertEquals(-100.0, duration.getSeconds(), 0d);
+        AssertHelper.assertEquals(-1, duration.getDays());
+        AssertHelper.assertEquals(-100.0, duration.getSeconds());
         duration = new Duration(-1, 100.0);
-        Assert.assertEquals((int) 0, (int) duration.getDays());
-        Assert.assertEquals(-86300.0, duration.getSeconds(), 0d);
+        AssertHelper.assertEquals(0, duration.getDays());
+        AssertHelper.assertEquals(-86300.0, duration.getSeconds());
         duration = new Duration(1, -100.0);
-        Assert.assertEquals((int) 0, (int) duration.getDays());
-        Assert.assertEquals(86300.0, duration.getSeconds(), 0d);
+        AssertHelper.assertEquals(0, duration.getDays());
+        AssertHelper.assertEquals(86300.0, duration.getSeconds());
     }
 
     /**
@@ -78,8 +78,8 @@ public class TestDuration {
     @Test
     public final void testSecondsGreaterThanADay() {
         Duration duration = new Duration(0, 107000.0);
-        Assert.assertEquals((int) 1, (int) duration.getDays());
-        Assert.assertEquals(20600.0, duration.getSeconds(), 0d);
+        AssertHelper.assertEquals(1, duration.getDays());
+        AssertHelper.assertEquals(20600.0, duration.getSeconds());
     }
 
     /**
@@ -96,8 +96,8 @@ public class TestDuration {
         Assert.assertTrue(Duration.equals(second, first));
         Assert.assertFalse(Duration.notEquals(first, second));
         Assert.assertFalse(Duration.notEquals(second, first));
-        Assert.assertEquals((int) 0, (int) first.compareTo(second));
-        Assert.assertEquals((int) 0, (int) second.compareTo(first));
+        AssertHelper.assertEquals(0, first.compareTo(second));
+        AssertHelper.assertEquals(0, second.compareTo(first));
         first = new Duration(5, 0.00001);
         second = new Duration(4, 86399.99999);
         AssertHelper.assertNotEqual(first, second);
@@ -123,22 +123,22 @@ public class TestDuration {
     public final void testCompareTo() {
         Duration duration1 = new Duration(1, 0.0);
         Duration duration2 = new Duration(1, 0.0);
-        Assert.assertEquals((int) 0, (int) duration1.compareTo(duration2));
-        Assert.assertEquals((int) 0, (int) duration2.compareTo(duration1));
+        AssertHelper.assertEquals(0, duration1.compareTo(duration2));
+        AssertHelper.assertEquals(0, duration2.compareTo(duration1));
         Assert.assertTrue(Duration.greaterThanOrEqual(duration1, duration2));
         Assert.assertTrue(Duration.lessThanOrEqual(duration2, duration1));
         Assert.assertTrue(Duration.lessThanOrEqual(duration1, duration2));
         Assert.assertTrue(Duration.greaterThanOrEqual(duration2, duration1));
         duration2 = new Duration(2, 0.0);
-        AssertHelper.assertLess((int) duration1.compareTo(duration2), (int) 0);
-        AssertHelper.assertGreater((int) duration2.compareTo(duration1), (int) 0);
+        AssertHelper.assertLess(duration1.compareTo(duration2), 0);
+        AssertHelper.assertGreater(duration2.compareTo(duration1), 0);
         Assert.assertTrue(Duration.lessThan(duration1, duration2));
         Assert.assertTrue(Duration.greaterThan(duration2, duration1));
         Assert.assertTrue(Duration.lessThanOrEqual(duration1, duration2));
         Assert.assertTrue(Duration.greaterThanOrEqual(duration2, duration1));
         duration2 = new Duration(1, 1.0);
-        AssertHelper.assertLess((int) duration1.compareTo(duration2), (int) 0);
-        AssertHelper.assertGreater((int) duration2.compareTo(duration1), (int) 0);
+        AssertHelper.assertLess(duration1.compareTo(duration2), 0);
+        AssertHelper.assertGreater(duration2.compareTo(duration1), 0);
         Assert.assertTrue(Duration.lessThan(duration1, duration2));
         Assert.assertTrue(Duration.greaterThan(duration2, duration1));
         Assert.assertTrue(Duration.lessThanOrEqual(duration1, duration2));
@@ -154,18 +154,18 @@ public class TestDuration {
         Duration original = new Duration(5, 1000.0);
         Duration add = Duration.fromSeconds(50.0);
         Duration result = Duration.add(original, add);
-        Assert.assertEquals((int) 5, (int) result.getDays());
-        Assert.assertEquals(1050.0, result.getSeconds(), 0d);
+        AssertHelper.assertEquals(5, result.getDays());
+        AssertHelper.assertEquals(1050.0, result.getSeconds());
         original = new Duration(5, 8382.1);
         add = new Duration(1, 10.0);
         result = Duration.add(original, add);
-        Assert.assertEquals((int) 6, (int) result.getDays());
-        Assert.assertEquals(8392.1, result.getSeconds(), 0d);
+        AssertHelper.assertEquals(6, result.getDays());
+        AssertHelper.assertEquals(8392.1, result.getSeconds());
         original = new Duration(5, 86000.0);
         add = Duration.fromSeconds(1000.0);
         result = Duration.add(original, add);
-        Assert.assertEquals((int) 6, (int) result.getDays());
-        Assert.assertEquals(600.0, result.getSeconds(), 0d);
+        AssertHelper.assertEquals(6, result.getDays());
+        AssertHelper.assertEquals(600.0, result.getSeconds());
     }
 
     /**
@@ -177,25 +177,25 @@ public class TestDuration {
         Duration first = new Duration(5, 1000.0);
         Duration second = new Duration(5, 2000.0);
         Duration difference = Duration.subtract(second, first);
-        Assert.assertEquals(1000.0, difference.getTotalSeconds(), 0d);
+        AssertHelper.assertEquals(1000.0, difference.getTotalSeconds());
         difference = Duration.subtract(first, second);
-        Assert.assertEquals(-1000.0, difference.getTotalSeconds(), 0d);
+        AssertHelper.assertEquals(-1000.0, difference.getTotalSeconds());
         first = new Duration(5, 1000.0);
         second = new Duration(6, 2000.0);
         difference = Duration.subtract(second, first);
-        Assert.assertEquals((int) 1, (int) difference.getDays());
-        Assert.assertEquals(1000.0, difference.getSeconds(), 0d);
+        AssertHelper.assertEquals(1, difference.getDays());
+        AssertHelper.assertEquals(1000.0, difference.getSeconds());
         difference = Duration.subtract(first, second);
-        Assert.assertEquals((int) -1, (int) difference.getDays());
-        Assert.assertEquals(-1000.0, difference.getSeconds(), 0d);
+        AssertHelper.assertEquals(-1, difference.getDays());
+        AssertHelper.assertEquals(-1000.0, difference.getSeconds());
         first = new Duration(5, 86000.0);
         second = new Duration(6, 100.0);
         difference = Duration.subtract(second, first);
-        Assert.assertEquals((int) 0, (int) difference.getDays());
-        Assert.assertEquals(500.0, difference.getSeconds(), 0d);
+        AssertHelper.assertEquals(0, difference.getDays());
+        AssertHelper.assertEquals(500.0, difference.getSeconds());
         difference = Duration.subtract(first, second);
-        Assert.assertEquals((int) 0, (int) difference.getDays());
-        Assert.assertEquals(-500.0, difference.getSeconds(), 0d);
+        AssertHelper.assertEquals(0, difference.getDays());
+        AssertHelper.assertEquals(-500.0, difference.getSeconds());
     }
 
     /**
@@ -227,12 +227,12 @@ public class TestDuration {
         Assert.assertTrue(result.equalsEpsilon(new Duration(-2, -43200.5), Constants.Epsilon10));
         duration = new Duration(0, 18 * 3600);
         result = Duration.multiply(duration, -2D);
-        Assert.assertEquals(-12 * 3600, result.getSeconds(), 0d);
-        Assert.assertEquals((int) -1, (int) result.getDays());
+        AssertHelper.assertEquals(-12 * 3600, result.getSeconds());
+        AssertHelper.assertEquals(-1, result.getDays());
         duration = new Duration(1, 4 * 3600);
         result = Duration.multiply(duration, -0.5);
-        Assert.assertEquals(-14 * 3600, result.getSeconds(), 0d);
-        Assert.assertEquals((int) 0, (int) result.getDays());
+        AssertHelper.assertEquals(-14 * 3600, result.getSeconds());
+        AssertHelper.assertEquals(0, result.getDays());
     }
 
     /**
@@ -242,20 +242,20 @@ public class TestDuration {
     public final void testDivisionByDuration() {
         Duration one = new Duration(1, 0.0);
         Duration two = new Duration(0, 60.0);
-        Assert.assertEquals(86400.0 / 60.0, one.divide(two), Constants.Epsilon10);
-        Assert.assertEquals(60 / 86400.0, Duration.divide(two, one), Constants.Epsilon10);
+        AssertHelper.assertEquals(86400.0 / 60.0, one.divide(two), Constants.Epsilon10);
+        AssertHelper.assertEquals(60 / 86400.0, Duration.divide(two, one), Constants.Epsilon10);
         Duration three = new Duration(1, 43200.0);
-        Assert.assertEquals((86400 + 43200) / 60.0, Duration.divide(three, two), Constants.Epsilon10);
-        Assert.assertEquals(60.0 / (86400.0 + 43200.0), two.divide(three), Constants.Epsilon10);
+        AssertHelper.assertEquals((86400 + 43200) / 60.0, Duration.divide(three, two), Constants.Epsilon10);
+        AssertHelper.assertEquals(60.0 / (86400.0 + 43200.0), two.divide(three), Constants.Epsilon10);
         Duration four = new Duration(1, 0D);
         Duration five = new Duration(0, -3600D);
-        Assert.assertEquals(-24D, Duration.divide(four, five), Constants.Epsilon10);
-        Assert.assertEquals(-1.0 / 24.0, Duration.divide(five, four), Constants.Epsilon10);
+        AssertHelper.assertEquals(-24D, Duration.divide(four, five), Constants.Epsilon10);
+        AssertHelper.assertEquals(-1.0 / 24.0, Duration.divide(five, four), Constants.Epsilon10);
         Duration six = new Duration(-2, 0D);
-        Assert.assertEquals(-0.5, Duration.divide(four, six), 0d);
-        Assert.assertEquals(48, Duration.divide(six, five), 0d);
+        AssertHelper.assertEquals(-0.5, Duration.divide(four, six));
+        AssertHelper.assertEquals(48, Duration.divide(six, five));
         Duration seven = new Duration(0, -0.5);
-        Assert.assertEquals(-48 * 3600, Duration.divide(four, seven), 0d);
+        AssertHelper.assertEquals(-48 * 3600, Duration.divide(four, seven));
     }
 
     /**
@@ -288,12 +288,12 @@ public class TestDuration {
         Assert.assertTrue(result.equalsEpsilon(new Duration(-2, -43200.5), Constants.Epsilon10));
         duration = new Duration(0, 18 * 3600);
         result = Duration.divide(duration, -0.5);
-        Assert.assertEquals(-12 * 3600, result.getSeconds(), 0d);
-        Assert.assertEquals((int) -1, (int) result.getDays());
+        AssertHelper.assertEquals(-12 * 3600, result.getSeconds());
+        AssertHelper.assertEquals(-1, result.getDays());
         duration = new Duration(1, 4 * 3600);
         result = Duration.divide(duration, -2D);
-        Assert.assertEquals(-14 * 3600, result.getSeconds(), 0d);
-        Assert.assertEquals((int) 0, (int) result.getDays());
+        AssertHelper.assertEquals(-14 * 3600, result.getSeconds());
+        AssertHelper.assertEquals(0, result.getDays());
     }
 
     /**
@@ -303,8 +303,8 @@ public class TestDuration {
     public final void testAddSeconds() {
         Duration test = new Duration(5, 43200.0);
         Duration result = test.addSeconds(45.123);
-        Assert.assertEquals((int) 5, (int) result.getDays());
-        Assert.assertEquals(43245.123, result.getSeconds(), 0d);
+        AssertHelper.assertEquals(5, result.getDays());
+        AssertHelper.assertEquals(43245.123, result.getSeconds());
     }
 
     /**
@@ -314,8 +314,8 @@ public class TestDuration {
     public final void testAddDays() {
         Duration test = new Duration(5, 43200.0);
         Duration result = test.addDays(45.5);
-        Assert.assertEquals((int) 51, (int) result.getDays());
-        Assert.assertEquals(0.0, result.getSeconds(), 0d);
+        AssertHelper.assertEquals(51, result.getDays());
+        AssertHelper.assertEquals(0.0, result.getSeconds());
     }
 
     /**
@@ -327,7 +327,7 @@ public class TestDuration {
         Duration duration2 = new Duration(1, 1.0);
         Duration duration3 = new Duration(1, 0.0);
         AssertHelper.assertNotEqual(duration1.hashCode(), duration2.hashCode());
-        Assert.assertEquals((int) duration1.hashCode(), (int) duration3.hashCode());
+        AssertHelper.assertEquals(duration1.hashCode(), duration3.hashCode());
     }
 
     /**
@@ -336,7 +336,7 @@ public class TestDuration {
     @Test
     public final void testTotalDays() {
         Duration duration = new Duration(1, 43200.0);
-        Assert.assertEquals(1.5, duration.getTotalDays(), 0d);
+        AssertHelper.assertEquals(1.5, duration.getTotalDays());
     }
 
     /**
@@ -345,7 +345,7 @@ public class TestDuration {
     @Test
     public final void testToString() {
         Duration duration = new Duration(1, 43200.0);
-        Assert.assertEquals("1:43200", duration.toString());
+        AssertHelper.assertEquals("1:43200", duration.toString());
     }
 
     /**
@@ -358,11 +358,11 @@ public class TestDuration {
     @Test
     public final void testReallySmallSeconds() {
         Duration duration = new Duration(10, -Constants.Epsilon13);
-        Assert.assertEquals((int) 10, (int) duration.getDays());
-        Assert.assertEquals(0.0, duration.getSeconds(), 0d);
+        AssertHelper.assertEquals(10, duration.getDays());
+        AssertHelper.assertEquals(0.0, duration.getSeconds());
         duration = new Duration(-10, Constants.Epsilon13);
-        Assert.assertEquals((int) -10, (int) duration.getDays());
-        Assert.assertEquals(0.0, duration.getSeconds(), 0d);
+        AssertHelper.assertEquals(-10, duration.getDays());
+        AssertHelper.assertEquals(0.0, duration.getSeconds());
     }
 
     @Nonnull

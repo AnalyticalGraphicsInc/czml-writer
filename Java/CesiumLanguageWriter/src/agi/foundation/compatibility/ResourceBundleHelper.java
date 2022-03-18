@@ -16,6 +16,7 @@ import javax.annotation.Nonnull;
 public final class ResourceBundleHelper {
     private ResourceBundleHelper() {}
 
+    @Nonnull
     public static ResourceBundle getBundle(@Nonnull String baseName) {
         assertNonNull(baseName, "baseName");
 

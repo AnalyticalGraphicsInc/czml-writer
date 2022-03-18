@@ -39,33 +39,33 @@ public class TestJulianDateConversions {
     public final void julianToDateTime() {
         JulianDate julianDate = new JulianDate(2451545.0, TimeStandard.COORDINATED_UNIVERSAL_TIME);
         ZonedDateTime dateTime = julianDate.toDateTime();
-        Assert.assertEquals((int) 2000, (int) dateTime.getYear());
-        Assert.assertEquals((int) 1, (int) dateTime.getMonthValue());
-        Assert.assertEquals((int) 1, (int) dateTime.getDayOfMonth());
-        Assert.assertEquals((int) 12, (int) dateTime.getHour());
-        Assert.assertEquals((int) 0, (int) dateTime.getMinute());
-        Assert.assertEquals((int) 0, (int) dateTime.getSecond());
-        Assert.assertEquals((int) 0, (int) DateTimeHelper.getMillisecond(dateTime));
+        AssertHelper.assertEquals(2000, dateTime.getYear());
+        AssertHelper.assertEquals(1, dateTime.getMonthValue());
+        AssertHelper.assertEquals(1, dateTime.getDayOfMonth());
+        AssertHelper.assertEquals(12, dateTime.getHour());
+        AssertHelper.assertEquals(0, dateTime.getMinute());
+        AssertHelper.assertEquals(0, dateTime.getSecond());
+        AssertHelper.assertEquals(0, DateTimeHelper.getMillisecond(dateTime));
         AssertHelper.assertEquals(ZoneOffset.UTC, dateTime.getZone());
         julianDate = new JulianDate(2453736.5, TimeStandard.COORDINATED_UNIVERSAL_TIME);
         dateTime = julianDate.toDateTime();
-        Assert.assertEquals((int) 2006, (int) dateTime.getYear());
-        Assert.assertEquals((int) 1, (int) dateTime.getMonthValue());
-        Assert.assertEquals((int) 1, (int) dateTime.getDayOfMonth());
-        Assert.assertEquals((int) 0, (int) dateTime.getHour());
-        Assert.assertEquals((int) 0, (int) dateTime.getMinute());
-        Assert.assertEquals((int) 0, (int) dateTime.getSecond());
-        Assert.assertEquals((int) 0, (int) DateTimeHelper.getMillisecond(dateTime));
+        AssertHelper.assertEquals(2006, dateTime.getYear());
+        AssertHelper.assertEquals(1, dateTime.getMonthValue());
+        AssertHelper.assertEquals(1, dateTime.getDayOfMonth());
+        AssertHelper.assertEquals(0, dateTime.getHour());
+        AssertHelper.assertEquals(0, dateTime.getMinute());
+        AssertHelper.assertEquals(0, dateTime.getSecond());
+        AssertHelper.assertEquals(0, DateTimeHelper.getMillisecond(dateTime));
         AssertHelper.assertEquals(ZoneOffset.UTC, dateTime.getZone());
         julianDate = new JulianDate(2441683.5, TimeStandard.COORDINATED_UNIVERSAL_TIME);
         dateTime = julianDate.toDateTime();
-        Assert.assertEquals((int) 1973, (int) dateTime.getYear());
-        Assert.assertEquals((int) 1, (int) dateTime.getMonthValue());
-        Assert.assertEquals((int) 1, (int) dateTime.getDayOfMonth());
-        Assert.assertEquals((int) 0, (int) dateTime.getHour());
-        Assert.assertEquals((int) 0, (int) dateTime.getMinute());
-        Assert.assertEquals((int) 0, (int) dateTime.getSecond());
-        Assert.assertEquals((int) 0, (int) DateTimeHelper.getMillisecond(dateTime));
+        AssertHelper.assertEquals(1973, dateTime.getYear());
+        AssertHelper.assertEquals(1, dateTime.getMonthValue());
+        AssertHelper.assertEquals(1, dateTime.getDayOfMonth());
+        AssertHelper.assertEquals(0, dateTime.getHour());
+        AssertHelper.assertEquals(0, dateTime.getMinute());
+        AssertHelper.assertEquals(0, dateTime.getSecond());
+        AssertHelper.assertEquals(0, DateTimeHelper.getMillisecond(dateTime));
         AssertHelper.assertEquals(ZoneOffset.UTC, dateTime.getZone());
         julianDate = new JulianDate(2441683.5, TimeStandard.INTERNATIONAL_ATOMIC_TIME);
         dateTime = julianDate.toDateTime(TimeStandard.INTERNATIONAL_ATOMIC_TIME);
@@ -79,28 +79,28 @@ public class TestJulianDateConversions {
     public final void julianToGregorianDate() {
         JulianDate julianDate = new JulianDate(2451545.0, TimeStandard.COORDINATED_UNIVERSAL_TIME);
         GregorianDate gregorianDate = julianDate.toGregorianDate();
-        Assert.assertEquals((int) 2000, (int) gregorianDate.getYear());
-        Assert.assertEquals((int) 1, (int) gregorianDate.getMonth());
-        Assert.assertEquals((int) 1, (int) gregorianDate.getDay());
-        Assert.assertEquals((int) 12, (int) gregorianDate.getHour());
-        Assert.assertEquals((int) 0, (int) gregorianDate.getMinute());
-        Assert.assertEquals(0, gregorianDate.getSecond(), 0d);
+        AssertHelper.assertEquals(2000, gregorianDate.getYear());
+        AssertHelper.assertEquals(1, gregorianDate.getMonth());
+        AssertHelper.assertEquals(1, gregorianDate.getDay());
+        AssertHelper.assertEquals(12, gregorianDate.getHour());
+        AssertHelper.assertEquals(0, gregorianDate.getMinute());
+        AssertHelper.assertEquals(0, gregorianDate.getSecond());
         julianDate = new JulianDate(2453736.5, TimeStandard.COORDINATED_UNIVERSAL_TIME);
         gregorianDate = julianDate.toGregorianDate();
-        Assert.assertEquals((int) 2006, (int) gregorianDate.getYear());
-        Assert.assertEquals((int) 1, (int) gregorianDate.getMonth());
-        Assert.assertEquals((int) 1, (int) gregorianDate.getDay());
-        Assert.assertEquals((int) 0, (int) gregorianDate.getHour());
-        Assert.assertEquals((int) 0, (int) gregorianDate.getMinute());
-        Assert.assertEquals(0, gregorianDate.getSecond(), 0d);
+        AssertHelper.assertEquals(2006, gregorianDate.getYear());
+        AssertHelper.assertEquals(1, gregorianDate.getMonth());
+        AssertHelper.assertEquals(1, gregorianDate.getDay());
+        AssertHelper.assertEquals(0, gregorianDate.getHour());
+        AssertHelper.assertEquals(0, gregorianDate.getMinute());
+        AssertHelper.assertEquals(0, gregorianDate.getSecond());
         julianDate = new JulianDate(2441683.5, TimeStandard.COORDINATED_UNIVERSAL_TIME);
         gregorianDate = julianDate.toGregorianDate();
-        Assert.assertEquals((int) 1973, (int) gregorianDate.getYear());
-        Assert.assertEquals((int) 1, (int) gregorianDate.getMonth());
-        Assert.assertEquals((int) 1, (int) gregorianDate.getDay());
-        Assert.assertEquals((int) 0, (int) gregorianDate.getHour());
-        Assert.assertEquals((int) 0, (int) gregorianDate.getMinute());
-        Assert.assertEquals(0, gregorianDate.getSecond(), 0d);
+        AssertHelper.assertEquals(1973, gregorianDate.getYear());
+        AssertHelper.assertEquals(1, gregorianDate.getMonth());
+        AssertHelper.assertEquals(1, gregorianDate.getDay());
+        AssertHelper.assertEquals(0, gregorianDate.getHour());
+        AssertHelper.assertEquals(0, gregorianDate.getMinute());
+        AssertHelper.assertEquals(0, gregorianDate.getSecond());
         julianDate = new JulianDate(2441683.5, TimeStandard.COORDINATED_UNIVERSAL_TIME);
         GregorianDate internationalTimeGregorianDate = julianDate.toGregorianDate(TimeStandard.INTERNATIONAL_ATOMIC_TIME);
         AssertHelper.assertNotEqual(gregorianDate, internationalTimeGregorianDate);
@@ -127,13 +127,13 @@ public class TestJulianDateConversions {
     public final void dateTimeToJulian() {
         ZonedDateTime dateTime = DateTimeHelper.create(2000, 1, 1, 12, 0, 0);
         JulianDate julianDate = new JulianDate(dateTime);
-        Assert.assertEquals(2451545.0, julianDate.getTotalDays(), 0d);
+        AssertHelper.assertEquals(2451545.0, julianDate.getTotalDays());
         dateTime = DateTimeHelper.create(2006, 1, 1, 0, 0, 0);
         julianDate = new JulianDate(dateTime);
-        Assert.assertEquals(2453736.5, julianDate.getTotalDays(), 0d);
+        AssertHelper.assertEquals(2453736.5, julianDate.getTotalDays());
         dateTime = DateTimeHelper.create(1973, 1, 1, 0, 0, 0);
         julianDate = new JulianDate(dateTime);
-        Assert.assertEquals(2441683.5, julianDate.getTotalDays(), 0d);
+        AssertHelper.assertEquals(2441683.5, julianDate.getTotalDays());
         ZonedDateTime localDateTime = DateTimeHelper.create(2000, 1, 1, 12, 0, 0, ZoneId.systemDefault());
         ZonedDateTime utc = DateTimeHelper.toUniversalTime(localDateTime);
         julianDate = new JulianDate(localDateTime);
@@ -145,13 +145,13 @@ public class TestJulianDateConversions {
     public final void gregorianDateToJulian() {
         GregorianDate gregorianDate = new GregorianDate(2000, 1, 1, 12, 0, 0D);
         JulianDate julianDate = new JulianDate(gregorianDate);
-        Assert.assertEquals(2451545.0, julianDate.getTotalDays(), 0d);
+        AssertHelper.assertEquals(2451545.0, julianDate.getTotalDays());
         gregorianDate = new GregorianDate(2006, 1, 1, 0, 0, 0D);
         julianDate = new JulianDate(gregorianDate);
-        Assert.assertEquals(2453736.5, julianDate.getTotalDays(), 0d);
+        AssertHelper.assertEquals(2453736.5, julianDate.getTotalDays());
         gregorianDate = new GregorianDate(1973, 1, 1, 0, 0, 0D);
         julianDate = new JulianDate(gregorianDate);
-        Assert.assertEquals(2441683.5, julianDate.getTotalDays(), 0d);
+        AssertHelper.assertEquals(2441683.5, julianDate.getTotalDays());
         ZonedDateTime localDateTime = DateTimeHelper.create(2000, 1, 1, 12, 0, 0, ZoneId.systemDefault());
         ZonedDateTime utc = DateTimeHelper.toUniversalTime(localDateTime);
         julianDate = new JulianDate(localDateTime);
@@ -193,13 +193,13 @@ public class TestJulianDateConversions {
         for (final ZonedDateTime dateTime : dateTimes) {
             JulianDate julianDate = new JulianDate(dateTime);
             ZonedDateTime roundTrip = julianDate.toDateTime();
-            Assert.assertEquals((int) dateTime.getYear(), (int) roundTrip.getYear());
-            Assert.assertEquals((int) dateTime.getMonthValue(), (int) roundTrip.getMonthValue());
-            Assert.assertEquals((int) dateTime.getDayOfMonth(), (int) roundTrip.getDayOfMonth());
-            Assert.assertEquals((int) dateTime.getHour(), (int) roundTrip.getHour());
-            Assert.assertEquals((int) dateTime.getMinute(), (int) roundTrip.getMinute());
-            Assert.assertEquals((int) dateTime.getSecond(), (int) roundTrip.getSecond());
-            Assert.assertEquals((int) DateTimeHelper.getMillisecond(dateTime), (int) DateTimeHelper.getMillisecond(roundTrip));
+            AssertHelper.assertEquals(dateTime.getYear(), roundTrip.getYear());
+            AssertHelper.assertEquals(dateTime.getMonthValue(), roundTrip.getMonthValue());
+            AssertHelper.assertEquals(dateTime.getDayOfMonth(), roundTrip.getDayOfMonth());
+            AssertHelper.assertEquals(dateTime.getHour(), roundTrip.getHour());
+            AssertHelper.assertEquals(dateTime.getMinute(), roundTrip.getMinute());
+            AssertHelper.assertEquals(dateTime.getSecond(), roundTrip.getSecond());
+            AssertHelper.assertEquals(DateTimeHelper.getMillisecond(dateTime), DateTimeHelper.getMillisecond(roundTrip));
         }
     }
 
@@ -208,12 +208,12 @@ public class TestJulianDateConversions {
         GregorianDate gregorianDate = new GregorianDate(2008, 1, 1, 1, 1, 1.00000000008);
         JulianDate julianDate = new JulianDate(gregorianDate);
         GregorianDate roundTrip = julianDate.toGregorianDate();
-        Assert.assertEquals((int) gregorianDate.getYear(), (int) roundTrip.getYear());
-        Assert.assertEquals((int) gregorianDate.getMonth(), (int) roundTrip.getMonth());
-        Assert.assertEquals((int) gregorianDate.getDay(), (int) roundTrip.getDay());
-        Assert.assertEquals((int) gregorianDate.getHour(), (int) roundTrip.getHour());
-        Assert.assertEquals((int) gregorianDate.getMinute(), (int) roundTrip.getMinute());
-        Assert.assertEquals(gregorianDate.getSecond(), roundTrip.getSecond(), Constants.Epsilon13);
+        AssertHelper.assertEquals(gregorianDate.getYear(), roundTrip.getYear());
+        AssertHelper.assertEquals(gregorianDate.getMonth(), roundTrip.getMonth());
+        AssertHelper.assertEquals(gregorianDate.getDay(), roundTrip.getDay());
+        AssertHelper.assertEquals(gregorianDate.getHour(), roundTrip.getHour());
+        AssertHelper.assertEquals(gregorianDate.getMinute(), roundTrip.getMinute());
+        AssertHelper.assertEquals(gregorianDate.getSecond(), roundTrip.getSecond(), Constants.Epsilon13);
     }
 
     @Nonnull

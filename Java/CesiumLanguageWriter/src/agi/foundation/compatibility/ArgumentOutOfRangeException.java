@@ -1,5 +1,7 @@
 package agi.foundation.compatibility;
 
+import static java.lang.System.lineSeparator;
+
 /**
  * The exception that is thrown when the value of an argument is outside the allowable
  * range of values as defined by the invoked method.
@@ -79,7 +81,7 @@ public class ArgumentOutOfRangeException extends ArgumentException {
         String message = super.getMessage();
         if (actualValue == null)
             return message;
-        return message + EnvironmentHelper.newLine() + "Actual value was " + actualValue + ".";
+        return message + lineSeparator() + "Actual value was " + actualValue + ".";
     }
 
     /**
@@ -90,5 +92,10 @@ public class ArgumentOutOfRangeException extends ArgumentException {
      */
     public Object getActualValue() {
         return actualValue;
+    }
+
+    static void assertNonNegative(int value, String paramName) {
+        if (value < 0)
+            throw new ArgumentOutOfRangeException(paramName, "Non-negative number required.");
     }
 }

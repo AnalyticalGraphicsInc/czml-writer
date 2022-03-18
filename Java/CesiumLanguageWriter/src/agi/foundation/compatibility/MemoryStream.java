@@ -272,7 +272,7 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
     @Override
     public void setLength(long value) {
         if (value < 0)
-            throw new ArgumentOutOfRangeException("value", "MemoryStream length must be non-negative.");
+            throw new ArgumentOutOfRangeException("value", "Stream length must be non-negative.");
         if (!writable)
             throw new UnsupportedOperationException("Cannot write to this stream.");
 

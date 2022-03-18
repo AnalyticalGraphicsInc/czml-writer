@@ -64,9 +64,9 @@ public class TestYearMonthDay {
     public final void testDaysInYear() {
         for (int i = 1; i < 10000; ++i) {
             if ((i % 4 == 0) && !((i % 100 == 0) && (i % 400 != 0))) {
-                Assert.assertEquals((int) 366, (int) YearMonthDay.daysInYear(i));
+                AssertHelper.assertEquals(366, YearMonthDay.daysInYear(i));
             } else {
-                Assert.assertEquals((int) 365, (int) YearMonthDay.daysInYear(i));
+                AssertHelper.assertEquals(365, YearMonthDay.daysInYear(i));
             }
         }
     }
@@ -77,34 +77,34 @@ public class TestYearMonthDay {
     @Test
     public final void testDaysInMonth() {
         for (int i = 1; i < 10000; ++i) {
-            Assert.assertEquals((int) 31, (int) YearMonthDay.daysInMonth(i, 1));
+            AssertHelper.assertEquals(31, YearMonthDay.daysInMonth(i, 1));
             // January
             if ((i % 4 == 0) && !((i % 100 == 0) && (i % 400 != 0))) {
-                Assert.assertEquals((int) 29, (int) YearMonthDay.daysInMonth(i, 2));
+                AssertHelper.assertEquals(29, YearMonthDay.daysInMonth(i, 2));
                 // February of a leap year
             } else {
-                Assert.assertEquals((int) 28, (int) YearMonthDay.daysInMonth(i, 2));
+                AssertHelper.assertEquals(28, YearMonthDay.daysInMonth(i, 2));
                 // February of a common year
             }
-            Assert.assertEquals((int) 31, (int) YearMonthDay.daysInMonth(i, 3));
+            AssertHelper.assertEquals(31, YearMonthDay.daysInMonth(i, 3));
             // March
-            Assert.assertEquals((int) 30, (int) YearMonthDay.daysInMonth(i, 4));
+            AssertHelper.assertEquals(30, YearMonthDay.daysInMonth(i, 4));
             // April
-            Assert.assertEquals((int) 31, (int) YearMonthDay.daysInMonth(i, 5));
+            AssertHelper.assertEquals(31, YearMonthDay.daysInMonth(i, 5));
             // May
-            Assert.assertEquals((int) 30, (int) YearMonthDay.daysInMonth(i, 6));
+            AssertHelper.assertEquals(30, YearMonthDay.daysInMonth(i, 6));
             // June
-            Assert.assertEquals((int) 31, (int) YearMonthDay.daysInMonth(i, 7));
+            AssertHelper.assertEquals(31, YearMonthDay.daysInMonth(i, 7));
             // July
-            Assert.assertEquals((int) 31, (int) YearMonthDay.daysInMonth(i, 8));
+            AssertHelper.assertEquals(31, YearMonthDay.daysInMonth(i, 8));
             // August
-            Assert.assertEquals((int) 30, (int) YearMonthDay.daysInMonth(i, 9));
+            AssertHelper.assertEquals(30, YearMonthDay.daysInMonth(i, 9));
             // September
-            Assert.assertEquals((int) 31, (int) YearMonthDay.daysInMonth(i, 10));
+            AssertHelper.assertEquals(31, YearMonthDay.daysInMonth(i, 10));
             // October
-            Assert.assertEquals((int) 30, (int) YearMonthDay.daysInMonth(i, 11));
+            AssertHelper.assertEquals(30, YearMonthDay.daysInMonth(i, 11));
             // November
-            Assert.assertEquals((int) 31, (int) YearMonthDay.daysInMonth(i, 12));
+            AssertHelper.assertEquals(31, YearMonthDay.daysInMonth(i, 12));
             // December
         }
     }
@@ -145,9 +145,9 @@ public class TestYearMonthDay {
     @Test
     public final void testRetainValue() {
         YearMonthDay date = new YearMonthDay(2000, 1, 1);
-        Assert.assertEquals((int) 2000, (int) date.getYear());
-        Assert.assertEquals((int) 1, (int) date.getMonth());
-        Assert.assertEquals((int) 1, (int) date.getDay());
+        AssertHelper.assertEquals(2000, date.getYear());
+        AssertHelper.assertEquals(1, date.getMonth());
+        AssertHelper.assertEquals(1, date.getDay());
     }
 
     /**
@@ -160,8 +160,8 @@ public class TestYearMonthDay {
         AssertHelper.assertEquals(first, second);
         Assert.assertTrue(first.equalsType(second));
         Assert.assertTrue(second.equalsType(first));
-        Assert.assertEquals((int) 0, (int) first.compareTo(second));
-        Assert.assertEquals((int) 0, (int) second.compareTo(first));
+        AssertHelper.assertEquals(0, first.compareTo(second));
+        AssertHelper.assertEquals(0, second.compareTo(first));
         second = new YearMonthDay(2001, 1, 1);
         AssertHelper.assertNotEqual(first, second);
         Assert.assertFalse(first.equalsType(second));
@@ -189,13 +189,13 @@ public class TestYearMonthDay {
     @Test
     public final void testDayOfYear() {
         YearMonthDay nonLeapBeforeEndOfFeb = new YearMonthDay(2006, 2, 15);
-        Assert.assertEquals((int) 46, (int) nonLeapBeforeEndOfFeb.getDayOfYear());
+        AssertHelper.assertEquals(46, nonLeapBeforeEndOfFeb.getDayOfYear());
         YearMonthDay nonLeapAfterEndOfFeb = new YearMonthDay(2006, 3, 14);
-        Assert.assertEquals((int) 73, (int) nonLeapAfterEndOfFeb.getDayOfYear());
+        AssertHelper.assertEquals(73, nonLeapAfterEndOfFeb.getDayOfYear());
         YearMonthDay leapBeforeEndOfFeb = new YearMonthDay(2008, 2, 15);
-        Assert.assertEquals((int) 46, (int) leapBeforeEndOfFeb.getDayOfYear());
+        AssertHelper.assertEquals(46, leapBeforeEndOfFeb.getDayOfYear());
         YearMonthDay leapAfterEndOfFeb = new YearMonthDay(2008, 3, 14);
-        Assert.assertEquals((int) 74, (int) leapAfterEndOfFeb.getDayOfYear());
+        AssertHelper.assertEquals(74, leapAfterEndOfFeb.getDayOfYear());
     }
 
     /**
@@ -212,7 +212,7 @@ public class TestYearMonthDay {
         Assert.assertTrue(YearMonthDay.notEquals(ymd1, ymd3));
         Assert.assertTrue(YearMonthDay.greaterThanOrEqual(ymd1, ymd2));
         Assert.assertTrue(YearMonthDay.lessThanOrEqual(ymd1, ymd2));
-        Assert.assertEquals((int) 0, (int) ymd1.compareTo(ymd2));
+        AssertHelper.assertEquals(0, ymd1.compareTo(ymd2));
         Assert.assertTrue(YearMonthDay.lessThan(ymd2, ymd3));
         Assert.assertTrue(YearMonthDay.lessThanOrEqual(ymd2, ymd3));
         Assert.assertTrue(YearMonthDay.greaterThan(ymd3, ymd2));
@@ -228,7 +228,7 @@ public class TestYearMonthDay {
         YearMonthDay ymd1 = new YearMonthDay(2006, 3, 14);
         YearMonthDay ymd2 = new YearMonthDay(2006, 3, 14);
         YearMonthDay ymd3 = new YearMonthDay(2006, 5, 26);
-        Assert.assertEquals((int) ymd1.hashCode(), (int) ymd2.hashCode());
+        AssertHelper.assertEquals(ymd1.hashCode(), ymd2.hashCode());
         AssertHelper.assertNotEqual(ymd1.hashCode(), ymd3.hashCode());
     }
 
@@ -238,7 +238,7 @@ public class TestYearMonthDay {
     @Test
     public final void testToString() {
         YearMonthDay ymd1 = new YearMonthDay(2006, 3, 14);
-        Assert.assertEquals(ymd1.toString(), "2006:3:14");
+        AssertHelper.assertEquals(ymd1.toString(), "2006:3:14");
     }
 
     /**
@@ -249,21 +249,21 @@ public class TestYearMonthDay {
         ZonedDateTime dt = DateTimeHelper.create(2008, 10, 23, 12, 0, 0);
         JulianDate jd = new JulianDate(dt);
         YearMonthDay ymd = new YearMonthDay(jd);
-        Assert.assertEquals((int) 2008, (int) ymd.getYear());
-        Assert.assertEquals((int) 10, (int) ymd.getMonth());
-        Assert.assertEquals((int) 23, (int) ymd.getDay());
+        AssertHelper.assertEquals(2008, ymd.getYear());
+        AssertHelper.assertEquals(10, ymd.getMonth());
+        AssertHelper.assertEquals(23, ymd.getDay());
         dt = DateTimeHelper.create(2008, 10, 23, 0, 0, 0);
         jd = new JulianDate(dt);
         ymd = new YearMonthDay(jd);
-        Assert.assertEquals((int) 2008, (int) ymd.getYear());
-        Assert.assertEquals((int) 10, (int) ymd.getMonth());
-        Assert.assertEquals((int) 23, (int) ymd.getDay());
+        AssertHelper.assertEquals(2008, ymd.getYear());
+        AssertHelper.assertEquals(10, ymd.getMonth());
+        AssertHelper.assertEquals(23, ymd.getDay());
         dt = DateTimeHelper.create(2008, 10, 23, 23, 59, 59);
         jd = new JulianDate(dt);
         ymd = new YearMonthDay(jd);
-        Assert.assertEquals((int) 2008, (int) ymd.getYear());
-        Assert.assertEquals((int) 10, (int) ymd.getMonth());
-        Assert.assertEquals((int) 23, (int) ymd.getDay());
+        AssertHelper.assertEquals(2008, ymd.getYear());
+        AssertHelper.assertEquals(10, ymd.getMonth());
+        AssertHelper.assertEquals(23, ymd.getDay());
     }
 
     /**
@@ -282,15 +282,15 @@ public class TestYearMonthDay {
             for (int month = 1; month <= 12; ++month) {
                 // Test first of the month.
                 YearMonthDay ymd = new YearMonthDay(year, cumulativeDays + 1);
-                Assert.assertEquals((int) year, (int) ymd.getYear());
-                Assert.assertEquals((int) month, (int) ymd.getMonth());
-                Assert.assertEquals((int) 1, (int) ymd.getDay());
+                AssertHelper.assertEquals(year, ymd.getYear());
+                AssertHelper.assertEquals(month, ymd.getMonth());
+                AssertHelper.assertEquals(1, ymd.getDay());
                 int daysInMonth = YearMonthDay.daysInMonth(year, month);
                 // Test last of the month.
                 ymd = new YearMonthDay(year, cumulativeDays + daysInMonth);
-                Assert.assertEquals((int) year, (int) ymd.getYear());
-                Assert.assertEquals((int) month, (int) ymd.getMonth());
-                Assert.assertEquals((int) daysInMonth, (int) ymd.getDay());
+                AssertHelper.assertEquals(year, ymd.getYear());
+                AssertHelper.assertEquals(month, ymd.getMonth());
+                AssertHelper.assertEquals(daysInMonth, ymd.getDay());
                 cumulativeDays += daysInMonth;
             }
         }
@@ -300,7 +300,7 @@ public class TestYearMonthDay {
     public final void testJulianDayNumber() {
         final int astronomicalJulianDayNumber = 2454959;
         YearMonthDay ymd = new YearMonthDay(astronomicalJulianDayNumber);
-        Assert.assertEquals((int) astronomicalJulianDayNumber, (int) ymd.getJulianDayNumber());
+        AssertHelper.assertEquals(astronomicalJulianDayNumber, ymd.getJulianDayNumber());
     }
 
     @Test
@@ -324,7 +324,7 @@ public class TestYearMonthDay {
         YearMonthDay ymd2 = new YearMonthDay(ymd.getYear(), ymd.getMonth(), ymd.getDay());
         AssertHelper.assertEquals(ymd, ymd2);
         AssertHelper.assertEquals(ymd.getDayOfWeek(), ymd2.getDayOfWeek());
-        Assert.assertEquals((int) ymd.getDayOfYear(), (int) ymd2.getDayOfYear());
+        AssertHelper.assertEquals(ymd.getDayOfYear(), ymd2.getDayOfYear());
     }
 
     @Nonnull

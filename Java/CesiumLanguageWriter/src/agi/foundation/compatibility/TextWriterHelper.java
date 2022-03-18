@@ -70,6 +70,6 @@ public final class TextWriterHelper {
      * @return The line terminator string.
      */
     public static String getNewLine() {
-        return System.getProperty("line.separator");
+        return System.lineSeparator();
     }
 }

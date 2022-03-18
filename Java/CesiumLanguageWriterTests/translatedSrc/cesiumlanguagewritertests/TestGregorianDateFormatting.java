@@ -45,7 +45,7 @@ public class TestGregorianDateFormatting {
         GregorianDate gregorianDate = new GregorianDate(dateTime);
         // .NET Core on Linux uses different standard formats, so we compare against what DateTime does
         // rather than specific known strings.
-        Assert.assertEquals(DateTimeHelper.toString(dateTime, format, m_cultureInfo), gregorianDate.toString(format, m_cultureInfo));
+        AssertHelper.assertEquals(DateTimeHelper.toString(dateTime, format, m_cultureInfo), gregorianDate.toString(format, m_cultureInfo));
     }
 
     @Test
@@ -137,57 +137,57 @@ public class TestGregorianDateFormatting {
     public final void testToStringCustomFormats() {
         ZonedDateTime dateTime = DateTimeHelper.create(2002, 2, 25, 5, 25, 13);
         GregorianDate gregorianDate = new GregorianDate(dateTime);
-        Assert.assertEquals("25", gregorianDate.toString("%d", m_cultureInfo));
-        Assert.assertEquals("25", gregorianDate.toString("dd", m_cultureInfo));
-        Assert.assertEquals("Mon", gregorianDate.toString("ddd", m_cultureInfo));
-        Assert.assertEquals("Monday", gregorianDate.toString("dddd", m_cultureInfo));
-        Assert.assertEquals("2", gregorianDate.toString("%M", m_cultureInfo));
-        Assert.assertEquals("02", gregorianDate.toString("MM", m_cultureInfo));
-        Assert.assertEquals("Feb", gregorianDate.toString("MMM", m_cultureInfo));
-        Assert.assertEquals("February", gregorianDate.toString("MMMM", m_cultureInfo));
-        Assert.assertEquals("2", gregorianDate.toString("%y", m_cultureInfo));
-        Assert.assertEquals("02", gregorianDate.toString("yy", m_cultureInfo));
-        Assert.assertEquals("2002", gregorianDate.toString("yyyy", m_cultureInfo));
-        Assert.assertEquals("5", gregorianDate.toString("%h", m_cultureInfo));
-        Assert.assertEquals("05", gregorianDate.toString("hh", m_cultureInfo));
-        Assert.assertEquals("A", gregorianDate.toString("%t", m_cultureInfo));
-        Assert.assertEquals("AM", gregorianDate.toString("tt", m_cultureInfo));
+        AssertHelper.assertEquals("25", gregorianDate.toString("%d", m_cultureInfo));
+        AssertHelper.assertEquals("25", gregorianDate.toString("dd", m_cultureInfo));
+        AssertHelper.assertEquals("Mon", gregorianDate.toString("ddd", m_cultureInfo));
+        AssertHelper.assertEquals("Monday", gregorianDate.toString("dddd", m_cultureInfo));
+        AssertHelper.assertEquals("2", gregorianDate.toString("%M", m_cultureInfo));
+        AssertHelper.assertEquals("02", gregorianDate.toString("MM", m_cultureInfo));
+        AssertHelper.assertEquals("Feb", gregorianDate.toString("MMM", m_cultureInfo));
+        AssertHelper.assertEquals("February", gregorianDate.toString("MMMM", m_cultureInfo));
+        AssertHelper.assertEquals("2", gregorianDate.toString("%y", m_cultureInfo));
+        AssertHelper.assertEquals("02", gregorianDate.toString("yy", m_cultureInfo));
+        AssertHelper.assertEquals("2002", gregorianDate.toString("yyyy", m_cultureInfo));
+        AssertHelper.assertEquals("5", gregorianDate.toString("%h", m_cultureInfo));
+        AssertHelper.assertEquals("05", gregorianDate.toString("hh", m_cultureInfo));
+        AssertHelper.assertEquals("A", gregorianDate.toString("%t", m_cultureInfo));
+        AssertHelper.assertEquals("AM", gregorianDate.toString("tt", m_cultureInfo));
         dateTime = DateTimeHelper.create(2009, 6, 10, 0, 30, 0);
         gregorianDate = new GregorianDate(dateTime);
-        Assert.assertEquals("12", gregorianDate.toString("%h", m_cultureInfo));
-        Assert.assertEquals("0", gregorianDate.toString("%H", m_cultureInfo));
+        AssertHelper.assertEquals("12", gregorianDate.toString("%h", m_cultureInfo));
+        AssertHelper.assertEquals("0", gregorianDate.toString("%H", m_cultureInfo));
         dateTime = DateTimeHelper.create(2002, 2, 25, 15, 25, 13);
         gregorianDate = new GregorianDate(dateTime);
-        Assert.assertEquals("3", gregorianDate.toString("%h", m_cultureInfo));
-        Assert.assertEquals("03", gregorianDate.toString("hh", m_cultureInfo));
-        Assert.assertEquals("15", gregorianDate.toString("%H", m_cultureInfo));
-        Assert.assertEquals("15", gregorianDate.toString("HH", m_cultureInfo));
-        Assert.assertEquals("25", gregorianDate.toString("%m", m_cultureInfo));
-        Assert.assertEquals("25", gregorianDate.toString("mm", m_cultureInfo));
-        Assert.assertEquals("13", gregorianDate.toString("%s", m_cultureInfo));
-        Assert.assertEquals("13", gregorianDate.toString("ss", m_cultureInfo));
-        Assert.assertEquals("P", gregorianDate.toString("%t", m_cultureInfo));
-        Assert.assertEquals("PM", gregorianDate.toString("tt", m_cultureInfo));
-        Assert.assertEquals(" : ", gregorianDate.toString(" : ", m_cultureInfo));
-        Assert.assertEquals(" / ", gregorianDate.toString(" / ", m_cultureInfo));
-        Assert.assertEquals(" yyy ", gregorianDate.toString(" 'yyy' ", m_cultureInfo));
-        Assert.assertEquals(" d", gregorianDate.toString(" \\d", m_cultureInfo));
-        Assert.assertEquals("2002", gregorianDate.toString("yyy", m_cultureInfo));
-        Assert.assertEquals("0002002", gregorianDate.toString("yyyyyyy", m_cultureInfo));
+        AssertHelper.assertEquals("3", gregorianDate.toString("%h", m_cultureInfo));
+        AssertHelper.assertEquals("03", gregorianDate.toString("hh", m_cultureInfo));
+        AssertHelper.assertEquals("15", gregorianDate.toString("%H", m_cultureInfo));
+        AssertHelper.assertEquals("15", gregorianDate.toString("HH", m_cultureInfo));
+        AssertHelper.assertEquals("25", gregorianDate.toString("%m", m_cultureInfo));
+        AssertHelper.assertEquals("25", gregorianDate.toString("mm", m_cultureInfo));
+        AssertHelper.assertEquals("13", gregorianDate.toString("%s", m_cultureInfo));
+        AssertHelper.assertEquals("13", gregorianDate.toString("ss", m_cultureInfo));
+        AssertHelper.assertEquals("P", gregorianDate.toString("%t", m_cultureInfo));
+        AssertHelper.assertEquals("PM", gregorianDate.toString("tt", m_cultureInfo));
+        AssertHelper.assertEquals(" : ", gregorianDate.toString(" : ", m_cultureInfo));
+        AssertHelper.assertEquals(" / ", gregorianDate.toString(" / ", m_cultureInfo));
+        AssertHelper.assertEquals(" yyy ", gregorianDate.toString(" 'yyy' ", m_cultureInfo));
+        AssertHelper.assertEquals(" d", gregorianDate.toString(" \\d", m_cultureInfo));
+        AssertHelper.assertEquals("2002", gregorianDate.toString("yyy", m_cultureInfo));
+        AssertHelper.assertEquals("0002002", gregorianDate.toString("yyyyyyy", m_cultureInfo));
         gregorianDate = new GregorianDate(999, 1, 2, 3, 4, 5D);
-        Assert.assertEquals("999", gregorianDate.toString("yyy", m_cultureInfo));
-        Assert.assertEquals("0999", gregorianDate.toString("yyyy", m_cultureInfo));
+        AssertHelper.assertEquals("999", gregorianDate.toString("yyy", m_cultureInfo));
+        AssertHelper.assertEquals("0999", gregorianDate.toString("yyyy", m_cultureInfo));
         // .NET's Double.ToString pads with zeros beyond 15 significant digits.
         // This is kind of obnoxious, but we get the guaranteed precision of
         // a GregorianDate (1e-10 seconds) even so, so it's not worth major
         // heroics to solve.
         gregorianDate = new GregorianDate(2009, 6, 10, 15, 0, 13.012345678912345);
         String s = gregorianDate.toString("ss.fffffffffffffff", m_cultureInfo);
-        Assert.assertEquals((int) 18, (int) s.length());
+        AssertHelper.assertEquals(18, s.length());
         Assert.assertTrue(StringHelper.startsWith(s, "13.0123456789123"));
         gregorianDate = new GregorianDate(2009, 6, 10, 15, 0, 13.012);
-        Assert.assertEquals("13.012000000000000", gregorianDate.toString("ss.fffffffffffffff", m_cultureInfo));
-        Assert.assertEquals("13.012", gregorianDate.toString("ss.FFFFFFFFFFFFFFF", m_cultureInfo));
+        AssertHelper.assertEquals("13.012000000000000", gregorianDate.toString("ss.fffffffffffffff", m_cultureInfo));
+        AssertHelper.assertEquals("13.012", gregorianDate.toString("ss.FFFFFFFFFFFFFFF", m_cultureInfo));
     }
 
     @Test
@@ -243,13 +243,13 @@ public class TestGregorianDateFormatting {
     @Test
     public final void testFormattingLeapSecond() {
         GregorianDate date = new GregorianDate(2008, 12, 31, 23, 59, 60.444);
-        Assert.assertEquals("31 Dec 2008 23:59:60.444", date.toString("d MMM yyyy H:mm:ss.fff", m_cultureInfo));
+        AssertHelper.assertEquals("31 Dec 2008 23:59:60.444", date.toString("d MMM yyyy H:mm:ss.fff", m_cultureInfo));
     }
 
     public final void toIso8601ExtendedStringProducesCorrectStrings(int year, int month, int day, int hour, int minute, double second, String expectedIsoString) {
         GregorianDate gregorianDate = new GregorianDate(year, month, day, hour, minute, second);
         String isoString = gregorianDate.toIso8601String(Iso8601Format.EXTENDED);
-        Assert.assertEquals(expectedIsoString, isoString);
+        AssertHelper.assertEquals(expectedIsoString, isoString);
         AssertHelper.assertEquals(gregorianDate, GregorianDate.parse(isoString));
     }
 
@@ -301,7 +301,7 @@ public class TestGregorianDateFormatting {
     public final void toIso8601BasicStringProducesCorrectStrings(int year, int month, int day, int hour, int minute, double second, String expectedIsoString) {
         GregorianDate gregorianDate = new GregorianDate(year, month, day, hour, minute, second);
         String isoString = gregorianDate.toIso8601String(Iso8601Format.BASIC);
-        Assert.assertEquals(expectedIsoString, isoString);
+        AssertHelper.assertEquals(expectedIsoString, isoString);
         AssertHelper.assertEquals(gregorianDate, GregorianDate.parse(isoString));
     }
 
@@ -353,7 +353,7 @@ public class TestGregorianDateFormatting {
     public final void toIso8601CompactStringProducesCorrectStrings(int year, int month, int day, int hour, int minute, double second, String expectedIsoString) {
         GregorianDate gregorianDate = new GregorianDate(year, month, day, hour, minute, second);
         String isoString = gregorianDate.toIso8601String(Iso8601Format.COMPACT);
-        Assert.assertEquals(expectedIsoString, isoString);
+        AssertHelper.assertEquals(expectedIsoString, isoString);
     }
 
     @Test
@@ -447,31 +447,31 @@ public class TestGregorianDateFormatting {
     @Test
     public final void secondsAreCorrectlyFormattedToDifferentNumbersOfDigits() {
         GregorianDate first = new GregorianDate(2009, 2, 7, 5, 41, 44.408);
-        Assert.assertEquals("44.408", first.toString("ss.fff", m_cultureInfo));
-        Assert.assertEquals("44.4080", first.toString("ss.ffff", m_cultureInfo));
-        Assert.assertEquals("44.40800", first.toString("ss.fffff", m_cultureInfo));
+        AssertHelper.assertEquals("44.408", first.toString("ss.fff", m_cultureInfo));
+        AssertHelper.assertEquals("44.4080", first.toString("ss.ffff", m_cultureInfo));
+        AssertHelper.assertEquals("44.40800", first.toString("ss.fffff", m_cultureInfo));
     }
 
     @Test
     public final void toStringTruncatesSeconds() {
         GregorianDate gregorianDate = new GregorianDate(2012, 8, 7, 13, 59, 59.9999999);
-        Assert.assertEquals("2012-08-07 13:59:59.999999", gregorianDate.toString("yyyy-MM-dd HH:mm:ss.ffffff", m_cultureInfo));
+        AssertHelper.assertEquals("2012-08-07 13:59:59.999999", gregorianDate.toString("yyyy-MM-dd HH:mm:ss.ffffff", m_cultureInfo));
     }
 
     @Test
     public final void wholeNumberSecondsIsFormattedCorrectly() {
         GregorianDate gregorianDate = new GregorianDate(2012, 8, 7, 13, 59, 55.0);
-        Assert.assertEquals("2012-08-07 13:59:55.000000", gregorianDate.toString("yyyy-MM-dd HH:mm:ss.ffffff", m_cultureInfo));
+        AssertHelper.assertEquals("2012-08-07 13:59:55.000000", gregorianDate.toString("yyyy-MM-dd HH:mm:ss.ffffff", m_cultureInfo));
         gregorianDate = new GregorianDate(2012, 8, 7, 13, 59, 55.0);
-        Assert.assertEquals("2012-08-07 13:59:55", gregorianDate.toString("yyyy-MM-dd HH:mm:ss", m_cultureInfo));
+        AssertHelper.assertEquals("2012-08-07 13:59:55", gregorianDate.toString("yyyy-MM-dd HH:mm:ss", m_cultureInfo));
         gregorianDate = new GregorianDate(2012, 8, 7, 13, 59, 55.0);
-        Assert.assertEquals("2012-08-07 13:59:55", gregorianDate.toString("yyyy-MM-dd HH:mm:ss.FFFFFF", m_cultureInfo));
+        AssertHelper.assertEquals("2012-08-07 13:59:55", gregorianDate.toString("yyyy-MM-dd HH:mm:ss.FFFFFF", m_cultureInfo));
     }
 
     public final void toIso8601StringWithFractionalSeconds(int year, int month, int day, int hour, int minute, double second, String expectedIsoString) {
         GregorianDate gregorianDate = new GregorianDate(year, month, day, hour, minute, second);
         String isoString = gregorianDate.toIso8601String(Iso8601Format.EXTENDED, 6);
-        Assert.assertEquals(expectedIsoString, isoString);
+        AssertHelper.assertEquals(expectedIsoString, isoString);
     }
 
     @Test
@@ -513,7 +513,7 @@ public class TestGregorianDateFormatting {
     public final void fractionalSecondsCloseToZeroAreFormattedCorrectly() {
         // Based on BUG71966: GregorianDate.ToString(format) produces incorrect value for fractional seconds
         GregorianDate date = new GregorianDate(2012, 2, 25, 0, 15, 0.000000000014551915228366852);
-        Assert.assertEquals("001500.0000000", date.toString("HHmmss.fffffff", m_cultureInfo));
+        AssertHelper.assertEquals("001500.0000000", date.toString("HHmmss.fffffff", m_cultureInfo));
     }
 
     @Nonnull

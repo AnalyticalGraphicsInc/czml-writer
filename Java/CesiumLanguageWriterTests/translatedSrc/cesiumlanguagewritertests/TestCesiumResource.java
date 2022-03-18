@@ -68,7 +68,7 @@ public class TestCesiumResource {
         CesiumResource resource = CesiumResource.fromStream(stream, CesiumImageFormat.PNG);
         Assert.assertNotNull(resource);
         final String expected = "data:image/png;base64,AAECAwQ=";
-        Assert.assertEquals(expected, resource.getUri());
+        AssertHelper.assertEquals(expected, resource.getUri());
     }
 
     @Test
@@ -85,7 +85,7 @@ public class TestCesiumResource {
         CesiumResource resource = CesiumResource.fromStream(stream, "application/octet-stream");
         Assert.assertNotNull(resource);
         final String expected = "data:application/octet-stream;base64,AAECAwQ=";
-        Assert.assertEquals(expected, resource.getUri());
+        AssertHelper.assertEquals(expected, resource.getUri());
     }
 
     @Nonnull

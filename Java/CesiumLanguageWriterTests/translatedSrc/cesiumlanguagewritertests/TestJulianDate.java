@@ -34,8 +34,8 @@ public class TestJulianDate {
     @Test
     public final void testRetainValue() {
         JulianDate date = new JulianDate(100, 123.456789012);
-        Assert.assertEquals((int) 100, (int) date.getDay());
-        Assert.assertEquals(123.456789012, date.getSecondsOfDay(), 0d);
+        AssertHelper.assertEquals(100, date.getDay());
+        AssertHelper.assertEquals(123.456789012, date.getSecondsOfDay());
     }
 
     /**
@@ -60,11 +60,11 @@ public class TestJulianDate {
     @Test
     public final void testTimeGreaterThanADay() {
         JulianDate date = new JulianDate(2451545, 107000.0);
-        Assert.assertEquals((int) 2451546, (int) date.getDay());
-        Assert.assertEquals(20600.0, date.getSecondsOfDay(), 0d);
+        AssertHelper.assertEquals(2451546, date.getDay());
+        AssertHelper.assertEquals(20600.0, date.getSecondsOfDay());
         date = new JulianDate(2451545, 107000.0, TimeStandard.INTERNATIONAL_ATOMIC_TIME);
-        Assert.assertEquals((int) 2451546, (int) date.getDay());
-        Assert.assertEquals(20600.0, date.getSecondsOfDay(), 0d);
+        AssertHelper.assertEquals(2451546, date.getDay());
+        AssertHelper.assertEquals(20600.0, date.getSecondsOfDay());
     }
 
     /**
@@ -74,11 +74,11 @@ public class TestJulianDate {
     @Test
     public final void testTimeNegative() {
         JulianDate date = new JulianDate(2451545, -45000.0);
-        Assert.assertEquals((int) 2451544, (int) date.getDay());
-        Assert.assertEquals(41400.0, date.getSecondsOfDay(), 0d);
+        AssertHelper.assertEquals(2451544, date.getDay());
+        AssertHelper.assertEquals(41400.0, date.getSecondsOfDay());
         date = new JulianDate(2451545, -45000.0, TimeStandard.INTERNATIONAL_ATOMIC_TIME);
-        Assert.assertEquals((int) 2451544, (int) date.getDay());
-        Assert.assertEquals(41400.0, date.getSecondsOfDay(), 0d);
+        AssertHelper.assertEquals(2451544, date.getDay());
+        AssertHelper.assertEquals(41400.0, date.getSecondsOfDay());
     }
 
     /**
@@ -88,11 +88,11 @@ public class TestJulianDate {
     @Test
     public final void testTimeExactlyOneDay() {
         JulianDate date = new JulianDate(2451545, TimeConstants.SecondsPerDay);
-        Assert.assertEquals((int) 2451546, (int) date.getDay());
-        Assert.assertEquals(0.0, date.getSecondsOfDay(), 0d);
+        AssertHelper.assertEquals(2451546, date.getDay());
+        AssertHelper.assertEquals(0.0, date.getSecondsOfDay());
         date = new JulianDate(2451545, TimeConstants.SecondsPerDay, TimeStandard.INTERNATIONAL_ATOMIC_TIME);
-        Assert.assertEquals((int) 2451546, (int) date.getDay());
-        Assert.assertEquals(0.0, date.getSecondsOfDay(), 0d);
+        AssertHelper.assertEquals(2451546, date.getDay());
+        AssertHelper.assertEquals(0.0, date.getSecondsOfDay());
     }
 
     /**
@@ -105,8 +105,8 @@ public class TestJulianDate {
         AssertHelper.assertEquals(first, second);
         Assert.assertTrue(first.equalsType(second));
         Assert.assertTrue(second.equalsType(first));
-        Assert.assertEquals((int) 0, (int) first.compareTo(second));
-        Assert.assertEquals((int) 0, (int) second.compareTo(first));
+        AssertHelper.assertEquals(0, first.compareTo(second));
+        AssertHelper.assertEquals(0, second.compareTo(first));
         AssertHelper.assertNotEqual(first, 5);
         first = new JulianDate(2451545, 0.00001);
         second = new JulianDate(2451544, 86399.99999);
@@ -150,27 +150,27 @@ public class TestJulianDate {
         JulianDate original = new JulianDate(2460000, 1000.0);
         Duration toAdd = Duration.fromSeconds(50.0);
         JulianDate added = original.add(toAdd);
-        Assert.assertEquals((int) 2460000, (int) added.getDay());
-        Assert.assertEquals(1050.0, added.getSecondsOfDay(), 0d);
+        AssertHelper.assertEquals(2460000, added.getDay());
+        AssertHelper.assertEquals(1050.0, added.getSecondsOfDay());
         JulianDate subtracted = original.subtract(toAdd);
-        Assert.assertEquals((int) 2460000, (int) subtracted.getDay());
-        Assert.assertEquals(950.0, subtracted.getSecondsOfDay(), 0d);
+        AssertHelper.assertEquals(2460000, subtracted.getDay());
+        AssertHelper.assertEquals(950.0, subtracted.getSecondsOfDay());
         original = new JulianDate(2460000, 8382.1);
         toAdd = new Duration(1, 10.0);
         added = JulianDate.add(original, toAdd);
-        Assert.assertEquals((int) 2460001, (int) added.getDay());
-        Assert.assertEquals(8392.1, added.getSecondsOfDay(), 0d);
+        AssertHelper.assertEquals(2460001, added.getDay());
+        AssertHelper.assertEquals(8392.1, added.getSecondsOfDay());
         subtracted = JulianDate.subtract(original, toAdd);
-        Assert.assertEquals((int) 2459999, (int) subtracted.getDay());
-        Assert.assertEquals(8372.1, subtracted.getSecondsOfDay(), 0d);
+        AssertHelper.assertEquals(2459999, subtracted.getDay());
+        AssertHelper.assertEquals(8372.1, subtracted.getSecondsOfDay());
         original = new JulianDate(2460000, 86000.0);
         toAdd = Duration.fromSeconds(1000.0);
         added = original.add(toAdd);
-        Assert.assertEquals((int) 2460001, (int) added.getDay());
-        Assert.assertEquals(600.0, added.getSecondsOfDay(), 0d);
+        AssertHelper.assertEquals(2460001, added.getDay());
+        AssertHelper.assertEquals(600.0, added.getSecondsOfDay());
         subtracted = original.subtract(toAdd);
-        Assert.assertEquals((int) 2460000, (int) subtracted.getDay());
-        Assert.assertEquals(85000.0, subtracted.getSecondsOfDay(), 0d);
+        AssertHelper.assertEquals(2460000, subtracted.getDay());
+        AssertHelper.assertEquals(85000.0, subtracted.getSecondsOfDay());
     }
 
     /**
@@ -181,23 +181,23 @@ public class TestJulianDate {
         // Test same standard - both safe
         JulianDate first = new JulianDate(2451545.0);
         JulianDate second = JulianDate.add(first, Duration.fromSeconds(120000D));
-        Assert.assertEquals(120000, first.secondsDifference(second), 0d);
-        Assert.assertEquals((JulianDate.subtract(second, first)).getTotalSeconds(), first.secondsDifference(second), 0d);
+        AssertHelper.assertEquals(120000, first.secondsDifference(second));
+        AssertHelper.assertEquals((JulianDate.subtract(second, first)).getTotalSeconds(), first.secondsDifference(second));
         //Test same standard - both unsafe
         first = new JulianDate(2451545.0, TimeStandard.COORDINATED_UNIVERSAL_TIME);
         second = JulianDate.add(first, Duration.fromSeconds(120000D));
         second = new JulianDate(second.getDay(), second.getSecondsOfDay(), TimeStandard.COORDINATED_UNIVERSAL_TIME);
-        Assert.assertEquals(120000, first.secondsDifference(second), 0d);
-        Assert.assertEquals((JulianDate.subtract(second, first)).getTotalSeconds(), first.secondsDifference(second), 0d);
+        AssertHelper.assertEquals(120000, first.secondsDifference(second));
+        AssertHelper.assertEquals((JulianDate.subtract(second, first)).getTotalSeconds(), first.secondsDifference(second));
         // Test diff standard - one unsafe, one safe
         first = new JulianDate(2451545.0);
         second = JulianDate.add(first, Duration.fromSeconds(120000D));
         JulianDate secondDiffStandard = second.toTimeStandard(TimeStandard.COORDINATED_UNIVERSAL_TIME);
-        Assert.assertEquals(120000, first.secondsDifference(secondDiffStandard), 0d);
-        Assert.assertEquals((JulianDate.subtract(secondDiffStandard, first)).getTotalSeconds(), first.secondsDifference(secondDiffStandard), 0d);
+        AssertHelper.assertEquals(120000, first.secondsDifference(secondDiffStandard));
+        AssertHelper.assertEquals((JulianDate.subtract(secondDiffStandard, first)).getTotalSeconds(), first.secondsDifference(secondDiffStandard));
         first = JulianDate.getMinValue();
         second = JulianDate.getMaxValue();
-        Assert.assertEquals(((long) Integer.MAX_VALUE - Integer.MIN_VALUE) * TimeConstants.SecondsPerDay, first.secondsDifference(second), 0d);
+        AssertHelper.assertEquals(((long) Integer.MAX_VALUE - Integer.MIN_VALUE) * TimeConstants.SecondsPerDay, first.secondsDifference(second));
     }
 
     /**
@@ -210,23 +210,23 @@ public class TestJulianDate {
         //Test same time standard, both safe
         JulianDate first = new JulianDate(2451545.0);
         JulianDate second = JulianDate.add(first, Duration.fromSeconds(totalElapsedTime));
-        Assert.assertEquals(totalElapsedTimeMinutes, first.minutesDifference(second), 0d);
-        Assert.assertEquals((JulianDate.subtract(second, first)).getTotalSeconds() / TimeConstants.SecondsPerMinute, first.minutesDifference(second), 0d);
+        AssertHelper.assertEquals(totalElapsedTimeMinutes, first.minutesDifference(second));
+        AssertHelper.assertEquals((JulianDate.subtract(second, first)).getTotalSeconds() / TimeConstants.SecondsPerMinute, first.minutesDifference(second));
         //Test same time standard, both unsafe
         first = new JulianDate(2451545.0, TimeStandard.COORDINATED_UNIVERSAL_TIME);
         second = JulianDate.add(first, Duration.fromSeconds(totalElapsedTime));
         second = new JulianDate(second.getDay(), second.getSecondsOfDay(), TimeStandard.COORDINATED_UNIVERSAL_TIME);
-        Assert.assertEquals(totalElapsedTimeMinutes, first.minutesDifference(second), 0d);
-        Assert.assertEquals((JulianDate.subtract(second, first)).getTotalSeconds() / TimeConstants.SecondsPerMinute, first.minutesDifference(second), 0d);
+        AssertHelper.assertEquals(totalElapsedTimeMinutes, first.minutesDifference(second));
+        AssertHelper.assertEquals((JulianDate.subtract(second, first)).getTotalSeconds() / TimeConstants.SecondsPerMinute, first.minutesDifference(second));
         //Test diff time standard, one safe, one unsafe
         first = new JulianDate(2451545.0);
         second = JulianDate.add(first, Duration.fromSeconds(totalElapsedTime));
         JulianDate secondDiffStandard = second.toTimeStandard(TimeStandard.COORDINATED_UNIVERSAL_TIME);
-        Assert.assertEquals(totalElapsedTimeMinutes, first.minutesDifference(secondDiffStandard), 0d);
-        Assert.assertEquals((JulianDate.subtract(secondDiffStandard, first)).getTotalSeconds() / TimeConstants.SecondsPerMinute, first.minutesDifference(secondDiffStandard), 0d);
+        AssertHelper.assertEquals(totalElapsedTimeMinutes, first.minutesDifference(secondDiffStandard));
+        AssertHelper.assertEquals((JulianDate.subtract(secondDiffStandard, first)).getTotalSeconds() / TimeConstants.SecondsPerMinute, first.minutesDifference(secondDiffStandard));
         first = JulianDate.getMinValue();
         second = JulianDate.getMaxValue();
-        Assert.assertEquals(((long) Integer.MAX_VALUE - Integer.MIN_VALUE) * TimeConstants.MinutesPerDay, first.minutesDifference(second), 0d);
+        AssertHelper.assertEquals(((long) Integer.MAX_VALUE - Integer.MIN_VALUE) * TimeConstants.MinutesPerDay, first.minutesDifference(second));
     }
 
     @Test
@@ -236,23 +236,23 @@ public class TestJulianDate {
         //Test same time standard, both safe
         JulianDate first = new JulianDate(2451545.0);
         JulianDate second = JulianDate.add(first, Duration.fromSeconds(totalElapsedTime));
-        Assert.assertEquals(totalElapsedTimeDays, first.daysDifference(second), 0d);
-        Assert.assertEquals((JulianDate.subtract(second, first)).getTotalSeconds() / TimeConstants.SecondsPerDay, first.daysDifference(second), 0d);
+        AssertHelper.assertEquals(totalElapsedTimeDays, first.daysDifference(second));
+        AssertHelper.assertEquals((JulianDate.subtract(second, first)).getTotalSeconds() / TimeConstants.SecondsPerDay, first.daysDifference(second));
         //Test same time standard, both unsafe
         first = new JulianDate(2451545.0, TimeStandard.COORDINATED_UNIVERSAL_TIME);
         second = JulianDate.add(first, Duration.fromSeconds(totalElapsedTime));
         second = new JulianDate(second.getDay(), second.getSecondsOfDay(), TimeStandard.COORDINATED_UNIVERSAL_TIME);
-        Assert.assertEquals(totalElapsedTimeDays, first.daysDifference(second), 0d);
-        Assert.assertEquals((JulianDate.subtract(second, first)).getTotalSeconds() / TimeConstants.SecondsPerDay, first.daysDifference(second), 0d);
+        AssertHelper.assertEquals(totalElapsedTimeDays, first.daysDifference(second));
+        AssertHelper.assertEquals((JulianDate.subtract(second, first)).getTotalSeconds() / TimeConstants.SecondsPerDay, first.daysDifference(second));
         //Test diff time standard, one safe, one unsafe
         first = new JulianDate(2451545.0);
         second = JulianDate.add(first, Duration.fromSeconds(totalElapsedTime));
         JulianDate secondDiffStandard = second.toTimeStandard(TimeStandard.COORDINATED_UNIVERSAL_TIME);
-        Assert.assertEquals(totalElapsedTimeDays, first.daysDifference(secondDiffStandard), 0d);
-        Assert.assertEquals((JulianDate.subtract(secondDiffStandard, first)).getTotalSeconds() / TimeConstants.SecondsPerDay, first.daysDifference(secondDiffStandard), 0d);
+        AssertHelper.assertEquals(totalElapsedTimeDays, first.daysDifference(secondDiffStandard));
+        AssertHelper.assertEquals((JulianDate.subtract(secondDiffStandard, first)).getTotalSeconds() / TimeConstants.SecondsPerDay, first.daysDifference(secondDiffStandard));
         first = JulianDate.getMinValue();
         second = JulianDate.getMaxValue();
-        Assert.assertEquals((long) Integer.MAX_VALUE - Integer.MIN_VALUE, first.daysDifference(second), 0d);
+        AssertHelper.assertEquals((long) Integer.MAX_VALUE - Integer.MIN_VALUE, first.daysDifference(second));
     }
 
     /**
@@ -263,25 +263,25 @@ public class TestJulianDate {
         JulianDate first = new JulianDate(2469477, 1000.0);
         JulianDate second = new JulianDate(2469477, 2000.0);
         Duration difference = JulianDate.subtract(second, first);
-        Assert.assertEquals(1000.0, difference.getTotalSeconds(), 0d);
+        AssertHelper.assertEquals(1000.0, difference.getTotalSeconds());
         difference = JulianDate.subtract(first, second);
-        Assert.assertEquals(-1000.0, difference.getTotalSeconds(), 0d);
+        AssertHelper.assertEquals(-1000.0, difference.getTotalSeconds());
         first = new JulianDate(2469477, 1000.0);
         second = new JulianDate(2469478, 2000.0);
         difference = JulianDate.subtract(second, first);
-        Assert.assertEquals((int) 1, (int) difference.getDays());
-        Assert.assertEquals(1000.0, difference.getSeconds(), 0d);
+        AssertHelper.assertEquals(1, difference.getDays());
+        AssertHelper.assertEquals(1000.0, difference.getSeconds());
         difference = JulianDate.subtract(first, second);
-        Assert.assertEquals((int) -1, (int) difference.getDays());
-        Assert.assertEquals(-1000.0, difference.getSeconds(), 0d);
+        AssertHelper.assertEquals(-1, difference.getDays());
+        AssertHelper.assertEquals(-1000.0, difference.getSeconds());
         first = new JulianDate(2469477, 86000.0);
         second = new JulianDate(2469478, 100.0);
         difference = JulianDate.subtract(second, first);
-        Assert.assertEquals((int) 0, (int) difference.getDays());
-        Assert.assertEquals(500.0, difference.getSeconds(), 0d);
+        AssertHelper.assertEquals(0, difference.getDays());
+        AssertHelper.assertEquals(500.0, difference.getSeconds());
         difference = JulianDate.subtract(first, second);
-        Assert.assertEquals((int) 0, (int) difference.getDays());
-        Assert.assertEquals(-500.0, difference.getSeconds(), 0d);
+        AssertHelper.assertEquals(0, difference.getDays());
+        AssertHelper.assertEquals(-500.0, difference.getSeconds());
     }
 
     /**
@@ -293,8 +293,8 @@ public class TestJulianDate {
         JulianDate test = new JulianDate(2451912, 43200.0, TimeStandard.INTERNATIONAL_ATOMIC_TIME);
         JulianDate result = test.addSeconds(45.123);
         AssertHelper.assertEquals(TimeStandard.INTERNATIONAL_ATOMIC_TIME, result.getStandard());
-        Assert.assertEquals((int) 2451912, (int) result.getDay());
-        Assert.assertEquals(43245.123, result.getSecondsOfDay(), 0d);
+        AssertHelper.assertEquals(2451912, result.getDay());
+        AssertHelper.assertEquals(43245.123, result.getSecondsOfDay());
     }
 
     /**
@@ -306,8 +306,8 @@ public class TestJulianDate {
         JulianDate test = new JulianDate(2451912, 0.0, TimeStandard.INTERNATIONAL_ATOMIC_TIME);
         JulianDate result = test.subtractSeconds(43200.25);
         AssertHelper.assertEquals(TimeStandard.INTERNATIONAL_ATOMIC_TIME, result.getStandard());
-        Assert.assertEquals((int) 2451911, (int) result.getDay());
-        Assert.assertEquals(43199.75, result.getSecondsOfDay(), 0d);
+        AssertHelper.assertEquals(2451911, result.getDay());
+        AssertHelper.assertEquals(43199.75, result.getSecondsOfDay());
     }
 
     /**
@@ -319,8 +319,8 @@ public class TestJulianDate {
         JulianDate test = new JulianDate(2451912, 43200.0, TimeStandard.INTERNATIONAL_ATOMIC_TIME);
         JulianDate result = test.addDays(45.5);
         AssertHelper.assertEquals(TimeStandard.INTERNATIONAL_ATOMIC_TIME, result.getStandard());
-        Assert.assertEquals((int) 2451958, (int) result.getDay());
-        Assert.assertEquals(0.0, result.getSecondsOfDay(), 0d);
+        AssertHelper.assertEquals(2451958, result.getDay());
+        AssertHelper.assertEquals(0.0, result.getSecondsOfDay());
     }
 
     /**
@@ -332,7 +332,7 @@ public class TestJulianDate {
         JulianDate date2 = new JulianDate(2451545, 1.0);
         JulianDate date3 = new JulianDate(2451545, 0.0);
         AssertHelper.assertNotEqual(date1.hashCode(), date2.hashCode());
-        Assert.assertEquals((int) date1.hashCode(), (int) date3.hashCode());
+        AssertHelper.assertEquals(date1.hashCode(), date3.hashCode());
         date1 = new JulianDate(2451545, 0.0, TimeStandard.INTERNATIONAL_ATOMIC_TIME);
         date2 = new JulianDate(2451545, 0.0, TimeStandard.COORDINATED_UNIVERSAL_TIME);
         AssertHelper.assertNotEqual(date1.hashCode(), date2.hashCode());
@@ -345,7 +345,7 @@ public class TestJulianDate {
     public final void testToString() {
         JulianDate date = new JulianDate(2451545.5);
         String expected = StringHelper.format("2451545:43200 TAI ({0})", date.toGregorianDate());
-        Assert.assertEquals(expected, date.toString());
+        AssertHelper.assertEquals(expected, date.toString());
     }
 
     /**
@@ -379,8 +379,8 @@ public class TestJulianDate {
     @Test
     public final void testReallySmallNegativeSecondsOfDay() {
         JulianDate date = new JulianDate(2451545, -Constants.Epsilon13);
-        Assert.assertEquals((int) 2451545, (int) date.getDay());
-        Assert.assertEquals(0.0, date.getSecondsOfDay(), 0d);
+        AssertHelper.assertEquals(2451545, date.getDay());
+        AssertHelper.assertEquals(0.0, date.getSecondsOfDay());
     }
 
     @Test
@@ -411,12 +411,12 @@ public class TestJulianDate {
     public final void testSecondsDifferenceAtLeapSecond() {
         JulianDate leapSecond = new JulianDate(2453736, 43232D, TimeStandard.INTERNATIONAL_ATOMIC_TIME);
         JulianDate utcDate = new JulianDate(2453736, 43232D, TimeStandard.COORDINATED_UNIVERSAL_TIME);
-        Assert.assertEquals(-33, utcDate.secondsDifference(leapSecond), 0d);
-        Assert.assertEquals(33, leapSecond.secondsDifference(utcDate), 0d);
+        AssertHelper.assertEquals(-33, utcDate.secondsDifference(leapSecond));
+        AssertHelper.assertEquals(33, leapSecond.secondsDifference(utcDate));
         JulianDate secondBeforeLeapSecondUTC = leapSecond.subtractSeconds(1D).toTimeStandard(TimeStandard.COORDINATED_UNIVERSAL_TIME);
         JulianDate secondAfterLeapSecondUTC = leapSecond.addSeconds(1D).toTimeStandard(TimeStandard.COORDINATED_UNIVERSAL_TIME);
-        Assert.assertEquals(2, secondBeforeLeapSecondUTC.secondsDifference(secondAfterLeapSecondUTC), 0d);
-        Assert.assertEquals(2, secondAfterLeapSecondUTC.subtract(secondBeforeLeapSecondUTC).getSeconds(), 0d);
+        AssertHelper.assertEquals(2, secondBeforeLeapSecondUTC.secondsDifference(secondAfterLeapSecondUTC));
+        AssertHelper.assertEquals(2, secondAfterLeapSecondUTC.subtract(secondBeforeLeapSecondUTC).getSeconds());
     }
 
     @Nonnull

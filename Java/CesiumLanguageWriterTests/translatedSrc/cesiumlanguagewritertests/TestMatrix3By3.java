@@ -34,30 +34,30 @@ public class TestMatrix3By3 {
     @Test
     public final void testHoldValue() {
         Matrix3By3 matrix = new Matrix3By3(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0);
-        Assert.assertEquals(1.0, matrix.getM11(), 0d);
-        Assert.assertEquals(2.0, matrix.getM12(), 0d);
-        Assert.assertEquals(3.0, matrix.getM13(), 0d);
-        Assert.assertEquals(4.0, matrix.getM21(), 0d);
-        Assert.assertEquals(5.0, matrix.getM22(), 0d);
-        Assert.assertEquals(6.0, matrix.getM23(), 0d);
-        Assert.assertEquals(7.0, matrix.getM31(), 0d);
-        Assert.assertEquals(8.0, matrix.getM32(), 0d);
-        Assert.assertEquals(9.0, matrix.getM33(), 0d);
+        AssertHelper.assertEquals(1.0, matrix.getM11());
+        AssertHelper.assertEquals(2.0, matrix.getM12());
+        AssertHelper.assertEquals(3.0, matrix.getM13());
+        AssertHelper.assertEquals(4.0, matrix.getM21());
+        AssertHelper.assertEquals(5.0, matrix.getM22());
+        AssertHelper.assertEquals(6.0, matrix.getM23());
+        AssertHelper.assertEquals(7.0, matrix.getM31());
+        AssertHelper.assertEquals(8.0, matrix.getM32());
+        AssertHelper.assertEquals(9.0, matrix.getM33());
     }
 
     @Test
     public final void testFromQuaternion() {
         UnitQuaternion quaternion = UnitQuaternion.getIdentity();
         Matrix3By3 matrix = new Matrix3By3(quaternion);
-        Assert.assertEquals(1.0, matrix.getM11(), 0d);
-        Assert.assertEquals(0.0, matrix.getM12(), 0d);
-        Assert.assertEquals(0.0, matrix.getM13(), 0d);
-        Assert.assertEquals(0.0, matrix.getM21(), 0d);
-        Assert.assertEquals(1.0, matrix.getM22(), 0d);
-        Assert.assertEquals(0.0, matrix.getM23(), 0d);
-        Assert.assertEquals(0.0, matrix.getM31(), 0d);
-        Assert.assertEquals(0.0, matrix.getM32(), 0d);
-        Assert.assertEquals(1.0, matrix.getM33(), 0d);
+        AssertHelper.assertEquals(1.0, matrix.getM11());
+        AssertHelper.assertEquals(0.0, matrix.getM12());
+        AssertHelper.assertEquals(0.0, matrix.getM13());
+        AssertHelper.assertEquals(0.0, matrix.getM21());
+        AssertHelper.assertEquals(1.0, matrix.getM22());
+        AssertHelper.assertEquals(0.0, matrix.getM23());
+        AssertHelper.assertEquals(0.0, matrix.getM31());
+        AssertHelper.assertEquals(0.0, matrix.getM32());
+        AssertHelper.assertEquals(1.0, matrix.getM33());
     }
 
     /**
@@ -133,44 +133,44 @@ public class TestMatrix3By3 {
     @Test
     public final void testIndex() {
         Matrix3By3 original = new Matrix3By3(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0);
-        Assert.assertEquals(1.0, original.get(0, 0), 0d);
-        Assert.assertEquals(2.0, original.get(0, 1), 0d);
-        Assert.assertEquals(3.0, original.get(0, 2), 0d);
-        Assert.assertEquals(4.0, original.get(1, 0), 0d);
-        Assert.assertEquals(5.0, original.get(1, 1), 0d);
-        Assert.assertEquals(6.0, original.get(1, 2), 0d);
-        Assert.assertEquals(7.0, original.get(2, 0), 0d);
-        Assert.assertEquals(8.0, original.get(2, 1), 0d);
-        Assert.assertEquals(9.0, original.get(2, 2), 0d);
+        AssertHelper.assertEquals(1.0, original.get(0, 0));
+        AssertHelper.assertEquals(2.0, original.get(0, 1));
+        AssertHelper.assertEquals(3.0, original.get(0, 2));
+        AssertHelper.assertEquals(4.0, original.get(1, 0));
+        AssertHelper.assertEquals(5.0, original.get(1, 1));
+        AssertHelper.assertEquals(6.0, original.get(1, 2));
+        AssertHelper.assertEquals(7.0, original.get(2, 0));
+        AssertHelper.assertEquals(8.0, original.get(2, 1));
+        AssertHelper.assertEquals(9.0, original.get(2, 2));
     }
 
     @Test
     public final void testTranspose() {
         Matrix3By3 original = new Matrix3By3(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0);
         Matrix3By3 transposed = original.transpose();
-        Assert.assertEquals(transposed.getM11(), original.getM11(), 0d);
-        Assert.assertEquals(transposed.getM12(), original.getM21(), 0d);
-        Assert.assertEquals(transposed.getM13(), original.getM31(), 0d);
-        Assert.assertEquals(transposed.getM21(), original.getM12(), 0d);
-        Assert.assertEquals(transposed.getM22(), original.getM22(), 0d);
-        Assert.assertEquals(transposed.getM23(), original.getM32(), 0d);
-        Assert.assertEquals(transposed.getM31(), original.getM13(), 0d);
-        Assert.assertEquals(transposed.getM32(), original.getM23(), 0d);
-        Assert.assertEquals(transposed.getM33(), original.getM33(), 0d);
+        AssertHelper.assertEquals(transposed.getM11(), original.getM11());
+        AssertHelper.assertEquals(transposed.getM12(), original.getM21());
+        AssertHelper.assertEquals(transposed.getM13(), original.getM31());
+        AssertHelper.assertEquals(transposed.getM21(), original.getM12());
+        AssertHelper.assertEquals(transposed.getM22(), original.getM22());
+        AssertHelper.assertEquals(transposed.getM23(), original.getM32());
+        AssertHelper.assertEquals(transposed.getM31(), original.getM13());
+        AssertHelper.assertEquals(transposed.getM32(), original.getM23());
+        AssertHelper.assertEquals(transposed.getM33(), original.getM33());
     }
 
     @Test
     public final void testIdentity() {
         Matrix3By3 identity = Matrix3By3.getIdentity();
-        Assert.assertEquals(1.0, identity.getM11(), 0d);
-        Assert.assertEquals(0.0, identity.getM12(), 0d);
-        Assert.assertEquals(0.0, identity.getM13(), 0d);
-        Assert.assertEquals(0.0, identity.getM21(), 0d);
-        Assert.assertEquals(1.0, identity.getM22(), 0d);
-        Assert.assertEquals(0.0, identity.getM23(), 0d);
-        Assert.assertEquals(0.0, identity.getM31(), 0d);
-        Assert.assertEquals(0.0, identity.getM32(), 0d);
-        Assert.assertEquals(1.0, identity.getM33(), 0d);
+        AssertHelper.assertEquals(1.0, identity.getM11());
+        AssertHelper.assertEquals(0.0, identity.getM12());
+        AssertHelper.assertEquals(0.0, identity.getM13());
+        AssertHelper.assertEquals(0.0, identity.getM21());
+        AssertHelper.assertEquals(1.0, identity.getM22());
+        AssertHelper.assertEquals(0.0, identity.getM23());
+        AssertHelper.assertEquals(0.0, identity.getM31());
+        AssertHelper.assertEquals(0.0, identity.getM32());
+        AssertHelper.assertEquals(1.0, identity.getM33());
     }
 
     @Test
@@ -203,35 +203,35 @@ public class TestMatrix3By3 {
     public final void testMultiplyByScalar() {
         Matrix3By3 matrix = new Matrix3By3(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0);
         Matrix3By3 result = matrix.multiply(-2.0);
-        Assert.assertEquals(-2.0, result.getM11(), 0d);
-        Assert.assertEquals(-4.0, result.getM12(), 0d);
-        Assert.assertEquals(-6.0, result.getM13(), 0d);
-        Assert.assertEquals(-8.0, result.getM21(), 0d);
-        Assert.assertEquals(-10.0, result.getM22(), 0d);
-        Assert.assertEquals(-12.0, result.getM23(), 0d);
-        Assert.assertEquals(-14.0, result.getM31(), 0d);
-        Assert.assertEquals(-16.0, result.getM32(), 0d);
-        Assert.assertEquals(-18.0, result.getM33(), 0d);
+        AssertHelper.assertEquals(-2.0, result.getM11());
+        AssertHelper.assertEquals(-4.0, result.getM12());
+        AssertHelper.assertEquals(-6.0, result.getM13());
+        AssertHelper.assertEquals(-8.0, result.getM21());
+        AssertHelper.assertEquals(-10.0, result.getM22());
+        AssertHelper.assertEquals(-12.0, result.getM23());
+        AssertHelper.assertEquals(-14.0, result.getM31());
+        AssertHelper.assertEquals(-16.0, result.getM32());
+        AssertHelper.assertEquals(-18.0, result.getM33());
         result = Matrix3By3.multiply(matrix, -2.0);
-        Assert.assertEquals(-2.0, result.getM11(), 0d);
-        Assert.assertEquals(-4.0, result.getM12(), 0d);
-        Assert.assertEquals(-6.0, result.getM13(), 0d);
-        Assert.assertEquals(-8.0, result.getM21(), 0d);
-        Assert.assertEquals(-10.0, result.getM22(), 0d);
-        Assert.assertEquals(-12.0, result.getM23(), 0d);
-        Assert.assertEquals(-14.0, result.getM31(), 0d);
-        Assert.assertEquals(-16.0, result.getM32(), 0d);
-        Assert.assertEquals(-18.0, result.getM33(), 0d);
+        AssertHelper.assertEquals(-2.0, result.getM11());
+        AssertHelper.assertEquals(-4.0, result.getM12());
+        AssertHelper.assertEquals(-6.0, result.getM13());
+        AssertHelper.assertEquals(-8.0, result.getM21());
+        AssertHelper.assertEquals(-10.0, result.getM22());
+        AssertHelper.assertEquals(-12.0, result.getM23());
+        AssertHelper.assertEquals(-14.0, result.getM31());
+        AssertHelper.assertEquals(-16.0, result.getM32());
+        AssertHelper.assertEquals(-18.0, result.getM33());
         result = Matrix3By3.multiply(-2.0, matrix);
-        Assert.assertEquals(-2.0, result.getM11(), 0d);
-        Assert.assertEquals(-4.0, result.getM12(), 0d);
-        Assert.assertEquals(-6.0, result.getM13(), 0d);
-        Assert.assertEquals(-8.0, result.getM21(), 0d);
-        Assert.assertEquals(-10.0, result.getM22(), 0d);
-        Assert.assertEquals(-12.0, result.getM23(), 0d);
-        Assert.assertEquals(-14.0, result.getM31(), 0d);
-        Assert.assertEquals(-16.0, result.getM32(), 0d);
-        Assert.assertEquals(-18.0, result.getM33(), 0d);
+        AssertHelper.assertEquals(-2.0, result.getM11());
+        AssertHelper.assertEquals(-4.0, result.getM12());
+        AssertHelper.assertEquals(-6.0, result.getM13());
+        AssertHelper.assertEquals(-8.0, result.getM21());
+        AssertHelper.assertEquals(-10.0, result.getM22());
+        AssertHelper.assertEquals(-12.0, result.getM23());
+        AssertHelper.assertEquals(-14.0, result.getM31());
+        AssertHelper.assertEquals(-16.0, result.getM32());
+        AssertHelper.assertEquals(-18.0, result.getM33());
     }
 
     /**
@@ -266,7 +266,7 @@ public class TestMatrix3By3 {
                 double unused = matrix.get(row, column);
             }
         });
-        Assert.assertEquals("row", exception.getParamName());
+        AssertHelper.assertEquals("row", exception.getParamName());
     }
 
     @Test
@@ -291,7 +291,7 @@ public class TestMatrix3By3 {
                 double unused = matrix.get(row, column);
             }
         });
-        Assert.assertEquals("column", exception.getParamName());
+        AssertHelper.assertEquals("column", exception.getParamName());
     }
 
     @Test
@@ -314,7 +314,7 @@ public class TestMatrix3By3 {
         Matrix3By3 object1 = Matrix3By3.getIdentity();
         Matrix3By3 object2 = Matrix3By3.getIdentity();
         Matrix3By3 object3 = new Matrix3By3();
-        Assert.assertEquals((int) object1.hashCode(), (int) object2.hashCode());
+        AssertHelper.assertEquals(object1.hashCode(), object2.hashCode());
         AssertHelper.assertNotEqual(object1.hashCode(), object3.hashCode());
     }
 
@@ -324,15 +324,15 @@ public class TestMatrix3By3 {
     @Test
     public final void testZeroMatrix() {
         Matrix3By3 zero = Matrix3By3.getZero();
-        Assert.assertEquals(0.0, zero.getM11(), 0d);
-        Assert.assertEquals(0.0, zero.getM12(), 0d);
-        Assert.assertEquals(0.0, zero.getM13(), 0d);
-        Assert.assertEquals(0.0, zero.getM21(), 0d);
-        Assert.assertEquals(0.0, zero.getM22(), 0d);
-        Assert.assertEquals(0.0, zero.getM23(), 0d);
-        Assert.assertEquals(0.0, zero.getM31(), 0d);
-        Assert.assertEquals(0.0, zero.getM32(), 0d);
-        Assert.assertEquals(0.0, zero.getM33(), 0d);
+        AssertHelper.assertEquals(0.0, zero.getM11());
+        AssertHelper.assertEquals(0.0, zero.getM12());
+        AssertHelper.assertEquals(0.0, zero.getM13());
+        AssertHelper.assertEquals(0.0, zero.getM21());
+        AssertHelper.assertEquals(0.0, zero.getM22());
+        AssertHelper.assertEquals(0.0, zero.getM23());
+        AssertHelper.assertEquals(0.0, zero.getM31());
+        AssertHelper.assertEquals(0.0, zero.getM32());
+        AssertHelper.assertEquals(0.0, zero.getM33());
     }
 
     /**

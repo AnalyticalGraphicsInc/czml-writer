@@ -210,22 +210,22 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
     @CS2JWarning("Unhandled attribute removed: AssertionMethod")
     public final void assertExpectedJson(@Nonnull String topLevelPropertyName, @Nonnull Map<String, Object> dictionary) {
         String expectedJson = createExpectedJson(topLevelPropertyName, dictionary);
-        Assert.assertEquals(expectedJson, getStringWriter().toString());
+        AssertHelper.assertEquals(expectedJson, getStringWriter().toString());
     }
 
     @CS2JWarning("Unhandled attribute removed: AssertionMethod")
     public final void assertExpectedJson(@Nonnull Map<String, Object> dictionary) {
         String expectedJson = createExpectedJson(dictionary);
-        Assert.assertEquals(expectedJson, getStringWriter().toString());
+        AssertHelper.assertEquals(expectedJson, getStringWriter().toString());
     }
 
     @Test
     public final void writesPropertyNameOnOpenAndNothingOnClose() {
         CesiumPropertyWriter<TDerived> propertyWriter = createPropertyWriter("foobar");
         propertyWriter.open(getOutputStream());
-        Assert.assertEquals("{\"foobar\":", getStringWriter().toString());
+        AssertHelper.assertEquals("{\"foobar\":", getStringWriter().toString());
         propertyWriter.close();
-        Assert.assertEquals("{\"foobar\":", getStringWriter().toString());
+        AssertHelper.assertEquals("{\"foobar\":", getStringWriter().toString());
     }
 
     @Test
@@ -234,7 +234,7 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
         propertyWriter.open(getOutputStream());
         TDerived intervalWriter = propertyWriter.openInterval();
         Assert.assertNotNull(intervalWriter);
-        Assert.assertEquals("{\"woot\":{", getStringWriter().toString());
+        AssertHelper.assertEquals("{\"woot\":{", getStringWriter().toString());
     }
 
     @Test
@@ -243,7 +243,7 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
         propertyWriter.open(getOutputStream());
         CesiumIntervalListWriter<TDerived> intervalListWriter = propertyWriter.openMultipleIntervals();
         Assert.assertNotNull(intervalListWriter);
-        Assert.assertEquals("{\"woot\":[", getStringWriter().toString());
+        AssertHelper.assertEquals("{\"woot\":[", getStringWriter().toString());
     }
 
     @Test
@@ -252,7 +252,7 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
         propertyWriter.open(getOutputStream());
         CesiumIntervalListWriter<TDerived> intervalListWriter = propertyWriter.openMultipleIntervals();
         intervalListWriter.close();
-        Assert.assertEquals("{\"woot\":[]", getStringWriter().toString());
+        AssertHelper.assertEquals("{\"woot\":[]", getStringWriter().toString());
     }
 
     @Test

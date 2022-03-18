@@ -32,13 +32,13 @@ public class TestLeapSeconds {
     public final void testExtremes() {
         LeapSeconds leapSeconds = new LeapSeconds();
         JulianDate epochBefore = new JulianDate(2440000.5, TimeStandard.INTERNATIONAL_ATOMIC_TIME);
-        Assert.assertEquals(10, leapSeconds.getTaiMinusUtc(epochBefore), 0d);
+        AssertHelper.assertEquals(10, leapSeconds.getTaiMinusUtc(epochBefore));
         epochBefore = new JulianDate(epochBefore.getDay(), epochBefore.getSecondsOfDay(), TimeStandard.COORDINATED_UNIVERSAL_TIME);
-        Assert.assertEquals(10, leapSeconds.getTaiMinusUtc(epochBefore), 0d);
+        AssertHelper.assertEquals(10, leapSeconds.getTaiMinusUtc(epochBefore));
         JulianDate epochAfter = new JulianDate(2453770.5, TimeStandard.INTERNATIONAL_ATOMIC_TIME);
-        Assert.assertEquals(33, leapSeconds.getTaiMinusUtc(epochAfter), 0d);
+        AssertHelper.assertEquals(33, leapSeconds.getTaiMinusUtc(epochAfter));
         epochAfter = new JulianDate(epochAfter.getDay(), epochAfter.getSecondsOfDay(), TimeStandard.COORDINATED_UNIVERSAL_TIME);
-        Assert.assertEquals(33, leapSeconds.getTaiMinusUtc(epochAfter), 0d);
+        AssertHelper.assertEquals(33, leapSeconds.getTaiMinusUtc(epochAfter));
     }
 
     /**
@@ -50,10 +50,10 @@ public class TestLeapSeconds {
         LeapSeconds leapSeconds = new LeapSeconds();
         JulianDate tai = new JulianDate(2447162.5, TimeStandard.INTERNATIONAL_ATOMIC_TIME);
         JulianDate utc = tai.toTimeStandard(TimeStandard.COORDINATED_UNIVERSAL_TIME);
-        Assert.assertEquals(leapSeconds.getTaiMinusUtc(tai), leapSeconds.getTaiMinusUtc(utc), 0d);
+        AssertHelper.assertEquals(leapSeconds.getTaiMinusUtc(tai), leapSeconds.getTaiMinusUtc(utc));
         utc = new JulianDate(2445151.5, TimeStandard.COORDINATED_UNIVERSAL_TIME);
         tai = utc.toTimeStandard(TimeStandard.INTERNATIONAL_ATOMIC_TIME);
-        Assert.assertEquals(leapSeconds.getTaiMinusUtc(utc), leapSeconds.getTaiMinusUtc(tai), 0d);
+        AssertHelper.assertEquals(leapSeconds.getTaiMinusUtc(utc), leapSeconds.getTaiMinusUtc(tai));
     }
 
     /**
@@ -76,8 +76,8 @@ public class TestLeapSeconds {
         LeapSeconds leapSeconds = new LeapSeconds();
         JulianDate utc = new GregorianDate(1998, 4, 1, 12, 0, 0D).toJulianDate();
         JulianDate tai = utc.toTimeStandard(TimeStandard.INTERNATIONAL_ATOMIC_TIME);
-        Assert.assertEquals(31, leapSeconds.getTaiMinusUtc(utc), 0d);
-        Assert.assertEquals(31, leapSeconds.getTaiMinusUtc(tai), 0d);
+        AssertHelper.assertEquals(31, leapSeconds.getTaiMinusUtc(utc));
+        AssertHelper.assertEquals(31, leapSeconds.getTaiMinusUtc(tai));
     }
 
     /**
@@ -92,10 +92,10 @@ public class TestLeapSeconds {
         tempCollection$0.add(new LeapSecond(2451575.0, 10D));
         ArrayList<LeapSecond> newList = tempCollection$0;
         LeapSeconds leapSeconds = new LeapSeconds(newList);
-        Assert.assertEquals(11, leapSeconds.getTaiMinusUtc(new JulianDate(2451545.5, TimeStandard.COORDINATED_UNIVERSAL_TIME)), 0d);
-        Assert.assertEquals(12, leapSeconds.getTaiMinusUtc(new JulianDate(2451555.5, TimeStandard.COORDINATED_UNIVERSAL_TIME)), 0d);
-        Assert.assertEquals(11, leapSeconds.getTaiMinusUtc(new JulianDate(2451565.5, TimeStandard.COORDINATED_UNIVERSAL_TIME)), 0d);
-        Assert.assertEquals(10, leapSeconds.getTaiMinusUtc(new JulianDate(2451575.5, TimeStandard.COORDINATED_UNIVERSAL_TIME)), 0d);
+        AssertHelper.assertEquals(11, leapSeconds.getTaiMinusUtc(new JulianDate(2451545.5, TimeStandard.COORDINATED_UNIVERSAL_TIME)));
+        AssertHelper.assertEquals(12, leapSeconds.getTaiMinusUtc(new JulianDate(2451555.5, TimeStandard.COORDINATED_UNIVERSAL_TIME)));
+        AssertHelper.assertEquals(11, leapSeconds.getTaiMinusUtc(new JulianDate(2451565.5, TimeStandard.COORDINATED_UNIVERSAL_TIME)));
+        AssertHelper.assertEquals(10, leapSeconds.getTaiMinusUtc(new JulianDate(2451575.5, TimeStandard.COORDINATED_UNIVERSAL_TIME)));
     }
 
     /**
@@ -106,7 +106,7 @@ public class TestLeapSeconds {
     public final void testGetOffsetTai() {
         JulianDate date = new JulianDate(2453736, 43222.0, TimeStandard.INTERNATIONAL_ATOMIC_TIME);
         LeapSeconds leapSeconds = new LeapSeconds();
-        Assert.assertEquals(32, leapSeconds.getTaiMinusUtc(date), 0d);
+        AssertHelper.assertEquals(32, leapSeconds.getTaiMinusUtc(date));
     }
 
     /**
@@ -158,7 +158,7 @@ public class TestLeapSeconds {
             }
         }
         // 5 second difference, so 50 additions of a tenth of a second each
-        Assert.assertEquals((int) 50, (int) i);
+        AssertHelper.assertEquals(50, i);
     }
 
     @Nonnull

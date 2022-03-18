@@ -32,8 +32,8 @@ public class TestUnitSpherical {
     @Test
     public final void testHoldValue() {
         UnitSpherical test = new UnitSpherical(1.0, 2.0);
-        Assert.assertEquals(1.0, test.getClock(), 0d);
-        Assert.assertEquals(2.0, test.getCone(), 0d);
+        AssertHelper.assertEquals(1.0, test.getClock());
+        AssertHelper.assertEquals(2.0, test.getCone());
     }
 
     /**
@@ -44,8 +44,8 @@ public class TestUnitSpherical {
         final double fortyFiveDegrees = Math.PI / 4.0;
         final double sixtyDegrees = Math.PI / 3.0;
         UnitSpherical test = new UnitSpherical(new UnitCartesian(1.0, Math.sqrt(3.0), -2.0));
-        Assert.assertEquals(sixtyDegrees, test.getClock(), Constants.Epsilon15);
-        Assert.assertEquals(fortyFiveDegrees + Math.PI / 2.0, test.getCone(), Constants.Epsilon15);
+        AssertHelper.assertEquals(sixtyDegrees, test.getClock(), Constants.Epsilon15);
+        AssertHelper.assertEquals(fortyFiveDegrees + Math.PI / 2.0, test.getCone(), Constants.Epsilon15);
     }
 
     /**
@@ -118,7 +118,7 @@ public class TestUnitSpherical {
         UnitSpherical object1 = new UnitSpherical(1.0, 2.0);
         UnitSpherical object2 = new UnitSpherical(1.0, 2.0);
         UnitSpherical object3 = new UnitSpherical(1.0, 2.1);
-        Assert.assertEquals((int) object1.hashCode(), (int) object2.hashCode());
+        AssertHelper.assertEquals(object1.hashCode(), object2.hashCode());
         AssertHelper.assertNotEqual(object1.hashCode(), object3.hashCode());
     }
 
@@ -132,7 +132,7 @@ public class TestUnitSpherical {
         builder.append(", ");
         builder.append(DoubleHelper.toString(Math.PI, CultureInfoHelper.getCurrentCulture()));
         UnitSpherical test = new UnitSpherical(-Math.PI, Math.PI);
-        Assert.assertEquals(builder.toString(), test.toString());
+        AssertHelper.assertEquals(builder.toString(), test.toString());
     }
 
     @Nonnull

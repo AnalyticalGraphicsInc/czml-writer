@@ -1,6 +1,11 @@
 package agi.foundation.compatibility;
 
-import static org.hamcrest.MatcherAssert.assertThat;
+import static agi.foundation.compatibility.ConvertHelper.toDouble;
+import static agi.foundation.compatibility.ConvertHelper.toInt32;
+import static agi.foundation.compatibility.ConvertHelper.toInt64;
+import static agi.foundation.compatibility.ConvertHelper.toSingle;
+import static agi.foundation.compatibility.StringHelper.format;
+import static agi.foundation.compatibility.StringHelper.nullToEmpty;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.emptyString;
 import static org.hamcrest.Matchers.equalTo;
@@ -11,7 +16,15 @@ import static org.hamcrest.Matchers.startsWith;
 import static org.junit.Assert.fail;
 
 import java.lang.reflect.Array;
+import java.util.function.Supplier;
 
+import javax.annotation.Nonnull;
+
+import org.hamcrest.BaseMatcher;
+import org.hamcrest.Description;
+import org.hamcrest.Matcher;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.StringDescription;
 import org.junit.Assert;
 import org.junit.internal.ArrayComparisonFailure;
 
@@ -23,40 +36,100 @@ import agi.foundation.TypeLiteral;
 public final class AssertHelper {
     private AssertHelper() {}
 
-    public static void assertNotEqual(Object expected, Object actual) {
-        assertNotEqual("", expected, actual);
+    @Nonnull
+    private static final String emptyString = StringHelper.empty;
+    @Nonnull
+    private static final Object[] emptyArray = ArrayHelper.empty;
+
+    public static <T> void assertThat(T actual, Matcher<? super T> matcher) {
+        MatcherAssert.assertThat(actual, matcher);
     }
 
-    public static void assertNotEqual(String message, Object expected, Object actual) {
-        assertThat(message, actual, not(equalTo(expected)));
+    public static <T> void assertThat(T actual, Matcher<? super T> matcher, String message) {
+        MatcherAssert.assertThat(message, actual, matcher);
     }
+
+    public static <T> void assertThat(T actual, Matcher<? super T> matcher, String message, Object... args) {
+        if (!matcher.matches(actual)) {
+            Description description = new StringDescription();
+            description.appendText(formatMessage(message, args)).appendText(System.lineSeparator()) //
+                    .appendText("Expected: ").appendDescriptionOf(matcher).appendText(System.lineSeparator()) //
+                    .appendText("     but: ");
+            matcher.describeMismatch(actual, description);
+            throw new AssertionError(description.toString());
+        }
+    }
+
+    private static String formatMessage(String message, Object... args) {
+        message = nullToEmpty(message);
+        args = args == null ? emptyArray : args;
+        if (args.length == 0)
+            return message;
+        return format(message, args);
+    }
+
+    // assertNotEqual
+
+    public static void assertNotEqual(Object expected, Object actual) {
+        assertNotEqual(expected, actual, emptyString, emptyArray);
+    }
+
+    public static void assertNotEqual(Object expected, Object actual, String message, Object... args) {
+        assertThat(actual, not(equalTo(expected)), message, args);
+    }
+
+    // assertIsEmpty
 
     public static void assertIsEmpty(String actual) {
-        assertThat(actual, emptyString());
+        assertIsEmpty(actual, emptyString, emptyArray);
     }
+
+    public static void assertIsEmpty(String actual, String message, Object... args) {
+        assertThat(actual, emptyString(), message, args);
+    }
+
+    // assertLess
 
     public static <T extends Comparable<T>> void assertLess(T a, T b) {
         assertThat(a, lessThan(b));
     }
 
+    // assertGreater
+
     public static <T extends Comparable<T>> void assertGreater(T a, T b) {
         assertThat(a, greaterThan(b));
     }
 
+    // assertStringContains
+
     public static void assertStringContains(String expected, String actual) {
-        assertThat(actual, containsString(expected));
+        assertStringContains(expected, actual, emptyString, emptyArray);
     }
 
+    public static void assertStringContains(String expected, String actual, String message, Object... args) {
+        assertThat(actual, containsString(expected), message, args);
+    }
+
+    // assertStringStartsWith
+
     public static void assertStringStartsWith(String expected, String actual) {
-        assertThat(actual, startsWith(expected));
+        assertStringStartsWith(expected, actual, emptyString, emptyArray);
+    }
+
+    public static void assertStringStartsWith(String expected, String actual, String message, Object... args) {
+        assertThat(actual, startsWith(expected), message, args);
     }
 
     // NUnit allows comparing two boxed numbers of different type.
     public static void assertEquals(Object expected, Object actual) {
-        assertEquals(null, expected, actual);
+        assertEquals(emptyString, expected, actual);
     }
 
-    public static void assertEquals(String message, Object expected, Object actual) {
+    public static void assertEquals(Object expected, Object actual, String message, Object... args) {
+        assertEquals(formatMessage(message, args), expected, actual);
+    }
+
+    private static void assertEquals(String message, Object expected, Object actual) {
         if (expected instanceof Number && actual instanceof Number) {
             assertNumbersAreEqual(message, (Number) expected, (Number) actual);
         } else if (isArray(expected) && isArray(actual)) {
@@ -76,15 +149,14 @@ public final class AssertHelper {
             return;
         }
 
-        String header = message == null ? "" : message + ": ";
+        String header = nullToEmpty(message);
+        if (!header.isEmpty())
+            header += ": ";
 
-        if (expecteds == null) {
+        if (expecteds == null)
             fail(header + "expected array was null");
-        }
-
-        if (actuals == null) {
+        if (actuals == null)
             fail(header + "actual array was null");
-        }
 
         int actualsLength = Array.getLength(actuals);
         int expectedsLength = Array.getLength(expecteds);
@@ -116,66 +188,85 @@ public final class AssertHelper {
     private static void assertNumbersAreEqual(String message, Number expected, Number actual) {
         // based on the logic in NUnit
         if (expected instanceof Double || actual instanceof Double) {
-            Assert.assertEquals(message, ConvertHelper.toDouble(expected), ConvertHelper.toDouble(actual), 0D);
+            Assert.assertEquals(message, toDouble(expected), toDouble(actual), 0D);
         } else if (expected instanceof Float || actual instanceof Float) {
-            Assert.assertEquals(message, ConvertHelper.toSingle(expected), ConvertHelper.toSingle(actual), 0D);
+            Assert.assertEquals(message, toSingle(expected), toSingle(actual), 0F);
         } else if (expected instanceof Long || actual instanceof Long) {
-            Assert.assertEquals(message, ConvertHelper.toInt64(expected), ConvertHelper.toInt64(actual));
+            Assert.assertEquals(message, toInt64(expected), toInt64(actual));
         } else {
-            Assert.assertEquals(message, ConvertHelper.toInt32(expected), ConvertHelper.toInt32(actual));
+            Assert.assertEquals(message, toInt32(expected), toInt32(actual));
         }
     }
 
-    /**
-     * An assertThrows method is built-in to JUnit, however, NUnit requires
-     * "Assert.Throws" to match the exception type exactly, while "Assert.Catch" allows
-     * derived exception types.
-     */
-    public static <T extends Throwable> T assertThrows(TypeLiteral<T> typeLiteralT, Action action) {
+    public static void assertEquals(double expected, double actual, double delta) {
+        Assert.assertEquals(expected, actual, delta);
+    }
+
+    // assertThrows
+    //
+    // An assertThrows method is built-in to JUnit, however, NUnit requires
+    // "Assert.Throws" to match the exception type exactly, while "Assert.Catch" allows
+    // derived exception types.
+
+    public static <T extends Throwable> T assertThrows(@Nonnull TypeLiteral<T> typeLiteralT, @Nonnull Action action) {
         return assertThrows(typeLiteralT.asClass(), action);
     }
 
-    public static <T extends Throwable> T assertThrows(TypeLiteral<T> typeLiteralT, String message, Action action) {
-        return assertThrows(message, typeLiteralT.asClass(), action);
+    public static <T extends Throwable> T assertThrows(@Nonnull TypeLiteral<T> typeLiteralT, @Nonnull Action action, String message, Object... args) {
+        return assertThrows(typeLiteralT.asClass(), action, message, args);
     }
 
-    public static <T extends Throwable> T assertThrows(Class<T> expectedExceptionType, Action action) {
-        return assertThrows(null, expectedExceptionType, action);
+    public static <T extends Throwable> T assertThrows(Class<T> expectedExceptionType, @Nonnull Action action) {
+        return assertThrows(expectedExceptionType, action, emptyString, emptyArray);
     }
 
-    public static <T extends Throwable> T assertThrows(String message, Class<T> expectedExceptionType, Action action) {
-        return assertThrows(true, message, expectedExceptionType, action);
+    public static <T extends Throwable> T assertThrows(Class<T> expectedExceptionType, @Nonnull Action action, String message, Object... args) {
+        return assertThrows(expectedExceptionType, action, () -> hasClass(expectedExceptionType), message, args);
     }
 
-    private static <T extends Throwable> T assertThrows(boolean exact, String message, Class<T> expectedExceptionType, Action action) {
-        if (message == null) {
-            message = "";
+    private static final class ExactClassMatcher extends BaseMatcher<Object> {
+        private final Class<?> expectedClass;
+
+        public ExactClassMatcher(Class<?> expectedClass) {
+            this.expectedClass = expectedClass;
         }
 
+        @Override
+        public boolean matches(Object item) {
+            return item != null && item.getClass().equals(expectedClass);
+        }
+
+        @Override
+        public void describeTo(Description description) {
+            description.appendText("instance of ");
+            description.appendValue(expectedClass);
+        }
+    }
+
+    private static ExactClassMatcher hasClass(Class<?> expectedClass) {
+        return new ExactClassMatcher(expectedClass);
+    }
+    private static <T extends Throwable> T assertThrows(Class<T> expectedExceptionType, @Nonnull Action action, @Nonnull Supplier<Matcher<?>> matcher, String message,
+                                                        Object... args) {
         try {
             action.invoke();
         } catch (Throwable actualThrown) {
-            boolean exceptionIsCorrectType;
-            if (exact) {
-                exceptionIsCorrectType = actualThrown.getClass().equals(expectedExceptionType);
-            } else {
-                exceptionIsCorrectType = expectedExceptionType.isInstance(actualThrown);
-            }
-
-            if (exceptionIsCorrectType) {
+            if (matcher.get().matches(actualThrown)) {
                 @SuppressWarnings("unchecked")
                 T result = (T) actualThrown;
                 return result;
             }
 
-            message += " unexpected exception type thrown; expected " + formatClass(expectedExceptionType) + " but was " + formatClass(actualThrown.getClass());
-            AssertionError assertionError = new AssertionError(message);
+            String msg = formatMessage(message, args);
+            msg += " unexpected exception type thrown; expected " + formatClass(expectedExceptionType) + " but was " + formatClass(actualThrown.getClass());
+            AssertionError assertionError = new AssertionError(msg);
             assertionError.initCause(actualThrown);
             throw assertionError;
         }
 
-        message += " expected " + formatClass(expectedExceptionType) + " to be thrown but nothing was thrown";
-        throw new AssertionError(message);
+        String msg = formatMessage(message, args);
+        msg += " expected " + formatClass(expectedExceptionType) + " to be thrown but nothing was thrown";
+        throw new AssertionError(msg);
     }
 
     private static String formatClass(Class<?> c) {

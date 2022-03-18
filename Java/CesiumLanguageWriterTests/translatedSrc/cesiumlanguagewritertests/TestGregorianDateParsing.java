@@ -163,8 +163,8 @@ public class TestGregorianDateParsing {
         GregorianDate result = GregorianDate.parse(isoString);
         AssertHelper.assertEquals(iso, result);
         String resultString = result.toIso8601String();
-        Assert.assertEquals(isoString, resultString);
-        Assert.assertEquals(isoString, iso.toIso8601String());
+        AssertHelper.assertEquals(isoString, resultString);
+        AssertHelper.assertEquals(isoString, iso.toIso8601String());
     }
 
     @Test
@@ -277,7 +277,7 @@ public class TestGregorianDateParsing {
                 GregorianDate.parseExact(null, "dddd, dd MMMM yyyy HH:mm:ss", m_cultureInfo);
             }
         });
-        Assert.assertEquals("s", exception.getParamName());
+        AssertHelper.assertEquals("s", exception.getParamName());
     }
 
     @Test
@@ -364,7 +364,7 @@ public class TestGregorianDateParsing {
                 GregorianDate.parse(null, m_cultureInfo);
             }
         });
-        Assert.assertEquals("s", exception.getParamName());
+        AssertHelper.assertEquals("s", exception.getParamName());
     }
 
     @Test
@@ -375,7 +375,7 @@ public class TestGregorianDateParsing {
                 GregorianDate.parse(null);
             }
         });
-        Assert.assertEquals("s", exception.getParamName());
+        AssertHelper.assertEquals("s", exception.getParamName());
     }
 
     @Test

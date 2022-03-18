@@ -1,6 +1,7 @@
 package agi.foundation.compatibility;
 
 import static agi.foundation.compatibility.ArgumentNullException.assertNonNull;
+import static agi.foundation.compatibility.ArgumentOutOfRangeException.assertNonNegative;
 
 import agi.foundation.compatibility.annotations.Internal;
 
@@ -386,8 +387,7 @@ public final class StringHelper {
     @Nonnull
     private static String pad(@Nonnull String s, int totalWidth, char paddingChar, @Nonnull PaddingType paddingType) {
         assertNonNull(s, "s");
-        if (totalWidth < 0)
-            throw new ArgumentOutOfRangeException("totalWidth", "Non-negative number required.");
+        assertNonNegative(totalWidth, "totalWidth");
 
         int numPaddingChars = totalWidth - s.length();
         if (numPaddingChars <= 0)
@@ -1075,5 +1075,10 @@ public final class StringHelper {
     @Nonnull
     public static StringBuilder append(@Nonnull StringBuilder builder, String value, int startIndex, int count) {
         return builder.append(value, startIndex, startIndex + count);
+    }
+
+    @Nonnull
+    static String nullToEmpty(@Nullable String s) {
+        return s == null ? empty : s;
     }
 }

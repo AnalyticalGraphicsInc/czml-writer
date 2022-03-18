@@ -35,9 +35,9 @@ public class TestCartesian {
     @Test
     public final void testHoldValue() {
         Cartesian test = new Cartesian(1.0, 2.0, 3.0);
-        Assert.assertEquals(1.0, test.getX(), 0d);
-        Assert.assertEquals(2.0, test.getY(), 0d);
-        Assert.assertEquals(3.0, test.getZ(), 0d);
+        AssertHelper.assertEquals(1.0, test.getX());
+        AssertHelper.assertEquals(2.0, test.getY());
+        AssertHelper.assertEquals(3.0, test.getZ());
     }
 
     /**
@@ -47,9 +47,9 @@ public class TestCartesian {
     public final void testConversionFromUnitCartesian() {
         UnitCartesian unit = new UnitCartesian(1.0, 1.0, 1.0);
         Cartesian test = Cartesian.toCartesian(unit);
-        Assert.assertEquals(unit.getX(), test.getX(), 0d);
-        Assert.assertEquals(unit.getY(), test.getY(), 0d);
-        Assert.assertEquals(unit.getZ(), test.getZ(), 0d);
+        AssertHelper.assertEquals(unit.getX(), test.getX());
+        AssertHelper.assertEquals(unit.getY(), test.getY());
+        AssertHelper.assertEquals(unit.getZ(), test.getZ());
     }
 
     /**
@@ -138,7 +138,7 @@ public class TestCartesian {
     @Test
     public final void testMagnitude() {
         Cartesian test = new Cartesian(2.0, 3.0, 6.0);
-        Assert.assertEquals(7.0, test.getMagnitude(), 0d);
+        AssertHelper.assertEquals(7.0, test.getMagnitude());
     }
 
     /**
@@ -148,9 +148,9 @@ public class TestCartesian {
     public final void testNormalize() {
         Cartesian test = new Cartesian(2.0, 3.0, 6.0);
         UnitCartesian unit = test.normalize();
-        Assert.assertEquals(2.0 / 7.0, unit.getX(), 0d);
-        Assert.assertEquals(3.0 / 7.0, unit.getY(), 0d);
-        Assert.assertEquals(6.0 / 7.0, unit.getZ(), 0d);
+        AssertHelper.assertEquals(2.0 / 7.0, unit.getX());
+        AssertHelper.assertEquals(3.0 / 7.0, unit.getY());
+        AssertHelper.assertEquals(6.0 / 7.0, unit.getZ());
     }
 
     /**
@@ -212,9 +212,9 @@ public class TestCartesian {
     @Test
     public final void testNegation() {
         Cartesian c = Cartesian.negate(new Cartesian(1.0, 2.0, 3.0));
-        Assert.assertEquals(-1.0, c.getX(), 0d);
-        Assert.assertEquals(-2.0, c.getY(), 0d);
-        Assert.assertEquals(-3.0, c.getZ(), 0d);
+        AssertHelper.assertEquals(-1.0, c.getX());
+        AssertHelper.assertEquals(-2.0, c.getY());
+        AssertHelper.assertEquals(-3.0, c.getZ());
     }
 
     /**
@@ -225,13 +225,13 @@ public class TestCartesian {
         Cartesian original = new Cartesian(10.0, 20.0, 30.0);
         Cartesian toAdd = new Cartesian(1.0, 2.0, 3.0);
         Cartesian result = Cartesian.add(original, toAdd);
-        Assert.assertEquals(11.0, result.getX(), 0d);
-        Assert.assertEquals(22.0, result.getY(), 0d);
-        Assert.assertEquals(33.0, result.getZ(), 0d);
+        AssertHelper.assertEquals(11.0, result.getX());
+        AssertHelper.assertEquals(22.0, result.getY());
+        AssertHelper.assertEquals(33.0, result.getZ());
         result = original.add(toAdd);
-        Assert.assertEquals(11.0, result.getX(), 0d);
-        Assert.assertEquals(22.0, result.getY(), 0d);
-        Assert.assertEquals(33.0, result.getZ(), 0d);
+        AssertHelper.assertEquals(11.0, result.getX());
+        AssertHelper.assertEquals(22.0, result.getY());
+        AssertHelper.assertEquals(33.0, result.getZ());
     }
 
     /**
@@ -242,13 +242,13 @@ public class TestCartesian {
         Cartesian original = new Cartesian(10.0, 20.0, 30.0);
         Cartesian toSubtract = new Cartesian(1.0, 2.0, 3.0);
         Cartesian result = Cartesian.subtract(original, toSubtract);
-        Assert.assertEquals(9.0, result.getX(), 0d);
-        Assert.assertEquals(18.0, result.getY(), 0d);
-        Assert.assertEquals(27.0, result.getZ(), 0d);
+        AssertHelper.assertEquals(9.0, result.getX());
+        AssertHelper.assertEquals(18.0, result.getY());
+        AssertHelper.assertEquals(27.0, result.getZ());
         result = original.subtract(toSubtract);
-        Assert.assertEquals(9.0, result.getX(), 0d);
-        Assert.assertEquals(18.0, result.getY(), 0d);
-        Assert.assertEquals(27.0, result.getZ(), 0d);
+        AssertHelper.assertEquals(9.0, result.getX());
+        AssertHelper.assertEquals(18.0, result.getY());
+        AssertHelper.assertEquals(27.0, result.getZ());
     }
 
     /**
@@ -258,17 +258,17 @@ public class TestCartesian {
     public final void testMultiply() {
         Cartesian original = new Cartesian(1.0, 2.0, 3.0);
         Cartesian multiplied = Cartesian.multiply(original, 5.0);
-        Assert.assertEquals(5.0, multiplied.getX(), 0d);
-        Assert.assertEquals(10.0, multiplied.getY(), 0d);
-        Assert.assertEquals(15.0, multiplied.getZ(), 0d);
+        AssertHelper.assertEquals(5.0, multiplied.getX());
+        AssertHelper.assertEquals(10.0, multiplied.getY());
+        AssertHelper.assertEquals(15.0, multiplied.getZ());
         multiplied = Cartesian.multiply(5.0, original);
-        Assert.assertEquals(5.0, multiplied.getX(), 0d);
-        Assert.assertEquals(10.0, multiplied.getY(), 0d);
-        Assert.assertEquals(15.0, multiplied.getZ(), 0d);
+        AssertHelper.assertEquals(5.0, multiplied.getX());
+        AssertHelper.assertEquals(10.0, multiplied.getY());
+        AssertHelper.assertEquals(15.0, multiplied.getZ());
         multiplied = original.multiply(5.0);
-        Assert.assertEquals(5.0, multiplied.getX(), 0d);
-        Assert.assertEquals(10.0, multiplied.getY(), 0d);
-        Assert.assertEquals(15.0, multiplied.getZ(), 0d);
+        AssertHelper.assertEquals(5.0, multiplied.getX());
+        AssertHelper.assertEquals(10.0, multiplied.getY());
+        AssertHelper.assertEquals(15.0, multiplied.getZ());
     }
 
     /**
@@ -278,13 +278,13 @@ public class TestCartesian {
     public final void testDivide() {
         Cartesian original = new Cartesian(2.0, 4.0, 6.0);
         Cartesian result = Cartesian.divide(original, 2.0);
-        Assert.assertEquals(1.0, result.getX(), 0d);
-        Assert.assertEquals(2.0, result.getY(), 0d);
-        Assert.assertEquals(3.0, result.getZ(), 0d);
+        AssertHelper.assertEquals(1.0, result.getX());
+        AssertHelper.assertEquals(2.0, result.getY());
+        AssertHelper.assertEquals(3.0, result.getZ());
         result = original.divide(2.0);
-        Assert.assertEquals(1.0, result.getX(), 0d);
-        Assert.assertEquals(2.0, result.getY(), 0d);
-        Assert.assertEquals(3.0, result.getZ(), 0d);
+        AssertHelper.assertEquals(1.0, result.getX());
+        AssertHelper.assertEquals(2.0, result.getY());
+        AssertHelper.assertEquals(3.0, result.getZ());
     }
 
     /**
@@ -294,8 +294,8 @@ public class TestCartesian {
     public final void testDotProduct() {
         Cartesian first = new Cartesian(1.0, 3.0, -2.0);
         Cartesian second = new Cartesian(4.0, -2.0, -1.0);
-        Assert.assertEquals(0, first.dot(second), 0d);
-        Assert.assertEquals(0, second.dot(first), 0d);
+        AssertHelper.assertEquals(0, first.dot(second));
+        AssertHelper.assertEquals(0, second.dot(first));
     }
 
     /**
@@ -316,9 +316,9 @@ public class TestCartesian {
         Cartesian second = new Cartesian(c, a, b);
         Cartesian third = new Cartesian(b, c, a);
         Cartesian result = first.cross(second);
-        Assert.assertEquals(third.getX(), result.getX(), Constants.Epsilon14);
-        Assert.assertEquals(third.getY(), result.getY(), Constants.Epsilon14);
-        Assert.assertEquals(third.getZ(), result.getZ(), Constants.Epsilon14);
+        AssertHelper.assertEquals(third.getX(), result.getX(), Constants.Epsilon14);
+        AssertHelper.assertEquals(third.getY(), result.getY(), Constants.Epsilon14);
+        AssertHelper.assertEquals(third.getZ(), result.getZ(), Constants.Epsilon14);
     }
 
     /**
@@ -340,9 +340,9 @@ public class TestCartesian {
         Cartesian original = new Cartesian(1.0, 0.0, 0.0);
         // The rotated vector is along the z-axis.
         Cartesian rotated = original.rotate(new UnitQuaternion(w, x, y, z));
-        Assert.assertEquals(0.0, rotated.getX(), Constants.Epsilon15);
-        Assert.assertEquals(0.0, rotated.getY(), Constants.Epsilon15);
-        Assert.assertEquals(1.0, rotated.getZ(), Constants.Epsilon15);
+        AssertHelper.assertEquals(0.0, rotated.getX(), Constants.Epsilon15);
+        AssertHelper.assertEquals(0.0, rotated.getY(), Constants.Epsilon15);
+        AssertHelper.assertEquals(1.0, rotated.getZ(), Constants.Epsilon15);
     }
 
     /**
@@ -364,9 +364,9 @@ public class TestCartesian {
         Cartesian original = new Cartesian(1.0, 0.0, 0.0);
         // The rotated vector is along the z-axis.
         Cartesian rotated = original.rotate(new Matrix3By3(new UnitQuaternion(w, x, y, z)));
-        Assert.assertEquals(0.0, rotated.getX(), Constants.Epsilon15);
-        Assert.assertEquals(0.0, rotated.getY(), Constants.Epsilon15);
-        Assert.assertEquals(1.0, rotated.getZ(), Constants.Epsilon15);
+        AssertHelper.assertEquals(0.0, rotated.getX(), Constants.Epsilon15);
+        AssertHelper.assertEquals(0.0, rotated.getY(), Constants.Epsilon15);
+        AssertHelper.assertEquals(1.0, rotated.getZ(), Constants.Epsilon15);
     }
 
     /**
@@ -377,7 +377,7 @@ public class TestCartesian {
         Cartesian object1 = new Cartesian(1.0, 2.0, 3.0);
         Cartesian object2 = new Cartesian(1.0, 2.0, 3.0);
         Cartesian object3 = new Cartesian(1.0, 2.0, 3.1);
-        Assert.assertEquals((int) object1.hashCode(), (int) object2.hashCode());
+        AssertHelper.assertEquals(object1.hashCode(), object2.hashCode());
         AssertHelper.assertNotEqual(object1.hashCode(), object3.hashCode());
     }
 
@@ -393,7 +393,7 @@ public class TestCartesian {
         String expected = DoubleHelper.toString(val1, CultureInfoHelper.getCurrentCulture()) + sep + DoubleHelper.toString(val2, CultureInfoHelper.getCurrentCulture()) + sep
                 + DoubleHelper.toString(val3, CultureInfoHelper.getCurrentCulture());
         Cartesian test = new Cartesian(val1, val2, val3);
-        Assert.assertEquals(expected, test.toString());
+        AssertHelper.assertEquals(expected, test.toString());
     }
 
     @Nonnull

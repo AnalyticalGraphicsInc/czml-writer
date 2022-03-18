@@ -32,9 +32,9 @@ public class TestCartographic {
     @Test
     public final void testHoldValue() {
         Cartographic test = new Cartographic(1.0, 2.0, 3.0);
-        Assert.assertEquals(1.0, test.getLongitude(), 0d);
-        Assert.assertEquals(2.0, test.getLatitude(), 0d);
-        Assert.assertEquals(3.0, test.getHeight(), 0d);
+        AssertHelper.assertEquals(1.0, test.getLongitude());
+        AssertHelper.assertEquals(2.0, test.getLatitude());
+        AssertHelper.assertEquals(3.0, test.getHeight());
     }
 
     /**
@@ -107,7 +107,7 @@ public class TestCartographic {
         Cartographic object1 = new Cartographic(1.0, 2.0, 3.0);
         Cartographic object2 = new Cartographic(1.0, 2.0, 3.0);
         Cartographic object3 = new Cartographic(1.0, 2.0, 3.1);
-        Assert.assertEquals((int) object1.hashCode(), (int) object2.hashCode());
+        AssertHelper.assertEquals(object1.hashCode(), object2.hashCode());
         AssertHelper.assertNotEqual(object1.hashCode(), object3.hashCode());
     }
 
@@ -124,7 +124,7 @@ public class TestCartographic {
         final double val = 1.2;
         builder.append(DoubleHelper.toString(val, CultureInfoHelper.getCurrentCulture()));
         Cartographic test = new Cartographic(Math.PI, Constants.HalfPi, val);
-        Assert.assertEquals(builder.toString(), test.toString());
+        AssertHelper.assertEquals(builder.toString(), test.toString());
     }
 
     @Nonnull

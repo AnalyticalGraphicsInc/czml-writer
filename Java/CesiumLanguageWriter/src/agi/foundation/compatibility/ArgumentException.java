@@ -1,5 +1,7 @@
 package agi.foundation.compatibility;
 
+import static java.lang.System.lineSeparator;
+
 /**
  * The exception that is thrown when one of the arguments provided to a method is not
  * valid.
@@ -77,7 +79,7 @@ public class ArgumentException extends IllegalArgumentException {
         if (StringHelper.isNullOrEmpty(paramName)) {
             return message;
         }
-        return message + EnvironmentHelper.newLine() + "Parameter name: " + paramName;
+        return message + lineSeparator() + "Parameter name: " + paramName;
     }
 
     /**

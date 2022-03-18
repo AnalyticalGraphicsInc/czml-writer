@@ -2,6 +2,7 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
+import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.MapHelper;
 import agi.foundation.compatibility.TestContextRule;
 import agi.foundation.compatibility.Using;
@@ -12,7 +13,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 import javax.annotation.Nonnull;
-import org.junit.Assert;
 import org.junit.ClassRule;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
@@ -95,7 +95,7 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
                 }
             }
         }
-        Assert.assertEquals("{\"position\":{\"epoch\":\"20120402T12Z\",\"cartesian\":[0,1.1,2.2,3.3,60,4.4,5.5,6.6]}}", getStringWriter().toString());
+        AssertHelper.assertEquals("{\"position\":{\"epoch\":\"20120402T12Z\",\"cartesian\":[0,1.1,2.2,3.3,60,4.4,5.5,6.6]}}", getStringWriter().toString());
     }
 
     @Test
@@ -118,7 +118,7 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
                 }
             }
         }
-        Assert.assertEquals("{\"position\":{\"epoch\":\"20120402T1201Z\",\"cartesian\":[0,4,5,6]}}", getStringWriter().toString());
+        AssertHelper.assertEquals("{\"position\":{\"epoch\":\"20120402T1201Z\",\"cartesian\":[0,4,5,6]}}", getStringWriter().toString());
     }
 
     @Test
@@ -139,7 +139,7 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
                 }
             }
         }
-        Assert.assertEquals("{\"position\":{\"epoch\":\"20120402T12Z\",\"cartographicRadians\":[0,1.1,2.2,3.3,60,4.4,5.5,6.6]}}", getStringWriter().toString());
+        AssertHelper.assertEquals("{\"position\":{\"epoch\":\"20120402T12Z\",\"cartographicRadians\":[0,1.1,2.2,3.3,60,4.4,5.5,6.6]}}", getStringWriter().toString());
     }
 
     @Test
@@ -162,7 +162,7 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
                 }
             }
         }
-        Assert.assertEquals("{\"position\":{\"epoch\":\"20120402T1201Z\",\"cartographicRadians\":[0,4,5,6]}}", getStringWriter().toString());
+        AssertHelper.assertEquals("{\"position\":{\"epoch\":\"20120402T1201Z\",\"cartographicRadians\":[0,4,5,6]}}", getStringWriter().toString());
     }
 
     @Test
@@ -178,7 +178,7 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
                 }
             }
         }
-        Assert.assertEquals("{\"position\":{\"cartesian\":[]}}", getStringWriter().toString());
+        AssertHelper.assertEquals("{\"position\":{\"cartesian\":[]}}", getStringWriter().toString());
     }
 
     @Test
@@ -194,7 +194,7 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
                 }
             }
         }
-        Assert.assertEquals("{\"position\":{\"cartographicRadians\":[]}}", getStringWriter().toString());
+        AssertHelper.assertEquals("{\"position\":{\"cartographicRadians\":[]}}", getStringWriter().toString());
     }
 
     @Test

@@ -25,6 +25,11 @@ import javax.annotation.Nullable;
 @Internal
 @Deprecated
 public final class ArrayHelper {
+    @Nonnull
+    static final Object[] empty = new Object[0];
+
+    private ArrayHelper() {}
+
     /**
      * This class differs from the one used by Arrays.asList in that it preserves value
      * type semantics when creating arrays by making deep clones.

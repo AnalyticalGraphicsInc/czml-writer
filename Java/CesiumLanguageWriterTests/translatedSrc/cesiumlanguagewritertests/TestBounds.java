@@ -32,8 +32,8 @@ public class TestBounds {
     @Test
     public final void testStaticInstances() {
         Bounds unbounded = Bounds.getUnbounded();
-        Assert.assertEquals(Double.NEGATIVE_INFINITY, unbounded.getLowerBound(), 0d);
-        Assert.assertEquals(Double.POSITIVE_INFINITY, unbounded.getUpperBound(), 0d);
+        AssertHelper.assertEquals(Double.NEGATIVE_INFINITY, unbounded.getLowerBound());
+        AssertHelper.assertEquals(Double.POSITIVE_INFINITY, unbounded.getUpperBound());
     }
 
     @Test
@@ -43,23 +43,23 @@ public class TestBounds {
         Assert.assertTrue(unbounded.getIsUnbounded());
         Assert.assertFalse(unbounded.getIsFinite());
         Bounds zero = new Bounds(0.0, 0.0);
-        Assert.assertEquals(0.0, zero.getLowerBound(), 0d);
-        Assert.assertEquals(0.0, zero.getUpperBound(), 0d);
+        AssertHelper.assertEquals(0.0, zero.getLowerBound());
+        AssertHelper.assertEquals(0.0, zero.getUpperBound());
         Assert.assertFalse(zero.getIsUnbounded());
         Assert.assertTrue(zero.getIsFinite());
         Bounds finite = new Bounds(-1.0, 1.0);
-        Assert.assertEquals(-1.0, finite.getLowerBound(), 0d);
-        Assert.assertEquals(1.0, finite.getUpperBound(), 0d);
+        AssertHelper.assertEquals(-1.0, finite.getLowerBound());
+        AssertHelper.assertEquals(1.0, finite.getUpperBound());
         Assert.assertFalse(finite.getIsUnbounded());
         Assert.assertTrue(finite.getIsFinite());
         Bounds upperOnly = new Bounds(Double.NEGATIVE_INFINITY, 1.0);
-        Assert.assertEquals(Double.NEGATIVE_INFINITY, upperOnly.getLowerBound(), 0d);
-        Assert.assertEquals(1.0, upperOnly.getUpperBound(), 0d);
+        AssertHelper.assertEquals(Double.NEGATIVE_INFINITY, upperOnly.getLowerBound());
+        AssertHelper.assertEquals(1.0, upperOnly.getUpperBound());
         Assert.assertFalse(upperOnly.getIsUnbounded());
         Assert.assertFalse(upperOnly.getIsFinite());
         Bounds lowerOnly = new Bounds(-1.0, Double.POSITIVE_INFINITY);
-        Assert.assertEquals(-1.0, lowerOnly.getLowerBound(), 0d);
-        Assert.assertEquals(Double.POSITIVE_INFINITY, lowerOnly.getUpperBound(), 0d);
+        AssertHelper.assertEquals(-1.0, lowerOnly.getLowerBound());
+        AssertHelper.assertEquals(Double.POSITIVE_INFINITY, lowerOnly.getUpperBound());
         Assert.assertFalse(lowerOnly.getIsUnbounded());
         Assert.assertFalse(lowerOnly.getIsFinite());
     }
@@ -81,7 +81,7 @@ public class TestBounds {
         Bounds object1 = new Bounds(-1.0, 1.0);
         Bounds object2 = new Bounds(-1.0, 1.0);
         Bounds object3 = new Bounds(-1.0, 1.1);
-        Assert.assertEquals((int) object1.hashCode(), (int) object2.hashCode());
+        AssertHelper.assertEquals(object1.hashCode(), object2.hashCode());
         AssertHelper.assertNotEqual(object1.hashCode(), object3.hashCode());
     }
 
@@ -166,7 +166,7 @@ public class TestBounds {
         final String sep = ", ";
         String result = DoubleHelper.toString(val1, CultureInfoHelper.getCurrentCulture()) + sep + DoubleHelper.toString(val2, CultureInfoHelper.getCurrentCulture());
         Bounds test = new Bounds(val1, val2);
-        Assert.assertEquals(result, test.toString());
+        AssertHelper.assertEquals(result, test.toString());
     }
 
     @Nonnull

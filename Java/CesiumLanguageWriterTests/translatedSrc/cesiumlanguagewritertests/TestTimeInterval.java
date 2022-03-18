@@ -108,7 +108,7 @@ public class TestTimeInterval {
         TimeInterval interval2 = new TimeInterval(new JulianDate(2.0), new JulianDate(5.0));
         TimeInterval interval3 = new TimeInterval(new JulianDate(1.0), new JulianDate(5.0));
         AssertHelper.assertNotEqual(interval1.hashCode(), interval2.hashCode());
-        Assert.assertEquals((int) interval1.hashCode(), (int) interval3.hashCode());
+        AssertHelper.assertEquals(interval1.hashCode(), interval3.hashCode());
         AssertHelper.assertEquals(interval1, interval3);
         AssertHelper.assertNotEqual(interval1, interval2);
     }
@@ -161,8 +161,8 @@ public class TestTimeInterval {
         TimeInterval result = interval.toTimeStandard(TimeStandard.COORDINATED_UNIVERSAL_TIME);
         AssertHelper.assertEquals(result.getStart().getStandard(), TimeStandard.COORDINATED_UNIVERSAL_TIME);
         AssertHelper.assertEquals(result.getStop().getStandard(), TimeStandard.COORDINATED_UNIVERSAL_TIME);
-        Assert.assertEquals(result.getStart().getTotalDays(), 2451545.0, Constants.Epsilon15);
-        Assert.assertEquals(result.getStop().getTotalDays(), 2451546.0, Constants.Epsilon15);
+        AssertHelper.assertEquals(result.getStart().getTotalDays(), 2451545.0, Constants.Epsilon15);
+        AssertHelper.assertEquals(result.getStop().getTotalDays(), 2451546.0, Constants.Epsilon15);
         result = interval.toTimeStandard(TimeStandard.INTERNATIONAL_ATOMIC_TIME);
         AssertHelper.assertEquals(result.getStart().getStandard(), TimeStandard.INTERNATIONAL_ATOMIC_TIME);
         AssertHelper.assertEquals(result.getStop().getStandard(), TimeStandard.INTERNATIONAL_ATOMIC_TIME);

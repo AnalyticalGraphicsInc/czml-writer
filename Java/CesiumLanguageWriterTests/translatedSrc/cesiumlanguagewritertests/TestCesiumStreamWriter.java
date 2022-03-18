@@ -39,7 +39,7 @@ public class TestCesiumStreamWriter {
     public final void newPacketWritesObjectLiteral() {
         PacketCesiumWriter packet = m_writer.openPacket(m_outputStream);
         packet.close();
-        Assert.assertEquals("{}", m_stringWriter.toString());
+        AssertHelper.assertEquals("{}", m_stringWriter.toString());
     }
 
     @Test

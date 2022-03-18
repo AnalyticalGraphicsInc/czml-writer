@@ -35,25 +35,25 @@ public class TestBoundingRectangle {
     @Test
     public final void testHoldValue() {
         BoundingRectangle boundingRectangle0 = new BoundingRectangle();
-        Assert.assertEquals(0, boundingRectangle0.getLeft(), 0d);
-        Assert.assertEquals(0, boundingRectangle0.getBottom(), 0d);
-        Assert.assertEquals(0, boundingRectangle0.getRight(), 0d);
-        Assert.assertEquals(0, boundingRectangle0.getTop(), 0d);
-        Assert.assertEquals(0, boundingRectangle0.getHeight(), 0d);
-        Assert.assertEquals(0, boundingRectangle0.getWidth(), 0d);
-        Assert.assertEquals(0, BoundingRectangle.getEmpty().getLeft(), 0d);
-        Assert.assertEquals(0, BoundingRectangle.getEmpty().getBottom(), 0d);
-        Assert.assertEquals(0, BoundingRectangle.getEmpty().getRight(), 0d);
-        Assert.assertEquals(0, BoundingRectangle.getEmpty().getTop(), 0d);
-        Assert.assertEquals(0, BoundingRectangle.getEmpty().getHeight(), 0d);
-        Assert.assertEquals(0, BoundingRectangle.getEmpty().getWidth(), 0d);
+        AssertHelper.assertEquals(0, boundingRectangle0.getLeft());
+        AssertHelper.assertEquals(0, boundingRectangle0.getBottom());
+        AssertHelper.assertEquals(0, boundingRectangle0.getRight());
+        AssertHelper.assertEquals(0, boundingRectangle0.getTop());
+        AssertHelper.assertEquals(0, boundingRectangle0.getHeight());
+        AssertHelper.assertEquals(0, boundingRectangle0.getWidth());
+        AssertHelper.assertEquals(0, BoundingRectangle.getEmpty().getLeft());
+        AssertHelper.assertEquals(0, BoundingRectangle.getEmpty().getBottom());
+        AssertHelper.assertEquals(0, BoundingRectangle.getEmpty().getRight());
+        AssertHelper.assertEquals(0, BoundingRectangle.getEmpty().getTop());
+        AssertHelper.assertEquals(0, BoundingRectangle.getEmpty().getHeight());
+        AssertHelper.assertEquals(0, BoundingRectangle.getEmpty().getWidth());
         BoundingRectangle boundingRectangle1 = new BoundingRectangle(1D, 2D, 3D, 4D);
-        Assert.assertEquals(1, boundingRectangle1.getLeft(), 0d);
-        Assert.assertEquals(2, boundingRectangle1.getBottom(), 0d);
-        Assert.assertEquals(3, boundingRectangle1.getRight(), 0d);
-        Assert.assertEquals(4, boundingRectangle1.getTop(), 0d);
-        Assert.assertEquals(2, boundingRectangle1.getHeight(), 0d);
-        Assert.assertEquals(2, boundingRectangle1.getWidth(), 0d);
+        AssertHelper.assertEquals(1, boundingRectangle1.getLeft());
+        AssertHelper.assertEquals(2, boundingRectangle1.getBottom());
+        AssertHelper.assertEquals(3, boundingRectangle1.getRight());
+        AssertHelper.assertEquals(4, boundingRectangle1.getTop());
+        AssertHelper.assertEquals(2, boundingRectangle1.getHeight());
+        AssertHelper.assertEquals(2, boundingRectangle1.getWidth());
     }
 
     /**
@@ -119,7 +119,7 @@ public class TestBoundingRectangle {
         BoundingRectangle boundingRectangle1 = new BoundingRectangle(1D, 2D, 3D, 4D);
         BoundingRectangle boundingRectangle2 = new BoundingRectangle(1D, 2D, 3D, 4D);
         BoundingRectangle boundingRectangle3 = new BoundingRectangle(2D, 3D, 4D, 5D);
-        Assert.assertEquals((int) boundingRectangle1.hashCode(), (int) boundingRectangle2.hashCode());
+        AssertHelper.assertEquals(boundingRectangle1.hashCode(), boundingRectangle2.hashCode());
         AssertHelper.assertNotEqual(boundingRectangle1.hashCode(), boundingRectangle3.hashCode());
     }
 
@@ -136,7 +136,7 @@ public class TestBoundingRectangle {
         final String sep = ", ";
         String expected = IntHelper.toString(val1, CultureInfoHelper.getCurrentCulture()) + sep + IntHelper.toString(val2, CultureInfoHelper.getCurrentCulture()) + sep
                 + IntHelper.toString(val3, CultureInfoHelper.getCurrentCulture()) + sep + IntHelper.toString(val4, CultureInfoHelper.getCurrentCulture());
-        Assert.assertEquals(expected, boundingRectangle.toString());
+        AssertHelper.assertEquals(expected, boundingRectangle.toString());
     }
 
     @Nonnull

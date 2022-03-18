@@ -34,10 +34,10 @@ public class TestUnitQuaternion {
     @Test
     public final void testHoldValue() {
         UnitQuaternion test = new UnitQuaternion(2.0, 4.0, 7.0, 10.0);
-        Assert.assertEquals(2.0 / 13.0, test.getW(), 0d);
-        Assert.assertEquals(4.0 / 13.0, test.getX(), 0d);
-        Assert.assertEquals(7.0 / 13.0, test.getY(), 0d);
-        Assert.assertEquals(10.0 / 13.0, test.getZ(), 0d);
+        AssertHelper.assertEquals(2.0 / 13.0, test.getW());
+        AssertHelper.assertEquals(4.0 / 13.0, test.getX());
+        AssertHelper.assertEquals(7.0 / 13.0, test.getY());
+        AssertHelper.assertEquals(10.0 / 13.0, test.getZ());
     }
 
     /**
@@ -49,11 +49,11 @@ public class TestUnitQuaternion {
         final double[] out$magnitude$0 = new double[1];
         UnitQuaternion test = new UnitQuaternion(2.0, 4.0, 7.0, 10.0, out$magnitude$0);
         magnitude = out$magnitude$0[0];
-        Assert.assertEquals(2.0 / 13.0, test.getW(), Constants.Epsilon15);
-        Assert.assertEquals(4.0 / 13.0, test.getX(), Constants.Epsilon15);
-        Assert.assertEquals(7.0 / 13.0, test.getY(), Constants.Epsilon15);
-        Assert.assertEquals(10.0 / 13.0, test.getZ(), Constants.Epsilon15);
-        Assert.assertEquals(13.0, magnitude, Constants.Epsilon15);
+        AssertHelper.assertEquals(2.0 / 13.0, test.getW(), Constants.Epsilon15);
+        AssertHelper.assertEquals(4.0 / 13.0, test.getX(), Constants.Epsilon15);
+        AssertHelper.assertEquals(7.0 / 13.0, test.getY(), Constants.Epsilon15);
+        AssertHelper.assertEquals(10.0 / 13.0, test.getZ(), Constants.Epsilon15);
+        AssertHelper.assertEquals(13.0, magnitude, Constants.Epsilon15);
     }
 
     /**
@@ -71,10 +71,10 @@ public class TestUnitQuaternion {
         UnitQuaternion quaternion = new UnitQuaternion(w, x, y, z);
         Matrix3By3 matrix = new Matrix3By3(quaternion);
         UnitQuaternion test = new UnitQuaternion(matrix);
-        Assert.assertEquals(w, quaternion.getW(), Constants.Epsilon15);
-        Assert.assertEquals(x, quaternion.getX(), Constants.Epsilon15);
-        Assert.assertEquals(y, quaternion.getY(), Constants.Epsilon15);
-        Assert.assertEquals(z, quaternion.getZ(), Constants.Epsilon15);
+        AssertHelper.assertEquals(w, quaternion.getW(), Constants.Epsilon15);
+        AssertHelper.assertEquals(x, quaternion.getX(), Constants.Epsilon15);
+        AssertHelper.assertEquals(y, quaternion.getY(), Constants.Epsilon15);
+        AssertHelper.assertEquals(z, quaternion.getZ(), Constants.Epsilon15);
     }
 
     @Test
@@ -195,10 +195,10 @@ public class TestUnitQuaternion {
     public final void testConjugate() {
         UnitQuaternion original = new UnitQuaternion(2.0, 4.0, 7.0, 10.0);
         UnitQuaternion conjugate = original.conjugate();
-        Assert.assertEquals(2.0 / 13.0, conjugate.getW(), 0d);
-        Assert.assertEquals(-4.0 / 13.0, conjugate.getX(), 0d);
-        Assert.assertEquals(-7.0 / 13.0, conjugate.getY(), 0d);
-        Assert.assertEquals(-10.0 / 13.0, conjugate.getZ(), 0d);
+        AssertHelper.assertEquals(2.0 / 13.0, conjugate.getW());
+        AssertHelper.assertEquals(-4.0 / 13.0, conjugate.getX());
+        AssertHelper.assertEquals(-7.0 / 13.0, conjugate.getY());
+        AssertHelper.assertEquals(-10.0 / 13.0, conjugate.getZ());
     }
 
     /**
@@ -207,10 +207,10 @@ public class TestUnitQuaternion {
     @Test
     public final void testIdentity() {
         UnitQuaternion identity = UnitQuaternion.getIdentity();
-        Assert.assertEquals(1.0, identity.getW(), 0d);
-        Assert.assertEquals(0.0, identity.getX(), 0d);
-        Assert.assertEquals(0.0, identity.getY(), 0d);
-        Assert.assertEquals(0.0, identity.getZ(), 0d);
+        AssertHelper.assertEquals(1.0, identity.getW());
+        AssertHelper.assertEquals(0.0, identity.getX());
+        AssertHelper.assertEquals(0.0, identity.getY());
+        AssertHelper.assertEquals(0.0, identity.getZ());
     }
 
     /**
@@ -232,10 +232,10 @@ public class TestUnitQuaternion {
     @Test
     public final void testNegation() {
         UnitQuaternion u = UnitQuaternion.negate(new UnitQuaternion(2.0, 4.0, 7.0, 10.0));
-        Assert.assertEquals(-2.0 / 13.0, u.getW(), 0d);
-        Assert.assertEquals(-4.0 / 13.0, u.getX(), 0d);
-        Assert.assertEquals(-7.0 / 13.0, u.getY(), 0d);
-        Assert.assertEquals(-10.0 / 13.0, u.getZ(), 0d);
+        AssertHelper.assertEquals(-2.0 / 13.0, u.getW());
+        AssertHelper.assertEquals(-4.0 / 13.0, u.getX());
+        AssertHelper.assertEquals(-7.0 / 13.0, u.getY());
+        AssertHelper.assertEquals(-10.0 / 13.0, u.getZ());
     }
 
     /**
@@ -248,15 +248,15 @@ public class TestUnitQuaternion {
         UnitQuaternion first = new UnitQuaternion(7.0, 2.0, 3.0, 6.0);
         UnitQuaternion second = new UnitQuaternion(7.0, 2.0, 3.0, 6.0);
         UnitQuaternion result = first.multiply(second);
-        Assert.assertEquals(0.0 / 7.0, result.getW(), Constants.Epsilon15);
-        Assert.assertEquals(2.0 / 7.0, result.getX(), Constants.Epsilon15);
-        Assert.assertEquals(3.0 / 7.0, result.getY(), Constants.Epsilon15);
-        Assert.assertEquals(6.0 / 7.0, result.getZ(), Constants.Epsilon15);
+        AssertHelper.assertEquals(0.0 / 7.0, result.getW(), Constants.Epsilon15);
+        AssertHelper.assertEquals(2.0 / 7.0, result.getX(), Constants.Epsilon15);
+        AssertHelper.assertEquals(3.0 / 7.0, result.getY(), Constants.Epsilon15);
+        AssertHelper.assertEquals(6.0 / 7.0, result.getZ(), Constants.Epsilon15);
         result = UnitQuaternion.multiply(first, second);
-        Assert.assertEquals(0.0 / 7.0, result.getW(), Constants.Epsilon15);
-        Assert.assertEquals(2.0 / 7.0, result.getX(), Constants.Epsilon15);
-        Assert.assertEquals(3.0 / 7.0, result.getY(), Constants.Epsilon15);
-        Assert.assertEquals(6.0 / 7.0, result.getZ(), Constants.Epsilon15);
+        AssertHelper.assertEquals(0.0 / 7.0, result.getW(), Constants.Epsilon15);
+        AssertHelper.assertEquals(2.0 / 7.0, result.getX(), Constants.Epsilon15);
+        AssertHelper.assertEquals(3.0 / 7.0, result.getY(), Constants.Epsilon15);
+        AssertHelper.assertEquals(6.0 / 7.0, result.getZ(), Constants.Epsilon15);
     }
 
     /**
@@ -267,7 +267,7 @@ public class TestUnitQuaternion {
         UnitQuaternion object1 = new UnitQuaternion(1.0, 2.0, 3.0, 4.0);
         UnitQuaternion object2 = new UnitQuaternion(1.0, 2.0, 3.0, 4.0);
         UnitQuaternion object3 = new UnitQuaternion(1.0, 2.0, 3.0, 4.1);
-        Assert.assertEquals((int) object1.hashCode(), (int) object2.hashCode());
+        AssertHelper.assertEquals(object1.hashCode(), object2.hashCode());
         AssertHelper.assertNotEqual(object1.hashCode(), object3.hashCode());
     }
 
@@ -280,10 +280,10 @@ public class TestUnitQuaternion {
         UnitQuaternion test2 = new UnitQuaternion(0.0, 1.0, 0.0, 0.0);
         UnitQuaternion test3 = new UnitQuaternion(0.0, 0.0, 1.0, 0.0);
         UnitQuaternion test4 = new UnitQuaternion(0.0, 0.0, 0.0, 1.0);
-        Assert.assertEquals("1, 0, 0, 0", test1.toString());
-        Assert.assertEquals("0, 1, 0, 0", test2.toString());
-        Assert.assertEquals("0, 0, 1, 0", test3.toString());
-        Assert.assertEquals("0, 0, 0, 1", test4.toString());
+        AssertHelper.assertEquals("1, 0, 0, 0", test1.toString());
+        AssertHelper.assertEquals("0, 1, 0, 0", test2.toString());
+        AssertHelper.assertEquals("0, 0, 1, 0", test3.toString());
+        AssertHelper.assertEquals("0, 0, 0, 1", test4.toString());
     }
 
     @Nonnull
