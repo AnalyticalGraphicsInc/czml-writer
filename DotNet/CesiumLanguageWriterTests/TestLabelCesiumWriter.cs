@@ -46,6 +46,69 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
+        public void TestTextPropertyInterval()
+        {
+            var startDate = new GregorianDate(2012, 4, 2, 12, 0, 0).ToJulianDate();
+            var stopDate = new GregorianDate(2012, 4, 2, 12, 1, 0).ToJulianDate();
+
+            var interval1Start = startDate;
+            var interval1Stop = startDate.AddSeconds(1);
+            var interval2Start = interval1Stop;
+            var interval2Stop = startDate.AddSeconds(2);
+            var interval3Start = interval2Stop;
+            var interval3Stop = stopDate;
+
+            const string interval1Value = "A";
+            const string interval2Value = "B";
+            const string interval3Value = "C";
+
+            using (Packet)
+            using (var billboard = Packet.OpenLabelProperty())
+            using (var text = billboard.OpenTextProperty())
+            using (var textIntervals = text.OpenMultipleIntervals())
+            {
+                using (var interval = textIntervals.OpenInterval(interval1Start, interval1Stop))
+                {
+                    interval.WriteString(interval1Value);
+                }
+
+                using (var interval = textIntervals.OpenInterval(interval2Start, interval2Stop))
+                {
+                    interval.WriteString(interval2Value);
+                }
+
+                using (var interval = textIntervals.OpenInterval(interval3Start, interval3Stop))
+                {
+                    interval.WriteString(interval3Value);
+                }
+            }
+
+            AssertExpectedJson(PacketCesiumWriter.LabelPropertyName, new Dictionary<string, object>
+            {
+                {
+                    LabelCesiumWriter.TextPropertyName, new List<Dictionary<string, object>>
+                    {
+                        new Dictionary<string, object>
+                        {
+                            { "interval", CesiumFormattingHelper.ToIso8601Interval(interval1Start, interval1Stop, Iso8601Format.Compact) },
+                            { StringCesiumWriter.StringPropertyName, interval1Value },
+                        },
+                        new Dictionary<string, object>
+                        {
+                            { "interval", CesiumFormattingHelper.ToIso8601Interval(interval2Start, interval2Stop, Iso8601Format.Compact) },
+                            { StringCesiumWriter.StringPropertyName, interval2Value },
+                        },
+                        new Dictionary<string, object>
+                        {
+                            { "interval", CesiumFormattingHelper.ToIso8601Interval(interval3Start, interval3Stop, Iso8601Format.Compact) },
+                            { StringCesiumWriter.StringPropertyName, interval3Value },
+                        },
+                    }
+                },
+            });
+        }
+
+        [Test]
         public void TestShowBackgroundProperty()
         {
             const bool expectedShowBackground = true;

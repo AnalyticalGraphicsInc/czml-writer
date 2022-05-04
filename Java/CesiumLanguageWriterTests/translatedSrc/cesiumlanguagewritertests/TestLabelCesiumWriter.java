@@ -62,6 +62,60 @@ public class TestLabelCesiumWriter extends TestCesiumPropertyWriter<LabelCesiumW
     }
 
     @Test
+    public final void testTextPropertyInterval() {
+        JulianDate startDate = new GregorianDate(2012, 4, 2, 12, 0, 0D).toJulianDate();
+        JulianDate stopDate = new GregorianDate(2012, 4, 2, 12, 1, 0D).toJulianDate();
+        JulianDate interval1Start = startDate;
+        JulianDate interval1Stop = startDate.addSeconds(1D);
+        JulianDate interval2Start = interval1Stop;
+        JulianDate interval2Stop = startDate.addSeconds(2D);
+        JulianDate interval3Start = interval2Stop;
+        JulianDate interval3Stop = stopDate;
+        final String interval1Value = "A";
+        final String interval2Value = "B";
+        final String interval3Value = "C";
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+            try (Using<LabelCesiumWriter> using$1 = new Using<LabelCesiumWriter>(getPacket().openLabelProperty())) {
+                final LabelCesiumWriter billboard = using$1.resource;
+                try (Using<StringCesiumWriter> using$2 = new Using<StringCesiumWriter>(billboard.openTextProperty())) {
+                    final StringCesiumWriter text = using$2.resource;
+                    try (Using<CesiumIntervalListWriter<StringCesiumWriter>> using$3 = new Using<CesiumIntervalListWriter<StringCesiumWriter>>(text.openMultipleIntervals())) {
+                        final CesiumIntervalListWriter<StringCesiumWriter> textIntervals = using$3.resource;
+                        try (Using<StringCesiumWriter> using$4 = new Using<StringCesiumWriter>(textIntervals.openInterval(interval1Start, interval1Stop))) {
+                            final StringCesiumWriter interval = using$4.resource;
+                            interval.writeString(interval1Value);
+                        }
+                        try (Using<StringCesiumWriter> using$5 = new Using<StringCesiumWriter>(textIntervals.openInterval(interval2Start, interval2Stop))) {
+                            final StringCesiumWriter interval = using$5.resource;
+                            interval.writeString(interval2Value);
+                        }
+                        try (Using<StringCesiumWriter> using$6 = new Using<StringCesiumWriter>(textIntervals.openInterval(interval3Start, interval3Stop))) {
+                            final StringCesiumWriter interval = using$6.resource;
+                            interval.writeString(interval3Value);
+                        }
+                    }
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$2 = MapHelper.create();
+        MapHelper.add(tempCollection$2, "interval", CesiumFormattingHelper.toIso8601Interval(interval1Start, interval1Stop, Iso8601Format.COMPACT));
+        MapHelper.add(tempCollection$2, StringCesiumWriter.StringPropertyName, interval1Value);
+        final Map<String, Object> tempCollection$3 = MapHelper.create();
+        MapHelper.add(tempCollection$3, "interval", CesiumFormattingHelper.toIso8601Interval(interval2Start, interval2Stop, Iso8601Format.COMPACT));
+        MapHelper.add(tempCollection$3, StringCesiumWriter.StringPropertyName, interval2Value);
+        final Map<String, Object> tempCollection$4 = MapHelper.create();
+        MapHelper.add(tempCollection$4, "interval", CesiumFormattingHelper.toIso8601Interval(interval3Start, interval3Stop, Iso8601Format.COMPACT));
+        MapHelper.add(tempCollection$4, StringCesiumWriter.StringPropertyName, interval3Value);
+        final ArrayList<Map<String, Object>> tempCollection$1 = new ArrayList<Map<String, Object>>();
+        tempCollection$1.add(tempCollection$2);
+        tempCollection$1.add(tempCollection$3);
+        tempCollection$1.add(tempCollection$4);
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, LabelCesiumWriter.TextPropertyName, tempCollection$1);
+        assertExpectedJson(PacketCesiumWriter.LabelPropertyName, tempCollection$0);
+    }
+
+    @Test
     public final void testShowBackgroundProperty() {
         final boolean expectedShowBackground = true;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
