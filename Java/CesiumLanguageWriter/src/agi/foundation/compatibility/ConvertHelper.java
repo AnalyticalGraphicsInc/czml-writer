@@ -1,5 +1,7 @@
 package agi.foundation.compatibility;
 
+import static agi.foundation.compatibility.ArgumentNullException.assertNonNull;
+
 import agi.foundation.compatibility.annotations.Internal;
 
 import java.nio.ByteBuffer;
@@ -274,7 +276,7 @@ public final class ConvertHelper {
      */
     @Nonnull
     public static String toBase64String(@Nonnull byte[] inArray, int offset, int length) {
-        ArgumentNullException.assertNonNull(inArray, "inArray");
+        assertNonNull(inArray, "inArray");
         if (length < 0)
             throw new ArgumentOutOfRangeException("length");
         if (offset < 0)

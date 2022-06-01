@@ -17,6 +17,12 @@ import javax.annotation.Nonnull;
 public final class CollectionsHelper {
     private CollectionsHelper() {}
 
+    static <E> void addRange(@Nonnull Collection<E> self, Iterable<? extends E> c) {
+        for (E e : c) {
+            self.add(e);
+        }
+    }
+
     public static boolean isEmpty(@Nonnull Collection<?> self) {
         return self.size() == 0;
     }

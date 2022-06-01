@@ -866,8 +866,32 @@ public final class StringHelper {
      *         it is not. If value is Empty, the return value is 0.
      */
     public static int indexOf(@Nonnull String s, @Nonnull String value, @Nonnull StringComparison comparisonType) {
+        return indexOf(s, value, 0, comparisonType);
+    }
+
+    /**
+     * Reports the index of the first occurrence of the specified string in the current
+     * String object. Parameters specify the starting search position in the current
+     * string and the type of search to use for the specified string.
+     *
+     * @param s
+     *            The String to search.
+     * @param value
+     *            The String object to seek.
+     * @param startIndex
+     *            The search starting position.
+     * @param comparisonType
+     *            One of the StringComparison values.
+     * @return The index position of the value parameter if that string is found, or -1 if
+     *         it is not. If value is Empty, the return value is startIndex.
+     */
+    public static int indexOf(@Nonnull String s, @Nonnull String value, int startIndex, @Nonnull StringComparison comparisonType) {
         assertNonNull(s, "s");
         assertNonNull(value, "value");
+        if (startIndex < 0)
+            throw new ArgumentOutOfRangeException("startIndex", "startIndex cannot be less than zero.");
+        if (startIndex > s.length())
+            throw new ArgumentOutOfRangeException("startIndex", "startIndex must be less than length of string.");
 
         if (getIgnoreCase(comparisonType)) {
             Locale locale = getLocale(comparisonType);
@@ -876,7 +900,7 @@ public final class StringHelper {
             value = value.toLowerCase(locale);
         }
 
-        return s.indexOf(value);
+        return s.indexOf(value, startIndex);
     }
 
     /**
@@ -1041,7 +1065,7 @@ public final class StringHelper {
      * Appends a specified number of copies of the string representation of a Unicode
      * character to a given instance.
      *
-     * @param s
+     * @param builder
      *            The StringBuilder
      * @param c
      *            The character to append
@@ -1050,12 +1074,12 @@ public final class StringHelper {
      * @return The StringBuilder after the append operation has completed.
      */
     @Nonnull
-    public static StringBuilder append(@Nonnull StringBuilder s, char c, int repeatCount) {
-        s.ensureCapacity(s.length() + repeatCount);
+    public static StringBuilder append(@Nonnull StringBuilder builder, char c, int repeatCount) {
+        builder.ensureCapacity(builder.length() + repeatCount);
         for (int i = 0; i < repeatCount; ++i) {
-            s.append(c);
+            builder.append(c);
         }
-        return s;
+        return builder;
     }
 
     /**

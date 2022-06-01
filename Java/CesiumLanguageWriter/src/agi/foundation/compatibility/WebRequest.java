@@ -149,6 +149,11 @@ public abstract class WebRequest {
             throw new UncheckedIOException(e);
         }
 
+        // This boolean doesn't actually do anything except determine
+        // whether an exception is thrown when getOutputStream() is called.
+        // So we can always set it to true.
+        connection.setDoOutput(true);
+
         if (timeout != 0) {
             connection.setConnectTimeout(timeout);
         }

@@ -203,6 +203,7 @@ public abstract class Delegate {
         Class<?> c = getClass();
         while (notEquals(Delegate.class, c.getSuperclass())) {
             c = c.getSuperclass();
+            assert c != null;
         }
         return c;
     }

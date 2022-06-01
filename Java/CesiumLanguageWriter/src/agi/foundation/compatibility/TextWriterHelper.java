@@ -1,6 +1,7 @@
 package agi.foundation.compatibility;
 
 import static agi.foundation.compatibility.ArgumentNullException.assertNonNull;
+import static java.lang.System.lineSeparator;
 
 import agi.foundation.compatibility.annotations.Internal;
 
@@ -70,6 +71,6 @@ public final class TextWriterHelper {
      * @return The line terminator string.
      */
     public static String getNewLine() {
-        return System.lineSeparator();
+        return lineSeparator();
     }
 }

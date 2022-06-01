@@ -36,9 +36,7 @@ public final class ListHelper {
         }
 
         ArrayList<T> result = new ArrayList<>();
-        for (T t : iterable) {
-            result.add(t);
-        }
+        CollectionsHelper.addRange(result, iterable);
         return result;
     }
 }
