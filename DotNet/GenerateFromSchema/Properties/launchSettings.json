@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "GenerateFromSchema": {
+      "commandName": "Project",
+      "commandLineArgs": "-p $(SolutionDir)..\\Schema\\Packet.json -t csharp -o $(SolutionDir)CesiumLanguageWriter\\Generated --configuration GenerateCSharp.config.json"
+    }
+  }
+}

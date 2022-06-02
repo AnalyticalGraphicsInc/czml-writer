@@ -1,0 +1,9 @@
+﻿<Project>
+  <PropertyGroup>
+    <Company>AGI, an Ansys Company</Company>
+    <Authors>$(Company)</Authors>
+    <Product>CesiumLanguageWriter</Product>
+    <Copyright>Copyright © 2011-$([System.DateTime]::Now.ToString('yyyy')) $(Company)</Copyright>
+    <Description>A library for writing CZML content for use with Cesium.</Description>
+  </PropertyGroup>
+</Project>

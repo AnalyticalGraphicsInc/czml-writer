@@ -1,145 +1,25 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\NUnit.3.13.3\build\NUnit.props" Condition="Exists('..\packages\NUnit.3.13.3\build\NUnit.props')" />
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1D5CE515-81E3-47AE-8D02-3767DD8CB07E}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CesiumLanguageWriterTests</RootNamespace>
-    <AssemblyName>CesiumLanguageWriterTests</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <SignAssembly>true</SignAssembly>
+    <TargetFramework>net40</TargetFramework>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>..\StrongNameKey.snk</AssemblyOriginatorKeyFile>
     <LangVersion>3</LangVersion>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="JetBrains.Annotations, Version=4242.42.42.42, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
-      <HintPath>..\packages\JetBrains.Annotations.2022.1.0\lib\net20\JetBrains.Annotations.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="nunit.framework, Version=3.13.3.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.3.13.3\lib\net40\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Drawing" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Advanced\TestCesiumFormattingHelper.cs" />
-    <Compile Include="Advanced\TestCesiumWritingHelper.cs" />
-    <Compile Include="Data\EmbeddedData.cs" />
-    <Compile Include="grisu\TestGrisu.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sandbox.cs" />
-    <Compile Include="TestArticulationsCesiumWriter.cs" />
-    <Compile Include="TestBillboardCesiumWriter.cs" />
-    <Compile Include="TestBooleanCesiumWriter.cs" />
-    <Compile Include="TestBoundingRectangle.cs" />
-    <Compile Include="TestBounds.cs" />
-    <Compile Include="TestCartesian.cs" />
-    <Compile Include="TestCartographic.cs" />
-    <Compile Include="TestCartographicExtent.cs" />
-    <Compile Include="TestCesiumFormattingHelper.cs" />
-    <Compile Include="TestCesiumInterpolatablePropertyWriter.cs" />
-    <Compile Include="TestCesiumResource.cs" />
-    <Compile Include="TestCheckerboardMaterialCesiumWriter.cs" />
-    <Compile Include="TestConicSensorCesiumWriter.cs" />
-    <Compile Include="TestCustomPropertiesCesiumWriter.cs" />
-    <Compile Include="TestCustomPatternSensorCesiumWriter.cs" />
-    <Compile Include="TestDoubleCesiumWriter.cs" />
-    <Compile Include="TestGenerateValidationDocument.cs" />
-    <Compile Include="TestGridMaterialCesiumWriter.cs" />
-    <Compile Include="TestHorizontalOriginCesiumWriter.cs" />
-    <Compile Include="TestLabelCesiumWriter.cs" />
-    <Compile Include="TestLabelStyleCesiumWriter.cs" />
-    <Compile Include="TestModelCesiumWriter.cs" />
-    <Compile Include="TestPacketCesiumWriter.cs" />
-    <Compile Include="TestCesiumPropertyWriter.cs" />
-    <Compile Include="TestCesiumStreamWriter.cs" />
-    <Compile Include="TestDuration.cs" />
-    <Compile Include="TestGregorianDate.cs" />
-    <Compile Include="TestGregorianDateFormatting.cs" />
-    <Compile Include="TestGregorianDateParsing.cs" />
-    <Compile Include="TestJulianDate.cs" />
-    <Compile Include="TestJulianDateConversions.cs" />
-    <Compile Include="TestLeapSecond.cs" />
-    <Compile Include="TestLeapSeconds.cs" />
-    <Compile Include="TestMatrix3By3.cs" />
-    <Compile Include="TestNodeTransformationsCesiumWriter.cs" />
-    <Compile Include="TestOrientationCesiumWriter.cs" />
-    <Compile Include="TestPolygonCesiumWriter.cs" />
-    <Compile Include="TestPolylineArrowMaterialCesiumWriter.cs" />
-    <Compile Include="TestPolylineDashMaterialCesiumWriter.cs" />
-    <Compile Include="TestPolylineGlowMaterialCesiumWriter.cs" />
-    <Compile Include="TestPolylineOutlineMaterialCesiumWriter.cs" />
-    <Compile Include="TestPolylineVolumeCesiumWriter.cs" />
-    <Compile Include="TestPositionCesiumWriter.cs" />
-    <Compile Include="TestRectangleCesiumWriter.cs" />
-    <Compile Include="TestRectangularSensorCesiumWriter.cs" />
-    <Compile Include="TestReference.cs" />
-    <Compile Include="TestShapeCesiumWriter.cs" />
-    <Compile Include="TestSolidColorMaterialCesiumWriter.cs" />
-    <Compile Include="TestStringCesiumWriter.cs" />
-    <Compile Include="TestStripeMaterialCesiumWriter.cs" />
-    <Compile Include="TestTilesetCesiumWriter.cs" />
-    <Compile Include="TestTimeInterval.cs" />
-    <Compile Include="TestUnitCartesian.cs" />
-    <Compile Include="TestUnitQuaternion.cs" />
-    <Compile Include="TestUnitSpherical.cs" />
-    <Compile Include="TestVerticalOriginCesiumWriter.cs" />
-    <Compile Include="TestYearMonthDay.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CesiumLanguageWriter\CesiumLanguageWriter.csproj">
-      <Project>{085359F8-CC1D-4561-94C7-0BF067B8E370}</Project>
-      <Name>CesiumLanguageWriter</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <None Remove="Data\satellite.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Data\satellite.png" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\NUnit.3.13.3\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit.3.13.3\build\NUnit.props'))" />
-  </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
+  <ItemGroup>
+    <PackageReference Include="JetBrains.Annotations" Version="2022.1.0" PrivateAssets="all" ExcludeAssets="runtime" />
+    <PackageReference Include="NUnit" Version="3.13.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CesiumLanguageWriter\CesiumLanguageWriter.csproj" />
+  </ItemGroup>
 </Project>

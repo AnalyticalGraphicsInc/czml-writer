@@ -6,9 +6,15 @@ trim_trailing_whitespace = true
 [*.{json,cs}]
 indent_style = space
 indent_size = 4
+insert_final_newline = false
 
 [*.json]
 charset = utf-8
 
 [*.cs]
 charset = utf-8-bom
+dotnet_remove_unnecessary_suppression_exclusions = category: ReSharper
+
+[*.{csproj,props,targets,nuspec}]
+indent_style = space
+indent_size = 2
