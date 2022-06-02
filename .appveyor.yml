@@ -22,6 +22,7 @@ build:
   verbosity: minimal
 after_build:
   - ps: |
+      gci DotNet\CesiumLanguageWriter\bin\$env:configuration\*.nupkg | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name }
       (gc Java\gradle.properties) | % { $_ -replace "^version = .*$", "version = $env:GitVersion_NuGetVersion" } | sc Java\gradle.properties
       .\Java\gradlew.bat -p Java assemble
       gci Java\CesiumLanguageWriter\build\libs\*.jar | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name }
