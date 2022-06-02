@@ -1,15 +1,3 @@
 ﻿<Project>
 
-  <PropertyGroup>
-    <Title Condition="'$(Title)'==''">$(AssemblyName)</Title>
-  </PropertyGroup>
-
-  <Target Name="SetNuspecProperties" BeforeTargets="GenerateNuspec">
-    <PropertyGroup>
-      <NuspecProperties>$(NuspecProperties);id=$(PackageId);version=$(PackageVersion);title=$(Product)</NuspecProperties>
-      <NuspecProperties>$(NuspecProperties);authors=$(Authors);description=$(PackageDescription);copyright=$(Copyright)</NuspecProperties>
-      <NuspecProperties>$(NuspecProperties);configuration=$(Configuration)</NuspecProperties>
-    </PropertyGroup>
-  </Target>
-
 </Project>

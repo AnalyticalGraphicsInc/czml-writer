@@ -6,10 +6,23 @@
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>..\StrongNameKey.snk</AssemblyOriginatorKeyFile>
     <LangVersion>3</LangVersion>
+    <PackageId>$(AssemblyName)</PackageId>
+    <Title>$(AssemblyName)</Title>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/AnalyticalGraphicsInc/czml-writer</PackageProjectUrl>
+    <PackageIcon>logo.png</PackageIcon>
+    <PackageIconUrl>https://raw.githubusercontent.com/AnalyticalGraphicsInc/czml-writer/master/logo.png</PackageIconUrl>
+    <PackageTags>Cesium CZML</PackageTags>
+    <PackageReleaseNotes>See https://github.com/AnalyticalGraphicsInc/czml-writer/releases/tag/$(PackageVersion) for release notes.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="2022.1.0" PrivateAssets="all" ExcludeAssets="runtime" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE.md" Link="LICENSE.md" Pack="true" PackagePath="" />
+    <Content Include="..\..\logo.png" Link="logo.png" Pack="true" PackagePath="" />
   </ItemGroup>
 
   <ItemGroup>
