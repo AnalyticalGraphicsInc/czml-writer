@@ -1,4 +1,4 @@
-Copyright 2011-2021 Analytical Graphics, Inc. and Contributors
+Copyright 2011-2023 Ansys Government Initiatives (AGI) and Contributors
 
                                  Apache License
                            Version 2.0, January 2004

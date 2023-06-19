@@ -15,6 +15,6 @@ charset = utf-8
 charset = utf-8-bom
 dotnet_remove_unnecessary_suppression_exclusions = category: ReSharper
 
-[*.{csproj,props,targets,nuspec}]
+[*.{csproj,props,targets,nuspec,config}]
 indent_style = space
 indent_size = 2

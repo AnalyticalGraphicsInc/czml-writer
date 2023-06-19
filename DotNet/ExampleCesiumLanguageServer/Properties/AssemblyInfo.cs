@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("ExampleCesiumLanguageServer")]
 [assembly: AssemblyDescription("A sample web application demonstrating writing CZML content and loading it in Cesium.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Analytical Graphics, Inc.")]
+[assembly: AssemblyCompany("Ansys Government Initiatives (AGI)")]
 [assembly: AssemblyProduct("ExampleCesiumLanguageServer")]
-[assembly: AssemblyCopyright("Copyright © 2014-2017 Cesium Contributors")]
+[assembly: AssemblyCopyright("Copyright © 2014-2023 Ansys Government Initiatives (AGI) and Contributors")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
