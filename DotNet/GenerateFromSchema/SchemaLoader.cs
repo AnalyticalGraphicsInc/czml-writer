@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Schema;
 
 namespace GenerateFromSchema
 {
@@ -112,24 +112,24 @@ namespace GenerateFromSchema
             return result;
         }
 
-        private static JsonSchemaType LoadJsonSchemaType(JObject schema)
+        private static SchemaType LoadJsonSchemaType(JObject schema)
         {
             JProperty type = schema.Property("type");
             if (type == null)
-                return JsonSchemaType.Any;
+                return SchemaType.Any;
 
             if (type.Value is JArray arrayOfTypes)
             {
-                JsonSchemaType result = JsonSchemaType.None;
+                SchemaType result = SchemaType.None;
                 foreach (string typeName in arrayOfTypes.Values<string>())
                 {
-                    result |= s_jsonSchemaTypeMapping[typeName];
+                    result |= GetSchemaType(typeName);
                 }
 
                 return result;
             }
 
-            return s_jsonSchemaTypeMapping[type.Value.Value<string>()];
+            return GetSchemaType(type.Value.Value<string>());
         }
 
         private static T GetValue<T>([NotNull] JObject obj, string path, T defaultValue)
@@ -145,17 +145,20 @@ namespace GenerateFromSchema
             return obj.SelectTokens(path).Select(token => token.Value<T>());
         }
 
-        [NotNull]
-        private static readonly Dictionary<string, JsonSchemaType> s_jsonSchemaTypeMapping = new Dictionary<string, JsonSchemaType>
+        private static SchemaType GetSchemaType(string typeName)
         {
-            { "string", JsonSchemaType.String },
-            { "object", JsonSchemaType.Object },
-            { "integer", JsonSchemaType.Integer },
-            { "number", JsonSchemaType.Float },
-            { "null", JsonSchemaType.Null },
-            { "boolean", JsonSchemaType.Boolean },
-            { "array", JsonSchemaType.Array },
-            { "any", JsonSchemaType.Any }
-        };
+            switch (typeName)
+            {
+                case "string": return SchemaType.String;
+                case "object": return SchemaType.Object;
+                case "integer": return SchemaType.Integer;
+                case "number": return SchemaType.Float;
+                case "null": return SchemaType.Null;
+                case "boolean": return SchemaType.Boolean;
+                case "array": return SchemaType.Array;
+                case "any": return SchemaType.Any;
+                default: throw new InvalidOperationException();
+            }
+        }
     }
 }

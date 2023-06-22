@@ -8,7 +8,6 @@ using System.Text.RegularExpressions;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Schema;
 
 namespace GenerateFromSchema
 {
@@ -247,11 +246,7 @@ namespace GenerateFromSchema
             writer.WriteLine();
         }
 
-        private static bool PropertyValueIsLeaf(Property property)
-        {
-            JsonSchemaType jsonTypes = property.ValueType.JsonTypes;
-            return !jsonTypes.HasFlag(JsonSchemaType.Object);
-        }
+        private static bool PropertyValueIsLeaf(Property property) => !property.ValueType.JsonTypes.HasFlag(SchemaType.Object);
 
         private void WriteProperties(CodeWriter writer, Schema schema)
         {
@@ -536,27 +531,27 @@ namespace GenerateFromSchema
         {
             if (property.ValueType.IsSchemaFromType)
             {
-                JsonSchemaType type = property.ValueType.JsonTypes;
+                SchemaType type = property.ValueType.JsonTypes;
 
-                if (type.HasFlag(JsonSchemaType.Object) ||
-                    type.HasFlag(JsonSchemaType.Array) ||
-                    type.HasFlag(JsonSchemaType.Null) ||
-                    type.HasFlag(JsonSchemaType.Any) ||
-                    type == JsonSchemaType.None)
+                if (type.HasFlag(SchemaType.Object) ||
+                    type.HasFlag(SchemaType.Array) ||
+                    type.HasFlag(SchemaType.Null) ||
+                    type.HasFlag(SchemaType.Any) ||
+                    type == SchemaType.None)
                 {
                     throw new Exception($"Property '{property.Name}' does not specify a $ref to a schema, nor is it a simple JSON type.");
                 }
 
-                if (type.HasFlag(JsonSchemaType.String))
+                if (type.HasFlag(SchemaType.String))
                     yield return s_defaultStringOverload;
 
-                if (type.HasFlag(JsonSchemaType.Float))
+                if (type.HasFlag(SchemaType.Float))
                     yield return s_defaultDoubleOverload;
 
-                if (type.HasFlag(JsonSchemaType.Integer))
+                if (type.HasFlag(SchemaType.Integer))
                     yield return s_defaultIntegerOverload;
 
-                if (type.HasFlag(JsonSchemaType.Boolean))
+                if (type.HasFlag(SchemaType.Boolean))
                     yield return s_defaultBooleanOverload;
             }
             else

@@ -3,7 +3,6 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Schema;
 
 namespace GenerateFromSchema
 {
@@ -175,26 +174,23 @@ namespace GenerateFromSchema
             }
         }
 
-        private static string JsonSchemaTypesToLabel(JsonSchemaType type)
+        private static string JsonSchemaTypesToLabel(SchemaType type)
         {
-            var types = new string[6];
+            var types = new List<string>();
+            if (type.HasFlag(SchemaType.String))
+                types.Add("string");
+            if (type.HasFlag(SchemaType.Float) || type.HasFlag(SchemaType.Integer))
+                types.Add("number");
+            if (type.HasFlag(SchemaType.Boolean))
+                types.Add("boolean");
+            if (type.HasFlag(SchemaType.Object))
+                types.Add("object");
+            if (type.HasFlag(SchemaType.Array))
+                types.Add("array");
+            if (type.HasFlag(SchemaType.Null))
+                types.Add("null");
 
-            int index = 0;
-
-            if ((type & JsonSchemaType.String) == JsonSchemaType.String)
-                types[index++] = "string";
-            if ((type & JsonSchemaType.Float) == JsonSchemaType.Float || (type & JsonSchemaType.Integer) == JsonSchemaType.Integer)
-                types[index++] = "number";
-            if ((type & JsonSchemaType.Boolean) == JsonSchemaType.Boolean)
-                types[index++] = "boolean";
-            if ((type & JsonSchemaType.Object) == JsonSchemaType.Object)
-                types[index++] = "object";
-            if ((type & JsonSchemaType.Array) == JsonSchemaType.Array)
-                types[index++] = "array";
-            if ((type & JsonSchemaType.Null) == JsonSchemaType.Null)
-                types[index++] = "null";
-
-            switch (index)
+            switch (types.Count)
             {
                 case 0:
                     return "";
@@ -203,7 +199,7 @@ namespace GenerateFromSchema
                 case 2:
                     return types[0] + " or " + types[1];
                 default:
-                    return string.Join(", ", types, 0, index - 1) + ", or " + types[index - 1];
+                    return string.Join(", ", types.Take(types.Count - 1)) + ", or " + types.Last();
             }
         }
     }

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
-using Newtonsoft.Json.Schema;
 
 namespace GenerateFromSchema
 {
@@ -22,7 +21,9 @@ namespace GenerateFromSchema
         [NotNull]
         public List<Schema> Extends { get; } = new List<Schema>();
 
-        public JsonSchemaType JsonTypes { get; set; }
+        public SchemaType JsonTypes { get; set; }
+
+        public bool IsArray => JsonTypes.HasFlag(SchemaType.Array);
 
         [NotNull]
         public List<Property> Properties { get; } = new List<Property>();

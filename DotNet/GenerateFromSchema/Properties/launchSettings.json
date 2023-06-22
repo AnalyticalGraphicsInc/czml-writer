@@ -3,6 +3,14 @@
     "GenerateFromSchema": {
       "commandName": "Project",
       "commandLineArgs": "-p $(SolutionDir)..\\Schema\\Packet.json -t csharp -o $(SolutionDir)CesiumLanguageWriter\\Generated --configuration GenerateCSharp.config.json"
+    },
+    "GenerateValidation": {
+      "commandName": "Project",
+      "commandLineArgs": "-p $(SolutionDir)..\\Schema\\Packet.json -t validation -o $(SolutionDir)CesiumLanguageWriterTests"
+    },
+    "GenerateMarkdown": {
+      "commandName": "Project",
+      "commandLineArgs": "-p $(SolutionDir)..\\Schema\\Packet.json -t markdown -o $(SolutionDir)..\\..\\czml-writer.wiki\\CZML"
     }
   }
 }

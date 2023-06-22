@@ -11,7 +11,7 @@ namespace GenerateFromSchema
         {
             CSharp,
             MarkDown,
-            Validation
+            Validation,
         }
 
         public class Options
