@@ -9,7 +9,7 @@ This project provides .NET and Java libraries for writing CZML content for use w
 
 This project also contains the [CZML specification](https://github.com/AnalyticalGraphicsInc/czml-writer/wiki/CZML-Guide) which defines the structure of CZML.
 
-[![Build status](https://ci.appveyor.com/api/projects/status/p4b2gm7tuosinaeg/branch/master?svg=true)](https://ci.appveyor.com/project/AnalyticalGraphics/czml-writer/branch/master)
+[![Build status](https://ci.appveyor.com/api/projects/status/p4b2gm7tuosinaeg/branch/main?svg=true)](https://ci.appveyor.com/project/AnalyticalGraphics/czml-writer/branch/main)
 
 ### License ###
 
@@ -27,4 +27,4 @@ Binary releases are available for download on the [releases page](https://github
 
 ### Get Started ###
 
-Check out the [wiki](https://github.com/AnalyticalGraphicsInc/czml-writer/wiki), including the [quick start](https://github.com/AnalyticalGraphicsInc/czml-writer/wiki/Quick-Start) and [contributor's guide](https://github.com/AnalyticalGraphicsInc/czml-writer/wiki/Contributor's-Guide). Also browse the [forum](https://community.cesium.com/).
+Check out the [wiki](https://github.com/AnalyticalGraphicsInc/czml-writer/wiki), including the [quick start](https://github.com/AnalyticalGraphicsInc/czml-writer/wiki/Quick-Start). Also browse the [forum](https://community.cesium.com/) for questions on Cesium.
