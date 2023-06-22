@@ -118,7 +118,7 @@ public class TestCartesian {
     public final void testEqualsEpsilonExact() {
         Cartesian first = new Cartesian(0.1, 0.1, 0.1);
         Cartesian second = new Cartesian(0.1, 0.1, 0.1);
-        Assert.assertTrue(second.equalsEpsilon(first, 0D));
+        Assert.assertTrue(second.equalsEpsilon(first, 0.0));
     }
 
     /**

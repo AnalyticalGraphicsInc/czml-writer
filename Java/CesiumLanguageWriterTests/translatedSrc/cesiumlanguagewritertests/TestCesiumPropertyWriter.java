@@ -258,8 +258,8 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
     @Test
     public final void multipleIntervalsAllowsWritingMultipleIntervals() {
         final String expectedPropertyName = "woot";
-        JulianDate start = new GregorianDate(2012, 4, 2, 12, 0, 0D).toJulianDate();
-        JulianDate stop = new GregorianDate(2012, 4, 2, 13, 0, 0D).toJulianDate();
+        JulianDate start = new GregorianDate(2012, 4, 2, 12, 0, 0.0).toJulianDate();
+        JulianDate stop = new GregorianDate(2012, 4, 2, 13, 0, 0.0).toJulianDate();
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
             try (Using<CesiumPropertyWriter<TDerived>> using$1 = new Using<CesiumPropertyWriter<TDerived>>(createPropertyWriter(expectedPropertyName))) {
                 final CesiumPropertyWriter<TDerived> propertyWriter = using$1.resource;

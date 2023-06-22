@@ -142,7 +142,7 @@ public class TestBounds {
     public final void testEqualsEpsilonExact() {
         Bounds first = new Bounds(0.1, 0.1);
         Bounds second = new Bounds(0.1, 0.1);
-        Assert.assertTrue(second.equalsEpsilon(first, 0D));
+        Assert.assertTrue(second.equalsEpsilon(first, 0.0));
     }
 
     /**

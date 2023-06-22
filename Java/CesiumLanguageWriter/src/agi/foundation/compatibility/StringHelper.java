@@ -27,12 +27,14 @@ public final class StringHelper {
     @Nonnull
     static final String[] emptyStringArray = new String[0];
     @Nonnull
-    private static final Pattern splitWhitespacePattern;
+    private static final char[] splitWhitespaceChars;
+    @Nonnull
+    private static final char[] trimWhitespaceChars;
 
     static {
         // this set of characters is taken from the .NET documentation for
         // String.Split.
-        final char[] splitWhitespaceChars = {
+        splitWhitespaceChars = new char[] {
                 '\u0009',
                 '\n',
                 '\u000b',
@@ -59,46 +61,12 @@ public final class StringHelper {
                 '\u3000',
         };
 
-        // create a pattern matching any character in the above set
-        StringBuilder pattern = new StringBuilder(2 + splitWhitespaceChars.length);
-        pattern.append('[').append(splitWhitespaceChars, 0, splitWhitespaceChars.length).append(']');
-
-        splitWhitespacePattern = Pattern.compile(pattern.toString());
+        // This set of characters is taken from the .NET documentation for String.Trim and
+        // has one extra character in it (the last one) than the above set for
+        // String.Split. The .NET doc makes special note of this.
+        trimWhitespaceChars = Arrays.copyOf(splitWhitespaceChars, splitWhitespaceChars.length + 1);
+        trimWhitespaceChars[trimWhitespaceChars.length - 1] = '\ufeff';
     }
-
-    /**
-     * This set of characters is taken from the .NET documentation for String.Trim and has
-     * one extra character in it (the last one) than the above set for String.Split. The
-     * .NET doc makes special note of this.
-     */
-    @Nonnull
-    private static final char[] trimWhitespaceChars = {
-            '\u0009',
-            '\n',
-            '\u000b',
-            '\u000c',
-            '\r',
-            '\u0020',
-            '\u0085',
-            '\u00a0',
-            '\u1680',
-            '\u2000',
-            '\u2001',
-            '\u2002',
-            '\u2003',
-            '\u2004',
-            '\u2005',
-            '\u2006',
-            '\u2007',
-            '\u2008',
-            '\u2009',
-            '\u200a',
-            '\u200b',
-            '\u2028',
-            '\u2029',
-            '\u3000',
-            '\ufeff',
-    };
 
     /**
      * Represents the empty string.
@@ -212,30 +180,10 @@ public final class StringHelper {
      *         delimited by one or more characters in separator.
      */
     public static String[] split(@Nonnull String s, @Nullable char[] separator, int count, @Nonnull StringSplitOptions options) {
-        String regex = null;
-        if (separator != null && separator.length > 0) {
-            StringBuilder builder = new StringBuilder(2 + 6 * separator.length);
-            builder.append('[');
-            for (char separatorChar : separator) {
-                // Encode the characters with \\uhhhh where hhhh is the hex
-                // representation of the value of the character. Alternatively,
-                // we could just escape the characters that have special meaning
-                // in a regular expression, but that approach is more error prone.
-                builder.append("\\u").append(StringHelper.padLeft(Integer.toHexString(separatorChar), 4, '0'));
-            }
-            builder.append(']');
-            regex = builder.toString();
-        }
-
-        return split(s, regex, options, count);
-    }
-
-    /**
-     * Do the work of splitting the string according to the specified regex and options.
-     */
-    private static String[] split(@Nonnull String s, @Nullable String regex, @Nonnull StringSplitOptions options, int count) {
         assertNonNull(s, "s");
         assertNonNull(options, "options");
+        if (count < 0)
+            throw new ArgumentOutOfRangeException("count");
 
         boolean removeEmptyEntries = options == StringSplitOptions.REMOVE_EMPTY_ENTRIES;
         if (count == 0 || removeEmptyEntries && s.length() == 0)
@@ -247,63 +195,75 @@ public final class StringHelper {
             };
         }
 
-        Pattern pattern = regex == null ? splitWhitespacePattern : Pattern.compile(regex);
-
         ArrayList<String> result = new ArrayList<>();
-        boolean firstToken = true;
-        int lastMatchEnd = 0;
+        split(s, separator == null || separator.length == 0 ? splitWhitespaceChars : separator, result, count, !removeEmptyEntries);
+        return result.toArray(emptyStringArray);
+    }
 
-        try (Scanner scanner = new Scanner(s)) {
-            scanner.useDelimiter(pattern);
+    private static void split(@Nonnull String s, @Nonnull char[] separators, ArrayList<String> result, int count, boolean keepEmptyEntries) {
+        int index = 0;
+        final int length = s.length();
+        int lastSeparatorIndex = -1;
+        int startOfToken;
 
-            while (scanner.hasNext()) {
-                // grab next token
-                String next = scanner.next();
-
-                MatchResult match = scanner.match();
-                if (firstToken && match.start() > 0 && !removeEmptyEntries) {
-                    // if A) this is the first token, B) the token doesn't start at
-                    // index 0, and C) we're not supposed to remove empty entries,
-                    // then we've already skipped past one delimiter, and so we
-                    // should add an empty result to represent the zero-length
-                    // "match" before the first delimiter.
-                    result.add(empty);
-                }
-
-                firstToken = false;
-
-                if (removeEmptyEntries && next.length() == 0) {
-                    // if the token is empty, and we are being asked to remove empty
-                    // entries, then skip it
-                    continue;
-                }
-
-                if (count > 0 && result.size() >= count - 1) {
-                    // if we've exceeded our maximum result count, just use the
-                    // end of the input string, starting from the current
-                    // token's start, as the final token, then break
-                    result.add(s.substring(match.start()));
-                    lastMatchEnd = s.length();
+        for (; index < length; ++index) {
+            char c = s.charAt(index);
+            boolean isSeparator = false;
+            for (char separator : separators) {
+                if (c == separator) {
+                    isSeparator = true;
                     break;
                 }
+            }
 
-                // otherwise, this token is good
-                result.add(next);
+            if (isSeparator) {
+                startOfToken = lastSeparatorIndex + 1;
+                String token;
+                if (startOfToken == index) {
+                    // Either:
+                    // A) Consecutive separators, or
+                    // B) The string starts with a separator.
+                    //
+                    // Add an empty token, to represent the zero-length token either:
+                    // A) "between" this separator and the previous, or
+                    // B) "before" the first separator.
+                    token = empty;
+                } else {
+                    // Otherwise, add the token being ended by this separator.
+                    token = s.substring(startOfToken, index);
+                }
 
-                lastMatchEnd = match.end();
+                // Ignore empty entries if told to do so.
+                if (keepEmptyEntries || token.length() > 0) {
+
+                    // If we will exceed our maximum result count, just use the
+                    // remainder of the input string as the final result.
+                    if (result.size() >= count - 1) {
+                        result.add(s.substring(startOfToken));
+                        return;
+                    }
+
+                    result.add(token);
+                }
+
+                lastSeparatorIndex = index;
             }
         }
 
-        if (lastMatchEnd < s.length() && !removeEmptyEntries) {
-            // if the end of the last match is not at the end of the string,
-            // and we're not supposed to remove empty entries, then that means
-            // there is a delimiter at the end of the string, and so we should
-            // add an empty result to represent the zero-length "match" after
-            // the last delimiter.
-            result.add(empty);
-        }
+        // Add the final token.
+        startOfToken = lastSeparatorIndex + 1;
 
-        return result.toArray(emptyStringArray);
+        // If the last character is a separator, and we are keeping empty entries, we need
+        // to add an empty result, to represent the zero-length token "after" the last
+        // separator.
+        if (startOfToken == index) {
+            if (keepEmptyEntries) {
+                result.add(empty);
+            }
+        } else {
+            // Otherwise, add the remainder of the string.
+            result.add(s.substring(startOfToken));
+        }
     }
 
     /**

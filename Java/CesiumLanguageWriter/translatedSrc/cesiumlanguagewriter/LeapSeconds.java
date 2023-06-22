@@ -28,34 +28,34 @@ public class LeapSeconds {
     */
     public LeapSeconds() {
         final ArrayList<LeapSecond> tempCollection$0 = new ArrayList<LeapSecond>();
-        tempCollection$0.add(new LeapSecond(2441317.5, 10D));
-        tempCollection$0.add(new LeapSecond(2441499.5, 11D));
-        tempCollection$0.add(new LeapSecond(2441683.5, 12D));
-        tempCollection$0.add(new LeapSecond(2442048.5, 13D));
-        tempCollection$0.add(new LeapSecond(2442413.5, 14D));
-        tempCollection$0.add(new LeapSecond(2442778.5, 15D));
-        tempCollection$0.add(new LeapSecond(2443144.5, 16D));
-        tempCollection$0.add(new LeapSecond(2443509.5, 17D));
-        tempCollection$0.add(new LeapSecond(2443874.5, 18D));
-        tempCollection$0.add(new LeapSecond(2444239.5, 19D));
-        tempCollection$0.add(new LeapSecond(2444786.5, 20D));
-        tempCollection$0.add(new LeapSecond(2445151.5, 21D));
-        tempCollection$0.add(new LeapSecond(2445516.5, 22D));
-        tempCollection$0.add(new LeapSecond(2446247.5, 23D));
-        tempCollection$0.add(new LeapSecond(2447161.5, 24D));
-        tempCollection$0.add(new LeapSecond(2447892.5, 25D));
-        tempCollection$0.add(new LeapSecond(2448257.5, 26D));
-        tempCollection$0.add(new LeapSecond(2448804.5, 27D));
-        tempCollection$0.add(new LeapSecond(2449169.5, 28D));
-        tempCollection$0.add(new LeapSecond(2449534.5, 29D));
-        tempCollection$0.add(new LeapSecond(2450083.5, 30D));
-        tempCollection$0.add(new LeapSecond(2450630.5, 31D));
-        tempCollection$0.add(new LeapSecond(2451179.5, 32D));
-        tempCollection$0.add(new LeapSecond(2453736.5, 33D));
-        tempCollection$0.add(new LeapSecond(2454832.5, 34D));
-        tempCollection$0.add(new LeapSecond(2456109.5, 35D));
-        tempCollection$0.add(new LeapSecond(2457204.5, 36D));
-        tempCollection$0.add(new LeapSecond(2457754.5, 37D));
+        tempCollection$0.add(new LeapSecond(2441317.5, 10.0));
+        tempCollection$0.add(new LeapSecond(2441499.5, 11.0));
+        tempCollection$0.add(new LeapSecond(2441683.5, 12.0));
+        tempCollection$0.add(new LeapSecond(2442048.5, 13.0));
+        tempCollection$0.add(new LeapSecond(2442413.5, 14.0));
+        tempCollection$0.add(new LeapSecond(2442778.5, 15.0));
+        tempCollection$0.add(new LeapSecond(2443144.5, 16.0));
+        tempCollection$0.add(new LeapSecond(2443509.5, 17.0));
+        tempCollection$0.add(new LeapSecond(2443874.5, 18.0));
+        tempCollection$0.add(new LeapSecond(2444239.5, 19.0));
+        tempCollection$0.add(new LeapSecond(2444786.5, 20.0));
+        tempCollection$0.add(new LeapSecond(2445151.5, 21.0));
+        tempCollection$0.add(new LeapSecond(2445516.5, 22.0));
+        tempCollection$0.add(new LeapSecond(2446247.5, 23.0));
+        tempCollection$0.add(new LeapSecond(2447161.5, 24.0));
+        tempCollection$0.add(new LeapSecond(2447892.5, 25.0));
+        tempCollection$0.add(new LeapSecond(2448257.5, 26.0));
+        tempCollection$0.add(new LeapSecond(2448804.5, 27.0));
+        tempCollection$0.add(new LeapSecond(2449169.5, 28.0));
+        tempCollection$0.add(new LeapSecond(2449534.5, 29.0));
+        tempCollection$0.add(new LeapSecond(2450083.5, 30.0));
+        tempCollection$0.add(new LeapSecond(2450630.5, 31.0));
+        tempCollection$0.add(new LeapSecond(2451179.5, 32.0));
+        tempCollection$0.add(new LeapSecond(2453736.5, 33.0));
+        tempCollection$0.add(new LeapSecond(2454832.5, 34.0));
+        tempCollection$0.add(new LeapSecond(2456109.5, 35.0));
+        tempCollection$0.add(new LeapSecond(2457204.5, 36.0));
+        tempCollection$0.add(new LeapSecond(2457754.5, 37.0));
         m_leapSeconds = tempCollection$0;
     }
 
@@ -206,7 +206,7 @@ public class LeapSeconds {
     * @return true if the day contains a leap second, otherwise false.
     */
     public final boolean doesDayHaveLeapSecond(int julianDayNumber) {
-        LeapSecond potentialLeapSecond = new LeapSecond(new JulianDate(julianDayNumber, 43200D, TimeStandard.COORDINATED_UNIVERSAL_TIME), 0.0);
+        LeapSecond potentialLeapSecond = new LeapSecond(new JulianDate(julianDayNumber, 43200.0, TimeStandard.COORDINATED_UNIVERSAL_TIME), 0.0);
         return Collections.binarySearch(m_leapSeconds, potentialLeapSecond, s_leapSecondComparer) >= 0;
     }
 

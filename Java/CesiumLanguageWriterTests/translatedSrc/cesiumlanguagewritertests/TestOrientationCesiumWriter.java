@@ -33,7 +33,7 @@ public class TestOrientationCesiumWriter extends TestCesiumInterpolatablePropert
         TimeInterval availability = new TimeInterval(date, date.addDays(2.0));
         TimeInterval interval1 = new TimeInterval(date, date.addDays(1.0));
         Cartesian interval1Position = new Cartesian(1.0, 2.0, 3.0);
-        UnitQuaternion interval1Orientation = new UnitQuaternion(1D, 0D, 0D, 0D);
+        UnitQuaternion interval1Orientation = new UnitQuaternion(1.0, 0.0, 0.0, 0.0);
         TimeInterval interval2 = new TimeInterval(date.addDays(1.0), date.addDays(2.0));
         final ArrayList<JulianDate> tempCollection$0 = new ArrayList<JulianDate>();
         tempCollection$0.add(date.addDays(1.0));
@@ -97,7 +97,7 @@ public class TestOrientationCesiumWriter extends TestCesiumInterpolatablePropert
 
     @Test
     public final void testDeletePropertyWithStartAndStop() {
-        JulianDate start = new GregorianDate(2012, 4, 2, 12, 0, 0D).toJulianDate();
+        JulianDate start = new GregorianDate(2012, 4, 2, 12, 0, 0.0).toJulianDate();
         JulianDate stop = start.addDays(1.0);
         final String expectedId = "id";
         final boolean expectedDelete = true;

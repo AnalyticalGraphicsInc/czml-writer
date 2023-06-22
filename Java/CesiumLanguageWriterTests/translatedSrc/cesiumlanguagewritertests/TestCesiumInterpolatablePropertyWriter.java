@@ -101,7 +101,7 @@ public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends Ce
     @Test
     public final void writesForwardExtrapolationDuration() {
         final String expectedPropertyName = "foo";
-        Duration expectedForwardExtrapolationDuration = Duration.fromSeconds(12D);
+        Duration expectedForwardExtrapolationDuration = Duration.fromSeconds(12.0);
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
             try (Using<CesiumPropertyWriter<TDerived>> using$1 = new Using<CesiumPropertyWriter<TDerived>>(createPropertyWriter(expectedPropertyName))) {
                 final CesiumPropertyWriter<TDerived> propertyWriter = using$1.resource;
@@ -120,7 +120,7 @@ public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends Ce
     @Test
     public final void writesBackwardExtrapolationDuration() {
         final String expectedPropertyName = "foo";
-        Duration expectedBackwardExtrapolationDuration = Duration.fromSeconds(12D);
+        Duration expectedBackwardExtrapolationDuration = Duration.fromSeconds(12.0);
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
             try (Using<CesiumPropertyWriter<TDerived>> using$1 = new Using<CesiumPropertyWriter<TDerived>>(createPropertyWriter(expectedPropertyName))) {
                 final CesiumPropertyWriter<TDerived> propertyWriter = using$1.resource;

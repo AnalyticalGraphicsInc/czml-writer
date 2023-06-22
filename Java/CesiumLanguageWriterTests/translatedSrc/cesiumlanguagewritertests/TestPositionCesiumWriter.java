@@ -79,7 +79,7 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
 
     @Test
     public final void cartesianValueWritesMultipleCartesianProperty() {
-        JulianDate epoch = new GregorianDate(2012, 4, 2, 12, 0, 0D).toJulianDate();
+        JulianDate epoch = new GregorianDate(2012, 4, 2, 12, 0, 0.0).toJulianDate();
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
             try (Using<PositionCesiumWriter> using$1 = new Using<PositionCesiumWriter>(getPacket().openPositionProperty())) {
                 final PositionCesiumWriter position = using$1.resource;
@@ -100,7 +100,7 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
 
     @Test
     public final void cartesianValueSubsetWritesMultipleCartesianProperty() {
-        JulianDate startDate = new GregorianDate(2012, 4, 2, 12, 0, 0D).toJulianDate();
+        JulianDate startDate = new GregorianDate(2012, 4, 2, 12, 0, 0.0).toJulianDate();
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
             try (Using<PositionCesiumWriter> using$1 = new Using<PositionCesiumWriter>(getPacket().openPositionProperty())) {
                 final PositionCesiumWriter position = using$1.resource;
@@ -123,7 +123,7 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
 
     @Test
     public final void cartographicRadiansValueWritesMultipleCartographicRadiansProperty() {
-        JulianDate startDate = new GregorianDate(2012, 4, 2, 12, 0, 0D).toJulianDate();
+        JulianDate startDate = new GregorianDate(2012, 4, 2, 12, 0, 0.0).toJulianDate();
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
             try (Using<PositionCesiumWriter> using$1 = new Using<PositionCesiumWriter>(getPacket().openPositionProperty())) {
                 final PositionCesiumWriter position = using$1.resource;
@@ -144,7 +144,7 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
 
     @Test
     public final void cartographicRadiansValueSubsetWritesMultipleCartographicRadiansProperty() {
-        JulianDate startDate = new GregorianDate(2012, 4, 2, 12, 0, 0D).toJulianDate();
+        JulianDate startDate = new GregorianDate(2012, 4, 2, 12, 0, 0.0).toJulianDate();
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
             try (Using<PositionCesiumWriter> using$1 = new Using<PositionCesiumWriter>(getPacket().openPositionProperty())) {
                 final PositionCesiumWriter position = using$1.resource;
@@ -199,7 +199,7 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
 
     @Test
     public final void testDeletePropertyWithStartAndStop() {
-        JulianDate start = new GregorianDate(2012, 4, 2, 12, 0, 0D).toJulianDate();
+        JulianDate start = new GregorianDate(2012, 4, 2, 12, 0, 0.0).toJulianDate();
         JulianDate stop = start.addDays(1.0);
         final String expectedId = "id";
         final boolean expectedDelete = true;

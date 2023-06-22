@@ -29,7 +29,7 @@ public class TestPolylineDashMaterialCesiumWriter extends TestCesiumPropertyWrit
         Color expectedColor = Color.RED;
         int expectedDashPattern = ConvertHelper.toInt32("0011001100110011", 2);
         Color expectedGapColor = Color.BLUE;
-        final double expectedDashLength = 25D;
+        final double expectedDashLength = 25.0;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
             try (Using<PolylineCesiumWriter> using$1 = new Using<PolylineCesiumWriter>(getPacket().openPolylineProperty())) {
                 final PolylineCesiumWriter polyline = using$1.resource;

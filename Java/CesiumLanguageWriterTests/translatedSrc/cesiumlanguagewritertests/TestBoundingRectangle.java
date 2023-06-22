@@ -47,7 +47,7 @@ public class TestBoundingRectangle {
         AssertHelper.assertEquals(0, BoundingRectangle.getEmpty().getTop());
         AssertHelper.assertEquals(0, BoundingRectangle.getEmpty().getHeight());
         AssertHelper.assertEquals(0, BoundingRectangle.getEmpty().getWidth());
-        BoundingRectangle boundingRectangle1 = new BoundingRectangle(1D, 2D, 3D, 4D);
+        BoundingRectangle boundingRectangle1 = new BoundingRectangle(1.0, 2.0, 3.0, 4.0);
         AssertHelper.assertEquals(1, boundingRectangle1.getLeft());
         AssertHelper.assertEquals(2, boundingRectangle1.getBottom());
         AssertHelper.assertEquals(3, boundingRectangle1.getRight());
@@ -63,7 +63,7 @@ public class TestBoundingRectangle {
     public final void testInitializationFromBadElementsWidth() {
         AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, new Action() {
             public void invoke() {
-                BoundingRectangle unused = new BoundingRectangle(2D, 2D, 1D, 3D);
+                BoundingRectangle unused = new BoundingRectangle(2.0, 2.0, 1.0, 3.0);
             }
         });
     }
@@ -75,7 +75,7 @@ public class TestBoundingRectangle {
     public final void testInitializationFromBadElementsHeight() {
         AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, new Action() {
             public void invoke() {
-                BoundingRectangle unused = new BoundingRectangle(2D, 2D, 3D, 1D);
+                BoundingRectangle unused = new BoundingRectangle(2.0, 2.0, 3.0, 1.0);
             }
         });
     }
@@ -85,9 +85,9 @@ public class TestBoundingRectangle {
     */
     @Test
     public final void equalityTest() {
-        BoundingRectangle boundingRectangle = new BoundingRectangle(1D, 2D, 3D, 4D);
-        BoundingRectangle sameBoundingRectangle = new BoundingRectangle(1D, 2D, 3D, 4D);
-        BoundingRectangle diffBoundingRectangle = new BoundingRectangle(2D, 3D, 4D, 5D);
+        BoundingRectangle boundingRectangle = new BoundingRectangle(1.0, 2.0, 3.0, 4.0);
+        BoundingRectangle sameBoundingRectangle = new BoundingRectangle(1.0, 2.0, 3.0, 4.0);
+        BoundingRectangle diffBoundingRectangle = new BoundingRectangle(2.0, 3.0, 4.0, 5.0);
         Assert.assertTrue(boundingRectangle.equalsType(sameBoundingRectangle));
         Assert.assertFalse(boundingRectangle.equalsType(diffBoundingRectangle));
         Assert.assertTrue(BoundingRectangle.equals(boundingRectangle, sameBoundingRectangle));
@@ -103,12 +103,12 @@ public class TestBoundingRectangle {
     */
     @Test
     public final void testEqualsEpsilon() {
-        BoundingRectangle boundingRectangle = new BoundingRectangle(1000D, 2000D, 3000D, 4000D);
-        BoundingRectangle similarBoundingRectangle = new BoundingRectangle(1010D, 2010D, 3010D, 4010D);
-        Assert.assertTrue(boundingRectangle.equalsEpsilon(similarBoundingRectangle, 1000D));
-        Assert.assertTrue(boundingRectangle.equalsEpsilon(similarBoundingRectangle, 100D));
-        Assert.assertTrue(boundingRectangle.equalsEpsilon(similarBoundingRectangle, 10D));
-        Assert.assertFalse(boundingRectangle.equalsEpsilon(similarBoundingRectangle, 1D));
+        BoundingRectangle boundingRectangle = new BoundingRectangle(1000.0, 2000.0, 3000.0, 4000.0);
+        BoundingRectangle similarBoundingRectangle = new BoundingRectangle(1010.0, 2010.0, 3010.0, 4010.0);
+        Assert.assertTrue(boundingRectangle.equalsEpsilon(similarBoundingRectangle, 1000.0));
+        Assert.assertTrue(boundingRectangle.equalsEpsilon(similarBoundingRectangle, 100.0));
+        Assert.assertTrue(boundingRectangle.equalsEpsilon(similarBoundingRectangle, 10.0));
+        Assert.assertFalse(boundingRectangle.equalsEpsilon(similarBoundingRectangle, 1.0));
     }
 
     /**
@@ -116,9 +116,9 @@ public class TestBoundingRectangle {
     */
     @Test
     public final void testGetHashCode() {
-        BoundingRectangle boundingRectangle1 = new BoundingRectangle(1D, 2D, 3D, 4D);
-        BoundingRectangle boundingRectangle2 = new BoundingRectangle(1D, 2D, 3D, 4D);
-        BoundingRectangle boundingRectangle3 = new BoundingRectangle(2D, 3D, 4D, 5D);
+        BoundingRectangle boundingRectangle1 = new BoundingRectangle(1.0, 2.0, 3.0, 4.0);
+        BoundingRectangle boundingRectangle2 = new BoundingRectangle(1.0, 2.0, 3.0, 4.0);
+        BoundingRectangle boundingRectangle3 = new BoundingRectangle(2.0, 3.0, 4.0, 5.0);
         AssertHelper.assertEquals(boundingRectangle1.hashCode(), boundingRectangle2.hashCode());
         AssertHelper.assertNotEqual(boundingRectangle1.hashCode(), boundingRectangle3.hashCode());
     }
@@ -128,7 +128,7 @@ public class TestBoundingRectangle {
     */
     @Test
     public final void testToString() {
-        BoundingRectangle boundingRectangle = new BoundingRectangle(1D, 2D, 3D, 4D);
+        BoundingRectangle boundingRectangle = new BoundingRectangle(1.0, 2.0, 3.0, 4.0);
         final int val1 = 1;
         final int val2 = 2;
         final int val3 = 3;

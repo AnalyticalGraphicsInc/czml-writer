@@ -226,7 +226,7 @@ public class TestDuration {
         result = Duration.multiply(duration, -0.5);
         Assert.assertTrue(result.equalsEpsilon(new Duration(-2, -43200.5), Constants.Epsilon10));
         duration = new Duration(0, 18 * 3600);
-        result = Duration.multiply(duration, -2D);
+        result = Duration.multiply(duration, -2.0);
         AssertHelper.assertEquals(-12 * 3600, result.getSeconds());
         AssertHelper.assertEquals(-1, result.getDays());
         duration = new Duration(1, 4 * 3600);
@@ -247,11 +247,11 @@ public class TestDuration {
         Duration three = new Duration(1, 43200.0);
         AssertHelper.assertEquals((86400 + 43200) / 60.0, Duration.divide(three, two), Constants.Epsilon10);
         AssertHelper.assertEquals(60.0 / (86400.0 + 43200.0), two.divide(three), Constants.Epsilon10);
-        Duration four = new Duration(1, 0D);
-        Duration five = new Duration(0, -3600D);
-        AssertHelper.assertEquals(-24D, Duration.divide(four, five), Constants.Epsilon10);
+        Duration four = new Duration(1, 0.0);
+        Duration five = new Duration(0, -3600.0);
+        AssertHelper.assertEquals(-24.0, Duration.divide(four, five), Constants.Epsilon10);
         AssertHelper.assertEquals(-1.0 / 24.0, Duration.divide(five, four), Constants.Epsilon10);
-        Duration six = new Duration(-2, 0D);
+        Duration six = new Duration(-2, 0.0);
         AssertHelper.assertEquals(-0.5, Duration.divide(four, six));
         AssertHelper.assertEquals(48, Duration.divide(six, five));
         Duration seven = new Duration(0, -0.5);
@@ -291,7 +291,7 @@ public class TestDuration {
         AssertHelper.assertEquals(-12 * 3600, result.getSeconds());
         AssertHelper.assertEquals(-1, result.getDays());
         duration = new Duration(1, 4 * 3600);
-        result = Duration.divide(duration, -2D);
+        result = Duration.divide(duration, -2.0);
         AssertHelper.assertEquals(-14 * 3600, result.getSeconds());
         AssertHelper.assertEquals(0, result.getDays());
     }

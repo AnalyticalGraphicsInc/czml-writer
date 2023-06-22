@@ -85,7 +85,7 @@ public class TestCartographic {
     public final void testEqualsEpsilonExact() {
         Cartographic first = new Cartographic(0.1, 0.1, 0.1);
         Cartographic second = new Cartographic(0.1, 0.1, 0.1);
-        Assert.assertTrue(second.equalsEpsilon(first, 0D));
+        Assert.assertTrue(second.equalsEpsilon(first, 0.0));
     }
 
     /**

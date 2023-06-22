@@ -114,8 +114,8 @@ public class TestNodeTransformationsCesiumWriter extends TestCesiumPropertyWrite
             try (Using<PacketCesiumWriter> using$1 = new Using<PacketCesiumWriter>(writer.openPacket(output))) {
                 final PacketCesiumWriter packet = using$1.resource;
                 packet.writeId("MyID");
-                JulianDate startDate = new GregorianDate(2012, 4, 2, 12, 0, 0D).toJulianDate();
-                JulianDate stopDate = new GregorianDate(2012, 4, 2, 12, 1, 0D).toJulianDate();
+                JulianDate startDate = new GregorianDate(2012, 4, 2, 12, 0, 0.0).toJulianDate();
+                JulianDate stopDate = new GregorianDate(2012, 4, 2, 12, 1, 0.0).toJulianDate();
                 try (Using<ClockCesiumWriter> using$2 = new Using<ClockCesiumWriter>(packet.openClockProperty())) {
                     final ClockCesiumWriter clockWriter = using$2.resource;
                     try (Using<ClockCesiumWriter> using$3 = new Using<ClockCesiumWriter>(clockWriter.openInterval(startDate, stopDate))) {

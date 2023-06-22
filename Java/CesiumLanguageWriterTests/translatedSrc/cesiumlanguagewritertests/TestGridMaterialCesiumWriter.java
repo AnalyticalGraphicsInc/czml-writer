@@ -27,9 +27,9 @@ public class TestGridMaterialCesiumWriter extends TestCesiumPropertyWriter<GridM
     public final void testWriteGridMaterial() {
         Color expectedColor = Color.RED;
         final double expectedCellAlpha = 0.7;
-        Rectangular expectedLineCount = new Rectangular(6D, 3D);
-        Rectangular expectedLineThickness = new Rectangular(3D, 4D);
-        Rectangular expectedLineOffset = new Rectangular(5D, 9D);
+        Rectangular expectedLineCount = new Rectangular(6.0, 3.0);
+        Rectangular expectedLineThickness = new Rectangular(3.0, 4.0);
+        Rectangular expectedLineOffset = new Rectangular(5.0, 9.0);
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
             try (Using<PolylineCesiumWriter> using$1 = new Using<PolylineCesiumWriter>(getPacket().openPolylineProperty())) {
                 final PolylineCesiumWriter polyline = using$1.resource;

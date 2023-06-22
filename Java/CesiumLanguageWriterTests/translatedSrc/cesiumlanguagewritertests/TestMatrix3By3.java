@@ -346,7 +346,7 @@ public class TestMatrix3By3 {
         AssertHelper.assertEquals(Matrix3By3.getZero(), Matrix3By3.subtract(matrix1, matrix2));
         AssertHelper.assertEquals(Matrix3By3.multiply(matrix2, 2.0), matrix1.add(matrix2));
         AssertHelper.assertEquals(Matrix3By3.multiply(matrix2, 2.0), Matrix3By3.add(matrix1, matrix2));
-        Matrix3By3 expected = new Matrix3By3(30D, 36D, 42D, 66D, 81D, 96D, 102D, 126D, 150D);
+        Matrix3By3 expected = new Matrix3By3(30.0, 36.0, 42.0, 66.0, 81.0, 96.0, 102.0, 126.0, 150.0);
         AssertHelper.assertEquals(expected, matrix1.multiply(matrix2));
         AssertHelper.assertEquals(expected, Matrix3By3.multiply(matrix1, matrix2));
     }
@@ -357,8 +357,8 @@ public class TestMatrix3By3 {
     @Test
     public final void testMathOperatorsWithCartesian() {
         Matrix3By3 matrix = new Matrix3By3(1.0, 2.0, 4.0, 2.0, 3.0, 5.0, 4.0, 5.0, 6.0);
-        Cartesian vector = new Cartesian(1D, 2D, 3D);
-        Cartesian expected = new Cartesian(17D, 23D, 32D);
+        Cartesian vector = new Cartesian(1.0, 2.0, 3.0);
+        Cartesian expected = new Cartesian(17.0, 23.0, 32.0);
         AssertHelper.assertEquals(expected, matrix.multiply(vector));
         AssertHelper.assertEquals(expected, Matrix3By3.multiply(matrix, vector));
     }

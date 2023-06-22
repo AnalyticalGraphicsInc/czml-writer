@@ -40,7 +40,7 @@ public class TestDoubleCesiumWriter extends TestCesiumPropertyWriter<DoubleCesiu
 
     @Test
     public final void doubleCanBeWrittenInsideInterval() {
-        JulianDate start = new GregorianDate(2012, 6, 7, 12, 0, 0D).toJulianDate();
+        JulianDate start = new GregorianDate(2012, 6, 7, 12, 0, 0.0).toJulianDate();
         JulianDate stop = start.addSeconds(100.0);
         final String expectedPropertyName = "foo";
         final double expectedValue = 1.23;
@@ -60,7 +60,7 @@ public class TestDoubleCesiumWriter extends TestCesiumPropertyWriter<DoubleCesiu
 
     @Test
     public final void testDeletePropertyWithStartAndStop() {
-        JulianDate start = new GregorianDate(2012, 4, 2, 12, 0, 0D).toJulianDate();
+        JulianDate start = new GregorianDate(2012, 4, 2, 12, 0, 0.0).toJulianDate();
         JulianDate stop = start.addDays(1.0);
         final String expectedId = "id";
         final String expectedPropertyName = "foo";

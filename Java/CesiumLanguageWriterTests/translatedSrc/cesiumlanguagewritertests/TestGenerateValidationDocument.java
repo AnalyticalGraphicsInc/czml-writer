@@ -33,9 +33,9 @@ import org.junit.Test;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestGenerateValidationDocument {
     @Nonnull
-    private JulianDate m_documentStartDate = new GregorianDate(2016, 6, 17, 12, 0, 0D).toJulianDate();
+    private JulianDate m_documentStartDate = new GregorianDate(2016, 6, 17, 12, 0, 0.0).toJulianDate();
     @Nonnull
-    private JulianDate m_documentStopDate = new GregorianDate(2016, 6, 17, 13, 0, 0D).toJulianDate();
+    private JulianDate m_documentStopDate = new GregorianDate(2016, 6, 17, 13, 0, 0.0).toJulianDate();
     private Writer m_streamWriter;
     private Writer m_assertionsWriter;
     private Writer m_extensionsAssertionsWriter;
@@ -122,7 +122,7 @@ public class TestGenerateValidationDocument {
             }
             try (Using<PositionCesiumWriter> using$2 = new Using<PositionCesiumWriter>(packet.openPositionProperty())) {
                 final PositionCesiumWriter w = using$2.resource;
-                w.writeCartesian(new Cartesian(24944D, 16481D, 24896D));
+                w.writeCartesian(new Cartesian(24944.0, 16481.0, 24896.0));
                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.position.getValue(date)).toEqual(new Cartesian3(24944, 16481, 24896));");
             }
             try (Using<OrientationCesiumWriter> using$3 = new Using<OrientationCesiumWriter>(packet.openOrientationProperty())) {
@@ -133,7 +133,7 @@ public class TestGenerateValidationDocument {
             }
             try (Using<ViewFromCesiumWriter> using$4 = new Using<ViewFromCesiumWriter>(packet.openViewFromProperty())) {
                 final ViewFromCesiumWriter w = using$4.resource;
-                w.writeCartesian(new Cartesian(17794D, 13381D, 18228D));
+                w.writeCartesian(new Cartesian(17794.0, 13381.0, 18228.0));
                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.viewFrom.getValue(date)).toEqual(new Cartesian3(17794, 13381, 18228));");
             }
             try (Using<BillboardCesiumWriter> using$5 = new Using<BillboardCesiumWriter>(packet.openBillboardProperty())) {
@@ -155,12 +155,12 @@ public class TestGenerateValidationDocument {
                 }
                 try (Using<PixelOffsetCesiumWriter> using$9 = new Using<PixelOffsetCesiumWriter>(w.openPixelOffsetProperty())) {
                     final PixelOffsetCesiumWriter w2 = using$9.resource;
-                    w2.writeCartesian2(new Rectangular(16996D, 51010D));
+                    w2.writeCartesian2(new Rectangular(16996.0, 51010.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.billboard.pixelOffset.getValue(date)).toEqual(new Cartesian2(16996, 51010));");
                 }
                 try (Using<EyeOffsetCesiumWriter> using$10 = new Using<EyeOffsetCesiumWriter>(w.openEyeOffsetProperty())) {
                     final EyeOffsetCesiumWriter w2 = using$10.resource;
-                    w2.writeCartesian(new Cartesian(64633D, 11516D, 17196D));
+                    w2.writeCartesian(new Cartesian(64633.0, 11516.0, 17196.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.billboard.eyeOffset.getValue(date)).toEqual(new Cartesian3(64633, 11516, 17196));");
                 }
                 try (Using<HorizontalOriginCesiumWriter> using$11 = new Using<HorizontalOriginCesiumWriter>(w.openHorizontalOriginProperty())) {
@@ -211,27 +211,27 @@ public class TestGenerateValidationDocument {
                 }
                 try (Using<NearFarScalarCesiumWriter> using$20 = new Using<NearFarScalarCesiumWriter>(w.openScaleByDistanceProperty())) {
                     final NearFarScalarCesiumWriter w2 = using$20.resource;
-                    w2.writeNearFarScalar(new NearFarScalar(59318D, 31207D, 63353D, 55287D));
+                    w2.writeNearFarScalar(new NearFarScalar(59318.0, 31207.0, 63353.0, 55287.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.billboard.scaleByDistance.getValue(date)).toEqual(new NearFarScalar(59318, 31207, 63353, 55287));");
                 }
                 try (Using<NearFarScalarCesiumWriter> using$21 = new Using<NearFarScalarCesiumWriter>(w.openTranslucencyByDistanceProperty())) {
                     final NearFarScalarCesiumWriter w2 = using$21.resource;
-                    w2.writeNearFarScalar(new NearFarScalar(43707D, 31146D, 12921D, 57138D));
+                    w2.writeNearFarScalar(new NearFarScalar(43707.0, 31146.0, 12921.0, 57138.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.billboard.translucencyByDistance.getValue(date)).toEqual(new NearFarScalar(43707, 31146, 12921, 57138));");
                 }
                 try (Using<NearFarScalarCesiumWriter> using$22 = new Using<NearFarScalarCesiumWriter>(w.openPixelOffsetScaleByDistanceProperty())) {
                     final NearFarScalarCesiumWriter w2 = using$22.resource;
-                    w2.writeNearFarScalar(new NearFarScalar(11873D, 40494D, 29598D, 27507D));
+                    w2.writeNearFarScalar(new NearFarScalar(11873.0, 40494.0, 29598.0, 27507.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.billboard.pixelOffsetScaleByDistance.getValue(date)).toEqual(new NearFarScalar(11873, 40494, 29598, 27507));");
                 }
                 try (Using<BoundingRectangleCesiumWriter> using$23 = new Using<BoundingRectangleCesiumWriter>(w.openImageSubRegionProperty())) {
                     final BoundingRectangleCesiumWriter w2 = using$23.resource;
-                    w2.writeBoundingRectangle(BoundingRectangle.fromWidthHeight(62620D, 63220D, 23030D, 63321D));
+                    w2.writeBoundingRectangle(BoundingRectangle.fromWidthHeight(62620.0, 63220.0, 23030.0, 63321.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.billboard.imageSubRegion.getValue(date)).toEqual(new BoundingRectangle(62620, 63220, 23030, 63321));");
                 }
                 try (Using<DistanceDisplayConditionCesiumWriter> using$24 = new Using<DistanceDisplayConditionCesiumWriter>(w.openDistanceDisplayConditionProperty())) {
                     final DistanceDisplayConditionCesiumWriter w2 = using$24.resource;
-                    w2.writeDistanceDisplayCondition(new Bounds(22843D, 27481D));
+                    w2.writeDistanceDisplayCondition(new Bounds(22843.0, 27481.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.billboard.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(22843, 27481));");
                 }
                 try (Using<DoubleCesiumWriter> using$25 = new Using<DoubleCesiumWriter>(w.openDisableDepthTestDistanceProperty())) {
@@ -249,7 +249,7 @@ public class TestGenerateValidationDocument {
                 }
                 try (Using<BoxDimensionsCesiumWriter> using$28 = new Using<BoxDimensionsCesiumWriter>(w.openDimensionsProperty())) {
                     final BoxDimensionsCesiumWriter w2 = using$28.resource;
-                    w2.writeCartesian(new Cartesian(57494D, 62432D, 42995D));
+                    w2.writeCartesian(new Cartesian(57494.0, 62432.0, 42995.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.box.dimensions.getValue(date)).toEqual(new Cartesian3(57494, 62432, 42995));");
                 }
                 try (Using<HeightReferenceCesiumWriter> using$29 = new Using<HeightReferenceCesiumWriter>(w.openHeightReferenceProperty())) {
@@ -295,7 +295,7 @@ public class TestGenerateValidationDocument {
                 }
                 try (Using<DistanceDisplayConditionCesiumWriter> using$38 = new Using<DistanceDisplayConditionCesiumWriter>(w.openDistanceDisplayConditionProperty())) {
                     final DistanceDisplayConditionCesiumWriter w2 = using$38.resource;
-                    w2.writeDistanceDisplayCondition(new Bounds(3775D, 49016D));
+                    w2.writeDistanceDisplayCondition(new Bounds(3775.0, 49016.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.box.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(3775, 49016));");
                 }
             }
@@ -308,7 +308,7 @@ public class TestGenerateValidationDocument {
                 }
                 try (Using<PositionListCesiumWriter> using$41 = new Using<PositionListCesiumWriter>(w.openPositionsProperty())) {
                     final PositionListCesiumWriter w2 = using$41.resource;
-                    w2.writeCartesian(TestGenerateValidationDocument.<Cartesian> createList(new Cartesian(36415D, 2702D, 36618D), new Cartesian(47759D, 11706D, 63277D)));
+                    w2.writeCartesian(TestGenerateValidationDocument.<Cartesian> createList(new Cartesian(36415.0, 2702.0, 36618.0), new Cartesian(47759.0, 11706.0, 63277.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter,
                             "    expect(e.corridor.positions.getValue(date)).toEqual([ new Cartesian3(36415, 2702, 36618), new Cartesian3(47759, 11706, 63277) ]);");
                 }
@@ -385,7 +385,7 @@ public class TestGenerateValidationDocument {
                 }
                 try (Using<DistanceDisplayConditionCesiumWriter> using$57 = new Using<DistanceDisplayConditionCesiumWriter>(w.openDistanceDisplayConditionProperty())) {
                     final DistanceDisplayConditionCesiumWriter w2 = using$57.resource;
-                    w2.writeDistanceDisplayCondition(new Bounds(15797D, 46507D));
+                    w2.writeDistanceDisplayCondition(new Bounds(15797.0, 46507.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.corridor.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(15797, 46507));");
                 }
                 try (Using<ClassificationTypeCesiumWriter> using$58 = new Using<ClassificationTypeCesiumWriter>(w.openClassificationTypeProperty())) {
@@ -474,7 +474,7 @@ public class TestGenerateValidationDocument {
                 }
                 try (Using<DistanceDisplayConditionCesiumWriter> using$76 = new Using<DistanceDisplayConditionCesiumWriter>(w.openDistanceDisplayConditionProperty())) {
                     final DistanceDisplayConditionCesiumWriter w2 = using$76.resource;
-                    w2.writeDistanceDisplayCondition(new Bounds(43860D, 52395D));
+                    w2.writeDistanceDisplayCondition(new Bounds(43860.0, 52395.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.cylinder.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(43860, 52395));");
                 }
             }
@@ -573,7 +573,7 @@ public class TestGenerateValidationDocument {
                 }
                 try (Using<DistanceDisplayConditionCesiumWriter> using$97 = new Using<DistanceDisplayConditionCesiumWriter>(w.openDistanceDisplayConditionProperty())) {
                     final DistanceDisplayConditionCesiumWriter w2 = using$97.resource;
-                    w2.writeDistanceDisplayCondition(new Bounds(27813D, 30828D));
+                    w2.writeDistanceDisplayCondition(new Bounds(27813.0, 30828.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(27813, 30828));");
                 }
                 try (Using<ClassificationTypeCesiumWriter> using$98 = new Using<ClassificationTypeCesiumWriter>(w.openClassificationTypeProperty())) {
@@ -596,12 +596,12 @@ public class TestGenerateValidationDocument {
                 }
                 try (Using<EllipsoidRadiiCesiumWriter> using$102 = new Using<EllipsoidRadiiCesiumWriter>(w.openRadiiProperty())) {
                     final EllipsoidRadiiCesiumWriter w2 = using$102.resource;
-                    w2.writeCartesian(new Cartesian(15638D, 24381D, 37983D));
+                    w2.writeCartesian(new Cartesian(15638.0, 24381.0, 37983.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.radii.getValue(date)).toEqual(new Cartesian3(15638, 24381, 37983));");
                 }
                 try (Using<EllipsoidRadiiCesiumWriter> using$103 = new Using<EllipsoidRadiiCesiumWriter>(w.openInnerRadiiProperty())) {
                     final EllipsoidRadiiCesiumWriter w2 = using$103.resource;
-                    w2.writeCartesian(new Cartesian(21988D, 44373D, 36013D));
+                    w2.writeCartesian(new Cartesian(21988.0, 44373.0, 36013.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.innerRadii.getValue(date)).toEqual(new Cartesian3(21988, 44373, 36013));");
                 }
                 try (Using<DoubleCesiumWriter> using$104 = new Using<DoubleCesiumWriter>(w.openMinimumClockProperty())) {
@@ -682,7 +682,7 @@ public class TestGenerateValidationDocument {
                 }
                 try (Using<DistanceDisplayConditionCesiumWriter> using$120 = new Using<DistanceDisplayConditionCesiumWriter>(w.openDistanceDisplayConditionProperty())) {
                     final DistanceDisplayConditionCesiumWriter w2 = using$120.resource;
-                    w2.writeDistanceDisplayCondition(new Bounds(3293D, 56793D));
+                    w2.writeDistanceDisplayCondition(new Bounds(3293.0, 56793.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(3293, 56793));");
                 }
             }
@@ -725,17 +725,17 @@ public class TestGenerateValidationDocument {
                 }
                 try (Using<BackgroundPaddingCesiumWriter> using$129 = new Using<BackgroundPaddingCesiumWriter>(w.openBackgroundPaddingProperty())) {
                     final BackgroundPaddingCesiumWriter w2 = using$129.resource;
-                    w2.writeCartesian2(new Rectangular(5508D, 56341D));
+                    w2.writeCartesian2(new Rectangular(5508.0, 56341.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.label.backgroundPadding.getValue(date)).toEqual(new Cartesian2(5508, 56341));");
                 }
                 try (Using<PixelOffsetCesiumWriter> using$130 = new Using<PixelOffsetCesiumWriter>(w.openPixelOffsetProperty())) {
                     final PixelOffsetCesiumWriter w2 = using$130.resource;
-                    w2.writeCartesian2(new Rectangular(25913D, 30821D));
+                    w2.writeCartesian2(new Rectangular(25913.0, 30821.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.label.pixelOffset.getValue(date)).toEqual(new Cartesian2(25913, 30821));");
                 }
                 try (Using<EyeOffsetCesiumWriter> using$131 = new Using<EyeOffsetCesiumWriter>(w.openEyeOffsetProperty())) {
                     final EyeOffsetCesiumWriter w2 = using$131.resource;
-                    w2.writeCartesian(new Cartesian(30502D, 29047D, 25457D));
+                    w2.writeCartesian(new Cartesian(30502.0, 29047.0, 25457.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.label.eyeOffset.getValue(date)).toEqual(new Cartesian3(30502, 29047, 25457));");
                 }
                 try (Using<HorizontalOriginCesiumWriter> using$132 = new Using<HorizontalOriginCesiumWriter>(w.openHorizontalOriginProperty())) {
@@ -770,22 +770,22 @@ public class TestGenerateValidationDocument {
                 }
                 try (Using<NearFarScalarCesiumWriter> using$138 = new Using<NearFarScalarCesiumWriter>(w.openTranslucencyByDistanceProperty())) {
                     final NearFarScalarCesiumWriter w2 = using$138.resource;
-                    w2.writeNearFarScalar(new NearFarScalar(34067D, 16517D, 11328D, 13612D));
+                    w2.writeNearFarScalar(new NearFarScalar(34067.0, 16517.0, 11328.0, 13612.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.label.translucencyByDistance.getValue(date)).toEqual(new NearFarScalar(34067, 16517, 11328, 13612));");
                 }
                 try (Using<NearFarScalarCesiumWriter> using$139 = new Using<NearFarScalarCesiumWriter>(w.openPixelOffsetScaleByDistanceProperty())) {
                     final NearFarScalarCesiumWriter w2 = using$139.resource;
-                    w2.writeNearFarScalar(new NearFarScalar(21220D, 35154D, 33161D, 36737D));
+                    w2.writeNearFarScalar(new NearFarScalar(21220.0, 35154.0, 33161.0, 36737.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.label.pixelOffsetScaleByDistance.getValue(date)).toEqual(new NearFarScalar(21220, 35154, 33161, 36737));");
                 }
                 try (Using<NearFarScalarCesiumWriter> using$140 = new Using<NearFarScalarCesiumWriter>(w.openScaleByDistanceProperty())) {
                     final NearFarScalarCesiumWriter w2 = using$140.resource;
-                    w2.writeNearFarScalar(new NearFarScalar(7350D, 32796D, 1408D, 55045D));
+                    w2.writeNearFarScalar(new NearFarScalar(7350.0, 32796.0, 1408.0, 55045.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.label.scaleByDistance.getValue(date)).toEqual(new NearFarScalar(7350, 32796, 1408, 55045));");
                 }
                 try (Using<DistanceDisplayConditionCesiumWriter> using$141 = new Using<DistanceDisplayConditionCesiumWriter>(w.openDistanceDisplayConditionProperty())) {
                     final DistanceDisplayConditionCesiumWriter w2 = using$141.resource;
-                    w2.writeDistanceDisplayCondition(new Bounds(5204D, 21012D));
+                    w2.writeDistanceDisplayCondition(new Bounds(5204.0, 21012.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.label.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(5204, 21012));");
                 }
                 try (Using<DoubleCesiumWriter> using$142 = new Using<DoubleCesiumWriter>(w.openDisableDepthTestDistanceProperty())) {
@@ -868,7 +868,7 @@ public class TestGenerateValidationDocument {
                 }
                 try (Using<DistanceDisplayConditionCesiumWriter> using$158 = new Using<DistanceDisplayConditionCesiumWriter>(w.openDistanceDisplayConditionProperty())) {
                     final DistanceDisplayConditionCesiumWriter w2 = using$158.resource;
-                    w2.writeDistanceDisplayCondition(new Bounds(31861D, 62844D));
+                    w2.writeDistanceDisplayCondition(new Bounds(31861.0, 62844.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.model.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(31861, 62844));");
                 }
                 try (Using<NodeTransformationsCesiumWriter> using$159 = new Using<NodeTransformationsCesiumWriter>(w.openNodeTransformationsProperty())) {
@@ -877,7 +877,7 @@ public class TestGenerateValidationDocument {
                         final NodeTransformationCesiumWriter a = using$160.resource;
                         try (Using<TranslationCesiumWriter> using$161 = new Using<TranslationCesiumWriter>(a.openTranslationProperty())) {
                             final TranslationCesiumWriter w3 = using$161.resource;
-                            w3.writeCartesian(new Cartesian(18548D, 48456D, 21181D));
+                            w3.writeCartesian(new Cartesian(18548.0, 48456.0, 21181.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.model.nodeTransformations.prop.translation.getValue(date)).toEqual(new Cartesian3(18548, 48456, 21181));");
                         }
                         try (Using<RotationCesiumWriter> using$162 = new Using<RotationCesiumWriter>(a.openRotationProperty())) {
@@ -888,7 +888,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<ScaleCesiumWriter> using$163 = new Using<ScaleCesiumWriter>(a.openScaleProperty())) {
                             final ScaleCesiumWriter w3 = using$163.resource;
-                            w3.writeCartesian(new Cartesian(53739D, 37841D, 41107D));
+                            w3.writeCartesian(new Cartesian(53739.0, 37841.0, 41107.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.model.nodeTransformations.prop.scale.getValue(date)).toEqual(new Cartesian3(53739, 37841, 41107));");
                         }
                     }
@@ -942,7 +942,7 @@ public class TestGenerateValidationDocument {
                 }
                 try (Using<DistanceDisplayConditionCesiumWriter> using$175 = new Using<DistanceDisplayConditionCesiumWriter>(w.openDistanceDisplayConditionProperty())) {
                     final DistanceDisplayConditionCesiumWriter w2 = using$175.resource;
-                    w2.writeDistanceDisplayCondition(new Bounds(11646D, 32422D));
+                    w2.writeDistanceDisplayCondition(new Bounds(11646.0, 32422.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(11646, 32422));");
                 }
             }
@@ -980,17 +980,17 @@ public class TestGenerateValidationDocument {
                 }
                 try (Using<NearFarScalarCesiumWriter> using$183 = new Using<NearFarScalarCesiumWriter>(w.openScaleByDistanceProperty())) {
                     final NearFarScalarCesiumWriter w2 = using$183.resource;
-                    w2.writeNearFarScalar(new NearFarScalar(20128D, 16462D, 49728D, 18882D));
+                    w2.writeNearFarScalar(new NearFarScalar(20128.0, 16462.0, 49728.0, 18882.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.point.scaleByDistance.getValue(date)).toEqual(new NearFarScalar(20128, 16462, 49728, 18882));");
                 }
                 try (Using<NearFarScalarCesiumWriter> using$184 = new Using<NearFarScalarCesiumWriter>(w.openTranslucencyByDistanceProperty())) {
                     final NearFarScalarCesiumWriter w2 = using$184.resource;
-                    w2.writeNearFarScalar(new NearFarScalar(52796D, 43982D, 61099D, 50158D));
+                    w2.writeNearFarScalar(new NearFarScalar(52796.0, 43982.0, 61099.0, 50158.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.point.translucencyByDistance.getValue(date)).toEqual(new NearFarScalar(52796, 43982, 61099, 50158));");
                 }
                 try (Using<DistanceDisplayConditionCesiumWriter> using$185 = new Using<DistanceDisplayConditionCesiumWriter>(w.openDistanceDisplayConditionProperty())) {
                     final DistanceDisplayConditionCesiumWriter w2 = using$185.resource;
-                    w2.writeDistanceDisplayCondition(new Bounds(29646D, 52915D));
+                    w2.writeDistanceDisplayCondition(new Bounds(29646.0, 52915.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.point.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(29646, 52915));");
                 }
                 try (Using<DoubleCesiumWriter> using$186 = new Using<DoubleCesiumWriter>(w.openDisableDepthTestDistanceProperty())) {
@@ -1008,15 +1008,16 @@ public class TestGenerateValidationDocument {
                 }
                 try (Using<PositionListCesiumWriter> using$189 = new Using<PositionListCesiumWriter>(w.openPositionsProperty())) {
                     final PositionListCesiumWriter w2 = using$189.resource;
-                    w2.writeCartesian(TestGenerateValidationDocument.<Cartesian> createList(new Cartesian(39143D, 2200D, 6408D), new Cartesian(27161D, 33386D, 62338D)));
+                    w2.writeCartesian(TestGenerateValidationDocument.<Cartesian> createList(new Cartesian(39143.0, 2200.0, 6408.0), new Cartesian(27161.0, 33386.0, 62338.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter,
                             "    expect(e.polygon.hierarchy.getValue(date).positions).toEqual([ new Cartesian3(39143, 2200, 6408), new Cartesian3(27161, 33386, 62338) ]);");
                 }
                 try (Using<PositionListOfListsCesiumWriter> using$190 = new Using<PositionListOfListsCesiumWriter>(w.openHolesProperty())) {
                     final PositionListOfListsCesiumWriter w2 = using$190.resource;
                     w2.writeCartesian(TestGenerateValidationDocument.<List<Cartesian>> createList(
-                            createList(new Cartesian(47462D, 20409D, 3151D), new Cartesian(58636D, 39653D, 53914D), new Cartesian(31954D, 4988D, 47462D)),
-                            createList(new Cartesian(20409D, 3151D, 58636D), new Cartesian(39653D, 53914D, 31954D), new Cartesian(4988D, 47462D, 20409D), new Cartesian(3151D, 58636D, 39653D))));
+                            createList(new Cartesian(47462.0, 20409.0, 3151.0), new Cartesian(58636.0, 39653.0, 53914.0), new Cartesian(31954.0, 4988.0, 47462.0)),
+                            createList(new Cartesian(20409.0, 3151.0, 58636.0), new Cartesian(39653.0, 53914.0, 31954.0), new Cartesian(4988.0, 47462.0, 20409.0),
+                                    new Cartesian(3151.0, 58636.0, 39653.0))));
                     TextWriterHelper.writeLine(m_assertionsWriter,
                             "    expect(e.polygon.hierarchy.getValue(date).holes).toEqual([ new PolygonHierarchy([ new Cartesian3(47462, 20409, 3151), new Cartesian3(58636, 39653, 53914), new Cartesian3(31954, 4988, 47462) ]), new PolygonHierarchy([ new Cartesian3(20409, 3151, 58636), new Cartesian3(39653, 53914, 31954), new Cartesian3(4988, 47462, 20409), new Cartesian3(3151, 58636, 39653) ]) ]);");
                 }
@@ -1108,7 +1109,7 @@ public class TestGenerateValidationDocument {
                 }
                 try (Using<DistanceDisplayConditionCesiumWriter> using$209 = new Using<DistanceDisplayConditionCesiumWriter>(w.openDistanceDisplayConditionProperty())) {
                     final DistanceDisplayConditionCesiumWriter w2 = using$209.resource;
-                    w2.writeDistanceDisplayCondition(new Bounds(5989D, 26104D));
+                    w2.writeDistanceDisplayCondition(new Bounds(5989.0, 26104.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(5989, 26104));");
                 }
                 try (Using<ClassificationTypeCesiumWriter> using$210 = new Using<ClassificationTypeCesiumWriter>(w.openClassificationTypeProperty())) {
@@ -1131,7 +1132,7 @@ public class TestGenerateValidationDocument {
                 }
                 try (Using<PositionListCesiumWriter> using$214 = new Using<PositionListCesiumWriter>(w.openPositionsProperty())) {
                     final PositionListCesiumWriter w2 = using$214.resource;
-                    w2.writeCartesian(TestGenerateValidationDocument.<Cartesian> createList(new Cartesian(23333D, 31067D, 17529D), new Cartesian(57924D, 41186D, 31648D)));
+                    w2.writeCartesian(TestGenerateValidationDocument.<Cartesian> createList(new Cartesian(23333.0, 31067.0, 17529.0), new Cartesian(57924.0, 41186.0, 31648.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter,
                             "    expect(e.polyline.positions.getValue(date)).toEqual([ new Cartesian3(23333, 31067, 17529), new Cartesian3(57924, 41186, 31648) ]);");
                 }
@@ -1179,7 +1180,7 @@ public class TestGenerateValidationDocument {
                 }
                 try (Using<DistanceDisplayConditionCesiumWriter> using$225 = new Using<DistanceDisplayConditionCesiumWriter>(w.openDistanceDisplayConditionProperty())) {
                     final DistanceDisplayConditionCesiumWriter w2 = using$225.resource;
-                    w2.writeDistanceDisplayCondition(new Bounds(5807D, 30486D));
+                    w2.writeDistanceDisplayCondition(new Bounds(5807.0, 30486.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(5807, 30486));");
                 }
                 try (Using<BooleanCesiumWriter> using$226 = new Using<BooleanCesiumWriter>(w.openClampToGroundProperty())) {
@@ -1207,13 +1208,13 @@ public class TestGenerateValidationDocument {
                 }
                 try (Using<PositionListCesiumWriter> using$231 = new Using<PositionListCesiumWriter>(w.openPositionsProperty())) {
                     final PositionListCesiumWriter w2 = using$231.resource;
-                    w2.writeCartesian(TestGenerateValidationDocument.<Cartesian> createList(new Cartesian(62250D, 34803D, 52359D), new Cartesian(59852D, 58857D, 24549D)));
+                    w2.writeCartesian(TestGenerateValidationDocument.<Cartesian> createList(new Cartesian(62250.0, 34803.0, 52359.0), new Cartesian(59852.0, 58857.0, 24549.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter,
                             "    expect(e.polylineVolume.positions.getValue(date)).toEqual([ new Cartesian3(62250, 34803, 52359), new Cartesian3(59852, 58857, 24549) ]);");
                 }
                 try (Using<ShapeCesiumWriter> using$232 = new Using<ShapeCesiumWriter>(w.openShapeProperty())) {
                     final ShapeCesiumWriter w2 = using$232.resource;
-                    w2.writeCartesian2(TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(45301D, 43952D), new Rectangular(34475D, 28294D)));
+                    w2.writeCartesian2(TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(45301.0, 43952.0), new Rectangular(34475.0, 28294.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.shape.getValue(date)).toEqual([ new Cartesian2(45301, 43952), new Cartesian2(34475, 28294) ]);");
                 }
                 try (Using<CornerTypeCesiumWriter> using$233 = new Using<CornerTypeCesiumWriter>(w.openCornerTypeProperty())) {
@@ -1264,7 +1265,7 @@ public class TestGenerateValidationDocument {
                 }
                 try (Using<DistanceDisplayConditionCesiumWriter> using$243 = new Using<DistanceDisplayConditionCesiumWriter>(w.openDistanceDisplayConditionProperty())) {
                     final DistanceDisplayConditionCesiumWriter w2 = using$243.resource;
-                    w2.writeDistanceDisplayCondition(new Bounds(49375D, 57097D));
+                    w2.writeDistanceDisplayCondition(new Bounds(49375.0, 57097.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(49375, 57097));");
                 }
             }
@@ -1354,7 +1355,7 @@ public class TestGenerateValidationDocument {
                 }
                 try (Using<DistanceDisplayConditionCesiumWriter> using$262 = new Using<DistanceDisplayConditionCesiumWriter>(w.openDistanceDisplayConditionProperty())) {
                     final DistanceDisplayConditionCesiumWriter w2 = using$262.resource;
-                    w2.writeDistanceDisplayCondition(new Bounds(21388D, 23379D));
+                    w2.writeDistanceDisplayCondition(new Bounds(21388.0, 23379.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(21388, 23379));");
                 }
                 try (Using<ClassificationTypeCesiumWriter> using$263 = new Using<ClassificationTypeCesiumWriter>(w.openClassificationTypeProperty())) {
@@ -1395,17 +1396,17 @@ public class TestGenerateValidationDocument {
                 }
                 try (Using<PositionListCesiumWriter> using$271 = new Using<PositionListCesiumWriter>(w.openPositionsProperty())) {
                     final PositionListCesiumWriter w2 = using$271.resource;
-                    w2.writeCartesian(TestGenerateValidationDocument.<Cartesian> createList(new Cartesian(21681D, 40276D, 30621D), new Cartesian(3959D, 61967D, 19442D)));
+                    w2.writeCartesian(TestGenerateValidationDocument.<Cartesian> createList(new Cartesian(21681.0, 40276.0, 30621.0), new Cartesian(3959.0, 61967.0, 19442.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.wall.positions.getValue(date)).toEqual([ new Cartesian3(21681, 40276, 30621), new Cartesian3(3959, 61967, 19442) ]);");
                 }
                 try (Using<DoubleListCesiumWriter> using$272 = new Using<DoubleListCesiumWriter>(w.openMinimumHeightsProperty())) {
                     final DoubleListCesiumWriter w2 = using$272.resource;
-                    w2.writeArray(TestGenerateValidationDocument.<Double> createList(49466D, 44737D));
+                    w2.writeArray(TestGenerateValidationDocument.<Double> createList(49466.0, 44737.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.wall.minimumHeights.getValue(date)).toEqual([ 49466, 44737 ]);");
                 }
                 try (Using<DoubleListCesiumWriter> using$273 = new Using<DoubleListCesiumWriter>(w.openMaximumHeightsProperty())) {
                     final DoubleListCesiumWriter w2 = using$273.resource;
-                    w2.writeArray(TestGenerateValidationDocument.<Double> createList(59672D, 62697D));
+                    w2.writeArray(TestGenerateValidationDocument.<Double> createList(59672.0, 62697.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.wall.maximumHeights.getValue(date)).toEqual([ 59672, 62697 ]);");
                 }
                 try (Using<DoubleCesiumWriter> using$274 = new Using<DoubleCesiumWriter>(w.openGranularityProperty())) {
@@ -1451,7 +1452,7 @@ public class TestGenerateValidationDocument {
                 }
                 try (Using<DistanceDisplayConditionCesiumWriter> using$283 = new Using<DistanceDisplayConditionCesiumWriter>(w.openDistanceDisplayConditionProperty())) {
                     final DistanceDisplayConditionCesiumWriter w2 = using$283.resource;
-                    w2.writeDistanceDisplayCondition(new Bounds(27810D, 41691D));
+                    w2.writeDistanceDisplayCondition(new Bounds(27810.0, 41691.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.wall.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(27810, 41691));");
                 }
             }
@@ -1647,7 +1648,7 @@ public class TestGenerateValidationDocument {
                 }
                 try (Using<DirectionListCesiumWriter> using$326 = new Using<DirectionListCesiumWriter>(w.openDirectionsProperty())) {
                     final DirectionListCesiumWriter w2 = using$326.resource;
-                    w2.writeSpherical(TestGenerateValidationDocument.<Spherical> createList(new Spherical(49130D, 29887D, 4468D), new Spherical(25873D, 21605D, 54100D)));
+                    w2.writeSpherical(TestGenerateValidationDocument.<Spherical> createList(new Spherical(49130.0, 29887.0, 4468.0), new Spherical(25873.0, 21605.0, 54100.0)));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.customPatternSensor.directions.getValue(date)).toEqual([ new Spherical(49130, 29887, 4468), new Spherical(25873, 21605, 54100) ]);");
                 }
@@ -1992,7 +1993,7 @@ public class TestGenerateValidationDocument {
                 }
                 try (Using<DirectionListCesiumWriter> using$401 = new Using<DirectionListCesiumWriter>(w.openDirectionsProperty())) {
                     final DirectionListCesiumWriter w2 = using$401.resource;
-                    w2.writeSpherical(TestGenerateValidationDocument.<Spherical> createList(new Spherical(19722D, 1613D, 23046D), new Spherical(14938D, 16954D, 50242D)));
+                    w2.writeSpherical(TestGenerateValidationDocument.<Spherical> createList(new Spherical(19722.0, 1613.0, 23046.0), new Spherical(14938.0, 16954.0, 50242.0)));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.fan.directions.getValue(date)).toEqual([ new Spherical(19722, 1613, 23046), new Spherical(14938, 16954, 50242) ]);");
                 }
@@ -2057,7 +2058,7 @@ public class TestGenerateValidationDocument {
                 }
                 try (Using<DirectionCesiumWriter> using$415 = new Using<DirectionCesiumWriter>(w.openDirectionProperty())) {
                     final DirectionCesiumWriter w2 = using$415.resource;
-                    w2.writeSpherical(new Spherical(44405D, 20909D, 43089D));
+                    w2.writeSpherical(new Spherical(44405.0, 20909.0, 43089.0));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.vector.direction.getValue(date)).toEqual(Cartesian3.fromSpherical(new Spherical(44405, 20909, 43089)));");
                 }
                 try (Using<DoubleCesiumWriter> using$416 = new Using<DoubleCesiumWriter>(w.openLengthProperty())) {
@@ -2113,7 +2114,7 @@ public class TestGenerateValidationDocument {
             writeAssertionBoth("    expect(e = dataSource.entities.getById('constant_position_cartographicRadians')).toBeDefined();");
             try (Using<PositionCesiumWriter> using$1 = new Using<PositionCesiumWriter>(packet.openPositionProperty())) {
                 final PositionCesiumWriter w = using$1.resource;
-                w.writeCartographicRadians(new Cartographic(0.368123392863751, 0.678098621973879, 32050D));
+                w.writeCartographicRadians(new Cartographic(0.368123392863751, 0.678098621973879, 32050.0));
                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.position.getValue(date)).toEqual(Cartesian3.fromRadians(0.368123392863751, 0.678098621973879, 32050));");
             }
         }
@@ -2123,7 +2124,7 @@ public class TestGenerateValidationDocument {
             writeAssertionBoth("    expect(e = dataSource.entities.getById('constant_position_cartographicDegrees')).toBeDefined();");
             try (Using<PositionCesiumWriter> using$3 = new Using<PositionCesiumWriter>(packet.openPositionProperty())) {
                 final PositionCesiumWriter w = using$3.resource;
-                w.writeCartographicDegrees(new Cartographic(14D, 14D, 24697D));
+                w.writeCartographicDegrees(new Cartographic(14.0, 14.0, 24697.0));
                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.position.getValue(date)).toEqual(Cartesian3.fromDegrees(14, 14, 24697));");
             }
         }
@@ -2133,7 +2134,7 @@ public class TestGenerateValidationDocument {
             writeAssertionBoth("    expect(e = dataSource.entities.getById('constant_position_cartesianVelocity')).toBeDefined();");
             try (Using<PositionCesiumWriter> using$5 = new Using<PositionCesiumWriter>(packet.openPositionProperty())) {
                 final PositionCesiumWriter w = using$5.resource;
-                w.writeCartesianVelocity(new Motion1<Cartesian>(new Cartesian(15776D, 23613D, 14940D), new Cartesian(35130D, 14217D, 19511D)));
+                w.writeCartesianVelocity(new Motion1<Cartesian>(new Cartesian(15776.0, 23613.0, 14940.0), new Cartesian(35130.0, 14217.0, 19511.0)));
                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.position.getValue(date)).toEqual(new Cartesian3(15776, 23613, 14940));");
             }
         }
@@ -2166,7 +2167,7 @@ public class TestGenerateValidationDocument {
                 final BillboardCesiumWriter w = using$4.resource;
                 try (Using<AlignedAxisCesiumWriter> using$5 = new Using<AlignedAxisCesiumWriter>(w.openAlignedAxisProperty())) {
                     final AlignedAxisCesiumWriter w2 = using$5.resource;
-                    w2.writeUnitSpherical(new UnitSpherical(20514D, 39760D));
+                    w2.writeUnitSpherical(new UnitSpherical(20514.0, 39760.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.billboard.alignedAxis.getValue(date)).toEqualEpsilon(Cartesian3.fromSpherical(new Spherical(20514, 39760)), 1e-14);");
                 }
             }
@@ -2211,7 +2212,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$10 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$10.resource;
-                            m2.writeCartesian2(new Rectangular(58955D, 45286D));
+                            m2.writeCartesian2(new Rectangular(58955.0, 45286.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.box.material.repeat.getValue(date)).toEqual(new Cartesian2(58955, 45286));");
                         }
                         try (Using<ColorCesiumWriter> using$11 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
@@ -2250,17 +2251,17 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<LineCountCesiumWriter> using$19 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$19.resource;
-                            m2.writeCartesian2(new Rectangular(24659D, 13408D));
+                            m2.writeCartesian2(new Rectangular(24659.0, 13408.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.box.material.lineCount.getValue(date)).toEqual(new Cartesian2(24659, 13408));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$20 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$20.resource;
-                            m2.writeCartesian2(new Rectangular(13897D, 25654D));
+                            m2.writeCartesian2(new Rectangular(13897.0, 25654.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.box.material.lineThickness.getValue(date)).toEqual(new Cartesian2(13897, 25654));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$21 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$21.resource;
-                            m2.writeCartesian2(new Rectangular(14153D, 49207D));
+                            m2.writeCartesian2(new Rectangular(14153.0, 49207.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.box.material.lineOffset.getValue(date)).toEqual(new Cartesian2(14153, 49207));");
                         }
                     }
@@ -2328,7 +2329,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$37 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$37.resource;
-                            m2.writeCartesian2(new Rectangular(31491D, 2427D));
+                            m2.writeCartesian2(new Rectangular(31491.0, 2427.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.box.material.repeat.getValue(date)).toEqual(new Cartesian2(31491, 2427));");
                         }
                     }
@@ -2480,8 +2481,8 @@ public class TestGenerateValidationDocument {
                 final CorridorCesiumWriter w = using$1.resource;
                 try (Using<PositionListCesiumWriter> using$2 = new Using<PositionListCesiumWriter>(w.openPositionsProperty())) {
                     final PositionListCesiumWriter w2 = using$2.resource;
-                    w2.writeCartographicRadians(TestGenerateValidationDocument.<Cartographic> createList(new Cartographic(0.220356654342316, 0.879184920197648, 64909D),
-                            new Cartographic(0.175978952571564, 1.00316515710468, 913D)));
+                    w2.writeCartographicRadians(TestGenerateValidationDocument.<Cartographic> createList(new Cartographic(0.220356654342316, 0.879184920197648, 64909.0),
+                            new Cartographic(0.175978952571564, 1.00316515710468, 913.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter,
                             "    expect(e.corridor.positions.getValue(date)).toEqual([ Cartesian3.fromRadians(0.220356654342316, 0.879184920197648, 64909), Cartesian3.fromRadians(0.175978952571564, 1.00316515710468, 913) ]);");
                 }
@@ -2495,7 +2496,7 @@ public class TestGenerateValidationDocument {
                 final CorridorCesiumWriter w = using$4.resource;
                 try (Using<PositionListCesiumWriter> using$5 = new Using<PositionListCesiumWriter>(w.openPositionsProperty())) {
                     final PositionListCesiumWriter w2 = using$5.resource;
-                    w2.writeCartographicDegrees(TestGenerateValidationDocument.<Cartographic> createList(new Cartographic(28D, 14D, 63058D), new Cartographic(15D, 37D, 26381D)));
+                    w2.writeCartographicDegrees(TestGenerateValidationDocument.<Cartographic> createList(new Cartographic(28.0, 14.0, 63058.0), new Cartographic(15.0, 37.0, 26381.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter,
                             "    expect(e.corridor.positions.getValue(date)).toEqual([ Cartesian3.fromDegrees(28, 14, 63058), Cartesian3.fromDegrees(15, 37, 26381) ]);");
                 }
@@ -2538,7 +2539,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$16 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$16.resource;
-                            m2.writeCartesian2(new Rectangular(41660D, 35234D));
+                            m2.writeCartesian2(new Rectangular(41660.0, 35234.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.corridor.material.repeat.getValue(date)).toEqual(new Cartesian2(41660, 35234));");
                         }
                         try (Using<ColorCesiumWriter> using$17 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
@@ -2577,17 +2578,17 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<LineCountCesiumWriter> using$25 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$25.resource;
-                            m2.writeCartesian2(new Rectangular(1254D, 38404D));
+                            m2.writeCartesian2(new Rectangular(1254.0, 38404.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.corridor.material.lineCount.getValue(date)).toEqual(new Cartesian2(1254, 38404));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$26 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$26.resource;
-                            m2.writeCartesian2(new Rectangular(48962D, 63679D));
+                            m2.writeCartesian2(new Rectangular(48962.0, 63679.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.corridor.material.lineThickness.getValue(date)).toEqual(new Cartesian2(48962, 63679));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$27 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$27.resource;
-                            m2.writeCartesian2(new Rectangular(39061D, 47000D));
+                            m2.writeCartesian2(new Rectangular(39061.0, 47000.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.corridor.material.lineOffset.getValue(date)).toEqual(new Cartesian2(39061, 47000));");
                         }
                     }
@@ -2655,7 +2656,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$43 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$43.resource;
-                            m2.writeCartesian2(new Rectangular(19640D, 18252D));
+                            m2.writeCartesian2(new Rectangular(19640.0, 18252.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.corridor.material.repeat.getValue(date)).toEqual(new Cartesian2(19640, 18252));");
                         }
                     }
@@ -2836,7 +2837,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$10 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$10.resource;
-                            m2.writeCartesian2(new Rectangular(65243D, 41470D));
+                            m2.writeCartesian2(new Rectangular(65243.0, 41470.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.cylinder.material.repeat.getValue(date)).toEqual(new Cartesian2(65243, 41470));");
                         }
                         try (Using<ColorCesiumWriter> using$11 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
@@ -2875,17 +2876,17 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<LineCountCesiumWriter> using$19 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$19.resource;
-                            m2.writeCartesian2(new Rectangular(58545D, 26852D));
+                            m2.writeCartesian2(new Rectangular(58545.0, 26852.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.cylinder.material.lineCount.getValue(date)).toEqual(new Cartesian2(58545, 26852));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$20 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$20.resource;
-                            m2.writeCartesian2(new Rectangular(58520D, 44260D));
+                            m2.writeCartesian2(new Rectangular(58520.0, 44260.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.cylinder.material.lineThickness.getValue(date)).toEqual(new Cartesian2(58520, 44260));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$21 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$21.resource;
-                            m2.writeCartesian2(new Rectangular(61513D, 28656D));
+                            m2.writeCartesian2(new Rectangular(61513.0, 28656.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.cylinder.material.lineOffset.getValue(date)).toEqual(new Cartesian2(61513, 28656));");
                         }
                     }
@@ -2953,7 +2954,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$37 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$37.resource;
-                            m2.writeCartesian2(new Rectangular(62750D, 3317D));
+                            m2.writeCartesian2(new Rectangular(62750.0, 3317.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.cylinder.material.repeat.getValue(date)).toEqual(new Cartesian2(62750, 3317));");
                         }
                     }
@@ -3134,7 +3135,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$10 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$10.resource;
-                            m2.writeCartesian2(new Rectangular(45447D, 53937D));
+                            m2.writeCartesian2(new Rectangular(45447.0, 53937.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.material.repeat.getValue(date)).toEqual(new Cartesian2(45447, 53937));");
                         }
                         try (Using<ColorCesiumWriter> using$11 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
@@ -3173,17 +3174,17 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<LineCountCesiumWriter> using$19 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$19.resource;
-                            m2.writeCartesian2(new Rectangular(25721D, 6500D));
+                            m2.writeCartesian2(new Rectangular(25721.0, 6500.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.material.lineCount.getValue(date)).toEqual(new Cartesian2(25721, 6500));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$20 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$20.resource;
-                            m2.writeCartesian2(new Rectangular(57205D, 63455D));
+                            m2.writeCartesian2(new Rectangular(57205.0, 63455.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.material.lineThickness.getValue(date)).toEqual(new Cartesian2(57205, 63455));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$21 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$21.resource;
-                            m2.writeCartesian2(new Rectangular(49829D, 3778D));
+                            m2.writeCartesian2(new Rectangular(49829.0, 3778.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.material.lineOffset.getValue(date)).toEqual(new Cartesian2(49829, 3778));");
                         }
                     }
@@ -3251,7 +3252,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$37 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$37.resource;
-                            m2.writeCartesian2(new Rectangular(62262D, 11507D));
+                            m2.writeCartesian2(new Rectangular(62262.0, 11507.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.material.repeat.getValue(date)).toEqual(new Cartesian2(62262, 11507));");
                         }
                     }
@@ -3432,7 +3433,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$10 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$10.resource;
-                            m2.writeCartesian2(new Rectangular(53733D, 35793D));
+                            m2.writeCartesian2(new Rectangular(53733.0, 35793.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.material.repeat.getValue(date)).toEqual(new Cartesian2(53733, 35793));");
                         }
                         try (Using<ColorCesiumWriter> using$11 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
@@ -3471,17 +3472,17 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<LineCountCesiumWriter> using$19 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$19.resource;
-                            m2.writeCartesian2(new Rectangular(7763D, 58654D));
+                            m2.writeCartesian2(new Rectangular(7763.0, 58654.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.material.lineCount.getValue(date)).toEqual(new Cartesian2(7763, 58654));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$20 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$20.resource;
-                            m2.writeCartesian2(new Rectangular(25480D, 4707D));
+                            m2.writeCartesian2(new Rectangular(25480.0, 4707.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.material.lineThickness.getValue(date)).toEqual(new Cartesian2(25480, 4707));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$21 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$21.resource;
-                            m2.writeCartesian2(new Rectangular(38422D, 44182D));
+                            m2.writeCartesian2(new Rectangular(38422.0, 44182.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.material.lineOffset.getValue(date)).toEqual(new Cartesian2(38422, 44182));");
                         }
                     }
@@ -3549,7 +3550,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$37 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$37.resource;
-                            m2.writeCartesian2(new Rectangular(40702D, 13470D));
+                            m2.writeCartesian2(new Rectangular(40702.0, 13470.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.material.repeat.getValue(date)).toEqual(new Cartesian2(40702, 13470));");
                         }
                     }
@@ -3917,7 +3918,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$37 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$37.resource;
-                            m2.writeCartesian2(new Rectangular(48351D, 63420D));
+                            m2.writeCartesian2(new Rectangular(48351.0, 63420.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.material.repeat.getValue(date)).toEqual(new Cartesian2(48351, 63420));");
                         }
                         try (Using<ColorCesiumWriter> using$38 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
@@ -3956,17 +3957,17 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<LineCountCesiumWriter> using$46 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$46.resource;
-                            m2.writeCartesian2(new Rectangular(52557D, 7629D));
+                            m2.writeCartesian2(new Rectangular(52557.0, 7629.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.material.lineCount.getValue(date)).toEqual(new Cartesian2(52557, 7629));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$47 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$47.resource;
-                            m2.writeCartesian2(new Rectangular(21845D, 52309D));
+                            m2.writeCartesian2(new Rectangular(21845.0, 52309.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.material.lineThickness.getValue(date)).toEqual(new Cartesian2(21845, 52309));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$48 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$48.resource;
-                            m2.writeCartesian2(new Rectangular(48700D, 4542D));
+                            m2.writeCartesian2(new Rectangular(48700.0, 4542.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.material.lineOffset.getValue(date)).toEqual(new Cartesian2(48700, 4542));");
                         }
                     }
@@ -4034,7 +4035,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$64 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$64.resource;
-                            m2.writeCartesian2(new Rectangular(57303D, 45535D));
+                            m2.writeCartesian2(new Rectangular(57303.0, 45535.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.material.repeat.getValue(date)).toEqual(new Cartesian2(57303, 45535));");
                         }
                     }
@@ -4323,8 +4324,8 @@ public class TestGenerateValidationDocument {
                 final PolygonCesiumWriter w = using$1.resource;
                 try (Using<PositionListCesiumWriter> using$2 = new Using<PositionListCesiumWriter>(w.openPositionsProperty())) {
                     final PositionListCesiumWriter w2 = using$2.resource;
-                    w2.writeCartographicRadians(TestGenerateValidationDocument.<Cartographic> createList(new Cartographic(0.278819883450618, 1.34192534297912, 13112D),
-                            new Cartographic(1.08460649779701, 1.26665808721843, 9013D)));
+                    w2.writeCartographicRadians(TestGenerateValidationDocument.<Cartographic> createList(new Cartographic(0.278819883450618, 1.34192534297912, 13112.0),
+                            new Cartographic(1.08460649779701, 1.26665808721843, 9013.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter,
                             "    expect(e.polygon.hierarchy.getValue(date).positions).toEqual([ Cartesian3.fromRadians(0.278819883450618, 1.34192534297912, 13112), Cartesian3.fromRadians(1.08460649779701, 1.26665808721843, 9013) ]);");
                 }
@@ -4338,7 +4339,7 @@ public class TestGenerateValidationDocument {
                 final PolygonCesiumWriter w = using$4.resource;
                 try (Using<PositionListCesiumWriter> using$5 = new Using<PositionListCesiumWriter>(w.openPositionsProperty())) {
                     final PositionListCesiumWriter w2 = using$5.resource;
-                    w2.writeCartographicDegrees(TestGenerateValidationDocument.<Cartographic> createList(new Cartographic(20D, 42D, 343D), new Cartographic(21D, 14D, 24042D)));
+                    w2.writeCartographicDegrees(TestGenerateValidationDocument.<Cartographic> createList(new Cartographic(20.0, 42.0, 343.0), new Cartographic(21.0, 14.0, 24042.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter,
                             "    expect(e.polygon.hierarchy.getValue(date).positions).toEqual([ Cartesian3.fromDegrees(20, 42, 343), Cartesian3.fromDegrees(21, 14, 24042) ]);");
                 }
@@ -4353,10 +4354,10 @@ public class TestGenerateValidationDocument {
                 try (Using<PositionListOfListsCesiumWriter> using$8 = new Using<PositionListOfListsCesiumWriter>(w.openHolesProperty())) {
                     final PositionListOfListsCesiumWriter w2 = using$8.resource;
                     w2.writeCartographicRadians(TestGenerateValidationDocument.<List<Cartographic>> createList(
-                            createList(new Cartographic(0.799220652820836, 1.50366253893541, 4776D), new Cartographic(0.179862066646486, 1.42489853818289, 42245D),
-                                    new Cartographic(0.0636782022426772, 0.558333087028927, 32510D)),
-                            createList(new Cartographic(1.50366253893541, 0.779166543514464, 33810D), new Cartographic(1.42489853818289, 0.00358717805196918, 20389D),
-                                    new Cartographic(0.558333087028927, 0.799220652820836, 43134D), new Cartographic(0.779166543514464, 0.179862066646486, 1412D))));
+                            createList(new Cartographic(0.799220652820836, 1.50366253893541, 4776.0), new Cartographic(0.179862066646486, 1.42489853818289, 42245.0),
+                                    new Cartographic(0.0636782022426772, 0.558333087028927, 32510.0)),
+                            createList(new Cartographic(1.50366253893541, 0.779166543514464, 33810.0), new Cartographic(1.42489853818289, 0.00358717805196918, 20389.0),
+                                    new Cartographic(0.558333087028927, 0.799220652820836, 43134.0), new Cartographic(0.779166543514464, 0.179862066646486, 1412.0))));
                     TextWriterHelper.writeLine(m_assertionsWriter,
                             "    expect(e.polygon.hierarchy.getValue(date).holes).toEqual([ new PolygonHierarchy([ Cartesian3.fromRadians(0.799220652820836, 1.50366253893541, 4776), Cartesian3.fromRadians(0.179862066646486, 1.42489853818289, 42245), Cartesian3.fromRadians(0.0636782022426772, 0.558333087028927, 32510) ]), new PolygonHierarchy([ Cartesian3.fromRadians(1.50366253893541, 0.779166543514464, 33810), Cartesian3.fromRadians(1.42489853818289, 0.00358717805196918, 20389), Cartesian3.fromRadians(0.558333087028927, 0.799220652820836, 43134), Cartesian3.fromRadians(0.779166543514464, 0.179862066646486, 1412) ]) ]);");
                 }
@@ -4371,8 +4372,8 @@ public class TestGenerateValidationDocument {
                 try (Using<PositionListOfListsCesiumWriter> using$11 = new Using<PositionListOfListsCesiumWriter>(w.openHolesProperty())) {
                     final PositionListOfListsCesiumWriter w2 = using$11.resource;
                     w2.writeCartographicDegrees(TestGenerateValidationDocument.<List<Cartographic>> createList(
-                            createList(new Cartographic(38D, 39D, 52122D), new Cartographic(30D, 41D, 40406D), new Cartographic(9D, 42D, 55073D)),
-                            createList(new Cartographic(39D, 12D, 5835D), new Cartographic(41D, 41D, 39069D), new Cartographic(42D, 38D, 39639D), new Cartographic(12D, 30D, 54806D))));
+                            createList(new Cartographic(38.0, 39.0, 52122.0), new Cartographic(30.0, 41.0, 40406.0), new Cartographic(9.0, 42.0, 55073.0)),
+                            createList(new Cartographic(39.0, 12.0, 5835.0), new Cartographic(41.0, 41.0, 39069.0), new Cartographic(42.0, 38.0, 39639.0), new Cartographic(12.0, 30.0, 54806.0))));
                     TextWriterHelper.writeLine(m_assertionsWriter,
                             "    expect(e.polygon.hierarchy.getValue(date).holes).toEqual([ new PolygonHierarchy([ Cartesian3.fromDegrees(38, 39, 52122), Cartesian3.fromDegrees(30, 41, 40406), Cartesian3.fromDegrees(9, 42, 55073) ]), new PolygonHierarchy([ Cartesian3.fromDegrees(39, 12, 5835), Cartesian3.fromDegrees(41, 41, 39069), Cartesian3.fromDegrees(42, 38, 39639), Cartesian3.fromDegrees(12, 30, 54806) ]) ]);");
                 }
@@ -4415,7 +4416,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$22 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$22.resource;
-                            m2.writeCartesian2(new Rectangular(29381D, 10354D));
+                            m2.writeCartesian2(new Rectangular(29381.0, 10354.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.material.repeat.getValue(date)).toEqual(new Cartesian2(29381, 10354));");
                         }
                         try (Using<ColorCesiumWriter> using$23 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
@@ -4454,17 +4455,17 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<LineCountCesiumWriter> using$31 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$31.resource;
-                            m2.writeCartesian2(new Rectangular(26094D, 44645D));
+                            m2.writeCartesian2(new Rectangular(26094.0, 44645.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.material.lineCount.getValue(date)).toEqual(new Cartesian2(26094, 44645));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$32 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$32.resource;
-                            m2.writeCartesian2(new Rectangular(30775D, 17784D));
+                            m2.writeCartesian2(new Rectangular(30775.0, 17784.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.material.lineThickness.getValue(date)).toEqual(new Cartesian2(30775, 17784));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$33 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$33.resource;
-                            m2.writeCartesian2(new Rectangular(58344D, 3555D));
+                            m2.writeCartesian2(new Rectangular(58344.0, 3555.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.material.lineOffset.getValue(date)).toEqual(new Cartesian2(58344, 3555));");
                         }
                     }
@@ -4532,7 +4533,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$49 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$49.resource;
-                            m2.writeCartesian2(new Rectangular(45028D, 15023D));
+                            m2.writeCartesian2(new Rectangular(45028.0, 15023.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.material.repeat.getValue(date)).toEqual(new Cartesian2(45028, 15023));");
                         }
                     }
@@ -4684,8 +4685,8 @@ public class TestGenerateValidationDocument {
                 final PolylineCesiumWriter w = using$1.resource;
                 try (Using<PositionListCesiumWriter> using$2 = new Using<PositionListCesiumWriter>(w.openPositionsProperty())) {
                     final PositionListCesiumWriter w2 = using$2.resource;
-                    w2.writeCartographicRadians(TestGenerateValidationDocument.<Cartographic> createList(new Cartographic(0.23083587429617, 0.738315731088925, 41390D),
-                            new Cartographic(0.537259577218533, 0.25389340391868, 10573D)));
+                    w2.writeCartographicRadians(TestGenerateValidationDocument.<Cartographic> createList(new Cartographic(0.23083587429617, 0.738315731088925, 41390.0),
+                            new Cartographic(0.537259577218533, 0.25389340391868, 10573.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter,
                             "    expect(e.polyline.positions.getValue(date)).toEqual([ Cartesian3.fromRadians(0.23083587429617, 0.738315731088925, 41390), Cartesian3.fromRadians(0.537259577218533, 0.25389340391868, 10573) ]);");
                 }
@@ -4699,7 +4700,7 @@ public class TestGenerateValidationDocument {
                 final PolylineCesiumWriter w = using$4.resource;
                 try (Using<PositionListCesiumWriter> using$5 = new Using<PositionListCesiumWriter>(w.openPositionsProperty())) {
                     final PositionListCesiumWriter w2 = using$5.resource;
-                    w2.writeCartographicDegrees(TestGenerateValidationDocument.<Cartographic> createList(new Cartographic(19D, 5D, 11802D), new Cartographic(15D, 40D, 39495D)));
+                    w2.writeCartographicDegrees(TestGenerateValidationDocument.<Cartographic> createList(new Cartographic(19.0, 5.0, 11802.0), new Cartographic(15.0, 40.0, 39495.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter,
                             "    expect(e.polyline.positions.getValue(date)).toEqual([ Cartesian3.fromDegrees(19, 5, 11802), Cartesian3.fromDegrees(15, 40, 39495) ]);");
                 }
@@ -4853,7 +4854,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$43 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$43.resource;
-                            m2.writeCartesian2(new Rectangular(8980D, 60451D));
+                            m2.writeCartesian2(new Rectangular(8980.0, 60451.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.material.repeat.getValue(date)).toEqual(new Cartesian2(8980, 60451));");
                         }
                         try (Using<ColorCesiumWriter> using$44 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
@@ -4892,17 +4893,17 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<LineCountCesiumWriter> using$52 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$52.resource;
-                            m2.writeCartesian2(new Rectangular(17878D, 15173D));
+                            m2.writeCartesian2(new Rectangular(17878.0, 15173.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.material.lineCount.getValue(date)).toEqual(new Cartesian2(17878, 15173));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$53 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$53.resource;
-                            m2.writeCartesian2(new Rectangular(64504D, 24571D));
+                            m2.writeCartesian2(new Rectangular(64504.0, 24571.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.material.lineThickness.getValue(date)).toEqual(new Cartesian2(64504, 24571));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$54 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$54.resource;
-                            m2.writeCartesian2(new Rectangular(51933D, 9674D));
+                            m2.writeCartesian2(new Rectangular(51933.0, 9674.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.material.lineOffset.getValue(date)).toEqual(new Cartesian2(51933, 9674));");
                         }
                     }
@@ -4970,7 +4971,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$70 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$70.resource;
-                            m2.writeCartesian2(new Rectangular(22832D, 11097D));
+                            m2.writeCartesian2(new Rectangular(22832.0, 11097.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.material.repeat.getValue(date)).toEqual(new Cartesian2(22832, 11097));");
                         }
                     }
@@ -5365,7 +5366,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$168 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$168.resource;
-                            m2.writeCartesian2(new Rectangular(24549D, 50015D));
+                            m2.writeCartesian2(new Rectangular(24549.0, 50015.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.depthFailMaterial.repeat.getValue(date)).toEqual(new Cartesian2(24549, 50015));");
                         }
                         try (Using<ColorCesiumWriter> using$169 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
@@ -5404,17 +5405,17 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<LineCountCesiumWriter> using$177 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$177.resource;
-                            m2.writeCartesian2(new Rectangular(27318D, 57194D));
+                            m2.writeCartesian2(new Rectangular(27318.0, 57194.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.depthFailMaterial.lineCount.getValue(date)).toEqual(new Cartesian2(27318, 57194));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$178 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$178.resource;
-                            m2.writeCartesian2(new Rectangular(2299D, 50440D));
+                            m2.writeCartesian2(new Rectangular(2299.0, 50440.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.depthFailMaterial.lineThickness.getValue(date)).toEqual(new Cartesian2(2299, 50440));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$179 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$179.resource;
-                            m2.writeCartesian2(new Rectangular(16744D, 62785D));
+                            m2.writeCartesian2(new Rectangular(16744.0, 62785.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.depthFailMaterial.lineOffset.getValue(date)).toEqual(new Cartesian2(16744, 62785));");
                         }
                     }
@@ -5482,7 +5483,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$195 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$195.resource;
-                            m2.writeCartesian2(new Rectangular(32284D, 46718D));
+                            m2.writeCartesian2(new Rectangular(32284.0, 46718.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.depthFailMaterial.repeat.getValue(date)).toEqual(new Cartesian2(32284, 46718));");
                         }
                     }
@@ -5740,8 +5741,8 @@ public class TestGenerateValidationDocument {
                 final PolylineVolumeCesiumWriter w = using$1.resource;
                 try (Using<PositionListCesiumWriter> using$2 = new Using<PositionListCesiumWriter>(w.openPositionsProperty())) {
                     final PositionListCesiumWriter w2 = using$2.resource;
-                    w2.writeCartographicRadians(TestGenerateValidationDocument.<Cartographic> createList(new Cartographic(0.0883087457516627, 0.924587529983249, 8130D),
-                            new Cartographic(0.613491452287313, 1.45657735287148, 19697D)));
+                    w2.writeCartographicRadians(TestGenerateValidationDocument.<Cartographic> createList(new Cartographic(0.0883087457516627, 0.924587529983249, 8130.0),
+                            new Cartographic(0.613491452287313, 1.45657735287148, 19697.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter,
                             "    expect(e.polylineVolume.positions.getValue(date)).toEqual([ Cartesian3.fromRadians(0.0883087457516627, 0.924587529983249, 8130), Cartesian3.fromRadians(0.613491452287313, 1.45657735287148, 19697) ]);");
                 }
@@ -5755,7 +5756,7 @@ public class TestGenerateValidationDocument {
                 final PolylineVolumeCesiumWriter w = using$4.resource;
                 try (Using<PositionListCesiumWriter> using$5 = new Using<PositionListCesiumWriter>(w.openPositionsProperty())) {
                     final PositionListCesiumWriter w2 = using$5.resource;
-                    w2.writeCartographicDegrees(TestGenerateValidationDocument.<Cartographic> createList(new Cartographic(7D, 43D, 57136D), new Cartographic(44D, 37D, 65346D)));
+                    w2.writeCartographicDegrees(TestGenerateValidationDocument.<Cartographic> createList(new Cartographic(7.0, 43.0, 57136.0), new Cartographic(44.0, 37.0, 65346.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter,
                             "    expect(e.polylineVolume.positions.getValue(date)).toEqual([ Cartesian3.fromDegrees(7, 43, 57136), Cartesian3.fromDegrees(44, 37, 65346) ]);");
                 }
@@ -5798,7 +5799,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$16 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$16.resource;
-                            m2.writeCartesian2(new Rectangular(16806D, 36161D));
+                            m2.writeCartesian2(new Rectangular(16806.0, 36161.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.material.repeat.getValue(date)).toEqual(new Cartesian2(16806, 36161));");
                         }
                         try (Using<ColorCesiumWriter> using$17 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
@@ -5837,17 +5838,17 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<LineCountCesiumWriter> using$25 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$25.resource;
-                            m2.writeCartesian2(new Rectangular(13158D, 59443D));
+                            m2.writeCartesian2(new Rectangular(13158.0, 59443.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.material.lineCount.getValue(date)).toEqual(new Cartesian2(13158, 59443));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$26 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$26.resource;
-                            m2.writeCartesian2(new Rectangular(11642D, 8493D));
+                            m2.writeCartesian2(new Rectangular(11642.0, 8493.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.material.lineThickness.getValue(date)).toEqual(new Cartesian2(11642, 8493));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$27 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$27.resource;
-                            m2.writeCartesian2(new Rectangular(2361D, 14345D));
+                            m2.writeCartesian2(new Rectangular(2361.0, 14345.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.material.lineOffset.getValue(date)).toEqual(new Cartesian2(2361, 14345));");
                         }
                     }
@@ -5915,7 +5916,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$43 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$43.resource;
-                            m2.writeCartesian2(new Rectangular(13666D, 60213D));
+                            m2.writeCartesian2(new Rectangular(13666.0, 60213.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.material.repeat.getValue(date)).toEqual(new Cartesian2(13666, 60213));");
                         }
                     }
@@ -6067,7 +6068,7 @@ public class TestGenerateValidationDocument {
                 final RectangleCesiumWriter w = using$1.resource;
                 try (Using<RectangleCoordinatesCesiumWriter> using$2 = new Using<RectangleCoordinatesCesiumWriter>(w.openCoordinatesProperty())) {
                     final RectangleCoordinatesCesiumWriter w2 = using$2.resource;
-                    w2.writeWsenDegrees(new CartographicExtent(42D, 22D, 5D, 35D));
+                    w2.writeWsenDegrees(new CartographicExtent(42.0, 22.0, 5.0, 35.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.coordinates.getValue(date)).toEqual(Rectangle.fromDegrees(42, 22, 5, 35));");
                 }
             }
@@ -6109,7 +6110,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$13 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$13.resource;
-                            m2.writeCartesian2(new Rectangular(41461D, 31905D));
+                            m2.writeCartesian2(new Rectangular(41461.0, 31905.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.material.repeat.getValue(date)).toEqual(new Cartesian2(41461, 31905));");
                         }
                         try (Using<ColorCesiumWriter> using$14 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
@@ -6148,17 +6149,17 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<LineCountCesiumWriter> using$22 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$22.resource;
-                            m2.writeCartesian2(new Rectangular(4947D, 4627D));
+                            m2.writeCartesian2(new Rectangular(4947.0, 4627.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.material.lineCount.getValue(date)).toEqual(new Cartesian2(4947, 4627));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$23 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$23.resource;
-                            m2.writeCartesian2(new Rectangular(37424D, 19602D));
+                            m2.writeCartesian2(new Rectangular(37424.0, 19602.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.material.lineThickness.getValue(date)).toEqual(new Cartesian2(37424, 19602));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$24 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$24.resource;
-                            m2.writeCartesian2(new Rectangular(43685D, 31658D));
+                            m2.writeCartesian2(new Rectangular(43685.0, 31658.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.material.lineOffset.getValue(date)).toEqual(new Cartesian2(43685, 31658));");
                         }
                     }
@@ -6226,7 +6227,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$40 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$40.resource;
-                            m2.writeCartesian2(new Rectangular(27335D, 51818D));
+                            m2.writeCartesian2(new Rectangular(27335.0, 51818.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.material.repeat.getValue(date)).toEqual(new Cartesian2(27335, 51818));");
                         }
                     }
@@ -6380,8 +6381,8 @@ public class TestGenerateValidationDocument {
                 final WallCesiumWriter w = using$1.resource;
                 try (Using<PositionListCesiumWriter> using$2 = new Using<PositionListCesiumWriter>(w.openPositionsProperty())) {
                     final PositionListCesiumWriter w2 = using$2.resource;
-                    w2.writeCartographicRadians(TestGenerateValidationDocument.<Cartographic> createList(new Cartographic(0.990822494752221, 0.11729920547879, 47975D),
-                            new Cartographic(1.22405890229697, 1.46292679641256, 13438D)));
+                    w2.writeCartographicRadians(TestGenerateValidationDocument.<Cartographic> createList(new Cartographic(0.990822494752221, 0.11729920547879, 47975.0),
+                            new Cartographic(1.22405890229697, 1.46292679641256, 13438.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter,
                             "    expect(e.wall.positions.getValue(date)).toEqual([ Cartesian3.fromRadians(0.990822494752221, 0.11729920547879, 47975), Cartesian3.fromRadians(1.22405890229697, 1.46292679641256, 13438) ]);");
                 }
@@ -6395,7 +6396,7 @@ public class TestGenerateValidationDocument {
                 final WallCesiumWriter w = using$4.resource;
                 try (Using<PositionListCesiumWriter> using$5 = new Using<PositionListCesiumWriter>(w.openPositionsProperty())) {
                     final PositionListCesiumWriter w2 = using$5.resource;
-                    w2.writeCartographicDegrees(TestGenerateValidationDocument.<Cartographic> createList(new Cartographic(30D, 24D, 27738D), new Cartographic(14D, 41D, 41667D)));
+                    w2.writeCartographicDegrees(TestGenerateValidationDocument.<Cartographic> createList(new Cartographic(30.0, 24.0, 27738.0), new Cartographic(14.0, 41.0, 41667.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter,
                             "    expect(e.wall.positions.getValue(date)).toEqual([ Cartesian3.fromDegrees(30, 24, 27738), Cartesian3.fromDegrees(14, 41, 41667) ]);");
                 }
@@ -6438,7 +6439,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$16 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$16.resource;
-                            m2.writeCartesian2(new Rectangular(36340D, 47245D));
+                            m2.writeCartesian2(new Rectangular(36340.0, 47245.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.wall.material.repeat.getValue(date)).toEqual(new Cartesian2(36340, 47245));");
                         }
                         try (Using<ColorCesiumWriter> using$17 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
@@ -6477,17 +6478,17 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<LineCountCesiumWriter> using$25 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$25.resource;
-                            m2.writeCartesian2(new Rectangular(3079D, 31244D));
+                            m2.writeCartesian2(new Rectangular(3079.0, 31244.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.wall.material.lineCount.getValue(date)).toEqual(new Cartesian2(3079, 31244));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$26 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$26.resource;
-                            m2.writeCartesian2(new Rectangular(32099D, 44157D));
+                            m2.writeCartesian2(new Rectangular(32099.0, 44157.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.wall.material.lineThickness.getValue(date)).toEqual(new Cartesian2(32099, 44157));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$27 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$27.resource;
-                            m2.writeCartesian2(new Rectangular(13529D, 1844D));
+                            m2.writeCartesian2(new Rectangular(13529.0, 1844.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.wall.material.lineOffset.getValue(date)).toEqual(new Cartesian2(13529, 1844));");
                         }
                     }
@@ -6555,7 +6556,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$43 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$43.resource;
-                            m2.writeCartesian2(new Rectangular(22341D, 60503D));
+                            m2.writeCartesian2(new Rectangular(22341.0, 60503.0));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.wall.material.repeat.getValue(date)).toEqual(new Cartesian2(22341, 60503));");
                         }
                     }
@@ -6750,7 +6751,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$13 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$13.resource;
-                            m2.writeCartesian2(new Rectangular(25181D, 35938D));
+                            m2.writeCartesian2(new Rectangular(25181.0, 35938.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.lateralSurfaceMaterial.repeat.getValue(date)).toEqual(new Cartesian2(25181, 35938));");
                         }
                         try (Using<ColorCesiumWriter> using$14 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
@@ -6789,18 +6790,18 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<LineCountCesiumWriter> using$22 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$22.resource;
-                            m2.writeCartesian2(new Rectangular(2156D, 25864D));
+                            m2.writeCartesian2(new Rectangular(2156.0, 25864.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.lateralSurfaceMaterial.lineCount.getValue(date)).toEqual(new Cartesian2(2156, 25864));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$23 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$23.resource;
-                            m2.writeCartesian2(new Rectangular(33546D, 23683D));
+                            m2.writeCartesian2(new Rectangular(33546.0, 23683.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.lateralSurfaceMaterial.lineThickness.getValue(date)).toEqual(new Cartesian2(33546, 23683));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$24 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$24.resource;
-                            m2.writeCartesian2(new Rectangular(38184D, 24725D));
+                            m2.writeCartesian2(new Rectangular(38184.0, 24725.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.lateralSurfaceMaterial.lineOffset.getValue(date)).toEqual(new Cartesian2(38184, 24725));");
                         }
@@ -6874,7 +6875,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$40 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$40.resource;
-                            m2.writeCartesian2(new Rectangular(33167D, 58753D));
+                            m2.writeCartesian2(new Rectangular(33167.0, 58753.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.lateralSurfaceMaterial.repeat.getValue(date)).toEqual(new Cartesian2(33167, 58753));");
                         }
                     }
@@ -7038,7 +7039,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$81 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$81.resource;
-                            m2.writeCartesian2(new Rectangular(21421D, 10579D));
+                            m2.writeCartesian2(new Rectangular(21421.0, 10579.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.ellipsoidSurfaceMaterial.repeat.getValue(date)).toEqual(new Cartesian2(21421, 10579));");
                         }
                         try (Using<ColorCesiumWriter> using$82 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
@@ -7079,19 +7080,19 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<LineCountCesiumWriter> using$90 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$90.resource;
-                            m2.writeCartesian2(new Rectangular(10702D, 63785D));
+                            m2.writeCartesian2(new Rectangular(10702.0, 63785.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.ellipsoidSurfaceMaterial.lineCount.getValue(date)).toEqual(new Cartesian2(10702, 63785));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$91 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$91.resource;
-                            m2.writeCartesian2(new Rectangular(38065D, 47764D));
+                            m2.writeCartesian2(new Rectangular(38065.0, 47764.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.ellipsoidSurfaceMaterial.lineThickness.getValue(date)).toEqual(new Cartesian2(38065, 47764));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$92 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$92.resource;
-                            m2.writeCartesian2(new Rectangular(49821D, 31938D));
+                            m2.writeCartesian2(new Rectangular(49821.0, 31938.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.ellipsoidSurfaceMaterial.lineOffset.getValue(date)).toEqual(new Cartesian2(49821, 31938));");
                         }
@@ -7165,7 +7166,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$108 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$108.resource;
-                            m2.writeCartesian2(new Rectangular(56863D, 31454D));
+                            m2.writeCartesian2(new Rectangular(56863.0, 31454.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.ellipsoidSurfaceMaterial.repeat.getValue(date)).toEqual(new Cartesian2(56863, 31454));");
                         }
                     }
@@ -7330,7 +7331,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$149 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$149.resource;
-                            m2.writeCartesian2(new Rectangular(35010D, 3208D));
+                            m2.writeCartesian2(new Rectangular(35010.0, 3208.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.ellipsoidHorizonSurfaceMaterial.repeat.getValue(date)).toEqual(new Cartesian2(35010, 3208));");
                         }
@@ -7372,19 +7373,19 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<LineCountCesiumWriter> using$158 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$158.resource;
-                            m2.writeCartesian2(new Rectangular(55175D, 19927D));
+                            m2.writeCartesian2(new Rectangular(55175.0, 19927.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.ellipsoidHorizonSurfaceMaterial.lineCount.getValue(date)).toEqual(new Cartesian2(55175, 19927));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$159 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$159.resource;
-                            m2.writeCartesian2(new Rectangular(19695D, 1356D));
+                            m2.writeCartesian2(new Rectangular(19695.0, 1356.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.ellipsoidHorizonSurfaceMaterial.lineThickness.getValue(date)).toEqual(new Cartesian2(19695, 1356));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$160 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$160.resource;
-                            m2.writeCartesian2(new Rectangular(20937D, 31057D));
+                            m2.writeCartesian2(new Rectangular(20937.0, 31057.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.ellipsoidHorizonSurfaceMaterial.lineOffset.getValue(date)).toEqual(new Cartesian2(20937, 31057));");
                         }
@@ -7458,7 +7459,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$176 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$176.resource;
-                            m2.writeCartesian2(new Rectangular(25804D, 5220D));
+                            m2.writeCartesian2(new Rectangular(25804.0, 5220.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.ellipsoidHorizonSurfaceMaterial.repeat.getValue(date)).toEqual(new Cartesian2(25804, 5220));");
                         }
@@ -7623,7 +7624,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$217 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$217.resource;
-                            m2.writeCartesian2(new Rectangular(47952D, 25019D));
+                            m2.writeCartesian2(new Rectangular(47952.0, 25019.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.domeSurfaceMaterial.repeat.getValue(date)).toEqual(new Cartesian2(47952, 25019));");
                         }
                         try (Using<ColorCesiumWriter> using$218 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
@@ -7662,18 +7663,18 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<LineCountCesiumWriter> using$226 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$226.resource;
-                            m2.writeCartesian2(new Rectangular(60249D, 20459D));
+                            m2.writeCartesian2(new Rectangular(60249.0, 20459.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.domeSurfaceMaterial.lineCount.getValue(date)).toEqual(new Cartesian2(60249, 20459));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$227 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$227.resource;
-                            m2.writeCartesian2(new Rectangular(14212D, 1847D));
+                            m2.writeCartesian2(new Rectangular(14212.0, 1847.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.domeSurfaceMaterial.lineThickness.getValue(date)).toEqual(new Cartesian2(14212, 1847));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$228 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$228.resource;
-                            m2.writeCartesian2(new Rectangular(47595D, 2489D));
+                            m2.writeCartesian2(new Rectangular(47595.0, 2489.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.domeSurfaceMaterial.lineOffset.getValue(date)).toEqual(new Cartesian2(47595, 2489));");
                         }
                     }
@@ -7745,7 +7746,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$244 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$244.resource;
-                            m2.writeCartesian2(new Rectangular(24608D, 33120D));
+                            m2.writeCartesian2(new Rectangular(24608.0, 33120.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.domeSurfaceMaterial.repeat.getValue(date)).toEqual(new Cartesian2(24608, 33120));");
                         }
                     }
@@ -7910,7 +7911,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$285 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$285.resource;
-                            m2.writeCartesian2(new Rectangular(9889D, 48166D));
+                            m2.writeCartesian2(new Rectangular(9889.0, 48166.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.environmentOcclusionMaterial.repeat.getValue(date)).toEqual(new Cartesian2(9889, 48166));");
                         }
@@ -7952,19 +7953,19 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<LineCountCesiumWriter> using$294 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$294.resource;
-                            m2.writeCartesian2(new Rectangular(3975D, 47375D));
+                            m2.writeCartesian2(new Rectangular(3975.0, 47375.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.environmentOcclusionMaterial.lineCount.getValue(date)).toEqual(new Cartesian2(3975, 47375));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$295 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$295.resource;
-                            m2.writeCartesian2(new Rectangular(39364D, 37529D));
+                            m2.writeCartesian2(new Rectangular(39364.0, 37529.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.environmentOcclusionMaterial.lineThickness.getValue(date)).toEqual(new Cartesian2(39364, 37529));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$296 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$296.resource;
-                            m2.writeCartesian2(new Rectangular(3660D, 28430D));
+                            m2.writeCartesian2(new Rectangular(3660.0, 28430.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.environmentOcclusionMaterial.lineOffset.getValue(date)).toEqual(new Cartesian2(3660, 28430));");
                         }
@@ -8038,7 +8039,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$312 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$312.resource;
-                            m2.writeCartesian2(new Rectangular(29879D, 39796D));
+                            m2.writeCartesian2(new Rectangular(29879.0, 39796.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.environmentOcclusionMaterial.repeat.getValue(date)).toEqual(new Cartesian2(29879, 39796));");
                         }
@@ -8219,7 +8220,7 @@ public class TestGenerateValidationDocument {
                 final CustomPatternSensorCesiumWriter w = using$1.resource;
                 try (Using<DirectionListCesiumWriter> using$2 = new Using<DirectionListCesiumWriter>(w.openDirectionsProperty())) {
                     final DirectionListCesiumWriter w2 = using$2.resource;
-                    w2.writeUnitSpherical(TestGenerateValidationDocument.<UnitSpherical> createList(new UnitSpherical(47421D, 31161D), new UnitSpherical(31609D, 11387D)));
+                    w2.writeUnitSpherical(TestGenerateValidationDocument.<UnitSpherical> createList(new UnitSpherical(47421.0, 31161.0), new UnitSpherical(31609.0, 11387.0)));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.customPatternSensor.directions.getValue(date)).toEqual([ new Spherical(47421, 31161), new Spherical(31609, 11387) ]);");
                 }
@@ -8233,7 +8234,7 @@ public class TestGenerateValidationDocument {
                 final CustomPatternSensorCesiumWriter w = using$4.resource;
                 try (Using<DirectionListCesiumWriter> using$5 = new Using<DirectionListCesiumWriter>(w.openDirectionsProperty())) {
                     final DirectionListCesiumWriter w2 = using$5.resource;
-                    w2.writeCartesian(TestGenerateValidationDocument.<Cartesian> createList(new Cartesian(22239D, 54614D, 35029D), new Cartesian(5768D, 61974D, 38386D)));
+                    w2.writeCartesian(TestGenerateValidationDocument.<Cartesian> createList(new Cartesian(22239.0, 54614.0, 35029.0), new Cartesian(5768.0, 61974.0, 38386.0)));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.customPatternSensor.directions.getValue(date)).toEqual([ Spherical.fromCartesian3(new Cartesian3(22239, 54614, 35029)), Spherical.fromCartesian3(new Cartesian3(5768, 61974, 38386)) ]);");
                 }
@@ -8306,7 +8307,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$22 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$22.resource;
-                            m2.writeCartesian2(new Rectangular(52089D, 65227D));
+                            m2.writeCartesian2(new Rectangular(52089.0, 65227.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.lateralSurfaceMaterial.repeat.getValue(date)).toEqual(new Cartesian2(52089, 65227));");
                         }
@@ -8348,19 +8349,19 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<LineCountCesiumWriter> using$31 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$31.resource;
-                            m2.writeCartesian2(new Rectangular(60604D, 52716D));
+                            m2.writeCartesian2(new Rectangular(60604.0, 52716.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.lateralSurfaceMaterial.lineCount.getValue(date)).toEqual(new Cartesian2(60604, 52716));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$32 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$32.resource;
-                            m2.writeCartesian2(new Rectangular(35445D, 54154D));
+                            m2.writeCartesian2(new Rectangular(35445.0, 54154.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.lateralSurfaceMaterial.lineThickness.getValue(date)).toEqual(new Cartesian2(35445, 54154));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$33 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$33.resource;
-                            m2.writeCartesian2(new Rectangular(60273D, 55787D));
+                            m2.writeCartesian2(new Rectangular(60273.0, 55787.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.lateralSurfaceMaterial.lineOffset.getValue(date)).toEqual(new Cartesian2(60273, 55787));");
                         }
@@ -8434,7 +8435,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$49 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$49.resource;
-                            m2.writeCartesian2(new Rectangular(32394D, 37502D));
+                            m2.writeCartesian2(new Rectangular(32394.0, 37502.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.lateralSurfaceMaterial.repeat.getValue(date)).toEqual(new Cartesian2(32394, 37502));");
                         }
@@ -8600,7 +8601,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$90 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$90.resource;
-                            m2.writeCartesian2(new Rectangular(54128D, 19667D));
+                            m2.writeCartesian2(new Rectangular(54128.0, 19667.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.ellipsoidSurfaceMaterial.repeat.getValue(date)).toEqual(new Cartesian2(54128, 19667));");
                         }
@@ -8642,19 +8643,19 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<LineCountCesiumWriter> using$99 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$99.resource;
-                            m2.writeCartesian2(new Rectangular(30524D, 42103D));
+                            m2.writeCartesian2(new Rectangular(30524.0, 42103.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.ellipsoidSurfaceMaterial.lineCount.getValue(date)).toEqual(new Cartesian2(30524, 42103));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$100 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$100.resource;
-                            m2.writeCartesian2(new Rectangular(11464D, 16684D));
+                            m2.writeCartesian2(new Rectangular(11464.0, 16684.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.ellipsoidSurfaceMaterial.lineThickness.getValue(date)).toEqual(new Cartesian2(11464, 16684));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$101 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$101.resource;
-                            m2.writeCartesian2(new Rectangular(23594D, 33884D));
+                            m2.writeCartesian2(new Rectangular(23594.0, 33884.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.ellipsoidSurfaceMaterial.lineOffset.getValue(date)).toEqual(new Cartesian2(23594, 33884));");
                         }
@@ -8728,7 +8729,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$117 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$117.resource;
-                            m2.writeCartesian2(new Rectangular(45574D, 30898D));
+                            m2.writeCartesian2(new Rectangular(45574.0, 30898.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.ellipsoidSurfaceMaterial.repeat.getValue(date)).toEqual(new Cartesian2(45574, 30898));");
                         }
@@ -8894,7 +8895,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$158 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$158.resource;
-                            m2.writeCartesian2(new Rectangular(55611D, 32217D));
+                            m2.writeCartesian2(new Rectangular(55611.0, 32217.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.ellipsoidHorizonSurfaceMaterial.repeat.getValue(date)).toEqual(new Cartesian2(55611, 32217));");
                         }
@@ -8936,19 +8937,19 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<LineCountCesiumWriter> using$167 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$167.resource;
-                            m2.writeCartesian2(new Rectangular(44500D, 4781D));
+                            m2.writeCartesian2(new Rectangular(44500.0, 4781.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.ellipsoidHorizonSurfaceMaterial.lineCount.getValue(date)).toEqual(new Cartesian2(44500, 4781));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$168 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$168.resource;
-                            m2.writeCartesian2(new Rectangular(30042D, 49013D));
+                            m2.writeCartesian2(new Rectangular(30042.0, 49013.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.ellipsoidHorizonSurfaceMaterial.lineThickness.getValue(date)).toEqual(new Cartesian2(30042, 49013));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$169 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$169.resource;
-                            m2.writeCartesian2(new Rectangular(37409D, 34962D));
+                            m2.writeCartesian2(new Rectangular(37409.0, 34962.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.ellipsoidHorizonSurfaceMaterial.lineOffset.getValue(date)).toEqual(new Cartesian2(37409, 34962));");
                         }
@@ -9022,7 +9023,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$185 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$185.resource;
-                            m2.writeCartesian2(new Rectangular(62427D, 63987D));
+                            m2.writeCartesian2(new Rectangular(62427.0, 63987.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.ellipsoidHorizonSurfaceMaterial.repeat.getValue(date)).toEqual(new Cartesian2(62427, 63987));");
                         }
@@ -9188,7 +9189,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$226 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$226.resource;
-                            m2.writeCartesian2(new Rectangular(35321D, 31113D));
+                            m2.writeCartesian2(new Rectangular(35321.0, 31113.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.domeSurfaceMaterial.repeat.getValue(date)).toEqual(new Cartesian2(35321, 31113));");
                         }
@@ -9230,19 +9231,19 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<LineCountCesiumWriter> using$235 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$235.resource;
-                            m2.writeCartesian2(new Rectangular(24794D, 1120D));
+                            m2.writeCartesian2(new Rectangular(24794.0, 1120.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.domeSurfaceMaterial.lineCount.getValue(date)).toEqual(new Cartesian2(24794, 1120));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$236 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$236.resource;
-                            m2.writeCartesian2(new Rectangular(63618D, 58104D));
+                            m2.writeCartesian2(new Rectangular(63618.0, 58104.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.domeSurfaceMaterial.lineThickness.getValue(date)).toEqual(new Cartesian2(63618, 58104));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$237 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$237.resource;
-                            m2.writeCartesian2(new Rectangular(58084D, 43234D));
+                            m2.writeCartesian2(new Rectangular(58084.0, 43234.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.domeSurfaceMaterial.lineOffset.getValue(date)).toEqual(new Cartesian2(58084, 43234));");
                         }
@@ -9316,7 +9317,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$253 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$253.resource;
-                            m2.writeCartesian2(new Rectangular(4049D, 46095D));
+                            m2.writeCartesian2(new Rectangular(4049.0, 46095.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.domeSurfaceMaterial.repeat.getValue(date)).toEqual(new Cartesian2(4049, 46095));");
                         }
@@ -9482,7 +9483,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$294 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$294.resource;
-                            m2.writeCartesian2(new Rectangular(15786D, 37437D));
+                            m2.writeCartesian2(new Rectangular(15786.0, 37437.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.environmentOcclusionMaterial.repeat.getValue(date)).toEqual(new Cartesian2(15786, 37437));");
                         }
@@ -9524,19 +9525,19 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<LineCountCesiumWriter> using$303 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$303.resource;
-                            m2.writeCartesian2(new Rectangular(16838D, 19777D));
+                            m2.writeCartesian2(new Rectangular(16838.0, 19777.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.environmentOcclusionMaterial.lineCount.getValue(date)).toEqual(new Cartesian2(16838, 19777));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$304 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$304.resource;
-                            m2.writeCartesian2(new Rectangular(18042D, 19782D));
+                            m2.writeCartesian2(new Rectangular(18042.0, 19782.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.environmentOcclusionMaterial.lineThickness.getValue(date)).toEqual(new Cartesian2(18042, 19782));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$305 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$305.resource;
-                            m2.writeCartesian2(new Rectangular(63892D, 17401D));
+                            m2.writeCartesian2(new Rectangular(63892.0, 17401.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.environmentOcclusionMaterial.lineOffset.getValue(date)).toEqual(new Cartesian2(63892, 17401));");
                         }
@@ -9610,7 +9611,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$321 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$321.resource;
-                            m2.writeCartesian2(new Rectangular(20601D, 18000D));
+                            m2.writeCartesian2(new Rectangular(20601.0, 18000.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.environmentOcclusionMaterial.repeat.getValue(date)).toEqual(new Cartesian2(20601, 18000));");
                         }
@@ -9835,7 +9836,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$13 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$13.resource;
-                            m2.writeCartesian2(new Rectangular(62347D, 2291D));
+                            m2.writeCartesian2(new Rectangular(62347.0, 2291.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.lateralSurfaceMaterial.repeat.getValue(date)).toEqual(new Cartesian2(62347, 2291));");
                         }
@@ -9877,19 +9878,19 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<LineCountCesiumWriter> using$22 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$22.resource;
-                            m2.writeCartesian2(new Rectangular(38214D, 27541D));
+                            m2.writeCartesian2(new Rectangular(38214.0, 27541.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.lateralSurfaceMaterial.lineCount.getValue(date)).toEqual(new Cartesian2(38214, 27541));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$23 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$23.resource;
-                            m2.writeCartesian2(new Rectangular(15407D, 35132D));
+                            m2.writeCartesian2(new Rectangular(15407.0, 35132.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.lateralSurfaceMaterial.lineThickness.getValue(date)).toEqual(new Cartesian2(15407, 35132));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$24 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$24.resource;
-                            m2.writeCartesian2(new Rectangular(15638D, 41789D));
+                            m2.writeCartesian2(new Rectangular(15638.0, 41789.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.lateralSurfaceMaterial.lineOffset.getValue(date)).toEqual(new Cartesian2(15638, 41789));");
                         }
@@ -9963,7 +9964,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$40 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$40.resource;
-                            m2.writeCartesian2(new Rectangular(18769D, 30537D));
+                            m2.writeCartesian2(new Rectangular(18769.0, 30537.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.lateralSurfaceMaterial.repeat.getValue(date)).toEqual(new Cartesian2(18769, 30537));");
                         }
@@ -10129,7 +10130,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$81 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$81.resource;
-                            m2.writeCartesian2(new Rectangular(32574D, 59007D));
+                            m2.writeCartesian2(new Rectangular(32574.0, 59007.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.ellipsoidSurfaceMaterial.repeat.getValue(date)).toEqual(new Cartesian2(32574, 59007));");
                         }
@@ -10171,19 +10172,19 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<LineCountCesiumWriter> using$90 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$90.resource;
-                            m2.writeCartesian2(new Rectangular(638D, 49922D));
+                            m2.writeCartesian2(new Rectangular(638.0, 49922.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.ellipsoidSurfaceMaterial.lineCount.getValue(date)).toEqual(new Cartesian2(638, 49922));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$91 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$91.resource;
-                            m2.writeCartesian2(new Rectangular(33475D, 32898D));
+                            m2.writeCartesian2(new Rectangular(33475.0, 32898.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.ellipsoidSurfaceMaterial.lineThickness.getValue(date)).toEqual(new Cartesian2(33475, 32898));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$92 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$92.resource;
-                            m2.writeCartesian2(new Rectangular(27656D, 20076D));
+                            m2.writeCartesian2(new Rectangular(27656.0, 20076.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.ellipsoidSurfaceMaterial.lineOffset.getValue(date)).toEqual(new Cartesian2(27656, 20076));");
                         }
@@ -10257,7 +10258,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$108 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$108.resource;
-                            m2.writeCartesian2(new Rectangular(40989D, 43680D));
+                            m2.writeCartesian2(new Rectangular(40989.0, 43680.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.ellipsoidSurfaceMaterial.repeat.getValue(date)).toEqual(new Cartesian2(40989, 43680));");
                         }
@@ -10423,7 +10424,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$149 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$149.resource;
-                            m2.writeCartesian2(new Rectangular(25949D, 5221D));
+                            m2.writeCartesian2(new Rectangular(25949.0, 5221.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.ellipsoidHorizonSurfaceMaterial.repeat.getValue(date)).toEqual(new Cartesian2(25949, 5221));");
                         }
@@ -10465,19 +10466,19 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<LineCountCesiumWriter> using$158 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$158.resource;
-                            m2.writeCartesian2(new Rectangular(55649D, 41177D));
+                            m2.writeCartesian2(new Rectangular(55649.0, 41177.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.ellipsoidHorizonSurfaceMaterial.lineCount.getValue(date)).toEqual(new Cartesian2(55649, 41177));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$159 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$159.resource;
-                            m2.writeCartesian2(new Rectangular(9279D, 32036D));
+                            m2.writeCartesian2(new Rectangular(9279.0, 32036.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.ellipsoidHorizonSurfaceMaterial.lineThickness.getValue(date)).toEqual(new Cartesian2(9279, 32036));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$160 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$160.resource;
-                            m2.writeCartesian2(new Rectangular(22057D, 32854D));
+                            m2.writeCartesian2(new Rectangular(22057.0, 32854.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.ellipsoidHorizonSurfaceMaterial.lineOffset.getValue(date)).toEqual(new Cartesian2(22057, 32854));");
                         }
@@ -10551,7 +10552,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$176 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$176.resource;
-                            m2.writeCartesian2(new Rectangular(65401D, 31999D));
+                            m2.writeCartesian2(new Rectangular(65401.0, 31999.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.ellipsoidHorizonSurfaceMaterial.repeat.getValue(date)).toEqual(new Cartesian2(65401, 31999));");
                         }
@@ -10717,7 +10718,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$217 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$217.resource;
-                            m2.writeCartesian2(new Rectangular(36759D, 34959D));
+                            m2.writeCartesian2(new Rectangular(36759.0, 34959.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.domeSurfaceMaterial.repeat.getValue(date)).toEqual(new Cartesian2(36759, 34959));");
                         }
@@ -10759,19 +10760,19 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<LineCountCesiumWriter> using$226 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$226.resource;
-                            m2.writeCartesian2(new Rectangular(12463D, 42544D));
+                            m2.writeCartesian2(new Rectangular(12463.0, 42544.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.domeSurfaceMaterial.lineCount.getValue(date)).toEqual(new Cartesian2(12463, 42544));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$227 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$227.resource;
-                            m2.writeCartesian2(new Rectangular(56378D, 63452D));
+                            m2.writeCartesian2(new Rectangular(56378.0, 63452.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.domeSurfaceMaterial.lineThickness.getValue(date)).toEqual(new Cartesian2(56378, 63452));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$228 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$228.resource;
-                            m2.writeCartesian2(new Rectangular(33185D, 51585D));
+                            m2.writeCartesian2(new Rectangular(33185.0, 51585.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.domeSurfaceMaterial.lineOffset.getValue(date)).toEqual(new Cartesian2(33185, 51585));");
                         }
@@ -10845,7 +10846,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$244 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$244.resource;
-                            m2.writeCartesian2(new Rectangular(58995D, 46566D));
+                            m2.writeCartesian2(new Rectangular(58995.0, 46566.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.domeSurfaceMaterial.repeat.getValue(date)).toEqual(new Cartesian2(58995, 46566));");
                         }
@@ -11011,7 +11012,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$285 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$285.resource;
-                            m2.writeCartesian2(new Rectangular(24100D, 51550D));
+                            m2.writeCartesian2(new Rectangular(24100.0, 51550.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.environmentOcclusionMaterial.repeat.getValue(date)).toEqual(new Cartesian2(24100, 51550));");
                         }
@@ -11053,19 +11054,19 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<LineCountCesiumWriter> using$294 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$294.resource;
-                            m2.writeCartesian2(new Rectangular(46422D, 32693D));
+                            m2.writeCartesian2(new Rectangular(46422.0, 32693.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.environmentOcclusionMaterial.lineCount.getValue(date)).toEqual(new Cartesian2(46422, 32693));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$295 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$295.resource;
-                            m2.writeCartesian2(new Rectangular(48390D, 49341D));
+                            m2.writeCartesian2(new Rectangular(48390.0, 49341.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.environmentOcclusionMaterial.lineThickness.getValue(date)).toEqual(new Cartesian2(48390, 49341));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$296 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$296.resource;
-                            m2.writeCartesian2(new Rectangular(8359D, 23584D));
+                            m2.writeCartesian2(new Rectangular(8359.0, 23584.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.environmentOcclusionMaterial.lineOffset.getValue(date)).toEqual(new Cartesian2(8359, 23584));");
                         }
@@ -11139,7 +11140,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$312 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$312.resource;
-                            m2.writeCartesian2(new Rectangular(51334D, 47048D));
+                            m2.writeCartesian2(new Rectangular(51334.0, 47048.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.environmentOcclusionMaterial.repeat.getValue(date)).toEqual(new Cartesian2(51334, 47048));");
                         }
@@ -11320,7 +11321,7 @@ public class TestGenerateValidationDocument {
                 final FanCesiumWriter w = using$1.resource;
                 try (Using<DirectionListCesiumWriter> using$2 = new Using<DirectionListCesiumWriter>(w.openDirectionsProperty())) {
                     final DirectionListCesiumWriter w2 = using$2.resource;
-                    w2.writeUnitSpherical(TestGenerateValidationDocument.<UnitSpherical> createList(new UnitSpherical(58733D, 12261D), new UnitSpherical(59695D, 54505D)));
+                    w2.writeUnitSpherical(TestGenerateValidationDocument.<UnitSpherical> createList(new UnitSpherical(58733.0, 12261.0), new UnitSpherical(59695.0, 54505.0)));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.directions.getValue(date)).toEqual([ new Spherical(58733, 12261), new Spherical(59695, 54505) ]);");
                 }
             }
@@ -11333,7 +11334,7 @@ public class TestGenerateValidationDocument {
                 final FanCesiumWriter w = using$4.resource;
                 try (Using<DirectionListCesiumWriter> using$5 = new Using<DirectionListCesiumWriter>(w.openDirectionsProperty())) {
                     final DirectionListCesiumWriter w2 = using$5.resource;
-                    w2.writeCartesian(TestGenerateValidationDocument.<Cartesian> createList(new Cartesian(26610D, 54119D, 64979D), new Cartesian(9469D, 6948D, 56091D)));
+                    w2.writeCartesian(TestGenerateValidationDocument.<Cartesian> createList(new Cartesian(26610.0, 54119.0, 64979.0), new Cartesian(9469.0, 6948.0, 56091.0)));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.fan.directions.getValue(date)).toEqual([ Spherical.fromCartesian3(new Cartesian3(26610, 54119, 64979)), Spherical.fromCartesian3(new Cartesian3(9469, 6948, 56091)) ]);");
                 }
@@ -11391,7 +11392,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$19 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$19.resource;
-                            m2.writeCartesian2(new Rectangular(24583D, 56160D));
+                            m2.writeCartesian2(new Rectangular(24583.0, 56160.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.material.repeat.getValue(date)).toEqual(new Cartesian2(24583, 56160));");
                         }
                         try (Using<ColorCesiumWriter> using$20 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
@@ -11430,17 +11431,17 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<LineCountCesiumWriter> using$28 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$28.resource;
-                            m2.writeCartesian2(new Rectangular(32075D, 36477D));
+                            m2.writeCartesian2(new Rectangular(32075.0, 36477.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.material.lineCount.getValue(date)).toEqual(new Cartesian2(32075, 36477));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$29 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$29.resource;
-                            m2.writeCartesian2(new Rectangular(10654D, 41513D));
+                            m2.writeCartesian2(new Rectangular(10654.0, 41513.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.material.lineThickness.getValue(date)).toEqual(new Cartesian2(10654, 41513));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$30 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$30.resource;
-                            m2.writeCartesian2(new Rectangular(16605D, 57664D));
+                            m2.writeCartesian2(new Rectangular(16605.0, 57664.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.material.lineOffset.getValue(date)).toEqual(new Cartesian2(16605, 57664));");
                         }
                     }
@@ -11508,7 +11509,7 @@ public class TestGenerateValidationDocument {
                         }
                         try (Using<RepeatCesiumWriter> using$46 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$46.resource;
-                            m2.writeCartesian2(new Rectangular(27029D, 37737D));
+                            m2.writeCartesian2(new Rectangular(27029.0, 37737.0));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.material.repeat.getValue(date)).toEqual(new Cartesian2(27029, 37737));");
                         }
                     }
@@ -11674,7 +11675,7 @@ public class TestGenerateValidationDocument {
                 final VectorCesiumWriter w = using$4.resource;
                 try (Using<DirectionCesiumWriter> using$5 = new Using<DirectionCesiumWriter>(w.openDirectionProperty())) {
                     final DirectionCesiumWriter w2 = using$5.resource;
-                    w2.writeUnitSpherical(new UnitSpherical(34609D, 391D));
+                    w2.writeUnitSpherical(new UnitSpherical(34609.0, 391.0));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.vector.direction.getValue(date)).toEqualEpsilon(Cartesian3.fromSpherical(new Spherical(34609, 391)), 1e-14);");
                 }
@@ -11688,7 +11689,7 @@ public class TestGenerateValidationDocument {
                 final VectorCesiumWriter w = using$7.resource;
                 try (Using<DirectionCesiumWriter> using$8 = new Using<DirectionCesiumWriter>(w.openDirectionProperty())) {
                     final DirectionCesiumWriter w2 = using$8.resource;
-                    w2.writeCartesian(new Cartesian(42919D, 34215D, 55429D));
+                    w2.writeCartesian(new Cartesian(42919.0, 34215.0, 55429.0));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.vector.direction.getValue(date)).toEqual(new Cartesian3(42919, 34215, 55429));");
                 }
             }
@@ -11723,28 +11724,28 @@ public class TestGenerateValidationDocument {
                 }
                 try (Using<CustomPropertyCesiumWriter> using$3 = new Using<CustomPropertyCesiumWriter>(w.openCustomPropertyProperty("custom_boundingRectangle"))) {
                     final CustomPropertyCesiumWriter w2 = using$3.resource;
-                    w2.writeBoundingRectangle(BoundingRectangle.fromWidthHeight(9369D, 63524D, 6904D, 17690D));
+                    w2.writeBoundingRectangle(BoundingRectangle.fromWidthHeight(9369.0, 63524.0, 6904.0, 17690.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_boundingRectangle.getValue(date)).toEqual(new BoundingRectangle(9369, 63524, 6904, 17690));");
                 }
                 try (Using<CustomPropertyCesiumWriter> using$4 = new Using<CustomPropertyCesiumWriter>(w.openCustomPropertyProperty("custom_cartesian"))) {
                     final CustomPropertyCesiumWriter w2 = using$4.resource;
-                    w2.writeCartesian(new Cartesian(28502D, 45167D, 944D));
+                    w2.writeCartesian(new Cartesian(28502.0, 45167.0, 944.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_cartesian.getValue(date)).toEqual(new Cartesian3(28502, 45167, 944));");
                 }
                 try (Using<CustomPropertyCesiumWriter> using$5 = new Using<CustomPropertyCesiumWriter>(w.openCustomPropertyProperty("custom_cartographicRadians"))) {
                     final CustomPropertyCesiumWriter w2 = using$5.resource;
-                    w2.writeCartographicRadians(new Cartographic(0.350571264887744, 0.633274262413284, 42979D));
+                    w2.writeCartographicRadians(new Cartographic(0.350571264887744, 0.633274262413284, 42979.0));
                     TextWriterHelper.writeLine(m_assertionsWriter,
                             "    expect(e.properties.custom_cartographicRadians.getValue(date)).toEqual(Cartesian3.fromRadians(0.350571264887744, 0.633274262413284, 42979));");
                 }
                 try (Using<CustomPropertyCesiumWriter> using$6 = new Using<CustomPropertyCesiumWriter>(w.openCustomPropertyProperty("custom_cartographicDegrees"))) {
                     final CustomPropertyCesiumWriter w2 = using$6.resource;
-                    w2.writeCartographicDegrees(new Cartographic(18D, 36D, 37743D));
+                    w2.writeCartographicDegrees(new Cartographic(18.0, 36.0, 37743.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_cartographicDegrees.getValue(date)).toEqual(Cartesian3.fromDegrees(18, 36, 37743));");
                 }
                 try (Using<CustomPropertyCesiumWriter> using$7 = new Using<CustomPropertyCesiumWriter>(w.openCustomPropertyProperty("custom_cartesian2"))) {
                     final CustomPropertyCesiumWriter w2 = using$7.resource;
-                    w2.writeCartesian2(new Rectangular(44825D, 16303D));
+                    w2.writeCartesian2(new Rectangular(44825.0, 16303.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_cartesian2.getValue(date)).toEqual(new Cartesian2(44825, 16303));");
                 }
                 try (Using<CustomPropertyCesiumWriter> using$8 = new Using<CustomPropertyCesiumWriter>(w.openCustomPropertyProperty("custom_unitCartesian"))) {
@@ -11755,12 +11756,12 @@ public class TestGenerateValidationDocument {
                 }
                 try (Using<CustomPropertyCesiumWriter> using$9 = new Using<CustomPropertyCesiumWriter>(w.openCustomPropertyProperty("custom_spherical"))) {
                     final CustomPropertyCesiumWriter w2 = using$9.resource;
-                    w2.writeSpherical(new Spherical(1705D, 13830D, 21558D));
+                    w2.writeSpherical(new Spherical(1705.0, 13830.0, 21558.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_spherical.getValue(date)).toEqual(Cartesian3.fromSpherical(new Spherical(1705, 13830, 21558)));");
                 }
                 try (Using<CustomPropertyCesiumWriter> using$10 = new Using<CustomPropertyCesiumWriter>(w.openCustomPropertyProperty("custom_unitSpherical"))) {
                     final CustomPropertyCesiumWriter w2 = using$10.resource;
-                    w2.writeUnitSpherical(new UnitSpherical(59387D, 15591D));
+                    w2.writeUnitSpherical(new UnitSpherical(59387.0, 15591.0));
                     TextWriterHelper.writeLine(m_assertionsWriter,
                             "    expect(e.properties.custom_unitSpherical.getValue(date)).toEqualEpsilon(Cartesian3.fromSpherical(new Spherical(59387, 15591)), 1e-14);");
                 }
@@ -11807,7 +11808,7 @@ public class TestGenerateValidationDocument {
                 }
                 try (Using<CustomPropertyCesiumWriter> using$19 = new Using<CustomPropertyCesiumWriter>(w.openCustomPropertyProperty("custom_nearFarScalar"))) {
                     final CustomPropertyCesiumWriter w2 = using$19.resource;
-                    w2.writeNearFarScalar(new NearFarScalar(14621D, 24121D, 16734D, 56129D));
+                    w2.writeNearFarScalar(new NearFarScalar(14621.0, 24121.0, 16734.0, 56129.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_nearFarScalar.getValue(date)).toEqual(new NearFarScalar(14621, 24121, 16734, 56129));");
                 }
                 try (Using<CustomPropertyCesiumWriter> using$20 = new Using<CustomPropertyCesiumWriter>(w.openCustomPropertyProperty("custom_unitQuaternion"))) {
@@ -11839,7 +11840,7 @@ public class TestGenerateValidationDocument {
                 }
                 try (Using<CustomPropertyCesiumWriter> using$25 = new Using<CustomPropertyCesiumWriter>(w.openCustomPropertyProperty("custom_wsenDegrees"))) {
                     final CustomPropertyCesiumWriter w2 = using$25.resource;
-                    w2.writeWsenDegrees(new CartographicExtent(5D, 3D, 6D, 19D));
+                    w2.writeWsenDegrees(new CartographicExtent(5.0, 3.0, 6.0, 19.0));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_wsenDegrees.getValue(date)).toEqual(Rectangle.fromDegrees(5, 3, 6, 19));");
                 }
                 try (Using<CustomPropertyCesiumWriter> using$26 = new Using<CustomPropertyCesiumWriter>(w.openCustomPropertyProperty("custom_uri"))) {
@@ -11863,7 +11864,7 @@ public class TestGenerateValidationDocument {
             writeAssertionBoth("    expect(e = dataSource.entities.getById('ConstantPosition1')).toBeDefined();");
             try (Using<PositionCesiumWriter> using$1 = new Using<PositionCesiumWriter>(packet.openPositionProperty())) {
                 final PositionCesiumWriter w = using$1.resource;
-                w.writeCartesian(new Cartesian(48370D, 3260D, 44044D));
+                w.writeCartesian(new Cartesian(48370.0, 3260.0, 44044.0));
                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.position.getValue(date)).toEqual(new Cartesian3(48370, 3260, 44044));");
             }
         }
@@ -11886,7 +11887,7 @@ public class TestGenerateValidationDocument {
             writeAssertionBoth("    expect(e = dataSource.entities.getById('ConstantPosition2')).toBeDefined();");
             try (Using<PositionCesiumWriter> using$6 = new Using<PositionCesiumWriter>(packet.openPositionProperty())) {
                 final PositionCesiumWriter w = using$6.resource;
-                w.writeCartesian(new Cartesian(2599D, 10D, 39168D));
+                w.writeCartesian(new Cartesian(2599.0, 10.0, 39168.0));
                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.position.getValue(date)).toEqual(new Cartesian3(2599, 10, 39168));");
             }
         }
@@ -11909,7 +11910,7 @@ public class TestGenerateValidationDocument {
             writeAssertionBoth("    expect(e = dataSource.entities.getById('ConstantPosition3')).toBeDefined();");
             try (Using<PositionCesiumWriter> using$11 = new Using<PositionCesiumWriter>(packet.openPositionProperty())) {
                 final PositionCesiumWriter w = using$11.resource;
-                w.writeCartesian(new Cartesian(1758D, 45062D, 8624D));
+                w.writeCartesian(new Cartesian(1758.0, 45062.0, 8624.0));
                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.position.getValue(date)).toEqual(new Cartesian3(1758, 45062, 8624));");
             }
         }
@@ -13980,8 +13981,8 @@ public class TestGenerateValidationDocument {
             writeAssertionBoth("    expect(e = dataSource.entities.getById('VelocityPosition')).toBeDefined();");
             try (Using<PositionCesiumWriter> using$1 = new Using<PositionCesiumWriter>(packet.openPositionProperty())) {
                 final PositionCesiumWriter w = using$1.resource;
-                w.writeCartesian(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStartDate.addSeconds(60D)),
-                        TestGenerateValidationDocument.<Cartesian> createList(new Cartesian(1D, 2D, 3D), new Cartesian(61D, 122D, 183D)));
+                w.writeCartesian(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStartDate.addSeconds(60.0)),
+                        TestGenerateValidationDocument.<Cartesian> createList(new Cartesian(1.0, 2.0, 3.0), new Cartesian(61.0, 122.0, 183.0)));
                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.position.getValue(documentStartDate)).toEqual(new Cartesian3(1, 2, 3));");
                 TextWriterHelper.writeLine(m_assertionsWriter,
                         "    expect(e.position.getValue(JulianDate.addSeconds(documentStartDate, 60, new JulianDate()))).toEqual(new Cartesian3(61, 122, 183));");
@@ -18947,7 +18948,7 @@ public class TestGenerateValidationDocument {
             try (Using<PositionCesiumWriter> using$1 = new Using<PositionCesiumWriter>(packet.openPositionProperty())) {
                 final PositionCesiumWriter w = using$1.resource;
                 w.writeCartesian(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                        TestGenerateValidationDocument.<Cartesian> createList(new Cartesian(14893D, 22330D, 50775D), new Cartesian(44952D, 52911D, 45006D)));
+                        TestGenerateValidationDocument.<Cartesian> createList(new Cartesian(14893.0, 22330.0, 50775.0), new Cartesian(44952.0, 52911.0, 45006.0)));
                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.position.getValue(documentStartDate)).toEqual(new Cartesian3(14893, 22330, 50775));");
                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.position.getValue(documentStopDate)).toEqual(new Cartesian3(44952, 52911, 45006));");
             }
@@ -18964,7 +18965,7 @@ public class TestGenerateValidationDocument {
             try (Using<ViewFromCesiumWriter> using$3 = new Using<ViewFromCesiumWriter>(packet.openViewFromProperty())) {
                 final ViewFromCesiumWriter w = using$3.resource;
                 w.writeCartesian(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                        TestGenerateValidationDocument.<Cartesian> createList(new Cartesian(36965D, 47504D, 12985D), new Cartesian(16155D, 2367D, 57353D)));
+                        TestGenerateValidationDocument.<Cartesian> createList(new Cartesian(36965.0, 47504.0, 12985.0), new Cartesian(16155.0, 2367.0, 57353.0)));
                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.viewFrom.getValue(documentStartDate)).toEqual(new Cartesian3(36965, 47504, 12985));");
                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.viewFrom.getValue(documentStopDate)).toEqual(new Cartesian3(16155, 2367, 57353));");
             }
@@ -18980,14 +18981,14 @@ public class TestGenerateValidationDocument {
                 try (Using<PixelOffsetCesiumWriter> using$6 = new Using<PixelOffsetCesiumWriter>(w.openPixelOffsetProperty())) {
                     final PixelOffsetCesiumWriter w2 = using$6.resource;
                     w2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(2029D, 62215D), new Rectangular(30658D, 12919D)));
+                            TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(2029.0, 62215.0), new Rectangular(30658.0, 12919.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.billboard.pixelOffset.getValue(documentStartDate)).toEqual(new Cartesian2(2029, 62215));");
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.billboard.pixelOffset.getValue(documentStopDate)).toEqual(new Cartesian2(30658, 12919));");
                 }
                 try (Using<EyeOffsetCesiumWriter> using$7 = new Using<EyeOffsetCesiumWriter>(w.openEyeOffsetProperty())) {
                     final EyeOffsetCesiumWriter w2 = using$7.resource;
                     w2.writeCartesian(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<Cartesian> createList(new Cartesian(3553D, 23821D, 42589D), new Cartesian(3059D, 48139D, 28860D)));
+                            TestGenerateValidationDocument.<Cartesian> createList(new Cartesian(3553.0, 23821.0, 42589.0), new Cartesian(3059.0, 48139.0, 28860.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.billboard.eyeOffset.getValue(documentStartDate)).toEqual(new Cartesian3(3553, 23821, 42589));");
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.billboard.eyeOffset.getValue(documentStopDate)).toEqual(new Cartesian3(3059, 48139, 28860));");
                 }
@@ -19031,21 +19032,21 @@ public class TestGenerateValidationDocument {
                 try (Using<NearFarScalarCesiumWriter> using$13 = new Using<NearFarScalarCesiumWriter>(w.openScaleByDistanceProperty())) {
                     final NearFarScalarCesiumWriter w2 = using$13.resource;
                     w2.writeNearFarScalar(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<NearFarScalar> createList(new NearFarScalar(46842D, 10678D, 46377D, 15029D), new NearFarScalar(20642D, 43600D, 7082D, 11291D)));
+                            TestGenerateValidationDocument.<NearFarScalar> createList(new NearFarScalar(46842.0, 10678.0, 46377.0, 15029.0), new NearFarScalar(20642.0, 43600.0, 7082.0, 11291.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.billboard.scaleByDistance.getValue(documentStartDate)).toEqual(new NearFarScalar(46842, 10678, 46377, 15029));");
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.billboard.scaleByDistance.getValue(documentStopDate)).toEqual(new NearFarScalar(20642, 43600, 7082, 11291));");
                 }
                 try (Using<NearFarScalarCesiumWriter> using$14 = new Using<NearFarScalarCesiumWriter>(w.openTranslucencyByDistanceProperty())) {
                     final NearFarScalarCesiumWriter w2 = using$14.resource;
                     w2.writeNearFarScalar(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<NearFarScalar> createList(new NearFarScalar(64366D, 52219D, 8139D, 10015D), new NearFarScalar(10918D, 18986D, 49738D, 60610D)));
+                            TestGenerateValidationDocument.<NearFarScalar> createList(new NearFarScalar(64366.0, 52219.0, 8139.0, 10015.0), new NearFarScalar(10918.0, 18986.0, 49738.0, 60610.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.billboard.translucencyByDistance.getValue(documentStartDate)).toEqual(new NearFarScalar(64366, 52219, 8139, 10015));");
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.billboard.translucencyByDistance.getValue(documentStopDate)).toEqual(new NearFarScalar(10918, 18986, 49738, 60610));");
                 }
                 try (Using<NearFarScalarCesiumWriter> using$15 = new Using<NearFarScalarCesiumWriter>(w.openPixelOffsetScaleByDistanceProperty())) {
                     final NearFarScalarCesiumWriter w2 = using$15.resource;
                     w2.writeNearFarScalar(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<NearFarScalar> createList(new NearFarScalar(54503D, 26068D, 41061D, 59552D), new NearFarScalar(37417D, 4754D, 19986D, 15182D)));
+                            TestGenerateValidationDocument.<NearFarScalar> createList(new NearFarScalar(54503.0, 26068.0, 41061.0, 59552.0), new NearFarScalar(37417.0, 4754.0, 19986.0, 15182.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter,
                             "    expect(e.billboard.pixelOffsetScaleByDistance.getValue(documentStartDate)).toEqual(new NearFarScalar(54503, 26068, 41061, 59552));");
                     TextWriterHelper.writeLine(m_assertionsWriter,
@@ -19053,15 +19054,16 @@ public class TestGenerateValidationDocument {
                 }
                 try (Using<BoundingRectangleCesiumWriter> using$16 = new Using<BoundingRectangleCesiumWriter>(w.openImageSubRegionProperty())) {
                     final BoundingRectangleCesiumWriter w2 = using$16.resource;
-                    w2.writeBoundingRectangle(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
-                            .<BoundingRectangle> createList(BoundingRectangle.fromWidthHeight(26590D, 12135D, 16431D, 56640D), BoundingRectangle.fromWidthHeight(43063D, 42664D, 60326D, 52715D)));
+                    w2.writeBoundingRectangle(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
+                            TestGenerateValidationDocument.<BoundingRectangle> createList(BoundingRectangle.fromWidthHeight(26590.0, 12135.0, 16431.0, 56640.0),
+                                    BoundingRectangle.fromWidthHeight(43063.0, 42664.0, 60326.0, 52715.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.billboard.imageSubRegion.getValue(documentStartDate)).toEqual(new BoundingRectangle(26590, 12135, 16431, 56640));");
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.billboard.imageSubRegion.getValue(documentStopDate)).toEqual(new BoundingRectangle(43063, 42664, 60326, 52715));");
                 }
                 try (Using<DistanceDisplayConditionCesiumWriter> using$17 = new Using<DistanceDisplayConditionCesiumWriter>(w.openDistanceDisplayConditionProperty())) {
                     final DistanceDisplayConditionCesiumWriter w2 = using$17.resource;
                     w2.writeDistanceDisplayCondition(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<Bounds> createList(new Bounds(952D, 47317D), new Bounds(16896D, 28226D)));
+                            TestGenerateValidationDocument.<Bounds> createList(new Bounds(952.0, 47317.0), new Bounds(16896.0, 28226.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.billboard.distanceDisplayCondition.getValue(documentStartDate)).toEqual(new DistanceDisplayCondition(952, 47317));");
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.billboard.distanceDisplayCondition.getValue(documentStopDate)).toEqual(new DistanceDisplayCondition(16896, 28226));");
                 }
@@ -19078,7 +19080,7 @@ public class TestGenerateValidationDocument {
                 try (Using<BoxDimensionsCesiumWriter> using$20 = new Using<BoxDimensionsCesiumWriter>(w.openDimensionsProperty())) {
                     final BoxDimensionsCesiumWriter w2 = using$20.resource;
                     w2.writeCartesian(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<Cartesian> createList(new Cartesian(37525D, 42898D, 18087D), new Cartesian(49399D, 59584D, 63976D)));
+                            TestGenerateValidationDocument.<Cartesian> createList(new Cartesian(37525.0, 42898.0, 18087.0), new Cartesian(49399.0, 59584.0, 63976.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.box.dimensions.getValue(documentStartDate)).toEqual(new Cartesian3(37525, 42898, 18087));");
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.box.dimensions.getValue(documentStopDate)).toEqual(new Cartesian3(49399, 59584, 63976));");
                 }
@@ -19112,7 +19114,7 @@ public class TestGenerateValidationDocument {
                 try (Using<DistanceDisplayConditionCesiumWriter> using$26 = new Using<DistanceDisplayConditionCesiumWriter>(w.openDistanceDisplayConditionProperty())) {
                     final DistanceDisplayConditionCesiumWriter w2 = using$26.resource;
                     w2.writeDistanceDisplayCondition(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<Bounds> createList(new Bounds(8940D, 60664D), new Bounds(41202D, 60832D)));
+                            TestGenerateValidationDocument.<Bounds> createList(new Bounds(8940.0, 60664.0), new Bounds(41202.0, 60832.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.box.distanceDisplayCondition.getValue(documentStartDate)).toEqual(new DistanceDisplayCondition(8940, 60664));");
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.box.distanceDisplayCondition.getValue(documentStopDate)).toEqual(new DistanceDisplayCondition(41202, 60832));");
                 }
@@ -19177,7 +19179,7 @@ public class TestGenerateValidationDocument {
                 try (Using<DistanceDisplayConditionCesiumWriter> using$37 = new Using<DistanceDisplayConditionCesiumWriter>(w.openDistanceDisplayConditionProperty())) {
                     final DistanceDisplayConditionCesiumWriter w2 = using$37.resource;
                     w2.writeDistanceDisplayCondition(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<Bounds> createList(new Bounds(10884D, 63530D), new Bounds(20076D, 27683D)));
+                            TestGenerateValidationDocument.<Bounds> createList(new Bounds(10884.0, 63530.0), new Bounds(20076.0, 27683.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.corridor.distanceDisplayCondition.getValue(documentStartDate)).toEqual(new DistanceDisplayCondition(10884, 63530));");
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.corridor.distanceDisplayCondition.getValue(documentStopDate)).toEqual(new DistanceDisplayCondition(20076, 27683));");
                 }
@@ -19253,7 +19255,7 @@ public class TestGenerateValidationDocument {
                 try (Using<DistanceDisplayConditionCesiumWriter> using$50 = new Using<DistanceDisplayConditionCesiumWriter>(w.openDistanceDisplayConditionProperty())) {
                     final DistanceDisplayConditionCesiumWriter w2 = using$50.resource;
                     w2.writeDistanceDisplayCondition(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<Bounds> createList(new Bounds(2783D, 57220D), new Bounds(13855D, 50230D)));
+                            TestGenerateValidationDocument.<Bounds> createList(new Bounds(2783.0, 57220.0), new Bounds(13855.0, 50230.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.cylinder.distanceDisplayCondition.getValue(documentStartDate)).toEqual(new DistanceDisplayCondition(2783, 57220));");
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.cylinder.distanceDisplayCondition.getValue(documentStopDate)).toEqual(new DistanceDisplayCondition(13855, 50230));");
                 }
@@ -19345,7 +19347,7 @@ public class TestGenerateValidationDocument {
                 try (Using<DistanceDisplayConditionCesiumWriter> using$65 = new Using<DistanceDisplayConditionCesiumWriter>(w.openDistanceDisplayConditionProperty())) {
                     final DistanceDisplayConditionCesiumWriter w2 = using$65.resource;
                     w2.writeDistanceDisplayCondition(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<Bounds> createList(new Bounds(38393D, 63947D), new Bounds(29119D, 43121D)));
+                            TestGenerateValidationDocument.<Bounds> createList(new Bounds(38393.0, 63947.0), new Bounds(29119.0, 43121.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.distanceDisplayCondition.getValue(documentStartDate)).toEqual(new DistanceDisplayCondition(38393, 63947));");
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.distanceDisplayCondition.getValue(documentStopDate)).toEqual(new DistanceDisplayCondition(29119, 43121));");
                 }
@@ -19361,14 +19363,14 @@ public class TestGenerateValidationDocument {
                 try (Using<EllipsoidRadiiCesiumWriter> using$68 = new Using<EllipsoidRadiiCesiumWriter>(w.openRadiiProperty())) {
                     final EllipsoidRadiiCesiumWriter w2 = using$68.resource;
                     w2.writeCartesian(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<Cartesian> createList(new Cartesian(5183D, 10004D, 13863D), new Cartesian(39497D, 12186D, 45103D)));
+                            TestGenerateValidationDocument.<Cartesian> createList(new Cartesian(5183.0, 10004.0, 13863.0), new Cartesian(39497.0, 12186.0, 45103.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.radii.getValue(documentStartDate)).toEqual(new Cartesian3(5183, 10004, 13863));");
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.radii.getValue(documentStopDate)).toEqual(new Cartesian3(39497, 12186, 45103));");
                 }
                 try (Using<EllipsoidRadiiCesiumWriter> using$69 = new Using<EllipsoidRadiiCesiumWriter>(w.openInnerRadiiProperty())) {
                     final EllipsoidRadiiCesiumWriter w2 = using$69.resource;
                     w2.writeCartesian(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<Cartesian> createList(new Cartesian(40318D, 27037D, 59497D), new Cartesian(57650D, 53729D, 12241D)));
+                            TestGenerateValidationDocument.<Cartesian> createList(new Cartesian(40318.0, 27037.0, 59497.0), new Cartesian(57650.0, 53729.0, 12241.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.innerRadii.getValue(documentStartDate)).toEqual(new Cartesian3(40318, 27037, 59497));");
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.innerRadii.getValue(documentStopDate)).toEqual(new Cartesian3(57650, 53729, 12241));");
                 }
@@ -19448,7 +19450,7 @@ public class TestGenerateValidationDocument {
                 try (Using<DistanceDisplayConditionCesiumWriter> using$82 = new Using<DistanceDisplayConditionCesiumWriter>(w.openDistanceDisplayConditionProperty())) {
                     final DistanceDisplayConditionCesiumWriter w2 = using$82.resource;
                     w2.writeDistanceDisplayCondition(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<Bounds> createList(new Bounds(11751D, 59227D), new Bounds(4769D, 41441D)));
+                            TestGenerateValidationDocument.<Bounds> createList(new Bounds(11751.0, 59227.0), new Bounds(4769.0, 41441.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.distanceDisplayCondition.getValue(documentStartDate)).toEqual(new DistanceDisplayCondition(11751, 59227));");
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.distanceDisplayCondition.getValue(documentStopDate)).toEqual(new DistanceDisplayCondition(4769, 41441));");
                 }
@@ -19472,21 +19474,21 @@ public class TestGenerateValidationDocument {
                 try (Using<BackgroundPaddingCesiumWriter> using$86 = new Using<BackgroundPaddingCesiumWriter>(w.openBackgroundPaddingProperty())) {
                     final BackgroundPaddingCesiumWriter w2 = using$86.resource;
                     w2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(32945D, 5504D), new Rectangular(35323D, 6281D)));
+                            TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(32945.0, 5504.0), new Rectangular(35323.0, 6281.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.label.backgroundPadding.getValue(documentStartDate)).toEqual(new Cartesian2(32945, 5504));");
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.label.backgroundPadding.getValue(documentStopDate)).toEqual(new Cartesian2(35323, 6281));");
                 }
                 try (Using<PixelOffsetCesiumWriter> using$87 = new Using<PixelOffsetCesiumWriter>(w.openPixelOffsetProperty())) {
                     final PixelOffsetCesiumWriter w2 = using$87.resource;
                     w2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(8539D, 9761D), new Rectangular(10537D, 54569D)));
+                            TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(8539.0, 9761.0), new Rectangular(10537.0, 54569.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.label.pixelOffset.getValue(documentStartDate)).toEqual(new Cartesian2(8539, 9761));");
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.label.pixelOffset.getValue(documentStopDate)).toEqual(new Cartesian2(10537, 54569));");
                 }
                 try (Using<EyeOffsetCesiumWriter> using$88 = new Using<EyeOffsetCesiumWriter>(w.openEyeOffsetProperty())) {
                     final EyeOffsetCesiumWriter w2 = using$88.resource;
                     w2.writeCartesian(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<Cartesian> createList(new Cartesian(5984D, 34327D, 59014D), new Cartesian(1931D, 5127D, 18964D)));
+                            TestGenerateValidationDocument.<Cartesian> createList(new Cartesian(5984.0, 34327.0, 59014.0), new Cartesian(1931.0, 5127.0, 18964.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.label.eyeOffset.getValue(documentStartDate)).toEqual(new Cartesian3(5984, 34327, 59014));");
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.label.eyeOffset.getValue(documentStopDate)).toEqual(new Cartesian3(1931, 5127, 18964));");
                 }
@@ -19514,14 +19516,14 @@ public class TestGenerateValidationDocument {
                 try (Using<NearFarScalarCesiumWriter> using$92 = new Using<NearFarScalarCesiumWriter>(w.openTranslucencyByDistanceProperty())) {
                     final NearFarScalarCesiumWriter w2 = using$92.resource;
                     w2.writeNearFarScalar(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<NearFarScalar> createList(new NearFarScalar(25055D, 32865D, 32128D, 29309D), new NearFarScalar(58875D, 9189D, 20515D, 15696D)));
+                            TestGenerateValidationDocument.<NearFarScalar> createList(new NearFarScalar(25055.0, 32865.0, 32128.0, 29309.0), new NearFarScalar(58875.0, 9189.0, 20515.0, 15696.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.label.translucencyByDistance.getValue(documentStartDate)).toEqual(new NearFarScalar(25055, 32865, 32128, 29309));");
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.label.translucencyByDistance.getValue(documentStopDate)).toEqual(new NearFarScalar(58875, 9189, 20515, 15696));");
                 }
                 try (Using<NearFarScalarCesiumWriter> using$93 = new Using<NearFarScalarCesiumWriter>(w.openPixelOffsetScaleByDistanceProperty())) {
                     final NearFarScalarCesiumWriter w2 = using$93.resource;
                     w2.writeNearFarScalar(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<NearFarScalar> createList(new NearFarScalar(45296D, 62896D, 38133D, 40084D), new NearFarScalar(28657D, 25711D, 9316D, 62756D)));
+                            TestGenerateValidationDocument.<NearFarScalar> createList(new NearFarScalar(45296.0, 62896.0, 38133.0, 40084.0), new NearFarScalar(28657.0, 25711.0, 9316.0, 62756.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter,
                             "    expect(e.label.pixelOffsetScaleByDistance.getValue(documentStartDate)).toEqual(new NearFarScalar(45296, 62896, 38133, 40084));");
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.label.pixelOffsetScaleByDistance.getValue(documentStopDate)).toEqual(new NearFarScalar(28657, 25711, 9316, 62756));");
@@ -19529,14 +19531,14 @@ public class TestGenerateValidationDocument {
                 try (Using<NearFarScalarCesiumWriter> using$94 = new Using<NearFarScalarCesiumWriter>(w.openScaleByDistanceProperty())) {
                     final NearFarScalarCesiumWriter w2 = using$94.resource;
                     w2.writeNearFarScalar(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<NearFarScalar> createList(new NearFarScalar(22356D, 26711D, 58216D, 52963D), new NearFarScalar(26464D, 26471D, 23143D, 37466D)));
+                            TestGenerateValidationDocument.<NearFarScalar> createList(new NearFarScalar(22356.0, 26711.0, 58216.0, 52963.0), new NearFarScalar(26464.0, 26471.0, 23143.0, 37466.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.label.scaleByDistance.getValue(documentStartDate)).toEqual(new NearFarScalar(22356, 26711, 58216, 52963));");
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.label.scaleByDistance.getValue(documentStopDate)).toEqual(new NearFarScalar(26464, 26471, 23143, 37466));");
                 }
                 try (Using<DistanceDisplayConditionCesiumWriter> using$95 = new Using<DistanceDisplayConditionCesiumWriter>(w.openDistanceDisplayConditionProperty())) {
                     final DistanceDisplayConditionCesiumWriter w2 = using$95.resource;
                     w2.writeDistanceDisplayCondition(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<Bounds> createList(new Bounds(2314D, 2614D), new Bounds(23998D, 48733D)));
+                            TestGenerateValidationDocument.<Bounds> createList(new Bounds(2314.0, 2614.0), new Bounds(23998.0, 48733.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.label.distanceDisplayCondition.getValue(documentStartDate)).toEqual(new DistanceDisplayCondition(2314, 2614));");
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.label.distanceDisplayCondition.getValue(documentStopDate)).toEqual(new DistanceDisplayCondition(23998, 48733));");
                 }
@@ -19601,7 +19603,7 @@ public class TestGenerateValidationDocument {
                 try (Using<DistanceDisplayConditionCesiumWriter> using$105 = new Using<DistanceDisplayConditionCesiumWriter>(w.openDistanceDisplayConditionProperty())) {
                     final DistanceDisplayConditionCesiumWriter w2 = using$105.resource;
                     w2.writeDistanceDisplayCondition(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<Bounds> createList(new Bounds(33246D, 36993D), new Bounds(5814D, 10006D)));
+                            TestGenerateValidationDocument.<Bounds> createList(new Bounds(33246.0, 36993.0), new Bounds(5814.0, 10006.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.model.distanceDisplayCondition.getValue(documentStartDate)).toEqual(new DistanceDisplayCondition(33246, 36993));");
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.model.distanceDisplayCondition.getValue(documentStopDate)).toEqual(new DistanceDisplayCondition(5814, 10006));");
                 }
@@ -19652,7 +19654,7 @@ public class TestGenerateValidationDocument {
                 try (Using<DistanceDisplayConditionCesiumWriter> using$114 = new Using<DistanceDisplayConditionCesiumWriter>(w.openDistanceDisplayConditionProperty())) {
                     final DistanceDisplayConditionCesiumWriter w2 = using$114.resource;
                     w2.writeDistanceDisplayCondition(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<Bounds> createList(new Bounds(42994D, 62047D), new Bounds(52406D, 59340D)));
+                            TestGenerateValidationDocument.<Bounds> createList(new Bounds(42994.0, 62047.0), new Bounds(52406.0, 59340.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.distanceDisplayCondition.getValue(documentStartDate)).toEqual(new DistanceDisplayCondition(42994, 62047));");
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.distanceDisplayCondition.getValue(documentStopDate)).toEqual(new DistanceDisplayCondition(52406, 59340));");
                 }
@@ -19690,21 +19692,21 @@ public class TestGenerateValidationDocument {
                 try (Using<NearFarScalarCesiumWriter> using$120 = new Using<NearFarScalarCesiumWriter>(w.openScaleByDistanceProperty())) {
                     final NearFarScalarCesiumWriter w2 = using$120.resource;
                     w2.writeNearFarScalar(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<NearFarScalar> createList(new NearFarScalar(39727D, 50843D, 56262D, 15579D), new NearFarScalar(60522D, 63980D, 30201D, 25205D)));
+                            TestGenerateValidationDocument.<NearFarScalar> createList(new NearFarScalar(39727.0, 50843.0, 56262.0, 15579.0), new NearFarScalar(60522.0, 63980.0, 30201.0, 25205.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.point.scaleByDistance.getValue(documentStartDate)).toEqual(new NearFarScalar(39727, 50843, 56262, 15579));");
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.point.scaleByDistance.getValue(documentStopDate)).toEqual(new NearFarScalar(60522, 63980, 30201, 25205));");
                 }
                 try (Using<NearFarScalarCesiumWriter> using$121 = new Using<NearFarScalarCesiumWriter>(w.openTranslucencyByDistanceProperty())) {
                     final NearFarScalarCesiumWriter w2 = using$121.resource;
                     w2.writeNearFarScalar(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<NearFarScalar> createList(new NearFarScalar(61190D, 16879D, 16449D, 10048D), new NearFarScalar(46491D, 47541D, 35769D, 13707D)));
+                            TestGenerateValidationDocument.<NearFarScalar> createList(new NearFarScalar(61190.0, 16879.0, 16449.0, 10048.0), new NearFarScalar(46491.0, 47541.0, 35769.0, 13707.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.point.translucencyByDistance.getValue(documentStartDate)).toEqual(new NearFarScalar(61190, 16879, 16449, 10048));");
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.point.translucencyByDistance.getValue(documentStopDate)).toEqual(new NearFarScalar(46491, 47541, 35769, 13707));");
                 }
                 try (Using<DistanceDisplayConditionCesiumWriter> using$122 = new Using<DistanceDisplayConditionCesiumWriter>(w.openDistanceDisplayConditionProperty())) {
                     final DistanceDisplayConditionCesiumWriter w2 = using$122.resource;
                     w2.writeDistanceDisplayCondition(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<Bounds> createList(new Bounds(7642D, 55841D), new Bounds(24270D, 29534D)));
+                            TestGenerateValidationDocument.<Bounds> createList(new Bounds(7642.0, 55841.0), new Bounds(24270.0, 29534.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.point.distanceDisplayCondition.getValue(documentStartDate)).toEqual(new DistanceDisplayCondition(7642, 55841));");
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.point.distanceDisplayCondition.getValue(documentStopDate)).toEqual(new DistanceDisplayCondition(24270, 29534));");
                 }
@@ -19776,7 +19778,7 @@ public class TestGenerateValidationDocument {
                 try (Using<DistanceDisplayConditionCesiumWriter> using$134 = new Using<DistanceDisplayConditionCesiumWriter>(w.openDistanceDisplayConditionProperty())) {
                     final DistanceDisplayConditionCesiumWriter w2 = using$134.resource;
                     w2.writeDistanceDisplayCondition(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<Bounds> createList(new Bounds(22140D, 31962D), new Bounds(3927D, 22422D)));
+                            TestGenerateValidationDocument.<Bounds> createList(new Bounds(22140.0, 31962.0), new Bounds(3927.0, 22422.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.distanceDisplayCondition.getValue(documentStartDate)).toEqual(new DistanceDisplayCondition(22140, 31962));");
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.distanceDisplayCondition.getValue(documentStopDate)).toEqual(new DistanceDisplayCondition(3927, 22422));");
                 }
@@ -19832,7 +19834,7 @@ public class TestGenerateValidationDocument {
                 try (Using<DistanceDisplayConditionCesiumWriter> using$145 = new Using<DistanceDisplayConditionCesiumWriter>(w.openDistanceDisplayConditionProperty())) {
                     final DistanceDisplayConditionCesiumWriter w2 = using$145.resource;
                     w2.writeDistanceDisplayCondition(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<Bounds> createList(new Bounds(4857D, 10258D), new Bounds(36588D, 47246D)));
+                            TestGenerateValidationDocument.<Bounds> createList(new Bounds(4857.0, 10258.0), new Bounds(36588.0, 47246.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.distanceDisplayCondition.getValue(documentStartDate)).toEqual(new DistanceDisplayCondition(4857, 10258));");
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.distanceDisplayCondition.getValue(documentStopDate)).toEqual(new DistanceDisplayCondition(36588, 47246));");
                 }
@@ -19881,7 +19883,7 @@ public class TestGenerateValidationDocument {
                 try (Using<DistanceDisplayConditionCesiumWriter> using$154 = new Using<DistanceDisplayConditionCesiumWriter>(w.openDistanceDisplayConditionProperty())) {
                     final DistanceDisplayConditionCesiumWriter w2 = using$154.resource;
                     w2.writeDistanceDisplayCondition(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<Bounds> createList(new Bounds(20986D, 34897D), new Bounds(14877D, 46650D)));
+                            TestGenerateValidationDocument.<Bounds> createList(new Bounds(20986.0, 34897.0), new Bounds(14877.0, 46650.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter,
                             "    expect(e.polylineVolume.distanceDisplayCondition.getValue(documentStartDate)).toEqual(new DistanceDisplayCondition(20986, 34897));");
                     TextWriterHelper.writeLine(m_assertionsWriter,
@@ -19964,7 +19966,7 @@ public class TestGenerateValidationDocument {
                 try (Using<DistanceDisplayConditionCesiumWriter> using$167 = new Using<DistanceDisplayConditionCesiumWriter>(w.openDistanceDisplayConditionProperty())) {
                     final DistanceDisplayConditionCesiumWriter w2 = using$167.resource;
                     w2.writeDistanceDisplayCondition(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<Bounds> createList(new Bounds(24813D, 30560D), new Bounds(34617D, 40071D)));
+                            TestGenerateValidationDocument.<Bounds> createList(new Bounds(24813.0, 30560.0), new Bounds(34617.0, 40071.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.distanceDisplayCondition.getValue(documentStartDate)).toEqual(new DistanceDisplayCondition(24813, 30560));");
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.distanceDisplayCondition.getValue(documentStopDate)).toEqual(new DistanceDisplayCondition(34617, 40071));");
                 }
@@ -20024,7 +20026,7 @@ public class TestGenerateValidationDocument {
                 try (Using<DistanceDisplayConditionCesiumWriter> using$178 = new Using<DistanceDisplayConditionCesiumWriter>(w.openDistanceDisplayConditionProperty())) {
                     final DistanceDisplayConditionCesiumWriter w2 = using$178.resource;
                     w2.writeDistanceDisplayCondition(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<Bounds> createList(new Bounds(12470D, 36912D), new Bounds(35574D, 63040D)));
+                            TestGenerateValidationDocument.<Bounds> createList(new Bounds(12470.0, 36912.0), new Bounds(35574.0, 63040.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.wall.distanceDisplayCondition.getValue(documentStartDate)).toEqual(new DistanceDisplayCondition(12470, 36912));");
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.wall.distanceDisplayCondition.getValue(documentStopDate)).toEqual(new DistanceDisplayCondition(35574, 63040));");
                 }
@@ -20543,7 +20545,7 @@ public class TestGenerateValidationDocument {
                 try (Using<DirectionCesiumWriter> using$267 = new Using<DirectionCesiumWriter>(w.openDirectionProperty())) {
                     final DirectionCesiumWriter w2 = using$267.resource;
                     w2.writeSpherical(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<Spherical> createList(new Spherical(31576D, 24187D, 52062D), new Spherical(31098D, 2937D, 4107D)));
+                            TestGenerateValidationDocument.<Spherical> createList(new Spherical(31576.0, 24187.0, 52062.0), new Spherical(31098.0, 2937.0, 4107.0)));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.vector.direction.getValue(documentStartDate)).toEqual(Cartesian3.fromSpherical(new Spherical(31576, 24187, 52062)));");
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -20606,7 +20608,7 @@ public class TestGenerateValidationDocument {
             try (Using<PositionCesiumWriter> using$1 = new Using<PositionCesiumWriter>(packet.openPositionProperty())) {
                 final PositionCesiumWriter w = using$1.resource;
                 w.writeCartographicRadians(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
-                        .<Cartographic> createList(new Cartographic(1.00319530145806, 0.889718921347432, 16911D), new Cartographic(0.828301545608097, 0.517994728610812, 62937D)));
+                        .<Cartographic> createList(new Cartographic(1.00319530145806, 0.889718921347432, 16911.0), new Cartographic(0.828301545608097, 0.517994728610812, 62937.0)));
                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.position.getValue(documentStartDate)).toEqual(Cartesian3.fromRadians(1.00319530145806, 0.889718921347432, 16911));");
                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.position.getValue(documentStopDate)).toEqual(Cartesian3.fromRadians(0.828301545608097, 0.517994728610812, 62937));");
             }
@@ -20618,7 +20620,7 @@ public class TestGenerateValidationDocument {
             try (Using<PositionCesiumWriter> using$3 = new Using<PositionCesiumWriter>(packet.openPositionProperty())) {
                 final PositionCesiumWriter w = using$3.resource;
                 w.writeCartographicDegrees(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                        TestGenerateValidationDocument.<Cartographic> createList(new Cartographic(43D, 23D, 63733D), new Cartographic(28D, 12D, 9806D)));
+                        TestGenerateValidationDocument.<Cartographic> createList(new Cartographic(43.0, 23.0, 63733.0), new Cartographic(28.0, 12.0, 9806.0)));
                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.position.getValue(documentStartDate)).toEqual(Cartesian3.fromDegrees(43, 23, 63733));");
                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.position.getValue(documentStopDate)).toEqual(Cartesian3.fromDegrees(28, 12, 9806));");
             }
@@ -20630,8 +20632,8 @@ public class TestGenerateValidationDocument {
             try (Using<PositionCesiumWriter> using$5 = new Using<PositionCesiumWriter>(packet.openPositionProperty())) {
                 final PositionCesiumWriter w = using$5.resource;
                 w.writeCartesianVelocity(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                        TestGenerateValidationDocument.<Motion1<Cartesian>> createList(new Motion1<Cartesian>(new Cartesian(40342D, 23709D, 14940D), new Cartesian(12602D, 34609D, 44423D)),
-                                new Motion1<Cartesian>(new Cartesian(25648D, 55396D, 53208D), new Cartesian(60367D, 62699D, 54004D))));
+                        TestGenerateValidationDocument.<Motion1<Cartesian>> createList(new Motion1<Cartesian>(new Cartesian(40342.0, 23709.0, 14940.0), new Cartesian(12602.0, 34609.0, 44423.0)),
+                                new Motion1<Cartesian>(new Cartesian(25648.0, 55396.0, 53208.0), new Cartesian(60367.0, 62699.0, 54004.0))));
                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.position.getValue(documentStartDate)).toEqual(new Cartesian3(40342, 23709, 14940));");
                 TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.position.getValue(documentStopDate)).toEqual(new Cartesian3(25648, 55396, 53208));");
             }
@@ -20669,7 +20671,7 @@ public class TestGenerateValidationDocument {
                 try (Using<AlignedAxisCesiumWriter> using$5 = new Using<AlignedAxisCesiumWriter>(w.openAlignedAxisProperty())) {
                     final AlignedAxisCesiumWriter w2 = using$5.resource;
                     w2.writeUnitSpherical(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<UnitSpherical> createList(new UnitSpherical(57328D, 53471D), new UnitSpherical(51360D, 27848D)));
+                            TestGenerateValidationDocument.<UnitSpherical> createList(new UnitSpherical(57328.0, 53471.0), new UnitSpherical(51360.0, 27848.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter,
                             "    expect(e.billboard.alignedAxis.getValue(documentStartDate)).toEqualEpsilon(Cartesian3.fromSpherical(new Spherical(57328, 53471)), 1e-14);");
                     TextWriterHelper.writeLine(m_assertionsWriter,
@@ -20716,7 +20718,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$9 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$9.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(21562D, 11604D), new Rectangular(56719D, 11741D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(21562.0, 11604.0), new Rectangular(56719.0, 11741.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.box.material.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(21562, 11604));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.box.material.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(56719, 11741));");
                         }
@@ -20758,21 +20760,21 @@ public class TestGenerateValidationDocument {
                         try (Using<LineCountCesiumWriter> using$17 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$17.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(3433D, 28173D), new Rectangular(53350D, 6864D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(3433.0, 28173.0), new Rectangular(53350.0, 6864.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.box.material.lineCount.getValue(documentStartDate)).toEqual(new Cartesian2(3433, 28173));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.box.material.lineCount.getValue(documentStopDate)).toEqual(new Cartesian2(53350, 6864));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$18 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$18.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(36990D, 37264D), new Rectangular(38412D, 45974D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(36990.0, 37264.0), new Rectangular(38412.0, 45974.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.box.material.lineThickness.getValue(documentStartDate)).toEqual(new Cartesian2(36990, 37264));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.box.material.lineThickness.getValue(documentStopDate)).toEqual(new Cartesian2(38412, 45974));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$19 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$19.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(38761D, 46487D), new Rectangular(62553D, 37876D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(38761.0, 46487.0), new Rectangular(62553.0, 37876.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.box.material.lineOffset.getValue(documentStartDate)).toEqual(new Cartesian2(38761, 46487));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.box.material.lineOffset.getValue(documentStopDate)).toEqual(new Cartesian2(62553, 37876));");
                         }
@@ -20849,7 +20851,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$34 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$34.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(6238D, 42520D), new Rectangular(34685D, 17543D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(6238.0, 42520.0), new Rectangular(34685.0, 17543.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.box.material.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(6238, 42520));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.box.material.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(34685, 17543));");
                         }
@@ -21051,7 +21053,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$9 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$9.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(14885D, 62522D), new Rectangular(45129D, 25776D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(14885.0, 62522.0), new Rectangular(45129.0, 25776.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.corridor.material.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(14885, 62522));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.corridor.material.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(45129, 25776));");
                         }
@@ -21093,21 +21095,21 @@ public class TestGenerateValidationDocument {
                         try (Using<LineCountCesiumWriter> using$17 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$17.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(7285D, 25116D), new Rectangular(18095D, 8262D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(7285.0, 25116.0), new Rectangular(18095.0, 8262.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.corridor.material.lineCount.getValue(documentStartDate)).toEqual(new Cartesian2(7285, 25116));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.corridor.material.lineCount.getValue(documentStopDate)).toEqual(new Cartesian2(18095, 8262));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$18 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$18.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(31150D, 55929D), new Rectangular(40043D, 22428D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(31150.0, 55929.0), new Rectangular(40043.0, 22428.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.corridor.material.lineThickness.getValue(documentStartDate)).toEqual(new Cartesian2(31150, 55929));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.corridor.material.lineThickness.getValue(documentStopDate)).toEqual(new Cartesian2(40043, 22428));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$19 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$19.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(41105D, 52128D), new Rectangular(2387D, 32009D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(41105.0, 52128.0), new Rectangular(2387.0, 32009.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.corridor.material.lineOffset.getValue(documentStartDate)).toEqual(new Cartesian2(41105, 52128));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.corridor.material.lineOffset.getValue(documentStopDate)).toEqual(new Cartesian2(2387, 32009));");
                         }
@@ -21184,7 +21186,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$34 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$34.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(62107D, 62450D), new Rectangular(51782D, 25290D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(62107.0, 62450.0), new Rectangular(51782.0, 25290.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.corridor.material.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(62107, 62450));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.corridor.material.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(51782, 25290));");
                         }
@@ -21386,7 +21388,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$9 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$9.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(42846D, 26023D), new Rectangular(19184D, 35658D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(42846.0, 26023.0), new Rectangular(19184.0, 35658.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.cylinder.material.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(42846, 26023));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.cylinder.material.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(19184, 35658));");
                         }
@@ -21428,21 +21430,21 @@ public class TestGenerateValidationDocument {
                         try (Using<LineCountCesiumWriter> using$17 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$17.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(11469D, 5164D), new Rectangular(8167D, 36383D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(11469.0, 5164.0), new Rectangular(8167.0, 36383.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.cylinder.material.lineCount.getValue(documentStartDate)).toEqual(new Cartesian2(11469, 5164));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.cylinder.material.lineCount.getValue(documentStopDate)).toEqual(new Cartesian2(8167, 36383));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$18 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$18.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(22021D, 38742D), new Rectangular(45350D, 43441D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(22021.0, 38742.0), new Rectangular(45350.0, 43441.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.cylinder.material.lineThickness.getValue(documentStartDate)).toEqual(new Cartesian2(22021, 38742));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.cylinder.material.lineThickness.getValue(documentStopDate)).toEqual(new Cartesian2(45350, 43441));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$19 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$19.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(23237D, 58970D), new Rectangular(62223D, 62963D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(23237.0, 58970.0), new Rectangular(62223.0, 62963.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.cylinder.material.lineOffset.getValue(documentStartDate)).toEqual(new Cartesian2(23237, 58970));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.cylinder.material.lineOffset.getValue(documentStopDate)).toEqual(new Cartesian2(62223, 62963));");
                         }
@@ -21519,7 +21521,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$34 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$34.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(27893D, 32108D), new Rectangular(57420D, 52960D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(27893.0, 32108.0), new Rectangular(57420.0, 52960.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.cylinder.material.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(27893, 32108));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.cylinder.material.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(57420, 52960));");
                         }
@@ -21721,7 +21723,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$9 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$9.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(41027D, 32928D), new Rectangular(30513D, 54647D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(41027.0, 32928.0), new Rectangular(30513.0, 54647.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.material.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(41027, 32928));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.material.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(30513, 54647));");
                         }
@@ -21763,21 +21765,21 @@ public class TestGenerateValidationDocument {
                         try (Using<LineCountCesiumWriter> using$17 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$17.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(40987D, 3488D), new Rectangular(5066D, 58131D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(40987.0, 3488.0), new Rectangular(5066.0, 58131.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.material.lineCount.getValue(documentStartDate)).toEqual(new Cartesian2(40987, 3488));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.material.lineCount.getValue(documentStopDate)).toEqual(new Cartesian2(5066, 58131));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$18 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$18.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(11466D, 25388D), new Rectangular(17761D, 21317D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(11466.0, 25388.0), new Rectangular(17761.0, 21317.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.material.lineThickness.getValue(documentStartDate)).toEqual(new Cartesian2(11466, 25388));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.material.lineThickness.getValue(documentStopDate)).toEqual(new Cartesian2(17761, 21317));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$19 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$19.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(478D, 18945D), new Rectangular(25914D, 29541D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(478.0, 18945.0), new Rectangular(25914.0, 29541.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.material.lineOffset.getValue(documentStartDate)).toEqual(new Cartesian2(478, 18945));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.material.lineOffset.getValue(documentStopDate)).toEqual(new Cartesian2(25914, 29541));");
                         }
@@ -21854,7 +21856,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$34 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$34.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(24670D, 352D), new Rectangular(16830D, 33857D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(24670.0, 352.0), new Rectangular(16830.0, 33857.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.material.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(24670, 352));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipse.material.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(16830, 33857));");
                         }
@@ -22056,7 +22058,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$9 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$9.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(63583D, 15096D), new Rectangular(48977D, 60351D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(63583.0, 15096.0), new Rectangular(48977.0, 60351.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.material.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(63583, 15096));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.material.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(48977, 60351));");
                         }
@@ -22098,21 +22100,21 @@ public class TestGenerateValidationDocument {
                         try (Using<LineCountCesiumWriter> using$17 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$17.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(33778D, 30083D), new Rectangular(5202D, 18708D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(33778.0, 30083.0), new Rectangular(5202.0, 18708.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.material.lineCount.getValue(documentStartDate)).toEqual(new Cartesian2(33778, 30083));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.material.lineCount.getValue(documentStopDate)).toEqual(new Cartesian2(5202, 18708));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$18 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$18.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(44058D, 37804D), new Rectangular(34449D, 3718D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(44058.0, 37804.0), new Rectangular(34449.0, 3718.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.material.lineThickness.getValue(documentStartDate)).toEqual(new Cartesian2(44058, 37804));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.material.lineThickness.getValue(documentStopDate)).toEqual(new Cartesian2(34449, 3718));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$19 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$19.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(33149D, 21889D), new Rectangular(35482D, 10122D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(33149.0, 21889.0), new Rectangular(35482.0, 10122.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.material.lineOffset.getValue(documentStartDate)).toEqual(new Cartesian2(33149, 21889));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.material.lineOffset.getValue(documentStopDate)).toEqual(new Cartesian2(35482, 10122));");
                         }
@@ -22189,7 +22191,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$34 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$34.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(28116D, 51821D), new Rectangular(60296D, 50923D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(28116.0, 51821.0), new Rectangular(60296.0, 50923.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.material.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(28116, 51821));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.ellipsoid.material.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(60296, 50923));");
                         }
@@ -22615,7 +22617,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$36 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$36.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(25033D, 47457D), new Rectangular(30413D, 15734D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(25033.0, 47457.0), new Rectangular(30413.0, 15734.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.material.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(25033, 47457));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.material.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(30413, 15734));");
                         }
@@ -22657,21 +22659,21 @@ public class TestGenerateValidationDocument {
                         try (Using<LineCountCesiumWriter> using$44 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$44.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(34101D, 5509D), new Rectangular(11991D, 23086D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(34101.0, 5509.0), new Rectangular(11991.0, 23086.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.material.lineCount.getValue(documentStartDate)).toEqual(new Cartesian2(34101, 5509));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.material.lineCount.getValue(documentStopDate)).toEqual(new Cartesian2(11991, 23086));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$45 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$45.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(39225D, 58265D), new Rectangular(60443D, 36332D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(39225.0, 58265.0), new Rectangular(60443.0, 36332.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.material.lineThickness.getValue(documentStartDate)).toEqual(new Cartesian2(39225, 58265));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.material.lineThickness.getValue(documentStopDate)).toEqual(new Cartesian2(60443, 36332));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$46 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$46.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(25536D, 59747D), new Rectangular(43164D, 57256D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(25536.0, 59747.0), new Rectangular(43164.0, 57256.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.material.lineOffset.getValue(documentStartDate)).toEqual(new Cartesian2(25536, 59747));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.material.lineOffset.getValue(documentStopDate)).toEqual(new Cartesian2(43164, 57256));");
                         }
@@ -22748,7 +22750,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$61 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$61.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(14368D, 54840D), new Rectangular(58386D, 2276D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(14368.0, 54840.0), new Rectangular(58386.0, 2276.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.material.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(14368, 54840));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.path.material.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(58386, 2276));");
                         }
@@ -23108,7 +23110,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$9 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$9.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(19536D, 17484D), new Rectangular(46291D, 28852D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(19536.0, 17484.0), new Rectangular(46291.0, 28852.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.material.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(19536, 17484));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.material.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(46291, 28852));");
                         }
@@ -23150,21 +23152,21 @@ public class TestGenerateValidationDocument {
                         try (Using<LineCountCesiumWriter> using$17 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$17.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(47065D, 65463D), new Rectangular(29170D, 16497D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(47065.0, 65463.0), new Rectangular(29170.0, 16497.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.material.lineCount.getValue(documentStartDate)).toEqual(new Cartesian2(47065, 65463));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.material.lineCount.getValue(documentStopDate)).toEqual(new Cartesian2(29170, 16497));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$18 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$18.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(62674D, 26868D), new Rectangular(22008D, 39509D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(62674.0, 26868.0), new Rectangular(22008.0, 39509.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.material.lineThickness.getValue(documentStartDate)).toEqual(new Cartesian2(62674, 26868));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.material.lineThickness.getValue(documentStopDate)).toEqual(new Cartesian2(22008, 39509));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$19 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$19.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(28793D, 1648D), new Rectangular(44991D, 42159D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(28793.0, 1648.0), new Rectangular(44991.0, 42159.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.material.lineOffset.getValue(documentStartDate)).toEqual(new Cartesian2(28793, 1648));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.material.lineOffset.getValue(documentStopDate)).toEqual(new Cartesian2(44991, 42159));");
                         }
@@ -23241,7 +23243,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$34 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$34.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(32132D, 20093D), new Rectangular(31300D, 27514D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(32132.0, 20093.0), new Rectangular(31300.0, 27514.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.material.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(32132, 20093));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polygon.material.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(31300, 27514));");
                         }
@@ -23576,7 +23578,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$36 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$36.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(50957D, 35783D), new Rectangular(59533D, 65000D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(50957.0, 35783.0), new Rectangular(59533.0, 65000.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.material.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(50957, 35783));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.material.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(59533, 65000));");
                         }
@@ -23618,21 +23620,21 @@ public class TestGenerateValidationDocument {
                         try (Using<LineCountCesiumWriter> using$44 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$44.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(52308D, 51660D), new Rectangular(45338D, 51633D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(52308.0, 51660.0), new Rectangular(45338.0, 51633.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.material.lineCount.getValue(documentStartDate)).toEqual(new Cartesian2(52308, 51660));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.material.lineCount.getValue(documentStopDate)).toEqual(new Cartesian2(45338, 51633));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$45 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$45.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(47738D, 52154D), new Rectangular(42674D, 38822D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(47738.0, 52154.0), new Rectangular(42674.0, 38822.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.material.lineThickness.getValue(documentStartDate)).toEqual(new Cartesian2(47738, 52154));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.material.lineThickness.getValue(documentStopDate)).toEqual(new Cartesian2(42674, 38822));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$46 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$46.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(29194D, 52338D), new Rectangular(25319D, 28514D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(29194.0, 52338.0), new Rectangular(25319.0, 28514.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.material.lineOffset.getValue(documentStartDate)).toEqual(new Cartesian2(29194, 52338));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.material.lineOffset.getValue(documentStopDate)).toEqual(new Cartesian2(25319, 28514));");
                         }
@@ -23709,7 +23711,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$61 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$61.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(19943D, 17997D), new Rectangular(55528D, 16856D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(19943.0, 17997.0), new Rectangular(55528.0, 16856.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.material.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(19943, 17997));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.material.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(55528, 16856));");
                         }
@@ -24164,7 +24166,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$158 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$158.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(59796D, 25065D), new Rectangular(38054D, 9108D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(59796.0, 25065.0), new Rectangular(38054.0, 9108.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.depthFailMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(59796, 25065));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.depthFailMaterial.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(38054, 9108));");
                         }
@@ -24206,21 +24208,21 @@ public class TestGenerateValidationDocument {
                         try (Using<LineCountCesiumWriter> using$166 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$166.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(55344D, 11736D), new Rectangular(20410D, 11343D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(55344.0, 11736.0), new Rectangular(20410.0, 11343.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.depthFailMaterial.lineCount.getValue(documentStartDate)).toEqual(new Cartesian2(55344, 11736));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.depthFailMaterial.lineCount.getValue(documentStopDate)).toEqual(new Cartesian2(20410, 11343));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$167 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$167.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(22967D, 31065D), new Rectangular(59168D, 51431D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(22967.0, 31065.0), new Rectangular(59168.0, 51431.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.depthFailMaterial.lineThickness.getValue(documentStartDate)).toEqual(new Cartesian2(22967, 31065));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.depthFailMaterial.lineThickness.getValue(documentStopDate)).toEqual(new Cartesian2(59168, 51431));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$168 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$168.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(59000D, 31974D), new Rectangular(65334D, 48383D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(59000.0, 31974.0), new Rectangular(65334.0, 48383.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.depthFailMaterial.lineOffset.getValue(documentStartDate)).toEqual(new Cartesian2(59000, 31974));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.depthFailMaterial.lineOffset.getValue(documentStopDate)).toEqual(new Cartesian2(65334, 48383));");
                         }
@@ -24301,7 +24303,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$183 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$183.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(15034D, 58938D), new Rectangular(62661D, 23796D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(15034.0, 58938.0), new Rectangular(62661.0, 23796.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.depthFailMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(15034, 58938));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polyline.depthFailMaterial.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(62661, 23796));");
                         }
@@ -24624,7 +24626,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$9 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$9.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(54883D, 39382D), new Rectangular(42188D, 27300D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(54883.0, 39382.0), new Rectangular(42188.0, 27300.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.material.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(54883, 39382));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.material.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(42188, 27300));");
                         }
@@ -24666,21 +24668,21 @@ public class TestGenerateValidationDocument {
                         try (Using<LineCountCesiumWriter> using$17 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$17.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(14089D, 52279D), new Rectangular(59996D, 36842D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(14089.0, 52279.0), new Rectangular(59996.0, 36842.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.material.lineCount.getValue(documentStartDate)).toEqual(new Cartesian2(14089, 52279));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.material.lineCount.getValue(documentStopDate)).toEqual(new Cartesian2(59996, 36842));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$18 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$18.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(49037D, 8639D), new Rectangular(59785D, 47337D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(49037.0, 8639.0), new Rectangular(59785.0, 47337.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.material.lineThickness.getValue(documentStartDate)).toEqual(new Cartesian2(49037, 8639));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.material.lineThickness.getValue(documentStopDate)).toEqual(new Cartesian2(59785, 47337));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$19 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$19.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(40768D, 50335D), new Rectangular(6098D, 48919D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(40768.0, 50335.0), new Rectangular(6098.0, 48919.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.material.lineOffset.getValue(documentStartDate)).toEqual(new Cartesian2(40768, 50335));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.material.lineOffset.getValue(documentStopDate)).toEqual(new Cartesian2(6098, 48919));");
                         }
@@ -24757,7 +24759,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$34 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$34.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(45209D, 63152D), new Rectangular(42552D, 3238D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(45209.0, 63152.0), new Rectangular(42552.0, 3238.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.material.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(45209, 63152));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.polylineVolume.material.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(42552, 3238));");
                         }
@@ -24932,7 +24934,7 @@ public class TestGenerateValidationDocument {
                 try (Using<RectangleCoordinatesCesiumWriter> using$2 = new Using<RectangleCoordinatesCesiumWriter>(w.openCoordinatesProperty())) {
                     final RectangleCoordinatesCesiumWriter w2 = using$2.resource;
                     w2.writeWsenDegrees(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<CartographicExtent> createList(new CartographicExtent(35D, 18D, 38D, 15D), new CartographicExtent(38D, 1D, 12D, 30D)));
+                            TestGenerateValidationDocument.<CartographicExtent> createList(new CartographicExtent(35.0, 18.0, 38.0, 15.0), new CartographicExtent(38.0, 1.0, 12.0, 30.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.coordinates.getValue(documentStartDate)).toEqual(Rectangle.fromDegrees(35, 18, 38, 15));");
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.coordinates.getValue(documentStopDate)).toEqual(Rectangle.fromDegrees(38, 1, 12, 30));");
                 }
@@ -24974,7 +24976,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$12 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$12.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(3711D, 44302D), new Rectangular(52318D, 60108D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(3711.0, 44302.0), new Rectangular(52318.0, 60108.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.material.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(3711, 44302));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.material.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(52318, 60108));");
                         }
@@ -25016,21 +25018,21 @@ public class TestGenerateValidationDocument {
                         try (Using<LineCountCesiumWriter> using$20 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$20.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(22945D, 32857D), new Rectangular(55972D, 34522D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(22945.0, 32857.0), new Rectangular(55972.0, 34522.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.material.lineCount.getValue(documentStartDate)).toEqual(new Cartesian2(22945, 32857));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.material.lineCount.getValue(documentStopDate)).toEqual(new Cartesian2(55972, 34522));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$21 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$21.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(37146D, 39825D), new Rectangular(64636D, 13052D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(37146.0, 39825.0), new Rectangular(64636.0, 13052.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.material.lineThickness.getValue(documentStartDate)).toEqual(new Cartesian2(37146, 39825));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.material.lineThickness.getValue(documentStopDate)).toEqual(new Cartesian2(64636, 13052));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$22 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$22.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(8882D, 38690D), new Rectangular(8857D, 21794D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(8882.0, 38690.0), new Rectangular(8857.0, 21794.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.material.lineOffset.getValue(documentStartDate)).toEqual(new Cartesian2(8882, 38690));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.material.lineOffset.getValue(documentStopDate)).toEqual(new Cartesian2(8857, 21794));");
                         }
@@ -25107,7 +25109,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$37 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$37.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(44089D, 8876D), new Rectangular(60682D, 18669D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(44089.0, 8876.0), new Rectangular(60682.0, 18669.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.material.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(44089, 8876));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.rectangle.material.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(60682, 18669));");
                         }
@@ -25311,7 +25313,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$9 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$9.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(13369D, 38196D), new Rectangular(36874D, 55696D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(13369.0, 38196.0), new Rectangular(36874.0, 55696.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.wall.material.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(13369, 38196));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.wall.material.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(36874, 55696));");
                         }
@@ -25353,21 +25355,21 @@ public class TestGenerateValidationDocument {
                         try (Using<LineCountCesiumWriter> using$17 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$17.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(46941D, 30391D), new Rectangular(51565D, 6089D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(46941.0, 30391.0), new Rectangular(51565.0, 6089.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.wall.material.lineCount.getValue(documentStartDate)).toEqual(new Cartesian2(46941, 30391));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.wall.material.lineCount.getValue(documentStopDate)).toEqual(new Cartesian2(51565, 6089));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$18 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$18.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(35543D, 16778D), new Rectangular(32904D, 18048D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(35543.0, 16778.0), new Rectangular(32904.0, 18048.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.wall.material.lineThickness.getValue(documentStartDate)).toEqual(new Cartesian2(35543, 16778));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.wall.material.lineThickness.getValue(documentStopDate)).toEqual(new Cartesian2(32904, 18048));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$19 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$19.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(2955D, 19723D), new Rectangular(58723D, 15333D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(2955.0, 19723.0), new Rectangular(58723.0, 15333.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.wall.material.lineOffset.getValue(documentStartDate)).toEqual(new Cartesian2(2955, 19723));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.wall.material.lineOffset.getValue(documentStopDate)).toEqual(new Cartesian2(58723, 15333));");
                         }
@@ -25444,7 +25446,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$34 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$34.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(30510D, 28535D), new Rectangular(22105D, 29014D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(30510.0, 28535.0), new Rectangular(22105.0, 29014.0)));
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.wall.material.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(30510, 28535));");
                             TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.wall.material.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(22105, 29014));");
                         }
@@ -25663,7 +25665,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$12 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$12.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(26885D, 9577D), new Rectangular(43369D, 23209D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(26885.0, 9577.0), new Rectangular(43369.0, 23209.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.lateralSurfaceMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(26885, 9577));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -25711,7 +25713,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineCountCesiumWriter> using$20 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$20.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(29248D, 29298D), new Rectangular(10801D, 50474D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(29248.0, 29298.0), new Rectangular(10801.0, 50474.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.lateralSurfaceMaterial.lineCount.getValue(documentStartDate)).toEqual(new Cartesian2(29248, 29298));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -25720,7 +25722,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineThicknessCesiumWriter> using$21 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$21.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(29571D, 1651D), new Rectangular(24960D, 22113D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(29571.0, 1651.0), new Rectangular(24960.0, 22113.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.lateralSurfaceMaterial.lineThickness.getValue(documentStartDate)).toEqual(new Cartesian2(29571, 1651));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -25729,7 +25731,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineOffsetCesiumWriter> using$22 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$22.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(55103D, 11223D), new Rectangular(45946D, 59571D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(55103.0, 11223.0), new Rectangular(45946.0, 59571.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.lateralSurfaceMaterial.lineOffset.getValue(documentStartDate)).toEqual(new Cartesian2(55103, 11223));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -25816,7 +25818,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$37 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$37.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(23744D, 47196D), new Rectangular(16577D, 25920D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(23744.0, 47196.0), new Rectangular(16577.0, 25920.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.lateralSurfaceMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(23744, 47196));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -26000,7 +26002,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$77 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$77.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(15751D, 40509D), new Rectangular(35728D, 34187D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(15751.0, 40509.0), new Rectangular(35728.0, 34187.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.ellipsoidSurfaceMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(15751, 40509));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -26048,7 +26050,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineCountCesiumWriter> using$85 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$85.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(27080D, 64105D), new Rectangular(2556D, 11273D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(27080.0, 64105.0), new Rectangular(2556.0, 11273.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.ellipsoidSurfaceMaterial.lineCount.getValue(documentStartDate)).toEqual(new Cartesian2(27080, 64105));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -26057,7 +26059,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineThicknessCesiumWriter> using$86 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$86.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(56653D, 64989D), new Rectangular(16857D, 36929D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(56653.0, 64989.0), new Rectangular(16857.0, 36929.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.ellipsoidSurfaceMaterial.lineThickness.getValue(documentStartDate)).toEqual(new Cartesian2(56653, 64989));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -26066,7 +26068,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineOffsetCesiumWriter> using$87 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$87.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(44206D, 26796D), new Rectangular(38284D, 28309D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(44206.0, 26796.0), new Rectangular(38284.0, 28309.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.ellipsoidSurfaceMaterial.lineOffset.getValue(documentStartDate)).toEqual(new Cartesian2(44206, 26796));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -26153,7 +26155,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$102 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$102.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(43465D, 4521D), new Rectangular(27484D, 58219D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(43465.0, 4521.0), new Rectangular(27484.0, 58219.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.ellipsoidSurfaceMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(43465, 4521));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -26337,7 +26339,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$142 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$142.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(60426D, 50668D), new Rectangular(37349D, 39057D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(60426.0, 50668.0), new Rectangular(37349.0, 39057.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.ellipsoidHorizonSurfaceMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(60426, 50668));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -26387,7 +26389,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineCountCesiumWriter> using$150 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$150.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(1497D, 17669D), new Rectangular(52287D, 29644D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(1497.0, 17669.0), new Rectangular(52287.0, 29644.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.ellipsoidHorizonSurfaceMaterial.lineCount.getValue(documentStartDate)).toEqual(new Cartesian2(1497, 17669));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -26396,7 +26398,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineThicknessCesiumWriter> using$151 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$151.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(49813D, 39106D), new Rectangular(56035D, 42714D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(49813.0, 39106.0), new Rectangular(56035.0, 42714.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.ellipsoidHorizonSurfaceMaterial.lineThickness.getValue(documentStartDate)).toEqual(new Cartesian2(49813, 39106));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -26405,7 +26407,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineOffsetCesiumWriter> using$152 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$152.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(1548D, 39430D), new Rectangular(20317D, 63823D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(1548.0, 39430.0), new Rectangular(20317.0, 63823.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.ellipsoidHorizonSurfaceMaterial.lineOffset.getValue(documentStartDate)).toEqual(new Cartesian2(1548, 39430));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -26492,7 +26494,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$167 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$167.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(59856D, 38121D), new Rectangular(64609D, 1020D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(59856.0, 38121.0), new Rectangular(64609.0, 1020.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.ellipsoidHorizonSurfaceMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(59856, 38121));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -26676,7 +26678,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$207 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$207.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(15155D, 54843D), new Rectangular(23043D, 52314D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(15155.0, 54843.0), new Rectangular(23043.0, 52314.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.domeSurfaceMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(15155, 54843));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -26724,7 +26726,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineCountCesiumWriter> using$215 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$215.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(36585D, 398D), new Rectangular(55649D, 1753D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(36585.0, 398.0), new Rectangular(55649.0, 1753.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.domeSurfaceMaterial.lineCount.getValue(documentStartDate)).toEqual(new Cartesian2(36585, 398));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -26733,7 +26735,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineThicknessCesiumWriter> using$216 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$216.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(46298D, 48052D), new Rectangular(2425D, 23049D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(46298.0, 48052.0), new Rectangular(2425.0, 23049.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.domeSurfaceMaterial.lineThickness.getValue(documentStartDate)).toEqual(new Cartesian2(46298, 48052));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -26742,7 +26744,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineOffsetCesiumWriter> using$217 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$217.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(32050D, 28285D), new Rectangular(28995D, 12145D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(32050.0, 28285.0), new Rectangular(28995.0, 12145.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.domeSurfaceMaterial.lineOffset.getValue(documentStartDate)).toEqual(new Cartesian2(32050, 28285));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -26829,7 +26831,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$232 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$232.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(36587D, 22670D), new Rectangular(7761D, 46622D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(36587.0, 22670.0), new Rectangular(7761.0, 46622.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.domeSurfaceMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(36587, 22670));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -27013,7 +27015,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$272 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$272.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(9595D, 10789D), new Rectangular(18969D, 45642D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(9595.0, 10789.0), new Rectangular(18969.0, 45642.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.environmentOcclusionMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(9595, 10789));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -27061,7 +27063,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineCountCesiumWriter> using$280 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$280.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(36175D, 49549D), new Rectangular(25282D, 43362D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(36175.0, 49549.0), new Rectangular(25282.0, 43362.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.environmentOcclusionMaterial.lineCount.getValue(documentStartDate)).toEqual(new Cartesian2(36175, 49549));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -27070,7 +27072,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineThicknessCesiumWriter> using$281 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$281.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(3202D, 31500D), new Rectangular(31331D, 9594D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(3202.0, 31500.0), new Rectangular(31331.0, 9594.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.environmentOcclusionMaterial.lineThickness.getValue(documentStartDate)).toEqual(new Cartesian2(3202, 31500));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -27079,7 +27081,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineOffsetCesiumWriter> using$282 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$282.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(26878D, 19048D), new Rectangular(14809D, 8505D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(26878.0, 19048.0), new Rectangular(14809.0, 8505.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.environmentOcclusionMaterial.lineOffset.getValue(documentStartDate)).toEqual(new Cartesian2(26878, 19048));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -27166,7 +27168,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$297 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$297.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(50981D, 48583D), new Rectangular(32485D, 61310D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(50981.0, 48583.0), new Rectangular(32485.0, 61310.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.environmentOcclusionMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(50981, 48583));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -27421,7 +27423,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$12 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$12.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(63029D, 3574D), new Rectangular(55389D, 39128D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(63029.0, 3574.0), new Rectangular(55389.0, 39128.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.lateralSurfaceMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(63029, 3574));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -27470,7 +27472,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineCountCesiumWriter> using$20 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$20.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(32706D, 60287D), new Rectangular(9849D, 57894D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(32706.0, 60287.0), new Rectangular(9849.0, 57894.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.lateralSurfaceMaterial.lineCount.getValue(documentStartDate)).toEqual(new Cartesian2(32706, 60287));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -27479,7 +27481,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineThicknessCesiumWriter> using$21 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$21.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(52801D, 55758D), new Rectangular(21243D, 12882D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(52801.0, 55758.0), new Rectangular(21243.0, 12882.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.lateralSurfaceMaterial.lineThickness.getValue(documentStartDate)).toEqual(new Cartesian2(52801, 55758));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -27488,7 +27490,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineOffsetCesiumWriter> using$22 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$22.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(32497D, 63102D), new Rectangular(872D, 8963D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(32497.0, 63102.0), new Rectangular(872.0, 8963.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.lateralSurfaceMaterial.lineOffset.getValue(documentStartDate)).toEqual(new Cartesian2(32497, 63102));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -27575,7 +27577,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$37 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$37.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(17911D, 1349D), new Rectangular(19690D, 25676D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(17911.0, 1349.0), new Rectangular(19690.0, 25676.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.lateralSurfaceMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(17911, 1349));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -27759,7 +27761,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$77 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$77.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(58698D, 40933D), new Rectangular(41986D, 11428D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(58698.0, 40933.0), new Rectangular(41986.0, 11428.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.ellipsoidSurfaceMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(58698, 40933));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -27809,7 +27811,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineCountCesiumWriter> using$85 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$85.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(53003D, 15055D), new Rectangular(54783D, 43989D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(53003.0, 15055.0), new Rectangular(54783.0, 43989.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.ellipsoidSurfaceMaterial.lineCount.getValue(documentStartDate)).toEqual(new Cartesian2(53003, 15055));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -27818,7 +27820,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineThicknessCesiumWriter> using$86 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$86.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(20747D, 61009D), new Rectangular(44483D, 19885D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(20747.0, 61009.0), new Rectangular(44483.0, 19885.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.ellipsoidSurfaceMaterial.lineThickness.getValue(documentStartDate)).toEqual(new Cartesian2(20747, 61009));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -27827,7 +27829,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineOffsetCesiumWriter> using$87 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$87.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(4601D, 33809D), new Rectangular(5562D, 9237D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(4601.0, 33809.0), new Rectangular(5562.0, 9237.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.ellipsoidSurfaceMaterial.lineOffset.getValue(documentStartDate)).toEqual(new Cartesian2(4601, 33809));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -27914,7 +27916,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$102 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$102.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(62246D, 30451D), new Rectangular(37575D, 26258D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(62246.0, 30451.0), new Rectangular(37575.0, 26258.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.ellipsoidSurfaceMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(62246, 30451));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -28098,7 +28100,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$142 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$142.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(21969D, 13397D), new Rectangular(39494D, 53658D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(21969.0, 13397.0), new Rectangular(39494.0, 53658.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.ellipsoidHorizonSurfaceMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(21969, 13397));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -28148,7 +28150,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineCountCesiumWriter> using$150 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$150.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(50481D, 2245D), new Rectangular(37420D, 18578D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(50481.0, 2245.0), new Rectangular(37420.0, 18578.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.ellipsoidHorizonSurfaceMaterial.lineCount.getValue(documentStartDate)).toEqual(new Cartesian2(50481, 2245));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -28157,7 +28159,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineThicknessCesiumWriter> using$151 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$151.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(12996D, 37682D), new Rectangular(52906D, 32974D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(12996.0, 37682.0), new Rectangular(52906.0, 32974.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.ellipsoidHorizonSurfaceMaterial.lineThickness.getValue(documentStartDate)).toEqual(new Cartesian2(12996, 37682));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -28166,7 +28168,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineOffsetCesiumWriter> using$152 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$152.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(1153D, 65284D), new Rectangular(20666D, 28496D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(1153.0, 65284.0), new Rectangular(20666.0, 28496.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.ellipsoidHorizonSurfaceMaterial.lineOffset.getValue(documentStartDate)).toEqual(new Cartesian2(1153, 65284));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -28257,7 +28259,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$167 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$167.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(52216D, 34251D), new Rectangular(42684D, 49318D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(52216.0, 34251.0), new Rectangular(42684.0, 49318.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.ellipsoidHorizonSurfaceMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(52216, 34251));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -28441,7 +28443,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$207 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$207.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(60682D, 27373D), new Rectangular(52685D, 47309D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(60682.0, 27373.0), new Rectangular(52685.0, 47309.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.domeSurfaceMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(60682, 27373));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -28489,7 +28491,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineCountCesiumWriter> using$215 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$215.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(62334D, 24819D), new Rectangular(21928D, 49237D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(62334.0, 24819.0), new Rectangular(21928.0, 49237.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.domeSurfaceMaterial.lineCount.getValue(documentStartDate)).toEqual(new Cartesian2(62334, 24819));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -28498,7 +28500,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineThicknessCesiumWriter> using$216 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$216.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(20309D, 29263D), new Rectangular(37015D, 21392D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(20309.0, 29263.0), new Rectangular(37015.0, 21392.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.domeSurfaceMaterial.lineThickness.getValue(documentStartDate)).toEqual(new Cartesian2(20309, 29263));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -28507,7 +28509,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineOffsetCesiumWriter> using$217 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$217.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(25094D, 25442D), new Rectangular(627D, 60674D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(25094.0, 25442.0), new Rectangular(627.0, 60674.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.domeSurfaceMaterial.lineOffset.getValue(documentStartDate)).toEqual(new Cartesian2(25094, 25442));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -28594,7 +28596,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$232 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$232.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(26766D, 25960D), new Rectangular(41604D, 30626D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(26766.0, 25960.0), new Rectangular(41604.0, 30626.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.domeSurfaceMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(26766, 25960));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -28778,7 +28780,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$272 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$272.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(62312D, 48883D), new Rectangular(57031D, 8414D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(62312.0, 48883.0), new Rectangular(57031.0, 8414.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.environmentOcclusionMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(62312, 48883));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -28828,7 +28830,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineCountCesiumWriter> using$280 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$280.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(39465D, 33434D), new Rectangular(34009D, 23428D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(39465.0, 33434.0), new Rectangular(34009.0, 23428.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.environmentOcclusionMaterial.lineCount.getValue(documentStartDate)).toEqual(new Cartesian2(39465, 33434));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -28837,7 +28839,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineThicknessCesiumWriter> using$281 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$281.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(12138D, 31535D), new Rectangular(21340D, 63571D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(12138.0, 31535.0), new Rectangular(21340.0, 63571.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.environmentOcclusionMaterial.lineThickness.getValue(documentStartDate)).toEqual(new Cartesian2(12138, 31535));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -28846,7 +28848,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineOffsetCesiumWriter> using$282 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$282.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(41772D, 53923D), new Rectangular(38657D, 39063D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(41772.0, 53923.0), new Rectangular(38657.0, 39063.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.environmentOcclusionMaterial.lineOffset.getValue(documentStartDate)).toEqual(new Cartesian2(41772, 53923));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -28937,7 +28939,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$297 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$297.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(47658D, 17082D), new Rectangular(53788D, 22482D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(47658.0, 17082.0), new Rectangular(53788.0, 22482.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.environmentOcclusionMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(47658, 17082));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -29192,7 +29194,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$12 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$12.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(52010D, 29131D), new Rectangular(37742D, 39315D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(52010.0, 29131.0), new Rectangular(37742.0, 39315.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.lateralSurfaceMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(52010, 29131));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -29240,7 +29242,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineCountCesiumWriter> using$20 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$20.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(50687D, 36037D), new Rectangular(13907D, 20534D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(50687.0, 36037.0), new Rectangular(13907.0, 20534.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.lateralSurfaceMaterial.lineCount.getValue(documentStartDate)).toEqual(new Cartesian2(50687, 36037));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -29249,7 +29251,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineThicknessCesiumWriter> using$21 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$21.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(54144D, 36307D), new Rectangular(51987D, 20683D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(54144.0, 36307.0), new Rectangular(51987.0, 20683.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.lateralSurfaceMaterial.lineThickness.getValue(documentStartDate)).toEqual(new Cartesian2(54144, 36307));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -29258,7 +29260,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineOffsetCesiumWriter> using$22 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$22.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(44547D, 50094D), new Rectangular(41657D, 39586D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(44547.0, 50094.0), new Rectangular(41657.0, 39586.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.lateralSurfaceMaterial.lineOffset.getValue(documentStartDate)).toEqual(new Cartesian2(44547, 50094));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -29345,7 +29347,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$37 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$37.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(17119D, 42050D), new Rectangular(61338D, 26607D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(17119.0, 42050.0), new Rectangular(61338.0, 26607.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.lateralSurfaceMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(17119, 42050));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -29529,7 +29531,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$77 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$77.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(19293D, 30027D), new Rectangular(53447D, 40400D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(19293.0, 30027.0), new Rectangular(53447.0, 40400.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.ellipsoidSurfaceMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(19293, 30027));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -29578,7 +29580,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineCountCesiumWriter> using$85 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$85.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(3767D, 19214D), new Rectangular(25536D, 29283D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(3767.0, 19214.0), new Rectangular(25536.0, 29283.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.ellipsoidSurfaceMaterial.lineCount.getValue(documentStartDate)).toEqual(new Cartesian2(3767, 19214));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -29587,7 +29589,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineThicknessCesiumWriter> using$86 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$86.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(46435D, 13749D), new Rectangular(59883D, 59113D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(46435.0, 13749.0), new Rectangular(59883.0, 59113.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.ellipsoidSurfaceMaterial.lineThickness.getValue(documentStartDate)).toEqual(new Cartesian2(46435, 13749));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -29596,7 +29598,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineOffsetCesiumWriter> using$87 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$87.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(3470D, 23821D), new Rectangular(21415D, 22355D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(3470.0, 23821.0), new Rectangular(21415.0, 22355.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.ellipsoidSurfaceMaterial.lineOffset.getValue(documentStartDate)).toEqual(new Cartesian2(3470, 23821));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -29683,7 +29685,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$102 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$102.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(61213D, 61935D), new Rectangular(53596D, 3025D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(61213.0, 61935.0), new Rectangular(53596.0, 3025.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.ellipsoidSurfaceMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(61213, 61935));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -29867,7 +29869,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$142 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$142.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(23214D, 39258D), new Rectangular(2670D, 15370D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(23214.0, 39258.0), new Rectangular(2670.0, 15370.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.ellipsoidHorizonSurfaceMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(23214, 39258));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -29917,7 +29919,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineCountCesiumWriter> using$150 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$150.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(47204D, 22456D), new Rectangular(26036D, 49253D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(47204.0, 22456.0), new Rectangular(26036.0, 49253.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.ellipsoidHorizonSurfaceMaterial.lineCount.getValue(documentStartDate)).toEqual(new Cartesian2(47204, 22456));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -29926,7 +29928,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineThicknessCesiumWriter> using$151 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$151.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(49429D, 31425D), new Rectangular(12054D, 27951D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(49429.0, 31425.0), new Rectangular(12054.0, 27951.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.ellipsoidHorizonSurfaceMaterial.lineThickness.getValue(documentStartDate)).toEqual(new Cartesian2(49429, 31425));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -29935,7 +29937,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineOffsetCesiumWriter> using$152 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$152.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(22478D, 51031D), new Rectangular(53335D, 18640D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(22478.0, 51031.0), new Rectangular(53335.0, 18640.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.ellipsoidHorizonSurfaceMaterial.lineOffset.getValue(documentStartDate)).toEqual(new Cartesian2(22478, 51031));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -30026,7 +30028,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$167 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$167.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(22491D, 23127D), new Rectangular(34352D, 6022D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(22491.0, 23127.0), new Rectangular(34352.0, 6022.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.ellipsoidHorizonSurfaceMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(22491, 23127));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -30210,7 +30212,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$207 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$207.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(32842D, 39552D), new Rectangular(1658D, 6662D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(32842.0, 39552.0), new Rectangular(1658.0, 6662.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.domeSurfaceMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(32842, 39552));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -30258,7 +30260,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineCountCesiumWriter> using$215 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$215.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(28334D, 23918D), new Rectangular(33281D, 50050D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(28334.0, 23918.0), new Rectangular(33281.0, 50050.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.domeSurfaceMaterial.lineCount.getValue(documentStartDate)).toEqual(new Cartesian2(28334, 23918));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -30267,7 +30269,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineThicknessCesiumWriter> using$216 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$216.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(63911D, 12025D), new Rectangular(39352D, 60313D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(63911.0, 12025.0), new Rectangular(39352.0, 60313.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.domeSurfaceMaterial.lineThickness.getValue(documentStartDate)).toEqual(new Cartesian2(63911, 12025));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -30276,7 +30278,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineOffsetCesiumWriter> using$217 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$217.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(27723D, 47724D), new Rectangular(25108D, 20066D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(27723.0, 47724.0), new Rectangular(25108.0, 20066.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.domeSurfaceMaterial.lineOffset.getValue(documentStartDate)).toEqual(new Cartesian2(27723, 47724));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -30363,7 +30365,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$232 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$232.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(18624D, 13896D), new Rectangular(39440D, 15002D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(18624.0, 13896.0), new Rectangular(39440.0, 15002.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.domeSurfaceMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(18624, 13896));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -30547,7 +30549,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$272 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$272.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(19700D, 62796D), new Rectangular(47399D, 44729D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(19700.0, 62796.0), new Rectangular(47399.0, 44729.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.environmentOcclusionMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(19700, 62796));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -30597,7 +30599,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineCountCesiumWriter> using$280 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$280.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(47281D, 7864D), new Rectangular(39095D, 25240D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(47281.0, 7864.0), new Rectangular(39095.0, 25240.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.environmentOcclusionMaterial.lineCount.getValue(documentStartDate)).toEqual(new Cartesian2(47281, 7864));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -30606,7 +30608,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineThicknessCesiumWriter> using$281 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$281.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(3327D, 5644D), new Rectangular(25573D, 63843D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(3327.0, 5644.0), new Rectangular(25573.0, 63843.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.environmentOcclusionMaterial.lineThickness.getValue(documentStartDate)).toEqual(new Cartesian2(3327, 5644));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -30615,7 +30617,7 @@ public class TestGenerateValidationDocument {
                         try (Using<LineOffsetCesiumWriter> using$282 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$282.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(38263D, 47765D), new Rectangular(65149D, 50686D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(38263.0, 47765.0), new Rectangular(65149.0, 50686.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.environmentOcclusionMaterial.lineOffset.getValue(documentStartDate)).toEqual(new Cartesian2(38263, 47765));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -30706,7 +30708,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$297 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$297.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(30919D, 15224D), new Rectangular(4399D, 15633D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(30919.0, 15224.0), new Rectangular(4399.0, 15633.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.environmentOcclusionMaterial.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(30919, 15224));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -30944,7 +30946,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$9 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$9.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(58726D, 59621D), new Rectangular(46654D, 63670D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(58726.0, 59621.0), new Rectangular(46654.0, 63670.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.material.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(58726, 59621));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.material.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(46654, 63670));");
                         }
@@ -30986,21 +30988,21 @@ public class TestGenerateValidationDocument {
                         try (Using<LineCountCesiumWriter> using$17 = new Using<LineCountCesiumWriter>(m.openLineCountProperty())) {
                             final LineCountCesiumWriter m2 = using$17.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(10435D, 52008D), new Rectangular(35404D, 57482D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(10435.0, 52008.0), new Rectangular(35404.0, 57482.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.material.lineCount.getValue(documentStartDate)).toEqual(new Cartesian2(10435, 52008));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.material.lineCount.getValue(documentStopDate)).toEqual(new Cartesian2(35404, 57482));");
                         }
                         try (Using<LineThicknessCesiumWriter> using$18 = new Using<LineThicknessCesiumWriter>(m.openLineThicknessProperty())) {
                             final LineThicknessCesiumWriter m2 = using$18.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(44794D, 63406D), new Rectangular(17262D, 1347D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(44794.0, 63406.0), new Rectangular(17262.0, 1347.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.material.lineThickness.getValue(documentStartDate)).toEqual(new Cartesian2(44794, 63406));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.material.lineThickness.getValue(documentStopDate)).toEqual(new Cartesian2(17262, 1347));");
                         }
                         try (Using<LineOffsetCesiumWriter> using$19 = new Using<LineOffsetCesiumWriter>(m.openLineOffsetProperty())) {
                             final LineOffsetCesiumWriter m2 = using$19.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(35392D, 13706D), new Rectangular(21580D, 53844D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(35392.0, 13706.0), new Rectangular(21580.0, 53844.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.material.lineOffset.getValue(documentStartDate)).toEqual(new Cartesian2(35392, 13706));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.material.lineOffset.getValue(documentStopDate)).toEqual(new Cartesian2(21580, 53844));");
                         }
@@ -31077,7 +31079,7 @@ public class TestGenerateValidationDocument {
                         try (Using<RepeatCesiumWriter> using$34 = new Using<RepeatCesiumWriter>(m.openRepeatProperty())) {
                             final RepeatCesiumWriter m2 = using$34.resource;
                             m2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(50034D, 2755D), new Rectangular(23022D, 2137D)));
+                                    TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(50034.0, 2755.0), new Rectangular(23022.0, 2137.0)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.material.repeat.getValue(documentStartDate)).toEqual(new Cartesian2(50034, 2755));");
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.material.repeat.getValue(documentStopDate)).toEqual(new Cartesian2(23022, 2137));");
                         }
@@ -31269,7 +31271,7 @@ public class TestGenerateValidationDocument {
                 try (Using<DirectionCesiumWriter> using$5 = new Using<DirectionCesiumWriter>(w.openDirectionProperty())) {
                     final DirectionCesiumWriter w2 = using$5.resource;
                     w2.writeUnitSpherical(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<UnitSpherical> createList(new UnitSpherical(42298D, 7077D), new UnitSpherical(35027D, 44936D)));
+                            TestGenerateValidationDocument.<UnitSpherical> createList(new UnitSpherical(42298.0, 7077.0), new UnitSpherical(35027.0, 44936.0)));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.vector.direction.getValue(documentStartDate)).toEqualEpsilon(Cartesian3.fromSpherical(new Spherical(42298, 7077)), 1e-14);");
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -31286,7 +31288,7 @@ public class TestGenerateValidationDocument {
                 try (Using<DirectionCesiumWriter> using$8 = new Using<DirectionCesiumWriter>(w.openDirectionProperty())) {
                     final DirectionCesiumWriter w2 = using$8.resource;
                     w2.writeCartesian(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<Cartesian> createList(new Cartesian(23178D, 55642D, 4825D), new Cartesian(11195D, 57387D, 64992D)));
+                            TestGenerateValidationDocument.<Cartesian> createList(new Cartesian(23178.0, 55642.0, 4825.0), new Cartesian(11195.0, 57387.0, 64992.0)));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.vector.direction.getValue(documentStartDate)).toEqual(new Cartesian3(23178, 55642, 4825));");
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.vector.direction.getValue(documentStopDate)).toEqual(new Cartesian3(11195, 57387, 64992));");
                 }
@@ -31320,8 +31322,9 @@ public class TestGenerateValidationDocument {
                 final CustomPropertiesCesiumWriter w = using$1.resource;
                 try (Using<CustomPropertyCesiumWriter> using$2 = new Using<CustomPropertyCesiumWriter>(w.openCustomPropertyProperty("custom_boundingRectangle"))) {
                     final CustomPropertyCesiumWriter w2 = using$2.resource;
-                    w2.writeBoundingRectangle(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
-                            .<BoundingRectangle> createList(BoundingRectangle.fromWidthHeight(10924D, 3626D, 12558D, 56113D), BoundingRectangle.fromWidthHeight(59127D, 45286D, 34992D, 17032D)));
+                    w2.writeBoundingRectangle(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
+                            TestGenerateValidationDocument.<BoundingRectangle> createList(BoundingRectangle.fromWidthHeight(10924.0, 3626.0, 12558.0, 56113.0),
+                                    BoundingRectangle.fromWidthHeight(59127.0, 45286.0, 34992.0, 17032.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter,
                             "    expect(e.properties.custom_boundingRectangle.getValue(documentStartDate)).toEqual(new BoundingRectangle(10924, 3626, 12558, 56113));");
                     TextWriterHelper.writeLine(m_assertionsWriter,
@@ -31330,14 +31333,14 @@ public class TestGenerateValidationDocument {
                 try (Using<CustomPropertyCesiumWriter> using$3 = new Using<CustomPropertyCesiumWriter>(w.openCustomPropertyProperty("custom_cartesian"))) {
                     final CustomPropertyCesiumWriter w2 = using$3.resource;
                     w2.writeCartesian(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<Cartesian> createList(new Cartesian(59456D, 60648D, 1004D), new Cartesian(37915D, 14740D, 14905D)));
+                            TestGenerateValidationDocument.<Cartesian> createList(new Cartesian(59456.0, 60648.0, 1004.0), new Cartesian(37915.0, 14740.0, 14905.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_cartesian.getValue(documentStartDate)).toEqual(new Cartesian3(59456, 60648, 1004));");
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_cartesian.getValue(documentStopDate)).toEqual(new Cartesian3(37915, 14740, 14905));");
                 }
                 try (Using<CustomPropertyCesiumWriter> using$4 = new Using<CustomPropertyCesiumWriter>(w.openCustomPropertyProperty("custom_cartographicRadians"))) {
                     final CustomPropertyCesiumWriter w2 = using$4.resource;
                     w2.writeCartographicRadians(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument
-                            .<Cartographic> createList(new Cartographic(1.25380297085855, 1.03510976346284, 7102D), new Cartographic(1.10648839763778, 0.231915563506949, 340D)));
+                            .<Cartographic> createList(new Cartographic(1.25380297085855, 1.03510976346284, 7102.0), new Cartographic(1.10648839763778, 0.231915563506949, 340.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter,
                             "    expect(e.properties.custom_cartographicRadians.getValue(documentStartDate)).toEqual(Cartesian3.fromRadians(1.25380297085855, 1.03510976346284, 7102));");
                     TextWriterHelper.writeLine(m_assertionsWriter,
@@ -31346,14 +31349,14 @@ public class TestGenerateValidationDocument {
                 try (Using<CustomPropertyCesiumWriter> using$5 = new Using<CustomPropertyCesiumWriter>(w.openCustomPropertyProperty("custom_cartographicDegrees"))) {
                     final CustomPropertyCesiumWriter w2 = using$5.resource;
                     w2.writeCartographicDegrees(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<Cartographic> createList(new Cartographic(44D, 31D, 55762D), new Cartographic(10D, 18D, 28847D)));
+                            TestGenerateValidationDocument.<Cartographic> createList(new Cartographic(44.0, 31.0, 55762.0), new Cartographic(10.0, 18.0, 28847.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_cartographicDegrees.getValue(documentStartDate)).toEqual(Cartesian3.fromDegrees(44, 31, 55762));");
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_cartographicDegrees.getValue(documentStopDate)).toEqual(Cartesian3.fromDegrees(10, 18, 28847));");
                 }
                 try (Using<CustomPropertyCesiumWriter> using$6 = new Using<CustomPropertyCesiumWriter>(w.openCustomPropertyProperty("custom_cartesian2"))) {
                     final CustomPropertyCesiumWriter w2 = using$6.resource;
                     w2.writeCartesian2(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(9033D, 9251D), new Rectangular(34048D, 58501D)));
+                            TestGenerateValidationDocument.<Rectangular> createList(new Rectangular(9033.0, 9251.0), new Rectangular(34048.0, 58501.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_cartesian2.getValue(documentStartDate)).toEqual(new Cartesian2(9033, 9251));");
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_cartesian2.getValue(documentStopDate)).toEqual(new Cartesian2(34048, 58501));");
                 }
@@ -31369,7 +31372,7 @@ public class TestGenerateValidationDocument {
                 try (Using<CustomPropertyCesiumWriter> using$8 = new Using<CustomPropertyCesiumWriter>(w.openCustomPropertyProperty("custom_spherical"))) {
                     final CustomPropertyCesiumWriter w2 = using$8.resource;
                     w2.writeSpherical(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<Spherical> createList(new Spherical(47098D, 2231D, 14088D), new Spherical(34883D, 48264D, 41148D)));
+                            TestGenerateValidationDocument.<Spherical> createList(new Spherical(47098.0, 2231.0, 14088.0), new Spherical(34883.0, 48264.0, 41148.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter,
                             "    expect(e.properties.custom_spherical.getValue(documentStartDate)).toEqual(Cartesian3.fromSpherical(new Spherical(47098, 2231, 14088)));");
                     TextWriterHelper.writeLine(m_assertionsWriter,
@@ -31378,7 +31381,7 @@ public class TestGenerateValidationDocument {
                 try (Using<CustomPropertyCesiumWriter> using$9 = new Using<CustomPropertyCesiumWriter>(w.openCustomPropertyProperty("custom_unitSpherical"))) {
                     final CustomPropertyCesiumWriter w2 = using$9.resource;
                     w2.writeUnitSpherical(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<UnitSpherical> createList(new UnitSpherical(48811D, 24254D), new UnitSpherical(44800D, 8111D)));
+                            TestGenerateValidationDocument.<UnitSpherical> createList(new UnitSpherical(48811.0, 24254.0), new UnitSpherical(44800.0, 8111.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter,
                             "    expect(e.properties.custom_unitSpherical.getValue(documentStartDate)).toEqualEpsilon(Cartesian3.fromSpherical(new Spherical(48811, 24254)), 1e-14);");
                     TextWriterHelper.writeLine(m_assertionsWriter,
@@ -31410,7 +31413,7 @@ public class TestGenerateValidationDocument {
                 try (Using<CustomPropertyCesiumWriter> using$13 = new Using<CustomPropertyCesiumWriter>(w.openCustomPropertyProperty("custom_nearFarScalar"))) {
                     final CustomPropertyCesiumWriter w2 = using$13.resource;
                     w2.writeNearFarScalar(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<NearFarScalar> createList(new NearFarScalar(64112D, 15354D, 32827D, 10368D), new NearFarScalar(55643D, 45785D, 33458D, 29826D)));
+                            TestGenerateValidationDocument.<NearFarScalar> createList(new NearFarScalar(64112.0, 15354.0, 32827.0, 10368.0), new NearFarScalar(55643.0, 45785.0, 33458.0, 29826.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_nearFarScalar.getValue(documentStartDate)).toEqual(new NearFarScalar(64112, 15354, 32827, 10368));");
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_nearFarScalar.getValue(documentStopDate)).toEqual(new NearFarScalar(55643, 45785, 33458, 29826));");
                 }
@@ -31437,7 +31440,7 @@ public class TestGenerateValidationDocument {
                 try (Using<CustomPropertyCesiumWriter> using$16 = new Using<CustomPropertyCesiumWriter>(w.openCustomPropertyProperty("custom_wsenDegrees"))) {
                     final CustomPropertyCesiumWriter w2 = using$16.resource;
                     w2.writeWsenDegrees(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
-                            TestGenerateValidationDocument.<CartographicExtent> createList(new CartographicExtent(29D, 11D, 17D, 36D), new CartographicExtent(37D, 16D, 25D, 23D)));
+                            TestGenerateValidationDocument.<CartographicExtent> createList(new CartographicExtent(29.0, 11.0, 17.0, 36.0), new CartographicExtent(37.0, 16.0, 25.0, 23.0)));
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_wsenDegrees.getValue(documentStartDate)).toEqual(Rectangle.fromDegrees(29, 11, 17, 36));");
                     TextWriterHelper.writeLine(m_assertionsWriter, "    expect(e.properties.custom_wsenDegrees.getValue(documentStopDate)).toEqual(Rectangle.fromDegrees(37, 16, 25, 23));");
                 }

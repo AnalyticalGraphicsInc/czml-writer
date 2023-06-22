@@ -31,8 +31,8 @@ public class TestShapeCesiumWriter extends TestCesiumPropertyWriter<ShapeCesiumW
     public final void writeListOfCartesian2() {
         final String expectedPropertyName = "foo";
         final ArrayList<Rectangular> tempCollection$0 = new ArrayList<Rectangular>();
-        tempCollection$0.add(new Rectangular(10D, 20D));
-        tempCollection$0.add(new Rectangular(30D, 40D));
+        tempCollection$0.add(new Rectangular(10.0, 20.0));
+        tempCollection$0.add(new Rectangular(30.0, 40.0));
         Iterable<Rectangular> expectedValue = tempCollection$0;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
             try (Using<ShapeCesiumWriter> using$1 = new Using<ShapeCesiumWriter>(new ShapeCesiumWriter(expectedPropertyName))) {

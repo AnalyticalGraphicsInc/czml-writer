@@ -96,7 +96,7 @@ public class TestUnitSpherical {
     public final void testEqualsEpsilonExact() {
         UnitSpherical first = new UnitSpherical(0.1, 0.1);
         UnitSpherical second = new UnitSpherical(0.1, 0.1);
-        Assert.assertTrue(second.equalsEpsilon(first, 0D));
+        Assert.assertTrue(second.equalsEpsilon(first, 0.0));
     }
 
     /**

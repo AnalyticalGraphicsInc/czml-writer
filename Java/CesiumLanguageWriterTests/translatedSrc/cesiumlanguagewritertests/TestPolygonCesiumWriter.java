@@ -47,12 +47,12 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
 
     @Test
     public final void testShowPropertyInterval() {
-        JulianDate startDate = new GregorianDate(2012, 4, 2, 12, 0, 0D).toJulianDate();
-        JulianDate stopDate = new GregorianDate(2012, 4, 2, 12, 1, 0D).toJulianDate();
+        JulianDate startDate = new GregorianDate(2012, 4, 2, 12, 0, 0.0).toJulianDate();
+        JulianDate stopDate = new GregorianDate(2012, 4, 2, 12, 1, 0.0).toJulianDate();
         JulianDate interval1Start = startDate;
-        JulianDate interval1Stop = startDate.addSeconds(1D);
+        JulianDate interval1Stop = startDate.addSeconds(1.0);
         JulianDate interval2Start = interval1Stop;
-        JulianDate interval2Stop = startDate.addSeconds(2D);
+        JulianDate interval2Stop = startDate.addSeconds(2.0);
         JulianDate interval3Start = interval2Stop;
         JulianDate interval3Stop = stopDate;
         final boolean interval1Value = true;
@@ -107,14 +107,14 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
                 try (Using<PositionListOfListsCesiumWriter> using$2 = new Using<PositionListOfListsCesiumWriter>(polygon.openHolesProperty())) {
                     final PositionListOfListsCesiumWriter holes = using$2.resource;
                     final ArrayList<Cartographic> tempCollection$1 = new ArrayList<Cartographic>();
-                    tempCollection$1.add(new Cartographic(1D, 1D, 0D));
-                    tempCollection$1.add(new Cartographic(1D, 2D, 0D));
-                    tempCollection$1.add(new Cartographic(2D, 2D, 0D));
+                    tempCollection$1.add(new Cartographic(1.0, 1.0, 0.0));
+                    tempCollection$1.add(new Cartographic(1.0, 2.0, 0.0));
+                    tempCollection$1.add(new Cartographic(2.0, 2.0, 0.0));
                     final ArrayList<Cartographic> tempCollection$2 = new ArrayList<Cartographic>();
-                    tempCollection$2.add(new Cartographic(4D, 4D, 0D));
-                    tempCollection$2.add(new Cartographic(4D, 5D, 0D));
-                    tempCollection$2.add(new Cartographic(5D, 5D, 0D));
-                    tempCollection$2.add(new Cartographic(5D, 4D, 0D));
+                    tempCollection$2.add(new Cartographic(4.0, 4.0, 0.0));
+                    tempCollection$2.add(new Cartographic(4.0, 5.0, 0.0));
+                    tempCollection$2.add(new Cartographic(5.0, 5.0, 0.0));
+                    tempCollection$2.add(new Cartographic(5.0, 4.0, 0.0));
                     final ArrayList<ArrayList<Cartographic>> tempCollection$0 = new ArrayList<ArrayList<Cartographic>>();
                     tempCollection$0.add(tempCollection$1);
                     tempCollection$0.add(tempCollection$2);
@@ -128,8 +128,8 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
 
     @Test
     public final void testHolesIntervals() {
-        JulianDate startDate = new GregorianDate(2012, 4, 2, 12, 0, 0D).toJulianDate();
-        JulianDate stopDate = new GregorianDate(2012, 4, 2, 13, 0, 0D).toJulianDate();
+        JulianDate startDate = new GregorianDate(2012, 4, 2, 12, 0, 0.0).toJulianDate();
+        JulianDate stopDate = new GregorianDate(2012, 4, 2, 13, 0, 0.0).toJulianDate();
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
             try (Using<PolygonCesiumWriter> using$1 = new Using<PolygonCesiumWriter>(getPacket().openPolygonProperty())) {
                 final PolygonCesiumWriter polygon = using$1.resource;
@@ -141,14 +141,14 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
                         try (Using<PositionListOfListsCesiumWriter> using$4 = new Using<PositionListOfListsCesiumWriter>(holesIntervals.openInterval(startDate, startDate.addSeconds(60 * 30)))) {
                             final PositionListOfListsCesiumWriter interval = using$4.resource;
                             final ArrayList<Cartographic> tempCollection$1 = new ArrayList<Cartographic>();
-                            tempCollection$1.add(new Cartographic(1D, 1D, 0D));
-                            tempCollection$1.add(new Cartographic(1D, 2D, 0D));
-                            tempCollection$1.add(new Cartographic(2D, 2D, 0D));
+                            tempCollection$1.add(new Cartographic(1.0, 1.0, 0.0));
+                            tempCollection$1.add(new Cartographic(1.0, 2.0, 0.0));
+                            tempCollection$1.add(new Cartographic(2.0, 2.0, 0.0));
                             final ArrayList<Cartographic> tempCollection$2 = new ArrayList<Cartographic>();
-                            tempCollection$2.add(new Cartographic(4D, 4D, 0D));
-                            tempCollection$2.add(new Cartographic(4D, 5D, 0D));
-                            tempCollection$2.add(new Cartographic(5D, 5D, 0D));
-                            tempCollection$2.add(new Cartographic(5D, 4D, 0D));
+                            tempCollection$2.add(new Cartographic(4.0, 4.0, 0.0));
+                            tempCollection$2.add(new Cartographic(4.0, 5.0, 0.0));
+                            tempCollection$2.add(new Cartographic(5.0, 5.0, 0.0));
+                            tempCollection$2.add(new Cartographic(5.0, 4.0, 0.0));
                             final ArrayList<ArrayList<Cartographic>> tempCollection$0 = new ArrayList<ArrayList<Cartographic>>();
                             tempCollection$0.add(tempCollection$1);
                             tempCollection$0.add(tempCollection$2);
@@ -158,14 +158,14 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
                         try (Using<PositionListOfListsCesiumWriter> using$5 = new Using<PositionListOfListsCesiumWriter>(holesIntervals.openInterval(startDate.addSeconds(60 * 30), stopDate))) {
                             final PositionListOfListsCesiumWriter interval = using$5.resource;
                             final ArrayList<Cartographic> tempCollection$4 = new ArrayList<Cartographic>();
-                            tempCollection$4.add(new Cartographic(11D, 1D, 0D));
-                            tempCollection$4.add(new Cartographic(11D, 2D, 0D));
-                            tempCollection$4.add(new Cartographic(12D, 2D, 0D));
+                            tempCollection$4.add(new Cartographic(11.0, 1.0, 0.0));
+                            tempCollection$4.add(new Cartographic(11.0, 2.0, 0.0));
+                            tempCollection$4.add(new Cartographic(12.0, 2.0, 0.0));
                             final ArrayList<Cartographic> tempCollection$5 = new ArrayList<Cartographic>();
-                            tempCollection$5.add(new Cartographic(14D, 4D, 0D));
-                            tempCollection$5.add(new Cartographic(14D, 5D, 0D));
-                            tempCollection$5.add(new Cartographic(15D, 5D, 0D));
-                            tempCollection$5.add(new Cartographic(15D, 4D, 0D));
+                            tempCollection$5.add(new Cartographic(14.0, 4.0, 0.0));
+                            tempCollection$5.add(new Cartographic(14.0, 5.0, 0.0));
+                            tempCollection$5.add(new Cartographic(15.0, 5.0, 0.0));
+                            tempCollection$5.add(new Cartographic(15.0, 4.0, 0.0));
                             final ArrayList<ArrayList<Cartographic>> tempCollection$3 = new ArrayList<ArrayList<Cartographic>>();
                             tempCollection$3.add(tempCollection$4);
                             tempCollection$3.add(tempCollection$5);
@@ -194,24 +194,24 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
                 try (Using<PositionListCesiumWriter> using$2 = new Using<PositionListCesiumWriter>(polygon.openPositionsProperty())) {
                     final PositionListCesiumWriter positions = using$2.resource;
                     final ArrayList<Cartographic> tempCollection$0 = new ArrayList<Cartographic>();
-                    tempCollection$0.add(new Cartographic(0D, 0D, 0D));
-                    tempCollection$0.add(new Cartographic(0D, 10D, 0D));
-                    tempCollection$0.add(new Cartographic(10D, 10D, 0D));
-                    tempCollection$0.add(new Cartographic(10D, 0D, 0D));
+                    tempCollection$0.add(new Cartographic(0.0, 0.0, 0.0));
+                    tempCollection$0.add(new Cartographic(0.0, 10.0, 0.0));
+                    tempCollection$0.add(new Cartographic(10.0, 10.0, 0.0));
+                    tempCollection$0.add(new Cartographic(10.0, 0.0, 0.0));
                     ArrayList<Cartographic> listOfPositions = tempCollection$0;
                     positions.writeCartographicDegrees(listOfPositions);
                 }
                 try (Using<PositionListOfListsCesiumWriter> using$3 = new Using<PositionListOfListsCesiumWriter>(polygon.openHolesProperty())) {
                     final PositionListOfListsCesiumWriter holes = using$3.resource;
                     final ArrayList<Cartographic> tempCollection$2 = new ArrayList<Cartographic>();
-                    tempCollection$2.add(new Cartographic(1D, 1D, 0D));
-                    tempCollection$2.add(new Cartographic(1D, 2D, 0D));
-                    tempCollection$2.add(new Cartographic(2D, 2D, 0D));
+                    tempCollection$2.add(new Cartographic(1.0, 1.0, 0.0));
+                    tempCollection$2.add(new Cartographic(1.0, 2.0, 0.0));
+                    tempCollection$2.add(new Cartographic(2.0, 2.0, 0.0));
                     final ArrayList<Cartographic> tempCollection$3 = new ArrayList<Cartographic>();
-                    tempCollection$3.add(new Cartographic(4D, 4D, 0D));
-                    tempCollection$3.add(new Cartographic(4D, 5D, 0D));
-                    tempCollection$3.add(new Cartographic(5D, 5D, 0D));
-                    tempCollection$3.add(new Cartographic(5D, 4D, 0D));
+                    tempCollection$3.add(new Cartographic(4.0, 4.0, 0.0));
+                    tempCollection$3.add(new Cartographic(4.0, 5.0, 0.0));
+                    tempCollection$3.add(new Cartographic(5.0, 5.0, 0.0));
+                    tempCollection$3.add(new Cartographic(5.0, 4.0, 0.0));
                     final ArrayList<ArrayList<Cartographic>> tempCollection$1 = new ArrayList<ArrayList<Cartographic>>();
                     tempCollection$1.add(tempCollection$2);
                     tempCollection$1.add(tempCollection$3);

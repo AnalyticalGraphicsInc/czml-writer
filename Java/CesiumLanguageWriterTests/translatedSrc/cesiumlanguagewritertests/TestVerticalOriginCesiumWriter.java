@@ -40,7 +40,7 @@ public class TestVerticalOriginCesiumWriter extends TestCesiumPropertyWriter<Ver
 
     @Test
     public final void verticalOriginCanBeWrittenInsideInterval() {
-        JulianDate start = new GregorianDate(2012, 6, 7, 12, 0, 0D).toJulianDate();
+        JulianDate start = new GregorianDate(2012, 6, 7, 12, 0, 0.0).toJulianDate();
         JulianDate stop = start.addSeconds(100.0);
         final String expectedPropertyName = "foo";
         final CesiumVerticalOrigin expectedValue = CesiumVerticalOrigin.CENTER;

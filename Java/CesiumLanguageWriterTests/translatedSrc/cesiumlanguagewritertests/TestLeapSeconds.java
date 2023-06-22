@@ -74,7 +74,7 @@ public class TestLeapSeconds {
     @Test
     public final void testLeapSecondCount() {
         LeapSeconds leapSeconds = new LeapSeconds();
-        JulianDate utc = new GregorianDate(1998, 4, 1, 12, 0, 0D).toJulianDate();
+        JulianDate utc = new GregorianDate(1998, 4, 1, 12, 0, 0.0).toJulianDate();
         JulianDate tai = utc.toTimeStandard(TimeStandard.INTERNATIONAL_ATOMIC_TIME);
         AssertHelper.assertEquals(31, leapSeconds.getTaiMinusUtc(utc));
         AssertHelper.assertEquals(31, leapSeconds.getTaiMinusUtc(tai));
@@ -86,10 +86,10 @@ public class TestLeapSeconds {
     @Test
     public final void testNegativeLeapSecond() {
         final ArrayList<LeapSecond> tempCollection$0 = new ArrayList<LeapSecond>();
-        tempCollection$0.add(new LeapSecond(2451545.0, 11D));
-        tempCollection$0.add(new LeapSecond(2451555.0, 12D));
-        tempCollection$0.add(new LeapSecond(2451565.0, 11D));
-        tempCollection$0.add(new LeapSecond(2451575.0, 10D));
+        tempCollection$0.add(new LeapSecond(2451545.0, 11.0));
+        tempCollection$0.add(new LeapSecond(2451555.0, 12.0));
+        tempCollection$0.add(new LeapSecond(2451565.0, 11.0));
+        tempCollection$0.add(new LeapSecond(2451575.0, 10.0));
         ArrayList<LeapSecond> newList = tempCollection$0;
         LeapSeconds leapSeconds = new LeapSeconds(newList);
         AssertHelper.assertEquals(11, leapSeconds.getTaiMinusUtc(new JulianDate(2451545.5, TimeStandard.COORDINATED_UNIVERSAL_TIME)));

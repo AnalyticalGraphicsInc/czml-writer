@@ -63,12 +63,12 @@ public class TestLabelCesiumWriter extends TestCesiumPropertyWriter<LabelCesiumW
 
     @Test
     public final void testTextPropertyInterval() {
-        JulianDate startDate = new GregorianDate(2012, 4, 2, 12, 0, 0D).toJulianDate();
-        JulianDate stopDate = new GregorianDate(2012, 4, 2, 12, 1, 0D).toJulianDate();
+        JulianDate startDate = new GregorianDate(2012, 4, 2, 12, 0, 0.0).toJulianDate();
+        JulianDate stopDate = new GregorianDate(2012, 4, 2, 12, 1, 0.0).toJulianDate();
         JulianDate interval1Start = startDate;
-        JulianDate interval1Stop = startDate.addSeconds(1D);
+        JulianDate interval1Stop = startDate.addSeconds(1.0);
         JulianDate interval2Start = interval1Stop;
-        JulianDate interval2Stop = startDate.addSeconds(2D);
+        JulianDate interval2Stop = startDate.addSeconds(2.0);
         JulianDate interval3Start = interval2Stop;
         JulianDate interval3Stop = stopDate;
         final String interval1Value = "A";
@@ -151,7 +151,7 @@ public class TestLabelCesiumWriter extends TestCesiumPropertyWriter<LabelCesiumW
 
     @Test
     public final void testBackgroundPaddingProperty() {
-        Rectangular expectedBackgroundPadding = new Rectangular(3D, 4D);
+        Rectangular expectedBackgroundPadding = new Rectangular(3.0, 4.0);
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
             try (Using<LabelCesiumWriter> using$1 = new Using<LabelCesiumWriter>(getPacket().openLabelProperty())) {
                 final LabelCesiumWriter label = using$1.resource;
@@ -185,7 +185,7 @@ public class TestLabelCesiumWriter extends TestCesiumPropertyWriter<LabelCesiumW
 
     @Test
     public final void testTranslucencyByDistancePropertySamples() {
-        JulianDate epoch = new GregorianDate(2012, 4, 2, 12, 0, 0D).toJulianDate();
+        JulianDate epoch = new GregorianDate(2012, 4, 2, 12, 0, 0.0).toJulianDate();
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
             try (Using<LabelCesiumWriter> using$1 = new Using<LabelCesiumWriter>(getPacket().openLabelProperty())) {
                 final LabelCesiumWriter label = using$1.resource;
