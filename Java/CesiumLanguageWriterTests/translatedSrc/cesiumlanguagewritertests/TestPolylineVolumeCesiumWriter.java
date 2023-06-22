@@ -48,12 +48,12 @@ public class TestPolylineVolumeCesiumWriter extends TestCesiumPropertyWriter<Pol
 
     @Test
     public final void testShowPropertyInterval() {
-        JulianDate startDate = new GregorianDate(2012, 4, 2, 12, 0, 0D).toJulianDate();
-        JulianDate stopDate = new GregorianDate(2012, 4, 2, 12, 1, 0D).toJulianDate();
+        JulianDate startDate = new GregorianDate(2012, 4, 2, 12, 0, 0.0).toJulianDate();
+        JulianDate stopDate = new GregorianDate(2012, 4, 2, 12, 1, 0.0).toJulianDate();
         JulianDate interval1Start = startDate;
-        JulianDate interval1Stop = startDate.addSeconds(1D);
+        JulianDate interval1Stop = startDate.addSeconds(1.0);
         JulianDate interval2Start = interval1Stop;
-        JulianDate interval2Stop = startDate.addSeconds(2D);
+        JulianDate interval2Stop = startDate.addSeconds(2.0);
         JulianDate interval3Start = interval2Stop;
         JulianDate interval3Stop = stopDate;
         final boolean interval1Value = true;
@@ -106,10 +106,10 @@ public class TestPolylineVolumeCesiumWriter extends TestCesiumPropertyWriter<Pol
             try (Using<PolylineVolumeCesiumWriter> using$1 = new Using<PolylineVolumeCesiumWriter>(getPacket().openPolylineVolumeProperty())) {
                 final PolylineVolumeCesiumWriter polylineVolume = using$1.resource;
                 final ArrayList<Rectangular> tempCollection$0 = new ArrayList<Rectangular>();
-                tempCollection$0.add(new Rectangular(-5D, -5D));
-                tempCollection$0.add(new Rectangular(6D, -6D));
-                tempCollection$0.add(new Rectangular(7D, 7D));
-                tempCollection$0.add(new Rectangular(-8D, 8D));
+                tempCollection$0.add(new Rectangular(-5.0, -5.0));
+                tempCollection$0.add(new Rectangular(6.0, -6.0));
+                tempCollection$0.add(new Rectangular(7.0, 7.0));
+                tempCollection$0.add(new Rectangular(-8.0, 8.0));
                 ArrayList<Rectangular> shape = tempCollection$0;
                 polylineVolume.writeShapeProperty(shape);
             }
@@ -119,7 +119,7 @@ public class TestPolylineVolumeCesiumWriter extends TestCesiumPropertyWriter<Pol
 
     @Test
     public final void testDistanceDisplayCondition() {
-        Bounds expectedBounds = new Bounds(10D, 1234D);
+        Bounds expectedBounds = new Bounds(10.0, 1234.0);
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
             try (Using<PolylineVolumeCesiumWriter> using$1 = new Using<PolylineVolumeCesiumWriter>(getPacket().openPolylineVolumeProperty())) {
                 final PolylineVolumeCesiumWriter polylineVolume = using$1.resource;
@@ -160,18 +160,18 @@ public class TestPolylineVolumeCesiumWriter extends TestCesiumPropertyWriter<Pol
                 try (Using<PositionListCesiumWriter> using$3 = new Using<PositionListCesiumWriter>(polylineVolume.openPositionsProperty())) {
                     final PositionListCesiumWriter positions = using$3.resource;
                     final ArrayList<Cartographic> tempCollection$0 = new ArrayList<Cartographic>();
-                    tempCollection$0.add(new Cartographic(-90.0, 32.0, 0D));
-                    tempCollection$0.add(new Cartographic(-90.0, 36.0, 100000D));
-                    tempCollection$0.add(new Cartographic(-94.0, 36.0, 0D));
+                    tempCollection$0.add(new Cartographic(-90.0, 32.0, 0.0));
+                    tempCollection$0.add(new Cartographic(-90.0, 36.0, 100000.0));
+                    tempCollection$0.add(new Cartographic(-94.0, 36.0, 0.0));
                     positions.writeCartographicDegrees(tempCollection$0);
                 }
                 try (Using<ShapeCesiumWriter> using$4 = new Using<ShapeCesiumWriter>(polylineVolume.openShapeProperty())) {
                     final ShapeCesiumWriter shape = using$4.resource;
                     final ArrayList<Rectangular> tempCollection$1 = new ArrayList<Rectangular>();
-                    tempCollection$1.add(new Rectangular(-50000D, -50000D));
-                    tempCollection$1.add(new Rectangular(50000D, -50000D));
-                    tempCollection$1.add(new Rectangular(50000D, 50000D));
-                    tempCollection$1.add(new Rectangular(-50000D, 50000D));
+                    tempCollection$1.add(new Rectangular(-50000.0, -50000.0));
+                    tempCollection$1.add(new Rectangular(50000.0, -50000.0));
+                    tempCollection$1.add(new Rectangular(50000.0, 50000.0));
+                    tempCollection$1.add(new Rectangular(-50000.0, 50000.0));
                     shape.writeCartesian2(tempCollection$1);
                 }
                 polylineVolume.writeCornerTypeProperty(CesiumCornerType.BEVELED);
@@ -195,9 +195,9 @@ public class TestPolylineVolumeCesiumWriter extends TestCesiumPropertyWriter<Pol
                 try (Using<PositionListCesiumWriter> using$9 = new Using<PositionListCesiumWriter>(polylineVolume.openPositionsProperty())) {
                     final PositionListCesiumWriter positions = using$9.resource;
                     final ArrayList<Cartographic> tempCollection$2 = new ArrayList<Cartographic>();
-                    tempCollection$2.add(new Cartographic(-95.0, 32.0, 0D));
-                    tempCollection$2.add(new Cartographic(-95.0, 36.0, 100000D));
-                    tempCollection$2.add(new Cartographic(-99.0, 36.0, 200000D));
+                    tempCollection$2.add(new Cartographic(-95.0, 32.0, 0.0));
+                    tempCollection$2.add(new Cartographic(-95.0, 36.0, 100000.0));
+                    tempCollection$2.add(new Cartographic(-99.0, 36.0, 200000.0));
                     positions.writeCartographicDegrees(tempCollection$2);
                 }
                 try (Using<ShapeCesiumWriter> using$10 = new Using<ShapeCesiumWriter>(polylineVolume.openShapeProperty())) {

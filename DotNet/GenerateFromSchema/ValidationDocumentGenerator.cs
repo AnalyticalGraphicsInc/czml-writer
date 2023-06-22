@@ -4,7 +4,6 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using JetBrains.Annotations;
-using Newtonsoft.Json.Schema;
 
 namespace GenerateFromSchema
 {
@@ -860,7 +859,7 @@ namespace GenerateFromSchema
                                         writer.WriteLine("using (var w = packet.Open{0}Property())", property.NameWithPascalCase);
                                         using (writer.OpenScope())
                                         {
-                                            var firstValueProperty = properties.First(p => p.IsValue && (p.ValueType.JsonTypes & JsonSchemaType.Array) == JsonSchemaType.Array);
+                                            var firstValueProperty = properties.First(p => p.IsValue && p.ValueType.IsArray);
                                             WriteValues(writer, "w", id, firstValueProperty, property, isExtension, propertyName);
                                         }
                                     }
@@ -882,7 +881,7 @@ namespace GenerateFromSchema
                                                     {
                                                         if (subProperty.IsInterpolatable)
                                                         {
-                                                            var firstValueProperty = properties.First(p => p.IsValue && (p.ValueType.JsonTypes & JsonSchemaType.Array) == JsonSchemaType.Array);
+                                                            var firstValueProperty = properties.First(p => p.IsValue && p.ValueType.IsArray);
                                                             WriteValues(writer, "w2", id + property.Name, firstValueProperty, subProperty, isExtension, $"{propertyName}.{subPropertyName}");
                                                         }
                                                         else if (subProperty.ValueType.Name.Contains("Material"))
@@ -898,7 +897,7 @@ namespace GenerateFromSchema
                                                                     using (writer.OpenScope())
                                                                     {
                                                                         properties = materialSubProperty.ValueType.Properties;
-                                                                        var firstValueProperty = properties.First(p => p.IsValue && (p.ValueType.JsonTypes & JsonSchemaType.Array) == JsonSchemaType.Array);
+                                                                        var firstValueProperty = properties.First(p => p.IsValue && p.ValueType.IsArray);
                                                                         WriteValues(writer, "m2", id + property.Name + subProperty.Name + materialProperty.Name, firstValueProperty, materialSubProperty, isExtension, $"{propertyName}.{subPropertyName}.{materialSubProperty.Name}");
                                                                     }
                                                                 }
@@ -943,7 +942,7 @@ namespace GenerateFromSchema
 
                                 if (property.IsInterpolatable)
                                 {
-                                    foreach (var valueProperty in properties.Where(p => p.IsValue && (p.ValueType.JsonTypes & JsonSchemaType.Array) == JsonSchemaType.Array).Skip(1))
+                                    foreach (var valueProperty in properties.Where(p => p.IsValue && p.ValueType.IsArray).Skip(1))
                                     {
                                         writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                         using (writer.OpenScope())
@@ -971,7 +970,7 @@ namespace GenerateFromSchema
 
                                         if (subProperty.IsInterpolatable)
                                         {
-                                            foreach (var valueProperty in properties.Where(p => p.IsValue && (p.ValueType.JsonTypes & JsonSchemaType.Array) == JsonSchemaType.Array).Skip(1))
+                                            foreach (var valueProperty in properties.Where(p => p.IsValue && p.ValueType.IsArray).Skip(1))
                                             {
                                                 writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                                 using (writer.OpenScope())
@@ -1001,7 +1000,7 @@ namespace GenerateFromSchema
                                             foreach (var materialSubProperty in properties.Where(p => p.IsInterpolatable))
                                             {
                                                 properties = materialSubProperty.ValueType.Properties;
-                                                foreach (var valueProperty in properties.Where(p => p.IsValue && (p.ValueType.JsonTypes & JsonSchemaType.Array) == JsonSchemaType.Array).Skip(1))
+                                                foreach (var valueProperty in properties.Where(p => p.IsValue && p.ValueType.IsArray).Skip(1))
                                                 {
                                                     writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                                     using (writer.OpenScope())
@@ -1046,7 +1045,7 @@ namespace GenerateFromSchema
                                                             using (writer.OpenScope())
                                                             {
                                                                 properties = materialSubProperty.ValueType.Properties;
-                                                                var firstValueProperty = properties.First(p => p.IsValue && (p.ValueType.JsonTypes & JsonSchemaType.Array) == JsonSchemaType.Array);
+                                                                var firstValueProperty = properties.First(p => p.IsValue && p.ValueType.IsArray);
                                                                 WriteValues(writer, "m2", id + property.Name + subProperty.Name + materialProperty.Name, firstValueProperty, materialSubProperty, isExtension, $"{propertyName}.{subPropertyName}.{materialSubProperty.Name}");
                                                             }
                                                         }
@@ -1061,7 +1060,7 @@ namespace GenerateFromSchema
                                                 foreach (var materialSubProperty in properties.Where(p => p.IsInterpolatable))
                                                 {
                                                     properties = materialSubProperty.ValueType.Properties;
-                                                    foreach (var valueProperty in properties.Where(p => p.IsValue && (p.ValueType.JsonTypes & JsonSchemaType.Array) == JsonSchemaType.Array).Skip(1))
+                                                    foreach (var valueProperty in properties.Where(p => p.IsValue && p.ValueType.IsArray).Skip(1))
                                                     {
                                                         writer.WriteLine("using (var packet = m_writer.OpenPacket(m_output))");
                                                         using (writer.OpenScope())
@@ -1107,7 +1106,7 @@ namespace GenerateFromSchema
                                     writer.WriteLine("using (var w = packet.Open{0}Property())", propertiesProperty.NameWithPascalCase);
                                     using (writer.OpenScope())
                                     {
-                                        foreach (var valueProperty in additionalProperties.ValueType.Properties.Where(p => p.IsValue && (p.ValueType.JsonTypes & JsonSchemaType.Array) == JsonSchemaType.Array))
+                                        foreach (var valueProperty in additionalProperties.ValueType.Properties.Where(p => p.IsValue && p.ValueType.IsArray))
                                         {
                                             string propName = $"custom_{valueProperty.Name}";
                                             writer.WriteLine("using (var w2 = w.Open{0}Property(\"{1}\"))", additionalProperties.ValueType.NameWithPascalCase, propName);
@@ -1675,9 +1674,7 @@ namespace GenerateFromSchema
                     // near must be less than far
                     if (nearDistance > farDistance)
                     {
-                        int temp = nearDistance;
-                        nearDistance = farDistance;
-                        farDistance = temp;
+                        (nearDistance, farDistance) = (farDistance, nearDistance);
                     }
 
                     value = $"new Bounds({nearDistance}, {farDistance})";

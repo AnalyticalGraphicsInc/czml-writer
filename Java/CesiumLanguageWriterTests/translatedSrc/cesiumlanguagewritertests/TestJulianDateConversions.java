@@ -143,13 +143,13 @@ public class TestJulianDateConversions {
 
     @Test
     public final void gregorianDateToJulian() {
-        GregorianDate gregorianDate = new GregorianDate(2000, 1, 1, 12, 0, 0D);
+        GregorianDate gregorianDate = new GregorianDate(2000, 1, 1, 12, 0, 0.0);
         JulianDate julianDate = new JulianDate(gregorianDate);
         AssertHelper.assertEquals(2451545.0, julianDate.getTotalDays());
-        gregorianDate = new GregorianDate(2006, 1, 1, 0, 0, 0D);
+        gregorianDate = new GregorianDate(2006, 1, 1, 0, 0, 0.0);
         julianDate = new JulianDate(gregorianDate);
         AssertHelper.assertEquals(2453736.5, julianDate.getTotalDays());
-        gregorianDate = new GregorianDate(1973, 1, 1, 0, 0, 0D);
+        gregorianDate = new GregorianDate(1973, 1, 1, 0, 0, 0.0);
         julianDate = new JulianDate(gregorianDate);
         AssertHelper.assertEquals(2441683.5, julianDate.getTotalDays());
         ZonedDateTime localDateTime = DateTimeHelper.create(2000, 1, 1, 12, 0, 0, ZoneId.systemDefault());

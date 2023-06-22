@@ -47,7 +47,7 @@ public class TestGregorianDateParsing {
         iso = new GregorianDate(1985, 2, 11, 2, 0, 5.21345);
         result = GregorianDate.parse("1985-042T02:00:05.21345Z");
         AssertHelper.assertEquals(iso, result);
-        iso = new GregorianDate(1985, 2, 11, 2, 0, 5D);
+        iso = new GregorianDate(1985, 2, 11, 2, 0, 5.0);
         result = GregorianDate.parse("1985-042T02:00:05");
         AssertHelper.assertEquals(iso, result);
         iso = new GregorianDate(1985, 2, 11);
@@ -56,7 +56,7 @@ public class TestGregorianDateParsing {
         // Make sure to check each month to ensure we have it right
         final String first = "1986-";
         final String last = "T02:01:04Z";
-        JulianDate baseDate = new GregorianDate(1986, 1, 12, 2, 1, 4D).toJulianDate();
+        JulianDate baseDate = new GregorianDate(1986, 1, 12, 2, 1, 4.0).toJulianDate();
         for (int i = 1; i < 12; i++) {
             String testString = StringHelper.format(first + "{0:000}" + last, 12 + i * 30);
             GregorianDate expected = baseDate.addDays(i * 30).toGregorianDate();
@@ -78,7 +78,7 @@ public class TestGregorianDateParsing {
         Assert.assertTrue(GregorianDate.tryParse("1985-042T02:00:05.21345Z", out$result$1));
         result = out$result$1[0];
         AssertHelper.assertEquals(iso, result);
-        iso = new GregorianDate(1985, 2, 11, 2, 0, 5D);
+        iso = new GregorianDate(1985, 2, 11, 2, 0, 5.0);
         final GregorianDate[] out$result$2 = new GregorianDate[1];
         Assert.assertTrue(GregorianDate.tryParse("1985-042T02:00:05", out$result$2));
         result = out$result$2[0];
@@ -130,13 +130,13 @@ public class TestGregorianDateParsing {
     }
 
     public final void testParseIso8601Formats(@Nonnull Iso8601Format format) {
-        GregorianDate expected = new GregorianDate(1985, 4, 12, 10, 15, 30D);
+        GregorianDate expected = new GregorianDate(1985, 4, 12, 10, 15, 30.0);
         AssertHelper.assertEquals(expected, GregorianDate.parse(expected.toIso8601String(format)));
-        expected = new GregorianDate(1985, 4, 12, 10, 15, 0D);
+        expected = new GregorianDate(1985, 4, 12, 10, 15, 0.0);
         AssertHelper.assertEquals(expected, GregorianDate.parse(expected.toIso8601String(format)));
-        expected = new GregorianDate(1985, 4, 12, 10, 0, 0D);
+        expected = new GregorianDate(1985, 4, 12, 10, 0, 0.0);
         AssertHelper.assertEquals(expected, GregorianDate.parse(expected.toIso8601String(format)));
-        expected = new GregorianDate(1985, 4, 12, 0, 0, 0D);
+        expected = new GregorianDate(1985, 4, 12, 0, 0, 0.0);
         AssertHelper.assertEquals(expected, GregorianDate.parse(expected.toIso8601String(format)));
     }
 
@@ -159,7 +159,7 @@ public class TestGregorianDateParsing {
     public final void testToIso8601String() {
         // Full format
         final String isoString = "1985-04-12T10:15:30Z";
-        GregorianDate iso = new GregorianDate(1985, 4, 12, 10, 15, 30D);
+        GregorianDate iso = new GregorianDate(1985, 4, 12, 10, 15, 30.0);
         GregorianDate result = GregorianDate.parse(isoString);
         AssertHelper.assertEquals(iso, result);
         String resultString = result.toIso8601String();
@@ -182,15 +182,15 @@ public class TestGregorianDateParsing {
         GregorianDate expected = new GregorianDate(2002, 2, 25);
         AssertHelper.assertEquals(expected, GregorianDate.parseExact(expected.toString("d", m_cultureInfo), "d", m_cultureInfo));
         AssertHelper.assertEquals(expected, GregorianDate.parseExact(expected.toString("D", m_cultureInfo), "D", m_cultureInfo));
-        expected = new GregorianDate(2002, 2, 25, 5, 25, 0D);
+        expected = new GregorianDate(2002, 2, 25, 5, 25, 0.0);
         AssertHelper.assertEquals(expected, GregorianDate.parseExact(expected.toString("f", m_cultureInfo), "f", m_cultureInfo));
         AssertHelper.assertEquals(expected, GregorianDate.parseExact(expected.toString("g", m_cultureInfo), "g", m_cultureInfo));
-        expected = new GregorianDate(2002, 2, 25, 5, 25, 13D);
+        expected = new GregorianDate(2002, 2, 25, 5, 25, 13.0);
         AssertHelper.assertEquals(expected, GregorianDate.parseExact(expected.toString("F", m_cultureInfo), "F", m_cultureInfo));
         AssertHelper.assertEquals(expected, GregorianDate.parseExact(expected.toString("G", m_cultureInfo), "G", m_cultureInfo));
         AssertHelper.assertEquals(expected, GregorianDate.parseExact(expected.toString("s", m_cultureInfo), "s", m_cultureInfo));
         AssertHelper.assertEquals(expected, GregorianDate.parseExact("Monday, 25 February 2002 05:25:13", "dddd, dd MMMM yyyy HH:mm:ss", m_cultureInfo));
-        expected = new GregorianDate(2002, 2, 25, 4, 25, 13D);
+        expected = new GregorianDate(2002, 2, 25, 4, 25, 13.0);
         AssertHelper.assertEquals(expected, GregorianDate.parseExact(expected.toString("U", m_cultureInfo), "U", m_cultureInfo));
         AssertHelper.assertEquals(expected, GregorianDate.parseExact(expected.toString("u", m_cultureInfo), "u", m_cultureInfo));
         AssertHelper.assertEquals(expected, GregorianDate.parseExact(expected.toString("r", m_cultureInfo), "r", m_cultureInfo));
@@ -198,9 +198,9 @@ public class TestGregorianDateParsing {
         expected = new GregorianDate(DateTimeHelper.today().getYear(), 2, 25);
         AssertHelper.assertEquals(expected, GregorianDate.parseExact(expected.toString("m", m_cultureInfo), "m", m_cultureInfo));
         AssertHelper.assertEquals(expected, GregorianDate.parseExact(expected.toString("M", m_cultureInfo), "M", m_cultureInfo));
-        expected = new GregorianDate(DateTimeHelper.today().getYear(), DateTimeHelper.today().getMonthValue(), DateTimeHelper.today().getDayOfMonth(), 5, 25, 0D);
+        expected = new GregorianDate(DateTimeHelper.today().getYear(), DateTimeHelper.today().getMonthValue(), DateTimeHelper.today().getDayOfMonth(), 5, 25, 0.0);
         AssertHelper.assertEquals(expected, GregorianDate.parseExact(expected.toString("t", m_cultureInfo), "t", m_cultureInfo));
-        expected = new GregorianDate(DateTimeHelper.today().getYear(), DateTimeHelper.today().getMonthValue(), DateTimeHelper.today().getDayOfMonth(), 5, 25, 13D);
+        expected = new GregorianDate(DateTimeHelper.today().getYear(), DateTimeHelper.today().getMonthValue(), DateTimeHelper.today().getDayOfMonth(), 5, 25, 13.0);
         AssertHelper.assertEquals(expected, GregorianDate.parseExact(expected.toString("T", m_cultureInfo), "T", m_cultureInfo));
         expected = new GregorianDate(2002, 2, 1);
         AssertHelper.assertEquals(expected, GregorianDate.parseExact(expected.toString("y", m_cultureInfo), "y", m_cultureInfo));
@@ -217,12 +217,12 @@ public class TestGregorianDateParsing {
         AssertHelper.assertEquals(expected, GregorianDate.parseExact("5", "%y", m_cultureInfo));
         AssertHelper.assertEquals(expected, GregorianDate.parseExact("05", "yy", m_cultureInfo));
         AssertHelper.assertEquals(expected, GregorianDate.parseExact("2005", "yyyy", m_cultureInfo));
-        expected = new GregorianDate(DateTimeHelper.today().getYear(), DateTimeHelper.today().getMonthValue(), DateTimeHelper.today().getDayOfMonth(), 5, 0, 0D);
+        expected = new GregorianDate(DateTimeHelper.today().getYear(), DateTimeHelper.today().getMonthValue(), DateTimeHelper.today().getDayOfMonth(), 5, 0, 0.0);
         AssertHelper.assertEquals(expected, GregorianDate.parseExact("5A", "ht", m_cultureInfo));
         AssertHelper.assertEquals(expected, GregorianDate.parseExact("05A", "hht", m_cultureInfo));
         AssertHelper.assertEquals(expected, GregorianDate.parseExact("5", "%H", m_cultureInfo));
         AssertHelper.assertEquals(expected, GregorianDate.parseExact("05", "HH", m_cultureInfo));
-        expected = new GregorianDate(DateTimeHelper.today().getYear(), DateTimeHelper.today().getMonthValue(), DateTimeHelper.today().getDayOfMonth(), 15, 0, 0D);
+        expected = new GregorianDate(DateTimeHelper.today().getYear(), DateTimeHelper.today().getMonthValue(), DateTimeHelper.today().getDayOfMonth(), 15, 0, 0.0);
         AssertHelper.assertEquals(expected, GregorianDate.parseExact("3P", "ht", m_cultureInfo));
         AssertHelper.assertEquals(expected, GregorianDate.parseExact("03P", "hht", m_cultureInfo));
         AssertHelper.assertEquals(expected, GregorianDate.parseExact("15", "%H", m_cultureInfo));
@@ -290,7 +290,7 @@ public class TestGregorianDateParsing {
         AssertHelper.assertEquals(expected, GregorianDate.parse("Monday, 25 February 2002", m_cultureInfo));
         AssertHelper.assertEquals(expected, GregorianDate.parse("Mon,02/25/2002", m_cultureInfo));
         AssertHelper.assertEquals(expected, GregorianDate.parse("Mon,2/25/2002", m_cultureInfo));
-        expected = new GregorianDate(2002, 2, 25, 5, 25, 0D);
+        expected = new GregorianDate(2002, 2, 25, 5, 25, 0.0);
         AssertHelper.assertEquals(expected, GregorianDate.parse("Monday, 25 February 2002 05:25", m_cultureInfo));
         AssertHelper.assertEquals(expected, GregorianDate.parse("02/25/2002 05:25", m_cultureInfo));
         AssertHelper.assertEquals(expected, GregorianDate.parse("2/25/2002 05:25", m_cultureInfo));
@@ -300,7 +300,7 @@ public class TestGregorianDateParsing {
         AssertHelper.assertEquals(expected, GregorianDate.parse("02-2002-25 05:25", m_cultureInfo));
         AssertHelper.assertEquals(expected, GregorianDate.parse("2-2002-25 05:25", m_cultureInfo));
         AssertHelper.assertEquals(expected, GregorianDate.parse("2-2002-25 5:25", m_cultureInfo));
-        expected = new GregorianDate(2002, 2, 25, 5, 25, 13D);
+        expected = new GregorianDate(2002, 2, 25, 5, 25, 13.0);
         AssertHelper.assertEquals(expected, GregorianDate.parse("Monday, 25 February 2002 05:25:13", m_cultureInfo));
         AssertHelper.assertEquals(expected, GregorianDate.parse("02/25/2002 05:25:13", m_cultureInfo));
         AssertHelper.assertEquals(expected, GregorianDate.parse("02/25/2002 5:25:13", m_cultureInfo));
@@ -313,7 +313,7 @@ public class TestGregorianDateParsing {
         AssertHelper.assertEquals(expected, GregorianDate.parse("02-2002-25 5:25:13 Mon", m_cultureInfo));
         AssertHelper.assertEquals(expected, GregorianDate.parse("02-2002-25 05:25:13 Monday", m_cultureInfo));
         AssertHelper.assertEquals(expected, GregorianDate.parse("02-2002-25 5:25:13 Monday", m_cultureInfo));
-        expected = new GregorianDate(2002, 2, 25, 4, 25, 13D);
+        expected = new GregorianDate(2002, 2, 25, 4, 25, 13.0);
         AssertHelper.assertEquals(expected, GregorianDate.parse("2002-02-25 04:25:13Z", m_cultureInfo));
         AssertHelper.assertEquals(expected, GregorianDate.parse("Mon, 25 Feb 2002 04:25:13 GMT", m_cultureInfo));
         expected = new GregorianDate(2002, 2, 25, 5, 25, 13.008);
@@ -429,7 +429,7 @@ public class TestGregorianDateParsing {
 
     @Test
     public final void testParseIso8601FormatBasic() {
-        GregorianDate date = new GregorianDate(1985, 4, 12, 10, 15, 30D);
+        GregorianDate date = new GregorianDate(1985, 4, 12, 10, 15, 30.0);
         String isoString = date.toIso8601String(Iso8601Format.BASIC);
         GregorianDate parsed = GregorianDate.parse(isoString);
         AssertHelper.assertEquals(date, parsed);

@@ -49,14 +49,14 @@ public class Sandbox {
                     final ColorCesiumWriter color = using$4.resource;
                     try (Using<CesiumIntervalListWriter<ColorCesiumWriter>> using$5 = new Using<CesiumIntervalListWriter<ColorCesiumWriter>>(color.openMultipleIntervals())) {
                         final CesiumIntervalListWriter<ColorCesiumWriter> intervals = using$5.resource;
-                        JulianDate start = new GregorianDate(2012, 8, 4, 16, 0, 0D).toJulianDate();
-                        JulianDate stop = new GregorianDate(2012, 8, 4, 16, 1, 0D).toJulianDate();
+                        JulianDate start = new GregorianDate(2012, 8, 4, 16, 0, 0.0).toJulianDate();
+                        JulianDate stop = new GregorianDate(2012, 8, 4, 16, 1, 0.0).toJulianDate();
                         try (Using<ColorCesiumWriter> using$6 = new Using<ColorCesiumWriter>(intervals.openInterval(start, stop))) {
                             final ColorCesiumWriter interval = using$6.resource;
                             interval.writeRgbaf(Color.RED);
                         }
-                        start = new GregorianDate(2012, 8, 4, 16, 1, 0D).toJulianDate();
-                        stop = new GregorianDate(2012, 8, 4, 16, 2, 0D).toJulianDate();
+                        start = new GregorianDate(2012, 8, 4, 16, 1, 0.0).toJulianDate();
+                        stop = new GregorianDate(2012, 8, 4, 16, 2, 0.0).toJulianDate();
                         try (Using<ColorCesiumWriter> using$7 = new Using<ColorCesiumWriter>(intervals.openInterval(start, stop))) {
                             final ColorCesiumWriter interval = using$7.resource;
                             interval.writeRgbaf(ColorHelper.LIME);

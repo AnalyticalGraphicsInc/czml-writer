@@ -1,6 +1,7 @@
 package agi.foundation.compatibility;
 
 import static agi.foundation.compatibility.ArgumentNullException.assertNonNull;
+import static java.lang.Byte.toUnsignedInt;
 
 import agi.foundation.compatibility.annotations.Internal;
 
@@ -186,7 +187,7 @@ public class MemoryStream extends InputStream implements IDisposable, ISeekableS
         if (position >= length)
             return -1;
 
-        return buffer[position++] & 0xff;
+        return toUnsignedInt(buffer[position++]);
     }
 
     @Override

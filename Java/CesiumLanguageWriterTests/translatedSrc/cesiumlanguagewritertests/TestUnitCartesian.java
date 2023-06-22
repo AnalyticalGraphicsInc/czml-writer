@@ -158,7 +158,7 @@ public class TestUnitCartesian {
     public final void testEqualsEpsilonExact() {
         UnitCartesian first = new UnitCartesian(0.1, 0.1, 0.1);
         UnitCartesian second = new UnitCartesian(0.1, 0.1, 0.1);
-        Assert.assertTrue(second.equalsEpsilon(first, 0D));
+        Assert.assertTrue(second.equalsEpsilon(first, 0.0));
     }
 
     /**
@@ -320,8 +320,8 @@ public class TestUnitCartesian {
     public final void testDotProduct() {
         UnitCartesian first = new UnitCartesian(1.0, 3.0, -2.0);
         UnitCartesian second = new UnitCartesian(4.0, -2.0, -1.0);
-        AssertHelper.assertEquals(0D, first.dot(second), Constants.Epsilon15);
-        AssertHelper.assertEquals(0D, second.dot(first), Constants.Epsilon15);
+        AssertHelper.assertEquals(0.0, first.dot(second), Constants.Epsilon15);
+        AssertHelper.assertEquals(0.0, second.dot(first), Constants.Epsilon15);
         Cartesian result = new Cartesian(4.0, -2.0, -1.0);
         AssertHelper.assertEquals(0, first.dot(result));
     }

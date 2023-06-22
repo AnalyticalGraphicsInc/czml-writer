@@ -182,7 +182,7 @@ public final class BoundingRectangle implements IEquatable<BoundingRectangle>, I
     }
 
     @Nonnull
-    private static BoundingRectangle s_empty = new BoundingRectangle(0D, 0D, 0D, 0D);
+    private static BoundingRectangle s_empty = new BoundingRectangle(0.0, 0.0, 0.0, 0.0);
     private double m_left;
     private double m_right;
     private double m_bottom;

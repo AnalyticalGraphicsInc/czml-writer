@@ -174,7 +174,7 @@ public class TestGregorianDateFormatting {
         AssertHelper.assertEquals(" d", gregorianDate.toString(" \\d", m_cultureInfo));
         AssertHelper.assertEquals("2002", gregorianDate.toString("yyy", m_cultureInfo));
         AssertHelper.assertEquals("0002002", gregorianDate.toString("yyyyyyy", m_cultureInfo));
-        gregorianDate = new GregorianDate(999, 1, 2, 3, 4, 5D);
+        gregorianDate = new GregorianDate(999, 1, 2, 3, 4, 5.0);
         AssertHelper.assertEquals("999", gregorianDate.toString("yyy", m_cultureInfo));
         AssertHelper.assertEquals("0999", gregorianDate.toString("yyyy", m_cultureInfo));
         // .NET's Double.ToString pads with zeros beyond 15 significant digits.
@@ -436,11 +436,11 @@ public class TestGregorianDateFormatting {
         tempCollection$0.add(new GregorianDate(2012, 4, 2, 1, 2, 0.12345));
         tempCollection$0.add(new GregorianDate(2012, 4, 2, 1, 0, 0.12345));
         tempCollection$0.add(new GregorianDate(2012, 4, 2, 0, 0, 0.12345));
-        tempCollection$0.add(new GregorianDate(2012, 4, 2, 1, 2, 0D));
-        tempCollection$0.add(new GregorianDate(2012, 4, 2, 1, 0, 0D));
-        tempCollection$0.add(new GregorianDate(2012, 4, 2, 0, 0, 0D));
-        tempCollection$0.add(new GregorianDate(2012, 4, 2, 0, 1, 0D));
-        tempCollection$0.add(new GregorianDate(2012, 4, 2, 0, 0, 1D));
+        tempCollection$0.add(new GregorianDate(2012, 4, 2, 1, 2, 0.0));
+        tempCollection$0.add(new GregorianDate(2012, 4, 2, 1, 0, 0.0));
+        tempCollection$0.add(new GregorianDate(2012, 4, 2, 0, 0, 0.0));
+        tempCollection$0.add(new GregorianDate(2012, 4, 2, 0, 1, 0.0));
+        tempCollection$0.add(new GregorianDate(2012, 4, 2, 0, 0, 1.0));
         return tempCollection$0;
     }
 

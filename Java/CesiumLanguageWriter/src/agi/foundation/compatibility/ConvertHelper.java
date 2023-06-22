@@ -1,6 +1,8 @@
 package agi.foundation.compatibility;
 
 import static agi.foundation.compatibility.ArgumentNullException.assertNonNull;
+import static java.lang.Byte.toUnsignedInt;
+import static java.lang.Byte.toUnsignedLong;
 
 import agi.foundation.compatibility.annotations.Internal;
 
@@ -23,7 +25,7 @@ public final class ConvertHelper {
     }
 
     public static int toInt32(byte value) {
-        return value;
+        return toUnsignedInt(value);
     }
 
     public static int toInt32(char value) {
@@ -91,7 +93,7 @@ public final class ConvertHelper {
     }
 
     public static long toInt64(byte value) {
-        return value;
+        return toUnsignedLong(value);
     }
 
     public static long toInt64(char value) {
@@ -152,7 +154,7 @@ public final class ConvertHelper {
     }
 
     public static float toSingle(byte value) {
-        return value;
+        return toUnsignedInt(value);
     }
 
     public static float toSingle(char value) {
@@ -208,7 +210,7 @@ public final class ConvertHelper {
     }
 
     public static double toDouble(byte value) {
-        return value;
+        return toUnsignedInt(value);
     }
 
     public static double toDouble(char value) {

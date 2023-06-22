@@ -28,23 +28,23 @@ public class TestCartographicExtent {
     */
     @Test
     public final void testExtentClass() {
-        CartographicExtent box = new CartographicExtent(-2D, -1D, 1D, 2D);
+        CartographicExtent box = new CartographicExtent(-2.0, -1.0, 1.0, 2.0);
         AssertHelper.assertEquals(-2, box.getWestLongitude());
         AssertHelper.assertEquals(-1, box.getSouthLatitude());
         AssertHelper.assertEquals(1, box.getEastLongitude());
         AssertHelper.assertEquals(2, box.getNorthLatitude());
         Assert.assertTrue(box.isInsideExtent(0.5, 0.5));
-        Assert.assertFalse(box.isInsideExtent(0.5, 3D));
-        Assert.assertFalse(box.isInsideExtent(0.3, -3D));
-        Assert.assertFalse(box.isInsideExtent(-3D, 0.5));
-        Assert.assertFalse(box.isInsideExtent(3D, 0.5));
-        CartographicExtent anotherBox = new CartographicExtent(0D, 0D, 1D, 1D);
+        Assert.assertFalse(box.isInsideExtent(0.5, 3.0));
+        Assert.assertFalse(box.isInsideExtent(0.3, -3.0));
+        Assert.assertFalse(box.isInsideExtent(-3.0, 0.5));
+        Assert.assertFalse(box.isInsideExtent(3.0, 0.5));
+        CartographicExtent anotherBox = new CartographicExtent(0.0, 0.0, 1.0, 1.0);
         CartographicExtent firstCombo = box.union(anotherBox);
         AssertHelper.assertEquals(-2, firstCombo.getWestLongitude());
         AssertHelper.assertEquals(-1, firstCombo.getSouthLatitude());
         AssertHelper.assertEquals(1, firstCombo.getEastLongitude());
         AssertHelper.assertEquals(2, firstCombo.getNorthLatitude());
-        CartographicExtent yetAnotherBox = new CartographicExtent(-2D, -2D, 1D, 1D);
+        CartographicExtent yetAnotherBox = new CartographicExtent(-2.0, -2.0, 1.0, 1.0);
         CartographicExtent secondCombo = box.union(yetAnotherBox);
         AssertHelper.assertEquals(-2, secondCombo.getWestLongitude());
         AssertHelper.assertEquals(-2, secondCombo.getSouthLatitude());
@@ -74,12 +74,12 @@ public class TestCartographicExtent {
     public final void testEqualsEpsilonExact() {
         CartographicExtent first = new CartographicExtent(0.1, 0.1, 0.1, 0.1);
         CartographicExtent second = new CartographicExtent(0.1, 0.1, 0.1, 0.1);
-        Assert.assertTrue(second.equalsEpsilon(first, 0D));
+        Assert.assertTrue(second.equalsEpsilon(first, 0.0));
     }
 
     @Test
     public final void testToString() {
-        CartographicExtent extent = new CartographicExtent(-2D, -1D, 1D, 2D);
+        CartographicExtent extent = new CartographicExtent(-2.0, -1.0, 1.0, 2.0);
         AssertHelper.assertEquals("-2, -1, 1, 2", extent.toString());
     }
 

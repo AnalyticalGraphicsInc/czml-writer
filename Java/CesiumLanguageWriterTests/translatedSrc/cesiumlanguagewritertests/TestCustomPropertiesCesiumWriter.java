@@ -40,9 +40,9 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
 
     @Before
     public final void setUp() {
-        m_startDate = new GregorianDate(2012, 4, 2, 12, 0, 0D).toJulianDate();
+        m_startDate = new GregorianDate(2012, 4, 2, 12, 0, 0.0).toJulianDate();
         m_isoStartString = CesiumFormattingHelper.toIso8601(m_startDate, Iso8601Format.COMPACT);
-        m_stopDate = new GregorianDate(2012, 4, 2, 12, 1, 0D).toJulianDate();
+        m_stopDate = new GregorianDate(2012, 4, 2, 12, 1, 0.0).toJulianDate();
         m_isoIntervalString = CesiumFormattingHelper.toIso8601Interval(m_startDate, m_stopDate, Iso8601Format.COMPACT);
     }
 
@@ -206,16 +206,16 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
                         try (Using<CesiumIntervalListWriter<CustomPropertyCesiumWriter>> using$7 = new Using<CesiumIntervalListWriter<CustomPropertyCesiumWriter>>(
                                 customPropertyWriter.openMultipleIntervals())) {
                             final CesiumIntervalListWriter<CustomPropertyCesiumWriter> intervalListWriter = using$7.resource;
-                            try (Using<CustomPropertyCesiumWriter> using$8 = new Using<CustomPropertyCesiumWriter>(intervalListWriter.openInterval(m_startDate, m_startDate.addSeconds(1D)))) {
+                            try (Using<CustomPropertyCesiumWriter> using$8 = new Using<CustomPropertyCesiumWriter>(intervalListWriter.openInterval(m_startDate, m_startDate.addSeconds(1.0)))) {
                                 final CustomPropertyCesiumWriter intervalWriter = using$8.resource;
                                 intervalWriter.writeBoolean(true);
                             }
                             try (Using<CustomPropertyCesiumWriter> using$9 = new Using<CustomPropertyCesiumWriter>(
-                                    intervalListWriter.openInterval(m_startDate.addSeconds(1D), m_startDate.addSeconds(2D)))) {
+                                    intervalListWriter.openInterval(m_startDate.addSeconds(1.0), m_startDate.addSeconds(2.0)))) {
                                 final CustomPropertyCesiumWriter intervalWriter = using$9.resource;
                                 intervalWriter.writeBoolean(false);
                             }
-                            try (Using<CustomPropertyCesiumWriter> using$10 = new Using<CustomPropertyCesiumWriter>(intervalListWriter.openInterval(m_startDate.addSeconds(2D), m_stopDate))) {
+                            try (Using<CustomPropertyCesiumWriter> using$10 = new Using<CustomPropertyCesiumWriter>(intervalListWriter.openInterval(m_startDate.addSeconds(2.0), m_stopDate))) {
                                 final CustomPropertyCesiumWriter intervalWriter = using$10.resource;
                                 intervalWriter.writeBoolean(true);
                             }

@@ -537,7 +537,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
             }
             int day = -1, dayofweek = -1, month = -1, year = -1;
             int hour = -1, minute = -1, second = -1;
-            double fractionalSeconds = -1D;
+            double fractionalSeconds = -1.0;
             int ampm = -1;
             boolean isFirstPart = true;
             for (;;) {
@@ -1012,7 +1012,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
                 second = 0;
             }
             if (fractionalSeconds == -1) {
-                fractionalSeconds = 0D;
+                fractionalSeconds = 0.0;
             }
             // If no date was given
             if ((day == -1) && (month == -1) && (year == -1)) {
@@ -1646,7 +1646,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
         convertedJulianDate = out$convertedJulianDate$110[0];
         if (!temp$109) {
             isLeapSecond = true;
-            convertedJulianDate = julianDate.subtractSeconds(1D).toTimeStandard(timeStandard);
+            convertedJulianDate = julianDate.subtractSeconds(1.0).toTimeStandard(timeStandard);
         }
         m_yearMonthDay = new YearMonthDay(convertedJulianDate);
         double secondsOfDay = convertedJulianDate.getSecondsOfDay();
@@ -1655,7 +1655,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
         m_minute = (int) Math.floor(remainingSeconds / SecondsPerMinute);
         m_second = secondsOfDay - (m_hour * SecondsPerHour + m_minute * SecondsPerMinute);
         if (isLeapSecond) {
-            m_second += 1D;
+            m_second += 1.0;
         }
         // JulianDates are noon-based
         m_hour += 12;
@@ -1841,13 +1841,13 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
         int julianDayNumber = m_yearMonthDay.getJulianDayNumber();
         double julianSecondsOfDay = getJulianSecondsOfDay();
         if (getIsLeapSecond()) {
-            julianSecondsOfDay -= 1D;
+            julianSecondsOfDay -= 1.0;
         } else if (julianSecondsOfDay >= 43200.0) {
             julianDayNumber -= 1;
         }
         JulianDate result = new JulianDate(julianDayNumber, julianSecondsOfDay, timeStandard);
         if (getIsLeapSecond()) {
-            result = result.addSeconds(1D);
+            result = result.addSeconds(1.0);
         }
         return result;
     }
@@ -1902,7 +1902,7 @@ public final class GregorianDate implements Comparable<GregorianDate>, IEquatabl
         if (roundedSeconds < 60.0 || secondsDifference <= 0) {
             return new GregorianDate(getYear(), getMonth(), getDay(), getHour(), getMinute(), roundedSeconds);
         }
-        return rolloverTime(0D, 0D, 0D, secondsDifference, timeStandard);
+        return rolloverTime(0.0, 0.0, 0.0, secondsDifference, timeStandard);
     }
 
     /**
