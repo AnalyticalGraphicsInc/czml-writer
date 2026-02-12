@@ -162,6 +162,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\.editorconfig = ..\.editorconfig
 		Directory.build.props = Directory.build.props
 		Directory.build.targets = Directory.build.targets
+		..\GitVersion.yml = ..\GitVersion.yml
 		global.json = global.json
 	EndProjectSection
 EndProject
@@ -271,6 +272,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Values", "Values", "{A9C205
 		..\Schema\Values\VerticalOriginValue.json = ..\Schema\Values\VerticalOriginValue.json
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\workflows\dotnet.yml = ..\.github\workflows\dotnet.yml
+		..\.github\workflows\java.yml = ..\.github\workflows\java.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -303,6 +310,7 @@ Global
 		{CF5572F1-2FF5-4169-AAAC-DE87E5C7F4B1} = {F5502A67-ADA3-48EA-8DF8-19D7456AA44C}
 		{BAE894F9-C91D-4F94-8CF0-6F336B2D9C4C} = {04E49F4E-CD74-44F3-9A80-604BCA10FB67}
 		{A9C2052B-5234-41C1-8F0F-1C140A51ADC0} = {04E49F4E-CD74-44F3-9A80-604BCA10FB67}
+		{02EA681E-C7D8-13C7-8484-4AC65E1B71E8} = {275808F5-DE8A-4BA8-9751-3F15D09FE7DB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {447148DC-E3FC-4D2E-87F8-6481D6F76095}

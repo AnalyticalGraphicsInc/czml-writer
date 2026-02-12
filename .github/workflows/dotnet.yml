@@ -1,0 +1,75 @@
+name: dotnet
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: windows-2022
+    permissions:
+      contents: read
+      checks: write
+
+    steps:
+    - uses: actions/checkout@v6
+      with:
+        fetch-depth: 0
+
+    - name: Setup dotnet
+      uses: actions/setup-dotnet@v5
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: Setup msbuild
+      uses: microsoft/setup-msbuild@v2
+
+    - name: Install GitVersion
+      uses: gittools/actions/gitversion/setup@v4.2.0
+      with:
+        versionSpec: '6.x'
+
+    - name: Execute GitVersion
+      uses: gittools/actions/gitversion/execute@v4.2.0
+      with:
+        targetPath: DotNet
+        updateProjectFiles: true
+
+    - name: Restore
+      run: msbuild -m -t:restore DotNet\CesiumLanguageWriter.sln
+
+    - name: Build
+      run: msbuild -m -t:rebuild -p:Configuration=Release DotNet\CesiumLanguageWriter.sln
+
+    - name: Package
+      run: msbuild -m -t:pack -p:Configuration=Release DotNet\CesiumLanguageWriter\CesiumLanguageWriter.csproj
+
+    - name: Upload NuGet Package
+      uses: actions/upload-artifact@v6
+      with:
+        name: nupkg
+        compression-level: 0
+        path: DotNet\CesiumLanguageWriter\bin\Release\*.nupkg
+
+    - name: Run NUnit Tests
+      run: dotnet test --no-restore --configuration Release --logger:"trx;LogFileName=nunit-results.trx" --results-directory test-results DotNet\CesiumLanguageWriterTests\CesiumLanguageWriterTests.csproj
+
+    - name: Upload NUnit Test Results
+      uses: actions/upload-artifact@v6
+      if: (!cancelled())
+      with:
+        name: nunit-results
+        path: test-results/nunit-results.trx
+
+    - name: Publish NUnit Test Results
+      uses: EnricoMi/publish-unit-test-result-action/windows@v2
+      if: (!cancelled())
+      with:
+        check_name: NUnit Results
+        files: test-results/nunit-results.trx
+
+    - name: Upload Validation Document
+      uses: actions/upload-artifact@v6
+      with:
+        name: ValidationDocument
+        path: |
+          DotNet/**/ValidationDocument.czml
+          DotNet/**/ValidationDocument*.js

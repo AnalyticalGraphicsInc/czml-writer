@@ -1,0 +1,70 @@
+name: java
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      checks: write
+
+    steps:
+    - uses: actions/checkout@v6
+      with:
+        fetch-depth: 0
+
+    - name: Set up JDK
+      uses: actions/setup-java@v5
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+
+    - name: Install GitVersion
+      uses: gittools/actions/gitversion/setup@v4.2.0
+      with:
+        versionSpec: '6.x'
+
+    - name: Execute GitVersion
+      uses: gittools/actions/gitversion/execute@v4.2.0
+
+    - name: Set Gradle Version
+      run: sed -i 's/^version = .*$/version = ${{ env.GitVersion_MajorMinorPatch }}/g' Java/gradle.properties
+
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v5
+
+    - name: Build
+      run: ./Java/gradlew -p Java assemble
+
+    - name: Upload JAR
+      uses: actions/upload-artifact@v6
+      with:
+        name: JAR
+        compression-level: 0
+        path: Java/CesiumLanguageWriter/build/libs/*.jar
+
+    - name: Run JUnit Tests
+      run: ./Java/gradlew -p Java check
+
+    - name: Upload JUnit Test Results
+      uses: actions/upload-artifact@v6
+      if: (!cancelled())
+      with:
+        name: junit-results
+        path: Java/CesiumLanguageWriterTests/build/test-results/test/*.xml
+
+    - name: Publish JUnit Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v2
+      if: (!cancelled())
+      with:
+        check_name: JUnit Results
+        files: Java/CesiumLanguageWriterTests/build/test-results/test/*.xml
+
+    - name: Upload Validation Document
+      uses: actions/upload-artifact@v6
+      with:
+        name: ValidationDocument
+        path: |
+          Java/**/ValidationDocument.czml
+          Java/**/ValidationDocument*.js
