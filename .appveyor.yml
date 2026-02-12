@@ -14,7 +14,7 @@ cache:
 install:
   - choco install -y --no-progress gitversion.portable
 before_build:
-  - cmd: nuget restore DotNet\CesiumLanguageWriter.sln
+  - cmd: dotnet restore DotNet\CesiumLanguageWriter.sln
   - ps: gitversion /l console /output buildserver /updateprojectfiles DotNet
 build:
   project: DotNet\CesiumLanguageWriter.sln
