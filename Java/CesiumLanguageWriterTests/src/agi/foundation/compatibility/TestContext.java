@@ -10,6 +10,8 @@ public final class TestContext {
     @Nonnull
     private final TestAdapter test = new TestAdapter();
 
+    private TestContext() {}
+
     @Nonnull
     public static TestContext getCurrentContext() {
         return s_currentContext;

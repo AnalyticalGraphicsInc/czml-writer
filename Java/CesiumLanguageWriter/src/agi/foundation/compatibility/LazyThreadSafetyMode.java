@@ -5,7 +5,7 @@ import agi.foundation.compatibility.annotations.Internal;
 import javax.annotation.Nonnull;
 
 /**
- * Specifies how a Lazy instance synchronizes access among multiple threads.
+ * Specifies how a {@link Lazy} instance synchronizes access among multiple threads.
  *
  * @deprecated Internal use only.
  */
@@ -13,20 +13,33 @@ import javax.annotation.Nonnull;
 @Deprecated
 public enum LazyThreadSafetyMode implements Enumeration {
     /**
-     * The Lazy instance is not thread safe; if the instance is accessed from multiple
-     * threads, its behavior is undefined.
+     * The {@link Lazy} instance is not thread safe; if the instance is accessed from
+     * multiple threads, its behavior is undefined. Use this mode only when high
+     * performance is crucial and the {@link Lazy} instance is guaranteed never to be
+     * initialized from more than one thread.
      */
     NONE(0),
     /**
-     * When multiple threads try to initialize a Lazy instance simultaneously, all threads
-     * are allowed to run the initialization method (or the default constructor, if there
-     * is no initialization method). The first thread to complete initialization sets the
-     * value of the Lazy instance.
+     * When multiple threads try to initialize a {@link Lazy} instance simultaneously, all
+     * threads are allowed to run the initialization method (or the parameterless
+     * constructor, if there is no initialization method). The first thread to complete
+     * initialization sets the value of the {@link Lazy} instance. This is referred to as
+     * Publication in the field names. That value is returned to any other threads that
+     * were simultaneously running the initialization method, unless the initialization
+     * method throws exceptions on those threads. Any instances of {@code T} that were
+     * created by the competing threads are discarded. Effectively, the publication of the
+     * initialized value is thread-safe in the sense that only one of the initialized
+     * values may be published and used by all threads.
      */
     PUBLICATION_ONLY(1),
     /**
-     * Locks are used to ensure that only a single thread can initialize a Lazy instance
-     * in a thread-safe manner.
+     * Locks are used to ensure that only a single thread can initialize a {@link Lazy}
+     * instance in a thread-safe manner. Effectively, the initialization method is
+     * executed in a thread-safe manner (referred to as Execution in the field name).
+     * Publication of the initialized value is also thread-safe in the sense that only one
+     * value may be published and used by all threads. If the initialization method (or
+     * the parameterless constructor, if there is no initialization method) uses locks
+     * internally, deadlocks can occur.
      */
     EXECUTION_AND_PUBLICATION(2);
 

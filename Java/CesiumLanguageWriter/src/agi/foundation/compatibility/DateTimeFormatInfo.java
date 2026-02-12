@@ -345,13 +345,13 @@ public final class DateTimeFormatInfo {
      */
     public String[] getAbbreviatedDayNames() {
         return new String[] {
-                m_shortWeekdays[Calendar.SUNDAY],
-                m_shortWeekdays[Calendar.MONDAY],
-                m_shortWeekdays[Calendar.TUESDAY],
-                m_shortWeekdays[Calendar.WEDNESDAY],
-                m_shortWeekdays[Calendar.THURSDAY],
-                m_shortWeekdays[Calendar.FRIDAY],
-                m_shortWeekdays[Calendar.SATURDAY],
+            m_shortWeekdays[Calendar.SUNDAY],
+            m_shortWeekdays[Calendar.MONDAY],
+            m_shortWeekdays[Calendar.TUESDAY],
+            m_shortWeekdays[Calendar.WEDNESDAY],
+            m_shortWeekdays[Calendar.THURSDAY],
+            m_shortWeekdays[Calendar.FRIDAY],
+            m_shortWeekdays[Calendar.SATURDAY],
         };
     }
 
@@ -369,13 +369,13 @@ public final class DateTimeFormatInfo {
      */
     public String[] getDayNames() {
         return new String[] {
-                m_weekdays[Calendar.SUNDAY],
-                m_weekdays[Calendar.MONDAY],
-                m_weekdays[Calendar.TUESDAY],
-                m_weekdays[Calendar.WEDNESDAY],
-                m_weekdays[Calendar.THURSDAY],
-                m_weekdays[Calendar.FRIDAY],
-                m_weekdays[Calendar.SATURDAY],
+            m_weekdays[Calendar.SUNDAY],
+            m_weekdays[Calendar.MONDAY],
+            m_weekdays[Calendar.TUESDAY],
+            m_weekdays[Calendar.WEDNESDAY],
+            m_weekdays[Calendar.THURSDAY],
+            m_weekdays[Calendar.FRIDAY],
+            m_weekdays[Calendar.SATURDAY],
         };
     }
 
@@ -505,19 +505,19 @@ public final class DateTimeFormatInfo {
 
     public String[] getAllDateTimePatterns() {
         return new String[] {
-                getLongDatePattern(),
-                getShortDatePattern(),
-                getShortDatePattern() + " " + getLongTimePattern(),
-                getShortDatePattern() + " " + getShortTimePattern(),
-                getLongDatePattern() + " " + getLongTimePattern(),
-                getLongDatePattern() + " " + getShortTimePattern(),
-                getMonthDayPattern(),
-                getRFC1123Pattern(),
-                getSortableDateTimePattern(),
-                getLongTimePattern(),
-                getShortTimePattern(),
-                getUniversalSortableDateTimePattern(),
-                getYearMonthPattern(),
+            getLongDatePattern(),
+            getShortDatePattern(),
+            getShortDatePattern() + " " + getLongTimePattern(),
+            getShortDatePattern() + " " + getShortTimePattern(),
+            getLongDatePattern() + " " + getLongTimePattern(),
+            getLongDatePattern() + " " + getShortTimePattern(),
+            getMonthDayPattern(),
+            getRFC1123Pattern(),
+            getSortableDateTimePattern(),
+            getLongTimePattern(),
+            getShortTimePattern(),
+            getUniversalSortableDateTimePattern(),
+            getYearMonthPattern(),
         };
     }
 }

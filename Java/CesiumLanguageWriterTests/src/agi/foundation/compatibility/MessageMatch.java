@@ -6,24 +6,8 @@ import javax.annotation.Nonnull;
  * Enumeration indicating how the expected message parameter is to be used
  */
 public enum MessageMatch implements Enumeration {
-    /**
-     * Expect an exact match
-     */
     EXACT(0),
-
-    /**
-     * Expect a message containing the parameter string
-     */
     CONTAINS(1),
-
-    /**
-     * Match the regular expression provided as a parameter
-     */
-    // REGEX(2),
-
-    /**
-     * Expect a message that starts with the parameter string
-     */
     STARTS_WITH(3);
 
     private final int value;
@@ -56,8 +40,6 @@ public enum MessageMatch implements Enumeration {
             return EXACT;
         case 1:
             return CONTAINS;
-        // case 2:
-        // return REGEX;
         case 3:
             return STARTS_WITH;
         default:

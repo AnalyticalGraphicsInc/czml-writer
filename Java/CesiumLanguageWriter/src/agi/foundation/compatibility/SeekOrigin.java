@@ -3,12 +3,22 @@ package agi.foundation.compatibility;
 import javax.annotation.Nonnull;
 
 /**
- * Provides the fields that represent reference points in streams for seeking.
+ * Specifies the position in a stream to use for seeking.
  */
 public enum SeekOrigin implements Enumeration {
+    /**
+     * Specifies the beginning of a stream.
+     */
     BEGIN(0),
+    /**
+     * Specifies the current position within a stream.
+     */
     CURRENT(1),
+    /**
+     * Specifies the end of a stream.
+     */
     END(2);
+
     private final int value;
 
     SeekOrigin(int value) {
@@ -51,6 +61,7 @@ public enum SeekOrigin implements Enumeration {
      *
      * @return The default enum constant.
      */
+    @Nonnull
     public static SeekOrigin getDefault() {
         return BEGIN;
     }

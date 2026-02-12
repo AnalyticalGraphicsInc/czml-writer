@@ -3,11 +3,11 @@ package agi.foundation.compatibility;
 import static agi.foundation.compatibility.ArgumentNullException.assertNonNull;
 import static java.lang.Byte.toUnsignedInt;
 import static java.lang.Byte.toUnsignedLong;
+import static java.nio.charset.StandardCharsets.US_ASCII;
 
 import agi.foundation.compatibility.annotations.Internal;
 
 import java.nio.ByteBuffer;
-import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
 import javax.annotation.Nonnull;
@@ -286,6 +286,6 @@ public final class ConvertHelper {
         if (offset > inArray.length - length)
             throw new ArgumentOutOfRangeException("offset");
 
-        return new String(Base64.getEncoder().encode(ByteBuffer.wrap(inArray, offset, length)).array(), StandardCharsets.US_ASCII);
+        return new String(Base64.getEncoder().encode(ByteBuffer.wrap(inArray, offset, length)).array(), US_ASCII);
     }
 }

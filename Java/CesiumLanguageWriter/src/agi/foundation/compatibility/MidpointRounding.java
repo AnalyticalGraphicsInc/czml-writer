@@ -3,12 +3,20 @@ package agi.foundation.compatibility;
 import javax.annotation.Nonnull;
 
 /**
- * Specifies how mathematical rounding methods should process a number that is midway
- * between two numbers.
+ * Specifies the strategy that mathematical rounding methods should use to round a number.
  */
 public enum MidpointRounding implements Enumeration {
+    /**
+     * The strategy of rounding to the nearest number, and when a number is halfway
+     * between two others, it's rounded toward the nearest even number.
+     */
     TO_EVEN(0),
+    /**
+     * The strategy of rounding to the nearest number, and when a number is halfway
+     * between two others, it's rounded toward the nearest number that's away from zero.
+     */
     AWAY_FROM_ZERO(1);
+
     private final int value;
 
     MidpointRounding(int value) {
@@ -49,6 +57,7 @@ public enum MidpointRounding implements Enumeration {
      *
      * @return The default enum constant.
      */
+    @Nonnull
     public static MidpointRounding getDefault() {
         return TO_EVEN;
     }

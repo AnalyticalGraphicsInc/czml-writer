@@ -35,30 +35,30 @@ public final class StringHelper {
         // this set of characters is taken from the .NET documentation for
         // String.Split.
         splitWhitespaceChars = new char[] {
-                '\u0009',
-                '\n',
-                '\u000b',
-                '\u000c',
-                '\r',
-                '\u0020',
-                '\u0085',
-                '\u00a0',
-                '\u1680',
-                '\u2000',
-                '\u2001',
-                '\u2002',
-                '\u2003',
-                '\u2004',
-                '\u2005',
-                '\u2006',
-                '\u2007',
-                '\u2008',
-                '\u2009',
-                '\u200a',
-                '\u200b',
-                '\u2028',
-                '\u2029',
-                '\u3000',
+            '\u0009',
+            '\n',
+            '\u000b',
+            '\u000c',
+            '\r',
+            '\u0020',
+            '\u0085',
+            '\u00a0',
+            '\u1680',
+            '\u2000',
+            '\u2001',
+            '\u2002',
+            '\u2003',
+            '\u2004',
+            '\u2005',
+            '\u2006',
+            '\u2007',
+            '\u2008',
+            '\u2009',
+            '\u200a',
+            '\u200b',
+            '\u2028',
+            '\u2029',
+            '\u3000',
         };
 
         // This set of characters is taken from the .NET documentation for String.Trim and
@@ -191,7 +191,7 @@ public final class StringHelper {
 
         if (count == 1 || s.length() == 0) {
             return new String[] {
-                    s
+                s
             };
         }
 

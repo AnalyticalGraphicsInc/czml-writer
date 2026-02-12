@@ -2,10 +2,23 @@ package agi.foundation.compatibility;
 
 import javax.annotation.Nonnull;
 
+/**
+ * Defines the different kinds of URIs.
+ */
 public enum UriKind implements Enumeration {
+    /**
+     * The URI kind is indeterminate.
+     */
     RELATIVE_OR_ABSOLUTE(0),
+    /**
+     * The URI is absolute.
+     */
     ABSOLUTE(1),
+    /**
+     * The URI is relative.
+     */
     RELATIVE(2);
+
     private final int value;
 
     UriKind(int value) {
@@ -48,6 +61,7 @@ public enum UriKind implements Enumeration {
      *
      * @return The default enum constant.
      */
+    @Nonnull
     public static UriKind getDefault() {
         return RELATIVE_OR_ABSOLUTE;
     }

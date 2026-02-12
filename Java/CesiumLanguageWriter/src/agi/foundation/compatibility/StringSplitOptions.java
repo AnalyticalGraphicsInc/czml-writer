@@ -1,45 +1,40 @@
 package agi.foundation.compatibility;
 
-import java.util.Collections;
 import java.util.EnumSet;
 
 import javax.annotation.Nonnull;
 
 /**
- * Specifies whether applicable StringHelper.split method overloads include or omit empty
- * substrings from the return value.
+ * Specifies options for applicable method overloads, such as whether to omit empty
+ * substrings from the returned array or trim whitespace from substrings.
  */
 public class StringSplitOptions implements Enumeration {
+    /**
+     * Use the default options when splitting strings.
+     */
     @Nonnull
     public static final StringSplitOptions NONE = new StringSplitOptions();
+    /**
+     * Omit array elements that contain an empty string from the result.
+     */
     @Nonnull
-    public static final StringSplitOptions REMOVE_EMPTY_ENTRIES = new StringSplitOptions(Values.REMOVE_EMPTY_ENTRIES);
+    public static final StringSplitOptions REMOVE_EMPTY_ENTRIES = new StringSplitOptions(EnumSet.of(Values.REMOVE_EMPTY_ENTRIES));
 
-    private enum Values {
+    private enum Values implements Enumeration {
         NONE(0),
         REMOVE_EMPTY_ENTRIES(1);
+
         private final int value;
 
         Values(int value) {
             this.value = value;
         }
 
-        /**
-         * Get the numeric value associated with this enum constant.
-         *
-         * @return A numeric value.
-         */
+        @Override
         public int getValue() {
             return value;
         }
 
-        /**
-         * Get the enum constant that is associated with the given numeric value.
-         *
-         * @return The enum constant associated with value.
-         * @param value
-         *            a numeric value.
-         */
         @Nonnull
         public static Values getFromValue(int value) {
             switch (value) {
@@ -57,19 +52,41 @@ public class StringSplitOptions implements Enumeration {
     private final EnumSet<Values> value;
 
     private StringSplitOptions() {
-        value = EnumSet.noneOf(Values.class);
+        this.value = EnumSet.noneOf(Values.class);
+    }
+
+    private StringSplitOptions(@Nonnull StringSplitOptions e) {
+        this.value = EnumSet.copyOf(e.value);
+    }
+
+    private StringSplitOptions(@Nonnull EnumSet<Values> value) {
+        this.value = value;
+    }
+
+    private StringSplitOptions(@Nonnull StringSplitOptions e1, @Nonnull StringSplitOptions e2) {
+        this(e1);
+        this.value.addAll(e2.value);
     }
 
     private StringSplitOptions(@Nonnull StringSplitOptions... enums) {
         this();
         for (StringSplitOptions e : enums) {
-            value.addAll(e.value);
+            this.value.addAll(e.value);
         }
     }
 
-    private StringSplitOptions(@Nonnull Values... values) {
-        this();
-        Collections.addAll(value, values);
+    /**
+     * Create a new value built by combining the specified values.
+     *
+     * @return A value that is the combination of the specified values.
+     * @param e1
+     *            a value that the new value will contain.
+     * @param e2
+     *            a value that the new value will contain.
+     */
+    @Nonnull
+    public static StringSplitOptions of(@Nonnull StringSplitOptions e1, @Nonnull StringSplitOptions e2) {
+        return new StringSplitOptions(e1, e2);
     }
 
     /**
@@ -97,6 +114,22 @@ public class StringSplitOptions implements Enumeration {
     }
 
     /**
+     * Create a new value built by logical and-ing the specified values.
+     *
+     * @return A value that is the logical and of the specified values.
+     * @param enums
+     *            the values.
+     */
+    @Nonnull
+    public static StringSplitOptions logicalAnd(@Nonnull StringSplitOptions... enums) {
+        StringSplitOptions result = new StringSplitOptions(EnumSet.allOf(Values.class));
+        for (StringSplitOptions e : enums) {
+            result.value.retainAll(e.value);
+        }
+        return result;
+    }
+
+    /**
      * Remove the specified value from the current set and return the result.
      *
      * @return A value that is the current set without the specified value.
@@ -105,8 +138,7 @@ public class StringSplitOptions implements Enumeration {
      */
     @Nonnull
     public StringSplitOptions remove(@Nonnull StringSplitOptions other) {
-        StringSplitOptions result = new StringSplitOptions();
-        result.value.addAll(value);
+        StringSplitOptions result = new StringSplitOptions(this);
         result.value.removeAll(other.value);
         return result;
     }
@@ -163,8 +195,8 @@ public class StringSplitOptions implements Enumeration {
     @Nonnull
     public static StringSplitOptions[] values() {
         return new StringSplitOptions[] {
-                NONE,
-                REMOVE_EMPTY_ENTRIES
+            NONE,
+            REMOVE_EMPTY_ENTRIES
         };
     }
 

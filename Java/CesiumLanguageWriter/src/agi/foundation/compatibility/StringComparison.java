@@ -3,15 +3,38 @@ package agi.foundation.compatibility;
 import javax.annotation.Nonnull;
 
 /**
- * Specifies the culture, case, and sort rules to be used by string comparison methods.
+ * Specifies the culture, case, and sort rules to be used by certain overloads of the
+ * string compare and equals methods.
  */
 public enum StringComparison implements Enumeration {
+    /**
+     * Compare strings using culture-sensitive sort rules and the current culture.
+     */
     CURRENT_CULTURE(0),
+    /**
+     * Compare strings using culture-sensitive sort rules, the current culture, and
+     * ignoring the case of the strings being compared.
+     */
     CURRENT_CULTURE_IGNORE_CASE(1),
+    /**
+     * Compare strings using culture-sensitive sort rules and the invariant culture.
+     */
     INVARIANT_CULTURE(2),
+    /**
+     * Compare strings using culture-sensitive sort rules, the invariant culture, and
+     * ignoring the case of the strings being compared.
+     */
     INVARIANT_CULTURE_IGNORE_CASE(3),
+    /**
+     * Compare strings using ordinal (binary) sort rules.
+     */
     ORDINAL(4),
+    /**
+     * Compare strings using ordinal (binary) sort rules and ignoring the case of the
+     * strings being compared.
+     */
     ORDINAL_IGNORE_CASE(5);
+
     private final int value;
 
     StringComparison(int value) {
@@ -60,6 +83,7 @@ public enum StringComparison implements Enumeration {
      *
      * @return The default enum constant.
      */
+    @Nonnull
     public static StringComparison getDefault() {
         return CURRENT_CULTURE;
     }
