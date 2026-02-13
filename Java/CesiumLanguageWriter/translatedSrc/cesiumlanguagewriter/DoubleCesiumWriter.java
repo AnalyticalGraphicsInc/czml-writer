@@ -172,11 +172,7 @@ public class DoubleCesiumWriter extends CesiumInterpolatablePropertyWriter<Doubl
 
     @Nonnull
     private final Lazy<CesiumDoubleValuePropertyAdaptor<DoubleCesiumWriter>> createAsNumber() {
-        return new Lazy<CesiumDoubleValuePropertyAdaptor<DoubleCesiumWriter>>(new Func1<CesiumDoubleValuePropertyAdaptor<DoubleCesiumWriter>>(this, "createDouble") {
-            public CesiumDoubleValuePropertyAdaptor<DoubleCesiumWriter> invoke() {
-                return createDouble();
-            }
-        }, false);
+        return new Lazy<CesiumDoubleValuePropertyAdaptor<DoubleCesiumWriter>>(Func1.<CesiumDoubleValuePropertyAdaptor<DoubleCesiumWriter>> of(this::createDouble, this, "createDouble"), false);
     }
 
     @Nonnull
@@ -195,11 +191,8 @@ public class DoubleCesiumWriter extends CesiumInterpolatablePropertyWriter<Doubl
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<DoubleCesiumWriter>> createAsReference() {
-        return new Lazy<CesiumReferenceValuePropertyAdaptor<DoubleCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<DoubleCesiumWriter>>(this, "createReference") {
-            public CesiumReferenceValuePropertyAdaptor<DoubleCesiumWriter> invoke() {
-                return createReference();
-            }
-        }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<DoubleCesiumWriter>>(Func1.<CesiumReferenceValuePropertyAdaptor<DoubleCesiumWriter>> of(this::createReference, this, "createReference"),
+                false);
     }
 
     @Nonnull

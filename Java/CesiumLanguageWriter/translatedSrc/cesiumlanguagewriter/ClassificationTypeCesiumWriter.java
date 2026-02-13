@@ -150,11 +150,7 @@ public class ClassificationTypeCesiumWriter extends CesiumPropertyWriter<Classif
     @Nonnull
     private final Lazy<CesiumClassificationTypeValuePropertyAdaptor<ClassificationTypeCesiumWriter>> createAsClassificationType() {
         return new Lazy<CesiumClassificationTypeValuePropertyAdaptor<ClassificationTypeCesiumWriter>>(
-                new Func1<CesiumClassificationTypeValuePropertyAdaptor<ClassificationTypeCesiumWriter>>(this, "createClassificationType") {
-                    public CesiumClassificationTypeValuePropertyAdaptor<ClassificationTypeCesiumWriter> invoke() {
-                        return createClassificationType();
-                    }
-                }, false);
+                Func1.<CesiumClassificationTypeValuePropertyAdaptor<ClassificationTypeCesiumWriter>> of(this::createClassificationType, this, "createClassificationType"), false);
     }
 
     @Nonnull
@@ -173,11 +169,8 @@ public class ClassificationTypeCesiumWriter extends CesiumPropertyWriter<Classif
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<ClassificationTypeCesiumWriter>> createAsReference() {
-        return new Lazy<CesiumReferenceValuePropertyAdaptor<ClassificationTypeCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<ClassificationTypeCesiumWriter>>(this, "createReference") {
-            public CesiumReferenceValuePropertyAdaptor<ClassificationTypeCesiumWriter> invoke() {
-                return createReference();
-            }
-        }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<ClassificationTypeCesiumWriter>>(
+                Func1.<CesiumReferenceValuePropertyAdaptor<ClassificationTypeCesiumWriter>> of(this::createReference, this, "createReference"), false);
     }
 
     @Nonnull

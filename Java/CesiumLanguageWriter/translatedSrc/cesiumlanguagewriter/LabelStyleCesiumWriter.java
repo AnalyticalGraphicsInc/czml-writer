@@ -149,11 +149,8 @@ public class LabelStyleCesiumWriter extends CesiumPropertyWriter<LabelStyleCesiu
 
     @Nonnull
     private final Lazy<CesiumLabelStyleValuePropertyAdaptor<LabelStyleCesiumWriter>> createAsLabelStyle() {
-        return new Lazy<CesiumLabelStyleValuePropertyAdaptor<LabelStyleCesiumWriter>>(new Func1<CesiumLabelStyleValuePropertyAdaptor<LabelStyleCesiumWriter>>(this, "createLabelStyle") {
-            public CesiumLabelStyleValuePropertyAdaptor<LabelStyleCesiumWriter> invoke() {
-                return createLabelStyle();
-            }
-        }, false);
+        return new Lazy<CesiumLabelStyleValuePropertyAdaptor<LabelStyleCesiumWriter>>(
+                Func1.<CesiumLabelStyleValuePropertyAdaptor<LabelStyleCesiumWriter>> of(this::createLabelStyle, this, "createLabelStyle"), false);
     }
 
     @Nonnull
@@ -172,11 +169,8 @@ public class LabelStyleCesiumWriter extends CesiumPropertyWriter<LabelStyleCesiu
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<LabelStyleCesiumWriter>> createAsReference() {
-        return new Lazy<CesiumReferenceValuePropertyAdaptor<LabelStyleCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<LabelStyleCesiumWriter>>(this, "createReference") {
-            public CesiumReferenceValuePropertyAdaptor<LabelStyleCesiumWriter> invoke() {
-                return createReference();
-            }
-        }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<LabelStyleCesiumWriter>>(
+                Func1.<CesiumReferenceValuePropertyAdaptor<LabelStyleCesiumWriter>> of(this::createReference, this, "createReference"), false);
     }
 
     @Nonnull

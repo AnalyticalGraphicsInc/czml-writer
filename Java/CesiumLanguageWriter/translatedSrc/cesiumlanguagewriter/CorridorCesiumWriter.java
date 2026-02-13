@@ -121,113 +121,77 @@ public class CorridorCesiumWriter extends CesiumPropertyWriter<CorridorCesiumWri
     @Nonnull
     public static final String ZIndexPropertyName = "zIndex";
     @Nonnull
-    private final Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(new Func1<BooleanCesiumWriter>() {
-        public BooleanCesiumWriter invoke() {
-            return new BooleanCesiumWriter(ShowPropertyName);
-        }
-    }, false);
+    private final Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(Func1.<BooleanCesiumWriter> of(() -> {
+        return new BooleanCesiumWriter(ShowPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<PositionListCesiumWriter> m_positions = new Lazy<PositionListCesiumWriter>(new Func1<PositionListCesiumWriter>() {
-        public PositionListCesiumWriter invoke() {
-            return new PositionListCesiumWriter(PositionsPropertyName);
-        }
-    }, false);
+    private final Lazy<PositionListCesiumWriter> m_positions = new Lazy<PositionListCesiumWriter>(Func1.<PositionListCesiumWriter> of(() -> {
+        return new PositionListCesiumWriter(PositionsPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<DoubleCesiumWriter> m_width = new Lazy<DoubleCesiumWriter>(new Func1<DoubleCesiumWriter>() {
-        public DoubleCesiumWriter invoke() {
-            return new DoubleCesiumWriter(WidthPropertyName);
-        }
-    }, false);
+    private final Lazy<DoubleCesiumWriter> m_width = new Lazy<DoubleCesiumWriter>(Func1.<DoubleCesiumWriter> of(() -> {
+        return new DoubleCesiumWriter(WidthPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<DoubleCesiumWriter> m_height = new Lazy<DoubleCesiumWriter>(new Func1<DoubleCesiumWriter>() {
-        public DoubleCesiumWriter invoke() {
-            return new DoubleCesiumWriter(HeightPropertyName);
-        }
-    }, false);
+    private final Lazy<DoubleCesiumWriter> m_height = new Lazy<DoubleCesiumWriter>(Func1.<DoubleCesiumWriter> of(() -> {
+        return new DoubleCesiumWriter(HeightPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<HeightReferenceCesiumWriter> m_heightReference = new Lazy<HeightReferenceCesiumWriter>(new Func1<HeightReferenceCesiumWriter>() {
-        public HeightReferenceCesiumWriter invoke() {
-            return new HeightReferenceCesiumWriter(HeightReferencePropertyName);
-        }
-    }, false);
+    private final Lazy<HeightReferenceCesiumWriter> m_heightReference = new Lazy<HeightReferenceCesiumWriter>(Func1.<HeightReferenceCesiumWriter> of(() -> {
+        return new HeightReferenceCesiumWriter(HeightReferencePropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<DoubleCesiumWriter> m_extrudedHeight = new Lazy<DoubleCesiumWriter>(new Func1<DoubleCesiumWriter>() {
-        public DoubleCesiumWriter invoke() {
-            return new DoubleCesiumWriter(ExtrudedHeightPropertyName);
-        }
-    }, false);
+    private final Lazy<DoubleCesiumWriter> m_extrudedHeight = new Lazy<DoubleCesiumWriter>(Func1.<DoubleCesiumWriter> of(() -> {
+        return new DoubleCesiumWriter(ExtrudedHeightPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<HeightReferenceCesiumWriter> m_extrudedHeightReference = new Lazy<HeightReferenceCesiumWriter>(new Func1<HeightReferenceCesiumWriter>() {
-        public HeightReferenceCesiumWriter invoke() {
-            return new HeightReferenceCesiumWriter(ExtrudedHeightReferencePropertyName);
-        }
-    }, false);
+    private final Lazy<HeightReferenceCesiumWriter> m_extrudedHeightReference = new Lazy<HeightReferenceCesiumWriter>(Func1.<HeightReferenceCesiumWriter> of(() -> {
+        return new HeightReferenceCesiumWriter(ExtrudedHeightReferencePropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<CornerTypeCesiumWriter> m_cornerType = new Lazy<CornerTypeCesiumWriter>(new Func1<CornerTypeCesiumWriter>() {
-        public CornerTypeCesiumWriter invoke() {
-            return new CornerTypeCesiumWriter(CornerTypePropertyName);
-        }
-    }, false);
+    private final Lazy<CornerTypeCesiumWriter> m_cornerType = new Lazy<CornerTypeCesiumWriter>(Func1.<CornerTypeCesiumWriter> of(() -> {
+        return new CornerTypeCesiumWriter(CornerTypePropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<DoubleCesiumWriter> m_granularity = new Lazy<DoubleCesiumWriter>(new Func1<DoubleCesiumWriter>() {
-        public DoubleCesiumWriter invoke() {
-            return new DoubleCesiumWriter(GranularityPropertyName);
-        }
-    }, false);
+    private final Lazy<DoubleCesiumWriter> m_granularity = new Lazy<DoubleCesiumWriter>(Func1.<DoubleCesiumWriter> of(() -> {
+        return new DoubleCesiumWriter(GranularityPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<BooleanCesiumWriter> m_fill = new Lazy<BooleanCesiumWriter>(new Func1<BooleanCesiumWriter>() {
-        public BooleanCesiumWriter invoke() {
-            return new BooleanCesiumWriter(FillPropertyName);
-        }
-    }, false);
+    private final Lazy<BooleanCesiumWriter> m_fill = new Lazy<BooleanCesiumWriter>(Func1.<BooleanCesiumWriter> of(() -> {
+        return new BooleanCesiumWriter(FillPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<MaterialCesiumWriter> m_material = new Lazy<MaterialCesiumWriter>(new Func1<MaterialCesiumWriter>() {
-        public MaterialCesiumWriter invoke() {
-            return new MaterialCesiumWriter(MaterialPropertyName);
-        }
-    }, false);
+    private final Lazy<MaterialCesiumWriter> m_material = new Lazy<MaterialCesiumWriter>(Func1.<MaterialCesiumWriter> of(() -> {
+        return new MaterialCesiumWriter(MaterialPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<BooleanCesiumWriter> m_outline = new Lazy<BooleanCesiumWriter>(new Func1<BooleanCesiumWriter>() {
-        public BooleanCesiumWriter invoke() {
-            return new BooleanCesiumWriter(OutlinePropertyName);
-        }
-    }, false);
+    private final Lazy<BooleanCesiumWriter> m_outline = new Lazy<BooleanCesiumWriter>(Func1.<BooleanCesiumWriter> of(() -> {
+        return new BooleanCesiumWriter(OutlinePropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<ColorCesiumWriter> m_outlineColor = new Lazy<ColorCesiumWriter>(new Func1<ColorCesiumWriter>() {
-        public ColorCesiumWriter invoke() {
-            return new ColorCesiumWriter(OutlineColorPropertyName);
-        }
-    }, false);
+    private final Lazy<ColorCesiumWriter> m_outlineColor = new Lazy<ColorCesiumWriter>(Func1.<ColorCesiumWriter> of(() -> {
+        return new ColorCesiumWriter(OutlineColorPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<DoubleCesiumWriter> m_outlineWidth = new Lazy<DoubleCesiumWriter>(new Func1<DoubleCesiumWriter>() {
-        public DoubleCesiumWriter invoke() {
-            return new DoubleCesiumWriter(OutlineWidthPropertyName);
-        }
-    }, false);
+    private final Lazy<DoubleCesiumWriter> m_outlineWidth = new Lazy<DoubleCesiumWriter>(Func1.<DoubleCesiumWriter> of(() -> {
+        return new DoubleCesiumWriter(OutlineWidthPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<ShadowModeCesiumWriter> m_shadows = new Lazy<ShadowModeCesiumWriter>(new Func1<ShadowModeCesiumWriter>() {
-        public ShadowModeCesiumWriter invoke() {
-            return new ShadowModeCesiumWriter(ShadowsPropertyName);
-        }
-    }, false);
+    private final Lazy<ShadowModeCesiumWriter> m_shadows = new Lazy<ShadowModeCesiumWriter>(Func1.<ShadowModeCesiumWriter> of(() -> {
+        return new ShadowModeCesiumWriter(ShadowsPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<DistanceDisplayConditionCesiumWriter> m_distanceDisplayCondition = new Lazy<DistanceDisplayConditionCesiumWriter>(new Func1<DistanceDisplayConditionCesiumWriter>() {
-        public DistanceDisplayConditionCesiumWriter invoke() {
-            return new DistanceDisplayConditionCesiumWriter(DistanceDisplayConditionPropertyName);
-        }
-    }, false);
+    private final Lazy<DistanceDisplayConditionCesiumWriter> m_distanceDisplayCondition = new Lazy<DistanceDisplayConditionCesiumWriter>(Func1.<DistanceDisplayConditionCesiumWriter> of(() -> {
+        return new DistanceDisplayConditionCesiumWriter(DistanceDisplayConditionPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<ClassificationTypeCesiumWriter> m_classificationType = new Lazy<ClassificationTypeCesiumWriter>(new Func1<ClassificationTypeCesiumWriter>() {
-        public ClassificationTypeCesiumWriter invoke() {
-            return new ClassificationTypeCesiumWriter(ClassificationTypePropertyName);
-        }
-    }, false);
+    private final Lazy<ClassificationTypeCesiumWriter> m_classificationType = new Lazy<ClassificationTypeCesiumWriter>(Func1.<ClassificationTypeCesiumWriter> of(() -> {
+        return new ClassificationTypeCesiumWriter(ClassificationTypePropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<IntegerCesiumWriter> m_zIndex = new Lazy<IntegerCesiumWriter>(new Func1<IntegerCesiumWriter>() {
-        public IntegerCesiumWriter invoke() {
-            return new IntegerCesiumWriter(ZIndexPropertyName);
-        }
-    }, false);
+    private final Lazy<IntegerCesiumWriter> m_zIndex = new Lazy<IntegerCesiumWriter>(Func1.<IntegerCesiumWriter> of(() -> {
+        return new IntegerCesiumWriter(ZIndexPropertyName);
+    }), false);
 
     /**
     * Initializes a new instance.

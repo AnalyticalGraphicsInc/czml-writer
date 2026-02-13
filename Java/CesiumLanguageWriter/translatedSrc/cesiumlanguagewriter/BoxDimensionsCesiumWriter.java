@@ -168,11 +168,8 @@ public class BoxDimensionsCesiumWriter extends CesiumInterpolatablePropertyWrite
 
     @Nonnull
     private final Lazy<CesiumCartesian3ValuePropertyAdaptor<BoxDimensionsCesiumWriter>> createAsCartesian() {
-        return new Lazy<CesiumCartesian3ValuePropertyAdaptor<BoxDimensionsCesiumWriter>>(new Func1<CesiumCartesian3ValuePropertyAdaptor<BoxDimensionsCesiumWriter>>(this, "createCartesian3") {
-            public CesiumCartesian3ValuePropertyAdaptor<BoxDimensionsCesiumWriter> invoke() {
-                return createCartesian3();
-            }
-        }, false);
+        return new Lazy<CesiumCartesian3ValuePropertyAdaptor<BoxDimensionsCesiumWriter>>(
+                Func1.<CesiumCartesian3ValuePropertyAdaptor<BoxDimensionsCesiumWriter>> of(this::createCartesian3, this, "createCartesian3"), false);
     }
 
     @Nonnull
@@ -191,11 +188,8 @@ public class BoxDimensionsCesiumWriter extends CesiumInterpolatablePropertyWrite
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<BoxDimensionsCesiumWriter>> createAsReference() {
-        return new Lazy<CesiumReferenceValuePropertyAdaptor<BoxDimensionsCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<BoxDimensionsCesiumWriter>>(this, "createReference") {
-            public CesiumReferenceValuePropertyAdaptor<BoxDimensionsCesiumWriter> invoke() {
-                return createReference();
-            }
-        }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<BoxDimensionsCesiumWriter>>(
+                Func1.<CesiumReferenceValuePropertyAdaptor<BoxDimensionsCesiumWriter>> of(this::createReference, this, "createReference"), false);
     }
 
     @Nonnull

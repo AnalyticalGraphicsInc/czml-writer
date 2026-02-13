@@ -26,11 +26,9 @@ public class PolylineArrowMaterialCesiumWriter extends CesiumPropertyWriter<Poly
     @Nonnull
     public static final String ColorPropertyName = "color";
     @Nonnull
-    private final Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(new Func1<ColorCesiumWriter>() {
-        public ColorCesiumWriter invoke() {
-            return new ColorCesiumWriter(ColorPropertyName);
-        }
-    }, false);
+    private final Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(Func1.<ColorCesiumWriter> of(() -> {
+        return new ColorCesiumWriter(ColorPropertyName);
+    }), false);
 
     /**
     * Initializes a new instance.

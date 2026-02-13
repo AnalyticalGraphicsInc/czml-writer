@@ -178,11 +178,8 @@ public class DistanceDisplayConditionCesiumWriter extends CesiumInterpolatablePr
     @Nonnull
     private final Lazy<CesiumDistanceDisplayConditionValuePropertyAdaptor<DistanceDisplayConditionCesiumWriter>> createAsDistanceDisplayCondition() {
         return new Lazy<CesiumDistanceDisplayConditionValuePropertyAdaptor<DistanceDisplayConditionCesiumWriter>>(
-                new Func1<CesiumDistanceDisplayConditionValuePropertyAdaptor<DistanceDisplayConditionCesiumWriter>>(this, "createDistanceDisplayCondition") {
-                    public CesiumDistanceDisplayConditionValuePropertyAdaptor<DistanceDisplayConditionCesiumWriter> invoke() {
-                        return createDistanceDisplayCondition();
-                    }
-                }, false);
+                Func1.<CesiumDistanceDisplayConditionValuePropertyAdaptor<DistanceDisplayConditionCesiumWriter>> of(this::createDistanceDisplayCondition, this, "createDistanceDisplayCondition"),
+                false);
     }
 
     @Nonnull
@@ -202,11 +199,7 @@ public class DistanceDisplayConditionCesiumWriter extends CesiumInterpolatablePr
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<DistanceDisplayConditionCesiumWriter>> createAsReference() {
         return new Lazy<CesiumReferenceValuePropertyAdaptor<DistanceDisplayConditionCesiumWriter>>(
-                new Func1<CesiumReferenceValuePropertyAdaptor<DistanceDisplayConditionCesiumWriter>>(this, "createReference") {
-                    public CesiumReferenceValuePropertyAdaptor<DistanceDisplayConditionCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+                Func1.<CesiumReferenceValuePropertyAdaptor<DistanceDisplayConditionCesiumWriter>> of(this::createReference, this, "createReference"), false);
     }
 
     @Nonnull

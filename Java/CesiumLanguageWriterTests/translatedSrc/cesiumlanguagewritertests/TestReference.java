@@ -103,31 +103,25 @@ public class TestReference {
 
     @Test
     public final void throwsWithMissingDelimiter() {
-        ArgumentException exception = AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, new Action() {
-            public void invoke() {
-                Reference unused = new Reference("MissingDelimiter");
-            }
-        });
+        ArgumentException exception = AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, Action.of(() -> {
+            Reference unused = new Reference("MissingDelimiter");
+        }));
         AssertHelper.assertStringContains("The provided reference string is not in the correct format", exception.getMessage());
     }
 
     @Test
     public final void throwsWithMissingDelimiterDueToEscaping() {
-        ArgumentException exception = AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, new Action() {
-            public void invoke() {
-                Reference unused = new Reference("Missing\\#Delimiter");
-            }
-        });
+        ArgumentException exception = AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, Action.of(() -> {
+            Reference unused = new Reference("Missing\\#Delimiter");
+        }));
         AssertHelper.assertStringContains("The provided reference string is not in the correct format", exception.getMessage());
     }
 
     @Test
     public final void throwsWithMissingProperties() {
-        ArgumentException exception = AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, new Action() {
-            public void invoke() {
-                Reference unused = new Reference("MissingPropertyName#");
-            }
-        });
+        ArgumentException exception = AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, Action.of(() -> {
+            Reference unused = new Reference("MissingPropertyName#");
+        }));
         AssertHelper.assertStringContains("The provided reference string is not in the correct format", exception.getMessage());
     }
 

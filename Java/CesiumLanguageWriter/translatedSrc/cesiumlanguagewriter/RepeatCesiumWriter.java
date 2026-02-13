@@ -177,11 +177,8 @@ public class RepeatCesiumWriter extends CesiumInterpolatablePropertyWriter<Repea
 
     @Nonnull
     private final Lazy<CesiumCartesian2ValuePropertyAdaptor<RepeatCesiumWriter>> createAsCartesian2() {
-        return new Lazy<CesiumCartesian2ValuePropertyAdaptor<RepeatCesiumWriter>>(new Func1<CesiumCartesian2ValuePropertyAdaptor<RepeatCesiumWriter>>(this, "createCartesian2") {
-            public CesiumCartesian2ValuePropertyAdaptor<RepeatCesiumWriter> invoke() {
-                return createCartesian2();
-            }
-        }, false);
+        return new Lazy<CesiumCartesian2ValuePropertyAdaptor<RepeatCesiumWriter>>(Func1.<CesiumCartesian2ValuePropertyAdaptor<RepeatCesiumWriter>> of(this::createCartesian2, this, "createCartesian2"),
+                false);
     }
 
     @Nonnull
@@ -200,11 +197,8 @@ public class RepeatCesiumWriter extends CesiumInterpolatablePropertyWriter<Repea
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<RepeatCesiumWriter>> createAsReference() {
-        return new Lazy<CesiumReferenceValuePropertyAdaptor<RepeatCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<RepeatCesiumWriter>>(this, "createReference") {
-            public CesiumReferenceValuePropertyAdaptor<RepeatCesiumWriter> invoke() {
-                return createReference();
-            }
-        }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<RepeatCesiumWriter>>(Func1.<CesiumReferenceValuePropertyAdaptor<RepeatCesiumWriter>> of(this::createReference, this, "createReference"),
+                false);
     }
 
     @Nonnull

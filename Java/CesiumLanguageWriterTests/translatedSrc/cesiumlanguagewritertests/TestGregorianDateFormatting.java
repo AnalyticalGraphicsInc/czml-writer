@@ -192,51 +192,41 @@ public class TestGregorianDateFormatting {
 
     @Test
     public final void toStringThrowsOnInvalidFormatSpecifier() {
-        NumberFormatException exception = AssertHelper.<NumberFormatException> assertThrows(new TypeLiteral<NumberFormatException>() {}, new Action() {
-            public void invoke() {
-                String unused = new GregorianDate(2009, 6, 10).toString("X");
-            }
-        });
+        NumberFormatException exception = AssertHelper.<NumberFormatException> assertThrows(new TypeLiteral<NumberFormatException>() {}, Action.of(() -> {
+            String unused = new GregorianDate(2009, 6, 10).toString("X");
+        }));
         AssertHelper.assertStringContains("not one of the format specifier characters", exception.getMessage());
     }
 
     @Test
     public final void cantFormatMoreThan15FractionalSeconds() {
-        NumberFormatException exception = AssertHelper.<NumberFormatException> assertThrows(new TypeLiteral<NumberFormatException>() {}, new Action() {
-            public void invoke() {
-                String unused = new GregorianDate(2009, 6, 10).toString("ffffffffffffffff");
-            }
-        });
+        NumberFormatException exception = AssertHelper.<NumberFormatException> assertThrows(new TypeLiteral<NumberFormatException>() {}, Action.of(() -> {
+            String unused = new GregorianDate(2009, 6, 10).toString("ffffffffffffffff");
+        }));
         AssertHelper.assertStringContains("Invalid format string", exception.getMessage());
     }
 
     @Test
     public final void formatSpecifierCantEndWithAPercent() {
-        NumberFormatException exception = AssertHelper.<NumberFormatException> assertThrows(new TypeLiteral<NumberFormatException>() {}, new Action() {
-            public void invoke() {
-                String unused = new GregorianDate(2009, 6, 10).toString("f%");
-            }
-        });
+        NumberFormatException exception = AssertHelper.<NumberFormatException> assertThrows(new TypeLiteral<NumberFormatException>() {}, Action.of(() -> {
+            String unused = new GregorianDate(2009, 6, 10).toString("f%");
+        }));
         AssertHelper.assertStringContains("Invalid character % at the end of the format specifier", exception.getMessage());
     }
 
     @Test
     public final void formatSpecifierCantEndWithABackslash() {
-        NumberFormatException exception = AssertHelper.<NumberFormatException> assertThrows(new TypeLiteral<NumberFormatException>() {}, new Action() {
-            public void invoke() {
-                String unused = new GregorianDate(2009, 6, 10).toString("f\\");
-            }
-        });
+        NumberFormatException exception = AssertHelper.<NumberFormatException> assertThrows(new TypeLiteral<NumberFormatException>() {}, Action.of(() -> {
+            String unused = new GregorianDate(2009, 6, 10).toString("f\\");
+        }));
         AssertHelper.assertStringContains("Invalid character \\ at the end of the format specifier", exception.getMessage());
     }
 
     @Test
     public final void formatSpecifierCantHaveADoublePercent() {
-        NumberFormatException exception = AssertHelper.<NumberFormatException> assertThrows(new TypeLiteral<NumberFormatException>() {}, new Action() {
-            public void invoke() {
-                String unused = new GregorianDate(2009, 6, 10).toString("%%");
-            }
-        });
+        NumberFormatException exception = AssertHelper.<NumberFormatException> assertThrows(new TypeLiteral<NumberFormatException>() {}, Action.of(() -> {
+            String unused = new GregorianDate(2009, 6, 10).toString("%%");
+        }));
         AssertHelper.assertStringContains("Invalid character %% in format specifier", exception.getMessage());
     }
 

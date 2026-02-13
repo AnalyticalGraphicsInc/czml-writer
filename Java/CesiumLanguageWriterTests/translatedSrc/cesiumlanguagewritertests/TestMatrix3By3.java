@@ -261,11 +261,9 @@ public class TestMatrix3By3 {
     */
     public final void indexerThrowsWithRowOutOfRange(final int row, final int column) {
         final Matrix3By3 matrix = Matrix3By3.diagonalMatrix(-3.0, 1.0, 5.0);
-        ArgumentOutOfRangeException exception = AssertHelper.<ArgumentOutOfRangeException> assertThrows(new TypeLiteral<ArgumentOutOfRangeException>() {}, new Action() {
-            public void invoke() {
-                double unused = matrix.get(row, column);
-            }
-        });
+        ArgumentOutOfRangeException exception = AssertHelper.<ArgumentOutOfRangeException> assertThrows(new TypeLiteral<ArgumentOutOfRangeException>() {}, Action.of(() -> {
+            double unused = matrix.get(row, column);
+        }));
         AssertHelper.assertEquals("row", exception.getParamName());
     }
 
@@ -286,11 +284,9 @@ public class TestMatrix3By3 {
     */
     public final void indexerThrowsWithColumnOutOfRange(final int row, final int column) {
         final Matrix3By3 matrix = Matrix3By3.diagonalMatrix(-3.0, 1.0, 5.0);
-        ArgumentOutOfRangeException exception = AssertHelper.<ArgumentOutOfRangeException> assertThrows(new TypeLiteral<ArgumentOutOfRangeException>() {}, new Action() {
-            public void invoke() {
-                double unused = matrix.get(row, column);
-            }
-        });
+        ArgumentOutOfRangeException exception = AssertHelper.<ArgumentOutOfRangeException> assertThrows(new TypeLiteral<ArgumentOutOfRangeException>() {}, Action.of(() -> {
+            double unused = matrix.get(row, column);
+        }));
         AssertHelper.assertEquals("column", exception.getParamName());
     }
 

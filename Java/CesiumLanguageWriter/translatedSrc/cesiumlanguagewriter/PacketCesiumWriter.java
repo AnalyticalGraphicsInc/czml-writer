@@ -211,167 +211,113 @@ public class PacketCesiumWriter extends CesiumElementWriter {
     @Nonnull
     public static final String VectorPropertyName = "agi_vector";
     @Nonnull
-    private final Lazy<StringCesiumWriter> m_description = new Lazy<StringCesiumWriter>(new Func1<StringCesiumWriter>() {
-        public StringCesiumWriter invoke() {
-            return new StringCesiumWriter(DescriptionPropertyName);
-        }
-    }, false);
+    private final Lazy<StringCesiumWriter> m_description = new Lazy<StringCesiumWriter>(Func1.<StringCesiumWriter> of(() -> {
+        return new StringCesiumWriter(DescriptionPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<ClockCesiumWriter> m_clock = new Lazy<ClockCesiumWriter>(new Func1<ClockCesiumWriter>() {
-        public ClockCesiumWriter invoke() {
-            return new ClockCesiumWriter(ClockPropertyName);
-        }
-    }, false);
+    private final Lazy<ClockCesiumWriter> m_clock = new Lazy<ClockCesiumWriter>(Func1.<ClockCesiumWriter> of(() -> {
+        return new ClockCesiumWriter(ClockPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<CustomPropertiesCesiumWriter> m_properties = new Lazy<CustomPropertiesCesiumWriter>(new Func1<CustomPropertiesCesiumWriter>() {
-        public CustomPropertiesCesiumWriter invoke() {
-            return new CustomPropertiesCesiumWriter(PropertiesPropertyName);
-        }
-    }, false);
+    private final Lazy<CustomPropertiesCesiumWriter> m_properties = new Lazy<CustomPropertiesCesiumWriter>(Func1.<CustomPropertiesCesiumWriter> of(() -> {
+        return new CustomPropertiesCesiumWriter(PropertiesPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<PositionCesiumWriter> m_position = new Lazy<PositionCesiumWriter>(new Func1<PositionCesiumWriter>() {
-        public PositionCesiumWriter invoke() {
-            return new PositionCesiumWriter(PositionPropertyName);
-        }
-    }, false);
+    private final Lazy<PositionCesiumWriter> m_position = new Lazy<PositionCesiumWriter>(Func1.<PositionCesiumWriter> of(() -> {
+        return new PositionCesiumWriter(PositionPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<OrientationCesiumWriter> m_orientation = new Lazy<OrientationCesiumWriter>(new Func1<OrientationCesiumWriter>() {
-        public OrientationCesiumWriter invoke() {
-            return new OrientationCesiumWriter(OrientationPropertyName);
-        }
-    }, false);
+    private final Lazy<OrientationCesiumWriter> m_orientation = new Lazy<OrientationCesiumWriter>(Func1.<OrientationCesiumWriter> of(() -> {
+        return new OrientationCesiumWriter(OrientationPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<ViewFromCesiumWriter> m_viewFrom = new Lazy<ViewFromCesiumWriter>(new Func1<ViewFromCesiumWriter>() {
-        public ViewFromCesiumWriter invoke() {
-            return new ViewFromCesiumWriter(ViewFromPropertyName);
-        }
-    }, false);
+    private final Lazy<ViewFromCesiumWriter> m_viewFrom = new Lazy<ViewFromCesiumWriter>(Func1.<ViewFromCesiumWriter> of(() -> {
+        return new ViewFromCesiumWriter(ViewFromPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<BillboardCesiumWriter> m_billboard = new Lazy<BillboardCesiumWriter>(new Func1<BillboardCesiumWriter>() {
-        public BillboardCesiumWriter invoke() {
-            return new BillboardCesiumWriter(BillboardPropertyName);
-        }
-    }, false);
+    private final Lazy<BillboardCesiumWriter> m_billboard = new Lazy<BillboardCesiumWriter>(Func1.<BillboardCesiumWriter> of(() -> {
+        return new BillboardCesiumWriter(BillboardPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<BoxCesiumWriter> m_box = new Lazy<BoxCesiumWriter>(new Func1<BoxCesiumWriter>() {
-        public BoxCesiumWriter invoke() {
-            return new BoxCesiumWriter(BoxPropertyName);
-        }
-    }, false);
+    private final Lazy<BoxCesiumWriter> m_box = new Lazy<BoxCesiumWriter>(Func1.<BoxCesiumWriter> of(() -> {
+        return new BoxCesiumWriter(BoxPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<CorridorCesiumWriter> m_corridor = new Lazy<CorridorCesiumWriter>(new Func1<CorridorCesiumWriter>() {
-        public CorridorCesiumWriter invoke() {
-            return new CorridorCesiumWriter(CorridorPropertyName);
-        }
-    }, false);
+    private final Lazy<CorridorCesiumWriter> m_corridor = new Lazy<CorridorCesiumWriter>(Func1.<CorridorCesiumWriter> of(() -> {
+        return new CorridorCesiumWriter(CorridorPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<CylinderCesiumWriter> m_cylinder = new Lazy<CylinderCesiumWriter>(new Func1<CylinderCesiumWriter>() {
-        public CylinderCesiumWriter invoke() {
-            return new CylinderCesiumWriter(CylinderPropertyName);
-        }
-    }, false);
+    private final Lazy<CylinderCesiumWriter> m_cylinder = new Lazy<CylinderCesiumWriter>(Func1.<CylinderCesiumWriter> of(() -> {
+        return new CylinderCesiumWriter(CylinderPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<EllipseCesiumWriter> m_ellipse = new Lazy<EllipseCesiumWriter>(new Func1<EllipseCesiumWriter>() {
-        public EllipseCesiumWriter invoke() {
-            return new EllipseCesiumWriter(EllipsePropertyName);
-        }
-    }, false);
+    private final Lazy<EllipseCesiumWriter> m_ellipse = new Lazy<EllipseCesiumWriter>(Func1.<EllipseCesiumWriter> of(() -> {
+        return new EllipseCesiumWriter(EllipsePropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<EllipsoidCesiumWriter> m_ellipsoid = new Lazy<EllipsoidCesiumWriter>(new Func1<EllipsoidCesiumWriter>() {
-        public EllipsoidCesiumWriter invoke() {
-            return new EllipsoidCesiumWriter(EllipsoidPropertyName);
-        }
-    }, false);
+    private final Lazy<EllipsoidCesiumWriter> m_ellipsoid = new Lazy<EllipsoidCesiumWriter>(Func1.<EllipsoidCesiumWriter> of(() -> {
+        return new EllipsoidCesiumWriter(EllipsoidPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<LabelCesiumWriter> m_label = new Lazy<LabelCesiumWriter>(new Func1<LabelCesiumWriter>() {
-        public LabelCesiumWriter invoke() {
-            return new LabelCesiumWriter(LabelPropertyName);
-        }
-    }, false);
+    private final Lazy<LabelCesiumWriter> m_label = new Lazy<LabelCesiumWriter>(Func1.<LabelCesiumWriter> of(() -> {
+        return new LabelCesiumWriter(LabelPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<ModelCesiumWriter> m_model = new Lazy<ModelCesiumWriter>(new Func1<ModelCesiumWriter>() {
-        public ModelCesiumWriter invoke() {
-            return new ModelCesiumWriter(ModelPropertyName);
-        }
-    }, false);
+    private final Lazy<ModelCesiumWriter> m_model = new Lazy<ModelCesiumWriter>(Func1.<ModelCesiumWriter> of(() -> {
+        return new ModelCesiumWriter(ModelPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<PathCesiumWriter> m_path = new Lazy<PathCesiumWriter>(new Func1<PathCesiumWriter>() {
-        public PathCesiumWriter invoke() {
-            return new PathCesiumWriter(PathPropertyName);
-        }
-    }, false);
+    private final Lazy<PathCesiumWriter> m_path = new Lazy<PathCesiumWriter>(Func1.<PathCesiumWriter> of(() -> {
+        return new PathCesiumWriter(PathPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<PointCesiumWriter> m_point = new Lazy<PointCesiumWriter>(new Func1<PointCesiumWriter>() {
-        public PointCesiumWriter invoke() {
-            return new PointCesiumWriter(PointPropertyName);
-        }
-    }, false);
+    private final Lazy<PointCesiumWriter> m_point = new Lazy<PointCesiumWriter>(Func1.<PointCesiumWriter> of(() -> {
+        return new PointCesiumWriter(PointPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<PolygonCesiumWriter> m_polygon = new Lazy<PolygonCesiumWriter>(new Func1<PolygonCesiumWriter>() {
-        public PolygonCesiumWriter invoke() {
-            return new PolygonCesiumWriter(PolygonPropertyName);
-        }
-    }, false);
+    private final Lazy<PolygonCesiumWriter> m_polygon = new Lazy<PolygonCesiumWriter>(Func1.<PolygonCesiumWriter> of(() -> {
+        return new PolygonCesiumWriter(PolygonPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<PolylineCesiumWriter> m_polyline = new Lazy<PolylineCesiumWriter>(new Func1<PolylineCesiumWriter>() {
-        public PolylineCesiumWriter invoke() {
-            return new PolylineCesiumWriter(PolylinePropertyName);
-        }
-    }, false);
+    private final Lazy<PolylineCesiumWriter> m_polyline = new Lazy<PolylineCesiumWriter>(Func1.<PolylineCesiumWriter> of(() -> {
+        return new PolylineCesiumWriter(PolylinePropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<PolylineVolumeCesiumWriter> m_polylineVolume = new Lazy<PolylineVolumeCesiumWriter>(new Func1<PolylineVolumeCesiumWriter>() {
-        public PolylineVolumeCesiumWriter invoke() {
-            return new PolylineVolumeCesiumWriter(PolylineVolumePropertyName);
-        }
-    }, false);
+    private final Lazy<PolylineVolumeCesiumWriter> m_polylineVolume = new Lazy<PolylineVolumeCesiumWriter>(Func1.<PolylineVolumeCesiumWriter> of(() -> {
+        return new PolylineVolumeCesiumWriter(PolylineVolumePropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<RectangleCesiumWriter> m_rectangle = new Lazy<RectangleCesiumWriter>(new Func1<RectangleCesiumWriter>() {
-        public RectangleCesiumWriter invoke() {
-            return new RectangleCesiumWriter(RectanglePropertyName);
-        }
-    }, false);
+    private final Lazy<RectangleCesiumWriter> m_rectangle = new Lazy<RectangleCesiumWriter>(Func1.<RectangleCesiumWriter> of(() -> {
+        return new RectangleCesiumWriter(RectanglePropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<TilesetCesiumWriter> m_tileset = new Lazy<TilesetCesiumWriter>(new Func1<TilesetCesiumWriter>() {
-        public TilesetCesiumWriter invoke() {
-            return new TilesetCesiumWriter(TilesetPropertyName);
-        }
-    }, false);
+    private final Lazy<TilesetCesiumWriter> m_tileset = new Lazy<TilesetCesiumWriter>(Func1.<TilesetCesiumWriter> of(() -> {
+        return new TilesetCesiumWriter(TilesetPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<WallCesiumWriter> m_wall = new Lazy<WallCesiumWriter>(new Func1<WallCesiumWriter>() {
-        public WallCesiumWriter invoke() {
-            return new WallCesiumWriter(WallPropertyName);
-        }
-    }, false);
+    private final Lazy<WallCesiumWriter> m_wall = new Lazy<WallCesiumWriter>(Func1.<WallCesiumWriter> of(() -> {
+        return new WallCesiumWriter(WallPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<ConicSensorCesiumWriter> m_agi_conicSensor = new Lazy<ConicSensorCesiumWriter>(new Func1<ConicSensorCesiumWriter>() {
-        public ConicSensorCesiumWriter invoke() {
-            return new ConicSensorCesiumWriter(ConicSensorPropertyName);
-        }
-    }, false);
+    private final Lazy<ConicSensorCesiumWriter> m_agi_conicSensor = new Lazy<ConicSensorCesiumWriter>(Func1.<ConicSensorCesiumWriter> of(() -> {
+        return new ConicSensorCesiumWriter(ConicSensorPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<CustomPatternSensorCesiumWriter> m_agi_customPatternSensor = new Lazy<CustomPatternSensorCesiumWriter>(new Func1<CustomPatternSensorCesiumWriter>() {
-        public CustomPatternSensorCesiumWriter invoke() {
-            return new CustomPatternSensorCesiumWriter(CustomPatternSensorPropertyName);
-        }
-    }, false);
+    private final Lazy<CustomPatternSensorCesiumWriter> m_agi_customPatternSensor = new Lazy<CustomPatternSensorCesiumWriter>(Func1.<CustomPatternSensorCesiumWriter> of(() -> {
+        return new CustomPatternSensorCesiumWriter(CustomPatternSensorPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<RectangularSensorCesiumWriter> m_agi_rectangularSensor = new Lazy<RectangularSensorCesiumWriter>(new Func1<RectangularSensorCesiumWriter>() {
-        public RectangularSensorCesiumWriter invoke() {
-            return new RectangularSensorCesiumWriter(RectangularSensorPropertyName);
-        }
-    }, false);
+    private final Lazy<RectangularSensorCesiumWriter> m_agi_rectangularSensor = new Lazy<RectangularSensorCesiumWriter>(Func1.<RectangularSensorCesiumWriter> of(() -> {
+        return new RectangularSensorCesiumWriter(RectangularSensorPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<FanCesiumWriter> m_agi_fan = new Lazy<FanCesiumWriter>(new Func1<FanCesiumWriter>() {
-        public FanCesiumWriter invoke() {
-            return new FanCesiumWriter(FanPropertyName);
-        }
-    }, false);
+    private final Lazy<FanCesiumWriter> m_agi_fan = new Lazy<FanCesiumWriter>(Func1.<FanCesiumWriter> of(() -> {
+        return new FanCesiumWriter(FanPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<VectorCesiumWriter> m_agi_vector = new Lazy<VectorCesiumWriter>(new Func1<VectorCesiumWriter>() {
-        public VectorCesiumWriter invoke() {
-            return new VectorCesiumWriter(VectorPropertyName);
-        }
-    }, false);
+    private final Lazy<VectorCesiumWriter> m_agi_vector = new Lazy<VectorCesiumWriter>(Func1.<VectorCesiumWriter> of(() -> {
+        return new VectorCesiumWriter(VectorPropertyName);
+    }), false);
 
     /**
     * Writes the start of a new JSON object representing the packet.

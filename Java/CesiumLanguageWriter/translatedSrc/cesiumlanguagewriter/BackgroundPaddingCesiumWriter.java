@@ -177,11 +177,8 @@ public class BackgroundPaddingCesiumWriter extends CesiumInterpolatablePropertyW
 
     @Nonnull
     private final Lazy<CesiumCartesian2ValuePropertyAdaptor<BackgroundPaddingCesiumWriter>> createAsCartesian2() {
-        return new Lazy<CesiumCartesian2ValuePropertyAdaptor<BackgroundPaddingCesiumWriter>>(new Func1<CesiumCartesian2ValuePropertyAdaptor<BackgroundPaddingCesiumWriter>>(this, "createCartesian2") {
-            public CesiumCartesian2ValuePropertyAdaptor<BackgroundPaddingCesiumWriter> invoke() {
-                return createCartesian2();
-            }
-        }, false);
+        return new Lazy<CesiumCartesian2ValuePropertyAdaptor<BackgroundPaddingCesiumWriter>>(
+                Func1.<CesiumCartesian2ValuePropertyAdaptor<BackgroundPaddingCesiumWriter>> of(this::createCartesian2, this, "createCartesian2"), false);
     }
 
     @Nonnull
@@ -200,11 +197,8 @@ public class BackgroundPaddingCesiumWriter extends CesiumInterpolatablePropertyW
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<BackgroundPaddingCesiumWriter>> createAsReference() {
-        return new Lazy<CesiumReferenceValuePropertyAdaptor<BackgroundPaddingCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<BackgroundPaddingCesiumWriter>>(this, "createReference") {
-            public CesiumReferenceValuePropertyAdaptor<BackgroundPaddingCesiumWriter> invoke() {
-                return createReference();
-            }
-        }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<BackgroundPaddingCesiumWriter>>(
+                Func1.<CesiumReferenceValuePropertyAdaptor<BackgroundPaddingCesiumWriter>> of(this::createReference, this, "createReference"), false);
     }
 
     @Nonnull

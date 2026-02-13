@@ -148,11 +148,7 @@ public class FontCesiumWriter extends CesiumPropertyWriter<FontCesiumWriter> imp
 
     @Nonnull
     private final Lazy<CesiumFontValuePropertyAdaptor<FontCesiumWriter>> createAsFont() {
-        return new Lazy<CesiumFontValuePropertyAdaptor<FontCesiumWriter>>(new Func1<CesiumFontValuePropertyAdaptor<FontCesiumWriter>>(this, "createFont") {
-            public CesiumFontValuePropertyAdaptor<FontCesiumWriter> invoke() {
-                return createFont();
-            }
-        }, false);
+        return new Lazy<CesiumFontValuePropertyAdaptor<FontCesiumWriter>>(Func1.<CesiumFontValuePropertyAdaptor<FontCesiumWriter>> of(this::createFont, this, "createFont"), false);
     }
 
     @Nonnull
@@ -171,11 +167,7 @@ public class FontCesiumWriter extends CesiumPropertyWriter<FontCesiumWriter> imp
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<FontCesiumWriter>> createAsReference() {
-        return new Lazy<CesiumReferenceValuePropertyAdaptor<FontCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<FontCesiumWriter>>(this, "createReference") {
-            public CesiumReferenceValuePropertyAdaptor<FontCesiumWriter> invoke() {
-                return createReference();
-            }
-        }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<FontCesiumWriter>>(Func1.<CesiumReferenceValuePropertyAdaptor<FontCesiumWriter>> of(this::createReference, this, "createReference"), false);
     }
 
     @Nonnull

@@ -40,9 +40,7 @@ public class CesiumStreamWriter {
     }
 
     @Nonnull
-    private Lazy<PacketCesiumWriter> m_packetWriter = new Lazy<PacketCesiumWriter>(new Func1<PacketCesiumWriter>() {
-        public PacketCesiumWriter invoke() {
-            return new PacketCesiumWriter();
-        }
-    }, false);
+    private Lazy<PacketCesiumWriter> m_packetWriter = new Lazy<PacketCesiumWriter>(Func1.<PacketCesiumWriter> of(() -> {
+        return new PacketCesiumWriter();
+    }), false);
 }

@@ -148,11 +148,7 @@ public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter>
 
     @Nonnull
     private final Lazy<CesiumStringValuePropertyAdaptor<StringCesiumWriter>> createAsString() {
-        return new Lazy<CesiumStringValuePropertyAdaptor<StringCesiumWriter>>(new Func1<CesiumStringValuePropertyAdaptor<StringCesiumWriter>>(this, "createString") {
-            public CesiumStringValuePropertyAdaptor<StringCesiumWriter> invoke() {
-                return createString();
-            }
-        }, false);
+        return new Lazy<CesiumStringValuePropertyAdaptor<StringCesiumWriter>>(Func1.<CesiumStringValuePropertyAdaptor<StringCesiumWriter>> of(this::createString, this, "createString"), false);
     }
 
     @Nonnull
@@ -171,11 +167,8 @@ public class StringCesiumWriter extends CesiumPropertyWriter<StringCesiumWriter>
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<StringCesiumWriter>> createAsReference() {
-        return new Lazy<CesiumReferenceValuePropertyAdaptor<StringCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<StringCesiumWriter>>(this, "createReference") {
-            public CesiumReferenceValuePropertyAdaptor<StringCesiumWriter> invoke() {
-                return createReference();
-            }
-        }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<StringCesiumWriter>>(Func1.<CesiumReferenceValuePropertyAdaptor<StringCesiumWriter>> of(this::createReference, this, "createReference"),
+                false);
     }
 
     @Nonnull

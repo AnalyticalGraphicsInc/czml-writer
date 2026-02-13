@@ -177,11 +177,8 @@ public class PixelOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
     @Nonnull
     private final Lazy<CesiumCartesian2ValuePropertyAdaptor<PixelOffsetCesiumWriter>> createAsCartesian2() {
-        return new Lazy<CesiumCartesian2ValuePropertyAdaptor<PixelOffsetCesiumWriter>>(new Func1<CesiumCartesian2ValuePropertyAdaptor<PixelOffsetCesiumWriter>>(this, "createCartesian2") {
-            public CesiumCartesian2ValuePropertyAdaptor<PixelOffsetCesiumWriter> invoke() {
-                return createCartesian2();
-            }
-        }, false);
+        return new Lazy<CesiumCartesian2ValuePropertyAdaptor<PixelOffsetCesiumWriter>>(
+                Func1.<CesiumCartesian2ValuePropertyAdaptor<PixelOffsetCesiumWriter>> of(this::createCartesian2, this, "createCartesian2"), false);
     }
 
     @Nonnull
@@ -200,11 +197,8 @@ public class PixelOffsetCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<PixelOffsetCesiumWriter>> createAsReference() {
-        return new Lazy<CesiumReferenceValuePropertyAdaptor<PixelOffsetCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<PixelOffsetCesiumWriter>>(this, "createReference") {
-            public CesiumReferenceValuePropertyAdaptor<PixelOffsetCesiumWriter> invoke() {
-                return createReference();
-            }
-        }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<PixelOffsetCesiumWriter>>(
+                Func1.<CesiumReferenceValuePropertyAdaptor<PixelOffsetCesiumWriter>> of(this::createReference, this, "createReference"), false);
     }
 
     @Nonnull

@@ -49,35 +49,25 @@ public class VectorCesiumWriter extends CesiumPropertyWriter<VectorCesiumWriter>
     @Nonnull
     public static final String MinimumLengthInPixelsPropertyName = "minimumLengthInPixels";
     @Nonnull
-    private final Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(new Func1<BooleanCesiumWriter>() {
-        public BooleanCesiumWriter invoke() {
-            return new BooleanCesiumWriter(ShowPropertyName);
-        }
-    }, false);
+    private final Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(Func1.<BooleanCesiumWriter> of(() -> {
+        return new BooleanCesiumWriter(ShowPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(new Func1<ColorCesiumWriter>() {
-        public ColorCesiumWriter invoke() {
-            return new ColorCesiumWriter(ColorPropertyName);
-        }
-    }, false);
+    private final Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(Func1.<ColorCesiumWriter> of(() -> {
+        return new ColorCesiumWriter(ColorPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<DirectionCesiumWriter> m_direction = new Lazy<DirectionCesiumWriter>(new Func1<DirectionCesiumWriter>() {
-        public DirectionCesiumWriter invoke() {
-            return new DirectionCesiumWriter(DirectionPropertyName);
-        }
-    }, false);
+    private final Lazy<DirectionCesiumWriter> m_direction = new Lazy<DirectionCesiumWriter>(Func1.<DirectionCesiumWriter> of(() -> {
+        return new DirectionCesiumWriter(DirectionPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<DoubleCesiumWriter> m_length = new Lazy<DoubleCesiumWriter>(new Func1<DoubleCesiumWriter>() {
-        public DoubleCesiumWriter invoke() {
-            return new DoubleCesiumWriter(LengthPropertyName);
-        }
-    }, false);
+    private final Lazy<DoubleCesiumWriter> m_length = new Lazy<DoubleCesiumWriter>(Func1.<DoubleCesiumWriter> of(() -> {
+        return new DoubleCesiumWriter(LengthPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<DoubleCesiumWriter> m_minimumLengthInPixels = new Lazy<DoubleCesiumWriter>(new Func1<DoubleCesiumWriter>() {
-        public DoubleCesiumWriter invoke() {
-            return new DoubleCesiumWriter(MinimumLengthInPixelsPropertyName);
-        }
-    }, false);
+    private final Lazy<DoubleCesiumWriter> m_minimumLengthInPixels = new Lazy<DoubleCesiumWriter>(Func1.<DoubleCesiumWriter> of(() -> {
+        return new DoubleCesiumWriter(MinimumLengthInPixelsPropertyName);
+    }), false);
 
     /**
     * Initializes a new instance.

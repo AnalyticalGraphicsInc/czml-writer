@@ -168,11 +168,8 @@ public class EllipsoidRadiiCesiumWriter extends CesiumInterpolatablePropertyWrit
 
     @Nonnull
     private final Lazy<CesiumCartesian3ValuePropertyAdaptor<EllipsoidRadiiCesiumWriter>> createAsCartesian() {
-        return new Lazy<CesiumCartesian3ValuePropertyAdaptor<EllipsoidRadiiCesiumWriter>>(new Func1<CesiumCartesian3ValuePropertyAdaptor<EllipsoidRadiiCesiumWriter>>(this, "createCartesian3") {
-            public CesiumCartesian3ValuePropertyAdaptor<EllipsoidRadiiCesiumWriter> invoke() {
-                return createCartesian3();
-            }
-        }, false);
+        return new Lazy<CesiumCartesian3ValuePropertyAdaptor<EllipsoidRadiiCesiumWriter>>(
+                Func1.<CesiumCartesian3ValuePropertyAdaptor<EllipsoidRadiiCesiumWriter>> of(this::createCartesian3, this, "createCartesian3"), false);
     }
 
     @Nonnull
@@ -191,11 +188,8 @@ public class EllipsoidRadiiCesiumWriter extends CesiumInterpolatablePropertyWrit
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<EllipsoidRadiiCesiumWriter>> createAsReference() {
-        return new Lazy<CesiumReferenceValuePropertyAdaptor<EllipsoidRadiiCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<EllipsoidRadiiCesiumWriter>>(this, "createReference") {
-            public CesiumReferenceValuePropertyAdaptor<EllipsoidRadiiCesiumWriter> invoke() {
-                return createReference();
-            }
-        }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<EllipsoidRadiiCesiumWriter>>(
+                Func1.<CesiumReferenceValuePropertyAdaptor<EllipsoidRadiiCesiumWriter>> of(this::createReference, this, "createReference"), false);
     }
 
     @Nonnull

@@ -292,11 +292,9 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
     @Test
     public final void throwsWhenWritingToBeforeOpening() {
         final CesiumPropertyWriter<TDerived> propertyWriter = createPropertyWriter("woot");
-        IllegalStateException exception = AssertHelper.<IllegalStateException> assertThrows(new TypeLiteral<IllegalStateException>() {}, new Action() {
-            public void invoke() {
-                propertyWriter.openInterval();
-            }
-        });
+        IllegalStateException exception = AssertHelper.<IllegalStateException> assertThrows(new TypeLiteral<IllegalStateException>() {}, Action.of(() -> {
+            propertyWriter.openInterval();
+        }));
         AssertHelper.assertStringContains("not currently open", exception.getMessage());
     }
 
@@ -305,11 +303,9 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
         final CesiumPropertyWriter<TDerived> propertyWriter = createPropertyWriter("woot");
         propertyWriter.open(getOutputStream());
         propertyWriter.close();
-        IllegalStateException exception = AssertHelper.<IllegalStateException> assertThrows(new TypeLiteral<IllegalStateException>() {}, new Action() {
-            public void invoke() {
-                propertyWriter.openInterval();
-            }
-        });
+        IllegalStateException exception = AssertHelper.<IllegalStateException> assertThrows(new TypeLiteral<IllegalStateException>() {}, Action.of(() -> {
+            propertyWriter.openInterval();
+        }));
         AssertHelper.assertStringContains("not currently open", exception.getMessage());
     }
 

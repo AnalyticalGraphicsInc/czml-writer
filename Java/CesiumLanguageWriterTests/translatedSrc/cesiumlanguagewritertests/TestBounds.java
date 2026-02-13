@@ -66,11 +66,9 @@ public class TestBounds {
 
     @Test
     public final void testConstructorThrowsWithUpperLessThanLower() {
-        AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, new Action() {
-            public void invoke() {
-                Bounds unused = new Bounds(1.0, -1.0);
-            }
-        });
+        AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, Action.of(() -> {
+            Bounds unused = new Bounds(1.0, -1.0);
+        }));
     }
 
     /**

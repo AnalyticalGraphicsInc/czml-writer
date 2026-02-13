@@ -41,14 +41,12 @@ public class TestShapeCesiumWriter extends TestCesiumPropertyWriter<ShapeCesiumW
                 writer.writeCartesian2(expectedValue);
             }
         }
-        Iterable<Object> expectedValueJson = IterableHelper.selectMany(expectedValue, new Func2<Rectangular, Iterable<Object>>() {
-            public Iterable<Object> invoke(Rectangular r) {
-                return ArrayHelper.arrayAsList(new Object[] {
-                    r.getX(),
-                    r.getY()
-                });
-            }
-        });
+        Iterable<Object> expectedValueJson = IterableHelper.selectMany(expectedValue, Func2.<Rectangular, Iterable<Object>> of((Rectangular r) -> {
+            return ArrayHelper.arrayAsList(new Object[] {
+                r.getX(),
+                r.getY()
+            });
+        }));
         final Map<String, Object> tempCollection$2 = MapHelper.create();
         MapHelper.add(tempCollection$2, "cartesian2", expectedValueJson);
         final Map<String, Object> tempCollection$1 = MapHelper.create();

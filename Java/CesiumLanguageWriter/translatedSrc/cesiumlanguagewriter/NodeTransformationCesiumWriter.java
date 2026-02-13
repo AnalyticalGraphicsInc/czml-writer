@@ -37,23 +37,17 @@ public class NodeTransformationCesiumWriter extends CesiumPropertyWriter<NodeTra
     @Nonnull
     public static final String ScalePropertyName = "scale";
     @Nonnull
-    private final Lazy<TranslationCesiumWriter> m_translation = new Lazy<TranslationCesiumWriter>(new Func1<TranslationCesiumWriter>() {
-        public TranslationCesiumWriter invoke() {
-            return new TranslationCesiumWriter(TranslationPropertyName);
-        }
-    }, false);
+    private final Lazy<TranslationCesiumWriter> m_translation = new Lazy<TranslationCesiumWriter>(Func1.<TranslationCesiumWriter> of(() -> {
+        return new TranslationCesiumWriter(TranslationPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<RotationCesiumWriter> m_rotation = new Lazy<RotationCesiumWriter>(new Func1<RotationCesiumWriter>() {
-        public RotationCesiumWriter invoke() {
-            return new RotationCesiumWriter(RotationPropertyName);
-        }
-    }, false);
+    private final Lazy<RotationCesiumWriter> m_rotation = new Lazy<RotationCesiumWriter>(Func1.<RotationCesiumWriter> of(() -> {
+        return new RotationCesiumWriter(RotationPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<ScaleCesiumWriter> m_scale = new Lazy<ScaleCesiumWriter>(new Func1<ScaleCesiumWriter>() {
-        public ScaleCesiumWriter invoke() {
-            return new ScaleCesiumWriter(ScalePropertyName);
-        }
-    }, false);
+    private final Lazy<ScaleCesiumWriter> m_scale = new Lazy<ScaleCesiumWriter>(Func1.<ScaleCesiumWriter> of(() -> {
+        return new ScaleCesiumWriter(ScalePropertyName);
+    }), false);
 
     /**
     * Initializes a new instance.

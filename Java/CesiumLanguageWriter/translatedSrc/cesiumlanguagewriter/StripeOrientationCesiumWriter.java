@@ -150,11 +150,7 @@ public class StripeOrientationCesiumWriter extends CesiumPropertyWriter<StripeOr
     @Nonnull
     private final Lazy<CesiumStripeOrientationValuePropertyAdaptor<StripeOrientationCesiumWriter>> createAsStripeOrientation() {
         return new Lazy<CesiumStripeOrientationValuePropertyAdaptor<StripeOrientationCesiumWriter>>(
-                new Func1<CesiumStripeOrientationValuePropertyAdaptor<StripeOrientationCesiumWriter>>(this, "createStripeOrientation") {
-                    public CesiumStripeOrientationValuePropertyAdaptor<StripeOrientationCesiumWriter> invoke() {
-                        return createStripeOrientation();
-                    }
-                }, false);
+                Func1.<CesiumStripeOrientationValuePropertyAdaptor<StripeOrientationCesiumWriter>> of(this::createStripeOrientation, this, "createStripeOrientation"), false);
     }
 
     @Nonnull
@@ -173,11 +169,8 @@ public class StripeOrientationCesiumWriter extends CesiumPropertyWriter<StripeOr
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<StripeOrientationCesiumWriter>> createAsReference() {
-        return new Lazy<CesiumReferenceValuePropertyAdaptor<StripeOrientationCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<StripeOrientationCesiumWriter>>(this, "createReference") {
-            public CesiumReferenceValuePropertyAdaptor<StripeOrientationCesiumWriter> invoke() {
-                return createReference();
-            }
-        }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<StripeOrientationCesiumWriter>>(
+                Func1.<CesiumReferenceValuePropertyAdaptor<StripeOrientationCesiumWriter>> of(this::createReference, this, "createReference"), false);
     }
 
     @Nonnull

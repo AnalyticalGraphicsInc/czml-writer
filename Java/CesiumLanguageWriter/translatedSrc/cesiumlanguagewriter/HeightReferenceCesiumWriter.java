@@ -150,11 +150,7 @@ public class HeightReferenceCesiumWriter extends CesiumPropertyWriter<HeightRefe
     @Nonnull
     private final Lazy<CesiumHeightReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter>> createAsHeightReference() {
         return new Lazy<CesiumHeightReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter>>(
-                new Func1<CesiumHeightReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter>>(this, "createHeightReference") {
-                    public CesiumHeightReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter> invoke() {
-                        return createHeightReference();
-                    }
-                }, false);
+                Func1.<CesiumHeightReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter>> of(this::createHeightReference, this, "createHeightReference"), false);
     }
 
     @Nonnull
@@ -173,11 +169,8 @@ public class HeightReferenceCesiumWriter extends CesiumPropertyWriter<HeightRefe
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter>> createAsReference() {
-        return new Lazy<CesiumReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter>>(this, "createReference") {
-            public CesiumReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter> invoke() {
-                return createReference();
-            }
-        }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter>>(
+                Func1.<CesiumReferenceValuePropertyAdaptor<HeightReferenceCesiumWriter>> of(this::createReference, this, "createReference"), false);
     }
 
     @Nonnull

@@ -149,11 +149,8 @@ public class CornerTypeCesiumWriter extends CesiumPropertyWriter<CornerTypeCesiu
 
     @Nonnull
     private final Lazy<CesiumCornerTypeValuePropertyAdaptor<CornerTypeCesiumWriter>> createAsCornerType() {
-        return new Lazy<CesiumCornerTypeValuePropertyAdaptor<CornerTypeCesiumWriter>>(new Func1<CesiumCornerTypeValuePropertyAdaptor<CornerTypeCesiumWriter>>(this, "createCornerType") {
-            public CesiumCornerTypeValuePropertyAdaptor<CornerTypeCesiumWriter> invoke() {
-                return createCornerType();
-            }
-        }, false);
+        return new Lazy<CesiumCornerTypeValuePropertyAdaptor<CornerTypeCesiumWriter>>(
+                Func1.<CesiumCornerTypeValuePropertyAdaptor<CornerTypeCesiumWriter>> of(this::createCornerType, this, "createCornerType"), false);
     }
 
     @Nonnull
@@ -172,11 +169,8 @@ public class CornerTypeCesiumWriter extends CesiumPropertyWriter<CornerTypeCesiu
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<CornerTypeCesiumWriter>> createAsReference() {
-        return new Lazy<CesiumReferenceValuePropertyAdaptor<CornerTypeCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<CornerTypeCesiumWriter>>(this, "createReference") {
-            public CesiumReferenceValuePropertyAdaptor<CornerTypeCesiumWriter> invoke() {
-                return createReference();
-            }
-        }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<CornerTypeCesiumWriter>>(
+                Func1.<CesiumReferenceValuePropertyAdaptor<CornerTypeCesiumWriter>> of(this::createReference, this, "createReference"), false);
     }
 
     @Nonnull

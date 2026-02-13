@@ -36,11 +36,9 @@ public class TestYearMonthDay {
     */
     @Test
     public final void testConstructWithInvalidDate() {
-        AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, new Action() {
-            public void invoke() {
-                YearMonthDay unused = new YearMonthDay(2006, 2, 29);
-            }
-        });
+        AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, Action.of(() -> {
+            YearMonthDay unused = new YearMonthDay(2006, 2, 29);
+        }));
     }
 
     /**

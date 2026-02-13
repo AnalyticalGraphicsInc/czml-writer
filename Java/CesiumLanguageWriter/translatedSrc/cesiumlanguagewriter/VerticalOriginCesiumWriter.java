@@ -150,11 +150,7 @@ public class VerticalOriginCesiumWriter extends CesiumPropertyWriter<VerticalOri
     @Nonnull
     private final Lazy<CesiumVerticalOriginValuePropertyAdaptor<VerticalOriginCesiumWriter>> createAsVerticalOrigin() {
         return new Lazy<CesiumVerticalOriginValuePropertyAdaptor<VerticalOriginCesiumWriter>>(
-                new Func1<CesiumVerticalOriginValuePropertyAdaptor<VerticalOriginCesiumWriter>>(this, "createVerticalOrigin") {
-                    public CesiumVerticalOriginValuePropertyAdaptor<VerticalOriginCesiumWriter> invoke() {
-                        return createVerticalOrigin();
-                    }
-                }, false);
+                Func1.<CesiumVerticalOriginValuePropertyAdaptor<VerticalOriginCesiumWriter>> of(this::createVerticalOrigin, this, "createVerticalOrigin"), false);
     }
 
     @Nonnull
@@ -173,11 +169,8 @@ public class VerticalOriginCesiumWriter extends CesiumPropertyWriter<VerticalOri
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<VerticalOriginCesiumWriter>> createAsReference() {
-        return new Lazy<CesiumReferenceValuePropertyAdaptor<VerticalOriginCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<VerticalOriginCesiumWriter>>(this, "createReference") {
-            public CesiumReferenceValuePropertyAdaptor<VerticalOriginCesiumWriter> invoke() {
-                return createReference();
-            }
-        }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<VerticalOriginCesiumWriter>>(
+                Func1.<CesiumReferenceValuePropertyAdaptor<VerticalOriginCesiumWriter>> of(this::createReference, this, "createReference"), false);
     }
 
     @Nonnull

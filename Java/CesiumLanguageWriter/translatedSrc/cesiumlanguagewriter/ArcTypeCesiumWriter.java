@@ -148,11 +148,7 @@ public class ArcTypeCesiumWriter extends CesiumPropertyWriter<ArcTypeCesiumWrite
 
     @Nonnull
     private final Lazy<CesiumArcTypeValuePropertyAdaptor<ArcTypeCesiumWriter>> createAsArcType() {
-        return new Lazy<CesiumArcTypeValuePropertyAdaptor<ArcTypeCesiumWriter>>(new Func1<CesiumArcTypeValuePropertyAdaptor<ArcTypeCesiumWriter>>(this, "createArcType") {
-            public CesiumArcTypeValuePropertyAdaptor<ArcTypeCesiumWriter> invoke() {
-                return createArcType();
-            }
-        }, false);
+        return new Lazy<CesiumArcTypeValuePropertyAdaptor<ArcTypeCesiumWriter>>(Func1.<CesiumArcTypeValuePropertyAdaptor<ArcTypeCesiumWriter>> of(this::createArcType, this, "createArcType"), false);
     }
 
     @Nonnull
@@ -171,11 +167,8 @@ public class ArcTypeCesiumWriter extends CesiumPropertyWriter<ArcTypeCesiumWrite
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<ArcTypeCesiumWriter>> createAsReference() {
-        return new Lazy<CesiumReferenceValuePropertyAdaptor<ArcTypeCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<ArcTypeCesiumWriter>>(this, "createReference") {
-            public CesiumReferenceValuePropertyAdaptor<ArcTypeCesiumWriter> invoke() {
-                return createReference();
-            }
-        }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<ArcTypeCesiumWriter>>(Func1.<CesiumReferenceValuePropertyAdaptor<ArcTypeCesiumWriter>> of(this::createReference, this, "createReference"),
+                false);
     }
 
     @Nonnull

@@ -46,29 +46,21 @@ public class ImageMaterialCesiumWriter extends CesiumPropertyWriter<ImageMateria
     @Nonnull
     public static final String TransparentPropertyName = "transparent";
     @Nonnull
-    private final Lazy<UriCesiumWriter> m_image = new Lazy<UriCesiumWriter>(new Func1<UriCesiumWriter>() {
-        public UriCesiumWriter invoke() {
-            return new UriCesiumWriter(ImagePropertyName);
-        }
-    }, false);
+    private final Lazy<UriCesiumWriter> m_image = new Lazy<UriCesiumWriter>(Func1.<UriCesiumWriter> of(() -> {
+        return new UriCesiumWriter(ImagePropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<RepeatCesiumWriter> m_repeat = new Lazy<RepeatCesiumWriter>(new Func1<RepeatCesiumWriter>() {
-        public RepeatCesiumWriter invoke() {
-            return new RepeatCesiumWriter(RepeatPropertyName);
-        }
-    }, false);
+    private final Lazy<RepeatCesiumWriter> m_repeat = new Lazy<RepeatCesiumWriter>(Func1.<RepeatCesiumWriter> of(() -> {
+        return new RepeatCesiumWriter(RepeatPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(new Func1<ColorCesiumWriter>() {
-        public ColorCesiumWriter invoke() {
-            return new ColorCesiumWriter(ColorPropertyName);
-        }
-    }, false);
+    private final Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(Func1.<ColorCesiumWriter> of(() -> {
+        return new ColorCesiumWriter(ColorPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<BooleanCesiumWriter> m_transparent = new Lazy<BooleanCesiumWriter>(new Func1<BooleanCesiumWriter>() {
-        public BooleanCesiumWriter invoke() {
-            return new BooleanCesiumWriter(TransparentPropertyName);
-        }
-    }, false);
+    private final Lazy<BooleanCesiumWriter> m_transparent = new Lazy<BooleanCesiumWriter>(Func1.<BooleanCesiumWriter> of(() -> {
+        return new BooleanCesiumWriter(TransparentPropertyName);
+    }), false);
 
     /**
     * Initializes a new instance.

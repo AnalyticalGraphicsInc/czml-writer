@@ -50,11 +50,9 @@ public class CesiumInterpolatableWriterAdaptor<TFrom extends ICesiumPropertyWrit
         m_writeValueCallback = writeValueCallback;
         m_writeSamplesCallback = writeSamplesCallback;
         m_writeDeleteValueCallback = writeDeleteValueCallback;
-        m_interval = new Lazy<CesiumInterpolatableWriterAdaptor<TFrom, TValue>>(new Func1<CesiumInterpolatableWriterAdaptor<TFrom, TValue>>() {
-            public CesiumInterpolatableWriterAdaptor<TFrom, TValue> invoke() {
-                return new CesiumInterpolatableWriterAdaptor<TFrom, TValue>((TFrom) m_parent.getIntervalWriter(), m_writeValueCallback, m_writeSamplesCallback, m_writeDeleteValueCallback);
-            }
-        }, false);
+        m_interval = new Lazy<CesiumInterpolatableWriterAdaptor<TFrom, TValue>>(Func1.<CesiumInterpolatableWriterAdaptor<TFrom, TValue>> of(() -> {
+            return new CesiumInterpolatableWriterAdaptor<TFrom, TValue>((TFrom) m_parent.getIntervalWriter(), m_writeValueCallback, m_writeSamplesCallback, m_writeDeleteValueCallback);
+        }), false);
     }
 
     /**

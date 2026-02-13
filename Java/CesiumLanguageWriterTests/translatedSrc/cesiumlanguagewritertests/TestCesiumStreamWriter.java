@@ -56,11 +56,9 @@ public class TestCesiumStreamWriter {
     @Test
     public final void multipleCallsToNewPacketWithoutCloseThrowInvalidOperationException() {
         PacketCesiumWriter unused = m_writer.openPacket(m_outputStream);
-        IllegalStateException exception = AssertHelper.<IllegalStateException> assertThrows(new TypeLiteral<IllegalStateException>() {}, new Action() {
-            public void invoke() {
-                m_writer.openPacket(m_outputStream);
-            }
-        });
+        IllegalStateException exception = AssertHelper.<IllegalStateException> assertThrows(new TypeLiteral<IllegalStateException>() {}, Action.of(() -> {
+            m_writer.openPacket(m_outputStream);
+        }));
         AssertHelper.assertStringContains("already opened", exception.getMessage());
     }
 

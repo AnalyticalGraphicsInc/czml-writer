@@ -223,11 +223,8 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
     @Nonnull
     private final Lazy<CesiumUnitQuaternionValuePropertyAdaptor<OrientationCesiumWriter>> createAsUnitQuaternion() {
-        return new Lazy<CesiumUnitQuaternionValuePropertyAdaptor<OrientationCesiumWriter>>(new Func1<CesiumUnitQuaternionValuePropertyAdaptor<OrientationCesiumWriter>>(this, "createUnitQuaternion") {
-            public CesiumUnitQuaternionValuePropertyAdaptor<OrientationCesiumWriter> invoke() {
-                return createUnitQuaternion();
-            }
-        }, false);
+        return new Lazy<CesiumUnitQuaternionValuePropertyAdaptor<OrientationCesiumWriter>>(
+                Func1.<CesiumUnitQuaternionValuePropertyAdaptor<OrientationCesiumWriter>> of(this::createUnitQuaternion, this, "createUnitQuaternion"), false);
     }
 
     @Nonnull
@@ -246,11 +243,8 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<OrientationCesiumWriter>> createAsReference() {
-        return new Lazy<CesiumReferenceValuePropertyAdaptor<OrientationCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<OrientationCesiumWriter>>(this, "createReference") {
-            public CesiumReferenceValuePropertyAdaptor<OrientationCesiumWriter> invoke() {
-                return createReference();
-            }
-        }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<OrientationCesiumWriter>>(
+                Func1.<CesiumReferenceValuePropertyAdaptor<OrientationCesiumWriter>> of(this::createReference, this, "createReference"), false);
     }
 
     @Nonnull
@@ -270,11 +264,7 @@ public class OrientationCesiumWriter extends CesiumInterpolatablePropertyWriter<
     @Nonnull
     private final Lazy<CesiumVelocityReferenceValuePropertyAdaptor<OrientationCesiumWriter>> createAsVelocityReference() {
         return new Lazy<CesiumVelocityReferenceValuePropertyAdaptor<OrientationCesiumWriter>>(
-                new Func1<CesiumVelocityReferenceValuePropertyAdaptor<OrientationCesiumWriter>>(this, "createVelocityReference") {
-                    public CesiumVelocityReferenceValuePropertyAdaptor<OrientationCesiumWriter> invoke() {
-                        return createVelocityReference();
-                    }
-                }, false);
+                Func1.<CesiumVelocityReferenceValuePropertyAdaptor<OrientationCesiumWriter>> of(this::createVelocityReference, this, "createVelocityReference"), false);
     }
 
     @Nonnull

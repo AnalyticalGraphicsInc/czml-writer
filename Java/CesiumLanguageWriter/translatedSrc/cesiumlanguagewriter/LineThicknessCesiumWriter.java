@@ -177,11 +177,8 @@ public class LineThicknessCesiumWriter extends CesiumInterpolatablePropertyWrite
 
     @Nonnull
     private final Lazy<CesiumCartesian2ValuePropertyAdaptor<LineThicknessCesiumWriter>> createAsCartesian2() {
-        return new Lazy<CesiumCartesian2ValuePropertyAdaptor<LineThicknessCesiumWriter>>(new Func1<CesiumCartesian2ValuePropertyAdaptor<LineThicknessCesiumWriter>>(this, "createCartesian2") {
-            public CesiumCartesian2ValuePropertyAdaptor<LineThicknessCesiumWriter> invoke() {
-                return createCartesian2();
-            }
-        }, false);
+        return new Lazy<CesiumCartesian2ValuePropertyAdaptor<LineThicknessCesiumWriter>>(
+                Func1.<CesiumCartesian2ValuePropertyAdaptor<LineThicknessCesiumWriter>> of(this::createCartesian2, this, "createCartesian2"), false);
     }
 
     @Nonnull
@@ -200,11 +197,8 @@ public class LineThicknessCesiumWriter extends CesiumInterpolatablePropertyWrite
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<LineThicknessCesiumWriter>> createAsReference() {
-        return new Lazy<CesiumReferenceValuePropertyAdaptor<LineThicknessCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<LineThicknessCesiumWriter>>(this, "createReference") {
-            public CesiumReferenceValuePropertyAdaptor<LineThicknessCesiumWriter> invoke() {
-                return createReference();
-            }
-        }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<LineThicknessCesiumWriter>>(
+                Func1.<CesiumReferenceValuePropertyAdaptor<LineThicknessCesiumWriter>> of(this::createReference, this, "createReference"), false);
     }
 
     @Nonnull

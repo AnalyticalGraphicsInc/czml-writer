@@ -190,11 +190,9 @@ public class TestUnitCartesian {
     */
     @Test
     public final void testFromZero() {
-        AssertHelper.<ArithmeticException> assertThrows(new TypeLiteral<ArithmeticException>() {}, new Action() {
-            public void invoke() {
-                UnitCartesian unused = new UnitCartesian(Cartesian.getZero());
-            }
-        });
+        AssertHelper.<ArithmeticException> assertThrows(new TypeLiteral<ArithmeticException>() {}, Action.of(() -> {
+            UnitCartesian unused = new UnitCartesian(Cartesian.getZero());
+        }));
     }
 
     /**
@@ -203,11 +201,9 @@ public class TestUnitCartesian {
     */
     @Test
     public final void testFromInfinity() {
-        AssertHelper.<NotFiniteNumberException> assertThrows(new TypeLiteral<NotFiniteNumberException>() {}, new Action() {
-            public void invoke() {
-                UnitCartesian unused = new UnitCartesian(Double.POSITIVE_INFINITY, 0.0, 0.0);
-            }
-        });
+        AssertHelper.<NotFiniteNumberException> assertThrows(new TypeLiteral<NotFiniteNumberException>() {}, Action.of(() -> {
+            UnitCartesian unused = new UnitCartesian(Double.POSITIVE_INFINITY, 0.0, 0.0);
+        }));
     }
 
     /**

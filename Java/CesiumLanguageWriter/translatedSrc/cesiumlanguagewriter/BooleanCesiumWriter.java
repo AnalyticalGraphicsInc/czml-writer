@@ -148,11 +148,7 @@ public class BooleanCesiumWriter extends CesiumPropertyWriter<BooleanCesiumWrite
 
     @Nonnull
     private final Lazy<CesiumBooleanValuePropertyAdaptor<BooleanCesiumWriter>> createAsBoolean() {
-        return new Lazy<CesiumBooleanValuePropertyAdaptor<BooleanCesiumWriter>>(new Func1<CesiumBooleanValuePropertyAdaptor<BooleanCesiumWriter>>(this, "createBoolean") {
-            public CesiumBooleanValuePropertyAdaptor<BooleanCesiumWriter> invoke() {
-                return createBoolean();
-            }
-        }, false);
+        return new Lazy<CesiumBooleanValuePropertyAdaptor<BooleanCesiumWriter>>(Func1.<CesiumBooleanValuePropertyAdaptor<BooleanCesiumWriter>> of(this::createBoolean, this, "createBoolean"), false);
     }
 
     @Nonnull
@@ -171,11 +167,8 @@ public class BooleanCesiumWriter extends CesiumPropertyWriter<BooleanCesiumWrite
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<BooleanCesiumWriter>> createAsReference() {
-        return new Lazy<CesiumReferenceValuePropertyAdaptor<BooleanCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<BooleanCesiumWriter>>(this, "createReference") {
-            public CesiumReferenceValuePropertyAdaptor<BooleanCesiumWriter> invoke() {
-                return createReference();
-            }
-        }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<BooleanCesiumWriter>>(Func1.<CesiumReferenceValuePropertyAdaptor<BooleanCesiumWriter>> of(this::createReference, this, "createReference"),
+                false);
     }
 
     @Nonnull

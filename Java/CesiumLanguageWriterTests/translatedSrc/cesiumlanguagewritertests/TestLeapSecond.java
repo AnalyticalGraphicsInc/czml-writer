@@ -37,11 +37,9 @@ public class TestLeapSecond {
 
     @Test
     public final void testConstructorRequiresUTC() {
-        ArgumentException exception = AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, new Action() {
-            public void invoke() {
-                LeapSecond unused = new LeapSecond(new JulianDate(2451545.0, TimeStandard.INTERNATIONAL_ATOMIC_TIME), 100.0);
-            }
-        });
+        ArgumentException exception = AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, Action.of(() -> {
+            LeapSecond unused = new LeapSecond(new JulianDate(2451545.0, TimeStandard.INTERNATIONAL_ATOMIC_TIME), 100.0);
+        }));
         AssertHelper.assertStringContains("The given date must be in the UTC time standard", exception.getMessage());
     }
 

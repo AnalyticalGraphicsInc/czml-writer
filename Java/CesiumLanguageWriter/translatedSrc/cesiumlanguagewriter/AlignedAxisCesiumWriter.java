@@ -265,11 +265,8 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
     @Nonnull
     private final Lazy<CesiumUnitCartesian3ValuePropertyAdaptor<AlignedAxisCesiumWriter>> createAsUnitCartesian() {
-        return new Lazy<CesiumUnitCartesian3ValuePropertyAdaptor<AlignedAxisCesiumWriter>>(new Func1<CesiumUnitCartesian3ValuePropertyAdaptor<AlignedAxisCesiumWriter>>(this, "createUnitCartesian3") {
-            public CesiumUnitCartesian3ValuePropertyAdaptor<AlignedAxisCesiumWriter> invoke() {
-                return createUnitCartesian3();
-            }
-        }, false);
+        return new Lazy<CesiumUnitCartesian3ValuePropertyAdaptor<AlignedAxisCesiumWriter>>(
+                Func1.<CesiumUnitCartesian3ValuePropertyAdaptor<AlignedAxisCesiumWriter>> of(this::createUnitCartesian3, this, "createUnitCartesian3"), false);
     }
 
     @Nonnull
@@ -288,11 +285,8 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
     @Nonnull
     private final Lazy<CesiumUnitSphericalValuePropertyAdaptor<AlignedAxisCesiumWriter>> createAsUnitSpherical() {
-        return new Lazy<CesiumUnitSphericalValuePropertyAdaptor<AlignedAxisCesiumWriter>>(new Func1<CesiumUnitSphericalValuePropertyAdaptor<AlignedAxisCesiumWriter>>(this, "createUnitSpherical") {
-            public CesiumUnitSphericalValuePropertyAdaptor<AlignedAxisCesiumWriter> invoke() {
-                return createUnitSpherical();
-            }
-        }, false);
+        return new Lazy<CesiumUnitSphericalValuePropertyAdaptor<AlignedAxisCesiumWriter>>(
+                Func1.<CesiumUnitSphericalValuePropertyAdaptor<AlignedAxisCesiumWriter>> of(this::createUnitSpherical, this, "createUnitSpherical"), false);
     }
 
     @Nonnull
@@ -311,11 +305,8 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<AlignedAxisCesiumWriter>> createAsReference() {
-        return new Lazy<CesiumReferenceValuePropertyAdaptor<AlignedAxisCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<AlignedAxisCesiumWriter>>(this, "createReference") {
-            public CesiumReferenceValuePropertyAdaptor<AlignedAxisCesiumWriter> invoke() {
-                return createReference();
-            }
-        }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<AlignedAxisCesiumWriter>>(
+                Func1.<CesiumReferenceValuePropertyAdaptor<AlignedAxisCesiumWriter>> of(this::createReference, this, "createReference"), false);
     }
 
     @Nonnull
@@ -335,11 +326,7 @@ public class AlignedAxisCesiumWriter extends CesiumInterpolatablePropertyWriter<
     @Nonnull
     private final Lazy<CesiumVelocityReferenceValuePropertyAdaptor<AlignedAxisCesiumWriter>> createAsVelocityReference() {
         return new Lazy<CesiumVelocityReferenceValuePropertyAdaptor<AlignedAxisCesiumWriter>>(
-                new Func1<CesiumVelocityReferenceValuePropertyAdaptor<AlignedAxisCesiumWriter>>(this, "createVelocityReference") {
-                    public CesiumVelocityReferenceValuePropertyAdaptor<AlignedAxisCesiumWriter> invoke() {
-                        return createVelocityReference();
-                    }
-                }, false);
+                Func1.<CesiumVelocityReferenceValuePropertyAdaptor<AlignedAxisCesiumWriter>> of(this::createVelocityReference, this, "createVelocityReference"), false);
     }
 
     @Nonnull

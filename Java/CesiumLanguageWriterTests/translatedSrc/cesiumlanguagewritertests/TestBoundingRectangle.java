@@ -61,11 +61,9 @@ public class TestBoundingRectangle {
     */
     @Test
     public final void testInitializationFromBadElementsWidth() {
-        AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, new Action() {
-            public void invoke() {
-                BoundingRectangle unused = new BoundingRectangle(2.0, 2.0, 1.0, 3.0);
-            }
-        });
+        AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, Action.of(() -> {
+            BoundingRectangle unused = new BoundingRectangle(2.0, 2.0, 1.0, 3.0);
+        }));
     }
 
     /**
@@ -73,11 +71,9 @@ public class TestBoundingRectangle {
     */
     @Test
     public final void testInitializationFromBadElementsHeight() {
-        AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, new Action() {
-            public void invoke() {
-                BoundingRectangle unused = new BoundingRectangle(2.0, 2.0, 3.0, 1.0);
-            }
-        });
+        AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, Action.of(() -> {
+            BoundingRectangle unused = new BoundingRectangle(2.0, 2.0, 3.0, 1.0);
+        }));
     }
 
     /**

@@ -37,23 +37,17 @@ public class CheckerboardMaterialCesiumWriter extends CesiumPropertyWriter<Check
     @Nonnull
     public static final String RepeatPropertyName = "repeat";
     @Nonnull
-    private final Lazy<ColorCesiumWriter> m_evenColor = new Lazy<ColorCesiumWriter>(new Func1<ColorCesiumWriter>() {
-        public ColorCesiumWriter invoke() {
-            return new ColorCesiumWriter(EvenColorPropertyName);
-        }
-    }, false);
+    private final Lazy<ColorCesiumWriter> m_evenColor = new Lazy<ColorCesiumWriter>(Func1.<ColorCesiumWriter> of(() -> {
+        return new ColorCesiumWriter(EvenColorPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<ColorCesiumWriter> m_oddColor = new Lazy<ColorCesiumWriter>(new Func1<ColorCesiumWriter>() {
-        public ColorCesiumWriter invoke() {
-            return new ColorCesiumWriter(OddColorPropertyName);
-        }
-    }, false);
+    private final Lazy<ColorCesiumWriter> m_oddColor = new Lazy<ColorCesiumWriter>(Func1.<ColorCesiumWriter> of(() -> {
+        return new ColorCesiumWriter(OddColorPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<RepeatCesiumWriter> m_repeat = new Lazy<RepeatCesiumWriter>(new Func1<RepeatCesiumWriter>() {
-        public RepeatCesiumWriter invoke() {
-            return new RepeatCesiumWriter(RepeatPropertyName);
-        }
-    }, false);
+    private final Lazy<RepeatCesiumWriter> m_repeat = new Lazy<RepeatCesiumWriter>(Func1.<RepeatCesiumWriter> of(() -> {
+        return new RepeatCesiumWriter(RepeatPropertyName);
+    }), false);
 
     /**
     * Initializes a new instance.

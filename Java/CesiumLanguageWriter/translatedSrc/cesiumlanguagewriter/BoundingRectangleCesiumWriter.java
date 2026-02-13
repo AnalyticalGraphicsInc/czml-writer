@@ -169,11 +169,7 @@ public class BoundingRectangleCesiumWriter extends CesiumInterpolatablePropertyW
     @Nonnull
     private final Lazy<CesiumBoundingRectangleValuePropertyAdaptor<BoundingRectangleCesiumWriter>> createAsBoundingRectangle() {
         return new Lazy<CesiumBoundingRectangleValuePropertyAdaptor<BoundingRectangleCesiumWriter>>(
-                new Func1<CesiumBoundingRectangleValuePropertyAdaptor<BoundingRectangleCesiumWriter>>(this, "createBoundingRectangle") {
-                    public CesiumBoundingRectangleValuePropertyAdaptor<BoundingRectangleCesiumWriter> invoke() {
-                        return createBoundingRectangle();
-                    }
-                }, false);
+                Func1.<CesiumBoundingRectangleValuePropertyAdaptor<BoundingRectangleCesiumWriter>> of(this::createBoundingRectangle, this, "createBoundingRectangle"), false);
     }
 
     @Nonnull
@@ -192,11 +188,8 @@ public class BoundingRectangleCesiumWriter extends CesiumInterpolatablePropertyW
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<BoundingRectangleCesiumWriter>> createAsReference() {
-        return new Lazy<CesiumReferenceValuePropertyAdaptor<BoundingRectangleCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<BoundingRectangleCesiumWriter>>(this, "createReference") {
-            public CesiumReferenceValuePropertyAdaptor<BoundingRectangleCesiumWriter> invoke() {
-                return createReference();
-            }
-        }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<BoundingRectangleCesiumWriter>>(
+                Func1.<CesiumReferenceValuePropertyAdaptor<BoundingRectangleCesiumWriter>> of(this::createReference, this, "createReference"), false);
     }
 
     @Nonnull

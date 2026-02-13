@@ -110,11 +110,8 @@ public class DoubleListCesiumWriter extends CesiumPropertyWriter<DoubleListCesiu
 
     @Nonnull
     private final Lazy<CesiumDoubleListValuePropertyAdaptor<DoubleListCesiumWriter>> createAsArray() {
-        return new Lazy<CesiumDoubleListValuePropertyAdaptor<DoubleListCesiumWriter>>(new Func1<CesiumDoubleListValuePropertyAdaptor<DoubleListCesiumWriter>>(this, "createDoubleList") {
-            public CesiumDoubleListValuePropertyAdaptor<DoubleListCesiumWriter> invoke() {
-                return createDoubleList();
-            }
-        }, false);
+        return new Lazy<CesiumDoubleListValuePropertyAdaptor<DoubleListCesiumWriter>>(
+                Func1.<CesiumDoubleListValuePropertyAdaptor<DoubleListCesiumWriter>> of(this::createDoubleList, this, "createDoubleList"), false);
     }
 
     @Nonnull
@@ -133,11 +130,8 @@ public class DoubleListCesiumWriter extends CesiumPropertyWriter<DoubleListCesiu
 
     @Nonnull
     private final Lazy<CesiumReferenceListValuePropertyAdaptor<DoubleListCesiumWriter>> createAsReferences() {
-        return new Lazy<CesiumReferenceListValuePropertyAdaptor<DoubleListCesiumWriter>>(new Func1<CesiumReferenceListValuePropertyAdaptor<DoubleListCesiumWriter>>(this, "createReferenceList") {
-            public CesiumReferenceListValuePropertyAdaptor<DoubleListCesiumWriter> invoke() {
-                return createReferenceList();
-            }
-        }, false);
+        return new Lazy<CesiumReferenceListValuePropertyAdaptor<DoubleListCesiumWriter>>(
+                Func1.<CesiumReferenceListValuePropertyAdaptor<DoubleListCesiumWriter>> of(this::createReferenceList, this, "createReferenceList"), false);
     }
 
     @Nonnull

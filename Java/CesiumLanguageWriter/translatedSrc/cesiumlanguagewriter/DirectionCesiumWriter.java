@@ -294,11 +294,8 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
     @Nonnull
     private final Lazy<CesiumSphericalValuePropertyAdaptor<DirectionCesiumWriter>> createAsSpherical() {
-        return new Lazy<CesiumSphericalValuePropertyAdaptor<DirectionCesiumWriter>>(new Func1<CesiumSphericalValuePropertyAdaptor<DirectionCesiumWriter>>(this, "createSpherical") {
-            public CesiumSphericalValuePropertyAdaptor<DirectionCesiumWriter> invoke() {
-                return createSpherical();
-            }
-        }, false);
+        return new Lazy<CesiumSphericalValuePropertyAdaptor<DirectionCesiumWriter>>(
+                Func1.<CesiumSphericalValuePropertyAdaptor<DirectionCesiumWriter>> of(this::createSpherical, this, "createSpherical"), false);
     }
 
     @Nonnull
@@ -317,11 +314,8 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
     @Nonnull
     private final Lazy<CesiumUnitSphericalValuePropertyAdaptor<DirectionCesiumWriter>> createAsUnitSpherical() {
-        return new Lazy<CesiumUnitSphericalValuePropertyAdaptor<DirectionCesiumWriter>>(new Func1<CesiumUnitSphericalValuePropertyAdaptor<DirectionCesiumWriter>>(this, "createUnitSpherical") {
-            public CesiumUnitSphericalValuePropertyAdaptor<DirectionCesiumWriter> invoke() {
-                return createUnitSpherical();
-            }
-        }, false);
+        return new Lazy<CesiumUnitSphericalValuePropertyAdaptor<DirectionCesiumWriter>>(
+                Func1.<CesiumUnitSphericalValuePropertyAdaptor<DirectionCesiumWriter>> of(this::createUnitSpherical, this, "createUnitSpherical"), false);
     }
 
     @Nonnull
@@ -340,11 +334,8 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
     @Nonnull
     private final Lazy<CesiumCartesian3ValuePropertyAdaptor<DirectionCesiumWriter>> createAsCartesian() {
-        return new Lazy<CesiumCartesian3ValuePropertyAdaptor<DirectionCesiumWriter>>(new Func1<CesiumCartesian3ValuePropertyAdaptor<DirectionCesiumWriter>>(this, "createCartesian3") {
-            public CesiumCartesian3ValuePropertyAdaptor<DirectionCesiumWriter> invoke() {
-                return createCartesian3();
-            }
-        }, false);
+        return new Lazy<CesiumCartesian3ValuePropertyAdaptor<DirectionCesiumWriter>>(
+                Func1.<CesiumCartesian3ValuePropertyAdaptor<DirectionCesiumWriter>> of(this::createCartesian3, this, "createCartesian3"), false);
     }
 
     @Nonnull
@@ -363,11 +354,8 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
     @Nonnull
     private final Lazy<CesiumUnitCartesian3ValuePropertyAdaptor<DirectionCesiumWriter>> createAsUnitCartesian() {
-        return new Lazy<CesiumUnitCartesian3ValuePropertyAdaptor<DirectionCesiumWriter>>(new Func1<CesiumUnitCartesian3ValuePropertyAdaptor<DirectionCesiumWriter>>(this, "createUnitCartesian3") {
-            public CesiumUnitCartesian3ValuePropertyAdaptor<DirectionCesiumWriter> invoke() {
-                return createUnitCartesian3();
-            }
-        }, false);
+        return new Lazy<CesiumUnitCartesian3ValuePropertyAdaptor<DirectionCesiumWriter>>(
+                Func1.<CesiumUnitCartesian3ValuePropertyAdaptor<DirectionCesiumWriter>> of(this::createUnitCartesian3, this, "createUnitCartesian3"), false);
     }
 
     @Nonnull
@@ -386,11 +374,8 @@ public class DirectionCesiumWriter extends CesiumInterpolatablePropertyWriter<Di
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<DirectionCesiumWriter>> createAsReference() {
-        return new Lazy<CesiumReferenceValuePropertyAdaptor<DirectionCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<DirectionCesiumWriter>>(this, "createReference") {
-            public CesiumReferenceValuePropertyAdaptor<DirectionCesiumWriter> invoke() {
-                return createReference();
-            }
-        }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<DirectionCesiumWriter>>(
+                Func1.<CesiumReferenceValuePropertyAdaptor<DirectionCesiumWriter>> of(this::createReference, this, "createReference"), false);
     }
 
     @Nonnull

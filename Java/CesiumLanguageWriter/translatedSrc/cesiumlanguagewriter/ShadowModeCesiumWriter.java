@@ -149,11 +149,8 @@ public class ShadowModeCesiumWriter extends CesiumPropertyWriter<ShadowModeCesiu
 
     @Nonnull
     private final Lazy<CesiumShadowModeValuePropertyAdaptor<ShadowModeCesiumWriter>> createAsShadowMode() {
-        return new Lazy<CesiumShadowModeValuePropertyAdaptor<ShadowModeCesiumWriter>>(new Func1<CesiumShadowModeValuePropertyAdaptor<ShadowModeCesiumWriter>>(this, "createShadowMode") {
-            public CesiumShadowModeValuePropertyAdaptor<ShadowModeCesiumWriter> invoke() {
-                return createShadowMode();
-            }
-        }, false);
+        return new Lazy<CesiumShadowModeValuePropertyAdaptor<ShadowModeCesiumWriter>>(
+                Func1.<CesiumShadowModeValuePropertyAdaptor<ShadowModeCesiumWriter>> of(this::createShadowMode, this, "createShadowMode"), false);
     }
 
     @Nonnull
@@ -172,11 +169,8 @@ public class ShadowModeCesiumWriter extends CesiumPropertyWriter<ShadowModeCesiu
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<ShadowModeCesiumWriter>> createAsReference() {
-        return new Lazy<CesiumReferenceValuePropertyAdaptor<ShadowModeCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<ShadowModeCesiumWriter>>(this, "createReference") {
-            public CesiumReferenceValuePropertyAdaptor<ShadowModeCesiumWriter> invoke() {
-                return createReference();
-            }
-        }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<ShadowModeCesiumWriter>>(
+                Func1.<CesiumReferenceValuePropertyAdaptor<ShadowModeCesiumWriter>> of(this::createReference, this, "createReference"), false);
     }
 
     @Nonnull

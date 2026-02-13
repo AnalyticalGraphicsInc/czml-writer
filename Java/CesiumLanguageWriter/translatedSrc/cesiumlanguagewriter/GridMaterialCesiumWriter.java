@@ -50,35 +50,25 @@ public class GridMaterialCesiumWriter extends CesiumPropertyWriter<GridMaterialC
     @Nonnull
     public static final String LineOffsetPropertyName = "lineOffset";
     @Nonnull
-    private final Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(new Func1<ColorCesiumWriter>() {
-        public ColorCesiumWriter invoke() {
-            return new ColorCesiumWriter(ColorPropertyName);
-        }
-    }, false);
+    private final Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(Func1.<ColorCesiumWriter> of(() -> {
+        return new ColorCesiumWriter(ColorPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<DoubleCesiumWriter> m_cellAlpha = new Lazy<DoubleCesiumWriter>(new Func1<DoubleCesiumWriter>() {
-        public DoubleCesiumWriter invoke() {
-            return new DoubleCesiumWriter(CellAlphaPropertyName);
-        }
-    }, false);
+    private final Lazy<DoubleCesiumWriter> m_cellAlpha = new Lazy<DoubleCesiumWriter>(Func1.<DoubleCesiumWriter> of(() -> {
+        return new DoubleCesiumWriter(CellAlphaPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<LineCountCesiumWriter> m_lineCount = new Lazy<LineCountCesiumWriter>(new Func1<LineCountCesiumWriter>() {
-        public LineCountCesiumWriter invoke() {
-            return new LineCountCesiumWriter(LineCountPropertyName);
-        }
-    }, false);
+    private final Lazy<LineCountCesiumWriter> m_lineCount = new Lazy<LineCountCesiumWriter>(Func1.<LineCountCesiumWriter> of(() -> {
+        return new LineCountCesiumWriter(LineCountPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<LineThicknessCesiumWriter> m_lineThickness = new Lazy<LineThicknessCesiumWriter>(new Func1<LineThicknessCesiumWriter>() {
-        public LineThicknessCesiumWriter invoke() {
-            return new LineThicknessCesiumWriter(LineThicknessPropertyName);
-        }
-    }, false);
+    private final Lazy<LineThicknessCesiumWriter> m_lineThickness = new Lazy<LineThicknessCesiumWriter>(Func1.<LineThicknessCesiumWriter> of(() -> {
+        return new LineThicknessCesiumWriter(LineThicknessPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<LineOffsetCesiumWriter> m_lineOffset = new Lazy<LineOffsetCesiumWriter>(new Func1<LineOffsetCesiumWriter>() {
-        public LineOffsetCesiumWriter invoke() {
-            return new LineOffsetCesiumWriter(LineOffsetPropertyName);
-        }
-    }, false);
+    private final Lazy<LineOffsetCesiumWriter> m_lineOffset = new Lazy<LineOffsetCesiumWriter>(Func1.<LineOffsetCesiumWriter> of(() -> {
+        return new LineOffsetCesiumWriter(LineOffsetPropertyName);
+    }), false);
 
     /**
     * Initializes a new instance.

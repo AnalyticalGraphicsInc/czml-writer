@@ -232,12 +232,9 @@ public class RectangleCoordinatesCesiumWriter extends CesiumInterpolatableProper
 
     @Nonnull
     private final Lazy<CesiumCartographicRectangleRadiansValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>> createAsWsen() {
-        return new Lazy<CesiumCartographicRectangleRadiansValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>>(
-                new Func1<CesiumCartographicRectangleRadiansValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>>(this, "createCartographicRectangleRadians") {
-                    public CesiumCartographicRectangleRadiansValuePropertyAdaptor<RectangleCoordinatesCesiumWriter> invoke() {
-                        return createCartographicRectangleRadians();
-                    }
-                }, false);
+        return new Lazy<CesiumCartographicRectangleRadiansValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>>(Func1
+                .<CesiumCartographicRectangleRadiansValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>> of(this::createCartographicRectangleRadians, this, "createCartographicRectangleRadians"),
+                false);
     }
 
     @Nonnull
@@ -256,12 +253,9 @@ public class RectangleCoordinatesCesiumWriter extends CesiumInterpolatableProper
 
     @Nonnull
     private final Lazy<CesiumCartographicRectangleDegreesValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>> createAsWsenDegrees() {
-        return new Lazy<CesiumCartographicRectangleDegreesValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>>(
-                new Func1<CesiumCartographicRectangleDegreesValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>>(this, "createCartographicRectangleDegrees") {
-                    public CesiumCartographicRectangleDegreesValuePropertyAdaptor<RectangleCoordinatesCesiumWriter> invoke() {
-                        return createCartographicRectangleDegrees();
-                    }
-                }, false);
+        return new Lazy<CesiumCartographicRectangleDegreesValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>>(Func1
+                .<CesiumCartographicRectangleDegreesValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>> of(this::createCartographicRectangleDegrees, this, "createCartographicRectangleDegrees"),
+                false);
     }
 
     @Nonnull
@@ -281,11 +275,7 @@ public class RectangleCoordinatesCesiumWriter extends CesiumInterpolatableProper
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>> createAsReference() {
         return new Lazy<CesiumReferenceValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>>(
-                new Func1<CesiumReferenceValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>>(this, "createReference") {
-                    public CesiumReferenceValuePropertyAdaptor<RectangleCoordinatesCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+                Func1.<CesiumReferenceValuePropertyAdaptor<RectangleCoordinatesCesiumWriter>> of(this::createReference, this, "createReference"), false);
     }
 
     @Nonnull

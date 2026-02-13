@@ -135,125 +135,85 @@ public class BillboardCesiumWriter extends CesiumPropertyWriter<BillboardCesiumW
     @Nonnull
     public static final String DisableDepthTestDistancePropertyName = "disableDepthTestDistance";
     @Nonnull
-    private final Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(new Func1<BooleanCesiumWriter>() {
-        public BooleanCesiumWriter invoke() {
-            return new BooleanCesiumWriter(ShowPropertyName);
-        }
-    }, false);
+    private final Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(Func1.<BooleanCesiumWriter> of(() -> {
+        return new BooleanCesiumWriter(ShowPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<UriCesiumWriter> m_image = new Lazy<UriCesiumWriter>(new Func1<UriCesiumWriter>() {
-        public UriCesiumWriter invoke() {
-            return new UriCesiumWriter(ImagePropertyName);
-        }
-    }, false);
+    private final Lazy<UriCesiumWriter> m_image = new Lazy<UriCesiumWriter>(Func1.<UriCesiumWriter> of(() -> {
+        return new UriCesiumWriter(ImagePropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<DoubleCesiumWriter> m_scale = new Lazy<DoubleCesiumWriter>(new Func1<DoubleCesiumWriter>() {
-        public DoubleCesiumWriter invoke() {
-            return new DoubleCesiumWriter(ScalePropertyName);
-        }
-    }, false);
+    private final Lazy<DoubleCesiumWriter> m_scale = new Lazy<DoubleCesiumWriter>(Func1.<DoubleCesiumWriter> of(() -> {
+        return new DoubleCesiumWriter(ScalePropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<PixelOffsetCesiumWriter> m_pixelOffset = new Lazy<PixelOffsetCesiumWriter>(new Func1<PixelOffsetCesiumWriter>() {
-        public PixelOffsetCesiumWriter invoke() {
-            return new PixelOffsetCesiumWriter(PixelOffsetPropertyName);
-        }
-    }, false);
+    private final Lazy<PixelOffsetCesiumWriter> m_pixelOffset = new Lazy<PixelOffsetCesiumWriter>(Func1.<PixelOffsetCesiumWriter> of(() -> {
+        return new PixelOffsetCesiumWriter(PixelOffsetPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<EyeOffsetCesiumWriter> m_eyeOffset = new Lazy<EyeOffsetCesiumWriter>(new Func1<EyeOffsetCesiumWriter>() {
-        public EyeOffsetCesiumWriter invoke() {
-            return new EyeOffsetCesiumWriter(EyeOffsetPropertyName);
-        }
-    }, false);
+    private final Lazy<EyeOffsetCesiumWriter> m_eyeOffset = new Lazy<EyeOffsetCesiumWriter>(Func1.<EyeOffsetCesiumWriter> of(() -> {
+        return new EyeOffsetCesiumWriter(EyeOffsetPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<HorizontalOriginCesiumWriter> m_horizontalOrigin = new Lazy<HorizontalOriginCesiumWriter>(new Func1<HorizontalOriginCesiumWriter>() {
-        public HorizontalOriginCesiumWriter invoke() {
-            return new HorizontalOriginCesiumWriter(HorizontalOriginPropertyName);
-        }
-    }, false);
+    private final Lazy<HorizontalOriginCesiumWriter> m_horizontalOrigin = new Lazy<HorizontalOriginCesiumWriter>(Func1.<HorizontalOriginCesiumWriter> of(() -> {
+        return new HorizontalOriginCesiumWriter(HorizontalOriginPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<VerticalOriginCesiumWriter> m_verticalOrigin = new Lazy<VerticalOriginCesiumWriter>(new Func1<VerticalOriginCesiumWriter>() {
-        public VerticalOriginCesiumWriter invoke() {
-            return new VerticalOriginCesiumWriter(VerticalOriginPropertyName);
-        }
-    }, false);
+    private final Lazy<VerticalOriginCesiumWriter> m_verticalOrigin = new Lazy<VerticalOriginCesiumWriter>(Func1.<VerticalOriginCesiumWriter> of(() -> {
+        return new VerticalOriginCesiumWriter(VerticalOriginPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<HeightReferenceCesiumWriter> m_heightReference = new Lazy<HeightReferenceCesiumWriter>(new Func1<HeightReferenceCesiumWriter>() {
-        public HeightReferenceCesiumWriter invoke() {
-            return new HeightReferenceCesiumWriter(HeightReferencePropertyName);
-        }
-    }, false);
+    private final Lazy<HeightReferenceCesiumWriter> m_heightReference = new Lazy<HeightReferenceCesiumWriter>(Func1.<HeightReferenceCesiumWriter> of(() -> {
+        return new HeightReferenceCesiumWriter(HeightReferencePropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(new Func1<ColorCesiumWriter>() {
-        public ColorCesiumWriter invoke() {
-            return new ColorCesiumWriter(ColorPropertyName);
-        }
-    }, false);
+    private final Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(Func1.<ColorCesiumWriter> of(() -> {
+        return new ColorCesiumWriter(ColorPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<DoubleCesiumWriter> m_rotation = new Lazy<DoubleCesiumWriter>(new Func1<DoubleCesiumWriter>() {
-        public DoubleCesiumWriter invoke() {
-            return new DoubleCesiumWriter(RotationPropertyName);
-        }
-    }, false);
+    private final Lazy<DoubleCesiumWriter> m_rotation = new Lazy<DoubleCesiumWriter>(Func1.<DoubleCesiumWriter> of(() -> {
+        return new DoubleCesiumWriter(RotationPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<AlignedAxisCesiumWriter> m_alignedAxis = new Lazy<AlignedAxisCesiumWriter>(new Func1<AlignedAxisCesiumWriter>() {
-        public AlignedAxisCesiumWriter invoke() {
-            return new AlignedAxisCesiumWriter(AlignedAxisPropertyName);
-        }
-    }, false);
+    private final Lazy<AlignedAxisCesiumWriter> m_alignedAxis = new Lazy<AlignedAxisCesiumWriter>(Func1.<AlignedAxisCesiumWriter> of(() -> {
+        return new AlignedAxisCesiumWriter(AlignedAxisPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<BooleanCesiumWriter> m_sizeInMeters = new Lazy<BooleanCesiumWriter>(new Func1<BooleanCesiumWriter>() {
-        public BooleanCesiumWriter invoke() {
-            return new BooleanCesiumWriter(SizeInMetersPropertyName);
-        }
-    }, false);
+    private final Lazy<BooleanCesiumWriter> m_sizeInMeters = new Lazy<BooleanCesiumWriter>(Func1.<BooleanCesiumWriter> of(() -> {
+        return new BooleanCesiumWriter(SizeInMetersPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<DoubleCesiumWriter> m_width = new Lazy<DoubleCesiumWriter>(new Func1<DoubleCesiumWriter>() {
-        public DoubleCesiumWriter invoke() {
-            return new DoubleCesiumWriter(WidthPropertyName);
-        }
-    }, false);
+    private final Lazy<DoubleCesiumWriter> m_width = new Lazy<DoubleCesiumWriter>(Func1.<DoubleCesiumWriter> of(() -> {
+        return new DoubleCesiumWriter(WidthPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<DoubleCesiumWriter> m_height = new Lazy<DoubleCesiumWriter>(new Func1<DoubleCesiumWriter>() {
-        public DoubleCesiumWriter invoke() {
-            return new DoubleCesiumWriter(HeightPropertyName);
-        }
-    }, false);
+    private final Lazy<DoubleCesiumWriter> m_height = new Lazy<DoubleCesiumWriter>(Func1.<DoubleCesiumWriter> of(() -> {
+        return new DoubleCesiumWriter(HeightPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<NearFarScalarCesiumWriter> m_scaleByDistance = new Lazy<NearFarScalarCesiumWriter>(new Func1<NearFarScalarCesiumWriter>() {
-        public NearFarScalarCesiumWriter invoke() {
-            return new NearFarScalarCesiumWriter(ScaleByDistancePropertyName);
-        }
-    }, false);
+    private final Lazy<NearFarScalarCesiumWriter> m_scaleByDistance = new Lazy<NearFarScalarCesiumWriter>(Func1.<NearFarScalarCesiumWriter> of(() -> {
+        return new NearFarScalarCesiumWriter(ScaleByDistancePropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<NearFarScalarCesiumWriter> m_translucencyByDistance = new Lazy<NearFarScalarCesiumWriter>(new Func1<NearFarScalarCesiumWriter>() {
-        public NearFarScalarCesiumWriter invoke() {
-            return new NearFarScalarCesiumWriter(TranslucencyByDistancePropertyName);
-        }
-    }, false);
+    private final Lazy<NearFarScalarCesiumWriter> m_translucencyByDistance = new Lazy<NearFarScalarCesiumWriter>(Func1.<NearFarScalarCesiumWriter> of(() -> {
+        return new NearFarScalarCesiumWriter(TranslucencyByDistancePropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<NearFarScalarCesiumWriter> m_pixelOffsetScaleByDistance = new Lazy<NearFarScalarCesiumWriter>(new Func1<NearFarScalarCesiumWriter>() {
-        public NearFarScalarCesiumWriter invoke() {
-            return new NearFarScalarCesiumWriter(PixelOffsetScaleByDistancePropertyName);
-        }
-    }, false);
+    private final Lazy<NearFarScalarCesiumWriter> m_pixelOffsetScaleByDistance = new Lazy<NearFarScalarCesiumWriter>(Func1.<NearFarScalarCesiumWriter> of(() -> {
+        return new NearFarScalarCesiumWriter(PixelOffsetScaleByDistancePropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<BoundingRectangleCesiumWriter> m_imageSubRegion = new Lazy<BoundingRectangleCesiumWriter>(new Func1<BoundingRectangleCesiumWriter>() {
-        public BoundingRectangleCesiumWriter invoke() {
-            return new BoundingRectangleCesiumWriter(ImageSubRegionPropertyName);
-        }
-    }, false);
+    private final Lazy<BoundingRectangleCesiumWriter> m_imageSubRegion = new Lazy<BoundingRectangleCesiumWriter>(Func1.<BoundingRectangleCesiumWriter> of(() -> {
+        return new BoundingRectangleCesiumWriter(ImageSubRegionPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<DistanceDisplayConditionCesiumWriter> m_distanceDisplayCondition = new Lazy<DistanceDisplayConditionCesiumWriter>(new Func1<DistanceDisplayConditionCesiumWriter>() {
-        public DistanceDisplayConditionCesiumWriter invoke() {
-            return new DistanceDisplayConditionCesiumWriter(DistanceDisplayConditionPropertyName);
-        }
-    }, false);
+    private final Lazy<DistanceDisplayConditionCesiumWriter> m_distanceDisplayCondition = new Lazy<DistanceDisplayConditionCesiumWriter>(Func1.<DistanceDisplayConditionCesiumWriter> of(() -> {
+        return new DistanceDisplayConditionCesiumWriter(DistanceDisplayConditionPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<DoubleCesiumWriter> m_disableDepthTestDistance = new Lazy<DoubleCesiumWriter>(new Func1<DoubleCesiumWriter>() {
-        public DoubleCesiumWriter invoke() {
-            return new DoubleCesiumWriter(DisableDepthTestDistancePropertyName);
-        }
-    }, false);
+    private final Lazy<DoubleCesiumWriter> m_disableDepthTestDistance = new Lazy<DoubleCesiumWriter>(Func1.<DoubleCesiumWriter> of(() -> {
+        return new DoubleCesiumWriter(DisableDepthTestDistancePropertyName);
+    }), false);
 
     /**
     * Initializes a new instance.

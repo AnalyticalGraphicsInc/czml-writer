@@ -51,21 +51,17 @@ public class TestGregorianDate {
 
     @Test
     public final void cannotConstructWithInvalidTime() {
-        ArgumentException exception = AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, new Action() {
-            public void invoke() {
-                GregorianDate unused = new GregorianDate(2000, 1, 2, 24, 0, 0.0);
-            }
-        });
+        ArgumentException exception = AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, Action.of(() -> {
+            GregorianDate unused = new GregorianDate(2000, 1, 2, 24, 0, 0.0);
+        }));
         AssertHelper.assertStringContains("One or more of the hour, minute, and second arguments is outside of the acceptable range", exception.getMessage());
     }
 
     @Test
     public final void cannotConstructWithInvalidDate() {
-        ArgumentException exception = AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, new Action() {
-            public void invoke() {
-                GregorianDate unused = new GregorianDate(2006, 2, 29, 0, 0, 0.0);
-            }
-        });
+        ArgumentException exception = AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, Action.of(() -> {
+            GregorianDate unused = new GregorianDate(2006, 2, 29, 0, 0, 0.0);
+        }));
         AssertHelper.assertStringContains("One or more of the hour, minute, and second arguments is outside of the acceptable range", exception.getMessage());
     }
 
@@ -371,11 +367,9 @@ public class TestGregorianDate {
 
     @Test
     public final void cannotConstructGregorianDateRepresentingInvalidLeapSecond() {
-        ArgumentException exception = AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, new Action() {
-            public void invoke() {
-                GregorianDate unused = new GregorianDate(2008, 12, 30, 23, 59, 60.0);
-            }
-        });
+        ArgumentException exception = AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, Action.of(() -> {
+            GregorianDate unused = new GregorianDate(2008, 12, 30, 23, 59, 60.0);
+        }));
         AssertHelper.assertStringContains("One or more of the hour, minute, and second arguments is outside of the acceptable range", exception.getMessage());
     }
 

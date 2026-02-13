@@ -113,11 +113,9 @@ public class TestJulianDateConversions {
     @Test
     public final void testJulianDateMinimumToDateTime() {
         final JulianDate date = JulianDate.getMinValue();
-        AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, new Action() {
-            public void invoke() {
-                ZonedDateTime unused = date.toDateTime();
-            }
-        });
+        AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, Action.of(() -> {
+            ZonedDateTime unused = date.toDateTime();
+        }));
     }
 
     /**

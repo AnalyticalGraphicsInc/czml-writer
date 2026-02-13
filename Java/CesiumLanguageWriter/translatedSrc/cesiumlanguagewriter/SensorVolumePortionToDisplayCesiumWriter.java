@@ -150,11 +150,9 @@ public class SensorVolumePortionToDisplayCesiumWriter extends CesiumPropertyWrit
     @Nonnull
     private final Lazy<CesiumSensorVolumePortionToDisplayValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter>> createAsPortionToDisplay() {
         return new Lazy<CesiumSensorVolumePortionToDisplayValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter>>(
-                new Func1<CesiumSensorVolumePortionToDisplayValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter>>(this, "createSensorVolumePortionToDisplay") {
-                    public CesiumSensorVolumePortionToDisplayValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter> invoke() {
-                        return createSensorVolumePortionToDisplay();
-                    }
-                }, false);
+                Func1.<CesiumSensorVolumePortionToDisplayValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter>> of(this::createSensorVolumePortionToDisplay, this,
+                        "createSensorVolumePortionToDisplay"),
+                false);
     }
 
     @Nonnull
@@ -174,11 +172,7 @@ public class SensorVolumePortionToDisplayCesiumWriter extends CesiumPropertyWrit
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter>> createAsReference() {
         return new Lazy<CesiumReferenceValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter>>(
-                new Func1<CesiumReferenceValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter>>(this, "createReference") {
-                    public CesiumReferenceValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter> invoke() {
-                        return createReference();
-                    }
-                }, false);
+                Func1.<CesiumReferenceValuePropertyAdaptor<SensorVolumePortionToDisplayCesiumWriter>> of(this::createReference, this, "createReference"), false);
     }
 
     @Nonnull

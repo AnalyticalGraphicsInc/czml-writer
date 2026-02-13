@@ -181,11 +181,9 @@ public class TestUnitQuaternion {
     */
     @Test
     public final void testFromInfinity() {
-        AssertHelper.<NotFiniteNumberException> assertThrows(new TypeLiteral<NotFiniteNumberException>() {}, new Action() {
-            public void invoke() {
-                UnitQuaternion unused = new UnitQuaternion(Double.POSITIVE_INFINITY, 0.0, 0.0, 0.0);
-            }
-        });
+        AssertHelper.<NotFiniteNumberException> assertThrows(new TypeLiteral<NotFiniteNumberException>() {}, Action.of(() -> {
+            UnitQuaternion unused = new UnitQuaternion(Double.POSITIVE_INFINITY, 0.0, 0.0, 0.0);
+        }));
     }
 
     /**

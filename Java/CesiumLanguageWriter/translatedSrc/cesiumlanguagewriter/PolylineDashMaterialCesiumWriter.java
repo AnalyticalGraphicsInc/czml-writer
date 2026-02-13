@@ -43,29 +43,21 @@ public class PolylineDashMaterialCesiumWriter extends CesiumPropertyWriter<Polyl
     @Nonnull
     public static final String DashPatternPropertyName = "dashPattern";
     @Nonnull
-    private final Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(new Func1<ColorCesiumWriter>() {
-        public ColorCesiumWriter invoke() {
-            return new ColorCesiumWriter(ColorPropertyName);
-        }
-    }, false);
+    private final Lazy<ColorCesiumWriter> m_color = new Lazy<ColorCesiumWriter>(Func1.<ColorCesiumWriter> of(() -> {
+        return new ColorCesiumWriter(ColorPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<ColorCesiumWriter> m_gapColor = new Lazy<ColorCesiumWriter>(new Func1<ColorCesiumWriter>() {
-        public ColorCesiumWriter invoke() {
-            return new ColorCesiumWriter(GapColorPropertyName);
-        }
-    }, false);
+    private final Lazy<ColorCesiumWriter> m_gapColor = new Lazy<ColorCesiumWriter>(Func1.<ColorCesiumWriter> of(() -> {
+        return new ColorCesiumWriter(GapColorPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<DoubleCesiumWriter> m_dashLength = new Lazy<DoubleCesiumWriter>(new Func1<DoubleCesiumWriter>() {
-        public DoubleCesiumWriter invoke() {
-            return new DoubleCesiumWriter(DashLengthPropertyName);
-        }
-    }, false);
+    private final Lazy<DoubleCesiumWriter> m_dashLength = new Lazy<DoubleCesiumWriter>(Func1.<DoubleCesiumWriter> of(() -> {
+        return new DoubleCesiumWriter(DashLengthPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<IntegerCesiumWriter> m_dashPattern = new Lazy<IntegerCesiumWriter>(new Func1<IntegerCesiumWriter>() {
-        public IntegerCesiumWriter invoke() {
-            return new IntegerCesiumWriter(DashPatternPropertyName);
-        }
-    }, false);
+    private final Lazy<IntegerCesiumWriter> m_dashPattern = new Lazy<IntegerCesiumWriter>(Func1.<IntegerCesiumWriter> of(() -> {
+        return new IntegerCesiumWriter(DashPatternPropertyName);
+    }), false);
 
     /**
     * Initializes a new instance.

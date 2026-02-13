@@ -151,11 +151,7 @@ public class PositionListOfListsCesiumWriter extends CesiumPropertyWriter<Positi
     @Nonnull
     private final Lazy<CesiumCartesian3ListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>> createAsCartesian() {
         return new Lazy<CesiumCartesian3ListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>>(
-                new Func1<CesiumCartesian3ListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>>(this, "createCartesian3ListOfLists") {
-                    public CesiumCartesian3ListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter> invoke() {
-                        return createCartesian3ListOfLists();
-                    }
-                }, false);
+                Func1.<CesiumCartesian3ListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>> of(this::createCartesian3ListOfLists, this, "createCartesian3ListOfLists"), false);
     }
 
     @Nonnull
@@ -175,11 +171,9 @@ public class PositionListOfListsCesiumWriter extends CesiumPropertyWriter<Positi
     @Nonnull
     private final Lazy<CesiumCartographicRadiansListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>> createAsCartographicRadians() {
         return new Lazy<CesiumCartographicRadiansListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>>(
-                new Func1<CesiumCartographicRadiansListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>>(this, "createCartographicRadiansListOfLists") {
-                    public CesiumCartographicRadiansListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter> invoke() {
-                        return createCartographicRadiansListOfLists();
-                    }
-                }, false);
+                Func1.<CesiumCartographicRadiansListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>> of(this::createCartographicRadiansListOfLists, this,
+                        "createCartographicRadiansListOfLists"),
+                false);
     }
 
     @Nonnull
@@ -199,11 +193,9 @@ public class PositionListOfListsCesiumWriter extends CesiumPropertyWriter<Positi
     @Nonnull
     private final Lazy<CesiumCartographicDegreesListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>> createAsCartographicDegrees() {
         return new Lazy<CesiumCartographicDegreesListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>>(
-                new Func1<CesiumCartographicDegreesListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>>(this, "createCartographicDegreesListOfLists") {
-                    public CesiumCartographicDegreesListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter> invoke() {
-                        return createCartographicDegreesListOfLists();
-                    }
-                }, false);
+                Func1.<CesiumCartographicDegreesListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>> of(this::createCartographicDegreesListOfLists, this,
+                        "createCartographicDegreesListOfLists"),
+                false);
     }
 
     @Nonnull
@@ -223,11 +215,7 @@ public class PositionListOfListsCesiumWriter extends CesiumPropertyWriter<Positi
     @Nonnull
     private final Lazy<CesiumReferenceListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>> createAsReferences() {
         return new Lazy<CesiumReferenceListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>>(
-                new Func1<CesiumReferenceListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>>(this, "createReferenceListOfLists") {
-                    public CesiumReferenceListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter> invoke() {
-                        return createReferenceListOfLists();
-                    }
-                }, false);
+                Func1.<CesiumReferenceListOfListsValuePropertyAdaptor<PositionListOfListsCesiumWriter>> of(this::createReferenceListOfLists, this, "createReferenceListOfLists"), false);
     }
 
     @Nonnull

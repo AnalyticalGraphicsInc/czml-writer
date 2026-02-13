@@ -101,31 +101,25 @@ public class TestGregorianDateParsing {
 
     @Test
     public final void testParseIso8601DayOfYearOutOfRange() {
-        NumberFormatException exception = AssertHelper.<NumberFormatException> assertThrows(new TypeLiteral<NumberFormatException>() {}, new Action() {
-            public void invoke() {
-                GregorianDate unused = GregorianDate.parse("1985-367T02:00:05.2134");
-            }
-        });
+        NumberFormatException exception = AssertHelper.<NumberFormatException> assertThrows(new TypeLiteral<NumberFormatException>() {}, Action.of(() -> {
+            GregorianDate unused = GregorianDate.parse("1985-367T02:00:05.2134");
+        }));
         AssertHelper.assertStringContains("was not recognized as a valid GregorianDate", exception.getMessage());
     }
 
     @Test
     public final void testParseIso8601DayOfYearError() {
-        NumberFormatException exception = AssertHelper.<NumberFormatException> assertThrows(new TypeLiteral<NumberFormatException>() {}, new Action() {
-            public void invoke() {
-                GregorianDate unused = GregorianDate.parse("1985-12#T02:00:05.2134");
-            }
-        });
+        NumberFormatException exception = AssertHelper.<NumberFormatException> assertThrows(new TypeLiteral<NumberFormatException>() {}, Action.of(() -> {
+            GregorianDate unused = GregorianDate.parse("1985-12#T02:00:05.2134");
+        }));
         AssertHelper.assertStringContains("was not recognized as a valid GregorianDate", exception.getMessage());
     }
 
     @Test
     public final void testParseIso8601YearOutOfRange() {
-        NumberFormatException exception = AssertHelper.<NumberFormatException> assertThrows(new TypeLiteral<NumberFormatException>() {}, new Action() {
-            public void invoke() {
-                GregorianDate unused = GregorianDate.parse("21985-167T02:00:05.2134");
-            }
-        });
+        NumberFormatException exception = AssertHelper.<NumberFormatException> assertThrows(new TypeLiteral<NumberFormatException>() {}, Action.of(() -> {
+            GregorianDate unused = GregorianDate.parse("21985-167T02:00:05.2134");
+        }));
         AssertHelper.assertStringContains("was not recognized as a valid GregorianDate", exception.getMessage());
     }
 
@@ -169,11 +163,9 @@ public class TestGregorianDateParsing {
 
     @Test
     public final void testParseIso8601InvalidDay() {
-        NumberFormatException exception = AssertHelper.<NumberFormatException> assertThrows(new TypeLiteral<NumberFormatException>() {}, new Action() {
-            public void invoke() {
-                GregorianDate unused = GregorianDate.parse("2009-02-30");
-            }
-        });
+        NumberFormatException exception = AssertHelper.<NumberFormatException> assertThrows(new TypeLiteral<NumberFormatException>() {}, Action.of(() -> {
+            GregorianDate unused = GregorianDate.parse("2009-02-30");
+        }));
         AssertHelper.assertStringContains("was not recognized as a valid GregorianDate", exception.getMessage());
     }
 
@@ -250,33 +242,27 @@ public class TestGregorianDateParsing {
 
     @Test
     public final void parseExactThrowsOnInvalidFormat() {
-        AssertHelper.<NumberFormatException> assertThrows(new TypeLiteral<NumberFormatException>() {}, new Action() {
-            public void invoke() {
-                GregorianDate.parseExact("1/1/2009", "dddd, dd MMMM yyyy HH:mm:ss", m_cultureInfo);
-            }
-        });
+        AssertHelper.<NumberFormatException> assertThrows(new TypeLiteral<NumberFormatException>() {}, Action.of(() -> {
+            GregorianDate.parseExact("1/1/2009", "dddd, dd MMMM yyyy HH:mm:ss", m_cultureInfo);
+        }));
     }
 
     @Test
     public final void parseExactThrowsWithNullFormat() {
         final String format = null;
         // ReSharper disable once AssignNullToNotNullAttribute
-        NumberFormatException exception = AssertHelper.<NumberFormatException> assertThrows(new TypeLiteral<NumberFormatException>() {}, new Action() {
-            public void invoke() {
-                GregorianDate.parseExact("1/1/2009", format, m_cultureInfo);
-            }
-        });
+        NumberFormatException exception = AssertHelper.<NumberFormatException> assertThrows(new TypeLiteral<NumberFormatException>() {}, Action.of(() -> {
+            GregorianDate.parseExact("1/1/2009", format, m_cultureInfo);
+        }));
         AssertHelper.assertStringContains("Invalid format string", exception.getMessage());
     }
 
     @Test
     public final void parseExactThrowsWithNullInput() {
         // ReSharper disable once AssignNullToNotNullAttribute
-        ArgumentNullException exception = AssertHelper.<ArgumentNullException> assertThrows(new TypeLiteral<ArgumentNullException>() {}, new Action() {
-            public void invoke() {
-                GregorianDate.parseExact(null, "dddd, dd MMMM yyyy HH:mm:ss", m_cultureInfo);
-            }
-        });
+        ArgumentNullException exception = AssertHelper.<ArgumentNullException> assertThrows(new TypeLiteral<ArgumentNullException>() {}, Action.of(() -> {
+            GregorianDate.parseExact(null, "dddd, dd MMMM yyyy HH:mm:ss", m_cultureInfo);
+        }));
         AssertHelper.assertEquals("s", exception.getParamName());
     }
 
@@ -359,32 +345,26 @@ public class TestGregorianDateParsing {
     @Test
     public final void parseThrowsWithNullInput() {
         // ReSharper disable once AssignNullToNotNullAttribute
-        ArgumentNullException exception = AssertHelper.<ArgumentNullException> assertThrows(new TypeLiteral<ArgumentNullException>() {}, new Action() {
-            public void invoke() {
-                GregorianDate.parse(null, m_cultureInfo);
-            }
-        });
+        ArgumentNullException exception = AssertHelper.<ArgumentNullException> assertThrows(new TypeLiteral<ArgumentNullException>() {}, Action.of(() -> {
+            GregorianDate.parse(null, m_cultureInfo);
+        }));
         AssertHelper.assertEquals("s", exception.getParamName());
     }
 
     @Test
     public final void parseThrowsWithNullInputWithoutCultureInfo() {
         // ReSharper disable once AssignNullToNotNullAttribute
-        ArgumentNullException exception = AssertHelper.<ArgumentNullException> assertThrows(new TypeLiteral<ArgumentNullException>() {}, new Action() {
-            public void invoke() {
-                GregorianDate.parse(null);
-            }
-        });
+        ArgumentNullException exception = AssertHelper.<ArgumentNullException> assertThrows(new TypeLiteral<ArgumentNullException>() {}, Action.of(() -> {
+            GregorianDate.parse(null);
+        }));
         AssertHelper.assertEquals("s", exception.getParamName());
     }
 
     @Test
     public final void parseThrowsFormatExceptionWhenNoMatch() {
-        NumberFormatException exception = AssertHelper.<NumberFormatException> assertThrows(new TypeLiteral<NumberFormatException>() {}, new Action() {
-            public void invoke() {
-                GregorianDate.parse("February Q, 2009", m_cultureInfo);
-            }
-        });
+        NumberFormatException exception = AssertHelper.<NumberFormatException> assertThrows(new TypeLiteral<NumberFormatException>() {}, Action.of(() -> {
+            GregorianDate.parse("February Q, 2009", m_cultureInfo);
+        }));
         AssertHelper.assertStringContains("was not recognized as a valid GregorianDate", exception.getMessage());
     }
 

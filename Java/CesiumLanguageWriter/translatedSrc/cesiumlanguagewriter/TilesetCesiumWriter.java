@@ -39,23 +39,17 @@ public class TilesetCesiumWriter extends CesiumPropertyWriter<TilesetCesiumWrite
     @Nonnull
     public static final String MaximumScreenSpaceErrorPropertyName = "maximumScreenSpaceError";
     @Nonnull
-    private final Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(new Func1<BooleanCesiumWriter>() {
-        public BooleanCesiumWriter invoke() {
-            return new BooleanCesiumWriter(ShowPropertyName);
-        }
-    }, false);
+    private final Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(Func1.<BooleanCesiumWriter> of(() -> {
+        return new BooleanCesiumWriter(ShowPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<UriCesiumWriter> m_uri = new Lazy<UriCesiumWriter>(new Func1<UriCesiumWriter>() {
-        public UriCesiumWriter invoke() {
-            return new UriCesiumWriter(UriPropertyName);
-        }
-    }, false);
+    private final Lazy<UriCesiumWriter> m_uri = new Lazy<UriCesiumWriter>(Func1.<UriCesiumWriter> of(() -> {
+        return new UriCesiumWriter(UriPropertyName);
+    }), false);
     @Nonnull
-    private final Lazy<DoubleCesiumWriter> m_maximumScreenSpaceError = new Lazy<DoubleCesiumWriter>(new Func1<DoubleCesiumWriter>() {
-        public DoubleCesiumWriter invoke() {
-            return new DoubleCesiumWriter(MaximumScreenSpaceErrorPropertyName);
-        }
-    }, false);
+    private final Lazy<DoubleCesiumWriter> m_maximumScreenSpaceError = new Lazy<DoubleCesiumWriter>(Func1.<DoubleCesiumWriter> of(() -> {
+        return new DoubleCesiumWriter(MaximumScreenSpaceErrorPropertyName);
+    }), false);
 
     /**
     * Initializes a new instance.

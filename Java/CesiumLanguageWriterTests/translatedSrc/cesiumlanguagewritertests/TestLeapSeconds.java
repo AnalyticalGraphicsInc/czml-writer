@@ -117,11 +117,9 @@ public class TestLeapSeconds {
     @Test
     public final void testJulianDateCannotRepresentMomentOfLeapSecond() {
         final JulianDate momentOfLeapSecond = new JulianDate(2453736, 43232.0, TimeStandard.INTERNATIONAL_ATOMIC_TIME);
-        AssertHelper.<ArgumentOutOfRangeException> assertThrows(new TypeLiteral<ArgumentOutOfRangeException>() {}, new Action() {
-            public void invoke() {
-                JulianDate unused = momentOfLeapSecond.toTimeStandard(TimeStandard.COORDINATED_UNIVERSAL_TIME);
-            }
-        });
+        AssertHelper.<ArgumentOutOfRangeException> assertThrows(new TypeLiteral<ArgumentOutOfRangeException>() {}, Action.of(() -> {
+            JulianDate unused = momentOfLeapSecond.toTimeStandard(TimeStandard.COORDINATED_UNIVERSAL_TIME);
+        }));
     }
 
     /**

@@ -150,11 +150,7 @@ public class ColorBlendModeCesiumWriter extends CesiumPropertyWriter<ColorBlendM
     @Nonnull
     private final Lazy<CesiumColorBlendModeValuePropertyAdaptor<ColorBlendModeCesiumWriter>> createAsColorBlendMode() {
         return new Lazy<CesiumColorBlendModeValuePropertyAdaptor<ColorBlendModeCesiumWriter>>(
-                new Func1<CesiumColorBlendModeValuePropertyAdaptor<ColorBlendModeCesiumWriter>>(this, "createColorBlendMode") {
-                    public CesiumColorBlendModeValuePropertyAdaptor<ColorBlendModeCesiumWriter> invoke() {
-                        return createColorBlendMode();
-                    }
-                }, false);
+                Func1.<CesiumColorBlendModeValuePropertyAdaptor<ColorBlendModeCesiumWriter>> of(this::createColorBlendMode, this, "createColorBlendMode"), false);
     }
 
     @Nonnull
@@ -173,11 +169,8 @@ public class ColorBlendModeCesiumWriter extends CesiumPropertyWriter<ColorBlendM
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<ColorBlendModeCesiumWriter>> createAsReference() {
-        return new Lazy<CesiumReferenceValuePropertyAdaptor<ColorBlendModeCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<ColorBlendModeCesiumWriter>>(this, "createReference") {
-            public CesiumReferenceValuePropertyAdaptor<ColorBlendModeCesiumWriter> invoke() {
-                return createReference();
-            }
-        }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<ColorBlendModeCesiumWriter>>(
+                Func1.<CesiumReferenceValuePropertyAdaptor<ColorBlendModeCesiumWriter>> of(this::createReference, this, "createReference"), false);
     }
 
     @Nonnull

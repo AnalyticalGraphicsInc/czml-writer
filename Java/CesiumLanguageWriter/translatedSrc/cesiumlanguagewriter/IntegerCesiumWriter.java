@@ -172,11 +172,7 @@ public class IntegerCesiumWriter extends CesiumInterpolatablePropertyWriter<Inte
 
     @Nonnull
     private final Lazy<CesiumIntegerValuePropertyAdaptor<IntegerCesiumWriter>> createAsNumber() {
-        return new Lazy<CesiumIntegerValuePropertyAdaptor<IntegerCesiumWriter>>(new Func1<CesiumIntegerValuePropertyAdaptor<IntegerCesiumWriter>>(this, "createInteger") {
-            public CesiumIntegerValuePropertyAdaptor<IntegerCesiumWriter> invoke() {
-                return createInteger();
-            }
-        }, false);
+        return new Lazy<CesiumIntegerValuePropertyAdaptor<IntegerCesiumWriter>>(Func1.<CesiumIntegerValuePropertyAdaptor<IntegerCesiumWriter>> of(this::createInteger, this, "createInteger"), false);
     }
 
     @Nonnull
@@ -195,11 +191,8 @@ public class IntegerCesiumWriter extends CesiumInterpolatablePropertyWriter<Inte
 
     @Nonnull
     private final Lazy<CesiumReferenceValuePropertyAdaptor<IntegerCesiumWriter>> createAsReference() {
-        return new Lazy<CesiumReferenceValuePropertyAdaptor<IntegerCesiumWriter>>(new Func1<CesiumReferenceValuePropertyAdaptor<IntegerCesiumWriter>>(this, "createReference") {
-            public CesiumReferenceValuePropertyAdaptor<IntegerCesiumWriter> invoke() {
-                return createReference();
-            }
-        }, false);
+        return new Lazy<CesiumReferenceValuePropertyAdaptor<IntegerCesiumWriter>>(Func1.<CesiumReferenceValuePropertyAdaptor<IntegerCesiumWriter>> of(this::createReference, this, "createReference"),
+                false);
     }
 
     @Nonnull

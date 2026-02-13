@@ -160,11 +160,9 @@ public class TestCartesian {
     @Test
     public final void testNormalizeOfZeroMagnitude() {
         final Cartesian test = Cartesian.getZero();
-        AssertHelper.<ArithmeticException> assertThrows(new TypeLiteral<ArithmeticException>() {}, new Action() {
-            public void invoke() {
-                UnitCartesian unused = test.normalize();
-            }
-        });
+        AssertHelper.<ArithmeticException> assertThrows(new TypeLiteral<ArithmeticException>() {}, Action.of(() -> {
+            UnitCartesian unused = test.normalize();
+        }));
     }
 
     /**
@@ -174,11 +172,9 @@ public class TestCartesian {
     @Test
     public final void testNormalizeOfInfiniteMagnitude() {
         final Cartesian test = new Cartesian(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY);
-        AssertHelper.<NotFiniteNumberException> assertThrows(new TypeLiteral<NotFiniteNumberException>() {}, new Action() {
-            public void invoke() {
-                UnitCartesian unused = test.normalize();
-            }
-        });
+        AssertHelper.<NotFiniteNumberException> assertThrows(new TypeLiteral<NotFiniteNumberException>() {}, Action.of(() -> {
+            UnitCartesian unused = test.normalize();
+        }));
     }
 
     /**

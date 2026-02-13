@@ -42,11 +42,9 @@ public class CesiumWriterAdaptor<TFrom extends ICesiumPropertyWriter, TValue> im
         m_parent = parent;
         m_writeValueCallback = writeValueCallback;
         m_writeDeleteValueCallback = writeDeleteValueCallback;
-        m_interval = new Lazy<CesiumWriterAdaptor<TFrom, TValue>>(new Func1<CesiumWriterAdaptor<TFrom, TValue>>() {
-            public CesiumWriterAdaptor<TFrom, TValue> invoke() {
-                return new CesiumWriterAdaptor<TFrom, TValue>((TFrom) m_parent.getIntervalWriter(), m_writeValueCallback, m_writeDeleteValueCallback);
-            }
-        }, false);
+        m_interval = new Lazy<CesiumWriterAdaptor<TFrom, TValue>>(Func1.<CesiumWriterAdaptor<TFrom, TValue>> of(() -> {
+            return new CesiumWriterAdaptor<TFrom, TValue>((TFrom) m_parent.getIntervalWriter(), m_writeValueCallback, m_writeDeleteValueCallback);
+        }), false);
     }
 
     /**
