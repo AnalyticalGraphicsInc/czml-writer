@@ -2,7 +2,6 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.ArrayHelper;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.BitmapHelper;
 import agi.foundation.compatibility.EnumHelper;
@@ -35,7 +34,7 @@ public class TestCesiumResource {
     }
 
     public final void testFromImageFormats(@Nonnull CesiumImageFormat format) {
-        BufferedImage image = BitmapHelper.create(EmbeddedData.read("satellite.png"));
+        BufferedImage image = BitmapHelper.create(EmbeddedData.read("satellite.bmp"));
         CesiumResource resource = CesiumResource.fromImage(image, format);
         Assert.assertNotNull(resource);
         AssertHelper.assertStringStartsWith("data:", resource.getUri());
@@ -43,15 +42,10 @@ public class TestCesiumResource {
     }
 
     @Test
-    public final void testFromImageFormats$TestCase1() {
-        for (final CesiumImageFormat format : getImageFormatValues()) {
+    public final void testFromImageFormats$Test() {
+        for (final CesiumImageFormat format : EnumHelper.getValues(CesiumImageFormat.class)) {
             testFromImageFormats(format);
         }
-    }
-
-    @Nonnull
-    public static Iterable<CesiumImageFormat> getImageFormatValues() {
-        return ArrayHelper.arrayAsList((CesiumImageFormat[]) EnumHelper.getValues(CesiumImageFormat.class));
     }
 
     @Test

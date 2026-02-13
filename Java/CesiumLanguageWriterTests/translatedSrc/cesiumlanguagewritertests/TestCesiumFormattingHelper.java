@@ -2,7 +2,6 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.ArrayHelper;
 import agi.foundation.compatibility.EnumHelper;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
@@ -28,15 +27,10 @@ public class TestCesiumFormattingHelper {
     }
 
     @Test
-    public final void testClockRangeToString$TestCase1() {
-        for (final ClockRange value : getClockRangeValues()) {
+    public final void testClockRangeToString$Test() {
+        for (final ClockRange value : EnumHelper.getValues(ClockRange.class)) {
             testClockRangeToString(value);
         }
-    }
-
-    @Nonnull
-    public static Iterable<ClockRange> getClockRangeValues() {
-        return ArrayHelper.arrayAsList((ClockRange[]) EnumHelper.getValues(ClockRange.class));
     }
 
     public final void testClockStepToString(@Nonnull ClockStep value) {
@@ -45,15 +39,10 @@ public class TestCesiumFormattingHelper {
     }
 
     @Test
-    public final void testClockStepToString$TestCase1() {
-        for (final ClockStep value : getClockStepValues()) {
+    public final void testClockStepToString$Test() {
+        for (final ClockStep value : EnumHelper.getValues(ClockStep.class)) {
             testClockStepToString(value);
         }
-    }
-
-    @Nonnull
-    public static Iterable<ClockStep> getClockStepValues() {
-        return ArrayHelper.arrayAsList((ClockStep[]) EnumHelper.getValues(ClockStep.class));
     }
 
     public final void testColorBlendModeToString(@Nonnull CesiumColorBlendMode value) {
@@ -62,15 +51,10 @@ public class TestCesiumFormattingHelper {
     }
 
     @Test
-    public final void testColorBlendModeToString$TestCase1() {
-        for (final CesiumColorBlendMode value : getColorBlendModeValues()) {
+    public final void testColorBlendModeToString$Test() {
+        for (final CesiumColorBlendMode value : EnumHelper.getValues(CesiumColorBlendMode.class)) {
             testColorBlendModeToString(value);
         }
-    }
-
-    @Nonnull
-    public static Iterable<CesiumColorBlendMode> getColorBlendModeValues() {
-        return ArrayHelper.arrayAsList((CesiumColorBlendMode[]) EnumHelper.getValues(CesiumColorBlendMode.class));
     }
 
     public final void testCornerTypeToString(@Nonnull CesiumCornerType value) {
@@ -79,15 +63,10 @@ public class TestCesiumFormattingHelper {
     }
 
     @Test
-    public final void testCornerTypeToString$TestCase1() {
-        for (final CesiumCornerType value : getCornerTypeValues()) {
+    public final void testCornerTypeToString$Test() {
+        for (final CesiumCornerType value : EnumHelper.getValues(CesiumCornerType.class)) {
             testCornerTypeToString(value);
         }
-    }
-
-    @Nonnull
-    public static Iterable<CesiumCornerType> getCornerTypeValues() {
-        return ArrayHelper.arrayAsList((CesiumCornerType[]) EnumHelper.getValues(CesiumCornerType.class));
     }
 
     public final void testExtrapolationTypeToString(@Nonnull CesiumExtrapolationType value) {
@@ -96,15 +75,10 @@ public class TestCesiumFormattingHelper {
     }
 
     @Test
-    public final void testExtrapolationTypeToString$TestCase1() {
-        for (final CesiumExtrapolationType value : getExtrapolationTypeValues()) {
+    public final void testExtrapolationTypeToString$Test() {
+        for (final CesiumExtrapolationType value : EnumHelper.getValues(CesiumExtrapolationType.class)) {
             testExtrapolationTypeToString(value);
         }
-    }
-
-    @Nonnull
-    public static Iterable<CesiumExtrapolationType> getExtrapolationTypeValues() {
-        return ArrayHelper.arrayAsList((CesiumExtrapolationType[]) EnumHelper.getValues(CesiumExtrapolationType.class));
     }
 
     public final void testHeightReferenceToString(@Nonnull CesiumHeightReference value) {
@@ -113,15 +87,10 @@ public class TestCesiumFormattingHelper {
     }
 
     @Test
-    public final void testHeightReferenceToString$TestCase1() {
-        for (final CesiumHeightReference value : getHeightReferenceValues()) {
+    public final void testHeightReferenceToString$Test() {
+        for (final CesiumHeightReference value : EnumHelper.getValues(CesiumHeightReference.class)) {
             testHeightReferenceToString(value);
         }
-    }
-
-    @Nonnull
-    public static Iterable<CesiumHeightReference> getHeightReferenceValues() {
-        return ArrayHelper.arrayAsList((CesiumHeightReference[]) EnumHelper.getValues(CesiumHeightReference.class));
     }
 
     public final void testHorizontalOriginToString(@Nonnull CesiumHorizontalOrigin value) {
@@ -130,15 +99,10 @@ public class TestCesiumFormattingHelper {
     }
 
     @Test
-    public final void testHorizontalOriginToString$TestCase1() {
-        for (final CesiumHorizontalOrigin value : getHorizontalOriginValues()) {
+    public final void testHorizontalOriginToString$Test() {
+        for (final CesiumHorizontalOrigin value : EnumHelper.getValues(CesiumHorizontalOrigin.class)) {
             testHorizontalOriginToString(value);
         }
-    }
-
-    @Nonnull
-    public static Iterable<CesiumHorizontalOrigin> getHorizontalOriginValues() {
-        return ArrayHelper.arrayAsList((CesiumHorizontalOrigin[]) EnumHelper.getValues(CesiumHorizontalOrigin.class));
     }
 
     public final void testInterpolationAlgorithmToString(@Nonnull CesiumInterpolationAlgorithm value) {
@@ -147,15 +111,10 @@ public class TestCesiumFormattingHelper {
     }
 
     @Test
-    public final void testInterpolationAlgorithmToString$TestCase1() {
-        for (final CesiumInterpolationAlgorithm value : getInterpolationAlgorithmValues()) {
+    public final void testInterpolationAlgorithmToString$Test() {
+        for (final CesiumInterpolationAlgorithm value : EnumHelper.getValues(CesiumInterpolationAlgorithm.class)) {
             testInterpolationAlgorithmToString(value);
         }
-    }
-
-    @Nonnull
-    public static Iterable<CesiumInterpolationAlgorithm> getInterpolationAlgorithmValues() {
-        return ArrayHelper.arrayAsList((CesiumInterpolationAlgorithm[]) EnumHelper.getValues(CesiumInterpolationAlgorithm.class));
     }
 
     public final void testLabelStyleToString(@Nonnull CesiumLabelStyle value) {
@@ -164,15 +123,10 @@ public class TestCesiumFormattingHelper {
     }
 
     @Test
-    public final void testLabelStyleToString$TestCase1() {
-        for (final CesiumLabelStyle value : getLabelStyleValues()) {
+    public final void testLabelStyleToString$Test() {
+        for (final CesiumLabelStyle value : EnumHelper.getValues(CesiumLabelStyle.class)) {
             testLabelStyleToString(value);
         }
-    }
-
-    @Nonnull
-    public static Iterable<CesiumLabelStyle> getLabelStyleValues() {
-        return ArrayHelper.arrayAsList((CesiumLabelStyle[]) EnumHelper.getValues(CesiumLabelStyle.class));
     }
 
     public final void testSensorVolumePortionToDisplayToString(@Nonnull CesiumSensorVolumePortionToDisplay value) {
@@ -181,14 +135,10 @@ public class TestCesiumFormattingHelper {
     }
 
     @Test
-    public final void testSensorVolumePortionToDisplayToString$TestCase1() {
-        for (final CesiumSensorVolumePortionToDisplay value : getSensorVolumePortionToDisplayValues()) {
+    public final void testSensorVolumePortionToDisplayToString$Test() {
+        for (final CesiumSensorVolumePortionToDisplay value : EnumHelper.getValues(CesiumSensorVolumePortionToDisplay.class)) {
             testSensorVolumePortionToDisplayToString(value);
         }
-    }
-
-    public static Iterable<CesiumSensorVolumePortionToDisplay> getSensorVolumePortionToDisplayValues() {
-        return ArrayHelper.arrayAsList((CesiumSensorVolumePortionToDisplay[]) EnumHelper.getValues(CesiumSensorVolumePortionToDisplay.class));
     }
 
     public final void testShadowModeToString(@Nonnull CesiumShadowMode value) {
@@ -197,15 +147,10 @@ public class TestCesiumFormattingHelper {
     }
 
     @Test
-    public final void testShadowModeToString$TestCase1() {
-        for (final CesiumShadowMode value : getShadowModeValues()) {
+    public final void testShadowModeToString$Test() {
+        for (final CesiumShadowMode value : EnumHelper.getValues(CesiumShadowMode.class)) {
             testShadowModeToString(value);
         }
-    }
-
-    @Nonnull
-    public static Iterable<CesiumShadowMode> getShadowModeValues() {
-        return ArrayHelper.arrayAsList((CesiumShadowMode[]) EnumHelper.getValues(CesiumShadowMode.class));
     }
 
     public final void testStripeOrientationToString(@Nonnull CesiumStripeOrientation value) {
@@ -214,15 +159,10 @@ public class TestCesiumFormattingHelper {
     }
 
     @Test
-    public final void testStripeOrientationToString$TestCase1() {
-        for (final CesiumStripeOrientation value : getStripeOrientationValues()) {
+    public final void testStripeOrientationToString$Test() {
+        for (final CesiumStripeOrientation value : EnumHelper.getValues(CesiumStripeOrientation.class)) {
             testStripeOrientationToString(value);
         }
-    }
-
-    @Nonnull
-    public static Iterable<CesiumStripeOrientation> getStripeOrientationValues() {
-        return ArrayHelper.arrayAsList((CesiumStripeOrientation[]) EnumHelper.getValues(CesiumStripeOrientation.class));
     }
 
     public final void testVerticalOriginToString(@Nonnull CesiumVerticalOrigin value) {
@@ -231,15 +171,10 @@ public class TestCesiumFormattingHelper {
     }
 
     @Test
-    public final void testVerticalOriginToString$TestCase1() {
-        for (final CesiumVerticalOrigin value : getVerticalOriginValues()) {
+    public final void testVerticalOriginToString$Test() {
+        for (final CesiumVerticalOrigin value : EnumHelper.getValues(CesiumVerticalOrigin.class)) {
             testVerticalOriginToString(value);
         }
-    }
-
-    @Nonnull
-    public static Iterable<CesiumVerticalOrigin> getVerticalOriginValues() {
-        return ArrayHelper.arrayAsList((CesiumVerticalOrigin[]) EnumHelper.getValues(CesiumVerticalOrigin.class));
     }
 
     @Nonnull

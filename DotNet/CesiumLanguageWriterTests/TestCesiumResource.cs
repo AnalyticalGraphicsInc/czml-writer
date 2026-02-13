@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using CesiumLanguageWriter;
+using CesiumLanguageWriterTests.Data;
+using NUnit.Framework;
 using System.Drawing;
 using System.IO;
-using CesiumLanguageWriter;
-using CesiumLanguageWriterTests.Data;
-using JetBrains.Annotations;
-using NUnit.Framework;
 
 namespace CesiumLanguageWriterTests
 {
@@ -16,31 +13,23 @@ namespace CesiumLanguageWriterTests
         public void TestFromImage()
         {
             var image = new Bitmap(EmbeddedData.Read("satellite.png"));
-            var resource = CesiumResource.FromImage(image, CesiumImageFormat.Png);
 
+            var resource = CesiumResource.FromImage(image, CesiumImageFormat.Png);
             Assert.IsNotNull(resource);
 
             StringAssert.StartsWith("data:image/png;base64,", resource.Uri);
         }
 
         [Test]
-        [TestCaseSource("ImageFormatValues")]
-        public void TestFromImageFormats(CesiumImageFormat format)
+        public void TestFromImageFormats([Values] CesiumImageFormat format)
         {
-            var image = new Bitmap(EmbeddedData.Read("satellite.png"));
+            var image = new Bitmap(EmbeddedData.Read("satellite.bmp"));
 
             var resource = CesiumResource.FromImage(image, format);
-
             Assert.IsNotNull(resource);
 
             StringAssert.StartsWith("data:", resource.Uri);
             StringAssert.Contains(";base64,", resource.Uri);
-        }
-
-        [NotNull]
-        public static IEnumerable<CesiumImageFormat> ImageFormatValues
-        {
-            get { return (CesiumImageFormat[])Enum.GetValues(typeof(CesiumImageFormat)); }
         }
 
         [Test]

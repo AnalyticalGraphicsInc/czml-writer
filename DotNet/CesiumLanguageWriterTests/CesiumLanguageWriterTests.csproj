@@ -7,9 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Data\satellite.bmp" />
     <None Remove="Data\satellite.png" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Data\satellite.bmp" />
     <EmbeddedResource Include="Data\satellite.png" />
   </ItemGroup>
 
