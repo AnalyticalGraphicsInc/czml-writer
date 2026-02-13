@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/ValueProperties/SensorVolumePortionToDisplayValueProperty.json",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Extensions/AGI/SensorVolumePortionToDisplayValueProperty.json",
     "title": "SensorVolumePortionToDisplayValueProperty",
     "description": "The base schema for a property whose value may be written as a part of a sensor that should be displayed."
 }
