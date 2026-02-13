@@ -9,8 +9,6 @@ This project provides .NET and Java libraries for writing CZML content for use w
 
 This project also contains the [CZML specification](https://github.com/AnalyticalGraphicsInc/czml-writer/wiki/CZML-Guide) which defines the structure of CZML.
 
-[![Build status](https://ci.appveyor.com/api/projects/status/p4b2gm7tuosinaeg/branch/main?svg=true)](https://ci.appveyor.com/project/AnalyticalGraphics/czml-writer/branch/main)
-
 ### License ###
 
 [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0.html). czml-writer is free for both commercial and non-commercial use.
