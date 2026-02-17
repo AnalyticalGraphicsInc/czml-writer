@@ -1,20 +1,32 @@
+# Defines the root directory
 root = true
 
+# Removes trailing whitespace at the end of lines
 [*]
 trim_trailing_whitespace = true
 
+# Configuration for JSON and C# files
 [*.{json,cs}]
 indent_style = space
 indent_size = 4
 insert_final_newline = false
 
+# UTF-8 encoding for JSON files
 [*.json]
 charset = utf-8
 
+# UTF-8-BOM encoding for C# files
 [*.cs]
 charset = utf-8-bom
 dotnet_remove_unnecessary_suppression_exclusions = category: ReSharper
 
+# Indentation configuration for specific files
 [*.{csproj,props,targets,nuspec,config}]
 indent_style = space
 indent_size = 2
+
+# Markdown files
+*.md linguist-language=Markdown
+
+# Configuration to display Ruby code in GitHub preview
+*.rb linguist-language=Ruby
