@@ -30,8 +30,9 @@ public class TestLabelCesiumWriter extends TestCesiumPropertyWriter<LabelCesiumW
     @Test
     public final void testShowProperty() {
         final boolean expectedShow = true;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<LabelCesiumWriter> using$1 = new Using<LabelCesiumWriter>(getPacket().openLabelProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<LabelCesiumWriter> using$1 = new Using<LabelCesiumWriter>(packet.openLabelProperty())) {
                 final LabelCesiumWriter label = using$1.resource;
                 try (Using<LabelCesiumWriter> using$2 = new Using<LabelCesiumWriter>(label.openInterval())) {
                     final LabelCesiumWriter interval = using$2.resource;
@@ -47,8 +48,9 @@ public class TestLabelCesiumWriter extends TestCesiumPropertyWriter<LabelCesiumW
     @Test
     public final void testTextProperty() {
         final String expectedText = "asdf";
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<LabelCesiumWriter> using$1 = new Using<LabelCesiumWriter>(getPacket().openLabelProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<LabelCesiumWriter> using$1 = new Using<LabelCesiumWriter>(packet.openLabelProperty())) {
                 final LabelCesiumWriter label = using$1.resource;
                 try (Using<LabelCesiumWriter> using$2 = new Using<LabelCesiumWriter>(label.openInterval())) {
                     final LabelCesiumWriter interval = using$2.resource;
@@ -74,10 +76,11 @@ public class TestLabelCesiumWriter extends TestCesiumPropertyWriter<LabelCesiumW
         final String interval1Value = "A";
         final String interval2Value = "B";
         final String interval3Value = "C";
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<LabelCesiumWriter> using$1 = new Using<LabelCesiumWriter>(getPacket().openLabelProperty())) {
-                final LabelCesiumWriter billboard = using$1.resource;
-                try (Using<StringCesiumWriter> using$2 = new Using<StringCesiumWriter>(billboard.openTextProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<LabelCesiumWriter> using$1 = new Using<LabelCesiumWriter>(packet.openLabelProperty())) {
+                final LabelCesiumWriter label = using$1.resource;
+                try (Using<StringCesiumWriter> using$2 = new Using<StringCesiumWriter>(label.openTextProperty())) {
                     final StringCesiumWriter text = using$2.resource;
                     try (Using<CesiumIntervalListWriter<StringCesiumWriter>> using$3 = new Using<CesiumIntervalListWriter<StringCesiumWriter>>(text.openMultipleIntervals())) {
                         final CesiumIntervalListWriter<StringCesiumWriter> textIntervals = using$3.resource;
@@ -118,8 +121,9 @@ public class TestLabelCesiumWriter extends TestCesiumPropertyWriter<LabelCesiumW
     @Test
     public final void testShowBackgroundProperty() {
         final boolean expectedShowBackground = true;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<LabelCesiumWriter> using$1 = new Using<LabelCesiumWriter>(getPacket().openLabelProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<LabelCesiumWriter> using$1 = new Using<LabelCesiumWriter>(packet.openLabelProperty())) {
                 final LabelCesiumWriter label = using$1.resource;
                 try (Using<LabelCesiumWriter> using$2 = new Using<LabelCesiumWriter>(label.openInterval())) {
                     final LabelCesiumWriter interval = using$2.resource;
@@ -135,8 +139,9 @@ public class TestLabelCesiumWriter extends TestCesiumPropertyWriter<LabelCesiumW
     @Test
     public final void testBackgroundColorProperty() {
         Color expectedBackgroundColor = Color.RED;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<LabelCesiumWriter> using$1 = new Using<LabelCesiumWriter>(getPacket().openLabelProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<LabelCesiumWriter> using$1 = new Using<LabelCesiumWriter>(packet.openLabelProperty())) {
                 final LabelCesiumWriter label = using$1.resource;
                 try (Using<LabelCesiumWriter> using$2 = new Using<LabelCesiumWriter>(label.openInterval())) {
                     final LabelCesiumWriter interval = using$2.resource;
@@ -152,8 +157,9 @@ public class TestLabelCesiumWriter extends TestCesiumPropertyWriter<LabelCesiumW
     @Test
     public final void testBackgroundPaddingProperty() {
         Rectangular expectedBackgroundPadding = new Rectangular(3.0, 4.0);
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<LabelCesiumWriter> using$1 = new Using<LabelCesiumWriter>(getPacket().openLabelProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<LabelCesiumWriter> using$1 = new Using<LabelCesiumWriter>(packet.openLabelProperty())) {
                 final LabelCesiumWriter label = using$1.resource;
                 try (Using<LabelCesiumWriter> using$2 = new Using<LabelCesiumWriter>(label.openInterval())) {
                     final LabelCesiumWriter interval = using$2.resource;
@@ -169,8 +175,9 @@ public class TestLabelCesiumWriter extends TestCesiumPropertyWriter<LabelCesiumW
     @Test
     public final void testTranslucencyByDistanceProperty() {
         NearFarScalar expectedTranslucencyByDistance = new NearFarScalar(100.0, 1.0, 200.0, 2.0);
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<LabelCesiumWriter> using$1 = new Using<LabelCesiumWriter>(getPacket().openLabelProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<LabelCesiumWriter> using$1 = new Using<LabelCesiumWriter>(packet.openLabelProperty())) {
                 final LabelCesiumWriter label = using$1.resource;
                 try (Using<LabelCesiumWriter> using$2 = new Using<LabelCesiumWriter>(label.openInterval())) {
                     final LabelCesiumWriter interval = using$2.resource;
@@ -186,8 +193,9 @@ public class TestLabelCesiumWriter extends TestCesiumPropertyWriter<LabelCesiumW
     @Test
     public final void testTranslucencyByDistancePropertySamples() {
         JulianDate epoch = new GregorianDate(2012, 4, 2, 12, 0, 0.0).toJulianDate();
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<LabelCesiumWriter> using$1 = new Using<LabelCesiumWriter>(getPacket().openLabelProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<LabelCesiumWriter> using$1 = new Using<LabelCesiumWriter>(packet.openLabelProperty())) {
                 final LabelCesiumWriter label = using$1.resource;
                 try (Using<LabelCesiumWriter> using$2 = new Using<LabelCesiumWriter>(label.openInterval())) {
                     final LabelCesiumWriter interval = using$2.resource;

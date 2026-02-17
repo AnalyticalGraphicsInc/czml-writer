@@ -4,12 +4,14 @@ package cesiumlanguagewritertests;
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.TestContextRule;
+import agi.foundation.compatibility.TextWriterHelper;
 import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.*;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.annotation.Nonnull;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.ClassRule;
@@ -34,6 +36,11 @@ public class TestPacketCesiumWriter {
         m_stringWriter = new StringWriter();
         m_outputStream = new CesiumOutputStream(m_stringWriter);
         m_writer = new CesiumStreamWriter();
+    }
+
+    @After
+    public final void tearDown() {
+        TextWriterHelper.close(m_stringWriter);
     }
 
     @Test

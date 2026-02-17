@@ -4,6 +4,7 @@ package cesiumlanguagewritertests.advanced;
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.TestContextRule;
+import agi.foundation.compatibility.TextWriterHelper;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewritertests.*;
@@ -11,6 +12,7 @@ import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import javax.annotation.Nonnull;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.ClassRule;
 import org.junit.FixMethodOrder;
@@ -32,6 +34,11 @@ public class TestCesiumWritingHelper {
     public final void setUp() {
         m_stringWriter = new StringWriter();
         m_outputStream = new CesiumOutputStream(m_stringWriter);
+    }
+
+    @After
+    public final void tearDown() {
+        TextWriterHelper.close(m_stringWriter);
     }
 
     @Test

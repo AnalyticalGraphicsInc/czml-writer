@@ -1,6 +1,7 @@
 package agi.foundation.compatibility;
 
 import static agi.foundation.compatibility.ArgumentNullException.assertNonNull;
+import static agi.foundation.compatibility.DisposeHelper.dispose;
 import static java.lang.System.lineSeparator;
 
 import agi.foundation.compatibility.annotations.Internal;
@@ -21,6 +22,11 @@ import javax.annotation.Nullable;
 @Deprecated
 public final class TextWriterHelper {
     private TextWriterHelper() {}
+
+    public static void close(@Nonnull Writer writer) {
+        assertNonNull(writer, "writer");
+        dispose(writer);
+    }
 
     public static void write(@Nonnull Writer writer, char value) {
         assertNonNull(writer, "writer");

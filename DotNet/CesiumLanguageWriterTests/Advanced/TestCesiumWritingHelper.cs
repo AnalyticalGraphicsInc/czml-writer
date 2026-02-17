@@ -19,6 +19,12 @@ namespace CesiumLanguageWriterTests.Advanced
             m_outputStream = new CesiumOutputStream(m_stringWriter);
         }
 
+        [TearDown]
+        public void TearDown()
+        {
+            m_stringWriter.Dispose();
+        }
+
         [Test]
         public void CanWriteReference()
         {

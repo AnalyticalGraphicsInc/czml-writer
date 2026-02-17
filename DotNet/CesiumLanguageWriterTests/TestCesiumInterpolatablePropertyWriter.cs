@@ -15,7 +15,7 @@ namespace CesiumLanguageWriterTests
             const string expectedPropertyName = "foo";
             const CesiumInterpolationAlgorithm expectedInterpolationAlgorithm = CesiumInterpolationAlgorithm.Hermite;
 
-            using (Packet)
+            using (OpenPacket())
             using (var propertyWriter = CreatePropertyWriter(expectedPropertyName))
             {
                 propertyWriter.Open(OutputStream);
@@ -37,7 +37,7 @@ namespace CesiumLanguageWriterTests
             const string expectedPropertyName = "foo";
             const int expectedInterpolationDegree = 3;
 
-            using (Packet)
+            using (OpenPacket())
             using (var propertyWriter = CreatePropertyWriter(expectedPropertyName))
             {
                 propertyWriter.Open(OutputStream);
@@ -59,7 +59,7 @@ namespace CesiumLanguageWriterTests
             const string expectedPropertyName = "foo";
             const CesiumExtrapolationType expectedForwardExtrapolationType = CesiumExtrapolationType.Extrapolate;
 
-            using (Packet)
+            using (OpenPacket())
             using (var propertyWriter = CreatePropertyWriter(expectedPropertyName))
             {
                 propertyWriter.Open(OutputStream);
@@ -81,7 +81,7 @@ namespace CesiumLanguageWriterTests
             const string expectedPropertyName = "foo";
             const CesiumExtrapolationType expectedBackwardExtrapolationType = CesiumExtrapolationType.Extrapolate;
 
-            using (Packet)
+            using (OpenPacket())
             using (var propertyWriter = CreatePropertyWriter(expectedPropertyName))
             {
                 propertyWriter.Open(OutputStream);
@@ -103,7 +103,7 @@ namespace CesiumLanguageWriterTests
             const string expectedPropertyName = "foo";
             var expectedForwardExtrapolationDuration = Duration.FromSeconds(12);
 
-            using (Packet)
+            using (OpenPacket())
             using (var propertyWriter = CreatePropertyWriter(expectedPropertyName))
             {
                 propertyWriter.Open(OutputStream);
@@ -125,7 +125,7 @@ namespace CesiumLanguageWriterTests
             const string expectedPropertyName = "foo";
             var expectedBackwardExtrapolationDuration = Duration.FromSeconds(12);
 
-            using (Packet)
+            using (OpenPacket())
             using (var propertyWriter = CreatePropertyWriter(expectedPropertyName))
             {
                 propertyWriter.Open(OutputStream);

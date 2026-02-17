@@ -19,8 +19,8 @@ namespace CesiumLanguageWriterTests
             const double expectedMaximumClockAngle = 1.4;
             const double expectedRadius = 1234.5;
 
-            using (Packet)
-            using (var rectangle = Packet.OpenConicSensorProperty())
+            using (var packet = OpenPacket())
+            using (var rectangle = packet.OpenConicSensorProperty())
             using (var interval = rectangle.OpenInterval())
             {
                 interval.WriteShowProperty(expectedShow);
@@ -51,8 +51,8 @@ namespace CesiumLanguageWriterTests
             const bool expectedShowEnvironmentIntersection = true;
             Color expectedEnvironmentIntersectionColor = Color.Red;
 
-            using (Packet)
-            using (var rectangle = Packet.OpenConicSensorProperty())
+            using (var packet = OpenPacket())
+            using (var rectangle = packet.OpenConicSensorProperty())
             using (var interval = rectangle.OpenInterval())
             {
                 interval.WriteShowIntersectionProperty(expectedShowIntersection);
@@ -78,8 +78,8 @@ namespace CesiumLanguageWriterTests
         {
             const bool expectedShowThroughEllipsoid = true;
 
-            using (Packet)
-            using (var rectangle = Packet.OpenConicSensorProperty())
+            using (var packet = OpenPacket())
+            using (var rectangle = packet.OpenConicSensorProperty())
             using (var interval = rectangle.OpenInterval())
             {
                 interval.WriteShowThroughEllipsoidProperty(expectedShowThroughEllipsoid);

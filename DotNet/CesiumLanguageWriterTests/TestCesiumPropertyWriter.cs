@@ -16,12 +16,8 @@ namespace CesiumLanguageWriterTests
         where TDerived : CesiumPropertyWriter<TDerived>
     {
         public StringWriter StringWriter { get; private set; }
-
         public CesiumOutputStream OutputStream { get; private set; }
-
         public CesiumStreamWriter Writer { get; private set; }
-
-        public PacketCesiumWriter Packet { get; private set; }
 
         [SetUp]
         public void TestCesiumPropertyWriterSetUp()
@@ -29,7 +25,18 @@ namespace CesiumLanguageWriterTests
             StringWriter = new StringWriter();
             OutputStream = new CesiumOutputStream(StringWriter);
             Writer = new CesiumStreamWriter();
-            Packet = Writer.OpenPacket(OutputStream);
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            StringWriter.Dispose();
+        }
+
+        [NotNull]
+        public PacketCesiumWriter OpenPacket()
+        {
+            return Writer.OpenPacket(OutputStream);
         }
 
         [NotNull]
@@ -74,8 +81,8 @@ namespace CesiumLanguageWriterTests
         {
             if (value is bool)
             {
-                // in C#, booleans format with a capital first letter
-                return value.ToString().ToLowerInvariant();
+                // by default, .NET uses "True" and "False" but we need lowercase.
+                return (bool)value ? "true" : "false";
             }
 
             if (value is Duration)
@@ -158,25 +165,29 @@ namespace CesiumLanguageWriterTests
                 });
             }
 
-            var dictionary = value as IDictionary<string, object>;
-            if (dictionary != null)
             {
-                return CreateExpectedJson(dictionary);
+                var dictionary = value as IDictionary<string, object>;
+                if (dictionary != null)
+                {
+                    return CreateExpectedJson(dictionary);
+                }
             }
 
-            var list = value as IEnumerable<object>;
-            if (list != null)
             {
-                var builder = new StringBuilder();
-                builder.Append('[');
-                foreach (var o in list)
+                var list = value as IEnumerable<object>;
+                if (list != null)
                 {
-                    builder.Append(FormatValue(o))
-                           .Append(',');
-                }
+                    var builder = new StringBuilder();
+                    builder.Append('[');
+                    foreach (object o in list)
+                    {
+                        builder.Append(FormatValue(o))
+                               .Append(',');
+                    }
 
-                builder[builder.Length - 1] = ']';
-                return builder.ToString();
+                    builder[builder.Length - 1] = ']';
+                    return builder.ToString();
+                }
             }
 
             return value.ToString();
@@ -199,41 +210,59 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void WritesPropertyNameOnOpenAndNothingOnClose()
         {
-            var propertyWriter = CreatePropertyWriter("foobar");
+            const string propertyName = "foobar";
+            var propertyWriter = CreatePropertyWriter(propertyName);
             propertyWriter.Open(OutputStream);
-            Assert.AreEqual("{\"foobar\":", StringWriter.ToString());
+
+            const string expected = "\"" + propertyName + "\":";
+            Assert.AreEqual(expected, StringWriter.ToString());
+
             propertyWriter.Close();
-            Assert.AreEqual("{\"foobar\":", StringWriter.ToString());
+
+            Assert.AreEqual(expected, StringWriter.ToString());
         }
 
         [Test]
         public void SingleIntervalWritesOpenObjectLiteral()
         {
-            var propertyWriter = CreatePropertyWriter("woot");
+            const string propertyName = "testObj";
+            var propertyWriter = CreatePropertyWriter(propertyName);
             propertyWriter.Open(OutputStream);
-            TDerived intervalWriter = propertyWriter.OpenInterval();
+
+            var intervalWriter = propertyWriter.OpenInterval();
             Assert.IsNotNull(intervalWriter);
-            Assert.AreEqual("{\"woot\":{", StringWriter.ToString());
+
+            const string expected = "\"" + propertyName + "\":{";
+            Assert.AreEqual(expected, StringWriter.ToString());
         }
 
         [Test]
         public void MultipleIntervalsWritesOpenArray()
         {
-            var propertyWriter = CreatePropertyWriter("woot");
+            const string propertyName = "testArr";
+            var propertyWriter = CreatePropertyWriter(propertyName);
             propertyWriter.Open(OutputStream);
+
             var intervalListWriter = propertyWriter.OpenMultipleIntervals();
             Assert.IsNotNull(intervalListWriter);
-            Assert.AreEqual("{\"woot\":[", StringWriter.ToString());
+
+            const string expected = "\"" + propertyName + "\":[";
+            Assert.AreEqual(expected, StringWriter.ToString());
         }
 
         [Test]
         public void ClosingMultipleIntervalsWritesCloseArray()
         {
-            var propertyWriter = CreatePropertyWriter("woot");
+            const string propertyName = "testArr";
+            var propertyWriter = CreatePropertyWriter(propertyName);
             propertyWriter.Open(OutputStream);
+
             var intervalListWriter = propertyWriter.OpenMultipleIntervals();
+            Assert.IsNotNull(intervalListWriter);
             intervalListWriter.Close();
-            Assert.AreEqual("{\"woot\":[]", StringWriter.ToString());
+
+            const string expected = "\"" + propertyName + "\":[]";
+            Assert.AreEqual(expected, StringWriter.ToString());
         }
 
         [Test]
@@ -244,7 +273,7 @@ namespace CesiumLanguageWriterTests
             JulianDate start = new GregorianDate(2012, 4, 2, 12, 0, 0).ToJulianDate();
             JulianDate stop = new GregorianDate(2012, 4, 2, 13, 0, 0).ToJulianDate();
 
-            using (Packet)
+            using (OpenPacket())
             using (var propertyWriter = CreatePropertyWriter(expectedPropertyName))
             {
                 propertyWriter.Open(OutputStream);

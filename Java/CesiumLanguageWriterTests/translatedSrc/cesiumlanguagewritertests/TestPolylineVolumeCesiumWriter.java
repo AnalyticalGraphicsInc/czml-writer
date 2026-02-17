@@ -32,8 +32,9 @@ public class TestPolylineVolumeCesiumWriter extends TestCesiumPropertyWriter<Pol
     @Test
     public final void testShowProperty() {
         final boolean expectedShow = true;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<PolylineVolumeCesiumWriter> using$1 = new Using<PolylineVolumeCesiumWriter>(getPacket().openPolylineVolumeProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PolylineVolumeCesiumWriter> using$1 = new Using<PolylineVolumeCesiumWriter>(packet.openPolylineVolumeProperty())) {
                 final PolylineVolumeCesiumWriter polylineVolume = using$1.resource;
                 try (Using<PolylineVolumeCesiumWriter> using$2 = new Using<PolylineVolumeCesiumWriter>(polylineVolume.openInterval())) {
                     final PolylineVolumeCesiumWriter interval = using$2.resource;
@@ -59,8 +60,9 @@ public class TestPolylineVolumeCesiumWriter extends TestCesiumPropertyWriter<Pol
         final boolean interval1Value = true;
         final boolean interval2Value = false;
         final boolean interval3Value = true;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<PolylineVolumeCesiumWriter> using$1 = new Using<PolylineVolumeCesiumWriter>(getPacket().openPolylineVolumeProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PolylineVolumeCesiumWriter> using$1 = new Using<PolylineVolumeCesiumWriter>(packet.openPolylineVolumeProperty())) {
                 final PolylineVolumeCesiumWriter polylineVolume = using$1.resource;
                 try (Using<BooleanCesiumWriter> using$2 = new Using<BooleanCesiumWriter>(polylineVolume.openShowProperty())) {
                     final BooleanCesiumWriter show = using$2.resource;
@@ -102,8 +104,9 @@ public class TestPolylineVolumeCesiumWriter extends TestCesiumPropertyWriter<Pol
 
     @Test
     public final void testShape() {
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<PolylineVolumeCesiumWriter> using$1 = new Using<PolylineVolumeCesiumWriter>(getPacket().openPolylineVolumeProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PolylineVolumeCesiumWriter> using$1 = new Using<PolylineVolumeCesiumWriter>(packet.openPolylineVolumeProperty())) {
                 final PolylineVolumeCesiumWriter polylineVolume = using$1.resource;
                 final ArrayList<Rectangular> tempCollection$0 = new ArrayList<Rectangular>();
                 tempCollection$0.add(new Rectangular(-5.0, -5.0));
@@ -120,8 +123,9 @@ public class TestPolylineVolumeCesiumWriter extends TestCesiumPropertyWriter<Pol
     @Test
     public final void testDistanceDisplayCondition() {
         Bounds expectedBounds = new Bounds(10.0, 1234.0);
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<PolylineVolumeCesiumWriter> using$1 = new Using<PolylineVolumeCesiumWriter>(getPacket().openPolylineVolumeProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PolylineVolumeCesiumWriter> using$1 = new Using<PolylineVolumeCesiumWriter>(packet.openPolylineVolumeProperty())) {
                 final PolylineVolumeCesiumWriter polylineVolume = using$1.resource;
                 try (Using<PolylineVolumeCesiumWriter> using$2 = new Using<PolylineVolumeCesiumWriter>(polylineVolume.openInterval())) {
                     final PolylineVolumeCesiumWriter interval = using$2.resource;

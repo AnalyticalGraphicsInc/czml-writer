@@ -26,8 +26,9 @@ public class TestRectangleCesiumWriter extends TestCesiumPropertyWriter<Rectangl
     public final void testHeightReferenceProperties() {
         final double expectedExtrudedHeight = 10.0;
         final CesiumHeightReference expectedExtrudedHeightReference = CesiumHeightReference.RELATIVE_TO_GROUND;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<RectangleCesiumWriter> using$1 = new Using<RectangleCesiumWriter>(getPacket().openRectangleProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<RectangleCesiumWriter> using$1 = new Using<RectangleCesiumWriter>(packet.openRectangleProperty())) {
                 final RectangleCesiumWriter rectangle = using$1.resource;
                 try (Using<RectangleCesiumWriter> using$2 = new Using<RectangleCesiumWriter>(rectangle.openInterval())) {
                     final RectangleCesiumWriter interval = using$2.resource;

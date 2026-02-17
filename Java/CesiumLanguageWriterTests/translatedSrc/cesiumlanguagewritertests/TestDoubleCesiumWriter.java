@@ -26,7 +26,7 @@ public class TestDoubleCesiumWriter extends TestCesiumPropertyWriter<DoubleCesiu
     public final void doubleCanBeWrittenAsSimpleNumber() {
         final String expectedPropertyName = "foo";
         final double expectedValue = 1.23;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             try (Using<DoubleCesiumWriter> using$1 = new Using<DoubleCesiumWriter>(new DoubleCesiumWriter(expectedPropertyName))) {
                 final DoubleCesiumWriter writer = using$1.resource;
                 writer.open(getOutputStream());
@@ -44,7 +44,7 @@ public class TestDoubleCesiumWriter extends TestCesiumPropertyWriter<DoubleCesiu
         JulianDate stop = start.addSeconds(100.0);
         final String expectedPropertyName = "foo";
         final double expectedValue = 1.23;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             try (Using<DoubleCesiumWriter> using$1 = new Using<DoubleCesiumWriter>(new DoubleCesiumWriter(expectedPropertyName))) {
                 final DoubleCesiumWriter writer = using$1.resource;
                 writer.open(getOutputStream());
@@ -65,8 +65,9 @@ public class TestDoubleCesiumWriter extends TestCesiumPropertyWriter<DoubleCesiu
         final String expectedId = "id";
         final String expectedPropertyName = "foo";
         final boolean expectedDelete = true;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            getPacket().writeId(expectedId);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            packet.writeId(expectedId);
             try (Using<DoubleCesiumWriter> using$1 = new Using<DoubleCesiumWriter>(new DoubleCesiumWriter(expectedPropertyName))) {
                 final DoubleCesiumWriter writer = using$1.resource;
                 writer.open(getOutputStream());
@@ -88,8 +89,9 @@ public class TestDoubleCesiumWriter extends TestCesiumPropertyWriter<DoubleCesiu
         final String expectedId = "id";
         final String expectedPropertyName = "foo";
         final boolean expectedDelete = true;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            getPacket().writeId(expectedId);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            packet.writeId(expectedId);
             try (Using<DoubleCesiumWriter> using$1 = new Using<DoubleCesiumWriter>(new DoubleCesiumWriter(expectedPropertyName))) {
                 final DoubleCesiumWriter writer = using$1.resource;
                 writer.open(getOutputStream());

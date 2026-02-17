@@ -17,8 +17,8 @@ namespace CesiumLanguageWriterTests
             const double expectedYHalfAngle = 1.2;
             const double expectedRadius = 1234.5;
 
-            using (Packet)
-            using (var rectangle = Packet.OpenRectangularSensorProperty())
+            using (var packet = OpenPacket())
+            using (var rectangle = packet.OpenRectangularSensorProperty())
             using (var interval = rectangle.OpenInterval())
             {
                 interval.WriteShowProperty(expectedShow);
@@ -45,8 +45,8 @@ namespace CesiumLanguageWriterTests
             const bool expectedShowEnvironmentIntersection = true;
             Color expectedEnvironmentIntersectionColor = Color.Red;
 
-            using (Packet)
-            using (var rectangle = Packet.OpenRectangularSensorProperty())
+            using (var packet = OpenPacket())
+            using (var rectangle = packet.OpenRectangularSensorProperty())
             using (var interval = rectangle.OpenInterval())
             {
                 interval.WriteShowIntersectionProperty(expectedShowIntersection);
@@ -72,8 +72,8 @@ namespace CesiumLanguageWriterTests
         {
             const bool expectedShowThroughEllipsoid = true;
 
-            using (Packet)
-            using (var rectangle = Packet.OpenRectangularSensorProperty())
+            using (var packet = OpenPacket())
+            using (var rectangle = packet.OpenRectangularSensorProperty())
             using (var interval = rectangle.OpenInterval())
             {
                 interval.WriteShowThroughEllipsoidProperty(expectedShowThroughEllipsoid);

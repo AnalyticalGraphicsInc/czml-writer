@@ -16,8 +16,8 @@ namespace CesiumLanguageWriterTests
             var expectedOddColor = Color.Blue;
             var expectedRepeat = new Rectangular(3.5, 4.5);
 
-            using (Packet)
-            using (var polyline = Packet.OpenPolylineProperty())
+            using (var packet = OpenPacket())
+            using (var polyline = packet.OpenPolylineProperty())
             using (var material = polyline.OpenMaterialProperty())
             using (var checkerboardMaterial = material.OpenCheckerboardProperty())
             {

@@ -26,8 +26,9 @@ public class TestSolidColorMaterialCesiumWriter extends TestCesiumPropertyWriter
     @Test
     public final void testWriteSolidColorMaterial() {
         Color expectedColor = Color.RED;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<PolylineCesiumWriter> using$1 = new Using<PolylineCesiumWriter>(getPacket().openPolylineProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PolylineCesiumWriter> using$1 = new Using<PolylineCesiumWriter>(packet.openPolylineProperty())) {
                 final PolylineCesiumWriter polyline = using$1.resource;
                 try (Using<PolylineMaterialCesiumWriter> using$2 = new Using<PolylineMaterialCesiumWriter>(polyline.openMaterialProperty())) {
                     final PolylineMaterialCesiumWriter material = using$2.resource;

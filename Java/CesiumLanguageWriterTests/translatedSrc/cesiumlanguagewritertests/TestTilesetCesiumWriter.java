@@ -25,8 +25,9 @@ public class TestTilesetCesiumWriter extends TestCesiumPropertyWriter<TilesetCes
     @Test
     public final void testShowProperty() {
         final boolean expectedShow = true;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<TilesetCesiumWriter> using$1 = new Using<TilesetCesiumWriter>(getPacket().openTilesetProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<TilesetCesiumWriter> using$1 = new Using<TilesetCesiumWriter>(packet.openTilesetProperty())) {
                 final TilesetCesiumWriter tileset = using$1.resource;
                 try (Using<TilesetCesiumWriter> using$2 = new Using<TilesetCesiumWriter>(tileset.openInterval())) {
                     final TilesetCesiumWriter interval = using$2.resource;
@@ -42,8 +43,9 @@ public class TestTilesetCesiumWriter extends TestCesiumPropertyWriter<TilesetCes
     @Test
     public final void testUriProperty() {
         final String expectedUri = "test.tileset";
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<TilesetCesiumWriter> using$1 = new Using<TilesetCesiumWriter>(getPacket().openTilesetProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<TilesetCesiumWriter> using$1 = new Using<TilesetCesiumWriter>(packet.openTilesetProperty())) {
                 final TilesetCesiumWriter tileset = using$1.resource;
                 try (Using<TilesetCesiumWriter> using$2 = new Using<TilesetCesiumWriter>(tileset.openInterval())) {
                     final TilesetCesiumWriter interval = using$2.resource;
@@ -59,8 +61,9 @@ public class TestTilesetCesiumWriter extends TestCesiumPropertyWriter<TilesetCes
     @Test
     public final void testMaximumScreenSpaceErrorProperty() {
         final double expectedMaximumScreenSpaceError = 0.75;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<TilesetCesiumWriter> using$1 = new Using<TilesetCesiumWriter>(getPacket().openTilesetProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<TilesetCesiumWriter> using$1 = new Using<TilesetCesiumWriter>(packet.openTilesetProperty())) {
                 final TilesetCesiumWriter tileset = using$1.resource;
                 try (Using<TilesetCesiumWriter> using$2 = new Using<TilesetCesiumWriter>(tileset.openInterval())) {
                     final TilesetCesiumWriter interval = using$2.resource;

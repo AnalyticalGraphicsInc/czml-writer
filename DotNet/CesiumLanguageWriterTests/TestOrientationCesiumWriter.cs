@@ -102,11 +102,11 @@ namespace CesiumLanguageWriterTests
             const string expectedId = "id";
             const bool expectedDelete = true;
 
-            using (Packet)
+            using (var packet = OpenPacket())
             {
-                Packet.WriteId(expectedId);
+                packet.WriteId(expectedId);
 
-                using (var orientation = Packet.OpenOrientationProperty())
+                using (var orientation = packet.OpenOrientationProperty())
                 using (var interval = orientation.OpenInterval(start, stop))
                 {
                     interval.WriteDelete(expectedDelete);
@@ -132,11 +132,11 @@ namespace CesiumLanguageWriterTests
             const string expectedId = "id";
             const bool expectedDelete = true;
 
-            using (Packet)
+            using (var packet = OpenPacket())
             {
-                Packet.WriteId(expectedId);
+                packet.WriteId(expectedId);
 
-                using (var orientation = Packet.OpenOrientationProperty())
+                using (var orientation = packet.OpenOrientationProperty())
                 using (var interval = orientation.OpenInterval())
                 {
                     interval.WriteDelete(expectedDelete);

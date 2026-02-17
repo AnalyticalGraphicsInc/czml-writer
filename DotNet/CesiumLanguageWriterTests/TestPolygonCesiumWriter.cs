@@ -15,8 +15,8 @@ namespace CesiumLanguageWriterTests
         {
             const bool expectedShow = true;
 
-            using (Packet)
-            using (var polygon = Packet.OpenPolygonProperty())
+            using (var packet = OpenPacket())
+            using (var polygon = packet.OpenPolygonProperty())
             using (var interval = polygon.OpenInterval())
             {
                 interval.WriteShowProperty(expectedShow);
@@ -45,8 +45,8 @@ namespace CesiumLanguageWriterTests
             const bool interval2Value = false;
             const bool interval3Value = true;
 
-            using (Packet)
-            using (var polygon = Packet.OpenPolygonProperty())
+            using (var packet = OpenPacket())
+            using (var polygon = packet.OpenPolygonProperty())
             using (var show = polygon.OpenShowProperty())
             using (var showIntervals = show.OpenMultipleIntervals())
             {
@@ -94,8 +94,8 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestHoles()
         {
-            using (Packet)
-            using (var polygon = Packet.OpenPolygonProperty())
+            using (var packet = OpenPacket())
+            using (var polygon = packet.OpenPolygonProperty())
             using (var holes = polygon.OpenHolesProperty())
             {
                 var listOfHoles = new List<List<Cartographic>>
@@ -115,8 +115,8 @@ namespace CesiumLanguageWriterTests
             var startDate = new GregorianDate(2012, 4, 2, 12, 0, 0).ToJulianDate();
             var stopDate = new GregorianDate(2012, 4, 2, 13, 0, 0).ToJulianDate();
 
-            using (Packet)
-            using (var polygon = Packet.OpenPolygonProperty())
+            using (var packet = OpenPacket())
+            using (var polygon = packet.OpenPolygonProperty())
             using (var holes = polygon.OpenHolesProperty())
             {
                 using (var holesIntervals = holes.OpenMultipleIntervals())
@@ -152,10 +152,7 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestExample()
         {
-            var outputStream = new CesiumOutputStream(StringWriter)
-            {
-                PrettyFormatting = true
-            };
+            var outputStream = new CesiumOutputStream(StringWriter, true);
             var writer = new CesiumStreamWriter();
 
             using (var packet = writer.OpenPacket(outputStream))

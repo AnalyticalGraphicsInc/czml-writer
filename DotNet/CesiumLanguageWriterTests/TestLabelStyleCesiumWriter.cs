@@ -14,7 +14,7 @@ namespace CesiumLanguageWriterTests
             const string expectedPropertyName = "foo";
             const CesiumLabelStyle expectedValue = CesiumLabelStyle.FillAndOutline;
 
-            using (Packet)
+            using (OpenPacket())
             using (var writer = new LabelStyleCesiumWriter(expectedPropertyName))
             {
                 writer.Open(OutputStream);
@@ -35,7 +35,7 @@ namespace CesiumLanguageWriterTests
             const string expectedPropertyName = "foo";
             const CesiumLabelStyle expectedValue = CesiumLabelStyle.FillAndOutline;
 
-            using (Packet)
+            using (OpenPacket())
             using (var writer = new LabelStyleCesiumWriter(expectedPropertyName))
             {
                 writer.Open(OutputStream);

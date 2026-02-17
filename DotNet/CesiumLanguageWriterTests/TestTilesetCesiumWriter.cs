@@ -13,8 +13,8 @@ namespace CesiumLanguageWriterTests
         {
             const bool expectedShow = true;
 
-            using (Packet)
-            using (var tileset = Packet.OpenTilesetProperty())
+            using (var packet = OpenPacket())
+            using (var tileset = packet.OpenTilesetProperty())
             using (var interval = tileset.OpenInterval())
             {
                 interval.WriteShowProperty(expectedShow);
@@ -31,8 +31,8 @@ namespace CesiumLanguageWriterTests
         {
             const string expectedUri = "test.tileset";
 
-            using (Packet)
-            using (var tileset = Packet.OpenTilesetProperty())
+            using (var packet = OpenPacket())
+            using (var tileset = packet.OpenTilesetProperty())
             using (var interval = tileset.OpenInterval())
             {
                 interval.WriteUriProperty(expectedUri, CesiumResourceBehavior.LinkTo);
@@ -48,8 +48,8 @@ namespace CesiumLanguageWriterTests
         {
             const double expectedMaximumScreenSpaceError = 0.75;
 
-            using (Packet)
-            using (var tileset = Packet.OpenTilesetProperty())
+            using (var packet = OpenPacket())
+            using (var tileset = packet.OpenTilesetProperty())
             using (var interval = tileset.OpenInterval())
             {
                 interval.WriteMaximumScreenSpaceErrorProperty(expectedMaximumScreenSpaceError);

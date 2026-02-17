@@ -14,7 +14,7 @@ namespace CesiumLanguageWriterTests
             const string expectedPropertyName = "foo";
             const CesiumVerticalOrigin expectedValue = CesiumVerticalOrigin.Center;
 
-            using (Packet)
+            using (OpenPacket())
             using (var writer = new VerticalOriginCesiumWriter(expectedPropertyName))
             {
                 writer.Open(OutputStream);
@@ -35,7 +35,7 @@ namespace CesiumLanguageWriterTests
             const string expectedPropertyName = "foo";
             const CesiumVerticalOrigin expectedValue = CesiumVerticalOrigin.Center;
 
-            using (Packet)
+            using (OpenPacket())
             using (var writer = new VerticalOriginCesiumWriter(expectedPropertyName))
             {
                 writer.Open(OutputStream);

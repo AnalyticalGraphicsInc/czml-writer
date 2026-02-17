@@ -16,8 +16,8 @@ namespace CesiumLanguageWriterTests
             const double expectedGlowPower = 0.7;
             const double expectedTaperPower = 0.2;
 
-            using (Packet)
-            using (var polyline = Packet.OpenPolylineProperty())
+            using (var packet = OpenPacket())
+            using (var polyline = packet.OpenPolylineProperty())
             using (var material = polyline.OpenMaterialProperty())
             using (var polylineGlowMaterial = material.OpenPolylineGlowProperty())
             {

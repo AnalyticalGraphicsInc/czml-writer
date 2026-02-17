@@ -8,6 +8,7 @@ namespace CesiumLanguageWriterTests
     public class TestCesiumFormattingHelper
     {
         [Test]
+        [Combinatorial]
         public void TestClockRangeToString([Values] ClockRange value)
         {
             string s = CesiumFormattingHelper.ClockRangeToString(value);
@@ -15,6 +16,7 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
+        [Combinatorial]
         public void TestClockStepToString([Values] ClockStep value)
         {
             string s = CesiumFormattingHelper.ClockStepToString(value);
@@ -22,6 +24,7 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
+        [Combinatorial]
         public void TestColorBlendModeToString([Values] CesiumColorBlendMode value)
         {
             string s = CesiumFormattingHelper.ColorBlendModeToString(value);
@@ -29,6 +32,7 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
+        [Combinatorial]
         public void TestCornerTypeToString([Values] CesiumCornerType value)
         {
             string s = CesiumFormattingHelper.CornerTypeToString(value);
@@ -36,6 +40,7 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
+        [Combinatorial]
         public void TestExtrapolationTypeToString([Values] CesiumExtrapolationType value)
         {
             string s = CesiumFormattingHelper.ExtrapolationTypeToString(value);
@@ -43,6 +48,7 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
+        [Combinatorial]
         public void TestHeightReferenceToString([Values] CesiumHeightReference value)
         {
             string s = CesiumFormattingHelper.HeightReferenceToString(value);
@@ -50,6 +56,7 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
+        [Combinatorial]
         public void TestHorizontalOriginToString([Values] CesiumHorizontalOrigin value)
         {
             string s = CesiumFormattingHelper.HorizontalOriginToString(value);
@@ -57,6 +64,7 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
+        [Combinatorial]
         public void TestInterpolationAlgorithmToString([Values] CesiumInterpolationAlgorithm value)
         {
             string s = CesiumFormattingHelper.InterpolationAlgorithmToString(value);
@@ -64,6 +72,7 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
+        [Combinatorial]
         public void TestLabelStyleToString([Values] CesiumLabelStyle value)
         {
             string s = CesiumFormattingHelper.LabelStyleToString(value);
@@ -71,6 +80,7 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
+        [Combinatorial]
         public void TestSensorVolumePortionToDisplayToString([Values] CesiumSensorVolumePortionToDisplay value)
         {
             string s = CesiumFormattingHelper.SensorVolumePortionToDisplayToString(value);
@@ -78,6 +88,7 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
+        [Combinatorial]
         public void TestShadowModeToString([Values] CesiumShadowMode value)
         {
             string s = CesiumFormattingHelper.ShadowModeToString(value);
@@ -85,6 +96,7 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
+        [Combinatorial]
         public void TestStripeOrientationToString([Values] CesiumStripeOrientation value)
         {
             string s = CesiumFormattingHelper.StripeOrientationToString(value);
@@ -92,6 +104,7 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
+        [Combinatorial]
         public void TestVerticalOriginToString([Values] CesiumVerticalOrigin value)
         {
             string s = CesiumFormattingHelper.VerticalOriginToString(value);

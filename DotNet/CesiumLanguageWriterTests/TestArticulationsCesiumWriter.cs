@@ -16,8 +16,8 @@ namespace CesiumLanguageWriterTests
             const string expectedName = "articulation1 stage1";
             const double expectedValue = 3.5;
 
-            using (Packet)
-            using (var modelWriter = Packet.OpenModelProperty())
+            using (var packetWriter = OpenPacket())
+            using (var modelWriter = packetWriter.OpenModelProperty())
             using (var articulationsWriter = modelWriter.OpenArticulationsProperty())
             using (var articulationWriter = articulationsWriter.OpenArticulationProperty(expectedName))
             {
@@ -44,8 +44,8 @@ namespace CesiumLanguageWriterTests
             const string expectedName2 = "articulation1 stage2";
             const double expectedValue2 = 5.5;
 
-            using (Packet)
-            using (var modelWriter = Packet.OpenModelProperty())
+            using (var packetWriter = OpenPacket())
+            using (var modelWriter = packetWriter.OpenModelProperty())
             using (var articulationsWriter = modelWriter.OpenArticulationsProperty())
             {
                 using (var articulationWriter = articulationsWriter.OpenArticulationProperty(expectedName1))
@@ -86,11 +86,11 @@ namespace CesiumLanguageWriterTests
                     var startDate = new GregorianDate(2012, 4, 2, 12, 0, 0).ToJulianDate();
                     var stopDate = new GregorianDate(2012, 4, 2, 12, 1, 0).ToJulianDate();
 
-                    using (var clockWriter = packet.OpenClockProperty())
+                    using (var clock = packet.OpenClockProperty())
                     {
-                        using (var intervalClockWriter = clockWriter.OpenInterval(startDate, stopDate))
+                        using (var interval = clock.OpenInterval(startDate, stopDate))
                         {
-                            intervalClockWriter.WriteCurrentTime(startDate);
+                            interval.WriteCurrentTime(startDate);
                         }
                     }
 

@@ -10,6 +10,7 @@ import agi.foundation.compatibility.DoubleHelper;
 import agi.foundation.compatibility.MapHelper;
 import agi.foundation.compatibility.StringHelper;
 import agi.foundation.compatibility.TestContextRule;
+import agi.foundation.compatibility.TextWriterHelper;
 import agi.foundation.compatibility.Using;
 import agi.foundation.TypeLiteral;
 import cesiumlanguagewriter.*;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 import javax.annotation.Nonnull;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.ClassRule;
@@ -59,20 +61,21 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
         backingField$Writer = value;
     }
 
-    public final PacketCesiumWriter getPacket() {
-        return backingField$Packet;
-    }
-
-    private final void setPacket(PacketCesiumWriter value) {
-        backingField$Packet = value;
-    }
-
     @Before
     public final void testCesiumPropertyWriterSetUp() {
         setStringWriter(new StringWriter());
         setOutputStream(new CesiumOutputStream(getStringWriter()));
         setWriter(new CesiumStreamWriter());
-        setPacket(getWriter().openPacket(getOutputStream()));
+    }
+
+    @After
+    public final void tearDown() {
+        TextWriterHelper.close(getStringWriter());
+    }
+
+    @Nonnull
+    public final PacketCesiumWriter openPacket() {
+        return getWriter().openPacket(getOutputStream());
     }
 
     @Nonnull
@@ -105,8 +108,8 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
     @Nonnull
     private static String formatValue(@Nonnull Object value) {
         if (value instanceof Boolean) {
-            // in C#, booleans format with a capital first letter
-            return StringHelper.toLowerInvariant(value.toString());
+            // by default, .NET uses "True" and "False" but we need lowercase.
+            return (Boolean) value ? "true" : "false";
         }
         if (value instanceof Duration) {
             Duration duration = (Duration) value;
@@ -190,19 +193,23 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
             MapHelper.add(tempCollection$12, "unitQuaternion", tempCollection$13);
             return createExpectedJson(tempCollection$12);
         }
-        Map<String, Object> dictionary = value instanceof Map ? (Map<String, Object>) value : null;
-        if (dictionary != null) {
-            return createExpectedJson(dictionary);
-        }
-        Iterable<Object> list = value instanceof Iterable ? (Iterable<Object>) value : null;
-        if (list != null) {
-            StringBuilder builder = new StringBuilder();
-            builder.append('[');
-            for (final Object o : list) {
-                builder.append(formatValue(o)).append(',');
+        {
+            Map<String, Object> dictionary = value instanceof Map ? (Map<String, Object>) value : null;
+            if (dictionary != null) {
+                return createExpectedJson(dictionary);
             }
-            builder.setCharAt(builder.length() - 1, ']');
-            return builder.toString();
+        }
+        {
+            Iterable<Object> list = value instanceof Iterable ? (Iterable<Object>) value : null;
+            if (list != null) {
+                StringBuilder builder = new StringBuilder();
+                builder.append('[');
+                for (final Object o : list) {
+                    builder.append(formatValue(o)).append(',');
+                }
+                builder.setCharAt(builder.length() - 1, ']');
+                return builder.toString();
+            }
         }
         return value.toString();
     }
@@ -221,38 +228,47 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
 
     @Test
     public final void writesPropertyNameOnOpenAndNothingOnClose() {
-        CesiumPropertyWriter<TDerived> propertyWriter = createPropertyWriter("foobar");
+        final String propertyName = "foobar";
+        CesiumPropertyWriter<TDerived> propertyWriter = createPropertyWriter(propertyName);
         propertyWriter.open(getOutputStream());
-        AssertHelper.assertEquals("{\"foobar\":", getStringWriter().toString());
+        final String expected = "\"" + propertyName + "\":";
+        AssertHelper.assertEquals(expected, getStringWriter().toString());
         propertyWriter.close();
-        AssertHelper.assertEquals("{\"foobar\":", getStringWriter().toString());
+        AssertHelper.assertEquals(expected, getStringWriter().toString());
     }
 
     @Test
     public final void singleIntervalWritesOpenObjectLiteral() {
-        CesiumPropertyWriter<TDerived> propertyWriter = createPropertyWriter("woot");
+        final String propertyName = "testObj";
+        CesiumPropertyWriter<TDerived> propertyWriter = createPropertyWriter(propertyName);
         propertyWriter.open(getOutputStream());
         TDerived intervalWriter = propertyWriter.openInterval();
         Assert.assertNotNull(intervalWriter);
-        AssertHelper.assertEquals("{\"woot\":{", getStringWriter().toString());
+        final String expected = "\"" + propertyName + "\":{";
+        AssertHelper.assertEquals(expected, getStringWriter().toString());
     }
 
     @Test
     public final void multipleIntervalsWritesOpenArray() {
-        CesiumPropertyWriter<TDerived> propertyWriter = createPropertyWriter("woot");
+        final String propertyName = "testArr";
+        CesiumPropertyWriter<TDerived> propertyWriter = createPropertyWriter(propertyName);
         propertyWriter.open(getOutputStream());
         CesiumIntervalListWriter<TDerived> intervalListWriter = propertyWriter.openMultipleIntervals();
         Assert.assertNotNull(intervalListWriter);
-        AssertHelper.assertEquals("{\"woot\":[", getStringWriter().toString());
+        final String expected = "\"" + propertyName + "\":[";
+        AssertHelper.assertEquals(expected, getStringWriter().toString());
     }
 
     @Test
     public final void closingMultipleIntervalsWritesCloseArray() {
-        CesiumPropertyWriter<TDerived> propertyWriter = createPropertyWriter("woot");
+        final String propertyName = "testArr";
+        CesiumPropertyWriter<TDerived> propertyWriter = createPropertyWriter(propertyName);
         propertyWriter.open(getOutputStream());
         CesiumIntervalListWriter<TDerived> intervalListWriter = propertyWriter.openMultipleIntervals();
+        Assert.assertNotNull(intervalListWriter);
         intervalListWriter.close();
-        AssertHelper.assertEquals("{\"woot\":[]", getStringWriter().toString());
+        final String expected = "\"" + propertyName + "\":[]";
+        AssertHelper.assertEquals(expected, getStringWriter().toString());
     }
 
     @Test
@@ -260,7 +276,7 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
         final String expectedPropertyName = "woot";
         JulianDate start = new GregorianDate(2012, 4, 2, 12, 0, 0.0).toJulianDate();
         JulianDate stop = new GregorianDate(2012, 4, 2, 13, 0, 0.0).toJulianDate();
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             try (Using<CesiumPropertyWriter<TDerived>> using$1 = new Using<CesiumPropertyWriter<TDerived>>(createPropertyWriter(expectedPropertyName))) {
                 final CesiumPropertyWriter<TDerived> propertyWriter = using$1.resource;
                 propertyWriter.open(getOutputStream());
@@ -312,7 +328,6 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
     private StringWriter backingField$StringWriter;
     private CesiumOutputStream backingField$OutputStream;
     private CesiumStreamWriter backingField$Writer;
-    private PacketCesiumWriter backingField$Packet;
     @Nonnull
     private static final TestContextRule rule$testContext = new TestContextRule();
 

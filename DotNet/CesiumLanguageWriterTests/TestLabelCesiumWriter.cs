@@ -14,8 +14,8 @@ namespace CesiumLanguageWriterTests
         {
             const bool expectedShow = true;
 
-            using (Packet)
-            using (var label = Packet.OpenLabelProperty())
+            using (var packet = OpenPacket())
+            using (var label = packet.OpenLabelProperty())
             using (var interval = label.OpenInterval())
             {
                 interval.WriteShowProperty(expectedShow);
@@ -32,8 +32,8 @@ namespace CesiumLanguageWriterTests
         {
             const string expectedText = "asdf";
 
-            using (Packet)
-            using (var label = Packet.OpenLabelProperty())
+            using (var packet = OpenPacket())
+            using (var label = packet.OpenLabelProperty())
             using (var interval = label.OpenInterval())
             {
                 interval.WriteTextProperty(expectedText);
@@ -62,9 +62,9 @@ namespace CesiumLanguageWriterTests
             const string interval2Value = "B";
             const string interval3Value = "C";
 
-            using (Packet)
-            using (var billboard = Packet.OpenLabelProperty())
-            using (var text = billboard.OpenTextProperty())
+            using (var packet = OpenPacket())
+            using (var label = packet.OpenLabelProperty())
+            using (var text = label.OpenTextProperty())
             using (var textIntervals = text.OpenMultipleIntervals())
             {
                 using (var interval = textIntervals.OpenInterval(interval1Start, interval1Stop))
@@ -113,8 +113,8 @@ namespace CesiumLanguageWriterTests
         {
             const bool expectedShowBackground = true;
 
-            using (Packet)
-            using (var label = Packet.OpenLabelProperty())
+            using (var packet = OpenPacket())
+            using (var label = packet.OpenLabelProperty())
             using (var interval = label.OpenInterval())
             {
                 interval.WriteShowBackgroundProperty(expectedShowBackground);
@@ -131,8 +131,8 @@ namespace CesiumLanguageWriterTests
         {
             var expectedBackgroundColor = Color.Red;
 
-            using (Packet)
-            using (var label = Packet.OpenLabelProperty())
+            using (var packet = OpenPacket())
+            using (var label = packet.OpenLabelProperty())
             using (var interval = label.OpenInterval())
             {
                 interval.WriteBackgroundColorProperty(expectedBackgroundColor);
@@ -149,8 +149,8 @@ namespace CesiumLanguageWriterTests
         {
             var expectedBackgroundPadding = new Rectangular(3, 4);
 
-            using (Packet)
-            using (var label = Packet.OpenLabelProperty())
+            using (var packet = OpenPacket())
+            using (var label = packet.OpenLabelProperty())
             using (var interval = label.OpenInterval())
             {
                 interval.WriteBackgroundPaddingProperty(expectedBackgroundPadding);
@@ -167,8 +167,8 @@ namespace CesiumLanguageWriterTests
         {
             var expectedTranslucencyByDistance = new NearFarScalar(100.0, 1.0, 200.0, 2.0);
 
-            using (Packet)
-            using (var label = Packet.OpenLabelProperty())
+            using (var packet = OpenPacket())
+            using (var label = packet.OpenLabelProperty())
             using (var interval = label.OpenInterval())
             {
                 interval.WriteTranslucencyByDistanceProperty(expectedTranslucencyByDistance);
@@ -185,8 +185,8 @@ namespace CesiumLanguageWriterTests
         {
             var epoch = new GregorianDate(2012, 4, 2, 12, 0, 0).ToJulianDate();
 
-            using (Packet)
-            using (var label = Packet.OpenLabelProperty())
+            using (var packet = OpenPacket())
+            using (var label = packet.OpenLabelProperty())
             using (var interval = label.OpenInterval())
             using (var scaleByDistance = interval.OpenTranslucencyByDistanceProperty())
             {

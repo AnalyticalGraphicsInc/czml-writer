@@ -29,8 +29,9 @@ public class TestRectangularSensorCesiumWriter extends TestCesiumPropertyWriter<
         final double expectedXHalfAngle = 1.1;
         final double expectedYHalfAngle = 1.2;
         final double expectedRadius = 1234.5;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<RectangularSensorCesiumWriter> using$1 = new Using<RectangularSensorCesiumWriter>(getPacket().openRectangularSensorProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<RectangularSensorCesiumWriter> using$1 = new Using<RectangularSensorCesiumWriter>(packet.openRectangularSensorProperty())) {
                 final RectangularSensorCesiumWriter rectangle = using$1.resource;
                 try (Using<RectangularSensorCesiumWriter> using$2 = new Using<RectangularSensorCesiumWriter>(rectangle.openInterval())) {
                     final RectangularSensorCesiumWriter interval = using$2.resource;
@@ -56,8 +57,9 @@ public class TestRectangularSensorCesiumWriter extends TestCesiumPropertyWriter<
         final double expectedIntersectionWidth = 2.1;
         final boolean expectedShowEnvironmentIntersection = true;
         Color expectedEnvironmentIntersectionColor = Color.RED;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<RectangularSensorCesiumWriter> using$1 = new Using<RectangularSensorCesiumWriter>(getPacket().openRectangularSensorProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<RectangularSensorCesiumWriter> using$1 = new Using<RectangularSensorCesiumWriter>(packet.openRectangularSensorProperty())) {
                 final RectangularSensorCesiumWriter rectangle = using$1.resource;
                 try (Using<RectangularSensorCesiumWriter> using$2 = new Using<RectangularSensorCesiumWriter>(rectangle.openInterval())) {
                     final RectangularSensorCesiumWriter interval = using$2.resource;
@@ -81,8 +83,9 @@ public class TestRectangularSensorCesiumWriter extends TestCesiumPropertyWriter<
     @Test
     public final void testShowThroughEllipsoid() {
         final boolean expectedShowThroughEllipsoid = true;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<RectangularSensorCesiumWriter> using$1 = new Using<RectangularSensorCesiumWriter>(getPacket().openRectangularSensorProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<RectangularSensorCesiumWriter> using$1 = new Using<RectangularSensorCesiumWriter>(packet.openRectangularSensorProperty())) {
                 final RectangularSensorCesiumWriter rectangle = using$1.resource;
                 try (Using<RectangularSensorCesiumWriter> using$2 = new Using<RectangularSensorCesiumWriter>(rectangle.openInterval())) {
                     final RectangularSensorCesiumWriter interval = using$2.resource;

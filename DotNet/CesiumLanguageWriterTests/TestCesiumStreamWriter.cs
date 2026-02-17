@@ -20,6 +20,12 @@ namespace CesiumLanguageWriterTests
             m_writer = new CesiumStreamWriter();
         }
 
+        [TearDown]
+        public void TearDown()
+        {
+            m_stringWriter.Dispose();
+        }
+
         [Test]
         public void NewPacketWritesObjectLiteral()
         {

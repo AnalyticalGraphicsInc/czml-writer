@@ -31,8 +31,9 @@ public class TestConicSensorCesiumWriter extends TestCesiumPropertyWriter<ConicS
         final double expectedMinimumClockAngle = 1.3;
         final double expectedMaximumClockAngle = 1.4;
         final double expectedRadius = 1234.5;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<ConicSensorCesiumWriter> using$1 = new Using<ConicSensorCesiumWriter>(getPacket().openConicSensorProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<ConicSensorCesiumWriter> using$1 = new Using<ConicSensorCesiumWriter>(packet.openConicSensorProperty())) {
                 final ConicSensorCesiumWriter rectangle = using$1.resource;
                 try (Using<ConicSensorCesiumWriter> using$2 = new Using<ConicSensorCesiumWriter>(rectangle.openInterval())) {
                     final ConicSensorCesiumWriter interval = using$2.resource;
@@ -62,8 +63,9 @@ public class TestConicSensorCesiumWriter extends TestCesiumPropertyWriter<ConicS
         final double expectedIntersectionWidth = 2.1;
         final boolean expectedShowEnvironmentIntersection = true;
         Color expectedEnvironmentIntersectionColor = Color.RED;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<ConicSensorCesiumWriter> using$1 = new Using<ConicSensorCesiumWriter>(getPacket().openConicSensorProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<ConicSensorCesiumWriter> using$1 = new Using<ConicSensorCesiumWriter>(packet.openConicSensorProperty())) {
                 final ConicSensorCesiumWriter rectangle = using$1.resource;
                 try (Using<ConicSensorCesiumWriter> using$2 = new Using<ConicSensorCesiumWriter>(rectangle.openInterval())) {
                     final ConicSensorCesiumWriter interval = using$2.resource;
@@ -87,8 +89,9 @@ public class TestConicSensorCesiumWriter extends TestCesiumPropertyWriter<ConicS
     @Test
     public final void testShowThroughEllipsoid() {
         final boolean expectedShowThroughEllipsoid = true;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<ConicSensorCesiumWriter> using$1 = new Using<ConicSensorCesiumWriter>(getPacket().openConicSensorProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<ConicSensorCesiumWriter> using$1 = new Using<ConicSensorCesiumWriter>(packet.openConicSensorProperty())) {
                 final ConicSensorCesiumWriter rectangle = using$1.resource;
                 try (Using<ConicSensorCesiumWriter> using$2 = new Using<ConicSensorCesiumWriter>(rectangle.openInterval())) {
                     final ConicSensorCesiumWriter interval = using$2.resource;

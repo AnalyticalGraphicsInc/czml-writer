@@ -27,8 +27,9 @@ public class TestCustomPatternSensorCesiumWriter extends TestCesiumPropertyWrite
     public final void testBasicProperties() {
         final boolean expectedShow = true;
         final double expectedRadius = 1234.5;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<CustomPatternSensorCesiumWriter> using$1 = new Using<CustomPatternSensorCesiumWriter>(getPacket().openCustomPatternSensorProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<CustomPatternSensorCesiumWriter> using$1 = new Using<CustomPatternSensorCesiumWriter>(packet.openCustomPatternSensorProperty())) {
                 final CustomPatternSensorCesiumWriter rectangle = using$1.resource;
                 try (Using<CustomPatternSensorCesiumWriter> using$2 = new Using<CustomPatternSensorCesiumWriter>(rectangle.openInterval())) {
                     final CustomPatternSensorCesiumWriter interval = using$2.resource;
@@ -50,8 +51,9 @@ public class TestCustomPatternSensorCesiumWriter extends TestCesiumPropertyWrite
         final double expectedIntersectionWidth = 2.1;
         final boolean expectedShowEnvironmentIntersection = true;
         Color expectedEnvironmentIntersectionColor = Color.RED;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<CustomPatternSensorCesiumWriter> using$1 = new Using<CustomPatternSensorCesiumWriter>(getPacket().openCustomPatternSensorProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<CustomPatternSensorCesiumWriter> using$1 = new Using<CustomPatternSensorCesiumWriter>(packet.openCustomPatternSensorProperty())) {
                 final CustomPatternSensorCesiumWriter rectangle = using$1.resource;
                 try (Using<CustomPatternSensorCesiumWriter> using$2 = new Using<CustomPatternSensorCesiumWriter>(rectangle.openInterval())) {
                     final CustomPatternSensorCesiumWriter interval = using$2.resource;
@@ -75,8 +77,9 @@ public class TestCustomPatternSensorCesiumWriter extends TestCesiumPropertyWrite
     @Test
     public final void testShowThroughEllipsoid() {
         final boolean expectedShowThroughEllipsoid = true;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<CustomPatternSensorCesiumWriter> using$1 = new Using<CustomPatternSensorCesiumWriter>(getPacket().openCustomPatternSensorProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<CustomPatternSensorCesiumWriter> using$1 = new Using<CustomPatternSensorCesiumWriter>(packet.openCustomPatternSensorProperty())) {
                 final CustomPatternSensorCesiumWriter rectangle = using$1.resource;
                 try (Using<CustomPatternSensorCesiumWriter> using$2 = new Using<CustomPatternSensorCesiumWriter>(rectangle.openInterval())) {
                     final CustomPatternSensorCesiumWriter interval = using$2.resource;

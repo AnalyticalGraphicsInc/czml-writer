@@ -32,8 +32,9 @@ public class TestArticulationsCesiumWriter extends TestCesiumPropertyWriter<Arti
     public final void singleArticulation() {
         final String expectedName = "articulation1 stage1";
         final double expectedValue = 3.5;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<ModelCesiumWriter> using$1 = new Using<ModelCesiumWriter>(getPacket().openModelProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packetWriter = using$0.resource;
+            try (Using<ModelCesiumWriter> using$1 = new Using<ModelCesiumWriter>(packetWriter.openModelProperty())) {
                 final ModelCesiumWriter modelWriter = using$1.resource;
                 try (Using<ArticulationsCesiumWriter> using$2 = new Using<ArticulationsCesiumWriter>(modelWriter.openArticulationsProperty())) {
                     final ArticulationsCesiumWriter articulationsWriter = using$2.resource;
@@ -57,8 +58,9 @@ public class TestArticulationsCesiumWriter extends TestCesiumPropertyWriter<Arti
         final double expectedValue1 = 4.5;
         final String expectedName2 = "articulation1 stage2";
         final double expectedValue2 = 5.5;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<ModelCesiumWriter> using$1 = new Using<ModelCesiumWriter>(getPacket().openModelProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packetWriter = using$0.resource;
+            try (Using<ModelCesiumWriter> using$1 = new Using<ModelCesiumWriter>(packetWriter.openModelProperty())) {
                 final ModelCesiumWriter modelWriter = using$1.resource;
                 try (Using<ArticulationsCesiumWriter> using$2 = new Using<ArticulationsCesiumWriter>(modelWriter.openArticulationsProperty())) {
                     final ArticulationsCesiumWriter articulationsWriter = using$2.resource;
@@ -93,10 +95,10 @@ public class TestArticulationsCesiumWriter extends TestCesiumPropertyWriter<Arti
                 JulianDate startDate = new GregorianDate(2012, 4, 2, 12, 0, 0.0).toJulianDate();
                 JulianDate stopDate = new GregorianDate(2012, 4, 2, 12, 1, 0.0).toJulianDate();
                 try (Using<ClockCesiumWriter> using$2 = new Using<ClockCesiumWriter>(packet.openClockProperty())) {
-                    final ClockCesiumWriter clockWriter = using$2.resource;
-                    try (Using<ClockCesiumWriter> using$3 = new Using<ClockCesiumWriter>(clockWriter.openInterval(startDate, stopDate))) {
-                        final ClockCesiumWriter intervalClockWriter = using$3.resource;
-                        intervalClockWriter.writeCurrentTime(startDate);
+                    final ClockCesiumWriter clock = using$2.resource;
+                    try (Using<ClockCesiumWriter> using$3 = new Using<ClockCesiumWriter>(clock.openInterval(startDate, stopDate))) {
+                        final ClockCesiumWriter interval = using$3.resource;
+                        interval.writeCurrentTime(startDate);
                     }
                 }
                 try (Using<ModelCesiumWriter> using$4 = new Using<ModelCesiumWriter>(packet.openModelProperty())) {

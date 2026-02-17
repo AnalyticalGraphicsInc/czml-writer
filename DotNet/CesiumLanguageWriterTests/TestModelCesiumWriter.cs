@@ -14,8 +14,8 @@ namespace CesiumLanguageWriterTests
         {
             const bool expectedShow = true;
 
-            using (Packet)
-            using (var model = Packet.OpenModelProperty())
+            using (var packet = OpenPacket())
+            using (var model = packet.OpenModelProperty())
             using (var interval = model.OpenInterval())
             {
                 interval.WriteShowProperty(expectedShow);
@@ -32,8 +32,8 @@ namespace CesiumLanguageWriterTests
         {
             const string expectedGltf = "test.gltf";
 
-            using (Packet)
-            using (var model = Packet.OpenModelProperty())
+            using (var packet = OpenPacket())
+            using (var model = packet.OpenModelProperty())
             using (var interval = model.OpenInterval())
             {
                 interval.WriteGltfProperty(expectedGltf, CesiumResourceBehavior.LinkTo);
@@ -49,8 +49,8 @@ namespace CesiumLanguageWriterTests
         {
             var expectedSilhouetteColor = Color.Blue;
 
-            using (Packet)
-            using (var model = Packet.OpenModelProperty())
+            using (var packet = OpenPacket())
+            using (var model = packet.OpenModelProperty())
             using (var interval = model.OpenInterval())
             {
                 interval.WriteSilhouetteColorProperty(expectedSilhouetteColor);
@@ -67,8 +67,8 @@ namespace CesiumLanguageWriterTests
         {
             const double expectedSilhouetteSize = 0.75;
 
-            using (Packet)
-            using (var model = Packet.OpenModelProperty())
+            using (var packet = OpenPacket())
+            using (var model = packet.OpenModelProperty())
             using (var interval = model.OpenInterval())
             {
                 interval.WriteSilhouetteSizeProperty(expectedSilhouetteSize);
@@ -85,8 +85,8 @@ namespace CesiumLanguageWriterTests
         {
             var expectedColor = Color.Red;
 
-            using (Packet)
-            using (var model = Packet.OpenModelProperty())
+            using (var packet = OpenPacket())
+            using (var model = packet.OpenModelProperty())
             using (var interval = model.OpenInterval())
             {
                 interval.WriteColorProperty(expectedColor);
@@ -103,8 +103,8 @@ namespace CesiumLanguageWriterTests
         {
             const CesiumColorBlendMode expectedColorBlendMode = CesiumColorBlendMode.Replace;
 
-            using (Packet)
-            using (var model = Packet.OpenModelProperty())
+            using (var packet = OpenPacket())
+            using (var model = packet.OpenModelProperty())
             using (var interval = model.OpenInterval())
             {
                 interval.WriteColorBlendModeProperty(expectedColorBlendMode);
@@ -121,8 +121,8 @@ namespace CesiumLanguageWriterTests
         {
             const double expectedColorBlendAmount = 0.75;
 
-            using (Packet)
-            using (var model = Packet.OpenModelProperty())
+            using (var packet = OpenPacket())
+            using (var model = packet.OpenModelProperty())
             using (var interval = model.OpenInterval())
             {
                 interval.WriteColorBlendAmountProperty(expectedColorBlendAmount);

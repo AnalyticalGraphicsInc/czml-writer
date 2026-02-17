@@ -29,8 +29,9 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
     @Test
     public final void referenceFrameValueWritesReferenceFrameProperty() {
         final String expectedReferenceFrame = "myReferenceFrame";
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<PositionCesiumWriter> using$1 = new Using<PositionCesiumWriter>(getPacket().openPositionProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PositionCesiumWriter> using$1 = new Using<PositionCesiumWriter>(packet.openPositionProperty())) {
                 final PositionCesiumWriter position = using$1.resource;
                 try (Using<PositionCesiumWriter> using$2 = new Using<PositionCesiumWriter>(position.openInterval())) {
                     final PositionCesiumWriter interval = using$2.resource;
@@ -46,8 +47,9 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
     @Test
     public final void cartesianValueWritesSingleCartesianProperty() {
         Cartesian expectedValue = new Cartesian(1.0, 2.0, 3.0);
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<PositionCesiumWriter> using$1 = new Using<PositionCesiumWriter>(getPacket().openPositionProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PositionCesiumWriter> using$1 = new Using<PositionCesiumWriter>(packet.openPositionProperty())) {
                 final PositionCesiumWriter position = using$1.resource;
                 try (Using<PositionCesiumWriter> using$2 = new Using<PositionCesiumWriter>(position.openInterval())) {
                     final PositionCesiumWriter interval = using$2.resource;
@@ -63,8 +65,9 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
     @Test
     public final void cartographicRadiansValueWritesSingleCartographicRadiansProperty() {
         Cartographic expectedValue = new Cartographic(1100.0, 2200.0, 3.0);
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<PositionCesiumWriter> using$1 = new Using<PositionCesiumWriter>(getPacket().openPositionProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PositionCesiumWriter> using$1 = new Using<PositionCesiumWriter>(packet.openPositionProperty())) {
                 final PositionCesiumWriter position = using$1.resource;
                 try (Using<PositionCesiumWriter> using$2 = new Using<PositionCesiumWriter>(position.openInterval())) {
                     final PositionCesiumWriter interval = using$2.resource;
@@ -80,8 +83,9 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
     @Test
     public final void cartesianValueWritesMultipleCartesianProperty() {
         JulianDate epoch = new GregorianDate(2012, 4, 2, 12, 0, 0.0).toJulianDate();
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<PositionCesiumWriter> using$1 = new Using<PositionCesiumWriter>(getPacket().openPositionProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PositionCesiumWriter> using$1 = new Using<PositionCesiumWriter>(packet.openPositionProperty())) {
                 final PositionCesiumWriter position = using$1.resource;
                 try (Using<PositionCesiumWriter> using$2 = new Using<PositionCesiumWriter>(position.openInterval())) {
                     final PositionCesiumWriter interval = using$2.resource;
@@ -101,8 +105,9 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
     @Test
     public final void cartesianValueSubsetWritesMultipleCartesianProperty() {
         JulianDate startDate = new GregorianDate(2012, 4, 2, 12, 0, 0.0).toJulianDate();
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<PositionCesiumWriter> using$1 = new Using<PositionCesiumWriter>(getPacket().openPositionProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PositionCesiumWriter> using$1 = new Using<PositionCesiumWriter>(packet.openPositionProperty())) {
                 final PositionCesiumWriter position = using$1.resource;
                 try (Using<PositionCesiumWriter> using$2 = new Using<PositionCesiumWriter>(position.openInterval())) {
                     final PositionCesiumWriter interval = using$2.resource;
@@ -124,8 +129,9 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
     @Test
     public final void cartographicRadiansValueWritesMultipleCartographicRadiansProperty() {
         JulianDate startDate = new GregorianDate(2012, 4, 2, 12, 0, 0.0).toJulianDate();
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<PositionCesiumWriter> using$1 = new Using<PositionCesiumWriter>(getPacket().openPositionProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PositionCesiumWriter> using$1 = new Using<PositionCesiumWriter>(packet.openPositionProperty())) {
                 final PositionCesiumWriter position = using$1.resource;
                 try (Using<PositionCesiumWriter> using$2 = new Using<PositionCesiumWriter>(position.openInterval())) {
                     final PositionCesiumWriter interval = using$2.resource;
@@ -145,8 +151,9 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
     @Test
     public final void cartographicRadiansValueSubsetWritesMultipleCartographicRadiansProperty() {
         JulianDate startDate = new GregorianDate(2012, 4, 2, 12, 0, 0.0).toJulianDate();
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<PositionCesiumWriter> using$1 = new Using<PositionCesiumWriter>(getPacket().openPositionProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PositionCesiumWriter> using$1 = new Using<PositionCesiumWriter>(packet.openPositionProperty())) {
                 final PositionCesiumWriter position = using$1.resource;
                 try (Using<PositionCesiumWriter> using$2 = new Using<PositionCesiumWriter>(position.openInterval())) {
                     final PositionCesiumWriter interval = using$2.resource;
@@ -167,8 +174,9 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
 
     @Test
     public final void cartesianValueWritesEmptyArrayAndDoesNotWriteEpochWhenGivenAnEmptyCollection() {
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<PositionCesiumWriter> using$1 = new Using<PositionCesiumWriter>(getPacket().openPositionProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PositionCesiumWriter> using$1 = new Using<PositionCesiumWriter>(packet.openPositionProperty())) {
                 final PositionCesiumWriter position = using$1.resource;
                 try (Using<PositionCesiumWriter> using$2 = new Using<PositionCesiumWriter>(position.openInterval())) {
                     final PositionCesiumWriter interval = using$2.resource;
@@ -183,8 +191,9 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
 
     @Test
     public final void cartographicRadiansValueWritesEmptyArrayAndDoesNotWriteEpochWhenGivenAnEmptyCollection() {
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<PositionCesiumWriter> using$1 = new Using<PositionCesiumWriter>(getPacket().openPositionProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PositionCesiumWriter> using$1 = new Using<PositionCesiumWriter>(packet.openPositionProperty())) {
                 final PositionCesiumWriter position = using$1.resource;
                 try (Using<PositionCesiumWriter> using$2 = new Using<PositionCesiumWriter>(position.openInterval())) {
                     final PositionCesiumWriter interval = using$2.resource;
@@ -203,9 +212,10 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
         JulianDate stop = start.addDays(1.0);
         final String expectedId = "id";
         final boolean expectedDelete = true;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            getPacket().writeId(expectedId);
-            try (Using<PositionCesiumWriter> using$1 = new Using<PositionCesiumWriter>(getPacket().openPositionProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            packet.writeId(expectedId);
+            try (Using<PositionCesiumWriter> using$1 = new Using<PositionCesiumWriter>(packet.openPositionProperty())) {
                 final PositionCesiumWriter position = using$1.resource;
                 try (Using<PositionCesiumWriter> using$2 = new Using<PositionCesiumWriter>(position.openInterval(start, stop))) {
                     final PositionCesiumWriter interval = using$2.resource;
@@ -226,9 +236,10 @@ public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWr
     public final void testDeletePropertyWithNoInterval() {
         final String expectedId = "id";
         final boolean expectedDelete = true;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            getPacket().writeId(expectedId);
-            try (Using<PositionCesiumWriter> using$1 = new Using<PositionCesiumWriter>(getPacket().openPositionProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            packet.writeId(expectedId);
+            try (Using<PositionCesiumWriter> using$1 = new Using<PositionCesiumWriter>(packet.openPositionProperty())) {
                 final PositionCesiumWriter position = using$1.resource;
                 try (Using<PositionCesiumWriter> using$2 = new Using<PositionCesiumWriter>(position.openInterval())) {
                     final PositionCesiumWriter interval = using$2.resource;

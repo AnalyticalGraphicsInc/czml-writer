@@ -21,6 +21,7 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
+        [Combinatorial]
         public void TestFromImageFormats([Values] CesiumImageFormat format)
         {
             var image = new Bitmap(EmbeddedData.Read("satellite.bmp"));

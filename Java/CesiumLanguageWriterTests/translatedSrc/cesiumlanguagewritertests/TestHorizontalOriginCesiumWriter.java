@@ -26,7 +26,7 @@ public class TestHorizontalOriginCesiumWriter extends TestCesiumPropertyWriter<H
     public final void horizontalOriginCanBeWrittenAsSimpleString() {
         final String expectedPropertyName = "foo";
         final CesiumHorizontalOrigin expectedValue = CesiumHorizontalOrigin.CENTER;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             try (Using<HorizontalOriginCesiumWriter> using$1 = new Using<HorizontalOriginCesiumWriter>(new HorizontalOriginCesiumWriter(expectedPropertyName))) {
                 final HorizontalOriginCesiumWriter writer = using$1.resource;
                 writer.open(getOutputStream());
@@ -44,7 +44,7 @@ public class TestHorizontalOriginCesiumWriter extends TestCesiumPropertyWriter<H
         JulianDate stop = start.addSeconds(100.0);
         final String expectedPropertyName = "foo";
         final CesiumHorizontalOrigin expectedValue = CesiumHorizontalOrigin.CENTER;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             try (Using<HorizontalOriginCesiumWriter> using$1 = new Using<HorizontalOriginCesiumWriter>(new HorizontalOriginCesiumWriter(expectedPropertyName))) {
                 final HorizontalOriginCesiumWriter writer = using$1.resource;
                 writer.open(getOutputStream());

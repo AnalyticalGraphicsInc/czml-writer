@@ -18,15 +18,15 @@ namespace CesiumLanguageWriterTests
             var expectedRotation = UnitQuaternion.Identity;
             var expectedTranslation = new Cartesian(3.0, 3.0, 3.0);
 
-            using (Packet)
-            using (var modelWriter = Packet.OpenModelProperty())
-            using (var nodeTransformationsWriter = modelWriter.OpenNodeTransformationsProperty())
+            using (var packet = OpenPacket())
+            using (var model = packet.OpenModelProperty())
+            using (var nodeTransformations = model.OpenNodeTransformationsProperty())
             {
-                using (var nodeTransformationWriter = nodeTransformationsWriter.OpenNodeTransformationProperty(expectedNodeName))
+                using (var nodeTransformation = nodeTransformations.OpenNodeTransformationProperty(expectedNodeName))
                 {
-                    nodeTransformationWriter.WriteScaleProperty(expectedScale);
-                    nodeTransformationWriter.WriteRotationProperty(expectedRotation);
-                    nodeTransformationWriter.WriteTranslationProperty(expectedTranslation);
+                    nodeTransformation.WriteScaleProperty(expectedScale);
+                    nodeTransformation.WriteRotationProperty(expectedRotation);
+                    nodeTransformation.WriteTranslationProperty(expectedTranslation);
                 }
             }
 
@@ -60,22 +60,22 @@ namespace CesiumLanguageWriterTests
             var expectedRotation2 = new UnitQuaternion(0.0, 0.0, 0.0, 1.0);
             var expectedTranslation2 = new Cartesian(7.0, 8.0, 9.0);
 
-            using (Packet)
-            using (var modelWriter = Packet.OpenModelProperty())
-            using (var nodeTransformationsWriter = modelWriter.OpenNodeTransformationsProperty())
+            using (var packet = OpenPacket())
+            using (var model = packet.OpenModelProperty())
+            using (var nodeTransformations = model.OpenNodeTransformationsProperty())
             {
-                using (var nodeTransformationWriter = nodeTransformationsWriter.OpenNodeTransformationProperty(expectedNodeName1))
+                using (var nodeTransformation = nodeTransformations.OpenNodeTransformationProperty(expectedNodeName1))
                 {
-                    nodeTransformationWriter.WriteScaleProperty(expectedScale1);
-                    nodeTransformationWriter.WriteRotationProperty(expectedRotation1);
-                    nodeTransformationWriter.WriteTranslationProperty(expectedTranslation1);
+                    nodeTransformation.WriteScaleProperty(expectedScale1);
+                    nodeTransformation.WriteRotationProperty(expectedRotation1);
+                    nodeTransformation.WriteTranslationProperty(expectedTranslation1);
                 }
 
-                using (var nodeTransformationWriter = nodeTransformationsWriter.OpenNodeTransformationProperty(expectedNodeName2))
+                using (var nodeTransformation = nodeTransformations.OpenNodeTransformationProperty(expectedNodeName2))
                 {
-                    nodeTransformationWriter.WriteScaleProperty(expectedScale2);
-                    nodeTransformationWriter.WriteRotationProperty(expectedRotation2);
-                    nodeTransformationWriter.WriteTranslationProperty(expectedTranslation2);
+                    nodeTransformation.WriteScaleProperty(expectedScale2);
+                    nodeTransformation.WriteRotationProperty(expectedRotation2);
+                    nodeTransformation.WriteTranslationProperty(expectedTranslation2);
                 }
             }
 
@@ -119,28 +119,28 @@ namespace CesiumLanguageWriterTests
                     var startDate = new GregorianDate(2012, 4, 2, 12, 0, 0).ToJulianDate();
                     var stopDate = new GregorianDate(2012, 4, 2, 12, 1, 0).ToJulianDate();
 
-                    using (var clockWriter = packet.OpenClockProperty())
+                    using (var clock = packet.OpenClockProperty())
                     {
-                        using (var intervalClockWriter = clockWriter.OpenInterval(startDate, stopDate))
+                        using (var interval = clock.OpenInterval(startDate, stopDate))
                         {
-                            intervalClockWriter.WriteCurrentTime(startDate);
+                            interval.WriteCurrentTime(startDate);
                         }
                     }
 
-                    using (var modelWriter = packet.OpenModelProperty())
+                    using (var model = packet.OpenModelProperty())
                     {
-                        modelWriter.WriteGltfProperty(new Uri("example.gltf", UriKind.Relative), CesiumResourceBehavior.LinkTo);
+                        model.WriteGltfProperty(new Uri("example.gltf", UriKind.Relative), CesiumResourceBehavior.LinkTo);
 
-                        using (var nodeTransformationsWriter = modelWriter.OpenNodeTransformationsProperty())
+                        using (var nodeTransformations = model.OpenNodeTransformationsProperty())
                         {
-                            using (var nodeTransformationWriter = nodeTransformationsWriter.OpenNodeTransformationProperty("node1"))
+                            using (var nodeTransformation = nodeTransformations.OpenNodeTransformationProperty("node1"))
                             {
-                                nodeTransformationWriter.WriteScaleProperty(new Cartesian(1.0, 2.0, 3.0));
-                                nodeTransformationWriter.WriteRotationProperty(UnitQuaternion.Identity);
-                                nodeTransformationWriter.WriteTranslationProperty(new Cartesian(4.0, 5.0, 6.0));
+                                nodeTransformation.WriteScaleProperty(new Cartesian(1.0, 2.0, 3.0));
+                                nodeTransformation.WriteRotationProperty(UnitQuaternion.Identity);
+                                nodeTransformation.WriteTranslationProperty(new Cartesian(4.0, 5.0, 6.0));
                             }
 
-                            using (var nodeTransformationWriter = nodeTransformationsWriter.OpenNodeTransformationProperty("node2"))
+                            using (var nodeTransformation = nodeTransformations.OpenNodeTransformationProperty("node2"))
                             {
                                 var dates = new List<JulianDate>
                                 {
@@ -152,7 +152,7 @@ namespace CesiumLanguageWriterTests
                                     new Cartesian(1.0, 2.0, 3.0),
                                     new Cartesian(10.0, 12.0, 14.0)
                                 };
-                                nodeTransformationWriter.WriteScaleProperty(dates, values);
+                                nodeTransformation.WriteScaleProperty(dates, values);
                             }
                         }
                     }

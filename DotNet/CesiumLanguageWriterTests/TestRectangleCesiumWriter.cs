@@ -14,8 +14,8 @@ namespace CesiumLanguageWriterTests
             const double expectedExtrudedHeight = 10.0;
             const CesiumHeightReference expectedExtrudedHeightReference = CesiumHeightReference.RelativeToGround;
 
-            using (Packet)
-            using (var rectangle = Packet.OpenRectangleProperty())
+            using (var packet = OpenPacket())
+            using (var rectangle = packet.OpenRectangleProperty())
             using (var interval = rectangle.OpenInterval())
             {
                 interval.WriteExtrudedHeightProperty(expectedExtrudedHeight);

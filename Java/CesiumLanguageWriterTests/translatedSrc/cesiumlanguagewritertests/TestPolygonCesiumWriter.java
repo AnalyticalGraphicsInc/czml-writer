@@ -31,8 +31,9 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
     @Test
     public final void testShowProperty() {
         final boolean expectedShow = true;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<PolygonCesiumWriter> using$1 = new Using<PolygonCesiumWriter>(getPacket().openPolygonProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PolygonCesiumWriter> using$1 = new Using<PolygonCesiumWriter>(packet.openPolygonProperty())) {
                 final PolygonCesiumWriter polygon = using$1.resource;
                 try (Using<PolygonCesiumWriter> using$2 = new Using<PolygonCesiumWriter>(polygon.openInterval())) {
                     final PolygonCesiumWriter interval = using$2.resource;
@@ -58,8 +59,9 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
         final boolean interval1Value = true;
         final boolean interval2Value = false;
         final boolean interval3Value = true;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<PolygonCesiumWriter> using$1 = new Using<PolygonCesiumWriter>(getPacket().openPolygonProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PolygonCesiumWriter> using$1 = new Using<PolygonCesiumWriter>(packet.openPolygonProperty())) {
                 final PolygonCesiumWriter polygon = using$1.resource;
                 try (Using<BooleanCesiumWriter> using$2 = new Using<BooleanCesiumWriter>(polygon.openShowProperty())) {
                     final BooleanCesiumWriter show = using$2.resource;
@@ -101,8 +103,9 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
 
     @Test
     public final void testHoles() {
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<PolygonCesiumWriter> using$1 = new Using<PolygonCesiumWriter>(getPacket().openPolygonProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PolygonCesiumWriter> using$1 = new Using<PolygonCesiumWriter>(packet.openPolygonProperty())) {
                 final PolygonCesiumWriter polygon = using$1.resource;
                 try (Using<PositionListOfListsCesiumWriter> using$2 = new Using<PositionListOfListsCesiumWriter>(polygon.openHolesProperty())) {
                     final PositionListOfListsCesiumWriter holes = using$2.resource;
@@ -130,8 +133,9 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
     public final void testHolesIntervals() {
         JulianDate startDate = new GregorianDate(2012, 4, 2, 12, 0, 0.0).toJulianDate();
         JulianDate stopDate = new GregorianDate(2012, 4, 2, 13, 0, 0.0).toJulianDate();
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<PolygonCesiumWriter> using$1 = new Using<PolygonCesiumWriter>(getPacket().openPolygonProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PolygonCesiumWriter> using$1 = new Using<PolygonCesiumWriter>(packet.openPolygonProperty())) {
                 final PolygonCesiumWriter polygon = using$1.resource;
                 try (Using<PositionListOfListsCesiumWriter> using$2 = new Using<PositionListOfListsCesiumWriter>(polygon.openHolesProperty())) {
                     final PositionListOfListsCesiumWriter holes = using$2.resource;
@@ -182,9 +186,7 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
 
     @Test
     public final void testExample() {
-        final CesiumOutputStream tempObj$0 = new CesiumOutputStream(getStringWriter());
-        tempObj$0.setPrettyFormatting(true);
-        CesiumOutputStream outputStream = tempObj$0;
+        CesiumOutputStream outputStream = new CesiumOutputStream(getStringWriter(), true);
         CesiumStreamWriter writer = new CesiumStreamWriter();
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(writer.openPacket(outputStream))) {
             final PacketCesiumWriter packet = using$0.resource;

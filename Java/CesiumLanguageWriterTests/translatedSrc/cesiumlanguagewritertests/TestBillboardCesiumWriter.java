@@ -29,8 +29,9 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
     @Test
     public final void testShowProperty() {
         final boolean expectedShow = true;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<BillboardCesiumWriter> using$1 = new Using<BillboardCesiumWriter>(getPacket().openBillboardProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<BillboardCesiumWriter> using$1 = new Using<BillboardCesiumWriter>(packet.openBillboardProperty())) {
                 final BillboardCesiumWriter billboard = using$1.resource;
                 try (Using<BillboardCesiumWriter> using$2 = new Using<BillboardCesiumWriter>(billboard.openInterval())) {
                     final BillboardCesiumWriter interval = using$2.resource;
@@ -56,8 +57,9 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
         final boolean interval1Value = true;
         final boolean interval2Value = false;
         final boolean interval3Value = true;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<BillboardCesiumWriter> using$1 = new Using<BillboardCesiumWriter>(getPacket().openBillboardProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<BillboardCesiumWriter> using$1 = new Using<BillboardCesiumWriter>(packet.openBillboardProperty())) {
                 final BillboardCesiumWriter billboard = using$1.resource;
                 try (Using<BooleanCesiumWriter> using$2 = new Using<BooleanCesiumWriter>(billboard.openShowProperty())) {
                     final BooleanCesiumWriter show = using$2.resource;
@@ -100,8 +102,9 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
     @Test
     public final void testScaleByDistanceProperty() {
         NearFarScalar expectedScaleByDistance = new NearFarScalar(100.5, 1.5, 200.5, 2.5);
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<BillboardCesiumWriter> using$1 = new Using<BillboardCesiumWriter>(getPacket().openBillboardProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<BillboardCesiumWriter> using$1 = new Using<BillboardCesiumWriter>(packet.openBillboardProperty())) {
                 final BillboardCesiumWriter billboard = using$1.resource;
                 try (Using<BillboardCesiumWriter> using$2 = new Using<BillboardCesiumWriter>(billboard.openInterval())) {
                     final BillboardCesiumWriter interval = using$2.resource;
@@ -117,8 +120,9 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
     @Test
     public final void testScaleByDistancePropertySamples() {
         JulianDate epoch = new GregorianDate(2012, 4, 2, 12, 0, 0.0).toJulianDate();
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<BillboardCesiumWriter> using$1 = new Using<BillboardCesiumWriter>(getPacket().openBillboardProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<BillboardCesiumWriter> using$1 = new Using<BillboardCesiumWriter>(packet.openBillboardProperty())) {
                 final BillboardCesiumWriter billboard = using$1.resource;
                 try (Using<BillboardCesiumWriter> using$2 = new Using<BillboardCesiumWriter>(billboard.openInterval())) {
                     final BillboardCesiumWriter interval = using$2.resource;
@@ -140,8 +144,9 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
 
     @Test
     public final void testDeleteAlignedAxis() {
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<BillboardCesiumWriter> using$1 = new Using<BillboardCesiumWriter>(getPacket().openBillboardProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<BillboardCesiumWriter> using$1 = new Using<BillboardCesiumWriter>(packet.openBillboardProperty())) {
                 final BillboardCesiumWriter billboard = using$1.resource;
                 try (Using<AlignedAxisCesiumWriter> using$2 = new Using<AlignedAxisCesiumWriter>(billboard.openAlignedAxisProperty())) {
                     final AlignedAxisCesiumWriter alignedAxis = using$2.resource;
@@ -158,8 +163,9 @@ public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<Billboar
 
     @Test
     public final void testDeleteScale() {
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<BillboardCesiumWriter> using$1 = new Using<BillboardCesiumWriter>(getPacket().openBillboardProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<BillboardCesiumWriter> using$1 = new Using<BillboardCesiumWriter>(packet.openBillboardProperty())) {
                 final BillboardCesiumWriter billboard = using$1.resource;
                 try (Using<DoubleCesiumWriter> using$2 = new Using<DoubleCesiumWriter>(billboard.openScaleProperty())) {
                     final DoubleCesiumWriter scale = using$2.resource;

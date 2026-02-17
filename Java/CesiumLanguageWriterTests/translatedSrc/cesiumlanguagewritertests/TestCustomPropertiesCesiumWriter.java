@@ -50,12 +50,13 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
     public final void customPropertyBooleanConstant() {
         final String expectedName = "custom_property";
         final boolean expectedValue = true;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<CustomPropertiesCesiumWriter> using$1 = new Using<CustomPropertiesCesiumWriter>(getPacket().openPropertiesProperty())) {
-                final CustomPropertiesCesiumWriter customPropertiesWriter = using$1.resource;
-                try (Using<CustomPropertyCesiumWriter> using$2 = new Using<CustomPropertyCesiumWriter>(customPropertiesWriter.openCustomPropertyProperty(expectedName))) {
-                    final CustomPropertyCesiumWriter customPropertyWriter = using$2.resource;
-                    customPropertyWriter.writeBoolean(expectedValue);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<CustomPropertiesCesiumWriter> using$1 = new Using<CustomPropertiesCesiumWriter>(packet.openPropertiesProperty())) {
+                final CustomPropertiesCesiumWriter customProperties = using$1.resource;
+                try (Using<CustomPropertyCesiumWriter> using$2 = new Using<CustomPropertyCesiumWriter>(customProperties.openCustomPropertyProperty(expectedName))) {
+                    final CustomPropertyCesiumWriter customProperty = using$2.resource;
+                    customProperty.writeBoolean(expectedValue);
                 }
             }
         }
@@ -68,14 +69,15 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
     public final void customPropertyBooleanInterval() {
         final String expectedName = "custom_property";
         final boolean expectedValue = true;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<CustomPropertiesCesiumWriter> using$1 = new Using<CustomPropertiesCesiumWriter>(getPacket().openPropertiesProperty())) {
-                final CustomPropertiesCesiumWriter customPropertiesWriter = using$1.resource;
-                try (Using<CustomPropertyCesiumWriter> using$2 = new Using<CustomPropertyCesiumWriter>(customPropertiesWriter.openCustomPropertyProperty(expectedName))) {
-                    final CustomPropertyCesiumWriter customPropertyWriter = using$2.resource;
-                    try (Using<CustomPropertyCesiumWriter> using$3 = new Using<CustomPropertyCesiumWriter>(customPropertyWriter.openInterval(m_startDate, m_stopDate))) {
-                        final CustomPropertyCesiumWriter intervalWriter = using$3.resource;
-                        intervalWriter.writeBoolean(expectedValue);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<CustomPropertiesCesiumWriter> using$1 = new Using<CustomPropertiesCesiumWriter>(packet.openPropertiesProperty())) {
+                final CustomPropertiesCesiumWriter customProperties = using$1.resource;
+                try (Using<CustomPropertyCesiumWriter> using$2 = new Using<CustomPropertyCesiumWriter>(customProperties.openCustomPropertyProperty(expectedName))) {
+                    final CustomPropertyCesiumWriter customProperty = using$2.resource;
+                    try (Using<CustomPropertyCesiumWriter> using$3 = new Using<CustomPropertyCesiumWriter>(customProperty.openInterval(m_startDate, m_stopDate))) {
+                        final CustomPropertyCesiumWriter interval = using$3.resource;
+                        interval.writeBoolean(expectedValue);
                     }
                 }
             }
@@ -92,12 +94,13 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
     public final void customPropertyCartesianConstant() {
         final String expectedName = "custom_property";
         Cartesian expectedValue = new Cartesian(1.1, 2.2, 3.3);
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<CustomPropertiesCesiumWriter> using$1 = new Using<CustomPropertiesCesiumWriter>(getPacket().openPropertiesProperty())) {
-                final CustomPropertiesCesiumWriter customPropertiesWriter = using$1.resource;
-                try (Using<CustomPropertyCesiumWriter> using$2 = new Using<CustomPropertyCesiumWriter>(customPropertiesWriter.openCustomPropertyProperty(expectedName))) {
-                    final CustomPropertyCesiumWriter customPropertyWriter = using$2.resource;
-                    customPropertyWriter.writeCartesian(expectedValue);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<CustomPropertiesCesiumWriter> using$1 = new Using<CustomPropertiesCesiumWriter>(packet.openPropertiesProperty())) {
+                final CustomPropertiesCesiumWriter customProperties = using$1.resource;
+                try (Using<CustomPropertyCesiumWriter> using$2 = new Using<CustomPropertyCesiumWriter>(customProperties.openCustomPropertyProperty(expectedName))) {
+                    final CustomPropertyCesiumWriter customProperty = using$2.resource;
+                    customProperty.writeCartesian(expectedValue);
                 }
             }
         }
@@ -108,11 +111,12 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
 
     @Test
     public final void customPropertyCartesianSampled() {
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<CustomPropertiesCesiumWriter> using$1 = new Using<CustomPropertiesCesiumWriter>(getPacket().openPropertiesProperty())) {
-                final CustomPropertiesCesiumWriter customPropertiesWriter = using$1.resource;
-                try (Using<CustomPropertyCesiumWriter> using$2 = new Using<CustomPropertyCesiumWriter>(customPropertiesWriter.openCustomPropertyProperty("custom_property"))) {
-                    final CustomPropertyCesiumWriter customPropertyWriter = using$2.resource;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<CustomPropertiesCesiumWriter> using$1 = new Using<CustomPropertiesCesiumWriter>(packet.openPropertiesProperty())) {
+                final CustomPropertiesCesiumWriter customProperties = using$1.resource;
+                try (Using<CustomPropertyCesiumWriter> using$2 = new Using<CustomPropertyCesiumWriter>(customProperties.openCustomPropertyProperty("custom_property"))) {
+                    final CustomPropertyCesiumWriter customProperty = using$2.resource;
                     ArrayList<JulianDate> dates = new ArrayList<JulianDate>();
                     ArrayList<Cartesian> values = new ArrayList<Cartesian>();
                     dates.add(m_startDate);
@@ -121,7 +125,7 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
                     values.add(new Cartesian(4.0, 5.0, 6.0));
                     dates.add(m_startDate.addSeconds(120.0));
                     values.add(new Cartesian(7.0, 8.0, 9.0));
-                    customPropertyWriter.writeCartesian(dates, values);
+                    customProperty.writeCartesian(dates, values);
                 }
             }
         }
@@ -130,12 +134,13 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
 
     @Test
     public final void customPropertyCartesianSampledInterpolationSettings() {
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<CustomPropertiesCesiumWriter> using$1 = new Using<CustomPropertiesCesiumWriter>(getPacket().openPropertiesProperty())) {
-                final CustomPropertiesCesiumWriter customPropertiesWriter = using$1.resource;
-                try (Using<CustomPropertyCesiumWriter> using$2 = new Using<CustomPropertyCesiumWriter>(customPropertiesWriter.openCustomPropertyProperty("custom_property"))) {
-                    final CustomPropertyCesiumWriter customPropertyWriter = using$2.resource;
-                    customPropertyWriter.writeInterpolationAlgorithm(CesiumInterpolationAlgorithm.HERMITE);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<CustomPropertiesCesiumWriter> using$1 = new Using<CustomPropertiesCesiumWriter>(packet.openPropertiesProperty())) {
+                final CustomPropertiesCesiumWriter customProperties = using$1.resource;
+                try (Using<CustomPropertyCesiumWriter> using$2 = new Using<CustomPropertyCesiumWriter>(customProperties.openCustomPropertyProperty("custom_property"))) {
+                    final CustomPropertyCesiumWriter customProperty = using$2.resource;
+                    customProperty.writeInterpolationAlgorithm(CesiumInterpolationAlgorithm.HERMITE);
                     ArrayList<JulianDate> dates = new ArrayList<JulianDate>();
                     ArrayList<Cartesian> values = new ArrayList<Cartesian>();
                     dates.add(m_startDate);
@@ -144,7 +149,7 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
                     values.add(new Cartesian(4.0, 5.0, 6.0));
                     dates.add(m_startDate.addSeconds(120.0));
                     values.add(new Cartesian(7.0, 8.0, 9.0));
-                    customPropertyWriter.writeCartesian(dates, values);
+                    customProperty.writeCartesian(dates, values);
                 }
             }
         }
@@ -158,16 +163,17 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
         final boolean expectedValue1 = true;
         final String expectedName2 = "custom_cartesian";
         Cartesian expectedValue2 = new Cartesian(1.1, 2.2, 3.3);
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<CustomPropertiesCesiumWriter> using$1 = new Using<CustomPropertiesCesiumWriter>(getPacket().openPropertiesProperty())) {
-                final CustomPropertiesCesiumWriter customPropertiesWriter = using$1.resource;
-                try (Using<CustomPropertyCesiumWriter> using$2 = new Using<CustomPropertyCesiumWriter>(customPropertiesWriter.openCustomPropertyProperty(expectedName1))) {
-                    final CustomPropertyCesiumWriter customPropertyWriter = using$2.resource;
-                    customPropertyWriter.writeBoolean(expectedValue1);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<CustomPropertiesCesiumWriter> using$1 = new Using<CustomPropertiesCesiumWriter>(packet.openPropertiesProperty())) {
+                final CustomPropertiesCesiumWriter customProperties = using$1.resource;
+                try (Using<CustomPropertyCesiumWriter> using$2 = new Using<CustomPropertyCesiumWriter>(customProperties.openCustomPropertyProperty(expectedName1))) {
+                    final CustomPropertyCesiumWriter customProperty = using$2.resource;
+                    customProperty.writeBoolean(expectedValue1);
                 }
-                try (Using<CustomPropertyCesiumWriter> using$3 = new Using<CustomPropertyCesiumWriter>(customPropertiesWriter.openCustomPropertyProperty(expectedName2))) {
-                    final CustomPropertyCesiumWriter customPropertyWriter = using$3.resource;
-                    customPropertyWriter.writeCartesian(expectedValue2);
+                try (Using<CustomPropertyCesiumWriter> using$3 = new Using<CustomPropertyCesiumWriter>(customProperties.openCustomPropertyProperty(expectedName2))) {
+                    final CustomPropertyCesiumWriter customProperty = using$3.resource;
+                    customProperty.writeCartesian(expectedValue2);
                 }
             }
         }
@@ -189,10 +195,10 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
                 documentPacket.writeId("document");
                 documentPacket.writeVersion("1.0");
                 try (Using<ClockCesiumWriter> using$2 = new Using<ClockCesiumWriter>(documentPacket.openClockProperty())) {
-                    final ClockCesiumWriter clockWriter = using$2.resource;
-                    try (Using<ClockCesiumWriter> using$3 = new Using<ClockCesiumWriter>(clockWriter.openInterval(m_startDate, m_stopDate))) {
-                        final ClockCesiumWriter intervalClockWriter = using$3.resource;
-                        intervalClockWriter.writeCurrentTime(m_startDate);
+                    final ClockCesiumWriter clock = using$2.resource;
+                    try (Using<ClockCesiumWriter> using$3 = new Using<ClockCesiumWriter>(clock.openInterval(m_startDate, m_stopDate))) {
+                        final ClockCesiumWriter interval = using$3.resource;
+                        interval.writeCurrentTime(m_startDate);
                     }
                 }
             }
@@ -200,29 +206,29 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
                 final PacketCesiumWriter packet = using$4.resource;
                 packet.writeId("MyID");
                 try (Using<CustomPropertiesCesiumWriter> using$5 = new Using<CustomPropertiesCesiumWriter>(packet.openPropertiesProperty())) {
-                    final CustomPropertiesCesiumWriter customPropertiesWriter = using$5.resource;
-                    try (Using<CustomPropertyCesiumWriter> using$6 = new Using<CustomPropertyCesiumWriter>(customPropertiesWriter.openCustomPropertyProperty("custom_boolean"))) {
-                        final CustomPropertyCesiumWriter customPropertyWriter = using$6.resource;
+                    final CustomPropertiesCesiumWriter customProperties = using$5.resource;
+                    try (Using<CustomPropertyCesiumWriter> using$6 = new Using<CustomPropertyCesiumWriter>(customProperties.openCustomPropertyProperty("custom_boolean"))) {
+                        final CustomPropertyCesiumWriter customProperty = using$6.resource;
                         try (Using<CesiumIntervalListWriter<CustomPropertyCesiumWriter>> using$7 = new Using<CesiumIntervalListWriter<CustomPropertyCesiumWriter>>(
-                                customPropertyWriter.openMultipleIntervals())) {
-                            final CesiumIntervalListWriter<CustomPropertyCesiumWriter> intervalListWriter = using$7.resource;
-                            try (Using<CustomPropertyCesiumWriter> using$8 = new Using<CustomPropertyCesiumWriter>(intervalListWriter.openInterval(m_startDate, m_startDate.addSeconds(1.0)))) {
-                                final CustomPropertyCesiumWriter intervalWriter = using$8.resource;
-                                intervalWriter.writeBoolean(true);
+                                customProperty.openMultipleIntervals())) {
+                            final CesiumIntervalListWriter<CustomPropertyCesiumWriter> intervalList = using$7.resource;
+                            try (Using<CustomPropertyCesiumWriter> using$8 = new Using<CustomPropertyCesiumWriter>(intervalList.openInterval(m_startDate, m_startDate.addSeconds(1.0)))) {
+                                final CustomPropertyCesiumWriter interval = using$8.resource;
+                                interval.writeBoolean(true);
                             }
                             try (Using<CustomPropertyCesiumWriter> using$9 = new Using<CustomPropertyCesiumWriter>(
-                                    intervalListWriter.openInterval(m_startDate.addSeconds(1.0), m_startDate.addSeconds(2.0)))) {
-                                final CustomPropertyCesiumWriter intervalWriter = using$9.resource;
-                                intervalWriter.writeBoolean(false);
+                                    intervalList.openInterval(m_startDate.addSeconds(1.0), m_startDate.addSeconds(2.0)))) {
+                                final CustomPropertyCesiumWriter interval = using$9.resource;
+                                interval.writeBoolean(false);
                             }
-                            try (Using<CustomPropertyCesiumWriter> using$10 = new Using<CustomPropertyCesiumWriter>(intervalListWriter.openInterval(m_startDate.addSeconds(2.0), m_stopDate))) {
-                                final CustomPropertyCesiumWriter intervalWriter = using$10.resource;
-                                intervalWriter.writeBoolean(true);
+                            try (Using<CustomPropertyCesiumWriter> using$10 = new Using<CustomPropertyCesiumWriter>(intervalList.openInterval(m_startDate.addSeconds(2.0), m_stopDate))) {
+                                final CustomPropertyCesiumWriter interval = using$10.resource;
+                                interval.writeBoolean(true);
                             }
                         }
                     }
-                    try (Using<CustomPropertyCesiumWriter> using$11 = new Using<CustomPropertyCesiumWriter>(customPropertiesWriter.openCustomPropertyProperty("custom_cartesian"))) {
-                        final CustomPropertyCesiumWriter customPropertyWriter = using$11.resource;
+                    try (Using<CustomPropertyCesiumWriter> using$11 = new Using<CustomPropertyCesiumWriter>(customProperties.openCustomPropertyProperty("custom_cartesian"))) {
+                        final CustomPropertyCesiumWriter customProperty = using$11.resource;
                         ArrayList<JulianDate> dates = new ArrayList<JulianDate>();
                         ArrayList<Cartesian> values = new ArrayList<Cartesian>();
                         dates.add(m_startDate);
@@ -231,7 +237,7 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
                         values.add(new Cartesian(4.0, 5.0, 6.0));
                         dates.add(m_startDate.addSeconds(120.0));
                         values.add(new Cartesian(7.0, 8.0, 9.0));
-                        customPropertyWriter.writeCartesian(dates, values);
+                        customProperty.writeCartesian(dates, values);
                     }
                 }
             }

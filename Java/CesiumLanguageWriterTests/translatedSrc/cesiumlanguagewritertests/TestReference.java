@@ -28,14 +28,14 @@ public class TestReference {
     public final void canConstructEscapedReferences() {
         String value = "identifier#property";
         Reference reference = new Reference(value);
-        AssertHelper.assertEquals(reference.getIdentifier(), "identifier");
+        AssertHelper.assertEquals("identifier", reference.getIdentifier());
         final ArrayList<String> tempCollection$0 = new ArrayList<String>();
         tempCollection$0.add("property");
         AssertHelper.assertEquals(reference.getPropertyNames(), tempCollection$0);
         AssertHelper.assertEquals(value, reference.getValue());
         value = "identifier#property.subProperty";
         reference = new Reference(value);
-        AssertHelper.assertEquals(reference.getIdentifier(), "identifier");
+        AssertHelper.assertEquals("identifier", reference.getIdentifier());
         final ArrayList<String> tempCollection$1 = new ArrayList<String>();
         tempCollection$1.add("property");
         tempCollection$1.add("subProperty");
@@ -43,7 +43,7 @@ public class TestReference {
         AssertHelper.assertEquals(value, reference.getValue());
         value = "\\#identif\\\\\\\\\\#ier\\.\\\\#propertyName.\\.abc\\\\.def";
         reference = new Reference(value);
-        AssertHelper.assertEquals(reference.getIdentifier(), "#identif\\\\#ier.\\");
+        AssertHelper.assertEquals("#identif\\\\#ier.\\", reference.getIdentifier());
         final ArrayList<String> tempCollection$2 = new ArrayList<String>();
         tempCollection$2.add("propertyName");
         tempCollection$2.add(".abc\\");
@@ -64,17 +64,17 @@ public class TestReference {
     @Test
     public final void canConstructFromIdentifierAndProperty() {
         Reference reference = new Reference("identifier", "property");
-        AssertHelper.assertEquals(reference.getIdentifier(), "identifier");
+        AssertHelper.assertEquals("identifier", reference.getIdentifier());
         final ArrayList<String> tempCollection$0 = new ArrayList<String>();
         tempCollection$0.add("property");
         AssertHelper.assertEquals(reference.getPropertyNames(), tempCollection$0);
-        AssertHelper.assertEquals(reference.getValue(), "identifier#property");
+        AssertHelper.assertEquals("identifier#property", reference.getValue());
         reference = new Reference("#identif\\\\#ier.\\", "property.Name");
-        AssertHelper.assertEquals(reference.getIdentifier(), "#identif\\\\#ier.\\");
+        AssertHelper.assertEquals("#identif\\\\#ier.\\", reference.getIdentifier());
         final ArrayList<String> tempCollection$1 = new ArrayList<String>();
         tempCollection$1.add("property.Name");
         AssertHelper.assertEquals(reference.getPropertyNames(), tempCollection$1);
-        AssertHelper.assertEquals(reference.getValue(), "\\#identif\\\\\\\\\\#ier\\.\\\\#property\\.Name");
+        AssertHelper.assertEquals("\\#identif\\\\\\\\\\#ier\\.\\\\#property\\.Name", reference.getValue());
     }
 
     @Test
@@ -83,22 +83,22 @@ public class TestReference {
         tempCollection$0.add("property");
         tempCollection$0.add("subProperty");
         Reference reference = new Reference("identifier", tempCollection$0);
-        AssertHelper.assertEquals(reference.getIdentifier(), "identifier");
+        AssertHelper.assertEquals("identifier", reference.getIdentifier());
         final ArrayList<String> tempCollection$1 = new ArrayList<String>();
         tempCollection$1.add("property");
         tempCollection$1.add("subProperty");
         AssertHelper.assertEquals(reference.getPropertyNames(), tempCollection$1);
-        AssertHelper.assertEquals(reference.getValue(), "identifier#property.subProperty");
+        AssertHelper.assertEquals("identifier#property.subProperty", reference.getValue());
         final ArrayList<String> tempCollection$2 = new ArrayList<String>();
         tempCollection$2.add("property.Name");
         tempCollection$2.add("subProperty");
         reference = new Reference("#identif\\\\#ier.\\", tempCollection$2);
-        AssertHelper.assertEquals(reference.getIdentifier(), "#identif\\\\#ier.\\");
+        AssertHelper.assertEquals("#identif\\\\#ier.\\", reference.getIdentifier());
         final ArrayList<String> tempCollection$3 = new ArrayList<String>();
         tempCollection$3.add("property.Name");
         tempCollection$3.add("subProperty");
         AssertHelper.assertEquals(reference.getPropertyNames(), tempCollection$3);
-        AssertHelper.assertEquals(reference.getValue(), "\\#identif\\\\\\\\\\#ier\\.\\\\#property\\.Name.subProperty");
+        AssertHelper.assertEquals("\\#identif\\\\\\\\\\#ier\\.\\\\#property\\.Name.subProperty", reference.getValue());
     }
 
     @Test

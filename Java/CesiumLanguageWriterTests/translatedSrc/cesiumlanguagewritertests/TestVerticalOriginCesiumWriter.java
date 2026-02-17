@@ -26,7 +26,7 @@ public class TestVerticalOriginCesiumWriter extends TestCesiumPropertyWriter<Ver
     public final void verticalOriginCanBeWrittenAsSimpleString() {
         final String expectedPropertyName = "foo";
         final CesiumVerticalOrigin expectedValue = CesiumVerticalOrigin.CENTER;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             try (Using<VerticalOriginCesiumWriter> using$1 = new Using<VerticalOriginCesiumWriter>(new VerticalOriginCesiumWriter(expectedPropertyName))) {
                 final VerticalOriginCesiumWriter writer = using$1.resource;
                 writer.open(getOutputStream());
@@ -44,7 +44,7 @@ public class TestVerticalOriginCesiumWriter extends TestCesiumPropertyWriter<Ver
         JulianDate stop = start.addSeconds(100.0);
         final String expectedPropertyName = "foo";
         final CesiumVerticalOrigin expectedValue = CesiumVerticalOrigin.CENTER;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             try (Using<VerticalOriginCesiumWriter> using$1 = new Using<VerticalOriginCesiumWriter>(new VerticalOriginCesiumWriter(expectedPropertyName))) {
                 final VerticalOriginCesiumWriter writer = using$1.resource;
                 writer.open(getOutputStream());

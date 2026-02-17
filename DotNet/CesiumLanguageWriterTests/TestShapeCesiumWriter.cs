@@ -19,7 +19,7 @@ namespace CesiumLanguageWriterTests
                 new Rectangular(30, 40),
             };
 
-            using (Packet)
+            using (OpenPacket())
             using (var writer = new ShapeCesiumWriter(expectedPropertyName))
             {
                 writer.Open(OutputStream);

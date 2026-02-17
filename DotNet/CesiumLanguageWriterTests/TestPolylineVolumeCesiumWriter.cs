@@ -16,8 +16,8 @@ namespace CesiumLanguageWriterTests
         {
             const bool expectedShow = true;
 
-            using (Packet)
-            using (var polylineVolume = Packet.OpenPolylineVolumeProperty())
+            using (var packet = OpenPacket())
+            using (var polylineVolume = packet.OpenPolylineVolumeProperty())
             using (var interval = polylineVolume.OpenInterval())
             {
                 interval.WriteShowProperty(expectedShow);
@@ -46,8 +46,8 @@ namespace CesiumLanguageWriterTests
             const bool interval2Value = false;
             const bool interval3Value = true;
 
-            using (Packet)
-            using (var polylineVolume = Packet.OpenPolylineVolumeProperty())
+            using (var packet = OpenPacket())
+            using (var polylineVolume = packet.OpenPolylineVolumeProperty())
             using (var show = polylineVolume.OpenShowProperty())
             using (var showIntervals = show.OpenMultipleIntervals())
             {
@@ -95,8 +95,8 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestShape()
         {
-            using (Packet)
-            using (var polylineVolume = Packet.OpenPolylineVolumeProperty())
+            using (var packet = OpenPacket())
+            using (var polylineVolume = packet.OpenPolylineVolumeProperty())
             {
                 var shape = new List<Rectangular>
                 {
@@ -116,8 +116,8 @@ namespace CesiumLanguageWriterTests
         {
             var expectedBounds = new Bounds(10, 1234);
 
-            using (Packet)
-            using (var polylineVolume = Packet.OpenPolylineVolumeProperty())
+            using (var packet = OpenPacket())
+            using (var polylineVolume = packet.OpenPolylineVolumeProperty())
             using (var interval = polylineVolume.OpenInterval())
             {
                 interval.WriteDistanceDisplayConditionProperty(expectedBounds);

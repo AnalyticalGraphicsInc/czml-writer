@@ -101,9 +101,10 @@ public class TestOrientationCesiumWriter extends TestCesiumInterpolatablePropert
         JulianDate stop = start.addDays(1.0);
         final String expectedId = "id";
         final boolean expectedDelete = true;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            getPacket().writeId(expectedId);
-            try (Using<OrientationCesiumWriter> using$1 = new Using<OrientationCesiumWriter>(getPacket().openOrientationProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            packet.writeId(expectedId);
+            try (Using<OrientationCesiumWriter> using$1 = new Using<OrientationCesiumWriter>(packet.openOrientationProperty())) {
                 final OrientationCesiumWriter orientation = using$1.resource;
                 try (Using<OrientationCesiumWriter> using$2 = new Using<OrientationCesiumWriter>(orientation.openInterval(start, stop))) {
                     final OrientationCesiumWriter interval = using$2.resource;
@@ -124,9 +125,10 @@ public class TestOrientationCesiumWriter extends TestCesiumInterpolatablePropert
     public final void testDeletePropertyWithNoInterval() {
         final String expectedId = "id";
         final boolean expectedDelete = true;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            getPacket().writeId(expectedId);
-            try (Using<OrientationCesiumWriter> using$1 = new Using<OrientationCesiumWriter>(getPacket().openOrientationProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            packet.writeId(expectedId);
+            try (Using<OrientationCesiumWriter> using$1 = new Using<OrientationCesiumWriter>(packet.openOrientationProperty())) {
                 final OrientationCesiumWriter orientation = using$1.resource;
                 try (Using<OrientationCesiumWriter> using$2 = new Using<OrientationCesiumWriter>(orientation.openInterval())) {
                     final OrientationCesiumWriter interval = using$2.resource;

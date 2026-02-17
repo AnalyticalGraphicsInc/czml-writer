@@ -15,8 +15,8 @@ namespace CesiumLanguageWriterTests
             var expectedColor = Color.Red;
             var expectedOutlineColor = Color.Blue;
 
-            using (Packet)
-            using (var polyline = Packet.OpenPolylineProperty())
+            using (var packet = OpenPacket())
+            using (var polyline = packet.OpenPolylineProperty())
             using (var material = polyline.OpenMaterialProperty())
             using (var polylineOutlineMaterial = material.OpenPolylineOutlineProperty())
             {

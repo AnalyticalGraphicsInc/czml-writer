@@ -18,8 +18,8 @@ namespace CesiumLanguageWriterTests
             const CesiumStripeOrientation expectedOrientation = CesiumStripeOrientation.Vertical;
             const double expectedRepeat = 3.5;
 
-            using (Packet)
-            using (var polyline = Packet.OpenPolylineProperty())
+            using (var packet = OpenPacket())
+            using (var polyline = packet.OpenPolylineProperty())
             using (var material = polyline.OpenMaterialProperty())
             using (var stripeMaterial = material.OpenStripeProperty())
             {

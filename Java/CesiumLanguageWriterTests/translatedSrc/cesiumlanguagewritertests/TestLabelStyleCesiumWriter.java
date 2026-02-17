@@ -26,7 +26,7 @@ public class TestLabelStyleCesiumWriter extends TestCesiumPropertyWriter<LabelSt
     public final void labelStyleCanBeWrittenAsSimpleString() {
         final String expectedPropertyName = "foo";
         final CesiumLabelStyle expectedValue = CesiumLabelStyle.FILL_AND_OUTLINE;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             try (Using<LabelStyleCesiumWriter> using$1 = new Using<LabelStyleCesiumWriter>(new LabelStyleCesiumWriter(expectedPropertyName))) {
                 final LabelStyleCesiumWriter writer = using$1.resource;
                 writer.open(getOutputStream());
@@ -44,7 +44,7 @@ public class TestLabelStyleCesiumWriter extends TestCesiumPropertyWriter<LabelSt
         JulianDate stop = start.addSeconds(100.0);
         final String expectedPropertyName = "foo";
         final CesiumLabelStyle expectedValue = CesiumLabelStyle.FILL_AND_OUTLINE;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             try (Using<LabelStyleCesiumWriter> using$1 = new Using<LabelStyleCesiumWriter>(new LabelStyleCesiumWriter(expectedPropertyName))) {
                 final LabelStyleCesiumWriter writer = using$1.resource;
                 writer.open(getOutputStream());

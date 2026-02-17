@@ -13,8 +13,8 @@ namespace CesiumLanguageWriterTests
         {
             const string expectedReferenceFrame = "myReferenceFrame";
 
-            using (Packet)
-            using (var position = Packet.OpenPositionProperty())
+            using (var packet = OpenPacket())
+            using (var position = packet.OpenPositionProperty())
             using (var interval = position.OpenInterval())
             {
                 interval.WriteReferenceFrame(expectedReferenceFrame);
@@ -31,8 +31,8 @@ namespace CesiumLanguageWriterTests
         {
             var expectedValue = new Cartesian(1.0, 2.0, 3.0);
 
-            using (Packet)
-            using (var position = Packet.OpenPositionProperty())
+            using (var packet = OpenPacket())
+            using (var position = packet.OpenPositionProperty())
             using (var interval = position.OpenInterval())
             {
                 interval.WriteCartesian(expectedValue);
@@ -49,8 +49,8 @@ namespace CesiumLanguageWriterTests
         {
             var expectedValue = new Cartographic(1100.0, 2200.0, 3.0);
 
-            using (Packet)
-            using (var position = Packet.OpenPositionProperty())
+            using (var packet = OpenPacket())
+            using (var position = packet.OpenPositionProperty())
             using (var interval = position.OpenInterval())
             {
                 interval.WriteCartographicRadians(expectedValue);
@@ -67,8 +67,8 @@ namespace CesiumLanguageWriterTests
         {
             var epoch = new GregorianDate(2012, 4, 2, 12, 0, 0).ToJulianDate();
 
-            using (Packet)
-            using (var position = Packet.OpenPositionProperty())
+            using (var packet = OpenPacket())
+            using (var position = packet.OpenPositionProperty())
             using (var interval = position.OpenInterval())
             {
                 var dates = new List<JulianDate>();
@@ -91,8 +91,8 @@ namespace CesiumLanguageWriterTests
         {
             var startDate = new GregorianDate(2012, 4, 2, 12, 0, 0).ToJulianDate();
 
-            using (Packet)
-            using (var position = Packet.OpenPositionProperty())
+            using (var packet = OpenPacket())
+            using (var position = packet.OpenPositionProperty())
             using (var interval = position.OpenInterval())
             {
                 var dates = new List<JulianDate>();
@@ -118,8 +118,8 @@ namespace CesiumLanguageWriterTests
         {
             var startDate = new GregorianDate(2012, 4, 2, 12, 0, 0).ToJulianDate();
 
-            using (Packet)
-            using (var position = Packet.OpenPositionProperty())
+            using (var packet = OpenPacket())
+            using (var position = packet.OpenPositionProperty())
             using (var interval = position.OpenInterval())
             {
                 var dates = new List<JulianDate>();
@@ -142,8 +142,8 @@ namespace CesiumLanguageWriterTests
         {
             var startDate = new GregorianDate(2012, 4, 2, 12, 0, 0).ToJulianDate();
 
-            using (Packet)
-            using (var position = Packet.OpenPositionProperty())
+            using (var packet = OpenPacket())
+            using (var position = packet.OpenPositionProperty())
             using (var interval = position.OpenInterval())
             {
                 var dates = new List<JulianDate>();
@@ -167,8 +167,8 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void CartesianValueWritesEmptyArrayAndDoesNotWriteEpochWhenGivenAnEmptyCollection()
         {
-            using (Packet)
-            using (var position = Packet.OpenPositionProperty())
+            using (var packet = OpenPacket())
+            using (var position = packet.OpenPositionProperty())
             using (var interval = position.OpenInterval())
             {
                 var dates = new List<JulianDate>();
@@ -182,8 +182,8 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void CartographicRadiansValueWritesEmptyArrayAndDoesNotWriteEpochWhenGivenAnEmptyCollection()
         {
-            using (Packet)
-            using (var position = Packet.OpenPositionProperty())
+            using (var packet = OpenPacket())
+            using (var position = packet.OpenPositionProperty())
             using (var interval = position.OpenInterval())
             {
                 var dates = new List<JulianDate>();
@@ -202,11 +202,11 @@ namespace CesiumLanguageWriterTests
             const string expectedId = "id";
             const bool expectedDelete = true;
 
-            using (Packet)
+            using (var packet = OpenPacket())
             {
-                Packet.WriteId(expectedId);
+                packet.WriteId(expectedId);
 
-                using (var position = Packet.OpenPositionProperty())
+                using (var position = packet.OpenPositionProperty())
                 using (var interval = position.OpenInterval(start, stop))
                 {
                     interval.WriteDelete(expectedDelete);
@@ -232,11 +232,11 @@ namespace CesiumLanguageWriterTests
             const string expectedId = "id";
             const bool expectedDelete = true;
 
-            using (Packet)
+            using (var packet = OpenPacket())
             {
-                Packet.WriteId(expectedId);
+                packet.WriteId(expectedId);
 
-                using (var position = Packet.OpenPositionProperty())
+                using (var position = packet.OpenPositionProperty())
                 using (var interval = position.OpenInterval())
                 {
                     interval.WriteDelete(expectedDelete);

@@ -13,19 +13,19 @@ namespace CesiumLanguageWriterTests
         {
             string value = "identifier#property";
             var reference = new Reference(value);
-            Assert.AreEqual(reference.Identifier, "identifier");
+            Assert.AreEqual("identifier", reference.Identifier);
             Assert.AreEqual(reference.PropertyNames, new List<string> { "property" });
             Assert.AreEqual(value, reference.Value);
 
             value = "identifier#property.subProperty";
             reference = new Reference(value);
-            Assert.AreEqual(reference.Identifier, "identifier");
+            Assert.AreEqual("identifier", reference.Identifier);
             Assert.AreEqual(reference.PropertyNames, new List<string> { "property", "subProperty" });
             Assert.AreEqual(value, reference.Value);
 
             value = @"\#identif\\\\\#ier\.\\#propertyName.\.abc\\.def";
             reference = new Reference(value);
-            Assert.AreEqual(reference.Identifier, @"#identif\\#ier.\");
+            Assert.AreEqual(@"#identif\\#ier.\", reference.Identifier);
             Assert.AreEqual(reference.PropertyNames, new List<string> { "propertyName", @".abc\", "def" });
             Assert.AreEqual(value, reference.Value);
 
@@ -40,28 +40,28 @@ namespace CesiumLanguageWriterTests
         public void CanConstructFromIdentifierAndProperty()
         {
             var reference = new Reference("identifier", "property");
-            Assert.AreEqual(reference.Identifier, "identifier");
+            Assert.AreEqual("identifier", reference.Identifier);
             Assert.AreEqual(reference.PropertyNames, new List<string> { "property" });
-            Assert.AreEqual(reference.Value, "identifier#property");
+            Assert.AreEqual("identifier#property", reference.Value);
 
             reference = new Reference(@"#identif\\#ier.\", "property.Name");
-            Assert.AreEqual(reference.Identifier, @"#identif\\#ier.\");
-            Assert.AreEqual(reference.PropertyNames, new List<string> { @"property.Name" });
-            Assert.AreEqual(reference.Value, @"\#identif\\\\\#ier\.\\#property\.Name");
+            Assert.AreEqual(@"#identif\\#ier.\", reference.Identifier);
+            Assert.AreEqual(reference.PropertyNames, new List<string> { "property.Name" });
+            Assert.AreEqual(@"\#identif\\\\\#ier\.\\#property\.Name", reference.Value);
         }
 
         [Test]
         public void CanConstructFromIdentifierAndProperties()
         {
             var reference = new Reference("identifier", new List<string> { "property", "subProperty" });
-            Assert.AreEqual(reference.Identifier, "identifier");
+            Assert.AreEqual("identifier", reference.Identifier);
             Assert.AreEqual(reference.PropertyNames, new List<string> { "property", "subProperty" });
-            Assert.AreEqual(reference.Value, "identifier#property.subProperty");
+            Assert.AreEqual("identifier#property.subProperty", reference.Value);
 
             reference = new Reference(@"#identif\\#ier.\", new List<string> { "property.Name", "subProperty" });
-            Assert.AreEqual(reference.Identifier, @"#identif\\#ier.\");
-            Assert.AreEqual(reference.PropertyNames, new List<string> { @"property.Name", "subProperty" });
-            Assert.AreEqual(reference.Value, @"\#identif\\\\\#ier\.\\#property\.Name.subProperty");
+            Assert.AreEqual(@"#identif\\#ier.\", reference.Identifier);
+            Assert.AreEqual(reference.PropertyNames, new List<string> { "property.Name", "subProperty" });
+            Assert.AreEqual(@"\#identif\\\\\#ier\.\\#property\.Name.subProperty", reference.Value);
         }
 
         [Test]
@@ -89,7 +89,7 @@ namespace CesiumLanguageWriterTests
         {
             var exception = Assert.Throws<ArgumentException>(() =>
             {
-                var unused = new Reference(@"MissingPropertyName#");
+                var unused = new Reference("MissingPropertyName#");
             });
             StringAssert.Contains("The provided reference string is not in the correct format", exception.Message);
         }

@@ -30,12 +30,12 @@ namespace CesiumLanguageWriterTests
             const string expectedName = "custom_property";
             const bool expectedValue = true;
 
-            using (Packet)
-            using (var customPropertiesWriter = Packet.OpenPropertiesProperty())
+            using (var packet = OpenPacket())
+            using (var customProperties = packet.OpenPropertiesProperty())
             {
-                using (var customPropertyWriter = customPropertiesWriter.OpenCustomPropertyProperty(expectedName))
+                using (var customProperty = customProperties.OpenCustomPropertyProperty(expectedName))
                 {
-                    customPropertyWriter.WriteBoolean(expectedValue);
+                    customProperty.WriteBoolean(expectedValue);
                 }
             }
 
@@ -51,12 +51,12 @@ namespace CesiumLanguageWriterTests
             const string expectedName = "custom_property";
             const bool expectedValue = true;
 
-            using (Packet)
-            using (var customPropertiesWriter = Packet.OpenPropertiesProperty())
-            using (var customPropertyWriter = customPropertiesWriter.OpenCustomPropertyProperty(expectedName))
-            using (var intervalWriter = customPropertyWriter.OpenInterval(m_startDate, m_stopDate))
+            using (var packet = OpenPacket())
+            using (var customProperties = packet.OpenPropertiesProperty())
+            using (var customProperty = customProperties.OpenCustomPropertyProperty(expectedName))
+            using (var interval = customProperty.OpenInterval(m_startDate, m_stopDate))
             {
-                intervalWriter.WriteBoolean(expectedValue);
+                interval.WriteBoolean(expectedValue);
             }
 
             AssertExpectedJson(PacketCesiumWriter.PropertiesPropertyName, new Dictionary<string, object>
@@ -77,11 +77,11 @@ namespace CesiumLanguageWriterTests
             const string expectedName = "custom_property";
             var expectedValue = new Cartesian(1.1, 2.2, 3.3);
 
-            using (Packet)
-            using (var customPropertiesWriter = Packet.OpenPropertiesProperty())
-            using (var customPropertyWriter = customPropertiesWriter.OpenCustomPropertyProperty(expectedName))
+            using (var packet = OpenPacket())
+            using (var customProperties = packet.OpenPropertiesProperty())
+            using (var customProperty = customProperties.OpenCustomPropertyProperty(expectedName))
             {
-                customPropertyWriter.WriteCartesian(expectedValue);
+                customProperty.WriteCartesian(expectedValue);
             }
 
             AssertExpectedJson(PacketCesiumWriter.PropertiesPropertyName, new Dictionary<string, object>
@@ -93,9 +93,9 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void CustomPropertyCartesianSampled()
         {
-            using (Packet)
-            using (var customPropertiesWriter = Packet.OpenPropertiesProperty())
-            using (var customPropertyWriter = customPropertiesWriter.OpenCustomPropertyProperty("custom_property"))
+            using (var packet = OpenPacket())
+            using (var customProperties = packet.OpenPropertiesProperty())
+            using (var customProperty = customProperties.OpenCustomPropertyProperty("custom_property"))
             {
                 var dates = new List<JulianDate>();
                 var values = new List<Cartesian>();
@@ -109,7 +109,7 @@ namespace CesiumLanguageWriterTests
                 dates.Add(m_startDate.AddSeconds(120.0));
                 values.Add(new Cartesian(7.0, 8.0, 9.0));
 
-                customPropertyWriter.WriteCartesian(dates, values);
+                customProperty.WriteCartesian(dates, values);
             }
 
             Assert.AreEqual("{\"properties\":{\"custom_property\":{\"epoch\":\"" + m_isoStartString + "\",\"cartesian\":[0,1,2,3,60,4,5,6,120,7,8,9]}}}", StringWriter.ToString());
@@ -118,11 +118,11 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void CustomPropertyCartesianSampledInterpolationSettings()
         {
-            using (Packet)
-            using (var customPropertiesWriter = Packet.OpenPropertiesProperty())
-            using (var customPropertyWriter = customPropertiesWriter.OpenCustomPropertyProperty("custom_property"))
+            using (var packet = OpenPacket())
+            using (var customProperties = packet.OpenPropertiesProperty())
+            using (var customProperty = customProperties.OpenCustomPropertyProperty("custom_property"))
             {
-                customPropertyWriter.WriteInterpolationAlgorithm(CesiumInterpolationAlgorithm.Hermite);
+                customProperty.WriteInterpolationAlgorithm(CesiumInterpolationAlgorithm.Hermite);
 
                 var dates = new List<JulianDate>();
                 var values = new List<Cartesian>();
@@ -136,7 +136,7 @@ namespace CesiumLanguageWriterTests
                 dates.Add(m_startDate.AddSeconds(120.0));
                 values.Add(new Cartesian(7.0, 8.0, 9.0));
 
-                customPropertyWriter.WriteCartesian(dates, values);
+                customProperty.WriteCartesian(dates, values);
             }
 
             Assert.AreEqual("{\"properties\":{\"custom_property\":{\"interpolationAlgorithm\":\"HERMITE\",\"epoch\":\"" + m_isoStartString + "\",\"cartesian\":[0,1,2,3,60,4,5,6,120,7,8,9]}}}", StringWriter.ToString());
@@ -150,17 +150,17 @@ namespace CesiumLanguageWriterTests
             const string expectedName2 = "custom_cartesian";
             var expectedValue2 = new Cartesian(1.1, 2.2, 3.3);
 
-            using (Packet)
-            using (var customPropertiesWriter = Packet.OpenPropertiesProperty())
+            using (var packet = OpenPacket())
+            using (var customProperties = packet.OpenPropertiesProperty())
             {
-                using (var customPropertyWriter = customPropertiesWriter.OpenCustomPropertyProperty(expectedName1))
+                using (var customProperty = customProperties.OpenCustomPropertyProperty(expectedName1))
                 {
-                    customPropertyWriter.WriteBoolean(expectedValue1);
+                    customProperty.WriteBoolean(expectedValue1);
                 }
 
-                using (var customPropertyWriter = customPropertiesWriter.OpenCustomPropertyProperty(expectedName2))
+                using (var customProperty = customProperties.OpenCustomPropertyProperty(expectedName2))
                 {
-                    customPropertyWriter.WriteCartesian(expectedValue2);
+                    customProperty.WriteCartesian(expectedValue2);
                 }
             }
 
@@ -185,10 +185,10 @@ namespace CesiumLanguageWriterTests
                 {
                     documentPacket.WriteId("document");
                     documentPacket.WriteVersion("1.0");
-                    using (var clockWriter = documentPacket.OpenClockProperty())
-                    using (var intervalClockWriter = clockWriter.OpenInterval(m_startDate, m_stopDate))
+                    using (var clock = documentPacket.OpenClockProperty())
+                    using (var interval = clock.OpenInterval(m_startDate, m_stopDate))
                     {
-                        intervalClockWriter.WriteCurrentTime(m_startDate);
+                        interval.WriteCurrentTime(m_startDate);
                     }
                 }
 
@@ -196,28 +196,28 @@ namespace CesiumLanguageWriterTests
                 {
                     packet.WriteId("MyID");
 
-                    using (var customPropertiesWriter = packet.OpenPropertiesProperty())
+                    using (var customProperties = packet.OpenPropertiesProperty())
                     {
-                        using (var customPropertyWriter = customPropertiesWriter.OpenCustomPropertyProperty("custom_boolean"))
-                        using (var intervalListWriter = customPropertyWriter.OpenMultipleIntervals())
+                        using (var customProperty = customProperties.OpenCustomPropertyProperty("custom_boolean"))
+                        using (var intervalList = customProperty.OpenMultipleIntervals())
                         {
-                            using (var intervalWriter = intervalListWriter.OpenInterval(m_startDate, m_startDate.AddSeconds(1)))
+                            using (var interval = intervalList.OpenInterval(m_startDate, m_startDate.AddSeconds(1)))
                             {
-                                intervalWriter.WriteBoolean(true);
+                                interval.WriteBoolean(true);
                             }
 
-                            using (var intervalWriter = intervalListWriter.OpenInterval(m_startDate.AddSeconds(1), m_startDate.AddSeconds(2)))
+                            using (var interval = intervalList.OpenInterval(m_startDate.AddSeconds(1), m_startDate.AddSeconds(2)))
                             {
-                                intervalWriter.WriteBoolean(false);
+                                interval.WriteBoolean(false);
                             }
 
-                            using (var intervalWriter = intervalListWriter.OpenInterval(m_startDate.AddSeconds(2), m_stopDate))
+                            using (var interval = intervalList.OpenInterval(m_startDate.AddSeconds(2), m_stopDate))
                             {
-                                intervalWriter.WriteBoolean(true);
+                                interval.WriteBoolean(true);
                             }
                         }
 
-                        using (var customPropertyWriter = customPropertiesWriter.OpenCustomPropertyProperty("custom_cartesian"))
+                        using (var customProperty = customProperties.OpenCustomPropertyProperty("custom_cartesian"))
                         {
                             var dates = new List<JulianDate>();
                             var values = new List<Cartesian>();
@@ -231,7 +231,7 @@ namespace CesiumLanguageWriterTests
                             dates.Add(m_startDate.AddSeconds(120.0));
                             values.Add(new Cartesian(7.0, 8.0, 9.0));
 
-                            customPropertyWriter.WriteCartesian(dates, values);
+                            customProperty.WriteCartesian(dates, values);
                         }
                     }
                 }

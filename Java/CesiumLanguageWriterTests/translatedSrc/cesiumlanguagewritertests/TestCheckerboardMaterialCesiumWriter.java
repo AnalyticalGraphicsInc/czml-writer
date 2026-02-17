@@ -28,8 +28,9 @@ public class TestCheckerboardMaterialCesiumWriter extends TestCesiumPropertyWrit
         Color expectedEvenColor = Color.RED;
         Color expectedOddColor = Color.BLUE;
         Rectangular expectedRepeat = new Rectangular(3.5, 4.5);
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<PolylineCesiumWriter> using$1 = new Using<PolylineCesiumWriter>(getPacket().openPolylineProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PolylineCesiumWriter> using$1 = new Using<PolylineCesiumWriter>(packet.openPolylineProperty())) {
                 final PolylineCesiumWriter polyline = using$1.resource;
                 try (Using<PolylineMaterialCesiumWriter> using$2 = new Using<PolylineMaterialCesiumWriter>(polyline.openMaterialProperty())) {
                     final PolylineMaterialCesiumWriter material = using$2.resource;

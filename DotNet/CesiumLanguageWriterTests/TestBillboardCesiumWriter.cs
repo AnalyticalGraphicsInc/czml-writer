@@ -13,8 +13,8 @@ namespace CesiumLanguageWriterTests
         {
             const bool expectedShow = true;
 
-            using (Packet)
-            using (var billboard = Packet.OpenBillboardProperty())
+            using (var packet = OpenPacket())
+            using (var billboard = packet.OpenBillboardProperty())
             using (var interval = billboard.OpenInterval())
             {
                 interval.WriteShowProperty(expectedShow);
@@ -43,8 +43,8 @@ namespace CesiumLanguageWriterTests
             const bool interval2Value = false;
             const bool interval3Value = true;
 
-            using (Packet)
-            using (var billboard = Packet.OpenBillboardProperty())
+            using (var packet = OpenPacket())
+            using (var billboard = packet.OpenBillboardProperty())
             using (var show = billboard.OpenShowProperty())
             using (var showIntervals = show.OpenMultipleIntervals())
             {
@@ -94,8 +94,8 @@ namespace CesiumLanguageWriterTests
         {
             var expectedScaleByDistance = new NearFarScalar(100.5, 1.5, 200.5, 2.5);
 
-            using (Packet)
-            using (var billboard = Packet.OpenBillboardProperty())
+            using (var packet = OpenPacket())
+            using (var billboard = packet.OpenBillboardProperty())
             using (var interval = billboard.OpenInterval())
             {
                 interval.WriteScaleByDistanceProperty(expectedScaleByDistance);
@@ -112,8 +112,8 @@ namespace CesiumLanguageWriterTests
         {
             var epoch = new GregorianDate(2012, 4, 2, 12, 0, 0).ToJulianDate();
 
-            using (Packet)
-            using (var billboard = Packet.OpenBillboardProperty())
+            using (var packet = OpenPacket())
+            using (var billboard = packet.OpenBillboardProperty())
             using (var interval = billboard.OpenInterval())
             using (var scaleByDistance = interval.OpenScaleByDistanceProperty())
             {
@@ -135,8 +135,8 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestDeleteAlignedAxis()
         {
-            using (Packet)
-            using (var billboard = Packet.OpenBillboardProperty())
+            using (var packet = OpenPacket())
+            using (var billboard = packet.OpenBillboardProperty())
             using (var alignedAxis = billboard.OpenAlignedAxisProperty())
             {
                 alignedAxis.WriteDelete(true);
@@ -156,8 +156,8 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestDeleteScale()
         {
-            using (Packet)
-            using (var billboard = Packet.OpenBillboardProperty())
+            using (var packet = OpenPacket())
+            using (var billboard = packet.OpenBillboardProperty())
             using (var scale = billboard.OpenScaleProperty())
             {
                 scale.WriteDelete(true);

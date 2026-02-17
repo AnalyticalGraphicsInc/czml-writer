@@ -26,8 +26,9 @@ public class TestModelCesiumWriter extends TestCesiumPropertyWriter<ModelCesiumW
     @Test
     public final void testShowProperty() {
         final boolean expectedShow = true;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<ModelCesiumWriter> using$1 = new Using<ModelCesiumWriter>(getPacket().openModelProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<ModelCesiumWriter> using$1 = new Using<ModelCesiumWriter>(packet.openModelProperty())) {
                 final ModelCesiumWriter model = using$1.resource;
                 try (Using<ModelCesiumWriter> using$2 = new Using<ModelCesiumWriter>(model.openInterval())) {
                     final ModelCesiumWriter interval = using$2.resource;
@@ -43,8 +44,9 @@ public class TestModelCesiumWriter extends TestCesiumPropertyWriter<ModelCesiumW
     @Test
     public final void testGltfProperty() {
         final String expectedGltf = "test.gltf";
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<ModelCesiumWriter> using$1 = new Using<ModelCesiumWriter>(getPacket().openModelProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<ModelCesiumWriter> using$1 = new Using<ModelCesiumWriter>(packet.openModelProperty())) {
                 final ModelCesiumWriter model = using$1.resource;
                 try (Using<ModelCesiumWriter> using$2 = new Using<ModelCesiumWriter>(model.openInterval())) {
                     final ModelCesiumWriter interval = using$2.resource;
@@ -60,8 +62,9 @@ public class TestModelCesiumWriter extends TestCesiumPropertyWriter<ModelCesiumW
     @Test
     public final void testSilhouetteColorProperty() {
         Color expectedSilhouetteColor = Color.BLUE;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<ModelCesiumWriter> using$1 = new Using<ModelCesiumWriter>(getPacket().openModelProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<ModelCesiumWriter> using$1 = new Using<ModelCesiumWriter>(packet.openModelProperty())) {
                 final ModelCesiumWriter model = using$1.resource;
                 try (Using<ModelCesiumWriter> using$2 = new Using<ModelCesiumWriter>(model.openInterval())) {
                     final ModelCesiumWriter interval = using$2.resource;
@@ -77,8 +80,9 @@ public class TestModelCesiumWriter extends TestCesiumPropertyWriter<ModelCesiumW
     @Test
     public final void testSilhouetteSizeProperty() {
         final double expectedSilhouetteSize = 0.75;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<ModelCesiumWriter> using$1 = new Using<ModelCesiumWriter>(getPacket().openModelProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<ModelCesiumWriter> using$1 = new Using<ModelCesiumWriter>(packet.openModelProperty())) {
                 final ModelCesiumWriter model = using$1.resource;
                 try (Using<ModelCesiumWriter> using$2 = new Using<ModelCesiumWriter>(model.openInterval())) {
                     final ModelCesiumWriter interval = using$2.resource;
@@ -94,8 +98,9 @@ public class TestModelCesiumWriter extends TestCesiumPropertyWriter<ModelCesiumW
     @Test
     public final void testColorProperty() {
         Color expectedColor = Color.RED;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<ModelCesiumWriter> using$1 = new Using<ModelCesiumWriter>(getPacket().openModelProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<ModelCesiumWriter> using$1 = new Using<ModelCesiumWriter>(packet.openModelProperty())) {
                 final ModelCesiumWriter model = using$1.resource;
                 try (Using<ModelCesiumWriter> using$2 = new Using<ModelCesiumWriter>(model.openInterval())) {
                     final ModelCesiumWriter interval = using$2.resource;
@@ -111,8 +116,9 @@ public class TestModelCesiumWriter extends TestCesiumPropertyWriter<ModelCesiumW
     @Test
     public final void testColorBlendModeProperty() {
         final CesiumColorBlendMode expectedColorBlendMode = CesiumColorBlendMode.REPLACE;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<ModelCesiumWriter> using$1 = new Using<ModelCesiumWriter>(getPacket().openModelProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<ModelCesiumWriter> using$1 = new Using<ModelCesiumWriter>(packet.openModelProperty())) {
                 final ModelCesiumWriter model = using$1.resource;
                 try (Using<ModelCesiumWriter> using$2 = new Using<ModelCesiumWriter>(model.openInterval())) {
                     final ModelCesiumWriter interval = using$2.resource;
@@ -128,8 +134,9 @@ public class TestModelCesiumWriter extends TestCesiumPropertyWriter<ModelCesiumW
     @Test
     public final void testColorBlendAmountProperty() {
         final double expectedColorBlendAmount = 0.75;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<ModelCesiumWriter> using$1 = new Using<ModelCesiumWriter>(getPacket().openModelProperty())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<ModelCesiumWriter> using$1 = new Using<ModelCesiumWriter>(packet.openModelProperty())) {
                 final ModelCesiumWriter model = using$1.resource;
                 try (Using<ModelCesiumWriter> using$2 = new Using<ModelCesiumWriter>(model.openInterval())) {
                     final ModelCesiumWriter interval = using$2.resource;

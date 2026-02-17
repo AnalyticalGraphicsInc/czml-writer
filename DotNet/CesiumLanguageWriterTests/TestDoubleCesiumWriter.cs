@@ -14,7 +14,7 @@ namespace CesiumLanguageWriterTests
             const string expectedPropertyName = "foo";
             const double expectedValue = 1.23;
 
-            using (Packet)
+            using (OpenPacket())
             using (var writer = new DoubleCesiumWriter(expectedPropertyName))
             {
                 writer.Open(OutputStream);
@@ -35,7 +35,7 @@ namespace CesiumLanguageWriterTests
             const string expectedPropertyName = "foo";
             const double expectedValue = 1.23;
 
-            using (Packet)
+            using (OpenPacket())
             using (var writer = new DoubleCesiumWriter(expectedPropertyName))
             {
                 writer.Open(OutputStream);
@@ -59,9 +59,9 @@ namespace CesiumLanguageWriterTests
             const string expectedPropertyName = "foo";
             const bool expectedDelete = true;
 
-            using (Packet)
+            using (var packet = OpenPacket())
             {
-                Packet.WriteId(expectedId);
+                packet.WriteId(expectedId);
 
                 using (var writer = new DoubleCesiumWriter(expectedPropertyName))
                 {
@@ -91,9 +91,9 @@ namespace CesiumLanguageWriterTests
             const string expectedPropertyName = "foo";
             const bool expectedDelete = true;
 
-            using (Packet)
+            using (var packet = OpenPacket())
             {
-                Packet.WriteId(expectedId);
+                packet.WriteId(expectedId);
 
                 using (var writer = new DoubleCesiumWriter(expectedPropertyName))
                 {

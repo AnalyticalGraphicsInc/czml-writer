@@ -34,7 +34,7 @@ public class TestShapeCesiumWriter extends TestCesiumPropertyWriter<ShapeCesiumW
         tempCollection$0.add(new Rectangular(10.0, 20.0));
         tempCollection$0.add(new Rectangular(30.0, 40.0));
         Iterable<Rectangular> expectedValue = tempCollection$0;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             try (Using<ShapeCesiumWriter> using$1 = new Using<ShapeCesiumWriter>(new ShapeCesiumWriter(expectedPropertyName))) {
                 final ShapeCesiumWriter writer = using$1.resource;
                 writer.open(getOutputStream());

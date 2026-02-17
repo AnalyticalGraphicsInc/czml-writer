@@ -18,8 +18,8 @@ namespace CesiumLanguageWriterTests
             var expectedLineThickness = new Rectangular(3, 4);
             var expectedLineOffset = new Rectangular(5, 9);
 
-            using (Packet)
-            using (var polyline = Packet.OpenPolylineProperty())
+            using (var packet = OpenPacket())
+            using (var polyline = packet.OpenPolylineProperty())
             using (var material = polyline.OpenMaterialProperty())
             using (var gridMaterial = material.OpenGridProperty())
             {

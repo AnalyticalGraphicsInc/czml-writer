@@ -34,16 +34,17 @@ public class TestNodeTransformationsCesiumWriter extends TestCesiumPropertyWrite
         Cartesian expectedScale = Cartesian.getZero();
         UnitQuaternion expectedRotation = UnitQuaternion.getIdentity();
         Cartesian expectedTranslation = new Cartesian(3.0, 3.0, 3.0);
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<ModelCesiumWriter> using$1 = new Using<ModelCesiumWriter>(getPacket().openModelProperty())) {
-                final ModelCesiumWriter modelWriter = using$1.resource;
-                try (Using<NodeTransformationsCesiumWriter> using$2 = new Using<NodeTransformationsCesiumWriter>(modelWriter.openNodeTransformationsProperty())) {
-                    final NodeTransformationsCesiumWriter nodeTransformationsWriter = using$2.resource;
-                    try (Using<NodeTransformationCesiumWriter> using$3 = new Using<NodeTransformationCesiumWriter>(nodeTransformationsWriter.openNodeTransformationProperty(expectedNodeName))) {
-                        final NodeTransformationCesiumWriter nodeTransformationWriter = using$3.resource;
-                        nodeTransformationWriter.writeScaleProperty(expectedScale);
-                        nodeTransformationWriter.writeRotationProperty(expectedRotation);
-                        nodeTransformationWriter.writeTranslationProperty(expectedTranslation);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<ModelCesiumWriter> using$1 = new Using<ModelCesiumWriter>(packet.openModelProperty())) {
+                final ModelCesiumWriter model = using$1.resource;
+                try (Using<NodeTransformationsCesiumWriter> using$2 = new Using<NodeTransformationsCesiumWriter>(model.openNodeTransformationsProperty())) {
+                    final NodeTransformationsCesiumWriter nodeTransformations = using$2.resource;
+                    try (Using<NodeTransformationCesiumWriter> using$3 = new Using<NodeTransformationCesiumWriter>(nodeTransformations.openNodeTransformationProperty(expectedNodeName))) {
+                        final NodeTransformationCesiumWriter nodeTransformation = using$3.resource;
+                        nodeTransformation.writeScaleProperty(expectedScale);
+                        nodeTransformation.writeRotationProperty(expectedRotation);
+                        nodeTransformation.writeTranslationProperty(expectedTranslation);
                     }
                 }
             }
@@ -69,22 +70,23 @@ public class TestNodeTransformationsCesiumWriter extends TestCesiumPropertyWrite
         Cartesian expectedScale2 = new Cartesian(4.0, 5.0, 6.0);
         UnitQuaternion expectedRotation2 = new UnitQuaternion(0.0, 0.0, 0.0, 1.0);
         Cartesian expectedTranslation2 = new Cartesian(7.0, 8.0, 9.0);
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(getPacket())) {
-            try (Using<ModelCesiumWriter> using$1 = new Using<ModelCesiumWriter>(getPacket().openModelProperty())) {
-                final ModelCesiumWriter modelWriter = using$1.resource;
-                try (Using<NodeTransformationsCesiumWriter> using$2 = new Using<NodeTransformationsCesiumWriter>(modelWriter.openNodeTransformationsProperty())) {
-                    final NodeTransformationsCesiumWriter nodeTransformationsWriter = using$2.resource;
-                    try (Using<NodeTransformationCesiumWriter> using$3 = new Using<NodeTransformationCesiumWriter>(nodeTransformationsWriter.openNodeTransformationProperty(expectedNodeName1))) {
-                        final NodeTransformationCesiumWriter nodeTransformationWriter = using$3.resource;
-                        nodeTransformationWriter.writeScaleProperty(expectedScale1);
-                        nodeTransformationWriter.writeRotationProperty(expectedRotation1);
-                        nodeTransformationWriter.writeTranslationProperty(expectedTranslation1);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<ModelCesiumWriter> using$1 = new Using<ModelCesiumWriter>(packet.openModelProperty())) {
+                final ModelCesiumWriter model = using$1.resource;
+                try (Using<NodeTransformationsCesiumWriter> using$2 = new Using<NodeTransformationsCesiumWriter>(model.openNodeTransformationsProperty())) {
+                    final NodeTransformationsCesiumWriter nodeTransformations = using$2.resource;
+                    try (Using<NodeTransformationCesiumWriter> using$3 = new Using<NodeTransformationCesiumWriter>(nodeTransformations.openNodeTransformationProperty(expectedNodeName1))) {
+                        final NodeTransformationCesiumWriter nodeTransformation = using$3.resource;
+                        nodeTransformation.writeScaleProperty(expectedScale1);
+                        nodeTransformation.writeRotationProperty(expectedRotation1);
+                        nodeTransformation.writeTranslationProperty(expectedTranslation1);
                     }
-                    try (Using<NodeTransformationCesiumWriter> using$4 = new Using<NodeTransformationCesiumWriter>(nodeTransformationsWriter.openNodeTransformationProperty(expectedNodeName2))) {
-                        final NodeTransformationCesiumWriter nodeTransformationWriter = using$4.resource;
-                        nodeTransformationWriter.writeScaleProperty(expectedScale2);
-                        nodeTransformationWriter.writeRotationProperty(expectedRotation2);
-                        nodeTransformationWriter.writeTranslationProperty(expectedTranslation2);
+                    try (Using<NodeTransformationCesiumWriter> using$4 = new Using<NodeTransformationCesiumWriter>(nodeTransformations.openNodeTransformationProperty(expectedNodeName2))) {
+                        final NodeTransformationCesiumWriter nodeTransformation = using$4.resource;
+                        nodeTransformation.writeScaleProperty(expectedScale2);
+                        nodeTransformation.writeRotationProperty(expectedRotation2);
+                        nodeTransformation.writeTranslationProperty(expectedTranslation2);
                     }
                 }
             }
@@ -117,25 +119,25 @@ public class TestNodeTransformationsCesiumWriter extends TestCesiumPropertyWrite
                 JulianDate startDate = new GregorianDate(2012, 4, 2, 12, 0, 0.0).toJulianDate();
                 JulianDate stopDate = new GregorianDate(2012, 4, 2, 12, 1, 0.0).toJulianDate();
                 try (Using<ClockCesiumWriter> using$2 = new Using<ClockCesiumWriter>(packet.openClockProperty())) {
-                    final ClockCesiumWriter clockWriter = using$2.resource;
-                    try (Using<ClockCesiumWriter> using$3 = new Using<ClockCesiumWriter>(clockWriter.openInterval(startDate, stopDate))) {
-                        final ClockCesiumWriter intervalClockWriter = using$3.resource;
-                        intervalClockWriter.writeCurrentTime(startDate);
+                    final ClockCesiumWriter clock = using$2.resource;
+                    try (Using<ClockCesiumWriter> using$3 = new Using<ClockCesiumWriter>(clock.openInterval(startDate, stopDate))) {
+                        final ClockCesiumWriter interval = using$3.resource;
+                        interval.writeCurrentTime(startDate);
                     }
                 }
                 try (Using<ModelCesiumWriter> using$4 = new Using<ModelCesiumWriter>(packet.openModelProperty())) {
-                    final ModelCesiumWriter modelWriter = using$4.resource;
-                    modelWriter.writeGltfProperty(UriHelper.create("example.gltf", UriKind.RELATIVE), CesiumResourceBehavior.LINK_TO);
-                    try (Using<NodeTransformationsCesiumWriter> using$5 = new Using<NodeTransformationsCesiumWriter>(modelWriter.openNodeTransformationsProperty())) {
-                        final NodeTransformationsCesiumWriter nodeTransformationsWriter = using$5.resource;
-                        try (Using<NodeTransformationCesiumWriter> using$6 = new Using<NodeTransformationCesiumWriter>(nodeTransformationsWriter.openNodeTransformationProperty("node1"))) {
-                            final NodeTransformationCesiumWriter nodeTransformationWriter = using$6.resource;
-                            nodeTransformationWriter.writeScaleProperty(new Cartesian(1.0, 2.0, 3.0));
-                            nodeTransformationWriter.writeRotationProperty(UnitQuaternion.getIdentity());
-                            nodeTransformationWriter.writeTranslationProperty(new Cartesian(4.0, 5.0, 6.0));
+                    final ModelCesiumWriter model = using$4.resource;
+                    model.writeGltfProperty(UriHelper.create("example.gltf", UriKind.RELATIVE), CesiumResourceBehavior.LINK_TO);
+                    try (Using<NodeTransformationsCesiumWriter> using$5 = new Using<NodeTransformationsCesiumWriter>(model.openNodeTransformationsProperty())) {
+                        final NodeTransformationsCesiumWriter nodeTransformations = using$5.resource;
+                        try (Using<NodeTransformationCesiumWriter> using$6 = new Using<NodeTransformationCesiumWriter>(nodeTransformations.openNodeTransformationProperty("node1"))) {
+                            final NodeTransformationCesiumWriter nodeTransformation = using$6.resource;
+                            nodeTransformation.writeScaleProperty(new Cartesian(1.0, 2.0, 3.0));
+                            nodeTransformation.writeRotationProperty(UnitQuaternion.getIdentity());
+                            nodeTransformation.writeTranslationProperty(new Cartesian(4.0, 5.0, 6.0));
                         }
-                        try (Using<NodeTransformationCesiumWriter> using$7 = new Using<NodeTransformationCesiumWriter>(nodeTransformationsWriter.openNodeTransformationProperty("node2"))) {
-                            final NodeTransformationCesiumWriter nodeTransformationWriter = using$7.resource;
+                        try (Using<NodeTransformationCesiumWriter> using$7 = new Using<NodeTransformationCesiumWriter>(nodeTransformations.openNodeTransformationProperty("node2"))) {
+                            final NodeTransformationCesiumWriter nodeTransformation = using$7.resource;
                             final ArrayList<JulianDate> tempCollection$0 = new ArrayList<JulianDate>();
                             tempCollection$0.add(startDate);
                             tempCollection$0.add(stopDate);
@@ -144,7 +146,7 @@ public class TestNodeTransformationsCesiumWriter extends TestCesiumPropertyWrite
                             tempCollection$1.add(new Cartesian(1.0, 2.0, 3.0));
                             tempCollection$1.add(new Cartesian(10.0, 12.0, 14.0));
                             ArrayList<Cartesian> values = tempCollection$1;
-                            nodeTransformationWriter.writeScaleProperty(dates, values);
+                            nodeTransformation.writeScaleProperty(dates, values);
                         }
                     }
                 }

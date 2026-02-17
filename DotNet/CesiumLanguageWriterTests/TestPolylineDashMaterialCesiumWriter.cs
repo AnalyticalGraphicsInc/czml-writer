@@ -18,8 +18,8 @@ namespace CesiumLanguageWriterTests
             var expectedGapColor = Color.Blue;
             const double expectedDashLength = 25;
 
-            using (Packet)
-            using (var polyline = Packet.OpenPolylineProperty())
+            using (var packet = OpenPacket())
+            using (var polyline = packet.OpenPolylineProperty())
             using (var material = polyline.OpenMaterialProperty())
             using (var polylineDashMaterial = material.OpenPolylineDashProperty())
             {
