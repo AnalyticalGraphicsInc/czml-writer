@@ -36,6 +36,10 @@
         "distanceDisplayCondition": {
             "$ref": "DistanceDisplayCondition.json",
             "description": "The display condition specifying at what distance from the camera this path will be displayed."
+        },
+        "relativeTo": {
+            "$ref": "String.json",
+            "description": "If specified, indicates that the path should be drawn in a different reference frame. If the value is \"FIXED\" or \"INERTIAL\", the path will be drawn in that frame. Otherwise, the value is the ID of an object and the path will be drawn relative to that object."
         }
     }
 }

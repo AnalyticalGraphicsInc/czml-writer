@@ -917,6 +917,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteDistanceDisplayCondition(new Bounds(11646, 32422));
                         m_assertionsWriter.WriteLine("    expect(e.path.distanceDisplayCondition.getValue(date)).toEqual(new DistanceDisplayCondition(11646, 32422));");
                     }
+                    using (var w2 = w.OpenRelativeToProperty())
+                    {
+                        w2.WriteString("string50312");
+                        m_assertionsWriter.WriteLine("    expect(e.path.relativeTo.getValue(date)).toEqual('string50312');");
+                    }
                 }
                 using (var w = packet.OpenPointProperty())
                 {
@@ -10333,6 +10338,11 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("path", "distanceDisplayCondition")));
                         m_assertionsWriter.WriteLine("    expect(e.path.distanceDisplayCondition.getValue(date)).toEqual(constant.path.distanceDisplayCondition.getValue(date));");
+                    }
+                    using (var w2 = w.OpenRelativeToProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("path", "relativeTo")));
+                        m_assertionsWriter.WriteLine("    expect(e.path.relativeTo.getValue(date)).toEqual(constant.path.relativeTo.getValue(date));");
                     }
                 }
                 using (var w = packet.OpenPointProperty())
