@@ -57,6 +57,12 @@ namespace CesiumLanguageWriter
         [NotNull]
         public const string DistanceDisplayConditionPropertyName = "distanceDisplayCondition";
 
+        /// <summary>
+        /// The name of the <c>relativeTo</c> property.
+        /// </summary>
+        [NotNull]
+        public const string RelativeToPropertyName = "relativeTo";
+
         [NotNull]
         [CSToJavaFinalField]
         private readonly Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(() => new BooleanCesiumWriter(ShowPropertyName), false);
@@ -78,6 +84,9 @@ namespace CesiumLanguageWriter
         [NotNull]
         [CSToJavaFinalField]
         private readonly Lazy<DistanceDisplayConditionCesiumWriter> m_distanceDisplayCondition = new Lazy<DistanceDisplayConditionCesiumWriter>(() => new DistanceDisplayConditionCesiumWriter(DistanceDisplayConditionPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
+        private readonly Lazy<StringCesiumWriter> m_relativeTo = new Lazy<StringCesiumWriter>(() => new StringCesiumWriter(RelativeToPropertyName), false);
 
         /// <summary>
         /// Initializes a new instance.
@@ -756,6 +765,87 @@ namespace CesiumLanguageWriter
         public void WriteDistanceDisplayConditionPropertyReference(string identifier, string[] propertyNames)
         {
             using (var writer = OpenDistanceDisplayConditionProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
+        }
+
+        /// <summary>
+        /// Gets the writer for the <c>relativeTo</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>relativeTo</c> property defines if specified, indicates that the path should be drawn in a different reference frame. If the value is "FIXED" or "INERTIAL", the path will be drawn in that frame. Otherwise, the value is the ID of an object and the path will be drawn relative to that object.
+        /// </summary>
+        [NotNull]
+        public StringCesiumWriter RelativeToWriter
+        {
+            get { return m_relativeTo.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>relativeTo</c> property. The <c>relativeTo</c> property defines if specified, indicates that the path should be drawn in a different reference frame. If the value is "FIXED" or "INERTIAL", the path will be drawn in that frame. Otherwise, the value is the ID of an object and the path will be drawn relative to that object.
+        /// </summary>
+        [NotNull]
+        public StringCesiumWriter OpenRelativeToProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(RelativeToWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>relativeTo</c> property as a <c>string</c> value. The <c>relativeTo</c> property specifies if specified, indicates that the path should be drawn in a different reference frame. If the value is "FIXED" or "INERTIAL", the path will be drawn in that frame. Otherwise, the value is the ID of an object and the path will be drawn relative to that object.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void WriteRelativeToProperty(string value)
+        {
+            using (var writer = OpenRelativeToProperty())
+            {
+                writer.WriteString(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>relativeTo</c> property as a <c>reference</c> value. The <c>relativeTo</c> property specifies if specified, indicates that the path should be drawn in a different reference frame. If the value is "FIXED" or "INERTIAL", the path will be drawn in that frame. Otherwise, the value is the ID of an object and the path will be drawn relative to that object.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteRelativeToPropertyReference(Reference value)
+        {
+            using (var writer = OpenRelativeToProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>relativeTo</c> property as a <c>reference</c> value. The <c>relativeTo</c> property specifies if specified, indicates that the path should be drawn in a different reference frame. If the value is "FIXED" or "INERTIAL", the path will be drawn in that frame. Otherwise, the value is the ID of an object and the path will be drawn relative to that object.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteRelativeToPropertyReference(string value)
+        {
+            using (var writer = OpenRelativeToProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>relativeTo</c> property as a <c>reference</c> value. The <c>relativeTo</c> property specifies if specified, indicates that the path should be drawn in a different reference frame. If the value is "FIXED" or "INERTIAL", the path will be drawn in that frame. Otherwise, the value is the ID of an object and the path will be drawn relative to that object.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteRelativeToPropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenRelativeToProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>relativeTo</c> property as a <c>reference</c> value. The <c>relativeTo</c> property specifies if specified, indicates that the path should be drawn in a different reference frame. If the value is "FIXED" or "INERTIAL", the path will be drawn in that frame. Otherwise, the value is the ID of an object and the path will be drawn relative to that object.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteRelativeToPropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenRelativeToProperty())
             {
                 writer.WriteReference(identifier, propertyNames);
             }
