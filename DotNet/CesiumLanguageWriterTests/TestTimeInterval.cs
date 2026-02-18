@@ -1,12 +1,10 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using CesiumLanguageWriter;
 using NUnit.Framework;
 
 namespace CesiumLanguageWriterTests
 {
-    /// <summary>
-    /// A series of tests to exercise this type.
-    /// </summary>
     [TestFixture]
     public class TestTimeInterval
     {
@@ -17,7 +15,7 @@ namespace CesiumLanguageWriterTests
         public void TestRetainValue()
         {
             JulianDate start = JulianDate.Now;
-            JulianDate stop = start + Duration.FromDays(1.5);
+            JulianDate stop = start.AddDays(1.5);
             TimeInterval interval = new TimeInterval(start, stop);
             Assert.AreEqual(start, interval.Start);
             Assert.AreEqual(stop, interval.Stop);
@@ -30,15 +28,12 @@ namespace CesiumLanguageWriterTests
         public void TestCalculateDuration()
         {
             JulianDate start = new JulianDate(2451545.0);
-            JulianDate stop = start + Duration.FromDays(1.5);
+            JulianDate stop = start.AddDays(1.5);
             TimeInterval interval = new TimeInterval(start, stop);
 
             Assert.AreEqual(Duration.FromDays(1.5), interval.ToDuration());
         }
 
-        /// <summary>
-        /// Tests the IsEmpty property.
-        /// </summary>
         [Test]
         public void TestIsEmpty()
         {
@@ -49,14 +44,12 @@ namespace CesiumLanguageWriterTests
             Assert.IsTrue(interval.IsEmpty);
         }
 
-        /// <summary>
-        /// Tests equality between time intervals.
-        /// </summary>
         [Test]
+        [SuppressMessage("Assertion", "NUnit2010", Justification = "This is specifically testing equality methods and operators")]
         public void TestEquality()
         {
-            TimeInterval interval1 = new TimeInterval(new JulianDate(1.0), new JulianDate(2.0));
-            TimeInterval interval2 = new TimeInterval(new JulianDate(1.0), new JulianDate(2.0));
+            var interval1 = new TimeInterval(new JulianDate(1.0), new JulianDate(2.0));
+            var interval2 = new TimeInterval(new JulianDate(1.0), new JulianDate(2.0));
             Assert.AreEqual(interval1, interval2);
             Assert.AreEqual(interval2, interval1);
             Assert.IsTrue(interval1.Equals(interval2));
@@ -76,17 +69,11 @@ namespace CesiumLanguageWriterTests
             Assert.IsTrue(interval1 != interval2);
             Assert.IsTrue(interval2 != interval1);
 
-            Assert.AreNotEqual(interval1, 5);
-        }
+            object differentType = 5;
+            Assert.AreNotEqual(differentType, interval1);
 
-        /// <summary>
-        /// Tests equality between nullable time intervals.
-        /// </summary>
-        [Test]
-        public void TestNullableEquality()
-        {
-            TimeInterval interval1 = new TimeInterval(new JulianDate(1.0), new JulianDate(2.0));
-            TimeInterval interval2 = null;
+            interval2 = null;
+
             Assert.IsFalse(interval1 == interval2);
             Assert.IsFalse(interval2 == interval1);
 
@@ -127,9 +114,6 @@ namespace CesiumLanguageWriterTests
             Assert.IsFalse(interval1.Contains(new JulianDate(2451546.5)));
         }
 
-        /// <summary>
-        /// Tests the <see cref="TimeInterval.EqualsEpsilon"/> method.
-        /// </summary>
         [Test]
         public void TestEqualsEpsilon()
         {
@@ -154,9 +138,6 @@ namespace CesiumLanguageWriterTests
             Assert.IsTrue(second.EqualsEpsilon(first, 0.00));
         }
 
-        /// <summary>
-        /// Tests the <see cref="TimeInterval.ToTimeStandard"/> method.
-        /// </summary>
         [Test]
         public void TestToTimeStandard()
         {
@@ -165,16 +146,16 @@ namespace CesiumLanguageWriterTests
             TimeInterval interval = new TimeInterval(start, stop);
 
             TimeInterval result = interval.ToTimeStandard(TimeStandard.CoordinatedUniversalTime);
-            Assert.AreEqual(result.Start.Standard, TimeStandard.CoordinatedUniversalTime);
-            Assert.AreEqual(result.Stop.Standard, TimeStandard.CoordinatedUniversalTime);
-            Assert.AreEqual(result.Start.TotalDays, 2451545.0, Constants.Epsilon15);
-            Assert.AreEqual(result.Stop.TotalDays, 2451546.0, Constants.Epsilon15);
+            Assert.AreEqual(TimeStandard.CoordinatedUniversalTime, result.Start.Standard);
+            Assert.AreEqual(TimeStandard.CoordinatedUniversalTime, result.Stop.Standard);
+            Assert.AreEqual(2451545.0, result.Start.TotalDays, Constants.Epsilon15);
+            Assert.AreEqual(2451546.0, result.Stop.TotalDays, Constants.Epsilon15);
 
             result = interval.ToTimeStandard(TimeStandard.InternationalAtomicTime);
-            Assert.AreEqual(result.Start.Standard, TimeStandard.InternationalAtomicTime);
-            Assert.AreEqual(result.Stop.Standard, TimeStandard.InternationalAtomicTime);
-            Assert.AreNotEqual(result.Start.TotalDays, 2451545.0);
-            Assert.AreNotEqual(result.Stop.TotalDays, 2451546.0);
+            Assert.AreEqual(TimeStandard.InternationalAtomicTime, result.Start.Standard);
+            Assert.AreEqual(TimeStandard.InternationalAtomicTime, result.Stop.Standard);
+            Assert.AreNotEqual(2451545.0, result.Start.TotalDays);
+            Assert.AreNotEqual(2451546.0, result.Stop.TotalDays);
 
             TimeInterval empty = new TimeInterval(new JulianDate(2451545.0, TimeStandard.CoordinatedUniversalTime),
                                                   new JulianDate(2451545.0, TimeStandard.CoordinatedUniversalTime));
@@ -183,9 +164,6 @@ namespace CesiumLanguageWriterTests
             Assert.IsTrue(result.IsEmpty);
         }
 
-        /// <summary>
-        /// Tests the <see cref="TimeInterval.ToString"/> method
-        /// </summary>
         [Test]
         public void TestToString()
         {

@@ -1,12 +1,10 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using CesiumLanguageWriter;
 using NUnit.Framework;
 
 namespace CesiumLanguageWriterTests
 {
-    /// <summary>
-    /// Tests the <see cref="LeapSecond"/> type.
-    /// </summary>
     [TestFixture]
     public class TestLeapSecond
     {
@@ -34,6 +32,7 @@ namespace CesiumLanguageWriterTests
         /// Tests equality between leap second instances.
         /// </summary>
         [Test]
+        [SuppressMessage("Assertion", "NUnit2010", Justification = "This is specifically testing equality methods")]
         public void TestEquality()
         {
             LeapSecond leapSecond1 = new LeapSecond(2451545.0, 100.0);
@@ -44,7 +43,9 @@ namespace CesiumLanguageWriterTests
             Assert.IsTrue(leapSecond1 == leapSecond2);
             Assert.AreNotEqual(leapSecond1, leapSecond3);
             Assert.IsTrue(leapSecond1 != leapSecond3);
-            Assert.AreNotEqual(leapSecond1, 5);
+
+            object differentType = 5;
+            Assert.AreNotEqual(leapSecond1, differentType);
             Assert.AreNotEqual(leapSecond3, leapSecond4);
         }
 

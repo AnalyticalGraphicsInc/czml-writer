@@ -3,6 +3,7 @@ package cesiumlanguagewritertests;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Action;
+import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.ArgumentException;
 import agi.foundation.compatibility.ArgumentOutOfRangeException;
 import agi.foundation.compatibility.AssertHelper;
@@ -18,9 +19,6 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-/**
- * Tests the {@link Matrix3By3} type.
- */
 @SuppressWarnings({
     "unused",
     "deprecation",
@@ -63,6 +61,7 @@ public class TestMatrix3By3 {
     /**
     * Tests the equality and inequality methods and operators.
     */
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     @Test
     public final void testEquality() {
         Matrix3By3 first = new Matrix3By3(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0);
@@ -103,11 +102,11 @@ public class TestMatrix3By3 {
     /**
     * Tests to ensure the equality fails when comparing incorrect type.
     */
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     @Test
     public final void testEqualityWithWrongType() {
         Matrix3By3 first = Matrix3By3.getIdentity();
         Cartesian second = new Cartesian(1.0, 2.0, 3.0);
-        // ReSharper disable once SuspiciousTypeConversion.Global
         Assert.assertFalse(first.equals(second));
     }
 
@@ -115,21 +114,18 @@ public class TestMatrix3By3 {
     public final void testEqualsEpsilon() {
         Matrix3By3 first = new Matrix3By3(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
         Matrix3By3 second = new Matrix3By3(1e-2, 1e-3, 1e-4, 1e-5, 1e-6, 1e-7, 1e-8, 1e-9, 1e-10);
-        Assert.assertTrue(second.equalsEpsilon(first, 1e-1));
-        Assert.assertTrue(second.equalsEpsilon(first, 1e-2));
-        Assert.assertFalse(second.equalsEpsilon(first, 1e-3));
-        Assert.assertFalse(second.equalsEpsilon(first, 1e-4));
-        Assert.assertFalse(second.equalsEpsilon(first, 1e-5));
-        Assert.assertFalse(second.equalsEpsilon(first, 1e-6));
-        Assert.assertFalse(second.equalsEpsilon(first, 1e-7));
-        Assert.assertFalse(second.equalsEpsilon(first, 1e-8));
-        Assert.assertFalse(second.equalsEpsilon(first, 1e-9));
-        Assert.assertFalse(second.equalsEpsilon(first, 1e-10));
+        Assert.assertTrue(second.equalsEpsilon(first, Constants.Epsilon1));
+        Assert.assertTrue(second.equalsEpsilon(first, Constants.Epsilon2));
+        Assert.assertFalse(second.equalsEpsilon(first, Constants.Epsilon3));
+        Assert.assertFalse(second.equalsEpsilon(first, Constants.Epsilon4));
+        Assert.assertFalse(second.equalsEpsilon(first, Constants.Epsilon5));
+        Assert.assertFalse(second.equalsEpsilon(first, Constants.Epsilon6));
+        Assert.assertFalse(second.equalsEpsilon(first, Constants.Epsilon7));
+        Assert.assertFalse(second.equalsEpsilon(first, Constants.Epsilon8));
+        Assert.assertFalse(second.equalsEpsilon(first, Constants.Epsilon9));
+        Assert.assertFalse(second.equalsEpsilon(first, Constants.Epsilon10));
     }
 
-    /**
-    * Tests indexing.
-    */
     @Test
     public final void testIndex() {
         Matrix3By3 original = new Matrix3By3(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0);
@@ -196,9 +192,6 @@ public class TestMatrix3By3 {
         }
     }
 
-    /**
-    * Tests multiplication by a scalar.
-    */
     @Test
     public final void testMultiplyByScalar() {
         Matrix3By3 matrix = new Matrix3By3(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0);
@@ -234,9 +227,6 @@ public class TestMatrix3By3 {
         AssertHelper.assertEquals(-18.0, result.getM33());
     }
 
-    /**
-    * Tests multiplication by another {@link Matrix3By3}.
-    */
     @Test
     public final void testMultiplyByMatrix() {
         final double angle = Math.PI / 4.0;
@@ -331,9 +321,6 @@ public class TestMatrix3By3 {
         AssertHelper.assertEquals(0.0, zero.getM33());
     }
 
-    /**
-    * Tests math operators
-    */
     @Test
     public final void testMathOperators() {
         Matrix3By3 matrix1 = new Matrix3By3(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0);
@@ -347,9 +334,6 @@ public class TestMatrix3By3 {
         AssertHelper.assertEquals(expected, Matrix3By3.multiply(matrix1, matrix2));
     }
 
-    /**
-    * Tests math operators
-    */
     @Test
     public final void testMathOperatorsWithCartesian() {
         Matrix3By3 matrix = new Matrix3By3(1.0, 2.0, 4.0, 2.0, 3.0, 5.0, 4.0, 5.0, 6.0);

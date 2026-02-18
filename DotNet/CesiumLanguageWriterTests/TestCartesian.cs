@@ -1,13 +1,11 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using CesiumLanguageWriter;
 using NUnit.Framework;
 
 namespace CesiumLanguageWriterTests
 {
-    /// <summary>
-    /// Tests the <see cref="Cartesian"/> type.
-    /// </summary>
     [TestFixture]
     public class TestCartesian
     {
@@ -40,6 +38,7 @@ namespace CesiumLanguageWriterTests
         /// Tests the equality and inequality methods and operators.
         /// </summary>
         [Test]
+        [SuppressMessage("Assertion", "NUnit2010", Justification = "This is specifically testing equality methods and operators")]
         public void TestEquality()
         {
             Cartesian first = new Cartesian(1.0, 2.0, 3.0);
@@ -84,19 +83,17 @@ namespace CesiumLanguageWriterTests
             Assert.IsFalse(second.Equals(first));
         }
 
-        /// <summary>
-        /// Tests the <see cref="Cartesian.EqualsEpsilon"/> method.
-        /// </summary>
         [Test]
         public void TestEqualsEpsilon()
         {
             Cartesian first = new Cartesian(1e-1, 1e-2, 1e-3);
             Cartesian second = new Cartesian(1.1e-1, 1.1e-2, 1.1e-3);
-            Assert.IsTrue(second.EqualsEpsilon(first, 1e-1));
-            Assert.IsTrue(second.EqualsEpsilon(first, 1e-2));
-            Assert.IsFalse(second.EqualsEpsilon(first, 1e-3));
-            Assert.IsFalse(second.EqualsEpsilon(first, 1e-4));
-            Assert.IsFalse(second.EqualsEpsilon(first, 1e-5));
+
+            Assert.IsTrue(second.EqualsEpsilon(first, Constants.Epsilon1));
+            Assert.IsTrue(second.EqualsEpsilon(first, Constants.Epsilon2));
+            Assert.IsFalse(second.EqualsEpsilon(first, Constants.Epsilon3));
+            Assert.IsFalse(second.EqualsEpsilon(first, Constants.Epsilon4));
+            Assert.IsFalse(second.EqualsEpsilon(first, Constants.Epsilon5));
         }
 
         /// <summary>
@@ -108,6 +105,7 @@ namespace CesiumLanguageWriterTests
         {
             Cartesian first = new Cartesian(0.1, 0.1, 0.1);
             Cartesian second = new Cartesian(0.1, 0.1, 0.1);
+
             Assert.IsTrue(second.EqualsEpsilon(first, 0));
         }
 
@@ -115,18 +113,16 @@ namespace CesiumLanguageWriterTests
         /// Tests to ensure the equality fails when comparing incorrect type.
         /// </summary>
         [Test]
+        [SuppressMessage("ReSharper", "SuspiciousTypeConversion.Global")]
+        [SuppressMessage("Assertion", "NUnit2010", Justification = "This is specifically testing equality methods")]
         public void TestEqualityWithWrongType()
         {
             Cartesian first = new Cartesian(1.0, 2.0, 3.0);
             Cartographic second = new Cartographic(1.0, 2.0, 3.0);
 
-            // ReSharper disable once SuspiciousTypeConversion.Global
             Assert.IsFalse(first.Equals(second));
         }
 
-        /// <summary>
-        /// Tests the <see cref="Cartesian.Magnitude"/> property.
-        /// </summary>
         [Test]
         public void TestMagnitude()
         {
@@ -134,9 +130,6 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(7.0, test.Magnitude);
         }
 
-        /// <summary>
-        /// Tests the <see cref="Cartesian.Normalize()"/> method.
-        /// </summary>
         [Test]
         public void TestNormalize()
         {
@@ -175,9 +168,6 @@ namespace CesiumLanguageWriterTests
             });
         }
 
-        /// <summary>
-        /// Tests the <see cref="Cartesian.IsUndefined"/> method.
-        /// </summary>
         [Test]
         public void TestIsUndefined()
         {
@@ -188,9 +178,6 @@ namespace CesiumLanguageWriterTests
             Assert.IsTrue(new Cartesian(1.0, 1.0, double.NaN).IsUndefined);
         }
 
-        /// <summary>
-        /// Tests the <see cref="Cartesian.MostOrthogonalAxis"/> method.
-        /// </summary>
         [Test]
         public void TestMostOrthogonalAxis()
         {
@@ -293,9 +280,6 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(3.0, result.Z);
         }
 
-        /// <summary>
-        /// Tests the <see cref="Cartesian.Dot"/> method.
-        /// </summary>
         [Test]
         public void TestDotProduct()
         {
@@ -305,13 +289,10 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(0, second.Dot(first));
         }
 
-        /// <summary>
-        /// Tests the <see cref="Cartesian.Cross"/> method.
-        /// </summary>
         [Test]
         public void TestCrossProduct()
         {
-            double angle = Math.PI / 4.0;
+            const double angle = Math.PI / 4.0;
             double cos = Math.Cos(angle / 2.0);
             double sin = Math.Sin(angle / 2.0);
 
@@ -338,11 +319,11 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestRotateByUnitQuaternion()
         {
-            double angle = Math.PI / 3.0; // half angle of 120 degree rotation
+            const double angle = Math.PI / 3.0; // half angle of 120 degree rotation
             double cos = Math.Cos(angle);
             double sin = Math.Sin(angle);
 
-            Cartesian axis = new Cartesian(1.0, 1.0, 1.0).Normalize(); // unit vector along [1,1,1]
+            UnitCartesian axis = new Cartesian(1.0, 1.0, 1.0).Normalize(); // unit vector along [1,1,1]
 
             double w = cos;
             double x = sin * axis.X;
@@ -369,7 +350,7 @@ namespace CesiumLanguageWriterTests
             double cos = Math.Cos(angle);
             double sin = Math.Sin(angle);
 
-            Cartesian axis = new Cartesian(1.0, 1.0, 1.0).Normalize(); // unit vector along [1,1,1]
+            UnitCartesian axis = new Cartesian(1.0, 1.0, 1.0).Normalize(); // unit vector along [1,1,1]
 
             double w = cos;
             double x = sin * axis.X;
@@ -392,16 +373,13 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestGetHashCode()
         {
-            Cartesian object1 = new Cartesian(1.0, 2.0, 3.0);
-            Cartesian object2 = new Cartesian(1.0, 2.0, 3.0);
-            Cartesian object3 = new Cartesian(1.0, 2.0, 3.1);
+            var object1 = new Cartesian(1.0, 2.0, 3.0);
+            var object2 = new Cartesian(1.0, 2.0, 3.0);
+            var object3 = new Cartesian(1.0, 2.0, 3.1);
             Assert.AreEqual(object1.GetHashCode(), object2.GetHashCode());
             Assert.AreNotEqual(object1.GetHashCode(), object3.GetHashCode());
         }
 
-        /// <summary>
-        /// Tests ToString method
-        /// </summary>
         [Test]
         public void TestToString()
         {

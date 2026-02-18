@@ -20,6 +20,6 @@
         /// where <c>deltaT</c> is the number of leap seconds which have been introduced as of the time in TAI.
         /// </para>
         /// </remarks>
-        CoordinatedUniversalTime
+        CoordinatedUniversalTime,
     }
 }

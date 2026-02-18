@@ -33,12 +33,10 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(iso, result);
 
             // Make sure to check each month to ensure we have it right
-            const string first = "1986-";
-            const string last = "T02:01:04Z";
             JulianDate baseDate = new GregorianDate(1986, 1, 12, 02, 01, 4).ToJulianDate();
             for (int i = 1; i < 12; i++)
             {
-                string testString = string.Format(first + "{0:000}" + last, 12 + i * 30);
+                string testString = string.Format("1986-{0:000}T02:01:04Z", 12 + i * 30);
                 GregorianDate expected = baseDate.AddDays(i * 30).ToGregorianDate();
                 Assert.AreEqual(expected, GregorianDate.Parse(testString));
             }
@@ -99,10 +97,9 @@ namespace CesiumLanguageWriterTests
             StringAssert.Contains("was not recognized as a valid GregorianDate", exception.Message);
         }
 
-        [TestCase(Iso8601Format.Basic)]
-        [TestCase(Iso8601Format.Compact)]
-        [TestCase(Iso8601Format.Extended)]
-        public void TestParseIso8601Formats(Iso8601Format format)
+        [Test]
+        [Combinatorial]
+        public void TestParseIso8601Formats([Values] Iso8601Format format)
         {
             GregorianDate expected = new GregorianDate(1985, 4, 12, 10, 15, 30);
             Assert.AreEqual(expected, GregorianDate.Parse(expected.ToIso8601String(format)));

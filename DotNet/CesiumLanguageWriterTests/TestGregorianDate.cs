@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Threading;
 using CesiumLanguageWriter;
+using JetBrains.Annotations;
 using NUnit.Framework;
+using NotNullAttribute = JetBrains.Annotations.NotNullAttribute;
 
 namespace CesiumLanguageWriterTests
 {
@@ -87,15 +90,19 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
+        [SuppressMessage("Assertion", "NUnit2010", Justification = "This is specifically testing equality methods and operators")]
         public void TestEquality()
         {
-            GregorianDate first = new GregorianDate(2000, 1, 1, 5, 1, 1);
-            GregorianDate second = new GregorianDate(2000, 1, 1, 5, 1, 1);
+            var first = new GregorianDate(2000, 1, 1, 5, 1, 1);
+            var second = new GregorianDate(2000, 1, 1, 5, 1, 1);
             Assert.AreEqual(first, second);
             Assert.IsTrue(first.Equals(second));
             Assert.IsTrue(second.Equals(first));
             Assert.AreEqual(0, first.CompareTo(second));
             Assert.AreEqual(0, second.CompareTo(first));
+
+            Assert.IsTrue(first == second);
+            Assert.IsTrue(second == first);
 
             second = new GregorianDate(2000, 1, 1, 6, 1, 1);
             Assert.AreNotEqual(first, second);
@@ -104,6 +111,9 @@ namespace CesiumLanguageWriterTests
             Assert.AreNotEqual(0, first.CompareTo(second));
             Assert.AreNotEqual(0, second.CompareTo(first));
 
+            Assert.IsTrue(first != second);
+            Assert.IsTrue(second != first);
+
             second = new GregorianDate(2000, 2, 1, 5, 1, 1);
             Assert.AreNotEqual(first, second);
             Assert.IsFalse(first.Equals(second));
@@ -111,19 +121,27 @@ namespace CesiumLanguageWriterTests
             Assert.AreNotEqual(0, first.CompareTo(second));
             Assert.AreNotEqual(0, second.CompareTo(first));
 
-            Assert.AreNotEqual(first, 5);
+            object differentType = 5;
+            Assert.AreNotEqual(first, differentType);
+
+            object dateAsObject = new GregorianDate(2001, 1, 1, 6, 3, 15);
+            Assert.AreNotEqual(first, dateAsObject);
         }
 
         [Test]
+        [SuppressMessage("Assertion", "NUnit2010", Justification = "This is specifically testing equality methods and operators")]
         public void TestEqualityInTimePortion()
         {
-            GregorianDate first = new GregorianDate(1999, 10, 10, 5, 1, 1);
-            GregorianDate second = new GregorianDate(1999, 10, 10, 5, 1, 1);
+            var first = new GregorianDate(1999, 10, 10, 5, 1, 1);
+            var second = new GregorianDate(1999, 10, 10, 5, 1, 1);
             Assert.AreEqual(first, second);
             Assert.IsTrue(first.Equals(second));
             Assert.IsTrue(second.Equals(first));
             Assert.AreEqual(0, first.CompareTo(second));
             Assert.AreEqual(0, second.CompareTo(first));
+
+            Assert.IsTrue(first == second);
+            Assert.IsTrue(second == first);
 
             second = new GregorianDate(1999, 10, 10, 6, 1, 1);
             Assert.AreNotEqual(first, second);
@@ -139,6 +157,9 @@ namespace CesiumLanguageWriterTests
             Assert.AreNotEqual(0, first.CompareTo(second));
             Assert.AreNotEqual(0, second.CompareTo(first));
 
+            Assert.IsTrue(first != second);
+            Assert.IsTrue(second != first);
+
             second = new GregorianDate(1999, 10, 10, 5, 1, 2);
             Assert.AreNotEqual(first, second);
             Assert.IsFalse(first.Equals(second));
@@ -146,22 +167,27 @@ namespace CesiumLanguageWriterTests
             Assert.AreNotEqual(0, first.CompareTo(second));
             Assert.AreNotEqual(0, second.CompareTo(first));
 
-            Assert.AreNotEqual(first, 5);
+            object differentType = 5;
+            Assert.AreNotEqual(first, differentType);
+
+            object dateAsObject = new GregorianDate(1999, 10, 10, 4, 2, 21);
+            Assert.AreNotEqual(first, dateAsObject);
         }
 
         [Test]
         public void TestEqualityWithFractionalSeconds()
         {
-            GregorianDate first = new GregorianDate(2009, 06, 30, 05, 25, 13.12345678901234);
-            GregorianDate second = new GregorianDate(2009, 06, 30, 05, 25, 13.12345678901239);
-            GregorianDate equal = new GregorianDate(2009, 06, 30, 05, 25, 13.12345678901234);
+            var date = new GregorianDate(2009, 06, 30, 05, 25, 13.12345678901234);
+            var differentDate = new GregorianDate(2009, 06, 30, 05, 25, 13.12345678901239);
+            var sameDate = new GregorianDate(2009, 06, 30, 05, 25, 13.12345678901234);
 
-            Assert.AreNotEqual(13.12345678901234, 13.12345678901239);
-            Assert.AreNotEqual(first, second);
-            Assert.AreEqual(first, equal);
+            Assert.AreNotEqual(date.Second, differentDate.Second);
+            Assert.AreNotEqual(date, differentDate);
+            Assert.AreEqual(date, sameDate);
         }
 
         [Test]
+        [SuppressMessage("Assertion", "NUnit2043", Justification = "This is specifically testing operator overloads")]
         public void TestComparisons()
         {
             GregorianDate date = new GregorianDate(2001, 1, 1, 6, 3, 14);
@@ -169,11 +195,6 @@ namespace CesiumLanguageWriterTests
 
             GregorianDate laterTime = new GregorianDate(2001, 1, 1, 6, 5, 26);
             GregorianDate laterDay = new GregorianDate(2001, 2, 2, 6, 3, 14);
-
-            Assert.IsTrue(date == sameDate);
-            Assert.IsTrue(sameDate == date);
-
-            Assert.IsTrue(date != laterTime);
 
             Assert.IsTrue(date >= sameDate);
             Assert.IsTrue(date <= sameDate);
@@ -186,45 +207,38 @@ namespace CesiumLanguageWriterTests
 
             Assert.IsTrue(laterTime > sameDate);
             Assert.IsTrue(laterTime >= sameDate);
-
-            object dateAsObject = new GregorianDate(2001, 1, 1, 6, 3, 15);
-            Assert.AreNotEqual(date, dateAsObject);
         }
 
         [Test]
         [CSToJavaExclude]
         public void TestCompareToObject()
         {
-            GregorianDate date = new GregorianDate(2001, 1, 1, 6, 3, 14);
+            var date = new GregorianDate(2001, 1, 1, 6, 3, 14);
             object dateAsObject = new GregorianDate(2001, 1, 1, 6, 3, 15);
 
-            Assert.IsTrue(date.CompareTo(null) > 0);
-            Assert.IsTrue(date.CompareTo(dateAsObject) < 0);
+            Assert.Greater(date.CompareTo(null), 0);
+            Assert.Less(date.CompareTo(dateAsObject), 0);
         }
 
         [Test]
+        [SuppressMessage("Assertion", "NUnit2043", Justification = "This is specifically testing operator overloads")]
         public void TestComparisonsOfTimePortion()
         {
             GregorianDate gd1 = new GregorianDate(1999, 10, 10, 6, 3, 14);
             GregorianDate gd2 = new GregorianDate(1999, 10, 10, 6, 3, 14);
             GregorianDate gd3 = new GregorianDate(1999, 10, 10, 6, 5, 26);
-            object gd4 = new GregorianDate(1999, 10, 10, 4, 2, 21);
 
-            Assert.IsTrue(gd1 == gd2);
-            Assert.IsTrue(gd2 == gd1);
-            Assert.IsTrue(gd1 != gd3);
             Assert.IsTrue(gd1 >= gd2);
             Assert.IsTrue(gd1 <= gd2);
-            Assert.IsTrue(gd1.CompareTo(gd2) == 0);
             Assert.IsTrue(gd2 < gd3);
             Assert.IsTrue(gd2 <= gd3);
             Assert.IsTrue(gd3 > gd2);
             Assert.IsTrue(gd3 >= gd2);
-            Assert.AreNotEqual(gd1, gd4);
         }
 
         [Test]
         [CSToJavaExclude]
+        [SuppressMessage("Assertion", "NUnit2043:Use ComparisonConstraint for better assertion messages in case of failure", Justification = "This is specifically testing the CompareTo method")]
         public void TestCompareTimePortionObject()
         {
             GregorianDate gd1 = new GregorianDate(1999, 10, 10, 6, 3, 14);
@@ -236,7 +250,7 @@ namespace CesiumLanguageWriterTests
 
         [Test]
         [CSToJavaExclude]
-        public void CompareToWithWrongTypeThrows()
+        public void CompareToThrowsWithWrongType()
         {
             GregorianDate gd = new GregorianDate(2001, 1, 1, 6, 3, 14);
 
@@ -475,7 +489,7 @@ namespace CesiumLanguageWriterTests
         public void CanConstructGregorianDateRepresentingLeapSecond()
         {
             GregorianDate date = new GregorianDate(2008, 12, 31, 23, 59, 60);
-            Assert.AreEqual(60, date.Second, Constants.Epsilon14);
+            Assert.AreEqual(60, date.Second);
         }
 
         [Test]
@@ -558,9 +572,9 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
-        public void RoundSecondsRoundsFractionalSeconds()
+        public void RoundSecondsShouldRoundFractionalSeconds()
         {
-            GregorianDate gregorianDate = new GregorianDate(2012, 8, 7, 13, 59, 55.5152535);
+            var gregorianDate = new GregorianDate(2012, 8, 7, 13, 59, 55.5152535);
             Assert.AreEqual(new GregorianDate(2012, 8, 7, 13, 59, 55.5152535), gregorianDate.RoundSeconds(7));
             Assert.AreEqual(new GregorianDate(2012, 8, 7, 13, 59, 55.515254), gregorianDate.RoundSeconds(6));
             Assert.AreEqual(new GregorianDate(2012, 8, 7, 13, 59, 55.51525), gregorianDate.RoundSeconds(5));
@@ -571,39 +585,91 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(new GregorianDate(2012, 8, 7, 13, 59, 56), gregorianDate.RoundSeconds(0));
         }
 
-        [Test]
-        public void RoundSecondsRollsOver()
+        public sealed class RoundSecondsTestCase
         {
-            GregorianDate gregorianDate = new GregorianDate(2012, 8, 7, 13, 55, 59.9999999);
-            Assert.AreEqual(new GregorianDate(2012, 8, 7, 13, 56, 0.0), gregorianDate.RoundSeconds(6));
+            public readonly double Seconds;
+            public readonly int Digits;
 
-            gregorianDate = new GregorianDate(2012, 8, 7, 13, 59, 59.9999999);
-            Assert.AreEqual(new GregorianDate(2012, 8, 7, 14, 0, 0.0), gregorianDate.RoundSeconds(6));
+            public RoundSecondsTestCase(int digits, double secondsToRoundTo, int digitsInSeconds)
+            {
+                Digits = digits;
+                // For example, if digitsInSeconds is four, construct a value
+                // for Seconds which is less than secondsToRoundTo and has four 9s: .9999
+                Seconds = secondsToRoundTo - Math.Pow(10, -digitsInSeconds);
+            }
 
-            gregorianDate = new GregorianDate(2012, 8, 7, 23, 59, 59.9999999);
-            Assert.AreEqual(new GregorianDate(2012, 8, 8, 0, 0, 0.0), gregorianDate.RoundSeconds(6));
+            public override string ToString()
+            {
+                return string.Format("{0} rounded to {1} digits", Seconds, Digits);
+            }
 
-            gregorianDate = new GregorianDate(2012, 8, 31, 23, 59, 59.9999999);
-            Assert.AreEqual(new GregorianDate(2012, 9, 1, 0, 0, 0.0), gregorianDate.RoundSeconds(6));
-
-            gregorianDate = new GregorianDate(2012, 12, 31, 23, 59, 59.9999999);
-            Assert.AreEqual(new GregorianDate(2013, 1, 1, 0, 0, 0.0), gregorianDate.RoundSeconds(6));
+            [NotNull]
+            [ItemNotNull]
+            public static IEnumerable<RoundSecondsTestCase> GetTestCases(int minDigitsInSeconds, int maxDigitsInSeconds, double secondsToRoundTo)
+            {
+                var testCases = new List<RoundSecondsTestCase>();
+                for (int digitsInSeconds = minDigitsInSeconds; digitsInSeconds < maxDigitsInSeconds; ++digitsInSeconds)
+                {
+                    for (int digits = digitsInSeconds - 1; digits >= minDigitsInSeconds; --digits)
+                    {
+                        testCases.Add(new RoundSecondsTestCase(digits, secondsToRoundTo, digitsInSeconds));
+                    }
+                }
+                return testCases;
+            }
         }
 
-        [Test]
-        public void RoundSecondsAllows61SecondsDuringLeapSecond()
+        [NotNull]
+        [ItemNotNull]
+        public static IEnumerable<RoundSecondsTestCase> RoundSecondsShouldRollOverValues
         {
-            GregorianDate gregorianDate = new GregorianDate(2012, 6, 30, 23, 59, 59.9999999);
-            Assert.AreEqual(new GregorianDate(2012, 6, 30, 23, 59, 60.0), gregorianDate.RoundSeconds(6));
+            get { return RoundSecondsTestCase.GetTestCases(0, 14, 60.0); }
+        }
 
-            gregorianDate = new GregorianDate(2012, 6, 30, 23, 59, 60.9999999);
-            Assert.AreEqual(new GregorianDate(2012, 7, 1, 0, 0, 0.0), gregorianDate.RoundSeconds(6));
+        [TestCaseSource("RoundSecondsShouldRollOverValues")]
+        public void RoundSecondsShouldRollOver([NotNull] RoundSecondsTestCase testCase)
+        {
+            var gregorianDate = new GregorianDate(2012, 8, 7, 13, 55, testCase.Seconds);
+            Assert.AreEqual(new GregorianDate(2012, 8, 7, 13, 56, 0.0), gregorianDate.RoundSeconds(testCase.Digits));
+
+            gregorianDate = new GregorianDate(2012, 8, 7, 13, 59, testCase.Seconds);
+            Assert.AreEqual(new GregorianDate(2012, 8, 7, 14, 0, 0.0), gregorianDate.RoundSeconds(testCase.Digits));
+
+            gregorianDate = new GregorianDate(2012, 8, 7, 23, 59, testCase.Seconds);
+            Assert.AreEqual(new GregorianDate(2012, 8, 8, 0, 0, 0.0), gregorianDate.RoundSeconds(testCase.Digits));
+
+            gregorianDate = new GregorianDate(2012, 8, 31, 23, 59, testCase.Seconds);
+            Assert.AreEqual(new GregorianDate(2012, 9, 1, 0, 0, 0.0), gregorianDate.RoundSeconds(testCase.Digits));
+
+            gregorianDate = new GregorianDate(2012, 12, 31, 23, 59, testCase.Seconds);
+            Assert.AreEqual(new GregorianDate(2013, 1, 1, 0, 0, 0.0), gregorianDate.RoundSeconds(testCase.Digits));
+        }
+
+        [TestCaseSource("RoundSecondsShouldRollOverValues")]
+        public void RoundSecondsShouldRoundToSixtyDuringLeapSecond([NotNull] RoundSecondsTestCase testCase)
+        {
+            var gregorianDate = new GregorianDate(2012, 6, 30, 23, 59, testCase.Seconds);
+            Assert.AreEqual(new GregorianDate(2012, 6, 30, 23, 59, 60.0), gregorianDate.RoundSeconds(testCase.Digits));
+        }
+
+        [NotNull]
+        [ItemNotNull]
+        public static IEnumerable<RoundSecondsTestCase> RoundSecondsShouldRollOverDuringLeapSecondValues
+        {
+            get { return RoundSecondsTestCase.GetTestCases(0, 14, 61.0); }
+        }
+
+        [TestCaseSource("RoundSecondsShouldRollOverDuringLeapSecondValues")]
+        public void RoundSecondsShouldRollOverDuringLeapSecond([NotNull] RoundSecondsTestCase testCase)
+        {
+            var gregorianDate = new GregorianDate(2012, 6, 30, 23, 59, testCase.Seconds);
+            Assert.AreEqual(new GregorianDate(2012, 7, 1, 0, 0, 0.0), gregorianDate.RoundSeconds(testCase.Digits));
         }
 
         [Test]
         public void RoundSecondsDoesNotAllow61SecondsDuringLeapSecondIfTimeStandardIsNotUtc()
         {
-            GregorianDate gregorianDate = new GregorianDate(2012, 6, 30, 23, 59, 59.9999999);
+            var gregorianDate = new GregorianDate(2012, 6, 30, 23, 59, 59.9999999);
             Assert.AreEqual(new GregorianDate(2012, 7, 1, 0, 0, 0.0), gregorianDate.RoundSeconds(6, TimeStandard.InternationalAtomicTime));
         }
 

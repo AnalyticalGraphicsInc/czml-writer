@@ -1,5 +1,6 @@
 package agi.foundation.compatibility;
 
+import static agi.foundation.compatibility.ArgumentNullException.assertNonNull;
 import agi.foundation.compatibility.annotations.Internal;
 
 import java.lang.reflect.Array;
@@ -124,6 +125,343 @@ public final class ArrayHelper {
         public void sort(Comparator<? super E> c) {
             Arrays.sort(a, c);
         }
+    }
+
+    /**
+     * Searches a range of elements in a one-dimensional sorted array for a value, using
+     * the specified comparer.
+     *
+     * @param <T>
+     *            The type of the elements of the array.
+     * @param array
+     *            The sorted one-dimensional array to search.
+     * @param index
+     *            The starting index of the range to search.
+     * @param length
+     *            The length of the range to search.
+     * @param value
+     *            The object to search for.
+     * @param comparer
+     *            The comparer to use when comparing elements, or null to use the default.
+     * @return The index of the specified value in the specified array, if value is found.
+     *         If value is not found and value is less than one or more elements in array,
+     *         a negative number which is the bitwise complement of the index of the first
+     *         element that is larger than value. If value is not found and value is
+     *         greater than any of the elements in array, a negative number which is the
+     *         bitwise complement of (the index of the last element plus 1).
+     */
+    public static <T> int binarySearch(@Nonnull T[] array, int index, int length, T value, Comparator<? super T> comparer) {
+        assertNonNull(array, "array");
+
+        return Arrays.binarySearch(array, index, index + length, value, comparer);
+    }
+
+    /**
+     * Searches an entire one-dimensional sorted array for a specific element.
+     *
+     * @param array
+     *            The sorted one-dimensional array to search.
+     * @param value
+     *            The object to search for.
+     * @return The index of the specified value in the specified array, if value is found.
+     *         If value is not found and value is less than one or more elements in array,
+     *         a negative number which is the bitwise complement of the index of the first
+     *         element that is larger than value. If value is not found and value is
+     *         greater than any of the elements in array, a negative number which is the
+     *         bitwise complement of (the index of the last element plus 1).
+     */
+    public static int binarySearch(@Nonnull byte[] array, byte value) {
+        assertNonNull(array, "array");
+
+        return Arrays.binarySearch(array, value);
+    }
+
+    /**
+     * Searches a range of elements in a one-dimensional sorted array for a value.
+     *
+     * @param array
+     *            The sorted one-dimensional array to search.
+     * @param index
+     *            The starting index of the range to search.
+     * @param length
+     *            The length of the range to search.
+     * @param value
+     *            The object to search for.
+     * @return The index of the specified value in the specified array, if value is found.
+     *         If value is not found and value is less than one or more elements in array,
+     *         a negative number which is the bitwise complement of the index of the first
+     *         element that is larger than value. If value is not found and value is
+     *         greater than any of the elements in array, a negative number which is the
+     *         bitwise complement of (the index of the last element plus 1).
+     */
+    public static int binarySearch(@Nonnull byte[] array, int index, int length, byte value) {
+        assertNonNull(array, "array");
+
+        return Arrays.binarySearch(array, index, index + length, value);
+    }
+
+    /**
+     * Searches an entire one-dimensional sorted array for a specific element.
+     *
+     * @param array
+     *            The sorted one-dimensional array to search.
+     * @param value
+     *            The object to search for.
+     * @return The index of the specified value in the specified array, if value is found.
+     *         If value is not found and value is less than one or more elements in array,
+     *         a negative number which is the bitwise complement of the index of the first
+     *         element that is larger than value. If value is not found and value is
+     *         greater than any of the elements in array, a negative number which is the
+     *         bitwise complement of (the index of the last element plus 1).
+     */
+    public static int binarySearch(@Nonnull char[] array, char value) {
+        assertNonNull(array, "array");
+
+        return Arrays.binarySearch(array, value);
+    }
+
+    /**
+     * Searches a range of elements in a one-dimensional sorted array for a value.
+     *
+     * @param array
+     *            The sorted one-dimensional array to search.
+     * @param index
+     *            The starting index of the range to search.
+     * @param length
+     *            The length of the range to search.
+     * @param value
+     *            The object to search for.
+     * @return The index of the specified value in the specified array, if value is found.
+     *         If value is not found and value is less than one or more elements in array,
+     *         a negative number which is the bitwise complement of the index of the first
+     *         element that is larger than value. If value is not found and value is
+     *         greater than any of the elements in array, a negative number which is the
+     *         bitwise complement of (the index of the last element plus 1).
+     */
+    public static int binarySearch(@Nonnull char[] array, int index, int length, char value) {
+        assertNonNull(array, "array");
+
+        return Arrays.binarySearch(array, index, index + length, value);
+    }
+
+    /**
+     * Searches an entire one-dimensional sorted array for a specific element.
+     *
+     * @param array
+     *            The sorted one-dimensional array to search.
+     * @param value
+     *            The object to search for.
+     * @return The index of the specified value in the specified array, if value is found.
+     *         If value is not found and value is less than one or more elements in array,
+     *         a negative number which is the bitwise complement of the index of the first
+     *         element that is larger than value. If value is not found and value is
+     *         greater than any of the elements in array, a negative number which is the
+     *         bitwise complement of (the index of the last element plus 1).
+     */
+    public static int binarySearch(@Nonnull double[] array, double value) {
+        assertNonNull(array, "array");
+
+        return Arrays.binarySearch(array, value);
+    }
+
+    /**
+     * Searches a range of elements in a one-dimensional sorted array for a value.
+     *
+     * @param array
+     *            The sorted one-dimensional array to search.
+     * @param index
+     *            The starting index of the range to search.
+     * @param length
+     *            The length of the range to search.
+     * @param value
+     *            The object to search for.
+     * @return The index of the specified value in the specified array, if value is found.
+     *         If value is not found and value is less than one or more elements in array,
+     *         a negative number which is the bitwise complement of the index of the first
+     *         element that is larger than value. If value is not found and value is
+     *         greater than any of the elements in array, a negative number which is the
+     *         bitwise complement of (the index of the last element plus 1).
+     */
+    public static int binarySearch(@Nonnull double[] array, int index, int length, double value) {
+        assertNonNull(array, "array");
+
+        return Arrays.binarySearch(array, index, index + length, value);
+    }
+
+    /**
+     * Searches an entire one-dimensional sorted array for a specific element.
+     *
+     * @param array
+     *            The sorted one-dimensional array to search.
+     * @param value
+     *            The object to search for.
+     * @return The index of the specified value in the specified array, if value is found.
+     *         If value is not found and value is less than one or more elements in array,
+     *         a negative number which is the bitwise complement of the index of the first
+     *         element that is larger than value. If value is not found and value is
+     *         greater than any of the elements in array, a negative number which is the
+     *         bitwise complement of (the index of the last element plus 1).
+     */
+    public static int binarySearch(@Nonnull float[] array, float value) {
+        assertNonNull(array, "array");
+
+        return Arrays.binarySearch(array, value);
+    }
+
+    /**
+     * Searches a range of elements in a one-dimensional sorted array for a value.
+     *
+     * @param array
+     *            The sorted one-dimensional array to search.
+     * @param index
+     *            The starting index of the range to search.
+     * @param length
+     *            The length of the range to search.
+     * @param value
+     *            The object to search for.
+     * @return The index of the specified value in the specified array, if value is found.
+     *         If value is not found and value is less than one or more elements in array,
+     *         a negative number which is the bitwise complement of the index of the first
+     *         element that is larger than value. If value is not found and value is
+     *         greater than any of the elements in array, a negative number which is the
+     *         bitwise complement of (the index of the last element plus 1).
+     */
+    public static int binarySearch(@Nonnull float[] array, int index, int length, float value) {
+        assertNonNull(array, "array");
+
+        return Arrays.binarySearch(array, index, index + length, value);
+    }
+
+    /**
+     * Searches an entire one-dimensional sorted array for a specific element.
+     *
+     * @param array
+     *            The sorted one-dimensional array to search.
+     * @param value
+     *            The object to search for.
+     * @return The index of the specified value in the specified array, if value is found.
+     *         If value is not found and value is less than one or more elements in array,
+     *         a negative number which is the bitwise complement of the index of the first
+     *         element that is larger than value. If value is not found and value is
+     *         greater than any of the elements in array, a negative number which is the
+     *         bitwise complement of (the index of the last element plus 1).
+     */
+    public static int binarySearch(@Nonnull int[] array, int value) {
+        assertNonNull(array, "array");
+
+        return Arrays.binarySearch(array, value);
+    }
+
+    /**
+     * Searches a range of elements in a one-dimensional sorted array for a value.
+     *
+     * @param array
+     *            The sorted one-dimensional array to search.
+     * @param index
+     *            The starting index of the range to search.
+     * @param length
+     *            The length of the range to search.
+     * @param value
+     *            The object to search for.
+     * @return The index of the specified value in the specified array, if value is found.
+     *         If value is not found and value is less than one or more elements in array,
+     *         a negative number which is the bitwise complement of the index of the first
+     *         element that is larger than value. If value is not found and value is
+     *         greater than any of the elements in array, a negative number which is the
+     *         bitwise complement of (the index of the last element plus 1).
+     */
+    public static int binarySearch(@Nonnull int[] array, int index, int length, int value) {
+        assertNonNull(array, "array");
+
+        return Arrays.binarySearch(array, index, index + length, value);
+    }
+
+    /**
+     * Searches an entire one-dimensional sorted array for a specific element.
+     *
+     * @param array
+     *            The sorted one-dimensional array to search.
+     * @param value
+     *            The object to search for.
+     * @return The index of the specified value in the specified array, if value is found.
+     *         If value is not found and value is less than one or more elements in array,
+     *         a negative number which is the bitwise complement of the index of the first
+     *         element that is larger than value. If value is not found and value is
+     *         greater than any of the elements in array, a negative number which is the
+     *         bitwise complement of (the index of the last element plus 1).
+     */
+    public static int binarySearch(@Nonnull long[] array, long value) {
+        assertNonNull(array, "array");
+
+        return Arrays.binarySearch(array, value);
+    }
+
+    /**
+     * Searches a range of elements in a one-dimensional sorted array for a value.
+     *
+     * @param array
+     *            The sorted one-dimensional array to search.
+     * @param index
+     *            The starting index of the range to search.
+     * @param length
+     *            The length of the range to search.
+     * @param value
+     *            The object to search for.
+     * @return The index of the specified value in the specified array, if value is found.
+     *         If value is not found and value is less than one or more elements in array,
+     *         a negative number which is the bitwise complement of the index of the first
+     *         element that is larger than value. If value is not found and value is
+     *         greater than any of the elements in array, a negative number which is the
+     *         bitwise complement of (the index of the last element plus 1).
+     */
+    public static int binarySearch(@Nonnull long[] array, int index, int length, long value) {
+        assertNonNull(array, "array");
+
+        return Arrays.binarySearch(array, index, index + length, value);
+    }
+
+    /**
+     * Searches an entire one-dimensional sorted array for a specific element.
+     *
+     * @param array
+     *            The sorted one-dimensional array to search.
+     * @param value
+     *            The object to search for.
+     * @return The index of the specified value in the specified array, if value is found.
+     *         If value is not found and value is less than one or more elements in array,
+     *         a negative number which is the bitwise complement of the index of the first
+     *         element that is larger than value. If value is not found and value is
+     *         greater than any of the elements in array, a negative number which is the
+     *         bitwise complement of (the index of the last element plus 1).
+     */
+    public static int binarySearch(@Nonnull short[] array, short value) {
+        assertNonNull(array, "array");
+
+        return Arrays.binarySearch(array, value);
+    }
+
+    /**
+     * Searches a range of elements in a one-dimensional sorted array for a value.
+     *
+     * @param array
+     *            The sorted one-dimensional array to search.
+     * @param index
+     *            The starting index of the range to search.
+     * @param length
+     *            The length of the range to search.
+     * @param value
+     *            The object to search for.
+     * @return The index of the specified value in the specified array, if value is found.
+     *         If value is not found and value is less than one or more elements in array,
+     *         a negative number which is the bitwise complement of the index of the first
+     *         element that is larger than value. If value is not found and value is
+     *         greater than any of the elements in array, a negative number which is the
+     *         bitwise complement of (the index of the last element plus 1).
+     */
+    public static int binarySearch(@Nonnull short[] array, int index, int length, short value) {
+        assertNonNull(array, "array");
+
+        return Arrays.binarySearch(array, index, index + length, value);
     }
 
     /**

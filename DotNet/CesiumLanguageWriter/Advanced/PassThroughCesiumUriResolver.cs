@@ -27,6 +27,7 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         [NotNull]
+        [CSToJavaFinalField]
         private static readonly PassThroughCesiumUriResolver s_instance = new PassThroughCesiumUriResolver();
     }
 }

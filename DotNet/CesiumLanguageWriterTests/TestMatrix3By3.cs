@@ -1,12 +1,10 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using CesiumLanguageWriter;
 using NUnit.Framework;
 
 namespace CesiumLanguageWriterTests
 {
-    /// <summary>
-    /// Tests the <see cref="Matrix3By3"/> type.
-    /// </summary>
     [TestFixture]
     public class TestMatrix3By3
     {
@@ -51,14 +49,15 @@ namespace CesiumLanguageWriterTests
         /// Tests the equality and inequality methods and operators.
         /// </summary>
         [Test]
+        [SuppressMessage("Assertion", "NUnit2010", Justification = "This is specifically testing equality methods and operators")]
         public void TestEquality()
         {
-            Matrix3By3 first = new Matrix3By3(1.0, 2.0, 3.0,
-                                              4.0, 5.0, 6.0,
-                                              7.0, 8.0, 9.0);
-            Matrix3By3 second = new Matrix3By3(1.0, 2.0, 3.0,
-                                               4.0, 5.0, 6.0,
-                                               7.0, 8.0, 9.0);
+            var first = new Matrix3By3(1.0, 2.0, 3.0,
+                                       4.0, 5.0, 6.0,
+                                       7.0, 8.0, 9.0);
+            var second = new Matrix3By3(1.0, 2.0, 3.0,
+                                        4.0, 5.0, 6.0,
+                                        7.0, 8.0, 9.0);
             Assert.AreEqual(first, second);
             Assert.AreEqual(second, first);
             Assert.IsTrue(first == second);
@@ -96,12 +95,13 @@ namespace CesiumLanguageWriterTests
         /// Tests to ensure the equality fails when comparing incorrect type.
         /// </summary>
         [Test]
+        [SuppressMessage("ReSharper", "SuspiciousTypeConversion.Global")]
+        [SuppressMessage("Assertion", "NUnit2010", Justification = "This is specifically testing equality methods")]
         public void TestEqualityWithWrongType()
         {
             Matrix3By3 first = Matrix3By3.Identity;
             Cartesian second = new Cartesian(1.0, 2.0, 3.0);
 
-            // ReSharper disable once SuspiciousTypeConversion.Global
             Assert.IsFalse(first.Equals(second));
         }
 
@@ -114,21 +114,19 @@ namespace CesiumLanguageWriterTests
             Matrix3By3 second = new Matrix3By3(1e-2, 1e-3, 1e-4,
                                                1e-5, 1e-6, 1e-7,
                                                1e-8, 1e-9, 1e-10);
-            Assert.IsTrue(second.EqualsEpsilon(first, 1e-1));
-            Assert.IsTrue(second.EqualsEpsilon(first, 1e-2));
-            Assert.IsFalse(second.EqualsEpsilon(first, 1e-3));
-            Assert.IsFalse(second.EqualsEpsilon(first, 1e-4));
-            Assert.IsFalse(second.EqualsEpsilon(first, 1e-5));
-            Assert.IsFalse(second.EqualsEpsilon(first, 1e-6));
-            Assert.IsFalse(second.EqualsEpsilon(first, 1e-7));
-            Assert.IsFalse(second.EqualsEpsilon(first, 1e-8));
-            Assert.IsFalse(second.EqualsEpsilon(first, 1e-9));
-            Assert.IsFalse(second.EqualsEpsilon(first, 1e-10));
+
+            Assert.IsTrue(second.EqualsEpsilon(first, Constants.Epsilon1));
+            Assert.IsTrue(second.EqualsEpsilon(first, Constants.Epsilon2));
+            Assert.IsFalse(second.EqualsEpsilon(first, Constants.Epsilon3));
+            Assert.IsFalse(second.EqualsEpsilon(first, Constants.Epsilon4));
+            Assert.IsFalse(second.EqualsEpsilon(first, Constants.Epsilon5));
+            Assert.IsFalse(second.EqualsEpsilon(first, Constants.Epsilon6));
+            Assert.IsFalse(second.EqualsEpsilon(first, Constants.Epsilon7));
+            Assert.IsFalse(second.EqualsEpsilon(first, Constants.Epsilon8));
+            Assert.IsFalse(second.EqualsEpsilon(first, Constants.Epsilon9));
+            Assert.IsFalse(second.EqualsEpsilon(first, Constants.Epsilon10));
         }
 
-        /// <summary>
-        /// Tests indexing.
-        /// </summary>
         [Test]
         public void TestIndex()
         {
@@ -202,9 +200,6 @@ namespace CesiumLanguageWriterTests
             }
         }
 
-        /// <summary>
-        /// Tests multiplication by a scalar.
-        /// </summary>
         [Test]
         public void TestMultiplyByScalar()
         {
@@ -245,9 +240,6 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(-18.0, result.M33);
         }
 
-        /// <summary>
-        /// Tests multiplication by another <see cref="Matrix3By3"/>.
-        /// </summary>
         [Test]
         public void TestMultiplyByMatrix()
         {
@@ -339,9 +331,6 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(0.0, zero.M33);
         }
 
-        /// <summary>
-        /// Tests math operators
-        /// </summary>
         [Test]
         public void TestMathOperators()
         {
@@ -363,9 +352,7 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(expected, matrix1.Multiply(matrix2));
             Assert.AreEqual(expected, matrix1 * matrix2);
         }
-        /// <summary>
-        /// Tests math operators
-        /// </summary>
+
         [Test]
         public void TestMathOperatorsWithCartesian()
         {

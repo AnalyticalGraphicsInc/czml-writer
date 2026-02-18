@@ -3,6 +3,7 @@ package cesiumlanguagewritertests;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Action;
+import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.ArgumentException;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.CultureInfoHelper;
@@ -19,9 +20,6 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-/**
- * Tests the {@link BoundingRectangle} type.
- */
 @SuppressWarnings({
     "unused",
     "deprecation",
@@ -79,6 +77,7 @@ public class TestBoundingRectangle {
     /**
     * Tests the equality and inequality methods and operators.
     */
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     @Test
     public final void equalityTest() {
         BoundingRectangle boundingRectangle = new BoundingRectangle(1.0, 2.0, 3.0, 4.0);
@@ -94,9 +93,6 @@ public class TestBoundingRectangle {
         Assert.assertTrue(boundingRectangle.equals(boundingRectangleObject));
     }
 
-    /**
-    * Tests the {@link BoundingRectangle#equalsEpsilon} method.
-    */
     @Test
     public final void testEqualsEpsilon() {
         BoundingRectangle boundingRectangle = new BoundingRectangle(1000.0, 2000.0, 3000.0, 4000.0);
@@ -119,9 +115,6 @@ public class TestBoundingRectangle {
         AssertHelper.assertNotEqual(boundingRectangle1.hashCode(), boundingRectangle3.hashCode());
     }
 
-    /**
-    * Tests the {@link BoundingRectangle#toString} method.
-    */
     @Test
     public final void testToString() {
         BoundingRectangle boundingRectangle = new BoundingRectangle(1.0, 2.0, 3.0, 4.0);

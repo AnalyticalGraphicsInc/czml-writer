@@ -2,10 +2,11 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
+import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.CultureInfoHelper;
-import agi.foundation.compatibility.DoubleHelper;
 import agi.foundation.compatibility.IEquatable;
+import agi.foundation.compatibility.StringHelper;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import javax.annotation.Nonnull;
@@ -16,9 +17,6 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-/**
- * Tests the {@link Cartographic} type.
- */
 @SuppressWarnings({
     "unused",
     "deprecation",
@@ -40,6 +38,7 @@ public class TestCartographic {
     /**
     * Tests the equality and inequality methods and operators.
     */
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     @Test
     public final void testEquality() {
         Cartographic first = new Cartographic(1.0, 2.0, 3.0);
@@ -63,18 +62,15 @@ public class TestCartographic {
         Assert.assertFalse(second.equalsType(first));
     }
 
-    /**
-    * Tests the {@link Cartesian#equalsEpsilon} method.
-    */
     @Test
     public final void testEqualsEpsilon() {
         Cartographic first = new Cartographic(1e-1, 1e-2, 1e-3);
         Cartographic second = new Cartographic(1.1e-1, 1.1e-2, 1.1e-3);
-        Assert.assertTrue(second.equalsEpsilon(first, 1e-1));
-        Assert.assertTrue(second.equalsEpsilon(first, 1e-2));
-        Assert.assertFalse(second.equalsEpsilon(first, 1e-3));
-        Assert.assertFalse(second.equalsEpsilon(first, 1e-4));
-        Assert.assertFalse(second.equalsEpsilon(first, 1e-5));
+        Assert.assertTrue(second.equalsEpsilon(first, Constants.Epsilon1));
+        Assert.assertTrue(second.equalsEpsilon(first, Constants.Epsilon2));
+        Assert.assertFalse(second.equalsEpsilon(first, Constants.Epsilon3));
+        Assert.assertFalse(second.equalsEpsilon(first, Constants.Epsilon4));
+        Assert.assertFalse(second.equalsEpsilon(first, Constants.Epsilon5));
     }
 
     /**
@@ -91,16 +87,16 @@ public class TestCartographic {
     /**
     * Tests to ensure the equality fails when comparing incorrect type.
     */
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     @Test
     public final void testEqualityWithWrongType() {
         Cartographic first = new Cartographic(1.0, 2.0, 3.0);
         Cartesian second = new Cartesian(1.0, 2.0, 3.0);
-        // ReSharper disable once SuspiciousTypeConversion.Global
         Assert.assertFalse(first.equals(second));
     }
 
     /**
-    * Tests that Cartographic.GetHashCode returns something at least reasonably random.
+    * Tests that GetHashCode returns something at least reasonably random.
     */
     @Test
     public final void testGetHashCode() {
@@ -111,20 +107,14 @@ public class TestCartographic {
         AssertHelper.assertNotEqual(object1.hashCode(), object3.hashCode());
     }
 
-    /**
-    * Tests ToString method
-    */
     @Test
     public final void testToString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append(DoubleHelper.toString(Math.PI, CultureInfoHelper.getCurrentCulture()));
-        builder.append(", ");
-        builder.append(DoubleHelper.toString(Constants.HalfPi, CultureInfoHelper.getCurrentCulture()));
-        builder.append(", ");
-        final double val = 1.2;
-        builder.append(DoubleHelper.toString(val, CultureInfoHelper.getCurrentCulture()));
-        Cartographic test = new Cartographic(Math.PI, Constants.HalfPi, val);
-        AssertHelper.assertEquals(builder.toString(), test.toString());
+        final double longitude = Math.PI;
+        final double latitude = Constants.HalfPi;
+        final double height = 1.2;
+        Cartographic test = new Cartographic(longitude, latitude, height);
+        String expected = StringHelper.format(CultureInfoHelper.getCurrentCulture(), "{0}, {1}, {2}", longitude, latitude, height);
+        AssertHelper.assertEquals(expected, test.toString());
     }
 
     @Nonnull

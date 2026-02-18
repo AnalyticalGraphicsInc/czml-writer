@@ -8,6 +8,7 @@ import agi.foundation.compatibility.CultureInfoHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.ObjectHelper;
 import agi.foundation.compatibility.StringHelper;
+import java.util.Objects;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
@@ -49,7 +50,7 @@ public final class TimeInterval implements IEquatable<TimeInterval> {
     }
 
     /**
-    * Gets a value indicating whether or not the interval is empty.
+    * Gets a value indicating whether the interval is empty.
     */
     public final boolean getIsEmpty() {
         return JulianDate.greaterThanOrEqual(m_start, m_stop);
@@ -91,9 +92,24 @@ public final class TimeInterval implements IEquatable<TimeInterval> {
             return false;
         }
         int startComparedToDate = m_start.compareTo(date);
-        int dateComparedToStop = date.compareTo(m_stop);
-        // return start < date && date < stop
-        return startComparedToDate <= 0 && dateComparedToStop <= 0;
+        if (startComparedToDate == 0) {
+            // if start == date
+            return true;
+        }
+        if (startComparedToDate > 0) {
+            // if start > date
+            return false;
+        }
+        int stopComparedToDate = m_stop.compareTo(date);
+        if (stopComparedToDate == 0) {
+            // if stop == date
+            return true;
+        }
+        if (stopComparedToDate < 0) {
+            // if stop < date
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -175,10 +191,7 @@ public final class TimeInterval implements IEquatable<TimeInterval> {
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean ==(TimeInterval,TimeInterval)'")
     public static boolean equals(TimeInterval left, TimeInterval right) {
-        if (ObjectHelper.referenceEquals(left, null)) {
-            return ObjectHelper.referenceEquals(right, null);
-        }
-        return left.equalsType(right);
+        return Objects.equals(left, right);
     }
 
     /**
@@ -189,7 +202,7 @@ public final class TimeInterval implements IEquatable<TimeInterval> {
     */
     @CS2JInfo("This method implements the functionality of the overloaded operator: 'System.Boolean !=(TimeInterval,TimeInterval)'")
     public static boolean notEquals(TimeInterval left, TimeInterval right) {
-        return !(TimeInterval.equals(left, right));
+        return !Objects.equals(left, right);
     }
 
     /**

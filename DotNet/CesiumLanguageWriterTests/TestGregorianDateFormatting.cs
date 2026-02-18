@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using CesiumLanguageWriter;
@@ -105,7 +106,7 @@ namespace CesiumLanguageWriterTests
             gregorianDate = new GregorianDate(2009, 06, 10, 15, 0, 13.012345678912345);
             string s = gregorianDate.ToString("ss.fffffffffffffff", m_cultureInfo);
             Assert.AreEqual(18, s.Length);
-            Assert.IsTrue(s.StartsWith("13.0123456789123"));
+            StringAssert.StartsWith("13.0123456789123", s);
 
             gregorianDate = new GregorianDate(2009, 06, 10, 15, 0, 13.012);
             Assert.AreEqual("13.012000000000000", gregorianDate.ToString("ss.fffffffffffffff", m_cultureInfo));
@@ -246,6 +247,7 @@ namespace CesiumLanguageWriterTests
             }
         }
 
+        [NotNull]
         public static IEnumerable<GregorianDate> ToIso8601ValidationValues
         {
             get

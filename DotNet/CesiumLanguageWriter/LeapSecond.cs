@@ -24,8 +24,9 @@ namespace CesiumLanguageWriter
         /// <param name="date">The Julian date of the leap second, in Coordinated Universal Time (UTC).</param>
         /// <param name="totalTaiOffsetFromUtc">The offset of TAI from UTC after this leap second.</param>
         public LeapSecond(double date, double totalTaiOffsetFromUtc)
-            : this(new JulianDate(date, TimeStandard.CoordinatedUniversalTime), totalTaiOffsetFromUtc)
         {
+            m_date = new JulianDate(date, TimeStandard.CoordinatedUniversalTime);
+            m_totalTaiOffsetFromUtc = totalTaiOffsetFromUtc;
         }
 
         /// <summary>

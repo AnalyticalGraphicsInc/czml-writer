@@ -7,6 +7,7 @@ import agi.foundation.compatibility.IntHelper;
 import agi.foundation.compatibility.NumberFormatInfo;
 import agi.foundation.compatibility.StringComparison;
 import agi.foundation.compatibility.StringHelper;
+import javax.annotation.Nonnull;
 
 /**
  * @deprecated Internal use only.
@@ -30,7 +31,8 @@ public final class StringFormatting {
     * @param formattedNumber The formatted decimal floating point number.
     * @return An equivalent number without the use of exponential notation.
     */
-    public static String toNonExponentialNotation(NumberFormatInfo format, String formattedNumber) {
+    @Nonnull
+    public static String toNonExponentialNotation(NumberFormatInfo format, @Nonnull String formattedNumber) {
         int indexOfE = formattedNumber.indexOf('E');
         if (indexOfE < 0) {
             return formattedNumber;
@@ -52,7 +54,7 @@ public final class StringFormatting {
             withoutDecimalSeparator = StringHelper.create('0', -desiredIndexOfSeparator + 1) + withoutDecimalSeparator;
             desiredIndexOfSeparator = 1;
         } else if (desiredIndexOfSeparator >= withoutDecimalSeparator.length()) {
-            withoutDecimalSeparator = withoutDecimalSeparator + StringHelper.create('0', desiredIndexOfSeparator - withoutDecimalSeparator.length() + 1);
+            withoutDecimalSeparator += StringHelper.create('0', desiredIndexOfSeparator - withoutDecimalSeparator.length() + 1);
         }
         return StringHelper.substring(withoutDecimalSeparator, 0, desiredIndexOfSeparator) + decimalSeparator + StringHelper.substring(withoutDecimalSeparator, desiredIndexOfSeparator);
     }

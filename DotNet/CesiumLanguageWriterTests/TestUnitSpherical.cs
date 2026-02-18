@@ -1,14 +1,11 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
-using System.Text;
 using CesiumLanguageWriter;
 using NUnit.Framework;
 
 namespace CesiumLanguageWriterTests
 {
-    /// <summary>
-    /// Tests the <see cref="UnitSpherical"/> type.
-    /// </summary>
     [TestFixture]
     public class TestUnitSpherical
     {
@@ -23,9 +20,6 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(2.0, test.Cone);
         }
 
-        /// <summary>
-        /// Tests initialization from <see cref="UnitCartesian"/> coordinates.
-        /// </summary>
         [Test]
         public void TestFromUnitCartesian()
         {
@@ -41,6 +35,7 @@ namespace CesiumLanguageWriterTests
         /// Tests the equality and inequality methods and operators.
         /// </summary>
         [Test]
+        [SuppressMessage("Assertion", "NUnit2010", Justification = "This is specifically testing equality methods and operators")]
         public void TestEquality()
         {
             UnitSpherical first = new UnitSpherical(1.0, 2.0);
@@ -65,19 +60,17 @@ namespace CesiumLanguageWriterTests
             Assert.IsFalse(second.Equals(first));
         }
 
-        /// <summary>
-        /// Tests the <see cref="UnitSpherical.EqualsEpsilon"/> method.
-        /// </summary>
         [Test]
         public void TestEqualsEpsilon()
         {
             UnitSpherical first = new UnitSpherical(1e-1, 1e-2);
             UnitSpherical second = new UnitSpherical(1.1e-1, 1.1e-2);
-            Assert.IsTrue(second.EqualsEpsilon(first, 1e-1));
-            Assert.IsTrue(second.EqualsEpsilon(first, 1e-2));
-            Assert.IsFalse(second.EqualsEpsilon(first, 1e-3));
-            Assert.IsFalse(second.EqualsEpsilon(first, 1e-4));
-            Assert.IsFalse(second.EqualsEpsilon(first, 1e-5));
+
+            Assert.IsTrue(second.EqualsEpsilon(first, Constants.Epsilon1));
+            Assert.IsTrue(second.EqualsEpsilon(first, Constants.Epsilon2));
+            Assert.IsFalse(second.EqualsEpsilon(first, Constants.Epsilon3));
+            Assert.IsFalse(second.EqualsEpsilon(first, Constants.Epsilon4));
+            Assert.IsFalse(second.EqualsEpsilon(first, Constants.Epsilon5));
         }
 
         /// <summary>
@@ -97,12 +90,13 @@ namespace CesiumLanguageWriterTests
         /// Tests to ensure the equality fails when comparing incorrect type.
         /// </summary>
         [Test]
+        [SuppressMessage("ReSharper", "SuspiciousTypeConversion.Global")]
+        [SuppressMessage("Assertion", "NUnit2010", Justification = "This is specifically testing equality methods")]
         public void TestEqualityWithWrongType()
         {
             UnitSpherical first = new UnitSpherical(1.0, 2.0);
             Cartographic second = new Cartographic(1.0, 2.0, 3.0);
 
-            // ReSharper disable once SuspiciousTypeConversion.Global
             Assert.IsFalse(first.Equals(second));
         }
 
@@ -112,25 +106,23 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestGetHashCode()
         {
-            UnitSpherical object1 = new UnitSpherical(1.0, 2.0);
-            UnitSpherical object2 = new UnitSpherical(1.0, 2.0);
-            UnitSpherical object3 = new UnitSpherical(1.0, 2.1);
+            var object1 = new UnitSpherical(1.0, 2.0);
+            var object2 = new UnitSpherical(1.0, 2.0);
+            var object3 = new UnitSpherical(1.0, 2.1);
             Assert.AreEqual(object1.GetHashCode(), object2.GetHashCode());
             Assert.AreNotEqual(object1.GetHashCode(), object3.GetHashCode());
         }
 
-        /// <summary>
-        /// Tests ToString method
-        /// </summary>
         [Test]
         public void TestToString()
         {
-            StringBuilder builder = new StringBuilder();
-            builder.Append((-Math.PI).ToString(CultureInfo.CurrentCulture));
-            builder.Append(", ");
-            builder.Append(Math.PI.ToString(CultureInfo.CurrentCulture));
-            UnitSpherical test = new UnitSpherical(-Math.PI, Math.PI);
-            Assert.AreEqual(builder.ToString(), test.ToString());
+            const double clock = -Math.PI;
+            const double cone = Math.PI;
+
+            UnitSpherical test = new UnitSpherical(clock, cone);
+
+            string expected = string.Format(CultureInfo.CurrentCulture, "{0}, {1}", clock, cone);
+            Assert.AreEqual(expected, test.ToString());
         }
     }
 }

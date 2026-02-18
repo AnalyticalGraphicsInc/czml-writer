@@ -9,6 +9,7 @@ import agi.foundation.compatibility.ArgumentNullException;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.CultureInfoHelper;
 import agi.foundation.compatibility.DateTimeHelper;
+import agi.foundation.compatibility.EnumHelper;
 import agi.foundation.compatibility.StringHelper;
 import agi.foundation.compatibility.TestContextRule;
 import agi.foundation.TypeLiteral;
@@ -21,7 +22,6 @@ import org.junit.Before;
 import org.junit.ClassRule;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
-import org.junit.rules.ExpectedException;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
@@ -54,11 +54,9 @@ public class TestGregorianDateParsing {
         result = GregorianDate.parse("1985-042");
         AssertHelper.assertEquals(iso, result);
         // Make sure to check each month to ensure we have it right
-        final String first = "1986-";
-        final String last = "T02:01:04Z";
         JulianDate baseDate = new GregorianDate(1986, 1, 12, 2, 1, 4.0).toJulianDate();
         for (int i = 1; i < 12; i++) {
-            String testString = StringHelper.format(first + "{0:000}" + last, 12 + i * 30);
+            String testString = StringHelper.format("1986-{0:000}T02:01:04Z", 12 + i * 30);
             GregorianDate expected = baseDate.addDays(i * 30).toGregorianDate();
             AssertHelper.assertEquals(expected, GregorianDate.parse(testString));
         }
@@ -135,18 +133,10 @@ public class TestGregorianDateParsing {
     }
 
     @Test
-    public final void testParseIso8601Formats$TestCase1() {
-        testParseIso8601Formats(Iso8601Format.BASIC);
-    }
-
-    @Test
-    public final void testParseIso8601Formats$TestCase2() {
-        testParseIso8601Formats(Iso8601Format.COMPACT);
-    }
-
-    @Test
-    public final void testParseIso8601Formats$TestCase3() {
-        testParseIso8601Formats(Iso8601Format.EXTENDED);
+    public final void testParseIso8601Formats$Test() {
+        for (final Iso8601Format format : EnumHelper.getValues(Iso8601Format.class)) {
+            testParseIso8601Formats(format);
+        }
     }
 
     @Test
@@ -423,14 +413,5 @@ public class TestGregorianDateParsing {
     @ClassRule
     public static TestContextRule getRule$testContext() {
         return rule$testContext;
-    }
-
-    @Nonnull
-    private final ExpectedException rule$expectedException = ExpectedException.none();
-
-    @Nonnull
-    @Rule
-    public ExpectedException getRule$expectedException() {
-        return rule$expectedException;
     }
 }

@@ -1,15 +1,57 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using CesiumLanguageWriter;
 using NUnit.Framework;
 
 namespace CesiumLanguageWriterTests
 {
-    /// <summary>
-    /// A series of tests to exercise this type.
-    /// </summary>
     [TestFixture]
     public class TestYearMonthDay
     {
+        /// <summary>
+        /// Leap years are divisible by 4, except for years which are divisible by 100, unless also divisible by 400.
+        /// </summary>
+        private static bool IsLeapYear(int year)
+        {
+            if (year % 400 == 0)
+                return true;
+            if (year % 100 == 0)
+                return false;
+            return year % 4 == 0;
+        }
+
+        public enum Month
+        {
+            January = 1,
+            February = 2,
+            March = 3,
+            April = 4,
+            May = 5,
+            June = 6,
+            July = 7,
+            August = 8,
+            September = 9,
+            October = 10,
+            November = 11,
+            December = 12,
+        }
+
+        private static int DaysInMonth(int year, Month month)
+        {
+            switch (month)
+            {
+                case Month.February:
+                    return IsLeapYear(year) ? 29 : 28;
+                case Month.April:
+                case Month.June:
+                case Month.September:
+                case Month.November:
+                    return 30;
+                default:
+                    return 31;
+            }
+        }
+
         /// <summary>
         /// Tests that an appropriate exception is thrown when constructing a
         /// YearMonthDay with an invalid date.
@@ -19,43 +61,33 @@ namespace CesiumLanguageWriterTests
         {
             Assert.Throws<ArgumentException>(() =>
             {
-                YearMonthDay unused = new YearMonthDay(2006, 2, 29);
+                var unused = new YearMonthDay(2006, 2, 29);
             });
         }
 
         /// <summary>
-        /// Tests that years divisible by 4, except for years which are both divisible
-        /// by 100 and not divisible by 400, are leap years.
+        /// Tests that leap years are detected correctly.
         /// </summary>
         [Test]
         public void TestIsLeapYear()
         {
-            for (int i = 1; i < 10000; ++i)
+            for (int year = 1; year <= 9999; ++year)
             {
-                if ((i % 4 == 0) && !((i % 100 == 0) && (i % 400 != 0)))
-                {
-                    Assert.IsTrue(YearMonthDay.IsLeapYear(i));
-                }
+                bool expected = IsLeapYear(year);
+                Assert.AreEqual(expected, YearMonthDay.IsLeapYear(year));
             }
         }
 
         /// <summary>
-        /// Tests that years divisible by 4, except for years which are both divisible
-        /// by 100 and not divisible by 400, have 366 days instead of 365.
+        /// Tests that leap years have 366 days instead of 365.
         /// </summary>
         [Test]
         public void TestDaysInYear()
         {
-            for (int i = 1; i < 10000; ++i)
+            for (int year = 1; year <= 9999; ++year)
             {
-                if ((i % 4 == 0) && !((i % 100 == 0) && (i % 400 != 0)))
-                {
-                    Assert.AreEqual(366, YearMonthDay.DaysInYear(i));
-                }
-                else
-                {
-                    Assert.AreEqual(365, YearMonthDay.DaysInYear(i));
-                }
+                int expected = IsLeapYear(year) ? 366 : 365;
+                Assert.AreEqual(expected, YearMonthDay.DaysInYear(year));
             }
         }
 
@@ -63,67 +95,40 @@ namespace CesiumLanguageWriterTests
         /// Tests that the length of the month is reported correctly for common years and leap years.
         /// </summary>
         [Test]
-        public void TestDaysInMonth()
+        public void TestDaysInMonth([Values] Month m)
         {
-            for (int i = 1; i < 10000; ++i)
+            for (int year = 1; year <= 9999; ++year)
             {
-                Assert.AreEqual(31, YearMonthDay.DaysInMonth(i, 1)); // January
-                if ((i % 4 == 0) && !((i % 100 == 0) && (i % 400 != 0)))
-                {
-                    Assert.AreEqual(29, YearMonthDay.DaysInMonth(i, 2)); // February of a leap year
-                }
-                else
-                {
-                    Assert.AreEqual(28, YearMonthDay.DaysInMonth(i, 2)); // February of a common year
-                }
-
-                Assert.AreEqual(31, YearMonthDay.DaysInMonth(i, 3)); // March
-                Assert.AreEqual(30, YearMonthDay.DaysInMonth(i, 4)); // April
-                Assert.AreEqual(31, YearMonthDay.DaysInMonth(i, 5)); // May
-                Assert.AreEqual(30, YearMonthDay.DaysInMonth(i, 6)); // June
-                Assert.AreEqual(31, YearMonthDay.DaysInMonth(i, 7)); // July
-                Assert.AreEqual(31, YearMonthDay.DaysInMonth(i, 8)); // August
-                Assert.AreEqual(30, YearMonthDay.DaysInMonth(i, 9)); // September
-                Assert.AreEqual(31, YearMonthDay.DaysInMonth(i, 10)); // October
-                Assert.AreEqual(30, YearMonthDay.DaysInMonth(i, 11)); // November
-                Assert.AreEqual(31, YearMonthDay.DaysInMonth(i, 12)); // December
+                int month = (int)m;
+                int expected = DaysInMonth(year, m);
+                Assert.AreEqual(expected, YearMonthDay.DaysInMonth(year, month));
             }
         }
 
         /// <summary>
         /// Tests that month of year and day of month ranges are validated correctly.
-        /// There is no current limit on the year representation.
         /// </summary>
         [Test]
-        public void TestIsValidDate()
+        public void TestIsValidDate([Values] Month m)
+        {
+            const int year = 2000;
+            int month = (int)m;
+            int daysInMonth = YearMonthDay.DaysInMonth(year, month);
+
+            for (int day = 1; day <= daysInMonth; ++day)
+            {
+                Assert.IsTrue(YearMonthDay.IsValidDate(year, month, day));
+            }
+
+            Assert.IsFalse(YearMonthDay.IsValidDate(year, month, 0));
+            Assert.IsFalse(YearMonthDay.IsValidDate(year, month, daysInMonth + 1));
+        }
+
+        [Test]
+        public void TestIsValidDateWithInvalidMonth()
         {
             Assert.IsFalse(YearMonthDay.IsValidDate(2000, 0, 1));
-            Assert.IsTrue(YearMonthDay.IsValidDate(2000, 1, 1));
-            Assert.IsTrue(YearMonthDay.IsValidDate(2000, 2, 1));
-            Assert.IsTrue(YearMonthDay.IsValidDate(2000, 3, 1));
-            Assert.IsTrue(YearMonthDay.IsValidDate(2000, 4, 1));
-            Assert.IsTrue(YearMonthDay.IsValidDate(2000, 5, 1));
-            Assert.IsTrue(YearMonthDay.IsValidDate(2000, 6, 1));
-            Assert.IsTrue(YearMonthDay.IsValidDate(2000, 7, 1));
-            Assert.IsTrue(YearMonthDay.IsValidDate(2000, 8, 1));
-            Assert.IsTrue(YearMonthDay.IsValidDate(2000, 9, 1));
-            Assert.IsTrue(YearMonthDay.IsValidDate(2000, 10, 1));
-            Assert.IsTrue(YearMonthDay.IsValidDate(2000, 11, 1));
-            Assert.IsTrue(YearMonthDay.IsValidDate(2000, 12, 1));
             Assert.IsFalse(YearMonthDay.IsValidDate(2000, 13, 1));
-
-            for (int month = 1; month < 13; ++month)
-            {
-                int daysInMonth = YearMonthDay.DaysInMonth(2000, month);
-
-                Assert.IsFalse(YearMonthDay.IsValidDate(2000, month, 0));
-                for (int day = 1; day < daysInMonth + 1; ++day)
-                {
-                    Assert.IsTrue(YearMonthDay.IsValidDate(2000, month, day));
-                }
-
-                Assert.IsFalse(YearMonthDay.IsValidDate(2000, month, daysInMonth + 1));
-            }
         }
 
         /// <summary>
@@ -142,15 +147,19 @@ namespace CesiumLanguageWriterTests
         /// Tests the check for EXACT equality.
         /// </summary>
         [Test]
+        [SuppressMessage("Assertion", "NUnit2010", Justification = "This is specifically testing equality methods and operators")]
         public void TestEquality()
         {
-            YearMonthDay first = new YearMonthDay(2000, 1, 1);
-            YearMonthDay second = new YearMonthDay(2000, 1, 1);
+            var first = new YearMonthDay(2000, 1, 1);
+            var second = new YearMonthDay(2000, 1, 1);
             Assert.AreEqual(first, second);
             Assert.IsTrue(first.Equals(second));
             Assert.IsTrue(second.Equals(first));
             Assert.AreEqual(0, first.CompareTo(second));
             Assert.AreEqual(0, second.CompareTo(first));
+
+            Assert.IsTrue(first == second);
+            Assert.IsTrue(second == first);
 
             second = new YearMonthDay(2001, 1, 1);
             Assert.AreNotEqual(first, second);
@@ -173,12 +182,16 @@ namespace CesiumLanguageWriterTests
             Assert.AreNotEqual(0, first.CompareTo(second));
             Assert.AreNotEqual(0, second.CompareTo(first));
 
-            Assert.AreNotEqual(first, 5);
+            Assert.IsTrue(first != second);
+            Assert.IsTrue(second != first);
+
+            object obj = new YearMonthDay(2004, 2, 21);
+            Assert.AreNotEqual(first, obj);
+
+            object differentType = 5;
+            Assert.AreNotEqual(first, differentType);
         }
 
-        /// <summary>
-        /// Tests the <see cref="YearMonthDay.DayOfYear"/> property.
-        /// </summary>
         [Test]
         public void TestDayOfYear()
         {
@@ -199,16 +212,13 @@ namespace CesiumLanguageWriterTests
         /// Tests the CompareTo methods and the comparison operators.
         /// </summary>
         [Test]
+        [SuppressMessage("Assertion", "NUnit2043", Justification = "This is specifically testing operator overloads")]
         public void TestComparisons()
         {
             YearMonthDay ymd1 = new YearMonthDay(2006, 3, 14);
             YearMonthDay ymd2 = new YearMonthDay(2006, 3, 14);
             YearMonthDay ymd3 = new YearMonthDay(2006, 5, 26);
-            object ymd4 = new YearMonthDay(2004, 2, 21);
 
-            Assert.IsTrue(ymd1 == ymd2);
-            Assert.IsTrue(ymd2 == ymd1);
-            Assert.IsTrue(ymd1 != ymd3);
             Assert.IsTrue(ymd1 >= ymd2);
             Assert.IsTrue(ymd1 <= ymd2);
             Assert.AreEqual(0, ymd1.CompareTo(ymd2));
@@ -216,18 +226,17 @@ namespace CesiumLanguageWriterTests
             Assert.IsTrue(ymd2 <= ymd3);
             Assert.IsTrue(ymd3 > ymd2);
             Assert.IsTrue(ymd3 >= ymd2);
-            Assert.AreNotEqual(ymd1, ymd4);
         }
 
         [Test]
         [CSToJavaExclude]
         public void TestCompareToObject()
         {
-            YearMonthDay ymd1 = new YearMonthDay(2006, 3, 14);
-            object ymd4 = new YearMonthDay(2004, 2, 21);
+            var ymd = new YearMonthDay(2006, 3, 14);
+            object ymdAsObject = new YearMonthDay(2004, 2, 21);
 
-            Assert.Greater(ymd1.CompareTo(null), 0);
-            Assert.Greater(ymd1.CompareTo(ymd4), 0);
+            Assert.Greater(ymd.CompareTo(null), 0);
+            Assert.Greater(ymd.CompareTo(ymdAsObject), 0);
         }
 
         /// <summary>
@@ -265,7 +274,7 @@ namespace CesiumLanguageWriterTests
         public void TestToString()
         {
             YearMonthDay ymd1 = new YearMonthDay(2006, 3, 14);
-            Assert.AreEqual(ymd1.ToString(), "2006:3:14");
+            Assert.AreEqual("2006:3:14", ymd1.ToString());
         }
 
         /// <summary>
@@ -303,43 +312,44 @@ namespace CesiumLanguageWriterTests
         /// Tests the constructor overload that takes a year and the day of the year as parameters.
         /// </summary>
         [Test]
-        public void TestConstructFromDayOfYear()
+        [Combinatorial]
+        public void TestConstructFromDayOfYear([Values(2000, 2001)] int year, [Values] Month m)
         {
-            int[] years = { 2000, 2001 };
-
-            Assert.IsTrue(YearMonthDay.IsLeapYear(years[0]));
-            Assert.IsFalse(YearMonthDay.IsLeapYear(years[1]));
-
-            foreach (int year in years)
+            int month = (int)m;
+            // Test each day of the month.
+            for (int day = 1; day <= YearMonthDay.DaysInMonth(year, month); ++day)
             {
-                int cumulativeDays = 0;
-                for (int month = 1; month <= 12; ++month)
-                {
-                    // Test first of the month.
-                    YearMonthDay ymd = new YearMonthDay(year, cumulativeDays + 1);
-                    Assert.AreEqual(year, ymd.Year);
-                    Assert.AreEqual(month, ymd.Month);
-                    Assert.AreEqual(1, ymd.Day);
+                int dayOfYear = new DateTime(year, month, day).DayOfYear;
 
-                    int daysInMonth = YearMonthDay.DaysInMonth(year, month);
-
-                    // Test last of the month.
-                    ymd = new YearMonthDay(year, cumulativeDays + daysInMonth);
-                    Assert.AreEqual(year, ymd.Year);
-                    Assert.AreEqual(month, ymd.Month);
-                    Assert.AreEqual(daysInMonth, ymd.Day);
-
-                    cumulativeDays += daysInMonth;
-                }
+                var ymd = new YearMonthDay(year, dayOfYear);
+                Assert.AreEqual(year, ymd.Year);
+                Assert.AreEqual(month, ymd.Month);
+                Assert.AreEqual(day, ymd.Day);
             }
+        }
+
+        [Test]
+        public void ConstructorThrowsWithInvalidDayOfYear()
+        {
+            var exception = Assert.Throws<ArgumentException>(() =>
+            {
+                var unused = new YearMonthDay(2000, 0);
+            });
+            Assert.AreEqual("dayOfYear", exception.ParamName);
+
+            exception = Assert.Throws<ArgumentException>(() =>
+            {
+                var unused = new YearMonthDay(2000, 367);
+            });
+            Assert.AreEqual("dayOfYear", exception.ParamName);
         }
 
         [Test]
         public void TestJulianDayNumber()
         {
-            const int astronomicalJulianDayNumber = 2454959;
-            YearMonthDay ymd = new YearMonthDay(astronomicalJulianDayNumber);
-            Assert.AreEqual(astronomicalJulianDayNumber, ymd.JulianDayNumber);
+            const int julianDayNumber = 2454959;
+            YearMonthDay ymd = new YearMonthDay(julianDayNumber);
+            Assert.AreEqual(julianDayNumber, ymd.JulianDayNumber);
         }
 
         [Test]

@@ -7,9 +7,6 @@ using NUnit.Framework;
 
 namespace CesiumLanguageWriterTests
 {
-    /// <summary>
-    /// A series of tests to exercise this type.
-    /// </summary>
     [TestFixture]
     public class TestJulianDate
     {
@@ -95,6 +92,7 @@ namespace CesiumLanguageWriterTests
         /// Tests the check for EXACT equality and the check for equality within a specified tolerance.
         /// </summary>
         [Test]
+        [SuppressMessage("Assertion", "NUnit2010", Justification = "This is specifically testing equality methods and operators")]
         public void TestEquality()
         {
             JulianDate first = new JulianDate(2451545, 0.2);
@@ -102,19 +100,27 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(first, second);
             Assert.IsTrue(first.Equals(second));
             Assert.IsTrue(second.Equals(first));
+            Assert.IsTrue(first == second);
+            Assert.IsTrue(second == first);
+            Assert.IsFalse(first != second);
+            Assert.IsFalse(second != first);
             Assert.AreEqual(0, first.CompareTo(second));
             Assert.AreEqual(0, second.CompareTo(first));
-            Assert.AreNotEqual(first, 5);
+
+            object differentType = 5;
+            Assert.AreNotEqual(first, differentType);
 
             first = new JulianDate(2451545, 0.00001);
             second = new JulianDate(2451544, 86399.99999);
             Assert.AreNotEqual(first, second);
             Assert.IsFalse(first.Equals(second));
             Assert.IsFalse(second.Equals(first));
+            Assert.IsFalse(first == second);
+            Assert.IsFalse(second == first);
+            Assert.IsTrue(first != second);
+            Assert.IsTrue(second != first);
             Assert.AreNotEqual(0, first.CompareTo(second));
             Assert.AreNotEqual(0, second.CompareTo(first));
-            Assert.IsTrue(first.EqualsEpsilon(second, 1e-4));
-            Assert.IsTrue(second.EqualsEpsilon(first, 1e-4));
         }
 
         /// <summary>
@@ -130,6 +136,20 @@ namespace CesiumLanguageWriterTests
             Assert.Greater(second, first);
         }
 
+        [Test]
+        public void TestEqualsEpsilon()
+        {
+            var first = new JulianDate(2451545, 0.00001);
+            var second = new JulianDate(2451544, 86399.99999);
+
+            Assert.IsTrue(first.EqualsEpsilon(second, Constants.Epsilon3));
+            Assert.IsTrue(first.EqualsEpsilon(second, Constants.Epsilon4));
+            Assert.IsFalse(first.EqualsEpsilon(second, Constants.Epsilon5));
+            Assert.IsFalse(first.EqualsEpsilon(second, Constants.Epsilon6));
+
+            Assert.IsTrue(second.EqualsEpsilon(first, Constants.Epsilon4));
+        }
+
         /// <summary>
         /// Tests that the <see cref="JulianDate.EqualsEpsilon"/> method returns true
         /// when the difference is exactly epsilon.
@@ -137,8 +157,8 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestEqualsEpsilonExact()
         {
-            JulianDate first = new JulianDate(2451545, 0.2);
-            JulianDate second = new JulianDate(2451545, 0.2);
+            var first = new JulianDate(2451545, 0.2);
+            var second = new JulianDate(2451545, 0.2);
 
             Assert.IsTrue(second.EqualsEpsilon(first, 0));
         }
@@ -186,20 +206,20 @@ namespace CesiumLanguageWriterTests
         {
             // Test same standard - both safe
             JulianDate first = new JulianDate(2451545.0);
-            JulianDate second = first + Duration.FromSeconds(120000);
+            JulianDate second = first.AddSeconds(120000);
             Assert.AreEqual(120000, first.SecondsDifference(second));
             Assert.AreEqual((second - first).TotalSeconds, first.SecondsDifference(second));
 
             //Test same standard - both unsafe
             first = new JulianDate(2451545.0, TimeStandard.CoordinatedUniversalTime);
-            second = first + Duration.FromSeconds(120000);
+            second = first.AddSeconds(120000);
             second = new JulianDate(second.Day, second.SecondsOfDay, TimeStandard.CoordinatedUniversalTime);
             Assert.AreEqual(120000, first.SecondsDifference(second));
             Assert.AreEqual((second - first).TotalSeconds, first.SecondsDifference(second));
 
             // Test diff standard - one unsafe, one safe
             first = new JulianDate(2451545.0);
-            second = first + Duration.FromSeconds(120000);
+            second = first.AddSeconds(120000);
             JulianDate secondDiffStandard = second.ToTimeStandard(TimeStandard.CoordinatedUniversalTime);
             Assert.AreEqual(120000, first.SecondsDifference(secondDiffStandard));
             Assert.AreEqual((secondDiffStandard - first).TotalSeconds, first.SecondsDifference(secondDiffStandard));
@@ -220,20 +240,20 @@ namespace CesiumLanguageWriterTests
 
             //Test same time standard, both safe
             JulianDate first = new JulianDate(2451545.0);
-            JulianDate second = first + Duration.FromSeconds(totalElapsedTime);
+            JulianDate second = first.AddSeconds(totalElapsedTime);
             Assert.AreEqual(totalElapsedTimeMinutes, first.MinutesDifference(second));
             Assert.AreEqual((second - first).TotalSeconds / TimeConstants.SecondsPerMinute, first.MinutesDifference(second));
 
             //Test same time standard, both unsafe
             first = new JulianDate(2451545.0, TimeStandard.CoordinatedUniversalTime);
-            second = first + Duration.FromSeconds(totalElapsedTime);
+            second = first.AddSeconds(totalElapsedTime);
             second = new JulianDate(second.Day, second.SecondsOfDay, TimeStandard.CoordinatedUniversalTime);
             Assert.AreEqual(totalElapsedTimeMinutes, first.MinutesDifference(second));
             Assert.AreEqual((second - first).TotalSeconds / TimeConstants.SecondsPerMinute, first.MinutesDifference(second));
 
             //Test diff time standard, one safe, one unsafe
             first = new JulianDate(2451545.0);
-            second = first + Duration.FromSeconds(totalElapsedTime);
+            second = first.AddSeconds(totalElapsedTime);
             JulianDate secondDiffStandard = second.ToTimeStandard(TimeStandard.CoordinatedUniversalTime);
             Assert.AreEqual(totalElapsedTimeMinutes, first.MinutesDifference(secondDiffStandard));
             Assert.AreEqual((secondDiffStandard - first).TotalSeconds / TimeConstants.SecondsPerMinute, first.MinutesDifference(secondDiffStandard));
@@ -251,20 +271,20 @@ namespace CesiumLanguageWriterTests
 
             //Test same time standard, both safe
             JulianDate first = new JulianDate(2451545.0);
-            JulianDate second = first + Duration.FromSeconds(totalElapsedTime);
+            JulianDate second = first.AddSeconds(totalElapsedTime);
             Assert.AreEqual(totalElapsedTimeDays, first.DaysDifference(second));
             Assert.AreEqual((second - first).TotalSeconds / TimeConstants.SecondsPerDay, first.DaysDifference(second));
 
             //Test same time standard, both unsafe
             first = new JulianDate(2451545.0, TimeStandard.CoordinatedUniversalTime);
-            second = first + Duration.FromSeconds(totalElapsedTime);
+            second = first.AddSeconds(totalElapsedTime);
             second = new JulianDate(second.Day, second.SecondsOfDay, TimeStandard.CoordinatedUniversalTime);
             Assert.AreEqual(totalElapsedTimeDays, first.DaysDifference(second));
             Assert.AreEqual((second - first).TotalSeconds / TimeConstants.SecondsPerDay, first.DaysDifference(second));
 
             //Test diff time standard, one safe, one unsafe
             first = new JulianDate(2451545.0);
-            second = first + Duration.FromSeconds(totalElapsedTime);
+            second = first.AddSeconds(totalElapsedTime);
             JulianDate secondDiffStandard = second.ToTimeStandard(TimeStandard.CoordinatedUniversalTime);
             Assert.AreEqual(totalElapsedTimeDays, first.DaysDifference(secondDiffStandard));
             Assert.AreEqual((secondDiffStandard - first).TotalSeconds / TimeConstants.SecondsPerDay, first.DaysDifference(secondDiffStandard));
@@ -306,9 +326,6 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(-500.0, difference.Seconds);
         }
 
-        /// <summary>
-        /// Tests the <see cref="JulianDate.AddSeconds"/> method.
-        /// </summary>
         [Test]
         public void TestAddSeconds()
         {
@@ -320,9 +337,6 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(43245.123, result.SecondsOfDay);
         }
 
-        /// <summary>
-        /// Tests the <see cref="JulianDate.SubtractSeconds"/> method.
-        /// </summary>
         [Test]
         public void TestSubtractSeconds()
         {
@@ -334,9 +348,6 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(43199.75, result.SecondsOfDay);
         }
 
-        /// <summary>
-        /// Tests the <see cref="JulianDate.AddDays"/> method.
-        /// </summary>
         [Test]
         public void TestAddDays()
         {
@@ -355,10 +366,11 @@ namespace CesiumLanguageWriterTests
         [CSToJavaExclude]
         public void TestCompareToObject()
         {
-            JulianDate date1 = new JulianDate(2451545.0);
-            object date2 = new JulianDate(2451545.0);
-            Assert.Greater(date1.CompareTo(null), 0);
-            Assert.AreEqual(0, date1.CompareTo(date2));
+            JulianDate date = new JulianDate(2451545.0);
+            object dateAsObject = new JulianDate(2451545.0);
+
+            Assert.Greater(date.CompareTo(null), 0);
+            Assert.AreEqual(0, date.CompareTo(dateAsObject));
         }
 
         /// <summary>
@@ -378,7 +390,7 @@ namespace CesiumLanguageWriterTests
         }
 
         /// <summary>
-        /// Tests that JulianDate.GetHashCode returns something at least reasonably random.
+        /// Tests that GetHashCode returns something at least reasonably random.
         /// </summary>
         [Test]
         public void TestGetHashCode()
@@ -394,9 +406,6 @@ namespace CesiumLanguageWriterTests
             Assert.AreNotEqual(date1.GetHashCode(), date2.GetHashCode());
         }
 
-        /// <summary>
-        /// Tests the JulianDate override of the <see cref="object.ToString"/> method.
-        /// </summary>
         [Test]
         public void TestToString()
         {
@@ -406,9 +415,6 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(expected, date.ToString());
         }
 
-        /// <summary>
-        /// Tests the <see cref="IConvertible.ToDateTime"/> method.
-        /// </summary>
         [Test]
         [CSToJavaExclude]
         public void TestToDateTime()
@@ -463,9 +469,6 @@ namespace CesiumLanguageWriterTests
             Assert.Throws<InvalidCastException>(() => Convert.ToUInt64(date));
         }
 
-        /// <summary>
-        /// Tests the <see cref="IConvertible.ToType"/> method.
-        /// </summary>
         [Test]
         [CSToJavaExclude]
         public void TestConvertToType()
@@ -479,9 +482,6 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(date.TotalDays, convertible.ToType(typeof(double), info));
         }
 
-        /// <summary>
-        /// Tests the <see cref="IConvertible.ToType"/> method.
-        /// </summary>
         [Test]
         [CSToJavaExclude]
         public void TestGetTypeCode()
@@ -495,6 +495,7 @@ namespace CesiumLanguageWriterTests
         /// Tests for consistency between the comparison operators.
         /// </summary>
         [Test]
+        [SuppressMessage("Assertion", "NUnit2043", Justification = "This is specifically testing operator overloads")]
         public void TestComparisonConsistency()
         {
             JulianDate one = new JulianDate(1, 0.0);
@@ -508,10 +509,16 @@ namespace CesiumLanguageWriterTests
             Assert.IsFalse(two <= one);
             Assert.IsTrue(one < two);
             Assert.IsTrue(one <= two);
-            Assert.IsFalse(one == two);
-            Assert.IsFalse(two == one);
-            Assert.IsTrue(one != two);
-            Assert.IsTrue(two != one);
+        }
+
+        [Test]
+        public void TestIsIdentical()
+        {
+            JulianDate one = new JulianDate(100, 0.0, TimeStandard.CoordinatedUniversalTime);
+            JulianDate two = new JulianDate(100, 0.0, TimeStandard.CoordinatedUniversalTime);
+
+            Assert.IsTrue(one.IsIdentical(two));
+            Assert.IsFalse(one.IsIdentical(two.ToTimeStandard(TimeStandard.InternationalAtomicTime)));
         }
 
         /// <summary>
@@ -539,11 +546,12 @@ namespace CesiumLanguageWriterTests
 
             Assert.IsFalse(leapSecond.TryConvertTimeStandard(TimeStandard.CoordinatedUniversalTime, out outDate));
             Assert.IsTrue(afterLeapSecond.TryConvertTimeStandard(TimeStandard.CoordinatedUniversalTime, out outDate));
-            Assert.AreEqual(outDate.Standard, TimeStandard.CoordinatedUniversalTime);
-            Assert.AreEqual(outDate, afterLeapSecond);
+            Assert.AreEqual(TimeStandard.CoordinatedUniversalTime, outDate.Standard);
+            Assert.AreEqual(afterLeapSecond, outDate);
         }
 
         [Test]
+        [SuppressMessage("Assertion", "NUnit2010", Justification = "This is specifically testing equality methods")]
         public void TestEqualityOfLeapSeconds()
         {
             JulianDate leapSecond = new JulianDate(2453736, 43233, TimeStandard.InternationalAtomicTime);

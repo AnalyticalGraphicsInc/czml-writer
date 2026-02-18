@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using JetBrains.Annotations;
 
 namespace CesiumLanguageWriter
 {
@@ -14,7 +15,8 @@ namespace CesiumLanguageWriter
         /// <param name="format">The format used to format the number.  This is used to determine the decimal separator.</param>
         /// <param name="formattedNumber">The formatted decimal floating point number.</param>
         /// <returns>An equivalent number without the use of exponential notation.</returns>
-        public static string ToNonExponentialNotation(NumberFormatInfo format, string formattedNumber)
+        [NotNull]
+        public static string ToNonExponentialNotation(NumberFormatInfo format, [NotNull] string formattedNumber)
         {
             int indexOfE = formattedNumber.IndexOf('E');
             if (indexOfE < 0)
@@ -47,7 +49,7 @@ namespace CesiumLanguageWriter
             }
             else if (desiredIndexOfSeparator >= withoutDecimalSeparator.Length)
             {
-                withoutDecimalSeparator = withoutDecimalSeparator + new string('0', desiredIndexOfSeparator - withoutDecimalSeparator.Length + 1);
+                withoutDecimalSeparator += new string('0', desiredIndexOfSeparator - withoutDecimalSeparator.Length + 1);
             }
 
             return withoutDecimalSeparator.Substring(0, desiredIndexOfSeparator) + decimalSeparator + withoutDecimalSeparator.Substring(desiredIndexOfSeparator);

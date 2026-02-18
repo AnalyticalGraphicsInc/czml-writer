@@ -53,15 +53,22 @@ namespace CesiumLanguageWriter
         /// Initializes a new instance with the specified list of leap seconds.
         /// </summary>
         /// <param name="leapSeconds">The list of leap seconds.</param>
-        public LeapSeconds(IEnumerable<LeapSecond> leapSeconds)
+        /// <exception cref="ArgumentNullException">
+        /// Thrown when <paramref name="leapSeconds"/> is <see langword="null"/>.
+        /// </exception>
+        public LeapSeconds([NotNull] IEnumerable<LeapSecond> leapSeconds)
         {
+            if (leapSeconds == null)
+                throw new ArgumentNullException("leapSeconds");
+
             m_leapSeconds = new List<LeapSecond>(leapSeconds);
-            m_leapSeconds.Sort(s_leapSecondComparer);
+            m_leapSeconds.Sort(LeapSecondComparer.Instance);
         }
 
         /// <summary>
         /// Gets the default (and usually only) instance.
         /// </summary>
+        [NotNull]
         public static LeapSeconds Instance
         {
             get { return s_leapSeconds; }
@@ -71,6 +78,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the list of leap seconds currently being used by this class.
         /// </summary>
+        [NotNull]
         public ReadOnlyCollection<LeapSecond> LeapSecondList
         {
             get { return m_leapSeconds.AsReadOnly(); }
@@ -88,7 +96,7 @@ namespace CesiumLanguageWriter
 
             // Start by assuming we're working with UTC, we'll check later if we're
             // off by one because we really have TAI.
-            int index = m_leapSeconds.BinarySearch(toFind, s_leapSecondComparer);
+            int index = m_leapSeconds.BinarySearch(toFind, LeapSecondComparer.Instance);
             if (index < 0)
             {
                 index = ~index;
@@ -128,7 +136,7 @@ namespace CesiumLanguageWriter
             if (TryConvertTaiToUtc(date, out result))
                 return result;
 
-            throw new ArgumentOutOfRangeException(CesiumLocalization.CannotRepresentLeapSecondAsUTCJulianDate);
+            throw new ArgumentOutOfRangeException("date", CesiumLocalization.CannotRepresentLeapSecondAsUTCJulianDate);
         }
 
         /// <summary>
@@ -138,20 +146,20 @@ namespace CesiumLanguageWriter
         /// <see cref="TimeStandard"/>.</param>
         /// <param name="result">Out parameter for returning the resulting UTC
         /// <see cref="JulianDate"/>, if it was possible to convert.</param>
-        /// <returns><see langword="true"/> if <paramref name="date"/> could be converted
-        /// to UTC, otherwise false.</returns>
+        /// <returns>
+        /// <see langword="true"/> if <paramref name="date"/> could be converted to UTC; otherwise <see langword="false"/>.
+        /// </returns>
         internal bool TryConvertTaiToUtc(JulianDate date, out JulianDate result)
         {
-            //treat the request date as if it were UTC, and search for the most recent leap second.
-            LeapSecond toFind = new LeapSecond(date.TotalDays, 0.0);
-            int index = m_leapSeconds.BinarySearch(toFind, s_leapSecondComparer);
+            // treat the request date as if it were UTC, and search for the most recent leap second.
+            int index = m_leapSeconds.BinarySearch(new LeapSecond(date.TotalDays, 0.0), LeapSecondComparer.Instance);
             if (index < 0)
             {
                 index = ~index;
                 --index;
             }
 
-            //now we have the index of the most recent leap second that is after the requested date
+            // now we have the index of the most recent leap second that is after the requested date
             if (index >= 0)
             {
                 double mostRecentOffset = GetOffsetForIndex(index);
@@ -159,21 +167,21 @@ namespace CesiumLanguageWriter
 
                 if (date.Day == leapSecondDate.Day)
                 {
-                    //if the requested date is on the day of the leap second, we may have to adjust
+                    // if the requested date is on the day of the leap second, we may have to adjust
                     double secondsSinceLeapSecond = date.SecondsOfDay - leapSecondDate.SecondsOfDay;
 
                     if (secondsSinceLeapSecond >= mostRecentOffset - 1 &&
                         secondsSinceLeapSecond < mostRecentOffset)
                     {
-                        //if the requested date is during the moment of a leap second, then we cannot convert to UTC.
+                        // if the requested date is during the moment of a leap second, then we cannot convert to UTC.
                         result = JulianDate.MinValue;
                         return false;
                     }
 
                     if (secondsSinceLeapSecond < mostRecentOffset)
                     {
-                        //The leap second we found is actually after the desired date, as a result of simply treating the
-                        //TAI date as if it were UTC.  So, use the next previous leap second instead.
+                        // The leap second we found is actually after the desired date, as a result of simply treating the
+                        // TAI date as if it were UTC.  So, use the next previous leap second instead.
                         --index;
                     }
                 }
@@ -189,6 +197,7 @@ namespace CesiumLanguageWriter
             {
                 return new JulianDate(0, 0.0, TimeStandard.CoordinatedUniversalTime);
             }
+
             return m_leapSeconds[index].Date;
         }
 
@@ -198,6 +207,7 @@ namespace CesiumLanguageWriter
             {
                 return 10.0;
             }
+
             return m_leapSeconds[index].TotalTaiOffsetFromUtc;
         }
 
@@ -205,25 +215,33 @@ namespace CesiumLanguageWriter
         /// Determines if a given day contains a leap second.
         /// </summary>
         /// <param name="julianDayNumber">The day, specified as a Julian day number.</param>
-        /// <returns>true if the day contains a leap second, otherwise false.</returns>
+        /// <returns><see langword="true"/> if the day contains a leap second; otherwise <see langword="false"/>.</returns>
         public bool DoesDayHaveLeapSecond(int julianDayNumber)
         {
             LeapSecond potentialLeapSecond = new LeapSecond(new JulianDate(julianDayNumber, 43200, TimeStandard.CoordinatedUniversalTime), 0.0);
-            return m_leapSeconds.BinarySearch(potentialLeapSecond, s_leapSecondComparer) >= 0;
+            return m_leapSeconds.BinarySearch(potentialLeapSecond, LeapSecondComparer.Instance) >= 0;
         }
 
-        private static readonly LeapSecondComparer s_leapSecondComparer = new LeapSecondComparer();
+        [NotNull]
         private static LeapSeconds s_leapSeconds = new LeapSeconds();
 
         [NotNull]
         private readonly List<LeapSecond> m_leapSeconds;
 
-        private class LeapSecondComparer : IComparer<LeapSecond>
+        private sealed class LeapSecondComparer : IComparer<LeapSecond>
         {
+            private LeapSecondComparer()
+            {
+            }
+
             public int Compare(LeapSecond x, LeapSecond y)
             {
                 return x.Date.CompareTo(y.Date);
             }
+
+            [NotNull]
+            [CSToJavaFinalField]
+            public static readonly LeapSecondComparer Instance = new LeapSecondComparer();
         }
     }
 }

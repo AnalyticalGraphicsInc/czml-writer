@@ -38,7 +38,8 @@ public final class LeapSecond implements IEquatable<LeapSecond>, ImmutableValueT
     * @param totalTaiOffsetFromUtc The offset of TAI from UTC after this leap second.
     */
     public LeapSecond(double date, double totalTaiOffsetFromUtc) {
-        this(new JulianDate(date, TimeStandard.COORDINATED_UNIVERSAL_TIME), totalTaiOffsetFromUtc);
+        m_date = new JulianDate(date, TimeStandard.COORDINATED_UNIVERSAL_TIME);
+        m_totalTaiOffsetFromUtc = totalTaiOffsetFromUtc;
     }
 
     /**

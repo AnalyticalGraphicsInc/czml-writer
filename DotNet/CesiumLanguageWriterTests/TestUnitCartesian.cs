@@ -1,12 +1,10 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using CesiumLanguageWriter;
 using NUnit.Framework;
 
 namespace CesiumLanguageWriterTests
 {
-    /// <summary>
-    /// Tests the <see cref="UnitCartesian"/> type.
-    /// </summary>
     [TestFixture]
     public class TestUnitCartesian
     {
@@ -22,9 +20,6 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(6.0 / 7.0, test.Z);
         }
 
-        /// <summary>
-        /// Tests initialization from <see cref="Cartesian"/> coordinates.
-        /// </summary>
         [Test]
         public void TestFromCartesian()
         {
@@ -34,9 +29,6 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(6.0 / 7.0, test.Z, Constants.Epsilon15);
         }
 
-        /// <summary>
-        /// Tests initialization from <see cref="Cartesian"/> coordinates.
-        /// </summary>
         [Test]
         public void TestFromCartesianAndReturnMagnitude()
         {
@@ -48,9 +40,6 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(7.0, magnitude, Constants.Epsilon15);
         }
 
-        /// <summary>
-        /// Tests initialization from coordinates.
-        /// </summary>
         [Test]
         public void TestInitializeAndReturnMagnitude()
         {
@@ -62,9 +51,6 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(7.0, magnitude, Constants.Epsilon15);
         }
 
-        /// <summary>
-        /// Tests initialization from clock and cone angles.
-        /// </summary>
         [Test]
         public void TestFromClockAndCone()
         {
@@ -81,6 +67,7 @@ namespace CesiumLanguageWriterTests
         /// Tests the equality and inequality methods and operators.
         /// </summary>
         [Test]
+        [SuppressMessage("Assertion", "NUnit2010", Justification = "This is specifically testing equality methods and operators")]
         public void TestEquality()
         {
             UnitCartesian first = new UnitCartesian(1.0, 2.0, 3.0);
@@ -125,19 +112,17 @@ namespace CesiumLanguageWriterTests
             Assert.IsFalse(second.Equals(first));
         }
 
-        /// <summary>
-        /// Tests the <see cref="UnitCartesian.EqualsEpsilon"/> method.
-        /// </summary>
         [Test]
         public void TestEqualsEpsilon()
         {
             UnitCartesian first = new UnitCartesian(1.0, 1.0, 1.0);
             UnitCartesian second = new UnitCartesian(0.99, 1.0, 1.01);
-            Assert.IsTrue(second.EqualsEpsilon(first, 1e-1));
-            Assert.IsTrue(second.EqualsEpsilon(first, 1e-2));
-            Assert.IsFalse(second.EqualsEpsilon(first, 1e-3));
-            Assert.IsFalse(second.EqualsEpsilon(first, 1e-4));
-            Assert.IsFalse(second.EqualsEpsilon(first, 1e-5));
+
+            Assert.IsTrue(second.EqualsEpsilon(first, Constants.Epsilon1));
+            Assert.IsTrue(second.EqualsEpsilon(first, Constants.Epsilon2));
+            Assert.IsFalse(second.EqualsEpsilon(first, Constants.Epsilon3));
+            Assert.IsFalse(second.EqualsEpsilon(first, Constants.Epsilon4));
+            Assert.IsFalse(second.EqualsEpsilon(first, Constants.Epsilon5));
         }
 
         /// <summary>
@@ -157,18 +142,16 @@ namespace CesiumLanguageWriterTests
         /// Tests to ensure the equality fails when comparing incorrect type.
         /// </summary>
         [Test]
+        [SuppressMessage("ReSharper", "SuspiciousTypeConversion.Global")]
+        [SuppressMessage("Assertion", "NUnit2010", Justification = "This is specifically testing equality methods")]
         public void TestEqualityWithWrongType()
         {
             UnitCartesian first = new UnitCartesian(1.0, 2.0, 3.0);
             Cartographic second = new Cartographic(1.0, 2.0, 3.0);
 
-            // ReSharper disable once SuspiciousTypeConversion.Global
             Assert.IsFalse(first.Equals(second));
         }
 
-        /// <summary>
-        /// Tests the <see cref="UnitCartesian.IsUndefined"/> method.
-        /// </summary>
         [Test]
         public void TestIsUndefined()
         {
@@ -205,9 +188,6 @@ namespace CesiumLanguageWriterTests
             });
         }
 
-        /// <summary>
-        /// Tests the <see cref="UnitCartesian.Invert"/> method.
-        /// </summary>
         [Test]
         public void TestInvert()
         {
@@ -218,9 +198,6 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(-6.0 / 7.0, inverted.Z);
         }
 
-        /// <summary>
-        /// Tests negation of a set of coordinates.
-        /// </summary>
         [Test]
         public void TestNegation()
         {
@@ -320,9 +297,6 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(6.0 / 14.0, result.Z);
         }
 
-        /// <summary>
-        /// Tests the Dot method.
-        /// </summary>
         [Test]
         public void TestDotProduct()
         {
@@ -335,9 +309,6 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(0, first.Dot(result));
         }
 
-        /// <summary>
-        /// Tests the Cross method.
-        /// </summary>
         [Test]
         public void TestCrossProduct()
         {
@@ -375,16 +346,13 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestGetHashCode()
         {
-            UnitCartesian object1 = new UnitCartesian(1.0, 2.0, 3.0);
-            UnitCartesian object2 = new UnitCartesian(1.0, 2.0, 3.0);
-            UnitCartesian object3 = new UnitCartesian(1.0, 2.0, 3.1);
+            var object1 = new UnitCartesian(1.0, 2.0, 3.0);
+            var object2 = new UnitCartesian(1.0, 2.0, 3.0);
+            var object3 = new UnitCartesian(1.0, 2.0, 3.1);
             Assert.AreEqual(object1.GetHashCode(), object2.GetHashCode());
             Assert.AreNotEqual(object1.GetHashCode(), object3.GetHashCode());
         }
 
-        /// <summary>
-        /// Tests ToString method
-        /// </summary>
         [Test]
         public void TestToString()
         {

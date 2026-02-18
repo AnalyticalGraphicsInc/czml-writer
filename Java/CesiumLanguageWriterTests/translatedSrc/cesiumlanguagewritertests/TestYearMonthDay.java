@@ -3,9 +3,12 @@ package cesiumlanguagewritertests;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Action;
+import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.ArgumentException;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.DateTimeHelper;
+import agi.foundation.compatibility.Enumeration;
+import agi.foundation.compatibility.EnumHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.TestContextRule;
 import agi.foundation.TypeLiteral;
@@ -13,6 +16,7 @@ import cesiumlanguagewriter.*;
 import java.time.DayOfWeek;
 import java.time.ZonedDateTime;
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import org.junit.Assert;
 import org.junit.ClassRule;
 import org.junit.FixMethodOrder;
@@ -20,9 +24,6 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-/**
- * A series of tests to exercise this type.
- */
 @SuppressWarnings({
     "unused",
     "deprecation",
@@ -30,6 +31,112 @@ import org.junit.Test;
 })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestYearMonthDay {
+    /**
+    * Leap years are divisible by 4, except for years which are divisible by 100, unless also divisible by 400.
+    */
+    private static boolean isLeapYear(int year) {
+        if (year % 400 == 0) {
+            return true;
+        }
+        if (year % 100 == 0) {
+            return false;
+        }
+        return year % 4 == 0;
+    }
+
+    public static enum Month implements Enumeration {
+        JANUARY(1),
+        FEBRUARY(2),
+        MARCH(3),
+        APRIL(4),
+        MAY(5),
+        JUNE(6),
+        JULY(7),
+        AUGUST(8),
+        SEPTEMBER(9),
+        OCTOBER(10),
+        NOVEMBER(11),
+        DECEMBER(12);
+
+        private final int value;
+
+        Month(int value) {
+            this.value = value;
+        }
+
+        /**
+        * Get the numeric value associated with this enum constant.
+        * @return A numeric value.
+        */
+        @Override
+        public int getValue() {
+            return value;
+        }
+
+        /**
+        * Get the enum constant that is associated with the given numeric value.
+        * @return The enum constant associated with value.
+        * @param value a numeric value.
+        */
+        @Nonnull
+        public static Month getFromValue(int value) {
+            switch (value) {
+            case 1:
+                return JANUARY;
+            case 2:
+                return FEBRUARY;
+            case 3:
+                return MARCH;
+            case 4:
+                return APRIL;
+            case 5:
+                return MAY;
+            case 6:
+                return JUNE;
+            case 7:
+                return JULY;
+            case 8:
+                return AUGUST;
+            case 9:
+                return SEPTEMBER;
+            case 10:
+                return OCTOBER;
+            case 11:
+                return NOVEMBER;
+            case 12:
+                return DECEMBER;
+            default:
+                throw new IllegalArgumentException("Undefined enum value.");
+            }
+        }
+
+        /**
+        * Get the enum constant that is considered to be the default.
+        * @return The default enum constant.
+        */
+        @Nullable
+        public static Month getDefault() {
+            return null;
+        }
+    }
+
+    private static int daysInMonth(int year, @Nonnull Month month) {
+        switch (month) {
+        case FEBRUARY: {
+            return isLeapYear(year) ? 29 : 28;
+        }
+        case APRIL:
+        case JUNE:
+        case SEPTEMBER:
+        case NOVEMBER: {
+            return 30;
+        }
+        default: {
+            return 31;
+        }
+        }
+    }
+
     /**
     * Tests that an appropriate exception is thrown when constructing a
     YearMonthDay with an invalid date.
@@ -42,99 +149,70 @@ public class TestYearMonthDay {
     }
 
     /**
-    * Tests that years divisible by 4, except for years which are both divisible
-    by 100 and not divisible by 400, are leap years.
+    * Tests that leap years are detected correctly.
     */
     @Test
     public final void testIsLeapYear() {
-        for (int i = 1; i < 10000; ++i) {
-            if ((i % 4 == 0) && !((i % 100 == 0) && (i % 400 != 0))) {
-                Assert.assertTrue(YearMonthDay.isLeapYear(i));
-            }
+        for (int year = 1; year <= 9999; ++year) {
+            boolean expected = isLeapYear(year);
+            AssertHelper.assertEquals(expected, YearMonthDay.isLeapYear(year));
         }
     }
 
     /**
-    * Tests that years divisible by 4, except for years which are both divisible
-    by 100 and not divisible by 400, have 366 days instead of 365.
+    * Tests that leap years have 366 days instead of 365.
     */
     @Test
     public final void testDaysInYear() {
-        for (int i = 1; i < 10000; ++i) {
-            if ((i % 4 == 0) && !((i % 100 == 0) && (i % 400 != 0))) {
-                AssertHelper.assertEquals(366, YearMonthDay.daysInYear(i));
-            } else {
-                AssertHelper.assertEquals(365, YearMonthDay.daysInYear(i));
-            }
+        for (int year = 1; year <= 9999; ++year) {
+            int expected = isLeapYear(year) ? 366 : 365;
+            AssertHelper.assertEquals(expected, YearMonthDay.daysInYear(year));
         }
     }
 
     /**
     * Tests that the length of the month is reported correctly for common years and leap years.
     */
+    public final void testDaysInMonth(@Nonnull Month m) {
+        for (int year = 1; year <= 9999; ++year) {
+            int month = m.getValue();
+            int expected = daysInMonth(year, m);
+            AssertHelper.assertEquals(expected, YearMonthDay.daysInMonth(year, month));
+        }
+    }
+
     @Test
-    public final void testDaysInMonth() {
-        for (int i = 1; i < 10000; ++i) {
-            AssertHelper.assertEquals(31, YearMonthDay.daysInMonth(i, 1));
-            // January
-            if ((i % 4 == 0) && !((i % 100 == 0) && (i % 400 != 0))) {
-                AssertHelper.assertEquals(29, YearMonthDay.daysInMonth(i, 2));
-                // February of a leap year
-            } else {
-                AssertHelper.assertEquals(28, YearMonthDay.daysInMonth(i, 2));
-                // February of a common year
-            }
-            AssertHelper.assertEquals(31, YearMonthDay.daysInMonth(i, 3));
-            // March
-            AssertHelper.assertEquals(30, YearMonthDay.daysInMonth(i, 4));
-            // April
-            AssertHelper.assertEquals(31, YearMonthDay.daysInMonth(i, 5));
-            // May
-            AssertHelper.assertEquals(30, YearMonthDay.daysInMonth(i, 6));
-            // June
-            AssertHelper.assertEquals(31, YearMonthDay.daysInMonth(i, 7));
-            // July
-            AssertHelper.assertEquals(31, YearMonthDay.daysInMonth(i, 8));
-            // August
-            AssertHelper.assertEquals(30, YearMonthDay.daysInMonth(i, 9));
-            // September
-            AssertHelper.assertEquals(31, YearMonthDay.daysInMonth(i, 10));
-            // October
-            AssertHelper.assertEquals(30, YearMonthDay.daysInMonth(i, 11));
-            // November
-            AssertHelper.assertEquals(31, YearMonthDay.daysInMonth(i, 12));
-            // December
+    public final void testDaysInMonth$Test() {
+        for (final Month m : EnumHelper.getValues(Month.class)) {
+            testDaysInMonth(m);
         }
     }
 
     /**
     * Tests that month of year and day of month ranges are validated correctly.
-    There is no current limit on the year representation.
     */
-    @Test
-    public final void testIsValidDate() {
-        Assert.assertFalse(YearMonthDay.isValidDate(2000, 0, 1));
-        Assert.assertTrue(YearMonthDay.isValidDate(2000, 1, 1));
-        Assert.assertTrue(YearMonthDay.isValidDate(2000, 2, 1));
-        Assert.assertTrue(YearMonthDay.isValidDate(2000, 3, 1));
-        Assert.assertTrue(YearMonthDay.isValidDate(2000, 4, 1));
-        Assert.assertTrue(YearMonthDay.isValidDate(2000, 5, 1));
-        Assert.assertTrue(YearMonthDay.isValidDate(2000, 6, 1));
-        Assert.assertTrue(YearMonthDay.isValidDate(2000, 7, 1));
-        Assert.assertTrue(YearMonthDay.isValidDate(2000, 8, 1));
-        Assert.assertTrue(YearMonthDay.isValidDate(2000, 9, 1));
-        Assert.assertTrue(YearMonthDay.isValidDate(2000, 10, 1));
-        Assert.assertTrue(YearMonthDay.isValidDate(2000, 11, 1));
-        Assert.assertTrue(YearMonthDay.isValidDate(2000, 12, 1));
-        Assert.assertFalse(YearMonthDay.isValidDate(2000, 13, 1));
-        for (int month = 1; month < 13; ++month) {
-            int daysInMonth = YearMonthDay.daysInMonth(2000, month);
-            Assert.assertFalse(YearMonthDay.isValidDate(2000, month, 0));
-            for (int day = 1; day < daysInMonth + 1; ++day) {
-                Assert.assertTrue(YearMonthDay.isValidDate(2000, month, day));
-            }
-            Assert.assertFalse(YearMonthDay.isValidDate(2000, month, daysInMonth + 1));
+    public final void testIsValidDate(@Nonnull Month m) {
+        final int year = 2000;
+        int month = m.getValue();
+        int daysInMonth = YearMonthDay.daysInMonth(year, month);
+        for (int day = 1; day <= daysInMonth; ++day) {
+            Assert.assertTrue(YearMonthDay.isValidDate(year, month, day));
         }
+        Assert.assertFalse(YearMonthDay.isValidDate(year, month, 0));
+        Assert.assertFalse(YearMonthDay.isValidDate(year, month, daysInMonth + 1));
+    }
+
+    @Test
+    public final void testIsValidDate$Test() {
+        for (final Month m : EnumHelper.getValues(Month.class)) {
+            testIsValidDate(m);
+        }
+    }
+
+    @Test
+    public final void testIsValidDateWithInvalidMonth() {
+        Assert.assertFalse(YearMonthDay.isValidDate(2000, 0, 1));
+        Assert.assertFalse(YearMonthDay.isValidDate(2000, 13, 1));
     }
 
     /**
@@ -151,6 +229,7 @@ public class TestYearMonthDay {
     /**
     * Tests the check for EXACT equality.
     */
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     @Test
     public final void testEquality() {
         YearMonthDay first = new YearMonthDay(2000, 1, 1);
@@ -160,6 +239,8 @@ public class TestYearMonthDay {
         Assert.assertTrue(second.equalsType(first));
         AssertHelper.assertEquals(0, first.compareTo(second));
         AssertHelper.assertEquals(0, second.compareTo(first));
+        Assert.assertTrue(YearMonthDay.equals(first, second));
+        Assert.assertTrue(YearMonthDay.equals(second, first));
         second = new YearMonthDay(2001, 1, 1);
         AssertHelper.assertNotEqual(first, second);
         Assert.assertFalse(first.equalsType(second));
@@ -178,12 +259,14 @@ public class TestYearMonthDay {
         Assert.assertFalse(second.equalsType(first));
         AssertHelper.assertNotEqual(0, first.compareTo(second));
         AssertHelper.assertNotEqual(0, second.compareTo(first));
-        AssertHelper.assertNotEqual(first, 5);
+        Assert.assertTrue(YearMonthDay.notEquals(first, second));
+        Assert.assertTrue(YearMonthDay.notEquals(second, first));
+        Object obj = new YearMonthDay(2004, 2, 21);
+        AssertHelper.assertNotEqual(first, obj);
+        Object differentType = 5;
+        AssertHelper.assertNotEqual(first, differentType);
     }
 
-    /**
-    * Tests the {@code DayOfYear} ({@link YearMonthDay#getDayOfYear get}) property.
-    */
     @Test
     public final void testDayOfYear() {
         YearMonthDay nonLeapBeforeEndOfFeb = new YearMonthDay(2006, 2, 15);
@@ -199,15 +282,12 @@ public class TestYearMonthDay {
     /**
     * Tests the CompareTo methods and the comparison operators.
     */
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     @Test
     public final void testComparisons() {
         YearMonthDay ymd1 = new YearMonthDay(2006, 3, 14);
         YearMonthDay ymd2 = new YearMonthDay(2006, 3, 14);
         YearMonthDay ymd3 = new YearMonthDay(2006, 5, 26);
-        Object ymd4 = new YearMonthDay(2004, 2, 21);
-        Assert.assertTrue(YearMonthDay.equals(ymd1, ymd2));
-        Assert.assertTrue(YearMonthDay.equals(ymd2, ymd1));
-        Assert.assertTrue(YearMonthDay.notEquals(ymd1, ymd3));
         Assert.assertTrue(YearMonthDay.greaterThanOrEqual(ymd1, ymd2));
         Assert.assertTrue(YearMonthDay.lessThanOrEqual(ymd1, ymd2));
         AssertHelper.assertEquals(0, ymd1.compareTo(ymd2));
@@ -215,7 +295,6 @@ public class TestYearMonthDay {
         Assert.assertTrue(YearMonthDay.lessThanOrEqual(ymd2, ymd3));
         Assert.assertTrue(YearMonthDay.greaterThan(ymd3, ymd2));
         Assert.assertTrue(YearMonthDay.greaterThanOrEqual(ymd3, ymd2));
-        AssertHelper.assertNotEqual(ymd1, ymd4);
     }
 
     /**
@@ -236,7 +315,7 @@ public class TestYearMonthDay {
     @Test
     public final void testToString() {
         YearMonthDay ymd1 = new YearMonthDay(2006, 3, 14);
-        AssertHelper.assertEquals(ymd1.toString(), "2006:3:14");
+        AssertHelper.assertEquals("2006:3:14", ymd1.toString());
     }
 
     /**
@@ -267,38 +346,47 @@ public class TestYearMonthDay {
     /**
     * Tests the constructor overload that takes a year and the day of the year as parameters.
     */
+    public final void testConstructFromDayOfYear(int year, @Nonnull Month m) {
+        int month = m.getValue();
+        // Test each day of the month.
+        for (int day = 1; day <= YearMonthDay.daysInMonth(year, month); ++day) {
+            int dayOfYear = DateTimeHelper.create(year, month, day).getDayOfYear();
+            YearMonthDay ymd = new YearMonthDay(year, dayOfYear);
+            AssertHelper.assertEquals(year, ymd.getYear());
+            AssertHelper.assertEquals(month, ymd.getMonth());
+            AssertHelper.assertEquals(day, ymd.getDay());
+        }
+    }
+
     @Test
-    public final void testConstructFromDayOfYear() {
-        int[] years = {
+    public final void testConstructFromDayOfYear$Test() {
+        for (final int year : new int[] {
             2000,
             2001
-        };
-        Assert.assertTrue(YearMonthDay.isLeapYear(years[0]));
-        Assert.assertFalse(YearMonthDay.isLeapYear(years[1]));
-        for (final int year : years) {
-            int cumulativeDays = 0;
-            for (int month = 1; month <= 12; ++month) {
-                // Test first of the month.
-                YearMonthDay ymd = new YearMonthDay(year, cumulativeDays + 1);
-                AssertHelper.assertEquals(year, ymd.getYear());
-                AssertHelper.assertEquals(month, ymd.getMonth());
-                AssertHelper.assertEquals(1, ymd.getDay());
-                int daysInMonth = YearMonthDay.daysInMonth(year, month);
-                // Test last of the month.
-                ymd = new YearMonthDay(year, cumulativeDays + daysInMonth);
-                AssertHelper.assertEquals(year, ymd.getYear());
-                AssertHelper.assertEquals(month, ymd.getMonth());
-                AssertHelper.assertEquals(daysInMonth, ymd.getDay());
-                cumulativeDays += daysInMonth;
+        }) {
+            for (final Month m : EnumHelper.getValues(Month.class)) {
+                testConstructFromDayOfYear(year, m);
             }
         }
     }
 
     @Test
+    public final void constructorThrowsWithInvalidDayOfYear() {
+        ArgumentException exception = AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, Action.of(() -> {
+            YearMonthDay unused = new YearMonthDay(2000, 0);
+        }));
+        AssertHelper.assertEquals("dayOfYear", exception.getParamName());
+        exception = AssertHelper.<ArgumentException> assertThrows(new TypeLiteral<ArgumentException>() {}, Action.of(() -> {
+            YearMonthDay unused = new YearMonthDay(2000, 367);
+        }));
+        AssertHelper.assertEquals("dayOfYear", exception.getParamName());
+    }
+
+    @Test
     public final void testJulianDayNumber() {
-        final int astronomicalJulianDayNumber = 2454959;
-        YearMonthDay ymd = new YearMonthDay(astronomicalJulianDayNumber);
-        AssertHelper.assertEquals(astronomicalJulianDayNumber, ymd.getJulianDayNumber());
+        final int julianDayNumber = 2454959;
+        YearMonthDay ymd = new YearMonthDay(julianDayNumber);
+        AssertHelper.assertEquals(julianDayNumber, ymd.getJulianDayNumber());
     }
 
     @Test

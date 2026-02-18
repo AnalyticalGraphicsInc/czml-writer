@@ -3,11 +3,11 @@ package cesiumlanguagewritertests;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Action;
+import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.CultureInfoHelper;
 import agi.foundation.compatibility.DateTimeHelper;
 import agi.foundation.compatibility.RegexHelper;
-import agi.foundation.compatibility.StringHelper;
 import agi.foundation.compatibility.TestContextRule;
 import agi.foundation.TypeLiteral;
 import cesiumlanguagewriter.*;
@@ -31,6 +31,7 @@ import org.junit.Test;
     "deprecation",
     "serial"
 })
+@CS2JWarning("Unhandled attribute removed: NotNull")
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestGregorianDateFormatting {
     private Locale m_cultureInfo;
@@ -184,7 +185,7 @@ public class TestGregorianDateFormatting {
         gregorianDate = new GregorianDate(2009, 6, 10, 15, 0, 13.012345678912345);
         String s = gregorianDate.toString("ss.fffffffffffffff", m_cultureInfo);
         AssertHelper.assertEquals(18, s.length());
-        Assert.assertTrue(StringHelper.startsWith(s, "13.0123456789123"));
+        AssertHelper.assertStringStartsWith("13.0123456789123", s);
         gregorianDate = new GregorianDate(2009, 6, 10, 15, 0, 13.012);
         AssertHelper.assertEquals("13.012000000000000", gregorianDate.toString("ss.fffffffffffffff", m_cultureInfo));
         AssertHelper.assertEquals("13.012", gregorianDate.toString("ss.FFFFFFFFFFFFFFF", m_cultureInfo));

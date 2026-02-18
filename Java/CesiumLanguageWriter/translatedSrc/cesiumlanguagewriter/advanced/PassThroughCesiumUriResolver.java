@@ -32,5 +32,5 @@ public class PassThroughCesiumUriResolver implements ICesiumUriResolver {
     }
 
     @Nonnull
-    private static PassThroughCesiumUriResolver s_instance = new PassThroughCesiumUriResolver();
+    private static final PassThroughCesiumUriResolver s_instance = new PassThroughCesiumUriResolver();
 }

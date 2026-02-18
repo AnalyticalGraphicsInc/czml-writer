@@ -1,12 +1,10 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using CesiumLanguageWriter;
 using NUnit.Framework;
 
 namespace CesiumLanguageWriterTests
 {
-    /// <summary>
-    /// Tests the <see cref="UnitQuaternion"/> type.
-    /// </summary>
     [TestFixture]
     public class TestUnitQuaternion
     {
@@ -16,40 +14,35 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestHoldValue()
         {
-            UnitQuaternion test = new UnitQuaternion(2.0, 4.0, 7.0, 10.0);
-            Assert.AreEqual(2.0 / 13.0, test.W);
-            Assert.AreEqual(4.0 / 13.0, test.X);
-            Assert.AreEqual(7.0 / 13.0, test.Y);
-            Assert.AreEqual(10.0 / 13.0, test.Z);
+            UnitQuaternion quaternion = new UnitQuaternion(2.0, 4.0, 7.0, 10.0);
+            Assert.AreEqual(2.0 / 13.0, quaternion.W);
+            Assert.AreEqual(4.0 / 13.0, quaternion.X);
+            Assert.AreEqual(7.0 / 13.0, quaternion.Y);
+            Assert.AreEqual(10.0 / 13.0, quaternion.Z);
         }
 
-        /// <summary>
-        /// Tests initialization from coordinates.
-        /// </summary>
         [Test]
         public void TestInitializeAndReturnMagnitude()
         {
             double magnitude;
-            UnitQuaternion test = new UnitQuaternion(2.0, 4.0, 7.0, 10.0, out magnitude);
-            Assert.AreEqual(2.0 / 13.0, test.W, Constants.Epsilon15);
-            Assert.AreEqual(4.0 / 13.0, test.X, Constants.Epsilon15);
-            Assert.AreEqual(7.0 / 13.0, test.Y, Constants.Epsilon15);
-            Assert.AreEqual(10.0 / 13.0, test.Z, Constants.Epsilon15);
+            UnitQuaternion quaternion = new UnitQuaternion(2.0, 4.0, 7.0, 10.0, out magnitude);
+            Assert.AreEqual(2.0 / 13.0, quaternion.W, Constants.Epsilon15);
+            Assert.AreEqual(4.0 / 13.0, quaternion.X, Constants.Epsilon15);
+            Assert.AreEqual(7.0 / 13.0, quaternion.Y, Constants.Epsilon15);
+            Assert.AreEqual(10.0 / 13.0, quaternion.Z, Constants.Epsilon15);
             Assert.AreEqual(13.0, magnitude, Constants.Epsilon15);
         }
 
-        /// <summary>
-        /// Tests initialization from a <see cref="Matrix3By3"/> rotation.
-        /// </summary>
-        [TestCase(Math.PI / 6, 2.0, 3.0, 6.0, Description = "Test type == 0, 60 degrees, rotation about 2/7, 3/7, 6/7 vector.")]
-        [TestCase(2 * Math.PI / 3, 6.0, -3.0, -2.0, Description = "Test type == 1, 120 degrees, rotation about 6/7, -3/7, -2/7 vector.")]
-        [TestCase(2 * Math.PI / 3, -2.0, -3.0, 6.0, Description = "Test type == 2, 120 degrees, rotation about -2/7, -3/7, 6/7 vector.")]
-        [TestCase(2 * Math.PI / 3, -2.0, 6.0, -3.0, Description = "Test type == 3, 120 degrees, rotation about -2/7, 6/7, -3/7 vector.")]
-        public void TestFromMatrix3By3(double angle, double axisX, double axisY, double axisZ)
+        [TestCase(60.0, 2.0, 3.0, 6.0, Description = "60 degrees, rotation about 2/7, 3/7, 6/7 vector.")]
+        [TestCase(120.0, 6.0, -3.0, -2.0, Description = "120 degrees, rotation about 6/7, -3/7, -2/7 vector.")]
+        [TestCase(120.0, -2.0, -3.0, 6.0, Description = "120 degrees, rotation about -2/7, -3/7, 6/7 vector.")]
+        [TestCase(120.0, -2.0, 6.0, -3.0, Description = "120 degrees, rotation about -2/7, 6/7, -3/7 vector.")]
+        public void TestFromMatrix3By3(double angleDegrees, double axisX, double axisY, double axisZ)
         {
             Cartesian axis = new Cartesian(axisX, axisY, axisZ);
-            Cartesian unit = axis.Normalize();
+            UnitCartesian unit = axis.Normalize();
 
+            double angle = angleDegrees * Constants.RadiansPerDegree;
             double c = Math.Cos(angle);
             double s = Math.Sin(angle);
 
@@ -73,6 +66,7 @@ namespace CesiumLanguageWriterTests
         /// Tests the equality and inequality methods and operators.
         /// </summary>
         [Test]
+        [SuppressMessage("Assertion", "NUnit2010", Justification = "This is specifically testing equality methods and operators")]
         public void TestEquality()
         {
             UnitQuaternion first = new UnitQuaternion(1.0, 2.0, 3.0, 4.0);
@@ -127,31 +121,30 @@ namespace CesiumLanguageWriterTests
             Assert.IsFalse(second.Equals(first));
         }
 
-        /// <summary>
-        /// Tests the <see cref="UnitQuaternion.EqualsEpsilon"/> method.
-        /// </summary>
         [Test]
         public void TestEqualsEpsilon()
         {
             UnitQuaternion first = new UnitQuaternion(1.0, 1.0, 1.0, 1.0);
             UnitQuaternion second = new UnitQuaternion(0.99, 1.0, 1.0, 1.01);
-            Assert.IsTrue(second.EqualsEpsilon(first, 1e-1));
-            Assert.IsTrue(second.EqualsEpsilon(first, 1e-2));
-            Assert.IsFalse(second.EqualsEpsilon(first, 1e-3));
-            Assert.IsFalse(second.EqualsEpsilon(first, 1e-4));
-            Assert.IsFalse(second.EqualsEpsilon(first, 1e-5));
+
+            Assert.IsTrue(second.EqualsEpsilon(first, Constants.Epsilon1));
+            Assert.IsTrue(second.EqualsEpsilon(first, Constants.Epsilon2));
+            Assert.IsFalse(second.EqualsEpsilon(first, Constants.Epsilon3));
+            Assert.IsFalse(second.EqualsEpsilon(first, Constants.Epsilon4));
+            Assert.IsFalse(second.EqualsEpsilon(first, Constants.Epsilon5));
         }
 
         /// <summary>
         /// Tests to ensure the equality fails when comparing incorrect type.
         /// </summary>
         [Test]
+        [SuppressMessage("ReSharper", "SuspiciousTypeConversion.Global")]
+        [SuppressMessage("Assertion", "NUnit2010", Justification = "This is specifically testing equality methods")]
         public void TestEqualityWithWrongType()
         {
             UnitQuaternion first = new UnitQuaternion(1.0, 2.0, 3.0, 4.0);
             Cartographic second = new Cartographic(1.0, 2.0, 3.0);
 
-            // ReSharper disable once SuspiciousTypeConversion.Global
             Assert.IsFalse(first.Equals(second));
         }
 
@@ -168,9 +161,6 @@ namespace CesiumLanguageWriterTests
             });
         }
 
-        /// <summary>
-        /// Tests the <see cref="UnitQuaternion.Conjugate"/> method.
-        /// </summary>
         [Test]
         public void TestConjugate()
         {
@@ -182,9 +172,6 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(-10.0 / 13.0, conjugate.Z);
         }
 
-        /// <summary>
-        /// Tests <see cref="UnitQuaternion.Identity"/>.
-        /// </summary>
         [Test]
         public void TestIdentity()
         {
@@ -195,9 +182,6 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(0.0, identity.Z);
         }
 
-        /// <summary>
-        /// Tests the <see cref="UnitQuaternion.IsUndefined"/> method.
-        /// </summary>
         [Test]
         public void TestIsUndefined()
         {
@@ -209,9 +193,6 @@ namespace CesiumLanguageWriterTests
             Assert.IsTrue(new UnitQuaternion(1.0, 1.0, 1.0, double.NaN).IsUndefined);
         }
 
-        /// <summary>
-        /// Tests negation of a set of coordinates.
-        /// </summary>
         [Test]
         public void TestNegation()
         {
@@ -222,9 +203,6 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual(-10.0 / 13.0, u.Z);
         }
 
-        /// <summary>
-        /// Tests multiplication by another <see cref="UnitQuaternion"/>.
-        /// </summary>
         [Test]
         public void TestMultiplicationByUnitQuaternion()
         {
@@ -252,16 +230,13 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestGetHashCode()
         {
-            UnitQuaternion object1 = new UnitQuaternion(1.0, 2.0, 3.0, 4.0);
-            UnitQuaternion object2 = new UnitQuaternion(1.0, 2.0, 3.0, 4.0);
-            UnitQuaternion object3 = new UnitQuaternion(1.0, 2.0, 3.0, 4.1);
+            var object1 = new UnitQuaternion(1.0, 2.0, 3.0, 4.0);
+            var object2 = new UnitQuaternion(1.0, 2.0, 3.0, 4.0);
+            var object3 = new UnitQuaternion(1.0, 2.0, 3.0, 4.1);
             Assert.AreEqual(object1.GetHashCode(), object2.GetHashCode());
             Assert.AreNotEqual(object1.GetHashCode(), object3.GetHashCode());
         }
 
-        /// <summary>
-        /// Tests ToString method
-        /// </summary>
         [Test]
         public void TestToString()
         {

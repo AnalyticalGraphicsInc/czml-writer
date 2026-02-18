@@ -2,10 +2,11 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
+import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.CultureInfoHelper;
-import agi.foundation.compatibility.DoubleHelper;
 import agi.foundation.compatibility.IEquatable;
+import agi.foundation.compatibility.StringHelper;
 import agi.foundation.compatibility.TestContextRule;
 import cesiumlanguagewriter.*;
 import javax.annotation.Nonnull;
@@ -16,9 +17,6 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-/**
- * Tests the {@link UnitSpherical} type.
- */
 @SuppressWarnings({
     "unused",
     "deprecation",
@@ -36,9 +34,6 @@ public class TestUnitSpherical {
         AssertHelper.assertEquals(2.0, test.getCone());
     }
 
-    /**
-    * Tests initialization from {@link UnitCartesian} coordinates.
-    */
     @Test
     public final void testFromUnitCartesian() {
         final double fortyFiveDegrees = Math.PI / 4.0;
@@ -51,6 +46,7 @@ public class TestUnitSpherical {
     /**
     * Tests the equality and inequality methods and operators.
     */
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     @Test
     public final void testEquality() {
         UnitSpherical first = new UnitSpherical(1.0, 2.0);
@@ -74,18 +70,15 @@ public class TestUnitSpherical {
         Assert.assertFalse(second.equalsType(first));
     }
 
-    /**
-    * Tests the {@link UnitSpherical#equalsEpsilon} method.
-    */
     @Test
     public final void testEqualsEpsilon() {
         UnitSpherical first = new UnitSpherical(1e-1, 1e-2);
         UnitSpherical second = new UnitSpherical(1.1e-1, 1.1e-2);
-        Assert.assertTrue(second.equalsEpsilon(first, 1e-1));
-        Assert.assertTrue(second.equalsEpsilon(first, 1e-2));
-        Assert.assertFalse(second.equalsEpsilon(first, 1e-3));
-        Assert.assertFalse(second.equalsEpsilon(first, 1e-4));
-        Assert.assertFalse(second.equalsEpsilon(first, 1e-5));
+        Assert.assertTrue(second.equalsEpsilon(first, Constants.Epsilon1));
+        Assert.assertTrue(second.equalsEpsilon(first, Constants.Epsilon2));
+        Assert.assertFalse(second.equalsEpsilon(first, Constants.Epsilon3));
+        Assert.assertFalse(second.equalsEpsilon(first, Constants.Epsilon4));
+        Assert.assertFalse(second.equalsEpsilon(first, Constants.Epsilon5));
     }
 
     /**
@@ -102,11 +95,11 @@ public class TestUnitSpherical {
     /**
     * Tests to ensure the equality fails when comparing incorrect type.
     */
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     @Test
     public final void testEqualityWithWrongType() {
         UnitSpherical first = new UnitSpherical(1.0, 2.0);
         Cartographic second = new Cartographic(1.0, 2.0, 3.0);
-        // ReSharper disable once SuspiciousTypeConversion.Global
         Assert.assertFalse(first.equals(second));
     }
 
@@ -122,17 +115,13 @@ public class TestUnitSpherical {
         AssertHelper.assertNotEqual(object1.hashCode(), object3.hashCode());
     }
 
-    /**
-    * Tests ToString method
-    */
     @Test
     public final void testToString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append(DoubleHelper.toString((-Math.PI), CultureInfoHelper.getCurrentCulture()));
-        builder.append(", ");
-        builder.append(DoubleHelper.toString(Math.PI, CultureInfoHelper.getCurrentCulture()));
-        UnitSpherical test = new UnitSpherical(-Math.PI, Math.PI);
-        AssertHelper.assertEquals(builder.toString(), test.toString());
+        final double clock = -Math.PI;
+        final double cone = Math.PI;
+        UnitSpherical test = new UnitSpherical(clock, cone);
+        String expected = StringHelper.format(CultureInfoHelper.getCurrentCulture(), "{0}, {1}", clock, cone);
+        AssertHelper.assertEquals(expected, test.toString());
     }
 
     @Nonnull

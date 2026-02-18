@@ -18,6 +18,6 @@
         /// <summary>
         /// The shortest possible way to accurately represent an ISO8601 date and time.
         /// </summary>
-        Compact
+        Compact,
     }
 }

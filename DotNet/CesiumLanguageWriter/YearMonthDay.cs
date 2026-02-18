@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using JetBrains.Annotations;
 
 namespace CesiumLanguageWriter
 {
@@ -14,12 +15,14 @@ namespace CesiumLanguageWriter
         /// Initializes a <see cref="YearMonthDay"/> from the provided values.
         /// </summary>
         /// <param name="year">The year.</param>
-        /// <param name="month">The month of the year (in the range 1 through 12)</param>
-        /// <param name="day">The day of the month (in the range 1 through the number of
-        /// days in <paramref name="month"/>)</param>
+        /// <param name="month">The month of the year, in the range 1 through 12.</param>
+        /// <param name="day">
+        /// The day of the month, in the range 1 through the number of days in <paramref name="month"/>.
+        /// </param>
         /// <exception cref="ArgumentException">
-        /// Thrown when the <paramref name="year"/>, <paramref name="month"/>, or
-        /// <paramref name="day"/> is outside of its acceptable range.</exception>
+        /// Thrown when <paramref name="year"/>, <paramref name="month"/>, or <paramref name="day"/>
+        /// is outside of its acceptable range.
+        /// </exception>
         public YearMonthDay(int year, int month, int day)
         {
             if (!IsValidDate(year, month, day))
@@ -35,30 +38,31 @@ namespace CesiumLanguageWriter
         /// Initializes a <see cref="YearMonthDay"/> from the provided values.
         /// </summary>
         /// <param name="year">The year.</param>
-        /// <param name="dayOfYear">The day of the year
-        /// (in the range 1 through the number of days in the year).</param>
+        /// <param name="dayOfYear">
+        /// The day of the year, in the range 1 through the number of days in the year.
+        /// </param>
         public YearMonthDay(int year, int dayOfYear)
         {
-            if (dayOfYear > DaysInYear(year))
+            if (dayOfYear < 1 || dayOfYear > DaysInYear(year))
                 throw new ArgumentException(CesiumLocalization.YearMonthDayInvalidArgument, "dayOfYear");
 
-            // year is stored zero-indexed
-            m_year = year - 1;
-
             int[] cumulativeMonthTable = GetCumulativeMonthTable(year);
-
-            // month is stored zero-indexed
-            for (m_month = 11; m_month > 0; --m_month)
+            int month = Array.BinarySearch(cumulativeMonthTable, dayOfYear);
+            if (month < 0)
             {
-                if (cumulativeMonthTable[m_month] < dayOfYear)
-                    break;
+                month = ~month;
             }
 
-            // day is stored zero-indexed
-            m_day = dayOfYear - cumulativeMonthTable[m_month] - 1;
+            // cumulative month table is zero-indexed
+            int day = dayOfYear - cumulativeMonthTable[month - 1];
 
-            if (!IsValidDate(m_year + 1, m_month + 1, m_day + 1))
+            if (!IsValidDate(year, month, day))
                 throw new ArgumentException(CesiumLocalization.YearMonthDayInvalidArgument);
+
+            // fields are stored zero-indexed
+            m_year = year - 1;
+            m_month = month - 1;
+            m_day = day - 1;
         }
 
         /// <summary>
@@ -78,18 +82,18 @@ namespace CesiumLanguageWriter
             int I = 4000 * (L + 1) / 1461001;
             L = L - 1461 * I / 4 + 31;
             int J = 80 * L / 2447;
-            m_day = L - 2447 * J / 80;
+            int day = L - 2447 * J / 80;
             L = J / 11;
-            m_month = J + 2 - 12 * L;
-            m_year = 100 * (N - 49) + I + L;
+            int month = J + 2 - 12 * L;
+            int year = 100 * (N - 49) + I + L;
+
+            if (!IsValidDate(year, month, day))
+                throw new ArgumentException(CesiumLocalization.YearMonthDayInvalidArgument);
 
             // fields are stored zero-indexed
-            m_year--;
-            m_month--;
-            m_day--;
-
-            if (!IsValidDate(m_year + 1, m_month + 1, m_day + 1))
-                throw new ArgumentException(CesiumLocalization.YearMonthDayInvalidArgument);
+            m_year = year - 1;
+            m_month = month - 1;
+            m_day = day - 1;
         }
 
         /// <summary>
@@ -121,6 +125,7 @@ namespace CesiumLanguageWriter
             {
                 ++day;
             }
+
             return day;
         }
 
@@ -129,42 +134,37 @@ namespace CesiumLanguageWriter
         /// </summary>
         public int Year
         {
+            // fields are stored zero-indexed
             get { return m_year + 1; }
         }
 
         /// <summary>
-        /// Gets the month of the year (in the range 1 through 12).
+        /// Gets the month of the year, in the range 1 through 12.
         /// </summary>
         public int Month
         {
-            get
-            {
-                // month is stored zero-indexed
-                return m_month + 1;
-            }
+            // fields are stored zero-indexed
+            get { return m_month + 1; }
         }
 
         /// <summary>
-        /// Gets the day of the month (in the range 1 through the number of days in the
-        /// month).
+        /// Gets the day of the month, in the range 1 through the number of days in the month.
         /// </summary>
         public int Day
         {
-            get
-            {
-                // day is stored zero-indexed
-                return m_day + 1;
-            }
+            // fields are stored zero-indexed
+            get { return m_day + 1; }
         }
 
         /// <summary>
-        /// Gets the day of the year (in the range 1 through the number of days in the year).
+        /// Gets the day of the year, in the range 1 through the number of days in the year.
         /// </summary>
         public int DayOfYear
         {
             get
             {
                 int[] cumulativeMonthTable = GetCumulativeMonthTable(Year);
+                // cumulative month table is zero-indexed
                 return Day + cumulativeMonthTable[m_month];
             }
         }
@@ -236,11 +236,13 @@ namespace CesiumLanguageWriter
         /// Indicates whether the year, month, and day are a valid representation.
         /// </summary>
         /// <param name="year">The year.</param>
-        /// <param name="month">The month of the year (in the range 1 through 12)</param>
-        /// <param name="day">The day of the month (in the range 1 through the number of days in
-        /// <paramref name="month"/>)</param>
-        /// <returns><see langword="true"/> if the representation is valid and
-        /// <see langword="false"/> if it is not.</returns>
+        /// <param name="month">The month of the year, in the range 1 through 12.</param>
+        /// <param name="day">
+        /// The day of the month, in the range 1 through the number of days in <paramref name="month"/>.
+        /// </param>
+        /// <returns>
+        /// <see langword="true"/> if the representation is valid and <see langword="false"/> if it is not.
+        /// </returns>
         public static bool IsValidDate(int year, int month, int day)
         {
             return year >= 1 && year <= 9999 &&
@@ -460,6 +462,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Gets the appropriate table of cumulative days per month for the given year.
         /// </summary>
+        [NotNull]
         private static int[] GetCumulativeMonthTable(int year)
         {
             return IsLeapYear(year) ? s_leapYearCumulativeMonthTable : s_commonYearCumulativeMonthTable;
@@ -471,7 +474,11 @@ namespace CesiumLanguageWriter
         private readonly int m_day;
 
         // these tables contain the cumulative days of year at the start of each of the zero-indexed months of the year.
+        [NotNull]
+        [CSToJavaFinalField]
         private static readonly int[] s_commonYearCumulativeMonthTable = { 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334 };
+        [NotNull]
+        [CSToJavaFinalField]
         private static readonly int[] s_leapYearCumulativeMonthTable = { 0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335 };
     }
 }

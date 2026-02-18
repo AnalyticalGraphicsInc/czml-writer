@@ -3,6 +3,7 @@ package cesiumlanguagewritertests;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Action;
+import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.CultureInfoHelper;
 import agi.foundation.compatibility.DoubleHelper;
@@ -19,9 +20,6 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-/**
- * Tests the {@link Cartesian} type.
- */
 @SuppressWarnings({
     "unused",
     "deprecation",
@@ -55,6 +53,7 @@ public class TestCartesian {
     /**
     * Tests the equality and inequality methods and operators.
     */
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     @Test
     public final void testEquality() {
         Cartesian first = new Cartesian(1.0, 2.0, 3.0);
@@ -96,18 +95,15 @@ public class TestCartesian {
         Assert.assertFalse(second.equalsType(first));
     }
 
-    /**
-    * Tests the {@link Cartesian#equalsEpsilon} method.
-    */
     @Test
     public final void testEqualsEpsilon() {
         Cartesian first = new Cartesian(1e-1, 1e-2, 1e-3);
         Cartesian second = new Cartesian(1.1e-1, 1.1e-2, 1.1e-3);
-        Assert.assertTrue(second.equalsEpsilon(first, 1e-1));
-        Assert.assertTrue(second.equalsEpsilon(first, 1e-2));
-        Assert.assertFalse(second.equalsEpsilon(first, 1e-3));
-        Assert.assertFalse(second.equalsEpsilon(first, 1e-4));
-        Assert.assertFalse(second.equalsEpsilon(first, 1e-5));
+        Assert.assertTrue(second.equalsEpsilon(first, Constants.Epsilon1));
+        Assert.assertTrue(second.equalsEpsilon(first, Constants.Epsilon2));
+        Assert.assertFalse(second.equalsEpsilon(first, Constants.Epsilon3));
+        Assert.assertFalse(second.equalsEpsilon(first, Constants.Epsilon4));
+        Assert.assertFalse(second.equalsEpsilon(first, Constants.Epsilon5));
     }
 
     /**
@@ -124,26 +120,20 @@ public class TestCartesian {
     /**
     * Tests to ensure the equality fails when comparing incorrect type.
     */
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     @Test
     public final void testEqualityWithWrongType() {
         Cartesian first = new Cartesian(1.0, 2.0, 3.0);
         Cartographic second = new Cartographic(1.0, 2.0, 3.0);
-        // ReSharper disable once SuspiciousTypeConversion.Global
         Assert.assertFalse(first.equals(second));
     }
 
-    /**
-    * Tests the {@code Magnitude} ({@link Cartesian#getMagnitude get}) property.
-    */
     @Test
     public final void testMagnitude() {
         Cartesian test = new Cartesian(2.0, 3.0, 6.0);
         AssertHelper.assertEquals(7.0, test.getMagnitude());
     }
 
-    /**
-    * Tests the {@link Cartesian#normalize()} method.
-    */
     @Test
     public final void testNormalize() {
         Cartesian test = new Cartesian(2.0, 3.0, 6.0);
@@ -177,9 +167,6 @@ public class TestCartesian {
         }));
     }
 
-    /**
-    * Tests the {@code IsUndefined} ({@link Cartesian#getIsUndefined get}) method.
-    */
     @Test
     public final void testIsUndefined() {
         Assert.assertFalse(new Cartesian(1.0, 1.0, 1.0).getIsUndefined());
@@ -189,9 +176,6 @@ public class TestCartesian {
         Assert.assertTrue(new Cartesian(1.0, 1.0, Double.NaN).getIsUndefined());
     }
 
-    /**
-    * Tests the {@code MostOrthogonalAxis} ({@link Cartesian#getMostOrthogonalAxis get}) method.
-    */
     @Test
     public final void testMostOrthogonalAxis() {
         Cartesian cartesian = new Cartesian(1.0, 2.0, 3.0);
@@ -283,9 +267,6 @@ public class TestCartesian {
         AssertHelper.assertEquals(3.0, result.getZ());
     }
 
-    /**
-    * Tests the {@link Cartesian#dot} method.
-    */
     @Test
     public final void testDotProduct() {
         Cartesian first = new Cartesian(1.0, 3.0, -2.0);
@@ -294,12 +275,9 @@ public class TestCartesian {
         AssertHelper.assertEquals(0, second.dot(first));
     }
 
-    /**
-    * Tests the {@link Cartesian#cross} method.
-    */
     @Test
     public final void testCrossProduct() {
-        double angle = Math.PI / 4.0;
+        final double angle = Math.PI / 4.0;
         double cos = Math.cos(angle / 2.0);
         double sin = Math.sin(angle / 2.0);
         double a = cos * cos - sin * sin / 3.0;
@@ -322,11 +300,11 @@ public class TestCartesian {
     */
     @Test
     public final void testRotateByUnitQuaternion() {
-        double angle = Math.PI / 3.0;
+        final double angle = Math.PI / 3.0;
         // half angle of 120 degree rotation
         double cos = Math.cos(angle);
         double sin = Math.sin(angle);
-        Cartesian axis = Cartesian.toCartesian(new Cartesian(1.0, 1.0, 1.0).normalize());
+        UnitCartesian axis = new Cartesian(1.0, 1.0, 1.0).normalize();
         // unit vector along [1,1,1]
         double w = cos;
         double x = sin * axis.getX();
@@ -350,7 +328,7 @@ public class TestCartesian {
         // half angle of 120 degree rotation
         double cos = Math.cos(angle);
         double sin = Math.sin(angle);
-        Cartesian axis = Cartesian.toCartesian(new Cartesian(1.0, 1.0, 1.0).normalize());
+        UnitCartesian axis = new Cartesian(1.0, 1.0, 1.0).normalize();
         // unit vector along [1,1,1]
         double w = cos;
         double x = sin * axis.getX();
@@ -377,9 +355,6 @@ public class TestCartesian {
         AssertHelper.assertNotEqual(object1.hashCode(), object3.hashCode());
     }
 
-    /**
-    * Tests ToString method
-    */
     @Test
     public final void testToString() {
         final double val1 = 1.1;

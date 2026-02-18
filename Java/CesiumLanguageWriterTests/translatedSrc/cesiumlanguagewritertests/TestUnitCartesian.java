@@ -3,6 +3,7 @@ package cesiumlanguagewritertests;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Action;
+import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.NotFiniteNumberException;
@@ -17,9 +18,6 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-/**
- * Tests the {@link UnitCartesian} type.
- */
 @SuppressWarnings({
     "unused",
     "deprecation",
@@ -38,9 +36,6 @@ public class TestUnitCartesian {
         AssertHelper.assertEquals(6.0 / 7.0, test.getZ());
     }
 
-    /**
-    * Tests initialization from {@link Cartesian} coordinates.
-    */
     @Test
     public final void testFromCartesian() {
         UnitCartesian test = new UnitCartesian(new Cartesian(2.0, 3.0, 6.0));
@@ -49,9 +44,6 @@ public class TestUnitCartesian {
         AssertHelper.assertEquals(6.0 / 7.0, test.getZ(), Constants.Epsilon15);
     }
 
-    /**
-    * Tests initialization from {@link Cartesian} coordinates.
-    */
     @Test
     public final void testFromCartesianAndReturnMagnitude() {
         double magnitude = 0D;
@@ -64,9 +56,6 @@ public class TestUnitCartesian {
         AssertHelper.assertEquals(7.0, magnitude, Constants.Epsilon15);
     }
 
-    /**
-    * Tests initialization from coordinates.
-    */
     @Test
     public final void testInitializeAndReturnMagnitude() {
         double magnitude = 0D;
@@ -79,9 +68,6 @@ public class TestUnitCartesian {
         AssertHelper.assertEquals(7.0, magnitude, Constants.Epsilon15);
     }
 
-    /**
-    * Tests initialization from clock and cone angles.
-    */
     @Test
     public final void testFromClockAndCone() {
         final double fortyFiveDegrees = Math.PI / 4.0;
@@ -95,6 +81,7 @@ public class TestUnitCartesian {
     /**
     * Tests the equality and inequality methods and operators.
     */
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     @Test
     public final void testEquality() {
         UnitCartesian first = new UnitCartesian(1.0, 2.0, 3.0);
@@ -136,18 +123,15 @@ public class TestUnitCartesian {
         Assert.assertFalse(second.equalsType(first));
     }
 
-    /**
-    * Tests the {@link UnitCartesian#equalsEpsilon} method.
-    */
     @Test
     public final void testEqualsEpsilon() {
         UnitCartesian first = new UnitCartesian(1.0, 1.0, 1.0);
         UnitCartesian second = new UnitCartesian(0.99, 1.0, 1.01);
-        Assert.assertTrue(second.equalsEpsilon(first, 1e-1));
-        Assert.assertTrue(second.equalsEpsilon(first, 1e-2));
-        Assert.assertFalse(second.equalsEpsilon(first, 1e-3));
-        Assert.assertFalse(second.equalsEpsilon(first, 1e-4));
-        Assert.assertFalse(second.equalsEpsilon(first, 1e-5));
+        Assert.assertTrue(second.equalsEpsilon(first, Constants.Epsilon1));
+        Assert.assertTrue(second.equalsEpsilon(first, Constants.Epsilon2));
+        Assert.assertFalse(second.equalsEpsilon(first, Constants.Epsilon3));
+        Assert.assertFalse(second.equalsEpsilon(first, Constants.Epsilon4));
+        Assert.assertFalse(second.equalsEpsilon(first, Constants.Epsilon5));
     }
 
     /**
@@ -164,17 +148,14 @@ public class TestUnitCartesian {
     /**
     * Tests to ensure the equality fails when comparing incorrect type.
     */
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     @Test
     public final void testEqualityWithWrongType() {
         UnitCartesian first = new UnitCartesian(1.0, 2.0, 3.0);
         Cartographic second = new Cartographic(1.0, 2.0, 3.0);
-        // ReSharper disable once SuspiciousTypeConversion.Global
         Assert.assertFalse(first.equals(second));
     }
 
-    /**
-    * Tests the {@code IsUndefined} ({@link UnitCartesian#getIsUndefined get}) method.
-    */
     @Test
     public final void testIsUndefined() {
         Assert.assertFalse(new UnitCartesian(1.0, 1.0, 1.0).getIsUndefined());
@@ -206,9 +187,6 @@ public class TestUnitCartesian {
         }));
     }
 
-    /**
-    * Tests the {@link UnitCartesian#invert} method.
-    */
     @Test
     public final void testInvert() {
         UnitCartesian cartesian = new UnitCartesian(2.0, 3.0, 6.0);
@@ -218,9 +196,6 @@ public class TestUnitCartesian {
         AssertHelper.assertEquals(-6.0 / 7.0, inverted.getZ());
     }
 
-    /**
-    * Tests negation of a set of coordinates.
-    */
     @Test
     public final void testNegation() {
         UnitCartesian u = UnitCartesian.negate(new UnitCartesian(2.0, 3.0, 6.0));
@@ -309,9 +284,6 @@ public class TestUnitCartesian {
         AssertHelper.assertEquals(6.0 / 14.0, result.getZ());
     }
 
-    /**
-    * Tests the Dot method.
-    */
     @Test
     public final void testDotProduct() {
         UnitCartesian first = new UnitCartesian(1.0, 3.0, -2.0);
@@ -322,9 +294,6 @@ public class TestUnitCartesian {
         AssertHelper.assertEquals(0, first.dot(result));
     }
 
-    /**
-    * Tests the Cross method.
-    */
     @Test
     public final void testCrossProduct() {
         final double angle = Math.PI / 4.0;
@@ -362,9 +331,6 @@ public class TestUnitCartesian {
         AssertHelper.assertNotEqual(object1.hashCode(), object3.hashCode());
     }
 
-    /**
-    * Tests ToString method
-    */
     @Test
     public final void testToString() {
         UnitCartesian test1 = new UnitCartesian(1.0, 0.0, 0.0);

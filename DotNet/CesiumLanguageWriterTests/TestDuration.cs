@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using CesiumLanguageWriter;
 using NUnit.Framework;
 
@@ -81,6 +82,7 @@ namespace CesiumLanguageWriterTests
         /// Tests the check for EXACT equality and the check for equality within a specified tolerance.
         /// </summary>
         [Test]
+        [SuppressMessage("Assertion", "NUnit2010", Justification = "This is specifically testing equality methods")]
         public void TestEquality()
         {
             Duration first = new Duration(5, 565.0);
@@ -106,18 +108,43 @@ namespace CesiumLanguageWriterTests
             Assert.IsTrue(second != first);
             Assert.AreNotEqual(0, first.CompareTo(second));
             Assert.AreNotEqual(0, second.CompareTo(first));
-            Assert.IsTrue(first.EqualsEpsilon(second, 1e-4));
-            Assert.IsTrue(second.EqualsEpsilon(first, 1e-4));
+        }
 
+        [Test]
+        [SuppressMessage("ReSharper", "SuspiciousTypeConversion.Global")]
+        [SuppressMessage("Assertion", "NUnit2010", Justification = "This is specifically testing equality methods")]
+        public void TestEqualityWrongType()
+        {
+            Duration first = new Duration(5, 565.0);
             // Make sure a Duration compared with a non-Duration returns false
-            // ReSharper disable once SuspiciousTypeConversion.Global
             Assert.IsFalse(first.Equals(5));
         }
 
+        [Test]
+        public void TestEqualsEpsilon()
+        {
+            var first = new Duration(5, 0.00001);
+            var second = new Duration(4, 86399.99999);
+
+            Assert.IsTrue(first.EqualsEpsilon(second, Constants.Epsilon4));
+            Assert.IsTrue(second.EqualsEpsilon(first, Constants.Epsilon4));
+        }
+
         /// <summary>
-        /// Tests Duration.CompareTo
+        /// Tests that the <see cref="Duration.EqualsEpsilon"/> method returns true
+        /// when the difference is exactly epsilon.
         /// </summary>
         [Test]
+        public void TestEqualsEpsilonExact()
+        {
+            Duration first = new Duration(5, 565);
+            Duration second = new Duration(5, 565);
+
+            Assert.IsTrue(second.EqualsEpsilon(first, 0));
+        }
+
+        [Test]
+        [SuppressMessage("Assertion", "NUnit2043", Justification = "This is specifically testing operator overloads")]
         public void TestCompareTo()
         {
             Duration duration1 = new Duration(1, 0.0);
@@ -353,11 +380,11 @@ namespace CesiumLanguageWriterTests
         [CSToJavaExclude]
         public void TestObjectCompareTo()
         {
-            Duration duration1 = new Duration(1, 1.0);
-            Assert.Greater(duration1.CompareTo(null), 0);
+            Duration duration = new Duration(1, 1.0);
+            object durationAsObject = new Duration(1, 1.0);
 
-            object duration2 = new Duration(1, 1.0);
-            Assert.AreEqual(0, duration1.CompareTo(duration2));
+            Assert.Greater(duration.CompareTo(null), 0);
+            Assert.AreEqual(0, duration.CompareTo(durationAsObject));
         }
 
         /// <summary>

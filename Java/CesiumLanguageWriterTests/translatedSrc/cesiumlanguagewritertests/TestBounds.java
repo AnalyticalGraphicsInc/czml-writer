@@ -3,11 +3,12 @@ package cesiumlanguagewritertests;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Action;
+import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.ArgumentException;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.CultureInfoHelper;
-import agi.foundation.compatibility.DoubleHelper;
 import agi.foundation.compatibility.IEquatable;
+import agi.foundation.compatibility.StringHelper;
 import agi.foundation.compatibility.TestContextRule;
 import agi.foundation.TypeLiteral;
 import cesiumlanguagewriter.*;
@@ -19,9 +20,6 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-/**
- * Tests the Bounds class.
- */
 @SuppressWarnings({
     "unused",
     "deprecation",
@@ -86,6 +84,7 @@ public class TestBounds {
     /**
     * Tests the equality and inequality methods and operators.
     */
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     @Test
     public final void testEquality() {
         Bounds first = new Bounds(-1.0, 1.0);
@@ -118,18 +117,15 @@ public class TestBounds {
         Assert.assertFalse(second.equalsType(first));
     }
 
-    /**
-    * Tests the {@link Bounds#equalsEpsilon} method.
-    */
     @Test
     public final void testEqualsEpsilon() {
         Bounds first = new Bounds(1e-2, 1e-1);
         Bounds second = new Bounds(1.1e-2, 1.1e-1);
-        Assert.assertTrue(second.equalsEpsilon(first, 1e-1));
-        Assert.assertTrue(second.equalsEpsilon(first, 1e-2));
-        Assert.assertFalse(second.equalsEpsilon(first, 1e-3));
-        Assert.assertFalse(second.equalsEpsilon(first, 1e-4));
-        Assert.assertFalse(second.equalsEpsilon(first, 1e-5));
+        Assert.assertTrue(second.equalsEpsilon(first, Constants.Epsilon1));
+        Assert.assertTrue(second.equalsEpsilon(first, Constants.Epsilon2));
+        Assert.assertFalse(second.equalsEpsilon(first, Constants.Epsilon3));
+        Assert.assertFalse(second.equalsEpsilon(first, Constants.Epsilon4));
+        Assert.assertFalse(second.equalsEpsilon(first, Constants.Epsilon5));
     }
 
     /**
@@ -146,25 +142,21 @@ public class TestBounds {
     /**
     * Tests to ensure the equality fails when comparing incorrect type.
     */
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     @Test
     public final void testEqualityWithWrongType() {
         Bounds first = new Bounds(-1.0, 1.0);
         Cartesian second = Cartesian.getZero();
-        // ReSharper disable once SuspiciousTypeConversion.Global
         Assert.assertFalse(first.equals(second));
     }
 
-    /**
-    * Tests ToString method
-    */
     @Test
     public final void testToString() {
-        final double val1 = 1.1;
-        final double val2 = 2.1;
-        final String sep = ", ";
-        String result = DoubleHelper.toString(val1, CultureInfoHelper.getCurrentCulture()) + sep + DoubleHelper.toString(val2, CultureInfoHelper.getCurrentCulture());
-        Bounds test = new Bounds(val1, val2);
-        AssertHelper.assertEquals(result, test.toString());
+        final double lowerBound = 1.1;
+        final double upperBound = 2.1;
+        Bounds test = new Bounds(lowerBound, upperBound);
+        String expected = StringHelper.format(CultureInfoHelper.getCurrentCulture(), "{0}, {1}", lowerBound, upperBound);
+        AssertHelper.assertEquals(expected, test.toString());
     }
 
     @Nonnull

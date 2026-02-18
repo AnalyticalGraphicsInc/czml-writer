@@ -1,13 +1,11 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using CesiumLanguageWriter;
 using NUnit.Framework;
 
 namespace CesiumLanguageWriterTests
 {
-    /// <summary>
-    /// Tests the <see cref="BoundingRectangle"/> type.
-    /// </summary>
     [TestFixture]
     public class TestBoundingRectangle
     {
@@ -69,6 +67,7 @@ namespace CesiumLanguageWriterTests
         /// Tests the equality and inequality methods and operators.
         /// </summary>
         [Test]
+        [SuppressMessage("Assertion", "NUnit2010", Justification = "This is specifically testing equality methods and operators")]
         public void EqualityTest()
         {
             BoundingRectangle boundingRectangle = new BoundingRectangle(1, 2, 3, 4);
@@ -87,9 +86,6 @@ namespace CesiumLanguageWriterTests
             Assert.IsTrue(boundingRectangle.Equals(boundingRectangleObject));
         }
 
-        /// <summary>
-        /// Tests the <see cref="BoundingRectangle.EqualsEpsilon"/> method.
-        /// </summary>
         [Test]
         public void TestEqualsEpsilon()
         {
@@ -116,9 +112,6 @@ namespace CesiumLanguageWriterTests
             Assert.AreNotEqual(boundingRectangle1.GetHashCode(), boundingRectangle3.GetHashCode());
         }
 
-        /// <summary>
-        /// Tests the <see cref="BoundingRectangle.ToString"/> method.
-        /// </summary>
         [Test]
         public void TestToString()
         {

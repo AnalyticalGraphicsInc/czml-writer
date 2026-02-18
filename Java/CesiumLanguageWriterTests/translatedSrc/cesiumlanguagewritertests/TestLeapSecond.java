@@ -3,6 +3,7 @@ package cesiumlanguagewritertests;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Action;
+import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.ArgumentException;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.StringHelper;
@@ -17,9 +18,6 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-/**
- * Tests the {@link LeapSecond} type.
- */
 @SuppressWarnings({
     "unused",
     "deprecation",
@@ -46,6 +44,7 @@ public class TestLeapSecond {
     /**
     * Tests equality between leap second instances.
     */
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     @Test
     public final void testEquality() {
         LeapSecond leapSecond1 = new LeapSecond(2451545.0, 100.0);
@@ -56,7 +55,8 @@ public class TestLeapSecond {
         Assert.assertTrue(LeapSecond.equals(leapSecond1, leapSecond2));
         AssertHelper.assertNotEqual(leapSecond1, leapSecond3);
         Assert.assertTrue(LeapSecond.notEquals(leapSecond1, leapSecond3));
-        AssertHelper.assertNotEqual(leapSecond1, 5);
+        Object differentType = 5;
+        AssertHelper.assertNotEqual(leapSecond1, differentType);
         AssertHelper.assertNotEqual(leapSecond3, leapSecond4);
     }
 

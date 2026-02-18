@@ -2,6 +2,7 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
+import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.TestContextRule;
@@ -14,9 +15,6 @@ import org.junit.Rule;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-/**
- * A series of tests to exercise this type.
- */
 @SuppressWarnings({
     "unused",
     "deprecation",
@@ -30,7 +28,7 @@ public class TestTimeInterval {
     @Test
     public final void testRetainValue() {
         JulianDate start = JulianDate.getNow();
-        JulianDate stop = JulianDate.add(start, Duration.fromDays(1.5));
+        JulianDate stop = start.addDays(1.5);
         TimeInterval interval = new TimeInterval(start, stop);
         AssertHelper.assertEquals(start, interval.getStart());
         AssertHelper.assertEquals(stop, interval.getStop());
@@ -42,14 +40,11 @@ public class TestTimeInterval {
     @Test
     public final void testCalculateDuration() {
         JulianDate start = new JulianDate(2451545.0);
-        JulianDate stop = JulianDate.add(start, Duration.fromDays(1.5));
+        JulianDate stop = start.addDays(1.5);
         TimeInterval interval = new TimeInterval(start, stop);
         AssertHelper.assertEquals(Duration.fromDays(1.5), interval.toDuration());
     }
 
-    /**
-    * Tests the IsEmpty property.
-    */
     @Test
     public final void testIsEmpty() {
         TimeInterval interval = new TimeInterval(new JulianDate(1.0), new JulianDate(1.0));
@@ -58,9 +53,7 @@ public class TestTimeInterval {
         Assert.assertTrue(interval.getIsEmpty());
     }
 
-    /**
-    * Tests equality between time intervals.
-    */
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     @Test
     public final void testEquality() {
         TimeInterval interval1 = new TimeInterval(new JulianDate(1.0), new JulianDate(2.0));
@@ -82,16 +75,9 @@ public class TestTimeInterval {
         Assert.assertFalse(TimeInterval.equals(interval2, interval1));
         Assert.assertTrue(TimeInterval.notEquals(interval1, interval2));
         Assert.assertTrue(TimeInterval.notEquals(interval2, interval1));
-        AssertHelper.assertNotEqual(interval1, 5);
-    }
-
-    /**
-    * Tests equality between nullable time intervals.
-    */
-    @Test
-    public final void testNullableEquality() {
-        TimeInterval interval1 = new TimeInterval(new JulianDate(1.0), new JulianDate(2.0));
-        TimeInterval interval2 = null;
+        Object differentType = 5;
+        AssertHelper.assertNotEqual(differentType, interval1);
+        interval2 = null;
         Assert.assertFalse(TimeInterval.equals(interval1, interval2));
         Assert.assertFalse(TimeInterval.equals(interval2, interval1));
         interval1 = null;
@@ -126,9 +112,6 @@ public class TestTimeInterval {
         Assert.assertFalse(interval1.contains(new JulianDate(2451546.5)));
     }
 
-    /**
-    * Tests the {@link TimeInterval#equalsEpsilon} method.
-    */
     @Test
     public final void testEqualsEpsilon() {
         TimeInterval interval1 = new TimeInterval(new JulianDate(2451545, 0.00), new JulianDate(2451546, 0.00));
@@ -150,33 +133,27 @@ public class TestTimeInterval {
         Assert.assertTrue(second.equalsEpsilon(first, 0.00));
     }
 
-    /**
-    * Tests the {@link TimeInterval#toTimeStandard} method.
-    */
     @Test
     public final void testToTimeStandard() {
         JulianDate start = new JulianDate(2451545.0, TimeStandard.COORDINATED_UNIVERSAL_TIME);
         JulianDate stop = new JulianDate(2451546.0, TimeStandard.COORDINATED_UNIVERSAL_TIME);
         TimeInterval interval = new TimeInterval(start, stop);
         TimeInterval result = interval.toTimeStandard(TimeStandard.COORDINATED_UNIVERSAL_TIME);
-        AssertHelper.assertEquals(result.getStart().getStandard(), TimeStandard.COORDINATED_UNIVERSAL_TIME);
-        AssertHelper.assertEquals(result.getStop().getStandard(), TimeStandard.COORDINATED_UNIVERSAL_TIME);
-        AssertHelper.assertEquals(result.getStart().getTotalDays(), 2451545.0, Constants.Epsilon15);
-        AssertHelper.assertEquals(result.getStop().getTotalDays(), 2451546.0, Constants.Epsilon15);
+        AssertHelper.assertEquals(TimeStandard.COORDINATED_UNIVERSAL_TIME, result.getStart().getStandard());
+        AssertHelper.assertEquals(TimeStandard.COORDINATED_UNIVERSAL_TIME, result.getStop().getStandard());
+        AssertHelper.assertEquals(2451545.0, result.getStart().getTotalDays(), Constants.Epsilon15);
+        AssertHelper.assertEquals(2451546.0, result.getStop().getTotalDays(), Constants.Epsilon15);
         result = interval.toTimeStandard(TimeStandard.INTERNATIONAL_ATOMIC_TIME);
-        AssertHelper.assertEquals(result.getStart().getStandard(), TimeStandard.INTERNATIONAL_ATOMIC_TIME);
-        AssertHelper.assertEquals(result.getStop().getStandard(), TimeStandard.INTERNATIONAL_ATOMIC_TIME);
-        AssertHelper.assertNotEqual(result.getStart().getTotalDays(), 2451545.0);
-        AssertHelper.assertNotEqual(result.getStop().getTotalDays(), 2451546.0);
+        AssertHelper.assertEquals(TimeStandard.INTERNATIONAL_ATOMIC_TIME, result.getStart().getStandard());
+        AssertHelper.assertEquals(TimeStandard.INTERNATIONAL_ATOMIC_TIME, result.getStop().getStandard());
+        AssertHelper.assertNotEqual(2451545.0, result.getStart().getTotalDays());
+        AssertHelper.assertNotEqual(2451546.0, result.getStop().getTotalDays());
         TimeInterval empty = new TimeInterval(new JulianDate(2451545.0, TimeStandard.COORDINATED_UNIVERSAL_TIME), new JulianDate(2451545.0, TimeStandard.COORDINATED_UNIVERSAL_TIME));
         Assert.assertTrue(empty.getIsEmpty());
         result = empty.toTimeStandard(TimeStandard.INTERNATIONAL_ATOMIC_TIME);
         Assert.assertTrue(result.getIsEmpty());
     }
 
-    /**
-    * Tests the {@link TimeInterval#toString} method
-    */
     @Test
     public final void testToString() {
         TimeInterval interval = new TimeInterval(new JulianDate(2451545, 0.00), new JulianDate(2451546, 0.00));

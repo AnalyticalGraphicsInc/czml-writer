@@ -4,6 +4,7 @@ package cesiumlanguagewriter;
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.annotations.CS2JInfo;
 import agi.foundation.compatibility.annotations.Internal;
+import agi.foundation.compatibility.ArgumentNullException;
 import agi.foundation.compatibility.ArgumentOutOfRangeException;
 import agi.foundation.compatibility.ListHelper;
 import java.util.ArrayList;
@@ -62,15 +63,20 @@ public class LeapSeconds {
     /**
     * Initializes a new instance with the specified list of leap seconds.
     * @param leapSeconds The list of leap seconds.
+    * @exception ArgumentNullException Thrown when {@code leapSeconds} is {@code null}.
     */
-    public LeapSeconds(Iterable<LeapSecond> leapSeconds) {
+    public LeapSeconds(@Nonnull Iterable<LeapSecond> leapSeconds) {
+        if (leapSeconds == null) {
+            throw new ArgumentNullException("leapSeconds");
+        }
         m_leapSeconds = ListHelper.create(leapSeconds);
-        Collections.sort(m_leapSeconds, s_leapSecondComparer);
+        Collections.sort(m_leapSeconds, LeapSecondComparer.Instance);
     }
 
     /**
     * Gets the default (and usually only) instance.
     */
+    @Nonnull
     public static LeapSeconds getInstance() {
         return s_leapSeconds;
     }
@@ -78,13 +84,14 @@ public class LeapSeconds {
     /**
     * Sets the default (and usually only) instance.
     */
-    public static void setInstance(LeapSeconds value) {
+    public static void setInstance(@Nonnull LeapSeconds value) {
         s_leapSeconds = value;
     }
 
     /**
     * Gets the list of leap seconds currently being used by this class.
     */
+    @Nonnull
     public final List<LeapSecond> getLeapSecondList() {
         return Collections.unmodifiableList(m_leapSeconds);
     }
@@ -99,7 +106,7 @@ public class LeapSeconds {
         LeapSecond toFind = new LeapSecond(date, 0.0);
         // Start by assuming we're working with UTC, we'll check later if we're
         // off by one because we really have TAI.
-        int index = Collections.binarySearch(m_leapSeconds, toFind, s_leapSecondComparer);
+        int index = Collections.binarySearch(m_leapSeconds, toFind, LeapSecondComparer.Instance);
         if (index < 0) {
             index = ~index;
             --index;
@@ -141,7 +148,7 @@ public class LeapSeconds {
         if (temp$0) {
             return result;
         }
-        throw new ArgumentOutOfRangeException(CesiumLocalization.getCannotRepresentLeapSecondAsUTCJulianDate());
+        throw new ArgumentOutOfRangeException("date", CesiumLocalization.getCannotRepresentLeapSecondAsUTCJulianDate());
     }
 
     /**
@@ -150,29 +157,27 @@ public class LeapSeconds {
     {@link TimeStandard}.
     * @param result Out parameter for returning the resulting UTC
     {@link JulianDate}, if it was possible to convert.
-    * @return {@code true} if {@code date} could be converted
-    to UTC, otherwise false.
+    * @return {@code true} if {@code date} could be converted to UTC; otherwise {@code false}.
     * @deprecated Internal use only.
     */
     @Deprecated
     @Internal
     public final boolean tryConvertTaiToUtc(@Nonnull JulianDate date, @Nonnull JulianDate[] result) {
-        //treat the request date as if it were UTC, and search for the most recent leap second.
-        LeapSecond toFind = new LeapSecond(date.getTotalDays(), 0.0);
-        int index = Collections.binarySearch(m_leapSeconds, toFind, s_leapSecondComparer);
+        // treat the request date as if it were UTC, and search for the most recent leap second.
+        int index = Collections.binarySearch(m_leapSeconds, new LeapSecond(date.getTotalDays(), 0.0), LeapSecondComparer.Instance);
         if (index < 0) {
             index = ~index;
             --index;
         }
-        //now we have the index of the most recent leap second that is after the requested date
+        // now we have the index of the most recent leap second that is after the requested date
         if (index >= 0) {
             double mostRecentOffset = getOffsetForIndex(index);
             JulianDate leapSecondDate = getDateForIndex(index);
             if (date.getDay() == leapSecondDate.getDay()) {
-                //if the requested date is on the day of the leap second, we may have to adjust
+                // if the requested date is on the day of the leap second, we may have to adjust
                 double secondsSinceLeapSecond = date.getSecondsOfDay() - leapSecondDate.getSecondsOfDay();
                 if (secondsSinceLeapSecond >= mostRecentOffset - 1 && secondsSinceLeapSecond < mostRecentOffset) {
-                    //if the requested date is during the moment of a leap second, then we cannot convert to UTC.
+                    // if the requested date is during the moment of a leap second, then we cannot convert to UTC.
                     result[0] = JulianDate.getMinValue();
                     return false;
                 }
@@ -203,21 +208,26 @@ public class LeapSeconds {
     /**
     * Determines if a given day contains a leap second.
     * @param julianDayNumber The day, specified as a Julian day number.
-    * @return true if the day contains a leap second, otherwise false.
+    * @return {@code true} if the day contains a leap second; otherwise {@code false}.
     */
     public final boolean doesDayHaveLeapSecond(int julianDayNumber) {
         LeapSecond potentialLeapSecond = new LeapSecond(new JulianDate(julianDayNumber, 43200.0, TimeStandard.COORDINATED_UNIVERSAL_TIME), 0.0);
-        return Collections.binarySearch(m_leapSeconds, potentialLeapSecond, s_leapSecondComparer) >= 0;
+        return Collections.binarySearch(m_leapSeconds, potentialLeapSecond, LeapSecondComparer.Instance) >= 0;
     }
 
-    private static LeapSecondComparer s_leapSecondComparer = new LeapSecondComparer();
+    @Nonnull
     private static LeapSeconds s_leapSeconds = new LeapSeconds();
     @Nonnull
     private ArrayList<LeapSecond> m_leapSeconds;
 
-    private static class LeapSecondComparer implements Comparator<LeapSecond> {
+    private static final class LeapSecondComparer implements Comparator<LeapSecond> {
+        private LeapSecondComparer() {}
+
         public final int compare(@Nonnull LeapSecond x, @Nonnull LeapSecond y) {
             return x.getDate().compareTo(y.getDate());
         }
+
+        @Nonnull
+        public static final LeapSecondComparer Instance = new LeapSecondComparer();
     }
 }

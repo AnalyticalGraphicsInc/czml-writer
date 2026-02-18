@@ -12,12 +12,14 @@ namespace CesiumLanguageWriter
     /// and the seconds into the day as a <see cref="double"/>.
     /// </summary>
     /// <remarks>
+    /// <para>
     /// This type assumes that days always have <see cref="TimeConstants.SecondsPerDay"/> (86400.0) seconds.
-    /// When using a <see cref="JulianDate"/> with the <see cref="TimeStandard.CoordinatedUniversalTime"/> (UTC) time standard,
-    /// a day with a leap second actually has 86401.0 seconds.  The end result is that <see cref="JulianDate"/> cannot
-    /// represent the moment of a leap second with the UTC time standard.  It CAN represent the moment of a
-    /// leap second in <see cref="TimeStandard.InternationalAtomicTime"/> (TAI), however.  Also, subtracting two
-    /// UTC dates that are on opposite sides of a leap second will correctly take the leap second into account.
+    /// When using a <see cref="JulianDate"/> with the <see cref="TimeStandard.CoordinatedUniversalTime"/> (UTC)
+    /// time standard, a day with a leap second actually has 86401.0 seconds.
+    /// The end result is that <see cref="JulianDate"/> cannot represent the moment of a leap second in the UTC time standard.
+    /// However, it CAN represent the moment of a leap second in <see cref="TimeStandard.InternationalAtomicTime"/> (TAI).
+    /// Also, subtracting two UTC dates that are on opposite sides of a leap second will correctly take the leap second into account.
+    /// </para>
     /// </remarks>
     [CSToJavaExcludeBase("IConvertible")]
     [CSToJavaExcludeBase("IComparable")]
@@ -36,13 +38,14 @@ namespace CesiumLanguageWriter
 
         /// <summary>
         /// Initializes a <see cref="JulianDate"/> from a <see cref="GregorianDate"/>.
-        /// The time standard will be <see cref="TimeStandard.CoordinatedUniversalTime"/> (UTC), except when
-        /// the <paramref name="gregorianDate"/> represents time during a leap second.  During a leap second,
-        /// the <see cref="JulianDate"/> will be in the <see cref="TimeStandard.InternationalAtomicTime"/> (TAI)
-        /// standard.
+        /// The time standard will be <see cref="TimeStandard.CoordinatedUniversalTime"/> (UTC),
+        /// except when the <paramref name="gregorianDate"/> represents time during a leap second.
+        /// During a leap second, the <see cref="JulianDate"/> will be in the
+        /// <see cref="TimeStandard.InternationalAtomicTime"/> (TAI) standard.
         /// </summary>
-        /// <param name="gregorianDate">The <see cref="GregorianDate"/> to use to specify the
-        /// <see cref="JulianDate"/>.</param>
+        /// <param name="gregorianDate">
+        /// The <see cref="GregorianDate"/> to use to specify the <see cref="JulianDate"/>.
+        /// </param>
         public JulianDate(GregorianDate gregorianDate)
         {
             JulianDate converted = gregorianDate.ToJulianDate();
@@ -56,8 +59,8 @@ namespace CesiumLanguageWriter
         /// </summary>
         /// <param name="dateTime">The <see cref="DateTime"/>.</param>
         /// <param name="standard">
-        /// The time standard to use for this Julian Date.  The <paramref name="dateTime"/> is assumed to be expressed
-        /// in this time standard.
+        /// The time standard to use for this Julian Date.
+        /// The <paramref name="dateTime"/> is assumed to be expressed in this time standard.
         /// </param>
         public JulianDate(DateTime dateTime, TimeStandard standard)
             : this(new GregorianDate(dateTime), standard)
@@ -66,8 +69,9 @@ namespace CesiumLanguageWriter
 
         /// <summary>
         /// Initializes a <see cref="JulianDate"/> from a <see cref="GregorianDate"/> where the <see cref="GregorianDate"/>
-        /// is expressed in the given <see cref="TimeStandard"/>.  If the date is during a leap second, the
-        /// <see cref="JulianDate"/> will be expressed in <see cref="TimeStandard.InternationalAtomicTime"/> (TAI).
+        /// is expressed in the given <see cref="TimeStandard"/>.
+        /// If the date is during a leap second, the <see cref="JulianDate"/> will be
+        /// expressed in <see cref="TimeStandard.InternationalAtomicTime"/> (TAI).
         /// </summary>
         /// <param name="gregorianDate">The <see cref="GregorianDate"/>.</param>
         /// <param name="standard">
@@ -82,8 +86,9 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Initializes a <see cref="JulianDate"/> from the provided values.  The values will be
-        /// normalized so that the <see cref="SecondsOfDay"/> property is less than the length of a day.
+        /// Initializes a <see cref="JulianDate"/> from the provided values.
+        /// The values will be normalized so that the <see cref="SecondsOfDay"/>
+        /// property is less than the length of a day.
         /// The time standard will be International Atomic Time (TAI).
         /// </summary>
         /// <param name="day">The whole number part of the date.</param>
@@ -94,50 +99,53 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Initializes a <see cref="JulianDate"/> from the provided values.  The values will be
-        /// normalized so that the <see cref="SecondsOfDay"/> property is less than the length of the day.
+        /// Initializes a <see cref="JulianDate"/> from the provided values.
+        /// The values will be normalized so that the <see cref="SecondsOfDay"/>
+        /// property is less than the length of the day.
         /// </summary>
         /// <param name="day">The whole number part of the date.</param>
         /// <param name="secondsOfDay">The time of day, expressed as seconds past noon on the given whole-number day.</param>
         /// <param name="timeStandard">The time standard to use for this Julian Date.</param>
         public JulianDate(int day, double secondsOfDay, TimeStandard timeStandard)
         {
-            m_timeStandard = timeStandard;
-            m_day = day;
-            m_secondsOfDay = secondsOfDay;
-
-            // Normalize so that the number of seconds is >= 0 and < a day.
-            if (m_secondsOfDay < 0)
+            // Normalize so that the number of seconds is >= 0 and < a day, unless the day is MinValue.
+            // This allows JulianDate.MinValue to be representable in all time standards, by using a negative seconds of day.
+            if (secondsOfDay < 0 && day > int.MinValue)
             {
-                int wholeDays = (int)(m_secondsOfDay / TimeConstants.SecondsPerDay);
+                int wholeDays = (int)(secondsOfDay / TimeConstants.SecondsPerDay);
                 --wholeDays;
+                day += wholeDays;
 
-                m_day += wholeDays;
-                m_secondsOfDay -= TimeConstants.SecondsPerDay * wholeDays;
+                secondsOfDay -= TimeConstants.SecondsPerDay * wholeDays;
 
-                if (m_secondsOfDay > TimeConstants.NextBefore86400)
+                if (secondsOfDay > TimeConstants.NextBefore86400)
                 {
-                    // In theory m_secondsOfDay can't actually be greater than 86400.0.
+                    // In theory secondsOfDay can't actually be greater than 86400.0.
                     // But it can be equal to that, or it can be in the 80-bit floating point
                     // unit and thus in between 86400.0 and the next smaller representable 64-bit
                     // double.  If it's the latter, it's in danger of being rounded to 86400.0.
-                    // 86400.0 is of course not a valid value for m_secondsOfDay, so we need to
-                    // reset it to 0.0 and increment m_day.
+                    // 86400.0 is of course not a valid value for secondsOfDay, so we need to
+                    // reset it to 0.0 and increment day.
                     //
-                    // This can happen if the original m_secondsOfDay coming in is a very small
+                    // This can happen if the original secondsOfDay coming in is a very small
                     // negative number.  When we add 86400.0 to it, we get 86400.0 instead of
                     // something slightly less than that as expected, because a double has more
                     // precision near 0.0 than near 86400.0.
-                    ++m_day;
-                    m_secondsOfDay = 0.0;
+                    ++day;
+                    secondsOfDay = 0.0;
                 }
             }
-            else if (m_secondsOfDay >= TimeConstants.SecondsPerDay)
+            else if (secondsOfDay >= TimeConstants.SecondsPerDay)
             {
-                int wholeDays = (int)(m_secondsOfDay / TimeConstants.SecondsPerDay);
-                m_day += wholeDays;
-                m_secondsOfDay -= TimeConstants.SecondsPerDay * wholeDays;
+                int wholeDays = (int)(secondsOfDay / TimeConstants.SecondsPerDay);
+                day += wholeDays;
+
+                secondsOfDay -= TimeConstants.SecondsPerDay * wholeDays;
             }
+
+            m_day = day;
+            m_secondsOfDay = secondsOfDay;
+            m_timeStandard = timeStandard;
         }
 
         /// <summary>
@@ -164,6 +172,7 @@ namespace CesiumLanguageWriter
 
         /// <summary>
         /// Gets the smallest value possible of <see cref="JulianDate"/>.
+        /// This date is in <see cref="TimeStandard.InternationalAtomicTime"/> and may not be representable in other time standards.
         /// </summary>
         public static JulianDate MinValue
         {
@@ -172,6 +181,7 @@ namespace CesiumLanguageWriter
 
         /// <summary>
         /// Gets the largest possible value of <see cref="JulianDate"/>.
+        /// This date is in <see cref="TimeStandard.InternationalAtomicTime"/> and may not be representable in other time standards.
         /// </summary>
         public static JulianDate MaxValue
         {
@@ -211,7 +221,8 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the <see cref="JulianDate"/> that represents the current date and time. The time standard will be Coordinated Universal Time (UTC).
+        /// Gets the <see cref="JulianDate"/> that represents the current system date and time.
+        /// The time standard will be <see cref="TimeStandard.CoordinatedUniversalTime"/> (UTC).
         /// </summary>
         public static JulianDate Now
         {
@@ -224,7 +235,7 @@ namespace CesiumLanguageWriter
         /// <param name="timeStandard">The requested time standard.</param>
         /// <returns>An equivalent <see cref="JulianDate"/> using the requested time standard.</returns>
         /// <exception cref="ArgumentOutOfRangeException">
-        /// Thrown if the specified <see cref="TimeStandard"/> is not capable of
+        /// Thrown when the specified <see cref="TimeStandard"/> is not capable of
         /// representing this <see cref="JulianDate"/>.
         /// </exception>
         [Pure]
@@ -294,11 +305,11 @@ namespace CesiumLanguageWriter
         /// <returns>The number of seconds that have elapsed from this Julian date to the other Julian date.</returns>
         /// <remarks>
         /// This method subtracts the Julian date on which it is called from the <paramref name="other"/>
-        /// Julian date and returns the number of seconds between them.  The computation is done in the time
-        /// standard of this Julian date, or the closest standard that is safe for arithmetic if this
-        /// Julian date's time standard is not safe.  For best performance, this Julian date and the
-        /// <paramref name="other"/> Julian date should have the same time standard and it should be
-        /// safe for arithmetic.
+        /// Julian date and returns the number of seconds between them.
+        /// The computation is done in the time standard of this Julian date,
+        /// or the closest standard that is safe for arithmetic if this Julian date's time standard is not safe.
+        /// For best performance, this Julian date and the <paramref name="other"/> Julian date
+        /// should have the same time standard, and it should be safe for arithmetic.
         /// </remarks>
         [Pure]
         public double SecondsDifference(JulianDate other)
@@ -319,11 +330,11 @@ namespace CesiumLanguageWriter
         /// <returns>The number of minutes that have elapsed from this Julian date to the other Julian date.</returns>
         /// <remarks>
         /// This method subtracts the Julian date on which it is called from the <paramref name="other"/>
-        /// Julian date and returns the number of minutes between them.  The computation is done in the time
-        /// standard of this Julian date, or the closest standard that is safe for arithmetic if this
-        /// Julian date's time standard is not safe.  For best performance, this Julian date and the
-        /// <paramref name="other"/> Julian date should have the same time standard and it should be
-        /// safe for arithmetic.
+        /// Julian date and returns the number of minutes between them.
+        /// The computation is done in the time standard of this Julian date,
+        /// or the closest standard that is safe for arithmetic if this Julian date's time standard is not safe.
+        /// For best performance, this Julian date and the <paramref name="other"/> Julian date
+        /// should have the same time standard, and it should be safe for arithmetic.
         /// </remarks>
         [Pure]
         public double MinutesDifference(JulianDate other)
@@ -344,11 +355,11 @@ namespace CesiumLanguageWriter
         /// <returns>The number of days that have elapsed from this Julian date to the other Julian date.</returns>
         /// <remarks>
         /// This method subtracts the Julian date on which it is called from the <paramref name="other"/>
-        /// Julian date and returns the number of days between them.  The computation is done in the time
-        /// standard of this Julian date, or the closest standard that is safe for arithmetic if this
-        /// Julian date's time standard is not safe.  For best performance, this Julian date and the
-        /// <paramref name="other"/> Julian date should have the same time standard and it should be
-        /// safe for arithmetic.
+        /// Julian date and returns the number of days between them.
+        /// The computation is done in the time standard of this Julian date,
+        /// or the closest standard that is safe for arithmetic if this Julian date's time standard is not safe.
+        /// For best performance, this Julian date and the <paramref name="other"/> Julian date
+        /// should have the same time standard, and it should be safe for arithmetic.
         /// </remarks>
         [Pure]
         public double DaysDifference(JulianDate other)
@@ -362,7 +373,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Adds a <see cref="Duration"/> to this Julian date, producing a new Julian date.
+        /// Adds a <see cref="Duration"/> to this Julian date, producing a new <see cref="JulianDate"/>.
         /// </summary>
         /// <param name="duration">The duration to add.</param>
         /// <returns>
@@ -402,14 +413,17 @@ namespace CesiumLanguageWriter
         /// Subtracts another Julian date from this Julian date.
         /// </summary>
         /// <param name="subtrahend">The Julian Date to subtract from this Julian Date.</param>
-        /// <returns>The Duration that is the result of the subtraction.  The time standard will be the same as the time standard of the subtrahend.</returns>
+        /// <returns>
+        /// The Duration that is the result of the subtraction.
+        /// The time standard will be the same as the time standard of the subtrahend.
+        /// </returns>
         /// <remarks>
         /// This method subtracts the <paramref name="subtrahend"/> Julian date from this
-        /// Julian date and returns the <see cref="Duration"/> between them.  The computation is done in
-        /// the time standard of the <paramref name="subtrahend"/>, or the closest standard that is safe for
-        /// arithmetic if the subtrahend's time standard is not safe.  For best performance, this Julian date
-        /// and the subtrahend Julian date should have the same time standard and it should be
-        /// safe for arithmetic.
+        /// Julian date and returns the <see cref="Duration"/> between them.
+        /// The computation is done in the time standard of the <paramref name="subtrahend"/>,
+        /// or the closest standard that is safe for arithmetic if the subtrahend's time standard is not safe.
+        /// For best performance, this Julian date and the subtrahend Julian date
+        /// should have the same time standard, and it should be safe for arithmetic.
         /// </remarks>
         [Pure]
         public Duration Subtract(JulianDate subtrahend)
@@ -446,8 +460,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Subtracts a <see cref="Duration"/> from this Julian date, producing a new
-        /// Julian date.
+        /// Subtracts a <see cref="Duration"/> from this Julian date, producing a new <see cref="JulianDate"/>.
         /// </summary>
         /// <param name="duration">The duration to subtract.</param>
         /// <returns>
@@ -456,7 +469,7 @@ namespace CesiumLanguageWriter
         [Pure]
         public JulianDate Subtract(Duration duration)
         {
-            return Add(new Duration(-duration.Days, -duration.Seconds));
+            return Add(-duration);
         }
 
         /// <summary>
@@ -494,15 +507,14 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Subtracts a Julian date from another Julian date, yielding a
-        /// <see cref="Duration"/>.
+        /// Subtracts a Julian date from another Julian date, producing a <see cref="Duration"/>.
         /// </summary>
         /// <param name="left">The minuend.</param>
         /// <param name="right">The subtrahend.</param>
         /// <returns>
-        /// The Duration that is the result of the subtraction; that is,
-        /// <paramref name="left"/> minus <paramref name="right"/>.  The time standard will
-        /// be the same as the time standard of the subtrahend.
+        /// The Duration that is the result of the subtraction;
+        /// that is, <paramref name="left"/> minus <paramref name="right"/>.
+        /// The time standard will be the same as the time standard of the subtrahend.
         /// </returns>
         public static Duration operator -(JulianDate left, JulianDate right)
         {
@@ -510,14 +522,13 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Subtracts a <see cref="Duration"/> from a Julian date, yielding a new
-        /// <see cref="JulianDate"/>.
+        /// Subtracts a <see cref="Duration"/> from a Julian date, producing a new <see cref="JulianDate"/>.
         /// </summary>
         /// <param name="left">The minuend.</param>
         /// <param name="right">The subtrahend.</param>
         /// <returns>
-        /// A new Julian Date that is the result of the subtraction; that is,
-        /// <paramref name="left"/> minus <paramref name="right"/>.
+        /// A new <see cref="JulianDate"/> that is the result of the subtraction;
+        /// that is, <paramref name="left"/> minus <paramref name="right"/>.
         /// </returns>
         public static JulianDate operator -(JulianDate left, Duration right)
         {
@@ -525,22 +536,24 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Adds a <see cref="Duration"/> to a <see cref="JulianDate"/>, producing a new
-        /// Julian date.
+        /// Adds a <see cref="Duration"/> to a <see cref="JulianDate"/>, producing a new <see cref="JulianDate"/>.
         /// </summary>
         /// <param name="left">The Julian date.</param>
         /// <param name="right">The duration.</param>
-        /// <returns>A new Julian Date that is the result of the addition.</returns>
+        /// <returns>
+        /// A new <see cref="JulianDate"/> that is the result of the addition.
+        /// </returns>
         public static JulianDate operator +(JulianDate left, Duration right)
         {
             return left.Add(right);
         }
 
         /// <summary>
-        /// Returns true if the two dates are exactly equal.  To be considered equal, the <see cref="Day"/>
-        /// and <see cref="SecondsOfDay"/> properties must be identical when converted to a common time standard.
-        /// It is highly recommended that you use <see cref="EqualsEpsilon"/> or <see cref="IsIdentical"/>
-        /// instead of this method.
+        /// Returns true if two dates are exactly equal.
+        /// To be considered equal, <see cref="Day"/> and <see cref="SecondsOfDay"/>
+        /// must be identical when converted to a common time standard.
+        /// It is highly recommended that you use <see cref="EqualsEpsilon"/> or
+        /// <see cref="IsIdentical"/> instead of this method.
         /// </summary>
         /// <param name="left">The date on the left side.</param>
         /// <param name="right">The date on the right side.</param>
@@ -551,10 +564,11 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns true if the two dates are NOT exactly equal.  To be considered equal, the <see cref="Day"/>
-        /// and <see cref="SecondsOfDay"/> properties must be identical when converted to a common time standard.
-        /// It is highly recommended that you use <see cref="EqualsEpsilon"/> or <see cref="IsIdentical"/>
-        /// instead of this method.
+        /// Returns true if two dates are NOT exactly equal.
+        /// To be considered equal, <see cref="Day"/> and <see cref="SecondsOfDay"/>
+        /// must be identical when converted to a common time standard.
+        /// It is highly recommended that you use <see cref="EqualsEpsilon"/> or
+        /// <see cref="IsIdentical"/> instead of this method.
         /// </summary>
         /// <param name="left">The date on the left side.</param>
         /// <param name="right">The date on the right side.</param>
@@ -609,10 +623,11 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns true if this date exactly equals another date.  To be considered equal, the <see cref="Day"/>
-        /// and <see cref="SecondsOfDay"/> properties must be identical when converted to a common time standard.
-        /// It is highly recommended that you use <see cref="EqualsEpsilon"/> or <see cref="IsIdentical"/>
-        /// instead of this method.
+        /// Returns true if this date exactly equals another date.
+        /// To be considered equal, <see cref="Day"/> and <see cref="SecondsOfDay"/>
+        /// must be identical when converted to a common time standard.
+        /// It is highly recommended that you use <see cref="EqualsEpsilon"/> or
+        /// <see cref="IsIdentical"/> instead of this method.
         /// </summary>
         /// <param name="obj">The object to compare to this instance.</param>
         /// <returns><see langword="true"/> if <paramref name="obj"/> represents the same value as this instance; otherwise <see langword="false"/>.</returns>
@@ -622,10 +637,11 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns true if this date exactly equals another date.  To be considered equal, the <see cref="Day"/>
-        /// and <see cref="SecondsOfDay"/> properties must be identical when converted to a common time standard.
-        /// It is highly recommended that you use <see cref="EqualsEpsilon"/> or <see cref="IsIdentical"/>
-        /// instead of this method.
+        /// Returns true if this date exactly equals another date.
+        /// To be considered equal, <see cref="Day"/> and <see cref="SecondsOfDay"/>
+        /// must be identical when converted to a common time standard.
+        /// It is highly recommended that you use <see cref="EqualsEpsilon"/> or
+        /// <see cref="IsIdentical"/> instead of this method.
         /// </summary>
         /// <param name="other">The date to compare to this instance.</param>
         /// <returns><see langword="true"/> if <paramref name="other"/> represents the same value as this instance; otherwise <see langword="false"/>.</returns>
@@ -635,9 +651,10 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns true if this date is identical to another date.  Unlike <see cref="Equals(JulianDate)"/>, this method will
-        /// consider two dates with different time standards to be different even if the dates represent the same
-        /// moment when expressed in the same time standard.
+        /// Returns true if this date is identical to another date.
+        /// Unlike <see cref="Equals(JulianDate)"/>, this method will
+        /// consider two dates with different time standards to be different,
+        /// even if the dates represent the same moment when expressed in the same time standard.
         /// </summary>
         /// <param name="other">The date to compare to this instance.</param>
         /// <returns><see langword="true"/> if <paramref name="other"/> is identical to this instance; otherwise <see langword="false"/>.</returns>
@@ -651,12 +668,12 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Returns true if this date is within <paramref name="epsilon"/> seconds of the
-        /// specified date.  That is, in order for the dates to be considered equal (and for
-        /// this function to return true), the absolute value of the difference between them, in
-        /// seconds, must be less than or equal to <paramref name="epsilon"/>.
+        /// Returns true if this date is within <paramref name="epsilon"/> seconds of the specified date.
+        /// That is, in order for the dates to be considered equal (and for
+        /// this function to return true), the absolute value of the difference between them,
+        /// in seconds, must be less than or equal to <paramref name="epsilon"/>.
         /// </summary>
-        /// <param name="other">The Julian Date to compare to this date.</param>
+        /// <param name="other">The date to compare to this date.</param>
         /// <param name="epsilon">The largest difference between the dates, in seconds, such that they will be considered equal.</param>
         /// <returns>true if the dates are equal as defined by the epsilon value.</returns>
         [Pure]
@@ -809,9 +826,8 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Converts this <see cref="JulianDate"/> to a <filter name="DotNet">.NET standard</filter>
-        /// <see cref="DateTime"/> with a default time standard of Coordinated Universal
-        /// Time.
+        /// Converts this <see cref="JulianDate"/> to a <see cref="DateTime"/>
+        /// with a default time standard of <see cref="TimeStandard.CoordinatedUniversalTime"/> (UTC).
         /// </summary>
         /// <returns>The <see cref="DateTime"/>.</returns>
         [Pure]
@@ -821,11 +837,12 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Converts this <see cref="JulianDate"/> to a <filter name="DotNet">.NET standard</filter>
-        /// <see cref="DateTime"/> expressed in the specified time standard.
+        /// Converts this <see cref="JulianDate"/> to a <see cref="DateTime"/>
+        /// expressed in the specified time standard.
         /// </summary>
-        /// <param name="standard">The time standard in which to express the returned
-        /// <see cref="DateTime"/>.</param>
+        /// <param name="standard">
+        /// The time standard in which to express the returned <see cref="DateTime"/>.
+        /// </param>
         /// <returns>The <see cref="DateTime"/>.</returns>
         [Pure]
         public DateTime ToDateTime(TimeStandard standard)
@@ -834,8 +851,8 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Converts this <see cref="JulianDate"/> to a <see cref="GregorianDate"/> with a
-        /// default time standard of Coordinated Universal Time.
+        /// Converts this <see cref="JulianDate"/> to a <see cref="GregorianDate"/>
+        /// with a default time standard of <see cref="TimeStandard.CoordinatedUniversalTime"/> (UTC).
         /// </summary>
         /// <returns>The <see cref="GregorianDate"/>.</returns>
         [Pure]
@@ -848,8 +865,9 @@ namespace CesiumLanguageWriter
         /// Converts this <see cref="JulianDate"/> to a <see cref="GregorianDate"/>
         /// expressed in the specified time standard.
         /// </summary>
-        /// <param name="standard">The time standard in which to express the returned
-        /// <see cref="GregorianDate"/>.</param>
+        /// <param name="standard">
+        /// The time standard in which to express the returned <see cref="GregorianDate"/>.
+        /// </param>
         /// <returns>The <see cref="GregorianDate"/>.</returns>
         [Pure]
         public GregorianDate ToGregorianDate(TimeStandard standard)
@@ -858,10 +876,10 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Implements <see cref="IConvertible"/> interface. Converts a
-        /// <see cref="JulianDate"/> to a <see cref="DateTime"/> object.
+        /// Implements <see cref="IConvertible"/> interface.
+        /// Converts a <see cref="JulianDate"/> to a <see cref="DateTime"/> object.
         /// </summary>
-        /// <param name="provider">An <see cref="IFormatProvider" /> interface implementation that supplies culture-specific formatting information.</param>
+        /// <param name="provider">An <see cref="IFormatProvider"/> interface implementation that supplies culture-specific formatting information.</param>
         /// <returns>A <see cref="DateTime"/> representation of a <see cref="JulianDate"/>
         /// </returns>
         [CSToJavaExclude("No IConvertible interface in Java.")]
@@ -871,8 +889,8 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Implements <see cref="IConvertible"/> interface. Returns the
-        /// <see cref="TypeCode"/> for this instance.
+        /// Implements <see cref="IConvertible"/> interface.
+        /// Returns the <see cref="TypeCode"/> for this instance.
         /// </summary>
         /// <returns><see cref="TypeCode.Object"/></returns>
         [CSToJavaExclude("No IConvertible interface in Java.")]
@@ -882,11 +900,10 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Implements <see cref="IConvertible"/> interface. Throws an
-        /// <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be
-        /// converted to this type of object.
+        /// Implements <see cref="IConvertible"/> interface.
+        /// Throws an <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be converted to this type of object.
         /// </summary>
-        /// <param name="provider">An <see cref="IFormatProvider" /> interface implementation that supplies culture-specific formatting information.</param>
+        /// <param name="provider">An <see cref="IFormatProvider"/> interface implementation that supplies culture-specific formatting information.</param>
         [CSToJavaExclude("No IConvertible interface in Java.")]
         bool IConvertible.ToBoolean(IFormatProvider provider)
         {
@@ -894,11 +911,10 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Implements <see cref="IConvertible"/> interface. Throws an
-        /// <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be
-        /// converted to this type of object.
+        /// Implements <see cref="IConvertible"/> interface.
+        /// Throws an <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be converted to this type of object.
         /// </summary>
-        /// <param name="provider">An <see cref="IFormatProvider" /> interface implementation that supplies culture-specific formatting information.</param>
+        /// <param name="provider">An <see cref="IFormatProvider"/> interface implementation that supplies culture-specific formatting information.</param>
         [CSToJavaExclude("No IConvertible interface in Java.")]
         byte IConvertible.ToByte(IFormatProvider provider)
         {
@@ -906,11 +922,10 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Implements <see cref="IConvertible"/> interface. Throws an
-        /// <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be
-        /// converted to this type of object.
+        /// Implements <see cref="IConvertible"/> interface.
+        /// Throws an <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be converted to this type of object.
         /// </summary>
-        /// <param name="provider">An <see cref="IFormatProvider" /> interface implementation that supplies culture-specific formatting information.</param>
+        /// <param name="provider">An <see cref="IFormatProvider"/> interface implementation that supplies culture-specific formatting information.</param>
         [CSToJavaExclude("No IConvertible interface in Java.")]
         char IConvertible.ToChar(IFormatProvider provider)
         {
@@ -918,11 +933,10 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Implements <see cref="IConvertible"/> interface. Throws an
-        /// <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be
-        /// converted to this type of object.
+        /// Implements <see cref="IConvertible"/> interface.
+        /// Throws an <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be converted to this type of object.
         /// </summary>
-        /// <param name="provider">An <see cref="IFormatProvider" /> interface implementation that supplies culture-specific formatting information.</param>
+        /// <param name="provider">An <see cref="IFormatProvider"/> interface implementation that supplies culture-specific formatting information.</param>
         [CSToJavaExclude("No IConvertible interface in Java.")]
         decimal IConvertible.ToDecimal(IFormatProvider provider)
         {
@@ -930,10 +944,10 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Implements <see cref="IConvertible"/> interface. Converts
-        /// <see cref="JulianDate"/> to its decimal representation.
+        /// Implements <see cref="IConvertible"/> interface.
+        /// Converts <see cref="JulianDate"/> to its double representation.
         /// </summary>
-        /// <param name="provider">An <see cref="IFormatProvider" /> interface implementation that supplies culture-specific formatting information.</param>
+        /// <param name="provider">An <see cref="IFormatProvider"/> interface implementation that supplies culture-specific formatting information.</param>
         /// <returns>The total number of whole and fractional days represented by this astronomical Julian date.</returns>
         [CSToJavaExclude("No IConvertible interface in Java.")]
         double IConvertible.ToDouble(IFormatProvider provider)
@@ -942,11 +956,10 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Implements <see cref="IConvertible"/> interface. Throws an
-        /// <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be
-        /// converted to this type of object.
+        /// Implements <see cref="IConvertible"/> interface.
+        /// Throws an <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be converted to this type of object.
         /// </summary>
-        /// <param name="provider">An <see cref="IFormatProvider" /> interface implementation that supplies culture-specific formatting information.</param>
+        /// <param name="provider">An <see cref="IFormatProvider"/> interface implementation that supplies culture-specific formatting information.</param>
         [CSToJavaExclude("No IConvertible interface in Java.")]
         short IConvertible.ToInt16(IFormatProvider provider)
         {
@@ -954,11 +967,10 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Implements <see cref="IConvertible"/> interface. Throws an
-        /// <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be
-        /// converted to this type of object.
+        /// Implements <see cref="IConvertible"/> interface.
+        /// Throws an <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be converted to this type of object.
         /// </summary>
-        /// <param name="provider">An <see cref="IFormatProvider" /> interface implementation that supplies culture-specific formatting information.</param>
+        /// <param name="provider">An <see cref="IFormatProvider"/> interface implementation that supplies culture-specific formatting information.</param>
         [CSToJavaExclude("No IConvertible interface in Java.")]
         int IConvertible.ToInt32(IFormatProvider provider)
         {
@@ -966,11 +978,10 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Implements <see cref="IConvertible"/> interface. Throws an
-        /// <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be
-        /// converted to this type of object.
+        /// Implements <see cref="IConvertible"/> interface.
+        /// Throws an <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be converted to this type of object.
         /// </summary>
-        /// <param name="provider">An <see cref="IFormatProvider" /> interface implementation that supplies culture-specific formatting information.</param>
+        /// <param name="provider">An <see cref="IFormatProvider"/> interface implementation that supplies culture-specific formatting information.</param>
         [CSToJavaExclude("No IConvertible interface in Java.")]
         long IConvertible.ToInt64(IFormatProvider provider)
         {
@@ -978,11 +989,10 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Implements <see cref="IConvertible"/> interface. Throws an
-        /// <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be
-        /// converted to this type of object.
+        /// Implements <see cref="IConvertible"/> interface.
+        /// Throws an <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be converted to this type of object.
         /// </summary>
-        /// <param name="provider">An <see cref="IFormatProvider" /> interface implementation that supplies culture-specific formatting information.</param>
+        /// <param name="provider">An <see cref="IFormatProvider"/> interface implementation that supplies culture-specific formatting information.</param>
         [CSToJavaExclude("No IConvertible interface in Java.")]
         sbyte IConvertible.ToSByte(IFormatProvider provider)
         {
@@ -990,11 +1000,10 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Implements <see cref="IConvertible"/> interface. Throws an
-        /// <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be
-        /// converted to this type of object.
+        /// Implements <see cref="IConvertible"/> interface.
+        /// Throws an <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be converted to this type of object.
         /// </summary>
-        /// <param name="provider">An <see cref="IFormatProvider" /> interface implementation that supplies culture-specific formatting information.</param>
+        /// <param name="provider">An <see cref="IFormatProvider"/> interface implementation that supplies culture-specific formatting information.</param>
         [CSToJavaExclude("No IConvertible interface in Java.")]
         float IConvertible.ToSingle(IFormatProvider provider)
         {
@@ -1002,10 +1011,10 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Implements <see cref="IConvertible"/> interface. Converts the
-        /// <see cref="JulianDate"/> to a string representation.
+        /// Implements <see cref="IConvertible"/> interface.
+        /// Converts the <see cref="JulianDate"/> to its string representation.
         /// </summary>
-        /// <param name="provider">An <see cref="IFormatProvider" /> interface implementation that supplies culture-specific formatting information.</param>
+        /// <param name="provider">An <see cref="IFormatProvider"/> interface implementation that supplies culture-specific formatting information.</param>
         /// <returns>The string representation of this <see cref="JulianDate"/>.</returns>
         [CSToJavaExclude("No IConvertible interface in Java.")]
         string IConvertible.ToString(IFormatProvider provider)
@@ -1014,14 +1023,12 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Implements <see cref="IConvertible"/> interface. Converts this
-        /// <see cref="JulianDate"/> to the  type given by
-        /// <paramref name="conversionType"/>.
+        /// Implements <see cref="IConvertible"/> interface.
+        /// Converts this <see cref="JulianDate"/> to the type given by <paramref name="conversionType"/>.
         /// </summary>
-        /// <param name="conversionType">The <see cref="Type" /> to which the value of this instance is converted.</param>
-        /// <param name="provider">An <see cref="IFormatProvider" /> interface implementation that supplies culture-specific formatting information.</param>
-        /// <returns>A <see cref="JulianDate"/> converted to the type specified by
-        /// <paramref name="conversionType"/>.</returns>
+        /// <param name="conversionType">The <see cref="Type"/> to which the value of this instance is converted.</param>
+        /// <param name="provider">An <see cref="IFormatProvider"/> interface implementation that supplies culture-specific formatting information.</param>
+        /// <returns>A <see cref="JulianDate"/> converted to the type specified by <paramref name="conversionType"/>.</returns>
         [CSToJavaExclude("No IConvertible interface in Java.")]
         object IConvertible.ToType(Type conversionType, IFormatProvider provider)
         {
@@ -1029,11 +1036,10 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Implements <see cref="IConvertible"/> interface. Throws an
-        /// <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be
-        /// converted to this type of object.
+        /// Implements <see cref="IConvertible"/> interface.
+        /// Throws an <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be converted to this type of object.
         /// </summary>
-        /// <param name="provider">An <see cref="IFormatProvider" /> interface implementation that supplies culture-specific formatting information.</param>
+        /// <param name="provider">An <see cref="IFormatProvider"/> interface implementation that supplies culture-specific formatting information.</param>
         [CSToJavaExclude("No IConvertible interface in Java.")]
         ushort IConvertible.ToUInt16(IFormatProvider provider)
         {
@@ -1041,11 +1047,10 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Implements <see cref="IConvertible"/> interface. Throws an
-        /// <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be
-        /// converted to this type of object.
+        /// Implements <see cref="IConvertible"/> interface.
+        /// Throws an <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be converted to this type of object.
         /// </summary>
-        /// <param name="provider">An <see cref="IFormatProvider" /> interface implementation that supplies culture-specific formatting information.</param>
+        /// <param name="provider">An <see cref="IFormatProvider"/> interface implementation that supplies culture-specific formatting information.</param>
         [CSToJavaExclude("No IConvertible interface in Java.")]
         uint IConvertible.ToUInt32(IFormatProvider provider)
         {
@@ -1053,11 +1058,10 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Implements <see cref="IConvertible"/> interface. Throws an
-        /// <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be
-        /// converted to this type of object.
+        /// Implements <see cref="IConvertible"/> interface.
+        /// Throws an <see cref="InvalidCastException"/> because a <see cref="JulianDate"/> cannot be converted to this type of object.
         /// </summary>
-        /// <param name="provider">An <see cref="IFormatProvider" /> interface implementation that supplies culture-specific formatting information.</param>
+        /// <param name="provider">An <see cref="IFormatProvider"/> interface implementation that supplies culture-specific formatting information.</param>
         [CSToJavaExclude("No IConvertible interface in Java.")]
         ulong IConvertible.ToUInt64(IFormatProvider provider)
         {

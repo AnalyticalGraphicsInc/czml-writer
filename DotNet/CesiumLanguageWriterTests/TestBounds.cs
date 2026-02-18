@@ -1,13 +1,11 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using CesiumLanguageWriter;
 using NUnit.Framework;
 
 namespace CesiumLanguageWriterTests
 {
-    /// <summary>
-    /// Tests the Bounds class.
-    /// </summary>
     [TestFixture]
     public class TestBounds
     {
@@ -78,6 +76,7 @@ namespace CesiumLanguageWriterTests
         /// Tests the equality and inequality methods and operators.
         /// </summary>
         [Test]
+        [SuppressMessage("Assertion", "NUnit2010", Justification = "This is specifically testing equality methods")]
         public void TestEquality()
         {
             Bounds first = new Bounds(-1.0, 1.0);
@@ -112,19 +111,17 @@ namespace CesiumLanguageWriterTests
             Assert.IsFalse(second.Equals(first));
         }
 
-        /// <summary>
-        /// Tests the <see cref="Bounds.EqualsEpsilon"/> method.
-        /// </summary>
         [Test]
         public void TestEqualsEpsilon()
         {
             Bounds first = new Bounds(1e-2, 1e-1);
             Bounds second = new Bounds(1.1e-2, 1.1e-1);
-            Assert.IsTrue(second.EqualsEpsilon(first, 1e-1));
-            Assert.IsTrue(second.EqualsEpsilon(first, 1e-2));
-            Assert.IsFalse(second.EqualsEpsilon(first, 1e-3));
-            Assert.IsFalse(second.EqualsEpsilon(first, 1e-4));
-            Assert.IsFalse(second.EqualsEpsilon(first, 1e-5));
+
+            Assert.IsTrue(second.EqualsEpsilon(first, Constants.Epsilon1));
+            Assert.IsTrue(second.EqualsEpsilon(first, Constants.Epsilon2));
+            Assert.IsFalse(second.EqualsEpsilon(first, Constants.Epsilon3));
+            Assert.IsFalse(second.EqualsEpsilon(first, Constants.Epsilon4));
+            Assert.IsFalse(second.EqualsEpsilon(first, Constants.Epsilon5));
         }
 
         /// <summary>
@@ -136,6 +133,7 @@ namespace CesiumLanguageWriterTests
         {
             Bounds first = new Bounds(0.1, 0.1);
             Bounds second = new Bounds(0.1, 0.1);
+
             Assert.IsTrue(second.EqualsEpsilon(first, 0));
         }
 
@@ -143,27 +141,26 @@ namespace CesiumLanguageWriterTests
         /// Tests to ensure the equality fails when comparing incorrect type.
         /// </summary>
         [Test]
+        [SuppressMessage("ReSharper", "SuspiciousTypeConversion.Global")]
+        [SuppressMessage("Assertion", "NUnit2010", Justification = "This is specifically testing equality methods")]
         public void TestEqualityWithWrongType()
         {
             Bounds first = new Bounds(-1.0, 1.0);
             Cartesian second = Cartesian.Zero;
 
-            // ReSharper disable once SuspiciousTypeConversion.Global
             Assert.IsFalse(first.Equals(second));
         }
 
-        /// <summary>
-        /// Tests ToString method
-        /// </summary>
         [Test]
         public void TestToString()
         {
-            const double val1 = 1.1;
-            const double val2 = 2.1;
-            const string sep = ", ";
-            string result = val1.ToString(CultureInfo.CurrentCulture) + sep + val2.ToString(CultureInfo.CurrentCulture);
-            Bounds test = new Bounds(val1, val2);
-            Assert.AreEqual(result, test.ToString());
+            const double lowerBound = 1.1;
+            const double upperBound = 2.1;
+
+            Bounds test = new Bounds(lowerBound, upperBound);
+
+            string expected = string.Format(CultureInfo.CurrentCulture, "{0}, {1}", lowerBound, upperBound);
+            Assert.AreEqual(expected, test.ToString());
         }
     }
 }

@@ -8,31 +8,70 @@ using JetBrains.Annotations;
 namespace CesiumLanguageWriter
 {
     /// <summary>
-    /// Represents a calendar date in the Gregorian calendar.  A
-    /// <see cref="GregorianDate"/> does not include a <see cref="TimeStandard"/> as <see cref="JulianDate"/>
-    /// does.  However, without explicitly specifying a <see cref="TimeStandard"/> for the date, the <see cref="GregorianDate"/>
-    /// is assumed to be represented in <see cref="TimeStandard.CoordinatedUniversalTime"/>. <see cref="GregorianDate"/> is
-    /// also capable of representing leap seconds, which are represented as the second measured from 60 to 61.  In this case,
-    /// the <see cref="GregorianDate"/> is assumed to be the <see cref="TimeStandard.CoordinatedUniversalTime"/> represented
-    /// in <see cref="TimeStandard.InternationalAtomicTime"/> which can represent leap seconds exactly.
+    /// Represents a calendar date in the Gregorian calendar.
+    /// A <see cref="GregorianDate"/> does not include a
+    /// <see cref="TimeStandard"/> as <see cref="JulianDate"/> does.
+    /// However, without explicitly specifying a <see cref="TimeStandard"/> for the date, the <see cref="GregorianDate"/>
+    /// is assumed to be represented in <see cref="TimeStandard.CoordinatedUniversalTime"/>.
+    /// <see cref="GregorianDate"/> is also capable of representing leap seconds,
+    /// which are represented as the second measured from 60 to 61.
+    /// In this case, the <see cref="GregorianDate"/> is assumed to be the <see cref="TimeStandard.CoordinatedUniversalTime"/>
+    /// represented in <see cref="TimeStandard.InternationalAtomicTime"/>, which can represent leap seconds exactly.
     /// </summary>
     [CSToJavaExcludeBase("IComparable")]
     [CSToJavaImmutableValueType]
     public struct GregorianDate : IComparable<GregorianDate>, IComparable, IEquatable<GregorianDate>
     {
         /// <summary>
+        /// <para>
         /// This class was taken from the Mono <see cref="DateTime"/> class, and
-        /// substantially altered to fit the needs of Gregorian Date.  Gregorian Date
-        /// assumes UTC, so all time-zone handling was ripped out.  The "f" parsing was
-        /// also changed to allow more precision than the 7 digits that
-        /// <see cref="DateTime"/> mandates.
-        ///
+        /// substantially altered to fit the needs of Gregorian Date.
+        /// </para>
+        /// <para>
+        /// Adapted from <c>mcs\class\corlib\System\DateTime.cs</c> circa 6/10/2009
+        /// which I believe corresponds to git revision 3e80fc7d05f
+        /// </para>
+        /// <para>
+        /// GregorianDate assumes UTC, so all time-zone handling was ripped out.
+        /// The "f" parsing was also changed to allow more precision than the 7 digits that <see cref="DateTime"/> mandates.
+        /// </para>
+        /// <para>
         /// Note: any comment from here on is taken from the Mono source, so any references
         /// to bug numbers refer to their bugs.
+        /// </para>
         /// </summary>
         [SuppressMessage("ReSharper", "MemberHidesStaticFromOuterClass")]
         private static class Parser
         {
+            // System.DateTime.cs
+            //
+            // author:
+            //   Marcel Narings (marcel@narings.nl)
+            //   Martin Baulig (martin@gnome.org)
+            //   Atsushi Enomoto (atsushi@ximian.com)
+            //
+            //   (C) 2001 Marcel Narings
+            // Copyright (C) 2004-2006 Novell, Inc (http://www.novell.com)
+            //
+            // Permission is hereby granted, free of charge, to any person obtaining
+            // a copy of this software and associated documentation files (the
+            // "Software"), to deal in the Software without restriction, including
+            // without limitation the rights to use, copy, modify, merge, publish,
+            // distribute, sublicense, and/or sell copies of the Software, and to
+            // permit persons to whom the Software is furnished to do so, subject to
+            // the following conditions:
+            // 
+            // The above copyright notice and this permission notice shall be
+            // included in all copies or substantial portions of the Software.
+            // 
+            // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+            // EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+            // MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+            // NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+            // LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+            // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+            // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
             /// <summary>
             /// Build an array of date/time patterns that support up to the number of
             /// fractional second digits specified.  <see cref="DateTime"/> will only parse up
@@ -53,7 +92,7 @@ namespace CesiumLanguageWriter
                         StringBuilder newStr = new StringBuilder(maximumFractionalSeconds);
                         for (int i = 1; i <= maximumFractionalSeconds; i++)
                         {
-                            newStr.Append("f");
+                            newStr.Append('f');
                             result.Add(s.Replace("f*", newStr.ToString()));
                         }
                     }
@@ -393,7 +432,9 @@ namespace CesiumLanguageWriter
                 if (maxlength <= 0)
                     maxlength = value.Length;
 
+#pragma warning disable CA1309 // Use ordinal stringcomparison
                 if (sPos + maxlength <= s.Length && string.Compare(s, sPos, value, 0, maxlength, StringComparison.InvariantCultureIgnoreCase) == 0)
+#pragma warning restore CA1309 // Use ordinal stringcomparison
                 {
                     numParsed = maxlength;
                     return true;
@@ -1459,17 +1500,20 @@ namespace CesiumLanguageWriter
         /// Initializes a <see cref="GregorianDate"/> from the provided values.
         /// </summary>
         /// <param name="year">The year.</param>
-        /// <param name="month">The month of the year (in the range 1 through 12)</param>
-        /// <param name="day">The day of the month (in the range 1 through the number of
-        /// days in <paramref name="month"/>)</param>
-        /// <param name="hour">The hour (in the range 0 through 23).</param>
-        /// <param name="minute">The minute (in the range 0 through 59).</param>
-        /// <param name="second">The second, including fractional seconds (in the range 0.0
-        /// up to, but not including, 61.0).  A second between 60.0 and 61.0 (a leap
-        /// second) is only valid if the overall time is during one of the official leap
-        /// seconds. </param>
+        /// <param name="month">The month of the year, in the range 1 through 12.</param>
+        /// <param name="day">
+        /// The day of the month, in the range 1 through the number of days in <paramref name="month"/>.
+        /// </param>
+        /// <param name="hour">The hour, in the range 0 through 23.</param>
+        /// <param name="minute">The minute, in the range 0 through 59.</param>
+        /// <param name="second">
+        /// The second, including fractional seconds,
+        /// in the range 0.0 up to, but not including, 61.0.
+        /// A second between 60.0 and 61.0 (a leap second) is only valid
+        /// if the overall time is during one of the official leap seconds.
+        /// </param>
         /// <exception cref="ArgumentException">
-        /// Thrown when one of the provided parameters is outside of its acceptable range.
+        /// Thrown when one of the provided parameters is outside its acceptable range.
         /// </exception>
         public GregorianDate(int year, int month, int day, int hour, int minute, double second)
         {
@@ -1483,18 +1527,19 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Initializes a <see cref="GregorianDate"/> from the provided values.  The
-        /// remaining values are assumed to be zero.
+        /// Initializes a <see cref="GregorianDate"/> from the provided values.
+        /// The remaining values are assumed to be zero.
         /// </summary>
         /// <param name="year">The year.</param>
-        /// <param name="month">The month of the year (in the range 1 through 12)</param>
-        /// <param name="day">The day of the month (in the range 1 through the number of
-        /// days in <paramref name="month"/>)</param>
+        /// <param name="month">The month of the year, in the range 1 through 12.</param>
+        /// <param name="day">
+        /// The day of the month, in the range 1 through the number of days in <paramref name="month"/>.
+        /// </param>
         /// <exception cref="ArgumentException">
-        /// Thrown when one of the provided parameters is outside of its acceptable range.
+        /// Thrown when one of the provided parameters is outside its acceptable range.
         /// </exception>
         public GregorianDate(int year, int month, int day)
-            : this(year, month, day, 0, 0, 0)
+            : this(year, month, day, 0, 0, 0.0)
         {
         }
 
@@ -1502,16 +1547,19 @@ namespace CesiumLanguageWriter
         /// Initializes a <see cref="GregorianDate"/> from the provided values.
         /// </summary>
         /// <param name="year">The year.</param>
-        /// <param name="dayOfYear">The day of year
-        /// (in the range 1 through the number of days in the given year).</param>
-        /// <param name="hour">The hour (in the range 0 through 23).</param>
-        /// <param name="minute">The minute (in the range 0 through 59).</param>
-        /// <param name="second">The second, including fractional seconds (in the range 0.0
-        /// up to, but not including, 61.0).  A second between 60.0 and 61.0 (a leap
-        /// second) is only valid if the overall time is during one of the official leap
-        /// seconds. </param>
+        /// <param name="dayOfYear">
+        /// The day of year, in the range 1 through the number of days in the given year.
+        /// </param>
+        /// <param name="hour">The hour, in the range 0 through 23.</param>
+        /// <param name="minute">The minute, in the range 0 through 59.</param>
+        /// <param name="second">
+        /// The second, including fractional seconds,
+        /// in the range 0.0 up to, but not including, 61.0.
+        /// A second between 60.0 and 61.0 (a leap second) is only valid
+        /// if the overall time is during one of the official leap seconds.
+        /// </param>
         /// <exception cref="ArgumentException">
-        /// Thrown when one of the provided parameters is outside of its acceptable range.
+        /// Thrown when one of the provided parameters is outside its acceptable range.
         /// </exception>
         public GregorianDate(int year, int dayOfYear, int hour, int minute, double second)
         {
@@ -1527,13 +1575,15 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Initializes a <see cref="GregorianDate"/> from the provided values.  The
-        /// fractional portion of the <paramref name="daysOfYear"/> will be converted into
-        /// hours, minutes, and seconds.
+        /// Initializes a <see cref="GregorianDate"/> from the provided values.
+        /// The fractional portion of the <paramref name="daysOfYear"/>
+        /// will be converted into hours, minutes, and seconds.
         /// </summary>
         /// <param name="year">The year.</param>
-        /// <param name="daysOfYear">The day of year plus the fractional portion of the day
-        /// (in the range 1 through the number of days in the given year).</param>
+        /// <param name="daysOfYear">
+        /// The day of year plus the fractional portion of the day,
+        /// in the range 1 through the number of days in the given year.
+        /// </param>
         public GregorianDate(int year, double daysOfYear)
         {
             m_yearMonthDay = new YearMonthDay(year, (int)daysOfYear);
@@ -1549,8 +1599,8 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Initializes a <see cref="GregorianDate"/> from the provided
-        /// <see cref="JulianDate"/>.  The new <see cref="GregorianDate"/> will be in the
+        /// Initializes a <see cref="GregorianDate"/> from the provided <see cref="JulianDate"/>.
+        /// The new <see cref="GregorianDate"/> will be in the
         /// <see cref="TimeStandard.CoordinatedUniversalTime"/> (UTC) time standard.
         /// </summary>
         /// <param name="julianDate">The <see cref="JulianDate"/>.</param>
@@ -1560,14 +1610,12 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Initializes a <see cref="GregorianDate"/> from the provided
-        /// <see cref="JulianDate"/>.  The new <see cref="GregorianDate"/> will be in the
-        /// provided <see cref="TimeStandard"/>.
+        /// Initializes a <see cref="GregorianDate"/> from the provided <see cref="JulianDate"/>.
+        /// The new <see cref="GregorianDate"/> will be in the provided <see cref="TimeStandard"/>.
         /// </summary>
         /// <param name="julianDate">The <see cref="JulianDate"/>.</param>
         /// <param name="timeStandard">
-        /// The <see cref="TimeStandard"/> to represent the new <see cref="GregorianDate"/>
-        /// in.
+        /// The <see cref="TimeStandard"/> to represent the new <see cref="GregorianDate"/> in.
         /// </param>
         public GregorianDate(JulianDate julianDate, TimeStandard timeStandard)
         {
@@ -1599,9 +1647,8 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Initializes a <see cref="GregorianDate"/> from the provided
-        /// <see cref="DateTime"/>.  If the provided <see cref="DateTime"/> is in local
-        /// time, it is converted to UTC.
+        /// Initializes a <see cref="GregorianDate"/> from the provided <see cref="DateTime"/>.
+        /// If the provided <see cref="DateTime"/> is in local time, it is converted to UTC.
         /// </summary>
         /// <param name="dateTime">The <see cref="DateTime"/>.</param>
         public GregorianDate(DateTime dateTime)
@@ -1612,7 +1659,7 @@ namespace CesiumLanguageWriter
             // if it were Local, so we have this if check.
             // In Java, the concepts are different.  Dates always have a zone attached
             // (we map to ZonedDateTime) so there is no concept of Unspecified.
-            // Hence we always want to convert to UTC (which is a no-op if it's already UTC).
+            // Hence, we always want to convert to UTC (which is a no-op if it's already UTC).
             // As an example, in Java it is possible for the user to pass in a date which is in a 
             // different time zone than the local system time zone.  
             // This if check would get translated to basically:
@@ -1625,13 +1672,9 @@ namespace CesiumLanguageWriter
             }
 
             m_yearMonthDay = new YearMonthDay(dateTime.Year, dateTime.Month, dateTime.Day);
-
             m_hour = dateTime.Hour;
             m_minute = dateTime.Minute;
-
-            const long ticksPerMinute = 600000000L;
-            const double ticksPerSecond = 1.0e7;
-            m_second = dateTime.Ticks % ticksPerMinute / ticksPerSecond;
+            m_second = dateTime.Ticks % TicksPerMinute / (double)TicksPerSecond;
         }
 
         /// <summary>
@@ -1643,7 +1686,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the month of the year (in the range 1 through 12).
+        /// Gets the month of the year, in the range 1 through 12.
         /// </summary>
         public int Month
         {
@@ -1651,8 +1694,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the day of the month (in the range 1 through the number of days in the
-        /// month).
+        /// Gets the day of the month, in the range 1 through the number of days in the month.
         /// </summary>
         public int Day
         {
@@ -1660,7 +1702,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the hour (in the range 0 through 23).
+        /// Gets the hour, in the range 0 through 23.
         /// </summary>
         public int Hour
         {
@@ -1668,7 +1710,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the minute (in the range 0 through 59).
+        /// Gets the minute, in the range 0 through 59.
         /// </summary>
         public int Minute
         {
@@ -1676,8 +1718,9 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets the second, including fractional seconds (in the range 0.0 up to, but not
-        /// including, 61.0).  A value between 60.0 and 61.0 indicates a leap second.
+        /// Gets the second, including fractional seconds,
+        /// in the range 0.0 up to, but not including, 61.0.
+        /// A value between 60.0 and 61.0 indicates a leap second.
         /// </summary>
         public double Second
         {
@@ -1710,9 +1753,8 @@ namespace CesiumLanguageWriter
 
         /// <summary>Gets the day of the week represented by this instance.</summary>
         /// <returns>
-        /// A <see cref="DayOfWeek"/> value that indicates the day
-        /// of the week. This property value ranges from zero, indicating Sunday, to six,
-        /// indicating Saturday.
+        /// A <see cref="DayOfWeek"/> value that indicates the day of the week.
+        /// This property value ranges from zero, indicating Sunday, to six, indicating Saturday.
         /// </returns>
         public DayOfWeek DayOfWeek
         {
@@ -1730,7 +1772,7 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Gets a value indicating whether or not this <see cref="GregorianDate"/> represents a leap second.
+        /// Gets a value indicating whether this <see cref="GregorianDate"/> represents a leap second.
         /// </summary>
         private bool IsLeapSecond
         {
@@ -1746,45 +1788,45 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Indicates whether the date values provided are a valid representation of a date
-        /// and time.
+        /// Indicates whether the date values provided are a valid representation of a date and time.
         /// </summary>
         /// <param name="year">The year.</param>
-        /// <param name="month">The month of the year (in the range 1 through 12)</param>
-        /// <param name="day">The day of the month (in the range 1 through the number of
-        /// days in <paramref name="month"/>)</param>
-        /// <param name="hour">The hour (in the range 0 through 23).</param>
-        /// <param name="minute">The minute (in the range 0 through 59).</param>
-        /// <param name="second">The second, including fractional seconds (in the range 0.0
-        /// up to, but not including, 61.0).  A second between 60.0 and 61.0 (a leap
-        /// second) is only valid if the overall time is during one of the official leap
-        /// seconds. </param>
+        /// <param name="month">The month of the year, in the range 1 through 12.</param>
+        /// <param name="day">
+        /// The day of the month, in the range 1 through the number of days in <paramref name="month"/>.
+        /// </param>
+        /// <param name="hour">The hour, in the range 0 through 23.</param>
+        /// <param name="minute">The minute, in the range 0 through 59.</param>
+        /// <param name="second">
+        /// The second, including fractional seconds,
+        /// in the range 0.0 up to, but not including, 61.0.
+        /// A second between 60.0 and 61.0 (a leap second) is only valid
+        /// if the overall time is during one of the official leap seconds.
+        /// </param>
         /// <returns>true if the representation is valid and false if it is not.</returns>
         public static bool IsValid(int year, int month, int day, int hour, int minute, double second)
         {
-            bool hourInvalid = hour < 0 || hour >= 24;
-            bool minuteInvalid = minute < 0 || minute >= 60;
-            bool secondInvalid = second < 0 || second >= 61;
-
-            if (hourInvalid || minuteInvalid || secondInvalid)
+            if (hour < 0 || hour >= 24)
                 return false;
-
+            if (minute < 0 || minute >= 60)
+                return false;
+            if (second < 0.0 || second >= 61.0)
+                return false;
             if (!YearMonthDay.IsValidDate(year, month, day))
                 return false;
 
-            if (second >= 60 && second < 61)
+            if (second >= 60.0 && second < 61.0)
             {
-                //check to see if it's a valid leap second
-                bool dayHasLeapSecond = LeapSeconds.Instance.DoesDayHaveLeapSecond(new YearMonthDay(year, month, day).JulianDayNumber);
-                return dayHasLeapSecond && hour == 23 && minute == 59;
+                // Check to see if it's a valid leap second
+                return hour == 23 && minute == 59 && DoesDayHaveLeapSecond(year, month, day);
             }
 
             return true;
         }
 
         /// <summary>
-        /// Convert this <see cref="GregorianDate"/> to a <see cref="JulianDate"/>. The
-        /// time standard will be <see cref="TimeStandard.CoordinatedUniversalTime"/>
+        /// Convert this <see cref="GregorianDate"/> to a <see cref="JulianDate"/>.
+        /// The time standard will be <see cref="TimeStandard.CoordinatedUniversalTime"/>
         /// (UTC), unless this  <see cref="GregorianDate"/> represents the instant of a
         /// leap second, in which case the <see cref="JulianDate"/> will be in
         /// <see cref="TimeStandard.InternationalAtomicTime"/> (TAI).
@@ -1797,13 +1839,13 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Convert this <see cref="GregorianDate"/> to a <see cref="JulianDate"/>.  The
-        /// <see cref="GregorianDate"/> is assumed to specify a time in the
-        /// specified <see cref="TimeStandard"/>.
+        /// Convert this <see cref="GregorianDate"/> to a <see cref="JulianDate"/>.
+        /// The <see cref="GregorianDate"/> is assumed to specify a time
+        /// in the specified <see cref="TimeStandard"/>.
         /// </summary>
         /// <param name="timeStandard">
-        /// The time standard in which this <see cref="GregorianDate"/> is expressed.  The returned
-        /// <see cref="JulianDate"/> will be expressed in this time standard as well, if possible.
+        /// The time standard in which this <see cref="GregorianDate"/> is expressed.
+        /// The returned <see cref="JulianDate"/> will be expressed in this time standard as well, if possible.
         /// </param>
         /// <returns>A <see cref="JulianDate"/> representing this date.</returns>
         [Pure]
@@ -1813,14 +1855,14 @@ namespace CesiumLanguageWriter
             double julianSecondsOfDay = JulianSecondsOfDay;
 
             if (IsLeapSecond)
-                julianSecondsOfDay -= 1;
+                julianSecondsOfDay -= 1.0;
             else if (julianSecondsOfDay >= 43200.0)
                 julianDayNumber -= 1;
 
             JulianDate result = new JulianDate(julianDayNumber, julianSecondsOfDay, timeStandard);
 
             if (IsLeapSecond)
-                result = result.AddSeconds(1);
+                result = result.AddSeconds(1.0);
 
             return result;
         }
@@ -1833,23 +1875,20 @@ namespace CesiumLanguageWriter
         [Pure]
         public DateTime ToDateTime()
         {
-            DateTime date = new DateTime(m_yearMonthDay.Year, m_yearMonthDay.Month, m_yearMonthDay.Day);
-            const long ticksPerHour = 36000000000L;
-            const long ticksPerMinute = 600000000L;
-            const long ticksPerSecond = 10000000L;
-
+            DateTime date = new DateTime(Year, Month, Day);
             long ticks = date.Ticks;
-            ticks += m_hour * ticksPerHour;
-            ticks += m_minute * ticksPerMinute;
-            ticks += (long)Math.Round(m_second * ticksPerSecond);
+            ticks += m_hour * TicksPerHour;
+            ticks += m_minute * TicksPerMinute;
+            ticks += (long)Math.Round(m_second * TicksPerSecond);
 
             return new DateTime(ticks, DateTimeKind.Utc);
         }
 
         /// <summary>
-        /// Rounds this instance to the specified number of decimal digits in the seconds, rolling over to minutes, hours, days,
-        /// etc. as necessary.  This instance is assumed to express a time in the <see cref="TimeStandard.CoordinatedUniversalTime"/>
-        /// (UTC) time standard so the <see cref="Second"/> will be allowed to go above 60 during a leap second.
+        /// Rounds this instance to the specified number of decimal digits in the seconds,
+        /// rolling over to minutes, hours, days, etc. as necessary.
+        /// This instance is assumed to express a time in the <see cref="TimeStandard.CoordinatedUniversalTime"/>
+        /// (UTC) time standard, so the <see cref="Second"/> will be allowed to go above 60 during a leap second.
         /// </summary>
         /// <param name="digits">The number of digits after the decimal point to include in the seconds.</param>
         /// <returns>The rounded date.</returns>
@@ -1860,10 +1899,11 @@ namespace CesiumLanguageWriter
         }
 
         /// <summary>
-        /// Rounds this instance to the specified number of decimal digits in the seconds, rolling over to minutes, hours, days,
-        /// etc. as necessary.  If the specified <paramref name="timeStandard"/> is <see cref="TimeStandard.CoordinatedUniversalTime"/>,
-        /// (UTC), the seconds will be allowed to go above 60 during a leap second.  For any other time standard, the
-        /// <see cref="Second"/> will be below 60.
+        /// Rounds this instance to the specified number of decimal digits in the seconds,
+        /// rolling over to minutes, hours, days, etc. as necessary.
+        /// If the specified <paramref name="timeStandard"/> is <see cref="TimeStandard.CoordinatedUniversalTime"/>,
+        /// (UTC), the seconds will be allowed to go above 60 during a leap second.
+        /// For any other time standard, the <see cref="Second"/> will be below 60.
         /// </summary>
         /// <param name="digits">The number of digits after the decimal point to include in the seconds.</param>
         /// <param name="timeStandard">The time standard in which this <see cref="GregorianDate"/> is expressed.</param>
@@ -1871,16 +1911,52 @@ namespace CesiumLanguageWriter
         [Pure]
         public GregorianDate RoundSeconds(int digits, TimeStandard timeStandard)
         {
-            double roundedSeconds = Math.Round(m_second, digits);
-            double secondsDifference = roundedSeconds - m_second;
+            int year = Year;
+            int month = Month;
+            int day = Day;
+            int hour = Hour;
+            int minute = Minute;
 
-            // no need to rollover if rounding down or within same minute
-            if (roundedSeconds < 60.0 || secondsDifference <= 0)
+            double maxSeconds = 60.0;
+            if (timeStandard == TimeStandard.CoordinatedUniversalTime &&
+                hour == 23 && minute == 59 &&
+                DoesDayHaveLeapSecond(year, month, day))
             {
-                return new GregorianDate(Year, Month, Day, Hour, Minute, roundedSeconds);
+                maxSeconds = 61.0;
             }
 
-            return RolloverTime(0, 0, 0, secondsDifference, timeStandard);
+            double roundedSeconds = Math.Round(Second, digits);
+            if (roundedSeconds >= maxSeconds)
+            {
+                roundedSeconds = 0.0;
+                ++minute;
+            }
+
+            if (minute > 59)
+            {
+                minute = 0;
+                ++hour;
+            }
+
+            if (hour > 23)
+            {
+                hour = 0;
+                ++day;
+            }
+
+            if (!YearMonthDay.IsValidDate(year, month, day))
+            {
+                day = 1;
+                ++month;
+            }
+
+            if (!YearMonthDay.IsValidDate(year, month, day))
+            {
+                month = 1;
+                ++year;
+            }
+
+            return new GregorianDate(year, month, day, hour, minute, roundedSeconds);
         }
 
         /// <summary>
@@ -2023,9 +2099,9 @@ namespace CesiumLanguageWriter
         /// <param name="format">A format string.</param>
         /// <returns>A string representation of value of this instance as specified by <paramref name="format"/>.</returns>
         /// <exception cref="FormatException">
-        /// Thrown if the length of <paramref name="format"/> is 1,
+        /// Thrown when the length of <paramref name="format"/> is 1,
         /// and it is not one of the format specifier characters defined for <see cref="DateTimeFormatInfo"/>, 
-        /// or if <paramref name="format"/> does not contain a valid custom format pattern. 
+        /// or when <paramref name="format"/> does not contain a valid custom format pattern. 
         /// </exception>
         [Pure]
         [NotNull]
@@ -2055,9 +2131,9 @@ namespace CesiumLanguageWriter
         /// <param name="provider">An <see cref="IFormatProvider"/> that supplies culture-specific formatting information.</param>
         /// <returns>A string representation of value of this instance as specified by <paramref name="format"/> and <paramref name="provider"/>.</returns>
         /// <exception cref="FormatException">
-        /// Thrown if the length of <paramref name="format"/> is 1,
+        /// Thrown when the length of <paramref name="format"/> is 1,
         /// and it is not one of the format specifier characters defined for <see cref="DateTimeFormatInfo"/>, 
-        /// or if <paramref name="format"/> does not contain a valid custom format pattern. 
+        /// or when <paramref name="format"/> does not contain a valid custom format pattern. 
         /// </exception>
         [Pure]
         [NotNull]
@@ -2096,7 +2172,9 @@ namespace CesiumLanguageWriter
         /// with fractional seconds represented to the specified number of digits.
         /// </summary>
         /// <param name="format">The type of ISO8601 string to create.</param>
-        /// <param name="digitsOfFractionalSeconds">The number of digits after the decimal point in the 'seconds' portion of the time.</param>
+        /// <param name="digitsOfFractionalSeconds">
+        /// The number of digits after the decimal point in the 'seconds' portion of the time.
+        /// </param>
         /// <returns>A string representing this date and time in ISO8601 format.</returns>
         [Pure]
         [NotNull]
@@ -2125,14 +2203,12 @@ namespace CesiumLanguageWriter
                 {
                     formatStringBuilder.Append("yyyyMMdd'T'HHmmss");
                     AppendIso8601FractionalSeconds(formatStringBuilder, digitsOfFractionalSeconds, requireFractionalSeconds);
-                    formatStringBuilder.Append('Z');
                     break;
                 }
                 case Iso8601Format.Extended:
                 {
                     formatStringBuilder.Append("yyyy'-'MM'-'dd'T'HH':'mm':'ss");
                     AppendIso8601FractionalSeconds(formatStringBuilder, digitsOfFractionalSeconds, requireFractionalSeconds);
-                    formatStringBuilder.Append('Z');
                     break;
                 }
                 case Iso8601Format.Compact:
@@ -2153,13 +2229,13 @@ namespace CesiumLanguageWriter
                         AppendIso8601FractionalSeconds(formatStringBuilder, digitsOfFractionalSeconds, requireFractionalSeconds);
                     }
 
-                    formatStringBuilder.Append('Z');
                     break;
                 }
                 default:
                     throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "format");
             }
 
+            formatStringBuilder.Append('Z');
             return formatStringBuilder.ToString();
         }
 
@@ -2314,9 +2390,9 @@ namespace CesiumLanguageWriter
         /// <see cref="GregorianDate"/> equivalent.
         /// </para>
         /// <para>
-        /// Note: <see cref="GregorianDate"/> is always assumed to be in UTC.  You cannot
-        /// parse strings containing time zone information. However, this will handle
-        /// three common ISO8601 formats:
+        /// Note that <see cref="GregorianDate"/> is always assumed to be in UTC.
+        /// You cannot parse strings containing time zone information.
+        /// However, this will handle three common ISO8601 formats:
         /// </para>
         /// <list type="bullet">
         /// <item>
@@ -2335,10 +2411,10 @@ namespace CesiumLanguageWriter
         /// </returns>
         /// <param name="s">A string containing a date and time to convert.</param>
         /// <exception cref="ArgumentNullException">
-        /// Thrown if <paramref name="s"/> is <see langword="null"/>.
+        /// Thrown when <paramref name="s"/> is <see langword="null"/>.
         /// </exception>
         /// <exception cref="FormatException">
-        /// Thrown if <paramref name="s"/> does not contain a valid string representation of a date and time.
+        /// Thrown when <paramref name="s"/> does not contain a valid string representation of a date and time.
         /// </exception>
         public static GregorianDate Parse([NotNull] string s)
         {
@@ -2352,9 +2428,9 @@ namespace CesiumLanguageWriter
         /// format information.
         /// </para>
         /// <para>
-        /// Note: <see cref="GregorianDate"/> is always assumed to be in UTC.  You cannot
-        /// parse strings containing time zone information. However, this will handle
-        /// three common ISO8601 formats:
+        /// Note that <see cref="GregorianDate"/> is always assumed to be in UTC.
+        /// You cannot parse strings containing time zone information.
+        /// However, this will handle three common ISO8601 formats:
         /// </para>
         /// <list type="bullet">
         /// <item>
@@ -2375,10 +2451,10 @@ namespace CesiumLanguageWriter
         /// <param name="s">A string containing a date and time to convert.</param>
         /// <param name="provider">An <see cref="IFormatProvider"/> that supplies culture-specific format information about <paramref name="s"/>.</param>
         /// <exception cref="ArgumentNullException">
-        /// Thrown if <paramref name="s"/> is <see langword="null"/>.
+        /// Thrown when <paramref name="s"/> is <see langword="null"/>.
         /// </exception>
         /// <exception cref="FormatException">
-        /// Thrown if <paramref name="s"/> does not contain a valid string representation of a date and time.
+        /// Thrown when <paramref name="s"/> does not contain a valid string representation of a date and time.
         /// </exception>
         public static GregorianDate Parse([NotNull] string s, [CanBeNull] IFormatProvider provider)
         {
@@ -2393,8 +2469,8 @@ namespace CesiumLanguageWriter
         /// must match the specified format exactly.
         /// </para>
         /// <para>
-        /// Note: <see cref="GregorianDate"/> is always assumed to be in UTC.  You cannot
-        /// parse strings containing time zone information.
+        /// Note that <see cref="GregorianDate"/> is always assumed to be in UTC.
+        /// You cannot parse strings containing time zone information.
         /// </para>
         /// </summary>
         /// <returns>
@@ -2406,11 +2482,11 @@ namespace CesiumLanguageWriter
         /// <param name="format">The expected format of <paramref name="s"/>. </param>
         /// <param name="provider">An <see cref="IFormatProvider"/> that supplies culture-specific format information about <paramref name="s"/>. </param>
         /// <exception cref="ArgumentNullException">
-        /// Thrown if <paramref name="s"/> or <paramref name="format"/> is <see langword="null"/>.
+        /// Thrown when <paramref name="s"/> or <paramref name="format"/> is <see langword="null"/>.
         /// </exception>
         /// <exception cref="FormatException">
-        /// Thrown if <paramref name="s"/> or <paramref name="format"/> is an empty string, 
-        /// or if <paramref name="s"/> does not contain a date and time that corresponds to the 
+        /// Thrown when <paramref name="s"/> or <paramref name="format"/> is an empty string, 
+        /// or when <paramref name="s"/> does not contain a date and time that corresponds to the 
         /// pattern specified in <paramref name="format"/>.
         /// </exception>
         public static GregorianDate ParseExact([NotNull] string s, [NotNull] string format, [CanBeNull] IFormatProvider provider)
@@ -2440,11 +2516,11 @@ namespace CesiumLanguageWriter
         /// <param name="provider">An <see cref="IFormatProvider"/> that supplies
         /// culture-specific format information about <paramref name="s"/>. </param>
         /// <exception cref="ArgumentNullException">
-        /// Thrown if <paramref name="s"/> or <paramref name="format"/> is <see langword="null"/>.
+        /// Thrown when <paramref name="s"/> or <paramref name="format"/> is <see langword="null"/>.
         /// </exception>
         /// <exception cref="FormatException">
-        /// Thrown if <paramref name="s"/> or <paramref name="format"/> is an empty string, 
-        /// or if <paramref name="s"/> does not contain a date and time that corresponds to the
+        /// Thrown when <paramref name="s"/> or <paramref name="format"/> is an empty string, 
+        /// or when <paramref name="s"/> does not contain a date and time that corresponds to the
         /// pattern specified in <paramref name="format"/>.
         /// </exception>
         public static GregorianDate ParseExact([NotNull] string s, [NotNull] string[] format, [CanBeNull] IFormatProvider provider)
@@ -2534,21 +2610,10 @@ namespace CesiumLanguageWriter
             return Parser.TryParse(s, provider, out result);
         }
 
-        private GregorianDate RolloverTime(double days, double hours, double minutes, double seconds, TimeStandard timeStandard)
+        private static bool DoesDayHaveLeapSecond(int year, int month, int day)
         {
-            int wholeDays = (int)days;
-            seconds += (days - wholeDays) * TimeConstants.SecondsPerDay;
-
-            int wholeHours = (int)hours;
-            seconds += (hours - wholeHours) * TimeConstants.SecondsPerHour;
-
-            int wholeMinutes = (int)minutes;
-            seconds += (minutes - wholeMinutes) * TimeConstants.SecondsPerMinute;
-
-            Duration timeToAdd = new Duration(wholeDays, wholeHours, wholeMinutes, seconds);
-            JulianDate julianResult = ToJulianDate(timeStandard).Add(timeToAdd);
-
-            return new GregorianDate(julianResult, timeStandard);
+            int julianDayNumber = new YearMonthDay(year, month, day).JulianDayNumber;
+            return LeapSeconds.Instance.DoesDayHaveLeapSecond(julianDayNumber);
         }
 
         /// <summary>
@@ -2563,8 +2628,12 @@ namespace CesiumLanguageWriter
         /// </summary>
         public static readonly GregorianDate MinValue = new GregorianDate(DateTime.MinValue);
 
-        private const int SecondsPerHour = 3600;
         private const int SecondsPerMinute = 60;
+        private const int SecondsPerHour = SecondsPerMinute * 60;
+
+        private const long TicksPerSecond = 10000000L;
+        private const long TicksPerMinute = TicksPerSecond * 60L;
+        private const long TicksPerHour = TicksPerMinute * 60L;
 
         private readonly YearMonthDay m_yearMonthDay;
         private readonly int m_hour;

@@ -20,6 +20,10 @@
     <PackageReference Include="NUnit" Version="3.14.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="NUnit.Analyzers" Version="4.6.0" PrivateAssets="all" IncludeAssets="analyzers;build" />
+  </ItemGroup>
+
   <ItemGroup Condition="'$(CSToJava)' != 'True'">
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.2" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />

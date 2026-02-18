@@ -2,6 +2,7 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
+import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.TestContextRule;
@@ -85,6 +86,7 @@ public class TestDuration {
     /**
     * Tests the check for EXACT equality and the check for equality within a specified tolerance.
     */
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     @Test
     public final void testEquality() {
         Duration first = new Duration(5, 565.0);
@@ -109,16 +111,36 @@ public class TestDuration {
         Assert.assertTrue(Duration.notEquals(second, first));
         AssertHelper.assertNotEqual(0, first.compareTo(second));
         AssertHelper.assertNotEqual(0, second.compareTo(first));
-        Assert.assertTrue(first.equalsEpsilon(second, 1e-4));
-        Assert.assertTrue(second.equalsEpsilon(first, 1e-4));
+    }
+
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
+    @Test
+    public final void testEqualityWrongType() {
+        Duration first = new Duration(5, 565.0);
         // Make sure a Duration compared with a non-Duration returns false
-        // ReSharper disable once SuspiciousTypeConversion.Global
         Assert.assertFalse(first.equals(5));
     }
 
+    @Test
+    public final void testEqualsEpsilon() {
+        Duration first = new Duration(5, 0.00001);
+        Duration second = new Duration(4, 86399.99999);
+        Assert.assertTrue(first.equalsEpsilon(second, Constants.Epsilon4));
+        Assert.assertTrue(second.equalsEpsilon(first, Constants.Epsilon4));
+    }
+
     /**
-    * Tests Duration.CompareTo
+    * Tests that the {@link Duration#equalsEpsilon} method returns true
+    when the difference is exactly epsilon.
     */
+    @Test
+    public final void testEqualsEpsilonExact() {
+        Duration first = new Duration(5, 565.0);
+        Duration second = new Duration(5, 565.0);
+        Assert.assertTrue(second.equalsEpsilon(first, 0.0));
+    }
+
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     @Test
     public final void testCompareTo() {
         Duration duration1 = new Duration(1, 0.0);

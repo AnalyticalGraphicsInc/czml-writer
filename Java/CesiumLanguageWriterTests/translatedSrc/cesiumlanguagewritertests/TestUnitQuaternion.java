@@ -3,6 +3,7 @@ package cesiumlanguagewritertests;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Action;
+import agi.foundation.compatibility.annotations.CS2JWarning;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.IEquatable;
 import agi.foundation.compatibility.NotFiniteNumberException;
@@ -18,9 +19,6 @@ import org.junit.rules.ExpectedException;
 import org.junit.runners.MethodSorters;
 import org.junit.Test;
 
-/**
- * Tests the {@link UnitQuaternion} type.
- */
 @SuppressWarnings({
     "unused",
     "deprecation",
@@ -33,35 +31,30 @@ public class TestUnitQuaternion {
     */
     @Test
     public final void testHoldValue() {
-        UnitQuaternion test = new UnitQuaternion(2.0, 4.0, 7.0, 10.0);
-        AssertHelper.assertEquals(2.0 / 13.0, test.getW());
-        AssertHelper.assertEquals(4.0 / 13.0, test.getX());
-        AssertHelper.assertEquals(7.0 / 13.0, test.getY());
-        AssertHelper.assertEquals(10.0 / 13.0, test.getZ());
+        UnitQuaternion quaternion = new UnitQuaternion(2.0, 4.0, 7.0, 10.0);
+        AssertHelper.assertEquals(2.0 / 13.0, quaternion.getW());
+        AssertHelper.assertEquals(4.0 / 13.0, quaternion.getX());
+        AssertHelper.assertEquals(7.0 / 13.0, quaternion.getY());
+        AssertHelper.assertEquals(10.0 / 13.0, quaternion.getZ());
     }
 
-    /**
-    * Tests initialization from coordinates.
-    */
     @Test
     public final void testInitializeAndReturnMagnitude() {
         double magnitude = 0D;
         final double[] out$magnitude$0 = new double[1];
-        UnitQuaternion test = new UnitQuaternion(2.0, 4.0, 7.0, 10.0, out$magnitude$0);
+        UnitQuaternion quaternion = new UnitQuaternion(2.0, 4.0, 7.0, 10.0, out$magnitude$0);
         magnitude = out$magnitude$0[0];
-        AssertHelper.assertEquals(2.0 / 13.0, test.getW(), Constants.Epsilon15);
-        AssertHelper.assertEquals(4.0 / 13.0, test.getX(), Constants.Epsilon15);
-        AssertHelper.assertEquals(7.0 / 13.0, test.getY(), Constants.Epsilon15);
-        AssertHelper.assertEquals(10.0 / 13.0, test.getZ(), Constants.Epsilon15);
+        AssertHelper.assertEquals(2.0 / 13.0, quaternion.getW(), Constants.Epsilon15);
+        AssertHelper.assertEquals(4.0 / 13.0, quaternion.getX(), Constants.Epsilon15);
+        AssertHelper.assertEquals(7.0 / 13.0, quaternion.getY(), Constants.Epsilon15);
+        AssertHelper.assertEquals(10.0 / 13.0, quaternion.getZ(), Constants.Epsilon15);
         AssertHelper.assertEquals(13.0, magnitude, Constants.Epsilon15);
     }
 
-    /**
-    * Tests initialization from a {@link Matrix3By3} rotation.
-    */
-    public final void testFromMatrix3By3(double angle, double axisX, double axisY, double axisZ) {
+    public final void testFromMatrix3By3(double angleDegrees, double axisX, double axisY, double axisZ) {
         Cartesian axis = new Cartesian(axisX, axisY, axisZ);
-        Cartesian unit = Cartesian.toCartesian(axis.normalize());
+        UnitCartesian unit = axis.normalize();
+        double angle = angleDegrees * Constants.RadiansPerDegree;
         double c = Math.cos(angle);
         double s = Math.sin(angle);
         double w = c;
@@ -79,27 +72,28 @@ public class TestUnitQuaternion {
 
     @Test
     public final void testFromMatrix3By3$TestCase1() {
-        testFromMatrix3By3(Math.PI / 6, 2.0, 3.0, 6.0);
+        testFromMatrix3By3(60.0, 2.0, 3.0, 6.0);
     }
 
     @Test
     public final void testFromMatrix3By3$TestCase2() {
-        testFromMatrix3By3(2 * Math.PI / 3, 6.0, -3.0, -2.0);
+        testFromMatrix3By3(120.0, 6.0, -3.0, -2.0);
     }
 
     @Test
     public final void testFromMatrix3By3$TestCase3() {
-        testFromMatrix3By3(2 * Math.PI / 3, -2.0, -3.0, 6.0);
+        testFromMatrix3By3(120.0, -2.0, -3.0, 6.0);
     }
 
     @Test
     public final void testFromMatrix3By3$TestCase4() {
-        testFromMatrix3By3(2 * Math.PI / 3, -2.0, 6.0, -3.0);
+        testFromMatrix3By3(120.0, -2.0, 6.0, -3.0);
     }
 
     /**
     * Tests the equality and inequality methods and operators.
     */
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     @Test
     public final void testEquality() {
         UnitQuaternion first = new UnitQuaternion(1.0, 2.0, 3.0, 4.0);
@@ -150,28 +144,25 @@ public class TestUnitQuaternion {
         Assert.assertFalse(second.equalsType(first));
     }
 
-    /**
-    * Tests the {@link UnitQuaternion#equalsEpsilon} method.
-    */
     @Test
     public final void testEqualsEpsilon() {
         UnitQuaternion first = new UnitQuaternion(1.0, 1.0, 1.0, 1.0);
         UnitQuaternion second = new UnitQuaternion(0.99, 1.0, 1.0, 1.01);
-        Assert.assertTrue(second.equalsEpsilon(first, 1e-1));
-        Assert.assertTrue(second.equalsEpsilon(first, 1e-2));
-        Assert.assertFalse(second.equalsEpsilon(first, 1e-3));
-        Assert.assertFalse(second.equalsEpsilon(first, 1e-4));
-        Assert.assertFalse(second.equalsEpsilon(first, 1e-5));
+        Assert.assertTrue(second.equalsEpsilon(first, Constants.Epsilon1));
+        Assert.assertTrue(second.equalsEpsilon(first, Constants.Epsilon2));
+        Assert.assertFalse(second.equalsEpsilon(first, Constants.Epsilon3));
+        Assert.assertFalse(second.equalsEpsilon(first, Constants.Epsilon4));
+        Assert.assertFalse(second.equalsEpsilon(first, Constants.Epsilon5));
     }
 
     /**
     * Tests to ensure the equality fails when comparing incorrect type.
     */
+    @CS2JWarning("Unhandled attribute removed: SuppressMessage")
     @Test
     public final void testEqualityWithWrongType() {
         UnitQuaternion first = new UnitQuaternion(1.0, 2.0, 3.0, 4.0);
         Cartographic second = new Cartographic(1.0, 2.0, 3.0);
-        // ReSharper disable once SuspiciousTypeConversion.Global
         Assert.assertFalse(first.equals(second));
     }
 
@@ -186,9 +177,6 @@ public class TestUnitQuaternion {
         }));
     }
 
-    /**
-    * Tests the {@link UnitQuaternion#conjugate} method.
-    */
     @Test
     public final void testConjugate() {
         UnitQuaternion original = new UnitQuaternion(2.0, 4.0, 7.0, 10.0);
@@ -199,9 +187,6 @@ public class TestUnitQuaternion {
         AssertHelper.assertEquals(-10.0 / 13.0, conjugate.getZ());
     }
 
-    /**
-    * Tests {@code Identity} ({@link UnitQuaternion#getIdentity get}).
-    */
     @Test
     public final void testIdentity() {
         UnitQuaternion identity = UnitQuaternion.getIdentity();
@@ -211,9 +196,6 @@ public class TestUnitQuaternion {
         AssertHelper.assertEquals(0.0, identity.getZ());
     }
 
-    /**
-    * Tests the {@code IsUndefined} ({@link UnitQuaternion#getIsUndefined get}) method.
-    */
     @Test
     public final void testIsUndefined() {
         Assert.assertFalse(new UnitQuaternion(1.0, 1.0, 1.0, 1.0).getIsUndefined());
@@ -224,9 +206,6 @@ public class TestUnitQuaternion {
         Assert.assertTrue(new UnitQuaternion(1.0, 1.0, 1.0, Double.NaN).getIsUndefined());
     }
 
-    /**
-    * Tests negation of a set of coordinates.
-    */
     @Test
     public final void testNegation() {
         UnitQuaternion u = UnitQuaternion.negate(new UnitQuaternion(2.0, 4.0, 7.0, 10.0));
@@ -236,9 +215,6 @@ public class TestUnitQuaternion {
         AssertHelper.assertEquals(-10.0 / 13.0, u.getZ());
     }
 
-    /**
-    * Tests multiplication by another {@link UnitQuaternion}.
-    */
     @Test
     public final void testMultiplicationByUnitQuaternion() {
         // Choose quaternions whose vector portions (x, y, z) do not produce zeros
@@ -269,9 +245,6 @@ public class TestUnitQuaternion {
         AssertHelper.assertNotEqual(object1.hashCode(), object3.hashCode());
     }
 
-    /**
-    * Tests ToString method
-    */
     @Test
     public final void testToString() {
         UnitQuaternion test1 = new UnitQuaternion(1.0, 0.0, 0.0, 0.0);
