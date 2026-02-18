@@ -25,8 +25,8 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(CSToJava)' != 'True'">
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.2" />
-    <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
+    <PackageReference Include="NUnit3TestAdapter" Version="6.1.0" />
   </ItemGroup>
 
   <ItemGroup>
