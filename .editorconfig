@@ -65,4 +65,7 @@ dotnet_diagnostic.NUnit2051.severity = none
 dotnet_diagnostic.NUnit2052.severity = none
 dotnet_diagnostic.NUnit2053.severity = none
 dotnet_diagnostic.NUnit2054.severity = none
+dotnet_diagnostic.NUnit2055.severity = warning
+dotnet_diagnostic.NUnit2057.severity = warning
 dotnet_diagnostic.NUnit4001.severity = warning
+dotnet_diagnostic.NUnit4002.severity = warning

@@ -7,7 +7,7 @@
 
   <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="1.9.71" />
-    <PackageReference Include="JetBrains.Annotations" Version="2022.3.1" PrivateAssets="all" ExcludeAssets="runtime" />
+    <PackageReference Include="JetBrains.Annotations" Version="2025.2.4" PrivateAssets="all" ExcludeAssets="runtime" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
