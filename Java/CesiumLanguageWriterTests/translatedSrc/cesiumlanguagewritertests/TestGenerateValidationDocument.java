@@ -65,10 +65,9 @@ public class TestGenerateValidationDocument {
             try (Using<Writer> using$1 = new Using<Writer>(m_assertionsWriter = StreamWriterHelper.create(PathHelper.combine(dir, "ValidationDocumentAssertions.js")))) {
                 try (Using<Writer> using$2 = new Using<Writer>(m_extensionsAssertionsWriter = StreamWriterHelper.create(PathHelper.combine(dir, "ValidationDocumentExtensionAssertions.js")))) {
                     writeAssertionBoth("return CzmlDataSource.load('Data/CZML/ValidationDocument.czml').then(function(dataSource) {");
-                    writeAssertionBoth("    var e;");
-                    writeAssertionBoth("    var date;");
-                    writeAssertionBoth("    var documentStartDate = JulianDate.fromIso8601('2016-06-17T12:00:00Z');");
-                    writeAssertionBoth("    var documentStopDate = JulianDate.fromIso8601('2016-06-17T13:00:00Z');");
+                    writeAssertionBoth("    let e;");
+                    writeAssertionBoth("    const documentStartDate = JulianDate.fromIso8601('2016-06-17T12:00:00Z');");
+                    writeAssertionBoth("    const documentStopDate = JulianDate.fromIso8601('2016-06-17T13:00:00Z');");
                     final CesiumOutputStream tempObj$0 = new CesiumOutputStream(m_streamWriter);
                     tempObj$0.setPrettyFormatting(true);
                     m_output = tempObj$0;
@@ -112,9 +111,9 @@ public class TestGenerateValidationDocument {
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(m_writer.openPacket(m_output))) {
             final PacketCesiumWriter packet = using$0.resource;
             packet.writeId("Constant");
-            writeAssertionBoth("    var constant = e = dataSource.entities.getById('Constant');");
+            writeAssertionBoth("    const constant = e = dataSource.entities.getById('Constant');");
             writeAssertionBoth("    expect(e).toBeDefined();");
-            writeAssertionBoth("    date = JulianDate.now();");
+            writeAssertionBoth("    const date = JulianDate.now();");
             try (Using<StringCesiumWriter> using$1 = new Using<StringCesiumWriter>(packet.openDescriptionProperty())) {
                 final StringCesiumWriter w = using$1.resource;
                 w.writeString("string31449");

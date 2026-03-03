@@ -45,10 +45,9 @@ namespace CesiumLanguageWriterTests
             using (m_extensionsAssertionsWriter = File.CreateText(Path.Combine(dir, "ValidationDocumentExtensionAssertions.js")))
             {
                 WriteAssertionBoth("return CzmlDataSource.load('Data/CZML/ValidationDocument.czml').then(function(dataSource) {");
-                WriteAssertionBoth("    var e;");
-                WriteAssertionBoth("    var date;");
-                WriteAssertionBoth("    var documentStartDate = JulianDate.fromIso8601('2016-06-17T12:00:00Z');");
-                WriteAssertionBoth("    var documentStopDate = JulianDate.fromIso8601('2016-06-17T13:00:00Z');");
+                WriteAssertionBoth("    let e;");
+                WriteAssertionBoth("    const documentStartDate = JulianDate.fromIso8601('2016-06-17T12:00:00Z');");
+                WriteAssertionBoth("    const documentStopDate = JulianDate.fromIso8601('2016-06-17T13:00:00Z');");
                 m_output = new CesiumOutputStream(m_streamWriter) { PrettyFormatting = true };
                 m_writer = new CesiumStreamWriter();
                 m_output.WriteStartSequence();
@@ -88,9 +87,9 @@ namespace CesiumLanguageWriterTests
             using (var packet = m_writer.OpenPacket(m_output))
             {
                 packet.WriteId("Constant");
-                WriteAssertionBoth("    var constant = e = dataSource.entities.getById('Constant');");
+                WriteAssertionBoth("    const constant = e = dataSource.entities.getById('Constant');");
                 WriteAssertionBoth("    expect(e).toBeDefined();");
-                WriteAssertionBoth("    date = JulianDate.now();");
+                WriteAssertionBoth("    const date = JulianDate.now();");
                 using (var w = packet.OpenDescriptionProperty())
                 {
                     w.WriteString("string31449");

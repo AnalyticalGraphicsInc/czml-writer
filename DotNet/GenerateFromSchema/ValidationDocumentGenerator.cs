@@ -90,10 +90,9 @@ namespace GenerateFromSchema
                             {
                                 WriteAssertionBoth(writer, "return CzmlDataSource.load('Data/CZML/ValidationDocument.czml').then(function(dataSource) {");
                                 s_assertionIndent++;
-                                WriteAssertionBoth(writer, "var e;");
-                                WriteAssertionBoth(writer, "var date;");
-                                WriteAssertionBoth(writer, "var documentStartDate = JulianDate.fromIso8601('2016-06-17T12:00:00Z');");
-                                WriteAssertionBoth(writer, "var documentStopDate = JulianDate.fromIso8601('2016-06-17T13:00:00Z');");
+                                WriteAssertionBoth(writer, "let e;");
+                                WriteAssertionBoth(writer, "const documentStartDate = JulianDate.fromIso8601('2016-06-17T12:00:00Z');");
+                                WriteAssertionBoth(writer, "const documentStopDate = JulianDate.fromIso8601('2016-06-17T13:00:00Z');");
 
                                 writer.WriteLine("m_output = new CesiumOutputStream(m_streamWriter) { PrettyFormatting = true };");
                                 writer.WriteLine("m_writer = new CesiumStreamWriter();");
@@ -156,9 +155,9 @@ namespace GenerateFromSchema
                                 const string id = "Constant";
                                 writer.WriteLine("packet.WriteId(\"{0}\");", id);
 
-                                WriteAssertionBoth(writer, "var constant = e = dataSource.entities.getById('Constant');");
+                                WriteAssertionBoth(writer, "const constant = e = dataSource.entities.getById('Constant');");
                                 WriteAssertionBoth(writer, "expect(e).toBeDefined();");
-                                WriteAssertionBoth(writer, "date = JulianDate.now();");
+                                WriteAssertionBoth(writer, "const date = JulianDate.now();");
 
                                 // Write one packet with first value types for each property
 
