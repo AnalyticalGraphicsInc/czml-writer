@@ -23,12 +23,12 @@ jobs:
       uses: microsoft/setup-msbuild@v3
 
     - name: Install GitVersion
-      uses: gittools/actions/gitversion/setup@v4.2.0
+      uses: gittools/actions/gitversion/setup@v4.4.2
       with:
         versionSpec: '6.x'
 
     - name: Execute GitVersion
-      uses: gittools/actions/gitversion/execute@v4.2.0
+      uses: gittools/actions/gitversion/execute@v4.4.2
       with:
         targetPath: DotNet
         updateProjectFiles: true
