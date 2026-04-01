@@ -10,6 +10,7 @@ import cesiumlanguagewriter.BooleanCesiumWriter;
 import cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter;
 import cesiumlanguagewriter.DoubleCesiumWriter;
 import cesiumlanguagewriter.PolylineMaterialCesiumWriter;
+import cesiumlanguagewriter.StringCesiumWriter;
 import java.util.List;
 import javax.annotation.Nonnull;
 
@@ -57,6 +58,11 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     */
     @Nonnull
     public static final String DistanceDisplayConditionPropertyName = "distanceDisplayCondition";
+    /**
+    * The name of the {@code relativeTo} property.
+    */
+    @Nonnull
+    public static final String RelativeToPropertyName = "relativeTo";
     @Nonnull
     private final Lazy<BooleanCesiumWriter> m_show = new Lazy<BooleanCesiumWriter>(Func1.<BooleanCesiumWriter> of(() -> {
         return new BooleanCesiumWriter(ShowPropertyName);
@@ -84,6 +90,10 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     @Nonnull
     private final Lazy<DistanceDisplayConditionCesiumWriter> m_distanceDisplayCondition = new Lazy<DistanceDisplayConditionCesiumWriter>(Func1.<DistanceDisplayConditionCesiumWriter> of(() -> {
         return new DistanceDisplayConditionCesiumWriter(DistanceDisplayConditionPropertyName);
+    }), false);
+    @Nonnull
+    private final Lazy<StringCesiumWriter> m_relativeTo = new Lazy<StringCesiumWriter>(Func1.<StringCesiumWriter> of(() -> {
+        return new StringCesiumWriter(RelativeToPropertyName);
     }), false);
 
     /**
@@ -710,6 +720,80 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     public final void writeDistanceDisplayConditionPropertyReference(String identifier, String[] propertyNames) {
         try (Using<DistanceDisplayConditionCesiumWriter> using$0 = new Using<DistanceDisplayConditionCesiumWriter>(openDistanceDisplayConditionProperty())) {
             final DistanceDisplayConditionCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyNames);
+        }
+    }
+
+    /**
+    * Gets the writer for the {@code relativeTo} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code relativeTo} property defines if specified, indicates that the path should be drawn in a different reference frame. If the value is "FIXED" or "INERTIAL", the path will be drawn in that frame. Otherwise, the value is the ID of an object and the path will be drawn relative to that object.
+    */
+    @Nonnull
+    public final StringCesiumWriter getRelativeToWriter() {
+        return m_relativeTo.getValue();
+    }
+
+    /**
+    * Opens and returns the writer for the {@code relativeTo} property. The {@code relativeTo} property defines if specified, indicates that the path should be drawn in a different reference frame. If the value is "FIXED" or "INERTIAL", the path will be drawn in that frame. Otherwise, the value is the ID of an object and the path will be drawn relative to that object.
+    */
+    @Nonnull
+    public final StringCesiumWriter openRelativeToProperty() {
+        openIntervalIfNecessary();
+        return this.<StringCesiumWriter> openAndReturn(getRelativeToWriter());
+    }
+
+    /**
+    * Writes a value for the {@code relativeTo} property as a {@code string} value. The {@code relativeTo} property specifies if specified, indicates that the path should be drawn in a different reference frame. If the value is "FIXED" or "INERTIAL", the path will be drawn in that frame. Otherwise, the value is the ID of an object and the path will be drawn relative to that object.
+    * @param value The value.
+    */
+    public final void writeRelativeToProperty(String value) {
+        try (Using<StringCesiumWriter> using$0 = new Using<StringCesiumWriter>(openRelativeToProperty())) {
+            final StringCesiumWriter writer = using$0.resource;
+            writer.writeString(value);
+        }
+    }
+
+    /**
+    * Writes a value for the {@code relativeTo} property as a {@code reference} value. The {@code relativeTo} property specifies if specified, indicates that the path should be drawn in a different reference frame. If the value is "FIXED" or "INERTIAL", the path will be drawn in that frame. Otherwise, the value is the ID of an object and the path will be drawn relative to that object.
+    * @param value The reference.
+    */
+    public final void writeRelativeToPropertyReference(Reference value) {
+        try (Using<StringCesiumWriter> using$0 = new Using<StringCesiumWriter>(openRelativeToProperty())) {
+            final StringCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
+        }
+    }
+
+    /**
+    * Writes a value for the {@code relativeTo} property as a {@code reference} value. The {@code relativeTo} property specifies if specified, indicates that the path should be drawn in a different reference frame. If the value is "FIXED" or "INERTIAL", the path will be drawn in that frame. Otherwise, the value is the ID of an object and the path will be drawn relative to that object.
+    * @param value The reference.
+    */
+    public final void writeRelativeToPropertyReference(String value) {
+        try (Using<StringCesiumWriter> using$0 = new Using<StringCesiumWriter>(openRelativeToProperty())) {
+            final StringCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
+        }
+    }
+
+    /**
+    * Writes a value for the {@code relativeTo} property as a {@code reference} value. The {@code relativeTo} property specifies if specified, indicates that the path should be drawn in a different reference frame. If the value is "FIXED" or "INERTIAL", the path will be drawn in that frame. Otherwise, the value is the ID of an object and the path will be drawn relative to that object.
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyName The property on the referenced object.
+    */
+    public final void writeRelativeToPropertyReference(String identifier, String propertyName) {
+        try (Using<StringCesiumWriter> using$0 = new Using<StringCesiumWriter>(openRelativeToProperty())) {
+            final StringCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyName);
+        }
+    }
+
+    /**
+    * Writes a value for the {@code relativeTo} property as a {@code reference} value. The {@code relativeTo} property specifies if specified, indicates that the path should be drawn in a different reference frame. If the value is "FIXED" or "INERTIAL", the path will be drawn in that frame. Otherwise, the value is the ID of an object and the path will be drawn relative to that object.
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+    */
+    public final void writeRelativeToPropertyReference(String identifier, String[] propertyNames) {
+        try (Using<StringCesiumWriter> using$0 = new Using<StringCesiumWriter>(openRelativeToProperty())) {
+            final StringCesiumWriter writer = using$0.resource;
             writer.writeReference(identifier, propertyNames);
         }
     }
