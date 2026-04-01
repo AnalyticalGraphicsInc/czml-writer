@@ -5,6 +5,9 @@
     <AppendTargetFrameworkToOutputPath>False</AppendTargetFrameworkToOutputPath>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <LangVersion>3</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <PackageId>$(AssemblyName)</PackageId>
     <Title>$(AssemblyName)</Title>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
@@ -12,7 +15,7 @@
     <PackageIcon>logo.png</PackageIcon>
     <PackageIconUrl>https://raw.githubusercontent.com/AnalyticalGraphicsInc/czml-writer/master/logo.png</PackageIconUrl>
     <PackageTags>Cesium CZML</PackageTags>
-    <PackageReleaseNotes>See https://github.com/AnalyticalGraphicsInc/czml-writer/releases/tag/$(PackageVersion) for release notes.</PackageReleaseNotes>
+    <PackageReleaseNotes>See https://github.com/AnalyticalGraphicsInc/czml-writer/releases/tag/$(Version) for release notes.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
