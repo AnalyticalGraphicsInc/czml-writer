@@ -38,21 +38,22 @@ jobs:
       run: ./Java/gradlew -p Java assemble
 
     - name: Upload JAR
-      uses: actions/upload-artifact@v6
+      uses: actions/upload-artifact@v7
       with:
         name: JAR
-        compression-level: 0
         path: Java/CesiumLanguageWriter/build/libs/*.jar
+        archive: false
 
     - name: Run JUnit Tests
       run: ./Java/gradlew -p Java check
 
     - name: Upload JUnit Test Results
-      uses: actions/upload-artifact@v6
+      uses: actions/upload-artifact@v7
       if: (!cancelled())
       with:
         name: junit-results
         path: Java/CesiumLanguageWriterTests/build/test-results/test/*.xml
+        archive: true
 
     - name: Publish JUnit Test Results
       uses: EnricoMi/publish-unit-test-result-action@v2
@@ -62,9 +63,10 @@ jobs:
         files: Java/CesiumLanguageWriterTests/build/test-results/test/*.xml
 
     - name: Upload Validation Document
-      uses: actions/upload-artifact@v6
+      uses: actions/upload-artifact@v7
       with:
         name: ValidationDocument
         path: |
           Java/**/ValidationDocument.czml
           Java/**/ValidationDocument*.js
+        archive: true

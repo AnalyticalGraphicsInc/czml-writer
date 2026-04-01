@@ -43,21 +43,23 @@ jobs:
       run: msbuild -m -t:pack -p:Configuration=Release DotNet\CesiumLanguageWriter\CesiumLanguageWriter.csproj
 
     - name: Upload NuGet Package
-      uses: actions/upload-artifact@v6
+      uses: actions/upload-artifact@v7
       with:
         name: nupkg
         compression-level: 0
         path: DotNet\CesiumLanguageWriter\bin\Release\*.nupkg
+        archive: false
 
     - name: Run NUnit Tests
       run: dotnet test --no-restore --configuration Release --logger:"trx;LogFileName=nunit-results.trx" --results-directory test-results DotNet\CesiumLanguageWriterTests\CesiumLanguageWriterTests.csproj
 
     - name: Upload NUnit Test Results
-      uses: actions/upload-artifact@v6
+      uses: actions/upload-artifact@v7
       if: (!cancelled())
       with:
         name: nunit-results
         path: test-results/nunit-results.trx
+        archive: false
 
     - name: Publish NUnit Test Results
       uses: EnricoMi/publish-unit-test-result-action/windows@v2
@@ -67,9 +69,10 @@ jobs:
         files: test-results/nunit-results.trx
 
     - name: Upload Validation Document
-      uses: actions/upload-artifact@v6
+      uses: actions/upload-artifact@v7
       with:
         name: ValidationDocument
         path: |
           DotNet/**/ValidationDocument.czml
           DotNet/**/ValidationDocument*.js
+        archive: true
