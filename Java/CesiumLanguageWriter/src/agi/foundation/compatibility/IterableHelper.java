@@ -6,10 +6,13 @@ import agi.foundation.compatibility.annotations.Internal;
 
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Helper class for Iterable methods.
@@ -20,6 +23,86 @@ import javax.annotation.Nonnull;
 @Deprecated
 public final class IterableHelper {
     private IterableHelper() {}
+
+    private static <TSource> TSource throwNoElements() {
+        throw new IllegalStateException("Sequence contains no elements");
+    }
+
+    private static <TSource> TSource throwNoMatch() {
+        throw new IllegalStateException("Sequence contains no matching element");
+    }
+
+    private static <TSource> TSource returnNull() {
+        return null;
+    }
+
+    /**
+     * Returns the first element of a sequence.
+     *
+     * @param <TSource>
+     *            The type of the elements of source.
+     * @param source
+     *            The sequence to return the first element of.
+     * @return The first element in the specified sequence.
+     */
+    public static <TSource> TSource first(@Nonnull Iterable<? extends TSource> source) {
+        return firstOrDefault(source, IterableHelper::throwNoElements);
+    }
+
+    private static <TSource> TSource firstOrDefault(@Nonnull Iterable<? extends TSource> source, @Nonnull Supplier<? extends TSource> defaultSupplier) {
+        assertNonNull(source, "source");
+
+        if (source instanceof List<?>) {
+            List<? extends TSource> list = (List<? extends TSource>) source;
+            if (list.size() > 0) {
+                return list.get(0);
+            }
+        } else {
+            for (TSource item : source) {
+                return item;
+            }
+        }
+
+        return defaultSupplier.get();
+    }
+
+    /**
+     * Returns the last element of a sequence.
+     *
+     * @param <TSource>
+     *            The type of the elements of source.
+     * @param source
+     *            The sequence to return the last element of.
+     * @return The last element in the specified sequence.
+     */
+    public static <TSource> TSource last(@Nonnull Iterable<? extends TSource> source) {
+        return lastOrDefault(source, IterableHelper::throwNoElements);
+    }
+
+    private static <TSource> TSource lastOrDefault(@Nonnull Iterable<? extends TSource> source, @Nonnull Supplier<? extends TSource> defaultSupplier) {
+        assertNonNull(source, "source");
+
+        if (source instanceof List<?>) {
+            List<? extends TSource> list = (List<? extends TSource>) source;
+            int size = list.size();
+            if (size > 0) {
+                return list.get(size - 1);
+            }
+        } else {
+            TSource result = null;
+            boolean found = false;
+            for (TSource item : source) {
+                result = item;
+                found = true;
+            }
+
+            if (found) {
+                return result;
+            }
+        }
+
+        return defaultSupplier.get();
+    }
 
     public static <T> Iterable<T> concat(@Nonnull Iterable<? extends Iterable<? extends T>> iterables) {
         return new ConcatIterable<>(iterables);

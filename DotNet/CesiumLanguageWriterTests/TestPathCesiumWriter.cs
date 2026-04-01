@@ -1,7 +1,11 @@
-﻿using System.Collections.Generic;
-using CesiumLanguageWriter;
+﻿using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
 using NUnit.Framework;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using CesiumLanguageWriterTests.Data;
 
 namespace CesiumLanguageWriterTests
 {
@@ -104,6 +108,121 @@ namespace CesiumLanguageWriterTests
             {
                 { PathCesiumWriter.RelativeToPropertyName, expectedRelativeTo },
             });
+        }
+
+        [Test]
+        public void TestMaterialMode()
+        {
+            const string expectedMaterialMode = "PORTIONS";
+
+            using (var packet = OpenPacket())
+            using (var path = packet.OpenPathProperty())
+            using (var interval = path.OpenInterval())
+            {
+                interval.WriteMaterialModeProperty(CesiumPathMode.Portions);
+            }
+            AssertExpectedJson(PacketCesiumWriter.PathPropertyName, new Dictionary<string, object>
+            {
+                { PathCesiumWriter.MaterialModePropertyName, expectedMaterialMode },
+            });
+        }
+
+        [Test]
+        public void PathPortionMaterialExample()
+        {
+            OutputStream.PrettyFormatting = true;
+            OutputStream.WriteStartSequence();
+
+            var startDate = GregorianDate.Parse("2026/04/01").ToJulianDate();
+
+            var dates = new List<JulianDate>
+            {
+                startDate,
+                startDate.AddSeconds(1 * 60.0),
+                startDate.AddSeconds(2 * 60.0),
+                startDate.AddSeconds(3 * 60.0),
+            };
+            var positions = new List<Cartographic>
+            {
+                new Cartographic(-70, 20, 150000),
+                new Cartographic(-75, 15, 160000),
+                new Cartographic(-78, 24, 140000),
+                new Cartographic(-83, 10, 170000),
+            };
+
+            using (var packet = OpenPacket())
+            {
+                packet.WriteId("document");
+                packet.WriteVersion("1.0");
+
+                using (var clock = packet.OpenClockProperty())
+                {
+                    using (var interval = clock.OpenInterval(dates.First(), dates.Last()))
+                    {
+                        interval.WriteCurrentTime(dates.First());
+                    }
+                }
+            }
+
+            using (var packet = OpenPacket())
+            {
+                packet.WriteAvailability(dates.First(), dates.Last());
+
+                using (var position = packet.OpenPositionProperty())
+                {
+                    position.WriteCartographicDegrees(dates, positions);
+                }
+
+                using (var billboard = packet.OpenBillboardProperty())
+                {
+                    billboard.WriteImageProperty(CesiumResource.FromStream(EmbeddedData.Read("satellite.png"), CesiumImageFormat.Png));
+                }
+
+                using (var path = packet.OpenPathProperty())
+                {
+                    path.WriteWidthProperty(8.0);
+                    path.WriteMaterialModeProperty(CesiumPathMode.Portions);
+
+                    using (var material = path.OpenMaterialProperty())
+                    using (var intervals = material.OpenMultipleIntervals())
+                    {
+                        using (var interval = intervals.OpenInterval(dates[0], dates[1]))
+                        using (var solidColor = interval.OpenSolidColorProperty())
+                        {
+                            solidColor.WriteColorProperty(Color.Red);
+                        }
+
+                        using (var interval = intervals.OpenInterval(dates[1], dates[2]))
+                        using (var polylineGlow = interval.OpenPolylineGlowProperty())
+                        {
+                            polylineGlow.WriteColorProperty(Color.Purple);
+                            polylineGlow.WriteGlowPowerProperty(new List<JulianDate> { dates[1], dates[2] },
+                                                                new List<double> { 0.0, 1.0 });
+                        }
+
+                        using (var interval = intervals.OpenInterval(dates[2], dates[3]))
+                        using (var polylineDash = interval.OpenPolylineDashProperty())
+                        {
+                            using (var color = polylineDash.OpenColorProperty())
+                            using (var colorIntervals = color.OpenMultipleIntervals())
+                            {
+                                using (var colorInterval = colorIntervals.OpenInterval(dates[2], dates[2].AddSeconds(30.0)))
+                                {
+                                    colorInterval.WriteRgba(Color.LightGreen);
+                                }
+                                using (var colorInterval = colorIntervals.OpenInterval(dates[2].AddSeconds(30.0), dates[3]))
+                                {
+                                    colorInterval.WriteRgba(Color.LightCoral);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            OutputStream.WriteEndSequence();
+
+            Console.WriteLine(StringWriter.ToString());
         }
 
         protected override CesiumPropertyWriter<PathCesiumWriter> CreatePropertyWriter(string propertyName)

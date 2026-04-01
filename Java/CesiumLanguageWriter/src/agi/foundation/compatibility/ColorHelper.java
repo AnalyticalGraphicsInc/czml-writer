@@ -54,4 +54,10 @@ public final class ColorHelper {
 
     @Nonnull
     public static final Color LIME = new Color(0x00FF00);
+    @Nonnull
+    public static final Color LIGHTGREEN = new Color(0x90EE90);
+    @Nonnull
+    public static final Color LIGHTCORAL = new Color(0xF08080);
+    @Nonnull
+    public static final Color PURPLE = new Color(0x800080);
 }
