@@ -21,12 +21,12 @@ jobs:
         distribution: 'temurin'
 
     - name: Install GitVersion
-      uses: gittools/actions/gitversion/setup@v4.2.0
+      uses: gittools/actions/gitversion/setup@v4.4.2
       with:
         versionSpec: '6.x'
 
     - name: Execute GitVersion
-      uses: gittools/actions/gitversion/execute@v4.2.0
+      uses: gittools/actions/gitversion/execute@v4.4.2
 
     - name: Set Gradle Version
       run: sed -i 's/^version = .*$/version = ${{ env.GitVersion_MajorMinorPatch }}/g' Java/gradle.properties
