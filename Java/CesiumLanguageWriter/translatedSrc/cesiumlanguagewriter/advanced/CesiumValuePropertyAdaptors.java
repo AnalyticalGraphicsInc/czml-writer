@@ -536,6 +536,19 @@ public final class CesiumValuePropertyAdaptors {
     }
 
     /**
+    * Create an adaptor for {@link CesiumPathMode} values.
+    * @param <TFrom> The class that implements {@link ICesiumPathModeValuePropertyWriter} to adapt.
+    * @param parent The instance to wrap.
+    * @return The new adaptor.
+    */
+    @Nonnull
+    public static <TFrom extends ICesiumPathModeValuePropertyWriter & ICesiumDeletablePropertyWriter> CesiumPathModeValuePropertyAdaptor<TFrom> createPathMode(@Nonnull TFrom parent) {
+        return new CesiumPathModeValuePropertyAdaptor<TFrom>(parent, CesiumWriterAdaptorWriteCallback.<TFrom, CesiumPathMode> of((TFrom writer, @Nonnull CesiumPathMode value) -> {
+            writer.writePathMode(value);
+        }), CesiumValuePropertyAdaptors.<TFrom> createWriteDeleteCallback());
+    }
+
+    /**
     * Create an adaptor for {@link CesiumShadowMode} values.
     * @param <TFrom> The class that implements {@link ICesiumShadowModeValuePropertyWriter} to adapt.
     * @param parent The instance to wrap.

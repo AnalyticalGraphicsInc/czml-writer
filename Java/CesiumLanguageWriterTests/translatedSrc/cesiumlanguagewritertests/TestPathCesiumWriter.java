@@ -115,6 +115,24 @@ public class TestPathCesiumWriter extends TestCesiumPropertyWriter<PathCesiumWri
         assertExpectedJson(PacketCesiumWriter.PathPropertyName, tempCollection$0);
     }
 
+    @Test
+    public final void testMaterialMode() {
+        final String expectedMaterialMode = "PORTIONS";
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PathCesiumWriter> using$1 = new Using<PathCesiumWriter>(packet.openPathProperty())) {
+                final PathCesiumWriter path = using$1.resource;
+                try (Using<PathCesiumWriter> using$2 = new Using<PathCesiumWriter>(path.openInterval())) {
+                    final PathCesiumWriter interval = using$2.resource;
+                    interval.writeMaterialModeProperty(CesiumPathMode.PORTIONS);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, PathCesiumWriter.MaterialModePropertyName, expectedMaterialMode);
+        assertExpectedJson(PacketCesiumWriter.PathPropertyName, tempCollection$0);
+    }
+
     @Override
     protected CesiumPropertyWriter<PathCesiumWriter> createPropertyWriter(String propertyName) {
         return new PathCesiumWriter(propertyName);

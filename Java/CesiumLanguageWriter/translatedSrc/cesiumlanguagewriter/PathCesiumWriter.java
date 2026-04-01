@@ -9,6 +9,7 @@ import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewriter.BooleanCesiumWriter;
 import cesiumlanguagewriter.DistanceDisplayConditionCesiumWriter;
 import cesiumlanguagewriter.DoubleCesiumWriter;
+import cesiumlanguagewriter.PathModeCesiumWriter;
 import cesiumlanguagewriter.PolylineMaterialCesiumWriter;
 import cesiumlanguagewriter.StringCesiumWriter;
 import java.util.List;
@@ -54,6 +55,11 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     @Nonnull
     public static final String MaterialPropertyName = "material";
     /**
+    * The name of the {@code materialMode} property.
+    */
+    @Nonnull
+    public static final String MaterialModePropertyName = "materialMode";
+    /**
     * The name of the {@code distanceDisplayCondition} property.
     */
     @Nonnull
@@ -86,6 +92,10 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     @Nonnull
     private final Lazy<PolylineMaterialCesiumWriter> m_material = new Lazy<PolylineMaterialCesiumWriter>(Func1.<PolylineMaterialCesiumWriter> of(() -> {
         return new PolylineMaterialCesiumWriter(MaterialPropertyName);
+    }), false);
+    @Nonnull
+    private final Lazy<PathModeCesiumWriter> m_materialMode = new Lazy<PathModeCesiumWriter>(Func1.<PathModeCesiumWriter> of(() -> {
+        return new PathModeCesiumWriter(MaterialModePropertyName);
     }), false);
     @Nonnull
     private final Lazy<DistanceDisplayConditionCesiumWriter> m_distanceDisplayCondition = new Lazy<DistanceDisplayConditionCesiumWriter>(Func1.<DistanceDisplayConditionCesiumWriter> of(() -> {
@@ -610,6 +620,80 @@ public class PathCesiumWriter extends CesiumPropertyWriter<PathCesiumWriter> {
     public final PolylineMaterialCesiumWriter openMaterialProperty() {
         openIntervalIfNecessary();
         return this.<PolylineMaterialCesiumWriter> openAndReturn(getMaterialWriter());
+    }
+
+    /**
+    * Gets the writer for the {@code materialMode} property. The returned instance must be opened by calling the {@link CesiumElementWriter#open} method before it can be used for writing. The {@code materialMode} property defines whether the material applies to the whole path or portions of the path. If not specified, the default value is ENABLED.
+    */
+    @Nonnull
+    public final PathModeCesiumWriter getMaterialModeWriter() {
+        return m_materialMode.getValue();
+    }
+
+    /**
+    * Opens and returns the writer for the {@code materialMode} property. The {@code materialMode} property defines whether the material applies to the whole path or portions of the path. If not specified, the default value is ENABLED.
+    */
+    @Nonnull
+    public final PathModeCesiumWriter openMaterialModeProperty() {
+        openIntervalIfNecessary();
+        return this.<PathModeCesiumWriter> openAndReturn(getMaterialModeWriter());
+    }
+
+    /**
+    * Writes a value for the {@code materialMode} property as a {@code pathMode} value. The {@code materialMode} property specifies whether the material applies to the whole path or portions of the path. If not specified, the default value is ENABLED.
+    * @param value The path mode.
+    */
+    public final void writeMaterialModeProperty(@Nonnull CesiumPathMode value) {
+        try (Using<PathModeCesiumWriter> using$0 = new Using<PathModeCesiumWriter>(openMaterialModeProperty())) {
+            final PathModeCesiumWriter writer = using$0.resource;
+            writer.writePathMode(value);
+        }
+    }
+
+    /**
+    * Writes a value for the {@code materialMode} property as a {@code reference} value. The {@code materialMode} property specifies whether the material applies to the whole path or portions of the path. If not specified, the default value is ENABLED.
+    * @param value The reference.
+    */
+    public final void writeMaterialModePropertyReference(Reference value) {
+        try (Using<PathModeCesiumWriter> using$0 = new Using<PathModeCesiumWriter>(openMaterialModeProperty())) {
+            final PathModeCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
+        }
+    }
+
+    /**
+    * Writes a value for the {@code materialMode} property as a {@code reference} value. The {@code materialMode} property specifies whether the material applies to the whole path or portions of the path. If not specified, the default value is ENABLED.
+    * @param value The reference.
+    */
+    public final void writeMaterialModePropertyReference(String value) {
+        try (Using<PathModeCesiumWriter> using$0 = new Using<PathModeCesiumWriter>(openMaterialModeProperty())) {
+            final PathModeCesiumWriter writer = using$0.resource;
+            writer.writeReference(value);
+        }
+    }
+
+    /**
+    * Writes a value for the {@code materialMode} property as a {@code reference} value. The {@code materialMode} property specifies whether the material applies to the whole path or portions of the path. If not specified, the default value is ENABLED.
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyName The property on the referenced object.
+    */
+    public final void writeMaterialModePropertyReference(String identifier, String propertyName) {
+        try (Using<PathModeCesiumWriter> using$0 = new Using<PathModeCesiumWriter>(openMaterialModeProperty())) {
+            final PathModeCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyName);
+        }
+    }
+
+    /**
+    * Writes a value for the {@code materialMode} property as a {@code reference} value. The {@code materialMode} property specifies whether the material applies to the whole path or portions of the path. If not specified, the default value is ENABLED.
+    * @param identifier The identifier of the object which contains the referenced property.
+    * @param propertyNames The hierarchy of properties to be indexed on the referenced object.
+    */
+    public final void writeMaterialModePropertyReference(String identifier, String[] propertyNames) {
+        try (Using<PathModeCesiumWriter> using$0 = new Using<PathModeCesiumWriter>(openMaterialModeProperty())) {
+            final PathModeCesiumWriter writer = using$0.resource;
+            writer.writeReference(identifier, propertyNames);
+        }
     }
 
     /**

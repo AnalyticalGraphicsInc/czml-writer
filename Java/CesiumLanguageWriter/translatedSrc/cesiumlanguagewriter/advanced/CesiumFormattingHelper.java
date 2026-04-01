@@ -315,6 +315,26 @@ public final class CesiumFormattingHelper {
     }
 
     /**
+    * Converts a {@link CesiumPathMode} to the corresponding string in a CZML stream.
+    * @param value The value to convert.
+    * @return The string representing the specified value.
+    */
+    @Nonnull
+    public static String pathModeToString(@Nonnull CesiumPathMode value) {
+        switch (value) {
+        case WHOLE: {
+            return "WHOLE";
+        }
+        case PORTIONS: {
+            return "PORTIONS";
+        }
+        default: {
+            throw new ArgumentException(CesiumLocalization.getUnknownEnumerationValue(), "value");
+        }
+        }
+    }
+
+    /**
     * Converts a {@link CesiumShadowMode} to the corresponding string in a CZML stream.
     * @param value The value to convert.
     * @return The string representing the specified value.

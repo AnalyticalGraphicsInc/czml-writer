@@ -106,6 +106,23 @@ namespace CesiumLanguageWriterTests
             });
         }
 
+        [Test]
+        public void TestMaterialMode()
+        {
+            const string expectedMaterialMode = "PORTIONS";
+
+            using (var packet = OpenPacket())
+            using (var path = packet.OpenPathProperty())
+            using (var interval = path.OpenInterval())
+            {
+                interval.WriteMaterialModeProperty(CesiumPathMode.Portions);
+            }
+            AssertExpectedJson(PacketCesiumWriter.PathPropertyName, new Dictionary<string, object>
+            {
+                { PathCesiumWriter.MaterialModePropertyName, expectedMaterialMode },
+            });
+        }
+
         protected override CesiumPropertyWriter<PathCesiumWriter> CreatePropertyWriter(string propertyName)
         {
             return new PathCesiumWriter(propertyName);

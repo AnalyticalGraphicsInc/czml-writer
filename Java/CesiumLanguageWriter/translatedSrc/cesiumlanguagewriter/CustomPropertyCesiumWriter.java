@@ -19,13 +19,14 @@ import javax.annotation.Nonnull;
     "deprecation",
     "serial"
 })
-public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWriter<CustomPropertyCesiumWriter> implements ICesiumDeletablePropertyWriter, ICesiumBooleanValuePropertyWriter,
-        ICesiumBoundingRectangleValuePropertyWriter, ICesiumCartesian3ValuePropertyWriter, ICesiumCartographicDegreesValuePropertyWriter, ICesiumCartographicRadiansValuePropertyWriter,
-        ICesiumCartesian2ValuePropertyWriter, ICesiumUnitCartesian3ValuePropertyWriter, ICesiumSphericalValuePropertyWriter, ICesiumUnitSphericalValuePropertyWriter, ICesiumRgbaValuePropertyWriter,
-        ICesiumRgbafValuePropertyWriter, ICesiumColorBlendModeValuePropertyWriter, ICesiumCornerTypeValuePropertyWriter, ICesiumHeightReferenceValuePropertyWriter,
-        ICesiumHorizontalOriginValuePropertyWriter, ICesiumLabelStyleValuePropertyWriter, ICesiumDoubleValuePropertyWriter, ICesiumNearFarScalarValuePropertyWriter,
-        ICesiumUnitQuaternionValuePropertyWriter, ICesiumShadowModeValuePropertyWriter, ICesiumStringValuePropertyWriter, ICesiumStripeOrientationValuePropertyWriter,
-        ICesiumCartographicRectangleRadiansValuePropertyWriter, ICesiumCartographicRectangleDegreesValuePropertyWriter, ICesiumUriValuePropertyWriter, ICesiumVerticalOriginValuePropertyWriter {
+public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWriter<CustomPropertyCesiumWriter>
+        implements ICesiumDeletablePropertyWriter, ICesiumBooleanValuePropertyWriter, ICesiumBoundingRectangleValuePropertyWriter, ICesiumCartesian3ValuePropertyWriter,
+        ICesiumCartographicDegreesValuePropertyWriter, ICesiumCartographicRadiansValuePropertyWriter, ICesiumCartesian2ValuePropertyWriter, ICesiumUnitCartesian3ValuePropertyWriter,
+        ICesiumSphericalValuePropertyWriter, ICesiumUnitSphericalValuePropertyWriter, ICesiumRgbaValuePropertyWriter, ICesiumRgbafValuePropertyWriter, ICesiumColorBlendModeValuePropertyWriter,
+        ICesiumCornerTypeValuePropertyWriter, ICesiumHeightReferenceValuePropertyWriter, ICesiumHorizontalOriginValuePropertyWriter, ICesiumLabelStyleValuePropertyWriter,
+        ICesiumDoubleValuePropertyWriter, ICesiumNearFarScalarValuePropertyWriter, ICesiumUnitQuaternionValuePropertyWriter, ICesiumPathModeValuePropertyWriter, ICesiumShadowModeValuePropertyWriter,
+        ICesiumStringValuePropertyWriter, ICesiumStripeOrientationValuePropertyWriter, ICesiumCartographicRectangleRadiansValuePropertyWriter, ICesiumCartographicRectangleDegreesValuePropertyWriter,
+        ICesiumUriValuePropertyWriter, ICesiumVerticalOriginValuePropertyWriter {
     /**
     * The name of the {@code boolean} property.
     */
@@ -122,6 +123,11 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     @Nonnull
     public static final String UnitQuaternionPropertyName = "unitQuaternion";
     /**
+    * The name of the {@code pathMode} property.
+    */
+    @Nonnull
+    public static final String PathModePropertyName = "pathMode";
+    /**
     * The name of the {@code shadowMode} property.
     */
     @Nonnull
@@ -200,6 +206,8 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     @Nonnull
     private final Lazy<CesiumUnitQuaternionValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asUnitQuaternion;
     @Nonnull
+    private final Lazy<CesiumPathModeValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asPathMode;
+    @Nonnull
     private final Lazy<CesiumShadowModeValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asShadowMode;
     @Nonnull
     private final Lazy<CesiumStringValuePropertyAdaptor<CustomPropertyCesiumWriter>> m_asString;
@@ -239,6 +247,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
         m_asNumber = createAsNumber();
         m_asNearFarScalar = createAsNearFarScalar();
         m_asUnitQuaternion = createAsUnitQuaternion();
+        m_asPathMode = createAsPathMode();
         m_asShadowMode = createAsShadowMode();
         m_asString = createAsString();
         m_asStripeOrientation = createAsStripeOrientation();
@@ -273,6 +282,7 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
         m_asNumber = createAsNumber();
         m_asNearFarScalar = createAsNearFarScalar();
         m_asUnitQuaternion = createAsUnitQuaternion();
+        m_asPathMode = createAsPathMode();
         m_asShadowMode = createAsShadowMode();
         m_asString = createAsString();
         m_asStripeOrientation = createAsStripeOrientation();
@@ -836,6 +846,17 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
         final String PropertyName = UnitQuaternionPropertyName;
         openIntervalIfNecessary();
         CesiumWritingHelper.writeUnitQuaternion(getOutput(), PropertyName, dates, values, startIndex, length);
+    }
+
+    /**
+    * Writes the value expressed as a {@code pathMode}, which is the property specified as a path mode.
+    * @param value The path mode.
+    */
+    public final void writePathMode(@Nonnull CesiumPathMode value) {
+        final String PropertyName = PathModePropertyName;
+        openIntervalIfNecessary();
+        getOutput().writePropertyName(PropertyName);
+        getOutput().writeValue(CesiumFormattingHelper.pathModeToString(value));
     }
 
     /**
@@ -1428,6 +1449,26 @@ public class CustomPropertyCesiumWriter extends CesiumInterpolatablePropertyWrit
     @Nonnull
     private final CesiumUnitQuaternionValuePropertyAdaptor<CustomPropertyCesiumWriter> createUnitQuaternion() {
         return CesiumValuePropertyAdaptors.<CustomPropertyCesiumWriter> createUnitQuaternion(this);
+    }
+
+    /**
+    * Returns a wrapper for this instance that implements {@link ICesiumPathModeValuePropertyWriter}. Because the returned instance is a wrapper for this instance, you may call {@link ICesiumElementWriter#close} on either this instance or the wrapper, but you must not call it on both.
+    * @return The wrapper.
+    */
+    @Nonnull
+    public final CesiumPathModeValuePropertyAdaptor<CustomPropertyCesiumWriter> asPathMode() {
+        return m_asPathMode.getValue();
+    }
+
+    @Nonnull
+    private final Lazy<CesiumPathModeValuePropertyAdaptor<CustomPropertyCesiumWriter>> createAsPathMode() {
+        return new Lazy<CesiumPathModeValuePropertyAdaptor<CustomPropertyCesiumWriter>>(
+                Func1.<CesiumPathModeValuePropertyAdaptor<CustomPropertyCesiumWriter>> of(this::createPathMode, this, "createPathMode"), false);
+    }
+
+    @Nonnull
+    private final CesiumPathModeValuePropertyAdaptor<CustomPropertyCesiumWriter> createPathMode() {
+        return CesiumValuePropertyAdaptors.<CustomPropertyCesiumWriter> createPathMode(this);
     }
 
     /**

@@ -1602,6 +1602,13 @@ namespace GenerateFromSchema
                     valueType = "CesiumCornerType";
                     return;
                 }
+                case "PathMode":
+                {
+                    value = "CesiumPathMode.Portions";
+                    assertionValue = "PathMode.PORTIONS";
+                    valueType = "CesiumPathMode";
+                    return;
+                }
                 case "ShadowMode":
                 {
                     value = "CesiumShadowMode.CastOnly";

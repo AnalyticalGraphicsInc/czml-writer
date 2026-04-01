@@ -25,6 +25,7 @@
         { "$ref": "ValueProperties/DoubleValueProperty.json" },
         { "$ref": "ValueProperties/NearFarScalarValueProperty.json" },
         { "$ref": "ValueProperties/UnitQuaternionValueProperty.json" },
+        { "$ref": "ValueProperties/PathModeValueProperty.json" },
         { "$ref": "ValueProperties/ShadowModeValueProperty.json" },
         { "$ref": "ValueProperties/StringValueProperty.json" },
         { "$ref": "ValueProperties/StripeOrientationValueProperty.json" },
@@ -116,6 +117,10 @@
         "unitQuaternion": {
             "$ref": "Values/UnitQuaternionValue.json",
             "description": "The property specified as a 4-dimensional unit magnitude quaternion, specified as `[X, Y, Z, W]`."
+        },
+        "pathMode": {
+            "$ref": "Values/PathModeValue.json",
+            "description": "The property specified as a path mode."
         },
         "shadowMode": {
             "$ref": "Values/ShadowModeValue.json",

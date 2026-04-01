@@ -1037,6 +1037,19 @@
                 "needsInterval": false
             }
         ],
+        "PathMode": [
+            {
+                "parameters": [
+                    {
+                        "type": "CesiumPathMode",
+                        "name": "value",
+                        "description": "The path mode."
+                    }
+                ],
+                "writeValue": "Output.WriteValue(CesiumFormattingHelper.PathModeToString(value));",
+                "needsInterval": false
+            }
+        ],
         "ShadowMode": [
             {
                 "parameters": [

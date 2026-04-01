@@ -52,6 +52,12 @@ namespace CesiumLanguageWriter
         public const string MaterialPropertyName = "material";
 
         /// <summary>
+        /// The name of the <c>materialMode</c> property.
+        /// </summary>
+        [NotNull]
+        public const string MaterialModePropertyName = "materialMode";
+
+        /// <summary>
         /// The name of the <c>distanceDisplayCondition</c> property.
         /// </summary>
         [NotNull]
@@ -81,6 +87,9 @@ namespace CesiumLanguageWriter
         [NotNull]
         [CSToJavaFinalField]
         private readonly Lazy<PolylineMaterialCesiumWriter> m_material = new Lazy<PolylineMaterialCesiumWriter>(() => new PolylineMaterialCesiumWriter(MaterialPropertyName), false);
+        [NotNull]
+        [CSToJavaFinalField]
+        private readonly Lazy<PathModeCesiumWriter> m_materialMode = new Lazy<PathModeCesiumWriter>(() => new PathModeCesiumWriter(MaterialModePropertyName), false);
         [NotNull]
         [CSToJavaFinalField]
         private readonly Lazy<DistanceDisplayConditionCesiumWriter> m_distanceDisplayCondition = new Lazy<DistanceDisplayConditionCesiumWriter>(() => new DistanceDisplayConditionCesiumWriter(DistanceDisplayConditionPropertyName), false);
@@ -646,6 +655,87 @@ namespace CesiumLanguageWriter
         {
             OpenIntervalIfNecessary();
             return OpenAndReturn(MaterialWriter);
+        }
+
+        /// <summary>
+        /// Gets the writer for the <c>materialMode</c> property. The returned instance must be opened by calling the <see cref="CesiumElementWriter.Open"/> method before it can be used for writing. The <c>materialMode</c> property defines whether the material applies to the whole path or portions of the path. If not specified, the default value is ENABLED.
+        /// </summary>
+        [NotNull]
+        public PathModeCesiumWriter MaterialModeWriter
+        {
+            get { return m_materialMode.Value; }
+        }
+
+        /// <summary>
+        /// Opens and returns the writer for the <c>materialMode</c> property. The <c>materialMode</c> property defines whether the material applies to the whole path or portions of the path. If not specified, the default value is ENABLED.
+        /// </summary>
+        [NotNull]
+        public PathModeCesiumWriter OpenMaterialModeProperty()
+        {
+            OpenIntervalIfNecessary();
+            return OpenAndReturn(MaterialModeWriter);
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>materialMode</c> property as a <c>pathMode</c> value. The <c>materialMode</c> property specifies whether the material applies to the whole path or portions of the path. If not specified, the default value is ENABLED.
+        /// </summary>
+        /// <param name="value">The path mode.</param>
+        public void WriteMaterialModeProperty(CesiumPathMode value)
+        {
+            using (var writer = OpenMaterialModeProperty())
+            {
+                writer.WritePathMode(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>materialMode</c> property as a <c>reference</c> value. The <c>materialMode</c> property specifies whether the material applies to the whole path or portions of the path. If not specified, the default value is ENABLED.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteMaterialModePropertyReference(Reference value)
+        {
+            using (var writer = OpenMaterialModeProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>materialMode</c> property as a <c>reference</c> value. The <c>materialMode</c> property specifies whether the material applies to the whole path or portions of the path. If not specified, the default value is ENABLED.
+        /// </summary>
+        /// <param name="value">The reference.</param>
+        public void WriteMaterialModePropertyReference(string value)
+        {
+            using (var writer = OpenMaterialModeProperty())
+            {
+                writer.WriteReference(value);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>materialMode</c> property as a <c>reference</c> value. The <c>materialMode</c> property specifies whether the material applies to the whole path or portions of the path. If not specified, the default value is ENABLED.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyName">The property on the referenced object.</param>
+        public void WriteMaterialModePropertyReference(string identifier, string propertyName)
+        {
+            using (var writer = OpenMaterialModeProperty())
+            {
+                writer.WriteReference(identifier, propertyName);
+            }
+        }
+
+        /// <summary>
+        /// Writes a value for the <c>materialMode</c> property as a <c>reference</c> value. The <c>materialMode</c> property specifies whether the material applies to the whole path or portions of the path. If not specified, the default value is ENABLED.
+        /// </summary>
+        /// <param name="identifier">The identifier of the object which contains the referenced property.</param>
+        /// <param name="propertyNames">The hierarchy of properties to be indexed on the referenced object.</param>
+        public void WriteMaterialModePropertyReference(string identifier, string[] propertyNames)
+        {
+            using (var writer = OpenMaterialModeProperty())
+            {
+                writer.WriteReference(identifier, propertyNames);
+            }
         }
 
         /// <summary>
