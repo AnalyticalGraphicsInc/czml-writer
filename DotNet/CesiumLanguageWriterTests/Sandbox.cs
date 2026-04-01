@@ -13,20 +13,33 @@ namespace CesiumLanguageWriterTests
         public void RunExample()
         {
             var stringWriter = new StringWriter();
+
             var output = new CesiumOutputStream(stringWriter)
             {
-                PrettyFormatting = true
+                PrettyFormatting = true,
             };
 
-            var stream = new CesiumStreamWriter();
-            using (var packet = stream.OpenPacket(output))
+            var writer = new CesiumStreamWriter();
+
+            output.WriteStartSequence();
+
+            using (var packet = writer.OpenPacket(output))
             {
-                packet.WriteId("Test");
+                packet.WriteId("document");
+                packet.WriteName("Sandbox");
+                packet.WriteVersion("1.0");
+            }
+
+            using (var packet = writer.OpenPacket(output))
+            {
+                packet.WriteId("TestPacket");
 
                 using (var billboard = packet.OpenBillboardProperty())
                 {
                     billboard.WriteColorProperty(123, 67, 0, 255);
-                    billboard.WriteImageProperty(new Uri("http://cesiumjs.org/images/CesiumHeaderLogo.png"), CesiumResourceBehavior.LinkTo);
+
+                    var imageUri = new Uri("http://analyticalgraphicsinc.github.io/czml-writer/logo.png");
+                    billboard.WriteImageProperty(imageUri, CesiumResourceBehavior.Embed);
                 }
 
                 using (var position = packet.OpenPositionProperty())
@@ -54,6 +67,8 @@ namespace CesiumLanguageWriterTests
                     }
                 }
             }
+
+            output.WriteEndSequence();
 
             Console.WriteLine(stringWriter.ToString());
         }

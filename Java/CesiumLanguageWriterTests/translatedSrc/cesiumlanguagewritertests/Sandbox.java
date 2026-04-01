@@ -10,6 +10,7 @@ import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.*;
 import java.awt.Color;
 import java.io.StringWriter;
+import java.net.URI;
 import javax.annotation.Nonnull;
 import org.junit.ClassRule;
 import org.junit.FixMethodOrder;
@@ -30,41 +31,50 @@ public class Sandbox {
         final CesiumOutputStream tempObj$0 = new CesiumOutputStream(stringWriter);
         tempObj$0.setPrettyFormatting(true);
         CesiumOutputStream output = tempObj$0;
-        CesiumStreamWriter stream = new CesiumStreamWriter();
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(stream.openPacket(output))) {
+        CesiumStreamWriter writer = new CesiumStreamWriter();
+        output.writeStartSequence();
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(writer.openPacket(output))) {
             final PacketCesiumWriter packet = using$0.resource;
-            packet.writeId("Test");
-            try (Using<BillboardCesiumWriter> using$1 = new Using<BillboardCesiumWriter>(packet.openBillboardProperty())) {
-                final BillboardCesiumWriter billboard = using$1.resource;
+            packet.writeId("document");
+            packet.writeName("Sandbox");
+            packet.writeVersion("1.0");
+        }
+        try (Using<PacketCesiumWriter> using$1 = new Using<PacketCesiumWriter>(writer.openPacket(output))) {
+            final PacketCesiumWriter packet = using$1.resource;
+            packet.writeId("TestPacket");
+            try (Using<BillboardCesiumWriter> using$2 = new Using<BillboardCesiumWriter>(packet.openBillboardProperty())) {
+                final BillboardCesiumWriter billboard = using$2.resource;
                 billboard.writeColorProperty(123, 67, 0, 255);
-                billboard.writeImageProperty(UriHelper.create("http://cesiumjs.org/images/CesiumHeaderLogo.png"), CesiumResourceBehavior.LINK_TO);
+                URI imageUri = UriHelper.create("http://analyticalgraphicsinc.github.io/czml-writer/logo.png");
+                billboard.writeImageProperty(imageUri, CesiumResourceBehavior.EMBED);
             }
-            try (Using<PositionCesiumWriter> using$2 = new Using<PositionCesiumWriter>(packet.openPositionProperty())) {
-                final PositionCesiumWriter position = using$2.resource;
+            try (Using<PositionCesiumWriter> using$3 = new Using<PositionCesiumWriter>(packet.openPositionProperty())) {
+                final PositionCesiumWriter position = using$3.resource;
                 position.writeCartographicDegrees(new Cartographic(-75.0, 45.0, 100.0));
             }
-            try (Using<ModelCesiumWriter> using$3 = new Using<ModelCesiumWriter>(packet.openModelProperty())) {
-                final ModelCesiumWriter model = using$3.resource;
-                try (Using<ColorCesiumWriter> using$4 = new Using<ColorCesiumWriter>(model.openColorProperty())) {
-                    final ColorCesiumWriter color = using$4.resource;
-                    try (Using<CesiumIntervalListWriter<ColorCesiumWriter>> using$5 = new Using<CesiumIntervalListWriter<ColorCesiumWriter>>(color.openMultipleIntervals())) {
-                        final CesiumIntervalListWriter<ColorCesiumWriter> intervals = using$5.resource;
+            try (Using<ModelCesiumWriter> using$4 = new Using<ModelCesiumWriter>(packet.openModelProperty())) {
+                final ModelCesiumWriter model = using$4.resource;
+                try (Using<ColorCesiumWriter> using$5 = new Using<ColorCesiumWriter>(model.openColorProperty())) {
+                    final ColorCesiumWriter color = using$5.resource;
+                    try (Using<CesiumIntervalListWriter<ColorCesiumWriter>> using$6 = new Using<CesiumIntervalListWriter<ColorCesiumWriter>>(color.openMultipleIntervals())) {
+                        final CesiumIntervalListWriter<ColorCesiumWriter> intervals = using$6.resource;
                         JulianDate start = new GregorianDate(2012, 8, 4, 16, 0, 0.0).toJulianDate();
                         JulianDate stop = new GregorianDate(2012, 8, 4, 16, 1, 0.0).toJulianDate();
-                        try (Using<ColorCesiumWriter> using$6 = new Using<ColorCesiumWriter>(intervals.openInterval(start, stop))) {
-                            final ColorCesiumWriter interval = using$6.resource;
+                        try (Using<ColorCesiumWriter> using$7 = new Using<ColorCesiumWriter>(intervals.openInterval(start, stop))) {
+                            final ColorCesiumWriter interval = using$7.resource;
                             interval.writeRgbaf(Color.RED);
                         }
                         start = new GregorianDate(2012, 8, 4, 16, 1, 0.0).toJulianDate();
                         stop = new GregorianDate(2012, 8, 4, 16, 2, 0.0).toJulianDate();
-                        try (Using<ColorCesiumWriter> using$7 = new Using<ColorCesiumWriter>(intervals.openInterval(start, stop))) {
-                            final ColorCesiumWriter interval = using$7.resource;
+                        try (Using<ColorCesiumWriter> using$8 = new Using<ColorCesiumWriter>(intervals.openInterval(start, stop))) {
+                            final ColorCesiumWriter interval = using$8.resource;
                             interval.writeRgbaf(ColorHelper.LIME);
                         }
                     }
                 }
             }
         }
+        output.writeEndSequence();
         ConsoleHelper.writeLine(stringWriter.toString());
     }
 

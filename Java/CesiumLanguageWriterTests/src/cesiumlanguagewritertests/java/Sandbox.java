@@ -23,16 +23,28 @@ public class Sandbox {
     @Test
     public void runExample() throws IOException {
         StringWriter stringWriter = new StringWriter();
+
         CesiumOutputStream output = new CesiumOutputStream(stringWriter);
         output.setPrettyFormatting(true);
 
-        CesiumStreamWriter stream = new CesiumStreamWriter();
-        try (PacketCesiumWriter packet = stream.openPacket(output)) {
-            packet.writeId("Test");
+        CesiumStreamWriter writer = new CesiumStreamWriter();
+
+        output.writeStartSequence();
+
+        try (PacketCesiumWriter packet = writer.openPacket(output)) {
+            packet.writeId("document");
+            packet.writeName("Sandbox");
+            packet.writeVersion("1.0");
+        }
+
+        try (PacketCesiumWriter packet = writer.openPacket(output)) {
+            packet.writeId("TestPacket");
 
             try (BillboardCesiumWriter billboard = packet.openBillboardProperty()) {
                 billboard.writeColorProperty(123, 67, 0, 255);
-                billboard.writeImageProperty(URI.create("http://cesiumjs.org/images/CesiumHeaderLogo.png"), CesiumResourceBehavior.EMBED);
+
+                URI imageUri = URI.create("http://analyticalgraphicsinc.github.io/czml-writer/logo.png");
+                billboard.writeImageProperty(imageUri, CesiumResourceBehavior.EMBED);
             }
 
             try (PositionCesiumWriter position = packet.openPositionProperty()) {
@@ -58,7 +70,8 @@ public class Sandbox {
                 }
             }
         }
-        stringWriter.close();
+
+        output.writeEndSequence();
 
         System.out.println(stringWriter.toString());
     }
