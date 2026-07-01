@@ -911,6 +911,11 @@ namespace CesiumLanguageWriterTests
                             }
                         }
                     }
+                    using (var w2 = w.OpenMaterialModeProperty())
+                    {
+                        w2.WritePathMode(CesiumPathMode.Portions);
+                        m_assertionsWriter.WriteLine("    expect(e.path.materialMode.getValue(date)).toEqual(PathMode.PORTIONS);");
+                    }
                     using (var w2 = w.OpenDistanceDisplayConditionProperty())
                     {
                         w2.WriteDistanceDisplayCondition(new Bounds(11646, 32422));
@@ -9421,6 +9426,11 @@ namespace CesiumLanguageWriterTests
                         w2.WriteUnitQuaternion(new UnitQuaternion(0.344558178514049, 0.742737937277143, 0.267679401430615, 0.507905263014791));
                         m_assertionsWriter.WriteLine("    expect(e.properties.custom_unitQuaternion.getValue(date)).toEqualEpsilon(new Quaternion(0.742737937277143, 0.267679401430615, 0.507905263014791, 0.344558178514049), 1e-14);");
                     }
+                    using (var w2 = w.OpenCustomPropertyProperty("custom_pathMode"))
+                    {
+                        w2.WritePathMode(CesiumPathMode.Portions);
+                        m_assertionsWriter.WriteLine("    expect(e.properties.custom_pathMode.getValue(date)).toEqual(PathMode.PORTIONS);");
+                    }
                     using (var w2 = w.OpenCustomPropertyProperty("custom_shadowMode"))
                     {
                         w2.WriteShadowMode(CesiumShadowMode.CastOnly);
@@ -10332,6 +10342,11 @@ namespace CesiumLanguageWriterTests
                             m2.WriteReference(new Reference("Constant", CreateList("path", "material", "color")));
                             m_assertionsWriter.WriteLine("    expect(e.path.material.color.getValue(date)).toEqual(constant.path.material.color.getValue(date));");
                         }
+                    }
+                    using (var w2 = w.OpenMaterialModeProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("path", "materialMode")));
+                        m_assertionsWriter.WriteLine("    expect(e.path.materialMode.getValue(date)).toEqual(constant.path.materialMode.getValue(date));");
                     }
                     using (var w2 = w.OpenDistanceDisplayConditionProperty())
                     {

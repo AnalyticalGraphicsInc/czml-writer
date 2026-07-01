@@ -1,0 +1,18 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://analyticalgraphicsinc.github.io/czml-writer/Schema/Values/PathModeValue.json",
+    "title": "PathMode",
+    "description": "Whether a path property applies to the whole path or portions of the path.",
+    "type": "string",
+    "czmlValue": true,
+    "oneOf": [
+        {
+            "const": "WHOLE",
+            "description": "The property applies to the whole path."
+        },
+        {
+            "const": "PORTIONS",
+            "description": "The property applies to portions of the path."
+        }
+    ]
+}

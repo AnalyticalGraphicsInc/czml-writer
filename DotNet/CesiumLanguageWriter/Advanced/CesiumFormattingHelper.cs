@@ -293,6 +293,25 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
+        /// Converts a <see cref="CesiumPathMode"/> to the corresponding string in a CZML stream.
+        /// </summary>
+        /// <param name="value">The value to convert.</param>
+        /// <returns>The string representing the specified value.</returns>
+        [NotNull]
+        public static string PathModeToString(CesiumPathMode value)
+        {
+            switch (value)
+            {
+                case CesiumPathMode.Whole:
+                    return "WHOLE";
+                case CesiumPathMode.Portions:
+                    return "PORTIONS";
+                default:
+                    throw new ArgumentException(CesiumLocalization.UnknownEnumerationValue, "value");
+            }
+        }
+
+        /// <summary>
         /// Converts a <see cref="CesiumShadowMode"/> to the corresponding string in a CZML stream.
         /// </summary>
         /// <param name="value">The value to convert.</param>

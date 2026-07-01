@@ -457,6 +457,19 @@ namespace CesiumLanguageWriter.Advanced
         }
 
         /// <summary>
+        /// Create an adaptor for <see cref="CesiumPathMode"/> values.
+        /// </summary>
+        /// <typeparam name="TFrom">The class that implements <see cref="ICesiumPathModeValuePropertyWriter"/> to adapt.</typeparam>
+        /// <param name="parent">The instance to wrap.</param>
+        /// <returns>The new adaptor.</returns>
+        [NotNull]
+        public static CesiumPathModeValuePropertyAdaptor<TFrom> CreatePathMode<TFrom>([NotNull] TFrom parent)
+            where TFrom : class, ICesiumPathModeValuePropertyWriter, ICesiumDeletablePropertyWriter
+        {
+            return new CesiumPathModeValuePropertyAdaptor<TFrom>(parent, (writer, value) => writer.WritePathMode(value), CreateWriteDeleteCallback<TFrom>());
+        }
+
+        /// <summary>
         /// Create an adaptor for <see cref="CesiumShadowMode"/> values.
         /// </summary>
         /// <typeparam name="TFrom">The class that implements <see cref="ICesiumShadowModeValuePropertyWriter"/> to adapt.</typeparam>
