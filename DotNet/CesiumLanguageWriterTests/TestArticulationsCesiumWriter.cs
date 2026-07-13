@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
+using JetBrains.Annotations;
 using NUnit.Framework;
 
 namespace CesiumLanguageWriterTests
@@ -74,48 +75,51 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void CreateExampleFile()
         {
-            using (var stringWriter = new StringWriter())
+            string outputPath = Path.Combine(TestContext.CurrentContext.TestDirectory, "ArticulationsCesiumWriter.czml");
+            using (var streamWriter = new StreamWriter(outputPath))
             {
-                var output = new CesiumOutputStream(stringWriter, true);
-                var writer = new CesiumStreamWriter();
+                CreateExampleFile(new CesiumOutputStream(streamWriter, true));
+            }
+        }
 
-                using (var packet = writer.OpenPacket(output))
+        private static void CreateExampleFile([NotNull] CesiumOutputStream output)
+        {
+            var writer = new CesiumStreamWriter();
+
+            using (var packet = writer.OpenPacket(output))
+            {
+                packet.WriteId("MyID");
+
+                var startDate = new GregorianDate(2012, 4, 2, 12, 0, 0).ToJulianDate();
+                var stopDate = new GregorianDate(2012, 4, 2, 12, 1, 0).ToJulianDate();
+
+                using (var clock = packet.OpenClockProperty())
                 {
-                    packet.WriteId("MyID");
-
-                    var startDate = new GregorianDate(2012, 4, 2, 12, 0, 0).ToJulianDate();
-                    var stopDate = new GregorianDate(2012, 4, 2, 12, 1, 0).ToJulianDate();
-
-                    using (var clock = packet.OpenClockProperty())
+                    using (var interval = clock.OpenInterval(startDate, stopDate))
                     {
-                        using (var interval = clock.OpenInterval(startDate, stopDate))
-                        {
-                            interval.WriteCurrentTime(startDate);
-                        }
-                    }
-
-                    using (var modelWriter = packet.OpenModelProperty())
-                    {
-                        modelWriter.WriteGltfProperty(new Uri("example.gltf", UriKind.Relative), CesiumResourceBehavior.LinkTo);
-
-                        using (var articulationsWriter = modelWriter.OpenArticulationsProperty())
-                        {
-                            using (var articulationWriter = articulationsWriter.OpenArticulationProperty("articulation1 stage1"))
-                            {
-                                articulationWriter.WriteNumber(45);
-                            }
-
-                            using (var articulationWriter = articulationsWriter.OpenArticulationProperty("articulation1 stage2"))
-                            {
-                                var dates = new List<JulianDate> { startDate, stopDate, };
-                                var values = new List<double> { 1.0, 10.0, };
-                                articulationWriter.WriteNumber(dates, values);
-                            }
-                        }
+                        interval.WriteCurrentTime(startDate);
                     }
                 }
 
-                Console.WriteLine(stringWriter.ToString());
+                using (var modelWriter = packet.OpenModelProperty())
+                {
+                    modelWriter.WriteGltfProperty(new Uri("example.gltf", UriKind.Relative), CesiumResourceBehavior.LinkTo);
+
+                    using (var articulationsWriter = modelWriter.OpenArticulationsProperty())
+                    {
+                        using (var articulationWriter = articulationsWriter.OpenArticulationProperty("articulation1 stage1"))
+                        {
+                            articulationWriter.WriteNumber(45);
+                        }
+
+                        using (var articulationWriter = articulationsWriter.OpenArticulationProperty("articulation1 stage2"))
+                        {
+                            var dates = new List<JulianDate> { startDate, stopDate, };
+                            var values = new List<double> { 1.0, 10.0, };
+                            articulationWriter.WriteNumber(dates, values);
+                        }
+                    }
+                }
             }
         }
 

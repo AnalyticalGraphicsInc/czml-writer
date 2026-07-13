@@ -34,7 +34,7 @@ public class TestVerticalOriginCesiumWriter extends TestCesiumPropertyWriter<Ver
             }
         }
         final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, expectedPropertyName, CesiumFormattingHelper.verticalOriginToString(expectedValue));
+        MapHelper.add(tempCollection$0, expectedPropertyName, expectedValue);
         assertExpectedJson(tempCollection$0);
     }
 
@@ -54,7 +54,7 @@ public class TestVerticalOriginCesiumWriter extends TestCesiumPropertyWriter<Ver
         }
         final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, "interval", CesiumFormattingHelper.toIso8601Interval(start, stop, Iso8601Format.COMPACT));
-        MapHelper.add(tempCollection$0, VerticalOriginCesiumWriter.VerticalOriginPropertyName, CesiumFormattingHelper.verticalOriginToString(expectedValue));
+        MapHelper.add(tempCollection$0, VerticalOriginCesiumWriter.VerticalOriginPropertyName, expectedValue);
         assertExpectedJson(expectedPropertyName, tempCollection$0);
     }
 

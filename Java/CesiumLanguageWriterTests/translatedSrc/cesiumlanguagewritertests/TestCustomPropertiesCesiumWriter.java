@@ -4,12 +4,15 @@ package cesiumlanguagewritertests;
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.annotations.CS2JInfo;
 import agi.foundation.compatibility.AssertHelper;
-import agi.foundation.compatibility.ConsoleHelper;
 import agi.foundation.compatibility.MapHelper;
+import agi.foundation.compatibility.PathHelper;
+import agi.foundation.compatibility.StreamWriterHelper;
+import agi.foundation.compatibility.TestContext;
 import agi.foundation.compatibility.TestContextRule;
 import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
+import java.io.OutputStreamWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -185,65 +188,67 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
 
     @Test
     public final void createExampleFile() {
-        try (Using<StringWriter> using$0 = new Using<StringWriter>(new StringWriter())) {
-            final StringWriter stringWriter = using$0.resource;
-            CesiumOutputStream output = new CesiumOutputStream(stringWriter, true);
-            CesiumStreamWriter writer = new CesiumStreamWriter();
-            output.writeStartSequence();
-            try (Using<PacketCesiumWriter> using$1 = new Using<PacketCesiumWriter>(writer.openPacket(output))) {
-                final PacketCesiumWriter documentPacket = using$1.resource;
-                documentPacket.writeId("document");
-                documentPacket.writeVersion("1.0");
-                try (Using<ClockCesiumWriter> using$2 = new Using<ClockCesiumWriter>(documentPacket.openClockProperty())) {
-                    final ClockCesiumWriter clock = using$2.resource;
-                    try (Using<ClockCesiumWriter> using$3 = new Using<ClockCesiumWriter>(clock.openInterval(m_startDate, m_stopDate))) {
-                        final ClockCesiumWriter interval = using$3.resource;
-                        interval.writeCurrentTime(m_startDate);
-                    }
+        String outputPath = PathHelper.combine(TestContext.getCurrentContext().getTestDirectory(), "CustomPropertiesCesiumWriter.czml");
+        try (Using<OutputStreamWriter> using$0 = new Using<OutputStreamWriter>(StreamWriterHelper.create(outputPath))) {
+            final OutputStreamWriter streamWriter = using$0.resource;
+            createExampleFile(new CesiumOutputStream(streamWriter, true));
+        }
+    }
+
+    private final void createExampleFile(@Nonnull CesiumOutputStream output) {
+        CesiumStreamWriter writer = new CesiumStreamWriter();
+        output.writeStartSequence();
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(writer.openPacket(output))) {
+            final PacketCesiumWriter documentPacket = using$0.resource;
+            documentPacket.writeId("document");
+            documentPacket.writeVersion("1.0");
+            try (Using<ClockCesiumWriter> using$1 = new Using<ClockCesiumWriter>(documentPacket.openClockProperty())) {
+                final ClockCesiumWriter clock = using$1.resource;
+                try (Using<ClockCesiumWriter> using$2 = new Using<ClockCesiumWriter>(clock.openInterval(m_startDate, m_stopDate))) {
+                    final ClockCesiumWriter interval = using$2.resource;
+                    interval.writeCurrentTime(m_startDate);
                 }
             }
-            try (Using<PacketCesiumWriter> using$4 = new Using<PacketCesiumWriter>(writer.openPacket(output))) {
-                final PacketCesiumWriter packet = using$4.resource;
-                packet.writeId("MyID");
-                try (Using<CustomPropertiesCesiumWriter> using$5 = new Using<CustomPropertiesCesiumWriter>(packet.openPropertiesProperty())) {
-                    final CustomPropertiesCesiumWriter customProperties = using$5.resource;
-                    try (Using<CustomPropertyCesiumWriter> using$6 = new Using<CustomPropertyCesiumWriter>(customProperties.openCustomPropertyProperty("custom_boolean"))) {
-                        final CustomPropertyCesiumWriter customProperty = using$6.resource;
-                        try (Using<CesiumIntervalListWriter<CustomPropertyCesiumWriter>> using$7 = new Using<CesiumIntervalListWriter<CustomPropertyCesiumWriter>>(
-                                customProperty.openMultipleIntervals())) {
-                            final CesiumIntervalListWriter<CustomPropertyCesiumWriter> intervalList = using$7.resource;
-                            try (Using<CustomPropertyCesiumWriter> using$8 = new Using<CustomPropertyCesiumWriter>(intervalList.openInterval(m_startDate, m_startDate.addSeconds(1.0)))) {
-                                final CustomPropertyCesiumWriter interval = using$8.resource;
-                                interval.writeBoolean(true);
-                            }
-                            try (Using<CustomPropertyCesiumWriter> using$9 = new Using<CustomPropertyCesiumWriter>(
-                                    intervalList.openInterval(m_startDate.addSeconds(1.0), m_startDate.addSeconds(2.0)))) {
-                                final CustomPropertyCesiumWriter interval = using$9.resource;
-                                interval.writeBoolean(false);
-                            }
-                            try (Using<CustomPropertyCesiumWriter> using$10 = new Using<CustomPropertyCesiumWriter>(intervalList.openInterval(m_startDate.addSeconds(2.0), m_stopDate))) {
-                                final CustomPropertyCesiumWriter interval = using$10.resource;
-                                interval.writeBoolean(true);
-                            }
+        }
+        try (Using<PacketCesiumWriter> using$3 = new Using<PacketCesiumWriter>(writer.openPacket(output))) {
+            final PacketCesiumWriter packet = using$3.resource;
+            packet.writeId("MyID");
+            try (Using<CustomPropertiesCesiumWriter> using$4 = new Using<CustomPropertiesCesiumWriter>(packet.openPropertiesProperty())) {
+                final CustomPropertiesCesiumWriter customProperties = using$4.resource;
+                try (Using<CustomPropertyCesiumWriter> using$5 = new Using<CustomPropertyCesiumWriter>(customProperties.openCustomPropertyProperty("custom_boolean"))) {
+                    final CustomPropertyCesiumWriter customProperty = using$5.resource;
+                    try (Using<CesiumIntervalListWriter<CustomPropertyCesiumWriter>> using$6 = new Using<CesiumIntervalListWriter<CustomPropertyCesiumWriter>>(
+                            customProperty.openMultipleIntervals())) {
+                        final CesiumIntervalListWriter<CustomPropertyCesiumWriter> intervalList = using$6.resource;
+                        try (Using<CustomPropertyCesiumWriter> using$7 = new Using<CustomPropertyCesiumWriter>(intervalList.openInterval(m_startDate, m_startDate.addSeconds(1.0)))) {
+                            final CustomPropertyCesiumWriter interval = using$7.resource;
+                            interval.writeBoolean(true);
+                        }
+                        try (Using<CustomPropertyCesiumWriter> using$8 = new Using<CustomPropertyCesiumWriter>(intervalList.openInterval(m_startDate.addSeconds(1.0), m_startDate.addSeconds(2.0)))) {
+                            final CustomPropertyCesiumWriter interval = using$8.resource;
+                            interval.writeBoolean(false);
+                        }
+                        try (Using<CustomPropertyCesiumWriter> using$9 = new Using<CustomPropertyCesiumWriter>(intervalList.openInterval(m_startDate.addSeconds(2.0), m_stopDate))) {
+                            final CustomPropertyCesiumWriter interval = using$9.resource;
+                            interval.writeBoolean(true);
                         }
                     }
-                    try (Using<CustomPropertyCesiumWriter> using$11 = new Using<CustomPropertyCesiumWriter>(customProperties.openCustomPropertyProperty("custom_cartesian"))) {
-                        final CustomPropertyCesiumWriter customProperty = using$11.resource;
-                        ArrayList<JulianDate> dates = new ArrayList<JulianDate>();
-                        ArrayList<Cartesian> values = new ArrayList<Cartesian>();
-                        dates.add(m_startDate);
-                        values.add(new Cartesian(1.0, 2.0, 3.0));
-                        dates.add(m_startDate.addSeconds(60.0));
-                        values.add(new Cartesian(4.0, 5.0, 6.0));
-                        dates.add(m_startDate.addSeconds(120.0));
-                        values.add(new Cartesian(7.0, 8.0, 9.0));
-                        customProperty.writeCartesian(dates, values);
-                    }
+                }
+                try (Using<CustomPropertyCesiumWriter> using$10 = new Using<CustomPropertyCesiumWriter>(customProperties.openCustomPropertyProperty("custom_cartesian"))) {
+                    final CustomPropertyCesiumWriter customProperty = using$10.resource;
+                    ArrayList<JulianDate> dates = new ArrayList<JulianDate>();
+                    ArrayList<Cartesian> values = new ArrayList<Cartesian>();
+                    dates.add(m_startDate);
+                    values.add(new Cartesian(1.0, 2.0, 3.0));
+                    dates.add(m_startDate.addSeconds(60.0));
+                    values.add(new Cartesian(4.0, 5.0, 6.0));
+                    dates.add(m_startDate.addSeconds(120.0));
+                    values.add(new Cartesian(7.0, 8.0, 9.0));
+                    customProperty.writeCartesian(dates, values);
                 }
             }
-            output.writeEndSequence();
-            ConsoleHelper.writeLine(stringWriter.toString());
         }
+        output.writeEndSequence();
     }
 
     @Override

@@ -1,0 +1,84 @@
+﻿using System.Collections.Generic;
+using CesiumLanguageWriter;
+using CesiumLanguageWriter.Advanced;
+using NUnit.Framework;
+
+namespace CesiumLanguageWriterTests
+{
+    [TestFixture]
+    public class TestPixelOffsetCesiumWriter : TestCesiumInterpolatablePropertyWriter<PixelOffsetCesiumWriter>
+    {
+        [Test]
+        public void WriteCartesian2()
+        {
+            var expected = new Rectangular(10.0, 20.0);
+
+            using (var packet = OpenPacket())
+            using (var billboard = packet.OpenBillboardProperty())
+            using (var interval = billboard.OpenInterval())
+            using (var pixelOffset = interval.OpenPixelOffsetProperty())
+            {
+                pixelOffset.WriteCartesian2(expected);
+            }
+
+            AssertExpectedJson(PacketCesiumWriter.BillboardPropertyName, new Dictionary<string, object>
+            {
+                { BillboardCesiumWriter.PixelOffsetPropertyName, expected },
+            });
+        }
+
+        [Test]
+        public void WriteReference()
+        {
+            const string expectedIdentifier = "someId";
+            const string expectedPropertyName = "pixelOffset";
+
+            using (var packet = OpenPacket())
+            using (var billboard = packet.OpenBillboardProperty())
+            using (var interval = billboard.OpenInterval())
+            using (var pixelOffset = interval.OpenPixelOffsetProperty())
+            {
+                pixelOffset.WriteReference(expectedIdentifier, expectedPropertyName);
+            }
+
+            AssertExpectedJson(PacketCesiumWriter.BillboardPropertyName, new Dictionary<string, object>
+            {
+                {
+                    BillboardCesiumWriter.PixelOffsetPropertyName, new Dictionary<string, object>
+                    {
+                        { PixelOffsetCesiumWriter.ReferencePropertyName, expectedIdentifier + "#" + expectedPropertyName },
+                    }
+                },
+            });
+        }
+
+        [Test]
+        public void TestDeleteProperty()
+        {
+            const bool expectedDelete = true;
+
+            using (var packet = OpenPacket())
+            using (var billboard = packet.OpenBillboardProperty())
+            using (var interval = billboard.OpenInterval())
+            using (var pixelOffset = interval.OpenPixelOffsetProperty())
+            {
+                pixelOffset.WriteDelete(expectedDelete);
+            }
+
+            AssertExpectedJson(PacketCesiumWriter.BillboardPropertyName, new Dictionary<string, object>
+            {
+                {
+                    BillboardCesiumWriter.PixelOffsetPropertyName, new Dictionary<string, object>
+                    {
+                        { PixelOffsetCesiumWriter.DeletePropertyName, expectedDelete },
+                    }
+                },
+            });
+        }
+
+        protected override CesiumPropertyWriter<PixelOffsetCesiumWriter> CreatePropertyWriter(string propertyName)
+        {
+            return new PixelOffsetCesiumWriter(propertyName);
+        }
+    }
+}

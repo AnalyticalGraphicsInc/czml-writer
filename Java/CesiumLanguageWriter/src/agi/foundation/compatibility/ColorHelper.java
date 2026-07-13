@@ -53,6 +53,8 @@ public final class ColorHelper {
     }
 
     @Nonnull
+    public static final Color GREEN = new Color(0x008000);
+    @Nonnull
     public static final Color LIME = new Color(0x00FF00);
     @Nonnull
     public static final Color LIGHTGREEN = new Color(0x90EE90);

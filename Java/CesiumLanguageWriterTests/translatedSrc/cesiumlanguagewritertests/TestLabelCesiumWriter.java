@@ -3,6 +3,7 @@ package cesiumlanguagewritertests;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.AssertHelper;
+import agi.foundation.compatibility.ColorHelper;
 import agi.foundation.compatibility.MapHelper;
 import agi.foundation.compatibility.TestContextRule;
 import agi.foundation.compatibility.Using;
@@ -27,6 +28,276 @@ import org.junit.Test;
 })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestLabelCesiumWriter extends TestCesiumPropertyWriter<LabelCesiumWriter> {
+    @Test
+    public final void testFontProperty() {
+        final String expectedFont = "30px Helvetica";
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<LabelCesiumWriter> using$1 = new Using<LabelCesiumWriter>(packet.openLabelProperty())) {
+                final LabelCesiumWriter label = using$1.resource;
+                try (Using<LabelCesiumWriter> using$2 = new Using<LabelCesiumWriter>(label.openInterval())) {
+                    final LabelCesiumWriter interval = using$2.resource;
+                    interval.writeFontProperty(expectedFont);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, LabelCesiumWriter.FontPropertyName, expectedFont);
+        assertExpectedJson(PacketCesiumWriter.LabelPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testStyleProperty() {
+        final CesiumLabelStyle expectedStyle = CesiumLabelStyle.FILL_AND_OUTLINE;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<LabelCesiumWriter> using$1 = new Using<LabelCesiumWriter>(packet.openLabelProperty())) {
+                final LabelCesiumWriter label = using$1.resource;
+                try (Using<LabelCesiumWriter> using$2 = new Using<LabelCesiumWriter>(label.openInterval())) {
+                    final LabelCesiumWriter interval = using$2.resource;
+                    interval.writeStyleProperty(expectedStyle);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, LabelCesiumWriter.StylePropertyName, expectedStyle);
+        assertExpectedJson(PacketCesiumWriter.LabelPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testScaleProperty() {
+        final double expectedScale = 2.0;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<LabelCesiumWriter> using$1 = new Using<LabelCesiumWriter>(packet.openLabelProperty())) {
+                final LabelCesiumWriter label = using$1.resource;
+                try (Using<LabelCesiumWriter> using$2 = new Using<LabelCesiumWriter>(label.openInterval())) {
+                    final LabelCesiumWriter interval = using$2.resource;
+                    interval.writeScaleProperty(expectedScale);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, LabelCesiumWriter.ScalePropertyName, expectedScale);
+        assertExpectedJson(PacketCesiumWriter.LabelPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testPixelOffsetProperty() {
+        Rectangular expectedPixelOffset = new Rectangular(12.5, 3.5);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<LabelCesiumWriter> using$1 = new Using<LabelCesiumWriter>(packet.openLabelProperty())) {
+                final LabelCesiumWriter label = using$1.resource;
+                try (Using<LabelCesiumWriter> using$2 = new Using<LabelCesiumWriter>(label.openInterval())) {
+                    final LabelCesiumWriter interval = using$2.resource;
+                    interval.writePixelOffsetProperty(expectedPixelOffset);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, LabelCesiumWriter.PixelOffsetPropertyName, expectedPixelOffset);
+        assertExpectedJson(PacketCesiumWriter.LabelPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testEyeOffsetProperty() {
+        Cartesian expectedEyeOffset = new Cartesian(1.0, 2.0, 3.0);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<LabelCesiumWriter> using$1 = new Using<LabelCesiumWriter>(packet.openLabelProperty())) {
+                final LabelCesiumWriter label = using$1.resource;
+                try (Using<LabelCesiumWriter> using$2 = new Using<LabelCesiumWriter>(label.openInterval())) {
+                    final LabelCesiumWriter interval = using$2.resource;
+                    interval.writeEyeOffsetProperty(expectedEyeOffset);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, LabelCesiumWriter.EyeOffsetPropertyName, expectedEyeOffset);
+        assertExpectedJson(PacketCesiumWriter.LabelPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testHorizontalOriginProperty() {
+        final CesiumHorizontalOrigin expectedHorizontalOrigin = CesiumHorizontalOrigin.CENTER;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<LabelCesiumWriter> using$1 = new Using<LabelCesiumWriter>(packet.openLabelProperty())) {
+                final LabelCesiumWriter label = using$1.resource;
+                try (Using<LabelCesiumWriter> using$2 = new Using<LabelCesiumWriter>(label.openInterval())) {
+                    final LabelCesiumWriter interval = using$2.resource;
+                    interval.writeHorizontalOriginProperty(expectedHorizontalOrigin);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, LabelCesiumWriter.HorizontalOriginPropertyName, expectedHorizontalOrigin);
+        assertExpectedJson(PacketCesiumWriter.LabelPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testVerticalOriginProperty() {
+        final CesiumVerticalOrigin expectedVerticalOrigin = CesiumVerticalOrigin.CENTER;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<LabelCesiumWriter> using$1 = new Using<LabelCesiumWriter>(packet.openLabelProperty())) {
+                final LabelCesiumWriter label = using$1.resource;
+                try (Using<LabelCesiumWriter> using$2 = new Using<LabelCesiumWriter>(label.openInterval())) {
+                    final LabelCesiumWriter interval = using$2.resource;
+                    interval.writeVerticalOriginProperty(expectedVerticalOrigin);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, LabelCesiumWriter.VerticalOriginPropertyName, expectedVerticalOrigin);
+        assertExpectedJson(PacketCesiumWriter.LabelPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testHeightReferenceProperty() {
+        final CesiumHeightReference expectedHeightReference = CesiumHeightReference.CLAMP_TO_GROUND;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<LabelCesiumWriter> using$1 = new Using<LabelCesiumWriter>(packet.openLabelProperty())) {
+                final LabelCesiumWriter label = using$1.resource;
+                try (Using<LabelCesiumWriter> using$2 = new Using<LabelCesiumWriter>(label.openInterval())) {
+                    final LabelCesiumWriter interval = using$2.resource;
+                    interval.writeHeightReferenceProperty(expectedHeightReference);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, LabelCesiumWriter.HeightReferencePropertyName, expectedHeightReference);
+        assertExpectedJson(PacketCesiumWriter.LabelPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testFillColorProperty() {
+        Color expectedFillColor = Color.BLUE;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<LabelCesiumWriter> using$1 = new Using<LabelCesiumWriter>(packet.openLabelProperty())) {
+                final LabelCesiumWriter label = using$1.resource;
+                try (Using<LabelCesiumWriter> using$2 = new Using<LabelCesiumWriter>(label.openInterval())) {
+                    final LabelCesiumWriter interval = using$2.resource;
+                    interval.writeFillColorProperty(expectedFillColor);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, LabelCesiumWriter.FillColorPropertyName, expectedFillColor);
+        assertExpectedJson(PacketCesiumWriter.LabelPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testOutlineColorProperty() {
+        Color expectedOutlineColor = ColorHelper.GREEN;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<LabelCesiumWriter> using$1 = new Using<LabelCesiumWriter>(packet.openLabelProperty())) {
+                final LabelCesiumWriter label = using$1.resource;
+                try (Using<LabelCesiumWriter> using$2 = new Using<LabelCesiumWriter>(label.openInterval())) {
+                    final LabelCesiumWriter interval = using$2.resource;
+                    interval.writeOutlineColorProperty(expectedOutlineColor);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, LabelCesiumWriter.OutlineColorPropertyName, expectedOutlineColor);
+        assertExpectedJson(PacketCesiumWriter.LabelPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testOutlineWidthProperty() {
+        final double expectedOutlineWidth = 2.0;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<LabelCesiumWriter> using$1 = new Using<LabelCesiumWriter>(packet.openLabelProperty())) {
+                final LabelCesiumWriter label = using$1.resource;
+                try (Using<LabelCesiumWriter> using$2 = new Using<LabelCesiumWriter>(label.openInterval())) {
+                    final LabelCesiumWriter interval = using$2.resource;
+                    interval.writeOutlineWidthProperty(expectedOutlineWidth);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, LabelCesiumWriter.OutlineWidthPropertyName, expectedOutlineWidth);
+        assertExpectedJson(PacketCesiumWriter.LabelPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testPixelOffsetScaleByDistanceProperty() {
+        NearFarScalar expectedPixelOffsetScaleByDistance = new NearFarScalar(10.0, 1.0, 20.0, 2.0);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<LabelCesiumWriter> using$1 = new Using<LabelCesiumWriter>(packet.openLabelProperty())) {
+                final LabelCesiumWriter label = using$1.resource;
+                try (Using<LabelCesiumWriter> using$2 = new Using<LabelCesiumWriter>(label.openInterval())) {
+                    final LabelCesiumWriter interval = using$2.resource;
+                    interval.writePixelOffsetScaleByDistanceProperty(expectedPixelOffsetScaleByDistance);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, LabelCesiumWriter.PixelOffsetScaleByDistancePropertyName, expectedPixelOffsetScaleByDistance);
+        assertExpectedJson(PacketCesiumWriter.LabelPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testScaleByDistanceProperty() {
+        NearFarScalar expectedScaleByDistance = new NearFarScalar(100.5, 1.5, 200.5, 2.5);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<LabelCesiumWriter> using$1 = new Using<LabelCesiumWriter>(packet.openLabelProperty())) {
+                final LabelCesiumWriter label = using$1.resource;
+                try (Using<LabelCesiumWriter> using$2 = new Using<LabelCesiumWriter>(label.openInterval())) {
+                    final LabelCesiumWriter interval = using$2.resource;
+                    interval.writeScaleByDistanceProperty(expectedScaleByDistance);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, LabelCesiumWriter.ScaleByDistancePropertyName, expectedScaleByDistance);
+        assertExpectedJson(PacketCesiumWriter.LabelPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testDistanceDisplayConditionProperty() {
+        Bounds expectedDistanceDisplayCondition = new Bounds(10.0, 20.0);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<LabelCesiumWriter> using$1 = new Using<LabelCesiumWriter>(packet.openLabelProperty())) {
+                final LabelCesiumWriter label = using$1.resource;
+                try (Using<LabelCesiumWriter> using$2 = new Using<LabelCesiumWriter>(label.openInterval())) {
+                    final LabelCesiumWriter interval = using$2.resource;
+                    interval.writeDistanceDisplayConditionProperty(expectedDistanceDisplayCondition);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, LabelCesiumWriter.DistanceDisplayConditionPropertyName, expectedDistanceDisplayCondition);
+        assertExpectedJson(PacketCesiumWriter.LabelPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testDisableDepthTestDistanceProperty() {
+        final double expectedDisableDepthTestDistance = 1234.0;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<LabelCesiumWriter> using$1 = new Using<LabelCesiumWriter>(packet.openLabelProperty())) {
+                final LabelCesiumWriter label = using$1.resource;
+                try (Using<LabelCesiumWriter> using$2 = new Using<LabelCesiumWriter>(label.openInterval())) {
+                    final LabelCesiumWriter interval = using$2.resource;
+                    interval.writeDisableDepthTestDistanceProperty(expectedDisableDepthTestDistance);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, LabelCesiumWriter.DisableDepthTestDistancePropertyName, expectedDisableDepthTestDistance);
+        assertExpectedJson(PacketCesiumWriter.LabelPropertyName, tempCollection$0);
+    }
+
     @Test
     public final void testShowProperty() {
         final boolean expectedShow = true;

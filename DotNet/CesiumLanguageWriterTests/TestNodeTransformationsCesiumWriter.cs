@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
+using JetBrains.Annotations;
 using NUnit.Framework;
 
 namespace CesiumLanguageWriterTests
@@ -108,57 +109,61 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void CreateExampleFile()
         {
-            using (var stringWriter = new StringWriter())
+            string outputPath = Path.Combine(TestContext.CurrentContext.TestDirectory, "NodeTransformationsCesiumWriter.czml");
+            using (var streamWriter = new StreamWriter(outputPath))
             {
-                var output = new CesiumOutputStream(stringWriter, true);
-                var writer = new CesiumStreamWriter();
-                using (var packet = writer.OpenPacket(output))
+                CreateExampleFile(new CesiumOutputStream(streamWriter, true));
+            }
+        }
+
+        private static void CreateExampleFile([NotNull] CesiumOutputStream output)
+        {
+            var writer = new CesiumStreamWriter();
+
+            using (var packet = writer.OpenPacket(output))
+            {
+                packet.WriteId("MyID");
+
+                var startDate = new GregorianDate(2012, 4, 2, 12, 0, 0).ToJulianDate();
+                var stopDate = new GregorianDate(2012, 4, 2, 12, 1, 0).ToJulianDate();
+
+                using (var clock = packet.OpenClockProperty())
                 {
-                    packet.WriteId("MyID");
-
-                    var startDate = new GregorianDate(2012, 4, 2, 12, 0, 0).ToJulianDate();
-                    var stopDate = new GregorianDate(2012, 4, 2, 12, 1, 0).ToJulianDate();
-
-                    using (var clock = packet.OpenClockProperty())
+                    using (var interval = clock.OpenInterval(startDate, stopDate))
                     {
-                        using (var interval = clock.OpenInterval(startDate, stopDate))
-                        {
-                            interval.WriteCurrentTime(startDate);
-                        }
-                    }
-
-                    using (var model = packet.OpenModelProperty())
-                    {
-                        model.WriteGltfProperty(new Uri("example.gltf", UriKind.Relative), CesiumResourceBehavior.LinkTo);
-
-                        using (var nodeTransformations = model.OpenNodeTransformationsProperty())
-                        {
-                            using (var nodeTransformation = nodeTransformations.OpenNodeTransformationProperty("node1"))
-                            {
-                                nodeTransformation.WriteScaleProperty(new Cartesian(1.0, 2.0, 3.0));
-                                nodeTransformation.WriteRotationProperty(UnitQuaternion.Identity);
-                                nodeTransformation.WriteTranslationProperty(new Cartesian(4.0, 5.0, 6.0));
-                            }
-
-                            using (var nodeTransformation = nodeTransformations.OpenNodeTransformationProperty("node2"))
-                            {
-                                var dates = new List<JulianDate>
-                                {
-                                    startDate,
-                                    stopDate
-                                };
-                                var values = new List<Cartesian>
-                                {
-                                    new Cartesian(1.0, 2.0, 3.0),
-                                    new Cartesian(10.0, 12.0, 14.0)
-                                };
-                                nodeTransformation.WriteScaleProperty(dates, values);
-                            }
-                        }
+                        interval.WriteCurrentTime(startDate);
                     }
                 }
 
-                Console.WriteLine(stringWriter.ToString());
+                using (var model = packet.OpenModelProperty())
+                {
+                    model.WriteGltfProperty(new Uri("example.gltf", UriKind.Relative), CesiumResourceBehavior.LinkTo);
+
+                    using (var nodeTransformations = model.OpenNodeTransformationsProperty())
+                    {
+                        using (var nodeTransformation = nodeTransformations.OpenNodeTransformationProperty("node1"))
+                        {
+                            nodeTransformation.WriteScaleProperty(new Cartesian(1.0, 2.0, 3.0));
+                            nodeTransformation.WriteRotationProperty(UnitQuaternion.Identity);
+                            nodeTransformation.WriteTranslationProperty(new Cartesian(4.0, 5.0, 6.0));
+                        }
+
+                        using (var nodeTransformation = nodeTransformations.OpenNodeTransformationProperty("node2"))
+                        {
+                            var dates = new List<JulianDate>
+                            {
+                                startDate,
+                                stopDate,
+                            };
+                            var values = new List<Cartesian>
+                            {
+                                new Cartesian(1.0, 2.0, 3.0),
+                                new Cartesian(10.0, 12.0, 14.0),
+                            };
+                            nodeTransformation.WriteScaleProperty(dates, values);
+                        }
+                    }
+                }
             }
         }
 

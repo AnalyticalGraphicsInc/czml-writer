@@ -3,11 +3,13 @@ package cesiumlanguagewritertests;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.AssertHelper;
+import agi.foundation.compatibility.ColorHelper;
 import agi.foundation.compatibility.MapHelper;
 import agi.foundation.compatibility.TestContextRule;
 import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
+import java.awt.Color;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -26,6 +28,330 @@ import org.junit.Test;
 })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestBillboardCesiumWriter extends TestCesiumPropertyWriter<BillboardCesiumWriter> {
+    @Test
+    public final void testImageProperty() {
+        final String expectedImage = "image.png";
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<BillboardCesiumWriter> using$1 = new Using<BillboardCesiumWriter>(packet.openBillboardProperty())) {
+                final BillboardCesiumWriter billboard = using$1.resource;
+                try (Using<BillboardCesiumWriter> using$2 = new Using<BillboardCesiumWriter>(billboard.openInterval())) {
+                    final BillboardCesiumWriter interval = using$2.resource;
+                    interval.writeImageProperty(expectedImage, CesiumResourceBehavior.LINK_TO);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, BillboardCesiumWriter.ImagePropertyName, expectedImage);
+        assertExpectedJson(PacketCesiumWriter.BillboardPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testScaleProperty() {
+        final double expectedScale = 2.0;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<BillboardCesiumWriter> using$1 = new Using<BillboardCesiumWriter>(packet.openBillboardProperty())) {
+                final BillboardCesiumWriter billboard = using$1.resource;
+                try (Using<BillboardCesiumWriter> using$2 = new Using<BillboardCesiumWriter>(billboard.openInterval())) {
+                    final BillboardCesiumWriter interval = using$2.resource;
+                    interval.writeScaleProperty(expectedScale);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, BillboardCesiumWriter.ScalePropertyName, expectedScale);
+        assertExpectedJson(PacketCesiumWriter.BillboardPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testPixelOffsetProperty() {
+        Rectangular expectedPixelOffset = new Rectangular(12.5, 3.5);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<BillboardCesiumWriter> using$1 = new Using<BillboardCesiumWriter>(packet.openBillboardProperty())) {
+                final BillboardCesiumWriter billboard = using$1.resource;
+                try (Using<BillboardCesiumWriter> using$2 = new Using<BillboardCesiumWriter>(billboard.openInterval())) {
+                    final BillboardCesiumWriter interval = using$2.resource;
+                    interval.writePixelOffsetProperty(expectedPixelOffset);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, BillboardCesiumWriter.PixelOffsetPropertyName, expectedPixelOffset);
+        assertExpectedJson(PacketCesiumWriter.BillboardPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testEyeOffsetProperty() {
+        Cartesian expectedEyeOffset = new Cartesian(1.0, 2.0, 3.0);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<BillboardCesiumWriter> using$1 = new Using<BillboardCesiumWriter>(packet.openBillboardProperty())) {
+                final BillboardCesiumWriter billboard = using$1.resource;
+                try (Using<BillboardCesiumWriter> using$2 = new Using<BillboardCesiumWriter>(billboard.openInterval())) {
+                    final BillboardCesiumWriter interval = using$2.resource;
+                    interval.writeEyeOffsetProperty(expectedEyeOffset);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, BillboardCesiumWriter.EyeOffsetPropertyName, expectedEyeOffset);
+        assertExpectedJson(PacketCesiumWriter.BillboardPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testHorizontalOriginProperty() {
+        final CesiumHorizontalOrigin expectedHorizontalOrigin = CesiumHorizontalOrigin.CENTER;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<BillboardCesiumWriter> using$1 = new Using<BillboardCesiumWriter>(packet.openBillboardProperty())) {
+                final BillboardCesiumWriter billboard = using$1.resource;
+                try (Using<BillboardCesiumWriter> using$2 = new Using<BillboardCesiumWriter>(billboard.openInterval())) {
+                    final BillboardCesiumWriter interval = using$2.resource;
+                    interval.writeHorizontalOriginProperty(expectedHorizontalOrigin);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, BillboardCesiumWriter.HorizontalOriginPropertyName, expectedHorizontalOrigin);
+        assertExpectedJson(PacketCesiumWriter.BillboardPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testVerticalOriginProperty() {
+        final CesiumVerticalOrigin expectedVerticalOrigin = CesiumVerticalOrigin.CENTER;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<BillboardCesiumWriter> using$1 = new Using<BillboardCesiumWriter>(packet.openBillboardProperty())) {
+                final BillboardCesiumWriter billboard = using$1.resource;
+                try (Using<BillboardCesiumWriter> using$2 = new Using<BillboardCesiumWriter>(billboard.openInterval())) {
+                    final BillboardCesiumWriter interval = using$2.resource;
+                    interval.writeVerticalOriginProperty(expectedVerticalOrigin);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, BillboardCesiumWriter.VerticalOriginPropertyName, expectedVerticalOrigin);
+        assertExpectedJson(PacketCesiumWriter.BillboardPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testHeightReferenceProperty() {
+        final CesiumHeightReference expectedHeightReference = CesiumHeightReference.CLAMP_TO_GROUND;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<BillboardCesiumWriter> using$1 = new Using<BillboardCesiumWriter>(packet.openBillboardProperty())) {
+                final BillboardCesiumWriter billboard = using$1.resource;
+                try (Using<BillboardCesiumWriter> using$2 = new Using<BillboardCesiumWriter>(billboard.openInterval())) {
+                    final BillboardCesiumWriter interval = using$2.resource;
+                    interval.writeHeightReferenceProperty(expectedHeightReference);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, BillboardCesiumWriter.HeightReferencePropertyName, expectedHeightReference);
+        assertExpectedJson(PacketCesiumWriter.BillboardPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testColorProperty() {
+        Color expectedColor = ColorHelper.fromArgb(0, 255, 0, 255);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<BillboardCesiumWriter> using$1 = new Using<BillboardCesiumWriter>(packet.openBillboardProperty())) {
+                final BillboardCesiumWriter billboard = using$1.resource;
+                try (Using<BillboardCesiumWriter> using$2 = new Using<BillboardCesiumWriter>(billboard.openInterval())) {
+                    final BillboardCesiumWriter interval = using$2.resource;
+                    interval.writeColorProperty(expectedColor);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, BillboardCesiumWriter.ColorPropertyName, expectedColor);
+        assertExpectedJson(PacketCesiumWriter.BillboardPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testRotationProperty() {
+        final double expectedRotation = 1.0;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<BillboardCesiumWriter> using$1 = new Using<BillboardCesiumWriter>(packet.openBillboardProperty())) {
+                final BillboardCesiumWriter billboard = using$1.resource;
+                try (Using<BillboardCesiumWriter> using$2 = new Using<BillboardCesiumWriter>(billboard.openInterval())) {
+                    final BillboardCesiumWriter interval = using$2.resource;
+                    interval.writeRotationProperty(expectedRotation);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, BillboardCesiumWriter.RotationPropertyName, expectedRotation);
+        assertExpectedJson(PacketCesiumWriter.BillboardPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testAlignedAxisProperty() {
+        UnitCartesian expectedAlignedAxis = UnitCartesian.getUnitX();
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<BillboardCesiumWriter> using$1 = new Using<BillboardCesiumWriter>(packet.openBillboardProperty())) {
+                final BillboardCesiumWriter billboard = using$1.resource;
+                try (Using<BillboardCesiumWriter> using$2 = new Using<BillboardCesiumWriter>(billboard.openInterval())) {
+                    final BillboardCesiumWriter interval = using$2.resource;
+                    interval.writeAlignedAxisProperty(expectedAlignedAxis);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, BillboardCesiumWriter.AlignedAxisPropertyName, expectedAlignedAxis);
+        assertExpectedJson(PacketCesiumWriter.BillboardPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testSizeInMetersProperty() {
+        final boolean expectedSizeInMeters = true;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<BillboardCesiumWriter> using$1 = new Using<BillboardCesiumWriter>(packet.openBillboardProperty())) {
+                final BillboardCesiumWriter billboard = using$1.resource;
+                try (Using<BillboardCesiumWriter> using$2 = new Using<BillboardCesiumWriter>(billboard.openInterval())) {
+                    final BillboardCesiumWriter interval = using$2.resource;
+                    interval.writeSizeInMetersProperty(expectedSizeInMeters);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, BillboardCesiumWriter.SizeInMetersPropertyName, expectedSizeInMeters);
+        assertExpectedJson(PacketCesiumWriter.BillboardPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testWidthProperty() {
+        final double expectedWidth = 12.0;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<BillboardCesiumWriter> using$1 = new Using<BillboardCesiumWriter>(packet.openBillboardProperty())) {
+                final BillboardCesiumWriter billboard = using$1.resource;
+                try (Using<BillboardCesiumWriter> using$2 = new Using<BillboardCesiumWriter>(billboard.openInterval())) {
+                    final BillboardCesiumWriter interval = using$2.resource;
+                    interval.writeWidthProperty(expectedWidth);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, BillboardCesiumWriter.WidthPropertyName, expectedWidth);
+        assertExpectedJson(PacketCesiumWriter.BillboardPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testHeightProperty() {
+        final double expectedHeight = 34.0;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<BillboardCesiumWriter> using$1 = new Using<BillboardCesiumWriter>(packet.openBillboardProperty())) {
+                final BillboardCesiumWriter billboard = using$1.resource;
+                try (Using<BillboardCesiumWriter> using$2 = new Using<BillboardCesiumWriter>(billboard.openInterval())) {
+                    final BillboardCesiumWriter interval = using$2.resource;
+                    interval.writeHeightProperty(expectedHeight);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, BillboardCesiumWriter.HeightPropertyName, expectedHeight);
+        assertExpectedJson(PacketCesiumWriter.BillboardPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testTranslucencyByDistanceProperty() {
+        NearFarScalar expectedTranslucencyByDistance = new NearFarScalar(100.0, 1.0, 200.0, 0.5);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<BillboardCesiumWriter> using$1 = new Using<BillboardCesiumWriter>(packet.openBillboardProperty())) {
+                final BillboardCesiumWriter billboard = using$1.resource;
+                try (Using<BillboardCesiumWriter> using$2 = new Using<BillboardCesiumWriter>(billboard.openInterval())) {
+                    final BillboardCesiumWriter interval = using$2.resource;
+                    interval.writeTranslucencyByDistanceProperty(expectedTranslucencyByDistance);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, BillboardCesiumWriter.TranslucencyByDistancePropertyName, expectedTranslucencyByDistance);
+        assertExpectedJson(PacketCesiumWriter.BillboardPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testPixelOffsetScaleByDistanceProperty() {
+        NearFarScalar expectedPixelOffsetScaleByDistance = new NearFarScalar(10.0, 1.0, 20.0, 2.0);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<BillboardCesiumWriter> using$1 = new Using<BillboardCesiumWriter>(packet.openBillboardProperty())) {
+                final BillboardCesiumWriter billboard = using$1.resource;
+                try (Using<BillboardCesiumWriter> using$2 = new Using<BillboardCesiumWriter>(billboard.openInterval())) {
+                    final BillboardCesiumWriter interval = using$2.resource;
+                    interval.writePixelOffsetScaleByDistanceProperty(expectedPixelOffsetScaleByDistance);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, BillboardCesiumWriter.PixelOffsetScaleByDistancePropertyName, expectedPixelOffsetScaleByDistance);
+        assertExpectedJson(PacketCesiumWriter.BillboardPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testImageSubRegionProperty() {
+        BoundingRectangle expectedImageSubRegion = new BoundingRectangle(1.0, 2.0, 3.0, 4.0);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<BillboardCesiumWriter> using$1 = new Using<BillboardCesiumWriter>(packet.openBillboardProperty())) {
+                final BillboardCesiumWriter billboard = using$1.resource;
+                try (Using<BillboardCesiumWriter> using$2 = new Using<BillboardCesiumWriter>(billboard.openInterval())) {
+                    final BillboardCesiumWriter interval = using$2.resource;
+                    interval.writeImageSubRegionProperty(expectedImageSubRegion);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, BillboardCesiumWriter.ImageSubRegionPropertyName, expectedImageSubRegion);
+        assertExpectedJson(PacketCesiumWriter.BillboardPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testDistanceDisplayConditionProperty() {
+        Bounds expectedDistanceDisplayCondition = new Bounds(10.0, 20.0);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<BillboardCesiumWriter> using$1 = new Using<BillboardCesiumWriter>(packet.openBillboardProperty())) {
+                final BillboardCesiumWriter billboard = using$1.resource;
+                try (Using<BillboardCesiumWriter> using$2 = new Using<BillboardCesiumWriter>(billboard.openInterval())) {
+                    final BillboardCesiumWriter interval = using$2.resource;
+                    interval.writeDistanceDisplayConditionProperty(expectedDistanceDisplayCondition);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, BillboardCesiumWriter.DistanceDisplayConditionPropertyName, expectedDistanceDisplayCondition);
+        assertExpectedJson(PacketCesiumWriter.BillboardPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testDisableDepthTestDistanceProperty() {
+        final double expectedDisableDepthTestDistance = 1234.0;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<BillboardCesiumWriter> using$1 = new Using<BillboardCesiumWriter>(packet.openBillboardProperty())) {
+                final BillboardCesiumWriter billboard = using$1.resource;
+                try (Using<BillboardCesiumWriter> using$2 = new Using<BillboardCesiumWriter>(billboard.openInterval())) {
+                    final BillboardCesiumWriter interval = using$2.resource;
+                    interval.writeDisableDepthTestDistanceProperty(expectedDisableDepthTestDistance);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, BillboardCesiumWriter.DisableDepthTestDistancePropertyName, expectedDisableDepthTestDistance);
+        assertExpectedJson(PacketCesiumWriter.BillboardPropertyName, tempCollection$0);
+    }
+
     @Test
     public final void testShowProperty() {
         final boolean expectedShow = true;

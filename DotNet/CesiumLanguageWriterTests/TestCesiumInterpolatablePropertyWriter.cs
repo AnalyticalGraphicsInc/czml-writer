@@ -27,7 +27,7 @@ namespace CesiumLanguageWriterTests
 
             AssertExpectedJson(expectedPropertyName, new Dictionary<string, object>
             {
-                { "interpolationAlgorithm", CesiumFormattingHelper.InterpolationAlgorithmToString(expectedInterpolationAlgorithm) },
+                { "interpolationAlgorithm", expectedInterpolationAlgorithm },
             });
         }
 
@@ -71,7 +71,7 @@ namespace CesiumLanguageWriterTests
 
             AssertExpectedJson(expectedPropertyName, new Dictionary<string, object>
             {
-                { "forwardExtrapolationType", CesiumFormattingHelper.ExtrapolationTypeToString(expectedForwardExtrapolationType) },
+                { "forwardExtrapolationType", expectedForwardExtrapolationType },
             });
         }
 
@@ -93,7 +93,7 @@ namespace CesiumLanguageWriterTests
 
             AssertExpectedJson(expectedPropertyName, new Dictionary<string, object>
             {
-                { "backwardExtrapolationType", CesiumFormattingHelper.ExtrapolationTypeToString(expectedBackwardExtrapolationType) },
+                { "backwardExtrapolationType", expectedBackwardExtrapolationType },
             });
         }
 

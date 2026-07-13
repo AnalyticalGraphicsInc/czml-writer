@@ -11,7 +11,16 @@ namespace CesiumLanguageWriterTests
     public class TestOrientationCesiumWriter : TestCesiumInterpolatablePropertyWriter<OrientationCesiumWriter>
     {
         [Test]
-        public void TestCompleteExample()
+        public void WriteCompleteExample()
+        {
+            string outputPath = Path.Combine(TestContext.CurrentContext.TestDirectory, "OrientationCesiumWriter.czml");
+            using (var streamWriter = new StreamWriter(outputPath))
+            {
+                WriteCompleteExample(new CesiumOutputStream(streamWriter, true));
+            }
+        }
+
+        private static void WriteCompleteExample(CesiumOutputStream output)
         {
             var date = new JulianDate(2451545.0);
 
@@ -29,30 +38,28 @@ namespace CesiumLanguageWriterTests
             {
                 date.AddDays(1.0),
                 date.AddDays(1.5),
-                date.AddDays(2.0)
+                date.AddDays(2.0),
             };
 
             var interval2SamplePositions = new List<Cartographic>
             {
                 Cartographic.Zero,
                 new Cartographic(1.0, 0.0, 0.0),
-                new Cartographic(0.0, 1.0, 0.0)
+                new Cartographic(0.0, 1.0, 0.0),
             };
             var interval2SampleOrientations = new List<UnitQuaternion>
             {
                 UnitQuaternion.Identity,
                 new UnitQuaternion(0.0, 1.0, 0.0, 0.0),
-                new UnitQuaternion(0.0, 0.0, 1.0, 0.0)
+                new UnitQuaternion(0.0, 0.0, 1.0, 0.0),
             };
 
             const CesiumInterpolationAlgorithm orientationInterpolationAlgorithm = CesiumInterpolationAlgorithm.Linear;
             const int orientationInterpolationDegree = 1;
 
-            var stringWriter = new StringWriter();
-            var outputStream = new CesiumOutputStream(stringWriter, true);
             var writer = new CesiumStreamWriter();
 
-            using (var packet = writer.OpenPacket(outputStream))
+            using (var packet = writer.OpenPacket(output))
             {
                 packet.WriteId(id);
                 packet.WriteAvailability(availability);
@@ -90,8 +97,6 @@ namespace CesiumLanguageWriterTests
                     }
                 }
             }
-
-            Console.WriteLine(stringWriter.ToString());
         }
 
         [Test]

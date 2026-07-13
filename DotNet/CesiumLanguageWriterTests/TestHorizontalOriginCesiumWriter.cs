@@ -23,7 +23,7 @@ namespace CesiumLanguageWriterTests
 
             AssertExpectedJson(new Dictionary<string, object>
             {
-                { expectedPropertyName, CesiumFormattingHelper.HorizontalOriginToString(expectedValue) },
+                { expectedPropertyName, expectedValue },
             });
         }
 
@@ -46,7 +46,7 @@ namespace CesiumLanguageWriterTests
             AssertExpectedJson(expectedPropertyName, new Dictionary<string, object>
             {
                 { "interval", CesiumFormattingHelper.ToIso8601Interval(start, stop, Iso8601Format.Compact) },
-                { HorizontalOriginCesiumWriter.HorizontalOriginPropertyName, CesiumFormattingHelper.HorizontalOriginToString(expectedValue) },
+                { HorizontalOriginCesiumWriter.HorizontalOriginPropertyName, expectedValue },
             });
         }
 

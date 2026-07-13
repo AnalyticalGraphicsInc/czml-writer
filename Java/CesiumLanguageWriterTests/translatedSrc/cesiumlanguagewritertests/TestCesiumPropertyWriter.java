@@ -119,6 +119,39 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
             double d = (Double) value;
             return DoubleHelper.toString(d, CultureInfoHelper.getInvariantCulture());
         }
+        if (value instanceof CesiumStripeOrientation) {
+            value = CesiumFormattingHelper.stripeOrientationToString((CesiumStripeOrientation) value);
+        } else if (value instanceof CesiumHorizontalOrigin) {
+            value = CesiumFormattingHelper.horizontalOriginToString((CesiumHorizontalOrigin) value);
+        } else if (value instanceof CesiumVerticalOrigin) {
+            value = CesiumFormattingHelper.verticalOriginToString((CesiumVerticalOrigin) value);
+        } else if (value instanceof CesiumHeightReference) {
+            value = CesiumFormattingHelper.heightReferenceToString((CesiumHeightReference) value);
+        } else if (value instanceof CesiumPathMode) {
+            value = CesiumFormattingHelper.pathModeToString((CesiumPathMode) value);
+        } else if (value instanceof CesiumShadowMode) {
+            value = CesiumFormattingHelper.shadowModeToString((CesiumShadowMode) value);
+        } else if (value instanceof CesiumInterpolationAlgorithm) {
+            value = CesiumFormattingHelper.interpolationAlgorithmToString((CesiumInterpolationAlgorithm) value);
+        } else if (value instanceof CesiumExtrapolationType) {
+            value = CesiumFormattingHelper.extrapolationTypeToString((CesiumExtrapolationType) value);
+        } else if (value instanceof CesiumLabelStyle) {
+            value = CesiumFormattingHelper.labelStyleToString((CesiumLabelStyle) value);
+        } else if (value instanceof CesiumArcType) {
+            value = CesiumFormattingHelper.arcTypeToString((CesiumArcType) value);
+        } else if (value instanceof CesiumCornerType) {
+            value = CesiumFormattingHelper.cornerTypeToString((CesiumCornerType) value);
+        } else if (value instanceof CesiumClassificationType) {
+            value = CesiumFormattingHelper.classificationTypeToString((CesiumClassificationType) value);
+        } else if (value instanceof CesiumColorBlendMode) {
+            value = CesiumFormattingHelper.colorBlendModeToString((CesiumColorBlendMode) value);
+        } else if (value instanceof CesiumSensorVolumePortionToDisplay) {
+            value = CesiumFormattingHelper.sensorVolumePortionToDisplayToString((CesiumSensorVolumePortionToDisplay) value);
+        } else if (value instanceof ClockRange) {
+            value = CesiumFormattingHelper.clockRangeToString((ClockRange) value);
+        } else if (value instanceof ClockStep) {
+            value = CesiumFormattingHelper.clockStepToString((ClockStep) value);
+        }
         if (value instanceof String) {
             return StringHelper.format("\"{0}\"", value);
         }
@@ -142,56 +175,88 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
             MapHelper.add(tempCollection$2, "distanceDisplayCondition", tempCollection$3);
             return createExpectedJson(tempCollection$2);
         }
+        if (value instanceof BoundingRectangle) {
+            BoundingRectangle boundingRectangle = (BoundingRectangle) value;
+            final ArrayList<Object> tempCollection$5 = new ArrayList<Object>();
+            tempCollection$5.add(boundingRectangle.getLeft());
+            tempCollection$5.add(boundingRectangle.getBottom());
+            tempCollection$5.add(boundingRectangle.getWidth());
+            tempCollection$5.add(boundingRectangle.getHeight());
+            final Map<String, Object> tempCollection$4 = MapHelper.create();
+            MapHelper.add(tempCollection$4, "boundingRectangle", tempCollection$5);
+            return createExpectedJson(tempCollection$4);
+        }
+        if (value instanceof CartographicExtent) {
+            CartographicExtent extent = (CartographicExtent) value;
+            final ArrayList<Object> tempCollection$7 = new ArrayList<Object>();
+            tempCollection$7.add(extent.getWestLongitude());
+            tempCollection$7.add(extent.getSouthLatitude());
+            tempCollection$7.add(extent.getEastLongitude());
+            tempCollection$7.add(extent.getNorthLatitude());
+            final Map<String, Object> tempCollection$6 = MapHelper.create();
+            MapHelper.add(tempCollection$6, "wsen", tempCollection$7);
+            return createExpectedJson(tempCollection$6);
+        }
         if (value instanceof NearFarScalar) {
             NearFarScalar nearFarScalar = (NearFarScalar) value;
-            final ArrayList<Object> tempCollection$5 = new ArrayList<Object>();
-            tempCollection$5.add(nearFarScalar.getNearDistance());
-            tempCollection$5.add(nearFarScalar.getNearValue());
-            tempCollection$5.add(nearFarScalar.getFarDistance());
-            tempCollection$5.add(nearFarScalar.getFarValue());
-            final Map<String, Object> tempCollection$4 = MapHelper.create();
-            MapHelper.add(tempCollection$4, "nearFarScalar", tempCollection$5);
-            return createExpectedJson(tempCollection$4);
+            final ArrayList<Object> tempCollection$9 = new ArrayList<Object>();
+            tempCollection$9.add(nearFarScalar.getNearDistance());
+            tempCollection$9.add(nearFarScalar.getNearValue());
+            tempCollection$9.add(nearFarScalar.getFarDistance());
+            tempCollection$9.add(nearFarScalar.getFarValue());
+            final Map<String, Object> tempCollection$8 = MapHelper.create();
+            MapHelper.add(tempCollection$8, "nearFarScalar", tempCollection$9);
+            return createExpectedJson(tempCollection$8);
         }
         if (value instanceof Rectangular) {
             Rectangular rectangular = (Rectangular) value;
-            final ArrayList<Object> tempCollection$7 = new ArrayList<Object>();
-            tempCollection$7.add(rectangular.getX());
-            tempCollection$7.add(rectangular.getY());
-            final Map<String, Object> tempCollection$6 = MapHelper.create();
-            MapHelper.add(tempCollection$6, "cartesian2", tempCollection$7);
-            return createExpectedJson(tempCollection$6);
+            final ArrayList<Object> tempCollection$11 = new ArrayList<Object>();
+            tempCollection$11.add(rectangular.getX());
+            tempCollection$11.add(rectangular.getY());
+            final Map<String, Object> tempCollection$10 = MapHelper.create();
+            MapHelper.add(tempCollection$10, "cartesian2", tempCollection$11);
+            return createExpectedJson(tempCollection$10);
         }
         if (value instanceof Cartesian) {
             Cartesian cartesian = (Cartesian) value;
-            final ArrayList<Object> tempCollection$9 = new ArrayList<Object>();
-            tempCollection$9.add(cartesian.getX());
-            tempCollection$9.add(cartesian.getY());
-            tempCollection$9.add(cartesian.getZ());
-            final Map<String, Object> tempCollection$8 = MapHelper.create();
-            MapHelper.add(tempCollection$8, "cartesian", tempCollection$9);
-            return createExpectedJson(tempCollection$8);
+            final ArrayList<Object> tempCollection$13 = new ArrayList<Object>();
+            tempCollection$13.add(cartesian.getX());
+            tempCollection$13.add(cartesian.getY());
+            tempCollection$13.add(cartesian.getZ());
+            final Map<String, Object> tempCollection$12 = MapHelper.create();
+            MapHelper.add(tempCollection$12, "cartesian", tempCollection$13);
+            return createExpectedJson(tempCollection$12);
         }
         if (value instanceof Cartographic) {
             Cartographic cartographic = (Cartographic) value;
-            final ArrayList<Object> tempCollection$11 = new ArrayList<Object>();
-            tempCollection$11.add(cartographic.getLongitude());
-            tempCollection$11.add(cartographic.getLatitude());
-            tempCollection$11.add(cartographic.getHeight());
-            final Map<String, Object> tempCollection$10 = MapHelper.create();
-            MapHelper.add(tempCollection$10, "cartographicRadians", tempCollection$11);
-            return createExpectedJson(tempCollection$10);
+            final ArrayList<Object> tempCollection$15 = new ArrayList<Object>();
+            tempCollection$15.add(cartographic.getLongitude());
+            tempCollection$15.add(cartographic.getLatitude());
+            tempCollection$15.add(cartographic.getHeight());
+            final Map<String, Object> tempCollection$14 = MapHelper.create();
+            MapHelper.add(tempCollection$14, "cartographicRadians", tempCollection$15);
+            return createExpectedJson(tempCollection$14);
+        }
+        if (value instanceof UnitCartesian) {
+            UnitCartesian unitCartesian = (UnitCartesian) value;
+            final ArrayList<Object> tempCollection$17 = new ArrayList<Object>();
+            tempCollection$17.add(unitCartesian.getX());
+            tempCollection$17.add(unitCartesian.getY());
+            tempCollection$17.add(unitCartesian.getZ());
+            final Map<String, Object> tempCollection$16 = MapHelper.create();
+            MapHelper.add(tempCollection$16, "unitCartesian", tempCollection$17);
+            return createExpectedJson(tempCollection$16);
         }
         if (value instanceof UnitQuaternion) {
             UnitQuaternion unitQuaternion = (UnitQuaternion) value;
-            final ArrayList<Object> tempCollection$13 = new ArrayList<Object>();
-            tempCollection$13.add(unitQuaternion.getX());
-            tempCollection$13.add(unitQuaternion.getY());
-            tempCollection$13.add(unitQuaternion.getZ());
-            tempCollection$13.add(unitQuaternion.getW());
-            final Map<String, Object> tempCollection$12 = MapHelper.create();
-            MapHelper.add(tempCollection$12, "unitQuaternion", tempCollection$13);
-            return createExpectedJson(tempCollection$12);
+            final ArrayList<Object> tempCollection$19 = new ArrayList<Object>();
+            tempCollection$19.add(unitQuaternion.getX());
+            tempCollection$19.add(unitQuaternion.getY());
+            tempCollection$19.add(unitQuaternion.getZ());
+            tempCollection$19.add(unitQuaternion.getW());
+            final Map<String, Object> tempCollection$18 = MapHelper.create();
+            MapHelper.add(tempCollection$18, "unitQuaternion", tempCollection$19);
+            return createExpectedJson(tempCollection$18);
         }
         {
             Map<String, Object> dictionary = value instanceof Map ? (Map<String, Object>) value : null;
@@ -200,7 +265,7 @@ public abstract class TestCesiumPropertyWriter<TDerived extends CesiumPropertyWr
             }
         }
         {
-            Iterable<Object> list = value instanceof Iterable ? (Iterable<Object>) value : null;
+            Iterable list = value instanceof Iterable ? (Iterable) value : null;
             if (list != null) {
                 StringBuilder builder = new StringBuilder();
                 builder.append('[');

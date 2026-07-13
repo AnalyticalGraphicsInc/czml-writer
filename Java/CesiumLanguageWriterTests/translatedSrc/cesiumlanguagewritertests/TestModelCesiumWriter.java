@@ -127,7 +127,7 @@ public class TestModelCesiumWriter extends TestCesiumPropertyWriter<ModelCesiumW
             }
         }
         final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, ModelCesiumWriter.ColorBlendModePropertyName, CesiumFormattingHelper.colorBlendModeToString(expectedColorBlendMode));
+        MapHelper.add(tempCollection$0, ModelCesiumWriter.ColorBlendModePropertyName, expectedColorBlendMode);
         assertExpectedJson(PacketCesiumWriter.ModelPropertyName, tempCollection$0);
     }
 
@@ -146,6 +146,150 @@ public class TestModelCesiumWriter extends TestCesiumPropertyWriter<ModelCesiumW
         }
         final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, ModelCesiumWriter.ColorBlendAmountPropertyName, expectedColorBlendAmount);
+        assertExpectedJson(PacketCesiumWriter.ModelPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testScaleProperty() {
+        final double expectedScale = 2.0;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<ModelCesiumWriter> using$1 = new Using<ModelCesiumWriter>(packet.openModelProperty())) {
+                final ModelCesiumWriter model = using$1.resource;
+                try (Using<ModelCesiumWriter> using$2 = new Using<ModelCesiumWriter>(model.openInterval())) {
+                    final ModelCesiumWriter interval = using$2.resource;
+                    interval.writeScaleProperty(expectedScale);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, ModelCesiumWriter.ScalePropertyName, expectedScale);
+        assertExpectedJson(PacketCesiumWriter.ModelPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testMinimumPixelSizeProperty() {
+        final double expectedMinimumPixelSize = 16.0;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<ModelCesiumWriter> using$1 = new Using<ModelCesiumWriter>(packet.openModelProperty())) {
+                final ModelCesiumWriter model = using$1.resource;
+                try (Using<ModelCesiumWriter> using$2 = new Using<ModelCesiumWriter>(model.openInterval())) {
+                    final ModelCesiumWriter interval = using$2.resource;
+                    interval.writeMinimumPixelSizeProperty(expectedMinimumPixelSize);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, ModelCesiumWriter.MinimumPixelSizePropertyName, expectedMinimumPixelSize);
+        assertExpectedJson(PacketCesiumWriter.ModelPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testMaximumScaleProperty() {
+        final double expectedMaximumScale = 10.0;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<ModelCesiumWriter> using$1 = new Using<ModelCesiumWriter>(packet.openModelProperty())) {
+                final ModelCesiumWriter model = using$1.resource;
+                try (Using<ModelCesiumWriter> using$2 = new Using<ModelCesiumWriter>(model.openInterval())) {
+                    final ModelCesiumWriter interval = using$2.resource;
+                    interval.writeMaximumScaleProperty(expectedMaximumScale);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, ModelCesiumWriter.MaximumScalePropertyName, expectedMaximumScale);
+        assertExpectedJson(PacketCesiumWriter.ModelPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testIncrementallyLoadTexturesProperty() {
+        final boolean expectedIncrementallyLoadTextures = true;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<ModelCesiumWriter> using$1 = new Using<ModelCesiumWriter>(packet.openModelProperty())) {
+                final ModelCesiumWriter model = using$1.resource;
+                try (Using<ModelCesiumWriter> using$2 = new Using<ModelCesiumWriter>(model.openInterval())) {
+                    final ModelCesiumWriter interval = using$2.resource;
+                    interval.writeIncrementallyLoadTexturesProperty(expectedIncrementallyLoadTextures);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, ModelCesiumWriter.IncrementallyLoadTexturesPropertyName, expectedIncrementallyLoadTextures);
+        assertExpectedJson(PacketCesiumWriter.ModelPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testRunAnimationsProperty() {
+        final boolean expectedRunAnimations = false;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<ModelCesiumWriter> using$1 = new Using<ModelCesiumWriter>(packet.openModelProperty())) {
+                final ModelCesiumWriter model = using$1.resource;
+                try (Using<ModelCesiumWriter> using$2 = new Using<ModelCesiumWriter>(model.openInterval())) {
+                    final ModelCesiumWriter interval = using$2.resource;
+                    interval.writeRunAnimationsProperty(expectedRunAnimations);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, ModelCesiumWriter.RunAnimationsPropertyName, expectedRunAnimations);
+        assertExpectedJson(PacketCesiumWriter.ModelPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testShadowsProperty() {
+        final CesiumShadowMode expectedShadows = CesiumShadowMode.ENABLED;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<ModelCesiumWriter> using$1 = new Using<ModelCesiumWriter>(packet.openModelProperty())) {
+                final ModelCesiumWriter model = using$1.resource;
+                try (Using<ModelCesiumWriter> using$2 = new Using<ModelCesiumWriter>(model.openInterval())) {
+                    final ModelCesiumWriter interval = using$2.resource;
+                    interval.writeShadowsProperty(expectedShadows);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, ModelCesiumWriter.ShadowsPropertyName, expectedShadows);
+        assertExpectedJson(PacketCesiumWriter.ModelPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testHeightReferenceProperty() {
+        final CesiumHeightReference expectedHeightReference = CesiumHeightReference.CLAMP_TO_GROUND;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<ModelCesiumWriter> using$1 = new Using<ModelCesiumWriter>(packet.openModelProperty())) {
+                final ModelCesiumWriter model = using$1.resource;
+                try (Using<ModelCesiumWriter> using$2 = new Using<ModelCesiumWriter>(model.openInterval())) {
+                    final ModelCesiumWriter interval = using$2.resource;
+                    interval.writeHeightReferenceProperty(expectedHeightReference);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, ModelCesiumWriter.HeightReferencePropertyName, expectedHeightReference);
+        assertExpectedJson(PacketCesiumWriter.ModelPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testDistanceDisplayConditionProperty() {
+        Bounds expectedBounds = new Bounds(1234.0, 5678.0);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<ModelCesiumWriter> using$1 = new Using<ModelCesiumWriter>(packet.openModelProperty())) {
+                final ModelCesiumWriter model = using$1.resource;
+                try (Using<ModelCesiumWriter> using$2 = new Using<ModelCesiumWriter>(model.openInterval())) {
+                    final ModelCesiumWriter interval = using$2.resource;
+                    interval.writeDistanceDisplayConditionProperty(expectedBounds);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, ModelCesiumWriter.DistanceDisplayConditionPropertyName, expectedBounds);
         assertExpectedJson(PacketCesiumWriter.ModelPropertyName, tempCollection$0);
     }
 

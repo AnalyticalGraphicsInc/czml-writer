@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
+using JetBrains.Annotations;
 using NUnit.Framework;
 
 namespace CesiumLanguageWriterTests
@@ -174,72 +175,75 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void CreateExampleFile()
         {
-            using (var stringWriter = new StringWriter())
+            string outputPath = Path.Combine(TestContext.CurrentContext.TestDirectory, "CustomPropertiesCesiumWriter.czml");
+            using (var streamWriter = new StreamWriter(outputPath))
             {
-                var output = new CesiumOutputStream(stringWriter, true);
-                var writer = new CesiumStreamWriter();
-
-                output.WriteStartSequence();
-
-                using (var documentPacket = writer.OpenPacket(output))
-                {
-                    documentPacket.WriteId("document");
-                    documentPacket.WriteVersion("1.0");
-                    using (var clock = documentPacket.OpenClockProperty())
-                    using (var interval = clock.OpenInterval(m_startDate, m_stopDate))
-                    {
-                        interval.WriteCurrentTime(m_startDate);
-                    }
-                }
-
-                using (var packet = writer.OpenPacket(output))
-                {
-                    packet.WriteId("MyID");
-
-                    using (var customProperties = packet.OpenPropertiesProperty())
-                    {
-                        using (var customProperty = customProperties.OpenCustomPropertyProperty("custom_boolean"))
-                        using (var intervalList = customProperty.OpenMultipleIntervals())
-                        {
-                            using (var interval = intervalList.OpenInterval(m_startDate, m_startDate.AddSeconds(1)))
-                            {
-                                interval.WriteBoolean(true);
-                            }
-
-                            using (var interval = intervalList.OpenInterval(m_startDate.AddSeconds(1), m_startDate.AddSeconds(2)))
-                            {
-                                interval.WriteBoolean(false);
-                            }
-
-                            using (var interval = intervalList.OpenInterval(m_startDate.AddSeconds(2), m_stopDate))
-                            {
-                                interval.WriteBoolean(true);
-                            }
-                        }
-
-                        using (var customProperty = customProperties.OpenCustomPropertyProperty("custom_cartesian"))
-                        {
-                            var dates = new List<JulianDate>();
-                            var values = new List<Cartesian>();
-
-                            dates.Add(m_startDate);
-                            values.Add(new Cartesian(1.0, 2.0, 3.0));
-
-                            dates.Add(m_startDate.AddSeconds(60.0));
-                            values.Add(new Cartesian(4.0, 5.0, 6.0));
-
-                            dates.Add(m_startDate.AddSeconds(120.0));
-                            values.Add(new Cartesian(7.0, 8.0, 9.0));
-
-                            customProperty.WriteCartesian(dates, values);
-                        }
-                    }
-                }
-
-                output.WriteEndSequence();
-
-                Console.WriteLine(stringWriter.ToString());
+                CreateExampleFile(new CesiumOutputStream(streamWriter, true));
             }
+        }
+
+        private void CreateExampleFile([NotNull] CesiumOutputStream output)
+        {
+            var writer = new CesiumStreamWriter();
+
+            output.WriteStartSequence();
+
+            using (var documentPacket = writer.OpenPacket(output))
+            {
+                documentPacket.WriteId("document");
+                documentPacket.WriteVersion("1.0");
+                using (var clock = documentPacket.OpenClockProperty())
+                using (var interval = clock.OpenInterval(m_startDate, m_stopDate))
+                {
+                    interval.WriteCurrentTime(m_startDate);
+                }
+            }
+
+            using (var packet = writer.OpenPacket(output))
+            {
+                packet.WriteId("MyID");
+
+                using (var customProperties = packet.OpenPropertiesProperty())
+                {
+                    using (var customProperty = customProperties.OpenCustomPropertyProperty("custom_boolean"))
+                    using (var intervalList = customProperty.OpenMultipleIntervals())
+                    {
+                        using (var interval = intervalList.OpenInterval(m_startDate, m_startDate.AddSeconds(1)))
+                        {
+                            interval.WriteBoolean(true);
+                        }
+
+                        using (var interval = intervalList.OpenInterval(m_startDate.AddSeconds(1), m_startDate.AddSeconds(2)))
+                        {
+                            interval.WriteBoolean(false);
+                        }
+
+                        using (var interval = intervalList.OpenInterval(m_startDate.AddSeconds(2), m_stopDate))
+                        {
+                            interval.WriteBoolean(true);
+                        }
+                    }
+
+                    using (var customProperty = customProperties.OpenCustomPropertyProperty("custom_cartesian"))
+                    {
+                        var dates = new List<JulianDate>();
+                        var values = new List<Cartesian>();
+
+                        dates.Add(m_startDate);
+                        values.Add(new Cartesian(1.0, 2.0, 3.0));
+
+                        dates.Add(m_startDate.AddSeconds(60.0));
+                        values.Add(new Cartesian(4.0, 5.0, 6.0));
+
+                        dates.Add(m_startDate.AddSeconds(120.0));
+                        values.Add(new Cartesian(7.0, 8.0, 9.0));
+
+                        customProperty.WriteCartesian(dates, values);
+                    }
+                }
+            }
+
+            output.WriteEndSequence();
         }
 
         protected override CesiumPropertyWriter<CustomPropertiesCesiumWriter> CreatePropertyWriter(string propertyName)

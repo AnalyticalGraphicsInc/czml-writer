@@ -5,7 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.IO;
 using CesiumLanguageWriterTests.Data;
+using JetBrains.Annotations;
 
 namespace CesiumLanguageWriterTests
 {
@@ -128,10 +130,57 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
+        public void TestLeadAndTrailTimeProperties()
+        {
+            const double expectedLeadTime = 10.0;
+            const double expectedTrailTime = 20.0;
+
+            using (var packet = OpenPacket())
+            using (var path = packet.OpenPathProperty())
+            using (var interval = path.OpenInterval())
+            {
+                interval.WriteLeadTimeProperty(expectedLeadTime);
+                interval.WriteTrailTimeProperty(expectedTrailTime);
+            }
+
+            AssertExpectedJson(PacketCesiumWriter.PathPropertyName, new Dictionary<string, object>
+            {
+                { PathCesiumWriter.LeadTimePropertyName, expectedLeadTime },
+                { PathCesiumWriter.TrailTimePropertyName, expectedTrailTime },
+            });
+        }
+
+        [Test]
+        public void TestDistanceDisplayConditionProperty()
+        {
+            var expectedBounds = new Bounds(1234.0, 5678.0);
+
+            using (var packet = OpenPacket())
+            using (var path = packet.OpenPathProperty())
+            using (var interval = path.OpenInterval())
+            {
+                interval.WriteDistanceDisplayConditionProperty(expectedBounds);
+            }
+
+            AssertExpectedJson(PacketCesiumWriter.PathPropertyName, new Dictionary<string, object>
+            {
+                { PathCesiumWriter.DistanceDisplayConditionPropertyName, expectedBounds },
+            });
+        }
+
+        [Test]
         public void PathPortionMaterialExample()
         {
-            OutputStream.PrettyFormatting = true;
-            OutputStream.WriteStartSequence();
+            string outputPath = Path.Combine(TestContext.CurrentContext.TestDirectory, "PathCesiumWriter.czml");
+            using (var streamWriter = new StreamWriter(outputPath))
+            {
+                PathPortionMaterialExample(new CesiumOutputStream(streamWriter, true));
+            }
+        }
+
+        private static void PathPortionMaterialExample([NotNull] CesiumOutputStream output)
+        {
+            output.WriteStartSequence();
 
             var startDate = GregorianDate.Parse("2026/04/01").ToJulianDate();
 
@@ -150,7 +199,9 @@ namespace CesiumLanguageWriterTests
                 new Cartographic(-83, 10, 170000),
             };
 
-            using (var packet = OpenPacket())
+            var writer = new CesiumStreamWriter();
+
+            using (var packet = writer.OpenPacket(output))
             {
                 packet.WriteId("document");
                 packet.WriteVersion("1.0");
@@ -164,7 +215,7 @@ namespace CesiumLanguageWriterTests
                 }
             }
 
-            using (var packet = OpenPacket())
+            using (var packet = writer.OpenPacket(output))
             {
                 packet.WriteAvailability(dates.First(), dates.Last());
 
@@ -220,9 +271,7 @@ namespace CesiumLanguageWriterTests
                 }
             }
 
-            OutputStream.WriteEndSequence();
-
-            Console.WriteLine(StringWriter.ToString());
+            output.WriteEndSequence();
         }
 
         protected override CesiumPropertyWriter<PathCesiumWriter> CreatePropertyWriter(string propertyName)

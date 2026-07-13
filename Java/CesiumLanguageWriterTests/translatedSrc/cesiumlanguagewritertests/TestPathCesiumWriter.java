@@ -3,16 +3,18 @@ package cesiumlanguagewritertests;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.ColorHelper;
-import agi.foundation.compatibility.ConsoleHelper;
 import agi.foundation.compatibility.IterableHelper;
 import agi.foundation.compatibility.MapHelper;
+import agi.foundation.compatibility.PathHelper;
+import agi.foundation.compatibility.StreamWriterHelper;
+import agi.foundation.compatibility.TestContext;
 import agi.foundation.compatibility.TestContextRule;
 import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import cesiumlanguagewritertests.data.*;
 import java.awt.Color;
-import java.io.StringWriter;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
@@ -140,9 +142,55 @@ public class TestPathCesiumWriter extends TestCesiumPropertyWriter<PathCesiumWri
     }
 
     @Test
+    public final void testLeadAndTrailTimeProperties() {
+        final double expectedLeadTime = 10.0;
+        final double expectedTrailTime = 20.0;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PathCesiumWriter> using$1 = new Using<PathCesiumWriter>(packet.openPathProperty())) {
+                final PathCesiumWriter path = using$1.resource;
+                try (Using<PathCesiumWriter> using$2 = new Using<PathCesiumWriter>(path.openInterval())) {
+                    final PathCesiumWriter interval = using$2.resource;
+                    interval.writeLeadTimeProperty(expectedLeadTime);
+                    interval.writeTrailTimeProperty(expectedTrailTime);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, PathCesiumWriter.LeadTimePropertyName, expectedLeadTime);
+        MapHelper.add(tempCollection$0, PathCesiumWriter.TrailTimePropertyName, expectedTrailTime);
+        assertExpectedJson(PacketCesiumWriter.PathPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testDistanceDisplayConditionProperty() {
+        Bounds expectedBounds = new Bounds(1234.0, 5678.0);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PathCesiumWriter> using$1 = new Using<PathCesiumWriter>(packet.openPathProperty())) {
+                final PathCesiumWriter path = using$1.resource;
+                try (Using<PathCesiumWriter> using$2 = new Using<PathCesiumWriter>(path.openInterval())) {
+                    final PathCesiumWriter interval = using$2.resource;
+                    interval.writeDistanceDisplayConditionProperty(expectedBounds);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, PathCesiumWriter.DistanceDisplayConditionPropertyName, expectedBounds);
+        assertExpectedJson(PacketCesiumWriter.PathPropertyName, tempCollection$0);
+    }
+
+    @Test
     public final void pathPortionMaterialExample() {
-        getOutputStream().setPrettyFormatting(true);
-        getOutputStream().writeStartSequence();
+        String outputPath = PathHelper.combine(TestContext.getCurrentContext().getTestDirectory(), "PathCesiumWriter.czml");
+        try (Using<OutputStreamWriter> using$0 = new Using<OutputStreamWriter>(StreamWriterHelper.create(outputPath))) {
+            final OutputStreamWriter streamWriter = using$0.resource;
+            pathPortionMaterialExample(new CesiumOutputStream(streamWriter, true));
+        }
+    }
+
+    private static void pathPortionMaterialExample(@Nonnull CesiumOutputStream output) {
+        output.writeStartSequence();
         JulianDate startDate = GregorianDate.parse("2026/04/01").toJulianDate();
         final ArrayList<JulianDate> tempCollection$0 = new ArrayList<JulianDate>();
         tempCollection$0.add(startDate);
@@ -156,7 +204,8 @@ public class TestPathCesiumWriter extends TestCesiumPropertyWriter<PathCesiumWri
         tempCollection$1.add(new Cartographic(-78.0, 24.0, 140000.0));
         tempCollection$1.add(new Cartographic(-83.0, 10.0, 170000.0));
         ArrayList<Cartographic> positions = tempCollection$1;
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+        CesiumStreamWriter writer = new CesiumStreamWriter();
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(writer.openPacket(output))) {
             final PacketCesiumWriter packet = using$0.resource;
             packet.writeId("document");
             packet.writeVersion("1.0");
@@ -168,7 +217,7 @@ public class TestPathCesiumWriter extends TestCesiumPropertyWriter<PathCesiumWri
                 }
             }
         }
-        try (Using<PacketCesiumWriter> using$3 = new Using<PacketCesiumWriter>(openPacket())) {
+        try (Using<PacketCesiumWriter> using$3 = new Using<PacketCesiumWriter>(writer.openPacket(output))) {
             final PacketCesiumWriter packet = using$3.resource;
             packet.writeAvailability(IterableHelper.first(dates), IterableHelper.last(dates));
             try (Using<PositionCesiumWriter> using$4 = new Using<PositionCesiumWriter>(packet.openPositionProperty())) {
@@ -232,8 +281,7 @@ public class TestPathCesiumWriter extends TestCesiumPropertyWriter<PathCesiumWri
                 }
             }
         }
-        getOutputStream().writeEndSequence();
-        ConsoleHelper.writeLine(getStringWriter().toString());
+        output.writeEndSequence();
     }
 
     @Override

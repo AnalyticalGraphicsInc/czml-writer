@@ -3,13 +3,17 @@ package cesiumlanguagewritertests;
 
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.AssertHelper;
-import agi.foundation.compatibility.ConsoleHelper;
+import agi.foundation.compatibility.ColorHelper;
 import agi.foundation.compatibility.MapHelper;
+import agi.foundation.compatibility.PathHelper;
+import agi.foundation.compatibility.StreamWriterHelper;
+import agi.foundation.compatibility.TestContext;
 import agi.foundation.compatibility.TestContextRule;
 import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.awt.Color;
+import java.io.OutputStreamWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -185,10 +189,287 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
     }
 
     @Test
-    public final void testExample() {
-        CesiumOutputStream outputStream = new CesiumOutputStream(getStringWriter(), true);
+    public final void testFillProperty() {
+        final boolean expectedFill = true;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PolygonCesiumWriter> using$1 = new Using<PolygonCesiumWriter>(packet.openPolygonProperty())) {
+                final PolygonCesiumWriter polygon = using$1.resource;
+                try (Using<PolygonCesiumWriter> using$2 = new Using<PolygonCesiumWriter>(polygon.openInterval())) {
+                    final PolygonCesiumWriter interval = using$2.resource;
+                    interval.writeFillProperty(expectedFill);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, PolygonCesiumWriter.FillPropertyName, expectedFill);
+        assertExpectedJson(PacketCesiumWriter.PolygonPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testOutlineProperty() {
+        final boolean expectedOutline = true;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PolygonCesiumWriter> using$1 = new Using<PolygonCesiumWriter>(packet.openPolygonProperty())) {
+                final PolygonCesiumWriter polygon = using$1.resource;
+                try (Using<PolygonCesiumWriter> using$2 = new Using<PolygonCesiumWriter>(polygon.openInterval())) {
+                    final PolygonCesiumWriter interval = using$2.resource;
+                    interval.writeOutlineProperty(expectedOutline);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, PolygonCesiumWriter.OutlinePropertyName, expectedOutline);
+        assertExpectedJson(PacketCesiumWriter.PolygonPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testOutlineColorProperty() {
+        Color expectedOutlineColor = ColorHelper.fromArgb(128, 10, 20, 30);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PolygonCesiumWriter> using$1 = new Using<PolygonCesiumWriter>(packet.openPolygonProperty())) {
+                final PolygonCesiumWriter polygon = using$1.resource;
+                try (Using<PolygonCesiumWriter> using$2 = new Using<PolygonCesiumWriter>(polygon.openInterval())) {
+                    final PolygonCesiumWriter interval = using$2.resource;
+                    interval.writeOutlineColorProperty(expectedOutlineColor);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, PolygonCesiumWriter.OutlineColorPropertyName, expectedOutlineColor);
+        assertExpectedJson(PacketCesiumWriter.PolygonPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testOutlineWidthProperty() {
+        final double expectedOutlineWidth = 2.5;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PolygonCesiumWriter> using$1 = new Using<PolygonCesiumWriter>(packet.openPolygonProperty())) {
+                final PolygonCesiumWriter polygon = using$1.resource;
+                try (Using<PolygonCesiumWriter> using$2 = new Using<PolygonCesiumWriter>(polygon.openInterval())) {
+                    final PolygonCesiumWriter interval = using$2.resource;
+                    interval.writeOutlineWidthProperty(expectedOutlineWidth);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, PolygonCesiumWriter.OutlineWidthPropertyName, expectedOutlineWidth);
+        assertExpectedJson(PacketCesiumWriter.PolygonPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testHeightProperty() {
+        final double expectedHeight = 10.0;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PolygonCesiumWriter> using$1 = new Using<PolygonCesiumWriter>(packet.openPolygonProperty())) {
+                final PolygonCesiumWriter polygon = using$1.resource;
+                try (Using<PolygonCesiumWriter> using$2 = new Using<PolygonCesiumWriter>(polygon.openInterval())) {
+                    final PolygonCesiumWriter interval = using$2.resource;
+                    interval.writeHeightProperty(expectedHeight);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, PolygonCesiumWriter.HeightPropertyName, expectedHeight);
+        assertExpectedJson(PacketCesiumWriter.PolygonPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testExtrudedHeightProperty() {
+        final double expectedExtrudedHeight = 20.0;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PolygonCesiumWriter> using$1 = new Using<PolygonCesiumWriter>(packet.openPolygonProperty())) {
+                final PolygonCesiumWriter polygon = using$1.resource;
+                try (Using<PolygonCesiumWriter> using$2 = new Using<PolygonCesiumWriter>(polygon.openInterval())) {
+                    final PolygonCesiumWriter interval = using$2.resource;
+                    interval.writeExtrudedHeightProperty(expectedExtrudedHeight);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, PolygonCesiumWriter.ExtrudedHeightPropertyName, expectedExtrudedHeight);
+        assertExpectedJson(PacketCesiumWriter.PolygonPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testHeightReferenceProperty() {
+        final CesiumHeightReference expectedHeightReference = CesiumHeightReference.CLAMP_TO_GROUND;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PolygonCesiumWriter> using$1 = new Using<PolygonCesiumWriter>(packet.openPolygonProperty())) {
+                final PolygonCesiumWriter polygon = using$1.resource;
+                try (Using<PolygonCesiumWriter> using$2 = new Using<PolygonCesiumWriter>(polygon.openInterval())) {
+                    final PolygonCesiumWriter interval = using$2.resource;
+                    interval.writeHeightReferenceProperty(expectedHeightReference);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, PolygonCesiumWriter.HeightReferencePropertyName, expectedHeightReference);
+        assertExpectedJson(PacketCesiumWriter.PolygonPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testExtrudedHeightReferenceProperty() {
+        final CesiumHeightReference expectedExtrudedHeightReference = CesiumHeightReference.RELATIVE_TO_GROUND;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PolygonCesiumWriter> using$1 = new Using<PolygonCesiumWriter>(packet.openPolygonProperty())) {
+                final PolygonCesiumWriter polygon = using$1.resource;
+                try (Using<PolygonCesiumWriter> using$2 = new Using<PolygonCesiumWriter>(polygon.openInterval())) {
+                    final PolygonCesiumWriter interval = using$2.resource;
+                    interval.writeExtrudedHeightReferenceProperty(expectedExtrudedHeightReference);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, PolygonCesiumWriter.ExtrudedHeightReferencePropertyName, expectedExtrudedHeightReference);
+        assertExpectedJson(PacketCesiumWriter.PolygonPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testPerPositionHeightProperty() {
+        final boolean expectedPerPositionHeight = true;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PolygonCesiumWriter> using$1 = new Using<PolygonCesiumWriter>(packet.openPolygonProperty())) {
+                final PolygonCesiumWriter polygon = using$1.resource;
+                try (Using<PolygonCesiumWriter> using$2 = new Using<PolygonCesiumWriter>(polygon.openInterval())) {
+                    final PolygonCesiumWriter interval = using$2.resource;
+                    interval.writePerPositionHeightProperty(expectedPerPositionHeight);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, PolygonCesiumWriter.PerPositionHeightPropertyName, expectedPerPositionHeight);
+        assertExpectedJson(PacketCesiumWriter.PolygonPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testCloseTopProperty() {
+        final boolean expectedCloseTop = false;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PolygonCesiumWriter> using$1 = new Using<PolygonCesiumWriter>(packet.openPolygonProperty())) {
+                final PolygonCesiumWriter polygon = using$1.resource;
+                try (Using<PolygonCesiumWriter> using$2 = new Using<PolygonCesiumWriter>(polygon.openInterval())) {
+                    final PolygonCesiumWriter interval = using$2.resource;
+                    interval.writeCloseTopProperty(expectedCloseTop);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, PolygonCesiumWriter.CloseTopPropertyName, expectedCloseTop);
+        assertExpectedJson(PacketCesiumWriter.PolygonPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testCloseBottomProperty() {
+        final boolean expectedCloseBottom = true;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PolygonCesiumWriter> using$1 = new Using<PolygonCesiumWriter>(packet.openPolygonProperty())) {
+                final PolygonCesiumWriter polygon = using$1.resource;
+                try (Using<PolygonCesiumWriter> using$2 = new Using<PolygonCesiumWriter>(polygon.openInterval())) {
+                    final PolygonCesiumWriter interval = using$2.resource;
+                    interval.writeCloseBottomProperty(expectedCloseBottom);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, PolygonCesiumWriter.CloseBottomPropertyName, expectedCloseBottom);
+        assertExpectedJson(PacketCesiumWriter.PolygonPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testShadowsProperty() {
+        final CesiumShadowMode expectedShadows = CesiumShadowMode.ENABLED;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PolygonCesiumWriter> using$1 = new Using<PolygonCesiumWriter>(packet.openPolygonProperty())) {
+                final PolygonCesiumWriter polygon = using$1.resource;
+                try (Using<PolygonCesiumWriter> using$2 = new Using<PolygonCesiumWriter>(polygon.openInterval())) {
+                    final PolygonCesiumWriter interval = using$2.resource;
+                    interval.writeShadowsProperty(expectedShadows);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, PolygonCesiumWriter.ShadowsPropertyName, expectedShadows);
+        assertExpectedJson(PacketCesiumWriter.PolygonPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testDistanceDisplayConditionProperty() {
+        Bounds expectedBounds = new Bounds(1234.0, 5678.0);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PolygonCesiumWriter> using$1 = new Using<PolygonCesiumWriter>(packet.openPolygonProperty())) {
+                final PolygonCesiumWriter polygon = using$1.resource;
+                try (Using<PolygonCesiumWriter> using$2 = new Using<PolygonCesiumWriter>(polygon.openInterval())) {
+                    final PolygonCesiumWriter interval = using$2.resource;
+                    interval.writeDistanceDisplayConditionProperty(expectedBounds);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, PolygonCesiumWriter.DistanceDisplayConditionPropertyName, expectedBounds);
+        assertExpectedJson(PacketCesiumWriter.PolygonPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testClassificationTypeProperty() {
+        final CesiumClassificationType expectedClassificationType = CesiumClassificationType.TERRAIN;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PolygonCesiumWriter> using$1 = new Using<PolygonCesiumWriter>(packet.openPolygonProperty())) {
+                final PolygonCesiumWriter polygon = using$1.resource;
+                try (Using<PolygonCesiumWriter> using$2 = new Using<PolygonCesiumWriter>(polygon.openInterval())) {
+                    final PolygonCesiumWriter interval = using$2.resource;
+                    interval.writeClassificationTypeProperty(expectedClassificationType);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, PolygonCesiumWriter.ClassificationTypePropertyName, expectedClassificationType);
+        assertExpectedJson(PacketCesiumWriter.PolygonPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testArcTypeProperty() {
+        final CesiumArcType expectedArcType = CesiumArcType.GEODESIC;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PolygonCesiumWriter> using$1 = new Using<PolygonCesiumWriter>(packet.openPolygonProperty())) {
+                final PolygonCesiumWriter polygon = using$1.resource;
+                try (Using<PolygonCesiumWriter> using$2 = new Using<PolygonCesiumWriter>(polygon.openInterval())) {
+                    final PolygonCesiumWriter interval = using$2.resource;
+                    interval.writeArcTypeProperty(expectedArcType);
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, PolygonCesiumWriter.ArcTypePropertyName, expectedArcType);
+        assertExpectedJson(PacketCesiumWriter.PolygonPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void writeExample() {
+        String outputPath = PathHelper.combine(TestContext.getCurrentContext().getTestDirectory(), "PolygonCesiumWriter.czml");
+        try (Using<OutputStreamWriter> using$0 = new Using<OutputStreamWriter>(StreamWriterHelper.create(outputPath))) {
+            final OutputStreamWriter streamWriter = using$0.resource;
+            writeExample(new CesiumOutputStream(streamWriter, true));
+        }
+    }
+
+    private static void writeExample(@Nonnull CesiumOutputStream output) {
         CesiumStreamWriter writer = new CesiumStreamWriter();
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(writer.openPacket(outputStream))) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(writer.openPacket(output))) {
             final PacketCesiumWriter packet = using$0.resource;
             packet.writeId("examplePolygon");
             try (Using<PolygonCesiumWriter> using$1 = new Using<PolygonCesiumWriter>(packet.openPolygonProperty())) {
@@ -229,7 +510,6 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
                 }
             }
         }
-        ConsoleHelper.writeLine(getStringWriter().toString());
     }
 
     @Override

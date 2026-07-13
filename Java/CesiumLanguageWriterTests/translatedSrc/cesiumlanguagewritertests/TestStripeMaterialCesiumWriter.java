@@ -51,7 +51,7 @@ public class TestStripeMaterialCesiumWriter extends TestCesiumPropertyWriter<Str
         MapHelper.add(tempCollection$2, StripeMaterialCesiumWriter.EvenColorPropertyName, expectedEvenColor);
         MapHelper.add(tempCollection$2, StripeMaterialCesiumWriter.OddColorPropertyName, expectedOddColor);
         MapHelper.add(tempCollection$2, StripeMaterialCesiumWriter.OffsetPropertyName, expectedOffset);
-        MapHelper.add(tempCollection$2, StripeMaterialCesiumWriter.OrientationPropertyName, CesiumFormattingHelper.stripeOrientationToString(expectedOrientation));
+        MapHelper.add(tempCollection$2, StripeMaterialCesiumWriter.OrientationPropertyName, expectedOrientation);
         MapHelper.add(tempCollection$2, StripeMaterialCesiumWriter.RepeatPropertyName, expectedRepeat);
         final Map<String, Object> tempCollection$1 = MapHelper.create();
         MapHelper.add(tempCollection$1, PolylineMaterialCesiumWriter.StripePropertyName, tempCollection$2);

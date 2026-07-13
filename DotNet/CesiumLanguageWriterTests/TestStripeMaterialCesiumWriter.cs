@@ -41,7 +41,7 @@ namespace CesiumLanguageWriterTests
                                 { StripeMaterialCesiumWriter.EvenColorPropertyName, expectedEvenColor },
                                 { StripeMaterialCesiumWriter.OddColorPropertyName, expectedOddColor },
                                 { StripeMaterialCesiumWriter.OffsetPropertyName, expectedOffset },
-                                { StripeMaterialCesiumWriter.OrientationPropertyName, CesiumFormattingHelper.StripeOrientationToString(expectedOrientation) },
+                                { StripeMaterialCesiumWriter.OrientationPropertyName, expectedOrientation },
                                 { StripeMaterialCesiumWriter.RepeatPropertyName, expectedRepeat },
                             }
                         },

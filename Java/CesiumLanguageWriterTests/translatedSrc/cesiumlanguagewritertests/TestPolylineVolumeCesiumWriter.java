@@ -4,13 +4,16 @@ package cesiumlanguagewritertests;
 import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.ColorHelper;
-import agi.foundation.compatibility.ConsoleHelper;
 import agi.foundation.compatibility.MapHelper;
+import agi.foundation.compatibility.PathHelper;
+import agi.foundation.compatibility.StreamWriterHelper;
+import agi.foundation.compatibility.TestContext;
 import agi.foundation.compatibility.TestContextRule;
 import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.awt.Color;
+import java.io.OutputStreamWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -142,20 +145,24 @@ public class TestPolylineVolumeCesiumWriter extends TestCesiumPropertyWriter<Pol
     * Create the example CZML file included in the Cesium Sandcastle.
     */
     @Test
-    public final void testExample() {
-        StringWriter stringWriter = new StringWriter();
-        final CesiumOutputStream tempObj$0 = new CesiumOutputStream(stringWriter);
-        tempObj$0.setPrettyFormatting(true);
-        CesiumOutputStream outputStream = tempObj$0;
+    public final void writeExample() {
+        String outputPath = PathHelper.combine(TestContext.getCurrentContext().getTestDirectory(), "PolylineVolumeCesiumWriter.czml");
+        try (Using<OutputStreamWriter> using$0 = new Using<OutputStreamWriter>(StreamWriterHelper.create(outputPath))) {
+            final OutputStreamWriter streamWriter = using$0.resource;
+            writeExample(new CesiumOutputStream(streamWriter, true));
+        }
+    }
+
+    private static void writeExample(@Nonnull CesiumOutputStream output) {
+        output.writeStartSequence();
         CesiumStreamWriter writer = new CesiumStreamWriter();
-        outputStream.writeStartSequence();
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(writer.openPacket(outputStream))) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(writer.openPacket(output))) {
             final PacketCesiumWriter packet = using$0.resource;
             packet.writeId("document");
             packet.writeName("CZML Geometries: Polyline Volume");
             packet.writeVersion("1.0");
         }
-        try (Using<PacketCesiumWriter> using$1 = new Using<PacketCesiumWriter>(writer.openPacket(outputStream))) {
+        try (Using<PacketCesiumWriter> using$1 = new Using<PacketCesiumWriter>(writer.openPacket(output))) {
             final PacketCesiumWriter packet = using$1.resource;
             packet.writeId("greenBox");
             packet.writeName("Green box with beveled corners and outline");
@@ -190,7 +197,7 @@ public class TestPolylineVolumeCesiumWriter extends TestCesiumPropertyWriter<Pol
                 polylineVolume.writeOutlineColorProperty(Color.BLACK);
             }
         }
-        try (Using<PacketCesiumWriter> using$7 = new Using<PacketCesiumWriter>(writer.openPacket(outputStream))) {
+        try (Using<PacketCesiumWriter> using$7 = new Using<PacketCesiumWriter>(writer.openPacket(output))) {
             final PacketCesiumWriter packet = using$7.resource;
             packet.writeId("blueStar");
             packet.writeName("Blue star with mitered corners and outline");
@@ -207,11 +214,12 @@ public class TestPolylineVolumeCesiumWriter extends TestCesiumPropertyWriter<Pol
                 try (Using<ShapeCesiumWriter> using$10 = new Using<ShapeCesiumWriter>(polylineVolume.openShapeProperty())) {
                     final ShapeCesiumWriter shape = using$10.resource;
                     final int arms = 7;
+                    final int vertexCount = 2 * arms;
                     final double rOuter = 70000.0;
                     final double rInner = 50000.0;
                     final double angle = Math.PI / arms;
-                    ArrayList<Rectangular> vertices = new ArrayList<Rectangular>();
-                    for (int i = 0; i < 2 * arms; i++) {
+                    ArrayList<Rectangular> vertices = new ArrayList<Rectangular>(vertexCount);
+                    for (int i = 0; i < vertexCount; ++i) {
                         double r = i % 2 == 0 ? rOuter : rInner;
                         vertices.add(new Rectangular(Math.cos(i * angle) * r, Math.sin(i * angle) * r));
                     }
@@ -227,8 +235,7 @@ public class TestPolylineVolumeCesiumWriter extends TestCesiumPropertyWriter<Pol
                 }
             }
         }
-        outputStream.writeEndSequence();
-        ConsoleHelper.writeLine(stringWriter.toString());
+        output.writeEndSequence();
     }
 
     @Override

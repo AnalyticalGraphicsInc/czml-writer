@@ -2,15 +2,17 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.ConsoleHelper;
 import agi.foundation.compatibility.MapHelper;
+import agi.foundation.compatibility.PathHelper;
+import agi.foundation.compatibility.StreamWriterHelper;
+import agi.foundation.compatibility.TestContext;
 import agi.foundation.compatibility.TestContextRule;
 import agi.foundation.compatibility.UriHelper;
 import agi.foundation.compatibility.UriKind;
 import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
-import java.io.StringWriter;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
@@ -85,47 +87,50 @@ public class TestArticulationsCesiumWriter extends TestCesiumPropertyWriter<Arti
 
     @Test
     public final void createExampleFile() {
-        try (Using<StringWriter> using$0 = new Using<StringWriter>(new StringWriter())) {
-            final StringWriter stringWriter = using$0.resource;
-            CesiumOutputStream output = new CesiumOutputStream(stringWriter, true);
-            CesiumStreamWriter writer = new CesiumStreamWriter();
-            try (Using<PacketCesiumWriter> using$1 = new Using<PacketCesiumWriter>(writer.openPacket(output))) {
-                final PacketCesiumWriter packet = using$1.resource;
-                packet.writeId("MyID");
-                JulianDate startDate = new GregorianDate(2012, 4, 2, 12, 0, 0.0).toJulianDate();
-                JulianDate stopDate = new GregorianDate(2012, 4, 2, 12, 1, 0.0).toJulianDate();
-                try (Using<ClockCesiumWriter> using$2 = new Using<ClockCesiumWriter>(packet.openClockProperty())) {
-                    final ClockCesiumWriter clock = using$2.resource;
-                    try (Using<ClockCesiumWriter> using$3 = new Using<ClockCesiumWriter>(clock.openInterval(startDate, stopDate))) {
-                        final ClockCesiumWriter interval = using$3.resource;
-                        interval.writeCurrentTime(startDate);
-                    }
+        String outputPath = PathHelper.combine(TestContext.getCurrentContext().getTestDirectory(), "ArticulationsCesiumWriter.czml");
+        try (Using<OutputStreamWriter> using$0 = new Using<OutputStreamWriter>(StreamWriterHelper.create(outputPath))) {
+            final OutputStreamWriter streamWriter = using$0.resource;
+            createExampleFile(new CesiumOutputStream(streamWriter, true));
+        }
+    }
+
+    private static void createExampleFile(@Nonnull CesiumOutputStream output) {
+        CesiumStreamWriter writer = new CesiumStreamWriter();
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(writer.openPacket(output))) {
+            final PacketCesiumWriter packet = using$0.resource;
+            packet.writeId("MyID");
+            JulianDate startDate = new GregorianDate(2012, 4, 2, 12, 0, 0.0).toJulianDate();
+            JulianDate stopDate = new GregorianDate(2012, 4, 2, 12, 1, 0.0).toJulianDate();
+            try (Using<ClockCesiumWriter> using$1 = new Using<ClockCesiumWriter>(packet.openClockProperty())) {
+                final ClockCesiumWriter clock = using$1.resource;
+                try (Using<ClockCesiumWriter> using$2 = new Using<ClockCesiumWriter>(clock.openInterval(startDate, stopDate))) {
+                    final ClockCesiumWriter interval = using$2.resource;
+                    interval.writeCurrentTime(startDate);
                 }
-                try (Using<ModelCesiumWriter> using$4 = new Using<ModelCesiumWriter>(packet.openModelProperty())) {
-                    final ModelCesiumWriter modelWriter = using$4.resource;
-                    modelWriter.writeGltfProperty(UriHelper.create("example.gltf", UriKind.RELATIVE), CesiumResourceBehavior.LINK_TO);
-                    try (Using<ArticulationsCesiumWriter> using$5 = new Using<ArticulationsCesiumWriter>(modelWriter.openArticulationsProperty())) {
-                        final ArticulationsCesiumWriter articulationsWriter = using$5.resource;
-                        try (Using<ArticulationCesiumWriter> using$6 = new Using<ArticulationCesiumWriter>(articulationsWriter.openArticulationProperty("articulation1 stage1"))) {
-                            final ArticulationCesiumWriter articulationWriter = using$6.resource;
-                            articulationWriter.writeNumber(45.0);
-                        }
-                        try (Using<ArticulationCesiumWriter> using$7 = new Using<ArticulationCesiumWriter>(articulationsWriter.openArticulationProperty("articulation1 stage2"))) {
-                            final ArticulationCesiumWriter articulationWriter = using$7.resource;
-                            final ArrayList<JulianDate> tempCollection$0 = new ArrayList<JulianDate>();
-                            tempCollection$0.add(startDate);
-                            tempCollection$0.add(stopDate);
-                            ArrayList<JulianDate> dates = tempCollection$0;
-                            final ArrayList<Double> tempCollection$1 = new ArrayList<Double>();
-                            tempCollection$1.add(1.0);
-                            tempCollection$1.add(10.0);
-                            ArrayList<Double> values = tempCollection$1;
-                            articulationWriter.writeNumber(dates, values);
-                        }
+            }
+            try (Using<ModelCesiumWriter> using$3 = new Using<ModelCesiumWriter>(packet.openModelProperty())) {
+                final ModelCesiumWriter modelWriter = using$3.resource;
+                modelWriter.writeGltfProperty(UriHelper.create("example.gltf", UriKind.RELATIVE), CesiumResourceBehavior.LINK_TO);
+                try (Using<ArticulationsCesiumWriter> using$4 = new Using<ArticulationsCesiumWriter>(modelWriter.openArticulationsProperty())) {
+                    final ArticulationsCesiumWriter articulationsWriter = using$4.resource;
+                    try (Using<ArticulationCesiumWriter> using$5 = new Using<ArticulationCesiumWriter>(articulationsWriter.openArticulationProperty("articulation1 stage1"))) {
+                        final ArticulationCesiumWriter articulationWriter = using$5.resource;
+                        articulationWriter.writeNumber(45.0);
+                    }
+                    try (Using<ArticulationCesiumWriter> using$6 = new Using<ArticulationCesiumWriter>(articulationsWriter.openArticulationProperty("articulation1 stage2"))) {
+                        final ArticulationCesiumWriter articulationWriter = using$6.resource;
+                        final ArrayList<JulianDate> tempCollection$0 = new ArrayList<JulianDate>();
+                        tempCollection$0.add(startDate);
+                        tempCollection$0.add(stopDate);
+                        ArrayList<JulianDate> dates = tempCollection$0;
+                        final ArrayList<Double> tempCollection$1 = new ArrayList<Double>();
+                        tempCollection$1.add(1.0);
+                        tempCollection$1.add(10.0);
+                        ArrayList<Double> values = tempCollection$1;
+                        articulationWriter.writeNumber(dates, values);
                     }
                 }
             }
-            ConsoleHelper.writeLine(stringWriter.toString());
         }
     }
 

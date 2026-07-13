@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
+using JetBrains.Annotations;
 using NUnit.Framework;
 
 namespace CesiumLanguageWriterTests
@@ -133,25 +134,29 @@ namespace CesiumLanguageWriterTests
         /// Create the example CZML file included in the Cesium Sandcastle.
         /// </summary>
         [Test]
-        public void TestExample()
+        public void WriteExample()
         {
-            var stringWriter = new StringWriter();
-            var outputStream = new CesiumOutputStream(stringWriter)
+            string outputPath = Path.Combine(TestContext.CurrentContext.TestDirectory, "PolylineVolumeCesiumWriter.czml");
+            using (var streamWriter = new StreamWriter(outputPath))
             {
-                PrettyFormatting = true
-            };
+                WriteExample(new CesiumOutputStream(streamWriter, true));
+            }
+        }
+
+        private static void WriteExample([NotNull] CesiumOutputStream output)
+        {
+            output.WriteStartSequence();
+
             var writer = new CesiumStreamWriter();
 
-            outputStream.WriteStartSequence();
-
-            using (var packet = writer.OpenPacket(outputStream))
+            using (var packet = writer.OpenPacket(output))
             {
                 packet.WriteId("document");
                 packet.WriteName("CZML Geometries: Polyline Volume");
                 packet.WriteVersion("1.0");
             }
 
-            using (var packet = writer.OpenPacket(outputStream))
+            using (var packet = writer.OpenPacket(output))
             {
                 packet.WriteId("greenBox");
                 packet.WriteName("Green box with beveled corners and outline");
@@ -194,7 +199,7 @@ namespace CesiumLanguageWriterTests
                 }
             }
 
-            using (var packet = writer.OpenPacket(outputStream))
+            using (var packet = writer.OpenPacket(output))
             {
                 packet.WriteId("blueStar");
                 packet.WriteName("Blue star with mitered corners and outline");
@@ -214,12 +219,13 @@ namespace CesiumLanguageWriterTests
                     using (var shape = polylineVolume.OpenShapeProperty())
                     {
                         const int arms = 7;
+                        const int vertexCount = 2 * arms;
                         const double rOuter = 70000.0;
                         const double rInner = 50000.0;
-
                         const double angle = Math.PI / arms;
-                        var vertices = new List<Rectangular>();
-                        for (int i = 0; i < 2 * arms; i++)
+
+                        var vertices = new List<Rectangular>(vertexCount);
+                        for (int i = 0; i < vertexCount; ++i)
                         {
                             double r = i % 2 == 0 ? rOuter : rInner;
                             vertices.Add(new Rectangular(Math.Cos(i * angle) * r, Math.Sin(i * angle) * r));
@@ -240,9 +246,7 @@ namespace CesiumLanguageWriterTests
                 }
             }
 
-            outputStream.WriteEndSequence();
-
-            Console.WriteLine(stringWriter.ToString());
+            output.WriteEndSequence();
         }
 
         protected override CesiumPropertyWriter<PolylineVolumeCesiumWriter> CreatePropertyWriter(string propertyName)

@@ -2,15 +2,17 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.ConsoleHelper;
 import agi.foundation.compatibility.MapHelper;
+import agi.foundation.compatibility.PathHelper;
+import agi.foundation.compatibility.StreamWriterHelper;
+import agi.foundation.compatibility.TestContext;
 import agi.foundation.compatibility.TestContextRule;
 import agi.foundation.compatibility.UriHelper;
 import agi.foundation.compatibility.UriKind;
 import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
-import java.io.StringWriter;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
@@ -109,49 +111,52 @@ public class TestNodeTransformationsCesiumWriter extends TestCesiumPropertyWrite
 
     @Test
     public final void createExampleFile() {
-        try (Using<StringWriter> using$0 = new Using<StringWriter>(new StringWriter())) {
-            final StringWriter stringWriter = using$0.resource;
-            CesiumOutputStream output = new CesiumOutputStream(stringWriter, true);
-            CesiumStreamWriter writer = new CesiumStreamWriter();
-            try (Using<PacketCesiumWriter> using$1 = new Using<PacketCesiumWriter>(writer.openPacket(output))) {
-                final PacketCesiumWriter packet = using$1.resource;
-                packet.writeId("MyID");
-                JulianDate startDate = new GregorianDate(2012, 4, 2, 12, 0, 0.0).toJulianDate();
-                JulianDate stopDate = new GregorianDate(2012, 4, 2, 12, 1, 0.0).toJulianDate();
-                try (Using<ClockCesiumWriter> using$2 = new Using<ClockCesiumWriter>(packet.openClockProperty())) {
-                    final ClockCesiumWriter clock = using$2.resource;
-                    try (Using<ClockCesiumWriter> using$3 = new Using<ClockCesiumWriter>(clock.openInterval(startDate, stopDate))) {
-                        final ClockCesiumWriter interval = using$3.resource;
-                        interval.writeCurrentTime(startDate);
-                    }
+        String outputPath = PathHelper.combine(TestContext.getCurrentContext().getTestDirectory(), "NodeTransformationsCesiumWriter.czml");
+        try (Using<OutputStreamWriter> using$0 = new Using<OutputStreamWriter>(StreamWriterHelper.create(outputPath))) {
+            final OutputStreamWriter streamWriter = using$0.resource;
+            createExampleFile(new CesiumOutputStream(streamWriter, true));
+        }
+    }
+
+    private static void createExampleFile(@Nonnull CesiumOutputStream output) {
+        CesiumStreamWriter writer = new CesiumStreamWriter();
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(writer.openPacket(output))) {
+            final PacketCesiumWriter packet = using$0.resource;
+            packet.writeId("MyID");
+            JulianDate startDate = new GregorianDate(2012, 4, 2, 12, 0, 0.0).toJulianDate();
+            JulianDate stopDate = new GregorianDate(2012, 4, 2, 12, 1, 0.0).toJulianDate();
+            try (Using<ClockCesiumWriter> using$1 = new Using<ClockCesiumWriter>(packet.openClockProperty())) {
+                final ClockCesiumWriter clock = using$1.resource;
+                try (Using<ClockCesiumWriter> using$2 = new Using<ClockCesiumWriter>(clock.openInterval(startDate, stopDate))) {
+                    final ClockCesiumWriter interval = using$2.resource;
+                    interval.writeCurrentTime(startDate);
                 }
-                try (Using<ModelCesiumWriter> using$4 = new Using<ModelCesiumWriter>(packet.openModelProperty())) {
-                    final ModelCesiumWriter model = using$4.resource;
-                    model.writeGltfProperty(UriHelper.create("example.gltf", UriKind.RELATIVE), CesiumResourceBehavior.LINK_TO);
-                    try (Using<NodeTransformationsCesiumWriter> using$5 = new Using<NodeTransformationsCesiumWriter>(model.openNodeTransformationsProperty())) {
-                        final NodeTransformationsCesiumWriter nodeTransformations = using$5.resource;
-                        try (Using<NodeTransformationCesiumWriter> using$6 = new Using<NodeTransformationCesiumWriter>(nodeTransformations.openNodeTransformationProperty("node1"))) {
-                            final NodeTransformationCesiumWriter nodeTransformation = using$6.resource;
-                            nodeTransformation.writeScaleProperty(new Cartesian(1.0, 2.0, 3.0));
-                            nodeTransformation.writeRotationProperty(UnitQuaternion.getIdentity());
-                            nodeTransformation.writeTranslationProperty(new Cartesian(4.0, 5.0, 6.0));
-                        }
-                        try (Using<NodeTransformationCesiumWriter> using$7 = new Using<NodeTransformationCesiumWriter>(nodeTransformations.openNodeTransformationProperty("node2"))) {
-                            final NodeTransformationCesiumWriter nodeTransformation = using$7.resource;
-                            final ArrayList<JulianDate> tempCollection$0 = new ArrayList<JulianDate>();
-                            tempCollection$0.add(startDate);
-                            tempCollection$0.add(stopDate);
-                            ArrayList<JulianDate> dates = tempCollection$0;
-                            final ArrayList<Cartesian> tempCollection$1 = new ArrayList<Cartesian>();
-                            tempCollection$1.add(new Cartesian(1.0, 2.0, 3.0));
-                            tempCollection$1.add(new Cartesian(10.0, 12.0, 14.0));
-                            ArrayList<Cartesian> values = tempCollection$1;
-                            nodeTransformation.writeScaleProperty(dates, values);
-                        }
+            }
+            try (Using<ModelCesiumWriter> using$3 = new Using<ModelCesiumWriter>(packet.openModelProperty())) {
+                final ModelCesiumWriter model = using$3.resource;
+                model.writeGltfProperty(UriHelper.create("example.gltf", UriKind.RELATIVE), CesiumResourceBehavior.LINK_TO);
+                try (Using<NodeTransformationsCesiumWriter> using$4 = new Using<NodeTransformationsCesiumWriter>(model.openNodeTransformationsProperty())) {
+                    final NodeTransformationsCesiumWriter nodeTransformations = using$4.resource;
+                    try (Using<NodeTransformationCesiumWriter> using$5 = new Using<NodeTransformationCesiumWriter>(nodeTransformations.openNodeTransformationProperty("node1"))) {
+                        final NodeTransformationCesiumWriter nodeTransformation = using$5.resource;
+                        nodeTransformation.writeScaleProperty(new Cartesian(1.0, 2.0, 3.0));
+                        nodeTransformation.writeRotationProperty(UnitQuaternion.getIdentity());
+                        nodeTransformation.writeTranslationProperty(new Cartesian(4.0, 5.0, 6.0));
+                    }
+                    try (Using<NodeTransformationCesiumWriter> using$6 = new Using<NodeTransformationCesiumWriter>(nodeTransformations.openNodeTransformationProperty("node2"))) {
+                        final NodeTransformationCesiumWriter nodeTransformation = using$6.resource;
+                        final ArrayList<JulianDate> tempCollection$0 = new ArrayList<JulianDate>();
+                        tempCollection$0.add(startDate);
+                        tempCollection$0.add(stopDate);
+                        ArrayList<JulianDate> dates = tempCollection$0;
+                        final ArrayList<Cartesian> tempCollection$1 = new ArrayList<Cartesian>();
+                        tempCollection$1.add(new Cartesian(1.0, 2.0, 3.0));
+                        tempCollection$1.add(new Cartesian(10.0, 12.0, 14.0));
+                        ArrayList<Cartesian> values = tempCollection$1;
+                        nodeTransformation.writeScaleProperty(dates, values);
                     }
                 }
             }
-            ConsoleHelper.writeLine(stringWriter.toString());
         }
     }
 

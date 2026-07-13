@@ -2,13 +2,15 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.ConsoleHelper;
 import agi.foundation.compatibility.MapHelper;
+import agi.foundation.compatibility.PathHelper;
+import agi.foundation.compatibility.StreamWriterHelper;
+import agi.foundation.compatibility.TestContext;
 import agi.foundation.compatibility.TestContextRule;
 import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
-import java.io.StringWriter;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
@@ -27,7 +29,15 @@ import org.junit.Test;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestOrientationCesiumWriter extends TestCesiumInterpolatablePropertyWriter<OrientationCesiumWriter> {
     @Test
-    public final void testCompleteExample() {
+    public final void writeCompleteExample() {
+        String outputPath = PathHelper.combine(TestContext.getCurrentContext().getTestDirectory(), "OrientationCesiumWriter.czml");
+        try (Using<OutputStreamWriter> using$0 = new Using<OutputStreamWriter>(StreamWriterHelper.create(outputPath))) {
+            final OutputStreamWriter streamWriter = using$0.resource;
+            writeCompleteExample(new CesiumOutputStream(streamWriter, true));
+        }
+    }
+
+    private static void writeCompleteExample(CesiumOutputStream output) {
         JulianDate date = new JulianDate(2451545.0);
         final String id = "MyID";
         TimeInterval availability = new TimeInterval(date, date.addDays(2.0));
@@ -52,10 +62,8 @@ public class TestOrientationCesiumWriter extends TestCesiumInterpolatablePropert
         ArrayList<UnitQuaternion> interval2SampleOrientations = tempCollection$2;
         final CesiumInterpolationAlgorithm orientationInterpolationAlgorithm = CesiumInterpolationAlgorithm.LINEAR;
         final int orientationInterpolationDegree = 1;
-        StringWriter stringWriter = new StringWriter();
-        CesiumOutputStream outputStream = new CesiumOutputStream(stringWriter, true);
         CesiumStreamWriter writer = new CesiumStreamWriter();
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(writer.openPacket(outputStream))) {
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(writer.openPacket(output))) {
             final PacketCesiumWriter packet = using$0.resource;
             packet.writeId(id);
             packet.writeAvailability(availability);
@@ -92,7 +100,6 @@ public class TestOrientationCesiumWriter extends TestCesiumInterpolatablePropert
                 }
             }
         }
-        ConsoleHelper.writeLine(stringWriter.toString());
     }
 
     @Test

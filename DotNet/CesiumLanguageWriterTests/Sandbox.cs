@@ -12,65 +12,64 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void RunExample()
         {
-            var stringWriter = new StringWriter();
-
-            var output = new CesiumOutputStream(stringWriter)
+            string outputPath = Path.Combine(TestContext.CurrentContext.TestDirectory, "Sandbox.czml");
+            using (var streamWriter = new StreamWriter(outputPath))
             {
-                PrettyFormatting = true,
-            };
-
-            var writer = new CesiumStreamWriter();
-
-            output.WriteStartSequence();
-
-            using (var packet = writer.OpenPacket(output))
-            {
-                packet.WriteId("document");
-                packet.WriteName("Sandbox");
-                packet.WriteVersion("1.0");
-            }
-
-            using (var packet = writer.OpenPacket(output))
-            {
-                packet.WriteId("TestPacket");
-
-                using (var billboard = packet.OpenBillboardProperty())
+                var output = new CesiumOutputStream(streamWriter)
                 {
-                    billboard.WriteColorProperty(123, 67, 0, 255);
+                    PrettyFormatting = true,
+                };
 
-                    var imageUri = new Uri("http://analyticalgraphicsinc.github.io/czml-writer/logo.png");
-                    billboard.WriteImageProperty(imageUri, CesiumResourceBehavior.Embed);
+                var writer = new CesiumStreamWriter();
+
+                output.WriteStartSequence();
+
+                using (var packet = writer.OpenPacket(output))
+                {
+                    packet.WriteId("document");
+                    packet.WriteName("Sandbox");
+                    packet.WriteVersion("1.0");
                 }
 
-                using (var position = packet.OpenPositionProperty())
+                using (var packet = writer.OpenPacket(output))
                 {
-                    position.WriteCartographicDegrees(new Cartographic(-75.0, 45.0, 100.0));
-                }
+                    packet.WriteId("TestPacket");
 
-                using (var model = packet.OpenModelProperty())
-                using (var color = model.OpenColorProperty())
-                using (var intervals = color.OpenMultipleIntervals())
-                {
-                    var start = new GregorianDate(2012, 8, 4, 16, 0, 0).ToJulianDate();
-                    var stop = new GregorianDate(2012, 8, 4, 16, 1, 0).ToJulianDate();
-
-                    using (var interval = intervals.OpenInterval(start, stop))
+                    using (var billboard = packet.OpenBillboardProperty())
                     {
-                        interval.WriteRgbaf(Color.Red);
+                        billboard.WriteColorProperty(123, 67, 0, 255);
+
+                        var imageUri = new Uri("http://analyticalgraphicsinc.github.io/czml-writer/logo.png");
+                        billboard.WriteImageProperty(imageUri, CesiumResourceBehavior.Embed);
                     }
 
-                    start = new GregorianDate(2012, 8, 4, 16, 1, 0).ToJulianDate();
-                    stop = new GregorianDate(2012, 8, 4, 16, 2, 0).ToJulianDate();
-                    using (var interval = intervals.OpenInterval(start, stop))
+                    using (var position = packet.OpenPositionProperty())
                     {
-                        interval.WriteRgbaf(Color.Lime);
+                        position.WriteCartographicDegrees(new Cartographic(-75.0, 45.0, 100.0));
                     }
+
+                    using (var model = packet.OpenModelProperty())
+                    using (var color = model.OpenColorProperty())
+                    using (var intervals = color.OpenMultipleIntervals())
+                    {
+                        var start = new GregorianDate(2012, 8, 4, 16, 0, 0).ToJulianDate();
+                        var stop = new GregorianDate(2012, 8, 4, 16, 1, 0).ToJulianDate();
+
+                        using (var interval = intervals.OpenInterval(start, stop))
+                        {
+                            interval.WriteRgbaf(Color.Red);
+                        }
+
+                        start = new GregorianDate(2012, 8, 4, 16, 1, 0).ToJulianDate();
+                        stop = new GregorianDate(2012, 8, 4, 16, 2, 0).ToJulianDate();
+                        using (var interval = intervals.OpenInterval(start, stop))
+                        {
+                            interval.WriteRgbaf(Color.Lime);
+                        }
+                    }
+                    output.WriteEndSequence();
                 }
             }
-
-            output.WriteEndSequence();
-
-            Console.WriteLine(stringWriter.ToString());
         }
     }
 }

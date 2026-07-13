@@ -37,7 +37,7 @@ public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends Ce
             }
         }
         final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, "interpolationAlgorithm", CesiumFormattingHelper.interpolationAlgorithmToString(expectedInterpolationAlgorithm));
+        MapHelper.add(tempCollection$0, "interpolationAlgorithm", expectedInterpolationAlgorithm);
         assertExpectedJson(expectedPropertyName, tempCollection$0);
     }
 
@@ -75,7 +75,7 @@ public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends Ce
             }
         }
         final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, "forwardExtrapolationType", CesiumFormattingHelper.extrapolationTypeToString(expectedForwardExtrapolationType));
+        MapHelper.add(tempCollection$0, "forwardExtrapolationType", expectedForwardExtrapolationType);
         assertExpectedJson(expectedPropertyName, tempCollection$0);
     }
 
@@ -94,7 +94,7 @@ public abstract class TestCesiumInterpolatablePropertyWriter<TDerived extends Ce
             }
         }
         final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, "backwardExtrapolationType", CesiumFormattingHelper.extrapolationTypeToString(expectedBackwardExtrapolationType));
+        MapHelper.add(tempCollection$0, "backwardExtrapolationType", expectedBackwardExtrapolationType);
         assertExpectedJson(expectedPropertyName, tempCollection$0);
     }
 

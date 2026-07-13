@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
@@ -97,6 +98,71 @@ namespace CesiumLanguageWriterTests
                 return d.ToString(CultureInfo.InvariantCulture);
             }
 
+            if (value is CesiumStripeOrientation)
+            {
+                value = CesiumFormattingHelper.StripeOrientationToString((CesiumStripeOrientation)value);
+            }
+            else if (value is CesiumHorizontalOrigin)
+            {
+                value = CesiumFormattingHelper.HorizontalOriginToString((CesiumHorizontalOrigin)value);
+            }
+            else if (value is CesiumVerticalOrigin)
+            {
+                value = CesiumFormattingHelper.VerticalOriginToString((CesiumVerticalOrigin)value);
+            }
+            else if (value is CesiumHeightReference)
+            {
+                value = CesiumFormattingHelper.HeightReferenceToString((CesiumHeightReference)value);
+            }
+            else if (value is CesiumPathMode)
+            {
+                value = CesiumFormattingHelper.PathModeToString((CesiumPathMode)value);
+            }
+            else if (value is CesiumShadowMode)
+            {
+                value = CesiumFormattingHelper.ShadowModeToString((CesiumShadowMode)value);
+            }
+            else if (value is CesiumInterpolationAlgorithm)
+            {
+                value = CesiumFormattingHelper.InterpolationAlgorithmToString((CesiumInterpolationAlgorithm)value);
+            }
+            else if (value is CesiumExtrapolationType)
+            {
+                value = CesiumFormattingHelper.ExtrapolationTypeToString((CesiumExtrapolationType)value);
+            }
+            else if (value is CesiumLabelStyle)
+            {
+                value = CesiumFormattingHelper.LabelStyleToString((CesiumLabelStyle)value);
+            }
+            else if (value is CesiumArcType)
+            {
+                value = CesiumFormattingHelper.ArcTypeToString((CesiumArcType)value);
+            }
+            else if (value is CesiumCornerType)
+            {
+                value = CesiumFormattingHelper.CornerTypeToString((CesiumCornerType)value);
+            }
+            else if (value is CesiumClassificationType)
+            {
+                value = CesiumFormattingHelper.ClassificationTypeToString((CesiumClassificationType)value);
+            }
+            else if (value is CesiumColorBlendMode)
+            {
+                value = CesiumFormattingHelper.ColorBlendModeToString((CesiumColorBlendMode)value);
+            }
+            else if (value is CesiumSensorVolumePortionToDisplay)
+            {
+                value = CesiumFormattingHelper.SensorVolumePortionToDisplayToString((CesiumSensorVolumePortionToDisplay)value);
+            }
+            else if (value is ClockRange)
+            {
+                value = CesiumFormattingHelper.ClockRangeToString((ClockRange)value);
+            }
+            else if (value is ClockStep)
+            {
+                value = CesiumFormattingHelper.ClockStepToString((ClockStep)value);
+            }
+
             if (value is string)
             {
                 return string.Format("\"{0}\"", value);
@@ -117,6 +183,24 @@ namespace CesiumLanguageWriterTests
                 return CreateExpectedJson(new Dictionary<string, object>
                 {
                     { "distanceDisplayCondition", new List<object> { bounds.LowerBound, bounds.UpperBound } },
+                });
+            }
+
+            if (value is BoundingRectangle)
+            {
+                var boundingRectangle = (BoundingRectangle)value;
+                return CreateExpectedJson(new Dictionary<string, object>
+                {
+                    { "boundingRectangle", new List<object> { boundingRectangle.Left, boundingRectangle.Bottom, boundingRectangle.Width, boundingRectangle.Height } },
+                });
+            }
+
+            if (value is CartographicExtent)
+            {
+                var extent = (CartographicExtent)value;
+                return CreateExpectedJson(new Dictionary<string, object>
+                {
+                    { "wsen", new List<object> { extent.WestLongitude, extent.SouthLatitude, extent.EastLongitude, extent.NorthLatitude } },
                 });
             }
 
@@ -156,6 +240,15 @@ namespace CesiumLanguageWriterTests
                 });
             }
 
+            if (value is UnitCartesian)
+            {
+                var unitCartesian = (UnitCartesian)value;
+                return CreateExpectedJson(new Dictionary<string, object>
+                {
+                    { "unitCartesian", new List<object> { unitCartesian.X, unitCartesian.Y, unitCartesian.Z } },
+                });
+            }
+
             if (value is UnitQuaternion)
             {
                 var unitQuaternion = (UnitQuaternion)value;
@@ -174,7 +267,7 @@ namespace CesiumLanguageWriterTests
             }
 
             {
-                var list = value as IEnumerable<object>;
+                var list = value as IEnumerable;
                 if (list != null)
                 {
                     var builder = new StringBuilder();
