@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="NUnit.Analyzers" Version="4.11.2" PrivateAssets="all" IncludeAssets="analyzers;build" />
+    <PackageReference Include="NUnit.Analyzers" Version="4.14.0" PrivateAssets="all" IncludeAssets="build; analyzers" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(CSToJava)' != 'True'">
