@@ -19,7 +19,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="JetBrains.Annotations" Version="2025.2.4" PrivateAssets="all" ExcludeAssets="runtime" />
+    <PackageReference Include="JetBrains.Annotations" Version="2026.2.0" PrivateAssets="all" ExcludeAssets="runtime" />
     <PackageReference Condition="'$(CSToJava)' != 'True'" Include="System.Drawing.Common" Version="4.7.3" />
   </ItemGroup>
 
