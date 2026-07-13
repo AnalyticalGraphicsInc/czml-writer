@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Ansys Government Initiatives (AGI)")]
 [assembly: AssemblyProduct("ExampleCesiumLanguageServer")]
-[assembly: AssemblyCopyright("Copyright © 2014-2023 Ansys Government Initiatives (AGI) and Contributors")]
+[assembly: AssemblyCopyright("Copyright © 2014-2026 Ansys Government Initiatives (AGI) and Contributors")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
