@@ -62,11 +62,15 @@ jobs:
         check_name: JUnit Results
         files: Java/CesiumLanguageWriterTests/build/test-results/test/*.xml
 
-    - name: Upload Validation Document
+    - name: Create Validation Document Artifact
+      run: |
+        mkdir -p artifacts
+        FILES=$(find Java -type f \( -name 'ValidationDocument.czml' -o -name 'ValidationDocument*.js' \))
+        zip -j artifacts/ValidationDocument.zip $FILES
+
+    - name: Upload Validation Document Artifact
       uses: actions/upload-artifact@v7
       with:
         name: ValidationDocument
-        path: |
-          Java/**/ValidationDocument.czml
-          Java/**/ValidationDocument*.js
-        archive: true
+        path: artifacts/ValidationDocument.zip
+        archive: false

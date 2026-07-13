@@ -68,11 +68,16 @@ jobs:
         check_name: NUnit Results
         files: test-results/nunit-results.trx
 
-    - name: Upload Validation Document
+    - name: Create Validation Document Artifact
+      shell: pwsh
+      run: |
+        mkdir artifacts
+        $files = gci DotNet -Recurse -Include 'ValidationDocument.czml','ValidationDocument*.js'
+        Compress-Archive -Path $files.FullName -DestinationPath artifacts/ValidationDocument.zip
+
+    - name: Upload Validation Document Artifact
       uses: actions/upload-artifact@v7
       with:
         name: ValidationDocument
-        path: |
-          DotNet/**/ValidationDocument.czml
-          DotNet/**/ValidationDocument*.js
-        archive: true
+        path: artifacts/ValidationDocument.zip
+        archive: false
