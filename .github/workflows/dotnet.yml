@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   build:
-    runs-on: windows-2022
+    runs-on: windows-latest
     permissions:
       contents: read
       checks: write
