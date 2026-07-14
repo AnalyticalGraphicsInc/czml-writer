@@ -1,80 +1,41 @@
-﻿using System;
-using System.IO;
-using CommandLine;
-using CommandLine.Text;
+﻿using CommandLine;
 
-namespace GenerateFromSchema
+namespace GenerateFromSchema;
+
+public static class GenerateFromSchema
 {
-    public class GenerateFromSchema
+    public static void Main(string[] args)
     {
-        public enum GeneratorType
+        using var parser = new Parser(settings =>
         {
-            CSharp,
-            MarkDown,
-            Validation,
-        }
+            settings.CaseInsensitiveEnumValues = true;
+            settings.HelpWriter = Console.Error;
+        });
+        parser.ParseArguments<Options>(args).WithParsed(Run);
+    }
 
-        public class Options
+    private static void Run(Options options)
+    {
+        var generator = CreateGenerator(options);
+
+        // Load the schema
+        var schemaLoader = new SchemaLoader(Path.GetDirectoryName(options.PacketSchema)!);
+        var packetSchema = schemaLoader.Load(options.PacketSchema);
+
+        // Generate output from the schema.
+        generator.Generate(packetSchema);
+    }
+
+    private static Generator CreateGenerator(Options options)
+    {
+        string GetRequiredConfigurationFile() =>
+            options.ConfigurationFile ?? throw new Exception("ERROR: Configuration file is required.");
+
+        return options.Type switch
         {
-            [Option('p', "packet", Required = true, HelpText = "The path to the Packet schema file.")]
-            public string PacketSchema { get; set; }
-
-            [Option('t', "type", Required = true, HelpText = "The type of output to generate.")]
-            public GeneratorType Type { get; set; }
-
-            [Option('o', "output", Required = true, HelpText = "The output location.")]
-            public string Output { get; set; }
-
-            [Option("configuration", HelpText = "The configuration file for the CSharp generator.")]
-            public string ConfigurationFile { get; set; }
-
-            [HelpOption]
-            public string Usage()
-            {
-                var help = new HelpText { AddDashesToOption = true };
-                help.AddOptions(this);
-                return help;
-            }
-        }
-
-        public static void Main(string[] args)
-        {
-            var options = new Options();
-            if (!Parser.Default.ParseArgumentsStrict(args, options))
-            {
-                return;
-            }
-
-            Generator generator;
-
-            switch (options.Type)
-            {
-                case GeneratorType.MarkDown:
-                    generator = new MarkdownGenerator(options.Output);
-                    break;
-                case GeneratorType.CSharp:
-                    if (options.ConfigurationFile == null)
-                    {
-                        Console.Error.WriteLine("ERROR: When type is CSharp, a configuration file is required.");
-                        Console.Error.WriteLine(options.Usage());
-                        return;
-                    }
-
-                    generator = new CSharpGenerator(options.Output, options.ConfigurationFile);
-                    break;
-                case GeneratorType.Validation:
-                    generator = new ValidationDocumentGenerator(options.Output);
-                    break;
-                default:
-                    return;
-            }
-
-            // Load the schema
-            var schemaLoader = new SchemaLoader(Path.GetDirectoryName(options.PacketSchema));
-            Schema packetSchema = schemaLoader.Load(options.PacketSchema);
-
-            // Generate output from the schema.
-            generator.Generate(packetSchema);
-        }
+            GeneratorType.MarkDown => new MarkdownGenerator(options.Output),
+            GeneratorType.CSharp => new CSharpGenerator(options.Output, GetRequiredConfigurationFile()),
+            GeneratorType.Validation => new ValidationDocumentGenerator(options.Output),
+        };
     }
 }

@@ -1,21 +1,21 @@
-﻿namespace GenerateFromSchema
+﻿namespace GenerateFromSchema;
+
+public static class StringExtensions
 {
-    public static class StringExtensions
-    {
-        public static string CapitalizeFirstLetter(this string s)
+    public static string Join<T>(this IEnumerable<T> values, string separator) =>
+        string.Join(separator, values);
+
+    public static string CapitalizeFirstLetter(this string s) =>
+        s.Length switch
         {
-            if (s.Length == 0)
-                return s;
+            0 => s,
+            _ => char.ToUpperInvariant(s[0]) + s[1..],
+        };
 
-            return char.ToUpperInvariant(s[0]) + s.Substring(1);
-        }
-
-        public static string UncapitalizeFirstLetter(this string s)
+    public static string UncapitalizeFirstLetter(this string s) =>
+        s.Length switch
         {
-            if (string.IsNullOrEmpty(s))
-                return s;
-
-            return char.ToLowerInvariant(s[0]) + s.Substring(1);
-        }
-    }
+            0 => s,
+            _ => char.ToLowerInvariant(s[0]) + s[1..],
+        };
 }

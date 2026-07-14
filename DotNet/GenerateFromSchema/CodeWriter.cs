@@ -1,90 +1,79 @@
-﻿using System;
-using System.IO;
-using System.Text;
-using JetBrains.Annotations;
+﻿namespace GenerateFromSchema;
 
-namespace GenerateFromSchema
+public sealed class CodeWriter : IDisposable
 {
-    public class CodeWriter : IDisposable
+    public CodeWriter(TextWriter writer)
     {
-        private const int Indentation = 4;
+        Writer = writer;
+    }
 
-        private readonly TextWriter m_writer;
-        private int m_indent;
-        private string m_indentString = "";
+    public CodeWriter(string filename)
+        : this(new StreamWriter(filename, false, Encoding.UTF8))
+    {
+    }
 
-        public CodeWriter(TextWriter writer)
-        {
-            m_writer = writer;
-        }
+    public void Dispose()
+    {
+        Writer.Dispose();
+    }
 
-        public CodeWriter(string filename)
-            : this(new StreamWriter(filename, false, Encoding.UTF8))
-        {
-        }
+    public void IncreaseIndent()
+    {
+        SetIndent(Indent + 1);
+    }
 
+    public void DecreaseIndent()
+    {
+        SetIndent(Indent - 1);
+    }
+
+    public CodeScope OpenScope()
+    {
+        WriteLine("{");
+        IncreaseIndent();
+
+        return new CodeScope(this);
+    }
+
+    public void CloseScope()
+    {
+        DecreaseIndent();
+        WriteLine("}");
+    }
+
+    public void WriteLine()
+    {
+        Writer.WriteLine();
+    }
+
+    public void WriteLine(string str)
+    {
+        Writer.Write(IndentString);
+        Writer.WriteLine(str);
+    }
+
+    public void WriteLine([StringSyntax(StringSyntaxAttribute.CompositeFormat)] string format, params object[] args)
+    {
+        Writer.Write(IndentString);
+        Writer.WriteLine(format, args);
+    }
+
+    private void SetIndent(int indent)
+    {
+        Indent = indent;
+        IndentString = new string(' ', Indent * Indentation);
+    }
+
+    public sealed class CodeScope(CodeWriter writer) : IDisposable
+    {
         public void Dispose()
         {
-            m_writer.Dispose();
-        }
-
-        public void IncreaseIndent()
-        {
-            ++m_indent;
-            m_indentString = new string(' ', m_indent * Indentation);
-        }
-
-        public void DecreaseIndent()
-        {
-            --m_indent;
-            m_indentString = new string(' ', m_indent * Indentation);
-        }
-
-        public CodeScope OpenScope()
-        {
-            WriteLine("{");
-            IncreaseIndent();
-
-            return new CodeScope(this);
-        }
-
-        public void CloseScope()
-        {
-            DecreaseIndent();
-            WriteLine("}");
-        }
-
-        public void WriteLine()
-        {
-            m_writer.WriteLine();
-        }
-
-        public void WriteLine(string str)
-        {
-            m_writer.Write(m_indentString);
-            m_writer.WriteLine(str);
-        }
-
-        [StringFormatMethod("format")]
-        public void WriteLine(string format, params object[] args)
-        {
-            m_writer.Write(m_indentString);
-            m_writer.WriteLine(format, args);
-        }
-
-        public sealed class CodeScope : IDisposable
-        {
-            private readonly CodeWriter m_codeWriter;
-
-            public CodeScope(CodeWriter codeWriter)
-            {
-                m_codeWriter = codeWriter;
-            }
-
-            public void Dispose()
-            {
-                m_codeWriter.CloseScope();
-            }
+            writer.CloseScope();
         }
     }
+
+    private const int Indentation = 4;
+    private TextWriter Writer { get; }
+    private int Indent { get; set; }
+    private string IndentString { get; set; } = "";
 }
