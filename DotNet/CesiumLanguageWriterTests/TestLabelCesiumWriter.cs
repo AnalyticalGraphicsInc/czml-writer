@@ -10,313 +10,262 @@ namespace CesiumLanguageWriterTests
     public class TestLabelCesiumWriter : TestCesiumPropertyWriter<LabelCesiumWriter>
     {
         [Test]
-        public void TestFontProperty()
+        public void TestShow()
         {
-            const string expectedFont = "30px Helvetica";
+            const bool expected = true;
 
             using (var packet = OpenPacket())
             using (var label = packet.OpenLabelProperty())
             using (var interval = label.OpenInterval())
             {
-                interval.WriteFontProperty(expectedFont);
+                interval.WriteShowProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.LabelPropertyName, new Dictionary<string, object>
-            {
-                { LabelCesiumWriter.FontPropertyName, expectedFont },
-            });
+            AssertPropertyJson(LabelCesiumWriter.ShowPropertyName, expected);
         }
 
         [Test]
-        public void TestStyleProperty()
+        public void TestFont()
         {
-            const CesiumLabelStyle expectedStyle = CesiumLabelStyle.FillAndOutline;
+            const string expected = "30px Helvetica";
 
             using (var packet = OpenPacket())
             using (var label = packet.OpenLabelProperty())
             using (var interval = label.OpenInterval())
             {
-                interval.WriteStyleProperty(expectedStyle);
+                interval.WriteFontProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.LabelPropertyName, new Dictionary<string, object>
-            {
-                { LabelCesiumWriter.StylePropertyName, expectedStyle },
-            });
+            AssertPropertyJson(LabelCesiumWriter.FontPropertyName, expected);
         }
 
         [Test]
-        public void TestScaleProperty()
+        public void TestStyle()
         {
-            const double expectedScale = 2.0;
+            const CesiumLabelStyle expected = CesiumLabelStyle.FillAndOutline;
 
             using (var packet = OpenPacket())
             using (var label = packet.OpenLabelProperty())
             using (var interval = label.OpenInterval())
             {
-                interval.WriteScaleProperty(expectedScale);
+                interval.WriteStyleProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.LabelPropertyName, new Dictionary<string, object>
-            {
-                { LabelCesiumWriter.ScalePropertyName, expectedScale },
-            });
+            AssertPropertyJson(LabelCesiumWriter.StylePropertyName, expected);
         }
 
         [Test]
-        public void TestPixelOffsetProperty()
+        public void TestScale()
         {
-            var expectedPixelOffset = new Rectangular(12.5, 3.5);
+            const double expected = 2.0;
 
             using (var packet = OpenPacket())
             using (var label = packet.OpenLabelProperty())
             using (var interval = label.OpenInterval())
             {
-                interval.WritePixelOffsetProperty(expectedPixelOffset);
+                interval.WriteScaleProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.LabelPropertyName, new Dictionary<string, object>
-            {
-                { LabelCesiumWriter.PixelOffsetPropertyName, expectedPixelOffset },
-            });
+            AssertPropertyJson(LabelCesiumWriter.ScalePropertyName, expected);
         }
 
         [Test]
-        public void TestEyeOffsetProperty()
+        public void TestPixelOffset()
         {
-            var expectedEyeOffset = new Cartesian(1.0, 2.0, 3.0);
+            var expected = new Rectangular(12.5, 3.5);
 
             using (var packet = OpenPacket())
             using (var label = packet.OpenLabelProperty())
             using (var interval = label.OpenInterval())
             {
-                interval.WriteEyeOffsetProperty(expectedEyeOffset);
+                interval.WritePixelOffsetProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.LabelPropertyName, new Dictionary<string, object>
-            {
-                { LabelCesiumWriter.EyeOffsetPropertyName, expectedEyeOffset },
-            });
+            AssertPropertyJson(LabelCesiumWriter.PixelOffsetPropertyName, expected);
         }
 
         [Test]
-        public void TestHorizontalOriginProperty()
+        public void TestEyeOffset()
         {
-            const CesiumHorizontalOrigin expectedHorizontalOrigin = CesiumHorizontalOrigin.Center;
+            var expected = new Cartesian(1.0, 2.0, 3.0);
 
             using (var packet = OpenPacket())
             using (var label = packet.OpenLabelProperty())
             using (var interval = label.OpenInterval())
             {
-                interval.WriteHorizontalOriginProperty(expectedHorizontalOrigin);
+                interval.WriteEyeOffsetProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.LabelPropertyName, new Dictionary<string, object>
-            {
-                { LabelCesiumWriter.HorizontalOriginPropertyName, expectedHorizontalOrigin },
-            });
+            AssertPropertyJson(LabelCesiumWriter.EyeOffsetPropertyName, expected);
         }
 
         [Test]
-        public void TestVerticalOriginProperty()
+        public void TestHorizontalOrigin()
         {
-            const CesiumVerticalOrigin expectedVerticalOrigin = CesiumVerticalOrigin.Center;
+            const CesiumHorizontalOrigin expected = CesiumHorizontalOrigin.Center;
 
             using (var packet = OpenPacket())
             using (var label = packet.OpenLabelProperty())
             using (var interval = label.OpenInterval())
             {
-                interval.WriteVerticalOriginProperty(expectedVerticalOrigin);
+                interval.WriteHorizontalOriginProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.LabelPropertyName, new Dictionary<string, object>
-            {
-                { LabelCesiumWriter.VerticalOriginPropertyName, expectedVerticalOrigin },
-            });
+            AssertPropertyJson(LabelCesiumWriter.HorizontalOriginPropertyName, expected);
         }
 
         [Test]
-        public void TestHeightReferenceProperty()
+        public void TestVerticalOrigin()
         {
-            const CesiumHeightReference expectedHeightReference = CesiumHeightReference.ClampToGround;
+            const CesiumVerticalOrigin expected = CesiumVerticalOrigin.Center;
 
             using (var packet = OpenPacket())
             using (var label = packet.OpenLabelProperty())
             using (var interval = label.OpenInterval())
             {
-                interval.WriteHeightReferenceProperty(expectedHeightReference);
+                interval.WriteVerticalOriginProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.LabelPropertyName, new Dictionary<string, object>
-            {
-                { LabelCesiumWriter.HeightReferencePropertyName, expectedHeightReference },
-            });
+            AssertPropertyJson(LabelCesiumWriter.VerticalOriginPropertyName, expected);
         }
 
         [Test]
-        public void TestFillColorProperty()
+        public void TestHeightReference()
         {
-            var expectedFillColor = Color.Blue;
+            const CesiumHeightReference expected = CesiumHeightReference.ClampToGround;
 
             using (var packet = OpenPacket())
             using (var label = packet.OpenLabelProperty())
             using (var interval = label.OpenInterval())
             {
-                interval.WriteFillColorProperty(expectedFillColor);
+                interval.WriteHeightReferenceProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.LabelPropertyName, new Dictionary<string, object>
-            {
-                { LabelCesiumWriter.FillColorPropertyName, expectedFillColor },
-            });
+            AssertPropertyJson(LabelCesiumWriter.HeightReferencePropertyName, expected);
         }
 
         [Test]
-        public void TestOutlineColorProperty()
+        public void TestFillColor()
         {
-            var expectedOutlineColor = Color.Green;
+            var expected = Color.Blue;
 
             using (var packet = OpenPacket())
             using (var label = packet.OpenLabelProperty())
             using (var interval = label.OpenInterval())
             {
-                interval.WriteOutlineColorProperty(expectedOutlineColor);
+                interval.WriteFillColorProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.LabelPropertyName, new Dictionary<string, object>
-            {
-                { LabelCesiumWriter.OutlineColorPropertyName, expectedOutlineColor },
-            });
+            AssertPropertyJson(LabelCesiumWriter.FillColorPropertyName, expected);
         }
 
         [Test]
-        public void TestOutlineWidthProperty()
+        public void TestOutlineColor()
         {
-            const double expectedOutlineWidth = 2.0;
+            var expected = Color.Green;
 
             using (var packet = OpenPacket())
             using (var label = packet.OpenLabelProperty())
             using (var interval = label.OpenInterval())
             {
-                interval.WriteOutlineWidthProperty(expectedOutlineWidth);
+                interval.WriteOutlineColorProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.LabelPropertyName, new Dictionary<string, object>
-            {
-                { LabelCesiumWriter.OutlineWidthPropertyName, expectedOutlineWidth },
-            });
+            AssertPropertyJson(LabelCesiumWriter.OutlineColorPropertyName, expected);
         }
 
         [Test]
-        public void TestPixelOffsetScaleByDistanceProperty()
+        public void TestOutlineWidth()
         {
-            var expectedPixelOffsetScaleByDistance = new NearFarScalar(10.0, 1.0, 20.0, 2.0);
+            const double expected = 2.0;
 
             using (var packet = OpenPacket())
             using (var label = packet.OpenLabelProperty())
             using (var interval = label.OpenInterval())
             {
-                interval.WritePixelOffsetScaleByDistanceProperty(expectedPixelOffsetScaleByDistance);
+                interval.WriteOutlineWidthProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.LabelPropertyName, new Dictionary<string, object>
-            {
-                { LabelCesiumWriter.PixelOffsetScaleByDistancePropertyName, expectedPixelOffsetScaleByDistance },
-            });
+            AssertPropertyJson(LabelCesiumWriter.OutlineWidthPropertyName, expected);
         }
 
         [Test]
-        public void TestScaleByDistanceProperty()
+        public void TestPixelOffsetScaleByDistance()
         {
-            var expectedScaleByDistance = new NearFarScalar(100.5, 1.5, 200.5, 2.5);
+            var expected = new NearFarScalar(10.0, 1.0, 20.0, 2.0);
 
             using (var packet = OpenPacket())
             using (var label = packet.OpenLabelProperty())
             using (var interval = label.OpenInterval())
             {
-                interval.WriteScaleByDistanceProperty(expectedScaleByDistance);
+                interval.WritePixelOffsetScaleByDistanceProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.LabelPropertyName, new Dictionary<string, object>
-            {
-                { LabelCesiumWriter.ScaleByDistancePropertyName, expectedScaleByDistance },
-            });
+            AssertPropertyJson(LabelCesiumWriter.PixelOffsetScaleByDistancePropertyName, expected);
         }
 
         [Test]
-        public void TestDistanceDisplayConditionProperty()
+        public void TestDistanceDisplayCondition()
         {
-            var expectedDistanceDisplayCondition = new Bounds(10.0, 20.0);
+            var expected = new Bounds(10.0, 20.0);
 
             using (var packet = OpenPacket())
             using (var label = packet.OpenLabelProperty())
             using (var interval = label.OpenInterval())
             {
-                interval.WriteDistanceDisplayConditionProperty(expectedDistanceDisplayCondition);
+                interval.WriteDistanceDisplayConditionProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.LabelPropertyName, new Dictionary<string, object>
-            {
-                { LabelCesiumWriter.DistanceDisplayConditionPropertyName, expectedDistanceDisplayCondition },
-            });
+            AssertPropertyJson(LabelCesiumWriter.DistanceDisplayConditionPropertyName, expected);
         }
 
         [Test]
-        public void TestDisableDepthTestDistanceProperty()
+        public void TestDisableDepthTestDistance()
         {
-            const double expectedDisableDepthTestDistance = 1234.0;
+            const double expected = 1234.0;
 
             using (var packet = OpenPacket())
             using (var label = packet.OpenLabelProperty())
             using (var interval = label.OpenInterval())
             {
-                interval.WriteDisableDepthTestDistanceProperty(expectedDisableDepthTestDistance);
+                interval.WriteDisableDepthTestDistanceProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.LabelPropertyName, new Dictionary<string, object>
-            {
-                { LabelCesiumWriter.DisableDepthTestDistancePropertyName, expectedDisableDepthTestDistance },
-            });
+            AssertPropertyJson(LabelCesiumWriter.DisableDepthTestDistancePropertyName, expected);
         }
 
         [Test]
-        public void TestShowProperty()
+        public void TestScaleByDistance()
         {
-            const bool expectedShow = true;
+            var expected = new NearFarScalar(100.5, 1.5, 200.5, 2.5);
 
             using (var packet = OpenPacket())
             using (var label = packet.OpenLabelProperty())
             using (var interval = label.OpenInterval())
             {
-                interval.WriteShowProperty(expectedShow);
+                interval.WriteScaleByDistanceProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.LabelPropertyName, new Dictionary<string, object>
-            {
-                { LabelCesiumWriter.ShowPropertyName, expectedShow },
-            });
+            AssertPropertyJson(LabelCesiumWriter.ScaleByDistancePropertyName, expected);
         }
 
         [Test]
-        public void TestTextProperty()
+        public void TestText()
         {
-            const string expectedText = "asdf";
+            const string expected = "asdf";
 
             using (var packet = OpenPacket())
             using (var label = packet.OpenLabelProperty())
             using (var interval = label.OpenInterval())
             {
-                interval.WriteTextProperty(expectedText);
+                interval.WriteTextProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.LabelPropertyName, new Dictionary<string, object>
-            {
-                { LabelCesiumWriter.TextPropertyName, expectedText },
-            });
+            AssertPropertyJson(LabelCesiumWriter.TextPropertyName, expected);
         }
 
         [Test]
-        public void TestTextPropertyInterval()
+        public void TestTextInterval()
         {
             var startDate = new GregorianDate(2012, 4, 2, 12, 0, 0).ToJulianDate();
             var stopDate = new GregorianDate(2012, 4, 2, 12, 1, 0).ToJulianDate();
@@ -353,105 +302,88 @@ namespace CesiumLanguageWriterTests
                 }
             }
 
-            AssertExpectedJson(PacketCesiumWriter.LabelPropertyName, new Dictionary<string, object>
+            AssertPropertyJson(LabelCesiumWriter.TextPropertyName, new List<Dictionary<string, object>>
             {
+                new Dictionary<string, object>
                 {
-                    LabelCesiumWriter.TextPropertyName, new List<Dictionary<string, object>>
-                    {
-                        new Dictionary<string, object>
-                        {
-                            { "interval", CesiumFormattingHelper.ToIso8601Interval(interval1Start, interval1Stop, Iso8601Format.Compact) },
-                            { StringCesiumWriter.StringPropertyName, interval1Value },
-                        },
-                        new Dictionary<string, object>
-                        {
-                            { "interval", CesiumFormattingHelper.ToIso8601Interval(interval2Start, interval2Stop, Iso8601Format.Compact) },
-                            { StringCesiumWriter.StringPropertyName, interval2Value },
-                        },
-                        new Dictionary<string, object>
-                        {
-                            { "interval", CesiumFormattingHelper.ToIso8601Interval(interval3Start, interval3Stop, Iso8601Format.Compact) },
-                            { StringCesiumWriter.StringPropertyName, interval3Value },
-                        },
-                    }
+                    { "interval", CesiumFormattingHelper.ToIso8601Interval(interval1Start, interval1Stop, Iso8601Format.Compact) },
+                    { StringCesiumWriter.StringPropertyName, interval1Value },
+                },
+                new Dictionary<string, object>
+                {
+                    { "interval", CesiumFormattingHelper.ToIso8601Interval(interval2Start, interval2Stop, Iso8601Format.Compact) },
+                    { StringCesiumWriter.StringPropertyName, interval2Value },
+                },
+                new Dictionary<string, object>
+                {
+                    { "interval", CesiumFormattingHelper.ToIso8601Interval(interval3Start, interval3Stop, Iso8601Format.Compact) },
+                    { StringCesiumWriter.StringPropertyName, interval3Value },
                 },
             });
         }
 
         [Test]
-        public void TestShowBackgroundProperty()
+        public void TestShowBackground()
         {
-            const bool expectedShowBackground = true;
+            const bool expected = true;
 
             using (var packet = OpenPacket())
             using (var label = packet.OpenLabelProperty())
             using (var interval = label.OpenInterval())
             {
-                interval.WriteShowBackgroundProperty(expectedShowBackground);
+                interval.WriteShowBackgroundProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.LabelPropertyName, new Dictionary<string, object>
-            {
-                { LabelCesiumWriter.ShowBackgroundPropertyName, expectedShowBackground },
-            });
+            AssertPropertyJson(LabelCesiumWriter.ShowBackgroundPropertyName, expected);
         }
 
         [Test]
-        public void TestBackgroundColorProperty()
+        public void TestBackgroundColor()
         {
-            var expectedBackgroundColor = Color.Red;
+            var expected = Color.Red;
 
             using (var packet = OpenPacket())
             using (var label = packet.OpenLabelProperty())
             using (var interval = label.OpenInterval())
             {
-                interval.WriteBackgroundColorProperty(expectedBackgroundColor);
+                interval.WriteBackgroundColorProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.LabelPropertyName, new Dictionary<string, object>
-            {
-                { LabelCesiumWriter.BackgroundColorPropertyName, expectedBackgroundColor },
-            });
+            AssertPropertyJson(LabelCesiumWriter.BackgroundColorPropertyName, expected);
         }
 
         [Test]
-        public void TestBackgroundPaddingProperty()
+        public void TestBackgroundPadding()
         {
-            var expectedBackgroundPadding = new Rectangular(3, 4);
+            var expected = new Rectangular(3, 4);
 
             using (var packet = OpenPacket())
             using (var label = packet.OpenLabelProperty())
             using (var interval = label.OpenInterval())
             {
-                interval.WriteBackgroundPaddingProperty(expectedBackgroundPadding);
+                interval.WriteBackgroundPaddingProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.LabelPropertyName, new Dictionary<string, object>
-            {
-                { LabelCesiumWriter.BackgroundPaddingPropertyName, expectedBackgroundPadding },
-            });
+            AssertPropertyJson(LabelCesiumWriter.BackgroundPaddingPropertyName, expected);
         }
 
         [Test]
-        public void TestTranslucencyByDistanceProperty()
+        public void TestTranslucencyByDistance()
         {
-            var expectedTranslucencyByDistance = new NearFarScalar(100.0, 1.0, 200.0, 2.0);
+            var expected = new NearFarScalar(100.0, 1.0, 200.0, 2.0);
 
             using (var packet = OpenPacket())
             using (var label = packet.OpenLabelProperty())
             using (var interval = label.OpenInterval())
             {
-                interval.WriteTranslucencyByDistanceProperty(expectedTranslucencyByDistance);
+                interval.WriteTranslucencyByDistanceProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.LabelPropertyName, new Dictionary<string, object>
-            {
-                { LabelCesiumWriter.TranslucencyByDistancePropertyName, expectedTranslucencyByDistance },
-            });
+            AssertPropertyJson(LabelCesiumWriter.TranslucencyByDistancePropertyName, expected);
         }
 
         [Test]
-        public void TestTranslucencyByDistancePropertySamples()
+        public void TestTranslucencyByDistanceSamples()
         {
             var epoch = new GregorianDate(2012, 4, 2, 12, 0, 0).ToJulianDate();
 
@@ -473,6 +405,14 @@ namespace CesiumLanguageWriterTests
             }
 
             Assert.AreEqual("{\"label\":{\"translucencyByDistance\":{\"epoch\":\"20120402T12Z\",\"nearFarScalar\":[0,100,1,200,2,60,200,1,300,2]}}}", StringWriter.ToString());
+        }
+
+        private void AssertPropertyJson(string propertyName, object value)
+        {
+            AssertExpectedJson(PacketCesiumWriter.LabelPropertyName, new Dictionary<string, object>
+            {
+                { propertyName, value },
+            });
         }
 
         protected override CesiumPropertyWriter<LabelCesiumWriter> CreatePropertyWriter(string propertyName)

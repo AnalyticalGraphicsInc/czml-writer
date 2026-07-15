@@ -9,25 +9,22 @@ namespace CesiumLanguageWriterTests
     public class TestTilesetCesiumWriter : TestCesiumPropertyWriter<TilesetCesiumWriter>
     {
         [Test]
-        public void TestShowProperty()
+        public void TestShow()
         {
-            const bool expectedShow = true;
+            const bool expected = true;
 
             using (var packet = OpenPacket())
             using (var tileset = packet.OpenTilesetProperty())
             using (var interval = tileset.OpenInterval())
             {
-                interval.WriteShowProperty(expectedShow);
+                interval.WriteShowProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.TilesetPropertyName, new Dictionary<string, object>
-            {
-                { TilesetCesiumWriter.ShowPropertyName, expectedShow },
-            });
+            AssertPropertyJson(TilesetCesiumWriter.ShowPropertyName, expected);
         }
 
         [Test]
-        public void TestShowPropertyInterval()
+        public void TestShowInterval()
         {
             var startDate = new GregorianDate(2012, 4, 2, 12, 0, 0).ToJulianDate();
             var stopDate = new GregorianDate(2012, 4, 2, 12, 1, 0).ToJulianDate();
@@ -64,63 +61,60 @@ namespace CesiumLanguageWriterTests
                 }
             }
 
-            AssertExpectedJson(PacketCesiumWriter.TilesetPropertyName, new Dictionary<string, object>
+            AssertPropertyJson(TilesetCesiumWriter.ShowPropertyName, new List<Dictionary<string, object>>
             {
+                new Dictionary<string, object>
                 {
-                    TilesetCesiumWriter.ShowPropertyName, new List<Dictionary<string, object>>
-                    {
-                        new Dictionary<string, object>
-                        {
-                            { "interval", CesiumFormattingHelper.ToIso8601Interval(interval1Start, interval1Stop, Iso8601Format.Compact) },
-                            { BooleanCesiumWriter.BooleanPropertyName, interval1Value },
-                        },
-                        new Dictionary<string, object>
-                        {
-                            { "interval", CesiumFormattingHelper.ToIso8601Interval(interval2Start, interval2Stop, Iso8601Format.Compact) },
-                            { BooleanCesiumWriter.BooleanPropertyName, interval2Value },
-                        },
-                        new Dictionary<string, object>
-                        {
-                            { "interval", CesiumFormattingHelper.ToIso8601Interval(interval3Start, interval3Stop, Iso8601Format.Compact) },
-                            { BooleanCesiumWriter.BooleanPropertyName, interval3Value },
-                        },
-                    }
+                    { "interval", CesiumFormattingHelper.ToIso8601Interval(interval1Start, interval1Stop, Iso8601Format.Compact) },
+                    { BooleanCesiumWriter.BooleanPropertyName, interval1Value },
+                },
+                new Dictionary<string, object>
+                {
+                    { "interval", CesiumFormattingHelper.ToIso8601Interval(interval2Start, interval2Stop, Iso8601Format.Compact) },
+                    { BooleanCesiumWriter.BooleanPropertyName, interval2Value },
+                },
+                new Dictionary<string, object>
+                {
+                    { "interval", CesiumFormattingHelper.ToIso8601Interval(interval3Start, interval3Stop, Iso8601Format.Compact) },
+                    { BooleanCesiumWriter.BooleanPropertyName, interval3Value },
                 },
             });
         }
 
         [Test]
-        public void TestUriProperty()
+        public void TestUri()
         {
-            const string expectedUri = "test.tileset";
+            const string expected = "test.tileset";
 
             using (var packet = OpenPacket())
             using (var tileset = packet.OpenTilesetProperty())
             using (var interval = tileset.OpenInterval())
             {
-                interval.WriteUriProperty(expectedUri, CesiumResourceBehavior.LinkTo);
+                interval.WriteUriProperty(expected, CesiumResourceBehavior.LinkTo);
             }
-            AssertExpectedJson(PacketCesiumWriter.TilesetPropertyName, new Dictionary<string, object>
-            {
-                { TilesetCesiumWriter.UriPropertyName, expectedUri },
-            });
+            AssertPropertyJson(TilesetCesiumWriter.UriPropertyName, expected);
         }
 
         [Test]
-        public void TestMaximumScreenSpaceErrorProperty()
+        public void TestMaximumScreenSpaceError()
         {
-            const double expectedMaximumScreenSpaceError = 0.75;
+            const double expected = 0.75;
 
             using (var packet = OpenPacket())
             using (var tileset = packet.OpenTilesetProperty())
             using (var interval = tileset.OpenInterval())
             {
-                interval.WriteMaximumScreenSpaceErrorProperty(expectedMaximumScreenSpaceError);
+                interval.WriteMaximumScreenSpaceErrorProperty(expected);
             }
 
+            AssertPropertyJson(TilesetCesiumWriter.MaximumScreenSpaceErrorPropertyName, expected);
+        }
+
+        private void AssertPropertyJson(string propertyName, object value)
+        {
             AssertExpectedJson(PacketCesiumWriter.TilesetPropertyName, new Dictionary<string, object>
             {
-                { TilesetCesiumWriter.MaximumScreenSpaceErrorPropertyName, expectedMaximumScreenSpaceError },
+                { propertyName, value },
             });
         }
 

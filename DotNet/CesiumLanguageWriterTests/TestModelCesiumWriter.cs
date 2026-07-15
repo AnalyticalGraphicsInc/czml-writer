@@ -10,271 +10,234 @@ namespace CesiumLanguageWriterTests
     public class TestModelCesiumWriter : TestCesiumPropertyWriter<ModelCesiumWriter>
     {
         [Test]
-        public void TestShowProperty()
+        public void TestShow()
         {
-            const bool expectedShow = true;
+            const bool expected = true;
 
             using (var packet = OpenPacket())
             using (var model = packet.OpenModelProperty())
             using (var interval = model.OpenInterval())
             {
-                interval.WriteShowProperty(expectedShow);
+                interval.WriteShowProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.ModelPropertyName, new Dictionary<string, object>
-            {
-                { ModelCesiumWriter.ShowPropertyName, expectedShow },
-            });
+            AssertPropertyJson(ModelCesiumWriter.ShowPropertyName, expected);
         }
 
         [Test]
-        public void TestGltfProperty()
+        public void TestGltf()
         {
-            const string expectedGltf = "test.gltf";
+            const string expected = "test.gltf";
 
             using (var packet = OpenPacket())
             using (var model = packet.OpenModelProperty())
             using (var interval = model.OpenInterval())
             {
-                interval.WriteGltfProperty(expectedGltf, CesiumResourceBehavior.LinkTo);
+                interval.WriteGltfProperty(expected, CesiumResourceBehavior.LinkTo);
             }
-            AssertExpectedJson(PacketCesiumWriter.ModelPropertyName, new Dictionary<string, object>
-            {
-                { ModelCesiumWriter.GltfPropertyName, expectedGltf },
-            });
+            AssertPropertyJson(ModelCesiumWriter.GltfPropertyName, expected);
         }
 
         [Test]
-        public void TestSilhouetteColorProperty()
+        public void TestSilhouetteColor()
         {
-            var expectedSilhouetteColor = Color.Blue;
+            var expected = Color.Blue;
 
             using (var packet = OpenPacket())
             using (var model = packet.OpenModelProperty())
             using (var interval = model.OpenInterval())
             {
-                interval.WriteSilhouetteColorProperty(expectedSilhouetteColor);
+                interval.WriteSilhouetteColorProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.ModelPropertyName, new Dictionary<string, object>
-            {
-                { ModelCesiumWriter.SilhouetteColorPropertyName, expectedSilhouetteColor },
-            });
+            AssertPropertyJson(ModelCesiumWriter.SilhouetteColorPropertyName, expected);
         }
 
         [Test]
-        public void TestSilhouetteSizeProperty()
+        public void TestSilhouetteSize()
         {
-            const double expectedSilhouetteSize = 0.75;
+            const double expected = 0.75;
 
             using (var packet = OpenPacket())
             using (var model = packet.OpenModelProperty())
             using (var interval = model.OpenInterval())
             {
-                interval.WriteSilhouetteSizeProperty(expectedSilhouetteSize);
+                interval.WriteSilhouetteSizeProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.ModelPropertyName, new Dictionary<string, object>
-            {
-                { ModelCesiumWriter.SilhouetteSizePropertyName, expectedSilhouetteSize },
-            });
+            AssertPropertyJson(ModelCesiumWriter.SilhouetteSizePropertyName, expected);
         }
 
         [Test]
-        public void TestColorProperty()
+        public void TestColor()
         {
-            var expectedColor = Color.Red;
+            var expected = Color.Red;
 
             using (var packet = OpenPacket())
             using (var model = packet.OpenModelProperty())
             using (var interval = model.OpenInterval())
             {
-                interval.WriteColorProperty(expectedColor);
+                interval.WriteColorProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.ModelPropertyName, new Dictionary<string, object>
-            {
-                { ModelCesiumWriter.ColorPropertyName, expectedColor },
-            });
+            AssertPropertyJson(ModelCesiumWriter.ColorPropertyName, expected);
         }
 
         [Test]
-        public void TestColorBlendModeProperty()
+        public void TestColorBlendMode()
         {
-            const CesiumColorBlendMode expectedColorBlendMode = CesiumColorBlendMode.Replace;
+            const CesiumColorBlendMode expected = CesiumColorBlendMode.Replace;
 
             using (var packet = OpenPacket())
             using (var model = packet.OpenModelProperty())
             using (var interval = model.OpenInterval())
             {
-                interval.WriteColorBlendModeProperty(expectedColorBlendMode);
+                interval.WriteColorBlendModeProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.ModelPropertyName, new Dictionary<string, object>
-            {
-                { ModelCesiumWriter.ColorBlendModePropertyName, expectedColorBlendMode },
-            });
+            AssertPropertyJson(ModelCesiumWriter.ColorBlendModePropertyName, expected);
         }
 
         [Test]
-        public void TestColorBlendAmountProperty()
+        public void TestColorBlendAmount()
         {
-            const double expectedColorBlendAmount = 0.75;
+            const double expected = 0.75;
 
             using (var packet = OpenPacket())
             using (var model = packet.OpenModelProperty())
             using (var interval = model.OpenInterval())
             {
-                interval.WriteColorBlendAmountProperty(expectedColorBlendAmount);
+                interval.WriteColorBlendAmountProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.ModelPropertyName, new Dictionary<string, object>
-            {
-                { ModelCesiumWriter.ColorBlendAmountPropertyName, expectedColorBlendAmount },
-            });
+            AssertPropertyJson(ModelCesiumWriter.ColorBlendAmountPropertyName, expected);
         }
 
         [Test]
-        public void TestScaleProperty()
+        public void TestScale()
         {
-            const double expectedScale = 2.0;
+            const double expected = 2.0;
 
             using (var packet = OpenPacket())
             using (var model = packet.OpenModelProperty())
             using (var interval = model.OpenInterval())
             {
-                interval.WriteScaleProperty(expectedScale);
+                interval.WriteScaleProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.ModelPropertyName, new Dictionary<string, object>
-            {
-                { ModelCesiumWriter.ScalePropertyName, expectedScale },
-            });
+            AssertPropertyJson(ModelCesiumWriter.ScalePropertyName, expected);
         }
 
         [Test]
-        public void TestMinimumPixelSizeProperty()
+        public void TestMinimumPixelSize()
         {
-            const double expectedMinimumPixelSize = 16.0;
+            const double expected = 16.0;
 
             using (var packet = OpenPacket())
             using (var model = packet.OpenModelProperty())
             using (var interval = model.OpenInterval())
             {
-                interval.WriteMinimumPixelSizeProperty(expectedMinimumPixelSize);
+                interval.WriteMinimumPixelSizeProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.ModelPropertyName, new Dictionary<string, object>
-            {
-                { ModelCesiumWriter.MinimumPixelSizePropertyName, expectedMinimumPixelSize },
-            });
+            AssertPropertyJson(ModelCesiumWriter.MinimumPixelSizePropertyName, expected);
         }
 
         [Test]
-        public void TestMaximumScaleProperty()
+        public void TestMaximumScale()
         {
-            const double expectedMaximumScale = 10.0;
+            const double expected = 10.0;
 
             using (var packet = OpenPacket())
             using (var model = packet.OpenModelProperty())
             using (var interval = model.OpenInterval())
             {
-                interval.WriteMaximumScaleProperty(expectedMaximumScale);
+                interval.WriteMaximumScaleProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.ModelPropertyName, new Dictionary<string, object>
-            {
-                { ModelCesiumWriter.MaximumScalePropertyName, expectedMaximumScale },
-            });
+            AssertPropertyJson(ModelCesiumWriter.MaximumScalePropertyName, expected);
         }
 
         [Test]
-        public void TestIncrementallyLoadTexturesProperty()
+        public void TestIncrementallyLoadTextures()
         {
-            const bool expectedIncrementallyLoadTextures = true;
+            const bool expected = true;
 
             using (var packet = OpenPacket())
             using (var model = packet.OpenModelProperty())
             using (var interval = model.OpenInterval())
             {
-                interval.WriteIncrementallyLoadTexturesProperty(expectedIncrementallyLoadTextures);
+                interval.WriteIncrementallyLoadTexturesProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.ModelPropertyName, new Dictionary<string, object>
-            {
-                { ModelCesiumWriter.IncrementallyLoadTexturesPropertyName, expectedIncrementallyLoadTextures },
-            });
+            AssertPropertyJson(ModelCesiumWriter.IncrementallyLoadTexturesPropertyName, expected);
         }
 
         [Test]
-        public void TestRunAnimationsProperty()
+        public void TestRunAnimations()
         {
-            const bool expectedRunAnimations = false;
+            const bool expected = false;
 
             using (var packet = OpenPacket())
             using (var model = packet.OpenModelProperty())
             using (var interval = model.OpenInterval())
             {
-                interval.WriteRunAnimationsProperty(expectedRunAnimations);
+                interval.WriteRunAnimationsProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.ModelPropertyName, new Dictionary<string, object>
-            {
-                { ModelCesiumWriter.RunAnimationsPropertyName, expectedRunAnimations },
-            });
+            AssertPropertyJson(ModelCesiumWriter.RunAnimationsPropertyName, expected);
         }
 
         [Test]
-        public void TestShadowsProperty()
+        public void TestShadows()
         {
-            const CesiumShadowMode expectedShadows = CesiumShadowMode.Enabled;
+            const CesiumShadowMode expected = CesiumShadowMode.Enabled;
 
             using (var packet = OpenPacket())
             using (var model = packet.OpenModelProperty())
             using (var interval = model.OpenInterval())
             {
-                interval.WriteShadowsProperty(expectedShadows);
+                interval.WriteShadowsProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.ModelPropertyName, new Dictionary<string, object>
-            {
-                { ModelCesiumWriter.ShadowsPropertyName, expectedShadows },
-            });
+            AssertPropertyJson(ModelCesiumWriter.ShadowsPropertyName, expected);
         }
 
         [Test]
-        public void TestHeightReferenceProperty()
+        public void TestHeightReference()
         {
-            const CesiumHeightReference expectedHeightReference = CesiumHeightReference.ClampToGround;
+            const CesiumHeightReference expected = CesiumHeightReference.ClampToGround;
 
             using (var packet = OpenPacket())
             using (var model = packet.OpenModelProperty())
             using (var interval = model.OpenInterval())
             {
-                interval.WriteHeightReferenceProperty(expectedHeightReference);
+                interval.WriteHeightReferenceProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.ModelPropertyName, new Dictionary<string, object>
-            {
-                { ModelCesiumWriter.HeightReferencePropertyName, expectedHeightReference },
-            });
+            AssertPropertyJson(ModelCesiumWriter.HeightReferencePropertyName, expected);
         }
 
         [Test]
-        public void TestDistanceDisplayConditionProperty()
+        public void TestDistanceDisplayCondition()
         {
-            var expectedBounds = new Bounds(1234.0, 5678.0);
+            var expected = new Bounds(1234.0, 5678.0);
 
             using (var packet = OpenPacket())
             using (var model = packet.OpenModelProperty())
             using (var interval = model.OpenInterval())
             {
-                interval.WriteDistanceDisplayConditionProperty(expectedBounds);
+                interval.WriteDistanceDisplayConditionProperty(expected);
             }
 
+            AssertPropertyJson(ModelCesiumWriter.DistanceDisplayConditionPropertyName, expected);
+        }
+
+        private void AssertPropertyJson(string propertyName, object value)
+        {
             AssertExpectedJson(PacketCesiumWriter.ModelPropertyName, new Dictionary<string, object>
             {
-                { ModelCesiumWriter.DistanceDisplayConditionPropertyName, expectedBounds },
+                { propertyName, value },
             });
         }
 

@@ -10,349 +10,22 @@ namespace CesiumLanguageWriterTests
     public class TestBillboardCesiumWriter : TestCesiumPropertyWriter<BillboardCesiumWriter>
     {
         [Test]
-        public void TestImageProperty()
+        public void TestShow()
         {
-            const string expectedImage = "image.png";
+            const bool expected = true;
 
             using (var packet = OpenPacket())
             using (var billboard = packet.OpenBillboardProperty())
             using (var interval = billboard.OpenInterval())
             {
-                interval.WriteImageProperty(expectedImage, CesiumResourceBehavior.LinkTo);
+                interval.WriteShowProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.BillboardPropertyName, new Dictionary<string, object>
-            {
-                { BillboardCesiumWriter.ImagePropertyName, expectedImage },
-            });
+            AssertPropertyJson(BillboardCesiumWriter.ShowPropertyName, expected);
         }
 
         [Test]
-        public void TestScaleProperty()
-        {
-            const double expectedScale = 2.0;
-
-            using (var packet = OpenPacket())
-            using (var billboard = packet.OpenBillboardProperty())
-            using (var interval = billboard.OpenInterval())
-            {
-                interval.WriteScaleProperty(expectedScale);
-            }
-
-            AssertExpectedJson(PacketCesiumWriter.BillboardPropertyName, new Dictionary<string, object>
-            {
-                { BillboardCesiumWriter.ScalePropertyName, expectedScale },
-            });
-        }
-
-        [Test]
-        public void TestPixelOffsetProperty()
-        {
-            var expectedPixelOffset = new Rectangular(12.5, 3.5);
-
-            using (var packet = OpenPacket())
-            using (var billboard = packet.OpenBillboardProperty())
-            using (var interval = billboard.OpenInterval())
-            {
-                interval.WritePixelOffsetProperty(expectedPixelOffset);
-            }
-
-            AssertExpectedJson(PacketCesiumWriter.BillboardPropertyName, new Dictionary<string, object>
-            {
-                { BillboardCesiumWriter.PixelOffsetPropertyName, expectedPixelOffset },
-            });
-        }
-
-        [Test]
-        public void TestEyeOffsetProperty()
-        {
-            var expectedEyeOffset = new Cartesian(1.0, 2.0, 3.0);
-
-            using (var packet = OpenPacket())
-            using (var billboard = packet.OpenBillboardProperty())
-            using (var interval = billboard.OpenInterval())
-            {
-                interval.WriteEyeOffsetProperty(expectedEyeOffset);
-            }
-
-            AssertExpectedJson(PacketCesiumWriter.BillboardPropertyName, new Dictionary<string, object>
-            {
-                { BillboardCesiumWriter.EyeOffsetPropertyName, expectedEyeOffset },
-            });
-        }
-
-        [Test]
-        public void TestHorizontalOriginProperty()
-        {
-            const CesiumHorizontalOrigin expectedHorizontalOrigin = CesiumHorizontalOrigin.Center;
-
-            using (var packet = OpenPacket())
-            using (var billboard = packet.OpenBillboardProperty())
-            using (var interval = billboard.OpenInterval())
-            {
-                interval.WriteHorizontalOriginProperty(expectedHorizontalOrigin);
-            }
-
-            AssertExpectedJson(PacketCesiumWriter.BillboardPropertyName, new Dictionary<string, object>
-            {
-                { BillboardCesiumWriter.HorizontalOriginPropertyName, expectedHorizontalOrigin },
-            });
-        }
-
-        [Test]
-        public void TestVerticalOriginProperty()
-        {
-            const CesiumVerticalOrigin expectedVerticalOrigin = CesiumVerticalOrigin.Center;
-
-            using (var packet = OpenPacket())
-            using (var billboard = packet.OpenBillboardProperty())
-            using (var interval = billboard.OpenInterval())
-            {
-                interval.WriteVerticalOriginProperty(expectedVerticalOrigin);
-            }
-
-            AssertExpectedJson(PacketCesiumWriter.BillboardPropertyName, new Dictionary<string, object>
-            {
-                { BillboardCesiumWriter.VerticalOriginPropertyName, expectedVerticalOrigin },
-            });
-        }
-
-        [Test]
-        public void TestHeightReferenceProperty()
-        {
-            const CesiumHeightReference expectedHeightReference = CesiumHeightReference.ClampToGround;
-
-            using (var packet = OpenPacket())
-            using (var billboard = packet.OpenBillboardProperty())
-            using (var interval = billboard.OpenInterval())
-            {
-                interval.WriteHeightReferenceProperty(expectedHeightReference);
-            }
-
-            AssertExpectedJson(PacketCesiumWriter.BillboardPropertyName, new Dictionary<string, object>
-            {
-                { BillboardCesiumWriter.HeightReferencePropertyName, expectedHeightReference },
-            });
-        }
-
-        [Test]
-        public void TestColorProperty()
-        {
-            var expectedColor = Color.FromArgb(0, 255, 0, 255);
-
-            using (var packet = OpenPacket())
-            using (var billboard = packet.OpenBillboardProperty())
-            using (var interval = billboard.OpenInterval())
-            {
-                interval.WriteColorProperty(expectedColor);
-            }
-
-            AssertExpectedJson(PacketCesiumWriter.BillboardPropertyName, new Dictionary<string, object>
-            {
-                { BillboardCesiumWriter.ColorPropertyName, expectedColor },
-            });
-        }
-
-        [Test]
-        public void TestRotationProperty()
-        {
-            const double expectedRotation = 1.0;
-
-            using (var packet = OpenPacket())
-            using (var billboard = packet.OpenBillboardProperty())
-            using (var interval = billboard.OpenInterval())
-            {
-                interval.WriteRotationProperty(expectedRotation);
-            }
-
-            AssertExpectedJson(PacketCesiumWriter.BillboardPropertyName, new Dictionary<string, object>
-            {
-                { BillboardCesiumWriter.RotationPropertyName, expectedRotation },
-            });
-        }
-
-        [Test]
-        public void TestAlignedAxisProperty()
-        {
-            var expectedAlignedAxis = UnitCartesian.UnitX;
-
-            using (var packet = OpenPacket())
-            using (var billboard = packet.OpenBillboardProperty())
-            using (var interval = billboard.OpenInterval())
-            {
-                interval.WriteAlignedAxisProperty(expectedAlignedAxis);
-            }
-
-            AssertExpectedJson(PacketCesiumWriter.BillboardPropertyName, new Dictionary<string, object>
-            {
-                { BillboardCesiumWriter.AlignedAxisPropertyName, expectedAlignedAxis },
-            });
-        }
-
-        [Test]
-        public void TestSizeInMetersProperty()
-        {
-            const bool expectedSizeInMeters = true;
-
-            using (var packet = OpenPacket())
-            using (var billboard = packet.OpenBillboardProperty())
-            using (var interval = billboard.OpenInterval())
-            {
-                interval.WriteSizeInMetersProperty(expectedSizeInMeters);
-            }
-
-            AssertExpectedJson(PacketCesiumWriter.BillboardPropertyName, new Dictionary<string, object>
-            {
-                { BillboardCesiumWriter.SizeInMetersPropertyName, expectedSizeInMeters },
-            });
-        }
-
-        [Test]
-        public void TestWidthProperty()
-        {
-            const double expectedWidth = 12.0;
-
-            using (var packet = OpenPacket())
-            using (var billboard = packet.OpenBillboardProperty())
-            using (var interval = billboard.OpenInterval())
-            {
-                interval.WriteWidthProperty(expectedWidth);
-            }
-
-            AssertExpectedJson(PacketCesiumWriter.BillboardPropertyName, new Dictionary<string, object>
-            {
-                { BillboardCesiumWriter.WidthPropertyName, expectedWidth },
-            });
-        }
-
-        [Test]
-        public void TestHeightProperty()
-        {
-            const double expectedHeight = 34.0;
-
-            using (var packet = OpenPacket())
-            using (var billboard = packet.OpenBillboardProperty())
-            using (var interval = billboard.OpenInterval())
-            {
-                interval.WriteHeightProperty(expectedHeight);
-            }
-
-            AssertExpectedJson(PacketCesiumWriter.BillboardPropertyName, new Dictionary<string, object>
-            {
-                { BillboardCesiumWriter.HeightPropertyName, expectedHeight },
-            });
-        }
-
-        [Test]
-        public void TestTranslucencyByDistanceProperty()
-        {
-            var expectedTranslucencyByDistance = new NearFarScalar(100.0, 1.0, 200.0, 0.5);
-
-            using (var packet = OpenPacket())
-            using (var billboard = packet.OpenBillboardProperty())
-            using (var interval = billboard.OpenInterval())
-            {
-                interval.WriteTranslucencyByDistanceProperty(expectedTranslucencyByDistance);
-            }
-
-            AssertExpectedJson(PacketCesiumWriter.BillboardPropertyName, new Dictionary<string, object>
-            {
-                { BillboardCesiumWriter.TranslucencyByDistancePropertyName, expectedTranslucencyByDistance },
-            });
-        }
-
-        [Test]
-        public void TestPixelOffsetScaleByDistanceProperty()
-        {
-            var expectedPixelOffsetScaleByDistance = new NearFarScalar(10.0, 1.0, 20.0, 2.0);
-
-            using (var packet = OpenPacket())
-            using (var billboard = packet.OpenBillboardProperty())
-            using (var interval = billboard.OpenInterval())
-            {
-                interval.WritePixelOffsetScaleByDistanceProperty(expectedPixelOffsetScaleByDistance);
-            }
-
-            AssertExpectedJson(PacketCesiumWriter.BillboardPropertyName, new Dictionary<string, object>
-            {
-                { BillboardCesiumWriter.PixelOffsetScaleByDistancePropertyName, expectedPixelOffsetScaleByDistance },
-            });
-        }
-
-        [Test]
-        public void TestImageSubRegionProperty()
-        {
-            var expectedImageSubRegion = new BoundingRectangle(1.0, 2.0, 3.0, 4.0);
-
-            using (var packet = OpenPacket())
-            using (var billboard = packet.OpenBillboardProperty())
-            using (var interval = billboard.OpenInterval())
-            {
-                interval.WriteImageSubRegionProperty(expectedImageSubRegion);
-            }
-
-            AssertExpectedJson(PacketCesiumWriter.BillboardPropertyName, new Dictionary<string, object>
-            {
-                { BillboardCesiumWriter.ImageSubRegionPropertyName, expectedImageSubRegion },
-            });
-        }
-
-        [Test]
-        public void TestDistanceDisplayConditionProperty()
-        {
-            var expectedDistanceDisplayCondition = new Bounds(10.0, 20.0);
-
-            using (var packet = OpenPacket())
-            using (var billboard = packet.OpenBillboardProperty())
-            using (var interval = billboard.OpenInterval())
-            {
-                interval.WriteDistanceDisplayConditionProperty(expectedDistanceDisplayCondition);
-            }
-
-            AssertExpectedJson(PacketCesiumWriter.BillboardPropertyName, new Dictionary<string, object>
-            {
-                { BillboardCesiumWriter.DistanceDisplayConditionPropertyName, expectedDistanceDisplayCondition },
-            });
-        }
-
-        [Test]
-        public void TestDisableDepthTestDistanceProperty()
-        {
-            const double expectedDisableDepthTestDistance = 1234.0;
-
-            using (var packet = OpenPacket())
-            using (var billboard = packet.OpenBillboardProperty())
-            using (var interval = billboard.OpenInterval())
-            {
-                interval.WriteDisableDepthTestDistanceProperty(expectedDisableDepthTestDistance);
-            }
-
-            AssertExpectedJson(PacketCesiumWriter.BillboardPropertyName, new Dictionary<string, object>
-            {
-                { BillboardCesiumWriter.DisableDepthTestDistancePropertyName, expectedDisableDepthTestDistance },
-            });
-        }
-
-        [Test]
-        public void TestShowProperty()
-        {
-            const bool expectedShow = true;
-
-            using (var packet = OpenPacket())
-            using (var billboard = packet.OpenBillboardProperty())
-            using (var interval = billboard.OpenInterval())
-            {
-                interval.WriteShowProperty(expectedShow);
-            }
-
-            AssertExpectedJson(PacketCesiumWriter.BillboardPropertyName, new Dictionary<string, object>
-            {
-                { BillboardCesiumWriter.ShowPropertyName, expectedShow },
-            });
-        }
-
-        [Test]
-        public void TestShowPropertyInterval()
+        public void TestShowInterval()
         {
             var startDate = new GregorianDate(2012, 4, 2, 12, 0, 0).ToJulianDate();
             var stopDate = new GregorianDate(2012, 4, 2, 12, 1, 0).ToJulianDate();
@@ -389,51 +62,313 @@ namespace CesiumLanguageWriterTests
                 }
             }
 
-            AssertExpectedJson(PacketCesiumWriter.BillboardPropertyName, new Dictionary<string, object>
+            AssertPropertyJson(BillboardCesiumWriter.ShowPropertyName, new List<Dictionary<string, object>>
             {
+                new Dictionary<string, object>
                 {
-                    BillboardCesiumWriter.ShowPropertyName, new List<Dictionary<string, object>>
-                    {
-                        new Dictionary<string, object>
-                        {
-                            { "interval", CesiumFormattingHelper.ToIso8601Interval(interval1Start, interval1Stop, Iso8601Format.Compact) },
-                            { BooleanCesiumWriter.BooleanPropertyName, interval1Value },
-                        },
-                        new Dictionary<string, object>
-                        {
-                            { "interval", CesiumFormattingHelper.ToIso8601Interval(interval2Start, interval2Stop, Iso8601Format.Compact) },
-                            { BooleanCesiumWriter.BooleanPropertyName, interval2Value },
-                        },
-                        new Dictionary<string, object>
-                        {
-                            { "interval", CesiumFormattingHelper.ToIso8601Interval(interval3Start, interval3Stop, Iso8601Format.Compact) },
-                            { BooleanCesiumWriter.BooleanPropertyName, interval3Value },
-                        },
-                    }
+                    { "interval", CesiumFormattingHelper.ToIso8601Interval(interval1Start, interval1Stop, Iso8601Format.Compact) },
+                    { BooleanCesiumWriter.BooleanPropertyName, interval1Value },
+                },
+                new Dictionary<string, object>
+                {
+                    { "interval", CesiumFormattingHelper.ToIso8601Interval(interval2Start, interval2Stop, Iso8601Format.Compact) },
+                    { BooleanCesiumWriter.BooleanPropertyName, interval2Value },
+                },
+                new Dictionary<string, object>
+                {
+                    { "interval", CesiumFormattingHelper.ToIso8601Interval(interval3Start, interval3Stop, Iso8601Format.Compact) },
+                    { BooleanCesiumWriter.BooleanPropertyName, interval3Value },
                 },
             });
         }
 
         [Test]
-        public void TestScaleByDistanceProperty()
+        public void TestImage()
         {
-            var expectedScaleByDistance = new NearFarScalar(100.5, 1.5, 200.5, 2.5);
+            const string expected = "image.png";
 
             using (var packet = OpenPacket())
             using (var billboard = packet.OpenBillboardProperty())
             using (var interval = billboard.OpenInterval())
             {
-                interval.WriteScaleByDistanceProperty(expectedScaleByDistance);
+                interval.WriteImageProperty(expected, CesiumResourceBehavior.LinkTo);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.BillboardPropertyName, new Dictionary<string, object>
-            {
-                { BillboardCesiumWriter.ScaleByDistancePropertyName, expectedScaleByDistance },
-            });
+            AssertPropertyJson(BillboardCesiumWriter.ImagePropertyName, expected);
         }
 
         [Test]
-        public void TestScaleByDistancePropertySamples()
+        public void TestScale()
+        {
+            const double expected = 2.0;
+
+            using (var packet = OpenPacket())
+            using (var billboard = packet.OpenBillboardProperty())
+            using (var interval = billboard.OpenInterval())
+            {
+                interval.WriteScaleProperty(expected);
+            }
+
+            AssertPropertyJson(BillboardCesiumWriter.ScalePropertyName, expected);
+        }
+
+        [Test]
+        public void TestPixelOffset()
+        {
+            var expected = new Rectangular(12.5, 3.5);
+
+            using (var packet = OpenPacket())
+            using (var billboard = packet.OpenBillboardProperty())
+            using (var interval = billboard.OpenInterval())
+            {
+                interval.WritePixelOffsetProperty(expected);
+            }
+
+            AssertPropertyJson(BillboardCesiumWriter.PixelOffsetPropertyName, expected);
+        }
+
+        [Test]
+        public void TestEyeOffset()
+        {
+            var expected = new Cartesian(1.0, 2.0, 3.0);
+
+            using (var packet = OpenPacket())
+            using (var billboard = packet.OpenBillboardProperty())
+            using (var interval = billboard.OpenInterval())
+            {
+                interval.WriteEyeOffsetProperty(expected);
+            }
+
+            AssertPropertyJson(BillboardCesiumWriter.EyeOffsetPropertyName, expected);
+        }
+
+        [Test]
+        public void TestHorizontalOrigin()
+        {
+            const CesiumHorizontalOrigin expected = CesiumHorizontalOrigin.Center;
+
+            using (var packet = OpenPacket())
+            using (var billboard = packet.OpenBillboardProperty())
+            using (var interval = billboard.OpenInterval())
+            {
+                interval.WriteHorizontalOriginProperty(expected);
+            }
+
+            AssertPropertyJson(BillboardCesiumWriter.HorizontalOriginPropertyName, expected);
+        }
+
+        [Test]
+        public void TestVerticalOrigin()
+        {
+            const CesiumVerticalOrigin expected = CesiumVerticalOrigin.Center;
+
+            using (var packet = OpenPacket())
+            using (var billboard = packet.OpenBillboardProperty())
+            using (var interval = billboard.OpenInterval())
+            {
+                interval.WriteVerticalOriginProperty(expected);
+            }
+
+            AssertPropertyJson(BillboardCesiumWriter.VerticalOriginPropertyName, expected);
+        }
+
+        [Test]
+        public void TestHeightReference()
+        {
+            const CesiumHeightReference expected = CesiumHeightReference.ClampToGround;
+
+            using (var packet = OpenPacket())
+            using (var billboard = packet.OpenBillboardProperty())
+            using (var interval = billboard.OpenInterval())
+            {
+                interval.WriteHeightReferenceProperty(expected);
+            }
+
+            AssertPropertyJson(BillboardCesiumWriter.HeightReferencePropertyName, expected);
+        }
+
+        [Test]
+        public void TestColor()
+        {
+            var expected = Color.FromArgb(0, 255, 0, 255);
+
+            using (var packet = OpenPacket())
+            using (var billboard = packet.OpenBillboardProperty())
+            using (var interval = billboard.OpenInterval())
+            {
+                interval.WriteColorProperty(expected);
+            }
+
+            AssertPropertyJson(BillboardCesiumWriter.ColorPropertyName, expected);
+        }
+
+        [Test]
+        public void TestRotation()
+        {
+            const double expected = 1.0;
+
+            using (var packet = OpenPacket())
+            using (var billboard = packet.OpenBillboardProperty())
+            using (var interval = billboard.OpenInterval())
+            {
+                interval.WriteRotationProperty(expected);
+            }
+
+            AssertPropertyJson(BillboardCesiumWriter.RotationPropertyName, expected);
+        }
+
+        [Test]
+        public void TestAlignedAxis()
+        {
+            var expected = UnitCartesian.UnitX;
+
+            using (var packet = OpenPacket())
+            using (var billboard = packet.OpenBillboardProperty())
+            using (var interval = billboard.OpenInterval())
+            {
+                interval.WriteAlignedAxisProperty(expected);
+            }
+
+            AssertPropertyJson(BillboardCesiumWriter.AlignedAxisPropertyName, expected);
+        }
+
+        [Test]
+        public void TestSizeInMeters()
+        {
+            const bool expected = true;
+
+            using (var packet = OpenPacket())
+            using (var billboard = packet.OpenBillboardProperty())
+            using (var interval = billboard.OpenInterval())
+            {
+                interval.WriteSizeInMetersProperty(expected);
+            }
+
+            AssertPropertyJson(BillboardCesiumWriter.SizeInMetersPropertyName, expected);
+        }
+
+        [Test]
+        public void TestWidth()
+        {
+            const double expected = 12.0;
+
+            using (var packet = OpenPacket())
+            using (var billboard = packet.OpenBillboardProperty())
+            using (var interval = billboard.OpenInterval())
+            {
+                interval.WriteWidthProperty(expected);
+            }
+
+            AssertPropertyJson(BillboardCesiumWriter.WidthPropertyName, expected);
+        }
+
+        [Test]
+        public void TestHeight()
+        {
+            const double expected = 34.0;
+
+            using (var packet = OpenPacket())
+            using (var billboard = packet.OpenBillboardProperty())
+            using (var interval = billboard.OpenInterval())
+            {
+                interval.WriteHeightProperty(expected);
+            }
+
+            AssertPropertyJson(BillboardCesiumWriter.HeightPropertyName, expected);
+        }
+
+        [Test]
+        public void TestTranslucencyByDistance()
+        {
+            var expected = new NearFarScalar(100.0, 1.0, 200.0, 0.5);
+
+            using (var packet = OpenPacket())
+            using (var billboard = packet.OpenBillboardProperty())
+            using (var interval = billboard.OpenInterval())
+            {
+                interval.WriteTranslucencyByDistanceProperty(expected);
+            }
+
+            AssertPropertyJson(BillboardCesiumWriter.TranslucencyByDistancePropertyName, expected);
+        }
+
+        [Test]
+        public void TestPixelOffsetScaleByDistance()
+        {
+            var expected = new NearFarScalar(10.0, 1.0, 20.0, 2.0);
+
+            using (var packet = OpenPacket())
+            using (var billboard = packet.OpenBillboardProperty())
+            using (var interval = billboard.OpenInterval())
+            {
+                interval.WritePixelOffsetScaleByDistanceProperty(expected);
+            }
+
+            AssertPropertyJson(BillboardCesiumWriter.PixelOffsetScaleByDistancePropertyName, expected);
+        }
+
+        [Test]
+        public void TestImageSubRegion()
+        {
+            var expected = new BoundingRectangle(1.0, 2.0, 3.0, 4.0);
+
+            using (var packet = OpenPacket())
+            using (var billboard = packet.OpenBillboardProperty())
+            using (var interval = billboard.OpenInterval())
+            {
+                interval.WriteImageSubRegionProperty(expected);
+            }
+
+            AssertPropertyJson(BillboardCesiumWriter.ImageSubRegionPropertyName, expected);
+        }
+
+        [Test]
+        public void TestDistanceDisplayCondition()
+        {
+            var expected = new Bounds(10.0, 20.0);
+
+            using (var packet = OpenPacket())
+            using (var billboard = packet.OpenBillboardProperty())
+            using (var interval = billboard.OpenInterval())
+            {
+                interval.WriteDistanceDisplayConditionProperty(expected);
+            }
+
+            AssertPropertyJson(BillboardCesiumWriter.DistanceDisplayConditionPropertyName, expected);
+        }
+
+        [Test]
+        public void TestDisableDepthTestDistance()
+        {
+            const double expected = 1234.0;
+
+            using (var packet = OpenPacket())
+            using (var billboard = packet.OpenBillboardProperty())
+            using (var interval = billboard.OpenInterval())
+            {
+                interval.WriteDisableDepthTestDistanceProperty(expected);
+            }
+
+            AssertPropertyJson(BillboardCesiumWriter.DisableDepthTestDistancePropertyName, expected);
+        }
+
+        [Test]
+        public void TestScaleByDistance()
+        {
+            var expected = new NearFarScalar(100.5, 1.5, 200.5, 2.5);
+
+            using (var packet = OpenPacket())
+            using (var billboard = packet.OpenBillboardProperty())
+            using (var interval = billboard.OpenInterval())
+            {
+                interval.WriteScaleByDistanceProperty(expected);
+            }
+
+            AssertPropertyJson(BillboardCesiumWriter.ScaleByDistancePropertyName, expected);
+        }
+
+        [Test]
+        public void TestScaleByDistanceSamples()
         {
             var epoch = new GregorianDate(2012, 4, 2, 12, 0, 0).ToJulianDate();
 
@@ -467,14 +402,9 @@ namespace CesiumLanguageWriterTests
                 alignedAxis.WriteDelete(true);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.BillboardPropertyName, new Dictionary<string, object>
+            AssertPropertyJson(BillboardCesiumWriter.AlignedAxisPropertyName, new Dictionary<string, object>
             {
-                {
-                    BillboardCesiumWriter.AlignedAxisPropertyName, new Dictionary<string, object>
-                    {
-                        { "delete", true },
-                    }
-                },
+                { "delete", true },
             });
         }
 
@@ -488,14 +418,17 @@ namespace CesiumLanguageWriterTests
                 scale.WriteDelete(true);
             }
 
+            AssertPropertyJson(BillboardCesiumWriter.ScalePropertyName, new Dictionary<string, object>
+            {
+                { "delete", true },
+            });
+        }
+
+        private void AssertPropertyJson(string propertyName, object value)
+        {
             AssertExpectedJson(PacketCesiumWriter.BillboardPropertyName, new Dictionary<string, object>
             {
-                {
-                    BillboardCesiumWriter.ScalePropertyName, new Dictionary<string, object>
-                    {
-                        { "delete", true },
-                    }
-                },
+                { propertyName, value },
             });
         }
 

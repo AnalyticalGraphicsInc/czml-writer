@@ -4,7 +4,9 @@ import static agi.foundation.compatibility.ArgumentNullException.assertNonNull;
 
 import agi.foundation.compatibility.annotations.Internal;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -23,6 +25,31 @@ import javax.annotation.Nullable;
 @Deprecated
 public final class IterableHelper {
     private IterableHelper() {}
+
+    /**
+     * Creates a list from a sequence.
+     *
+     * @param <TSource>
+     *            The type of the elements of source.
+     * @param source
+     *            The sequence to create a list from.
+     * @return A list that contains elements from the input sequence.
+     */
+    @Nonnull
+    public static <TSource> ArrayList<TSource> toList(@Nonnull Iterable<? extends TSource> source) {
+        assertNonNull(source, "source");
+
+        if (source instanceof Collection<?>) {
+            Collection<? extends TSource> collection = (Collection<? extends TSource>) source;
+            return new ArrayList<>(collection);
+        }
+
+        ArrayList<TSource> list = new ArrayList<>();
+        for (TSource item : source) {
+            list.add(item);
+        }
+        return list;
+    }
 
     private static <TSource> TSource throwNoElements() {
         throw new IllegalStateException("Sequence contains no elements");

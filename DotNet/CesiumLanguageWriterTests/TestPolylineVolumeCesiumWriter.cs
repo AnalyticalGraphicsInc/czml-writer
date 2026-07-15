@@ -13,25 +13,22 @@ namespace CesiumLanguageWriterTests
     public class TestPolylineVolumeCesiumWriter : TestCesiumPropertyWriter<PolylineVolumeCesiumWriter>
     {
         [Test]
-        public void TestShowProperty()
+        public void TestShow()
         {
-            const bool expectedShow = true;
+            const bool expected = true;
 
             using (var packet = OpenPacket())
             using (var polylineVolume = packet.OpenPolylineVolumeProperty())
             using (var interval = polylineVolume.OpenInterval())
             {
-                interval.WriteShowProperty(expectedShow);
+                interval.WriteShowProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.PolylineVolumePropertyName, new Dictionary<string, object>
-            {
-                { PolylineVolumeCesiumWriter.ShowPropertyName, expectedShow },
-            });
+            AssertPropertyJson(PolylineVolumeCesiumWriter.ShowPropertyName, expected);
         }
 
         [Test]
-        public void TestShowPropertyInterval()
+        public void TestShowInterval()
         {
             var startDate = new GregorianDate(2012, 4, 2, 12, 0, 0).ToJulianDate();
             var stopDate = new GregorianDate(2012, 4, 2, 12, 1, 0).ToJulianDate();
@@ -68,66 +65,208 @@ namespace CesiumLanguageWriterTests
                 }
             }
 
-            AssertExpectedJson(PacketCesiumWriter.PolylineVolumePropertyName, new Dictionary<string, object>
+            AssertPropertyJson(PolylineVolumeCesiumWriter.ShowPropertyName, new List<Dictionary<string, object>>
+            {
+                new Dictionary<string, object>
+                {
+                    { "interval", CesiumFormattingHelper.ToIso8601Interval(interval1Start, interval1Stop, Iso8601Format.Compact) },
+                    { BooleanCesiumWriter.BooleanPropertyName, interval1Value },
+                },
+                new Dictionary<string, object>
+                {
+                    { "interval", CesiumFormattingHelper.ToIso8601Interval(interval2Start, interval2Stop, Iso8601Format.Compact) },
+                    { BooleanCesiumWriter.BooleanPropertyName, interval2Value },
+                },
+                new Dictionary<string, object>
+                {
+                    { "interval", CesiumFormattingHelper.ToIso8601Interval(interval3Start, interval3Stop, Iso8601Format.Compact) },
+                    { BooleanCesiumWriter.BooleanPropertyName, interval3Value },
+                },
+            });
+        }
+
+        [Test]
+        public void TestPositions()
+        {
+            var expected = new PositionList
+            {
+                new Cartesian(1.0, 2.0, 3.0),
+                new Cartesian(4.0, 5.0, 6.0),
+            };
+
+            using (var packet = OpenPacket())
+            using (var polylineVolume = packet.OpenPolylineVolumeProperty())
+            using (var interval = polylineVolume.OpenInterval())
+            {
+                interval.WritePositionsProperty(expected);
+            }
+
+            AssertPropertyJson(PolylineVolumeCesiumWriter.PositionsPropertyName, expected);
+        }
+
+        [Test]
+        public void TestShape()
+        {
+            var expected = new ShapeList
+            {
+                new Rectangular(-5, -5),
+                new Rectangular(6, -6),
+                new Rectangular(7, 7),
+                new Rectangular(-8, 8),
+            };
+
+            using (var packet = OpenPacket())
+            using (var polylineVolume = packet.OpenPolylineVolumeProperty())
+            {
+                polylineVolume.WriteShapeProperty(expected);
+            }
+
+            AssertPropertyJson(PolylineVolumeCesiumWriter.ShapePropertyName, expected);
+        }
+
+        [Test]
+        public void TestCornerType()
+        {
+            const CesiumCornerType expected = CesiumCornerType.Beveled;
+
+            using (var packet = OpenPacket())
+            using (var polylineVolume = packet.OpenPolylineVolumeProperty())
+            using (var interval = polylineVolume.OpenInterval())
+            {
+                interval.WriteCornerTypeProperty(expected);
+            }
+
+            AssertPropertyJson(PolylineVolumeCesiumWriter.CornerTypePropertyName, expected);
+        }
+
+        [Test]
+        public void TestGranularity()
+        {
+            const double expected = 0.1;
+
+            using (var packet = OpenPacket())
+            using (var polylineVolume = packet.OpenPolylineVolumeProperty())
+            using (var interval = polylineVolume.OpenInterval())
+            {
+                interval.WriteGranularityProperty(expected);
+            }
+
+            AssertPropertyJson(PolylineVolumeCesiumWriter.GranularityPropertyName, expected);
+        }
+
+        [Test]
+        public void TestFill()
+        {
+            const bool expected = true;
+
+            using (var packet = OpenPacket())
+            using (var polylineVolume = packet.OpenPolylineVolumeProperty())
+            using (var interval = polylineVolume.OpenInterval())
+            {
+                interval.WriteFillProperty(expected);
+            }
+
+            AssertPropertyJson(PolylineVolumeCesiumWriter.FillPropertyName, expected);
+        }
+
+        [Test]
+        public void TestMaterial()
+        {
+            var expectedColor = Color.Red;
+
+            using (var packet = OpenPacket())
+            using (var polylineVolume = packet.OpenPolylineVolumeProperty())
+            using (var interval = polylineVolume.OpenInterval())
+            using (var material = interval.OpenMaterialProperty())
+            using (var solidColor = material.OpenSolidColorProperty())
+            {
+                solidColor.WriteColorProperty(expectedColor);
+            }
+
+            AssertPropertyJson(PolylineVolumeCesiumWriter.MaterialPropertyName, new Dictionary<string, object>
             {
                 {
-                    PolylineVolumeCesiumWriter.ShowPropertyName, new List<Dictionary<string, object>>
+                    PolylineMaterialCesiumWriter.SolidColorPropertyName, new Dictionary<string, object>
                     {
-                        new Dictionary<string, object>
-                        {
-                            { "interval", CesiumFormattingHelper.ToIso8601Interval(interval1Start, interval1Stop, Iso8601Format.Compact) },
-                            { BooleanCesiumWriter.BooleanPropertyName, interval1Value },
-                        },
-                        new Dictionary<string, object>
-                        {
-                            { "interval", CesiumFormattingHelper.ToIso8601Interval(interval2Start, interval2Stop, Iso8601Format.Compact) },
-                            { BooleanCesiumWriter.BooleanPropertyName, interval2Value },
-                        },
-                        new Dictionary<string, object>
-                        {
-                            { "interval", CesiumFormattingHelper.ToIso8601Interval(interval3Start, interval3Stop, Iso8601Format.Compact) },
-                            { BooleanCesiumWriter.BooleanPropertyName, interval3Value },
-                        },
+                        { SolidColorMaterialCesiumWriter.ColorPropertyName, expectedColor },
                     }
                 },
             });
         }
 
         [Test]
-        public void TestShape()
+        public void TestOutline()
         {
-            using (var packet = OpenPacket())
-            using (var polylineVolume = packet.OpenPolylineVolumeProperty())
-            {
-                var shape = new List<Rectangular>
-                {
-                    new Rectangular(-5, -5),
-                    new Rectangular(6, -6),
-                    new Rectangular(7, 7),
-                    new Rectangular(-8, 8),
-                };
-                polylineVolume.WriteShapeProperty(shape);
-            }
-
-            Assert.AreEqual("{\"polylineVolume\":{\"shape\":{\"cartesian2\":[-5,-5,6,-6,7,7,-8,8]}}}", StringWriter.ToString());
-        }
-
-        [Test]
-        public void TestDistanceDisplayCondition()
-        {
-            var expectedBounds = new Bounds(10, 1234);
+            const bool expected = true;
 
             using (var packet = OpenPacket())
             using (var polylineVolume = packet.OpenPolylineVolumeProperty())
             using (var interval = polylineVolume.OpenInterval())
             {
-                interval.WriteDistanceDisplayConditionProperty(expectedBounds);
+                interval.WriteOutlineProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.PolylineVolumePropertyName, new Dictionary<string, object>
+            AssertPropertyJson(PolylineVolumeCesiumWriter.OutlinePropertyName, expected);
+        }
+
+        [Test]
+        public void TestOutlineColor()
+        {
+            var expected = Color.FromArgb(255, 255, 0, 0);
+
+            using (var packet = OpenPacket())
+            using (var polylineVolume = packet.OpenPolylineVolumeProperty())
+            using (var interval = polylineVolume.OpenInterval())
             {
-                { PolylineVolumeCesiumWriter.DistanceDisplayConditionPropertyName, expectedBounds },
-            });
+                interval.WriteOutlineColorProperty(expected);
+            }
+
+            AssertPropertyJson(PolylineVolumeCesiumWriter.OutlineColorPropertyName, expected);
+        }
+
+        [Test]
+        public void TestOutlineWidth()
+        {
+            const double expected = 2.0;
+
+            using (var packet = OpenPacket())
+            using (var polylineVolume = packet.OpenPolylineVolumeProperty())
+            using (var interval = polylineVolume.OpenInterval())
+            {
+                interval.WriteOutlineWidthProperty(expected);
+            }
+
+            AssertPropertyJson(PolylineVolumeCesiumWriter.OutlineWidthPropertyName, expected);
+        }
+
+        [Test]
+        public void TestDistanceDisplayCondition()
+        {
+            var expected = new Bounds(10, 1234);
+
+            using (var packet = OpenPacket())
+            using (var polylineVolume = packet.OpenPolylineVolumeProperty())
+            using (var interval = polylineVolume.OpenInterval())
+            {
+                interval.WriteDistanceDisplayConditionProperty(expected);
+            }
+
+            AssertPropertyJson(PolylineVolumeCesiumWriter.DistanceDisplayConditionPropertyName, expected);
+        }
+
+        [Test]
+        public void TestShadows()
+        {
+            const CesiumShadowMode expected = CesiumShadowMode.Enabled;
+
+            using (var packet = OpenPacket())
+            using (var polylineVolume = packet.OpenPolylineVolumeProperty())
+            using (var interval = polylineVolume.OpenInterval())
+            {
+                interval.WriteShadowsProperty(expected);
+            }
+
+            AssertPropertyJson(PolylineVolumeCesiumWriter.ShadowsPropertyName, expected);
         }
 
         /// <summary>
@@ -247,6 +386,14 @@ namespace CesiumLanguageWriterTests
             }
 
             output.WriteEndSequence();
+        }
+
+        private void AssertPropertyJson(string propertyName, object value)
+        {
+            AssertExpectedJson(PacketCesiumWriter.PolylineVolumePropertyName, new Dictionary<string, object>
+            {
+                { propertyName, value },
+            });
         }
 
         protected override CesiumPropertyWriter<PolylineVolumeCesiumWriter> CreatePropertyWriter(string propertyName)

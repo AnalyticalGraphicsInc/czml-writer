@@ -9,6 +9,7 @@ import agi.foundation.compatibility.Using;
 import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.awt.Color;
+import java.util.Collection;
 import java.util.Map;
 import javax.annotation.Nonnull;
 import org.junit.ClassRule;
@@ -25,151 +26,195 @@ import org.junit.Test;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestWallCesiumWriter extends TestCesiumPropertyWriter<WallCesiumWriter> {
     @Test
-    public final void testShowProperty() {
-        final boolean expectedShow = false;
+    public final void testShow() {
+        final boolean expected = false;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<WallCesiumWriter> using$1 = new Using<WallCesiumWriter>(packet.openWallProperty())) {
                 final WallCesiumWriter wall = using$1.resource;
                 try (Using<WallCesiumWriter> using$2 = new Using<WallCesiumWriter>(wall.openInterval())) {
                     final WallCesiumWriter interval = using$2.resource;
-                    interval.writeShowProperty(expectedShow);
+                    interval.writeShowProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, WallCesiumWriter.ShowPropertyName, expectedShow);
-        assertExpectedJson(PacketCesiumWriter.WallPropertyName, tempCollection$0);
+        assertPropertyJson(WallCesiumWriter.ShowPropertyName, expected);
     }
 
     @Test
-    public final void testGranularityProperty() {
-        final double expectedGranularity = 0.1;
+    public final void testPositions() {
+        final PositionList tempCollection$0 = new PositionList();
+        tempCollection$0.add(new Cartesian(1.0, 2.0, 3.0));
+        tempCollection$0.add(new Cartesian(4.0, 5.0, 6.0));
+        PositionList expected = tempCollection$0;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<WallCesiumWriter> using$1 = new Using<WallCesiumWriter>(packet.openWallProperty())) {
                 final WallCesiumWriter wall = using$1.resource;
                 try (Using<WallCesiumWriter> using$2 = new Using<WallCesiumWriter>(wall.openInterval())) {
                     final WallCesiumWriter interval = using$2.resource;
-                    interval.writeGranularityProperty(expectedGranularity);
+                    interval.writePositionsProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, WallCesiumWriter.GranularityPropertyName, expectedGranularity);
-        assertExpectedJson(PacketCesiumWriter.WallPropertyName, tempCollection$0);
+        assertPropertyJson(WallCesiumWriter.PositionsPropertyName, expected);
     }
 
     @Test
-    public final void testFillProperty() {
-        final boolean expectedFill = false;
+    public final void testGranularity() {
+        final double expected = 0.1;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<WallCesiumWriter> using$1 = new Using<WallCesiumWriter>(packet.openWallProperty())) {
                 final WallCesiumWriter wall = using$1.resource;
                 try (Using<WallCesiumWriter> using$2 = new Using<WallCesiumWriter>(wall.openInterval())) {
                     final WallCesiumWriter interval = using$2.resource;
-                    interval.writeFillProperty(expectedFill);
+                    interval.writeGranularityProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, WallCesiumWriter.FillPropertyName, expectedFill);
-        assertExpectedJson(PacketCesiumWriter.WallPropertyName, tempCollection$0);
+        assertPropertyJson(WallCesiumWriter.GranularityPropertyName, expected);
     }
 
     @Test
-    public final void testOutlineProperty() {
-        final boolean expectedOutline = true;
+    public final void testMinimumHeights() {
+        final DoubleList tempCollection$0 = new DoubleList();
+        tempCollection$0.add(1.0);
+        tempCollection$0.add(2.0);
+        tempCollection$0.add(3.0);
+        DoubleList expected = tempCollection$0;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<WallCesiumWriter> using$1 = new Using<WallCesiumWriter>(packet.openWallProperty())) {
                 final WallCesiumWriter wall = using$1.resource;
                 try (Using<WallCesiumWriter> using$2 = new Using<WallCesiumWriter>(wall.openInterval())) {
                     final WallCesiumWriter interval = using$2.resource;
-                    interval.writeOutlineProperty(expectedOutline);
+                    interval.writeMinimumHeightsProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, WallCesiumWriter.OutlinePropertyName, expectedOutline);
-        assertExpectedJson(PacketCesiumWriter.WallPropertyName, tempCollection$0);
+        assertPropertyJson(WallCesiumWriter.MinimumHeightsPropertyName, expected);
     }
 
     @Test
-    public final void testOutlineColorProperty() {
-        Color expectedColor = ColorHelper.fromArgb(255, 255, 0, 0);
+    public final void testMaximumHeights() {
+        final DoubleList tempCollection$0 = new DoubleList();
+        tempCollection$0.add(4.0);
+        tempCollection$0.add(5.0);
+        tempCollection$0.add(6.0);
+        DoubleList expected = tempCollection$0;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<WallCesiumWriter> using$1 = new Using<WallCesiumWriter>(packet.openWallProperty())) {
                 final WallCesiumWriter wall = using$1.resource;
                 try (Using<WallCesiumWriter> using$2 = new Using<WallCesiumWriter>(wall.openInterval())) {
                     final WallCesiumWriter interval = using$2.resource;
-                    interval.writeOutlineColorProperty(expectedColor);
+                    interval.writeMaximumHeightsProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, WallCesiumWriter.OutlineColorPropertyName, expectedColor);
-        assertExpectedJson(PacketCesiumWriter.WallPropertyName, tempCollection$0);
+        assertPropertyJson(WallCesiumWriter.MaximumHeightsPropertyName, expected);
     }
 
     @Test
-    public final void testOutlineWidthProperty() {
-        final double expectedOutlineWidth = 2.0;
+    public final void testFill() {
+        final boolean expected = false;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<WallCesiumWriter> using$1 = new Using<WallCesiumWriter>(packet.openWallProperty())) {
                 final WallCesiumWriter wall = using$1.resource;
                 try (Using<WallCesiumWriter> using$2 = new Using<WallCesiumWriter>(wall.openInterval())) {
                     final WallCesiumWriter interval = using$2.resource;
-                    interval.writeOutlineWidthProperty(expectedOutlineWidth);
+                    interval.writeFillProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, WallCesiumWriter.OutlineWidthPropertyName, expectedOutlineWidth);
-        assertExpectedJson(PacketCesiumWriter.WallPropertyName, tempCollection$0);
+        assertPropertyJson(WallCesiumWriter.FillPropertyName, expected);
     }
 
     @Test
-    public final void testShadowsProperty() {
-        final CesiumShadowMode expectedShadows = CesiumShadowMode.ENABLED;
+    public final void testOutline() {
+        final boolean expected = true;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<WallCesiumWriter> using$1 = new Using<WallCesiumWriter>(packet.openWallProperty())) {
                 final WallCesiumWriter wall = using$1.resource;
                 try (Using<WallCesiumWriter> using$2 = new Using<WallCesiumWriter>(wall.openInterval())) {
                     final WallCesiumWriter interval = using$2.resource;
-                    interval.writeShadowsProperty(expectedShadows);
+                    interval.writeOutlineProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, WallCesiumWriter.ShadowsPropertyName, expectedShadows);
-        assertExpectedJson(PacketCesiumWriter.WallPropertyName, tempCollection$0);
+        assertPropertyJson(WallCesiumWriter.OutlinePropertyName, expected);
     }
 
     @Test
-    public final void testDistanceDisplayConditionProperty() {
-        Bounds expectedBounds = new Bounds(1234.0, 5678.0);
+    public final void testOutlineColor() {
+        Color expected = ColorHelper.fromArgb(255, 255, 0, 0);
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<WallCesiumWriter> using$1 = new Using<WallCesiumWriter>(packet.openWallProperty())) {
                 final WallCesiumWriter wall = using$1.resource;
                 try (Using<WallCesiumWriter> using$2 = new Using<WallCesiumWriter>(wall.openInterval())) {
                     final WallCesiumWriter interval = using$2.resource;
-                    interval.writeDistanceDisplayConditionProperty(expectedBounds);
+                    interval.writeOutlineColorProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, WallCesiumWriter.DistanceDisplayConditionPropertyName, expectedBounds);
-        assertExpectedJson(PacketCesiumWriter.WallPropertyName, tempCollection$0);
+        assertPropertyJson(WallCesiumWriter.OutlineColorPropertyName, expected);
     }
 
     @Test
-    public final void testMaterialProperty() {
+    public final void testOutlineWidth() {
+        final double expected = 2.0;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<WallCesiumWriter> using$1 = new Using<WallCesiumWriter>(packet.openWallProperty())) {
+                final WallCesiumWriter wall = using$1.resource;
+                try (Using<WallCesiumWriter> using$2 = new Using<WallCesiumWriter>(wall.openInterval())) {
+                    final WallCesiumWriter interval = using$2.resource;
+                    interval.writeOutlineWidthProperty(expected);
+                }
+            }
+        }
+        assertPropertyJson(WallCesiumWriter.OutlineWidthPropertyName, expected);
+    }
+
+    @Test
+    public final void testShadows() {
+        final CesiumShadowMode expected = CesiumShadowMode.ENABLED;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<WallCesiumWriter> using$1 = new Using<WallCesiumWriter>(packet.openWallProperty())) {
+                final WallCesiumWriter wall = using$1.resource;
+                try (Using<WallCesiumWriter> using$2 = new Using<WallCesiumWriter>(wall.openInterval())) {
+                    final WallCesiumWriter interval = using$2.resource;
+                    interval.writeShadowsProperty(expected);
+                }
+            }
+        }
+        assertPropertyJson(WallCesiumWriter.ShadowsPropertyName, expected);
+    }
+
+    @Test
+    public final void testDistanceDisplayCondition() {
+        Bounds expected = new Bounds(1234.0, 5678.0);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<WallCesiumWriter> using$1 = new Using<WallCesiumWriter>(packet.openWallProperty())) {
+                final WallCesiumWriter wall = using$1.resource;
+                try (Using<WallCesiumWriter> using$2 = new Using<WallCesiumWriter>(wall.openInterval())) {
+                    final WallCesiumWriter interval = using$2.resource;
+                    interval.writeDistanceDisplayConditionProperty(expected);
+                }
+            }
+        }
+        assertPropertyJson(WallCesiumWriter.DistanceDisplayConditionPropertyName, expected);
+    }
+
+    @Test
+    public final void testMaterial() {
+        Color expectedColor = Color.RED;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<WallCesiumWriter> using$1 = new Using<WallCesiumWriter>(packet.openWallProperty())) {
@@ -180,18 +225,22 @@ public class TestWallCesiumWriter extends TestCesiumPropertyWriter<WallCesiumWri
                         final MaterialCesiumWriter material = using$3.resource;
                         try (Using<SolidColorMaterialCesiumWriter> using$4 = new Using<SolidColorMaterialCesiumWriter>(material.openSolidColorProperty())) {
                             final SolidColorMaterialCesiumWriter solidColor = using$4.resource;
-                            solidColor.writeColorProperty(Color.RED);
+                            solidColor.writeColorProperty(expectedColor);
                         }
                     }
                 }
             }
         }
-        final Map<String, Object> tempCollection$2 = MapHelper.create();
-        MapHelper.add(tempCollection$2, SolidColorMaterialCesiumWriter.ColorPropertyName, Color.RED);
         final Map<String, Object> tempCollection$1 = MapHelper.create();
-        MapHelper.add(tempCollection$1, PolylineMaterialCesiumWriter.SolidColorPropertyName, tempCollection$2);
+        MapHelper.add(tempCollection$1, SolidColorMaterialCesiumWriter.ColorPropertyName, expectedColor);
         final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, WallCesiumWriter.MaterialPropertyName, tempCollection$1);
+        MapHelper.add(tempCollection$0, PolylineMaterialCesiumWriter.SolidColorPropertyName, tempCollection$1);
+        assertPropertyJson(WallCesiumWriter.MaterialPropertyName, tempCollection$0);
+    }
+
+    private final void assertPropertyJson(String propertyName, Object value) {
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, propertyName, value);
         assertExpectedJson(PacketCesiumWriter.WallPropertyName, tempCollection$0);
     }
 

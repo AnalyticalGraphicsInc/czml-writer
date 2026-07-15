@@ -25,241 +25,216 @@ import org.junit.Test;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestRectangleCesiumWriter extends TestCesiumPropertyWriter<RectangleCesiumWriter> {
     @Test
-    public final void testShowProperty() {
-        final boolean expectedShow = true;
+    public final void testShow() {
+        final boolean expected = true;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<RectangleCesiumWriter> using$1 = new Using<RectangleCesiumWriter>(packet.openRectangleProperty())) {
                 final RectangleCesiumWriter rectangle = using$1.resource;
                 try (Using<RectangleCesiumWriter> using$2 = new Using<RectangleCesiumWriter>(rectangle.openInterval())) {
                     final RectangleCesiumWriter interval = using$2.resource;
-                    interval.writeShowProperty(expectedShow);
+                    interval.writeShowProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, RectangleCesiumWriter.ShowPropertyName, expectedShow);
-        assertExpectedJson(PacketCesiumWriter.RectanglePropertyName, tempCollection$0);
+        assertPropertyJson(RectangleCesiumWriter.ShowPropertyName, expected);
     }
 
     @Test
-    public final void testCoordinatesProperty() {
-        CartographicExtent expectedCoordinates = new CartographicExtent(-1.0, -2.0, 3.0, 4.0);
+    public final void testCoordinates() {
+        CartographicExtent expected = new CartographicExtent(-1.0, -2.0, 3.0, 4.0);
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<RectangleCesiumWriter> using$1 = new Using<RectangleCesiumWriter>(packet.openRectangleProperty())) {
                 final RectangleCesiumWriter rectangle = using$1.resource;
                 try (Using<RectangleCesiumWriter> using$2 = new Using<RectangleCesiumWriter>(rectangle.openInterval())) {
                     final RectangleCesiumWriter interval = using$2.resource;
-                    interval.writeCoordinatesProperty(expectedCoordinates);
+                    interval.writeCoordinatesProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, RectangleCesiumWriter.CoordinatesPropertyName, expectedCoordinates);
-        assertExpectedJson(PacketCesiumWriter.RectanglePropertyName, tempCollection$0);
+        assertPropertyJson(RectangleCesiumWriter.CoordinatesPropertyName, expected);
     }
 
     @Test
-    public final void testExtrudedHeightProperty() {
-        final double expectedExtrudedHeight = 10.0;
+    public final void testExtrudedHeight() {
+        final double expected = 10.0;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<RectangleCesiumWriter> using$1 = new Using<RectangleCesiumWriter>(packet.openRectangleProperty())) {
                 final RectangleCesiumWriter rectangle = using$1.resource;
                 try (Using<RectangleCesiumWriter> using$2 = new Using<RectangleCesiumWriter>(rectangle.openInterval())) {
                     final RectangleCesiumWriter interval = using$2.resource;
-                    interval.writeExtrudedHeightProperty(expectedExtrudedHeight);
+                    interval.writeExtrudedHeightProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, RectangleCesiumWriter.ExtrudedHeightPropertyName, expectedExtrudedHeight);
-        assertExpectedJson(PacketCesiumWriter.RectanglePropertyName, tempCollection$0);
+        assertPropertyJson(RectangleCesiumWriter.ExtrudedHeightPropertyName, expected);
     }
 
     @Test
-    public final void testExtrudedHeightReferenceProperty() {
-        final CesiumHeightReference expectedExtrudedHeightReference = CesiumHeightReference.RELATIVE_TO_GROUND;
+    public final void testExtrudedHeightReference() {
+        final CesiumHeightReference expected = CesiumHeightReference.RELATIVE_TO_GROUND;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<RectangleCesiumWriter> using$1 = new Using<RectangleCesiumWriter>(packet.openRectangleProperty())) {
                 final RectangleCesiumWriter rectangle = using$1.resource;
                 try (Using<RectangleCesiumWriter> using$2 = new Using<RectangleCesiumWriter>(rectangle.openInterval())) {
                     final RectangleCesiumWriter interval = using$2.resource;
-                    interval.writeExtrudedHeightReferenceProperty(expectedExtrudedHeightReference);
+                    interval.writeExtrudedHeightReferenceProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, RectangleCesiumWriter.ExtrudedHeightReferencePropertyName, expectedExtrudedHeightReference);
-        assertExpectedJson(PacketCesiumWriter.RectanglePropertyName, tempCollection$0);
+        assertPropertyJson(RectangleCesiumWriter.ExtrudedHeightReferencePropertyName, expected);
     }
 
     @Test
-    public final void testFillProperty() {
-        final boolean expectedFill = true;
+    public final void testFill() {
+        final boolean expected = true;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<RectangleCesiumWriter> using$1 = new Using<RectangleCesiumWriter>(packet.openRectangleProperty())) {
                 final RectangleCesiumWriter rectangle = using$1.resource;
                 try (Using<RectangleCesiumWriter> using$2 = new Using<RectangleCesiumWriter>(rectangle.openInterval())) {
                     final RectangleCesiumWriter interval = using$2.resource;
-                    interval.writeFillProperty(expectedFill);
+                    interval.writeFillProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, RectangleCesiumWriter.FillPropertyName, expectedFill);
-        assertExpectedJson(PacketCesiumWriter.RectanglePropertyName, tempCollection$0);
+        assertPropertyJson(RectangleCesiumWriter.FillPropertyName, expected);
     }
 
     @Test
-    public final void testOutlineProperty() {
-        final boolean expectedOutline = true;
+    public final void testOutline() {
+        final boolean expected = true;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<RectangleCesiumWriter> using$1 = new Using<RectangleCesiumWriter>(packet.openRectangleProperty())) {
                 final RectangleCesiumWriter rectangle = using$1.resource;
                 try (Using<RectangleCesiumWriter> using$2 = new Using<RectangleCesiumWriter>(rectangle.openInterval())) {
                     final RectangleCesiumWriter interval = using$2.resource;
-                    interval.writeOutlineProperty(expectedOutline);
+                    interval.writeOutlineProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, RectangleCesiumWriter.OutlinePropertyName, expectedOutline);
-        assertExpectedJson(PacketCesiumWriter.RectanglePropertyName, tempCollection$0);
+        assertPropertyJson(RectangleCesiumWriter.OutlinePropertyName, expected);
     }
 
     @Test
-    public final void testOutlineColorProperty() {
-        Color expectedOutlineColor = ColorHelper.fromArgb(128, 10, 20, 30);
+    public final void testOutlineColor() {
+        Color expected = ColorHelper.fromArgb(128, 10, 20, 30);
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<RectangleCesiumWriter> using$1 = new Using<RectangleCesiumWriter>(packet.openRectangleProperty())) {
                 final RectangleCesiumWriter rectangle = using$1.resource;
                 try (Using<RectangleCesiumWriter> using$2 = new Using<RectangleCesiumWriter>(rectangle.openInterval())) {
                     final RectangleCesiumWriter interval = using$2.resource;
-                    interval.writeOutlineColorProperty(expectedOutlineColor);
+                    interval.writeOutlineColorProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, RectangleCesiumWriter.OutlineColorPropertyName, expectedOutlineColor);
-        assertExpectedJson(PacketCesiumWriter.RectanglePropertyName, tempCollection$0);
+        assertPropertyJson(RectangleCesiumWriter.OutlineColorPropertyName, expected);
     }
 
     @Test
-    public final void testOutlineWidthProperty() {
-        final double expectedOutlineWidth = 2.5;
+    public final void testOutlineWidth() {
+        final double expected = 2.5;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<RectangleCesiumWriter> using$1 = new Using<RectangleCesiumWriter>(packet.openRectangleProperty())) {
                 final RectangleCesiumWriter rectangle = using$1.resource;
                 try (Using<RectangleCesiumWriter> using$2 = new Using<RectangleCesiumWriter>(rectangle.openInterval())) {
                     final RectangleCesiumWriter interval = using$2.resource;
-                    interval.writeOutlineWidthProperty(expectedOutlineWidth);
+                    interval.writeOutlineWidthProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, RectangleCesiumWriter.OutlineWidthPropertyName, expectedOutlineWidth);
-        assertExpectedJson(PacketCesiumWriter.RectanglePropertyName, tempCollection$0);
+        assertPropertyJson(RectangleCesiumWriter.OutlineWidthPropertyName, expected);
     }
 
     @Test
-    public final void testHeightProperty() {
-        final double expectedHeight = 100.0;
+    public final void testHeight() {
+        final double expected = 100.0;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<RectangleCesiumWriter> using$1 = new Using<RectangleCesiumWriter>(packet.openRectangleProperty())) {
                 final RectangleCesiumWriter rectangle = using$1.resource;
                 try (Using<RectangleCesiumWriter> using$2 = new Using<RectangleCesiumWriter>(rectangle.openInterval())) {
                     final RectangleCesiumWriter interval = using$2.resource;
-                    interval.writeHeightProperty(expectedHeight);
+                    interval.writeHeightProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, RectangleCesiumWriter.HeightPropertyName, expectedHeight);
-        assertExpectedJson(PacketCesiumWriter.RectanglePropertyName, tempCollection$0);
+        assertPropertyJson(RectangleCesiumWriter.HeightPropertyName, expected);
     }
 
     @Test
-    public final void testHeightReferenceProperty() {
-        final CesiumHeightReference expectedHeightReference = CesiumHeightReference.CLAMP_TO_GROUND;
+    public final void testHeightReference() {
+        final CesiumHeightReference expected = CesiumHeightReference.CLAMP_TO_GROUND;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<RectangleCesiumWriter> using$1 = new Using<RectangleCesiumWriter>(packet.openRectangleProperty())) {
                 final RectangleCesiumWriter rectangle = using$1.resource;
                 try (Using<RectangleCesiumWriter> using$2 = new Using<RectangleCesiumWriter>(rectangle.openInterval())) {
                     final RectangleCesiumWriter interval = using$2.resource;
-                    interval.writeHeightReferenceProperty(expectedHeightReference);
+                    interval.writeHeightReferenceProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, RectangleCesiumWriter.HeightReferencePropertyName, expectedHeightReference);
-        assertExpectedJson(PacketCesiumWriter.RectanglePropertyName, tempCollection$0);
+        assertPropertyJson(RectangleCesiumWriter.HeightReferencePropertyName, expected);
     }
 
     @Test
-    public final void testRotationProperty() {
-        final double expectedRotation = 1.234;
+    public final void testRotation() {
+        final double expected = 1.234;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<RectangleCesiumWriter> using$1 = new Using<RectangleCesiumWriter>(packet.openRectangleProperty())) {
                 final RectangleCesiumWriter rectangle = using$1.resource;
                 try (Using<RectangleCesiumWriter> using$2 = new Using<RectangleCesiumWriter>(rectangle.openInterval())) {
                     final RectangleCesiumWriter interval = using$2.resource;
-                    interval.writeRotationProperty(expectedRotation);
+                    interval.writeRotationProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, RectangleCesiumWriter.RotationPropertyName, expectedRotation);
-        assertExpectedJson(PacketCesiumWriter.RectanglePropertyName, tempCollection$0);
+        assertPropertyJson(RectangleCesiumWriter.RotationPropertyName, expected);
     }
 
     @Test
-    public final void testStRotationProperty() {
-        final double expectedStRotation = 0.5;
+    public final void testStRotation() {
+        final double expected = 0.5;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<RectangleCesiumWriter> using$1 = new Using<RectangleCesiumWriter>(packet.openRectangleProperty())) {
                 final RectangleCesiumWriter rectangle = using$1.resource;
                 try (Using<RectangleCesiumWriter> using$2 = new Using<RectangleCesiumWriter>(rectangle.openInterval())) {
                     final RectangleCesiumWriter interval = using$2.resource;
-                    interval.writeStRotationProperty(expectedStRotation);
+                    interval.writeStRotationProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, RectangleCesiumWriter.StRotationPropertyName, expectedStRotation);
-        assertExpectedJson(PacketCesiumWriter.RectanglePropertyName, tempCollection$0);
+        assertPropertyJson(RectangleCesiumWriter.StRotationPropertyName, expected);
     }
 
     @Test
-    public final void testGranularityProperty() {
-        final double expectedGranularity = 0.1;
+    public final void testGranularity() {
+        final double expected = 0.1;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<RectangleCesiumWriter> using$1 = new Using<RectangleCesiumWriter>(packet.openRectangleProperty())) {
                 final RectangleCesiumWriter rectangle = using$1.resource;
                 try (Using<RectangleCesiumWriter> using$2 = new Using<RectangleCesiumWriter>(rectangle.openInterval())) {
                     final RectangleCesiumWriter interval = using$2.resource;
-                    interval.writeGranularityProperty(expectedGranularity);
+                    interval.writeGranularityProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, RectangleCesiumWriter.GranularityPropertyName, expectedGranularity);
-        assertExpectedJson(PacketCesiumWriter.RectanglePropertyName, tempCollection$0);
+        assertPropertyJson(RectangleCesiumWriter.GranularityPropertyName, expected);
     }
 
     @Test
     public final void testMaterialProperty() {
+        Color expectedColor = Color.RED;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<RectangleCesiumWriter> using$1 = new Using<RectangleCesiumWriter>(packet.openRectangleProperty())) {
@@ -270,90 +245,86 @@ public class TestRectangleCesiumWriter extends TestCesiumPropertyWriter<Rectangl
                         final MaterialCesiumWriter material = using$3.resource;
                         try (Using<SolidColorMaterialCesiumWriter> using$4 = new Using<SolidColorMaterialCesiumWriter>(material.openSolidColorProperty())) {
                             final SolidColorMaterialCesiumWriter solidColor = using$4.resource;
-                            solidColor.writeColorProperty(Color.RED);
+                            solidColor.writeColorProperty(expectedColor);
                         }
                     }
                 }
             }
         }
-        final Map<String, Object> tempCollection$2 = MapHelper.create();
-        MapHelper.add(tempCollection$2, SolidColorMaterialCesiumWriter.ColorPropertyName, Color.RED);
         final Map<String, Object> tempCollection$1 = MapHelper.create();
-        MapHelper.add(tempCollection$1, PolylineMaterialCesiumWriter.SolidColorPropertyName, tempCollection$2);
+        MapHelper.add(tempCollection$1, SolidColorMaterialCesiumWriter.ColorPropertyName, expectedColor);
         final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, RectangleCesiumWriter.MaterialPropertyName, tempCollection$1);
-        assertExpectedJson(PacketCesiumWriter.RectanglePropertyName, tempCollection$0);
+        MapHelper.add(tempCollection$0, PolylineMaterialCesiumWriter.SolidColorPropertyName, tempCollection$1);
+        assertPropertyJson(RectangleCesiumWriter.MaterialPropertyName, tempCollection$0);
     }
 
     @Test
-    public final void testShadowsProperty() {
-        final CesiumShadowMode expectedShadows = CesiumShadowMode.ENABLED;
+    public final void testShadows() {
+        final CesiumShadowMode expected = CesiumShadowMode.ENABLED;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<RectangleCesiumWriter> using$1 = new Using<RectangleCesiumWriter>(packet.openRectangleProperty())) {
                 final RectangleCesiumWriter rectangle = using$1.resource;
                 try (Using<RectangleCesiumWriter> using$2 = new Using<RectangleCesiumWriter>(rectangle.openInterval())) {
                     final RectangleCesiumWriter interval = using$2.resource;
-                    interval.writeShadowsProperty(expectedShadows);
+                    interval.writeShadowsProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, RectangleCesiumWriter.ShadowsPropertyName, expectedShadows);
-        assertExpectedJson(PacketCesiumWriter.RectanglePropertyName, tempCollection$0);
+        assertPropertyJson(RectangleCesiumWriter.ShadowsPropertyName, expected);
     }
 
     @Test
-    public final void testDistanceDisplayConditionProperty() {
-        Bounds expectedBounds = new Bounds(1.0, 123.0);
+    public final void testDistanceDisplayCondition() {
+        Bounds expected = new Bounds(1.0, 123.0);
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<RectangleCesiumWriter> using$1 = new Using<RectangleCesiumWriter>(packet.openRectangleProperty())) {
                 final RectangleCesiumWriter rectangle = using$1.resource;
                 try (Using<RectangleCesiumWriter> using$2 = new Using<RectangleCesiumWriter>(rectangle.openInterval())) {
                     final RectangleCesiumWriter interval = using$2.resource;
-                    interval.writeDistanceDisplayConditionProperty(expectedBounds);
+                    interval.writeDistanceDisplayConditionProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, RectangleCesiumWriter.DistanceDisplayConditionPropertyName, expectedBounds);
-        assertExpectedJson(PacketCesiumWriter.RectanglePropertyName, tempCollection$0);
+        assertPropertyJson(RectangleCesiumWriter.DistanceDisplayConditionPropertyName, expected);
     }
 
     @Test
-    public final void testClassificationTypeProperty() {
-        final CesiumClassificationType expectedClassificationType = CesiumClassificationType.TERRAIN;
+    public final void testClassificationType() {
+        final CesiumClassificationType expected = CesiumClassificationType.TERRAIN;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<RectangleCesiumWriter> using$1 = new Using<RectangleCesiumWriter>(packet.openRectangleProperty())) {
                 final RectangleCesiumWriter rectangle = using$1.resource;
                 try (Using<RectangleCesiumWriter> using$2 = new Using<RectangleCesiumWriter>(rectangle.openInterval())) {
                     final RectangleCesiumWriter interval = using$2.resource;
-                    interval.writeClassificationTypeProperty(expectedClassificationType);
+                    interval.writeClassificationTypeProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, RectangleCesiumWriter.ClassificationTypePropertyName, expectedClassificationType);
-        assertExpectedJson(PacketCesiumWriter.RectanglePropertyName, tempCollection$0);
+        assertPropertyJson(RectangleCesiumWriter.ClassificationTypePropertyName, expected);
     }
 
     @Test
-    public final void testZIndexProperty() {
-        final int expectedZIndex = 5;
+    public final void testZIndex() {
+        final int expected = 5;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<RectangleCesiumWriter> using$1 = new Using<RectangleCesiumWriter>(packet.openRectangleProperty())) {
                 final RectangleCesiumWriter rectangle = using$1.resource;
                 try (Using<RectangleCesiumWriter> using$2 = new Using<RectangleCesiumWriter>(rectangle.openInterval())) {
                     final RectangleCesiumWriter interval = using$2.resource;
-                    interval.writeZIndexProperty(expectedZIndex);
+                    interval.writeZIndexProperty(expected);
                 }
             }
         }
+        assertPropertyJson(RectangleCesiumWriter.ZIndexPropertyName, expected);
+    }
+
+    private final void assertPropertyJson(String propertyName, Object value) {
         final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, RectangleCesiumWriter.ZIndexPropertyName, expectedZIndex);
+        MapHelper.add(tempCollection$0, propertyName, value);
         assertExpectedJson(PacketCesiumWriter.RectanglePropertyName, tempCollection$0);
     }
 

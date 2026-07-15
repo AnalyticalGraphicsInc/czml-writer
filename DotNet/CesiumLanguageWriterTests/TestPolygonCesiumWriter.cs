@@ -13,25 +13,41 @@ namespace CesiumLanguageWriterTests
     public class TestPolygonCesiumWriter : TestCesiumPropertyWriter<PolygonCesiumWriter>
     {
         [Test]
-        public void TestShowProperty()
+        public void TestShow()
         {
-            const bool expectedShow = true;
+            const bool expected = true;
 
             using (var packet = OpenPacket())
             using (var polygon = packet.OpenPolygonProperty())
             using (var interval = polygon.OpenInterval())
             {
-                interval.WriteShowProperty(expectedShow);
+                interval.WriteShowProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.PolygonPropertyName, new Dictionary<string, object>
-            {
-                { PolygonCesiumWriter.ShowPropertyName, expectedShow },
-            });
+            AssertPropertyJson(PolygonCesiumWriter.ShowPropertyName, expected);
         }
 
         [Test]
-        public void TestShowPropertyInterval()
+        public void TestPositions()
+        {
+            var expected = new PositionList
+            {
+                new Cartesian(1.0, 2.0, 3.0),
+                new Cartesian(4.0, 5.0, 6.0),
+            };
+
+            using (var packet = OpenPacket())
+            using (var polygon = packet.OpenPolygonProperty())
+            using (var interval = polygon.OpenInterval())
+            {
+                interval.WritePositionsProperty(expected);
+            }
+
+            AssertPropertyJson(PolygonCesiumWriter.PositionsPropertyName, expected);
+        }
+
+        [Test]
+        public void TestShowInterval()
         {
             var startDate = new GregorianDate(2012, 4, 2, 12, 0, 0).ToJulianDate();
             var stopDate = new GregorianDate(2012, 4, 2, 12, 1, 0).ToJulianDate();
@@ -68,27 +84,22 @@ namespace CesiumLanguageWriterTests
                 }
             }
 
-            AssertExpectedJson(PacketCesiumWriter.PolygonPropertyName, new Dictionary<string, object>
+            AssertPropertyJson(PolygonCesiumWriter.ShowPropertyName, new List<Dictionary<string, object>>
             {
+                new Dictionary<string, object>
                 {
-                    PolygonCesiumWriter.ShowPropertyName, new List<Dictionary<string, object>>
-                    {
-                        new Dictionary<string, object>
-                        {
-                            { "interval", CesiumFormattingHelper.ToIso8601Interval(interval1Start, interval1Stop, Iso8601Format.Compact) },
-                            { BooleanCesiumWriter.BooleanPropertyName, interval1Value },
-                        },
-                        new Dictionary<string, object>
-                        {
-                            { "interval", CesiumFormattingHelper.ToIso8601Interval(interval2Start, interval2Stop, Iso8601Format.Compact) },
-                            { BooleanCesiumWriter.BooleanPropertyName, interval2Value },
-                        },
-                        new Dictionary<string, object>
-                        {
-                            { "interval", CesiumFormattingHelper.ToIso8601Interval(interval3Start, interval3Stop, Iso8601Format.Compact) },
-                            { BooleanCesiumWriter.BooleanPropertyName, interval3Value },
-                        },
-                    }
+                    { "interval", CesiumFormattingHelper.ToIso8601Interval(interval1Start, interval1Stop, Iso8601Format.Compact) },
+                    { BooleanCesiumWriter.BooleanPropertyName, interval1Value },
+                },
+                new Dictionary<string, object>
+                {
+                    { "interval", CesiumFormattingHelper.ToIso8601Interval(interval2Start, interval2Stop, Iso8601Format.Compact) },
+                    { BooleanCesiumWriter.BooleanPropertyName, interval2Value },
+                },
+                new Dictionary<string, object>
+                {
+                    { "interval", CesiumFormattingHelper.ToIso8601Interval(interval3Start, interval3Stop, Iso8601Format.Compact) },
+                    { BooleanCesiumWriter.BooleanPropertyName, interval3Value },
                 },
             });
         }
@@ -152,273 +163,283 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
-        public void TestFillProperty()
+        public void TestFill()
         {
-            const bool expectedFill = true;
+            const bool expected = true;
 
             using (var packet = OpenPacket())
             using (var polygon = packet.OpenPolygonProperty())
             using (var interval = polygon.OpenInterval())
             {
-                interval.WriteFillProperty(expectedFill);
+                interval.WriteFillProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.PolygonPropertyName, new Dictionary<string, object>
+            AssertPropertyJson(PolygonCesiumWriter.FillPropertyName, expected);
+        }
+
+        [Test]
+        public void TestOutline()
+        {
+            const bool expected = true;
+
+            using (var packet = OpenPacket())
+            using (var polygon = packet.OpenPolygonProperty())
+            using (var interval = polygon.OpenInterval())
             {
-                { PolygonCesiumWriter.FillPropertyName, expectedFill },
+                interval.WriteOutlineProperty(expected);
+            }
+
+            AssertPropertyJson(PolygonCesiumWriter.OutlinePropertyName, expected);
+        }
+
+        [Test]
+        public void TestOutlineColor()
+        {
+            var expected = Color.FromArgb(128, 10, 20, 30);
+
+            using (var packet = OpenPacket())
+            using (var polygon = packet.OpenPolygonProperty())
+            using (var interval = polygon.OpenInterval())
+            {
+                interval.WriteOutlineColorProperty(expected);
+            }
+
+            AssertPropertyJson(PolygonCesiumWriter.OutlineColorPropertyName, expected);
+        }
+
+        [Test]
+        public void TestOutlineWidth()
+        {
+            const double expected = 2.5;
+
+            using (var packet = OpenPacket())
+            using (var polygon = packet.OpenPolygonProperty())
+            using (var interval = polygon.OpenInterval())
+            {
+                interval.WriteOutlineWidthProperty(expected);
+            }
+
+            AssertPropertyJson(PolygonCesiumWriter.OutlineWidthPropertyName, expected);
+        }
+
+        [Test]
+        public void TestHeight()
+        {
+            const double expected = 10.0;
+
+            using (var packet = OpenPacket())
+            using (var polygon = packet.OpenPolygonProperty())
+            using (var interval = polygon.OpenInterval())
+            {
+                interval.WriteHeightProperty(expected);
+            }
+
+            AssertPropertyJson(PolygonCesiumWriter.HeightPropertyName, expected);
+        }
+
+        [Test]
+        public void TestExtrudedHeight()
+        {
+            const double expected = 20.0;
+
+            using (var packet = OpenPacket())
+            using (var polygon = packet.OpenPolygonProperty())
+            using (var interval = polygon.OpenInterval())
+            {
+                interval.WriteExtrudedHeightProperty(expected);
+            }
+
+            AssertPropertyJson(PolygonCesiumWriter.ExtrudedHeightPropertyName, expected);
+        }
+
+        [Test]
+        public void TestStRotation()
+        {
+            const double expected = 0.5;
+
+            using (var packet = OpenPacket())
+            using (var polygon = packet.OpenPolygonProperty())
+            using (var interval = polygon.OpenInterval())
+            {
+                interval.WriteStRotationProperty(expected);
+            }
+
+            AssertPropertyJson(PolygonCesiumWriter.StRotationPropertyName, expected);
+        }
+
+        [Test]
+        public void TestHeightReference()
+        {
+            const CesiumHeightReference expected = CesiumHeightReference.ClampToGround;
+
+            using (var packet = OpenPacket())
+            using (var polygon = packet.OpenPolygonProperty())
+            using (var interval = polygon.OpenInterval())
+            {
+                interval.WriteHeightReferenceProperty(expected);
+            }
+
+            AssertPropertyJson(PolygonCesiumWriter.HeightReferencePropertyName, expected);
+        }
+
+        [Test]
+        public void TestExtrudedHeightReference()
+        {
+            const CesiumHeightReference expected = CesiumHeightReference.RelativeToGround;
+
+            using (var packet = OpenPacket())
+            using (var polygon = packet.OpenPolygonProperty())
+            using (var interval = polygon.OpenInterval())
+            {
+                interval.WriteExtrudedHeightReferenceProperty(expected);
+            }
+
+            AssertPropertyJson(PolygonCesiumWriter.ExtrudedHeightReferencePropertyName, expected);
+        }
+
+        [Test]
+        public void TestPerPositionHeight()
+        {
+            const bool expected = true;
+
+            using (var packet = OpenPacket())
+            using (var polygon = packet.OpenPolygonProperty())
+            using (var interval = polygon.OpenInterval())
+            {
+                interval.WritePerPositionHeightProperty(expected);
+            }
+
+            AssertPropertyJson(PolygonCesiumWriter.PerPositionHeightPropertyName, expected);
+        }
+
+        [Test]
+        public void TestCloseTop()
+        {
+            const bool expected = false;
+
+            using (var packet = OpenPacket())
+            using (var polygon = packet.OpenPolygonProperty())
+            using (var interval = polygon.OpenInterval())
+            {
+                interval.WriteCloseTopProperty(expected);
+            }
+
+            AssertPropertyJson(PolygonCesiumWriter.CloseTopPropertyName, expected);
+        }
+
+        [Test]
+        public void TestCloseBottom()
+        {
+            const bool expected = true;
+
+            using (var packet = OpenPacket())
+            using (var polygon = packet.OpenPolygonProperty())
+            using (var interval = polygon.OpenInterval())
+            {
+                interval.WriteCloseBottomProperty(expected);
+            }
+
+            AssertPropertyJson(PolygonCesiumWriter.CloseBottomPropertyName, expected);
+        }
+
+        [Test]
+        public void TestShadows()
+        {
+            const CesiumShadowMode expected = CesiumShadowMode.Enabled;
+
+            using (var packet = OpenPacket())
+            using (var polygon = packet.OpenPolygonProperty())
+            using (var interval = polygon.OpenInterval())
+            {
+                interval.WriteShadowsProperty(expected);
+            }
+
+            AssertPropertyJson(PolygonCesiumWriter.ShadowsPropertyName, expected);
+        }
+
+        [Test]
+        public void TestDistanceDisplayCondition()
+        {
+            var expected = new Bounds(1234.0, 5678.0);
+
+            using (var packet = OpenPacket())
+            using (var polygon = packet.OpenPolygonProperty())
+            using (var interval = polygon.OpenInterval())
+            {
+                interval.WriteDistanceDisplayConditionProperty(expected);
+            }
+
+            AssertPropertyJson(PolygonCesiumWriter.DistanceDisplayConditionPropertyName, expected);
+        }
+
+        [Test]
+        public void TestClassificationType()
+        {
+            const CesiumClassificationType expected = CesiumClassificationType.Terrain;
+
+            using (var packet = OpenPacket())
+            using (var polygon = packet.OpenPolygonProperty())
+            using (var interval = polygon.OpenInterval())
+            {
+                interval.WriteClassificationTypeProperty(expected);
+            }
+
+            AssertPropertyJson(PolygonCesiumWriter.ClassificationTypePropertyName, expected);
+        }
+
+        [Test]
+        public void TestArcType()
+        {
+            const CesiumArcType expected = CesiumArcType.Geodesic;
+
+            using (var packet = OpenPacket())
+            using (var polygon = packet.OpenPolygonProperty())
+            using (var interval = polygon.OpenInterval())
+            {
+                interval.WriteArcTypeProperty(expected);
+            }
+
+            AssertPropertyJson(PolygonCesiumWriter.ArcTypePropertyName, expected);
+        }
+
+        [Test]
+        public void TestMaterial()
+        {
+            var expectedColor = Color.Red;
+
+            using (var packet = OpenPacket())
+            using (var polygon = packet.OpenPolygonProperty())
+            using (var interval = polygon.OpenInterval())
+            using (var material = interval.OpenMaterialProperty())
+            using (var solidColor = material.OpenSolidColorProperty())
+            {
+                solidColor.WriteColorProperty(expectedColor);
+            }
+
+            AssertPropertyJson(PolygonCesiumWriter.MaterialPropertyName, new Dictionary<string, object>
+            {
+                {
+                    PolylineMaterialCesiumWriter.SolidColorPropertyName, new Dictionary<string, object>
+                    {
+                        { SolidColorMaterialCesiumWriter.ColorPropertyName, expectedColor },
+                    }
+                },
             });
         }
 
         [Test]
-        public void TestOutlineProperty()
+        public void TestZIndex()
         {
-            const bool expectedOutline = true;
+            const int expected = 5;
 
             using (var packet = OpenPacket())
             using (var polygon = packet.OpenPolygonProperty())
             using (var interval = polygon.OpenInterval())
             {
-                interval.WriteOutlineProperty(expectedOutline);
+                interval.WriteZIndexProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.PolygonPropertyName, new Dictionary<string, object>
-            {
-                { PolygonCesiumWriter.OutlinePropertyName, expectedOutline },
-            });
-        }
-
-        [Test]
-        public void TestOutlineColorProperty()
-        {
-            var expectedOutlineColor = Color.FromArgb(128, 10, 20, 30);
-
-            using (var packet = OpenPacket())
-            using (var polygon = packet.OpenPolygonProperty())
-            using (var interval = polygon.OpenInterval())
-            {
-                interval.WriteOutlineColorProperty(expectedOutlineColor);
-            }
-
-            AssertExpectedJson(PacketCesiumWriter.PolygonPropertyName, new Dictionary<string, object>
-            {
-                { PolygonCesiumWriter.OutlineColorPropertyName, expectedOutlineColor },
-            });
-        }
-
-        [Test]
-        public void TestOutlineWidthProperty()
-        {
-            const double expectedOutlineWidth = 2.5;
-
-            using (var packet = OpenPacket())
-            using (var polygon = packet.OpenPolygonProperty())
-            using (var interval = polygon.OpenInterval())
-            {
-                interval.WriteOutlineWidthProperty(expectedOutlineWidth);
-            }
-
-            AssertExpectedJson(PacketCesiumWriter.PolygonPropertyName, new Dictionary<string, object>
-            {
-                { PolygonCesiumWriter.OutlineWidthPropertyName, expectedOutlineWidth },
-            });
-        }
-
-        [Test]
-        public void TestHeightProperty()
-        {
-            const double expectedHeight = 10.0;
-
-            using (var packet = OpenPacket())
-            using (var polygon = packet.OpenPolygonProperty())
-            using (var interval = polygon.OpenInterval())
-            {
-                interval.WriteHeightProperty(expectedHeight);
-            }
-
-            AssertExpectedJson(PacketCesiumWriter.PolygonPropertyName, new Dictionary<string, object>
-            {
-                { PolygonCesiumWriter.HeightPropertyName, expectedHeight },
-            });
-        }
-
-        [Test]
-        public void TestExtrudedHeightProperty()
-        {
-            const double expectedExtrudedHeight = 20.0;
-
-            using (var packet = OpenPacket())
-            using (var polygon = packet.OpenPolygonProperty())
-            using (var interval = polygon.OpenInterval())
-            {
-                interval.WriteExtrudedHeightProperty(expectedExtrudedHeight);
-            }
-
-            AssertExpectedJson(PacketCesiumWriter.PolygonPropertyName, new Dictionary<string, object>
-            {
-                { PolygonCesiumWriter.ExtrudedHeightPropertyName, expectedExtrudedHeight },
-            });
-        }
-
-        [Test]
-        public void TestHeightReferenceProperty()
-        {
-            const CesiumHeightReference expectedHeightReference = CesiumHeightReference.ClampToGround;
-
-            using (var packet = OpenPacket())
-            using (var polygon = packet.OpenPolygonProperty())
-            using (var interval = polygon.OpenInterval())
-            {
-                interval.WriteHeightReferenceProperty(expectedHeightReference);
-            }
-
-            AssertExpectedJson(PacketCesiumWriter.PolygonPropertyName, new Dictionary<string, object>
-            {
-                { PolygonCesiumWriter.HeightReferencePropertyName, expectedHeightReference },
-            });
-        }
-
-        [Test]
-        public void TestExtrudedHeightReferenceProperty()
-        {
-            const CesiumHeightReference expectedExtrudedHeightReference = CesiumHeightReference.RelativeToGround;
-
-            using (var packet = OpenPacket())
-            using (var polygon = packet.OpenPolygonProperty())
-            using (var interval = polygon.OpenInterval())
-            {
-                interval.WriteExtrudedHeightReferenceProperty(expectedExtrudedHeightReference);
-            }
-
-            AssertExpectedJson(PacketCesiumWriter.PolygonPropertyName, new Dictionary<string, object>
-            {
-                { PolygonCesiumWriter.ExtrudedHeightReferencePropertyName, expectedExtrudedHeightReference },
-            });
-        }
-
-        [Test]
-        public void TestPerPositionHeightProperty()
-        {
-            const bool expectedPerPositionHeight = true;
-
-            using (var packet = OpenPacket())
-            using (var polygon = packet.OpenPolygonProperty())
-            using (var interval = polygon.OpenInterval())
-            {
-                interval.WritePerPositionHeightProperty(expectedPerPositionHeight);
-            }
-
-            AssertExpectedJson(PacketCesiumWriter.PolygonPropertyName, new Dictionary<string, object>
-            {
-                { PolygonCesiumWriter.PerPositionHeightPropertyName, expectedPerPositionHeight },
-            });
-        }
-
-        [Test]
-        public void TestCloseTopProperty()
-        {
-            const bool expectedCloseTop = false;
-
-            using (var packet = OpenPacket())
-            using (var polygon = packet.OpenPolygonProperty())
-            using (var interval = polygon.OpenInterval())
-            {
-                interval.WriteCloseTopProperty(expectedCloseTop);
-            }
-
-            AssertExpectedJson(PacketCesiumWriter.PolygonPropertyName, new Dictionary<string, object>
-            {
-                { PolygonCesiumWriter.CloseTopPropertyName, expectedCloseTop },
-            });
-        }
-
-        [Test]
-        public void TestCloseBottomProperty()
-        {
-            const bool expectedCloseBottom = true;
-
-            using (var packet = OpenPacket())
-            using (var polygon = packet.OpenPolygonProperty())
-            using (var interval = polygon.OpenInterval())
-            {
-                interval.WriteCloseBottomProperty(expectedCloseBottom);
-            }
-
-            AssertExpectedJson(PacketCesiumWriter.PolygonPropertyName, new Dictionary<string, object>
-            {
-                { PolygonCesiumWriter.CloseBottomPropertyName, expectedCloseBottom },
-            });
-        }
-
-        [Test]
-        public void TestShadowsProperty()
-        {
-            const CesiumShadowMode expectedShadows = CesiumShadowMode.Enabled;
-
-            using (var packet = OpenPacket())
-            using (var polygon = packet.OpenPolygonProperty())
-            using (var interval = polygon.OpenInterval())
-            {
-                interval.WriteShadowsProperty(expectedShadows);
-            }
-
-            AssertExpectedJson(PacketCesiumWriter.PolygonPropertyName, new Dictionary<string, object>
-            {
-                { PolygonCesiumWriter.ShadowsPropertyName, expectedShadows },
-            });
-        }
-
-        [Test]
-        public void TestDistanceDisplayConditionProperty()
-        {
-            var expectedBounds = new Bounds(1234.0, 5678.0);
-
-            using (var packet = OpenPacket())
-            using (var polygon = packet.OpenPolygonProperty())
-            using (var interval = polygon.OpenInterval())
-            {
-                interval.WriteDistanceDisplayConditionProperty(expectedBounds);
-            }
-
-            AssertExpectedJson(PacketCesiumWriter.PolygonPropertyName, new Dictionary<string, object>
-            {
-                { PolygonCesiumWriter.DistanceDisplayConditionPropertyName, expectedBounds },
-            });
-        }
-
-        [Test]
-        public void TestClassificationTypeProperty()
-        {
-            const CesiumClassificationType expectedClassificationType = CesiumClassificationType.Terrain;
-
-            using (var packet = OpenPacket())
-            using (var polygon = packet.OpenPolygonProperty())
-            using (var interval = polygon.OpenInterval())
-            {
-                interval.WriteClassificationTypeProperty(expectedClassificationType);
-            }
-
-            AssertExpectedJson(PacketCesiumWriter.PolygonPropertyName, new Dictionary<string, object>
-            {
-                { PolygonCesiumWriter.ClassificationTypePropertyName, expectedClassificationType },
-            });
-        }
-
-        [Test]
-        public void TestArcTypeProperty()
-        {
-            const CesiumArcType expectedArcType = CesiumArcType.Geodesic;
-
-            using (var packet = OpenPacket())
-            using (var polygon = packet.OpenPolygonProperty())
-            using (var interval = polygon.OpenInterval())
-            {
-                interval.WriteArcTypeProperty(expectedArcType);
-            }
-
-            AssertExpectedJson(PacketCesiumWriter.PolygonPropertyName, new Dictionary<string, object>
-            {
-                { PolygonCesiumWriter.ArcTypePropertyName, expectedArcType },
-            });
+            AssertPropertyJson(PolygonCesiumWriter.ZIndexPropertyName, expected);
         }
 
         [Test]
@@ -472,6 +493,14 @@ namespace CesiumLanguageWriterTests
                     }
                 }
             }
+        }
+
+        private void AssertPropertyJson(string propertyName, object value)
+        {
+            AssertExpectedJson(PacketCesiumWriter.PolygonPropertyName, new Dictionary<string, object>
+            {
+                { propertyName, value },
+            });
         }
 
         protected override CesiumPropertyWriter<PolygonCesiumWriter> CreatePropertyWriter(string propertyName)

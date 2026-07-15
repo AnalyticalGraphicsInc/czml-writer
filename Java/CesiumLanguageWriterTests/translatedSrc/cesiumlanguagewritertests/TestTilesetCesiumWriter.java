@@ -25,25 +25,23 @@ import org.junit.Test;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestTilesetCesiumWriter extends TestCesiumPropertyWriter<TilesetCesiumWriter> {
     @Test
-    public final void testShowProperty() {
-        final boolean expectedShow = true;
+    public final void testShow() {
+        final boolean expected = true;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<TilesetCesiumWriter> using$1 = new Using<TilesetCesiumWriter>(packet.openTilesetProperty())) {
                 final TilesetCesiumWriter tileset = using$1.resource;
                 try (Using<TilesetCesiumWriter> using$2 = new Using<TilesetCesiumWriter>(tileset.openInterval())) {
                     final TilesetCesiumWriter interval = using$2.resource;
-                    interval.writeShowProperty(expectedShow);
+                    interval.writeShowProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, TilesetCesiumWriter.ShowPropertyName, expectedShow);
-        assertExpectedJson(PacketCesiumWriter.TilesetPropertyName, tempCollection$0);
+        assertPropertyJson(TilesetCesiumWriter.ShowPropertyName, expected);
     }
 
     @Test
-    public final void testShowPropertyInterval() {
+    public final void testShowInterval() {
         JulianDate startDate = new GregorianDate(2012, 4, 2, 12, 0, 0.0).toJulianDate();
         JulianDate stopDate = new GregorianDate(2012, 4, 2, 12, 1, 0.0).toJulianDate();
         JulianDate interval1Start = startDate;
@@ -79,57 +77,57 @@ public class TestTilesetCesiumWriter extends TestCesiumPropertyWriter<TilesetCes
                 }
             }
         }
+        final Map<String, Object> tempCollection$1 = MapHelper.create();
+        MapHelper.add(tempCollection$1, "interval", CesiumFormattingHelper.toIso8601Interval(interval1Start, interval1Stop, Iso8601Format.COMPACT));
+        MapHelper.add(tempCollection$1, BooleanCesiumWriter.BooleanPropertyName, interval1Value);
         final Map<String, Object> tempCollection$2 = MapHelper.create();
-        MapHelper.add(tempCollection$2, "interval", CesiumFormattingHelper.toIso8601Interval(interval1Start, interval1Stop, Iso8601Format.COMPACT));
-        MapHelper.add(tempCollection$2, BooleanCesiumWriter.BooleanPropertyName, interval1Value);
+        MapHelper.add(tempCollection$2, "interval", CesiumFormattingHelper.toIso8601Interval(interval2Start, interval2Stop, Iso8601Format.COMPACT));
+        MapHelper.add(tempCollection$2, BooleanCesiumWriter.BooleanPropertyName, interval2Value);
         final Map<String, Object> tempCollection$3 = MapHelper.create();
-        MapHelper.add(tempCollection$3, "interval", CesiumFormattingHelper.toIso8601Interval(interval2Start, interval2Stop, Iso8601Format.COMPACT));
-        MapHelper.add(tempCollection$3, BooleanCesiumWriter.BooleanPropertyName, interval2Value);
-        final Map<String, Object> tempCollection$4 = MapHelper.create();
-        MapHelper.add(tempCollection$4, "interval", CesiumFormattingHelper.toIso8601Interval(interval3Start, interval3Stop, Iso8601Format.COMPACT));
-        MapHelper.add(tempCollection$4, BooleanCesiumWriter.BooleanPropertyName, interval3Value);
-        final ArrayList<Map<String, Object>> tempCollection$1 = new ArrayList<Map<String, Object>>();
-        tempCollection$1.add(tempCollection$2);
-        tempCollection$1.add(tempCollection$3);
-        tempCollection$1.add(tempCollection$4);
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, TilesetCesiumWriter.ShowPropertyName, tempCollection$1);
-        assertExpectedJson(PacketCesiumWriter.TilesetPropertyName, tempCollection$0);
+        MapHelper.add(tempCollection$3, "interval", CesiumFormattingHelper.toIso8601Interval(interval3Start, interval3Stop, Iso8601Format.COMPACT));
+        MapHelper.add(tempCollection$3, BooleanCesiumWriter.BooleanPropertyName, interval3Value);
+        final ArrayList<Map<String, Object>> tempCollection$0 = new ArrayList<Map<String, Object>>();
+        tempCollection$0.add(tempCollection$1);
+        tempCollection$0.add(tempCollection$2);
+        tempCollection$0.add(tempCollection$3);
+        assertPropertyJson(TilesetCesiumWriter.ShowPropertyName, tempCollection$0);
     }
 
     @Test
-    public final void testUriProperty() {
-        final String expectedUri = "test.tileset";
+    public final void testUri() {
+        final String expected = "test.tileset";
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<TilesetCesiumWriter> using$1 = new Using<TilesetCesiumWriter>(packet.openTilesetProperty())) {
                 final TilesetCesiumWriter tileset = using$1.resource;
                 try (Using<TilesetCesiumWriter> using$2 = new Using<TilesetCesiumWriter>(tileset.openInterval())) {
                     final TilesetCesiumWriter interval = using$2.resource;
-                    interval.writeUriProperty(expectedUri, CesiumResourceBehavior.LINK_TO);
+                    interval.writeUriProperty(expected, CesiumResourceBehavior.LINK_TO);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, TilesetCesiumWriter.UriPropertyName, expectedUri);
-        assertExpectedJson(PacketCesiumWriter.TilesetPropertyName, tempCollection$0);
+        assertPropertyJson(TilesetCesiumWriter.UriPropertyName, expected);
     }
 
     @Test
-    public final void testMaximumScreenSpaceErrorProperty() {
-        final double expectedMaximumScreenSpaceError = 0.75;
+    public final void testMaximumScreenSpaceError() {
+        final double expected = 0.75;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<TilesetCesiumWriter> using$1 = new Using<TilesetCesiumWriter>(packet.openTilesetProperty())) {
                 final TilesetCesiumWriter tileset = using$1.resource;
                 try (Using<TilesetCesiumWriter> using$2 = new Using<TilesetCesiumWriter>(tileset.openInterval())) {
                     final TilesetCesiumWriter interval = using$2.resource;
-                    interval.writeMaximumScreenSpaceErrorProperty(expectedMaximumScreenSpaceError);
+                    interval.writeMaximumScreenSpaceErrorProperty(expected);
                 }
             }
         }
+        assertPropertyJson(TilesetCesiumWriter.MaximumScreenSpaceErrorPropertyName, expected);
+    }
+
+    private final void assertPropertyJson(String propertyName, Object value) {
         final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, TilesetCesiumWriter.MaximumScreenSpaceErrorPropertyName, expectedMaximumScreenSpaceError);
+        MapHelper.add(tempCollection$0, propertyName, value);
         assertExpectedJson(PacketCesiumWriter.TilesetPropertyName, tempCollection$0);
     }
 

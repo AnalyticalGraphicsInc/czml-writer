@@ -2,7 +2,6 @@ package cesiumlanguagewritertests;
 
 
 import agi.foundation.compatibility.*;
-import agi.foundation.compatibility.AssertHelper;
 import agi.foundation.compatibility.ColorHelper;
 import agi.foundation.compatibility.MapHelper;
 import agi.foundation.compatibility.PathHelper;
@@ -14,7 +13,6 @@ import cesiumlanguagewriter.*;
 import cesiumlanguagewriter.advanced.*;
 import java.awt.Color;
 import java.io.OutputStreamWriter;
-import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
@@ -33,25 +31,23 @@ import org.junit.Test;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestPolylineVolumeCesiumWriter extends TestCesiumPropertyWriter<PolylineVolumeCesiumWriter> {
     @Test
-    public final void testShowProperty() {
-        final boolean expectedShow = true;
+    public final void testShow() {
+        final boolean expected = true;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<PolylineVolumeCesiumWriter> using$1 = new Using<PolylineVolumeCesiumWriter>(packet.openPolylineVolumeProperty())) {
                 final PolylineVolumeCesiumWriter polylineVolume = using$1.resource;
                 try (Using<PolylineVolumeCesiumWriter> using$2 = new Using<PolylineVolumeCesiumWriter>(polylineVolume.openInterval())) {
                     final PolylineVolumeCesiumWriter interval = using$2.resource;
-                    interval.writeShowProperty(expectedShow);
+                    interval.writeShowProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, PolylineVolumeCesiumWriter.ShowPropertyName, expectedShow);
-        assertExpectedJson(PacketCesiumWriter.PolylineVolumePropertyName, tempCollection$0);
+        assertPropertyJson(PolylineVolumeCesiumWriter.ShowPropertyName, expected);
     }
 
     @Test
-    public final void testShowPropertyInterval() {
+    public final void testShowInterval() {
         JulianDate startDate = new GregorianDate(2012, 4, 2, 12, 0, 0.0).toJulianDate();
         JulianDate stopDate = new GregorianDate(2012, 4, 2, 12, 1, 0.0).toJulianDate();
         JulianDate interval1Start = startDate;
@@ -87,58 +83,211 @@ public class TestPolylineVolumeCesiumWriter extends TestCesiumPropertyWriter<Pol
                 }
             }
         }
+        final Map<String, Object> tempCollection$1 = MapHelper.create();
+        MapHelper.add(tempCollection$1, "interval", CesiumFormattingHelper.toIso8601Interval(interval1Start, interval1Stop, Iso8601Format.COMPACT));
+        MapHelper.add(tempCollection$1, BooleanCesiumWriter.BooleanPropertyName, interval1Value);
         final Map<String, Object> tempCollection$2 = MapHelper.create();
-        MapHelper.add(tempCollection$2, "interval", CesiumFormattingHelper.toIso8601Interval(interval1Start, interval1Stop, Iso8601Format.COMPACT));
-        MapHelper.add(tempCollection$2, BooleanCesiumWriter.BooleanPropertyName, interval1Value);
+        MapHelper.add(tempCollection$2, "interval", CesiumFormattingHelper.toIso8601Interval(interval2Start, interval2Stop, Iso8601Format.COMPACT));
+        MapHelper.add(tempCollection$2, BooleanCesiumWriter.BooleanPropertyName, interval2Value);
         final Map<String, Object> tempCollection$3 = MapHelper.create();
-        MapHelper.add(tempCollection$3, "interval", CesiumFormattingHelper.toIso8601Interval(interval2Start, interval2Stop, Iso8601Format.COMPACT));
-        MapHelper.add(tempCollection$3, BooleanCesiumWriter.BooleanPropertyName, interval2Value);
-        final Map<String, Object> tempCollection$4 = MapHelper.create();
-        MapHelper.add(tempCollection$4, "interval", CesiumFormattingHelper.toIso8601Interval(interval3Start, interval3Stop, Iso8601Format.COMPACT));
-        MapHelper.add(tempCollection$4, BooleanCesiumWriter.BooleanPropertyName, interval3Value);
-        final ArrayList<Map<String, Object>> tempCollection$1 = new ArrayList<Map<String, Object>>();
-        tempCollection$1.add(tempCollection$2);
-        tempCollection$1.add(tempCollection$3);
-        tempCollection$1.add(tempCollection$4);
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, PolylineVolumeCesiumWriter.ShowPropertyName, tempCollection$1);
-        assertExpectedJson(PacketCesiumWriter.PolylineVolumePropertyName, tempCollection$0);
+        MapHelper.add(tempCollection$3, "interval", CesiumFormattingHelper.toIso8601Interval(interval3Start, interval3Stop, Iso8601Format.COMPACT));
+        MapHelper.add(tempCollection$3, BooleanCesiumWriter.BooleanPropertyName, interval3Value);
+        final ArrayList<Map<String, Object>> tempCollection$0 = new ArrayList<Map<String, Object>>();
+        tempCollection$0.add(tempCollection$1);
+        tempCollection$0.add(tempCollection$2);
+        tempCollection$0.add(tempCollection$3);
+        assertPropertyJson(PolylineVolumeCesiumWriter.ShowPropertyName, tempCollection$0);
     }
 
     @Test
-    public final void testShape() {
-        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
-            final PacketCesiumWriter packet = using$0.resource;
-            try (Using<PolylineVolumeCesiumWriter> using$1 = new Using<PolylineVolumeCesiumWriter>(packet.openPolylineVolumeProperty())) {
-                final PolylineVolumeCesiumWriter polylineVolume = using$1.resource;
-                final ArrayList<Rectangular> tempCollection$0 = new ArrayList<Rectangular>();
-                tempCollection$0.add(new Rectangular(-5.0, -5.0));
-                tempCollection$0.add(new Rectangular(6.0, -6.0));
-                tempCollection$0.add(new Rectangular(7.0, 7.0));
-                tempCollection$0.add(new Rectangular(-8.0, 8.0));
-                ArrayList<Rectangular> shape = tempCollection$0;
-                polylineVolume.writeShapeProperty(shape);
-            }
-        }
-        AssertHelper.assertEquals("{\"polylineVolume\":{\"shape\":{\"cartesian2\":[-5,-5,6,-6,7,7,-8,8]}}}", getStringWriter().toString());
-    }
-
-    @Test
-    public final void testDistanceDisplayCondition() {
-        Bounds expectedBounds = new Bounds(10.0, 1234.0);
+    public final void testPositions() {
+        final PositionList tempCollection$0 = new PositionList();
+        tempCollection$0.add(new Cartesian(1.0, 2.0, 3.0));
+        tempCollection$0.add(new Cartesian(4.0, 5.0, 6.0));
+        PositionList expected = tempCollection$0;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<PolylineVolumeCesiumWriter> using$1 = new Using<PolylineVolumeCesiumWriter>(packet.openPolylineVolumeProperty())) {
                 final PolylineVolumeCesiumWriter polylineVolume = using$1.resource;
                 try (Using<PolylineVolumeCesiumWriter> using$2 = new Using<PolylineVolumeCesiumWriter>(polylineVolume.openInterval())) {
                     final PolylineVolumeCesiumWriter interval = using$2.resource;
-                    interval.writeDistanceDisplayConditionProperty(expectedBounds);
+                    interval.writePositionsProperty(expected);
                 }
             }
         }
+        assertPropertyJson(PolylineVolumeCesiumWriter.PositionsPropertyName, expected);
+    }
+
+    @Test
+    public final void testShape() {
+        final ShapeList tempCollection$0 = new ShapeList();
+        tempCollection$0.add(new Rectangular(-5.0, -5.0));
+        tempCollection$0.add(new Rectangular(6.0, -6.0));
+        tempCollection$0.add(new Rectangular(7.0, 7.0));
+        tempCollection$0.add(new Rectangular(-8.0, 8.0));
+        ShapeList expected = tempCollection$0;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PolylineVolumeCesiumWriter> using$1 = new Using<PolylineVolumeCesiumWriter>(packet.openPolylineVolumeProperty())) {
+                final PolylineVolumeCesiumWriter polylineVolume = using$1.resource;
+                polylineVolume.writeShapeProperty(expected);
+            }
+        }
+        assertPropertyJson(PolylineVolumeCesiumWriter.ShapePropertyName, expected);
+    }
+
+    @Test
+    public final void testCornerType() {
+        final CesiumCornerType expected = CesiumCornerType.BEVELED;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PolylineVolumeCesiumWriter> using$1 = new Using<PolylineVolumeCesiumWriter>(packet.openPolylineVolumeProperty())) {
+                final PolylineVolumeCesiumWriter polylineVolume = using$1.resource;
+                try (Using<PolylineVolumeCesiumWriter> using$2 = new Using<PolylineVolumeCesiumWriter>(polylineVolume.openInterval())) {
+                    final PolylineVolumeCesiumWriter interval = using$2.resource;
+                    interval.writeCornerTypeProperty(expected);
+                }
+            }
+        }
+        assertPropertyJson(PolylineVolumeCesiumWriter.CornerTypePropertyName, expected);
+    }
+
+    @Test
+    public final void testGranularity() {
+        final double expected = 0.1;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PolylineVolumeCesiumWriter> using$1 = new Using<PolylineVolumeCesiumWriter>(packet.openPolylineVolumeProperty())) {
+                final PolylineVolumeCesiumWriter polylineVolume = using$1.resource;
+                try (Using<PolylineVolumeCesiumWriter> using$2 = new Using<PolylineVolumeCesiumWriter>(polylineVolume.openInterval())) {
+                    final PolylineVolumeCesiumWriter interval = using$2.resource;
+                    interval.writeGranularityProperty(expected);
+                }
+            }
+        }
+        assertPropertyJson(PolylineVolumeCesiumWriter.GranularityPropertyName, expected);
+    }
+
+    @Test
+    public final void testFill() {
+        final boolean expected = true;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PolylineVolumeCesiumWriter> using$1 = new Using<PolylineVolumeCesiumWriter>(packet.openPolylineVolumeProperty())) {
+                final PolylineVolumeCesiumWriter polylineVolume = using$1.resource;
+                try (Using<PolylineVolumeCesiumWriter> using$2 = new Using<PolylineVolumeCesiumWriter>(polylineVolume.openInterval())) {
+                    final PolylineVolumeCesiumWriter interval = using$2.resource;
+                    interval.writeFillProperty(expected);
+                }
+            }
+        }
+        assertPropertyJson(PolylineVolumeCesiumWriter.FillPropertyName, expected);
+    }
+
+    @Test
+    public final void testMaterial() {
+        Color expectedColor = Color.RED;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PolylineVolumeCesiumWriter> using$1 = new Using<PolylineVolumeCesiumWriter>(packet.openPolylineVolumeProperty())) {
+                final PolylineVolumeCesiumWriter polylineVolume = using$1.resource;
+                try (Using<PolylineVolumeCesiumWriter> using$2 = new Using<PolylineVolumeCesiumWriter>(polylineVolume.openInterval())) {
+                    final PolylineVolumeCesiumWriter interval = using$2.resource;
+                    try (Using<MaterialCesiumWriter> using$3 = new Using<MaterialCesiumWriter>(interval.openMaterialProperty())) {
+                        final MaterialCesiumWriter material = using$3.resource;
+                        try (Using<SolidColorMaterialCesiumWriter> using$4 = new Using<SolidColorMaterialCesiumWriter>(material.openSolidColorProperty())) {
+                            final SolidColorMaterialCesiumWriter solidColor = using$4.resource;
+                            solidColor.writeColorProperty(expectedColor);
+                        }
+                    }
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$1 = MapHelper.create();
+        MapHelper.add(tempCollection$1, SolidColorMaterialCesiumWriter.ColorPropertyName, expectedColor);
         final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, PolylineVolumeCesiumWriter.DistanceDisplayConditionPropertyName, expectedBounds);
-        assertExpectedJson(PacketCesiumWriter.PolylineVolumePropertyName, tempCollection$0);
+        MapHelper.add(tempCollection$0, PolylineMaterialCesiumWriter.SolidColorPropertyName, tempCollection$1);
+        assertPropertyJson(PolylineVolumeCesiumWriter.MaterialPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testOutline() {
+        final boolean expected = true;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PolylineVolumeCesiumWriter> using$1 = new Using<PolylineVolumeCesiumWriter>(packet.openPolylineVolumeProperty())) {
+                final PolylineVolumeCesiumWriter polylineVolume = using$1.resource;
+                try (Using<PolylineVolumeCesiumWriter> using$2 = new Using<PolylineVolumeCesiumWriter>(polylineVolume.openInterval())) {
+                    final PolylineVolumeCesiumWriter interval = using$2.resource;
+                    interval.writeOutlineProperty(expected);
+                }
+            }
+        }
+        assertPropertyJson(PolylineVolumeCesiumWriter.OutlinePropertyName, expected);
+    }
+
+    @Test
+    public final void testOutlineColor() {
+        Color expected = ColorHelper.fromArgb(255, 255, 0, 0);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PolylineVolumeCesiumWriter> using$1 = new Using<PolylineVolumeCesiumWriter>(packet.openPolylineVolumeProperty())) {
+                final PolylineVolumeCesiumWriter polylineVolume = using$1.resource;
+                try (Using<PolylineVolumeCesiumWriter> using$2 = new Using<PolylineVolumeCesiumWriter>(polylineVolume.openInterval())) {
+                    final PolylineVolumeCesiumWriter interval = using$2.resource;
+                    interval.writeOutlineColorProperty(expected);
+                }
+            }
+        }
+        assertPropertyJson(PolylineVolumeCesiumWriter.OutlineColorPropertyName, expected);
+    }
+
+    @Test
+    public final void testOutlineWidth() {
+        final double expected = 2.0;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PolylineVolumeCesiumWriter> using$1 = new Using<PolylineVolumeCesiumWriter>(packet.openPolylineVolumeProperty())) {
+                final PolylineVolumeCesiumWriter polylineVolume = using$1.resource;
+                try (Using<PolylineVolumeCesiumWriter> using$2 = new Using<PolylineVolumeCesiumWriter>(polylineVolume.openInterval())) {
+                    final PolylineVolumeCesiumWriter interval = using$2.resource;
+                    interval.writeOutlineWidthProperty(expected);
+                }
+            }
+        }
+        assertPropertyJson(PolylineVolumeCesiumWriter.OutlineWidthPropertyName, expected);
+    }
+
+    @Test
+    public final void testDistanceDisplayCondition() {
+        Bounds expected = new Bounds(10.0, 1234.0);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PolylineVolumeCesiumWriter> using$1 = new Using<PolylineVolumeCesiumWriter>(packet.openPolylineVolumeProperty())) {
+                final PolylineVolumeCesiumWriter polylineVolume = using$1.resource;
+                try (Using<PolylineVolumeCesiumWriter> using$2 = new Using<PolylineVolumeCesiumWriter>(polylineVolume.openInterval())) {
+                    final PolylineVolumeCesiumWriter interval = using$2.resource;
+                    interval.writeDistanceDisplayConditionProperty(expected);
+                }
+            }
+        }
+        assertPropertyJson(PolylineVolumeCesiumWriter.DistanceDisplayConditionPropertyName, expected);
+    }
+
+    @Test
+    public final void testShadows() {
+        final CesiumShadowMode expected = CesiumShadowMode.ENABLED;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PolylineVolumeCesiumWriter> using$1 = new Using<PolylineVolumeCesiumWriter>(packet.openPolylineVolumeProperty())) {
+                final PolylineVolumeCesiumWriter polylineVolume = using$1.resource;
+                try (Using<PolylineVolumeCesiumWriter> using$2 = new Using<PolylineVolumeCesiumWriter>(polylineVolume.openInterval())) {
+                    final PolylineVolumeCesiumWriter interval = using$2.resource;
+                    interval.writeShadowsProperty(expected);
+                }
+            }
+        }
+        assertPropertyJson(PolylineVolumeCesiumWriter.ShadowsPropertyName, expected);
     }
 
     /**
@@ -236,6 +385,12 @@ public class TestPolylineVolumeCesiumWriter extends TestCesiumPropertyWriter<Pol
             }
         }
         output.writeEndSequence();
+    }
+
+    private final void assertPropertyJson(String propertyName, Object value) {
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, propertyName, value);
+        assertExpectedJson(PacketCesiumWriter.PolylineVolumePropertyName, tempCollection$0);
     }
 
     @Override

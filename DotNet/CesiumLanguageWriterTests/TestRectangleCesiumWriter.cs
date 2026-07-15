@@ -10,336 +10,290 @@ namespace CesiumLanguageWriterTests
     public class TestRectangleCesiumWriter : TestCesiumPropertyWriter<RectangleCesiumWriter>
     {
         [Test]
-        public void TestShowProperty()
+        public void TestShow()
         {
-            const bool expectedShow = true;
+            const bool expected = true;
 
             using (var packet = OpenPacket())
             using (var rectangle = packet.OpenRectangleProperty())
             using (var interval = rectangle.OpenInterval())
             {
-                interval.WriteShowProperty(expectedShow);
+                interval.WriteShowProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.RectanglePropertyName, new Dictionary<string, object>
-            {
-                { RectangleCesiumWriter.ShowPropertyName, expectedShow },
-            });
+            AssertPropertyJson(RectangleCesiumWriter.ShowPropertyName, expected);
         }
 
         [Test]
-        public void TestCoordinatesProperty()
+        public void TestCoordinates()
         {
-            var expectedCoordinates = new CartographicExtent(-1.0, -2.0, 3.0, 4.0);
+            var expected = new CartographicExtent(-1.0, -2.0, 3.0, 4.0);
 
             using (var packet = OpenPacket())
             using (var rectangle = packet.OpenRectangleProperty())
             using (var interval = rectangle.OpenInterval())
             {
-                interval.WriteCoordinatesProperty(expectedCoordinates);
+                interval.WriteCoordinatesProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.RectanglePropertyName, new Dictionary<string, object>
-            {
-                { RectangleCesiumWriter.CoordinatesPropertyName, expectedCoordinates },
-            });
+            AssertPropertyJson(RectangleCesiumWriter.CoordinatesPropertyName, expected);
         }
 
         [Test]
-        public void TestExtrudedHeightProperty()
+        public void TestExtrudedHeight()
         {
-            const double expectedExtrudedHeight = 10.0;
+            const double expected = 10.0;
 
             using (var packet = OpenPacket())
             using (var rectangle = packet.OpenRectangleProperty())
             using (var interval = rectangle.OpenInterval())
             {
-                interval.WriteExtrudedHeightProperty(expectedExtrudedHeight);
+                interval.WriteExtrudedHeightProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.RectanglePropertyName, new Dictionary<string, object>
-            {
-                { RectangleCesiumWriter.ExtrudedHeightPropertyName, expectedExtrudedHeight },
-            });
+            AssertPropertyJson(RectangleCesiumWriter.ExtrudedHeightPropertyName, expected);
         }
 
         [Test]
-        public void TestExtrudedHeightReferenceProperty()
+        public void TestExtrudedHeightReference()
         {
-            const CesiumHeightReference expectedExtrudedHeightReference = CesiumHeightReference.RelativeToGround;
+            const CesiumHeightReference expected = CesiumHeightReference.RelativeToGround;
 
             using (var packet = OpenPacket())
             using (var rectangle = packet.OpenRectangleProperty())
             using (var interval = rectangle.OpenInterval())
             {
-                interval.WriteExtrudedHeightReferenceProperty(expectedExtrudedHeightReference);
+                interval.WriteExtrudedHeightReferenceProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.RectanglePropertyName, new Dictionary<string, object>
-            {
-                { RectangleCesiumWriter.ExtrudedHeightReferencePropertyName, expectedExtrudedHeightReference },
-            });
+            AssertPropertyJson(RectangleCesiumWriter.ExtrudedHeightReferencePropertyName, expected);
         }
 
         [Test]
-        public void TestFillProperty()
+        public void TestFill()
         {
-            const bool expectedFill = true;
+            const bool expected = true;
 
             using (var packet = OpenPacket())
             using (var rectangle = packet.OpenRectangleProperty())
             using (var interval = rectangle.OpenInterval())
             {
-                interval.WriteFillProperty(expectedFill);
+                interval.WriteFillProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.RectanglePropertyName, new Dictionary<string, object>
-            {
-                { RectangleCesiumWriter.FillPropertyName, expectedFill },
-            });
+            AssertPropertyJson(RectangleCesiumWriter.FillPropertyName, expected);
         }
 
         [Test]
-        public void TestOutlineProperty()
+        public void TestOutline()
         {
-            const bool expectedOutline = true;
+            const bool expected = true;
 
             using (var packet = OpenPacket())
             using (var rectangle = packet.OpenRectangleProperty())
             using (var interval = rectangle.OpenInterval())
             {
-                interval.WriteOutlineProperty(expectedOutline);
+                interval.WriteOutlineProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.RectanglePropertyName, new Dictionary<string, object>
-            {
-                { RectangleCesiumWriter.OutlinePropertyName, expectedOutline },
-            });
+            AssertPropertyJson(RectangleCesiumWriter.OutlinePropertyName, expected);
         }
 
         [Test]
-        public void TestOutlineColorProperty()
+        public void TestOutlineColor()
         {
-            var expectedOutlineColor = Color.FromArgb(128, 10, 20, 30);
+            var expected = Color.FromArgb(128, 10, 20, 30);
 
             using (var packet = OpenPacket())
             using (var rectangle = packet.OpenRectangleProperty())
             using (var interval = rectangle.OpenInterval())
             {
-                interval.WriteOutlineColorProperty(expectedOutlineColor);
+                interval.WriteOutlineColorProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.RectanglePropertyName, new Dictionary<string, object>
-            {
-                { RectangleCesiumWriter.OutlineColorPropertyName, expectedOutlineColor },
-            });
+            AssertPropertyJson(RectangleCesiumWriter.OutlineColorPropertyName, expected);
         }
 
         [Test]
-        public void TestOutlineWidthProperty()
+        public void TestOutlineWidth()
         {
-            const double expectedOutlineWidth = 2.5;
+            const double expected = 2.5;
 
             using (var packet = OpenPacket())
             using (var rectangle = packet.OpenRectangleProperty())
             using (var interval = rectangle.OpenInterval())
             {
-                interval.WriteOutlineWidthProperty(expectedOutlineWidth);
+                interval.WriteOutlineWidthProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.RectanglePropertyName, new Dictionary<string, object>
-            {
-                { RectangleCesiumWriter.OutlineWidthPropertyName, expectedOutlineWidth },
-            });
+            AssertPropertyJson(RectangleCesiumWriter.OutlineWidthPropertyName, expected);
         }
 
         [Test]
-        public void TestHeightProperty()
+        public void TestHeight()
         {
-            const double expectedHeight = 100.0;
+            const double expected = 100.0;
 
             using (var packet = OpenPacket())
             using (var rectangle = packet.OpenRectangleProperty())
             using (var interval = rectangle.OpenInterval())
             {
-                interval.WriteHeightProperty(expectedHeight);
+                interval.WriteHeightProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.RectanglePropertyName, new Dictionary<string, object>
-            {
-                { RectangleCesiumWriter.HeightPropertyName, expectedHeight },
-            });
+            AssertPropertyJson(RectangleCesiumWriter.HeightPropertyName, expected);
         }
 
         [Test]
-        public void TestHeightReferenceProperty()
+        public void TestHeightReference()
         {
-            const CesiumHeightReference expectedHeightReference = CesiumHeightReference.ClampToGround;
+            const CesiumHeightReference expected = CesiumHeightReference.ClampToGround;
 
             using (var packet = OpenPacket())
             using (var rectangle = packet.OpenRectangleProperty())
             using (var interval = rectangle.OpenInterval())
             {
-                interval.WriteHeightReferenceProperty(expectedHeightReference);
+                interval.WriteHeightReferenceProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.RectanglePropertyName, new Dictionary<string, object>
-            {
-                { RectangleCesiumWriter.HeightReferencePropertyName, expectedHeightReference },
-            });
+            AssertPropertyJson(RectangleCesiumWriter.HeightReferencePropertyName, expected);
         }
 
         [Test]
-        public void TestRotationProperty()
+        public void TestRotation()
         {
-            const double expectedRotation = 1.234;
+            const double expected = 1.234;
 
             using (var packet = OpenPacket())
             using (var rectangle = packet.OpenRectangleProperty())
             using (var interval = rectangle.OpenInterval())
             {
-                interval.WriteRotationProperty(expectedRotation);
+                interval.WriteRotationProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.RectanglePropertyName, new Dictionary<string, object>
-            {
-                { RectangleCesiumWriter.RotationPropertyName, expectedRotation },
-            });
+            AssertPropertyJson(RectangleCesiumWriter.RotationPropertyName, expected);
         }
 
         [Test]
-        public void TestStRotationProperty()
+        public void TestStRotation()
         {
-            const double expectedStRotation = 0.5;
+            const double expected = 0.5;
 
             using (var packet = OpenPacket())
             using (var rectangle = packet.OpenRectangleProperty())
             using (var interval = rectangle.OpenInterval())
             {
-                interval.WriteStRotationProperty(expectedStRotation);
+                interval.WriteStRotationProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.RectanglePropertyName, new Dictionary<string, object>
-            {
-                { RectangleCesiumWriter.StRotationPropertyName, expectedStRotation },
-            });
+            AssertPropertyJson(RectangleCesiumWriter.StRotationPropertyName, expected);
         }
 
         [Test]
-        public void TestGranularityProperty()
+        public void TestGranularity()
         {
-            const double expectedGranularity = 0.1;
+            const double expected = 0.1;
 
             using (var packet = OpenPacket())
             using (var rectangle = packet.OpenRectangleProperty())
             using (var interval = rectangle.OpenInterval())
             {
-                interval.WriteGranularityProperty(expectedGranularity);
+                interval.WriteGranularityProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.RectanglePropertyName, new Dictionary<string, object>
-            {
-                { RectangleCesiumWriter.GranularityPropertyName, expectedGranularity },
-            });
+            AssertPropertyJson(RectangleCesiumWriter.GranularityPropertyName, expected);
         }
 
         [Test]
         public void TestMaterialProperty()
         {
+            var expectedColor = Color.Red;
+
             using (var packet = OpenPacket())
             using (var rectangle = packet.OpenRectangleProperty())
             using (var interval = rectangle.OpenInterval())
             using (var material = interval.OpenMaterialProperty())
             using (var solidColor = material.OpenSolidColorProperty())
             {
-                solidColor.WriteColorProperty(Color.Red);
+                solidColor.WriteColorProperty(expectedColor);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.RectanglePropertyName, new Dictionary<string, object>
+            AssertPropertyJson(RectangleCesiumWriter.MaterialPropertyName, new Dictionary<string, object>
             {
                 {
-                    RectangleCesiumWriter.MaterialPropertyName, new Dictionary<string, object>
+                    PolylineMaterialCesiumWriter.SolidColorPropertyName, new Dictionary<string, object>
                     {
-                        {
-                            PolylineMaterialCesiumWriter.SolidColorPropertyName, new Dictionary<string, object>
-                            {
-                                { SolidColorMaterialCesiumWriter.ColorPropertyName, Color.Red },
-                            }
-                        },
+                        { SolidColorMaterialCesiumWriter.ColorPropertyName, expectedColor },
                     }
                 },
             });
         }
 
         [Test]
-        public void TestShadowsProperty()
+        public void TestShadows()
         {
-            const CesiumShadowMode expectedShadows = CesiumShadowMode.Enabled;
+            const CesiumShadowMode expected = CesiumShadowMode.Enabled;
 
             using (var packet = OpenPacket())
             using (var rectangle = packet.OpenRectangleProperty())
             using (var interval = rectangle.OpenInterval())
             {
-                interval.WriteShadowsProperty(expectedShadows);
+                interval.WriteShadowsProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.RectanglePropertyName, new Dictionary<string, object>
-            {
-                { RectangleCesiumWriter.ShadowsPropertyName, expectedShadows },
-            });
+            AssertPropertyJson(RectangleCesiumWriter.ShadowsPropertyName, expected);
         }
 
         [Test]
-        public void TestDistanceDisplayConditionProperty()
+        public void TestDistanceDisplayCondition()
         {
-            var expectedBounds = new Bounds(1.0, 123.0);
+            var expected = new Bounds(1.0, 123.0);
 
             using (var packet = OpenPacket())
             using (var rectangle = packet.OpenRectangleProperty())
             using (var interval = rectangle.OpenInterval())
             {
-                interval.WriteDistanceDisplayConditionProperty(expectedBounds);
+                interval.WriteDistanceDisplayConditionProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.RectanglePropertyName, new Dictionary<string, object>
-            {
-                { RectangleCesiumWriter.DistanceDisplayConditionPropertyName, expectedBounds },
-            });
+            AssertPropertyJson(RectangleCesiumWriter.DistanceDisplayConditionPropertyName, expected);
         }
 
         [Test]
-        public void TestClassificationTypeProperty()
+        public void TestClassificationType()
         {
-            const CesiumClassificationType expectedClassificationType = CesiumClassificationType.Terrain;
+            const CesiumClassificationType expected = CesiumClassificationType.Terrain;
 
             using (var packet = OpenPacket())
             using (var rectangle = packet.OpenRectangleProperty())
             using (var interval = rectangle.OpenInterval())
             {
-                interval.WriteClassificationTypeProperty(expectedClassificationType);
+                interval.WriteClassificationTypeProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.RectanglePropertyName, new Dictionary<string, object>
-            {
-                { RectangleCesiumWriter.ClassificationTypePropertyName, expectedClassificationType },
-            });
+            AssertPropertyJson(RectangleCesiumWriter.ClassificationTypePropertyName, expected);
         }
 
         [Test]
-        public void TestZIndexProperty()
+        public void TestZIndex()
         {
-            const int expectedZIndex = 5;
+            const int expected = 5;
 
             using (var packet = OpenPacket())
             using (var rectangle = packet.OpenRectangleProperty())
             using (var interval = rectangle.OpenInterval())
             {
-                interval.WriteZIndexProperty(expectedZIndex);
+                interval.WriteZIndexProperty(expected);
             }
 
+            AssertPropertyJson(RectangleCesiumWriter.ZIndexPropertyName, expected);
+        }
+
+        private void AssertPropertyJson(string propertyName, object value)
+        {
             AssertExpectedJson(PacketCesiumWriter.RectanglePropertyName, new Dictionary<string, object>
             {
-                { RectangleCesiumWriter.ZIndexPropertyName, expectedZIndex },
+                { propertyName, value },
             });
         }
 

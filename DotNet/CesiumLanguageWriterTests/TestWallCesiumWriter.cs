@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Drawing;
-using CesiumLanguageWriter;
+﻿using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
 using NUnit.Framework;
+using System.Collections.Generic;
+using System.Drawing;
 
 namespace CesiumLanguageWriterTests
 {
@@ -10,174 +10,204 @@ namespace CesiumLanguageWriterTests
     public class TestWallCesiumWriter : TestCesiumPropertyWriter<WallCesiumWriter>
     {
         [Test]
-        public void TestShowProperty()
+        public void TestShow()
         {
-            const bool expectedShow = false;
+            const bool expected = false;
 
             using (var packet = OpenPacket())
             using (var wall = packet.OpenWallProperty())
             using (var interval = wall.OpenInterval())
             {
-                interval.WriteShowProperty(expectedShow);
+                interval.WriteShowProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.WallPropertyName, new Dictionary<string, object>
-            {
-                { WallCesiumWriter.ShowPropertyName, expectedShow },
-            });
+            AssertPropertyJson(WallCesiumWriter.ShowPropertyName, expected);
         }
 
         [Test]
-        public void TestGranularityProperty()
+        public void TestPositions()
         {
-            const double expectedGranularity = 0.1;
+            var expected = new PositionList
+            {
+                new Cartesian(1.0, 2.0, 3.0),
+                new Cartesian(4.0, 5.0, 6.0),
+            };
 
             using (var packet = OpenPacket())
             using (var wall = packet.OpenWallProperty())
             using (var interval = wall.OpenInterval())
             {
-                interval.WriteGranularityProperty(expectedGranularity);
+                interval.WritePositionsProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.WallPropertyName, new Dictionary<string, object>
-            {
-                { WallCesiumWriter.GranularityPropertyName, expectedGranularity },
-            });
+            AssertPropertyJson(WallCesiumWriter.PositionsPropertyName, expected);
         }
 
         [Test]
-        public void TestFillProperty()
+        public void TestGranularity()
         {
-            const bool expectedFill = false;
+            const double expected = 0.1;
 
             using (var packet = OpenPacket())
             using (var wall = packet.OpenWallProperty())
             using (var interval = wall.OpenInterval())
             {
-                interval.WriteFillProperty(expectedFill);
+                interval.WriteGranularityProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.WallPropertyName, new Dictionary<string, object>
-            {
-                { WallCesiumWriter.FillPropertyName, expectedFill },
-            });
+            AssertPropertyJson(WallCesiumWriter.GranularityPropertyName, expected);
         }
 
         [Test]
-        public void TestOutlineProperty()
+        public void TestMinimumHeights()
         {
-            const bool expectedOutline = true;
+            var expected = new DoubleList { 1.0, 2.0, 3.0 };
 
             using (var packet = OpenPacket())
             using (var wall = packet.OpenWallProperty())
             using (var interval = wall.OpenInterval())
             {
-                interval.WriteOutlineProperty(expectedOutline);
+                interval.WriteMinimumHeightsProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.WallPropertyName, new Dictionary<string, object>
-            {
-                { WallCesiumWriter.OutlinePropertyName, expectedOutline },
-            });
+            AssertPropertyJson(WallCesiumWriter.MinimumHeightsPropertyName, expected);
         }
 
         [Test]
-        public void TestOutlineColorProperty()
+        public void TestMaximumHeights()
         {
-            var expectedColor = Color.FromArgb(255, 255, 0, 0);
+            var expected = new DoubleList { 4.0, 5.0, 6.0 };
 
             using (var packet = OpenPacket())
             using (var wall = packet.OpenWallProperty())
             using (var interval = wall.OpenInterval())
             {
-                interval.WriteOutlineColorProperty(expectedColor);
+                interval.WriteMaximumHeightsProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.WallPropertyName, new Dictionary<string, object>
-            {
-                { WallCesiumWriter.OutlineColorPropertyName, expectedColor },
-            });
+            AssertPropertyJson(WallCesiumWriter.MaximumHeightsPropertyName, expected);
         }
 
         [Test]
-        public void TestOutlineWidthProperty()
+        public void TestFill()
         {
-            const double expectedOutlineWidth = 2.0;
+            const bool expected = false;
 
             using (var packet = OpenPacket())
             using (var wall = packet.OpenWallProperty())
             using (var interval = wall.OpenInterval())
             {
-                interval.WriteOutlineWidthProperty(expectedOutlineWidth);
+                interval.WriteFillProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.WallPropertyName, new Dictionary<string, object>
-            {
-                { WallCesiumWriter.OutlineWidthPropertyName, expectedOutlineWidth },
-            });
+            AssertPropertyJson(WallCesiumWriter.FillPropertyName, expected);
         }
 
         [Test]
-        public void TestShadowsProperty()
+        public void TestOutline()
         {
-            const CesiumShadowMode expectedShadows = CesiumShadowMode.Enabled;
+            const bool expected = true;
 
             using (var packet = OpenPacket())
             using (var wall = packet.OpenWallProperty())
             using (var interval = wall.OpenInterval())
             {
-                interval.WriteShadowsProperty(expectedShadows);
+                interval.WriteOutlineProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.WallPropertyName, new Dictionary<string, object>
-            {
-                { WallCesiumWriter.ShadowsPropertyName, expectedShadows },
-            });
+            AssertPropertyJson(WallCesiumWriter.OutlinePropertyName, expected);
         }
 
         [Test]
-        public void TestDistanceDisplayConditionProperty()
+        public void TestOutlineColor()
         {
-            var expectedBounds = new Bounds(1234.0, 5678.0);
+            var expected = Color.FromArgb(255, 255, 0, 0);
 
             using (var packet = OpenPacket())
             using (var wall = packet.OpenWallProperty())
             using (var interval = wall.OpenInterval())
             {
-                interval.WriteDistanceDisplayConditionProperty(expectedBounds);
+                interval.WriteOutlineColorProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.WallPropertyName, new Dictionary<string, object>
-            {
-                { WallCesiumWriter.DistanceDisplayConditionPropertyName, expectedBounds },
-            });
+            AssertPropertyJson(WallCesiumWriter.OutlineColorPropertyName, expected);
         }
 
         [Test]
-        public void TestMaterialProperty()
+        public void TestOutlineWidth()
         {
+            const double expected = 2.0;
+
+            using (var packet = OpenPacket())
+            using (var wall = packet.OpenWallProperty())
+            using (var interval = wall.OpenInterval())
+            {
+                interval.WriteOutlineWidthProperty(expected);
+            }
+
+            AssertPropertyJson(WallCesiumWriter.OutlineWidthPropertyName, expected);
+        }
+
+        [Test]
+        public void TestShadows()
+        {
+            const CesiumShadowMode expected = CesiumShadowMode.Enabled;
+
+            using (var packet = OpenPacket())
+            using (var wall = packet.OpenWallProperty())
+            using (var interval = wall.OpenInterval())
+            {
+                interval.WriteShadowsProperty(expected);
+            }
+
+            AssertPropertyJson(WallCesiumWriter.ShadowsPropertyName, expected);
+        }
+
+        [Test]
+        public void TestDistanceDisplayCondition()
+        {
+            var expected = new Bounds(1234.0, 5678.0);
+
+            using (var packet = OpenPacket())
+            using (var wall = packet.OpenWallProperty())
+            using (var interval = wall.OpenInterval())
+            {
+                interval.WriteDistanceDisplayConditionProperty(expected);
+            }
+
+            AssertPropertyJson(WallCesiumWriter.DistanceDisplayConditionPropertyName, expected);
+        }
+
+        [Test]
+        public void TestMaterial()
+        {
+            var expectedColor = Color.Red;
+
             using (var packet = OpenPacket())
             using (var wall = packet.OpenWallProperty())
             using (var interval = wall.OpenInterval())
             using (var material = interval.OpenMaterialProperty())
             using (var solidColor = material.OpenSolidColorProperty())
             {
-                solidColor.WriteColorProperty(Color.Red);
+                solidColor.WriteColorProperty(expectedColor);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.WallPropertyName, new Dictionary<string, object>
+            AssertPropertyJson(WallCesiumWriter.MaterialPropertyName, new Dictionary<string, object>
             {
                 {
-                    WallCesiumWriter.MaterialPropertyName, new Dictionary<string, object>
+                    PolylineMaterialCesiumWriter.SolidColorPropertyName, new Dictionary<string, object>
                     {
-                        {
-                            PolylineMaterialCesiumWriter.SolidColorPropertyName, new Dictionary<string, object>
-                            {
-                                { SolidColorMaterialCesiumWriter.ColorPropertyName, Color.Red },
-                            }
-                        },
+                        { SolidColorMaterialCesiumWriter.ColorPropertyName, expectedColor },
                     }
                 },
+            });
+        }
+
+        private void AssertPropertyJson(string propertyName, object value)
+        {
+            AssertExpectedJson(PacketCesiumWriter.WallPropertyName, new Dictionary<string, object>
+            {
+                { propertyName, value },
             });
         }
 

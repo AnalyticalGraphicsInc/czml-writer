@@ -25,7 +25,7 @@ import org.junit.Test;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestVectorCesiumWriter extends TestCesiumPropertyWriter<VectorCesiumWriter> {
     @Test
-    public final void testShowProperty() {
+    public final void testShow() {
         final boolean expectedShow = true;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
@@ -43,25 +43,25 @@ public class TestVectorCesiumWriter extends TestCesiumPropertyWriter<VectorCesiu
     }
 
     @Test
-    public final void testColorProperty() {
-        Color expectedColor = ColorHelper.fromArgb(128, 10, 20, 30);
+    public final void testColor() {
+        Color expected = ColorHelper.fromArgb(128, 10, 20, 30);
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<VectorCesiumWriter> using$1 = new Using<VectorCesiumWriter>(packet.openVectorProperty())) {
                 final VectorCesiumWriter vector = using$1.resource;
                 try (Using<VectorCesiumWriter> using$2 = new Using<VectorCesiumWriter>(vector.openInterval())) {
                     final VectorCesiumWriter interval = using$2.resource;
-                    interval.writeColorProperty(expectedColor);
+                    interval.writeColorProperty(expected);
                 }
             }
         }
         final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, VectorCesiumWriter.ColorPropertyName, expectedColor);
+        MapHelper.add(tempCollection$0, VectorCesiumWriter.ColorPropertyName, expected);
         assertExpectedJson(PacketCesiumWriter.VectorPropertyName, tempCollection$0);
     }
 
     @Test
-    public final void testDirectionProperty() {
+    public final void testDirection() {
         Cartesian expectedDirection = new Cartesian(1.0, 2.0, 3.0);
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
@@ -82,7 +82,28 @@ public class TestVectorCesiumWriter extends TestCesiumPropertyWriter<VectorCesiu
     }
 
     @Test
-    public final void testLengthProperty() {
+    public final void testDirectionUnitSpherical() {
+        UnitSpherical expected = new UnitSpherical(1.0, 2.0);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<VectorCesiumWriter> using$1 = new Using<VectorCesiumWriter>(packet.openVectorProperty())) {
+                final VectorCesiumWriter vector = using$1.resource;
+                try (Using<VectorCesiumWriter> using$2 = new Using<VectorCesiumWriter>(vector.openInterval())) {
+                    final VectorCesiumWriter interval = using$2.resource;
+                    try (Using<DirectionCesiumWriter> using$3 = new Using<DirectionCesiumWriter>(interval.openDirectionProperty())) {
+                        final DirectionCesiumWriter direction = using$3.resource;
+                        direction.writeUnitSpherical(expected);
+                    }
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, VectorCesiumWriter.DirectionPropertyName, expected);
+        assertExpectedJson(PacketCesiumWriter.VectorPropertyName, tempCollection$0);
+    }
+
+    @Test
+    public final void testLength() {
         final double expectedLength = 123.0;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
@@ -100,7 +121,7 @@ public class TestVectorCesiumWriter extends TestCesiumPropertyWriter<VectorCesiu
     }
 
     @Test
-    public final void testMinimumLengthInPixelsProperty() {
+    public final void testMinimumLengthInPixels() {
         final double expectedMinimumLengthInPixels = 10.0;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;

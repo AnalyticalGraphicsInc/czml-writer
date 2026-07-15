@@ -10,7 +10,7 @@ namespace CesiumLanguageWriterTests
     public class TestVectorCesiumWriter : TestCesiumPropertyWriter<VectorCesiumWriter>
     {
         [Test]
-        public void TestShowProperty()
+        public void TestShow()
         {
             const bool expectedShow = true;
 
@@ -28,25 +28,25 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
-        public void TestColorProperty()
+        public void TestColor()
         {
-            var expectedColor = Color.FromArgb(128, 10, 20, 30);
+            var expected = Color.FromArgb(128, 10, 20, 30);
 
             using (var packet = OpenPacket())
             using (var vector = packet.OpenVectorProperty())
             using (var interval = vector.OpenInterval())
             {
-                interval.WriteColorProperty(expectedColor);
+                interval.WriteColorProperty(expected);
             }
 
             AssertExpectedJson(PacketCesiumWriter.VectorPropertyName, new Dictionary<string, object>
             {
-                { VectorCesiumWriter.ColorPropertyName, expectedColor },
+                { VectorCesiumWriter.ColorPropertyName, expected },
             });
         }
 
         [Test]
-        public void TestDirectionProperty()
+        public void TestDirection()
         {
             var expectedDirection = new Cartesian(1.0, 2.0, 3.0);
 
@@ -65,7 +65,26 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
-        public void TestLengthProperty()
+        public void TestDirectionUnitSpherical()
+        {
+            var expected = new UnitSpherical(1.0, 2.0);
+
+            using (var packet = OpenPacket())
+            using (var vector = packet.OpenVectorProperty())
+            using (var interval = vector.OpenInterval())
+            using (var direction = interval.OpenDirectionProperty())
+            {
+                direction.WriteUnitSpherical(expected);
+            }
+
+            AssertExpectedJson(PacketCesiumWriter.VectorPropertyName, new Dictionary<string, object>
+            {
+                { VectorCesiumWriter.DirectionPropertyName, expected },
+            });
+        }
+
+        [Test]
+        public void TestLength()
         {
             const double expectedLength = 123.0;
 
@@ -83,7 +102,7 @@ namespace CesiumLanguageWriterTests
         }
 
         [Test]
-        public void TestMinimumLengthInPixelsProperty()
+        public void TestMinimumLengthInPixels()
         {
             const double expectedMinimumLengthInPixels = 10.0;
 
