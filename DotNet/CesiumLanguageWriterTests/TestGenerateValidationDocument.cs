@@ -1456,6 +1456,16 @@ namespace CesiumLanguageWriterTests
                         w2.WriteNumber(59909.0);
                         m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.maximumClockAngle.getValue(date)).toEqual(59909.0);");
                     }
+                    using (var w2 = w.OpenMinimumRadiusProperty())
+                    {
+                        w2.WriteNumber(49528.0);
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.minimumRadius.getValue(date)).toEqual(49528.0);");
+                    }
+                    using (var w2 = w.OpenMaximumRadiusProperty())
+                    {
+                        w2.WriteNumber(14234.0);
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.maximumRadius.getValue(date)).toEqual(14234.0);");
+                    }
                     using (var w2 = w.OpenRadiusProperty())
                     {
                         w2.WriteNumber(29788.0);
@@ -1618,6 +1628,16 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteSpherical(CreateList(new Spherical(49130, 29887, 4468), new Spherical(25873, 21605, 54100)));
                         m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.directions.getValue(date)).toEqual([ new Spherical(49130, 29887, 4468), new Spherical(25873, 21605, 54100) ]);");
+                    }
+                    using (var w2 = w.OpenMinimumRadiusProperty())
+                    {
+                        w2.WriteNumber(63336.0);
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.minimumRadius.getValue(date)).toEqual(63336.0);");
+                    }
+                    using (var w2 = w.OpenMaximumRadiusProperty())
+                    {
+                        w2.WriteNumber(7867.0);
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.maximumRadius.getValue(date)).toEqual(7867.0);");
                     }
                     using (var w2 = w.OpenRadiusProperty())
                     {
@@ -1786,6 +1806,16 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteNumber(37224.0);
                         m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.yHalfAngle.getValue(date)).toEqual(37224.0);");
+                    }
+                    using (var w2 = w.OpenMinimumRadiusProperty())
+                    {
+                        w2.WriteNumber(44069.0);
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.minimumRadius.getValue(date)).toEqual(44069.0);");
+                    }
+                    using (var w2 = w.OpenMaximumRadiusProperty())
+                    {
+                        w2.WriteNumber(38638.0);
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.maximumRadius.getValue(date)).toEqual(38638.0);");
                     }
                     using (var w2 = w.OpenRadiusProperty())
                     {
@@ -10871,6 +10901,16 @@ namespace CesiumLanguageWriterTests
                         w2.WriteReference(new Reference("Constant", CreateList("conicSensor", "maximumClockAngle")));
                         m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.maximumClockAngle.getValue(date)).toEqual(constant.conicSensor.maximumClockAngle.getValue(date));");
                     }
+                    using (var w2 = w.OpenMinimumRadiusProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("conicSensor", "minimumRadius")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.minimumRadius.getValue(date)).toEqual(constant.conicSensor.minimumRadius.getValue(date));");
+                    }
+                    using (var w2 = w.OpenMaximumRadiusProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("conicSensor", "maximumRadius")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.maximumRadius.getValue(date)).toEqual(constant.conicSensor.maximumRadius.getValue(date));");
+                    }
                     using (var w2 = w.OpenRadiusProperty())
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("conicSensor", "radius")));
@@ -11018,6 +11058,16 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("customPatternSensor", "show")));
                         m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.show.getValue(date)).toEqual(constant.customPatternSensor.show.getValue(date));");
+                    }
+                    using (var w2 = w.OpenMinimumRadiusProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("customPatternSensor", "minimumRadius")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.minimumRadius.getValue(date)).toEqual(constant.customPatternSensor.minimumRadius.getValue(date));");
+                    }
+                    using (var w2 = w.OpenMaximumRadiusProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("customPatternSensor", "maximumRadius")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.maximumRadius.getValue(date)).toEqual(constant.customPatternSensor.maximumRadius.getValue(date));");
                     }
                     using (var w2 = w.OpenRadiusProperty())
                     {
@@ -11176,6 +11226,16 @@ namespace CesiumLanguageWriterTests
                     {
                         w2.WriteReference(new Reference("Constant", CreateList("rectangularSensor", "yHalfAngle")));
                         m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.yHalfAngle.getValue(date)).toEqual(constant.rectangularSensor.yHalfAngle.getValue(date));");
+                    }
+                    using (var w2 = w.OpenMinimumRadiusProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("rectangularSensor", "minimumRadius")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.minimumRadius.getValue(date)).toEqual(constant.rectangularSensor.minimumRadius.getValue(date));");
+                    }
+                    using (var w2 = w.OpenMaximumRadiusProperty())
+                    {
+                        w2.WriteReference(new Reference("Constant", CreateList("rectangularSensor", "maximumRadius")));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.maximumRadius.getValue(date)).toEqual(constant.rectangularSensor.maximumRadius.getValue(date));");
                     }
                     using (var w2 = w.OpenRadiusProperty())
                     {
@@ -16291,6 +16351,18 @@ namespace CesiumLanguageWriterTests
                         m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.maximumClockAngle.getValue(documentStartDate)).toEqual(42591.0);");
                         m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.maximumClockAngle.getValue(documentStopDate)).toEqual(2115.0);");
                     }
+                    using (var w2 = w.OpenMinimumRadiusProperty())
+                    {
+                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(54112.0, 49775.0));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.minimumRadius.getValue(documentStartDate)).toEqual(54112.0);");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.minimumRadius.getValue(documentStopDate)).toEqual(49775.0);");
+                    }
+                    using (var w2 = w.OpenMaximumRadiusProperty())
+                    {
+                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(59768.0, 35837.0));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.maximumRadius.getValue(documentStartDate)).toEqual(59768.0);");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.conicSensor.maximumRadius.getValue(documentStopDate)).toEqual(35837.0);");
+                    }
                     using (var w2 = w.OpenRadiusProperty())
                     {
                         w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(37448.0, 5744.0));
@@ -16402,6 +16474,18 @@ namespace CesiumLanguageWriterTests
                 }
                 using (var w = packet.OpenCustomPatternSensorProperty())
                 {
+                    using (var w2 = w.OpenMinimumRadiusProperty())
+                    {
+                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(54992.0, 43196.0));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.minimumRadius.getValue(documentStartDate)).toEqual(54992.0);");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.minimumRadius.getValue(documentStopDate)).toEqual(43196.0);");
+                    }
+                    using (var w2 = w.OpenMaximumRadiusProperty())
+                    {
+                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(62511.0, 17238.0));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.maximumRadius.getValue(documentStartDate)).toEqual(62511.0);");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.customPatternSensor.maximumRadius.getValue(documentStopDate)).toEqual(17238.0);");
+                    }
                     using (var w2 = w.OpenRadiusProperty())
                     {
                         w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(51649.0, 47224.0));
@@ -16524,6 +16608,18 @@ namespace CesiumLanguageWriterTests
                         w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(50294.0, 14328.0));
                         m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.yHalfAngle.getValue(documentStartDate)).toEqual(50294.0);");
                         m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.yHalfAngle.getValue(documentStopDate)).toEqual(14328.0);");
+                    }
+                    using (var w2 = w.OpenMinimumRadiusProperty())
+                    {
+                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(54549.0, 25397.0));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.minimumRadius.getValue(documentStartDate)).toEqual(54549.0);");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.minimumRadius.getValue(documentStopDate)).toEqual(25397.0);");
+                    }
+                    using (var w2 = w.OpenMaximumRadiusProperty())
+                    {
+                        w2.WriteNumber(CreateList(m_documentStartDate, m_documentStopDate), CreateList(64487.0, 33811.0));
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.maximumRadius.getValue(documentStartDate)).toEqual(64487.0);");
+                        m_extensionsAssertionsWriter.WriteLine("    expect(e.rectangularSensor.maximumRadius.getValue(documentStopDate)).toEqual(33811.0);");
                     }
                     using (var w2 = w.OpenRadiusProperty())
                     {

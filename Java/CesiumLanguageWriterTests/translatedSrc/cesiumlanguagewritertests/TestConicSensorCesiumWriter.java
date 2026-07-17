@@ -105,6 +105,38 @@ public class TestConicSensorCesiumWriter extends TestCesiumPropertyWriter<ConicS
     }
 
     @Test
+    public final void testMinimumRadius() {
+        final double expected = 123.0;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<ConicSensorCesiumWriter> using$1 = new Using<ConicSensorCesiumWriter>(packet.openConicSensorProperty())) {
+                final ConicSensorCesiumWriter sensor = using$1.resource;
+                try (Using<ConicSensorCesiumWriter> using$2 = new Using<ConicSensorCesiumWriter>(sensor.openInterval())) {
+                    final ConicSensorCesiumWriter interval = using$2.resource;
+                    interval.writeMinimumRadiusProperty(expected);
+                }
+            }
+        }
+        assertPropertyJson(ConicSensorCesiumWriter.MinimumRadiusPropertyName, expected);
+    }
+
+    @Test
+    public final void testMaximumRadius() {
+        final double expected = 234.0;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<ConicSensorCesiumWriter> using$1 = new Using<ConicSensorCesiumWriter>(packet.openConicSensorProperty())) {
+                final ConicSensorCesiumWriter sensor = using$1.resource;
+                try (Using<ConicSensorCesiumWriter> using$2 = new Using<ConicSensorCesiumWriter>(sensor.openInterval())) {
+                    final ConicSensorCesiumWriter interval = using$2.resource;
+                    interval.writeMaximumRadiusProperty(expected);
+                }
+            }
+        }
+        assertPropertyJson(ConicSensorCesiumWriter.MaximumRadiusPropertyName, expected);
+    }
+
+    @Test
     public final void testRadius() {
         final double expected = 150.0;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {

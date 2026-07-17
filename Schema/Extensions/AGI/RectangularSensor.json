@@ -21,9 +21,19 @@
             "description": "The Y half angle.",
             "default": "π / 2"
         },
+        "minimumRadius": {
+            "$ref": "../../Double.json",
+            "description": "The minimum radial limit of the sensor.",
+            "default": 0.0
+        },
+        "maximumRadius": {
+            "$ref": "../../Double.json",
+            "description": "The maximum radial limit of the sensor.",
+            "default": "Infinity"
+        },
         "radius": {
             "$ref": "../../Double.json",
-            "description": "The radial limit of the sensor.",
+            "description": "The maximum radial limit of the sensor. Prefer specifying \"maximumRadius\" instead.",
             "default": "Infinity"
         },
         "showIntersection": {

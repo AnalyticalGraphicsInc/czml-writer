@@ -73,6 +73,38 @@ public class TestRectangularSensorCesiumWriter extends TestCesiumPropertyWriter<
     }
 
     @Test
+    public final void testMinimumRadius() {
+        final double expected = 123.0;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<RectangularSensorCesiumWriter> using$1 = new Using<RectangularSensorCesiumWriter>(packet.openRectangularSensorProperty())) {
+                final RectangularSensorCesiumWriter sensor = using$1.resource;
+                try (Using<RectangularSensorCesiumWriter> using$2 = new Using<RectangularSensorCesiumWriter>(sensor.openInterval())) {
+                    final RectangularSensorCesiumWriter interval = using$2.resource;
+                    interval.writeMinimumRadiusProperty(expected);
+                }
+            }
+        }
+        assertPropertyJson(RectangularSensorCesiumWriter.MinimumRadiusPropertyName, expected);
+    }
+
+    @Test
+    public final void testMaximumRadius() {
+        final double expected = 234.0;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<RectangularSensorCesiumWriter> using$1 = new Using<RectangularSensorCesiumWriter>(packet.openRectangularSensorProperty())) {
+                final RectangularSensorCesiumWriter sensor = using$1.resource;
+                try (Using<RectangularSensorCesiumWriter> using$2 = new Using<RectangularSensorCesiumWriter>(sensor.openInterval())) {
+                    final RectangularSensorCesiumWriter interval = using$2.resource;
+                    interval.writeMaximumRadiusProperty(expected);
+                }
+            }
+        }
+        assertPropertyJson(RectangularSensorCesiumWriter.MaximumRadiusPropertyName, expected);
+    }
+
+    @Test
     public final void testRadius() {
         final double expected = 1234.5;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
