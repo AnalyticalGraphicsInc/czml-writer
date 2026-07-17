@@ -1492,591 +1492,621 @@ public class TestGenerateValidationDocument {
                     w2.writeNumber(59909.0);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.maximumClockAngle.getValue(date)).toEqual(59909.0);");
                 }
-                try (Using<DoubleCesiumWriter> using$292 = new Using<DoubleCesiumWriter>(w.openRadiusProperty())) {
+                try (Using<DoubleCesiumWriter> using$292 = new Using<DoubleCesiumWriter>(w.openMinimumRadiusProperty())) {
                     final DoubleCesiumWriter w2 = using$292.resource;
+                    w2.writeNumber(49528.0);
+                    TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.minimumRadius.getValue(date)).toEqual(49528.0);");
+                }
+                try (Using<DoubleCesiumWriter> using$293 = new Using<DoubleCesiumWriter>(w.openMaximumRadiusProperty())) {
+                    final DoubleCesiumWriter w2 = using$293.resource;
+                    w2.writeNumber(14234.0);
+                    TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.maximumRadius.getValue(date)).toEqual(14234.0);");
+                }
+                try (Using<DoubleCesiumWriter> using$294 = new Using<DoubleCesiumWriter>(w.openRadiusProperty())) {
+                    final DoubleCesiumWriter w2 = using$294.resource;
                     w2.writeNumber(29788.0);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.radius.getValue(date)).toEqual(29788.0);");
                 }
-                try (Using<BooleanCesiumWriter> using$293 = new Using<BooleanCesiumWriter>(w.openShowIntersectionProperty())) {
-                    final BooleanCesiumWriter w2 = using$293.resource;
+                try (Using<BooleanCesiumWriter> using$295 = new Using<BooleanCesiumWriter>(w.openShowIntersectionProperty())) {
+                    final BooleanCesiumWriter w2 = using$295.resource;
                     w2.writeBoolean(true);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.showIntersection.getValue(date)).toEqual(true);");
                 }
-                try (Using<ColorCesiumWriter> using$294 = new Using<ColorCesiumWriter>(w.openIntersectionColorProperty())) {
-                    final ColorCesiumWriter w2 = using$294.resource;
+                try (Using<ColorCesiumWriter> using$296 = new Using<ColorCesiumWriter>(w.openIntersectionColorProperty())) {
+                    final ColorCesiumWriter w2 = using$296.resource;
                     w2.writeRgba(ColorHelper.fromArgb(163, 61, 222, 182));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.intersectionColor.getValue(date)).toEqual(Color.fromBytes(61, 222, 182, 163));");
                 }
-                try (Using<DoubleCesiumWriter> using$295 = new Using<DoubleCesiumWriter>(w.openIntersectionWidthProperty())) {
-                    final DoubleCesiumWriter w2 = using$295.resource;
+                try (Using<DoubleCesiumWriter> using$297 = new Using<DoubleCesiumWriter>(w.openIntersectionWidthProperty())) {
+                    final DoubleCesiumWriter w2 = using$297.resource;
                     w2.writeNumber(50429.0);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.intersectionWidth.getValue(date)).toEqual(50429.0);");
                 }
-                try (Using<BooleanCesiumWriter> using$296 = new Using<BooleanCesiumWriter>(w.openShowLateralSurfacesProperty())) {
-                    final BooleanCesiumWriter w2 = using$296.resource;
+                try (Using<BooleanCesiumWriter> using$298 = new Using<BooleanCesiumWriter>(w.openShowLateralSurfacesProperty())) {
+                    final BooleanCesiumWriter w2 = using$298.resource;
                     w2.writeBoolean(true);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.showLateralSurfaces.getValue(date)).toEqual(true);");
                 }
-                try (Using<MaterialCesiumWriter> using$297 = new Using<MaterialCesiumWriter>(w.openLateralSurfaceMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$297.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$298 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$298.resource;
-                        try (Using<ColorCesiumWriter> using$299 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$299.resource;
+                try (Using<MaterialCesiumWriter> using$299 = new Using<MaterialCesiumWriter>(w.openLateralSurfaceMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$299.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$300 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$300.resource;
+                        try (Using<ColorCesiumWriter> using$301 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$301.resource;
                             m2.writeRgba(ColorHelper.fromArgb(249, 130, 80, 209));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.lateralSurfaceMaterial.color.getValue(date)).toEqual(Color.fromBytes(130, 80, 209, 249));");
                         }
                     }
                 }
-                try (Using<BooleanCesiumWriter> using$300 = new Using<BooleanCesiumWriter>(w.openShowEllipsoidSurfacesProperty())) {
-                    final BooleanCesiumWriter w2 = using$300.resource;
+                try (Using<BooleanCesiumWriter> using$302 = new Using<BooleanCesiumWriter>(w.openShowEllipsoidSurfacesProperty())) {
+                    final BooleanCesiumWriter w2 = using$302.resource;
                     w2.writeBoolean(true);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.showEllipsoidSurfaces.getValue(date)).toEqual(true);");
                 }
-                try (Using<MaterialCesiumWriter> using$301 = new Using<MaterialCesiumWriter>(w.openEllipsoidSurfaceMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$301.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$302 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$302.resource;
-                        try (Using<ColorCesiumWriter> using$303 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$303.resource;
+                try (Using<MaterialCesiumWriter> using$303 = new Using<MaterialCesiumWriter>(w.openEllipsoidSurfaceMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$303.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$304 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$304.resource;
+                        try (Using<ColorCesiumWriter> using$305 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$305.resource;
                             m2.writeRgba(ColorHelper.fromArgb(25, 107, 30, 24));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.ellipsoidSurfaceMaterial.color.getValue(date)).toEqual(Color.fromBytes(107, 30, 24, 25));");
                         }
                     }
                 }
-                try (Using<BooleanCesiumWriter> using$304 = new Using<BooleanCesiumWriter>(w.openShowEllipsoidHorizonSurfacesProperty())) {
-                    final BooleanCesiumWriter w2 = using$304.resource;
+                try (Using<BooleanCesiumWriter> using$306 = new Using<BooleanCesiumWriter>(w.openShowEllipsoidHorizonSurfacesProperty())) {
+                    final BooleanCesiumWriter w2 = using$306.resource;
                     w2.writeBoolean(true);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.showEllipsoidHorizonSurfaces.getValue(date)).toEqual(true);");
                 }
-                try (Using<MaterialCesiumWriter> using$305 = new Using<MaterialCesiumWriter>(w.openEllipsoidHorizonSurfaceMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$305.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$306 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$306.resource;
-                        try (Using<ColorCesiumWriter> using$307 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$307.resource;
+                try (Using<MaterialCesiumWriter> using$307 = new Using<MaterialCesiumWriter>(w.openEllipsoidHorizonSurfaceMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$307.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$308 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$308.resource;
+                        try (Using<ColorCesiumWriter> using$309 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$309.resource;
                             m2.writeRgba(ColorHelper.fromArgb(42, 149, 40, 134));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.ellipsoidHorizonSurfaceMaterial.color.getValue(date)).toEqual(Color.fromBytes(149, 40, 134, 42));");
                         }
                     }
                 }
-                try (Using<BooleanCesiumWriter> using$308 = new Using<BooleanCesiumWriter>(w.openShowDomeSurfacesProperty())) {
-                    final BooleanCesiumWriter w2 = using$308.resource;
+                try (Using<BooleanCesiumWriter> using$310 = new Using<BooleanCesiumWriter>(w.openShowDomeSurfacesProperty())) {
+                    final BooleanCesiumWriter w2 = using$310.resource;
                     w2.writeBoolean(true);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.showDomeSurfaces.getValue(date)).toEqual(true);");
                 }
-                try (Using<MaterialCesiumWriter> using$309 = new Using<MaterialCesiumWriter>(w.openDomeSurfaceMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$309.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$310 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$310.resource;
-                        try (Using<ColorCesiumWriter> using$311 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$311.resource;
+                try (Using<MaterialCesiumWriter> using$311 = new Using<MaterialCesiumWriter>(w.openDomeSurfaceMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$311.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$312 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$312.resource;
+                        try (Using<ColorCesiumWriter> using$313 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$313.resource;
                             m2.writeRgba(ColorHelper.fromArgb(71, 208, 75, 13));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.domeSurfaceMaterial.color.getValue(date)).toEqual(Color.fromBytes(208, 75, 13, 71));");
                         }
                     }
                 }
-                try (Using<SensorVolumePortionToDisplayCesiumWriter> using$312 = new Using<SensorVolumePortionToDisplayCesiumWriter>(w.openPortionToDisplayProperty())) {
-                    final SensorVolumePortionToDisplayCesiumWriter w2 = using$312.resource;
+                try (Using<SensorVolumePortionToDisplayCesiumWriter> using$314 = new Using<SensorVolumePortionToDisplayCesiumWriter>(w.openPortionToDisplayProperty())) {
+                    final SensorVolumePortionToDisplayCesiumWriter w2 = using$314.resource;
                     w2.writePortionToDisplay(CesiumSensorVolumePortionToDisplay.BELOW_ELLIPSOID_HORIZON);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.conicSensor.portionToDisplay.getValue(date)).toEqual(SensorVolumePortionToDisplay.BELOW_ELLIPSOID_HORIZON);");
                 }
-                try (Using<BooleanCesiumWriter> using$313 = new Using<BooleanCesiumWriter>(w.openEnvironmentConstraintProperty())) {
-                    final BooleanCesiumWriter w2 = using$313.resource;
+                try (Using<BooleanCesiumWriter> using$315 = new Using<BooleanCesiumWriter>(w.openEnvironmentConstraintProperty())) {
+                    final BooleanCesiumWriter w2 = using$315.resource;
                     w2.writeBoolean(true);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.environmentConstraint.getValue(date)).toEqual(true);");
                 }
-                try (Using<BooleanCesiumWriter> using$314 = new Using<BooleanCesiumWriter>(w.openShowEnvironmentOcclusionProperty())) {
-                    final BooleanCesiumWriter w2 = using$314.resource;
+                try (Using<BooleanCesiumWriter> using$316 = new Using<BooleanCesiumWriter>(w.openShowEnvironmentOcclusionProperty())) {
+                    final BooleanCesiumWriter w2 = using$316.resource;
                     w2.writeBoolean(true);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.showEnvironmentOcclusion.getValue(date)).toEqual(true);");
                 }
-                try (Using<MaterialCesiumWriter> using$315 = new Using<MaterialCesiumWriter>(w.openEnvironmentOcclusionMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$315.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$316 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$316.resource;
-                        try (Using<ColorCesiumWriter> using$317 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$317.resource;
+                try (Using<MaterialCesiumWriter> using$317 = new Using<MaterialCesiumWriter>(w.openEnvironmentOcclusionMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$317.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$318 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$318.resource;
+                        try (Using<ColorCesiumWriter> using$319 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$319.resource;
                             m2.writeRgba(ColorHelper.fromArgb(213, 241, 9, 164));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.environmentOcclusionMaterial.color.getValue(date)).toEqual(Color.fromBytes(241, 9, 164, 213));");
                         }
                     }
                 }
-                try (Using<BooleanCesiumWriter> using$318 = new Using<BooleanCesiumWriter>(w.openShowEnvironmentIntersectionProperty())) {
-                    final BooleanCesiumWriter w2 = using$318.resource;
+                try (Using<BooleanCesiumWriter> using$320 = new Using<BooleanCesiumWriter>(w.openShowEnvironmentIntersectionProperty())) {
+                    final BooleanCesiumWriter w2 = using$320.resource;
                     w2.writeBoolean(true);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.showEnvironmentIntersection.getValue(date)).toEqual(true);");
                 }
-                try (Using<ColorCesiumWriter> using$319 = new Using<ColorCesiumWriter>(w.openEnvironmentIntersectionColorProperty())) {
-                    final ColorCesiumWriter w2 = using$319.resource;
+                try (Using<ColorCesiumWriter> using$321 = new Using<ColorCesiumWriter>(w.openEnvironmentIntersectionColorProperty())) {
+                    final ColorCesiumWriter w2 = using$321.resource;
                     w2.writeRgba(ColorHelper.fromArgb(147, 83, 22, 249));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.environmentIntersectionColor.getValue(date)).toEqual(Color.fromBytes(83, 22, 249, 147));");
                 }
-                try (Using<DoubleCesiumWriter> using$320 = new Using<DoubleCesiumWriter>(w.openEnvironmentIntersectionWidthProperty())) {
-                    final DoubleCesiumWriter w2 = using$320.resource;
+                try (Using<DoubleCesiumWriter> using$322 = new Using<DoubleCesiumWriter>(w.openEnvironmentIntersectionWidthProperty())) {
+                    final DoubleCesiumWriter w2 = using$322.resource;
                     w2.writeNumber(13317.0);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.environmentIntersectionWidth.getValue(date)).toEqual(13317.0);");
                 }
-                try (Using<BooleanCesiumWriter> using$321 = new Using<BooleanCesiumWriter>(w.openShowThroughEllipsoidProperty())) {
-                    final BooleanCesiumWriter w2 = using$321.resource;
+                try (Using<BooleanCesiumWriter> using$323 = new Using<BooleanCesiumWriter>(w.openShowThroughEllipsoidProperty())) {
+                    final BooleanCesiumWriter w2 = using$323.resource;
                     w2.writeBoolean(true);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.showThroughEllipsoid.getValue(date)).toEqual(true);");
                 }
-                try (Using<BooleanCesiumWriter> using$322 = new Using<BooleanCesiumWriter>(w.openShowViewshedProperty())) {
-                    final BooleanCesiumWriter w2 = using$322.resource;
+                try (Using<BooleanCesiumWriter> using$324 = new Using<BooleanCesiumWriter>(w.openShowViewshedProperty())) {
+                    final BooleanCesiumWriter w2 = using$324.resource;
                     w2.writeBoolean(true);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.showViewshed.getValue(date)).toEqual(true);");
                 }
-                try (Using<ColorCesiumWriter> using$323 = new Using<ColorCesiumWriter>(w.openViewshedVisibleColorProperty())) {
-                    final ColorCesiumWriter w2 = using$323.resource;
+                try (Using<ColorCesiumWriter> using$325 = new Using<ColorCesiumWriter>(w.openViewshedVisibleColorProperty())) {
+                    final ColorCesiumWriter w2 = using$325.resource;
                     w2.writeRgba(ColorHelper.fromArgb(57, 80, 142, 248));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.viewshedVisibleColor.getValue(date)).toEqual(Color.fromBytes(80, 142, 248, 57));");
                 }
-                try (Using<ColorCesiumWriter> using$324 = new Using<ColorCesiumWriter>(w.openViewshedOccludedColorProperty())) {
-                    final ColorCesiumWriter w2 = using$324.resource;
+                try (Using<ColorCesiumWriter> using$326 = new Using<ColorCesiumWriter>(w.openViewshedOccludedColorProperty())) {
+                    final ColorCesiumWriter w2 = using$326.resource;
                     w2.writeRgba(ColorHelper.fromArgb(110, 166, 20, 225));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.viewshedOccludedColor.getValue(date)).toEqual(Color.fromBytes(166, 20, 225, 110));");
                 }
-                try (Using<IntegerCesiumWriter> using$325 = new Using<IntegerCesiumWriter>(w.openViewshedResolutionProperty())) {
-                    final IntegerCesiumWriter w2 = using$325.resource;
+                try (Using<IntegerCesiumWriter> using$327 = new Using<IntegerCesiumWriter>(w.openViewshedResolutionProperty())) {
+                    final IntegerCesiumWriter w2 = using$327.resource;
                     w2.writeNumber(9164);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.viewshedResolution.getValue(date)).toEqual(9164);");
                 }
             }
-            try (Using<CustomPatternSensorCesiumWriter> using$326 = new Using<CustomPatternSensorCesiumWriter>(packet.openCustomPatternSensorProperty())) {
-                final CustomPatternSensorCesiumWriter w = using$326.resource;
-                try (Using<BooleanCesiumWriter> using$327 = new Using<BooleanCesiumWriter>(w.openShowProperty())) {
-                    final BooleanCesiumWriter w2 = using$327.resource;
+            try (Using<CustomPatternSensorCesiumWriter> using$328 = new Using<CustomPatternSensorCesiumWriter>(packet.openCustomPatternSensorProperty())) {
+                final CustomPatternSensorCesiumWriter w = using$328.resource;
+                try (Using<BooleanCesiumWriter> using$329 = new Using<BooleanCesiumWriter>(w.openShowProperty())) {
+                    final BooleanCesiumWriter w2 = using$329.resource;
                     w2.writeBoolean(true);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.show.getValue(date)).toEqual(true);");
                 }
-                try (Using<DirectionListCesiumWriter> using$328 = new Using<DirectionListCesiumWriter>(w.openDirectionsProperty())) {
-                    final DirectionListCesiumWriter w2 = using$328.resource;
+                try (Using<DirectionListCesiumWriter> using$330 = new Using<DirectionListCesiumWriter>(w.openDirectionsProperty())) {
+                    final DirectionListCesiumWriter w2 = using$330.resource;
                     w2.writeSpherical(TestGenerateValidationDocument.<Spherical> createList(new Spherical(49130.0, 29887.0, 4468.0), new Spherical(25873.0, 21605.0, 54100.0)));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.customPatternSensor.directions.getValue(date)).toEqual([ new Spherical(49130, 29887, 4468), new Spherical(25873, 21605, 54100) ]);");
                 }
-                try (Using<DoubleCesiumWriter> using$329 = new Using<DoubleCesiumWriter>(w.openRadiusProperty())) {
-                    final DoubleCesiumWriter w2 = using$329.resource;
+                try (Using<DoubleCesiumWriter> using$331 = new Using<DoubleCesiumWriter>(w.openMinimumRadiusProperty())) {
+                    final DoubleCesiumWriter w2 = using$331.resource;
+                    w2.writeNumber(63336.0);
+                    TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.minimumRadius.getValue(date)).toEqual(63336.0);");
+                }
+                try (Using<DoubleCesiumWriter> using$332 = new Using<DoubleCesiumWriter>(w.openMaximumRadiusProperty())) {
+                    final DoubleCesiumWriter w2 = using$332.resource;
+                    w2.writeNumber(7867.0);
+                    TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.maximumRadius.getValue(date)).toEqual(7867.0);");
+                }
+                try (Using<DoubleCesiumWriter> using$333 = new Using<DoubleCesiumWriter>(w.openRadiusProperty())) {
+                    final DoubleCesiumWriter w2 = using$333.resource;
                     w2.writeNumber(26731.0);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.radius.getValue(date)).toEqual(26731.0);");
                 }
-                try (Using<BooleanCesiumWriter> using$330 = new Using<BooleanCesiumWriter>(w.openShowIntersectionProperty())) {
-                    final BooleanCesiumWriter w2 = using$330.resource;
+                try (Using<BooleanCesiumWriter> using$334 = new Using<BooleanCesiumWriter>(w.openShowIntersectionProperty())) {
+                    final BooleanCesiumWriter w2 = using$334.resource;
                     w2.writeBoolean(true);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.showIntersection.getValue(date)).toEqual(true);");
                 }
-                try (Using<ColorCesiumWriter> using$331 = new Using<ColorCesiumWriter>(w.openIntersectionColorProperty())) {
-                    final ColorCesiumWriter w2 = using$331.resource;
+                try (Using<ColorCesiumWriter> using$335 = new Using<ColorCesiumWriter>(w.openIntersectionColorProperty())) {
+                    final ColorCesiumWriter w2 = using$335.resource;
                     w2.writeRgba(ColorHelper.fromArgb(67, 59, 147, 243));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.intersectionColor.getValue(date)).toEqual(Color.fromBytes(59, 147, 243, 67));");
                 }
-                try (Using<DoubleCesiumWriter> using$332 = new Using<DoubleCesiumWriter>(w.openIntersectionWidthProperty())) {
-                    final DoubleCesiumWriter w2 = using$332.resource;
+                try (Using<DoubleCesiumWriter> using$336 = new Using<DoubleCesiumWriter>(w.openIntersectionWidthProperty())) {
+                    final DoubleCesiumWriter w2 = using$336.resource;
                     w2.writeNumber(63237.0);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.intersectionWidth.getValue(date)).toEqual(63237.0);");
                 }
-                try (Using<BooleanCesiumWriter> using$333 = new Using<BooleanCesiumWriter>(w.openShowLateralSurfacesProperty())) {
-                    final BooleanCesiumWriter w2 = using$333.resource;
+                try (Using<BooleanCesiumWriter> using$337 = new Using<BooleanCesiumWriter>(w.openShowLateralSurfacesProperty())) {
+                    final BooleanCesiumWriter w2 = using$337.resource;
                     w2.writeBoolean(true);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.showLateralSurfaces.getValue(date)).toEqual(true);");
                 }
-                try (Using<MaterialCesiumWriter> using$334 = new Using<MaterialCesiumWriter>(w.openLateralSurfaceMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$334.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$335 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$335.resource;
-                        try (Using<ColorCesiumWriter> using$336 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$336.resource;
+                try (Using<MaterialCesiumWriter> using$338 = new Using<MaterialCesiumWriter>(w.openLateralSurfaceMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$338.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$339 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$339.resource;
+                        try (Using<ColorCesiumWriter> using$340 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$340.resource;
                             m2.writeRgba(ColorHelper.fromArgb(191, 35, 33, 155));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.lateralSurfaceMaterial.color.getValue(date)).toEqual(Color.fromBytes(35, 33, 155, 191));");
                         }
                     }
                 }
-                try (Using<BooleanCesiumWriter> using$337 = new Using<BooleanCesiumWriter>(w.openShowEllipsoidSurfacesProperty())) {
-                    final BooleanCesiumWriter w2 = using$337.resource;
+                try (Using<BooleanCesiumWriter> using$341 = new Using<BooleanCesiumWriter>(w.openShowEllipsoidSurfacesProperty())) {
+                    final BooleanCesiumWriter w2 = using$341.resource;
                     w2.writeBoolean(true);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.showEllipsoidSurfaces.getValue(date)).toEqual(true);");
                 }
-                try (Using<MaterialCesiumWriter> using$338 = new Using<MaterialCesiumWriter>(w.openEllipsoidSurfaceMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$338.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$339 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$339.resource;
-                        try (Using<ColorCesiumWriter> using$340 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$340.resource;
+                try (Using<MaterialCesiumWriter> using$342 = new Using<MaterialCesiumWriter>(w.openEllipsoidSurfaceMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$342.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$343 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$343.resource;
+                        try (Using<ColorCesiumWriter> using$344 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$344.resource;
                             m2.writeRgba(ColorHelper.fromArgb(89, 6, 121, 164));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.ellipsoidSurfaceMaterial.color.getValue(date)).toEqual(Color.fromBytes(6, 121, 164, 89));");
                         }
                     }
                 }
-                try (Using<BooleanCesiumWriter> using$341 = new Using<BooleanCesiumWriter>(w.openShowEllipsoidHorizonSurfacesProperty())) {
-                    final BooleanCesiumWriter w2 = using$341.resource;
+                try (Using<BooleanCesiumWriter> using$345 = new Using<BooleanCesiumWriter>(w.openShowEllipsoidHorizonSurfacesProperty())) {
+                    final BooleanCesiumWriter w2 = using$345.resource;
                     w2.writeBoolean(true);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.showEllipsoidHorizonSurfaces.getValue(date)).toEqual(true);");
                 }
-                try (Using<MaterialCesiumWriter> using$342 = new Using<MaterialCesiumWriter>(w.openEllipsoidHorizonSurfaceMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$342.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$343 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$343.resource;
-                        try (Using<ColorCesiumWriter> using$344 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$344.resource;
+                try (Using<MaterialCesiumWriter> using$346 = new Using<MaterialCesiumWriter>(w.openEllipsoidHorizonSurfaceMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$346.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$347 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$347.resource;
+                        try (Using<ColorCesiumWriter> using$348 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$348.resource;
                             m2.writeRgba(ColorHelper.fromArgb(167, 185, 102, 188));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.ellipsoidHorizonSurfaceMaterial.color.getValue(date)).toEqual(Color.fromBytes(185, 102, 188, 167));");
                         }
                     }
                 }
-                try (Using<BooleanCesiumWriter> using$345 = new Using<BooleanCesiumWriter>(w.openShowDomeSurfacesProperty())) {
-                    final BooleanCesiumWriter w2 = using$345.resource;
+                try (Using<BooleanCesiumWriter> using$349 = new Using<BooleanCesiumWriter>(w.openShowDomeSurfacesProperty())) {
+                    final BooleanCesiumWriter w2 = using$349.resource;
                     w2.writeBoolean(true);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.showDomeSurfaces.getValue(date)).toEqual(true);");
                 }
-                try (Using<MaterialCesiumWriter> using$346 = new Using<MaterialCesiumWriter>(w.openDomeSurfaceMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$346.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$347 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$347.resource;
-                        try (Using<ColorCesiumWriter> using$348 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$348.resource;
+                try (Using<MaterialCesiumWriter> using$350 = new Using<MaterialCesiumWriter>(w.openDomeSurfaceMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$350.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$351 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$351.resource;
+                        try (Using<ColorCesiumWriter> using$352 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$352.resource;
                             m2.writeRgba(ColorHelper.fromArgb(44, 160, 74, 45));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.domeSurfaceMaterial.color.getValue(date)).toEqual(Color.fromBytes(160, 74, 45, 44));");
                         }
                     }
                 }
-                try (Using<SensorVolumePortionToDisplayCesiumWriter> using$349 = new Using<SensorVolumePortionToDisplayCesiumWriter>(w.openPortionToDisplayProperty())) {
-                    final SensorVolumePortionToDisplayCesiumWriter w2 = using$349.resource;
+                try (Using<SensorVolumePortionToDisplayCesiumWriter> using$353 = new Using<SensorVolumePortionToDisplayCesiumWriter>(w.openPortionToDisplayProperty())) {
+                    final SensorVolumePortionToDisplayCesiumWriter w2 = using$353.resource;
                     w2.writePortionToDisplay(CesiumSensorVolumePortionToDisplay.BELOW_ELLIPSOID_HORIZON);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.customPatternSensor.portionToDisplay.getValue(date)).toEqual(SensorVolumePortionToDisplay.BELOW_ELLIPSOID_HORIZON);");
                 }
-                try (Using<BooleanCesiumWriter> using$350 = new Using<BooleanCesiumWriter>(w.openEnvironmentConstraintProperty())) {
-                    final BooleanCesiumWriter w2 = using$350.resource;
+                try (Using<BooleanCesiumWriter> using$354 = new Using<BooleanCesiumWriter>(w.openEnvironmentConstraintProperty())) {
+                    final BooleanCesiumWriter w2 = using$354.resource;
                     w2.writeBoolean(true);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.environmentConstraint.getValue(date)).toEqual(true);");
                 }
-                try (Using<BooleanCesiumWriter> using$351 = new Using<BooleanCesiumWriter>(w.openShowEnvironmentOcclusionProperty())) {
-                    final BooleanCesiumWriter w2 = using$351.resource;
+                try (Using<BooleanCesiumWriter> using$355 = new Using<BooleanCesiumWriter>(w.openShowEnvironmentOcclusionProperty())) {
+                    final BooleanCesiumWriter w2 = using$355.resource;
                     w2.writeBoolean(true);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.showEnvironmentOcclusion.getValue(date)).toEqual(true);");
                 }
-                try (Using<MaterialCesiumWriter> using$352 = new Using<MaterialCesiumWriter>(w.openEnvironmentOcclusionMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$352.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$353 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$353.resource;
-                        try (Using<ColorCesiumWriter> using$354 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$354.resource;
+                try (Using<MaterialCesiumWriter> using$356 = new Using<MaterialCesiumWriter>(w.openEnvironmentOcclusionMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$356.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$357 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$357.resource;
+                        try (Using<ColorCesiumWriter> using$358 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$358.resource;
                             m2.writeRgba(ColorHelper.fromArgb(137, 238, 207, 29));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.environmentOcclusionMaterial.color.getValue(date)).toEqual(Color.fromBytes(238, 207, 29, 137));");
                         }
                     }
                 }
-                try (Using<BooleanCesiumWriter> using$355 = new Using<BooleanCesiumWriter>(w.openShowEnvironmentIntersectionProperty())) {
-                    final BooleanCesiumWriter w2 = using$355.resource;
+                try (Using<BooleanCesiumWriter> using$359 = new Using<BooleanCesiumWriter>(w.openShowEnvironmentIntersectionProperty())) {
+                    final BooleanCesiumWriter w2 = using$359.resource;
                     w2.writeBoolean(true);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.showEnvironmentIntersection.getValue(date)).toEqual(true);");
                 }
-                try (Using<ColorCesiumWriter> using$356 = new Using<ColorCesiumWriter>(w.openEnvironmentIntersectionColorProperty())) {
-                    final ColorCesiumWriter w2 = using$356.resource;
+                try (Using<ColorCesiumWriter> using$360 = new Using<ColorCesiumWriter>(w.openEnvironmentIntersectionColorProperty())) {
+                    final ColorCesiumWriter w2 = using$360.resource;
                     w2.writeRgba(ColorHelper.fromArgb(55, 134, 29, 12));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.customPatternSensor.environmentIntersectionColor.getValue(date)).toEqual(Color.fromBytes(134, 29, 12, 55));");
                 }
-                try (Using<DoubleCesiumWriter> using$357 = new Using<DoubleCesiumWriter>(w.openEnvironmentIntersectionWidthProperty())) {
-                    final DoubleCesiumWriter w2 = using$357.resource;
+                try (Using<DoubleCesiumWriter> using$361 = new Using<DoubleCesiumWriter>(w.openEnvironmentIntersectionWidthProperty())) {
+                    final DoubleCesiumWriter w2 = using$361.resource;
                     w2.writeNumber(53576.0);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.environmentIntersectionWidth.getValue(date)).toEqual(53576.0);");
                 }
-                try (Using<BooleanCesiumWriter> using$358 = new Using<BooleanCesiumWriter>(w.openShowThroughEllipsoidProperty())) {
-                    final BooleanCesiumWriter w2 = using$358.resource;
+                try (Using<BooleanCesiumWriter> using$362 = new Using<BooleanCesiumWriter>(w.openShowThroughEllipsoidProperty())) {
+                    final BooleanCesiumWriter w2 = using$362.resource;
                     w2.writeBoolean(true);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.showThroughEllipsoid.getValue(date)).toEqual(true);");
                 }
-                try (Using<BooleanCesiumWriter> using$359 = new Using<BooleanCesiumWriter>(w.openShowViewshedProperty())) {
-                    final BooleanCesiumWriter w2 = using$359.resource;
+                try (Using<BooleanCesiumWriter> using$363 = new Using<BooleanCesiumWriter>(w.openShowViewshedProperty())) {
+                    final BooleanCesiumWriter w2 = using$363.resource;
                     w2.writeBoolean(true);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.showViewshed.getValue(date)).toEqual(true);");
                 }
-                try (Using<ColorCesiumWriter> using$360 = new Using<ColorCesiumWriter>(w.openViewshedVisibleColorProperty())) {
-                    final ColorCesiumWriter w2 = using$360.resource;
+                try (Using<ColorCesiumWriter> using$364 = new Using<ColorCesiumWriter>(w.openViewshedVisibleColorProperty())) {
+                    final ColorCesiumWriter w2 = using$364.resource;
                     w2.writeRgba(ColorHelper.fromArgb(91, 38, 54, 223));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.viewshedVisibleColor.getValue(date)).toEqual(Color.fromBytes(38, 54, 223, 91));");
                 }
-                try (Using<ColorCesiumWriter> using$361 = new Using<ColorCesiumWriter>(w.openViewshedOccludedColorProperty())) {
-                    final ColorCesiumWriter w2 = using$361.resource;
+                try (Using<ColorCesiumWriter> using$365 = new Using<ColorCesiumWriter>(w.openViewshedOccludedColorProperty())) {
+                    final ColorCesiumWriter w2 = using$365.resource;
                     w2.writeRgba(ColorHelper.fromArgb(99, 229, 38, 249));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.viewshedOccludedColor.getValue(date)).toEqual(Color.fromBytes(229, 38, 249, 99));");
                 }
-                try (Using<IntegerCesiumWriter> using$362 = new Using<IntegerCesiumWriter>(w.openViewshedResolutionProperty())) {
-                    final IntegerCesiumWriter w2 = using$362.resource;
+                try (Using<IntegerCesiumWriter> using$366 = new Using<IntegerCesiumWriter>(w.openViewshedResolutionProperty())) {
+                    final IntegerCesiumWriter w2 = using$366.resource;
                     w2.writeNumber(25862);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.viewshedResolution.getValue(date)).toEqual(25862);");
                 }
             }
-            try (Using<RectangularSensorCesiumWriter> using$363 = new Using<RectangularSensorCesiumWriter>(packet.openRectangularSensorProperty())) {
-                final RectangularSensorCesiumWriter w = using$363.resource;
-                try (Using<BooleanCesiumWriter> using$364 = new Using<BooleanCesiumWriter>(w.openShowProperty())) {
-                    final BooleanCesiumWriter w2 = using$364.resource;
+            try (Using<RectangularSensorCesiumWriter> using$367 = new Using<RectangularSensorCesiumWriter>(packet.openRectangularSensorProperty())) {
+                final RectangularSensorCesiumWriter w = using$367.resource;
+                try (Using<BooleanCesiumWriter> using$368 = new Using<BooleanCesiumWriter>(w.openShowProperty())) {
+                    final BooleanCesiumWriter w2 = using$368.resource;
                     w2.writeBoolean(true);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.show.getValue(date)).toEqual(true);");
                 }
-                try (Using<DoubleCesiumWriter> using$365 = new Using<DoubleCesiumWriter>(w.openXHalfAngleProperty())) {
-                    final DoubleCesiumWriter w2 = using$365.resource;
+                try (Using<DoubleCesiumWriter> using$369 = new Using<DoubleCesiumWriter>(w.openXHalfAngleProperty())) {
+                    final DoubleCesiumWriter w2 = using$369.resource;
                     w2.writeNumber(4927.0);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.xHalfAngle.getValue(date)).toEqual(4927.0);");
                 }
-                try (Using<DoubleCesiumWriter> using$366 = new Using<DoubleCesiumWriter>(w.openYHalfAngleProperty())) {
-                    final DoubleCesiumWriter w2 = using$366.resource;
+                try (Using<DoubleCesiumWriter> using$370 = new Using<DoubleCesiumWriter>(w.openYHalfAngleProperty())) {
+                    final DoubleCesiumWriter w2 = using$370.resource;
                     w2.writeNumber(37224.0);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.yHalfAngle.getValue(date)).toEqual(37224.0);");
                 }
-                try (Using<DoubleCesiumWriter> using$367 = new Using<DoubleCesiumWriter>(w.openRadiusProperty())) {
-                    final DoubleCesiumWriter w2 = using$367.resource;
+                try (Using<DoubleCesiumWriter> using$371 = new Using<DoubleCesiumWriter>(w.openMinimumRadiusProperty())) {
+                    final DoubleCesiumWriter w2 = using$371.resource;
+                    w2.writeNumber(44069.0);
+                    TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.minimumRadius.getValue(date)).toEqual(44069.0);");
+                }
+                try (Using<DoubleCesiumWriter> using$372 = new Using<DoubleCesiumWriter>(w.openMaximumRadiusProperty())) {
+                    final DoubleCesiumWriter w2 = using$372.resource;
+                    w2.writeNumber(38638.0);
+                    TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.maximumRadius.getValue(date)).toEqual(38638.0);");
+                }
+                try (Using<DoubleCesiumWriter> using$373 = new Using<DoubleCesiumWriter>(w.openRadiusProperty())) {
+                    final DoubleCesiumWriter w2 = using$373.resource;
                     w2.writeNumber(35686.0);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.radius.getValue(date)).toEqual(35686.0);");
                 }
-                try (Using<BooleanCesiumWriter> using$368 = new Using<BooleanCesiumWriter>(w.openShowIntersectionProperty())) {
-                    final BooleanCesiumWriter w2 = using$368.resource;
+                try (Using<BooleanCesiumWriter> using$374 = new Using<BooleanCesiumWriter>(w.openShowIntersectionProperty())) {
+                    final BooleanCesiumWriter w2 = using$374.resource;
                     w2.writeBoolean(true);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.showIntersection.getValue(date)).toEqual(true);");
                 }
-                try (Using<ColorCesiumWriter> using$369 = new Using<ColorCesiumWriter>(w.openIntersectionColorProperty())) {
-                    final ColorCesiumWriter w2 = using$369.resource;
+                try (Using<ColorCesiumWriter> using$375 = new Using<ColorCesiumWriter>(w.openIntersectionColorProperty())) {
+                    final ColorCesiumWriter w2 = using$375.resource;
                     w2.writeRgba(ColorHelper.fromArgb(246, 211, 199, 212));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.intersectionColor.getValue(date)).toEqual(Color.fromBytes(211, 199, 212, 246));");
                 }
-                try (Using<DoubleCesiumWriter> using$370 = new Using<DoubleCesiumWriter>(w.openIntersectionWidthProperty())) {
-                    final DoubleCesiumWriter w2 = using$370.resource;
+                try (Using<DoubleCesiumWriter> using$376 = new Using<DoubleCesiumWriter>(w.openIntersectionWidthProperty())) {
+                    final DoubleCesiumWriter w2 = using$376.resource;
                     w2.writeNumber(41682.0);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.intersectionWidth.getValue(date)).toEqual(41682.0);");
                 }
-                try (Using<BooleanCesiumWriter> using$371 = new Using<BooleanCesiumWriter>(w.openShowLateralSurfacesProperty())) {
-                    final BooleanCesiumWriter w2 = using$371.resource;
+                try (Using<BooleanCesiumWriter> using$377 = new Using<BooleanCesiumWriter>(w.openShowLateralSurfacesProperty())) {
+                    final BooleanCesiumWriter w2 = using$377.resource;
                     w2.writeBoolean(true);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.showLateralSurfaces.getValue(date)).toEqual(true);");
                 }
-                try (Using<MaterialCesiumWriter> using$372 = new Using<MaterialCesiumWriter>(w.openLateralSurfaceMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$372.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$373 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$373.resource;
-                        try (Using<ColorCesiumWriter> using$374 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$374.resource;
+                try (Using<MaterialCesiumWriter> using$378 = new Using<MaterialCesiumWriter>(w.openLateralSurfaceMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$378.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$379 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$379.resource;
+                        try (Using<ColorCesiumWriter> using$380 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$380.resource;
                             m2.writeRgba(ColorHelper.fromArgb(98, 34, 130, 31));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.lateralSurfaceMaterial.color.getValue(date)).toEqual(Color.fromBytes(34, 130, 31, 98));");
                         }
                     }
                 }
-                try (Using<BooleanCesiumWriter> using$375 = new Using<BooleanCesiumWriter>(w.openShowEllipsoidSurfacesProperty())) {
-                    final BooleanCesiumWriter w2 = using$375.resource;
+                try (Using<BooleanCesiumWriter> using$381 = new Using<BooleanCesiumWriter>(w.openShowEllipsoidSurfacesProperty())) {
+                    final BooleanCesiumWriter w2 = using$381.resource;
                     w2.writeBoolean(true);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.showEllipsoidSurfaces.getValue(date)).toEqual(true);");
                 }
-                try (Using<MaterialCesiumWriter> using$376 = new Using<MaterialCesiumWriter>(w.openEllipsoidSurfaceMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$376.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$377 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$377.resource;
-                        try (Using<ColorCesiumWriter> using$378 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$378.resource;
+                try (Using<MaterialCesiumWriter> using$382 = new Using<MaterialCesiumWriter>(w.openEllipsoidSurfaceMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$382.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$383 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$383.resource;
+                        try (Using<ColorCesiumWriter> using$384 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$384.resource;
                             m2.writeRgba(ColorHelper.fromArgb(146, 134, 158, 149));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.ellipsoidSurfaceMaterial.color.getValue(date)).toEqual(Color.fromBytes(134, 158, 149, 146));");
                         }
                     }
                 }
-                try (Using<BooleanCesiumWriter> using$379 = new Using<BooleanCesiumWriter>(w.openShowEllipsoidHorizonSurfacesProperty())) {
-                    final BooleanCesiumWriter w2 = using$379.resource;
+                try (Using<BooleanCesiumWriter> using$385 = new Using<BooleanCesiumWriter>(w.openShowEllipsoidHorizonSurfacesProperty())) {
+                    final BooleanCesiumWriter w2 = using$385.resource;
                     w2.writeBoolean(true);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.showEllipsoidHorizonSurfaces.getValue(date)).toEqual(true);");
                 }
-                try (Using<MaterialCesiumWriter> using$380 = new Using<MaterialCesiumWriter>(w.openEllipsoidHorizonSurfaceMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$380.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$381 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$381.resource;
-                        try (Using<ColorCesiumWriter> using$382 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$382.resource;
+                try (Using<MaterialCesiumWriter> using$386 = new Using<MaterialCesiumWriter>(w.openEllipsoidHorizonSurfaceMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$386.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$387 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$387.resource;
+                        try (Using<ColorCesiumWriter> using$388 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$388.resource;
                             m2.writeRgba(ColorHelper.fromArgb(197, 52, 43, 245));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.ellipsoidHorizonSurfaceMaterial.color.getValue(date)).toEqual(Color.fromBytes(52, 43, 245, 197));");
                         }
                     }
                 }
-                try (Using<BooleanCesiumWriter> using$383 = new Using<BooleanCesiumWriter>(w.openShowDomeSurfacesProperty())) {
-                    final BooleanCesiumWriter w2 = using$383.resource;
+                try (Using<BooleanCesiumWriter> using$389 = new Using<BooleanCesiumWriter>(w.openShowDomeSurfacesProperty())) {
+                    final BooleanCesiumWriter w2 = using$389.resource;
                     w2.writeBoolean(true);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.showDomeSurfaces.getValue(date)).toEqual(true);");
                 }
-                try (Using<MaterialCesiumWriter> using$384 = new Using<MaterialCesiumWriter>(w.openDomeSurfaceMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$384.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$385 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$385.resource;
-                        try (Using<ColorCesiumWriter> using$386 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$386.resource;
+                try (Using<MaterialCesiumWriter> using$390 = new Using<MaterialCesiumWriter>(w.openDomeSurfaceMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$390.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$391 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$391.resource;
+                        try (Using<ColorCesiumWriter> using$392 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$392.resource;
                             m2.writeRgba(ColorHelper.fromArgb(181, 32, 23, 251));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.domeSurfaceMaterial.color.getValue(date)).toEqual(Color.fromBytes(32, 23, 251, 181));");
                         }
                     }
                 }
-                try (Using<SensorVolumePortionToDisplayCesiumWriter> using$387 = new Using<SensorVolumePortionToDisplayCesiumWriter>(w.openPortionToDisplayProperty())) {
-                    final SensorVolumePortionToDisplayCesiumWriter w2 = using$387.resource;
+                try (Using<SensorVolumePortionToDisplayCesiumWriter> using$393 = new Using<SensorVolumePortionToDisplayCesiumWriter>(w.openPortionToDisplayProperty())) {
+                    final SensorVolumePortionToDisplayCesiumWriter w2 = using$393.resource;
                     w2.writePortionToDisplay(CesiumSensorVolumePortionToDisplay.BELOW_ELLIPSOID_HORIZON);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.rectangularSensor.portionToDisplay.getValue(date)).toEqual(SensorVolumePortionToDisplay.BELOW_ELLIPSOID_HORIZON);");
                 }
-                try (Using<BooleanCesiumWriter> using$388 = new Using<BooleanCesiumWriter>(w.openEnvironmentConstraintProperty())) {
-                    final BooleanCesiumWriter w2 = using$388.resource;
+                try (Using<BooleanCesiumWriter> using$394 = new Using<BooleanCesiumWriter>(w.openEnvironmentConstraintProperty())) {
+                    final BooleanCesiumWriter w2 = using$394.resource;
                     w2.writeBoolean(true);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.environmentConstraint.getValue(date)).toEqual(true);");
                 }
-                try (Using<BooleanCesiumWriter> using$389 = new Using<BooleanCesiumWriter>(w.openShowEnvironmentOcclusionProperty())) {
-                    final BooleanCesiumWriter w2 = using$389.resource;
+                try (Using<BooleanCesiumWriter> using$395 = new Using<BooleanCesiumWriter>(w.openShowEnvironmentOcclusionProperty())) {
+                    final BooleanCesiumWriter w2 = using$395.resource;
                     w2.writeBoolean(true);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.showEnvironmentOcclusion.getValue(date)).toEqual(true);");
                 }
-                try (Using<MaterialCesiumWriter> using$390 = new Using<MaterialCesiumWriter>(w.openEnvironmentOcclusionMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$390.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$391 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$391.resource;
-                        try (Using<ColorCesiumWriter> using$392 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$392.resource;
+                try (Using<MaterialCesiumWriter> using$396 = new Using<MaterialCesiumWriter>(w.openEnvironmentOcclusionMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$396.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$397 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$397.resource;
+                        try (Using<ColorCesiumWriter> using$398 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$398.resource;
                             m2.writeRgba(ColorHelper.fromArgb(80, 175, 187, 53));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.environmentOcclusionMaterial.color.getValue(date)).toEqual(Color.fromBytes(175, 187, 53, 80));");
                         }
                     }
                 }
-                try (Using<BooleanCesiumWriter> using$393 = new Using<BooleanCesiumWriter>(w.openShowEnvironmentIntersectionProperty())) {
-                    final BooleanCesiumWriter w2 = using$393.resource;
+                try (Using<BooleanCesiumWriter> using$399 = new Using<BooleanCesiumWriter>(w.openShowEnvironmentIntersectionProperty())) {
+                    final BooleanCesiumWriter w2 = using$399.resource;
                     w2.writeBoolean(true);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.showEnvironmentIntersection.getValue(date)).toEqual(true);");
                 }
-                try (Using<ColorCesiumWriter> using$394 = new Using<ColorCesiumWriter>(w.openEnvironmentIntersectionColorProperty())) {
-                    final ColorCesiumWriter w2 = using$394.resource;
+                try (Using<ColorCesiumWriter> using$400 = new Using<ColorCesiumWriter>(w.openEnvironmentIntersectionColorProperty())) {
+                    final ColorCesiumWriter w2 = using$400.resource;
                     w2.writeRgba(ColorHelper.fromArgb(144, 84, 60, 81));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.environmentIntersectionColor.getValue(date)).toEqual(Color.fromBytes(84, 60, 81, 144));");
                 }
-                try (Using<DoubleCesiumWriter> using$395 = new Using<DoubleCesiumWriter>(w.openEnvironmentIntersectionWidthProperty())) {
-                    final DoubleCesiumWriter w2 = using$395.resource;
+                try (Using<DoubleCesiumWriter> using$401 = new Using<DoubleCesiumWriter>(w.openEnvironmentIntersectionWidthProperty())) {
+                    final DoubleCesiumWriter w2 = using$401.resource;
                     w2.writeNumber(64839.0);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.environmentIntersectionWidth.getValue(date)).toEqual(64839.0);");
                 }
-                try (Using<BooleanCesiumWriter> using$396 = new Using<BooleanCesiumWriter>(w.openShowThroughEllipsoidProperty())) {
-                    final BooleanCesiumWriter w2 = using$396.resource;
+                try (Using<BooleanCesiumWriter> using$402 = new Using<BooleanCesiumWriter>(w.openShowThroughEllipsoidProperty())) {
+                    final BooleanCesiumWriter w2 = using$402.resource;
                     w2.writeBoolean(true);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.showThroughEllipsoid.getValue(date)).toEqual(true);");
                 }
-                try (Using<BooleanCesiumWriter> using$397 = new Using<BooleanCesiumWriter>(w.openShowViewshedProperty())) {
-                    final BooleanCesiumWriter w2 = using$397.resource;
+                try (Using<BooleanCesiumWriter> using$403 = new Using<BooleanCesiumWriter>(w.openShowViewshedProperty())) {
+                    final BooleanCesiumWriter w2 = using$403.resource;
                     w2.writeBoolean(true);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.showViewshed.getValue(date)).toEqual(true);");
                 }
-                try (Using<ColorCesiumWriter> using$398 = new Using<ColorCesiumWriter>(w.openViewshedVisibleColorProperty())) {
-                    final ColorCesiumWriter w2 = using$398.resource;
+                try (Using<ColorCesiumWriter> using$404 = new Using<ColorCesiumWriter>(w.openViewshedVisibleColorProperty())) {
+                    final ColorCesiumWriter w2 = using$404.resource;
                     w2.writeRgba(ColorHelper.fromArgb(93, 239, 86, 8));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.viewshedVisibleColor.getValue(date)).toEqual(Color.fromBytes(239, 86, 8, 93));");
                 }
-                try (Using<ColorCesiumWriter> using$399 = new Using<ColorCesiumWriter>(w.openViewshedOccludedColorProperty())) {
-                    final ColorCesiumWriter w2 = using$399.resource;
+                try (Using<ColorCesiumWriter> using$405 = new Using<ColorCesiumWriter>(w.openViewshedOccludedColorProperty())) {
+                    final ColorCesiumWriter w2 = using$405.resource;
                     w2.writeRgba(ColorHelper.fromArgb(26, 20, 22, 45));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.viewshedOccludedColor.getValue(date)).toEqual(Color.fromBytes(20, 22, 45, 26));");
                 }
-                try (Using<IntegerCesiumWriter> using$400 = new Using<IntegerCesiumWriter>(w.openViewshedResolutionProperty())) {
-                    final IntegerCesiumWriter w2 = using$400.resource;
+                try (Using<IntegerCesiumWriter> using$406 = new Using<IntegerCesiumWriter>(w.openViewshedResolutionProperty())) {
+                    final IntegerCesiumWriter w2 = using$406.resource;
                     w2.writeNumber(33690);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.viewshedResolution.getValue(date)).toEqual(33690);");
                 }
             }
-            try (Using<FanCesiumWriter> using$401 = new Using<FanCesiumWriter>(packet.openFanProperty())) {
-                final FanCesiumWriter w = using$401.resource;
-                try (Using<BooleanCesiumWriter> using$402 = new Using<BooleanCesiumWriter>(w.openShowProperty())) {
-                    final BooleanCesiumWriter w2 = using$402.resource;
+            try (Using<FanCesiumWriter> using$407 = new Using<FanCesiumWriter>(packet.openFanProperty())) {
+                final FanCesiumWriter w = using$407.resource;
+                try (Using<BooleanCesiumWriter> using$408 = new Using<BooleanCesiumWriter>(w.openShowProperty())) {
+                    final BooleanCesiumWriter w2 = using$408.resource;
                     w2.writeBoolean(true);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.show.getValue(date)).toEqual(true);");
                 }
-                try (Using<DirectionListCesiumWriter> using$403 = new Using<DirectionListCesiumWriter>(w.openDirectionsProperty())) {
-                    final DirectionListCesiumWriter w2 = using$403.resource;
+                try (Using<DirectionListCesiumWriter> using$409 = new Using<DirectionListCesiumWriter>(w.openDirectionsProperty())) {
+                    final DirectionListCesiumWriter w2 = using$409.resource;
                     w2.writeSpherical(TestGenerateValidationDocument.<Spherical> createList(new Spherical(19722.0, 1613.0, 23046.0), new Spherical(14938.0, 16954.0, 50242.0)));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.fan.directions.getValue(date)).toEqual([ new Spherical(19722, 1613, 23046), new Spherical(14938, 16954, 50242) ]);");
                 }
-                try (Using<DoubleCesiumWriter> using$404 = new Using<DoubleCesiumWriter>(w.openRadiusProperty())) {
-                    final DoubleCesiumWriter w2 = using$404.resource;
+                try (Using<DoubleCesiumWriter> using$410 = new Using<DoubleCesiumWriter>(w.openRadiusProperty())) {
+                    final DoubleCesiumWriter w2 = using$410.resource;
                     w2.writeNumber(54355.0);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.radius.getValue(date)).toEqual(54355.0);");
                 }
-                try (Using<BooleanCesiumWriter> using$405 = new Using<BooleanCesiumWriter>(w.openPerDirectionRadiusProperty())) {
-                    final BooleanCesiumWriter w2 = using$405.resource;
+                try (Using<BooleanCesiumWriter> using$411 = new Using<BooleanCesiumWriter>(w.openPerDirectionRadiusProperty())) {
+                    final BooleanCesiumWriter w2 = using$411.resource;
                     w2.writeBoolean(true);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.perDirectionRadius.getValue(date)).toEqual(true);");
                 }
-                try (Using<MaterialCesiumWriter> using$406 = new Using<MaterialCesiumWriter>(w.openMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$406.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$407 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$407.resource;
-                        try (Using<ColorCesiumWriter> using$408 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$408.resource;
+                try (Using<MaterialCesiumWriter> using$412 = new Using<MaterialCesiumWriter>(w.openMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$412.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$413 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$413.resource;
+                        try (Using<ColorCesiumWriter> using$414 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$414.resource;
                             m2.writeRgba(ColorHelper.fromArgb(145, 172, 23, 214));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.material.color.getValue(date)).toEqual(Color.fromBytes(172, 23, 214, 145));");
                         }
                     }
                 }
-                try (Using<BooleanCesiumWriter> using$409 = new Using<BooleanCesiumWriter>(w.openFillProperty())) {
-                    final BooleanCesiumWriter w2 = using$409.resource;
+                try (Using<BooleanCesiumWriter> using$415 = new Using<BooleanCesiumWriter>(w.openFillProperty())) {
+                    final BooleanCesiumWriter w2 = using$415.resource;
                     w2.writeBoolean(true);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.fill.getValue(date)).toEqual(true);");
                 }
-                try (Using<BooleanCesiumWriter> using$410 = new Using<BooleanCesiumWriter>(w.openOutlineProperty())) {
-                    final BooleanCesiumWriter w2 = using$410.resource;
+                try (Using<BooleanCesiumWriter> using$416 = new Using<BooleanCesiumWriter>(w.openOutlineProperty())) {
+                    final BooleanCesiumWriter w2 = using$416.resource;
                     w2.writeBoolean(true);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.outline.getValue(date)).toEqual(true);");
                 }
-                try (Using<ColorCesiumWriter> using$411 = new Using<ColorCesiumWriter>(w.openOutlineColorProperty())) {
-                    final ColorCesiumWriter w2 = using$411.resource;
+                try (Using<ColorCesiumWriter> using$417 = new Using<ColorCesiumWriter>(w.openOutlineColorProperty())) {
+                    final ColorCesiumWriter w2 = using$417.resource;
                     w2.writeRgba(ColorHelper.fromArgb(214, 107, 168, 140));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.outlineColor.getValue(date)).toEqual(Color.fromBytes(107, 168, 140, 214));");
                 }
-                try (Using<DoubleCesiumWriter> using$412 = new Using<DoubleCesiumWriter>(w.openOutlineWidthProperty())) {
-                    final DoubleCesiumWriter w2 = using$412.resource;
+                try (Using<DoubleCesiumWriter> using$418 = new Using<DoubleCesiumWriter>(w.openOutlineWidthProperty())) {
+                    final DoubleCesiumWriter w2 = using$418.resource;
                     w2.writeNumber(18367.0);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.outlineWidth.getValue(date)).toEqual(18367.0);");
                 }
-                try (Using<IntegerCesiumWriter> using$413 = new Using<IntegerCesiumWriter>(w.openNumberOfRingsProperty())) {
-                    final IntegerCesiumWriter w2 = using$413.resource;
+                try (Using<IntegerCesiumWriter> using$419 = new Using<IntegerCesiumWriter>(w.openNumberOfRingsProperty())) {
+                    final IntegerCesiumWriter w2 = using$419.resource;
                     w2.writeNumber(33012);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.numberOfRings.getValue(date)).toEqual(33012);");
                 }
             }
-            try (Using<VectorCesiumWriter> using$414 = new Using<VectorCesiumWriter>(packet.openVectorProperty())) {
-                final VectorCesiumWriter w = using$414.resource;
-                try (Using<BooleanCesiumWriter> using$415 = new Using<BooleanCesiumWriter>(w.openShowProperty())) {
-                    final BooleanCesiumWriter w2 = using$415.resource;
+            try (Using<VectorCesiumWriter> using$420 = new Using<VectorCesiumWriter>(packet.openVectorProperty())) {
+                final VectorCesiumWriter w = using$420.resource;
+                try (Using<BooleanCesiumWriter> using$421 = new Using<BooleanCesiumWriter>(w.openShowProperty())) {
+                    final BooleanCesiumWriter w2 = using$421.resource;
                     w2.writeBoolean(true);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.vector.show.getValue(date)).toEqual(true);");
                 }
-                try (Using<ColorCesiumWriter> using$416 = new Using<ColorCesiumWriter>(w.openColorProperty())) {
-                    final ColorCesiumWriter w2 = using$416.resource;
+                try (Using<ColorCesiumWriter> using$422 = new Using<ColorCesiumWriter>(w.openColorProperty())) {
+                    final ColorCesiumWriter w2 = using$422.resource;
                     w2.writeRgba(ColorHelper.fromArgb(189, 92, 133, 96));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.vector.color.getValue(date)).toEqual(Color.fromBytes(92, 133, 96, 189));");
                 }
-                try (Using<DirectionCesiumWriter> using$417 = new Using<DirectionCesiumWriter>(w.openDirectionProperty())) {
-                    final DirectionCesiumWriter w2 = using$417.resource;
+                try (Using<DirectionCesiumWriter> using$423 = new Using<DirectionCesiumWriter>(w.openDirectionProperty())) {
+                    final DirectionCesiumWriter w2 = using$423.resource;
                     w2.writeSpherical(new Spherical(44405.0, 20909.0, 43089.0));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.vector.direction.getValue(date)).toEqual(Cartesian3.fromSpherical(new Spherical(44405, 20909, 43089)));");
                 }
-                try (Using<DoubleCesiumWriter> using$418 = new Using<DoubleCesiumWriter>(w.openLengthProperty())) {
-                    final DoubleCesiumWriter w2 = using$418.resource;
+                try (Using<DoubleCesiumWriter> using$424 = new Using<DoubleCesiumWriter>(w.openLengthProperty())) {
+                    final DoubleCesiumWriter w2 = using$424.resource;
                     w2.writeNumber(5478.0);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.vector.length.getValue(date)).toEqual(5478.0);");
                 }
-                try (Using<DoubleCesiumWriter> using$419 = new Using<DoubleCesiumWriter>(w.openMinimumLengthInPixelsProperty())) {
-                    final DoubleCesiumWriter w2 = using$419.resource;
+                try (Using<DoubleCesiumWriter> using$425 = new Using<DoubleCesiumWriter>(w.openMinimumLengthInPixelsProperty())) {
+                    final DoubleCesiumWriter w2 = using$425.resource;
                     w2.writeNumber(58959.0);
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.vector.minimumLengthInPixels.getValue(date)).toEqual(58959.0);");
                 }
@@ -13339,631 +13369,665 @@ public class TestGenerateValidationDocument {
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.conicSensor.maximumClockAngle.getValue(date)).toEqual(constant.conicSensor.maximumClockAngle.getValue(date));");
                 }
-                try (Using<DoubleCesiumWriter> using$306 = new Using<DoubleCesiumWriter>(w.openRadiusProperty())) {
+                try (Using<DoubleCesiumWriter> using$306 = new Using<DoubleCesiumWriter>(w.openMinimumRadiusProperty())) {
                     final DoubleCesiumWriter w2 = using$306.resource;
+                    w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("conicSensor", "minimumRadius")));
+                    TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.minimumRadius.getValue(date)).toEqual(constant.conicSensor.minimumRadius.getValue(date));");
+                }
+                try (Using<DoubleCesiumWriter> using$307 = new Using<DoubleCesiumWriter>(w.openMaximumRadiusProperty())) {
+                    final DoubleCesiumWriter w2 = using$307.resource;
+                    w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("conicSensor", "maximumRadius")));
+                    TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.maximumRadius.getValue(date)).toEqual(constant.conicSensor.maximumRadius.getValue(date));");
+                }
+                try (Using<DoubleCesiumWriter> using$308 = new Using<DoubleCesiumWriter>(w.openRadiusProperty())) {
+                    final DoubleCesiumWriter w2 = using$308.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("conicSensor", "radius")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.radius.getValue(date)).toEqual(constant.conicSensor.radius.getValue(date));");
                 }
-                try (Using<BooleanCesiumWriter> using$307 = new Using<BooleanCesiumWriter>(w.openShowIntersectionProperty())) {
-                    final BooleanCesiumWriter w2 = using$307.resource;
+                try (Using<BooleanCesiumWriter> using$309 = new Using<BooleanCesiumWriter>(w.openShowIntersectionProperty())) {
+                    final BooleanCesiumWriter w2 = using$309.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("conicSensor", "showIntersection")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.conicSensor.showIntersection.getValue(date)).toEqual(constant.conicSensor.showIntersection.getValue(date));");
                 }
-                try (Using<ColorCesiumWriter> using$308 = new Using<ColorCesiumWriter>(w.openIntersectionColorProperty())) {
-                    final ColorCesiumWriter w2 = using$308.resource;
+                try (Using<ColorCesiumWriter> using$310 = new Using<ColorCesiumWriter>(w.openIntersectionColorProperty())) {
+                    final ColorCesiumWriter w2 = using$310.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("conicSensor", "intersectionColor")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.conicSensor.intersectionColor.getValue(date)).toEqual(constant.conicSensor.intersectionColor.getValue(date));");
                 }
-                try (Using<DoubleCesiumWriter> using$309 = new Using<DoubleCesiumWriter>(w.openIntersectionWidthProperty())) {
-                    final DoubleCesiumWriter w2 = using$309.resource;
+                try (Using<DoubleCesiumWriter> using$311 = new Using<DoubleCesiumWriter>(w.openIntersectionWidthProperty())) {
+                    final DoubleCesiumWriter w2 = using$311.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("conicSensor", "intersectionWidth")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.conicSensor.intersectionWidth.getValue(date)).toEqual(constant.conicSensor.intersectionWidth.getValue(date));");
                 }
-                try (Using<BooleanCesiumWriter> using$310 = new Using<BooleanCesiumWriter>(w.openShowLateralSurfacesProperty())) {
-                    final BooleanCesiumWriter w2 = using$310.resource;
+                try (Using<BooleanCesiumWriter> using$312 = new Using<BooleanCesiumWriter>(w.openShowLateralSurfacesProperty())) {
+                    final BooleanCesiumWriter w2 = using$312.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("conicSensor", "showLateralSurfaces")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.conicSensor.showLateralSurfaces.getValue(date)).toEqual(constant.conicSensor.showLateralSurfaces.getValue(date));");
                 }
-                try (Using<MaterialCesiumWriter> using$311 = new Using<MaterialCesiumWriter>(w.openLateralSurfaceMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$311.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$312 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$312.resource;
-                        try (Using<ColorCesiumWriter> using$313 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$313.resource;
+                try (Using<MaterialCesiumWriter> using$313 = new Using<MaterialCesiumWriter>(w.openLateralSurfaceMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$313.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$314 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$314.resource;
+                        try (Using<ColorCesiumWriter> using$315 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$315.resource;
                             m2.writeReference(new Reference("Constant", createList("conicSensor", "lateralSurfaceMaterial", "color")));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.lateralSurfaceMaterial.color.getValue(date)).toEqual(constant.conicSensor.lateralSurfaceMaterial.color.getValue(date));");
                         }
                     }
                 }
-                try (Using<BooleanCesiumWriter> using$314 = new Using<BooleanCesiumWriter>(w.openShowEllipsoidSurfacesProperty())) {
-                    final BooleanCesiumWriter w2 = using$314.resource;
+                try (Using<BooleanCesiumWriter> using$316 = new Using<BooleanCesiumWriter>(w.openShowEllipsoidSurfacesProperty())) {
+                    final BooleanCesiumWriter w2 = using$316.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("conicSensor", "showEllipsoidSurfaces")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.conicSensor.showEllipsoidSurfaces.getValue(date)).toEqual(constant.conicSensor.showEllipsoidSurfaces.getValue(date));");
                 }
-                try (Using<MaterialCesiumWriter> using$315 = new Using<MaterialCesiumWriter>(w.openEllipsoidSurfaceMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$315.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$316 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$316.resource;
-                        try (Using<ColorCesiumWriter> using$317 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$317.resource;
+                try (Using<MaterialCesiumWriter> using$317 = new Using<MaterialCesiumWriter>(w.openEllipsoidSurfaceMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$317.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$318 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$318.resource;
+                        try (Using<ColorCesiumWriter> using$319 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$319.resource;
                             m2.writeReference(new Reference("Constant", createList("conicSensor", "ellipsoidSurfaceMaterial", "color")));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.ellipsoidSurfaceMaterial.color.getValue(date)).toEqual(constant.conicSensor.ellipsoidSurfaceMaterial.color.getValue(date));");
                         }
                     }
                 }
-                try (Using<BooleanCesiumWriter> using$318 = new Using<BooleanCesiumWriter>(w.openShowEllipsoidHorizonSurfacesProperty())) {
-                    final BooleanCesiumWriter w2 = using$318.resource;
+                try (Using<BooleanCesiumWriter> using$320 = new Using<BooleanCesiumWriter>(w.openShowEllipsoidHorizonSurfacesProperty())) {
+                    final BooleanCesiumWriter w2 = using$320.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("conicSensor", "showEllipsoidHorizonSurfaces")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.conicSensor.showEllipsoidHorizonSurfaces.getValue(date)).toEqual(constant.conicSensor.showEllipsoidHorizonSurfaces.getValue(date));");
                 }
-                try (Using<MaterialCesiumWriter> using$319 = new Using<MaterialCesiumWriter>(w.openEllipsoidHorizonSurfaceMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$319.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$320 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$320.resource;
-                        try (Using<ColorCesiumWriter> using$321 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$321.resource;
+                try (Using<MaterialCesiumWriter> using$321 = new Using<MaterialCesiumWriter>(w.openEllipsoidHorizonSurfaceMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$321.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$322 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$322.resource;
+                        try (Using<ColorCesiumWriter> using$323 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$323.resource;
                             m2.writeReference(new Reference("Constant", createList("conicSensor", "ellipsoidHorizonSurfaceMaterial", "color")));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.ellipsoidHorizonSurfaceMaterial.color.getValue(date)).toEqual(constant.conicSensor.ellipsoidHorizonSurfaceMaterial.color.getValue(date));");
                         }
                     }
                 }
-                try (Using<BooleanCesiumWriter> using$322 = new Using<BooleanCesiumWriter>(w.openShowDomeSurfacesProperty())) {
-                    final BooleanCesiumWriter w2 = using$322.resource;
+                try (Using<BooleanCesiumWriter> using$324 = new Using<BooleanCesiumWriter>(w.openShowDomeSurfacesProperty())) {
+                    final BooleanCesiumWriter w2 = using$324.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("conicSensor", "showDomeSurfaces")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.conicSensor.showDomeSurfaces.getValue(date)).toEqual(constant.conicSensor.showDomeSurfaces.getValue(date));");
                 }
-                try (Using<MaterialCesiumWriter> using$323 = new Using<MaterialCesiumWriter>(w.openDomeSurfaceMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$323.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$324 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$324.resource;
-                        try (Using<ColorCesiumWriter> using$325 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$325.resource;
+                try (Using<MaterialCesiumWriter> using$325 = new Using<MaterialCesiumWriter>(w.openDomeSurfaceMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$325.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$326 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$326.resource;
+                        try (Using<ColorCesiumWriter> using$327 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$327.resource;
                             m2.writeReference(new Reference("Constant", createList("conicSensor", "domeSurfaceMaterial", "color")));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.domeSurfaceMaterial.color.getValue(date)).toEqual(constant.conicSensor.domeSurfaceMaterial.color.getValue(date));");
                         }
                     }
                 }
-                try (Using<SensorVolumePortionToDisplayCesiumWriter> using$326 = new Using<SensorVolumePortionToDisplayCesiumWriter>(w.openPortionToDisplayProperty())) {
-                    final SensorVolumePortionToDisplayCesiumWriter w2 = using$326.resource;
+                try (Using<SensorVolumePortionToDisplayCesiumWriter> using$328 = new Using<SensorVolumePortionToDisplayCesiumWriter>(w.openPortionToDisplayProperty())) {
+                    final SensorVolumePortionToDisplayCesiumWriter w2 = using$328.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("conicSensor", "portionToDisplay")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.conicSensor.portionToDisplay.getValue(date)).toEqual(constant.conicSensor.portionToDisplay.getValue(date));");
                 }
-                try (Using<BooleanCesiumWriter> using$327 = new Using<BooleanCesiumWriter>(w.openEnvironmentConstraintProperty())) {
-                    final BooleanCesiumWriter w2 = using$327.resource;
+                try (Using<BooleanCesiumWriter> using$329 = new Using<BooleanCesiumWriter>(w.openEnvironmentConstraintProperty())) {
+                    final BooleanCesiumWriter w2 = using$329.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("conicSensor", "environmentConstraint")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.conicSensor.environmentConstraint.getValue(date)).toEqual(constant.conicSensor.environmentConstraint.getValue(date));");
                 }
-                try (Using<BooleanCesiumWriter> using$328 = new Using<BooleanCesiumWriter>(w.openShowEnvironmentOcclusionProperty())) {
-                    final BooleanCesiumWriter w2 = using$328.resource;
+                try (Using<BooleanCesiumWriter> using$330 = new Using<BooleanCesiumWriter>(w.openShowEnvironmentOcclusionProperty())) {
+                    final BooleanCesiumWriter w2 = using$330.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("conicSensor", "showEnvironmentOcclusion")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.conicSensor.showEnvironmentOcclusion.getValue(date)).toEqual(constant.conicSensor.showEnvironmentOcclusion.getValue(date));");
                 }
-                try (Using<MaterialCesiumWriter> using$329 = new Using<MaterialCesiumWriter>(w.openEnvironmentOcclusionMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$329.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$330 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$330.resource;
-                        try (Using<ColorCesiumWriter> using$331 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$331.resource;
+                try (Using<MaterialCesiumWriter> using$331 = new Using<MaterialCesiumWriter>(w.openEnvironmentOcclusionMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$331.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$332 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$332.resource;
+                        try (Using<ColorCesiumWriter> using$333 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$333.resource;
                             m2.writeReference(new Reference("Constant", createList("conicSensor", "environmentOcclusionMaterial", "color")));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.conicSensor.environmentOcclusionMaterial.color.getValue(date)).toEqual(constant.conicSensor.environmentOcclusionMaterial.color.getValue(date));");
                         }
                     }
                 }
-                try (Using<BooleanCesiumWriter> using$332 = new Using<BooleanCesiumWriter>(w.openShowEnvironmentIntersectionProperty())) {
-                    final BooleanCesiumWriter w2 = using$332.resource;
+                try (Using<BooleanCesiumWriter> using$334 = new Using<BooleanCesiumWriter>(w.openShowEnvironmentIntersectionProperty())) {
+                    final BooleanCesiumWriter w2 = using$334.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("conicSensor", "showEnvironmentIntersection")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.conicSensor.showEnvironmentIntersection.getValue(date)).toEqual(constant.conicSensor.showEnvironmentIntersection.getValue(date));");
                 }
-                try (Using<ColorCesiumWriter> using$333 = new Using<ColorCesiumWriter>(w.openEnvironmentIntersectionColorProperty())) {
-                    final ColorCesiumWriter w2 = using$333.resource;
+                try (Using<ColorCesiumWriter> using$335 = new Using<ColorCesiumWriter>(w.openEnvironmentIntersectionColorProperty())) {
+                    final ColorCesiumWriter w2 = using$335.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("conicSensor", "environmentIntersectionColor")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.conicSensor.environmentIntersectionColor.getValue(date)).toEqual(constant.conicSensor.environmentIntersectionColor.getValue(date));");
                 }
-                try (Using<DoubleCesiumWriter> using$334 = new Using<DoubleCesiumWriter>(w.openEnvironmentIntersectionWidthProperty())) {
-                    final DoubleCesiumWriter w2 = using$334.resource;
+                try (Using<DoubleCesiumWriter> using$336 = new Using<DoubleCesiumWriter>(w.openEnvironmentIntersectionWidthProperty())) {
+                    final DoubleCesiumWriter w2 = using$336.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("conicSensor", "environmentIntersectionWidth")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.conicSensor.environmentIntersectionWidth.getValue(date)).toEqual(constant.conicSensor.environmentIntersectionWidth.getValue(date));");
                 }
-                try (Using<BooleanCesiumWriter> using$335 = new Using<BooleanCesiumWriter>(w.openShowThroughEllipsoidProperty())) {
-                    final BooleanCesiumWriter w2 = using$335.resource;
+                try (Using<BooleanCesiumWriter> using$337 = new Using<BooleanCesiumWriter>(w.openShowThroughEllipsoidProperty())) {
+                    final BooleanCesiumWriter w2 = using$337.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("conicSensor", "showThroughEllipsoid")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.conicSensor.showThroughEllipsoid.getValue(date)).toEqual(constant.conicSensor.showThroughEllipsoid.getValue(date));");
                 }
-                try (Using<BooleanCesiumWriter> using$336 = new Using<BooleanCesiumWriter>(w.openShowViewshedProperty())) {
-                    final BooleanCesiumWriter w2 = using$336.resource;
+                try (Using<BooleanCesiumWriter> using$338 = new Using<BooleanCesiumWriter>(w.openShowViewshedProperty())) {
+                    final BooleanCesiumWriter w2 = using$338.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("conicSensor", "showViewshed")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.showViewshed.getValue(date)).toEqual(constant.conicSensor.showViewshed.getValue(date));");
                 }
-                try (Using<ColorCesiumWriter> using$337 = new Using<ColorCesiumWriter>(w.openViewshedVisibleColorProperty())) {
-                    final ColorCesiumWriter w2 = using$337.resource;
+                try (Using<ColorCesiumWriter> using$339 = new Using<ColorCesiumWriter>(w.openViewshedVisibleColorProperty())) {
+                    final ColorCesiumWriter w2 = using$339.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("conicSensor", "viewshedVisibleColor")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.conicSensor.viewshedVisibleColor.getValue(date)).toEqual(constant.conicSensor.viewshedVisibleColor.getValue(date));");
                 }
-                try (Using<ColorCesiumWriter> using$338 = new Using<ColorCesiumWriter>(w.openViewshedOccludedColorProperty())) {
-                    final ColorCesiumWriter w2 = using$338.resource;
+                try (Using<ColorCesiumWriter> using$340 = new Using<ColorCesiumWriter>(w.openViewshedOccludedColorProperty())) {
+                    final ColorCesiumWriter w2 = using$340.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("conicSensor", "viewshedOccludedColor")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.conicSensor.viewshedOccludedColor.getValue(date)).toEqual(constant.conicSensor.viewshedOccludedColor.getValue(date));");
                 }
-                try (Using<IntegerCesiumWriter> using$339 = new Using<IntegerCesiumWriter>(w.openViewshedResolutionProperty())) {
-                    final IntegerCesiumWriter w2 = using$339.resource;
+                try (Using<IntegerCesiumWriter> using$341 = new Using<IntegerCesiumWriter>(w.openViewshedResolutionProperty())) {
+                    final IntegerCesiumWriter w2 = using$341.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("conicSensor", "viewshedResolution")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.conicSensor.viewshedResolution.getValue(date)).toEqual(constant.conicSensor.viewshedResolution.getValue(date));");
                 }
             }
-            try (Using<CustomPatternSensorCesiumWriter> using$340 = new Using<CustomPatternSensorCesiumWriter>(packet.openCustomPatternSensorProperty())) {
-                final CustomPatternSensorCesiumWriter w = using$340.resource;
-                try (Using<BooleanCesiumWriter> using$341 = new Using<BooleanCesiumWriter>(w.openShowProperty())) {
-                    final BooleanCesiumWriter w2 = using$341.resource;
+            try (Using<CustomPatternSensorCesiumWriter> using$342 = new Using<CustomPatternSensorCesiumWriter>(packet.openCustomPatternSensorProperty())) {
+                final CustomPatternSensorCesiumWriter w = using$342.resource;
+                try (Using<BooleanCesiumWriter> using$343 = new Using<BooleanCesiumWriter>(w.openShowProperty())) {
+                    final BooleanCesiumWriter w2 = using$343.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("customPatternSensor", "show")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.show.getValue(date)).toEqual(constant.customPatternSensor.show.getValue(date));");
                 }
-                try (Using<DoubleCesiumWriter> using$342 = new Using<DoubleCesiumWriter>(w.openRadiusProperty())) {
-                    final DoubleCesiumWriter w2 = using$342.resource;
+                try (Using<DoubleCesiumWriter> using$344 = new Using<DoubleCesiumWriter>(w.openMinimumRadiusProperty())) {
+                    final DoubleCesiumWriter w2 = using$344.resource;
+                    w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("customPatternSensor", "minimumRadius")));
+                    TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
+                            "    expect(e.customPatternSensor.minimumRadius.getValue(date)).toEqual(constant.customPatternSensor.minimumRadius.getValue(date));");
+                }
+                try (Using<DoubleCesiumWriter> using$345 = new Using<DoubleCesiumWriter>(w.openMaximumRadiusProperty())) {
+                    final DoubleCesiumWriter w2 = using$345.resource;
+                    w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("customPatternSensor", "maximumRadius")));
+                    TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
+                            "    expect(e.customPatternSensor.maximumRadius.getValue(date)).toEqual(constant.customPatternSensor.maximumRadius.getValue(date));");
+                }
+                try (Using<DoubleCesiumWriter> using$346 = new Using<DoubleCesiumWriter>(w.openRadiusProperty())) {
+                    final DoubleCesiumWriter w2 = using$346.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("customPatternSensor", "radius")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.radius.getValue(date)).toEqual(constant.customPatternSensor.radius.getValue(date));");
                 }
-                try (Using<BooleanCesiumWriter> using$343 = new Using<BooleanCesiumWriter>(w.openShowIntersectionProperty())) {
-                    final BooleanCesiumWriter w2 = using$343.resource;
+                try (Using<BooleanCesiumWriter> using$347 = new Using<BooleanCesiumWriter>(w.openShowIntersectionProperty())) {
+                    final BooleanCesiumWriter w2 = using$347.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("customPatternSensor", "showIntersection")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.customPatternSensor.showIntersection.getValue(date)).toEqual(constant.customPatternSensor.showIntersection.getValue(date));");
                 }
-                try (Using<ColorCesiumWriter> using$344 = new Using<ColorCesiumWriter>(w.openIntersectionColorProperty())) {
-                    final ColorCesiumWriter w2 = using$344.resource;
+                try (Using<ColorCesiumWriter> using$348 = new Using<ColorCesiumWriter>(w.openIntersectionColorProperty())) {
+                    final ColorCesiumWriter w2 = using$348.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("customPatternSensor", "intersectionColor")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.customPatternSensor.intersectionColor.getValue(date)).toEqual(constant.customPatternSensor.intersectionColor.getValue(date));");
                 }
-                try (Using<DoubleCesiumWriter> using$345 = new Using<DoubleCesiumWriter>(w.openIntersectionWidthProperty())) {
-                    final DoubleCesiumWriter w2 = using$345.resource;
+                try (Using<DoubleCesiumWriter> using$349 = new Using<DoubleCesiumWriter>(w.openIntersectionWidthProperty())) {
+                    final DoubleCesiumWriter w2 = using$349.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("customPatternSensor", "intersectionWidth")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.customPatternSensor.intersectionWidth.getValue(date)).toEqual(constant.customPatternSensor.intersectionWidth.getValue(date));");
                 }
-                try (Using<BooleanCesiumWriter> using$346 = new Using<BooleanCesiumWriter>(w.openShowLateralSurfacesProperty())) {
-                    final BooleanCesiumWriter w2 = using$346.resource;
+                try (Using<BooleanCesiumWriter> using$350 = new Using<BooleanCesiumWriter>(w.openShowLateralSurfacesProperty())) {
+                    final BooleanCesiumWriter w2 = using$350.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("customPatternSensor", "showLateralSurfaces")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.customPatternSensor.showLateralSurfaces.getValue(date)).toEqual(constant.customPatternSensor.showLateralSurfaces.getValue(date));");
                 }
-                try (Using<MaterialCesiumWriter> using$347 = new Using<MaterialCesiumWriter>(w.openLateralSurfaceMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$347.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$348 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$348.resource;
-                        try (Using<ColorCesiumWriter> using$349 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$349.resource;
+                try (Using<MaterialCesiumWriter> using$351 = new Using<MaterialCesiumWriter>(w.openLateralSurfaceMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$351.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$352 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$352.resource;
+                        try (Using<ColorCesiumWriter> using$353 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$353.resource;
                             m2.writeReference(new Reference("Constant", createList("customPatternSensor", "lateralSurfaceMaterial", "color")));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.lateralSurfaceMaterial.color.getValue(date)).toEqual(constant.customPatternSensor.lateralSurfaceMaterial.color.getValue(date));");
                         }
                     }
                 }
-                try (Using<BooleanCesiumWriter> using$350 = new Using<BooleanCesiumWriter>(w.openShowEllipsoidSurfacesProperty())) {
-                    final BooleanCesiumWriter w2 = using$350.resource;
+                try (Using<BooleanCesiumWriter> using$354 = new Using<BooleanCesiumWriter>(w.openShowEllipsoidSurfacesProperty())) {
+                    final BooleanCesiumWriter w2 = using$354.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("customPatternSensor", "showEllipsoidSurfaces")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.customPatternSensor.showEllipsoidSurfaces.getValue(date)).toEqual(constant.customPatternSensor.showEllipsoidSurfaces.getValue(date));");
                 }
-                try (Using<MaterialCesiumWriter> using$351 = new Using<MaterialCesiumWriter>(w.openEllipsoidSurfaceMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$351.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$352 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$352.resource;
-                        try (Using<ColorCesiumWriter> using$353 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$353.resource;
+                try (Using<MaterialCesiumWriter> using$355 = new Using<MaterialCesiumWriter>(w.openEllipsoidSurfaceMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$355.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$356 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$356.resource;
+                        try (Using<ColorCesiumWriter> using$357 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$357.resource;
                             m2.writeReference(new Reference("Constant", createList("customPatternSensor", "ellipsoidSurfaceMaterial", "color")));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.ellipsoidSurfaceMaterial.color.getValue(date)).toEqual(constant.customPatternSensor.ellipsoidSurfaceMaterial.color.getValue(date));");
                         }
                     }
                 }
-                try (Using<BooleanCesiumWriter> using$354 = new Using<BooleanCesiumWriter>(w.openShowEllipsoidHorizonSurfacesProperty())) {
-                    final BooleanCesiumWriter w2 = using$354.resource;
+                try (Using<BooleanCesiumWriter> using$358 = new Using<BooleanCesiumWriter>(w.openShowEllipsoidHorizonSurfacesProperty())) {
+                    final BooleanCesiumWriter w2 = using$358.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("customPatternSensor", "showEllipsoidHorizonSurfaces")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.customPatternSensor.showEllipsoidHorizonSurfaces.getValue(date)).toEqual(constant.customPatternSensor.showEllipsoidHorizonSurfaces.getValue(date));");
                 }
-                try (Using<MaterialCesiumWriter> using$355 = new Using<MaterialCesiumWriter>(w.openEllipsoidHorizonSurfaceMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$355.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$356 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$356.resource;
-                        try (Using<ColorCesiumWriter> using$357 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$357.resource;
+                try (Using<MaterialCesiumWriter> using$359 = new Using<MaterialCesiumWriter>(w.openEllipsoidHorizonSurfaceMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$359.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$360 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$360.resource;
+                        try (Using<ColorCesiumWriter> using$361 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$361.resource;
                             m2.writeReference(new Reference("Constant", createList("customPatternSensor", "ellipsoidHorizonSurfaceMaterial", "color")));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.ellipsoidHorizonSurfaceMaterial.color.getValue(date)).toEqual(constant.customPatternSensor.ellipsoidHorizonSurfaceMaterial.color.getValue(date));");
                         }
                     }
                 }
-                try (Using<BooleanCesiumWriter> using$358 = new Using<BooleanCesiumWriter>(w.openShowDomeSurfacesProperty())) {
-                    final BooleanCesiumWriter w2 = using$358.resource;
+                try (Using<BooleanCesiumWriter> using$362 = new Using<BooleanCesiumWriter>(w.openShowDomeSurfacesProperty())) {
+                    final BooleanCesiumWriter w2 = using$362.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("customPatternSensor", "showDomeSurfaces")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.customPatternSensor.showDomeSurfaces.getValue(date)).toEqual(constant.customPatternSensor.showDomeSurfaces.getValue(date));");
                 }
-                try (Using<MaterialCesiumWriter> using$359 = new Using<MaterialCesiumWriter>(w.openDomeSurfaceMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$359.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$360 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$360.resource;
-                        try (Using<ColorCesiumWriter> using$361 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$361.resource;
+                try (Using<MaterialCesiumWriter> using$363 = new Using<MaterialCesiumWriter>(w.openDomeSurfaceMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$363.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$364 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$364.resource;
+                        try (Using<ColorCesiumWriter> using$365 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$365.resource;
                             m2.writeReference(new Reference("Constant", createList("customPatternSensor", "domeSurfaceMaterial", "color")));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.domeSurfaceMaterial.color.getValue(date)).toEqual(constant.customPatternSensor.domeSurfaceMaterial.color.getValue(date));");
                         }
                     }
                 }
-                try (Using<SensorVolumePortionToDisplayCesiumWriter> using$362 = new Using<SensorVolumePortionToDisplayCesiumWriter>(w.openPortionToDisplayProperty())) {
-                    final SensorVolumePortionToDisplayCesiumWriter w2 = using$362.resource;
+                try (Using<SensorVolumePortionToDisplayCesiumWriter> using$366 = new Using<SensorVolumePortionToDisplayCesiumWriter>(w.openPortionToDisplayProperty())) {
+                    final SensorVolumePortionToDisplayCesiumWriter w2 = using$366.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("customPatternSensor", "portionToDisplay")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.customPatternSensor.portionToDisplay.getValue(date)).toEqual(constant.customPatternSensor.portionToDisplay.getValue(date));");
                 }
-                try (Using<BooleanCesiumWriter> using$363 = new Using<BooleanCesiumWriter>(w.openEnvironmentConstraintProperty())) {
-                    final BooleanCesiumWriter w2 = using$363.resource;
+                try (Using<BooleanCesiumWriter> using$367 = new Using<BooleanCesiumWriter>(w.openEnvironmentConstraintProperty())) {
+                    final BooleanCesiumWriter w2 = using$367.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("customPatternSensor", "environmentConstraint")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.customPatternSensor.environmentConstraint.getValue(date)).toEqual(constant.customPatternSensor.environmentConstraint.getValue(date));");
                 }
-                try (Using<BooleanCesiumWriter> using$364 = new Using<BooleanCesiumWriter>(w.openShowEnvironmentOcclusionProperty())) {
-                    final BooleanCesiumWriter w2 = using$364.resource;
+                try (Using<BooleanCesiumWriter> using$368 = new Using<BooleanCesiumWriter>(w.openShowEnvironmentOcclusionProperty())) {
+                    final BooleanCesiumWriter w2 = using$368.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("customPatternSensor", "showEnvironmentOcclusion")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.customPatternSensor.showEnvironmentOcclusion.getValue(date)).toEqual(constant.customPatternSensor.showEnvironmentOcclusion.getValue(date));");
                 }
-                try (Using<MaterialCesiumWriter> using$365 = new Using<MaterialCesiumWriter>(w.openEnvironmentOcclusionMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$365.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$366 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$366.resource;
-                        try (Using<ColorCesiumWriter> using$367 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$367.resource;
+                try (Using<MaterialCesiumWriter> using$369 = new Using<MaterialCesiumWriter>(w.openEnvironmentOcclusionMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$369.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$370 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$370.resource;
+                        try (Using<ColorCesiumWriter> using$371 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$371.resource;
                             m2.writeReference(new Reference("Constant", createList("customPatternSensor", "environmentOcclusionMaterial", "color")));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.customPatternSensor.environmentOcclusionMaterial.color.getValue(date)).toEqual(constant.customPatternSensor.environmentOcclusionMaterial.color.getValue(date));");
                         }
                     }
                 }
-                try (Using<BooleanCesiumWriter> using$368 = new Using<BooleanCesiumWriter>(w.openShowEnvironmentIntersectionProperty())) {
-                    final BooleanCesiumWriter w2 = using$368.resource;
+                try (Using<BooleanCesiumWriter> using$372 = new Using<BooleanCesiumWriter>(w.openShowEnvironmentIntersectionProperty())) {
+                    final BooleanCesiumWriter w2 = using$372.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("customPatternSensor", "showEnvironmentIntersection")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.customPatternSensor.showEnvironmentIntersection.getValue(date)).toEqual(constant.customPatternSensor.showEnvironmentIntersection.getValue(date));");
                 }
-                try (Using<ColorCesiumWriter> using$369 = new Using<ColorCesiumWriter>(w.openEnvironmentIntersectionColorProperty())) {
-                    final ColorCesiumWriter w2 = using$369.resource;
+                try (Using<ColorCesiumWriter> using$373 = new Using<ColorCesiumWriter>(w.openEnvironmentIntersectionColorProperty())) {
+                    final ColorCesiumWriter w2 = using$373.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("customPatternSensor", "environmentIntersectionColor")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.customPatternSensor.environmentIntersectionColor.getValue(date)).toEqual(constant.customPatternSensor.environmentIntersectionColor.getValue(date));");
                 }
-                try (Using<DoubleCesiumWriter> using$370 = new Using<DoubleCesiumWriter>(w.openEnvironmentIntersectionWidthProperty())) {
-                    final DoubleCesiumWriter w2 = using$370.resource;
+                try (Using<DoubleCesiumWriter> using$374 = new Using<DoubleCesiumWriter>(w.openEnvironmentIntersectionWidthProperty())) {
+                    final DoubleCesiumWriter w2 = using$374.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("customPatternSensor", "environmentIntersectionWidth")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.customPatternSensor.environmentIntersectionWidth.getValue(date)).toEqual(constant.customPatternSensor.environmentIntersectionWidth.getValue(date));");
                 }
-                try (Using<BooleanCesiumWriter> using$371 = new Using<BooleanCesiumWriter>(w.openShowThroughEllipsoidProperty())) {
-                    final BooleanCesiumWriter w2 = using$371.resource;
+                try (Using<BooleanCesiumWriter> using$375 = new Using<BooleanCesiumWriter>(w.openShowThroughEllipsoidProperty())) {
+                    final BooleanCesiumWriter w2 = using$375.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("customPatternSensor", "showThroughEllipsoid")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.customPatternSensor.showThroughEllipsoid.getValue(date)).toEqual(constant.customPatternSensor.showThroughEllipsoid.getValue(date));");
                 }
-                try (Using<BooleanCesiumWriter> using$372 = new Using<BooleanCesiumWriter>(w.openShowViewshedProperty())) {
-                    final BooleanCesiumWriter w2 = using$372.resource;
+                try (Using<BooleanCesiumWriter> using$376 = new Using<BooleanCesiumWriter>(w.openShowViewshedProperty())) {
+                    final BooleanCesiumWriter w2 = using$376.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("customPatternSensor", "showViewshed")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.customPatternSensor.showViewshed.getValue(date)).toEqual(constant.customPatternSensor.showViewshed.getValue(date));");
                 }
-                try (Using<ColorCesiumWriter> using$373 = new Using<ColorCesiumWriter>(w.openViewshedVisibleColorProperty())) {
-                    final ColorCesiumWriter w2 = using$373.resource;
+                try (Using<ColorCesiumWriter> using$377 = new Using<ColorCesiumWriter>(w.openViewshedVisibleColorProperty())) {
+                    final ColorCesiumWriter w2 = using$377.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("customPatternSensor", "viewshedVisibleColor")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.customPatternSensor.viewshedVisibleColor.getValue(date)).toEqual(constant.customPatternSensor.viewshedVisibleColor.getValue(date));");
                 }
-                try (Using<ColorCesiumWriter> using$374 = new Using<ColorCesiumWriter>(w.openViewshedOccludedColorProperty())) {
-                    final ColorCesiumWriter w2 = using$374.resource;
+                try (Using<ColorCesiumWriter> using$378 = new Using<ColorCesiumWriter>(w.openViewshedOccludedColorProperty())) {
+                    final ColorCesiumWriter w2 = using$378.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("customPatternSensor", "viewshedOccludedColor")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.customPatternSensor.viewshedOccludedColor.getValue(date)).toEqual(constant.customPatternSensor.viewshedOccludedColor.getValue(date));");
                 }
-                try (Using<IntegerCesiumWriter> using$375 = new Using<IntegerCesiumWriter>(w.openViewshedResolutionProperty())) {
-                    final IntegerCesiumWriter w2 = using$375.resource;
+                try (Using<IntegerCesiumWriter> using$379 = new Using<IntegerCesiumWriter>(w.openViewshedResolutionProperty())) {
+                    final IntegerCesiumWriter w2 = using$379.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("customPatternSensor", "viewshedResolution")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.customPatternSensor.viewshedResolution.getValue(date)).toEqual(constant.customPatternSensor.viewshedResolution.getValue(date));");
                 }
             }
-            try (Using<RectangularSensorCesiumWriter> using$376 = new Using<RectangularSensorCesiumWriter>(packet.openRectangularSensorProperty())) {
-                final RectangularSensorCesiumWriter w = using$376.resource;
-                try (Using<BooleanCesiumWriter> using$377 = new Using<BooleanCesiumWriter>(w.openShowProperty())) {
-                    final BooleanCesiumWriter w2 = using$377.resource;
+            try (Using<RectangularSensorCesiumWriter> using$380 = new Using<RectangularSensorCesiumWriter>(packet.openRectangularSensorProperty())) {
+                final RectangularSensorCesiumWriter w = using$380.resource;
+                try (Using<BooleanCesiumWriter> using$381 = new Using<BooleanCesiumWriter>(w.openShowProperty())) {
+                    final BooleanCesiumWriter w2 = using$381.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangularSensor", "show")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.show.getValue(date)).toEqual(constant.rectangularSensor.show.getValue(date));");
                 }
-                try (Using<DoubleCesiumWriter> using$378 = new Using<DoubleCesiumWriter>(w.openXHalfAngleProperty())) {
-                    final DoubleCesiumWriter w2 = using$378.resource;
+                try (Using<DoubleCesiumWriter> using$382 = new Using<DoubleCesiumWriter>(w.openXHalfAngleProperty())) {
+                    final DoubleCesiumWriter w2 = using$382.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangularSensor", "xHalfAngle")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.rectangularSensor.xHalfAngle.getValue(date)).toEqual(constant.rectangularSensor.xHalfAngle.getValue(date));");
                 }
-                try (Using<DoubleCesiumWriter> using$379 = new Using<DoubleCesiumWriter>(w.openYHalfAngleProperty())) {
-                    final DoubleCesiumWriter w2 = using$379.resource;
+                try (Using<DoubleCesiumWriter> using$383 = new Using<DoubleCesiumWriter>(w.openYHalfAngleProperty())) {
+                    final DoubleCesiumWriter w2 = using$383.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangularSensor", "yHalfAngle")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.rectangularSensor.yHalfAngle.getValue(date)).toEqual(constant.rectangularSensor.yHalfAngle.getValue(date));");
                 }
-                try (Using<DoubleCesiumWriter> using$380 = new Using<DoubleCesiumWriter>(w.openRadiusProperty())) {
-                    final DoubleCesiumWriter w2 = using$380.resource;
+                try (Using<DoubleCesiumWriter> using$384 = new Using<DoubleCesiumWriter>(w.openMinimumRadiusProperty())) {
+                    final DoubleCesiumWriter w2 = using$384.resource;
+                    w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangularSensor", "minimumRadius")));
+                    TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
+                            "    expect(e.rectangularSensor.minimumRadius.getValue(date)).toEqual(constant.rectangularSensor.minimumRadius.getValue(date));");
+                }
+                try (Using<DoubleCesiumWriter> using$385 = new Using<DoubleCesiumWriter>(w.openMaximumRadiusProperty())) {
+                    final DoubleCesiumWriter w2 = using$385.resource;
+                    w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangularSensor", "maximumRadius")));
+                    TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
+                            "    expect(e.rectangularSensor.maximumRadius.getValue(date)).toEqual(constant.rectangularSensor.maximumRadius.getValue(date));");
+                }
+                try (Using<DoubleCesiumWriter> using$386 = new Using<DoubleCesiumWriter>(w.openRadiusProperty())) {
+                    final DoubleCesiumWriter w2 = using$386.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangularSensor", "radius")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.radius.getValue(date)).toEqual(constant.rectangularSensor.radius.getValue(date));");
                 }
-                try (Using<BooleanCesiumWriter> using$381 = new Using<BooleanCesiumWriter>(w.openShowIntersectionProperty())) {
-                    final BooleanCesiumWriter w2 = using$381.resource;
+                try (Using<BooleanCesiumWriter> using$387 = new Using<BooleanCesiumWriter>(w.openShowIntersectionProperty())) {
+                    final BooleanCesiumWriter w2 = using$387.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangularSensor", "showIntersection")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.rectangularSensor.showIntersection.getValue(date)).toEqual(constant.rectangularSensor.showIntersection.getValue(date));");
                 }
-                try (Using<ColorCesiumWriter> using$382 = new Using<ColorCesiumWriter>(w.openIntersectionColorProperty())) {
-                    final ColorCesiumWriter w2 = using$382.resource;
+                try (Using<ColorCesiumWriter> using$388 = new Using<ColorCesiumWriter>(w.openIntersectionColorProperty())) {
+                    final ColorCesiumWriter w2 = using$388.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangularSensor", "intersectionColor")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.rectangularSensor.intersectionColor.getValue(date)).toEqual(constant.rectangularSensor.intersectionColor.getValue(date));");
                 }
-                try (Using<DoubleCesiumWriter> using$383 = new Using<DoubleCesiumWriter>(w.openIntersectionWidthProperty())) {
-                    final DoubleCesiumWriter w2 = using$383.resource;
+                try (Using<DoubleCesiumWriter> using$389 = new Using<DoubleCesiumWriter>(w.openIntersectionWidthProperty())) {
+                    final DoubleCesiumWriter w2 = using$389.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangularSensor", "intersectionWidth")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.rectangularSensor.intersectionWidth.getValue(date)).toEqual(constant.rectangularSensor.intersectionWidth.getValue(date));");
                 }
-                try (Using<BooleanCesiumWriter> using$384 = new Using<BooleanCesiumWriter>(w.openShowLateralSurfacesProperty())) {
-                    final BooleanCesiumWriter w2 = using$384.resource;
+                try (Using<BooleanCesiumWriter> using$390 = new Using<BooleanCesiumWriter>(w.openShowLateralSurfacesProperty())) {
+                    final BooleanCesiumWriter w2 = using$390.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangularSensor", "showLateralSurfaces")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.rectangularSensor.showLateralSurfaces.getValue(date)).toEqual(constant.rectangularSensor.showLateralSurfaces.getValue(date));");
                 }
-                try (Using<MaterialCesiumWriter> using$385 = new Using<MaterialCesiumWriter>(w.openLateralSurfaceMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$385.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$386 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$386.resource;
-                        try (Using<ColorCesiumWriter> using$387 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$387.resource;
+                try (Using<MaterialCesiumWriter> using$391 = new Using<MaterialCesiumWriter>(w.openLateralSurfaceMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$391.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$392 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$392.resource;
+                        try (Using<ColorCesiumWriter> using$393 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$393.resource;
                             m2.writeReference(new Reference("Constant", createList("rectangularSensor", "lateralSurfaceMaterial", "color")));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.lateralSurfaceMaterial.color.getValue(date)).toEqual(constant.rectangularSensor.lateralSurfaceMaterial.color.getValue(date));");
                         }
                     }
                 }
-                try (Using<BooleanCesiumWriter> using$388 = new Using<BooleanCesiumWriter>(w.openShowEllipsoidSurfacesProperty())) {
-                    final BooleanCesiumWriter w2 = using$388.resource;
+                try (Using<BooleanCesiumWriter> using$394 = new Using<BooleanCesiumWriter>(w.openShowEllipsoidSurfacesProperty())) {
+                    final BooleanCesiumWriter w2 = using$394.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangularSensor", "showEllipsoidSurfaces")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.rectangularSensor.showEllipsoidSurfaces.getValue(date)).toEqual(constant.rectangularSensor.showEllipsoidSurfaces.getValue(date));");
                 }
-                try (Using<MaterialCesiumWriter> using$389 = new Using<MaterialCesiumWriter>(w.openEllipsoidSurfaceMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$389.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$390 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$390.resource;
-                        try (Using<ColorCesiumWriter> using$391 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$391.resource;
+                try (Using<MaterialCesiumWriter> using$395 = new Using<MaterialCesiumWriter>(w.openEllipsoidSurfaceMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$395.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$396 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$396.resource;
+                        try (Using<ColorCesiumWriter> using$397 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$397.resource;
                             m2.writeReference(new Reference("Constant", createList("rectangularSensor", "ellipsoidSurfaceMaterial", "color")));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.ellipsoidSurfaceMaterial.color.getValue(date)).toEqual(constant.rectangularSensor.ellipsoidSurfaceMaterial.color.getValue(date));");
                         }
                     }
                 }
-                try (Using<BooleanCesiumWriter> using$392 = new Using<BooleanCesiumWriter>(w.openShowEllipsoidHorizonSurfacesProperty())) {
-                    final BooleanCesiumWriter w2 = using$392.resource;
+                try (Using<BooleanCesiumWriter> using$398 = new Using<BooleanCesiumWriter>(w.openShowEllipsoidHorizonSurfacesProperty())) {
+                    final BooleanCesiumWriter w2 = using$398.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangularSensor", "showEllipsoidHorizonSurfaces")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.rectangularSensor.showEllipsoidHorizonSurfaces.getValue(date)).toEqual(constant.rectangularSensor.showEllipsoidHorizonSurfaces.getValue(date));");
                 }
-                try (Using<MaterialCesiumWriter> using$393 = new Using<MaterialCesiumWriter>(w.openEllipsoidHorizonSurfaceMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$393.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$394 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$394.resource;
-                        try (Using<ColorCesiumWriter> using$395 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$395.resource;
+                try (Using<MaterialCesiumWriter> using$399 = new Using<MaterialCesiumWriter>(w.openEllipsoidHorizonSurfaceMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$399.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$400 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$400.resource;
+                        try (Using<ColorCesiumWriter> using$401 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$401.resource;
                             m2.writeReference(new Reference("Constant", createList("rectangularSensor", "ellipsoidHorizonSurfaceMaterial", "color")));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.ellipsoidHorizonSurfaceMaterial.color.getValue(date)).toEqual(constant.rectangularSensor.ellipsoidHorizonSurfaceMaterial.color.getValue(date));");
                         }
                     }
                 }
-                try (Using<BooleanCesiumWriter> using$396 = new Using<BooleanCesiumWriter>(w.openShowDomeSurfacesProperty())) {
-                    final BooleanCesiumWriter w2 = using$396.resource;
+                try (Using<BooleanCesiumWriter> using$402 = new Using<BooleanCesiumWriter>(w.openShowDomeSurfacesProperty())) {
+                    final BooleanCesiumWriter w2 = using$402.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangularSensor", "showDomeSurfaces")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.rectangularSensor.showDomeSurfaces.getValue(date)).toEqual(constant.rectangularSensor.showDomeSurfaces.getValue(date));");
                 }
-                try (Using<MaterialCesiumWriter> using$397 = new Using<MaterialCesiumWriter>(w.openDomeSurfaceMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$397.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$398 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$398.resource;
-                        try (Using<ColorCesiumWriter> using$399 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$399.resource;
+                try (Using<MaterialCesiumWriter> using$403 = new Using<MaterialCesiumWriter>(w.openDomeSurfaceMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$403.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$404 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$404.resource;
+                        try (Using<ColorCesiumWriter> using$405 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$405.resource;
                             m2.writeReference(new Reference("Constant", createList("rectangularSensor", "domeSurfaceMaterial", "color")));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.domeSurfaceMaterial.color.getValue(date)).toEqual(constant.rectangularSensor.domeSurfaceMaterial.color.getValue(date));");
                         }
                     }
                 }
-                try (Using<SensorVolumePortionToDisplayCesiumWriter> using$400 = new Using<SensorVolumePortionToDisplayCesiumWriter>(w.openPortionToDisplayProperty())) {
-                    final SensorVolumePortionToDisplayCesiumWriter w2 = using$400.resource;
+                try (Using<SensorVolumePortionToDisplayCesiumWriter> using$406 = new Using<SensorVolumePortionToDisplayCesiumWriter>(w.openPortionToDisplayProperty())) {
+                    final SensorVolumePortionToDisplayCesiumWriter w2 = using$406.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangularSensor", "portionToDisplay")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.rectangularSensor.portionToDisplay.getValue(date)).toEqual(constant.rectangularSensor.portionToDisplay.getValue(date));");
                 }
-                try (Using<BooleanCesiumWriter> using$401 = new Using<BooleanCesiumWriter>(w.openEnvironmentConstraintProperty())) {
-                    final BooleanCesiumWriter w2 = using$401.resource;
+                try (Using<BooleanCesiumWriter> using$407 = new Using<BooleanCesiumWriter>(w.openEnvironmentConstraintProperty())) {
+                    final BooleanCesiumWriter w2 = using$407.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangularSensor", "environmentConstraint")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.rectangularSensor.environmentConstraint.getValue(date)).toEqual(constant.rectangularSensor.environmentConstraint.getValue(date));");
                 }
-                try (Using<BooleanCesiumWriter> using$402 = new Using<BooleanCesiumWriter>(w.openShowEnvironmentOcclusionProperty())) {
-                    final BooleanCesiumWriter w2 = using$402.resource;
+                try (Using<BooleanCesiumWriter> using$408 = new Using<BooleanCesiumWriter>(w.openShowEnvironmentOcclusionProperty())) {
+                    final BooleanCesiumWriter w2 = using$408.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangularSensor", "showEnvironmentOcclusion")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.rectangularSensor.showEnvironmentOcclusion.getValue(date)).toEqual(constant.rectangularSensor.showEnvironmentOcclusion.getValue(date));");
                 }
-                try (Using<MaterialCesiumWriter> using$403 = new Using<MaterialCesiumWriter>(w.openEnvironmentOcclusionMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$403.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$404 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$404.resource;
-                        try (Using<ColorCesiumWriter> using$405 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$405.resource;
+                try (Using<MaterialCesiumWriter> using$409 = new Using<MaterialCesiumWriter>(w.openEnvironmentOcclusionMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$409.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$410 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$410.resource;
+                        try (Using<ColorCesiumWriter> using$411 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$411.resource;
                             m2.writeReference(new Reference("Constant", createList("rectangularSensor", "environmentOcclusionMaterial", "color")));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                                     "    expect(e.rectangularSensor.environmentOcclusionMaterial.color.getValue(date)).toEqual(constant.rectangularSensor.environmentOcclusionMaterial.color.getValue(date));");
                         }
                     }
                 }
-                try (Using<BooleanCesiumWriter> using$406 = new Using<BooleanCesiumWriter>(w.openShowEnvironmentIntersectionProperty())) {
-                    final BooleanCesiumWriter w2 = using$406.resource;
+                try (Using<BooleanCesiumWriter> using$412 = new Using<BooleanCesiumWriter>(w.openShowEnvironmentIntersectionProperty())) {
+                    final BooleanCesiumWriter w2 = using$412.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangularSensor", "showEnvironmentIntersection")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.rectangularSensor.showEnvironmentIntersection.getValue(date)).toEqual(constant.rectangularSensor.showEnvironmentIntersection.getValue(date));");
                 }
-                try (Using<ColorCesiumWriter> using$407 = new Using<ColorCesiumWriter>(w.openEnvironmentIntersectionColorProperty())) {
-                    final ColorCesiumWriter w2 = using$407.resource;
+                try (Using<ColorCesiumWriter> using$413 = new Using<ColorCesiumWriter>(w.openEnvironmentIntersectionColorProperty())) {
+                    final ColorCesiumWriter w2 = using$413.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangularSensor", "environmentIntersectionColor")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.rectangularSensor.environmentIntersectionColor.getValue(date)).toEqual(constant.rectangularSensor.environmentIntersectionColor.getValue(date));");
                 }
-                try (Using<DoubleCesiumWriter> using$408 = new Using<DoubleCesiumWriter>(w.openEnvironmentIntersectionWidthProperty())) {
-                    final DoubleCesiumWriter w2 = using$408.resource;
+                try (Using<DoubleCesiumWriter> using$414 = new Using<DoubleCesiumWriter>(w.openEnvironmentIntersectionWidthProperty())) {
+                    final DoubleCesiumWriter w2 = using$414.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangularSensor", "environmentIntersectionWidth")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.rectangularSensor.environmentIntersectionWidth.getValue(date)).toEqual(constant.rectangularSensor.environmentIntersectionWidth.getValue(date));");
                 }
-                try (Using<BooleanCesiumWriter> using$409 = new Using<BooleanCesiumWriter>(w.openShowThroughEllipsoidProperty())) {
-                    final BooleanCesiumWriter w2 = using$409.resource;
+                try (Using<BooleanCesiumWriter> using$415 = new Using<BooleanCesiumWriter>(w.openShowThroughEllipsoidProperty())) {
+                    final BooleanCesiumWriter w2 = using$415.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangularSensor", "showThroughEllipsoid")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.rectangularSensor.showThroughEllipsoid.getValue(date)).toEqual(constant.rectangularSensor.showThroughEllipsoid.getValue(date));");
                 }
-                try (Using<BooleanCesiumWriter> using$410 = new Using<BooleanCesiumWriter>(w.openShowViewshedProperty())) {
-                    final BooleanCesiumWriter w2 = using$410.resource;
+                try (Using<BooleanCesiumWriter> using$416 = new Using<BooleanCesiumWriter>(w.openShowViewshedProperty())) {
+                    final BooleanCesiumWriter w2 = using$416.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangularSensor", "showViewshed")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.rectangularSensor.showViewshed.getValue(date)).toEqual(constant.rectangularSensor.showViewshed.getValue(date));");
                 }
-                try (Using<ColorCesiumWriter> using$411 = new Using<ColorCesiumWriter>(w.openViewshedVisibleColorProperty())) {
-                    final ColorCesiumWriter w2 = using$411.resource;
+                try (Using<ColorCesiumWriter> using$417 = new Using<ColorCesiumWriter>(w.openViewshedVisibleColorProperty())) {
+                    final ColorCesiumWriter w2 = using$417.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangularSensor", "viewshedVisibleColor")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.rectangularSensor.viewshedVisibleColor.getValue(date)).toEqual(constant.rectangularSensor.viewshedVisibleColor.getValue(date));");
                 }
-                try (Using<ColorCesiumWriter> using$412 = new Using<ColorCesiumWriter>(w.openViewshedOccludedColorProperty())) {
-                    final ColorCesiumWriter w2 = using$412.resource;
+                try (Using<ColorCesiumWriter> using$418 = new Using<ColorCesiumWriter>(w.openViewshedOccludedColorProperty())) {
+                    final ColorCesiumWriter w2 = using$418.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangularSensor", "viewshedOccludedColor")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.rectangularSensor.viewshedOccludedColor.getValue(date)).toEqual(constant.rectangularSensor.viewshedOccludedColor.getValue(date));");
                 }
-                try (Using<IntegerCesiumWriter> using$413 = new Using<IntegerCesiumWriter>(w.openViewshedResolutionProperty())) {
-                    final IntegerCesiumWriter w2 = using$413.resource;
+                try (Using<IntegerCesiumWriter> using$419 = new Using<IntegerCesiumWriter>(w.openViewshedResolutionProperty())) {
+                    final IntegerCesiumWriter w2 = using$419.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("rectangularSensor", "viewshedResolution")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.rectangularSensor.viewshedResolution.getValue(date)).toEqual(constant.rectangularSensor.viewshedResolution.getValue(date));");
                 }
             }
-            try (Using<FanCesiumWriter> using$414 = new Using<FanCesiumWriter>(packet.openFanProperty())) {
-                final FanCesiumWriter w = using$414.resource;
-                try (Using<BooleanCesiumWriter> using$415 = new Using<BooleanCesiumWriter>(w.openShowProperty())) {
-                    final BooleanCesiumWriter w2 = using$415.resource;
+            try (Using<FanCesiumWriter> using$420 = new Using<FanCesiumWriter>(packet.openFanProperty())) {
+                final FanCesiumWriter w = using$420.resource;
+                try (Using<BooleanCesiumWriter> using$421 = new Using<BooleanCesiumWriter>(w.openShowProperty())) {
+                    final BooleanCesiumWriter w2 = using$421.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("fan", "show")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.show.getValue(date)).toEqual(constant.fan.show.getValue(date));");
                 }
-                try (Using<DoubleCesiumWriter> using$416 = new Using<DoubleCesiumWriter>(w.openRadiusProperty())) {
-                    final DoubleCesiumWriter w2 = using$416.resource;
+                try (Using<DoubleCesiumWriter> using$422 = new Using<DoubleCesiumWriter>(w.openRadiusProperty())) {
+                    final DoubleCesiumWriter w2 = using$422.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("fan", "radius")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.radius.getValue(date)).toEqual(constant.fan.radius.getValue(date));");
                 }
-                try (Using<BooleanCesiumWriter> using$417 = new Using<BooleanCesiumWriter>(w.openPerDirectionRadiusProperty())) {
-                    final BooleanCesiumWriter w2 = using$417.resource;
+                try (Using<BooleanCesiumWriter> using$423 = new Using<BooleanCesiumWriter>(w.openPerDirectionRadiusProperty())) {
+                    final BooleanCesiumWriter w2 = using$423.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("fan", "perDirectionRadius")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.perDirectionRadius.getValue(date)).toEqual(constant.fan.perDirectionRadius.getValue(date));");
                 }
-                try (Using<MaterialCesiumWriter> using$418 = new Using<MaterialCesiumWriter>(w.openMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$418.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$419 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$419.resource;
-                        try (Using<ColorCesiumWriter> using$420 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$420.resource;
+                try (Using<MaterialCesiumWriter> using$424 = new Using<MaterialCesiumWriter>(w.openMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$424.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$425 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$425.resource;
+                        try (Using<ColorCesiumWriter> using$426 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$426.resource;
                             m2.writeReference(new Reference("Constant", createList("fan", "material", "color")));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.material.color.getValue(date)).toEqual(constant.fan.material.color.getValue(date));");
                         }
                     }
                 }
-                try (Using<BooleanCesiumWriter> using$421 = new Using<BooleanCesiumWriter>(w.openFillProperty())) {
-                    final BooleanCesiumWriter w2 = using$421.resource;
+                try (Using<BooleanCesiumWriter> using$427 = new Using<BooleanCesiumWriter>(w.openFillProperty())) {
+                    final BooleanCesiumWriter w2 = using$427.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("fan", "fill")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.fill.getValue(date)).toEqual(constant.fan.fill.getValue(date));");
                 }
-                try (Using<BooleanCesiumWriter> using$422 = new Using<BooleanCesiumWriter>(w.openOutlineProperty())) {
-                    final BooleanCesiumWriter w2 = using$422.resource;
+                try (Using<BooleanCesiumWriter> using$428 = new Using<BooleanCesiumWriter>(w.openOutlineProperty())) {
+                    final BooleanCesiumWriter w2 = using$428.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("fan", "outline")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.outline.getValue(date)).toEqual(constant.fan.outline.getValue(date));");
                 }
-                try (Using<ColorCesiumWriter> using$423 = new Using<ColorCesiumWriter>(w.openOutlineColorProperty())) {
-                    final ColorCesiumWriter w2 = using$423.resource;
+                try (Using<ColorCesiumWriter> using$429 = new Using<ColorCesiumWriter>(w.openOutlineColorProperty())) {
+                    final ColorCesiumWriter w2 = using$429.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("fan", "outlineColor")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.outlineColor.getValue(date)).toEqual(constant.fan.outlineColor.getValue(date));");
                 }
-                try (Using<DoubleCesiumWriter> using$424 = new Using<DoubleCesiumWriter>(w.openOutlineWidthProperty())) {
-                    final DoubleCesiumWriter w2 = using$424.resource;
+                try (Using<DoubleCesiumWriter> using$430 = new Using<DoubleCesiumWriter>(w.openOutlineWidthProperty())) {
+                    final DoubleCesiumWriter w2 = using$430.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("fan", "outlineWidth")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.outlineWidth.getValue(date)).toEqual(constant.fan.outlineWidth.getValue(date));");
                 }
-                try (Using<IntegerCesiumWriter> using$425 = new Using<IntegerCesiumWriter>(w.openNumberOfRingsProperty())) {
-                    final IntegerCesiumWriter w2 = using$425.resource;
+                try (Using<IntegerCesiumWriter> using$431 = new Using<IntegerCesiumWriter>(w.openNumberOfRingsProperty())) {
+                    final IntegerCesiumWriter w2 = using$431.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("fan", "numberOfRings")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.numberOfRings.getValue(date)).toEqual(constant.fan.numberOfRings.getValue(date));");
                 }
             }
-            try (Using<VectorCesiumWriter> using$426 = new Using<VectorCesiumWriter>(packet.openVectorProperty())) {
-                final VectorCesiumWriter w = using$426.resource;
-                try (Using<BooleanCesiumWriter> using$427 = new Using<BooleanCesiumWriter>(w.openShowProperty())) {
-                    final BooleanCesiumWriter w2 = using$427.resource;
+            try (Using<VectorCesiumWriter> using$432 = new Using<VectorCesiumWriter>(packet.openVectorProperty())) {
+                final VectorCesiumWriter w = using$432.resource;
+                try (Using<BooleanCesiumWriter> using$433 = new Using<BooleanCesiumWriter>(w.openShowProperty())) {
+                    final BooleanCesiumWriter w2 = using$433.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("vector", "show")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.vector.show.getValue(date)).toEqual(constant.vector.show.getValue(date));");
                 }
-                try (Using<ColorCesiumWriter> using$428 = new Using<ColorCesiumWriter>(w.openColorProperty())) {
-                    final ColorCesiumWriter w2 = using$428.resource;
+                try (Using<ColorCesiumWriter> using$434 = new Using<ColorCesiumWriter>(w.openColorProperty())) {
+                    final ColorCesiumWriter w2 = using$434.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("vector", "color")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.vector.color.getValue(date)).toEqual(constant.vector.color.getValue(date));");
                 }
-                try (Using<DirectionCesiumWriter> using$429 = new Using<DirectionCesiumWriter>(w.openDirectionProperty())) {
-                    final DirectionCesiumWriter w2 = using$429.resource;
+                try (Using<DirectionCesiumWriter> using$435 = new Using<DirectionCesiumWriter>(w.openDirectionProperty())) {
+                    final DirectionCesiumWriter w2 = using$435.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("vector", "direction")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.vector.direction.getValue(date)).toEqual(constant.vector.direction.getValue(date));");
                 }
-                try (Using<DoubleCesiumWriter> using$430 = new Using<DoubleCesiumWriter>(w.openLengthProperty())) {
-                    final DoubleCesiumWriter w2 = using$430.resource;
+                try (Using<DoubleCesiumWriter> using$436 = new Using<DoubleCesiumWriter>(w.openLengthProperty())) {
+                    final DoubleCesiumWriter w2 = using$436.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("vector", "length")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.vector.length.getValue(date)).toEqual(constant.vector.length.getValue(date));");
                 }
-                try (Using<DoubleCesiumWriter> using$431 = new Using<DoubleCesiumWriter>(w.openMinimumLengthInPixelsProperty())) {
-                    final DoubleCesiumWriter w2 = using$431.resource;
+                try (Using<DoubleCesiumWriter> using$437 = new Using<DoubleCesiumWriter>(w.openMinimumLengthInPixelsProperty())) {
+                    final DoubleCesiumWriter w2 = using$437.resource;
                     w2.writeReference(new Reference("Constant", TestGenerateValidationDocument.<String> createList("vector", "minimumLengthInPixels")));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.vector.minimumLengthInPixels.getValue(date)).toEqual(constant.vector.minimumLengthInPixels.getValue(date));");
@@ -20085,33 +20149,47 @@ public class TestGenerateValidationDocument {
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.maximumClockAngle.getValue(documentStartDate)).toEqual(42591.0);");
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.maximumClockAngle.getValue(documentStopDate)).toEqual(2115.0);");
                 }
-                try (Using<DoubleCesiumWriter> using$184 = new Using<DoubleCesiumWriter>(w.openRadiusProperty())) {
+                try (Using<DoubleCesiumWriter> using$184 = new Using<DoubleCesiumWriter>(w.openMinimumRadiusProperty())) {
                     final DoubleCesiumWriter w2 = using$184.resource;
+                    w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
+                            TestGenerateValidationDocument.<Double> createList(54112.0, 49775.0));
+                    TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.minimumRadius.getValue(documentStartDate)).toEqual(54112.0);");
+                    TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.minimumRadius.getValue(documentStopDate)).toEqual(49775.0);");
+                }
+                try (Using<DoubleCesiumWriter> using$185 = new Using<DoubleCesiumWriter>(w.openMaximumRadiusProperty())) {
+                    final DoubleCesiumWriter w2 = using$185.resource;
+                    w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
+                            TestGenerateValidationDocument.<Double> createList(59768.0, 35837.0));
+                    TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.maximumRadius.getValue(documentStartDate)).toEqual(59768.0);");
+                    TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.maximumRadius.getValue(documentStopDate)).toEqual(35837.0);");
+                }
+                try (Using<DoubleCesiumWriter> using$186 = new Using<DoubleCesiumWriter>(w.openRadiusProperty())) {
+                    final DoubleCesiumWriter w2 = using$186.resource;
                     w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                             TestGenerateValidationDocument.<Double> createList(37448.0, 5744.0));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.radius.getValue(documentStartDate)).toEqual(37448.0);");
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.radius.getValue(documentStopDate)).toEqual(5744.0);");
                 }
-                try (Using<ColorCesiumWriter> using$185 = new Using<ColorCesiumWriter>(w.openIntersectionColorProperty())) {
-                    final ColorCesiumWriter w2 = using$185.resource;
+                try (Using<ColorCesiumWriter> using$187 = new Using<ColorCesiumWriter>(w.openIntersectionColorProperty())) {
+                    final ColorCesiumWriter w2 = using$187.resource;
                     w2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                             TestGenerateValidationDocument.<Color> createList(ColorHelper.fromArgb(86, 32, 200, 181), ColorHelper.fromArgb(176, 212, 15, 7)));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.intersectionColor.getValue(documentStartDate)).toEqual(Color.fromBytes(32, 200, 181, 86));");
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.intersectionColor.getValue(documentStopDate)).toEqual(Color.fromBytes(212, 15, 7, 176));");
                 }
-                try (Using<DoubleCesiumWriter> using$186 = new Using<DoubleCesiumWriter>(w.openIntersectionWidthProperty())) {
-                    final DoubleCesiumWriter w2 = using$186.resource;
+                try (Using<DoubleCesiumWriter> using$188 = new Using<DoubleCesiumWriter>(w.openIntersectionWidthProperty())) {
+                    final DoubleCesiumWriter w2 = using$188.resource;
                     w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                             TestGenerateValidationDocument.<Double> createList(15969.0, 33925.0));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.intersectionWidth.getValue(documentStartDate)).toEqual(15969.0);");
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.intersectionWidth.getValue(documentStopDate)).toEqual(33925.0);");
                 }
-                try (Using<MaterialCesiumWriter> using$187 = new Using<MaterialCesiumWriter>(w.openLateralSurfaceMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$187.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$188 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$188.resource;
-                        try (Using<ColorCesiumWriter> using$189 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$189.resource;
+                try (Using<MaterialCesiumWriter> using$189 = new Using<MaterialCesiumWriter>(w.openLateralSurfaceMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$189.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$190 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$190.resource;
+                        try (Using<ColorCesiumWriter> using$191 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$191.resource;
                             m2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                                     TestGenerateValidationDocument.<Color> createList(ColorHelper.fromArgb(201, 206, 145, 134), ColorHelper.fromArgb(18, 38, 167, 50)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -20121,12 +20199,12 @@ public class TestGenerateValidationDocument {
                         }
                     }
                 }
-                try (Using<MaterialCesiumWriter> using$190 = new Using<MaterialCesiumWriter>(w.openEllipsoidSurfaceMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$190.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$191 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$191.resource;
-                        try (Using<ColorCesiumWriter> using$192 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$192.resource;
+                try (Using<MaterialCesiumWriter> using$192 = new Using<MaterialCesiumWriter>(w.openEllipsoidSurfaceMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$192.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$193 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$193.resource;
+                        try (Using<ColorCesiumWriter> using$194 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$194.resource;
                             m2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                                     TestGenerateValidationDocument.<Color> createList(ColorHelper.fromArgb(75, 198, 112, 61), ColorHelper.fromArgb(229, 102, 141, 218)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -20136,12 +20214,12 @@ public class TestGenerateValidationDocument {
                         }
                     }
                 }
-                try (Using<MaterialCesiumWriter> using$193 = new Using<MaterialCesiumWriter>(w.openEllipsoidHorizonSurfaceMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$193.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$194 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$194.resource;
-                        try (Using<ColorCesiumWriter> using$195 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$195.resource;
+                try (Using<MaterialCesiumWriter> using$195 = new Using<MaterialCesiumWriter>(w.openEllipsoidHorizonSurfaceMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$195.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$196 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$196.resource;
+                        try (Using<ColorCesiumWriter> using$197 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$197.resource;
                             m2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                                     TestGenerateValidationDocument.<Color> createList(ColorHelper.fromArgb(20, 18, 35, 91), ColorHelper.fromArgb(214, 162, 212, 131)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -20151,12 +20229,12 @@ public class TestGenerateValidationDocument {
                         }
                     }
                 }
-                try (Using<MaterialCesiumWriter> using$196 = new Using<MaterialCesiumWriter>(w.openDomeSurfaceMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$196.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$197 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$197.resource;
-                        try (Using<ColorCesiumWriter> using$198 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$198.resource;
+                try (Using<MaterialCesiumWriter> using$198 = new Using<MaterialCesiumWriter>(w.openDomeSurfaceMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$198.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$199 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$199.resource;
+                        try (Using<ColorCesiumWriter> using$200 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$200.resource;
                             m2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                                     TestGenerateValidationDocument.<Color> createList(ColorHelper.fromArgb(19, 254, 199, 146), ColorHelper.fromArgb(225, 221, 70, 233)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -20166,12 +20244,12 @@ public class TestGenerateValidationDocument {
                         }
                     }
                 }
-                try (Using<MaterialCesiumWriter> using$199 = new Using<MaterialCesiumWriter>(w.openEnvironmentOcclusionMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$199.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$200 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$200.resource;
-                        try (Using<ColorCesiumWriter> using$201 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$201.resource;
+                try (Using<MaterialCesiumWriter> using$201 = new Using<MaterialCesiumWriter>(w.openEnvironmentOcclusionMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$201.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$202 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$202.resource;
+                        try (Using<ColorCesiumWriter> using$203 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$203.resource;
                             m2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                                     TestGenerateValidationDocument.<Color> createList(ColorHelper.fromArgb(192, 251, 80, 120), ColorHelper.fromArgb(185, 138, 101, 244)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -20181,8 +20259,8 @@ public class TestGenerateValidationDocument {
                         }
                     }
                 }
-                try (Using<ColorCesiumWriter> using$202 = new Using<ColorCesiumWriter>(w.openEnvironmentIntersectionColorProperty())) {
-                    final ColorCesiumWriter w2 = using$202.resource;
+                try (Using<ColorCesiumWriter> using$204 = new Using<ColorCesiumWriter>(w.openEnvironmentIntersectionColorProperty())) {
+                    final ColorCesiumWriter w2 = using$204.resource;
                     w2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                             TestGenerateValidationDocument.<Color> createList(ColorHelper.fromArgb(65, 117, 84, 113), ColorHelper.fromArgb(132, 24, 241, 104)));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -20190,46 +20268,60 @@ public class TestGenerateValidationDocument {
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.conicSensor.environmentIntersectionColor.getValue(documentStopDate)).toEqual(Color.fromBytes(24, 241, 104, 132));");
                 }
-                try (Using<DoubleCesiumWriter> using$203 = new Using<DoubleCesiumWriter>(w.openEnvironmentIntersectionWidthProperty())) {
-                    final DoubleCesiumWriter w2 = using$203.resource;
+                try (Using<DoubleCesiumWriter> using$205 = new Using<DoubleCesiumWriter>(w.openEnvironmentIntersectionWidthProperty())) {
+                    final DoubleCesiumWriter w2 = using$205.resource;
                     w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                             TestGenerateValidationDocument.<Double> createList(54383.0, 48814.0));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.environmentIntersectionWidth.getValue(documentStartDate)).toEqual(54383.0);");
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.environmentIntersectionWidth.getValue(documentStopDate)).toEqual(48814.0);");
                 }
-                try (Using<ColorCesiumWriter> using$204 = new Using<ColorCesiumWriter>(w.openViewshedVisibleColorProperty())) {
-                    final ColorCesiumWriter w2 = using$204.resource;
+                try (Using<ColorCesiumWriter> using$206 = new Using<ColorCesiumWriter>(w.openViewshedVisibleColorProperty())) {
+                    final ColorCesiumWriter w2 = using$206.resource;
                     w2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                             TestGenerateValidationDocument.<Color> createList(ColorHelper.fromArgb(208, 219, 102, 126), ColorHelper.fromArgb(3, 165, 12, 88)));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.conicSensor.viewshedVisibleColor.getValue(documentStartDate)).toEqual(Color.fromBytes(219, 102, 126, 208));");
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.viewshedVisibleColor.getValue(documentStopDate)).toEqual(Color.fromBytes(165, 12, 88, 3));");
                 }
-                try (Using<ColorCesiumWriter> using$205 = new Using<ColorCesiumWriter>(w.openViewshedOccludedColorProperty())) {
-                    final ColorCesiumWriter w2 = using$205.resource;
+                try (Using<ColorCesiumWriter> using$207 = new Using<ColorCesiumWriter>(w.openViewshedOccludedColorProperty())) {
+                    final ColorCesiumWriter w2 = using$207.resource;
                     w2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                             TestGenerateValidationDocument.<Color> createList(ColorHelper.fromArgb(105, 47, 229, 96), ColorHelper.fromArgb(64, 65, 153, 9)));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.viewshedOccludedColor.getValue(documentStartDate)).toEqual(Color.fromBytes(47, 229, 96, 105));");
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.viewshedOccludedColor.getValue(documentStopDate)).toEqual(Color.fromBytes(65, 153, 9, 64));");
                 }
-                try (Using<IntegerCesiumWriter> using$206 = new Using<IntegerCesiumWriter>(w.openViewshedResolutionProperty())) {
-                    final IntegerCesiumWriter w2 = using$206.resource;
+                try (Using<IntegerCesiumWriter> using$208 = new Using<IntegerCesiumWriter>(w.openViewshedResolutionProperty())) {
+                    final IntegerCesiumWriter w2 = using$208.resource;
                     w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Integer> createList(38357, 30316));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.viewshedResolution.getValue(documentStartDate)).toEqual(38357);");
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.conicSensor.viewshedResolution.getValue(documentStopDate)).toEqual(30316);");
                 }
             }
-            try (Using<CustomPatternSensorCesiumWriter> using$207 = new Using<CustomPatternSensorCesiumWriter>(packet.openCustomPatternSensorProperty())) {
-                final CustomPatternSensorCesiumWriter w = using$207.resource;
-                try (Using<DoubleCesiumWriter> using$208 = new Using<DoubleCesiumWriter>(w.openRadiusProperty())) {
-                    final DoubleCesiumWriter w2 = using$208.resource;
+            try (Using<CustomPatternSensorCesiumWriter> using$209 = new Using<CustomPatternSensorCesiumWriter>(packet.openCustomPatternSensorProperty())) {
+                final CustomPatternSensorCesiumWriter w = using$209.resource;
+                try (Using<DoubleCesiumWriter> using$210 = new Using<DoubleCesiumWriter>(w.openMinimumRadiusProperty())) {
+                    final DoubleCesiumWriter w2 = using$210.resource;
+                    w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
+                            TestGenerateValidationDocument.<Double> createList(54992.0, 43196.0));
+                    TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.minimumRadius.getValue(documentStartDate)).toEqual(54992.0);");
+                    TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.minimumRadius.getValue(documentStopDate)).toEqual(43196.0);");
+                }
+                try (Using<DoubleCesiumWriter> using$211 = new Using<DoubleCesiumWriter>(w.openMaximumRadiusProperty())) {
+                    final DoubleCesiumWriter w2 = using$211.resource;
+                    w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
+                            TestGenerateValidationDocument.<Double> createList(62511.0, 17238.0));
+                    TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.maximumRadius.getValue(documentStartDate)).toEqual(62511.0);");
+                    TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.maximumRadius.getValue(documentStopDate)).toEqual(17238.0);");
+                }
+                try (Using<DoubleCesiumWriter> using$212 = new Using<DoubleCesiumWriter>(w.openRadiusProperty())) {
+                    final DoubleCesiumWriter w2 = using$212.resource;
                     w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                             TestGenerateValidationDocument.<Double> createList(51649.0, 47224.0));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.radius.getValue(documentStartDate)).toEqual(51649.0);");
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.radius.getValue(documentStopDate)).toEqual(47224.0);");
                 }
-                try (Using<ColorCesiumWriter> using$209 = new Using<ColorCesiumWriter>(w.openIntersectionColorProperty())) {
-                    final ColorCesiumWriter w2 = using$209.resource;
+                try (Using<ColorCesiumWriter> using$213 = new Using<ColorCesiumWriter>(w.openIntersectionColorProperty())) {
+                    final ColorCesiumWriter w2 = using$213.resource;
                     w2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                             TestGenerateValidationDocument.<Color> createList(ColorHelper.fromArgb(180, 234, 156, 105), ColorHelper.fromArgb(62, 181, 97, 242)));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -20237,19 +20329,19 @@ public class TestGenerateValidationDocument {
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.customPatternSensor.intersectionColor.getValue(documentStopDate)).toEqual(Color.fromBytes(181, 97, 242, 62));");
                 }
-                try (Using<DoubleCesiumWriter> using$210 = new Using<DoubleCesiumWriter>(w.openIntersectionWidthProperty())) {
-                    final DoubleCesiumWriter w2 = using$210.resource;
+                try (Using<DoubleCesiumWriter> using$214 = new Using<DoubleCesiumWriter>(w.openIntersectionWidthProperty())) {
+                    final DoubleCesiumWriter w2 = using$214.resource;
                     w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                             TestGenerateValidationDocument.<Double> createList(54947.0, 32744.0));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.intersectionWidth.getValue(documentStartDate)).toEqual(54947.0);");
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.intersectionWidth.getValue(documentStopDate)).toEqual(32744.0);");
                 }
-                try (Using<MaterialCesiumWriter> using$211 = new Using<MaterialCesiumWriter>(w.openLateralSurfaceMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$211.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$212 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$212.resource;
-                        try (Using<ColorCesiumWriter> using$213 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$213.resource;
+                try (Using<MaterialCesiumWriter> using$215 = new Using<MaterialCesiumWriter>(w.openLateralSurfaceMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$215.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$216 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$216.resource;
+                        try (Using<ColorCesiumWriter> using$217 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$217.resource;
                             m2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                                     TestGenerateValidationDocument.<Color> createList(ColorHelper.fromArgb(9, 23, 46, 232), ColorHelper.fromArgb(121, 119, 104, 98)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -20259,12 +20351,12 @@ public class TestGenerateValidationDocument {
                         }
                     }
                 }
-                try (Using<MaterialCesiumWriter> using$214 = new Using<MaterialCesiumWriter>(w.openEllipsoidSurfaceMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$214.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$215 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$215.resource;
-                        try (Using<ColorCesiumWriter> using$216 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$216.resource;
+                try (Using<MaterialCesiumWriter> using$218 = new Using<MaterialCesiumWriter>(w.openEllipsoidSurfaceMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$218.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$219 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$219.resource;
+                        try (Using<ColorCesiumWriter> using$220 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$220.resource;
                             m2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                                     TestGenerateValidationDocument.<Color> createList(ColorHelper.fromArgb(85, 3, 198, 203), ColorHelper.fromArgb(28, 16, 212, 3)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -20274,12 +20366,12 @@ public class TestGenerateValidationDocument {
                         }
                     }
                 }
-                try (Using<MaterialCesiumWriter> using$217 = new Using<MaterialCesiumWriter>(w.openEllipsoidHorizonSurfaceMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$217.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$218 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$218.resource;
-                        try (Using<ColorCesiumWriter> using$219 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$219.resource;
+                try (Using<MaterialCesiumWriter> using$221 = new Using<MaterialCesiumWriter>(w.openEllipsoidHorizonSurfaceMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$221.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$222 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$222.resource;
+                        try (Using<ColorCesiumWriter> using$223 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$223.resource;
                             m2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                                     TestGenerateValidationDocument.<Color> createList(ColorHelper.fromArgb(216, 152, 99, 18), ColorHelper.fromArgb(251, 89, 151, 205)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -20289,12 +20381,12 @@ public class TestGenerateValidationDocument {
                         }
                     }
                 }
-                try (Using<MaterialCesiumWriter> using$220 = new Using<MaterialCesiumWriter>(w.openDomeSurfaceMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$220.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$221 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$221.resource;
-                        try (Using<ColorCesiumWriter> using$222 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$222.resource;
+                try (Using<MaterialCesiumWriter> using$224 = new Using<MaterialCesiumWriter>(w.openDomeSurfaceMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$224.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$225 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$225.resource;
+                        try (Using<ColorCesiumWriter> using$226 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$226.resource;
                             m2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                                     TestGenerateValidationDocument.<Color> createList(ColorHelper.fromArgb(228, 231, 234, 144), ColorHelper.fromArgb(169, 185, 26, 16)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -20304,12 +20396,12 @@ public class TestGenerateValidationDocument {
                         }
                     }
                 }
-                try (Using<MaterialCesiumWriter> using$223 = new Using<MaterialCesiumWriter>(w.openEnvironmentOcclusionMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$223.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$224 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$224.resource;
-                        try (Using<ColorCesiumWriter> using$225 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$225.resource;
+                try (Using<MaterialCesiumWriter> using$227 = new Using<MaterialCesiumWriter>(w.openEnvironmentOcclusionMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$227.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$228 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$228.resource;
+                        try (Using<ColorCesiumWriter> using$229 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$229.resource;
                             m2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                                     TestGenerateValidationDocument.<Color> createList(ColorHelper.fromArgb(37, 214, 222, 56), ColorHelper.fromArgb(73, 132, 87, 218)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -20319,8 +20411,8 @@ public class TestGenerateValidationDocument {
                         }
                     }
                 }
-                try (Using<ColorCesiumWriter> using$226 = new Using<ColorCesiumWriter>(w.openEnvironmentIntersectionColorProperty())) {
-                    final ColorCesiumWriter w2 = using$226.resource;
+                try (Using<ColorCesiumWriter> using$230 = new Using<ColorCesiumWriter>(w.openEnvironmentIntersectionColorProperty())) {
+                    final ColorCesiumWriter w2 = using$230.resource;
                     w2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                             TestGenerateValidationDocument.<Color> createList(ColorHelper.fromArgb(67, 182, 99, 116), ColorHelper.fromArgb(220, 101, 186, 29)));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -20328,15 +20420,15 @@ public class TestGenerateValidationDocument {
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.customPatternSensor.environmentIntersectionColor.getValue(documentStopDate)).toEqual(Color.fromBytes(101, 186, 29, 220));");
                 }
-                try (Using<DoubleCesiumWriter> using$227 = new Using<DoubleCesiumWriter>(w.openEnvironmentIntersectionWidthProperty())) {
-                    final DoubleCesiumWriter w2 = using$227.resource;
+                try (Using<DoubleCesiumWriter> using$231 = new Using<DoubleCesiumWriter>(w.openEnvironmentIntersectionWidthProperty())) {
+                    final DoubleCesiumWriter w2 = using$231.resource;
                     w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                             TestGenerateValidationDocument.<Double> createList(15461.0, 8000.0));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.environmentIntersectionWidth.getValue(documentStartDate)).toEqual(15461.0);");
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.environmentIntersectionWidth.getValue(documentStopDate)).toEqual(8000.0);");
                 }
-                try (Using<ColorCesiumWriter> using$228 = new Using<ColorCesiumWriter>(w.openViewshedVisibleColorProperty())) {
-                    final ColorCesiumWriter w2 = using$228.resource;
+                try (Using<ColorCesiumWriter> using$232 = new Using<ColorCesiumWriter>(w.openViewshedVisibleColorProperty())) {
+                    final ColorCesiumWriter w2 = using$232.resource;
                     w2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                             TestGenerateValidationDocument.<Color> createList(ColorHelper.fromArgb(117, 221, 155, 36), ColorHelper.fromArgb(129, 249, 126, 78)));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -20344,8 +20436,8 @@ public class TestGenerateValidationDocument {
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.customPatternSensor.viewshedVisibleColor.getValue(documentStopDate)).toEqual(Color.fromBytes(249, 126, 78, 129));");
                 }
-                try (Using<ColorCesiumWriter> using$229 = new Using<ColorCesiumWriter>(w.openViewshedOccludedColorProperty())) {
-                    final ColorCesiumWriter w2 = using$229.resource;
+                try (Using<ColorCesiumWriter> using$233 = new Using<ColorCesiumWriter>(w.openViewshedOccludedColorProperty())) {
+                    final ColorCesiumWriter w2 = using$233.resource;
                     w2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                             TestGenerateValidationDocument.<Color> createList(ColorHelper.fromArgb(134, 228, 27, 237), ColorHelper.fromArgb(84, 254, 162, 80)));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -20353,38 +20445,52 @@ public class TestGenerateValidationDocument {
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.customPatternSensor.viewshedOccludedColor.getValue(documentStopDate)).toEqual(Color.fromBytes(254, 162, 80, 84));");
                 }
-                try (Using<IntegerCesiumWriter> using$230 = new Using<IntegerCesiumWriter>(w.openViewshedResolutionProperty())) {
-                    final IntegerCesiumWriter w2 = using$230.resource;
+                try (Using<IntegerCesiumWriter> using$234 = new Using<IntegerCesiumWriter>(w.openViewshedResolutionProperty())) {
+                    final IntegerCesiumWriter w2 = using$234.resource;
                     w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Integer> createList(44590, 31959));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.viewshedResolution.getValue(documentStartDate)).toEqual(44590);");
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.customPatternSensor.viewshedResolution.getValue(documentStopDate)).toEqual(31959);");
                 }
             }
-            try (Using<RectangularSensorCesiumWriter> using$231 = new Using<RectangularSensorCesiumWriter>(packet.openRectangularSensorProperty())) {
-                final RectangularSensorCesiumWriter w = using$231.resource;
-                try (Using<DoubleCesiumWriter> using$232 = new Using<DoubleCesiumWriter>(w.openXHalfAngleProperty())) {
-                    final DoubleCesiumWriter w2 = using$232.resource;
+            try (Using<RectangularSensorCesiumWriter> using$235 = new Using<RectangularSensorCesiumWriter>(packet.openRectangularSensorProperty())) {
+                final RectangularSensorCesiumWriter w = using$235.resource;
+                try (Using<DoubleCesiumWriter> using$236 = new Using<DoubleCesiumWriter>(w.openXHalfAngleProperty())) {
+                    final DoubleCesiumWriter w2 = using$236.resource;
                     w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                             TestGenerateValidationDocument.<Double> createList(58366.0, 22538.0));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.xHalfAngle.getValue(documentStartDate)).toEqual(58366.0);");
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.xHalfAngle.getValue(documentStopDate)).toEqual(22538.0);");
                 }
-                try (Using<DoubleCesiumWriter> using$233 = new Using<DoubleCesiumWriter>(w.openYHalfAngleProperty())) {
-                    final DoubleCesiumWriter w2 = using$233.resource;
+                try (Using<DoubleCesiumWriter> using$237 = new Using<DoubleCesiumWriter>(w.openYHalfAngleProperty())) {
+                    final DoubleCesiumWriter w2 = using$237.resource;
                     w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                             TestGenerateValidationDocument.<Double> createList(50294.0, 14328.0));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.yHalfAngle.getValue(documentStartDate)).toEqual(50294.0);");
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.yHalfAngle.getValue(documentStopDate)).toEqual(14328.0);");
                 }
-                try (Using<DoubleCesiumWriter> using$234 = new Using<DoubleCesiumWriter>(w.openRadiusProperty())) {
-                    final DoubleCesiumWriter w2 = using$234.resource;
+                try (Using<DoubleCesiumWriter> using$238 = new Using<DoubleCesiumWriter>(w.openMinimumRadiusProperty())) {
+                    final DoubleCesiumWriter w2 = using$238.resource;
+                    w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
+                            TestGenerateValidationDocument.<Double> createList(54549.0, 25397.0));
+                    TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.minimumRadius.getValue(documentStartDate)).toEqual(54549.0);");
+                    TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.minimumRadius.getValue(documentStopDate)).toEqual(25397.0);");
+                }
+                try (Using<DoubleCesiumWriter> using$239 = new Using<DoubleCesiumWriter>(w.openMaximumRadiusProperty())) {
+                    final DoubleCesiumWriter w2 = using$239.resource;
+                    w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
+                            TestGenerateValidationDocument.<Double> createList(64487.0, 33811.0));
+                    TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.maximumRadius.getValue(documentStartDate)).toEqual(64487.0);");
+                    TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.maximumRadius.getValue(documentStopDate)).toEqual(33811.0);");
+                }
+                try (Using<DoubleCesiumWriter> using$240 = new Using<DoubleCesiumWriter>(w.openRadiusProperty())) {
+                    final DoubleCesiumWriter w2 = using$240.resource;
                     w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                             TestGenerateValidationDocument.<Double> createList(35659.0, 22080.0));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.radius.getValue(documentStartDate)).toEqual(35659.0);");
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.radius.getValue(documentStopDate)).toEqual(22080.0);");
                 }
-                try (Using<ColorCesiumWriter> using$235 = new Using<ColorCesiumWriter>(w.openIntersectionColorProperty())) {
-                    final ColorCesiumWriter w2 = using$235.resource;
+                try (Using<ColorCesiumWriter> using$241 = new Using<ColorCesiumWriter>(w.openIntersectionColorProperty())) {
+                    final ColorCesiumWriter w2 = using$241.resource;
                     w2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                             TestGenerateValidationDocument.<Color> createList(ColorHelper.fromArgb(208, 115, 140, 110), ColorHelper.fromArgb(68, 107, 143, 73)));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -20392,19 +20498,19 @@ public class TestGenerateValidationDocument {
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.rectangularSensor.intersectionColor.getValue(documentStopDate)).toEqual(Color.fromBytes(107, 143, 73, 68));");
                 }
-                try (Using<DoubleCesiumWriter> using$236 = new Using<DoubleCesiumWriter>(w.openIntersectionWidthProperty())) {
-                    final DoubleCesiumWriter w2 = using$236.resource;
+                try (Using<DoubleCesiumWriter> using$242 = new Using<DoubleCesiumWriter>(w.openIntersectionWidthProperty())) {
+                    final DoubleCesiumWriter w2 = using$242.resource;
                     w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                             TestGenerateValidationDocument.<Double> createList(28687.0, 9820.0));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.intersectionWidth.getValue(documentStartDate)).toEqual(28687.0);");
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.intersectionWidth.getValue(documentStopDate)).toEqual(9820.0);");
                 }
-                try (Using<MaterialCesiumWriter> using$237 = new Using<MaterialCesiumWriter>(w.openLateralSurfaceMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$237.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$238 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$238.resource;
-                        try (Using<ColorCesiumWriter> using$239 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$239.resource;
+                try (Using<MaterialCesiumWriter> using$243 = new Using<MaterialCesiumWriter>(w.openLateralSurfaceMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$243.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$244 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$244.resource;
+                        try (Using<ColorCesiumWriter> using$245 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$245.resource;
                             m2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                                     TestGenerateValidationDocument.<Color> createList(ColorHelper.fromArgb(229, 78, 198, 201), ColorHelper.fromArgb(91, 66, 187, 189)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -20414,12 +20520,12 @@ public class TestGenerateValidationDocument {
                         }
                     }
                 }
-                try (Using<MaterialCesiumWriter> using$240 = new Using<MaterialCesiumWriter>(w.openEllipsoidSurfaceMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$240.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$241 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$241.resource;
-                        try (Using<ColorCesiumWriter> using$242 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$242.resource;
+                try (Using<MaterialCesiumWriter> using$246 = new Using<MaterialCesiumWriter>(w.openEllipsoidSurfaceMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$246.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$247 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$247.resource;
+                        try (Using<ColorCesiumWriter> using$248 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$248.resource;
                             m2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                                     TestGenerateValidationDocument.<Color> createList(ColorHelper.fromArgb(40, 110, 214, 130), ColorHelper.fromArgb(170, 57, 28, 75)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -20429,12 +20535,12 @@ public class TestGenerateValidationDocument {
                         }
                     }
                 }
-                try (Using<MaterialCesiumWriter> using$243 = new Using<MaterialCesiumWriter>(w.openEllipsoidHorizonSurfaceMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$243.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$244 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$244.resource;
-                        try (Using<ColorCesiumWriter> using$245 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$245.resource;
+                try (Using<MaterialCesiumWriter> using$249 = new Using<MaterialCesiumWriter>(w.openEllipsoidHorizonSurfaceMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$249.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$250 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$250.resource;
+                        try (Using<ColorCesiumWriter> using$251 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$251.resource;
                             m2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                                     TestGenerateValidationDocument.<Color> createList(ColorHelper.fromArgb(191, 250, 52, 250), ColorHelper.fromArgb(69, 26, 38, 17)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -20444,12 +20550,12 @@ public class TestGenerateValidationDocument {
                         }
                     }
                 }
-                try (Using<MaterialCesiumWriter> using$246 = new Using<MaterialCesiumWriter>(w.openDomeSurfaceMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$246.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$247 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$247.resource;
-                        try (Using<ColorCesiumWriter> using$248 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$248.resource;
+                try (Using<MaterialCesiumWriter> using$252 = new Using<MaterialCesiumWriter>(w.openDomeSurfaceMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$252.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$253 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$253.resource;
+                        try (Using<ColorCesiumWriter> using$254 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$254.resource;
                             m2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                                     TestGenerateValidationDocument.<Color> createList(ColorHelper.fromArgb(121, 90, 167, 164), ColorHelper.fromArgb(18, 179, 244, 230)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -20459,12 +20565,12 @@ public class TestGenerateValidationDocument {
                         }
                     }
                 }
-                try (Using<MaterialCesiumWriter> using$249 = new Using<MaterialCesiumWriter>(w.openEnvironmentOcclusionMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$249.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$250 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$250.resource;
-                        try (Using<ColorCesiumWriter> using$251 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$251.resource;
+                try (Using<MaterialCesiumWriter> using$255 = new Using<MaterialCesiumWriter>(w.openEnvironmentOcclusionMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$255.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$256 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$256.resource;
+                        try (Using<ColorCesiumWriter> using$257 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$257.resource;
                             m2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                                     TestGenerateValidationDocument.<Color> createList(ColorHelper.fromArgb(20, 38, 90, 83), ColorHelper.fromArgb(55, 53, 203, 240)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -20474,8 +20580,8 @@ public class TestGenerateValidationDocument {
                         }
                     }
                 }
-                try (Using<ColorCesiumWriter> using$252 = new Using<ColorCesiumWriter>(w.openEnvironmentIntersectionColorProperty())) {
-                    final ColorCesiumWriter w2 = using$252.resource;
+                try (Using<ColorCesiumWriter> using$258 = new Using<ColorCesiumWriter>(w.openEnvironmentIntersectionColorProperty())) {
+                    final ColorCesiumWriter w2 = using$258.resource;
                     w2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                             TestGenerateValidationDocument.<Color> createList(ColorHelper.fromArgb(199, 247, 228, 88), ColorHelper.fromArgb(250, 34, 163, 220)));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -20483,14 +20589,14 @@ public class TestGenerateValidationDocument {
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.rectangularSensor.environmentIntersectionColor.getValue(documentStopDate)).toEqual(Color.fromBytes(34, 163, 220, 250));");
                 }
-                try (Using<DoubleCesiumWriter> using$253 = new Using<DoubleCesiumWriter>(w.openEnvironmentIntersectionWidthProperty())) {
-                    final DoubleCesiumWriter w2 = using$253.resource;
+                try (Using<DoubleCesiumWriter> using$259 = new Using<DoubleCesiumWriter>(w.openEnvironmentIntersectionWidthProperty())) {
+                    final DoubleCesiumWriter w2 = using$259.resource;
                     w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Double> createList(637.0, 10677.0));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.environmentIntersectionWidth.getValue(documentStartDate)).toEqual(637.0);");
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.environmentIntersectionWidth.getValue(documentStopDate)).toEqual(10677.0);");
                 }
-                try (Using<ColorCesiumWriter> using$254 = new Using<ColorCesiumWriter>(w.openViewshedVisibleColorProperty())) {
-                    final ColorCesiumWriter w2 = using$254.resource;
+                try (Using<ColorCesiumWriter> using$260 = new Using<ColorCesiumWriter>(w.openViewshedVisibleColorProperty())) {
+                    final ColorCesiumWriter w2 = using$260.resource;
                     w2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                             TestGenerateValidationDocument.<Color> createList(ColorHelper.fromArgb(92, 220, 157, 178), ColorHelper.fromArgb(26, 213, 65, 75)));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -20498,8 +20604,8 @@ public class TestGenerateValidationDocument {
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.rectangularSensor.viewshedVisibleColor.getValue(documentStopDate)).toEqual(Color.fromBytes(213, 65, 75, 26));");
                 }
-                try (Using<ColorCesiumWriter> using$255 = new Using<ColorCesiumWriter>(w.openViewshedOccludedColorProperty())) {
-                    final ColorCesiumWriter w2 = using$255.resource;
+                try (Using<ColorCesiumWriter> using$261 = new Using<ColorCesiumWriter>(w.openViewshedOccludedColorProperty())) {
+                    final ColorCesiumWriter w2 = using$261.resource;
                     w2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                             TestGenerateValidationDocument.<Color> createList(ColorHelper.fromArgb(10, 202, 44, 192), ColorHelper.fromArgb(207, 107, 226, 246)));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -20507,28 +20613,28 @@ public class TestGenerateValidationDocument {
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.rectangularSensor.viewshedOccludedColor.getValue(documentStopDate)).toEqual(Color.fromBytes(107, 226, 246, 207));");
                 }
-                try (Using<IntegerCesiumWriter> using$256 = new Using<IntegerCesiumWriter>(w.openViewshedResolutionProperty())) {
-                    final IntegerCesiumWriter w2 = using$256.resource;
+                try (Using<IntegerCesiumWriter> using$262 = new Using<IntegerCesiumWriter>(w.openViewshedResolutionProperty())) {
+                    final IntegerCesiumWriter w2 = using$262.resource;
                     w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Integer> createList(24619, 54818));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.viewshedResolution.getValue(documentStartDate)).toEqual(24619);");
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.rectangularSensor.viewshedResolution.getValue(documentStopDate)).toEqual(54818);");
                 }
             }
-            try (Using<FanCesiumWriter> using$257 = new Using<FanCesiumWriter>(packet.openFanProperty())) {
-                final FanCesiumWriter w = using$257.resource;
-                try (Using<DoubleCesiumWriter> using$258 = new Using<DoubleCesiumWriter>(w.openRadiusProperty())) {
-                    final DoubleCesiumWriter w2 = using$258.resource;
+            try (Using<FanCesiumWriter> using$263 = new Using<FanCesiumWriter>(packet.openFanProperty())) {
+                final FanCesiumWriter w = using$263.resource;
+                try (Using<DoubleCesiumWriter> using$264 = new Using<DoubleCesiumWriter>(w.openRadiusProperty())) {
+                    final DoubleCesiumWriter w2 = using$264.resource;
                     w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                             TestGenerateValidationDocument.<Double> createList(48400.0, 13510.0));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.radius.getValue(documentStartDate)).toEqual(48400.0);");
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.radius.getValue(documentStopDate)).toEqual(13510.0);");
                 }
-                try (Using<MaterialCesiumWriter> using$259 = new Using<MaterialCesiumWriter>(w.openMaterialProperty())) {
-                    final MaterialCesiumWriter w2 = using$259.resource;
-                    try (Using<SolidColorMaterialCesiumWriter> using$260 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
-                        final SolidColorMaterialCesiumWriter m = using$260.resource;
-                        try (Using<ColorCesiumWriter> using$261 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
-                            final ColorCesiumWriter m2 = using$261.resource;
+                try (Using<MaterialCesiumWriter> using$265 = new Using<MaterialCesiumWriter>(w.openMaterialProperty())) {
+                    final MaterialCesiumWriter w2 = using$265.resource;
+                    try (Using<SolidColorMaterialCesiumWriter> using$266 = new Using<SolidColorMaterialCesiumWriter>(w2.openSolidColorProperty())) {
+                        final SolidColorMaterialCesiumWriter m = using$266.resource;
+                        try (Using<ColorCesiumWriter> using$267 = new Using<ColorCesiumWriter>(m.openColorProperty())) {
+                            final ColorCesiumWriter m2 = using$267.resource;
                             m2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                                     TestGenerateValidationDocument.<Color> createList(ColorHelper.fromArgb(136, 169, 16, 250), ColorHelper.fromArgb(139, 211, 131, 53)));
                             TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.material.color.getValue(documentStartDate)).toEqual(Color.fromBytes(169, 16, 250, 136));");
@@ -20536,38 +20642,38 @@ public class TestGenerateValidationDocument {
                         }
                     }
                 }
-                try (Using<ColorCesiumWriter> using$262 = new Using<ColorCesiumWriter>(w.openOutlineColorProperty())) {
-                    final ColorCesiumWriter w2 = using$262.resource;
+                try (Using<ColorCesiumWriter> using$268 = new Using<ColorCesiumWriter>(w.openOutlineColorProperty())) {
+                    final ColorCesiumWriter w2 = using$268.resource;
                     w2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                             TestGenerateValidationDocument.<Color> createList(ColorHelper.fromArgb(88, 112, 11, 118), ColorHelper.fromArgb(4, 31, 167, 62)));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.outlineColor.getValue(documentStartDate)).toEqual(Color.fromBytes(112, 11, 118, 88));");
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.outlineColor.getValue(documentStopDate)).toEqual(Color.fromBytes(31, 167, 62, 4));");
                 }
-                try (Using<DoubleCesiumWriter> using$263 = new Using<DoubleCesiumWriter>(w.openOutlineWidthProperty())) {
-                    final DoubleCesiumWriter w2 = using$263.resource;
+                try (Using<DoubleCesiumWriter> using$269 = new Using<DoubleCesiumWriter>(w.openOutlineWidthProperty())) {
+                    final DoubleCesiumWriter w2 = using$269.resource;
                     w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                             TestGenerateValidationDocument.<Double> createList(42860.0, 62479.0));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.outlineWidth.getValue(documentStartDate)).toEqual(42860.0);");
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.outlineWidth.getValue(documentStopDate)).toEqual(62479.0);");
                 }
-                try (Using<IntegerCesiumWriter> using$264 = new Using<IntegerCesiumWriter>(w.openNumberOfRingsProperty())) {
-                    final IntegerCesiumWriter w2 = using$264.resource;
+                try (Using<IntegerCesiumWriter> using$270 = new Using<IntegerCesiumWriter>(w.openNumberOfRingsProperty())) {
+                    final IntegerCesiumWriter w2 = using$270.resource;
                     w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Integer> createList(30719, 44188));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.numberOfRings.getValue(documentStartDate)).toEqual(30719);");
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.fan.numberOfRings.getValue(documentStopDate)).toEqual(44188);");
                 }
             }
-            try (Using<VectorCesiumWriter> using$265 = new Using<VectorCesiumWriter>(packet.openVectorProperty())) {
-                final VectorCesiumWriter w = using$265.resource;
-                try (Using<ColorCesiumWriter> using$266 = new Using<ColorCesiumWriter>(w.openColorProperty())) {
-                    final ColorCesiumWriter w2 = using$266.resource;
+            try (Using<VectorCesiumWriter> using$271 = new Using<VectorCesiumWriter>(packet.openVectorProperty())) {
+                final VectorCesiumWriter w = using$271.resource;
+                try (Using<ColorCesiumWriter> using$272 = new Using<ColorCesiumWriter>(w.openColorProperty())) {
+                    final ColorCesiumWriter w2 = using$272.resource;
                     w2.writeRgba(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                             TestGenerateValidationDocument.<Color> createList(ColorHelper.fromArgb(98, 150, 8, 197), ColorHelper.fromArgb(207, 71, 74, 62)));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.vector.color.getValue(documentStartDate)).toEqual(Color.fromBytes(150, 8, 197, 98));");
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.vector.color.getValue(documentStopDate)).toEqual(Color.fromBytes(71, 74, 62, 207));");
                 }
-                try (Using<DirectionCesiumWriter> using$267 = new Using<DirectionCesiumWriter>(w.openDirectionProperty())) {
-                    final DirectionCesiumWriter w2 = using$267.resource;
+                try (Using<DirectionCesiumWriter> using$273 = new Using<DirectionCesiumWriter>(w.openDirectionProperty())) {
+                    final DirectionCesiumWriter w2 = using$273.resource;
                     w2.writeSpherical(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                             TestGenerateValidationDocument.<Spherical> createList(new Spherical(31576.0, 24187.0, 52062.0), new Spherical(31098.0, 2937.0, 4107.0)));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
@@ -20575,15 +20681,15 @@ public class TestGenerateValidationDocument {
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter,
                             "    expect(e.vector.direction.getValue(documentStopDate)).toEqual(Cartesian3.fromSpherical(new Spherical(31098, 2937, 4107)));");
                 }
-                try (Using<DoubleCesiumWriter> using$268 = new Using<DoubleCesiumWriter>(w.openLengthProperty())) {
-                    final DoubleCesiumWriter w2 = using$268.resource;
+                try (Using<DoubleCesiumWriter> using$274 = new Using<DoubleCesiumWriter>(w.openLengthProperty())) {
+                    final DoubleCesiumWriter w2 = using$274.resource;
                     w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate),
                             TestGenerateValidationDocument.<Double> createList(37352.0, 28352.0));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.vector.length.getValue(documentStartDate)).toEqual(37352.0);");
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.vector.length.getValue(documentStopDate)).toEqual(28352.0);");
                 }
-                try (Using<DoubleCesiumWriter> using$269 = new Using<DoubleCesiumWriter>(w.openMinimumLengthInPixelsProperty())) {
-                    final DoubleCesiumWriter w2 = using$269.resource;
+                try (Using<DoubleCesiumWriter> using$275 = new Using<DoubleCesiumWriter>(w.openMinimumLengthInPixelsProperty())) {
+                    final DoubleCesiumWriter w2 = using$275.resource;
                     w2.writeNumber(TestGenerateValidationDocument.<JulianDate> createList(m_documentStartDate, m_documentStopDate), TestGenerateValidationDocument.<Double> createList(194.0, 54242.0));
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.vector.minimumLengthInPixels.getValue(documentStartDate)).toEqual(194.0);");
                     TextWriterHelper.writeLine(m_extensionsAssertionsWriter, "    expect(e.vector.minimumLengthInPixels.getValue(documentStopDate)).toEqual(54242.0);");
