@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
+using JetBrains.Annotations;
 using NUnit.Framework;
 
 namespace CesiumLanguageWriterTests
@@ -19,10 +20,7 @@ namespace CesiumLanguageWriterTests
                 viewFrom.WriteCartesian(expected);
             }
 
-            AssertExpectedJson(new Dictionary<string, object>
-            {
-                { PacketCesiumWriter.ViewFromPropertyName, expected },
-            });
+            AssertPropertyJson(expected);
         }
 
         [Test]
@@ -37,7 +35,7 @@ namespace CesiumLanguageWriterTests
                 viewFrom.WriteReference(expectedIdentifier, expectedPropertyName);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.ViewFromPropertyName, new Dictionary<string, object>
+            AssertPropertyJson(new Dictionary<string, object>
             {
                 { ViewFromCesiumWriter.ReferencePropertyName, expectedIdentifier + "#" + expectedPropertyName },
             });
@@ -54,9 +52,17 @@ namespace CesiumLanguageWriterTests
                 viewFrom.WriteDelete(expectedDelete);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.ViewFromPropertyName, new Dictionary<string, object>
+            AssertPropertyJson(new Dictionary<string, object>
             {
                 { ViewFromCesiumWriter.DeletePropertyName, expectedDelete },
+            });
+        }
+
+        private void AssertPropertyJson([NotNull] object value)
+        {
+            AssertExpectedJson(new Dictionary<string, object>
+            {
+                { PacketCesiumWriter.ViewFromPropertyName, value },
             });
         }
 

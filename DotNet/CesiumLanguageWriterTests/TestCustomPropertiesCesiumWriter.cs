@@ -40,10 +40,7 @@ namespace CesiumLanguageWriterTests
                 }
             }
 
-            AssertExpectedJson(PacketCesiumWriter.PropertiesPropertyName, new Dictionary<string, object>
-            {
-                { expectedName, expectedValue },
-            });
+            AssertPropertyJson(expectedName, expectedValue);
         }
 
         [Test]
@@ -60,15 +57,10 @@ namespace CesiumLanguageWriterTests
                 interval.WriteBoolean(expectedValue);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.PropertiesPropertyName, new Dictionary<string, object>
+            AssertPropertyJson(expectedName, new Dictionary<string, object>
             {
-                {
-                    expectedName, new Dictionary<string, object>
-                    {
-                        { "interval", m_isoIntervalString },
-                        { CustomPropertyCesiumWriter.BooleanPropertyName, expectedValue },
-                    }
-                },
+                { "interval", m_isoIntervalString },
+                { CustomPropertyCesiumWriter.BooleanPropertyName, expectedValue },
             });
         }
 
@@ -85,10 +77,7 @@ namespace CesiumLanguageWriterTests
                 customProperty.WriteCartesian(expectedValue);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.PropertiesPropertyName, new Dictionary<string, object>
-            {
-                { expectedName, expectedValue },
-            });
+            AssertPropertyJson(expectedName, expectedValue);
         }
 
         [Test]
@@ -244,6 +233,14 @@ namespace CesiumLanguageWriterTests
             }
 
             output.WriteEndSequence();
+        }
+
+        private void AssertPropertyJson([NotNull] string propertyName, [NotNull] object value)
+        {
+            AssertExpectedJson(PacketCesiumWriter.PropertiesPropertyName, new Dictionary<string, object>
+            {
+                { propertyName, value },
+            });
         }
 
         protected override CesiumPropertyWriter<CustomPropertiesCesiumWriter> CreatePropertyWriter(string propertyName)

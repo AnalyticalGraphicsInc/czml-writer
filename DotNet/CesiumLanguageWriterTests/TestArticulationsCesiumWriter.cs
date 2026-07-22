@@ -25,14 +25,9 @@ namespace CesiumLanguageWriterTests
                 articulationWriter.WriteNumber(expectedValue);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.ModelPropertyName, new Dictionary<string, object>
+            AssertArticulationsJson(new Dictionary<string, object>
             {
-                {
-                    ModelCesiumWriter.ArticulationsPropertyName, new Dictionary<string, object>
-                    {
-                        { expectedName, expectedValue },
-                    }
-                },
+                { expectedName, expectedValue },
             });
         }
 
@@ -60,15 +55,10 @@ namespace CesiumLanguageWriterTests
                 }
             }
 
-            AssertExpectedJson(PacketCesiumWriter.ModelPropertyName, new Dictionary<string, object>
+            AssertArticulationsJson(new Dictionary<string, object>
             {
-                {
-                    ModelCesiumWriter.ArticulationsPropertyName, new Dictionary<string, object>
-                    {
-                        { expectedName1, expectedValue1 },
-                        { expectedName2, expectedValue2 },
-                    }
-                },
+                { expectedName1, expectedValue1 },
+                { expectedName2, expectedValue2 },
             });
         }
 
@@ -121,6 +111,14 @@ namespace CesiumLanguageWriterTests
                     }
                 }
             }
+        }
+
+        private void AssertArticulationsJson([NotNull] IDictionary<string, object> articulations)
+        {
+            AssertExpectedJson(PacketCesiumWriter.ModelPropertyName, new Dictionary<string, object>
+            {
+                { ModelCesiumWriter.ArticulationsPropertyName, articulations },
+            });
         }
 
         protected override CesiumPropertyWriter<ArticulationsCesiumWriter> CreatePropertyWriter(string propertyName)

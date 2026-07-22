@@ -2,6 +2,7 @@
 using System.Drawing;
 using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
+using JetBrains.Annotations;
 using NUnit.Framework;
 
 namespace CesiumLanguageWriterTests
@@ -77,7 +78,7 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestIntersectionColor()
         {
-            Color expected = Color.Blue;
+            var expected = Color.Blue;
 
             using (var packet = OpenPacket())
             using (var sensor = packet.OpenCustomPatternSensorProperty())
@@ -454,7 +455,7 @@ namespace CesiumLanguageWriterTests
             AssertPropertyJson(CustomPatternSensorCesiumWriter.ViewshedResolutionPropertyName, expected);
         }
 
-        private void AssertPropertyJson(string propertyName, object value)
+        private void AssertPropertyJson([NotNull] string propertyName, [NotNull] object value)
         {
             AssertExpectedJson(PacketCesiumWriter.CustomPatternSensorPropertyName, new Dictionary<string, object>
             {

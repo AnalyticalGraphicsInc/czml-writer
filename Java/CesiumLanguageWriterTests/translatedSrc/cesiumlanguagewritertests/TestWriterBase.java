@@ -239,6 +239,20 @@ public abstract class TestWriterBase {
                 return createExpectedJson(tempCollection$4);
             }
         }
+        if (value instanceof Spherical) {
+            Spherical spherical = (Spherical) value;
+            return formatValueType(DirectionCesiumWriter.SphericalPropertyName, decompose(spherical));
+        }
+        {
+            SphericalList sphericalList = value instanceof SphericalList ? (SphericalList) value : null;
+            if (!ObjectHelper.referenceEquals(sphericalList, null)) {
+                final Map<String, Object> tempCollection$5 = MapHelper.create();
+                MapHelper.add(tempCollection$5, DirectionListCesiumWriter.SphericalPropertyName, IterableHelper.selectMany(sphericalList, Func2.<Spherical, Iterable<Object>> of((Spherical o) -> {
+                    return decompose(o);
+                })));
+                return createExpectedJson(tempCollection$5);
+            }
+        }
         {
             CartographicExtent cartographicExtent = value instanceof CartographicExtent ? (CartographicExtent) value : null;
             if (!ObjectHelper.referenceEquals(cartographicExtent, null)) {
@@ -270,6 +284,14 @@ public abstract class TestWriterBase {
         final ArrayList<Object> tempCollection$0 = new ArrayList<Object>();
         tempCollection$0.add(value.getClock());
         tempCollection$0.add(value.getCone());
+        return tempCollection$0;
+    }
+
+    private static ArrayList<Object> decompose(@Nonnull Spherical value) {
+        final ArrayList<Object> tempCollection$0 = new ArrayList<Object>();
+        tempCollection$0.add(value.getClock());
+        tempCollection$0.add(value.getCone());
+        tempCollection$0.add(value.getMagnitude());
         return tempCollection$0;
     }
 
@@ -373,6 +395,8 @@ public abstract class TestWriterBase {
         String expectedJson = createExpectedJson(dictionary);
         AssertHelper.assertEquals(expectedJson, getStringWriter().toString());
     }
+
+    public static final class SphericalList extends ArrayList<Spherical> {}
 
     public static final class UnitSphericalList extends ArrayList<UnitSpherical> {}
 

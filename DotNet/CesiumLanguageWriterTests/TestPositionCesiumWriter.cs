@@ -9,20 +9,20 @@ namespace CesiumLanguageWriterTests
     public class TestPositionCesiumWriter : TestCesiumInterpolatablePropertyWriter<PositionCesiumWriter>
     {
         [Test]
-        public void ReferenceFrameValueWritesReferenceFrameProperty()
+        public void ReferenceFrame()
         {
-            const string expectedReferenceFrame = "myReferenceFrame";
+            const string expected = "myReferenceFrame";
 
             using (var packet = OpenPacket())
             using (var position = packet.OpenPositionProperty())
             using (var interval = position.OpenInterval())
             {
-                interval.WriteReferenceFrame(expectedReferenceFrame);
+                interval.WriteReferenceFrame(expected);
             }
 
             AssertExpectedJson(PacketCesiumWriter.PositionPropertyName, new Dictionary<string, object>
             {
-                { PositionCesiumWriter.ReferenceFramePropertyName, expectedReferenceFrame },
+                { PositionCesiumWriter.ReferenceFramePropertyName, expected },
             });
         }
 

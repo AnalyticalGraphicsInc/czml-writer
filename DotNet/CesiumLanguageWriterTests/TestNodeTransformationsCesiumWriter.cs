@@ -31,19 +31,14 @@ namespace CesiumLanguageWriterTests
                 }
             }
 
-            AssertExpectedJson(PacketCesiumWriter.ModelPropertyName, new Dictionary<string, object>
+            AssertNodeTransformationsJson(new Dictionary<string, object>
             {
                 {
-                    ModelCesiumWriter.NodeTransformationsPropertyName, new Dictionary<string, object>
+                    expectedNodeName, new Dictionary<string, object>
                     {
-                        {
-                            expectedNodeName, new Dictionary<string, object>
-                            {
-                                { NodeTransformationCesiumWriter.ScalePropertyName, expectedScale },
-                                { NodeTransformationCesiumWriter.RotationPropertyName, expectedRotation },
-                                { NodeTransformationCesiumWriter.TranslationPropertyName, expectedTranslation },
-                            }
-                        },
+                        { NodeTransformationCesiumWriter.ScalePropertyName, expectedScale },
+                        { NodeTransformationCesiumWriter.RotationPropertyName, expectedRotation },
+                        { NodeTransformationCesiumWriter.TranslationPropertyName, expectedTranslation },
                     }
                 },
             });
@@ -80,27 +75,22 @@ namespace CesiumLanguageWriterTests
                 }
             }
 
-            AssertExpectedJson(PacketCesiumWriter.ModelPropertyName, new Dictionary<string, object>
+            AssertNodeTransformationsJson(new Dictionary<string, object>
             {
                 {
-                    ModelCesiumWriter.NodeTransformationsPropertyName, new Dictionary<string, object>
+                    expectedNodeName1, new Dictionary<string, object>
                     {
-                        {
-                            expectedNodeName1, new Dictionary<string, object>
-                            {
-                                { NodeTransformationCesiumWriter.ScalePropertyName, expectedScale1 },
-                                { NodeTransformationCesiumWriter.RotationPropertyName, expectedRotation1 },
-                                { NodeTransformationCesiumWriter.TranslationPropertyName, expectedTranslation1 },
-                            }
-                        },
-                        {
-                            expectedNodeName2, new Dictionary<string, object>
-                            {
-                                { NodeTransformationCesiumWriter.ScalePropertyName, expectedScale2 },
-                                { NodeTransformationCesiumWriter.RotationPropertyName, expectedRotation2 },
-                                { NodeTransformationCesiumWriter.TranslationPropertyName, expectedTranslation2 },
-                            }
-                        },
+                        { NodeTransformationCesiumWriter.ScalePropertyName, expectedScale1 },
+                        { NodeTransformationCesiumWriter.RotationPropertyName, expectedRotation1 },
+                        { NodeTransformationCesiumWriter.TranslationPropertyName, expectedTranslation1 },
+                    }
+                },
+                {
+                    expectedNodeName2, new Dictionary<string, object>
+                    {
+                        { NodeTransformationCesiumWriter.ScalePropertyName, expectedScale2 },
+                        { NodeTransformationCesiumWriter.RotationPropertyName, expectedRotation2 },
+                        { NodeTransformationCesiumWriter.TranslationPropertyName, expectedTranslation2 },
                     }
                 },
             });
@@ -170,6 +160,14 @@ namespace CesiumLanguageWriterTests
         protected override CesiumPropertyWriter<NodeTransformationsCesiumWriter> CreatePropertyWriter(string propertyName)
         {
             return new NodeTransformationsCesiumWriter(propertyName);
+        }
+
+        private void AssertNodeTransformationsJson([NotNull] IDictionary<string, object> value)
+        {
+            AssertExpectedJson(PacketCesiumWriter.ModelPropertyName, new Dictionary<string, object>
+            {
+                { ModelCesiumWriter.NodeTransformationsPropertyName, value },
+            });
         }
     }
 }

@@ -47,11 +47,9 @@ public class TestArticulationsCesiumWriter extends TestCesiumPropertyWriter<Arti
                 }
             }
         }
-        final Map<String, Object> tempCollection$1 = MapHelper.create();
-        MapHelper.add(tempCollection$1, expectedName, expectedValue);
         final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, ModelCesiumWriter.ArticulationsPropertyName, tempCollection$1);
-        assertExpectedJson(PacketCesiumWriter.ModelPropertyName, tempCollection$0);
+        MapHelper.add(tempCollection$0, expectedName, expectedValue);
+        assertArticulationsJson(tempCollection$0);
     }
 
     @Test
@@ -77,12 +75,10 @@ public class TestArticulationsCesiumWriter extends TestCesiumPropertyWriter<Arti
                 }
             }
         }
-        final Map<String, Object> tempCollection$1 = MapHelper.create();
-        MapHelper.add(tempCollection$1, expectedName1, expectedValue1);
-        MapHelper.add(tempCollection$1, expectedName2, expectedValue2);
         final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, ModelCesiumWriter.ArticulationsPropertyName, tempCollection$1);
-        assertExpectedJson(PacketCesiumWriter.ModelPropertyName, tempCollection$0);
+        MapHelper.add(tempCollection$0, expectedName1, expectedValue1);
+        MapHelper.add(tempCollection$0, expectedName2, expectedValue2);
+        assertArticulationsJson(tempCollection$0);
     }
 
     @Test
@@ -132,6 +128,12 @@ public class TestArticulationsCesiumWriter extends TestCesiumPropertyWriter<Arti
                 }
             }
         }
+    }
+
+    private final void assertArticulationsJson(@Nonnull Map<String, Object> articulations) {
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, ModelCesiumWriter.ArticulationsPropertyName, articulations);
+        assertExpectedJson(PacketCesiumWriter.ModelPropertyName, tempCollection$0);
     }
 
     @Override

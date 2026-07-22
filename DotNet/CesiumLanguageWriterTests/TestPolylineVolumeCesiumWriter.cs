@@ -388,7 +388,7 @@ namespace CesiumLanguageWriterTests
             output.WriteEndSequence();
         }
 
-        private void AssertPropertyJson(string propertyName, object value)
+        private void AssertPropertyJson([NotNull] string propertyName, [NotNull] object value)
         {
             AssertExpectedJson(PacketCesiumWriter.PolylineVolumePropertyName, new Dictionary<string, object>
             {

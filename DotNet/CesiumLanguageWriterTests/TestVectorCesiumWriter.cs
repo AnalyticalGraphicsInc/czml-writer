@@ -2,6 +2,7 @@
 using System.Drawing;
 using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
+using JetBrains.Annotations;
 using NUnit.Framework;
 
 namespace CesiumLanguageWriterTests
@@ -12,19 +13,16 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void TestShow()
         {
-            const bool expectedShow = true;
+            const bool expected = true;
 
             using (var packet = OpenPacket())
             using (var vector = packet.OpenVectorProperty())
             using (var interval = vector.OpenInterval())
             {
-                interval.WriteShowProperty(expectedShow);
+                interval.WriteShowProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.VectorPropertyName, new Dictionary<string, object>
-            {
-                { VectorCesiumWriter.ShowPropertyName, expectedShow },
-            });
+            AssertPropertyJson(VectorCesiumWriter.ShowPropertyName, expected);
         }
 
         [Test]
@@ -39,29 +37,23 @@ namespace CesiumLanguageWriterTests
                 interval.WriteColorProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.VectorPropertyName, new Dictionary<string, object>
-            {
-                { VectorCesiumWriter.ColorPropertyName, expected },
-            });
+            AssertPropertyJson(VectorCesiumWriter.ColorPropertyName, expected);
         }
 
         [Test]
         public void TestDirection()
         {
-            var expectedDirection = new Cartesian(1.0, 2.0, 3.0);
+            var expected = new Cartesian(1.0, 2.0, 3.0);
 
             using (var packet = OpenPacket())
             using (var vector = packet.OpenVectorProperty())
             using (var interval = vector.OpenInterval())
             using (var direction = interval.OpenDirectionProperty())
             {
-                direction.WriteCartesian(expectedDirection);
+                direction.WriteCartesian(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.VectorPropertyName, new Dictionary<string, object>
-            {
-                { VectorCesiumWriter.DirectionPropertyName, expectedDirection },
-            });
+            AssertPropertyJson(VectorCesiumWriter.DirectionPropertyName, expected);
         }
 
         [Test]
@@ -77,45 +69,44 @@ namespace CesiumLanguageWriterTests
                 direction.WriteUnitSpherical(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.VectorPropertyName, new Dictionary<string, object>
-            {
-                { VectorCesiumWriter.DirectionPropertyName, expected },
-            });
+            AssertPropertyJson(VectorCesiumWriter.DirectionPropertyName, expected);
         }
 
         [Test]
         public void TestLength()
         {
-            const double expectedLength = 123.0;
+            const double expected = 123.0;
 
             using (var packet = OpenPacket())
             using (var vector = packet.OpenVectorProperty())
             using (var interval = vector.OpenInterval())
             {
-                interval.WriteLengthProperty(expectedLength);
+                interval.WriteLengthProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.VectorPropertyName, new Dictionary<string, object>
-            {
-                { VectorCesiumWriter.LengthPropertyName, expectedLength },
-            });
+            AssertPropertyJson(VectorCesiumWriter.LengthPropertyName, expected);
         }
 
         [Test]
         public void TestMinimumLengthInPixels()
         {
-            const double expectedMinimumLengthInPixels = 10.0;
+            const double expected = 10.0;
 
             using (var packet = OpenPacket())
             using (var vector = packet.OpenVectorProperty())
             using (var interval = vector.OpenInterval())
             {
-                interval.WriteMinimumLengthInPixelsProperty(expectedMinimumLengthInPixels);
+                interval.WriteMinimumLengthInPixelsProperty(expected);
             }
 
+            AssertPropertyJson(VectorCesiumWriter.MinimumLengthInPixelsPropertyName, expected);
+        }
+
+        private void AssertPropertyJson([NotNull] string propertyName, [NotNull] object value)
+        {
             AssertExpectedJson(PacketCesiumWriter.VectorPropertyName, new Dictionary<string, object>
             {
-                { VectorCesiumWriter.MinimumLengthInPixelsPropertyName, expectedMinimumLengthInPixels },
+                { propertyName, value },
             });
         }
 

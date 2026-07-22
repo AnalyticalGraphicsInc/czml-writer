@@ -15,21 +15,18 @@ namespace CesiumLanguageWriterTests
     public class TestPathCesiumWriter : TestCesiumPropertyWriter<PathCesiumWriter>
     {
         [Test]
-        public void TestShowProperty()
+        public void TestShow()
         {
-            const bool expectedShow = true;
+            const bool expected = true;
 
             using (var packet = OpenPacket())
             using (var path = packet.OpenPathProperty())
             using (var interval = path.OpenInterval())
             {
-                interval.WriteShowProperty(expectedShow);
+                interval.WriteShowProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.PathPropertyName, new Dictionary<string, object>
-            {
-                { PathCesiumWriter.ShowPropertyName, expectedShow },
-            });
+            AssertPropertyJson(PathCesiumWriter.ShowPropertyName, expected);
         }
 
         [Test]
@@ -70,101 +67,151 @@ namespace CesiumLanguageWriterTests
                 }
             }
 
-            AssertExpectedJson(PacketCesiumWriter.PathPropertyName, new Dictionary<string, object>
+            AssertPropertyJson(PathCesiumWriter.ShowPropertyName, new List<Dictionary<string, object>>
             {
+                new Dictionary<string, object>
                 {
-                    PathCesiumWriter.ShowPropertyName, new List<Dictionary<string, object>>
-                    {
-                        new Dictionary<string, object>
-                        {
-                            { "interval", CesiumFormattingHelper.ToIso8601Interval(interval1Start, interval1Stop, Iso8601Format.Compact) },
-                            { BooleanCesiumWriter.BooleanPropertyName, interval1Value },
-                        },
-                        new Dictionary<string, object>
-                        {
-                            { "interval", CesiumFormattingHelper.ToIso8601Interval(interval2Start, interval2Stop, Iso8601Format.Compact) },
-                            { BooleanCesiumWriter.BooleanPropertyName, interval2Value },
-                        },
-                        new Dictionary<string, object>
-                        {
-                            { "interval", CesiumFormattingHelper.ToIso8601Interval(interval3Start, interval3Stop, Iso8601Format.Compact) },
-                            { BooleanCesiumWriter.BooleanPropertyName, interval3Value },
-                        },
-                    }
+                    { "interval", CesiumFormattingHelper.ToIso8601Interval(interval1Start, interval1Stop, Iso8601Format.Compact) },
+                    { BooleanCesiumWriter.BooleanPropertyName, interval1Value },
+                },
+                new Dictionary<string, object>
+                {
+                    { "interval", CesiumFormattingHelper.ToIso8601Interval(interval2Start, interval2Stop, Iso8601Format.Compact) },
+                    { BooleanCesiumWriter.BooleanPropertyName, interval2Value },
+                },
+                new Dictionary<string, object>
+                {
+                    { "interval", CesiumFormattingHelper.ToIso8601Interval(interval3Start, interval3Stop, Iso8601Format.Compact) },
+                    { BooleanCesiumWriter.BooleanPropertyName, interval3Value },
                 },
             });
         }
 
         [Test]
-        public void TestRelativeToProperty()
+        public void TestRelativeTo()
         {
-            const string expectedRelativeTo = "INERTIAL";
+            const string expected = "INERTIAL";
 
             using (var packet = OpenPacket())
             using (var path = packet.OpenPathProperty())
             using (var interval = path.OpenInterval())
             {
-                interval.WriteRelativeToProperty(expectedRelativeTo);
+                interval.WriteRelativeToProperty(expected);
             }
-            AssertExpectedJson(PacketCesiumWriter.PathPropertyName, new Dictionary<string, object>
-            {
-                { PathCesiumWriter.RelativeToPropertyName, expectedRelativeTo },
-            });
+            AssertPropertyJson(PathCesiumWriter.RelativeToPropertyName, expected);
         }
 
         [Test]
         public void TestMaterialMode()
         {
-            const string expectedMaterialMode = "PORTIONS";
+            const CesiumPathMode expected = CesiumPathMode.Portions;
 
             using (var packet = OpenPacket())
             using (var path = packet.OpenPathProperty())
             using (var interval = path.OpenInterval())
             {
-                interval.WriteMaterialModeProperty(CesiumPathMode.Portions);
+                interval.WriteMaterialModeProperty(expected);
             }
-            AssertExpectedJson(PacketCesiumWriter.PathPropertyName, new Dictionary<string, object>
-            {
-                { PathCesiumWriter.MaterialModePropertyName, expectedMaterialMode },
-            });
+            AssertPropertyJson(PathCesiumWriter.MaterialModePropertyName, expected);
         }
 
         [Test]
-        public void TestLeadAndTrailTimeProperties()
+        public void TestLeadTime()
         {
-            const double expectedLeadTime = 10.0;
-            const double expectedTrailTime = 20.0;
+            const double expected = 10.0;
 
             using (var packet = OpenPacket())
             using (var path = packet.OpenPathProperty())
             using (var interval = path.OpenInterval())
             {
-                interval.WriteLeadTimeProperty(expectedLeadTime);
-                interval.WriteTrailTimeProperty(expectedTrailTime);
+                interval.WriteLeadTimeProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.PathPropertyName, new Dictionary<string, object>
-            {
-                { PathCesiumWriter.LeadTimePropertyName, expectedLeadTime },
-                { PathCesiumWriter.TrailTimePropertyName, expectedTrailTime },
-            });
+            AssertPropertyJson(PathCesiumWriter.LeadTimePropertyName, expected);
         }
 
         [Test]
-        public void TestDistanceDisplayConditionProperty()
+        public void TestTrailTime()
         {
-            var expectedBounds = new Bounds(1234.0, 5678.0);
+            const double expected = 20.0;
 
             using (var packet = OpenPacket())
             using (var path = packet.OpenPathProperty())
             using (var interval = path.OpenInterval())
             {
-                interval.WriteDistanceDisplayConditionProperty(expectedBounds);
+                interval.WriteTrailTimeProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.PathPropertyName, new Dictionary<string, object>
+            AssertPropertyJson(PathCesiumWriter.TrailTimePropertyName, expected);
+        }
+
+        [Test]
+        public void TestDistanceDisplayCondition()
+        {
+            var expected = new Bounds(1234.0, 5678.0);
+
+            using (var packet = OpenPacket())
+            using (var path = packet.OpenPathProperty())
+            using (var interval = path.OpenInterval())
             {
-                { PathCesiumWriter.DistanceDisplayConditionPropertyName, expectedBounds },
+                interval.WriteDistanceDisplayConditionProperty(expected);
+            }
+
+            AssertPropertyJson(PathCesiumWriter.DistanceDisplayConditionPropertyName, expected);
+        }
+
+        [Test]
+        public void TestWidth()
+        {
+            const double expected = 5.0;
+
+            using (var packet = OpenPacket())
+            using (var path = packet.OpenPathProperty())
+            using (var interval = path.OpenInterval())
+            {
+                interval.WriteWidthProperty(expected);
+            }
+
+            AssertPropertyJson(PathCesiumWriter.WidthPropertyName, expected);
+        }
+
+        [Test]
+        public void TestResolution()
+        {
+            const double expected = 30.0;
+
+            using (var packet = OpenPacket())
+            using (var path = packet.OpenPathProperty())
+            using (var interval = path.OpenInterval())
+            {
+                interval.WriteResolutionProperty(expected);
+            }
+
+            AssertPropertyJson(PathCesiumWriter.ResolutionPropertyName, expected);
+        }
+
+        [Test]
+        public void TestMaterial()
+        {
+            var expectedColor = Color.Red;
+
+            using (var packet = OpenPacket())
+            using (var path = packet.OpenPathProperty())
+            using (var interval = path.OpenInterval())
+            using (var material = interval.OpenMaterialProperty())
+            using (var solidColor = material.OpenSolidColorProperty())
+            {
+                solidColor.WriteColorProperty(expectedColor);
+            }
+
+            AssertPropertyJson(PathCesiumWriter.MaterialPropertyName, new Dictionary<string, object>
+            {
+                {
+                    PolylineMaterialCesiumWriter.SolidColorPropertyName, new Dictionary<string, object>
+                    {
+                        { SolidColorMaterialCesiumWriter.ColorPropertyName, expectedColor },
+                    }
+                },
             });
         }
 
@@ -272,6 +319,14 @@ namespace CesiumLanguageWriterTests
             }
 
             output.WriteEndSequence();
+        }
+
+        private void AssertPropertyJson([NotNull] string propertyName, [NotNull] object value)
+        {
+            AssertExpectedJson(PacketCesiumWriter.PathPropertyName, new Dictionary<string, object>
+            {
+                { propertyName, value },
+            });
         }
 
         protected override CesiumPropertyWriter<PathCesiumWriter> CreatePropertyWriter(string propertyName)

@@ -38,9 +38,7 @@ public class TestPixelOffsetCesiumWriter extends TestCesiumInterpolatablePropert
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, BillboardCesiumWriter.PixelOffsetPropertyName, expected);
-        assertExpectedJson(PacketCesiumWriter.BillboardPropertyName, tempCollection$0);
+        assertPropertyJson(BillboardCesiumWriter.PixelOffsetPropertyName, expected);
     }
 
     @Test
@@ -60,11 +58,9 @@ public class TestPixelOffsetCesiumWriter extends TestCesiumInterpolatablePropert
                 }
             }
         }
-        final Map<String, Object> tempCollection$1 = MapHelper.create();
-        MapHelper.add(tempCollection$1, PixelOffsetCesiumWriter.ReferencePropertyName, expectedIdentifier + "#" + expectedPropertyName);
         final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, BillboardCesiumWriter.PixelOffsetPropertyName, tempCollection$1);
-        assertExpectedJson(PacketCesiumWriter.BillboardPropertyName, tempCollection$0);
+        MapHelper.add(tempCollection$0, PixelOffsetCesiumWriter.ReferencePropertyName, expectedIdentifier + "#" + expectedPropertyName);
+        assertPropertyJson(BillboardCesiumWriter.PixelOffsetPropertyName, tempCollection$0);
     }
 
     @Test
@@ -83,10 +79,14 @@ public class TestPixelOffsetCesiumWriter extends TestCesiumInterpolatablePropert
                 }
             }
         }
-        final Map<String, Object> tempCollection$1 = MapHelper.create();
-        MapHelper.add(tempCollection$1, PixelOffsetCesiumWriter.DeletePropertyName, expectedDelete);
         final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, BillboardCesiumWriter.PixelOffsetPropertyName, tempCollection$1);
+        MapHelper.add(tempCollection$0, PixelOffsetCesiumWriter.DeletePropertyName, expectedDelete);
+        assertPropertyJson(BillboardCesiumWriter.PixelOffsetPropertyName, tempCollection$0);
+    }
+
+    private final void assertPropertyJson(@Nonnull String propertyName, @Nonnull Object value) {
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, propertyName, value);
         assertExpectedJson(PacketCesiumWriter.BillboardPropertyName, tempCollection$0);
     }
 

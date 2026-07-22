@@ -26,20 +26,18 @@ import org.junit.Test;
 public class TestVectorCesiumWriter extends TestCesiumPropertyWriter<VectorCesiumWriter> {
     @Test
     public final void testShow() {
-        final boolean expectedShow = true;
+        final boolean expected = true;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<VectorCesiumWriter> using$1 = new Using<VectorCesiumWriter>(packet.openVectorProperty())) {
                 final VectorCesiumWriter vector = using$1.resource;
                 try (Using<VectorCesiumWriter> using$2 = new Using<VectorCesiumWriter>(vector.openInterval())) {
                     final VectorCesiumWriter interval = using$2.resource;
-                    interval.writeShowProperty(expectedShow);
+                    interval.writeShowProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, VectorCesiumWriter.ShowPropertyName, expectedShow);
-        assertExpectedJson(PacketCesiumWriter.VectorPropertyName, tempCollection$0);
+        assertPropertyJson(VectorCesiumWriter.ShowPropertyName, expected);
     }
 
     @Test
@@ -55,14 +53,12 @@ public class TestVectorCesiumWriter extends TestCesiumPropertyWriter<VectorCesiu
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, VectorCesiumWriter.ColorPropertyName, expected);
-        assertExpectedJson(PacketCesiumWriter.VectorPropertyName, tempCollection$0);
+        assertPropertyJson(VectorCesiumWriter.ColorPropertyName, expected);
     }
 
     @Test
     public final void testDirection() {
-        Cartesian expectedDirection = new Cartesian(1.0, 2.0, 3.0);
+        Cartesian expected = new Cartesian(1.0, 2.0, 3.0);
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<VectorCesiumWriter> using$1 = new Using<VectorCesiumWriter>(packet.openVectorProperty())) {
@@ -71,14 +67,12 @@ public class TestVectorCesiumWriter extends TestCesiumPropertyWriter<VectorCesiu
                     final VectorCesiumWriter interval = using$2.resource;
                     try (Using<DirectionCesiumWriter> using$3 = new Using<DirectionCesiumWriter>(interval.openDirectionProperty())) {
                         final DirectionCesiumWriter direction = using$3.resource;
-                        direction.writeCartesian(expectedDirection);
+                        direction.writeCartesian(expected);
                     }
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, VectorCesiumWriter.DirectionPropertyName, expectedDirection);
-        assertExpectedJson(PacketCesiumWriter.VectorPropertyName, tempCollection$0);
+        assertPropertyJson(VectorCesiumWriter.DirectionPropertyName, expected);
     }
 
     @Test
@@ -97,44 +91,44 @@ public class TestVectorCesiumWriter extends TestCesiumPropertyWriter<VectorCesiu
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, VectorCesiumWriter.DirectionPropertyName, expected);
-        assertExpectedJson(PacketCesiumWriter.VectorPropertyName, tempCollection$0);
+        assertPropertyJson(VectorCesiumWriter.DirectionPropertyName, expected);
     }
 
     @Test
     public final void testLength() {
-        final double expectedLength = 123.0;
+        final double expected = 123.0;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<VectorCesiumWriter> using$1 = new Using<VectorCesiumWriter>(packet.openVectorProperty())) {
                 final VectorCesiumWriter vector = using$1.resource;
                 try (Using<VectorCesiumWriter> using$2 = new Using<VectorCesiumWriter>(vector.openInterval())) {
                     final VectorCesiumWriter interval = using$2.resource;
-                    interval.writeLengthProperty(expectedLength);
+                    interval.writeLengthProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, VectorCesiumWriter.LengthPropertyName, expectedLength);
-        assertExpectedJson(PacketCesiumWriter.VectorPropertyName, tempCollection$0);
+        assertPropertyJson(VectorCesiumWriter.LengthPropertyName, expected);
     }
 
     @Test
     public final void testMinimumLengthInPixels() {
-        final double expectedMinimumLengthInPixels = 10.0;
+        final double expected = 10.0;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<VectorCesiumWriter> using$1 = new Using<VectorCesiumWriter>(packet.openVectorProperty())) {
                 final VectorCesiumWriter vector = using$1.resource;
                 try (Using<VectorCesiumWriter> using$2 = new Using<VectorCesiumWriter>(vector.openInterval())) {
                     final VectorCesiumWriter interval = using$2.resource;
-                    interval.writeMinimumLengthInPixelsProperty(expectedMinimumLengthInPixels);
+                    interval.writeMinimumLengthInPixelsProperty(expected);
                 }
             }
         }
+        assertPropertyJson(VectorCesiumWriter.MinimumLengthInPixelsPropertyName, expected);
+    }
+
+    private final void assertPropertyJson(@Nonnull String propertyName, @Nonnull Object value) {
         final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, VectorCesiumWriter.MinimumLengthInPixelsPropertyName, expectedMinimumLengthInPixels);
+        MapHelper.add(tempCollection$0, propertyName, value);
         assertExpectedJson(PacketCesiumWriter.VectorPropertyName, tempCollection$0);
     }
 

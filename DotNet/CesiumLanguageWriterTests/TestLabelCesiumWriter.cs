@@ -2,6 +2,7 @@
 using System.Drawing;
 using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
+using JetBrains.Annotations;
 using NUnit.Framework;
 
 namespace CesiumLanguageWriterTests
@@ -407,7 +408,7 @@ namespace CesiumLanguageWriterTests
             Assert.AreEqual("{\"label\":{\"translucencyByDistance\":{\"epoch\":\"20120402T12Z\",\"nearFarScalar\":[0,100,1,200,2,60,200,1,300,2]}}}", StringWriter.ToString());
         }
 
-        private void AssertPropertyJson(string propertyName, object value)
+        private void AssertPropertyJson([NotNull] string propertyName, [NotNull] object value)
         {
             AssertExpectedJson(PacketCesiumWriter.LabelPropertyName, new Dictionary<string, object>
             {

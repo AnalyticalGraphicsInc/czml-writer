@@ -27,20 +27,20 @@ import org.junit.Test;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestPositionCesiumWriter extends TestCesiumInterpolatablePropertyWriter<PositionCesiumWriter> {
     @Test
-    public final void referenceFrameValueWritesReferenceFrameProperty() {
-        final String expectedReferenceFrame = "myReferenceFrame";
+    public final void referenceFrame() {
+        final String expected = "myReferenceFrame";
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<PositionCesiumWriter> using$1 = new Using<PositionCesiumWriter>(packet.openPositionProperty())) {
                 final PositionCesiumWriter position = using$1.resource;
                 try (Using<PositionCesiumWriter> using$2 = new Using<PositionCesiumWriter>(position.openInterval())) {
                     final PositionCesiumWriter interval = using$2.resource;
-                    interval.writeReferenceFrame(expectedReferenceFrame);
+                    interval.writeReferenceFrame(expected);
                 }
             }
         }
         final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, PositionCesiumWriter.ReferenceFramePropertyName, expectedReferenceFrame);
+        MapHelper.add(tempCollection$0, PositionCesiumWriter.ReferenceFramePropertyName, expected);
         assertExpectedJson(PacketCesiumWriter.PositionPropertyName, tempCollection$0);
     }
 

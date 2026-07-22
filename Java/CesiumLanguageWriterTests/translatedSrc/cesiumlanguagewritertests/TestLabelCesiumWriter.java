@@ -442,7 +442,7 @@ public class TestLabelCesiumWriter extends TestCesiumPropertyWriter<LabelCesiumW
         AssertHelper.assertEquals("{\"label\":{\"translucencyByDistance\":{\"epoch\":\"20120402T12Z\",\"nearFarScalar\":[0,100,1,200,2,60,200,1,300,2]}}}", getStringWriter().toString());
     }
 
-    private final void assertPropertyJson(String propertyName, Object value) {
+    private final void assertPropertyJson(@Nonnull String propertyName, @Nonnull Object value) {
         final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, propertyName, value);
         assertExpectedJson(PacketCesiumWriter.LabelPropertyName, tempCollection$0);

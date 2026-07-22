@@ -63,9 +63,7 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, expectedName, expectedValue);
-        assertExpectedJson(PacketCesiumWriter.PropertiesPropertyName, tempCollection$0);
+        assertPropertyJson(expectedName, expectedValue);
     }
 
     @Test
@@ -85,12 +83,10 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
                 }
             }
         }
-        final Map<String, Object> tempCollection$1 = MapHelper.create();
-        MapHelper.add(tempCollection$1, "interval", m_isoIntervalString);
-        MapHelper.add(tempCollection$1, CustomPropertyCesiumWriter.BooleanPropertyName, expectedValue);
         final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, expectedName, tempCollection$1);
-        assertExpectedJson(PacketCesiumWriter.PropertiesPropertyName, tempCollection$0);
+        MapHelper.add(tempCollection$0, "interval", m_isoIntervalString);
+        MapHelper.add(tempCollection$0, CustomPropertyCesiumWriter.BooleanPropertyName, expectedValue);
+        assertPropertyJson(expectedName, tempCollection$0);
     }
 
     @Test
@@ -107,9 +103,7 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, expectedName, expectedValue);
-        assertExpectedJson(PacketCesiumWriter.PropertiesPropertyName, tempCollection$0);
+        assertPropertyJson(expectedName, expectedValue);
     }
 
     @Test
@@ -249,6 +243,12 @@ public class TestCustomPropertiesCesiumWriter extends TestCesiumPropertyWriter<C
             }
         }
         output.writeEndSequence();
+    }
+
+    private final void assertPropertyJson(@Nonnull String propertyName, @Nonnull Object value) {
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, propertyName, value);
+        assertExpectedJson(PacketCesiumWriter.PropertiesPropertyName, tempCollection$0);
     }
 
     @Override

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
+using JetBrains.Annotations;
 using NUnit.Framework;
 
 namespace CesiumLanguageWriterTests
@@ -21,10 +22,7 @@ namespace CesiumLanguageWriterTests
                 eyeOffset.WriteCartesian(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.BillboardPropertyName, new Dictionary<string, object>
-            {
-                { BillboardCesiumWriter.EyeOffsetPropertyName, expected },
-            });
+            AssertPropertyJson(BillboardCesiumWriter.EyeOffsetPropertyName, expected);
         }
 
         [Test]
@@ -41,14 +39,9 @@ namespace CesiumLanguageWriterTests
                 eyeOffset.WriteReference(expectedIdentifier, expectedPropertyName);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.BillboardPropertyName, new Dictionary<string, object>
+            AssertPropertyJson(BillboardCesiumWriter.EyeOffsetPropertyName, new Dictionary<string, object>
             {
-                {
-                    BillboardCesiumWriter.EyeOffsetPropertyName, new Dictionary<string, object>
-                    {
-                        { EyeOffsetCesiumWriter.ReferencePropertyName, expectedIdentifier + "#" + expectedPropertyName },
-                    }
-                },
+                { EyeOffsetCesiumWriter.ReferencePropertyName, expectedIdentifier + "#" + expectedPropertyName },
             });
         }
 
@@ -65,14 +58,17 @@ namespace CesiumLanguageWriterTests
                 eyeOffset.WriteDelete(expectedDelete);
             }
 
+            AssertPropertyJson(BillboardCesiumWriter.EyeOffsetPropertyName, new Dictionary<string, object>
+            {
+                { EyeOffsetCesiumWriter.DeletePropertyName, expectedDelete },
+            });
+        }
+
+        private void AssertPropertyJson([NotNull] string propertyName, [NotNull] object value)
+        {
             AssertExpectedJson(PacketCesiumWriter.BillboardPropertyName, new Dictionary<string, object>
             {
-                {
-                    BillboardCesiumWriter.EyeOffsetPropertyName, new Dictionary<string, object>
-                    {
-                        { EyeOffsetCesiumWriter.DeletePropertyName, expectedDelete },
-                    }
-                },
+                { propertyName, value },
             });
         }
 

@@ -25,182 +25,168 @@ import org.junit.Test;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestPointCesiumWriter extends TestCesiumPropertyWriter<PointCesiumWriter> {
     @Test
-    public final void testShowProperty() {
-        final boolean expectedShow = true;
+    public final void testShow() {
+        final boolean expected = true;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<PointCesiumWriter> using$1 = new Using<PointCesiumWriter>(packet.openPointProperty())) {
                 final PointCesiumWriter point = using$1.resource;
                 try (Using<PointCesiumWriter> using$2 = new Using<PointCesiumWriter>(point.openInterval())) {
                     final PointCesiumWriter interval = using$2.resource;
-                    interval.writeShowProperty(expectedShow);
+                    interval.writeShowProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, PointCesiumWriter.ShowPropertyName, expectedShow);
-        assertExpectedJson(PacketCesiumWriter.PointPropertyName, tempCollection$0);
+        assertPropertyJson(PointCesiumWriter.ShowPropertyName, expected);
     }
 
     @Test
-    public final void testPixelSizeProperty() {
-        final double expectedPixelSize = 10.0;
+    public final void testPixelSize() {
+        final double expected = 10.0;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<PointCesiumWriter> using$1 = new Using<PointCesiumWriter>(packet.openPointProperty())) {
                 final PointCesiumWriter point = using$1.resource;
                 try (Using<PointCesiumWriter> using$2 = new Using<PointCesiumWriter>(point.openInterval())) {
                     final PointCesiumWriter interval = using$2.resource;
-                    interval.writePixelSizeProperty(expectedPixelSize);
+                    interval.writePixelSizeProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, PointCesiumWriter.PixelSizePropertyName, expectedPixelSize);
-        assertExpectedJson(PacketCesiumWriter.PointPropertyName, tempCollection$0);
+        assertPropertyJson(PointCesiumWriter.PixelSizePropertyName, expected);
     }
 
     @Test
-    public final void testHeightReferenceProperty() {
-        final CesiumHeightReference expectedHeightReference = CesiumHeightReference.CLAMP_TO_GROUND;
+    public final void testHeightReference() {
+        final CesiumHeightReference expected = CesiumHeightReference.CLAMP_TO_GROUND;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<PointCesiumWriter> using$1 = new Using<PointCesiumWriter>(packet.openPointProperty())) {
                 final PointCesiumWriter point = using$1.resource;
                 try (Using<PointCesiumWriter> using$2 = new Using<PointCesiumWriter>(point.openInterval())) {
                     final PointCesiumWriter interval = using$2.resource;
-                    interval.writeHeightReferenceProperty(expectedHeightReference);
+                    interval.writeHeightReferenceProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, PointCesiumWriter.HeightReferencePropertyName, expectedHeightReference);
-        assertExpectedJson(PacketCesiumWriter.PointPropertyName, tempCollection$0);
+        assertPropertyJson(PointCesiumWriter.HeightReferencePropertyName, expected);
     }
 
     @Test
-    public final void testColorProperty() {
-        Color expectedColor = ColorHelper.fromArgb(128, 10, 20, 30);
+    public final void testColor() {
+        Color expected = ColorHelper.fromArgb(128, 10, 20, 30);
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<PointCesiumWriter> using$1 = new Using<PointCesiumWriter>(packet.openPointProperty())) {
                 final PointCesiumWriter point = using$1.resource;
                 try (Using<PointCesiumWriter> using$2 = new Using<PointCesiumWriter>(point.openInterval())) {
                     final PointCesiumWriter interval = using$2.resource;
-                    interval.writeColorProperty(expectedColor);
+                    interval.writeColorProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, PointCesiumWriter.ColorPropertyName, expectedColor);
-        assertExpectedJson(PacketCesiumWriter.PointPropertyName, tempCollection$0);
+        assertPropertyJson(PointCesiumWriter.ColorPropertyName, expected);
     }
 
     @Test
-    public final void testOutlineColorProperty() {
-        Color expectedOutlineColor = ColorHelper.fromArgb(255, 1, 2, 3);
+    public final void testOutlineColor() {
+        Color expected = ColorHelper.fromArgb(255, 1, 2, 3);
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<PointCesiumWriter> using$1 = new Using<PointCesiumWriter>(packet.openPointProperty())) {
                 final PointCesiumWriter point = using$1.resource;
                 try (Using<PointCesiumWriter> using$2 = new Using<PointCesiumWriter>(point.openInterval())) {
                     final PointCesiumWriter interval = using$2.resource;
-                    interval.writeOutlineColorProperty(expectedOutlineColor);
+                    interval.writeOutlineColorProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, PointCesiumWriter.OutlineColorPropertyName, expectedOutlineColor);
-        assertExpectedJson(PacketCesiumWriter.PointPropertyName, tempCollection$0);
+        assertPropertyJson(PointCesiumWriter.OutlineColorPropertyName, expected);
     }
 
     @Test
-    public final void testOutlineWidthProperty() {
-        final double expectedOutlineWidth = 2.0;
+    public final void testOutlineWidth() {
+        final double expected = 2.0;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<PointCesiumWriter> using$1 = new Using<PointCesiumWriter>(packet.openPointProperty())) {
                 final PointCesiumWriter point = using$1.resource;
                 try (Using<PointCesiumWriter> using$2 = new Using<PointCesiumWriter>(point.openInterval())) {
                     final PointCesiumWriter interval = using$2.resource;
-                    interval.writeOutlineWidthProperty(expectedOutlineWidth);
+                    interval.writeOutlineWidthProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, PointCesiumWriter.OutlineWidthPropertyName, expectedOutlineWidth);
-        assertExpectedJson(PacketCesiumWriter.PointPropertyName, tempCollection$0);
+        assertPropertyJson(PointCesiumWriter.OutlineWidthPropertyName, expected);
     }
 
     @Test
-    public final void testScaleByDistanceProperty() {
-        NearFarScalar expectedScale = new NearFarScalar(1.0, 2.0, 3.0, 4.0);
+    public final void testScaleByDistance() {
+        NearFarScalar expected = new NearFarScalar(1.0, 2.0, 3.0, 4.0);
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<PointCesiumWriter> using$1 = new Using<PointCesiumWriter>(packet.openPointProperty())) {
                 final PointCesiumWriter point = using$1.resource;
                 try (Using<PointCesiumWriter> using$2 = new Using<PointCesiumWriter>(point.openInterval())) {
                     final PointCesiumWriter interval = using$2.resource;
-                    interval.writeScaleByDistanceProperty(expectedScale);
+                    interval.writeScaleByDistanceProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, PointCesiumWriter.ScaleByDistancePropertyName, expectedScale);
-        assertExpectedJson(PacketCesiumWriter.PointPropertyName, tempCollection$0);
+        assertPropertyJson(PointCesiumWriter.ScaleByDistancePropertyName, expected);
     }
 
     @Test
-    public final void testTranslucencyByDistanceProperty() {
-        NearFarScalar expectedTranslucency = new NearFarScalar(1.0, 0.5, 2.0, 0.1);
+    public final void testTranslucencyByDistance() {
+        NearFarScalar expected = new NearFarScalar(1.0, 0.5, 2.0, 0.1);
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<PointCesiumWriter> using$1 = new Using<PointCesiumWriter>(packet.openPointProperty())) {
                 final PointCesiumWriter point = using$1.resource;
                 try (Using<PointCesiumWriter> using$2 = new Using<PointCesiumWriter>(point.openInterval())) {
                     final PointCesiumWriter interval = using$2.resource;
-                    interval.writeTranslucencyByDistanceProperty(expectedTranslucency);
+                    interval.writeTranslucencyByDistanceProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, PointCesiumWriter.TranslucencyByDistancePropertyName, expectedTranslucency);
-        assertExpectedJson(PacketCesiumWriter.PointPropertyName, tempCollection$0);
+        assertPropertyJson(PointCesiumWriter.TranslucencyByDistancePropertyName, expected);
     }
 
     @Test
-    public final void testDistanceDisplayConditionProperty() {
-        Bounds expectedBounds = new Bounds(1.0, 1324.0);
+    public final void testDistanceDisplayCondition() {
+        Bounds expected = new Bounds(1.0, 1324.0);
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<PointCesiumWriter> using$1 = new Using<PointCesiumWriter>(packet.openPointProperty())) {
                 final PointCesiumWriter point = using$1.resource;
                 try (Using<PointCesiumWriter> using$2 = new Using<PointCesiumWriter>(point.openInterval())) {
                     final PointCesiumWriter interval = using$2.resource;
-                    interval.writeDistanceDisplayConditionProperty(expectedBounds);
+                    interval.writeDistanceDisplayConditionProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, PointCesiumWriter.DistanceDisplayConditionPropertyName, expectedBounds);
-        assertExpectedJson(PacketCesiumWriter.PointPropertyName, tempCollection$0);
+        assertPropertyJson(PointCesiumWriter.DistanceDisplayConditionPropertyName, expected);
     }
 
     @Test
-    public final void testDisableDepthTestDistanceProperty() {
-        final double expectedDisableDepthTestDistance = 500.0;
+    public final void testDisableDepthTestDistance() {
+        final double expected = 500.0;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<PointCesiumWriter> using$1 = new Using<PointCesiumWriter>(packet.openPointProperty())) {
                 final PointCesiumWriter point = using$1.resource;
                 try (Using<PointCesiumWriter> using$2 = new Using<PointCesiumWriter>(point.openInterval())) {
                     final PointCesiumWriter interval = using$2.resource;
-                    interval.writeDisableDepthTestDistanceProperty(expectedDisableDepthTestDistance);
+                    interval.writeDisableDepthTestDistanceProperty(expected);
                 }
             }
         }
+        assertPropertyJson(PointCesiumWriter.DisableDepthTestDistancePropertyName, expected);
+    }
+
+    private final void assertPropertyJson(@Nonnull String propertyName, @Nonnull Object value) {
         final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, PointCesiumWriter.DisableDepthTestDistancePropertyName, expectedDisableDepthTestDistance);
+        MapHelper.add(tempCollection$0, propertyName, value);
         assertExpectedJson(PacketCesiumWriter.PointPropertyName, tempCollection$0);
     }
 

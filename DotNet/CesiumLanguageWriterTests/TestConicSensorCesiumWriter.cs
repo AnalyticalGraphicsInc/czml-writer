@@ -2,6 +2,7 @@
 using System.Drawing;
 using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
+using JetBrains.Annotations;
 using NUnit.Framework;
 
 namespace CesiumLanguageWriterTests
@@ -494,7 +495,7 @@ namespace CesiumLanguageWriterTests
             AssertPropertyJson(ConicSensorCesiumWriter.ViewshedResolutionPropertyName, expected);
         }
 
-        private void AssertPropertyJson(string propertyName, object value)
+        private void AssertPropertyJson([NotNull] string propertyName, [NotNull] object value)
         {
             AssertExpectedJson(PacketCesiumWriter.ConicSensorPropertyName, new Dictionary<string, object>
             {

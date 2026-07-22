@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
+using JetBrains.Annotations;
 using NUnit.Framework;
 
 namespace CesiumLanguageWriterTests
@@ -21,10 +22,7 @@ namespace CesiumLanguageWriterTests
                 pixelOffset.WriteCartesian2(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.BillboardPropertyName, new Dictionary<string, object>
-            {
-                { BillboardCesiumWriter.PixelOffsetPropertyName, expected },
-            });
+            AssertPropertyJson(BillboardCesiumWriter.PixelOffsetPropertyName, expected);
         }
 
         [Test]
@@ -41,14 +39,9 @@ namespace CesiumLanguageWriterTests
                 pixelOffset.WriteReference(expectedIdentifier, expectedPropertyName);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.BillboardPropertyName, new Dictionary<string, object>
+            AssertPropertyJson(BillboardCesiumWriter.PixelOffsetPropertyName, new Dictionary<string, object>
             {
-                {
-                    BillboardCesiumWriter.PixelOffsetPropertyName, new Dictionary<string, object>
-                    {
-                        { PixelOffsetCesiumWriter.ReferencePropertyName, expectedIdentifier + "#" + expectedPropertyName },
-                    }
-                },
+                { PixelOffsetCesiumWriter.ReferencePropertyName, expectedIdentifier + "#" + expectedPropertyName },
             });
         }
 
@@ -65,14 +58,17 @@ namespace CesiumLanguageWriterTests
                 pixelOffset.WriteDelete(expectedDelete);
             }
 
+            AssertPropertyJson(BillboardCesiumWriter.PixelOffsetPropertyName, new Dictionary<string, object>
+            {
+                { PixelOffsetCesiumWriter.DeletePropertyName, expectedDelete },
+            });
+        }
+
+        private void AssertPropertyJson([NotNull] string propertyName, [NotNull] object value)
+        {
             AssertExpectedJson(PacketCesiumWriter.BillboardPropertyName, new Dictionary<string, object>
             {
-                {
-                    BillboardCesiumWriter.PixelOffsetPropertyName, new Dictionary<string, object>
-                    {
-                        { PixelOffsetCesiumWriter.DeletePropertyName, expectedDelete },
-                    }
-                },
+                { propertyName, value },
             });
         }
 

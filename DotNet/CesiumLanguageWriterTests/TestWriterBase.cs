@@ -284,6 +284,23 @@ namespace CesiumLanguageWriterTests
                 }
             }
 
+            if (value is Spherical)
+            {
+                var spherical = (Spherical)value;
+                return FormatValueType(DirectionCesiumWriter.SphericalPropertyName, Decompose(spherical));
+            }
+
+            {
+                var sphericalList = value as SphericalList;
+                if (!ReferenceEquals(sphericalList, null))
+                {
+                    return CreateExpectedJson(new Dictionary<string, object>
+                    {
+                        { DirectionListCesiumWriter.SphericalPropertyName, sphericalList.SelectMany(o => Decompose(o)) },
+                    });
+                }
+            }
+
             {
                 var cartographicExtent = value as CartographicExtent;
                 if (!ReferenceEquals(cartographicExtent, null))
@@ -322,6 +339,11 @@ namespace CesiumLanguageWriterTests
         private static List<object> Decompose(UnitSpherical value)
         {
             return new List<object> { value.Clock, value.Cone };
+        }
+
+        private static List<object> Decompose(Spherical value)
+        {
+            return new List<object> { value.Clock, value.Cone, value.Magnitude };
         }
 
         private static List<object> Decompose(Color value)
@@ -394,6 +416,10 @@ namespace CesiumLanguageWriterTests
         {
             string expectedJson = CreateExpectedJson(dictionary);
             Assert.AreEqual(expectedJson, StringWriter.ToString());
+        }
+
+        public sealed class SphericalList : List<Spherical>
+        {
         }
 
         public sealed class UnitSphericalList : List<UnitSpherical>

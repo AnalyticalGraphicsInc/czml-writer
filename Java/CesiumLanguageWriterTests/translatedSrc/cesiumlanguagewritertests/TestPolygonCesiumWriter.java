@@ -555,7 +555,7 @@ public class TestPolygonCesiumWriter extends TestCesiumPropertyWriter<PolygonCes
         }
     }
 
-    private final void assertPropertyJson(String propertyName, Object value) {
+    private final void assertPropertyJson(@Nonnull String propertyName, @Nonnull Object value) {
         final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, propertyName, value);
         assertExpectedJson(PacketCesiumWriter.PolygonPropertyName, tempCollection$0);

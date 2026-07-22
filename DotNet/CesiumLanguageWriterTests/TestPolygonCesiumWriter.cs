@@ -495,7 +495,7 @@ namespace CesiumLanguageWriterTests
             }
         }
 
-        private void AssertPropertyJson(string propertyName, object value)
+        private void AssertPropertyJson([NotNull] string propertyName, [NotNull] object value)
         {
             AssertExpectedJson(PacketCesiumWriter.PolygonPropertyName, new Dictionary<string, object>
             {

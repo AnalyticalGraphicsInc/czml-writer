@@ -125,7 +125,7 @@ public class TestTilesetCesiumWriter extends TestCesiumPropertyWriter<TilesetCes
         assertPropertyJson(TilesetCesiumWriter.MaximumScreenSpaceErrorPropertyName, expected);
     }
 
-    private final void assertPropertyJson(String propertyName, Object value) {
+    private final void assertPropertyJson(@Nonnull String propertyName, @Nonnull Object value) {
         final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, propertyName, value);
         assertExpectedJson(PacketCesiumWriter.TilesetPropertyName, tempCollection$0);

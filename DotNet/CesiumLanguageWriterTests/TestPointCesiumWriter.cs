@@ -2,6 +2,7 @@
 using System.Drawing;
 using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
+using JetBrains.Annotations;
 using NUnit.Framework;
 
 namespace CesiumLanguageWriterTests
@@ -10,182 +11,160 @@ namespace CesiumLanguageWriterTests
     public class TestPointCesiumWriter : TestCesiumPropertyWriter<PointCesiumWriter>
     {
         [Test]
-        public void TestShowProperty()
+        public void TestShow()
         {
-            const bool expectedShow = true;
+            const bool expected = true;
 
             using (var packet = OpenPacket())
             using (var point = packet.OpenPointProperty())
             using (var interval = point.OpenInterval())
             {
-                interval.WriteShowProperty(expectedShow);
+                interval.WriteShowProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.PointPropertyName, new Dictionary<string, object>
-            {
-                { PointCesiumWriter.ShowPropertyName, expectedShow },
-            });
+            AssertPropertyJson(PointCesiumWriter.ShowPropertyName, expected);
         }
 
         [Test]
-        public void TestPixelSizeProperty()
+        public void TestPixelSize()
         {
-            const double expectedPixelSize = 10.0;
+            const double expected = 10.0;
 
             using (var packet = OpenPacket())
             using (var point = packet.OpenPointProperty())
             using (var interval = point.OpenInterval())
             {
-                interval.WritePixelSizeProperty(expectedPixelSize);
+                interval.WritePixelSizeProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.PointPropertyName, new Dictionary<string, object>
-            {
-                { PointCesiumWriter.PixelSizePropertyName, expectedPixelSize },
-            });
+            AssertPropertyJson(PointCesiumWriter.PixelSizePropertyName, expected);
         }
 
         [Test]
-        public void TestHeightReferenceProperty()
+        public void TestHeightReference()
         {
-            const CesiumHeightReference expectedHeightReference = CesiumHeightReference.ClampToGround;
+            const CesiumHeightReference expected = CesiumHeightReference.ClampToGround;
 
             using (var packet = OpenPacket())
             using (var point = packet.OpenPointProperty())
             using (var interval = point.OpenInterval())
             {
-                interval.WriteHeightReferenceProperty(expectedHeightReference);
+                interval.WriteHeightReferenceProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.PointPropertyName, new Dictionary<string, object>
-            {
-                { PointCesiumWriter.HeightReferencePropertyName, expectedHeightReference },
-            });
+            AssertPropertyJson(PointCesiumWriter.HeightReferencePropertyName, expected);
         }
 
         [Test]
-        public void TestColorProperty()
+        public void TestColor()
         {
-            var expectedColor = Color.FromArgb(128, 10, 20, 30);
+            var expected = Color.FromArgb(128, 10, 20, 30);
 
             using (var packet = OpenPacket())
             using (var point = packet.OpenPointProperty())
             using (var interval = point.OpenInterval())
             {
-                interval.WriteColorProperty(expectedColor);
+                interval.WriteColorProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.PointPropertyName, new Dictionary<string, object>
-            {
-                { PointCesiumWriter.ColorPropertyName, expectedColor },
-            });
+            AssertPropertyJson(PointCesiumWriter.ColorPropertyName, expected);
         }
 
         [Test]
-        public void TestOutlineColorProperty()
+        public void TestOutlineColor()
         {
-            var expectedOutlineColor = Color.FromArgb(255, 1, 2, 3);
+            var expected = Color.FromArgb(255, 1, 2, 3);
 
             using (var packet = OpenPacket())
             using (var point = packet.OpenPointProperty())
             using (var interval = point.OpenInterval())
             {
-                interval.WriteOutlineColorProperty(expectedOutlineColor);
+                interval.WriteOutlineColorProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.PointPropertyName, new Dictionary<string, object>
-            {
-                { PointCesiumWriter.OutlineColorPropertyName, expectedOutlineColor },
-            });
+            AssertPropertyJson(PointCesiumWriter.OutlineColorPropertyName, expected);
         }
 
         [Test]
-        public void TestOutlineWidthProperty()
+        public void TestOutlineWidth()
         {
-            const double expectedOutlineWidth = 2.0;
+            const double expected = 2.0;
 
             using (var packet = OpenPacket())
             using (var point = packet.OpenPointProperty())
             using (var interval = point.OpenInterval())
             {
-                interval.WriteOutlineWidthProperty(expectedOutlineWidth);
+                interval.WriteOutlineWidthProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.PointPropertyName, new Dictionary<string, object>
-            {
-                { PointCesiumWriter.OutlineWidthPropertyName, expectedOutlineWidth },
-            });
+            AssertPropertyJson(PointCesiumWriter.OutlineWidthPropertyName, expected);
         }
 
         [Test]
-        public void TestScaleByDistanceProperty()
+        public void TestScaleByDistance()
         {
-            var expectedScale = new NearFarScalar(1.0, 2.0, 3.0, 4.0);
+            var expected = new NearFarScalar(1.0, 2.0, 3.0, 4.0);
 
             using (var packet = OpenPacket())
             using (var point = packet.OpenPointProperty())
             using (var interval = point.OpenInterval())
             {
-                interval.WriteScaleByDistanceProperty(expectedScale);
+                interval.WriteScaleByDistanceProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.PointPropertyName, new Dictionary<string, object>
-            {
-                { PointCesiumWriter.ScaleByDistancePropertyName, expectedScale },
-            });
+            AssertPropertyJson(PointCesiumWriter.ScaleByDistancePropertyName, expected);
         }
 
         [Test]
-        public void TestTranslucencyByDistanceProperty()
+        public void TestTranslucencyByDistance()
         {
-            var expectedTranslucency = new NearFarScalar(1.0, 0.5, 2.0, 0.1);
+            var expected = new NearFarScalar(1.0, 0.5, 2.0, 0.1);
 
             using (var packet = OpenPacket())
             using (var point = packet.OpenPointProperty())
             using (var interval = point.OpenInterval())
             {
-                interval.WriteTranslucencyByDistanceProperty(expectedTranslucency);
+                interval.WriteTranslucencyByDistanceProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.PointPropertyName, new Dictionary<string, object>
-            {
-                { PointCesiumWriter.TranslucencyByDistancePropertyName, expectedTranslucency },
-            });
+            AssertPropertyJson(PointCesiumWriter.TranslucencyByDistancePropertyName, expected);
         }
 
         [Test]
-        public void TestDistanceDisplayConditionProperty()
+        public void TestDistanceDisplayCondition()
         {
-            var expectedBounds = new Bounds(1.0, 1324.0);
+            var expected = new Bounds(1.0, 1324.0);
 
             using (var packet = OpenPacket())
             using (var point = packet.OpenPointProperty())
             using (var interval = point.OpenInterval())
             {
-                interval.WriteDistanceDisplayConditionProperty(expectedBounds);
+                interval.WriteDistanceDisplayConditionProperty(expected);
             }
 
-            AssertExpectedJson(PacketCesiumWriter.PointPropertyName, new Dictionary<string, object>
-            {
-                { PointCesiumWriter.DistanceDisplayConditionPropertyName, expectedBounds },
-            });
+            AssertPropertyJson(PointCesiumWriter.DistanceDisplayConditionPropertyName, expected);
         }
 
         [Test]
-        public void TestDisableDepthTestDistanceProperty()
+        public void TestDisableDepthTestDistance()
         {
-            const double expectedDisableDepthTestDistance = 500.0;
+            const double expected = 500.0;
 
             using (var packet = OpenPacket())
             using (var point = packet.OpenPointProperty())
             using (var interval = point.OpenInterval())
             {
-                interval.WriteDisableDepthTestDistanceProperty(expectedDisableDepthTestDistance);
+                interval.WriteDisableDepthTestDistanceProperty(expected);
             }
 
+            AssertPropertyJson(PointCesiumWriter.DisableDepthTestDistancePropertyName, expected);
+        }
+
+        private void AssertPropertyJson([NotNull] string propertyName, [NotNull] object value)
+        {
             AssertExpectedJson(PacketCesiumWriter.PointPropertyName, new Dictionary<string, object>
             {
-                { PointCesiumWriter.DisableDepthTestDistancePropertyName, expectedDisableDepthTestDistance },
+                { propertyName, value },
             });
         }
 

@@ -32,9 +32,7 @@ public class TestViewFromCesiumWriter extends TestCesiumPropertyWriter<ViewFromC
                 viewFrom.writeCartesian(expected);
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, PacketCesiumWriter.ViewFromPropertyName, expected);
-        assertExpectedJson(tempCollection$0);
+        assertPropertyJson(expected);
     }
 
     @Test
@@ -50,7 +48,7 @@ public class TestViewFromCesiumWriter extends TestCesiumPropertyWriter<ViewFromC
         }
         final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, ViewFromCesiumWriter.ReferencePropertyName, expectedIdentifier + "#" + expectedPropertyName);
-        assertExpectedJson(PacketCesiumWriter.ViewFromPropertyName, tempCollection$0);
+        assertPropertyJson(tempCollection$0);
     }
 
     @Test
@@ -65,7 +63,13 @@ public class TestViewFromCesiumWriter extends TestCesiumPropertyWriter<ViewFromC
         }
         final Map<String, Object> tempCollection$0 = MapHelper.create();
         MapHelper.add(tempCollection$0, ViewFromCesiumWriter.DeletePropertyName, expectedDelete);
-        assertExpectedJson(PacketCesiumWriter.ViewFromPropertyName, tempCollection$0);
+        assertPropertyJson(tempCollection$0);
+    }
+
+    private final void assertPropertyJson(@Nonnull Object value) {
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, PacketCesiumWriter.ViewFromPropertyName, value);
+        assertExpectedJson(tempCollection$0);
     }
 
     @Override

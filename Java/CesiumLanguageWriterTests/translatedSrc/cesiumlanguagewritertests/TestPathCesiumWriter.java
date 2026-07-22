@@ -33,21 +33,19 @@ import org.junit.Test;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestPathCesiumWriter extends TestCesiumPropertyWriter<PathCesiumWriter> {
     @Test
-    public final void testShowProperty() {
-        final boolean expectedShow = true;
+    public final void testShow() {
+        final boolean expected = true;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<PathCesiumWriter> using$1 = new Using<PathCesiumWriter>(packet.openPathProperty())) {
                 final PathCesiumWriter path = using$1.resource;
                 try (Using<PathCesiumWriter> using$2 = new Using<PathCesiumWriter>(path.openInterval())) {
                     final PathCesiumWriter interval = using$2.resource;
-                    interval.writeShowProperty(expectedShow);
+                    interval.writeShowProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, PathCesiumWriter.ShowPropertyName, expectedShow);
-        assertExpectedJson(PacketCesiumWriter.PathPropertyName, tempCollection$0);
+        assertPropertyJson(PathCesiumWriter.ShowPropertyName, expected);
     }
 
     @Test
@@ -87,97 +85,158 @@ public class TestPathCesiumWriter extends TestCesiumPropertyWriter<PathCesiumWri
                 }
             }
         }
+        final Map<String, Object> tempCollection$1 = MapHelper.create();
+        MapHelper.add(tempCollection$1, "interval", CesiumFormattingHelper.toIso8601Interval(interval1Start, interval1Stop, Iso8601Format.COMPACT));
+        MapHelper.add(tempCollection$1, BooleanCesiumWriter.BooleanPropertyName, interval1Value);
         final Map<String, Object> tempCollection$2 = MapHelper.create();
-        MapHelper.add(tempCollection$2, "interval", CesiumFormattingHelper.toIso8601Interval(interval1Start, interval1Stop, Iso8601Format.COMPACT));
-        MapHelper.add(tempCollection$2, BooleanCesiumWriter.BooleanPropertyName, interval1Value);
+        MapHelper.add(tempCollection$2, "interval", CesiumFormattingHelper.toIso8601Interval(interval2Start, interval2Stop, Iso8601Format.COMPACT));
+        MapHelper.add(tempCollection$2, BooleanCesiumWriter.BooleanPropertyName, interval2Value);
         final Map<String, Object> tempCollection$3 = MapHelper.create();
-        MapHelper.add(tempCollection$3, "interval", CesiumFormattingHelper.toIso8601Interval(interval2Start, interval2Stop, Iso8601Format.COMPACT));
-        MapHelper.add(tempCollection$3, BooleanCesiumWriter.BooleanPropertyName, interval2Value);
-        final Map<String, Object> tempCollection$4 = MapHelper.create();
-        MapHelper.add(tempCollection$4, "interval", CesiumFormattingHelper.toIso8601Interval(interval3Start, interval3Stop, Iso8601Format.COMPACT));
-        MapHelper.add(tempCollection$4, BooleanCesiumWriter.BooleanPropertyName, interval3Value);
-        final ArrayList<Map<String, Object>> tempCollection$1 = new ArrayList<Map<String, Object>>();
-        tempCollection$1.add(tempCollection$2);
-        tempCollection$1.add(tempCollection$3);
-        tempCollection$1.add(tempCollection$4);
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, PathCesiumWriter.ShowPropertyName, tempCollection$1);
-        assertExpectedJson(PacketCesiumWriter.PathPropertyName, tempCollection$0);
+        MapHelper.add(tempCollection$3, "interval", CesiumFormattingHelper.toIso8601Interval(interval3Start, interval3Stop, Iso8601Format.COMPACT));
+        MapHelper.add(tempCollection$3, BooleanCesiumWriter.BooleanPropertyName, interval3Value);
+        final ArrayList<Map<String, Object>> tempCollection$0 = new ArrayList<Map<String, Object>>();
+        tempCollection$0.add(tempCollection$1);
+        tempCollection$0.add(tempCollection$2);
+        tempCollection$0.add(tempCollection$3);
+        assertPropertyJson(PathCesiumWriter.ShowPropertyName, tempCollection$0);
     }
 
     @Test
-    public final void testRelativeToProperty() {
-        final String expectedRelativeTo = "INERTIAL";
+    public final void testRelativeTo() {
+        final String expected = "INERTIAL";
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<PathCesiumWriter> using$1 = new Using<PathCesiumWriter>(packet.openPathProperty())) {
                 final PathCesiumWriter path = using$1.resource;
                 try (Using<PathCesiumWriter> using$2 = new Using<PathCesiumWriter>(path.openInterval())) {
                     final PathCesiumWriter interval = using$2.resource;
-                    interval.writeRelativeToProperty(expectedRelativeTo);
+                    interval.writeRelativeToProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, PathCesiumWriter.RelativeToPropertyName, expectedRelativeTo);
-        assertExpectedJson(PacketCesiumWriter.PathPropertyName, tempCollection$0);
+        assertPropertyJson(PathCesiumWriter.RelativeToPropertyName, expected);
     }
 
     @Test
     public final void testMaterialMode() {
-        final String expectedMaterialMode = "PORTIONS";
+        final CesiumPathMode expected = CesiumPathMode.PORTIONS;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<PathCesiumWriter> using$1 = new Using<PathCesiumWriter>(packet.openPathProperty())) {
                 final PathCesiumWriter path = using$1.resource;
                 try (Using<PathCesiumWriter> using$2 = new Using<PathCesiumWriter>(path.openInterval())) {
                     final PathCesiumWriter interval = using$2.resource;
-                    interval.writeMaterialModeProperty(CesiumPathMode.PORTIONS);
+                    interval.writeMaterialModeProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, PathCesiumWriter.MaterialModePropertyName, expectedMaterialMode);
-        assertExpectedJson(PacketCesiumWriter.PathPropertyName, tempCollection$0);
+        assertPropertyJson(PathCesiumWriter.MaterialModePropertyName, expected);
     }
 
     @Test
-    public final void testLeadAndTrailTimeProperties() {
-        final double expectedLeadTime = 10.0;
-        final double expectedTrailTime = 20.0;
+    public final void testLeadTime() {
+        final double expected = 10.0;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<PathCesiumWriter> using$1 = new Using<PathCesiumWriter>(packet.openPathProperty())) {
                 final PathCesiumWriter path = using$1.resource;
                 try (Using<PathCesiumWriter> using$2 = new Using<PathCesiumWriter>(path.openInterval())) {
                     final PathCesiumWriter interval = using$2.resource;
-                    interval.writeLeadTimeProperty(expectedLeadTime);
-                    interval.writeTrailTimeProperty(expectedTrailTime);
+                    interval.writeLeadTimeProperty(expected);
                 }
             }
         }
-        final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, PathCesiumWriter.LeadTimePropertyName, expectedLeadTime);
-        MapHelper.add(tempCollection$0, PathCesiumWriter.TrailTimePropertyName, expectedTrailTime);
-        assertExpectedJson(PacketCesiumWriter.PathPropertyName, tempCollection$0);
+        assertPropertyJson(PathCesiumWriter.LeadTimePropertyName, expected);
     }
 
     @Test
-    public final void testDistanceDisplayConditionProperty() {
-        Bounds expectedBounds = new Bounds(1234.0, 5678.0);
+    public final void testTrailTime() {
+        final double expected = 20.0;
         try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
             final PacketCesiumWriter packet = using$0.resource;
             try (Using<PathCesiumWriter> using$1 = new Using<PathCesiumWriter>(packet.openPathProperty())) {
                 final PathCesiumWriter path = using$1.resource;
                 try (Using<PathCesiumWriter> using$2 = new Using<PathCesiumWriter>(path.openInterval())) {
                     final PathCesiumWriter interval = using$2.resource;
-                    interval.writeDistanceDisplayConditionProperty(expectedBounds);
+                    interval.writeTrailTimeProperty(expected);
                 }
             }
         }
+        assertPropertyJson(PathCesiumWriter.TrailTimePropertyName, expected);
+    }
+
+    @Test
+    public final void testDistanceDisplayCondition() {
+        Bounds expected = new Bounds(1234.0, 5678.0);
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PathCesiumWriter> using$1 = new Using<PathCesiumWriter>(packet.openPathProperty())) {
+                final PathCesiumWriter path = using$1.resource;
+                try (Using<PathCesiumWriter> using$2 = new Using<PathCesiumWriter>(path.openInterval())) {
+                    final PathCesiumWriter interval = using$2.resource;
+                    interval.writeDistanceDisplayConditionProperty(expected);
+                }
+            }
+        }
+        assertPropertyJson(PathCesiumWriter.DistanceDisplayConditionPropertyName, expected);
+    }
+
+    @Test
+    public final void testWidth() {
+        final double expected = 5.0;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PathCesiumWriter> using$1 = new Using<PathCesiumWriter>(packet.openPathProperty())) {
+                final PathCesiumWriter path = using$1.resource;
+                try (Using<PathCesiumWriter> using$2 = new Using<PathCesiumWriter>(path.openInterval())) {
+                    final PathCesiumWriter interval = using$2.resource;
+                    interval.writeWidthProperty(expected);
+                }
+            }
+        }
+        assertPropertyJson(PathCesiumWriter.WidthPropertyName, expected);
+    }
+
+    @Test
+    public final void testResolution() {
+        final double expected = 30.0;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PathCesiumWriter> using$1 = new Using<PathCesiumWriter>(packet.openPathProperty())) {
+                final PathCesiumWriter path = using$1.resource;
+                try (Using<PathCesiumWriter> using$2 = new Using<PathCesiumWriter>(path.openInterval())) {
+                    final PathCesiumWriter interval = using$2.resource;
+                    interval.writeResolutionProperty(expected);
+                }
+            }
+        }
+        assertPropertyJson(PathCesiumWriter.ResolutionPropertyName, expected);
+    }
+
+    @Test
+    public final void testMaterial() {
+        Color expectedColor = Color.RED;
+        try (Using<PacketCesiumWriter> using$0 = new Using<PacketCesiumWriter>(openPacket())) {
+            final PacketCesiumWriter packet = using$0.resource;
+            try (Using<PathCesiumWriter> using$1 = new Using<PathCesiumWriter>(packet.openPathProperty())) {
+                final PathCesiumWriter path = using$1.resource;
+                try (Using<PathCesiumWriter> using$2 = new Using<PathCesiumWriter>(path.openInterval())) {
+                    final PathCesiumWriter interval = using$2.resource;
+                    try (Using<PolylineMaterialCesiumWriter> using$3 = new Using<PolylineMaterialCesiumWriter>(interval.openMaterialProperty())) {
+                        final PolylineMaterialCesiumWriter material = using$3.resource;
+                        try (Using<SolidColorMaterialCesiumWriter> using$4 = new Using<SolidColorMaterialCesiumWriter>(material.openSolidColorProperty())) {
+                            final SolidColorMaterialCesiumWriter solidColor = using$4.resource;
+                            solidColor.writeColorProperty(expectedColor);
+                        }
+                    }
+                }
+            }
+        }
+        final Map<String, Object> tempCollection$1 = MapHelper.create();
+        MapHelper.add(tempCollection$1, SolidColorMaterialCesiumWriter.ColorPropertyName, expectedColor);
         final Map<String, Object> tempCollection$0 = MapHelper.create();
-        MapHelper.add(tempCollection$0, PathCesiumWriter.DistanceDisplayConditionPropertyName, expectedBounds);
-        assertExpectedJson(PacketCesiumWriter.PathPropertyName, tempCollection$0);
+        MapHelper.add(tempCollection$0, PolylineMaterialCesiumWriter.SolidColorPropertyName, tempCollection$1);
+        assertPropertyJson(PathCesiumWriter.MaterialPropertyName, tempCollection$0);
     }
 
     @Test
@@ -282,6 +341,12 @@ public class TestPathCesiumWriter extends TestCesiumPropertyWriter<PathCesiumWri
             }
         }
         output.writeEndSequence();
+    }
+
+    private final void assertPropertyJson(@Nonnull String propertyName, @Nonnull Object value) {
+        final Map<String, Object> tempCollection$0 = MapHelper.create();
+        MapHelper.add(tempCollection$0, propertyName, value);
+        assertExpectedJson(PacketCesiumWriter.PathPropertyName, tempCollection$0);
     }
 
     @Override
