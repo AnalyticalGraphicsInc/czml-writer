@@ -115,7 +115,7 @@ namespace CesiumLanguageWriterTests
         [Test]
         public void EscapesControlCharactersAsUnicode()
         {
-            var input = new string(new[] { (char)0x0001, (char)0x001F });
+            string input = new string(new[] { (char)0x0001, (char)0x001F });
 
             m_outputStream.WriteStartSequence();
             m_outputStream.WriteValue(input);

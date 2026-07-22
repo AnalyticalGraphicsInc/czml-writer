@@ -5,6 +5,8 @@ import agi.foundation.compatibility.*;
 import agi.foundation.compatibility.Assembly;
 import cesiumlanguagewritertests.*;
 import java.io.InputStream;
+import javax.annotation.Nonnull;
+import org.junit.Assert;
 
 @SuppressWarnings({
     "unused",
@@ -14,7 +16,10 @@ import java.io.InputStream;
 public final class EmbeddedData {
     private EmbeddedData() {}
 
-    public static InputStream read(String file) {
-        return Assembly.getExecutingAssembly().getManifestResourceStream(EmbeddedData.class, file);
+    @Nonnull
+    public static InputStream read(@Nonnull String file) {
+        InputStream stream = Assembly.getExecutingAssembly().getManifestResourceStream(EmbeddedData.class, file);
+        Assert.assertNotNull(stream);
+        return stream;
     }
 }

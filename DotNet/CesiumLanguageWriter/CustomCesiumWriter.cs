@@ -1,4 +1,5 @@
 ﻿using CesiumLanguageWriter.Advanced;
+using JetBrains.Annotations;
 
 namespace CesiumLanguageWriter
 {
@@ -13,7 +14,7 @@ namespace CesiumLanguageWriter
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public CustomCesiumWriter(string propertyName)
+        public CustomCesiumWriter([NotNull] string propertyName)
             : base(propertyName)
         {
         }
@@ -22,7 +23,7 @@ namespace CesiumLanguageWriter
         /// Initializes a new instance as a copy of an existing instance.
         /// </summary>
         /// <param name="existingInstance">The existing instance to copy.</param>
-        protected CustomCesiumWriter(CustomCesiumWriter existingInstance)
+        protected CustomCesiumWriter([NotNull] CustomCesiumWriter existingInstance)
             : base(existingInstance)
         {
         }

@@ -1,13 +1,18 @@
 ﻿using System.IO;
 using System.Reflection;
+using JetBrains.Annotations;
+using NUnit.Framework;
 
 namespace CesiumLanguageWriterTests.Data
 {
     public static class EmbeddedData
     {
-        public static Stream Read(string file)
+        [NotNull]
+        public static Stream Read([NotNull] string file)
         {
-            return Assembly.GetExecutingAssembly().GetManifestResourceStream(typeof(EmbeddedData), file);
+            var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(typeof(EmbeddedData), file);
+            Assert.IsNotNull(stream);
+            return stream;
         }
     }
 }

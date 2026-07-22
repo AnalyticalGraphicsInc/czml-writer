@@ -8,7 +8,8 @@ using NUnit.Framework;
 namespace CesiumLanguageWriterTests
 {
     [TestFixture]
-    public abstract class TestCesiumPropertyWriter<TDerived> : TestWriterBase where TDerived : CesiumPropertyWriter<TDerived>
+    public abstract class TestCesiumPropertyWriter<TDerived> : TestWriterBase
+        where TDerived : CesiumPropertyWriter<TDerived>
     {
         [NotNull]
         protected abstract CesiumPropertyWriter<TDerived> CreatePropertyWriter([NotNull] string propertyName);

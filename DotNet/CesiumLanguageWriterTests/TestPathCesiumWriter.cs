@@ -1,13 +1,13 @@
-﻿using CesiumLanguageWriter;
-using CesiumLanguageWriter.Advanced;
-using NUnit.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.IO;
+using System.Linq;
+using CesiumLanguageWriter;
+using CesiumLanguageWriter.Advanced;
 using CesiumLanguageWriterTests.Data;
 using JetBrains.Annotations;
+using NUnit.Framework;
 
 namespace CesiumLanguageWriterTests
 {

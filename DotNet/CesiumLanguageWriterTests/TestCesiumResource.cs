@@ -1,8 +1,8 @@
-﻿using CesiumLanguageWriter;
+﻿using System.Drawing;
+using System.IO;
+using CesiumLanguageWriter;
 using CesiumLanguageWriterTests.Data;
 using NUnit.Framework;
-using System.Drawing;
-using System.IO;
 
 namespace CesiumLanguageWriterTests
 {

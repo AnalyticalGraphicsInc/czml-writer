@@ -3,6 +3,7 @@ package cesiumlanguagewriter;
 
 import agi.foundation.compatibility.*;
 import cesiumlanguagewriter.advanced.*;
+import javax.annotation.Nonnull;
 
 /**
  * A {@link CesiumPropertyWriter} used to write custom properties.  To write custom
@@ -19,7 +20,7 @@ public class CustomCesiumWriter extends CesiumPropertyWriter<CustomCesiumWriter>
     /**
     * Initializes a new instance.
     */
-    public CustomCesiumWriter(String propertyName) {
+    public CustomCesiumWriter(@Nonnull String propertyName) {
         super(propertyName);
     }
 
@@ -27,7 +28,7 @@ public class CustomCesiumWriter extends CesiumPropertyWriter<CustomCesiumWriter>
     * Initializes a new instance as a copy of an existing instance.
     * @param existingInstance The existing instance to copy.
     */
-    protected CustomCesiumWriter(CustomCesiumWriter existingInstance) {
+    protected CustomCesiumWriter(@Nonnull CustomCesiumWriter existingInstance) {
         super(existingInstance);
     }
 

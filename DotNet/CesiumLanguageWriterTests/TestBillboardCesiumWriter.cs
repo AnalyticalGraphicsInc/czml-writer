@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Drawing;
 using CesiumLanguageWriter;
 using CesiumLanguageWriter.Advanced;
 using NUnit.Framework;
-using System.Drawing;
 
 namespace CesiumLanguageWriterTests
 {
